@@ -100,6 +100,7 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { applyDeferredIdentity } from "../features/school/join/api";
 import { legacyLayers, settleLegacyLayers } from "../nav/links";
 import { landWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
 import {
@@ -2110,6 +2111,11 @@ router.subscribe("onResolved", ({ toLocation }) => {
   );
   if (place) rememberPlace(session.accountId, place);
 });
+// A device handed to a child from a parent's screen: the child's identity
+// arrives in the same render as the screen that mounts next (practice), so
+// the parent's screen never redraws for the child first
+// (features/school/join/api.ts).
+router.subscribe("onBeforeRouteMount", () => applyDeferredIdentity());
 // A link from before the layer store names its layers in the address
 // (`?open=`): once the screen is on view they move into the store
 // (nav/layer-store.ts) and leave the address, replacing its entry. The one

@@ -10,7 +10,10 @@ export function Dialog(props: DialogProps) {
   const panel = useLayerPanel();
   if (panel)
     return props.open ? (
-      <SheetPanel title={props.title}>{props.children}</SheetPanel>
+      // Its own reading body (a lesson's prose, its type and spacing).
+      <SheetPanel title={props.title} bodyClass={styles.body}>
+        {props.children}
+      </SheetPanel>
     ) : null;
   return <ModalDialog {...props} />;
 }

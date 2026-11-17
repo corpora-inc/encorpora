@@ -4,6 +4,8 @@ import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
+import { createStore } from "zustand/vanilla";
+import type { AuthSession } from "../../../auth";
 import type { z } from "zod";
 import {
   joinRosterResource,
@@ -151,7 +153,16 @@ export function useFinishSignIn() {
       const session = { accountId: grant.accountId, token: grant.token };
       finishing = true;
       rememberStudentSession(session, grant.mode, handed, returnTo);
-      notifyDeviceSessionChanged(session);
+      // A parent's device handed to their child from a screen of theirs
+      // (Practice on a skill): the screen holds, its button busy, until
+      // practice replaces it. The child's identity arrives in the same
+      // render as practice (app/router.tsx, `onBeforeRouteMount`), never on
+      // the parent's screen first, which would redraw it for the child and
+      // jerk it around. The route guards read the child's sign-in from this
+      // device's storage, so practice loads for them.
+      const deferred = handed && !!learnerId && !!returnTo;
+      if (deferred) deferIdentity(session);
+      else notifyDeviceSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
       await queryClient
@@ -171,9 +182,31 @@ export function useFinishSignIn() {
               : undefined,
         });
       } finally {
+        // A navigation that never mounted practice still switches: the
+        // device is the child's now.
+        if (deferred) applyDeferredIdentity();
         finishing = false;
       }
     },
     [navigate],
   );
+}
+
+/** The identity a hand-over is waiting to show with practice. */
+const handOver = createStore<{ session: AuthSession | null }>(() => ({
+  session: null,
+}));
+function deferIdentity(session: AuthSession) {
+  handOver.setState({ session });
+}
+/** Shows the handed child's identity, if one waits: called as the router
+ * mounts the next screen, so the switch renders with practice. Keeps the
+ * child's `/me`, fetched before the move, across the switch. */
+export function applyDeferredIdentity() {
+  const session = handOver.getState().session;
+  if (!session) return;
+  handOver.setState({ session: null });
+  const me = queryClient.getQueryData(meOptions(session).queryKey);
+  notifyDeviceSessionChanged(session);
+  if (me) queryClient.setQueryData(meOptions(session).queryKey, me);
 }
