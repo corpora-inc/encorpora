@@ -57,7 +57,8 @@ try {
       { exact: true },
     )
     .waitFor();
-  assert.equal(new URL(page.url()).pathname, "/sign-in/forgot");
+  // An expired reset link opens the reset screen at its own address.
+  assert.equal(new URL(page.url()).pathname, "/reset-password");
   assert.equal(await page.title(), "Reset Your Password | AMP");
   await page.goto("http://127.0.0.1:4394/sign-up");
   await page.getByRole("heading", { name: "Create your account" }).waitFor();
