@@ -100,9 +100,10 @@ export function bootApp() {
 /**
  * The light home document (`home-entry.tsx`) asked, as `/` loaded, and found
  * no one signed in: the app takes that answer instead of asking again, as it
- * would have kept its own (`sessionOptions` never goes stale; a sign-in
- * anywhere reports itself). Then what the pitch's ways out need is readied
- * while the visitor reads, so each opens at once.
+ * would have kept its own. A sign-in in another tab isn't heard while only
+ * the pitch shows, so `openFromPitch` checks the session again on the way
+ * out. Then what the pitch's ways out need is readied while the visitor
+ * reads, so each opens at once.
  */
 export async function prepareFromPitch(places: PitchPlace[]): Promise<void> {
   if (queryClient.getQueryData(sessionOptions.queryKey) === undefined) {
@@ -131,6 +132,18 @@ export async function openFromPitch(
   closePitch: () => void,
 ): Promise<void> {
   start();
+  // While only the light pitch showed, nothing heard a sign-in made in
+  // another tab (that notice starts with the mounted app), so the "signed
+  // out" answer `prepareFromPitch` kept may be stale. Ask once, as the
+  // visitor leaves, so the place opens for whoever is actually signed in.
+  await queryClient
+    .fetchQuery({ ...sessionOptions, staleTime: 0 })
+    .catch((error: unknown) =>
+      console.warn(
+        "The session couldn't be checked on leaving the pitch",
+        error,
+      ),
+    );
   const target = router.buildLocation(place as never);
   // A move to `/` itself (a consent link arriving) only decides `/` again.
   if (target.href !== router.latestLocation.href)
