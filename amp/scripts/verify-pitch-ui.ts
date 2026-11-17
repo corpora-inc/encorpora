@@ -362,6 +362,8 @@ async function closeIsBalanced(
   width: number,
   funds: boolean,
 ) {
+  // tsx names the helpers below with esbuild's __name, which the page lacks.
+  await page.evaluate("globalThis.__name ??= (f) => f");
   const found = await page.evaluate(() => {
     const box = (selector: string) => {
       const r = document.querySelector(selector)?.getBoundingClientRect();
