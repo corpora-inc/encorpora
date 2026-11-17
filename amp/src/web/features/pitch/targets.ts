@@ -1,4 +1,6 @@
 import type { PitchEntry } from "../../../parent-followup/contracts";
+import { authStep } from "../../app/auth-links";
+import { chosenProgram, isProgramChoice } from "../../lib/program-choice";
 import {
   campaignSearch,
   fundedPrograms,
@@ -8,18 +10,26 @@ import {
 
 export type PitchProgramId = FundedProgram["id"];
 
-/** The funded program an ad named (`?program=`), if AMP sells through it. */
+/** The funded program with this id, if AMP sells through it. */
 export function pitchProgram(id: unknown): FundedProgram | undefined {
   return Object.values(fundedPrograms).find((program) => program.id === id);
 }
 
-/** Fixed labels the pitch carries forward: campaign labels and program only. */
+/** The funded program this visit came through: the one its address names
+ * (an ad's `?program=`), else the one this tab chose (lib/program-choice.ts,
+ * which the next screens read). */
+export function pitchProgramOf(
+  search: Record<string, unknown>,
+): FundedProgram | undefined {
+  return pitchProgram(
+    isProgramChoice(search.program) ? search.program : chosenProgram(),
+  );
+}
+
+/** Fixed labels the pitch carries forward: an ad's campaign labels. The
+ * program is the tab's choice, never the address's. */
 export function pitchCarry(search: Record<string, unknown>): FundedSearch {
-  const program = pitchProgram(search.program);
-  return {
-    ...campaignSearch(search),
-    ...(program ? { program: program.id } : {}),
-  };
+  return campaignSearch(search);
 }
 
 /** Where each pitch action goes. Every destination can succeed signed out:
@@ -30,17 +40,14 @@ export function pitchTarget(
 ) {
   const carry = pitchCarry(search);
   const signUp = (entry: PitchEntry, free: boolean) =>
-    ({
-      to: "/sign-up",
-      search: {
-        ...carry,
-        entry,
-        ...(free ? { return: "free-practice" as const } : {}),
-      },
-    }) as const;
+    authStep("sign-up", {
+      ...carry,
+      entry,
+      ...(free ? { return: "free-practice" as const } : {}),
+    });
   switch (action) {
     case "funded": {
-      const program = pitchProgram(search.program);
+      const program = pitchProgramOf(search);
       if (!program) throw new Error("A funded purchase needs its program");
       return { to: `/invoice/${program.slug}` as const, search: carry };
     }
