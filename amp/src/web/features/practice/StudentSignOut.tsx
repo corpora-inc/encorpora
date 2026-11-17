@@ -48,11 +48,14 @@ export function StudentSignOut({ inBar = false }: { inBar?: boolean }) {
  */
 function HandedHome({ inBar }: { inBar: boolean }) {
   const label = handedReturnName() ?? "Family";
-  const home = handedHome();
+  // A class's screen may carry its own query or fragment: kept as they are.
+  const home = new URL(handedHome(), "https://amp.invalid");
   return (
     <Link
       to="/$"
-      params={{ _splat: home.slice(1) }}
+      params={{ _splat: home.pathname.slice(1) }}
+      search={Object.fromEntries(home.searchParams) as never}
+      hash={home.hash.slice(1) || undefined}
       // Hovering must never load the parent's screen with the child's
       // sign-in; the press itself hands the device back.
       preload={false}

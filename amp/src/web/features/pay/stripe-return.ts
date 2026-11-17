@@ -46,12 +46,15 @@ export async function stripeReturnTarget(
   // profile's checkout records the adult's own learner it started: the same
   // screen, for them.
   const from = opened ? payAddress(opened.base) : null;
+  const rebased = from ? payOver(from.origin, learnerId) : undefined;
   let base =
-    opened && from
-      ? opened.learnerId === learnerId
-        ? opened.base
-        : payOver(from.origin, learnerId)
-      : undefined;
+    opened && opened.learnerId === learnerId
+      ? opened.base
+      : // Only where that screen has a pay overlay for them (another
+        // child's page has none).
+        rebased && payAddress(rebased)?.learnerId === learnerId
+        ? rebased
+        : undefined;
   if (!base) {
     // Opened in another tab: the learner's own place, a child's page in
     // their family, else the account's settings hub (a family's Settings),

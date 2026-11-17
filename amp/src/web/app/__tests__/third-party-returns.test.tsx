@@ -163,6 +163,23 @@ test("a practice profile's checkout starts the adult's own learner: the same scr
   expect(router.state.location.href).toBe(`/family/f/settings/pay/${OWN}`);
 });
 
+test("a return for another child than the page it was opened on goes to that child's own page", async () => {
+  const OTHER = "99999999-9999-4999-8999-999999999999";
+  signedIn("learner", `/family/f/kids/${OTHER}/pay`);
+  usePayStore.getState().checkoutOpened(SESSION.accountId, {
+    learnerId: OTHER,
+    kind: "learner",
+    base: `/family/f/kids/${OTHER}/pay`,
+  });
+  inFamily([
+    { id: LEARNER, adult: false },
+    { id: OTHER, adult: false },
+  ]);
+  const { router } = routerAt(`/?billing=processing&purchase=${PURCHASE}`);
+  await router.load();
+  expect(router.state.location.href).toBe(`/family/f/kids/${LEARNER}/pay/done`);
+});
+
 test("opened in another tab, a family's adult returns over the family's Settings, never /account", async () => {
   const OWN = "77777777-7777-4777-8777-777777777777";
   inFamily([{ id: OWN, adult: true }]);
