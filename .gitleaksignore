@@ -12,3 +12,13 @@ c47d30de0d960772639fbe9f0404660a27c646c5:amp/docs/reviews/school-onboarding/clev
 1a06ecb7cb40b5d30e1f946f12b200468b1a3d35:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:77
 1a06ecb7cb40b5d30e1f946f12b200468b1a3d35:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:92
 1a06ecb7cb40b5d30e1f946f12b200468b1a3d35:amp/src/web/features/pay/__tests__/create-invoice.test.tsx:generic-api-key:119
+
+# Hygiene's pinned gitleaks 8.18.4 generic-api-key rule matches these code
+# identifiers and synthetic test tokens ("synthetic-proof", "synthetic-feedback",
+# query-key and program-choice code): not credentials. Exact findings only.
+adb46edaad5c44cddaeda8608c06a404443a16f4:amp/src/web/lib/program-choice.ts:generic-api-key:22
+0174aa3985516553bf2bb5d1f37e566087c9495a:amp/src/web/lib/family-cache.ts:generic-api-key:8
+2ea629c807d09afc1c406dcdc496c5f66166ce1a:amp/scripts/check-bundle-budget.ts:generic-api-key:126
+8cc1314b00e3c2e7d3fd3f3a1d7a1ae8bcbf1944:amp/tests/architecture-ratchet.test.ts:generic-api-key:244
+2c5649f30b33813448f5012f7f3b2f141a98448b:amp/scripts/verify-parent-feedback-ui.ts:generic-api-key:56
+54d92e590341f4ed6ee628208594a77c233485f4:amp/src/web/features/pitch/__tests__/home-decision.test.ts:generic-api-key:67
