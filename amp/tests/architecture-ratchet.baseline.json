@@ -3,7 +3,7 @@
   "counts": {
     "redirects": 1,
     "validateSearch": 7,
-    "searchHandoffs": 66,
+    "searchHandoffs": 65,
     "navigatingEffects": 7,
     "renderNavigate": 4,
     "silentCatches": 19,
@@ -22,7 +22,6 @@
     "searchHandoffs": {
       "features/account/AccountReady.tsx": 2,
       "features/inventory/InventoryScreen.tsx": 3,
-      "features/pitch/targets.ts": 1,
       "features/profiles/api.ts": 1,
       "features/profiles/practice-mode.ts": 1,
       "features/school/AdoptionScreen.tsx": 1,
@@ -66,7 +65,6 @@
     },
     "navigatingEffects": {
       "app/LegacyApp.tsx": 2,
-      "features/design/DesignScreen.tsx": 1,
       "features/school/AdoptionScreen.tsx": 1,
       "features/school/join/CardScreen.tsx": 1,
       "features/school/join/ClassScreen.tsx": 1,
@@ -125,12 +123,17 @@
       "features/schools/ParentScreen.tsx": 1
     },
     "nativeControls": {
-      "features/onboarding/setup/PeopleRows.tsx": 1,
       "features/school/classes/grade-parts.tsx": 1,
       "features/school/ImportScreen.tsx": 1,
       "features/school/join/JoinScreen.tsx": 1,
       "features/schools/TalkToUs.tsx": 1
     }
   },
-  "exempt": []
+  "exempt": [
+    {
+      "category": "navigatingEffects",
+      "file": "features/design/DesignScreen.tsx",
+      "reason": "the dev gallery mirrors the canvas iframe's scrolled section (a postMessage browser event) into its own #hash"
+    }
+  ]
 }
