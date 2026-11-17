@@ -2,11 +2,11 @@
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
     "redirects": 81,
-    "validateSearch": 14,
-    "searchHandoffs": 182,
+    "validateSearch": 13,
+    "searchHandoffs": 181,
     "navigatingEffects": 21,
     "renderNavigate": 32,
-    "silentCatches": 260,
+    "silentCatches": 259,
     "sessionProps": 106,
     "nativeControls": 27
   },
@@ -20,7 +20,7 @@
       "nav/root.tsx": 1
     },
     "validateSearch": {
-      "app/router.tsx": 14
+      "app/router.tsx": 13
     },
     "searchHandoffs": {
       "app/family-routes.tsx": 3,
@@ -53,7 +53,6 @@
       "features/onboarding/LearnerSteps.tsx": 4,
       "features/onboarding/PurchaseStep.tsx": 1,
       "features/onboarding/setup/FamilySetup.tsx": 2,
-      "features/onboarding/setup/StepFrame.tsx": 1,
       "features/onboarding/Starter.tsx": 1,
       "features/onboarding/StartScreen.tsx": 3,
       "features/pathways/AreaKey.tsx": 1,
@@ -231,7 +230,6 @@
       "features/school/pilots/buyer-session.ts": 3,
       "features/school/pilots/ClassAccess.tsx": 3,
       "features/school/pilots/SchoolCreateScreen.tsx": 1,
-      "features/school/pilots/SchoolStartScreen.tsx": 1,
       "features/school/SetupScreen.tsx": 5,
       "features/school/StaffScreen.tsx": 4,
       "features/school/StudentsScreen.tsx": 3,

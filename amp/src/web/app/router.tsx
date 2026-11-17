@@ -1394,34 +1394,35 @@ const schoolClassImport = createRoute({
     "ImportScreen",
   ),
 });
-/** A teacher sets up a class (one short form). `org` preselects a school. */
+/** A teacher sets up a class: its two steps, each at its own address
+ * (features/school/pilots/start-steps.ts). Nothing rides along in a query. */
+const startLoader = async ({ context }: { context: unknown }) => {
+  const { session } = context as { session: AuthSession };
+  await Promise.all([
+    preload(meOptions(session)),
+    preload(orgsOptions(session)),
+  ]);
+};
 const schoolStart = createRoute({
   getParentRoute: () => root,
   path: "/school/start",
   staticData: { space: "account" },
   beforeLoad: staffScreen,
-  // `from`: adding a place from somewhere, its way back (appReturn).
-  validateSearch: (
-    search: Record<string, unknown>,
-  ): { org?: string; from?: string } => {
-    const from = appReturn(search.from);
-    return {
-      ...(z.uuid().safeParse(search.org).success
-        ? { org: String(search.org) }
-        : {}),
-      ...(from ? { from } : {}),
-    };
-  },
-  loader: async ({ context }) => {
-    const { session } = context as unknown as { session: AuthSession };
-    await Promise.all([
-      preload(meOptions(session)),
-      preload(orgsOptions(session)),
-    ]);
-  },
+  loader: startLoader,
   component: lazyRouteComponent(
     () => import("../features/school/pilots/SchoolStartScreen"),
     "SchoolStartScreen",
+  ),
+});
+const schoolStartStudents = createRoute({
+  getParentRoute: () => root,
+  path: "/school/start/students",
+  staticData: { space: "account" },
+  beforeLoad: staffScreen,
+  loader: startLoader,
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/SchoolStartScreen"),
+    "SchoolStartStudentsScreen",
   ),
 });
 /** "I run a school": the school, then its classes (one short form). */
@@ -1907,6 +1908,7 @@ export const router = createRouter({
     schoolsTrust,
     schoolsContinue,
     schoolStart,
+    schoolStartStudents,
     schoolCreate,
     schoolConnect,
     schoolAdopt,

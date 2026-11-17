@@ -55,7 +55,7 @@ function Failed({
   const message = adoptionError(error);
   useLoggedError(message);
   return (
-    <PlainPage title="This link didn’t open" back="/school">
+    <PlainPage title="This link didn’t open">
       <Lead>{message}</Lead>
       <Actions>
         <Button variant="secondary" onClick={retry}>
@@ -91,7 +91,6 @@ function DistrictInvite({
   return (
     <PlainPage
       title={`Invite a school to ${query.data.district.name}`}
-      back="/school"
     >
       <Lead>
         Send this link to the school. You’ll accept here once they approve.
@@ -158,7 +157,6 @@ function AuthorizeSchool({
   return (
     <PlainPage
       title={district ? `Join ${district.name}` : "Districts"}
-      back="/school"
     >
       {district &&
         (issued ? (
@@ -394,7 +392,6 @@ function ReviewDecision({
     return (
       <PlainPage
         title={`${data.schoolName} joined ${data.districtName}`}
-        back="/school"
       >
         <Actions>
           <a
@@ -415,7 +412,6 @@ function ReviewDecision({
   return (
     <PlainPage
       title={`${data.schoolName} wants to join ${data.districtName}`}
-      back="/school"
       wide
     >
       <Lead>Expires {day(data.expiresAt)}</Lead>

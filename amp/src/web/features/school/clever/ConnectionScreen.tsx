@@ -481,7 +481,6 @@ export function ConnectionScreen() {
   const content = (
     <PlainPage
       title={state.title || undefined}
-      back={session ? "/school" : "/schools"}
     >
       {state.body}
       <Toast

@@ -101,7 +101,7 @@ export function SchoolCreateScreen() {
     }
   }
   return (
-    <PlainPage title="Set up your school" back="/start/school">
+    <PlainPage title="Set up your school">
       <form
         className={plainStyles.form}
         onSubmit={(event) => {

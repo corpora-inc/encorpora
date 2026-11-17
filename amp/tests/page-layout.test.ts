@@ -336,6 +336,7 @@ const FRAMES: Record<string, string> = {
   FamilyFrame: "features/family/FamilyFrame.tsx",
   StepFrame: "features/onboarding/setup/StepFrame.tsx",
   WorkbookFrame: "features/workbooks/WorkbookFrame.tsx",
+  PlainPage: "features/school/PlainPage.tsx",
 };
 
 /** Route screens that don't render Page yet, `module#export`, with why. */
@@ -362,8 +363,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/profiles/index.ts#LevelScreen": "an adult's own practice",
   "features/profiles/index.ts#NewProfileScreen": "an adult's own practice",
   "features/profiles/index.ts#ProfilesScreen": "an adult's own practice",
-  "features/school/AdoptionScreen.tsx#AdoptionScreen":
-    "a school, class or setup screen",
   "features/school/CalendarScreen.tsx#CalendarScreen":
     "a school, class or setup screen",
   "features/school/ChooserScreen.tsx#ChooserScreen":
@@ -414,8 +413,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
     "a school, class or setup screen",
   "features/school/classroom/index.ts#WorkbookStackScreen":
     "a school, class or setup screen",
-  "features/school/clever/ConnectionScreen.tsx#ConnectionScreen":
-    "a school, class or setup screen",
   "features/school/join/index.ts#CardScreen":
     "joining, approvals and links from outside the app",
   "features/school/join/index.ts#ClassScreen":
@@ -437,12 +434,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/school/org/index.ts#RolloverScreen":
     "a school, class or setup screen",
   "features/school/org/index.ts#SchoolsScreen":
-    "a school, class or setup screen",
-  "features/school/pilots/BuyerHandoffScreen.tsx#BuyerHandoffScreen":
-    "a school, class or setup screen",
-  "features/school/pilots/SchoolCreateScreen.tsx#SchoolCreateScreen":
-    "a school, class or setup screen",
-  "features/school/pilots/SchoolStartScreen.tsx#SchoolStartScreen":
     "a school, class or setup screen",
   "features/school/standing/index.ts#ClassStandingScreen":
     "a school, class or setup screen",
@@ -724,8 +715,6 @@ const BACK_DEBT: Record<string, string> = {
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/school/ImportScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/PlainPage.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/SetupScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/classes/CardsScreen.tsx":
@@ -733,8 +722,6 @@ const BACK_DEBT: Record<string, string> = {
   "features/school/classes/GradebookScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/classes/ReportCardScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/classes/StartClassScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/classes/TimeScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
@@ -747,8 +734,6 @@ const BACK_DEBT: Record<string, string> = {
   "features/school/org/RolloverScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/pilots/ClassAccess.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/pilots/SchoolStartScreen.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/standing/parts.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
