@@ -7,7 +7,8 @@ import { PrintButton } from "../../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { LayerWait } from "../../../nav/LayerWait";
 import { Sheet } from "../../../ui/Sheet";
-import { OPEN_KEY, work, writeStack } from "../../../nav/entities";
+import { work } from "../../../nav/entities";
+import { layerScope, seedLayers } from "../../../nav/layer-store";
 import { currentSession, orgOptions } from "../api";
 import { TransferSheet, useCanMove } from "../org/TransferSheet";
 import { ShareWithFamily } from "../../schools/ShareWithFamily";
@@ -145,12 +146,12 @@ export function StudentLayer({
             setMoving(false);
             // The student goes with the move: their record, over their new
             // school's Students.
+            seedLayers(layerScope(`/school/${to.id}/students`, undefined), [
+              { kind: "student", id: student },
+            ]);
             void navigate({
               to: "/school/$org/students",
               params: { org: to.id },
-              search: {
-                [OPEN_KEY]: writeStack([{ kind: "student", id: student }]),
-              },
             } as never);
           }}
         />

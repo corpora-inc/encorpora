@@ -17,6 +17,7 @@ import type { RosterRow } from "../../../schools/sources/rows";
 import type { AuthSession } from "../../auth";
 import { AppError, keepRefusal } from "../../lib/AppError";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import {
   invalidateAccount,
   queryClient,
@@ -101,7 +102,7 @@ export const call = <T>(
   });
 
 export const keyFor = (session: AuthSession, ...rest: unknown[]) =>
-  ["account", session.accountId, "school", ...rest] as const;
+  qk.account(session.accountId, "school", ...rest);
 
 export const orgsOptions = (session: AuthSession) =>
   queryOptions({

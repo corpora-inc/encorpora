@@ -14,6 +14,11 @@
   font-weight: 600;
   letter-spacing: 0;
 }
+/* The name and its form, wherever it is composed (NameEditor). */
+.editor {
+  display: grid;
+  min-width: 0;
+}
 .row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -41,6 +46,17 @@
 }
 .action > * {
   min-height: 44px;
+}
+/* The button's two labels share one cell: the shown one, and the other
+   holding its width (see YourName). */
+.labels {
+  display: inline-grid;
+}
+.labels > * {
+  grid-area: 1 / 1;
+}
+.labels > [aria-hidden="true"] {
+  visibility: hidden;
 }
 .form {
   display: grid;

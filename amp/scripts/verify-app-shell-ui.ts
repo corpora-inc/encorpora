@@ -23,6 +23,7 @@ import {
 } from "./app-shell-fixture";
 import { verifyShellReview } from "./app-shell-review";
 import { chooseLearner } from "./ui-controls";
+import { openHome } from "./launcher";
 
 const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
@@ -390,7 +391,9 @@ async function verifyShell() {
     );
     await page.goto(origin + scenario.path, { waitUntil: "domcontentloaded" });
     await page.getByRole("alert").first().waitFor();
-    await page.getByRole("button", { name: "Dismiss message" }).click();
+    // A toast is dismissed; an inline error stays beside its recovery.
+    const dismiss = page.getByRole("button", { name: "Dismiss message" });
+    if (await dismiss.count()) await dismiss.first().click();
     await page.waitForTimeout(500);
     check(
       await page.getByRole("button", { name: "Try again" }).isVisible(),
@@ -645,7 +648,7 @@ async function verifyDrawerLearner() {
               : [fixture.paid.jordan.id, fixture.paid.avery.id];
         const page = await context.newPage();
         try {
-          await page.goto(`${origin}/`);
+          await openHome(page, origin);
           await page.locator("[data-today-title]").first().waitFor();
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           const drawer = page.getByRole("dialog", {

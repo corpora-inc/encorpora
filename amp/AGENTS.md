@@ -38,6 +38,8 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 
 ### Frontend architecture (non-negotiable, enforced in CI)
 
+How to read the session, name a query key and handle a failure, with do/don't examples: [frontend patterns](docs/architecture/frontend-patterns.md).
+
 AMP's web app is built to an elite engineering standard, not as a pile of one-off screens. An audit on 2026-11-16 found 88 redirects, 39 query-string handoffs, 14 separate "where next" functions, the current learner held in 7 places, and about 13 pay surfaces. Those produced redirect chains and a Back button that hung the tab. Never reintroduce these patterns. Ratchet tests and lint hold every count to "only falls" (`tests/architecture-ratchet.test.ts`; lower its baseline as counts fall).
 
 - **Canonical global state.** Every fact has exactly one owner:
@@ -54,6 +56,7 @@ AMP's web app is built to an elite engineering standard, not as a pile of one-of
   - `/` never redirects.
 - **One component per job.** Screens render through `ui/Page` and `PageHeader` (one width scale, one header). Lists use `ui/ColumnList`. Use the shared controls in `ui/`. Never add a page-specific width, header or back link, a second dialog system, or a raw native control.
 - **No in-page Back control. Tabs, menus and the browser navigate; flows use the shared stepper; contextual screens are overlays that close to the screen behind them.** The stepper is `ui/FlowSteps`; `tests/page-layout.test.ts` fails on a new Back.
+- **Compose capabilities, never reuse whole pages in a new context.** Build each capability (add children, choose a plan, give consent, a skill's detail) as a self-contained component with its own data hooks and no route knowledge. Compose it where it's needed: inside a first-run step, in a sheet over Settings, in an overlay over a child's page. Never send someone through another flow's page or URL "with a different context" (for example /start/parent to add a child from Settings).
 - **Contain failure.** Route errors render inside the app shell with the menu intact. No silent `.catch(() => null)`. Every error is logged and shown inline or as a toast.
 - **Hooks rules are law.** Follow ESLint's react-hooks rules (`rules-of-hooks`, `exhaustive-deps`, `set-state-in-effect`). Fix a violation by deriving state or moving work to an event handler or loader, never with a disable comment without a written reason.
 

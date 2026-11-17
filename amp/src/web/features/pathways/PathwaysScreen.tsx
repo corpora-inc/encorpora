@@ -60,7 +60,6 @@ import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
 import { EntityLink, useLayers } from "../../nav/links";
-import { OPEN_KEY, pushLayer } from "../../nav/entities";
 import { buttonClass } from "../../ui/Button";
 import layers from "../../nav/layers.module.css";
 import { RootLink } from "../../nav/root";
@@ -364,10 +363,11 @@ export function MapView({
     refetchInterval: 300_000,
   });
   const search = useSearch({ strict: false });
-  // A skill is a layer over the map (`?open=skill:<id>`, nav/entities.ts):
-  // the top one is the map's selection. Opening and closing it never moves
-  // the map; a skill found by the search or the list is framed on it.
-  const stack = useLayers().stack;
+  // A skill is a layer over the map (nav/layer-store.ts): the top one is the
+  // map's selection. Opening and closing it never moves the map; a skill
+  // found by the search or the list is framed on it.
+  const mapLayers = useLayers();
+  const stack = mapLayers.stack;
   const selectedId =
     stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
   const [frame, setFrame] = useState<{ id: string } | null>(null);
@@ -427,9 +427,9 @@ export function MapView({
   const [browse, setBrowse] = useState(
     () => urlQuery.trim().length > 0 && !selectedId,
   );
-  // A problem type's short lesson is a layer over the map (nav/entities.ts,
-  // `?open=lesson:<id>`): a link, a refresh or Back opens it again, and
-  // closing returns to this map as it was.
+  // A problem type's short lesson is a layer over the map
+  // (nav/layer-store.ts): a refresh or Back to this screen shows it again,
+  // and closing returns to this map as it was.
   const lesson =
     stack.filter((layer) => layer.kind === "lesson").at(-1)?.id ?? null;
   // The one search (docs/design/ia.md): skills, lessons, films and math
@@ -492,8 +492,6 @@ export function MapView({
     values: {
       topic?: string;
       filter?: string;
-      /** A skill to open over the map. */
-      skill?: string;
     },
     replace = false,
   ) =>
@@ -509,11 +507,6 @@ export function MapView({
           filter:
             (values.filter === undefined ? band : values.filter) || undefined,
         };
-        if (values.skill)
-          next[OPEN_KEY] = pushLayer(current[OPEN_KEY], {
-            kind: "skill",
-            id: values.skill,
-          });
         return next;
       }) as never,
       replace,
@@ -524,7 +517,10 @@ export function MapView({
   const select = (id: string, framed = false) => {
     setBrowse(false);
     if (framed) setFrame({ id });
-    update({ skill: id });
+    // The search's text and grade stay in the address; the skill opens
+    // over the map, in this screen's layers.
+    if (field.carry() !== urlQuery) update({}, true);
+    mapLayers.open({ kind: "skill", id });
     if (framed) showMap();
   };
   const filtered =

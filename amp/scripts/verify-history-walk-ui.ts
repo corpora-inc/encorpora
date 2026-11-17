@@ -24,6 +24,7 @@ import {
   chromium as rawChromium,
   type Browser,
   type BrowserContext,
+  type Locator,
   type Page,
 } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
@@ -63,6 +64,8 @@ type Walk = {
   steps: Step[];
   /** Where each step must land, when the walk knows (filled by `before`). */
   expect?: { current: string }[];
+  /** Checks after a step has landed (filled by `before`). */
+  after?: (page: Page, index: number) => Promise<void>;
 };
 
 /** A fresh account through the real sign-up, signed in on its own context. */
@@ -180,12 +183,14 @@ async function addPlace(page: Page) {
   await oneHop(page, "Add a place", "link");
 }
 
+/** Changing their mind: "Add a place" has no in-page Back, so they leave
+ * it the way a person does, with the browser's Back. */
 async function addPlaceCancel(page: Page) {
   await addPlace(page);
-  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await page.evaluate(() => history.back());
   await page.waitForURL((url) => url.pathname !== "/start");
   await settled(page);
-  await oneHop(page, "Add a place, Back", "history");
+  await oneHop(page, "Add a place, browser Back", "history");
 }
 
 /** From the child's practice, the menu's "Back to family": the child's
@@ -227,16 +232,83 @@ async function settled(page: Page) {
   );
 }
 
-/** The child's Pathways, a skill opened over it, and its Practice: the
- * device goes to the child in one navigation, straight to their practice of
- * that skill, and Back returns to the skill, the parent's again. */
+/** The layers open over the screen (nav/layer-store.ts), as the frame
+ * draws them: one scrim, the trail's crumbs, how the frame came in. */
+async function frameState(page: Page) {
+  return page.evaluate(() => {
+    const frame = document.querySelector<HTMLElement>("[data-layer-frame]");
+    const scrims = [...document.querySelectorAll("[data-layer-scrim]")];
+    const panel = frame?.querySelector<HTMLElement>("[data-layer-panel]");
+    return {
+      scrims: scrims.length,
+      scrimOpacity: scrims[0] ? getComputedStyle(scrims[0]).opacity : "",
+      dialogs: document.querySelectorAll("[role=dialog]").length,
+      crumbs: [...document.querySelectorAll("[data-layer-crumb]")].map(
+        (crumb) => crumb.textContent ?? "",
+      ),
+      frameMotion: frame?.dataset.motion ?? "",
+      panelMotion: panel?.dataset.motion ?? "",
+      // Anything in the overlay still moving (a replayed entrance).
+      moving: document
+        .getAnimations()
+        .filter((animation) => {
+          const target = (animation.effect as KeyframeEffect | null)?.target;
+          return (
+            target instanceof Element &&
+            (target.matches("[data-layer-scrim]") ||
+              !!target.closest("[data-layer-frame]"))
+          );
+        })
+        .map((animation) => (animation as CSSAnimation).animationName ?? ""),
+    };
+  });
+}
+/** The layer frame has settled: nothing in it still moving. */
+const frameSettled = (page: Page) =>
+  page.waitForFunction(
+    () =>
+      !document
+        .getAnimations()
+        .some((animation) =>
+          (
+            (animation.effect as KeyframeEffect | null)
+              ?.target as Element | null
+          )?.closest?.("[data-layer-frame], [data-layer-scrim]"),
+        ),
+    null,
+    { timeout: 5000 },
+  );
+/** A skill link in the frame that opens one level deeper than `depth`. */
+async function deeper(page: Page, depth: number) {
+  const links = page.locator("[data-layer-frame] a[data-entity=skill]:visible");
+  for (let at = 0; at < (await links.count()); at++) {
+    const href = await links.nth(at).getAttribute("href");
+    const open = new URL(href!, origin).searchParams.get("open") ?? "";
+    if (open.split(",").length === depth + 1) return links.nth(at);
+  }
+  throw Error(`no skill opens below level ${depth}`);
+}
+/** A layer opens, in the one frame, as a person's step: no history at all. */
+async function openLevel(page: Page, depth: number, link: Locator) {
+  await forget(page);
+  await link.click();
+  await page.locator(`[data-layer-frame][data-depth="${depth}"]`).waitFor();
+  await frameSettled(page);
+  await settled(page);
+  await oneHop(page, `open level ${depth}`, "history");
+}
+
+/** The child's Pathways, three skills deep in its one overlay, and the top
+ * one's Practice: the device goes to the child in one navigation, straight
+ * to their practice of that skill, and Back returns to the parent's map
+ * with the same three levels, settled, nothing replayed. */
 const skillPractice: Walk = {
-  id: "child's skill → practice",
+  id: "child's skills → practice",
   before: async (page) => {
     await today(page);
     await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
     await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
-    await forget(page);
+    const map = new URL(page.url());
     // A grade's skills, then the first of them.
     await page
       .locator("[data-plan-band]")
@@ -244,12 +316,27 @@ const skillPractice: Walk = {
       .locator("strong")
       .first()
       .click();
-    await page.locator('a[data-entity="skill"]:visible').first().click();
-    await page.waitForURL((url) => url.searchParams.has("open"));
-    await settled(page);
-    await oneHop(page, "open a skill", "link");
-    const skill = new URL(page.url());
-    const practice = page.getByRole("button", { name: /^Practice with / });
+    await openLevel(
+      page,
+      1,
+      page.locator('a[data-entity="skill"]:visible').first(),
+    );
+    const first = await frameState(page);
+    await openLevel(page, 2, await deeper(page, 1));
+    await openLevel(page, 3, await deeper(page, 2));
+    // ONE overlay: one scrim, as dark as it was at the first level, and
+    // the trail names all three.
+    const three = await frameState(page);
+    if (three.scrims !== 1 || three.dialogs !== 1)
+      fail("three levels: one scrim, one dialog", three);
+    if (three.scrimOpacity !== first.scrimOpacity)
+      fail("three levels: the scrim's opacity changed", [first, three]);
+    if (three.crumbs.length !== 3) fail("three levels: three crumbs", three);
+    if (page.url() !== map.href)
+      fail("layers stay out of the address", page.url());
+    const practice = page
+      .locator("[data-layer-frame]")
+      .getByRole("button", { name: /^Practice with / });
     await forget(page);
     await practice.click();
     await page.waitForURL((url) => url.pathname === "/practice");
@@ -258,7 +345,30 @@ const skillPractice: Walk = {
     await oneHop(page, "Practice with the child", "link");
     const atPractice = new URL(page.url());
     const at = (url: URL) => ({ current: url.pathname + url.search });
-    skillPractice.expect = [at(skill), at(atPractice), at(skill)];
+    skillPractice.expect = [at(map), at(atPractice), at(map)];
+    skillPractice.after = async (page, index) => {
+      if (index !== 0 && index !== 2) return;
+      // Back on the map: the same three levels at once, drawn settled.
+      await page.locator('[data-layer-frame][data-depth="3"]').waitFor();
+      const back = await frameState(page);
+      const label = `Back #${index + 1} to the map`;
+      if (back.crumbs.join(" › ") !== three.crumbs.join(" › "))
+        fail(`${label}: the same levels`, [three.crumbs, back.crumbs]);
+      if (back.scrims !== 1) fail(`${label}: one scrim`, back);
+      if (
+        back.frameMotion !== "none" ||
+        back.panelMotion !== "none" ||
+        back.moving.length
+      )
+        fail(`${label}: a restored overlay replays nothing`, back);
+      if (index !== 2) return;
+      // The trail's first crumb goes back up to the first level.
+      await page.locator('[data-layer-crumb="1"]').click();
+      await page.locator('[data-layer-frame][data-depth="1"]').waitFor();
+      const up = await frameState(page);
+      if (up.crumbs.length !== 0 || up.panelMotion !== "out")
+        fail(`${label}: crumb 1 is the first level`, up);
+    };
   },
   steps: ["back", "forward", "back", "back", "forward"],
 };
@@ -444,6 +554,7 @@ async function walk(width: number, w: Walk) {
         fail(
           `${label} ${step} #${index + 1}: at ${here.pathname + here.search}, want ${want.current}`,
         );
+      await w.after?.(page, index);
     }
     // Still able to go anywhere: a hung tab can't even load another page.
     await page.goto(`${origin}/`, { timeout: 15_000 });
@@ -580,11 +691,92 @@ async function failingScreen(width: number) {
   }
 }
 
+/** The 3D map opens on the whole map, framed (Q-9), on every way in: from
+ * Grades, with a skill open, on a refresh, and from the child's Progress
+ * tab. `data-whole-map` is the map's own check that every skill is inside
+ * its view (features/pathways/Graph.tsx). */
+async function wholeMap(width: number) {
+  const label = `${width} 3D whole map`;
+  const context = await freshParent(browser, width);
+  try {
+    const page = await context.newPage();
+    page.setDefaultTimeout(15_000);
+    await firstRun(page);
+    await today(page);
+    await tab(page, "Progress", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
+    const view = (name: "Grades" | "3D") =>
+      page
+        .getByRole("radiogroup", { name: "Map view" })
+        .getByRole("radio", { name, exact: true })
+        .click();
+    const whole = async (way: string) => {
+      await page.locator(".pathways-canvas canvas").waitFor();
+      const framed = await page
+        .waitForFunction(
+          () =>
+            document.querySelector<HTMLElement>("[data-whole-map]")?.dataset
+              .wholeMap === "true",
+          null,
+          { timeout: 6000 },
+        )
+        .then(() => true)
+        .catch(() => false);
+      if (!framed) {
+        const shot = `${shots}/${label.replace(/[^\w]+/g, "-")}-${way.replace(/[^\w]+/g, "-")}.png`;
+        await page.screenshot({ path: shot });
+        fail(`${label}: ${way}: the 3D map opened zoomed in (${shot})`);
+      }
+    };
+    // A skill of the plan, to open later.
+    await page
+      .locator("[data-plan-band]")
+      .filter({ hasText: "Grade 3" })
+      .locator("strong")
+      .first()
+      .click();
+    const skill = await page
+      .locator("a[data-plan-skill]:visible")
+      .first()
+      .getAttribute("data-plan-skill");
+    await view("3D");
+    await whole("Grades → 3D");
+    // A link with a skill open over the map (the overlay restored with
+    // it): the skill is marked, the map still whole.
+    const map = new URL(page.url());
+    await page.goto(`${map.origin}${map.pathname}?open=skill:${skill}`);
+    await page.locator("[data-layer-frame]").waitFor();
+    await whole("a link with a skill open");
+    await page.reload();
+    await page.locator("[data-layer-frame]").waitFor();
+    await whole("a refresh with a skill open");
+    await page.keyboard.press("Escape");
+    // The child's page, then their Pathways tab again.
+    await tab(page, "Overview", /^\/family\/[^/]+\/kids\/[^/]+$/);
+    await tab(page, "Pathways", /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/);
+    await whole("the child's Pathways tab");
+    console.log(`ok ${label}`);
+  } catch (error) {
+    const shot = `${shots}/${label.replace(/[^\w]+/g, "-")}.png`;
+    await context
+      .pages()[0]
+      ?.screenshot({ path: shot })
+      .catch(() => undefined);
+    fail(
+      `${label}: couldn't walk there (${shot})`,
+      String(error).split("\n")[0],
+    );
+  } finally {
+    await context.close();
+  }
+}
+
 try {
   for (const width of widths) {
     for (const w of walks)
       if (!only || w.id.includes(only)) await walk(width, w);
     if (!only || "failing screen".includes(only)) await failingScreen(width);
+    if (!only || "3D whole map".includes(only)) await wholeMap(width);
     if (!only || "sign-up new user".includes(only)) await entries(width);
   }
 } finally {

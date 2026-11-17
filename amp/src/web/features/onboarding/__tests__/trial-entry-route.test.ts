@@ -35,6 +35,8 @@ const parent: SignedInMe = {
 };
 
 let current = parent;
+/** The family's own address: where a returning parent goes, never `/`. */
+const HOME = "/family/family-org";
 
 // Exercise the registered route guard, including its account query and actual
 // redirects. Destination rendering is covered by verify-returning-trial-ui.ts.
@@ -66,12 +68,12 @@ afterEach(() => {
 });
 
 test.each(["pitch-try", "pitch-workbook", undefined])(
-  "a returning account resumes home from a free entry (%s)",
+  "a returning account goes straight to its place from a free entry (%s)",
   async (entry) => {
     await expect(
       enter({ return: "free-practice", entry }),
     ).rejects.toMatchObject({
-      options: { to: "/", replace: true },
+      options: { href: HOME, replace: true },
     });
   },
 );
@@ -116,7 +118,7 @@ test("trial entry waits for an in-flight refresh of a stale new-account snapshot
     next: "start",
   });
   let respond!: (response: Response) => void;
-  vi.mocked(fetch).mockImplementation(
+  vi.mocked(fetch).mockImplementationOnce(
     () =>
       new Promise((resolve) => {
         respond = resolve;
@@ -128,12 +130,16 @@ test("trial entry waits for an in-flight refresh of a stale new-account snapshot
   });
   const result = enter();
   const assertion = expect(result).rejects.toMatchObject({
-    options: { to: "/", replace: true },
+    options: { href: HOME, replace: true },
   });
   respond(Response.json(parent));
   await refresh;
   await assertion;
-  expect(fetch).toHaveBeenCalledTimes(1);
+  // The one /me read, shared; then the family's places for its address.
+  expect(
+    vi.mocked(fetch).mock.calls.filter(([url]) => String(url).endsWith("/me"))
+      .length,
+  ).toBe(1);
 });
 
 test("a failed trial account read stays in route error recovery instead of setup", async () => {
@@ -144,16 +150,16 @@ test("a failed trial account read stays in route error recovery instead of setup
 });
 
 test.each(["/sign-in", "/sign-up"] as const)(
-  "%s resumes an existing session through account home",
+  "%s resumes an existing session straight to its place",
   async (path) => {
     const enterAuth = router.routesById[path].options.beforeLoad as (input: {
       search: Record<string, unknown>;
     }) => Promise<unknown>;
     await expect(enterAuth({ search: {} })).rejects.toMatchObject({
-      options: { href: "/", replace: true },
+      options: { href: HOME, replace: true },
     });
     await expect(enterAuth({ search: trial })).rejects.toMatchObject({
-      options: { href: "/?entry=pitch-try", replace: true },
+      options: { href: HOME, replace: true },
     });
     for (const search of [
       { return: "security", next: "/account/security/delete" },

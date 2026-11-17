@@ -1129,7 +1129,11 @@ export function FamilyCenter({
             account && <SecondParentNote me={account} />}
           {section === "privacy" && privacy === "consent" && !secondOnly && (
             <section className={`family-section ${pages.section}`}>
-              <ConsentSummary status={family.consent.status} />
+              <ConsentSummary
+                status={family.consent.status}
+                recordedAt={family.consent.recordedAt}
+                withdrawnAt={family.consent.withdrawnAt}
+              />
               <div className={pages.footActions}>
                 {onConsentEnrollment && (
                   <Button

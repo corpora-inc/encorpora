@@ -106,15 +106,21 @@ export function launches(
  * from the account and its places before navigating. Its places are cached
  * for the launcher too.
  */
-export async function homeDestination(session: AuthSession): Promise<string> {
+export async function homeDestination(
+  session: AuthSession,
+  /** The account as just read, when the caller has it fresh. */
+  known?: SignedInMe,
+): Promise<string> {
   // Signing in replaces the account's cached reads, which cancels one in
   // flight: the read then simply runs again, with the new session's.
   const read = () =>
     queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
-  const me = await read().catch((error) => {
-    if (isCancelledError(error)) return read();
-    throw error;
-  });
+  const me =
+    known ??
+    (await read().catch((error) => {
+      if (isCancelledError(error)) return read();
+      throw error;
+    }));
   if (!me.signedIn) return "/";
   // A new account's destination needs no places: its first question.
   const groups = me.next === "start" ? [] : await loadPlaceGroups(session, me);
@@ -154,12 +160,18 @@ export async function loadPlaceGroups(
 
 /** A guard's one redirect for an address that isn't this person's: straight
  * to their destination, never through `/`. Signed out, the pitch. */
-export async function homeRedirect() {
+export async function homeRedirect(known?: SignedInMe) {
   const session = await queryClient
     .ensureQueryData(sessionOptions)
-    .catch(() => null);
+    .catch((error: unknown) => {
+      console.warn(
+        "The session couldn’t be read; opening as signed out",
+        error,
+      );
+      return null;
+    });
   const href = session
-    ? await homeDestination(session).catch((error) => {
+    ? await homeDestination(session, known).catch((error) => {
         console.warn("Your place didn’t load; opening home", error);
         return "/";
       })

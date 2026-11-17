@@ -8,8 +8,8 @@
  */
 import { useRef, type KeyboardEvent, type RefObject } from "react";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
-import { useLayers } from "../../nav/links";
-import { OPEN_KEY, pushLayer } from "../../nav/entities";
+import { shareableHref, useLayers } from "../../nav/links";
+import { pushed } from "../../nav/layer-store";
 import { SearchField } from "../../ui/SearchField";
 import { resultKeys, type SearchActions } from "./SearchResults";
 import { useSearchCorpus } from "./search-corpus";
@@ -33,8 +33,10 @@ export const skillOf = (
 
 /**
  * Every result opens its skill where this screen opens skills: as a layer
- * over the page (`?open=skill:<id>`). A screen that does more as it opens
- * one (Pathways frames it on the map) passes `open`.
+ * over the screen, through its layer store (nav/layer-store.ts). The link
+ * (a new tab, a copied address) opens the screen with that layer on top.
+ * A screen that does more as it opens one (Pathways frames it on the map)
+ * passes `open`.
  */
 export function useSearchActions(
   docs: readonly SearchDoc[],
@@ -43,17 +45,12 @@ export function useSearchActions(
   const layers = useLayers();
   return {
     href: (result) => {
-      const params = new URLSearchParams(window.location.search);
       const skill = skillOf(result, docs);
-      if (skill)
-        params.set(
-          OPEN_KEY,
-          pushLayer(params.get(OPEN_KEY) ?? undefined, {
-            kind: "skill",
-            id: skill,
-          })!,
-        );
-      return `${window.location.pathname}${params.size ? `?${params}` : ""}`;
+      return shareableHref(
+        window.location.pathname,
+        window.location.search,
+        skill ? pushed(layers.stack, { kind: "skill", id: skill }) : layers.stack,
+      );
     },
     open: (result) => {
       const skill = skillOf(result, docs);

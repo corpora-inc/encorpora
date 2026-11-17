@@ -99,6 +99,8 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { settleLegacyLayers } from "../nav/links";
+import { seedLayers } from "../nav/layer-store";
 import {
   MAX_LAYERS,
   OPEN_KEY,
@@ -150,6 +152,7 @@ const searchSchema = z
     interval: z.enum(["year", "month"]).optional().catch(undefined),
     reason: z.enum(["limit", "choice"]).optional().catch(undefined),
     "sign-in": z.string().optional(),
+    "signed-in": z.string().optional(),
     method: z.enum(["password"]).optional().catch(undefined),
     "reset-password": z.string().optional(),
   })
@@ -187,7 +190,8 @@ function AfterPurchaseGate() {
   });
   const naming = usePayStore(
     (state) =>
-      !!session && state.accounts[session.accountId]?.opener?.stage === "naming",
+      !!session &&
+      state.accounts[session.accountId]?.opener?.stage === "naming",
   );
   const waiting = naming && !!pathname;
   return waiting ? (
@@ -416,7 +420,7 @@ async function beforeStart({
 }
 /** The separate free trial is retired: one product, one way in. Links to
  * `/try` from ads and email still work: signed out, they sign up (and the
- * starter follows); signed in, `/` opens their place or the starter. */
+ * starter follows); signed in, straight to their place or the starter. */
 async function retiredTrial({ search }: { search: Record<string, unknown> }) {
   notForStudents();
   const session = await queryClient
@@ -441,7 +445,7 @@ async function retiredTrial({ search }: { search: Record<string, unknown> }) {
       headers: { "Content-Type": "application/json" },
       body: "{}",
     }).catch(() => undefined);
-  throw redirect({ to: "/", replace: true });
+  throw await homeRedirect();
 }
 const tryStart = createRoute({
   getParentRoute: () => root,
@@ -509,6 +513,8 @@ const home = createRoute({
     if (nativeRuntime) return;
     const session = await queryClient.ensureQueryData(sessionOptions);
     if (!session) return;
+    // Back from a provider's sign-in: the account's place, once.
+    if ("signed-in" in search) throw await homeRedirect();
     if (hasInitialConsentChallenge())
       throw redirect({
         to: "/$",
@@ -566,7 +572,11 @@ async function beforeAuthEntry({
   if (search.error || (search.return && search.return !== "free-practice"))
     return;
   const session = await queryClient.ensureQueryData(sessionOptions);
-  if (session) throw redirect({ href: continuationUrl(search), replace: true });
+  if (!session) return;
+  const next = continuationUrl(search);
+  // Nothing asked for: the account's own place, never `/`.
+  if (next.split("?")[0] === "/") throw await homeRedirect();
+  throw redirect({ href: next, replace: true });
 }
 const signIn = createRoute({
   getParentRoute: () => root,
@@ -705,6 +715,9 @@ async function beforeStarter({
         .ensureQueryData(meOptions(session))
         .catch((error) => console.warn("The account didn’t load ahead", error));
   const target = routeFor(me?.signedIn ? me : null, location);
+  // An established account's old trial link: straight to its place.
+  if (target?.to === "/")
+    throw await homeRedirect(me?.signedIn ? me : undefined);
   if (target) throw redirect({ to: target.to as never, replace: true });
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
@@ -2073,6 +2086,23 @@ router.subscribe("onResolved", ({ toLocation }) => {
     me?.signedIn && practicingAsAdult(me, chosen) ? chosen : null,
   );
   if (place) rememberPlace(session.accountId, place);
+});
+// A link from before the layer store names its layers in the address
+// (`?open=`): once the screen is on view they move into the store
+// (nav/layer-store.ts) and leave the address, replacing its entry. The one
+// legacy step; nothing in the app writes `?open=` into the address bar.
+router.subscribe("onResolved", ({ toLocation }) => {
+  const legacy = settleLegacyLayers(
+    toLocation,
+    queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+  );
+  if (!legacy) return;
+  seedLayers(legacy.scope, legacy.stack);
+  void router.navigate({
+    href: legacy.href,
+    replace: true,
+    resetScroll: false,
+  });
 });
 const SIGNED_OUT_KEY = "amp.signed-out-redirect";
 /** True when this tab was sent to sign-in moments ago: a second 401 then is
