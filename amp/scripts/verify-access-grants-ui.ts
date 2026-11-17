@@ -4,6 +4,9 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
+/** A learner's practice: `/practice`, or the learner's own address,
+ * `/practice/<learner>` (features/spaces/identity.ts practiceParams). */
+const practiceUrl = /\/practice(\/[^/?#]+)?$/;
 const chromium = secureChromium(rawChromium);
 import AxeBuilder from "@axe-core/playwright";
 import { createServer } from "vite";
@@ -257,7 +260,7 @@ try {
       await page.getByRole("option", { name: "2012", exact: true }).waitFor();
       await fits(page);
       await page.getByRole("option", { name: "2012", exact: true }).click();
-      await page.waitForURL("**/practice");
+      await page.waitForURL(practiceUrl);
       assert.equal(s.creates, 1);
       assert.equal(s.claims, 1);
       assert.equal(s.learners[0].active, true);
@@ -303,7 +306,7 @@ try {
       await page
         .getByRole("button", { name: "Start your family’s year" })
         .click();
-      await page.waitForURL("**/practice");
+      await page.waitForURL(practiceUrl);
       assert.equal(s.claims, 1);
       assert.ok(s.learners.every((l) => l.active));
       await context.close();
@@ -331,7 +334,7 @@ try {
   });
   s.failClaim = false;
   await page.getByRole("button", { name: "Continue with Alex" }).click();
-  await page.waitForURL("**/practice");
+  await page.waitForURL(practiceUrl);
   assert.equal(s.creates, 0);
   assert.equal(s.claims, 2);
   // Reload does not create or reactivate anything.

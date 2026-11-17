@@ -519,6 +519,19 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
       ["frame", "specimen", "width", "theme"].some((key) => key in search),
     to: toDesign,
   },
+  // The plan's address from when it held the chosen interval.
+  {
+    from: "/start/plan",
+    about: "the plan, with its interval in the query",
+    when: ({ search }) => "interval" in search,
+    to: async ({ search }) => {
+      if (search.interval === "year" || search.interval === "month")
+        (await import("../lib/pending-trial")).rememberPlanChoice(
+          search.interval,
+        );
+      return "/start/plan";
+    },
+  },
   { from: "/try", about: "the retired free trial", to: retiredTrial },
   { from: "/try/$", about: "the retired free trial's steps", to: retiredTrial },
 
