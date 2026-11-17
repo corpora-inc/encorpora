@@ -148,8 +148,10 @@ nav button {
 }
 /* While a stacked feedback sheet is up, the stage has scrolled its problem
    clear of the sheet, through the empty room above a centred problem and
-   never past the prompt's first line: no shade claims more above. */
-.practice-surface:has(> .feedback > .feedback-body) > .problem-stage {
+   never past the prompt's first line (PracticeWorkspace marks it): no shade
+   claims more above. */
+.practice-surface:has(> .feedback > .feedback-body)
+  > .problem-stage[data-problem-clear] {
   background:
     linear-gradient(transparent, var(--stage-paper) 60%) bottom / 100% 28px
       no-repeat local,

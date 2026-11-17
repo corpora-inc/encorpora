@@ -704,6 +704,7 @@ export function PracticeWorkspace(props: Props) {
     const room = spacer.current;
     if (!host || !room) return;
     room.style.height = "0px";
+    host.removeAttribute("data-problem-clear");
     // A line plot's measurements are in its prompt. Start review there even
     // when editing a tall plot scrolled it away; the spacer below keeps the
     // counts reachable above the feedback sheet by scrolling.
@@ -786,6 +787,8 @@ export function PracticeWorkspace(props: Props) {
         (host.clientHeight - overlap());
       const top = Math.max(0, Math.min(first, clear));
       if (top > host.scrollTop) host.scrollTo({ top, behavior });
+      // Nothing of the problem lies above: practice.css drops the top shade.
+      if (top >= host.scrollTop) host.setAttribute("data-problem-clear", "");
     }
     // A fixed sheet is measured on screen: again once its entrance ends.
     cover.addEventListener("animationend", update);
