@@ -1,3 +1,4 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir, realpath } from "node:fs/promises";
@@ -79,14 +80,9 @@ try {
         });
         await context.addInitScript((theme) => {
           localStorage.setItem("amp.theme", theme);
-          localStorage.setItem(
-            "amp.learner",
-            JSON.stringify({
-              state: { learnerId: "learner-a" },
-              version: 1,
-            }),
-          );
         }, theme);
+        // The stub session's account (accountId "parent-one", above).
+        await seedLearner(context, "parent-one", "learner-a");
         await context.route("**/api/v1/**", (route) => {
           const path = new URL(route.request().url()).pathname;
           if (path.endsWith("/catalog"))

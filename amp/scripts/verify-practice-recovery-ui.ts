@@ -1,3 +1,4 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -82,14 +83,7 @@ try {
             "Recovery learner",
             2016,
           );
-          await context.addInitScript(
-            (id) =>
-              localStorage.setItem(
-                "amp.learner",
-                JSON.stringify({ state: { learnerId: id }, version: 1 }),
-              ),
-            learner.id,
-          );
+          await seedLearner(context, "development-household", learner.id);
           const page = await context.newPage();
           page.on("pageerror", (e) => errors.push(`${label}: ${e.message}`));
           let failSave = false;

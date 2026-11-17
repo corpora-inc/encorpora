@@ -1,3 +1,4 @@
+import { readLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
 import {
@@ -309,11 +310,7 @@ async function expectHome(page: Page, account: "a" | "b") {
   const family = account === "b" ? FAMILY_B : FIXTURE_FAMILY_ID;
   await page.waitForURL((url) => url.pathname === `/family/${family}`);
   await page.locator("[data-today-title]").first().waitFor();
-  const chosen = await page.evaluate(
-    () =>
-      JSON.parse(localStorage.getItem("amp.learner") ?? "{}")?.state
-        ?.learnerId ?? null,
-  );
+  const chosen = await readLearner(page, `parent-${account}`);
   assert.ok(
     chosen === null || chosen.startsWith(`child-${account}-`),
     `no other account's learner stays chosen: ${chosen}`,
