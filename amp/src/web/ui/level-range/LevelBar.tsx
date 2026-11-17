@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, type CSSProperties } from "react";
 import {
-  likelyRange,
   percent,
+  shownLikely,
   scaleAt,
   scaleGrades,
   shortGrade,
@@ -12,7 +12,7 @@ import styles from "./LevelRange.module.css";
 
 /**
  * One estimate as an error bar on a shared scale: the likely range as a
- * band, the best guess as a dot. `band` paints the learner's own grade (or a
+ * band over the whole grades it names (an open end runs to the scale's end), the best guess as a dot. `band` paints the learner's own grade (or a
  * class's course) behind it; `estimated` draws a range with too little work
  * behind it dashed and hollow. Gridlines at each whole grade line up with
  * the bars above and below and with the `LevelAxis` under them. The hue is
@@ -44,7 +44,9 @@ export function LevelBar({
   moving?: boolean;
 }) {
   const unmeasured = !estimate;
-  const [from, to] = estimate ? likelyRange(estimate) : [scale.lo, scale.hi];
+  // The range in the whole grades its words name (`shownRange`), so the bar
+  // and the sentence beside it never disagree.
+  const [from, to] = estimate ? shownLikely(estimate) : [scale.lo, scale.hi];
   const left = scaleAt(scale, from),
     right = scaleAt(scale, to);
   const at = estimate ? scaleAt(scale, estimate.level) : 0.5;

@@ -1,11 +1,17 @@
 import type { CSSProperties } from "react";
 import { gradeName } from "../../../learning/level-check";
-import { likelyRange, percent, shortGrade } from "./scale";
+import { likelyRange, percent, rangeWords, shortGrade } from "./scale";
 import styles from "./LevelRange.module.css";
 
 /** One point of the estimate's path: after `answered` answers (0 is the
  * starting estimate). */
-export type PathPoint = { answered: number; level: number; sd: number };
+export type PathPoint = {
+  answered: number;
+  level: number;
+  sd: number;
+  low?: number;
+  high?: number;
+};
 
 /**
  * How the overall estimate moved as the answers came in: the best guess as a
@@ -71,7 +77,7 @@ export function LevelPath({
       role="img"
       aria-label={
         labels
-          ? `Best guess over ${last.answered} problems, from ${gradeName(first.level)} to ${gradeName(last.level)}. The likely range went from ${gradeName(startFrom)}–${gradeName(startTo)} to ${gradeName(nowFrom)}–${gradeName(nowTo)}.`
+          ? `Best guess over ${last.answered} problems, from ${gradeName(first.level)} to ${gradeName(last.level)}. The likely range went from ${rangeWords([startFrom, startTo])} to ${rangeWords([nowFrom, nowTo])}.`
           : `How the likely range narrowed over ${last.answered} problems.`
       }
     >

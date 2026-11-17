@@ -38,6 +38,9 @@ const person = z.object({ id, name: z.string() });
 export const estimateResource = z.object({
   level: z.number(),
   sd: z.number(),
+  /** The likely range (`Estimate.low`/`high`), where it was stored. */
+  low: z.number().optional(),
+  high: z.number().optional(),
   /** Answers behind it (the overall estimate): none means not measured
    * yet (`measured`, learning/level-check.ts). */
   answered: z.number().int().nonnegative().optional(),

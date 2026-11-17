@@ -1,6 +1,7 @@
 import { SchoolError } from "./contracts.js";
 import { adultNameSql } from "../account/profile.js";
 import type { Pool } from "pg";
+import { levelAndRange } from "../learning/level-check.js";
 import { hasProblemLesson } from "../content/problem-lessons.js";
 import { templates } from "../math/engine.js";
 import {
@@ -273,9 +274,7 @@ export async function readToday(
         ...(family ? { learnerId: student.learnerId } : {}),
         name: student.name,
         gradeLevel: student.gradeLevel,
-        level: stored
-          ? { level: stored.overall.level, sd: stored.overall.sd }
-          : null,
+        level: stored ? levelAndRange(stored.overall) : null,
         provisional: !stored || stored.overall.answered < PROVISIONAL_ANSWERS,
         todayMinutes: Math.round(day?.activeMinutes ?? 0),
         todayProblems: day?.problems ?? 0,
@@ -335,14 +334,13 @@ const mapLevel = (row: StoredLevel | undefined) => ({
   level: row
     ? {
         overall: {
-          level: row.overall.level,
-          sd: row.overall.sd,
+          ...levelAndRange(row.overall),
           answered: row.overall.answered,
         },
         strands: Object.fromEntries(
-          Object.entries(row.strands).map(([id, { level, sd }]) => [
+          Object.entries(row.strands).map(([id, estimate]) => [
             id,
-            { level, sd },
+            levelAndRange(estimate),
           ]),
         ),
       }
@@ -842,14 +840,13 @@ export async function readProgress(
     level: level
       ? {
           overall: {
-            level: level.overall.level,
-            sd: level.overall.sd,
+            ...levelAndRange(level.overall),
             answered: level.overall.answered,
           },
           strands: Object.fromEntries(
-            Object.entries(level.strands).map(([id, { level: at, sd }]) => [
+            Object.entries(level.strands).map(([id, estimate]) => [
               id,
-              { level: at, sd },
+              levelAndRange(estimate),
             ]),
           ),
         }

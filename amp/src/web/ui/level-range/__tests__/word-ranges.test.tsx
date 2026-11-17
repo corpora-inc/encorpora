@@ -16,6 +16,12 @@ test("D-2: a parent reads a range in grade words, never the scale's decimals", (
   expect(rangeWords([3.2, 3.4])).toBe("Gr 3");
   expect(likelyInWords([0, 1.6])).toBe("Likely Kindergarten to Grade 2");
   expect(likelyInWords([8.7, 11])).toBe("Likely Algebra 1 to Algebra 2");
+  // A range that reaches precalculus is open: no answer bounds it above.
+  expect(rangeWords([6.4, 12.6])).toBe("Gr 6+");
+  expect(likelyInWords([6.4, 11.6])).toBe("Likely Grade 6 and above");
+  expect(likelyInWords([0, 12.4])).toBe(
+    "Likely anywhere from Kindergarten to Precalculus",
+  );
 });
 
 test("D-2: rows show short grade words with wordRanges, decimals without", () => {

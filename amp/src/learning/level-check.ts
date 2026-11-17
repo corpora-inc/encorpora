@@ -45,20 +45,89 @@ export function reportable(
   return !!level && measured(level.overall);
 }
 
-/** Display envelope around a provisional estimate, not a norm-referenced
- * confidence interval. Surprise reserves can widen the overall uncertainty. */
-export const RANGE_SD_MULTIPLIER = 1.64;
-export function levelRange(estimate: Pick<Estimate, "level" | "sd">) {
-  const clamp = (value: number) => Math.min(13, Math.max(0, value));
+/** z for the likely range of an estimate that carries no range of its own
+ * (stored before ranges were kept): the same 80% as `LIKELY_MASS`, from its
+ * sd as if it were normal. */
+export const RANGE_SD_MULTIPLIER = 1.28;
+/** The likely range, on the grade axis: the estimate's own (`Estimate.low`,
+ * `high`: the posterior's quantiles), else level ± z·sd. */
+export function levelRange(
+  estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
+) {
+  return rangeWithin(estimate, 0);
+}
+/** The range's own numbers, kept within `floor`…13. */
+function rangeWithin(
+  estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
+  floor: number,
+) {
+  const clamp = (value: number) => Math.min(13, Math.max(floor, value));
+  if (estimate.low != null && estimate.high != null)
+    return [clamp(estimate.low), clamp(estimate.high)] as const;
   return [
     clamp(estimate.level - RANGE_SD_MULTIPLIER * estimate.sd),
     clamp(estimate.level + RANGE_SD_MULTIPLIER * estimate.sd),
   ] as const;
 }
 
+/** An estimate's level, width and likely range, as a payload carries it: the
+ * range only where the estimate has one. */
+export function levelAndRange({
+  level,
+  sd,
+  low,
+  high,
+}: Pick<Estimate, "level" | "sd" | "low" | "high">) {
+  return low != null && high != null ? { level, sd, low, high } : { level, sd };
+}
+
+/** The top of the curriculum (Precalculus): no answer can bound a level
+ * above it, so a range that reaches it is open. */
+const TOP_GRADE = 12;
+/** The likely range as a person reads it, the one source for both the words
+ * and the bar: whole grades, each the half grade either side of its tick
+ * (`gradeName` rounds the same way). A range that reaches Precalculus is open
+ * above ("Grade 6 and above", drawn to the scale's end); one that reaches
+ * kindergarten starts at the scale's start. */
+export type ShownRange = {
+  from: number;
+  to: number;
+  openLow: boolean;
+  openHigh: boolean;
+};
+export function shownRange(
+  estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
+): ShownRange {
+  return shownGrades(levelRange(estimate));
+}
+/** `shownRange` from a range's numbers. */
+export function shownGrades([low, high]: readonly [
+  number,
+  number,
+]): ShownRange {
+  const from = Math.min(TOP_GRADE, Math.max(0, Math.round(low)));
+  const to = Math.min(TOP_GRADE, Math.max(from, Math.round(high)));
+  return { from, to, openLow: from <= 0, openHigh: to >= TOP_GRADE };
+}
+/** Where a shown range's bar runs on the grade axis: from its first grade's
+ * lower half to its last grade's upper half, past the scale's ends where it is
+ * open (a chart clamps it to its own ends). */
+export function shownSpan(range: ShownRange): readonly [number, number] {
+  return [
+    range.openLow ? -1 : range.from - 0.5,
+    range.openHigh ? 13 : range.to + 0.5,
+  ];
+}
+
 /** One point of the overall estimate over the session: after `answered`
  * answers (0 is the starting estimate from age alone). */
-export type TrendPoint = { answered: number; level: number; sd: number };
+export type TrendPoint = {
+  answered: number;
+  level: number;
+  sd: number;
+  low?: number;
+  high?: number;
+};
 
 /** The answer counts at which the trend is sampled: 0, every step, and the
  * latest count. */
@@ -89,9 +158,10 @@ export function gradeName(level: number) {
 
 /** Preserve hundredths in the readout. The estimator grid extends to -1;
  * numeric bounds must include that region rather than exclude its point. */
-export function levelDetails(estimate: Pick<Estimate, "level" | "sd">) {
-  const from = Math.max(-1, estimate.level - RANGE_SD_MULTIPLIER * estimate.sd);
-  const to = Math.min(13, estimate.level + RANGE_SD_MULTIPLIER * estimate.sd);
+export function levelDetails(
+  estimate: Pick<Estimate, "level" | "sd" | "low" | "high">,
+) {
+  const [from, to] = rangeWithin(estimate, -1);
   return {
     point: estimate.level.toFixed(2),
     from: from.toFixed(2),
