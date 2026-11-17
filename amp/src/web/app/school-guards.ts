@@ -16,7 +16,8 @@ import {
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
-import { OPEN_KEY, work, writeStack } from "../nav/entities";
+import { OPEN_KEY, work } from "../nav/entities";
+import { landWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
 import { toFamilyChild, toFamilyPage } from "./family-redirect";
 
 /* What the school's routes decide before a screen paints: who may open it,
@@ -276,15 +277,18 @@ export const orgIndexData = async ({
 };
 
 /** A school-level student page from before layers: a student layer over the
- * school's Students (a family's child: their own page). */
+ * school's Students (a family's child: their own page), in one hop that
+ * seeds the layer store (nav/legacy-layers.ts), never `?open=`. */
 export const student = async ({
   params,
   search,
   location,
+  preload,
 }: {
   params: unknown;
   search: unknown;
   location: Location;
+  preload?: boolean;
 }) => {
   const { org, student } = params as unknown as {
     org: string;
@@ -298,23 +302,25 @@ export const student = async ({
     null,
     location as never,
   );
-  throw redirect({
-    to: `/school/${org}/students`,
-    search: {
-      ...(search as Record<string, unknown>),
-      [OPEN_KEY]: writeStack([{ kind: "student", id: student }]),
-    },
-    replace: true,
-  } as never);
+  return landWithLayers(
+    withoutLayerKeys(
+      `/school/${org}/students`,
+      search as Record<string, unknown>,
+    ),
+    [{ kind: "student", id: student }],
+    preload,
+  );
 };
 export const studentWork = async ({
   params,
   search,
   location,
+  preload,
 }: {
   params: unknown;
   search: unknown;
   location: Location;
+  preload?: boolean;
 }) => {
   const {
     org,
@@ -332,15 +338,12 @@ export const studentWork = async ({
     attempt,
     location as never,
   );
-  throw redirect({
-    to: `/school/${org}/students`,
-    search: {
-      ...(search as Record<string, unknown>),
-      [OPEN_KEY]: writeStack([
-        { kind: "student", id: student },
-        work(student, attempt),
-      ]),
-    },
-    replace: true,
-  } as never);
+  return landWithLayers(
+    withoutLayerKeys(
+      `/school/${org}/students`,
+      search as Record<string, unknown>,
+    ),
+    [{ kind: "student", id: student }, work(student, attempt)],
+    preload,
+  );
 };

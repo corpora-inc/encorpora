@@ -36,6 +36,7 @@ const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
@@ -172,16 +173,14 @@ try {
   // The parent hands the device to the child, whose practice is their own.
   await practiceHere(page, learner.id);
   await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
-  await page.getByRole("link", { name: /^Try this problem type/ }).waitFor();
+  await page.getByRole("link", { name: /^Practice/ }).waitFor();
   await page.reload();
-  await page.getByRole("link", { name: /^Try this problem type/ }).waitFor();
-  // The lesson is a layer over Pathways at its own address, which a reload
-  // keeps (`/pathways?open=lesson:<id>`).
-  assert.equal(
-    new URL(page.url()).searchParams.get("open"),
-    "lesson:mean-data",
-  );
-  await page.getByRole("link", { name: /^Try this problem type/ }).click();
+  await page.getByRole("link", { name: /^Practice/ }).waitFor();
+  // The lesson is a layer over Pathways, in its layers (never its
+  // address), which a reload keeps.
+  assert.equal(new URL(page.url()).searchParams.get("open"), null);
+  await waitForLayers(page, ["lesson:mean-data"]);
+  await page.getByRole("link", { name: /^Practice/ }).click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
   // CI measures with a device font (scripts/ci-fonts.conf); prove the prompt

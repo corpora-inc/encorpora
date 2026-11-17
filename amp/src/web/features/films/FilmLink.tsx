@@ -1,4 +1,5 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import { useHereWithLayers } from "../../nav/links";
 import type { LessonFilm } from "../../../content/lesson-films";
 
 /** A film's length as a player shows it: 1:30. */
@@ -38,7 +39,8 @@ export function FilmLink({
    * lessons render under Node too, imports no stylesheet. */
   button?: string;
 }) {
-  const from = useLocation({ select: (location) => location.href });
+  // Where it was opened, its layers too (the lesson it plays from).
+  const from = useHereWithLayers();
   return (
     <Link
       className={button ?? "lesson-film-link"}

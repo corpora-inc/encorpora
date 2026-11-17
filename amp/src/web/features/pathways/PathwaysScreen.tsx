@@ -66,7 +66,13 @@ import {
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
-import { EntityLink, useLayers } from "../../nav/links";
+import {
+  EntityLink,
+  shareableHref,
+  useHereWithLayers,
+  useLayers,
+} from "../../nav/links";
+import { pushed } from "../../nav/layer-store";
 import { buttonClass } from "../../ui/Button";
 import layers from "../../nav/layers.module.css";
 import { RootLink } from "../../nav/root";
@@ -378,6 +384,7 @@ export function MapView({
   // found by the search or the list is framed on it.
   const mapLayers = useLayers();
   const stack = mapLayers.stack;
+  const hereWithLayers = useHereWithLayers();
   const selectedId =
     stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
   const [frame, setFrame] = useState<{ id: string } | null>(null);
@@ -584,7 +591,7 @@ export function MapView({
                 to="/lessons/$templateId/watch"
                 params={{ templateId: shownFound.id }}
                 search={{
-                  from: window.location.pathname + window.location.search,
+                  from: hereWithLayers,
                 }}
               >
                 Watch

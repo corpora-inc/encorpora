@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import styles from "./Sheet.module.css";
 import {
   CloseControl,
@@ -38,18 +38,30 @@ export function SheetPanel({
   title,
   description,
   lead,
+  bodyClass = styles.body,
   children,
 }: {
   title: string;
   description?: ReactNode;
   lead?: ReactNode;
+  /** The body's own look, when the layer is a reading dialog's (a lesson). */
+  bodyClass?: string;
   children: ReactNode;
 }) {
+  const panel = useLayerPanel();
+  // The heading holds still; a hairline under it once the body scrolls
+  // beneath (its border is there from the start, only its colour changes).
+  const [scrolled, setScrolled] = useState(false);
   return (
     <>
-      <div className={styles.header}>
+      <div
+        className={styles.header}
+        data-layer-header=""
+        data-scrolled={scrolled || undefined}
+      >
         {lead}
         <div className={styles.heading}>
+          {panel?.trail}
           <Dialog.Title className={styles.title}>{title}</Dialog.Title>
           {description !== undefined && (
             <div className={styles.description}>{description}</div>
@@ -57,7 +69,13 @@ export function SheetPanel({
         </div>
         <CloseControl />
       </div>
-      <div className={styles.body}>
+      <div
+        className={bodyClass}
+        onScroll={(event) => {
+          const now = event.currentTarget.scrollTop > 0;
+          if (now !== scrolled) setScrolled(now);
+        }}
+      >
         <LayerPanelReset>{children}</LayerPanelReset>
       </div>
     </>
