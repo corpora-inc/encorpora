@@ -65,6 +65,13 @@
   justify-content: space-between;
   gap: var(--space-4) var(--space-6);
 }
+/* On a child's page: its heading and its one action share a line's middle,
+   as the page's other section heads do. */
+@media (min-width: 900px) {
+  .listHead.inSection {
+    align-items: center;
+  }
+}
 .listTitle {
   flex: 1 1 320px;
   min-width: 0;
@@ -109,7 +116,7 @@
   gap: var(--space-3);
   margin-top: var(--space-3);
 }
-h2.sectionTitle {
+:is(h2, h3).sectionTitle {
   margin: 0;
   color: var(--color-muted-text);
   font-family: inherit;

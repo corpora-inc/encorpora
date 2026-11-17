@@ -51,6 +51,8 @@ export function WorkbookHistory({
   const who = whose(learner);
   const canMake = canMakeWorkbook(learner);
   const workbooks = history.data?.workbooks;
+  // A part of a child's page has no page header of its own.
+  const Head = section ? "div" : "header";
   const none = workbooks?.length === 0;
   const today = (label: string) => (
     <Link
@@ -64,7 +66,7 @@ export function WorkbookHistory({
   );
   return (
     <>
-      <header className={styles.listHead}>
+      <Head className={`${styles.listHead} ${section ? styles.inSection : ""}`}>
         {section ? (
           <h2 id="child-workbooks">Workbooks</h2>
         ) : (
@@ -77,8 +79,9 @@ export function WorkbookHistory({
         )}
         {/* The actions land with the list: the first workbook is made from
             the empty list's own button, and results by code are offered only
-            while a workbook waits for them. */}
-        {!none && (
+            while a workbook waits for them. On a child's page the list's
+            one action is its own, empty or not. */}
+        {(!none || section) && (
           <div className={styles.listActions}>
             {workbooks && awaitingResults(workbooks) && (
               <Button
@@ -91,7 +94,7 @@ export function WorkbookHistory({
             )}
             {canMake &&
               (workbooks || history.error ? (
-                today("Today’s workbook")
+                today(none ? "Make a workbook" : "Today’s workbook")
               ) : (
                 <span
                   className={`${styles.actionSkeleton} amp-skeleton`}
@@ -102,7 +105,7 @@ export function WorkbookHistory({
               ))}
           </div>
         )}
-      </header>
+      </Head>
       {!canMake && (
         <AllowancePause
           kind="workbooks"
@@ -112,12 +115,14 @@ export function WorkbookHistory({
         />
       )}
       {none ? (
-        <div className={styles.empty}>
-          <EmptyState
-            title="No workbooks yet"
-            action={canMake ? today("Make a workbook") : undefined}
-          />
-        </div>
+        section ? null : (
+          <div className={styles.empty}>
+            <EmptyState
+              title="No workbooks yet"
+              action={canMake ? today("Make a workbook") : undefined}
+            />
+          </div>
+        )
       ) : (
         <section className={styles.past} aria-labelledby="past-workbooks">
           {section ? (
