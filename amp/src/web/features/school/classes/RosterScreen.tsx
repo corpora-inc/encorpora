@@ -224,7 +224,9 @@ export function RosterScreen() {
               id: "practice",
               header: "Student view",
               width: 150,
-              cell: (row) => <PracticeAs student={row} />,
+              cell: (row) => (
+                <PracticeAs student={row} returnName={data?.class.name} />
+              ),
             },
           ] satisfies DataGridColumn<Row>[])
         : []),
@@ -503,7 +505,7 @@ export function RosterScreen() {
                       "Student view" column, on its own line. */}
                   {demo && canManage && (
                     <span className={styles.cardPractice}>
-                      <PracticeAs student={row} />
+                      <PracticeAs student={row} returnName={data?.class.name} />
                     </span>
                   )}
                 </div>

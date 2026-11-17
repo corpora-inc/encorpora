@@ -524,8 +524,9 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   await page.unroute("**/batches");
   await step("child-drawer-open", async () => {
     const drawer = await openMenu(page);
+    // A handed device's own way back.
     await drawer
-      .getByRole("button", { name: "Sign out", exact: true })
+      .getByRole("button", { name: "Back to family", exact: true })
       .waitFor();
   });
   await page.keyboard.press("Escape");

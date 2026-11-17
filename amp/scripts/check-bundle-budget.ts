@@ -116,6 +116,32 @@ for (const file of assets.filter((name) => name.endsWith(".js")))
     )
   )
     failures.push(`${file} embeds a picture as a data URL`);
+// The signed-out pitch carries no app code it doesn't show: not the app's
+// auth layer, nor the auth clients it wraps, nor the router (the pitch moves
+// through features/pitch/nav.tsx). Each is recognized by a string only it
+// contains; the app's entry, which does carry them, proves the strings
+// still identify them in a build.
+const authCode: [string, string][] = [
+  ["src/web/auth.ts", "School sign out did not finish"],
+  ["better-auth", "better-auth:focus-manager"],
+  ["oidc-client-ts", '"oidc."'],
+  ["@simplewebauthn/browser", "WebAuthn is not supported in this browser"],
+  ["@tanstack/react-router", "__TSR_index"],
+];
+const pitchClosure = new Set<string>();
+for (const file of pitch) closure(file, pitchClosure);
+const appClosure = new Set<string>();
+for (const file of entry) closure(file, appClosure);
+const contains = (files: Set<string>, text: string) =>
+  [...files].some((file) => read(file).toString().includes(text));
+for (const [module, text] of authCode) {
+  if (contains(pitchClosure, text))
+    failures.push(`the pitch's code includes ${module}, which it never shows`);
+}
+// One of them must still be found where it belongs, or the check proves
+// nothing (a string renamed away in a build).
+if (!authCode.some(([, text]) => contains(appClosure, text)))
+  failures.push("check-bundle-budget: no app code found in the app entry");
 // The pitch shows no math and needs no math fonts.
 if (/as="font"/.test(home))
   failures.push("the pitch document preloads fonts it doesn't show");

@@ -1,6 +1,9 @@
 import { signOut } from "../../auth";
 import { useLearningView } from "../../lib/learning-view";
-import { handedStudentDevice } from "../../lib/student-device";
+import {
+  handedReturnName,
+  handedStudentDevice,
+} from "../../lib/student-device";
 import styles from "./StudentSignOut.module.css";
 
 /** A school device passes to the next student with one tap, from anywhere:
@@ -10,17 +13,15 @@ export function StudentSignOut({ inBar = false }: { inBar?: boolean }) {
   const name =
     account?.account.kind === "student" ? account.learners[0]?.name : null;
   const family = handedStudentDevice();
-  const label = family
-    ? "Back to family"
-    : name
-      ? `Sign out ${name}`
-      : "Sign out";
+  // Back to the place it was handed from, by name (a class), else family.
+  const back = `Back to ${handedReturnName() ?? "family"}`;
+  const label = family ? back : name ? `Sign out ${name}` : "Sign out";
   return (
     <button
       type="button"
       className={`${styles.signOut} ${inBar ? styles.inBar : ""} ${family ? styles.familyReturn : ""}`}
       aria-label={label}
-      title={family && name ? `${name}’s practice · Back to family` : label}
+      title={family && name ? `${name}’s practice · ${back}` : label}
       data-student-sign-out
       onClick={() => {
         void signOut().catch((failure) =>
@@ -37,7 +38,7 @@ export function StudentSignOut({ inBar = false }: { inBar?: boolean }) {
           }
         />
       </svg>
-      {family && <span>Back to family</span>}
+      {family && <span>{back}</span>}
     </button>
   );
 }

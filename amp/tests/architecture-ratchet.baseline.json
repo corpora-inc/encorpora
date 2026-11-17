@@ -8,7 +8,7 @@
     "renderNavigate": 27,
     "silentCatches": 195,
     "sessionProps": 67,
-    "sessionReads": 46,
+    "sessionReads": 45,
     "inlineQueryKeys": 64,
     "nativeControls": 27
   },
@@ -262,7 +262,7 @@
     "sessionReads": {
       "app/AppShell.tsx": 2,
       "app/LegacyApp.tsx": 1,
-      "app/router.tsx": 3,
+      "app/router.tsx": 2,
       "features/access/AccessScreen.tsx": 1,
       "features/account/BillingPage.tsx": 1,
       "features/continue/AfterPurchase.tsx": 1,

@@ -360,6 +360,10 @@ export function SignInScreen() {
   const firstRunTo = toRoot
     ? `/start${returnSearch ? `?${returnSearch}` : ""}`
     : returnTo;
+  // A successful sign-in with a callback is sent there by the auth client
+  // (a full load, a new entry). Going home, the app opens the account's own
+  // destination itself instead (`continueAfterSignIn`), in one navigation.
+  const signInReturn = toRoot ? {} : { callbackURL: returnTo };
   // Sign-in and sign-up resume the same account: its place, or the role
   // question when it has no place yet.
   const done = async () => {
@@ -466,7 +470,7 @@ export function SignInScreen() {
       if (step === "sign-in") {
         await prepareFreeSignup();
         const result = await accountClient.signIn.email({
-          callbackURL: returnTo,
+          ...signInReturn,
           email: email.trim(),
           password,
         });
@@ -501,7 +505,7 @@ export function SignInScreen() {
         else if (result.data?.user.emailVerified) {
           fail(
             await accountClient.signIn.email({
-              callbackURL: returnTo,
+              ...signInReturn,
               email: email.trim(),
               password,
             }),

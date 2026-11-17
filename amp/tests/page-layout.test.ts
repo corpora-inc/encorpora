@@ -602,14 +602,10 @@ const BACK_DEBT: Record<string, string> = {
     "the immersive film's return to its problem or lesson: to become its ✕ (phase 2)",
   "features/me/OwnTimeScreen.tsx":
     "an adult's practice time: Progress's tab replaces it (phase 2)",
-  "features/navigation/DrawerContents.tsx":
-    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/onboarding/LearnerSteps.tsx":
     "a sign-in or first-run card step: to move onto the shared stepper (phase 2)",
   "features/pathways/LessonRecovery.tsx":
     "an overlay's failure state names where ✕ returns; to become the overlay's ✕ (phase 2)",
-  "features/practice/StudentSignOut.tsx":
-    "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/api.ts":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/practice-mode.ts":
