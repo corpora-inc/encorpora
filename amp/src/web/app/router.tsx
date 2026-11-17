@@ -2020,6 +2020,18 @@ const PROFILE_PRACTICE_PATHS = [
   "/pathways",
   "/inventory",
 ];
+// Back and Forward between a screen and what is open over it keep the
+// screen's scroll: a sheet in history state (the same address), or an
+// overlay one leaf below the screen (`overList`: a settings hub's Billing or
+// Privacy, a workbook day). After a pop the router otherwise scrolls the
+// window to the top, so closing an overlay with ✕ (which goes Back,
+// lib/return-to.ts) lost the reader's place on the screen behind.
+router.history.subscribe(({ location, action }) => {
+  if (action.type === "PUSH" || action.type === "REPLACE") return;
+  const from = router.state.location.pathname;
+  if (from === location.pathname || overList(from, location.pathname))
+    router._scroll.n = false;
+});
 // A new screen closes any open tip, menu or picker (ui/popover-owner).
 router.subscribe("onBeforeNavigate", ({ pathChanged }) => {
   if (pathChanged) closeAllPopovers("navigate");
