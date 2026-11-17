@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { practiceMinutes } from "../../lib/practice-minutes";
 import { fundingRecordsOptions } from "../funding/records";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
@@ -123,7 +124,7 @@ export function WeekFact({ child }: { child: FamilyChild }) {
     return <Fact value="Not started" label="no practice yet" />;
   return (
     <Fact
-      value={week.minutes > 0 ? `${week.minutes} min` : "None"}
+      value={practiceMinutes(week.minutes, week.problems) ?? "None"}
       label={
         week.minutes > 0 || week.problems > 0
           ? `${count(week.problems, "problem")} this week`
@@ -445,7 +446,7 @@ export function FamilyTodayScreen() {
                         />
                       ),
                       access: (
-                        <>
+                        <span className={styles.access}>
                           {!sharedAccess && <AccessFact child={child} />}
                           {data.capabilities.manageBilling && (
                             <ChildBillingLink
@@ -460,7 +461,7 @@ export function FamilyTodayScreen() {
                               }
                             />
                           )}
-                        </>
+                        </span>
                       ),
                       action: (
                         <span className={styles.action}>

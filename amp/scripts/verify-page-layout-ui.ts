@@ -10,7 +10,8 @@
  * - puts its column and its title's left edge exactly where every other
  *   standard page does, its column at the same depth under the app's bar;
  * - never scrolls sideways, and every list on named columns (ui/ColumnList)
- *   keeps each column at one x down its rows;
+ *   keeps each column at one x down its rows, in one column under 400 px;
+ * - under 560 px, its tabs fill the row as equal segments;
  * - draws no in-page Back control (tabs, menus and the browser navigate);
  * - holds still once painted: the title doesn't move between first paint
  *   and a settled page, and the page's layout shift stays under 0.01.
@@ -258,6 +259,10 @@ type Geometry = {
   shiftSources: string[];
   /** Columns of a ColumnList whose cells don't share one left edge. */
   misaligned: string[];
+  /** Under 560 px: the tab row's segments, if they don't fill it evenly. */
+  tabs: string | null;
+  /** A ColumnList under 400 px whose figures sit beside each other. */
+  twoColumns: string[];
 };
 function measure(): Geometry {
   const main = document.querySelector<HTMLElement>("main[data-page]");
@@ -304,8 +309,42 @@ function measure(): Geometry {
       document.documentElement.clientWidth,
     shift: shifts.reduce((sum, entry) => sum + entry.value, 0),
     shiftSources: [...new Set(shifts.flatMap((entry) => entry.sources))],
+    tabs: (() => {
+      const first = document.querySelector<HTMLElement>("[data-tab]");
+      const strip = first?.parentElement;
+      if (!strip || window.innerWidth >= 560) return null;
+      const tabs = [
+        ...strip.querySelectorAll<HTMLElement>(
+          ":scope > [data-tab], :scope > [data-tabs-more]",
+        ),
+      ].filter((tab) => tab.checkVisibility() && box(tab).width > 0);
+      const widths = tabs.map((tab) => Math.round(box(tab).width));
+      const filled = widths.reduce((sum, width) => sum + width, 0);
+      const even = Math.max(...widths) - Math.min(...widths) <= 2;
+      return filled >= Math.round(box(strip).width) - 2 && even
+        ? null
+        : `tabs ${widths.join("/")} in a ${Math.round(box(strip).width)} px row`;
+    })(),
+    twoColumns: [...document.querySelectorAll("ul")].flatMap((list) => {
+      if (box(list).width >= 400) return [];
+      return [...list.querySelectorAll(":scope > li")].flatMap((row) => {
+        const figures = [
+          ...row.querySelectorAll<HTMLElement>(':scope > [data-part="figure"]'),
+        ].filter((cell) => cell.checkVisibility() && box(cell).width > 0);
+        const lefts = new Set(
+          figures.map((cell) => Math.round(box(cell).left)),
+        );
+        return lefts.size > 1
+          ? [
+              `${(row as HTMLElement).dataset.child ?? "a row"}: figures at ${[...lefts].join("/")}`,
+            ]
+          : [];
+      });
+    }),
     // Every row of a list on named columns puts a column's cell at one x.
+    // (Under 400 px a list is one column, checked below.)
     misaligned: [...document.querySelectorAll("ul")].flatMap((list) => {
+      if (box(list).width < 400) return [];
       const edges = new Map<string, Set<number>>();
       for (const cell of list.querySelectorAll<HTMLElement>(
         ":scope > li > [data-column]",
@@ -394,6 +433,14 @@ try {
             )
             .count();
           if (backs) fail(`${where}: an in-page Back control`);
+          if (settled.tabs)
+            fail(
+              `${where}: the tabs don't fill the row as equal segments (${settled.tabs})`,
+            );
+          if (settled.twoColumns.length)
+            fail(
+              `${where}: a list under 400 px keeps figures side by side: ${settled.twoColumns.join(", ")}`,
+            );
           if (settled.misaligned.length)
             fail(
               `${where}: list columns don't line up: ${settled.misaligned.join(", ")}`,
