@@ -14,6 +14,7 @@ import { AllowancePause } from "../continue/AllowancePause";
 import { PageHeader } from "../../ui/PageHeader";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
+import { useWorkbookPaths } from "./paths";
 import styles from "./Workbooks.module.css";
 
 export function WorkbookHistoryScreen() {
@@ -49,14 +50,15 @@ export function WorkbookHistory({
     enabled: !!session.token,
   });
   const [entering, setEntering] = useState(false);
+  const paths = useWorkbookPaths();
   const who = whose(learner);
   const canMake = canMakeWorkbook(learner);
   const workbooks = history.data?.workbooks;
   const none = workbooks?.length === 0;
   const today = (label: string) => (
     <Link
-      to="/learners/$learnerId/workbooks/$date"
-      params={{ learnerId: learner.id, date: localDate() }}
+      to="/$"
+      params={{ _splat: paths.day(learner.id, localDate()) }}
       className={buttonClass("primary", styles.today)}
     >
       <PlusIcon />
@@ -170,6 +172,7 @@ function CodeEntry({
   learnerId: string;
 }) {
   const navigate = useNavigate();
+  const paths = useWorkbookPaths();
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -189,8 +192,8 @@ function CodeEntry({
         return;
       }
       await navigate({
-        to: "/learners/$learnerId/workbooks/$workbookId/results",
-        params: { learnerId, workbookId: found.id },
+        to: "/$",
+        params: { _splat: paths.results(learnerId, found.id) },
       });
     } catch (failure) {
       console.error("A workbook code wasn't checked", failure);

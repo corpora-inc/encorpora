@@ -145,6 +145,57 @@ export function familyRoutes(root: AnyRoute) {
       path,
       component: screen(name),
     });
+  /** A child's page paints whole: its record (levels, and whether there
+   * is anything to report yet), its workbooks and its report card's term
+   * arrive with it, once the family's own projection says this reader may
+   * read them. Its overlays (a workbook day, results) load the same. */
+  const childLoader = async ({
+    context,
+    params,
+  }: {
+    context: unknown;
+    params: unknown;
+  }) => {
+    const { session } = context as unknown as { session: AuthSession };
+    const { family: id, learner } = params as {
+      family: string;
+      learner: string;
+    };
+    const data = await queryClient
+      .ensureQueryData(familyOptions(session, id))
+      .catch(() => null);
+    const child = data?.children.find((entry) => entry.id === learner);
+    if (!child) return;
+    // Its workbooks and report card arrive with it too, so no part
+    // lands late and pushes the page down.
+    const me = child.capabilities.readGrades
+      ? await queryClient.ensureQueryData(meOptions(session)).catch(() => null)
+      : null;
+    const own = ownClassOf(me?.signedIn ? me : null, id, data);
+    const [{ workbookHistoryOptions }, { gradebookOptions }] =
+      await Promise.all([
+        import("../features/workbooks/api"),
+        import("../features/school/classes/teacher-api"),
+      ]);
+    await Promise.all([
+      child.capabilities.readProgress
+        ? preload(childProgressOptions(session, id, learner))
+        : null,
+      child.capabilities.readWorkbooks
+        ? preload(workbookHistoryOptions(session, learner))
+        : null,
+      own
+        ? preload(
+            gradebookOptions(
+              session,
+              { org: own.org, class: own.id },
+              undefined,
+            ),
+          )
+        : null,
+    ]);
+  };
+
   /** Progress and the family's old record pages (practice time, report
    * cards, workbooks), now parts of each child's page: one hop, for a
    * one-child family, to that child's page at the part (`anchor`); for
@@ -241,48 +292,24 @@ export function familyRoutes(root: AnyRoute) {
       createRoute({
         getParentRoute: () => family,
         path: "kids/$learner",
-        loader: async ({ context, params }) => {
-          const { session } = context as unknown as { session: AuthSession };
-          const { family: id, learner } = params as {
-            family: string;
-            learner: string;
-          };
-          const data = await queryClient
-            .ensureQueryData(familyOptions(session, id))
-            .catch(() => null);
-          const child = data?.children.find((entry) => entry.id === learner);
-          if (!child) return;
-          // Its workbooks and report card arrive with it too, so no part
-          // lands late and pushes the page down.
-          const me = child.capabilities.readGrades
-            ? await queryClient
-                .ensureQueryData(meOptions(session))
-                .catch(() => null)
-            : null;
-          const own = ownClassOf(me?.signedIn ? me : null, id, data);
-          const [{ workbookHistoryOptions }, { gradebookOptions }] =
-            await Promise.all([
-              import("../features/workbooks/api"),
-              import("../features/school/classes/teacher-api"),
-            ]);
-          await Promise.all([
-            child.capabilities.readProgress
-              ? preload(childProgressOptions(session, id, learner))
-              : null,
-            child.capabilities.readWorkbooks
-              ? preload(workbookHistoryOptions(session, learner))
-              : null,
-            own
-              ? preload(
-                  gradebookOptions(
-                    session,
-                    { org: own.org, class: own.id },
-                    undefined,
-                  ),
-                )
-              : null,
-          ]);
-        },
+        loader: childLoader,
+        component: screen("ChildScreen"),
+      }),
+      // A child's workbook day and results: overlays over their page, at
+      // their own addresses, closing (✕) back to it. Over the page, never a
+      // page of their own: the page keeps its scroll (router.tsx overList).
+      createRoute({
+        getParentRoute: () => family,
+        path: "kids/$learner/workbooks/$date",
+        staticData: { overList: true },
+        loader: childLoader,
+        component: screen("ChildScreen"),
+      }),
+      createRoute({
+        getParentRoute: () => family,
+        path: "kids/$learner/workbooks/$workbookId/results",
+        staticData: { overList: true },
+        loader: childLoader,
         component: screen("ChildScreen"),
       }),
       childScreen(

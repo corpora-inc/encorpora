@@ -28,7 +28,11 @@ import { PrintButton } from "../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { gradebookOptions } from "../school/classes/teacher-api";
 import { WorkbookHistory } from "../workbooks/WorkbookHistoryScreen";
-import { canReadWorkbooks } from "../workbooks/model";
+import { canReadWorkbooks, isDate } from "../workbooks/model";
+import { WorkbookDaySheet } from "../workbooks/WorkbookDayScreen";
+import { WorkbookResultsSheet } from "../workbooks/WorkbookResultsScreen";
+import type { WorkbookLearner } from "../workbooks/WorkbookFrame";
+import { childWorkbookPaths, WorkbookPathsContext } from "../workbooks/paths";
 import { SatMathFocus } from "../practice/SatMathFocus";
 import { ChildPracticeSettings } from "./Practice";
 import { rememberContinuation } from "../continue/memory";
@@ -248,6 +252,7 @@ export function ChildScreen() {
             }
           />
           <ChildSettings place={place} child={child} />
+          <ChildWorkbookOverlay place={place} child={child} />
           {place.own && child.capabilities.manageDevices && (
             <DevicesSheet
               place={place}
@@ -331,29 +336,65 @@ function ChildWorkbooks({
   place: FamilyPlace;
   child: FamilyChild;
 }) {
-  const learner = place.me?.family.learners.find(
-    (entry) => entry.id === child.id && !entry.deletedAt,
-  );
-  if (!child.capabilities.readWorkbooks || !learner) return null;
-  if (!canReadWorkbooks(learner)) return null;
+  const learner = workbookLearner(place, child);
+  if (!learner) return null;
   return (
     <section
       aria-labelledby="child-workbooks"
       className={styles.section}
       data-child-workbooks=""
     >
-      <WorkbookHistory
-        section
-        learner={{
-          ...learner,
-          pauseViewer: learner.simulation
-            ? "profile"
-            : learner.adult
-              ? "adult"
-              : "parent",
-        }}
-      />
+      <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
+        <WorkbookHistory section learner={learner} />
+      </WorkbookPathsContext.Provider>
     </section>
+  );
+}
+
+/** The child as their workbooks know them, when this reader may read them. */
+function workbookLearner(
+  place: FamilyPlace,
+  child: FamilyChild,
+): WorkbookLearner | null {
+  const learner = place.me?.family.learners.find(
+    (entry) => entry.id === child.id && !entry.deletedAt,
+  );
+  if (!child.capabilities.readWorkbooks || !learner) return null;
+  if (!canReadWorkbooks(learner)) return null;
+  return {
+    ...learner,
+    pauseViewer: learner.simulation
+      ? "profile"
+      : learner.adult
+        ? "adult"
+        : "parent",
+  };
+}
+
+/** A workbook day or its results, open over the child's page at its own
+ * address (`kids/<id>/workbooks/<date>`, `…/<workbook>/results`); ✕ closes
+ * it to the page. */
+function ChildWorkbookOverlay({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const { date, workbookId } = useParams({ strict: false }) as {
+    date?: string;
+    workbookId?: string;
+  };
+  const learner = workbookLearner(place, child);
+  if (!learner || (!date && !workbookId)) return null;
+  return (
+    <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
+      {workbookId ? (
+        <WorkbookResultsSheet learner={learner} workbookId={workbookId} />
+      ) : isDate(date!) ? (
+        <WorkbookDaySheet learner={learner} date={date!} />
+      ) : null}
+    </WorkbookPathsContext.Provider>
   );
 }
 
