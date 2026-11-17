@@ -225,6 +225,11 @@
     "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
   },
   {
+    "path": "src/family/setup-child.ts",
+    "hash": "812a7de92158b674462d72c23e21761a3e02a9ee3070a53ac852e7c4b4f06c52",
+    "reason": "Historical, child-only setup check: a child can be taken back out only if no grant row ever named them, in force or not. It decides removability, never current access."
+  },
+  {
     "path": "src/feedback/retention.ts",
     "hash": "b7cad2d8e6323640f65582b4f996a0e049b722888fa8dcb4dc1a1fec5c5cc871",
     "reason": "Local batch executor deletes problem flags or erases their notes using fixed retention statements; no grant access decision."
