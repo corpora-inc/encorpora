@@ -162,7 +162,8 @@ try {
     } else await route.continue();
   });
   await page.getByRole("button", { name: "Create class", exact: true }).click();
-  await page.locator("[role=alert]").filter({ hasText: /./ }).first().waitFor();
+  // The failure is said under the action, which stays pressable.
+  await page.getByText(/Check your connection and try again/).waitFor();
   await page.getByRole("button", { name: "Create class", exact: true }).click();
   await page.waitForURL(/\/classes\/[\w-]+\/roster/);
   assert.equal(

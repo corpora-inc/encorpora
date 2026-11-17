@@ -653,8 +653,11 @@ async function journey(
     (await teacher.getByRole("link", { name: "License" }).count()) === 0 &&
       (await teacher.getByRole("link", { name: "Import" }).count()) === 0,
   );
-  // A staff account with no learners starts at /school, not the starter.
+  // A staff account with no learners: `/` never redirects; its launcher
+  // offers the school first, never the starter.
   await teacher.goto(`${origin}/`);
+  await heading(teacher, "Welcome back");
+  await teacher.locator("[data-launcher] a[data-launch]").first().click();
   await teacher.waitForURL(/\/school\//);
   // The same link, again, from someone else: it has been used.
   const third = await browser.newContext({ colorScheme: theme });

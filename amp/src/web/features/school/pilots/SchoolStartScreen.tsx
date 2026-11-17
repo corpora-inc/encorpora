@@ -342,10 +342,15 @@ function StudentsStep({ start }: { start: Start }) {
             : undefined
         }
         href={startStepUrl}
+        // What went wrong sits under the action that failed, in the line it
+        // keeps, so nothing moves and nothing covers the action.
+        hintLines={2}
         hint={
           !classReady
             ? ""
-            : tooMany
+            : error
+              ? error
+              : tooMany
               ? `Up to ${MAX_NAMES} students here; add the rest from the class.`
               : !signerName.trim()
                 ? "Add your name to accept the student data agreement."
@@ -415,7 +420,6 @@ function StudentsStep({ start }: { start: Start }) {
           />
         </form>
       </StepFrame>
-      <Toast message={error} onDismiss={() => setError("")} />
     </>
   );
 }
