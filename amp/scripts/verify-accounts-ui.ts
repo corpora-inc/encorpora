@@ -297,6 +297,13 @@ try {
       },
     },
   );
+  /** The Sign-in & security overlay and its methods. */
+  async function securityOverlay() {
+    await page
+      .getByRole("dialog", { name: "Sign-in & security" })
+      .getByRole("button", { name: /^Passkeys/ })
+      .waitFor();
+  }
   /** Each sign-in method is a closed panel until opened (#2157). */
   async function openPasskeys() {
     await page.getByRole("button", { name: /^Passkeys/ }).click();
@@ -314,9 +321,19 @@ try {
       .getByRole("link", { name: "Sign in again", exact: true })
       .waitFor();
   }
+  /** Sign-in & security, as a parent reaches it (IA v2): the drawer's
+   * Settings (their family's Settings, or /account without a family), then
+   * the Account section's row, which opens the overlay over it. */
   async function openSecurity() {
-    await page.goto(`${origin}/account/security`);
-    await page.getByRole("heading", { name: "Sign-in", exact: true }).waitFor();
+    await page.goto(`${origin}/`);
+    const drawer = await openMenu(page);
+    await drawer
+      .getByRole("link", { name: /^(Settings|Account)$/ })
+      .last()
+      .click();
+    await drawer.waitFor({ state: "detached" });
+    await page.locator("[data-settings-security]").click();
+    await securityOverlay();
     await openPasskeys();
   }
   await openSecurity();
@@ -417,7 +434,7 @@ try {
   await page.getByRole("heading", { name: "Sign in", exact: true }).waitFor();
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await page.waitForURL(origin + "/account/security");
-  await page.getByRole("heading", { name: "Sign-in", exact: true }).waitFor();
+  await securityOverlay();
   await openPasskeys();
   await page.getByRole("button", { name: "Remove", exact: true }).click();
   await page.getByRole("button", { name: "Confirm removal" }).click();

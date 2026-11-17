@@ -6,6 +6,7 @@ import {
   familyOrgTarget,
   parentFamilyAt,
   peopleOf,
+  sheetHop,
   workbookIdentity,
 } from "../src/web/features/family/redirects.js";
 
@@ -51,21 +52,19 @@ test("the person→learner map holds only the family's own children in its class
   );
 });
 
-test("Today: the class root and /today, carrying the devices sheet", () => {
+test("Today: the class root and /today, its devices sheet from history state", () => {
   assert.deepEqual(go([]), { to: `/family/${F}`, search: {} });
   assert.deepEqual(go(["today"], { devices: 1, junk: 2 }), {
     to: `/family/${F}`,
-    search: { devices: 1 },
+    search: {},
+    state: { sheet: "devices" },
   });
 });
 
-test("Map, with its lens and skill; a child's layer becomes their page", () => {
+test("Map is Today for several children; a child's layer becomes their page", () => {
   assert.deepEqual(
     go(["map"], { lens: "fractions", skill: "add", sort: "student:ascending" }),
-    {
-      to: `/family/${F}/map`,
-      search: { lens: "fractions", skill: "add", sort: "student:ascending" },
-    },
+    { to: `/family/${F}`, search: { skill: "add" } },
   );
   assert.deepEqual(go(["map"], { open: `student:${P_WREN}` }), {
     to: `/family/${F}/kids/wren`,
@@ -120,10 +119,10 @@ test("Grades and report cards are the family's records, with their term and year
     },
   );
   // Report cards are a part of each child's page now: for several
-  // children, Progress, where each child's page is a row away.
+  // children, Today, where each child's page is a card away.
   assert.deepEqual(
     go(["report-cards"], { term: "t1", year: "y", student: P_PIP }),
-    { to: `/family/${F}/map`, search: {} },
+    { to: `/family/${F}`, search: {} },
   );
 });
 
@@ -161,9 +160,9 @@ test("a one-child family's records open on the child's page at their part, in on
   );
 });
 
-test("Time is a part of each child's page: several children open Progress", () => {
+test("Time is a part of each child's page: several children open Today", () => {
   assert.deepEqual(go(["time"], { week: "2026-11-09", from: "a", to: "b" }), {
-    to: `/family/${F}/map`,
+    to: `/family/${F}`,
     search: {},
   });
 });
@@ -208,19 +207,24 @@ test("Workbooks keep their identity: a day's set, the stack's day, minutes, pape
       students: "x,y",
       date: "soon",
     }),
-    { to: `/family/${F}/map`, search: {} },
+    { to: `/family/${F}`, search: {} },
   );
 });
 
-test("People, cards and the sign-in board are People and their own devices", () => {
-  assert.deepEqual(go(["roster"]), { to: `/family/${F}/people`, search: {} });
+test("People are Settings; cards and the sign-in board are their own devices", () => {
+  assert.deepEqual(go(["roster"]), {
+    to: `/family/${F}/settings`,
+    search: {},
+  });
   assert.deepEqual(go(["cards"]), {
-    to: `/family/${F}/people`,
-    search: { devices: 1 },
+    to: `/family/${F}/settings`,
+    search: {},
+    state: { sheet: "devices" },
   });
   assert.deepEqual(go(["start"]), {
     to: `/family/${F}`,
-    search: { devices: 1 },
+    search: {},
+    state: { sheet: "devices" },
   });
 });
 
@@ -238,11 +242,11 @@ test("import and unknown leaves land on the family's own not-found page", () => 
 
 test("a malformed or oversized layer stack is dropped, never forwarded", () => {
   assert.deepEqual(go(["map"], { open: "student:not-a-uuid" }), {
-    to: `/family/${F}/map`,
+    to: `/family/${F}`,
     search: {},
   });
   assert.deepEqual(go(["map"], { open: "x".repeat(2000) }), {
-    to: `/family/${F}/map`,
+    to: `/family/${F}`,
     search: {},
   });
 });
@@ -256,7 +260,7 @@ test("school-level pages of a family org: the family's equivalent, its view keys
       hash: "h",
     }),
     {
-      to: `/family/${F}/people`,
+      to: `/family/${F}/settings`,
       search: { sort: "name:ascending", open: "skill:add" },
     },
   );
@@ -271,7 +275,7 @@ test("school-level pages of a family org: the family's equivalent, its view keys
     { to: `/family/${F}/kids/wren`, search: {} },
   );
   assert.deepEqual(familyOrgTarget({ family: F, page: "map", search: {} }), {
-    to: `/family/${F}/map`,
+    to: `/family/${F}`,
     search: {},
   });
   assert.deepEqual(
@@ -308,15 +312,29 @@ test("only a parent of that family is redirected; a co-teacher keeps the class",
   assert.equal(parentFamilyAt(null, F), null);
 });
 
-test("one child's sign-in card prints on its own; another family's never here", () => {
-  assert.deepEqual(go(["cards"], { student: P_PIP }), {
-    to: `/family/${F}/cards`,
-    search: { student: P_PIP },
+test("a child's sign-in card is in their own devices; another family's never here", () => {
+  for (const student of [P_PIP, P_ZED])
+    assert.deepEqual(go(["cards"], { student }), {
+      to: `/family/${F}/settings`,
+      search: {},
+      state: { sheet: "devices" },
+    });
+});
+
+test("an older family address that opened a sheet with a key: one hop, the sheet in state", () => {
+  assert.deepEqual(sheetHop(`/family/${F}`, { devices: 1 }), {
+    href: `/family/${F}`,
+    state: { sheet: "devices" },
   });
-  assert.deepEqual(go(["cards"], { student: P_ZED }), {
-    to: `/family/${F}/people`,
-    search: { devices: 1 },
+  assert.deepEqual(sheetHop(`/family/${F}/settings`, { add: "1" }), {
+    href: `/family/${F}/settings`,
+    state: { sheet: "add-children" },
   });
+  assert.deepEqual(sheetHop(`/family/${F}`, { add: 1, open: "skill:add" }), {
+    href: `/family/${F}?open=skill%3Aadd`,
+    state: { sheet: "add-children" },
+  });
+  assert.equal(sheetHop(`/family/${F}`, { open: "skill:add" }), null);
 });
 
 test("what children see is the family's practice defaults; school-level anchors survive", () => {

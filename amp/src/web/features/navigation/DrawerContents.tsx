@@ -13,7 +13,7 @@ import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
 import type { SpaceDescriptor } from "../spaces/resolve";
 import { useLocationMatch, useSpace } from "../spaces/useSpace";
-import { ACCOUNT_HOME } from "../spaces/tabs";
+import { useSettingsHref } from "../spaces/settings-hub";
 import { childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { clearInitialConsentChallenge } from "../../consent-entry";
@@ -101,6 +101,8 @@ export default function DrawerContents({
   const { account } = view;
   const student = account?.account.kind === "student";
   const { groups, more } = usePlaces(account);
+  // Where the account's settings are (features/spaces/settings-hub.ts).
+  const settings = useSettingsHref();
   // Opening the drawer is the intent: each item's screen (its code and
   // data) loads now, so the one a tap chooses renders whole, at once.
   const router = useRouter();
@@ -312,11 +314,21 @@ export default function DrawerContents({
           nav("/access", "Your gift of AMP", "plans", {
             detail: `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
           })}
+        {/* The account's settings, one entry: a family's parent's are
+            their family's Settings (its hub), anyone else's the one
+            /account page. Sign-in & security is an overlay there. */}
         {view.session.data &&
           !student &&
-          nav(`/${ACCOUNT_HOME}`, "Account", "settings", {
-            current: kind === "account",
-          })}
+          nav(
+            settings,
+            settings === "/account" ? "Account" : "Settings",
+            "settings",
+            {
+              current:
+                location.pathname === settings ||
+                location.pathname.startsWith(`${settings}/`),
+            },
+          )}
       </nav>
       <div className={styles.settings}>
         {!learning && !family && (

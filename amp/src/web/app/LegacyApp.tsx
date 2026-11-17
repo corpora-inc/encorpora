@@ -78,7 +78,6 @@ import {
   parsePurchaseReturn,
   type PurchaseReturn,
 } from "../purchase-return";
-import { FamilyCenter } from "../FamilyCenter";
 import type { FamilySummary } from "../../family/contracts";
 import { preferredBookForProblem } from "../../books/selection";
 import { BookReader } from "../BookReader";
@@ -1827,34 +1826,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             void action(loadFamily);
           }}
         />
-      ) : familyOpen && token ? (
-        <FamilyCenter
-          // Until the sign-in mode is known, keep the Security tab's place:
-          // hosted AMP always uses accounts, so the tabs never reflow.
-          accountsEnabled={authMode === undefined || authMode === "accounts"}
-          onConsentEnrollment={() => openConsent()}
-          onContinueSetup={
-            nativeRuntime ? undefined : () => navigate("/start/plan")
-          }
-          returnToConsent={consentReturn}
-          initialSection={familySection}
-          onSectionChange={setFamilySection}
-          returnFocus={purchaseFocus}
-          onAnnualPurchase={openPurchase}
-          onFundedPurchase={openPurchase}
-          onChoosePayment={openPurchase}
-          token={token}
-          identity={accountId ?? token}
-          onChanged={async () => {
-            await loadFamily();
-          }}
-          onLearningInvalidated={invalidateLearning}
-          onClose={() => {
-            nativeFamilyReturn.current = true;
-            setFamilyOpen(false);
-          }}
-        />
-      ) : !token ? (
+      ) : familyOpen && token ? // The account's screens are routed now (app/account-overlays.tsx);
+      // only the parent notice above stays here.
+      null : !token ? (
         <section className="card welcome">
           {!nativeRuntime && <LandingView />}
           <h2>

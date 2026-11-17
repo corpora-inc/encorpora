@@ -8,7 +8,7 @@
  * screen.
  */
 export type ProgressTab = "overview" | "pathways" | "inventory";
-export type AccountTab = "security" | "learners" | "access" | "privacy";
+export type AccountTab = "account";
 export type ShellFrame =
   | { kind: "progress"; active: ProgressTab }
   | { kind: "account"; active: AccountTab }
@@ -137,14 +137,14 @@ export function shellFrame(
     const active =
       (
         {
+          // A child's page, and the family's records, are reached from
+          // the children on Today.
           "": "today",
-          kids: "progress",
-          map: "progress",
-          time: "progress",
-          reports: "progress",
-          workbooks: "progress",
-          people: "settings",
-          cards: "settings",
+          kids: "today",
+          map: "today",
+          time: "today",
+          reports: "today",
+          workbooks: "today",
         } as Record<string, string>
       )[first] ?? first;
     return { kind: "family", family: family[1]!.toLowerCase(), active, leaf };
@@ -154,22 +154,11 @@ export function shellFrame(
   // A family's approvals and a school's link are screens of their own.
   if (under(path, "/family/approve") || under(path, "/family/approvals"))
     return null;
-  // The account's own settings, at their own addresses and their older ones.
-  if (under(path, "/account/security"))
-    return { kind: "account", active: "security" };
-  if (under(path, "/account/billing"))
-    return { kind: "account", active: "access" };
-  if (under(path, "/account/privacy"))
-    return { kind: "account", active: "privacy" };
-  if (under(path, "/family/security"))
-    return { kind: "account", active: "security" };
-  if (under(path, "/family/access"))
-    return { kind: "account", active: "access" };
-  if (under(path, "/family/privacy"))
-    return { kind: "account", active: "privacy" };
-  if (under(path, "/family")) return { kind: "account", active: "learners" };
+  // The account (`/account`) and the overlays over it: one page, no tabs.
+  // Its older addresses are one hop to it (features/account/legacy.ts).
+  if (under(path, "/account")) return { kind: "account", active: "account" };
   // The parent notice is a step of Privacy.
-  if (path === "/consent") return { kind: "account", active: "privacy" };
+  if (path === "/consent") return { kind: "account", active: "account" };
   // Paying for one learner (`/pay/<learner>/…`) is a step of whatever led
   // there (practice, Today, Billing), so it has the plain bar and its own
   // way back, on every step alike.

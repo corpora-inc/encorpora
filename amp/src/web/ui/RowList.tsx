@@ -76,12 +76,16 @@ export function RowLink({
   meta,
   to,
   search,
+  tone,
   ...data
 }: {
   title: string;
   meta?: string;
   to: string;
   search?: Record<string, unknown>;
+  /** `danger`: an irreversible action's row (its title in the danger
+   * color, quiet otherwise). */
+  tone?: "danger";
 } & { [key: `data-${string}`]: string | undefined }) {
   return (
     <li className={styles.item}>
@@ -89,7 +93,7 @@ export function RowLink({
         to="/$"
         params={{ _splat: to }}
         search={(search ?? {}) as never}
-        className={styles.row}
+        className={`${styles.row} ${tone === "danger" ? styles.danger : ""}`}
         {...data}
       >
         <span className={styles.text}>

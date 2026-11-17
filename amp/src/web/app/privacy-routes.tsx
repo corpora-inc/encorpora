@@ -1,9 +1,4 @@
-import {
-  createRoute,
-  lazyRouteComponent,
-  redirect,
-  type AnyRoute,
-} from "@tanstack/react-router";
+import { createRoute, redirect, type AnyRoute } from "@tanstack/react-router";
 import { privacyPanel, setPanel } from "../features/account/panels";
 import { loadSettingsHub } from "../features/spaces/settings-hub";
 import { staffScreen } from "./school-routes";
@@ -16,8 +11,9 @@ import { staffScreen } from "./school-routes";
  * used to pass through `/account/privacy/consent`.
  *
  *   /account/privacy/<panel>, /family/privacy(/<panel>)  → <hub>/privacy
- *   /account/privacy                                     → <hub>/privacy, for
- *     a family's parent; for any other adult it is the overlay itself.
+ *
+ * `/account/privacy` itself is the overlay over `/account`
+ * (app/account-overlays.tsx), for anyone signed in.
  *
  * `/consent` stays: it is where a consent email's link records consent
  * (ParentConsentCenter, the email-plus link of 16 CFR 312.5(b)(2)(vi)).
@@ -29,13 +25,13 @@ type HopContext = {
 };
 
 /** One hop to the Privacy overlay over the account's hub, its panel stored
- * on the way. `stay`: the address that is already the overlay. */
-async function toPrivacy(context: HopContext, stay?: string) {
+ * on the way. */
+async function toPrivacy(context: HopContext) {
   const { session } = await staffScreen(context);
   const panel = privacyPanel((context.params as { panel?: string }).panel);
   if (panel) setPanel(session.accountId, "privacy", panel);
   const href = await loadSettingsHub(session, "privacy");
-  if (href !== stay) throw redirect({ href, replace: true });
+  throw redirect({ href, replace: true });
 }
 
 export function privacyRoutes<Root extends AnyRoute>(root: Root) {
@@ -47,21 +43,6 @@ export function privacyRoutes<Root extends AnyRoute>(root: Root) {
       beforeLoad: (context) => toPrivacy(context as unknown as HopContext),
     });
   return [
-    // An adult with no family: the overlay at its own address. A family's
-    // parent: one hop to their family's Settings.
-    // Until `/account` is its own hub with the account overlays, the
-    // overlay stands here alone; that hub's `privacy` route replaces this.
-    createRoute({
-      getParentRoute: () => root,
-      path: "/account/privacy",
-      staticData: { space: "account" },
-      beforeLoad: (context) =>
-        toPrivacy(context as unknown as HopContext, "/account/privacy"),
-      component: lazyRouteComponent(
-        () => import("../features/privacy/PrivacyOverlay"),
-        "PrivacyOverlay",
-      ),
-    }),
     hop("/account/privacy/$panel"),
     hop("/family/privacy"),
     hop("/family/privacy/$panel"),

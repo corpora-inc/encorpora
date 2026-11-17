@@ -1,8 +1,3 @@
-import { familyOptions, familyPlacesOptions } from "../features/family/api";
-import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../features/family/settings-family";
 import {
   carryFamilyPractice,
   restoreFamilyPractice,
@@ -91,7 +86,8 @@ import {
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
 import { privacyRoutes } from "./privacy-routes";
-import { payOverlays, payRoutes } from "./pay-routes";
+import { accountOverlays } from "./account-overlays";
+import { payRoutes } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -298,24 +294,6 @@ const root = createRootRoute({
     const session = await queryClient
       .ensureQueryData(sessionOptions)
       .catch(() => undefined);
-    if (
-      session &&
-      !session.accountId.startsWith("school:") &&
-      usesFamilySettingsFrame(location.pathname)
-    ) {
-      // Resolve the frame before committing the screen, so account settings
-      // never flash a different tab set while the parent's family loads.
-      await queryClient
-        .ensureQueryData(familyPlacesOptions(session))
-        .then(async (places) => {
-          const family = settingsFamilyOf(places);
-          if (family)
-            await queryClient.ensureQueryData(
-              familyOptions(session, family.familyId),
-            );
-        })
-        .catch(() => undefined);
-    }
     if (session)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
@@ -631,41 +609,7 @@ const accountReady = createRoute({
     "AccountReady",
   ),
 });
-/** Account → Sign-in → Delete my account (features/account/DeleteAccount):
- * what goes, then a typed confirmation; and the page after it. */
 const deleteAccountScreens = () => import("../features/account/DeleteAccount");
-const deleteAccount = createRoute({
-  getParentRoute: () => root,
-  path: "/account/security/delete",
-  staticData: { space: "account" },
-  beforeLoad: async () => {
-    notForStudents();
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) throw redirect({ to: "/sign-in" });
-    return { session };
-  },
-  // What the account holds arrives with the screen, so the list paints whole.
-  loader: async ({ context: { session } }) => {
-    const { deletionPreviewOptions } =
-      await import("../features/account/delete-api");
-    await queryClient
-      .ensureQueryData(deletionPreviewOptions(session))
-      .catch((error) =>
-        console.warn("What the account holds didn’t load ahead", error),
-      );
-  },
-  component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
-});
-/** Its address before the account had its own (`/account/…`): the same
- * screen, so older links and returns keep working. */
-const deleteAccountAlias = createRoute({
-  getParentRoute: () => root,
-  path: "/family/security/delete",
-  staticData: { space: "account" },
-  beforeLoad: deleteAccount.options.beforeLoad,
-  loader: deleteAccount.options.loader,
-  component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
-});
 const accountDeleted = createRoute({
   getParentRoute: () => root,
   path: "/account/deleted",
@@ -1030,51 +974,52 @@ const workbookResults = createRoute({
     "WorkbookResultsScreen",
   ),
 });
-const billingPage = createRoute({
+/** The account (`/account`, the IA v2 spec, §4): one page for every adult,
+ * and the overlays its rows open over it (app/account-overlays.tsx):
+ * billing, privacy, sign-in & security, deleting the account, Pay. They
+ * render for anyone signed in, family parents too, so mailed and returned
+ * links keep working; a family's own links go to its Settings instead. */
+const accountHub = createRoute({
   getParentRoute: () => root,
-  path: "/account/billing",
+  path: "/account",
   staticData: { space: "account" },
-  validateSearch: z.object({
-    receipt: z.string().max(200).optional().catch(undefined),
-  }),
   beforeLoad: async () => {
     if (!finishingSignIn()) notForStudents();
     await framedScreen();
+    if (!queryClient.getQueryData(sessionOptions.queryKey))
+      throw redirect({ to: "/sign-in" });
   },
-  loader: async () => {
-    const session = queryClient.getQueryData(sessionOptions.queryKey);
-    if (session)
-      await (
-        await import("../features/account/billing-prefetch")
-      ).prefetchBilling(session);
-  },
-  // Billing, and the pay overlay its "Choose a plan" opens over it
-  // (`pay/<learner>`, features/pay): Billing stays mounted behind.
   component: lazyRouteComponent(
-    () => import("../features/pay/hosts"),
-    "BillingPayHost",
+    () => import("../features/account/AccountHub"),
+    "AccountHost",
   ),
 });
-const billingPurchasesAlias = createRoute({
-  getParentRoute: () => root,
-  path: "/account/billing/purchases",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    throw redirect({ to: "/account/billing", replace: true });
-  },
-});
-const billingRecordsAlias = createRoute({
-  getParentRoute: () => root,
-  path: "/account/billing/records",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    throw redirect({
-      to: "/account/billing",
-      hash: "receipts-title",
-      replace: true,
-    });
-  },
-});
+/** The account's older addresses (features/account/legacy.ts): each one
+ * hop, straight to its overlay over the account's settings hub. */
+const accountLegacy = (path: string) =>
+  createRoute({
+    getParentRoute: () => root,
+    path,
+    staticData: { space: "account" },
+    beforeLoad: async ({ location }) => {
+      const session = await queryClient.ensureQueryData(sessionOptions);
+      const [{ accountHop }, { setPanel }, { loadSettingsHub }] =
+        await Promise.all([
+          import("../features/account/legacy"),
+          import("../features/account/panels"),
+          import("../features/spaces/settings-hub"),
+        ]);
+      const hub = session ? await loadSettingsHub(session) : "/account";
+      const hop = accountHop(
+        location.pathname,
+        hub,
+        location.search as Record<string, unknown>,
+      );
+      if (hop?.panel && session)
+        setPanel(session.accountId, hop.panel.overlay, hop.panel.id);
+      throw redirect({ href: hop?.href ?? "/account", replace: true });
+    },
+  });
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
   "InvoiceForm",
@@ -1884,8 +1829,6 @@ export const router = createRouter({
     signIn,
     signUp,
     accountReady,
-    deleteAccount,
-    deleteAccountAlias,
     accountDeleted,
     accessGift,
     signInStep,
@@ -1907,9 +1850,16 @@ export const router = createRouter({
     workbookHistory,
     workbookDay,
     workbookResults,
-    billingPage.addChildren([...payOverlays(billingPage, "pay/$learner")]),
-    billingPurchasesAlias,
-    billingRecordsAlias,
+    accountHub.addChildren([...accountOverlays(accountHub)]),
+    ...[
+      "/account/security/delete",
+      "/family/security/delete",
+      "/account/billing/$",
+      "/family/security",
+      "/family/security/$",
+      "/family/access",
+      "/family/access/$",
+    ].map(accountLegacy),
     invoiceArkansas,
     invoiceArizona,
     invoiceNewHampshire,
