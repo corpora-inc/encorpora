@@ -16,10 +16,11 @@ import { useSearchCorpus } from "./search-corpus";
 import type { SearchDoc } from "../../../search/corpus";
 import styles from "./SiteSearch.module.css";
 
-/** Results for a query, once something is typed. */
-export function useSiteSearch(query: string) {
+/** Results for a query, once something is typed. `warm` (the field has
+ * focus) loads the corpus before the first key, so typing never waits on it. */
+export function useSiteSearch(query: string, warm = false) {
   const text = query.trim();
-  const docs = useSearchCorpus(text.length > 0);
+  const docs = useSearchCorpus(warm || text.length > 0);
   const found = useLessonSearch(docs, text, "");
   return { docs, ...found };
 }

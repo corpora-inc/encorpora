@@ -3,7 +3,7 @@ import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
-import { useDeferredValue, useMemo, type CSSProperties } from "react";
+import { useDeferredValue, useMemo, useState, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   useLocation,
@@ -112,7 +112,8 @@ export function InventoryScreen() {
   // The one search (features/search): its skills, best first, then any
   // other skill whose own words hold what was typed. Its lessons and math
   // words follow the list; every result opens its skill over the page.
-  const found = useSiteSearch(query);
+  const [warm, setWarm] = useState(false);
+  const found = useSiteSearch(query, warm);
   const keys = useResultKeys();
   const actions = useSearchActions(found.docs);
   const needle = query.toLowerCase();
@@ -262,6 +263,7 @@ export function InventoryScreen() {
           <div className={styles.filters}>
             <SiteSearchField
               field={field}
+              onFocus={() => setWarm(true)}
               inputRef={keys.input}
               onKeyDown={keys.onKeyDown}
             />

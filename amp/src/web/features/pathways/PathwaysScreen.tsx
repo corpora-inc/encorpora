@@ -435,7 +435,7 @@ export function MapView({
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
-  const found = useSiteSearch(query);
+  const found = useSiteSearch(query, browse);
   const keys = useResultKeys();
   // On Pathways every result selects its skill in the map, as the list
   // without a search does (founder): the camera frames it, its panel opens,
