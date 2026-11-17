@@ -78,6 +78,7 @@ export const CASES = [
   ["work-steps", "scientific-notation-work"],
   ["work-fill", "scale-drawing-work"],
   ["work-proof", "two-column-congruence-proof"],
+  ["work-diagram", "partial-products-by-place"],
 ] as const;
 const SIZES: [number, number][] = [
   [320, 568],
@@ -107,6 +108,7 @@ const VERIFY = [
   "point-plot",
   "figure-choice",
   "work-steps",
+  "work-diagram",
 ];
 const browsers =
   list(process.env.AUDIT_BROWSERS) ??
@@ -338,7 +340,13 @@ async function fill(page: Page, kind: string) {
     return;
   }
   if (kind.startsWith("choice")) {
-    await area.locator(".choice-option").first().click();
+    // A template can draw its options as figure panels (clocks) instead.
+    const option = area
+      .locator(".choice-option, .figure-panel")
+      .locator("visible=true")
+      .first();
+    await option.scrollIntoViewIfNeeded();
+    await option.click();
     return;
   }
   if (kind.startsWith("multi-select")) {
@@ -770,6 +778,10 @@ async function runCase(
     await page.keyboard.press("Escape");
     await page.locator("dialog[open]").waitFor({ state: "detached" });
     await record("lesson-closed", before);
+    // The keypad's room: opening it moves nothing, each entry it walks to
+    // is shown above it, and closing it leaves a fitting problem unscrolled.
+    if (label.startsWith("work") && phone)
+      await assertKeypadRoom(page, `${label} ${width}×${height} ${theme}`, dir);
     // Wrong
     before = await anchors(page);
     await fill(page, label);
@@ -886,6 +898,97 @@ async function runCase(
   await context.close();
 }
 
+/** Stage and keypad geometry while walking a worked problem's entries. */
+const stageState = (page: Page) =>
+  page.evaluate(() => {
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const s = stage.getBoundingClientRect();
+    const pad = document.querySelector(".work-keypad")?.getBoundingClientRect();
+    const field = document.activeElement?.closest(".work-entry");
+    const f = field?.getBoundingClientRect();
+    return {
+      scrollTop: stage.scrollTop,
+      overflow: stage.scrollHeight - stage.clientHeight,
+      top: s.top + stage.clientTop,
+      question: document
+        .querySelector(".problem-content .question")!
+        .getBoundingClientRect().top,
+      padTop: pad?.top ?? null,
+      field: f ? { top: f.top, bottom: f.bottom } : null,
+    };
+  });
+
+async function assertKeypadRoom(page: Page, where: string, dir: string) {
+  await page.evaluate(() => (document.activeElement as HTMLElement)?.blur());
+  await settle(page);
+  await takeShifts(page);
+  const closed = await stageState(page);
+  const first = page.locator(".problem-stage .work-input").first();
+  if (!(await first.count())) return;
+  const box = (await first.boundingBox())!;
+  await first.tap();
+  await page.locator(".work-keypad").waitFor();
+  await settle(page);
+  const opened = await stageState(page);
+  assert.ok(opened.field && opened.padTop !== null, `${where}: entry active`);
+  assert.ok(
+    opened.field!.bottom <= opened.padTop! + 0.5,
+    `${where}: the first entry is hidden by the keypad`,
+  );
+  // An entry the keypad leaves uncovered never scrolls the problem.
+  if (box.y + box.height <= opened.padTop! - 12)
+    assert.equal(
+      opened.question,
+      closed.question,
+      `${where}: opening the keypad moved the problem`,
+    );
+  await page.screenshot({ path: `${dir}/${where.split(" ")[0]}-keypad.png` });
+  // Next walks every entry; each one shows above the keypad, and the last
+  // step can always scroll there.
+  const next = page.locator('.work-keypad [data-key="next"]');
+  for (let n = 0; n < 40 && (await next.count()); n++) {
+    const state = await stageState(page);
+    if (state.field && state.padTop !== null) {
+      assert.ok(
+        state.field.bottom <= state.padTop + 0.5,
+        `${where}: entry ${n + 1} is hidden by the keypad ${JSON.stringify(state)}`,
+      );
+      assert.ok(
+        state.field.top >= state.top - 0.5,
+        `${where}: entry ${n + 1} is above the stage ${JSON.stringify(state)}`,
+      );
+    }
+    if ((await next.textContent())?.trim() === "Done")
+      await page.screenshot({
+        path: `${dir}/${where.split(" ")[0]}-keypad-last.png`,
+      });
+    await next.tap();
+    await settle(page);
+  }
+  await page.locator(".work-keypad").waitFor({ state: "detached" });
+  await settle(page);
+  const after = await stageState(page);
+  // The keypad's room goes with it: no scroll range is left behind.
+  assert.ok(
+    after.overflow <= closed.overflow,
+    `${where}: closing the keypad left ${after.overflow - closed.overflow}px of room`,
+  );
+  if (closed.overflow <= 0)
+    assert.equal(
+      after.scrollTop,
+      0,
+      `${where}: a fitting problem stays scrolled`,
+    );
+  const { cls, sources } = await takeShifts(page);
+  assert.ok(
+    cls <= 0.001,
+    `${where}: the keypad shifted layout ${cls.toFixed(4)} ${sources.join(",")}`,
+  );
+  await page.locator(".problem-stage").evaluate((stage) => {
+    stage.scrollTop = 0;
+  });
+}
+
 async function axeDialog(page: Page) {
   const result = await new AxeBuilder({ page })
     .include("dialog[open]")
@@ -989,7 +1092,46 @@ async function probeSelfTest(browser: Browser) {
       "Probe must still reject a genuinely covered control inside the scrollport",
     );
   }
+  // A problem that fits its stage: an empty reservation below it (padding,
+  // a min-height) that makes the stage scroll is caught; a problem that
+  // really is taller than its stage is not.
+  const stage = (inner: string) =>
+    page.setContent(`<main class="practice-workspace">
+      <div class="problem-stage" style="height:300px;overflow:auto">
+        <div class="problem-content" style="padding:20px 6px">
+          <h2 class="question" style="margin:0;font:20px/1.4 sans-serif">Fill in the steps</h2>
+          ${inner}
+        </div>
+      </div></main>`);
+  await stage(
+    `<div class="work" style="padding-bottom:272px"><input aria-label="Step" style="display:block;height:48px"></div>`,
+  );
+  await page.evaluate(shim);
+  const reserved = await probe(page);
+  await stage(
+    `<div class="work" style="min-height:400px"><input aria-label="Step" style="display:block;height:48px"></div>`,
+  );
+  await page.evaluate(shim);
+  const minHeight = await probe(page);
+  await stage(
+    `<div class="work"><input aria-label="Step" style="display:block;height:48px"></div>`,
+  );
+  await page.evaluate(shim);
+  const fitting = await probe(page);
+  await stage(
+    `<div class="work"><input aria-label="Step" style="display:block;height:400px"></div>`,
+  );
+  await page.evaluate(shim);
+  const tall = await probe(page);
   await page.close();
+  const needless = (f: Finding[]) =>
+    f.some((x) => x.kind === "needless-scroll");
+  if (!needless(reserved) || !needless(minHeight))
+    throw new Error(
+      "Probe misses a reservation that scrolls a fitting problem",
+    );
+  if (needless(fitting) || needless(tall))
+    throw new Error("Probe flags a stage whose scroll range is its content");
   if (clippedSvg.some((f) => f.kind === "horizontal-overflow"))
     throw new Error("Probe measures a clipped SVG tail as visible overflow");
   if (
@@ -1054,6 +1196,16 @@ try {
         for (const theme of themes)
           jobs.push(() =>
             runCase(browser, name, studyCase, [1024, 768], theme, "account"),
+          );
+    // The phone where a fitting worked diagram once scrolled (a Galaxy in
+    // Chrome, 384×688 CSS px): the problem fits, so the stage must not scroll.
+    if (!process.env.AUDIT_SIZES)
+      for (const phoneCase of cases.filter(
+        ([label]) => label === "work-diagram",
+      ))
+        for (const theme of themes)
+          jobs.push(() =>
+            runCase(browser, name, phoneCase, [384, 688], theme, "account"),
           );
     let next = 0;
     await Promise.all(
