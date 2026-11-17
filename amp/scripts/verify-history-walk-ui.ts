@@ -67,7 +67,7 @@ type Walk = {
   /** Checks after a step has landed (filled by `before`). */
   after?: (page: Page, index: number) => Promise<void>;
   /** Just before a step is taken. */
-  beforeStep?: (page: Page, index: number) => Promise<void> | undefined;
+  beforeStep?: (page: Page, index: number) => Promise<unknown> | undefined;
 };
 
 /** A fresh account through the real sign-up, signed in on its own context. */
