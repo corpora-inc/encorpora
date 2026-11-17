@@ -151,7 +151,10 @@ try {
       );
       const [issued] = await Promise.all([
         batch,
-        page.getByRole("link", { name: /^Try this problem type/ }).click(),
+        page
+          .getByRole("dialog")
+          .getByRole("link", { name: /^Practice/ })
+          .click(),
       ]);
       assert.equal(issued.status(), 200);
       assert.ok(
@@ -417,7 +420,10 @@ try {
         );
         const [correctIssued] = await Promise.all([
           correctBatch,
-          page.getByRole("link", { name: /^Try this problem type/ }).click(),
+          page
+            .getByRole("dialog")
+            .getByRole("link", { name: /^Practice/ })
+            .click(),
         ]);
         assert.equal(
           (await correctIssued.json()).problems[0]?.id,
@@ -448,7 +454,10 @@ try {
         );
         const [skippedIssued] = await Promise.all([
           skippedBatch,
-          page.getByRole("link", { name: /^Try this problem type/ }).click(),
+          page
+            .getByRole("dialog")
+            .getByRole("link", { name: /^Practice/ })
+            .click(),
         ]);
         assert.equal(
           (await skippedIssued.json()).problems[0]?.id,
@@ -535,7 +544,10 @@ try {
     );
     const [graphIssued] = await Promise.all([
       graphBatch,
-      graphPage.getByRole("link", { name: /^Try this problem type/ }).click(),
+      graphPage
+        .getByRole("dialog")
+        .getByRole("link", { name: /^Practice/ })
+        .click(),
     ]);
     assert.equal(graphIssued.status(), 200);
     assert.equal(
@@ -627,7 +639,10 @@ try {
       response.request().method() === "POST" &&
       response.request().postDataJSON()?.templateId === templateId,
   );
-  await page.getByRole("link", { name: /^Try this problem type/ }).click();
+  await page
+    .getByRole("dialog")
+    .getByRole("link", { name: /^Practice/ })
+    .click();
   const draftBatch = await focused;
   assert.ok(
     draftBatch

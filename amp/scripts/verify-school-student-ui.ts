@@ -325,7 +325,15 @@ try {
         width,
         dark,
       });
-      await askTeacher(page).waitFor();
+      await askTeacher(page)
+        .waitFor()
+        .catch(async (error) => {
+          console.error(
+            `No seat message at ${page.url()}:`,
+            (await page.locator("body").innerText()).slice(0, 400),
+          );
+          throw error;
+        });
       assert.equal(new URL(page.url()).pathname, "/");
       assert.equal(await page.getByText("Choose a plan").count(), 0);
       await noOverflow(page, `seat card ${label}`);

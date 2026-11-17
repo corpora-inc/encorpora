@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
@@ -13,7 +13,12 @@ import { purchaseStatusOptions } from "./api";
 import { checkoutKind, Panel } from "./CardPanel";
 import { usePayAddress, usePayClose } from "./context";
 import type { PayLearner } from "./context";
-import { usePayStore, useCheckoutReturn, type CheckoutKind } from "./store";
+import {
+  payState,
+  usePayStore,
+  useCheckoutReturn,
+  type CheckoutKind,
+} from "./store";
 import styles from "./Pay.module.css";
 import { useSession } from "../../lib/session";
 
@@ -153,6 +158,7 @@ export function CardDone({
   const choose = usePayStore((state) => state.choose);
   const { origin, base } = usePayAddress();
   const close = usePayClose();
+  const navigate = useNavigate();
   if (outcome.state === "active")
     return (
       <div className={styles.panel}>
@@ -162,15 +168,21 @@ export function CardDone({
         <div className={styles.actions}>
           <Button
             variant="primary"
-            // What remains is the optional name (AfterPurchase), offered
-            // on the screen behind, which this closes to.
+            // Back where paying started (the practice the pause was on,
+            // recorded when "Continue with AMP" opened this overlay), else
+            // the screen behind it. What remains is the optional name
+            // (AfterPurchase), offered there.
             onClick={() => {
+              const opener = payState(session.accountId).opener;
+              const back =
+                opener?.learnerId === learner.id ? opener.returnTo : origin;
               open(session.accountId, {
                 learnerId: learner.id,
-                returnTo: origin,
+                returnTo: back,
                 stage: "naming",
               });
-              close();
+              if (back === origin) close();
+              else void navigate({ href: back, replace: true });
             }}
           >
             Done

@@ -6,6 +6,12 @@ import { createServer } from "vite";
 import { chromium as rawChromium, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureChildProgress,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
@@ -116,6 +122,20 @@ try {
             json: { mode: "accounts", passwords: true, providers: [] },
           });
         if (path === "/api/v1/me") return route.fulfill({ json: account });
+        // The parent's family (scripts/family-space-fixture.ts): its Today
+        // and the learner's page.
+        if (path === "/api/v1/families")
+          return route.fulfill({ json: fixtureFamilies() });
+        if (path === `/api/v1/families/${FIXTURE_FAMILY_ID}`)
+          return route.fulfill({
+            json: fixtureFamilyProjection([
+              { id: "sample-learner", name: "Sample learner", birthYear: 2016 },
+            ]),
+          });
+        if (path.endsWith("/children/sample-learner/progress"))
+          return route.fulfill({
+            json: fixtureChildProgress("sample-learner", "Sample learner"),
+          });
         if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
           return route.fulfill({
             json: {
@@ -511,8 +531,20 @@ try {
         });
         await page.keyboard.press("Escape");
         await openHome(page, origin);
-        // A grown-up's view always names grades: no device toggle.
-        await page.getByTestId("level-readout").first().waitFor();
+        // A grown-up's view always names grades, with no device toggle: the
+        // learner's page draws their scale by grade.
+        await page
+          .locator('[data-child-page="sample-learner"]')
+          .or(page.getByRole("link", { name: /Sample learner/ }).first())
+          .first()
+          .waitFor();
+        if (!(await page.locator('[data-child-page="sample-learner"]').count()))
+          await page
+            .getByRole("link", { name: /Sample learner/ })
+            .first()
+            .click();
+        await page.locator('[data-child-page="sample-learner"]').waitFor();
+        await page.getByText("Gr 4", { exact: true }).first().waitFor();
         await page.screenshot({
           path: `${output}/${mode}-390-light-progress-details.png`,
           fullPage: true,
