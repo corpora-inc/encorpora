@@ -30,7 +30,7 @@ import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const port = Number(process.env.AMP_ONBOARDING_UI_PORT ?? 4398);
 const origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `export async function accessSession(){return {token:'synthetic',accountId:'synthetic-parent'};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `export async function accessSession(){return {token:'synthetic',accountId:'synthetic-parent'};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-onboarding",
   plugins: [
