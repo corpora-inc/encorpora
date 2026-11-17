@@ -1,0 +1,162 @@
+name: AMP production check
+
+# After each web release, production's public entry in real browsers
+# (amp/scripts/check-production-entry.mjs): `/` and `/sign-up`, standard and
+# in-app user agents. The deploy (free2z/tuzi, deploy-corpora-amp) smoke-checks
+# the API and that `/` answers 200; this loads the pages as visitors do. A poll
+# finds each new release by its version and checks it once; a failure fails
+# this workflow and files or updates one issue. It never rolls back or gates a
+# deploy (fail forward). Read-only: page loads only.
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch: {}
+  # The deploy can ask for a check the moment a rollout finishes.
+  repository_dispatch:
+    types: [amp-web-deployed]
+  pull_request:
+    paths:
+      - '.github/workflows/amp-production-check.yml'
+      - 'amp/scripts/check-production-entry.mjs'
+
+permissions:
+  contents: read
+concurrency:
+  group: amp-production-check
+  cancel-in-progress: false
+
+env:
+  NODE_OPTIONS: --use-openssl-ca
+  AMP_ORIGIN: https://amp.corpora.inc
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      id: ${{ steps.release.outputs.id }}
+      checked: ${{ steps.seen.outputs.cache-hit }}
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - id: release
+        name: Identify the live web release
+        run: |
+          set -euo pipefail
+          commit=$(curl --fail --silent --show-error --max-time 20 --retry 2 "$AMP_ORIGIN/version.json" | jq -r '.commit // "unknown"')
+          # A rollout of the same commit still replaces the files: the home
+          # document's Last-Modified names this exact build.
+          modified=$(curl --fail --silent --show-error --max-time 20 --retry 2 --head "$AMP_ORIGIN/" | tr -d '\r' | sed -n 's/^last-modified: //Ip')
+          id="${commit}-$(date -u -d "$modified" +%Y%m%dT%H%M%SZ)"
+          echo "Live web release: $id"
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          # The cache lookup needs its path to exist.
+          mkdir -p "$RUNNER_TEMP/checked"
+      - id: seen
+        name: Was this release already checked?
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/checked
+          key: amp-production-checked-${{ steps.release.outputs.id }}
+          lookup-only: true
+
+  entry:
+    needs: release
+    # Each release once on the poll; every dispatch, PR and manual run checks.
+    if: needs.release.outputs.checked != 'true' || github.event_name != 'schedule'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            amp/scripts/check-production-entry.mjs
+            amp/package-lock.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright (the app's pinned version) and its browsers
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          version=$(jq -r '.packages["node_modules/playwright"].version' "$GITHUB_WORKSPACE/amp/package-lock.json")
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund "playwright@$version"
+          npx playwright install --with-deps chromium webkit
+      - name: Load the public entry
+        run: |
+          cp amp/scripts/check-production-entry.mjs "$RUNNER_TEMP/"
+          node "$RUNNER_TEMP/check-production-entry.mjs" "$AMP_ORIGIN"
+      - name: Remember the release as checked
+        if: success()
+        run: mkdir -p "$RUNNER_TEMP/checked" && echo '${{ needs.release.outputs.id }}' > "$RUNNER_TEMP/checked/id"
+      - name: Save the checked release
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/checked
+          key: amp-production-checked-${{ needs.release.outputs.id }}
+      - name: Report the broken release
+        if: failure() && github.event_name != 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          RELEASE: ${{ needs.release.outputs.id }}
+        with:
+          script: |
+            const title = 'AMP production web check failed';
+            const body = `Production's public entry failed in a real browser for web release ${process.env.RELEASE}: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}. Visitors may be stuck; fix forward.`;
+            const issues = await github.paginate(github.rest.issues.listForRepo, {...context.repo, state: 'open', labels: 'bug'});
+            const issue = issues.find(i => !i.pull_request && i.title === title);
+            // Each broken release is reported once, however many polls see it.
+            const said = issue && (issue.body.includes(process.env.RELEASE) || (await github.paginate(github.rest.issues.listComments, {...context.repo, issue_number: issue.number})).some(c => c.body.includes(process.env.RELEASE)));
+            if (said) core.info('This release is already reported.');
+            else if (issue) await github.rest.issues.createComment({...context.repo, issue_number: issue.number, body});
+            else await github.rest.issues.create({...context.repo, title, body, labels: ['bug']});
