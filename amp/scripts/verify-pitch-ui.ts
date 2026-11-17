@@ -386,7 +386,15 @@ async function closeIsBalanced(
       funds: box("[data-education-funds]"),
       fundLinks: document.querySelectorAll("[data-education-funds] a").length,
       fundRows: rows("[data-education-funds] a"),
-      footerRows: rows("footer a"),
+      footerSpread: (() => {
+        const centres = [...document.querySelectorAll("footer a")].map(
+          (node) => {
+            const r = node.getBoundingClientRect();
+            return r.top + r.height / 2;
+          },
+        );
+        return Math.max(...centres) - Math.min(...centres);
+      })(),
     };
   });
   const { price, buy, guarantee, free } = found;
@@ -406,7 +414,10 @@ async function closeIsBalanced(
       Math.abs(right.bottom - price.bottom) <= 2,
       `${tag}: both columns end on one line: ${JSON.stringify(found)}`,
     );
-    assert.equal(found.footerRows, 1, `${tag}: the footer is one row`);
+    assert.ok(
+      found.footerSpread <= 1,
+      `${tag}: the footer is one row, every link and icon on one centre line: ${found.footerSpread}px apart`,
+    );
   } else
     assert.ok(
       guarantee.top >= price.bottom && right.top >= guarantee.top,

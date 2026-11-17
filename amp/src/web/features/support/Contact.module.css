@@ -85,6 +85,13 @@
   padding: 0;
   list-style: none;
 }
+/* Each icon is its own 44 px box, centred on the text links' line: no
+   list-item line box adds room under it. */
+.socials li {
+  display: flex;
+  /* Over the legacy element rule's space between list items. */
+  margin: 0;
+}
 .socials a {
   display: inline-grid;
   place-items: center;

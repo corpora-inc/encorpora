@@ -474,6 +474,10 @@
   padding: 0;
   list-style: none;
 }
+/* Over the legacy element rule's space under each list item. */
+.funds li {
+  margin: 0;
+}
 .fundLink {
   min-height: var(--target-size);
   padding-inline: var(--space-3);
