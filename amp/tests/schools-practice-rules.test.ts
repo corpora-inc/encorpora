@@ -112,7 +112,9 @@ test("the overview counts practiced students and states the growth median's n", 
   assert.equal(one.growth, -0.3);
   assert.ok(Math.abs(one.growthLow! - (-0.3 - 1.96 * 0.5)) < 0.12);
   assert.ok(Math.abs(one.growthHigh! - (-0.3 + 1.96 * 0.5)) < 0.12);
-  assert.ok(usage.growthLow! < usage.growth! && usage.growth! < usage.growthHigh!);
+  assert.ok(
+    usage.growthLow! < usage.growth! && usage.growth! < usage.growthHigh!,
+  );
 });
 
 const student = (
