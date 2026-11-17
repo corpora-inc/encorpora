@@ -148,9 +148,8 @@ export function ProgressWorkspace({
   const list = useRef<HTMLDivElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
   const [capacity, setCapacity] = useState(2);
-  // The page size the overflow guard settled on, for the stage height it
-  // measured.
-  const fitted = useRef<{ height: number; capacity: number } | null>(null);
+  // The stage size the page was last sized for.
+  const sized = useRef<string | null>(null);
   const [largeText, setLargeText] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const returnSkill = useRef<string | null>(null);
@@ -185,20 +184,21 @@ export function ProgressWorkspace({
       const gap = grid
         ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
         : 12;
+      // The stage back at the size the page was sized for (an idea's detail
+      // closed): the page keeps its size, with any row the guard below
+      // dropped, so it never shows one row longer for a frame.
+      const size = `${target.clientWidth}x${target.clientHeight}x${columns}x${largeText}`;
+      if (size === sized.current) return;
+      sized.current = size;
       // As many rows as the stage holds: a tall screen's page never leaves
-      // a card-sized gap under its cards. A row the guard below had to drop
-      // at this stage size stays dropped, so coming back from an idea never
-      // shows the page one row longer for a frame.
-      const fits =
-        Math.max(1, Math.floor((target.clientHeight + gap) / (card + gap))) *
-        columns;
-      const dropped = fitted.current;
+      // a card-sized gap under its cards.
       setCapacity(
         largeText
           ? 1
-          : dropped && dropped.height === target.clientHeight
-            ? Math.min(fits, dropped.capacity)
-            : fits,
+          : Math.max(
+              1,
+              Math.floor((target.clientHeight + gap) / (card + gap)),
+            ) * columns,
       );
     };
     const observer = new ResizeObserver(measure);
@@ -216,9 +216,7 @@ export function ProgressWorkspace({
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
-      const fewer = Math.max(1, capacity - columns);
-      fitted.current = { height: stage.clientHeight, capacity: fewer };
-      setCapacity(fewer);
+      setCapacity(Math.max(1, capacity - columns));
     }
   });
   const entries = (snapshot?.skills ?? []).flatMap((evidence) => {
