@@ -74,6 +74,7 @@ export function PathwayPlan({
   here,
   levelLoading = false,
   area = null,
+  record = true,
 }: {
   skills: MapSkill[];
   evidence: Evidence[];
@@ -87,6 +88,9 @@ export function PathwayPlan({
   levelLoading?: boolean;
   /** One area chosen (`?area=`): only its skills, and its counts. */
   area?: AreaId | null;
+  /** Whose record the bands count (false for a visitor, who has none):
+   * each band then says how many skills it holds, with no bar. */
+  record?: boolean;
 }) {
   // The grades view names its grades, unless the child's grown-up or school
   // has chosen not to show them: then the same bands, in the same order,
@@ -163,6 +167,12 @@ export function PathwayPlan({
   };
   useLayoutEffect(() => {
     if (selected && ready) reveal(selected);
+    // Closed: a centring still on its way is for a skill no longer chosen,
+    // and the page's place is the screen's to keep.
+    if (!selected) {
+      pending.current = null;
+      cancelAnimationFrame(settle.current);
+    }
   }, [selected, skills, ready]);
   useEffect(() => {
     if (frame) reveal(frame.id);
@@ -236,19 +246,27 @@ export function PathwayPlan({
                     {current && (
                       <span className={styles.here}>Where you are</span>
                     )}
-                    <span className={styles.count}>
-                      <span aria-hidden="true">{`${earned} / ${all.length}`}</span>
-                      <span className="sr-only">{`${earned} of ${all.length} earned`}</span>
-                    </span>
-                    <span
-                      className={styles.bar}
-                      aria-hidden="true"
-                      style={
-                        {
-                          "--share": all.length ? earned / all.length : 0,
-                        } as CSSProperties
-                      }
-                    />
+                    {record ? (
+                      <>
+                        <span className={styles.count}>
+                          <span aria-hidden="true">{`${earned} / ${all.length}`}</span>
+                          <span className="sr-only">{`${earned} of ${all.length} earned`}</span>
+                        </span>
+                        <span
+                          className={styles.bar}
+                          aria-hidden="true"
+                          style={
+                            {
+                              "--share": all.length ? earned / all.length : 0,
+                            } as CSSProperties
+                          }
+                        />
+                      </>
+                    ) : (
+                      <span className={styles.count} data-plan-total="">
+                        {`${all.length} skills`}
+                      </span>
+                    )}
                   </span>
                 }
               >

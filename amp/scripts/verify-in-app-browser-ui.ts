@@ -22,7 +22,7 @@ import type { BrowserKind } from "../src/analytics/browser-kind";
  * - the pitch paints with no horizontal overflow and no layout shift;
  * - the film shows its poster and plays on a tap;
  * - scrolling the whole pitch, as a thumb does, moves and breaks nothing;
- * - Buy and Try it free (at the top and in the closing section) reach their
+ * - Try it free (on the first screen and beside Buy) and Buy reach their
  *   sign-up screens, and Back returns;
  * - no error boundary shows and no `client_error` blames our code. The
  *   webview's own errors are still recorded, as external, at most three of a
@@ -287,7 +287,7 @@ const layout = (page: Page) =>
     }),
   );
 const boundaryText = /This screen could not be loaded|Something went wrong/;
-const heading = "See how far your child can go in math.";
+const heading = "Kids put in the time and AMP does the rest.";
 
 async function run(
   browser: Browser,
@@ -379,7 +379,9 @@ async function run(
     await page.getByRole("button", { name: "Buy AMP" }).first().waitFor();
     assert.equal((await poster)?.status(), 200, `${tag}: poster loads`);
     await page.evaluate(() => document.fonts.ready);
-    const figure = await page.locator("[data-pitch] figure").boundingBox();
+    const figure = await page
+      .locator("[aria-labelledby=pitch-film] figure")
+      .boundingBox();
     assert.ok(
       figure && figure.height > 100 && figure.width > 100,
       `${tag}: the film's box shows`,
@@ -441,7 +443,7 @@ async function run(
       await page.waitForTimeout(120);
     }
     await page
-      .getByRole("region", { name: "Get started" })
+      .getByRole("region", { name: "Price" })
       .getByRole("button", { name: "Buy AMP" })
       .waitFor();
     assert.ok((await overflow()) <= 1, `${tag}: no overflow at the end`);
@@ -462,7 +464,7 @@ async function run(
         await (
           closing
             ? page
-                .getByRole("region", { name: "Get started" })
+                .getByRole("region", { name: "Price" })
                 .getByRole("button", { name })
             : page.getByRole("button", { name }).first()
         ).click();

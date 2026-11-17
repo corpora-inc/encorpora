@@ -693,16 +693,17 @@ const inventory = createRoute({
     "InventoryScreen",
   ),
 });
-/** One map for the whole curriculum: a skill opens over it as a layer
- * (nav/layer-store.ts), so choosing or closing one never moves the map (its
- * camera, full screen and orbit stay as they were). */
+/** One map for the whole curriculum: a skill opens over it, at its own
+ * address (`/pathways/<skill>`, `pathwaysSkill` below), and choosing or
+ * closing one never moves the map (its camera, full screen and orbit stay
+ * as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
-  // (A skill, lesson or shared stack from before the layer store, `?skill=`,
-  // `?lesson=`, `?open=` and `/pathways/<skill>`, is an app/legacy-aliases.ts
-  // row, which seeds the store.)
+  // (A skill, lesson or shared stack in the query, `?skill=`, `?lesson=`,
+  // `?open=`, is an app/legacy-aliases.ts row: a skill to its address, the
+  // rest into the store.)
   beforeLoad: async ({ location }) => {
     await framedScreen();
     await adoptPracticeMode(location);
@@ -734,6 +735,15 @@ const pathways = createRoute({
 const pathwaysIndex = createRoute({
   getParentRoute: () => pathways,
   path: "/",
+});
+/** A skill open over your own map: the map stays mounted under it (this
+ * route draws nothing of its own; nav/links.tsx `useLayers` reads the
+ * skill from the address), and it is the map's overlay one leaf below it,
+ * so Back to the map keeps the map's scroll (`overList`). */
+const pathwaysSkill = createRoute({
+  getParentRoute: () => pathways,
+  path: "$skill",
+  staticData: { space: "learner", overList: true },
 });
 /** A learner's workbooks are a tab of their Progress. The address names
  * the learner (`$learnerId`): the screen reads it from there, and once the
@@ -1592,7 +1602,7 @@ export const router = createRouter({
     startConsent,
     startVerify,
     inventory,
-    pathways.addChildren([pathwaysIndex]),
+    pathways.addChildren([pathwaysIndex, pathwaysSkill]),
     workbookHistory,
     workbookDay,
     workbookResults,
