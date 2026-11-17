@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { track } from "../../lib/analytics";
 import { queryClient } from "../../lib/query-client";
-import type { FundedProgram } from "../../lib/funded-entry";
+import { fundedPrograms, type FundedProgram } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass, type ButtonVariant } from "../../ui/Button";
 import { PlanChoice } from "../billing/PlanChoice";
@@ -56,6 +56,21 @@ export function loadBuyData(search: Record<string, unknown>) {
   // for the tab.
   const program = pitchProgram(keepArrival(search).program);
   return Promise.all([
+    // Without a program, the page offers each program that sells now
+    // (`useBuyData`'s `funds`); a failed read leaves that program out.
+    ...(program
+      ? []
+      : Object.values(fundedPrograms).map((entry) =>
+          queryClient
+            .ensureQueryData(invoiceOffersOptions(entry.id))
+            .catch((error: unknown) =>
+              console.warn(
+                "A program's offers didn’t preload; it isn’t offered",
+                { program: entry.id },
+                error,
+              ),
+            ),
+        )),
     queryClient
       .ensureQueryData(pricesOptions)
       .catch((error: unknown) =>
@@ -77,6 +92,9 @@ export function loadBuyData(search: Record<string, unknown>) {
 
 export type BuyData = {
   program?: FundedProgram;
+  /** Without a program: each program with a live offer, whose no-account
+   * invoice can be made now. */
+  funds?: FundedProgram[];
   fundedOffer?: InvoiceOffer;
   offers: AnnualOffer[];
   /** Each additional child's price, when this environment sells one. */
@@ -94,8 +112,20 @@ export function useBuyData(search: Record<string, unknown>): BuyData {
     enabled: !!program,
   });
   const fundedOffer = annualInvoiceOffer(funded.data?.offers);
+  const all = Object.values(fundedPrograms);
+  const funds = useQueries({
+    queries: all.map((entry) => ({
+      ...invoiceOffersOptions(entry.id),
+      enabled: !program,
+    })),
+  });
   return {
     program,
+    funds: program
+      ? []
+      : all.filter(
+          (_, index) => !!annualInvoiceOffer(funds[index]?.data?.offers),
+        ),
     fundedOffer,
     offers: prices.data?.available ? prices.data.offers : [],
     extraOffers: prices.data?.available ? prices.data.extraOffers : undefined,

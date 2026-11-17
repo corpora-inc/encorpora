@@ -2,10 +2,17 @@ import { useSessionOrNull } from "../lib/session";
 import { useLocation, useRouter, useSearch } from "@tanstack/react-router";
 import type { ComponentProps, MouseEvent, ReactNode } from "react";
 import { closeTo } from "../lib/return-to";
-import { OPEN_KEY, readStack, writeStack, type Entity } from "./entities";
+import {
+  closeDepth,
+  OPEN_KEY,
+  readStack,
+  writeStack,
+  type Entity,
+} from "./entities";
 import {
   layerActions,
   layerScope,
+  pathwaysSkill,
   pushed,
   stackOf,
   useLayerStore,
@@ -87,9 +94,8 @@ export function settleLegacyLayers(
  * of its own carries (`?from=`, a film): with no history behind it, closing
  * still lands on the layers it was opened from. */
 export function useHereWithLayers() {
-  const { stack } = useLayers();
-  const location = useLocation();
-  return shareableHref(location.pathname, location.searchStr, stack);
+  const { stack, href } = useLayers();
+  return href(stack);
 }
 
 /** The screen whose layers these are: its account, learner and address. */
@@ -99,18 +105,97 @@ export function useLayerScope() {
   return layerScope(pathname, accountId);
 }
 
+/** Your own Pathways (`/pathways`, `/pathways/<skill>`): its skill is its
+ * address, the layers over that skill are the store's. */
+const OWN_MAP = "/pathways";
+const onOwnMap = (pathname: string) =>
+  (pathname.replace(/\/+$/, "") || "/") === OWN_MAP ||
+  pathwaysSkill(pathname) !== undefined;
+const skillAddress = (id: string) => `${OWN_MAP}/${encodeURIComponent(id)}`;
+
 /** The layer stack on this screen (nav/layer-store.ts), and opening and
- * closing its layers (a link, a key, a row's handler, the frame's trail). */
+ * closing its layers (a link, a key, a row's handler, the frame's trail),
+ * with the address a stack is shared by (`href`). */
 export function useLayers() {
   const scope = useLayerScope();
+  const location = useLocation();
+  const router = useRouter();
   const legacy = legacyLayers(useSearch({ strict: false }) as Search);
   const stored = useLayerStore(stackOf(scope));
+  // A link from before the store shows its layers on its first frame,
+  // while the router moves them into the store.
+  const kept = legacy.length ? legacy : stored;
+  if (!onOwnMap(location.pathname))
+    return {
+      scope,
+      stack: kept,
+      href: (next: Layer[]) =>
+        shareableHref(location.pathname, location.searchStr, next),
+      ...layerActions(scope),
+    };
+  // Your own Pathways: the skill open over the map is the screen's own
+  // address (/pathways/<skill>), so Back closes it, a refresh keeps it and
+  // a link shares it. What opens over that skill (a lesson) is the store's.
+  // The store keeps the skill a stack was opened over at its foot: layers
+  // left over another skill (Back closed it, a link named another) are
+  // not this one's.
+  const skill = pathwaysSkill(location.pathname);
+  const foot = kept[0]?.kind === "skill" ? kept[0].id : undefined;
+  const over =
+    foot === skill
+      ? kept.slice(skill ? 1 : 0).filter((layer) => layer.kind !== "skill")
+      : [];
+  const stack: Layer[] = skill ? [{ kind: "skill", id: skill }, ...over] : over;
+  /** The newest skill in a stack is the address; what is over it stays. */
+  const split = (next: Layer[]) => {
+    const at = next.map((layer) => layer.kind).lastIndexOf("skill");
+    return {
+      base: at >= 0 ? next[at]!.id : undefined,
+      rest: next.slice(at + 1),
+    };
+  };
+  const href = (next: Layer[]) => {
+    const { base, rest } = split(next);
+    return shareableHref(
+      base ? skillAddress(base) : OWN_MAP,
+      location.searchStr,
+      rest,
+    );
+  };
+  const apply = (next: Layer[], direction: 1 | -1) => {
+    const { base, rest } = split(next);
+    useLayerStore
+      .getState()
+      .set(
+        scope,
+        base ? [{ kind: "skill", id: base }, ...rest] : rest,
+        direction,
+      );
+    if (base === skill) return;
+    // Closed: back to the map, as Back would (one entry, never a new one).
+    if (!base) closeTo(router, OWN_MAP);
+    // Another skill from one (Builds on): the same entry, so Back still
+    // closes the sheet to the map. From the map: a new entry.
+    else
+      void router.navigate({
+        href: skillAddress(base),
+        replace: skill !== undefined,
+        resetScroll: false,
+      });
+  };
   return {
     scope,
-    // A link from before the store shows its layers on its first frame,
-    // while the router moves them into the store.
-    stack: legacy.length ? legacy : stored,
-    ...layerActions(scope),
+    stack,
+    href,
+    open: (layers: Layer | Layer[]) =>
+      apply([layers].flat().reduce(pushed, stack), 1),
+    close: () => apply(stack.slice(0, -1), -1),
+    closeToDepth: (depth: number) => apply(stack.slice(0, depth), -1),
+    closeAll: () =>
+      apply(stack.slice(0, closeDepth(stack, stack.length - 1)), -1),
+    closeLayer: (index: number) =>
+      apply(stack.slice(0, closeDepth(stack, index)), -1),
+    replaceTop: (layer: Layer) => apply([...stack.slice(0, -1), layer], 1),
   };
 }
 
@@ -139,7 +224,6 @@ export function EntityLink({
   children: ReactNode;
 } & Omit<ComponentProps<"a">, "href" | "ref">) {
   const layers = useLayers();
-  const location = useLocation();
   const list: Layer[] = [entity].flat();
   if (extra?.skill)
     list[list.length - 1] = { ...list.at(-1)!, skill: extra.skill };
@@ -149,7 +233,7 @@ export function EntityLink({
       : list.reduce(pushed, layers.stack);
   return (
     <a
-      href={shareableHref(location.pathname, location.searchStr, next)}
+      href={layers.href(next)}
       data-entity={list.at(-1)!.kind}
       data-entity-step={replace ? "" : undefined}
       {...rest}
