@@ -27,6 +27,19 @@ export function practiceTime(entry: Interval): string | null {
     : `${minutes} · ${entry.problems} ${entry.problems === 1 ? "problem" : "problems"}`;
 }
 
+/**
+ * What a chart column offers about its interval, the one rule for every
+ * practice-time chart (a child's page, the family's week): its detail on
+ * hover, tap and keyboard focus (TipZone reads `data-tip`). An interval
+ * still ahead (a day after today) has happened to no one yet: it keeps its
+ * place in the row but has no detail, no tip and no focus stop.
+ */
+export function intervalDetail(text: string, ahead = false) {
+  return ahead
+    ? ({ "aria-hidden": true, "data-ahead": "" } as const)
+    : ({ tabIndex: 0, "aria-label": text, "data-tip": text } as const);
+}
+
 /** Daily and weekly activity share one chart, beginning with practice.
  * Keep quiet intervals after that first practice; a single interval is a fact. */
 export function ChildActivity({
@@ -129,6 +142,7 @@ export function DailyBars({
   detail,
   name,
   edge = label,
+  ahead,
 }: {
   intervals: readonly Interval[];
   label: (entry: Interval) => string;
@@ -137,6 +151,8 @@ export function DailyBars({
   name: string;
   /** The first and last interval's name under the chart. */
   edge?: (entry: Interval) => string;
+  /** An interval still to come, shown without detail (`intervalDetail`). */
+  ahead?: (entry: Interval) => boolean;
 }) {
   const largest = Math.max(1, ...intervals.map((entry) => entry.minutes));
   if (intervals.length === 0) return null;
@@ -148,9 +164,10 @@ export function DailyBars({
             <div
               key={entry.date}
               className={styles.column}
-              tabIndex={0}
-              aria-label={`${label(entry)}: ${detail(entry)}`}
-              data-tip={`${label(entry)}: ${detail(entry)}`}
+              {...intervalDetail(
+                `${label(entry)}: ${detail(entry)}`,
+                ahead?.(entry),
+              )}
             >
               <span
                 className={styles.bar}

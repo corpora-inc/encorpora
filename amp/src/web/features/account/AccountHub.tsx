@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Outlet } from "@tanstack/react-router";
+import { RouteSheetOutlet } from "../../nav/RouteSheet";
 import { meOptions } from "../../lib/query";
 import { useSession } from "../../lib/session";
 import { buttonClass } from "../../ui/Button";
@@ -65,7 +65,7 @@ export function AccountHost() {
   return (
     <>
       <AccountHubScreen />
-      <Outlet />
+      <RouteSheetOutlet />
     </>
   );
 }

@@ -21,6 +21,7 @@ import {
 } from "./store";
 import styles from "./Pay.module.css";
 import { useSession } from "../../lib/session";
+import { useSettingsHref } from "../spaces/settings-hub";
 
 type Learner = PayLearner;
 
@@ -159,6 +160,7 @@ export function CardDone({
   const { origin, base } = usePayAddress();
   const close = usePayClose();
   const navigate = useNavigate();
+  const billing = useSettingsHref("billing");
   if (outcome.state === "active")
     return (
       <div className={styles.panel}>
@@ -213,7 +215,7 @@ export function CardDone({
       <Panel
         text={outcome.text}
         action={
-          <Link to="/account/billing" className={buttonClass("primary")}>
+          <Link to={billing as never} className={buttonClass("primary")}>
             View billing
           </Link>
         }

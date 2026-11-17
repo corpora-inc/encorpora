@@ -8,6 +8,7 @@ import {
 import { buttonClass } from "./Button";
 import { AppError } from "../lib/AppError";
 import { WAVE_PATH } from "./Loading";
+import { useInAppFrame } from "./app-frame";
 import { onMediaChange } from "../lib/media-query";
 import { errorDetails } from "../../analytics/error-details";
 import {
@@ -42,7 +43,12 @@ export function markArrival() {
  *
  * `overlay` is a screen's own wait for its data inside a frame: the same wave
  * in the same place as the router's pending screen, never a small one in the
- * corner of the content.
+ * corner of the content. Inside the app frame (app/AppShell.tsx) every wait
+ * is one: the bar and the drawer stay mounted and still around it, and what
+ * arrives replaces only the content. Only a whole screen's wait (no frame
+ * yet) fades the page in as it leaves (`markArrival`); fading the root under
+ * a frame would blink the bar that never left (practice's family icon did,
+ * each time a child's first problem arrived).
  */
 export function LoadingScreen({
   error = "",
@@ -50,7 +56,7 @@ export function LoadingScreen({
   retryLabel = "Try again",
   busy = false,
   recovery,
-  overlay = false,
+  overlay: asked = false,
 }: {
   error?: string;
   retry?: () => void;
@@ -61,6 +67,10 @@ export function LoadingScreen({
    * the space under the bar. */
   overlay?: boolean;
 }) {
+  const framed = useInAppFrame();
+  // A failure keeps its own surface and its buttons (an overlay lets clicks
+  // through to the screen behind).
+  const overlay = asked || (framed && !error);
   const wave = useRef<SVGPathElement>(null);
   useLayoutEffect(() => {
     if (error) return;
