@@ -802,8 +802,10 @@ async function parentJourney(
   await rename.fill("Ro");
   await settings.getByRole("button", { name: "Save name" }).click();
   // The sheet and the family's list both say the new name at once.
-  await page.getByRole("dialog", { name: "Ro", exact: true }).waitFor();
-  await page.keyboard.press("Escape");
+  const renamed = page.getByRole("dialog", { name: "Ro", exact: true });
+  await renamed.waitFor();
+  await renamed.getByRole("button", { name: "Close" }).first().click();
+  await renamed.waitFor({ state: "detached" });
   await page.getByRole("button", { name: "Ro’s settings" }).waitFor();
   await page.goto(`${origin}/family/learners/new`);
   await page.getByRole("dialog", { name: "Add a child" }).waitFor();
