@@ -30,7 +30,7 @@ export type FamilyChild = FamilyProjection["children"][number];
 export type FamilyPlace = FamilyPlaces["families"][number];
 
 const key = (session: AuthSession, ...rest: unknown[]) =>
-  [...qk.families(session.accountId), ...rest] as const;
+  qk.account(session.accountId, "families", ...rest);
 
 /** A student's session never reads a parent's family. */
 const adult = (session: AuthSession | null | undefined) =>

@@ -17,7 +17,7 @@ import { invalidateAccount } from "../../lib/query";
  * key, so every change to the account refreshes them with `/me`. */
 export const approvalsOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: qk.familyApprovals(session.accountId),
+    queryKey: qk.account(session.accountId, "family-approvals"),
     queryFn: ({ signal }) =>
       request(
         "/family/approvals",
@@ -29,7 +29,7 @@ export const approvalsOptions = (session: AuthSession) =>
 /** The approving parent's page about one child. */
 export const approvalOptions = (session: AuthSession, id: string) =>
   queryOptions({
-    queryKey: qk.familyApproval(session.accountId, id),
+    queryKey: qk.account(session.accountId, "family-approval", id),
     queryFn: ({ signal }) =>
       request(
         `/family/approvals/${encodeURIComponent(id)}`,

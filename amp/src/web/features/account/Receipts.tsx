@@ -39,7 +39,7 @@ export function Receipts({
   const [cursor, setCursor] = useState<string | null>(null);
   const [previous, setPrevious] = useState<z.infer<typeof payment>[]>([]);
   const records = useQuery({
-    queryKey: qk.receipts(session.accountId, cursor),
+    queryKey: qk.account(session.accountId, "receipts", cursor),
     queryFn: ({ signal }) =>
       request(
         `/payments${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,

@@ -578,7 +578,7 @@ test("query keys spelled outside lib/keys.ts count", () => {
     const a = queryOptions({ queryKey: ["account", id, "receipts"], queryFn });
     const b = queryOptions({ queryKey: [...billingKey(id), "offer"] as const, queryFn });
     void client.invalidateQueries({ queryKey: ["account", id] });
-    const d = queryOptions({ queryKey: qk.receipts(id, null), queryFn });
+    const d = queryOptions({ queryKey: qk.account(id, "receipts", null), queryFn });
     void client.invalidateQueries({ queryKey: qk.account(id) });
     const f = { queryKey };
   `;

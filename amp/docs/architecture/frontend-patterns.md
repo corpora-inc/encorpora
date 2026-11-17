@@ -39,18 +39,20 @@ Route guards and loaders run outside React. They keep using `queryClient.ensureQ
 
 ## Query keys
 
-Every key is built in `lib/keys.ts` (`qk`) and nowhere else. An account's data sits under `qk.account(id)`. One `invalidateAccount(id)` refreshes everything the account shows, and a change of account drops it all. Data that is the same for every visitor gets its own root.
+Every key is built with `qk` from `lib/keys.ts`, and nowhere else. An account's data sits under `qk.account(id)`. One `invalidateAccount(id)` refreshes everything the account shows, and a change of account drops it all.
+
+Each of an account's resources is named once, in the `AccountResources` type, along with the parts that follow its name. Because the registry is a type, it adds nothing to the entry bundle, and the compiler still checks every key's shape.
 
 ```ts
 // Do
-queryKey: qk.receipts(session.accountId, cursor),
-void queryClient.invalidateQueries({ queryKey: qk.secondParent(session.accountId) });
+queryKey: qk.account(session.accountId, "receipts", cursor),
+void queryClient.invalidateQueries({ queryKey: qk.account(session.accountId, "second-parent") });
 
 // Don't
 queryKey: ["account", session.accountId, "receipts", cursor],
 ```
 
-A new resource gets a builder in `qk`, with a one-line comment that says what it holds. A module may keep a scoped helper that spreads a `qk` root (`features/family/api.ts` `key`, `features/school/api.ts` `keyFor`).
+To add a resource, add a line to `AccountResources` with a one-line comment that says what it holds. A module may keep a helper that builds on one resource (`features/family/api.ts` `key`, `features/school/api.ts` `keyFor`). Data that is the same for every visitor, such as prices or the catalog, gets its own builder in `qk` under its own root.
 
 ## Errors
 

@@ -41,9 +41,10 @@ export const authConfigOptions = queryOptions({
   queryFn: () => authConfig(),
   staleTime: Infinity,
 });
-export const meKey = (identity: string | null) => qk.me(identity);
+export const meKey = (identity: string | null) => qk.account(identity, "me");
 /** The adult's own record (`features/me`), under the account's key. */
-export const ownPracticeKey = (identity: string) => qk.ownPractice(identity);
+export const ownPracticeKey = (identity: string) =>
+  qk.account(identity, "own-practice");
 export const meOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: meKey(session.accountId),

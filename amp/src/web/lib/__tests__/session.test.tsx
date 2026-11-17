@@ -58,6 +58,6 @@ test("forSession asks nothing while signed out, without a stand-in session", () 
   const out = forSession(null, meOptions);
   expect(out.queryFn).toBe(skipToken);
   const signedIn = forSession(parent, meOptions);
-  expect(signedIn.queryKey).toEqual(qk.me("a-1"));
+  expect(signedIn.queryKey).toEqual(qk.account("a-1", "me"));
   expect(signedIn.queryFn).not.toBe(skipToken);
 });

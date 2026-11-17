@@ -13,7 +13,7 @@ import { qk } from "../../lib/keys";
 
 export const deletionPreviewOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: qk.deletion(session.accountId),
+    queryKey: qk.account(session.accountId, "deletion"),
     staleTime: 0,
     refetchOnMount: "always",
     retry: false,

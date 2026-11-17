@@ -17,7 +17,7 @@ export type LevelTrendPoint = z.infer<typeof trendPoint>;
  * account's key, so a change to the account refreshes it with the rest. */
 export const levelTrendOptions = (session: AuthSession, learnerId: string) =>
   queryOptions({
-    queryKey: qk.levelTrend(session.accountId, learnerId),
+    queryKey: qk.account(session.accountId, "level-trend", learnerId),
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(learnerId)}/level-trend`,

@@ -102,7 +102,7 @@ export const call = <T>(
   });
 
 export const keyFor = (session: AuthSession, ...rest: unknown[]) =>
-  [...qk.school(session.accountId), ...rest] as const;
+  qk.account(session.accountId, "school", ...rest);
 
 export const orgsOptions = (session: AuthSession) =>
   queryOptions({
