@@ -353,8 +353,10 @@ async function journey(
     .filter({ visible: true })
     .first()
     .click();
+  // Back to family returns the device to the screen it was handed over
+  // from: the child's page.
   await page.getByRole("button", { name: "Back to family" }).click();
-  await page.waitForURL(FAMILY_TODAY);
+  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
   await workbooksOf(fox);
 
   // Reprints belong to specific students. Exhaustion keeps issued results
