@@ -74,20 +74,13 @@ function items() {
     out.push({
       src: `gallery: ${c.name}`,
       scene: c.scene,
-<<<<<<< HEAD
       reveal:
         "reveal" in c && typeof c.reveal === "boolean" ? c.reveal : undefined,
-      boxes: c.scene.elements.every((e) => offered.has(e.type))
-        ? CONTAINERS
-        : [OWN, PHONE_PANEL],
-=======
-      reveal: "reveal" in c ? c.reveal : undefined,
       boxes:
         !c.name.includes("(lesson)") &&
         c.scene.elements.every((e) => offered.has(e.type))
           ? CONTAINERS
           : [OWN, PHONE_PANEL],
->>>>>>> origin/fix-number-line-figure
     });
   return out;
 }
