@@ -624,7 +624,7 @@ for (const width of widths)
         assert(first.title.height > 40, `${tag}: the title wraps`);
       // The catalog is in; the lesson is still on its way.
       const catalogIn = wrapping.waitForResponse((r) =>
-        r.url().endsWith("/api/v1/catalog"),
+        /\/api\/v1\/catalog(?:\/map)?$/.test(r.url()),
       );
       releaseCatalog();
       await catalogIn;
