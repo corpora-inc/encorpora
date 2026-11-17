@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { AuthSession } from "../../auth";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
 import { queryClient } from "../../lib/query";
-import { useSession } from "../../lib/session";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { familyPlacesOptions } from "../family/api";
 import { settingsFamilyOf } from "../family/settings-family";
 
@@ -48,9 +48,10 @@ export async function loadSettingsHub(
 }
 
 /** The hub (or an overlay over it) for the signed-in account. Until the
- * places arrive it is `/account`'s address, which renders for anyone. */
+ * places arrive, or signed out, it is `/account`'s address, which renders
+ * for anyone signed in. */
 export function useSettingsHref(overlay?: SettingsOverlay): string {
-  const session = useSession();
-  const places = useQuery(familyPlacesOptions(session));
+  const session = useSessionOrNull();
+  const places = useQuery(forSession(session, familyPlacesOptions));
   return settingsHref(places.data, overlay);
 }

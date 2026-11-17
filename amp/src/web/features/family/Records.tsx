@@ -222,10 +222,10 @@ function NoClass({ place, what }: { place: FamilyPlace; what: string }) {
         action={
           <Link
             to="/$"
-            params={{ _splat: familyHref(place.family, "map") }}
+            params={{ _splat: familyHref(place.family) }}
             className={buttonClass("primary")}
           >
-            Open Progress
+            Open Today
           </Link>
         }
       ></EmptyState>

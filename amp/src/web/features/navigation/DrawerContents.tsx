@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
-import { useQuery } from "@tanstack/react-query";
 import {
   Link,
   useLocation,
@@ -14,9 +13,7 @@ import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
 import type { SpaceDescriptor } from "../spaces/resolve";
 import { useLocationMatch, useSpace } from "../spaces/useSpace";
-import { settingsHref } from "../spaces/settings-hub";
-import { familyPlacesOptions } from "../family/api";
-import { forSession, useSessionOrNull } from "../../lib/session";
+import { useSettingsHref } from "../spaces/settings-hub";
 import { childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { clearInitialConsentChallenge } from "../../consent-entry";
@@ -105,11 +102,7 @@ export default function DrawerContents({
   const student = account?.account.kind === "student";
   const { groups, more } = usePlaces(account);
   // Where the account's settings are (features/spaces/settings-hub.ts).
-  const signedIn = useSessionOrNull();
-  const places = useQuery(
-    forSession(student ? null : signedIn, familyPlacesOptions),
-  );
-  const settings = settingsHref(places.data);
+  const settings = useSettingsHref();
   // Opening the drawer is the intent: each item's screen (its code and
   // data) loads now, so the one a tap chooses renders whole, at once.
   const router = useRouter();

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, Outlet } from "@tanstack/react-router";
+import { Outlet } from "@tanstack/react-router";
 import { meOptions } from "../../lib/query";
 import { useSession } from "../../lib/session";
 import { buttonClass } from "../../ui/Button";
@@ -7,7 +7,7 @@ import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Page } from "../../ui/Page";
 import { PageHeader } from "../../ui/PageHeader";
 import { PageSection } from "../../ui/PageSection";
-import { OwnStartSetting } from "../me/OwnStartSetting";
+import { OwnPractice } from "../me/OwnPractice";
 import { PayLink } from "../pay/link";
 import { secondParentOnly } from "../second-parent/api";
 import { AccountSections } from "./AccountSections";
@@ -47,18 +47,8 @@ export function AccountHubScreen() {
         <NameEditor />
       </PageSection>
       {practice && (
-        <PageSection
-          title="Your practice"
-          titleId="account-practice"
-          actions={
-            own ? (
-              <Link to="/me" className={buttonClass("secondary")}>
-                Open my practice
-              </Link>
-            ) : undefined
-          }
-        >
-          {ownLearner && <OwnStartSetting start={ownLearner.start} />}
+        <PageSection titleId="account-practice" aria-label="Your practice">
+          <OwnPractice />
           {own && ownLearner && !ownLearner.hasAccess && !plan && (
             <PayLink learnerId={own.id} className={buttonClass("primary")}>
               Continue with AMP

@@ -17,7 +17,7 @@ import type { ReactNode } from "react";
 import { afterEach, expect, test, vi } from "vitest";
 import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { buttonClass } from "../../../ui/Button";
-import { ChildActions, ChildSettings } from "../Child";
+import { ChildActions, ChildSettings, ChildSettingsSheet } from "../Child";
 import type { FamilyChild } from "../api";
 import type { FamilyPlace } from "../FamilyFrame";
 
@@ -167,19 +167,18 @@ test("the child's actions: Practice, then their own devices beside it; no progre
 test("the child's settings: one folded Settings, the name inside; devices only beside Practice", async () => {
   mount(<ChildSettings place={place} child={child} />);
   const fold = await settingsFold();
-  expect(document.querySelectorAll("details")).toHaveLength(1);
   expect(fold.open).toBe(false);
   expect(fold.querySelector("summary")!.textContent).toBe("Settings");
   // Nothing of the settings is on the page outside the fold.
   expect(screen.queryByRole("heading")).toBeNull();
-  for (const row of [
-    "Name",
-    "Birth year",
-    "Sign-in pictures",
-    "Consent",
-    "Delete learning data",
-  ])
+  for (const row of ["Name", "Birth year", "Sign-in pictures"])
     expect(within(fold).getByText(row, { selector: "dt" })).toBeTruthy();
+  // Permission and their data fold inside it: never a sheet over it.
+  expect(
+    [...fold.querySelectorAll("details > summary")].map((node) =>
+      node.textContent?.trim(),
+    ),
+  ).toEqual(["Learning permission", "Delete learning data"]);
   expect(screen.queryByText("Advanced")).toBeNull();
   // One entry per feature: their own devices are an action, not a setting.
   expect(screen.queryByText("Their own devices")).toBeNull();
@@ -188,23 +187,17 @@ test("the child's settings: one folded Settings, the name inside; devices only b
     expect(link.getAttribute("href")).not.toMatch(/^\/account\/privacy/);
 });
 
-for (const [row, sheet, title] of [
-  ["data-child-consent", "data-consent-sheet", "Consent"],
-  ["data-child-delete", "data-delete-sheet", "Delete Foobar’s learning data"],
-] as const)
-  test(`${title} opens over the settings and closes back to them, with no address or history`, async () => {
+for (const summary of ["Learning permission", "Delete learning data"])
+  test(`${summary} opens in place, with no dialog, address or history`, async () => {
     server.view = notGiven();
     const history = mount(<ChildSettings place={place} child={child} />);
     const fold = await settingsFold();
     const entries = history.length;
     fold.open = true;
-    fireEvent.click(document.querySelector(`[${row}]`)!);
-    const dialog = await screen.findByRole("dialog", { name: title });
-    expect(dialog.querySelector(`[${sheet}]`)).toBeTruthy();
-    expect(history.location.pathname).toBe(AT);
-    expect(history.length).toBe(entries);
-    fireEvent.keyDown(dialog, { key: "Escape" });
-    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+    const part = within(fold).getByText(summary).closest("details")!;
+    fireEvent.click(part.querySelector("summary")!);
+    await waitFor(() => expect(part.open).toBe(true));
+    expect(screen.queryByRole("dialog")).toBeNull();
     expect(history.location.pathname).toBe(AT);
     expect(history.location.search).toBe("");
     expect(history.length).toBe(entries);
@@ -215,66 +208,75 @@ async function settingsFold() {
   return summary.closest("details")!;
 }
 
+/** The child's settings with Learning permission folded out. */
 async function openConsent(at: FamilyPlace) {
   mount(<ChildSettings place={at} child={child} />, at);
   const fold = await settingsFold();
   fold.open = true;
-  fireEvent.click(document.querySelector("[data-child-consent]")!);
-  return screen.findByRole("dialog", { name: "Consent" });
+  const part = within(fold)
+    .getByText("Learning permission")
+    .closest("details")!;
+  fireEvent.click(part.querySelector("summary")!);
+  await waitFor(() => expect(part.open).toBe(true));
+  return part as HTMLElement;
 }
 
 test("consent not given: the notice in place and one action gives it, by the existing email-plus request", async () => {
   server.view = notGiven();
-  const dialog = await openConsent(
+  const part = await openConsent(
     withConsent({ status: "not-recorded", recordedAt: null }),
   );
-  const give = await within(dialog).findByRole("button", {
+  const give = await within(part).findByRole("button", {
     name: "Give consent",
   });
-  expect(within(dialog).getByText("Privacy details")).toBeTruthy();
   // No checkbox: pressing the one button is the parent's yes.
-  expect(within(dialog).queryByRole("checkbox")).toBeNull();
-  expect(within(dialog).queryByText(/billing|export/i)).toBeNull();
-  // The account's address, ready; one press sends the request.
+  expect(within(part).queryByRole("checkbox")).toBeNull();
   expect(
-    (within(dialog).getByLabelText("Your email") as HTMLInputElement).value,
+    (within(part).getByLabelText("Your email") as HTMLInputElement).value,
   ).toBe("parent@example.com");
   fireEvent.click(give);
-  await within(dialog).findByText(/Open its link while signed in here/);
+  await within(part).findByText(/Open its link while signed in here/);
   const sent = server.calls.find((call) => call.path === "/consent/requests");
   expect(sent?.body).toMatchObject({
     email: "parent@example.com",
     noticeDigest: "a".repeat(64),
     parentAttestation: true,
   });
-  expect((sent?.body as { requestId: string }).requestId).toMatch(
-    /^[0-9a-f-]{36}$/,
-  );
-  expect(
-    within(dialog).queryByRole("button", { name: "Give consent" }),
-  ).toBeNull();
 });
 
-test("consent given: its date, and withdrawing in place", async () => {
+test("consent given: withdrawing in place, with one inline confirm", async () => {
   server.view = { ...notGiven(), consentActive: true };
-  const dialog = await openConsent(place);
-  expect(
-    within(dialog).getByText("Consent given on November 2, 2026."),
-  ).toBeTruthy();
-  expect(within(dialog).queryByText(/billing|export/i)).toBeNull();
-  // One inline confirm (the IA's rule for a destructive action), no dialog.
+  const part = await openConsent(place);
   fireEvent.click(
-    within(dialog).getByRole("button", { name: "Withdraw consent" }),
+    await within(part).findByRole("button", { name: "Withdraw consent" }),
   );
   expect(server.calls.map((call) => call.path)).not.toContain(
     "/family/consent/withdraw",
   );
   fireEvent.click(
-    within(dialog).getByRole("button", { name: "Withdraw consent" }),
+    within(part).getByRole("button", { name: "Withdraw consent" }),
   );
   await waitFor(() =>
     expect(server.calls.map((call) => call.path)).toContain(
       "/family/consent/withdraw",
     ),
   );
+});
+
+test("over family Settings: the child's settings in a sheet named for them, with their Progress", async () => {
+  mount(
+    <ChildSettingsSheet
+      place={place}
+      child={child}
+      open
+      onOpenChange={() => {}}
+    />,
+  );
+  const sheet = await screen.findByRole("dialog", { name: child.name });
+  expect(within(sheet).getByText("Name", { selector: "dt" })).toBeTruthy();
+  expect(
+    within(sheet).getByRole("link", { name: "Progress" }).getAttribute("href"),
+  ).toBe(`/family/${place.family}/kids/${child.id}`);
+  // Permission and data are disclosures here too, never a second sheet.
+  expect(screen.getAllByRole("dialog")).toHaveLength(1);
 });

@@ -77,6 +77,6 @@
 }
 /* An irreversible action's row: quiet, its title in the danger color. */
 .danger .title {
-  color: var(--color-danger);
+  color: var(--color-danger-accent);
   font-weight: 600;
 }

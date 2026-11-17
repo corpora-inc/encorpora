@@ -7,7 +7,12 @@ export const harness = {
   learningView: vi.fn(),
   groups: { value: [] as unknown[] },
   pathname: { value: "/" },
+  /** The account's settings hub (features/spaces/settings-hub.ts). */
+  settings: { value: "/account" },
 };
+vi.mock("../../spaces/settings-hub", () => ({
+  useSettingsHref: () => harness.settings.value,
+}));
 vi.mock("../../../lib/learning-view", () => ({
   useLearningView: harness.learningView,
 }));
