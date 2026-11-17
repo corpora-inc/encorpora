@@ -770,6 +770,14 @@ button.copyPrimary {
   font-variant-numeric: var(--numeric);
   white-space: nowrap;
 }
+/* A name sits over today's hairline, on its part's own color. */
+.ribbonLabel {
+  position: relative;
+  z-index: 2;
+  padding-inline: var(--space-1);
+  border-radius: 3px;
+  background: inherit;
+}
 .ribbonBar[data-labelled] .ribbonPart + .ribbonPart {
   box-shadow: inset 2px 0 0 var(--color-surface);
 }

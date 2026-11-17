@@ -102,7 +102,11 @@ export function YearRibbon({
                 width: `${((time(part.endsOn) - time(part.startsOn) + DAY) / span) * 100}%`,
               }}
             >
-              {labels && shortName(part.name)}
+              {labels && (
+                <span className={styles.ribbonLabel}>
+                  {shortName(part.name)}
+                </span>
+              )}
             </span>
           ))
         ) : (
