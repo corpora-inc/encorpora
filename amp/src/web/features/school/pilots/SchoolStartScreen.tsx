@@ -258,7 +258,8 @@ function StudentsStep({ start }: { start: Start }) {
       : null;
   const signerName =
     draft.signerName ?? reused?.signerName ?? session.name ?? "";
-  const authorized = (!!reused && draft.signerName === null) || draft.authorized;
+  const authorized =
+    (!!reused && draft.signerName === null) || draft.authorized;
   const names = parseNames(draft.names);
   const formId = useId();
   const [busy, setBusy] = useState(false);
@@ -351,12 +352,12 @@ function StudentsStep({ start }: { start: Start }) {
             : error
               ? error
               : tooMany
-              ? `Up to ${MAX_NAMES} students here; add the rest from the class.`
-              : !signerName.trim()
-                ? "Add your name to accept the student data agreement."
-                : !authorized
-                ? "Accept the student data agreement to create the class."
-                : ""
+                ? `Up to ${MAX_NAMES} students here; add the rest from the class.`
+                : !signerName.trim()
+                  ? "Add your name to accept the student data agreement."
+                  : !authorized
+                    ? "Accept the student data agreement to create the class."
+                    : ""
         }
         next={
           classReady ? (
@@ -374,7 +375,10 @@ function StudentsStep({ start }: { start: Start }) {
             </Button>
           ) : (
             // Opened without a class named (a new tab): the step that names it.
-            <Link to={startStepUrl("") as never} className={buttonClass("primary")}>
+            <Link
+              to={startStepUrl("") as never}
+              className={buttonClass("primary")}
+            >
               Name your class
             </Link>
           )

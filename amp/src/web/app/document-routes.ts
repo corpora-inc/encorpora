@@ -152,14 +152,23 @@ export const documentRoutePatterns: readonly string[] = [
   "^/start/purchase/?$",
   "^/start/verify-email/?$",
   "^/try/?$",
-  "^/try/.*/?$"
+  "^/try/.*/?$",
 ];
-const known = documentRoutePatterns.map(pattern => new RegExp(pattern));
-export const knownDocumentPath = (path: string) => known.some(pattern => pattern.test(path));
+const known = documentRoutePatterns.map((pattern) => new RegExp(pattern));
+export const knownDocumentPath = (path: string) =>
+  known.some((pattern) => pattern.test(path));
 
 /** Analytics-visible auth and purchase screens are deliberately not indexable. */
-export const publicDocumentPaths = ["/", "/schools", "/schools/trust", "/schools/scope-and-sequence"] as const;
+export const publicDocumentPaths = [
+  "/",
+  "/schools",
+  "/schools/trust",
+  "/schools/scope-and-sequence",
+] as const;
 export const indexableDocumentPath = (path: string) => {
   const clean = path.replace(/\/$/, "") || "/";
-  return (publicDocumentPaths as readonly string[]).includes(clean) || /^\/pathways(?:\/[^/]+)?$/.test(clean);
+  return (
+    (publicDocumentPaths as readonly string[]).includes(clean) ||
+    /^\/pathways(?:\/[^/]+)?$/.test(clean)
+  );
 };

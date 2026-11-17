@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -235,7 +236,7 @@ export function WorkbookStackScreen({
           busy={busy}
           org={params.org}
           classId={params.class}
-          session={session}
+
           who={who}
           href={host.href}
         />
@@ -251,7 +252,6 @@ function Stack({
   busy,
   org,
   classId,
-  session,
   who,
   href,
 }: {
@@ -265,8 +265,8 @@ function Stack({
   busy: boolean;
   org: string;
   classId: string;
-  session: ReturnType<typeof useStaffSession>;
 }) {
+  const session = useSession();
   const run = useStackRun(classId);
   const [parts, setParts] = useState(false);
   const me = useQuery(meOptions(currentSession())).data;

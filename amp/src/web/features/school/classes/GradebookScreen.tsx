@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -9,7 +10,6 @@ import {
   type SuggestionResource,
   type TermResource,
 } from "../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
@@ -86,7 +86,6 @@ function shortName(name: string) {
 function ExportSheet({
   open,
   onOpenChange,
-  session,
   place,
   term,
   onMessage,
@@ -96,7 +95,6 @@ function ExportSheet({
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  session: AuthSession | null;
   place: Place;
   term: TermResource;
   onMessage: (message: string) => void;
@@ -107,6 +105,7 @@ function ExportSheet({
    * spreadsheet of the grades. */
   school: boolean;
 }) {
+  const session = useSession();
   const offered = gradebookColumns.filter(
     (column) => school || column !== "sis",
   );
@@ -211,16 +210,15 @@ function ExportSheet({
  * writes. */
 /** Exported for Settings, where a small class sets it. */
 export function WeeklyTarget({
-  session,
   place,
   book,
   onError,
 }: {
-  session: AuthSession | null;
   place: Place;
   book: GradebookResponse;
   onError: (message: string) => void;
 }) {
+  const session = useSession();
   const save = useSetTarget(session, place);
   const stored = book.weeklyTargetMinutes ?? 0;
   const inherited = book.inheritedTargetMinutes;
@@ -371,7 +369,6 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
 
   const final = (row: GradeRow) => (
     <FinalField
-      session={session}
       place={place}
       student={row}
       term={term?.id ?? ""}
@@ -608,7 +605,6 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                     // The class's weekly target grades everyone in it: set
                     // only where this page shows the whole class.
                     <WeeklyTarget
-                      session={session}
                       place={place}
                       book={data}
                       onError={setError}
@@ -695,7 +691,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
         <>
           <EvidenceSheet
             place={place}
-            session={session}
+
             term={term.id}
             student={open}
             returnFocus={lastOpen.current}
@@ -718,7 +714,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
               onOpenChange={(next) => {
                 if (!next) closeSheet("curve");
               }}
-              session={session}
+
               place={place}
               book={data}
               term={term}
@@ -734,7 +730,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
               onOpenChange={(next) => {
                 if (!next) closeSheet("export");
               }}
-              session={session}
+
               place={place}
               term={term}
               onMessage={setMessage}

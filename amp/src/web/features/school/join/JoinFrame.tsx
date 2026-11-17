@@ -38,9 +38,7 @@ export function JoinFrame({
               steps={JOIN_STEPS}
               current={at}
               label="Joining"
-              href={(id) =>
-                id === "name" && code ? `/join/${code}` : "/join"
-              }
+              href={(id) => (id === "name" && code ? `/join/${code}` : "/join")}
             />
           </div>
         )}

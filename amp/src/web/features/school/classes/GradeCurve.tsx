@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import { useEffect, useMemo, useState } from "react";
 import {
   curveIssues,
@@ -13,7 +14,6 @@ import type {
   GradebookResponse,
   TermResource,
 } from "../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../auth";
 import { Button } from "../../../ui/Button";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
@@ -199,7 +199,6 @@ const sameCurve = (a: GradeCurve | null, b: GradeCurve | null) =>
 export function CurveSheet({
   open,
   onOpenChange,
-  session,
   place,
   book,
   term,
@@ -209,7 +208,6 @@ export function CurveSheet({
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  session: AuthSession | null;
   place: Place;
   book: GradebookResponse;
   term: TermResource;
@@ -218,6 +216,7 @@ export function CurveSheet({
   /** What the page calls the people it grades. */
   words?: { learner: string; learners: string; Learner: string };
 }) {
+  const session = useSession();
   const save = useSetCurve(session, place);
   const size = book.students.length;
   const own = book.curve?.own ? scaleCurve(book.curve.own, size) : null;

@@ -528,7 +528,7 @@ export function RosterScreen() {
           {group && holder && (
             <ClassPeople
               secondParent={false}
-              session={account}
+
               orgId={params.org}
               classId={params.class}
             />

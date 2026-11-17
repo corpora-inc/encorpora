@@ -1,3 +1,4 @@
+import { useSession } from "../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { Disclosure } from "../../ui/Disclosure";
 import { CopyButton } from "./parts";
@@ -6,7 +7,6 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
-import type { AuthSession } from "../../auth";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
@@ -77,21 +77,14 @@ function CopyLink({ url }: { url: string }) {
 }
 
 /** A district admin's invitation: the link a school opens to approve. */
-function DistrictInvite({
-  session,
-  districtId,
-}: {
-  session: AuthSession;
-  districtId: string;
-}) {
+function DistrictInvite({ districtId }: { districtId: string }) {
+  const session = useSession();
   const query = useQuery(adoptionDistrictQuery(session, districtId));
   if (query.isPending) return <LoadingScreen overlay />;
   if (!query.data)
     return <Failed error={query.error} retry={() => void query.refetch()} />;
   return (
-    <PlainPage
-      title={`Invite a school to ${query.data.district.name}`}
-    >
+    <PlainPage title={`Invite a school to ${query.data.district.name}`}>
       <Lead>
         Send this link to the school. You’ll accept here once they approve.
       </Lead>
@@ -113,13 +106,8 @@ function SchoolHomeRedirect() {
 }
 
 /** The school's side: approve joining a district, then send the approval. */
-function AuthorizeSchool({
-  session,
-  districtId,
-}: {
-  session: AuthSession;
-  districtId?: string;
-}) {
+function AuthorizeSchool({ districtId }: { districtId?: string }) {
+  const session = useSession();
   const query = useQuery(adoptionOptionsQuery(session, districtId));
   const [schoolId, setSchoolId] = useState(""),
     [confirmed, setConfirmed] = useState(false),
@@ -155,9 +143,7 @@ function AuthorizeSchool({
       .finally(() => setBusy(false));
   };
   return (
-    <PlainPage
-      title={district ? `Join ${district.name}` : "Districts"}
-    >
+    <PlainPage title={district ? `Join ${district.name}` : "Districts"}>
       {district &&
         (issued ? (
           <>
@@ -272,13 +258,8 @@ function AuthorizeSchool({
   );
 }
 
-function ReviewSchool({
-  session,
-  token,
-}: {
-  session: AuthSession;
-  token: string;
-}) {
+function ReviewSchool({ token }: { token: string }) {
+  const session = useSession();
   const navigate = useNavigate();
   const query = useQuery(adoptionReviewQuery(session, token));
   if (query.isPending) return <LoadingScreen overlay />;
@@ -296,7 +277,7 @@ function ReviewSchool({
   return (
     <ReviewDecision
       key={`${session.accountId}:${token.slice(-8)}`}
-      session={session}
+
       token={token}
       data={query.data}
     />
@@ -305,14 +286,13 @@ function ReviewSchool({
 
 /** The district's side: what moves, who is the same person, and accept. */
 function ReviewDecision({
-  session,
   token,
   data,
 }: {
-  session: AuthSession;
   token: string;
   data: AdoptionReview;
 }) {
+  const session = useSession();
   const [matches, setMatches] = useState<string[]>([]),
     [confirmed, setConfirmed] = useState(false),
     [busy, setBusy] = useState(false),
@@ -390,9 +370,7 @@ function ReviewDecision({
         sourceClasses.length);
   if (accepted)
     return (
-      <PlainPage
-        title={`${data.schoolName} joined ${data.districtName}`}
-      >
+      <PlainPage title={`${data.schoolName} joined ${data.districtName}`}>
         <Actions>
           <a
             href={`/school/${data.schoolId}`}
@@ -609,10 +587,10 @@ export function AdoptionScreen() {
     [location.hash, session.accountId],
   );
   return token && !districtId ? (
-    <ReviewSchool session={session} token={token} />
+    <ReviewSchool token={token} />
   ) : districtId && query.get("manage") === "1" ? (
-    <DistrictInvite session={session} districtId={districtId} />
+    <DistrictInvite districtId={districtId} />
   ) : (
-    <AuthorizeSchool session={session} districtId={districtId} />
+    <AuthorizeSchool districtId={districtId} />
   );
 }

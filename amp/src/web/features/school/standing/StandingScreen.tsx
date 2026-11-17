@@ -10,12 +10,7 @@ import { orgPath } from "../paths";
 import { compareClassNames } from "../sort";
 import { CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
 import { gradesWords, signed, students } from "./format";
-import {
-  AxisEnds,
-  CurveFacts,
-  curveSentence,
-  SettlingNote,
-} from "./parts";
+import { AxisEnds, CurveFacts, curveSentence, SettlingNote } from "./parts";
 import { orgStandingOptions } from "./standing-api";
 import styles from "./Standing.module.css";
 

@@ -146,7 +146,10 @@ try {
   await page.getByLabel("Class name").fill("Grade 3 Math");
   // Two steps on the shared stepper, each its own address; no in-page Back.
   await page.getByText("Step 1 of 2").waitFor();
-  assert.equal(await page.getByRole("link", { name: /^(Back|Cancel)$/ }).count(), 0);
+  assert.equal(
+    await page.getByRole("link", { name: /^(Back|Cancel)$/ }).count(),
+    0,
+  );
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await page.waitForURL(/\/school\/start\/students$/);
   await page.getByRole("heading", { name: "Your students" }).waitFor();

@@ -479,9 +479,7 @@ export function ConnectionScreen() {
       ),
     };
   const content = (
-    <PlainPage
-      title={state.title || undefined}
-    >
+    <PlainPage title={state.title || undefined}>
       {state.body}
       <Toast
         message={error === "reauth" ? "" : error}

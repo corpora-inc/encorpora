@@ -236,8 +236,8 @@ export function InviteScreen() {
           <h1>This invitation is for another address</h1>
           <p>
             It was sent to <strong>{view.email}</strong>, and you’re signed in
-            as {email}. To join {family.name} as a parent, sign in with
-            that address, or create an account with it.
+            as {email}. To join {family.name} as a parent, sign in with that
+            address, or create an account with it.
           </p>
           <div className={styles.inviteActions}>
             <Button variant="primary" onClick={() => void useAnother()}>

@@ -1,7 +1,7 @@
+import { useSession } from "../../../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import type { ApprovalRowResource } from "../../../../../family/approval-contracts";
-import type { AuthSession } from "../../../../auth";
 import { useLoggedError } from "../../../../feedback";
 import { Button } from "../../../../ui/Button";
 import { Toast } from "../../../../ui/Toast";
@@ -76,17 +76,16 @@ function PeopleList({
  * and children from other families, each with where they stand and the way
  * to add one. They live with the children on People, not on Today. */
 export function ClassPeople({
-  session,
   orgId,
   classId,
   secondParent = true,
 }: {
-  session: AuthSession;
   orgId: string;
   classId: string;
   /** Offer the family's second parent here; a tutoring group has none. */
   secondParent?: boolean;
 }) {
+  const session = useSession();
   const second = useQuery({
     ...secondParentOptions(session),
     enabled: secondParent,

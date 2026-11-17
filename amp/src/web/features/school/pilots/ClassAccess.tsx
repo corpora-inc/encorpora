@@ -990,10 +990,7 @@ export function ClosedSignIn({
         )}
       />
     ) : (
-      <EmptyState
-        title="No students yet"
-        action={actions(null)}
-      />
+      <EmptyState title="No students yet" action={actions(null)} />
     );
   if (practice === "waiting" && view.kind === "start")
     return (

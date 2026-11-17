@@ -7,12 +7,7 @@ import {
   useParams,
   useSearch,
 } from "@tanstack/react-router";
-import {
-  useRef,
-  useState,
-  type ChangeEvent,
-  type DragEvent,
-} from "react";
+import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { create } from "zustand";
 import {
   ROSTER_CHUNK,
@@ -1637,7 +1632,10 @@ export function ImportScreen() {
               : "Choose the file again to review it"
           }
           action={
-            <Link to={stepUrl("source") as never} className={buttonClass("primary")}>
+            <Link
+              to={stepUrl("source") as never}
+              className={buttonClass("primary")}
+            >
               {lostKind === "paste" ? "Paste names" : "Choose a file"}
             </Link>
           }
@@ -1654,11 +1652,7 @@ export function ImportScreen() {
         />
       )}
       {step === "map" && draft && !lost && (
-        <MapStep
-          draft={draft}
-          defaultClass={defaultClass}
-          onContinue={check}
-        />
+        <MapStep draft={draft} defaultClass={defaultClass} onContinue={check} />
       )}
       {step === "review" && draft && !lost && (
         <ReviewStep

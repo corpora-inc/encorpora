@@ -27,12 +27,7 @@ import {
   students as studentsWord,
   withInterval,
 } from "./format";
-import {
-  AxisEnds,
-  CurveFacts,
-  curveSentence,
-  SettlingNote,
-} from "./parts";
+import { AxisEnds, CurveFacts, curveSentence, SettlingNote } from "./parts";
 import { classStandingOptions } from "./standing-api";
 import styles from "./Standing.module.css";
 
@@ -266,173 +261,183 @@ export function ClassStandingScreen() {
           if (!open) closeTo(router, `/${orgPath(params.org, "standing")}`);
         }}
       >
-      {standing.isPending ? (
-        <LoadingScreen overlay />
-      ) : !data ? (
-        <EmptyState
-          title={
-            missing
-              ? "This class isn’t available to your account"
-              : "These curves didn’t load"
-          }
-          action={
-            missing ? (
-              <Link
-                to="/$"
-                params={{ _splat: orgPath(params.org, "standing") }}
-                className={buttonClass("primary")}
-              >
-                See every class
-              </Link>
+        {standing.isPending ? (
+          <LoadingScreen overlay />
+        ) : !data ? (
+          <EmptyState
+            title={
+              missing
+                ? "This class isn’t available to your account"
+                : "These curves didn’t load"
+            }
+            action={
+              missing ? (
+                <Link
+                  to="/$"
+                  params={{ _splat: orgPath(params.org, "standing") }}
+                  className={buttonClass("primary")}
+                >
+                  See every class
+                </Link>
+              ) : (
+                <Button
+                  variant="primary"
+                  onClick={() => void standing.refetch()}
+                >
+                  Try again
+                </Button>
+              )
+            }
+          >
+            {missing
+              ? "It may have been archived, or be in another school."
+              : "Check your connection, then try again."}
+          </EmptyState>
+        ) : (
+          <div className={styles.screen}>
+            <header className={styles.title}>
+              <p>
+                {[gradesWords(data.grades), studentsWord(data.curve.n)]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+            </header>
+            {data.curve.n === 0 ? (
+              <p className={styles.settling}>
+                No students in this class have a grade on file yet.
+              </p>
             ) : (
-              <Button variant="primary" onClick={() => void standing.refetch()}>
-                Try again
-              </Button>
-            )
-          }
-        >
-          {missing
-            ? "It may have been archived, or be in another school."
-            : "Check your connection, then try again."}
-        </EmptyState>
-      ) : (
-        <div className={styles.screen}>
-          <header className={styles.title}>
-            <p>
-              {[gradesWords(data.grades), studentsWord(data.curve.n)]
-                .filter(Boolean)
-                .join(" · ")}
-            </p>
-          </header>
-          {data.curve.n === 0 ? (
-            <p className={styles.settling}>
-              No students in this class have a grade on file yet.
-            </p>
-          ) : (
-            <>
-              <div className={styles.lead}>
-                <figure className={styles.figure}>
-                  <CurvePlot
-                    grid={data.grid}
-                    curve={data.curve}
-                    top={peakOf([data.curve])}
-                    bandLabel={bandLabel}
-                    label={curveSentence(data.curve)}
-                    name={data.class.name}
-                    hover
-                  />
-                  <GradeAxis grid={data.grid} grade={only} />
-                  <AxisEnds />
-                  <CurveLegend />
-                </figure>
-                <div className={styles.leadFacts}>
-                  <CurveFacts curve={data.curve} label={data.class.name}>
-                    <StatTile
-                      value={
-                        data.growth ? (
-                          <FigureTip
-                            tip={{
-                              title: `Growth, ${data.term.name}`,
-                              figure: signed(data.growth.median),
-                              unit: "grades, median",
-                              stats: [
-                                {
-                                  label: "95% range",
-                                  value: intervalWords(data.growth),
-                                },
-                                {
-                                  label: "Settled",
-                                  value: data.growth.n.toLocaleString("en-US"),
-                                },
-                              ],
-                            }}
-                          >
-                            {signed(data.growth.median)}
-                          </FigureTip>
-                        ) : (
-                          "—"
-                        )
-                      }
-                      label={`growth, ${data.term.name}`}
-                      detail={data.growth ? undefined : "Not settled yet"}
+              <>
+                <div className={styles.lead}>
+                  <figure className={styles.figure}>
+                    <CurvePlot
+                      grid={data.grid}
+                      curve={data.curve}
+                      top={peakOf([data.curve])}
+                      bandLabel={bandLabel}
+                      label={curveSentence(data.curve)}
+                      name={data.class.name}
+                      hover
                     />
-                  </CurveFacts>
-                  <SettlingNote curve={data.curve} settleAt={data.settleAt} />
-                </div>
-              </div>
-              <section aria-labelledby="standing-students">
-                <h2 id="standing-students" className={styles.sectionTitle}>
-                  Each student
-                </h2>
-                <div className={styles.bands}>
-                  <div className={styles.bandAxis}>
-                    <span />
                     <GradeAxis grid={data.grid} grade={only} />
-                  </div>
-                  <div className={styles.bandList}>
-                    <span className={styles.bandColumnFrame} aria-hidden="true">
-                      <span
-                        className={styles.bandColumn}
-                        style={{
-                          left: `${across(data.grid, -0.5)}%`,
-                          width: `${across(data.grid, 0.5) - across(data.grid, -0.5)}%`,
-                        }}
+                    <AxisEnds />
+                    <CurveLegend />
+                  </figure>
+                  <div className={styles.leadFacts}>
+                    <CurveFacts curve={data.curve} label={data.class.name}>
+                      <StatTile
+                        value={
+                          data.growth ? (
+                            <FigureTip
+                              tip={{
+                                title: `Growth, ${data.term.name}`,
+                                figure: signed(data.growth.median),
+                                unit: "grades, median",
+                                stats: [
+                                  {
+                                    label: "95% range",
+                                    value: intervalWords(data.growth),
+                                  },
+                                  {
+                                    label: "Settled",
+                                    value:
+                                      data.growth.n.toLocaleString("en-US"),
+                                  },
+                                ],
+                              }}
+                            >
+                              {signed(data.growth.median)}
+                            </FigureTip>
+                          ) : (
+                            "—"
+                          )
+                        }
+                        label={`growth, ${data.term.name}`}
+                        detail={data.growth ? undefined : "Not settled yet"}
                       />
-                    </span>
-                    <ul>
-                      {data.students.map((student) => (
-                        <StudentBand
-                          key={student.id}
-                          student={student}
-                          grid={data.grid}
-                          orgId={data.class.org}
-                          settleAt={data.settleAt}
-                          showGrade={data.grades.length > 1}
-                        />
-                      ))}
-                    </ul>
+                    </CurveFacts>
+                    <SettlingNote curve={data.curve} settleAt={data.settleAt} />
                   </div>
-                  <div className={styles.bandAxis}>
-                    <span />
-                    <div>
+                </div>
+                <section aria-labelledby="standing-students">
+                  <h2 id="standing-students" className={styles.sectionTitle}>
+                    Each student
+                  </h2>
+                  <div className={styles.bands}>
+                    <div className={styles.bandAxis}>
+                      <span />
                       <GradeAxis grid={data.grid} grade={only} />
-                      <AxisEnds />
+                    </div>
+                    <div className={styles.bandList}>
+                      <span
+                        className={styles.bandColumnFrame}
+                        aria-hidden="true"
+                      >
+                        <span
+                          className={styles.bandColumn}
+                          style={{
+                            left: `${across(data.grid, -0.5)}%`,
+                            width: `${across(data.grid, 0.5) - across(data.grid, -0.5)}%`,
+                          }}
+                        />
+                      </span>
+                      <ul>
+                        {data.students.map((student) => (
+                          <StudentBand
+                            key={student.id}
+                            student={student}
+                            grid={data.grid}
+                            orgId={data.class.org}
+                            settleAt={data.settleAt}
+                            showGrade={data.grades.length > 1}
+                          />
+                        ))}
+                      </ul>
+                    </div>
+                    <div className={styles.bandAxis}>
+                      <span />
+                      <div>
+                        <GradeAxis grid={data.grid} grade={only} />
+                        <AxisEnds />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className={styles.legend}>
-                  <span>
-                    <i data-key="band" aria-hidden="true" />
-                    95% range
-                  </span>
-                  <span>
-                    <i data-key="dot" aria-hidden="true" />
-                    Estimate
-                  </span>
-                  <span>
-                    <i data-key="settling" aria-hidden="true" />
-                    Fewer than {data.settleAt} answers
-                  </span>
-                </p>
-              </section>
-              {/* The record of what the bands draw: each student's estimate
+                  <p className={styles.legend}>
+                    <span>
+                      <i data-key="band" aria-hidden="true" />
+                      95% range
+                    </span>
+                    <span>
+                      <i data-key="dot" aria-hidden="true" />
+                      Estimate
+                    </span>
+                    <span>
+                      <i data-key="settling" aria-hidden="true" />
+                      Fewer than {data.settleAt} answers
+                    </span>
+                  </p>
+                </section>
+                {/* The record of what the bands draw: each student's estimate
                   and growth with their ranges, kept as a detail list. */}
-              <section aria-labelledby="standing-numbers" data-keeps-ranges="">
-                <h2 id="standing-numbers" className={styles.sectionTitle}>
-                  Estimates and growth
-                </h2>
-                <StudentNumbers
-                  students={data.students}
-                  orgId={data.class.org}
-                  label={`${data.class.name}, each student`}
-                  showGrade={data.grades.length > 1}
-                  term={data.term.name}
-                />
-              </section>
-            </>
-          )}
-        </div>
-      )}
+                <section
+                  aria-labelledby="standing-numbers"
+                  data-keeps-ranges=""
+                >
+                  <h2 id="standing-numbers" className={styles.sectionTitle}>
+                    Estimates and growth
+                  </h2>
+                  <StudentNumbers
+                    students={data.students}
+                    orgId={data.class.org}
+                    label={`${data.class.name}, each student`}
+                    showGrade={data.grades.length > 1}
+                    term={data.term.name}
+                  />
+                </section>
+              </>
+            )}
+          </div>
+        )}
       </Dialog>
     </>
   );
