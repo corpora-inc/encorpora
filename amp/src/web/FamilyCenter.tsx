@@ -10,6 +10,11 @@ import { SatMathFocus } from "./features/practice/SatMathFocus";
 import { workbooksEnabled } from "./features/workbooks/config";
 import { canReadWorkbooks } from "./features/workbooks/model";
 import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
+import {
+  canWithdraw,
+  ConsentSummary,
+  DeletionTerms,
+} from "./features/privacy/LearningData";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
@@ -1124,27 +1129,7 @@ export function FamilyCenter({
             account && <SecondParentNote me={account} />}
           {section === "privacy" && privacy === "consent" && !secondOnly && (
             <section className={`family-section ${pages.section}`}>
-              <p className={pages.rowTitle}>
-                {family.consent.status === "active"
-                  ? "Consent is active."
-                  : family.consent.status === "withdrawn"
-                    ? "Consent is withdrawn. New learning activity is paused for children under 13."
-                    : family.consent.status === "development"
-                      ? "Local development access. No verified consent record is present."
-                      : "Verified parent consent is not recorded."}
-              </p>
-              {family.consent.status === "active" ||
-              family.consent.status === "development" ? (
-                <p className={pages.prose}>
-                  Withdrawing stops new learning activity for children under 13.
-                  It doesn’t delete existing records or cancel a plan’s renewal.
-                </p>
-              ) : (
-                <p className={pages.prose}>
-                  Your billing controls and data export stay available. Pausing
-                  learning doesn’t cancel a paid plan.
-                </p>
-              )}
+              <ConsentSummary status={family.consent.status} />
               <div className={pages.footActions}>
                 {onConsentEnrollment && (
                   <Button
@@ -1157,8 +1142,7 @@ export function FamilyCenter({
                       : "Consent options"}
                   </Button>
                 )}
-                {(family.consent.status === "active" ||
-                  family.consent.status === "development") && (
+                {canWithdraw(family.consent.status) && (
                   <Button
                     variant="quiet"
                     className={pages.danger}
@@ -1239,22 +1223,7 @@ export function FamilyCenter({
                 unless you cancel it separately.
               </p>
             ) : (
-              <>
-                <p>
-                  Saved problems, answers and the learner profile name will be
-                  removed from the live application. This cannot be undone.
-                  Download your family data first if you want to keep a copy.
-                </p>
-                <p>
-                  Payment records, including any student name on a verified
-                  invoice, and your parent sign-in remain.{" "}
-                  <strong>This does not cancel a subscription.</strong> Use
-                  billing management to check renewal.{" "}
-                  {confirmation.learner
-                    ? "Other learners are not affected."
-                    : "Consent will be withdrawn for this account."}
-                </p>
-              </>
+              <DeletionTerms learner={!!confirmation.learner} />
             )}
           </div>
           <div className="family-actions">
