@@ -346,8 +346,6 @@ try {
           .waitFor();
         assert.equal(await toggle.isChecked(), false);
         // The child takes the device again, from their page.
-        await page.keyboard.press("Escape");
-        await page.getByRole("dialog").waitFor({ state: "detached" });
         await page.goto(fixture.origin + childPath);
         await page.locator(`[data-practice-here="${learnerId}"]`).click();
         assert.deepEqual(
