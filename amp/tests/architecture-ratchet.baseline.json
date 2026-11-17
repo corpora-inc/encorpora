@@ -7,7 +7,7 @@
     "navigatingEffects": 18,
     "renderNavigate": 24,
     "silentCatches": 178,
-    "sessionProps": 57,
+    "sessionProps": 56,
     "sessionReads": 38,
     "inlineQueryKeys": 32,
     "nativeControls": 25
@@ -217,7 +217,7 @@
       "share-entry.ts": 1
     },
     "sessionProps": {
-      "app/LegacyApp.tsx": 2,
+      "app/LegacyApp.tsx": 1,
       "FamilyCenter.tsx": 1,
       "features/access/AccessScreen.tsx": 1,
       "features/design/sections/workbooks.tsx": 5,

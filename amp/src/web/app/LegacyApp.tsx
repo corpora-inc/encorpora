@@ -1898,7 +1898,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ) : viewingChild && session && route.location.pathname === "/overview" ? (
         <ChildOverview
           key={viewingChild.id}
-          session={session}
           child={viewingChild}
           strands={homeStrands}
         />
