@@ -1,3 +1,4 @@
+import type { AccountMail, LinkedMessage } from "../email/email.js";
 import { recordActivation } from "../analytics/activation.js";
 import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
 import { ensureFamilyIdentity } from "./identity.js";
@@ -909,12 +910,20 @@ export async function approvalProvesAddress(
   ).rowCount;
 }
 
-export type ApprovalMail = (
-  to: string,
-  subject: string,
-  text: string,
+export type ApprovalMail = AccountMail;
+/** A teacher's request that a parent approve their child joining a class. */
+export function approvalRequest(
+  teacher: string,
+  className: string,
   url: string,
-) => Promise<void>;
+): LinkedMessage {
+  return {
+    subject: `${teacher} asked you to approve your child joining ${className} on AMP`,
+    text: `${teacher} would like your child to join ${className}, a class on AMP, the adaptive math practice. Your child can practice there only once you approve. Open this link to read about the class and approve. It works once and expires in ${INVITE_DAYS} days. If you weren’t expecting this, you can ignore it.`,
+    url,
+    action: "Review and approve",
+  };
+}
 /** The link to the child's parent, through the account mail path. A failure
  * is reported, not thrown: the link stands, and the teacher can copy it. The
  * mail names the class and its teacher, not the child. */
@@ -934,9 +943,11 @@ export async function mailApproval(
   try {
     await mail(
       sent.email,
-      `${teacher} asked you to approve your child joining ${sent.className} on AMP`,
-      `${teacher} would like your child to join ${sent.className}, a class on AMP, the adaptive math practice. Your child can practice there only once you approve. Open this link to read about the class and approve. It works once and expires in ${INVITE_DAYS} days. If you weren’t expecting this, you can ignore it.`,
-      mailedApprovalUrl(keys, sent.id),
+      approvalRequest(
+        teacher,
+        sent.className,
+        mailedApprovalUrl(keys, sent.id),
+      ),
     );
     return true;
   } catch (error) {

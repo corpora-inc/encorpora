@@ -1,3 +1,4 @@
+import type { LinkedMessage } from "../email/email.js";
 import { readClassPractice } from "./pilot-access.js";
 import { randomUUID } from "node:crypto";
 import { actorPerson, can, rosterScope } from "./authz.js";
@@ -35,6 +36,26 @@ const studentParam = ({ params }: { params: Record<string, string> }) =>
 /** The school and district layer: the overview, schools, the year, campus moves,
  * integrations, the privacy center and the log. Registered with every other
  * school route, so the cross-tenant walk covers them all. */
+/** A school's request to set up an integration, to the Corpora mailbox. */
+export function integrationRequest(input: {
+  name: string;
+  label: string;
+  orgId: string;
+  requester: string | null;
+  origin: string;
+}): LinkedMessage {
+  return {
+    subject: `Integration request: ${input.label} for ${input.name}`,
+    text: [
+      `${input.name} asks to set up ${input.label}.`,
+      `Org: ${input.orgId}`,
+      `From: ${input.requester ?? "unknown"}`,
+    ].join("\n"),
+    url: `${input.origin}/school/${input.orgId}/integrations`,
+    action: "Open integrations",
+  };
+}
+
 export function defineOrgRoutes(define: typeof defineSchoolRoute) {
   define({
     method: "GET",
@@ -267,13 +288,13 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
       await services
         .mail(
           SEAT_REQUEST_MAILBOX,
-          `Integration request: ${label} for ${name}`,
-          [
-            `${name} asks to set up ${label}.`,
-            `Org: ${target.orgId}`,
-            `From: ${requester ?? "unknown"}`,
-          ].join("\n"),
-          `${services.origin}/school/${target.orgId}/integrations`,
+          integrationRequest({
+            name,
+            label,
+            orgId: target.orgId,
+            requester: requester ?? null,
+            origin: services.origin,
+          }),
         )
         .catch((error) => {
           console.error("[schools] integration request mail not sent", {
