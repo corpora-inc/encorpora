@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "@tanstack/react-router";
+import { useSyncExternalStore } from "react";
 import { qk } from "../../lib/keys";
 import { meOptions } from "../../lib/query";
 import { forSession, useSessionOrNull } from "../../lib/session";
@@ -17,10 +18,13 @@ import {
 export function useCurriculumScope() {
   const location = useLocation();
   const session = useSessionOrNull();
-  // Whether the session is still being read, or failed to be: the scope
-  // waits rather than show a guest's. Read beside useSessionOrNull, whose
-  // observer renders again when the session arrives.
-  const sessionStatus = useQueryClient().getQueryState(qk.session())?.status;
+  // Whether the session is still being read, or its last check failed: the
+  // scope waits rather than show a guest's or a stale account's.
+  const client = useQueryClient();
+  const sessionStatus = useSyncExternalStore(
+    (changed) => client.getQueryCache().subscribe(changed),
+    () => client.getQueryState(qk.session())?.status,
+  );
   const sessionPending = !session && sessionStatus !== "success";
   const sessionError = sessionStatus === "error";
   const accountPage = hasAccountContext(location.pathname);
