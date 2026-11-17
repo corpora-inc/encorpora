@@ -10,6 +10,7 @@ import { OwnYearTiles } from "../onboarding/OwnYearTiles";
 import { useStartOwnPractice } from "./api";
 import styles from "../onboarding/Start.module.css";
 import { practiceParams } from "../spaces/identity";
+import { Form } from "../../ui/Form";
 
 /** `/me/start`: an adult who teaches, or whose child practices, gives the
  * year they were born and goes straight into practice. The year is always
@@ -37,7 +38,7 @@ export function OwnStartScreen() {
       <section className={`${frameCard} ${styles.step}`}>
         <FrameBrand expanded />
         <h1 id="own-start-year">What year were you born?</h1>
-        <form
+        <Form
           onSubmit={(event) => {
             event.preventDefault();
             if (year === null || young || start.isPending) return;
@@ -72,7 +73,7 @@ export function OwnStartScreen() {
           >
             Start practicing
           </Button>
-        </form>
+        </Form>
       </section>
     </PageFrame>
   );

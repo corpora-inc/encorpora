@@ -11,6 +11,7 @@ import { TextField } from "../../ui/TextField";
 import { CHILD_NAME_MAX, childNameProblem } from "../../../learning/nickname";
 import { forgetContinuation, readContinuation } from "./memory";
 import styles from "./Continue.module.css";
+import { Form } from "../../ui/Form";
 
 /**
  * After "Continue with AMP": back on the screen it was opened from, with the
@@ -102,7 +103,7 @@ function NameSheet({
       }}
       title={`Add ${learner.name}’s name`}
     >
-      <form
+      <Form
         className={styles.nameForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -147,7 +148,7 @@ function NameSheet({
             Not now
           </Button>
         </div>
-      </form>
+      </Form>
     </Sheet>
   );
 }

@@ -421,16 +421,19 @@
   flex: 0 1 auto;
   min-width: 0;
   padding-inline: var(--space-4);
-  border: 1px solid var(--color-border-strong);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
+  /* The shared secondary button: Next stays the one primary action. */
+  border: 1px solid var(--button-secondary-edge);
+  background: var(--button-secondary);
+  color: var(--button-on-secondary);
   font-size: 15px;
-  font-weight: 650;
+  font-weight: var(--button-weight);
 }
 @media (hover: hover) {
   .mixed-action:hover:not(:disabled) {
-    background: var(--color-secondary);
-    color: var(--color-on-secondary);
+    background: var(--button-secondary-hover);
+    border-color: var(--button-secondary-edge-hover);
+    color: var(--button-on-secondary);
+    filter: none;
   }
 }
 

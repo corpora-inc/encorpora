@@ -61,6 +61,7 @@ import type { ReactNode } from "react";
 import { GradePicker, PageHead, gradeLabel } from "./parts";
 import { classPath, orgPath } from "./paths";
 import styles from "./Import.module.css";
+import { Form } from "../../ui/Form";
 
 type Draft = {
   orgId: string;
@@ -548,7 +549,7 @@ function FixMissingName({
 }) {
   const [name, setName] = useState("");
   return (
-    <form
+    <Form
       className={styles.fixInline}
       onSubmit={(event) => {
         event.preventDefault();
@@ -583,7 +584,7 @@ function FixMissingName({
       <Button variant="quiet" type="button" onClick={onSkip}>
         Skip row
       </Button>
-    </form>
+    </Form>
   );
 }
 

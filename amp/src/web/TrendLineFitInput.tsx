@@ -19,6 +19,7 @@ import {
   type TrendLineFitResponse,
 } from "../math/trend-line-fit";
 import { SceneSvg } from "./scene/SceneSvg";
+import { Form } from "./ui/Form";
 
 /** Read the scene's own coordinate transform; data, handles and feedback
  * share one grid. The static layout never includes the moving line. */
@@ -434,7 +435,7 @@ export function TrendLineFitAnswer({
   submit: () => void;
 }) {
   return (
-    <form
+    <Form
       className="trend-answer"
       onSubmit={(e) => {
         e.preventDefault();
@@ -457,6 +458,6 @@ export function TrendLineFitAnswer({
       >
         Check line
       </button>
-    </form>
+    </Form>
   );
 }

@@ -51,7 +51,8 @@ export function DatePicker({
   // A picker is modal: it dismisses itself, and joins the app's popover
   // layer so opening it closes a tip or menu elsewhere.
   usePopover(open, {
-    contains: (node) => !!grid.current?.closest("[role=dialog]")?.contains(node),
+    contains: (node) =>
+      !!grid.current?.closest("[role=dialog]")?.contains(node),
     anchor: () => trigger.current,
     close: () => setOpen(false),
     modal: true,

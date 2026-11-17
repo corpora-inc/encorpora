@@ -7,6 +7,7 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { saveProfile } from "../family/api";
 import styles from "./YourName.module.css";
+import { Form } from "../../ui/Form";
 
 const NO_SESSION = { accountId: "", token: "" };
 
@@ -70,9 +71,8 @@ export function NameEditor({
     <div className={styles.editor} data-account-name={known ? "" : "missing"}>
       <div className={styles.row}>
         {editing ? (
-          <form
+          <Form
             className={styles.form}
-            noValidate
             onSubmit={(event) => {
               event.preventDefault();
               void save();
@@ -118,7 +118,7 @@ export function NameEditor({
                 Cancel
               </Button>
             </div>
-          </form>
+          </Form>
         ) : (
           <>
             <div className={styles.text}>

@@ -1849,6 +1849,9 @@ html[data-input="pointer"] :focus-visible {
 .welcome .go-button {
   border-color: var(--color-primary);
 }
+.welcome .go-button + .secondary {
+  border-color: var(--button-secondary-edge);
+}
 /* Brand mark and name read as one unit beside the menu. */
 .shell > header > .brand {
   min-height: 44px;
@@ -2059,13 +2062,18 @@ html[data-input="pointer"] :focus-visible {
 }
 
 .secondary {
-  color: var(--color-primary);
-  background: transparent;
-  border-color: var(--color-border-strong);
+  color: var(--button-on-secondary);
+  background: var(--button-secondary);
+  border-color: var(--button-secondary-edge);
 }
-.secondary:hover {
-  color: var(--color-primary);
-  background: var(--color-secondary);
+.secondary:hover:not(:disabled) {
+  color: var(--button-on-secondary);
+  background: var(--button-secondary-hover);
+  border-color: var(--button-secondary-edge-hover);
+  filter: none;
+}
+.secondary:active:not(:disabled) {
+  background: var(--button-secondary-active);
 }
 
 /* ── Phones: one toolbar row, tighter insets ──────────────────────────────

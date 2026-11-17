@@ -14,6 +14,7 @@ import {
   NumberSentence,
   NumberTilePad,
 } from "./NumberSentence";
+import { Form } from "./ui/Form";
 
 export function EqualAddendsInput({
   response: r,
@@ -332,7 +333,7 @@ export function EqualAddendsAnswerControls({
   const complete = normalizeEqualAddends(response, value) !== null;
   const empty = !value || value === JSON.stringify(emptyEqualAddends(response));
   return (
-    <form
+    <Form
       className="counter-builder-form"
       onSubmit={(event) => {
         event.preventDefault();
@@ -355,6 +356,6 @@ export function EqualAddendsAnswerControls({
       >
         Check
       </button>
-    </form>
+    </Form>
   );
 }

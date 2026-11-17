@@ -21,6 +21,7 @@ import {
   type PartMark,
 } from "../math/multi-part-choice";
 import { RadioControl } from "./ui/RadioControl";
+import { Form } from "./ui/Form";
 
 /* Multi-part choice: one option per blank, row or slot. Every control keeps
    its size from the first frame (a blank is as wide as its widest option),
@@ -686,7 +687,7 @@ export function MultiPartChoiceAnswer({
   const total = response.blanks.length;
   const complete = count === total;
   return (
-    <form
+    <Form
       className="multi-part-form"
       aria-label={spokenMath(response.label)}
       onSubmit={(event: FormEvent) => {
@@ -715,6 +716,6 @@ export function MultiPartChoiceAnswer({
           Check
         </button>
       </div>
-    </form>
+    </Form>
   );
 }

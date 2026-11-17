@@ -10,7 +10,7 @@ import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import controls from "../../ui/Controls.module.css";
-import { BirthYearPicker } from "../../ui/Select";
+import { YearField } from "../../ui/YearField";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing/api";
@@ -20,6 +20,7 @@ import { pastCoppaAge } from "../../../privacy/coppa-age";
 import { approvalOptions, approvals } from "./api";
 import { teacherLine } from "./ApproveLinkScreen";
 import styles from "./Approval.module.css";
+import { Form } from "../../ui/Form";
 
 const DAY = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -214,7 +215,7 @@ export function ApprovalScreen() {
             </div>
           </dl>
           {view.consentActive || view.asksBirthYear ? (
-            <form
+            <Form
               className={styles.step}
               onSubmit={(event) => {
                 event.preventDefault();
@@ -237,11 +238,11 @@ export function ApprovalScreen() {
               {view.asksBirthYear && (
                 <div className={controls.field}>
                   <span aria-hidden="true">Your child’s birth year</span>
-                  <BirthYearPicker
+                  <YearField
                     label="Your child’s birth year"
-                    adult={false}
                     value={birthYear}
                     disabled={busy}
+                    invalid={!!birthYearError}
                     onChange={(value) => {
                       setBirthYear(value);
                       setBirthYearError("");
@@ -285,7 +286,7 @@ export function ApprovalScreen() {
                   you approve right after.
                 </p>
               )}
-            </form>
+            </Form>
           ) : (
             <div className={styles.step}>
               <p>

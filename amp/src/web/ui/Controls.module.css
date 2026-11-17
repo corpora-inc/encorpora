@@ -28,8 +28,9 @@
   gap: var(--space-2);
   box-sizing: border-box;
   border: 1px solid transparent;
-  font-weight: 650;
+  font-weight: var(--button-weight);
   line-height: 1.25;
+  letter-spacing: -0.005em;
   text-align: center;
   text-decoration: none;
   /* A label that must wrap splits into even lines, never mid-word. */
@@ -38,27 +39,54 @@
   word-break: normal;
   hyphens: none;
   cursor: pointer;
+  /* State is color only: a hover or press never brightens with a filter. */
+  filter: none;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    transform 60ms ease;
 }
 .primary {
   background: var(--color-primary);
   color: var(--color-on-primary);
+  border-color: var(--button-primary-edge);
+  box-shadow: var(--button-primary-lift);
 }
+.primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  filter: none;
+}
+.primary:active:not(:disabled) {
+  background: var(--color-primary-active);
+  box-shadow: none;
+}
+/* A secondary action: the brand's soft tint, its own ink, a crisp hairline
+   (tokens.css --button-secondary-*). It reads as a button beside the
+   primary without competing with it, in either theme. */
 .secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-border-strong);
+  background: var(--button-secondary);
+  color: var(--button-on-secondary);
+  border-color: var(--button-secondary-edge);
 }
 .secondary:hover:not(:disabled) {
-  background: var(--color-secondary);
+  background: var(--button-secondary-hover);
+  border-color: var(--button-secondary-edge-hover);
   filter: none;
+}
+.secondary:active:not(:disabled) {
+  background: var(--button-secondary-active);
 }
 .quiet {
   background: transparent;
   color: var(--color-primary);
 }
 .quiet:hover:not(:disabled) {
-  background: var(--color-secondary);
+  background: var(--button-secondary);
   filter: none;
+}
+.quiet:active:not(:disabled) {
+  background: var(--button-secondary-hover);
 }
 /* A quiet action's fill appears only on hover, so its inset is easy to lose:
    a feature rule that zeroes it (`padding-inline: 0` to line the words up)
@@ -99,14 +127,32 @@
   color: var(--field-on);
   font: inherit;
   font-size: var(--text-body);
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
 }
 .input::placeholder {
   color: var(--field-placeholder);
   opacity: 1;
 }
+.input:hover:not(:disabled, :focus) {
+  border-color: var(--field-border-hover);
+}
+/* Focus hugs the field: its edge turns to the focus ink, with a soft halo
+   around it, never a ring floating off its corners. */
 .input:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--color-focus-ring);
+  box-shadow: var(--field-focus);
+}
+/* A field that says what is wrong wears the error's edge; focused, its halo
+   too. */
+.input[aria-invalid="true"] {
+  border-color: var(--color-danger-accent);
+}
+.input[aria-invalid="true"]:focus-visible {
+  border-color: var(--color-danger-accent);
+  box-shadow: var(--field-focus-invalid);
 }
 .field {
   display: grid;
@@ -123,7 +169,47 @@
   min-height: 1.4em;
   line-height: 1.4;
   font-size: var(--text-label);
+  font-weight: 500;
   color: var(--color-danger-accent);
+}
+/* A message: the drawn mark, then the words, one line, fading in where it
+   stands (nothing slides). A grid cell's note (`cell.note`) takes the same
+   layout. */
+.fieldError,
+.noteMark {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.fieldError > span,
+.noteMark > span {
+  min-width: 0;
+}
+.errorMark {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  /* Centered on the first line of the message. */
+  margin-top: calc((1.4em - 14px) / 2);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.errorDot {
+  fill: currentColor;
+  stroke: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fieldError > *,
+  .noteMark > * {
+    animation: field-message-in var(--motion-fast) var(--ease-standard) both;
+  }
+}
+@keyframes field-message-in {
+  from {
+    opacity: 0;
+  }
 }
 .fieldHeading {
   display: flex;

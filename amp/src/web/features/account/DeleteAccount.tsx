@@ -24,6 +24,7 @@ import pages from "./AccountPages.module.css";
 import styles from "./DeleteAccount.module.css";
 import account from "./Account.module.css";
 import { FrameBrand, PageFrame, frameCard } from "../../ui/PageFrame";
+import { Form } from "../../ui/Form";
 
 /* Account → Sign-in → Delete my account (src/account/delete-account.ts). One
    screen at its own URL: what goes, anything that must happen first with the
@@ -292,7 +293,7 @@ export function DeleteAccountPanel() {
               </ul>
             </section>
           ) : (
-            <form className={styles.confirm} onSubmit={submit} noValidate>
+            <Form className={styles.confirm} onSubmit={submit}>
               <TextField
                 label={`Type “${DELETE_ACCOUNT_WORD}” to confirm`}
                 value={typed}
@@ -317,7 +318,7 @@ export function DeleteAccountPanel() {
               >
                 Delete account
               </Button>
-            </form>
+            </Form>
           )}
         </>
       )}

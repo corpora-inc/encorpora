@@ -613,6 +613,41 @@
   --field-on: var(--color-on-surface);
   --field-border: var(--color-answer-border);
   --field-placeholder: var(--color-subtle-text);
+  --field-border-hover: var(--color-on-surface);
+  /* Buttons (ui/Button.tsx, and the legacy `.secondary` class): the one
+     primary action is the brand ink; a secondary action is a soft tint of
+     it with a crisp hairline of its own ink, never a grey outline on the
+     page. Press darkens and settles; nothing changes size. */
+  --button-weight: 600;
+  --button-primary-edge: color-mix(
+    in srgb,
+    var(--color-primary) 88%,
+    var(--color-on-surface)
+  );
+  --button-primary-lift: 0 1px 2px var(--color-shadow);
+  --button-secondary: var(--color-secondary);
+  --button-on-secondary: var(--color-on-secondary);
+  --button-secondary-hover: var(--color-secondary-hover);
+  --button-secondary-active: var(--color-secondary-active);
+  --button-secondary-edge: color-mix(
+    in srgb,
+    var(--color-on-secondary) 16%,
+    var(--color-secondary)
+  );
+  --button-secondary-edge-hover: color-mix(
+    in srgb,
+    var(--color-on-secondary) 28%,
+    var(--color-secondary)
+  );
+
+  /* Focus: a 1 px ring of the focus ink just outside the field's edge (two
+     pixels with the edge), inside a soft halo of the same ink. */
+  --field-focus:
+    0 0 0 1px var(--color-focus-ring),
+    0 0 0 4px color-mix(in srgb, var(--color-focus-ring) 22%, transparent);
+  --field-focus-invalid:
+    0 0 0 1px var(--color-danger-accent),
+    0 0 0 4px color-mix(in srgb, var(--color-danger-accent) 22%, transparent);
 }
 @media (min-width: 768px) {
   :root {

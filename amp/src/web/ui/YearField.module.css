@@ -16,12 +16,15 @@
   font-size: var(--text-body);
   font-weight: 400;
   font-variant-numeric: tabular-nums;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
   text-align: start;
   cursor: pointer;
 }
 .field:hover:not(:disabled) {
   filter: none;
-  border-color: var(--color-on-surface);
+  border-color: var(--field-border-hover);
 }
 .field[data-empty] > span {
   color: var(--field-placeholder);
@@ -31,17 +34,27 @@
 }
 .field svg {
   flex: none;
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.75;
+  stroke-width: 1.4;
   stroke-linecap: round;
   stroke-linejoin: round;
+  color: var(--color-muted-text);
 }
-.field:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
+.field:not(:disabled):hover svg {
+  color: var(--field-on);
+}
+.field:focus-visible,
+.field[aria-expanded="true"] {
+  outline: none;
+  border-color: var(--color-focus-ring);
+  box-shadow: var(--field-focus);
+}
+.field[aria-invalid="true"]:focus-visible {
+  border-color: var(--color-danger-accent);
+  box-shadow: var(--field-focus-invalid);
 }
 
 .earlier {

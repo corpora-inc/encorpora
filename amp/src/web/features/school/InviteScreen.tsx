@@ -28,6 +28,7 @@ import {
 import { Brand } from "./SchoolFrame";
 import { signInLink } from "../schools/sign-in-link";
 import styles from "./School.module.css";
+import { Form } from "../../ui/Form";
 
 function parseFragment(hash: string) {
   const [token, proof] = hash.replace(/^#/, "").split(".");
@@ -270,7 +271,7 @@ export function InviteScreen() {
           </div>
         </>
       ) : session ? (
-        <form
+        <Form
           className={styles.inviteForm}
           onSubmit={(event) => {
             event.preventDefault();
@@ -338,7 +339,7 @@ export function InviteScreen() {
                 ? "Start setup"
                 : `Join as ${roleNames[view.role]?.toLowerCase()}`}
           </Button>
-        </form>
+        </Form>
       ) : (
         <>
           <h1>

@@ -188,7 +188,7 @@
     "acquisition:pipeline": "tsx scripts/acquisition-pipeline.ts",
     "test:google-analytics-ui": "node --import tsx --test scripts/verify-google-analytics-ui.ts",
     "advertising:openai": "tsx scripts/openai-measurement.ts",
-    "lint:controls": "tsx scripts/check-checkbox-controls.ts",
+    "lint:controls": "tsx scripts/check-controls.ts",
     "test:peg-board-ui": "tsx scripts/verify-peg-board-ui.ts",
     "test:clever-session-ui": "tsx scripts/verify-clever-session-ui.ts",
     "test:school-connect-ui": "tsx scripts/verify-school-connect-ui.ts",

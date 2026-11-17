@@ -50,6 +50,7 @@ import {
 } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
+import { Form } from "../../ui/Form";
 
 const statusWords: Record<StudentStatus, string> = {
   "needs-seat": "waiting for a seat",
@@ -326,7 +327,7 @@ function AddStudentSheet({
   };
   return (
     <Sheet open={open} onOpenChange={onOpenChange} title="Add a student">
-      <form
+      <Form
         className={styles.sheetForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -379,7 +380,7 @@ function AddStudentSheet({
         >
           Add student
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }
