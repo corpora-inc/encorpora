@@ -1,11 +1,11 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 5,
+    "redirects": 3,
     "validateSearch": 9,
-    "searchHandoffs": 126,
-    "navigatingEffects": 15,
-    "renderNavigate": 21,
+    "searchHandoffs": 121,
+    "navigatingEffects": 13,
+    "renderNavigate": 19,
     "silentCatches": 140,
     "sessionProps": 54,
     "sessionReads": 33,
@@ -15,7 +15,6 @@
   "files": {
     "redirects": {
       "features/home/destination.ts": 1,
-      "features/pay/legacy.ts": 2,
       "features/profiles/practice-mode.ts": 1,
       "nav/legacy-layers.ts": 1
     },
@@ -25,15 +24,12 @@
     "searchHandoffs": {
       "app/router.tsx": 1,
       "features/access/AccessScreen.tsx": 3,
-      "features/account/AccountReady.tsx": 3,
+      "features/account/AccountReady.tsx": 2,
       "features/account/DeleteAccount.tsx": 1,
       "features/auth/SignInScreen.tsx": 7,
       "features/design/DesignScreen.tsx": 2,
       "features/family-approval/ApproveLinkScreen.tsx": 2,
-      "features/family/FamilyFrame.tsx": 1,
-      "features/family/Records.tsx": 1,
       "features/family/redirects.ts": 1,
-      "features/family/Today.tsx": 2,
       "features/films/FilmCards.tsx": 1,
       "features/films/FilmLink.tsx": 1,
       "features/funding/FundingInvoices.tsx": 1,
@@ -101,8 +97,6 @@
       "app/LegacyApp.tsx": 2,
       "features/auth/SignInScreen.tsx": 3,
       "features/design/DesignScreen.tsx": 1,
-      "features/family/FamilyFrame.tsx": 1,
-      "features/family/Records.tsx": 1,
       "features/onboarding/LearnerSteps.tsx": 1,
       "features/school/AdoptionScreen.tsx": 1,
       "features/school/join/CardScreen.tsx": 1,
@@ -113,7 +107,6 @@
     },
     "renderNavigate": {
       "features/access/AccessScreen.tsx": 1,
-      "features/account/AccountReady.tsx": 2,
       "features/me/OwnStartScreen.tsx": 1,
       "features/onboarding/PlanStep.tsx": 1,
       "features/onboarding/PurchaseStep.tsx": 2,

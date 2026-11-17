@@ -2,6 +2,7 @@ import { AccountSecurity } from "../../AccountSecurity";
 import { AccountOverlay } from "./AccountOverlay";
 import { BillingPanel } from "./BillingPage";
 import { DeleteAccountPanel } from "./DeleteAccount";
+import { PurchaseReturnNotice } from "./PurchaseReturnNotice";
 
 /*
  * The account overlays over a settings hub (app/account-overlays.tsx).
@@ -16,6 +17,7 @@ export function BillingOverlay() {
       title="Billing"
       description="Plans, education funds and receipts"
     >
+      <PurchaseReturnNotice />
       <BillingPanel />
     </AccountOverlay>
   );

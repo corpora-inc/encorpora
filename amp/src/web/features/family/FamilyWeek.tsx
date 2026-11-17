@@ -98,7 +98,7 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
           mark={(entry) => initial(entry.date)}
           current={data.today.date}
           detail={detail}
-          name="Practice time each day this week, every child"
+          name="Practice time each day this week"
         />
       )}
     </section>
