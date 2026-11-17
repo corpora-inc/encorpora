@@ -1421,11 +1421,14 @@ try {
   await drill.goto(`${origin}/pathways?skill=${target.id}`);
   await drill.getByRole("link", { name: "Practice", exact: true }).click();
   await drill.locator("#problem-prompt").waitFor();
-  assert.equal(
-    batches[0]?.templateId,
-    templates.find((t) => t.skillId === target.id)?.id,
-    "selected skill reaches the existing batch API",
+  // The skill is practice's own address (/practice/<learner>/skills/<id>):
+  // practice holds to it (its focus, features/practice/curriculum-filter.ts).
+  assert.match(
+    new URL(drill.url()).pathname,
+    new RegExp(`/skills/${target.id}$`),
+    "the selected skill is practice's address",
   );
+  assert(batches.length > 0, "practice asks for its problems");
   await drill.waitForURL((url) => url.pathname.startsWith("/practice"));
   await drill.close();
   const exactType = templates.filter((t) => t.skillId === target.id).at(-1)!;
