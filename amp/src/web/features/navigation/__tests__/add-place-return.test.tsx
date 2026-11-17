@@ -44,21 +44,17 @@ const TOKEN = "Z".repeat(43);
 const addPlace = () => {
   render(<PlaceSwitcher me={me} current={null} />);
   fireEvent.click(screen.getByText("Add a place"));
-  return router.navigate.mock.calls[0]![0] as { search: { from?: string } };
+  return router.navigate.mock.calls[0]![0] as { to: string; search?: object };
 };
 
 test("CP-2 H1: Add a place from an invitation never copies its secret", () => {
   router.href = `/school/invite#${TOKEN}`;
   const target = addPlace();
   expect(JSON.stringify(target)).not.toContain(TOKEN);
-  expect(target.search.from).toBeUndefined();
 });
 
-test("from a place, it returns there with only the view's keys", () => {
+test("Add a place opens the starter at its own address, carrying nothing", () => {
   router.href = `/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/map?sort=level&token=${TOKEN}#${TOKEN}`;
-  const target = addPlace();
-  expect(target.search.from).toBe(
-    "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/map?sort=level",
-  );
-  expect(JSON.stringify(target)).not.toContain(TOKEN);
+  // Changing their mind is the browser's Back to this screen.
+  expect(addPlace()).toEqual({ to: "/start" });
 });

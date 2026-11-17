@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useSessionOrNull } from "../../lib/session";
+import { setLevelDraft } from "./level-draft";
 import bar from "../../ui/AppBar.module.css";
 import { usePracticingProfile } from "./api";
 import styles from "./ProfileBar.module.css";
@@ -55,6 +57,7 @@ export function ProfileBackAction() {
  * adjusting it, and the way back. */
 export function ProfilePlace({ onNavigate }: { onNavigate: () => void }) {
   const { profile, back, leave } = usePracticingProfile();
+  const account = useSessionOrNull()?.accountId ?? "";
   if (!profile) return null;
   return (
     <div className={styles.place} data-learner={profile.id}>
@@ -68,13 +71,16 @@ export function ProfilePlace({ onNavigate }: { onNavigate: () => void }) {
           params={{
             _splat: profile.level ? "me/level" : `me/profiles/${profile.id}`,
           }}
-          search={
-            (profile.level
-              ? { grade: profile.level.grade, pace: profile.level.pace }
-              : {}) as never
-          }
           className={styles.placeLink}
-          onClick={onNavigate}
+          onClick={() => {
+            // The level opens on this profile's grade and pace.
+            if (profile.level)
+              setLevelDraft(account, "level", {
+                grade: profile.level.grade,
+                pace: profile.level.pace,
+              });
+            onNavigate();
+          }}
         >
           {profile.level ? "Change level" : "Adjust levels"}
         </Link>

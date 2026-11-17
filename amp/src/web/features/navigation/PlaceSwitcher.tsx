@@ -1,6 +1,6 @@
 import { familyPlacesOptions } from "../family/api";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import { currentLearner, selectLearner } from "../../learner-store";
@@ -17,7 +17,6 @@ import {
   type PlaceEntry,
   type PlaceGroup,
 } from "../spaces/places";
-import { appReturn } from "../spaces/returns";
 import styles from "./PlaceSwitcher.module.css";
 
 export type { PlaceEntry } from "../spaces/places";
@@ -154,11 +153,6 @@ export function PlaceSwitcher({
   onNavigate?: () => void;
 }) {
   const navigate = useNavigate();
-  // Where "Add a place" returns: a place, never a link's secret
-  // (features/spaces/returns.ts).
-  const origin = appReturn(
-    useLocation({ select: (location) => location.href }),
-  );
   const [expanded, setExpanded] = useState(false);
   const groups = given ?? placeGroups(me, null);
   const all = groups.flatMap((group) => group.entries);
@@ -245,11 +239,9 @@ export function PlaceSwitcher({
       <MenuItem
         onSelect={() => {
           onNavigate?.();
-          // Adding a place returns to here if they change their mind.
-          void navigate({
-            to: "/start",
-            search: (origin ? { from: origin } : {}) as never,
-          });
+          // The starter, adding a place: changing their mind is the
+          // browser's Back, to here (it has no in-page Back).
+          void navigate({ to: "/start" });
         }}
       >
         <span className={styles.item} data-place="add">
