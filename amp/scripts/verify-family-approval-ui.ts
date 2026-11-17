@@ -51,6 +51,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
 import { choose } from "./ui-controls";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -280,7 +281,7 @@ async function journey(
     { headers: { Origin: origin }, data: { nickname: "JR", birthYear: 2015 } },
   );
   check(`${label} a tutored child`, tutored.ok(), await tutored.text());
-  await teacher.goto(`${origin}/`);
+  await openHome(teacher, origin);
   await teacher.waitForURL(FAMILY_TODAY);
   await todayTitle(teacher);
   // Other families' children live in the tutoring group, never the family.

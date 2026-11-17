@@ -12,6 +12,7 @@ import { templates, generateProblem } from "../src/math/engine";
 import { projectSkillEvidence } from "../src/server/evidence";
 import type { Outcome } from "../src/server/repository";
 import { answerPathways } from "../src/web/features/practice/answer-pathways";
+import { openHome } from "./launcher";
 
 const root = new URL("../", import.meta.url).pathname;
 const vite = await createServer({
@@ -508,7 +509,7 @@ try {
           path: `${output}/${mode}-${width}-${theme}-menu-details.png`,
         });
         await page.keyboard.press("Escape");
-        await page.goto(`${origin}/`);
+        await openHome(page, origin);
         // A grown-up's view always names grades: no device toggle.
         await page.getByTestId("level-readout").first().waitFor();
         await page.screenshot({

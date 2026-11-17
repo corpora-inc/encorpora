@@ -353,7 +353,13 @@ export function SignInScreen() {
   const returnTo = continuationUrl(carry, "/");
   // A new account's own destination is its first question: the address a
   // confirmation link or a provider's sign-up returns to, never `/`.
-  const firstRunTo = returnTo === "/" ? "/start" : returnTo;
+  // `/` with its search (a funded program, a campaign): the destination
+  // takes the search along.
+  const [returnPath, returnSearch = ""] = returnTo.split("?");
+  const toRoot = returnPath === "/";
+  const firstRunTo = toRoot
+    ? `/start${returnSearch ? `?${returnSearch}` : ""}`
+    : returnTo;
   // Sign-in and sign-up resume the same account: its place, or the role
   // question when it has no place yet.
   const done = async () => {
@@ -365,15 +371,20 @@ export function SignInScreen() {
   async function continueAfterSignIn(session: AuthSession) {
     // Nothing asked for: straight to the account's place (or its first
     // question), its final address, never through `/`.
-    const href =
-      returnTo === "/"
-        ? await import("../home/destination")
-            .then(({ homeDestination }) => homeDestination(session))
-            .catch((error) => {
-              console.warn("Your place didn’t load; opening home", error);
-              return "/";
-            })
-        : returnTo;
+    const href = toRoot
+      ? await import("../home/destination")
+          .then(({ homeDestination }) => homeDestination(session))
+          .then((place) =>
+            // A new account's first question keeps the search it came with.
+            place === "/start" && returnSearch
+              ? `${place}?${returnSearch}`
+              : place,
+          )
+          .catch((error) => {
+            console.warn("Your place didn’t load; opening home", error);
+            return returnTo;
+          })
+      : returnTo;
     await navigate({ href, replace: true });
   }
   async function run(
@@ -571,7 +582,15 @@ export function SignInScreen() {
           const result = await accountClient.signIn.social({
             provider,
             fetchOptions: { timeout: 15_000 },
-            callbackURL: returnTo,
+            // A returning account comes back through `/?signed-in`, the one
+            // handoff that opens its place (its destination isn't known
+            // until the provider says who it is).
+            callbackURL: toRoot
+              ? `/?${new URLSearchParams([
+                  ["signed-in", ""],
+                  ...new URLSearchParams(returnSearch),
+                ])}`
+              : returnTo,
             newUserCallbackURL: firstRunTo,
             errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
               {

@@ -51,6 +51,7 @@ import {
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const portArgument = process.argv.indexOf("--port");
@@ -654,7 +655,7 @@ async function journey(
       (await teacher.getByRole("link", { name: "Import" }).count()) === 0,
   );
   // A staff account with no learners starts at /school, not the starter.
-  await teacher.goto(`${origin}/`);
+  await openHome(teacher, origin);
   await teacher.waitForURL(/\/school\//);
   // The same link, again, from someone else: it has been used.
   const third = await browser.newContext({ colorScheme: theme });
@@ -815,7 +816,7 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
     [account],
   );
   check(`${label} a parent keeps what a parent has`, !suppressed.rowCount);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   const drawer = page.getByRole("dialog");
   await drawer.waitFor();

@@ -54,6 +54,7 @@ AMP's web app is built to an elite engineering standard, not as a pile of one-of
   - `/` never redirects.
 - **One component per job.** Screens render through `ui/Page` and `PageHeader` (one width scale, one header). Lists use `ui/ColumnList`. Use the shared controls in `ui/`. Never add a page-specific width, header or back link, a second dialog system, or a raw native control.
 - **No in-page Back control. Tabs, menus and the browser navigate; flows use the shared stepper; contextual screens are overlays that close to the screen behind them.** The stepper is `ui/FlowSteps`; `tests/page-layout.test.ts` fails on a new Back.
+- **Compose capabilities, never reuse whole pages in a new context.** Build each capability (add children, choose a plan, give consent, a skill's detail) as a self-contained component with its own data hooks and no route knowledge. Compose it where it's needed: inside a first-run step, in a sheet over Settings, in an overlay over a child's page. Never send someone through another flow's page or URL "with a different context" (for example /start/parent to add a child from Settings).
 - **Contain failure.** Route errors render inside the app shell with the menu intact. No silent `.catch(() => null)`. Every error is logged and shown inline or as a toast.
 - **Hooks rules are law.** Follow ESLint's react-hooks rules (`rules-of-hooks`, `exhaustive-deps`, `set-state-in-effect`). Fix a violation by deriving state or moving work to an event handler or loader, never with a disable comment without a written reason.
 
