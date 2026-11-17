@@ -6,8 +6,8 @@
     "searchHandoffs": 126,
     "navigatingEffects": 15,
     "renderNavigate": 21,
-    "silentCatches": 140,
-    "sessionProps": 54,
+    "silentCatches": 135,
+    "sessionProps": 53,
     "sessionReads": 33,
     "inlineQueryKeys": 29,
     "nativeControls": 25
@@ -137,7 +137,6 @@
       "BookReader.tsx": 1,
       "Calculator.tsx": 3,
       "capability-entry.ts": 1,
-      "FamilyCenter.tsx": 2,
       "features/auth/passkey.ts": 1,
       "features/auth/SignInScreen.tsx": 2,
       "features/dev/PersonaSwitcher.tsx": 3,
@@ -195,14 +194,12 @@
       "native-session.ts": 1,
       "NativePreview.tsx": 1,
       "ParentConsentCenter.tsx": 2,
-      "PaymentHistoryCenter.tsx": 3,
       "PracticeWorkspace.tsx": 1,
       "purchase-return.ts": 5,
       "scene/money-art.ts": 1,
       "share-entry.ts": 1
     },
     "sessionProps": {
-      "FamilyCenter.tsx": 1,
       "features/access/AccessScreen.tsx": 1,
       "features/design/sections/workbooks.tsx": 5,
       "features/family/TutoringGroup.tsx": 5,
