@@ -198,7 +198,7 @@ try {
     .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
     .click();
   // Plain columns skip the column check and go straight to the students.
-  await page.waitForURL(/step=review/);
+  await page.waitForURL(/\/import\/review$/);
   await page.getByRole("heading", { name: "2 new students" }).waitFor();
   await page.getByRole("button", { name: "Add 2 students" }).click();
   await page.waitForURL(/\/roster$/);
@@ -428,7 +428,7 @@ try {
   await page
     .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
     .click();
-  await page.waitForURL(/step=map/);
+  await page.waitForURL(/\/import\/columns$/);
   await page.getByRole("heading", { name: "Check the columns" }).waitFor();
   await capture("unknown-column-review");
   // Coverage from another grant or pilot keeps the working sign-in controls.

@@ -1394,6 +1394,16 @@ const schoolClassImport = createRoute({
     "ImportScreen",
   ),
 });
+/** The import's later steps, each at its own address: `import/columns`,
+ * `import/review`, `import/done`. */
+const schoolClassImportStep = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "import/$step",
+  component: lazyRouteComponent(
+    () => import("../features/school/ImportScreen"),
+    "ImportScreen",
+  ),
+});
 /** A teacher sets up a class: its two steps, each at its own address
  * (features/school/pilots/start-steps.ts). Nothing rides along in a query. */
 const startLoader = async ({ context }: { context: unknown }) => {
@@ -1888,6 +1898,7 @@ export const router = createRouter({
       schoolClassSettings,
       schoolClassRoster,
       schoolClassImport,
+      schoolClassImportStep,
       schoolClassStart,
       schoolClassCards,
       schoolClassExperience,

@@ -152,21 +152,9 @@ const PHASE_2: Allowed = {
     widths: ["480px", "520px", "640px", "720px", "880px"],
     why: "school screens",
   },
-  "features/school/SchoolFrame.module.css": {
-    widths: ["880px"],
-    why: "the school frame's narrow content",
-  },
   "features/school/Setup.module.css": {
     widths: ["480px", "600px"],
     why: "school setup",
-  },
-  "features/school/classes/Cards.module.css": {
-    widths: ["560px"],
-    why: "sign-in cards",
-  },
-  "features/school/classes/ReportCard.module.css": {
-    widths: ["720px"],
-    why: "report cards",
   },
   "features/school/classroom/Experience.module.css": {
     widths: ["960px"],
@@ -176,16 +164,12 @@ const PHASE_2: Allowed = {
     widths: ["640px"],
     why: "the workbook stack",
   },
-  "features/school/classroom/Standings.module.css": {
-    widths: ["720px"],
-    why: "standings",
-  },
   "features/school/join/Join.module.css": {
     widths: ["420px", "480px", "620px", "1080px", "1320px"],
     why: "joining a class and a student's sign-in",
   },
   "features/school/org/Org.module.css": {
-    widths: ["420px", "720px", "760px"],
+    widths: ["420px", "760px"],
     why: "school and district screens",
   },
   "features/schools/Parent.module.css": {
@@ -337,6 +321,7 @@ const FRAMES: Record<string, string> = {
   StepFrame: "features/onboarding/setup/StepFrame.tsx",
   WorkbookFrame: "features/workbooks/WorkbookFrame.tsx",
   PlainPage: "features/school/PlainPage.tsx",
+  OrgFrame: "features/school/OrgFrame.tsx",
 };
 
 /** Route screens that don't render Page yet, `module#export`, with why. */
@@ -363,39 +348,13 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/profiles/index.ts#LevelScreen": "an adult's own practice",
   "features/profiles/index.ts#NewProfileScreen": "an adult's own practice",
   "features/profiles/index.ts#ProfilesScreen": "an adult's own practice",
-  "features/school/CalendarScreen.tsx#CalendarScreen":
-    "a school, class or setup screen",
-  "features/school/ChooserScreen.tsx#ChooserScreen":
-    "a school, class or setup screen",
-  "features/school/ClassesScreen.tsx#ClassScreen":
-    "a school, class or setup screen",
-  "features/school/ClassesScreen.tsx#ClassesScreen":
-    "a school, class or setup screen",
-  "features/school/ImportScreen.tsx#ImportScreen":
-    "a school, class or setup screen",
   "features/school/InviteScreen.tsx#InviteScreen":
     "a school, class or setup screen",
-  "features/school/LicenseScreen.tsx#LicenseScreen":
-    "a school, class or setup screen",
-  "features/school/MissingScreen.tsx#SchoolMissingScreen":
-    "a school, class or setup screen",
-  "features/school/SettingsScreen.tsx#OrgSettingsScreen":
-    "a school, class or setup screen",
   "features/school/SetupScreen.tsx#SetupScreen":
-    "a school, class or setup screen",
-  "features/school/StaffScreen.tsx#SignInHelpScreen":
-    "a school, class or setup screen",
-  "features/school/StaffScreen.tsx#StaffScreen":
-    "a school, class or setup screen",
-  "features/school/StudentsScreen.tsx#StudentsScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#CardsScreen":
     "a school, class or setup screen",
   "features/school/classes/index.ts#GradebookScreen":
     "a school, class or setup screen",
   "features/school/classes/index.ts#MapScreen":
-    "a school, class or setup screen",
-  "features/school/classes/index.ts#ReportCardScreen":
     "a school, class or setup screen",
   "features/school/classes/index.ts#RosterScreen":
     "a school, class or setup screen",
@@ -404,8 +363,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
   "features/school/classes/index.ts#TimeScreen":
     "a school, class or setup screen",
   "features/school/classes/index.ts#TodayScreen":
-    "a school, class or setup screen",
-  "features/school/classroom/StandingsScreen.tsx#StandingsScreen":
     "a school, class or setup screen",
   "features/school/classroom/index.ts#ClassExperienceScreen":
     "a school, class or setup screen",
@@ -423,22 +380,6 @@ const ROUTES_PHASE_2: Record<string, string> = {
     "joining, approvals and links from outside the app",
   "features/school/join/index.ts#PicturesScreen":
     "joining, approvals and links from outside the app",
-  "features/school/org/index.ts#ActivityScreen":
-    "a school, class or setup screen",
-  "features/school/org/index.ts#IntegrationsScreen":
-    "a school, class or setup screen",
-  "features/school/org/index.ts#OverviewScreen":
-    "a school, class or setup screen",
-  "features/school/org/index.ts#PrivacyScreen":
-    "a school, class or setup screen",
-  "features/school/org/index.ts#RolloverScreen":
-    "a school, class or setup screen",
-  "features/school/org/index.ts#SchoolsScreen":
-    "a school, class or setup screen",
-  "features/school/standing/index.ts#ClassStandingScreen":
-    "a school, class or setup screen",
-  "features/school/standing/index.ts#StandingScreen":
-    "a school, class or setup screen",
   "features/schools/ParentScreen.tsx#ParentScreen":
     "joining, approvals and links from outside the app",
 };
@@ -710,27 +651,7 @@ const BACK_DEBT: Record<string, string> = {
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
   "features/profiles/practice-mode.ts":
     "practice modes' way back to where they started, in the bar and drawer: to become the mode's exit (phase 2)",
-  "features/school/ImportScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/SetupScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/classes/CardsScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/classes/GradebookScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/classes/ReportCardScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/classes/TimeScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/classroom/StandingsScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/join/ClassScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/join/PicturesScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/org/RolloverScreen.tsx":
-    "a school screen (phase 2): tabs and overlays replace its way back",
-  "features/school/pilots/ClassAccess.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",
   "features/school/standing/parts.tsx":
     "a school screen (phase 2): tabs and overlays replace its way back",

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
+import { Page } from "../../ui/Page";
 import frame from "./SchoolFrame.module.css";
 import { currentSession, orgsOptions } from "./api";
 import { orgHome } from "./paths";
@@ -10,7 +11,7 @@ import styles from "./School.module.css";
 export function ChooserScreen() {
   const orgs = useQuery(orgsOptions(currentSession())).data ?? [];
   return (
-    <main className={frame.content} data-dense>
+    <Page className={frame.content} data-dense>
       <PageHead title="Your schools" />
       <ul className={styles.chooserList}>
         {orgs.map((org) => {
@@ -33,6 +34,6 @@ export function ChooserScreen() {
           );
         })}
       </ul>
-    </main>
+    </Page>
   );
 }

@@ -580,15 +580,19 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 title="Suggested grades appear after a week of work"
                 example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
-                  <Link
-                    to="/$"
-                    params={{
-                      _splat: host.href("today"),
-                    }}
-                    className={buttonClass("primary")}
-                  >
-                    Back to Today
-                  </Link>
+                  // A week of work starts with class: the board's code.
+                  // A family's Today is its tab, in the bar.
+                  given || family ? undefined : (
+                    <Link
+                      to="/$"
+                      params={{
+                        _splat: classUrl(place.org, place.class, "start"),
+                      }}
+                      className={buttonClass("primary")}
+                    >
+                      Start class
+                    </Link>
+                  )
                 }
               >
                 You decide every final grade.

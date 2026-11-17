@@ -105,7 +105,7 @@ export function JoinScreen() {
 
   if (finishingSignIn()) return <LoadingScreen />;
   return (
-    <JoinFrame>
+    <JoinFrame step="code">
       <div className={styles.column}>
         <h1 className={styles.title}>
           {scanning ? "Hold up your card" : "Type your code"}

@@ -15,7 +15,6 @@ import {
   CurveFacts,
   curveSentence,
   SettlingNote,
-  UpLink,
 } from "./parts";
 import { orgStandingOptions } from "./standing-api";
 import styles from "./Standing.module.css";
@@ -59,7 +58,6 @@ export function StandingScreen() {
         </EmptyState>
       ) : (
         <div className={styles.screen}>
-          <UpLink to={orgPath(orgId)}>Overview</UpLink>
           <header className={styles.title}>
             <h1>Where students stand against grade level</h1>
             <p>

@@ -8,7 +8,6 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import {
-  useEffect,
   useRef,
   useState,
   type ChangeEvent,
@@ -49,6 +48,7 @@ import { Badge, type BadgeTone } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../ui/DataGrid";
 import { EmptyState } from "../../ui/EmptyState";
+import { FlowSteps } from "../../ui/FlowSteps";
 import { Segmented } from "../../ui/Segmented";
 import { Select } from "../../ui/Select";
 import { StatRow, StatTile } from "../../ui/StatTile";
@@ -103,7 +103,24 @@ const useImport = create<{
 }));
 
 type Step = "source" | "map" | "review" | "done";
-const STEPS: readonly Step[] = ["source", "map", "review", "done"];
+/** Each step's own address under the import's (`…/import`, then
+ * `…/import/columns`, `…/import/review`, `…/import/done`), and the steps the
+ * shared stepper shows: done is where the import ends, not a step of it. */
+const STEP_PATHS: Record<Step, string> = {
+  source: "",
+  map: "columns",
+  review: "review",
+  done: "done",
+};
+const FLOW = [
+  { id: "source", label: "Roster" },
+  { id: "map", label: "Columns" },
+  { id: "review", label: "Review" },
+] as const;
+const stepOf = (segment: unknown): Step =>
+  (Object.keys(STEP_PATHS) as Step[]).find(
+    (step) => STEP_PATHS[step] === (segment ?? ""),
+  ) ?? "source";
 
 const failureText = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
@@ -365,12 +382,10 @@ function SourceStep({
 function MapStep({
   draft,
   defaultClass,
-  onBack,
   onContinue,
 }: {
   draft: Draft;
   defaultClass: string;
-  onBack: () => void;
   onContinue: () => Promise<void>;
 }) {
   const patch = useImport((state) => state.patch);
@@ -417,9 +432,6 @@ function MapStep({
           {error}
         </p>
         <div className={styles.actions}>
-          <Button variant="quiet" align="start" onClick={onBack}>
-            Back
-          </Button>
           <Button
             variant="primary"
             aria-busy={busy}
@@ -497,9 +509,6 @@ function MapStep({
           : error}
       </p>
       <div className={styles.actions}>
-        <Button variant="quiet" align="start" onClick={onBack}>
-          Back
-        </Button>
         <Button
           variant="primary"
           aria-busy={busy}
@@ -756,14 +765,12 @@ function ReviewStep({
   orgId,
   show,
   onShow,
-  onBack,
   onDone,
 }: {
   draft: Draft;
   orgId: string;
   show: Bucket | "all";
   onShow: (show: Bucket | "all") => void;
-  onBack: () => void;
   onDone: () => void;
 }) {
   const session = currentSession();
@@ -1250,11 +1257,6 @@ function ReviewStep({
             </div>
           )}
           <div className={styles.applyActions}>
-            {!running && (
-              <Button variant="quiet" onClick={onBack}>
-                Back
-              </Button>
-            )}
             {progress?.failed ? (
               <Button
                 variant="primary"
@@ -1433,14 +1435,16 @@ const STEP_TITLES: Record<Step, string> = {
 /** The import: drop, check, see every change, apply. Each step has a URL; the
  * file itself stays in memory, so a reload starts again from the drop. */
 export function ImportScreen() {
-  const { org: orgId, class: classId } = useParams({ strict: false }) as {
+  const {
+    org: orgId,
+    class: classId,
+    step: segment,
+  } = useParams({ strict: false }) as {
     org: string;
     class?: string;
+    step?: string;
   };
-  const search = useSearch({ strict: false }) as {
-    step?: unknown;
-    show?: unknown;
-  };
+  const search = useSearch({ strict: false }) as { show?: unknown };
   const navigate = useNavigate();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
@@ -1452,37 +1456,30 @@ export function ImportScreen() {
   const patch = useImport((state) => state.patch);
   const draft =
     stored?.orgId === orgId && stored.classId === classId ? stored : null;
-  const asked = STEPS.find((step) => step === search.step) ?? "source";
-  const step: Step = !draft
-    ? "source"
-    : asked === "review" && !draft.result
-      ? "map"
-      : asked === "done" && !draft.applied
-        ? "review"
-        : asked;
+  const base = classId
+    ? `/${classPath(orgId, classId)}/import`
+    : `/${orgPath(orgId, "import")}`;
+  const stepUrl = (step: Step) =>
+    STEP_PATHS[step] ? `${base}/${STEP_PATHS[step]}` : base;
+  const step = stepOf(segment);
   const goTo = (next: Step, replace = false) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        step: next === "source" ? undefined : next,
-        show: undefined,
-      })) as never,
-      replace,
-    });
-  // A roster is children's names, held in memory only: a refresh past the
-  // first step comes back here, calmly, with the class kept.
-  const [lost] = useState(() => !draft && asked !== "source");
+    void navigate({ to: stepUrl(next) as never, replace });
+  // A roster is children's names, held in memory only: a step past the
+  // first whose roster is gone (a refresh, a shared link) says so and
+  // offers the first step again. Nothing navigates by itself.
+  const lost =
+    step !== "source" &&
+    (!draft ||
+      (step === "review" && !draft.result) ||
+      (step === "done" && !draft.applied));
   const [lostKind] = useState(() => {
     try {
       return sessionStorage.getItem("amp.import.kind");
-    } catch {
+    } catch (failure) {
+      console.warn("How the roster came can't be read", failure);
       return null;
     }
   });
-  useEffect(() => {
-    if (step !== asked) goTo(step, true);
-  }, [step, asked]);
   const showAsked = ["new", "changed", "unchanged", "attention"].find(
     (value) => value === search.show,
   ) as Bucket | undefined;
@@ -1556,7 +1553,7 @@ export function ImportScreen() {
       </EmptyState>,
     );
   /** A teacher's paste or file whose columns are plain goes straight to the
-   * students it adds; the columns stay one Back away. */
+   * students it adds; the columns stay a done step of the stepper. */
   const loaded = async (next: Draft) => {
     // Only how the roster came (pasted or a file), never what it holds, so a
     // refresh can say which to do again.
@@ -1607,47 +1604,63 @@ export function ImportScreen() {
       replace: true,
     }).then(() => setDraft(null));
   };
+  const flowAt = FLOW.findIndex((entry) => entry.id === step);
   return frame(
     <div className={styles.page} data-step={step}>
-      {(step === "source" || step === "map") && (
+      {flowAt >= 0 && !lost && (
+        <FlowSteps
+          steps={FLOW}
+          current={flowAt}
+          href={(id) => stepUrl(id as Step)}
+          label="Import"
+        />
+      )}
+      {(step === "source" || step === "map" || lost) && (
         <PageHead
           title={
-            classId && step === "source" ? "Add students" : STEP_TITLES[step]
+            classId && (step === "source" || lost)
+              ? "Add students"
+              : STEP_TITLES[lost ? "source" : step]
           }
           detail={
-            step === "source" && !classId
+            (step === "source" || lost) && !classId
               ? "Students, classes and teachers, all from one file."
               : undefined
           }
         />
       )}
+      {lost ? (
+        <EmptyState
+          title={
+            lostKind === "paste"
+              ? "Paste the names again to review them"
+              : "Choose the file again to review it"
+          }
+          action={
+            <Link to={stepUrl("source") as never} className={buttonClass("primary")}>
+              {lostKind === "paste" ? "Paste names" : "Choose a file"}
+            </Link>
+          }
+        >
+          A roster stays only on the page it was added to.
+        </EmptyState>
+      ) : null}
       {step === "source" && (
         <SourceStep
           orgId={orgId}
           classScope={!!classId}
           checking={checking}
           onLoaded={(next) => void loaded(next)}
-          notice={
-            lost
-              ? lostKind === "paste"
-                ? "Paste the names again to review them."
-                : "Choose the file again to review it."
-              : ""
-          }
         />
       )}
-      {step === "map" && draft && (
+      {step === "map" && draft && !lost && (
         <MapStep
           draft={draft}
           defaultClass={defaultClass}
-          onBack={() => {
-            setDraft(null);
-            goTo("source");
-          }}
           onContinue={check}
         />
       )}
-      {step === "review" && draft && (
+      {step === "review" && draft && !lost && (
         <ReviewStep
           draft={draft}
           orgId={orgId}
@@ -1663,11 +1676,10 @@ export function ImportScreen() {
               resetScroll: false,
             })
           }
-          onBack={() => goTo("map")}
           onDone={() => (classId ? added() : goTo("done", true))}
         />
       )}
-      {step === "done" && draft && (
+      {step === "done" && draft && !lost && (
         <DoneStep
           draft={draft}
           orgId={orgId}

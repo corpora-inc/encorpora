@@ -794,17 +794,18 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                   }
                   example={<ExampleTime />}
                   action={
-                    <Link
-                      to="/$"
-                      params={{
-                        _splat: family
-                          ? host.href("today")
-                          : classUrl(place.org, place.class, "start"),
-                      }}
-                      className={buttonClass("primary")}
-                    >
-                      {family ? "Back to Today" : "Start class"}
-                    </Link>
+                    // A family's Today is its tab, in the bar.
+                    family ? undefined : (
+                      <Link
+                        to="/$"
+                        params={{
+                          _splat: classUrl(place.org, place.class, "start"),
+                        }}
+                        className={buttonClass("primary")}
+                      >
+                        Start class
+                      </Link>
+                    )
                   }
                 />
               </div>

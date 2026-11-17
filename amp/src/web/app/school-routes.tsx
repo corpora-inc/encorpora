@@ -415,7 +415,12 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen("/schools", screens.schools, (session, orgId) => [
       preload(schoolsOptions(session, orgId)),
     ]),
+    // The new year's steps, each at its own address: `/year` (dates), then
+    // `/year/classes`, `/year/grades` and `/year/review`.
     orgScreen("/year", screens.rollover, (session, orgId) => [
+      preload(rolloverOptions(session, orgId)),
+    ]),
+    orgScreen("/year/$step", screens.rollover, (session, orgId) => [
       preload(rolloverOptions(session, orgId)),
     ]),
     orgScreen("/integrations", screens.integrations, (session, orgId) => [
@@ -535,6 +540,7 @@ export function schoolRoutes(root: AnyRoute) {
       ),
     ]),
     orgScreen("/import", screens.importer),
+    orgScreen("/import/$step", screens.importer),
     toSettings("/experience", "student-experience"),
   ];
 }

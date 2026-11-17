@@ -6,6 +6,7 @@ import { AppError } from "../../lib/AppError";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
+import { Page } from "../../ui/Page";
 import { currentSession, orgOptions } from "./api";
 import type { SchoolCrumb } from "./SchoolFrame";
 import frame from "./SchoolFrame.module.css";
@@ -55,16 +56,21 @@ export function OrgFrame({
   const pathname = useLocation({ select: (location) => location.pathname });
   if (org.isPending)
     return (
-      <main className={frame.content} data-dense>
+      <Page width="wide" className={frame.content} data-dense>
         <LoadingScreen overlay />
-      </main>
+      </Page>
     );
   if (!org.data) {
     // Not found says so; anything else is this request, and trying again works.
     const missing =
       !(org.error instanceof AppError) || org.error.status === 404;
     return (
-      <main id="school-content" className={frame.content} data-dense>
+      <Page
+        width="wide"
+        id="school-content"
+        className={frame.content}
+        data-dense
+      >
         {missing ? (
           <EmptyState
             title="This school isn’t available to your account"
@@ -89,7 +95,7 @@ export function OrgFrame({
             {org.error?.message}
           </EmptyState>
         )}
-      </main>
+      </Page>
     );
   }
   const can = new Set(org.data.can ?? []);
@@ -116,23 +122,22 @@ export function OrgFrame({
   const links = related.filter(([, , permission]) =>
     can.has(permission as never),
   );
+  // Settings and its pages are one focused column, standard width; the
+  // rest (classes, tables, dashboards) are wide (ui/Page).
+  const focused =
+    narrow ||
+    nav === "settings" ||
+    nav === "privacy" ||
+    nav === "integrations" ||
+    nav === "license" ||
+    nav === "calendar";
   return (
-    <main
+    <Page
+      width={focused ? "standard" : "wide"}
       id="school-content"
       tabIndex={-1}
       className={frame.content}
       data-dense
-      // Settings and its pages are one focused, centred column.
-      data-narrow={
-        narrow ||
-        nav === "settings" ||
-        nav === "privacy" ||
-        nav === "integrations" ||
-        nav === "license" ||
-        nav === "calendar"
-          ? ""
-          : undefined
-      }
     >
       {/* Which class, for someone who teaches several; a family has one. */}
       {place && nav.startsWith("class:") && org.data.kind !== "family" && (
@@ -165,6 +170,6 @@ export function OrgFrame({
       </SubTabsShown.Provider>
       {/* Details opened over this page (?open=): it stays, they stack. */}
       <LayerHost org={orgId} />
-    </main>
+    </Page>
   );
 }
