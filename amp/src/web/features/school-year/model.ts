@@ -144,7 +144,7 @@ export function yearProblem(year: Span): Problem {
   if (!year.startsOn) return { startsOn: "Choose the first day." };
   if (!year.endsOn) return { endsOn: "Choose the last day." };
   return year.endsOn < year.startsOn
-    ? { endsOn: "The last day has to be after the first." }
+    ? { endsOn: "Ends before the first day." }
     : null;
 }
 
@@ -157,13 +157,12 @@ export function periodProblems(
   return periods.map((period, index) => {
     const before = periods[index - 1];
     if (period.endsOn < period.startsOn)
-      return { endsOn: "The last day has to be after the first." };
+      return { endsOn: "Ends before it starts." };
     if (period.startsOn < year.startsOn)
-      return { startsOn: "This is before the school year starts." };
-    if (period.endsOn > year.endsOn)
-      return { endsOn: "This is after the school year ends." };
+      return { startsOn: "Before the year starts." };
+    if (period.endsOn > year.endsOn) return { endsOn: "After the year ends." };
     if (before && period.startsOn <= before.endsOn)
-      return { startsOn: `This overlaps ${before.name}.` };
+      return { startsOn: `Overlaps ${before.name}.` };
     return null;
   });
 }

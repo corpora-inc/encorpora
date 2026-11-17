@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSheet } from "../../nav/sheet";
 import { Button } from "../../ui/Button";
 import { PageSection } from "../../ui/PageSection";
 import { YearRibbon } from "../school/YearRibbon";
@@ -13,6 +13,9 @@ import {
 } from "./model";
 import { SchoolYearSheet } from "./SchoolYearSheet";
 import styles from "./SchoolYear.module.css";
+
+/** The edit sheet's name in history state (`state.sheet`). */
+export const SHEET = "school-year";
 
 /**
  * A place's school year, one section (docs/design/ia.md, "Settings"): the
@@ -40,7 +43,9 @@ export function SchoolYearSection({
   title?: string;
 }) {
   const year = useSchoolYear({ org, classId });
-  const [editing, setEditing] = useState(false);
+  // The edit sheet is a same-address history entry (nav/sheet.ts): Back and
+  // ✕ close it, and a reload keeps it open.
+  const sheet = useSheet(SHEET);
   const { saved } = year;
   const canEdit = !setBy && year.canEditYear;
   if (year.readable === false) return null;
@@ -61,7 +66,7 @@ export function SchoolYearSection({
             <Button
               variant="secondary"
               aria-label={`Edit the ${title.toLowerCase()}`}
-              onClick={() => setEditing(true)}
+              onClick={sheet.show}
             >
               Edit
             </Button>
@@ -116,8 +121,8 @@ export function SchoolYearSection({
         <SchoolYearSheet
           place={{ org, classId }}
           grading={grading}
-          open={editing}
-          onOpenChange={setEditing}
+          open={sheet.open}
+          onOpenChange={sheet.onOpenChange}
         />
       )}
     </PageSection>
