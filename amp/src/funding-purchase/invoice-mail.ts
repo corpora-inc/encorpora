@@ -9,7 +9,53 @@ import type {
 import { digest } from "../parent-consent/crypto.js";
 import { currentPolicy } from "../parent-consent/policy.js";
 import { disclosesResend } from "../parent-consent/resend.js";
+import { renderEmail, retryPayload } from "../email/email.js";
 import { FundingPurchaseRepository } from "./repository.js";
+
+/** The requested invoice, with how to submit it. */
+export function fundingInvoiceMail(input: {
+  invoiceId: string;
+  recipient: string;
+  instructions: string;
+  destinationUrl: string;
+  /** YYYY-MM-DD. */
+  submitBy: string;
+  billingUrl: string;
+  pdfBase64: string;
+}): ConsentMail {
+  const { invoiceId, billingUrl } = input;
+  return {
+    idempotencyKey: `amp-funding-invoice:${invoiceId}`,
+    recipient: input.recipient,
+    ...renderEmail({
+      origin: new URL(billingUrl).origin,
+      subject: "Your AMP invoice and next steps",
+      heading: "Your AMP invoice",
+      body: [
+        "Your AMP invoice is attached. Your child can start today while you arrange payment through your program.",
+        {
+          button: { label: "Submit the invoice", url: input.destinationUrl },
+          lead: `Submit the attached PDF through your program: ${input.instructions}`,
+        },
+        `Submit by ${input.submitBy} to keep learning while your program processes payment.`,
+        {
+          link: { label: "Open Billing", url: billingUrl },
+          lead: "Your invoices, learning access and submission status are in Billing. Sign in with this email:",
+        },
+        "After submitting, choose ‘I’ve submitted it’ in Billing. We’ll email you when payment arrives.",
+        `Invoice: ${invoiceId}`,
+        "Need help with ClassWallet DirectPay? Email support@corpora.inc.",
+      ],
+    }),
+    attachments: [
+      {
+        filename: `education-invoice-${invoiceId}.pdf`,
+        content: input.pdfBase64,
+        contentType: "application/pdf",
+      },
+    ],
+  };
+}
 
 /** Requested invoice delivery, not marketing or proof of payment. The guest
  * supplies its recipient; access still requires verified account ownership. */
@@ -48,27 +94,23 @@ export async function deliverFundingInvoiceMail(
       if (!row) return null;
       const offer = row.offer_snapshot;
       const billingUrl = new URL("/account/billing", accountUrl).href;
-      const mail: ConsentMail = {
-        idempotencyKey: `amp-funding-invoice:${row.invoice_id}`,
+      const composed = fundingInvoiceMail({
+        invoiceId: row.invoice_id,
         recipient: row.parent_email,
-        subject: "Your AMP invoice and next steps",
-        text: [
-          "Your AMP invoice is attached. Your child can start today while you arrange payment through your program.",
-          `Submit the attached PDF through your program: ${offer.instructions}\n${offer.destinationUrl}`,
-          `Submit by ${new Date(row.claim_by ?? row.expires_at).toISOString().slice(0, 10)} to keep learning while your program processes payment.`,
-          `Your invoices, learning access and submission status are in Billing. Sign in with this email:\n${billingUrl}`,
-          "After submitting, choose ‘I’ve submitted it’ in Billing. We’ll email you when payment arrives.",
-          `Invoice: ${row.invoice_id}`,
-          "Need help with ClassWallet DirectPay? Email support@corpora.inc.",
-        ].join("\n\n"),
-        attachments: [
-          {
-            filename: `education-invoice-${row.invoice_id}.pdf`,
-            content: row.pdf_base64,
-            contentType: "application/pdf",
-          },
-        ],
-      };
+        instructions: offer.instructions,
+        destinationUrl: offer.destinationUrl,
+        submitBy: new Date(row.claim_by ?? row.expires_at)
+          .toISOString()
+          .slice(0, 10),
+        billingUrl,
+        pdfBase64: row.pdf_base64,
+      });
+      const mail = retryPayload(
+        composed,
+        (payload) =>
+          row.delivery_binding ===
+          digest({ transport: transport.binding, mail: payload }),
+      );
       const binding = digest({ transport: transport.binding, mail });
       const reason =
         row.state === "cancelled" ||

@@ -13,7 +13,7 @@ import {
 } from "../src/funding-purchase/term.js";
 import { installConsentPolicy } from "../src/parent-consent/policy.js";
 import type {
-  ConsentMail,
+  ConsentPayload,
   ConsentTransport,
 } from "../src/parent-consent/contracts.js";
 import type { FundingOffer } from "../src/funding-purchase/contracts.js";
@@ -102,7 +102,7 @@ for (const offer of [
           );
           return invoice;
         };
-        const sent: ConsentMail[] = [];
+        const sent: ConsentPayload[] = [];
         const transport: ConsentTransport = {
           binding: {
             provider: "resend",

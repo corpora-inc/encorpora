@@ -12,6 +12,7 @@
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-schools-public-ui.ts \
  *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys] [--port 4406]
  */
+import type { LinkedMessage } from "../src/email/email.js";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
@@ -106,7 +107,7 @@ await registerSchoolRoutes(api, {
     origin,
     learning,
     renderer,
-    mail: async (to: string, subject: string, text: string) => {
+    mail: async (to: string, { subject, text }: LinkedMessage) => {
       mailed.push({ to, subject, text });
     },
   },

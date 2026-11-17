@@ -352,23 +352,38 @@ const EXAMPLES: Example[] = [
   },
   // A lesson AMP no longer has; one it has opens in its reader (below).
   { from: "/lessons/retired-lesson", world: "adult", lands: "/pathways" },
+  // Your own map names its skill in its address (/pathways/<skill>); the
+  // skill and what is over it go into the map's store.
   {
     from: "/pathways?skill=s1&view=3d",
     world: "signed out",
     // 3D becomes this device's choice of view.
-    lands: "/pathways",
+    lands: "/pathways/s1",
     layers: ["skill:s1"],
   },
   {
     from: "/pathways?open=skill%3As2",
     world: "signed out",
-    lands: "/pathways",
+    lands: "/pathways/s2",
     layers: ["skill:s2"],
   },
   {
     from: "/pathways/s1?lesson=t1",
     world: "adult",
-    lands: "/pathways",
+    lands: "/pathways/s1",
+    layers: ["skill:s1", "lesson:t1"],
+  },
+  // An ad's label stays on the skill's address, which is then no row's.
+  {
+    from: "/pathways?skill=s1&utm_campaign=x",
+    world: "signed out",
+    lands: "/pathways/s1?utm_campaign=x",
+    layers: ["skill:s1"],
+  },
+  {
+    from: "/pathways?open=skill%3As1%2Clesson%3At1",
+    world: "signed out",
+    lands: "/pathways/s1",
     layers: ["skill:s1", "lesson:t1"],
   },
   {

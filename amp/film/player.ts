@@ -19,10 +19,14 @@ export type PlayerOptions = {
   audioUrl: string;
   title?: string;
   duration?: number;
-  backHref: string;
-  backLabel: string;
-  fullscreen?: boolean;
+  /** A text link out (the review page's "All"). */
+  backHref?: string;
+  backLabel?: string;
   onBack?: () => void;
+  /** The film is an overlay over the screen it was opened from: ✕ closes it
+   * there (the learner route), never an in-page "Back to …". */
+  close?: { href: string; onClose: () => void };
+  fullscreen?: boolean;
   /** Called as playback starts and stops (the learner route counts it as
    * attention). */
   onPlayingChange?: (playing: boolean) => void;
@@ -40,6 +44,15 @@ function el<K extends keyof HTMLElementTagNameMap>(
   node.textContent = text;
   parent.appendChild(node);
   return node;
+}
+
+/** The poster's moment: the end of the film's first shot, its picture
+ * complete before the next shot clears it (a third of the way in when the
+ * timing names no shot). */
+export function posterTime(timing: Timing) {
+  const end = timing.shots[0]?.at(-1)?.end;
+  const at = typeof end === "number" ? end - 0.1 : timing.duration / 3;
+  return Math.max(0, Math.min(timing.duration, at));
 }
 
 /** Returns synchronously so route changes can cancel even the first fetch. */
@@ -110,25 +123,50 @@ export function mountFilmPlayer(
   speedMenu.hidden = true;
   const fullscreen = el("button", "live-fullscreen", controls, "Full screen");
   fullscreen.hidden = options.fullscreen === false || !document.fullscreenEnabled;
-  const back = el("a", "live-back", controls, options.backLabel);
-  back.href = options.backHref;
-  back.onclick = (event) => {
-    if (
-      options.onBack &&
-      !event.metaKey &&
-      !event.ctrlKey &&
-      !event.shiftKey &&
-      event.button === 0
-    ) {
+  const plainClick = (event: MouseEvent) =>
+    !event.metaKey && !event.ctrlKey && !event.shiftKey && event.button === 0;
+  if (options.backHref && options.backLabel) {
+    const back = el("a", "live-back", controls, options.backLabel);
+    back.href = options.backHref;
+    back.onclick = (event) => {
+      if (options.onBack && plainClick(event)) {
+        event.preventDefault();
+        options.onBack();
+      }
+    };
+  }
+  if (options.close) {
+    const { href, onClose } = options.close;
+    const close = el("a", "live-close", controls);
+    close.href = href;
+    close.setAttribute("aria-label", "Close film");
+    close.title = "Close";
+    const mark = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    mark.setAttribute("viewBox", "0 0 20 20");
+    mark.setAttribute("aria-hidden", "true");
+    const cross = document.createElementNS(mark.namespaceURI, "path");
+    cross.setAttribute("d", "M5 5l10 10M15 5L5 15");
+    mark.appendChild(cross);
+    close.appendChild(mark);
+    close.onclick = (event) => {
+      if (!plainClick(event)) return;
       event.preventDefault();
-      options.onBack();
-    }
-  };
+      onClose();
+    };
+  }
   const audio = el("audio", "", shell);
   audio.preload = "auto";
   let disposed = false,
     film: Film | undefined,
-    lesson: LiveLesson | undefined;
+    lesson: LiveLesson | undefined,
+    /** The poster's picture: a real frame of the film (its first shot,
+     * finished), shown until the film is played or moved. */
+    posterAt = 0;
+  const unplayed = () =>
+    !shell.classList.contains("started") && !shell.classList.contains("moved");
+  const showPoster = () => {
+    if (unplayed()) film?.seek(posterAt);
+  };
   let layout: Layout | undefined,
     t = 0,
     duration = options.duration ?? 1,
@@ -193,7 +231,7 @@ export function mountFilmPlayer(
     duration = film.duration;
     scrub.max = String(duration);
     fit();
-    film.seek(t);
+    film.seek(unplayed() ? posterAt : t);
   };
   const draw = (value: number) => {
     t = Math.max(0, Math.min(duration, value));
@@ -357,12 +395,14 @@ export function mountFilmPlayer(
       if (disposed || controller.signal.aborted) return;
       lesson = data;
       film = undefined;
+      posterAt = posterTime(data.timing);
       title.textContent = data.title;
       meta.textContent = filmClock(data.timing.duration);
       shell.setAttribute("aria-label", data.title);
       build();
       draw(t);
-      shell.classList.add("ready");
+      showPoster();
+      shell.classList.add("ready", "framed");
       waiting("Loading narration…");
       audio.src = options.audioUrl;
       audio.load();

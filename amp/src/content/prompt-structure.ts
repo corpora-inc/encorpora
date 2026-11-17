@@ -94,9 +94,15 @@ export function trailingDisplayMath(
     if (part.kind === "math") starts.add(offset);
     else {
       for (const match of part.source.matchAll(
-        /(?:(?<!\d):|:(?!\d))\s*|\b(?:simplify|evaluate|factor|expand|calculate|compute)\s+/gi,
-      ))
-        starts.add(offset + match.index + match[0].length);
+        /:\s*|\b(?:simplify|evaluate|factor|expand|calculate|compute)\s+/gi,
+      )) {
+        // A colon between digits is a ratio or a time. Checked by hand:
+        // Safari before 16.4 has no lookbehind.
+        const at = match.index;
+        if (/^\d:\d$/.test(part.source.slice(Math.max(0, at - 1), at + 2)))
+          continue;
+        starts.add(offset + at + match[0].length);
+      }
     }
     offset += part.source.length;
   }
@@ -107,11 +113,12 @@ export function trailingDisplayMath(
     const suffix = text.slice(start).trim();
     // Remove only one sentence period after a complete formula. A run of dots
     // can be recurring-decimal notation; ! can be factorial. Neither is prose.
-    let punctuation = /(?<![.\\])\.$/.test(suffix) ? "." : "";
+    // (No lookbehind in these two: Safari before 16.4 throws on it.)
+    let punctuation = /(?:^|[^.\\])\.$/.test(suffix) ? "." : "";
     let source = suffix.slice(0, suffix.length - punctuation.length).trimEnd();
     // A sentence period occasionally sits just inside an explicit math span.
     // Preserve ellipses and escaped TeX spacing; only remove one final dot.
-    const insidePeriod = /(?<![.\\])\.(\$|\\\))$/;
+    const insidePeriod = /(^|[^.\\])\.(\$|\\\))$/;
     const invisibleDelimiter =
       /\\(?:left|right|middle|[bB]igg?[lr]?)\s*\.(?:\$|\\\))$/;
     if (
@@ -125,7 +132,7 @@ export function trailingDisplayMath(
       insidePeriod.test(source) &&
       !invisibleDelimiter.test(source)
     ) {
-      const candidate = source.replace(insidePeriod, "$1");
+      const candidate = source.replace(insidePeriod, "$1$2");
       const inner = candidate.startsWith("$")
         ? candidate.slice(1, -1)
         : candidate.slice(2, -2);

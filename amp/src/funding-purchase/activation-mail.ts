@@ -3,10 +3,12 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { Pool } from "pg";
 import type {
+  ConsentMail,
   ConsentTransport,
   DeliveryResult,
   ConsentPolicy,
 } from "../parent-consent/contracts.js";
+import { renderEmail, retryPayload } from "../email/email.js";
 import { currentPolicy } from "../parent-consent/policy.js";
 import { digest } from "../parent-consent/crypto.js";
 import { fundedLearningAllowed } from "./learning-permission.js";
@@ -26,6 +28,49 @@ export function fundedNotificationSender(value: unknown): string {
   const name = named[1]!.trim();
   if (!name) throw new Error("Sender display name is empty");
   return `${name} <${z.email().max(254).parse(named[2]!.trim())}>`;
+}
+
+/** The funded-purchase confirmation: access is ready, or a scheduled next
+ * term is confirmed. It names no learner. */
+export function fundedActivationMail(input: {
+  requestId: string;
+  recipient: string;
+  /** The parent account URL. */
+  link: string;
+  scheduled?: { period: "month" | "year"; startsAt: string; endsAt: string };
+}): ConsentMail {
+  const { requestId, link, scheduled } = input;
+  const open = {
+    button: { label: "Open AMP", url: link },
+    lead: "Open AMP:",
+    sameLine: true,
+  };
+  const subject = scheduled
+    ? `Your next ${scheduled.period} of AMP Math is confirmed`
+    : "Your AMP Math access is ready";
+  return {
+    idempotencyKey: `amp-funded-activation:${requestId}`,
+    recipient: input.recipient,
+    ...renderEmail({
+      origin: new URL(link).origin,
+      subject,
+      heading: subject,
+      body: scheduled
+        ? [
+            `Payment for invoice ${requestId} was received.`,
+            `Your learner's next ${scheduled.period} runs from ${scheduled.startsAt} to ${scheduled.endsAt} (UTC).`,
+            open,
+          ]
+        : [
+            "Your funded AMP Mathematics purchase is confirmed and your learner's access is active.",
+            `Invoice: ${requestId}`,
+            "Sign in to your AMP parent account, then select your learner to start learning.",
+            open,
+            "You do not need to make another payment.",
+            "Need help getting started? Email support@corpora.inc and include the invoice number above.",
+          ],
+    }),
+  };
 }
 
 /** One leased notification per call. Provider acceptance is not inbox delivery.
@@ -84,36 +129,28 @@ export async function deliverFundedActivationMail(
         (scheduled || Date.parse(grant.startsAt) <= Date.now()) &&
         Date.parse(grant.endsAt) > Date.now() &&
         !row.deleted_at &&
-        (await fundedLearningAllowed(
-          client,
-          row.account_id,
-          row.learner_id,
-        ));
+        (await fundedLearningAllowed(client, row.account_id, row.learner_id));
       const period = row.offer_snapshot.termMonths === 1 ? "month" : "year";
-      const mail = {
-        idempotencyKey: `amp-funded-activation:${row.request_id}`,
+      const composed = fundedActivationMail({
+        requestId: row.request_id,
         recipient: row.email ?? "",
+        link: link.href,
         ...(scheduled
           ? {
-              subject: `Your next ${period} of AMP Math is confirmed`,
-              text: [
-                `Payment for invoice ${row.request_id} was received.`,
-                `Your learner's next ${period} runs from ${grant.startsAt.slice(0, 10)} to ${grant.endsAt.slice(0, 10)} (UTC).`,
-                `Open AMP: ${link.href}`,
-              ].join("\n\n"),
+              scheduled: {
+                period,
+                startsAt: grant.startsAt.slice(0, 10),
+                endsAt: grant.endsAt.slice(0, 10),
+              },
             }
-          : {
-              subject: "Your AMP Math access is ready",
-              text: [
-                "Your funded AMP Mathematics purchase is confirmed and your learner's access is active.",
-                `Invoice: ${row.request_id}`,
-                "Sign in to your AMP parent account, then select your learner to start learning.",
-                `Open AMP: ${link.href}`,
-                "You do not need to make another payment.",
-                "Need help getting started? Email support@corpora.inc and include the invoice number above.",
-              ].join("\n\n"),
-            }),
-      };
+          : {}),
+      });
+      const mail = retryPayload(
+        composed,
+        (payload) =>
+          row.delivery_binding ===
+          digest({ transport: transport.binding, mail: payload }),
+      );
       const binding = digest({ transport: transport.binding, mail });
       const reason = !eligible
         ? "access-inactive"

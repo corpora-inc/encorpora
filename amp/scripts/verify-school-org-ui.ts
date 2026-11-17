@@ -159,7 +159,7 @@ await registerSchoolRoutes(api, {
   services: {
     secret: randomBytes(32).toString("hex"),
     origin,
-    mail: async (to, subject) => {
+    mail: async (to, { subject }) => {
       mail.push({ to, subject });
     },
     signIn: {

@@ -11,16 +11,17 @@ import {
   PracticeLabel,
 } from "../practice/CurriculumPractice";
 import { ScreenTitle } from "../../ui/ScreenTitle";
-import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
+  Component,
   Suspense,
   startTransition,
   useDeferredValue,
   useImperativeHandle,
   useMemo,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type ComponentProps,
@@ -95,10 +96,36 @@ const viewOptions = [
   { value: "grades" as const, label: "Grades" },
   { value: "3d" as const, label: "3D" },
 ];
-/** The 3D map is three.js (about 140 KB compressed), and the grades view is
- * the default: the map's code loads when it is chosen, and is fetched while
- * the browser is idle once Pathways shows, so choosing it is immediate. */
+/** The 3D map is three.js (about 140 KB compressed) and optional: the
+ * grades view is the default and the whole of Pathways. The map's code is
+ * fetched only when a visitor chooses 3D, never ahead of it, so a browser
+ * that can't load or run it never loads it unasked. */
 const Graph = lazyRouteComponent(() => import("./Graph"), "Graph");
+
+/**
+ * The 3D map's own boundary: its code failing to load or parse, or the map
+ * failing as it draws, never takes Pathways to its route error. The grades
+ * view takes the map's place, and the view control says, quietly, that 3D
+ * isn't available here.
+ */
+class MapBoundary extends Component<
+  { onFail: () => void; children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  componentDidCatch(error: Error) {
+    console.error("The 3D map failed; showing the grades view", error);
+    this.props.onFail();
+  }
+  render() {
+    // The map's box holds its place for the moment until the grades view
+    // takes it.
+    return this.state.failed ? <MapWaiting /> : this.props.children;
+  }
+}
 /** The map's box while its code arrives: the same size, the same atlas. */
 const MapWaiting = () => (
   <section
@@ -164,7 +191,8 @@ function GuestMap() {
       start="/sign-up"
       actionLabel="Try it free"
       guestMode
-      notice="Explore the curriculum. Practice lights up each skill you earn."
+      // The map and its one count line say the rest.
+      notice=""
     />
   );
 }
@@ -394,25 +422,20 @@ export function MapView({
   // One area of math, chosen in the key; else all five.
   const area = mapView.area;
   const { shown } = useCurriculumDetails();
-  // A browser that can't draw the 3D map (or loses its context while it is
-  // open) gets the flat pathway in its place: no canvas, no camera controls,
-  // and no choice of view.
+  // A browser that can't draw the 3D map (no WebGL 2) gets the grades view
+  // and no choice of view. One whose map fails (its code didn't load or
+  // run, or it lost its context) gets the grades view and a quiet note in
+  // the choice's place.
   const [drawn, setDrawn] = useState(canDrawMap);
+  const [mapFailed, setMapFailed] = useState(false);
+  const mapUnavailable = () => {
+    setMapFailed(true);
+    setDrawn(false);
+  };
   // The grades view, or 3D: this device's last choice. Either keeps the
   // skill open over it.
   const [view, setView] = useState(savedView);
   const threeD = drawn && view === "3d";
-  // Fetch the map's code once the screen is up, so choosing 3D is immediate.
-  useEffect(() => {
-    if (!drawn) return;
-    const fetchMap = () => void Graph.preload?.();
-    if (typeof requestIdleCallback === "function") {
-      const idle = requestIdleCallback(fetchMap, { timeout: 4000 });
-      return () => cancelIdleCallback(idle);
-    }
-    const timer = setTimeout(fetchMap, 1500);
-    return () => clearTimeout(timer);
-  }, [drawn]);
   const chooseView = (next: MapMode) => {
     try {
       localStorage.setItem(VIEW_KEY, next);
@@ -428,6 +451,48 @@ export function MapView({
   const [browse, setBrowse] = useState(
     () => savedQuery.trim().length > 0 && !selectedId,
   );
+  // Where the page was when the search or the list opened, and, once one
+  // of their skills is chosen, where closing that skill returns: exactly
+  // there, never mid-way down the grade the skill was centred in. Closing
+  // goes Back, where the browser would put back the place the skill's entry
+  // was pushed from (the skill already centred): while such a skill is
+  // open the browser restores nothing on this screen, and the page's own
+  // place is set before the map shows again.
+  const openedAt = useRef<number | null>(null);
+  const returnTo = useRef<number | null>(null);
+  const browserMode = useRef<ScrollRestoration | null>(null);
+  const holdPlace = () => {
+    if (browserMode.current !== null) return;
+    browserMode.current = history.scrollRestoration;
+    history.scrollRestoration = "manual";
+  };
+  const releasePlace = () => {
+    if (browserMode.current === null) return;
+    history.scrollRestoration = browserMode.current;
+    browserMode.current = null;
+  };
+  // Leaving Pathways hands restoring back to the browser.
+  useEffect(() => releasePlace, []);
+  const openBrowse = () => {
+    if (!browse) openedAt.current = window.scrollY;
+    setBrowse(true);
+  };
+  useLayoutEffect(() => {
+    const top = returnTo.current;
+    if (selectedId || top === null) return;
+    returnTo.current = null;
+    window.scrollTo({ top, behavior: "instant" });
+    releasePlace();
+  }, [selectedId]);
+  /** A skill chosen from the search or the list: closing it returns to
+   * where the page was when they opened. */
+  const leaveBrowse = () => {
+    if (browse && !selectedId && openedAt.current !== null) {
+      returnTo.current = openedAt.current;
+      holdPlace();
+    }
+    setBrowse(false);
+  };
   // A problem type's short lesson is a layer over the map
   // (nav/layer-store.ts): a refresh or Back to this screen shows it again,
   // and closing returns to this map as it was.
@@ -491,7 +556,7 @@ export function MapView({
   /** Opens a skill over the map. Chosen on the map, the map stays where it
    * is; found by the search or the list, the map frames it as it opens. */
   const select = (id: string, framed = false) => {
-    setBrowse(false);
+    leaveBrowse();
     if (framed) setFrame({ id });
     // The search's text stays in the map's view; the skill opens over the
     // map, in this screen's layers.
@@ -606,6 +671,7 @@ export function MapView({
   return (
     <main
       className={`pathways ${browse ? "is-browsing" : ""} ${threeD ? "" : "is-flow"}`}
+      data-guest={guestMode || undefined}
     >
       {/* Signed in, the app frame's bar holds the logo, the Progress tabs and
           the way to practice. A visitor gets the map's own header. */}
@@ -631,20 +697,6 @@ export function MapView({
           <ScreenTitle>Pathways</ScreenTitle>
         </div>
       </div>
-      {guestMode && (
-        <div className="pathways-guest-intro">
-          <p>
-            Free account · {FREE_ONLINE_PROBLEMS} free problems for each learner
-          </p>
-          <a
-            href="https://www.facebook.com/reel/2346490016085488"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            See the map light up ↗
-          </a>
-        </div>
-      )}
       <div className="pathways-status">
         {/* Phones: the count shares the learner's row (the full sentence
             above stays for screen readers), so the map starts on the first
@@ -658,9 +710,11 @@ export function MapView({
             ? `${skills?.length ?? 335} skills, kindergarten to precalculus`
             : `${earned} of ${skills?.length ?? 335} skills earned`}
         </p>
-        <p role="status" data-priority={noticeImportant}>
-          {notice}
-        </p>
+        {!guestMode && (
+          <p role="status" data-priority={noticeImportant}>
+            {notice}
+          </p>
+        )}
         {controls}
       </div>
       <div
@@ -683,8 +737,8 @@ export function MapView({
           handle={search}
           className="pathways-search"
           inputRef={keys.input}
-          onFocus={() => setBrowse(true)}
-          onChange={() => setBrowse(true)}
+          onFocus={openBrowse}
+          onChange={openBrowse}
           onEscape={() => setBrowse(false)}
           onKeyDown={keys.onKeyDown}
         />
@@ -692,7 +746,7 @@ export function MapView({
           aria-label={browse ? "Close browser" : "Browse skills"}
           aria-expanded={browse}
           aria-controls="pathways-browser"
-          onClick={() => setBrowse((v) => !v)}
+          onClick={() => (browse ? setBrowse(false) : openBrowse())}
         >
           <span className="toolbar-wide">
             {browse ? "Close browser" : "Browse skills"}
@@ -701,7 +755,7 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
-        {drawn && (
+        {drawn ? (
           <div className="pathways-view">
             <Segmented
               label="Map view"
@@ -712,6 +766,12 @@ export function MapView({
               dense
             />
           </div>
+        ) : (
+          mapFailed && (
+            <p className="pathways-view pathways-view-note" role="status">
+              3D map unavailable here
+            </p>
+          )
         )}
       </div>
       {/* The counts paint once, when both the map and the learner's
@@ -776,7 +836,7 @@ export function MapView({
                       entity={{ kind: "skill", id: s.id }}
                       aria-current={selectedId === s.id ? "page" : undefined}
                       onClick={() => {
-                        setBrowse(false);
+                        leaveBrowse();
                         setFrame({ id: s.id });
                         showMap();
                       }}
@@ -792,11 +852,16 @@ export function MapView({
                       </span>
                       <span>
                         {s.title}
-                        <small>
-                          {shown && <>{bandLabel(s.gradeBand)} · </>}
-                          {stats.get(s.id)?.independentCorrect ?? 0} independent
-                          successes
-                        </small>
+                        {guestMode ? (
+                          // A visitor has no record to count.
+                          shown && <small>{bandLabel(s.gradeBand)}</small>
+                        ) : (
+                          <small>
+                            {shown && <>{bandLabel(s.gradeBand)} · </>}
+                            {stats.get(s.id)?.independentCorrect ?? 0}{" "}
+                            independent successes
+                          </small>
+                        )}
                       </span>
                     </EntityLink>
                   </li>
@@ -807,21 +872,23 @@ export function MapView({
               )}
             </section>
             {threeD ? (
-              <Suspense fallback={<MapWaiting />}>
-                <Graph
-                  skills={skills}
-                  evidence={evidence}
-                  selected={selectedId}
-                  onSelect={select}
-                  frame={frame}
-                  range={range}
-                  rangeStrand={selected?.strand}
-                  level={level}
-                  levelLoading={frontierLoading}
-                  area={area}
-                  onUnavailable={() => setDrawn(false)}
-                />
-              </Suspense>
+              <MapBoundary onFail={mapUnavailable}>
+                <Suspense fallback={<MapWaiting />}>
+                  <Graph
+                    skills={skills}
+                    evidence={evidence}
+                    selected={selectedId}
+                    onSelect={select}
+                    frame={frame}
+                    range={range}
+                    rangeStrand={selected?.strand}
+                    level={level}
+                    levelLoading={frontierLoading}
+                    area={area}
+                    onUnavailable={mapUnavailable}
+                  />
+                </Suspense>
+              </MapBoundary>
             ) : (
               <PathwayPlan
                 skills={skills}
@@ -831,6 +898,7 @@ export function MapView({
                 here={level ? overall : null}
                 levelLoading={frontierLoading}
                 area={area}
+                record={!guestMode}
               />
             )}
           </div>
@@ -846,6 +914,18 @@ export function MapView({
                   ? "Cyan: builds on · Violet: leads to · Dotted: related"
                   : "Lines lead from a skill to the skills that use it"}
             </p>
+            {guestMode && (
+              // A film of the map in use, under the map: never an exit
+              // above it.
+              <a
+                className="pathways-reel"
+                href="https://www.facebook.com/reel/2346490016085488"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                See the map light up ↗
+              </a>
+            )}
             <details className="pathways-note">
               <summary>How skills grow</summary>
               <p>

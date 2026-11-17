@@ -209,7 +209,7 @@ await registerFamilyRoutes(app, {
   approvals: {
     secret: accounts.config.secret,
     origin,
-    mail: async (to, _subject, _text, link) => {
+    mail: async (to, { url: link }) => {
       mail.push({ to, url: link });
     },
   },

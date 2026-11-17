@@ -2,7 +2,6 @@ import {
   carryFamilyPractice,
   restoreFamilyPractice,
 } from "../lib/family-practice-history";
-import { knownDocumentPath } from "./document-routes";
 import { invoiceOffersOptions } from "../features/funding/invoice-offers";
 import {
   createRootRoute,
@@ -115,6 +114,14 @@ import {
   studentPracticeHref,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+// The served-address list is only read by the missing-screen fallback. It
+// loads beside the entry, not in it (scripts/check-bundle-budget.ts), and
+// starts loading at once so the fallback never waits for it. A failed load
+// is tried again when the fallback needs it.
+const documentRoutes = import("./document-routes");
+documentRoutes.catch((error: unknown) =>
+  console.warn("The served-address list didn’t load ahead", error),
+);
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   const home = useHomeHref();
@@ -688,16 +695,17 @@ const inventory = createRoute({
     "InventoryScreen",
   ),
 });
-/** One map for the whole curriculum: a skill opens over it as a layer
- * (nav/layer-store.ts), so choosing or closing one never moves the map (its
- * camera, full screen and orbit stay as they were). */
+/** One map for the whole curriculum: a skill opens over it, at its own
+ * address (`/pathways/<skill>`, `pathwaysSkill` below), and choosing or
+ * closing one never moves the map (its camera, full screen and orbit stay
+ * as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
-  // (A skill, lesson or shared stack from before the layer store, `?skill=`,
-  // `?lesson=`, `?open=` and `/pathways/<skill>`, is an app/legacy-aliases.ts
-  // row, which seeds the store.)
+  // (A skill, lesson or shared stack in the query, `?skill=`, `?lesson=`,
+  // `?open=`, is an app/legacy-aliases.ts row: a skill to its address, the
+  // rest into the store.)
   beforeLoad: async ({ location }) => {
     await framedScreen();
     await adoptPracticeMode(location);
@@ -729,6 +737,15 @@ const pathways = createRoute({
 const pathwaysIndex = createRoute({
   getParentRoute: () => pathways,
   path: "/",
+});
+/** A skill open over your own map: the map stays mounted under it (this
+ * route draws nothing of its own; nav/links.tsx `useLayers` reads the
+ * skill from the address), and it is the map's overlay one leaf below it,
+ * so Back to the map keeps the map's scroll (`overList`). */
+const pathwaysSkill = createRoute({
+  getParentRoute: () => pathways,
+  path: "$skill",
+  staticData: { space: "learner", overList: true },
 });
 /** A learner's workbooks are a tab of their Progress. The address names
  * the learner (`$learnerId`): the screen reads it from there, and once the
@@ -1454,7 +1471,14 @@ const fallback = createRoute({
   path: "/$",
   // Reject unknown shapes before adopting a learner or loading the legacy app.
   beforeLoad: async ({ location }) => {
-    if (!knownDocumentPath(location.pathname)) throw notFound();
+    let served: typeof import("./document-routes");
+    try {
+      served = await documentRoutes;
+    } catch (error) {
+      console.warn("Loading the served-address list again", error);
+      served = await import("./document-routes");
+    }
+    if (!served.knownDocumentPath(location.pathname)) throw notFound();
     // A school student's device on a family's page: their own practice.
     // (An older learning address is an app/legacy-aliases.ts row.)
     if (notAStudents(location.pathname)) admit({ adults: true });
@@ -1587,7 +1611,7 @@ export const router = createRouter({
     startConsent,
     startVerify,
     inventory,
-    pathways.addChildren([pathwaysIndex]),
+    pathways.addChildren([pathwaysIndex, pathwaysSkill]),
     workbookHistory,
     workbookDay,
     workbookResults,

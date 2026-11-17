@@ -131,7 +131,7 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
   expect(
     await screen.findByRole(
       "heading",
-      { name: "See how far your child can go in math." },
+      { name: "Kids put in the time and AMP does the rest." },
       { timeout: 10_000 },
     ),
   ).toBeTruthy();
@@ -232,7 +232,7 @@ test("a signed-in parent at / sees the launcher, never a redirect", async () => 
   expect(await screen.findByRole("heading", { name: "Launcher" })).toBeTruthy();
   expect(router.state.location.pathname).toBe("/");
   expect(
-    screen.queryByText("See how far your child can go in math."),
+    screen.queryByText("Kids put in the time and AMP does the rest."),
   ).toBeNull();
   expect(analytics.screenOf("/")).toBe("home");
 });
