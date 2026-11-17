@@ -79,7 +79,17 @@ export function launches(
         path: "start",
       },
     ];
-  const first = entries.find((entry) => entry.id === remembered);
+  // The place last used comes first, except a school still being set up
+  // when the account has a family: a half-finished setup never takes the
+  // family's place (as `homePlace` rules).
+  const settingUp = (id: string) =>
+    (me.staffOf ?? []).some(
+      (org) => org.setupPending && id === `school:${org.orgId}`,
+    );
+  const hasFamily = entries.some((entry) => entry.id === "home");
+  const first = entries.find(
+    (entry) => entry.id === remembered && !(hasFamily && settingUp(entry.id)),
+  );
   return [
     ...(first ? [first] : []),
     ...entries.filter((entry) => entry !== first),
