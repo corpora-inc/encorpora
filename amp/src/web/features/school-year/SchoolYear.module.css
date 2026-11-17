@@ -91,7 +91,7 @@
 }
 .failed p {
   margin: 0;
-  color: var(--color-danger);
+  color: var(--color-danger-accent);
   font-size: var(--text-table);
 }
 
@@ -190,7 +190,7 @@
 .error {
   min-height: calc(1.45 * var(--text-table));
   margin: 0;
-  color: var(--color-danger);
+  color: var(--color-danger-accent);
   font-size: var(--text-table);
   line-height: 1.45;
 }
