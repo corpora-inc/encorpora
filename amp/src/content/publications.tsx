@@ -69,6 +69,7 @@ import type { Lesson } from "./lessons";
 import { PrintMathText } from "./PrintMathText";
 import {
   PrintExerciseBody,
+  printFitCss,
   printTokens,
   publicationCss,
 } from "./print-exercise";
@@ -94,7 +95,7 @@ export const publicationHtml = (
 /** A shown-work exercise (figure, table, word bank and workspace) can be taller
  * than a page, so it may break between its parts; each part stays whole. */
 const workbookTallExerciseCss =
-  ".exercise:has(>.print-work,>.print-work-order){break-inside:auto}" +
+  ".exercise:has(>.print-work,>.print-work-order){break-inside:auto;display:block;max-height:none}" +
   ".exercise>h2,.exercise>.figure,.exercise>.print-work,.exercise>.print-work-order,.exercise>.print-work-start,.exercise>.print-work-bank,.exercise>.print-work-order-line,.exercise>.writing{break-inside:avoid}" +
   ".exercise>h2,.exercise>.figure,.exercise>.print-work-start{break-after:avoid}";
 /** The exact worksheet input used by every publication kind. Kept separate
@@ -291,11 +292,13 @@ function buildPublicationHtml(
             lesson.includeGeneratedRepresentation !== false &&
             problems[0]?.public.figure ? (
               <section className="representation">
-                <h3>Explore the representation</h3>
-                <p>
-                  <PrintMathText text={problems[0].public.prompt} />
-                </p>
-                <Figure figure={problems[0].public.figure} />
+                <div className="print-question">
+                  <h3>Explore the representation</h3>
+                  <p>
+                    <PrintMathText text={problems[0].public.prompt} />
+                  </p>
+                  <Figure figure={problems[0].public.figure} />
+                </div>
                 <p>
                   <PrintMathText text={problems[0].explanation.join(" ")} />
                 </p>
@@ -347,6 +350,7 @@ function buildPublicationHtml(
           <style>{printMathCss()}</style>
           <style>{printTokens()}</style>
           <style>{publicationCss}</style>
+          <style>{printFitCss}</style>
           {kind !== "solutions" && /class="print-work/.test(bodyMarkup) ? (
             <style>{workbookTallExerciseCss}</style>
           ) : null}

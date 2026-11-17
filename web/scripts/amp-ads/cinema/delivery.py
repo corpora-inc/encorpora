@@ -4,7 +4,7 @@ import math
 from pathlib import Path
 
 from .render import probe, sha
-from .spec import FORMATS, GOOGLE_FORMATS, SpecError
+from .spec import FORMATS, SpecError
 
 
 def check(manifest, video=None):
@@ -14,13 +14,13 @@ def check(manifest, video=None):
     editorial review or certify live campaign settings.
     """
     if not manifest:
-        raise SpecError('a delivery manifest with wide, square and portrait exports is required')
+        raise SpecError('a delivery manifest listing the exports is required')
     path = Path(manifest).resolve()
     try:
         data = json.loads(path.read_text())
         exports = data['exports']
-        if not isinstance(exports, dict) or not GOOGLE_FORMATS <= exports.keys():
-            raise SpecError('delivery requires wide, square and portrait; feed cannot replace square')
+        if not isinstance(exports, dict) or not exports:      # any shapes the film needs (Skylar, 2026-11-17)
+            raise SpecError('delivery needs at least one export')
         if set(exports) - FORMATS.keys():
             raise SpecError('unknown delivery format')
         checked = {}

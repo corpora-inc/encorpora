@@ -22,6 +22,7 @@ import {
 import {
   figureChoiceName,
   figureOptionLetters,
+  PRINT_OPTION_BOX,
   type FigureChoiceResponse,
 } from "../math/figure-choice";
 import {
@@ -35,6 +36,9 @@ import {
   type StructuredWorkResponse,
 } from "../math/structured-work";
 import { SceneFigure } from "../web/scene/SceneFigure";
+import { LEGIBLE_PX } from "../web/scene/SceneSvg";
+import { layoutScene, type Scene } from "../math/scene";
+import { isPorted, legacyScene } from "../math/scene/legacy";
 import { PrintMathText, printMathStyles } from "./PrintMathText";
 
 /** One printed exercise, shared by lesson workbooks and workbooks for a learner: the
@@ -66,11 +70,59 @@ function PrintFigureChoice({
             {option.id === answer ? "☑ " : ""}
             {figureOptionLetters[i]}
           </span>
-          <SceneFigure medium="print" scene={option.scene} />
+          <SceneFigure
+            medium="print"
+            scene={{
+              ...option.scene,
+              width: Math.min(
+                option.scene.width ?? 360,
+                PRINT_OPTION_BOX.width,
+              ),
+            }}
+            maxHeight={PRINT_OPTION_BOX.maxHeight}
+          />
         </div>
       ))}
     </div>
   );
+}
+/** The line plot to mark draws no wider than its view box on paper; its
+ * smallest labels are 14 view-box units. */
+const LINE_PLOT_DRAWING = { width: 360, floor: LEGIBLE_PX / 14 };
+/** A figure's width on paper, and the fraction of it that keeps its
+ * smallest label at LEGIBLE_PX: side by side, it narrows no further. */
+type PrintSize = { width: number; floor: number };
+const printWidth = ({ width, floor }: PrintSize) =>
+  ({
+    "--print-width": width,
+    "--print-floor": Math.min(1, floor),
+  }) as React.CSSProperties;
+/** A scene as SceneFigure lays it out, measured as SceneSvg does. */
+function sceneSize(scene: Scene, reveal = false): PrintSize {
+  const layout = layoutScene(scene, { reveal });
+  const smallest = Math.min(
+    ...layout.items.flatMap((d) =>
+      d.k === "text" ? d.t.runs.map((r) => r.size) : [],
+    ),
+  );
+  // Without labels, half its width still shows the drawing plainly.
+  return {
+    width: layout.width,
+    floor: Number.isFinite(smallest) ? LEGIBLE_PX / smallest : 0.5,
+  };
+}
+/** A problem figure on paper: a scene's layout, else a legacy figure at the
+ * column's figure width, which never narrows. */
+function figureSize(
+  figure: NonNullable<GeneratedProblem["public"]["figure"]>,
+): PrintSize {
+  const scene: Scene | null =
+    figure.kind === "scene"
+      ? figure.scene
+      : isPorted(figure)
+        ? legacyScene(figure)
+        : null;
+  return scene ? sceneSize(scene) : { width: 480, floor: 1 };
 }
 /** A worked list can replace repeated choices only when it quotes every label in order. */
 // A stacked fraction needs room above and below inside its border.
@@ -120,7 +172,7 @@ function PrintMultiPart({
   response: MultiPartChoiceResponse;
   answer?: string;
   /** Workbooks: drawn boxes in an aligned grid of options. Lesson
-   * editions keep the glyph markup byte for byte. */
+   * editions print glyph boxes (a shared option bank is lettered in both). */
   drawnBoxes?: boolean;
 }) {
   const key = answer ? draftChoices(response, answer) : {};
@@ -157,7 +209,7 @@ function PrintMultiPart({
   // Long options shared by every blank (put statements in order) print once,
   // lettered, with a box per blank for the letter. Repeating five sentences
   // under each of five steps made one problem taller than a page.
-  const bank = drawnBoxes ? sharedOptionBank(response) : null;
+  const bank = sharedOptionBank(response);
   if (bank)
     return (
       <>
@@ -554,16 +606,54 @@ export function PrintExerciseBody({
    * workbooks); lesson editions never pass it. */
   drawnBoxes?: boolean;
 }) {
-  const figureBesideGrid =
-    !!problem.public.figure && problem.public.response.kind === "point-plot";
-  return (
+  const figure = problem.public.figure && (
+    <Figure figure={problem.public.figure} />
+  );
+  // A response drawn on paper: the grid to plot on, or the line plot to mark
+  // (the solutions draw the answer on it).
+  const grid =
+    problem.public.response.kind === "point-plot"
+      ? pointPlotScene(problem.public.response, {
+          answer: solutions ? plotPoints(problem.answer) : undefined,
+        })
+      : null;
+  const drawing = grid ? (
+    <SceneFigure medium="print" reveal scene={grid} />
+  ) : problem.public.response.kind === "line-plot-build" ? (
+    <figure>
+      <LinePlotBuildDrawing
+        response={problem.public.response}
+        value={solutions ? problem.answer : '{"counts":{}}'}
+      />
+      <figcaption>{problem.public.response.axis.unit}</figcaption>
+    </figure>
+  ) : null;
+  // The question: prompt, figure and the paper form of the response. It
+  // prints on one page (publicationCss); in solutions it is one box, so the
+  // explanation after it may flow on.
+  const question = (
     <>
       <h2>
         {numberLabel ?? <>{number}. </>}
         <PrintMathText text={problem.public.prompt} />
       </h2>
-      {problem.public.figure && !figureBesideGrid && (
-        <Figure figure={problem.public.figure} />
+      {figure && drawing ? (
+        // Side by side; stacked, the prompt's figure and the drawing stood
+        // taller than a printed page. Each is given its own width, and both
+        // narrow by the same factor when the two are wider than the column
+        // (publicationCss). Daily workbooks stack them as before.
+        <div className="print-figure-pair">
+          <div style={printWidth(figureSize(problem.public.figure!))}>
+            {figure}
+          </div>
+          <div
+            style={printWidth(grid ? sceneSize(grid, true) : LINE_PLOT_DRAWING)}
+          >
+            {drawing}
+          </div>
+        </div>
+      ) : (
+        (figure ?? drawing)
       )}
       {problem.public.response.kind === "equal-addends" && (
         <>
@@ -630,15 +720,6 @@ export function PrintExerciseBody({
           )}
         </>
       )}
-      {problem.public.response.kind === "line-plot-build" && (
-        <figure>
-          <LinePlotBuildDrawing
-            response={problem.public.response}
-            value={solutions ? problem.answer : '{"counts":{}}'}
-          />
-          <figcaption>{problem.public.response.axis.unit}</figcaption>
-        </figure>
-      )}
       {problem.public.response.kind === "shape-composer" && (
         <div className="print-shape-composer">
           {problem.public.response.stages.map((stage, i) => {
@@ -670,31 +751,6 @@ export function PrintExerciseBody({
           })}
         </div>
       )}
-      {problem.public.response.kind === "point-plot" &&
-        (() => {
-          // The workbook prints the empty grid to plot on by hand; the
-          // solutions print the same grid with the answer drawn.
-          const grid = (
-            <SceneFigure
-              medium="print"
-              reveal
-              scene={pointPlotScene(problem.public.response, {
-                answer: solutions ? plotPoints(problem.answer) : undefined,
-              })}
-            />
-          );
-          // The prompt's figure (a table, or a given line) and the grid sit
-          // side by side, narrowing together when both are wide. Stacked,
-          // they stood taller than a printed page.
-          return figureBesideGrid ? (
-            <div className="print-figure-pair">
-              <Figure figure={problem.public.figure!} />
-              {grid}
-            </div>
-          ) : (
-            grid
-          );
-        })()}
       {problem.public.response.kind === "multi-part-choice" && (
         <PrintMultiPart
           response={problem.public.response}
@@ -725,6 +781,11 @@ export function PrintExerciseBody({
             ))}
           </ol>
         )}
+    </>
+  );
+  return (
+    <>
+      {solutions ? <div className="print-question">{question}</div> : question}
       {solutions ? (
         <>
           <ol type={explanationsQuoteEveryOption(problem) ? "A" : undefined}>
@@ -794,4 +855,16 @@ export function printFigureCss() {
 /** Page styles of printed lessons and their exercises. */
 // A reference example may span pages. Its question, figure and choices stay
 // together, each explanation step stays intact, and the final step keeps its answer.
-export const publicationCss = `@page{margin:18mm}:root{--scene-sans:Arial,Helvetica,sans-serif}body{font-family:Arial,sans-serif;color:#18332f;line-height:1.55;font-size:10.5pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:1.3px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:27pt;line-height:1.2;margin:24px 0 8px}h2{font-size:12.5pt;line-height:1.5}h2,h3{break-after:avoid}p,li{orphans:3;widows:3}li{margin:3px 0}section{margin:20px 0}.keep-together{break-inside:avoid}.reference-lesson [data-lesson-stage="watch"] ul,.reference-lesson [data-lesson-stage="watch"] li{break-inside:avoid}.publication-kind{font-size:10pt;letter-spacing:1px;margin:0 0 20px;color:#47635d}.example{padding:22px;border:1px solid #9ab;break-inside:auto}.example>h2{margin-top:0}.example>h2,.example>p:not(.worked-answer),.example>.figure,.example>.worked-example-choices{break-inside:avoid;break-after:avoid}.example>ol>li,.example>.worked-answer{break-inside:avoid}.example>ol>li:last-child{break-after:avoid}.example>.worked-answer{break-before:avoid}.example>ol>li,.exercise>ol:not(.print-choices)>li{margin:0;padding:5px 0;line-height:1.6}.worked-answer{border-top:1px solid #ccd;padding-top:14px;margin:16px 0 0}.representation{break-inside:avoid}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-top:1px;padding-bottom:15px}.exercise--solutions{break-inside:auto}.exercise--solutions>h2,.exercise--solutions>.figure,.exercise--solutions>.print-figure-pair,.exercise--solutions>.print-choices,.exercise--solutions>.print-sentence,.exercise--solutions>.print-match,.exercise--solutions>.print-figures,.exercise--solutions>.print-work,.exercise--solutions>.print-work-start,.exercise--solutions>.figure-text-cap{break-inside:avoid;break-after:avoid}.exercise--solutions>.figure-text-cap{display:block!important}.exercise--solutions>ol:not(.print-choices)>li,.exercise--solutions>p:last-child{break-inside:avoid}.exercise--solutions>ol:not(.print-choices)>li:last-child{break-after:avoid}.exercise--solutions>p:last-child{break-before:avoid}${printMathStyles}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}.figure text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-left:24px;line-height:1.8;row-gap:2px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.print-figure-pair{display:flex;justify-content:center;align-items:flex-start;column-gap:32px;break-inside:avoid}.print-figure-pair>.figure{flex:0 1 auto;min-width:0;margin:15px 0}.print-match{border-collapse:collapse;margin:12px 0;break-inside:avoid}.print-match th,.print-match td{border:1px solid #9ab;padding:6px 12px;text-align:center}.print-match tbody th{text-align:left;font-weight:normal}.print-sentence{line-height:2}.print-blank{display:inline-block;min-width:64px;border-bottom:1px solid #18332f;text-align:center;margin:0 4px}.print-parts{display:block;padding-left:24px;line-height:1.9}.print-part-option{display:inline-block;margin-right:18px;white-space:nowrap}.print-figures{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px;margin:12px 0;break-inside:avoid}.print-figure{border:1px solid #9ab;border-radius:8px;padding:6px 10px 8px;break-inside:avoid}.print-figure--answer{border:2.5px solid #18332f}.print-figure-letter{font-weight:bold;font-size:11pt}.print-figure .figure{width:100%;max-width:168px!important;max-height:none;margin:4px auto 0}.print-work{border-collapse:collapse;margin:10px 0;width:100%;break-inside:avoid}.print-work th,.print-work td{border:1px solid #9ab;padding:5px 8px;text-align:left;vertical-align:top}.print-work th{font-size:9pt}.print-work td:first-child{width:28px;text-align:center}.print-work-blank{display:inline-block;width:100%;min-width:120px;height:20px;border-bottom:1px solid #18332f}.print-work-blank--short{width:56px;min-width:56px;margin:0 6px}.print-work-power{white-space:nowrap}.print-work-power sup{font-size:.8em}.print-work-blank--power{width:28px;min-width:28px;height:.9em;margin:0 2px;vertical-align:.5em}.print-work-start{margin:6px 0}.print-work-order{line-height:1.8}.print-work-order-line{margin-top:8px}.print-work-bank{font-size:9.5pt;margin:6px 0;break-inside:avoid}.print-work-bank ol{columns:2;column-gap:24px;margin:4px 0}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{break-before:avoid;break-inside:avoid;font-size:8pt;margin-top:18px;color:#567;border-top:1px solid #ccd;padding-top:10px}`;
+export const publicationCss = `@page{margin:18mm}:root{--scene-sans:Arial,Helvetica,sans-serif}body{font-family:Arial,sans-serif;color:#18332f;line-height:1.55;font-size:10.5pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:1.3px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:27pt;line-height:1.2;margin:24px 0 8px}h2{font-size:12.5pt;line-height:1.5}h2,h3{break-after:avoid}p,li{orphans:3;widows:3}li{margin:3px 0}section{margin:20px 0}.keep-together{break-inside:avoid}.reference-lesson [data-lesson-stage="watch"] ul,.reference-lesson [data-lesson-stage="watch"] li{break-inside:avoid}.publication-kind{font-size:10pt;letter-spacing:1px;margin:0 0 20px;color:#47635d}.example{padding:22px;border:1px solid #9ab;break-inside:auto}.example>h2{margin-top:0}.example>h2,.example>p:not(.worked-answer),.example>.figure,.example>.figure-text-cap,.example>.worked-example-choices{break-inside:avoid;break-after:avoid}.example>.figure-text-cap{display:block!important}.example>ol>li,.example>.worked-answer{break-inside:avoid}.example>ol>li:last-child{break-after:avoid}.example>.worked-answer{break-before:avoid}.example>ol>li,.exercise>ol:not(.print-choices)>li{margin:0;padding:5px 0;line-height:1.6}.worked-answer{border-top:1px solid #ccd;padding-top:14px;margin:16px 0 0}.representation>.print-question{break-after:avoid}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-top:1px;padding-bottom:15px}.exercise--solutions{break-inside:auto}.exercise--solutions>.print-question{break-after:avoid}.exercise--solutions>ol:not(.print-choices)>li,.exercise--solutions>p:last-child{break-inside:avoid}.exercise--solutions>ol:not(.print-choices)>li:last-child{break-after:avoid}.exercise--solutions>p:last-child{break-before:avoid}${printMathStyles}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}.figure text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-left:24px;line-height:1.8;row-gap:2px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.print-match{border-collapse:collapse;margin:12px 0;break-inside:avoid}.print-match th,.print-match td{border:1px solid #9ab;padding:6px 12px;text-align:center}.print-match tbody th{text-align:left;font-weight:normal}.print-sentence{line-height:2}.print-blank{display:inline-block;min-width:64px;border-bottom:1px solid #18332f;text-align:center;margin:0 4px}.print-parts{display:block;padding-left:24px;line-height:1.6}.print-part-option{display:inline-block;margin-right:18px;white-space:nowrap}.print-figures{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px;margin:12px 0;break-inside:avoid}.print-figure{border:1px solid #9ab;border-radius:8px;padding:6px 10px 8px;break-inside:avoid}.print-figure--answer{border:2.5px solid #18332f}.print-figure-letter{font-weight:bold;font-size:11pt}.print-figure .figure{width:100%;max-height:none;margin:4px auto 0}.print-bank{padding-left:24px;line-height:1.5;margin:8px 0}.print-bank>li{margin:0 0 3px}.print-bank>li::marker{font-weight:bold}.print-parts--letters{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;margin:8px 0;padding:0}.print-parts--letters>li{display:flex;align-items:center;gap:7px;margin:0}.print-letter-box{display:inline-grid;place-items:center;width:28px;height:28px;border:1.5px solid #18332f;border-radius:6px;box-sizing:border-box;font-weight:bold}.print-work{border-collapse:collapse;margin:10px 0;width:100%;break-inside:avoid}.print-work th,.print-work td{border:1px solid #9ab;padding:4px 8px;text-align:left;vertical-align:top;line-height:1.4}.print-work th{font-size:9pt}.print-work td:first-child{width:28px;text-align:center}.print-work-blank{display:inline-block;width:100%;min-width:120px;height:20px;border-bottom:1px solid #18332f}.print-work-blank--short{width:56px;min-width:56px;margin:0 6px}.print-work-power{white-space:nowrap}.print-work-power sup{font-size:.8em}.print-work-blank--power{width:28px;min-width:28px;height:.9em;margin:0 2px;vertical-align:.5em}.print-work-start{margin:6px 0}.print-work-order{line-height:1.8}.print-work-order-line{margin-top:8px}.print-work-bank{font-size:9.5pt;margin:6px 0;break-inside:avoid}.print-work-bank ol{columns:2;column-gap:24px;margin:4px 0}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{break-before:avoid;break-inside:avoid;font-size:8pt;margin-top:18px;color:#567;border-top:1px solid #ccd;padding-top:10px}`;
+
+/** Lesson editions: every printed problem fits one page. A workbook
+ * exercise, and the question box of a solution or representation, is a
+ * column no taller than 243 mm (a Letter page less its margins, the shorter
+ * paper). When its parts are taller, the ruled workspace gives up nearly all
+ * of the room (down to one line) and scene figures the rest, never below
+ * the height that keeps their smallest label at the legible 12 px (9 pt,
+ * the smallest problem text these styles print). A prompt figure beside a
+ * drawn response shares the line by width, narrowing no further than that
+ * same floor. Daily workbooks lay out their own fixed sheets and do not
+ * load this. */
+export const printFitCss = `.exercise:not(.exercise--solutions),.print-question{display:flex;flex-direction:column;box-sizing:border-box;max-height:243mm;break-inside:avoid}.exercise:not(.exercise--solutions)>*,.print-question>*{flex-shrink:0}.exercise>*+*,.print-question>*+*{margin-top:0}.exercise>.scene-figure,.print-question>.scene-figure{flex-shrink:1;min-height:var(--scene-legible-height)}.exercise>.writing{flex-shrink:100;min-height:25px}.print-figure-pair{display:flex;justify-content:center;align-items:flex-start;gap:16px;margin:15px 0}.print-figure-pair>div{flex:var(--print-width) var(--print-width) 0px;max-width:calc(var(--print-width) * 1px);min-width:calc(var(--print-width) * var(--print-floor) * 1px)}.print-figure-pair .figure,.print-figure-pair figure{width:100%;margin:0}.line-build-drawing{max-width:${LINE_PLOT_DRAWING.width}px!important}`;

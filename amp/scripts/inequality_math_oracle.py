@@ -520,7 +520,10 @@ def publication_exercises(html):
         answers = [child for node in nodes if node.tag == 'p' for child in node.children
                    if isinstance(child, PublicationNode) and child.tag == 'strong']
         require(len(answers) <= 1, 'Multiple exercise answers')
-        children = [child for child in exercise.children if isinstance(child, PublicationNode)]
+        # A solution's question prints as one box (.print-question): read its parts.
+        children = [part for child in exercise.children if isinstance(child, PublicationNode)
+                    for part in ([c for c in child.children if isinstance(c, PublicationNode)]
+                                 if child.has_class('print-question') else [child])]
         require(all(isinstance(child, PublicationNode) or not child.strip() for child in exercise.children),
                 'Unexpected text outside exercise structure')
         if steps:

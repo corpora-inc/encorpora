@@ -1,5 +1,7 @@
 # AMP YouTube operating policy
 
+**The only rule for films (Skylar, 2026-11-17): make incredible, amazing, viral films that people love.** This policy covers publishing, platform settings and campaigns, never how a film is made.
+
 This is the shared production and publishing policy for AMP ads, mathematical
 explanations, and recorded tutoring sessions. Every agent reads it before
 creating, uploading, scheduling, or editing a video. Use the same policy for
@@ -32,11 +34,6 @@ daily workflow, start with the [AMP media pipeline](amp-media-pipeline.md).
   “Try Adaptive Math Pathways free: https://amp.corpora.inc”. Add one natural,
   topic-specific question when it invites a useful answer. Publish and pin it
   after the video becomes public, then verify it from a viewer's page.
-- Generated narration uses only Madeline Brousseaux
-  (`XescS24CsOySAkKrLAO3`) or Paul (`J3Ei0Lj6fAobhIqY5ySH`), selected by exact ID.
-  Coach Champ, the cheetah host of the grade speedruns, speaks only as Coach Cap
-  (`SYXbTJsLE7zmSjr1DchT`); it is a character voice, not a narrator preset.
-  Keep natural tutoring audio when it belongs to the recording.
 - Target **one video every four hours** and **two Community posts per day**.
   Use one calendar, prepare a buffer, and skip weak material. These are AMP's
   starting operating targets, not platform guarantees.
@@ -105,17 +102,11 @@ Paid-promotion disclosure follows the actual relationship and current policy.
 
 ## Three content lanes
 
-| Lane | Job in the funnel | Production and packaging |
-| --- | --- | --- |
-| Explanations | Earn search traffic and trust by solving one recognizable problem | State the problem immediately; show the quantities and why each step works; finish when the explanation is complete. No duration quota. Reuse the clean teaching master in AMP; export a separately composed vertical edition |
-| Tutoring sessions | Show how real practice, feedback, and teaching work together | Open with a representative learning moment, then supply context. Keep authentic reasoning and useful mistakes. Cut setup/dead time, protect student/account details, add accurate chapters to longer recordings, and extract standalone teaching clips |
-| Ads/product demonstrations | Turn demonstrated value into a free trial or an ESA purchase | Show the real product and a specific benefit or supported funding route. Match the spoken promise, landing page, and current offer. Produce a distinct organic cut when useful; keep paid-only variants out of the organic release queue |
-
-Create a brief containing the lane, intended viewer, single promise, exact
-problem/benefit, search intent, hook, script/outline, visual model, CTA, audience
-rationale, AI-disclosure rationale, formats, playlist, and source rights.
-Use an independent reviewer for new mathematical explanations. A render passing
-technical checks does not establish clarity or persuasive value.
+| Lane | Job in the funnel |
+| --- | --- |
+| Explanations | Earn search traffic and trust by solving one recognizable problem |
+| Tutoring sessions | Show how real practice, feedback, and teaching work together |
+| Ads/product demonstrations | Turn demonstrated value into a free trial or an ESA purchase |
 
 ## Release cadence and production buffer
 
@@ -177,9 +168,6 @@ outcomes decide whether to sustain this cadence.
   meaningful product detail, or authentic tutoring moment. Avoid tiny full-screen
   UI captures and text that merely repeats the entire title. Design the thumbnail
   while planning the video, not after upload.
-- Deliver the title/thumbnail promise immediately. Start with the problem,
-  insight, or demonstration; omit long logos and generic introductions. Keep
-  captions and labels out of platform controls and away from the math they explain.
 - First description lines: the precise value and a useful AMP CTA. Then include
   the worked example or topics, the relevant lesson/program link, chapters when
   useful, and necessary credits/disclosures. Correct automated captions.
@@ -269,22 +257,8 @@ playlist and assign them. Do not file every video into every playlist.
 
 ## Paid-video format and campaign requirements
 
-Every new paid video concept must include the complete Google Ads delivery set:
-
-| Format | Delivery size | Duration |
-| --- | --- | --- |
-| Landscape, 16:9 | 1920 × 1080 | At least 10 seconds |
-| Square, 1:1 | 1080 × 1080 | At least 10 seconds |
-| Portrait, 9:16 | 1080 × 1920 | 10–60 seconds for Shorts coverage |
-| Feed, 4:5 | 1080 × 1350 | Supplemental feed export; never a substitute for square |
-
-Compose and review each orientation independently from the same source concept.
-Keep essential math, product controls, captions and CTA readable at phone size.
-Do not satisfy coverage with distorted crops, padded postage-stamp pictures,
-or obsolete creative. Preserve exact approved voice IDs, source provenance,
-final hashes and per-format review evidence. Larger masters may use the same
-ratios; delivery exports must meet at least the sizes above. A short bumper is
-an additional placement-specific cut, not the complete delivery set.
+Make each paid concept in whatever shapes make it great. For reference, Google's video sizes are 16:9
+(1920 × 1080), 1:1 (1080 × 1080) and 9:16 (1080 × 1920); Shorts placements take portrait cuts up to 60 seconds.
 [Google Performance Max specifications](https://support.google.com/google-ads/answer/14528532).
 
 Before uploading a new paid concept, run the advertising workbench's

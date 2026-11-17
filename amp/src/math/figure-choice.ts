@@ -16,6 +16,10 @@ export const MAX_FIGURE_OPTIONS = 4;
  * this size, so its 15 px labels never shrink below the legible 12 px. */
 export const FIGURE_OPTION_MAX_WIDTH = 280;
 export const FIGURE_OPTION_MAX_HEIGHT = 300;
+/** The box a printed option lays out in and draws at: two cards across the
+ * narrower (A4) column, as short as a choice card at 1280 px. Drawn at its
+ * layout size, a label prints at its own type size. */
+export const PRINT_OPTION_BOX = { width: 288, maxHeight: 160 } as const;
 /** "Picture" names drawn shapes, counters, plots and other figures that are
  * neither a graph nor a number line ("Picture B"). The client only reads the
  * noun as text, so a new noun needs no new client. */
