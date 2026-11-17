@@ -214,9 +214,10 @@ test("the panels are disclosures, one open at a time, starting on the stored pan
     within(panel("retention")).getByText(/expire after 30 days/),
   ).toBeTruthy();
   // Opening another folds this one and is remembered for a refresh.
-  panel("export").open = true;
-  fireEvent(panel("export"), new Event("toggle"));
-  await waitFor(() => expect(panel("retention").open).toBe(false));
+  // In the same render: never two open, not even for a frame.
+  fireEvent.click(panel("export").querySelector("summary")!);
+  expect(panel("retention").open).toBe(false);
+  expect(panel("export").open).toBe(true);
   expect(usePanelsStore.getState().accounts.parent?.privacy).toBe("export");
   expect(document.querySelectorAll("details[open]")).toHaveLength(1);
   // No panel has an address, a sheet or a dialog of its own.
