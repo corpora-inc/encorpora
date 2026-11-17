@@ -1,0 +1,34 @@
+{
+  "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
+  "counts": {
+    "redirects": 0,
+    "validateSearch": 0,
+    "searchHandoffs": 0,
+    "navigatingEffects": 0,
+    "renderNavigate": 0,
+    "silentCatches": 0,
+    "sessionProps": 0,
+    "sessionReads": 0,
+    "inlineQueryKeys": 0,
+    "nativeControls": 0
+  },
+  "files": {
+    "redirects": {},
+    "validateSearch": {},
+    "searchHandoffs": {},
+    "navigatingEffects": {},
+    "renderNavigate": {},
+    "silentCatches": {},
+    "sessionProps": {},
+    "sessionReads": {},
+    "inlineQueryKeys": {},
+    "nativeControls": {}
+  },
+  "exempt": [
+    {
+      "category": "navigatingEffects",
+      "file": "features/design/DesignScreen.tsx",
+      "reason": "the dev gallery mirrors the canvas iframe's scrolled section (a postMessage browser event) into its own #hash"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { readLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -175,7 +176,6 @@ async function open(
     if (sessionStorage.getItem("fixture-seeded")) return;
     sessionStorage.setItem("fixture-seeded", "1");
     sessionStorage.setItem("amp.student", saved);
-    localStorage.setItem("amp.learner", "kept-until-sign-out");
   }, JSON.stringify(session));
   if (options.slowJoin)
     await context.route(
@@ -191,6 +191,13 @@ async function open(
 }
 const askTeacher = (page: Page) =>
   page.getByRole("heading", { name: "Ask your teacher about your seat." });
+/** A student's home is their own record, the Overview: "/" opens it. */
+const studentHome = async (page: Page) => {
+  await page
+    .getByRole("heading", { name: "Where you are", exact: true })
+    .waitFor();
+  await page.getByText(/^12 problems answered/).waitFor();
+};
 const drawer = async (page: Page) =>
   page.getByRole("button", { name: "Open AMP menu" }).click();
 async function noOverflow(page: Page, label: string) {
@@ -226,10 +233,10 @@ try {
         path: "/overview",
       });
       try {
-        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        await studentHome(page);
         await drawer(page);
         const label = page
-          .locator('[aria-label="Where you are"] strong')
+          .locator('[aria-label="Who is practicing"] strong')
           .filter({ hasText: name });
         await label.waitFor();
         assert.equal(
@@ -257,6 +264,8 @@ try {
     }
   // The primary action must receive the tap. A floating sign-out button once
   // covered it while still passing element-box and horizontal-overflow checks.
+  // A student's Practice is the drawer's first destination, with Sign out
+  // pinned at its foot.
   for (const width of [320, 390, 768, 1280])
     for (const dark of [false, true]) {
       const { page, close } = await open(fresh(), {
@@ -265,8 +274,17 @@ try {
         path: "/overview",
       });
       try {
-        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
-        const practice = page.getByRole("link", {
+        await studentHome(page);
+        await drawer(page);
+        // Measured once the drawer has finished sliding in.
+        await page
+          .getByRole("dialog")
+          .evaluate((sheet) =>
+            Promise.all(
+              sheet.getAnimations({ subtree: true }).map((a) => a.finished),
+            ),
+          );
+        const practice = page.getByRole("dialog").getByRole("link", {
           name: "Practice",
           exact: true,
         });
@@ -288,7 +306,10 @@ try {
           path: `${shots}/practice-target-${width}-${dark ? "dark" : "light"}.png`,
         });
         await practice.click();
-        await page.waitForURL(`${origin}/practice`);
+        // The student's practice, at their own address.
+        await page.waitForURL((url) =>
+          /^\/practice\/[^/]+$/.test(url.pathname),
+        );
         assert.ok(
           await page.evaluate(() => sessionStorage.getItem("amp.student")),
           "Practice must preserve the student session",
@@ -304,7 +325,15 @@ try {
         width,
         dark,
       });
-      await askTeacher(page).waitFor();
+      await askTeacher(page)
+        .waitFor()
+        .catch(async (error) => {
+          console.error(
+            `No seat message at ${page.url()}:`,
+            (await page.locator("body").innerText()).slice(0, 400),
+          );
+          throw error;
+        });
       assert.equal(new URL(page.url()).pathname, "/");
       assert.equal(await page.getByText("Choose a plan").count(), 0);
       await noOverflow(page, `seat card ${label}`);
@@ -371,7 +400,7 @@ try {
   {
     // A seated student's home: their school or grown-up decides grade levels.
     const { page, close } = await open(fresh({ levels: "hidden" }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await studentHome(page);
     assert.equal(await page.getByText("Change birth year").count(), 0);
     assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await drawer(page);
@@ -382,7 +411,7 @@ try {
   }
   {
     const { page, close } = await open(fresh({ levels: "shown" }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await studentHome(page);
     assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await drawer(page);
     await page.getByRole("link", { name: "Progress", exact: true }).click();
@@ -393,7 +422,7 @@ try {
   {
     // An older "choice" had a device toggle behind it; with none, it shows.
     const { page, close } = await open(fresh({ levels: "choice" }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await studentHome(page);
     assert.equal(await page.getByLabel(/grade numbers/i).count(), 0);
     await drawer(page);
     await page.getByRole("link", { name: "Progress", exact: true }).click();
@@ -404,7 +433,7 @@ try {
   {
     // A student with no grade on file still reaches practice; no prompt opens.
     const { page, close } = await open(fresh({ birthYear: null }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await studentHome(page);
     assert.equal(await page.getByLabel(/birth year/i).count(), 0);
     await close();
   }
@@ -422,9 +451,23 @@ try {
   ]) {
     // Family and purchase screens aren't a student's, even by direct link.
     const { page, requests, close } = await open(fresh(), { path });
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    // A student lands on their own learning: their record, or practice (the
+    // student space's home, docs/architecture/spaces.md), where this
+    // fixture's refused batch asks the teacher.
     if (path !== "/profile/birth-year")
-      assert.equal(new URL(page.url()).pathname, "/overview", path);
+      await page.waitForURL(
+        (url) =>
+          url.pathname === "/overview" ||
+          /^\/practice\/[^/]+$/.test(url.pathname),
+      );
+    const landed = new URL(page.url()).pathname;
+    await (
+      landed.startsWith("/practice/")
+        ? askTeacher(page).waitFor()
+        : studentHome(page)
+    ).catch((error) => {
+      throw new Error(`${path} opened ${page.url()}`, { cause: error });
+    });
     assert.equal(await page.getByLabel(/birth year/i).count(), 0, path);
     noParentCalls(requests);
     await close();
@@ -448,17 +491,18 @@ try {
   {
     // Signing out ends only the student's sign-in, and goes to /join.
     const { page, requests, close } = await open(fresh());
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await studentHome(page);
     await drawer(page);
     await page.getByRole("button", { name: "Sign out" }).click();
     await page.waitForURL("**/join");
-    assert.deepEqual(
-      await page.evaluate(() => [
-        sessionStorage.getItem("amp.student"),
-        localStorage.getItem("amp.learner"),
-      ]),
-      [null, null],
+    // Nothing of the student's stays on the shared device: their session,
+    // and no current learner kept for their account (learner-store.ts keeps
+    // a school student's choice in memory only).
+    assert.equal(
+      await page.evaluate(() => sessionStorage.getItem("amp.student")),
+      null,
     );
+    assert.equal(await readLearner(page, session.accountId), null);
     assert.equal(requests.includes("/api/auth/sign-out"), false);
     await close();
   }

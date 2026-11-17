@@ -1,5 +1,6 @@
 import { PanelFrame } from "./PanelFrame";
 import { CoinFace } from "./scene/CoinFace";
+import { moneyArtIn, useArtReady } from "./scene/money-art";
 import type { CSSProperties } from "react";
 import {
   handAngles,
@@ -241,6 +242,9 @@ export function describeMoney(items: readonly MoneyItem[]) {
 }
 
 export function TimeMoneyFigure({ figure }: { figure: Data }) {
+  // Coins paint with their faces, or wait hidden in their space
+  // (scene/money-art.ts); practice decodes them before the problem shows.
+  const artReady = useArtReady(moneyArtIn(figure));
   if (figure.kind === "analog-clocks") {
     const n = figure.clocks.length,
       labelled = n > 1;
@@ -322,6 +326,7 @@ export function TimeMoneyFigure({ figure }: { figure: Data }) {
       viewBox={`0 0 320 ${y}`}
       role="img"
       aria-label={description}
+      style={artReady ? undefined : { visibility: "hidden" }}
     >
       <title>{description}</title>
       {rows.map(({ set, layout, y: top }, i) => (

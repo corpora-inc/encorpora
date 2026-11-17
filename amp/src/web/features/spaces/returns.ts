@@ -44,6 +44,9 @@ const PLACES = [
   /^\/family\/[0-9a-f-]{36}(?:\/[A-Za-z0-9._-]+)*$/,
   /^\/me(?:\/profiles(?:\/[A-Za-z0-9-]+)?|\/level|\/time)?$/,
   /^\/(?:overview|practice|progress|inventory)$/,
+  // Practice at a learner's own address, with its focus
+  // (features/spaces/identity.ts practicePath).
+  /^\/practice\/[A-Za-z0-9-]+(?:\/(?:types|skills|areas)\/[A-Za-z0-9._-]+)?$/,
   /^\/(?:pathways|lessons|books)(?:\/[A-Za-z0-9._-]+)?$/,
   /^\/learners\/[A-Za-z0-9-]+\/workbooks(?:\/[A-Za-z0-9._-]+){0,2}$/,
   /^\/account\/(?:security|billing|privacy)(?:\/[a-z-]+)?$/,
@@ -51,7 +54,7 @@ const PLACES = [
 ];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const STEPS =
-  /^\/(start|continue|sign-in|sign-up|reset-password|purchase|invoice|consent|access|school\/(new|start|connect|adopt|invite))(\/|$)/;
+  /^\/(start|continue|pay|sign-in|sign-up|reset-password|purchase|invoice|consent|access|school\/(new|start|connect|adopt|invite))(\/|$)/;
 
 export function appReturn(
   value: unknown,

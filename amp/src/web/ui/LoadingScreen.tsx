@@ -26,7 +26,7 @@ const waveStart =
 
 let arrivalTimer: ReturnType<typeof setTimeout> | undefined;
 /** The wave just left: what replaces it fades in, once (`ui/loading.css`). */
-function markArrival() {
+export function markArrival() {
   const root = document.documentElement;
   root.setAttribute("data-arriving", "");
   clearTimeout(arrivalTimer);
@@ -113,9 +113,12 @@ export function RouteError({
   error,
   reset,
   map,
+  home = "/",
 }: {
   error: unknown;
   reset: () => void;
+  /** Where Go home goes: this person's own place, else `/`. */
+  home?: string;
   /** The map this failed screen is (a family's child's, at its own
    * address), which "Back to map" opens closed; your own is `/pathways`. */
   map?: string | null;
@@ -149,7 +152,7 @@ export function RouteError({
         pathways ? undefined : chunk ? () => window.location.reload() : reset
       }
       recovery={
-        pathways && (
+        pathways ? (
           <div
             style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}
           >
@@ -163,6 +166,12 @@ export function RouteError({
               Reload page
             </button>
           </div>
+        ) : (
+          // Always a way out that works: a fresh load of this person's own
+          // place (lib/home-place.ts), whatever state this screen was in.
+          <a className={buttonClass("secondary")} href={home}>
+            Go home
+          </a>
         )
       }
     />

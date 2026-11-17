@@ -11,7 +11,6 @@ vi.mock("@tanstack/react-router", () => ({
   useLocation: () => ({ search: { from: FROM } }),
   useRouter: () => ({}),
   useNavigate: () => vi.fn(),
-  Navigate: () => null,
   Link: ({
     children,
     to,
@@ -30,7 +29,7 @@ vi.mock("@tanstack/react-router", () => ({
 }));
 afterEach(cleanup);
 
-test("CP-2 r2 M4: the teacher's choice in Add a place keeps its way back", () => {
+test("the teacher's choice in Add a place is a path alone: no query string rides along", () => {
   const client = new QueryClient();
   const session = { accountId: "amp|jo", token: "t" };
   client.setQueryData(sessionOptions.queryKey, session);
@@ -51,20 +50,5 @@ test("CP-2 r2 M4: the teacher's choice in Add a place keeps its way back", () =>
     </QueryClientProvider>,
   );
   const teacher = screen.getByText("I’m a teacher").closest("a")!;
-  expect(teacher.getAttribute("href")).toBe(
-    `/school/start?from=${encodeURIComponent(FROM)}`,
-  );
-});
-
-vi.mock("../../../nav/links", () => ({ useCloseClick: () => () => {} }));
-test("CP-2 r2 M4: a school page opened to add a place offers Cancel back there", async () => {
-  const { PlainPage } = await import("../../school/PlainPage");
-  render(
-    <PlainPage back={FROM} backLabel="Cancel">
-      body
-    </PlainPage>,
-  );
-  expect(screen.getByText("Cancel").closest("a")!.getAttribute("href")).toBe(
-    FROM,
-  );
+  expect(teacher.getAttribute("href")).toBe("/school/start");
 });

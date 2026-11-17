@@ -1,10 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { sessionOptions } from "../../../lib/query";
+import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test, vi } from "vitest";
 import { PlanStep } from "../../onboarding/PlanStep";
 import { enrollmentOptions, offerOptions } from "../api";
 import { consentFixture } from "../../../../../tests/parent-consent.fixture";
-import { PaymentMethodChoice } from "../PaymentMethodChoice";
 const navigation = vi.hoisted(() => ({ go: vi.fn() }));
 vi.mock("@tanstack/react-router", () => ({
   useSearch: () => ({ interval: "month" }),
@@ -13,7 +13,6 @@ vi.mock("@tanstack/react-router", () => ({
     searchStr: "?interval=month",
   }),
   useNavigate: () => navigation.go,
-  Navigate: ({ to }: { to: string }) => <a href={to}>Recover purchase</a>,
   Link: ({ children }: { children: React.ReactNode }) => <a>{children}</a>,
 }));
 vi.mock("../../../lib/analytics", () => ({
@@ -51,6 +50,7 @@ function setup(
         }
       : null,
   });
+  client.setQueryData(sessionOptions.queryKey, session);
   client.setQueryData(offerOptions(session).queryKey, {
     available: true,
     offers: [
@@ -77,43 +77,26 @@ function setup(
   });
   return render(
     <QueryClientProvider client={client}>
-      <PlanStep session={session} {...props} />
+      <PlanStep {...props} />
     </QueryClientProvider>,
   );
 }
-test("standalone plan offers education funds with the current monthly choice", () => {
+test("the plan before any learner offers card only: an invoice needs its learner", () => {
   setup();
-  fireEvent.click(screen.getByRole("radio", { name: "Education funds (ESA)" }));
-  expect(navigation.go).toHaveBeenCalledWith({
-    href: "/purchase/funded?interval=month",
-  });
-});
-test("embedded plan does not add a second method selector", () => {
-  setup({ embedded: true });
   expect(
     screen.queryByRole("radiogroup", { name: "Payment method" }),
   ).toBeNull();
-});
-test("Continue supplies exactly one learner-aware method selector", () => {
-  setup({
-    embedded: true,
-    paymentMethods: () => (
-      <PaymentMethodChoice value="card" onChange={() => {}} />
-    ),
-  });
-  expect(
-    screen.getAllByRole("radiogroup", { name: "Payment method" }),
-  ).toHaveLength(1);
+  expect(screen.getByRole("radiogroup", { name: "Plan" })).toBeTruthy();
 });
 test.each(["paid", "processing", "assigned", "requires-review"] as const)(
-  "%s enrollment goes to purchase recovery before new method choices",
+  "%s enrollment shows purchase recovery before new method choices",
   (phase) => {
     setup({}, phase);
     expect(
       screen.queryByRole("radiogroup", { name: "Payment method" }),
     ).toBeNull();
-    expect(screen.getByRole("link").getAttribute("href")).toBe(
-      "/start/purchase",
-    );
+    // The purchase's progress shows in place (PurchaseStep), with no hop.
+    expect(screen.getByRole("heading", { level: 1 })).toBeTruthy();
+    expect(screen.queryByRole("radiogroup", { name: "Plan" })).toBeNull();
   },
 );

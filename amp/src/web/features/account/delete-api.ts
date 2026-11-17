@@ -5,6 +5,7 @@ import {
 } from "../../../account/deletion-contracts";
 import { notifyAccountSessionChanged, type AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 
 /* "Delete my account" (src/account/delete-account.ts): what goes, read under
    the account's key so it refreshes with every other change to the account,
@@ -12,7 +13,7 @@ import { request } from "../../lib/api";
 
 export const deletionPreviewOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "deletion"] as const,
+    queryKey: qk.account(session.accountId, "deletion"),
     staleTime: 0,
     refetchOnMount: "always",
     retry: false,

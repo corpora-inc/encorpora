@@ -1,4 +1,9 @@
-import { circleDiagram, scene as sceneOf, triangle } from "./scene/author.js";
+import {
+  around,
+  circleDiagram,
+  scene as sceneOf,
+  triangle,
+} from "./scene/author.js";
 import type { SemanticFigure } from "./contracts.js";
 import type { Element, Point, Scene } from "./scene/spec.js";
 
@@ -61,7 +66,9 @@ const name = (id: string, text: string, p: Vec, out: Vec): Element => {
     font: "math",
     bold: true,
     align: alignAway(u),
-    offset: [u[0] * 7, -u[1] * 7],
+    // Outward from the figure first; else the nearest clear place around
+    // the point, so a name never covers a dot, a side or another name.
+    place: [[u[0] * 7, -u[1] * 7, ...alignAway(u)], ...around(9, 16)],
   };
 };
 const seg = (

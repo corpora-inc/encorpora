@@ -567,7 +567,7 @@ test("role loss: the same route with the role gone keeps no tab and no action", 
   assert.deepEqual(ids(after), []);
 });
 
-test("shared learning routes: the route's learner, a profile, then yourself", () => {
+test("shared learning routes: the route's learner, a profile, then yourself (the profile practiced as)", () => {
   // Explicit in the address (an older `?learner=` link, before its route
   // redirects it): whoever another tab chose. Its tabs are the child's own
   // addresses, never `?learner=` (Q-209).
@@ -579,7 +579,10 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   assert.equal(named.learner?.id, "pip");
   assert.equal(named.label, "Pip");
   assert.deepEqual(
-    named.tabs.map((tab) => [tab.path, tab.search]),
+    named.tabs.map((tab) => [
+      tab.path,
+      "search" in tab ? tab.search : undefined,
+    ]),
     [
       [`family/${FAMILY}/kids/pip`, undefined],
       [`family/${FAMILY}/kids/pip/pathways`, undefined],
@@ -594,16 +597,19 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   expectSpace(workbooks, "family");
   assert.equal(workbooks.family.id, OTHER_FAMILY);
   assert.equal(workbooks.relation, "second-parent");
-  // A profile in the address is the adult's own practice.
-  const profile = resolveSpace(
-    at("/practice", { search: { profile: "profile-4" } }),
-    adult(power, "pip"),
-  );
+  // A profile's practice names it: the adult's own practice, as it.
+  const profile = resolveSpace(at("/practice/profile-4"), adult(power, "pip"));
   expectSpace(profile, "me");
   assert.equal(profile.mode, "profile");
   // Optional practice preserves the parent’s family context.
   assert.equal(profile.label, "Your family");
   assert.equal(profile.learner?.id, "profile-4");
+  // Practicing as it (the device's current learner), a screen that names
+  // nobody is the profile's.
+  const asProfile = resolveSpace(at("/overview"), adult(power, "profile-4"));
+  expectSpace(asProfile, "me");
+  assert.equal(asProfile.mode, "profile");
+  assert.equal(asProfile.learner?.id, "profile-4");
   // A learner who isn't this account's is nobody's here: never another child.
   const foreign = resolveSpace(
     at("/overview", { search: { learner: "stranger" } }),
@@ -616,7 +622,7 @@ test("shared learning routes: the route's learner, a profile, then yourself", ()
   const self = resolveSpace(at("/overview"), adult(power, "wren"));
   expectSpace(self, "me");
   assert.equal(self.learner?.id, "jonah");
-  assert.ok(self.tabs.every((tab) => tab.search === undefined));
+  assert.ok(self.tabs.every((tab) => !("search" in tab)));
   // An account with no practice of its own has no self: the device's
   // choice, as before (its route sends Pathways, Inventory and the Overview
   // to that child's own address).
@@ -724,22 +730,19 @@ test("me: Practice, Levels and Workbooks on a phone; the rest under More", () =>
   );
 });
 
-test("account: its own neutral addresses and the old ones, never family chrome", () => {
+test("account: one page and its overlays, no tabs, never family chrome", () => {
   for (const path of [
+    "/account",
     "/account/security",
-    "/account/billing/records",
-    "/account/privacy/export",
-    "/family/security",
-    "/family/access",
-    "/family/privacy",
+    "/account/billing",
+    "/account/privacy",
+    "/account/delete-account",
+    "/account/pay/l1",
   ]) {
     const space = resolveSpace(at(path), adult(holder));
     expectSpace(space, "account");
     assert.equal(space.scope, "settings", path);
-    assert.deepEqual(
-      space.tabs.map((tab) => tab.path),
-      ["account/security", "account/billing", "account/privacy"],
-    );
+    assert.deepEqual(space.tabs, [], path);
     assert.equal(space.label, "Account");
     assert.deepEqual(space.destinations, []);
   }
@@ -749,6 +752,11 @@ test("account: its own neutral addresses and the old ones, never family chrome",
     ["/school/start", "setup"],
     ["/school/connect", "setup"],
     ["/school/new", "setup"],
+    ["/school/11111111-1111-4111-8111-111111111111/setup", "setup"],
+    [
+      "/school/11111111-1111-4111-8111-111111111111/setup/students/names",
+      "setup",
+    ],
     ["/purchase/arizona-esa", "steps"],
     ["/access", "steps"],
   ] as const) {
@@ -758,8 +766,8 @@ test("account: its own neutral addresses and the old ones, never family chrome",
   }
 });
 
-test("individual purchase entry keeps the account frame with or without route metadata", () => {
-  const match = at("/continue/rowan");
+test("paying for one learner keeps the account frame with or without route metadata", () => {
+  const match = at("/pay/rowan");
   const fallback = resolveSpace(match, adult(adultOnly, "rowan"));
   assert.equal(fallback.space, "account");
   assert.equal(fallback.bar, "plain");
@@ -800,7 +808,7 @@ test("every route family has its space", () => {
     ["/lessons/abc", "learner"],
     ["/books/x", "learner"],
     ["/learners/a/workbooks/2026-11-09", "learner"],
-    ["/continue/a", "account"],
+    ["/pay/a", "account"],
     ["/profile/birth-year", "learner"],
     ["/me", "me"],
     ["/me/start", "me"],
@@ -953,28 +961,28 @@ test("an admin or viewer inspecting a class keeps their own role; only teaching 
 });
 
 test("CP-2 H2: one learner per address, the same order as adoption", () => {
-  // A profile outranks ?learner=: the frame is the profile's, not Pip's.
+  // The path outranks ?learner=: a profile's practice is the profile's,
+  // not Pip's.
   const both = resolveSpace(
-    at("/practice", { search: { profile: "profile-4", learner: "pip" } }),
+    at("/practice/profile-4", { search: { learner: "pip" } }),
     adult(power, "wren"),
   );
   expectSpace(both, "me");
   assert.equal(both.mode, "profile");
   assert.equal(both.learner?.id, "profile-4");
-  // A profile's tabs are the profile's own: its levels, its address.
-  const tabs = resolveSpace(
-    at("/pathways", { search: { profile: "profile-4" } }),
-    adult(power, "pip"),
-  );
+  // A profile's tabs, while it is practiced as: its practice and levels
+  // by address, its map and inventory self's; none carries a query.
+  const tabs = resolveSpace(at("/pathways"), adult(power, "profile-4"));
   assert.deepEqual(
-    tabs.tabs.map((tab) => [tab.id, tab.path, tab.search ?? null]),
+    tabs.tabs.map((tab) => [tab.id, tab.path]),
     [
-      ["practice", "practice", { profile: "profile-4" }],
-      ["levels", "me/profiles/profile-4", null],
-      ["pathways", "pathways", { profile: "profile-4" }],
-      ["inventory", "inventory", { profile: "profile-4" }],
+      ["practice", "practice/profile-4"],
+      ["levels", "me/profiles/profile-4"],
+      ["pathways", "pathways"],
+      ["inventory", "inventory"],
     ],
   );
+  assert.ok(tabs.tabs.every((tab) => !("search" in tab)));
   // A learner this account doesn't read is unavailable, never another.
   const foreign = resolveSpace(
     at("/practice", { search: { learner: "stranger" } }),
@@ -1181,12 +1189,28 @@ test("CP-2 r2 H4: a learner's own target: the holder's child, a second parent's,
 
 test("CP-2 r2 H2: a profile this account doesn't have is unavailable, never ?learner= or the device's choice", () => {
   const space = resolveSpace(
-    at("/practice", { search: { profile: "revoked", learner: "pip" } }),
+    at("/practice/revoked", { search: { learner: "pip" } }),
     adult(power, "wren"),
   );
   expectSpace(space, "me");
   assert.equal(space.status, "unavailable");
   assert.equal(space.learner, null);
+});
+
+test("a path that names a practice profile (/learners/<id>) is that profile; the same id in ?learner= is not", () => {
+  const byPath = resolveSpace(
+    at("/learners/profile-4/overview"),
+    adult(power, "jonah"),
+  );
+  expectSpace(byPath, "me");
+  assert.notEqual(byPath.status, "unavailable");
+  assert.equal(byPath.learner?.id, "profile-4");
+  const byQuery = resolveSpace(
+    at("/practice", { search: { learner: "profile-4" } }),
+    adult(power, "jonah"),
+  );
+  expectSpace(byQuery, "me");
+  assert.equal(byQuery.status, "unavailable");
 });
 
 test("CP-2 r3: the frame reads the address as the learning view does: ?learner= never names a profile", () => {

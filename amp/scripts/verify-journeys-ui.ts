@@ -52,6 +52,8 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { GRADE_5_CLASS } from "../src/schools/demo/personas";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -249,6 +251,10 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 };
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
+/** The demo class's made-up students (src/schools/demo/personas.ts). */
+const DEMO_CLASS_NAMES = new RegExp(
+  `\\b(?:${GRADE_5_CLASS.map((p) => p.name[0]).join("|")})\\b`,
+);
 const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
 /** A family's Today, at its own address (spaces P2). */
 const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
@@ -258,8 +264,8 @@ async function pickYear(page: Page, field: string, year?: string) {
   await page.getByRole("button", { name: field, exact: true }).click();
   const years = page.getByRole("dialog", { name: field });
   const tile = year
-    ? years.getByRole("radio", { name: year, exact: true })
-    : years.getByRole("radio").first();
+    ? years.getByRole("option", { name: year, exact: true })
+    : years.getByRole("option").first();
   await tile.click();
   await years.waitFor({ state: "hidden" });
 }
@@ -410,6 +416,20 @@ async function signIn(page: Page, email: string) {
 async function practicing(page: Page) {
   await page.waitForURL(/\/practice/);
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
+}
+/** Back from Stripe: the pay overlay's confirmation, over the screen it was
+ * opened from (features/pay/stripe-return.ts), whose Done returns to where
+ * paying started (features/pay/CardDone.tsx). */
+async function paidAndDone(page: Page) {
+  await page.waitForURL(/\/pay(\/[^/]+)?\/done$/, { timeout: 30_000 });
+  const done = page.getByRole("dialog");
+  await done
+    .getByText("Payment received. A receipt is in your email and in Billing.", {
+      exact: true,
+    })
+    .waitFor({ timeout: 30_000 });
+  await done.getByRole("button", { name: "Done", exact: true }).click();
+  await page.waitForURL((url) => !/\/pay(\/|$)/.test(url.pathname));
 }
 /** Skip the problem on screen and go on to the next one. */
 async function skipOne(page: Page) {
@@ -605,7 +625,8 @@ async function parentJourney(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  // A handed device's menu gives it back: "Back to family".
+  await page.getByRole("button", { name: "Back to family" }).click();
   // The device comes back to the parent, on Today, with both children.
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
@@ -616,7 +637,7 @@ async function parentJourney(
     .first()
     .waitFor();
   await page
-    .getByRole("button", { name: `Let ${moon.name} practice here` })
+    .getByRole("button", { name: `Practice with ${moon.name}` })
     .waitFor();
   // A child's own device is an option behind "Their own devices", never
   // Today's headline.
@@ -678,7 +699,7 @@ async function parentJourney(
   );
   check(
     `${label} pause stays on practice`,
-    new URL(page.url()).pathname === "/practice",
+    /^\/practice\/[^/]+$/.test(new URL(page.url()).pathname),
     page.url(),
   );
   await measured(page, `${label} pause`);
@@ -700,22 +721,23 @@ async function parentJourney(
   await own.close();
   await freeUsed(moon.id, 1);
 
+  // Paying opens over the child's own place (features/pay; its walk is
+  // scripts/walk-pay-flow.ts): "Choose your plan", for this child, by card.
   await page.getByRole("button", { name: "Continue with AMP" }).click();
-  await page.waitForURL(new RegExp(`/continue/${fox.id}$`));
-  await heading(page, "Continue with AMP");
-  await page.getByText(`For ${fox.name}`, { exact: true }).waitFor();
-  const attest = page.getByRole("checkbox", {
-    name: /I am this learner’s parent/,
-  });
-  await attest.waitFor();
+  await page.waitForURL(new RegExp(`/kids/${fox.id}/pay$`));
+  const pay = page.getByRole("dialog");
+  await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
+  await pay.getByText(fox.name).first().waitFor();
   await measured(page, `${label} continue`);
   await shot(page, 1, "continue", width, theme);
-  await attest.check();
-  await page
-    .getByRole("button", { name: "Continue to secure checkout" })
+  await pay
+    .locator('[data-method="card"]')
+    .getByRole("button", { name: /Continue to Stripe|Resume checkout/ })
     .click();
   await payInCheckout(page, 1, width, theme);
-  // Back on the same screen, practicing, with the name offered once.
+  // Done puts them back where paying started: practicing, with the name
+  // offered once.
+  await paidAndDone(page);
   await practicing(page);
   const naming = page.getByRole("dialog", { name: `Add ${fox.name}’s name` });
   await naming.waitFor();
@@ -724,6 +746,7 @@ async function parentJourney(
   await naming.getByLabel("Name", { exact: true }).fill("Rowan");
   await naming.getByRole("button", { name: "Save name" }).click();
   await naming.waitFor({ state: "detached" });
+
   const named = (
     await db.query("SELECT name,name_pending FROM amp_learners WHERE id=$1", [
       fox.id,
@@ -749,19 +772,20 @@ async function parentJourney(
     `${label} practice continues past 100`,
     (await page.locator("[data-allowance-pause]").count()) === 0,
   );
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(FAMILY_TODAY);
-  await page.getByRole("button", { name: "Let Rowan practice here" }).waitFor();
+  await page.getByRole("button", { name: "Practice with Rowan" }).waitFor();
   await shot(page, 1, "today-paid", width, theme);
 
-  // Family: the parent renames a child on the child's own page, and adds
-  // another from Today, with no consent step for either name. Their older
-  // address (/family/learners) opens the family's Settings.
+  // Family: the parent renames a child in that child's settings, a sheet
+  // over the family's Settings (features/family/settings/Children.tsx), and
+  // adds another, with no consent step for either name. Their older address
+  // (/family/learners) opens the family's Settings.
   await page.goto(`${origin}/family/learners`);
   await page.waitForURL(/\/family\/[0-9a-f-]{36}\/settings$/);
-  await page.getByRole("link", { name: /^Rowan/ }).click();
-  await page.waitForURL(/\/family\/[0-9a-f-]{36}\/kids\/[^/]+$/);
-  const settings = page.getByRole("region", { name: "Rowan’s settings" });
+  await page.getByRole("button", { name: "Rowan’s settings" }).click();
+  const settings = page.getByRole("dialog", { name: "Rowan", exact: true });
+  await settings.waitFor();
   // The name is the first of the child's settings.
   await settings
     .getByRole("button", { name: "Change", exact: true })
@@ -776,9 +800,12 @@ async function parentJourney(
   await shot(page, 1, "family-rename", width, theme);
   await rename.fill("Ro");
   await settings.getByRole("button", { name: "Save name" }).click();
-  await page
-    .getByRole("heading", { name: "Ro", exact: true, level: 1 })
-    .waitFor();
+  // The sheet and the family's list both say the new name at once.
+  const renamed = page.getByRole("dialog", { name: "Ro", exact: true });
+  await renamed.waitFor();
+  await renamed.getByRole("button", { name: "Close" }).first().click();
+  await renamed.waitFor({ state: "detached" });
+  await page.getByRole("button", { name: "Ro’s settings" }).waitFor();
   await page.goto(`${origin}/family/learners/new`);
   await page.getByRole("dialog", { name: "Add a child" }).waitFor();
   await measured(page, `${label} add learner`);
@@ -805,13 +832,14 @@ async function parentJourney(
   await page.getByRole("option", { name: "2019", exact: true }).click();
   await measured(page, `${label} add a child`);
   await shot(page, 1, "settings-add-child", width, theme);
-  await sheet.getByRole("button", { name: "Add child" }).click();
-  await sheet.getByText("Ivy is in your family.").waitFor();
-  await page.keyboard.press("Escape");
+  // The row is saved as its year is chosen (features/family/AddChildren);
+  // Done closes the sheet.
+  await sheet.getByRole("button", { name: "Done", exact: true }).click();
+  await sheet.waitFor({ state: "detached" });
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/today`,
   );
-  await page.getByRole("button", { name: "Let Ivy practice here" }).waitFor();
+  await page.getByRole("button", { name: "Practice with Ivy" }).waitFor();
   await page.goto(
     `${origin}/school/${place.org_id}/classes/${place.class_id}/map`,
   );
@@ -884,16 +912,22 @@ async function adultJourney(
   );
   await measured(page, `${label} pause`);
   await shot(page, 2, "pause", width, theme);
+  // The pay overlay (features/pay): an adult's opens over their account,
+  // at /account/pay/<their learner>.
   await page.getByRole("button", { name: "Continue with AMP" }).click();
-  await page.waitForURL(new RegExp(`/continue/${learnerId}$`));
-  await page.getByText("For your own practice", { exact: true }).waitFor();
-  const go = page.getByRole("button", { name: "Continue to secure checkout" });
+  await page.waitForURL(/\/pay(\/[^/]+)?$/);
+  const pay = page.getByRole("dialog");
+  await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
+  const go = pay
+    .locator('[data-method="card"]')
+    .getByRole("button", { name: /Continue to Stripe|Resume checkout/ });
   await go.waitFor();
-  await page.getByText("$120.00", { exact: false }).first().waitFor();
+  await pay.getByText("$120", { exact: false }).first().waitFor();
   await measured(page, `${label} continue`);
   await shot(page, 2, "continue", width, theme);
   await go.click();
   await payInCheckout(page, 2, width, theme);
+  await paidAndDone(page);
   await practicing(page);
   check(
     `${label} no naming for an adult`,
@@ -923,7 +957,9 @@ async function teacherJourney(
   await page.waitForURL(/\/school\/start$/);
   await heading(page, "Set up your class");
   await page.getByRole("button", { name: "Explore a demo first" }).click();
-  await page.waitForURL(CLASS_TODAY);
+  // Joining the zone's demo school is timed by tests/school-demo.integration.ts;
+  // here the API shares a busy machine with Vite and the browsers.
+  await page.waitForURL(CLASS_TODAY, { timeout: 90_000 });
   await todayTitle(page);
   check(
     // The shared demo school of their time zone (docs/schools.md#demo-places),
@@ -940,10 +976,9 @@ async function teacherJourney(
   const classPath = new URL(page.url()).pathname.replace(/\/today$/, "");
   // Alive: made-up students’ work, marked Demo, with the class code and
   // Start class on Today, and the bar’s one action to the real class.
-  await page
-    .getByText(/Noor|Diego|Lena/)
-    .first()
-    .waitFor();
+  // Which of its made-up students Today names depends on the day of the
+  // week; one of the class's own always is.
+  await page.getByText(DEMO_CLASS_NAMES).first().waitFor();
   check(
     `${label} says Demo`,
     (await page
@@ -977,7 +1012,7 @@ async function teacherJourney(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL((at) => at.href === roster);
   await heading(page, "Students");
 
@@ -1213,7 +1248,7 @@ async function returningJourney(
   await signIn(back, email);
   await back.waitForURL(FAMILY_TODAY);
   await todayTitle(back);
-  await back.getByRole("button", { name: "Let Lena practice here" }).waitFor();
+  await back.getByRole("button", { name: "Practice with Lena" }).waitFor();
   check(
     `${label} nothing to answer on the way`,
     !seen.some((path) => path.startsWith("/start") || path.startsWith("/try")),
@@ -1332,7 +1367,7 @@ async function journey7(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await visit(page, `${origin}/try/map`);
   await page.waitForURL(FAMILY_TODAY);

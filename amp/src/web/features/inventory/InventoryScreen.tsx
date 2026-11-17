@@ -1,20 +1,16 @@
+import { childAddress, practiceParams } from "../spaces/identity";
 import { PracticeLabel } from "../practice/CurriculumPractice";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
-import { useDeferredValue, useMemo, type CSSProperties } from "react";
+import { useDeferredValue, useMemo, useState, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  useLocation,
-  useNavigate,
-  useSearch,
-  Link,
-} from "@tanstack/react-router";
-import { childAddress } from "../spaces/identity";
+import { useLocation, Link } from "@tanstack/react-router";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
+import { useInventoryView } from "./inventory-view";
 import {
   bandLabel,
   bands,
@@ -31,6 +27,13 @@ import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import styles from "./Inventory.module.css";
 import layers from "../../nav/layers.module.css";
 import { Loading } from "../../ui/Loading";
+import { SearchResults } from "../search/SearchResults";
+import {
+  SiteSearchField,
+  useResultKeys,
+  useSearchActions,
+  useSiteSearch,
+} from "../search/SiteSearch";
 
 /* Inventory: every skill the learner has met, how far each has grown and how
    strong it is lately. The founder's reference for a dense screen: one flat
@@ -82,16 +85,16 @@ export function InventoryScreen() {
   );
   const { shown } = useCurriculumDetails();
   const catalog = useQuery(skillCatalogOptions);
-  const search = useSearch({ strict: false });
-  const navigate = useNavigate();
-  const urlQuery = typeof search.topic === "string" ? search.topic : "";
-  // The field owns its text while typing; the URL follows after a pause.
-  const field = useUrlSearchText(urlQuery, (topic) =>
-    update({ topic: topic || undefined }, true),
+  // How this inventory is being looked at (inventory-view.ts): its search,
+  // collection and area, kept for the screen, never in the address.
+  const inventoryView = useInventoryView();
+  // The field owns its text while typing; the view follows after a pause.
+  const field = useUrlSearchText(inventoryView.topic, (topic) =>
+    inventoryView.set({ topic }),
   );
   const query = useDeferredValue(field.text.trim());
   // The math area, as Pathways names it (`?area=geometry`).
-  const area = areaParam(search.area) ?? "";
+  const area = areaParam(inventoryView.area) ?? "";
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
@@ -102,33 +105,50 @@ export function InventoryScreen() {
   const inArea = area
     ? allSkills.filter((s) => areas[areaSlot(s)]?.id === area)
     : allSkills;
-  const needle = query.trim().toLowerCase();
+  // The one search (features/search): its skills, best first, then any
+  // other skill whose own words hold what was typed. Its lessons and math
+  // words follow the list; every result opens its skill over the page.
+  const [warm, setWarm] = useState(false);
+  const found = useSiteSearch(query, warm);
+  const keys = useResultKeys();
+  const actions = useSearchActions(found.docs);
+  const needle = query.toLowerCase();
+  const rank = new Map(
+    found.results
+      .filter((result) => result.kind === "skill")
+      .map((result, at) => [result.target, at]),
+  );
   const matching = needle
-    ? inArea.filter((s) =>
-        `${s.title} ${s.description}`.toLowerCase().includes(needle),
-      )
+    ? inArea
+        .filter(
+          (s) =>
+            rank.has(s.id) ||
+            `${s.title} ${s.description}`.toLowerCase().includes(needle),
+        )
+        .sort(
+          (a, b) =>
+            (rank.get(a.id) ?? rank.size) - (rank.get(b.id) ?? rank.size),
+        )
     : inArea;
+  // Lessons in the chosen math area (a lesson's area is its skill's).
+  const areaOfSkill = useMemo(
+    () => new Map(allSkills.map((s) => [s.id, areas[areaSlot(s)]?.id])),
+    [allSkills],
+  );
+  const related = area
+    ? found.results.filter(
+        (result) =>
+          result.kind === "term" || areaOfSkill.get(result.skill) === area,
+      )
+    : found.results;
   const count = (filter: Filter) =>
     matching.filter((s) => shows(filter, evidence.get(s.id))).length;
   const triedAnything = (view.evidence?.skills ?? []).some((e) => e.attempts);
   // Before the first answer the collection is the whole curriculum.
   const filter =
-    readFilter(search.collection) ?? (triedAnything ? "tried" : "all");
-  const update = (
-    values: { topic?: string; collection?: string; area?: string },
-    replace = false,
-  ) =>
-    void navigate({
-      // This inventory's own address: yours, or a child's.
-      to: ".",
-      search: {
-        topic: field.carry() || undefined,
-        collection: search.collection ? filter : undefined,
-        area: area || undefined,
-        ...values,
-      },
-      replace,
-    });
+    readFilter(inventoryView.collection) ?? (triedAnything ? "tried" : "all");
+  const update = (values: { collection?: string; area?: string }) =>
+    inventoryView.set({ topic: field.carry(), ...values });
   const earnedInArea = inArea.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
@@ -139,13 +159,17 @@ export function InventoryScreen() {
     (sum, s) => sum + (evidence.get(s.id)?.independentCorrect ?? 0),
     0,
   );
-  const visible = matching
-    .filter((s) => shows(filter, evidence.get(s.id)))
-    .sort(
-      (a, b) =>
-        bands.indexOf(a.gradeBand) - bands.indexOf(b.gradeBand) ||
-        a.title.localeCompare(b.title),
-    );
+  const inCollection = matching.filter((s) =>
+    shows(filter, evidence.get(s.id)),
+  );
+  // A search lists best first; the whole collection, by grade then title.
+  const visible = needle
+    ? inCollection
+    : inCollection.sort(
+        (a, b) =>
+          bands.indexOf(a.gradeBand) - bands.indexOf(b.gradeBand) ||
+          a.title.localeCompare(b.title),
+      );
   const busy = catalog.isPending || view.loading;
   const failure = catalog.error || view.error;
   const level =
@@ -160,13 +184,15 @@ export function InventoryScreen() {
     view.active &&
     !child &&
     !triedAnything &&
-    !search.collection &&
+    !inventoryView.collection &&
     !query &&
     !area;
   if (hero)
     return (
       <main className={styles.page}>
         <InventoryHero
+          browseAll={() => inventoryView.set({ collection: "all" })}
+          learner={view.learner?.id}
           total={allSkills.length}
           preview={visible.slice(0, 4).map((skill) => skill.title)}
         />
@@ -222,30 +248,18 @@ export function InventoryScreen() {
             </section>
           ) : null}
           <div className={styles.filters}>
-            <label className={styles.search}>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="10" cy="10" r="6" />
-                <path d="m15 15 5 5" />
-              </svg>
-              <input
-                type="search"
-                aria-label="Search"
-                placeholder="Search"
-                value={field.text}
-                maxLength={100}
-                onChange={(e) => field.change(e.target.value)}
-                onBlur={field.flush}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") field.flush();
-                }}
-              />
-            </label>
+            <SiteSearchField
+              field={field}
+              onFocus={() => setWarm(true)}
+              inputRef={keys.input}
+              onKeyDown={keys.onKeyDown}
+            />
             <ListboxDisclosure
               label="Math area"
               align="end"
               options={areaOptions}
               value={area}
-              onChange={(next) => update({ area: next || undefined })}
+              onChange={(next) => update({ area: next || "" })}
             />
           </div>
           {triedAnything && (
@@ -267,10 +281,49 @@ export function InventoryScreen() {
               ))}
             </div>
           )}
-          {!visible.length ? (
+          {needle ? (
+            <div
+              className={styles.found}
+              ref={keys.list}
+              onKeyDown={keys.onKeyDown}
+              aria-busy={found.pending}
+            >
+              <section className={styles.group}>
+                <div className={styles.groupHeading}>
+                  <h2>Skills</h2>
+                  <span>{plural(visible.length, "skill")}</span>
+                </div>
+                {visible.length ? (
+                  <ul className={styles.list}>
+                    {visible.map((skill) => (
+                      <SkillRow
+                        key={skill.id}
+                        skill={skill}
+                        evidence={evidence.get(skill.id)}
+                        grade={shown}
+                        result
+                      />
+                    ))}
+                  </ul>
+                ) : found.pending ? (
+                  <Loading>Searching…</Loading>
+                ) : (
+                  <p className={styles.lead}>
+                    No skills match. Try another search or math area.
+                  </p>
+                )}
+              </section>
+              <SearchResults
+                results={related}
+                pending={found.pending}
+                actions={actions}
+                groups={["lessons", "glossary"]}
+              />
+            </div>
+          ) : !visible.length ? (
             <p className={styles.lead}>
-              {query || area
-                ? "No skills match. Try another search or math area."
+              {area
+                ? "No skills match. Try another math area."
                 : filter === "strong"
                   ? "No strong skills yet."
                   : "No skills here yet."}
@@ -327,8 +380,12 @@ export function InventoryScreen() {
               <Link
                 className={buttonClass("primary")}
                 to="/$"
-                params={{ _splat: "practice" }}
-                search={{ skill }}
+                // Practice held to this skill, at its own address.
+                params={
+                  view.learner
+                    ? practiceParams(view.learner.id, { skill })
+                    : { _splat: "practice" }
+                }
               >
                 <PracticeLabel />
               </Link>
@@ -355,10 +412,13 @@ function SkillRow({
   skill,
   evidence,
   grade,
+  result = false,
 }: {
   skill: MapSkill;
   evidence?: Evidence;
   grade: boolean;
+  /** A search result: the arrow keys move between results. */
+  result?: boolean;
 }) {
   const score = illumination(evidence);
   const attempts = evidence?.attempts ?? 0;
@@ -376,6 +436,7 @@ function SkillRow({
       <EntityLink
         className={styles.skillName}
         entity={{ kind: "skill", id: skill.id }}
+        data-result={result ? "" : undefined}
       >
         <strong>{skill.title}</strong>
         {grade && <small>{bandLabel(skill.gradeBand)}</small>}
@@ -402,11 +463,15 @@ function SkillRow({
 /** Day 0: what Inventory will be, the one step that fills it, and the whole
  * list a tap away. The bar's Practice steps aside for this one. */
 function InventoryHero({
+  learner,
   total,
   preview,
+  browseAll,
 }: {
+  learner: string | undefined;
   total: number;
   preview: readonly string[];
+  browseAll: () => void;
 }) {
   useHeroAction(true);
   return (
@@ -426,18 +491,19 @@ function InventoryHero({
       </p>
       <Link
         to="/$"
-        params={{ _splat: "practice" }}
+        params={learner ? practiceParams(learner) : { _splat: "practice" }}
         className={buttonClass("primary", styles.heroGo)}
       >
         Start practicing
       </Link>
-      <Link
-        to="/inventory"
-        search={{ collection: "all" } as never}
+      {/* The whole collection, on this same screen (inventory-view.ts). */}
+      <button
+        type="button"
         className={buttonClass("quiet")}
+        onClick={browseAll}
       >
         Browse all {total.toLocaleString("en-US")} skills
-      </Link>
+      </button>
     </section>
   );
 }

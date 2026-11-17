@@ -6,14 +6,15 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
+import { useLearnerChoice } from "../spaces/learner-choice";
 import { useShellSlots } from "../../lib/shell-slots";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
 import type { SpaceDescriptor } from "../spaces/resolve";
 import { useLocationMatch, useSpace } from "../spaces/useSpace";
-import { ACCOUNT_HOME } from "../spaces/tabs";
+import { useSettingsHref } from "../spaces/settings-hub";
 import { childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { clearInitialConsentChallenge } from "../../consent-entry";
@@ -23,8 +24,10 @@ import {
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
-import { handedStudentDevice } from "../../lib/student-device";
-import { ThisDevice } from "./ThisDevice";
+import {
+  handedReturnName,
+  handedStudentDevice,
+} from "../../lib/student-device";
 
 type Icon =
   | "child"
@@ -98,6 +101,8 @@ export default function DrawerContents({
   const { account } = view;
   const student = account?.account.kind === "student";
   const { groups, more } = usePlaces(account);
+  // Where the account's settings are (features/spaces/settings-hub.ts).
+  const settings = useSettingsHref();
   // Opening the drawer is the intent: each item's screen (its code and
   // data) loads now, so the one a tap chooses renders whole, at once.
   const router = useRouter();
@@ -117,11 +122,9 @@ export default function DrawerContents({
     {
       detail,
       current = false,
-      search,
     }: {
       detail?: string;
       current?: boolean;
-      search?: Record<string, string>;
     } = {},
   ) => (
     <Link
@@ -129,7 +132,8 @@ export default function DrawerContents({
       className={styles.navLink}
       to="/$"
       params={{ _splat: href.replace(/^\//, "") }}
-      search={search ?? {}}
+      // A destination's own address, with nothing of this screen's.
+      search={{}}
       // The space decides the one current item; the router's own prefix
       // match would mark /me current on /me/profiles.
       activeOptions={{ exact: true, includeSearch: false }}
@@ -146,14 +150,16 @@ export default function DrawerContents({
     </Link>
   );
   const kind = space?.space ?? null;
-  const learners =
-    kind === "family" && space?.space === "family" ? space.learners : [];
+  // One rule for every learner chooser (learner-choice.ts). A family's
+  // screens choose their child in place (their pages, Pathways), so the
+  // drawer adds no second chooser there.
+  const choice = useLearnerChoice();
   const chosen =
     space?.space === "family" || space?.space === "student"
       ? space.learner
       : null;
   function chooseLearner(id: string) {
-    useLearnerStore.getState().select(id);
+    selectLearner(id);
     const at = location.pathname;
     // A child's screens are at their own address, in their family: the
     // same tab for the new child, else their page.
@@ -171,12 +177,13 @@ export default function DrawerContents({
     }
     close();
   }
-  const learnerChoices: ListboxOption[] = learners.map((learner) => ({
+  const learnerChoices: ListboxOption[] = choice.learners.map((learner) => ({
     value: learner.id,
     label: learner.name,
   }));
   // A learner's settings, only where there is a learner whose they are.
-  // A family's device preferences are one quiet section at the foot.
+  // This device's answer feedback is one quiet section at the foot, the
+  // same switches for everyone (practice/FeedbackPreferences.tsx).
   const learning = kind === "me" || kind === "student";
   const family = kind === "family";
   return (
@@ -194,7 +201,7 @@ export default function DrawerContents({
         <section className={styles.switcher} aria-label="Who is practicing">
           <ProfilePlace onNavigate={close} />
         </section>
-      ) : kind !== "family" && learnerChoices.length > 1 ? (
+      ) : kind !== "family" && choice.canChoose ? (
         <section className={styles.switcher} aria-label="Who is practicing">
           {learnerChoices.length <= 6 ? (
             <div className={styles.learnerChoice}>
@@ -309,17 +316,27 @@ export default function DrawerContents({
           nav("/access", "Your gift of AMP", "plans", {
             detail: `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
           })}
+        {/* The account's settings, one entry: a family's parent's are
+            their family's Settings (its hub), anyone else's the one
+            /account page. Sign-in & security is an overlay there. */}
         {view.session.data &&
           !student &&
-          nav(`/${ACCOUNT_HOME}`, "Account", "settings", {
-            current: kind === "account",
-          })}
+          nav(
+            settings,
+            settings === "/account" ? "Account" : "Settings",
+            "settings",
+            {
+              current:
+                location.pathname === settings ||
+                location.pathname.startsWith(`${settings}/`),
+            },
+          )}
       </nav>
       <div className={styles.settings}>
         {!learning && !family && (
           <div ref={setDrawerSettings} data-drawer-settings />
         )}
-        {family ? <ThisDevice /> : <FeedbackPreferences />}
+        <FeedbackPreferences />
       </div>
     </>
   );
@@ -352,7 +369,11 @@ export function DrawerFooter({ close }: { close: () => void }) {
   // address never shows here: screen recordings of the menu stay clean, and
   // Account holds it.
   const name = student ? (account?.learners[0]?.name ?? "") : "";
-  const label = student && handedStudentDevice() ? "Back to family" : "Sign out";
+  // A handed device goes back to the place it was handed from, by name.
+  const label =
+    student && handedStudentDevice()
+      ? `Back to ${handedReturnName() ?? "family"}`
+      : "Sign out";
   return (
     <section
       className={styles.footer}

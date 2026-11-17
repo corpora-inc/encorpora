@@ -10,14 +10,23 @@ import {
 import styles from "./Auth.module.css";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
+import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { accountClient } from "../../account-client";
-import { signIn, accessSession, notifyAccountSessionChanged } from "../../auth";
+import {
+  accountClient,
+  passkeyAccountClient,
+  preloadPasskeys,
+} from "../../account-client";
+import {
+  accessSession,
+  notifyAccountSessionChanged,
+  type AuthSession,
+} from "../../auth";
 import {
   EmailDivider,
   ProviderButtons,
@@ -38,9 +47,25 @@ import {
   fundedAttribution,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
-import { currentBrowserKind } from "../../../analytics/browser-kind";
-import { nativeRuntime } from "../../native-runtime";
-import { OpenInBrowser } from "./OpenInBrowser";
+import { authStep } from "../../app/auth-links";
+import { arrivalLabels, chosenProgram } from "../../lib/program-choice";
+import { useBrowserHandoff } from "./OpenInBrowser";
+
+/** The fragment that marks a sign-in handed off from an in-app browser:
+ * Google starts on arrival. A fragment never reaches the server or a log. */
+const GOOGLE_START = "continue-with-google";
+/** A fresh arrival by link, not Back, Forward or a reload. */
+function arrivedByLink() {
+  try {
+    const [entry] = performance.getEntriesByType(
+      "navigation",
+    ) as PerformanceNavigationTiming[];
+    return !entry || entry.type === "navigate";
+  } catch (error) {
+    console.warn("Navigation type unavailable; not starting Google", error);
+    return false;
+  }
+}
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -78,18 +103,8 @@ export function SignInScreen() {
   const invalidReset =
     routeLocation.pathname === "/reset-password" &&
     (!resetToken || params.has("error"));
-  useEffect(() => {
-    if (invalidReset)
-      void navigate({
-        to: "/sign-in/$step",
-        params: { step: "forgot" },
-        search: {
-          ...continuationSearch(routeLocation.search),
-          error: "reset_link_invalid",
-        },
-        replace: true,
-      });
-  }, [invalidReset]);
+  // An expired or broken reset link asks for a new one in place, at the
+  // link's own address.
   const step: Step = invalidReset
     ? "forgot"
     : (params.has("reset-password") && resetToken) ||
@@ -103,31 +118,28 @@ export function SignInScreen() {
             )
           ? (routeLocation.pathname.split("/")[2] as Step)
           : "sign-in";
+  // Each step is its own address, carrying the sign-in's continuation
+  // (app/auth-links.ts).
   const setStep = (next: Step | "create-password") => {
-    const search = continuationSearch(routeLocation.search);
-    if (next === "create") void navigate({ to: "/sign-up", search });
-    else if (next === "sign-in") void navigate({ to: "/sign-in", search });
-    else if (next === "create-password")
-      void navigate({
-        to: "/sign-up",
-        search: { ...search, method: "password" },
-      });
-    else if (next === "reset")
-      void navigate({
-        to: "/reset-password",
-        search: { ...search, token: resetToken ?? undefined },
-      });
-    else
-      void navigate({ to: "/sign-in/$step", params: { step: next }, search });
+    const carry = continuationSearch(routeLocation.search);
+    void navigate(
+      next === "create"
+        ? authStep("sign-up", carry)
+        : next === "create-password"
+          ? authStep("sign-up", { ...carry, method: "password" })
+          : next === "reset"
+            ? authStep("reset", { ...carry, token: resetToken ?? undefined })
+            : authStep(next, carry),
+    );
   };
   const { data: config } = useSuspenseQuery(authConfigOptions);
   const accounts = config.mode === "accounts";
-  const inApp = !nativeRuntime && currentBrowserKind() !== "standard";
-  const providers = accounts
-    ? config.providers
-        .filter(isProvider)
-        .filter((p) => !inApp || p !== "google")
-    : [];
+  // In an in-app browser (Facebook, Instagram, TikTok…), Google refuses to
+  // sign in, so "Continue with Google" opens the same sign-in in the phone's
+  // browser in one tap. Every other method works in place.
+  const handoff = useBrowserHandoff();
+  const inApp = !!handoff.inApp;
+  const providers = accounts ? config.providers.filter(isProvider) : [];
   const passwords = accounts ? config.passwords : true;
   // Passkey-first sign-up wherever this browser and deployment support it;
   // a password is the secondary choice (`?method=password`).
@@ -138,8 +150,18 @@ export function SignInScreen() {
     !!config.passkeySignup &&
     passkeysAvailable();
   const passkeyMethod = passkeyCreate && params.get("method") !== "password";
+  // Sign-in offers a passkey: its client loads with this screen, not at boot.
+  const offersPasskey = step === "sign-in" && !inApp;
+  useEffect(() => {
+    if (offersPasskey) preloadPasskeys();
+  }, [offersPasskey]);
   const copy = socialCopyFor(document.documentElement.lang);
-  const errorProvider = params.get("provider");
+  // A failed sign-in, back from its provider or our server: shown once
+  // (app/third-party-returns.ts `signInReturn` kept it and cleaned the
+  // address). A step's own address (`/sign-in/forgot`) may still name one.
+  const [arrival] = useState(() => useAuthDraft.getState().arrival);
+  const arrivalCode = arrival?.error ?? params.get("error");
+  const errorProvider = arrival ? arrival.provider : params.get("provider");
   const [pending, setPending] = useState<Provider | null>(null);
   const [handoffReady, setHandoffReady] = useState(false);
   const { email, setEmail } = useAuthDraft();
@@ -158,21 +180,21 @@ export function SignInScreen() {
   const hinted = methodHint?.step === step ? methodHint : null;
   const formRef = useRef<HTMLFormElement>(null);
   const [error, setError] = useState(
-    invalidReset || params.get("error") === "reset_link_invalid"
+    invalidReset || arrivalCode === "reset_link_invalid"
       ? "That password reset link expired or is invalid. Request a new link."
-      : params.get("error") === "clever_sign_in_failed"
+      : arrivalCode === "clever_sign_in_failed"
         ? "Clever sign-in didn’t finish."
-        : params.get("error") === "clever_sign_in_busy"
+        : arrivalCode === "clever_sign_in_busy"
           ? "Clever sign-in is busy. Try again in a moment."
-          : params.get("error") === "link_failed"
+          : arrivalCode === "link_failed"
             ? "That login could not be linked. Sign in again, then try linking it from Security."
-            : params.get("error") && isProvider(errorProvider)
+            : arrivalCode && isProvider(errorProvider)
               ? socialErrorMessage(
                   copy,
-                  params.get("error")!,
+                  arrivalCode,
                   providerNames[errorProvider],
                 )
-              : params.get("error")
+              : arrivalCode
                 ? "That sign-in did not complete. Try again."
                 : "",
   );
@@ -180,25 +202,9 @@ export function SignInScreen() {
   // A notice carried from another screen (an email that already has an
   // account) shows once, on arrival.
   const [notice, setNotice] = useState(() => useAuthDraft.getState().notice);
-  useEffect(() => void useAuthDraft.getState().takeNotice(), []);
   useEffect(() => {
-    if (!accounts) {
-      history.replaceState({}, "", "/");
-      void signIn();
-    }
-  }, [accounts]);
-  // A provider's error is shown once; refresh and history do not replay it.
-  useEffect(() => {
-    if (!isProvider(errorProvider)) return;
-    void navigate({
-      to: ".",
-      search: (previous: Record<string, unknown>) => ({
-        ...previous,
-        error: undefined,
-        provider: undefined,
-      }),
-      replace: true,
-    });
+    useAuthDraft.getState().takeNotice();
+    useAuthDraft.getState().takeArrival();
   }, []);
   function go(next: Step | "create-password") {
     setStep(next);
@@ -207,6 +213,9 @@ export function SignInScreen() {
     setMethodHint(null);
   }
   const carry = continuationSearch(routeLocation.search);
+  // The funding program this visitor came through (lib/program-choice.ts),
+  // or the one an older link names.
+  const program = carry.program ?? chosenProgram() ?? undefined;
   const freeEntry = carry.return === "free-practice";
   const pitchEntry = isPitchEntry(carry.entry) ? carry.entry : undefined;
   // Every pitch path is a parent signup, so it records the same intent.
@@ -220,9 +229,8 @@ export function SignInScreen() {
   // Parents sent to sign in from /access get the parent signup layout:
   // "Continue with Google" in full on its own row.
   const parentLayout = parentEntry || carry.return === "access";
-  const primaryProviders = inApp
-    ? []
-    : parentLayout && providers.some((p) => p !== "github")
+  const primaryProviders =
+    parentLayout && providers.some((p) => p !== "github")
       ? providers.filter((p) => p !== "github")
       : providers;
   const additionalProviders = providers.filter(
@@ -271,7 +279,7 @@ export function SignInScreen() {
         if (!active) return;
         if (session) {
           notifyAccountSessionChanged(session);
-          await continueAfterSignIn();
+          await continueAfterSignIn(session);
           return;
         }
         trackAuth("auth_failure", {
@@ -283,7 +291,8 @@ export function SignInScreen() {
         setError(
           `${providerNames[pending]} sign-in didn’t finish here. Try again or choose another option.`,
         );
-      } catch {
+      } catch (failure) {
+        console.warn("A provider sign-in could not be checked", failure);
         if (active)
           setError(
             "Your sign-in could not be checked. Try again or choose another option.",
@@ -335,8 +344,9 @@ export function SignInScreen() {
           // Opted in by default; every email carries a one-click unsubscribe.
           newsletter: true,
           entry: carry.entry,
-          program: carry.program,
-          campaign: fundedAttribution(carry),
+          program,
+          // The ad's labels, from the continuation or the tab's arrival.
+          campaign: fundedAttribution({ ...arrivalLabels(), ...carry }),
         }),
       });
       if (!response.ok)
@@ -346,16 +356,45 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
-  // Sign-in and sign-up resume the same account home. Home asks the role
-  // question only when the account has no place yet.
+  // A new account's own destination is its first question: the address a
+  // confirmation link or a provider's sign-up returns to, never `/`.
+  // `/` with its search (a funded program, a campaign): the destination
+  // takes the search along.
+  const [returnPath, returnSearch = ""] = returnTo.split("?");
+  const toRoot = returnPath === "/";
+  const firstRunTo = toRoot
+    ? `/start${returnSearch ? `?${returnSearch}` : ""}`
+    : returnTo;
+  // A successful sign-in with a callback is sent there by the auth client
+  // (a full load, a new entry). Going home, the app opens the account's own
+  // destination itself instead (`continueAfterSignIn`), in one navigation.
+  const signInReturn = toRoot ? {} : { callbackURL: returnTo };
+  // Sign-in and sign-up resume the same account: its place, or the role
+  // question when it has no place yet.
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
     notifyAccountSessionChanged(session);
-    await continueAfterSignIn();
+    await continueAfterSignIn(session);
   };
-  async function continueAfterSignIn() {
-    await navigate({ href: returnTo, replace: true });
+  async function continueAfterSignIn(session: AuthSession) {
+    // Nothing asked for: straight to the account's place (or its first
+    // question), its final address, never through `/`.
+    const href = toRoot
+      ? await import("../home/destination")
+          .then(({ homeDestination }) => homeDestination(session))
+          .then((place) =>
+            // A new account's first question keeps the search it came with.
+            place === "/start" && returnSearch
+              ? `${place}?${returnSearch}`
+              : place,
+          )
+          .catch((error) => {
+            console.warn("Your place didn’t load; opening home", error);
+            return returnTo;
+          })
+      : returnTo;
+    await navigate({ href, replace: true });
   }
   async function run(
     work: () => Promise<void>,
@@ -367,6 +406,7 @@ export function SignInScreen() {
       if (stage) await measureAuth(stage, work);
       else await work();
     } catch (failure) {
+      console.warn("A sign-in step didn’t finish", failure);
       setPending(null);
       setError(
         failure instanceof TypeError
@@ -436,7 +476,7 @@ export function SignInScreen() {
       if (step === "sign-in") {
         await prepareFreeSignup();
         const result = await accountClient.signIn.email({
-          callbackURL: returnTo,
+          ...signInReturn,
           email: email.trim(),
           password,
         });
@@ -462,7 +502,7 @@ export function SignInScreen() {
           name: "",
           email: email.trim(),
           password,
-          callbackURL: returnTo,
+          callbackURL: firstRunTo,
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet. A
@@ -471,7 +511,7 @@ export function SignInScreen() {
         else if (result.data?.user.emailVerified) {
           fail(
             await accountClient.signIn.email({
-              callbackURL: returnTo,
+              ...signInReturn,
               email: email.trim(),
               password,
             }),
@@ -519,7 +559,7 @@ export function SignInScreen() {
       await prepareFreeSignup();
       const result = await signUpWithPasskey(
         email.trim(),
-        freeEntry ? { program: carry.program } : undefined,
+        freeEntry ? { program } : undefined,
         startedAt,
       );
       if (result.ok) return done();
@@ -552,8 +592,16 @@ export function SignInScreen() {
           const result = await accountClient.signIn.social({
             provider,
             fetchOptions: { timeout: 15_000 },
-            callbackURL: returnTo,
-            newUserCallbackURL: returnTo,
+            // A returning account comes back through `/?signed-in`, the one
+            // handoff that opens its place (its destination isn't known
+            // until the provider says who it is).
+            callbackURL: toRoot
+              ? `/?${new URLSearchParams([
+                  ["signed-in", ""],
+                  ...new URLSearchParams(returnSearch),
+                ])}`
+              : returnTo,
+            newUserCallbackURL: firstRunTo,
             errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
               {
                 provider,
@@ -574,15 +622,49 @@ export function SignInScreen() {
       );
     }, null);
   };
+  /** The sign-in this screen would start, opened in the real browser, where
+   * it starts Google at once (`googleArrival`). It keeps the continuation. */
+  const googleStart = () => {
+    const start = new URL(
+      step === "create" ? "/sign-up" : "/sign-in",
+      location.origin,
+    );
+    start.search = `${new URLSearchParams(carry as Record<string, string>)}`;
+    start.hash = GOOGLE_START;
+    return start.href;
+  };
+  const choose = (provider: Provider) => {
+    if (busy || pending) return;
+    if (inApp && provider === "google" && handoff.open(googleStart())) return;
+    social(provider);
+  };
+  // Arriving from that handoff starts Google once. Back or a reload to this
+  // address shows the screen instead, so Back from Google never re-enters it.
+  const [googleArrival] = useState(
+    () =>
+      location.hash === `#${GOOGLE_START}` &&
+      !inApp &&
+      providers.includes("google") &&
+      (step === "sign-in" || step === "create") &&
+      arrivedByLink(),
+  );
+  const arrivalStarted = useRef(false);
+  useEffect(() => {
+    // Starts an external sign-in on arrival; the provider's page replaces
+    // this one by the auth client's redirect, never by the router.
+    if (!googleArrival || arrivalStarted.current) return;
+    arrivalStarted.current = true;
+    social("google");
+  }, [googleArrival]);
   const signInWithPasskey = () =>
     void run(async () => {
       await prepareFreeSignup();
-      fail(await accountClient.signIn.passkey());
+      fail(await (await passkeyAccountClient()).signIn.passkey());
       await done();
     });
   const showProviders = step === "sign-in" || step === "create";
   return (
-    <PageFrame centered className={styles.authFrame}>
+    <PageFrame className={styles.authFrame}>
       <section
         className={`card welcome account-sign-in ${frameCard} ${styles.frame}`}
       >
@@ -619,7 +701,7 @@ export function SignInScreen() {
               Each learner starts with 100 free problems and five free
               workbooks. No card needed.
             </p>
-            {carry.program && (
+            {program && (
               <p className={styles.funding}>
                 Approved{" "}
                 {
@@ -627,14 +709,14 @@ export function SignInScreen() {
                     "ar-efa": "Arkansas EFA",
                     "az-esa": "Arizona ESA",
                     "nh-efa": "New Hampshire EFA",
-                  }[carry.program]
+                  }[program]
                 }{" "}
                 vendor.
               </p>
             )}
           </div>
         )}
-        {step === "sign-in" && !inApp && providers.length > 0 && (
+        {step === "sign-in" && providers.length > 0 && (
           <p className={styles.hint}>
             Choose the sign-in method you used to create your account.
           </p>
@@ -658,7 +740,7 @@ export function SignInScreen() {
             href="/api/v1/school/sso/clever/start"
             className={buttonClass(
               ["clever_sign_in_failed", "clever_sign_in_busy"].includes(
-                params.get("error") ?? "",
+                arrivalCode ?? "",
               )
                 ? "primary"
                 : "secondary",
@@ -674,7 +756,7 @@ export function SignInScreen() {
             copy={copy}
             busy={busy || !!pending}
             pending={pending}
-            onSelect={social}
+            onSelect={choose}
           />
         )}
         {step === "sign-in" && !inApp && (
@@ -711,8 +793,20 @@ export function SignInScreen() {
             <p role="status">
               This email signs in with {methodList(hinted.methods)}.
               {hinted.externalOnly &&
+                !handoff.available &&
                 " Open this page in your browser to continue."}
             </p>
+            {hinted.externalOnly && handoff.available && (
+              <Button
+                type="button"
+                variant="primary"
+                onClick={() => handoff.open(location.href)}
+              >
+                {handoff.inApp?.platform === "ios"
+                  ? "Continue in Safari"
+                  : "Continue in your browser"}
+              </Button>
+            )}
             <ProviderButtons
               providers={
                 hinted.externalOnly ? [] : hinted.methods.filter(isProvider)
@@ -720,7 +814,7 @@ export function SignInScreen() {
               copy={copy}
               busy={busy || !!pending}
               pending={pending}
-              onSelect={social}
+              onSelect={choose}
             />
             {!inApp && hinted.methods.includes("passkey") && (
               <Button
@@ -739,21 +833,20 @@ export function SignInScreen() {
             className="account-form"
             onSubmit={createWithPasskey}
           >
-            <div className={styles.emailHeader}>
-              <label htmlFor="signup-passkey-email">Email</label>
-              {passwords && (
-                <button
-                  type="button"
-                  className={styles.inlineLink}
-                  disabled={busy || !!pending}
-                  onClick={() => go("create-password")}
-                >
-                  Use a password instead
-                </button>
-              )}
-            </div>
-            <input
-              id="signup-passkey-email"
+            <TextField
+              label="Email"
+              action={
+                passwords && (
+                  <button
+                    type="button"
+                    className={styles.inlineLink}
+                    disabled={busy || !!pending}
+                    onClick={() => go("create-password")}
+                  >
+                    Use a password instead
+                  </button>
+                )
+              }
               required
               type="email"
               autoComplete="email"
@@ -783,62 +876,53 @@ export function SignInScreen() {
               copy={copy}
               busy={busy || !!pending}
               pending={pending}
-              onSelect={social}
+              onSelect={choose}
             />
           </div>
         ) : (
           (passwords || !showProviders) && (
             <form ref={formRef} className="account-form" onSubmit={submit}>
               {step !== "reset" && step !== "two-factor" && (
-                <label>
-                  Email
-                  <input
-                    required
-                    type="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
+                <TextField
+                  label="Email"
+                  required
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               )}
               {(step === "sign-in" ||
                 step === "create" ||
                 step === "reset") && (
                 // The rule describes the field and isn't part of its name,
                 // which stays "Password".
-                <div className="account-field">
-                  <label>
-                    {step === "reset" ? "New password" : "Password"}
-                    <input
-                      required
-                      type="password"
-                      minLength={step === "sign-in" ? 1 : 10}
-                      autoComplete={
-                        step === "sign-in" ? "current-password" : "new-password"
-                      }
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      aria-describedby={
-                        step !== "sign-in" ? "password-rule" : undefined
-                      }
-                    />
-                  </label>
-                  {step !== "sign-in" && (
-                    <small id="password-rule">At least 10 characters.</small>
-                  )}
-                </div>
+                <TextField
+                  label={step === "reset" ? "New password" : "Password"}
+                  hint={
+                    step !== "sign-in" ? "At least 10 characters." : undefined
+                  }
+                  required
+                  type="password"
+                  minLength={step === "sign-in" ? 1 : 10}
+                  autoComplete={
+                    step === "sign-in" ? "current-password" : "new-password"
+                  }
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               )}
               {step === "two-factor" && (
-                <label>
-                  {backup ? "Backup code" : "Code from your authenticator app"}
-                  <input
-                    required
-                    autoComplete="one-time-code"
-                    inputMode={backup ? "text" : "numeric"}
-                    value={code}
-                    onChange={(e) => setCode(e.target.value.trim())}
-                  />
-                </label>
+                <TextField
+                  label={
+                    backup ? "Backup code" : "Code from your authenticator app"
+                  }
+                  required
+                  autoComplete="one-time-code"
+                  inputMode={backup ? "text" : "numeric"}
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.trim())}
+                />
               )}
               <Button
                 variant="primary"
@@ -860,7 +944,7 @@ export function SignInScreen() {
             </form>
           )
         )}
-        {inApp && showProviders && <OpenInBrowser />}
+        {handoff.hint}
         <div className="account-links">
           {step === "sign-in" && passwords && (
             <>
@@ -917,7 +1001,7 @@ export function SignInScreen() {
                 copy={copy}
                 busy={busy || !!pending}
                 pending={pending}
-                onSelect={social}
+                onSelect={choose}
               />
             </details>
           )}

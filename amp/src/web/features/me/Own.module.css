@@ -83,11 +83,7 @@
   stroke-linejoin: round;
 }
 .weekLink:hover,
-.quietLink:hover {
-  background: var(--color-surface-hover);
-}
-.weekLink:focus-visible,
-.quietLink:focus-visible {
+.weekLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
@@ -95,19 +91,6 @@
   color: var(--color-muted-text);
   font-size: var(--text-label);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-/* A quiet text link at the size of a target. */
-.quietLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding-inline: var(--space-3);
-  border-radius: var(--radius-small);
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 650;
-  text-decoration: none;
   white-space: nowrap;
 }
 /* Day 0's action: prominent, its natural width. */
@@ -162,10 +145,13 @@
   }
 }
 
-/* Beside the title: practicing at a level and the printed report. */
+/* Beside the title: practicing at a level and the printed report, one pair
+   of quiet actions: on one line where they fit, each on its own where they
+   don't (it may shrink to the row, so it wraps rather than overflow). */
 .titleTools {
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-1);
@@ -222,4 +208,19 @@
   .titleTools {
     margin-inline: calc(-1 * var(--space-3));
   }
+}
+/* Your own practice on a settings hub (OwnPractice). */
+.own {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.ownTitle {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+.ownLine {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
 }

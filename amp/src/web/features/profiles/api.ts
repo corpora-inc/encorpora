@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useLocation, useNavigate, useRouter } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 import type { SignedInMe } from "../../../account/contracts";
 import {
@@ -8,14 +8,17 @@ import {
   type ProfileLevels,
 } from "../../../learning/practice-profiles";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner, useCurrentLearner } from "../../learner-store";
 import { practiceProfile } from "../../lib/adult-learner";
 import { request } from "../../lib/api";
-import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+import { meOptions, refreshMe } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { closeTo } from "../../lib/return-to";
 import { ROOT } from "../../nav/root";
 import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
-import { classesOptions } from "../school/api";
+import { setModeReturn, useModeReturn } from "./mode-return";
+import { classesOptions } from "../school/core-api";
+import { practiceParams } from "../spaces/identity";
 
 /* Practice profiles (docs/families.md): the adult practicing as someone else.
    Every change refreshes `/me`, the one store the switcher, the drawer and
@@ -26,7 +29,7 @@ const created = z.object({ learnerId: z.string() });
 /** Practice as this profile: it becomes the learner practicing, and practice
  * opens on it. The place they came from stays the one `/` remembers. */
 export function choosePracticeProfile(id: string) {
-  useLearnerStore.getState().select(id);
+  selectLearner(id);
   rememberProfileUse(id);
 }
 
@@ -37,7 +40,8 @@ export function recentProfiles(): string[] {
   try {
     const raw = JSON.parse(localStorage.getItem(RECENT_KEY) ?? "[]");
     return Array.isArray(raw) ? raw.filter((id) => typeof id === "string") : [];
-  } catch {
+  } catch (error) {
+    console.warn("The profile list order couldn’t be read", error);
     return [];
   }
 }
@@ -145,27 +149,20 @@ export function leaveTarget(me: SignedInMe | null | undefined) {
     : { own: null, first, label: "Back", short: "Back" };
 }
 
-/** The profile being practiced as, and the one tap back out of it: to where
- * the mode was started (`?from=`, features/profiles/practice-mode.ts), else
- * the adult's own practice or their home. */
+/** The profile being practiced as (the account's current learner, when it
+ * is one of its profiles), and the one tap back out of it: to where the mode
+ * was started (mode-return.ts), else the adult's own practice or their
+ * home. Leaving chooses their own learner again and ends the mode. */
 export function usePracticingProfile() {
-  const session = useQuery(sessionOptions).data;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   const profile = practiceProfile(account, learnerId);
   const navigate = useNavigate();
   const router = useRouter();
-  const from = modeFrom(
-    useLocation({ select: (location) => location.search }) as Record<
-      string,
-      unknown
-    >,
-  );
+  const from = modeFrom(useModeReturn());
   const target = leaveTarget(account);
   // Its class's name, loaded with the screen (practice-mode.ts).
   const { org } = modePlace(from);
@@ -179,22 +176,21 @@ export function usePracticingProfile() {
       ? { ...target, ...modeReturnLabel(from, account, classes) }
       : target,
     leave: () => {
+      setModeReturn(null);
       // Back where it was started: X, the browser's Back and this agree.
-      if (from) return closeTo(router, from, from);
-      const store = useLearnerStore.getState();
+      if (from) {
+        selectLearner(target.own ?? target.first);
+        return closeTo(router, from, from);
+      }
       if (target.own) {
-        store.select(target.own);
-        void navigate({
-          to: "/$",
-          params: { _splat: "practice" },
-          search: { profile: undefined, from: undefined },
-        });
+        selectLearner(target.own);
+        void navigate({ to: "/$", params: practiceParams(target.own) });
         return;
       }
       // No mode's `from` and no practice of their own: Back to where the
       // profile was started, else the root, which opens the place they work
       // (the family's first child chosen again, as the root would).
-      store.select(target.first);
+      selectLearner(target.first);
       closeTo(router, ROOT);
     },
   };

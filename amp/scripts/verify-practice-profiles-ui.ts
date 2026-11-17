@@ -2,8 +2,8 @@
  * Practice profiles in real browsers, on the real API in accounts mode and a
  * real database (docs/families.md). Everyone here is synthetic.
  *
- *   1. An adult with their own practice opens "Practice as someone else" from
- *      the drawer, picks 4th grade behind, moves Fractions down one, and starts
+ *   1. An adult with their own practice opens Profiles from the drawer, then
+ *      New profile, picks 4th grade behind, moves Fractions down one, and starts
  *      practicing. The picker keeps its choice across a reload, Back and
  *      Forward; the bar names the profile and goes back to their own
  *      practice in one tap. The profile list reopens the saved profile; the
@@ -206,8 +206,22 @@ async function newContext(
     timezoneId: "America/Chicago",
   });
   await context.addInitScript(shiftRecorder);
+  // The plans and prices (Stripe's, which this server has no keys for):
+  // a year and a month, as the store sells them.
+  await context.route(/\/api\/v1\/billing\/(prices|offer)(\?|$)/, (route) =>
+    route.fulfill({ json: { available: true, offer: OFFERS[0], offers: OFFERS } }),
+  );
   return context;
 }
+const OFFERS = ["year", "month"].map((interval, i) => ({
+  id: (i ? "b" : "a").repeat(64),
+  mode: "test",
+  currency: "USD",
+  amountMinor: i ? 5900 : 59900,
+  formattedAmount: i ? "$59.00" : "$599.00",
+  interval,
+  learnerCount: 1,
+}));
 const menuButton = (page: Page) =>
   page
     .getByRole("button", { name: /^(Open|Close) AMP menu$/ })
@@ -225,19 +239,19 @@ async function closeDrawer(page: Page) {
 }
 /** A practice problem on screen: the normal loop, unchanged. */
 async function practicing(page: Page, asProfile = true) {
+  // Practice names whose it is in its path (a profile is the adult's
+  // learner); the mode is the device's current learner, never a query.
   await page.waitForURL(
-    (url) =>
-      url.pathname === "/practice" &&
-      url.searchParams.has("profile") === asProfile,
+    (url) => /^\/practice\/[^/]+$/.test(url.pathname) && !url.search,
   );
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
-  const query = new URL(page.url()).searchParams;
+  const learner = decodeURIComponent(
+    new URL(page.url()).pathname.split("/")[2]!,
+  );
   check(
-    "practice URL identifies the selected mode",
-    asProfile
-      ? query.get("profile") === (await chosen(page)) && query.has("profile")
-      : !query.has("profile"),
-    page.url(),
+    `practice URL names the ${asProfile ? "profile" : "adult's own"} practicing`,
+    learner === (await chosen(page)),
+    { url: page.url(), chosen: await chosen(page) },
   );
 }
 /** Moves strands where this width keeps them: beside the choices with room,
@@ -272,8 +286,12 @@ const text = async (locator: ReturnType<Page["locator"]>) =>
 const chosen = (page: Page) =>
   page.evaluate(
     () =>
-      JSON.parse(localStorage.getItem("amp.learner") ?? "{}")?.state
-        ?.learnerId ?? null,
+      // The learner store keeps one current learner per account on this
+      // device (learner-store.ts); this browser has one account.
+      (Object.values(
+        JSON.parse(localStorage.getItem("amp.learner") ?? "{}")?.state
+          ?.learners ?? {},
+      )[0] as string | undefined) ?? null,
   );
 
 /** An adult with their own practice tries a level, practices as it, and goes
@@ -309,10 +327,13 @@ async function adultTriesALevel(
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   const entry = await openDrawer(page);
-  await entry.getByRole("link", { name: "Practice as someone else" }).click();
-  await heading(page, "Practice as someone else");
-  await page.getByRole("link", { name: "Try a level", exact: true }).click();
-  await heading(page, "Try a level");
+  // One entry per feature (#2384): Practice at a level opens its hub.
+  await entry
+    .getByRole("link", { name: "Practice at a level", exact: true })
+    .click();
+  await heading(page, "Practice at a level");
+  await page.getByRole("link", { name: "New profile", exact: true }).click();
+  await heading(page, "New profile");
   check(
     `${label} the picker has a URL`,
     path(page) === "/me/profiles/new",
@@ -358,10 +379,19 @@ async function adultTriesALevel(
   // One tap for the grade, one for the pace; every area fills in.
   await page.getByRole("radio", { name: "4th grade" }).click();
   await page.getByRole("radio", { name: /^Behind/ }).click();
-  await page.waitForURL(/grade=4/);
+  // The choice is the flow's draft (features/profiles/level-draft.ts): a
+  // reload keeps it, and the address carries none of it.
+  await page.reload();
+  await page
+    .getByRole("radio", { name: "4th grade" })
+    .and(page.locator('[aria-checked="true"]'))
+    .waitFor();
   check(
-    `${label} the URL keeps the grade and pace`,
-    /grade=4/.test(path(page)) && /pace=behind/.test(path(page)),
+    `${label} a reload keeps the grade and pace, and the URL carries neither`,
+    !path(page).includes("?") &&
+      (await page
+        .getByRole("radio", { name: /^Behind/ })
+        .getAttribute("aria-checked")) === "true",
     path(page),
   );
   const caption = page.locator("[data-grade-caption]");
@@ -395,7 +425,7 @@ async function adultTriesALevel(
 
   // A reload keeps the grade and pace.
   await page.reload();
-  await heading(page, "Try a level");
+  await heading(page, "New profile");
   check(
     `${label} reload keeps the grade`,
     (await page
@@ -431,7 +461,7 @@ async function adultTriesALevel(
   check(
     `${label} the way back is one tap away`,
     (await back.isVisible()) &&
-      (await back.getAttribute("aria-label")) === "Back to my own practice",
+      (await back.getAttribute("aria-label")) === "Back to your levels",
   );
   if (width >= 960)
     check(
@@ -445,8 +475,14 @@ async function adultTriesALevel(
 
   // Back and Forward go through the picker and practice.
   await page.goBack();
-  await heading(page, "Try a level");
-  check(`${label} back to the picker`, /grade=4/.test(path(page)), path(page));
+  await heading(page, "New profile");
+  check(
+    `${label} back to the picker, its grade kept`,
+    (await page
+      .getByRole("radio", { name: "4th grade" })
+      .getAttribute("aria-checked")) === "true",
+    path(page),
+  );
   await page.goForward();
   await practicing(page);
 
@@ -469,9 +505,13 @@ async function adultTriesALevel(
   const at = (pattern: RegExp) => items.findIndex((item) => pattern.test(item));
   check(
     `${label} the switcher keeps profiles and actions out of places`,
-    at(/My practice/) >= 0 &&
+    // Their own practice is a place, by their name (Q-204: no "My");
+    // Practice at a level is a place of the Practice group too
+    // (features/spaces/places.ts); a saved profile and New profile aren't.
+    at(/Levels, practice and workbooks/) >= 0 &&
+      at(/Practice at a level/) >= 0 &&
       at(/4th grade · behind/) === -1 &&
-      at(/Try a level/) === -1,
+      at(/New profile/) === -1,
     items,
   );
   await measured(page, `${label} switcher`);
@@ -498,8 +538,10 @@ async function adultTriesALevel(
 
   // The profiles page lists the saved mode and reopens it, then its levels.
   const again = await openDrawer(page);
-  await again.getByRole("link", { name: "Practice as someone else" }).click();
-  await heading(page, "Practice as someone else");
+  await again
+    .getByRole("link", { name: "Practice at a level", exact: true })
+    .click();
+  await heading(page, "Practice at a level");
   check(
     `${label} saved profiles offer practice, editing and a new level`,
     (await page
@@ -509,7 +551,7 @@ async function adultTriesALevel(
         .getByRole("link", { name: "Edit 4th grade · behind" })
         .getAttribute("href")) === `/me/profiles/${profile.id}` &&
       (await page
-        .getByRole("link", { name: "Try a level", exact: true })
+        .getByRole("link", { name: "New profile", exact: true })
         .getAttribute("href")) === "/me/profiles/new",
   );
   await page
@@ -730,16 +772,33 @@ async function teacherCopiesAStudent(
       )
     ).rows[0].n;
   const continueFromPause = async () => {
-    // The address selects the copied mode; device memory alone cannot.
-    await page.goto(`${origin}/practice?profile=${copy.id}`);
+    // Its practice's address selects the copied profile (an older
+    // `?profile=` link opens the same, one hop).
+    await page.goto(`${origin}/practice/${copy.id}`);
     await page.locator(`[data-continue-with-amp="${copy.id}"]`).click();
-    await page.waitForURL(/\/continue\//);
+    // Pay is an overlay over where it was opened (features/pay/address.ts).
+    await page.waitForURL(/\/pay(?:\/|$)/);
   };
   await continueFromPause();
-  await heading(page, "Continue with AMP");
+  // Continue with AMP opens choosing a plan, over the account: the plans
+  // themselves, a year and a month, ready to choose.
+  await page
+    .getByRole("heading", { name: "Choose your plan" })
+    .first()
+    .waitFor();
+  const plans = page.getByRole("radiogroup", { name: "Plan" });
+  await plans.waitFor();
+  check(
+    `${label} Continue offers the plans`,
+    (await plans.getByRole("radio").count()) === 2 &&
+      /\$599\.00/.test(await plans.innerText()) &&
+      /\$59\.00/.test(await plans.innerText()) &&
+      (await page.getByText(/load the plans/).count()) === 0,
+    await plans.innerText(),
+  );
   check(
     `${label} a profile without children continues with their own practice`,
-    path(page) === `/continue/${copy.id}` &&
+    path(page) === `/account/pay/${copy.id}` &&
       (await page.getByText("For your own practice").isVisible()),
     path(page),
   );
@@ -757,10 +816,11 @@ async function teacherCopiesAStudent(
   check(`${label} a child is added`, child.ok(), await child.text());
   const childId = (await child.json()).id as string;
   await continueFromPause();
-  await page.waitForURL(new RegExp(`/continue/${childId}$`));
+  const forChild = new RegExp(`/(?:pay/${childId}|kids/${childId}/pay)$`);
+  await page.waitForURL(forChild);
   check(
     `${label} a profile with a paused child continues the family's plan`,
-    path(page) === `/continue/${childId}`,
+    forChild.test(path(page)),
     path(page),
   );
   await context.close();

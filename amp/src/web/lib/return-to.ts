@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 /**
  * Closing returns to where a view was opened (Q-67).
  *
@@ -37,7 +38,8 @@ export function returnTarget(value: unknown): string | undefined {
   let url: URL;
   try {
     url = new URL(value, BASE);
-  } catch {
+  } catch (error) {
+    console.warn("AMP: ignored a return address that isn’t one", error);
     return undefined;
   }
   if (url.origin !== BASE) return undefined;
@@ -72,7 +74,8 @@ export function sameScreen(entry: string, target: string) {
   try {
     a = new URL(entry, BASE);
     b = new URL(target, BASE);
-  } catch {
+  } catch (error) {
+    console.warn("AMP: compared an address that isn’t one", error);
     return false;
   }
   const path = (url: URL) => url.pathname.replace(/\/+$/, "") || "/";
@@ -81,6 +84,10 @@ export function sameScreen(entry: string, target: string) {
   const keys = new Set([...a.searchParams.keys(), ...b.searchParams.keys()]);
   for (const key of keys) {
     if (!b.searchParams.has(key) && viewKey.has(key)) continue;
+    // A screen's layers are no part of which screen it is: they live in the
+    // layer store (nav/layer-store.ts); a target names them only so a link
+    // with no history behind it opens them.
+    if (key === "open") continue;
     const left = a.searchParams.getAll(key);
     const right = b.searchParams.getAll(key);
     if (left.length !== right.length || left.some((v, i) => v !== right[i]))
@@ -121,8 +128,11 @@ export function stampPrevious(
     : { ...next.state, [PREVIOUS]: previous };
 }
 
-/** Entries a close never goes Back to: signing in, joining, starting. */
-const PASSAGE = /^\/(?:sign-in|sign-up|reset-password|join|c|start|account)(?:[/?#]|$)/;
+/** Entries a close never goes Back to: signing in, joining, starting, and
+ * the pages around registering and deleting an account. `/account` itself is
+ * a hub with overlays (app/account-overlays.tsx), so closing one goes Back. */
+const PASSAGE =
+  /^\/(?:sign-in|sign-up|reset-password|join|c|start|account\/(?:ready|deleted))(?:[/?#]|$)/;
 
 /** The little of the router a close needs. */
 export type ClosingRouter = {

@@ -1,49 +1,5 @@
-/* A learner's workbooks, on the app frame under their Progress tabs. Every
-   action keeps its natural width; nothing stretches across a wide page. */
-.page {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--width-content-wide);
-  margin-inline: auto;
-  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
-    max(var(--space-7), env(safe-area-inset-bottom))
-    max(var(--space-4), env(safe-area-inset-left));
-  min-height: calc(100dvh - var(--shell-bar, 56px));
-}
-@media (min-width: 768px) {
-  .page {
-    padding-top: var(--space-6);
-    padding-inline: max(var(--space-5), env(safe-area-inset-left));
-  }
-}
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-title-min), 6vw, var(--text-heading-1));
-  font-weight: 400;
-  line-height: 1.15;
-  /* Relative to the title's size: words keep their spaces at 320 px. */
-  letter-spacing: -0.01em;
-  /* "No. 1 · Sunday, November 1" never leaves a lone "1" on its own line. */
-  text-wrap: balance;
-}
-.lede {
-  max-width: 60ch;
-  margin: var(--space-2) 0 0;
-  color: var(--color-muted-text);
-  text-wrap: pretty;
-}
-/* Whose workbooks, when they aren't the reader's own: small and quiet. */
-.learnerLabel {
-  margin: 0 0 var(--space-1);
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  font-weight: 650;
-  overflow-wrap: anywhere;
-}
+/* A learner's workbooks, on a standard ui/Page with a PageHeader. Every
+   action keeps its natural width; nothing stretches across the page. */
 .buttonIcon {
   flex: none;
   width: 18px;
@@ -55,31 +11,19 @@
   stroke-linejoin: round;
 }
 
-/* The list: title and lede, the two actions at the end of the row. */
-.listHead {
-  /* Its content's height, never the legacy page header's fixed one. */
-  height: auto;
+/* On a child's page: the section's heading and its one action share a
+   line, and take their own lines on a narrow page. */
+.sectionHead {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--space-4) var(--space-6);
+  gap: var(--space-3) var(--space-6);
 }
-.listTitle {
-  flex: 1 1 320px;
-  min-width: 0;
-}
-/* Until the actions fit beside the title with room to spare, they take
-   their own line under it: the same line while the list loads (its
-   skeleton) and after, whether one action lands or two. */
 @media (max-width: 899.98px) {
-  .listHead {
+  .sectionHead {
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: stretch;
-  }
-  .listTitle {
-    flex: none;
   }
 }
 .listActions {
@@ -109,7 +53,7 @@
   gap: var(--space-3);
   margin-top: var(--space-3);
 }
-h2.sectionTitle {
+:is(h2, h3).sectionTitle {
   margin: 0;
   color: var(--color-muted-text);
   font-family: inherit;
@@ -215,6 +159,10 @@ h2.sectionTitle {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
+  /* A full touch target of its own, laid out as one line of text. */
+  align-content: center;
+  min-height: var(--target-size);
+  margin-block: calc((1lh - var(--target-size)) / 2);
   justify-self: start;
   gap: 0 var(--space-2);
   border-radius: var(--radius-small);
@@ -288,43 +236,10 @@ h2.sectionTitle {
   white-space: nowrap;
 }
 
-/* A workbook's day: the way back, the date and its two actions on one row
-   when there is room. */
-/* A breadcrumb, not the legacy tab row the bare `nav` element is styled as. */
-.trail {
-  display: block;
-  margin: 0 0 var(--space-1) calc(-1 * var(--space-2));
-  border: 0;
-}
-.trailLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  min-height: 44px;
-  padding: 0 var(--space-2);
-  border-radius: var(--radius-control);
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 650;
-  text-decoration: none;
-}
-.trailLink:hover {
-  background: var(--color-secondary);
-}
-.trailLink:focus-visible,
 .rowTitle:focus-visible,
 .retry:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
-}
-.trailLink svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 .dayHead {
   display: flex;
@@ -363,8 +278,9 @@ h2.sectionTitle {
   stroke: none;
 }
 
-/* In the day's sheet: the two actions, the workbook as paper, then its
-   options, one column. */
+/* In the day's sheet, one column: the two actions, the options, then the
+   workbook they make as paper, last, so its changing height (a title that
+   wraps, another draft) never moves a control. */
 .builder {
   display: grid;
   gap: var(--space-5);
@@ -633,30 +549,8 @@ h3.optionsTitle {
   gap: var(--space-2) var(--space-3);
 }
 .answerField {
-  display: grid;
-  gap: var(--space-1);
   flex: 1 1 140px;
   max-width: 220px;
-  font-size: var(--text-small);
-  font-weight: 700;
-}
-.answerField input {
-  box-sizing: border-box;
-  min-height: var(--target-size);
-  padding: 0 var(--space-3);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface);
-  font: inherit;
-  font-weight: 400;
-}
-.answerField input:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 1px;
-}
-.answerField input[aria-invalid="true"] {
-  border-color: var(--color-danger-accent);
 }
 .picker {
   display: inline-flex;

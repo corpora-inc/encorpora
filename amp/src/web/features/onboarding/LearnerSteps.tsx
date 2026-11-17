@@ -3,14 +3,17 @@ import { CHILD_NAME_MAX, PARENT_ENTRY_LINE } from "../../../learning/nickname";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import type { SignedInMe } from "../../../account/contracts";
-import type { AuthSession } from "../../auth";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import {
   continuationSearch,
+  forgetFundedPurchase,
   fundedPrograms,
+  fundedReturnOf,
   isFundedReturn,
 } from "../../lib/funded-entry";
+import { payHref } from "./pay-link";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { refreshMe } from "../../lib/query";
@@ -21,21 +24,22 @@ import { useCreateLearner, useSetBirthYear } from "./api";
 import { Progress } from "./Progress";
 import { useDraft } from "./state";
 import styles from "./Start.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /**
  * Learner name, then birth year. A paid, unassigned enrollment is claimed for
  * the new learner; a learner saved before a failed claim is never duplicated.
  */
-export function LearnerSteps({
-  session,
-  me,
-}: {
-  session: AuthSession;
-  me: SignedInMe;
-}) {
+export function LearnerSteps({ me }: { me: SignedInMe }) {
+  const session = useSession();
   const navigate = useNavigate(),
     location = useLocation();
-  const search = continuationSearch(location.search);
+  // The funded program these steps are for: the address's on arrival, then
+  // the one kept for the account (`fundedSetup`).
+  const arrival = continuationSearch(location.search).return;
+  const fundedProgram = isFundedReturn(arrival)
+    ? arrival
+    : fundedReturnOf(session.accountId);
   const draft = useDraft(),
     mine = draft.owner === session.accountId;
   const name = mine ? draft.name : "";
@@ -44,7 +48,7 @@ export function LearnerSteps({
   const giftClaim = useActivateGift(session);
   const correct = useSetBirthYear(session);
   const firstRun = me.next !== "practice";
-  const funded = isFundedReturn(search.return);
+  const funded = !!fundedProgram;
   const purchase = me.unassignedPurchase;
   const gift = !purchase && !funded ? me.availableAccessGrant : undefined;
   const waiting = me.learners.filter(
@@ -57,23 +61,35 @@ export function LearnerSteps({
   useEffect(() => {
     if (!mine) draft.set(session.accountId, "");
   }, [session.accountId]);
-  useEffect(() => {
-    if (location.pathname === "/start/birth-year" && !name.trim())
-      void navigate({ to: "/start/name", search, replace: true });
-  }, [location.pathname, name]);
+  // `/start/birth-year` with no name yet (a refresh, a saved link) asks the
+  // name first, in place.
+  const atYear = location.pathname === "/start/birth-year";
   const busy =
     create.isPending ||
     claim.isPending ||
     giftClaim.isPending ||
     correct.isPending;
   const practice = (learnerId: string) => {
-    useLearnerStore.getState().select(learnerId);
+    selectLearner(learnerId);
     draft.clear();
-    void navigate(
-      isFundedReturn(search.return)
-        ? { to: fundedPrograms[search.return].path, search, replace: true }
-        : { to: "/$", params: { _splat: "practice" }, replace: true },
-    );
+    if (fundedProgram) {
+      // The learner is set up: paying through the program continues, on
+      // its tab of their pay overlay, and the pending setup is done.
+      forgetFundedPurchase(session.accountId);
+      void payHref(session, learnerId, {
+        method: "esa",
+        program: fundedPrograms[fundedProgram].id,
+      })
+        .then((href) => navigate({ href, replace: true }))
+        .catch((error: unknown) =>
+          console.error("The program's purchase didn’t open", error),
+        );
+    } else
+      void navigate({
+        to: "/$",
+        params: practiceParams(learnerId),
+        replace: true,
+      });
   };
   const assign = (learnerId: string) =>
     gift
@@ -81,7 +97,7 @@ export function LearnerSteps({
           { id: gift.id, learnerId },
           { onSuccess: () => practice(learnerId) },
         )
-      : purchase && !isFundedReturn(search.return)
+      : purchase && !funded
         ? claim.mutate(
             { purchaseId: purchase.id, learnerId },
             { onSuccess: () => practice(learnerId) },
@@ -104,7 +120,7 @@ export function LearnerSteps({
       }}
     />
   );
-  if (location.pathname === "/start/birth-year" && name.trim())
+  if (atYear && name.trim())
     return (
       <>
         {toast}
@@ -128,7 +144,7 @@ export function LearnerSteps({
           name={name.trim()}
           birthYear={mine ? draft.year : null}
           busy={busy}
-          cancel={() => void navigate({ to: "/start/name", search })}
+          cancel={() => void navigate({ to: "/start/name" })}
           saveBirthYear={(year) => {
             claim.reset();
             giftClaim.reset();
@@ -219,7 +235,7 @@ export function LearnerSteps({
         onSubmit={(event) => {
           event.preventDefault();
           if (!name.trim()) return;
-          void navigate({ to: "/start/birth-year", search });
+          void navigate({ to: "/start/birth-year", replace: atYear });
         }}
       >
         {funded && <p>{PARENT_ENTRY_LINE}</p>}

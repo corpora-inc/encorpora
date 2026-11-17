@@ -1,9 +1,12 @@
+import { setFinishingSignIn } from "./finishing";
 import { familyPracticeState } from "../../../lib/family-practice-history";
 import type { PracticeFilter } from "../../practice/curriculum-filter";
 import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
+import { createStore } from "zustand/vanilla";
+import type { AuthSession } from "../../../auth";
 import type { z } from "zod";
 import {
   joinRosterResource,
@@ -13,8 +16,10 @@ import {
 } from "../../../../schools/contracts";
 import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
+import { qk } from "../../../lib/keys";
 import { meOptions, queryClient } from "../../../lib/query";
 import { rememberStudentSession } from "../../../lib/student-device";
+import { practiceParams } from "../../spaces/identity";
 
 /** In a child's words: what happened, and what to do. */
 const messages: Record<string, string> = {
@@ -85,7 +90,11 @@ async function post<T>(
     failure.log();
     throw failure;
   }
-  const data = (await response.json().catch(() => null)) as {
+  const data = (await response.json().catch((error) => {
+    // In the entry bundle: logs itself (no lib/report-error chunk).
+    console.warn("A join answer wasn’t JSON", error);
+    return null;
+  })) as {
     error?: unknown;
     retryAfter?: unknown;
   } | null;
@@ -112,7 +121,8 @@ async function post<T>(
 
 export const joinRosterOptions = (code: string) =>
   queryOptions({
-    queryKey: ["join", code],
+    // A class's names read the same before any sign-in: under no account.
+    queryKey: qk.account(null, "school", "join", code),
     queryFn: () => post("lookup", { code }, joinRosterResource),
     staleTime: 30_000,
     retry: false,
@@ -132,8 +142,7 @@ export const signInWithCard = (token: string) =>
 /** The app remounts for a new identity, including whichever sign-in screen is
  * up. A remounted screen checks this and keeps the wave going until practice
  * replaces it, rather than starting over. */
-let finishing = false;
-export const finishingSignIn = () => finishing;
+export { finishingSignIn } from "./finishing";
 
 /** Straight to the first problem. A class sign-in replaces the pictures.
  * A parent handoff preserves the curriculum entry for browser Back; the
@@ -147,23 +156,42 @@ export function useFinishSignIn() {
       returnTo?: string,
       filter?: PracticeFilter,
       learnerId?: string,
+      /** The place's name, for its way back ("Back to Grade 5 Math"). */
+      returnName?: string,
     ) => {
       const session = { accountId: grant.accountId, token: grant.token };
-      finishing = true;
-      rememberStudentSession(session, grant.mode, handed, returnTo);
-      notifyDeviceSessionChanged(session);
+      setFinishingSignIn(true);
+      rememberStudentSession(session, grant.mode, handed, returnTo, returnName);
+      // A parent's device handed to their child from a screen of theirs
+      // (Practice on a skill): the screen holds, its button busy, until
+      // practice replaces it. The child's identity arrives in the same
+      // render as practice (app/router.tsx, `onBeforeRouteMount`), never on
+      // the parent's screen first, which would redraw it for the child and
+      // jerk it around. The route guards read the child's sign-in from this
+      // device's storage, so practice loads for them.
+      const deferred = handed && !!learnerId && !!returnTo;
+      if (deferred) deferIdentity(session);
+      else notifyDeviceSessionChanged(session, { handoff: handed });
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
-      await queryClient
+      const me = await queryClient
         .fetchQuery(meOptions(session))
-        .catch((error) =>
-          console.warn("Practice will load `/me` itself", error),
-        );
+        .catch((error) => {
+          console.warn("Practice will load `/me` itself", error);
+          return null;
+        });
+      // Straight to the student's practice, at its own address: one entry.
+      const learner =
+        learnerId ?? (me?.signedIn ? me.learners[0]?.id : undefined);
       try {
         await navigate({
           to: "/$",
-          params: { _splat: "practice" },
-          search: filter ?? {},
+          // Its filter is the practice address's own focus.
+          params: learner
+            ? practiceParams(learner, filter)
+            : { _splat: "practice" },
+          // Only a hand-over (which always names its learner) has a filter.
+          search: {},
           replace: !handed,
           state:
             learnerId && returnTo
@@ -171,9 +199,32 @@ export function useFinishSignIn() {
               : undefined,
         });
       } finally {
-        finishing = false;
+        // A navigation that never mounted practice still switches: the
+        // device is the child's now.
+        if (deferred) applyDeferredIdentity();
+        setFinishingSignIn(false);
       }
     },
     [navigate],
   );
+}
+
+/** The identity a hand-over is waiting to show with practice. */
+const handOver = createStore<{ session: AuthSession | null }>(() => ({
+  session: null,
+}));
+function deferIdentity(session: AuthSession) {
+  handOver.setState({ session });
+}
+/** Shows the handed child's identity, if one waits: called as the router
+ * mounts the next screen, so the switch renders with practice. Keeps the
+ * child's `/me`, fetched before the move, across the switch. */
+export function applyDeferredIdentity() {
+  const session = handOver.getState().session;
+  if (!session) return;
+  handOver.setState({ session: null });
+  const me = queryClient.getQueryData(meOptions(session).queryKey);
+  // A family hand-over: Providers keeps the tree and the parent's cache.
+  notifyDeviceSessionChanged(session, { handoff: true });
+  if (me) queryClient.setQueryData(meOptions(session).queryKey, me);
 }

@@ -58,7 +58,7 @@ const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const auth = `const listeners=new Set();
 export async function accessSession(){const r=await fetch('/api/__pitch/session');return (await r.json()).session;}
 export function onSessionChanged(update){listeners.add(update);return()=>listeners.delete(update);}
-export function notifyAccountSessionChanged(s){if(s!==undefined)for(const l of listeners)l(s);}
+export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(s){if(s!==undefined)for(const l of listeners)l(s);}
 export async function signIn(){}export async function signOut(){}
 export async function authConfig(){return {mode:'accounts',passwords:true,parentFollowup:true,providers:[]};}`;
 const vite = await createServer({
@@ -194,6 +194,26 @@ async function serve(page: Page, api: Api) {
             ? { token: "synthetic", accountId: "amp|pitch-parent" }
             : null,
         },
+      });
+    // The two answers the light home entry decides `/` with
+    // (src/web/home-entry.tsx), matching the session above.
+    if (path === "/api/v1/auth-config")
+      return route.fulfill({
+        json: {
+          mode: "accounts",
+          passwords: true,
+          parentFollowup: true,
+          providers: [],
+        },
+      });
+    if (path === "/api/auth/get-session")
+      return route.fulfill({
+        json: api.signedIn
+          ? {
+              session: { token: "synthetic" },
+              user: { id: "pitch-parent" },
+            }
+          : null,
       });
     if (path === "/api/v1/billing/prices")
       return api.pricesFail
@@ -691,7 +711,7 @@ async function journeys(browser: Browser, engine: string) {
           .getByRole("button", { name: "Birth year, Child 1", exact: true })
           .click();
         const years = page.getByRole("dialog", { name: "Birth year, Child 1" });
-        await years.getByRole("radio", { name: "2016", exact: true }).click();
+        await years.getByRole("option", { name: "2016", exact: true }).click();
         await years.waitFor({ state: "hidden" });
         await page
           .getByRole("button", {

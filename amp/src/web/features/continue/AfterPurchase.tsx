@@ -3,7 +3,8 @@ import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { request } from "../../lib/api";
-import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+import { invalidateAccount, meOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
@@ -18,14 +19,11 @@ import styles from "./Continue.module.css";
  * "Not now" keeps the number, and Family can name them any time.
  */
 export function AfterPurchase() {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const location = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
+  const me = useQuery(forSession(session, meOptions)).data;
   const [dismissed, setDismissed] = useState(false);
   const continuation = session ? readContinuation(session.accountId) : null;
   const account = me?.signedIn ? me : null;
@@ -43,7 +41,7 @@ export function AfterPurchase() {
       learner.hasAccess &&
       (!learner.defaultName || learner.adult)
     )
-      forgetContinuation();
+      forgetContinuation(session!.accountId);
   }, [naming, learner?.id, learner?.defaultName]);
   const shown =
     !dismissed &&
@@ -59,7 +57,7 @@ export function AfterPurchase() {
       accountId={session.accountId}
       learner={learner}
       onDone={() => {
-        forgetContinuation();
+        forgetContinuation(session!.accountId);
         setDismissed(true);
       }}
     />
@@ -86,7 +84,9 @@ function NameSheet({
         z.object({ renamed: z.literal(true) }),
         { token, body: { name: value } },
       );
-      await refreshMe({ accountId, token });
+      // Everything that shows the name (the child's page, Today, the
+      // switcher) reads under the account's key, as a rename in Family does.
+      await invalidateAccount(accountId);
     },
     onSuccess: onDone,
     onError: (failure) => {
@@ -114,8 +114,8 @@ function NameSheet({
         }}
       >
         <p className={styles.sheetText}>
-          {learner.name} is ready to practice. Add their first name or
-          nickname, or keep {learner.name} for now.
+          {learner.name} is ready to practice. Add their first name or nickname,
+          or keep {learner.name} for now.
         </p>
         <TextField
           label="Name"

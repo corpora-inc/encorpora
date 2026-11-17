@@ -69,8 +69,24 @@ export function parsePurchaseReturn(
 export function clearPurchaseReturn() {
   try {
     sessionStorage.removeItem(purchaseReturnSlot);
-  } catch {
-    /* Storage may be disabled. */
+  } catch (error) {
+    console.warn("AMP: the purchase return couldn’t be cleared", error);
+  }
+}
+/** At boot: a stored return that is expired or malformed is no handoff, and
+ * leaves storage whichever screen opens (not only practice's, which captures
+ * a live one). */
+export function discardStalePurchaseReturn(now = Date.now()) {
+  try {
+    const raw = sessionStorage.getItem(purchaseReturnSlot);
+    if (
+      raw !== null &&
+      !(raw.length <= 256 && parsePurchaseReturn(JSON.parse(raw), now))
+    )
+      clearPurchaseReturn();
+  } catch (error) {
+    console.warn("AMP: dropped an unreadable purchase return", error);
+    clearPurchaseReturn();
   }
 }
 /** Check a handoff before choosing an ordinary home destination. No URL/storage writes. */
@@ -94,50 +110,8 @@ export function hasPurchaseReturn(search: string, now = Date.now()): boolean {
       raw.length <= 256 &&
       parsePurchaseReturn(JSON.parse(raw), now)
     );
-  } catch {
+  } catch (error) {
+    console.warn("AMP: the purchase return couldn’t be read", error);
     return false;
-  }
-}
-export function capturePurchaseReturn(now = Date.now()): PurchaseReturn | null {
-  const url = new URL(location.href);
-  if (url.searchParams.has("billing")) {
-    const state = url.searchParams.get("billing");
-    const entry = parsePurchaseReturn(
-      {
-        state,
-        ...(state === "account"
-          ? {}
-          : { purchaseId: url.searchParams.get("purchase") }),
-        expiresAt: now + lifetime,
-      },
-      now,
-    );
-    url.searchParams.delete("billing");
-    url.searchParams.delete("purchase");
-    history.replaceState(
-      history.state,
-      "",
-      `${url.pathname}${url.search}${url.hash}`,
-    );
-    clearPurchaseReturn();
-    if (entry)
-      try {
-        sessionStorage.setItem(purchaseReturnSlot, JSON.stringify(entry));
-      } catch {
-        /* In-memory navigation remains available. */
-      }
-    return entry;
-  }
-  try {
-    const raw = sessionStorage.getItem(purchaseReturnSlot);
-    const entry =
-      raw && raw.length <= 256
-        ? parsePurchaseReturn(JSON.parse(raw), now)
-        : null;
-    if (!entry) clearPurchaseReturn();
-    return entry;
-  } catch {
-    clearPurchaseReturn();
-    return null;
   }
 }

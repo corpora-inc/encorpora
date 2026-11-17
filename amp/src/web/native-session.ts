@@ -27,7 +27,8 @@ export function nativeSessionEvents(
       if (alive) unlisten = stop;
       else stop();
     })
-    .catch(() => {
+    .catch((failure: unknown) => {
+      console.error("AMP: native sign-in events aren’t available", failure);
       if (alive)
         error?.("Native sign-in is unavailable. Please reopen the app.");
     });

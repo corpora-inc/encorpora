@@ -1,6 +1,7 @@
 import { forgetEveryLink } from "../features/links/forget";
 import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
+import { noteSignedIn } from "../lib/session-hint";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
 import { Toast } from "../ui/Toast";
@@ -22,6 +23,8 @@ import {
   retireSession,
   sessionOptions,
 } from "../lib/query";
+import { setHomeAccount } from "../lib/home-place";
+import { qk } from "../lib/keys";
 export function Providers({
   children,
   onAccountExit,
@@ -65,7 +68,7 @@ function SessionProviders({
         await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
         if (current !== generation) return;
         await queryClient.invalidateQueries({
-          queryKey: ["account", session.accountId],
+          queryKey: qk.account(session.accountId),
           predicate: (query) => query.queryKey[2] !== "me",
         });
       } catch {
@@ -80,9 +83,11 @@ function SessionProviders({
       }
     }
     const unsubscribe = onSessionChanged(
-      (session) => {
+      (session, change) => {
         const current = ++generation;
         setAnalyticsSession(session);
+        noteSignedIn(!!session);
+        setHomeAccount(session?.accountId ?? null);
         setError("");
         const previous = queryClient.getQueryData(sessionOptions.queryKey);
         if (
@@ -100,9 +105,17 @@ function SessionProviders({
           // switch started from a link is an ordinary carry once it arrives.
           if (previous?.accountId) forgetEveryLink();
           else if (session) settleSwitches();
-          setIdentityVersion((version) => version + 1);
-          void queryClient.cancelQueries({ queryKey: ["account"] });
-          queryClient.removeQueries({ queryKey: ["account"] });
+          // Sign-out and another person's account start the tree and the
+          // account data again. A family handoff (a parent handing this
+          // device to their child and taking it back) keeps both: every
+          // account's data is under its own key (lib/keys.ts) and every
+          // screen's learner comes from its address (learner-store.ts), so
+          // Back to the parent's screen paints at once from what it had.
+          if (!(change?.handoff && previous?.accountId && session)) {
+            setIdentityVersion((version) => version + 1);
+            void queryClient.cancelQueries({ queryKey: qk.accounts() });
+            queryClient.removeQueries({ queryKey: qk.accounts() });
+          }
         }
         // A new session: nothing asked with the old one is sent, handled or
         // cached again. The same account's renewal keeps what is on screen,
@@ -112,12 +125,21 @@ function SessionProviders({
         retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
-        if (previous?.accountId && previous.accountId !== session?.accountId)
+        // Leaving an account re-guards the screen on view (boot.tsx). A
+        // family handoff isn't leaving: it carries its own navigation (into
+        // the child's practice, or Back out of it), whose guards already run
+        // with the new session; re-guarding the screen it leaves would
+        // reload it under a wait.
+        if (
+          previous?.accountId &&
+          previous.accountId !== session?.accountId &&
+          !(change?.handoff && session)
+        )
           onAccountExit?.(previous);
         if (session) {
           if (nativeRuntime)
             void queryClient.invalidateQueries({
-              queryKey: ["account", session.accountId],
+              queryKey: qk.account(session.accountId),
             });
           else void refreshAccount(session, current);
         }

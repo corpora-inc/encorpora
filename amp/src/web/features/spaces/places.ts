@@ -7,7 +7,7 @@ import {
 } from "../../../schools/contracts";
 import type { AuthSession } from "../../auth";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
-import { call, keyFor } from "../school/api";
+import { call, keyFor } from "../school/core-api";
 import { spaceWords } from "./words";
 import { parentHome } from "../family/parent-home";
 
@@ -92,7 +92,9 @@ function ownFamily(me: SignedInMe): PlaceEntry | null {
         : children.length > 1
           ? count(children.length, words.learner, words.learners)
           : "Getting started",
-    path: "family",
+    // Its own address once it has one (a family's id is its class's org);
+    // `/family` finds it otherwise.
+    path: me.familyClass ? `family/${me.familyClass.orgId}` : "family",
   };
 }
 

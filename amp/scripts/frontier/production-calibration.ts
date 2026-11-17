@@ -83,6 +83,9 @@ export type CalibrationPoint = {
   mean: number;
   /** Posterior sd from the estimator, before reported-sd calibration. */
   sd: number;
+  /** The likely range (`Estimate.low`/`high`). */
+  low: number;
+  high: number;
   truth: number;
 };
 
@@ -90,6 +93,8 @@ export type CoverageMetrics = {
   n: number;
   coverage1: number;
   coverage2: number;
+  /** Share inside the likely range (nominal `LIKELY_MASS`). */
+  range: number;
   mae: number;
   rmse: number;
 };
@@ -301,6 +306,8 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
       scope: "overall",
       mean: after.overall.level,
       sd: after.overall.sd,
+      low: after.overall.low!,
+      high: after.overall.high!,
       truth: overallTruth,
     });
     for (const [name, estimate] of Object.entries(after.strands))
@@ -309,6 +316,8 @@ export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
         scope: name,
         mean: estimate.level,
         sd: estimate.sd,
+        low: estimate.low!,
+        high: estimate.high!,
         truth: overallTruth + (strandOffset.get(name) ?? 0),
       });
   }
@@ -362,6 +371,7 @@ function metrics(
 ): CoverageMetrics {
   let within1 = 0;
   let within2 = 0;
+  let inRange = 0;
   let absolute = 0;
   let squared = 0;
   for (const point of points) {
@@ -369,6 +379,7 @@ function metrics(
     const sd = sdOf(point);
     if (error <= sd) within1 += 1;
     if (error <= 2 * sd) within2 += 1;
+    if (point.truth >= point.low && point.truth <= point.high) inRange += 1;
     absolute += error;
     squared += error * error;
   }
@@ -377,6 +388,7 @@ function metrics(
     n,
     coverage1: n ? within1 / n : 0,
     coverage2: n ? within2 / n : 0,
+    range: n ? inRange / n : 0,
     mae: n ? absolute / n : 0,
     rmse: n ? Math.sqrt(squared / n) : 0,
   };
@@ -487,8 +499,7 @@ export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
     rng() * (MISSPECIFIED_RESPONSE.guessMax - MISSPECIFIED_RESPONSE.guessMin);
   const growth =
     MISSPECIFIED_RESPONSE.growthMin +
-    rng() *
-      (MISSPECIFIED_RESPONSE.growthMax - MISSPECIFIED_RESPONSE.growthMin);
+    rng() * (MISSPECIFIED_RESPONSE.growthMax - MISSPECIFIED_RESPONSE.growthMin);
   const strandOffset = new Map<string, number>();
   for (const strand of strandNames)
     strandOffset.set(strand, (rng() - 0.5) * 1.2);
@@ -702,7 +713,13 @@ export async function runGrowthRecovery(
     process.stderr.write(
       `growth ${quick ? "quick" : "full"} seed ${seed}: ${jobs.length} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,
     );
-  return { seed, quick, termDays: MISSPECIFIED_RESPONSE.termDays, summary, series };
+  return {
+    seed,
+    quick,
+    termDays: MISSPECIFIED_RESPONSE.termDays,
+    summary,
+    series,
+  };
 }
 
 function writeGrowth(report: Awaited<ReturnType<typeof runGrowthRecovery>>) {
@@ -839,7 +856,7 @@ function percent(value: number) {
 }
 
 function metricRow(band: ScopeBand, metrics: CoverageMetrics) {
-  return `| ${band.answers} | ${band.scope} | ${metrics.n} | ${percent(metrics.coverage1)} | ${percent(metrics.coverage2)} | ${metrics.mae.toFixed(3)} | ${metrics.rmse.toFixed(3)} |`;
+  return `| ${band.answers} | ${band.scope} | ${metrics.n} | ${percent(metrics.coverage1)} | ${percent(metrics.coverage2)} | ${percent(metrics.range)} | ${metrics.mae.toFixed(3)} | ${metrics.rmse.toFixed(3)} |`;
 }
 
 function formatModel(name: string, model: ModelReport) {
@@ -851,14 +868,14 @@ function formatModel(name: string, model: ModelReport) {
     "",
     "### Posterior sd",
     "",
-    "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
-    "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
+    "| answers | scope | n | ±1σ % | ±2σ % | likely range % | MAE | RMSE |",
+    "| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ...summary.map((band) => metricRow(band, band.posterior)),
     "",
     "### Reported sd",
     "",
-    "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
-    "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
+    "| answers | scope | n | ±1σ % | ±2σ % | likely range % | MAE | RMSE |",
+    "| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ...summary.map((band) => metricRow(band, band.reported)),
     "",
     `Growth (estimate at ${ANSWERS} minus estimate at ${CHECKPOINTS[0]}, against true Δθ): n=${model.growth.n}, MAE ${model.growth.mae.toFixed(3)}, RMSE ${model.growth.rmse.toFixed(3)}, bias ${model.growth.bias.toFixed(3)}.`,
@@ -914,7 +931,10 @@ export function writeCalibration(report: CalibrationReport) {
 if (!isMainThread) {
   parentPort!.on(
     "message",
-    (message: { kind: "run"; job: LearnerJob } | { kind: "growth"; job: GrowthJob }) => {
+    (
+      message:
+        { kind: "run"; job: LearnerJob } | { kind: "growth"; job: GrowthJob },
+    ) => {
       try {
         const started = Date.now();
         if (message.kind === "growth") {

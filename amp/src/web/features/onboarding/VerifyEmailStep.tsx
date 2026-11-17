@@ -7,8 +7,8 @@ import type { SignedInMe } from "../../../account/contracts";
 import { continuationUrl } from "../../lib/funded-entry";
 import { accountClient } from "../../account-client";
 import { AppError } from "../../lib/AppError";
-import type { AuthSession } from "../../auth";
 import { refreshMe } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import styles from "./Start.module.css";
@@ -29,14 +29,13 @@ const messages = {
  * first problem (docs/parent-consent.md). One primary action, nothing
  * shifts. */
 export function VerifyEmailStep({
-  session,
   me,
   invitation = false,
   embedded = false,
   headingLevel,
   continueTo,
+  onConfirmed,
 }: {
-  session: AuthSession;
   me: SignedInMe;
   invitation?: boolean;
   /** Inside another screen ("Continue with AMP"), which has the title, the
@@ -48,7 +47,10 @@ export function VerifyEmailStep({
    * from (class setup, with its own way back), when it isn't the address's
    * own continuation. An app path. */
   continueTo?: string;
+  /** The address is confirmed: where the host goes next, if anywhere. */
+  onConfirmed?: () => Promise<void>;
 }) {
+  const session = useSession();
   const email = me.account.email ?? "";
   const location = useLocation();
   useEffect(() => setupStep("verify-email", "view"), []);
@@ -58,7 +60,12 @@ export function VerifyEmailStep({
         email,
         callbackURL: invitation
           ? "/access"
-          : (continueTo ?? continuationUrl(location.search, "/")),
+          : (continueTo ??
+            // A new account's link opens its first question, never `/`.
+            continuationUrl(
+              location.search,
+              me.next === "start" ? "/start" : "/",
+            )),
       });
       if (result.error) {
         const error = new AppError("unavailable", messages.sendFailed, true);
@@ -74,6 +81,7 @@ export function VerifyEmailStep({
       if (fresh.signedIn && fresh.account.confirmationRequired)
         return "unconfirmed" as const;
       setupStep("verify-email", "complete");
+      await onConfirmed?.();
       return undefined;
     },
     onError: (error) => console.error("Email confirmation check failed", error),

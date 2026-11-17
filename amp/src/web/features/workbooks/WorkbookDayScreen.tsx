@@ -3,19 +3,18 @@ import {
   keepPreviousData,
   useQuery,
   useQueryClient,
-  useSuspenseQuery,
 } from "@tanstack/react-query";
 import {
   Link,
-  Navigate,
+  notFound,
   useNavigate,
   useParams,
   useRouter,
-  useSearch,
 } from "@tanstack/react-router";
-import { Fragment, useEffect, useState, type ReactNode } from "react";
-import type { AuthSession } from "../../auth";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { Fragment, useState, type ReactNode } from "react";
+import { qk } from "../../lib/keys";
+import { meOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Chips } from "../../ui/Chips";
 import { Segmented } from "../../ui/Segmented";
@@ -33,23 +32,26 @@ import {
   workbookAreasOptions,
   workbookHistoryOptions,
   workbookPreviewOptions,
-  workbooksKey,
   type WorkbookMinutes,
 } from "./api";
 import {
   canMakeWorkbook,
   choicesLabel,
-  choicesSearch,
   dateLabel,
   defaultPaper,
+  defaultWorkbookChoices,
   isDate,
   localDate,
-  sameChoices,
-  searchChoices,
   sectionNames,
   workbookMessage,
-  type WorkbookSearch,
 } from "./model";
+import {
+  changeWorkbookDay,
+  useWorkbookDay,
+  workbookDayKey,
+  type WorkbookDayDraft,
+} from "./draft-store";
+import { useWorkbookPaths } from "./paths";
 import { AllowancePause } from "../continue/AllowancePause";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookHistory } from "./WorkbookHistoryScreen";
@@ -57,25 +59,15 @@ import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
 
 export function WorkbookDayScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const { learnerId, date } = useParams({ strict: false }) as {
     learnerId: string;
     date: string;
   };
-  if (!session) return <Navigate to="/sign-in" replace />;
-  if (!isDate(date))
-    return (
-      <Navigate
-        to="/learners/$learnerId/workbooks"
-        params={{ learnerId }}
-        replace
-      />
-    );
+  // An address that names no day is no screen.
+  if (!isDate(date)) throw notFound();
   return (
-    <WorkbookFrame session={session} learnerId={learnerId}>
-      {(learner) => (
-        <DaySheet session={session} learner={learner} date={date} />
-      )}
+    <WorkbookFrame learnerId={learnerId} withHistory>
+      {(learner) => <DaySheet learner={learner} date={date} />}
     </WorkbookFrame>
   );
 }
@@ -84,49 +76,56 @@ export function WorkbookDayScreen() {
  * screen it belongs to (docs/design/ia.md): the sheet has its own URL, and
  * Back, Escape and the close button all return to the list. */
 function DaySheet({
-  session,
   learner,
   date,
 }: {
-  session: AuthSession;
   learner: WorkbookLearner;
   date: string;
 }) {
-  const router = useRouter();
-  const who = whose(learner);
   return (
     <>
-      <WorkbookHistory session={session} learner={learner} />
-      <Sheet
-        open
-        tall
-        title={dateLabel(date)}
-        description={who.label ?? undefined}
-        onOpenChange={(open) => {
-          // Back to where the day was opened, else its workbooks.
-          if (!open) closeTo(router, `/learners/${learner.id}/workbooks`);
-        }}
-        returnFocus={() =>
-          document.querySelector<HTMLElement>("main h1") ?? null
-        }
-      >
-        {date === localDate() ? (
-          <TodayOrUsed
-            key={learner.id}
-            session={session}
-            learner={learner}
-            date={date}
-          />
-        ) : (
-          <PastDay session={session} learner={learner} date={date} />
-        )}
-      </Sheet>
+      {/* The list behind holds still while the day is open over it. */}
+      <WorkbookHistory learner={learner} still />
+      <WorkbookDaySheet learner={learner} date={date} />
     </>
   );
 }
 
+/** A day's workbook, as a sheet over the screen that lists the learner's
+ * workbooks (useWorkbookPaths): its own address; ✕, Escape and the
+ * browser's Back close it to that screen. */
+export function WorkbookDaySheet({
+  learner,
+  date,
+}: {
+  learner: WorkbookLearner;
+  date: string;
+}) {
+  const router = useRouter();
+  const paths = useWorkbookPaths();
+  const who = whose(learner);
+  return (
+    <Sheet
+      open
+      tall
+      title={dateLabel(date)}
+      description={who.label ?? undefined}
+      onOpenChange={(open) => {
+        // Back to where the day was opened, else its workbooks.
+        if (!open) closeTo(router, `/${paths.list(learner.id)}`);
+      }}
+      returnFocus={() => document.querySelector<HTMLElement>("main h1") ?? null}
+    >
+      {date === localDate() ? (
+        <TodayOrUsed key={learner.id} learner={learner} date={date} />
+      ) : (
+        <PastDay learner={learner} date={date} />
+      )}
+    </Sheet>
+  );
+}
+
 type DayProps = {
-  session: AuthSession;
   learner: WorkbookLearner;
   date: string;
 };
@@ -139,20 +138,17 @@ function TodayOrUsed(props: DayProps) {
   return used ? <PastDay {...props} used /> : <Today {...props} />;
 }
 
-function Today({
-  session,
-  learner,
-  date,
-}: {
-  session: AuthSession;
-  learner: WorkbookLearner;
-  date: string;
-}) {
-  const search = useSearch({ strict: false }) as WorkbookSearch;
+function Today({ learner, date }: DayProps) {
+  const session = useSession();
+  // The day's workbook and the next one's choices (draft-store.ts): the
+  // address names the day; which workbook and how it is made are the day's
+  // draft, kept for the tab.
+  const day = workbookDayKey(session.accountId, learner.id, date);
+  const draft = useWorkbookDay(day);
   const navigate = useNavigate();
+  const paths = useWorkbookPaths();
   const client = useQueryClient();
-  const paper = search.paper ?? defaultPaper();
-  const choices = searchChoices(search);
+  const paper = draft.paper ?? defaultPaper();
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
   const areas = useQuery(workbookAreasOptions(session, learner.id));
   const [draftId] = useState(() => crypto.randomUUID());
@@ -162,14 +158,16 @@ function Today({
   const latest = books.length
     ? Math.max(...books.map((w) => w.number))
     : undefined;
-  const issued = !search.draft
+  const issued = !draft.draft
     ? books.find(
         (book) =>
-          book.number === (search.number ?? latest) &&
-          (search.minutes === undefined || book.minutes === search.minutes),
+          book.number === (draft.number ?? latest) &&
+          (draft.minutes === undefined || book.minutes === draft.minutes),
       )
     : undefined;
-  const minutes = search.minutes ?? issued?.minutes ?? 45;
+  // A stored workbook keeps its own choices; editing starts another draft.
+  const choices = issued?.choices ?? draft.choices ?? defaultWorkbookChoices;
+  const minutes = draft.minutes ?? issued?.minutes ?? 45;
   const canMake = canMakeWorkbook(learner);
   const unavailable = history.isSuccess && !issued && !canMake;
   const input = {
@@ -177,7 +175,7 @@ function Today({
     minutes,
     paper,
     choices,
-    requestId: search.draft ?? draftId,
+    requestId: draft.draft ?? draftId,
   };
   const workbook = useQuery({
     ...workbookPreviewOptions(session, learner.id, input),
@@ -188,55 +186,33 @@ function Today({
   });
   const current =
     issued ?? (workbook.isPlaceholderData ? undefined : workbook.data);
-  // Remember an unissued draft in the URL, including refresh and retries.
-  // Stored books keep their original choices; editing starts another draft.
-  useEffect(() => {
-    if (!history.isSuccess) return;
-    if (issued && !sameChoices(issued.choices, choices)) {
-      void navigate({
-        to: ".",
-        search: (prev) => ({ ...prev, ...choicesSearch(issued.choices) }),
-        replace: true,
-      });
-    } else if (!issued && !search.draft) {
-      void navigate({
-        to: ".",
-        search: (prev) => ({ ...prev, number: undefined, draft: draftId }),
-        replace: true,
-      });
-    }
-  }, [history.isSuccess, issued?.id, search.draft]);
   const ready = !!current && history.isSuccess;
   const areaName = (id: string) => workbookAreaNames[id] ?? id;
   const choosing = !current || saving || !canMake;
-  const changeDraft = (change: Partial<WorkbookSearch>) => {
+  // Every change of choices is a new draft, kept for the tab: the same
+  // preview across a refresh and every retry.
+  const changeDraft = (change: WorkbookDayDraft) => {
     setMessage("");
-    void navigate({
-      to: ".",
-      search: (prev) => ({
-        ...prev,
-        minutes,
-        paper,
-        ...choicesSearch(choices),
-        ...change,
-        number: undefined,
-        draft: crypto.randomUUID(),
-      }),
-      replace: true,
+    changeWorkbookDay(day, {
+      minutes,
+      paper,
+      choices,
+      ...change,
+      number: undefined,
+      draft: crypto.randomUUID(),
     });
   };
-  const roll = (next: WorkbookChoicesInput) => changeDraft(choicesSearch(next));
+  const roll = (next: WorkbookChoicesInput) =>
+    changeDraft({
+      choices: { ...next, areas: [...new Set(next.areas)].sort() },
+    });
   const set = (change: {
     minutes?: WorkbookMinutes;
     paper?: WorkbookPaper;
   }) => {
     if (change.paper && change.minutes === undefined) {
       // Paper changes the print layout, never the questions or history.
-      void navigate({
-        to: ".",
-        search: (prev) => ({ ...prev, ...change }),
-        replace: true,
-      });
+      changeWorkbookDay(day, change);
     } else changeDraft(change);
   };
   async function issue() {
@@ -253,20 +229,20 @@ function Today({
         ],
       }),
     );
-    await navigate({
-      to: ".",
-      search: (prev) => ({
-        ...prev,
-        draft: undefined,
-        number: made.number,
-        minutes: made.minutes,
-        ...choicesSearch(made.choices),
-      }),
-      replace: true,
+    changeWorkbookDay(day, {
+      draft: undefined,
+      number: made.number,
+      minutes: made.minutes,
+      choices: made.choices,
     });
     void client.invalidateQueries({ queryKey: meOptions(session).queryKey });
     void client.invalidateQueries({
-      queryKey: [...workbooksKey(session, learner.id), "history"],
+      queryKey: qk.account(
+        session.accountId,
+        "workbooks",
+        learner.id,
+        "history",
+      ),
     });
     return made;
   }
@@ -286,11 +262,15 @@ function Today({
         );
       } else {
         await navigate({
-          to: "/learners/$learnerId/workbooks/$workbookId/results",
-          params: { learnerId: learner.id, workbookId: made.id },
+          to: "/$",
+          params: { _splat: paths.results(learner.id, made.id) },
         });
       }
     } catch (error) {
+      console.error(
+        `AMP couldn’t ${action === "download" ? "download" : "save"} a workbook`,
+        error,
+      );
       setMessage(
         workbookMessage(error, "The workbook couldn't be saved. Try again."),
       );
@@ -350,6 +330,12 @@ function Today({
         </Button>
       </div>
       <div className={styles.builder}>
+        {/* The options first, then the workbook they make: a new preview
+            never moves a control. */}
+        <section className={styles.optionsPanel} aria-label="Workbook options">
+          <h3 className={styles.optionsTitle}>Options</h3>
+          {options}
+        </section>
         <Contents
           workbook={issued ?? workbook.data}
           draft={!issued}
@@ -388,10 +374,6 @@ function Today({
               : undefined
           }
         />
-        <section className={styles.optionsPanel} aria-label="Workbook options">
-          <h3 className={styles.optionsTitle}>Options</h3>
-          {options}
-        </section>
       </div>
       {/* An action that fails says so in the shared toast, over the page. */}
       <Toast message={message} onDismiss={() => setMessage("")} />
@@ -549,6 +531,7 @@ function Contents({
   /** A load that failed: said in the card's reserved space, with a retry. */
   failure?: { text: string; retry: () => void };
 }) {
+  const paths = useWorkbookPaths();
   return (
     <article
       className={`${styles.contents} ${stale && !failure && !used ? styles.stale : ""}`}
@@ -613,8 +596,8 @@ function Contents({
               </Button>
             ) : (
               <Link
-                to="/learners/$learnerId/workbooks/$workbookId/results"
-                params={{ learnerId, workbookId: workbook.id }}
+                to="/$"
+                params={{ _splat: paths.results(learnerId, workbook.id) }}
                 className={buttonClass("quiet", styles.resultsButton, "start")}
               >
                 Enter results
@@ -647,11 +630,11 @@ function Contents({
 }
 
 function PastDay({
-  session,
   learner,
   date,
   used = false,
 }: DayProps & { used?: boolean }) {
+  const session = useSession();
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
   return (
     <>
@@ -677,11 +660,7 @@ function PastDay({
           </div>
         )
       ) : (
-        <WorkbookList
-          session={session}
-          learnerId={learner.id}
-          query={history}
-        />
+        <WorkbookList learnerId={learner.id} query={history} />
       )}
     </>
   );

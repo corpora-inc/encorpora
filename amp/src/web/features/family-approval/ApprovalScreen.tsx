@@ -3,14 +3,10 @@ import { CHILD_NAME_MAX, childNameProblem } from "../../../learning/nickname";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useLoggedError } from "../../feedback";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
-import {
-  invalidateAccount,
-  meOptions,
-  refreshMe,
-  sessionOptions,
-} from "../../lib/query";
+import { invalidateAccount, meOptions, refreshMe } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import controls from "../../ui/Controls.module.css";
@@ -43,7 +39,7 @@ const failures: Record<string, string> = {
 export function ApprovalScreen() {
   const { approvalId } = useParams({ from: "/family/approvals/$approvalId" });
   const navigate = useNavigate();
-  const session = useQuery(sessionOptions).data!;
+  const session = useSession();
   const me = useQuery(meOptions(session)).data;
   const page = useQuery({ ...approvalOptions(session, approvalId), retry: 1 });
   const claim = useClaimEnrollment(session);
@@ -109,7 +105,7 @@ export function ApprovalScreen() {
   };
   const progress = () => {
     if (!view?.learnerId) return;
-    useLearnerStore.getState().select(view.learnerId);
+    selectLearner(view.learnerId);
     void navigate({ to: "/$", params: { _splat: "progress" } });
   };
   const teachers = view ? teacherLine(view.teachers) : "";

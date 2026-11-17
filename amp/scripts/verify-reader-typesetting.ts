@@ -13,6 +13,7 @@ import {
 } from "../src/content/RightTriangleIllustration";
 import { printMathCss } from "../src/content/print-fonts";
 import { segmentPrintText } from "../src/content/math-typesetting";
+import { trailingDisplayMath } from "../src/content/prompt-structure";
 
 const out =
   process.env.READER_REVIEW_OUT ?? "/tmp/amp-reader-typesetting-review";
@@ -251,12 +252,20 @@ try {
       layoutFailures.push({ width, errors: result.errors });
     assert.equal(result.labels.length, 22);
     for (const example of result.examples) {
+      const inline = (text: string) =>
+        segmentPrintText(text)
+          .filter((segment) => segment.kind === "math")
+          .map((segment) => `\\displaystyle ${segment.tex}`);
+      // A closing formula after a colon or command is its own display
+      // (content/prompt-structure.ts trailingDisplayMath): its lead stays
+      // inline, and the display keeps the formula's own TeX.
+      const display = trailingDisplayMath(fixtures[example.index]!);
       const expected =
         example.index === 8
           ? []
-          : segmentPrintText(fixtures[example.index])
-              .filter((segment) => segment.kind === "math")
-              .map((segment) => `\\displaystyle ${segment.tex}`);
+          : display
+            ? [...(display.lead ? inline(display.lead) : []), display.tex]
+            : inline(fixtures[example.index]!);
       assert.deepEqual(
         example.annotations,
         expected,

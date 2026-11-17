@@ -1,0 +1,8 @@
+/* Off screen and out of the tab order: no person sees or reaches it. */
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}

@@ -1,12 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
+import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
+import { jsonOrNull, reportError } from "../../lib/report-error";
+import { useSession } from "../../lib/session";
 import { requestFetch } from "../../lib/request-transport";
 import { ReceiptDetails } from "../../ReceiptDetails";
+import { receiptRequestSchema } from "../../../billing/evidence/reimbursement.js";
 import { Button } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
+import { PageSection } from "../../ui/PageSection";
 import styles from "./BillingPage.module.css";
 
 const payment = z.object({
@@ -24,19 +30,10 @@ const schema = z.object({
   records: z.array(payment),
   nextCursor: z.string().nullable(),
 });
-export function Receipts({
-  session,
-  selected,
-  onSelect,
-}: {
-  session: AuthSession;
-  selected?: string;
-  onSelect: (id?: string) => void;
-}) {
-  const [cursor, setCursor] = useState<string | null>(null);
-  const [previous, setPrevious] = useState<z.infer<typeof payment>[]>([]);
-  const records = useQuery({
-    queryKey: ["account", session.accountId, "receipts", cursor],
+/** A page of payment receipts: Billing's route loads the first ahead. */
+export const receiptsOptions = (session: AuthSession, cursor: string | null) =>
+  queryOptions({
+    queryKey: qk.account(session.accountId, "receipts", cursor),
     queryFn: ({ signal }) =>
       request(
         `/payments${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,
@@ -44,6 +41,26 @@ export function Receipts({
         { token: session.token, signal },
       ),
   });
+/** A receipt download the server refuses for a reason the parent can fix. */
+const RECEIPT_REFUSALS: Record<string, string> = {
+  receipt_learner_name_required:
+    "Enter the learner name required by your program.",
+  reimbursement_program_unavailable:
+    "This reimbursement program is unavailable. Select another program or Personal records.",
+  receipt_payment_method_unavailable:
+    "This payment has no recorded payment method. Contact purchase support for that evidence.",
+};
+export function Receipts({
+  selected,
+  onSelect,
+}: {
+  selected?: string;
+  onSelect: (id?: string) => void;
+}) {
+  const session = useSession();
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [previous, setPrevious] = useState<z.infer<typeof payment>[]>([]);
+  const records = useQuery(receiptsOptions(session, cursor));
   const all = [...previous, ...(records.data?.records ?? [])];
   const record = all.find((p) => p.id === selected);
   const [name, setName] = useState("");
@@ -74,6 +91,18 @@ export function Receipts({
   }, [selected, record, records.data, records.isFetching]);
   async function download(adjustment?: string) {
     if (!record || busy) return;
+    // The PDF's font prints basic Latin letters and some accents: a name it
+    // can't print is said before anything is sent.
+    if (
+      !adjustment &&
+      !receiptRequestSchema.safeParse({ learnerName: name.trim() }).success
+    ) {
+      setError(
+        "This PDF supports basic Latin letters and some accents. Contact purchase support if the font cannot print your name.",
+      );
+      setDownloaded(false);
+      return;
+    }
     const controller = new AbortController();
     pending.current = controller;
     setBusy(true);
@@ -97,12 +126,36 @@ export function Receipts({
           signal: controller.signal,
         },
       );
+      // What the server refuses, said as what to do next.
+      if (!response.ok) {
+        const refused = ((await jsonOrNull(response)) ?? {}) as {
+          error?: string;
+        };
+        const said = RECEIPT_REFUSALS[refused.error ?? ""];
+        if (said) {
+          if (refused.error === "reimbursement_program_unavailable")
+            setProgram("");
+          throw new AppError(
+            "validation",
+            said,
+            false,
+            response.headers.get("x-request-id"),
+            refused.error ?? null,
+            response.status,
+          );
+        }
+      }
       if (
         !response.ok ||
         !response.headers.get("content-type")?.startsWith("application/pdf")
       )
-        throw new Error(
+        throw new AppError(
+          "unavailable",
           "Your receipt couldn’t be downloaded. Try again, or email support@corpora.inc for help.",
+          true,
+          response.headers.get("x-request-id"),
+          null,
+          response.status,
         );
       const blob = await response.blob();
       if (controller.signal.aborted) return;
@@ -116,19 +169,23 @@ export function Receipts({
       setTimeout(() => URL.revokeObjectURL(url), 60_000);
       setDownloaded(true);
     } catch (cause) {
-      if (!controller.signal.aborted)
-        setError(
-          cause instanceof Error
-            ? cause.message
-            : "Download failed. Try again.",
-        );
+      const message = reportError(cause, {
+        doing: "download a receipt",
+        fallback:
+          "Your receipt didn’t download. Check your connection and try again.",
+        details: { payment: record.id, adjustment },
+      });
+      if (!controller.signal.aborted) setError(message);
     } finally {
       if (!controller.signal.aborted) setBusy(false);
     }
   }
   return (
-    <section className={styles.section} aria-labelledby="receipts-title">
-      {!selected && <h2 id="receipts-title">Receipts</h2>}
+    <PageSection
+      title={selected ? undefined : "Receipts"}
+      titleId="receipts-title"
+      aria-labelledby="receipts-title"
+    >
       {records.isPending && <Loading>Loading receipts…</Loading>}
       {records.error && (
         <div role="alert">
@@ -172,12 +229,18 @@ export function Receipts({
                   token={session.token}
                   learnerName={name}
                   programId={program}
-                  onName={setName}
-                  onProgram={setProgram}
+                  onName={(value) => {
+                    setName(value);
+                    setError("");
+                  }}
+                  onProgram={(value) => {
+                    setProgram(value);
+                    setError("");
+                  }}
                 />
               </details>
               {!!record.adjustments.length && (
-                <div className={styles.section}>
+                <div className={styles.refunds}>
                   <h3>Refunds</h3>
                   {record.adjustments.map((a) => (
                     <Button
@@ -211,7 +274,7 @@ export function Receipts({
         <>
           <p>This receipt isn’t available in this account.</p>
           <Button variant="secondary" onClick={() => onSelect()}>
-            Back to billing
+            All receipts
           </Button>
         </>
       ) : !selected && records.data ? (
@@ -254,7 +317,7 @@ export function Receipts({
           )}
         </>
       ) : null}
-    </section>
+    </PageSection>
   );
 }
 const money = (minor: number) =>

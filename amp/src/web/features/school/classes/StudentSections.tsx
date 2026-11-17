@@ -1,4 +1,5 @@
 import type { Entity } from "../../../nav/entities";
+import { sheetState } from "../../../nav/sheet";
 import { Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import { measured } from "../../../../learning/level-check";
@@ -14,6 +15,7 @@ import {
 } from "./ProgressRecord";
 import { classUrl, number } from "./teacher-shared";
 import { HelpUsed } from "./HelpUsed";
+import { useOpenView } from "../view-store";
 import styles from "./Teacher.module.css";
 
 const lastSeenWords = (iso: string) => {
@@ -46,6 +48,7 @@ export function StudentSections({
   // Opened before the first answer: the level stays held, so its bar takes
   // the first estimate in place (CP-5 r2 #2).
   const openedUnmeasured = useRef<boolean | null>(null);
+  const openView = useOpenView();
   openedUnmeasured.current ??= !(data.level && measured(data.level.overall));
   const weeks = data.weeks.filter((week) => week.minutes > 0);
   const minutes = weeks.reduce((sum, week) => sum + week.minutes, 0);
@@ -76,11 +79,13 @@ export function StudentSections({
                     params={{
                       _splat: classUrl(org, grade.classId, "gradebook"),
                     }}
-                    search={
-                      {
+                    // The term chosen there, and this student's evidence
+                    // open over it.
+                    state={sheetState(`student:${data.student.id}`) as never}
+                    onClick={() =>
+                      openView(classUrl(org, grade.classId, "gradebook"), {
                         term: grade.termId,
-                        student: data.student.id,
-                      } as never
+                      })
                     }
                   >
                     {grade.className}, {grade.termName}

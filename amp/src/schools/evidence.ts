@@ -263,6 +263,8 @@ export type LevelEstimate = {
   sd: number;
   answered: number;
   independent: number;
+  low?: number;
+  high?: number;
 };
 export type LevelDay = {
   personId: string;

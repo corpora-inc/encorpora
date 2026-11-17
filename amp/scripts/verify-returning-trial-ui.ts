@@ -8,6 +8,7 @@ import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { startShellFixture } from "./app-shell-fixture";
 import { settle } from "./app-shell-probe";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const at = process.argv.indexOf("--port");
@@ -38,17 +39,17 @@ try {
       page.on("pageerror", (error) => errors.push(error.message));
       // Record the same account's normal home, then enter through the link
       // that previously sent it to Add a place.
-      await page.goto(`${f.origin}/`);
+      await openHome(page, f.origin);
       await page.waitForURL(/\/family\/[^/?]+$/);
       await page
-        .getByRole("button", { name: /practice here/ })
+        .getByRole("button", { name: /^Practice with / })
         .first()
         .waitFor();
       const home = new URL(page.url()).pathname;
       await page.goto(`${f.origin}${entry}`);
       await page.waitForURL((url) => url.pathname === home);
       await page
-        .getByRole("button", { name: /practice here/ })
+        .getByRole("button", { name: /^Practice with / })
         .first()
         .waitFor();
       await settle(page);
@@ -75,7 +76,7 @@ try {
         await page.goto(`${f.origin}${auth}`);
         await page.waitForURL((url) => url.pathname === home);
         await page
-          .getByRole("button", { name: /practice here/ })
+          .getByRole("button", { name: /^Practice with / })
           .first()
           .waitFor();
         assert.equal(
@@ -87,7 +88,8 @@ try {
       // Explicitly adding a place remains available to the same parent.
       await page.goto(`${f.origin}/start?from=${encodeURIComponent(home)}`);
       await page.getByRole("heading", { name: "Add a place" }).waitFor();
-      await page.getByRole("button", { name: "Cancel", exact: true }).click();
+      // No in-page Back: the browser's Back leaves it.
+      await page.goBack();
       await page.waitForURL((url) => url.pathname === home);
       assert.deepEqual(errors, []);
       await context.close();
@@ -104,7 +106,7 @@ try {
   await signIn.getByRole("button", { name: "Sign in", exact: true }).click();
   await signIn.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
   await signIn
-    .getByRole("button", { name: /practice here/ })
+    .getByRole("button", { name: /^Practice with / })
     .first()
     .waitFor();
   await returning.close();

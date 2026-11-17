@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { AppError } from "../../lib/AppError";
+import { reportError } from "../../lib/report-error";
 import { Button } from "../../ui/Button";
 import styles from "./BillingPage.module.css";
 
@@ -16,15 +18,24 @@ export async function downloadLegal(id: (typeof legalDocuments)[number]["id"]) {
     signal: AbortSignal.timeout(15000),
   });
   if (!response.ok)
-    throw new Error("The document couldn’t be downloaded. Try again.");
+    throw new AppError(
+      "unavailable",
+      "The document couldn’t be downloaded. Try again.",
+      true,
+      null,
+      null,
+      response.status,
+    );
   const doc = new DOMParser().parseFromString(
     await response.text(),
     "text/html",
   );
   const content = doc.querySelector(".legal");
   if (!content)
-    throw new Error(
+    throw new AppError(
+      "contract",
       "The document couldn’t be downloaded. Open it using the link instead.",
+      false,
     );
   // Preserve text and document structure without copying scripts or site chrome.
   const blocks = [...content.querySelectorAll("h2,h3,p,li")]
@@ -51,12 +62,20 @@ export async function downloadLegal(id: (typeof legalDocuments)[number]["id"]) {
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
+/**
+ * Policies & documents: each one to read, or to save as a readable copy.
+ *
+ * Requirement: the privacy policy is available to every user, in the app
+ * (COPPA, 16 CFR 312.4(d); Cal. Civ. Code 1798.130(a)(5); App Store Review
+ * Guideline 5.1.1(i); Google Play User Data policy), and AMP's terms and
+ * policies are readable and downloadable from Privacy (amp/AGENTS.md).
+ * The Privacy overlay's panel; its name is the panel's.
+ */
 export function LegalDocuments() {
   const [busy, setBusy] = useState<string>();
   const [error, setError] = useState("");
   return (
-    <section className={styles.section} aria-labelledby="legal-documents-title">
-      <h2 id="legal-documents-title">Policies & documents</h2>
+    <div data-legal-documents="">
       <ul className={styles.plans}>
         {legalDocuments.map((doc) => (
           <li key={doc.id} className={styles.planRow}>
@@ -79,7 +98,12 @@ export function LegalDocuments() {
                   await downloadLegal(doc.id);
                 } catch (cause) {
                   setError(
-                    cause instanceof Error ? cause.message : "Download failed.",
+                    reportError(cause, {
+                      doing: "download a policy",
+                      fallback:
+                        "The document didn’t download. Check your connection and try again, or open it using the link.",
+                      details: { document: doc.id },
+                    }),
                   );
                 } finally {
                   setBusy(undefined);
@@ -93,6 +117,6 @@ export function LegalDocuments() {
       </ul>
       <p className={styles.muted}>Save a readable copy, or print it to PDF.</p>
       {error && <p role="alert">{error}</p>}
-    </section>
+    </div>
   );
 }

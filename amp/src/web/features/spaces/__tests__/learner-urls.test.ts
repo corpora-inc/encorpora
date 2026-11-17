@@ -6,6 +6,7 @@ import {
   childAddress,
   childPath,
   learningIdentity,
+  selfOf,
 } from "../identity";
 import { canonicalLearning, childFamily } from "../learner-urls";
 import { childTabs, meTabs } from "../tabs";
@@ -13,7 +14,8 @@ import { childTabs, meTabs } from "../tabs";
 /*
  * Q-209: one canonical address per learner's screen
  * (docs/architecture/spaces.md, "Learning screens"). Yourself is unnamed,
- * a family's child is in the path, a practice profile keeps `?profile=`,
+ * a family's child is in the path, a practice profile is practiced at its
+ * own (`/practice/<profile>`) and is self while it is the current learner,
  * and `?learner=` is only an older link that is sent to its canonical
  * address.
  */
@@ -100,9 +102,14 @@ test("a child's address names them; yourself is unnamed", () => {
       kind: "learner",
       id: "jonah",
     });
-  // A profile is still a profile; a family's screens are never "self".
+  // A profile by its practice's address; a family's screens are never
+  // "self".
   expect(
-    learningIdentity("/practice", { profile: "grade-4" }, "jonah"),
+    learningIdentity("/practice/grade-4", {}, "jonah", me("jonah")),
+  ).toEqual({ kind: "profile", id: "grade-4" });
+  // Practicing as it, self is the profile.
+  expect(
+    learningIdentity("/pathways", {}, selfOf(me("jonah"), "grade-4")),
   ).toEqual({ kind: "profile", id: "grade-4" });
   expect(learningIdentity(`/family/${FAMILY}`, {}, "jonah")).toBeNull();
   expect(learningIdentity("/me/profiles", {}, "jonah")).toBeNull();
@@ -112,18 +119,24 @@ test("a child's address names them; yourself is unnamed", () => {
 
 test("the app's own tabs never carry ?learner=", () => {
   for (const tab of [...meTabs("jonah"), ...meTabs(null)])
-    expect(tab.search).toBeUndefined();
+    expect("search" in tab).toBe(false);
   expect(meTabs("jonah").map((tab) => tab.path)).toEqual([
-    "practice",
+    // Practice names its learner in its path (identity.ts practicePath).
+    "practice/jonah",
     "me",
     "learners/jonah/workbooks",
     "pathways",
     "inventory",
   ]);
-  // A profile's tabs keep the profile: it is the adult's own mode.
-  expect(meTabs("jonah", "grade-4")[0]?.search).toEqual({
-    profile: "grade-4",
-  });
+  // A profile's: its practice names it; its map and inventory are self's.
+  expect(meTabs("jonah", "grade-4").map((tab) => tab.path)).toEqual([
+    "practice/grade-4",
+    "me/profiles/grade-4",
+    "pathways",
+    "inventory",
+  ]);
+  for (const tab of meTabs("jonah", "grade-4"))
+    expect("search" in tab).toBe(false);
   expect(childTabs(FAMILY, "pip").map((tab) => tab.path)).toEqual([
     `family/${FAMILY}/kids/pip`,
     `family/${FAMILY}/kids/pip/pathways`,
@@ -163,9 +176,9 @@ test("an older ?learner= link goes to its canonical address", () => {
   expect(canonical("/inventory?learner=kai", adult)).toBe(
     `/family/${SHARED_ID}/kids/kai/inventory`,
   );
-  // A profile outranks ?learner=: the key is dropped.
-  expect(canonical("/practice?profile=grade-4&learner=pip", adult)).toBe(
-    "/practice?profile=grade-4",
+  // Practicing as a profile (the device's choice), ?learner= is dropped.
+  expect(canonical("/pathways?learner=pip", adult, "grade-4")).toBe(
+    "/pathways",
   );
   // Someone this account doesn't read: it stays, and the screen says it
   // isn't available (never another learner).
@@ -174,7 +187,6 @@ test("an older ?learner= link goes to its canonical address", () => {
   expect(canonical("/lessons/x?learner=pip", adult)).toBeNull();
   // Canonical already.
   expect(canonical("/pathways", adult)).toBeNull();
-  expect(canonical("/practice?profile=grade-4", adult)).toBeNull();
 });
 
 test("a parent with no practice of their own: an unnamed map names the child it shows", () => {

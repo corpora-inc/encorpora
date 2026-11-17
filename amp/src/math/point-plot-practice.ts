@@ -95,7 +95,9 @@ function problemOf(
   return {
     public: {
       id: createHash("sha256")
-        .update(JSON.stringify([meta.id, meta.reprintsFrom ?? meta.version, seed]))
+        .update(
+          JSON.stringify([meta.id, meta.reprintsFrom ?? meta.version, seed]),
+        )
         .digest("hex"),
       templateId: meta.id,
       templateVersion: 1,
@@ -365,7 +367,8 @@ function modelGraph(meta: TemplateMetadata, seed: string): GeneratedProblem {
       yUnit: "centimeter",
       letter: "w",
       out: "H",
-      story: "A plant starts 4 centimeters tall and grows 2 centimeters a week.",
+      story:
+        "A plant starts 4 centimeters tall and grows 2 centimeters a week.",
     },
     {
       step: 2,
@@ -404,19 +407,16 @@ function modelGraph(meta: TemplateMetadata, seed: string): GeneratedProblem {
     xLabel: s.xLabel,
     yLabel: s.yLabel,
   };
-  const line = lineThrough(
-    [0, s.b],
-    [s.step, s.b + s.slope * s.step],
-  );
+  const line = lineThrough([0, s.b], [s.step, s.b + s.slope * s.step]);
   const onLine = latticeOnLine(grid, line);
-  if (onLine.length < 4) throw new Error("Model line needs four lattice points");
+  if (onLine.length < 4)
+    throw new Error("Model line needs four lattice points");
   const equation =
     s.slope < 0
       ? `${s.out} = ${s.b} - ${-s.slope}${s.letter}`
       : `${s.out} = ${s.b} + ${s.slope}${s.letter}`;
   const [first, second] = [onLine[0]!, onLine[1]!];
-  const unit = (n: number, word: string) =>
-    `${n} ${word}${n === 1 ? "" : "s"}`;
+  const unit = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
   return problemOf(meta, seed, {
     prompt: `${s.story} The relationship is $${equation}$. Graph it by placing 2 points on its line. Each horizontal gridline is ${unit(s.step, s.xUnit)}. Each vertical gridline is ${unit(s.step, s.yUnit)}.`,
     response: {
@@ -809,6 +809,8 @@ function placeTransformedImage(seed: string): GeneratedProblem {
       given: {
         vertices: vertices.map(([x, y], i) => ({ x, y, label: names[i]! })),
         closed: count === 3,
+        // A segment's image is asked for: the given segment is drawn.
+        edges: true,
       },
     };
     const given = vertices.map((p, i) => pointTex(p, names[i]));

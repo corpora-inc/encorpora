@@ -36,7 +36,9 @@
 }
 /* Chosen: the accent's edge over a faint accent tint (no white, no fill). */
 .tile[aria-checked="true"],
-.tile[aria-checked="true"]:hover:not(:disabled) {
+.tile[aria-checked="true"]:hover:not(:disabled),
+.tile[aria-selected="true"],
+.tile[aria-selected="true"]:hover:not(:disabled) {
   border-color: var(--color-primary);
   box-shadow: inset 0 0 0 1px var(--color-primary);
   background: var(--color-selected-tint);
@@ -55,4 +57,13 @@
 }
 .tile[data-span="2"] {
   grid-column: span 2;
+}
+/* A picker (TilePicker): the grid keeps focus and the active tile wears
+   the focus ring, for a keyboard only. */
+.picker:focus {
+  outline: none;
+}
+.picker:focus-visible .tile[data-active] {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }

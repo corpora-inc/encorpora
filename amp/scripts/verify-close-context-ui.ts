@@ -4,11 +4,13 @@
  *
  *   class map → a student → their missed answer → its lesson → the film
  *
- * then X on each, back out to the map. X puts the stack of sheets away, back
- * to the context it was opened from: the film to its lesson, the lesson to
- * the answer replay under it (a replay is a base of its own), the replay to
- * the map. Back steps one layer at a time; after X, Back brings back what
- * that X put away. The same closes hold after a
+ * then X on each, back out to the map. X puts the overlay away, back to
+ * the context it was opened from: the film to its lesson, the lesson to the
+ * answer replay under it (a replay is a base of its own), the replay to the
+ * map, its student's sheet with it, in one step of the layer store
+ * (src/web/nav/layer-store.ts). The sheets are the map's layers, never steps
+ * in history: the address stays the map's, and Back from the film returns to
+ * the lesson over its answer, as X does. The same closes hold after a
  * refresh at every step and from a shared link with no history (never
  * Pathways or the learner's home). An answer opened from Today closes back
  * to Today.
@@ -37,6 +39,8 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
+import { openHome } from "./launcher";
+import { storedLayers } from "./layer-probe";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -55,14 +59,15 @@ const stack = argument("origin")
 const origin = argument("origin") ?? stack!.origin;
 
 type Chain = {
-  /** The class map, a student's sheet over it, their answer, its lesson,
-   * the lesson's film. */
+  /** The class map, and the lesson's film (a screen of its own). */
   map: string;
-  sheet: string;
-  answer: string;
-  lesson: string;
   film: string;
+  /** The map's layers at each step (`kind:id`, oldest first). */
+  sheet: string[];
+  answer: string[];
+  lesson: string[];
 };
+type Step = "map" | "sheet" | "answer" | "lesson" | "film";
 
 /** A teacher's missed answer whose lesson has a film, from the real API. */
 async function findMiss(context: BrowserContext) {
@@ -79,7 +84,7 @@ async function findMiss(context: BrowserContext) {
   };
   // Where the teacher lands is their class's Today.
   const page = await context.newPage();
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today/);
   const [, org, classId] = new URL(page.url()).pathname.match(
     /^\/school\/([^/]+)\/classes\/([^/]+)/,
@@ -139,15 +144,57 @@ async function expectAt(page: Page, href: string, what: string) {
   assert.ok(same(here(page), href), `${what}: at ${here(page)}, not ${href}`);
   assert.doesNotMatch(here(page), /^\/(pathways|practice|me)?(\?|$)/);
 }
+/** The problem type's lesson sheet (features/pathways/LessonDialog): named
+ * by the lesson's own title, so found by the lesson it holds. */
 const lessonDialog = (page: Page) =>
-  page.getByRole("dialog", { name: "Explore a problem type" });
+  page
+    .getByRole("dialog")
+    .filter({ has: page.locator("article.problem-lesson") });
 const replayLayer = (page: Page) => page.locator("[data-replay-facts]").first();
 /** The student's sheet over the map (a layer, nav/LayerHost). */
 const studentSheet = (page: Page, student: string) =>
   page.locator(`[role="dialog"]:has([data-map-student-record="${student}"])`);
 
+/** The map's layers now, as `kind:id`. */
+const layersOn = async (page: Page) =>
+  (await storedLayers(page)).map((layer) => `${layer.kind}:${layer.id}`);
+/** At the map with exactly `layers` open (none for the map alone). */
+async function expectLayers(
+  page: Page,
+  chain: Chain,
+  layers: string[],
+  what: string,
+) {
+  await expectAt(page, chain.map, what);
+  await page
+    .waitForFunction(
+      (want) => {
+        const raw = sessionStorage.getItem("amp.layers");
+        const stacks = raw ? JSON.parse(raw).state.stacks : {};
+        const stack = stacks[location.pathname.replace(/\/+$/, "")] ?? [];
+        return (
+          stack
+            .map((l: { kind: string; id: string }) => `${l.kind}:${l.id}`)
+            .join() === want.join()
+        );
+      },
+      layers,
+      { timeout: 10_000 },
+    )
+    .catch(() => undefined);
+  assert.deepEqual(await layersOn(page), layers, `${what}: its layers`);
+}
+/** What a step's place is: the film's own address, or the map's layers. */
+const at = (page: Page, chain: Chain, step: Step, what: string) =>
+  step === "film"
+    ? expectAt(page, chain.film, what)
+    : expectLayers(page, chain, step === "map" ? [] : chain[step], what);
+/** A shared link to the map with a step's layers open. */
+const sharedLink = (chain: Chain, step: "sheet" | "answer" | "lesson") =>
+  `${chain.map}?open=${encodeURIComponent(chain[step].join(","))}`;
+
 /** What each step shows, checked whenever it is reached. */
-async function shows(page: Page, step: keyof Chain, student: string) {
+async function shows(page: Page, step: Step, student: string) {
   if (step === "film") {
     await page.locator(".live-back").waitFor();
     return;
@@ -191,14 +238,14 @@ async function open(
   if (record) await snap(page, "class-map");
   await page.locator(`[data-map-student="${miss.student}"]`).first().click();
   await shows(page, "sheet", miss.student);
-  const sheet = here(page);
+  const sheet = await layersOn(page);
   if (record) await snap(page, "student-sheet");
   await studentSheet(page, miss.student)
     .locator(`[data-work-item="${miss.work}"]`)
     .first()
     .click();
   await shows(page, "answer", miss.student);
-  const answer = here(page);
+  const answer = await layersOn(page);
   if (record) await snap(page, "missed-answer");
   // The facts' "Lesson" link.
   await page
@@ -206,7 +253,9 @@ async function open(
     .first()
     .click();
   await shows(page, "lesson", miss.student);
-  const lesson = here(page);
+  const lesson = await layersOn(page);
+  // The layers stay out of the address.
+  assert.ok(same(here(page), map), `the layers leave the map's address`);
   if (record) await snap(page, "lesson-over-answer");
   await lessonDialog(page).locator("[data-film-link]").click();
   await shows(page, "film", miss.student);
@@ -263,36 +312,34 @@ try {
     const { context, page } = await fresh(width);
     const chain = await open(page, miss, true);
     await closeFilm(page);
-    await expectAt(page, chain.lesson, "X on the film returns to its lesson");
+    await at(page, chain, "lesson", "X on the film returns to its lesson");
     await shows(page, "lesson", miss.student);
     await snap(page, "x-film-lesson");
     await closeLesson(page);
-    await expectAt(page, chain.answer, "X on the lesson returns to the answer");
+    await at(page, chain, "answer", "X on the lesson returns to the answer");
     await shows(page, "answer", miss.student);
     await snap(page, "x-lesson-answer");
+    // The answer's X closes to the map, its student's sheet with it: the
+    // address and the layers agree in one step.
     await closeAnswer(page);
-    await expectAt(page, chain.map, "X on the answer returns to the map");
+    await at(page, chain, "map", "X on the answer returns to the map");
     await shows(page, "map", miss.student);
     await snap(page, "x-answer-map");
-    // Closing the stack is one step in history (nav/links closeAll): Back
-    // brings back what X put away, the answer, never the film.
-    await page.goBack();
-    await expectAt(page, chain.answer, "Back after X brings the answer back");
     await context.close();
     console.log(`${width}: X returns to each sheet's context`);
   }
 
-  // 2. The browser's Back does what X does.
+  // 2. The browser's Back from the film does what X does: the map, its
+  //    layers as they were (the lesson over the answer). The layers were
+  //    never steps in history, so there is nothing more to walk.
   {
     const { context, page } = await fresh(1280);
     const chain = await open(page, miss);
-    for (const step of ["lesson", "answer", "sheet", "map"] as const) {
-      await page.goBack();
-      await expectAt(page, chain[step], `Back to the ${step}`);
-      await shows(page, step, miss.student);
-    }
+    await page.goBack();
+    await at(page, chain, "lesson", "Back from the film");
+    await shows(page, "lesson", miss.student);
     await context.close();
-    console.log("Back returns along the path");
+    console.log("Back from the film returns to its lesson");
   }
 
   // 3. A refresh at every step: closing still returns along the path.
@@ -304,16 +351,13 @@ try {
       ["lesson", "answer", closeLesson],
       ["answer", "map", closeAnswer],
     ] as const;
-    for (const [at, to, close] of steps) {
+    for (const [from, to, close] of steps) {
       await page.reload();
-      await shows(page, at, miss.student);
+      await shows(page, from, miss.student);
       await close(page);
-      await expectAt(page, chain[to], `After a refresh, X from the ${at}`);
+      await at(page, chain, to, `After a refresh, X from the ${from}`);
       await shows(page, to, miss.student);
     }
-    // And Back after them brings back only what the last X put away.
-    await page.goBack();
-    await expectAt(page, chain.answer, "Back after X brings the answer back");
     await context.close();
     console.log("After a refresh, X returns to each sheet's context");
   }
@@ -327,17 +371,19 @@ try {
       await context.close();
       return opened;
     })();
-    for (const [at, to, close] of [
+    for (const [from, to, close] of [
       ["film", "lesson", closeFilm],
       ["lesson", "answer", closeLesson],
       ["answer", "map", closeAnswer],
       ["sheet", "map", (p: Page) => closeSheet(p, miss.student)],
     ] as const) {
       const { context, page } = await fresh(1280);
-      await page.goto(origin + chain[at]);
-      await shows(page, at, miss.student);
+      await page.goto(
+        origin + (from === "film" ? chain.film : sharedLink(chain, from)),
+      );
+      await shows(page, from, miss.student);
       await close(page);
-      await expectAt(page, chain[to], `A shared ${at} closes to the ${to}`);
+      await at(page, chain, to, `A shared ${from} closes to the ${to}`);
       await shows(page, to, miss.student);
       await context.close();
     }

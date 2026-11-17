@@ -1,10 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { request } from "../../lib/api";
-import { queryClient, refreshMe } from "../../lib/query";
+import { invalidateAccount, refreshMe } from "../../lib/query";
+import type { Persona } from "./activation";
 import { rememberPlace } from "./place-memory";
+import { setupSavesKey } from "./setup/kids-api";
 
 /** Where their own practice starts: a school-age birth year, or, past
  * school age, the start they chose (`pastSchoolAge`). */
@@ -30,7 +32,8 @@ export function deviceTimeZone() {
     return (
       Intl.DateTimeFormat().resolvedOptions().timeZone || "America/New_York"
     );
-  } catch {
+  } catch (error) {
+    console.warn("This device's time zone is unknown; using New York", error);
     return "America/New_York";
   }
 }
@@ -45,15 +48,12 @@ export function useStartPlace(session: AuthSession) {
         token: session.token,
         body: answer,
       });
-      if (started.learnerId)
-        useLearnerStore.getState().select(started.learnerId);
+      if (started.learnerId) selectLearner(started.learnerId);
       // `/` returns to the place just made: their own practice, or the
       // family's class, which is its family side.
       rememberPlace(session.accountId, answer.as === "myself" ? "me" : "home");
       await refreshMe(session);
-      void queryClient.invalidateQueries({
-        queryKey: ["account", session.accountId],
-      });
+      void invalidateAccount(session.accountId);
       return started;
     },
   });
@@ -88,5 +88,34 @@ export function useStartDemo(session: AuthSession) {
       await refreshMe(session);
       return demoHome(result);
     },
+  });
+}
+
+/** The answer to "What brings you to AMP?", recorded when it is chosen: the
+ * first run's own state on the server (`me.setup`), changeable until that
+ * first run is done. `/me` is read again, so the starter shows it at once. */
+export function useChooseSetup(session: AuthSession) {
+  return useMutation({
+    mutationKey: setupSavesKey(session),
+    mutationFn: (answer: Persona) =>
+      request("/start/choice", z.unknown(), {
+        token: session.token,
+        body: { answer },
+      }),
+    onSuccess: () => invalidateAccount(session.accountId),
+    onError: (error) => console.error("The starter answer wasn’t saved", error),
+  });
+}
+
+/** The first run is done (a parent went from setup to Today): from now on the
+ * starter adds a place. */
+export function useFinishSetup(session: AuthSession) {
+  return useMutation({
+    mutationFn: (answer: Persona) =>
+      request("/start/done", z.unknown(), {
+        token: session.token,
+        body: { answer },
+      }),
+    onSuccess: () => invalidateAccount(session.accountId),
   });
 }

@@ -1,0 +1,156 @@
+/* The one overlay of a layer host (LayerFrame.tsx), on ui/Sheet's look. */
+.frame {
+  overflow: hidden;
+}
+/* Restored, not opened: drawn in its place at once. */
+.still {
+  animation: none !important;
+}
+/* Over a full-screen layer (an answer's replay, z-index 1100). */
+.above:not(.frame) {
+  z-index: 1200;
+}
+.frame.above {
+  z-index: 1201;
+}
+@media (min-width: 641px) {
+  /* A lesson: its reading column with room for figures. */
+  .wide {
+    width: min(
+      calc(var(--measure-reading) + 4 * var(--space-5)),
+      calc(100vw - var(--space-7))
+    );
+  }
+}
+
+/* The heading holds still over the body: opaque, with a hairline that
+   shows once the body scrolls beneath (the border is always there, so
+   nothing moves when it appears). */
+.frame :global([data-layer-header]) {
+  position: relative;
+  z-index: 1;
+  background: var(--color-surface-raised);
+  border-bottom: 1px solid transparent;
+}
+.frame :global([data-layer-header][data-scrolled]) {
+  border-bottom-color: var(--color-border);
+}
+
+/* The way back up, the heading's first line: the layers under the one
+   shown, small and muted, full titles, flowing into the title. */
+.trail {
+  position: relative;
+  margin: 0 0 var(--space-1);
+}
+/* Inline, so a long title wraps between its words like the line it is. */
+.trail ol {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-table);
+  line-height: 1.4;
+}
+.trail li {
+  display: inline;
+}
+/* The mark stays with the title before it (a no-break space); a line may
+   break after it. */
+.trail li::after {
+  content: "\00a0› ";
+  color: var(--color-muted-text);
+}
+.trail button {
+  position: relative;
+  display: inline;
+  min-height: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 400;
+  line-height: inherit;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted-text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+/* A 44 px target around a small word, without making the line taller. */
+.trail button::before {
+  content: "";
+  position: absolute;
+  inset: -12px -4px;
+}
+.trail button:hover {
+  color: var(--color-on-surface-raised, var(--color-on-surface));
+  text-decoration: underline;
+}
+.trail button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
+}
+/* A phone: one line that scrolls, its end (the nearest layer) in view, its
+   clipped start fading into the sheet. */
+@media (max-width: 559px) {
+  .trail ol {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding-block: 12px;
+    margin-block: -12px;
+  }
+  .trail ol::-webkit-scrollbar {
+    display: none;
+  }
+  .trail li {
+    white-space: nowrap;
+  }
+  .trail[data-clipped]::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0 auto 0 0;
+    width: var(--space-6);
+    background: linear-gradient(
+      to right,
+      var(--color-surface-raised),
+      transparent
+    );
+    pointer-events: none;
+  }
+}
+
+/* The top layer: its header and body, as a sheet's own. */
+.panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+.panel[data-motion="in"] {
+  animation: deeper 200ms var(--ease-standard);
+}
+.panel[data-motion="out"] {
+  animation: up 200ms var(--ease-standard);
+}
+@keyframes deeper {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+@keyframes up {
+  from {
+    transform: translateX(-32px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel[data-motion] {
+    animation: none;
+  }
+}

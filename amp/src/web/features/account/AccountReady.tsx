@@ -1,32 +1,28 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, Navigate, useSearch } from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
-import { continuationSearch } from "../../lib/funded-entry";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useLocation } from "@tanstack/react-router";
+import { signInTarget } from "../../app/sign-in-gate";
+import { meOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import styles from "./Account.module.css";
 
-/** A successful account creation has an explicit, useful landing screen. */
+/** A successful account creation has an explicit, useful landing screen.
+ * Its route signs in first and sends a waiting gift to /access in its one
+ * hop (app/router.tsx, `accountReady`), so here there is always a session. */
 export function AccountReady() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
-  const rawSearch = useSearch({ strict: false });
-  const carry = continuationSearch(rawSearch);
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  });
-  if (!session) return <Navigate to="/sign-in" search={carry} replace />;
+  const session = useSession();
+  const location = useLocation();
+  const me = useQuery(meOptions(session));
   const account =
     me.data?.signedIn && me.data.account.id === session.accountId
       ? me.data
       : null;
-  if (account?.availableAccessGrant || carry.return === "access")
-    return <Navigate to="/access" replace />;
   const active = account?.learners.some(
     (learner) => learner.entitlement.active,
   );
   return (
-    <PageFrame centered>
+    <PageFrame>
       <section
         data-account-ready
         className={`${frameCard} ${styles.ready}`}
@@ -50,8 +46,9 @@ export function AccountReady() {
             {me.data?.signedIn === false ? (
               <Link
                 className={buttonClass("primary")}
-                to="/sign-in"
-                search={carry}
+                // The sign-in gate's address: back here, with what this
+                // sign-up carried.
+                {...signInTarget(location)}
               >
                 Sign in again
               </Link>
@@ -79,9 +76,10 @@ export function AccountReady() {
                 </Link>
               ) : (
                 <Link
+                  // The arrival's program and campaign are the tab's
+                  // (lib/program-choice.ts); the first run reads them.
                   className={buttonClass("primary")}
                   to="/start"
-                  search={carry}
                 >
                   Continue →
                 </Link>

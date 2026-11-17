@@ -2,13 +2,12 @@
  * Adult practice in real browsers, on the real API in accounts mode and a real
  * database (docs/families.md, step 2). Everyone here is synthetic.
  *
- *   1. A teacher at a licensed school opens the place switcher from their
- *      school, starts their own practice where they choose to begin, and goes
- *      straight into practice. `/` then returns to their own record, which is
+ *   1. A teacher at a licensed school starts their own practice in place on
+ *      their account page (IA v2), and goes straight into practice. `/` then returns to their own record, which is
  *      the record a teacher reads, pointed at themselves. Back, Forward and
  *      reload keep each screen, and the switcher goes both ways.
- *   2. A parent whose child has access starts their own practice from their
- *      family's class and switches back to the class, where the child is.
+ *   2. A parent whose child has access starts their own practice in their
+ *      family's Settings and switches back to the family, where the child is.
  *   3. An adult with neither has no such place, and `/me/start` goes home.
  *
  * Chromium at 1280 and 390 in light and dark, WebKit at 390. Screenshots of the
@@ -46,6 +45,7 @@ import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -177,7 +177,26 @@ async function shot(
 async function measured(page: Page, label: string) {
   await settle(page, 300);
   const geometry = await probe(page);
-  check(`${label} overflow`, geometry.overflow === 0, geometry.overflow);
+  check(
+    `${label} overflow`,
+    geometry.overflow === 0,
+    geometry.overflow === 0
+      ? 0
+      : {
+          by: geometry.overflow,
+          // What sticks out past the viewport, innermost first.
+          wide: await page.evaluate(() =>
+            [...document.querySelectorAll("body *")]
+              .filter((el) => el.getBoundingClientRect().right > innerWidth + 1)
+              .reverse()
+              .slice(0, 4)
+              .map(
+                (el) =>
+                  `${el.tagName.toLowerCase()}.${(el.className || "").toString().slice(0, 40)} ${Math.round(el.getBoundingClientRect().right)} "${(el.textContent ?? "").trim().slice(0, 30)}"`,
+              ),
+          ),
+        },
+  );
   check(
     `${label} targets`,
     geometry.smallTargets.length === 0,
@@ -402,45 +421,26 @@ async function teacherStarts(
     await todayTitle(page);
   }
 
-  // `/` opens their school; its switcher offers their own practice.
-  await page.goto(`${origin}/`);
+  // `/` opens their school.
+  await openHome(page, origin);
   await schoolReady();
-  // Inside a class, the switcher is named for the class it is in.
-  const fromSchool = await openSwitcher(page, "Grade 8 Math", true);
-  const items = await fromSchool.getByRole("menuitem").allInnerTexts();
-  check(
-    `${label} the switcher offers their own practice`,
-    items.some((item) => /Practice yourself/.test(item)) &&
-      items.some((item) => item.includes(school)),
-    items,
-  );
-  await measured(page, `${label} school switcher`);
+  // Their own practice is on their account page (IA v2 §4): started in
+  // place, then Practice. No place switcher entry, no page of its own.
+  await page.goto(`${origin}/account`);
+  const startOwn = page.locator("[data-start-own-practice]");
+  await startOwn.waitFor();
+  check(`${label} the account offers their own practice`, true);
+  await measured(page, `${label} account`);
   await shot(page, "switcher-start", width, theme, engine);
-  await choose(page, fromSchool, /Practice yourself/);
-  // The year is all it asks (founder: birth year is always enough).
-  await heading(page, "What year were you born?");
-  check(`${label} start has a URL`, path(page) === "/me/start", path(page));
-  const start = page.getByRole("button", { name: "Start practicing" });
-  check(`${label} start waits for a year`, await start.isDisabled());
-  await measured(page, `${label} start`);
-  await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  await shot(page, "start", width, theme, engine);
-  // Reload keeps the screen; Back returns to the school.
-  await page.reload();
-  await heading(page, "What year were you born?");
-  await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  const box = await start.boundingBox();
-  await start.click();
-  const after = await start.boundingBox().catch(() => null);
-  check(
-    `${label} the button holds still while starting`,
-    !after || (after.x === box!.x && after.y === box!.y),
-    { box, after },
-  );
+  await startOwn.click();
+  await page
+    .locator("[data-own-practice]")
+    .getByRole("button", { name: "Practice", exact: true })
+    .click();
   await practicing(page);
   check(
     `${label} straight into practice`,
-    path(page) === "/practice",
+    /^\/practice\/[^/]+$/.test(path(page)),
     path(page),
   );
   await settle(page, 600);
@@ -477,7 +477,7 @@ async function teacherStarts(
     )
   ).rows[0].id as string;
   await history(context, learnerId);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(`${origin}/me`);
   // Their record is titled by what it shows; the place is named for them
   // in the app bar and the switcher.
@@ -492,6 +492,31 @@ async function teacherStarts(
       /Skills shown on their own/.test(record) &&
       /Recent work/.test(record),
     record.slice(0, 600),
+  );
+  // Beside the title, Practice at a level and the progress report are one
+  // control pair: the same quiet action, size and weight.
+  const pair = await page.evaluate(() => {
+    const level = document.querySelector<HTMLElement>("[data-at-a-level]");
+    const report = [
+      ...document.querySelectorAll<HTMLElement>("main button"),
+    ].find((button) => /Progress report/.test(button.textContent ?? ""));
+    const look = (el: HTMLElement) => {
+      const style = getComputedStyle(el);
+      return {
+        size: style.fontSize,
+        weight: style.fontWeight,
+        color: style.color,
+        background: style.backgroundColor,
+        radius: style.borderRadius,
+        height: Math.round(el.getBoundingClientRect().height),
+      };
+    };
+    return level && report ? [look(level), look(report)] : null;
+  });
+  check(
+    `${label} Practice at a level and Progress report are one control pair`,
+    !!pair && JSON.stringify(pair[0]) === JSON.stringify(pair[1]),
+    pair,
   );
   await measured(page, `${label} record`);
   await shot(page, "record", width, theme, engine);
@@ -510,7 +535,10 @@ async function teacherStarts(
   await practicing(page);
   await page.reload();
   await practicing(page);
-  check(`${label} reload keeps practice`, path(page) === "/practice");
+  check(
+    `${label} reload keeps practice`,
+    /^\/practice\/[^/]+$/.test(path(page)),
+  );
   await page.goto(`${origin}/me`);
   await heading(page, "Where you are");
   await page.reload();
@@ -534,12 +562,12 @@ async function teacherStarts(
   await shot(page, "switcher", width, theme, engine);
   await choose(page, fromOwn, new RegExp(school));
   await schoolReady();
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await schoolReady();
   const back = await openSwitcher(page, "Grade 8 Math", true);
   await choose(page, back, /Dana Okafor/);
   await heading(page, "Where you are");
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(`${origin}/me`);
   check(`${label} no uncaught errors`, errors.length === 0, errors);
   await context.close();
@@ -576,23 +604,21 @@ async function parentStarts(
   // is the reader's own: "Your family" (features/spaces/places.ts).
   const family = "Your family";
   const inClass = /\/family\/[0-9a-f-]{36}$/;
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(inClass);
   await todayTitle(page);
-  const fromHome = await openSwitcher(page, family, true);
-  const items = await fromHome.getByRole("menuitem").allInnerTexts();
-  check(
-    `${label} the family switcher offers their own practice`,
-    /Rowan/.test(items[0] ?? "") &&
-      items.some((item) => /Practice yourself/.test(item)),
-    items,
-  );
-  await measured(page, `${label} family switcher`);
+  // A parent's own practice is in their family's Settings › People
+  // (IA v2 §3.3): started in place, then Practice.
+  await page.goto(`${origin}${path(page)}/settings`);
+  const startOwn = page.locator("[data-start-own-practice]");
+  await startOwn.waitFor();
+  await measured(page, `${label} family settings`);
   await shot(page, "family-switcher", width, theme);
-  await choose(page, fromHome, /Practice yourself/);
-  await heading(page, "What year were you born?");
-  await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  await page.getByRole("button", { name: "Start practicing" }).click();
+  await startOwn.click();
+  await page
+    .locator("[data-own-practice]")
+    .getByRole("button", { name: "Practice", exact: true })
+    .click();
   await practicing(page);
   // Back to the family: its class, with the child in it.
   const fromOwn = await openSwitcher(page, "Avery Lind", true);
@@ -602,7 +628,7 @@ async function parentStarts(
   check(
     `${label} the family side has the child`,
     (await page
-      .getByRole("button", { name: "Let Rowan practice here" })
+      .getByRole("button", { name: "Practice with Rowan" })
       .count()) === 1,
   );
   // A device with nothing remembered opens the family's class, even when the
@@ -612,7 +638,7 @@ async function parentStarts(
     [account],
   );
   await page.evaluate(() => localStorage.clear());
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(inClass);
   await todayTitle(page);
   check(
@@ -649,7 +675,7 @@ async function nobody(browser: Browser) {
 try {
   const browser = await chromium.launch();
   await nobody(browser);
-  for (const width of [1280, 390])
+  for (const width of [1280, 390, 320])
     for (const theme of ["light", "dark"] as const)
       await teacherStarts(browser, "chromium", width, theme);
   await parentStarts(browser, 1280, "light");

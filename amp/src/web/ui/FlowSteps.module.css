@@ -1,0 +1,98 @@
+/* A step flow's place (FlowSteps.tsx): a bar per step, filled up to here.
+   Every rule sets its element fully: legacy rules style bare `nav`, `p`,
+   `ol` and `a`. */
+.steps {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.count {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+}
+.steps ol {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.steps li {
+  margin: 0;
+  min-width: 0;
+}
+/* Each step is a 44 px target: a done one is a link back to it. */
+.step {
+  display: grid;
+  align-content: center;
+  gap: var(--space-2);
+  min-height: var(--target-min);
+  min-width: 0;
+  border-radius: var(--radius-small);
+  color: var(--color-muted-text);
+  text-decoration: none;
+}
+/* A done step in a flow on one address: the same, as a button. */
+button.step {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+a.step:hover .name,
+button.step:hover .name {
+  color: var(--color-on-surface);
+}
+a.step:hover .bar,
+button.step:hover .bar {
+  background: var(--color-primary-hover);
+}
+a.step:focus-visible,
+button.step:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-border);
+  transition: background-color var(--motion-fast) ease;
+}
+li[data-state="done"] .bar,
+li[data-state="now"] .bar {
+  background: var(--color-primary);
+}
+.name {
+  overflow: hidden;
+  font-size: var(--text-label);
+  line-height: 1.3;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+li[data-state="now"] .name {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+/* A phone shows the bars; each step's name stays for assistive technology. */
+@media (max-width: 559px) {
+  .name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+  }
+  .step {
+    position: relative;
+  }
+}

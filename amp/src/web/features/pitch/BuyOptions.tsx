@@ -1,14 +1,12 @@
-import { useToRoot } from "../../nav/root";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { track } from "../../lib/analytics";
-import { queryClient } from "../../lib/query";
+import { queryClient } from "../../lib/query-client";
 import type { FundedProgram } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass, type ButtonVariant } from "../../ui/Button";
-import { PlanChoice } from "../billing";
+import { PlanChoice } from "../billing/PlanChoice";
 import { formatUsd } from "../billing/payment-url";
 import {
   annualInvoiceOffer,
@@ -16,9 +14,12 @@ import {
   offerRefunds,
   type InvoiceOffer,
 } from "../funding/invoice-offers";
-import { pricesOptions } from "../billing/api";
-import { pitchProgram, pitchTarget } from "./targets";
+import { pricesOptions } from "../billing/prices";
+import { PitchLink, usePitchNav } from "./nav";
+import { pitchProgram, pitchProgramOf, pitchTarget } from "./targets";
+import { keepArrival } from "../../lib/program-choice";
 import styles from "./Pitch.module.css";
+import { storedHome } from "../../lib/home-href";
 
 export const REFUND_POLICY_URL = "https://corpora.inc/legal/refund/";
 /** The guarantee, the same on every route that carries it; the asterisk
@@ -51,13 +52,25 @@ export function underPerDay(annualMinor: number) {
 /** Loads what Buy needs before a screen paints, so Buy never appears late
  * and moves the page. A failure stays for the screen to show in place. */
 export function loadBuyData(search: Record<string, unknown>) {
-  const program = pitchProgram(search.program);
+  // An ad's `?program=` and campaign labels are read here, once, and kept
+  // for the tab.
+  const program = pitchProgram(keepArrival(search).program);
   return Promise.all([
-    queryClient.ensureQueryData(pricesOptions).catch(() => undefined),
+    queryClient
+      .ensureQueryData(pricesOptions)
+      .catch((error: unknown) =>
+        console.warn("Prices didn’t preload; Buy shows the failure", error),
+      ),
     program
       ? queryClient
           .ensureQueryData(invoiceOffersOptions(program.id))
-          .catch(() => undefined)
+          .catch((error: unknown) =>
+            console.warn(
+              "Program offers didn’t preload; Buy shows the failure",
+              { program: program.id },
+              error,
+            ),
+          )
       : undefined,
   ]);
 }
@@ -74,7 +87,7 @@ export type BuyData = {
 /** What Buy can sell here: the named funded program's live offer and the card
  * plans. Both come from the server; nothing is priced in the client. */
 export function useBuyData(search: Record<string, unknown>): BuyData {
-  const program = pitchProgram(search.program);
+  const program = pitchProgramOf(search);
   const prices = useQuery(pricesOptions);
   const funded = useQuery({
     ...invoiceOffersOptions(program?.id ?? ""),
@@ -105,7 +118,7 @@ export type BuyFrom = "pitch" | "chrome" | "invite";
  */
 export function BuyOptions({
   data,
-  search,
+  landing,
   signedIn = false,
   from,
   variant = "full",
@@ -116,7 +129,8 @@ export function BuyOptions({
   onInterval,
 }: {
   data: Pick<BuyData, "program" | "fundedOffer" | "offers" | "extraOffers">;
-  search: Record<string, unknown>;
+  /** The address the visitor landed on: an ad's campaign labels. */
+  landing: Record<string, unknown>;
   signedIn?: boolean;
   from: BuyFrom;
   variant?: "full" | "button";
@@ -129,8 +143,7 @@ export function BuyOptions({
   interval?: "year" | "month";
   onInterval?: (interval: "year" | "month") => void;
 }) {
-  const navigate = useNavigate();
-  const toRoot = useToRoot();
+  const nav = usePitchNav();
   const [own, setOwn] = useState<"year" | "month">("year");
   const interval = chosen ?? own;
   const choose = onInterval ?? setOwn;
@@ -149,23 +162,21 @@ export function BuyOptions({
     // The plan waits for the learner it is for: after sign-up and "What
     // brings you to AMP?", it opens for them with this plan chosen.
     rememberPlanChoice(next);
-    if (signedIn) {
-      // Signed in: the root opens their place, where the plan waits.
-      toRoot();
-      return;
-    }
-    void navigate(pitchTarget("card", search));
+    // Signed in: their place, where the plan waits (or `/`, which offers it).
+    nav.go(
+      signedIn ? { to: storedHome() ?? "/" } : pitchTarget("card", landing),
+    );
   }
   if (program && fundedOffer) {
     const link = (
-      <Link
+      <PitchLink
         className={buttonClass(buttonVariant, className)}
-        {...pitchTarget("funded", search)}
+        place={pitchTarget("funded", landing)}
         onClick={() => track("buy_click", { path: "funded", from })}
         aria-label={ariaLabel}
       >
         {label ?? `Buy with ${program.name} funds`}
-      </Link>
+      </PitchLink>
     );
     if (variant === "button") return link;
     return (

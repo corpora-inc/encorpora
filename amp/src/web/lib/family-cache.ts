@@ -4,8 +4,8 @@ import type { FamilySummary } from "../../family/contracts";
 import type { Me } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
 import { meKey, queryClient } from "./query";
-const nativeFamilyKey = (identity: string | null) =>
-  ["native-family", identity] as const;
+import { qk } from "./keys";
+const nativeFamilyKey = qk.nativeFamily;
 const subscribeAccountCache = (notify: () => void) =>
   queryClient.getQueryCache().subscribe(notifyManager.batchCalls(notify));
 /** Web has one canonical server resource; legacy Family screens select its projection. */
@@ -41,6 +41,18 @@ export function useAccountCache(identity: string | null) {
   );
   return me?.signedIn ? me : null;
 }
+/** The family the account holds now, outside render (`useFamilyCache`'s
+ * answer, from the same cache). */
+export function familySnapshot(identity: string | null) {
+  if (nativeRuntime)
+    return (
+      queryClient.getQueryData<FamilySummary | null>(
+        nativeFamilyKey(identity),
+      ) ?? null
+    );
+  const me = queryClient.getQueryData<Me | null>(meKey(identity));
+  return me?.signedIn ? me.family : null;
+}
 export function familyRevision(identity: string | null) {
   return (
     queryClient.getQueryState(
@@ -57,8 +69,8 @@ export function setNativeFamilySnapshot(
 }
 export function clearFamilyAccount(identity: string | null) {
   if (identity) {
-    void queryClient.cancelQueries({ queryKey: ["account", identity] });
-    queryClient.removeQueries({ queryKey: ["account", identity] });
+    void queryClient.cancelQueries({ queryKey: qk.account(identity) });
+    queryClient.removeQueries({ queryKey: qk.account(identity) });
     queryClient.removeQueries({ queryKey: nativeFamilyKey(identity) });
   }
 }

@@ -31,6 +31,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -117,7 +118,15 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 };
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
-const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
+// A family's Today is its own address (docs/architecture/spaces.md).
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
+
+/** A child's row on Today: the figure over its label ("99", "free problems
+ * left"), one fact. */
+const freeLeft = (page: Page, left: number) =>
+  page
+    .locator("[data-family-kids] span")
+    .filter({ hasText: new RegExp(`^${left}\\s*free problems left$`) });
 
 async function signUp(page: Page, email: string, name: string) {
   const fallback = page.getByRole("button", {
@@ -162,7 +171,12 @@ async function shot(page: Page, name: string, width: number, theme: string) {
 }
 /** Nothing spills, every target is big enough, nothing overlaps or breaks
  * mid-word, nothing moved. */
-async function measured(page: Page, label: string) {
+async function measured(
+  page: Page,
+  label: string,
+  /** A shift here fails the run (premium rule 1), not only the record. */
+  { stillOrFail = false } = {},
+) {
   await settle(page, 300);
   const geometry = await probe(page);
   check(`${label} overflow`, geometry.overflow === 0, geometry.overflow);
@@ -178,7 +192,20 @@ async function measured(page: Page, label: string) {
     geometry.midWordWraps,
   );
   const { cls } = await shellRecord(page);
-  check(`${label} CLS`, cls <= 0.01, cls);
+  const moved =
+    cls <= 0.01
+      ? cls
+      : {
+          cls,
+          moved: await page.evaluate(
+            () =>
+              (window as unknown as { __shiftSources?: string[] })
+                .__shiftSources ?? [],
+          ),
+        };
+  check(`${label} CLS`, cls <= 0.01, moved);
+  if (stillOrFail)
+    assert.ok(cls <= 0.01, `${label}: layout shift ${JSON.stringify(moved)}`);
 }
 async function newContext(
   browser: Browser,
@@ -191,6 +218,32 @@ async function newContext(
     timezoneId: "America/Chicago",
   });
   await context.addInitScript(shiftRecorder);
+  // What each counted layout shift moved, so a failure names it.
+  await context.addInitScript(() => {
+    const sources: string[] = [];
+    (window as unknown as { __shiftSources: string[] }).__shiftSources =
+      sources;
+    try {
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries() as unknown as {
+          value: number;
+          hadRecentInput: boolean;
+          sources?: { node?: Node | null }[];
+        }[]) {
+          if (entry.hadRecentInput || sources.length > 30) continue;
+          const nodes = (entry.sources ?? []).map(({ node }) => {
+            const el = node instanceof Element ? node : node?.parentElement;
+            return el
+              ? `${el.tagName.toLowerCase()}.${String(el.className).slice(0, 30)} "${(el.textContent ?? "").trim().slice(0, 30)}"`
+              : "?";
+          });
+          sources.push(`${entry.value.toFixed(3)} ${nodes.join(" | ")}`);
+        }
+      }).observe({ type: "layout-shift", buffered: true });
+    } catch (error) {
+      console.warn("Layout shifts aren't observed here", error);
+    }
+  });
   return context;
 }
 /** A practice problem on screen: the normal loop, unchanged. */
@@ -205,8 +258,11 @@ async function workbooksUsed(
   page: Page,
   label: string,
   action: "Continue with AMP" | "Talk to us" | null,
+  /** Where the pause is: the page, or a day's sheet over its list (whose
+   * own pause, behind the sheet, is not this one). */
+  within: Page | ReturnType<Page["locator"]> = page,
 ) {
-  const pause = page
+  const pause = within
     .locator('[data-allowance-pause="workbooks"]')
     .filter({ visible: true });
   await pause.first().waitFor();
@@ -258,17 +314,15 @@ async function journey(
   );
   const fox = await repository.create(account, undefined, 2016);
   const moon = await repository.create(account, undefined, 2018);
-  await page.goto(`${origin}/`);
-  await page.waitForURL(CLASS_TODAY);
+  await openHome(page, origin);
+  await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await page
-    .getByRole("button", { name: `Let ${fox.name} practice here` })
+    .getByRole("button", { name: `Practice with ${fox.name}` })
     .waitFor();
   check(
     `${label} free balance visible`,
-    (await page
-      .getByText("100 free problems left", { exact: true })
-      .count()) === 2,
+    (await freeLeft(page, 100).count()) === 2,
   );
   check(
     `${label} no false lack of access`,
@@ -283,9 +337,7 @@ async function journey(
       [account],
     )
   ).rows[0];
-  await page
-    .getByRole("button", { name: `Let ${fox.name} practice here` })
-    .click();
+  await page.getByRole("button", { name: `Practice with ${fox.name}` }).click();
   await practicing(page);
   await measured(page, `${label} unnamed practice`);
   await shot(page, "practice", width, theme);
@@ -309,34 +361,50 @@ async function journey(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
-  await page.waitForURL(CLASS_TODAY);
-  await page.getByText("99 free problems left", { exact: true }).waitFor();
-  // Their first free workbook is selectable in the teacher view.
-  await page.goto(
-    `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
-  );
-  await page.getByRole("heading", { name: "Workbooks", exact: true }).waitFor();
-  await page.getByText(fox.name, { exact: true }).first().waitFor();
+  await page.getByRole("button", { name: "Back to family" }).click();
+  await page.waitForURL(FAMILY_TODAY);
+  await freeLeft(page, 99).waitFor();
+  // Their first free workbook is on their own page, its workbooks part
+  // (features/family/Child.tsx; the family's /workbooks is a one-hop alias).
+  const familyPath = new URL(page.url()).pathname;
+  const workbooksOf = async (child: { id: string }) => {
+    await page.goto(`${origin}${familyPath}/kids/${child.id}`);
+    await page.locator("[data-child-workbooks]").waitFor();
+  };
+  await workbooksOf(fox);
   await measured(page, `${label} workbook stack`);
   await shot(page, "workbooks", width, theme);
 
+  // The child's own page hands the device over too ("Let … practice
+  // here"), and Sign out gives it back to the parent's Today.
   await page.goto(`${origin}/overview`);
+  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
+  // /overview's hop loads the child's page anew: tap Practice on that one.
+  await page.waitForLoadState("load");
+  await page.locator(`[data-child-page="${fox.id}"]`).waitFor();
+  const traffic: string[] = [];
+  const note = (request: { method(): string; url(): string }) =>
+    traffic.push(`${request.method()} ${new URL(request.url()).pathname}`);
+  page.on("request", note);
+  page.on("console", (message) => {
+    if (message.type() === "error") traffic.push(`console: ${message.text()}`);
+  });
+  await page.getByRole("button", { name: `Practice with ${fox.name}` }).click();
+  await practicing(page).catch((error) => {
+    console.error("After Practice on the child's page:", traffic.slice(-25));
+    throw error;
+  });
+  page.off("request", note);
   await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .waitFor();
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
+    .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
     .first()
     .click();
-  await practicing(page);
-  await page.goto(
-    `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
-  );
-  await page.getByText(fox.name, { exact: true }).first().waitFor();
+  // Back to family returns the device to the screen it was handed over
+  // from: the child's page.
+  await page.getByRole("button", { name: "Back to family" }).click();
+  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
+  await workbooksOf(fox);
 
   // Reprints belong to specific students. Exhaustion keeps issued results
   // available, without enabling an impossible new workbook for someone else.
@@ -358,7 +426,8 @@ async function journey(
   );
   assert.equal(made.status(), 201);
   await page.goto(
-    `${origin}/learners/${fox.id}/workbooks/${stack.today}?number=1&minutes=45&paper=letter`,
+    // The day opens on its latest workbook, No. 1, made above.
+    `${origin}/learners/${fox.id}/workbooks/${stack.today}`,
   );
   await page
     .getByRole("button", { name: "Roll another", exact: true })
@@ -377,52 +446,41 @@ async function journey(
     await new Promise((resolve) => setTimeout(resolve, 400));
     await route.continue();
   });
+  // Rolling drafts the day's next workbook: a preview, which saves nothing,
+  // so nothing is read again; the address stays the day's.
   await page.getByRole("button", { name: "Roll another", exact: true }).click();
-  await page.waitForURL(/number=2/);
+  await page.getByRole("heading", { name: "No. 2" }).waitFor();
+  await settle(page, 1200);
+  assert.doesNotMatch(page.url(), /\?/);
+  assert.equal(reads.me, 0, "a draft never refreshes the account");
+  assert.equal(reads.history, 0, "a draft never refreshes history");
+  // Downloading saves it: one new workbook refreshes each once.
+  await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("button", { name: "Download workbook" }).click(),
+  ]);
   await settle(page, 1200);
   assert.equal(reads.me, 1, "one new workbook refreshes the account once");
   assert.equal(reads.history, 1, "one new workbook refreshes history once");
   await page.unroute(mePattern);
   await page.unroute(historyPattern);
-  await measured(page, `${label} second immediate workbook`);
+  await measured(page, `${label} second immediate workbook`, {
+    stillOrFail: true,
+  });
   await shot(page, "workbook-day", width, theme);
   await db.query(
     "UPDATE amp_learners SET free_online_used=100,free_workbooks_used=5 WHERE id=ANY($1::text[])",
     [[fox.id, moon.id]],
   );
-  await page.goto(
-    `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
-  );
-  await page
-    .getByRole("button", { name: new RegExp(`^${moon.name}`) })
-    .waitFor();
-  assert.equal(
-    await page
-      .getByRole("button", { name: new RegExp(`^${moon.name}`) })
-      .isDisabled(),
-    true,
-    "a class reprint cannot issue a new workbook to an exhausted learner",
-  );
-  assert.equal(
-    await page
-      .getByRole("button", { name: new RegExp(`^${fox.name}`) })
-      .isEnabled(),
-    true,
-  );
+  // Each child's workbooks are on their own page: the exhausted child's
+  // say why, calmly, and offer the one thing that works.
   const purchase = "Continue with AMP" as const;
-  check(
-    `${label} the exhausted tile says why, calmly`,
-    (
-      await page
-        .getByRole("button", { name: new RegExp(`^${moon.name}`) })
-        .innerText()
-    ).includes("Free workbooks used"),
-  );
-  await workbooksUsed(page, `${label} exhausted reprint`, purchase);
+  await workbooksOf(moon);
+  await workbooksUsed(page, `${label} exhausted child`, purchase);
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
-  await measured(page, `${label} exhausted reprint`);
+  await measured(page, `${label} exhausted child`);
   await shot(page, "reprint", width, theme);
   await page.goto(`${origin}/learners/${fox.id}/workbooks`);
   await page
@@ -430,14 +488,16 @@ async function journey(
     .first()
     .waitFor();
   await workbooksUsed(page, `${label} exhausted history`, purchase);
-  await measured(page, `${label} exhausted history`);
+  await measured(page, `${label} exhausted history`, { stillOrFail: true });
   await shot(page, "history", width, theme);
   await page
     .getByRole("link", { name: /Enter results for workbook/ })
     .first()
     .click();
+  // The results name whose answers they are (WorkbookResultsScreen).
   await page
-    .getByText(`${fox.name} · Workbook results`, { exact: true })
+    .getByText(new RegExp(`^Type each of ${fox.name}.s answers`))
+    .first()
     .waitFor();
   await page.getByRole("radio", { name: "Right", exact: true }).first().click();
   await page
@@ -452,7 +512,7 @@ async function journey(
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
-  await measured(page, `${label} exhausted results`);
+  await measured(page, `${label} exhausted results`, { stillOrFail: true });
   await shot(page, "results", width, theme);
   assert.equal(
     (
@@ -463,15 +523,17 @@ async function journey(
     100,
   );
   // Today, with no workbook yet: the line first, and no controls that can
-  // no longer make one.
+  // no longer make one. The day is a sheet over the list of workbooks,
+  // which says the same behind it: the sheet's is the one read here.
   await page.goto(`${origin}/learners/${moon.id}/workbooks/${stack.today}`);
-  await page.locator('[data-allowance-pause="workbooks"]').waitFor();
+  const daySheet = page.getByRole("dialog");
+  await daySheet.locator('[data-allowance-pause="workbooks"]').waitFor();
   await settle(page, 600);
   check(
     `${label} exhausted day offers nothing that fails`,
     (await page.getByRole("button", { name: "Roll another" }).count()) === 0,
   );
-  await workbooksUsed(page, `${label} exhausted day`, purchase);
+  await workbooksUsed(page, `${label} exhausted day`, purchase, daySheet);
   await measured(page, `${label} exhausted day`);
   await shot(page, "workbook-day-used", width, theme);
   await db.query(
@@ -504,7 +566,9 @@ async function journey(
   await todayTitle(page);
   await measured(page, `${label} teacher`);
   await shot(page, "teacher", width, theme);
-  // A class has no checkout: its next step is a conversation.
+  // A school's students have no free allowance (the stack's own rule): with
+  // no seat, a pupil needs one, whatever free workbooks their learner used,
+  // and the stack never speaks of free workbooks or a checkout.
   await db.query("UPDATE amp_learners SET free_workbooks_used=5 WHERE id=$1", [
     pupil.learnerId,
   ]);
@@ -513,7 +577,40 @@ async function journey(
   );
   await page.getByRole("heading", { name: "Workbooks", exact: true }).waitFor();
   await page.locator(`button[aria-pressed]`).first().waitFor();
-  await workbooksUsed(page, `${label} school stack`, "Talk to us");
+  await page
+    .getByText("No student here can get a new workbook.", { exact: true })
+    .waitFor();
+  check(
+    `${label} school stack: the pupil needs a seat`,
+    (await page.getByText("Needs a seat").count()) > 0,
+  );
+  // Never a dead end: the class's own next step (Start, or Request seats),
+  // the same one Today offers, taken right here over the stack.
+  const step = page.locator("[data-access-step]");
+  await step.waitFor();
+  const stepAction = step.getByRole("button");
+  check(
+    `${label} school stack offers the class's next step`,
+    (await stepAction.count()) === 1,
+    await step.innerText(),
+  );
+  const stackPath = new URL(page.url()).pathname;
+  await stepAction.first().click();
+  await page.getByRole("dialog").first().waitFor();
+  check(
+    `${label} school stack's step opens in place`,
+    new URL(page.url()).pathname === stackPath,
+    page.url(),
+  );
+  await page.keyboard.press("Escape");
+  await page.getByRole("dialog").first().waitFor({ state: "detached" });
+  check(
+    `${label} school stack: no free-allowance words or checkout`,
+    (await page.locator('[data-allowance-pause="workbooks"]').count()) === 0 &&
+      (await page.getByText(/free workbooks/i).count()) === 0 &&
+      (await page.getByRole("link", { name: "Continue with AMP" }).count()) ===
+        0,
+  );
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
@@ -595,13 +692,28 @@ async function adultJourney(
   await db.query("UPDATE amp_learners SET free_online_used=99 WHERE id=$1", [
     learnerId,
   ]);
+  // Their own practice, before its first answer: where they are, the free
+  // problems left, and its one next step. Their name stays out of the
+  // practice chrome.
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
+  await heading(page, "Where you are");
+  check(
+    `${label} the record says one free problem is left`,
+    (await page.locator("[data-free-left]").first().innerText()).includes(
+      "1 free problem left",
+    ),
+    await page.locator("[data-free-left]").first().innerText(),
+  );
+  check(
+    `${label} the record never names them`,
+    (await page.getByRole("heading", { name: "Avery Fixture" }).count()) === 0,
+  );
+  const next = page.getByRole("link", { name: "Start practicing" });
+  check(
+    `${label} the record's next step is practice`,
+    (await next.count()) === 1,
+  );
+  await next.click();
   await practicing(page);
   await page
     .getByRole("button", { name: "Skip this problem and see its answer" })
@@ -617,7 +729,7 @@ async function adultJourney(
   await pause.first().waitFor();
   check(
     `${label} the pause stays on practice`,
-    new URL(page.url()).pathname === "/practice",
+    /^\/practice\/[^/]+$/.test(new URL(page.url()).pathname),
     page.url(),
   );
   check(
@@ -636,7 +748,7 @@ async function adultJourney(
       JSON.stringify(["Continue with AMP"]),
   );
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
+  await heading(page, "Where you are");
   check(
     `${label} the record shows the same pause`,
     (await page

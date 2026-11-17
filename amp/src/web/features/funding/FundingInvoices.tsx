@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
@@ -7,7 +7,7 @@ import { requestFetch } from "../../lib/request-transport";
 import { queryClient, refreshMe, meOptions } from "../../lib/query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { SelectField } from "../../ui/SelectField";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { fundingReturn } from "./setup";
@@ -18,7 +18,12 @@ import {
   fundingRecordsOptions,
 } from "./records";
 export { fundingRecordsKey } from "./records";
+import { PageSection } from "../../ui/PageSection";
 import styles from "../account/BillingPage.module.css";
+import { practiceParams } from "../spaces/identity";
+import { qk } from "../../lib/keys";
+import { useSession } from "../../lib/session";
+import { fundedReturnOf, rememberFundedPurchase } from "../../lib/funded-entry";
 
 const intent = z.object({
   id: z.string(),
@@ -28,15 +33,25 @@ const intent = z.object({
   paymentVerified: z.boolean().optional(),
   offer,
 });
+/** The account's invoices not yet tied to a learner: Billing's route loads
+ * them ahead. */
+export const invoiceHistoryOptions = (session: AuthSession) =>
+  queryOptions({
+    queryKey: qk.account(session.accountId, "funding-invoice-history"),
+    queryFn: ({ signal }) =>
+      request("/funding/invoices", z.object({ invoices: z.array(intent) }), {
+        token: session.token,
+        signal,
+      }),
+  });
 export function FundingInvoices({
-  session,
   verified = true,
   exclude,
 }: {
-  session: AuthSession;
   verified?: boolean;
   exclude?: string;
 }) {
+  const session = useSession();
   const me = useQuery(meOptions(session));
   const navigate = useNavigate();
   const handoff = useHandOver(session);
@@ -71,13 +86,8 @@ export function FundingInvoices({
   };
   const records = useQuery(fundingRecordsOptions(session));
   const invoices = useQuery({
-    queryKey: ["account", session.accountId, "funding-invoice-history"],
+    ...invoiceHistoryOptions(session),
     enabled: verified,
-    queryFn: ({ signal }) =>
-      request("/funding/invoices", z.object({ invoices: z.array(intent) }), {
-        token: session.token,
-        signal,
-      }),
   });
   const [busy, setBusy] = useState<string>();
   const [error, setError] = useState("");
@@ -116,12 +126,13 @@ export function FundingInvoices({
         me.data?.signedIn &&
         me.data.adultPractice?.learner?.id === selected
       ) {
-        useLearnerStore.getState().select(selected);
-        void navigate({ to: "/$", params: { _splat: "practice" } });
+        selectLearner(selected);
+        void navigate({ to: "/$", params: practiceParams(selected) });
       } else {
         await handoff.handOver(selected);
       }
-    } catch {
+    } catch (failure) {
+      console.error("Learning didn’t open after the invoice", failure);
       if (!signal.aborted)
         setError(
           "Your invoice is saved. Learning couldn’t be opened. Try again.",
@@ -155,6 +166,7 @@ export function FundingInvoices({
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 60000);
     } catch (e) {
+      console.error("An education-fund invoice didn’t download", e);
       if (!signal.aborted)
         setError(e instanceof Error ? e.message : "Download failed.");
     } finally {
@@ -179,6 +191,7 @@ export function FundingInvoices({
         refreshMe(session),
       ]);
     } catch (e) {
+      console.error("An invoice's submission didn’t save", e);
       if (!signal.aborted)
         setError(
           e instanceof Error
@@ -193,8 +206,7 @@ export function FundingInvoices({
     return <Loading>Loading education-fund invoices…</Loading>;
   if (records.error || invoices.error)
     return (
-      <section className={styles.section}>
-        <h2>Education-fund invoices</h2>
+      <PageSection title="Education-fund invoices">
         <p>Invoices couldn’t be loaded.</p>
         <Button
           variant="secondary"
@@ -205,12 +217,14 @@ export function FundingInvoices({
         >
           Try again
         </Button>
-      </section>
+      </PageSection>
     );
   if (!claimedRecords.length && !pending.length) return null;
   return (
-    <section className={styles.section} aria-labelledby="funded-invoices-title">
-      <h2 id="funded-invoices-title">Education-fund invoices</h2>
+    <PageSection
+      title="Education-fund invoices"
+      titleId="funded-invoices-title"
+    >
       {(error || handoff.error) && <p role="alert">{error || handoff.error}</p>}
       {claimedRecords.map((r) => (
         <article key={r.id} className={styles.invoice}>
@@ -325,8 +339,19 @@ export function FundingInvoices({
                         ? "/start/name"
                         : "/start"
                     }
-                    search={{ return: fundingReturn(i.offer.programId ?? "") }}
                     className={buttonClass("primary")}
+                    // The program the learner is set up for, kept with the
+                    // account (the first run reads it, fundedReturnOf).
+                    onClick={() => {
+                      const program = fundingReturn(i.offer.programId ?? "");
+                      if (
+                        program &&
+                        fundedReturnOf(session.accountId) !== program
+                      )
+                        rememberFundedPurchase(session.accountId, {
+                          return: program,
+                        });
+                    }}
                   >
                     Set up learner
                   </Link>
@@ -344,7 +369,7 @@ export function FundingInvoices({
           </article>
         );
       })}
-    </section>
+    </PageSection>
   );
 }
 const date = (value: string) =>

@@ -165,7 +165,7 @@ try {
     leaderPage = await target.newPage();
   for (const page of [ownerPage, leaderPage])
     page.on("pageerror", (error) => errors.push(error.message));
-  await ownerPage.goto(`${origin}/school/adopt?district=${district.id}`);
+  await ownerPage.goto(`${origin}/school/adopt/${district.id}`);
   await ownerPage
     .getByRole("heading", { name: "Join River District" })
     .waitFor();

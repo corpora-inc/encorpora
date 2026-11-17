@@ -1,0 +1,33 @@
+/* A teacher's class setup: the fields of one step, on StepFrame's column. */
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+}
+/* A labelled picker among text fields is one of them: their label, height,
+   type and the room they keep for an error line, so the form reads as one
+   set of inputs. */
+.field {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: calc(var(--space-2) + 1.4 * var(--text-label));
+}
+.label {
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.field :global(.premium-select) {
+  padding-block: var(--space-3);
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 1.6;
+}
+/* A line about the names, its room kept so nothing moves when it says. */
+.error {
+  min-height: calc(1.4 * var(--text-label));
+  margin: calc(-1 * var(--space-2)) 0 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-label);
+  line-height: 1.4;
+}

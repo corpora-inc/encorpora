@@ -1,9 +1,25 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { useRef, type ReactNode } from "react";
 import styles from "./Dialog.module.css";
-import { CloseControl, useLayerEscape } from "./LayerControls";
+import { CloseControl, useLayerEscape, useLayerPanel } from "./LayerControls";
+import { SheetPanel } from "./Sheet";
 /** A modal reading sheet: fixed overlay, scrollable body, never moves the page. */
-export function Dialog({
+export function Dialog(props: DialogProps) {
+  // A layer inside a layer host's one overlay (ui/LayerFrame.tsx): its
+  // panel there, never a second overlay and scrim.
+  const panel = useLayerPanel();
+  if (panel)
+    return props.open ? (
+      // Its own reading body (a lesson's prose, its type and spacing).
+      <SheetPanel title={props.title} bodyClass={styles.body}>
+        {props.children}
+      </SheetPanel>
+    ) : null;
+  return <ModalDialog {...props} />;
+}
+type DialogProps = Parameters<typeof ModalDialog>[0];
+
+function ModalDialog({
   open,
   onOpenChange,
   title,

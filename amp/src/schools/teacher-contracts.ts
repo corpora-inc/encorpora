@@ -1,147 +1,61 @@
 import { z } from "zod";
 import { gradeCurveSchema, isValidCurve } from "./grade-curve.js";
 import { helpWeekResource } from "./help-contracts.js";
+import {
+  skillEvidenceResource,
+  workItemResource,
+  workResultIds,
+} from "./skill-contracts.js";
+import {
+  classSummary,
+  classTabIds,
+  courseResource,
+  estimateResource,
+  person,
+  progressRecordResource,
+  strandResource,
+  studentLevelResource,
+  todayResponse,
+  todayStudentResource,
+  todayTodoResource,
+} from "./today-contracts.js";
+// A class's Today and one learner's progress record are in their own small
+// module, so a family's projection (in the app's entry) carries only those.
+export {
+  classSummary,
+  classTabIds,
+  courseResource,
+  estimateResource,
+  progressRecordResource,
+  strandResource,
+  studentLevelResource,
+  todayResponse,
+  todayStudentResource,
+  todayTodoResource,
+  type ClassSummary,
+  type ClassTabId,
+  type CourseResource,
+  type ProgressRecord,
+  type StudentLevelResource,
+  type TodayResponse,
+  type TodayStudentResource,
+  type TodayTodo,
+} from "./today-contracts.js";
+// A student's work and one skill's evidence live in their own small module,
+// so the app's entry (lib/learning-view.ts) never carries the rest of these.
+export {
+  skillEvidenceResource,
+  studentSkillResponse,
+  workItemResource,
+  workResultIds,
+  type StudentSkillResponse,
+  type WorkItem,
+} from "./skill-contracts.js";
 
 /* What the teacher's screens read: the reference for these routes, and what the
    client checks every response against. */
 const day = z.iso.date();
 const id = z.uuid();
-
-export const classTabIds = [
-  "today",
-  "map",
-  "gradebook",
-  "time",
-  "roster",
-  "settings",
-] as const;
-export type ClassTabId = (typeof classTabIds)[number];
-
-export const courseResource = z.object({
-  label: z.string(),
-  level: z.number(),
-  from: z.number(),
-  to: z.number(),
-});
-export type CourseResource = z.infer<typeof courseResource>;
-export const classSummary = z.object({
-  id,
-  orgId: id,
-  name: z.string(),
-  orgName: z.string(),
-  /** Null: each student is graded against their own grade. */
-  course: courseResource.nullable(),
-});
-export type ClassSummary = z.infer<typeof classSummary>;
-const person = z.object({ id, name: z.string() });
-
-export const estimateResource = z.object({
-  level: z.number(),
-  sd: z.number(),
-  /** Answers behind it (the overall estimate): none means not measured
-   * yet (`measured`, learning/level-check.ts). */
-  answered: z.number().int().nonnegative().optional(),
-});
-export const studentLevelResource = z.object({
-  overall: estimateResource,
-  strands: z.record(z.string(), estimateResource),
-});
-export type StudentLevelResource = z.infer<typeof studentLevelResource>;
-
-const todoAction = z.discriminatedUnion("kind", [
-  z.object({
-    kind: z.literal("lesson"),
-    templateId: z.string(),
-    skillId: z.string(),
-    label: z.string(),
-  }),
-  z.object({
-    kind: z.literal("skill"),
-    skillId: z.string(),
-    label: z.string(),
-  }),
-  z.object({
-    kind: z.literal("student"),
-    personId: id,
-    label: z.string(),
-  }),
-  z.object({
-    kind: z.literal("tab"),
-    tab: z.enum(["map", "time", "start", "settings"]),
-    label: z.string(),
-  }),
-]);
-export const todayTodoResource = z.object({
-  /** Stable for the day, so checking it off survives a reload. */
-  id: z.string(),
-  kind: z.enum([
-    "shared-gap",
-    "stuck",
-    "no-practice",
-    "ready",
-    "good-day",
-    "start",
-  ]),
-  title: z.string(),
-  detail: z.string(),
-  students: z.array(person),
-  action: todoAction,
-  /** A shared gap can also go on paper: this skill, for these students. */
-  groupSheet: z.object({ skillId: z.string(), label: z.string() }).optional(),
-  /** How this item is decided, in one sentence. */
-  rule: z.string().optional(),
-  /** "Keeps missing": each student's latest miss on the skill, to replay. */
-  misses: z
-    .array(z.object({ personId: id, attempt: z.string(), skillId: z.string() }))
-    .optional(),
-});
-export type TodayTodo = z.infer<typeof todayTodoResource>;
-/** One student's day at a glance: where they work and what they did today. */
-export const todayStudentResource = z.object({
-  id,
-  /** Only in a family's class, where the reader's own children are matched
-   * to their learners (practice here, access). */
-  learnerId: z.string().optional(),
-  name: z.string(),
-  gradeLevel: z.number().nullable(),
-  /** Null until there is work to estimate from. */
-  level: estimateResource.nullable(),
-  /** So little work yet that the estimate is mostly a starting guess. */
-  provisional: z.boolean(),
-  todayMinutes: z.number(),
-  todayProblems: z.number(),
-  weekMinutes: z.number(),
-  weekProblems: z.number(),
-  /** The latest day with any practice in the last five weeks. */
-  lastActive: day.nullable().default(null),
-});
-export type TodayStudentResource = z.infer<typeof todayStudentResource>;
-export const todayResponse = z.object({
-  class: classSummary,
-  /** A family's class, whose screens speak to a parent. */
-  family: z.boolean().default(false),
-  students: z.array(todayStudentResource).default([]),
-  /** Minutes a week each learner aims for; null when none is set. */
-  weeklyTargetMinutes: z.number().nullable().default(null),
-  teacherName: z.string().nullable(),
-  /** This person can print workbooks for the class. */
-  canPrint: z.boolean(),
-  today: day,
-  partOfDay: z.enum(["morning", "afternoon", "evening"]),
-  todos: z.array(todayTodoResource),
-  week: z.object({
-    from: day,
-    minutes: z.number(),
-    problems: z.number(),
-    skills: z.number(),
-    objectives: z.number(),
-    working: z.number(),
-    students: z.number(),
-  }),
-});
-export type TodayResponse = z.infer<typeof todayResponse>;
-
-export const strandResource = z.object({ id: z.string(), label: z.string() });
 export const mapStudentResource = z.object({
   id,
   name: z.string(),
@@ -258,27 +172,6 @@ export const gradebookResponse = z.object({
 });
 export type GradebookResponse = z.infer<typeof gradebookResponse>;
 
-export const workResultIds = [
-  "independent",
-  "hint",
-  "missed",
-  "paper",
-] as const;
-export const workItemResource = z.object({
-  /** The attempt's id: where its replay lives (`work/<id>`). */
-  id: z.string(),
-  day,
-  /** When it was answered (ISO). */
-  at: z.string(),
-  prompt: z.string(),
-  answer: z.string().nullable(),
-  response: z.string().nullable(),
-  result: z.enum(workResultIds),
-  review: z.boolean(),
-  skill: z.string(),
-  strand: z.string(),
-});
-export type WorkItem = z.infer<typeof workItemResource>;
 export const answerHelpKinds = [
   "hint",
   "lesson",
@@ -456,24 +349,6 @@ export const reportCardsResponse = z.object({
 });
 export type ReportCardsResponse = z.infer<typeof reportCardsResponse>;
 
-/** One learner's own progress as a record shows it: the part of a student
- * record an adult's own record shares (`readProgress`). */
-export const progressRecordResource = z.object({
-  level: studentLevelResource.nullable(),
-  reference: z.object({ from: z.number(), to: z.number() }).nullable(),
-  strands: z.array(strandResource),
-  weeks: z.array(z.object({ week: day, minutes: z.number() })),
-  objectives: z.array(
-    z.object({
-      skillId: z.string(),
-      title: z.string(),
-      strand: z.string(),
-      day,
-    }),
-  ),
-  work: z.array(workItemResource),
-});
-export type ProgressRecord = z.infer<typeof progressRecordResource>;
 export const studentRecordResponse = progressRecordResource.extend({
   student: person.extend({
     first: z.string(),
@@ -587,22 +462,6 @@ export const gradebookExportSchema = z.strictObject({
 });
 export const oneRosterExportSchema = z.strictObject({ term: id });
 
-/** One skill's evidence, the way a skill layer reads it (nav/SkillLayer):
- * the counts the engine keeps per learner and skill. */
-export const skillEvidenceResource = z.object({
-  attempts: z.number(),
-  independentCorrect: z.number(),
-  /** The engine's status for the skill ("new" before any work). */
-  status: z.string(),
-  lastPracticedAt: z.string().nullable(),
-});
-/** A student on one skill: the counts and their latest answers on it. */
-export const studentSkillResponse = z.object({
-  skillId: z.string(),
-  evidence: skillEvidenceResource,
-  work: z.array(workItemResource),
-});
-export type StudentSkillResponse = z.infer<typeof studentSkillResponse>;
 /** A class on one skill: each student's counts, in roster order. */
 export const classSkillResponse = z.object({
   skillId: z.string(),

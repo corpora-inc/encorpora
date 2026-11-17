@@ -13,6 +13,7 @@ import {
 } from "../../../family/projection-contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { invalidateAccount, queryClient } from "../../lib/query";
 
 /*
@@ -29,7 +30,7 @@ export type FamilyChild = FamilyProjection["children"][number];
 export type FamilyPlace = FamilyPlaces["families"][number];
 
 const key = (session: AuthSession, ...rest: unknown[]) =>
-  ["account", session.accountId, "families", ...rest] as const;
+  qk.account(session.accountId, "families", ...rest);
 
 /** A student's session never reads a parent's family. */
 const adult = (session: AuthSession | null | undefined) =>
@@ -124,12 +125,18 @@ export async function childPagePath(
 ): Promise<string | null> {
   const places = await queryClient
     .fetchQuery(familyPlacesOptions(session))
-    .catch(() => null);
+    .catch((error: unknown) => {
+      console.warn("The account's families didn't load", error);
+      return null;
+    });
   for (const place of places?.families ?? []) {
     if (place.role !== "holder") continue;
     const family = await queryClient
       .fetchQuery(familyOptions(session, place.familyId))
-      .catch(() => null);
+      .catch((error: unknown) => {
+        console.warn("A family didn't load", error);
+        return null;
+      });
     if (family?.children.some((child) => child.id === learnerId))
       return `/family/${place.familyId}/kids/${learnerId}`;
   }

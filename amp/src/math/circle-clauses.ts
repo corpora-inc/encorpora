@@ -15,6 +15,7 @@ import {
   figureRightMark,
   figureSegment,
 } from "./geometry-teaching-figures";
+import { around } from "./scene/author";
 import type { Element, Point } from "./scene/spec";
 import { count } from "./agreement";
 import type { Random } from "./variation/axes";
@@ -80,7 +81,15 @@ function wedges(rng: Random): ClauseSurface {
   }
   elements.push(
     { type: "segment", from: [0, 0], to: [1, 0], stroke: "accent", width: 2 },
-    { type: "text", at: [0.5, -0.2], text: `r=${r}`, font: "math", size: "sm" },
+    // Above the radius, clear of the caption under the strip.
+    {
+      type: "text",
+      at: [0.5, 0.06],
+      text: `r=${r}`,
+      font: "math",
+      size: "sm",
+      align: [0, 1],
+    },
     {
       type: "text",
       at: [5.4, 0.5],
@@ -362,15 +371,33 @@ function arcSimilarity(rng: Random): ClauseSurface {
       stroke: "warm",
       width: 3,
     },
-    { type: "text", at: polar(r1, -12), text: `r_1=${r1}`, font: "math" },
-    { type: "text", at: polar(r2, -12), text: `r_2=${r2}`, font: "math" },
-    {
+    // Each radius named under its stretch of the bottom ray, each arc
+    // beside its middle; the layout keeps them clear of one another.
+    ...(
+      [
+        [`r_1=${r1}`, polar(r1 / 2, 0), "below"],
+        [`r_2=${r2}`, polar((r1 + r2) / 2, 0), "below"],
+        [`s_1=${s1}`, polar(r1, theta / 2), "out"],
+        ["s_2", polar(r2, theta / 2), "out"],
+      ] as const
+    ).map(([text, at, side]): Element => ({
       type: "text",
-      at: polar(r1 + 0.5, theta / 2),
-      text: `s_1=${s1}`,
+      at,
+      text,
       font: "math",
-    },
-    { type: "text", at: polar(r2 + 0.8, theta / 2), text: "s_2", font: "math" },
+      halo: true,
+      place: [
+        side === "below"
+          ? [0, 8, 0, -1]
+          : [
+              Math.cos((theta * Math.PI) / 360) * 10,
+              -Math.sin((theta * Math.PI) / 360) * 10,
+              -1,
+              0,
+            ],
+        ...around(10, 18, 28),
+      ],
+    })),
   ];
   return blanks(
     rng,

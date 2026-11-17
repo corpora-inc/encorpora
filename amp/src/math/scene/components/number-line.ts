@@ -26,6 +26,9 @@ export const numberLineSchema = z
     labels: z
       .union([z.enum(["auto", "ends", "none"]), z.array(coord).max(40)])
       .optional(),
+    /** A vertical line (a thermometer scale, an elevation) runs up the
+     * figure: numbers on the left, hops bowing to the right. */
+    orientation: z.enum(["horizontal", "vertical"]).optional(),
     marks: z
       .array(
         z
@@ -127,85 +130,158 @@ function markPlacements(
   return [above, left, right, high, farLeft, farRight];
 }
 
+/** Gap, in pixels, between a tick's end and its number. */
+const LABEL_GAP = 5;
+/** Air between neighboring tick numbers: across a horizontal row, and
+ * between stacked rows on a vertical line. */
+const ROW_AIR = 10,
+  COLUMN_AIR = 4;
+const MAJOR = 14,
+  MINOR = 8;
+
+/**
+ * Which ticks carry a number. Every n-th tick, n the smallest of 1, 2, 5,
+ * 10, … whose numbers fit the space between them at this scale (their width
+ * across a horizontal line, their height up a vertical one), so labels never
+ * collide. On-stride values include 0. A vertical line also names the values
+ * the figure refers to (a marked point, a hop's start and landing) in its
+ * number column; numbers on the stride beside them give way.
+ */
+export function tickLabels(c: NumberLine, s: number) {
+  const vertical = c.orientation === "vertical";
+  const step = c.denominator ? 1 / c.denominator : (c.step ?? 1);
+  const values = ticks(c.min, c.max, step);
+  const text = (v: number) =>
+    c.denominator ? fraction(v, c.denominator) : num(v);
+  const sets = values.map((v) => typeset(text(v), "math", "md"));
+  const need = vertical
+    ? Math.max(...sets.map((t) => t.ascent + t.descent)) + COLUMN_AIR
+    : Math.max(...sets.map((t) => t.width)) + ROW_AIR;
+  const strides = c.denominator
+    ? [1, 2, c.denominator, 2 * c.denominator, 5 * c.denominator]
+    : [1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000];
+  const stride =
+    strides.find((k) => k * step * s >= need) ??
+    Math.ceil(need / (step * s) / strides.at(-1)!) * strides.at(-1)!;
+  const index = (v: number) => Math.round(v / step);
+  const fixed = new Set<number>();
+  const labeled = new Set<number>();
+  const ends = new Set<number>();
+  if (Array.isArray(c.labels)) c.labels.forEach((v) => fixed.add(v));
+  else if (c.labels === "ends") {
+    fixed.add(values[0]!);
+    fixed.add(values.at(-1)!);
+  } else if (c.labels !== "none") {
+    for (const v of values) if (index(v) % stride === 0) labeled.add(v);
+    // An end off the stride is labeled only when it stands clear of its
+    // neighbor: −5 beside −4 reads as clutter, 0 beside 5 does not.
+    for (const end of [values[0]!, values.at(-1)!]) {
+      const gap = Math.min(
+        ...[...labeled].map((v) => Math.abs(index(v) - index(end))),
+      );
+      if (labeled.has(end) || gap >= Math.ceil(stride * 0.6) || !labeled.size)
+        (vertical ? ends : fixed).add(end);
+    }
+  }
+  return { step, values, text, stride, fixed, labeled, ends };
+}
+
 registerComponent("numberLine", {
   maxScale: (c) => 120 / (c.denominator ? 1 / c.denominator : (c.step ?? 1)),
   compile(c, { s }) {
-    const step = c.denominator ? 1 / c.denominator : (c.step ?? 1);
-    const values = ticks(c.min, c.max, step);
-    const text = (v: number) =>
-      c.denominator ? fraction(v, c.denominator) : num(v);
-    // Label spacing: the smallest stride whose labels fit with a gap.
-    const widest = Math.max(
-      ...values.map((v) => typeset(text(v), "math", "md").width),
-    );
-    const strides = c.denominator
-      ? [1, 2, c.denominator, 2 * c.denominator, 5 * c.denominator]
-      : [1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000];
-    const stride =
-      strides.find((k) => k * step * s >= widest + 10) ?? strides.at(-1)!;
-    const index = (v: number) => Math.round(v / step);
-    const fixed = new Set<number>();
-    const labeled = new Set<number>();
-    if (Array.isArray(c.labels)) c.labels.forEach((v) => fixed.add(v));
-    else if (c.labels === "ends") {
-      fixed.add(values[0]!);
-      fixed.add(values.at(-1)!);
-    } else if (c.labels !== "none") {
-      for (const v of values) if (index(v) % stride === 0) labeled.add(v);
-      // An end off the stride is labeled only when it stands clear of its
-      // neighbor: −5 beside −4 reads as clutter, 0 beside 5 does not.
-      for (const end of [values[0]!, values.at(-1)!]) {
-        const gap = Math.min(
-          ...[...labeled].map((v) => Math.abs(index(v) - index(end))),
-        );
-        if (labeled.has(end) || gap >= Math.ceil(stride * 0.6) || !labeled.size)
-          fixed.add(end);
+    const vertical = c.orientation === "vertical";
+    // Math position of a value on the line, and a pixel offset across it
+    // (above a horizontal line, to the right of a vertical one).
+    const at = (v: number): [number, number] => (vertical ? [0, v] : [v, 0]);
+    const across = (along: number, out: number): [number, number] =>
+      vertical ? [out, -along] : [along, -out];
+    const { values, text, fixed, labeled, ends } = tickLabels(c, s);
+    // The values a vertical line names in its number column, in the color
+    // of the mark or hop that refers to them; an unknown landing reads "?".
+    const named = new Map<
+      number,
+      {
+        color?: NonNullable<NumberLine["marks"]>[number]["color"];
+        derived?: boolean;
       }
+    >();
+    if (vertical) {
+      for (const hop of c.hops ?? []) {
+        if (!named.has(hop.from)) named.set(hop.from, {});
+        if ((hop.landing ?? "derived") !== "none")
+          named.set(clean(hop.from + hop.by), {
+            color: hop.color ?? "accent",
+            derived: hop.landing !== "shown",
+          });
+      }
+      for (const m of c.marks ?? [])
+        if (m.label === true)
+          named.set(m.at, { color: m.color ?? "warm", derived: m.derived });
     }
     const ext = 20 / s;
     const prims: Prim[] = [
       {
         type: "segment",
         id: "axis",
-        from: [c.min - ext, 0],
-        to: [c.max + ext, 0],
+        from: at(c.min - ext),
+        to: at(c.max + ext),
         arrow: "both",
         stroke: "ink",
         width: 2,
         obstacle: true,
       },
     ];
+    const labels: Prim[] = [];
+    const label = (v: number, optional: boolean) => {
+      const n = named.get(v);
+      const known = named.has(v) || fixed.has(v);
+      return {
+        type: "text" as const,
+        id: `label.${v}`,
+        at: at(v),
+        text: text(v),
+        offset: vertical
+          ? ([-(MAJOR / 2 + LABEL_GAP), 0] as [number, number])
+          : ([0, 10] as [number, number]),
+        align: vertical ? ([1, 0] as [1, 0]) : ([0, -1] as [0, -1]),
+        optional: optional && !known,
+        ...(n?.color && { bold: true, color: n.color }),
+        ...(n?.derived && { derived: true }),
+        data: { "tick-label": v },
+      };
+    };
     for (const v of values) {
-      const major = fixed.has(v) || labeled.has(v);
+      const major =
+        fixed.has(v) || labeled.has(v) || ends.has(v) || named.has(v);
       prims.push({
         type: "tick",
         id: `tick.${v}`,
-        at: [v, 0],
-        dir: [0, 1],
-        length: major ? 14 : 8,
+        at: at(v),
+        dir: vertical ? [1, 0] : [0, 1],
+        length: major ? MAJOR : MINOR,
         stroke: "ink",
         data: { tick: v },
       });
-      if (major)
-        prims.push({
-          type: "text",
-          id: `label.${v}`,
-          at: [v, 0],
-          text: text(v),
-          offset: [0, 10],
-          align: [0, -1],
-          optional: !fixed.has(v),
-          data: { "tick-label": v },
-        });
     }
+    // Numbers that must show come first; optional ones give way to them in
+    // this order: the ends of the line, 0, then the rest of the stride.
+    const order = [
+      ...values.filter((v) => fixed.has(v) || named.has(v)),
+      ...values.filter((v) => ends.has(v)),
+      ...values.filter((v) => v === 0 && labeled.has(v)),
+      ...values.filter((v) => labeled.has(v) && v !== 0),
+    ];
+    for (const v of new Set(order))
+      labels.push(label(v, !(fixed.has(v) || named.has(v))));
+    prims.push(...labels);
     for (const [i, iv] of (c.intervals ?? []).entries()) {
       const from = iv.from ?? c.min - ext,
         to = iv.to ?? c.max + ext;
       prims.push({
         type: "segment",
         id: `interval.${i}`,
-        from: [from, 0],
-        to: [to, 0],
+        from: at(from),
+        to: at(to),
         stroke: iv.color ?? "accent",
         width: 5,
         arrow:
@@ -222,7 +298,7 @@ registerComponent("numberLine", {
           prims.push({
             type: "point",
             id: `interval.${i}.end.${j}`,
-            at: [end, 0],
+            at: at(end),
             r: 6,
             color: iv.color ?? "accent",
             shape: iv.open?.[j] ? "open" : "dot",
@@ -232,7 +308,8 @@ registerComponent("numberLine", {
     // alike. A longer hop rises over the shorter hops it overlaps, one lane
     // higher. A shorter hop under it carries its label on its own arc, on a
     // paper backing; a hop too narrow for its label puts it beside the foot
-    // it shares with the longer hop, in the open.
+    // it shares with the longer hop, in the open. Hops bow away from the
+    // numbers: above a horizontal line, to the right of a vertical one.
     const hops = c.hops ?? [];
     const lo = hops.map((hop) => Math.min(hop.from, hop.from + hop.by));
     const hi = hops.map((hop) => Math.max(hop.from, hop.from + hop.by));
@@ -257,12 +334,15 @@ registerComponent("numberLine", {
       const to = clean(hop.from + hop.by);
       const h = heights[i]!;
       const color = hop.color ?? "accent";
+      // An arrow bows to the left of its travel: up for a rightward hop,
+      // and, for a vertical line, right for a downward one.
+      const bend = vertical ? (hop.by > 0 ? -h : h) : hop.by > 0 ? h : -h;
       prims.push({
         type: "arrow",
         id: `hop.${i}`,
-        from: [hop.from, 0],
-        to: [to, 0],
-        bend: hop.by > 0 ? h : -h,
+        from: at(hop.from),
+        to: at(to),
+        bend,
         stroke: color,
         width: 2.5,
         data: { hop: `${hop.from}:${hop.by}` },
@@ -271,18 +351,25 @@ registerComponent("numberLine", {
         prims.push({
           type: "text",
           id: `hop.${i}.label`,
-          at: [beside[i] ?? hop.from + hop.by / 2, 0],
+          at: at(beside[i] ?? hop.from + hop.by / 2),
           text: hop.label ?? signed(hop.by),
           offset:
             beside[i] === undefined
-              ? [0, under[i] ? -h : -h - 4]
-              : [beside[i] === lo[i] ? -HOP_BESIDE : HOP_BESIDE, -14],
-          align: under[i] && beside[i] === undefined ? [0, 0] : [0, 1],
+              ? across(0, under[i] ? h : h + 4)
+              : across(beside[i] === lo[i] ? -HOP_BESIDE : HOP_BESIDE, 14),
+          align: vertical
+            ? under[i] && beside[i] === undefined
+              ? [0, 0]
+              : [-1, 0]
+            : under[i] && beside[i] === undefined
+              ? [0, 0]
+              : [0, 1],
           halo: (under[i] && beside[i] === undefined) || undefined,
           color,
           size: "sm",
         });
-      if ((hop.landing ?? "derived") !== "none")
+      // A vertical line names the landing in its number column.
+      if (!vertical && (hop.landing ?? "derived") !== "none")
         prims.push({
           type: "text",
           id: `hop.${i}.landing`,
@@ -303,48 +390,79 @@ registerComponent("numberLine", {
       prims.push({
         type: "point",
         id: `mark.${i}`,
-        at: [m.at, 0],
+        at: at(m.at),
         r: 6,
         shape: m.open ? "open" : "dot",
         color: m.color ?? "warm",
         data: { mark: m.at },
       });
-      if (m.label !== undefined && m.label !== false) {
-        // Another hop landing just beside the point leaves no room above the
-        // axis between the arcs and that hop's head. The value then reads in
-        // the number row, under its dot, in place of the tick numbers it
-        // covers (they are optional and give way).
-        const crowded = (c.hops ?? []).some((hop) => {
-          const to = clean(hop.from + hop.by);
-          return (
-            hop.from !== m.at &&
-            to !== m.at &&
-            Math.abs(to - m.at) * s < HOP_CROWDED
-          );
-        });
-        prims.push({
-          type: "text",
-          id: `mark.${i}.label`,
-          at: [m.at, 0],
-          text: m.label === true ? text(m.at) : m.label,
-          derived: m.derived,
-          bold: true,
-          color: m.color ?? "warm",
-          ...(crowded && m.label === true
-            ? { offset: [0, 10] as [number, number], align: [0, -1] as [0, -1] }
-            : {
-                align: [0, 1] as [0, 1],
-                place: markPlacements(c.hops ?? [], m.at),
-              }),
-        });
+      if (m.label === undefined || m.label === false) continue;
+      if (vertical) {
+        // A value is named in the number column; a letter sits beside its
+        // dot, on the side of the hops, clear of them.
+        if (m.label !== true)
+          prims.push({
+            type: "text",
+            id: `mark.${i}.label`,
+            at: [0, m.at],
+            text: m.label,
+            derived: m.derived,
+            bold: true,
+            color: m.color ?? "warm",
+            align: [-1, 0],
+            place: [
+              [12, 0, -1, 0],
+              [12, -16, -1, 0],
+              [12, 16, -1, 0],
+              [30, 0, -1, 0],
+            ],
+          });
+        continue;
       }
+      // A hop landing on the point already names its value.
+      if (
+        m.label === true &&
+        (c.hops ?? []).some(
+          (hop) =>
+            (hop.landing ?? "derived") !== "none" &&
+            clean(hop.from + hop.by) === m.at,
+        )
+      )
+        continue;
+      // Another hop landing just beside the point leaves no room above the
+      // axis between the arcs and that hop's head. The value then reads in
+      // the number row, under its dot, in place of the tick numbers it
+      // covers (they are optional and give way).
+      const crowded = (c.hops ?? []).some((hop) => {
+        const to = clean(hop.from + hop.by);
+        return (
+          hop.from !== m.at &&
+          to !== m.at &&
+          Math.abs(to - m.at) * s < HOP_CROWDED
+        );
+      });
+      prims.push({
+        type: "text",
+        id: `mark.${i}.label`,
+        at: [m.at, 0],
+        text: m.label === true ? text(m.at) : m.label,
+        derived: m.derived,
+        bold: true,
+        color: m.color ?? "warm",
+        ...(crowded && m.label === true
+          ? { offset: [0, 10] as [number, number], align: [0, -1] as [0, -1] }
+          : {
+              align: [0, 1] as [0, 1],
+              place: markPlacements(c.hops ?? [], m.at),
+            }),
+      });
     }
     return prims;
   },
   describe(c, reveal, hidden) {
     const step = c.denominator ? 1 / c.denominator : (c.step ?? 1);
     const out = [
-      `Number line from ${spoken(c.min)} to ${spoken(c.max)}, with a tick every ${c.denominator ? `1/${c.denominator}` : spoken(step)}.`,
+      `${c.orientation === "vertical" ? "Vertical number line" : "Number line"} from ${spoken(c.min)} to ${spoken(c.max)}, with a tick every ${c.denominator ? `1/${c.denominator}` : spoken(step)}.`,
     ];
     const marks = (c.marks ?? []).filter((_, i) => !hidden(`mark.${i}`));
     const named = marks.filter((m) => typeof m.label === "string");
@@ -361,7 +479,13 @@ registerComponent("numberLine", {
           Math.abs(b - at) < Math.abs(a - at) ? b : a,
         );
         const n = Math.round(Math.abs(at - near) / step);
-        return `is ${n} ${n === 1 ? "tick mark" : "tick marks"} to the ${at > near ? "right" : "left"} of ${spoken(near)}`;
+        const side =
+          c.orientation === "vertical"
+            ? at > near
+              ? "above"
+              : "below"
+            : `to the ${at > near ? "right" : "left"} of`;
+        return `is ${n} ${n === 1 ? "tick mark" : "tick marks"} ${side} ${spoken(near)}`;
       };
       out.push(
         named
@@ -384,7 +508,7 @@ registerComponent("numberLine", {
     for (const [i, hop] of (c.hops ?? []).entries())
       if (!hidden(`hop.${i}`))
         out.push(
-          `A jump of ${spoken(Math.abs(hop.by))} to the ${hop.by > 0 ? "right" : "left"} from ${spoken(hop.from)} lands on ${
+          `A jump of ${spoken(Math.abs(hop.by))} ${c.orientation === "vertical" ? (hop.by > 0 ? "up" : "down") : `to the ${hop.by > 0 ? "right" : "left"}`} from ${spoken(hop.from)} lands on ${
             (hop.landing ?? "derived") === "derived" && !reveal
               ? "the number to find"
               : spoken(clean(hop.from + hop.by))

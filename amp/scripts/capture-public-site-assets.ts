@@ -178,7 +178,7 @@ const vite = await viteServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === authPath)
-          return `export async function accessSession(){return {token:"synthetic",accountId:"fixture-parent"}}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return {token:"synthetic",accountId:"fixture-parent"}}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
       configureServer(server) {
         server.middlewares.use("/api", (_request, response) => {
@@ -351,6 +351,11 @@ async function fixture(
     });
   });
 }
+/** "4th grade", "Behind": the choice the level screens are captured with. */
+async function chooseLevel(page: Page) {
+  await page.getByRole("radio", { name: "4th grade" }).click();
+  await page.getByRole("radio", { name: /^Behind/ }).click();
+}
 async function ready(page: Page, selector: string) {
   await page.locator(selector).first().waitFor();
   await page.evaluate(() => document.fonts.ready);
@@ -413,7 +418,7 @@ try {
       ],
       [
         "practice-profile",
-        "/me/profiles/new?grade=4&pace=behind",
+        "/me/profiles/new",
         "form",
         "Choose a practice grade, pace, and levels by math area",
       ],
@@ -426,11 +431,14 @@ try {
     ] as const) {
       await page.goto(origin + path);
       await ready(page, selector);
+      // A grade and pace chosen, as a visitor would (never in the address).
+      if (path.startsWith("/me/")) await chooseLevel(page);
       await capture(page, `${name}-${size}`, alt);
     }
     if (width === 1280) {
-      await page.goto(origin + "/me/level?grade=4&pace=behind");
+      await page.goto(origin + "/me/level");
       await ready(page, "form");
+      await chooseLevel(page);
       await capture(
         page,
         "practice-level-desktop",

@@ -1,5 +1,6 @@
 import type { SignedInMe } from "../../../account/contracts";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
+import { defaultStringifySearch } from "@tanstack/react-router";
 import { appReturn } from "../spaces/returns";
 import {
   OPEN_KEY,
@@ -40,12 +41,16 @@ export function parentFamilyAt(
 export type PersonMap = ReadonlyMap<string, string>;
 
 type Search = Record<string, unknown>;
+/** Where an old address opens now, for its legacy-alias row
+ * (app/legacy-aliases.ts) to hop to once. */
 export type FamilyTarget = {
-  /** The new address, with its leading slash. */
-  to: string;
-  search: Search;
-  /** Only a known settings section, never a secret. */
-  hash?: string;
+  /** The new address: its path (with its leading slash), the query the
+   * router would write, and a hash only for a known settings section or a
+   * part of a child's page, never a secret. */
+  href: string;
+  /** The sheet the screen opens on arrival (nav/sheet.ts), in history
+   * state, never the address: their own devices. */
+  state?: { sheet: string };
 };
 
 const pick = (search: Search, keys: readonly string[]) =>
@@ -57,12 +62,8 @@ const pick = (search: Search, keys: readonly string[]) =>
 
 /** The address keys each leaf's screen reads, besides `open`. */
 const CARRIED: Record<string, readonly string[]> = {
-  "": ["devices"],
-  map: ["skill", "lens", "sort"],
+  "": [],
   "reports/grades": ["term", "year", "student"],
-  reports: ["term", "year", "student"],
-  time: ["week", "to", "sort"],
-  people: ["devices"],
   settings: [],
 };
 
@@ -108,6 +109,7 @@ function viaReturn(
   to: string,
   search: Search,
   opens: Search = {},
+  hash?: string,
 ): FamilyTarget {
   const query = new URLSearchParams();
   for (const [key, value] of Object.entries(search))
@@ -116,10 +118,13 @@ function viaReturn(
   const text = query.toString();
   const kept = appReturn(text ? `${to}?${text}` : to);
   const url = new URL(kept ?? to, "https://amp.invalid");
-  return {
-    to: url.pathname,
-    search: { ...Object.fromEntries(url.searchParams), ...opens },
-  };
+  // Written as the router writes a query, so each value reads back as
+  // the type it was (a set's number, a child's id).
+  const written = defaultStringifySearch({
+    ...Object.fromEntries(url.searchParams),
+    ...opens,
+  });
+  return { href: `${url.pathname}${written}${hash ? `#${hash}` : ""}` };
 }
 
 /** The family screen an old class leaf opens. */
@@ -131,8 +136,6 @@ function leafFor(parts: readonly string[]): {
   devices?: true;
   /** A Settings section this leaf opens at. */
   section?: string;
-  /** A sign-in card print for one child. */
-  cards?: true;
 } {
   const [first = "today", second, third, fourth] = parts;
   switch (first) {
@@ -152,11 +155,13 @@ function leafFor(parts: readonly string[]): {
       return { leaf: "time" };
     case "workbooks":
       return { leaf: second ? `workbooks/${second}` : "workbooks" };
+    // The family's people are Settings' People.
     case "roster":
-      return { leaf: "people" };
-    // Cards and the sign-in board are the children's own devices.
+      return { leaf: "settings" };
+    // Cards and the sign-in board are the children's own devices, a sheet
+    // over Settings (its sign-in cards print there).
     case "cards":
-      return { leaf: "people", devices: true, cards: true };
+      return { leaf: "settings", devices: true };
     case "start":
       return { leaf: "", devices: true };
     case "settings":
@@ -182,6 +187,7 @@ export function familyClassTarget({
   search,
   hash,
   people,
+  only,
 }: {
   family: string;
   parts: readonly string[];
@@ -190,6 +196,8 @@ export function familyClassTarget({
    * link's secret lives. */
   hash?: string;
   people: PersonMap;
+  /** The family's one child, when it has exactly one. */
+  only?: string;
 }): FamilyTarget {
   const target = leafFor(parts);
   const { learner, rest, foreign } = childOf(search[OPEN_KEY], people);
@@ -220,40 +228,75 @@ export function familyClassTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
-  // One child's card, named by their roster person, prints on its own.
-  const selected =
-    typeof search.student === "string" ? people.get(search.student) : undefined;
-  if (target.cards && typeof search.student === "string" && selected)
-    return viaReturn(familyPath(family, "cards"), {
-      student: search.student,
-    });
+  const part = childPart(family, target.leaf, search, rest, only);
+  if (part) return part;
   const keys =
     CARRIED[target.leaf] ??
     (target.leaf.startsWith("workbooks")
       ? Object.keys(search).filter((key) => key !== OPEN_KEY)
       : []);
   // What the screen opens itself, typed and validated beyond the shared
-  // return keys: the devices sheet, a workbook's identity (its set on a
-  // day, the stack's day, minutes, paper and chosen children) and a
-  // settings section. Anything else, and every other fragment, is dropped.
+  // return keys: the devices sheet (history state), a workbook's identity
+  // (its set on a day, the stack's day, minutes, paper and chosen children)
+  // and a settings section. Anything else, and every other fragment, is
+  // dropped.
   const devices =
     target.devices || search.devices === 1 || search.devices === "1";
-  const opens: Search = {
-    ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
-    ...(target.leaf.startsWith("workbooks") ? workbookIdentity(search) : {}),
-    // Time's own working view: its range, its measure and one of the
-    // family's own children's days, typed (a bare `from` is a return).
-    ...(target.leaf === "time" ? timeView(search, people) : {}),
-  };
+  const opens: Search = target.leaf.startsWith("workbooks")
+    ? workbookIdentity(search)
+    : {};
+  const section = target.section ?? hash;
   const result = viaReturn(
     familyPath(family, target.leaf),
     withOpen(pick(search, keys), rest),
     opens,
+    target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
+      ? section
+      : undefined,
   );
-  const section = target.section ?? hash;
-  return target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
-    ? { ...result, hash: section }
-    : result;
+  return devices ? { ...result, state: { sheet: "devices" } } : result;
+}
+
+/** The record leaves that are parts of each child's page now (family-routes'
+ * aliases), and the part each opens at. */
+const CHILD_PARTS: Record<string, string | null> = {
+  map: null,
+  time: "child-time",
+  reports: "child-reports",
+  workbooks: "child-workbooks",
+};
+
+/**
+ * Where a record leaf opens, computed once so no alias hop follows: for a
+ * family of one child, that child's page at the part (Progress keeps its
+ * curriculum layers); for several, Today, where each child's card opens
+ * their page; the workbooks of several are their print, at its own address.
+ * Null for any other leaf.
+ */
+function childPart(
+  family: string,
+  leaf: string,
+  search: Search,
+  rest: readonly Entity[],
+  only: string | undefined,
+): FamilyTarget | null {
+  if (!(leaf in CHILD_PARTS)) return null;
+  const part = CHILD_PARTS[leaf]!;
+  // Several children: the workbook print for them all is the family's own
+  // workbooks address.
+  if (leaf === "workbooks" && !only) return null;
+  // Progress's view goes with it to a child's page; Today keeps only the
+  // layers (and an answer's skill).
+  const carried =
+    part === null
+      ? pick(search, only ? ["skill", "lens", "sort"] : ["skill"])
+      : {};
+  return viaReturn(
+    familyPath(family, only ? `kids/${only}` : ""),
+    withOpen(carried, part === null ? [...rest] : []),
+    {},
+    part && only ? part : undefined,
+  );
 }
 
 /** The family Settings sections an old settings anchor may name. */
@@ -265,24 +308,6 @@ const SETTINGS_SECTIONS = new Set([
 ]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
-
-/** Time's working view in an old address: the range (`period`), the measure
- * (`chart=problems`), one of the family's own children's days (`student`,
- * their roster person) and a typed range start. */
-export function timeView(search: Search, people: PersonMap): Search {
-  return {
-    ...(["week", "month", "term"].includes(String(search.period))
-      ? { period: String(search.period) }
-      : {}),
-    ...(search.chart === "problems" ? { chart: "problems" } : {}),
-    ...(typeof search.student === "string" && people.has(search.student)
-      ? { student: search.student }
-      : {}),
-    ...(typeof search.from === "string" && DAY.test(search.from)
-      ? { from: search.from }
-      : {}),
-  };
-}
 
 /** A workbook's own identity in an old address: the set printed on a day
  * (its QR code names it), and a stack's day, minutes, paper and children. */
@@ -302,7 +327,32 @@ export function workbookIdentity(search: Search): Search {
       ? { minutes: Number(text("minutes")) }
       : {}),
     ...(/^(letter|a4)$/.test(text("paper")) ? { paper: text("paper") } : {}),
-    ...(students.length ? { students: students.join(","), several: 1 } : {}),
+    ...(students.length ? { students: students.join(",") } : {}),
+  };
+}
+
+/**
+ * The workbook print for several children, from an older address that
+ * flagged it (`?several=1`) or named its children by learner (`?kids=`):
+ * the print's own identity and skill, with those children as the people
+ * they are in the family's own class (`people`, person → learner).
+ */
+export function workbookPrintSearch(search: Search, people: PersonMap): Search {
+  const byLearner = new Map(
+    [...people].map(([person, learner]) => [learner, person]),
+  );
+  const kids = (typeof search.kids === "string" ? search.kids : "")
+    .split(",")
+    .map((learner) => byLearner.get(learner))
+    .filter((person): person is string => !!person);
+  const identity = workbookIdentity(
+    kids.length ? { ...search, students: kids.join(",") } : search,
+  );
+  return {
+    ...(typeof search.skill === "string" && search.skill.length <= 120
+      ? { skill: search.skill }
+      : {}),
+    ...identity,
   };
 }
 
@@ -315,15 +365,18 @@ export function familyOrgTarget({
   search,
   hash,
   people = new Map(),
+  only,
 }: {
   family: string;
   page: "roster" | "map" | "settings" | "today";
   search: Search;
   hash?: string;
   people?: PersonMap;
+  /** The family's one child, when it has exactly one. */
+  only?: string;
 }): FamilyTarget {
   const leaf = {
-    roster: "people",
+    roster: "settings",
     map: "map",
     settings: "settings",
     today: "",
@@ -334,10 +387,16 @@ export function familyOrgTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
-  const result = viaReturn(familyPath(family, leaf), search);
-  return leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
-    ? { ...result, hash }
-    : result;
+  const part = childPart(family, leaf, search, rest, only);
+  if (part) return part;
+  return viaReturn(
+    familyPath(family, leaf),
+    search,
+    {},
+    leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
+      ? hash
+      : undefined,
+  );
 }
 
 /** The person→learner map of a family's own children in its class. */
@@ -374,4 +433,38 @@ export function childrenElsewhere<
   return children.filter(
     (child) => !classId || !child.classes.some((entry) => entry.id === classId),
   );
+}
+
+/** The address keys that once opened a sheet over a family screen, and the
+ * sheet each opens now (nav/sheet.ts). */
+const SHEET_KEYS: Record<string, string> = {
+  devices: "devices",
+  add: "add-children",
+};
+
+/**
+ * An older family address that opened a sheet with a key (`?devices=1`,
+ * `?add=1`): one hop to the same screen without it, the sheet opening from
+ * history state. Null when the address has none.
+ */
+export function sheetHop(
+  pathname: string,
+  search: Search,
+): { href: string; state: { sheet: string } } | null {
+  const key = Object.keys(SHEET_KEYS).find(
+    (name) => search[name] !== undefined,
+  );
+  if (!key) return null;
+  const query = new URLSearchParams();
+  for (const [name, value] of Object.entries(search))
+    if (!(name in SHEET_KEYS) && value !== undefined)
+      query.set(
+        name,
+        typeof value === "string" ? value : JSON.stringify(value),
+      );
+  const text = query.toString();
+  return {
+    href: text ? `${pathname}?${text}` : pathname,
+    state: { sheet: SHEET_KEYS[key]! },
+  };
 }

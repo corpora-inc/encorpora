@@ -6,12 +6,19 @@ import { createServer } from "vite";
 import { chromium as rawChromium, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureChildProgress,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
 import { projectSkillEvidence } from "../src/server/evidence";
 import type { Outcome } from "../src/server/repository";
 import { answerPathways } from "../src/web/features/practice/answer-pathways";
+import { openHome } from "./launcher";
 
 const root = new URL("../", import.meta.url).pathname;
 const vite = await createServer({
@@ -21,7 +28,7 @@ const vite = await createServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === root + "src/web/auth.ts")
-          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"synthetic",accountId:"fixture-parent"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"synthetic",accountId:"fixture-parent"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
     },
   ],
@@ -115,6 +122,20 @@ try {
             json: { mode: "accounts", passwords: true, providers: [] },
           });
         if (path === "/api/v1/me") return route.fulfill({ json: account });
+        // The parent's family (scripts/family-space-fixture.ts): its Today
+        // and the learner's page.
+        if (path === "/api/v1/families")
+          return route.fulfill({ json: fixtureFamilies() });
+        if (path === `/api/v1/families/${FIXTURE_FAMILY_ID}`)
+          return route.fulfill({
+            json: fixtureFamilyProjection([
+              { id: "sample-learner", name: "Sample learner", birthYear: 2016 },
+            ]),
+          });
+        if (path.endsWith("/children/sample-learner/progress"))
+          return route.fulfill({
+            json: fixtureChildProgress("sample-learner", "Sample learner"),
+          });
         if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
           return route.fulfill({
             json: {
@@ -314,37 +335,23 @@ try {
         exact: true,
       });
       await dialog.waitFor();
-      assert.equal(
-        await dialog.locator('[class*="grade"]').count(),
-        0,
-        "Grades hidden by default",
-      );
-      await dialog
-        .getByRole("button", {
-          name: "Show details: curriculum grades",
-          exact: true,
-        })
-        .click();
+      // A grown-up's own practice always shows curriculum grades
+      // (features/curriculum/CurriculumDetails.tsx); only a child's session
+      // with levels hidden offers the local "Show details" reveal.
       assert.ok(
         (await dialog.locator('[class*="grade"]').count()) > 0,
-        "Local reveal exposes actual curriculum grades",
+        "A grown-up sees each skill's curriculum grade",
       );
       assert.equal(
-        await page.evaluate(() =>
-          localStorage.getItem("amp.curriculum-details"),
-        ),
-        null,
-        "Local reveal must not set persistent preference",
+        await dialog
+          .getByRole("button", { name: /details: curriculum grades$/ })
+          .count(),
+        0,
+        "No reveal where grades already show",
       );
       await page.screenshot({
         path: `${output}/${mode}-${width}-${theme}-details.png`,
       });
-      await dialog
-        .getByRole("button", {
-          name: "Hide details: curriculum grades",
-          exact: true,
-        })
-        .click();
       await page.screenshot({
         path: `${output}/${mode}-${width}-${theme}-connections.png`,
       });
@@ -470,14 +477,27 @@ try {
         assert(await next.isEnabled());
         failBranch = false;
         await next.click();
-        await page.locator("#answer").waitFor();
+        // The next problem, whatever its kind (a typed answer or a
+        // structured one).
+        await page
+          .locator(".question")
+          .waitFor()
+          .catch(async (error) => {
+            await page.screenshot({
+              path: `${output}/${mode}-${width}-${theme}-after-branch-failure.png`,
+            });
+            console.error(await page.locator("body").innerText(), errors);
+            throw error;
+          });
         await page.keyboard.press("Escape");
         await page.getByRole("button", { name: "Open AMP menu" }).click();
         await page
-          .getByRole("checkbox", { name: "Sound", exact: true })
+          .getByRole("switch", { name: "Sound", exact: true })
+          .or(page.getByRole("checkbox", { name: "Sound", exact: true }))
           .check();
         await page
-          .getByRole("checkbox", { name: "Haptics", exact: true })
+          .getByRole("switch", { name: "Haptics", exact: true })
+          .or(page.getByRole("checkbox", { name: "Haptics", exact: true }))
           .check();
         await page.keyboard.press("Escape");
         await page.reload();
@@ -494,12 +514,14 @@ try {
         await page.getByRole("button", { name: "Open AMP menu" }).click();
         assert(
           await page
-            .getByRole("checkbox", { name: "Sound", exact: true })
+            .getByRole("switch", { name: "Sound", exact: true })
+            .or(page.getByRole("checkbox", { name: "Sound", exact: true }))
             .isChecked(),
         );
         assert(
           await page
-            .getByRole("checkbox", { name: "Haptics", exact: true })
+            .getByRole("switch", { name: "Haptics", exact: true })
+            .or(page.getByRole("checkbox", { name: "Haptics", exact: true }))
             .isChecked(),
         );
       }
@@ -508,9 +530,21 @@ try {
           path: `${output}/${mode}-${width}-${theme}-menu-details.png`,
         });
         await page.keyboard.press("Escape");
-        await page.goto(`${origin}/`);
-        // A grown-up's view always names grades: no device toggle.
-        await page.getByTestId("level-readout").first().waitFor();
+        await openHome(page, origin);
+        // A grown-up's view always names grades, with no device toggle: the
+        // learner's page draws their scale by grade.
+        await page
+          .locator('[data-child-page="sample-learner"]')
+          .or(page.getByRole("link", { name: /Sample learner/ }).first())
+          .first()
+          .waitFor();
+        if (!(await page.locator('[data-child-page="sample-learner"]').count()))
+          await page
+            .getByRole("link", { name: /Sample learner/ })
+            .first()
+            .click();
+        await page.locator('[data-child-page="sample-learner"]').waitFor();
+        await page.getByText("Gr 4", { exact: true }).first().waitFor();
         await page.screenshot({
           path: `${output}/${mode}-390-light-progress-details.png`,
           fullPage: true,

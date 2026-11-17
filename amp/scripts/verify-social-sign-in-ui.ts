@@ -1,3 +1,4 @@
+import { writeLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import { registerParentFollowupRoutes } from "../src/parent-followup/routes.js";
 import assert from "node:assert/strict";
@@ -26,6 +27,7 @@ import { openMenu } from "./ui-controls";
 import { migrate } from "./migrate";
 import { fill, socialCopyFor } from "../src/web/features/auth/social-copy";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 /** Provider sign-in in the browser: the brand button stack on sign-in and
  * "Create your account" at phone, small-phone and desktop sizes in
@@ -498,7 +500,7 @@ try {
     await page.getByRole("button", { name: "Continue with Google" }).click();
     await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     await page
-      .getByRole("button", { name: /practice here/ })
+      .getByRole("button", { name: /^Practice with / })
       .first()
       .waitFor();
     assert.equal(await page.locator("[data-starter]").count(), 0);
@@ -791,11 +793,12 @@ try {
     [randomUUID(), learnerId],
   );
   async function familyHome(tab: Page) {
+    // The family's Today, at its own address (docs/architecture/spaces.md).
     await tab.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
     await todayTitle(tab);
     await tab
       .getByRole("button", {
-        name: "Let Test Learner practice here",
+        name: "Practice with Test Learner",
         exact: true,
       })
       .waitFor();
@@ -803,7 +806,7 @@ try {
   async function practiceHere(tab: Page) {
     await tab
       .getByRole("button", {
-        name: "Let Test Learner practice here",
+        name: "Practice with Test Learner",
         exact: true,
       })
       .click();
@@ -820,30 +823,22 @@ try {
       [learnerId],
     );
   }
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await familyHome(page);
   await practiceHere(page);
   const studentMenu = await openMenu(page);
   await studentMenu
-    .getByRole("button", { name: "Sign out", exact: true })
+    .getByRole("button", { name: "Back to family", exact: true })
     .click();
   await familyHome(page);
-  // Simulate another person's saved learner selection on a shared device.
-  await page.evaluate(() =>
-    localStorage.setItem(
-      "amp.learner",
-      JSON.stringify({
-        state: { learnerId: "another-account-learner" },
-        version: 1,
-      }),
-    ),
-  );
+  // Simulate another account's saved learner selection on a shared device
+  // (the store is keyed by account: learner-store.ts).
+  await writeLearner(page, "amp|another-account", "another-account-learner");
   await page.goto(`${origin}/overview`);
-  // This learner has no answers yet: #2157 gives their starting estimate
-  // its own heading. Naming the learner also proves the stale selection
-  // from another account did not leak into this overview.
+  // The overview is the child's own page, titled with their name: that
+  // proves the stale selection from another account did not leak into it.
   await page
-    .getByRole("heading", { name: "Where Test Learner is", exact: true })
+    .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
     .waitFor();
   await page.screenshot({
     path: new URL("returning-learner-home-390.png", shots).pathname,
@@ -858,7 +853,7 @@ try {
     });
     await fresh.addCookies(await context.cookies(origin));
     const tab = await fresh.newPage();
-    await tab.goto(`${origin}/`);
+    await openHome(tab, origin);
     await familyHome(tab);
     await practiceHere(tab);
     await tab.screenshot({
@@ -876,6 +871,8 @@ try {
   let entry = {
     ...snapshot,
     next: "start",
+    // A new account: its first run not yet answered.
+    setup: { persona: null, done: false },
     learners: [],
     consent: { status: "none", method: null },
     familyClass: undefined,
@@ -900,7 +897,7 @@ try {
       };
     }
   });
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(`${origin}/start`);
   await page
     .getByRole("heading", { name: "What brings you to AMP?" })
@@ -935,7 +932,7 @@ try {
     .waitFor();
   entry = {
     ...snapshot,
-    next: "choose-plan",
+    next: "practice",
     learners: snapshot.learners.map((l: any) => ({
       ...l,
       entitlement: { ...l.entitlement, active: false },
@@ -948,45 +945,26 @@ try {
   await page.route("**/api/v1/billing/offer", (route) =>
     route.fulfill({ json: { available: false } }),
   );
+  // Stripe's return opens the pay overlay over the learner's own place, on
+  // its confirmation, at a clean address (features/pay/stripe-return.ts).
   await page.goto(`${origin}/?billing=processing&purchase=${purchaseId}`);
-  await page.waitForURL(`${origin}/purchase/annual`);
-  await page
-    .getByRole("heading", { name: "Annual access", exact: true })
-    .waitFor();
-  await page.waitForFunction(
-    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
+  await page.waitForURL((url) =>
+    /^\/family\/[^/]+\/kids\/[^/]+\/pay\/done$/.test(url.pathname),
   );
   assert.equal(new URL(page.url()).search, "");
-  await page.evaluate(
-    ({ purchaseId }) =>
-      sessionStorage.setItem(
-        "amp.purchase-return.v1",
-        JSON.stringify({
-          state: "processing",
-          purchaseId,
-          expiresAt: Date.now() + 60_000,
-        }),
-      ),
-    { purchaseId },
-  );
-  await page.goto(`${origin}/`);
-  await page.waitForURL(`${origin}/purchase/annual`);
+  await page.getByRole("dialog").first().waitFor();
   await page.unroute("**/api/v1/me");
-  await page
-    .getByRole("heading", { name: "Annual access", exact: true })
-    .waitFor();
-  await page.waitForFunction(
-    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
-  );
   // Keep this document alive while another tab changes the shared account.
   // A consumed checkout must not be inherited by the newly mounted account.
-  await page.evaluate(async () => {
-    const modulePath = "/src/web/app/router.tsx";
-    const { router } = await import(modulePath);
-    await router.navigate({ to: "/$", params: { _splat: "overview" } });
+  // An in-app navigation (the router follows the history it owns), so the
+  // document stays: importing the router module here can make Vite reload
+  // the page to optimize a dependency.
+  await page.evaluate(() => {
+    history.pushState({}, "", "/overview");
+    dispatchEvent(new PopStateEvent("popstate", { state: {} }));
   });
   await page
-    .getByRole("heading", { name: "Where Test Learner is", exact: true })
+    .getByRole("heading", { level: 1, name: "Test Learner", exact: true })
     .waitFor();
   // The legacy overview resolves to this child's canonical address. An
   // account switch must refuse that address, not substitute another child.
@@ -1024,6 +1002,8 @@ try {
     channel.postMessage("changed");
     channel.close();
   });
+  // The first account's child's page stays where it is and says so
+  // (docs/architecture/spaces.md); its way on is the new account's home.
   await page
     .getByRole("heading", {
       name: "This isn’t available to your account",
@@ -1043,6 +1023,20 @@ try {
     "a new account cannot inherit a consumed checkout return",
   );
   assert.equal(new URL(page.url()).pathname, previousChildPath);
+  await page
+    .getByRole("link", { name: "Go to your places" })
+    .or(page.getByRole("button", { name: "Go to your places" }))
+    .click();
+  await page.getByText("Second Learner", { exact: true }).first().waitFor();
+  assert.equal(
+    await page.getByText("Test Learner", { exact: true }).count(),
+    0,
+    "nothing of the first account shows",
+  );
+  // The new account's own places (`/` is the launcher and never redirects:
+  // amp/AGENTS.md), never the first account's checkout return.
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.locator("[data-launcher]").waitFor();
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();

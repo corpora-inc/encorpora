@@ -1,0 +1,14 @@
+.unavailable {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.unavailable p {
+  margin: 0;
+  line-height: 1.5;
+}

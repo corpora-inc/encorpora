@@ -71,13 +71,6 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.fileInput {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
 .paste {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
@@ -113,7 +106,7 @@
 .map {
   display: grid;
   gap: var(--space-4);
-  max-width: 880px;
+  max-width: var(--page-standard);
 }
 .mapLead {
   color: var(--color-muted-text);
@@ -154,7 +147,7 @@
   overflow-wrap: anywhere;
 }
 .fallback {
-  max-width: 420px;
+  max-width: var(--page-narrow);
 }
 .fallback label {
   font-size: var(--text-table);
@@ -168,7 +161,7 @@
 .schoolPick {
   display: grid;
   gap: var(--space-2);
-  max-width: 420px;
+  max-width: var(--page-narrow);
 }
 
 /* The diff: the sentence a head of school reads aloud. */

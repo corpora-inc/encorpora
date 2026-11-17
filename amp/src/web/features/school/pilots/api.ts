@@ -10,12 +10,14 @@ import {
   type StartSchoolClass,
 } from "../../../../schools/pilot-contracts";
 import type { AuthSession } from "../../../auth";
-import { call, keyFor, orgOptions, preload } from "../api";
+import { qk } from "../../../lib/keys";
+import { call, keyFor, orgOptions, pilotOptions, preload } from "../core-api";
 import { absoluteBuyerUrl } from "./buyer-url";
 const buyerUrlSchema = z.string().transform((value, context) => {
   try {
     return absoluteBuyerUrl(value, window.location.origin);
-  } catch {
+  } catch (error) {
+    console.warn("The buyer link from the server isn’t one AMP can open", error);
     context.addIssue({ code: "custom", message: "Invalid buyer link" });
     return z.NEVER;
   }
@@ -45,15 +47,8 @@ export const classAuthorizationOptions = (
         { signal },
       ),
   });
-export const pilotOptions = (session: AuthSession, classId: string) =>
-  queryOptions({
-    queryKey: keyFor(session, "class", classId, "pilot"),
-    queryFn: ({ signal }) =>
-      call(`/classes/${classId}/pilot`, pilotStateSchema, session, { signal }),
-    // A failed read is asked again by Try again or a change, never by each
-    // screen that mounts: a wait that holds a screen would ask forever.
-    retryOnMount: false,
-  });
+// A class's pilot is the shell's (core-api.ts).
+export { pilotOptions } from "../core-api";
 export async function preloadClassPilot(
   session: AuthSession,
   orgId: string,
@@ -100,7 +95,8 @@ export const purchaseRequestOptions = (session: AuthSession, classId: string) =>
   });
 export const buyerOptions = (token: string) =>
   queryOptions({
-    queryKey: ["school-buyer", token],
+    // The same for anyone holding the token: no account's data.
+    queryKey: qk.account(null, "school", "buyer", token),
     queryFn: ({ signal }) =>
       call("/buyer", buyerHandoffSchema, null, {
         signal,

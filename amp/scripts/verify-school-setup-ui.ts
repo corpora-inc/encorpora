@@ -51,6 +51,7 @@ import {
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const portArgument = process.argv.indexOf("--port");
@@ -220,10 +221,10 @@ const linkParts = (setupUrl: string) => {
   const [token, proof] = setupUrl.split("#")[1]!.split(".");
   return { token, proof };
 };
-/** Where each step of the list on the left sits. An answer arriving under a
- * step must move nothing. */
+/** Where each step of the shared stepper sits. An answer saved under a step
+ * must move nothing. */
 const ledgerRows = (page: Page) =>
-  page.locator("aside ol > li").evaluateAll((rows) =>
+  page.locator('nav[aria-label="Setup"] ol > li').evaluateAll((rows) =>
     rows.map((row) => {
       const box = row.getBoundingClientRect();
       return [Math.round(box.top), Math.round(box.height)];
@@ -313,8 +314,7 @@ async function journey(
   await heading(page, "When does your school year run?");
   check(
     `${label} setup opens at the calendar`,
-    page.url().includes(`org=${issued.orgId}`) &&
-      page.url().includes("step=calendar"),
+    page.url().endsWith(`/school/${issued.orgId}/setup/calendar`),
     page.url(),
   );
   const confirmed = confirmations.filter((to) => to === email).length;
@@ -326,22 +326,24 @@ async function journey(
   const wide = width >= 1024;
   const rows = wide ? await ledgerRows(page) : [];
   if (wide) {
-    const ledger = await page.locator("aside ol > li").allInnerTexts();
+    const ledger = await page
+      .locator('nav[aria-label="Setup"] ol > li')
+      .allInnerTexts();
     check(
-      `${label} the school step shows its answer`,
-      /School\s+Alder Street School/.test(ledger[0] ?? ""),
-      ledger,
-    );
-    check(
-      `${label} every step has its line before it's answered`,
-      /When the year runs/.test(ledger[1] ?? "") &&
-        /What students see/.test(ledger[2] ?? "") &&
-        /Read and accept/.test(ledger[3] ?? ""),
+      `${label} the stepper names every step`,
+      /School/.test(ledger[0] ?? "") &&
+        /Calendar/.test(ledger[1] ?? "") &&
+        /Student experience/.test(ledger[2] ?? "") &&
+        /Data agreement/.test(ledger[3] ?? ""),
       ledger,
     );
   }
   // The school step stays editable: its name, who it's for, the time zone.
-  await page.getByRole("link", { name: "Back" }).click();
+  // No in-page Back: the stepper's done step is the way back.
+  await page
+    .getByRole("navigation", { name: "Setup" })
+    .getByRole("link", { name: /School/ })
+    .click();
   await heading(page, "Where will you use AMP?");
   check(
     `${label} the name is filled in`,
@@ -364,7 +366,7 @@ async function journey(
   await page.getByRole("radio", { name: /A school/ }).click();
   await next.click();
   await heading(page, "When does your school year run?");
-  check(`${label} step in the URL`, page.url().includes("step=calendar"));
+  check(`${label} step in the URL`, page.url().endsWith("/setup/calendar"));
   if (wide)
     check(
       `${label} the step list holds still`,
@@ -407,12 +409,12 @@ async function journey(
   await page.goForward();
   await heading(page, "When does your school year run?");
   // A step further on than the answers go waits for them.
-  const orgId = new URL(page.url()).searchParams.get("org")!;
-  await page.goto(`${origin}/school/new?org=${orgId}&step=students`);
+  const orgId = new URL(page.url()).pathname.split("/")[2]!;
+  await page.goto(`${origin}/school/${orgId}/setup/students`);
   await heading(page, "When does your school year run?");
   check(
     `${label} a later step waits`,
-    page.url().includes("step=calendar"),
+    page.url().endsWith("/setup/calendar"),
     page.url(),
   );
   await page.getByRole("radio", { name: "Trimesters" }).click();
@@ -423,12 +425,6 @@ async function journey(
       `${label} the calendar's answer arrives in place`,
       JSON.stringify(await ledgerRows(page)) === JSON.stringify(rows),
       { rows, now: await ledgerRows(page) },
-    );
-    check(
-      `${label} the calendar's answer`,
-      /trimesters/.test(
-        (await page.locator("aside ol > li").nth(1).innerText()) ?? "",
-      ),
     );
   }
   await page.getByRole("radio", { name: /Levels visible/ }).click();
@@ -491,7 +487,7 @@ async function journey(
     buffer: Buffer.from(rosterCsv()),
   });
   await heading(page, "Check the columns");
-  check(`${label} step in the URL`, page.url().includes("step=map"));
+  check(`${label} step in the URL`, page.url().endsWith("/import/columns"));
   await shot(page, "import-2-columns", width, theme);
   await page.getByRole("button", { name: "What Period holds" }).click();
   const fields = page.getByRole("dialog");
@@ -538,7 +534,7 @@ async function journey(
   await page.unroute("**/roster/apply");
   await page.getByRole("button", { name: "Try again" }).click();
   await heading(page, /24 students added, 1 teacher invited/);
-  check(`${label} step in the URL`, page.url().includes("step=done"));
+  check(`${label} step in the URL`, page.url().endsWith("/import/done"));
   await shot(page, "import-5-done", width, theme);
   const teacherMail = mail.find((entry) => entry.to === "okafor@alder.example");
   check(
@@ -550,10 +546,14 @@ async function journey(
   await page.getByText("24 students, all with seats").waitFor();
   await pause(page);
   await shot(page, "students", width, theme);
-  // Search stays in the URL and survives reload.
+  // Search is the screen's view: never in the address, and it survives reload.
   await page.getByRole("textbox", { name: "Search students" }).fill("Cher");
   await page.getByText("1 match", { exact: true }).waitFor();
-  check(`${label} search in the URL`, page.url().includes("q=Cher"));
+  check(
+    `${label} search stays out of the URL`,
+    !new URL(page.url()).search,
+    page.url(),
+  );
   await page.reload();
   await page.getByText("1 match", { exact: true }).waitFor();
   // Open one: every action is real.
@@ -561,7 +561,11 @@ async function journey(
   await row.click();
   const studentSheet = page.getByRole("dialog");
   await studentSheet.getByLabel("Display name").waitFor();
-  check(`${label} sheet in the URL`, page.url().includes("student="));
+  check(
+    `${label} the sheet adds nothing to the URL`,
+    !new URL(page.url()).search,
+    page.url(),
+  );
   await studentSheet.getByLabel("Display name").fill("Cher R.");
   await studentSheet.getByRole("button", { name: "Save changes" }).click();
   await studentSheet.waitFor({ state: "detached" });
@@ -654,7 +658,7 @@ async function journey(
       (await teacher.getByRole("link", { name: "Import" }).count()) === 0,
   );
   // A staff account with no learners starts at /school, not the starter.
-  await teacher.goto(`${origin}/`);
+  await openHome(teacher, origin);
   await teacher.waitForURL(/\/school\//);
   // The same link, again, from someone else: it has been used.
   const third = await browser.newContext({ colorScheme: theme });
@@ -695,7 +699,11 @@ async function loneTeacher(
   await page.getByRole("button", { name: "Start setup" }).click();
   await heading(page, "When does your school year run?");
   // One teacher and one class: said on the school step.
-  await page.getByRole("link", { name: "Back" }).click();
+  // No in-page Back: the stepper's done step is the way back.
+  await page
+    .getByRole("navigation", { name: "Setup" })
+    .getByRole("link", { name: /School/ })
+    .click();
   await heading(page, "Where will you use AMP?");
   await page.getByRole("radio", { name: /One class/ }).click();
   await page.getByRole("button", { name: "Continue" }).click();
@@ -730,7 +738,12 @@ async function loneTeacher(
   await addSheet.getByLabel("Last name").fill("Tran");
   await addSheet.getByRole("button", { name: "Add student" }).click();
   await addSheet.getByText("Mei is in this class.").waitFor();
-  check("adding keeps the URL", page.url().includes("add=1"));
+  check(
+    "adding keeps the address as it was",
+    /\/settings$/.test(new URL(page.url()).pathname) &&
+      !new URL(page.url()).search,
+    page.url(),
+  );
   await addSheet.getByRole("button", { name: "Close" }).click();
   await addSheet.waitFor({ state: "detached" });
   await page.getByText("Mei Tran").waitFor();
@@ -815,7 +828,7 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
     [account],
   );
   check(`${label} a parent keeps what a parent has`, !suppressed.rowCount);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   const drawer = page.getByRole("dialog");
   await drawer.waitFor();
@@ -964,10 +977,17 @@ async function sweep(
       )
     ).json();
     await context.close();
-    return { classId: json.classes[0].id, studentId: students.students[0].id };
+    const student = students.students[0];
+    return {
+      classId: json.classes[0].id,
+      studentName: (student.displayName ??
+        [student.givenName, student.familyName]
+          .filter(Boolean)
+          .join(" ")) as string,
+    };
   })();
   const setupPath = (step: string, extra = "") =>
-    `/school/new?org=${pendingOrg}&step=${step}${extra}`;
+    `/school/${pendingOrg}/setup${step === "school" ? "" : `/${step}`}${extra}`;
   const setupScreens = [
     ["school", "Where will you use AMP?"],
     ["calendar", "When does your school year run?"],
@@ -1011,7 +1031,7 @@ async function sweep(
         await measure(setupPage, `${label} setup ${step}`, width);
         await resetRecord(setupPage);
       }
-      await setupPage.goto(`${origin}${setupPath("students", "&by=names")}`);
+      await setupPage.goto(`${origin}${setupPath("students", "/names")}`);
       await heading(setupPage, "Who’s in your class?");
       // Names, then the class's grade tiles: the page runs under its pinned
       // Back / Add class bar mid-scroll, as it should; nothing overlaps at
@@ -1047,12 +1067,23 @@ async function sweep(
         await shot(page, `screen-${name}`, width, theme);
         await resetRecord(page);
       }
-      // A sheet over the roster.
-      await page.goto(
-        `${origin}/school/${orgId}/students?student=${classes.studentId}`,
-      );
+      // A sheet over the roster: opened from its row, never from the address.
+      await page.goto(`${origin}/school/${orgId}/students`);
+      await heading(page, "Students");
+      await page
+        .getByRole("textbox", { name: "Search students" })
+        .fill(classes.studentName);
+      await page.getByText("1 match", { exact: true }).waitFor();
+      await page
+        .getByText(classes.studentName, { exact: true })
+        .first()
+        .click();
       await page.getByRole("dialog").getByLabel("Display name").waitFor();
       await measure(page, `${label} student sheet`, width);
+      // The sheet lives in this history entry (nav/sheet.ts), so loading the
+      // same address again would reopen it: put it down first.
+      await page.keyboard.press("Escape");
+      await page.getByRole("dialog").waitFor({ state: "detached" });
       // A failed search moves nothing either.
       await page.goto(`${origin}/school/${orgId}/students`);
       await heading(page, "Students");

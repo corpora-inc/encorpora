@@ -1,3 +1,4 @@
+import { useSession } from "../../../lib/session";
 import type { SpaceWords } from "../../spaces/words";
 import { measured } from "../../../../learning/level-check";
 import { EntityLink } from "../../../nav/links";
@@ -27,7 +28,7 @@ import {
   WHOLE_SCALE,
 } from "../../../ui/level-range";
 import { Menu, MenuItem } from "../../../ui/Menu";
-import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
+import { classUrl, parseSort, useClassView } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
 
 /** A provisional guess wider than this rests against an end of the scale. */
@@ -126,7 +127,7 @@ export function ClassMap({
   /** Before anyone has practiced: the one step that starts it. */
   action?: ReactNode;
 }) {
-  const [search, set] = useClassSearch();
+  const [search, set] = useClassView();
   const strands = limitStrands
     ? data.strands.slice(0, limitStrands)
     : byArea(data.strands, { crossCutting });
@@ -175,7 +176,7 @@ export function ClassMap({
         : column === "student"
           ? "ascending"
           : "descending";
-    set({ sort: `${column}:${next}` }, { replace: true });
+    set({ sort: `${column}:${next}` });
   };
   const reading = (row: Placed) => {
     if (!row.estimate) return "not measured yet";
@@ -223,7 +224,7 @@ export function ClassMap({
             <MenuItem
               key={id}
               selected={id === lens}
-              onSelect={() => set({ lens: id }, { replace: true })}
+              onSelect={() => set({ lens: id })}
             >
               {label(id)}
             </MenuItem>
@@ -460,7 +461,6 @@ function SmallClassMap({
               (grades.get(student.id)?.suggestion.status === "ready" ||
                 grades.get(student.id)?.final != null) && (
                 <GradeLine
-                  session={session}
                   place={classPlace}
                   term={book.data.term}
                   editable={
@@ -488,7 +488,6 @@ const COMPONENT_NAMES = {
 /** A learner's grade for the open term, in one line: the suggestion and
  * what it rests on once there is enough work, and the final grade. */
 function GradeLine({
-  session,
   place,
   term,
   editable,
@@ -496,7 +495,6 @@ function GradeLine({
   student,
   onMessage,
 }: {
-  session: ReturnType<typeof currentSession>;
   place: { org: string; class: string };
   term: { id: string; name: string };
   editable: boolean;
@@ -504,6 +502,7 @@ function GradeLine({
   student: MapStudent;
   onMessage: (message: string) => void;
 }) {
+  const session = useSession();
   const ready = row?.suggestion.status === "ready";
   // A final grade is a report-card entry: it appears once the term has work
   // to grade (or already has one), never as an empty box beside "Not enough
@@ -530,7 +529,6 @@ function GradeLine({
         <span className={styles.gradeFinal}>
           <span className={styles.gradeFinalLabel}>Final grade</span>
           <FinalField
-            session={session}
             place={place}
             student={{
               id: student.id,

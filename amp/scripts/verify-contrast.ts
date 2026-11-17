@@ -23,11 +23,13 @@ import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
-import { chooseLearner, openMenu } from "./ui-controls";
+import { openMenu, practiceHere } from "./ui-controls";
+import { openTopicLesson, startTopic } from "./ui-practice";
 import {
   assertContrastCoverage,
   contrastPartition,
 } from "./contrast-partition";
+import { openHome } from "./launcher";
 
 const pairs = contrastPartition(process.argv.slice(2));
 const url = process.env.AMP_TEST_DATABASE_URL;
@@ -42,7 +44,7 @@ const learner = await repository.create(
   "Contrast sweep",
   2016,
 );
-// Four choices exercise the drawer's collapsed and expanded learner picker.
+// Four children: the drawer and Today list a family with several kids.
 const otherLearners = await Promise.all(
   ["Jordan", "Avery", "Casey"].map((name) =>
     repository.create("development-household", name, 2016),
@@ -366,28 +368,88 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
       });
     }
   };
-  await step("home", async () => {
-    await page.goto(`${origin}/overview`);
-    await chooseLearner(page, learner.id);
-    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
+  // The parent's own screens: the family's Today (where a parent lands),
+  // the drawer with the family's children, a child's page and map, every
+  // family tab and the account's settings.
+  let family = "";
+  await step("family-today", async () => {
+    await openHome(page, origin);
+    await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
+    family = new URL(page.url()).pathname;
+    await page.locator("[data-today-title]").waitFor();
+    await settle();
   });
-  await step("learner-select-open", async () => {
+  await step("family-drawer-open", async () => {
     const drawer = await openMenu(page);
-    await drawer.getByRole("button", { name: /^Current learner/ }).click();
-    await drawer.getByRole("listbox", { name: "Current learner" }).waitFor();
-  });
-  await page
-    .getByRole("button", { name: "Close AMP menu", exact: true })
-    .click();
-  await step("family-menu-open", async () => {
-    await openMenu(page);
+    await drawer.locator(`a[href$="/kids/${learner.id}"]`).waitFor();
   });
   await page.keyboard.press("Escape");
-  for (const route of ["/lessons", "/progress"])
+  for (const [state, leaf] of [
+    ["child-page", `/kids/${learner.id}`],
+    ["child-pathways", `/kids/${learner.id}/pathways`],
+    ["family-map", "/map"],
+    ["family-workbooks", "/workbooks"],
+    ["family-time", "/time"],
+    ["family-reports", "/reports"],
+    ["family-people", "/people"],
+    ["family-settings", "/settings"],
+  ] as const)
+    await step(state, async () => {
+      await page.goto(origin + family + leaf);
+      await settle();
+    });
+  for (const route of [
+    "/account/security",
+    "/account/billing",
+    "/account/privacy",
+    "/start/plan",
+    "/start",
+    "/start/parent",
+    "/start/school",
+    "/purchase",
+    "/purchase/annual",
+    "/purchase/funded",
+  ])
     await step(route, async () => {
       await page.goto(origin + route);
       await settle();
     });
+  // Today's "Add a child": the sheet, its birth-year dialog, and the error
+  // a failed save shows in place.
+  await step("add-child-sheet", async () => {
+    await page.goto(`${origin}${family}?add=1`);
+    await page.getByRole("dialog", { name: "Add a child" }).waitFor();
+    await page.getByPlaceholder("First name or nickname").fill("Jordan");
+  });
+  await step("dialog-birth-year", async () => {
+    await page
+      .getByRole("dialog", { name: "Add a child" })
+      .getByRole("button", { name: "Birth year", exact: true })
+      .click();
+    await page.getByRole("dialog", { name: "Birth year" }).waitFor();
+  });
+  await step("add-child-error", async () => {
+    await page
+      .getByRole("dialog", { name: "Birth year" })
+      .getByRole("option", { name: "2018", exact: true })
+      .click();
+    await page.route("**/api/v1/learners", (r) =>
+      r.request().method() === "POST"
+        ? r.fulfill({
+            status: 503,
+            json: { error: "temporarily_unavailable" },
+          })
+        : r.fallback(),
+    );
+    await page
+      .getByRole("dialog", { name: "Add a child" })
+      .getByRole("button", { name: "Add child", exact: true })
+      .click();
+    await page.getByRole("alert").waitFor();
+    await page.unroute("**/api/v1/learners");
+  });
+  // The child's own session on this device: practice, every feedback state,
+  // the child's drawer, a lesson over their Pathways, and progress.
   // Pin every planned batch so each state sees the answer form it measures.
   // The client plans the next problem as soon as an answer is recorded, so the
   // pin in force at each Check decides what Next shows.
@@ -422,11 +484,9 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     await page.locator(panel).waitFor();
   };
   await step("practice-problem", async () => {
-    await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
-    await page
-      .getByRole("link", { name: /^Try this problem type/ })
-      .click();
-    await page.locator(".problem-stage").waitFor();
+    await page.goto(`${origin}${family}`);
+    await practiceHere(page, learner.id);
+    await startTopic(page, "mean-data");
     await page.locator("#answer").waitFor();
   });
   await step("feedback-incorrect", async () => {
@@ -462,43 +522,23 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   });
   await page.unroute("**/attempts");
   await page.unroute("**/batches");
-  for (const route of [
-    "/start/plan",
-    "/start",
-    "/start/parent",
-    "/start/school",
-    "/family/learners",
-    "/family/access",
-    "/family/privacy",
-    "/purchase",
-    "/purchase/annual",
-    "/purchase/funded",
-  ])
+  await step("child-drawer-open", async () => {
+    const drawer = await openMenu(page);
+    // A handed device's own way back.
+    await drawer
+      .getByRole("button", { name: "Back to family", exact: true })
+      .waitFor();
+  });
+  await page.keyboard.press("Escape");
+  await step("pathways-lesson", async () => {
+    await openTopicLesson(page, "mean-data");
+    await page.waitForTimeout(400);
+  });
+  for (const route of ["/overview", "/progress"])
     await step(route, async () => {
       await page.goto(origin + route);
       await settle();
     });
-  await step("dialog-birth-year", async () => {
-    await page.goto(`${origin}/family/learners`);
-    await page
-      .getByRole("button", { name: "Add learner", exact: false })
-      .first()
-      .click();
-    await page.getByPlaceholder("First name or nickname").fill("Jordan");
-    await page.getByRole("button", { name: "Birth year", exact: true }).click();
-    await page.getByRole("dialog", { name: "Birth year" }).waitFor();
-  });
-  await step("toast-error", async () => {
-    await page.getByRole("option", { name: "2018", exact: true }).click();
-    await page.route("**/api/v1/learners", (r) =>
-      r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
-    );
-    await page
-      .getByRole("button", { name: "Add learner", exact: true })
-      .click();
-    await page.getByRole("alert").waitFor();
-    await page.unroute("**/api/v1/learners");
-  });
   await context.close();
 }
 

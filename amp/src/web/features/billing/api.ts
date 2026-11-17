@@ -3,9 +3,9 @@ import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 import { invalidateAccount, meKey, queryClient } from "../../lib/query";
 import {
-  annualOfferSchema,
   enrollmentViewSchema,
   offerViewSchema,
   type EnrollmentView,
@@ -14,11 +14,10 @@ import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { paymentUrl } from "./payment-url";
 import { flush, analyticsVisitorHeaders } from "../../lib/analytics";
 
-const billingKey = (identity: string) =>
-  ["account", identity, "billing"] as const;
+const billingKey = (identity: string) => qk.account(identity, "billing");
 export const offerOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: [...billingKey(session.accountId), "offer"],
+    queryKey: qk.account(session.accountId, "billing", "offer"),
     queryFn: ({ signal }) =>
       request("/billing/offer", offerViewSchema, {
         token: session.token,
@@ -31,24 +30,11 @@ export const offerOptions = (session: AuthSession) =>
     }),
   });
 /** The configured prices, for the pitch; no account is needed to read them. */
-export const pricesOptions = queryOptions({
-  queryKey: ["billing", "prices"],
-  queryFn: ({ signal }) =>
-    request(
-      "/billing/prices",
-      z.object({
-        available: z.boolean(),
-        offers: z.array(annualOfferSchema),
-        extraOffers: z.array(annualOfferSchema).optional(),
-      }),
-      { signal },
-    ),
-  staleTime: 5 * 60_000,
-});
+export { pricesOptions } from "./prices";
 /** Polls only while a verified result is still pending. */
 export const enrollmentOptions = (session: AuthSession, poll = false) =>
   queryOptions({
-    queryKey: [...billingKey(session.accountId), "enrollment"],
+    queryKey: qk.account(session.accountId, "billing", "enrollment"),
     queryFn: ({ signal }) =>
       request("/billing/enrollment", enrollmentViewSchema, {
         token: session.token,
@@ -65,7 +51,7 @@ export const enrollmentOptions = (session: AuthSession, poll = false) =>
 /** Email-plus availability; read only when purchase enrollment is unavailable. */
 export const emailConsentOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "consent", "availability"],
+    queryKey: qk.account(session.accountId, "consent", "availability"),
     queryFn: ({ signal }) =>
       request("/consent", z.object({ available: z.boolean() }), {
         token: session.token,

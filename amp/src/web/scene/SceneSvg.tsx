@@ -5,6 +5,9 @@ import type { RunFont } from "../../math/scene/type";
 import type { ItemState } from "../../math/scene/timeline";
 import { CoinFace } from "./CoinFace";
 import { BillFace } from "./BillFace";
+import { billFaceUrl } from "./bill-art";
+import { coinFaceUrl } from "./coin-art";
+import { useArtReady } from "./money-art";
 
 /** Every paint is a theme role; print pages carry the light roles. */
 const ink: Record<InkRole, string> = {
@@ -332,6 +335,16 @@ export function SceneSvg({
   const legible = Number.isFinite(smallest)
     ? Math.min(layout.height, (layout.height * LEGIBLE_PX) / smallest)
     : null;
+  // Coins and bills paint with their pictures, or the figure waits hidden
+  // in its own space (scene/money-art.ts); practice decodes them first.
+  const art = layout.items.flatMap((d) =>
+    d.k === "image"
+      ? [coinFaceUrl[d.art]]
+      : d.k === "billImage"
+        ? [billFaceUrl[d.value]]
+        : [],
+  );
+  const artReady = useArtReady(art);
   const render = (d: Drawn, i: number) => {
     const st = states?.[d.id];
     const moved = st && (st.dx || st.dy);
@@ -366,6 +379,7 @@ export function SceneSvg({
           ...(legible && {
             "--scene-legible-height": `${Math.ceil(legible * 10) / 10}px`,
           }),
+          ...(!artReady && { visibility: "hidden" }),
         } as React.CSSProperties
       }
     >

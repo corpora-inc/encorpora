@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import type { ReactNode } from "react";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
@@ -68,7 +69,8 @@ import {
   parseSort,
   shortDay,
   TipZone,
-  useClassSearch,
+  useClassView,
+  useKeyedSheet,
 } from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
@@ -427,7 +429,8 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
   const host = useClassHost(given);
   const place = host.place;
   const session = useStaffSession();
-  const [search, set, close] = useClassSearch();
+  const [search, set] = useClassView();
+  const day = useKeyedSheet("student");
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
   const first = useQuery(timeOptions(session, place, period));
@@ -545,9 +548,8 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
     );
   };
   const student =
-    typeof search.student === "string" &&
-    data?.students.some((row) => row.id === search.student)
-      ? search.student
+    day.id && data?.students.some((row) => row.id === day.id)
+      ? day.id
       : undefined;
   const lastOpen = useRef(student);
   if (student) lastOpen.current = student;
@@ -755,10 +757,11 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                         .then((name) => setMessage(`Downloaded ${name}.`))
                         .catch((failure) =>
                           setError(
-                            failureMessage(
-                              failure,
-                              "That file didn’t download. Check your connection and try again.",
-                            ),
+                            reportError(failure, {
+                              doing: "download that file",
+                              fallback:
+                                "That file didn’t download. Check your connection and try again.",
+                            }),
                           ),
                         )
                         .finally(() => setBusy(false));
@@ -794,17 +797,18 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                   }
                   example={<ExampleTime />}
                   action={
-                    <Link
-                      to="/$"
-                      params={{
-                        _splat: family
-                          ? host.href("today")
-                          : classUrl(place.org, place.class, "start"),
-                      }}
-                      className={buttonClass("primary")}
-                    >
-                      {family ? "Back to Today" : "Start class"}
-                    </Link>
+                    // A family's Today is its tab, in the bar.
+                    family ? undefined : (
+                      <Link
+                        to="/$"
+                        params={{
+                          _splat: classUrl(place.org, place.class, "start"),
+                        }}
+                        className={buttonClass("primary")}
+                      >
+                        Start class
+                      </Link>
+                    )
                   }
                 />
               </div>
@@ -854,12 +858,9 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                     value={measure}
                     options={MEASURES}
                     onChange={(value) =>
-                      set(
-                        {
-                          chart: value === "problems" ? "problems" : undefined,
-                        },
-                        { replace: true },
-                      )
+                      set({
+                        chart: value === "problems" ? "problems" : undefined,
+                      })
                     }
                   />
                 </div>
@@ -877,13 +878,10 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                     }
                   }
                   onSortChange={(next) =>
-                    set(
-                      { sort: `${next.column}:${next.direction}` },
-                      { replace: true },
-                    )
+                    set({ sort: `${next.column}:${next.direction}` })
                   }
                   onRowActivate={(row) =>
-                    row.page ? undefined : set({ student: row.id })
+                    row.page ? undefined : day.show(row.id)
                   }
                   rules={false}
                   cardLayout="list"
@@ -964,7 +962,7 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
         from={from || undefined}
         student={student}
         returnFocus={lastOpen.current}
-        onClose={() => close("student")}
+        onClose={day.close}
         record={host.record}
       />
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import type { AuthSession } from "../../auth";
 import { useLoggedError } from "../../feedback";
+import { useSession } from "../../lib/session";
 import { Badge } from "../../ui/Badge";
 import { Button } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
@@ -22,15 +23,17 @@ import {
  * both parents, so one invitation is all there is: once she has one, the
  * action is gone. On Today and in Account → Family alike. */
 export function SecondParent({
-  session,
   className = styles.family,
   headingClassName = styles.heading,
 }: {
-  session: AuthSession;
+  /** Unused: the session is read where it is used (lib/session.ts). Kept
+   * until features/school's callers stop passing it. */
+  session?: AuthSession;
   /** Account → Family sets it among its own sections and headings. */
   className?: string;
   headingClassName?: string;
 }) {
+  const session = useSession();
   const query = useQuery(secondParentOptions(session));
   const [inviting, setInviting] = useState(false);
   const [error, setError] = useState("");
@@ -65,11 +68,7 @@ export function SecondParent({
         </p>
       ) : current ? (
         <ul className={styles.children}>
-          <SecondParentRow
-            session={session}
-            parent={current}
-            onError={setError}
-          />
+          <SecondParentRow parent={current} onError={setError} />
         </ul>
       ) : (
         <Button
@@ -81,10 +80,7 @@ export function SecondParent({
         </Button>
       )}
       {inviting && (
-        <SecondParentInviteSheet
-          session={session}
-          onClose={() => setInviting(false)}
-        />
+        <SecondParentInviteSheet onClose={() => setInviting(false)} />
       )}
       <Toast message={error} onDismiss={() => setError("")} />
     </section>
@@ -93,14 +89,16 @@ export function SecondParent({
 
 /** The second parent's row: who, where it stands, and its actions. */
 export function SecondParentRow({
-  session,
   parent,
   onError,
 }: {
-  session: AuthSession;
+  /** Unused: the session is read where it is used (lib/session.ts). Kept
+   * until features/school's callers stop passing it. */
+  session?: AuthSession;
   parent: SecondParentView;
   onError: (message: string) => void;
 }) {
+  const session = useSession();
   const [busy, setBusy] = useState<"resend" | "remove" | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [sent, setSent] = useState(false);
@@ -184,6 +182,9 @@ export function SecondParentRow({
             )}
             <Button
               variant="quiet"
+              // Its row's only action: its label on the column's edge, the
+              // fill stepping into the gutter (ui/Button, align).
+              align={invited ? undefined : "start"}
               disabled={!!busy}
               onClick={() => setConfirming(true)}
             >
@@ -198,12 +199,14 @@ export function SecondParentRow({
 
 /** "Add a second parent": an email, then the invitation. */
 export function SecondParentInviteSheet({
-  session,
   onClose,
 }: {
-  session: AuthSession;
+  /** Unused: the session is read where it is used (lib/session.ts). Kept
+   * until features/school's callers stop passing it. */
+  session?: AuthSession;
   onClose: () => void;
 }) {
+  const session = useSession();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [error, setError] = useState("");

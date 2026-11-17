@@ -23,7 +23,7 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 
 ## Interface acceptance
 
-- Family navigation has three destinations: Today, Progress and Settings. With one child, Progress opens that child’s record directly. Several children share a comparison with explicit links to each record. Workbooks, time and reports belong to Progress; people and sharing belong to Settings.
+- Family navigation has two destinations: Today and Settings. Today is the family's home: each child's card (practice, status, access and its pay overlay), then a compact "This week" (practice time each day across the children, skills earned). A child's card opens their page, the hub for their progress, Pathways, workbooks, time and reports. Settings is the family's one settings hub, one page whose rows open overlays: children, plan, people, the school year, devices, privacy and the account. Family report cards download from Today only once there is term work to report on.
 - Family is a parent's stable home. A child's Practice action starts that child directly; show a clear Back to family in practice. Adult practice is an optional You entry within the family, never a competing primary journey or a remembered home that displaces the family. Keep simulations out of children's primary actions. The selected learner must remain explicit in session state and every answer must reach that learner's record.
 - Curriculum browsing should lead directly into practice for the child whose curriculum is being viewed. Offer practice from areas, skills, and problem types; preserve the chosen filter across consecutive problems and reloads, with a clear return to mixed practice. Show videos at the specific skill or problem type. Broad areas lead into their skills, not an expanding dump of every video. Use one meaningful lesson title and compact navigation controls. Label inferred levels as estimates. Default activity summaries to daily and keep sparse histories compact. Daily and weekly time share chart styling and hover, tap and keyboard details. Begin at the first interval with practice; preserve quiet intervals after it.
 - **Purchasing must work (Skylar, November 15, 2026).** Parents choose a plan and pay, or choose a funding program and plan, enter the invoice name, and download the invoice. Do not disable plan selection or invoice fields because learning consent is incomplete. Do not show internal consent states as dead ends. Use the existing purchase-based enrollment flow when payment establishes permission; keep any legally required notice within the working purchase flow, with an immediate action. Invoice preparation and learning authorization are separate operations. Every added restriction must cite an actual applicable requirement; speculative compliance is not a product requirement. Verify payment/invoice completion with a returning parent whose learner already exists, including incomplete consent, rather than testing only a fully approved fixture. Keep purchase agreement in the primary action; do not add a separate checkbox, modal or consent screen. Make detailed terms and policies readable and downloadable from Privacy. Education-fund invoice creation should start eligible learners immediately, with a clear submission deadline and visible payment status.
@@ -35,6 +35,30 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Audit interactions alongside geometry: typing, long paste, deletion to empty, clear/reset, Escape, focus, browser Back/Forward and reload. User-entered filters must stay within route limits, and malformed shared search values must recover without replacing the screen with an error.
 - Review complete composed screens in guest, signed-in and paid states. Inspect visual hierarchy, typography, alignment and control weight in screenshots; overflow and touch-target assertions alone do not establish visual quality. Keep skill titles readable rather than truncating them to make room for secondary controls.
 - Verify real browser behavior and attach synthetic screenshots at 320, 390, 768 and 1280 px in light and dark themes. Measure overflow and bounding boxes during loading, validation and failed requests; verify learner state across navigation.
+
+### Frontend architecture (non-negotiable, enforced in CI)
+
+How to read the session, name a query key and handle a failure, with do/don't examples: [frontend patterns](docs/architecture/frontend-patterns.md).
+
+AMP's web app is built to an elite engineering standard, not as a pile of one-off screens. An audit on 2026-11-16 found 88 redirects, 39 query-string handoffs, 14 separate "where next" functions, the current learner held in 7 places, and about 13 pay surfaces. Those produced redirect chains and a Back button that hung the tab. Never reintroduce these patterns. Ratchet tests and lint hold every count to "only falls" (`tests/architecture-ratchet.test.ts`; lower its baseline as counts fall).
+
+- **Canonical global state.** Every fact has exactly one owner:
+  - Server data lives in the TanStack Query cache, behind a key factory, and changes only through mutations that invalidate everything that shows it.
+  - Client state (current learner, current place, flow drafts, preferences) lives in typed zustand stores keyed by account.
+  - Components read through hooks and selectors. Never drill props, never copy state into `useState` and sync it with effects, and never build a context as an ad-hoc store.
+- **URLs name screens, not state.** A path names the screen and its subject (`/family/<id>/today`, `/pay/<learnerId>/…`).
+  - No query strings carry app state between screens (`?learner=`, `?from=`, `?return=`, `?interval=`). The one exception is a third party's return value, such as Stripe's `session_id`, read once and resolved.
+  - Back, Forward, refresh and shared links work by construction.
+- **No redirect chains.**
+  - Compute a navigation target once, from canonical state, before navigating, then link straight to it.
+  - Redirects exist only for a legacy URL or the sign-in gate: one hop, never chained, never based on how the page was reached.
+  - No effect navigates, and nothing navigates during render.
+  - `/` never redirects.
+- **One component per job.** Screens render through `ui/Page` and `PageHeader` (one width scale, one header). Lists use `ui/ColumnList`. Use the shared controls in `ui/`. Never add a page-specific width, header or back link, a second dialog system, or a raw native control.
+- **No in-page Back control. Tabs, menus and the browser navigate; flows use the shared stepper; contextual screens are overlays that close to the screen behind them.** The stepper is `ui/FlowSteps`; `tests/page-layout.test.ts` fails on a new Back.
+- **Compose capabilities, never reuse whole pages in a new context.** Build each capability (add children, choose a plan, give consent, a skill's detail) as a self-contained component with its own data hooks and no route knowledge. Compose it where it's needed: inside a first-run step, in a sheet over Settings, in an overlay over a child's page. Never send someone through another flow's page or URL "with a different context" (for example /start/parent to add a child from Settings).
+- **Contain failure.** Route errors render inside the app shell with the menu intact. No silent `.catch(() => null)`. Every error is logged and shown inline or as a toast.
+- **Hooks rules are law.** Follow ESLint's react-hooks rules (`rules-of-hooks`, `exhaustive-deps`, `set-state-in-effect`). Fix a violation by deriving state or moving work to an event handler or loader, never with a disable comment without a written reason.
 
 ### Web application boundaries
 

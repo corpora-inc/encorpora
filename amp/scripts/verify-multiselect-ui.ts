@@ -1,3 +1,4 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -17,7 +18,7 @@ import {
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { assertOpaqueFeedback } from "./feedback-opacity-proof";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { openTopicLesson } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -114,7 +115,7 @@ try {
       page.setDefaultTimeout(20_000);
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`${origin}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       if (width === 320 && theme === "light")
         await page.route(
           `**/api/v1/learners/${learner.id}/batches`,
@@ -151,7 +152,8 @@ try {
       const [issued] = await Promise.all([
         batch,
         page
-          .getByRole("link", { name: /^Try this problem type/ })
+          .getByRole("dialog")
+          .getByRole("link", { name: /^Practice/ })
           .click(),
       ]);
       assert.equal(issued.status(), 200);
@@ -185,6 +187,8 @@ try {
 
       let form = await openAnswers(page, count);
       const checkboxes = form.getByRole("checkbox");
+      // The options settle in with the form (count() doesn't wait).
+      await checkboxes.nth(options.length - 1).waitFor();
       assert.equal(await checkboxes.count(), options.length);
       assert.ok(await form.getByRole("button", { name: "Check" }).isDisabled());
       assert.match(
@@ -327,7 +331,13 @@ try {
       await page.screenshot({
         path: `${shots}/${width}-${theme}-selected.png`,
       });
-      assert.ok(geometry.optionHeights.every((size) => size >= 52));
+      // Every option is a whole-row touch target: 44 px at least (the
+      // premium input rule); the design sizes rows to their content, 48 px
+      // for one line (46 px on short phones), since #2195.
+      assert.ok(
+        geometry.optionHeights.every((size) => size >= 44),
+        `${width}px option heights ${JSON.stringify(geometry.optionHeights)}`,
+      );
       assert.ok(geometry.overflow <= 0, `${width}px horizontal overflow`);
       assert.ok(
         geometry.submit.top >= 0 && geometry.submit.bottom <= height + 1,
@@ -413,7 +423,8 @@ try {
         const [correctIssued] = await Promise.all([
           correctBatch,
           page
-            .getByRole("link", { name: /^Try this problem type/ })
+            .getByRole("dialog")
+            .getByRole("link", { name: /^Practice/ })
             .click(),
         ]);
         assert.equal(
@@ -446,7 +457,8 @@ try {
         const [skippedIssued] = await Promise.all([
           skippedBatch,
           page
-            .getByRole("link", { name: /^Try this problem type/ })
+            .getByRole("dialog")
+            .getByRole("link", { name: /^Practice/ })
             .click(),
         ]);
         assert.equal(
@@ -497,7 +509,7 @@ try {
     graphPage.setDefaultTimeout(20_000);
     graphPage.on("pageerror", (error) => errors.push(error.message));
     await graphPage.goto(`${origin}/overview`);
-    await chooseLearner(graphPage, learner.id);
+    await practiceHere(graphPage, learner.id);
     await graphPage.route(
       `**/api/v1/learners/${learner.id}/batches`,
       (route) => {
@@ -535,7 +547,8 @@ try {
     const [graphIssued] = await Promise.all([
       graphBatch,
       graphPage
-        .getByRole("link", { name: /^Try this problem type/ })
+        .getByRole("dialog")
+        .getByRole("link", { name: /^Practice/ })
         .click(),
     ]);
     assert.equal(graphIssued.status(), 200);
@@ -544,6 +557,8 @@ try {
       graphProblem.public.id,
     );
     const graphForm = await openAnswers(graphPage, 3);
+    // The options settle in with the form (count() doesn't wait).
+    await graphForm.getByRole("checkbox").nth(5).waitFor();
     assert.equal(await graphForm.getByRole("checkbox").count(), 6);
     await graphForm.getByRole("checkbox").first().check();
     const answerDialog = graphPage.locator(".choice-entry-dialog[open]");
@@ -615,18 +630,15 @@ try {
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
   });
-  await context.addInitScript(
-    (id) =>
-      localStorage.setItem(
-        "amp.learner",
-        JSON.stringify({ state: { learnerId: id }, version: 1 }),
-      ),
-    draft.id,
-  );
+  // Development sign-in's account (src/web/auth.ts).
+  await seedLearner(context, "development-household", draft.id);
   const page = await context.newPage();
   page.setDefaultTimeout(20_000);
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto(`${origin}/overview`);
+  // A child practices in their own session: the parent hands them the
+  // device (a parent's view of the child's map is read-only).
+  await practiceHere(page, draft.id);
   await openTopicLesson(page, templateId);
   const focused = page.waitForResponse(
     (response) =>
@@ -635,7 +647,8 @@ try {
       response.request().postDataJSON()?.templateId === templateId,
   );
   await page
-    .getByRole("link", { name: /^Try this problem type/ })
+    .getByRole("dialog")
+    .getByRole("link", { name: /^Practice/ })
     .click();
   const draftBatch = await focused;
   assert.ok(
@@ -661,11 +674,11 @@ try {
   for (let visit = 0; visit < 2; visit++) {
     if (visit > 0) await page.goForward();
     await page.waitForURL(/\/overview(?:\?|$)/);
-    await page
-      .getByRole("heading", { name: "Draft reviewer", exact: true })
-      .waitFor();
+    // The child's own Overview (it never names them: docs/design/ia.md).
+    await page.locator(".frontier-map").waitFor();
     await page.goBack();
-    await page.waitForURL(/\/practice(?:\?|$)/);
+    // Practice names its learner and its problem type in its address.
+    await page.waitForURL(/\/practice(?:\/|\?|$)/);
     assert.equal(await page.locator("#problem-prompt").textContent(), prompt);
     form = await openAnswers(page, draftCount);
     assert.ok(await form.getByRole("checkbox").first().isChecked());

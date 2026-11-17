@@ -53,14 +53,12 @@ const failed = (failure: unknown, fallback: string) =>
   failure instanceof AppError && failure.message ? failure.message : fallback;
 
 /**
- * The family's practice defaults (`/family/<family>/settings`): how long a
- * child stays signed in on a device, now and as children are added. Whether
- * a child sees grade levels is on each child's own settings
- * (`ChildPracticeSettings`). They are the family's own class's
- * settings, so a class that also holds other families' children sets them
- * with the tutoring group, for everyone in it. Never standings or boards.
+ * Shared or their own devices (the IA v2 spec, §3.5, DeviceModeChoice): the
+ * family class's experience setting `deviceMode`, saved on choice. Shared
+ * signs out after 30 idle minutes; their own stays signed in for 90 days. In
+ * a tutoring group it is the group's, and says so.
  */
-export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
+export function DeviceModeChoice({ place }: { place: FamilyPlace }) {
   const own = place.own;
   const scope = { kind: "class", id: own?.id ?? "" } as const;
   const experience = useQuery({
@@ -78,7 +76,7 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
   }, [experience.isError, experience.error]);
   if (!own) return null;
   const shared = !!place.data?.teachingPlace;
-  // The defaults are the family's own class's: its children, not the
+  // The setting is the family's own class's: its children, not the
   // family's children practicing in another group.
   const elsewhere = childrenElsewhere(place.data?.children ?? [], own.id);
   const inClass = (place.data?.children ?? []).filter(
@@ -86,30 +84,19 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
   );
   const data = experience.data;
   const editable = !!data?.canEdit && !shared;
-  const set = (key: "deviceMode", value: string) =>
-    write.mutate(
-      { values: { [key]: value } },
-      {
-        onError: (failure) =>
-          setError(failed(failure, "That change didn’t save. Try again.")),
-      },
-    );
   const devices = data?.settings.deviceMode.value ?? null;
   return (
-    <section
-      className={styles.section}
-      aria-labelledby="family-practice"
-      data-practice-defaults=""
-    >
-      <h2 id="family-practice">Practice</h2>
-      <p className={styles.footnote} data-practice-scope="">
-        {shared
-          ? "Your tutoring group shares these."
-          : practiceScopeLine(
-              inClass.map((child) => child.name),
-              elsewhere.map((child) => child.name),
-            )}
-      </p>
+    <div className={styles.form} data-practice-defaults="">
+      {(shared || elsewhere.length > 0) && (
+        <p className={styles.footnote} data-practice-scope="">
+          {shared
+            ? "Your tutoring group shares these."
+            : practiceScopeLine(
+                inClass.map((child) => child.name),
+                elsewhere.map((child) => child.name),
+              )}
+        </p>
+      )}
       {shared ? (
         <Link
           to="/$"
@@ -119,44 +106,39 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
         >
           Open the group’s settings
         </Link>
+      ) : experience.isError ? (
+        // The saved choice isn't known: no option claims to be it.
+        <ReadFailed
+          what="Your device setting"
+          onRetry={() => void experience.refetch()}
+        />
       ) : (
         <div
-          className={styles.form}
           aria-busy={experience.isPending || undefined}
           data-practice-choices=""
         >
-          {experience.isError ? (
-            // The saved choices aren't known: no option claims to be one.
-            <ReadFailed
-              what="Your practice settings"
-              onRetry={() => void experience.refetch()}
-            />
-          ) : (
-            <>
-              <div>
-                <h3 className={styles.label} id="practice-devices">
-                  Devices{" "}
-                  {/* The saved choice is on its way: the wave beside the
-                      heading, the list already in its place. */}
-                  {experience.isPending && (
-                    <Loading inline>Reading what’s saved</Loading>
-                  )}
-                </h3>
-                <OptionList
-                  label="Devices"
-                  options={DEVICES}
-                  value={devices}
-                  disabled={!editable}
-                  busy={write.isPending}
-                  onChange={(value) => set("deviceMode", value)}
-                />
-              </div>
-            </>
-          )}
+          <OptionList
+            label="Devices"
+            options={DEVICES}
+            value={devices}
+            disabled={!editable}
+            busy={write.isPending}
+            onChange={(value) =>
+              write.mutate(
+                { values: { deviceMode: value } },
+                {
+                  onError: (failure) =>
+                    setError(
+                      failed(failure, "That change didn’t save. Try again."),
+                    ),
+                },
+              )
+            }
+          />
         </div>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
-    </section>
+    </div>
   );
 }
 

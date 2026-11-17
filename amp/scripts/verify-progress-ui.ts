@@ -1,6 +1,11 @@
 import { secureChromium } from "../browser-security.mjs";
 import { assertProgressPolish } from "./app-shell-review";
-import { choose, chooseLearner, navigateApp } from "./ui-controls";
+import {
+  choose,
+  navigateApp,
+  practiceHere,
+  returnToParent,
+} from "./ui-controls";
 import { resume } from "./ui-practice";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -35,6 +40,15 @@ async function returnToHistory(page: Page) {
     "history returns without replacing the document",
   );
   await page.locator(".progress-workspace").waitFor();
+}
+/** A child's detailed progress is their own session's screen: the parent
+ * hands the device to that child (and takes it back from the one before). */
+let practicing: string | null = null;
+async function progressOf(page: Page, id: string) {
+  if (practicing) await returnToParent(page);
+  await practiceHere(page, id);
+  practicing = id;
+  await page.goto("http://127.0.0.1:4400/progress");
 }
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL required");
@@ -91,15 +105,14 @@ try {
     // Phone landscape only has to stay usable; the others must fit.
     const strict = !isPhoneLandscape(size);
     await page.setViewportSize(size);
-    await chooseLearner(page, fresh.id);
-    await page.goto("http://127.0.0.1:4400/progress");
+    await progressOf(page, fresh.id);
     await page
       .getByRole("heading", { name: "None yet", exact: true })
       .waitFor();
     await page.screenshot({
       path: new URL(`empty-${size.width}.png`, dir).pathname,
     });
-    await chooseLearner(page, learner.id);
+    await progressOf(page, learner.id);
     await page.locator(".progress-skill-card").first().waitFor();
     await page.waitForTimeout(100);
     const readsBeforeFilters = accountReads;
@@ -233,13 +246,13 @@ try {
           fits,
           `${String(filterName)} ${size.width}: ${await page.locator(".progress-page-controls").innerText()}`,
         );
-        const cardIds = await page
-          .locator(".progress-skill-card")
-          .evaluateAll((elements) =>
-            elements.map((e) => e.getAttribute("data-progress-skill")!),
-          );
-        for (const id of cardIds) {
-          await page.locator(`[data-progress-skill="${id}"]`).click();
+        // Each card on the page, by its place: the learner's session served
+        // a problem on arrival, so a refresh may reorder the ideas meanwhile.
+        const cardCount = await page.locator(".progress-skill-card").count();
+        for (let card = 0; card < cardCount; card++) {
+          const target = page.locator(".progress-skill-card").nth(card);
+          const id = await target.getAttribute("data-progress-skill");
+          await target.click();
           const bounds = await page
             .locator(".progress-detail-content")
             .evaluate((e) => ({
@@ -424,7 +437,12 @@ try {
       .getByRole("button", { name: "Try one problem", exact: true })
       .click();
     await batchStarted;
-    await navigateApp(page, "Lessons");
+    // The learner moves on to their Pathways (the lessons library is no
+    // destination of its own: docs/design/ia.md).
+    await page
+      .getByRole("link", { name: "Pathways", exact: true })
+      .first()
+      .click();
     const obsoleteBatch = page.waitForResponse(
       (response) =>
         response.url().endsWith("/batches") &&
@@ -440,10 +458,11 @@ try {
         ),
     );
     assert.equal(await page.getByRole("alert").count(), 0, failure.error);
-    assert.equal(new URL(page.url()).pathname, "/lessons", failure.error);
+    assert.equal(new URL(page.url()).pathname, "/pathways", failure.error);
     assert.equal(await page.locator(".progress-workspace").count(), 0);
-    await page.getByRole("heading", { name: "Lessons", exact: true }).waitFor();
-    await page.getByRole("searchbox", { name: "Search", exact: true }).waitFor();
+    await page
+      .getByRole("heading", { name: "Pathways", exact: true })
+      .waitFor();
     await returnToHistory(page);
   }
 
@@ -508,14 +527,16 @@ try {
   });
   await returnToHistory(page);
   await started;
-  await chooseLearner(page, fresh.id);
+  // The device goes back to the parent and on to the other child.
+  await progressOf(page, fresh.id);
   await page.getByRole("heading", { name: "None yet", exact: true }).waitFor();
   release();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.locator(".progress-skill-card").count(), 0);
 
   // Text enlargement preserves access to every action without horizontal clipping.
-  await chooseLearner(page, learner.id);
+  await progressOf(page, learner.id);
+  await page.locator(".progress-skill-card").first().waitFor();
   await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await choose(page.getByRole("button", { name: "Math area" }), "number");

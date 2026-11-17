@@ -1,60 +1,36 @@
-import { afterEach, expect, test, vi } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, expect, test } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
+import { vi } from "vitest";
 import { StepFrame } from "../setup/StepFrame";
 
-const state = vi.hoisted(() => ({
-  search: {} as Record<string, unknown>,
-  closed: [] as string[],
-}));
 vi.mock("@tanstack/react-router", () => ({
-  useRouter: () => ({}),
-  useLocation: ({ select }: { select: (l: unknown) => unknown }) =>
-    select({ search: state.search }),
-  Link: ({ children }: { children: ReactNode }) => (
-    <a href="/back">{children}</a>
+  Link: ({ children, to }: { children: ReactNode; to: string }) => (
+    <a href={to}>{children}</a>
   ),
-}));
-vi.mock("../../../lib/return-to", async (actual) => ({
-  ...(await actual<typeof import("../../../lib/return-to")>()),
-  closeTo: (_router: unknown, to: string) => state.closed.push(to),
 }));
 afterEach(() => {
   cleanup();
-  state.closed = [];
 });
-const step = () =>
+
+test("a step offers neither Cancel nor Back: the stepper and the menu are the way", () => {
   render(
     <StepFrame
-      steps={[{ id: "", label: "One" }]}
-      index={0}
+      steps={[
+        { id: "", label: "Your kids" },
+        { id: "ready", label: "First practice" },
+      ]}
+      index={1}
       title="Step"
-      back="/start"
+      href={(id) => (id ? `/start/parent/${id}` : "/start/parent")}
     >
       body
     </StepFrame>,
   );
-
-test("CP-2 M4: a step of Add a place can Cancel back to where it came from", () => {
-  state.search = {
-    from: "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/today",
-  };
-  step();
-  fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
-  expect(state.closed).toEqual([
-    "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/today",
-  ]);
-});
-
-test("a first run, and a return that isn't a place, offer no Cancel", () => {
-  for (const search of [
-    {},
-    { from: "/school/invite" },
-    { from: "//x.example" },
-  ]) {
-    state.search = search;
-    step();
-    expect(screen.queryByRole("button", { name: "Cancel" })).toBeNull();
-    cleanup();
-  }
+  expect(screen.queryByRole("button", { name: "Cancel" })).toBeNull();
+  expect(screen.queryByText("Back")).toBeNull();
+  // The done step links back to itself.
+  expect(
+    screen.getByRole("link", { name: "Your kids" }).getAttribute("href"),
+  ).toBe("/start/parent");
 });

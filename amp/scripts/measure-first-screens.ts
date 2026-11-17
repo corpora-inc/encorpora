@@ -411,7 +411,10 @@ const stack = await startStack();
 const browser = await secureChromium(rawChromium).launch();
 const results: Record<string, Sample & { runs: number }> = {};
 try {
-  const people = Object.fromEntries(
+  const people: Record<
+    string,
+    Awaited<ReturnType<typeof signIn>>
+  > = Object.fromEntries(
     await Promise.all(
       ["signed-up", "adult-new", "adult-3wk", "family", "teacher-class"].map(
         async (slug) => [slug, await signIn(browser, slug)] as const,
@@ -422,6 +425,19 @@ try {
     orgId: string;
     classId: string;
   };
+  // A returning account's browser: the hint `/` starts the app with at once
+  // (src/web/lib/session-hint.ts).
+  for (const slug of Object.keys(people))
+    people[`${slug}+returning`] = {
+      ...people[slug]!,
+      state: {
+        ...people[slug]!.state,
+        origins: [
+          ...people[slug]!.state.origins.filter((o) => o.origin !== origin),
+          { origin, localStorage: [{ name: "amp.signed-in", value: "1" }] },
+        ],
+      },
+    };
   const screens: [
     string,
     string | null,
@@ -429,6 +445,12 @@ try {
     { button: string; until: string }?,
   ][] = [
     ["pitch", null, "/"],
+    [
+      "pitch: try",
+      null,
+      "/",
+      { button: "Try it free", until: 'input[type="email"]' },
+    ],
     ["sign-up", null, "/sign-up"],
     ["start", "signed-up", "/start"],
     [
@@ -437,6 +459,7 @@ try {
       `/school/${family.orgId}/classes/${family.classId}/today`,
     ],
     ["teacher class", "teacher-class", "/"],
+    ["teacher returning", "teacher-class+returning", "/"],
     [
       "first problem",
       "adult-new",
@@ -444,6 +467,12 @@ try {
       { button: "Start practicing", until: "[data-problem-id]" },
     ],
     ["pathways", "adult-3wk", "/pathways"],
+    // A money problem: its coins are files decoded before it shows.
+    [
+      "money problem",
+      "adult-3wk",
+      "/practice?skill=money-values&template=coin-total",
+    ],
   ];
   for (const [name, who, path, then] of screens) {
     if (only && !only.includes(name)) continue;

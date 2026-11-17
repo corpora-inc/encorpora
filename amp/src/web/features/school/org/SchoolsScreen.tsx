@@ -1,7 +1,8 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
+import { useNavigate, useParams } from "@tanstack/react-router";
+import { useSheet } from "../../../nav/sheet";
 import { useState } from "react";
-import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
 import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
@@ -59,9 +60,10 @@ function AddSchool({
       await navigate({ to: "/$", params: { _splat: orgPath(school.id) } });
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "That school didn’t save. Try again.",
+        reportError(failure, {
+          doing: "save that school",
+          fallback: "That school didn’t save. Try again.",
+        }),
       );
       setBusy(false);
     }
@@ -118,8 +120,6 @@ function AddSchool({
 /** A district's schools, with how each is using AMP. */
 export function SchoolsScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as { add?: unknown };
-  const navigate = useNavigate();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const schools = useQuery(schoolsOptions(session, orgId));
@@ -129,15 +129,8 @@ export function SchoolsScreen() {
     0,
   );
   const canAdd = org?.can?.includes("schools.add") === true;
-  const adding = search.add === 1 || search.add === "1";
-  const setAdding = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        add: open ? 1 : undefined,
-      })) as never,
-    });
+  // Adding a school is a sheet over the list (nav/sheet.ts).
+  const { open: adding, onOpenChange: setAdding } = useSheet("add");
   return (
     <OrgFrame orgId={orgId} nav="schools" title="Schools">
       <PageHead

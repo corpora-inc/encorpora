@@ -1,10 +1,6 @@
+import { reported } from "../../../lib/report-error";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useRouter,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useEffect, useMemo, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import type { PublicProblem } from "../../../../math/contracts";
@@ -23,14 +19,8 @@ import { ownWorkReplayOptions, workReplayOptions } from "./teacher-api";
 import { clockTime, resultLabel, resultTone, shortDay } from "./teacher-shared";
 import styles from "./WorkReplay.module.css";
 import { closeTo } from "../../../lib/return-to";
-import {
-  OPEN_KEY,
-  readStack,
-  ownWork,
-  replaceTop,
-  work,
-} from "../../../nav/entities";
-import { EntityLink } from "../../../nav/links";
+import { ownWork, work, type Entity } from "../../../nav/entities";
+import { EntityLink, useLayers } from "../../../nav/links";
 
 const HELP_WORDS: Record<string, string> = {
   hint: "Hint",
@@ -137,7 +127,14 @@ export function WorkReplay({
   closePath?: string;
   /** A layer over a page (nav/LayerHost): closing pops it, stepping swaps
    * it, and while another layer covers it, its keys rest. */
-  layer?: { close: () => void; covered: boolean };
+  layer?: {
+    /** Its cross: back to the page it was opened over. */
+    close: () => void;
+    /** Escape: one level up, as everywhere in the layers. */
+    up: () => void;
+    covered: boolean;
+    step: (entity: Entity) => void;
+  };
 }) {
   const session = useStaffSession();
   const client = useQueryClient();
@@ -145,8 +142,8 @@ export function WorkReplay({
   const router = useRouter();
   // The skill's lesson opens over the answer as a layer: closing it, and
   // its film, comes back to this answer in its class (lib/return-to.ts).
-  const raw = useSearch({ strict: false }) as Record<string, unknown>;
-  const covered = layer ? layer.covered : readStack(raw[OPEN_KEY]).length > 0;
+  const overReplay = useLayers().stack.length > 0;
+  const covered = layer ? layer.covered : overReplay;
   // The reader's own answer (`/me`) reads from their own practice; a
   // student's from their record.
   // One shape for both: the same response, under each one's own key.
@@ -163,9 +160,11 @@ export function WorkReplay({
   // The neighbours are fetched as this one shows, so stepping is instant.
   useEffect(() => {
     for (const id of [replay?.previous, replay?.next])
-      if (id) void client.prefetchQuery(options(id)).catch(() => undefined);
+      if (id)
+        void client
+          .prefetchQuery(options(id))
+          .catch(reported("load the next answer ahead", undefined));
   }, [replay?.previous, replay?.next]);
-  const search: Record<string, string> = skill ? { skill } : {};
   // Back to where it was opened: the record, Today, a gradebook's evidence.
   const close = () =>
     layer ? layer.close() : closeTo(router, `/${closePath ?? ""}`);
@@ -173,19 +172,10 @@ export function WorkReplay({
    * one layer, so Back and X both close it. */
   const step = (to: string) =>
     layer
-      ? void navigate({
-          to: ".",
-          search: ((current: Record<string, unknown>) => ({
-            ...current,
-            [OPEN_KEY]: replaceTop(current[OPEN_KEY], entityOf(to)),
-          })) as never,
-          replace: true,
-          resetScroll: false,
-        })
+      ? layer.step(entityOf(to))
       : void navigate({
           to: "/$",
           params: { _splat: workPath!(to) },
-          search: search as never,
           replace: true,
         });
   useEffect(() => {
@@ -195,7 +185,7 @@ export function WorkReplay({
       // A layer over it handles its own keys: Escape closes only that.
       if (covered) return;
       if (event.key === "Escape" && !document.querySelector("dialog[open]"))
-        close();
+        (layer ? layer.up : close)();
       const to =
         event.key === "ArrowLeft"
           ? replay?.previous
@@ -217,7 +207,6 @@ export function WorkReplay({
       <Link
         to="/$"
         params={{ _splat: workPath!(to) }}
-        search={search as never}
         replace
         {...rest}
       >
@@ -229,15 +218,9 @@ export function WorkReplay({
   const closeLink = (
     <Link
       {...((layer
-        ? {
-            to: ".",
-            // Closing an answer puts the sheets away, back to the page it
-            // was opened over (the layer's close, nav/entities closeDepth).
-            search: (current: Record<string, unknown>) => ({
-              ...current,
-              [OPEN_KEY]: undefined,
-            }),
-          }
+        ? // Closing an answer goes back to what it was opened over (the
+          // layer's close): the same screen.
+          { to: "." }
         : { to: "/$", params: { _splat: closePath } }) as unknown as {
         to: ".";
       })}

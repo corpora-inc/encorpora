@@ -1,4 +1,6 @@
-import { closeSearch } from "../../lib/return-to";
+import { reportError } from "../../lib/report-error";
+import { useOpenSheet, useSheetNav } from "../../nav/sheet";
+import { useScreenView } from "./view-store";
 import { canAddStudents } from "./permissions";
 import {
   AddChildSheet,
@@ -10,16 +12,9 @@ import {
   useInfiniteQuery,
   useQuery,
 } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-  useRouter,
-} from "@tanstack/react-router";
+import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { StudentResource } from "../../../schools/contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
@@ -56,8 +51,6 @@ import {
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
 
-const message = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
 const statusWords: Record<StudentStatus, string> = {
   "needs-seat": "waiting for a seat",
   "never-signed-in": "who haven’t signed in yet",
@@ -110,7 +103,12 @@ function StudentSheet({
       await refreshSchool(session);
       onClose();
     } catch (failure) {
-      setError(message(failure, "Those changes didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save those changes",
+          fallback: "Those changes didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -122,7 +120,12 @@ function StudentSheet({
       await refreshSchool(session);
       onClose();
     } catch (failure) {
-      setError(message(failure, "That student wasn’t removed. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "remove a student",
+          fallback: "That student wasn’t removed. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -311,7 +314,12 @@ function AddStudentSheet({
       setFamily("");
       onOpenChange(false);
     } catch (failure) {
-      setError(message(failure, "That student didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save that student",
+          fallback: "That student didn’t save. Try again.",
+        }),
+      );
     } finally {
       setBusy(false);
     }
@@ -380,14 +388,12 @@ function AddStudentSheet({
  * a page at a time behind it, so a big school still sorts and scrolls whole. */
 export function StudentsScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as {
-    q?: unknown;
-    student?: unknown;
-    add?: unknown;
-    status?: unknown;
-    move?: unknown;
-  };
-  const navigate = useNavigate();
+  // The search typed and the status filter: this screen's view, never the
+  // address (view-store.ts). A student's sheet and the add sheet are sheets
+  // over it (nav/sheet.ts).
+  const [search, setSearch] = useScreenView<{ q: string; status: string }>();
+  const sheets = useSheetNav();
+  const openSheet = useOpenSheet();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const classes = useQuery(classesOptions(session, orgId)).data ?? [];
@@ -423,17 +429,6 @@ export function StudentsScreen() {
     () => new Map(classes.map((klass) => [klass.id, klass.name])),
     [classes],
   );
-  const router = useRouter();
-  const setSearch = (patch: Record<string, unknown>, replace = false) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        ...patch,
-      })) as never,
-      replace,
-      resetScroll: false,
-    });
   const columns: DataGridColumn<StudentResource>[] = useMemo(
     () => [
       {
@@ -489,8 +484,8 @@ export function StudentsScreen() {
   const canAdd = canAddStudents(org);
   // A family's class adds a child (or a tutor's student) its own way.
   const familyAdd = useFamilyAdd(session, org);
-  const open = rows.find((row) => row.id === search.student);
-  const adding = search.add === 1 || search.add === "1";
+  const open = rows.find((row) => openSheet === `student:${row.id}`);
+  const adding = openSheet === "add";
   const opener = useRef<HTMLDivElement>(null);
   const echoed = needle.length > 24 ? `${needle.slice(0, 24)}…` : needle;
   return (
@@ -512,7 +507,7 @@ export function StudentsScreen() {
           label="Search students"
           placeholder="Name or student ID"
           value={typed}
-          onChange={(value) => setSearch({ q: value || undefined }, true)}
+          onChange={(value) => setSearch({ q: value || undefined })}
         />
         {status && (
           <Button
@@ -542,10 +537,10 @@ export function StudentsScreen() {
           rows={rows}
           rowKey={(row) => row.id}
           defaultSort={{ column: "name", direction: "ascending" }}
-          onRowActivate={(row) => setSearch({ student: row.id })}
+          onRowActivate={(row) => sheets.show(`student:${row.id}`)}
           action={
             canAdd || familyAdd ? (
-              <Button variant="primary" onClick={() => setSearch({ add: 1 })}>
+              <Button variant="primary" onClick={() => sheets.show("add")}>
                 {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
               </Button>
             ) : undefined
@@ -556,7 +551,7 @@ export function StudentsScreen() {
             <button
               type="button"
               className={styles.studentCard}
-              onClick={() => setSearch({ student: row.id })}
+              onClick={() => sheets.show(`student:${row.id}`)}
             >
               <Avatar name={displayName(row)} size="small" />
               <span className={styles.studentCardText}>
@@ -584,7 +579,7 @@ export function StudentsScreen() {
           title={`No student matches “${echoed}”`}
           action={
             canAdd || familyAdd ? (
-              <Button variant="secondary" onClick={() => setSearch({ add: 1 })}>
+              <Button variant="secondary" onClick={() => sheets.show("add")}>
                 {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
               </Button>
             ) : undefined
@@ -607,10 +602,7 @@ export function StudentsScreen() {
                 </Link>
               )}
               {canAdd && (
-                <Button
-                  variant="secondary"
-                  onClick={() => setSearch({ add: 1 })}
-                >
+                <Button variant="secondary" onClick={() => sheets.show("add")}>
                   Add one student
                 </Button>
               )}
@@ -625,16 +617,15 @@ export function StudentsScreen() {
           student={open}
           canTransfer={can.includes("students.transfer")}
           canRemove={can.includes("students.remove")}
-          onClose={() => closeSearch(router, "student")}
+          onClose={() => sheets.close(`student:${open.id}`)}
         />
       )}
       {familyAdd && session ? (
         <AddChildSheet
-          session={session}
           kind={familyAdd}
           open={adding}
           onOpenChange={(next) =>
-            next ? setSearch({ add: 1 }) : closeSearch(router, "add")
+            next ? sheets.show("add") : sheets.close("add")
           }
         />
       ) : (
@@ -644,7 +635,7 @@ export function StudentsScreen() {
             open={adding}
             wholeSchool={can.includes("students.add")}
             onOpenChange={(next) =>
-              next ? setSearch({ add: 1 }) : closeSearch(router, "add")
+              next ? sheets.show("add") : sheets.close("add")
             }
           />
         )

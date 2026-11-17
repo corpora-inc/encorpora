@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { leaveSettings } from "./ui-controls";
+import { openMenu, returnToParent } from "./ui-controls";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
 import assert from "node:assert/strict";
@@ -87,7 +87,7 @@ async function fits(page: Page, label: string, focus?: string) {
       () => document.documentElement.scrollWidth - innerWidth,
     );
     assert.ok(overflow <= 0, `${label} overflows at ${width}px`);
-    if (label === "security") {
+    if (label === "security-stale") {
       for (const scheme of ["light", "dark"] as const) {
         await page.emulateMedia({ colorScheme: scheme });
         const box = await page
@@ -110,18 +110,60 @@ async function fits(page: Page, label: string, focus?: string) {
     });
   }
 }
+/** Adds a child the way a parent does, in this document (so with its
+ * in-memory session): the family's Today, its Settings, "Add a child". Children are the family's (docs/architecture/spaces.md). */
+async function addChild(page: Page, name: string) {
+  const drawer = await openMenu(page);
+  // In the family the drawer leads to Today; from Account, the place
+  // switcher leads to the family.
+  const today = drawer.getByRole("link", { name: "Today", exact: true });
+  if (await today.count()) await today.click();
+  else {
+    await drawer.getByRole("button", { name: /switch place$/ }).click();
+    await page.getByRole("menuitem", { name: /^Your family/ }).click();
+  }
+  await drawer.waitFor({ state: "detached" });
+  await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
+  // On a phone the family's later tabs are under More (ui/Tabs.tsx).
+  const settings = page
+    .getByRole("link", { name: "Settings", exact: true })
+    .filter({ visible: true });
+  const more = page.getByRole("button", { name: /^More .*tabs$/ });
+  await settings.or(more).first().waitFor();
+  if (await settings.count()) await settings.first().click();
+  else {
+    await more.click();
+    await page.getByRole("menuitem", { name: "Settings", exact: true }).click();
+  }
+  await page.waitForURL((url) => url.pathname.endsWith("/settings"));
+  await page.getByRole("button", { name: "Add a child", exact: true }).click();
+  const sheet = page.getByRole("dialog", { name: "Add a child" });
+  await sheet.getByLabel("Name", { exact: true }).fill(name);
+  await sheet.getByRole("button", { name: "Birth year", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Birth year" })
+    .getByRole("option", { name: "2016", exact: true })
+    .click();
+  await sheet.getByRole("button", { name: "Add child", exact: true }).click();
+  await sheet
+    .getByText(`${name} is in your family.`, { exact: true })
+    .waitFor();
+  await page.keyboard.press("Escape");
+  await sheet.waitFor({ state: "detached" });
+}
 async function signedIn(page: Page, email: string) {
   // The root is an intermediate redirect. Wait for this parent's actual
   // destination before choosing its navigation controls.
+  // A parent lands in their family (spaces.md): its Today, or the page of
+  // the child this device last chose (`/overview` opens it).
   await page.waitForURL(
     (url) =>
       url.origin === origin &&
-      (url.pathname === "/overview" ||
-        /^\/school\/[^/]+\/classes\/[^/]+\/today$/.test(url.pathname)),
+      /^\/family\/[^/]+(\/kids\/[^/]+)?$/.test(url.pathname),
   );
-  if (new URL(page.url()).pathname.startsWith("/school/")) {
-    await todayTitle(page);
-  }
+  if (new URL(page.url()).pathname.includes("/kids/"))
+    await page.locator("[data-child-page]").waitFor();
+  else await todayTitle(page);
   await page
     .getByRole("button", { name: "Open AMP menu" })
     .click()
@@ -139,15 +181,7 @@ async function signedIn(page: Page, email: string) {
   );
   const signOut = page.getByRole("button", { name: "Sign out", exact: true });
   await signOut.waitFor();
-  if (new URL(page.url()).pathname.startsWith("/school/")) {
-    await page
-      .getByRole("link", { name: "Family & account", exact: true })
-      .click();
-    await page.waitForURL(`${origin}/family`);
-    await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
-  } else {
-    await page.getByRole("button", { name: "Close AMP menu" }).click();
-  }
+  await page.getByRole("button", { name: "Close AMP menu" }).click();
   await signOut.waitFor({ state: "hidden" });
 }
 
@@ -189,8 +223,16 @@ try {
     .waitFor();
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
   await page.getByRole("button", { name: "Birth year, Child 1" }).click();
-  await page.getByRole("option", { name: "2016", exact: true }).click();
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Birth year, Child 1" })
+    .getByRole("option", { name: "2016", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  // One child goes straight into their first problem, on this device; the
+  // child's Sign out gives it back to the parent, on the family's Today.
+  await page.waitForURL((url) => /^\/practice\/[^/]+$/.test(url.pathname));
+  await page.locator(".problem-stage").waitFor();
+  await returnToParent(page);
   await signedIn(page, email);
 
   // Sign out, then back in; a wrong password is reported in place.
@@ -216,9 +258,15 @@ try {
   await page.getByLabel("Email").fill(email);
   await page.getByRole("button", { name: "Send reset link" }).click();
   await page.getByRole("status").waitFor();
-  const link = mail
-    .join("\n")
-    .match(new RegExp(`${origin}/api/auth/reset-password/\\S+`))?.[0];
+  // The answer never waits on the mail (it reads the same for any address),
+  // so the link arrives shortly after it.
+  let link: string | undefined;
+  for (let wait = 0; wait < 50 && !link; wait++) {
+    link = mail
+      .join("\n")
+      .match(new RegExp(`${origin}/api/auth/reset-password/\\S+`))?.[0];
+    if (!link) await delay(200);
+  }
   assert.ok(link, "a reset link was emailed");
   await page.goto(link!);
   await page.getByRole("heading", { name: "Choose a new password" }).waitFor();
@@ -249,10 +297,44 @@ try {
       },
     },
   );
-  async function openSecurity() {
-    await page.goto(`${origin}/family/security`);
-    await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
+  /** The Sign-in & security overlay and its methods. */
+  async function securityOverlay() {
+    await page
+      .getByRole("dialog", { name: "Sign-in & security" })
+      .getByRole("button", { name: /^Passkeys/ })
+      .waitFor();
+  }
+  /** Each sign-in method is a closed panel until opened (#2157). */
+  async function openPasskeys() {
+    await page.getByRole("button", { name: /^Passkeys/ }).click();
     await page.getByLabel("Name for this passkey").waitFor();
+  }
+  /** Ages this account's sessions past the security window and reads the
+   * page again, which then offers Sign in again. */
+  async function staleSecurity() {
+    await repository.pool.query(
+      `UPDATE amp_auth_sessions SET "createdAt"=now()-interval '6 minutes' WHERE "userId"=(SELECT id FROM amp_auth_users WHERE email=$1)`,
+      [email],
+    );
+    await page.goto(`${origin}/account/security`);
+    await page
+      .getByRole("link", { name: "Sign in again", exact: true })
+      .waitFor();
+  }
+  /** Sign-in & security, as a parent reaches it (IA v2): the drawer's
+   * Settings (their family's Settings, or /account without a family), then
+   * the Account section's row, which opens the overlay over it. */
+  async function openSecurity() {
+    await page.goto(`${origin}/`);
+    const drawer = await openMenu(page);
+    await drawer
+      .getByRole("link", { name: /^(Settings|Account)$/ })
+      .last()
+      .click();
+    await drawer.waitFor({ state: "detached" });
+    await page.locator("[data-settings-security]").click();
+    await securityOverlay();
+    await openPasskeys();
   }
   await openSecurity();
   await fits(page, "security");
@@ -294,6 +376,10 @@ try {
   await page.getByRole("button", { name: "I saved these codes" }).click();
   // Let the real per-address authentication rate window expire.
   await delay(11_000);
+  // Security changes need a sign-in in the last five minutes; past that, the
+  // page offers Sign in again (#2157).
+  await staleSecurity();
+  await fits(page, "security-stale");
   // Recent authentication must retain the return route through the TOTP step.
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByLabel("Email").fill(email);
@@ -304,7 +390,7 @@ try {
     .getByLabel("Code from your authenticator app")
     .fill(await createOTP(rawSecret).totp());
   await page.getByRole("button", { name: "Verify", exact: true }).click();
-  await page.waitForURL(origin + "/family/security");
+  await page.waitForURL(origin + "/account/security");
   await page.getByRole("button", { name: "Authenticator On" }).click();
   await page.getByLabel("Current password").fill(changed);
   await page.getByRole("button", { name: "Disable authenticator" }).click();
@@ -330,34 +416,11 @@ try {
     .waitFor();
   await fits(page, "password-changed");
   assert.equal((await siblingRefresh).status(), 200);
-  await sibling.getByRole("button", { name: "Open AMP menu" }).click();
-  await sibling.getByRole("link", { name: "Account", exact: true }).click();
-  await sibling
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Learners", exact: true })
-    .click();
-  await sibling
-    .getByRole("button", { name: "Add learner", exact: false })
-    .click();
-  await sibling
-    .getByRole("textbox", { name: "Name", exact: true })
-    .fill("Sibling");
-  await sibling
-    .getByRole("button", { name: "Add learner", exact: true })
-    .click();
-  await sibling.getByText("Sibling added.", { exact: true }).waitFor();
+  await addChild(sibling, "Sibling");
   await sibling.close();
 
   // Session rotation must update AMP's in-memory API bearer token too.
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Learners", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Add learner", exact: false }).click();
-  await page.getByRole("textbox", { name: "Name", exact: true }).fill("Maya");
-  await page.getByRole("button", { name: "Add learner", exact: true }).click();
-  await page.getByText("Maya added.", { exact: true }).waitFor();
-  await leaveSettings(page);
+  await addChild(page, "Maya");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.
@@ -366,15 +429,13 @@ try {
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await signedIn(page, email);
   await openSecurity();
-  await repository.pool.query(
-    `UPDATE amp_auth_sessions SET "createdAt"=now()-interval '6 minutes' WHERE "userId"=(SELECT id FROM amp_auth_users WHERE email=$1)`,
-    [email],
-  );
+  await staleSecurity();
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByRole("heading", { name: "Sign in", exact: true }).waitFor();
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
-  await page.waitForURL(origin + "/family/security");
-  await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
+  await page.waitForURL(origin + "/account/security");
+  await securityOverlay();
+  await openPasskeys();
   await page.getByRole("button", { name: "Remove", exact: true }).click();
   await page.getByRole("button", { name: "Confirm removal" }).click();
   await page

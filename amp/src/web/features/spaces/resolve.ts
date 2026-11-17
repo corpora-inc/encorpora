@@ -14,11 +14,13 @@ import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
 import {
   childAddress,
   learningIdentity,
+  namesLearnerByPath,
+  practicePath,
   type AddressedIdentity,
+  selfOf,
 } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
-  accountTabs,
   childTabs,
   classroomTabs,
   familyPlaceTabs,
@@ -29,10 +31,6 @@ import {
 } from "./tabs";
 import { spaceWords, type SpaceWords } from "./words";
 import { parentHome } from "../family/parent-home";
-import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../family/settings-family";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md, "Resolution"):
@@ -368,6 +366,8 @@ function chosenLearner(
    * learning view and practice read it. */
   named: AddressedIdentity | null,
   selected: string | null,
+  /** The path itself names the learner (identity.ts `namesLearnerByPath`). */
+  byPath = false,
 ): Chosen | null {
   const own = me?.adultPractice?.learner ?? null;
   const learnerOf = (id: string): Chosen | null => {
@@ -388,9 +388,15 @@ function chosenLearner(
       ? { kind: "own", id, name: profile.label, profile: true }
       : null;
   };
-  // Named: that learner or profile, of the kind named, or nobody.
+  // Named: that learner or profile, of the kind named, or nobody. A path
+  // that names a learner may name one of this adult's own practice profiles
+  // (a profile is their learner): its Continue with AMP (`/pay/<id>`)
+  // is the profile's own way on, never "not available". A search value
+  // (`?learner=`) never names a profile (CP-2 r3).
   if (named)
-    return named.kind === "profile" ? profileOf(named.id) : learnerOf(named.id);
+    return named.kind === "profile"
+      ? profileOf(named.id)
+      : (learnerOf(named.id) ?? (byPath ? profileOf(named.id) : null));
   const chosen = selected ? (learnerOf(selected) ?? profileOf(selected)) : null;
   if (chosen) return chosen;
   const first = me?.learners[0];
@@ -475,21 +481,6 @@ function resolveOnce(
       space: "public",
       entry: entryOf(match.pathname, route),
     };
-  if (route === "account" && usesFamilySettingsFrame(match.pathname)) {
-    const family = settingsFamilyOf(resources.families);
-    if (family && resources.family?.familyId === family.familyId)
-      return familyPlaceSpace(
-        { ...base, ...words("family") },
-        {
-          kind: "family",
-          family: family.familyId,
-          leaf: "settings",
-          active: "settings",
-        },
-        me,
-        resources,
-      );
-  }
   if (route === "account")
     return {
       ...base,
@@ -503,7 +494,7 @@ function resolveOnce(
             : /^\/school(\/|$)/.test(match.pathname)
               ? "setup"
               : "steps",
-      tabs: frame?.kind === "account" ? [...accountTabs] : [],
+      tabs: [],
       actions: frame?.kind === "plain" && frame.practice ? ["practice"] : [],
       label: frame?.kind === "account" ? "Account" : null,
     };
@@ -577,17 +568,26 @@ function resolveOnce(
     }
   }
   if (route === "learner" || route === "me" || route === "family") {
-    // An unnamed shared learning screen is the adult's own (self).
+    // An unnamed shared learning screen is self's: the profile practiced
+    // as, else the adult's own (identity.ts selfOf).
     const named =
       route === "me"
         ? null
         : learningIdentity(
             match.pathname,
             match.search ?? {},
-            me?.adultPractice?.learner?.id,
+            selfOf(me, session.learnerId),
+            me,
           );
     const chosen =
-      route === "me" ? null : chosenLearner(me, named, session.learnerId);
+      route === "me"
+        ? null
+        : chosenLearner(
+            me,
+            named,
+            session.learnerId,
+            namesLearnerByPath(match.pathname),
+          );
     // The address named someone this account doesn't read: unavailable,
     // never whoever was chosen before.
     const foreign = route === "learner" && !chosen && !!named;
@@ -656,7 +656,8 @@ function studentSpace(
       {
         id: "practice",
         label: "Practice",
-        path: "practice",
+        // Their practice's own address (identity.ts `practicePath`).
+        path: learner ? practicePath(learner.id).slice(1) : "practice",
         icon: "learn",
         current: frame?.kind === "practice",
       },
@@ -772,7 +773,12 @@ function meSpace(
         : []),
       ...(own
         ? [
-            destination("practice", "Practice", "practice", "learn"),
+            destination(
+              "practice",
+              "Practice",
+              practicePath(own.id).slice(1),
+              "learn",
+            ),
             destination("levels", "Levels", "me", "level"),
             destination("workbooks", "Workbooks", workbooks!, "workbooks"),
           ]
@@ -874,14 +880,12 @@ function familySpace(
               : {}),
           })
         : workbooks && orgId
-          ? familyPlaceTabs(orgId, {
-              onlyChild: learners.length === 1 ? learners[0]!.id : undefined,
-            })
+          ? familyPlaceTabs(orgId)
           : frame?.kind === "progress" && learner && orgId
             ? childTabs(orgId, learner.id)
             : [];
   const active = workbooks
-    ? "progress"
+    ? "today"
     : frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
@@ -1276,9 +1280,7 @@ function familyPlaceSpace(
         ? []
         : onRecord && learner
           ? childTabs(frame.family, learner.id)
-          : familyPlaceTabs(frame.family, {
-              onlyChild: children.length === 1 ? children[0]!.id : undefined,
-            }),
+          : familyPlaceTabs(frame.family),
     bar: "tabs",
     active: onRecord ? record.screen : frame.active,
     actions: [],

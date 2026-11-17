@@ -15,9 +15,11 @@
  *   target     a control under 44 × 44 px (links inside a sentence excepted)
  *   mid-word   a word broken across lines
  *   nested-scroll  at 768 px or less, a box that scrolls up and down inside
- *              the page (the page itself, a full-screen frame and a modal
- *              sheet's one scroll region excepted; sideways table scrollers
- *              are fine)
+ *              the page (the page itself, a full-screen frame, a fixed
+ *              full-screen frame's one region when the page never scrolls
+ *              and its controls stay in view (practice), and a modal
+ *              sheet's one scroll region excepted; sideways table
+ *              scrollers are fine)
  *
  * Writes `<out>/<label>.json` and one marked screenshot per new failure under
  * `<out>/shots/<label>/`. Exits 1 when anything fails.
@@ -27,6 +29,7 @@
  *     [--people family,teacher] [--widths 390,1280] [--schemes light] \
  *     [--label before] [--out <dir>] [--max-screens 40]
  */
+import { storedLayers } from "./layer-probe";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
@@ -37,6 +40,7 @@ import {
   personaEmail,
 } from "../src/web/features/dev/persona-list";
 import { stubAnalytics } from "./analytics-stub";
+import { frameRegionAllowed } from "./layout-sweep-rules";
 
 const argument = (name: string) => {
   const at = process.argv.indexOf(`--${name}`);
@@ -640,6 +644,38 @@ function audit(): Failure[] {
       );
       if (inside.length === 1) allowed.add(inside[0]!);
     }
+    // A full-screen frame (practice): its one problem-area scroll, when it
+    // is the page's only one and the answer controls stay in view.
+    const pageScrolls =
+      document.scrollingElement!.scrollHeight > window.innerHeight + 1;
+    const frameRule = (
+      window as unknown as {
+        __frameRegionAllowed: (facts: {
+          pageScrolls: boolean;
+          regions: number;
+          controlsInView: boolean;
+        }) => boolean;
+      }
+    ).__frameRegionAllowed;
+    for (const frame of document.body.querySelectorAll("*")) {
+      if (styleOf(frame).position !== "fixed" || !shown(frame)) continue;
+      const box = frame.getBoundingClientRect();
+      if (box.width < vw - 1 || box.height < window.innerHeight * 0.85)
+        continue;
+      const inside = scrollers.filter(
+        (element) => !allowed.has(element) && frame.contains(element),
+      );
+      if (inside.length !== 1) continue;
+      const region = inside[0]!;
+      const controlsInView = [...frame.querySelectorAll(CONTROL)]
+        .filter((control) => shown(control) && !region.contains(control))
+        .every((control) => {
+          const at = control.getBoundingClientRect();
+          return at.top >= -1 && at.bottom <= window.innerHeight + 1;
+        });
+      if (frameRule({ pageScrolls, regions: inside.length, controlsInView }))
+        allowed.add(region);
+    }
     for (const element of scrollers) {
       if (allowed.has(element)) continue;
       const html = element as HTMLElement;
@@ -691,6 +727,10 @@ async function contextFor(person: string): Promise<BrowserContext> {
   });
   await stubAnalytics(context);
   await context.addInitScript("window.__name = (f) => f;");
+  // The rules the audit applies in the page (scripts/layout-sweep-rules.ts).
+  await context.addInitScript(
+    `window.__frameRegionAllowed = ${frameRegionAllowed.toString()};`,
+  );
   if (person !== "signed-out") {
     const response = await context.request.post(
       `${origin}/api/auth/sign-in/email`,
@@ -879,6 +919,13 @@ for (const person of PEOPLE) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
     try {
+      // Each address shows only the layers it names: the layer store
+      // (sessionStorage `amp.layers`) forgets the screens swept before.
+      await page
+        .evaluate(() => sessionStorage.removeItem("amp.layers"))
+        .catch((error) =>
+          console.warn(`[${person}] layers not cleared`, String(error)),
+        );
       await page.goto(target.href, { waitUntil: "domcontentloaded" });
     } catch (error) {
       console.error(`[${person}] ${target.href} did not open`, error);
@@ -886,6 +933,14 @@ for (const person of PEOPLE) {
     }
     await settle(page);
     const landed = new URL(page.url());
+    // A link's layers move into the screen's layers and leave the address:
+    // they are still part of the screen's shape.
+    const stack = await storedLayers(page);
+    if (stack.length)
+      landed.searchParams.set(
+        "open",
+        stack.map((layer) => `${layer.kind}:${layer.id}`).join(","),
+      );
     const screen = shape(landed);
     // Every shape it opens or redirects to is noted, so it isn't queued again.
     shapes.add(screen);

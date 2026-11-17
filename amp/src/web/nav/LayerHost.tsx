@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams, useSearch } from "@tanstack/react-router";
-import {
-  lazy,
-  Suspense,
-  useLayoutEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { useSessionOrNull } from "../lib/session";
+import { useParams } from "@tanstack/react-router";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 // A lesson is its own chunk, with every problem type's title: it opens with
 // its head laid out (features/pathways/LessonDialog.tsx).
-const LessonDialog = lazy(() => import("../features/pathways/LessonDialog"));
+/** The lesson layer's code, asked for once: the warm-up and the layer
+ * share one answer (a failed load fails the layer, never loads twice). */
+const lessonCode: { load?: ReturnType<typeof loadLessonCode> } = {};
+const loadLessonCode = () => import("../features/pathways/LessonDialog");
+const lessonChunk = () => (lessonCode.load ??= loadLessonCode());
+const LessonDialog = lazy(lessonChunk);
 import {
   LessonFailure,
   LessonLayerBoundary,
@@ -17,14 +17,12 @@ import {
 import { Dialog } from "../ui/Dialog";
 import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
-import {
-  WorkReplaySlot,
-  workSkill,
-} from "../features/school/classes/WorkReplaySlot";
+import { WorkReplaySlot } from "../features/school/classes/WorkReplaySlot";
 import { skillCatalogOptions } from "../lib/learning-view";
-import { sessionOptions } from "../lib/query";
-import { closeDepth, staffOnly, workParts, type Entity } from "./entities";
+import { ENTITIES, staffOnly, workParts, type Entity } from "./entities";
 import { useLayers } from "./links";
+import { MOTION_MS, useLayerStore } from "./layer-store";
+import { LayerFrame, type Moving } from "../ui/LayerFrame";
 import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
@@ -32,11 +30,12 @@ import { strandNames } from "../BirthYearPrompt";
 import { CurriculumPractice } from "../features/practice/CurriculumPractice";
 
 /**
- * The layers open over a page (`?open=`, nav/entities.ts), drawn in order:
- * each over the one before, the page under them all still mounted. Only
- * the top one takes keys and X. Its X and Escape put it down, one layer
- * (Q-8): the one under it shows again, or the page; Back and Forward walk
- * the same steps (lib/return-to.ts). The scrim puts the whole stack away.
+ * The layers open over a page (nav/layer-store.ts), the page under them
+ * still mounted: ONE overlay with ONE scrim (ui/LayerFrame.tsx), its panel
+ * the top layer, its trail the way back up. ✕ and the scrim put the whole
+ * overlay away; Escape and the trail go up a level. Layers are no steps in
+ * history: Back and Forward go between screens, and a screen shows again
+ * with its layers as they were, settled, never replaying their motion.
  *
  * A school or class frame passes its `org`: every kind opens. Own practice
  * (Pathways) passes none: a skill and a lesson open, never a student, and a
@@ -54,7 +53,7 @@ export function LayerHost({
   /** The level the page shows, for an area opened over it
    * (`area:<strand>`); over a student's record, theirs instead. */
   area?: AreaSource;
-  /** Which of the address's layers this page may open (a family's own
+  /** Which of the stack's layers this page may open (a family's own
    * children's records, never another family's): others are not drawn. */
   allow?: (entity: Entity) => boolean;
   /** Own practice: whose map this is (none for a visitor). */
@@ -65,93 +64,135 @@ export function LayerHost({
   /** In a skill: what this page offers with it (try a problem). */
   skillActions?: (skill: string) => ReactNode;
 }) {
-  const { stack, close: pop, closeAll, closeToDepth } = useLayers();
+  const layers = useLayers();
+  const { stack, scope } = layers;
   const shown = (
     org ? stack : stack.filter((entity) => !staffOnly(entity.kind))
   ).filter((entity) => !allow || allow(entity));
-  // A stack restored at once (a refresh, a shared link) mounts a layer per
-  // pass, before paint, so each one's modal hides those under it from
-  // assistive technology, never the one above it.
-  const [depth, setDepth] = useState(1);
-  useLayoutEffect(() => {
-    if (depth < shown.length) setDepth(depth + 1);
-    else if (depth > Math.max(1, shown.length))
-      setDepth(Math.max(1, shown.length));
-  }, [depth, shown.length]);
-  return shown.slice(0, depth).map((entity, index) => (
-    // Each layer's X and Escape step down one layer; its scrim puts the
-    // whole stack away, back to the page or to an answer replay below.
-    <LayerBackProvider
-      value={pop}
-      key={
-        entity.kind === "work" || entity.kind === "own-work"
-          ? `${index}:work`
-          : `${index}:${entity.kind}:${entity.id}`
-      }
-    >
-      <Layer
-        key={
-          entity.kind === "work" || entity.kind === "own-work"
-            ? `${index}:work`
-            : `${index}:${entity.kind}:${entity.id}`
-        }
-        entity={entity}
-        below={shown.slice(0, index)}
-        above={shown.slice(index + 1)}
-        org={org}
-        learner={learner}
-        pop={pop}
-        close={() => {
-          // The scrim: the whole stack away, except over an answer replay:
-          // a lesson opened from the replay closes back to it (closeDepth).
-          const depth = closeDepth(stack, stack.indexOf(entity));
-          if (depth) closeToDepth(depth);
-          else closeAll();
-        }}
-        lessonActions={lessonActions}
-        skillActions={skillActions}
-        area={area}
-      />
+  // An answer's replay fills the screen, a base of its own: the layers
+  // under it wait (closing it shows them again), and those over it (its
+  // lesson) are the overlay's.
+  let replayAt = -1;
+  shown.forEach((entity, index) => {
+    if (replays(entity)) replayAt = index;
+  });
+  const replay = replayAt >= 0 ? shown[replayAt]! : null;
+  const framed = shown.slice(replayAt + 1);
+  const depthOf = (entity: Entity) => stack.indexOf(entity) + 1;
+  const moving = (): Moving => {
+    const motion = useLayerStore.getState().motion;
+    return motion?.scope === scope && performance.now() - motion.at < MOTION_MS
+      ? { direction: motion.direction, closed: motion.closed }
+      : { direction: 0 };
+  };
+  const top = framed.at(-1);
+  // Any layer can open a lesson over it: its chunk is fetched while the
+  // overlay is up, so going deeper never waits on it.
+  const open = !!top;
+  useEffect(() => {
+    if (open)
+      void lessonChunk().catch((error: unknown) =>
+        console.warn("The lesson layer's code did not preload", error),
+      );
+  }, [open]);
+  return (
+    // Each layer's own way back (a lesson's recovery) steps up one level.
+    <LayerBackProvider value={layers.close}>
+      {replay && (
+        <WorkReplaySlot
+          own={replay.kind === "own-work"}
+          student={replay.kind === "work" ? workParts(replay.id).student : ""}
+          attempt={
+            replay.kind === "work" ? workParts(replay.id).attempt : replay.id
+          }
+          skill={replay.skill}
+          layer={{
+            // An answer closes back to the page it was opened over (its
+            // student's sheet with it), as its address always did.
+            close: () => layers.closeLayer(depthOf(replay) - 1),
+            up: layers.close,
+            covered: framed.length > 0,
+            step: (entity) => layers.replaceTop(entity),
+          }}
+        />
+      )}
+      {top && (
+        // One overlay, one scrim, however deep: the top layer is its panel,
+        // the trail the way back up (ui/LayerFrame.tsx). A lesson's chunk
+        // arrives before the overlay shows, so it opens whole, its head,
+        // film and wait in place on its first frame.
+        <Suspense fallback={null}>
+          <LayerFrame
+            // A new frame for each base: over a replay, or over the page.
+            key={replay ? `over:${replay.id}` : "page"}
+            crumbs={framed.map((entity, index) => ({
+              key: `${index}:${entity.kind}:${entity.id}`,
+              title: <LayerTitle entity={entity} />,
+            }))}
+            layers={framed
+              .map((entity) => `${entity.kind}:${entity.id}`)
+              .join()}
+            onCrumb={(depth) => layers.closeToDepth(replayAt + 1 + depth)}
+            onClose={layers.closeAll}
+            onStepBack={layers.close}
+            moving={moving}
+            wide={top.kind === "lesson"}
+            above={!!replay}
+          >
+            <Layer
+              entity={top}
+              below={shown.slice(0, shown.indexOf(top))}
+              org={org}
+              learner={learner}
+              close={layers.closeAll}
+              lessonActions={lessonActions}
+              skillActions={skillActions}
+              area={area}
+            />
+          </LayerFrame>
+        </Suspense>
+      )}
     </LayerBackProvider>
-  ));
+  );
 }
+
+const replays = (entity: Entity) =>
+  entity.kind === "work" || entity.kind === "own-work";
+
+/** A layer's name in the trail: its title, or its kind while that loads. */
+function LayerTitle({ entity }: { entity: Entity }) {
+  const title = useLayerTitle(entity);
+  return <>{title ?? capitalized(ENTITIES[entity.kind].noun)}</>;
+}
+const capitalized = (word: string) => word[0]!.toUpperCase() + word.slice(1);
 
 function Layer({
   entity,
   below,
-  above,
   org,
   learner,
   close,
-  pop,
   lessonActions,
   skillActions,
   area,
 }: {
   entity: Entity;
   below: Entity[];
-  above: Entity[];
   org?: string;
   learner?: string;
+  /** The whole overlay away (a lesson's failure, closed). */
   close: () => void;
-  /** One layer down: an answer replay's own X and Escape. */
-  pop: () => void;
   lessonActions?: (lesson: string, skill?: string) => ReactNode;
   skillActions?: (skill: string) => ReactNode;
   area?: AreaSource;
 }) {
   const classId = (useParams({ strict: false }) as { class?: string }).class;
-  // A replayed answer's own X steps back one layer, as every layer's does.
-  const search = useSearch({ strict: false }) as { skill?: unknown };
-  // The layer under this one: where X returns (the lesson's recovery names
-  // it; no header draws it twice).
+  // The layer under this one: where a lesson's recovery goes back to.
   const back = useLayerTitle(below.at(-1));
   const title = useLayerTitle(entity);
-  // A replayed answer fills the screen: a sheet under it waits closed
-  // (Back reopens it), so only one thing ever holds focus.
-  const underAnswer = above.some(
-    (layer) => layer.kind === "work" || layer.kind === "own-work",
-  );
+  // Every layer here is the frame's panel (its Sheet or Dialog draws into
+  // it): open while it is the top.
+  const underAnswer = false;
   switch (entity.kind) {
     case "student":
       return (
@@ -211,7 +252,7 @@ function Layer({
             </Dialog>
           }
         >
-          <Suspense fallback={null}>
+          <>
             <LessonDialog
               lesson={entity.id}
               onClose={close}
@@ -224,7 +265,7 @@ function Layer({
                 )
               }
             />
-          </Suspense>
+          </>
         </LessonLayerBoundary>
       );
     }
@@ -251,27 +292,10 @@ function Layer({
         />
       ) : null;
     }
+    // An answer's replay is a base of its own, drawn beside the frame.
     case "own-work":
-      return (
-        <WorkReplaySlot
-          own
-          student=""
-          attempt={entity.id}
-          skill={workSkill(search.skill)}
-          layer={{ close: pop, covered: above.length > 0 }}
-        />
-      );
-    case "work": {
-      const { student, attempt } = workParts(entity.id);
-      return (
-        <WorkReplaySlot
-          student={student}
-          attempt={attempt}
-          skill={workSkill(search.skill)}
-          layer={{ close: pop, covered: above.length > 0 }}
-        />
-      );
-    }
+    case "work":
+      return null;
   }
 }
 
@@ -290,7 +314,7 @@ function StudentArea({
   onClose: () => void;
   back?: string;
 }) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const record = useQuery({
     ...studentRecordOptions(session, student),
     enabled: !!session,
@@ -311,7 +335,7 @@ function StudentArea({
  * name, a skill's or a lesson's title. Nothing while it loads, or for a
  * replayed answer (the X over it is plain). */
 export function useLayerTitle(entity: Entity | undefined) {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const student = useQuery({
     ...studentRecordOptions(session, entity?.id ?? ""),
     enabled: !!session && entity?.kind === "student",

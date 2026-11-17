@@ -136,24 +136,26 @@ def public_target(public):
         require(1 <= abs(a) <= 6 and 1 <= n <= bound, 'Radical term outside declared domain')
         return term(a, n)
 
+    # The app drops a sentence's closing period after display math, so a
+    # prompt ends "…$" or, as authored, "…$.".
     if template == 'simplify-square-root':
-        match = re.fullmatch(r'Simplify \$\\sqrt\{([0-9]+)\}\$\.', prompt)
+        match = re.fullmatch(r'Simplify \$\\sqrt\{([0-9]+)\}\$\.?', prompt)
         require(match is not None and 0 <= int(match[1]) <= 400,
                 'Malformed or out-of-domain square-root prompt')
         return root(int(match[1]))
     if template == 'combine-square-roots':
-        match = re.fullmatch(r'Simplify \$' + coefficient + r' ([+−-]) ' + coefficient + r'\$\.', prompt)
+        match = re.fullmatch(r'Simplify \$' + coefficient + r' ([+−-]) ' + coefficient + r'\$\.?', prompt)
         require(match is not None and not match[4].startswith('-'),
                 'Malformed radical-sum prompt')
         left = bounded_term(match[1], match[2], 200)
         right = bounded_term(match[4], match[5], 200)
         return add(left, scale(right, 1 if match[3] == '+' else -1))
     if template == 'multiply-square-roots':
-        match = re.fullmatch(r'Simplify \$\(' + coefficient + r'\)\(' + coefficient + r'\)\$\.', prompt)
+        match = re.fullmatch(r'Simplify \$\(' + coefficient + r'\)\(' + coefficient + r'\)\$\.?', prompt)
         require(match is not None, 'Malformed radical-product prompt')
         return multiply(bounded_term(match[1], match[2], 100),
                         bounded_term(match[3], match[4], 100))
-    match = re.fullmatch(r'Rationalize the denominator and simplify \$\\frac\{(-?[0-9]+)\}\{([0-9]*)\\sqrt\{([0-9]+)\}\}\$\.', prompt)
+    match = re.fullmatch(r'Rationalize the denominator and simplify \$\\frac\{(-?[0-9]+)\}\{([0-9]*)\\sqrt\{([0-9]+)\}\}\$\.?', prompt)
     require(match is not None, 'Malformed radical-quotient prompt')
     a, b, n = int(match[1]), int(match[2] or '1'), int(match[3])
     require(1 <= abs(a) <= 12 and 1 <= b <= 6 and 2 <= n <= 100

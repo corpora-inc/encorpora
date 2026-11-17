@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
 import {
@@ -24,7 +25,7 @@ import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions, refreshSchool } from "../api";
 import { orgPath } from "../paths";
 import { classYearOptions } from "../org/org-api";
-import { useClassSearch } from "../classes/teacher-shared";
+import { sheetState, useSheet } from "../../../nav/sheet";
 import type { FeedEntry } from "../classes/today/Feed";
 import { Authorization } from "./Authorization";
 import { pilotApi, pilotOptions, purchaseRequestOptions } from "./api";
@@ -381,14 +382,14 @@ export const practiceEnded = (view: AccessView) => view.kind === "ended";
  * the authorization sheet (a class that arrived from a roster sync). */
 function useStartPractice(place: Place, pilot: PilotState | undefined) {
   const session = currentSession();
-  const [, setSearch] = useClassSearch();
+  const authorizeSheet = useSheet("authorize");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
   const start = async () => {
     if (!pilot || busy) return;
     if (!pilot.authorized) {
-      setSearch({ authorize: 1 });
+      authorizeSheet.show();
       return;
     }
     setBusy(true);
@@ -398,9 +399,10 @@ function useStartPractice(place: Place, pilot: PilotState | undefined) {
       await refreshSchool(session);
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "Practice didn’t start. Try again.",
+        reportError(failure, {
+          doing: "start practice",
+          fallback: "Practice didn’t start. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -435,12 +437,9 @@ export function StartPracticeButton({
 }
 
 export function RequestSeatsButton({ primary }: { primary: boolean }) {
-  const [, setSearch] = useClassSearch();
+  const seats = useSheet("seats");
   return (
-    <Button
-      variant={primary ? "primary" : "secondary"}
-      onClick={() => setSearch({ seats: 1 })}
-    >
+    <Button variant={primary ? "primary" : "secondary"} onClick={seats.show}>
       Request seats
     </Button>
   );
@@ -544,7 +543,7 @@ export function AccessHeaderAction({
  * one quiet line, and Request seats for its teacher). */
 export function AccessLine({ place }: { place: Place }) {
   const { view, requests } = useClassAccess(place);
-  const [, setSearch] = useClassSearch();
+  const seats = useSheet("seats");
   const text =
     view.kind === "active"
       ? `Through ${practiceDate(view.until)}`
@@ -568,7 +567,7 @@ export function AccessLine({ place }: { place: Place }) {
           <p className={school.quiet}>{text}</p>
         </div>
         {requests && (
-          <Button variant="secondary" onClick={() => setSearch({ seats: 1 })}>
+          <Button variant="secondary" onClick={seats.show}>
             Request seats
           </Button>
         )}
@@ -577,13 +576,45 @@ export function AccessLine({ place }: { place: Place }) {
   );
 }
 
-/** The sheets practice access opens over a class page, by address
- * (`?seats=1`, `?authorize=1`), so Back and refresh keep them. */
+/**
+ * The class's next access step, where a screen shows students who need a
+ * seat (the workbook stack): the same step Today's feed offers (Start, or
+ * Request seats, or who can), from `accessFeedEntry`, with its sheets here,
+ * so the request is made in place. Nothing while the class has no step.
+ */
+export function AccessStep({ place }: { place: Place }) {
+  const access = useClassAccess(place);
+  const ended = useEndedStep(place);
+  const entry = accessFeedEntry(
+    access.view,
+    place,
+    access.pilot,
+    access.requests,
+    ended,
+  );
+  if (!entry) return null;
+  return (
+    <div className={styles.accessStep} data-access-step={access.view.kind}>
+      <p>
+        <strong>{entry.title}</strong>
+        {entry.detail && <span> {entry.detail}</span>}
+      </p>
+      {entry.actions && (
+        <div className={styles.accessStepAction}>{entry.actions}</div>
+      )}
+      <AccessSheets place={place} />
+    </div>
+  );
+}
+
+/** The sheets practice access opens over a class page, in history state
+ * (nav/sheet.ts: "seats", "authorize"), so Back and refresh keep them. */
 export function AccessSheets({ place }: { place: Place }) {
   const { view, pilot, teaches, requests } = useClassAccess(place);
-  const [search, , close] = useClassSearch();
-  const seats = search.seats === 1 || search.seats === "1";
-  const authorize = search.authorize === 1 || search.authorize === "1";
+  const seatsSheet = useSheet("seats");
+  const authorizeSheet = useSheet("authorize");
+  const seats = seatsSheet.open;
+  const authorize = authorizeSheet.open;
   if (view.kind === "none" || !requests) return null;
   return (
     <>
@@ -592,14 +623,14 @@ export function AccessSheets({ place }: { place: Place }) {
         place={place}
         students={pilot?.coverage?.students ?? 0}
         open={seats}
-        onClose={() => close("seats")}
+        onClose={seatsSheet.close}
       />
       {teaches && view.kind === "start" && pilot && !pilot.authorized && (
         <AuthorizeSheet
           place={place}
           until={view.until}
           open={authorize}
-          onClose={() => close("authorize")}
+          onClose={authorizeSheet.close}
         />
       )}
     </>
@@ -683,9 +714,11 @@ function RequestSeatsSheet({
         await existing.refetch();
       } else
         setError(
-          failure instanceof AppError
-            ? failure.message
-            : "The link didn’t save. Try again.",
+          reportError(failure, {
+            doing: "save the seat request",
+            fallback: "The link didn’t save. Try again.",
+            details: { class: place.class },
+          }),
         );
     } finally {
       setBusy(false);
@@ -855,9 +888,10 @@ function AuthorizeSheet({
       onClose();
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "Practice didn’t start. Try again.",
+        reportError(failure, {
+          doing: "start practice",
+          fallback: "Practice didn’t start. Try again.",
+        }),
       );
     } finally {
       setBusy(false);
@@ -909,7 +943,8 @@ export function ClosedSignIn({
   known,
 }: {
   place: Place;
-  /** A way back beside the next step (the board's Exit). */
+  /** Beside the next step: the board's Close. The class's own tabs are the
+   * way anywhere else; there is no in-page Back. */
   also?: ReactNode;
   /** Also read again what the screen itself read (the board's presence). */
   onRetry?: () => void;
@@ -927,17 +962,18 @@ export function ClosedSignIn({
       ? known
       : access.practice;
   const unavailable = access.unavailable && practice === access.practice;
-  const actions = (next: ReactNode) => (
-    <div className={styles.sheetActions}>
-      {next}
-      {also}
-    </div>
-  );
+  const actions = (next: ReactNode) =>
+    next || also ? (
+      <div className={styles.sheetActions}>
+        {next}
+        {also}
+      </div>
+    ) : undefined;
   const today = `/school/${place.org}/classes/${place.class}/today`;
-  const to = (label: string, search: Record<string, number> = {}) => (
+  const to = (label: string, sheet?: "authorize" | "seats") => (
     <Link
       to={today as never}
-      search={search as never}
+      state={(sheet ? sheetState(sheet) : undefined) as never}
       className={buttonClass("primary")}
     >
       {label}
@@ -988,10 +1024,7 @@ export function ClosedSignIn({
         )}
       />
     ) : (
-      <EmptyState
-        title="No students yet"
-        action={actions(also ? null : to("Back to Today"))}
-      />
+      <EmptyState title="No students yet" action={actions(null)} />
     );
   if (practice === "waiting" && view.kind === "start")
     return (
@@ -1003,7 +1036,7 @@ export function ClosedSignIn({
           pilot?.authorized ? (
             <StartPracticeButton place={place} pilot={pilot} />
           ) : (
-            to("Start practice", { authorize: 1 })
+            to("Start practice", "authorize")
           ),
         )}
       >
@@ -1016,7 +1049,7 @@ export function ClosedSignIn({
     return (
       <EmptyState
         title="Waiting for the class’s teacher to start practice"
-        action={actions(also ? null : to("Back to Today"))}
+        action={actions(null)}
       />
     );
   return (
@@ -1024,7 +1057,7 @@ export function ClosedSignIn({
       title={ended.title}
       action={actions(
         ended.action === "seats" ? (
-          to("Request seats", { seats: 1 })
+          to("Request seats", "seats")
         ) : ended.action === "year" ? (
           <Link
             to="/$"
@@ -1041,9 +1074,7 @@ export function ClosedSignIn({
           >
             See students
           </Link>
-        ) : also ? null : (
-          to("Back to Today")
-        ),
+        ) : null,
       )}
     >
       Reports, exports and workbooks stay with the class.

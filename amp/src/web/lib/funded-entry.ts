@@ -93,7 +93,11 @@ const schoolStep = (value: unknown) => {
   let url: URL;
   try {
     url = new URL(value, "https://amp.invalid");
-  } catch {
+  } catch (error) {
+    console.warn(
+      "AMP: ignored a school setup return that isn’t an address",
+      error,
+    );
     return undefined;
   }
   if (url.origin !== "https://amp.invalid") return undefined;
@@ -163,11 +167,16 @@ export function continuationSearch(
     isFundedReturn(search.return)
       ? { return: search.return }
       : {}),
+    // Deleting the account asks for a fresh sign-in, then returns to its
+    // overlay (app/account-overlays.tsx); its older addresses return there
+    // too.
     ...(search.return === "security" &&
-    ["/account/security/delete", "/family/security/delete"].includes(
-      returnTarget(search.next) ?? "",
-    )
-      ? { next: "/account/security/delete" }
+    [
+      "/account/delete-account",
+      "/account/security/delete",
+      "/family/security/delete",
+    ].includes(returnTarget(search.next) ?? "")
+      ? { next: "/account/delete-account" }
       : {}),
     // A signed-out visit to any place (a family, a class, a school) signs
     // in and comes back to it, by the one return contract.
@@ -273,15 +282,58 @@ export function rememberFundedPurchase(
         labels: campaignSearch(search),
       }),
     );
-  } catch {
-    /* The current tab's URL still supports continuation. */
+  } catch (error) {
+    // The current tab's URL still supports continuation.
+    console.warn("AMP: the funded purchase wasn’t kept on this device", error);
   }
 }
 
 export function forgetFundedPurchase(accountId: string) {
   try {
     localStorage.removeItem(pendingPrefix + accountId);
-  } catch {}
+  } catch (error) {
+    console.warn(
+      "AMP: the funded purchase wasn’t cleared on this device",
+      error,
+    );
+  }
+}
+
+/** The funded program this account's pending purchase is for, on this
+ * device, or null. */
+export function fundedReturnOf(accountId: string): FundedProgramSlug | null {
+  try {
+    const raw = localStorage.getItem(pendingPrefix + accountId);
+    if (!raw) return null;
+    const parsed = pendingSchema.safeParse(JSON.parse(raw));
+    if (
+      !parsed.success ||
+      parsed.data.expiresAt <= Date.now() ||
+      parsed.data.expiresAt > Date.now() + pendingLifetime
+    )
+      return null;
+    return parsed.data.destination ?? "arkansas-efa";
+  } catch (error) {
+    console.warn("The pending funded purchase couldn’t be read", error);
+    return null;
+  }
+}
+
+/**
+ * The funded program an account's first-run steps (`/start/…`) are for. The
+ * address names it on arrival (a sign-in's continuation, a funding page's
+ * "Set up learner"), which is kept for the account on this device; the next
+ * steps are plain paths and read it back. False when there is none.
+ */
+export function fundedSetup(
+  accountId: string,
+  search: Record<string, unknown>,
+): FundedProgramSlug | false {
+  if (isFundedReturn(search.return)) {
+    rememberFundedPurchase(accountId, search);
+    return search.return;
+  }
+  return fundedReturnOf(accountId) ?? false;
 }
 
 export function pendingFundedPurchase(accountId: string): string | null {
@@ -307,7 +359,8 @@ export function pendingFundedPurchase(accountId: string): string | null {
       ...safe,
       return: parsed.data.destination ?? "arkansas-efa",
     });
-  } catch {
+  } catch (error) {
+    console.warn("AMP: the funded purchase on this device wasn’t read", error);
     return null;
   }
 }

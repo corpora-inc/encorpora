@@ -20,7 +20,7 @@ import {
 } from "../src/math/line-plot-build";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { publicationHtml } from "../src/content/publications";
 import { linePlotBuildLesson } from "../src/content/line-plot-build-lessons";
@@ -244,7 +244,7 @@ try {
       page.setDefaultTimeout(30000);
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto("http://127.0.0.1:4552/overview");
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const family of families) {
         const base = fixtures.get(family)!;
         const r = base.public.response as LinePlotBuildResponse;

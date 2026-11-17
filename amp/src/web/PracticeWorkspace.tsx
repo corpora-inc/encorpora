@@ -103,6 +103,9 @@ import {
   playCorrectFeedback,
 } from "./features/practice/feedback-preferences";
 import { Loading } from "./ui/Loading";
+import { prefetchMoneyArt } from "./scene/money-art";
+import { RadioControl } from "./ui/RadioControl";
+import { AnswerInput } from "./ui/AnswerInput";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
@@ -292,6 +295,16 @@ export function PracticeWorkspace(props: Props) {
     pending,
   } = props;
   const review = props.review;
+  // Practice has started: the money pictures arrive while the learner works,
+  // so a later money problem finds them cached (scene/money-art.ts).
+  useEffect(() => {
+    if (typeof requestIdleCallback === "function") {
+      const idle = requestIdleCallback(prefetchMoneyArt, { timeout: 5000 });
+      return () => cancelIdleCallback(idle);
+    }
+    const later = setTimeout(prefetchMoneyArt, 1000);
+    return () => clearTimeout(later);
+  }, []);
   useEffect(() => {
     if (review) return;
     let frame = 0,
@@ -391,7 +404,8 @@ export function PracticeWorkspace(props: Props) {
     if (problem.response.kind === "point-plot") {
       try {
         return pointPlotAnswerText(problem.response, value);
-      } catch {
+      } catch (error) {
+        console.warn("The plotted points couldn’t be read aloud", error);
         return "No points placed";
       }
     }
@@ -1068,8 +1082,7 @@ export function PracticeWorkspace(props: Props) {
                   key={option.id}
                   className={`choice-option ${response === option.id ? "selected" : ""}`}
                 >
-                  <input
-                    type="radio"
+                  <RadioControl
                     name={`answer-${problem.id}`}
                     value={option.id}
                     aria-label={spokenMath(option.label)}
@@ -1125,18 +1138,12 @@ export function PracticeWorkspace(props: Props) {
             <MathText text={problem.response.label} />
           </label>
           <div className="workspace-answer-row">
-            <input
+            <AnswerInput
               id="answer"
               ref={input}
-              autoComplete="off"
-              autoCapitalize="none"
-              spellCheck={false}
+              keypad={small}
               inputMode={
-                small
-                  ? "none"
-                  : problem.response.kind === "fraction"
-                    ? "text"
-                    : "decimal"
+                problem.response.kind === "fraction" ? "text" : "decimal"
               }
               value={response}
               onChange={(event) => setResponse(event.target.value)}
@@ -2197,6 +2204,9 @@ export function PracticeWorkspace(props: Props) {
       {reportSheet && (
         <reportSheet.Toast
           tone="status"
+          // At the top on every width: on a phone the foot is the feedback
+          // sheet's Next, which a confirmation must never cover.
+          placement="top"
           message={reportToast}
           onDismiss={() => setReportToast("")}
         />

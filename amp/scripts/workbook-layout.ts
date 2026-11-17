@@ -243,6 +243,131 @@ export async function checkWorkbookLayout(page: Page) {
         );
       })
       .map(label);
+    // Geometry. A block is a problem, a section heading, the lesson card, a
+    // key entry or the results page. Everything a block paints (its text,
+    // figures and boxes) lies inside its own box and inside the page's
+    // margins, and no two blocks intersect. A problem taller than a page once
+    // printed over the next page's problems while every box-level check
+    // passed on the page it was placed on.
+    const geometry: string[] = [];
+    const scaled: string[] = [];
+    type Box = { left: number; top: number; right: number; bottom: number };
+    const union = (a: Box, b: Box): Box => ({
+      left: Math.min(a.left, b.left),
+      top: Math.min(a.top, b.top),
+      right: Math.max(a.right, b.right),
+      bottom: Math.max(a.bottom, b.bottom),
+    });
+    const inside = (a: Box, b: Box, slack = 1.5) =>
+      a.left >= b.left - slack &&
+      a.top >= b.top - slack &&
+      a.right <= b.right + slack &&
+      a.bottom <= b.bottom + slack;
+    const overlap = (a: Box, b: Box) =>
+      Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1.5 &&
+      Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1.5;
+    const name = (el: Element) => {
+      const n = el.querySelector(".wb-num, .wb-key-num")?.textContent;
+      return n ? `problem ${n}` : label(el);
+    };
+    pages.forEach((p, i) => {
+      const n = i + 1;
+      const body = p.querySelector(".wb-page-body")!.getBoundingClientRect();
+      const blocks = [
+        ...p.querySelectorAll(
+          ".wb-page-content > :not(.wb-row, .wb-key-cols), .wb-row > *, .wb-key-col > *",
+        ),
+      ].filter((b) => {
+        const r = b.getBoundingClientRect();
+        return r.width > 0 && r.height > 0;
+      });
+      const painted = blocks.map((block) => {
+        const box = block.getBoundingClientRect();
+        let extent: Box = box;
+        const spills: string[] = [];
+        const note = (r: Box, what: string) => {
+          extent = union(extent, r);
+          if (inside(r, box)) return;
+          const sides = [
+            ["below", r.bottom - box.bottom],
+            ["above", box.top - r.top],
+            ["right of", r.right - box.right],
+            ["left of", box.left - r.left],
+          ] as const;
+          const [side, by] = [...sides].sort((x, y) => y[1] - x[1])[0]!;
+          spills.push(
+            `${what} of ${name(block)} runs ${Math.round(by)}px ${side} its box`,
+          );
+        };
+        // Inline text is measured by its line box: a font's ascent and
+        // descent may reach past a tight line height without painting there.
+        const lineBoxes = (el: Element, rects: Iterable<DOMRect>) => {
+          const lh = parseFloat(getComputedStyle(el).lineHeight);
+          return [...rects]
+            .filter((r) => r.width > 0 && r.height > 0)
+            .map((r) => {
+              const trim = Number.isFinite(lh)
+                ? Math.max(0, (r.height - lh) / 2)
+                : 0;
+              return {
+                left: r.left,
+                right: r.right,
+                top: r.top + trim,
+                bottom: r.bottom - trim,
+              };
+            });
+        };
+        for (const el of block.querySelectorAll("*")) {
+          // SVG clips its shapes; KaTeX's MathML copy is hidden. Typeset math
+          // is measured by its bases, whose struts span its full height and
+          // depth (its inner spans position glyphs with tall empty boxes).
+          if (el.parentElement?.closest("svg") || el.closest(".katex-mathml"))
+            continue;
+          if (el.closest(".katex") && !el.matches(".katex .base")) continue;
+          const figure = el.matches("svg, img, .figure");
+          const what = figure ? "a figure" : el.tagName.toLowerCase();
+          if (getComputedStyle(el).display === "inline")
+            lineBoxes(el, el.getClientRects()).forEach((r) => note(r, what));
+          else {
+            const r = el.getBoundingClientRect();
+            if (r.width > 0 && r.height > 0) note(r, what);
+          }
+        }
+        const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+        for (let t = walker.nextNode(); t; t = walker.nextNode()) {
+          const parent = t.parentElement;
+          if (!t.textContent?.trim() || !parent) continue;
+          if (parent.closest("svg, .katex")) continue;
+          const range = document.createRange();
+          range.selectNodeContents(t);
+          lineBoxes(parent, range.getClientRects()).forEach((r) =>
+            note(r, "text"),
+          );
+        }
+        geometry.push(
+          ...[...new Set(spills)].slice(0, 2).map((s) => `page ${n}: ${s}`),
+        );
+        if (!inside(extent, body))
+          geometry.push(`page ${n}: ${name(block)} crosses the page margins`);
+        return { block, extent };
+      });
+      for (let a = 0; a < painted.length; a++)
+        for (let b = a + 1; b < painted.length; b++)
+          if (overlap(painted[a]!.extent, painted[b]!.extent))
+            geometry.push(
+              `page ${n}: ${name(painted[a]!.block)} intersects ${name(painted[b]!.block)}`,
+            );
+      // A problem printed smaller to fit a page (layout-script `fitAlone`).
+      // Key entries for the grown-up may print smaller, as the results page
+      // does.
+      for (const el of p.querySelectorAll("[data-fit-zoom]")) {
+        const zoom = Number(el.getAttribute("data-fit-zoom"));
+        if (zoom < 0.85 && el.matches(".wb-row"))
+          scaled.push(
+            `page ${n}: ${name(el)} printed at ${Math.round(zoom * 100)}% to fit a page`,
+          );
+      }
+    });
     // The lesson card shares a page with its guided problems when they fit.
     const lessonPages = new Set(
       [...document.querySelectorAll('[data-group="lesson"]')].map((el) =>
@@ -262,6 +387,8 @@ export async function checkWorkbookLayout(page: Page) {
       tinted: [...new Set(tinted)].slice(0, 10),
       midword: [...new Set(midword)].slice(0, 10),
       unstyled: [...new Set(unstyled)],
+      geometry: [...new Set(geometry)],
+      scaled,
     };
   });
 }
@@ -286,6 +413,8 @@ export function layoutFailures(
     ...found.tinted.map((t) => `answer on a tint: ${t}`),
     ...found.midword.map((w) => `word broken across lines: ${w}`),
     ...found.unstyled.map((u) => `unstyled figure shape: ${u}`),
+    ...found.geometry,
+    ...found.scaled,
     ...(printed === found.pages
       ? []
       : [`PDF has ${printed} pages, layout composed ${found.pages}`]),

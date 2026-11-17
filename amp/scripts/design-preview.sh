@@ -29,7 +29,16 @@ mkdir -p "$RUN"
 # access over a private network, for example, needs the host it is served on:
 #   __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=<host>
 #   AMP_ACCOUNTS_TRUSTED_ORIGINS=https://<host>:<port>
+# Paying works as in production when it names, all private and test mode only:
+#   the AMP_STRIPE_* and AMP_PAYMENT_* settings (docs/stripe.md), with
+#     AMP_STRIPE_APP_ORIGIN the origin parents return to from Checkout;
+#   AMP_CONSENT_POLICY_FILE, installed here on start, whose notice version is
+#     AMP_STRIPE_CONSENT_POLICY_VERSION ("preview", as the personas consented);
+#   AMP_FUNDING_OFFERS_FILE (docs/funded-purchases.md).
+# Without Stripe, Vite answers the price list itself (scripts/preview-billing.mjs).
 if [ -f "$RUN/preview.env" ]; then set -a; . "$RUN/preview.env"; set +a; fi
+PREVIEW_PRICES=1
+[ "${AMP_STRIPE_ENABLED:-}" = true ] && PREVIEW_PRICES=0
 [ "$WEB_PORT" = 4310 ] && { echo "Port 4310 is the founder's"; exit 1; }
 
 running() { [ -f "$RUN/$1.pid" ] && kill -0 "$(cat "$RUN/$1.pid")" 2>/dev/null; }
@@ -81,7 +90,7 @@ start_web() {
   # Its own dependency cache: another Vite on this checkout (a check, a
   # second worktree sharing node_modules) never rewrites what it serves.
   AMP_VITE_CACHE_DIR="$RUN/vite-cache" \
-  AMP_WEB_PORT="$WEB_PORT" AMP_API_PORT="$API_PORT" AMP_PREVIEW_PRICES=1 \
+  AMP_WEB_PORT="$WEB_PORT" AMP_API_PORT="$API_PORT" AMP_PREVIEW_PRICES="$PREVIEW_PRICES" \
     AMP_DATABASE_URL="$DB_URL" nohup npx vite --host 127.0.0.1 --port "$WEB_PORT" --strictPort >"$RUN/web.log" 2>&1 &
   echo $! >"$RUN/web.pid"
   set +m
@@ -89,6 +98,12 @@ start_web() {
 }
 migrate() {
   AMP_DATABASE_URL="$DB_URL" npx tsx -e "import('./scripts/migrate.ts').then(m=>m.migrate(process.env.AMP_DATABASE_URL)).then(()=>process.exit(0))"
+}
+# The consent policy the API is configured with, installed (unchanged when
+# it already is), so enrollment checkout offers its notice.
+install_consent_policy() {
+  [ -n "${AMP_CONSENT_POLICY_FILE:-}" ] || return 0
+  AMP_DATABASE_URL="$DB_URL" npx tsx scripts/consent-policy.ts "$AMP_CONSENT_POLICY_FILE"
 }
 seed() {
   AMP_DATABASE_URL="$DB_URL" AMP_PREVIEW_ORIGIN="$ORIGIN" npx tsx scripts/design-personas.ts
@@ -99,12 +114,12 @@ case "${1:-start}" in
       psql "$PG/postgres" -c "CREATE DATABASE $DB_NAME" >/dev/null
     # The API migrates nothing itself, so migrate first, with the API not yet
     # answering.
-    migrate
+    migrate; install_consent_policy
     start_render; start_api; start_web; seed
     echo "Preview: $ORIGIN/dev/personas" ;;
   stop) stop_one web; stop_one api; stop_one render ;;
   # A branch's new migrations apply before it serves: never an old schema.
-  restart) stop_one web; stop_one api; stop_one render; migrate; start_render; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
+  restart) stop_one web; stop_one api; stop_one render; migrate; install_consent_policy; start_render; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
   reseed)
     stop_one web; stop_one api; stop_one render
     psql "$PG/postgres" -c "DROP DATABASE IF EXISTS $DB_NAME WITH (FORCE)" >/dev/null

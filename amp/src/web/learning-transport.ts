@@ -1,4 +1,6 @@
+import { queryOptions } from "@tanstack/react-query";
 import { requestFetch, requestWith } from "./lib/request-transport";
+import { qk } from "./lib/keys";
 import { observeLearningRequest } from "./lib/learning-analytics";
 import { invoke } from "@tauri-apps/api/core";
 import { nativeRuntime } from "./native-runtime";
@@ -134,6 +136,14 @@ async function sendLearningRequest(
     );
   }
 }
+/** The learning catalog in the Query cache, read once per session: the
+ * lesson reader (app/LegacyApp.tsx), a lesson address's alias
+ * (app/legacy-aliases.ts) and search share one download. */
+export const learningCatalogOptions = queryOptions({
+  queryKey: qk.searchCatalog(),
+  queryFn: (): Promise<any> => learningCatalog(),
+  staleTime: Infinity,
+});
 export async function learningCatalog(): Promise<any> {
   if (nativeRuntime)
     return invoke("read_public_resource", { resource: "catalog" });

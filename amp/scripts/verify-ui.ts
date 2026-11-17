@@ -1,10 +1,10 @@
 import { secureChromium } from "../browser-security.mjs";
 import {
-  choose,
-  leaveSettings,
   chooseLearner,
   currentLearner,
   navigateApp,
+  practiceHere,
+  returnToParent,
 } from "./ui-controls";
 import { typeSizes } from "../src/math/scene/type";
 import {
@@ -22,7 +22,12 @@ import {
   TABLET_LANDSCAPE_LARGE,
   TABLETS,
 } from "./ui-viewports";
-import { exitPractice, resume, startTopic } from "./ui-practice";
+import {
+  exitPractice,
+  openTopicLesson,
+  resume,
+  startTopic,
+} from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -31,6 +36,7 @@ const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
@@ -144,6 +150,9 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
+  // tsx names the helpers inside page functions (`__name`); every document
+  // the journey opens has the page-side shim.
+  await page.addInitScript("globalThis.__name ??= (f) => f");
   diagnosticPage = page;
   page.setDefaultTimeout(15_000);
   page.setDefaultNavigationTimeout(30_000);
@@ -161,19 +170,17 @@ try {
   });
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4350/overview");
-  await chooseLearner(page, learner.id);
+  // The parent hands the device to the child, whose practice is their own.
+  await practiceHere(page, learner.id);
   await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .waitFor();
+  await page.getByRole("link", { name: /^Practice/ }).waitFor();
   await page.reload();
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .waitFor();
-  assert.ok(page.url().includes("topic=mean-data"));
-  await page
-    .getByRole("link", { name: /^Try this problem type/ })
-    .click();
+  await page.getByRole("link", { name: /^Practice/ }).waitFor();
+  // The lesson is a layer over Pathways, in its layers (never its
+  // address), which a reload keeps.
+  assert.equal(new URL(page.url()).searchParams.get("open"), null);
+  await waitForLayers(page, ["lesson:mean-data"]);
+  await page.getByRole("link", { name: /^Practice/ }).click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
   // CI measures with a device font (scripts/ci-fonts.conf); prove the prompt
@@ -368,6 +375,8 @@ try {
     page.off("request", count);
   }
   progress("held lesson and next-problem requests");
+  // The request names the film capability it can play (`?film=`).
+  const LESSON_SUPPORT = /\/lesson-support(?:\?|$)/;
   let releaseLesson!: () => void;
   let heldLesson!: () => void;
   const held = new Promise<void>((resolve) => {
@@ -376,7 +385,7 @@ try {
   const release = new Promise<void>((resolve) => {
     releaseLesson = resolve;
   });
-  await page.route("**/lesson-support", async (route) => {
+  await page.route(LESSON_SUPPORT, async (route) => {
     const result = await route.fetch();
     heldLesson();
     await release;
@@ -400,7 +409,7 @@ try {
   // requested for the answered problem must not open meanwhile.
   await page.getByRole("button", { name: "Next", exact: true }).click();
   const delivered = page.waitForResponse((response) =>
-    response.url().endsWith("/lesson-support"),
+    new URL(response.url()).pathname.endsWith("/lesson-support"),
   );
   releaseLesson();
   await delivered;
@@ -422,7 +431,7 @@ try {
   await nextDelivered;
   await page.locator(".problem-stage .problem-content").waitFor();
   await page.unroute("**/batches");
-  await page.unroute("**/lesson-support");
+  await page.unroute(LESSON_SUPPORT);
   /** Landscape tablets put the answer beside the problem. Every state there
    * (hint, a malformed answer, feedback, the next problem) keeps the problem
    * still, stays in its own column and keeps 44 px targets. */
@@ -722,21 +731,21 @@ try {
       `Tablet ${key}: ${completedIds.length - scrolled.length} of ${completedIds.length} selected questions and figures fit without scrolling.${scrolled.length ? `\n  ${scrolled.join("\n  ")}` : ""}`,
     );
   }
-  // Lessons: every problem type has its own short lesson.
-  progress("lesson inventory and section navigation");
+  // Lessons: every problem type has its own short lesson, a layer over the
+  // learner's Pathways (no library destination of its own).
+  progress("lesson sheet and section navigation");
   await exitPractice(page);
-  await navigateApp(page, "Lessons");
-  await page.locator(".topic-list:not([hidden]) button").first().click();
-  await page.locator(".lesson-sheet .problem-lesson").waitFor();
+  await openTopicLesson(page, "mean-data");
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   );
-  await page.getByRole("button", { name: "← All lessons" }).click();
-  // The shared logo keeps its geometry across the learning destinations.
+  await page.keyboard.press("Escape");
+  await page.getByRole("dialog").waitFor({ state: "detached" });
+  // The shared logo keeps its geometry across the child's destinations.
   const sections: string[] = [];
-  for (const section of ["Lessons", "Progress", "Practice"] as const) {
+  for (const section of ["Progress", "Practice"] as const) {
     await navigateApp(page, section);
     await page.locator("[data-app-bar]").waitFor();
     sections.push(
@@ -798,72 +807,95 @@ try {
         document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
     );
   }
+  // The device goes back to the parent, whose family's own controls follow.
+  progress("family controls, back with the parent");
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
+  await returnToParent(page);
+  const familyPath = new URL(page.url()).pathname;
+  // A child added from Today's "Add a child", with a maximum-length nickname.
+  await page.goto(`http://127.0.0.1:4350${familyPath}?add=1`);
+  const sheet = page.getByRole("dialog", { name: "Add a child" });
+  await sheet
+    .getByLabel("Name", { exact: true })
+    .fill("LongNickname".repeat(5));
+  await sheet.getByRole("button", { name: "Birth year", exact: true }).click();
   await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
+    .getByRole("dialog", { name: "Birth year" })
+    .getByRole("option", { name: "2016", exact: true })
     .click();
-  await page.getByRole("button", { name: "Add learner", exact: false }).click();
-  const form = page.locator(".family-add-learner");
-  await form.getByLabel("Name", { exact: true }).fill("LongNickname".repeat(5));
-  await choose(
-    form.getByRole("button", { name: "Birth year", exact: true }),
-    "2016",
-  );
   const creation = page.waitForResponse(
     (response) =>
-      response.url().endsWith("/learners") &&
+      new URL(response.url()).pathname === "/api/v1/learners" &&
       response.request().method() === "POST",
   );
-  await form.getByRole("button", { name: "Add learner", exact: true }).click();
-  learnerIds.push((await (await creation).json()).id);
-  await form.waitFor({ state: "detached" });
-  await choose(page.getByLabel("Family learner"), learnerIds.at(-1)!);
-  await leaveSettings(page);
-  // A reload keeps the learner chosen on this device.
-  progress("learner persistence and family controls");
+  await sheet.getByRole("button", { name: "Add child", exact: true }).click();
+  const created = await creation;
+  assert.ok(created.ok(), `Add a child: ${created.status()}`);
+  // The name as kept: a nickname at its maximum length.
+  const { id: addedId, name: nickname } = (await created.json()) as {
+    id: string;
+    name: string;
+  };
+  learnerIds.push(addedId);
+  await sheet.getByText(`${nickname} is in your family.`).waitFor();
+  await page.keyboard.press("Escape");
+  await sheet.waitFor({ state: "detached" });
+  // The drawer lists both children; choosing one opens their own page,
+  // which a reload keeps.
+  progress("learner choice and persistence");
+  await chooseLearner(page, learnerIds.at(-1)!);
   await page.reload();
   await page.locator("[data-app-logo]").waitFor();
   assert.equal(await currentLearner(page), learnerIds.at(-1));
-  // Choose outside Family, so the assertion detects a disconnected picker.
   await chooseLearner(page, learnerIds[0]!);
-  // Family opens on the current learner, and choosing one there makes them
-  // the current learner on every screen.
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  assert.equal(
-    await page.getByLabel("Family learner").getAttribute("data-value"),
-    learnerIds[0],
-  );
-  await choose(page.getByLabel("Family learner"), learnerIds.at(-1)!);
-  await leaveSettings(page);
-  assert.equal(await currentLearner(page), learnerIds.at(-1));
+  assert.equal(await currentLearner(page), learnerIds[0]);
   await chooseLearner(page, learnerIds.at(-1)!);
-  await page.goto("http://127.0.0.1:4350/overview");
+  // The child's page changes their birth year; a maximum-length nickname
+  // fits a phone there.
+  for (const size of [
+    { width: 390, height: 844 },
+    { width: 320, height: 568 },
+  ]) {
+    await page.setViewportSize(size);
+    await page
+      .getByRole("heading", { name: nickname, exact: true })
+      .first()
+      .waitFor();
+    assert.deepEqual(
+      await page.evaluate(() =>
+        document.documentElement.scrollWidth <= innerWidth
+          ? []
+          : [...document.querySelectorAll("body *")]
+              .filter((e) => e.getBoundingClientRect().right > innerWidth + 1)
+              .slice(0, 12)
+              .map(
+                (e) =>
+                  `${e.tagName}.${e.className}: ${e.textContent?.slice(0, 40)}`,
+              ),
+      ),
+      [],
+      `A maximum-length learner nickname must fit ${size.width}px`,
+    );
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
   await page
-    .getByRole("button", { name: "Change birth year", exact: true })
+    .getByRole("button", { name: `Birth year, ${nickname}: 2016` })
     .click();
-  await page.getByRole("heading", { name: /^What year was/ }).waitFor();
+  await page
+    .getByRole("dialog", { name: `Birth year, ${nickname}` })
+    .getByRole("option", { name: "2015", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: `Birth year, ${nickname}: 2015` })
+    .waitFor();
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
-    "A maximum-length learner nickname must fit a phone viewport",
+    "The birth-year change keeps the child's page within a phone",
   );
-  // The real application mounts parent controls independently of learning consent.
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  await page.locator(".family-center").waitFor();
+  // Privacy fits a phone: every choice and the way out (the logo) in view.
+  progress("privacy and consent");
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },
@@ -871,30 +903,27 @@ try {
     PHONE_LANDSCAPE,
   ]) {
     await page.setViewportSize(size);
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Privacy", exact: true })
-      .click();
+    await page.goto("http://127.0.0.1:4350/account/privacy");
+    await page.getByRole("heading", { name: "Privacy", exact: true }).waitFor();
     if (isPhoneLandscape(size)) {
       await assertPhoneLandscapeSmoke(page, "Family privacy");
     } else {
       assert.ok(
         await page.evaluate(
-          () => document.documentElement.scrollHeight <= innerHeight + 1,
+          () => document.documentElement.scrollWidth <= innerWidth,
         ),
       );
-      // The way out is the app frame's logo, always in view.
       const back = await page.locator("[data-app-logo]").boundingBox();
       assert.ok(
         back && back.y + back.height <= size.height,
-        "Family exit stays visible",
+        "Privacy's way out stays visible",
       );
       const lastChoice = await page
-        .getByRole("button", { name: "What is retained?", exact: false })
+        .getByRole("button", { name: "What is kept", exact: false })
         .boundingBox();
       assert.ok(
         lastChoice && lastChoice.y + lastChoice.height <= size.height,
-        `Privacy choices fit phone viewport at ${size.width}×${size.height}: ${JSON.stringify(lastChoice)}`,
+        `Privacy choices fit ${size.width}×${size.height}: ${JSON.stringify(lastChoice)}`,
       );
     }
     await page.screenshot({
@@ -904,47 +933,13 @@ try {
       ).pathname,
     });
   }
+  // A consent withdrawal that saved, when the refreshed family details then
+  // fail to load, says so and not to repeat it.
   await page.setViewportSize({ width: 390, height: 844 });
-  await leaveSettings(page);
-  await page.waitForFunction(
-    () =>
-      document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
-  );
-  // Family exits to the workspace; open the profile route before editing again.
-  assert.equal(new URL(page.url()).pathname, "/overview");
-  await page.goto("http://127.0.0.1:4350/profile/birth-year");
-  await page.getByRole("heading", { name: /^What year was/ }).waitFor();
-  let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
-  const familyBatchRelease = new Promise<void>((resolve) => {
-    releaseFamilyBatch = resolve;
-  });
-  const familyBatchWaiting = new Promise<void>((resolve) => {
-    familyBatchHeld = resolve;
-  });
-  await page.route("**/batches", async (route) => {
-    const result = await route.fetch();
-    familyBatchHeld();
-    await familyBatchRelease;
-    await route.fulfill({ response: result });
-  });
-  await page.getByRole("button", { name: "2016", exact: true }).click();
-  await page.waitForURL((url) => url.pathname === "/overview");
-  await navigateApp(page, "Practice");
-  await within(familyBatchWaiting, "family batch request");
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
+  await page.goto("http://127.0.0.1:4350/account/privacy/consent");
   await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Privacy", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Learning consent", exact: false })
-    .click();
+    .getByRole("heading", { name: "Learning consent", exact: true })
+    .waitFor();
   // Synthetic mutation isolates this browser race from the shared test account.
   await page.route("**/family/consent/withdraw", (route) =>
     route.fulfill({ json: { withdrawn: true } }),
@@ -968,56 +963,8 @@ try {
       { exact: true },
     )
     .waitFor();
-  const releasedBatch = page.waitForResponse((response) =>
-    response.url().endsWith("/batches"),
-  );
-  releaseFamilyBatch();
-  await (await releasedBatch).finished();
-  // Revoked/unavailable identity offers no Progress link. Back returns to
-  // the existing practice workspace without destroying the in-memory race.
-  await page.evaluate(() => {
-    (
-      window as Window & { __privacyRaceDocument?: boolean }
-    ).__privacyRaceDocument = true;
-  });
-  for (const path of [
-    "/family/privacy",
-    "/family/learners",
-    "/family/security",
-    "/practice",
-  ]) {
-    await page.goBack();
-    await page.waitForURL((url) => url.pathname === path);
-  }
-  assert.equal(
-    await page.evaluate(
-      () =>
-        (window as Window & { __privacyRaceDocument?: boolean })
-          .__privacyRaceDocument,
-    ),
-    true,
-  );
-  await page.locator("[data-app-bar]").waitFor();
-  assert.equal(
-    await page.locator("#answer").count(),
-    0,
-    "Late batch cannot restore practice after privacy invalidation",
-  );
-  assert.equal(
-    await page.getByRole("button", { name: "Go", exact: true }).count(),
-    0,
-  );
-  assert.equal(
-    await page.getByRole("navigation", { name: "Learning sections" }).count(),
-    0,
-  );
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Learners", exact: true })
-    .click();
-  await page.getByRole("heading", { name: "Learners", exact: true }).waitFor();
+  await page.unroute("**/api/v1/me");
+  await page.unroute("**/family/consent/withdraw");
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",

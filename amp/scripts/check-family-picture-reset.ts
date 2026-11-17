@@ -108,6 +108,8 @@ try {
   await account.goto(
     fixture.origin + `/family/${family}/kids/${persona.learnerId}`,
   );
+  // Picture recovery is in the child's folded Settings.
+  await account.locator("summary", { hasText: "Settings" }).click();
   const recovery = account.locator("[data-picture-sign-in]");
   await recovery
     .getByRole("button", { name: "Reset pictures", exact: true })

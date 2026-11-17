@@ -1,8 +1,14 @@
 import { requestFetch } from "./lib/request-transport";
-import { useLoggedError } from "./feedback";
+import { AppError } from "./lib/AppError";
+import { reportError } from "./lib/report-error";
+import { TextField } from "./ui/TextField";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { notifyAccountSessionChanged } from "./auth";
-import { accountClient } from "./account-client";
+import {
+  accountClient,
+  passkeyAccountClient,
+  preloadPasskeys,
+} from "./account-client";
 import { buttonClass } from "./ui/Button";
 import "./account-security.css";
 import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
@@ -35,8 +41,13 @@ async function security<T>(path: string, body?: object): Promise<T> {
   });
   const value = await result.json();
   if (!result.ok)
-    throw new Error(
+    throw new AppError(
+      result.status === 401 ? "authentication" : "validation",
       value.message ?? "Your settings could not be saved. Try again.",
+      true,
+      result.headers.get("x-request-id"),
+      null,
+      result.status,
     );
   return value as T;
 }
@@ -45,12 +56,19 @@ function checked<T>(result: {
   error: { message?: string } | null;
 }): NonNullable<T> {
   if (result.error)
-    throw new Error(
+    throw new AppError(
+      "validation",
       result.error.message ?? "Your settings could not be saved. Try again.",
+      true,
     );
   return result.data!;
 }
-export function AccountSecurity() {
+export function AccountSecurity({
+  deleteEntry = true,
+}: {
+  /** Its own "Delete account" row: off where the hub offers it already. */
+  deleteEntry?: boolean;
+} = {}) {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [now, setNow] = useState(performance.now());
   const [freshUntil, setFreshUntil] = useState(0);
@@ -78,7 +96,6 @@ export function AccountSecurity() {
   useEffect(() => {
     if (confirm) confirmRef.current?.scrollIntoView({ block: "nearest" });
   }, [confirm]);
-  useLoggedError(error);
   const feedback = (error || notice) && (
     <div ref={feedbackRef}>
       {error && (
@@ -110,8 +127,12 @@ export function AccountSecurity() {
       .then((data) => {
         if (live) acceptSummary(data);
       })
-      .catch((failure) => {
-        if (live) setError(failure.message);
+      .catch((failure: unknown) => {
+        const message = reportError(failure, {
+          doing: "load the sign-in settings",
+          fallback: "Your sign-in settings didn’t load. Try again.",
+        });
+        if (live) setError(message);
       });
     return () => {
       live = false;
@@ -138,7 +159,12 @@ export function AccountSecurity() {
       await refresh();
     } catch (failure) {
       setNotice("");
-      setError(failure instanceof Error ? failure.message : "Try again.");
+      setError(
+        reportError(failure, {
+          doing: "change the sign-in settings",
+          fallback: "Your settings could not be saved. Try again.",
+        }),
+      );
     } finally {
       setBusy(false);
       setPassword("");
@@ -146,6 +172,7 @@ export function AccountSecurity() {
     }
   }
   function switchPanel(next: string) {
+    if (next === "passkeys") preloadPasskeys();
     setPanel(next);
     setPassword("");
     setNewPassword("");
@@ -162,16 +189,14 @@ export function AccountSecurity() {
     void run(work);
   }
   const passwordField = (
-    <label>
-      Current password
-      <input
-        type="password"
-        autoComplete="current-password"
-        required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-    </label>
+    <TextField
+      label="Current password"
+      type="password"
+      autoComplete="current-password"
+      required
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
   );
   // Changes need a sign-in in the last few minutes; past that, the one action
   // that works is signing in again.
@@ -270,25 +295,26 @@ export function AccountSecurity() {
                                 onSubmit={(e) =>
                                   submit(e, async () => {
                                     checked(
-                                      await accountClient.passkey.updatePasskey(
-                                        { id: key.id, name: keyName.trim() },
-                                      ),
+                                      await (
+                                        await passkeyAccountClient()
+                                      ).passkey.updatePasskey({
+                                        id: key.id,
+                                        name: keyName.trim(),
+                                      }),
                                     );
                                     setRename("");
                                     setNotice("Passkey name saved.");
                                   })
                                 }
                               >
-                                <label>
-                                  Passkey name
-                                  <input
-                                    autoComplete="off"
-                                    maxLength={80}
-                                    required
-                                    value={keyName}
-                                    onChange={(e) => setKeyName(e.target.value)}
-                                  />
-                                </label>
+                                <TextField
+                                  label="Passkey name"
+                                  autoComplete="off"
+                                  maxLength={80}
+                                  required
+                                  value={keyName}
+                                  onChange={(e) => setKeyName(e.target.value)}
+                                />
                                 <div className="security-actions">
                                   <button disabled={busy || !keyName.trim()}>
                                     Save name
@@ -339,7 +365,9 @@ export function AccountSecurity() {
                             onSubmit={(e) =>
                               submit(e, async () => {
                                 checked(
-                                  await accountClient.passkey.addPasskey({
+                                  await (
+                                    await passkeyAccountClient()
+                                  ).passkey.addPasskey({
                                     name: keyName.trim() || "Passkey",
                                   }),
                                 );
@@ -348,16 +376,14 @@ export function AccountSecurity() {
                               })
                             }
                           >
-                            <label>
-                              Name for this passkey
-                              <input
-                                autoComplete="off"
-                                maxLength={80}
-                                value={keyName}
-                                onChange={(e) => setKeyName(e.target.value)}
-                                placeholder="For example, personal laptop"
-                              />
-                            </label>
+                            <TextField
+                              label="Name for this passkey"
+                              autoComplete="off"
+                              maxLength={80}
+                              value={keyName}
+                              onChange={(e) => setKeyName(e.target.value)}
+                              placeholder="For example, personal laptop"
+                            />
                             <button disabled={busy}>Add passkey</button>
                           </form>
                         )}
@@ -384,18 +410,16 @@ export function AccountSecurity() {
                             }
                           >
                             {passwordField}
-                            <label>
-                              New password
-                              <input
-                                type="password"
-                                autoComplete="new-password"
-                                required
-                                minLength={10}
-                                maxLength={128}
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                              />
-                            </label>
+                            <TextField
+                              label="New password"
+                              type="password"
+                              autoComplete="new-password"
+                              required
+                              minLength={10}
+                              maxLength={128}
+                              value={newPassword}
+                              onChange={(e) => setNewPassword(e.target.value)}
+                            />
                             <p>
                               At least 10 characters. Changing it signs out your
                               other sessions.
@@ -480,20 +504,18 @@ export function AccountSecurity() {
                                 })
                               }
                             >
-                              <label>
-                                Authenticator code
-                                <input
-                                  inputMode="numeric"
-                                  autoComplete="one-time-code"
-                                  pattern="[0-9]{6}"
-                                  required
-                                  maxLength={6}
-                                  value={code}
-                                  onChange={(e) =>
-                                    setCode(e.target.value.replace(/\D/g, ""))
-                                  }
-                                />
-                              </label>
+                              <TextField
+                                label="Authenticator code"
+                                inputMode="numeric"
+                                autoComplete="one-time-code"
+                                pattern="[0-9]{6}"
+                                required
+                                maxLength={6}
+                                value={code}
+                                onChange={(e) =>
+                                  setCode(e.target.value.replace(/\D/g, ""))
+                                }
+                              />
                               <button disabled={busy}>Verify and enable</button>
                             </form>
                           </>
@@ -518,8 +540,10 @@ export function AccountSecurity() {
                                     }),
                                   );
                                   if (!("totpURI" in data) || !data.totpURI)
-                                    throw new Error(
+                                    throw new AppError(
+                                      "unavailable",
                                       "Authenticator setup could not be prepared.",
+                                      true,
                                     );
                                   const qr = await (
                                     await import("qrcode")
@@ -706,7 +730,7 @@ export function AccountSecurity() {
               </div>
             </div>
           )}
-          <DeleteAccountEntry continues />
+          {deleteEntry && <DeleteAccountEntry continues />}
         </>
       )}
     </section>

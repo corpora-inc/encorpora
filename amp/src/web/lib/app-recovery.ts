@@ -7,11 +7,18 @@ import { nativeRuntime } from "../native-runtime";
  * shows an error: the tab loads the current release, or goes to sign-in
  * with its campaign and program context kept. */
 
+/** The app's entry a document runs. `/` is the pitch's own document: its
+ * script is the light home entry, and it names the app's entry it loads
+ * (scripts/build-home-document.ts), so every document names one release. */
 const entryOf = (doc: Document): string | null => {
+  const named = doc
+    .querySelector<HTMLMetaElement>('meta[name="amp-app-entry"]')
+    ?.getAttribute("content");
   const script = doc.querySelector<HTMLScriptElement>(
     'script[type="module"][src*="/assets/"]',
   );
-  return script ? new URL(script.src, location.origin).pathname : null;
+  const entry = named ?? script?.getAttribute("src");
+  return entry ? new URL(entry, location.origin).pathname : null;
 };
 
 // The hashed entry script names the web release exactly; a deploy that changes
@@ -45,7 +52,10 @@ export function buildIsStale(maxAgeMs = 30_000): Promise<boolean> {
       stale = live !== null && live !== loadedEntry;
       return stale;
     })
-    .catch(() => false)
+    .catch((error: unknown) => {
+      console.warn("AMP: the live release couldn’t be checked", error);
+      return false;
+    })
     .finally(() => {
       checking = null;
     });

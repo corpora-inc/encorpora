@@ -2,7 +2,7 @@ import { queryOptions, useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { ownPracticeResponse } from "../../../account/adult-contracts";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { request } from "../../lib/api";
 import {
   invalidateAccount,
@@ -31,7 +31,8 @@ function deviceTimeZone() {
     return (
       Intl.DateTimeFormat().resolvedOptions().timeZone || "America/New_York"
     );
-  } catch {
+  } catch (error) {
+    console.warn("The device's time zone couldn't be read", error);
     return "America/New_York";
   }
 }
@@ -56,11 +57,11 @@ export function useStartOwnPractice(session: AuthSession) {
           },
         },
       );
-      useLearnerStore.getState().select(learnerId);
+      selectLearner(learnerId);
       rememberPlace(session.accountId, "me");
       await refreshMe(session);
       void queryClient.invalidateQueries({
-        queryKey: ["account", session.accountId, "own-practice"],
+        queryKey: ownPracticeKey(session.accountId),
       });
       return learnerId;
     },

@@ -1,31 +1,6 @@
-/* "What brings you to AMP?": one column at every width. The five choices
-   hold their place; the question for the chosen one appears beneath them. */
-.page {
-  box-sizing: border-box;
-  display: grid;
-  align-content: start;
-  gap: var(--space-5);
-  width: min(100%, 640px);
-  margin: 0 auto;
-  padding: var(--space-6) max(var(--space-4), env(safe-area-inset-right))
-    max(var(--space-7), env(safe-area-inset-bottom))
-    max(var(--space-4), env(safe-area-inset-left));
-  color: var(--color-on-surface);
-}
-@media (min-width: 768px) {
-  .page {
-    padding-top: var(--space-7);
-  }
-}
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(var(--text-title-min), 6vw, 40px);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
+/* "What brings you to AMP?": one standard Page column at every width. The
+   choices hold their place; the question for the chosen one appears
+   beneath them. */
 .choices {
   display: grid;
   gap: var(--space-2);

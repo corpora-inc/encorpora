@@ -48,6 +48,7 @@ import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { openHome } from "./launcher";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -221,7 +222,8 @@ const menuButton = (page: Page) =>
     .filter({ visible: true })
     .first();
 /** Opens the switcher wherever this screen keeps it: the shared app
- * drawer, or setup’s own bar. Its trigger names the place it is on. */
+ * drawer (setup included), or a screen's own bar. Its trigger names the
+ * place it is on. */
 async function openSwitcher(page: Page, drawer: boolean) {
   if (drawer) {
     await menuButton(page).click();
@@ -327,7 +329,7 @@ async function familyThenSchool(
     .getByRole("button", { name: "Birth year, Child 1", exact: true })
     .click();
   const years = page.getByRole("dialog", { name: "Birth year, Child 1" });
-  await years.getByRole("radio", { name: "2016", exact: true }).click();
+  await years.getByRole("option", { name: "2016", exact: true }).click();
   await years.waitFor({ state: "hidden" });
   await page
     .getByRole("button", { name: "Birth year, Child 1: 2016", exact: true })
@@ -341,7 +343,7 @@ async function familyThenSchool(
     .filter({ visible: true })
     .first()
     .click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await settle(page, 300);
@@ -360,37 +362,31 @@ async function familyThenSchool(
   await page.getByLabel(/Your name/).fill("Ruth Adeyemi");
   await page.getByRole("button", { name: "Start setup" }).click();
   await heading(page, "When does your school year run?");
-  const setupPath = `/school/new?org=${issued.orgId}&step=calendar`;
+  const setupPath = `/school/${issued.orgId}/setup/calendar`;
   check(`${label} lands on the calendar`, path(page) === setupPath, path(page));
-  if (width >= 1024) {
-    const ledger = await page.locator("aside ol li").allInnerTexts();
-    check(
-      `${label} the school step is answered`,
-      ledger[0]?.includes(school) === true,
-      ledger,
-    );
-  }
   await shot(page, "setup-with-switcher", width, theme);
 
   // `/` keeps the family: a half-finished setup never captures it.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(family.inFamily);
   await todayTitle(page);
   const classPath = path(page);
 
   // The switcher lists places only (never a learner): the family, the
-  // school still to set up, practice at a level, and Add a place. The
-  // school opens its setup.
+  // school still to set up, and Add a place. A parent whose home is their
+  // family has no Practice group (#2384: their own practice is an optional
+  // entry within the family, offered by Add a place). The school opens its
+  // setup.
   const fromHome = await openSwitcher(page, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the family, the school and practice at a level`,
+    `${label} the switcher lists the family, the school and Add a place`,
     family.named.test(items[0] ?? "") &&
       items.some(
         (item) => item.includes(school) && /Finish setting up/.test(item),
       ) &&
-      items.some((item) => /Practice at a level/.test(item)) &&
-      /Add a place/.test(items.at(-1) ?? "") &&
+      !items.some((item) => /Practice at a level/.test(item)) &&
+      /Add a place[\s\S]*own practice/.test(items.at(-1) ?? "") &&
       items.indexOf(items.find((item) => item.includes(school))!) > 0,
     items,
   );
@@ -400,16 +396,20 @@ async function familyThenSchool(
   );
   await measured(page, `${label} family switcher`);
   await shot(page, "drawer-switcher", width, theme);
+  // An unfinished school opens its setup wizard at its first step.
+  const wizardPath = `/school/${issued.orgId}/setup`;
+  const wizardTitle = "Where will you use AMP?";
   await choose(page, fromHome, new RegExp(school));
-  await heading(page, "When does your school year run?");
+  await heading(page, wizardTitle);
   check(
     `${label} the switcher opens setup`,
-    path(page) === setupPath,
+    path(page) === wizardPath,
     path(page),
   );
 
-  // From setup, the same switcher goes back to the family.
-  const fromSetup = await openSwitcher(page, false);
+  // From setup, the same switcher (in the app's drawer) goes back to the
+  // family.
+  const fromSetup = await openSwitcher(page, true);
   await measured(page, `${label} setup switcher`);
   await shot(page, "setup-switcher", width, theme);
   await chooseFamily(page, fromSetup, family, `${label} setup`);
@@ -417,11 +417,11 @@ async function familyThenSchool(
 
   // Back, Forward and reload each keep their screen.
   await page.goBack();
-  await heading(page, "When does your school year run?");
-  check(`${label} Back reopens setup`, path(page) === setupPath, path(page));
+  await heading(page, wizardTitle);
+  check(`${label} Back reopens setup`, path(page) === wizardPath, path(page));
   await page.reload();
-  await heading(page, "When does your school year run?");
-  check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
+  await heading(page, wizardTitle);
+  check(`${label} reload keeps setup`, path(page) === wizardPath, path(page));
   await page.goForward();
   await page.waitForURL(family.inFamily);
   await page.reload();
@@ -432,10 +432,10 @@ async function familyThenSchool(
     path(page),
   );
   await page.goBack();
-  await heading(page, "When does your school year run?");
+  await heading(page, wizardTitle);
 
   // Having worked in setup, `/` is still the family.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(family.inFamily);
 
   // Setup finished: the school is a place `/` can open.
@@ -493,7 +493,7 @@ async function familyThenSchool(
   await page.keyboard.press("Escape");
   await fromSchool.waitFor({ state: "detached" });
   // Last worked at the school: `/` opens it.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   check(
     `${label} / returns to the school`,
@@ -503,7 +503,7 @@ async function familyThenSchool(
   const back = await openSwitcher(page, true);
   await chooseFamily(page, back, family, label);
   await page.waitForURL(family.inFamily);
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(family.inFamily);
   check(
     `${label} / returns to the family`,
@@ -560,7 +560,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   });
 
   // Nothing remembered yet: `/` is the family (docs/families.md).
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   const family = await familyOf(page);
@@ -568,17 +568,18 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const classPath = path(page);
   const toSchool = await openSwitcher(page, true);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
-  // The family's entry names its one child; a parent whose child has access
-  // may also practice free; the school is where they are Admin.
+  // The family's entry names its one child; the school is where they are
+  // Admin. Their own practice is offered within the family (#2384), so the
+  // switcher's last entry, Add a place, names it.
   check(
-    `${label} the family names its child, then the school and practice`,
+    `${label} the family names its child, then the school, then Add a place`,
     family.named.test(items[0] ?? "") &&
       /Jordan/.test(items[0] ?? "") &&
       items.some(
         (item) => /Birch Road School/.test(item) && /Admin/.test(item),
       ) &&
-      items.some((item) => /Practice yourself/.test(item)) &&
-      items.some((item) => /Practice at a level/.test(item)),
+      !items.some((item) => /Practice at a level/.test(item)) &&
+      /Add a place[\s\S]*own practice/.test(items.at(-1) ?? ""),
     items,
   );
   await choose(page, toSchool, /Birch Road School/);
@@ -586,7 +587,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const schoolPath = path(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   // Last worked at the school: `/` opens it.
-  await page.goto(`${origin}/`);
+  await openHome(page, origin);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   // Back to the family's class, then Back and Forward between the two.
   const back = await openSwitcher(page, true);
@@ -614,9 +615,14 @@ async function practiceAndSchool(browser: Browser, width: number) {
     path(page) === classPath,
     path(page),
   );
-  // Remembered there, `/` opens it again.
-  await page.goto(`${origin}/`);
+  // Remembered there, `/` offers it first. `/` is a screen of its own, so
+  // Back from the place is `/` again, then the family before it, then the
+  // school.
+  await openHome(page, origin);
   await page.waitForURL(inClass);
+  await page.goBack();
+  await page.waitForURL(`${origin}/`);
+  await page.locator("[data-launcher]").waitFor();
   await page.goBack();
   await page.waitForURL(inClass);
   await page.goBack();

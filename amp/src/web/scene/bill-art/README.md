@@ -12,10 +12,13 @@ Both notes use a 1228 × 522 viewBox, matching the 6.14 × 2.61 proportions.
 Paper and ink colors are fixed in light and dark themes. Corner numerals use
 paths; inscriptions use local Georgia/Times/serif fonts, with no font request.
 
-Run `npx tsx scripts/build-bill-art.ts` from `amp/` after editing either SVG.
-It embeds their exact bytes in `../bill-art.ts` as data URLs. `BillFace` draws
-them in scenes, including app figures, print and lesson films, without waiting
-on the network. `tests/bill-art.test.ts` checks the embedded bytes and renderer.
+In the app the SVGs are served as files, hashed and cached for good, named by
+`../bill-art.files.ts` (the app's build uses it in place of `../bill-art.ts`,
+`vite.config.ts`); a problem that draws a bill shows once it is decoded
+(`../money-art.ts`). Print and lesson films draw from `../bill-art.ts`: run
+`npx tsx scripts/build-bill-art.ts` from `amp/` after editing either SVG to
+embed their exact bytes there as data URLs. `tests/bill-art.test.ts` checks
+the embedded bytes and renderer.
 Highlighting adds an accent outline; the illustration keeps its colors.
 
 A scene element such as

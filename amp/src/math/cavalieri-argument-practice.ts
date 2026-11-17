@@ -15,7 +15,7 @@ import {
   type Random,
   type Slot,
 } from "./multi-part-support";
-import { scene as sceneOf } from "./scene/author";
+import { around, scene as sceneOf } from "./scene/author";
 import type { Element, Point } from "./scene/spec";
 import { defineAxis } from "./variation/axes";
 
@@ -231,8 +231,9 @@ const label = (
   font,
   size: font === "sans" ? "sm" : "md",
   halo: true,
-  offset,
   align,
+  // The drawn place first; else the nearest clear place around it.
+  place: [[...offset, ...align], ...around(10, 18)],
 });
 
 /** Two solids side by side on one ground line, cut by a plane at height y

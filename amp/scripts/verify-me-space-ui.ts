@@ -331,7 +331,7 @@ if (part("answer")) {
   await page.goto(`${origin}/me`, { waitUntil: "load" });
   await page.locator("[data-level-start]").waitFor();
   await page.getByRole("link", { name: "Start practicing" }).click();
-  await page.waitForURL(/\/practice/);
+  await page.waitForURL(/\/practice\/[^/?]+$/);
   // The first problem, whatever its kind: its Check (or Next) is there.
   await page
     .getByRole("button", { name: /^(Check|Next)/ })
@@ -404,8 +404,8 @@ if (part("level")) {
         // Practice once per grade (at one width): the level it starts at.
         if (width === WIDTHS.at(-1) && scheme === "light") {
           await page.getByRole("button", { name: "Start practicing" }).click();
-          await page.waitForURL(/\/practice\?profile=/);
-          const profile = new URL(page.url()).searchParams.get("profile")!;
+          await page.waitForURL(/\/practice\/[^/?]+$/);
+          const profile = new URL(page.url()).pathname.split("/")[2]!;
           ids.add(profile);
           // The area that grade is about starts there: Numbers below high
           // school, Algebra from it (an area with no work at a grade starts
@@ -604,15 +604,14 @@ if (part("levelmode")) {
   const context = await reader(1280, "light");
   await signIn(context, "adult-3wk@personas.amp.test");
   const page = await context.newPage();
-  await page.goto(`${origin}/me/level?grade=4&pace=on-level`, {
-    waitUntil: "load",
-  });
+  await page.goto(`${origin}/me/level`, { waitUntil: "load" });
+  await page.getByRole("radio", { name: "4th grade" }).click();
+  await page.getByRole("radio", { name: /^On level/ }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
-  await page.waitForURL(/\/practice\?profile=/);
-  const profile = new URL(page.url()).searchParams.get("profile")!;
-  await page.goto(`${origin}/pathways?profile=${profile}`, {
-    waitUntil: "load",
-  });
+  await page.waitForURL(/\/practice\/[^/?]+$/);
+  const profile = new URL(page.url()).pathname.split("/")[2]!;
+  // Practicing as the level's profile, Pathways is its (self).
+  await page.goto(`${origin}/pathways`, { waitUntil: "load" });
   await settle(page);
   const hrefs = await page
     .locator("a[href]")
@@ -621,11 +620,13 @@ if (part("levelmode")) {
     );
   if (hrefs.some((href) => href.includes(`me/profiles/${profile}`)))
     fail("level mode", "a link opens the saved-profile editor");
+  // Its editor's address shows the level, chosen again where it was.
   await page.goto(`${origin}/me/profiles/${profile}`, { waitUntil: "load" });
   await page
-    .waitForURL(/\/me\/level/, { timeout: 30000 })
+    .getByRole("heading", { name: "Practice at a level" })
+    .waitFor({ timeout: 30000 })
     .catch(() =>
-      fail("level mode", `its editor address stays at ${page.url()}`),
+      fail("level mode", `its editor doesn't show the level: ${page.url()}`),
     );
   await context.close();
 }

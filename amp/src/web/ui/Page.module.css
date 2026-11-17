@@ -1,0 +1,48 @@
+/* A screen's page (Page.tsx): the gutters, top and foot around one column of
+   the screen's kind. Widths and rhythm come only from ui/tokens.css. */
+.page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: var(--page-top) max(var(--page-gutter), env(safe-area-inset-right))
+    max(var(--page-bottom), env(safe-area-inset-bottom))
+    max(var(--page-gutter), env(safe-area-inset-left));
+  color: var(--color-on-surface);
+}
+.page[data-page="narrow"] {
+  --page-column: var(--page-narrow);
+}
+.page[data-page="standard"] {
+  --page-column: var(--page-standard);
+}
+.page[data-page="wide"] {
+  --page-column: var(--page-wide);
+}
+/* The column is its full width from the first paint: centred by auto
+   margins, it never shrinks to what has loaded and widens (moving its
+   title) when the rest arrives. */
+.column {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--page-column);
+  min-width: 0;
+  margin-inline: auto;
+}
+/* Its default stack, at zero specificity: a screen's own class wins. */
+:where(.column) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--page-gap);
+}
+@media print {
+  .page {
+    padding: 0;
+  }
+  .column {
+    max-width: none;
+  }
+}

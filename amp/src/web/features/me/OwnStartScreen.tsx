@@ -1,27 +1,23 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { Navigate, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
-import { sessionOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import { OwnYearTiles } from "../onboarding/OwnYearTiles";
 import { useStartOwnPractice } from "./api";
 import styles from "../onboarding/Start.module.css";
+import { practiceParams } from "../spaces/identity";
 
 /** `/me/start`: an adult who teaches, or whose child practices, gives the
  * year they were born and goes straight into practice. The year is always
  * enough: an adult's starts mid-scale and practice finds the level within a
  * few problems. */
 export function OwnStartScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
-  return session ? <StartCard session={session} /> : <Navigate to="/sign-in" />;
-}
-
-function StartCard({ session }: { session: AuthSession }) {
+  // Its route signs the visitor in first (app/router.tsx, ownPractice).
+  const session = useSession();
   const navigate = useNavigate();
   const [year, setYear] = useState<number | null>(null);
   const start = useStartOwnPractice(session);
@@ -36,7 +32,7 @@ function StartCard({ session }: { session: AuthSession }) {
         ? "Your practice didn’t start. Check your connection, then try again."
         : "";
   return (
-    <PageFrame centered>
+    <PageFrame>
       <Toast message={failure} onDismiss={() => start.reset()} takeFocus />
       <section className={`${frameCard} ${styles.step}`}>
         <FrameBrand expanded />
@@ -46,10 +42,10 @@ function StartCard({ session }: { session: AuthSession }) {
             event.preventDefault();
             if (year === null || young || start.isPending) return;
             start.mutate(year, {
-              onSuccess: () =>
+              onSuccess: (learner) =>
                 void navigate({
                   to: "/$",
-                  params: { _splat: "practice" },
+                  params: practiceParams(learner),
                   replace: true,
                 }),
               onError: (error) =>

@@ -1,3 +1,5 @@
+import { reportError } from "../../../lib/report-error";
+import { useSession } from "../../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -9,7 +11,6 @@ import {
   type SuggestionResource,
   type TermResource,
 } from "../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
@@ -22,7 +23,9 @@ import { Segmented } from "../../../ui/Segmented";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
 import { Toast } from "../../../ui/Toast";
+import { sheetState, useSheet } from "../../../nav/sheet";
 import { currentSession, orgOptions } from "../api";
+import { ViewLink } from "../ViewLink";
 import { useStaffSession } from "./api";
 import {
   keptPerson,
@@ -49,7 +52,8 @@ import {
   LoadFailed,
   longDay,
   parseSort,
-  useClassSearch,
+  useClassView,
+  useKeyedSheet,
   uuidOr,
 } from "./teacher-shared";
 import styles from "./Teacher.module.css";
@@ -86,7 +90,6 @@ function shortName(name: string) {
 function ExportSheet({
   open,
   onOpenChange,
-  session,
   place,
   term,
   onMessage,
@@ -96,7 +99,6 @@ function ExportSheet({
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  session: AuthSession | null;
   place: Place;
   term: TermResource;
   onMessage: (message: string) => void;
@@ -107,6 +109,7 @@ function ExportSheet({
    * spreadsheet of the grades. */
   school: boolean;
 }) {
+  const session = useSession();
   const offered = gradebookColumns.filter(
     (column) => school || column !== "sis",
   );
@@ -131,10 +134,11 @@ function ExportSheet({
       })
       .catch((error) =>
         onError(
-          failureMessage(
-            error,
-            "That file didn’t download. Check your connection and try again.",
-          ),
+          reportError(error, {
+            doing: "download that file",
+            fallback:
+              "That file didn’t download. Check your connection and try again.",
+          }),
         ),
       )
       .finally(() => setBusy(null));
@@ -211,16 +215,15 @@ function ExportSheet({
  * writes. */
 /** Exported for Settings, where a small class sets it. */
 export function WeeklyTarget({
-  session,
   place,
   book,
   onError,
 }: {
-  session: AuthSession | null;
   place: Place;
   book: GradebookResponse;
   onError: (message: string) => void;
 }) {
+  const session = useSession();
   const save = useSetTarget(session, place);
   const stored = book.weeklyTargetMinutes ?? 0;
   const inherited = book.inheritedTargetMinutes;
@@ -310,7 +313,12 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
   const host = useClassHost(given);
   const place = host.place;
   const session = useStaffSession();
-  const [search, set, closeSheet] = useClassSearch();
+  const [search, set] = useClassView();
+  const evidence = useKeyedSheet("student");
+  const curveSheet = useSheet("curve");
+  const exportSheet = useSheet("export");
+  // Settings of a small class opens this with its close sheet.
+  const closeSheet = useSheet("close");
   const requested = uuidOr(search.term);
   const book = useQuery(gradebookOptions(session, place, requested));
   const family =
@@ -333,13 +341,10 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [closingHere, setClosing] = useState(false);
-  // Settings of a small class opens this with `?close=1`.
-  const closing =
-    (closingHere || search.close === 1 || search.close === "1") &&
-    offersWholeClass(host);
+  const closing = (closingHere || closeSheet.open) && offersWholeClass(host);
   const stopClosing = () => {
     setClosing(false);
-    if (search.close) set({ close: undefined });
+    if (closeSheet.open) closeSheet.close();
   };
   const [announcement, setAnnouncement] = useState("");
   const data = book.data;
@@ -348,12 +353,12 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
   const unknownTerm =
     !!requested && book.error instanceof AppError && book.error.status === 404;
   useEffect(() => {
-    if (unknownTerm) set({ term: undefined }, { replace: true });
+    if (unknownTerm) set({ term: undefined });
     // `set` changes each render; this is about the failure.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unknownTerm]);
   // Only a person this page shows ever opens, whatever the address says.
-  const open = keptPerson(host, uuidOr(search.student));
+  const open = keptPerson(host, uuidOr(evidence.id));
   const editable = !!data?.canEdit && term?.state === "open";
   const rows = (data?.students ?? []).filter(
     (row) => !host.keep || host.keep(row.id),
@@ -371,7 +376,6 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
 
   const final = (row: GradeRow) => (
     <FinalField
-      session={session}
       place={place}
       student={row}
       term={term?.id ?? ""}
@@ -386,7 +390,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
       type="button"
       className={styles.student}
       data-student={row.id}
-      onClick={() => set({ student: row.id })}
+      onClick={() => evidence.show(row.id)}
     >
       <span>{row.name}</span>
     </button>
@@ -471,7 +475,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
     rows.length > 1 &&
     !rows.some((row) => row.suggestion.status === "facts-only");
   const curveOpen =
-    curved && editable && whole && (search.curve === 1 || search.curve === "1");
+    curved && editable && whole && curveSheet.open;
   // Nobody has a week's work yet: what a grade will look like, not a table of
   // dashes.
   const waiting =
@@ -564,8 +568,14 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                           ? "family/learners"
                           : classUrl(place.org, place.class, "settings"),
                     }}
-                    search={
-                      (given ? { add: 1 } : family ? {} : { add: 1 }) as never
+                    // The add sheet opens over the screen it lands on: a
+                    // family's own children, or the class's students.
+                    state={
+                      (given
+                        ? sheetState("add-children")
+                        : family
+                          ? undefined
+                          : sheetState("add")) as never
                     }
                     className={buttonClass("primary")}
                   >
@@ -580,15 +590,19 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 title="Suggested grades appear after a week of work"
                 example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
-                  <Link
-                    to="/$"
-                    params={{
-                      _splat: host.href("today"),
-                    }}
-                    className={buttonClass("primary")}
-                  >
-                    Back to Today
-                  </Link>
+                  // A week of work starts with class: the board's code.
+                  // A family's Today is its tab, in the bar.
+                  given || family ? undefined : (
+                    <Link
+                      to="/$"
+                      params={{
+                        _splat: classUrl(place.org, place.class, "start"),
+                      }}
+                      className={buttonClass("primary")}
+                    >
+                      Start class
+                    </Link>
+                  )
                 }
               >
                 You decide every final grade.
@@ -604,7 +618,6 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                     // The class's weekly target grades everyone in it: set
                     // only where this page shows the whole class.
                     <WeeklyTarget
-                      session={session}
                       place={place}
                       book={data}
                       onError={setError}
@@ -624,23 +637,20 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 </span>
                 <div className={styles.toolbarActions}>
                   {whole && (
-                    <Button variant="quiet" onClick={() => set({ export: 1 })}>
+                    <Button variant="quiet" onClick={exportSheet.show}>
                       Export
                     </Button>
                   )}
-                  <Link
-                    to="/$"
-                    params={{
-                      _splat: host.href("report-cards"),
-                    }}
-                    search={{ term: term.id } as never}
+                  <ViewLink
+                    to={host.href("report-cards")}
+                    view={{ term: term.id }}
                     // Beside Export, never pulled over it: a start-aligned
                     // quiet button lines up with a column, and this one sits
                     // in a row.
                     className={buttonClass("quiet")}
                   >
                     Report cards
-                  </Link>
+                  </ViewLink>
                   {editable && whole && (
                     <Button
                       variant="secondary"
@@ -655,7 +665,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 <CurveStrip
                   book={shown!}
                   term={term}
-                  onEdit={editable && whole ? () => set({ curve: 1 }) : null}
+                  onEdit={editable && whole ? curveSheet.show : null}
                 />
               )}
               <DataGrid
@@ -670,12 +680,9 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                   }
                 }
                 onSortChange={(next) =>
-                  set(
-                    { sort: `${next.column}:${next.direction}` },
-                    { replace: true },
-                  )
+                  set({ sort: `${next.column}:${next.direction}` })
                 }
-                onRowActivate={(row) => set({ student: row.id })}
+                onRowActivate={(row) => evidence.show(row.id)}
                 rowHeight={52}
                 rules={false}
                 cardLayout="list"
@@ -691,11 +698,11 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
         <>
           <EvidenceSheet
             place={place}
-            session={session}
+
             term={term.id}
             student={open}
             returnFocus={lastOpen.current}
-            onClose={() => closeSheet("student")}
+            onClose={evidence.close}
             onError={setError}
             onSaved={setAnnouncement}
             links={
@@ -712,9 +719,9 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
               words={words}
               open={curveOpen}
               onOpenChange={(next) => {
-                if (!next) closeSheet("curve");
+                if (!next) curveSheet.close();
               }}
-              session={session}
+
               place={place}
               book={data}
               term={term}
@@ -726,11 +733,11 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
             <ExportSheet
               words={words}
               school={!given && !family}
-              open={search.export === 1 || search.export === "1"}
+              open={exportSheet.open}
               onOpenChange={(next) => {
-                if (!next) closeSheet("export");
+                if (!next) exportSheet.close();
               }}
-              session={session}
+
               place={place}
               term={term}
               onMessage={setMessage}

@@ -35,13 +35,15 @@ await writeFile(
 import React,{useState}from'react';import{createRoot}from'react-dom/client';
 import{createRootRoute,createRoute,createRouter,RouterProvider}from'@tanstack/react-router';
 import{QueryClientProvider,useQuery}from'@tanstack/react-query';
-import{queryClient,meOptions,invalidateAccount}from'../../src/web/lib/query';
-import{FamilyCenter}from'../../src/web/FamilyCenter';import'../../src/web/app/styles';
-function Screen(){const[identity,setIdentity]=useState('amp|parent');(window as any).switchAccount=setIdentity;
-const token=identity==='amp|parent'?'synthetic-parent':'synthetic-other';
-const result=useQuery(meOptions({accountId:identity,token}));
-if(!result.data)return <p role="status">Loading family…</p>;
-return <FamilyCenter key={identity} identity={identity} token={token} initialSection="privacy" onChanged={()=>invalidateAccount(identity)} onClose={()=>{}} onLearningInvalidated={()=>{}}/>;}
+import{queryClient,meOptions,sessionOptions}from'../../src/web/lib/query';
+import{PrivacyPanel}from'../../src/web/features/privacy/PrivacyPanel';import{setPanel}from'../../src/web/features/account/panels';import'../../src/web/app/styles';
+const sessionFor=(identity:string)=>({accountId:identity,token:identity==='amp|parent'?'synthetic-parent':'synthetic-other'});
+queryClient.setQueryData(sessionOptions.queryKey,sessionFor('amp|parent'));
+function Screen(){const[identity,setIdentity]=useState('amp|parent');
+(window as any).switchAccount=(next:string)=>{queryClient.setQueryData(sessionOptions.queryKey,sessionFor(next));setPanel(next,'privacy','measurement');setIdentity(next);};
+const result=useQuery(meOptions(sessionFor(identity)));
+if(!result.data)return <p role="status">Loading…</p>;
+return <main style={{maxWidth:480,margin:'0 auto',padding:16}}><h1>Privacy</h1><PrivacyPanel key={identity}/></main>;}
 const root=createRootRoute({component:Screen});const child=createRoute({getParentRoute:()=>root,path:'$'});
 const router=createRouter({routeTree:root.addChildren([child])});
 createRoot(document.getElementById('root')!).render(<QueryClientProvider client={queryClient}><RouterProvider router={router}/></QueryClientProvider>);`,
@@ -73,7 +75,8 @@ try {
         name: "synthetic-family-route",
         configureServer(server) {
           server.middlewares.use((request, _response, next) => {
-            if (request.url?.startsWith("/family/"))
+            // The Privacy overlay's panels, at the account's address.
+            if (/^\/(?:family|account)\//.test(request.url ?? ""))
               request.url =
                 "/artifacts/advertising-permission-review/index.html";
             next();
@@ -124,15 +127,12 @@ try {
         });
         const errors: string[] = [];
         page.on("pageerror", (e) => errors.push(e.message));
-        await page.goto(origin + "/family/privacy");
-        await page
-          .getByRole("button", { name: /Purchase measurement/ })
-          .click();
+        // Privacy's Advertising preferences panel (features/privacy): a
+        // disclosure, so the address stays and a reload reopens it.
+        await page.goto(origin + "/account/privacy");
+        await page.getByText("Advertising preferences", { exact: true }).click();
         await page.getByRole("heading", { name: title }).waitFor();
-        assert.equal(
-          new URL(page.url()).pathname,
-          "/family/privacy/measurement",
-        );
+        assert.equal(new URL(page.url()).pathname, "/account/privacy");
         const card = page.locator(`[data-purchase-measurement="${provider}"]`);
         const other = page.locator(
           `[data-purchase-measurement="${provider === "google" ? "meta" : "google"}"]`,
@@ -260,11 +260,7 @@ try {
         await other
           .getByRole("button", { name: "Withdraw permission", exact: true })
           .waitFor();
-        await page.goBack();
-        await page
-          .getByRole("heading", { name: "Privacy and records" })
-          .waitFor();
-        await page.goForward();
+        await page.reload();
         await card
           .getByRole("button", { name: "Withdraw permission", exact: true })
           .waitFor();

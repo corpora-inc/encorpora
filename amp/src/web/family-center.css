@@ -1,16 +1,8 @@
-/* Account's page geometry is features/account/AccountPages.module.css; the
-   legacy shell's 800 px flow column must not narrow it. */
-/* The legacy shell's one 832 px column, released for Account. */
+/* Account's page is a ui/Page (data-family-center); the legacy shell's
+   one 832 px column is released for it, so the Page sets its width. */
 .shell.app-shell.family-shell:not(.flow):not(.reading-shell):not(.immersive) {
   max-width: none;
   padding-inline: 0;
-}
-.shell.app-shell.flow > section.family-center,
-.shell.family-shell > section.family-center {
-  width: 100%;
-  max-width: var(--width-content-wide);
-  height: auto;
-  margin-inline: auto;
 }
 .family-heading {
   display: flex;
@@ -80,26 +72,26 @@
   align-items: center;
   margin-top: 16px;
 }
-:where(.family-center) button {
+:where([data-family-center]) button {
   min-height: 44px;
   padding: 10px 18px;
   white-space: normal;
 }
-:where(.family-center) button:focus-visible,
-:where(.family-center) input:focus-visible {
+:where([data-family-center]) button:focus-visible,
+:where([data-family-center]) input:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
-:where(.family-center) button:disabled {
+:where([data-family-center]) button:disabled {
   opacity: 0.55;
   cursor: wait;
 }
-:where(.family-center) input {
+:where([data-family-center]) input {
   width: 100%;
   font-size: 16px;
   min-height: 44px;
 }
-:where(.family-center) label {
+:where([data-family-center]) label {
   display: block;
   margin: 12px 0 6px;
 }
@@ -208,10 +200,15 @@
   }
 }
 
-/* A parent workspace has its own frame; controls never extend the lesson. */
-.shell.family-shell > .family-center {
+/* A parent workspace has its own frame; controls never extend the lesson.
+   The frame is fixed to the viewport (practice.css `.shell.app-shell`), so
+   the page scrolls inside it when a short viewport (phone landscape) cannot
+   hold it all. */
+.shell.family-shell > [data-family-center] {
   flex: 1;
   height: auto;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .family-heading {
@@ -260,38 +257,6 @@
 .family-error {
   margin: 0;
 }
-.privacy-choices > p {
-  margin: 0 0 20px;
-}
-.privacy-choices > button {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  text-align: left;
-  gap: 4px 12px;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  padding: 12px 16px;
-  margin-bottom: 8px;
-}
-.privacy-choices strong {
-  font-size: 17px;
-}
-.privacy-choices span {
-  font-size: 14px;
-  line-height: 1.4;
-  color: var(--color-muted-text);
-}
-.privacy-choices b {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  align-self: center;
-}
-.privacy-back {
-  margin: 0 0 12px;
-}
 @media (max-width: 600px) {
   .family-heading {
     flex-direction: row;
@@ -312,24 +277,6 @@
   }
   .family-section h2 {
     margin-bottom: 8px;
-  }
-  .privacy-choices > p {
-    margin-bottom: 12px;
-  }
-  .privacy-choices > button {
-    padding: 10px 12px;
-    margin-bottom: 8px;
-  }
-}
-@media (max-height: 650px) {
-  .privacy-choices > button {
-    min-height: 56px;
-  }
-  .privacy-choices > button span {
-    display: none;
-  }
-  .privacy-choices > button b {
-    grid-row: 1;
   }
 }
 .family-section h2:focus {
@@ -421,7 +368,7 @@
   flex: none;
   margin: 0;
 }
-.family-center .family-profile-select {
+[data-family-center] .family-profile-select {
   flex: none;
   display: grid;
   gap: 4px;
@@ -608,15 +555,15 @@
   gap: var(--space-2);
   margin-top: 16px;
 }
-.family-center .family-name-edit label,
-.family-center .family-add-learner label {
+[data-family-center] .family-name-edit label,
+[data-family-center] .family-add-learner label {
   display: grid;
   gap: 4px;
   margin: 0;
 }
 /* A field's reason keeps its line, in the danger ink, in both forms. */
-.family-center .family-name-edit label > span[aria-live],
-.family-center .family-add-learner label > span[aria-live] {
+[data-family-center] .family-name-edit label > span[aria-live],
+[data-family-center] .family-add-learner label > span[aria-live] {
   min-height: 1.4em;
   color: var(--color-danger-accent);
   font-size: var(--text-label);

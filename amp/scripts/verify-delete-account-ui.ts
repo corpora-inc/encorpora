@@ -96,6 +96,10 @@ try {
             },
           });
         if (path === "/api/v1/me") return route.fulfill({ json: me });
+        // An adult with no family: the account's own hub
+        // (features/spaces/settings-hub.ts).
+        if (path === "/api/v1/families")
+          return route.fulfill({ json: { families: [], next: null } });
         if (path === "/api/v1/account/deletion")
           return stale
             ? route.fulfill({ status: 403, json: { error: "reauth_required" } })
@@ -118,7 +122,7 @@ try {
         if (path === "/api/auth/sign-in/email") {
           assert.equal(
             route.request().postDataJSON().callbackURL,
-            "/family/security/delete",
+            "/account/delete-account",
           );
           stale = false;
           return route.fulfill({
@@ -139,9 +143,12 @@ try {
       await recovery.waitFor();
       assert.equal(await remove.count(), 0);
       const href = await recovery.getAttribute("href");
+      // The old address is one hop to the account's delete overlay; the
+      // way back from sign-in is that overlay's own address.
+      assert.equal(new URL(page.url()).pathname, "/account/delete-account");
       assert.equal(
         new URL(href!, origin).searchParams.get("next"),
-        "/family/security/delete",
+        "/account/delete-account",
       );
       const box = await recovery.boundingBox();
       assert.ok(
@@ -173,7 +180,7 @@ try {
         .getByLabel("Password", { exact: true })
         .fill("synthetic password");
       await page.getByRole("button", { name: "Sign in", exact: true }).click();
-      await page.waitForURL(`${origin}/family/security/delete`);
+      await page.waitForURL(`${origin}/account/delete-account`);
       await remove.waitFor();
       await page.getByLabel("Type “delete” to confirm").fill("delete");
       await page.evaluate(async () => {
@@ -213,7 +220,7 @@ try {
         .getByLabel("Password", { exact: true })
         .fill("synthetic password");
       await page.getByRole("button", { name: "Sign in", exact: true }).click();
-      await page.waitForURL(`${origin}/family/security/delete`);
+      await page.waitForURL(`${origin}/account/delete-account`);
       await page.getByLabel("Type “delete” to confirm").fill("delete");
       await remove.click();
       await page.waitForURL(`${origin}/account/deleted`);

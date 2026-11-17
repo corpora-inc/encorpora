@@ -1,6 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 
 /** A program's public education-funds offer: what the no-account invoice
  * route sells. Shared so the pitch and the invoice show one price. */
@@ -28,7 +29,7 @@ export type InvoiceOffer = z.infer<typeof invoiceOfferSchema>;
 
 export const invoiceOffersOptions = (programId: string) =>
   queryOptions({
-    queryKey: ["public-invoice-offers", programId],
+    queryKey: qk.publicInvoiceOffers(programId),
     queryFn: ({ signal }) =>
       request(
         `/funding/invoice-offers?program=${programId}`,

@@ -1,5 +1,6 @@
 import { expect, test } from "vitest";
-import { fitScale, likelyRange } from "../scale";
+import { shownRange, shownSpan } from "../../../../learning/level-check";
+import { fitScale, likelyRange, shownLikely } from "../scale";
 
 const inside = (scale: { lo: number; hi: number }, level: number) =>
   level >= scale.lo && level <= scale.hi;
@@ -12,12 +13,26 @@ test("a K to 12 class fits one scale and nobody's range runs off it", () => {
     { level: 12.3, sd: 0.3 },
   ];
   const scale = fitScale(children);
-  for (const child of children)
-    for (const end of likelyRange(child))
-      expect(inside(scale, end), `${end} in ${scale.lo}–${scale.hi}`).toBe(
-        true,
-      );
-  expect(scale).toEqual({ lo: 0, hi: 13 });
+  for (const child of children) {
+    const range = shownRange(child);
+    const [from, to] = shownSpan(range);
+    // An open end runs to the scale's end; a closed one fits on it.
+    if (!range.openLow) expect(inside(scale, from)).toBe(true);
+    if (!range.openHigh) expect(inside(scale, to)).toBe(true);
+  }
+  // Precalculus is the top: a range that reaches it is open, and runs to
+  // the end of a scale that stops there.
+  expect(scale).toEqual({ lo: 0, hi: 12 });
+});
+
+test("a bar's ends are its words' grades: a range reaching precalculus is open", () => {
+  expect(shownLikely({ level: 8, sd: 1.6, low: 5.3, high: 10.7 })).toEqual([
+    4.5, 11.5,
+  ]);
+  expect(shownLikely({ level: 9, sd: 2.1, low: 6.4, high: 11.7 })[1]).toBe(13);
+  expect(likelyRange({ level: 9, sd: 2.1, low: 6.4, high: 11.7 })).toEqual([
+    6.4, 11.7,
+  ]);
 });
 
 test("a narrow class still gets a readable span, and the data are never clamped", () => {

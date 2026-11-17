@@ -1,0 +1,199 @@
+/* The pay flow's steps (screens.tsx). Widths, gutters and the header come
+   from Page and PageHeader; this sets only each step's body. Every rule
+   sets its element fully: legacy element rules (style.css, theme.css) style
+   bare paragraphs, lists and buttons. */
+/* The overlay's body (screens.tsx, in the shared Sheet): its sections
+   stacked at one rhythm. */
+.overlay {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+.panel,
+.lead,
+.form {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.text.text {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+/* The step's actions: the primary first, at the column's start; a quiet
+   line under them. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.actions > .fine.fine {
+  flex-basis: 100%;
+}
+.fine.fine {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+/* A failure's line keeps its height empty, so its message never moves the
+   step (premium rule 1). */
+.error.error {
+  flex-basis: 100%;
+  min-height: calc(var(--text-small) * 1.45);
+  margin: 0;
+  color: var(--color-danger);
+  font-size: var(--text-small);
+  line-height: 1.45;
+}
+.error:empty {
+  visibility: hidden;
+}
+/* What the invoice will say, before it is made. */
+.summary.summary {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-border);
+}
+.summary > div {
+  display: grid;
+  grid-template-columns: minmax(7.5em, auto) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.summary dt {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+.summary dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--text-body);
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+/* Under a field, in the line its TextField keeps for an error this field
+   never shows (it has no validation message of its own). */
+.hint.hint {
+  margin: calc(-1 * (1.4 * var(--text-label) + var(--space-2))) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  line-height: 1.45;
+}
+/* The program's submission steps, numbered. */
+.steps.steps {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0 0 0 1.5em;
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.steps li {
+  padding-left: var(--space-1);
+}
+.steps li::marker {
+  color: var(--color-muted-text);
+  font-variant-numeric: tabular-nums;
+}
+/* Waits: blocks the size of what replaces them. */
+.skeleton {
+  display: grid;
+  gap: var(--space-4);
+}
+.skeleton > span {
+  display: block;
+  border-radius: var(--radius-control);
+}
+.skeleton > [data-part="plan"] {
+  height: 112px;
+}
+.skeleton > [data-part="terms"] {
+  height: 40px;
+}
+.skeleton > [data-part="notice"] {
+  height: 120px;
+}
+.skeleton > [data-part="action"] {
+  width: 12rem;
+  height: var(--target-min);
+}
+.skeleton > [data-part="row"] {
+  height: 64px;
+}
+.rowSkeleton {
+  display: grid;
+  min-height: 64px;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  list-style: none;
+}
+.rowSkeleton > span {
+  display: block;
+  border-radius: var(--radius-control);
+}
+/* Card | Education funds. */
+.tabs {
+  display: grid;
+}
+/* Both tab panels share one grid cell: the area is the taller panel's
+   height, so switching tabs moves nothing (premium rule 1). The one not
+   chosen keeps its size, unseen and inert. */
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+.panelArea {
+  grid-area: 1 / 1;
+  display: grid;
+  gap: var(--page-gap);
+  min-width: 0;
+}
+.panelArea[data-active="false"] {
+  visibility: hidden;
+}
+/* A program's tile: its short name over its status line, left-aligned and
+   wrapping, every tile the height of the tallest. */
+.programs > button {
+  min-height: 64px;
+  padding: var(--space-3);
+  text-align: start;
+  white-space: normal;
+}
+.program {
+  display: grid;
+  gap: 2px;
+}
+.programName {
+  font-size: var(--text-body);
+  font-weight: 650;
+  line-height: 1.3;
+}
+.programMeta {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: 1.4;
+}
+/* The education-funds steps: a stepper, then the step. */
+.wizard {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}

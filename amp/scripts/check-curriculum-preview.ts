@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
+import { openHome } from "./launcher";
 const origin =
   process.env.AMP_PURCHASE_PREVIEW_ORIGIN ?? "http://127.0.0.1:4980";
 const output = "/tmp/rebuild-funded-purchase/curriculum";
@@ -300,7 +301,7 @@ try {
   for (const width of [390, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     await page
-      .getByRole("link", { name: "Back to family", exact: true })
+      .getByRole("link", { name: "Open your family", exact: true })
       .waitFor();
     assert.ok(
       await page.evaluate(
@@ -312,9 +313,9 @@ try {
       path: `${output}/own-practice-${width}.png`,
     });
   }
-  await page.getByRole("link", { name: "Back to family", exact: true }).click();
+  await page.getByRole("link", { name: "Open your family", exact: true }).click();
   await page.waitForURL(/\/family/);
-  await page.goto(origin + "/");
+  await openHome(page, origin);
   await page.waitForURL(/\/family/);
   // Once signed in as yourself, curriculum Practice is a direct link.
   await page.goto(`${origin}/pathways?open=lesson%3Adivide-by-one-digit`);

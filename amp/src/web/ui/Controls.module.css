@@ -118,12 +118,16 @@
   font-weight: 400;
 }
 .fieldError {
+  /* The line a message fills is the line reserved for it: an error that
+     arrives moves nothing below it, whatever line-height it inherits. */
   min-height: 1.4em;
+  line-height: 1.4;
   font-size: var(--text-label);
   color: var(--color-danger-accent);
 }
 .fieldHeading {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
 }

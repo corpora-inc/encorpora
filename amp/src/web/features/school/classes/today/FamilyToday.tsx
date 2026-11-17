@@ -1,3 +1,4 @@
+import { useSession } from "../../../../lib/session";
 import { spaceWords } from "../../../spaces/words";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
@@ -7,7 +8,6 @@ import type {
   TodayStudentResource,
   TodayTodo,
 } from "../../../../../schools/teacher-contracts";
-import type { AuthSession } from "../../../../auth";
 import { Button, buttonClass } from "../../../../ui/Button";
 import { EmptyState } from "../../../../ui/EmptyState";
 import { Sheet } from "../../../../ui/Sheet";
@@ -15,7 +15,7 @@ import { Toast } from "../../../../ui/Toast";
 import { rememberContinuation } from "../../../continue/memory";
 import { SecondParentInviteSheet } from "../../../second-parent/SecondParent";
 import { JoinClass } from "../../join/JoinClass";
-import { useClassSearch } from "../teacher-shared";
+import { useSheet } from "../../../../nav/sheet";
 import { RowButton, RowList } from "../../../../ui/RowList";
 import { ChildRow, PracticeHere } from "./ChildRow";
 import { Feed, type FeedEntry } from "./Feed";
@@ -23,6 +23,7 @@ import { todoEntries, useChecks } from "./todo-entries";
 import styles from "./Today.module.css";
 import { useHandOver } from "./use-hand-over";
 import { WeekFacts } from "./WeekFacts";
+import { PayLink } from "../../../pay/link";
 
 type Learner = SignedInMe["learners"][number];
 /** Fewer free problems than this and Today says so. */
@@ -47,7 +48,6 @@ export function FamilyToday({
   data,
   place,
   code,
-  session,
   me,
   secondParent,
 }: {
@@ -55,11 +55,11 @@ export function FamilyToday({
   place: { org: string; class: string };
   /** The class code, for the one Join element. */
   code: string | null;
-  session: AuthSession;
   me: SignedInMe | undefined;
   /** The family's second parent; undefined unless this is its holder. */
   secondParent: unknown;
 }) {
+  const session = useSession();
   const here = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
@@ -69,9 +69,8 @@ export function FamilyToday({
     dismissedSecondParent(session.accountId),
   );
   const [inviting, setInviting] = useState(false);
-  // The children's own devices, by address (`?devices=1`): Back closes it.
-  const [search, setSearch, closeSearch] = useClassSearch();
-  const joining = search.devices === 1 || search.devices === "1";
+  // The children's own devices: a sheet in history state, so Back closes it.
+  const devices = useSheet("devices");
   const holder = me?.familyClass?.classId === place.class;
   const learners: readonly Learner[] = holder
     ? me!.learners
@@ -157,14 +156,13 @@ export function FamilyToday({
                 : `After those, continue with AMP to keep ${student.name} practicing.`,
             mark: left === 0 ? ("plain" as const) : ("check" as const),
             actions: (
-              <Link
-                to="/continue/$learnerId"
-                params={{ learnerId: learner.id }}
+              <PayLink
+                learnerId={learner.id}
                 className={buttonClass(left === 0 ? "primary" : "secondary")}
                 onClick={() => remember(learner.id)}
               >
                 Continue with AMP
-              </Link>
+              </PayLink>
             ),
           },
         ];
@@ -216,7 +214,7 @@ export function FamilyToday({
               title="Their own devices"
               meta="Sign in with a code or a printed card"
               data-own-devices=""
-              onClick={() => setSearch({ devices: 1 })}
+              onClick={devices.show}
             />
           </RowList>
         )}
@@ -254,10 +252,8 @@ export function FamilyToday({
       />
       {code && (
         <Sheet
-          open={joining}
-          onOpenChange={(open) => {
-            if (!open) closeSearch("devices");
-          }}
+          open={devices.open}
+          onOpenChange={devices.onOpenChange}
           title="Their own devices"
           tall
         >
@@ -272,7 +268,6 @@ export function FamilyToday({
       )}
       {inviting && (
         <SecondParentInviteSheet
-          session={session}
           onClose={() => setInviting(false)}
         />
       )}

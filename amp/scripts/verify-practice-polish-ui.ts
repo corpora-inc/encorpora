@@ -31,6 +31,11 @@ import {
 } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblemFor } from "../src/math/engine";
@@ -139,7 +144,7 @@ const vite = await createServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === root + "src/web/auth.ts")
-          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"synthetic",accountId:"fixture-parent"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"synthetic",accountId:"fixture-parent"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
     },
   ],
@@ -199,6 +204,14 @@ async function mockApi(context: BrowserContext, templateId: string) {
     if (path === "/api/v1/auth-config")
       return json({ mode: "accounts", passwords: true, providers: [] });
     if (path === "/api/v1/me") return json(account);
+    // The parent's family, which the app frame reads for its places.
+    if (path === "/api/v1/families") return json(fixtureFamilies());
+    if (path === `/api/v1/families/${FIXTURE_FAMILY_ID}`)
+      return json(
+        fixtureFamilyProjection([
+          { id: "sample-learner", name: "Sample learner", birthYear: 2014 },
+        ]),
+      );
     if (/^\/api\/v1\/catalog(?:\/map)?$/.test(path))
       return json({
         skills,

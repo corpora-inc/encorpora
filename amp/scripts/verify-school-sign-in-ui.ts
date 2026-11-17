@@ -770,8 +770,10 @@ async function journeys(browser: Browser, engine: string) {
         name: `Class code ${[...rotated.joinCode].join(" ")}`,
       })
       .waitFor({ timeout: 8000 });
-    // Exit returns to the class.
-    await teacherBoard.page.getByRole("link", { name: "Exit" }).click();
+    // The board's cross closes it to the class.
+    await teacherBoard.page
+      .getByRole("button", { name: "Close the board" })
+      .click();
     await teacherBoard.page.waitForURL("**/today");
     await teacherBoard.page.goBack();
     await teacherBoard.page.waitForURL("**/start");

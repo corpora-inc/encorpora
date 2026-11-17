@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLoaderData } from "@tanstack/react-router";
-import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { authConfigOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import { cleverEnabled } from "../school/clever/enabled";
 import type { ReactNode } from "react";
 import { buttonClass } from "../../ui/Button";
@@ -8,6 +9,7 @@ import { SCOPE_CSV, SCOPE_PDF } from "./api";
 import { CurriculumRibbon } from "./CurriculumRibbon";
 import { ProductShot } from "./ProductShot";
 import { PublicFrame } from "./PublicFrame";
+import { signInLink } from "./sign-in-link";
 import { TalkToUs } from "./TalkToUs";
 import { productScreens as screens } from "./screens";
 import styles from "./Schools.module.css";
@@ -15,7 +17,7 @@ import styles from "./Schools.module.css";
 const count = (value: number) => value.toLocaleString("en-US");
 
 function Actions({ className = "" }: { className?: string }) {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const clever = cleverEnabled(useQuery(authConfigOptions).data);
   return (
     <div className={`${styles.actions} ${className}`}>
@@ -30,8 +32,7 @@ function Actions({ className = "" }: { className?: string }) {
         </Link>
       ) : (
         <Link
-          to="/sign-up"
-          search={{ return: "school", next: "/school/start" }}
+          {...signInLink("/school/start", "/sign-up")}
           className={buttonClass("primary", styles.action)}
         >
           Start with your class
@@ -54,8 +55,7 @@ function Actions({ className = "" }: { className?: string }) {
         </Link>
       ) : (
         <Link
-          to="/sign-up"
-          search={{ return: "school", next: "/school/start/school" } as never}
+          {...signInLink("/school/start/school", "/sign-up")}
           className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
         >
           Set up your school

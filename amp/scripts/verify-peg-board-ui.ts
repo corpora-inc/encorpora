@@ -22,7 +22,7 @@ import { pegBoardLesson } from "../src/content/peg-board-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -168,7 +168,7 @@ try {
       page.setDefaultTimeout(15000);
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${baseUrl}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const variant of smoke
         ? ["square", "copy", "draw", "finish"]
         : [...fixtures.keys()])

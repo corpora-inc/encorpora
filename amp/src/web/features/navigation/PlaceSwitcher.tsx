@@ -1,12 +1,13 @@
 import { familyPlacesOptions } from "../family/api";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
-import { useLearnerStore } from "../../learner-store";
-import { sessionOptions } from "../../lib/query";
+import { currentLearner, selectLearner } from "../../learner-store";
+import { useSessionOrNull } from "../../lib/session";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { rememberPlace } from "../onboarding/place-memory";
+import { setHome } from "../../lib/home-place";
 import { DemoMark } from "../school/demo/DemoMark";
 import {
   currentPlace,
@@ -16,7 +17,6 @@ import {
   type PlaceEntry,
   type PlaceGroup,
 } from "../spaces/places";
-import { appReturn } from "../spaces/returns";
 import styles from "./PlaceSwitcher.module.css";
 
 export type { PlaceEntry } from "../spaces/places";
@@ -24,7 +24,7 @@ export type { PlaceEntry } from "../spaces/places";
 /** Every place this account can open, grouped by space, from one bounded
  * request (no request per school or class). */
 export function usePlaces(me: SignedInMe | null) {
-  const session = useQuery(sessionOptions).data;
+  const session = useSessionOrNull();
   const staff =
     !!me &&
     me.account.kind !== "student" &&
@@ -69,11 +69,25 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
   return placeGroups(me, null).flatMap((group) => group.entries);
 }
 
+/** Opening a place: its learner is chosen, and it is remembered as the one
+ * `/` offers first (starting or trying a level is a step, not a place). */
+export function choosePlace(me: SignedInMe, place: PlaceEntry) {
+  choosePlaceLearner(me, place.id);
+  // A step (starting, a level) is not a home.
+  if (place.id !== "level" && place.path && !place.path.startsWith("me/"))
+    setHome(me.account.id, `/${place.path}`);
+  if (place.id === "home" || (place.id === "me" && place.path === "me"))
+    rememberPlace(me.account.id, place.id);
+  else if (place.id.startsWith("school:"))
+    rememberPlace(me.account.id, place.id as `school:${string}`);
+  else if (place.id.startsWith("family:"))
+    rememberPlace(me.account.id, `school:${place.id.slice(7)}`);
+}
+
 /** Choosing a place chooses its learner: the adult's own for their
  * practice, one of the family's children for a family (unless one already
  * is), and nobody for a class or school, where no learner belongs. */
 export function choosePlaceLearner(me: SignedInMe, place: PlaceEntry["id"]) {
-  const store = useLearnerStore.getState();
   const own = me.adultPractice?.learner?.id ?? null;
   const shared = /^family:(.+)$/.exec(place)?.[1];
   const children =
@@ -84,16 +98,18 @@ export function choosePlaceLearner(me: SignedInMe, place: PlaceEntry["id"]) {
             ?.learners ?? [])
         : null;
   if (place === "me") {
-    if (own) store.select(own);
+    if (own) selectLearner(own, me.account.id);
   } else if (children) {
-    if (!children.some((learner) => learner.id === store.learnerId))
-      store.select(children[0]?.id ?? null);
+    if (
+      !children.some((learner) => learner.id === currentLearner(me.account.id))
+    )
+      selectLearner(children[0]?.id ?? null, me.account.id);
   } else if (
     place.startsWith("school:") ||
     place.startsWith("class:") ||
     place.startsWith("group:")
   )
-    store.select(null);
+    selectLearner(null, me.account.id);
 }
 
 /** What "Add a place" can still add: never a place the account has. */
@@ -137,11 +153,6 @@ export function PlaceSwitcher({
   onNavigate?: () => void;
 }) {
   const navigate = useNavigate();
-  // Where "Add a place" returns: a place, never a link's secret
-  // (features/spaces/returns.ts).
-  const origin = appReturn(
-    useLocation({ select: (location) => location.href }),
-  );
   const [expanded, setExpanded] = useState(false);
   const groups = given ?? placeGroups(me, null);
   const all = groups.flatMap((group) => group.entries);
@@ -151,14 +162,7 @@ export function PlaceSwitcher({
   const name = here?.name ?? label ?? "Your places";
   const choose = (place: PlaceEntry) => {
     if (place.id === here?.id) return;
-    choosePlaceLearner(me, place.id);
-    // A place `/` can return to; starting or trying a level is a step.
-    if (place.id === "home" || (place.id === "me" && place.path === "me"))
-      rememberPlace(me.account.id, place.id);
-    else if (place.id.startsWith("school:"))
-      rememberPlace(me.account.id, place.id as `school:${string}`);
-    else if (place.id.startsWith("family:"))
-      rememberPlace(me.account.id, `school:${place.id.slice(7)}`);
+    choosePlace(me, place);
     onNavigate?.();
     void navigate(
       place.path ? { to: "/$", params: { _splat: place.path } } : { to: "/" },
@@ -235,11 +239,9 @@ export function PlaceSwitcher({
       <MenuItem
         onSelect={() => {
           onNavigate?.();
-          // Adding a place returns to here if they change their mind.
-          void navigate({
-            to: "/start",
-            search: (origin ? { from: origin } : {}) as never,
-          });
+          // The starter, adding a place: changing their mind is the
+          // browser's Back, to here (it has no in-page Back).
+          void navigate({ to: "/start" });
         }}
       >
         <span className={styles.item} data-place="add">

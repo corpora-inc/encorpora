@@ -1,12 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouterState } from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
+import type { Me } from "../../../account/contracts";
+import type { AuthSession } from "../../auth";
+import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { familyOptions } from "../family/api";
+import { currentLearner, useCurrentLearner } from "../../learner-store";
 import {
   childAddress,
   learningIdentity,
+  selfOf,
   type AddressedIdentity,
 } from "./identity";
+
+/** The displayed route's own pathname and search (the same snapshot the
+ * shell reads: useSettledMatch), never the address still loading. */
+type ShownState = {
+  matches: { status: string; pathname: string; search: unknown }[];
+  location: { pathname: string; search: unknown };
+  resolvedLocation?: { pathname: string; search: unknown };
+};
+function shownLocation(state: ShownState) {
+  const leaf = state.matches.at(-1);
+  return leaf && leaf.status === "success"
+    ? { pathname: leaf.pathname, search: leaf.search }
+    : (state.resolvedLocation ?? state.location);
+}
+/** This session's `/me`, never another account's. */
+function accountOf(session: AuthSession | null, me: Me | undefined) {
+  return me?.signedIn && me.account.id === session?.accountId ? me : null;
+}
 
 /**
  * The learner or profile the displayed screen's address names, with self
@@ -16,28 +39,20 @@ import {
  * shows.
  */
 export function useAddressedIdentity(): AddressedIdentity | null {
-  const session = useQuery(sessionOptions).data ?? null;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  }).data;
-  const own =
-    me?.signedIn && me.account.id === session?.accountId
-      ? (me.adultPractice?.learner?.id ?? null)
-      : null;
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
+  const account = accountOf(session, me);
+  // Self: the profile being practiced as, else the adult's own (selfOf).
+  const self = selfOf(account, useCurrentLearner());
+  const selfKey = self ? `${self.kind}:${self.id}` : "";
   const key = useRouterState({
     select: (state) => {
-      // The displayed route's own pathname and search (the same snapshot
-      // the shell reads: useSettledMatch), never the address still loading.
-      const leaf = state.matches.at(-1);
-      const shown =
-        leaf && leaf.status === "success"
-          ? { pathname: leaf.pathname, search: leaf.search }
-          : (state.resolvedLocation ?? state.location);
+      const shown = shownLocation(state);
       const found = learningIdentity(
         shown.pathname,
         shown.search as Record<string, unknown>,
-        own,
+        selfKey ? self : null,
+        account,
       );
       return found ? `${found.kind}:${found.id}` : "";
     },
@@ -50,6 +65,28 @@ export function useAddressedIdentity(): AddressedIdentity | null {
   };
 }
 
+/** `useAddressedIdentity`'s answer outside render (work finishing later
+ * asks whose screen is on view now), from the same canonical sources: the
+ * router's state and the Query cache. */
+export function addressedIdentityNow(
+  state: ShownState,
+): AddressedIdentity | null {
+  const session =
+    queryClient.getQueryData<AuthSession | null>(sessionOptions.queryKey) ??
+    null;
+  const me = session
+    ? queryClient.getQueryData<Me>(meKey(session.accountId))
+    : undefined;
+  const shown = shownLocation(state);
+  const account = accountOf(session, me);
+  return learningIdentity(
+    shown.pathname,
+    shown.search as Record<string, unknown>,
+    selfOf(account, session ? currentLearner(session.accountId) : null),
+    account,
+  );
+}
+
 /**
  * Whether the displayed screen may read its learner's records: always, unless
  * its address is a family's child (`/family/<family>/kids/<learner>/…`). Then
@@ -58,7 +95,7 @@ export function useAddressedIdentity(): AddressedIdentity | null {
  * screen never asks for a child its family doesn't show (CP-5 #6).
  */
 export function useAddressedRecordsReadable(): boolean {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const pathname = useRouterState({
     select: (state) => {
       const leaf = state.matches.at(-1);

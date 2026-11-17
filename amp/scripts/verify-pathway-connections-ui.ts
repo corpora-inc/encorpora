@@ -1,3 +1,4 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir, realpath } from "node:fs/promises";
@@ -21,7 +22,7 @@ const vite = await createServer({
       enforce: "pre",
       load(id) {
         if (id.split("?")[0] === authPath)
-          return `export async function accessSession(){return {token:"synthetic",accountId:"parent-one"};}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return {token:"synthetic",accountId:"parent-one"};}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
       },
     },
   ],
@@ -79,14 +80,9 @@ try {
         });
         await context.addInitScript((theme) => {
           localStorage.setItem("amp.theme", theme);
-          localStorage.setItem(
-            "amp.learner",
-            JSON.stringify({
-              state: { learnerId: "learner-a" },
-              version: 1,
-            }),
-          );
         }, theme);
+        // The stub session's account (accountId "parent-one", above).
+        await seedLearner(context, "parent-one", "learner-a");
         await context.route("**/api/v1/**", (route) => {
           const path = new URL(route.request().url()).pathname;
           if (path.endsWith("/catalog"))

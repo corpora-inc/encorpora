@@ -37,7 +37,8 @@ export function NativePreview() {
     try {
       await invoke("read_public_resource", { resource: "health" });
       if (current === generation.current) setConnection("ok");
-    } catch {
+    } catch (error) {
+      console.error("AMP's native preview couldn’t reach the API", error);
       if (current === generation.current) setConnection("error");
     }
   }

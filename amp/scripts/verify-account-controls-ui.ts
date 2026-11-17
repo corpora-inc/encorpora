@@ -1,3 +1,4 @@
+import { writeLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -290,18 +291,11 @@ try {
                     ? 390
                     : 844,
         });
+        // This account's current learner on the device, written once from
+        // any page of the app (signed in, /sign-in opens the account's place).
         await practice.goto(`${origin}/sign-in`);
-        await practice
-          .getByRole("heading", { name: "Sign in", exact: true })
-          .waitFor();
-        await practice.evaluate(
-          (learnerId) =>
-            localStorage.setItem(
-              "amp.learner",
-              JSON.stringify({ state: { learnerId }, version: 1 }),
-            ),
-          practiceLearner,
-        );
+        await practice.waitForLoadState("load");
+        await writeLearner(practice, identity, practiceLearner);
         await practice.goto(`${origin}/practice`);
         if (!authenticated) {
           // Signed out, practice offers the free account in place.
@@ -392,7 +386,11 @@ try {
       await next.waitFor();
       assert.equal(await next.getAttribute("href"), "/start");
       await fits(page, `ready ${theme} ${width}`);
-      await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page
+        .getByRole("button", { name: "Open AMP menu" })
+        .filter({ visible: true })
+        .first()
+        .click();
       await page
         .getByRole("button", { name: "Sign out", exact: true })
         .waitFor();
@@ -517,14 +515,17 @@ try {
     await page.emulateMedia({ colorScheme: theme });
     await page.setViewportSize({ width: 390, height: 844 });
     // This screen set represents a new account: no learner or place yet.
-    for (const [path, heading] of [
-      ["/sign-in", "Sign in"],
-      ["/sign-up", "Create your account"],
-      ["/sign-in/forgot", "Reset your password"],
-      ["/start", "What brings you to AMP?"],
+    // Signed in, sign-in and sign-up need no second sign-in: one hop to the
+    // account's own place, which for a new account is its first question.
+    for (const [path, heading, lands] of [
+      ["/sign-in", "What brings you to AMP?", "/start"],
+      ["/sign-up", "What brings you to AMP?", "/start"],
+      ["/sign-in/forgot", "Reset your password", "/sign-in/forgot"],
+      ["/start", "What brings you to AMP?", "/start"],
     ]) {
       await page.goto(`${origin}${path}`);
       await page.getByRole("heading", { name: heading, exact: true }).waitFor();
+      assert.equal(new URL(page.url()).pathname, lands, `${path} lands`);
       await fits(page, `${path} ${theme}`);
       await page.screenshot({
         path: `${output}/screen-${path.replaceAll("/", "-")}-${theme}-390.png`,

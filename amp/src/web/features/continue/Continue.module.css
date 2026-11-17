@@ -1,58 +1,6 @@
-/* "Continue with AMP" and the pause that leads to it. The page sits on the
-   app's left edge: the way back, the heading, then what they did and get
-   beside the plan from 1024 px (docs/design/ia.md). */
-.page {
-  --gutter: var(--space-4);
-  box-sizing: border-box;
-  display: grid;
-  align-content: start;
-  gap: var(--space-5);
-  width: 100%;
-  max-width: 808px;
-  margin: 0 auto;
-  padding: var(--space-5) max(var(--gutter), env(safe-area-inset-right))
-    max(var(--space-8), env(safe-area-inset-bottom))
-    max(var(--gutter), env(safe-area-inset-left));
-  color: var(--color-on-surface);
-}
-@media (min-width: 768px) {
-  .page {
-    --gutter: var(--space-6);
-    padding-top: var(--space-6);
-  }
-}
-.backLink {
-  justify-self: start;
-  gap: var(--space-1);
-  margin-bottom: calc(var(--space-2) - var(--space-5));
-}
-.backLink svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.head {
-  display: grid;
-  gap: var(--space-1);
-}
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(var(--text-title-min), 6vw, var(--text-heading-1));
-  line-height: 1.12;
-  letter-spacing: -0.015em;
-}
-.for {
-  margin: 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-body);
-  font-weight: 600;
-}
+/* "Continue with AMP" and the pause that leads to it. The page (ui/Page.tsx)
+   holds the way back and the heading, then what they did and get beside
+   the plan. */
 .columns {
   display: grid;
   gap: var(--space-6);
@@ -67,6 +15,13 @@
 .checkout {
   display: grid;
   gap: var(--space-4);
+}
+/* What they did and get comes with the plan above it, never under the
+   plan's loading skeleton: the plans, notice and checkout are taller than
+   any skeleton at some width (the notice is the server's text), so a list
+   painted under it would move down when they arrive. */
+.checkout:has(> [aria-busy="true"]) + .aside {
+  display: none;
 }
 .recap {
   margin: 0;
@@ -128,9 +83,6 @@
     width: auto;
     min-width: 280px;
   }
-}
-.back {
-  justify-self: start;
 }
 .skeleton {
   height: 132px;

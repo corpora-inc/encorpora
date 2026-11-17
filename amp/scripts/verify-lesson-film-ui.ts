@@ -1,5 +1,6 @@
 /** Real app/API, approved CDN media, route history, playback and responsive proof. */
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
@@ -132,7 +133,9 @@ try {
       });
       // An old short-lesson link: it opens the lesson in Pathways.
       await page.goto(`${fixture.origin}/lessons?topic=count-objects`);
-      await page.waitForURL(/\/pathways\?open=lesson%3Acount-objects/);
+      // The parent's map is their child's own (canonicalLearnerAddress).
+      await page.waitForURL((url) => url.pathname.endsWith("/pathways"));
+      await waitForLayers(page, ["lesson:count-objects"]);
       const watch = page.getByRole("link", { name: /Watch lesson/ });
       await watch.waitFor();
       assert.equal(
@@ -211,7 +214,7 @@ try {
         await watch.waitFor();
         assert.equal(
           await page
-            .getByRole("link", { name: /^Try this problem type/ })
+            .getByRole("link", { name: /^Practice/ })
             .count(),
           0,
           "A child's map offers the adult no practice of its own",

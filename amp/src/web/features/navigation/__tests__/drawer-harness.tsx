@@ -7,7 +7,12 @@ export const harness = {
   learningView: vi.fn(),
   groups: { value: [] as unknown[] },
   pathname: { value: "/" },
+  /** The account's settings hub (features/spaces/settings-hub.ts). */
+  settings: { value: "/account" },
 };
+vi.mock("../../spaces/settings-hub", () => ({
+  useSettingsHref: () => harness.settings.value,
+}));
 vi.mock("../../../lib/learning-view", () => ({
   useLearningView: harness.learningView,
 }));
@@ -40,11 +45,13 @@ vi.mock("@tanstack/react-router", () => ({
 vi.mock("../../curriculum/CurriculumDetails", () => ({
   useCurriculumDetails: () => ({ shown: true, ready: true, scope: "test" }),
 }));
-vi.mock("../../practice/FeedbackPreferences", () => ({
-  FeedbackPreferences: () => null,
-}));
 vi.mock("../../profiles/ProfileBar", () => ({
   ProfilePlace: () => <span data-testid="profile-place" />,
+}));
+// Who the drawer could choose between (features/spaces/learner-choice.ts):
+// its own tests cover the rule; these drawers offer no choice.
+vi.mock("../../spaces/learner-choice", () => ({
+  useLearnerChoice: () => ({ learners: [], canChoose: false }),
 }));
 vi.mock("../../spaces/useSpace", () => ({
   useLocationMatch: () => ({ pathname: harness.pathname.value }),

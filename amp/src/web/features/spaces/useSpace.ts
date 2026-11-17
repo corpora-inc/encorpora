@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useRouterState } from "@tanstack/react-router";
 import { useMemo, useRef } from "react";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
-import { meOptions, sessionOptions } from "../../lib/query";
-import { classesOptions, orgOptions } from "../school/api";
-import { classYearOptions } from "../school/org/org-api";
-import { pilotOptions } from "../school/pilots/api";
-import { familyOptions, familyPlacesOptions } from "../family/api";
+import { hasAccountContext } from "../../lib/account-page";
+import { meOptions } from "../../lib/query";
+import { useSessionOrNull } from "../../lib/session";
 import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../family/settings-family";
+  classesOptions,
+  classYearOptions,
+  orgOptions,
+  pilotOptions,
+} from "../school/core-api";
+import { familyOptions, familyPlacesOptions } from "../family/api";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -112,16 +113,21 @@ const failedLookup = (query: Answer<unknown>) =>
   !replaced(query.error);
 
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
-  const session = useQuery(sessionOptions).data ?? null;
+  const session = useSessionOrNull();
   const auth = session ?? { accountId: "", token: "" };
   const student = !!session?.accountId.startsWith("school:");
-  const meQuery = useQuery({ ...meOptions(auth), enabled: !!session });
+  // Public information, sign-in and the gallery never read the account
+  // (lib/account-page.ts): a session that ended can't hold them up.
+  const meQuery = useQuery({
+    ...meOptions(auth),
+    enabled: !!session && !!match && hasAccountContext(match.pathname),
+  });
   // A refused `/me` means no relationships; a passing failure keeps the
   // last answer from this session.
   const me = refused(meQuery.error) ? undefined : meQuery.data;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   const frame =
     match && session && !student
       ? shellFrame(
@@ -134,18 +140,12 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const orgId =
     frame?.kind === "class" || frame?.kind === "school" ? frame.org : "";
   const classId = frame?.kind === "class" ? frame.classId : "";
-  const accountSettings = usesFamilySettingsFrame(match?.pathname ?? "");
   const families = useQuery({
     ...familyPlacesOptions(auth),
-    enabled: (!!classId || accountSettings) && !!session && !student,
+    enabled: !!classId && !!session && !student,
     refetchOnMount: false,
   });
-  const familyId =
-    frame?.kind === "family"
-      ? frame.family
-      : accountSettings
-        ? (settingsFamilyOf(current(families))?.familyId ?? "")
-        : "";
+  const familyId = frame?.kind === "family" ? frame.family : "";
   const family = useQuery({
     ...familyOptions(auth, familyId),
     enabled: !!familyId && !!session && !student,

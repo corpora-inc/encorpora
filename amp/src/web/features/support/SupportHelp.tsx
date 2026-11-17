@@ -54,7 +54,10 @@ export function ParentFeedbackForm({
       );
       setSent(true);
       setMessage("");
-    } catch {
+    } catch (error) {
+      // Logged here, not through lib/report-error: every framed page loads
+      // this form, and the entry's dependency map would carry that chunk.
+      console.error("AMP couldn’t send parent feedback", error);
       setError(
         "Your feedback wasn’t confirmed. Try again, or email support@corpora.inc.",
       );

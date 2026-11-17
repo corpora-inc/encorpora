@@ -1,13 +1,5 @@
-.page {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 808px;
-  margin: 0 auto;
-  padding: 32px 24px 56px;
-  display: grid;
-  gap: 32px;
-  color: var(--color-on-surface);
-}
+/* Billing's column (ui/Page.tsx sets its width and rhythm): its paragraphs
+   and headings, set fully over the legacy element rules. */
 .page p {
   margin: 0;
   line-height: 1.5;
@@ -16,27 +8,22 @@
 .support {
   color: var(--color-muted-text);
 }
-.section {
-  display: grid;
-  gap: 16px;
-  min-width: 0;
-}
-.section h2,
-.funding h2 {
+.receiptSummary h2 {
   margin: 0;
   font-family: inherit;
-  font-size: 21px;
+  font-size: var(--text-heading-2);
   font-weight: 650;
+  letter-spacing: 0;
   line-height: 1.3;
 }
-.section h3 {
+.planRow h3,
+.refunds h3 {
   margin: 0;
   font-size: 17px;
   font-family: inherit;
   font-weight: 650;
   line-height: 1.4;
 }
-.sectionHeading,
 .planRow {
   display: flex;
   align-items: center;
@@ -74,24 +61,6 @@
   color: var(--color-muted-text);
   font-size: 14px;
   line-height: 1.6;
-}
-.funding {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
-  padding: 24px;
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  background: var(--color-surface-sunken);
-}
-.funding > div {
-  display: grid;
-  gap: 8px;
-}
-.funding p {
-  color: var(--color-muted-text);
-  font-size: 15px;
 }
 .receipts li {
   border-bottom: 1px solid var(--color-border);
@@ -152,29 +121,18 @@
   justify-items: start;
   gap: 16px;
 }
+/* Billing's last line, under the Receipts row that already closes the
+   list with its rule: no divider of its own. */
 .support {
-  border-top: 1px solid var(--color-border);
-  padding-top: 24px;
   font-size: 14px;
   line-height: 1.6;
+}
+.page > .support {
+  margin: var(--space-5) 0 0;
 }
 .support a {
   color: var(--color-primary);
   overflow-wrap: anywhere;
-}
-@media (max-width: 639px) {
-  .page {
-    padding: 24px 16px 40px;
-    gap: 28px;
-  }
-  .funding {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 20px;
-  }
-  .sectionHeading {
-    flex-wrap: wrap;
-  }
 }
 @media (max-width: 359px) {
   .planRow {
@@ -208,18 +166,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
-
-.page[data-family-settings-detail] {
-  max-width: var(--width-content-wide);
-  padding: var(--space-5) var(--space-4) var(--space-8);
-}
-@media (min-width: 768px) {
-  .page[data-family-settings-detail] {
-    padding-inline: var(--space-6);
-  }
-}
-@media (max-width: 639px) {
-  .page[data-family-settings-detail] {
-    padding-top: var(--space-4);
-  }
+.refunds {
+  display: grid;
+  gap: 16px;
 }

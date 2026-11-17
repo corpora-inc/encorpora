@@ -4,10 +4,14 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
+/** A learner's practice: `/practice`, or the learner's own address,
+ * `/practice/<learner>` (features/spaces/identity.ts practiceParams). */
+const practiceUrl = /\/practice(\/[^/?#]+)?$/;
 const chromium = secureChromium(rawChromium);
 import AxeBuilder from "@axe-core/playwright";
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
+import { openHome } from "./launcher";
 
 const port = Number(process.env.AMP_ACCESS_UI_PORT ?? 4386),
   origin = `http://127.0.0.1:${port}`;
@@ -253,10 +257,10 @@ try {
         fullPage: true,
       });
       await page.getByRole("button", { name: "Continue", exact: true }).click();
-      await page.getByRole("button", { name: "2012", exact: true }).waitFor();
+      await page.getByRole("option", { name: "2012", exact: true }).waitFor();
       await fits(page);
-      await page.getByRole("button", { name: "2012", exact: true }).click();
-      await page.waitForURL("**/practice");
+      await page.getByRole("option", { name: "2012", exact: true }).click();
+      await page.waitForURL(practiceUrl);
       assert.equal(s.creates, 1);
       assert.equal(s.claims, 1);
       assert.equal(s.learners[0].active, true);
@@ -302,7 +306,7 @@ try {
       await page
         .getByRole("button", { name: "Start your family’s year" })
         .click();
-      await page.waitForURL("**/practice");
+      await page.waitForURL(practiceUrl);
       assert.equal(s.claims, 1);
       assert.ok(s.learners.every((l) => l.active));
       await context.close();
@@ -315,7 +319,7 @@ try {
   s.learners = [
     { id: "existing", name: "Alex", birthYear: 2012, active: false },
   ];
-  await page.goto(origin);
+  await openHome(page, origin);
   await page.waitForURL("**/access");
   await page.getByRole("link", { name: "Continue setup" }).click();
   s.failClaim = true;
@@ -330,7 +334,7 @@ try {
   });
   s.failClaim = false;
   await page.getByRole("button", { name: "Continue with Alex" }).click();
-  await page.waitForURL("**/practice");
+  await page.waitForURL(practiceUrl);
   assert.equal(s.creates, 0);
   assert.equal(s.claims, 2);
   // Reload does not create or reactivate anything.
@@ -398,7 +402,9 @@ try {
   Object.assign(s, fresh(), { consent: false });
   await page.goto(`${origin}/access`);
   await page.getByRole("link", { name: "Continue setup" }).click();
-  await page.waitForURL("**/start/name?return=access");
+  // The gift is the account's own (me.availableAccessGrant): the step is a
+  // plain path.
+  await page.waitForURL((url) => url.pathname === "/start/name" && !url.search);
   await page.getByLabel("Learner name").waitFor();
   assert.equal(s.creates, 0);
   // Back/forward restores the invitation and draft step.
@@ -434,7 +440,7 @@ try {
     await phone.getByRole("link", { name: "Continue setup" }).click();
     await phone.getByLabel("Learner name").fill("Alex");
     await phone.getByRole("button", { name: "Continue", exact: true }).click();
-    await phone.getByRole("button", { name: "2012", exact: true }).waitFor();
+    await phone.getByRole("option", { name: "2012", exact: true }).waitFor();
     await fits(phone);
   } finally {
     await safari.close();

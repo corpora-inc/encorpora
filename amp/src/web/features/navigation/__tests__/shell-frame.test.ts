@@ -2,7 +2,6 @@ import { expect, test } from "vitest";
 import { shellFrame } from "../shell-frame";
 import { phoneTabs } from "../../../ui/Tabs";
 import {
-  accountTabs,
   classroomTabs,
   familyTabs,
   learnerTabs,
@@ -23,25 +22,9 @@ test("each group's screens share one frame and name their tab", () => {
     kind: "progress",
     active: "inventory",
   });
-  expect(shellFrame("/family/security")).toEqual({
-    kind: "account",
-    active: "security",
-  });
-  expect(shellFrame("/family/learners/new")).toEqual({
-    kind: "account",
-    active: "learners",
-  });
-  expect(shellFrame("/family/access/records")).toEqual({
-    kind: "account",
-    active: "access",
-  });
-  expect(shellFrame("/purchase/annual")).toEqual({
-    kind: "account",
-    active: "access",
-  });
   expect(shellFrame("/consent")).toEqual({
     kind: "account",
-    active: "privacy",
+    active: "account",
   });
   expect(shellFrame("/practice")).toEqual({ kind: "practice" });
   expect(shellFrame("/lessons/fractions")).toEqual({
@@ -50,11 +33,15 @@ test("each group's screens share one frame and name their tab", () => {
   });
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
   expect(shellFrame("/school/start")).toEqual({ kind: "plain" });
+  // A school's guided setup: the plain bar over its own stepper.
+  expect(shellFrame(`/school/${"1".repeat(8)}/setup/calendar`)).toEqual({
+    kind: "plain",
+  });
   expect(shellFrame("/school/connect")).toEqual({ kind: "plain" });
   expect(shellFrame("/school/adopt")).toEqual({ kind: "plain" });
 });
 
-test("the starter and Continue with AMP sit on the app frame", () => {
+test("the starter and the pay flow sit on the app frame", () => {
   for (const path of [
     "/start",
     "/start/parent",
@@ -63,7 +50,13 @@ test("the starter and Continue with AMP sit on the app frame", () => {
     "/start/tutor/join",
   ])
     expect(shellFrame(path), path).toEqual({ kind: "plain" });
-  expect(shellFrame("/continue/learner-1")).toEqual({ kind: "plain" });
+  for (const path of [
+    "/pay/learner-1",
+    "/pay/learner-1/card",
+    "/pay/learner-1/esa/plan",
+    "/pay/learner-1/esa/invoice/invoice-1",
+  ])
+    expect(shellFrame(path), path).toEqual({ kind: "plain" });
   // The steps around it keep their own frame.
   for (const path of ["/start/purchase", "/start/verify-email", "/start/x"])
     expect(shellFrame(path), path).toBeNull();
@@ -85,25 +78,24 @@ test("screens with frames of their own stay outside it", () => {
     expect(shellFrame(path), path).toBeNull();
 });
 
-test("a learner's record and the account each have one row of tabs; the URLs never move", () => {
+test("a learner's record has one row of tabs; the account is one page with none", () => {
   expect(learnerTabs().map((tab) => tab.path)).toEqual([
     "overview",
     "pathways",
     "inventory",
   ]);
-  expect(accountTabs.map((tab) => tab.label)).toEqual([
-    "Profile",
-    "Billing",
-    "Privacy",
-  ]);
-  // The account's own settings are at neutral addresses, the old ones still
-  // open the same tab.
-  for (const [path, active] of [
-    ["/account/security", "security"],
-    ["/account/billing/records", "access"],
-    ["/account/privacy/export", "privacy"],
+  // The account and the overlays over it share one frame, with no tabs.
+  for (const path of [
+    "/account",
+    "/account/security",
+    "/account/billing",
+    "/account/privacy",
+    "/account/delete-account",
   ])
-    expect(shellFrame(path), path).toEqual({ kind: "account", active });
+    expect(shellFrame(path), path).toEqual({
+      kind: "account",
+      active: "account",
+    });
   // Practice at a level's hub is the drawer's entry, never a tab (Q-3).
   expect(shellFrame("/me/profiles")).toEqual({ kind: "plain" });
 });
@@ -254,6 +246,4 @@ test("a phone's tabs: each space's own four", () => {
     "gradebook",
     "time",
   ]);
-  // A group that marks none shows its first four.
-  expect(ids(phoneTabs(accountTabs))).toEqual(ids(accountTabs));
 });

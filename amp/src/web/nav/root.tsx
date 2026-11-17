@@ -1,35 +1,64 @@
-import { Link, redirect, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
 import type { FundedProgram } from "../lib/funded-entry";
+import { useHomeHref as useHomePlaceHref } from "../lib/home-place";
+import { chooseProgram, isProgramChoice } from "../lib/program-choice";
 
 /**
- * The root (docs/design/ia.md, "Navigation", rule 6). `/` is no screen of
- * its own: it resolves to the place last used, or first-run onboarding for
- * an account with no place, or the site's home for a visitor. Inside a
- * place, home is the place's own home and closing is `closeTo`; only a
- * screen outside any place (a signed-out page, the first run, a gift, a
- * student's own practice) goes to the root, and only through these.
+ * The root (docs/design/ia.md, "Navigation", rule 6). `/` never redirects:
+ * signed out it is the pitch, signed in the launcher
+ * (features/home/Launcher.tsx). Every way home inside the app goes straight
+ * to the person's own place instead (these links, sign-in's destination).
  */
 export const ROOT = "/";
 
-/** A link to the root: a logo or "Not now" on a screen outside any place. */
+/** Home for whoever is signed in: the place they last opened, at its own
+ * address (lib/home-place.ts); `/` when signed out or none is known yet. */
+function useHomeHref() {
+  // Never the session itself: this module is on the signed-out pitch, which
+  // carries no sign-in code (scripts/check-bundle-budget.ts).
+  return useHomePlaceHref() ?? ROOT;
+}
+
+/** A link home: a logo or "Not now" on a screen outside any place. Signed
+ * in, it is the person's own place (lib/home-place.ts), straight
+ * there; signed out, the pitch. */
 export function RootLink({
   program,
+  onClick,
   ...props
 }: Omit<ComponentProps<typeof Link>, "to" | "params" | "search"> & {
-  /** Preserve the funding choice when returning to the public pitch. */
+  /** Keep the funding choice for the public pitch (lib/program-choice.ts),
+   * never in its address. */
   program?: FundedProgram["id"];
 }) {
-  return <Link {...props} to="/" search={program ? { program } : undefined} />;
+  const home = useHomeHref();
+  return home === ROOT ? (
+    <Link
+      {...props}
+      to="/"
+      onClick={(event) => {
+        if (program && isProgramChoice(program)) chooseProgram(program);
+        onClick?.(event);
+      }}
+    />
+  ) : (
+    <Link {...props} to="/$" params={{ _splat: home.slice(1) }} />
+  );
 }
 
-/** Goes to the root from code (a signed-in buyer on the pitch). */
+/** Goes home from code (a signed-in buyer on the pitch): the same place. */
 export function useToRoot() {
   const navigate = useNavigate();
+  const home = useHomeHref();
   return (options: { replace?: boolean } = {}) =>
-    void navigate({ to: "/", replace: options.replace });
+    void navigate(
+      home === ROOT
+        ? { to: "/", replace: options.replace }
+        : {
+            to: "/$",
+            params: { _splat: home.slice(1) },
+            replace: options.replace,
+          },
+    );
 }
-
-/** Sends a screen that isn't this account's to the root, which resolves to
- * its place (a route's `beforeLoad`). */
-export const rootRedirect = () => redirect({ to: "/", replace: true });

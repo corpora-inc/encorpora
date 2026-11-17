@@ -274,7 +274,7 @@ nav button {
 }
 .problem-content .figure[data-kind="base-ten-pair"] {
   height: auto;
-  max-height: none;
+  max-height: var(--figure-cap-height, none);
   min-height: 0;
 }
 .answer-dock {
@@ -318,6 +318,16 @@ nav button {
   font-size: 20px;
   padding: 10px 14px;
   height: 52px;
+}
+/* The shell's boxed field style (app-shell.css `.shell input`) outranks the
+   answer fields' own rules: an answer keeps the plain-paper fill, never the
+   surface tint (theme.css, structured-work.css). */
+.shell
+  :is(.workspace-answer-row input, .answer-row input, input.work-input):not(
+    [type="checkbox"]
+  ):not([type="radio"]) {
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .workspace-answer-row input[readonly] {
   background: var(--color-answer);
@@ -641,7 +651,10 @@ nav button {
   }
 }
 
-.app-shell > main:not(.practice-workspace):where(:not(.progress-workspace)) {
+.app-shell
+  > main:not(.practice-workspace):not([data-page]):where(
+    :not(.progress-workspace)
+  ) {
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -715,7 +728,10 @@ nav button {
   .app-shell .account-menu-trigger {
     font-size: 12px;
   }
-  .app-shell > main:not(.practice-workspace):where(:not(.progress-workspace)) {
+  .app-shell
+    > main:not(.practice-workspace):not([data-page]):where(
+      :not(.progress-workspace)
+    ) {
     padding-top: 18px;
   }
 }
@@ -853,6 +869,11 @@ nav button {
   grid-auto-rows: max-content;
   align-content: start;
   gap: 8px;
+}
+/* Until the list has measured its columns (ChoiceList), its options hold
+   their place unseen: they appear once, in their own layout. */
+.choice-options:not([data-columns]) > .choice-option {
+  visibility: hidden;
 }
 .choice-options[data-columns="2"] {
   grid-template-columns: repeat(2, minmax(0, 1fr));

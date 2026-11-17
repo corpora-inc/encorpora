@@ -1,9 +1,11 @@
+import { reportError } from "../../lib/report-error";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
+import { useOpenSheet, useSheetNav } from "../../nav/sheet";
+import { useScreenView } from "./view-store";
 import { useState } from "react";
 import type { StaffResource } from "../../../schools/setup-contracts";
-import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
@@ -40,8 +42,6 @@ function Address({ email }: { email: string }) {
   );
 }
 
-const message = (failure: unknown, fallback: string) =>
-  failure instanceof AppError ? failure.message : fallback;
 const INVITE_ROLES = ["teacher", "aide", "admin", "viewer"] as const;
 type InviteRole = (typeof INVITE_ROLES)[number];
 const roleHelp: Record<InviteRole, string> = {
@@ -56,10 +56,9 @@ function InviteForm({ orgId }: { orgId: string }) {
   const classes = [
     ...(useQuery(classesOptions(session, orgId)).data ?? []),
   ].sort((a, b) => compareClassNames(a.name, b.name));
-  // "Invite a co-teacher" on a class's Students arrives with that class.
-  const { class: forClass } = useSearch({ strict: false }) as {
-    class?: unknown;
-  };
+  // "Invite a co-teacher" on a class's Students arrives with that class
+  // chosen (this screen's view, view-store.ts).
+  const [{ class: forClass }] = useScreenView<{ class: string }>();
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<InviteRole>("teacher");
   const [classIds, setClassIds] = useState<string[]>(() =>
@@ -99,7 +98,12 @@ function InviteForm({ orgId }: { orgId: string }) {
       setEmail("");
       setClassIds([]);
     } catch (failure) {
-      setError(message(failure, "That invitation didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "save that invitation",
+          fallback: "That invitation didn’t save. Try again.",
+        }),
+      );
     } finally {
       setBusy(false);
     }
@@ -212,7 +216,12 @@ function StaffRow({
           : "The email didn’t send. Copy the link and send it yourself.",
       );
     } catch (failure) {
-      setError(message(failure, "That didn’t send. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "resend a staff invitation",
+          fallback: "That didn’t send. Try again.",
+        }),
+      );
     } finally {
       setBusy(null);
     }
@@ -224,7 +233,12 @@ function StaffRow({
       await school.endStaff(session, orgId, person.id);
       await refreshSchool(session);
     } catch (failure) {
-      setError(message(failure, "That didn’t save. Try again."));
+      setError(
+        reportError(failure, {
+          doing: "end a staff member's access",
+          fallback: "That didn’t save. Try again.",
+        }),
+      );
       setBusy(null);
     }
   };
@@ -382,7 +396,12 @@ function ClassesSheet({
               .then(() => refreshSchool(session))
               .then(onClose)
               .catch((failure) => {
-                setError(message(failure, "That didn’t save. Try again."));
+                setError(
+                  reportError(failure, {
+                    doing: "save a staff member's classes",
+                    fallback: "That didn’t save. Try again.",
+                  }),
+                );
                 setBusy(false);
               });
           }}
@@ -397,8 +416,9 @@ function ClassesSheet({
 /** Staff: who has access, who's still invited, and the way to end either. */
 export function StaffScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as { edit?: unknown };
-  const navigate = useNavigate();
+  // One person's edit sheet over the list (nav/sheet.ts).
+  const sheets = useSheetNav();
+  const openSheet = useOpenSheet();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const staff = useQuery(staffOptions(session, orgId));
@@ -407,16 +427,7 @@ export function StaffScreen() {
   const admins = rows.filter(
     (person) => person.roles.includes("admin") && person.status === "active",
   );
-  const editing = rows.find((person) => person.id === search.edit);
-  const setEditing = (id: string | undefined) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        edit: id,
-      })) as never,
-      resetScroll: false,
-    });
+  const editing = rows.find((person) => openSheet === `edit:${person.id}`);
   return (
     <OrgFrame orgId={orgId} nav="staff" title="Staff">
       <PageHead
@@ -458,7 +469,7 @@ export function StaffScreen() {
                       admins.length <= 1
                     )
                   }
-                  onEdit={() => setEditing(person.id)}
+                  onEdit={() => sheets.show(`edit:${person.id}`)}
                 />
               ))}
             </ul>
@@ -470,7 +481,7 @@ export function StaffScreen() {
           key={editing.id}
           orgId={orgId}
           person={editing}
-          onClose={() => setEditing(undefined)}
+          onClose={() => sheets.close(`edit:${editing.id}`)}
         />
       )}
     </OrgFrame>

@@ -3,7 +3,8 @@ import {
   useInfiniteQuery,
   useQuery,
 } from "@tanstack/react-query";
-import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
+import { useScreenView } from "../view-store";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isIsoDate } from "../../../../schools/calendar";
 import {
@@ -123,12 +124,17 @@ function PersonFilter({
   );
 }
 
-/** Everything that changed here, in sentences, newest first. Filters live in the
- * URL; pages come from the database by position, not offset. */
+/** Everything that changed here, in sentences, newest first. Filters are this
+ * screen's view (view-store.ts); pages come from the database by position,
+ * not offset. */
 export function ActivityScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const raw = useSearch({ strict: false }) as Record<string, unknown>;
-  const navigate = useNavigate();
+  const [raw, set] = useScreenView<{
+    person: string;
+    kind: string;
+    from: string;
+    to: string;
+  }>();
   const session = currentSession();
   const filters = useMemo<ActivityFilters>(() => {
     const date = (value: unknown) =>
@@ -148,16 +154,6 @@ export function ActivityScreen() {
     getNextPageParam: (last) => last.next ?? undefined,
     placeholderData: keepPreviousData,
   });
-  const set = (patch: Record<string, string | undefined>) =>
-    void navigate({
-      to: ".",
-      search: ((previous: Record<string, unknown>) => ({
-        ...previous,
-        ...patch,
-      })) as never,
-      replace: true,
-      resetScroll: false,
-    });
   const events = useMemo(
     () => log.data?.pages.flatMap((page) => page.events) ?? [],
     [log.data],

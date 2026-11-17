@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { sessionOptions } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { RowLink, RowList } from "../../ui/RowList";
-import frame from "../school/SchoolFrame.module.css";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
+import styles from "./Family.module.css";
 import { LoadFailed } from "../school/classes/teacher-shared";
 import { familyPlacesOptions } from "./api";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
@@ -14,33 +16,22 @@ import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 export { FamilyTodayScreen } from "./Today";
 export { ChildScreen } from "./Child";
 export {
-  FamilyMapScreen,
-  FamilyTimeScreen,
   FamilyWorkbooksScreen,
   FamilyMarkingScreen,
-  FamilyReportsScreen,
   FamilyGradesScreen,
-  FamilyCardsScreen,
 } from "./Records";
-export {
-  FamilyPeopleScreen,
-  FamilySettingsScreen,
-  TutoringGroupScreen,
-} from "./People";
+export { TutoringGroupScreen } from "./TutoringGroup";
+export { FamilySettingsScreen } from "./settings/Settings";
 
 /** `/family` with several families to choose between: the account holder's
  * own and one they are the second parent of. */
 export function FamilyChooserScreen() {
-  const session = useQuery(sessionOptions).data;
-  const places = useQuery({
-    ...familyPlacesOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session,
-  });
+  const places = useQuery(familyPlacesOptions(useSession()));
   const parents = (places.data?.families ?? []).filter(
     (family) => family.role !== "co-teacher",
   );
   return (
-    <main className={frame.content} data-dense data-narrow="">
+    <Page className={styles.screen} data-dense>
       {places.isPending ? (
         <LoadingScreen overlay />
       ) : places.isError ? (
@@ -49,8 +40,8 @@ export function FamilyChooserScreen() {
           onRetry={() => void places.refetch()}
         />
       ) : (
-        <div style={{ display: "grid", gap: "var(--space-5)" }}>
-          <h1>Your families</h1>
+        <>
+          <PageHeader title="Your families" />
           {parents.length === 0 ? (
             <EmptyState
               title="No family yet"
@@ -78,9 +69,9 @@ export function FamilyChooserScreen() {
               ))}
             </RowList>
           )}
-        </div>
+        </>
       )}
-    </main>
+    </Page>
   );
 }
 
@@ -97,11 +88,10 @@ export function FamilyMissingScreen() {
             params={{ _splat: familyHref(place.family) }}
             className={buttonClass("primary")}
           >
-            Back to Today
+            Open Today
           </Link>
         }
-      >
-      </EmptyState>
+      ></EmptyState>
     </FamilyFrame>
   );
 }

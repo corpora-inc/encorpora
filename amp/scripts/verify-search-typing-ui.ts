@@ -1,7 +1,8 @@
+import { seedLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Search fields type instantly. For every search box that mirrors its text
- * into the URL (Lessons, Pathways, Inventory), a fast typing burst must:
+ * into the URL (Pathways, Inventory), a fast typing burst must:
  *
  * - land every character, in order (no dropped, doubled or reordered keys);
  * - add at most one history entry (the URL follows with `replace`);
@@ -94,26 +95,19 @@ type Screen = {
   id: string;
   path: string;
   label: string;
-  param: string;
 };
+// `/lessons` opens Pathways (docs/design/ia.md): the one search is checked
+// on the two screens that hold it.
 const screens: Screen[] = [
-  {
-    id: "lessons",
-    path: "/lessons",
-    label: "Search",
-    param: "q",
-  },
   {
     id: "pathways",
     path: "/pathways",
     label: "Search",
-    param: "topic",
   },
   {
     id: "inventory",
     path: "/inventory",
     label: "Search",
-    param: "topic",
   },
 ];
 const results: Record<string, unknown> = {};
@@ -124,12 +118,7 @@ async function typeBurst(page: Page, screen: Screen) {
   const historyBefore = await page.evaluate(() => history.length);
   await page.evaluate(recorder, `input[aria-label="${screen.label}"]`);
   await field.pressSequentially(TEXT, { delay: KEY_DELAY });
-  // Let the debounced URL write land, then read everything back.
-  await page
-    .waitForURL((url) => url.searchParams.get(screen.param) === TEXT, {
-      timeout: 5000,
-    })
-    .catch(() => undefined);
+  // Let the view's store settle, then read everything back.
   await settle(page, 400);
   const record = await page.evaluate(
     () =>
@@ -157,14 +146,7 @@ try {
     });
     // tsx names the functions this script passes to the page.
     await context.addInitScript("globalThis.__name ??= (f) => f;");
-    await context.addInitScript(
-      `localStorage.setItem('amp.learner', ${JSON.stringify(
-        JSON.stringify({
-          state: { learnerId: fixture.paid.jordan.id },
-          version: 1,
-        }),
-      )})`,
-    );
+    await seedLearner(context, fixture.paid.account, fixture.paid.jordan.id);
     const page = await context.newPage();
     page.setDefaultTimeout(30000);
     const errors: string[] = [];
@@ -175,11 +157,6 @@ try {
     }
     await page.goto(origin + screen.path, { waitUntil: "domcontentloaded" });
     await page.getByRole("searchbox", { name: screen.label }).waitFor();
-    if (screen.id === "lessons")
-      await page
-        .locator("[data-lesson-id]")
-        .first()
-        .waitFor({ state: "attached" });
     await settle(page, 600);
 
     const { field, record, added } = await typeBurst(page, screen);
@@ -192,10 +169,8 @@ try {
       `${tag} characters dropped or reordered: ${JSON.stringify(record.values)}`,
     );
     check(added <= 1, `${tag} one burst added ${added} history entries`);
-    check(
-      new URL(page.url()).searchParams.get(screen.param) === TEXT,
-      `${tag} the URL did not follow the field (${page.url()})`,
-    );
+    // The search is the screen's view (a per-screen store, never the query
+    // string): the refresh below restores it.
     const p95 = percentile(record.paints, 0.95);
     check(
       p95 <= PAINT_BUDGET_MS,

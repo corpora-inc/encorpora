@@ -5,7 +5,9 @@
  * history: no `navigate({ to: "/" })`, `<Link to="/">`, `redirect({ to: "/" })`,
  * `window.location` assignment or `history.back()`. Each place that must
  * (sign-out, a payment provider, a full reload after an update) is listed
- * below with its reason and count; anything new fails the build.
+ * below with its reason and count; anything new fails the build. Nothing
+ * redirects while it renders: a destination is computed in a guard or a
+ * handler (amp/AGENTS.md, "Frontend architecture").
  *
  *   npx tsx scripts/check-navigation.ts
  */
@@ -20,6 +22,16 @@ const MODULE = [
   /^lib\/return-to\.ts$/,
   /^app\/router\.tsx$/,
   /^app\/school-routes\.tsx$/,
+  // The school route table's guards, loaded with a school address.
+  /^app\/school-guards\.ts$/,
+  /^app\/pay-routes\.tsx$/,
+  // The sanctioned navigation mechanisms (tests/architecture-ratchet.test.ts,
+  // SANCTIONED): the sign-in gate sends a store app to its home screen and a
+  // person to their own place; the legacy-alias table and the third-party
+  // returns hop an old address or a provider's return once.
+  /^app\/sign-in-gate\.ts$/,
+  /^app\/legacy-aliases\.ts$/,
+  /^app\/third-party-returns\.ts$/,
 ];
 const BANNED = [
   /navigate\(\{\s*to:\s*"\/"/,
@@ -35,7 +47,14 @@ const BANNED = [
  * provider's page, development. Everything else moves with the navigation
  * module (EntityLink, useLayers, closeTo, nav/root.tsx for the root). */
 const ALLOWED: Record<string, [count: number, reason: string]> = {
-  "main.tsx": [1, "sign-out: another account leaves a parent's purchase view"],
+  "app/boot.tsx": [
+    1,
+    "sign-out: another account leaves a parent's purchase view",
+  ],
+  "home-entry.tsx": [
+    1,
+    "the light pitch's way on when the app can't load: a full load of it",
+  ],
   "auth.ts": [3, "sign-in and sign-out hand off with a full load"],
   "lib/api.ts": [1, "an ended session reloads into sign-in"],
   "features/school/clever/link.ts": [
@@ -43,12 +62,10 @@ const ALLOWED: Record<string, [count: number, reason: string]> = {
     "explicit account linking hands off to Clever OAuth",
   ],
   "features/account/BillingPage.tsx": [1, "Stripe subscription management"],
-  "AnnualPurchase.tsx": [2, "Stripe Checkout and the billing portal"],
-  "FamilyCenter.tsx": [1, "Stripe's billing portal"],
   "features/billing/api.ts": [1, "Stripe Checkout"],
-  "features/continue/ContinueScreen.tsx": [1, "Stripe Checkout"],
+  "features/pay/api.ts": [1, "Stripe Checkout"],
+  "features/pay/CardPanel.tsx": [1, "resuming an open Stripe Checkout"],
   "features/onboarding/PlanStep.tsx": [1, "resuming an open Stripe Checkout"],
-  "FundingPurchaseCenter.tsx": [1, "ClassWallet's payment page"],
   "features/dev/PersonaSwitcher.tsx": [
     1,
     "development only: a fresh signed-in load as another persona",
@@ -80,6 +97,23 @@ for (const path of files(ROOT)) {
     });
 }
 let failed = 0;
+// No rendered redirect: the router's <Navigate> re-navigates on every render
+// with new props, and a screen that renders while its navigation is pending
+// never lets it commit (the tab hung). A guard or a handler computes the
+// destination once (app/sign-in-gate.ts, app/legacy-aliases.ts).
+for (const path of files(ROOT)) {
+  const file = relative(ROOT, path);
+  if (
+    /import\s*\{[^}]*\bNavigate\b[^}]*\}\s*from\s*"@tanstack\/react-router"/.test(
+      readFileSync(path, "utf8"),
+    )
+  ) {
+    failed++;
+    console.error(
+      `${file}: imports the router's Navigate. Compute the destination in the route's guard or an event handler instead.`,
+    );
+  }
+}
 for (const [file, lines] of found) {
   const [allowed = 0] = ALLOWED[file] ?? [];
   if (lines.length > allowed) {

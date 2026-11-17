@@ -1,15 +1,14 @@
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
-import { Navigate, useParams } from "@tanstack/react-router";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useParams, useRouter } from "@tanstack/react-router";
+import { closeTo } from "../../lib/return-to";
+import { Sheet } from "../../ui/Sheet";
+import { useWorkbookPaths } from "./paths";
 import { useState } from "react";
-import type { AuthSession } from "../../auth";
-import { invalidateAccount, sessionOptions } from "../../lib/query";
+import { invalidateAccount } from "../../lib/query";
+import { useSession } from "../../lib/session";
 import { MathText } from "../../MathText";
 import { Button } from "../../ui/Button";
+import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import type {
   WorkbookResultEntry,
@@ -17,41 +16,78 @@ import type {
 } from "../../../workbook/contracts";
 import { saveWorkbookResults, workbookResultsOptions } from "./api";
 import { dateLabel, sectionNames, workbookMessage } from "./model";
-import {
-  WorkbookFrame,
-  WorkbookTrail,
-  whose,
-  type WorkbookLearner,
-} from "./WorkbookFrame";
+import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Workbooks.module.css";
 
 type Draft = { answer?: string; mark?: "right" | "not-yet" };
 
 export function WorkbookResultsScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const { learnerId, workbookId } = useParams({ strict: false }) as {
     learnerId: string;
     workbookId: string;
   };
-  if (!session) return <Navigate to="/sign-in" replace />;
   return (
-    <WorkbookFrame session={session} learnerId={learnerId}>
-      {(learner) => (
-        <Results session={session} learner={learner} workbookId={workbookId} />
-      )}
+    <WorkbookFrame learnerId={learnerId}>
+      {(learner) => <Results learner={learner} workbookId={workbookId} />}
     </WorkbookFrame>
   );
 }
 
-function Results({
-  session,
+/** A workbook's results, as a sheet over the screen that lists the
+ * learner's workbooks (useWorkbookPaths): a family child's page. Its own
+ * address; ✕, Escape and the browser's Back close it to that screen. */
+export function WorkbookResultsSheet({
   learner,
   workbookId,
 }: {
-  session: AuthSession;
   learner: WorkbookLearner;
   workbookId: string;
 }) {
+  const router = useRouter();
+  const paths = useWorkbookPaths();
+  const session = useSession();
+  const data = useQuery(
+    workbookResultsOptions(session, learner.id, workbookId),
+  ).data;
+  return (
+    <Sheet
+      open
+      tall
+      title={resultsTitle(data)}
+      description={resultsLede(learner)}
+      onOpenChange={(open) => {
+        if (!open) closeTo(router, `/${paths.list(learner.id)}`);
+      }}
+      returnFocus={() => document.querySelector<HTMLElement>("main h1") ?? null}
+    >
+      <Results learner={learner} workbookId={workbookId} header={false} />
+    </Sheet>
+  );
+}
+
+const resultsTitle = (
+  data: { workbook: { number: number; date: string } } | undefined,
+) =>
+  data
+    ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
+    : "Workbook results";
+const resultsLede = (learner: WorkbookLearner) =>
+  whose(learner).own
+    ? "Type each answer, or mark it right or not yet."
+    : `Type each of ${learner.name}’s answers, or mark it right or not yet.`;
+
+function Results({
+  learner,
+  workbookId,
+  header = true,
+}: {
+  learner: WorkbookLearner;
+  workbookId: string;
+  /** In a sheet, the sheet's own title says it. */
+  header?: boolean;
+}) {
+  const session = useSession();
   const client = useQueryClient();
   const results = useQuery(
     workbookResultsOptions(session, learner.id, workbookId),
@@ -109,17 +145,12 @@ function Results({
   const open = data?.rows.filter((row) => !row.recorded).length ?? 0;
   return (
     <>
-      <WorkbookTrail learner={learner} />
-      <h1 className={styles.title}>
-        {data
-          ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
-          : "Workbook results"}
-      </h1>
-      <p className={styles.lede}>
-        {whose(learner).own
-          ? "Type each answer, or mark it right or not yet."
-          : `Type each of ${learner.name}’s answers, or mark it right or not yet.`}
-      </p>
+      {header && (
+        <PageHeader
+          title={resultsTitle(data)}
+          subtitle={resultsLede(learner)}
+        />
+      )}
       {results.error ? (
         <p className={styles.message} role="alert">
           {workbookMessage(
@@ -228,23 +259,23 @@ function ResultRowView({
       </p>
       <div className={styles.resultControls}>
         {row.entry === "number" && (
-          <label className={styles.answerField}>
-            <span>Answer</span>
-            <input
+          // A typed answer's own error is said under its field.
+          <div className={styles.answerField}>
+            <TextField
+              label="Answer"
               inputMode="text"
               autoComplete="off"
               maxLength={40}
               value={shown.answer ?? ""}
               disabled={locked}
-              aria-invalid={!!error}
-              aria-describedby={`${id}-error`}
+              error={error || undefined}
               onChange={(event) =>
                 onChange(
                   event.target.value ? { answer: event.target.value } : {},
                 )
               }
             />
-          </label>
+          </div>
         )}
         {row.entry === "choice" && (
           <div className={styles.pickField}>
@@ -290,7 +321,7 @@ function ResultRowView({
               ? ` · answer ${row.recorded.response}`
               : " · marked"}
           </span>
-        ) : (
+        ) : row.entry === "number" ? null : (
           error
         )}
       </p>

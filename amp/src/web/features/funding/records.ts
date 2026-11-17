@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { qk } from "../../lib/keys";
 
 export const fundingOfferSummarySchema = z.object({
   programId: z.string().optional(),
@@ -26,11 +27,8 @@ export const fundingRecordSchema = z.object({
     .nullable()
     .optional(),
 });
-export const fundingRecordsKey = (id: string) => [
-  "account",
-  id,
-  "funding-records",
-];
+export const fundingRecordsKey = (id: string) =>
+  qk.account(id, "funding-records");
 export const fundingRecordsOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: fundingRecordsKey(session.accountId),

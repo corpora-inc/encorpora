@@ -24,7 +24,7 @@ import {
 } from "../src/math/multi-part-choice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -261,7 +261,7 @@ try {
           errors.push(`attempt ${reply.status()}`);
       });
       await page.goto(`${origin}/overview`);
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const family of families) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);

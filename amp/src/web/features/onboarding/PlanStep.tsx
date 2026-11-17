@@ -1,15 +1,16 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { signOut, type AuthSession } from "../../auth";
+import { signOut } from "../../auth";
+import { useSession } from "../../lib/session";
 import { AppError } from "../../lib/AppError";
-import { chosenPlan, forgetPlanChoice } from "../../lib/pending-trial";
+import {
+  chosenPlan,
+  forgetPlanChoice,
+  rememberPlanChoice,
+} from "../../lib/pending-trial";
+import { meOptions } from "../../lib/query";
+import { PurchaseStep } from "./PurchaseStep";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
@@ -23,11 +24,6 @@ import {
   refreshEnrollment,
   useEnrollmentCheckout,
 } from "../billing";
-import {
-  PaymentMethodChoice,
-  paymentMethodHref,
-  type PaymentInterval,
-} from "../billing/PaymentMethodChoice";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 import { track } from "../../lib/analytics";
@@ -37,34 +33,20 @@ const exitFailed =
 const names = { year: "annual", month: "monthly" } as const;
 
 /**
- * Plan choice with the direct notice and an explicit parent acknowledgement.
- * Paying is the verified parental consent; no learner details are asked for.
- * At `/start/plan` it is a step of its own; inside "Continue with AMP" it is
- * that screen's plan for one learner (`embedded`), whose paid enrollment the
- * checkout return assigns to them.
+ * Plan choice with the direct notice and an explicit parent acknowledgement,
+ * at `/start/plan`: the plan before any learner, for a parent whose payment
+ * is the consent another family's approval needs. Paying is the verified
+ * parental consent; no learner details are asked for. A learner's own plan
+ * is the pay flow's (features/pay).
  */
-export function PlanStep({
-  session,
-  embedded = false,
-  interval: initialInterval,
-  onCheckout,
-  paymentMethods,
-}: {
-  session: AuthSession;
-  /** Inside another screen, which has the heading and frame. */
-  embedded?: boolean;
-  /** The plan to show first. */
-  interval?: "year" | "month";
-  /** Just before leaving for Stripe. */
-  onCheckout?: () => void;
-  /** Continue supplies its learner-aware method choice; embedded forms do not add another. */
-  paymentMethods?: (interval: PaymentInterval, busy: boolean) => ReactNode;
-}) {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const search = useSearch({ strict: false }) as { interval?: unknown };
-  const Frame = embedded ? EmbeddedFrame : CardFrame;
+export function PlanStep() {
+  const session = useSession();
+  const Frame = CardFrame;
   const enrollment = useQuery(enrollmentOptions(session));
+  const me = useQuery(meOptions(session)).data;
+  const metaPermission = me?.signedIn
+    ? me.family.metaPurchaseMeasurement
+    : undefined;
   const available = enrollment.data?.available;
   const offers = useQuery({
     ...offerOptions(session),
@@ -79,23 +61,13 @@ export function PlanStep({
     mutationFn: signOut,
     onError: () => new AppError("unavailable", exitFailed, true).log(),
   });
-  // The plan chosen on the free-trial paywall, if any, stays selected.
+  // The plan already chosen (on the pitch, or here before Stripe), if any,
+  // stays selected (lib/pending-trial.ts).
   const [interval, chooseInterval] = useState<"year" | "month">(
-    () =>
-      initialInterval ??
-      (search.interval === "month" || search.interval === "year"
-        ? search.interval
-        : null) ??
-      chosenPlan() ??
-      "year",
+    () => chosenPlan() ?? "year",
   );
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
-  const [changedPlan, setChangedPlan] = useState(
-    !!initialInterval ||
-      search.interval === "month" ||
-      search.interval === "year" ||
-      !!chosenPlan(),
-  );
+  const [changedPlan, setChangedPlan] = useState(() => !!chosenPlan());
   useEffect(() => track("plan_view"), []);
   // Back from Stripe restores this page from the browser cache: re-read the
   // enrollment and drop the finished "opening checkout" state.
@@ -111,30 +83,19 @@ export function PlanStep({
   const purchase = enrollment.data?.purchase;
   const phase = purchase?.phase;
 
+  // Paid or paying: this plan's checkout shows its progress here.
   if (
     phase &&
     !["ready", "expired", "checkout-open"].includes(phase) &&
     enrollment.data
   )
-    return <Navigate to="/start/purchase" replace />;
-  const methodChoice = (selected: PaymentInterval) =>
-    paymentMethods?.(selected, checkout.isPending || checkout.isSuccess) ??
-    (!embedded ? (
-      <PaymentMethodChoice
-        value="card"
-        disabled={checkout.isPending || checkout.isSuccess}
-        onChange={(method) => {
-          if (method === "education-funds")
-            void navigate({ href: paymentMethodHref(method, selected) });
-        }}
-      />
-    ) : null);
+    return <PurchaseStep metaPermission={metaPermission} />;
   const failed =
     enrollment.error ?? (available ? offers.error : emailPlus.error);
   if (failed)
     return (
       <Frame key="error">
-        {!embedded && <h1>Choose your plan</h1>}
+        <h1>Choose your plan</h1>
         <p role="alert">
           {failed instanceof AppError
             ? failed.message
@@ -157,7 +118,6 @@ export function PlanStep({
   if (available === false && emailPlus.data)
     return emailPlus.data.available ? (
       <Frame key="email-plus">
-        {methodChoice(interval)}
         <h1>Confirm by email first</h1>
         <p>
           Card enrollment isn’t available for this service. Confirm parent
@@ -176,7 +136,6 @@ export function PlanStep({
     ) : (
       <Frame key="unavailable">
         <Toast message={exit.error ? exitFailed : ""} onDismiss={exit.reset} />
-        {methodChoice(interval)}
         <h1>Enrollment isn’t open yet</h1>
         <p>
           This AMP service isn’t taking new enrollments right now. No payment
@@ -203,14 +162,8 @@ export function PlanStep({
   if (!notice || !digest || !plans.length)
     return (
       <Frame key="loading" busy>
-        {!embedded && (
-          <>
-            <h1>Choose your plan</h1>
-            <p>
-              Adaptive practice, lessons and printable books for one learner.
-            </p>
-          </>
-        )}
+        <h1>Choose your plan</h1>
+        <p>Adaptive practice, lessons and printable books for one learner.</p>
         <div
           className={`${styles.skeleton} amp-skeleton`}
           aria-label="Loading plans"
@@ -235,13 +188,8 @@ export function PlanStep({
         message={checkout.error?.message ?? ""}
         onDismiss={() => checkout.reset()}
       />
-      {!embedded && (
-        <>
-          <h1>Choose your plan</h1>
-          <p>Adaptive practice, lessons and printable books for one learner.</p>
-        </>
-      )}
-      {methodChoice(offer.interval)}
+      <h1>Choose your plan</h1>
+      <p>Adaptive practice, lessons and printable books for one learner.</p>
       <PlanChoice
         offers={plans}
         extra={offers.data?.extraOffers}
@@ -250,12 +198,8 @@ export function PlanStep({
         onChange={(next) => {
           track("plan_select", { interval: next });
           chooseInterval(next);
-          const query = new URLSearchParams(location.searchStr);
-          query.set("interval", next);
-          void navigate({
-            href: `${location.pathname}?${query}`,
-            replace: true,
-          });
+          // Kept for this device: a refresh, or Back from Stripe, shows it.
+          rememberPlanChoice(next);
           setChangedPlan(true);
           delete requests.current[next];
           checkout.reset();
@@ -272,10 +216,7 @@ export function PlanStep({
             <Button
               variant="primary"
               onClick={() => {
-                if (resume) {
-                  onCheckout?.();
-                  window.location.assign(resume);
-                }
+                if (resume) window.location.assign(resume);
               }}
             >
               Resume checkout
@@ -308,7 +249,6 @@ export function PlanStep({
                 track("checkout_start", { interval: offer.interval });
                 const requestId = (requests.current[offer.interval] ??=
                   crypto.randomUUID());
-                onCheckout?.();
                 checkout.mutate(
                   {
                     requestId,
@@ -338,9 +278,7 @@ export function PlanStep({
             </Button>
           </div>
           <p className={styles.fine}>
-            {embedded
-              ? "Stripe handles payment. You’ll come back here right after."
-              : "Stripe handles payment. You’ll add your learner right after."}
+            Stripe handles payment. You’ll add your learner right after.
           </p>
         </>
       )}
@@ -364,19 +302,6 @@ function CardFrame({
       <Progress step={1} />
       {children}
     </section>
-  );
-}
-function EmbeddedFrame({
-  children,
-  busy,
-}: {
-  children: ReactNode;
-  busy?: boolean;
-}) {
-  return (
-    <div className={styles.step} aria-busy={busy || undefined}>
-      {children}
-    </div>
   );
 }
 function safeCheckout(url: string): string | null {

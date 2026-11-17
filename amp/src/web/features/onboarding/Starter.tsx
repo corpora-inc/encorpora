@@ -1,21 +1,13 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-  useRouter,
-} from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { create } from "zustand";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import { authConfigOptions, meOptions, sessionOptions } from "../../lib/query";
-import { closeTo } from "../../lib/return-to";
-import { appReturn } from "../spaces/returns";
+import { authConfigOptions, meOptions } from "../../lib/query";
+import { qk } from "../../lib/keys";
+import { useSession } from "../../lib/session";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -24,23 +16,30 @@ import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
 import {
+  addingPlace,
+  currentChoice,
   hasHome,
   isStarterChoice,
-  placesFor,
   type StarterChoice,
 } from "./guard";
+import { isSetupKind } from "./setup/steps";
 import {
   deviceTimeZone,
+  useChooseSetup,
   useStartDemo,
   useStartPlace,
   type OwnStart,
   type StarterAnswer,
 } from "./starter-api";
-import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
+import { FamilySetup } from "./setup/FamilySetup";
 import { OwnYearTiles } from "./OwnYearTiles";
 import { StepFrame } from "./setup/StepFrame";
-import { choosePersona, setupStep } from "./activation";
+import { setupStep } from "./activation";
+import { Page } from "../../ui/Page";
+import { PageHeader } from "../../ui/PageHeader";
 import styles from "./Starter.module.css";
+import { practiceParams } from "../spaces/identity";
+import { payHref } from "./pay-link";
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
@@ -110,79 +109,75 @@ const choices: {
  * and the words used. Each answer opens its own steps at its own URL
  * (`/start/<choice>`), the way a parent's setup does. A teacher opens classroom setup. */
 export function Starter() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const params = useParams({ strict: false }) as { choice?: string };
-  if (!session) return <Navigate to="/sign-in" replace />;
   // A parent or a tutor is walked through setting up their class.
-  if (isSetup(params.choice))
-    return <FamilySetup session={session} kind={params.choice} step="" />;
+  if (isSetupKind(params.choice))
+    return <FamilySetup kind={params.choice} step="" />;
   // Learning for yourself, or a school: a step page of its own.
-  if (params.choice === "myself") return <MyselfStep session={session} />;
-  if (params.choice === "school") return <SchoolStep session={session} />;
-  if (params.choice === "teacher")
-    return <Navigate to="/school/start" replace />;
-  return <StarterScreen session={session} />;
+  if (params.choice === "myself") return <MyselfStep />;
+  if (params.choice === "school") return <SchoolStep />;
+  // Any other address was routed before this paints (`routeFor`).
+  return <StarterScreen />;
 }
-
-const isSetup = (choice: unknown): choice is SetupKind =>
-  choice === "parent" || choice === "tutor";
 
 /** `/start/<parent|tutor>/<step>`: a later step of that setup. */
 export function StarterStep() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
   const params = useParams({ strict: false }) as {
     choice?: string;
     step?: string;
   };
-  if (!session) return <Navigate to="/sign-in" replace />;
-  if (!isSetup(params.choice)) return <Navigate to="/start" replace />;
-  return (
-    <FamilySetup
-      session={session}
-      kind={params.choice}
-      step={params.step ?? ""}
-    />
-  );
+  // Only a setup's steps reach here (`routeFor`).
+  if (!isSetupKind(params.choice)) return null;
+  return <FamilySetup kind={params.choice} step={params.step ?? ""} />;
 }
 
-function StarterScreen({ session }: { session: AuthSession }) {
+function StarterScreen() {
+  const session = useSession();
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
-  const router = useRouter();
-  const from = appReturn(
-    (useLocation().search as Record<string, unknown>).from,
-  );
   const me = useQuery(meOptions(session)).data;
   const account = me?.signedIn ? me : null;
-  // Adding a place (docs/architecture/spaces.md): only what the account
-  // doesn't have yet, never "I'm a parent" to a parent, and a way back.
-  // A new account (`next: "start"`) is answering for the first time, even
-  // when it may already start its own practice.
-  const adding =
-    !!account && account.next !== "start" && placesFor(account).length > 0;
+  // The account's first run (`me.setup`) decides the question. Until it is
+  // done this is "What brings you to AMP?", every answer offered and the one
+  // given marked, however much of its setup is saved: a parent who added
+  // kids and came Back can still choose again. Once done, it adds a place
+  // (docs/architecture/spaces.md): only what the account doesn't have yet,
+  // never "I'm a parent" to a parent, and Back returns where it was opened.
+  const adding = addingPlace(account);
+  // A new account's only "consent" can be a development server's standing
+  // one (never recorded, so no method): that is no family of its own yet,
+  // and "I'm a parent" stays its first answer, as in production.
+  const homeOf = (me: NonNullable<typeof account>) =>
+    hasHome(
+      me.next === "start" && me.consent.method === null
+        ? { ...me, consent: { ...me.consent, status: "none" } }
+        : me,
+    );
   const has = (id: StarterChoice) =>
     !!account &&
     (id === "myself"
       ? !!account.adultPractice?.learner
       : id === "parent" || id === "tutor"
-        ? hasHome(account)
+        ? homeOf(account)
         : false);
   // Tutoring is practice at a level, in Practice (R8): its answer is no
   // longer offered, and `/start/tutor` keeps working for links in flight.
   const shown = choices.filter(
-    (entry) => entry.id !== "tutor" && !has(entry.id),
+    (entry) => entry.id !== "tutor" && !(adding && has(entry.id)),
   );
+  // The answer already given. Choosing it again reopens its setup with
+  // everything saved there still editable.
+  const current = currentChoice(account);
+  const record = useChooseSetup(session);
   useEffect(() => setupStep("choose", "view"), []);
   const choose = (answer: StarterChoice) => {
     track("starter_choice", { answer });
     setupStep("choose", "complete", answer);
-    choosePersona(session, answer);
+    if (!adding) record.mutate(answer);
   };
   return (
-    <main className={styles.page} data-starter={choice ?? ""}>
-      <h1 className={styles.title}>
-        {adding ? "Add a place" : "What brings you to AMP?"}
-      </h1>
+    <Page data-starter={choice ?? ""}>
+      <PageHeader title={adding ? "Add a place" : "What brings you to AMP?"} />
       <ul className={styles.choices}>
         {shown.map((entry) => {
           const content = (
@@ -205,10 +200,9 @@ function StarterScreen({ session }: { session: AuthSession }) {
               {entry.id === "teacher" ? (
                 <Link
                   to="/school/start"
-                  // Its way back, if this is adding a place.
-                  search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
+                  aria-current={current === entry.id || undefined}
                   onClick={() => choose(entry.id)}
                 >
                   {content}
@@ -217,10 +211,9 @@ function StarterScreen({ session }: { session: AuthSession }) {
                 <Link
                   to="/start/$choice"
                   params={{ choice: entry.id }}
-                  // Adding a place keeps where it was added from.
-                  search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
+                  aria-current={current === entry.id || undefined}
                   onClick={() => choose(entry.id)}
                 >
                   {content}
@@ -230,22 +223,15 @@ function StarterScreen({ session }: { session: AuthSession }) {
           );
         })}
       </ul>
-      {adding && (
-        <div>
-          <Button
-            variant="secondary"
-            onClick={() => closeTo(router, from ?? "/")}
-          >
-            Cancel
-          </Button>
-        </div>
-      )}
-    </main>
+      {/* No in-page Back: adding a place is left by the menu, the place
+          switcher or the browser, like a first run. */}
+    </Page>
   );
 }
 
 /** A school can explore a separate demo school with sample students. */
-function useExplore(session: AuthSession) {
+function useExplore() {
+  const session = useSession();
   const navigate = useNavigate();
   const demo = useStartDemo(session);
   const [error, setError] = useState("");
@@ -281,14 +267,13 @@ const ONE_STEP = {
 } as const;
 
 /** `/start/myself`: the year they were born, then straight into practice. */
-function MyselfStep({ session }: { session: AuthSession }) {
+function MyselfStep() {
+  const session = useSession();
   const navigate = useNavigate();
   const start = useStartPlace(session);
   const [error, setError] = useState("");
-  useEffect(() => {
-    setupStep("year", "view", "myself");
-    choosePersona(session, "myself");
-  }, [session]);
+  const record = useChooseSetup(session);
+  useEffect(() => setupStep("year", "view", "myself"), []);
   const begin = (own: OwnStart) => {
     if (start.isPending) return;
     setError("");
@@ -305,15 +290,20 @@ function MyselfStep({ session }: { session: AuthSession }) {
         // and `/me` is where they come back to.
         const plan = chosenPlan();
         if (plan && result.learnerId)
-          void navigate({
-            to: "/continue/$learnerId",
-            params: { learnerId: result.learnerId },
-            search: { interval: plan },
-          });
+          void payHref(session, result.learnerId, {
+            method: "card",
+            interval: plan,
+          })
+            .then((href) => navigate({ href }))
+            .catch((error: unknown) =>
+              console.error("The chosen plan didn’t open", error),
+            );
         else
           void navigate({
             to: "/$",
-            params: { _splat: "practice" },
+            params: result.learnerId
+              ? practiceParams(result.learnerId)
+              : { _splat: "practice" },
             replace: true,
           });
       },
@@ -330,11 +320,11 @@ function MyselfStep({ session }: { session: AuthSession }) {
   return (
     <>
       <Myself
-        session={session}
         busy={start.isPending}
-        onParent={() =>
-          void navigate({ to: "/start/$choice", params: { choice: "parent" } })
-        }
+        onParent={() => {
+          record.mutate("parent");
+          void navigate({ to: "/start/$choice", params: { choice: "parent" } });
+        }}
         onStart={begin}
       />
       <Toast message={error} onDismiss={() => setError("")} />
@@ -344,16 +334,12 @@ function MyselfStep({ session }: { session: AuthSession }) {
 
 /** `/start/school`: the school pitch, then setting up the real school
  * yourself; the demo and a person to talk to are options, never steps. */
-function SchoolStep({ session }: { session: AuthSession }) {
-  const { explore, demo, error, setError } = useExplore(session);
-  useEffect(() => {
-    setupStep("school", "view", "school");
-    choosePersona(session, "school");
-  }, [session]);
+function SchoolStep() {
+  const { explore, demo, error, setError } = useExplore();
+  useEffect(() => setupStep("school", "view", "school"), []);
   return (
     <>
       <School
-        session={session}
         exploring={demo.isPending && demo.variables === "school"}
         onExplore={explore}
       />
@@ -369,16 +355,15 @@ function SchoolStep({ session }: { session: AuthSession }) {
  * cover the rest). Under 13, a parent sets AMP up, and that way in is one
  * tap away. */
 function Myself({
-  session,
   busy,
   onParent,
   onStart,
 }: {
-  session: AuthSession;
   busy: boolean;
   onParent: () => void;
   onStart: (start: OwnStart) => void;
 }) {
+  const session = useSession();
   const draft = useStarterDraft();
   const mine = draft.owner === session.accountId;
   const picked = mine ? draft.ownYear : null;
@@ -388,7 +373,6 @@ function Myself({
     <StepFrame
       steps={ONE_STEP.myself}
       index={0}
-      back="/start"
       title="What year were you born?"
       titleId="starter-myself"
       hintLines={2}
@@ -444,16 +428,15 @@ const FACTS = [
 
 /** The school pitch: set up the school now, explore a demo, or talk to us. */
 function School({
-  session,
   exploring,
   onExplore,
 }: {
-  session: AuthSession;
   exploring: boolean;
   onExplore: () => void;
 }) {
+  const session = useSession();
   const summary = useQuery({
-    queryKey: ["schools", "curriculum"],
+    queryKey: qk.schoolsCurriculum(),
     queryFn: loadCurriculum,
     staleTime: Infinity,
   });
@@ -463,14 +446,12 @@ function School({
     <StepFrame
       steps={ONE_STEP.school}
       index={0}
-      back="/start"
       title="AMP for your school"
       lede="Every student works at their own level in every area of math, from counting to precalculus, with unlimited problems and personalized workbooks. Teachers see who needs them today, and they decide every grade."
     >
       {/* The next step first: what this account can do now, by what it
           already has (an invitation, a school, its own class's pilot). */}
       <SchoolNext
-        session={session}
         className={styles.actions}
         clever={clever}
         exploring={exploring}

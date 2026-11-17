@@ -1,4 +1,12 @@
 import {
+  childAddress,
+  childPath,
+  practiceParams,
+  practicePath,
+} from "../spaces/identity";
+import { useSession, useSessionOrNull } from "../../lib/session";
+import { qk } from "../../lib/keys";
+import {
   CurriculumPractice,
   PracticeLabel,
 } from "../practice/CurriculumPractice";
@@ -14,25 +22,24 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearch,
-} from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { meOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
-import { useLearnerStore } from "../../learner-store";
-import type { AuthSession } from "../../auth";
+import { useCurrentLearner } from "../../learner-store";
+import { useLearnerChoice } from "../spaces/learner-choice";
 import { gradeName } from "../../Home";
 import { byArea, fitScale, LevelRows, WHOLE_SCALE } from "../../ui/level-range";
 import { measured } from "../../../learning/level-check";
-import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
-import { SearchResults, type SearchActions } from "../search/SearchResults";
-import { useSearchCorpus } from "../search/search-corpus";
+import { SearchResults } from "../search/SearchResults";
+import {
+  SiteSearchField,
+  useResultKeys,
+  useSearchActions,
+  useSiteSearch,
+} from "../search/SiteSearch";
 import { strandNames } from "../../BirthYearPrompt";
 import { lazyRouteComponent } from "../../lib/lazy-route-component";
 import { PathwayPlan } from "./PathwayPlan";
@@ -43,7 +50,6 @@ import {
   bandLabel,
   bands,
   skillLight,
-  areaParam,
   areaSlot,
   progressSchema,
   frontierSchema,
@@ -55,8 +61,9 @@ import {
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { Segmented } from "../../ui/Segmented";
 import { LayerHost } from "../../nav/LayerHost";
-import { EntityLink, useLayers } from "../../nav/links";
-import { OPEN_KEY, pushLayer } from "../../nav/entities";
+import { useMapView } from "./map-view";
+import { EntityLink, shareableHref, useLayers } from "../../nav/links";
+import { pushed } from "../../nav/layer-store";
 import { buttonClass } from "../../ui/Button";
 import layers from "../../nav/layers.module.css";
 import { RootLink } from "../../nav/root";
@@ -73,7 +80,6 @@ import {
   useAddressedIdentity,
   useAddressedRecordsReadable,
 } from "../spaces/useAddressed";
-import { childAddress, childPath } from "../spaces/identity";
 import { childFamily } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
 const emptyEvidence: Evidence[] = [];
@@ -100,7 +106,8 @@ const MapWaiting = () => (
 function savedView(): MapMode {
   try {
     return localStorage.getItem(VIEW_KEY) === "3d" ? "3d" : "grades";
-  } catch {
+  } catch (error) {
+    console.warn("This device's map view is not readable", error);
     return "grades";
   }
 }
@@ -108,22 +115,6 @@ const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
   ...bands.map((b) => ({ value: b, label: bandLabel(b) })),
 ];
-// Related words a learner may type for what the catalog calls something else.
-const synonyms: Record<string, string[]> = {
-  logic: ["reasoning", "proof", "argument", "justify"],
-  shapes: ["geometry", "polygon"],
-  times: ["multiplication", "multiply"],
-  share: ["division", "divide"],
-};
-function matchesQuery(text: string, query: string) {
-  const haystack = text.toLowerCase();
-  const q = query.trim().toLowerCase();
-  return (
-    haystack.includes(q) ||
-    (synonyms[q] ?? []).some((w) => haystack.includes(w))
-  );
-}
-
 /** A lesson, problem type or film a search found, offered first in its
  * skill's panel. */
 type SearchFound = {
@@ -153,15 +144,12 @@ function showMap() {
 }
 
 export function PathwaysScreen() {
-  const { data: session } = useSuspenseQuery(sessionOptions);
+  // The route made sure of the session before this screen (framedScreen).
+  const session = useSessionOrNull();
   // This public resource outlives the keyed learner view. Keep its in-flight
   // read alive when the account resolves and that view changes learner.
   useQuery(skillCatalogOptions);
-  return session ? (
-    <LearnerMap key={session.accountId} session={session} />
-  ) : (
-    <GuestMap />
-  );
+  return session ? <LearnerMap key={session.accountId} /> : <GuestMap />;
 }
 /** Signed out: the whole curriculum, and the way in. */
 function GuestMap() {
@@ -176,9 +164,10 @@ function GuestMap() {
   );
 }
 
-function LearnerMap({ session }: { session: AuthSession }) {
+function LearnerMap() {
+  const session = useSession();
   const me = useQuery(meOptions(session));
-  const { learnerId: chosenId, select } = useLearnerStore();
+  const chosenId = useCurrentLearner();
   // Whose map the address names (features/spaces/identity.ts): yourself at
   // /pathways, a family's child at /family/<family>/kids/<learner>/pathways,
   // a practice profile by `?profile=`. Unnamed, a parent with no practice of
@@ -201,10 +190,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
     : (profileLearner(account, learnerId) ?? solo);
-  useEffect(() => {
-    if (!addressed && solo && own === solo && learnerId !== solo.id)
-      select(solo.id);
-  }, [solo?.id, learnerId]);
   /** Another child's map is their own address. */
   const openChild = (id: string) => {
     const family = account ? childFamily(account, id, places.data) : null;
@@ -216,6 +201,9 @@ function LearnerMap({ session }: { session: AuthSession }) {
   };
   // A second parent's family's children follow the family's own: their
   // progress, read-only.
+  const choice = useLearnerChoice();
+  // A child's session never has a chooser, so holds no place for one.
+  const holding = me.isPending && !session.accountId.startsWith("school:");
   const learners = own
     ? [own]
     : [...(account?.learners ?? []), ...secondParentChildren(account)];
@@ -228,7 +216,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
     ? learners.find((l) => l.id === learnerId)
     : undefined;
   const progress = useQuery({
-    queryKey: ["account", session.accountId, "pathways", learner?.id],
+    queryKey: qk.account(session.accountId, "pathways", learner?.id),
     enabled: !!learner,
     refetchInterval: 30_000,
     queryFn: ({ signal }) =>
@@ -238,7 +226,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
       }),
   });
   const frontier = useQuery({
-    queryKey: ["account", session.accountId, "pathways-frontier", learner?.id],
+    queryKey: qk.account(session.accountId, "pathways-frontier", learner?.id),
     enabled: !!learner,
     refetchInterval: 30_000,
     queryFn: ({ signal }) =>
@@ -272,7 +260,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   return (
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
-      start={learner ? "/practice" : "/start"}
+      start={learner ? practicePath(learner.id) : "/start"}
       readOnly={viewOnly}
       key={learner?.id ?? "none"}
       canPractice={canPractice}
@@ -291,19 +279,23 @@ function LearnerMap({ session }: { session: AuthSession }) {
       birthYear={learner?.birthYear}
       controls={
         <>
-          {/* The learner row holds its place while the family loads. */}
-          {(me.isPending || (learners.length > 0 && !own)) && (
+          {/* Only when there is a real choice (learner-choice.ts); the row
+              holds its place while the account loads. */}
+          {(holding || choice.canChoose) && (
             <div
               className="pathways-learner"
-              aria-hidden={me.isPending || undefined}
-              style={me.isPending ? { visibility: "hidden" } : undefined}
+              aria-hidden={holding || undefined}
+              style={holding ? { visibility: "hidden" } : undefined}
             >
               <span aria-hidden="true">Learner</span>
               <ListboxDisclosure
                 label="Learner"
                 placeholder="Choose learner"
                 align="end"
-                options={learners.map((l) => ({ value: l.id, label: l.name }))}
+                options={choice.learners.map((l) => ({
+                  value: l.id,
+                  label: l.name,
+                }))}
                 value={learner?.id ?? null}
                 onChange={openChild}
               />
@@ -352,7 +344,8 @@ export function MapView({
   readOnly = false,
 }: {
   evidence: Evidence[];
-  start: "/sign-up" | "/practice" | "/start";
+  /** "/sign-up", "/start", or the learner's practice (`/practice/<id>`). */
+  start: string;
   notice: ReactNode;
   canPractice?: boolean;
   controls?: ReactNode;
@@ -375,35 +368,32 @@ export function MapView({
     ...skillCatalogOptions,
     refetchInterval: 300_000,
   });
-  const search = useSearch({ strict: false });
-  // A skill is a layer over the map (`?open=skill:<id>`, nav/entities.ts):
-  // the top one is the map's selection. Opening and closing it never moves
-  // the map; a skill found by the search or the list is framed on it.
-  const stack = useLayers().stack;
+  // Its search, grade and area: this screen's map view (map-view.ts).
+  const mapView = useMapView();
+  // A skill is a layer over the map (nav/layer-store.ts): the top one is the
+  // map's selection. Opening and closing it never moves the map; a skill
+  // found by the search or the list is framed on it.
+  const mapLayers = useLayers();
+  const stack = mapLayers.stack;
   const selectedId =
     stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
   const [frame, setFrame] = useState<{ id: string } | null>(null);
-  const urlQuery = typeof search.topic === "string" ? search.topic : "";
-  // The field owns its text while typing; the URL follows after a pause.
-  const field = useUrlSearchText(urlQuery, (topic) => update({ topic }, true));
+  const savedQuery = mapView.topic;
+  // The field owns its text while typing; the map's view follows after a
+  // pause.
+  const field = useUrlSearchText(savedQuery, (topic) => mapView.set({ topic }));
   const query = useDeferredValue(field.text);
-  const band =
-    typeof search.filter === "string" && bands.includes(search.filter)
-      ? search.filter
-      : "";
-  // One area of math (`?area=geometry`), chosen in the key; else all five.
-  const area = areaParam((search as Record<string, unknown>).area);
-  const navigate = useNavigate();
+  const band = bands.includes(mapView.band) ? mapView.band : "";
+  // One area of math, chosen in the key; else all five.
+  const area = mapView.area;
   const { shown } = useCurriculumDetails();
   // A browser that can't draw the 3D map (or loses its context while it is
   // open) gets the flat pathway in its place: no canvas, no camera controls,
   // and no choice of view.
   const [drawn, setDrawn] = useState(canDrawMap);
-  // The grades view, or 3D: the address's (`?view=`), else this device's
-  // last choice. Either keeps the skill open over it.
-  const [remembered, setRemembered] = useState(savedView);
-  const view: MapMode =
-    search.view === "3d" || search.view === "grades" ? search.view : remembered;
+  // The grades view, or 3D: this device's last choice. Either keeps the
+  // skill open over it.
+  const [view, setView] = useState(savedView);
   const threeD = drawn && view === "3d";
   // Fetch the map's code once the screen is up, so choosing 3D is immediate.
   useEffect(() => {
@@ -419,77 +409,56 @@ export function MapView({
   const chooseView = (next: MapMode) => {
     try {
       localStorage.setItem(VIEW_KEY, next);
-    } catch {
-      // This device keeps no choice; the address still carries it.
+    } catch (error) {
+      // This device keeps no choice; this visit still does.
+      console.warn("This device keeps no map view", error);
     }
-    setRemembered(next);
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => ({
-        ...current,
-        view: next,
-      })) as never,
-      replace: true,
-      resetScroll: false,
-    });
+    setView(next);
   };
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
   // the skill is what it shows, its search kept in the field.
   const [browse, setBrowse] = useState(
-    () => urlQuery.trim().length > 0 && !selectedId,
+    () => savedQuery.trim().length > 0 && !selectedId,
   );
-  // A problem type's short lesson is a layer over the map (nav/entities.ts,
-  // `?open=lesson:<id>`): a link, a refresh or Back opens it again, and
-  // closing returns to this map as it was.
+  // A problem type's short lesson is a layer over the map
+  // (nav/layer-store.ts): a refresh or Back to this screen shows it again,
+  // and closing returns to this map as it was.
   const lesson =
     stack.filter((layer) => layer.kind === "lesson").at(-1)?.id ?? null;
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
-  const docs = useSearchCorpus(searching);
-  const found = useLessonSearch(docs, searching ? query.trim() : "", "");
+  const found = useSiteSearch(query, browse);
+  const keys = useResultKeys();
   // On Pathways every result selects its skill in the map, as the list
   // without a search does (founder): the camera frames it, its panel opens,
   // the search closes with the query kept. A lesson, problem type or film is
   // then offered first in the panel, as found.
   const [picked, setPicked] = useState<SearchFound | null>(null);
-  const searchActionsFor = (): SearchActions => {
-    // An older server's result carries no skill: this page's own corpus
-    // knows every document's.
-    const skillOf = (result: SearchResult) =>
-      result.skill || docs?.find((doc) => doc.id === result.id)?.skill || "";
-    const href = (result: SearchResult) => {
-      const params = new URLSearchParams(window.location.search);
-      if (skillOf(result))
-        params.set(
-          OPEN_KEY,
-          pushLayer(params.get(OPEN_KEY) ?? undefined, {
-            kind: "skill",
-            id: skillOf(result),
-          })!,
-        );
-      return `${window.location.pathname}${params.size ? `?${params}` : ""}`;
-    };
-    return {
-      href,
-      open: (result) => {
-        const skill = skillOf(result);
-        if (!skill) return;
-        setPicked(
-          result.kind === "skill"
-            ? null
-            : {
-                kind: result.kind,
-                id: result.target,
-                title: result.title,
-                skill,
-              },
-        );
-        select(skill, true);
-      },
-    };
-  };
+  const searchActions = useSearchActions(found.docs, (result, skill) => {
+    setPicked(
+      result.kind === "skill"
+        ? null
+        : {
+            kind: result.kind,
+            id: result.target,
+            title: result.title,
+            skill,
+          },
+    );
+    select(skill, true);
+  });
+  // A chosen grade or course narrows the results too; math words stay.
+  const results = useMemo(
+    () =>
+      band
+        ? found.results.filter(
+            (result) => result.kind === "term" || result.band === band,
+          )
+        : found.results,
+    [found.results, band],
+  );
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
   // What a search found, while its skill is the one selected.
@@ -512,52 +481,22 @@ export function MapView({
   );
   const earned = evidence.filter((s) => s.independentCorrect > 0).length;
   const countsReady = !!catalog.data && !recordLoading;
-  // The map's own view: its search and grade filter, beside any layers.
-  const update = (
-    values: {
-      topic?: string;
-      filter?: string;
-      /** A skill to open over the map. */
-      skill?: string;
-    },
-    replace = false,
-  ) =>
-    void navigate({
-      // This map's own address: yours, or a child's.
-      to: ".",
-      search: ((current: Record<string, unknown>) => {
-        const next: Record<string, unknown> = {
-          ...current,
-          topic:
-            (values.topic === undefined ? field.carry() : values.topic) ||
-            undefined,
-          filter:
-            (values.filter === undefined ? band : values.filter) || undefined,
-        };
-        if (values.skill)
-          next[OPEN_KEY] = pushLayer(current[OPEN_KEY], {
-            kind: "skill",
-            id: values.skill,
-          });
-        return next;
-      }) as never,
-      replace,
-      resetScroll: false,
-    });
   /** Opens a skill over the map. Chosen on the map, the map stays where it
    * is; found by the search or the list, the map frames it as it opens. */
   const select = (id: string, framed = false) => {
     setBrowse(false);
     if (framed) setFrame({ id });
-    update({ skill: id });
+    // The search's text stays in the map's view; the skill opens over the
+    // map, in this screen's layers.
+    field.flush();
+    mapLayers.open({ kind: "skill", id });
     if (framed) showMap();
   };
   const filtered =
     skills?.filter(
       (s) =>
         (!band || s.gradeBand === band) &&
-        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)) &&
-        matchesQuery(`${s.title} ${s.description}`, query),
+        (!area || areaSlot(s) === areas.findIndex((a) => a.id === area)),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
   const overall = frontier ? frontierRange(frontier) : null;
@@ -601,11 +540,10 @@ export function MapView({
             ) : shownFound.kind === "film" ? (
               <Link
                 className={layers.rowAction}
-                to="/lessons/$templateId/watch"
-                params={{ templateId: shownFound.id }}
-                search={{
-                  from: window.location.pathname + window.location.search,
-                }}
+                to="/$"
+                // Closing the film comes Back here, the map's layers as
+                // they were (nav/layer-store.ts).
+                params={{ _splat: `lessons/${shownFound.id}/watch` }}
               >
                 Watch
               </Link>
@@ -629,14 +567,18 @@ export function MapView({
               <Link
                 className={buttonClass("primary")}
                 to="/$"
-                params={{ _splat: "practice" }}
-                search={{
-                  skill: skillId,
-                  // A problem type the search found: that one.
-                  ...(found?.kind === "type" || found?.kind === "film"
-                    ? { template: found.id }
-                    : {}),
-                }}
+                // The skill's practice, at its own address; a problem type
+                // the search found: that one (it wins over its skill).
+                params={
+                  learnerId
+                    ? practiceParams(learnerId, {
+                        skill: skillId,
+                        ...(found?.kind === "type" || found?.kind === "film"
+                          ? { template: found.id }
+                          : {}),
+                      })
+                    : { _splat: "practice" }
+                }
               >
                 <PracticeLabel />
               </Link>
@@ -727,24 +669,15 @@ export function MapView({
           }
         }}
       >
-        <label className="pathways-search">
-          <input
-            type="search"
-            aria-label="Search"
-            placeholder="Search"
-            maxLength={100}
-            value={field.text}
-            onFocus={() => setBrowse(true)}
-            onChange={(e) => {
-              setBrowse(true);
-              field.change(e.target.value);
-            }}
-            onBlur={field.flush}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") field.flush();
-            }}
-          />
-        </label>
+        <SiteSearchField
+          className="pathways-search"
+          field={field}
+          inputRef={keys.input}
+          onFocus={() => setBrowse(true)}
+          onChange={() => setBrowse(true)}
+          onEscape={() => setBrowse(false)}
+          onKeyDown={keys.onKeyDown}
+        />
         <button
           aria-label={browse ? "Close browser" : "Browse skills"}
           aria-expanded={browse}
@@ -807,15 +740,19 @@ export function MapView({
                   label="Grade or course"
                   options={bandOptions}
                   value={band}
-                  onChange={(next) => update({ filter: next }, true)}
+                  onChange={(next) => mapView.set({ band: next })}
                 />
               </div>
               {searching && (
-                <div className="pathways-results">
+                <div
+                  className="pathways-results"
+                  ref={keys.list}
+                  onKeyDown={keys.onKeyDown}
+                >
                   <SearchResults
-                    results={found.results}
+                    results={results}
                     pending={found.pending}
-                    actions={searchActionsFor()}
+                    actions={searchActions}
                   />
                 </div>
               )}
@@ -955,8 +892,14 @@ export function MapView({
             <Link
               className={buttonClass("primary")}
               to="/$"
-              params={{ _splat: "practice" }}
-              search={{ skill: practiced, template: type }}
+              params={
+                learnerId
+                  ? practiceParams(learnerId, {
+                      skill: practiced,
+                      template: type,
+                    })
+                  : { _splat: "practice" }
+              }
             >
               <PracticeLabel />
             </Link>

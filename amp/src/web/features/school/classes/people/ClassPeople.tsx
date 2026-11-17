@@ -1,7 +1,7 @@
+import { useSession } from "../../../../lib/session";
 import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import type { ApprovalRowResource } from "../../../../../family/approval-contracts";
-import type { AuthSession } from "../../../../auth";
 import { useLoggedError } from "../../../../feedback";
 import { Button } from "../../../../ui/Button";
 import { Toast } from "../../../../ui/Toast";
@@ -76,17 +76,16 @@ function PeopleList({
  * and children from other families, each with where they stand and the way
  * to add one. They live with the children on People, not on Today. */
 export function ClassPeople({
-  session,
   orgId,
   classId,
   secondParent = true,
 }: {
-  session: AuthSession;
   orgId: string;
   classId: string;
   /** Offer the family's second parent here; a tutoring group has none. */
   secondParent?: boolean;
 }) {
+  const session = useSession();
   const second = useQuery({
     ...secondParentOptions(session),
     enabled: secondParent,
@@ -121,13 +120,11 @@ export function ClassPeople({
               )}
               {second.data && (
                 <SecondParentRow
-                  session={session}
                   parent={second.data}
                   onError={setError}
                 />
               )}
               <CoTeacherRows
-                session={session}
                 orgId={orgId}
                 onError={setError}
               />
@@ -167,7 +164,6 @@ export function ClassPeople({
               <OtherFamilyRow
                 key={row.id}
                 row={row}
-                session={session}
                 onAccess={() => setOpen({ kind: "access", row })}
                 onSend={() =>
                   setOpen({
@@ -188,11 +184,10 @@ export function ClassPeople({
         />
       </div>
       {open?.kind === "second-parent" && (
-        <SecondParentInviteSheet session={session} onClose={close} />
+        <SecondParentInviteSheet onClose={close} />
       )}
       {open?.kind === "co-teacher" && (
         <CoTeacherInviteSheet
-          session={session}
           orgId={orgId}
           classId={classId}
           onClose={close}
@@ -200,7 +195,6 @@ export function ClassPeople({
       )}
       {open?.kind === "other-family" && (
         <OtherFamilyAddSheet
-          session={session}
           rows={rows}
           student={open.personId ? open : undefined}
           onClose={close}

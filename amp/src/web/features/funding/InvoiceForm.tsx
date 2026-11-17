@@ -158,7 +158,8 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(`${label} copied`);
-    } catch {
+    } catch (failure) {
+      console.warn("The clipboard refused the copy", failure);
       setCopied("Select and copy the text above.");
     }
   }
@@ -174,7 +175,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
       <header className={styles.header}>
         <FrameBrand expanded />
         <RootLink program={program.id} className={styles.back}>
-          Back to AMP
+          AMP home
         </RootLink>
       </header>
       <p className={styles.eyebrow}>{program.name}</p>

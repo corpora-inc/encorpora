@@ -3,11 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import {
-  chromium as rawChromium,
-  type BrowserContext,
-  type Page,
-} from "playwright";
+import { chromium as rawChromium, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
@@ -15,7 +11,7 @@ import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import {
   preparePracticeAnswer,
   trackPracticeProblems,
@@ -31,7 +27,8 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
  * boxes and the browser's layout-shift entries), nothing overflows, and axe
  * is clean. A child under 13 chooses reasons only; an adult learner in a
  * parent's account also gets the note. Each child context practices as a new
- * signed-in learner (development auth) at `/practice`. Runs at 384x700,
+ * learner in the development account, handed the device from the family's
+ * Today (their own session at `/practice`). Runs at 384x700,
  * 390x844, both tablet orientations and 1280x800, light and dark, and writes
  * screenshots. `--port` moves the web server (the API takes the next port).
  */
@@ -309,9 +306,9 @@ async function flagFlow(
   await page.screenshot({ path: `${shots}${label}-5-sent.png` });
 }
 
-/** A new child in the development account, chosen on this device. */
+/** A new child in the development account. */
 const children: string[] = [];
-async function newChild(context: BrowserContext, birthYear: number) {
+async function newChild(birthYear: number) {
   const response = await fetch(`http://127.0.0.1:${apiPort}/api/v1/learners`, {
     method: "POST",
     headers: {
@@ -323,14 +320,6 @@ async function newChild(context: BrowserContext, birthYear: number) {
   assert.equal(response.status, 201, await response.clone().text());
   const { id } = (await response.json()) as { id: string };
   children.push(id);
-  await context.addInitScript(
-    (learnerId) =>
-      localStorage.setItem(
-        "amp.learner",
-        JSON.stringify({ state: { learnerId }, version: 1 }),
-      ),
-    id,
-  );
   return id;
 }
 
@@ -352,12 +341,14 @@ try {
         hasTouch: viewport.width < 1100,
       });
       // A child under 13 (src/feedback/problem-flags.ts): reasons only.
-      const learnerId = await newChild(context, 2016);
+      const learnerId = await newChild(2016);
       await context.addInitScript(observeShifts);
       const page = await context.newPage();
       trackPracticeProblems(page);
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto(`${origin}/practice`);
+      // The parent hands the device to the child: their own practice.
+      await page.goto(`${origin}/overview`);
+      await practiceHere(page, learnerId);
       await page.locator(".question").waitFor();
       await flagFlow(page, `child-${label}`, {
         note: false,
@@ -386,12 +377,14 @@ try {
     const page = await context.newPage();
     trackPracticeProblems(page);
     page.on("pageerror", (error) => errors.push(error.message));
-    // The shared CI database holds other suites' learners: pick this one.
+    // The shared CI database holds other suites' learners: hand the device
+    // to this one.
     await page.goto(`${origin}/overview`);
-    await chooseLearner(page, adult.id);
+    await practiceHere(page, adult.id);
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
     await page
-      .getByRole("link", { name: /^Try this problem type/ })
+      .getByRole("dialog")
+      .getByRole("link", { name: /^Practice/ })
       .click();
     await page.locator(".question").waitFor();
     await flagFlow(page, `adult-390x844-${colorScheme}`, {

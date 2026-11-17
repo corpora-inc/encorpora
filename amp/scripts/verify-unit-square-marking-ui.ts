@@ -14,7 +14,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { generateProblem, type GeneratedProblem } from "../src/math/engine";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { chooseLearner } from "./ui-controls";
+import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { publicationHtml } from "../src/content/publications";
 import { areaByCountingLessons } from "../src/content/area-by-counting-lessons";
@@ -282,7 +282,7 @@ try {
       page.setDefaultTimeout(30000);
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto("http://127.0.0.1:4562/overview");
-      await chooseLearner(page, learner.id);
+      await practiceHere(page, learner.id);
       for (const base of fixtures) {
         const size = height! < 740 ? `${width}x${height}` : width;
         const tag = `${base.public.templateId}-${size}-${theme}`;

@@ -7,13 +7,33 @@ export const contrastPairs = [
   { id: "dark:1280", theme: "dark", width: 1280 },
 ] as const;
 
-// Every pair must visit the complete route and interaction inventory.
+// Every pair must visit the complete route and interaction inventory: the
+// parent's family and account screens, the start and purchase routes, the
+// Add-a-child sheet, and a child's own practice session on this device.
 export const contrastStates = [
-  "home",
-  "learner-select-open",
-  "family-menu-open",
-  "/lessons",
-  "/progress",
+  "family-today",
+  "family-drawer-open",
+  "child-page",
+  "child-pathways",
+  "family-map",
+  "family-workbooks",
+  "family-time",
+  "family-reports",
+  "family-people",
+  "family-settings",
+  "/account/security",
+  "/account/billing",
+  "/account/privacy",
+  "/start/plan",
+  "/start",
+  "/start/parent",
+  "/start/school",
+  "/purchase",
+  "/purchase/annual",
+  "/purchase/funded",
+  "add-child-sheet",
+  "dialog-birth-year",
+  "add-child-error",
   "practice-problem",
   "feedback-incorrect",
   "feedback-correct",
@@ -21,18 +41,10 @@ export const contrastStates = [
   "choice-problem",
   "choice-feedback-incorrect",
   "choice-feedback-correct",
-  "/start/plan",
-  "/start",
-  "/start/parent",
-  "/start/school",
-  "/family/learners",
-  "/family/access",
-  "/family/privacy",
-  "/purchase",
-  "/purchase/annual",
-  "/purchase/funded",
-  "dialog-birth-year",
-  "toast-error",
+  "child-drawer-open",
+  "pathways-lesson",
+  "/overview",
+  "/progress",
 ] as const;
 
 export function contrastPartition(args: readonly string[]) {

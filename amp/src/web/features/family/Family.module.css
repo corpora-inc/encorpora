@@ -1,26 +1,30 @@
 /* A family's screens (features/family): rows on the page, never cards;
    tokens only. Every row of a list shares one grid, so the action column is
    as wide as its widest button on every row and nothing moves between them. */
+/* Every family screen's column (FamilyFrame's Page): the dense type and
+   controls of a place's screens. Its width and gutters are the Page's. */
+.screen {
+  --target-size: 44px;
+  --grid-sticky-top: var(--shell-bar, 56px);
+  font-size: var(--text-dense);
+  line-height: 1.45;
+}
+.screen :global([data-scrolls]),
+.screen :global([data-virtual]) {
+  --grid-sticky-top: 0px;
+}
+:global(main[data-family-screen]) {
+  outline: none;
+}
 .page {
   container-type: inline-size;
   display: grid;
   gap: var(--space-6);
+  /* A child's nickname is one word of up to 30 letters, in headings, rows
+     and labels: it breaks inside its column, never widens a phone's page. */
+  overflow-wrap: anywhere;
 }
 
-.pageHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-5);
-  margin-bottom: var(--space-6);
-}
-.pageHeader > .head {
-  flex: 1 1 auto;
-}
-.pageHeader > .recordLinks {
-  margin: 0;
-}
 .head {
   display: grid;
   gap: var(--space-1);
@@ -46,36 +50,9 @@
   letter-spacing: 0;
 }
 
-/* The children: one row each. On a phone the name and the action share the
-   first line and the figures sit under them; from 720 px a row is one line:
-   name, this week, last practiced, access, action. */
-.kids {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.kid {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: subgrid;
-  grid-template-areas:
-    "name action"
-    "facts facts";
-  align-items: center;
-  gap: var(--space-2) var(--space-4);
-  min-height: 56px;
-  padding-block: var(--space-3);
-  box-shadow: inset 0 1px 0 var(--color-border);
-}
-.kid:last-child {
-  box-shadow:
-    inset 0 1px 0 var(--color-border),
-    inset 0 -1px 0 var(--color-border);
-}
+/* The children (Today): a ui/ColumnList, so each figure has its own column
+   and a row without one leaves the cell empty. */
 .kidName {
-  grid-area: name;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -112,13 +89,6 @@
   vertical-align: -1px;
   opacity: 0.6;
 }
-.facts {
-  grid-area: facts;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
-  min-width: 0;
-}
 .fact {
   display: grid;
   align-content: start;
@@ -136,11 +106,6 @@
   font-size: var(--text-table-small);
   line-height: 1.3;
   font-variant-numeric: var(--numeric);
-}
-.accessCell {
-  display: grid;
-  align-content: start;
-  min-width: 0;
 }
 .accessLink {
   display: inline-flex;
@@ -162,13 +127,12 @@
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+/* A child's action: the same width on every row, the column's (the widest
+   button's). */
 .action {
-  grid-area: action;
   display: grid;
-  justify-self: stretch;
   min-width: 0;
 }
-/* The same width on every row: the column's, the widest button's. */
 .action > * {
   width: 100%;
   min-height: 44px;
@@ -188,42 +152,63 @@
   font-size: var(--text-table);
   text-align: end;
 }
-@container (min-width: 720px) {
-  .kids {
-    grid-template-columns:
-      minmax(120px, 1.2fr) minmax(0, 3fr)
-      auto;
-  }
-  .kid {
-    grid-template-areas: "name facts action";
-    gap: var(--space-5);
-  }
+/* A child's access and its link: one line, or the link under it. */
+.access {
+  display: grid;
+  justify-items: start;
+  min-width: 0;
 }
-/* On a phone a long name and its action would crowd one line: the action
-   takes a line of its own, full width, the same on every row. */
-@container (max-width: 559px) {
-  .kids {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .kid {
-    grid-template-areas:
-      "name"
-      "facts"
-      "action";
-  }
-}
+/* A phone (the children's list is one column under 400 px): a calm,
+   compact row. Each figure reads as one line, its value then its label
+   ("5 min · 6 problems this week"), the access with its link beside it,
+   and the action a regular 44 px button. */
 @container (max-width: 399px) {
-  .facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  [data-family-kids] .fact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--space-1);
+  }
+  [data-family-kids] .factValue::after {
+    content: "·" / "";
+    margin-inline-start: var(--space-1);
+    color: var(--color-muted-text);
+    font-weight: 400;
+  }
+  [data-family-kids] .factLabel {
+    font-size: var(--text-label);
+  }
+  [data-family-kids] .access {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--space-3);
+  }
+  [data-family-kids] .action > * {
+    width: auto;
+    min-height: var(--target-min);
+    height: var(--target-min);
+    padding-block: 0;
+  }
+  /* The child's one action on their name's line, right-aligned and its
+     own size: three children fit one phone screen. */
+  [data-family-kids] > li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  [data-family-kids] > li > [data-part="title"] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  [data-family-kids] > li > [data-part="action"] {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    justify-items: end;
+  }
+  [data-family-kids] > li > [data-part="figure"] {
+    grid-column: 1 / -1;
   }
 }
-
-/* Optional adult practice stays a compact row below the children's actions. */
-.kid.self {
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas: "name action";
-}
-
 /* Quiet rows under the children: their own devices, practicing yourself. */
 .quiet {
   margin-top: var(--space-4);
@@ -264,6 +249,17 @@
 .settings {
   display: grid;
   margin: 0;
+}
+/* A child's reports: each a download, side by side, wrapping whole. */
+.reportActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+/* A child's settings: one folded section. Open, its rows' own lines
+   divide it, the last closing it, so the fold's lower line steps aside. */
+.childSettings[open] {
+  border-bottom-color: transparent;
 }
 .setting {
   display: grid;
@@ -408,20 +404,15 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
-.recordName:hover,
-.recordLinks a:hover,
-.settingBack:hover {
+.recordName:hover {
   background: transparent;
   color: var(--color-primary);
 }
-.recordName:hover .recordOpen,
-.recordLinks a:hover,
-.settingBack:hover {
+.recordName:hover .recordOpen {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-.recordOpen svg,
-.recordBack svg {
+.recordOpen svg {
   width: 1em;
   height: 1em;
   fill: none;
@@ -431,34 +422,6 @@
 .recordName:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
-}
-.recordLinks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-2) var(--space-4);
-  margin: 0 0 var(--space-3);
-  padding: 0;
-  border: 0;
-}
-.recordRelated {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-left: auto;
-}
-.recordLinks a,
-.settingBack {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  min-height: var(--target-min);
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 600;
-  text-decoration: none;
-  width: fit-content;
 }
 /* The map: its key beside the title, then each child whole. */
 .mapPage {
@@ -504,4 +467,18 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
   white-space: nowrap;
+}
+/* Adding children in a sheet: the rows, then Done at their foot. */
+.addChildren {
+  display: grid;
+  gap: var(--space-4);
+}
+/* A child's name that opens their settings (family Settings): the same look
+   as the name that opens their page. */
+button.kidName {
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
 }

@@ -1,8 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { useSyncExternalStore } from "react";
+import { qk } from "../../lib/keys";
+import { meOptions } from "../../lib/query";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { hasAccountContext } from "../../lib/account-page";
-import { useLearnerStore } from "../../learner-store";
+import { useCurrentLearner } from "../../learner-store";
 import { nativeRuntime } from "../../native-runtime";
 import { useFamilyCache } from "../../lib/family-cache";
 import {
@@ -14,27 +17,33 @@ import {
 /** Resolve presentation identity without loading progress or assessment evidence. */
 export function useCurriculumScope() {
   const location = useLocation();
-  const session = useQuery(sessionOptions);
+  const session = useSessionOrNull();
+  // Whether the session is still being read, or its last check failed: the
+  // scope waits rather than show a guest's or a stale account's.
+  const client = useQueryClient();
+  const sessionStatus = useSyncExternalStore(
+    (changed) => client.getQueryCache().subscribe(changed),
+    () => client.getQueryState(qk.session())?.status,
+  );
+  const sessionPending = !session && sessionStatus !== "success";
+  const sessionError = sessionStatus === "error";
   const accountPage = hasAccountContext(location.pathname);
   const me = useQuery({
-    ...meOptions(session.data ?? { accountId: "", token: "" }),
-    enabled: !nativeRuntime && accountPage && !!session.data,
+    ...forSession(session, meOptions),
+    enabled: !nativeRuntime && accountPage && !!session,
   });
   const nativeFamily = useFamilyCache(
-    nativeRuntime ? (session.data?.accountId ?? null) : null,
+    nativeRuntime ? (session?.accountId ?? null) : null,
   );
-  const selected = useLearnerStore((s) => s.learnerId);
+  const selected = useCurrentLearner();
   if (nativeRuntime) {
     // The Rust session owns native requests. Reuse the family snapshot loaded
     // through that bridge, including LegacyApp's first-learner fallback.
     const learners = nativeFamily?.learners.filter((l) => !l.deletedAt) ?? [];
     const learner = learners.find((l) => l.id === selected) ?? learners[0];
-    const ready =
-      !!session.data && !!learner && !session.isPending && !session.error;
+    const ready = !!session && !!learner && !sessionError;
     return {
-      scope: ready
-        ? `account:${session.data!.accountId}:${learner!.id}`
-        : "pending",
+      scope: ready ? `account:${session!.accountId}:${learner!.id}` : "pending",
       ready,
       levels: undefined,
     };
@@ -46,13 +55,13 @@ export function useCurriculumScope() {
     practicingAsProfile(account, selected);
   return {
     ...resolveCurriculumScope({
-      session: session.data,
+      session,
       me: account
         ? { ...account, learners: practiceLearners(account) }
         : me.data,
       selected,
-      loading: session.isPending || (!!session.data && me.isPending),
-      identityError: !!session.error || !!me.error,
+      loading: sessionPending || (!!session && me.isPending),
+      identityError: sessionError || !!me.error,
     }),
     levels: own ? ("shown" as const) : account?.school?.levels,
   };

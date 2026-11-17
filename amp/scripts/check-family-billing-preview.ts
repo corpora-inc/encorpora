@@ -1,4 +1,5 @@
 /** Isolated family Today billing links: free, paid and invoice-backed access. */
+import { readLearner } from "./lib/learner-seed";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { mkdir } from "node:fs/promises";
@@ -116,12 +117,7 @@ try {
         .getAttribute("href"),
       today,
     );
-    assert.equal(
-      await page.evaluate(
-        () => JSON.parse(localStorage.getItem("amp.learner")!).state.learnerId,
-      ),
-      parent.learnerId,
-    );
+    assert.equal(await readLearner(page, parent.accountId), parent.learnerId);
     if (parent.key === "invoice") {
       await page
         .getByRole("heading", { name: "Education-fund invoices", exact: true })

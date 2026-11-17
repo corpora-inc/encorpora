@@ -1,5 +1,6 @@
 /** Local UAT: single-child progress, family sections and comparison links. */
 import assert from "node:assert/strict";
+import { waitForLayers } from "./layer-probe";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
@@ -194,9 +195,7 @@ try {
           headingBox && Math.abs(headingBox.x - todayGeometry.x) < 1,
           `${title} shares family left edge`,
         );
-        await page
-          .getByRole("link", { name: "‹ Settings", exact: true })
-          .click();
+        await page.getByRole("link", { name: "Back", exact: true }).click();
         await page.waitForURL(origin + base + "/settings");
       }
       await page.goto(origin + "/purchase/funded");
@@ -211,9 +210,9 @@ try {
         await tabs.locator('[aria-current="page"]').innerText(),
         "Settings",
       );
-      await page.getByRole("link", { name: "← Billing", exact: true }).click();
+      await page.getByRole("link", { name: "Back", exact: true }).click();
       await page.waitForURL(origin + "/account/billing");
-      await page.getByRole("link", { name: "‹ Settings", exact: true }).click();
+      await page.getByRole("link", { name: "Back", exact: true }).click();
       await page.waitForURL(origin + base + "/settings");
       await page.getByRole("link", { name: /People & sharing/ }).click();
       await page.waitForURL(origin + base + "/people");
@@ -224,7 +223,7 @@ try {
         await tabs.locator('[aria-current="page"]').innerText(),
         "Settings",
       );
-      await page.getByRole("link", { name: "‹ Settings", exact: true }).click();
+      await page.getByRole("link", { name: "Back", exact: true }).click();
       await page.waitForURL(origin + base + "/settings");
       assert.ok(
         await page.evaluate(
@@ -240,8 +239,11 @@ try {
     (href) => (window as Window & { location: Location }).location.assign(href),
     origin + base + "/map?open=area%3Aoperations",
   );
-  await page.waitForURL(origin + detail + "?open=area%3Aoperations");
+  // The layer goes into the child's page's layers; the address names the
+  // page only.
+  await page.waitForURL(origin + detail);
   await page.getByRole("dialog", { name: "Operations", exact: true }).waitFor();
+  await waitForLayers(page, ["area:operations"]);
   await page.goBack();
   await page.waitForURL(origin + base);
   console.log("PASS map alias preserves layers and Back");
@@ -311,7 +313,7 @@ try {
     });
     await open.click();
     await page.waitForURL(origin + detail);
-    await page.getByRole("link", { name: "All children", exact: true }).click();
+    await page.getByRole("link", { name: "Back", exact: true }).click();
     await page.waitForURL(origin + base + "/map");
     console.log("PASS several children", width);
   }

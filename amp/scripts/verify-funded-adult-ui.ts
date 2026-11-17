@@ -17,7 +17,7 @@ const chromium = secureChromium(rawChromium);
 const port = Number(process.env.AMP_FUNDED_ADULT_UI_PORT ?? 4473),
   origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `export async function accessSession(){return {token:'amp|adult',accountId:'amp|adult',name:'Sample Student'};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `export async function accessSession(){return {token:'amp|adult',accountId:'amp|adult',name:'Sample Student'};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-funded-adult",
   plugins: [
@@ -267,6 +267,10 @@ try {
         fullPage: true,
       });
       // 4. Known parents resume consent; new adults use a matching invoice.
+      // An account with no learners and no consent on record (a parent whose
+      // consent request is still open included) starts like any first run:
+      // the program's own question, then consent for a child (#2315,
+      // onboarding/guard.ts startDestination).
       gift = false;
       for (const scenario of [
         "parent-pending",
@@ -277,7 +281,10 @@ try {
       ] as const) {
         entry = scenario;
         await page.goto(`${origin}/purchase/arizona-esa`);
-        const asks = scenario === "unknown" || scenario === "invoice-ambiguous";
+        const asks =
+          scenario === "unknown" ||
+          scenario === "invoice-ambiguous" ||
+          scenario === "parent-request";
         const heading = asks
           ? "Who’s learning?"
           : scenario === "invoice-adult"
@@ -297,7 +304,7 @@ try {
         );
         assert.equal(
           new URL(page.url()).pathname,
-          scenario.startsWith("parent")
+          scenario === "parent-pending"
             ? "/start/consent"
             : "/purchase/arizona-esa",
         );
@@ -315,16 +322,27 @@ try {
             "question controls do not move",
           );
           await child.click();
-          await page
-            .getByRole("heading", { name: "Learning consent" })
-            .waitFor();
-          assert.equal(new URL(page.url()).pathname, "/start/consent");
+          // A program invoice already prepared lets the parent name the child
+          // first and give consent after (#2315, InvoiceClaim); without one,
+          // consent comes first.
+          if (scenario === "invoice-ambiguous") {
+            await page
+              .getByRole("heading", { name: "Who’s learning?" })
+              .waitFor();
+            await page.getByLabel("Learner name").waitFor();
+            assert.equal(new URL(page.url()).pathname, "/start/name");
+          } else {
+            await page
+              .getByRole("heading", { name: "Learning consent" })
+              .waitFor();
+            assert.equal(new URL(page.url()).pathname, "/start/consent");
+          }
         }
       }
       await context.close();
     }
   console.log(
-    "PASS: funded entry at 320/390/768/1280 light/dark: known parents resume consent, unambiguous invoices skip the question, ambiguous accounts choose, no question flash; Yearly/Monthly invoice choice without layout shift, invoice to Me without consent, gift for herself, no overflow",
+    "PASS: funded entry at 320/390/768/1280 light/dark: parents with pending consent resume it, an open request starts like any first run, unambiguous invoices skip the question, ambiguous accounts choose, no question flash; Yearly/Monthly invoice choice without layout shift, invoice to Me without consent, gift for herself, no overflow",
   );
 } finally {
   await browser.close();

@@ -1,13 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useRouterState,
-} from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { useRef, useState } from "react";
 import { reportable } from "../../../learning/level-check";
-import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
 import {
   CHILD_NAME_MAX,
@@ -23,8 +17,16 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { ActionRow } from "../../ui/ActionRow";
 import { YearField } from "../../ui/YearField";
+import { Disclosure } from "../../ui/Disclosure";
 import { PrintButton } from "../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
+import { gradebookOptions } from "../school/classes/teacher-api";
+import { WorkbookHistory } from "../workbooks/WorkbookHistoryScreen";
+import { canReadWorkbooks, isDate } from "../workbooks/model";
+import { WorkbookDaySheet } from "../workbooks/WorkbookDayScreen";
+import { WorkbookResultsSheet } from "../workbooks/WorkbookResultsScreen";
+import type { WorkbookLearner } from "../workbooks/WorkbookFrame";
+import { childWorkbookPaths, WorkbookPathsContext } from "../workbooks/paths";
 import { SatMathFocus } from "../practice/SatMathFocus";
 import { ChildPracticeSettings } from "./Practice";
 import { rememberContinuation } from "../continue/memory";
@@ -37,6 +39,7 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet, SignInPictures } from "./Devices";
+import { ChildConsentPanel, ChildDeletePanel } from "../privacy/ChildPanels";
 import {
   childOf,
   FamilyFrame,
@@ -47,13 +50,19 @@ import {
 import { AccessFact, ChildAction, WeekFactsOf } from "./Today";
 import styles from "./Family.module.css";
 import { ChildActivity } from "./ChildActivity";
+import { useSheet } from "../../nav/sheet";
+import { Sheet } from "../../ui/Sheet";
+import { PayLink } from "../pay/link";
 
 /**
  * A child's page (`/family/<family>/kids/<learner>`): the same record a
  * teacher reads (where they are, their weeks, the skills they've earned and
- * their recent work), worded for a parent, with the one action that works
- * now and, for the parent who manages them, their name, birth year, consent
- * and devices. A second parent reads it and lets them practice here.
+ * their recent work), worded for a parent: the hub for that child. Its
+ * actions: Practice, and beside it their own devices (a code, a QR code or a
+ * printed card). On the page, no pages of their own: their practice time
+ * (#child-time), their workbooks (#child-workbooks) and their reports to
+ * download (#child-reports). Their settings fold under one Settings, closed
+ * until opened. A second parent reads it and lets them practice here.
  */
 export function ChildScreen() {
   const place = useFamilyPlace();
@@ -71,28 +80,8 @@ export function ChildScreen() {
   // Something to report: a level with an answer behind it (Q-201).
   const hasReport = reportable(progress.data?.level);
   if (progress.data) openedUnmeasured.current ??= !hasReport;
-  // This child is the one chosen on this device while their page is open:
-  // their learning screens are theirs.
-  const known = !!child;
-  useEffect(() => {
-    if (known) useLearnerStore.getState().select(learner);
-  }, [known, learner]);
-  const search = useRouterState({
-    select: (state) => state.location.search as Record<string, unknown>,
-  });
-  const navigate = useNavigate();
-  const devices = search.devices === 1 || search.devices === "1";
-  const setDevices = (open: boolean) =>
-    void navigate({
-      to: ".",
-      search: ((current: Record<string, unknown>) => {
-        const next = { ...current };
-        if (open) next.devices = 1;
-        else delete next.devices;
-        return next;
-      }) as never,
-      replace: !open,
-    });
+  // Their own devices: a sheet over the page, in history state.
+  const devices = useSheet("devices");
   if (data && !child)
     return (
       <FamilyFrame place={place}>
@@ -104,7 +93,7 @@ export function ChildScreen() {
               params={{ _splat: familyHref(family) }}
               className={buttonClass("primary")}
             >
-              Back to Today
+              Open Today
             </Link>
           }
         >
@@ -128,67 +117,13 @@ export function ChildScreen() {
     >
       {data && child && (
         <div className={styles.page} data-child-page={child.id}>
-          <ActionRow>
-            <ChildAction
-              child={child}
-              family={family}
-              accountId={session.accountId}
-              starting={starting}
-              onPracticeHere={(id) => void handOver(id)}
-              primary
-            />
-            {child.capabilities.readWorkbooks && (
-              <Link
-                to="/learners/$learnerId/workbooks"
-                params={{ learnerId: child.id }}
-                className={buttonClass("secondary")}
-              >
-                Workbooks
-              </Link>
-            )}
-            {/* While free problems remain, the plan is one step away. */}
-            {!child.access.hasAccess &&
-              child.access.canPractice &&
-              child.capabilities.continuePurchase &&
-              child.paths.continue && (
-                <Link
-                  to="/continue/$learnerId"
-                  params={{ learnerId: child.id }}
-                  className={buttonClass("secondary")}
-                  data-continue={child.id}
-                  onClick={() =>
-                    rememberContinuation({
-                      accountId: session.accountId,
-                      learnerId: child.id,
-                      returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
-                    })
-                  }
-                >
-                  Continue with AMP
-                </Link>
-              )}
-            {/* A progress report once there is progress to report; the
-                  record arrives with the page (family-routes), so it never
-                  appears late. */}
-            {/* Decided when the page opens: a first answer while it is
-                  open takes the bar in place and adds nothing above it. */}
-            {child.capabilities.readProgress &&
-              hasReport &&
-              openedUnmeasured.current === false && (
-                <PrintButton
-                  variant="secondary"
-                  download={() =>
-                    downloadPdf({
-                      path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
-                      token: session.token,
-                      name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
-                    })
-                  }
-                >
-                  Progress report
-                </PrintButton>
-              )}
-          </ActionRow>
+          <ChildActions
+            place={place}
+            child={child}
+            starting={starting}
+            onPracticeHere={(id) => void handOver(id)}
+            onDevices={devices.show}
+          />
           <section aria-labelledby="child-week" className={styles.section}>
             <h2 id="child-week" className={styles.label}>
               This week
@@ -279,17 +214,27 @@ export function ChildScreen() {
               Check your connection, then try again.
             </EmptyState>
           ) : null}
-          <ChildSettings
+          <ChildWorkbooks place={place} child={child} />
+          {/* A progress report once there is progress to report, decided
+              when the page opens: a first answer while it is open adds
+              nothing above the settings. */}
+          <ChildReports
             place={place}
             child={child}
-            onDevices={() => setDevices(true)}
+            progress={
+              child.capabilities.readProgress &&
+              hasReport &&
+              openedUnmeasured.current === false
+            }
           />
+          <ChildSettings place={place} child={child} />
+          <ChildWorkbookOverlay place={place} child={child} />
           {place.own && child.capabilities.manageDevices && (
             <DevicesSheet
               place={place}
               classId={place.own.id}
-              open={devices}
-              onOpenChange={setDevices}
+              open={devices.open}
+              onOpenChange={devices.onOpenChange}
             />
           )}
         </div>
@@ -299,19 +244,334 @@ export function ChildScreen() {
   );
 }
 
-const ok = z.unknown();
-
-/** What the parent who manages this child can change: their name, birth
- * year, consent and devices. Each row only where the server allows it; a
- * second parent reads the year. */
-function ChildSettings({
+/** A child's actions: Practice, and beside it their own devices, as near to
+ * hand; while free problems remain, the plan. Their workbooks and reports
+ * are sections of the page, not actions. */
+export function ChildActions({
   place,
   child,
+  starting,
+  onPracticeHere,
   onDevices,
 }: {
   place: FamilyPlace;
   child: FamilyChild;
+  starting: string | null;
+  onPracticeHere: (learnerId: string) => void;
   onDevices: () => void;
+}) {
+  const { family, session } = place;
+  return (
+    <ActionRow>
+      <ChildAction
+        child={child}
+        family={family}
+        accountId={session.accountId}
+        starting={starting}
+        onPracticeHere={onPracticeHere}
+        primary
+      />
+      {/* Their own devices: as near to hand as Practice. */}
+      {place.own && child.capabilities.manageDevices && (
+        <Button variant="secondary" data-own-devices="" onClick={onDevices}>
+          Their own devices
+        </Button>
+      )}
+      {/* While free problems remain, the plan is one step away. */}
+      {!child.access.hasAccess &&
+        child.access.canPractice &&
+        child.capabilities.continuePurchase &&
+        child.paths.continue && (
+          <PayLink
+            learnerId={child.id}
+            className={buttonClass("secondary")}
+            data-continue={child.id}
+            onClick={() =>
+              rememberContinuation({
+                accountId: session.accountId,
+                learnerId: child.id,
+                returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
+              })
+            }
+          >
+            Continue with AMP
+          </PayLink>
+        )}
+    </ActionRow>
+  );
+}
+
+/** A child's workbooks, on their page: today's to make, the ones made
+ * before to download, and results to enter. Their record arrives with the
+ * page (family-routes), so the list never pushes the page down. */
+function ChildWorkbooks({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const learner = workbookLearner(place, child);
+  // A day or its results open over the page: the list holds still.
+  const { date, workbookId } = useParams({ strict: false }) as {
+    date?: string;
+    workbookId?: string;
+  };
+  if (!learner) return null;
+  return (
+    <section
+      aria-labelledby="child-workbooks"
+      className={styles.section}
+      data-child-workbooks=""
+    >
+      <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
+        <WorkbookHistory
+          section
+          learner={learner}
+          still={!!date || !!workbookId}
+        />
+      </WorkbookPathsContext.Provider>
+    </section>
+  );
+}
+
+/** The child as their workbooks know them, when this reader may read them. */
+function workbookLearner(
+  place: FamilyPlace,
+  child: FamilyChild,
+): WorkbookLearner | null {
+  const learner = place.me?.family.learners.find(
+    (entry) => entry.id === child.id && !entry.deletedAt,
+  );
+  if (!child.capabilities.readWorkbooks || !learner) return null;
+  if (!canReadWorkbooks(learner)) return null;
+  return {
+    ...learner,
+    pauseViewer: learner.simulation
+      ? "profile"
+      : learner.adult
+        ? "adult"
+        : "parent",
+  };
+}
+
+/** A workbook day or its results, open over the child's page at its own
+ * address (`kids/<id>/workbooks/<date>`, `…/<workbook>/results`); ✕ closes
+ * it to the page. */
+function ChildWorkbookOverlay({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const { date, workbookId } = useParams({ strict: false }) as {
+    date?: string;
+    workbookId?: string;
+  };
+  const learner = workbookLearner(place, child);
+  if (!learner || (!date && !workbookId)) return null;
+  return (
+    <WorkbookPathsContext.Provider value={childWorkbookPaths(place.family)}>
+      {workbookId ? (
+        <WorkbookResultsSheet learner={learner} workbookId={workbookId} />
+      ) : isDate(date!) ? (
+        <WorkbookDaySheet learner={learner} date={date!} />
+      ) : null}
+    </WorkbookPathsContext.Provider>
+  );
+}
+
+/** A child's reports, each a PDF to download: their progress report, their
+ * report card for the current term (a child of the family's own class),
+ * and the family's grades to decide. */
+function ChildReports({
+  place,
+  child,
+  progress,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+  progress: boolean;
+}) {
+  const { own, session } = place;
+  const person = own
+    ? child.classes.find((entry) => entry.id === own.id)?.personId
+    : undefined;
+  const graded = !!own && !!person && child.capabilities.readGrades;
+  const term = useQuery({
+    ...gradebookOptions(
+      session,
+      { org: own?.org ?? "", class: own?.id ?? "" },
+      undefined,
+    ),
+    enabled: graded,
+  }).data?.term?.id;
+  const card = graded && !!term;
+  const grades = !!own && child.capabilities.editGrades;
+  if (!progress && !card && !grades) return null;
+  const file = child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return (
+    <section
+      aria-labelledby="child-reports"
+      className={styles.section}
+      data-child-reports=""
+    >
+      <h2 id="child-reports">Reports</h2>
+      <div className={styles.reportActions}>
+        {progress && (
+          <PrintButton
+            variant="secondary"
+            label={`Download ${child.name}’s progress report, PDF`}
+            download={() =>
+              downloadPdf({
+                path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+                token: session.token,
+                name: `amp-progress-report-${file}.pdf`,
+              })
+            }
+          >
+            Download progress report
+          </PrintButton>
+        )}
+        {card && (
+          <PrintButton
+            variant="secondary"
+            label={`Download ${child.name}’s report card, PDF`}
+            download={() =>
+              downloadPdf({
+                path: `/school/classes/${encodeURIComponent(own!.id)}/report-cards.pdf?${new URLSearchParams(
+                  { term: term!, student: person!, format: paperFormat() },
+                )}`,
+                token: session.token,
+                name: `amp-report-card-${file}.pdf`,
+              })
+            }
+          >
+            Download report card
+          </PrintButton>
+        )}
+        {grades && (
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(place.family, "reports/grades") }}
+            className={buttonClass("secondary")}
+          >
+            Grades
+          </Link>
+        )}
+      </div>
+    </section>
+  );
+}
+
+const ok = z.unknown();
+
+/** Whether a reader may change or read anything of this child's settings:
+ * a row shows only where the server allows it; a second parent reads the
+ * year. */
+function hasSettings(place: FamilyPlace, child: FamilyChild) {
+  const caps = child.capabilities;
+  return [
+    caps.rename,
+    caps.changeBirthYear || !!child.birthYear,
+    caps.changePracticeSettings,
+    caps.manageDevices && !!place.own,
+    caps.manageConsent,
+    caps.delete,
+  ].some(Boolean);
+}
+
+/** What the parent who manages this child can change, on their page, folded
+ * under one Settings: the same rows as the child's settings sheet over
+ * family Settings. Deleting their data leaves for the family's Today. */
+export function ChildSettings({
+  place,
+  child,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+}) {
+  const navigate = useNavigate();
+  if (!hasSettings(place, child)) return null;
+  return (
+    <section aria-label={`${child.name}’s settings`} className={styles.section}>
+      {/* One folded section: nothing of the settings shows on the page
+          until it is opened. */}
+      <Disclosure summary="Settings" className={styles.childSettings}>
+        <ChildSettingsRows
+          place={place}
+          child={child}
+          onDeleted={() =>
+            navigate({
+              to: "/$",
+              params: { _splat: familyHref(place.family) },
+              replace: true,
+            })
+          }
+        />
+      </Disclosure>
+    </section>
+  );
+}
+
+/**
+ * One child's settings over family Settings (the IA v2 spec, §3.1; sheet
+ * state `child:<learner>`): the same rows as their page's Settings, and a
+ * link to their page.
+ */
+export function ChildSettingsSheet({
+  place,
+  child,
+  open,
+  onOpenChange,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  return (
+    <Sheet
+      open={open}
+      onOpenChange={onOpenChange}
+      title={child.name}
+      description={
+        child.capabilities.readProgress ? (
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(place.family, `kids/${child.id}`) }}
+            data-child-progress={child.id}
+          >
+            Progress
+          </Link>
+        ) : undefined
+      }
+      tall
+    >
+      <div data-child-settings-sheet={child.id}>
+        <ChildSettingsRows
+          place={place}
+          child={child}
+          onDeleted={() => onOpenChange(false)}
+        />
+      </div>
+    </Sheet>
+  );
+}
+
+/** The rows of a child's settings: their name, birth year, practice
+ * settings, sign-in pictures, then learning permission and deleting their
+ * learning data, each a disclosure in place (never a sheet over a sheet).
+ * `onDeleted` leaves whatever is about this child once their data is gone. */
+function ChildSettingsRows({
+  place,
+  child,
+  onDeleted,
+}: {
+  place: FamilyPlace;
+  child: FamilyChild;
+  onDeleted: () => Promise<unknown> | void;
 }) {
   const { session } = place;
   const caps = child.capabilities;
@@ -321,7 +581,7 @@ function ChildSettings({
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
-  const say = (failure: unknown, fallback: string) => {
+  const reportFailure = (failure: unknown, fallback: string) => {
     console.error(fallback, failure);
     setError(
       failure instanceof AppError && failure.message
@@ -344,7 +604,7 @@ function ChildSettings({
       setNaming(false);
       setNotice("Name saved.");
     } catch (failure) {
-      say(failure, "The name didn’t save. Try again.");
+      reportFailure(failure, "The name didn’t save. Try again.");
     } finally {
       setBusy(false);
     }
@@ -361,7 +621,10 @@ function ChildSettings({
       await invalidateAccount(session.accountId);
       setNotice(`${child.name}’s birth year is ${year}.`);
     } catch (failure) {
-      say(failure, "That year didn’t save. Choose it again from the list.");
+      reportFailure(
+        failure,
+        "That year didn’t save. Choose it again from the list.",
+      );
     } finally {
       setBusy(false);
     }
@@ -375,19 +638,9 @@ function ChildSettings({
     : null;
   const practice =
     caps.changePracticeSettings && !!summary && (age === null || age >= 13);
-  const rows = [
-    caps.changePracticeSettings,
-    practice,
-    caps.rename || caps.changeBirthYear || !!child.birthYear,
-    caps.manageConsent,
-    caps.manageDevices && !!place.own,
-    caps.delete,
-  ];
-  if (!rows.some(Boolean)) return null;
   return (
-    <section aria-labelledby="child-settings" className={styles.section}>
-      <h2 id="child-settings">{child.name}’s settings</h2>
-      <dl className={styles.settings}>
+    <>
+      <dl className={styles.settings} data-child-settings="">
         {(caps.rename || naming) && (
           <div className={styles.setting}>
             {naming ? (
@@ -489,57 +742,22 @@ function ChildSettings({
           </div>
         )}
         <SignInPictures key={child.id} place={place} child={child} />
-        {caps.manageDevices && place.own && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Their own devices</dt>
-              <dd>A code, a QR code or a printed card</dd>
-            </div>
-            <div className={styles.settingAction}>
-              <Button variant="secondary" onClick={onDevices}>
-                Open
-              </Button>
-            </div>
-          </div>
-        )}
-        {caps.manageConsent && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Consent</dt>
-            </div>
-            <div className={styles.settingAction}>
-              <Link
-                to="/$"
-                params={{ _splat: "account/privacy/consent" }}
-                className={buttonClass("secondary")}
-              >
-                Open
-              </Link>
-            </div>
-          </div>
-        )}
-        {caps.delete && (
-          <div className={styles.setting}>
-            <div className={styles.settingText}>
-              <dt>Delete learning data</dt>
-              <dd>{child.name}’s answers and levels, for good</dd>
-            </div>
-            <div className={styles.settingAction}>
-              <Link
-                to="/$"
-                params={{ _splat: "account/privacy/delete" }}
-                className={buttonClass("secondary")}
-              >
-                Open
-              </Link>
-            </div>
-          </div>
-        )}
       </dl>
-      <Toast
-        message={notice || error}
-        onDismiss={() => (setNotice(""), setError(""))}
-      />
-    </section>
+      {caps.manageConsent && (
+        <Disclosure summary="Learning permission">
+          <ChildConsentPanel />
+        </Disclosure>
+      )}
+      {caps.delete && (
+        <Disclosure summary="Delete learning data">
+          <ChildDeletePanel
+            child={{ id: child.id, name: child.name }}
+            onDone={onDeleted}
+          />
+        </Disclosure>
+      )}
+      <Toast message={error} onDismiss={() => setError("")} />
+      <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
+    </>
   );
 }

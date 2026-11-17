@@ -1,9 +1,5 @@
 import { EntityLink } from "../../../nav/links";
-import {
-  gradeName,
-  levelRange as likelyRange,
-  measured,
-} from "../../../../learning/level-check";
+import { measured } from "../../../../learning/level-check";
 import type { Entity } from "../../../nav/entities";
 import type {
   ProgressRecord,
@@ -13,6 +9,7 @@ import type {
 import {
   byArea,
   fitScale,
+  foundLevel,
   LevelRows,
   WHOLE_SCALE,
   type RowLink,
@@ -51,7 +48,6 @@ export function RecordLevels({
   empty,
   openAreas = false,
   holdFirst = false,
-  found,
   crossCutting = false,
   plain = false,
 }: {
@@ -70,13 +66,10 @@ export function RecordLevels({
    * place, and the line under it says what was found. The whole record
    * shows on the next visit. */
   holdFirst?: boolean;
-  /** What was found, as the line under the held bar says it. */
-  found?: (best: string, from: string, to: string) => string;
 }) {
   const { level, reference } = record;
   const isMeasured = !!level && measured(level.overall);
   if (!isMeasured || holdFirst) {
-    const range = isMeasured ? likelyRange(level!.overall) : null;
     return (
       <div className={styles.levelsNotYet} data-levels-not-yet>
         <LevelRows
@@ -94,13 +87,9 @@ export function RecordLevels({
           >
             {empty}
           </p>
-          {isMeasured && range && (
+          {isMeasured && (
             <p className={styles.quietLine} data-levels-found>
-              {(found ?? foundLine)(
-                gradeName(level!.overall.level),
-                gradeName(range[0]),
-                gradeName(range[1]),
-              )}
+              {foundLevel(level!.overall)}
             </p>
           )}
         </div>
@@ -131,12 +120,6 @@ export function RecordLevels({
     />
   );
 }
-
-/** The held bar's line once the level is found. */
-const foundLine = (best: string, from: string, to: string) =>
-  from === to
-    ? `Best guess ${best}.`
-    : `Best guess ${best}, likely ${from} to ${to}.`;
 
 /** Active minutes for each of the last 12 weeks. */
 export function RecordWeeks({ record }: { record: ProgressRecord }) {

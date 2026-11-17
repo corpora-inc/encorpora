@@ -1,9 +1,9 @@
+import { childAddress, practiceParams } from "../spaces/identity";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
-import type { AuthSession } from "../../auth";
 import { useLearningView } from "../../lib/learning-view";
+import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
-import { childAddress } from "../spaces/identity";
 import { familyOptions } from "../family/api";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import type { PracticeFilter } from "./curriculum-filter";
@@ -22,15 +22,8 @@ export function CurriculumPractice({ filter }: { filter: PracticeFilter }) {
   const location = useLocation();
   const child = childAddress(location.pathname);
   const view = useLearningView({ records: false });
-  if (child && view.session.data) {
-    return (
-      <FamilyPractice
-        child={child}
-        session={view.session.data}
-        filter={filter}
-      />
-    );
-  }
+  if (child && view.session.data)
+    return <FamilyPractice child={child} filter={filter} />;
   // A class record is not permission to answer as one of its students.
   if (
     child ||
@@ -39,11 +32,12 @@ export function CurriculumPractice({ filter }: { filter: PracticeFilter }) {
     view.viewOnly
   )
     return null;
+  // Practice held to this area, skill or type, at its own address.
+  if (!view.learner) return null;
   return (
     <Link
       to="/$"
-      params={{ _splat: "practice" }}
-      search={filter}
+      params={practiceParams(view.learner.id, filter)}
       className={buttonClass("primary")}
       data-curriculum-practice
     >
@@ -54,13 +48,12 @@ export function CurriculumPractice({ filter }: { filter: PracticeFilter }) {
 
 function FamilyPractice({
   child,
-  session,
   filter,
 }: {
   child: NonNullable<ReturnType<typeof childAddress>>;
-  session: AuthSession;
   filter: PracticeFilter;
 }) {
+  const session = useSession();
   const location = useLocation();
   const family = useQuery(familyOptions(session, child.family));
   const { handOver, starting, error } = useHandOver(session);

@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 320px;
-  height: var(--field-height);
+  /* A product-wide search sets these: its own width and phone-safe text. */
+  max-width: var(--search-field-max, 320px);
+  height: var(--search-field-height, var(--field-height));
   border: 1px solid var(--field-border);
   border-radius: var(--field-radius);
   background: var(--field-surface);
@@ -34,7 +35,7 @@
   border-radius: 0;
   background: transparent;
   color: inherit;
-  font-size: var(--text-dense);
+  font-size: var(--search-field-text, var(--text-dense));
   outline: none;
 }
 .field input.input:focus-visible {
@@ -43,7 +44,7 @@
 .input::placeholder {
   color: var(--color-subtle-text);
 }
-button.clear {
+.field button.clear {
   display: grid;
   flex: none;
   place-items: center;
@@ -57,12 +58,16 @@ button.clear {
   color: var(--color-muted-text);
   cursor: pointer;
 }
-button.clear:hover:not(:disabled) {
+/* Nothing to clear: the button keeps its place, unseen. */
+.field button.clear[data-empty] {
+  visibility: hidden;
+}
+.field button.clear:hover:not(:disabled) {
   filter: none;
   background: var(--color-surface-hover);
   color: var(--color-on-surface);
 }
-button.clear:focus-visible {
+.field button.clear:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }

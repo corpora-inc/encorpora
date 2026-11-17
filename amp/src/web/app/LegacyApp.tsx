@@ -1,5 +1,5 @@
 import {
-  curriculumFilter,
+  focusFilter,
   type PracticeFilter,
 } from "../features/practice/curriculum-filter";
 import { requestFetch } from "../lib/request-transport";
@@ -12,25 +12,24 @@ import {
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
+import { forSession, useSessionOrNull } from "../lib/session";
 import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
+import { withMoneyArt } from "../scene/money-art";
 import type { ProblemHint } from "../../math/contracts";
-import {
-  refreshMe,
-  sessionOptions,
-  queryClient,
-  meOptions,
-  meKey,
-} from "../lib/query";
+import { refreshMe, queryClient, meOptions, meKey } from "../lib/query";
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import { secondParentChild } from "../features/second-parent/api";
+import { practiceFocus, practicePath } from "../features/spaces/identity";
+import { useLearnerChoice } from "../features/spaces/learner-choice";
+import { ListboxDisclosure } from "../ui/Listbox";
 import { ChildOverview } from "../features/second-parent/ChildOverview";
 import {
   useFamilyCache,
   setNativeFamilySnapshot,
   familyRevision,
-  clearFamilyAccount,
+  familySnapshot,
 } from "../lib/family-cache";
 import {
   claimInitialConsentChallenge,
@@ -46,18 +45,18 @@ import { loadFrontier } from "../lib/frontier-load";
 import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
 import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
-import { Navigate, useRouter } from "@tanstack/react-router";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
+import { buttonClass } from "../ui/Button";
 import { closeTo } from "../lib/return-to";
 import { ROOT } from "../nav/root";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
-import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
 import { ReferenceLesson } from "../../content/ReferenceLesson";
 import { nativeRuntime } from "../native-runtime";
 import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
-import { learningRequest, learningCatalog } from "../learning-transport";
+import { learningRequest, learningCatalogOptions } from "../learning-transport";
 import {
   batchWithCapabilityFallback,
   clientResponseCapabilities,
@@ -66,18 +65,16 @@ import {
 import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
-import { AnnualPurchase } from "../AnnualPurchase";
-import { FundingPurchaseCenter } from "../FundingPurchaseCenter";
 import {
-  capturePurchaseReturn,
+  progressKey,
+  progressPath,
+  shownProgress,
+  useProgressView,
+} from "./progress-view";
+import {
   clearPurchaseReturn,
   clearOwnedPurchaseReturn,
-  readOwnedPurchaseReturn,
-  rememberOwnedPurchaseReturn,
-  parsePurchaseReturn,
-  type PurchaseReturn,
 } from "../purchase-return";
-import { FamilyCenter } from "../FamilyCenter";
 import type { FamilySummary } from "../../family/contracts";
 import { preferredBookForProblem } from "../../books/selection";
 import { BookReader } from "../BookReader";
@@ -112,7 +109,6 @@ import "../theme.css";
 import "../premium-controls.css";
 import "../app-shell.css";
 import { BirthYearPrompt } from "../BirthYearPrompt";
-import { ChooseHowToPay } from "../ChooseHowToPay";
 
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
@@ -120,17 +116,19 @@ import { Loading } from "../ui/Loading";
 import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
 import { track, trackOnce } from "../lib/analytics";
-import { useLearnerStore } from "../learner-store";
-import { useAddressedIdentity } from "../features/spaces/useAddressed";
+import {
+  currentLearner,
+  selectLearner,
+  useCurrentLearner,
+} from "../learner-store";
+import {
+  addressedIdentityNow,
+  useAddressedIdentity,
+} from "../features/spaces/useAddressed";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
 import type { GradeBand } from "../../curriculum/types";
-import { LessonIndex } from "../LessonIndex";
-import {
-  LessonLibraryPlaceholder,
-  LessonsUnavailable,
-  loadGlossary,
-} from "../LessonLibrary";
+import { LessonsUnavailable } from "../LessonsUnavailable";
 import { Home, type FrontierMap } from "../Home";
 import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
@@ -213,36 +211,79 @@ addEventListener(
   },
   true,
 );
-let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) clearInitialConsentChallenge();
 // Leaving Family lands on "/", which mounts this screen anew: the focus owed
 // to the menu button outlives the screen that asked for it.
 const nativeFamilyReturn = { current: false };
-const progressReturn = { current: { identity: "", href: "/progress" } };
 // A failed catalog, as the toast names it outside Lessons (which says so in
 // place, beside Try again).
 const catalogUnavailable =
   "Lesson and skill details didn’t load. Check your connection, then reload the page.";
-export function LegacyApp() {
-  const session = useQuery(sessionOptions);
-  if (session.isPending) return <LoadingScreen />;
-  if (session.error)
-    return (
-      <LoadingScreen
-        error="Sign-in could not be checked. Try again."
-        retry={() => void session.refetch()}
-      />
-    );
-  // Account changes reset all private screen state together. A resolved session
-  // is an input to the screen, not a second state machine that catches up later.
+/** Where each learner left each book, for this page's life: leaving a book
+ * goes to Pathways, which unmounts this screen, and a later visit (Back,
+ * Forward, a link) reopens the book at the same frame. */
+const readerPositions: Record<string, number> = {};
+
+/**
+ * Whose practice LegacyApp's screens are, derived (never chosen here): the
+ * learner the address names (features/spaces/identity.ts), else the
+ * account's current learner (learner-store.ts) while it is live and may
+ * learn, else the family's first child that may, its first child, then the
+ * adult's own (an adult on their own, with no choice yet, learns as
+ * themselves and never meets family setup). Pure: render and work that
+ * finishes later read the same answer from the same sources.
+ */
+function practiceLearner(
+  summary: FamilySummary | null,
+  named: string | null | undefined,
+  chosen: string | null,
+) {
+  const learners = summary?.learners.filter((entry) => !entry.deletedAt) ?? [];
+  const allowed =
+    summary?.consent.status === "active" ||
+    summary?.consent.status === "development";
+  // Each learner says whether it may learn: an unnamed child and an adult's
+  // own learner may before any family consent.
+  const may = (entry: (typeof learners)[number]) =>
+    entry.learningAllowed ?? allowed;
+  const children = learners.filter((entry) => !entry.adult);
+  const choice = learners.find((entry) => entry.id === chosen);
   return (
-    <LegacyScreen
-      key={session.data?.accountId ?? "guest"}
-      session={session.data ?? null}
-    />
+    (named
+      ? learners.find((entry) => entry.id === named)
+      : choice && may(choice)
+        ? choice
+        : children.find(may)) ??
+    children[0] ??
+    learners.find((entry) => entry.adult && !entry.simulation) ??
+    null
   );
 }
-function LegacyScreen({ session }: { session: AuthSession | null }) {
+export function LegacyApp() {
+  // Its route made sure of the session first (app/router.tsx appScreen); a
+  // failed read is that route's error screen.
+  const session = useSessionOrNull();
+  const idle = useRouterState({ select: (state) => state.status === "idle" });
+  const shownAccount = useRef<string | null>(null);
+  // Account changes reset all private screen state together. A resolved session
+  // is an input to the screen, not a second state machine that catches up later.
+  // While another screen loads (Back from a child's practice ends their
+  // session on the way), the screen on view keeps its account: it is leaving,
+  // so it never starts again, blank, for the next one (as useAppRoute keeps
+  // its address).
+  const account = session?.accountId ?? "guest";
+  if (idle) shownAccount.current = account;
+  const shown = shownAccount.current ?? account;
+  return <LegacyScreen key={shown} owner={shown === "guest" ? null : shown} />;
+}
+function LegacyScreen({ owner }: { owner: string | null }) {
+  // One account's screen (keyed by it above). While it leaves (another
+  // account's session arrived with the screen that replaces it), it stays
+  // that account's: nothing on it redraws for the next one.
+  const live = useSessionOrNull();
+  const own = useRef(live);
+  if ((live?.accountId ?? null) === owner) own.current = live;
+  const session = own.current;
   const route = useAppRoute();
   const router = useRouter();
   const { navigate } = route;
@@ -276,14 +317,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const tab = route.tab;
   const setTab = (tab: "practice" | "library" | "progress") =>
     navigate(
-      tab === "library"
-        ? "/lessons"
-        : tab === "progress"
-          ? progressReturn.current.href
-          : "/",
+      tab === "library" ? "/lessons" : tab === "progress" ? "/progress" : "/",
     );
   const exploring = route.exploring;
-  const setExploring = (value: boolean) => navigate(value ? "/" : "/practice");
+  const setExploring = (value: boolean) =>
+    navigate(value ? "/" : practiceHref());
   const token = session?.token ?? null;
   const accountId = session?.accountId ?? null;
   const [catalog, setCatalog] = useState<Catalog | null>(null);
@@ -298,19 +336,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setNativeFamilySnapshot(accountRef.current, summary);
   const learners =
     familySummary?.learners.filter((entry) => !entry.deletedAt) ?? [];
-  // The family's learners. The adult's own learner practices here too, but it
-  // is its own place: chosen through the place switcher, never listed here.
-  const childLearners = learners.filter((entry) => !entry.adult);
   const readingLesson =
     route.parts[0] === "lessons" && route.parts[1]
       ? (catalog?.lessons.find((entry) => entry.id === route.parts[1]) ?? null)
       : null;
-  // A problem type's short lesson (`/lessons?topic=`) reads from the API,
-  // not the catalog, so it opens without waiting for it.
-  const topicOpen =
-    route.parts[0] === "lessons" &&
-    !route.parts[1] &&
-    new URLSearchParams(route.location.search).has("topic");
   const setReadingLesson = (lesson: Lesson | null) => {
     if (lesson) navigate(`/lessons/${encodeURIComponent(lesson.id)}`);
   };
@@ -319,11 +348,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // The displayed screen's address names whose practice it is
   // (features/spaces/identity.ts); otherwise this device's choice.
   const addressed = useAddressedIdentity();
-  const addressedRef = useRef(addressed);
-  addressedRef.current = addressed;
-  const chosenId = useLearnerStore((state) => state.learnerId);
+  const chosenId = useCurrentLearner();
   const learnerId = addressed?.id ?? chosenId;
-  const selectLearner = useLearnerStore((state) => state.select);
   // A child of a family this account is the second parent of, chosen to read
   // their progress: their Overview is read-only (docs/families.md).
   const account = useQuery({
@@ -334,16 +360,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !nativeRuntime && account?.signedIn
       ? secondParentChild(account, learnerId)
       : null;
-  // The account snapshot can arrive before this device has a saved selection.
-  // Resolve a learner from that snapshot immediately: redirecting to setup
-  // while loadFamily is selecting one can continually restart navigation.
-  // An adult on their own, on a device with no selection yet (a shared link
-  // to a lesson), learns as their own learner, never meets family setup.
-  const learner =
-    learners.find((entry) => entry.id === learnerId) ??
-    childLearners[0] ??
-    learners.find((entry) => entry.adult && !entry.simulation) ??
-    null;
+  const learner = practiceLearner(familySummary, addressed?.id, chosenId);
+  // A learner chooser only where there is a real choice (learner-choice.ts).
+  const choice = useLearnerChoice();
+  // Practice is the chosen learner's own address: one navigation there;
+  // elsewhere the choice is the account's current learner.
+  const chooseLearner = (id: string) => {
+    if (route.parts[0] === "practice") return navigate(practicePath(id));
+    selectLearner(id);
+  };
+  // Practice's own address names its learner (identity.ts `practicePath`).
+  const practiceHref = () => (learner ? practicePath(learner.id) : "/practice");
   // The adult's own learner, or one of their practice profiles: both learn
   // on the account's own terms, with no birth year.
   const ownLearner = learner?.adult === true;
@@ -352,28 +379,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
   });
-  // Remember a tab's return URL, not a second copy of its screen/filter state.
-  // It lives outside the component: "/" and the other app routes mount this
-  // screen separately, so going home must not forget where Progress was.
-  useLayoutEffect(() => {
-    if (!accountId) {
-      progressReturn.current = { identity: "", href: "/progress" };
-      return;
-    }
-    if (!learner) return;
-    const identity = `${accountId}:${learner.id}`;
-    const changed =
-      progressReturn.current.identity !== "" &&
-      progressReturn.current.identity !== identity;
-    if (progressReturn.current.identity !== identity)
-      progressReturn.current = { identity, href: "/progress" };
-    if (route.location.pathname === "/progress") {
-      if (changed) navigate("/progress", { replace: true });
-      else
-        progressReturn.current.href =
-          route.location.pathname + route.location.search;
-    }
-  }, [accountId, learner?.id, route.location.pathname, route.location.search]);
 
   // A school student's level starts from their grade, and an adult's from
   // where they chose to begin, so neither has a prompt.
@@ -412,16 +417,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   );
   const consentEpoch = useRef(0);
   const renderedConsentEpoch = consentEpoch.current;
-  const [familyLearnerId, setFamilyLearnerId] = useState("");
   const [consentReturn, setConsentReturn] = useState(false);
   const [purchaseFocus, setPurchaseFocus] = useState<
     "annual" | "funded" | undefined
   >();
-  const [purchaseReturn, setPurchaseReturn] = useState<PurchaseReturn | null>(
-    () => readOwnedPurchaseReturn(accountId ?? ""),
-  );
-  const pendingPurchaseReturn = useRef(initialPurchaseReturn);
-  const returnIdentity = useRef<string | null>(null);
   // An adult's own learner learns on the account's own terms; the family's
   // learners need its consent.
   const learningAllowed =
@@ -472,16 +471,38 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // Keep the selected curriculum scope in the address for the whole series.
   const practiceFilter = useRef<PracticeFilter>({});
   const changingFilter = useRef(false);
+  // Null away from practice: Progress or a lesson opened from a problem
+  // leaves its focus as it was (see the layout effect below).
   const filterKey =
     route.parts[0] === "practice" && catalog
-      ? JSON.stringify(curriculumFilter(route.location.search, catalog))
-      : "{}";
+      ? JSON.stringify(
+          focusFilter(practiceFocus(route.location.pathname), catalog),
+        )
+      : null;
+  // The drawer's practice facts (PracticeControls): the area or skill the
+  // address holds practice to, and the level the answers so far measure.
+  const shownFilter = JSON.parse(filterKey ?? "{}") as PracticeFilter;
+  const filterName = shownFilter.skill
+    ? (catalog?.skills.find((skill) => skill.id === shownFilter.skill)?.title ??
+      null)
+    : shownFilter.strand
+      ? (strandNames[shownFilter.strand] ?? null)
+      : null;
+  const practiceLevel = useQuery({
+    ...forSession(session, (signedIn) =>
+      learnerFrontierOptions(signedIn, learner?.id ?? ""),
+    ),
+    enabled: !!learner && !nativeRuntime && route.parts[0] === "practice",
+  }).data?.overall;
   useLayoutEffect(() => {
+    // Away from practice its focus stays as it was, so coming back (Back
+    // from Progress) resumes the same problem with its answer as left.
+    if (filterKey === null) return;
+    const changing = changingFilter.current;
+    changingFilter.current = false;
+    if (filterKey === JSON.stringify(practiceFilter.current)) return;
     practiceFilter.current = JSON.parse(filterKey) as PracticeFilter;
-    if (changingFilter.current) {
-      changingFilter.current = false;
-      return;
-    }
+    if (changing) return;
     setProblem(null);
     setQueue([]);
     upcoming.current = null;
@@ -514,25 +535,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     [router],
   );
   const progressRevision = useRef(0);
-  const progressParams = new URLSearchParams(route.location.search);
-  const progressView: ProgressView = {
-    filter: ["review", "explore"].includes(progressParams.get("filter") ?? "")
-      ? (progressParams.get("filter") as "review" | "explore")
-      : "practiced",
-    strand: progressParams.get("strand") ?? "",
-    page: Math.max(0, Number(progressParams.get("page")) || 0),
-    skillId: progressParams.get("skill"),
-  };
-  const setProgressView: React.Dispatch<React.SetStateAction<ProgressView>> = (
-    update,
+  // How Progress was left, per account's learner (app/progress-view.ts):
+  // never the address, so `/progress` is one screen and Back is a screen.
+  const [storedProgress, storeProgress] = useProgressView(
+    accountId && learner ? progressKey(accountId, learner.id) : null,
+  );
+  const progressView = shownProgress(route.location.pathname, storedProgress);
+  // A new area or skill is a new address (one entry: Back returns to the
+  // last); which skills and the page are kept in the store.
+  const setProgressView = (
+    update: ProgressView | ((view: ProgressView) => ProgressView),
   ) => {
     const next = typeof update === "function" ? update(progressView) : update;
-    const query = new URLSearchParams();
-    if (next.filter !== "practiced") query.set("filter", next.filter);
-    if (next.strand) query.set("strand", next.strand);
-    if (next.page) query.set("page", String(next.page));
-    if (next.skillId) query.set("skill", next.skillId);
-    navigate(`/progress${query.size ? `?${query}` : ""}`);
+    storeProgress(next);
+    const path = progressPath(next);
+    if (path !== route.location.pathname) navigate(path);
   };
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressError, setProgressError] = useState("");
@@ -544,10 +561,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       scroll: 0,
     },
   );
-  const bookPositions = useRef<Record<string, number>>({});
+  const bookPositions = useRef(readerPositions);
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
-  const libraryReturn = useRef({ search: "", scroll: 0 });
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
@@ -556,8 +572,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const authEpoch = useRef(0),
     tokenRef = useRef<string | null>(null),
     accountRef = useRef<string | null>(null);
-  const learnerRef = useRef<string | undefined>(undefined);
-  learnerRef.current = learner?.id;
+  // Whose practice is on view now, for work that finishes later: derived
+  // from the same canonical sources as `learner` (the address, the store and
+  // the account), never a copy; nobody once this screen's account is gone.
+  const learnerNow = () =>
+    accountRef.current === accountId
+      ? practiceLearner(
+          familySnapshot(accountId),
+          addressedIdentityNow(router.state)?.id,
+          currentLearner(accountId),
+        )?.id
+      : undefined;
   // Printing a lesson hands over its typeset PDF, never a browser print of
   // the page. A lesson without PDFs on this server offers no print at all.
   const lessonPrintState = useLessonPrint({
@@ -595,7 +620,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       consentEpoch.current++;
       accountRef.current = null;
       tokenRef.current = null;
-      learnerRef.current = undefined;
     },
     [],
   );
@@ -622,7 +646,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   function updateAuth(session: AuthSession | null) {
     const next = session?.token ?? null,
       identity = session?.accountId ?? null;
-    const previousIdentity = accountRef.current;
+    // This screen is one account's (LegacyApp keys it by account). A session
+    // for another account means it is being replaced: the outgoing screen
+    // (still shown while Back loads, a family handoff) sends nobody
+    // anywhere and clears nothing. Providers starts again for a real account
+    // change; a handoff keeps both accounts' data.
+    if (accountRef.current !== null && accountRef.current !== identity) return;
     if (tokenRef.current === next && accountRef.current === identity) return;
     tokenRef.current = next;
     if (accountRef.current === identity) return;
@@ -631,12 +660,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setConsentChallenge(null);
 
     setConsentReturn(false);
-    if (accountRef.current !== null) {
-      clearPurchaseReturn();
-      pendingPurchaseReturn.current = null;
-    }
 
-    setPurchaseReturn(readOwnedPurchaseReturn(identity ?? ""));
     const openingSecurity =
       !nativeRuntime &&
       accountRef.current === null &&
@@ -644,16 +668,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       new URLSearchParams(location.search).has("security");
     if (openingSecurity) navigate("/account/security", { replace: true });
 
-    setFamilyLearnerId("");
     setPurchaseFocus(undefined);
     accountRef.current = identity;
     authEpoch.current++;
     familyRequest.current++;
     navigationEpoch.current++;
-    learnerRef.current = undefined;
-    if (previousIdentity && previousIdentity !== identity)
-      navigate("/", { replace: true });
-    if (previousIdentity !== identity) clearFamilyAccount(previousIdentity);
     setFamilySummary(null);
     setBusy(false);
     setName("");
@@ -697,8 +716,23 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
 
     setConsentChallenge(null);
     // Back to where consent was opened (Privacy, or a funded purchase's
-    // step), else Privacy's consent section.
-    closeTo(router, "/account/privacy/consent");
+    // step), else the Privacy overlay over the account's settings hub with
+    // its consent panel open: straight there, never through an old address.
+    const current = session;
+    if (current)
+      void Promise.all([
+        import("../features/account/panels"),
+        import("../features/spaces/settings-hub"),
+      ])
+        .then(async ([{ setPanel }, { loadSettingsHub }]) => {
+          setPanel(current.accountId, "privacy", "consent");
+          closeTo(router, await loadSettingsHub(current, "privacy"));
+        })
+        .catch((error: unknown) => {
+          console.error("Privacy’s address didn’t load", error);
+          closeTo(router, ROOT);
+        });
+    else closeTo(router, ROOT);
     setConsentReturn(true);
   }
   useEffect(() => {
@@ -737,6 +771,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     try {
       await run();
     } catch (e) {
+      console.error("A family action failed", e);
       if (epoch === authEpoch.current)
         setError(
           e instanceof HttpError
@@ -751,25 +786,26 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   useLayoutEffect(() => updateAuth(session), [session]);
   useLayoutEffect(() => {
-    if (nativeRuntime || !accountId || !claimInitialConsentChallenge(accountId))
+    // A consent email's link reaches /consent by its route (the alias in
+    // app/legacy-aliases.ts); here, it is taken.
+    if (
+      nativeRuntime ||
+      !accountId ||
+      route.location.pathname !== "/consent" ||
+      !claimInitialConsentChallenge(accountId)
+    )
       return;
-    if (route.location.pathname !== "/consent") {
-      navigate("/consent", { replace: true });
-      return;
-    }
     consentEpoch.current++;
     setConsentChallenge(consumeInitialConsentChallenge(accountId));
     setHasPendingConsent(false);
   }, [accountId, route.location.pathname]);
   const catalogRequest = useRef<Promise<void> | null>(null);
   function loadCatalog() {
-    catalogRequest.current ??= learningCatalog()
+    catalogRequest.current ??= queryClient
+      .ensureQueryData(learningCatalogOptions)
       .then((loaded: Catalog) => {
         setCatalog(loaded);
         setCatalogFailed(false);
-        // Lessons' search index is the catalog and the glossary: with both
-        // here, Lessons opens at once from any screen.
-        void loadGlossary();
       })
       .catch((failure: unknown) => {
         console.error("The lesson catalog could not be loaded", failure);
@@ -801,54 +837,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       }
     });
   }, [accountId, route.location.pathname]);
-  useEffect(() => {
-    if (!accountId || !token || !pendingPurchaseReturn.current) return;
-    // A return belongs to its first signed-in owner, not every account that
-    // subsequently mounts in this document after a cross-tab session change.
-    initialPurchaseReturn = null;
-    const context = parsePurchaseReturn(pendingPurchaseReturn.current);
-    pendingPurchaseReturn.current = null;
-    if (!context) {
-      clearPurchaseReturn();
-      return;
-    }
-    returnIdentity.current = accountId;
-    const epoch = authEpoch.current;
-    const navigation = navigationEpoch.current;
-    void (async () => {
-      try {
-        if (context.purchaseId)
-          await api<{ learnerId: string }>(
-            `/billing/purchase/${context.purchaseId}`,
-          );
-        if (
-          epoch !== authEpoch.current ||
-          returnIdentity.current !== accountRef.current ||
-          navigation !== navigationEpoch.current ||
-          !parsePurchaseReturn(context)
-        )
-          return;
-        if (!rememberOwnedPurchaseReturn(accountId, context)) return;
-        navigationEpoch.current++;
-        setReadingBook(null);
-        setPurchaseReturn(context);
-        setPurchaseView("annual");
-      } catch {
-        if (
-          epoch === authEpoch.current &&
-          navigation === navigationEpoch.current &&
-          parsePurchaseReturn(context)
-        ) {
-          navigate("/account/billing");
-          setError(
-            "This purchase return could not be matched to your account. Open Annual subscription to check your learner’s access.",
-          );
-        }
-      } finally {
-        clearPurchaseReturn();
-      }
-    })();
-  }, [accountId]);
+  // A checkout's return (Stripe's `?billing=`) is resolved by the router
+  // before any screen (app/third-party-returns.ts), and an unmatched one is
+  // said in Billing; nothing here reads it.
   useEffect(() => {
     setReadingBook(null);
     setBooks([]);
@@ -858,10 +849,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         `/learners/${learner.id}/books?readerCapabilities=${readerCapabilities.join(",")}`,
       )
         .then((data) => {
-          if (learnerRef.current === learner.id) setBooks(data.books);
+          if (learnerNow() === learner.id) setBooks(data.books);
         })
         .catch((e) => {
-          if (learnerRef.current === learner.id && epoch === authEpoch.current)
+          console.error("The books did not load", e);
+          if (learnerNow() === learner.id && epoch === authEpoch.current)
             setError(e instanceof Error ? e.message : "Could not load books");
         });
     setProblem(null);
@@ -881,7 +873,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     authEpoch.current++;
     familyRequest.current++;
     navigationEpoch.current++;
-    learnerRef.current = undefined;
 
     // A successful destructive privacy mutation invalidates the last server
     // snapshot even if its follow-up refresh fails. Reset notifies mounted
@@ -944,70 +935,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     familyRequest.current++;
     setLoadFailed(false);
     setFamilySummary(summary);
-    const allowed =
-      summary.consent.status === "active" ||
-      summary.consent.status === "development";
-    // Each learner says whether it may learn: an unnamed child and an adult's
-    // own learner may before any family consent.
-    const available = summary.learners.filter(
-      (entry) => !entry.deletedAt && (entry.learningAllowed ?? allowed),
-    );
-    // The adult's own learner stays chosen only when it was chosen; a device
-    // with no choice opens on the family's first learner, never the adult's.
-    // A screen whose address names its learner is that learner's: nothing
-    // here chooses another (features/spaces/identity.ts).
-    const named = addressedRef.current?.id ?? null;
-    const selected =
-      available.find(
-        (entry) => entry.id === (named ?? useLearnerStore.getState().learnerId),
-      ) ?? (named ? null : (available.find((entry) => !entry.adult) ?? null));
-    learnerRef.current = selected?.id;
-    // Keep the chosen learner unless it no longer exists or learning is not
-    // allowed; never forget the choice merely because data is reloading.
-    if (selected && !named) selectLearner(selected.id);
   }
-  useEffect(() => {
-    if (
-      token &&
-      route.signingIn &&
-      new URLSearchParams(route.location.search).get("return") !== "security"
-    )
-      navigate("/", { replace: true });
-  }, [token, route.signingIn]);
-  const starting = false;
-  // A parent without a learner continues in the first run (the starter).
-  // Home paints the frame only, never a setup card, while the account loads
-  // and while that redirect happens.
-  const firstRunHome =
-    !nativeRuntime &&
-    !!token &&
-    route.location.pathname === "/" &&
-    (!familySummary
-      ? !error && !loadFailed
-      : !learners.length ||
-        (!learningAllowed && familySummary.consent.status !== "withdrawn"));
-  // Once leaving, this screen stays the skeleton until the destination
-  // mounts: the old route keeps rendering while the next one loads.
-  const leavingHome = useRef(false);
-  if (firstRunHome || route.location.pathname === "/")
-    leavingHome.current = firstRunHome && !!familySummary;
-  useEffect(() => {
-    if (!firstRunHome || !familySummary) return;
-    // Where `/me` says the first run goes: the starter for an account with
-    // no place yet; the first-run guard routes every other case from
-    // /start/name.
-    const me = accountId
-      ? queryClient.getQueryData<Me>(meKey(accountId))
-      : null;
-    navigate(
-      me?.signedIn && me.familyApproval
-        ? `/family/approvals/${me.familyApproval.id}`
-        : me?.signedIn && me.next === "start"
-          ? "/start"
-          : "/start/name",
-      { replace: true },
-    );
-  }, [accountId, familySummary, route.location.pathname]);
+  // Signed in on the web, `/` is the launcher (app/router.tsx AppScreen)
+  // and the auth screens are their own routes: this screen never renders
+  // there, so it sends nobody anywhere from them.
   useEffect(() => {
     if (
       route.parts[0] === "practice" &&
@@ -1023,10 +954,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     )
       void action(() => {
         const filter = practiceFilter.current;
-        const search = new URLSearchParams(route.location.search);
-        const requested = ["skill", "template", "strand"].some((key) =>
-          search.has(key),
-        );
+        // An address held to something the catalog doesn't have recovers
+        // to mixed practice; one with no focus keeps the saved focus.
+        const requested =
+          Object.keys(practiceFocus(route.location.pathname)).length > 0;
         return loadBatch(
           filter.template ?? "",
           filter.strand,
@@ -1047,51 +978,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     // Paid for in place: practice picks up where the pause was.
     paused,
   ]);
-  function closePurchase() {
+  /** Paying is the pay flow's (features/pay): every older entry here
+   * opens it through Billing, which lists each learner's plan. */
+  function openPurchase() {
     navigationEpoch.current++;
-    clearOwnedPurchaseReturn();
-    // Every close is Back to where it was opened (lib/return-to.ts): a
-    // purchase opened from "how to pay" returns there; else, with no
-    // history, to Access or its purchases.
-    if (purchaseView !== "choose" && purchaseFromChoice) {
-      setPurchaseFromChoice(false);
-      setError("");
-      closeTo(router, "/purchase/choose");
-      return;
-    }
-    setPurchaseFocus(
-      purchaseView === "choose" ? undefined : (purchaseView ?? undefined),
-    );
-
-    setPurchaseReturn(null);
-    closeTo(
-      router,
-      purchaseView === "choose"
-        ? "/account/billing"
-        : "/account/billing/purchases",
-    );
-    setError("");
-    void action(loadFamily);
-  }
-  // The education-fund offer chosen on the "how to pay" screen, if any.
-  const [purchaseOffer, setPurchaseOffer] = useState("");
-  const [purchaseInterval, setPurchaseInterval] = useState<"year" | "month">(
-    "year",
-  );
-  const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
-  function openPurchase(view: "choose" | "annual" | "funded") {
-    if (view === "funded" && !nativeRuntime) {
-      navigate("/purchase/funded");
-      return;
-    }
-    clearOwnedPurchaseReturn();
-    setPurchaseInterval("year");
-    setPurchaseFromChoice(false);
-    navigationEpoch.current++;
-    setPurchaseReturn(null);
     setPurchaseFocus(undefined);
-    setPurchaseView(view);
-    setError("");
+    navigate("/account/billing");
   }
   function openFamily() {
     navigationEpoch.current++;
@@ -1108,7 +1000,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const current = () =>
       revision === progressRevision.current &&
       epoch === authEpoch.current &&
-      learnerRef.current === learner.id;
+      learnerNow() === learner.id;
     setProgressLoading(true);
     setProgressError("");
     try {
@@ -1117,6 +1009,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       );
       if (current()) setProgress({ ...data, learnerId: learner.id });
     } catch (error) {
+      console.error("The practice history did not load", error);
       if (current())
         setProgressError(
           error instanceof Error
@@ -1132,10 +1025,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerId: string,
     error: unknown,
   ): null {
-    if (
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learnerId
-    )
+    if (navigation !== navigationEpoch.current || learnerNow() !== learnerId)
       return null;
     throw error;
   }
@@ -1153,10 +1043,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       await api(`/learners/${learner.id}/lesson-support`, {
         problemId: problem.id,
       }).catch((error) => navigationFailure(navigation, learner.id, error));
-    if (
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learner.id
-    )
+    if (navigation !== navigationEpoch.current || learnerNow() !== learner.id)
       return;
     progressLessonReturn.current = skillId;
     noteHelp({
@@ -1197,6 +1084,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       !templateId && !recoveryStrand && !nativeRuntime
         ? openProblem(learnerId)
         : null;
+    // A money problem shows once its coins and bills can paint whole.
     return batchWithCapabilityFallback(
       {
         ...(templateId ? { templateId } : {}),
@@ -1207,8 +1095,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         figureCapabilities: [...figureCapabilities],
       },
       (body) => api<Batch>(`/learners/${learnerId}/batches`, body),
-      () => authEpoch.current === epoch && learnerRef.current === learnerId,
-    ).then(withProblemHints);
+      () => authEpoch.current === epoch && learnerNow() === learnerId,
+    )
+      .then(withProblemHints)
+      .then(withMoneyArt);
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
   // to that answer and is already on hand when the learner continues.
@@ -1222,7 +1112,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     navigationEpoch.current++;
   }, [learner?.id, !!learner?.satMathFocus]);
   function applyBatch(data: Batch) {
-    if (route.location.pathname !== "/practice") navigate("/practice");
+    if (route.parts[0] !== "practice") navigate(practiceHref());
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
@@ -1241,7 +1131,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       // The free problems are used: the pause shows in practice itself.
       if (allowanceSpent) {
         setPausedFor(learner.id);
-        if (route.location.pathname !== "/practice") navigate("/practice");
+        if (route.parts[0] !== "practice") navigate(practiceHref());
       }
       // Otherwise learning is paused for consent; Family says why.
       else if (!student)
@@ -1253,8 +1143,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     upcoming.current = null;
     const navigation = ++navigationEpoch.current;
     const current = () =>
-      navigation === navigationEpoch.current &&
-      learnerRef.current === learner.id;
+      navigation === navigationEpoch.current && learnerNow() === learner.id;
     if ((templateId || focusSkill !== undefined) && !nativeRuntime) {
       const skillId =
         focusSkill !== undefined
@@ -1271,7 +1160,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         // The free problems are used: pause here, in practice.
         if (allowanceEnded(error)) {
           setPausedFor(learner.id);
-          if (route.location.pathname !== "/practice") navigate("/practice");
+          if (route.parts[0] !== "practice") navigate(practiceHref());
           void loadFamily().catch((cause) =>
             console.error("Family refresh after the free problems", cause),
           );
@@ -1299,13 +1188,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setBusy(true);
     try {
       const saved = await adjustments.change(intent);
-      if (!saved || learnerRef.current !== learner.id) return;
+      if (!saved || learnerNow() !== learner.id) return;
       upcoming.current = null;
       setQueue([]);
       if (intent.kind !== "together") {
         practiceFilter.current = {};
-        changingFilter.current = filterKey !== "{}";
-        navigate("/practice", { replace: true });
+        changingFilter.current = (filterKey ?? "{}") !== "{}";
+        navigate(practiceHref(), { replace: true });
         setPending(null);
         const strand =
           intent.kind === "easier"
@@ -1326,11 +1215,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (!learner || !ready || ready.learnerId !== learner.id)
       return loadBatch("");
     const navigation = ++navigationEpoch.current;
-    const data = await ready.batch.catch(() => null);
-    if (
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learner.id
-    )
+    // Asked ahead and failed: ask again now (loadBatch shows a failure).
+    const data = await ready.batch.catch((error: unknown) => {
+      console.warn("The next problems did not arrive ahead", error);
+      return null;
+    });
+    if (navigation !== navigationEpoch.current || learnerNow() !== learner.id)
       return;
     if (data) applyBatch(data);
     else await loadBatch("");
@@ -1352,7 +1242,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         problemId: problem.id,
         ...attempt,
       });
-      if (learnerRef.current !== learner.id) return;
+      if (learnerNow() !== learner.id) return;
       rememberOpenProblem(learner.id, null);
       forgetHelp(problem.id);
       setOutcome(result);
@@ -1360,13 +1250,15 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       track("practice_answer", { index: practiceAnswers.current });
       if (practiceAnswers.current < 100_000) practiceAnswers.current += 1;
       upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
-      upcoming.current.batch.catch(() => undefined);
+      upcoming.current.batch.catch((error: unknown) =>
+        console.warn("The next problems did not load ahead", error),
+      );
       answered(learner.id);
       void refreshProgress().catch((error) =>
         console.error("Progress refresh failed", error),
       );
     } catch (e) {
-      if (learnerRef.current !== learner.id) return;
+      if (learnerNow() !== learner.id) return;
       if (e instanceof HttpError && e.status >= 400 && e.status < 500)
         setPending(null);
       if (allowanceEnded(e)) {
@@ -1388,7 +1280,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         problemId: problem.id,
       });
     } catch (e) {
-      if (learnerRef.current === learner.id && allowanceEnded(e)) {
+      if (learnerNow() === learner.id && allowanceEnded(e)) {
         setPausedFor(learner.id);
         void loadFamily().catch((cause) =>
           console.error("Family refresh after the free problems", cause),
@@ -1397,11 +1289,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       }
       throw e;
     }
-    if (learnerRef.current !== learner.id) return;
+    if (learnerNow() !== learner.id) return;
     rememberOpenProblem(learner.id, null);
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
-    upcoming.current.batch.catch(() => undefined);
+    upcoming.current.batch.catch((error: unknown) =>
+      console.warn("The next problems did not load ahead", error),
+    );
     answered(learner.id);
     void refreshProgress().catch((error) =>
       console.error("Progress refresh failed", error),
@@ -1412,10 +1306,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   function closeReader() {
     const idea = progressLessonReturn.current;
     progressLessonReturn.current = null;
-    closeTo(
-      router,
-      idea ? "/progress" : `/lessons${libraryReturn.current.search}`,
-    );
+    closeTo(router, idea ? "/progress" : "/pathways");
     if (idea)
       requestAnimationFrame(() =>
         document
@@ -1462,7 +1353,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
       !data ||
-      learnerRef.current !== learner.id ||
+      learnerNow() !== learner.id ||
       navigationEpoch.current !== navigation
     )
       return;
@@ -1510,8 +1401,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (!result.ok)
       throw new Error((await result.json()).error ?? "Download unavailable");
     const blob = await result.blob();
-    if (epoch !== authEpoch.current || learnerRef.current !== learner.id)
-      return;
+    if (epoch !== authEpoch.current || learnerNow() !== learner.id) return;
     const url = URL.createObjectURL(blob),
       link = document.createElement("a");
     link.href = url;
@@ -1572,7 +1462,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               ...learnerFrontierOptions(session, id),
               staleTime: 10_000,
             }),
-      () => active && learnerRef.current === id,
+      () => active && learnerNow() === id,
       (map) =>
         setLoadedFrontier({ learnerId: id, birthYear: learner.birthYear, map }),
     );
@@ -1591,10 +1481,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         console.error("Sign-in configuration could not be loaded", failure),
       );
   }, []);
-  const signingIn =
-    route.signingIn &&
-    (!token ||
-      new URLSearchParams(route.location.search).get("return") === "security");
   const immersive =
     !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
   // Home and Lessons are ordinary pages that scroll with the window; practice,
@@ -1634,25 +1520,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (!problem || !learnerEntry?.hasAccess) return;
     trackOnce("paid-practice-first", "paid_practice_first", {});
   }, [problem?.id, learnerEntry?.hasAccess]);
-  // A school student has no family or purchase screens: their practice is
-  // their one place.
-  if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
-    return <Navigate to="/$" params={{ _splat: "practice" }} replace />;
-  // The adult's home is their own record.
+  // A school student has no family or purchase screens: their route sends
+  // them to their practice before this renders (practiceAddress).
   if (
-    ownLearner &&
-    !learner?.simulation &&
-    !nativeRuntime &&
-    route.location.pathname === "/"
-  )
-    return <Navigate to="/me" replace />;
-  if (
-    firstRunHome ||
-    leavingHome.current ||
     fetchingProblem ||
     // The welcome states the configured free allowance: paint it once.
     (!token && !nativeRuntime && !catalog && !error && !catalogFailed) ||
-    (starting && token && !familySummary) ||
     // Signed in, the family loads behind the same first-paint frame: never
     // the signed-out welcome or a placeholder card in between.
     (!!token &&
@@ -1671,7 +1544,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     );
   return (
     <div
-      className={`shell ${starting ? "start-shell" : ""} ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       {/* Signed in on the web, the app frame (app/AppShell.tsx) draws the
           bar, the logo and the drawer; this header is the native app's and
@@ -1699,26 +1572,19 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             <span>MATHEMATICS</span>
           </a>
           <div className="account">
-            {token &&
-              !student &&
-              !familyOpen &&
-              learningAllowed &&
-              !ownLearner &&
-              childLearners.length > 0 && (
-                <Select
-                  aria-label="Learner"
-                  value={learner?.id ?? ""}
-                  disabled={busy}
-                  onValueChange={(e) => selectLearner(e || null)}
-                >
-                  {!learner && <option value="">Select a learner</option>}
-                  {childLearners.map((l) => (
-                    <option key={l.id} value={l.id}>
-                      {l.name}
-                    </option>
-                  ))}
-                </Select>
-              )}
+            {token && !familyOpen && learningAllowed && choice.canChoose && (
+              <ListboxDisclosure
+                label="Learner"
+                placeholder="Choose learner"
+                align="end"
+                options={choice.learners.map((entry) => ({
+                  value: entry.id,
+                  label: entry.name,
+                }))}
+                value={learner?.id ?? null}
+                onChange={chooseLearner}
+              />
+            )}
             {nativeRuntime && token && !familyOpen && (
               <Menu
                 label="Account"
@@ -1759,7 +1625,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   <MenuItem
                     onSelect={() => {
                       clearPurchaseReturn();
-                      pendingPurchaseReturn.current = null;
                       clearInitialConsentChallenge();
                       clearOwnedPurchaseReturn();
                       setHasPendingConsent(false);
@@ -1776,7 +1641,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           </div>
         </header>
       )}
-      {!token && !familyOpen && !nativeRuntime && !signingIn && (
+      {!token && !familyOpen && !nativeRuntime && (
         <div className="intro">
           <div>
             <p>
@@ -1841,84 +1706,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             void action(loadFamily);
           }}
         />
-      ) : familyOpen && token && purchaseView === "choose" ? (
-        <ChooseHowToPay
-          token={token}
-          learnerName={learner?.name ?? null}
-          onCard={(interval) => {
-            openPurchase("annual");
-            setPurchaseInterval(interval);
-            setPurchaseFromChoice(true);
-          }}
-          onFunds={(offerId) => {
-            if (!nativeRuntime) {
-              const search = new URLSearchParams({ offer: offerId });
-              if (learnerId) search.set("learner", learnerId);
-              navigate(`/purchase/funded?${search}`);
-              return;
-            }
-            setPurchaseOffer(offerId);
-            openPurchase("funded");
-            setPurchaseFromChoice(true);
-          }}
-          onClose={closePurchase}
-        />
-      ) : familyOpen && token && purchaseView === "annual" ? (
-        <AnnualPurchase
-          preferredInterval={purchaseInterval}
-          token={token}
-          preferredLearnerId={learnerId ?? undefined}
-          identity={accountId ?? token}
-          returnState={purchaseReturn?.state}
-          purchaseId={purchaseReturn?.purchaseId}
-          onClose={closePurchase}
-          onAccessChanged={() => void action(loadFamily)}
-        />
-      ) : familyOpen && token && purchaseView === "funded" ? (
-        <FundingPurchaseCenter
-          token={token}
-          preferredOfferId={purchaseOffer}
-          preferredLearnerId={learnerId ?? undefined}
-          identity={accountId ?? token}
-          learners={childLearners}
-          consentActive={familySummary?.consent.status === "active"}
-          onClose={closePurchase}
-        />
-      ) : familyOpen && token ? (
-        <FamilyCenter
-          // Until the sign-in mode is known, keep the Security tab's place:
-          // hosted AMP always uses accounts, so the tabs never reflow.
-          accountsEnabled={authMode === undefined || authMode === "accounts"}
-          onConsentEnrollment={() => openConsent()}
-          onContinueSetup={
-            nativeRuntime ? undefined : () => navigate("/start/plan")
-          }
-          returnToConsent={consentReturn}
-          selectedLearnerId={familyLearnerId || learnerId || ""}
-          onSelectLearner={(id) => {
-            setFamilyLearnerId(id);
-            // Choosing a live learner in Family makes them the current
-            // learner everywhere; billing references do not.
-            if (learners.some((entry) => entry.id === id)) selectLearner(id);
-          }}
-          initialSection={familySection}
-          onSectionChange={setFamilySection}
-          returnFocus={purchaseFocus}
-          onAnnualPurchase={() => openPurchase("annual")}
-          onFundedPurchase={() => openPurchase("funded")}
-          onChoosePayment={() => openPurchase("choose")}
-          token={token}
-          identity={accountId ?? token}
-          onChanged={async () => {
-            await loadFamily();
-          }}
-          onLearningInvalidated={invalidateLearning}
-          onClose={() => {
-            nativeFamilyReturn.current = true;
-            setFamilyOpen(false);
-          }}
-        />
-      ) : !token ? (
+      ) : familyOpen && token ? null : !token ? ( // only the parent notice above stays here. // The account's screens are routed now (app/account-overlays.tsx);
         <section className="card welcome">
           {!nativeRuntime && <LandingView />}
           <h2>
@@ -1971,7 +1759,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ) : viewingChild && session && route.location.pathname === "/overview" ? (
         <ChildOverview
           key={viewingChild.id}
-          session={session}
           child={viewingChild}
           strands={homeStrands}
         />
@@ -2019,7 +1806,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           </button>
         </section>
       ) : !learner ? (
-        <Navigate to="/start/name" replace />
+        // Nobody to practice yet: the one next step, never a redirect.
+        <section className="card welcome">
+          <h2>Set up a learner</h2>
+          <p>Add who is practicing, and practice starts here.</p>
+          <Link to="/start" className={buttonClass("primary")}>
+            Get started
+          </Link>
+        </section>
       ) : readingBook ? (
         <BookReader
           key={`${learner.id}:${readingBook.book.id}`}
@@ -2069,7 +1863,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             exit={() => setExploring(true)}
             exitHref="/"
             returnToMixed={
-              (practiceSettings.data?.focusSkillId || filterKey !== "{}") &&
+              (practiceSettings.data?.focusSkillId ||
+                (filterKey ?? "{}") !== "{}") &&
               !nativeRuntime
                 ? () =>
                     void action(() =>
@@ -2203,36 +1998,31 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             }}
           />
         ) : (birthYearKnown || problem) && !changingBirthYear ? (
-          !nativeRuntime && route.location.pathname === "/" ? (
-            // One address for the Overview: `/` hands over to it.
-            <Navigate to="/$" params={{ _splat: "overview" }} replace />
-          ) : (
-            <Home
-              key={learner.id}
-              name={learner.name}
-              learnerId={learner.id}
-              reader={
-                student ||
-                (account?.signedIn && practicingAsAdult(account, learner.id))
-                  ? "self"
-                  : "other"
-              }
-              birthYear={learner.birthYear}
-              resuming={!!problem}
-              frontier={frontierMap}
-              strands={homeStrands}
-              busy={busy}
-              go={() =>
-                problem ? setExploring(false) : void action(() => loadBatch(""))
-              }
-              changeBirthYear={
-                student || ownLearner
-                  ? undefined
-                  : () => setChangingBirthYear(true)
-              }
-              freeLeft={freeLeft(learnerEntry)}
-            />
-          )
+          <Home
+            key={learner.id}
+            name={learner.name}
+            learnerId={learner.id}
+            reader={
+              student ||
+              (account?.signedIn && practicingAsAdult(account, learner.id))
+                ? "self"
+                : "other"
+            }
+            birthYear={learner.birthYear}
+            resuming={!!problem}
+            frontier={frontierMap}
+            strands={homeStrands}
+            busy={busy}
+            go={() =>
+              problem ? setExploring(false) : void action(() => loadBatch(""))
+            }
+            changeBirthYear={
+              student || ownLearner
+                ? undefined
+                : () => setChangingBirthYear(true)
+            }
+            freeLeft={freeLeft(learnerEntry)}
+          />
         ) : (
           <BirthYearPrompt
             key={learner.id}
@@ -2260,18 +2050,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           />
         )
       ) : tab === "library" ? (
-        <main
-          className="library-main"
-          aria-busy={!catalog && !catalogFailed && !topicOpen}
-        >
-          {/* Until the catalog lands, the library or the reader paints its
-              own frame in place, so nothing moves when it does. */}
-          {!catalog && !route.parts[1] && !topicOpen && (
-            <LessonLibraryPlaceholder
-              retry={catalogFailed ? loadCatalog : undefined}
-            />
-          )}
-          {!catalog && route.parts[1] && (
+        <main className="library-main" aria-busy={!catalog && !catalogFailed}>
+          {/* A lesson's own address (`/lessons/<id>`); one AMP no longer has
+              goes to Pathways (app/legacy-aliases.ts). Until the catalog
+              lands, the reader paints its own frame in place, so nothing
+              moves when it does. */}
+          {!readingLesson && (
             <article className="card lesson-reader" aria-busy={!catalogFailed}>
               <div className="card-top">
                 <button className="text-button" onClick={closeReader}>
@@ -2280,72 +2064,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               </div>
               {catalogFailed ? (
                 <LessonsUnavailable retry={loadCatalog} />
+              ) : catalog ? (
+                // An id the catalog doesn't have, whose alias couldn't check.
+                <p role="status">This lesson is no longer in AMP.</p>
               ) : (
                 <Loading>Opening the lesson…</Loading>
               )}
             </article>
-          )}
-          {(catalog || topicOpen) && !readingLesson && (
-            <>
-              <LessonIndex
-                templates={catalog?.templates ?? []}
-                skills={catalog?.skills ?? []}
-                busy={busy}
-                loadLesson={async (templateId) =>
-                  (
-                    await api<{ lesson: ProblemLessonView }>(
-                      `/problem-lessons/${templateId}?film=${FILM_CAPABILITY}`,
-                    )
-                  ).lesson
-                }
-                practice={(templateId) =>
-                  void action(() => loadBatch(templateId))
-                }
-                references={catalog?.lessons ?? []}
-                openReference={(reference) => {
-                  readerTriggerId.current = reference.id;
-                  // Back returns to these results at this scroll position.
-                  libraryReturn.current = {
-                    // The live URL: the search field writes its query after
-                    // a pause, which can land after this render.
-                    search: window.location.search,
-                    scroll: window.scrollY,
-                  };
-                  void action(() => openReferenceLesson(reference, null));
-                }}
-              />
-              {/* Below the index, so it appears with the catalog rather than
-                  being pushed down when the index fills in. */}
-              {catalog &&
-                !new URLSearchParams(route.location.search).has("topic") &&
-                !new URLSearchParams(route.location.search).get("q") && (
-                  <>
-                    <section className="book-list" aria-label="Printable books">
-                      <h2>Printable books</h2>
-                      <ul>
-                        {books.map((book) => (
-                          <li key={book.id}>
-                            <span>
-                              {book.title}
-                              <small>{book.pages} pages</small>
-                            </span>
-                            <button
-                              className="text-button"
-                              disabled={busy}
-                              data-book-id={book.id}
-                              onClick={() =>
-                                void action(() => openBook(book.id))
-                              }
-                            >
-                              Open book
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-                  </>
-                )}
-            </>
           )}
           {readingLesson && (
             <article className="card lesson-reader">
@@ -2417,6 +2142,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         !exploring &&
         createPortal(
           <PracticeControls
+            practicing={{
+              name: student ? undefined : learner.name,
+              filter: filterName,
+              skillTitle: (id) =>
+                catalog?.skills.find((skill) => skill.id === id)?.title,
+              level: practiceLevel?.answered ? practiceLevel.level : null,
+            }}
             scope={adjustments.scope}
             problemId={problem.id}
             busy={busy || !!pending}

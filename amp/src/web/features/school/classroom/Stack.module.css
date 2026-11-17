@@ -35,7 +35,7 @@
 @media (min-width: 720px) {
   .fieldPair {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    max-width: 640px;
+    max-width: var(--page-standard);
   }
 }
 .label {

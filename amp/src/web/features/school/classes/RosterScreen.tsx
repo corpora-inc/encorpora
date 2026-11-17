@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { spaceWords } from "../../spaces/words";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
@@ -30,6 +31,7 @@ import { classesOptions, currentSession, orgOptions } from "../api";
 import { ClassPeople } from "./people/ClassPeople";
 import { canAddStudents } from "../permissions";
 import { classUrl } from "./teacher-shared";
+import { ViewLink } from "../ViewLink";
 import { approvalsOptions } from "../../family-approval/api";
 import { secondParentOptions } from "../../second-parent/api";
 import styles from "./Roster.module.css";
@@ -223,7 +225,9 @@ export function RosterScreen() {
               id: "practice",
               header: "Student view",
               width: 150,
-              cell: (row) => <PracticeAs student={row} />,
+              cell: (row) => (
+                <PracticeAs student={row} returnName={data?.class.name} />
+              ),
             },
           ] satisfies DataGridColumn<Row>[])
         : []),
@@ -237,13 +241,16 @@ export function RosterScreen() {
               cell: (row) => (
                 <Menu label="Manage" aria-label={`Manage ${row.name}`}>
                   <MenuItem
-                    onSelect={() =>
+                    onSelect={() => {
+                      // One student's card: the cards page, at its own
+                      // address (`cards/<student>`).
                       void navigate({
-                        to: "/school/$org/classes/$class/cards",
-                        params,
-                        search: { student: row.id },
-                      })
-                    }
+                        to: "/$",
+                        params: {
+                          _splat: `school/${params.org}/classes/${params.class}/cards/${row.id}`,
+                        },
+                      });
+                    }}
                   >
                     {row.cardIssuedAt ? "Print a new card" : "Print a card"}
                   </MenuItem>
@@ -321,7 +328,17 @@ export function RosterScreen() {
         setStatus(`${pending.row.name} is signed out on every device.`);
       }
     } catch (failure) {
-      setError((failure as Error).message);
+      setError(
+        reportError(failure, {
+          doing:
+            pending.kind === "links"
+              ? "download family links"
+              : pending.kind === "reset"
+                ? "reset a student's pictures"
+                : "sign a student out everywhere",
+          fallback: "That didn’t go through. Try again.",
+        }),
+      );
     } finally {
       setMaking(false);
       setPending(null);
@@ -492,7 +509,7 @@ export function RosterScreen() {
                       "Student view" column, on its own line. */}
                   {demo && canManage && (
                     <span className={styles.cardPractice}>
-                      <PracticeAs student={row} />
+                      <PracticeAs student={row} returnName={data?.class.name} />
                     </span>
                   )}
                 </div>
@@ -528,7 +545,7 @@ export function RosterScreen() {
           {group && holder && (
             <ClassPeople
               secondParent={false}
-              session={account}
+
               orgId={params.org}
               classId={params.class}
             />
@@ -616,13 +633,13 @@ function ClassTeachers({ org, classId }: { org: string; classId: string }) {
         </ul>
       )}
       {invites && (
-        <Link
-          to={`/school/${org}/staff` as never}
-          search={{ class: classId } as never}
+        <ViewLink
+          to={`school/${org}/staff`}
+          view={{ class: classId }}
           className={buttonClass("quiet", "", "start")}
         >
           Invite a co-teacher
-        </Link>
+        </ViewLink>
       )}
     </section>
   );

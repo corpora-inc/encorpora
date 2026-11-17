@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import type { LessonFilm } from "../../../content/lesson-films";
 
 /** A film's length as a player shows it: 1:30. */
@@ -18,8 +18,9 @@ export function filmSpokenDuration(seconds: number) {
     .join(" ");
 }
 
-/** The way into a problem type's film, which plays at its own address and
- * comes back here. A card at a lesson's top, or a secondary button in an
+/** The way into a problem type's film, which plays at its own address
+ * (`…/watch/<problem>` when it is help for one problem) and closes back
+ * here (the browser's history). A card at a lesson's top, or a secondary button in an
  * action row ("Watch lesson · 1:30", beside Try). */
 export function FilmLink({
   templateId,
@@ -38,13 +39,15 @@ export function FilmLink({
    * lessons render under Node too, imports no stylesheet. */
   button?: string;
 }) {
-  const from = useLocation({ select: (location) => location.href });
   return (
     <Link
       className={button ?? "lesson-film-link"}
-      to="/lessons/$templateId/watch"
-      params={{ templateId }}
-      search={{ from, ...(problemId ? { problem: problemId } : {}) }}
+      {...(problemId
+        ? {
+            to: "/lessons/$templateId/watch/$problem",
+            params: { templateId, problem: problemId },
+          }
+        : { to: "/lessons/$templateId/watch", params: { templateId } })}
       onClick={onOpen}
       data-film-link={templateId}
     >

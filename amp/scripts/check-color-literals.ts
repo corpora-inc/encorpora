@@ -1,7 +1,8 @@
 /**
  * Color literals are banned outside `src/web/ui/tokens.css`: every color is a
  * role token (see that file). Lists each hex, rgb()/hsl() or named color in a
- * stylesheet or component. `--strict` (the npm script) fails on any.
+ * stylesheet or component. `--strict` (the npm script) fails on any, and
+ * on muted or subtle text under AA (4.5:1) on any surface, in either theme.
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -82,7 +83,71 @@ export function scan(): Finding[] {
   });
 }
 
+/** Text that must read on every surface, in both themes: WCAG AA for body
+ * text, 4.5:1. */
+const TEXT_TOKENS = ["--color-muted-text", "--color-subtle-text"];
+const SURFACE_TOKENS = [
+  "--color-surface",
+  "--color-surface-raised",
+  "--color-surface-sunken",
+];
+
+function luminance(color: string) {
+  const [r, g, b] = [1, 3, 5].map((at) => {
+    const channel = parseInt(color.slice(at, at + 2), 16) / 255;
+    return channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r! + 0.7152 * g! + 0.0722 * b!;
+}
+export function contrast(a: string, b: string) {
+  const [high, low] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (high! + 0.05) / (low! + 0.05);
+}
+
+/** Each theme's text-on-surface pairs from tokens.css, with their ratios:
+ * light is `:root`, dark is `:root[data-theme="dark"]` (the media query
+ * repeats it). */
+export function textContrast() {
+  const tokens = readFileSync(join(root, "ui/tokens.css"), "utf8");
+  const block = (selector: string) => {
+    const start = tokens.indexOf(`${selector} {`);
+    if (start < 0) throw new Error(`tokens.css has no ${selector} block`);
+    const body = tokens.slice(start, tokens.indexOf("\n}", start));
+    return (name: string) => {
+      const value = new RegExp(`${name}:\\s*(#[0-9a-fA-F]{6})\\b`).exec(
+        body,
+      )?.[1];
+      if (!value) throw new Error(`${selector} sets no hex ${name}`);
+      return value;
+    };
+  };
+  return [
+    ["light", block(":root")],
+    ["dark", block(':root[data-theme="dark"]')],
+  ].flatMap(([theme, read]) =>
+    TEXT_TOKENS.flatMap((text) =>
+      SURFACE_TOKENS.map((surface) => ({
+        theme: theme as string,
+        text,
+        surface,
+        ratio: contrast(
+          (read as (name: string) => string)(text),
+          (read as (name: string) => string)(surface),
+        ),
+      })),
+    ),
+  );
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
+  const weak = textContrast().filter((pair) => pair.ratio < 4.5);
+  for (const pair of weak)
+    console.log(
+      `${pair.theme}: ${pair.text} on ${pair.surface} is ${pair.ratio.toFixed(2)}:1, under AA's 4.5:1 (ui/tokens.css)`,
+    );
+  if (weak.length && process.argv.includes("--strict")) process.exitCode = 1;
   const findings = scan();
   const byFile = new Map<string, number>();
   for (const f of findings) byFile.set(f.file, (byFile.get(f.file) ?? 0) + 1);
@@ -95,4 +160,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     `${findings.length} color literal(s) outside src/web/ui/tokens.css in ${byFile.size} file(s).`,
   );
   if (findings.length && process.argv.includes("--strict")) process.exit(1);
+  console.log(
+    "Muted and subtle text pass AA (4.5:1) on every surface, light and dark.",
+  );
 }

@@ -1,5 +1,10 @@
 import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
+import {
+  FIXTURE_FAMILY_ID,
+  fixtureFamilies,
+  fixtureFamilyProjection,
+} from "./family-space-fixture";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -12,7 +17,7 @@ import type { ConsentView } from "../src/parent-consent/contracts.js";
 import { retentionNotice } from "../src/family/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `const listeners=new Set();let session={token:'fixture',accountId:'parent'};window.authFragment=location.hash;window.consentApp={emit(s){session=s;for(const f of listeners)f(s)}};export async function accessSession(){return session};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
+const auth = `const listeners=new Set();let session={token:'fixture',accountId:'parent'};window.authFragment=location.hash;window.consentApp={emit(s){session=s;for(const f of listeners)f(s)}};export async function accessSession(){return session};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-consent-app",
   root: fileURLToPath(new URL("../", import.meta.url)),
@@ -91,7 +96,22 @@ try {
                 recordedAt: null,
                 withdrawnAt: null,
               },
-              learners: [],
+              // Learning consent is for a parent's children: Privacy offers
+              // it once there is a child (#2157).
+              learners:
+                req.headers().authorization === "Bearer other"
+                  ? []
+                  : [
+                      {
+                        id: "consent-child",
+                        name: "Rowan",
+                        birthYear: 2016,
+                        deletedAt: null,
+                        access: [],
+                        stripeLinked: false,
+                        canPractice: false,
+                      },
+                    ],
               retained: retentionNotice,
             },
             req.headers().authorization === "Bearer other" ? "other" : "parent",
@@ -148,6 +168,28 @@ try {
         route.request().method() === "GET"
       )
         return route.fulfill({ json: { generation: "initial" } });
+      // The parent's family and its child, as the app frame reads them.
+      if (path === "/api/v1/families")
+        return route.fulfill({ json: fixtureFamilies() });
+      if (path === `/api/v1/families/${FIXTURE_FAMILY_ID}`)
+        return route.fulfill({
+          json: fixtureFamilyProjection([
+            {
+              id: "consent-child",
+              name: "Rowan",
+              birthYear: 2016,
+              canPractice: false,
+            },
+          ]),
+        });
+      if (path.endsWith("/frontier"))
+        return route.fulfill({
+          json: {
+            expected: 4,
+            overall: { level: 4, sd: 2.5, answered: 0, independent: 0 },
+            strands: {},
+          },
+        });
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -157,14 +199,20 @@ try {
         json: { error: "unexpected_fixture" },
       });
     });
-    await page.goto("http://127.0.0.1:4387/family/learners");
-    await page.getByRole("link", { name: "Privacy", exact: true }).click();
+    // Account's own pages (docs/architecture/spaces.md, "Account"): Sign-in,
+    // then its Privacy tab.
+    await page.goto("http://127.0.0.1:4387/account/security");
+    await page
+      .getByRole("link", { name: "Privacy", exact: true })
+      .first()
+      .click();
+    await page.waitForURL((url) => url.pathname === "/account/privacy");
     await page.screenshot({
       path: `artifacts/consent-app/privacy-${width}.png`,
     });
     await page.locator('[data-privacy-choice="consent"]').click();
     await page
-      .getByRole("button", { name: "Review consent options", exact: true })
+      .getByRole("button", { name: "Consent options", exact: true })
       .click();
     await page
       .getByRole("heading", { name: "Enrollment is unavailable" })
@@ -186,11 +234,11 @@ try {
     });
     await page.getByRole("button", { name: "Back", exact: true }).click();
     await page
-      .getByRole("button", { name: "Review consent options", exact: true })
+      .getByRole("button", { name: "Consent options", exact: true })
       .waitFor();
     assert.equal(
       await page.evaluate(() => document.activeElement?.textContent?.trim()),
-      "Review consent options",
+      "Consent options",
     );
     view = {
       available: true,
@@ -245,7 +293,7 @@ try {
     await enteredPromise;
     await page.getByRole("button", { name: "Back", exact: true }).click();
     await page
-      .getByRole("button", { name: "Review consent options", exact: true })
+      .getByRole("button", { name: "Consent options", exact: true })
       .waitFor();
     const afterClose = familyReads;
     release();

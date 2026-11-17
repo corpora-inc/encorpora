@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { chooseLearner, navigateApp } from "./ui-controls";
+import { chooseLearner, openMenu } from "./ui-controls";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium as rawChromium } from "playwright";
 const chromium = secureChromium(rawChromium);
@@ -62,21 +62,24 @@ try {
       await familyBatchRelease;
       await route.fulfill({ response: result });
     });
-    await page.getByRole("button", { name: "2016", exact: true }).click();
-    await page.waitForURL((url) => url.pathname === "/overview");
-    await navigateApp(page, "Practice");
+    await page.getByRole("option", { name: "2016", exact: true }).click();
+    // The birth year saved, the child's own page shows (their Overview).
+    await page.waitForURL((url) =>
+      url.pathname.endsWith(`/kids/${learner.id}`),
+    );
+    // Practice on this device has its own address; the family's drawer
+    // offers only its places, so the parent opens it there.
+    await page.goto("http://127.0.0.1:4350/practice");
     await familyBatchWaiting;
-    await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page.getByRole("link", { name: "Account", exact: true }).click();
+    // Account, then its Privacy tab, from the drawer, in this document.
+    const drawer = await openMenu(page);
+    await drawer.getByRole("link", { name: "Account", exact: true }).click();
+    await page.waitForURL((url) => url.pathname === "/account/security");
     await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Learners", exact: true })
-      .click();
-    await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
-    await page
-      .getByRole("navigation", { name: "Account" })
       .getByRole("link", { name: "Privacy", exact: true })
+      .first()
       .click();
+    await page.waitForURL((url) => url.pathname === "/account/privacy");
     await page
       .getByRole("button", {
         name:
@@ -140,12 +143,7 @@ try {
         window as Window & { __privacyRaceDocument?: boolean }
       ).__privacyRaceDocument = true;
     });
-    for (const path of [
-      "/family/privacy",
-      "/family/learners",
-      "/family/security",
-      "/practice",
-    ]) {
+    for (const path of ["/account/privacy", "/account/security", "/practice"]) {
       await page.goBack();
       await page.waitForURL((url) => url.pathname === path);
     }
@@ -171,13 +169,10 @@ try {
       await page.getByRole("navigation", { name: "Learning sections" }).count(),
       0,
     );
-    await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page.getByRole("link", { name: "Account", exact: true }).click();
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Learners", exact: true })
-      .click();
-    await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
+    // The account stays reachable from the drawer.
+    const after = await openMenu(page);
+    await after.getByRole("link", { name: "Account", exact: true }).click();
+    await page.waitForURL((url) => url.pathname === "/account/security");
     assert.deepEqual(errors, []);
     await page.close();
     console.log(

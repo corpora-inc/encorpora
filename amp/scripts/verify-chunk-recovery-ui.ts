@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
-import { mkdir } from "node:fs/promises";
+import { mkdir, mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { preview } from "vite";
+import { build, preview } from "vite";
 import {
   chromium as rawChromium,
   type BrowserContext,
@@ -10,12 +11,15 @@ import {
 import { secureChromium } from "../browser-security.mjs";
 import { eventBatchSchema } from "../src/analytics/events";
 
-// Run after npm run build. Only local static assets and synthetic API responses.
+// A production bundle of this checkout, built here so the check never reads a
+// missing or stale dist/. Only local static assets and synthetic API responses.
 const shots = process.env.AMP_QA_REPORT_DIR ?? "artifacts/chunk-recovery";
 await mkdir(shots, { recursive: true });
+const outDir = await mkdtemp(join(tmpdir(), "amp-chunk-recovery-"));
+await build({ logLevel: "error", build: { outDir, emptyOutDir: true } });
 const server = await preview({
   configFile: false,
-  build: { outDir: "dist" },
+  build: { outDir },
   preview: { host: "127.0.0.1", port: 4850, strictPort: true },
   plugins: [
     {
@@ -506,9 +510,13 @@ async function verifyOtherRecovery() {
             },
           });
         });
+      // Global Privacy Control is the binding opt-out the app honors (Do Not
+      // Track has no legal force: lib/analytics.ts analyticsAllowed).
       if (mode === "privacy")
         await context.addInitScript(() =>
-          Object.defineProperty(navigator, "doNotTrack", { value: "1" }),
+          Object.defineProperty(navigator, "globalPrivacyControl", {
+            value: true,
+          }),
         );
       await page.goto(
         `${origin}/sign-up${mode === "payment" ? "?billing=processing&purchase=synthetic" : ""}`,
@@ -635,4 +643,5 @@ try {
   await new Promise<void>((resolve) =>
     server.httpServer.close(() => resolve()),
   );
+  await rm(outDir, { recursive: true, force: true });
 }

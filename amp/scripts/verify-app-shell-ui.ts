@@ -16,8 +16,14 @@ import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { hoverHugs, probe, settle, shellRecord } from "./app-shell-probe";
-import { shellScenarios, startShellFixture } from "./app-shell-fixture";
+import {
+  handOver,
+  shellScenarios,
+  startShellFixture,
+} from "./app-shell-fixture";
 import { verifyShellReview } from "./app-shell-review";
+import { chooseLearner } from "./ui-controls";
+import { openHome } from "./launcher";
 
 const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
@@ -80,6 +86,7 @@ async function open(
   page.setDefaultTimeout(30000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
+  if (scenario.child) await handOver(page, origin, scenario.child);
   // The load event can wait on slow third-party-free assets under load; the
   // ready check below is what decides the screen has settled.
   await page.goto(origin + scenario.path, { waitUntil: "domcontentloaded" });
@@ -375,6 +382,7 @@ async function verifyShell() {
     });
     const page = await context.newPage();
     page.setDefaultTimeout(30000);
+    if (scenario.child) await handOver(page, origin, scenario.child);
     await page.route("**/api/v1/me", (route) =>
       route.fulfill({
         status: 503,
@@ -383,7 +391,9 @@ async function verifyShell() {
     );
     await page.goto(origin + scenario.path, { waitUntil: "domcontentloaded" });
     await page.getByRole("alert").first().waitFor();
-    await page.getByRole("button", { name: "Dismiss message" }).click();
+    // A toast is dismissed; an inline error stays beside its recovery.
+    const dismiss = page.getByRole("button", { name: "Dismiss message" });
+    if (await dismiss.count()) await dismiss.first().click();
     await page.waitForTimeout(500);
     check(
       await page.getByRole("button", { name: "Try again" }).isVisible(),
@@ -473,81 +483,79 @@ async function verifyShell() {
   }
 }
 
-/** Switching learners on the Overview: nothing of the last learner's level
- * shows while the next one's loads, the loaded view is theirs (an
- * unpracticed learner's areas drawn as estimates), and each learner keeps
- * their own grade-number preference. */
+/** Switching children in the family: a child's page paints whole, with its
+ * own level (features/family Child), so nothing of the last child's level
+ * shows under the next child's name while theirs loads; the loaded view is
+ * theirs (an unpracticed child's level is not measured yet). */
 async function verifyFrontierSwitch() {
   const { page, context } = await open(
-    "home",
+    "child-page",
     { width: 390, height: 844 },
     "light",
   );
-  const map = page.locator(".frontier-map");
   const dots = () =>
-    map
-      .locator("[data-level-dot]")
+    page
+      .locator("[data-child-page] [data-level-dot]")
       .evaluateAll((nodes) =>
         nodes.map((node) => (node as HTMLElement).style.left),
       );
+  const heading = () =>
+    page.locator("[data-child-page] h1").first().innerText();
+  assert.equal(await heading(), fixture.paid.jordan.name);
   const oldDots = await dots();
   let release!: () => void;
   const held = new Promise<void>((resolve) => {
     release = resolve;
   });
   await page.route(
-    `**/api/v1/learners/${fixture.paid.avery.id}/frontier`,
+    `**/api/v1/families/*/children/${fixture.paid.avery.id}/progress`,
     async (route) => {
       await held;
       await route.continue();
     },
   );
-  async function selectHome(id: string) {
-    await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page
-      .getByRole("listbox", { name: "Current learner" })
-      .locator(`[role="option"][data-value="${id}"]`)
-      .click();
-    await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page.getByRole("link", { name: "Progress", exact: true }).click();
-  }
   try {
-    await selectHome(fixture.paid.avery.id);
-    await page
-      .getByRole("heading", { name: fixture.paid.avery.name, exact: true })
-      .waitFor();
-    assert.equal(
-      await map.getAttribute("aria-busy"),
-      "true",
-      "a new learner must not inherit the previous learner's level while loading",
-    );
-    assert.equal(
-      await map.locator("[data-level-dot]").count(),
-      0,
-      "loading shows no stale or made-up estimate",
-    );
+    await chooseLearner(page, fixture.paid.avery.id);
+    await page.waitForTimeout(400);
+    // While Avery's record is on its way, whichever page shows is whole:
+    // Jordan's with Jordan's level, never Avery's name over Jordan's level.
+    if ((await heading()) === fixture.paid.avery.name)
+      assert.notDeepEqual(
+        await dots(),
+        oldDots,
+        "a new child must not inherit the previous child's level while loading",
+      );
     if (shots)
       await page.screenshot({
         path: `${shots}/${engine}-frontier-switch-loading.png`,
       });
     release();
-    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
-    assert.notDeepEqual(
-      await dots(),
-      oldDots,
-      "the loaded level belongs to the new learner",
+    await page
+      .locator(`[data-child-page="${fixture.paid.avery.id}"]`)
+      .waitFor();
+    assert.equal(await heading(), fixture.paid.avery.name);
+    assert.ok(
+      (await page.locator("[data-child-page] [data-level-bar]").count()) > 0,
+      "the loaded level is shown",
     );
     assert.equal(
-      await map.locator("[data-level-bar]:not([data-estimated])").count(),
+      await page
+        .locator(
+          "[data-child-page] [data-level-bar]:not([data-unmeasured]):not([data-estimated])",
+        )
+        .count(),
       0,
-      "an unpracticed learner's areas are drawn as estimates",
+      "an unpracticed child's level is not measured yet",
     );
     if (shots)
       await page.screenshot({
         path: `${shots}/${engine}-frontier-switch-loaded.png`,
       });
-    await selectHome(fixture.paid.jordan.id);
-    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
+    await chooseLearner(page, fixture.paid.jordan.id);
+    await page
+      .locator(`[data-child-page="${fixture.paid.jordan.id}"]`)
+      .waitFor();
+    assert.deepEqual(await dots(), oldDots, "Jordan's level is Jordan's");
   } finally {
     release();
     await page.unrouteAll({ behavior: "wait" });
@@ -598,9 +606,10 @@ async function verifySecurityTarget() {
     }
 }
 
-/** The drawer names whose work it is from its first frame, and that control
- * is never replaced once it shows: one learner is named, a family offers its
- * learners, and a parent's first (unnamed) child is named like any other. */
+/** The family's drawer names its children from its first frame, and that
+ * list is never replaced once it shows: one child is "Your child", a family
+ * of children is "Your kids", and a parent's first (unnamed) child is named
+ * like any other (features/navigation/DrawerContents). */
 async function verifyDrawerLearner() {
   for (const viewport of viewports)
     for (const colorScheme of ["light", "dark"] as const)
@@ -610,9 +619,9 @@ async function verifyDrawerLearner() {
           kind === "starter" ? "starter" : "paid",
           { viewport, colorScheme },
         );
-        // The single-learner case uses the same real paid learner, with the
-        // second household learner omitted from this browser's account fixture.
-        if (kind === "single")
+        // The single-child case uses the same real paid family, with the
+        // second child omitted from this browser's account and family reads.
+        if (kind === "single") {
           await context.route("**/api/v1/me", async (route) => {
             const response = await route.fetch();
             const me = await response.json();
@@ -622,55 +631,61 @@ async function verifyDrawerLearner() {
             );
             await route.fulfill({ response, json: me });
           });
+          await context.route("**/api/v1/families/*", async (route) => {
+            const response = await route.fetch();
+            const family = await response.json();
+            family.children = family.children.filter(
+              (child: { id: string }) => child.id === fixture.paid.jordan.id,
+            );
+            await route.fulfill({ response, json: family });
+          });
+        }
+        const expected =
+          kind === "starter"
+            ? [fixture.starter.learnerId]
+            : kind === "single"
+              ? [fixture.paid.jordan.id]
+              : [fixture.paid.jordan.id, fixture.paid.avery.id];
         const page = await context.newPage();
         try {
-          await page.goto(`${origin}/family/security`);
-          await page
-            .getByRole("heading", { name: "Sign-in", exact: true })
-            .waitFor();
+          await openHome(page, origin);
+          await page.locator("[data-today-title]").first().waitFor();
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           const drawer = page.getByRole("dialog", {
             name: "Adaptive Math Pathways",
           });
           await drawer.waitFor();
+          const nav = drawer.locator('nav[aria-label="AMP navigation"]');
           // Exactly one item is current: never the router's prefix match
           // as well as the drawer's own choice (founder: no double highlight).
-          const currentItems = await drawer
-            .locator('nav[aria-label="AMP navigation"] [aria-current="page"]')
+          const currentItems = await nav
+            .locator('[aria-current="page"]')
             .count();
           check(
             currentItems === 1,
             `drawer ${kind} ${viewport.width} ${colorScheme}: ${currentItems} items are current`,
           );
-          const where = drawer.locator('[aria-label="Where you are"]');
-          await where.waitFor();
+          await nav.locator("[data-drawer-kids]").waitFor();
           const text = await drawer.innerText();
-          const before = await where.innerHTML();
-          const named = await where
-            .locator("[data-learner]")
-            .getAttribute("data-learner", { timeout: 1000 })
-            .catch(() => null);
-          const choices =
-            (await where
-              .getByRole("listbox", { name: "Current learner" })
-              .count()) +
-            (await where
-              .getByRole("button", { name: /^Current learner/ })
-              .count());
-          if (kind === "family")
-            assert.ok(
-              choices > 0 && named === null,
-              `${kind}: a family offers its learners`,
+          const before = await nav.innerHTML();
+          const rows = await nav
+            .locator('a[href*="/kids/"]')
+            .evaluateAll((links) =>
+              links.map(
+                (link) => link.getAttribute("href")!.split("/kids/")[1],
+              ),
             );
-          else
-            assert.equal(
-              named,
-              kind === "starter"
-                ? fixture.starter.learnerId
-                : fixture.paid.jordan.id,
-              `${kind}: one learner is named, not offered`,
-            );
-          // The account and learning reads that were still out land here.
+          assert.deepEqual(
+            [...rows].sort(),
+            [...expected].sort(),
+            `${kind}: the drawer names the family's children`,
+          );
+          assert.equal(
+            await nav.locator("[data-drawer-kids]").innerText(),
+            expected.length === 1 ? "Your child" : "Your kids",
+            `${kind}: the children's heading`,
+          );
+          // The account and family reads that were still out land here.
           await settle(page, 1500);
           assert.equal(
             await drawer.innerText(),
@@ -678,9 +693,9 @@ async function verifyDrawerLearner() {
             `${kind}: drawer text changed`,
           );
           assert.equal(
-            await where.innerHTML(),
+            await nav.innerHTML(),
             before,
-            `${kind}: learner control was replaced`,
+            `${kind}: the children's list was replaced`,
           );
           if (shots)
             await page.screenshot({

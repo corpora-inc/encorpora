@@ -1,9 +1,11 @@
+import { jsonOrNull } from "../../../lib/report-error";
 import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { plainName, timezone } from "../../../../schools/contracts";
 import { AppError } from "../../../lib/AppError";
+import { qk } from "../../../lib/keys";
 export { cleverEnabled } from "./enabled";
 
 export type ConnectionCredential = {
@@ -127,7 +129,7 @@ async function connectionCall<T>(
     if (signal?.aborted || error instanceof AppError) throw error;
     throw new AppError("network", "Check your connection and try again.", true);
   }
-  const data: unknown = await response.json().catch(() => null);
+  const data: unknown = await jsonOrNull(response);
   if (!response.ok) {
     const code =
       data &&
@@ -167,11 +169,12 @@ async function connectionCall<T>(
 }
 export const connectionOptions = (credential: ConnectionCredential) =>
   queryOptions({
-    queryKey: [
-      "school-connection",
+    queryKey: qk.account(
       credential.accountId,
+      "school",
+      "connection",
       credential.onboarding ? "onboarding" : "account",
-    ],
+    ),
     queryFn: ({ signal }) =>
       connectionCall(
         "/clever/status",

@@ -1,0 +1,56 @@
+/* A screen's header (PageHeader.tsx): the title, its subtitle and
+   actions. Every rule sets its element fully: legacy element rules
+   (style.css, theme.css) style bare headings, paragraphs and buttons. */
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  min-width: 0;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  min-width: 0;
+}
+.heading {
+  display: grid;
+  flex: 1 1 auto;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.title.title {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 7.6vw, var(--text-heading-1));
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+.title:focus {
+  outline: none;
+}
+.subtitle.subtitle {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+/* Actions sit on the title's first line, at the right; on a phone they
+   wrap under it, at the start. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  min-height: var(--target-min);
+}
+/* A screen's actions that have nothing to offer here take no room. */
+.actions:empty {
+  display: none;
+}

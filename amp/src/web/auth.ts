@@ -6,10 +6,10 @@ import {
   nativeSignOut,
   nativeSessionEvents,
 } from "./native-session";
-import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
+import type { User, UserManager } from "oidc-client-ts";
 import { accountClient } from "./account-client";
 import { AppError } from "./lib/AppError";
-import { measureAuth } from "./lib/auth-measurement";
+import { fetchAuthConfig, type AuthConfig } from "./auth-config";
 import {
   clearStudentDevice,
   handedReturnPath,
@@ -24,11 +24,18 @@ const authority = (import.meta.env && import.meta.env.VITE_AMP_AUTHORITY) as
   string | undefined;
 const clientId = (import.meta.env && import.meta.env.VITE_AMP_CLIENT_ID) as
   string | undefined;
-const manager =
-  !nativeRuntime && authority && clientId
-    ? new UserManager({
-        authority,
-        client_id: clientId,
+/** An external sign-in (OIDC) is built into this deployment. Only then is
+ * its client loaded (`oidcManager`): AMP's own accounts never download it,
+ * so it stays out of the app's first code. */
+const oidcConfigured = !nativeRuntime && !!authority && !!clientId;
+let oidc: Promise<UserManager> | null = null;
+/** The OIDC client, loaded once, on first use, in OIDC mode only. */
+function oidcManager(): Promise<UserManager> {
+  oidc ??= import("oidc-client-ts").then(
+    ({ UserManager, WebStorageStateStore }) =>
+      new UserManager({
+        authority: authority!,
+        client_id: clientId!,
         redirect_uri: `${location.origin}/`,
         response_type: "code",
         scope: import.meta.env.VITE_AMP_SCOPES ?? "openid profile",
@@ -37,37 +44,20 @@ const manager =
           : {}),
         userStore: new WebStorageStateStore({ store: sessionStorage }),
         automaticSilentRenew: true,
-      })
-    : null;
+      }),
+  );
+  return oidc;
+}
 const devSignedOut = "amp.dev.signedOut";
 
-/** How this deployment signs parents in, as the API reports it. */
-export type AuthConfig =
-  | {
-      mode: "accounts";
-      passwords: boolean;
-      /** A new parent can create the account with a passkey. */
-      passkeySignup?: boolean;
-      parentFollowup?: boolean;
-      providers: string[];
-      clever?: boolean;
-    }
-  | { mode: "oidc" | "development" | "native" };
-let config: Promise<AuthConfig> | null = null;
+export type { AuthConfig };
 export function authConfig(): Promise<AuthConfig> {
   // The native app signs in through its own session layer, not this API.
   if (nativeRuntime) return Promise.resolve({ mode: "native" });
-  const fallback: AuthConfig = { mode: manager ? "oidc" : "development" };
-  config ??= measureAuth("configuration", async () => {
-    const response = await fetch("/api/v1/auth-config", {
-      signal: AbortSignal.timeout(10000),
-    });
-    if (response.ok) return response.json() as Promise<AuthConfig>;
-    throw new Error(`auth-config ${response.status}`);
-  });
-  // A failed lookup is not remembered: the next call asks again.
-  return config.catch(() => {
-    config = null;
+  const fallback: AuthConfig = {
+    mode: oidcConfigured ? "oidc" : "development",
+  };
+  return fetchAuthConfig().catch(() => {
     if (import.meta.env.DEV) return fallback;
     throw new AppError(
       "unavailable",
@@ -118,10 +108,14 @@ export async function accessSession(): Promise<AuthSession | null> {
   // every first screen waits on both. A school sign-in, completing or hinted,
   // is checked first below, so it keeps its order.
   const speculative =
-    !manager && !student && !completion && !providerHint
+    !oidcConfigured && !student && !completion && !providerHint
       ? accountSession()
       : undefined;
-  speculative?.catch(() => undefined);
+  // Asked early, used below only for AMP's own accounts; whoever uses it
+  // shows its failure.
+  speculative?.catch((error: unknown) =>
+    console.warn("AMP: the early session check failed", error),
+  );
   const configuration = await authConfig();
   if (configuration.mode === "accounts") {
     // Only where a school sign-in exists (its readable hint cookie) or one
@@ -157,7 +151,7 @@ export async function accessSession(): Promise<AuthSession | null> {
     if (student) return student;
     return speculative ?? accountSession();
   }
-  if (import.meta.env.DEV && !manager) {
+  if (import.meta.env.DEV && !oidcConfigured) {
     // Development only: `?signed-out` simulates a visitor without an account
     // for this tab, so the "Try free" path can be exercised locally.
     if (new URLSearchParams(location.search).has("signed-out")) {
@@ -170,7 +164,8 @@ export async function accessSession(): Promise<AuthSession | null> {
       accountId: "development-household",
     };
   }
-  if (!manager) return null;
+  if (!oidcConfigured) return null;
+  const manager = await oidcManager();
   if (new URLSearchParams(location.search).has("code")) {
     await manager.signinRedirectCallback();
     history.replaceState({}, "", location.pathname);
@@ -185,16 +180,16 @@ export async function signIn(intent?: "create") {
     location.assign(intent === "create" ? "/sign-up" : "/sign-in");
     return;
   }
-  if (import.meta.env.DEV && !manager) {
+  if (import.meta.env.DEV && !oidcConfigured) {
     sessionStorage.removeItem(devSignedOut);
     location.reload();
     return;
   }
-  if (!manager)
+  if (!oidcConfigured)
     throw new Error(
       "Account sign-in has not been configured for this deployment.",
     );
-  await manager.signinRedirect();
+  await (await oidcManager()).signinRedirect();
 }
 /** Signs out, then opens `to` (accounts mode; the other modes go where
  * their provider sends them). */
@@ -205,7 +200,7 @@ export async function signOut(to = "/") {
     const handed = handedStudentDevice();
     const back = handedReturnPath();
     clearStudentDevice();
-    notifyDeviceSessionChanged();
+    notifyDeviceSessionChanged(undefined, { handoff: handed });
     location.assign(handed ? back : "/join");
     return;
   }
@@ -228,11 +223,16 @@ export async function signOut(to = "/") {
     location.assign(to);
     return;
   }
-  if (manager) await manager.signoutRedirect();
+  if (oidcConfigured) await (await oidcManager()).signoutRedirect();
 }
 
+/** How the device's session changed. A family handoff is a parent handing
+ * this device to their child ("Practice with Aug") or taking it back: the
+ * same family on the same device, each account's data still its own, so
+ * nothing on screen need be thrown away (app/providers.tsx). */
+export type SessionChange = { handoff?: boolean };
 const accountSessionListeners = new Set<
-  (session: AuthSession | null) => void
+  (session: AuthSession | null, change: SessionChange) => void
 >();
 
 /** Publish a checked session in this tab before navigation. Cross-tab messages
@@ -244,31 +244,41 @@ export function notifyAccountSessionChanged(checked?: AuthSession | null) {
 
 /** A shared-device handoff changes only this tab, not the parent's account
  * cookies or any other tab. Publish it once, without echoing a broadcast. */
-export function notifyDeviceSessionChanged(checked?: AuthSession | null) {
+export function notifyDeviceSessionChanged(
+  checked?: AuthSession | null,
+  change: SessionChange = {},
+) {
   if (checked === undefined)
-    window.dispatchEvent(new Event("amp-account-session-changed"));
-  else for (const listener of accountSessionListeners) listener(checked);
+    window.dispatchEvent(
+      new CustomEvent("amp-account-session-changed", { detail: change }),
+    );
+  else
+    for (const listener of accountSessionListeners) listener(checked, change);
 }
 
 export function onSessionChanged(
-  update: (session: AuthSession | null) => void,
+  update: (session: AuthSession | null, change?: SessionChange) => void,
   error?: (message: string) => void,
 ) {
   if (nativeRuntime) return nativeSessionEvents(update, error);
   let generation = 0;
-  const checked = (session: AuthSession | null) => {
+  const checked = (session: AuthSession | null, change: SessionChange) => {
     generation++;
-    update(session);
+    update(session, change);
   };
   accountSessionListeners.add(checked);
-  if (!manager) {
-    const changed = () => {
+  if (!oidcConfigured) {
+    const changed = (event: Event) => {
       const current = ++generation;
+      // This tab's own handoff says so; another tab's change never is one.
+      const change =
+        event instanceof CustomEvent ? (event.detail as SessionChange) : {};
       void accessSession()
         .then((session) => {
-          if (current === generation) update(session);
+          if (current === generation) update(session, change);
         })
         .catch((failure) => {
+          console.error("AMP: the session wasn’t read after a change", failure);
           if (current === generation) error?.(String(failure));
         });
     };
@@ -281,20 +291,38 @@ export function onSessionChanged(
       window.removeEventListener("amp-account-session-changed", changed);
       try {
         channel?.close();
-      } catch {
-        /* Optional cross-tab transport. */
+      } catch (failure) {
+        console.warn(
+          "AMP: the cross-tab sign-in channel didn’t close",
+          failure,
+        );
       }
     };
   }
+  // OIDC: its client's events, once it has loaded.
   const loaded = (user: User) => update(session(user));
   const unloaded = () => update(null);
-  manager.events.addUserLoaded(loaded);
-  manager.events.addUserUnloaded(unloaded);
-  manager.events.addAccessTokenExpired(unloaded);
+  let active = true;
+  let detach = () => {};
+  oidcManager()
+    .then((manager) => {
+      if (!active) return;
+      manager.events.addUserLoaded(loaded);
+      manager.events.addUserUnloaded(unloaded);
+      manager.events.addAccessTokenExpired(unloaded);
+      detach = () => {
+        manager.events.removeUserLoaded(loaded);
+        manager.events.removeUserUnloaded(unloaded);
+        manager.events.removeAccessTokenExpired(unloaded);
+      };
+    })
+    .catch((failure) => {
+      console.error("The sign-in client didn't load", failure);
+      error?.(String(failure));
+    });
   return () => {
+    active = false;
     accountSessionListeners.delete(checked);
-    manager.events.removeUserLoaded(loaded);
-    manager.events.removeUserUnloaded(unloaded);
-    manager.events.removeAccessTokenExpired(unloaded);
+    detach();
   };
 }

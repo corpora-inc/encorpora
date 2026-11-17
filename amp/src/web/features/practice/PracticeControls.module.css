@@ -6,3 +6,31 @@
 .actions > button {
   flex: 1;
 }
+/* Who is practicing, on what, at what level: quiet facts at the top of the
+   drawer's Practice section, at the rows' inset. */
+.practicing {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-2);
+  padding: 0 var(--space-2);
+}
+.practicing > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.practicing dt {
+  flex: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.practicing dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: end;
+  color: var(--color-on-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 600;
+}

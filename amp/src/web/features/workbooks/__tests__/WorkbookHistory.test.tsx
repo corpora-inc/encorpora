@@ -10,12 +10,15 @@ import { afterEach, expect, test, vi } from "vitest";
 import type { WorkbookSummary } from "../../../../workbook/contracts";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
+import { sessionOptions } from "../../../lib/query";
 import {
   awaitingResults,
   HISTORY_PATIENCE_MS,
   historyRetry,
   historyTooSlow,
+  workbookHistoryOptions,
 } from "../api";
+import { useState } from "react";
 import { WorkbookHistory } from "../WorkbookHistoryScreen";
 import type { WorkbookLearner } from "../WorkbookFrame";
 
@@ -54,9 +57,11 @@ function renderHistory(answer: () => Promise<Response>) {
   const client = new QueryClient({
     defaultOptions: { queries: { retryDelay: 0 } },
   });
+  // Signed in: the screen reads the session where it is kept.
+  client.setQueryData(sessionOptions.queryKey, session);
   const router = createRouter({
     routeTree: createRootRoute({
-      component: () => <WorkbookHistory session={session} learner={learner} />,
+      component: () => <WorkbookHistory learner={learner} />,
     }),
     history: createMemoryHistory({
       initialEntries: ["/learners/learner-1/workbooks"],
@@ -163,4 +168,48 @@ test("only failures that may recover are asked again, and never a timeout", () =
   expect(historyRetry(2, unavailable)).toBe(false);
   expect(historyRetry(0, new AppError("validation", "x", false))).toBe(false);
   expect(historyRetry(0, historyTooSlow())).toBe(false);
+});
+
+test("behind an open day, the list holds still; it takes the new workbook once the day closes", async () => {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(() => json({ workbooks: [workbook(0)], pdf: false })),
+  );
+  const client = new QueryClient({
+    defaultOptions: { queries: { retryDelay: 0, staleTime: Infinity } },
+  });
+  client.setQueryData(sessionOptions.queryKey, session);
+  const open = { set: (_still: boolean) => {} };
+  function Behind() {
+    const [still, setStill] = useState(true);
+    open.set = setStill;
+    return <WorkbookHistory learner={learner} still={still} />;
+  }
+  const router = createRouter({
+    routeTree: createRootRoute({ component: Behind }),
+    history: createMemoryHistory({
+      initialEntries: ["/learners/learner-1/workbooks/2026-11-13"],
+    }),
+  });
+  render(
+    <QueryClientProvider client={client}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>,
+  );
+  const rows = () =>
+    screen.queryAllByRole("link", { name: /workbook number/ }).length;
+  // The list loads while the day is open over it: it follows until loaded.
+  await screen.findByRole("list", { name: "Workbooks" });
+  expect(rows()).toBe(1);
+  // A workbook is saved in the day: the list behind doesn't move.
+  await act(async () => {
+    client.setQueryData(workbookHistoryOptions(session, learner.id).queryKey, {
+      workbooks: [{ ...workbook(0), id: "wb-new", number: 2 }, workbook(0)],
+      pdf: false,
+    });
+  });
+  expect(rows()).toBe(1);
+  // The day closes: the list takes it.
+  await act(async () => open.set(false));
+  expect(rows()).toBe(2);
 });

@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { chooseLearner, navigateApp } from "./ui-controls";
+import { navigateApp, practiceHere } from "./ui-controls";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium as rawChromium } from "playwright";
@@ -74,9 +74,12 @@ try {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto("http://127.0.0.1:4340/overview");
-    await chooseLearner(page, learner.id);
-    await navigateApp(page, "Lessons");
-    await page.locator(`button[data-book-id="${book.id}"]`).click();
+    // The parent hands the device to the child, whose reading is their own.
+    await practiceHere(page, learner.id);
+    // A book is its own address (`/books/<id>`); the lessons library that
+    // once listed books is no destination of its own (docs/design/ia.md).
+    const bookAddress = `http://127.0.0.1:4340/books/${book.id}`;
+    await page.goto(bookAddress);
     await page.getByRole("main", { name: book.title }).waitFor();
     const frames = readingFrames(book);
     const comparisonScales = new Map<string, number>();
@@ -299,7 +302,10 @@ try {
     await page.getByRole("button", { name: "Next →", exact: true }).click();
     const selected = await page.locator(".reader-position>span").innerText();
     await page.getByRole("button", { name: "← Back", exact: true }).click();
-    await page.locator(`button[data-book-id="${book.id}"]`).click();
+    await page.locator(".book-reader").waitFor({ state: "detached" });
+    // Browser Back reopens the book where the reader left it.
+    await page.goBack();
+    await page.getByRole("main", { name: book.title }).waitFor();
     assert.equal(
       await page.locator(".reader-position>span").innerText(),
       selected,
@@ -347,11 +353,10 @@ try {
       .getByRole("alert")
       .filter({ hasText: /reading edition is available/ })
       .waitFor();
+    // The reader's Back leaves the book for the learner's Pathways.
     await page.getByRole("button", { name: "← Back", exact: true }).click();
-    await page.waitForFunction(
-      (id) => document.activeElement?.getAttribute("data-book-id") === id,
-      book.id,
-    );
+    await page.waitForURL((address) => address.pathname === "/pathways");
+    await page.locator(".book-reader").waitFor({ state: "detached" });
     let releaseOpen!: () => void;
     const delayedOpen = new Promise<void>((resolve) => {
       releaseOpen = resolve;
@@ -362,7 +367,9 @@ try {
       await delayedOpen;
       await route.fulfill({ response });
     });
-    await page.locator(`button[data-book-id="${book.id}"]`).click();
+    // Reopened from history while its answer is held, then left for Progress.
+    await page.goBack();
+    await page.waitForURL(bookAddress);
     await navigateApp(page, "Progress");
     const opened = page.waitForResponse((response) =>
       response.url().endsWith("/open"),

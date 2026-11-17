@@ -1,11 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  Navigate,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useState, type FormEvent, type ReactNode } from "react";
 import {
   gradeCourse,
@@ -23,7 +17,6 @@ import {
   type ProfilePace,
 } from "../../../learning/practice-profiles";
 import { strandNames } from "../../BirthYearPrompt";
-import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { meOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
@@ -35,7 +28,7 @@ import { Stepper } from "../../ui/Stepper";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { currentSession } from "../school/api";
-import { useLearnerStore } from "../../learner-store";
+import { currentLearner, selectLearner } from "../../learner-store";
 import {
   choosePracticeProfile,
   leaveTarget,
@@ -45,7 +38,10 @@ import {
 } from "./api";
 import { practiceAs } from "./practice-mode";
 import { GradePicker } from "./GradePicker";
+import { LevelScreen } from "./LevelScreen";
+import { setLevelDraft, useLevelDraft } from "./level-draft";
 import styles from "./Profiles.module.css";
+import { useToRoot } from "../../nav/root";
 
 const paceOptions: SegmentedOption<ProfilePace>[] = profilePaces.map(
   (pace) => ({
@@ -278,32 +274,16 @@ function ProfileForm({
   );
 }
 
-/** The search a picker URL keeps: the grade and pace chosen. */
-export type NewProfileSearch = { grade?: number; pace?: ProfilePace };
-export function newProfileSearch(
-  search: Record<string, unknown>,
-): NewProfileSearch {
-  const grade = Number(search.grade);
-  const pace = profilePaces.find((value) => value === search.pace);
-  return {
-    ...(Number.isInteger(grade) && grade >= 0 && grade <= MAX_PROFILE_LEVEL
-      ? { grade }
-      : {}),
-    ...(pace ? { pace } : {}),
-  };
-}
-
 /** `/me/profiles/new` ("New profile"): practice as someone else, at a grade
  * and pace, adjusted area by area, saved under a name. The grade and pace
- * live in the URL, so a refresh or a shared link opens the same choice. */
+ * being chosen are this flow's draft (level-draft.ts), so a refresh keeps
+ * the choice. */
 export function NewProfileScreen() {
   const session = currentSession();
   const navigate = useNavigate();
-  const search = newProfileSearch(
-    useSearch({ strict: false }) as Record<string, unknown>,
-  );
-  const grade = search.grade ?? null;
-  const pace = search.pace ?? "on-level";
+  const draft = useLevelDraft("new");
+  const grade = draft.grade ?? null;
+  const pace = draft.pace ?? "on-level";
   const preset = (at: number | null, by: ProfilePace) =>
     at === null ? presetLevels(4, "on-level") : presetLevels(at, by);
   const [levels, setLevels] = useState<ProfileLevels>(() =>
@@ -318,12 +298,7 @@ export function NewProfileScreen() {
     create.reset();
     setLevels(presetLevels(next.grade, next.pace));
     if (!named) setLabel(presetLabel(next.grade, next.pace));
-    void navigate({
-      to: "/$",
-      params: { _splat: "me/profiles/new" },
-      search: { grade: next.grade, pace: next.pace } as never,
-      replace: true,
-    });
+    setLevelDraft(session.accountId, "new", next);
   };
   const course = grade === null ? null : gradeCourse(grade);
   return (
@@ -412,18 +387,9 @@ export function EditProfileScreen() {
         <LoadingScreen overlay />
       </main>
     );
-  // Practice at a level's profile is chosen again where it was chosen.
-  if (profile?.level)
-    return (
-      <Navigate
-        to="/$"
-        params={{ _splat: "me/level" }}
-        search={
-          { grade: profile.level.grade, pace: profile.level.pace } as never
-        }
-        replace
-      />
-    );
+  // Practice at a level's profile is chosen again as it was chosen: its
+  // grade and pace (the account's last level, LevelScreen's start).
+  if (profile?.level) return <LevelScreen />;
   if (!profile)
     return (
       <main className={styles.page}>
@@ -458,7 +424,6 @@ export function EditProfileScreen() {
   return (
     <ProfileEditor
       key={profile.id}
-      session={session}
       profile={profile}
       back={leaveTarget(account)}
     />
@@ -466,15 +431,15 @@ export function EditProfileScreen() {
 }
 
 function ProfileEditor({
-  session,
   profile,
   back,
 }: {
-  session: AuthSession;
   profile: { id: string; label: string; levels: ProfileLevels };
   back: ReturnType<typeof leaveTarget>;
 }) {
+  const session = currentSession();
   const navigate = useNavigate();
+  const toHome = useToRoot();
   const [label, setLabel] = useState(profile.label);
   const [levels, setLevels] = useState(profile.levels);
   const [confirm, setConfirm] = useState(false);
@@ -572,14 +537,11 @@ function ProfileEditor({
                 onSuccess: () => {
                   setConfirm(false);
                   // Practicing as it ends: back to their own, or home.
-                  const store = useLearnerStore.getState();
-                  if (store.learnerId === profile.id)
-                    store.select(back.own ?? back.first);
-                  void navigate(
-                    back.own
-                      ? { to: "/$", params: { _splat: "me" } }
-                      : { to: "/" },
-                  );
+                  if (currentLearner() === profile.id)
+                    selectLearner(back.own ?? back.first);
+                  if (back.own)
+                    void navigate({ to: "/$", params: { _splat: "me" } });
+                  else toHome();
                 },
               })
             }

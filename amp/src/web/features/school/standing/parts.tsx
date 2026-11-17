@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import type { StandingCurve } from "../../../../schools/standing-contracts";
 import { StatRow, StatTile } from "../../../ui/StatTile";
@@ -89,15 +88,6 @@ export function SettlingNote({
         : `${curve.settling.toLocaleString("en-US")} of ${curve.n.toLocaleString("en-US")}`}{" "}
       have fewer than {settleAt} answers.
     </p>
-  );
-}
-
-/** Up one level of the drill. */
-export function UpLink({ to, children }: { to: string; children: ReactNode }) {
-  return (
-    <Link to="/$" params={{ _splat: to }} className={styles.up}>
-      <span aria-hidden="true">‹</span> {children}
-    </Link>
   );
 }
 

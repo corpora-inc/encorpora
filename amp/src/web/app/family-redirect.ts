@@ -1,4 +1,3 @@
-import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
 import type { SignedInMe } from "../../account/contracts";
@@ -11,7 +10,23 @@ import {
   familyOrgTarget,
   parentFamilyAt,
   peopleOf,
+  type FamilyTarget,
 } from "../features/family/redirects";
+
+/* Where a parent's family lives now, for an older address of it (its class,
+   its org's pages, a child by their roster person): the alias rows in
+   app/legacy-aliases.ts hop there. Each returns the new address, or null for
+   anyone else (the old address is still theirs). A failed read is logged and
+   answers null: the address then stays as it was, and its screen shows the
+   failure. */
+
+/** A read whose failure leaves the address as it is, logged. */
+const orNull =
+  (what: string) =>
+  (error: unknown): null => {
+    console.warn(`${what} didn’t load; the address stays`, error);
+    return null;
+  };
 
 /**
  * The family a parent's class belongs to. A family's id is an opaque key that
@@ -27,14 +42,14 @@ async function familyOfClass(
 ): Promise<string | null> {
   const places = await queryClient
     .ensureQueryData(familyPlacesOptions(session))
-    .catch(() => null);
+    .catch(orNull("Your families"));
   const candidates = (places?.families ?? []).filter((entry) =>
     parent.holder ? entry.role === "holder" : entry.role === "second-parent",
   );
   for (const entry of candidates) {
     const projection = await queryClient
       .ensureQueryData(familyOptions(session, entry.familyId))
-      .catch(() => null);
+      .catch(orNull("A family"));
     if (ownClassOf(me, entry.familyId, projection)?.id === parent.classId)
       return entry.familyId;
   }
@@ -60,36 +75,37 @@ type Located = {
 export async function toFamilyAddress(
   session: AuthSession,
   { location, params }: Located,
-) {
+): Promise<FamilyTarget | null> {
   const { org, class: classId } = params as { org: string; class: string };
   const me = await queryClient
     .ensureQueryData(meOptions(session))
-    .catch(() => null);
+    .catch(orNull("Your account"));
   const account = me?.signedIn ? me : null;
   const parent = parentFamilyAt(account, org);
-  if (!account || !parent || parent.classId !== classId) return;
+  if (!account || !parent || parent.classId !== classId) return null;
   const family = await familyOfClass(session, account, parent);
-  if (!family) return;
+  if (!family) return null;
   const projection = await queryClient
     .ensureQueryData(familyOptions(session, family))
-    .catch(() => null);
+    .catch(orNull("Your family"));
   // A class that also holds other families' children is a tutoring group:
   // it stays at its class address, the whole group's classroom (R2). Only
   // a family's own class becomes the family's screens.
-  if (!projection || projection.teachingPlace?.classId === classId) return;
+  if (!projection || projection.teachingPlace?.classId === classId)
+    return null;
   const prefix = `/school/${org}/classes/${classId}`;
   const parts = location.pathname
     .slice(prefix.length)
     .split("/")
     .filter(Boolean);
-  const target = familyClassTarget({
+  return familyClassTarget({
     family,
     parts,
     search: (location.search ?? {}) as Record<string, unknown>,
     hash: location.hash || undefined,
     people: peopleOf(projection?.children ?? [], classId),
+    only: onlyChild(projection),
   });
-  throw redirect({ ...target, replace: true } as never);
 }
 
 /** A school-level page of a parent's own family org: the family's own
@@ -102,35 +118,30 @@ export async function toFamilyPage(
   page: "roster" | "map" | "settings" | "today",
   location: Located["location"],
   classId?: string,
-) {
+): Promise<FamilyTarget | null> {
   const me = await queryClient
     .ensureQueryData(meOptions(session))
-    .catch(() => null);
+    .catch(orNull("Your account"));
   const account = me?.signedIn ? me : null;
   const parent = parentFamilyAt(account, org);
-  if (!account || !parent) return;
+  if (!account || !parent) return null;
   const family = await familyOfClass(session, account, parent);
-  if (!family) return;
+  if (!family) return null;
   const projection = await queryClient
     .ensureQueryData(familyOptions(session, family))
-    .catch(() => null);
+    .catch(orNull("Your family"));
   // A tutoring group's class keeps its classroom.
-  if (projection?.teachingPlace?.classId === parent.classId) return;
+  if (projection?.teachingPlace?.classId === parent.classId) return null;
   if (classId && classId !== parent.classId)
-    throw redirect({
-      to: `/family/${family}/unavailable`,
-      replace: true,
-    } as never);
-  throw redirect({
-    ...familyOrgTarget({
+    return { href: `/family/${family}/unavailable` };
+  return familyOrgTarget({
       family,
       page,
       search: (location.search ?? {}) as Record<string, unknown>,
       hash: location.hash || undefined,
       people: peopleOf(projection?.children ?? [], parent.classId),
-    }),
-    replace: true,
-  } as never);
+      only: onlyChild(projection),
+    });
 }
 
 /** A family child's older school-level address
@@ -142,28 +153,26 @@ export async function toFamilyChild(
   person: string,
   attempt: string | null,
   location: Located["location"],
-) {
+): Promise<FamilyTarget | null> {
   const me = await queryClient
     .ensureQueryData(meOptions(session))
-    .catch(() => null);
+    .catch(orNull("Your account"));
   const account = me?.signedIn ? me : null;
   const parent = parentFamilyAt(account, org);
-  if (!account || !parent) return;
+  if (!account || !parent) return null;
   const family = await familyOfClass(session, account, parent);
-  if (!family) return;
+  if (!family) return null;
   const projection = await queryClient
     .ensureQueryData(familyOptions(session, family))
-    .catch(() => null);
-  throw redirect({
-    ...familyClassTarget({
-      family,
-      parts: attempt ? ["map", person, "work", attempt] : ["map", person],
-      search: (location.search ?? {}) as Record<string, unknown>,
-      hash: location.hash || undefined,
-      people: peopleOf(projection?.children ?? [], parent.classId),
-    }),
-    replace: true,
-  } as never);
+    .catch(orNull("Your family"));
+  return familyClassTarget({
+    family,
+    parts: attempt ? ["map", person, "work", attempt] : ["map", person],
+    search: (location.search ?? {}) as Record<string, unknown>,
+    hash: location.hash || undefined,
+    people: peopleOf(projection?.children ?? [], parent.classId),
+    only: onlyChild(projection),
+  });
 }
 
 /** Where a family's tutoring group lives: its class's own classroom
@@ -175,10 +184,12 @@ export async function groupAddress(
   search: Record<string, unknown> = {},
 ): Promise<string | null> {
   const [me, projection] = await Promise.all([
-    queryClient.ensureQueryData(meOptions(session)).catch(() => null),
+    queryClient
+      .ensureQueryData(meOptions(session))
+      .catch(orNull("Your account")),
     queryClient
       .ensureQueryData(familyOptions(session, family))
-      .catch(() => null),
+      .catch(orNull("Your family")),
   ]);
   const classId = projection?.teachingPlace?.classId;
   if (!classId || !me?.signedIn) return null;
@@ -197,4 +208,14 @@ export async function groupAddress(
   const path = `/school/${own.org}/classes/${classId}/${leaf}`;
   const text = query.toString();
   return appReturn(text ? `${path}?${text}` : path) ?? path;
+}
+
+/** A family's one child, when it has exactly one: its records open on
+ * their page. */
+function onlyChild(
+  projection: { children: readonly { id: string }[] } | null | undefined,
+) {
+  return projection?.children.length === 1
+    ? projection.children[0]!.id
+    : undefined;
 }

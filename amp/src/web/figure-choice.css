@@ -188,7 +188,9 @@
   width: 100%;
   height: auto;
   min-height: 0;
-  max-height: min(56dvh, 440px);
+  /* A labelled figure still stops where its labels reach the figure type
+     size (FigureTextCap.tsx). */
+  max-height: min(56dvh, 440px, var(--figure-cap-height, 440px));
 }
 .figure-panel-targets {
   position: absolute;
