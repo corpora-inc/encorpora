@@ -854,6 +854,24 @@ const joinPictures = createRoute({
   getParentRoute: () => root,
   path: "/join/$code/$person",
   staticData: { space: "student" },
+  // Someone not on the class's list: the class's names, to choose again. A
+  // failed read is the screen's to show.
+  beforeLoad: async ({ params }) => {
+    if (finishingSignIn()) return;
+    const [{ joinRosterOptions }, { formatJoinCode, normalizeJoinCode }] =
+      await Promise.all([
+        import("../features/school/join/api"),
+        import("../../schools/contracts"),
+      ]);
+    const code = normalizeJoinCode(params.code);
+    const roster = await queryClient
+      .ensureQueryData(joinRosterOptions(code))
+      .catch((error: unknown) =>
+        console.warn("The class's names didn’t load ahead", error),
+      );
+    if (roster && !roster.students.some((entry) => entry.id === params.person))
+      elsewhere(`/join/${encodeURIComponent(formatJoinCode(code))}`);
+  },
   component: lazyRouteComponent(joinScreens, "PicturesScreen"),
 });
 /** A printed card's link. Its secret is in the fragment, which `card-entry`
