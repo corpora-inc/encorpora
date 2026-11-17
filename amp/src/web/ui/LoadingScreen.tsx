@@ -14,6 +14,7 @@ import {
   recoverChunkError,
   dismissChunkNotice,
   chunkReloading,
+  reloadWithFreshFiles,
 } from "../lib/chunk-recovery";
 
 // Reuse the bootstrap animation's document-timeline start time. Every React
@@ -131,7 +132,7 @@ export function RouteError({
   const chunk = errorDetails(error).category === "chunk";
   const [checked, setChecked] = useState<unknown>();
   useEffect(() => {
-    console.error("Application route failed to load or render.");
+    console.error("Application route failed to load or render.", error);
     if (chunk) {
       dismissChunkNotice();
       recoverChunkError(error, false);
@@ -144,12 +145,14 @@ export function RouteError({
       error={
         error instanceof AppError
           ? error.message
-          : "This screen could not be loaded."
+          : chunk
+            ? "This page didn’t finish loading. Check your connection, then reload."
+            : "This screen could not be loaded."
       }
       retryLabel={chunk ? "Reload" : "Try again"}
       // A file that failed to load is not fetched again in place: reload.
       retry={
-        pathways ? undefined : chunk ? () => window.location.reload() : reset
+        pathways ? undefined : chunk ? () => reloadWithFreshFiles(error) : reset
       }
       recovery={
         pathways ? (
@@ -161,7 +164,7 @@ export function RouteError({
             </a>
             <button
               className={buttonClass("secondary")}
-              onClick={() => window.location.reload()}
+              onClick={() => reloadWithFreshFiles(error)}
             >
               Reload page
             </button>

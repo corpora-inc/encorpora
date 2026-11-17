@@ -3,6 +3,7 @@ import {
   chunkNotice,
   subscribeChunkNotice,
   dismissChunkNotice,
+  reloadWithFreshFiles,
 } from "../lib/chunk-recovery";
 import { Toast } from "./Toast";
 
@@ -10,9 +11,13 @@ export function ChunkRecoveryNotice() {
   const visible = useSyncExternalStore(subscribeChunkNotice, chunkNotice);
   return (
     <Toast
-      message={visible ? "This screen could not be loaded." : ""}
+      message={
+        visible
+          ? "Part of this page didn’t load. Check your connection, then reload."
+          : ""
+      }
       onDismiss={dismissChunkNotice}
-      action={{ label: "Reload", onClick: () => location.reload() }}
+      action={{ label: "Reload", onClick: () => reloadWithFreshFiles() }}
     />
   );
 }
