@@ -24,6 +24,13 @@ const MODULE = [
   // The school route table's guards, loaded with a school address.
   /^app\/school-guards\.ts$/,
   /^app\/pay-routes\.tsx$/,
+  // The sanctioned navigation mechanisms (tests/architecture-ratchet.test.ts,
+  // SANCTIONED): the sign-in gate sends a store app to its home screen and a
+  // person to their own place; the legacy-alias table and the third-party
+  // returns hop an old address or a provider's return once.
+  /^app\/sign-in-gate\.ts$/,
+  /^app\/legacy-aliases\.ts$/,
+  /^app\/third-party-returns\.ts$/,
 ];
 const BANNED = [
   /navigate\(\{\s*to:\s*"\/"/,
