@@ -18,6 +18,12 @@ import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { registerSchoolRoutes } from "../src/schools/routes";
+import { registerConsentRoutes } from "../src/parent-consent/routes";
+import { ConsentRepository } from "../src/parent-consent/repository";
+import { ConsentSecrets } from "../src/parent-consent/crypto";
+import { installConsentPolicy } from "../src/parent-consent/policy";
+import { consentFixture } from "../tests/parent-consent.fixture";
+import { randomBytes } from "node:crypto";
 import type { GeneratedProblem } from "../src/math/engine";
 import {
   normalizeStructuredWork,
@@ -69,6 +75,18 @@ await registerFamilyRoutes(app, {
 await registerSchoolRoutes(app, {
   pool: repository.pool,
   authenticate: developmentAuth(),
+});
+// The parent's menu loads its screens ahead, privacy's consent among them,
+// as the app's own server serves it.
+await installConsentPolicy(repository.pool, consentFixture);
+await registerConsentRoutes(app, {
+  authenticate: developmentAuth(),
+  repository: new ConsentRepository(
+    repository.pool,
+    consentFixture,
+    new ConsentSecrets(randomBytes(32)),
+    true,
+  ),
 });
 await app.listen({ host: "127.0.0.1", port: 4491 });
 const vite = await createServer({
@@ -405,6 +423,8 @@ try {
           errors.push(`console: ${message.text()}`);
       });
       page.on("response", (reply) => {
+        if (reply.status() === 404 && reply.url().includes("/api/"))
+          console.warn(`404 ${new URL(reply.url()).pathname}`);
         if (reply.url().endsWith("/attempts") && reply.status() !== 200)
           errors.push(`attempt ${reply.status()}`);
         if (
