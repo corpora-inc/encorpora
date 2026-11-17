@@ -136,6 +136,46 @@ export async function homeDestination(
   return href;
 }
 
+/** The launcher's one choice when it is a place and the only one; null
+ * when `/` has a choice to offer or something that isn't a place. */
+export function onlyLaunch(
+  me: SignedInMe,
+  groups: readonly PlaceGroup[],
+  remembered: string | null,
+): Launch | null {
+  const all = launches(me, groups, remembered);
+  return all.length === 1 && all[0]!.place ? all[0]! : null;
+}
+
+/**
+ * `/` for an account with exactly one place: that place's own address (its
+ * home, as choosing it would set). Null when `/` has something else to
+ * show: a choice of several places, a first question (start), a gift to
+ * accept or a student's own practice, none of which is a place.
+ */
+export async function onlyPlace(session: AuthSession): Promise<string | null> {
+  // Fresh, as the launcher reads it: a place made a moment ago counts. A
+  // failed read is not "no place": `/` shows the launcher, which reads it
+  // again and says so.
+  const me = await queryClient
+    .fetchQuery({ ...meOptions(session), staleTime: 0 })
+    .catch((error: unknown) => {
+      console.warn(
+        "Your account didn’t load ahead; opening the launcher",
+        error,
+      );
+      return null;
+    });
+  if (!me?.signedIn || me.next === "start") return null;
+  const groups = await loadPlaceGroups(session, me);
+  const only = onlyLaunch(me, groups, rememberedPlace(me.account.id));
+  if (!only) return null;
+  const href = `/${only.path}`;
+  // Where this account's home links go from now on.
+  setHome(me.account.id, href);
+  return href;
+}
+
 async function readMe(session: AuthSession) {
   const me = await request("/me", meSchema, { token: session.token });
   confirmSession(session.token);

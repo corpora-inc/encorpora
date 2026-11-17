@@ -14,11 +14,13 @@ import { launches, type Launch } from "./destination";
 import styles from "./Launcher.module.css";
 
 /**
- * `/` signed in: never a redirect, and only reached by typing the bare
- * address or an old bookmark (every way in opens its destination itself).
- * An account that hasn't started is welcomed, with one way on: its first
- * question at /start. Anyone else sees their places, the one last used
- * first, each with what it is and Open.
+ * `/` signed in: only reached by typing the bare address or an old
+ * bookmark (every way in opens its destination itself). An account with
+ * exactly one place never sees it: the route opens that place
+ * (app/sign-in-gate.ts `toOnlyPlace`). An account that hasn't started is
+ * welcomed, with one way on: its first question at /start. Anyone with
+ * several places sees them, the one last used first, each with what it is
+ * and Open.
  */
 export function Launcher() {
   const me = useQuery(forSession(useSessionOrNull(), meOptions)).data;
@@ -50,7 +52,7 @@ export function Launcher() {
         <WaveMark className={styles.mark} />
         <PageHeader title="Welcome to AMP" />
         <p className={styles.line}>
-          Math at your own level, from counting to calculus.
+          Math at your own level, from counting to precalculus.
         </p>
         <Link
           to="/start"

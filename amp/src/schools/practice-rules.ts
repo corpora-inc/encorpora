@@ -34,9 +34,11 @@ export function practiceCounts(
 }
 
 /** Active minutes as a figure: "<1" for under a minute of real practice
- * (never a 0 beside work done), else whole minutes. */
+ * (never a 0 beside work done, and never "1" for 40 seconds), else whole
+ * minutes. The one rule a family's screens share too
+ * (web/lib/practice-minutes.ts). */
 export function minutesFigure(minutes: number): string {
-  if (minutes > 0 && minutes < 0.5) return "<1";
+  if (minutes > 0 && minutes < 1) return "<1";
   return Math.round(minutes).toLocaleString("en-US");
 }
 /** The unit beside `minutesFigure`: one for "<1" and "1", else many. */

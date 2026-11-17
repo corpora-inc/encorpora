@@ -16,6 +16,7 @@ import type {
   ClassTabId,
   WorkItem,
 } from "../../../../schools/teacher-contracts";
+import { MathText } from "../../../MathText";
 import { promptLine } from "./prompt-line";
 import { Badge, type BadgeTone } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
@@ -435,8 +436,17 @@ export function WorkList({
               </Badge>
             </span>
             {item.prompt ? (
-              <span className={styles.prompt} title={promptLine(item.prompt)}>
-                {promptLine(item.prompt)}
+              // Typeset as practice set it (fractions, mixed numbers,
+              // exponents), on one line of text; the title reads it plainly.
+              <span
+                className={styles.prompt}
+                title={promptLine(item.prompt)}
+                data-work-prompt=""
+              >
+                <MathText
+                  inline
+                  text={item.prompt.replace(/\s+/g, " ").trim()}
+                />
               </span>
             ) : (
               <span className={styles.promptMissing}>

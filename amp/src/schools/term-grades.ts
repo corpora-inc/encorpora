@@ -345,6 +345,9 @@ export async function objectivesBySpan(
   db: Database,
   students: readonly TermStudent[],
   policy: GradePolicy = DEFAULT_GRADE_POLICY,
+  /** Successes on its own that gain a skill: the grade policy's by default;
+   * `EARNED_AFTER` (learning/earned.ts) for what a learner has earned. */
+  successes: number = policy.growth.demonstratedSuccesses,
 ): Promise<Map<string, GainedObjective[]>> {
   if (!students.length) return new Map();
   const { rows } = await db.query(
@@ -356,7 +359,7 @@ export async function objectivesBySpan(
        ) w GROUP BY skill_id
      ) o ON o.day BETWEEN r.day_from AND r.day_to
      ORDER BY o.day DESC,o.skill_id`,
-    [...spans(students), policy.growth.demonstratedSuccesses],
+    [...spans(students), successes],
   );
   const found = new Map<string, GainedObjective[]>();
   for (const { personId, skillId, day } of rows) {

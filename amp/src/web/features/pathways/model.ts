@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { isEarned } from "../../../learning/earned";
+import { learnerWhere } from "../../lib/learner-where";
 import {
   areaIds,
   areaOf,
@@ -270,6 +272,10 @@ const estimateSchema = z.object({
   sd: z.number().nonnegative(),
   answered: z.number().nonnegative(),
   independent: z.number().nonnegative(),
+  // The likely range the server reports (`reportEstimate`), which every
+  // "where" reads (lib/learner-where.ts).
+  low: z.number().finite().optional(),
+  high: z.number().finite().optional(),
 });
 export const frontierSchema = z.object({
   expected: z.number().finite(),
@@ -279,27 +285,31 @@ export const frontierSchema = z.object({
   strandPriorSd: z.number().finite().positive().optional(),
 });
 export type Frontier = z.infer<typeof frontierSchema>;
+/** Where the learner is on the map, in grade bands: the whole grades of
+ * the likely range (`lo`…`hi`) and the best guess (`best`), the same answer
+ * the child page gives (lib/learner-where.ts). */
 export function frontierRange(frontier: Frontier, strand?: string) {
-  const estimate = strand ? frontier.strands[strand] : frontier.overall;
-  if (!estimate || estimate.answered === 0) return null;
+  const where = learnerWhere(
+    strand ? frontier.strands[strand] : frontier.overall,
+  );
+  if (!where) return null;
   return {
-    level: estimate.level,
-    lo: estimate.level - 1.64 * estimate.sd,
-    hi: estimate.level + 1.64 * estimate.sd,
+    level: where.level,
+    lo: where.range.from,
+    hi: where.range.to,
+    best: where.best,
   };
 }
 
 /**
  * The skills that make up "my level" on the map: the estimated range the map
- * outlines and the skills already earned, in the areas the learner has worked
- * in (`wide`), and in the one area with the most work (`close`, for when
- * `wide` spans the whole map). Null until there is an estimate from answers.
+ * outlines (lib/learner-where.ts, as the child page states it), in the areas
+ * the learner has worked in (`wide`), and in the one area with the most work
+ * (`close`, for when `wide` spans the whole map). Skills earned below the
+ * range light the map, but "Where you are" never flies to them. Null until
+ * there is an estimate from answers.
  */
-export function levelRegion(
-  skills: MapSkill[],
-  frontier?: Frontier,
-  evidence: Evidence[] = [],
-) {
+export function levelRegion(skills: MapSkill[], frontier?: Frontier) {
   const range = frontier ? frontierRange(frontier) : null;
   if (!frontier || !range) return null;
   const inRange = skills.filter((s) => {
@@ -307,18 +317,10 @@ export function levelRegion(
     return grade >= range.lo && grade <= range.hi;
   });
   // An estimate past either end of the curriculum: its nearest band.
-  const nearest = Math.min(
-    bands.length - 1,
-    Math.max(0, Math.round(range.level)),
-  );
-  const earned = new Set(
-    evidence.filter((e) => e.independentCorrect > 0).map((e) => e.skillId),
-  );
-  const region = (
-    inRange.length
-      ? inRange
-      : skills.filter((s) => bands.indexOf(s.gradeBand) === nearest)
-  ).concat(skills.filter((s) => earned.has(s.id)));
+  const nearest = Math.min(bands.length - 1, Math.max(0, range.best));
+  const region = inRange.length
+    ? inRange
+    : skills.filter((s) => bands.indexOf(s.gradeBand) === nearest);
   const work = areas.map(() => 0);
   for (const [strand, estimate] of Object.entries(frontier.strands)) {
     const area = areaIds.indexOf(strandAreas[strand]!);
@@ -385,11 +387,25 @@ export function bandsHere(
   return new Set([nearest.index]);
 }
 
+/** The band "Where you are" names on the flat pathway: the best guess, as
+ * the child page names it (lib/learner-where.ts), when it has a row; else
+ * the first band of the likely range. */
+export function hereBand(
+  here: { best?: number } | null,
+  rows: readonly Pick<PlanRow, "index" | "band">[],
+  inRange: ReadonlySet<number>,
+): string | undefined {
+  return (
+    rows.find((row) => row.index === here?.best && inRange.has(row.index)) ??
+    rows.find((row) => inRange.has(row.index))
+  )?.band;
+}
+
 /** A skill on the grades view, in the summary's own words: earned (an
  * independent success), in progress (answered, not yet on its own), or not
  * started. */
 export type SkillState = "earned" | "progress" | "new";
 export function skillState(evidence?: Evidence): SkillState {
-  if (evidence?.independentCorrect) return "earned";
+  if (isEarned(evidence)) return "earned";
   return evidence?.attempts ? "progress" : "new";
 }

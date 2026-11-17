@@ -20,6 +20,8 @@ import { RETURN_LIMIT } from "../features/spaces/returns";
  * - the store apps, to their home screen (`web`);
  * - a signed-in person on a screen that isn't theirs, to their own place
  *   (`toOwnPlace`), never through `/`;
+ * - a signed-in person at `/` with exactly one place, to that place
+ *   (`toOnlyPlace`): there is nothing to choose, so `/` opens it;
  * - a signed-in person on a screen that isn't theirs YET or any more (a
  *   first-run step not reached, a setup step not open, a start already
  *   made), to the one screen that is (`elsewhere`), its address computed
@@ -185,4 +187,16 @@ export async function toOwnPlace(known?: SignedInMe): Promise<never> {
         })
     : "/";
   throw redirect({ href, replace: true });
+}
+
+/**
+ * `/` signed in, for an account with exactly one place (a parent with one
+ * family): one hop to that place, replacing `/`, so a returning parent never
+ * meets a chooser of one. With several places, or none yet, nothing is
+ * thrown and `/` is the launcher (features/home/Launcher.tsx).
+ */
+export async function toOnlyPlace(session: AuthSession): Promise<void> {
+  const { onlyPlace } = await import("../features/home/destination");
+  const href = await onlyPlace(session);
+  if (href) elsewhere(href);
 }

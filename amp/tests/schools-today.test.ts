@@ -607,7 +607,9 @@ test("Today and the week count practice by one rule, minutes under one included"
   const home = todayTodos(input({ family: true, students: recorded }));
   const all = home.find((todo) => todo.id === "good-day");
   assert.equal(all?.title, "All 3 children worked today");
-  assert.equal(all?.detail, "1 active minute.");
+  // 0.4 + 0.3 + 0.2 minutes is under one: never rounded up to "1" (the
+  // one rule every family screen shares, web/lib/practice-minutes.ts).
+  assert.equal(all?.detail, "Under 1 active minute.");
   const one = todayTodos(
     input({ family: true, students: [recorded[2]!, student("Ada")] }),
   );

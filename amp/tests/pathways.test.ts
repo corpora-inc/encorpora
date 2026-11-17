@@ -53,10 +53,13 @@ test("frontier ranges use independent area estimates and omit unmeasured areas",
     overall,
     strands: { algebra: { ...overall, level: 9, sd: 1 } },
   };
+  // The likely range in whole grades, as the child page names it
+  // (lib/learner-where.ts): 9 ± 1.28 sd is Grade 8 to Geometry.
   assert.deepEqual(frontierRange(frontier, "algebra"), {
     level: 9,
-    lo: 7.36,
-    hi: 10.64,
+    lo: 8,
+    hi: 10,
+    best: 9,
   });
   assert.equal(frontierRange(frontier, "geometry"), null);
   assert.equal(

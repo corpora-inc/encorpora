@@ -7,6 +7,7 @@ import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import {
   bandLabel,
   bandsHere,
+  hereBand,
   areaSlot,
   connections,
   planRows,
@@ -79,8 +80,9 @@ export function PathwayPlan({
   evidence: Evidence[];
   selected: string;
   frame?: { id: string } | null;
-  /** The learner's overall estimate, in grade bands; null until there is one. */
-  here: { lo: number; hi: number; level: number } | null;
+  /** Where the learner is (lib/learner-where.ts), in grade bands: the
+   * likely range and the best guess; null until there is an estimate. */
+  here: { lo: number; hi: number; level: number; best?: number } | null;
   /** The estimate is on its way: the bands wait for it (1.5 s at most), so
    * the learner's own band is open from the start, never opening later. */
   levelLoading?: boolean;
@@ -108,7 +110,7 @@ export function PathwayPlan({
     () => (here ? bandsHere(here, rows) : new Set<number>()),
     [here?.lo, here?.hi, here?.level, rows],
   );
-  const firstHere = rows.find((row) => hereBands.has(row.index))?.band;
+  const firstHere = hereBand(here, rows, hereBands);
   const [ready, setReady] = useState(!levelLoading);
   useEffect(() => {
     if (!levelLoading) return setReady(true);
