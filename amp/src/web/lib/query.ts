@@ -10,6 +10,7 @@ import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 import { setAnalyticsSession } from "./analytics";
 import { noteSignedIn } from "./session-hint";
+import { setHomeAccount } from "./home-place";
 import { MOUNT_REFETCH_AFTER_MS, queryClient } from "./query-client";
 export { MOUNT_REFETCH_AFTER_MS, queryClient };
 /** Every first screen waits on the session check and the sign-in
@@ -28,6 +29,7 @@ export const sessionOptions = queryOptions({
     changeSession(undefined, session?.token);
     setAnalyticsSession(session);
     noteSignedIn(!!session);
+    setHomeAccount(session?.accountId ?? null);
     return session;
   },
   staleTime: Infinity,

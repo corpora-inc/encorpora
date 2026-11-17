@@ -1,9 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
 import type { FundedProgram } from "../lib/funded-entry";
-import { useQuery } from "@tanstack/react-query";
-import { useHomePlace } from "../lib/home-place";
-import { sessionOptions } from "../lib/query";
+import { useHomeHref as useHomePlaceHref } from "../lib/home-place";
 
 /**
  * The root (docs/design/ia.md, "Navigation", rule 6). `/` never redirects:
@@ -16,8 +14,9 @@ export const ROOT = "/";
 /** Home for whoever is signed in: the place they last opened, at its own
  * address (lib/home-place.ts); `/` when signed out or none is known yet. */
 function useHomeHref() {
-  const accountId = useQuery(sessionOptions).data?.accountId ?? "";
-  return useHomePlace((state) => state.homes[accountId]) ?? ROOT;
+  // Never the session itself: this module is on the signed-out pitch, which
+  // carries no sign-in code (scripts/check-bundle-budget.ts).
+  return useHomePlaceHref() ?? ROOT;
 }
 
 /** A link home: a logo or "Not now" on a screen outside any place. Signed

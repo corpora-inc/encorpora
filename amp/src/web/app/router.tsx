@@ -58,8 +58,7 @@ import {
   startNavigation,
 } from "../features/onboarding/guard";
 import { rememberPlace } from "../features/onboarding/place-memory";
-import { homeRedirect } from "../features/home/destination";
-import { useHomePlace } from "../lib/home-place";
+import { useHomeHref } from "../lib/home-place";
 import {
   isFundedReturn,
   campaignSearch,
@@ -113,6 +112,13 @@ import {
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+/** A guard's one redirect to the person's destination, its code loaded
+ * only when a guard needs it (it stays out of the app's entry). */
+const homeRedirect = async (
+  ...known: Parameters<
+    typeof import("../features/home/destination").homeRedirect
+  >
+) => (await import("../features/home/destination")).homeRedirect(...known);
 const searchSchema = z
   .object({
     return: z
@@ -157,8 +163,7 @@ const searchSchema = z
   .passthrough();
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
-  const accountId = useQuery(sessionOptions).data?.accountId ?? "";
-  const home = useHomePlace((state) => state.homes[accountId]);
+  const home = useHomeHref();
   // A family's child's map fails at its own address: "Back to map" is it.
   const child = childAddress(window.location.pathname);
   return (
