@@ -23,6 +23,7 @@ import styles from "../account/BillingPage.module.css";
 import { practiceParams } from "../spaces/identity";
 import { qk } from "../../lib/keys";
 import { useSession } from "../../lib/session";
+import { fundedReturnOf, rememberFundedPurchase } from "../../lib/funded-entry";
 
 const intent = z.object({
   id: z.string(),
@@ -338,8 +339,19 @@ export function FundingInvoices({
                         ? "/start/name"
                         : "/start"
                     }
-                    search={{ return: fundingReturn(i.offer.programId ?? "") }}
                     className={buttonClass("primary")}
+                    // The program the learner is set up for, kept with the
+                    // account (the first run reads it, fundedReturnOf).
+                    onClick={() => {
+                      const program = fundingReturn(i.offer.programId ?? "");
+                      if (
+                        program &&
+                        fundedReturnOf(session.accountId) !== program
+                      )
+                        rememberFundedPurchase(session.accountId, {
+                          return: program,
+                        });
+                    }}
                   >
                     Set up learner
                   </Link>

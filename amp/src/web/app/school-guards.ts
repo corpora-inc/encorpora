@@ -91,6 +91,29 @@ export const familyEquivalent =
     );
   };
 
+/** `/school/<org>/calendar`: a school's year is its Calendar tab; a
+ * family's, or a one-class school's, is its class's Settings (the school's
+ * own Settings while it has no class yet). */
+export const calendar = async (context: {
+  location: { pathname: string; searchStr: string; search: unknown };
+  params: unknown;
+}) => {
+  const result = await familyEquivalent("settings")(context);
+  const orgId = (context.params as { org: string }).org;
+  const org = await queryClient
+    .ensureQueryData(orgOptions(result.session, orgId))
+    .catch(logged("The school", null));
+  if (org?.solo !== true) return result;
+  const classes = await queryClient
+    .ensureQueryData(classesOptions(result.session, orgId))
+    .catch(logged("The school's classes", []));
+  return elsewhere(
+    classes[0]
+      ? `/school/${orgId}/classes/${classes[0].id}/settings`
+      : `/school/${orgId}/settings`,
+  );
+};
+
 /** The frame's data, loaded with the screen so its navigation is whole. */
 export async function frameData(session: AuthSession, orgId: string) {
   await Promise.all([

@@ -9,6 +9,8 @@ import { AppError } from "../../lib/AppError";
 import { linkRefused } from "../../lib/link-carry";
 import { invalidateAccount, meOptions } from "../../lib/query";
 import { forSession, useSessionOrNull } from "../../lib/session";
+import { authStep } from "../../app/auth-links";
+import { withQuery } from "../../app/sign-in-gate";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { Toast } from "../../ui/Toast";
@@ -81,7 +83,8 @@ export function ApproveLinkScreen() {
     // sign-in comes straight back to it (lib/link-carry.ts).
     rememberApproval(value, { switching: true });
     try {
-      await signOut("/sign-in?return=family-approval");
+      const back = authStep("sign-in", { return: "family-approval" });
+      await signOut(withQuery(back.to, back.search));
     } catch (failure) {
       console.error("Signing out didn’t finish", failure);
       setError("Signing out didn’t finish. Try again in a moment.");
@@ -114,7 +117,6 @@ export function ApproveLinkScreen() {
   const view = lookup.data;
   const email = me?.signedIn ? me.account.email : null;
   const child = view?.childName ?? "your child";
-  const search = { return: "family-approval" } as never;
   return (
     <main className={school.inviteCard} data-dense>
       <Brand for={null} />
@@ -211,16 +213,14 @@ export function ApproveLinkScreen() {
           ) : (
             <div className={school.inviteActions}>
               <Link
-                to="/sign-up"
-                search={search}
+                {...authStep("sign-up", { return: "family-approval" })}
                 className={buttonClass("primary")}
                 onClick={carry}
               >
                 Create an account
               </Link>
               <Link
-                to="/sign-in"
-                search={search}
+                {...authStep("sign-in", { return: "family-approval" })}
                 className={buttonClass("secondary")}
                 onClick={carry}
               >

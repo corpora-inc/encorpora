@@ -3,14 +3,14 @@
   "counts": {
     "redirects": 1,
     "validateSearch": 7,
-    "searchHandoffs": 69,
-    "navigatingEffects": 8,
+    "searchHandoffs": 66,
+    "navigatingEffects": 7,
     "renderNavigate": 4,
     "silentCatches": 19,
     "sessionProps": 19,
     "sessionReads": 8,
     "inlineQueryKeys": 9,
-    "nativeControls": 5
+    "nativeControls": 4
   },
   "files": {
     "redirects": {
@@ -21,10 +21,6 @@
     },
     "searchHandoffs": {
       "features/account/AccountReady.tsx": 2,
-      "features/account/DeleteAccount.tsx": 1,
-      "features/family-approval/ApproveLinkScreen.tsx": 2,
-      "features/family/redirects.ts": 1,
-      "features/funding/FundingInvoices.tsx": 1,
       "features/inventory/InventoryScreen.tsx": 3,
       "features/pitch/targets.ts": 1,
       "features/profiles/api.ts": 1,
@@ -62,6 +58,8 @@
       "features/school/StudentsScreen.tsx": 1,
       "features/schools/PublicFrame.tsx": 1,
       "features/schools/SchoolsScreen.tsx": 2,
+      "LessonIndex.tsx": 1,
+      "LessonLibrary.tsx": 1,
       "nav/root.tsx": 1,
       "ui/RowList.tsx": 1,
       "ui/Tabs.tsx": 2

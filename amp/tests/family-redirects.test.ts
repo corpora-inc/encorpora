@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { SignedInMe } from "../src/account/contracts.js";
+import { defaultParseSearch } from "@tanstack/react-router";
 import {
-  familyClassTarget,
-  familyOrgTarget,
+  familyClassTarget as classTarget,
+  familyOrgTarget as orgTarget,
+  type FamilyTarget,
   parentFamilyAt,
   peopleOf,
   sheetHop,
@@ -17,6 +19,22 @@ import {
  * layers carried, a child named by their roster person opened as their page,
  * and another family's child left to the tutoring group.
  */
+
+/** A target's href read back as the router reads it: its path, query
+ * (each value its own type) and hash, with any history state. */
+function parts({ href, state }: FamilyTarget) {
+  const url = new URL(href, "https://amp.invalid");
+  return {
+    to: url.pathname,
+    search: { ...defaultParseSearch(url.search) },
+    ...(url.hash ? { hash: url.hash.slice(1) } : {}),
+    ...(state ? { state } : {}),
+  };
+}
+const familyClassTarget = (...args: Parameters<typeof classTarget>) =>
+  parts(classTarget(...args));
+const familyOrgTarget = (...args: Parameters<typeof orgTarget>) =>
+  parts(orgTarget(...args));
 
 const F = "00000000-0000-4000-8000-000000000001";
 const C = "00000000-0000-4000-8000-000000000002";
