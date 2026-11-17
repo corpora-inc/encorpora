@@ -107,12 +107,14 @@ const withLayers = (
 });
 
 /**
- * Pathways from before its layers: a skill's own address (`/pathways/<skill>`,
- * `?skill=<skill>`), a lesson (`?lesson=`) and an old shared stack
- * (`?open=`) land on the map whose learner the address names (a parent's
- * goes to their child's address, olderLearningHref), with their
- * layers in that map's store: the skill under any layers the address held,
- * then a lesson it names over them.
+ * Pathways with layers in its query: a skill (`?skill=<skill>`), a lesson
+ * (`?lesson=`) and an old shared stack (`?open=`), and a skill's address
+ * for a parent whose map is their child's. Each lands on the map whose
+ * learner the address names (a parent's goes to their child's address,
+ * olderLearningHref): the skill under any layers the address held, then a
+ * lesson it names over them. Your own map names its newest skill in its
+ * address (`/pathways/<skill>`) and keeps that skill, with what is over it,
+ * in its store; a child's map keeps the whole stack in its store.
  */
 async function pathwaysTarget(
   search: Record<string, unknown>,
@@ -129,7 +131,7 @@ async function pathwaysTarget(
   // for the map's own view store (features/pathways/map-view.ts).
   const map = withoutLayerKeys(screen, search, MAP_KEYS);
   const [path, query = ""] = map.split("?");
-  const href =
+  let href =
     (await olderLearningHref({
       pathname: path!,
       searchStr: query ? `?${query}` : "",
@@ -138,6 +140,13 @@ async function pathwaysTarget(
     await (
       await import("../features/pathways/legacy-addresses")
     ).carryMapView(href, search);
+  const [landed, rest = ""] = href.split("?");
+  const top = stack.map((layer) => layer.kind).lastIndexOf("skill");
+  if (landed === "/pathways" && top >= 0) {
+    href = `/pathways/${encodeURIComponent(stack[top]!.id)}${rest ? `?${rest}` : ""}`;
+    // The store keeps the skill at the foot of what is over it.
+    stack = stack.slice(top);
+  }
   return { href, layers: stack.slice(0, MAX_LAYERS) };
 }
 
@@ -707,8 +716,19 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   },
   {
     from: "/pathways/$skill",
-    about: "a skill's own address",
-    to: ({ search, params }) => pathwaysTarget(search, params.skill),
+    about:
+      "a skill's address with layers or a view in its query, or a parent's whose map is their child's",
+    // Your own map at this address with nothing in its query is the
+    // screen itself: no hop.
+    to: async ({ search, params, pathname, searchStr }) => {
+      const target = await pathwaysTarget(search, params.skill);
+      return typeof target === "object" &&
+        "href" in target &&
+        target.href === `${pathname.replace(/\/+$/, "")}${searchStr}` &&
+        (target.layers?.length ?? 0) <= 1
+        ? undefined
+        : target;
+    },
   },
 
   // A film opened as help for a problem, from before that had its path
