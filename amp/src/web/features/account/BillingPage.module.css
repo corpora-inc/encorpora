@@ -122,11 +122,13 @@
   gap: 16px;
 }
 /* Billing's last line, under the Receipts row that already closes the
-   list with its rule: no divider of its own (two rules framed an empty
-   band). */
+   list with its rule: no divider of its own. */
 .support {
   font-size: 14px;
   line-height: 1.6;
+}
+.page > .support {
+  margin: var(--space-5) 0 0;
 }
 .support a {
   color: var(--color-primary);
