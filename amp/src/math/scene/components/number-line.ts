@@ -419,6 +419,16 @@ registerComponent("numberLine", {
           });
         continue;
       }
+      // A hop landing on the point already names its value.
+      if (
+        m.label === true &&
+        (c.hops ?? []).some(
+          (hop) =>
+            (hop.landing ?? "derived") !== "none" &&
+            clean(hop.from + hop.by) === m.at,
+        )
+      )
+        continue;
       // Another hop landing just beside the point leaves no room above the
       // axis between the arcs and that hop's head. The value then reads in
       // the number row, under its dot, in place of the tick numbers it

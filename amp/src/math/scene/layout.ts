@@ -748,8 +748,20 @@ const emBox = (x: number, y: number, t: Typeset): Box => ({
   y1: y + t.descent,
 });
 
-/** Place labels: fixed ones first, optional ones only where clear, then
- * labels with candidate positions at their first clear candidate. */
+/** Places on a ring around an anchor, as [dx, dy, ax, ay] candidates. */
+const ring = (d: number): [number, number, -1 | 0 | 1, -1 | 0 | 1][] => [
+  [d, 0, -1, 0],
+  [-d, 0, 1, 0],
+  [0, -d, 0, 1],
+  [0, d, 0, -1],
+  [d, -d, -1, 1],
+  [-d, -d, 1, 1],
+  [d, d, -1, -1],
+  [-d, d, 1, -1],
+];
+
+/** Place labels: fixed ones first, then labels with candidate positions at
+ * their first clear candidate, then optional ones only where clear. */
 function placeTexts(
   texts: PendingText[],
   obstacles: Box[],
@@ -799,7 +811,10 @@ function placeTexts(
       box: emBox(x, y, t.t),
     });
   };
-  const order = (t: PendingText) => (t.p.place ? 2 : t.p.optional ? 1 : 0);
+  // Fixed labels first, then labels with candidate places, then optional
+  // labels (tick numbers), which give way to both rather than push a
+  // placed label onto a mark or another label.
+  const order = (t: PendingText) => (t.p.optional ? 2 : t.p.place ? 1 : 0);
   for (const t of [...texts].sort((a, b) => order(a) - order(b))) {
     if (t.p.place) {
       // Candidates are relative to the anchor before alignment.
@@ -832,6 +847,30 @@ function placeTexts(
       if (!chosen && t.p.optional) {
         dropped.push(t.id);
         continue;
+      }
+      if (!chosen) {
+        // None of the author's places is clear: look a little further out,
+        // ring by ring around the anchor, before letting the label touch.
+        for (const d of [14, 22, 32]) {
+          for (const [dx, dy, cx, cy] of ring(d)) {
+            const x = anchorX + dx - ((cx + 1) / 2) * t.t.width,
+              y = anchorY + dy - ((cy + 1) / 2) * h + t.t.ascent;
+            if (!clear(inkBox(x, y, t.t))) continue;
+            const e = emBox(x, y, t.t);
+            const grownBy =
+              ratio({
+                x0: Math.min(extent.x0, e.x0),
+                y0: Math.min(extent.y0, e.y0),
+                x1: Math.max(extent.x1, e.x1),
+                y1: Math.max(extent.y1, e.y1),
+              }) - base;
+            if (grownBy < cost - 1e-6) {
+              cost = grownBy;
+              chosen = [x, y];
+            }
+          }
+          if (chosen) break;
+        }
       }
       if (!chosen) {
         // Nowhere is clear: the candidate that touches least (another label
@@ -1010,7 +1049,28 @@ export function layoutScene(
   if (best) {
     s = best.s;
     result = best.r;
-  } else result = pass(s);
+  } else {
+    // Nothing fits the height: parts sized in pixels (stacked dots, rows of
+    // text) are taller than the box at any scale. Shrinking the scale then
+    // only narrows the figure to a sliver, so keep the scale that fills the
+    // width and let the figure stand taller than its cap.
+    const wide = (r: ReturnType<typeof pass>) =>
+      Math.min(r.mw > 1e-9 ? (W - r.over.x) / r.mw : Infinity, cap);
+    let w = wide(probe);
+    if (!Number.isFinite(w)) w = Math.min(cap, 40);
+    w = Math.max(w, 1e-9);
+    let kept: { s: number; r: ReturnType<typeof pass> } | undefined;
+    for (let i = 0; i < 10; i++) {
+      const r = pass(w);
+      const fitsWidth = r.box.x1 - r.box.x0 <= W + 0.5;
+      if (fitsWidth && (!kept || w > kept.s)) kept = { s: w, r };
+      const next = Math.max(1e-9, wide(r));
+      if (Math.abs(next - w) / w < 0.003) break;
+      w = fitsWidth ? next : Math.min(next, w * 0.97);
+    }
+    s = kept?.s ?? s;
+    result = kept?.r ?? pass(s);
+  }
   const { all, box } = result;
   const dx = PAD - box.x0,
     dy = PAD - box.y0;
