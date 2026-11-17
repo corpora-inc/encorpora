@@ -1,20 +1,19 @@
 {
   "about": "Frontend anti-pattern counts in src/web; they only fall (amp/AGENTS.md, Frontend architecture). Enforced by tests/architecture-ratchet.test.ts; `files` locates the counts for its failure messages.",
   "counts": {
-    "redirects": 5,
+    "redirects": 4,
     "validateSearch": 9,
-    "searchHandoffs": 102,
+    "searchHandoffs": 100,
     "navigatingEffects": 11,
     "renderNavigate": 12,
-    "silentCatches": 122,
+    "silentCatches": 121,
     "sessionProps": 40,
     "sessionReads": 29,
-    "inlineQueryKeys": 28,
+    "inlineQueryKeys": 27,
     "nativeControls": 21
   },
   "files": {
     "redirects": {
-      "features/home/destination.ts": 1,
       "features/pay/legacy.ts": 2,
       "features/profiles/practice-mode.ts": 1,
       "nav/legacy-layers.ts": 1
@@ -26,7 +25,6 @@
       "app/router.tsx": 1,
       "features/account/AccountReady.tsx": 3,
       "features/account/DeleteAccount.tsx": 1,
-      "features/design/DesignScreen.tsx": 2,
       "features/family-approval/ApproveLinkScreen.tsx": 2,
       "features/family/FamilyFrame.tsx": 1,
       "features/family/Records.tsx": 1,
@@ -123,7 +121,6 @@
       "Calculator.tsx": 3,
       "capability-entry.ts": 1,
       "FamilyCenter.tsx": 2,
-      "features/auth/passkey.ts": 1,
       "features/lessons/publications.ts": 1,
       "features/me/api.ts": 1,
       "features/practice/feedback-preferences.ts": 8,
@@ -222,7 +219,6 @@
     "inlineQueryKeys": {
       "app/router.tsx": 2,
       "features/films/FilmScreen.tsx": 1,
-      "features/onboarding/Starter.tsx": 1,
       "features/practice/AnswerFeedback.tsx": 1,
       "features/practice/practice-settings.ts": 1,
       "features/school/classes/teacher-api.ts": 1,
