@@ -44,7 +44,9 @@ try {
     .waitFor();
   assert.equal(new URL(page.url()).pathname, "/sign-in");
   assert.equal(await page.title(), "Sign In | AMP");
-  assert.equal(new URL(page.url()).searchParams.get("error"), "link_failed");
+  // A provider's error is read once, then leaves the address
+  // (app/third-party-returns.ts).
+  assert.equal(new URL(page.url()).searchParams.get("error"), null);
   await page.goto("http://127.0.0.1:4394/?reset-password&error=INVALID_TOKEN");
   await page
     .getByRole("heading", { name: "Reset your password", exact: true })

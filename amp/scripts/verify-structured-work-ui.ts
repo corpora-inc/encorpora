@@ -17,6 +17,7 @@ import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
+import { registerSchoolRoutes } from "../src/schools/routes";
 import type { GeneratedProblem } from "../src/math/engine";
 import {
   normalizeStructuredWork,
@@ -62,6 +63,12 @@ await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate: developmentAuth(),
   development: true,
+});
+// The family's screens read its place's school year from the school routes,
+// as the app's own server serves them (src/server/main.ts).
+await registerSchoolRoutes(app, {
+  pool: repository.pool,
+  authenticate: developmentAuth(),
 });
 await app.listen({ host: "127.0.0.1", port: 4491 });
 const vite = await createServer({

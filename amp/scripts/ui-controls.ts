@@ -84,12 +84,28 @@ export async function chooseLearner(page: Page, id: string) {
  */
 export async function practiceHere(page: Page, id: string) {
   const drawer = await openMenu(page);
-  await drawer
-    .getByRole("navigation", { name: "AMP navigation" })
+  const nav = drawer.getByRole("navigation", { name: "AMP navigation" });
+  await nav
     .getByRole("link", { name: "Today", exact: true })
-    .click();
+    .click()
+    .catch(async (error: unknown) => {
+      throw new Error(
+        `practiceHere: no Today in the menu at ${page.url()}; it offers ${JSON.stringify(await nav.getByRole("link").allTextContents())}`,
+        { cause: error },
+      );
+    });
   await drawer.waitFor({ state: "detached" });
   // The child's row offers it, and so may a task of theirs on Today.
+  const handed = page
+    .waitForResponse((response) =>
+      new URL(response.url()).pathname.endsWith(
+        `/family/learners/${id}/practice-here`,
+      ),
+    )
+    .then(async (response) =>
+      response.ok() ? "" : ` (${response.status()} ${await response.text()})`,
+    )
+    .catch(() => "");
   await page
     .locator(`[data-practice-here=${JSON.stringify(id)}]`)
     .first()
@@ -102,7 +118,7 @@ export async function practiceHere(page: Page, id: string) {
         .screenshot({ path: "artifacts/practice-here-failure.png" })
         .catch(() => undefined);
       throw new Error(
-        `practiceHere: still at ${page.url()}, want /practice/${id}`,
+        `practiceHere: still at ${page.url()}, want /practice/${id}${await handed}`,
         { cause: error },
       );
     });

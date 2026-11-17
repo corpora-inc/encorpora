@@ -179,7 +179,8 @@ try {
         });
         assert.equal(mixed.statusCode, 200, mixed.body);
         await page.goto(fixture.origin + `/family/${familyId}/settings`);
-        await page.locator(`[data-settings-child="${learnerId}"]`).click();
+        // A child's settings open from their name, over Settings.
+        await page.locator(`[data-child-settings-open="${learnerId}"]`).click();
         const toggle = page.getByRole("checkbox", {
           name: "SAT Math focus",
           exact: true,
@@ -242,16 +243,25 @@ try {
         assert.equal(await toggle.isChecked(), true, "Focus survives reload");
 
         // Each child has a separate setting in the family's Settings.
+        // The open child's settings close to Settings first (a sheet keeps
+        // its place in history, so a reload would reopen it).
+        await page.keyboard.press("Escape");
+        await page.getByRole("dialog").waitFor({ state: "detached" });
         await page.goto(fixture.origin + `/family/${familyId}/settings`);
-        await page.locator(`[data-settings-child="${siblingId}"]`).click();
+        await page.locator(`[data-child-settings-open="${siblingId}"]`).click();
         await toggle.waitFor();
         assert.equal(
           await toggle.isChecked(),
           false,
           "A sibling keeps their own setting",
         );
+        // The open child's settings close to Settings first (a sheet keeps
+        // its place in history, so a reload would reopen it).
+        await page.keyboard.press("Escape");
+        await page.getByRole("dialog").waitFor({ state: "detached" });
         await page.goto(fixture.origin + `/family/${familyId}/settings`);
-        await page.locator(`[data-settings-child="${learnerId}"]`).click();
+        // A child's settings open from their name, over Settings.
+        await page.locator(`[data-child-settings-open="${learnerId}"]`).click();
         await toggle.waitFor();
         assert.equal(await toggle.isChecked(), true);
         await page.evaluate(

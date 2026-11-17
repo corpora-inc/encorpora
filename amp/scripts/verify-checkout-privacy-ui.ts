@@ -37,14 +37,15 @@ await writeFile(
 import React,{useState}from'react';import{createRoot}from'react-dom/client';
 import{createRootRoute,createRoute,createRouter,RouterProvider,Outlet}from'@tanstack/react-router';
 import{QueryClientProvider,useQuery}from'@tanstack/react-query';
-import{queryClient,meOptions}from'../../src/web/lib/query';
+import{queryClient,meOptions,sessionOptions}from'../../src/web/lib/query';
 import{PlanStep}from'../../src/web/features/onboarding/PlanStep';
 import{PageFrame}from'../../src/web/ui/PageFrame';import'../../src/web/app/styles';
-function Screen(){const[identity,setIdentity]=useState('amp|parent');(window as any).switchAccount=setIdentity;
+const sessionOf=(id:string)=>({accountId:id,token:id==='amp|parent'?'synthetic-parent':'synthetic-other'});queryClient.setQueryData(sessionOptions.queryKey,sessionOf('amp|parent'));
+function Screen(){const[identity,setIdentity]=useState('amp|parent');(window as any).switchAccount=(id:string)=>{queryClient.setQueryData(sessionOptions.queryKey,sessionOf(id));setIdentity(id);};
 const token=identity==='amp|parent'?'synthetic-parent':'synthetic-other';
 const session={accountId:identity,token};const result=useQuery(meOptions(session));
 if(!result.data?.signedIn)return <p role="status">Loading family…</p>;
-return <PageFrame centered><PlanStep key={identity} session={session} /></PageFrame>;}
+return <PageFrame centered><PlanStep key={identity} /></PageFrame>;}
 const root=createRootRoute({component:Outlet});const child=createRoute({getParentRoute:()=>root,path:'/start/plan',component:Screen});
 const router=createRouter({routeTree:root.addChildren([child])});
 createRoot(document.getElementById('root')!).render(<QueryClientProvider client={queryClient}><RouterProvider router={router}/></QueryClientProvider>);`,
@@ -146,14 +147,11 @@ try {
         name: "Continue to secure checkout",
         exact: true,
       });
-      const parent = page.getByRole("checkbox", {
-        name: /I am this learner’s parent/,
-      });
-      await parent.waitFor();
-      assert.ok(await checkout.isDisabled());
-      assert.equal(await page.locator("details[open]").count(), 0);
-      await parent.click();
+      // No parent acknowledgement before paying: card checkout has no
+      // consent or email gate (#2402, 16 CFR 312.5(c)(7)).
+      await checkout.waitFor();
       assert.ok(await checkout.isEnabled());
+      assert.equal(await page.locator("details[open]").count(), 0);
       await page.screenshot({
         path: new URL(`closed-${width}-${theme}.png`, directory).pathname,
         fullPage: true,
@@ -184,10 +182,6 @@ try {
       await page
         .getByRole("button", { name: "Opening secure checkout…" })
         .waitFor();
-      assert.ok(
-        await parent.isDisabled(),
-        "consent control stays locked during payment startup",
-      );
       releaseCheckout();
       await page.getByRole("alert").waitFor();
       await page.waitForFunction(() =>
@@ -219,20 +213,12 @@ try {
         "checkout does not request an advertising choice",
       );
 
+      // Another account on this device: its own checkout, still with no
+      // advertising choice asked.
       await page.goto(origin + "/start/plan");
-      await parent.waitFor();
-      assert.equal(await parent.isChecked(), false);
-      await parent.click();
+      await checkout.waitFor();
       await page.evaluate(() => (window as any).switchAccount("amp|other"));
-      await page.waitForFunction(
-        () =>
-          document.querySelector<HTMLInputElement>('input[type="checkbox"]')
-            ?.checked === false,
-      );
-      assert.ok(
-        await checkout.isDisabled(),
-        "another account must acknowledge the parent notice itself",
-      );
+      await checkout.waitFor();
       assert.equal(
         await page.locator("[data-purchase-measurement]").count(),
         0,
@@ -261,7 +247,7 @@ try {
       await page.close();
     }
   console.log(
-    "Checkout: no advertising prompt, preference requests or permission grants; parent acknowledgement, payment failure/retry, account isolation and 320/390/768/1280 light/dark passed.",
+    "Checkout: no advertising prompt, preference requests or permission grants; payment failure/retry, account isolation and 320/390/768/1280 light/dark passed.",
   );
 } catch (error) {
   for (const context of browser?.contexts() ?? [])
