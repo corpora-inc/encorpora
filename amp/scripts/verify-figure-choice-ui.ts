@@ -368,9 +368,9 @@ try {
           .waitFor();
         await page.waitForTimeout(300);
         if (releaseProgress) {
-          const text = page.locator(
-            "[data-answer-feedback] [aria-busy] > span:has(> small)",
-          );
+          // The wait is the loaded block's shape (AnswerFeedback.tsx): the
+          // strength arriving moves nothing.
+          const text = page.locator("[data-answer-feedback] [data-strength]");
           await page
             .locator('[data-answer-feedback] [aria-busy="true"]')
             .waitFor();

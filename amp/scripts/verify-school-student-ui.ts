@@ -350,7 +350,10 @@ try {
       assert.equal(await page.getByText("Show grade numbers").count(), 0);
       await page.getByText("Fixture Academy").waitFor();
       await page.getByText("Period 1").waitFor();
-      await page.getByRole("button", { name: "Sign out" }).waitFor();
+      await page
+        .getByRole("dialog")
+        .getByRole("button", { name: /^Sign out/ })
+        .waitFor();
       await noOverflow(page, `menu ${label}`);
       const sheet = page.getByRole("dialog", {
         name: "Adaptive Math Pathways",
@@ -528,7 +531,11 @@ try {
     });
     await studentHome(page);
     await drawer(page);
-    await page.getByRole("button", { name: "Sign out" }).click();
+    // The drawer's Sign out (the bar's own sits behind the open drawer).
+    await page
+      .getByRole("dialog")
+      .getByRole("button", { name: /^Sign out/ })
+      .click();
     await page.waitForURL("**/join");
     // Nothing of the student's stays on the shared device: their session,
     // and no current learner kept for their account (learner-store.ts keeps
