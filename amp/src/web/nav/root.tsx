@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "@tanstack/react-router";
+import { useSessionOrNull } from "../lib/session";
 import type { ComponentProps } from "react";
 import type { FundedProgram } from "../lib/funded-entry";
-import { useQuery } from "@tanstack/react-query";
 import { useHomePlace } from "../lib/home-place";
-import { sessionOptions } from "../lib/query";
 
 /**
  * The root (docs/design/ia.md, "Navigation", rule 6). `/` never redirects:
@@ -16,7 +15,7 @@ export const ROOT = "/";
 /** Home for whoever is signed in: the place they last opened, at its own
  * address (lib/home-place.ts); `/` when signed out or none is known yet. */
 function useHomeHref() {
-  const accountId = useQuery(sessionOptions).data?.accountId ?? "";
+  const accountId = useSessionOrNull()?.accountId ?? "";
   return useHomePlace((state) => state.homes[accountId]) ?? ROOT;
 }
 

@@ -175,11 +175,7 @@ function Billing({ session }: { session: AuthSession }) {
           verified={!account.account.confirmationRequired}
         />
       )}
-      <Receipts
-        session={session}
-        selected={search.receipt}
-        onSelect={receipt}
-      />
+      <Receipts selected={search.receipt} onSelect={receipt} />
       <footer className={styles.support}>
         Questions about a payment?{" "}
         <a href="mailto:support@corpora.inc">support@corpora.inc</a>
