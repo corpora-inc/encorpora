@@ -23,6 +23,7 @@ import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
 import { createGoogleAnalytics } from "../../analytics/google-analytics";
 import { isStudentDevice } from "./student-device";
+import { arrivalTitleLabels } from "./program-choice";
 import { currentBrowserKind } from "../../analytics/browser-kind";
 import { keepaliveFetch } from "./keepalive";
 import { mediaMatches } from "./media-query";
@@ -57,6 +58,7 @@ export function trackGooglePage(): void {
   (google ??= createGoogleAnalytics({
     home: () => (pitchShown ? "pitch" : "app"),
     blocked: isStudentDevice,
+    arrival: arrivalTitleLabels,
   })).navigate();
 }
 

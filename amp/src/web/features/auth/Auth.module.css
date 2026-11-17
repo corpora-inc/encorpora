@@ -148,3 +148,21 @@
     margin-block: 0 auto;
   }
 }
+/* The sign-up code: what was sent where, then the code and its two ways
+   out, in the space the password form held. */
+.codeHint {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--color-muted-text);
+  overflow-wrap: anywhere;
+}
+.codeHint strong {
+  color: var(--color-on-surface);
+}
+.codeActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+}

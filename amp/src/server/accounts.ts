@@ -20,7 +20,7 @@ import {
   SECURITY_FRESH_SECONDS,
 } from "./account-security";
 import { betterAuth } from "better-auth";
-import { bearer, twoFactor } from "better-auth/plugins";
+import { bearer, emailOTP, twoFactor } from "better-auth/plugins";
 import { fromNodeHeaders } from "better-auth/node";
 import { APIError } from "better-auth/api";
 import { passkey } from "@better-auth/passkey";
@@ -32,6 +32,9 @@ import {
   existingAccountEmail,
   resetPasswordEmail,
   signInLink,
+  CODE_VERIFY_PATH,
+  SIGN_UP_CODE_LENGTH,
+  SIGN_UP_CODE_SECONDS,
   signInMethodLookup,
 } from "./sign-in-methods";
 import { tryGetCurrentAuthEndpointContext } from "@better-auth/core/context";
@@ -52,6 +55,7 @@ import { brand } from "../brand";
 import {
   deliverable,
   linkedEmail,
+  signUpCodeEmail,
   type AccountMail,
   type Email,
 } from "../email/email.js";
@@ -294,6 +298,57 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       throw error;
     }
   };
+  /** The sign-up code: the one email that proves a new email-and-password
+   * account's address, typed on the sign-up screen (any browser, any app's
+   * webview; no link to open in the right one). Only the recipient and the
+   * code go in, so the shared email layout can take it over whole. */
+  const sendSignUpCode = async (to: string, code: string) => {
+    const message = signUpCodeEmail({
+      code,
+      origin: config.baseURL,
+      expiresInMinutes: SIGN_UP_CODE_SECONDS / 60,
+    });
+    try {
+      await sendEmail(to, message);
+      console.info("[accounts] sign-up code email sent");
+    } catch (error) {
+      console.error("[accounts] sign-up code email not sent", { error });
+      throw error;
+    }
+  };
+  // A code confirms a new email-and-password account's own address. It is
+  // only ever made for whoever just proved that account's password: the
+  // sign-up that created it (the user's `create` hook, never a repeat
+  // sign-up of an existing address, which would hand its first registrant's
+  // account to whoever typed the code) or a sign-in with its password
+  // (`sendVerificationEmail` on `/sign-in/email`). Nothing else asks for one:
+  // the plugin's own send endpoint is off (`disabledPaths`), and a confirmed
+  // address is never signed in by a code (`beforeEmailVerification`).
+  const codePlugin = emailOTP({
+    otpLength: SIGN_UP_CODE_LENGTH,
+    expiresIn: SIGN_UP_CODE_SECONDS,
+    allowedAttempts: 5,
+    storeOTP: "hashed",
+    disableSignUp: true,
+    sendVerificationOnSignUp: false,
+    async sendVerificationOTP() {
+      console.error(
+        "[accounts] a sign-up code was asked for outside its flows",
+      );
+    },
+  });
+  /** Makes a fresh code for this unconfirmed address and mails it. A failure
+   * is logged; signing in again with the password sends another. */
+  const mailSignUpCode = async (email: string) => {
+    try {
+      const code = await auth.api.createVerificationOTP({
+        body: { email, type: "email-verification" },
+      });
+      await sendSignUpCode(email, code);
+    } catch (error) {
+      console.error("[accounts] sign-up code not made or sent", { error });
+    }
+  };
   const { origin, hostname } = new URL(config.baseURL);
   const twoFactorPlugin = twoFactor({
     issuer: brand.name,
@@ -362,7 +417,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         ? path.slice("/callback/".length)
         : path?.includes("passkey")
           ? "passkey"
-          : path === "/sign-up/email"
+          : path === "/sign-up/email" || path === CODE_VERIFY_PATH
             ? "password"
             : null;
       if (
@@ -549,22 +604,50 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
               accountId: `${ACCOUNT_PREFIX}${user.id}`,
               step: "account_created",
             });
+            // A new email-and-password account: its code, typed on the
+            // sign-up screen, confirms the address and signs in.
+            if (
+              config.production &&
+              context?.path === "/sign-up/email" &&
+              !user.emailVerified
+            )
+              await mailSignUpCode(user.email);
             await enroll(user.id, context?.headers, context?.path);
           },
         },
       },
     },
     emailVerification: {
+      // A code confirms an unconfirmed address only (`codePlugin`); an
+      // address already confirmed is never signed in by a code.
+      beforeEmailVerification: async (user, request) => {
+        if (
+          user.emailVerified &&
+          request &&
+          new URL(request.url).pathname.endsWith(CODE_VERIFY_PATH)
+        )
+          throw new APIError("BAD_REQUEST", {
+            code: "INVALID_OTP",
+            message: "Invalid OTP",
+          });
+      },
       afterEmailVerification: async (user) => {
         if (config.parentFollowup) await markSignupVerified(pool, user.id);
       },
-      sendOnSignUp: true,
-      // An unconfirmed parent who signs in gets a fresh link (no lockout).
+      // A new email-and-password account confirms its address with a code
+      // typed on the sign-up screen (`codePlugin`), not a link; an
+      // unconfirmed one that signs in asks for a fresh code there.
+      sendOnSignUp: false,
+      // A sign-in with the password: a fresh code (below).
       sendOnSignIn: true,
       autoSignInAfterVerification: true,
       sendVerificationEmail: async ({ user, url }, request) => {
         // A school invitation already confirmed it: no second mail.
         if (user.emailVerified) return;
+        // An unconfirmed account signing in with its password: the code
+        // form takes over in place, so it gets a code, not a link.
+        if (request && new URL(request.url).pathname.endsWith("/sign-in/email"))
+          return mailSignUpCode(user.email);
         const school =
           !(await isFamilyInvitee(pool, user.email)) &&
           (isSchoolSignup(request?.headers.get("cookie")) ||
@@ -609,6 +692,19 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       passkeyPlugin,
       signupPlugin,
       signInMethodLookup(pool, methodsEnabled),
+      codePlugin,
+    ],
+    // The code plugin's other ways in (a code instead of a password, a code
+    // reset, a code email change) are not AMP's sign-in methods.
+    disabledPaths: [
+      "/sign-in/email-otp",
+      "/email-otp/send-verification-otp",
+      "/email-otp/check-verification-otp",
+      "/email-otp/request-password-reset",
+      "/forget-password/email-otp",
+      "/email-otp/reset-password",
+      "/email-otp/request-email-change",
+      "/email-otp/change-email",
     ],
     rateLimit: {
       enabled: true,
@@ -626,6 +722,9 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         "/passkey-signup/options": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
         "/passkey-signup/verify": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
         "/sign-in-methods": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
+        // A whole school or carrier can share an address; guessing is held
+        // by the code's own five tries (`codePlugin`).
+        "/email-otp/verify-email": { window: 60, max: 120 },
       },
     },
     // Internal failures reach clients as a generic 500; log the cause.

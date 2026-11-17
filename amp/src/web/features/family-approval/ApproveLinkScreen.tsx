@@ -9,7 +9,7 @@ import { AppError } from "../../lib/AppError";
 import { linkRefused } from "../../lib/link-carry";
 import { invalidateAccount, meOptions } from "../../lib/query";
 import { forSession, useSessionOrNull } from "../../lib/session";
-import { authStep } from "../../app/auth-links";
+import { authReturn } from "../../app/auth-links";
 import { withQuery } from "../../app/sign-in-gate";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
@@ -83,7 +83,7 @@ export function ApproveLinkScreen() {
     // sign-in comes straight back to it (lib/link-carry.ts).
     rememberApproval(value, { switching: true });
     try {
-      const back = authStep("sign-in", { return: "family-approval" });
+      const back = authReturn("sign-in", "family-approval");
       await signOut(withQuery(back.to, back.search));
     } catch (failure) {
       console.error("Signing out didn’t finish", failure);
@@ -213,14 +213,14 @@ export function ApproveLinkScreen() {
           ) : (
             <div className={school.inviteActions}>
               <Link
-                {...authStep("sign-up", { return: "family-approval" })}
+                {...authReturn("sign-up", "family-approval")}
                 className={buttonClass("primary")}
                 onClick={carry}
               >
                 Create an account
               </Link>
               <Link
-                {...authStep("sign-in", { return: "family-approval" })}
+                {...authReturn("sign-in", "family-approval")}
                 className={buttonClass("secondary")}
                 onClick={carry}
               >

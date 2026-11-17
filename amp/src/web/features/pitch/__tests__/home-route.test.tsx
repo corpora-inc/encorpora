@@ -168,12 +168,14 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
     fireEvent.click(screen.getAllByRole("button", { name: "Try it free" })[0]!),
   );
   await screen.findByRole("heading", { name: "Sign-up screen" });
+  // Sign-up's plain address: why, the program and the campaign are the
+  // tab's (lib/program-choice.ts), never its query.
   expect(router.state.location.pathname).toBe("/sign-up");
-  expect(router.state.location.search).toMatchObject({
-    return: "free-practice",
-    entry: "pitch-try",
-    utm_campaign: "ar-efa-launch",
-  });
+  expect(router.state.location.searchStr).toBe("");
+  const { signUpIntent } = await import("../../../lib/program-choice");
+  expect(signUpIntent()).toEqual({ entry: "pitch-try", free: true });
+  expect(chosenProgram()).toBe("ar-efa");
+  expect(arrivalLabels()).toMatchObject({ utm_campaign: "ar-efa-launch" });
   analytics.flush(true);
   const events = state.posts
     .filter((post) => post.url === "/api/v1/events")
@@ -220,8 +222,9 @@ test("without a program, Buy is the card plan and continues to checkout after si
   fireEvent.click(screen.getByRole("radio", { name: /Monthly/ }));
   await act(async () => fireEvent.click(buy!));
   await screen.findByRole("heading", { name: "Sign-up screen" });
-  expect(router.state.location.search).toMatchObject({ entry: "pitch-buy" });
-  expect(router.state.location.search).not.toHaveProperty("return");
+  expect(router.state.location.searchStr).toBe("");
+  const { signUpIntent } = await import("../../../lib/program-choice");
+  expect(signUpIntent()).toEqual({ entry: "pitch-buy" });
   const { chosenPlan } = await import("../../../lib/pending-trial");
   expect(chosenPlan()).toBe("month");
 });

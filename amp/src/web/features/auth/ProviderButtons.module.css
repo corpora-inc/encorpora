@@ -24,6 +24,12 @@
   grid-template-columns: 20px minmax(0, 1fr) 20px;
   text-align: center;
 }
+/* The parent sign-up's first option (Google, what most parents choose) is
+   the largest control on the screen, in the brand's own neutral style. */
+.stack[data-emphasize-first="true"] .button:first-child {
+  min-height: 56px;
+  font-size: var(--text-body);
+}
 .button {
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr) 20px;

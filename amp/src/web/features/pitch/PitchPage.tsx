@@ -15,7 +15,8 @@ import {
 } from "./BuyOptions";
 import { PitchLink, usePitchNav } from "./nav";
 import { PitchVideo } from "./PitchVideo";
-import { pitchCarry, pitchTarget } from "./targets";
+import { choosePitchAction, pitchTarget } from "./targets";
+import { keepSignUpIntent } from "../../lib/program-choice";
 import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
 import { phoneVideoQuery, pitchVideo } from "./video";
@@ -73,6 +74,7 @@ export function PitchPage() {
       className={styles.tryButton}
       onClick={() => {
         track("try_click");
+        choosePitchAction("try");
         nav.go(pitchTarget("try", search));
       }}
     >
@@ -109,7 +111,9 @@ export function PitchPage() {
           <span className={styles.expansion}>{brand.expansion}</span>
         </PitchLink>
         <PitchLink
-          place={authStep("sign-in", pitchCarry(search))}
+          place={authStep("sign-in")}
+          // Signing in to an account: not a sign-up from the pitch.
+          onClick={() => keepSignUpIntent(null)}
           className={buttonClass("quiet", styles.signIn)}
         >
           Sign in

@@ -57,6 +57,12 @@ function opened(handoff: string) {
   assert.ok(address, handoff);
   return `http://${address}`;
 }
+/** Why this tab signs up (lib/program-choice.ts `signUpIntent`). */
+async function signUpIntent(page: import("playwright").Page) {
+  return page.evaluate(() =>
+    JSON.parse(sessionStorage.getItem("amp.sign-up-entry") ?? "null"),
+  );
+}
 async function handoffs(page: import("playwright").Page) {
   return page.evaluate(() => (window as any).__handoffs as string[]);
 }
@@ -128,14 +134,39 @@ async function context(inApp: false | string, method = "") {
   return c;
 }
 try {
-  // Try/Buy: one tap from Instagram (iOS) and Facebook (Android).
-  for (const [path, app] of [
-    ["/try?entry=pitch-try&return=free-practice", "instagram-0"],
-    ["/sign-up?entry=pitch-buy", "facebook-0"],
+  // Try/Buy: one tap from Instagram (iOS) and Facebook (Android). The
+  // older links are deliberate legacy inputs; the tab keeps why it signs up,
+  // its program and campaign. `/try` is one hop to plain `/sign-up`; an
+  // older `/sign-up?entry=` keeps its arrival on the address in an app's
+  // browser (what the app's own "open in browser" opens;
+  // app/third-party-returns.ts `arrivalReturn`).
+  const campaign =
+    "program=ar-efa&utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc";
+  for (const { path, app, intent, heading } of [
+    {
+      path: `/try?entry=pitch-try&return=free-practice&${campaign}`,
+      app: "instagram-0",
+      intent: { entry: "pitch-try", free: true },
+      heading: "Try AMP free",
+    },
+    {
+      path: "/sign-up?entry=pitch-buy",
+      app: "facebook-0",
+      intent: { entry: "pitch-buy" },
+      heading: "Create your account to buy",
+    },
   ] as const) {
     const inApp = await context(app),
       p = await inApp.newPage();
     await p.goto(origin + path);
+    await p.getByRole("heading", { name: heading, exact: true }).waitFor();
+    assert.equal(new URL(p.url()).pathname, "/sign-up", "one hop to sign-up");
+    assert.equal(
+      new URL(p.url()).search,
+      path.startsWith("/try") ? "" : "?entry=pitch-buy",
+      "the in-app address",
+    );
+    assert.deepEqual(await signUpIntent(p), intent, "the tab keeps why");
     await p
       .getByLabel("Email", { exact: true })
       .fill("private-draft@example.test");
@@ -146,13 +177,32 @@ try {
     const [handoff] = await handoffs(p);
     assert.ok(!handoff.includes("private-draft"), "the draft stays here");
     assert.equal(socialStarts.length, 0, "Google never starts in the webview");
+    // The handoff's address carries the tab's arrival as a query (the other
+    // browser's storage starts empty) and still starts Google there.
+    const target = new URL(opened(handoff));
+    assert.equal(target.pathname, "/sign-up");
+    assert.equal(target.hash, "#continue-with-google");
+    const arrival = Object.fromEntries(target.searchParams);
+    assert.deepEqual(
+      arrival,
+      intent.entry === "pitch-try"
+        ? {
+            entry: "pitch-try",
+            program: "ar-efa",
+            utm_campaign: "ar-efa-launch",
+            utm_source: "google",
+            utm_medium: "cpc",
+          }
+        : { entry: "pitch-buy" },
+      "the handoff carries the arrival",
+    );
     const ordinary = await context(false),
       q = await ordinary.newPage();
     await q.route(`${origin}/provider-stub`, (route) =>
       route.fulfill({ contentType: "text/html", body: "<p>Provider</p>" }),
     );
     // A fresh tab opened by the jump.
-    await q.goto(opened(handoff));
+    await q.goto(target.href);
     await q.waitForURL(`${origin}/provider-stub`);
     assert.equal(socialStarts.length, 1, "Google starts once on arrival");
     assert.equal(socialStarts[0].provider, "google");
@@ -161,19 +211,51 @@ try {
       "/provider-stub",
       "the provider replaces the sign-in",
     );
-    // Back from the provider shows the sign-in; Google doesn't start again.
+    // Back from the provider shows the sign-in, on its clean address;
+    // Google doesn't start again.
     await q.goBack();
     await q.locator('[data-provider="google"]').waitFor();
     await settleArrival(q);
     assert.equal(socialStarts.length, 1, "Back never re-enters Google");
-    assert.equal(
-      new URL(q.url()).searchParams.get("entry"),
-      new URL(p.url()).searchParams.get("entry"),
+    assert.equal(new URL(q.url()).pathname, "/sign-up");
+    assert.equal(new URL(q.url()).search, "", "the far address is clean");
+    await q.getByRole("heading", { name: heading, exact: true }).waitFor();
+    assert.deepEqual(await signUpIntent(q), intent, "the far tab keeps why");
+    assert.deepEqual(
+      await q.evaluate(() => ({
+        program: sessionStorage.getItem("amp.program-choice"),
+        labels: JSON.parse(
+          sessionStorage.getItem("amp.arrival-labels") ?? "null",
+        ),
+      })),
+      intent.entry === "pitch-try"
+        ? {
+            program: "ar-efa",
+            labels: {
+              utm_campaign: "ar-efa-launch",
+              utm_source: "google",
+              utm_medium: "cpc",
+            },
+          }
+        : { program: null, labels: null },
+      "the far tab keeps the program and campaign",
     );
     assert.equal(
       await q.getByLabel("Email", { exact: true }).inputValue(),
       "",
       "the draft never crosses browsers",
+    );
+    // No browser opened from the webview: the app's own "open in browser"
+    // opens its address, which takes the whole arrival along too
+    // (features/auth/OpenInBrowser.tsx), and keeps it once settled.
+    await p.locator("[data-browser-hint]").waitFor();
+    await settleArrival(p);
+    const menu = new URL(p.url());
+    assert.equal(menu.pathname, "/sign-up", `${app}: the menu's address`);
+    assert.deepEqual(
+      Object.fromEntries(menu.searchParams),
+      arrival,
+      `${app}: the address the app's "open in browser" opens keeps the arrival`,
     );
     socialStarts = [];
     console.log(`PASS ${app} ${path} one-tap Google in the real browser`);
