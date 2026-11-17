@@ -421,7 +421,7 @@ async function practicing(page: Page) {
  * opened from (features/pay/stripe-return.ts), whose Done closes to that
  * screen. */
 async function paidAndDone(page: Page) {
-  await page.waitForURL(/\/pay\/done$/, { timeout: 30_000 });
+  await page.waitForURL(/\/pay(\/[^/]+)?\/done$/, { timeout: 30_000 });
   const done = page.getByRole("dialog");
   await done
     .getByText("Payment received. A receipt is in your email and in Billing.", {
