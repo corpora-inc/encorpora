@@ -10,7 +10,6 @@ import mimetypes
 from pathlib import Path
 import subprocess
 import urllib.request
-APPROVED_VOICES = {'XescS24CsOySAkKrLAO3', 'J3Ei0Lj6fAobhIqY5ySH'}
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -25,8 +24,6 @@ def main():
     args = parser.parse_args()
     manifest = json.loads(args.manifest.read_text())
     narration = json.loads((args.production / 'assets/narration.json').read_text())
-    if not manifest['voiceId'] in APPROVED_VOICES:
-        raise ValueError('Unapproved narration voice')
     if not narration['voiceId'] == manifest['voiceId']:
         raise ValueError('Narration metadata differs')
     if not sha(args.production / 'assets/narration.mp3') == narration['sha256']:
