@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import type { AuthSession } from "../../auth";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { request } from "../../lib/api";
 import { invalidateAccount, queryClient, refreshMe } from "../../lib/query";
 import type { Persona } from "./activation";
@@ -47,8 +47,7 @@ export function useStartPlace(session: AuthSession) {
         token: session.token,
         body: answer,
       });
-      if (started.learnerId)
-        useLearnerStore.getState().select(started.learnerId);
+      if (started.learnerId) selectLearner(started.learnerId);
       // `/` returns to the place just made: their own practice, or the
       // family's class, which is its family side.
       rememberPlace(session.accountId, answer.as === "myself" ? "me" : "home");

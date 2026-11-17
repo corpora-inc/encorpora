@@ -18,6 +18,7 @@ import {
 } from "../../../../schools/classroom-contracts";
 import type { AuthSession } from "../../../auth";
 import { request } from "../../../lib/api";
+import { qk } from "../../../lib/keys";
 import { AppError } from "../../../lib/AppError";
 
 type Session = AuthSession | null;
@@ -105,7 +106,7 @@ export function useWeeklyTargetWrite(session: Session, orgId: string) {
     onSuccess: (saved) => client.setQueryData(queryKey, saved),
     onSettled: () =>
       client.invalidateQueries({
-        queryKey: ["account", session?.accountId, "school"],
+        queryKey: qk.account(session?.accountId ?? null, "school"),
         predicate: (query) => query.queryKey[3] !== "classroom",
       }),
   });

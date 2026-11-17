@@ -97,50 +97,14 @@
 .filters label {
   margin: 0;
 }
-/* As tall as the area picker beside it. */
-.search {
-  box-sizing: border-box;
-  min-height: var(--target-size);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding-inline: var(--space-3);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-control);
-  background: var(--color-answer);
-  color: var(--color-on-answer);
+/* Search results: the skills with their progress, then the lessons and
+   math words the same search found. */
+.found {
+  display: grid;
+  gap: var(--space-5);
 }
-.search svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  flex: none;
-  color: var(--color-muted-text);
-}
-.search input {
-  width: 100%;
-  min-width: 0;
-  height: 100%;
-  min-height: 0;
+.found > .group {
   margin: 0;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  font-size: 16px;
-}
-.search input::placeholder {
-  color: var(--color-subtle-text);
-}
-.search:focus-within {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.search input:focus {
-  outline: none;
-  box-shadow: none;
 }
 
 /* One segmented row; on a phone it scrolls sideways rather than wrapping. */

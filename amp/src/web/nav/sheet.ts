@@ -39,8 +39,11 @@ export function sheetState(name: string): State {
 
 /** The state with the sheet put down (and this hook's own mark gone). */
 function without(state: unknown): State {
-  const { [SHEET_KEY]: _sheet, [PUSHED_KEY]: _pushed, ...rest } =
-    state && typeof state === "object" ? (state as State) : {};
+  const {
+    [SHEET_KEY]: _sheet,
+    [PUSHED_KEY]: _pushed,
+    ...rest
+  } = state && typeof state === "object" ? (state as State) : {};
   return rest;
 }
 
@@ -55,47 +58,62 @@ export function closesBack(state: unknown) {
   );
 }
 
+/** Opening and closing any named sheet over the current screen (a screen
+ * that hosts a sheet per row, `child:<learner>`). */
+export function useSheetNav() {
+  const router = useRouter();
+  const show = useCallback(
+    (name: string) => {
+      const here = router.history.location;
+      const current = sheetOf(here.state);
+      if (current === name) return;
+      // Another sheet is open: this one takes its entry, so Back still
+      // closes to the screen and never to the sheet before.
+      const replace = current !== null;
+      void router.navigate({
+        href: here.href,
+        replace,
+        resetScroll: false,
+        state: {
+          ...without(here.state),
+          [SHEET_KEY]: name,
+          [PUSHED_KEY]: replace ? closesBack(here.state) : true,
+        } as never,
+      });
+    },
+    [router],
+  );
+  const close = useCallback(
+    (name: string) => {
+      const here = router.history.location;
+      if (sheetOf(here.state) !== name) return;
+      if (closesBack(here.state)) router.history.back();
+      // Opened on arrival (a legacy hop, a restored tab with no entry
+      // behind): put it down in place, never a new entry.
+      else
+        void router.navigate({
+          href: here.href,
+          replace: true,
+          resetScroll: false,
+          state: without(here.state) as never,
+        });
+    },
+    [router],
+  );
+  return { show, close };
+}
+
 /**
  * One named sheet over the current screen: whether it is open, and the way
  * to open and close it. `onOpenChange` fits `ui/Sheet` directly.
  */
 export function useSheet(name: string) {
-  const router = useRouter();
+  const nav = useSheetNav();
   const open = useRouterState({
     select: (state) => sheetOf(state.location.state) === name,
   });
-  const show = useCallback(() => {
-    const here = router.history.location;
-    const current = sheetOf(here.state);
-    if (current === name) return;
-    // Another sheet is open: this one takes its entry, so Back still closes
-    // to the screen and never to the sheet before.
-    const replace = current !== null;
-    void router.navigate({
-      href: here.href,
-      replace,
-      resetScroll: false,
-      state: {
-        ...without(here.state),
-        [SHEET_KEY]: name,
-        [PUSHED_KEY]: replace ? closesBack(here.state) : true,
-      } as never,
-    });
-  }, [router, name]);
-  const close = useCallback(() => {
-    const here = router.history.location;
-    if (sheetOf(here.state) !== name) return;
-    if (closesBack(here.state)) router.history.back();
-    // Opened on arrival (a legacy hop, a restored tab with no entry behind):
-    // put it down in place, never a new entry.
-    else
-      void router.navigate({
-        href: here.href,
-        replace: true,
-        resetScroll: false,
-        state: without(here.state) as never,
-      });
-  }, [router, name]);
+  const show = useCallback(() => nav.show(name), [nav, name]);
+  const close = useCallback(() => nav.close(name), [nav, name]);
   const onOpenChange = useCallback(
     (next: boolean) => (next ? show() : close()),
     [show, close],

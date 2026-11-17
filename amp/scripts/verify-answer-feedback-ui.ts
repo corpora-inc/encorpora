@@ -315,37 +315,23 @@ try {
         exact: true,
       });
       await dialog.waitFor();
-      assert.equal(
-        await dialog.locator('[class*="grade"]').count(),
-        0,
-        "Grades hidden by default",
-      );
-      await dialog
-        .getByRole("button", {
-          name: "Show details: curriculum grades",
-          exact: true,
-        })
-        .click();
+      // A grown-up's own practice always shows curriculum grades
+      // (features/curriculum/CurriculumDetails.tsx); only a child's session
+      // with levels hidden offers the local "Show details" reveal.
       assert.ok(
         (await dialog.locator('[class*="grade"]').count()) > 0,
-        "Local reveal exposes actual curriculum grades",
+        "A grown-up sees each skill's curriculum grade",
       );
       assert.equal(
-        await page.evaluate(() =>
-          localStorage.getItem("amp.curriculum-details"),
-        ),
-        null,
-        "Local reveal must not set persistent preference",
+        await dialog
+          .getByRole("button", { name: /details: curriculum grades$/ })
+          .count(),
+        0,
+        "No reveal where grades already show",
       );
       await page.screenshot({
         path: `${output}/${mode}-${width}-${theme}-details.png`,
       });
-      await dialog
-        .getByRole("button", {
-          name: "Hide details: curriculum grades",
-          exact: true,
-        })
-        .click();
       await page.screenshot({
         path: `${output}/${mode}-${width}-${theme}-connections.png`,
       });

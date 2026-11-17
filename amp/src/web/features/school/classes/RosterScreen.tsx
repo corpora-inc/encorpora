@@ -1,3 +1,4 @@
+import { reportError } from "../../../lib/report-error";
 import { spaceWords } from "../../spaces/words";
 import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
@@ -323,7 +324,17 @@ export function RosterScreen() {
         setStatus(`${pending.row.name} is signed out on every device.`);
       }
     } catch (failure) {
-      setError((failure as Error).message);
+      setError(
+        reportError(failure, {
+          doing:
+            pending.kind === "links"
+              ? "download family links"
+              : pending.kind === "reset"
+                ? "reset a student's pictures"
+                : "sign a student out everywhere",
+          fallback: "That didn’t go through. Try again.",
+        }),
+      );
     } finally {
       setMaking(false);
       setPending(null);
@@ -530,7 +541,7 @@ export function RosterScreen() {
           {group && holder && (
             <ClassPeople
               secondParent={false}
-              session={account}
+
               orgId={params.org}
               classId={params.class}
             />

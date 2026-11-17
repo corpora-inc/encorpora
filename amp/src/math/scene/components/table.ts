@@ -169,19 +169,34 @@ const heading = (t: Table, text: string) =>
     ? typeset(text, "math", "md").width
     : typeset(text, "sans", "md", true).width;
 
-/** Column widths and row positions, in figure pixels from the top left. */
-export function tableGeometry(t: Table) {
+/** A heading on one line, or, when the table must narrow, on two lines
+ * split at the space nearest its middle. */
+function headingLines(t: Table, text: string, wrap: boolean) {
+  if (!wrap || t.math || !text.includes(" ")) return [text];
+  const spaces = [...text.matchAll(/ /g)].map((m) => m.index!);
+  const mid = text.length / 2;
+  const at = spaces.reduce((a, b) =>
+    Math.abs(b - mid) < Math.abs(a - mid) ? b : a,
+  );
+  return [text.slice(0, at), text.slice(at + 1)];
+}
+
+/** Column widths and row positions, in figure pixels from the top left.
+ * `wrap` sets headings of several words on two lines (a narrow screen). */
+export function tableGeometry(t: Table, wrap = false) {
   const filled = t.sums ? completeTable(t) : null;
   const labelWidth =
     Math.max(
-      ...t.rows.map((r) => heading(t, r.label)),
+      ...t.rows.flatMap((r) =>
+        headingLines(t, r.label, wrap).map((line) => heading(t, line)),
+      ),
       t.corner ? heading(t, t.corner) : 0,
     ) +
     2 * PAD;
   const widths = t.columns.map((c, j) =>
     Math.max(
       MIN_COLUMN,
-      heading(t, c) + 2 * PAD,
+      ...headingLines(t, c, wrap).map((line) => heading(t, line) + 2 * PAD),
       ...t.rows.map((r, i) => {
         const v = r.cells[j];
         // A blank holds its digit with the margin, and the cell holds the blank with the same margin.
@@ -220,6 +235,12 @@ export function tableGeometry(t: Table) {
       gutters.slice(0, j).reduce((a, b) => a + b, 0),
   );
   const top = t.title ? TITLE : 0;
+  const twoLines = t.columns.some((c) => headingLines(t, c, wrap).length > 1);
+  const header = twoLines ? HEADER + LINE : HEADER;
+  // A row whose label wraps makes every row two lines tall.
+  const row = t.rows.some((r) => headingLines(t, r.label, wrap).length > 1)
+    ? ROW + LINE
+    : ROW;
   // Row rules join the labels to the body columns up to the first gutter;
   // columns after it are boxed on their own.
   const split = gutters.findIndex((w) => w > 0);
@@ -240,17 +261,25 @@ export function tableGeometry(t: Table) {
       gutters.reduce((a, b) => a + b, 0),
     titleTop: 0,
     headerTop: top,
-    rowTop: (r: number) => top + HEADER + r * ROW,
-    rowHeight: ROW,
-    height: top + HEADER + t.rows.length * ROW,
+    header,
+    wrap,
+    rowTop: (r: number) => top + header + r * row,
+    rowHeight: row,
+    height: top + header + t.rows.length * row,
   };
 }
 
 registerComponent("table", {
   // One math unit is one figure pixel at full size.
   maxScale: () => 1,
-  compile(t, { s }) {
-    const g = tableGeometry(t);
+  compile(t, { s, width: target }) {
+    // Wider than its box, a table first sets its headings on two lines,
+    // so a phone keeps its type at full size.
+    const one = tableGeometry(t);
+    const two = target && one.width > target ? tableGeometry(t, true) : one;
+    const g = two.width < one.width ? two : one;
+    const HEADER = g.header,
+      ROW = g.rowHeight;
     // Pixels, y down from the top left, to math units, y up.
     const P = (x: number, y: number): [number, number] => [x / s, -y / s];
     const size = (w: number, h: number): [number, number] => [w / s, h / s];
@@ -296,16 +325,24 @@ registerComponent("table", {
         bold: words || undefined,
         align: [-1, 0],
       });
-    for (const [j, c] of t.columns.entries())
-      prims.push({
-        type: "text",
-        id: `column.${j}`,
-        at: P(g.lefts[j]! + g.widths[j]! / 2, g.headerTop + HEADER / 2),
-        text: c,
-        font: words ? "sans" : "math",
-        bold: words || undefined,
-        align: [0, 0],
-      });
+    for (const [j, c] of t.columns.entries()) {
+      const parts = headingLines(t, c, g.wrap);
+      for (const [k, part] of parts.entries())
+        prims.push({
+          type: "text",
+          id: k ? `column.${j}.${k}` : `column.${j}`,
+          at: P(
+            g.lefts[j]! + g.widths[j]! / 2,
+            g.headerTop +
+              HEADER / 2 +
+              (parts.length > 1 ? (k ? LINE / 2 : -LINE / 2) : 0),
+          ),
+          text: part,
+          font: words ? "sans" : "math",
+          bold: words || undefined,
+          align: [0, 0],
+        });
+    }
     for (const [i, row] of t.rows.entries()) {
       const top = g.rowTop(i),
         total = t.sums && i === lastRow;
@@ -347,15 +384,22 @@ registerComponent("table", {
           fill: rows.has(i) ? "accent-strong" : "warm-fill",
           noStroke: true,
         });
-      prims.push({
-        type: "text",
-        id: `row.${i}.label`,
-        at: P(PAD, top + ROW / 2),
-        text: row.label,
-        font: words ? "sans" : "math",
-        bold: words || undefined,
-        align: [-1, 0],
-      });
+      const labelLines = headingLines(t, row.label, g.wrap);
+      for (const [k, part] of labelLines.entries())
+        prims.push({
+          type: "text",
+          id: k ? `row.${i}.label.${k}` : `row.${i}.label`,
+          at: P(
+            PAD,
+            top +
+              ROW / 2 +
+              (labelLines.length > 1 ? (k ? LINE / 2 : -LINE / 2) : 0),
+          ),
+          text: part,
+          font: words ? "sans" : "math",
+          bold: words || undefined,
+          align: [-1, 0],
+        });
       for (const [j, v] of row.cells.entries()) {
         const cx = g.lefts[j]! + g.widths[j]! / 2,
           cy = top + ROW / 2;

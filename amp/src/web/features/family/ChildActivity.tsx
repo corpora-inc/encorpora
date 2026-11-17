@@ -13,7 +13,7 @@ const shift = (day: string, offset: number) =>
     .toISOString()
     .slice(0, 10);
 
-type Interval = { date: string; minutes: number; problems?: number };
+export type Interval = { date: string; minutes: number; problems?: number };
 
 /** Daily and weekly activity share one chart, beginning with practice.
  * Keep quiet intervals after that first practice; a single interval is a fact. */
@@ -52,7 +52,6 @@ export function ChildActivity({
     (entry) => entry.minutes > 0 || (entry.problems ?? 0) > 0,
   );
   const shown = first < 0 ? [] : intervals.slice(first);
-  const largest = Math.max(1, ...shown.map((entry) => entry.minutes));
   const label = (entry: Interval) =>
     unit === "week" ? `Week of ${shortDay(entry.date)}` : shortDay(entry.date);
   const detail = (entry: Interval) =>
@@ -99,40 +98,73 @@ export function ChildActivity({
             : label(shown[0]!)}
         </p>
       ) : (
-        <TipZone key={`${learner}:${unit}`}>
-          <figure className={styles.figure}>
-            <div
-              className={styles.chart}
-              role="group"
-              aria-label={`${unit === "day" ? "Daily" : "Weekly"} practice time`}
-            >
-              {shown.map((entry) => (
-                <div
-                  key={entry.date}
-                  className={styles.column}
-                  tabIndex={0}
-                  aria-label={`${label(entry)}: ${detail(entry)}`}
-                  data-tip={`${label(entry)}: ${detail(entry)}`}
-                >
-                  <span
-                    className={styles.bar}
-                    style={{
-                      height: entry.minutes
-                        ? `${Math.max(4, (entry.minutes / largest) * 100)}%`
-                        : 0,
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-            <figcaption>
-              <span>{shortDay(shown[0]!.date)}</span>
-              <span>Minutes per {unit}</span>
-              <span>{shortDay(shown.at(-1)!.date)}</span>
-            </figcaption>
-          </figure>
-        </TipZone>
+        <DailyBars
+          key={`${learner}:${unit}`}
+          intervals={shown}
+          label={label}
+          detail={detail}
+          name={`${unit === "day" ? "Daily" : "Weekly"} practice time`}
+          caption={`Minutes per ${unit}`}
+          edge={(entry) => shortDay(entry.date)}
+        />
       )}
     </section>
+  );
+}
+
+/**
+ * Minutes as columns, one an interval, each with its detail on hover, tap
+ * and focus: the one practice-time chart (a child's page, the family's week).
+ * Its height is fixed, so nothing moves when it fills in.
+ */
+export function DailyBars({
+  intervals,
+  label,
+  detail,
+  name,
+  caption,
+  edge = label,
+}: {
+  intervals: readonly Interval[];
+  label: (entry: Interval) => string;
+  detail: (entry: Interval) => string;
+  /** What the chart shows, for a screen reader. */
+  name: string;
+  caption: string;
+  /** The first and last interval's name under the chart. */
+  edge?: (entry: Interval) => string;
+}) {
+  const largest = Math.max(1, ...intervals.map((entry) => entry.minutes));
+  if (intervals.length === 0) return null;
+  return (
+    <TipZone>
+      <figure className={styles.figure}>
+        <div className={styles.chart} role="group" aria-label={name}>
+          {intervals.map((entry) => (
+            <div
+              key={entry.date}
+              className={styles.column}
+              tabIndex={0}
+              aria-label={`${label(entry)}: ${detail(entry)}`}
+              data-tip={`${label(entry)}: ${detail(entry)}`}
+            >
+              <span
+                className={styles.bar}
+                style={{
+                  height: entry.minutes
+                    ? `${Math.max(4, (entry.minutes / largest) * 100)}%`
+                    : 0,
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        <figcaption>
+          <span>{edge(intervals[0]!)}</span>
+          <span>{caption}</span>
+          <span>{edge(intervals.at(-1)!)}</span>
+        </figcaption>
+      </figure>
+    </TipZone>
   );
 }

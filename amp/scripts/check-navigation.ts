@@ -21,6 +21,8 @@ const MODULE = [
   /^lib\/return-to\.ts$/,
   /^app\/router\.tsx$/,
   /^app\/school-routes\.tsx$/,
+  // The school route table's guards, loaded with a school address.
+  /^app\/school-guards\.ts$/,
   /^app\/pay-routes\.tsx$/,
 ];
 const BANNED = [

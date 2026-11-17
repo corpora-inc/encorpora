@@ -1,7 +1,7 @@
+import { reportError } from "../../../lib/report-error";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
-import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
 import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
@@ -59,9 +59,10 @@ function AddSchool({
       await navigate({ to: "/$", params: { _splat: orgPath(school.id) } });
     } catch (failure) {
       setError(
-        failure instanceof AppError
-          ? failure.message
-          : "That school didn’t save. Try again.",
+        reportError(failure, {
+          doing: "save that school",
+          fallback: "That school didn’t save. Try again.",
+        }),
       );
       setBusy(false);
     }

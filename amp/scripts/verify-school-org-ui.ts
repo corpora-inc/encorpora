@@ -626,7 +626,7 @@ async function sweep(
       "year-classes",
       width,
       theme,
-      `/school/${school}/year?step=classes`,
+      `/school/${school}/year/classes`,
       "Start the new school year",
     );
     await viewScreen(
@@ -636,7 +636,7 @@ async function sweep(
       "year-grades",
       width,
       theme,
-      `/school/${school}/year?step=grades`,
+      `/school/${school}/year/grades`,
       "Start the new school year",
     );
     await viewScreen(
@@ -646,7 +646,7 @@ async function sweep(
       "year-review",
       width,
       theme,
-      `/school/${school}/year?step=review`,
+      `/school/${school}/year/review`,
       "Start the new school year",
     );
     await page.getByText("Nothing has changed yet").waitFor();
@@ -898,18 +898,18 @@ async function journey(browser: Browser, engine: string) {
     await page.waitForURL(`**/school/${north.id}/year`);
     await heading(page, "Start the new school year").waitFor();
     await page.getByRole("button", { name: "Continue" }).click();
-    await page.waitForURL(/step=classes/);
+    await page.waitForURL(/\/year\/classes$/);
     await page.getByLabel(/Math Support/).uncheck();
     await page.getByRole("button", { name: "Continue" }).click();
-    await page.waitForURL(/step=grades/);
+    await page.waitForURL(/\/year\/grades$/);
     await page.reload();
     await heading(page, "Start the new school year").waitFor();
     check(
       `${engine} draft survives a reload`,
-      page.url().includes("step=grades"),
+      page.url().endsWith("/year/grades"),
     );
     await page.getByRole("button", { name: "Continue" }).click();
-    await page.waitForURL(/step=review/);
+    await page.waitForURL(/\/year\/review$/);
     await page.getByText("Nothing has changed yet").waitFor();
     await page.locator("dl dt", { hasText: "carry over" }).waitFor();
     const untouched = await db.query(

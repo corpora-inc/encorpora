@@ -2,7 +2,7 @@
  * Whose learning screen an address names (docs/architecture/spaces.md,
  * "Learning screens"), in one order everywhere: the path's own learner (a
  * family's child, `/family/<family>/kids/<learner>/…`; `/learners/<id>/…`;
- * `/pay/<id>`), then a practice profile (`?profile=`, a mode), then the
+ * `/pay/<id>`; `/practice/<id>`), then a practice profile (`?profile=`, a mode), then the
  * legacy `?learner=` (an older link; its route redirects it to the canonical
  * address before it shows). Null: the address names nobody. Pure, so a
  * loader, the resolver, the learning view and practice all read the same
@@ -12,9 +12,18 @@ export type AddressedIdentity = { kind: "learner" | "profile"; id: string };
 
 const UUID = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
 const PATH = new RegExp(
-  `^/(?:learners|pay|family/${UUID}/kids)/([^/]+)`,
+  `^/(?:learners|pay|practice|family/${UUID}/kids)/([^/]+)`,
   "i",
 );
+
+/** A learner's practice: `/practice/<learner>`. Bare `/practice` names
+ * nobody and is an older address (one hop here: practice-mode.ts). */
+export const practicePath = (learner: string) =>
+  `/practice/${encodeURIComponent(learner)}`;
+/** The `$` route's params for a learner's practice. */
+export const practiceParams = (learner: string) => ({
+  _splat: practicePath(learner).slice(1),
+});
 const text = (value: unknown) =>
   typeof value === "string" && value !== "" ? value : null;
 

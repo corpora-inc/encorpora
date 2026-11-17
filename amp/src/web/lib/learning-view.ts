@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
-import { useLearnerStore } from "../learner-store";
+import { currentLearner, useCurrentLearner } from "../learner-store";
 import {
   learningIdentity,
+  practicePath,
   type AddressedIdentity,
 } from "../features/spaces/identity";
 import {
@@ -24,7 +24,7 @@ import {
   frontierSchema,
 } from "../features/pathways/model";
 import type { AuthSession } from "../auth";
-import { studentSkillResponse } from "../../schools/teacher-contracts";
+import { studentSkillResponse } from "../../schools/skill-contracts";
 import {
   secondParentChild,
   secondParentChildren,
@@ -182,7 +182,7 @@ export async function preloadOverviewLevel(location?: {
   // device's choice.
   const { learner } = chooseLearner(
     account as SignedIn | null,
-    useLearnerStore.getState().learnerId,
+    currentLearner(),
     location
       ? learningIdentity(
           location.pathname,
@@ -227,7 +227,7 @@ export async function preloadLearningView(location?: {
   // device's choice.
   const { learner } = chooseLearner(
     account as SignedIn | null,
-    useLearnerStore.getState().learnerId,
+    currentLearner(),
     location
       ? learningIdentity(
           location.pathname,
@@ -271,7 +271,7 @@ export function useLearningView({
     me.data?.signedIn && me.data.account.id === session.data?.accountId
       ? me.data
       : null;
-  const selectedId = useLearnerStore((s) => s.learnerId);
+  const selectedId = useCurrentLearner();
   // The displayed screen's address names whose it is; otherwise the adult's
   // own (or a profile of theirs), the chosen child, a second parent's
   // family's child (read-only), else the first child, as practice
@@ -279,23 +279,9 @@ export function useLearningView({
   const addressed = useAddressedIdentity();
   // A family's child's records only where that family shows them (CP-5 #6).
   const readable = useAddressedRecordsReadable();
-  const { learners, shared, profile, solo, own, learner, unavailable } =
+  const { learners, shared, profile, own, learner, unavailable } =
     chooseLearner(account, selectedId, addressed);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
-  useEffect(() => {
-    // A named screen never moves the device's choice from here: the shell
-    // adopts it once the screen shows (AppShell), and a named learner who is
-    // gone is nobody, never another.
-    if (addressed) return;
-    if (solo && own === solo && selectedId !== solo.id)
-      useLearnerStore.getState().select(solo.id);
-    if (own) return;
-    const chosen =
-      learners.some((l) => l.id === selectedId) ||
-      shared.some((l) => l.id === selectedId);
-    if (!chosen && learners[0])
-      useLearnerStore.getState().select(learners[0].id);
-  }, [account, selectedId, addressed?.kind, addressed?.id]);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
   // Without records (the drawer), these observe nothing: a disabled observer
   // of the learner's level would still be its last, and unmounting it (the
@@ -370,7 +356,7 @@ export function useLearningView({
       learner && viewOnly
         ? `/${secondParentChild(account, learner.id)!.classPath}`
         : learner
-          ? "/practice"
+          ? practicePath(learner.id)
           : "/start",
     retry: () => {
       void session.refetch();

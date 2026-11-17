@@ -2,13 +2,12 @@
  * Adult practice in real browsers, on the real API in accounts mode and a real
  * database (docs/families.md, step 2). Everyone here is synthetic.
  *
- *   1. A teacher at a licensed school opens the place switcher from their
- *      school, starts their own practice where they choose to begin, and goes
- *      straight into practice. `/` then returns to their own record, which is
+ *   1. A teacher at a licensed school starts their own practice in place on
+ *      their account page (IA v2), and goes straight into practice. `/` then returns to their own record, which is
  *      the record a teacher reads, pointed at themselves. Back, Forward and
  *      reload keep each screen, and the switcher goes both ways.
- *   2. A parent whose child has access starts their own practice from their
- *      family's class and switches back to the class, where the child is.
+ *   2. A parent whose child has access starts their own practice in their
+ *      family's Settings and switches back to the family, where the child is.
  *   3. An adult with neither has no such place, and `/me/start` goes home.
  *
  * Chromium at 1280 and 390 in light and dark, WebKit at 390. Screenshots of the
@@ -403,41 +402,22 @@ async function teacherStarts(
     await todayTitle(page);
   }
 
-  // `/` opens their school; its switcher offers their own practice.
+  // `/` opens their school.
   await openHome(page, origin);
   await schoolReady();
-  // Inside a class, the switcher is named for the class it is in.
-  const fromSchool = await openSwitcher(page, "Grade 8 Math", true);
-  const items = await fromSchool.getByRole("menuitem").allInnerTexts();
-  check(
-    `${label} the switcher offers their own practice`,
-    items.some((item) => /Practice yourself/.test(item)) &&
-      items.some((item) => item.includes(school)),
-    items,
-  );
-  await measured(page, `${label} school switcher`);
+  // Their own practice is on their account page (IA v2 §4): started in
+  // place, then Practice. No place switcher entry, no page of its own.
+  await page.goto(`${origin}/account`);
+  const startOwn = page.locator("[data-start-own-practice]");
+  await startOwn.waitFor();
+  check(`${label} the account offers their own practice`, true);
+  await measured(page, `${label} account`);
   await shot(page, "switcher-start", width, theme, engine);
-  await choose(page, fromSchool, /Practice yourself/);
-  // The year is all it asks (founder: birth year is always enough).
-  await heading(page, "What year were you born?");
-  check(`${label} start has a URL`, path(page) === "/me/start", path(page));
-  const start = page.getByRole("button", { name: "Start practicing" });
-  check(`${label} start waits for a year`, await start.isDisabled());
-  await measured(page, `${label} start`);
-  await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  await shot(page, "start", width, theme, engine);
-  // Reload keeps the screen; Back returns to the school.
-  await page.reload();
-  await heading(page, "What year were you born?");
-  await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  const box = await start.boundingBox();
-  await start.click();
-  const after = await start.boundingBox().catch(() => null);
-  check(
-    `${label} the button holds still while starting`,
-    !after || (after.x === box!.x && after.y === box!.y),
-    { box, after },
-  );
+  await startOwn.click();
+  await page
+    .locator("[data-own-practice]")
+    .getByRole("button", { name: "Practice", exact: true })
+    .click();
   await practicing(page);
   check(
     `${label} straight into practice`,
@@ -580,20 +560,18 @@ async function parentStarts(
   await openHome(page, origin);
   await page.waitForURL(inClass);
   await todayTitle(page);
-  const fromHome = await openSwitcher(page, family, true);
-  const items = await fromHome.getByRole("menuitem").allInnerTexts();
-  check(
-    `${label} the family switcher offers their own practice`,
-    /Rowan/.test(items[0] ?? "") &&
-      items.some((item) => /Practice yourself/.test(item)),
-    items,
-  );
-  await measured(page, `${label} family switcher`);
+  // A parent's own practice is in their family's Settings › People
+  // (IA v2 §3.3): started in place, then Practice.
+  await page.goto(`${origin}${path(page)}/settings`);
+  const startOwn = page.locator("[data-start-own-practice]");
+  await startOwn.waitFor();
+  await measured(page, `${label} family settings`);
   await shot(page, "family-switcher", width, theme);
-  await choose(page, fromHome, /Practice yourself/);
-  await heading(page, "What year were you born?");
-  await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  await page.getByRole("button", { name: "Start practicing" }).click();
+  await startOwn.click();
+  await page
+    .locator("[data-own-practice]")
+    .getByRole("button", { name: "Practice", exact: true })
+    .click();
   await practicing(page);
   // Back to the family: its class, with the child in it.
   const fromOwn = await openSwitcher(page, "Avery Lind", true);

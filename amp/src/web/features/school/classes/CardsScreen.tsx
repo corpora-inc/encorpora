@@ -1,10 +1,12 @@
-import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams, useSearch } from "@tanstack/react-router";
+import { useSearch } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
-import { Button, buttonClass } from "../../../ui/Button";
+import { Button } from "../../../ui/Button";
+import { Page } from "../../../ui/Page";
+import { PageHeader } from "../../../ui/PageHeader";
 import { PrintButton } from "../../../ui/PrintButton";
+import { Toast } from "../../../ui/Toast";
 import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
@@ -88,39 +90,38 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
   }, [closedNow]);
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
-  // Back to where it was opened: the roster, Today, sign-in help.
-  const home = host.href(given ? "today" : "roster");
-  const closeClick = useCloseClick(`/${home}`);
-  const back = (
-    <Link
-      to="/$"
-      params={{ _splat: home }}
-      className={buttonClass("secondary")}
-      onClick={closeClick}
-    >
-      Back
-    </Link>
-  );
   async function make(input: { personIds?: string[]; missingOnly?: boolean }) {
-    const cards = await issue.mutateAsync(input);
-    await loadQrEncoder();
-    setIssued(cards);
+    try {
+      const cards = await issue.mutateAsync(input);
+      await loadQrEncoder();
+      setIssued(cards);
+    } catch (failure) {
+      // The toast says what happened; the log keeps it.
+      console.error("The sign-in cards weren’t made", failure);
+    }
   }
   if (roster.isError)
     return (
-      <main className={styles.center} data-dense>
-        <EmptyState title="These cards didn’t load" action={back}>
+      <Page className={styles.page} data-dense>
+        <EmptyState
+          title="These cards didn’t load"
+          action={
+            <Button variant="secondary" onClick={() => void roster.refetch()}>
+              Try again
+            </Button>
+          }
+        >
           {roster.error.message}
         </EmptyState>
-      </main>
+      </Page>
     );
   if (!roster.data || access.pending) return <LoadingScreen />;
   // A card leads nowhere until practice runs: never print one before.
   if (access.closed || access.unavailable)
     return (
-      <main className={styles.center} data-dense>
+      <Page className={styles.page} data-dense>
         <ClosedSignIn place={place} />
-      </main>
+      </Page>
     );
   const { class: info, canManage } = roster.data;
   const students = roster.data.students.filter(
@@ -129,30 +130,25 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
   const chosen = student ? students.filter((s) => s.id === student) : students;
   if (!canManage || !chosen.length)
     return (
-      <main className={styles.center} data-dense>
-        <EmptyState title="There are no cards to make here" action={back}>
+      <Page className={styles.page} data-dense>
+        <EmptyState title="There are no cards to make here">
           {canManage
             ? `This ${words.learner} isn’t here anymore.`
             : `A teacher of this class can print its sign-in cards.`}
         </EmptyState>
-      </main>
+      </Page>
     );
   if (issued)
     return (
-      <main className={styles.page} data-dense>
-        <header className={styles.toolbar}>
-          <div className={styles.toolbarText}>
-            <h1>
-              {issued.cards.length === 1
-                ? "1 card ready"
-                : `${issued.cards.length} cards ready`}
-            </h1>
-            <p>
-              Print these now. They can’t be shown again, and any new card
-              replaces the one before it.
-            </p>
-          </div>
-          <div className={styles.toolbarActions}>
+      <Page className={styles.page} data-dense>
+        <PageHeader
+          title={
+            issued.cards.length === 1
+              ? "1 card ready"
+              : `${issued.cards.length} cards ready`
+          }
+          subtitle="Print these now. They can’t be shown again, and any new card replaces the one before it."
+          actions={
             <PrintButton
               variant="primary"
               disabled={!session}
@@ -173,11 +169,10 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
             >
               Print
             </PrintButton>
-            {back}
-          </div>
-        </header>
+          }
+        />
         <Sheets issued={issued} />
-      </main>
+      </Page>
     );
   const holding = chosen.filter((s) => s.cardIssuedAt).length;
   const missing = chosen.length - holding;
@@ -192,30 +187,27 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
     ? chosen.filter((entry) => !entry.cardIssuedAt).map((entry) => entry.id)
     : undefined;
   return (
-    <main className={styles.center} data-dense>
-      <section className={styles.prepare}>
-        <h1>
-          {student
+    <Page className={styles.page} data-dense>
+      <PageHeader
+        title={
+          student
             ? `Print a card for ${chosen[0]!.name}`
             : host.keep
               ? `Print sign-in cards for ${words.group}`
-              : `Print cards for ${info.name}`}
-        </h1>
-        <p>
-          {student
+              : `Print cards for ${info.name}`
+        }
+        subtitle={
+          student
             ? `The card signs this ${words.learner} in with no code and no pictures.`
-            : `Each card signs one ${words.learner} in with no code and no pictures.`}
-        </p>
+            : `Each card signs one ${words.learner} in with no code and no pictures.`
+        }
+      />
+      <section className={styles.prepare} aria-label="Make cards">
         {holding > 0 && (
           <p className={styles.warning}>
             {student
               ? `The card this ${words.learner} has now stops working.`
               : `${holding === 1 ? `1 ${words.learner} has` : `${holding} ${words.learners} have`} a card already. A new card stops the old one working.`}
-          </p>
-        )}
-        {issue.isError && (
-          <p className={styles.problem} role="alert">
-            {issue.error.message}
           </p>
         )}
         <div className={styles.choices}>
@@ -253,9 +245,13 @@ export function CardsScreen({ host: given }: { host?: ClassHost } = {}) {
                   ? "Make the card"
                   : `Make ${chosen.length} cards`}
           </Button>
-          {back}
         </div>
       </section>
-    </main>
+      {/* What went wrong overlays the page, so nothing moves. */}
+      <Toast
+        message={issue.error?.message ?? ""}
+        onDismiss={() => issue.reset()}
+      />
+    </Page>
   );
 }

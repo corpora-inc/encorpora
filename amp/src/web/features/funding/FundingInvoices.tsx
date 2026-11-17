@@ -7,7 +7,7 @@ import { requestFetch } from "../../lib/request-transport";
 import { queryClient, refreshMe, meOptions } from "../../lib/query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { SelectField } from "../../ui/SelectField";
-import { useLearnerStore } from "../../learner-store";
+import { selectLearner } from "../../learner-store";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { fundingReturn } from "./setup";
@@ -20,6 +20,7 @@ import {
 export { fundingRecordsKey } from "./records";
 import { PageSection } from "../../ui/PageSection";
 import styles from "../account/BillingPage.module.css";
+import { practiceParams } from "../spaces/identity";
 
 const intent = z.object({
   id: z.string(),
@@ -123,8 +124,8 @@ export function FundingInvoices({
         me.data?.signedIn &&
         me.data.adultPractice?.learner?.id === selected
       ) {
-        useLearnerStore.getState().select(selected);
-        void navigate({ to: "/$", params: { _splat: "practice" } });
+        selectLearner(selected);
+        void navigate({ to: "/$", params: practiceParams(selected) });
       } else {
         await handoff.handOver(selected);
       }

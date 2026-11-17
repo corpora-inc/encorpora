@@ -1033,6 +1033,10 @@ function algorithm(c: Context): GeneratedProblem {
   );
 }
 
+/** Math units between the three written methods (and the place-value
+ * columns above them). Each digit is one unit wide, so the methods fit a
+ * phone's 288 px with digits a full digit apart. */
+const COLUMN = 8;
 function modelMethod(c: Context): GeneratedProblem {
   const { r } = c,
     op = c.seed === "decimal-method-example" ? 0 : r(0, 3);
@@ -1060,13 +1064,18 @@ function modelMethod(c: Context): GeneratedProblem {
       "Align decimal points so ones, tenths and hundredths each meet their own place.";
     const elements: Element[] = [];
     ["Ones", "Tenths", "Hundredths"].forEach((text, i) =>
-      elements.push({ type: "text", at: [3 + 10 * i, 10], text, font: "sans" }),
+      elements.push({
+        type: "text",
+        at: [3 + COLUMN * i, 10],
+        text,
+        font: "sans",
+      }),
     );
     [first, bCents].forEach((v, row) =>
       digits(v).forEach((d, col) =>
         elements.push({
           type: "text",
-          at: [3 + 10 * col, 8 - 2 * row],
+          at: [3 + COLUMN * col, 8 - 2 * row],
           text: String(d),
           font: "math",
         }),
@@ -1074,7 +1083,7 @@ function modelMethod(c: Context): GeneratedProblem {
     );
     const setups = shuffle(r, ["aligned", "last-digits", "whole"]);
     setups.forEach((mode, i) => {
-      const x = i * 10;
+      const x = i * COLUMN;
       const top = mode === "whole" ? String(first) : a,
         bottom = mode === "whole" ? String(bCents) : b;
       const topOffset = mode === "last-digits" ? bottom.length - top.length : 0;
@@ -1102,10 +1111,10 @@ function modelMethod(c: Context): GeneratedProblem {
         elements.push({ type: "text", at: [x + j, -1], text, font: "math" }),
       );
       elements.push(
-        { type: "text", at: [x - 1, -1], text: op === 0 ? "+" : "−" },
+        { type: "text", at: [x - 1.5, -1], text: op === 0 ? "+" : "−" },
         {
           type: "segment",
-          from: [x - 1.5, -2],
+          from: [x - 2.25, -2],
           to: [x + 5, -2],
           stroke: "ink",
         },

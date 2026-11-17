@@ -222,7 +222,8 @@ const menuButton = (page: Page) =>
     .filter({ visible: true })
     .first();
 /** Opens the switcher wherever this screen keeps it: the shared app
- * drawer, or setup’s own bar. Its trigger names the place it is on. */
+ * drawer (setup included), or a screen's own bar. Its trigger names the
+ * place it is on. */
 async function openSwitcher(page: Page, drawer: boolean) {
   if (drawer) {
     await menuButton(page).click();
@@ -361,16 +362,8 @@ async function familyThenSchool(
   await page.getByLabel(/Your name/).fill("Ruth Adeyemi");
   await page.getByRole("button", { name: "Start setup" }).click();
   await heading(page, "When does your school year run?");
-  const setupPath = `/school/new?org=${issued.orgId}&step=calendar`;
+  const setupPath = `/school/${issued.orgId}/setup/calendar`;
   check(`${label} lands on the calendar`, path(page) === setupPath, path(page));
-  if (width >= 1024) {
-    const ledger = await page.locator("aside ol li").allInnerTexts();
-    check(
-      `${label} the school step is answered`,
-      ledger[0]?.includes(school) === true,
-      ledger,
-    );
-  }
   await shot(page, "setup-with-switcher", width, theme);
 
   // `/` keeps the family: a half-finished setup never captures it.
@@ -409,8 +402,9 @@ async function familyThenSchool(
     path(page),
   );
 
-  // From setup, the same switcher goes back to the family.
-  const fromSetup = await openSwitcher(page, false);
+  // From setup, the same switcher (in the app's drawer) goes back to the
+  // family.
+  const fromSetup = await openSwitcher(page, true);
   await measured(page, `${label} setup switcher`);
   await shot(page, "setup-switcher", width, theme);
   await chooseFamily(page, fromSetup, family, `${label} setup`);

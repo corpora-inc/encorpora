@@ -1,3 +1,4 @@
+import { setFinishingSignIn } from "./finishing";
 import { familyPracticeState } from "../../../lib/family-practice-history";
 import type { PracticeFilter } from "../../practice/curriculum-filter";
 import { requestFetch } from "../../../lib/request-transport";
@@ -17,6 +18,7 @@ import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient } from "../../../lib/query";
 import { rememberStudentSession } from "../../../lib/student-device";
+import { practiceParams } from "../../spaces/identity";
 
 /** In a child's words: what happened, and what to do. */
 const messages: Record<string, string> = {
@@ -87,7 +89,11 @@ async function post<T>(
     failure.log();
     throw failure;
   }
-  const data = (await response.json().catch(() => null)) as {
+  const data = (await response.json().catch((error) => {
+    // In the entry bundle: logs itself (no lib/report-error chunk).
+    console.warn("A join answer wasn’t JSON", error);
+    return null;
+  })) as {
     error?: unknown;
     retryAfter?: unknown;
   } | null;
@@ -134,8 +140,7 @@ export const signInWithCard = (token: string) =>
 /** The app remounts for a new identity, including whichever sign-in screen is
  * up. A remounted screen checks this and keeps the wave going until practice
  * replaces it, rather than starting over. */
-let finishing = false;
-export const finishingSignIn = () => finishing;
+export { finishingSignIn } from "./finishing";
 
 /** Straight to the first problem. A class sign-in replaces the pictures.
  * A parent handoff preserves the curriculum entry for browser Back; the
@@ -153,7 +158,7 @@ export function useFinishSignIn() {
       returnName?: string,
     ) => {
       const session = { accountId: grant.accountId, token: grant.token };
-      finishing = true;
+      setFinishingSignIn(true);
       rememberStudentSession(session, grant.mode, handed, returnTo, returnName);
       // A parent's device handed to their child from a screen of theirs
       // (Practice on a skill): the screen holds, its button busy, until
@@ -164,18 +169,22 @@ export function useFinishSignIn() {
       // device's storage, so practice loads for them.
       const deferred = handed && !!learnerId && !!returnTo;
       if (deferred) deferIdentity(session);
-      else notifyDeviceSessionChanged(session);
+      else notifyDeviceSessionChanged(session, { handoff: handed });
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
-      await queryClient
+      const me = await queryClient
         .fetchQuery(meOptions(session))
-        .catch((error) =>
-          console.warn("Practice will load `/me` itself", error),
-        );
+        .catch((error) => {
+          console.warn("Practice will load `/me` itself", error);
+          return null;
+        });
+      // Straight to the student's practice, at its own address: one entry.
+      const learner =
+        learnerId ?? (me?.signedIn ? me.learners[0]?.id : undefined);
       try {
         await navigate({
           to: "/$",
-          params: { _splat: "practice" },
+          params: learner ? practiceParams(learner) : { _splat: "practice" },
           search: filter ?? {},
           replace: !handed,
           state:
@@ -187,7 +196,7 @@ export function useFinishSignIn() {
         // A navigation that never mounted practice still switches: the
         // device is the child's now.
         if (deferred) applyDeferredIdentity();
-        finishing = false;
+        setFinishingSignIn(false);
       }
     },
     [navigate],
@@ -209,6 +218,7 @@ export function applyDeferredIdentity() {
   if (!session) return;
   handOver.setState({ session: null });
   const me = queryClient.getQueryData(meOptions(session).queryKey);
-  notifyDeviceSessionChanged(session);
+  // A family hand-over: Providers keeps the tree and the parent's cache.
+  notifyDeviceSessionChanged(session, { handoff: true });
   if (me) queryClient.setQueryData(meOptions(session).queryKey, me);
 }

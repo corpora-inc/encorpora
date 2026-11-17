@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import {
   DELETE_ACCOUNT_WORD,
@@ -14,8 +14,6 @@ import { Loading } from "../../ui/Loading";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useBillingPortal } from "../billing/api";
-import { Page } from "../../ui/Page";
-import { PageHeader } from "../../ui/PageHeader";
 import {
   accountGone,
   deletionPreviewOptions,
@@ -166,11 +164,25 @@ function failureText(error: unknown) {
   return "Your account wasn’t deleted. Try again in a moment.";
 }
 
-export function DeleteAccountScreen() {
+/**
+ * Delete account (the IA v2 spec, §3.7, DeleteAccountPanel), the body of the
+ * Delete account overlay over a settings hub: what goes, then the typed
+ * confirmation and one button. Account deletion itself is required by App
+ * Store Review Guideline 5.1.1(v) and Google Play's account deletion policy.
+ *
+ * The typed word is a deliberate exception to Minimum compliance's "no extra
+ * confirmation" (founder, 2026-11-16: "Deletion is special, we can confirm
+ * it"): deleting an account is irreversible, so it keeps this one typed
+ * confirmation. Nothing else in the app adds one.
+ *
+ * A stale sign-in signs in again and returns to this overlay's address.
+ */
+export function DeleteAccountPanel() {
   const session = useSession();
   const navigate = useNavigate();
   const preview = useQuery(deletionPreviewOptions(session));
   const remove = useDeleteAccount(session);
+  const here = useLocation({ select: (location) => location.pathname });
   const [typed, setTyped] = useState("");
   const [expired, setExpired] = useState(false);
   useEffect(() => {
@@ -204,11 +216,10 @@ export function DeleteAccountScreen() {
   };
   const data = preview.data;
   return (
-    <Page data-delete-account>
-      <PageHeader
-        title="Delete your account"
-        subtitle="Deleting your account is permanent. It can’t be undone."
-      />
+    <div className={styles.panel} data-delete-account>
+      <p className={pages.quietLine}>
+        Deleting your account is permanent. It can’t be undone.
+      </p>
       {needsSignIn ? (
         <div className={styles.reserve}>
           <p className={pages.quietLine}>
@@ -220,7 +231,7 @@ export function DeleteAccountScreen() {
               to="/sign-in"
               search={{
                 return: "security",
-                next: returnTarget("/account/security/delete"),
+                next: returnTarget(here),
               }}
             >
               Sign in again to delete
@@ -309,7 +320,7 @@ export function DeleteAccountScreen() {
           )}
         </>
       )}
-    </Page>
+    </div>
   );
 }
 

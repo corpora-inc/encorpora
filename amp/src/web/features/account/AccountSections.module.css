@@ -1,0 +1,25 @@
+/* The plan's lines and its one action (BillingSummary). */
+.summary {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.lines {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-body);
+  line-height: 1.45;
+}
+.summaryReserve {
+  min-height: 72px;
+  border-radius: var(--radius-small);
+}
+.note {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+}

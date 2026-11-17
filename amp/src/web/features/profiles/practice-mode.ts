@@ -1,20 +1,22 @@
-import type { SignedInMe } from "../../../account/contracts";
+import type { Me, SignedInMe } from "../../../account/contracts";
 import { AppError } from "../../lib/AppError";
 import {
   addressedIdentity,
-  childAddress,
   learningIdentity,
+  practicePath,
   type AddressedIdentity,
 } from "../spaces/identity";
+import { nativeRuntime } from "../../native-runtime";
 import { canonicalLearning } from "../spaces/learner-urls";
 import { familyPlacesOptions } from "../family/api";
-import { useLearnerStore } from "../../learner-store";
-import { redirect } from "@tanstack/react-router";
+import { currentLearner, selectLearner } from "../../learner-store";
+import { redirect, type AnyRouter } from "@tanstack/react-router";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
-import { meOptions, queryClient, sessionOptions } from "../../lib/query";
+import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
+import type { AuthSession } from "../../auth";
 import { studentSession } from "../../lib/student-device";
-import { classesOptions, preload } from "../school/api";
+import { classesOptions, preload } from "../school/core-api";
 
 /*
  * Practicing as someone else is a mode nested in a place (docs/design/ia.md,
@@ -114,9 +116,9 @@ export async function adoptPracticeMode(location: {
   if (!me?.signedIn) return;
   // The address names whose screen this is (features/spaces/identity.ts): a
   // profile or a learner this account doesn't read is unavailable, never
-  // someone else. Nothing here changes this device's choice: a guard also
-  // runs for preloads and for navigations that never show, so the shell
-  // adopts the named learner once its screen is on view (AppShell).
+  // someone else. Nothing here changes the current learner: a guard also
+  // runs for preloads and for navigations that never show
+  // (followResolvedLearner adopts it once the navigation resolves).
   const named = addressedIdentity(location.pathname, location.search);
   if (named && !readsIdentity(me, named))
     throw new AppError(
@@ -139,6 +141,81 @@ export async function adoptPracticeMode(location: {
     PRACTICE_ONLY.test(location.pathname)
   )
     throw await (await import("../home/destination")).homeRedirect();
+}
+
+/** A learning screen's older address goes to its canonical one in one
+ * hop, replacing it in history (amp/AGENTS.md: a redirect only for a legacy
+ * URL, never chained). The one way this module redirects. */
+const olderAddress = (href: string) => redirect({ href, replace: true });
+
+/** Whose practice bare `/practice` meant: a school student's own learner;
+ * an older link's `?learner=`; the adult's own; else the account's current
+ * child (learner-store.ts), else its first. Null: nobody to practice. */
+export function practiceLearnerFor(
+  me: SignedInMe,
+  named: string | null,
+  chosen: string | null,
+): string | null {
+  if (me.account.kind === "student") return me.learners[0]?.id ?? null;
+  if (named) return named;
+  const own = me.adultPractice?.learner?.id;
+  if (own) return own;
+  const children = [
+    ...me.learners,
+    ...(me.secondParentOf ?? []).flatMap((family) => family.learners),
+  ];
+  return (
+    children.find((entry) => entry.id === chosen)?.id ?? children[0]?.id ?? null
+  );
+}
+
+/** A school student's practice address, from the account already loaded:
+ * synchronous, for a guard sending a student home (bare `/practice`, one
+ * more hop, only before their `/me` has loaded). */
+export function studentPracticeHref() {
+  const student = studentSession();
+  const me = student
+    ? queryClient.getQueryData<Me>(meKey(student.accountId))
+    : undefined;
+  const learner = me?.signedIn ? me.learners[0]?.id : undefined;
+  return learner ? practicePath(learner) : "/practice";
+}
+
+/** A school student's addresses that are a family's (its setup, buying,
+ * consent): their practice is their one place. */
+const NOT_A_STUDENTS = /^\/(?:family|purchase|consent)(?:\/|$)/;
+
+/**
+ * Before practice loads: `/practice` names nobody, so it is an older
+ * address. One hop, replacing it, to `/practice/<learner>`, keeping its
+ * filter (`?skill=`, `?strand=`). A practice profile (`?profile=`) is a mode
+ * with its own address and stays. Every link in the app goes to
+ * `/practice/<learner>` itself (identity.ts `practicePath`). A school
+ * student on a family's screen goes to their practice the same way.
+ */
+export async function practiceAddress(location: {
+  pathname: string;
+  searchStr: string;
+}) {
+  if (nativeRuntime) return;
+  const away = !!studentSession() && NOT_A_STUDENTS.test(location.pathname);
+  if (!away && !/^\/practice\/?$/.test(location.pathname)) return;
+  const params = new URLSearchParams(away ? "" : location.searchStr);
+  if (params.get("profile")) return;
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) return;
+  const me = await queryClient.ensureQueryData(meOptions(session));
+  if (!me.signedIn) return;
+  const learner = practiceLearnerFor(
+    me,
+    params.get(LEARNER_KEY) || null,
+    currentLearner(session.accountId),
+  );
+  if (!learner) return;
+  params.delete(LEARNER_KEY);
+  throw olderAddress(
+    `${practicePath(learner)}${params.size ? `?${params}` : ""}`,
+  );
 }
 
 /**
@@ -173,10 +250,50 @@ export async function canonicalLearnerAddress(location: {
     params,
     me,
     places,
-    useLearnerStore.getState().learnerId,
+    currentLearner(),
   );
   if (href && href !== `${location.pathname}${location.searchStr}`)
-    throw redirect({ href, replace: true });
+    throw olderAddress(href);
+}
+
+/** The learner a resolved navigation's address names becomes the account's
+ * current one (learner-store.ts). */
+function adoptChoice(
+  me: SignedInMe,
+  location: { pathname: string; search: Record<string, unknown> },
+) {
+  const choice = committedChoice(
+    me,
+    location.pathname,
+    location.search,
+    currentLearner(me.account.id),
+  );
+  if (choice !== undefined) selectLearner(choice, me.account.id);
+}
+
+/**
+ * The router's one writer of the current learner (learner-store.ts): when a
+ * navigation resolves (its screen is the one on view), the learner its
+ * address names becomes the account's current one. A preload, a navigation
+ * still loading and one abandoned never resolve, so they choose nobody. An
+ * event, never a screen's effect; a school student's address names their
+ * one learner, so their session chooses nothing.
+ */
+export function followResolvedLearner(router: Pick<AnyRouter, "subscribe">) {
+  return router.subscribe("onResolved", ({ toLocation }) => {
+    if (studentSession()) return;
+    const session = queryClient.getQueryData<AuthSession | null>(
+      sessionOptions.queryKey,
+    );
+    const me = session
+      ? queryClient.getQueryData<Me>(meKey(session.accountId))
+      : undefined;
+    if (me?.signedIn && me.account.id === session?.accountId)
+      adoptChoice(me, {
+        pathname: toLocation.pathname,
+        search: toLocation.search as Record<string, unknown>,
+      });
+  });
 }
 
 /** This account reads the learner or profile an address names. */
@@ -210,8 +327,7 @@ export function committedChoice(
   if (pathname === "/me") return own && current !== own ? own : undefined;
   if (
     !isLearningPath(pathname) &&
-    !/^\/learners\//.test(pathname) &&
-    !childAddress(pathname)
+    !/^\/(?:learners|family\/[^/]+\/kids)\//.test(pathname)
   )
     return undefined;
   // An unnamed shared learning screen is the adult's own (self).

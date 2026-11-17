@@ -13,9 +13,10 @@ import {
 } from "react";
 import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
-import { hasAccountContext } from "../lib/account-page";
-import { meOptions, sessionOptions } from "../lib/query";
-import { useLearnerStore } from "../learner-store";
+import { meOptions } from "../lib/query";
+import { forSession, useSessionOrNull } from "../lib/session";
+import { useCurrentLearner } from "../learner-store";
+import { practicePath } from "../features/spaces/identity";
 import { useShellSlots } from "../lib/shell-slots";
 import { usePlaces } from "../features/navigation/PlaceSwitcher";
 import type { SpaceDescriptor } from "../features/spaces/resolve";
@@ -28,7 +29,7 @@ import {
 } from "../features/spaces/hold";
 import { useSettledMatch, useSpace } from "../features/spaces/useSpace";
 import { DemoMark } from "../features/school/demo/DemoMark";
-import { DemoSetupAction } from "../features/school/demo/DemoPlace";
+import { DemoSetupAction } from "../features/school/demo/DemoSetupAction";
 import {
   ProfileBackAction,
   ProfileMark,
@@ -40,7 +41,6 @@ import { Toast } from "../ui/Toast";
 import { Button, buttonClass } from "../ui/Button";
 import { EmptyState } from "../ui/EmptyState";
 import { RootLink } from "../nav/root";
-import { committedChoice } from "../features/profiles/practice-mode";
 import { AppLogo } from "../ui/AppLogo";
 import { PlaceName } from "../ui/PlaceName";
 import bar from "../ui/AppBar.module.css";
@@ -74,7 +74,7 @@ const preloadScreens = () =>
  */
 export function AppShell({ children }: { children: ReactNode }) {
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const session = useQuery(sessionOptions);
+  const session = useSessionOrNull();
   const match = useSettledMatch();
   // The space of the screen on view (features/spaces): its bar, tabs,
   // actions, drawer and words all come from this one description.
@@ -82,7 +82,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   // The same place asked again for the same account keeps its frame while
   // it answers (features/spaces/hold.ts).
   const held = useRef<Held>(null);
-  const identity = sessionIdentity(session.data);
+  const identity = sessionIdentity(session ?? undefined);
   const steady = holdFrame(held.current, resolved, identity);
   const refusedHere =
     !!steady && "status" in steady && steady.status === "unavailable";
@@ -91,23 +91,10 @@ export function AppShell({ children }: { children: ReactNode }) {
     : (nextHeld(steady, identity) ?? held.current);
   if (!identity || (held.current && held.current.session !== identity))
     held.current = null;
-  const space = session.data && steady?.bar ? steady : null;
-  // Once a screen is on view, the learner its address names becomes this
-  // device's choice (never during a load or a preload: features/spaces).
-  const me = useAccount(!!match && hasAccountContext(match.pathname));
-  useEffect(() => {
-    if (!me || !match) return;
-    const choice = committedChoice(
-      me,
-      match.pathname,
-      match.search ?? {},
-      useLearnerStore.getState().learnerId,
-    );
-    if (choice !== undefined) useLearnerStore.getState().select(choice);
-  }, [me, match]);
+  const space = session && steady?.bar ? steady : null;
   // A place this person can no longer open, or one that didn't load, shows
   // that in place of the screen: nothing of it renders or asks the server.
-  const blocked = session.data ? blockedBy(resolved) : null;
+  const blocked = session ? blockedBy(resolved) : null;
   const pathname = match?.pathname ?? "";
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
@@ -284,12 +271,9 @@ function ShellBar({
 /** This account's `/me`, once loaded, and never another account's. A
  * screen without account context (public information, sign-in) never asks
  * for it (lib/account-page.ts). */
-function useAccount(accountPage = true): SignedInMe | null {
-  const session = useQuery(sessionOptions).data;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session && accountPage,
-  }).data;
+function useAccount(): SignedInMe | null {
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   return me?.signedIn && me.account.id === session?.accountId ? me : null;
 }
 
@@ -354,7 +338,7 @@ function ProgressAction({
   own: boolean;
   me: SignedInMe | null;
 }) {
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  const learnerId = useCurrentLearner();
   // A day-0 hero on the screen is its one Practice; the bar's holds its place.
   const hero = useShellSlots((state) => state.heroAction);
   const target = practiceTarget(own, me, learnerId);
@@ -378,7 +362,7 @@ function ProgressAction({
       data-shell-action
     >
       <svg viewBox="0 0 16 16" aria-hidden="true">
-        {target.path !== "/practice" ? (
+        {!target.path.startsWith("/practice/") ? (
           <path
             d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"
             fill="none"
@@ -407,7 +391,7 @@ function practiceTarget(
   // Practice, where the one pause shows once the free problems are used.
   if (own)
     return me.adultPractice?.learner
-      ? { path: "/practice", label: "Practice" }
+      ? { path: practicePath(me.adultPractice.learner.id), label: "Practice" }
       : null;
   // A second parent's family's child practices from its class.
   if (secondParentChild(me, learnerId)) return null;
@@ -417,11 +401,14 @@ function practiceTarget(
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0];
   if (learner && learner.learningAllowed !== false)
-    return { path: "/practice", label: "Practice" };
+    return { path: practicePath(learner.id), label: "Practice" };
   // An adult with no child, before this device has chosen a learner (a
   // shared lesson link): their own practice, never "Get started" again.
   if (!learner && me.adultPractice?.learner)
-    return { path: "/practice", label: "Practice" };
+    return {
+      path: practicePath(me.adultPractice.learner.id),
+      label: "Practice",
+    };
   if (me.account.kind === "student") return null;
   return learner ? null : { path: "/start", label: "Get started" };
 }

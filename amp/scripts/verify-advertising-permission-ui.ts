@@ -36,11 +36,11 @@ import React,{useState}from'react';import{createRoot}from'react-dom/client';
 import{createRootRoute,createRoute,createRouter,RouterProvider}from'@tanstack/react-router';
 import{QueryClientProvider,useQuery}from'@tanstack/react-query';
 import{queryClient,meOptions,sessionOptions}from'../../src/web/lib/query';
-import{PrivacyPanel}from'../../src/web/features/privacy/PrivacyPanel';import'../../src/web/app/styles';
+import{PrivacyPanel}from'../../src/web/features/privacy/PrivacyPanel';import{setPanel}from'../../src/web/features/account/panels';import'../../src/web/app/styles';
 const sessionFor=(identity:string)=>({accountId:identity,token:identity==='amp|parent'?'synthetic-parent':'synthetic-other'});
 queryClient.setQueryData(sessionOptions.queryKey,sessionFor('amp|parent'));
 function Screen(){const[identity,setIdentity]=useState('amp|parent');
-(window as any).switchAccount=(next:string)=>{queryClient.setQueryData(sessionOptions.queryKey,sessionFor(next));setIdentity(next);};
+(window as any).switchAccount=(next:string)=>{queryClient.setQueryData(sessionOptions.queryKey,sessionFor(next));setPanel(next,'privacy','measurement');setIdentity(next);};
 const result=useQuery(meOptions(sessionFor(identity)));
 if(!result.data)return <p role="status">Loading…</p>;
 return <main style={{maxWidth:480,margin:'0 auto',padding:16}}><h1>Privacy</h1><PrivacyPanel key={identity}/></main>;}

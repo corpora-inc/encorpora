@@ -1,10 +1,6 @@
 /* A report card is a sheet of paper: its own page, one to a printed letter, and
    the same proportions on a screen. */
 .page {
-  min-height: calc(100dvh - var(--shell-bar, 56px));
-  padding: var(--space-5) var(--space-4) var(--space-8);
-  background: var(--color-surface-sunken);
-  color: var(--color-on-surface);
   font-size: var(--text-dense);
   line-height: 1.45;
 }
@@ -14,8 +10,12 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-4) var(--space-5);
-  max-width: 720px;
-  margin: 0 auto var(--space-5);
+}
+/* The header (or a host's toolbar), then the cards, a page's gap apart. */
+.set {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--page-gap);
 }
 .toolbarText p {
   margin-top: var(--space-1);
@@ -27,14 +27,12 @@
   gap: var(--space-2);
 }
 .lost {
-  max-width: 720px;
-  margin: var(--space-8) auto;
+  margin-block: var(--space-8);
 }
 .cards {
   display: grid;
   gap: var(--space-5);
-  justify-content: center;
-  grid-template-columns: minmax(0, 720px);
+  grid-template-columns: minmax(0, 1fr);
 }
 .card {
   display: flex;
@@ -183,10 +181,3 @@ h2.name {
   }
 }
 /* Cards inside another page's frame start at its edge, as its sections do. */
-.set[data-framed] .toolbar {
-  max-width: none;
-  margin-inline: 0;
-}
-.set[data-framed] .cards {
-  justify-content: start;
-}

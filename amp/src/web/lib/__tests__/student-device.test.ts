@@ -78,7 +78,7 @@ test("a stored student token wins over a parent session, without asking the serv
   expect(fetched).not.toHaveBeenCalled();
 });
 
-test("sign-out clears the token and the chosen learner, then goes to /join", async () => {
+test("sign-out clears the token, keeps other accounts' learner choices, then goes to /join", async () => {
   const assign = vi.fn();
   vi.stubGlobal("location", {
     ...new URL("https://amp.corpora.inc/practice"),
@@ -86,11 +86,17 @@ test("sign-out clears the token and the chosen learner, then goes to /join", asy
     assign,
   });
   rememberStudentSession(student, "personal");
-  localStorage.setItem("amp.learner", "chosen");
+  const parentChoice = JSON.stringify({
+    state: { learners: { "amp|parent": "chosen" } },
+    version: 2,
+  });
+  localStorage.setItem("amp.learner", parentChoice);
   localStorage.setItem("amp.curriculum-details", "kept");
   await signOut();
   expect(studentSession()).toBeNull();
-  expect(localStorage.getItem("amp.learner")).toBeNull();
+  // A student's own choice is never stored (learner-store.ts); a parent's
+  // stays theirs.
+  expect(localStorage.getItem("amp.learner")).toBe(parentChoice);
   expect(localStorage.getItem("amp.curriculum-details")).toBe("kept");
   expect(assign).toHaveBeenCalledWith("/join");
 });

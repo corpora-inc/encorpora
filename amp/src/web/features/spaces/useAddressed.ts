@@ -1,12 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouterState } from "@tanstack/react-router";
-import { meOptions, sessionOptions } from "../../lib/query";
+import type { Me } from "../../../account/contracts";
+import type { AuthSession } from "../../auth";
+import { meKey, meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { familyOptions } from "../family/api";
 import {
   childAddress,
   learningIdentity,
   type AddressedIdentity,
 } from "./identity";
+
+/** The displayed route's own pathname and search (the same snapshot the
+ * shell reads: useSettledMatch), never the address still loading. */
+type ShownState = {
+  matches: { status: string; pathname: string; search: unknown }[];
+  location: { pathname: string; search: unknown };
+  resolvedLocation?: { pathname: string; search: unknown };
+};
+function shownLocation(state: ShownState) {
+  const leaf = state.matches.at(-1);
+  return leaf && leaf.status === "success"
+    ? { pathname: leaf.pathname, search: leaf.search }
+    : (state.resolvedLocation ?? state.location);
+}
+/** The adult's own learner, when `me` is this session's. */
+function ownOf(session: AuthSession | null, me: Me | undefined) {
+  return me?.signedIn && me.account.id === session?.accountId
+    ? (me.adultPractice?.learner?.id ?? null)
+    : null;
+}
 
 /**
  * The learner or profile the displayed screen's address names, with self
@@ -21,19 +43,10 @@ export function useAddressedIdentity(): AddressedIdentity | null {
     ...meOptions(session ?? { accountId: "", token: "" }),
     enabled: !!session,
   }).data;
-  const own =
-    me?.signedIn && me.account.id === session?.accountId
-      ? (me.adultPractice?.learner?.id ?? null)
-      : null;
+  const own = ownOf(session, me);
   const key = useRouterState({
     select: (state) => {
-      // The displayed route's own pathname and search (the same snapshot
-      // the shell reads: useSettledMatch), never the address still loading.
-      const leaf = state.matches.at(-1);
-      const shown =
-        leaf && leaf.status === "success"
-          ? { pathname: leaf.pathname, search: leaf.search }
-          : (state.resolvedLocation ?? state.location);
+      const shown = shownLocation(state);
       const found = learningIdentity(
         shown.pathname,
         shown.search as Record<string, unknown>,
@@ -48,6 +61,26 @@ export function useAddressedIdentity(): AddressedIdentity | null {
     kind: key.slice(0, at) as AddressedIdentity["kind"],
     id: key.slice(at + 1),
   };
+}
+
+/** `useAddressedIdentity`'s answer outside render (work finishing later
+ * asks whose screen is on view now), from the same canonical sources: the
+ * router's state and the Query cache. */
+export function addressedIdentityNow(
+  state: ShownState,
+): AddressedIdentity | null {
+  const session =
+    queryClient.getQueryData<AuthSession | null>(sessionOptions.queryKey) ??
+    null;
+  const me = session
+    ? queryClient.getQueryData<Me>(meKey(session.accountId))
+    : undefined;
+  const shown = shownLocation(state);
+  return learningIdentity(
+    shown.pathname,
+    shown.search as Record<string, unknown>,
+    ownOf(session, me),
+  );
 }
 
 /**

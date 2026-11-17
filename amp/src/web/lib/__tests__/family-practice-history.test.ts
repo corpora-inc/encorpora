@@ -75,7 +75,8 @@ test("Back restores the parent before the family route runs", async () => {
     state: { key: "parent" },
   });
   expect(state.student).toBeNull();
-  expect(publish).toHaveBeenCalledExactlyOnceWith(parent);
+  // A family handoff: the parent takes back the device (app/providers.tsx).
+  expect(publish).toHaveBeenCalledExactlyOnceWith(parent, { handoff: true });
   expect(request).not.toHaveBeenCalled();
 });
 test("Forward authorizes the named child once even when the session switch remounts the router", async () => {

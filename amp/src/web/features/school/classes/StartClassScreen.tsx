@@ -1,9 +1,10 @@
-import { useCloseClick } from "../../../nav/links";
+import { closeTo } from "../../../lib/return-to";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { useParams, useRouter } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Avatar } from "../../../ui/Avatar";
-import { Button, buttonClass } from "../../../ui/Button";
+import { Button } from "../../../ui/Button";
+import { Page } from "../../../ui/Page";
 import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { publicOrigin } from "../../../app/route-head";
@@ -118,55 +119,51 @@ export function StartClassScreen() {
     logged.current = failing;
   }, [failing, presence.error]);
 
-  // Back to where the board was opened: Today, the map, the roster.
-  const closeClick = useCloseClick(
-    `/school/${params.org}/classes/${params.class}`,
-  );
+  // The board is an overlay on its class: its cross closes it to where it
+  // was opened (Today, the map, the roster), else the class's Today.
+  const router = useRouter();
+  const close = () =>
+    closeTo(router, `/school/${params.org}/classes/${params.class}/today`);
   const exit = (
-    <Link
-      to="/school/$org/classes/$class"
-      params={params}
-      className={buttonClass("secondary", styles.exit)}
-      onClick={closeClick}
-    >
-      Exit
-    </Link>
+    <Button variant="secondary" onClick={close}>
+      Close
+    </Button>
   );
   if (board === null)
     return (
-      <main className={styles.problem} data-dense>
+      <Page width="full" className={styles.problem} data-dense>
         <EmptyState title="This class isn’t open to you" action={exit}>
           Its code and names are no longer shown here.
         </EmptyState>
-      </main>
+      </Page>
     );
   if (presence.isError && !board)
     return (
-      <main className={styles.problem} data-dense>
+      <Page width="full" className={styles.problem} data-dense>
         <EmptyState title="The board didn’t load" action={exit}>
           {presence.error.message}
         </EmptyState>
-      </main>
+      </Page>
     );
   if (!board || access.pending) return <LoadingScreen />;
   // The server sends the code only while practice runs.
   if (access.closed || !board.class.joinCode)
     return (
-      <main className={styles.problem} data-dense>
+      <Page width="full" className={styles.problem} data-dense>
         <ClosedSignIn
           place={{ org: params.org, class: params.class }}
           also={exit}
           onRetry={() => void presence.refetch()}
           known={board.class.practice}
         />
-      </main>
+      </Page>
     );
   const { class: shown, students } = board;
   const info = shown;
   const here = students.filter((student) => student.here).length;
   const joinUrl = joinLink(info.joinCode);
   return (
-    <main className={styles.board} data-dense>
+    <Page width="full" className={styles.board} data-dense>
       <header className={styles.bar}>
         <h1 className={styles.className}>{info.name}</h1>
         <div className={styles.controls}>
@@ -187,7 +184,16 @@ export function StartClassScreen() {
               <ExpandMark on={fullscreen} />
             </Button>
           )}
-          {exit}
+          <Button
+            variant="quiet"
+            className={styles.iconButton}
+            aria-label="Close the board"
+            onClick={close}
+          >
+            <svg viewBox="0 0 24 24" className={styles.mark} aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </Button>
         </div>
       </header>
       <section className={styles.hero}>
@@ -249,6 +255,6 @@ export function StartClassScreen() {
       <p className={styles.stale} role="status" data-on={failing || undefined}>
         {failing ? "Reconnecting to AMP" : ""}
       </p>
-    </main>
+    </Page>
   );
 }

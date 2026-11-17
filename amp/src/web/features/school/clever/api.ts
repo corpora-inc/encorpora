@@ -1,3 +1,4 @@
+import { jsonOrNull } from "../../../lib/report-error";
 import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
@@ -127,7 +128,7 @@ async function connectionCall<T>(
     if (signal?.aborted || error instanceof AppError) throw error;
     throw new AppError("network", "Check your connection and try again.", true);
   }
-  const data: unknown = await response.json().catch(() => null);
+  const data: unknown = await jsonOrNull(response);
   if (!response.ok) {
     const code =
       data &&

@@ -1,8 +1,3 @@
-import { familyOptions, familyPlacesOptions } from "../features/family/api";
-import {
-  settingsFamilyOf,
-  usesFamilySettingsFrame,
-} from "../features/family/settings-family";
 import {
   carryFamilyPractice,
   restoreFamilyPractice,
@@ -47,7 +42,7 @@ import {
   meOptions,
 } from "../lib/query";
 import type { Me } from "../../account/contracts";
-import { useLearnerStore } from "../learner-store";
+import { currentLearner } from "../learner-store";
 import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { childAddress, childPath } from "../features/spaces/identity";
@@ -68,8 +63,8 @@ import {
   type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
-import { hasInitialConsentChallenge } from "../consent-entry";
-import { hasPurchaseReturn } from "../purchase-return";
+import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
+import { cleverReturn, homeReturn, stripeReturn } from "./third-party-returns";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
 import { autoReloadBlock } from "../lib/reload-guard";
 import {
@@ -78,18 +73,21 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { orgsOptions, preload } from "../features/school/api";
 import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
 import { prepareSchoolAdoption } from "../features/school/adoption-session";
-import { finishingSignIn } from "../features/school/join/api";
+import { finishingSignIn } from "../features/school/join/finishing";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
-import { classYearOptions } from "../features/school/org/org-api";
+import {
+  classYearOptions,
+  orgsOptions,
+  preload,
+} from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
-import { privacyRoutes } from "./privacy-routes";
-import { payOverlays, payRoutes } from "./pay-routes";
+import { accountOverlays } from "./account-overlays";
+import { payRoutes } from "./pay-routes";
 import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -113,6 +111,9 @@ import {
 import { MAX_LAYERS, OPEN_KEY, work } from "../nav/entities";
 import {
   adoptPracticeMode,
+  followResolvedLearner,
+  practiceAddress,
+  studentPracticeHref,
   canonicalLearnerAddress,
   carriedKeys,
   isLearningPath,
@@ -269,6 +270,8 @@ const root = createRootRoute({
   // into a full page load of the same URL. The current screen stays painted
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
+    // An old address: one hop to its new one, before any screen's guard.
+    if (!preload) await followAlias(location);
     if (nativeRuntime) return;
     if (!preload) await restoreFamilyPractice(location);
     if (
@@ -296,24 +299,6 @@ const root = createRootRoute({
     const session = await queryClient
       .ensureQueryData(sessionOptions)
       .catch(() => undefined);
-    if (
-      session &&
-      !session.accountId.startsWith("school:") &&
-      usesFamilySettingsFrame(location.pathname)
-    ) {
-      // Resolve the frame before committing the screen, so account settings
-      // never flash a different tab set while the parent's family loads.
-      await queryClient
-        .ensureQueryData(familyPlacesOptions(session))
-        .then(async (places) => {
-          const family = settingsFamilyOf(places);
-          if (family)
-            await queryClient.ensureQueryData(
-              familyOptions(session, family.familyId),
-            );
-        })
-        .catch(() => undefined);
-    }
     if (session)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
@@ -403,7 +388,7 @@ const start = lazyRouteComponent(
  * families, so a student's URL goes back to practice. */
 function notForStudents() {
   if (studentSession())
-    throw redirect({ to: "/$", params: { _splat: "practice" }, replace: true });
+    throw redirect({ href: studentPracticeHref(), replace: true });
 }
 /** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({
@@ -506,46 +491,11 @@ const home = createRoute({
   // launcher, a real screen whether reached by a link or by Back. Only an
   // address that carries a handoff (an auth link, a payment's return, a
   // consent challenge) goes on, once, to the screen that handles it.
-  beforeLoad: async ({ search: rawSearch, location }) => {
-    const search = searchSchema.parse(rawSearch);
-    if ("sign-in" in search)
-      throw redirect({
-        to: search["sign-in"] === "create" ? "/sign-up" : "/sign-in",
-        search: { return: search.return, error: search.error },
-      });
-    if ("reset-password" in search)
-      throw redirect({
-        to: "/reset-password",
-        search: { token: search.token, error: search.error },
-      });
+  // (Old `/?sign-in`, `/?reset-password` and a consent email's link are
+  // app/legacy-aliases.ts rows.)
+  beforeLoad: async ({ location }) => {
     if (nativeRuntime) return;
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) return;
-    // Back from a provider's sign-in: the account's place, once.
-    if ("signed-in" in search) throw await homeRedirect();
-    if (hasInitialConsentChallenge())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "consent" },
-        replace: true,
-      });
-    // Back from a learner's Stripe Checkout: read once, resolved through
-    // the server, and on to that learner's confirmation (features/pay).
-    if (hasPurchaseReturn(location.searchStr))
-      throw redirect({
-        href:
-          (await (
-            await import("../features/pay/stripe-return")
-          ).stripeReturnTarget(session, search, "learner")) ??
-          "/account/billing",
-        replace: true,
-      });
-    if ("security" in search)
-      throw redirect({
-        to: "/$",
-        params: { _splat: "account/security" },
-        replace: true,
-      });
+    await homeReturn(location);
   },
 });
 /** The launcher's account and places, read before it paints. */
@@ -629,41 +579,7 @@ const accountReady = createRoute({
     "AccountReady",
   ),
 });
-/** Account → Sign-in → Delete my account (features/account/DeleteAccount):
- * what goes, then a typed confirmation; and the page after it. */
 const deleteAccountScreens = () => import("../features/account/DeleteAccount");
-const deleteAccount = createRoute({
-  getParentRoute: () => root,
-  path: "/account/security/delete",
-  staticData: { space: "account" },
-  beforeLoad: async () => {
-    notForStudents();
-    const session = await queryClient.ensureQueryData(sessionOptions);
-    if (!session) throw redirect({ to: "/sign-in" });
-    return { session };
-  },
-  // What the account holds arrives with the screen, so the list paints whole.
-  loader: async ({ context: { session } }) => {
-    const { deletionPreviewOptions } =
-      await import("../features/account/delete-api");
-    await queryClient
-      .ensureQueryData(deletionPreviewOptions(session))
-      .catch((error) =>
-        console.warn("What the account holds didn’t load ahead", error),
-      );
-  },
-  component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
-});
-/** Its address before the account had its own (`/account/…`): the same
- * screen, so older links and returns keep working. */
-const deleteAccountAlias = createRoute({
-  getParentRoute: () => root,
-  path: "/family/security/delete",
-  staticData: { space: "account" },
-  beforeLoad: deleteAccount.options.beforeLoad,
-  loader: deleteAccount.options.loader,
-  component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
-});
 const accountDeleted = createRoute({
   getParentRoute: () => root,
   path: "/account/deleted",
@@ -785,15 +701,11 @@ const startPurchase = createRoute({
   beforeLoad: async (input) => {
     // A learner's enrollment checkout from the pay flow comes back to that
     // learner's confirmation; one with no learner yet stays here.
-    const session = await queryClient
-      .ensureQueryData(sessionOptions)
-      .catch(() => null);
-    const target =
-      session &&
-      (await (
-        await import("../features/pay/stripe-return")
-      ).stripeReturnTarget(session, input.location.search, "enrollment"));
-    if (target) throw redirect({ href: target, replace: true });
+    await stripeReturn(
+      input.location,
+      "enrollment",
+      await queryClient.ensureQueryData(sessionOptions),
+    );
     return beforeStart(input);
   },
   component: start,
@@ -1008,28 +920,14 @@ const pathwaySkill = createRoute({
   path: "$skillId",
   // Its parent's beforeLoad lands it on the map, with the skill over it.
 });
-/** A learner's workbooks are a tab of their Progress: arriving chooses
- * that learner (the account's own, never a practice profile), so the
- * group's other tabs and Practice are theirs too. The server still decides
- * what the account may open. */
-async function beforeWorkbooks<Params extends { learnerId: string }>({
-  params,
-}: {
-  params: Params;
-}) {
-  const { learnerId } = params;
+/** A learner's workbooks are a tab of their Progress. The address names
+ * the learner (`$learnerId`): the screen reads it from there, and once the
+ * navigation resolves it is the account's current learner
+ * (followResolvedLearner). The server still decides what the account may
+ * open. */
+function beforeWorkbooks() {
   if (nativeRuntime) throw redirect({ to: "/" });
   notForStudents();
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) return;
-  const me = await queryClient
-    .ensureQueryData(meOptions(session))
-    .catch(() => null);
-  // The address names the learner (`$learnerId`): the screen reads it from
-  // there, and the shell adopts it as this device's choice once the screen
-  // shows. A guard never chooses (a preload runs it too).
-  void me;
-  void learnerId;
 }
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
@@ -1063,51 +961,52 @@ const workbookResults = createRoute({
     "WorkbookResultsScreen",
   ),
 });
-const billingPage = createRoute({
+/** The account (`/account`, the IA v2 spec, §4): one page for every adult,
+ * and the overlays its rows open over it (app/account-overlays.tsx):
+ * billing, privacy, sign-in & security, deleting the account, Pay. They
+ * render for anyone signed in, family parents too, so mailed and returned
+ * links keep working; a family's own links go to its Settings instead. */
+const accountHub = createRoute({
   getParentRoute: () => root,
-  path: "/account/billing",
+  path: "/account",
   staticData: { space: "account" },
-  validateSearch: z.object({
-    receipt: z.string().max(200).optional().catch(undefined),
-  }),
   beforeLoad: async () => {
     if (!finishingSignIn()) notForStudents();
     await framedScreen();
+    if (!queryClient.getQueryData(sessionOptions.queryKey))
+      throw redirect({ to: "/sign-in" });
   },
-  loader: async () => {
-    const session = queryClient.getQueryData(sessionOptions.queryKey);
-    if (session)
-      await (
-        await import("../features/account/billing-prefetch")
-      ).prefetchBilling(session);
-  },
-  // Billing, and the pay overlay its "Choose a plan" opens over it
-  // (`pay/<learner>`, features/pay): Billing stays mounted behind.
   component: lazyRouteComponent(
-    () => import("../features/pay/hosts"),
-    "BillingPayHost",
+    () => import("../features/account/AccountHub"),
+    "AccountHost",
   ),
 });
-const billingPurchasesAlias = createRoute({
-  getParentRoute: () => root,
-  path: "/account/billing/purchases",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    throw redirect({ to: "/account/billing", replace: true });
-  },
-});
-const billingRecordsAlias = createRoute({
-  getParentRoute: () => root,
-  path: "/account/billing/records",
-  staticData: { space: "account" },
-  beforeLoad: () => {
-    throw redirect({
-      to: "/account/billing",
-      hash: "receipts-title",
-      replace: true,
-    });
-  },
-});
+/** The account's older addresses (features/account/legacy.ts): each one
+ * hop, straight to its overlay over the account's settings hub. */
+const accountLegacy = (path: string) =>
+  createRoute({
+    getParentRoute: () => root,
+    path,
+    staticData: { space: "account" },
+    beforeLoad: async ({ location }) => {
+      const session = await queryClient.ensureQueryData(sessionOptions);
+      const [{ accountHop }, { setPanel }, { loadSettingsHub }] =
+        await Promise.all([
+          import("../features/account/legacy"),
+          import("../features/account/panels"),
+          import("../features/spaces/settings-hub"),
+        ]);
+      const hub = session ? await loadSettingsHub(session) : "/account";
+      const hop = accountHop(
+        location.pathname,
+        hub,
+        location.search as Record<string, unknown>,
+      );
+      if (hop?.panel && session)
+        setPanel(session.accountId, hop.panel.overlay, hop.panel.id);
+      throw redirect({ href: hop?.href ?? "/account", replace: true });
+    },
+  });
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
   "InvoiceForm",
@@ -1376,34 +1275,45 @@ const schoolClassImport = createRoute({
     "ImportScreen",
   ),
 });
-/** A teacher sets up a class (one short form). `org` preselects a school. */
+/** The import's later steps, each at its own address: `import/columns`,
+ * `import/review`, `import/done`. */
+const schoolClassImportStep = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "import/$step",
+  component: lazyRouteComponent(
+    () => import("../features/school/ImportScreen"),
+    "ImportScreen",
+  ),
+});
+/** A teacher sets up a class: its two steps, each at its own address
+ * (features/school/pilots/start-steps.ts). Nothing rides along in a query. */
+const startLoader = async ({ context }: { context: unknown }) => {
+  const { session } = context as { session: AuthSession };
+  await Promise.all([
+    preload(meOptions(session)),
+    preload(orgsOptions(session)),
+  ]);
+};
 const schoolStart = createRoute({
   getParentRoute: () => root,
   path: "/school/start",
   staticData: { space: "account" },
   beforeLoad: staffScreen,
-  // `from`: adding a place from somewhere, its way back (appReturn).
-  validateSearch: (
-    search: Record<string, unknown>,
-  ): { org?: string; from?: string } => {
-    const from = appReturn(search.from);
-    return {
-      ...(z.uuid().safeParse(search.org).success
-        ? { org: String(search.org) }
-        : {}),
-      ...(from ? { from } : {}),
-    };
-  },
-  loader: async ({ context }) => {
-    const { session } = context as unknown as { session: AuthSession };
-    await Promise.all([
-      preload(meOptions(session)),
-      preload(orgsOptions(session)),
-    ]);
-  },
+  loader: startLoader,
   component: lazyRouteComponent(
     () => import("../features/school/pilots/SchoolStartScreen"),
     "SchoolStartScreen",
+  ),
+});
+const schoolStartStudents = createRoute({
+  getParentRoute: () => root,
+  path: "/school/start/students",
+  staticData: { space: "account" },
+  beforeLoad: staffScreen,
+  loader: startLoader,
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/SchoolStartScreen"),
+    "SchoolStartStudentsScreen",
   ),
 });
 /** "I run a school": the school, then its classes (one short form). */
@@ -1423,12 +1333,7 @@ const schoolConnect = createRoute({
   getParentRoute: () => root,
   path: "/school/connect",
   staticData: { space: "account" },
-  validateSearch: (search: Record<string, unknown>): { error?: string } =>
-    ["clever_identity_already_linked", "clever_link_expired"].includes(
-      String(search.error),
-    )
-      ? { error: String(search.error) }
-      : {},
+  ...cleverReturn,
   beforeLoad: async () => {
     if (nativeRuntime) throw redirect({ to: "/", replace: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
@@ -1443,11 +1348,7 @@ const schoolConnect = createRoute({
       await cleverOnboardingSession();
     }
     if (studentSession())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "practice" },
-        replace: true,
-      });
+      throw redirect({ href: studentPracticeHref(), replace: true });
   },
   component: lazyRouteComponent(
     () => import("../features/school/clever/ConnectionScreen"),
@@ -1588,8 +1489,8 @@ const ownRecord = createRoute({
         to: me.adultPractice?.eligible ? "/me/start" : "/",
         replace: true,
       } as never);
-    // The shell makes the adult's own learner this device's choice once
-    // `/me` shows; a guard never chooses (a preload runs it too).
+    // Once `/me` resolves, the adult's own learner is the account's current
+    // one (followResolvedLearner).
     return { session, learnerId: own.id };
   },
   loader: ({ context }) => {
@@ -1747,11 +1648,7 @@ const familyApprove = createRoute({
     if (nativeRuntime) throw redirect({ to: "/", replace: true });
     // A student's home is their practice.
     if (studentSession())
-      throw redirect({
-        to: "/$",
-        params: { _splat: "practice" },
-        replace: true,
-      });
+      throw redirect({ href: studentPracticeHref(), replace: true });
   },
   component: lazyRouteComponent(
     () => import("../features/family-approval/ApproveLinkScreen"),
@@ -1794,6 +1691,7 @@ const fallback = createRoute({
   // Reject unknown shapes before adopting a learner or loading the legacy app.
   beforeLoad: async ({ location }) => {
     if (!knownDocumentPath(location.pathname)) throw notFound();
+    await practiceAddress(location);
     await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
@@ -1875,6 +1773,7 @@ export const router = createRouter({
       schoolClassSettings,
       schoolClassRoster,
       schoolClassImport,
+      schoolClassImportStep,
       schoolClassStart,
       schoolClassCards,
       schoolClassExperience,
@@ -1895,6 +1794,7 @@ export const router = createRouter({
     schoolsTrust,
     schoolsContinue,
     schoolStart,
+    schoolStartStudents,
     schoolCreate,
     schoolConnect,
     schoolAdopt,
@@ -1905,8 +1805,6 @@ export const router = createRouter({
     signIn,
     signUp,
     accountReady,
-    deleteAccount,
-    deleteAccountAlias,
     accountDeleted,
     accessGift,
     signInStep,
@@ -1928,9 +1826,16 @@ export const router = createRouter({
     workbookHistory,
     workbookDay,
     workbookResults,
-    billingPage.addChildren([...payOverlays(billingPage, "pay/$learner")]),
-    billingPurchasesAlias,
-    billingRecordsAlias,
+    accountHub.addChildren([...accountOverlays(accountHub)]),
+    ...[
+      "/account/security/delete",
+      "/family/security/delete",
+      "/account/billing/$",
+      "/family/security",
+      "/family/security/$",
+      "/family/access",
+      "/family/access/$",
+    ].map(accountLegacy),
     invoiceArkansas,
     invoiceArizona,
     invoiceNewHampshire,
@@ -1938,7 +1843,6 @@ export const router = createRouter({
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
     ...(familyRoutes(root) as unknown as []),
-    ...(privacyRoutes(root) as unknown as []),
     ...payRoutes(root),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
@@ -1960,6 +1864,9 @@ export const router = createRouter({
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
+// The learner a resolved address names is the account's current learner:
+// the router writes it, once per navigation (learner-store.ts).
+followResolvedLearner(router);
 // Development only: the route table, as the navigation crawler reads it
 // (scripts/verify-layer-crawl-ui.ts), so a new screen is crawled without
 // anyone editing the crawler. A layout's own address is its index child's;
@@ -1973,8 +1880,8 @@ if (import.meta.env.DEV) {
     options: { path?: string; component?: unknown };
   };
   Object.assign(window, {
-    ampRouteTable: () =>
-      (Object.values(router.routesById) as unknown as Entry[])
+    ampRouteTable: () => [
+      ...(Object.values(router.routesById) as unknown as Entry[])
         .filter(
           (route) =>
             !route.isRoot &&
@@ -1989,6 +1896,12 @@ if (import.meta.env.DEV) {
             (route.options.path === "/" &&
               !!route.parentRoute?.options.component),
         })),
+      // Old addresses (app/legacy-aliases.ts): each an address, no page.
+      ...LEGACY_ALIASES.filter((alias) => !alias.when).map((alias) => ({
+        path: alias.from,
+        page: false,
+      })),
+    ],
   });
 }
 // A control that only changes the address's search (a toggle, a segmented
@@ -2088,6 +2001,18 @@ const PROFILE_PRACTICE_PATHS = [
   "/pathways",
   "/inventory",
 ];
+// Back and Forward between a screen and what is open over it keep the
+// screen's scroll: a sheet in history state (the same address), or an
+// overlay one leaf below the screen (`overList`: a settings hub's Billing or
+// Privacy, a workbook day). After a pop the router otherwise scrolls the
+// window to the top, so closing an overlay with ✕ (which goes Back,
+// lib/return-to.ts) lost the reader's place on the screen behind.
+router.history.subscribe(({ location, action }) => {
+  if (action.type === "PUSH" || action.type === "REPLACE") return;
+  const from = router.state.location.pathname;
+  if (from === location.pathname || overList(from, location.pathname))
+    router._scroll.n = false;
+});
 // A new screen closes any open tip, menu or picker (ui/popover-owner).
 router.subscribe("onBeforeNavigate", ({ pathChanged }) => {
   if (pathChanged) closeAllPopovers("navigate");
@@ -2098,7 +2023,7 @@ router.subscribe("onResolved", ({ toLocation }) => {
   const session = queryClient.getQueryData(sessionOptions.queryKey);
   if (!session || studentSession()) return;
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-  const chosen = useLearnerStore.getState().learnerId;
+  const chosen = currentLearner();
   // Practicing as a profile is a step away from a place, never one `/`
   // returns to.
   if (
