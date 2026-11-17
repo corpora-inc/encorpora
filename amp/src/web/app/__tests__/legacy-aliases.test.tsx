@@ -272,6 +272,16 @@ const EXAMPLES: Example[] = [
     lands: `/learners/${CHILD}/workbooks/2026-11-16`,
   },
   {
+    from: "/lessons/add-fractions/watch?problem=p1&from=%2Fpathways",
+    world: "adult",
+    lands: "/lessons/add-fractions/watch/p1",
+  },
+  {
+    from: "/lessons/add-fractions/watch?from=%2Fpathways",
+    world: "adult",
+    lands: "/lessons/add-fractions/watch",
+  },
+  {
     from: `/practice/${CHILD}?skill=s1&profile=p`,
     world: "adult",
     lands: `/practice/${CHILD}/skills/s1?profile=p`,

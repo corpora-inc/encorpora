@@ -533,6 +533,24 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
     to: ({ search, params }) => pathwaysTarget(search, params.skill),
   },
 
+  // A film opened as help for a problem, from before that had its path
+  // (`?problem=`); its `?from=` went with it (closing goes back).
+  {
+    from: "/lessons/$templateId/watch",
+    about: "a film's problem and return in the query",
+    when: ({ search }) => "problem" in search || "from" in search,
+    to: ({ params, search }) => {
+      const film = `/lessons/${encodeURIComponent(params.templateId!)}/watch`;
+      const raw = search.problem;
+      const problem =
+        (typeof raw === "string" || typeof raw === "number") &&
+        String(raw).length <= 160
+          ? String(raw)
+          : undefined;
+      return problem ? `${film}/${encodeURIComponent(problem)}` : film;
+    },
+  },
+
   // Practice held to a problem type, skill or area by its query, from before
   // each focus had its path (features/spaces/identity.ts practicePath).
   {
