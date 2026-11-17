@@ -159,13 +159,21 @@ export function Graph({
     html.style.overflow = "hidden";
     const element = viewport.current;
     if (element?.requestFullscreen)
-      void element.requestFullscreen().catch(() => {});
+      void element
+        .requestFullscreen()
+        .catch((error) =>
+          console.warn("The map fills the page, not the screen", error),
+        );
     return () => {
       document.removeEventListener("fullscreenchange", changed);
       document.removeEventListener("keydown", key);
       html.style.overflow = overflow;
       if (document.fullscreenElement === element)
-        void document.exitFullscreen().catch(() => {});
+        void document
+          .exitFullscreen()
+          .catch((error) =>
+            console.warn("The map did not leave full screen", error),
+          );
     };
   }, [fullscreen]);
   const [labels, setLabels] = useState<Label[]>([]);

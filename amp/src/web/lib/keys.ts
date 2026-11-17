@@ -51,6 +51,11 @@ export type AccountResources = {
   "family-approval": [request: string];
   /** One learner's level over time. */
   "level-trend": [learner: string];
+  /** A learner's record on the map (Pathways), and on one skill
+   * (lib/learning-view.ts). */
+  pathways: [learner?: string, skill?: string];
+  /** A learner's level estimate, as the map frames it. */
+  "pathways-frontier": [learner?: string];
 };
 type Resource = keyof AccountResources;
 
@@ -92,4 +97,8 @@ export const qk = {
    * (features/family-approval). */
   familyApprovalLink: (token: string | undefined) =>
     ["family-approval-link", token] as const,
+  /** A problem type's short lesson, as Pathways' lesson layer reads it
+   * (features/pathways/lesson-query.ts): the same for every visitor. */
+  pathwaysLesson: (templateId: string) =>
+    ["pathways-lesson", templateId] as const,
 };

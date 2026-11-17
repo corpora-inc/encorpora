@@ -1,4 +1,3 @@
-import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import {
   classesOptions,
@@ -7,18 +6,14 @@ import {
   preload,
 } from "../features/school/core-api";
 import {
-  markSchoolSignup,
   orgHome,
   setupPath,
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
-import { meOptions, queryClient, sessionOptions } from "../lib/query";
-import { studentSession } from "../lib/student-device";
-import { nativeRuntime } from "../native-runtime";
-import { OPEN_KEY, work } from "../nav/entities";
-import { landWithLayers, withoutLayerKeys } from "../nav/legacy-layers";
-import { toFamilyChild, toFamilyPage } from "./family-redirect";
+import { meOptions, queryClient } from "../lib/query";
+import { OPEN_KEY } from "../nav/entities";
+import { admit, elsewhere, requireSignedIn } from "./sign-in-gate";
 
 /* What the school's routes decide before a screen paints: who may open it,
    where an old or a family's address opens instead, and what loads with it.
@@ -33,27 +28,16 @@ type Location = { pathname: string; searchStr: string; search: unknown };
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
-async function staffSession(location: {
-  pathname: string;
-  searchStr: string;
-}): Promise<AuthSession> {
-  if (nativeRuntime) throw redirect({ to: "/", replace: true });
-  if (studentSession())
-    throw redirect({ to: "/$", params: { _splat: "practice" }, replace: true });
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) {
-    markSchoolSignup("1");
-    throw redirect({
-      to: "/sign-in",
-      search: {
-        return: "school",
-        next: `${location.pathname}${location.searchStr}`,
-      } as never,
-      replace: true,
-    });
-  }
-  return session;
-}
+const staffSession = (location: { pathname: string; searchStr: string }) =>
+  requireSignedIn(location, { web: true, adults: true, back: "here" });
+
+/** A read whose failure leaves the guard on its fallback, logged. */
+const logged =
+  <T>(what: string, fallback: T) =>
+  (error: unknown): T => {
+    console.warn(`${what} didn’t load`, error);
+    return fallback;
+  };
 export const staffScreen = async ({
   location,
 }: {
@@ -61,10 +45,11 @@ export const staffScreen = async ({
 }) => ({ session: await staffSession(location) });
 
 /** A school-level page a family org (a family's or a tutor's) doesn't have
- * (docs/design/ia.md: a family never lands on one). An old link opens the
- * family's own equivalent instead, in its one class: Students is its People,
- * Standing its Map, Staff its People and Settings its Settings. Pages with
- * no class equivalent open Today. Student layers come along. */
+ * (docs/design/ia.md: a family never lands on one). It opens the family's
+ * own equivalent instead, in its one class: Students is its People, Standing
+ * its Map, Staff its People and Settings its Settings. Pages with no class
+ * equivalent open Today. Student layers come along. (A parent's own family
+ * org's pages are app/legacy-aliases.ts rows, to the family's address.) */
 export const familyEquivalent =
   (leaf: "roster" | "map" | "settings" | "today") =>
   async ({
@@ -79,11 +64,9 @@ export const familyEquivalent =
       org: string;
       class?: string;
     };
-    // A parent's own family: its own screen, by the one return contract.
-    await toFamilyPage(session, orgId, leaf, location as never, classId);
     const org = await queryClient
       .ensureQueryData(orgOptions(session, orgId))
-      .catch(() => null);
+      .catch(logged("The school", null));
     if (org?.kind !== "family") return { session };
     const classes = await queryClient.ensureQueryData(
       classesOptions(session, orgId),
@@ -100,11 +83,12 @@ export const familyEquivalent =
     if (!klass)
       throw new Error("The class is unavailable. Reload to try again.");
     const open = (location.search as Record<string, unknown>)[OPEN_KEY];
-    throw redirect({
-      to: `/school/${orgId}/classes/${klass.id}/${leaf}`,
-      search: typeof open === "string" ? { [OPEN_KEY]: open } : {},
-      replace: true,
-    } as never);
+    const path = `/school/${orgId}/classes/${klass.id}/${leaf}`;
+    return elsewhere(
+      typeof open === "string"
+        ? `${path}?${new URLSearchParams({ [OPEN_KEY]: open })}`
+        : path,
+    );
   };
 
 /** The frame's data, loaded with the screen so its navigation is whole. */
@@ -123,35 +107,7 @@ export const chooser = async ({ location }: { location: Location }) => {
   const session = await staffSession(location);
   const orgs = await queryClient.fetchQuery(orgsOptions(session));
   // None yet: the chooser offers class setup in place (no hop).
-  if (orgs.length === 1)
-    throw redirect({ ...orgHome(orgs[0]!), replace: true } as never);
-};
-
-/** `/school/new`: guided setup, for the admin of a school we issued. */
-export const setup = async ({ location }: { location: Location }) => {
-  const search = location.search as { org?: unknown; step?: unknown };
-  const signedIn = await queryClient.ensureQueryData(sessionOptions);
-  // A setup link from earlier: sign in, then carry on with it.
-  if (!signedIn && typeof search.org !== "string")
-    throw redirect({ to: "/schools", replace: true });
-  const session = await staffSession(location);
-  const orgId =
-    typeof search.org === "string"
-      ? search.org
-      : (await queryClient.fetchQuery(orgsOptions(session))).find(
-          (org) => org.setupPending && org.roles.includes("admin"),
-        )?.id;
-  // Signed in with nothing to set up: the school first run, which knows
-  // what this account has and offers its next step.
-  if (!orgId)
-    throw redirect({
-      to: "/start/$choice",
-      params: { choice: "school" },
-      replace: true,
-    } as never);
-  // The step's own address, in one hop (setupStep checks it).
-  const step = setupSteps.find((entry) => entry === search.step);
-  throw redirect({ to: `/${setupPath(orgId, step)}`, replace: true } as never);
+  if (orgs.length === 1) elsewhere(orgHome(orgs[0]!).to);
 };
 
 /** `/school/<org>/setup[/<step>[/names]]`: guided setup, one step an
@@ -177,14 +133,8 @@ export const setupStep = async ({
     (org) =>
       org.id === orgId && (!org.setupPending || org.roles.includes("admin")),
   );
-  if (!requested)
-    throw redirect({
-      to: "/start/$choice",
-      params: { choice: "school" },
-      replace: true,
-    } as never);
-  if (!requested.setupPending)
-    throw redirect({ ...orgHome(requested), replace: true } as never);
+  if (!requested) elsewhere("/start/school");
+  if (!requested.setupPending) elsewhere(orgHome(requested).to);
   const [state] = await Promise.all([
     api().then((m) =>
       queryClient.fetchQuery(m.setupOptions(session, requested.id)),
@@ -204,25 +154,13 @@ export const setupStep = async ({
     !!asked &&
     setupSteps.indexOf(asked) <= setupSteps.indexOf(open) &&
     (method === undefined || (asked === "students" && method === "names"));
-  if (!allowed)
-    throw redirect({
-      to: `/${setupPath(orgId, open)}`,
-      replace: true,
-    } as never);
+  if (!allowed) elsewhere(`/${setupPath(orgId, open)}`);
   return { session };
 };
 
 /** `/school/invite`: anyone on the web; never a student's device. */
-export const invite = () => {
-  if (nativeRuntime) throw redirect({ to: "/", replace: true });
-  // A student's home is their practice.
-  if (studentSession())
-    throw redirect({
-      to: "/$",
-      params: { _splat: "practice" },
-      replace: true,
-    });
-};
+// A student's home is their practice.
+export const invite = () => admit({ web: true, adults: true });
 
 /** `/school/<org>`: a head or district reads the overview; a teacher, and a
  * lone teacher's one-class school, go straight to their classes. */
@@ -235,29 +173,26 @@ export const orgIndex = async ({
 }) => {
   const session = await staffSession(location);
   const orgId = (params as unknown as { org: string }).org;
-  // A parent's own family org: the family's Today.
-  await toFamilyPage(session, orgId, "today", location as never);
+  // (A parent's own family org is an app/legacy-aliases.ts row.) A school
+  // this account can't read: the chooser.
   const org = await queryClient
     .fetchQuery(orgOptions(session, orgId))
-    .catch(() => null);
-  if (!org) throw redirect({ to: "/school", replace: true } as never);
-  if (org.setupPending)
-    throw redirect({ ...orgHome(org), replace: true } as never);
+    .catch(logged("The school", null));
+  if (!org) elsewhere("/school");
+  if (org.setupPending) elsewhere(orgHome(org).to);
   const classes = await queryClient
     .ensureQueryData(classesOptions(session, orgId))
-    .catch(() => []);
+    .catch(logged("The school's classes", []));
   if (
     !org.can?.includes("overview.read") ||
     (org.solo === true && classes.length <= 1)
   )
-    throw redirect({
-      // One class opens on its Today, never on a list of one.
-      to:
-        classes.length === 1
-          ? `/school/${orgId}/classes/${classes[0]!.id}/today`
-          : `/school/${orgId}/classes`,
-      replace: true,
-    } as never);
+    // One class opens on its Today, never on a list of one.
+    elsewhere(
+      classes.length === 1
+        ? `/school/${orgId}/classes/${classes[0]!.id}/today`
+        : `/school/${orgId}/classes`,
+    );
   return { session };
 };
 export const orgIndexData = async ({
@@ -274,76 +209,4 @@ export const orgIndexData = async ({
     orgApi().then((m) => preload(m.overviewOptions(session, orgId))),
     standingApi().then((m) => preload(m.orgStandingOptions(session, orgId))),
   ]);
-};
-
-/** A school-level student page from before layers: a student layer over the
- * school's Students (a family's child: their own page), in one hop that
- * seeds the layer store (nav/legacy-layers.ts), never `?open=`. */
-export const student = async ({
-  params,
-  search,
-  location,
-  preload,
-}: {
-  params: unknown;
-  search: unknown;
-  location: Location;
-  preload?: boolean;
-}) => {
-  const { org, student } = params as unknown as {
-    org: string;
-    student: string;
-  };
-  // A family's child: their own page.
-  await toFamilyChild(
-    await staffSession(location),
-    org,
-    student,
-    null,
-    location as never,
-  );
-  return landWithLayers(
-    withoutLayerKeys(
-      `/school/${org}/students`,
-      search as Record<string, unknown>,
-    ),
-    [{ kind: "student", id: student }],
-    preload,
-  );
-};
-export const studentWork = async ({
-  params,
-  search,
-  location,
-  preload,
-}: {
-  params: unknown;
-  search: unknown;
-  location: Location;
-  preload?: boolean;
-}) => {
-  const {
-    org,
-    student,
-    work: attempt,
-  } = params as unknown as {
-    org: string;
-    student: string;
-    work: string;
-  };
-  await toFamilyChild(
-    await staffSession(location),
-    org,
-    student,
-    attempt,
-    location as never,
-  );
-  return landWithLayers(
-    withoutLayerKeys(
-      `/school/${org}/students`,
-      search as Record<string, unknown>,
-    ),
-    [{ kind: "student", id: student }, work(student, attempt)],
-    preload,
-  );
 };

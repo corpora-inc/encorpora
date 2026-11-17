@@ -31,3 +31,15 @@ export function curriculumFilter(
     ? { strand }
     : {};
 }
+
+/** `curriculumFilter` for a practice address's own focus
+ * (features/spaces/identity.ts `practiceFocus`): the same checks. */
+export function focusFilter(
+  focus: PracticeFilter,
+  catalog: Parameters<typeof curriculumFilter>[1],
+): PracticeFilter {
+  const search = new URLSearchParams();
+  for (const key of ["skill", "template", "strand"] as const)
+    if (focus[key]) search.set(key, focus[key]);
+  return curriculumFilter(search.toString(), catalog);
+}
