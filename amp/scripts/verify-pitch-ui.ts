@@ -711,7 +711,7 @@ async function journeys(browser: Browser, engine: string) {
           .getByRole("button", { name: "Birth year, Child 1", exact: true })
           .click();
         const years = page.getByRole("dialog", { name: "Birth year, Child 1" });
-        await years.getByRole("radio", { name: "2016", exact: true }).click();
+        await years.getByRole("option", { name: "2016", exact: true }).click();
         await years.waitFor({ state: "hidden" });
         await page
           .getByRole("button", {

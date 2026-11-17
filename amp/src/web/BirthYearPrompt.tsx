@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { birthYears } from "./lib/birth-years";
+import { useTileListbox } from "./ui/tile-listbox";
 export const strandNames: Record<string, string> = {
   number: "Numbers",
   operations: "Operations",
@@ -52,10 +53,31 @@ type Props = {
   };
 };
 
-/** The only question before practice: it sets where placement begins. */
+/** The only question before practice: it sets where placement begins.
+ * Choosing a year saves it, so the years are a listbox (ui/tile-listbox):
+ * one tab stop, arrows and typing move, Enter or Space chooses. */
 export function BirthYearPrompt(props: Props) {
   const thisYear = new Date().getFullYear();
-  const years = birthYears(16, 4);
+  const choices = [
+    ...(props.adult !== false
+      ? [{ year: thisYear - 25, label: "Adult", adult: true }]
+      : []),
+    ...birthYears(16, 4).map((year) => ({
+      year,
+      label: String(year),
+      adult: false,
+    })),
+  ];
+  const { listProps, optionProps } = useTileListbox({
+    labels: choices.map((choice) => choice.label),
+    selected: choices.findIndex(
+      (choice) => !choice.adult && choice.year === props.birthYear,
+    ),
+    onChoose: (index) => props.saveBirthYear(choices[index]!.year),
+    spans: choices.map((choice) => (choice.adult ? "row" : undefined)),
+    columns: () => 4,
+    disabled: props.busy,
+  });
   const Root = props.embedded ? "div" : "main";
   return (
     <Root
@@ -72,24 +94,21 @@ export function BirthYearPrompt(props: Props) {
           {props.description ??
             "We’ll use the birth year to find a starting point, then adapt as the learner progresses."}
         </p>
-        <div className="year-grid" role="group" aria-label="Birth year">
-          {props.adult !== false && (
+        <div className="year-grid" {...listProps} aria-label="Birth year">
+          {choices.map((choice, index) => (
             <button
-              className="adult"
-              disabled={props.busy}
-              onClick={() => props.saveBirthYear(thisYear - 25)}
+              key={choice.label}
+              type="button"
+              {...optionProps(index)}
+              className={
+                choice.adult
+                  ? "adult"
+                  : choice.year === props.birthYear
+                    ? "selected"
+                    : ""
+              }
             >
-              Adult
-            </button>
-          )}
-          {years.map((year) => (
-            <button
-              key={year}
-              className={year === props.birthYear ? "selected" : ""}
-              disabled={props.busy}
-              onClick={() => props.saveBirthYear(year)}
-            >
-              {year}
+              {choice.label}
             </button>
           ))}
         </div>

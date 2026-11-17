@@ -253,9 +253,9 @@ try {
         fullPage: true,
       });
       await page.getByRole("button", { name: "Continue", exact: true }).click();
-      await page.getByRole("button", { name: "2012", exact: true }).waitFor();
+      await page.getByRole("option", { name: "2012", exact: true }).waitFor();
       await fits(page);
-      await page.getByRole("button", { name: "2012", exact: true }).click();
+      await page.getByRole("option", { name: "2012", exact: true }).click();
       await page.waitForURL("**/practice");
       assert.equal(s.creates, 1);
       assert.equal(s.claims, 1);
@@ -434,7 +434,7 @@ try {
     await phone.getByRole("link", { name: "Continue setup" }).click();
     await phone.getByLabel("Learner name").fill("Alex");
     await phone.getByRole("button", { name: "Continue", exact: true }).click();
-    await phone.getByRole("button", { name: "2012", exact: true }).waitFor();
+    await phone.getByRole("option", { name: "2012", exact: true }).waitFor();
     await fits(phone);
   } finally {
     await safari.close();
