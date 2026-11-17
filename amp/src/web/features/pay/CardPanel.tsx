@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
@@ -25,6 +25,7 @@ import { usePay, usePayAddress, type PayLearner } from "./context";
 import { PlanPicker, useChosenInterval } from "./PlanPicker";
 import { usePayStore, type CheckoutKind, type PayInterval } from "./store";
 import styles from "./Pay.module.css";
+import { useSettingsHref } from "../spaces/settings-hub";
 
 type Learner = PayLearner;
 
@@ -65,6 +66,8 @@ function LearnerCheckout() {
     enabled: !!own,
   });
   const checkout = useLearnerCheckout(session);
+  useBackFromStripe(checkout.reset);
+  const billing = useSettingsHref("billing");
   const opened = usePayStore((state) => state.checkoutOpened);
   const requests = useRef<Partial<Record<PayInterval, string>>>({});
   const phase: PurchasePhase | undefined = own ? status.data?.phase : "ready";
@@ -96,7 +99,7 @@ function LearnerCheckout() {
             : "Your next plan is already paid for."
         }
         action={
-          <Link to="/account/billing" className={buttonClass("primary")}>
+          <Link to={billing as never} className={buttonClass("primary")}>
             View billing
           </Link>
         }
@@ -171,6 +174,7 @@ function EnrollmentCheckout() {
     enabled: available === false,
   });
   const checkout = useEnrollmentCheckout(session);
+  useBackFromStripe(checkout.reset);
   const opened = usePayStore((state) => state.checkoutOpened);
   const requests = useRef<Partial<Record<PayInterval, string>>>({});
   const failed = enrollment.error ?? (available ? offers.error : emailPlus.error);
@@ -289,6 +293,33 @@ function EnrollmentCheckout() {
       </div>
     </>
   );
+}
+
+/**
+ * The browser's Back from Stripe can restore this overlay from its page
+ * cache, exactly where Checkout was opened, with the action still showing
+ * "Opening secure checkout…" and disabled. It is the plan again: the action
+ * works, and the purchase's state is read afresh.
+ */
+function useBackFromStripe(reset: () => void) {
+  const { session, learner } = usePay();
+  const queries = useQueryClient();
+  const latest = useRef(reset);
+  latest.current = reset;
+  useEffect(() => {
+    const restored = (event: PageTransitionEvent) => {
+      if (!event.persisted) return;
+      latest.current();
+      void queries.invalidateQueries({
+        queryKey: purchaseStatusOptions(session, learner.id).queryKey,
+      });
+      void queries.invalidateQueries({
+        queryKey: enrollmentOptions(session).queryKey,
+      });
+    };
+    addEventListener("pageshow", restored);
+    return () => removeEventListener("pageshow", restored);
+  }, [queries, session, learner.id]);
 }
 
 function safeCheckout(url: string): string | null {

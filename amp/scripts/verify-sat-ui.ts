@@ -319,8 +319,13 @@ try {
         assert.ok(taskFamilies.has(next.problem.template));
 
         // Parent settings change the next selection, preserving the open question.
+        // The family icon leads home to Today; the child's card opens
+        // their page, where the setting is.
+        await page.getByRole("link", { name: "Family", exact: true }).click();
+        await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
         await page
-          .getByRole("button", { name: "Back to family", exact: true })
+          .locator(`main a[href$="/kids/${learnerId}"]`)
+          .first()
           .click();
         await toggle.waitFor();
         await toggle.click();

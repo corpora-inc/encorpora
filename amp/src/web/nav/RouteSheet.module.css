@@ -1,0 +1,26 @@
+/* The one sheet of a screen's overlay routes (RouteSheet.tsx), on
+   ui/Sheet's look. Its scrim and its sheet stay while one overlay replaces
+   another; only the panel inside changes. */
+.frame {
+  overflow: hidden;
+}
+/* An overlay's panel: its header and body, as a sheet's own. */
+.panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+.panel[data-motion="swap"] {
+  animation: swap 180ms var(--ease-standard);
+}
+@keyframes swap {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel[data-motion] {
+    animation: none;
+  }
+}

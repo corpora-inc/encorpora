@@ -118,9 +118,8 @@ try {
   );
   for (const width of [390, 1280]) {
     await page.setViewportSize({ width, height: 900 });
-    await page
-      .getByRole("button", { name: "Back to family", exact: true })
-      .waitFor();
+    // The family's way home: an icon, named for screen readers.
+    await page.getByRole("link", { name: "Family", exact: true }).waitFor();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth + 1,
@@ -171,10 +170,9 @@ try {
     .getByRole("button", { name: "Skip this problem and see its answer" })
     .waitFor();
   assert.equal(new URL(page.url()).search, "");
-  await page
-    .getByRole("button", { name: "Back to family", exact: true })
-    .click();
-  await page.waitForURL(origin + layer);
+  // The family icon leads home to the family's Today.
+  await page.getByRole("link", { name: "Family", exact: true }).click();
+  await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
   await page.goto(`${origin}${path}?open=skill%3Awhole-division`);
   await page
     .getByRole("button", { name: "Practice with Avery", exact: true })
@@ -184,9 +182,8 @@ try {
     .waitFor();
   assert.equal(batches.at(-1)?.body.templateId, undefined);
   assert.equal(batches.at(-1)?.problems[0]?.skillId, "whole-division");
-  await page
-    .getByRole("button", { name: "Back to family", exact: true })
-    .click();
+  await page.getByRole("link", { name: "Family", exact: true }).click();
+  await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
   await page.goto(`${origin}${path}?open=area%3Aoperations`);
   await page
     .getByRole("button", { name: "Practice with Avery", exact: true })
@@ -219,9 +216,8 @@ try {
     .getByRole("button", { name: "Skip this problem and see its answer" })
     .waitFor();
   assert.equal(batches.at(-1)?.body.recoveryStrand, "operations");
-  await page
-    .getByRole("button", { name: "Back to family", exact: true })
-    .click();
+  await page.getByRole("link", { name: "Family", exact: true }).click();
+  await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
   await page.goto(origin + path);
   await page
     .getByRole("heading", { name: "Current estimates", exact: true })
@@ -313,7 +309,9 @@ try {
       path: `${output}/own-practice-${width}.png`,
     });
   }
-  await page.getByRole("link", { name: "Open your family", exact: true }).click();
+  await page
+    .getByRole("link", { name: "Open your family", exact: true })
+    .click();
   await page.waitForURL(/\/family/);
   await openHome(page, origin);
   await page.waitForURL(/\/family/);

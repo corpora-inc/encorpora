@@ -5,8 +5,9 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import { beforeEach, expect, test, vi } from "vitest";
+import { familyPlacesOptions } from "../../features/family/api";
 import { usePayStore } from "../../features/pay/store";
-import { queryClient, sessionOptions } from "../../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import {
   homeReturn,
   resumeStripeReturn,
@@ -65,7 +66,7 @@ function routerAt(path: string) {
   return { router, hops: () => navigations - 1 };
 }
 
-function signedIn(checkout?: "learner" | "enrollment") {
+function signedIn(checkout?: "learner" | "enrollment", base: string = BASE) {
   server.learner = LEARNER;
   sessionStorage.clear();
   useReturnNotices.setState({ accounts: {} });
@@ -76,8 +77,22 @@ function signedIn(checkout?: "learner" | "enrollment") {
     usePayStore.getState().checkoutOpened(SESSION.accountId, {
       learnerId: LEARNER,
       kind: checkout,
-      base: BASE,
+      base,
     });
+}
+
+/** A family's holder: their settings hub is the family's Settings. */
+function inFamily(learners: { id: string; adult: boolean }[] = []) {
+  queryClient.setQueryData(familyPlacesOptions(SESSION).queryKey, {
+    families: [{ familyId: "f", orgId: "f", role: "holder" }],
+  } as never);
+  queryClient.setQueryData(meOptions(SESSION).queryKey, {
+    signedIn: true,
+    account: { id: SESSION.accountId, kind: "adult" },
+    learners: learners.filter((entry) => !entry.adult),
+    familyClass: { orgId: "f" },
+    family: { learners },
+  } as never);
 }
 
 beforeEach(() => signedIn());
@@ -104,6 +119,99 @@ for (const [from, checkout, lands] of CASES)
     expect(router.state.location.href).toBe(lands);
     expect(hops()).toBe(1);
   });
+
+// Every place Checkout opens from (features/pay/address.ts): leaving Stripe
+// (its back link) and paying both land on the overlay it was opened from,
+// over the same screen, never `/account`.
+const ENTRIES = {
+  "the child's page": `/family/f/kids/${LEARNER}/pay`,
+  Today: `/family/f/pay/${LEARNER}`,
+  // Billing's "Continue with AMP" opens this same overlay over Settings.
+  Settings: `/family/f/settings/pay/${LEARNER}`,
+  // An adult without a family: the account's own hub.
+  "the account": `/account/pay/${LEARNER}`,
+};
+for (const [entry, base] of Object.entries(ENTRIES))
+  for (const kind of ["learner", "enrollment"] as const)
+    for (const state of ["canceled", "processing"] as const)
+      test(`a ${kind} checkout from ${entry}, ${state}, returns over the same screen`, async () => {
+        signedIn(kind, base);
+        const from =
+          kind === "learner"
+            ? `/?billing=${state}&purchase=${PURCHASE}`
+            : `/start/purchase?billing=${state}&purchase=${PURCHASE}`;
+        const { router, hops } = routerAt(from);
+        await router.load();
+        expect(router.state.location.href).toBe(
+          state === "canceled" ? base : `${base}/done`,
+        );
+        expect(hops()).toBe(1);
+      });
+
+test("a practice profile's checkout starts the adult's own learner: the same screen, for them", async () => {
+  const OWN = "77777777-7777-4777-8777-777777777777";
+  const PROFILE = "88888888-8888-4888-8888-888888888888";
+  signedIn("learner", `/family/f/settings/pay/${PROFILE}`);
+  usePayStore.getState().checkoutOpened(SESSION.accountId, {
+    learnerId: PROFILE,
+    kind: "learner",
+    base: `/family/f/settings/pay/${PROFILE}`,
+  });
+  server.learner = OWN;
+  const { router } = routerAt(`/?billing=canceled&purchase=${PURCHASE}`);
+  await router.load();
+  expect(router.state.location.href).toBe(`/family/f/settings/pay/${OWN}`);
+});
+
+test("a return for another child than the page it was opened on goes to that child's own page", async () => {
+  const OTHER = "99999999-9999-4999-8999-999999999999";
+  signedIn("learner", `/family/f/kids/${OTHER}/pay`);
+  usePayStore.getState().checkoutOpened(SESSION.accountId, {
+    learnerId: OTHER,
+    kind: "learner",
+    base: `/family/f/kids/${OTHER}/pay`,
+  });
+  inFamily([
+    { id: LEARNER, adult: false },
+    { id: OTHER, adult: false },
+  ]);
+  const { router } = routerAt(`/?billing=processing&purchase=${PURCHASE}`);
+  await router.load();
+  expect(router.state.location.href).toBe(`/family/f/kids/${LEARNER}/pay/done`);
+});
+
+test("opened in another tab, a family's adult returns over the family's Settings, never /account", async () => {
+  const OWN = "77777777-7777-4777-8777-777777777777";
+  inFamily([{ id: OWN, adult: true }]);
+  server.learner = OWN;
+  const { router } = routerAt(`/?billing=canceled&purchase=${PURCHASE}`);
+  await router.load();
+  expect(router.state.location.href).toBe(`/family/f/settings/pay/${OWN}`);
+});
+
+test("opened in another tab, a child returns over their own page", async () => {
+  inFamily([{ id: LEARNER, adult: false }]);
+  const { router } = routerAt(`/?billing=canceled&purchase=${PURCHASE}`);
+  await router.load();
+  expect(router.state.location.href).toBe(`/family/f/kids/${LEARNER}/pay`);
+});
+
+test("a family's billing portal and unplaced returns open Billing in the family's Settings", async () => {
+  // The portal's return, even with a checkout open in this tab.
+  signedIn("learner");
+  inFamily();
+  const portal = routerAt("/?billing=account");
+  await portal.router.load();
+  expect(portal.router.state.location.href).toBe("/family/f/settings/billing");
+  server.learner = null;
+  usePayStore.setState({ accounts: {} });
+  const unplaced = routerAt(`/?billing=processing&purchase=${PURCHASE}`);
+  await unplaced.router.load();
+  expect(unplaced.router.state.location.href).toBe(
+    "/family/f/settings/billing",
+  );
+  expect(unplaced.hops()).toBe(1);
+});
 
 test("an enrollment return this tab didn't open stays on its step", async () => {
   const from = `/start/purchase?billing=processing&purchase=${PURCHASE}`;
