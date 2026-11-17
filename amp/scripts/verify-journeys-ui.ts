@@ -707,19 +707,18 @@ async function parentJourney(
   await own.close();
   await freeUsed(moon.id, 1);
 
+  // Paying opens over the child's own place (features/pay; its walk is
+  // scripts/walk-pay-flow.ts): "Choose your plan", for this child, by card.
   await page.getByRole("button", { name: "Continue with AMP" }).click();
-  await page.waitForURL(new RegExp(`/continue/${fox.id}$`));
-  await heading(page, "Continue with AMP");
-  await page.getByText(`For ${fox.name}`, { exact: true }).waitFor();
-  const attest = page.getByRole("checkbox", {
-    name: /I am this learner’s parent/,
-  });
-  await attest.waitFor();
+  await page.waitForURL(new RegExp(`/kids/${fox.id}/pay$`));
+  const pay = page.getByRole("dialog");
+  await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
+  await pay.getByText(fox.name).first().waitFor();
   await measured(page, `${label} continue`);
   await shot(page, 1, "continue", width, theme);
-  await attest.check();
-  await page
-    .getByRole("button", { name: "Continue to secure checkout" })
+  await pay
+    .locator('[data-method="card"]')
+    .getByRole("button", { name: /Continue to Stripe|Resume checkout/ })
     .click();
   await payInCheckout(page, 1, width, theme);
   // Back on the same screen, practicing, with the name offered once.
@@ -891,12 +890,16 @@ async function adultJourney(
   );
   await measured(page, `${label} pause`);
   await shot(page, 2, "pause", width, theme);
+  // The pay overlay over their own practice (features/pay).
   await page.getByRole("button", { name: "Continue with AMP" }).click();
-  await page.waitForURL(new RegExp(`/continue/${learnerId}$`));
-  await page.getByText("For your own practice", { exact: true }).waitFor();
-  const go = page.getByRole("button", { name: "Continue to secure checkout" });
+  await page.waitForURL(/\/pay$/);
+  const pay = page.getByRole("dialog");
+  await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
+  const go = pay
+    .locator('[data-method="card"]')
+    .getByRole("button", { name: /Continue to Stripe|Resume checkout/ });
   await go.waitFor();
-  await page.getByText("$120.00", { exact: false }).first().waitFor();
+  await pay.getByText("$120", { exact: false }).first().waitFor();
   await measured(page, `${label} continue`);
   await shot(page, 2, "continue", width, theme);
   await go.click();

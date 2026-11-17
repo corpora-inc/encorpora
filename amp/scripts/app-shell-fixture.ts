@@ -371,8 +371,8 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/account is ready/),
     },
     {
-      // Signed in, /try opens `/`, which asks a new account the starter's
-      // question.
+      // Signed in, /try opens the account's destination: a new account's
+      // is the starter's question (/start), never `/`.
       id: "try-start-signed-in",
       path: "/try",
       state: "new",
@@ -483,19 +483,22 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "family-access",
       path: "/family/access",
       state: "paid",
-      ready: (p) => p.locator("[data-account-body]").waitFor(),
+      // A standalone account screen: its Page and its title.
+      ready: (p) => p.locator("main[data-page] h1").first().waitFor(),
     },
     {
       id: "family-privacy",
       path: "/family/privacy",
       state: "paid",
-      ready: (p) => p.locator("[data-account-body]").waitFor(),
+      // A standalone account screen: its Page and its title.
+      ready: (p) => p.locator("main[data-page] h1").first().waitFor(),
     },
     {
       id: "family-security",
       path: "/family/security",
       state: "paid",
-      ready: (p) => p.locator("[data-account-body]").waitFor(),
+      // A standalone account screen: its Page and its title.
+      ready: (p) => p.locator("main[data-page] h1").first().waitFor(),
     },
     {
       id: "workbooks",

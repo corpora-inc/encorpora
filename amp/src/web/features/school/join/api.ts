@@ -147,10 +147,12 @@ export function useFinishSignIn() {
       returnTo?: string,
       filter?: PracticeFilter,
       learnerId?: string,
+      /** The place's name, for its way back ("Back to Grade 5 Math"). */
+      returnName?: string,
     ) => {
       const session = { accountId: grant.accountId, token: grant.token };
       finishing = true;
-      rememberStudentSession(session, grant.mode, handed, returnTo);
+      rememberStudentSession(session, grant.mode, handed, returnTo, returnName);
       notifyDeviceSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
