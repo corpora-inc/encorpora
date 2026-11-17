@@ -13,7 +13,6 @@ import {
   createMemoryHistory,
   Outlet,
   redirect,
-  retainSearchParams,
   useMatch,
   useRouter,
   useRouterState,
@@ -57,7 +56,6 @@ import {
   campaignSearch,
   continuationSearch,
   continuationUrl,
-  type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
 import { followAlias, LEGACY_ALIASES } from "./legacy-aliases";
@@ -66,7 +64,6 @@ import {
   admit,
   elsewhere,
   requireSignedIn,
-  returnSearchShape,
   signInTarget,
   toOwnPlace,
   withQuery,
@@ -74,7 +71,8 @@ import {
 import {
   cleverReturn,
   homeReturn,
-  inboundSearchShape,
+  inboundSearch,
+  keepInbound,
   resumeStripeReturn,
   signInArrivalPending,
   signInReturn,
@@ -118,27 +116,6 @@ import {
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
-/** Every address's query, as the root reads it: the sign-in gate's return
- * (app/sign-in-gate.ts), what arrives from outside (app/third-party-returns.ts),
- * and the screen state some screens still read from the query. That last
- * group goes key by key as its readers move to paths and stores
- * (amp/AGENTS.md, "Frontend architecture"); when it is empty, this schema
- * is the two sanctioned modules' alone. */
-const searchSchema = z
-  .object({
-    ...returnSearchShape,
-    ...inboundSearchShape,
-    topic: z.string().max(100).optional().catch(undefined),
-    strand: z.string().max(100).optional(),
-    filter: z.string().max(100).optional(),
-    /** Pathways' map: by grade, or in 3D. */
-    view: z.enum(["grades", "3d"]).optional().catch(undefined),
-    skill: z.string().max(100).optional(),
-    template: z.string().max(100).optional(),
-    page: z.coerce.number().int().nonnegative().optional(),
-    interval: z.enum(["year", "month"]).optional().catch(undefined),
-  })
-  .passthrough();
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   const home = useHomeHref();
@@ -190,49 +167,9 @@ const root = createRootRoute({
       <AfterPurchaseGate />
     </CurriculumDetailsProvider>
   ),
-  validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
-    const parsed = searchSchema.parse(search);
-    const { utm_source, utm_medium, utm_campaign, utm_content, ...rest } =
-      parsed;
-    return {
-      ...rest,
-      utm_source: undefined,
-      utm_medium: undefined,
-      utm_campaign: undefined,
-      utm_content: undefined,
-      ...campaignSearch({ utm_source, utm_medium, utm_campaign, utm_content }),
-    };
-  },
-  search: {
-    middlewares: [
-      ({ search, next }) => {
-        const result = retainSearchParams<typeof search>([
-          "utm_source",
-          "utm_medium",
-          "utm_campaign",
-          "utm_content",
-          "program",
-          "entry",
-        ])({ search, next });
-        // Validation merges into raw router search. Explicitly erase rejected
-        // values after retention; omission alone would preserve them.
-        return {
-          ...result,
-          utm_source: undefined,
-          utm_medium: undefined,
-          utm_campaign: undefined,
-          utm_content: undefined,
-          ...campaignSearch(result),
-          program:
-            result.program === "ar-efa" ||
-            result.program === "az-esa" ||
-            result.program === "nh-efa"
-              ? result.program
-              : undefined,
-        };
-      },
-    ],
-  },
+  // The query: what arrives from outside and the sign-in gate's way back,
+  // nothing more (app/third-party-returns.ts).
+  ...inboundSearch,
   errorComponent: RouterError,
   notFoundComponent: lazyRouteComponent(
     () => import("../features/not-found/NotFoundScreen"),
@@ -243,6 +180,9 @@ const root = createRootRoute({
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
     // An old address: one hop to its new one, before any screen's guard.
+    // An ad's or a funding page's program and campaign, kept for the tab
+    // (before an old address's hop, which carries no query).
+    if (!preload) keepInbound(location.search);
     if (!preload) await followAlias(location);
     if (nativeRuntime) return;
     // A Stripe return kept across a sign-in: its confirmation, once.

@@ -13,7 +13,12 @@ import {
   type PurchaseReturn,
 } from "../purchase-return";
 import { queryClient, sessionOptions } from "../lib/query";
-import { requireSignedIn, toOwnPlace } from "./sign-in-gate";
+import { keepArrival } from "../lib/program-choice";
+import {
+  requireSignedIn,
+  returnSearchShape,
+  toOwnPlace,
+} from "./sign-in-gate";
 
 /*
  * Third-party returns (amp/AGENTS.md, "Frontend architecture"): the one
@@ -58,6 +63,29 @@ export const inboundSearchShape = {
   method: z.enum(["password"]).optional().catch(undefined),
   "reset-password": z.string().optional(),
 };
+
+/**
+ * The root route's query (spread into its options, app/router.tsx): what
+ * arrives from outside, and the sign-in gate's way back. Nothing a screen
+ * chose rides in the query; other keys pass through unread. An ad's or a
+ * funding page's program and campaign labels are kept for the tab on
+ * arrival (lib/program-choice.ts `keepArrival`, `keepInbound`) and never
+ * carried from address to address.
+ */
+const rootSearchSchema = z
+  .object({ ...returnSearchShape, ...inboundSearchShape })
+  .passthrough();
+export const inboundSearch = {
+  validateSearch: (search: Record<string, unknown>) =>
+    rootSearchSchema.parse(search),
+};
+
+/** An arrival's program and campaign labels, kept for the tab (the root's
+ * `beforeLoad`, on every navigation that isn't a preload: an address that
+ * names none keeps what was kept). */
+export function keepInbound(search: unknown) {
+  keepArrival((search ?? {}) as Record<string, unknown>);
+}
 
 /** Why a return landed where it did, for that screen to say inline: a
  * learner checkout the server couldn't match to this account opens Billing,
