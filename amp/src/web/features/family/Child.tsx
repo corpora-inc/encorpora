@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { reportable } from "../../../learning/level-check";
 import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
@@ -40,7 +40,7 @@ import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet, SignInPictures } from "./Devices";
-import { ConsentSheet, DeleteDataSheet } from "./ChildPrivacy";
+import { ChildConsentPanel, ChildDeletePanel } from "../privacy/ChildPanels";
 import {
   childOf,
   FamilyFrame,
@@ -481,7 +481,8 @@ function hasSettings(place: FamilyPlace, child: FamilyChild) {
 }
 
 /** What the parent who manages this child can change, on their page, folded
- * under one Settings. Consent and deleting their data open over the page. */
+ * under one Settings: the same rows as the child's settings sheet over
+ * family Settings. Deleting their data leaves for the family's Today. */
 export function ChildSettings({
   place,
   child,
@@ -489,9 +490,7 @@ export function ChildSettings({
   place: FamilyPlace;
   child: FamilyChild;
 }) {
-  const caps = child.capabilities;
-  /** Consent or deleting their data, open over the settings. */
-  const [sheet, setSheet] = useState<"consent" | "delete" | null>(null);
+  const navigate = useNavigate();
   if (!hasSettings(place, child)) return null;
   return (
     <section aria-label={`${child.name}’s settings`} className={styles.section}>
@@ -501,92 +500,34 @@ export function ChildSettings({
         <ChildSettingsRows
           place={place}
           child={child}
-          privacy={
-            <>
-              {caps.manageConsent && (
-                <PrivacyRow
-                  title="Consent"
-                  data-child-consent=""
-                  onOpen={() => setSheet("consent")}
-                />
-              )}
-              {caps.delete && (
-                <PrivacyRow
-                  title="Delete learning data"
-                  detail={`${child.name}’s answers and levels, for good`}
-                  data-child-delete=""
-                  onOpen={() => setSheet("delete")}
-                />
-              )}
-            </>
+          onDeleted={() =>
+            navigate({
+              to: "/$",
+              params: { _splat: familyHref(place.family) },
+              replace: true,
+            })
           }
         />
       </Disclosure>
-      {/* Consent and deleting their data open over these settings: no
-          address of their own, so closing is this screen, where it was. */}
-      {caps.manageConsent && (
-        <ConsentSheet
-          place={place}
-          open={sheet === "consent"}
-          onOpenChange={(open) => setSheet(open ? "consent" : null)}
-        />
-      )}
-      {caps.delete && (
-        <DeleteDataSheet
-          place={place}
-          child={child}
-          open={sheet === "delete"}
-          onOpenChange={(open) => setSheet(open ? "delete" : null)}
-        />
-      )}
     </section>
-  );
-}
-
-function PrivacyRow({
-  title,
-  detail,
-  onOpen,
-  ...data
-}: {
-  title: string;
-  detail?: string;
-  onOpen: () => void;
-} & { [key: `data-${string}`]: string | undefined }) {
-  return (
-    <div className={styles.setting}>
-      <div className={styles.settingText}>
-        <dt>{title}</dt>
-        {detail && <dd>{detail}</dd>}
-      </div>
-      <div className={styles.settingAction}>
-        <Button variant="secondary" onClick={onOpen} {...data}>
-          Open
-        </Button>
-      </div>
-    </div>
   );
 }
 
 /**
  * One child's settings over family Settings (the IA v2 spec, §3.1; sheet
  * state `child:<learner>`): the same rows as their page's Settings, and a
- * link to their page. Learning permission and deleting their data are
- * disclosures here, never a sheet over this sheet; they come with the
- * privacy panels (`privacy`, from the composer).
+ * link to their page.
  */
 export function ChildSettingsSheet({
   place,
   child,
   open,
   onOpenChange,
-  privacy,
 }: {
   place: FamilyPlace;
   child: FamilyChild;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  privacy?: ReactNode;
 }) {
   return (
     <Sheet
@@ -607,23 +548,28 @@ export function ChildSettingsSheet({
       tall
     >
       <div data-child-settings-sheet={child.id}>
-        <ChildSettingsRows place={place} child={child} privacy={privacy} />
+        <ChildSettingsRows
+          place={place}
+          child={child}
+          onDeleted={() => onOpenChange(false)}
+        />
       </div>
     </Sheet>
   );
 }
 
 /** The rows of a child's settings: their name, birth year, practice
- * settings, sign-in pictures, then what `privacy` adds (consent and their
- * data). */
+ * settings, sign-in pictures, then learning permission and deleting their
+ * learning data, each a disclosure in place (never a sheet over a sheet).
+ * `onDeleted` leaves whatever is about this child once their data is gone. */
 function ChildSettingsRows({
   place,
   child,
-  privacy,
+  onDeleted,
 }: {
   place: FamilyPlace;
   child: FamilyChild;
-  privacy?: ReactNode;
+  onDeleted: () => Promise<unknown> | void;
 }) {
   const { session } = place;
   const caps = child.capabilities;
@@ -791,8 +737,20 @@ function ChildSettingsRows({
           </div>
         )}
         <SignInPictures key={child.id} place={place} child={child} />
-        {privacy}
       </dl>
+      {caps.manageConsent && (
+        <Disclosure summary="Learning permission">
+          <ChildConsentPanel />
+        </Disclosure>
+      )}
+      {caps.delete && (
+        <Disclosure summary="Delete learning data">
+          <ChildDeletePanel
+            child={{ id: child.id, name: child.name }}
+            onDone={onDeleted}
+          />
+        </Disclosure>
+      )}
       <Toast
         message={notice || error}
         onDismiss={() => (setNotice(""), setError(""))}

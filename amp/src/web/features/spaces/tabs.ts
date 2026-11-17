@@ -195,16 +195,3 @@ export function meTabs(
     tab("inventory", "Inventory", "inventory"),
   ];
 }
-
-/** Where the account opens: its sign-in and security. */
-export const ACCOUNT_HOME = "account/security";
-
-/** The account: sign-in, billing and privacy. Children are their family's
- * (its Settings), never the account's. The account's own
- * settings have neutral addresses (`/account/…`); the old `/family/…` ones
- * still open the same screens. */
-export const accountTabs: readonly TabItem[] = [
-  tab("security", "Profile", "account/security"),
-  tab("access", "Billing", "account/billing"),
-  tab("privacy", "Privacy", "account/privacy"),
-];

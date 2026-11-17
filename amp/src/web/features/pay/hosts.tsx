@@ -1,5 +1,4 @@
 import { Outlet } from "@tanstack/react-router";
-import { BillingPage } from "../account/BillingPage";
 import {
   ChildScreen,
   FamilySettingsScreen,
@@ -25,14 +24,6 @@ export function TodayPayHost() {
   return (
     <>
       <FamilyTodayScreen />
-      <Outlet />
-    </>
-  );
-}
-export function BillingPayHost() {
-  return (
-    <>
-      <BillingPage />
       <Outlet />
     </>
   );

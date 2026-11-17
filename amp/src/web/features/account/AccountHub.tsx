@@ -58,9 +58,7 @@ export function AccountHubScreen() {
             ) : undefined
           }
         >
-          {ownLearner && (
-            <OwnStartSetting session={session} start={ownLearner.start} />
-          )}
+          {ownLearner && <OwnStartSetting start={ownLearner.start} />}
           {own && ownLearner && !ownLearner.hasAccess && !plan && (
             <PayLink learnerId={own.id} className={buttonClass("primary")}>
               Continue with AMP

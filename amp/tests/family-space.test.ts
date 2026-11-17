@@ -169,7 +169,7 @@ const familyA = projection(
   },
 );
 
-test("personal account settings keep a parent's family without adopting a teaching-only family", () => {
+test("the settings family is a parent's own, never a teaching-only family; /account stays neutral", () => {
   const place = (
     familyId: string,
     role: FamilyPlaces["families"][number]["role"],
@@ -187,34 +187,22 @@ test("personal account settings keep a parent's family without adopting a teachi
     next: null,
   };
   assert.equal(settingsFamilyOf(families)?.familyId, A);
+  // `/account` and its overlays are the neutral account hub for anyone,
+  // family parents too (IA v2 §4): never the family's chrome.
   for (const path of [
+    "/account",
     "/account/billing",
-    "/account/billing/records",
     "/account/privacy",
     "/account/security",
+    "/account/delete-account",
   ]) {
     const space = resolveSpace(
       { pathname: path, space: "account" },
       adult(power),
       { families, family: familyA },
     );
-    assert.equal(space.space, "family", path);
-    assert.equal(space.active, "settings", path);
-    assert.deepEqual(
-      resolveSpace({ pathname: path }, adult(power), {
-        families,
-        family: familyA,
-      }),
-      space,
-      path,
-    );
-    assert.equal(
-      resolveSpace({ pathname: path, space: "account" }, adult(power), {
-        families,
-        family: null,
-      }).space,
-      "account",
-    );
+    assert.equal(space.space, "account", path);
+    assert.deepEqual(space.tabs, [], path);
   }
   assert.equal(
     settingsFamilyOf({ families: [place(B, "second-parent")], next: null })

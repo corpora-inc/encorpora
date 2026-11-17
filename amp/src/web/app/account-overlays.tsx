@@ -30,8 +30,8 @@ const account = () => import("../features/account/overlays");
 const privacy = () => import("../features/privacy/PrivacyOverlay");
 
 export function accountOverlays<Host extends AnyRoute>(host: Host) {
-  const overlay = (
-    path: string,
+  const overlay = <Path extends string>(
+    path: Path,
     component: ReturnType<typeof lazyRouteComponent>,
     loader?: () => Promise<void>,
   ) =>

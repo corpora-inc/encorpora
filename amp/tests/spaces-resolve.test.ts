@@ -724,22 +724,19 @@ test("me: Practice, Levels and Workbooks on a phone; the rest under More", () =>
   );
 });
 
-test("account: its own neutral addresses and the old ones, never family chrome", () => {
+test("account: one page and its overlays, no tabs, never family chrome", () => {
   for (const path of [
+    "/account",
     "/account/security",
-    "/account/billing/records",
-    "/account/privacy/export",
-    "/family/security",
-    "/family/access",
-    "/family/privacy",
+    "/account/billing",
+    "/account/privacy",
+    "/account/delete-account",
+    "/account/pay/l1",
   ]) {
     const space = resolveSpace(at(path), adult(holder));
     expectSpace(space, "account");
     assert.equal(space.scope, "settings", path);
-    assert.deepEqual(
-      space.tabs.map((tab) => tab.path),
-      ["account/security", "account/billing", "account/privacy"],
-    );
+    assert.deepEqual(space.tabs, [], path);
     assert.equal(space.label, "Account");
     assert.deepEqual(space.destinations, []);
   }

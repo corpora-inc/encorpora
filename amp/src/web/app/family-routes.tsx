@@ -46,23 +46,6 @@ export function familyRoutes(root: AnyRoute) {
   const payHosts = () => import("../features/pay/hosts");
   const screen = (name: string) =>
     lazyRouteComponent(screens as never, name as never);
-  /** An older account address: the same screen at its neutral address,
-   * with the rest of the path (`from` alone, or `from/…`). */
-  const accountAlias = (from: string, to: string) =>
-    [from, `${from}/$`].map((path) =>
-      createRoute({
-        getParentRoute: () => root,
-        path,
-        staticData: { space: "account" },
-        beforeLoad: ({ location }) => {
-          const rest = location.pathname.slice(from.length);
-          throw redirect({
-            href: `${to}${rest}${location.searchStr}${location.hash ? `#${location.hash}` : ""}`,
-            replace: true,
-          });
-        },
-      }),
-    );
   /** The account's learners, from before families had a place: the family's
    * Settings (its children), adding a child there (`sheet`). */
   const learners = (path: string, sheet?: string) =>
@@ -330,23 +313,34 @@ export function familyRoutes(root: AnyRoute) {
       const own = ownClassOf(me?.signedIn ? me : null, id, data);
       if (!own) return;
       const [
-        { orgOptions, calendarOptions },
+        { orgOptions, calendarOptions, classesOptions },
         { presenceOptions },
         { experienceOptions },
+        { secondParentOptions },
       ] = await Promise.all([
         import("../features/school/api"),
         import("../features/school/classes/api"),
         import("../features/school/classroom/api"),
+        import("../features/second-parent/api"),
       ]);
       const org = await queryClient
         .ensureQueryData(orgOptions(session, own.org))
         .catch(() => null);
+      // Every section's data, so the page paints whole (no section arrives
+      // late and pushes the next down): the school year, the devices, the
+      // second parent.
       await Promise.all([
         org?.can?.includes("calendar.read")
           ? preload(calendarOptions(session, own.org))
           : null,
+        org?.can?.includes("calendar.read")
+          ? preload(classesOptions(session, own.org))
+          : null,
         preload(presenceOptions(session, { org: own.org, class: own.id })),
         preload(experienceOptions(session, { kind: "class", id: own.id })),
+        data?.capabilities.manageSecondParent
+          ? preload(secondParentOptions(session))
+          : null,
       ]);
     },
     component: lazyRouteComponent(payHosts, "SettingsHost"),
@@ -359,8 +353,8 @@ export function familyRoutes(root: AnyRoute) {
   });
   return [
     landing,
-    ...accountAlias("/family/security", "/account/security"),
-    ...accountAlias("/family/access", "/account/billing"),
+    // `/family/security(/…)` and `/family/access(/…)` are the account's
+    // older addresses (router.tsx, features/account/legacy.ts).
     learners("/family/learners"),
     learners("/family/learners/new", "add-children"),
     family.addChildren([

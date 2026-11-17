@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Chevron } from "./BillingList";
 import pages from "./AccountPages.module.css";
 
-/** Account → Sign-in's last row: "Delete my account", which opens its own
- * screen (`/account/security/delete`). `continues` when it follows Sign-in's
+/** Account → Sign-in's last row: "Delete my account", which opens its
+ * overlay over the account (`/account/delete-account`). `continues` when it follows Sign-in's
  * own rows, so one hairline sits between them. */
 export function DeleteAccountEntry({
   continues = false,
@@ -17,7 +17,7 @@ export function DeleteAccountEntry({
     >
       <li className={pages.linkItem}>
         <Link
-          to="/account/security/delete"
+          to="/account/delete-account"
           className={pages.linkRow}
           data-delete-account-entry
         >

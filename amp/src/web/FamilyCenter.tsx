@@ -1,3 +1,6 @@
+// Unreachable in the app since IA v2 (the account is /account and its
+// overlays); kept only for the legacy deep-check harnesses
+// (scripts/family-fixture.tsx), which are to move to the overlays.
 import { useSettingsFamily } from "./features/family/account-settings";
 import { pastCoppaAge } from "../privacy/coppa-age";
 import { Page } from "./ui/Page";
@@ -726,10 +729,7 @@ export function FamilyCenter({
                 own={ownLearner}
                 ownDetail={
                   ownLearner && !nativeRuntime ? (
-                    <OwnStartSetting
-                      session={session}
-                      start={ownLearner.start}
-                    />
+                    <OwnStartSetting start={ownLearner.start} />
                   ) : undefined
                 }
                 children={family.learners}

@@ -112,7 +112,7 @@ function OwnPractice({ place }: { place: FamilyPlace }) {
       </h3>
       {own ? (
         <>
-          <OwnStartSetting session={session} start={learner?.start} />
+          <OwnStartSetting start={learner?.start} />
           <div>
             <Button variant="secondary" onClick={() => practice(own.id)}>
               Practice

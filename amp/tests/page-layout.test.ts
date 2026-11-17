@@ -451,8 +451,8 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "a child's page (ChildScreen renders Page) with the pay overlay's outlet over it",
   "features/pay/hosts.tsx#TodayPayHost":
     "the family's Today (it renders Page) with the pay overlay's outlet over it",
-  "features/pay/hosts.tsx#BillingPayHost":
-    "Billing (it renders Page) with the pay overlay's outlet over it",
+  "features/account/AccountHub.tsx#AccountHost":
+    "the account hub (it renders Page) with its overlays' outlet over it",
   "features/pay/hosts.tsx#SettingsHost":
     "a family's Settings (it renders Page) with its overlays' outlet over it",
   "features/account/overlays.tsx#BillingOverlay":

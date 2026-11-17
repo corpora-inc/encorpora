@@ -70,12 +70,16 @@ export function AccessFact({ child }: { child: FamilyChild }) {
   );
 }
 
-/** Billing stays in the parent's family frame; the child's practice stays primary. */
+/** A child's access, for the parent who buys: without it, Pay over Today;
+ * with it (or an invoice waiting), Billing over the family's Settings, the
+ * one place billing is. The child's practice stays primary. */
 function ChildBillingLink({
   child,
+  family,
   pending,
 }: {
   child: FamilyChild;
+  family: string;
   pending: boolean;
 }) {
   const label = !child.access.hasAccess
@@ -83,14 +87,27 @@ function ChildBillingLink({
     : pending
       ? "View invoice"
       : "Manage access";
+  const select = () => useLearnerStore.getState().select(child.id);
+  if (!child.access.hasAccess)
+    return (
+      <PayLink
+        learnerId={child.id}
+        className={styles.accessLink}
+        aria-label={`${label} for ${child.name}`}
+        data-child-billing={child.id}
+        onClick={select}
+      >
+        {label}
+      </PayLink>
+    );
   return (
     <Link
-      to="/account/billing"
-      hash={pending ? "funded-invoices-title" : undefined}
+      to="/$"
+      params={{ _splat: familyHref(family, "settings/billing") }}
       className={styles.accessLink}
       aria-label={`${label} for ${child.name}`}
       data-child-billing={child.id}
-      onClick={() => useLearnerStore.getState().select(child.id)}
+      onClick={select}
     >
       {label}
     </Link>
@@ -445,6 +462,7 @@ export function FamilyTodayScreen() {
                           {data.capabilities.manageBilling && (
                             <ChildBillingLink
                               child={child}
+                              family={family}
                               pending={
                                 billing.data?.requests.some(
                                   (invoice) =>
