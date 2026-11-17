@@ -1,0 +1,116 @@
+/* The one overlay of a layer host (LayerFrame.tsx), on ui/Sheet's look. */
+.frame {
+  overflow: hidden;
+}
+/* Restored, not opened: drawn in its place at once. */
+.still {
+  animation: none !important;
+}
+/* Over a full-screen layer (an answer's replay, z-index 1100). */
+.above:not(.frame) {
+  z-index: 1200;
+}
+.frame.above {
+  z-index: 1201;
+}
+@media (min-width: 641px) {
+  /* A lesson: its reading column with room for figures. */
+  .wide {
+    width: min(
+      calc(var(--measure-reading) + 4 * var(--space-5)),
+      calc(100vw - var(--space-7))
+    );
+  }
+}
+
+/* The way down, one line: each step a way back up to it. */
+.trail {
+  flex: none;
+  min-height: 44px;
+  padding: 0 var(--space-3) 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.trail ol {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  font-size: var(--text-table);
+}
+.trail li {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+.trail li + li::before {
+  content: "›";
+  padding-inline: var(--space-1);
+  color: var(--color-muted-text);
+}
+.trail button,
+.trail span {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.trail button {
+  margin: 0;
+  padding: 0 var(--space-1);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  cursor: pointer;
+}
+.trail button:hover {
+  text-decoration: underline;
+}
+.trail button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.trail span {
+  max-width: 16rem;
+  padding: 0 var(--space-1);
+  color: var(--color-on-surface-raised, var(--color-on-surface));
+}
+
+/* The top layer: its header and body, as a sheet's own. */
+.panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+.panel[data-motion="in"] {
+  animation: deeper 200ms var(--ease-standard);
+}
+.panel[data-motion="out"] {
+  animation: up 200ms var(--ease-standard);
+}
+@keyframes deeper {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+@keyframes up {
+  from {
+    transform: translateX(-32px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel[data-motion] {
+    animation: none;
+  }
+}
