@@ -4,7 +4,7 @@ import type { AuthSession } from "../auth";
 import type { SignedInMe } from "../../account/contracts";
 import { continuationSearch } from "../lib/funded-entry";
 import { authStep, type AuthSearch } from "./auth-links";
-import { queryClient, sessionOptions } from "../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { studentPracticeHref } from "../features/profiles/practice-mode";
@@ -82,6 +82,23 @@ export const returnSearchShape = {
     .catch(undefined),
   next: z.string().max(RETURN_LIMIT).optional().catch(undefined),
 };
+
+/** A school student's device: their `/me` (its learner) is known before any
+ * guard or old address runs, so a guard sending them home is one hop to
+ * /practice/<learner>, never bare /practice and a second hop. The root's
+ * beforeLoad calls it once per navigation; a cached `/me` costs nothing. */
+export async function knowStudentFirst() {
+  const student = studentSession();
+  if (!student) return;
+  await queryClient
+    .ensureQueryData(meOptions(student))
+    .catch((error: unknown) =>
+      console.warn(
+        "A student's account didn't load ahead; their screen loads it",
+        error,
+      ),
+    );
+}
 
 /** A device this screen isn't for: one hop to the device's own home. */
 export function admit({ web, adults }: Admits) {

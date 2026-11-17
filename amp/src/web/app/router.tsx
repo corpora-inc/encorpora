@@ -63,6 +63,7 @@ import { qk } from "../lib/keys";
 import {
   admit,
   elsewhere,
+  knowStudentFirst,
   requireSignedIn,
   signInTarget,
   toOwnPlace,
@@ -181,6 +182,7 @@ const root = createRootRoute({
     // An ad's or a funding page's program and campaign, kept for the tab
     // (before an old address's hop, which carries no query).
     if (!preload) keepInbound(location.search);
+    if (!preload) await knowStudentFirst();
     if (!preload) await followAlias(location);
     if (nativeRuntime) return;
     // A Stripe return kept across a sign-in: its confirmation, once.
