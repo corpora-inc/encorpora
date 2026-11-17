@@ -1,7 +1,6 @@
 import {
   createRoute,
   lazyRouteComponent,
-  redirect,
   type AnyRoute,
 } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
@@ -11,15 +10,10 @@ import {
   childProgressOptions,
   familyOptions,
   familyPlacesOptions,
-  isFamilyId,
 } from "../features/family/api";
-import {
-  familyPath,
-  landingFamily,
-  sheetHop,
-} from "../features/family/redirects";
-import { sheetState } from "../nav/sheet";
+import { familyPath, landingFamily } from "../features/family/redirects";
 import { staffScreen } from "./school-routes";
+import { elsewhere } from "./sign-in-gate";
 import { ownClassOf } from "../features/spaces/resolve";
 import { groupAddress } from "./family-redirect";
 import { OPEN_KEY, readStack } from "../nav/entities";
@@ -32,12 +26,22 @@ import { accountOverlays } from "./account-overlays";
  * tabs are leaves under it. `/family` alone opens the account's own family,
  * or a chooser when several are theirs. The account's older `/family/<section>`
  * addresses open the account's own screens, at their neutral addresses.
+ * Every older family address is an app/legacy-aliases.ts row.
  */
+
+/** A read a screen can paint without: logged, and the screen shows what
+ * it has (its own query reports the failure). */
+const orNull =
+  (what: string) =>
+  (error: unknown): null => {
+    console.warn(`${what} didn’t load ahead`, error);
+    return null;
+  };
 
 async function ownFamily(session: AuthSession) {
   const places = await queryClient
     .fetchQuery(familyPlacesOptions(session))
-    .catch(() => null);
+    .catch(orNull("Your families"));
   return { places, family: landingFamily(places) };
 }
 
@@ -46,23 +50,6 @@ export function familyRoutes(root: AnyRoute) {
   const payHosts = () => import("../features/pay/hosts");
   const screen = (name: string) =>
     lazyRouteComponent(screens as never, name as never);
-  /** The account's learners, from before families had a place: the family's
-   * Settings (its children), adding a child there (`sheet`). */
-  const learners = (path: string, sheet?: string) =>
-    createRoute({
-      getParentRoute: () => root,
-      path,
-      staticData: { space: "family" },
-      beforeLoad: async (context) => {
-        const { session } = await staffScreen(context);
-        const { family } = await ownFamily(session);
-        throw redirect({
-          to: family ? familyPath(family, "settings") : "/family",
-          ...(family && sheet ? { state: sheetState(sheet) } : {}),
-          replace: true,
-        } as never);
-      },
-    });
   const landing = createRoute({
     getParentRoute: () => root,
     path: "/family",
@@ -72,7 +59,7 @@ export function familyRoutes(root: AnyRoute) {
       const { places, family } = await ownFamily(session);
       const me = await queryClient
         .ensureQueryData(meOptions(session))
-        .catch(() => null);
+        .catch(orNull("Your account"));
       const own = places?.families.find((entry) => entry.familyId === family);
       // A tutor whose class holds only other families' children: their
       // tutoring group's classroom, never an empty family.
@@ -83,20 +70,16 @@ export function familyRoutes(root: AnyRoute) {
         me.learners.length === 0
       ) {
         const group = await groupAddress(session, own.familyId);
-        if (group) throw redirect({ href: group, replace: true });
+        if (group) elsewhere(group);
       }
+      // Their one family: its own address, at once.
       if (family)
-        throw redirect({
-          to: familyPath(family),
-          search: context.location.search as never,
-          replace: true,
-        } as never);
+        elsewhere(`${familyPath(family)}${context.location.searchStr}`);
       const parents = (places?.families ?? []).filter(
         (entry) => entry.role !== "co-teacher",
       );
       // No family yet: the starter makes one.
-      if (places && parents.length === 0)
-        throw redirect({ to: "/start/parent", replace: true } as never);
+      if (places && parents.length === 0) elsewhere("/start/parent");
       return { session };
     },
     component: screen("FamilyChooserScreen"),
@@ -105,20 +88,9 @@ export function familyRoutes(root: AnyRoute) {
     getParentRoute: () => root,
     path: "/family/$family",
     staticData: { space: "family" },
-    beforeLoad: async (context) => {
-      const id = (context.params as { family: string }).family;
-      // Not a family's id: an address this app never made.
-      if (!isFamilyId(id))
-        throw redirect({ to: "/family", replace: true } as never);
-      // An older address that opened a sheet with a key (`?devices=1`,
-      // `?add=1`): the same screen, the sheet from history state.
-      const hop = sheetHop(
-        context.location.pathname,
-        context.location.search as Record<string, unknown>,
-      );
-      if (hop) throw redirect({ ...hop, replace: true } as never);
-      return staffScreen(context);
-    },
+    // (An id that isn't a family's, and a sheet in the query, are
+    // app/legacy-aliases.ts rows.)
+    beforeLoad: staffScreen,
     loader: async ({ context, params }) => {
       const { session } = context as unknown as { session: AuthSession };
       const id = (params as { family: string }).family;
@@ -133,20 +105,6 @@ export function familyRoutes(root: AnyRoute) {
       getParentRoute: () => family,
       path,
       component: screen(name),
-    });
-  /** An older family leaf that is part of Settings now: one hop there,
-   * opening its sheet (`sheet`) from history state. */
-  const settingsHop = (path: string, sheet?: string) =>
-    createRoute({
-      getParentRoute: () => family,
-      path,
-      beforeLoad: ({ params }) => {
-        throw redirect({
-          to: familyPath((params as { family: string }).family, "settings"),
-          ...(sheet ? { state: sheetState(sheet) } : {}),
-          replace: true,
-        } as never);
-      },
     });
   /** A child's page paints whole: its record (levels, and whether there
    * is anything to report yet), its workbooks and its report card's term
@@ -166,13 +124,15 @@ export function familyRoutes(root: AnyRoute) {
     };
     const data = await queryClient
       .ensureQueryData(familyOptions(session, id))
-      .catch(() => null);
+      .catch(orNull("The family"));
     const child = data?.children.find((entry) => entry.id === learner);
     if (!child) return;
     // Its workbooks and report card arrive with it too, so no part
     // lands late and pushes the page down.
     const me = child.capabilities.readGrades
-      ? await queryClient.ensureQueryData(meOptions(session)).catch(() => null)
+      ? await queryClient
+          .ensureQueryData(meOptions(session))
+          .catch(orNull("Your account"))
       : null;
     const own = ownClassOf(me?.signedIn ? me : null, id, data);
     const [{ workbookHistoryOptions }, { gradebookOptions }] =
@@ -199,44 +159,6 @@ export function familyRoutes(root: AnyRoute) {
     ]);
   };
 
-  /** The family's old record pages (Progress, practice time, report cards,
-   * workbooks), now parts of each child's page and of Today: one hop, for a
-   * one-child family, to that child's page at the part (`anchor`); for
-   * several, or with no part (Progress), to Today, where each child's card
-   * opens their page. Progress's linked curriculum layers go with it. The
-   * workbook print for several (`?several`, `?kids`) stays at its address. */
-  const childAlias = (
-    path: string,
-    anchor: string | null,
-    stays?: {
-      when: (search: Record<string, unknown>) => boolean;
-      component: string;
-    },
-  ) =>
-    createRoute({
-      getParentRoute: () => family,
-      path,
-      beforeLoad: async ({ context, params, location }) => {
-        const search = location.search as Record<string, unknown>;
-        if (stays?.when(search)) return;
-        const id = (params as { family: string }).family;
-        let only: string | null = null;
-        if (anchor) {
-          const { session } = context as unknown as { session: AuthSession };
-          const data = await queryClient.ensureQueryData(
-            familyOptions(session, id),
-          );
-          only = data.children.length === 1 ? data.children[0]!.id : null;
-        }
-        throw redirect({
-          to: familyPath(id, only ? `kids/${only}` : ""),
-          search: (only ? {} : search) as never,
-          hash: only ? anchor! : location.hash,
-          replace: true,
-        } as never);
-      },
-      ...(stays ? { component: screen(stays.component) } : {}),
-    });
   /** A child's learning screen at the child's own address
    * (`kids/<learner>/pathways`): the shared screen, for that child. The
    * address names them (features/spaces/identity.ts): a child who isn't the
@@ -263,7 +185,7 @@ export function familyRoutes(root: AnyRoute) {
         };
         const data = await queryClient
           .ensureQueryData(familyOptions(session, id))
-          .catch(() => null);
+          .catch(orNull("The family"));
         const child = data?.children.find((entry) => entry.id === learner);
         if (!child?.capabilities.readProgress) return;
         const view = await import("../lib/learning-view");
@@ -307,8 +229,10 @@ export function familyRoutes(root: AnyRoute) {
       const [data, me] = await Promise.all([
         queryClient
           .ensureQueryData(familyOptions(session, id))
-          .catch(() => null),
-        queryClient.ensureQueryData(meOptions(session)).catch(() => null),
+          .catch(orNull("The family")),
+        queryClient
+          .ensureQueryData(meOptions(session))
+          .catch(orNull("Your account")),
       ]);
       const own = ownClassOf(me?.signedIn ? me : null, id, data);
       if (!own) return;
@@ -325,7 +249,7 @@ export function familyRoutes(root: AnyRoute) {
       ]);
       const org = await queryClient
         .ensureQueryData(orgOptions(session, own.org))
-        .catch(() => null);
+        .catch(orNull("The family"));
       // Every section's data, so the page paints whole (no section arrives
       // late and pushes the next down): the school year, the devices, the
       // second parent.
@@ -353,10 +277,8 @@ export function familyRoutes(root: AnyRoute) {
   });
   return [
     landing,
-    // `/family/security(/…)` and `/family/access(/…)` are the account's
-    // older addresses (router.tsx, features/account/legacy.ts).
-    learners("/family/learners"),
-    learners("/family/learners/new", "add-children"),
+    // `/family/learners(/new)`, `/family/security(/…)` and
+    // `/family/access(/…)` are app/legacy-aliases.ts rows.
     family.addChildren([
       // Today, with the pay overlay its "Continue with AMP" opens over it
       // (`pay/<learner>`, features/pay): Today stays mounted behind.
@@ -389,23 +311,15 @@ export function familyRoutes(root: AnyRoute) {
         () => import("../features/inventory/InventoryScreen"),
         "InventoryScreen",
       ),
-      childAlias("map", null),
-      childAlias("workbooks", "child-workbooks", {
-        when: (search) =>
-          search.several !== undefined || search.kids !== undefined,
-        component: "FamilyWorkbooksScreen",
-      }),
+      // The old record pages (`map`, `time`, `reports`, `workbooks`) are
+      // app/legacy-aliases.ts rows, all but the workbook print for several
+      // children (`?several`, `?kids`), which stays here.
+      leaf("workbooks", "FamilyWorkbooksScreen"),
       leaf("workbooks/$date", "FamilyMarkingScreen"),
-      childAlias("time", "child-time"),
-      childAlias("reports", "child-reports"),
       leaf("reports/grades", "FamilyGradesScreen"),
-      // People are Settings' People now.
-      settingsHop("people"),
       // Settings, and the overlays its rows open over it (billing, privacy,
       // sign-in, deleting the account, Pay): Settings stays mounted behind.
       settings.addChildren([...accountOverlays(settings)]),
-      // The sign-in cards print from their own devices, over Settings.
-      settingsHop("cards", "devices"),
       // The tutoring group is its class's classroom: this address opens it.
       createRoute({
         getParentRoute: () => family,
@@ -417,7 +331,7 @@ export function familyRoutes(root: AnyRoute) {
             (params as { family: string }).family,
             location.search as Record<string, unknown>,
           );
-          if (group) throw redirect({ href: group, replace: true });
+          if (group) elsewhere(group);
         },
         component: screen("TutoringGroupScreen"),
       }),

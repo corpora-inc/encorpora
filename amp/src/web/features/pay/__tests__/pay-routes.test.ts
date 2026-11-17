@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { SignedInMe } from "../../../../account/contracts";
+import { findAliases, followAlias } from "../../../app/legacy-aliases";
 import { router } from "../../../app/router";
 import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { payState, usePayStore } from "../store";
@@ -78,20 +79,28 @@ const offers = {
 };
 
 let me = family([child("august", "August")]);
+/** Where an address hops: an old one through its app/legacy-aliases.ts
+ * row, any other through its route's own guard. */
 const hop = async (
   path: string,
   search: Record<string, unknown> = {},
   params: Record<string, string> = {},
 ) => {
-  const route = router.routesById[path as keyof typeof router.routesById] as {
-    options: { beforeLoad: (input: unknown) => Promise<unknown> };
-  };
+  const pathname = path.replace(/\$(\w+)/g, (_, name: string) => params[name]!);
   const searchStr = new URLSearchParams(search as Record<string, string>).toString();
+  const location = {
+    pathname,
+    search,
+    searchStr: searchStr ? `?${searchStr}` : "",
+  };
   try {
-    await route.options.beforeLoad({
-      params,
-      location: { pathname: path, search, searchStr: searchStr ? `?${searchStr}` : "" },
-    });
+    if (findAliases(location).length) await followAlias(location);
+    else {
+      const route = router.routesById[path as keyof typeof router.routesById] as {
+        options: { beforeLoad: (input: unknown) => Promise<unknown> };
+      };
+      await route.options.beforeLoad({ params, location });
+    }
   } catch (thrown) {
     return (thrown as { options: { href?: string; to?: string } }).options;
   }
@@ -255,10 +264,12 @@ test("the pay address of a day ago opens the overlay over the learner's page", a
 
 test("an overlay needs a signed-in adult: signed out, one hop to sign in", async () => {
   queryClient.setQueryData(sessionOptions.queryKey, null);
-  const route = (router.routesByPath as unknown as Record<string, { options: { beforeLoad: () => Promise<unknown> } }>)[
+  const route = (router.routesByPath as unknown as Record<string, { options: { beforeLoad: (input: never) => Promise<unknown> } }>)[
     "/family/$family/kids/$learner/pay"
   ]!;
-  await expect(route.options.beforeLoad()).rejects.toMatchObject({
-    options: { to: "/sign-in" },
-  });
+  await expect(
+    route.options.beforeLoad({
+      location: { pathname: "/family/f/kids/k/pay", searchStr: "", search: {} },
+    } as never),
+  ).rejects.toMatchObject({ options: { to: "/sign-in" } });
 });
