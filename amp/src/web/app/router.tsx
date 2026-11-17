@@ -728,8 +728,7 @@ async function beforeStarter({
         .ensureQueryData(meOptions(session))
         .catch((error) => console.warn("The account didn’t load ahead", error));
   const target = routeFor(me?.signedIn ? me : null, location);
-  if (target)
-    throw redirect({ to: target.to as never, replace: true });
+  if (target) throw redirect({ to: target.to as never, replace: true });
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
   if (params.choice === "school") {

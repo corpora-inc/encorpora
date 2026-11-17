@@ -1230,9 +1230,7 @@ try {
       else {
         assert.equal(await page.locator('link[rel="canonical"]').count(), 0);
         assert.equal(
-          await page
-            .locator('meta[name="robots"]')
-            .getAttribute("content"),
+          await page.locator('meta[name="robots"]').getAttribute("content"),
           "noindex, follow",
         );
       }
