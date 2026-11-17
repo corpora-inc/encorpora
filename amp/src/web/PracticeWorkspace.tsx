@@ -202,6 +202,9 @@ export function usePracticeViewport(active: boolean) {
   }, [active]);
 }
 
+/** Where a problem the feedback sheet scrolls up comes to rest: this far
+ * below the stage's top edge (its scroll shade covers the edge itself). */
+const PROBLEM_INSET = 8;
 type Props = {
   /** With the batch's hint, when it sent one (its term cards included). */
   problem: HintedProblem;
@@ -238,6 +241,9 @@ type Props = {
   exitHref: string;
   requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
+  /** The problem's curriculum grade beside its skill title, when grades
+   * show (features/practice/ProblemGrade.tsx). */
+  topicGrade?: ReactNode;
   satMathFocus?: boolean;
   /** A calm status in the toolbar, such as the free-practice meter. */
   status?: ReactNode;
@@ -536,7 +542,6 @@ export function PracticeWorkspace(props: Props) {
     () => matchMedia("(max-width: 650px), (pointer: coarse)").matches,
   );
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
-  const [celebrate, setCelebrate] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
   // Time on a hint or a worked explanation is its own (lessons record theirs).
   useHelpSurface(!review && panel === "hint", "hint", problem.id);
@@ -583,7 +588,6 @@ export function PracticeWorkspace(props: Props) {
     setPanel(null);
     setEntering(false);
     setLessonError("");
-    setCelebrate(false);
     // Returning from a book remounts this workspace with an existing result.
     // Only a newly received result should open feedback or replay celebration.
     previousOutcome.current = outcome?.id ?? null;
@@ -613,16 +617,10 @@ export function PracticeWorkspace(props: Props) {
     input.current?.blur();
     setEntering(false);
     focusNext.current = true;
+    // The win lands on the sheet's own mark (feedback-sheet.css), never on
+    // the problem it keeps in view.
     if (outcome.correct && !outcome.skipped)
       playCorrectFeedback(!!props.mastered);
-    const focus = window.setTimeout(() => {
-      if (outcome.correct) setCelebrate(true);
-    }, 0);
-    const timeout = window.setTimeout(() => setCelebrate(false), 1100);
-    return () => {
-      window.clearTimeout(focus);
-      window.clearTimeout(timeout);
-    };
   }, [outcome?.id]);
   // Focus Next only after the answer dialog has closed and restored focus.
   const focusNext = useRef(false);
@@ -658,12 +656,17 @@ export function PracticeWorkspace(props: Props) {
           "--stage-need",
           `${Math.ceil(content.scrollHeight)}px`,
         );
+      // Measured as if the problem rested at the stage's top, where a
+      // stacked sheet scrolls it (below): a centred problem has room above
+      // it that the sheet may use.
       if (content && stageBox) {
-        const end = Math.min(
-          content.getBoundingClientRect().bottom -
-            (parseFloat(getComputedStyle(content).paddingBottom) || 0),
-          stageBox.getBoundingClientRect().bottom,
-        );
+        const style = getComputedStyle(content);
+        const height =
+          content.getBoundingClientRect().height -
+          (parseFloat(style.paddingTop) || 0) -
+          (parseFloat(style.paddingBottom) || 0);
+        const box = stageBox.getBoundingClientRect();
+        const end = Math.min(box.top + PROBLEM_INSET + height, box.bottom);
         host.style.setProperty(
           "--problem-room",
           `${Math.floor(bottom - end - 8)}px`,
@@ -747,6 +750,9 @@ export function PracticeWorkspace(props: Props) {
     update();
     if (counters || equalAddends) host.scrollTop = 0;
     // A replay opens at its prompt: the reader hasn't just worked it.
+    const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "instant"
+      : "smooth";
     if (
       !review &&
       reviewInProblem &&
@@ -756,13 +762,30 @@ export function PracticeWorkspace(props: Props) {
       !outcome.correct
     ) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
-      if (hidden > 0)
-        host.scrollBy({
-          top: hidden + 8,
-          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? "instant"
-            : "smooth",
-        });
+      if (hidden > 0) host.scrollBy({ top: hidden + 8, behavior });
+    } else if (
+      !review &&
+      content &&
+      !lineBuild &&
+      !trend &&
+      !shapes &&
+      !counters &&
+      !equalAddends
+    ) {
+      // The sheet rises over the answer area; what was solved stays in
+      // view above it. The stage scrolls (never moves the problem) just
+      // enough to clear the sheet, and never past the prompt's first line.
+      const first =
+        content.offsetTop +
+        (parseFloat(getComputedStyle(content).paddingTop) || 0) -
+        PROBLEM_INSET;
+      const clear =
+        end() -
+        (parseFloat(getComputedStyle(content).paddingBottom) || 0) +
+        8 -
+        (host.clientHeight - overlap());
+      const top = Math.max(0, Math.min(first, clear));
+      if (top > host.scrollTop) host.scrollTo({ top, behavior });
     }
     // A fixed sheet is measured on screen: again once its entrance ends.
     cover.addEventListener("animationend", update);
@@ -1318,6 +1341,23 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
+  /** "You entered 635": the answer given, in the head's quiet line. */
+  function givenAnswer() {
+    if (!outcome) return null;
+    return (
+      <>
+        {`${review?.who ?? "You"} ${
+          problem.response.kind === "multi-select"
+            ? "selected"
+            : figures || problem.response.kind === "choice"
+              ? "chose"
+              : "entered"
+        } `}
+        <MathText text={displayResponse(outcome.response)} />
+        {support && `, ${support}`}
+      </>
+    );
+  }
   function feedbackDetails() {
     if (!outcome) return null;
     return (
@@ -1346,7 +1386,13 @@ export function PracticeWorkspace(props: Props) {
             ) : outcome.correct ? (
               <>
                 Correct
-                {support && <small>{capitalize(support)}</small>}
+                {/* What was solved stays readable with the win: the answer
+                    given, where the problem itself does not show it. */}
+                {answerShownInProblem ? (
+                  support && <small>{capitalize(support)}</small>
+                ) : (
+                  <small>{givenAnswer()}</small>
+                )}
               </>
             ) : pegs ? (
               pegBoardFeedback(pegs, outcome.response)
@@ -1416,17 +1462,7 @@ export function PracticeWorkspace(props: Props) {
                     {support && capitalize(support)}
                   </small>
                 ) : (
-                  <small>
-                    {`${review?.who ?? "You"} ${
-                      problem.response.kind === "multi-select"
-                        ? "selected"
-                        : figures || problem.response.kind === "choice"
-                          ? "chose"
-                          : "entered"
-                    } `}
-                    <MathText text={displayResponse(outcome.response)} />
-                    {support && `, ${support}`}
-                  </small>
+                  <small>{givenAnswer()}</small>
                 )}
               </>
             )}
@@ -1596,6 +1632,19 @@ export function PracticeWorkspace(props: Props) {
     !trendCompact &&
     !pegCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
+  // These answers are drawn, marked or built in the problem itself, so the
+  // problem shows what was given.
+  const answerShownInProblem =
+    !!pegs ||
+    !!shapes ||
+    !!work ||
+    !!parts ||
+    !!equalAddends ||
+    !!counters ||
+    !!plot ||
+    !!lineBuild ||
+    !!trend ||
+    !!marking;
   const longAnswer =
     !!outcome &&
     !outcome.correct &&
@@ -1701,10 +1750,13 @@ export function PracticeWorkspace(props: Props) {
   const frameTools = useShellTools();
   const title = props.skillTitle ?? meta?.title ?? "Practice";
   const topic = (
-    <span className="workspace-topic-text">
-      {props.satMathFocus ? "SAT Math · " : ""}
-      {title}
-    </span>
+    <>
+      {props.topicGrade}
+      <span className="workspace-topic-text">
+        {props.satMathFocus ? "SAT Math · " : ""}
+        {title}
+      </span>
+    </>
   );
   const toolbarContents = (
     <>
@@ -2022,11 +2074,6 @@ export function PracticeWorkspace(props: Props) {
             )}
           </div>
           <div className="feedback-spacer" ref={spacer} aria-hidden="true" />
-          {celebrate && !trend && (
-            <div className="practice-celebration" aria-hidden="true">
-              <span>✓</span>
-            </div>
-          )}
         </div>
         <div
           className={`answer-dock${sideBySide && (work || figures) ? " editor-dock" : ""}`}
@@ -2087,8 +2134,15 @@ export function PracticeWorkspace(props: Props) {
               >
                 {feedbackDetails()}
               </div>
-            ) : (
+            ) : sideBySide ? (
               feedbackDetails()
+            ) : (
+              // Stacked, the result, its explanation and the skill read as
+              // one column that scrolls as a whole under the problem it
+              // keeps in view; Next and the tools stay put below it.
+              <div className="feedback-body" data-feedback-body>
+                {feedbackDetails()}
+              </div>
             )}
             {props.feedbackAside}
             {review ? (

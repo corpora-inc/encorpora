@@ -69,6 +69,7 @@ export function AnswerFeedback({
           className={styles.strength}
           aria-live="polite"
           aria-busy={progress.isPending}
+          data-strength=""
         >
           {progress.isError ? (
             <span>
@@ -106,17 +107,23 @@ export function AnswerFeedback({
               </span>
             </>
           ) : progress.isPending ? (
-            // The loaded layout, empty: bars and two lines keep their places,
-            // so the strength arriving moves nothing.
+            // The loaded layout, wordless: the bars and the two lines' boxes
+            // hold their places and shine, so the strength arriving moves
+            // nothing and no status is read out.
             <>
               <span className={styles.recent} aria-hidden="true">
                 {Array.from({ length: 5 }, (_, i) => (
                   <i key={i} data-state="empty" />
                 ))}
               </span>
-              <span>
-                <strong>Skill strength</strong>
-                <small>Updating…</small>
+              <span
+                className={`${styles.pending} amp-skeleton`}
+                aria-hidden="true"
+                data-strength-pending=""
+              >
+                <span />
+                <span />
+                <span />
               </span>
             </>
           ) : (
@@ -175,8 +182,7 @@ export function AnswerFeedback({
           )}
           {details && (
             <p className={styles.intro}>
-              Grades place each skill in the curriculum. They aren’t your
-              level.
+              Grades place each skill in the curriculum. They aren’t your level.
             </p>
           )}
           <ul className={styles.choices}>

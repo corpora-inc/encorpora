@@ -5,14 +5,18 @@
 
    Anatomy, top to bottom, in every layout:
      head        result mark, the answer or "Correct", one quiet line
-     steps       the worked explanation (scrolls when long)
+     steps       the worked explanation
      progress    skill, XP, strength, Builds on / Leads to (AnswerFeedback)
      next row    [Mixed practice] Next →
      tools       See why · Lesson · Try easier · flag
 
    Stacked (phones, portrait tablets), the sheet rises over the answer dock it
-   replaces, sized to what it says; the problem above never moves. Side by
-   side (landscape tablets and desktops), it fills the answer column. */
+   replaces, sized to what it says. The problem never moves: the stage
+   scrolls it clear of the sheet (PracticeWorkspace), so what was solved
+   stays in view, and the sheet stops below it. Head, steps and progress
+   share one body that scrolls as a whole when long; no part of it scrolls
+   on its own. Side by side (landscape tablets and desktops), it fills the
+   answer column. */
 
 /* ── Surface ─────────────────────────────────────────────────────────────── */
 .feedback {
@@ -27,9 +31,14 @@
   width: min(calc(100% - 24px), 620px);
   /* Sized to what it says, anchored at the bottom where Check was: Next
      stays in the thumb zone and no empty band opens above it when the dock
-     it replaces was taller (multi-select, keypad). */
+     it replaces was taller (multi-select, keypad). It may rise as far as
+     the problem, scrolled to the stage's top, leaves room
+     (`--problem-room`), so a long explanation reads whole where it can. */
   min-height: 0;
-  max-height: max(min(72%, 440px), var(--dock-height, 0px));
+  max-height: max(
+    var(--dock-height, 0px),
+    min(78%, max(var(--problem-room, 440px), 26rem))
+  );
   margin: 0 auto;
   padding: var(--space-4);
   border: 1px solid var(--color-border);
@@ -144,7 +153,35 @@
   font-weight: 700;
 }
 .feedback.correct .result-mark {
+  position: relative;
   background: var(--color-success-accent);
+}
+/* The win lands on the sheet's own mark: it pops, and one ring spreads
+   from it. Nothing is drawn over the problem. */
+@media (prefers-reduced-motion: no-preference) {
+  .feedback.correct .result-mark {
+    animation: mastery-pop 520ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  }
+  .feedback.correct .result-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--color-success-accent);
+    pointer-events: none;
+    opacity: 0;
+    animation: result-ring 900ms ease-out 120ms both;
+  }
+}
+@keyframes result-ring {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.4);
+  }
 }
 .feedback.incorrect .result-mark {
   background: var(--color-danger-accent);
@@ -284,6 +321,40 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* ── Body (stacked): head, steps and progress scroll as one ─────────────── */
+/* Sized to its content until the sheet's limit, then it alone scrolls. Its
+   edges fade over its own block padding, so a cut line reads as "more
+   below" and content that fits never fades. */
+.feedback-body {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: calc(-1 * var(--space-2)) 0;
+  padding: var(--space-2) 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-on-surface) var(--space-2),
+    var(--color-on-surface) calc(100% - var(--space-2)),
+    transparent
+  );
+}
+.feedback-body > * {
+  flex: none;
+}
+.feedback-body .feedback-steps,
+.feedback-body .feedback-head:has(.solution-answer[data-long]) {
+  min-height: 0;
+  overflow: visible;
+  margin-block: 0;
+  padding-block: 0;
+  mask-image: none;
+}
+
 /* ── Progress: a mastery moment (AnswerFeedback styles its own block) ────── */
 .mastery-moment {
   display: flex;
@@ -415,13 +486,14 @@
     padding: var(--space-3);
   }
   /* Practice is full screen: the sheet meets the screen's edges. */
-  /* The sheet stops below the problem, question and figure both
-     (`--problem-room`, measured with the dock), so the figure the
-     explanation talks about stays in view; a long explanation scrolls
-     inside the sheet. It always keeps room for its own controls (26rem:
-     head, Next and the tools), which wins over the figure's lower edge when
-     a tall figure leaves less. Never smaller than the dock it replaces, so
-     its top edge never jumps. */
+  /* The sheet stops below the problem, question and figure both, as the
+     stage scrolls it to rest at its top (`--problem-room`, measured with the
+     dock), so what was solved and the figure the explanation talks about
+     stay in view; a long body scrolls inside the sheet. It always keeps
+     room for its controls and a readable body (26rem: a whole correct
+     result), which wins over the problem's lower edge when a tall problem
+     leaves less; the stage then scrolls the rest of it. Never smaller than the dock it replaces, so its
+     top edge never jumps. */
   .shell.immersive .feedback {
     left: 0;
     right: 0;
@@ -444,6 +516,10 @@
     gap: 6px;
     overflow-y: auto;
     overscroll-behavior: contain;
+  }
+  .shell.immersive .feedback:has([data-trial-invitation]) > .feedback-body {
+    flex-shrink: 0;
+    overflow: visible;
   }
   /* Quiet actions share the row evenly instead of overflowing 320 px. */
   .shell.immersive .feedback .practice-tools button {
@@ -477,8 +553,12 @@
   /* The sheet itself scrolls here, so the explanation keeps its full height
      instead of shrinking to a clipped sliver between head and progress. */
   .feedback > .feedback-steps,
-  .feedback > .feedback-head {
+  .feedback > .feedback-head,
+  .feedback > .feedback-body {
     flex-shrink: 0;
+  }
+  .feedback > .feedback-body {
+    overflow: visible;
   }
 }
 

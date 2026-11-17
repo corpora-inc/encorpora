@@ -26,11 +26,13 @@
 /* Reserved for the loaded two-line strength ("Building" over a note that
    wraps once on a phone), so its arrival never grows the feedback sheet. */
 .strength {
+  --strength-leading: 1.4;
   display: flex;
   align-items: center;
   gap: var(--space-3);
   min-height: calc(var(--target-size) + var(--space-2));
   font-size: var(--text-label);
+  line-height: var(--strength-leading);
 }
 /* Pending and loaded notes occupy the same width and two text lines. */
 .strength > span:has(> small) {
@@ -43,6 +45,35 @@
   color: var(--color-muted-text);
   font-size: var(--text-small);
   line-height: 1.3;
+}
+/* While the strength loads: the status word and two note lines as quiet
+   bars, in exactly the loaded block's height (one label line over the
+   note's two-line floor). */
+.pending {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-rows:
+    calc(var(--text-label) * var(--strength-leading))
+    calc(var(--text-small) * 1.3)
+    calc(var(--text-small) * 1.3);
+  align-items: center;
+}
+.pending > span {
+  display: block;
+  height: 0.7em;
+  border-radius: var(--radius-control);
+}
+.pending > span:nth-child(1) {
+  width: 5em;
+}
+.pending > span:nth-child(2) {
+  width: 92%;
+  height: calc(var(--text-small) * 0.7);
+}
+.pending > span:nth-child(3) {
+  width: 55%;
+  height: calc(var(--text-small) * 0.7);
 }
 .strength button {
   min-height: var(--target-size);

@@ -260,6 +260,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.tools :global(.workspace-toolbar[data-in-frame] .problem-grade) {
+  margin-inline-end: var(--space-2);
+}
 .tools :global(.workspace-toolbar[data-in-frame] .workspace-topic-text) {
   overflow: hidden;
   text-overflow: ellipsis;

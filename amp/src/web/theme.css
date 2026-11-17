@@ -267,6 +267,52 @@ header {
   border-radius: 50%;
   background: var(--strand, var(--color-primary));
 }
+/* The problem's grade before its skill ("Gr 6 ↑"): where practice is in the
+   curriculum, and which way it moved in this area since its last problem.
+   A step up arrives from below, a step back from above; the arrow is the
+   accent for up and stays quiet for back (a step back is not a mark). */
+.workspace-topic > .problem-grade {
+  flex: none;
+  white-space: nowrap;
+}
+.problem-grade {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 0 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-on-surface);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.problem-grade-step {
+  font-weight: 700;
+  color: var(--color-muted-text);
+}
+.problem-grade[data-step="up"] .problem-grade-step {
+  color: var(--color-success-accent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .problem-grade[data-step] {
+    animation: grade-step-up 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .problem-grade[data-step="down"] {
+    animation-name: grade-step-down;
+  }
+}
+@keyframes grade-step-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+}
+@keyframes grade-step-down {
+  from {
+    opacity: 0;
+    transform: translateY(-0.6em);
+  }
+}
 /* On a phone the full topic gets the width of the problem, while the shared
    bar keeps its logo and tools in their fixed positions. */
 .practice-surface > .practice-topic {
@@ -379,18 +425,6 @@ header {
     opacity: 0;
     transform: translateY(24px);
   }
-}
-.practice-celebration span {
-  width: 72px;
-  height: 72px;
-  background: var(--color-success-accent);
-  color: var(--color-surface-raised);
-  border: 0;
-  font-size: 36px;
-  font-weight: 700;
-  box-shadow: 0 0 0 10px
-    color-mix(in srgb, var(--color-success-accent) 14%, transparent);
-  animation-duration: 0.8s;
 }
 
 /* Dialogs and lessons share the practice surface treatment. */
