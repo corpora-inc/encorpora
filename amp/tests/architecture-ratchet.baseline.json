@@ -8,8 +8,8 @@
     "renderNavigate": 24,
     "silentCatches": 190,
     "sessionProps": 64,
-    "sessionReads": 44,
-    "inlineQueryKeys": 47,
+    "sessionReads": 42,
+    "inlineQueryKeys": 43,
     "nativeControls": 25
   },
   "files": {
@@ -253,7 +253,6 @@
       "features/workbooks/WorkbookResultsScreen.tsx": 2
     },
     "sessionReads": {
-      "app/AppShell.tsx": 2,
       "app/LegacyApp.tsx": 1,
       "app/router.tsx": 2,
       "features/access/AccessScreen.tsx": 1,
@@ -290,7 +289,6 @@
       "nav/SkillLayer.tsx": 1
     },
     "inlineQueryKeys": {
-      "app/providers.tsx": 4,
       "app/router.tsx": 2,
       "features/billing/api.ts": 2,
       "features/billing/prices.ts": 1,

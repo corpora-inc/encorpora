@@ -13,7 +13,8 @@ import {
 } from "react";
 import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
-import { meOptions, sessionOptions } from "../lib/query";
+import { meOptions } from "../lib/query";
+import { forSession, useSessionOrNull } from "../lib/session";
 import { useCurrentLearner } from "../learner-store";
 import { practicePath } from "../features/spaces/identity";
 import { useShellSlots } from "../lib/shell-slots";
@@ -73,7 +74,7 @@ const preloadScreens = () =>
  */
 export function AppShell({ children }: { children: ReactNode }) {
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const session = useQuery(sessionOptions);
+  const session = useSessionOrNull();
   const match = useSettledMatch();
   // The space of the screen on view (features/spaces): its bar, tabs,
   // actions, drawer and words all come from this one description.
@@ -81,7 +82,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   // The same place asked again for the same account keeps its frame while
   // it answers (features/spaces/hold.ts).
   const held = useRef<Held>(null);
-  const identity = sessionIdentity(session.data);
+  const identity = sessionIdentity(session ?? undefined);
   const steady = holdFrame(held.current, resolved, identity);
   const refusedHere =
     !!steady && "status" in steady && steady.status === "unavailable";
@@ -90,10 +91,10 @@ export function AppShell({ children }: { children: ReactNode }) {
     : (nextHeld(steady, identity) ?? held.current);
   if (!identity || (held.current && held.current.session !== identity))
     held.current = null;
-  const space = session.data && steady?.bar ? steady : null;
+  const space = session && steady?.bar ? steady : null;
   // A place this person can no longer open, or one that didn't load, shows
   // that in place of the screen: nothing of it renders or asks the server.
-  const blocked = session.data ? blockedBy(resolved) : null;
+  const blocked = session ? blockedBy(resolved) : null;
   const pathname = match?.pathname ?? "";
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
@@ -270,12 +271,9 @@ function ShellBar({
 /** This account's `/me`, once loaded, and never another account's. A
  * screen without account context (public information, sign-in) never asks
  * for it (lib/account-page.ts). */
-function useAccount(accountPage = true): SignedInMe | null {
-  const session = useQuery(sessionOptions).data;
-  const me = useQuery({
-    ...meOptions(session ?? { accountId: "", token: "" }),
-    enabled: !!session && accountPage,
-  }).data;
+function useAccount(): SignedInMe | null {
+  const session = useSessionOrNull();
+  const me = useQuery(forSession(session, meOptions)).data;
   return me?.signedIn && me.account.id === session?.accountId ? me : null;
 }
 

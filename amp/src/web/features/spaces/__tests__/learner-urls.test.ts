@@ -114,7 +114,8 @@ test("the app's own tabs never carry ?learner=", () => {
   for (const tab of [...meTabs("jonah"), ...meTabs(null)])
     expect(tab.search).toBeUndefined();
   expect(meTabs("jonah").map((tab) => tab.path)).toEqual([
-    "practice",
+    // Practice names its learner in its path (identity.ts practicePath).
+    "practice/jonah",
     "me",
     "learners/jonah/workbooks",
     "pathways",
