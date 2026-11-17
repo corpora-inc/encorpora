@@ -175,7 +175,7 @@ test("the child's settings: one folded Settings, the name inside; devices only b
     expect(within(fold).getByText(row, { selector: "dt" })).toBeTruthy();
   // Permission and their data fold inside it: never a sheet over it.
   expect(
-    [...fold.querySelectorAll("details > summary")].map((node) =>
+    [...fold.querySelectorAll(":scope details > summary")].map((node) =>
       node.textContent?.trim(),
     ),
   ).toEqual(["Learning permission", "Delete learning data"]);
