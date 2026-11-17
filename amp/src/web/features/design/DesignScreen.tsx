@@ -90,6 +90,7 @@ function Chrome({
     return () => observer.disconnect();
   }, []);
   // The section read in the canvas becomes this page's address.
+  // arch-exempt(navigatingEffects): the dev gallery mirrors the canvas iframe's scrolled section (a postMessage browser event) into its own #hash
   useEffect(() => {
     const follow = (event: MessageEvent<unknown>) => {
       const data = event.data as { type?: string; id?: string } | null;

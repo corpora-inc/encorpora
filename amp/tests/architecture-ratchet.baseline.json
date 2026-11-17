@@ -4,13 +4,13 @@
     "redirects": 1,
     "validateSearch": 7,
     "searchHandoffs": 66,
-    "navigatingEffects": 8,
+    "navigatingEffects": 7,
     "renderNavigate": 4,
     "silentCatches": 19,
     "sessionProps": 19,
     "sessionReads": 8,
     "inlineQueryKeys": 9,
-    "nativeControls": 5
+    "nativeControls": 4
   },
   "files": {
     "redirects": {

@@ -48,7 +48,7 @@ import {
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
 import { authStep } from "../../app/auth-links";
-import { chosenProgram } from "../../lib/program-choice";
+import { arrivalLabels, chosenProgram } from "../../lib/program-choice";
 import { useBrowserHandoff } from "./OpenInBrowser";
 
 /** The fragment that marks a sign-in handed off from an in-app browser:
@@ -345,7 +345,8 @@ export function SignInScreen() {
           newsletter: true,
           entry: carry.entry,
           program,
-          campaign: fundedAttribution(carry),
+          // The ad's labels, from the continuation or the tab's arrival.
+          campaign: fundedAttribution({ ...arrivalLabels(), ...carry }),
         }),
       });
       if (!response.ok)

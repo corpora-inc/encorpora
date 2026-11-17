@@ -419,7 +419,12 @@ const home = createRoute({
   getParentRoute: () => appScreen,
   path: "/",
   staticData: { space: "learner" },
-  loaderDeps: ({ search }) => ({ program: search.program }),
+  // The ad's program and campaign, kept once by the pitch
+  // (lib/program-choice.ts `keepArrival`).
+  loaderDeps: ({ search }) => ({
+    program: search.program,
+    ...campaignSearch(search),
+  }),
   loader: async ({ deps }) => {
     const session = queryClient.getQueryData(sessionOptions.queryKey);
     const shown = showsPitch(session);
@@ -612,8 +617,7 @@ async function beforeStarter({
         .catch((error) => console.warn("The account didn’t load ahead", error));
   const target = routeFor(me?.signedIn ? me : null, location);
   // An established account's old trial link: straight to its place.
-  if (target?.to === "/")
-    await toOwnPlace(me?.signedIn ? me : undefined);
+  if (target?.to === "/") await toOwnPlace(me?.signedIn ? me : undefined);
   if (target) elsewhere(target.to);
   // The school answer's next step depends on the account's schools: there
   // before the page paints, so its buttons never arrive late.
@@ -798,8 +802,11 @@ const pathwaysIndex = createRoute({
  * navigation resolves it is the account's current learner
  * (followResolvedLearner). The server still decides what the account may
  * open. */
-const beforeWorkbooks = ({ location }: { location: { pathname: string; searchStr: string } }) =>
-  requireSignedIn(location, { web: true, adults: true });
+const beforeWorkbooks = ({
+  location,
+}: {
+  location: { pathname: string; searchStr: string };
+}) => requireSignedIn(location, { web: true, adults: true });
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
@@ -1132,7 +1139,8 @@ const schoolConnect = createRoute({
   beforeLoad: async () => {
     admit({ web: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
-    if (config.mode === "accounts" && !config.clever) elsewhere("/school/start");
+    if (config.mode === "accounts" && !config.clever)
+      elsewhere("/school/start");
     if (studentSession()) {
       // The component may already have captured a hash-only completion.
       // Await its validation; only the helper can replace a student, and
@@ -1926,9 +1934,7 @@ onSignedOut(() => {
   const target = signInTarget(router.state.location);
   void router
     .preloadRoute(target)
-    .catch((error: unknown) =>
-      console.warn("Sign-in didn’t load ahead", error),
-    )
+    .catch((error: unknown) => console.warn("Sign-in didn’t load ahead", error))
     .then(() => router.navigate({ ...target, replace: true }))
     .finally(clear);
   return true;
