@@ -126,15 +126,17 @@
       location.reload();
     };
     setTimeout(reload, 3000);
-    // The files known to have failed first, then the document's own (a
-    // failure before this script ran, e.g. a modulepreload, wasn't heard).
+    // The files that failed; when none was heard (a failure before this
+    // script ran, e.g. a modulepreload), the document's own.
     var urls = failedUrls.slice();
-    var own = document.querySelectorAll(
-      'link[rel="modulepreload"], link[rel="stylesheet"], script[type="module"][src]'
-    );
-    for (var j = 0; j < own.length; j++) {
-      var url = own[j].href || own[j].src;
-      if (url && ours(url) && urls.indexOf(url) < 0) urls.push(url);
+    if (!urls.length) {
+      var own = document.querySelectorAll(
+        'link[rel="modulepreload"], link[rel="stylesheet"], script[type="module"][src]'
+      );
+      for (var j = 0; j < own.length; j++) {
+        var url = own[j].href || own[j].src;
+        if (url && ours(url) && urls.indexOf(url) < 0) urls.push(url);
+      }
     }
     if (!urls.length || !window.fetch || !window.Promise) return reload();
     var asks = [];
@@ -162,7 +164,14 @@
     show(kind);
   }
 
-  window.ampEntryGuard = { show: show, hide: hide };
+  window.ampEntryGuard = {
+    show: show,
+    hide: hide,
+    reload: function (url) {
+      if (url && ours(url) && failedUrls.indexOf(url) < 0) failedUrls.push(url);
+      refreshThenReload();
+    }
+  };
 
   // A stylesheet of AMP's that failed before this script ran: its request
   // finished, yet it has no sheet. One still loading reports to the

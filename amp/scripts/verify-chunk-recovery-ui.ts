@@ -390,7 +390,13 @@ async function verifyRouteImports() {
         assert.equal(state.documents, 1);
       } else {
         state.failAsset = undefined;
-        await page.getByRole("button", { name: "Reload", exact: true }).click();
+        // Reload asks for the failed file again first (Safari keeps a failed
+        // one across a reload: public/entry-guard.js), so the new document
+        // arrives a moment after the press.
+        await Promise.all([
+          page.waitForEvent("load"),
+          page.getByRole("button", { name: "Reload", exact: true }).click(),
+        ]);
         if (mode === "payment")
           await page
             .getByRole("button", { name: "Reload", exact: true })
@@ -450,7 +456,10 @@ async function verifyOtherRecovery() {
           ),
         );
         state.failCss = false;
-        await page.getByRole("button", { name: "Reload", exact: true }).click();
+        await Promise.all([
+          page.waitForEvent("load"),
+          page.getByRole("button", { name: "Reload", exact: true }).click(),
+        ]);
         await page.locator('input[type="email"]').waitFor();
         assert.equal(state.documents, 3, "manual reload recovers");
         // An actual controlled form edit must survive a chunk failure.
