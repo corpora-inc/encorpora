@@ -156,23 +156,33 @@ export function ClassList<Row extends { id: string; name: string }>({
             </div>
           }
           card={(row) => (
+            // The row's link is the row itself: its own box spans every
+            // column and the row's full height. The figures sit in their
+            // columns over it; only a figure with more behind it (a tip)
+            // takes a press of its own.
             <div className={list.row} data-list-row="">
-              <span className={list.who}>
-                <Link
-                  to="/$"
-                  params={{ _splat: href(row) }}
-                  className={list.link}
-                  data-column={columns[0]!.id}
-                >
-                  {row.name}
-                </Link>
-                <span className={list.detail}>{detail(row)}</span>
-              </span>
-              {shown.map((figure) => (
+              <Link
+                to="/$"
+                params={{ _splat: href(row) }}
+                className={list.link}
+                data-column={columns[0]!.id}
+                // Named by the class alone; its teacher line describes it.
+                aria-label={row.name}
+                aria-describedby={`class-list-${row.id}`}
+              >
+                <span className={list.who}>
+                  <span className={list.name}>{row.name}</span>
+                  <span className={list.detail} id={`class-list-${row.id}`}>
+                    {detail(row)}
+                  </span>
+                </span>
+              </Link>
+              {shown.map((figure, index) => (
                 <span
                   key={figure.column.id}
                   className={list.figure}
                   data-column={figure.column.id}
+                  style={{ gridColumn: index + 2 }}
                 >
                   <span className={styles.visuallyHidden}>
                     {figure.column.header}:{" "}
