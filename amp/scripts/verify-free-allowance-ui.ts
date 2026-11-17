@@ -335,8 +335,19 @@ async function journey(
   // /overview's hop loads the child's page anew: tap Practice on that one.
   await page.waitForLoadState("load");
   await page.locator(`[data-child-page="${fox.id}"]`).waitFor();
+  const traffic: string[] = [];
+  const note = (request: { method(): string; url(): string }) =>
+    traffic.push(`${request.method()} ${new URL(request.url()).pathname}`);
+  page.on("request", note);
+  page.on("console", (message) => {
+    if (message.type() === "error") traffic.push(`console: ${message.text()}`);
+  });
   await page.getByRole("button", { name: `Practice with ${fox.name}` }).click();
-  await practicing(page);
+  await practicing(page).catch((error) => {
+    console.error("After Practice on the child's page:", traffic.slice(-25));
+    throw error;
+  });
+  page.off("request", note);
   await page
     .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
@@ -602,7 +613,7 @@ async function adultJourney(
   await pause.first().waitFor();
   check(
     `${label} the pause stays on practice`,
-    new URL(page.url()).pathname === "/practice",
+    /^\/practice\/[^/]+$/.test(new URL(page.url()).pathname),
     page.url(),
   );
   check(

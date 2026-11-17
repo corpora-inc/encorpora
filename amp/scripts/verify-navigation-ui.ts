@@ -551,7 +551,9 @@ try {
         await page
           .getByRole("option", { name: "Number & operations", exact: true })
           .click();
-        await page.waitForFunction(() => location.search.includes("area="));
+        await page
+          .getByRole("button", { name: "Math area Number & operations" })
+          .waitFor();
         const inArea = await count("All");
         assert(
           inArea > 0 && inArea < allSkills,
@@ -572,7 +574,10 @@ try {
         await page
           .getByRole("option", { name: "Every math area", exact: true })
           .click();
-        await page.waitForFunction(() => !location.search.includes("area="));
+        await page
+          .getByRole("button", { name: /^Math area/ })
+          .and(page.locator('[data-value=""]'))
+          .waitFor();
       }
       const searchBox = await page
         .getByRole("searchbox", { name: "Search", exact: true })
@@ -741,8 +746,8 @@ try {
     "true",
   );
   // The math area picker is a designed list, not a native select. Choosing
-  // writes the URL without resizing the picker; Back, Forward and refresh
-  // restore the choice.
+  // sets the inventory's view (features/inventory/inventory-view.ts, never
+  // the query string) without resizing the picker; a refresh restores it.
   const areaPicker = page.getByRole("button", { name: /^Math area/ });
   assert.equal(await page.locator("select").count(), 0, "no native select");
   assert.equal(await areaPicker.getAttribute("aria-haspopup"), "listbox");
@@ -777,7 +782,6 @@ try {
   await fits("math area list open");
   await page.keyboard.press("End");
   await page.keyboard.press("Enter");
-  await page.waitForURL((url) => url.searchParams.get("area") === "data");
   await areaList.waitFor({ state: "detached" });
   assert(await areaPicker.evaluate((el) => el === document.activeElement));
   assert.equal(await areaPicker.getAttribute("data-value"), "data");
@@ -787,22 +791,20 @@ try {
     "choosing a long area name resized the picker",
   );
   assert.equal(
-    new URL(page.url()).searchParams.get("collection"),
-    "strong",
+    await page
+      .getByRole("button", { name: /^Strong/ })
+      .getAttribute("aria-pressed"),
+    "true",
     "choosing an area keeps the other filters",
   );
-  await page.goBack();
-  await page.waitForURL((url) => !url.searchParams.has("area"));
-  assert.equal(await areaPicker.getAttribute("data-value"), "");
-  await page.goForward();
-  await page.waitForURL((url) => url.searchParams.get("area") === "data");
+  assert.equal(new URL(page.url()).search, "", "the view is not the address");
   await page.reload();
   await page
     .getByRole("button", { name: "Math area Data & probability" })
     .waitFor();
   await areaPicker.click();
   await areaList.getByRole("option", { name: "Every math area" }).click();
-  await page.waitForURL((url) => !url.searchParams.has("area"));
+  await areaList.waitFor({ state: "detached" });
   assert.equal(await areaPicker.getAttribute("data-value"), "");
   // Finish restoring the saved filter before deliberately reloading into an
   // error. WebKit reports a cancelled in-flight fetch as an access-control

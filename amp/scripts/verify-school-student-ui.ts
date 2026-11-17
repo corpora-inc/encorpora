@@ -306,7 +306,10 @@ try {
           path: `${shots}/practice-target-${width}-${dark ? "dark" : "light"}.png`,
         });
         await practice.click();
-        await page.waitForURL(`${origin}/practice`);
+        // The student's practice, at their own address.
+        await page.waitForURL((url) =>
+          /^\/practice\/[^/]+$/.test(url.pathname),
+        );
         assert.ok(
           await page.evaluate(() => sessionStorage.getItem("amp.student")),
           "Practice must preserve the student session",
@@ -445,11 +448,15 @@ try {
     // fixture's refused batch asks the teacher.
     if (path !== "/profile/birth-year")
       await page.waitForURL(
-        (url) => url.pathname === "/overview" || url.pathname === "/practice",
+        (url) =>
+          url.pathname === "/overview" ||
+          /^\/practice\/[^/]+$/.test(url.pathname),
       );
     const landed = new URL(page.url()).pathname;
     await (
-      landed === "/practice" ? askTeacher(page).waitFor() : studentHome(page)
+      landed.startsWith("/practice/")
+        ? askTeacher(page).waitFor()
+        : studentHome(page)
     ).catch((error) => {
       throw new Error(`${path} opened ${page.url()}`, { cause: error });
     });

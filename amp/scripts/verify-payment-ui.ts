@@ -209,6 +209,11 @@ try {
     if (path === "/api/v1/me") return route.fulfill({ json: me });
     if (path === "/api/v1/families")
       return route.fulfill({ json: { families: [], next: null } });
+    // No education-fund invoices: Billing's other folds have nothing to say.
+    if (path === "/api/v1/funding/invoices")
+      return route.fulfill({ json: { invoices: [] } });
+    if (path === "/api/v1/funding/requests")
+      return route.fulfill({ json: { requests: [] } });
     if (path === "/api/v1/payments/reimbursement-programs")
       return route.fulfill({ json: { programs } });
     if (path.endsWith(".pdf")) {
@@ -295,6 +300,11 @@ try {
     await receipts();
     await item().first().waitFor();
     await shot(`list-${size.width}`);
+    assert.deepEqual(
+      await page.getByRole("alert").allInnerTexts(),
+      [],
+      `list-${size.width}: Billing shows no error`,
+    );
     await item().first().click();
     const download = page.getByRole("button", { name: "Download receipt" });
     await download.waitFor();
@@ -376,7 +386,10 @@ try {
     .waitFor();
   await shot("error");
   mode = "records";
-  await page.getByRole("button", { name: "Try again" }).click();
+  await page
+    .getByRole("region", { name: "Receipts" })
+    .getByRole("button", { name: "Try again" })
+    .click();
   await item().first().waitFor();
   // Larger text keeps the receipt readable at 320 px.
   await page.setViewportSize({ width: 320, height: 568 });

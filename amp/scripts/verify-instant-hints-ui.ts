@@ -259,7 +259,9 @@ try {
                 { cause: error },
               );
             });
-          await page.waitForURL((url) => url.pathname === "/practice");
+          await page.waitForURL((url) =>
+            /^\/practice\/[^/]+/.test(url.pathname),
+          );
           await page.locator(".question").waitFor();
         }
         assert.equal(

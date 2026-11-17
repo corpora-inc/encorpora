@@ -95,7 +95,6 @@ type Screen = {
   id: string;
   path: string;
   label: string;
-  param: string;
 };
 // `/lessons` opens Pathways (docs/design/ia.md): the one search is checked
 // on the two screens that hold it.
@@ -104,13 +103,11 @@ const screens: Screen[] = [
     id: "pathways",
     path: "/pathways",
     label: "Search",
-    param: "topic",
   },
   {
     id: "inventory",
     path: "/inventory",
     label: "Search",
-    param: "topic",
   },
 ];
 const results: Record<string, unknown> = {};
@@ -121,12 +118,7 @@ async function typeBurst(page: Page, screen: Screen) {
   const historyBefore = await page.evaluate(() => history.length);
   await page.evaluate(recorder, `input[aria-label="${screen.label}"]`);
   await field.pressSequentially(TEXT, { delay: KEY_DELAY });
-  // Let the debounced URL write land, then read everything back.
-  await page
-    .waitForURL((url) => url.searchParams.get(screen.param) === TEXT, {
-      timeout: 5000,
-    })
-    .catch(() => undefined);
+  // Let the view's store settle, then read everything back.
   await settle(page, 400);
   const record = await page.evaluate(
     () =>
@@ -177,10 +169,8 @@ try {
       `${tag} characters dropped or reordered: ${JSON.stringify(record.values)}`,
     );
     check(added <= 1, `${tag} one burst added ${added} history entries`);
-    check(
-      new URL(page.url()).searchParams.get(screen.param) === TEXT,
-      `${tag} the URL did not follow the field (${page.url()})`,
-    );
+    // The search is the screen's view (a per-screen store, never the query
+    // string): the refresh below restores it.
     const p95 = percentile(record.paints, 0.95);
     check(
       p95 <= PAINT_BUDGET_MS,

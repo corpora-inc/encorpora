@@ -267,16 +267,21 @@ test("a sign-in comes back to any place, or a school's own setup step, by the on
   const family =
     "/family/00000000-0000-4000-8000-000000000001/kids/pip?sort=name%3Aascending";
   expect(continuationUrl({ return: "school", next: family })).toBe(family);
-  expect(
-    continuationUrl({ return: "school", next: `${family}#secret` }),
-  ).toBe(family);
+  expect(continuationUrl({ return: "school", next: `${family}#secret` })).toBe(
+    family,
+  );
 });
 
 test("security sign-in only returns to the validated deletion page", () => {
-  // Its own address, and the older one, which continues at the new one.
-  for (const next of ["/account/security/delete", "/family/security/delete"])
+  // Its own address (the account's delete overlay), and the older ones,
+  // which continue at it.
+  for (const next of [
+    "/account/delete-account",
+    "/account/security/delete",
+    "/family/security/delete",
+  ])
     expect(continuationUrl({ return: "security", next })).toBe(
-      "/account/security/delete",
+      "/account/delete-account",
     );
   for (const next of [
     "https://example.test",

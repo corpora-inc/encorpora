@@ -240,7 +240,7 @@ try {
       await page.getByRole("button", { name: "Dismiss message" }).click();
       await page.getByRole("button", { name: "Next", exact: true }).click();
       // One child practices first, on this device: their first problem.
-      await page.waitForURL((u) => u.pathname === "/practice");
+      await page.waitForURL((u) => /^\/practice\/[^/]+$/.test(u.pathname));
       await page
         .locator(".problem-stage")
         .waitFor()
