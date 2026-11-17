@@ -457,8 +457,10 @@ try {
         assert(await next.isEnabled());
         failBranch = false;
         await next.click();
+        // The next problem, whatever its kind (a typed answer or a
+        // structured one).
         await page
-          .locator("#answer")
+          .locator(".question")
           .waitFor()
           .catch(async (error) => {
             await page.screenshot({
