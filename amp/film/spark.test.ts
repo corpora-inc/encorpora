@@ -1,12 +1,14 @@
 import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { createHash } from "node:crypto";
+import { writeFileSync } from "node:fs";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { lessonFilmSchema } from "../src/content/lesson-films";
 import { defaultVoice, NARRATOR_ID, resolveCast, spokenText, takeKeyParts } from "./cast";
-import { alignmentOf, numberWords, sparkHear, sparkSeed, sparkTake, speakable } from "./spark";
+import { alignmentOf, numberWords, sparkHear, sparkRecipe, sparkSeed, sparkTake, speakable } from "./spark";
 import { scriptSchema } from "./schema";
-import { goodTake, takeKey, wordsOf } from "./voice";
+import { goodTake, judge, takeKey, wordsOf } from "./voice";
 import { providerOf, VOICES } from "./voices";
 
 const script = scriptSchema.parse(JSON.parse(readFileSync("film/lessons/list-all-pairs--sl.json", "utf8")));
@@ -34,9 +36,18 @@ describe("routing", () => {
     ]);
     const local = resolveCast(script, {}, undefined, "spark");
     expect(local.roles.every((role) => role.voice?.spark)).toBe(true);
-    expect(["house-rowan", "house-wren"]).toContain(local.roles[0]!.voice!.id);
-    expect(resolveCast({ id: "x", shots: [] }, {}, undefined, "spark").roles[0]!.voice!.id).toBe("house-rowan");
+    expect(["house-ellis", "house-hazel"]).toContain(local.roles[0]!.voice!.id);
+    expect(local.roles[1]!.voice!.id).toBe("house-remy");
+    expect(resolveCast({ id: "x", shots: [] }, {}, undefined, "spark").roles[0]!.voice!.id).toBe("house-ellis");
     expect(() => resolveCast(script, { learner: "rowan" })).toThrow(/not approved for the learner role/);
+  });
+
+  it("keeps retired house voices playable but never picks them", () => {
+    for (const short of ["rowan", "wren", "pip"]) expect(VOICES.find((v) => v.short === short)?.retired).toBe(true);
+    const old = resolveCast(script, { teacher: "house-rowan", learner: "house-pip" });
+    expect(old.roles.map((role) => role.name)).toEqual(["Rowan", "Pip"]);
+    for (let i = 0; i < 20; i++)
+      expect(resolveCast({ ...script, id: `film-${i}` }, {}, undefined, "spark").roles.every((role) => !["house-rowan", "house-wren", "house-pip"].includes(role.voice!.id))).toBe(true);
   });
 
   it("records house voices by id, so playback and export resolve the same edition", () => {
@@ -56,6 +67,11 @@ describe("cache key", () => {
     expect(takeKeyParts(ROWAN, "Two rows.")).toEqual(["spark", "chatterbox-v3", "house-rowan", "Two rows."]);
     const other = { ...ROWAN, spark: { ...ROWAN.spark, model: "chatterbox-turbo" } };
     expect(new Set([takeKey({ id: NARRATOR_ID }, "x"), takeKey(ROWAN, "x"), takeKey(other, "x"), takeKey(ROWAN, "y")]).size).toBe(4);
+    // the service's processing and candidate count are part of a house take: the takes of the first service are never reused
+    const first = createHash("sha256").update(JSON.stringify(["spark", "chatterbox-v3", "house-rowan", "x"])).digest("hex").slice(0, 24);
+    expect(takeKey(ROWAN, "x")).not.toBe(first);
+    expect(takeKey(ROWAN, "x")).toBe(takeKey({ ...ROWAN, spark: { ...ROWAN.spark, recipe: sparkRecipe(3) } }, "x"));
+    expect(takeKey(ROWAN, "x")).not.toBe(takeKey({ ...ROWAN, spark: { ...ROWAN.spark, recipe: sparkRecipe(1) } }, "x"));
     expect([0, 1, 2].map(sparkSeed)).toEqual([1000, 1001, 1002]);
   });
 });
@@ -101,7 +117,7 @@ describe("alignment parsing", () => {
     }) as unknown as typeof fetch;
     const take = await sparkTake(ROWAN, spokenText(ROWAN, "Two rows: 12."), 2, fetcher);
     expect(sent).toEqual([{ url: "http://spark.test:18093/tts", body: {
-      model: "chatterbox-v3", voice: "rowan", text: "Two rows: twelve.", words: ["two", "rows", "twelve"], seed: 1002, stage: 2, align: true,
+      model: "chatterbox-v3", voice: "rowan", text: "Two rows: twelve.", words: ["two", "rows", "twelve"], seed: 1002, stage: 2, n: 3, align: true,
     } }]);
     expect(take.seed).toBe(1002);
     expect(wordsOf(take.alignment).map((w) => w.text)).toEqual(["Two", "rows:", "12."]);
@@ -136,5 +152,33 @@ describe("hearing", () => {
     }) as unknown as typeof fetch;
     expect(await sparkHear(new Int16Array(441), fetcher)).toEqual(heard);
     expect(urls).toEqual(["http://spark.test:18093/hear"]);
+  });
+});
+
+describe("sounds that are no word", () => {
+  const take = (faults: string[]) => {
+    const words = speakable("Two rows.");
+    const alignment = alignmentOf(words.written, words.spoken, [{ start: 0.1, end: 0.3 }, { start: 0.35, end: 0.7 }]);
+    return { audio: Buffer.from(new Int16Array(44100).buffer).toString("base64"), alignment, seed: 1000, faults };
+  };
+  const heard = JSON.stringify({ text: "Two rows.", words: [{ text: "Two", start: 0.1, end: 0.3, type: "word" }, { text: "rows.", start: 0.35, end: 0.7, type: "word" }] });
+
+  it("are faults of a house take, so it is made again", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "film-spark-"));
+    writeFileSync(join(dir, "h.json"), heard);
+    const drone = "the voice runs on for 1.40 s after the last word";
+    expect(await judge("Two rows.", take([drone]), join(dir, "h.json"), ROWAN)).toEqual([drone]);
+    expect(await judge("Two rows.", take([]), join(dir, "h.json"), ROWAN)).toEqual([]);
+  });
+
+  it("keep the best cached take and retake past a noisy one", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "film-spark-"));
+    const key = takeKey(ROWAN, "Two rows.");
+    writeFileSync(join(dir, `${key}.json`), JSON.stringify(take(["a sound that is no word in a pause at 0.32 s (90 ms, peak -30 dBFS)"])));
+    writeFileSync(join(dir, `${key}.1.json`), JSON.stringify(take([])));
+    for (const k of ["", ".1"]) writeFileSync(join(dir, `${key}${k}.heard.json`), heard);
+    const got = await goodTake(dir, "Two rows.", undefined, undefined, ROWAN);
+    expect(got.faults).toEqual([]);
+    expect(got.tries).toBe(2);
   });
 });

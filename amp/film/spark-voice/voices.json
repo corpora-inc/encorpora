@@ -1,4 +1,7 @@
 {
+  "ellis": { "ref": "house/ellis.wav" },
+  "hazel": { "ref": "house/hazel.wav" },
+  "remy": { "ref": "house/remy.wav", "params": { "exaggeration": 0.5 } },
   "rowan": { "ref": "house/rowan.wav" },
   "wren": { "ref": "house/wren.wav" },
   "pip": { "ref": "house/pip.wav", "params": { "exaggeration": 0.5 } }

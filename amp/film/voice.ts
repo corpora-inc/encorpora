@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { EDGE, envelope, even, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
-import { SPARK_TRIES, sparkHear, sparkTake } from "./spark";
+import { SPARK_TRIES, sparkHear, sparkRecipe, sparkTake } from "./spark";
 import { displayText, heldLetterFaults, scriptWords } from "./letters";
 import type { WordTime } from "./schema";
 import { describe, strayPlan, type TimedWord } from "./strays";
@@ -29,13 +29,21 @@ import { describe, strayPlan, type TimedWord } from "./strays";
 export const VOICE_ID = NARRATOR_ID;
 export { MODEL };
 /** The cache key of a take: voice, model, text, and the voice's tag when it has one. A house voice's key also names its provider. */
-export const takeKey = (voice: Voice, text: string) => createHash("sha256").update(JSON.stringify(takeKeyParts(voice, text))).digest("hex").slice(0, 24);
+export const takeKey = (voice: Voice, text: string) => {
+  // a house take's key also names how the service made it (spark.ts sparkRecipe)
+  const keyed = voice.spark ? { ...voice, spark: { ...voice.spark, recipe: voice.spark.recipe ?? sparkRecipe() } } : voice;
+  return createHash("sha256").update(JSON.stringify(takeKeyParts(keyed, text))).digest("hex").slice(0, 24);
+};
 const HEAR_MODEL = "scribe_v2";
 const TRIES = 3;
 
 export type Alignment = { characters: string[]; character_start_times_seconds: number[]; character_end_times_seconds: number[] };
-/** `audio` is base64 16-bit PCM at 44.1 kHz. A house take records the seed it was made with. */
-export type Take = { audio: string; alignment: Alignment; seed?: number };
+/**
+ * `audio` is base64 16-bit PCM at 44.1 kHz. A house take records the seed it
+ * was made with, the sounds the service heard in it that are no word
+ * (`faults`), and the candidates it was chosen from.
+ */
+export type Take = { audio: string; alignment: Alignment; seed?: number; faults?: string[]; candidates?: unknown[] };
 export type Heard = { text: string; words: { text: string; start: number; end: number; type: string }[] };
 
 function apiKey() {
@@ -252,6 +260,8 @@ async function hear(pcm: Int16Array, cache: string, local = false): Promise<Hear
 export async function judge(text: string, take: Take, cache: string, voice?: Voice) {
   const pcm = pcmOf(take), env = envelope(pcm);
   const faults: string[] = heldLetterFaults(text, wordsOf(take.alignment));
+  // A house take: sounds that are no word (a drone after the last word, a noise in a pause; spark-voice/quality.py).
+  for (const f of take.faults ?? []) faults.push(f);
   const tail = env.slice(-5);
   if (!tail.length || Math.max(...tail) >= EDGE) faults.push("the voice is cut off at the end");
   for (let i = 0, run = 0; i < pcm.length; i++) {

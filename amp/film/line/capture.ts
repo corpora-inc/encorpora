@@ -23,6 +23,7 @@ const browser = await secureChromium(rawChromium).launch();
 const voices: Record<string, string> = {
   XescS24CsOySAkKrLAO3: 'Madeline', J3Ei0Lj6fAobhIqY5ySH: 'Paul', SYXbTJsLE7zmSjr1DchT: 'Champ',
   'house-rowan': 'Rowan', 'house-wren': 'Wren', 'house-pip': 'Pip',
+  'house-ellis': 'Ellis', 'house-hazel': 'Hazel', 'house-remy': 'Remy',
 };
 try {
   for (const item of items) {

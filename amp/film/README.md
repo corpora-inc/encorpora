@@ -64,8 +64,8 @@ valid. A film may have several speakers of one kind. The
 Champ. The film ID chooses a stable default teacher. The learner is Champ, and
 two speakers of one film never share a voice. A film with more speakers of one
 kind than approved voices of that kind still passes `--dry`; voicing fails
-instead of reusing a voice. The house voices Rowan and Wren (teachers) and Pip (learner) are
-never chosen by default: `--voice teacher=rowan --voice learner=pip`, or
+instead of reusing a voice. The house voices Ellis and Hazel (teachers) and Remy (learner) are
+never chosen by default: `--voice teacher=ellis --voice learner=remy`, or
 `--provider spark` for every speaker, voices an edition with them. Use
 `--voice teacher=paul` for an explicit edition; exact voice IDs are saved with
 timing, keyed by speaker key, so playback uses the recorded voice. Solo films
