@@ -297,3 +297,33 @@ test("an unreadable session for a known account keeps the error, not the pitch",
     screen.queryByText("Kids put in the time and AMP does the rest."),
   ).toBeNull();
 }, 30_000);
+
+test("an unreadable session just after a provider's sign-in is never the pitch", async () => {
+  state.sessionFails = true;
+  await open("/?signed-in");
+  expect(
+    await screen.findByText(
+      "This screen could not be loaded.",
+      {},
+      { timeout: 10_000 },
+    ),
+  ).toBeTruthy();
+  expect(
+    screen.queryByText("Kids put in the time and AMP does the rest."),
+  ).toBeNull();
+}, 30_000);
+
+test("sign-up keeps the error for an account known here when the session can't be read", async () => {
+  state.sessionFails = true;
+  const { noteSignedIn } = await import("../../../lib/session-hint");
+  noteSignedIn(true);
+  await open("/sign-up");
+  expect(
+    await screen.findByText(
+      "This screen could not be loaded.",
+      {},
+      { timeout: 10_000 },
+    ),
+  ).toBeTruthy();
+  expect(screen.queryByRole("heading", { name: "Sign-up screen" })).toBeNull();
+}, 30_000);

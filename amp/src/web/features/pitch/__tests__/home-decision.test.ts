@@ -66,6 +66,7 @@ test("anyone the app decides for goes straight to the app", () => {
 
   expect(mayShowPitch({ "sign-in": "" }), "a sign-in link").toBe(false);
   expect(mayShowPitch({ "reset-password": "" }), "a reset link").toBe(false);
+  expect(mayShowPitch({ "signed-in": "" }), "a provider's return").toBe(false);
 
   rememberConsentChallenge(
     {

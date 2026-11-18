@@ -19,7 +19,8 @@ function providerHint() {
  * Whether `/` could be the pitch, before any answer from the API: the light
  * home entry (`home-entry.tsx`) paints it only then. A returning account, a
  * school or student sign-in, an external sign-in provider, an email's consent
- * link, a payment return or a sign-in link go straight to the app, which
+ * link, a payment return, a sign-in link or a provider's return from one go
+ * straight to the app, which
  * decides `/` as it always has (`app/router.tsx`, `home`).
  */
 export function mayShowPitch(search: Record<string, unknown>): boolean {
@@ -37,6 +38,8 @@ export function mayShowPitch(search: Record<string, unknown>): boolean {
     !hasInitialConsentChallenge() &&
     !hasPurchaseReturn(location.search) &&
     !("sign-in" in search) &&
+    // A provider's sign-in coming back.
+    !("signed-in" in search) &&
     !("reset-password" in search)
   );
 }

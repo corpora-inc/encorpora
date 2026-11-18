@@ -20,6 +20,7 @@ import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
 import { useSessionOrNull } from "../lib/session";
 import { signedInHint } from "../lib/session-hint";
+import { mayShowPitch } from "../features/pitch/home-decision";
 import { lazy, Suspense, useEffect, useRef } from "react";
 import { usePayStore } from "../features/pay/store";
 import type { AuthSession } from "../auth";
@@ -375,18 +376,18 @@ async function beforeStart({
   if (target) elsewhere(withQuery(target, search));
 }
 /**
- * `/`'s session on the web, from the canonical cache: the check's answer,
- * or, when the check itself failed, signed out unless this browser's last
- * check found an account (lib/session-hint.ts). An unreadable session never
- * blocks the pitch, and an account known here never meets it: its `/` keeps
- * the route's error and Try again. `undefined` while nothing is known.
+ * `/`'s session, from the canonical cache: the check's answer, or, when the
+ * check itself failed, signed out wherever `/` could be the pitch at all
+ * (`mayShowPitch`: on the web, no account last signed in on this browser,
+ * no school or provider sign-in arriving or hinted, no payment or consent
+ * return). An unreadable session never blocks the pitch, and an account
+ * known here never meets it: its `/` keeps the route's error and Try again.
+ * `undefined` while nothing is known.
  */
-function homeSession(): AuthSession | null | undefined {
+function homeSession(search: Record<string, unknown>) {
   const state = queryClient.getQueryState(sessionOptions.queryKey);
   if (state?.data !== undefined) return state.data;
-  return state?.status === "error" && !nativeRuntime && !signedInHint()
-    ? null
-    : undefined;
+  return state?.status === "error" && mayShowPitch(search) ? null : undefined;
 }
 const appScreen = createRoute({
   getParentRoute: () => root,
@@ -396,7 +397,8 @@ const appScreen = createRoute({
   // `/`, which opens as `homeSession` decides.
   beforeLoad: async ({ location }) => {
     await queryClient.ensureQueryData(sessionOptions).catch((error) => {
-      if (location.pathname !== "/" || homeSession() !== null) throw error;
+      if (location.pathname !== "/" || homeSession(location.search) !== null)
+        throw error;
       console.warn("The session couldn’t be read; `/` opens signed out", error);
     });
   },
@@ -412,8 +414,8 @@ const home = createRoute({
     program: search.program,
     ...campaignSearch(search),
   }),
-  loader: async ({ deps }) => {
-    const session = homeSession();
+  loader: async ({ deps, location }) => {
+    const session = homeSession(location.search);
     const shown = showsPitch(session);
     setPitchShown(shown);
     if (!shown) {
@@ -453,7 +455,7 @@ const home = createRoute({
     await homeReturn(location);
     // A hover's preload decides nothing (and reads nothing fresh).
     if (preload) return;
-    const session = homeSession();
+    const session = homeSession(location.search);
     if (session) await toOnlyPlace(session);
   },
 });
@@ -500,6 +502,9 @@ async function beforeAuthEntry({
         await queryClient
           .ensureQueryData(sessionOptions)
           .catch((error: unknown) => {
+            // An account last signed in here keeps the error and Try again:
+            // a sign-up form would only fail for it.
+            if (signedInHint()) throw error;
             console.warn("The session couldn’t be read; sign-in opens", error);
             return null;
           });
