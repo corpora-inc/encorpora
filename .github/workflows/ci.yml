@@ -1874,9 +1874,11 @@ jobs:
         with:
           python-version: '3.12'
       - name: Film production line test dependencies
-        run: python -m pip install --disable-pip-version-check "pytest==8.3.4"
+        run: python -m pip install --disable-pip-version-check "pytest==8.3.4" "numpy==2.2.6"
       - name: Film production line offline tests
         run: python -m pytest film/line -q
+      - name: House-voice service offline tests
+        run: python -m pytest film/spark-voice -q
   amp-core:
     name: amp-core
     needs: changes

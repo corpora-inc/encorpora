@@ -150,18 +150,33 @@ export const SPARK_TRIES = 5;
 /** The seed of try `k`: a retake is a new seed; the first take is always the same. */
 export const sparkSeed = (k: number) => 1000 + k;
 
-type Reply = { sample_rate: number; pcm: string; words: { word: string; start: number; end: number }[] };
+/**
+ * Candidates the service makes of each take; it answers the best by its own
+ * score (spark-voice/score.py): transcript, sounds that are no word, UTMOS
+ * naturalness, likeness to the voice, pace. FILM_SPARK_CANDIDATES overrides.
+ */
+export const sparkCandidates = () => Math.max(1, Math.min(8, Number(process.env.FILM_SPARK_CANDIDATES ?? 3) || 3));
+/**
+ * What a house take is made by beyond model, voice and text: the service's
+ * processing (2: onsets found in the audio, tails cut at the last word, noises
+ * reported; spark-voice/quality.py) and the number of candidates. A change to
+ * either is a new take, so cached takes made the old way are never reused.
+ */
+export const sparkRecipe = (n = sparkCandidates()) => `p2n${n}`;
+
+type Reply = { sample_rate: number; pcm: string; words: { word: string; start: number; end: number }[]; faults?: string[]; candidates?: unknown[] };
 
 /** One take of `text` in a house voice. `sent` is the text after the voice's tag and respellings. */
-export async function sparkTake(voice: Voice, sent: string, k: number, fetcher: typeof fetch = fetch): Promise<Take & { seed: number }> {
+export async function sparkTake(voice: Voice, sent: string, k: number, fetcher: typeof fetch = fetch, n = sparkCandidates()): Promise<Take & { seed: number }> {
   if (!voice.spark) throw new Error(`${voice.id} is not a house voice`);
   const { text, written, spoken } = speakable(sent);
   const words = spoken.flat();
   if (!words.length) throw new Error(`Nothing to say in "${sent}"`);
   const seed = sparkSeed(k);
-  const reply = await ask<Reply>("/tts", { model: voice.spark.model, voice: voice.spark.voice, text, words, seed, stage: k, align: true }, fetcher);
+  const reply = await ask<Reply>("/tts", { model: voice.spark.model, voice: voice.spark.voice, text, words, seed, stage: k, n, align: true }, fetcher);
   if (reply.sample_rate !== 44100) throw new Error(`The Spark voice answered at ${reply.sample_rate} Hz, not 44100`);
-  return { audio: reply.pcm, alignment: alignmentOf(written, spoken, reply.words), seed };
+  // `faults` are sounds the service heard that are no word; judge() retakes on them.
+  return { audio: reply.pcm, alignment: alignmentOf(written, spoken, reply.words), seed, faults: reply.faults ?? [], ...(reply.candidates ? { candidates: reply.candidates } : {}) };
 }
 
 /** POST to the service. 503 means the Spark is busy with another GPU job or short of memory: wait, then ask again. */

@@ -6,8 +6,8 @@ Vendored from ttsctl (the Corpán narration pipeline on the Spark):
   - master_wav:      ttsctl/mastering.py master_segment and _build_filter_chain
                      (constant gain to a loudness target, then
                      highpass -> adeclick -> afftdn -> agate -> acompressor -> alimiter)
-  - trim_by_words:   ttsctl/trimmer.py trim_trailing_silence (alignment-aware
-                     front silence and forward energy scan for the tail)
+  (ttsctl's alignment-based trim_trailing_silence was used here until
+  2026-11-18; it cut leading consonants and kept drones. quality.py replaced it.)
 Changes from ttsctl: no AAC encode (the film kit wants 44.1 kHz PCM), and no
 final loudnorm pass. The kit levels every take to its own speaking loudness
 (-23.6 LUFS, amp/film/audio.ts `even`), so mastering here is for cleanliness:
@@ -96,41 +96,6 @@ def master_wav(src: str, dst: str) -> dict:
     if r.returncode:
         raise RuntimeError(f"mastering: {r.stderr[-300:]}")
     return {"input_lufs": lufs, "input_tp": tp, "gain_db": round(gain, 2), "chain": chain}
-
-
-def trim_by_words(audio: np.ndarray, sr: int, first_start: float, last_end: float) -> np.ndarray:
-    """ttsctl trim_trailing_silence: silence before the first word (100 ms grace,
-    quadratic ramp), a forward energy scan past the last word, 100 ms grace and a
-    150 ms exponential fade, then truncate. A 300 ms pad of silence follows, so a
-    kept take always ends in measured silence."""
-    audio = audio.astype(np.float32).copy()
-    first_ms, last_ms = int(first_start * 1000), int(last_end * 1000)
-    # Unlike ttsctl, the ramp applies even when the first word starts within 100 ms:
-    # trim_raw's lead-in is digital silence, and sound must never start dead after it.
-    grace = int(0.1 * sr)
-    end = max(0, min(int((min(first_ms, 2000) - 100) / 1000 * sr), len(audio)))
-    audio[:end] = 0.0
-    if end + grace <= len(audio):
-        audio[end:end + grace] *= np.linspace(0.0, 1.0, grace, dtype=np.float32) ** 2
-    floor = float(np.sqrt(np.mean(audio[: int(0.02 * sr)] ** 2))) + 0.0005
-    body = audio[: int(last_ms / 1000 * sr)] if last_ms > 0 else audio
-    rms = float(np.sqrt(np.mean(body ** 2))) if len(body) else 0.0
-    thr = max(floor * 4, rms * 0.10)
-    speech_end = last_ms
-    for ms in range(last_ms, min(last_ms + 1500, int(len(audio) / sr * 1000)), 10):
-        s = int(ms / 1000 * sr)
-        w = audio[s:min(s + int(0.025 * sr), len(audio))]
-        if len(w) and float(np.sqrt(np.mean(w ** 2))) > thr:
-            speech_end = ms + 25
-        elif ms > speech_end + 150:
-            break
-    start = int((speech_end + 100) / 1000 * sr)
-    n = int(0.15 * sr)
-    if start < len(audio):
-        end = min(start + n, len(audio))
-        audio[start:end] *= np.exp(-np.linspace(0, 5, end - start)).astype(np.float32)
-        audio = audio[:end]
-    return np.concatenate([audio, np.zeros(int(0.3 * sr), dtype=np.float32)])
 
 
 # Room tone: about -72 dBFS RMS, far under the kit's silence floor (-49 dBFS).

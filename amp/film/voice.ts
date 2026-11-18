@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { EDGE, envelope, even, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
-import { SPARK_TRIES, sparkHear, sparkTake } from "./spark";
+import { SPARK_TRIES, sparkHear, sparkRecipe, sparkTake } from "./spark";
 import { displayText, heldLetterFaults, scriptWords } from "./letters";
 import type { WordTime } from "./schema";
 import { describe, strayPlan, type TimedWord } from "./strays";
@@ -29,13 +29,21 @@ import { describe, strayPlan, type TimedWord } from "./strays";
 export const VOICE_ID = NARRATOR_ID;
 export { MODEL };
 /** The cache key of a take: voice, model, text, and the voice's tag when it has one. A house voice's key also names its provider. */
-export const takeKey = (voice: Voice, text: string) => createHash("sha256").update(JSON.stringify(takeKeyParts(voice, text))).digest("hex").slice(0, 24);
+export const takeKey = (voice: Voice, text: string) => {
+  // a house take's key also names how the service made it (spark.ts sparkRecipe)
+  const keyed = voice.spark ? { ...voice, spark: { ...voice.spark, recipe: voice.spark.recipe ?? sparkRecipe() } } : voice;
+  return createHash("sha256").update(JSON.stringify(takeKeyParts(keyed, text))).digest("hex").slice(0, 24);
+};
 const HEAR_MODEL = "scribe_v2";
 const TRIES = 3;
 
 export type Alignment = { characters: string[]; character_start_times_seconds: number[]; character_end_times_seconds: number[] };
-/** `audio` is base64 16-bit PCM at 44.1 kHz. A house take records the seed it was made with. */
-export type Take = { audio: string; alignment: Alignment; seed?: number };
+/**
+ * `audio` is base64 16-bit PCM at 44.1 kHz. A house take records the seed it
+ * was made with, the sounds the service heard in it that are no word
+ * (`faults`), and the candidates it was chosen from.
+ */
+export type Take = { audio: string; alignment: Alignment; seed?: number; faults?: string[]; candidates?: unknown[] };
 export type Heard = { text: string; words: { text: string; start: number; end: number; type: string }[] };
 
 function apiKey() {
@@ -57,6 +65,10 @@ const PER: Record<string, number> = {
   half: 2, halves: 2, third: 3, thirds: 3, fourth: 4, fourths: 4, quarter: 4, quarters: 4, fifth: 5, fifths: 5,
   sixth: 6, sixths: 6, seventh: 7, sevenths: 7, eighth: 8, eighths: 8, ninth: 9, ninths: 9, tenth: 10, tenths: 10,
 };
+/** Ordinals a transcriber may write in digits ("12ths"). */
+const ORDINAL: Record<string, string> = {
+  "3": "third", "4": "fourth", "5": "fifth", "6": "sixth", "7": "seventh", "8": "eighth", "9": "ninth", "10": "tenth", "12": "twelfth", "100": "hundredth",
+};
 /** Words a transcript may add or drop without changing what was said. */
 const FILLER = new Set(["and"]);
 const isNum = (w: string | undefined) => !!w && (w in SMALL || w in TENS || w in SCALE);
@@ -68,9 +80,16 @@ const isNum = (w: string | undefined) => !!w && (w in SMALL || w in TENS || w in
  */
 export function spokenWords(items: { text: string; t: number }[]) {
   const toks: { w: string; t: number }[] = [];
+  let before = "";
   for (const it of items) {
-    const s = it.text
+    // a transcriber may split "4-foot" or "four-foot" into "four" and "-foot": a hyphen that joins a
+    // word to the one before is no minus ("-x" after a word stays minus x)
+    const piece = /[\p{L}\p{N}]$/u.test(before) ? it.text.replace(/^-(?=\p{L}{2})/u, "") : it.text;
+    before = it.text;
+    const s = piece
       .toLowerCase()
+      // a transcriber's "12ths" or "5th" is the word: "twelfths", "fifth"
+      .replace(/\b(\d+)(ths?)\b/g, (m, n: string, suffix: string) => (ORDINAL[n] ? ORDINAL[n] + (suffix === "ths" ? "s" : "") : m))
       .replace(/(\d),(?=\d{3}\b)/g, "$1")
       .replace(/\$\s?(\d+)\.(\d\d)\b/g, " $1 dollars $2 cents ")
       .replace(/(\d)\s*\/\s*(\d)/g, "$1 over $2")
@@ -81,6 +100,8 @@ export function spokenWords(items: { text: string; t: number }[]) {
       .replace(/(\d)\.(?=\d)/g, "$1 point ")
       .replace(/[’']/g, "")
       .replace(/(\p{L})-(?=\p{L})/gu, "$1 ")
+      // "a 4-foot snake", "a 3-meter ribbon": a hyphen from a number to a word joins them, it is no minus
+      .replace(/(\d)-(?=\p{L})/gu, "$1 ")
       .replace(/[−–]|-(?=\s*[\d\p{L}(])/gu, " minus ")
       .replace(/\+/g, " plus ").replace(/=/g, " equals ").replace(/[×·]/g, " times ").replace(/÷/g, " divided by ")
       .replace(/°/g, " degrees ").replace(/%/g, " percent ")
@@ -252,6 +273,8 @@ async function hear(pcm: Int16Array, cache: string, local = false): Promise<Hear
 export async function judge(text: string, take: Take, cache: string, voice?: Voice) {
   const pcm = pcmOf(take), env = envelope(pcm);
   const faults: string[] = heldLetterFaults(text, wordsOf(take.alignment));
+  // A house take: sounds that are no word (a drone after the last word, a noise in a pause; spark-voice/quality.py).
+  for (const f of take.faults ?? []) faults.push(f);
   const tail = env.slice(-5);
   if (!tail.length || Math.max(...tail) >= EDGE) faults.push("the voice is cut off at the end");
   for (let i = 0, run = 0; i < pcm.length; i++) {

@@ -27,7 +27,7 @@ export const APPROVED: Record<string, { short: string; name: string; roles: Role
   }]));
 
 /** `spark` names the service model and voice of a house voice; ElevenLabs voices have none. */
-export type Voice = { id: string; tag?: string; spark?: { model: string; voice: string } };
+export type Voice = { id: string; tag?: string; spark?: { model: string; voice: string; recipe?: string } };
 /** `role` is the speaker key. `kind` is teacher, learner, narrator, or a later kind. `voice` is absent when no distinct approved voice is left. */
 export type Role = { role: string; kind: RoleKind; name: string; voice?: Voice };
 export type Cast = { roles: Role[]; named: boolean };
@@ -178,7 +178,7 @@ export const spokenText = (voice: Voice, text: string) => (voice.tag ? `${voice.
  */
 export function takeKeyParts(voice: Voice, text: string): unknown[] {
   // A house take is keyed by provider, model and voice; the try's seed is in its file name (voice.ts).
-  const parts: unknown[] = voice.spark ? ["spark", voice.spark.model, voice.id, text] : [voice.id, MODEL, text];
+  const parts: unknown[] = voice.spark ? ["spark", voice.spark.model, voice.id, text, ...(voice.spark.recipe ? [voice.spark.recipe] : [])] : [voice.id, MODEL, text];
   if (voice.tag) parts.push(voice.tag);
   const respelled = respellingKey(text);
   if (respelled) parts.push(respelled);

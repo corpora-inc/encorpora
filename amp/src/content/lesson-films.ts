@@ -35,8 +35,8 @@ export const lessonFilmSchema = z
     dataUrl: z.string().url(),
     audioUrl: z.string().url(),
     duration: z.number().positive().finite(),
-    /** The teacher's voice name: ElevenLabs (Madeline, Paul) or a house voice (Rowan, Wren; film/voices.ts). */
-    teacher: z.enum(["Madeline Brousseaux", "Paul", "Rowan", "Wren"]),
+    /** The teacher's voice name: ElevenLabs (Madeline, Paul) or a house voice (Ellis, Hazel; retired Rowan, Wren; film/voices.ts). */
+    teacher: z.enum(["Madeline Brousseaux", "Paul", "Rowan", "Wren", "Ellis", "Hazel"]),
     /** The oldest player: a scene needs v3, a board header v4, a bill v5. */
     capability: z.enum([
       FILM_CAPABILITY_V2,
