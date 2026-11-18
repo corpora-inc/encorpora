@@ -112,5 +112,9 @@ export async function changePractice(
     next.focusSkillId = change.skillId;
   }
   await tx.savePracticeChange(change, next, madeIn);
+  // A reset's level is today's at once (answered 0, from the starting
+  // point), so the child's page and every record read it now, not after the
+  // next batch is planned (`levels` reads from the last reset on).
+  if (change.kind === "reset") await tx.saveLevelDay(await tx.frontier());
   return next;
 }

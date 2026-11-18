@@ -259,6 +259,13 @@ test(
           [adultId],
         );
         assert.ok(active.rows[0].ms > 0 && active.rows[0].ms <= 90_000);
+        // Their record reads its level from the stored day.
+        const measuredRecord = await get("/api/v1/me/practice", teacher);
+        assert.equal(measuredRecord.statusCode, 200, measuredRecord.body);
+        assert.ok(
+          measuredRecord.json().record.level,
+          "levels from the stored day",
+        );
         // An adult starts again from where they chose to begin.
         const reset = await post(
           `/api/v1/learners/${adultId}/practice-state`,
@@ -273,7 +280,8 @@ test(
         assert.equal(body.learner.id, adultId);
         assert.equal(body.learner.start, "algebra-1");
         assert.equal(body.learner.active, true);
-        assert.ok(body.record.level, "levels from the stored day");
+        // A reset starts the level again: none until they answer again.
+        assert.equal(body.record.level, null);
         assert.equal(body.record.weeks.length, 12);
         assert.equal(body.record.work.length, 1);
         assert.ok(body.time.days.length >= 1);

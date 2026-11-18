@@ -1,8 +1,6 @@
 import { CheckboxControl } from "../../ui/Checkbox";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Dialog } from "../../ui/Dialog";
-import { Button } from "../../ui/Button";
 import {
   practiceSettingsOptions,
   type PracticeIntent,
@@ -34,9 +32,8 @@ export function PracticeControls({
   apply,
   busy,
   close,
-  canReset = true,
   together = true,
-  resetFrom = "Start from the learner’s birth year.",
+  reset,
 }: {
   practicing?: Practicing;
   scope: PracticeScope;
@@ -44,16 +41,15 @@ export function PracticeControls({
   apply: (change: PracticeIntent) => Promise<void>;
   busy: boolean;
   close?: () => void;
-  /** False for a school student, whose school manages the practice level. */
-  canReset?: boolean;
   /** "Working together" is a grown-up helping a child; an adult practicing
    * on their own isn't offered it (unless it is already on). */
   together?: boolean;
-  /** Where a reset starts again, said in the confirmation. */
-  resetFrom?: string;
+  /** "Reset practice level" (ResetPracticeLevel), where whoever is signed
+   * in may reset it: never a child's own session, whose grown-up or school
+   * manages the level. */
+  reset?: ReactNode;
 }) {
   const state = useQuery(practiceSettingsOptions(scope));
-  const [confirm, setConfirm] = useState(false);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   async function save(change: PracticeIntent) {
@@ -61,10 +57,7 @@ export function PracticeControls({
     setSaving(true);
     try {
       await apply(change);
-      if (change.kind !== "together") {
-        setConfirm(false);
-        close?.();
-      }
+      if (change.kind !== "together") close?.();
     } catch (failure) {
       console.error("AMP couldn’t change practice", {
         change: change.kind,
@@ -158,55 +151,12 @@ export function PracticeControls({
           Return to mixed practice
         </button>
       )}
-      {canReset && (
-        <button
-          type="button"
-          className={settings.action}
-          disabled={disabled}
-          onClick={() => {
-            setError("");
-            setConfirm(true);
-          }}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4 9.4" />
-            <path d="M4 4.5v4.9h4.9" />
-          </svg>
-          Reset practice level
-        </button>
-      )}
-      {!confirm && error && (
+      {reset}
+      {error && (
         <p className={settings.error} role="alert">
           {error}
         </p>
       )}
-      <Dialog
-        aboveNavigation
-        open={confirm}
-        title="Reset practice level?"
-        onOpenChange={(open) => {
-          if (!saving) setConfirm(open);
-        }}
-      >
-        <p>{resetFrom} Your XP and skill history stay.</p>
-        {error && <p role="alert">{error}</p>}
-        <div className={styles.actions}>
-          <Button
-            variant="secondary"
-            disabled={saving}
-            onClick={() => setConfirm(false)}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            disabled={saving}
-            onClick={() => void save({ kind: "reset" })}
-          >
-            {saving ? "Resetting…" : "Reset level"}
-          </Button>
-        </div>
-      </Dialog>
     </fieldset>
   );
 }
