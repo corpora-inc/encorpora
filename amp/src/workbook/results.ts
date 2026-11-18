@@ -234,10 +234,8 @@ export async function recordPaperResults(
     await tx.saveAttempt(outcome);
     added++;
   }
-  // A school student's or an adult's level for the day moves with paper
-  // answers too.
-  if (added && ((await tx.onSchoolRoster()) || (await tx.isAdult())))
-    await tx.saveLevelDay(await tx.frontier(now.getTime()));
+  // The learner's level for the day moves with paper answers too.
+  if (added) await tx.saveLevelDay(await tx.frontier(now.getTime()));
   return added;
 }
 

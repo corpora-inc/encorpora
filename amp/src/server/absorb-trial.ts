@@ -160,7 +160,7 @@ async function moveAdultTrial(
   );
   if (!updated.rowCount) return false;
   await client.query(
-    "INSERT INTO amp_adult_activity(learner_id,seen_at) VALUES($1,now()) ON CONFLICT (learner_id) DO NOTHING",
+    "INSERT INTO amp_learner_activity(learner_id,seen_at) VALUES($1,now()) ON CONFLICT (learner_id) DO NOTHING",
     [trial.learner_id],
   );
   await refreshAdultAccess(client, ownerAccountId, trial.learner_id);

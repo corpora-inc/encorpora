@@ -25,7 +25,7 @@ import { router } from "./router";
 import "./styles";
 import { preloadMathFonts } from "./preload-math-fonts";
 import {
-  startAdultActivity,
+  startLearnerActivity,
   startStudentActivity,
 } from "../lib/student-activity";
 import { changeSession } from "../lib/session-generation";
@@ -42,11 +42,11 @@ function start() {
   started = true;
   const { engagement } = startDocumentRuntime();
   const studentActivity = startStudentActivity();
-  const adultActivity = startAdultActivity();
+  const learnerActivity = startLearnerActivity();
   router.subscribe("onResolved", () => {
     engagement.navigate(router.state.location.pathname);
     studentActivity.navigate(router.state.location.pathname);
-    adultActivity.navigate(router.state.location.pathname);
+    learnerActivity.navigate(router.state.location.pathname);
     trackGooglePage();
     if (screenOf(router.state.location.pathname) !== "pitch")
       preloadMathFonts();

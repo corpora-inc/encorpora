@@ -12,15 +12,11 @@ import {
 } from "../learning/free-allowance.js";
 import { FamilyError } from "../family/contracts.js";
 import {
-  CREDITED_SKILL,
-  HEARTBEAT_MAX_MS,
-  HEARTBEAT_SLACK_MS,
-  heartbeatDeltas,
   heartbeatSchema,
   perDay,
   perSkill,
+  recordLearnerActivity,
 } from "../schools/evidence.js";
-import { helpEventsCte, helpRows } from "../schools/help-events.js";
 import { readProgress, shiftDay } from "../schools/teacher-reads.js";
 import { skillStrandOf, skillTitleOf } from "../schools/term-grades.js";
 import { timezone } from "../schools/contracts.js";
@@ -139,7 +135,7 @@ export async function startAdultPractice(
       ],
     );
     await client.query(
-      "INSERT INTO amp_adult_activity(learner_id,seen_at) VALUES($1,now())",
+      "INSERT INTO amp_learner_activity(learner_id,seen_at) VALUES($1,now())",
       [learnerId],
     );
     await refreshAdultAccess(client, accountId, learnerId);
@@ -254,51 +250,23 @@ export async function readOwnPractice(
   };
 }
 
-/** Credits an adult's active time in one statement, outside the learner lock,
- * as a student's heartbeat is: the total is scaled to the time since the last
- * one plus five seconds, and to 90 seconds at most. False when this account
- * has no live adult learner. */
+/** Credits an adult's active time to their own learner, as any learner's
+ * heartbeat is (`recordLearnerActivity`). The route an older client sends
+ * to; a current one names the learner. False when this account has no live
+ * adult learner. */
 export async function recordAdultActivity(
   pool: Pool,
   accountId: string,
   body: unknown,
 ): Promise<boolean> {
-  const { deltas, events } = heartbeatSchema.parse(body);
-  const { rows } = await pool.query(
-    `WITH live AS (
-       SELECT l.id AS learner_id,COALESCE(l.timezone,'America/New_York') AS timezone,a.seen_at AS previous
-       FROM amp_learners l JOIN amp_adult_activity a ON a.learner_id=l.id
-       WHERE l.account_id=$4 AND l.adult AND NOT l.simulation AND l.deleted_at IS NULL
-       FOR UPDATE OF a
-     ), room AS (
-       SELECT LEAST($2::bigint,
-         floor(GREATEST(0,extract(epoch FROM now()-previous))*1000)::bigint+$3::bigint) AS ms FROM live
-     ), raw AS (
-       SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,d->>'skillId' AS skill_id,(d->>'activeMs')::bigint AS ms
-       FROM jsonb_array_elements($1::jsonb) d
-     ), scale AS (
-       SELECT LEAST(1,room.ms::numeric/NULLIF((SELECT sum(ms) FROM raw),0)) AS factor FROM room
-     ), credited AS (
-       SELECT raw.surface,${CREDITED_SKILL} AS skill_id,
-         floor(raw.ms*COALESCE(scale.factor,1))::bigint AS ms
-       FROM raw CROSS JOIN scale CROSS JOIN live
-       LEFT JOIN amp_instances i ON i.id=raw.problem_id AND i.learner_id=live.learner_id
-     ), written AS (
-       INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-       SELECT live.learner_id,(now() AT TIME ZONE live.timezone)::date,c.surface,c.skill_id,sum(c.ms)
-       FROM credited c CROSS JOIN live WHERE c.ms>0 GROUP BY live.learner_id,live.timezone,c.surface,c.skill_id
-       ON CONFLICT(learner_id,day,surface,skill_id) DO UPDATE SET active_ms=amp_active_days.active_ms+EXCLUDED.active_ms
-     ), touched AS (
-       UPDATE amp_adult_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id
-     ), ${helpEventsCte(5)}
-     SELECT count(*)::int AS live FROM live`,
-    [
-      heartbeatDeltas(deltas),
-      HEARTBEAT_MAX_MS,
-      HEARTBEAT_SLACK_MS,
-      accountId,
-      helpRows(events),
-    ],
-  );
-  return rows[0].live === 1;
+  const own = (
+    await pool.query<{ id: string }>(
+      "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
+      [accountId],
+    )
+  ).rows[0];
+  if (own) return recordLearnerActivity(pool, accountId, own.id, body);
+  // A malformed body is a 400 even with no learner, as it always was.
+  heartbeatSchema.parse(body);
+  return false;
 }

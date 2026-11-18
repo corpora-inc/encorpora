@@ -3,19 +3,20 @@ import { EngagementClock } from "../../analytics/engagement";
 import { screenForPath } from "../../analytics/engagement";
 import type { Me } from "../../account/contracts";
 import type { AuthSession } from "../auth";
-import { currentLearner } from "../learner-store";
+import { currentLearner, useLearnerStore } from "../learner-store";
 import { nativeRuntime } from "../native-runtime";
-import { practicingAsAdult } from "./adult-learner";
+import { practiceLearners } from "./adult-learner";
 import { meKey, queryClient, sessionOptions } from "./query";
 import { isStudentDevice, studentSession } from "./student-device";
 import { HelpQueue, onHelp } from "./help-events";
 
-/** Active time for a learner's own record: a school student's session, sent to
- * the school's activity route, and an adult practicing as themselves, sent to
- * their own. Not analytics: a student's time in class is the school's record
- * and an adult's is their own, so it ignores DNT and GPC, and it carries no
- * identifiers beyond the sign-in. Time counts only while the page is visible
- * and the learner has touched it within the last minute. */
+/** Active time for a learner's own record, the same for every learner: a
+ * school or family-class student's session sends to the school's activity
+ * route, and an account sends for whichever of its learners is chosen (a
+ * child, its adult, a practice profile). Not analytics: it is the learner's
+ * record, so it ignores DNT and GPC, and it carries no identifiers beyond the
+ * sign-in and the learner. Time counts only while the page is visible and the
+ * learner has touched it within the last minute. */
 type Surface =
   | "practice"
   | "lesson"
@@ -30,8 +31,14 @@ type HelpSurface = "lesson" | "hint" | "video" | "example";
 type Overlay = { surface: HelpSurface; problemId?: string; skillId?: string };
 /** Where the time goes now, or null to let it go uncounted. */
 type Destination = { url: string; token: string } | null;
-type Activity = { navigate(path: string): void; stop(): void };
-const idle: Activity = { navigate: () => {}, stop() {} };
+type Activity = {
+  navigate(path: string): void;
+  /** Sends what is counted so far to `to`, the destination it was counted
+   * for, before the destination changes. */
+  flush(to: Destination): void;
+  stop(): void;
+};
+const idle: Activity = { navigate: () => {}, flush: () => {}, stop() {} };
 const SEND_EVERY_MS = 30_000;
 const MAX_DELTAS = 10;
 
@@ -90,24 +97,53 @@ export function startStudentActivity(): Activity {
   });
 }
 
-/** An adult's time on their own practice: practice, lessons and the map,
- * only while their own learner is the one chosen. Their family, their school
- * and their record are not practice. */
-export function startAdultActivity(): Activity {
+/** Where an account's time goes: the learner it has chosen (or `pick`
+ * picks), when that is one it practices as (its children, its adult, its
+ * practice profiles). A student session's time is the session's, never the
+ * account's. */
+function chosenLearner(
+  pick: (accountId: string) => string | null = currentLearner,
+): Destination {
+  if (studentSession()) return null;
+  const session = queryClient.getQueryData<AuthSession | null>(
+    sessionOptions.queryKey,
+  );
+  if (!session) return null;
+  const me = queryClient.getQueryData<Me>(meKey(session.accountId));
+  const learnerId = pick(session.accountId);
+  if (!me?.signedIn || !learnerId) return null;
+  return practiceLearners(me).some((learner) => learner.id === learnerId)
+    ? {
+        url: `/api/v1/learners/${encodeURIComponent(learnerId)}/activity`,
+        token: session.token,
+      }
+    : null;
+}
+
+/** A learner's time on an account: practice, lessons, help and the map,
+ * while that learner is the one chosen. The family's screens, a school's and
+ * a record are not practice. Choosing another learner first sends the time
+ * so far to the one it was counted for. (The native app practices offline
+ * and keeps its time on the device.) */
+export function startLearnerActivity(): Activity {
   if (isStudentDevice() || nativeRuntime) return idle;
-  return startActivity(
-    () => {
-      const session = queryClient.getQueryData<AuthSession | null>(
-        sessionOptions.queryKey,
-      );
-      if (!session) return null;
-      const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-      return me?.signedIn && practicingAsAdult(me, currentLearner())
-        ? { url: "/api/v1/me/practice/activity", token: session.token }
-        : null;
-    },
+  const activity = startActivity(
+    () => chosenLearner(),
     (surface) => surface !== "other",
   );
+  const unsubscribe = useLearnerStore.subscribe((state, previous) => {
+    const before = chosenLearner((id) => previous.learners[id] ?? null);
+    const after = chosenLearner((id) => state.learners[id] ?? null);
+    if (before?.url !== after?.url) activity.flush(before);
+  });
+  return {
+    navigate: activity.navigate,
+    flush: activity.flush,
+    stop() {
+      unsubscribe();
+      activity.stop();
+    },
+  };
 }
 
 /** One learner's heartbeat to `destination` (exported for its tests). */
@@ -171,9 +207,9 @@ export function startActivity(
         activeMs: fresh,
       });
   }
-  async function send(leaving: boolean) {
+  async function send(leaving: boolean, to?: Destination) {
     bank();
-    const target = destination();
+    const target = to === undefined ? destination() : to;
     if (!target || (!queue.length && !help.size)) {
       if (!target) {
         queue.length = 0;
@@ -248,6 +284,9 @@ export function startActivity(
   };
   running.add(watcher);
   return {
+    flush(to: Destination) {
+      void send(true, to);
+    },
     navigate(path: string) {
       const next = surfaceOf(path.split(/[?#]/)[0]);
       if (next === routeSurface) return;

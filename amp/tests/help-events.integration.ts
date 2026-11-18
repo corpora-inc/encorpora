@@ -449,7 +449,7 @@ test(
       assert.equal(started.statusCode, 201, started.body);
       adultId = started.json().learnerId;
       await db.query(
-        "UPDATE amp_adult_activity SET seen_at=now()-interval '20 seconds' WHERE learner_id=$1",
+        "UPDATE amp_learner_activity SET seen_at=now()-interval '20 seconds' WHERE learner_id=$1",
         [adultId],
       );
       const response = await post("/api/v1/me/practice/activity", teacherAccount, {
@@ -468,8 +468,8 @@ test(
         { kind: "lesson", skill_id: otherSkill, ref: "count-objects" },
         { kind: "print", skill_id: events[1]!.skill_id, ref: "counting:workbook" },
       ]);
-      // A learner on no roster and not an adult (an anonymous trial's) has
-      // no rollups, so nor does it get a print.
+      // A learner on no roster and not an adult (an anonymous trial's) is
+      // measured as every learner is (migration 0144): its print counts.
       const loose = randomUUID();
       await db.query(
         "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Trial',2017)",
@@ -479,7 +479,7 @@ test(
       assert.equal(
         (await rows("SELECT 1 FROM amp_help_events WHERE learner_id=$1", loose))
           .length,
-        0,
+        1,
       );
     });
 

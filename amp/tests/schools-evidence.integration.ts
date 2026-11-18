@@ -269,7 +269,7 @@ test(
         },
       );
 
-      await t.test("a family learner gets no rollup rows", async () => {
+      await t.test("a family learner in no class rolls up too", async () => {
         const family = { id: randomUUID() };
         await db.query(
           "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Kid',2016)",
@@ -280,12 +280,15 @@ test(
           at: "2026-03-10T15:00:00Z",
           correct: true,
         });
-        for (const table of [
-          "amp_skill_days",
-          "amp_active_days",
-          "amp_level_days",
-        ])
-          assert.equal((await rows(table, family.id)).length, 0, table);
+        // Every learner is measured the same way (migration 0144); its day
+        // is the adults' default zone when it has no family or adult.
+        assert.deepEqual(
+          (await rows("amp_skill_days", family.id)).map((r) => ({
+            day: new Date(r.day).toISOString().slice(0, 10),
+            attempts: r.attempts,
+          })),
+          [{ day: "2026-03-10", attempts: 1 }],
+        );
       });
 
       await t.test(

@@ -28,6 +28,7 @@ import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
 import { recordPrint } from "../schools/help-events.js";
+import { recordLearnerActivity } from "../schools/evidence.js";
 import { readLearnerSkill } from "../schools/teacher-reads.js";
 import type { StudentSkillResponse } from "../schools/teacher-contracts.js";
 import {
@@ -213,11 +214,8 @@ export interface LearnerTransaction {
   setSatMathFocus(enabled: boolean): Promise<void>;
   /** Placement estimate replayed from the learner's whole attempt history. */
   frontier(now?: number): Promise<Frontier>;
-  /** A school student's or an adult's level for today, in their timezone. A
-   * no-op for any other learner. */
+  /** This learner's level for today, in their day (`amp_learner_zone`). */
   saveLevelDay(frontier: Frontier): Promise<void>;
-  /** Whether this learner is a school student (has an amp_people row). */
-  onSchoolRoster(): Promise<boolean>;
   /** Whether this is an adult's own learner (docs/families.md), or one of
    * their practice profiles. */
   isAdult(): Promise<boolean>;
@@ -287,6 +285,13 @@ export interface Repository {
     lessonId: string,
     kind: string,
   ): Promise<void>;
+  /** Credits a heartbeat of active time and help to one of the account's
+   * learners (`recordLearnerActivity`). False when it has no such learner. */
+  recordActivity?(
+    accountId: string,
+    learnerId: string,
+    body: unknown,
+  ): Promise<boolean>;
   /** Whether learning is allowed: for the account, or for one of its
    * learners, where the account's adult learner needs no parental consent. */
   hasConsent(accountId: string, learnerId?: string): Promise<boolean>;
@@ -333,6 +338,9 @@ export class PostgresRepository implements Repository {
   readonly pool: Pool;
   recordPrint(learnerId: string, lessonId: string, kind: string) {
     return recordPrint(this.pool, learnerId, lessonId, kind);
+  }
+  recordActivity(accountId: string, learnerId: string, body: unknown) {
+    return recordLearnerActivity(this.pool, accountId, learnerId, body);
   }
   constructor(
     connectionString: string,
@@ -825,15 +833,6 @@ export class PgTransaction implements LearnerTransaction {
       ? this.currentFrontier(now)
       : this.frontierAtAnswer(now, answers);
   }
-  async onSchoolRoster() {
-    return (
-      (
-        await this.db.query("SELECT 1 FROM amp_people WHERE learner_id=$1", [
-          this.learnerId,
-        ])
-      ).rowCount === 1
-    );
-  }
   async isAdult() {
     return (await this.learner())?.adult === true;
   }
@@ -847,15 +846,10 @@ export class PgTransaction implements LearnerTransaction {
     // Scheduling has already read the posterior sd. The stored width is the
     // calibrated report, so a level day and the live planner do not share it.
     const estimate = (e: Estimate) => storedEstimate(e);
-    // A school student's day is the school's; an adult's is their own.
+    // Every learner's level day, in the day their answers roll up in.
     await this.db.query(
       `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
-       SELECT $1,(now() AT TIME ZONE z.zone)::date,$2::jsonb,$3 FROM (
-         SELECT p.timezone AS zone FROM amp_people p WHERE p.learner_id=$1
-         UNION ALL
-         SELECT COALESCE(l.timezone,'America/New_York') FROM amp_learners l
-         WHERE l.id=$1 AND l.adult AND NOT EXISTS(SELECT 1 FROM amp_people p WHERE p.learner_id=$1)
-       ) z
+       VALUES($1,(now() AT TIME ZONE amp_learner_zone($1))::date,$2::jsonb,$3)
        ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier,policy_version=EXCLUDED.policy_version`,
       [
         this.learnerId,

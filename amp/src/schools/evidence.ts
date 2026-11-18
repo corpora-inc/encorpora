@@ -63,58 +63,107 @@ export const heartbeatDeltas = (
 export const CREDITED_SKILL =
   "COALESCE(i.content->'public'->>'skillId',raw.skill_id,'')";
 
-/** Credits a student's heartbeat in one statement, outside the learner lock.
- * The deltas' total is scaled down to the time since the session was last
- * seen plus five seconds, and to 90 seconds at most. A problem that isn't this
- * learner's counts toward its surface with no skill. Returns false when the
- * token isn't a live student's. */
+/** One heartbeat as one statement, outside the learner lock. `live` selects
+ * the learner it credits (`learner_id`, `timezone`, `previous`: when time was
+ * last credited) and `touch` moves that clock to now. The deltas' total is
+ * scaled down to the time since `previous` plus five seconds, and to 90
+ * seconds at most. A problem that isn't this learner's counts toward its
+ * surface with no skill. Help events ride along (`help-events.ts`).
+ * Parameters: $1 deltas, $2 cap, $3 slack, $4 help events, then `live`'s. */
+export const heartbeatSql = (
+  live: string,
+  touch: string,
+  extra = "",
+) => `WITH live AS (${live}), room AS (
+    SELECT LEAST($2::bigint,
+      floor(GREATEST(0,extract(epoch FROM now()-previous))*1000)::bigint+$3::bigint) AS ms FROM live
+  ), raw AS (
+    SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,d->>'skillId' AS skill_id,(d->>'activeMs')::bigint AS ms
+    FROM jsonb_array_elements($1::jsonb) d
+  ), scale AS (
+    SELECT LEAST(1,room.ms::numeric/NULLIF((SELECT sum(ms) FROM raw),0)) AS factor FROM room
+  ), credited AS (
+    SELECT raw.surface,${CREDITED_SKILL} AS skill_id,
+      floor(raw.ms*COALESCE(scale.factor,1))::bigint AS ms
+    FROM raw CROSS JOIN scale CROSS JOIN live
+    LEFT JOIN amp_instances i ON i.id=raw.problem_id AND i.learner_id=live.learner_id
+  ), written AS (
+    INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
+    SELECT live.learner_id,(now() AT TIME ZONE live.timezone)::date,c.surface,c.skill_id,sum(c.ms)
+    FROM credited c CROSS JOIN live WHERE c.ms>0 GROUP BY live.learner_id,live.timezone,c.surface,c.skill_id
+    ON CONFLICT(learner_id,day,surface,skill_id) DO UPDATE SET active_ms=amp_active_days.active_ms+EXCLUDED.active_ms
+  ), touched AS (${touch})${extra ? `, ${extra}` : ""}, ${helpEventsCte(4)}
+  SELECT count(*)::int AS live FROM live`;
+
+/** The heartbeat's first four parameters. */
+const heartbeatParams = (body: unknown) => {
+  const { deltas, events } = heartbeatSchema.parse(body);
+  return [
+    heartbeatDeltas(deltas),
+    HEARTBEAT_MAX_MS,
+    HEARTBEAT_SLACK_MS,
+    helpRows(events),
+  ];
+};
+
+/** Credits a student's heartbeat to their session's clock. Returns false
+ * when the token isn't a live student's. */
 export async function recordHeartbeat(
   pool: Pool,
   token: string,
   body: unknown,
 ): Promise<boolean> {
-  const { deltas, events } = heartbeatSchema.parse(body);
+  const params = heartbeatParams(body);
   if (!/^st_[A-Za-z0-9_-]{43}$/.test(token)) return false;
   const { rows } = await pool.query(
-    `WITH live AS (
-       SELECT s.id,s.person_id,s.last_seen_at AS previous,p.learner_id,p.timezone
+    heartbeatSql(
+      `SELECT s.id,s.person_id,s.last_seen_at AS previous,p.learner_id,p.timezone
        FROM amp_student_sessions s
        JOIN amp_people p ON p.id=s.person_id
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
-       WHERE s.token_hash=$1 AND s.revoked_at IS NULL AND s.expires_at>now()
+       WHERE s.token_hash=$5 AND s.revoked_at IS NULL AND s.expires_at>now()
          AND p.deleted_at IS NULL AND ${ACTIVE_STUDENT}
-       FOR UPDATE OF s
-     ), room AS (
-       SELECT LEAST($3::bigint,
-         floor(GREATEST(0,extract(epoch FROM now()-previous))*1000)::bigint+$4::bigint) AS ms FROM live
-     ), raw AS (
-       SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,d->>'skillId' AS skill_id,(d->>'activeMs')::bigint AS ms
-       FROM jsonb_array_elements($2::jsonb) d
-     ), scale AS (
-       SELECT LEAST(1,room.ms::numeric/NULLIF((SELECT sum(ms) FROM raw),0)) AS factor FROM room
-     ), credited AS (
-       SELECT raw.surface,${CREDITED_SKILL} AS skill_id,
-         floor(raw.ms*COALESCE(scale.factor,1))::bigint AS ms
-       FROM raw CROSS JOIN scale CROSS JOIN live
-       LEFT JOIN amp_instances i ON i.id=raw.problem_id AND i.learner_id=live.learner_id
-     ), written AS (
-       INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-       SELECT live.learner_id,(now() AT TIME ZONE live.timezone)::date,c.surface,c.skill_id,sum(c.ms)
-       FROM credited c CROSS JOIN live WHERE c.ms>0 GROUP BY live.learner_id,live.timezone,c.surface,c.skill_id
-       ON CONFLICT(learner_id,day,surface,skill_id) DO UPDATE SET active_ms=amp_active_days.active_ms+EXCLUDED.active_ms
-     ), touched AS (
-       UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id
-     ), demo_seen AS (
-       ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
-     ), ${helpEventsCte(5)}
-     SELECT count(*)::int AS live FROM live`,
-    [
-      hashStudentToken(token),
-      heartbeatDeltas(deltas),
-      HEARTBEAT_MAX_MS,
-      HEARTBEAT_SLACK_MS,
-      helpRows(events),
-    ],
+       FOR UPDATE OF s`,
+      "UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id",
+      `demo_seen AS (${touchDemoOfPersonSql("(SELECT person_id FROM live)")})`,
+    ),
+    [...params, hashStudentToken(token)],
+  );
+  return rows[0].live === 1;
+}
+
+/** Credits a heartbeat to a learner an account practices as: its children,
+ * its adult, its practice profiles, a live trial's learner. Every one has a
+ * clock (`amp_learner_activity`); a learner's first heartbeat starts it a
+ * full heartbeat back, so it can claim what any later one can. False when
+ * the account has no such learner. The caller has checked consent. */
+export async function recordLearnerActivity(
+  pool: Pool,
+  accountId: string,
+  learnerId: string,
+  body: unknown,
+): Promise<boolean> {
+  const params = heartbeatParams(body);
+  /** Learner `$<id>` of account `$<account>`, live. */
+  const theirs = (id: number, account: number) =>
+    `l.id=$${id} AND l.account_id=$${account} AND l.deleted_at IS NULL
+     AND (l.account_id NOT LIKE 'trial:%' OR EXISTS (SELECT 1 FROM amp_trials t
+       WHERE t.learner_id=l.id AND t.adopted_at IS NULL AND t.expires_at>now()))`;
+  await pool.query(
+    `INSERT INTO amp_learner_activity(learner_id,seen_at)
+     SELECT l.id,now()-make_interval(secs=>$3/1000.0) FROM amp_learners l WHERE ${theirs(1, 2)}
+     ON CONFLICT(learner_id) DO NOTHING`,
+    [learnerId, accountId, HEARTBEAT_MAX_MS],
+  );
+  const { rows } = await pool.query(
+    heartbeatSql(
+      `SELECT l.id AS learner_id,amp_learner_zone(l.id) AS timezone,a.seen_at AS previous
+       FROM amp_learners l JOIN amp_learner_activity a ON a.learner_id=l.id
+       WHERE ${theirs(5, 6)}
+       FOR UPDATE OF a`,
+      "UPDATE amp_learner_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id",
+    ),
+    [...params, learnerId, accountId],
   );
   return rows[0].live === 1;
 }

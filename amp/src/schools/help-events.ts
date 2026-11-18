@@ -61,9 +61,8 @@ export const helpEventsCte = (param: number) => `helped AS (
   LEFT JOIN amp_instances i ON i.id=e.problem_id AND i.learner_id=live.learner_id
 )`;
 
-/** A lesson PDF sent to a learner whose practice rolls up: one on a roster
- * (a school's or a family's class) or an adult practicing as themselves, as
- * the answer rollup (`amp_update_skill_days`) decides. */
+/** A lesson PDF sent to a learner, recorded in their day as every learner's
+ * help is (`amp_learner_zone`). */
 export async function recordPrint(
   pool: Pick<Pool, "query">,
   learnerId: string,
@@ -72,10 +71,8 @@ export async function recordPrint(
 ) {
   await pool.query(
     `WITH live AS (
-       SELECT l.id AS learner_id,COALESCE(p.timezone,l.timezone,'America/New_York') AS timezone
-       FROM amp_learners l LEFT JOIN amp_people p ON p.learner_id=l.id AND p.deleted_at IS NULL
-       WHERE l.id=$1 AND l.deleted_at IS NULL AND (p.id IS NOT NULL OR l.adult)
-       LIMIT 1
+       SELECT l.id AS learner_id,amp_learner_zone(l.id) AS timezone
+       FROM amp_learners l WHERE l.id=$1 AND l.deleted_at IS NULL
      ), ${helpEventsCte(2)}
      SELECT 1`,
     [

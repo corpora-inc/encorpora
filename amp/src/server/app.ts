@@ -57,6 +57,7 @@ import {
   type SavedProblem,
 } from "./repository";
 import { answerHelpKinds, type AnswerHelp } from "../schools/help-events.js";
+import { HEARTBEAT_BODY_LIMIT } from "../schools/evidence.js";
 import type { Authenticator } from "./auth";
 import { planMixedPractice, skillDifficulty } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
@@ -763,16 +764,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? workbookTemplateIds(await tx.recentWorkbooks())
                 : undefined,
           });
-      // The frontier was computed for planning; a rostered student's (school
-      // or family) or an adult's level for today is stored from it, with no
-      // second replay.
-      if (
-        levelNow &&
-        (isSchoolAccount(account) ||
-          (await tx.onSchoolRoster()) ||
-          (await tx.isAdult()))
-      )
-        await tx.saveLevelDay(levelNow);
+      // The frontier was computed for planning; every learner's level for
+      // today is stored from it, with no second replay.
+      if (levelNow) await tx.saveLevelDay(levelNow);
       const saved: SavedProblem[] = [];
       const problems: PublicProblem[] = [];
       const hints: Record<string, ProblemHint> = {};
@@ -927,6 +921,30 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return withGlossary(reveal);
     });
   });
+  // Active time and help for any learner an account practices as: its
+  // children, its adult, its practice profiles. A school or family-class
+  // student's session sends to its own route (`/school/student/activity`),
+  // whose clock is the session's, so a student token is refused here rather
+  // than credited twice.
+  app.post(
+    "/api/v1/learners/:learnerId/activity",
+    { bodyLimit: HEARTBEAT_BODY_LIMIT },
+    async (request, reply) => {
+      if (studentBearer(request))
+        throw new ApiError(403, "A student’s time goes to their class.");
+      const account = await parent(request);
+      const { learnerId } = paramsSchema.parse(request.params);
+      if (
+        !(await options.repository.recordActivity?.(
+          account,
+          learnerId,
+          request.body,
+        ))
+      )
+        throw new ApiError(404, "Learner not found");
+      return reply.code(204).send();
+    },
+  );
   app.post("/api/v1/learners/:learnerId/hints", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
