@@ -276,13 +276,13 @@ try {
           }
           account.release();
           if (scenario === "error") {
-            await page.getByRole("alert").waitFor();
-            await verifyWave(page, false);
+            // A session that can't be read at `/`, with no account found on
+            // this browser before, opens the landing (#2448).
+            await page.locator("#pitch-title").waitFor();
             await page.screenshot({
               path: `${shots}/${engine.name()}-${colorScheme}-${width}-error.png`,
             });
             failSession = false;
-            await page.getByRole("button", { name: "Try again" }).click();
           }
           if (scenario === "new") {
             // A new account meets the launcher's welcome at `/` (never a
