@@ -215,19 +215,32 @@ test(
           { entries: [entry] },
         );
         assert.equal(scored.statusCode, 200, scored.body);
+        // The record and its time, read together, are one look.
         assert.deepEqual(await checkins(child), [
-          "parent:view",
           "parent:view",
           "parent:assign",
           "parent:score",
         ]);
-        // As the family's teacher, through the class: still a parent.
+        // As the family's teacher, through the class: still a parent, and
+        // within the half hour still the same look.
         const record = await get(
           `/api/v1/school/students/${childPerson}/record`,
           parent,
         );
         assert.equal(record.statusCode, 200, record.body);
-        assert.equal((await checkins(child)).at(-1), "parent:view");
+        assert.equal((await checkins(child)).length, 3);
+        // A look after the half hour is another.
+        await db.query(
+          `UPDATE amp_adult_checkins SET "at"="at"-interval '31 minutes' WHERE learner_id=$1`,
+          [child],
+        );
+        const later = await get(
+          `/api/v1/school/students/${childPerson}/record`,
+          parent,
+        );
+        assert.equal(later.statusCode, 200, later.body);
+        assert.deepEqual((await checkins(child)).slice(-1), ["parent:view"]);
+        assert.equal((await checkins(child)).length, 4);
         // A row says role, kind, learner and time, and nothing more.
         const columns = (
           await db.query(

@@ -228,6 +228,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         can(actor, "grades.write", target),
       );
       if (!evidence) throw new SchoolError(404, "not_found");
+      await recordStaffCheckin(
+        pool,
+        request.log,
+        actor,
+        { ...target, personId: student },
+        "view",
+      );
       return evidence;
     },
   });
@@ -251,7 +258,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/students/:student/time`,
     action: "students.read",
     target: classParam,
-    handler: async ({ request, target, pool, services }) => {
+    handler: async ({ request, actor, target, pool, services }) => {
       const { period, from } = timeQuerySchema.parse(request.query);
       const { student } = request.params as { student: string };
       const time = await readStudentTime(
@@ -262,6 +269,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         from,
       );
       if (!time) throw new SchoolError(404, "not_found");
+      await recordStaffCheckin(
+        pool,
+        request.log,
+        actor,
+        { ...target, personId: student },
+        "view",
+      );
       return time;
     },
   });
@@ -503,7 +517,6 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     handler: async ({ request, reply, actor, target, pool, services }) => {
       const { format } = paperQuery.parse(request.query);
       const record = await studentRecord(pool, actor, target);
-      await recordStaffCheckin(pool, request.log, actor, target, "view");
       const today = (
         await pool.query(
           "SELECT to_char(now() AT TIME ZONE COALESCE(timezone,'America/New_York'),'YYYY-MM-DD') AS today FROM amp_people WHERE id=$1",
@@ -545,6 +558,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         "Progress report",
       );
       if (!pdf) throw new SchoolError(503, "report_unavailable", 30);
+      await recordStaffCheckin(pool, request.log, actor, target, "view");
       return download(
         reply,
         "application/pdf",

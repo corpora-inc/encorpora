@@ -93,6 +93,7 @@ export function FilmScreen() {
     document.title = `${film.title} · AMP`;
     let attending: (() => void) | null = null;
     let played = false;
+    let completed = false;
     // Its playback, once per opening: started, and played to the end.
     const playback = (kind: "video_play" | "video_complete") =>
       noteHelp({ kind, source: sourceOf(back), ref: templateId, problemId });
@@ -109,7 +110,11 @@ export function FilmScreen() {
           playback("video_play");
         }
       },
-      onEnded: () => playback("video_complete"),
+      onEnded: () => {
+        if (completed) return;
+        completed = true;
+        playback("video_complete");
+      },
     });
     return () => {
       attending?.();

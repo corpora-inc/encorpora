@@ -271,13 +271,6 @@ export async function registerFamilyRoutes(
           family,
           learner,
         );
-        await recordCheckin(
-          options.pool,
-          request.log,
-          learner,
-          "parent",
-          "view",
-        );
         const { html, footer } = progressReportHtml({
           paper: format,
           name: record.name,
@@ -294,6 +287,13 @@ export async function registerFamilyRoutes(
           "Progress report",
         );
         if (!pdf) throw new FamilyError(503, "report_unavailable");
+        await recordCheckin(
+          options.pool,
+          request.log,
+          learner,
+          "parent",
+          "view",
+        );
         return reply
           .type("application/pdf")
           .header(

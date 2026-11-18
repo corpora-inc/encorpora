@@ -27,6 +27,9 @@ test("a lesson video records its opening, its first play and its end", () => {
   // Playing again after a pause is the same playback.
   fireEvent.playing(player);
   fireEvent.ended(player);
+  // Watched again to the end: still one playback, one completion.
+  fireEvent.playing(player);
+  fireEvent.ended(player);
   off();
   expect(kinds).toEqual(["video", "video_play", "video_complete"]);
   // The answer names the video once, never its playback.
