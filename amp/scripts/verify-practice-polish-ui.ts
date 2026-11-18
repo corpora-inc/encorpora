@@ -1051,6 +1051,26 @@ async function probeSelfTest(browser: Browser) {
   await page.setContent(sentence(false));
   await page.evaluate(shim);
   const failing = await probe(page);
+  // A word whose hit area ends a fraction of a pixel past the viewport's
+  // bottom (its point 21 px down, 0.43 px inside, rounds onto the edge) is off screen, not a
+  // miss. A word whose area covers part of a boxed control's visible box
+  // takes that control's presses: rejected.
+  await page.setContent(sentence(true));
+  await page.evaluate(shim);
+  await page.locator("p").evaluate((p) => {
+    const word = p.querySelector(".t")!.getBoundingClientRect();
+    const centre = word.top + word.height / 2;
+    (p as HTMLElement).style.marginTop = `${120 + innerHeight - 21 - 0.43 - centre}px`;
+  });
+  const atEdge = await probe(page);
+  await page.setContent(
+    sentence(true).replace(
+      "</p></main>",
+      '</p><button style="display:block;margin:-115px 0 0 20px;width:200px;height:48px">Check</button></main>',
+    ),
+  );
+  await page.evaluate(shim);
+  const overButton = await probe(page);
   // A small inline control below the fold, and a row of small inline
   // controls whose neighbours cover each other, are still caught; a hidden
   // "$" beside an input (no named control around it) is still text.
@@ -1193,6 +1213,18 @@ async function probeSelfTest(browser: Browser) {
     );
   if (!failing.some((f) => f.kind === "small-target"))
     throw new Error("Probe accepts an inline word without a hit area");
+  if (atEdge.some((f) => f.kind === "small-target"))
+    throw new Error(
+      `Probe rejects a word whose hit area ends at the viewport's edge: ${kinds(atEdge)}`,
+    );
+  if (
+    !overButton.some(
+      (f) => f.kind === "small-target" && /overlaps button/.test(f.detail),
+    )
+  )
+    throw new Error(
+      `Probe accepts a word whose hit area covers a button: ${kinds(overButton)}`,
+    );
   if (passing.some((f) => f.kind === "tiny-text" && f.text === "?"))
     throw new Error("Probe holds a hidden icon glyph to the text size");
   if (!passing.some((f) => f.kind === "tiny-text" && f.text === "A"))

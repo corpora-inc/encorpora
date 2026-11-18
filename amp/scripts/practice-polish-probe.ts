@@ -162,12 +162,50 @@ export async function probe(page: Page): Promise<Finding[]> {
           // or on another control's visible box.
           const cx = r.left + r.width / 2,
             cy = r.top + r.height / 2;
+          // The pixel the browser hit-tests: a fractional point rounds, so
+          // one just inside a viewport or scrollport edge is tested (and
+          // clipped) on the far side of it, like the centre check below.
           const points = [
             [0, -21],
             [0, 21],
             [-21, 0],
             [21, 0],
-          ].map(([dx, dy]) => [cx + dx!, cy + dy!] as const);
+          ].map(
+            ([dx, dy]) =>
+              [Math.round(cx + dx!), Math.round(cy + dy!)] as const,
+          );
+          // Nor may the area cover any part of another control's visible
+          // box: the word sits above its neighbours (z-index), so it would
+          // take that control's presses there. Other words' areas may
+          // overlap it; each is a full target.
+          const area = {
+            left: cx - w / 2,
+            right: cx + w / 2,
+            top: cy - h / 2,
+            bottom: cy + h / 2,
+          };
+          for (const other of root.querySelectorAll(interactive)) {
+            if (other === e || other.contains(e) || e.contains(other)) continue;
+            if (!visible(other) || (other as HTMLButtonElement).disabled)
+              continue;
+            if (
+              getComputedStyle(other).display.startsWith("inline") &&
+              other.parentElement?.closest("p, li, h1, h2, h3, legend, label, dd")
+            )
+              continue;
+            const o = other.getBoundingClientRect();
+            const across =
+              Math.min(area.right, o.right) - Math.max(area.left, o.left);
+            const down =
+              Math.min(area.bottom, o.bottom) - Math.max(area.top, o.top);
+            if (across > 0.5 && down > 0.5)
+              found.push({
+                kind: "small-target",
+                selector: name(e),
+                text: text(e),
+                detail: `inline hit area overlaps ${name(other)} "${text(other).slice(0, 30)}" by ${Math.round(across)}×${Math.round(down)}`,
+              });
+          }
           const onScreen = points.every(
             ([x, y]) => x >= 0 && y >= 0 && x < innerWidth && y < innerHeight,
           );
