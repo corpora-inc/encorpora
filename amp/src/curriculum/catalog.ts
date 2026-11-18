@@ -343,6 +343,7 @@ arrays|2|operations|Count rectangular arrays using equal rows|skip-counting|2.OA
 ruler-measurement|2|measurement|Measure and estimate lengths with appropriate units and tools|measure-equal-units|2.MD.A.1,2.MD.A.3,2.MD.A.4,3.MD.B.4,3.OA.A.3
 number-line-arithmetic|2|number|Represent sums and differences as number-line moves|subtraction-within-100|2.MD.B.6,2.NBT.B.5,2.OA.A.1
 clock-five-minutes|2|measurement|Read analog and digital clocks in five-minute intervals|clock-half-hours,skip-counting|2.MD.C.7,3.MD.A.1
+clock-minutes|2|measurement|Read analog and digital clocks to the minute|clock-five-minutes|3.MD.A.1
 money-values|2|measurement|Calculate amounts with common coins and bills|addition-within-100|2.MD.C.8,2.OA.A.1,3.OA.D.8,4.MD.A.2,5.NBT.B.7
 line-plots|2|data|Display measured lengths on a line plot|ruler-measurement|2.MD.D.9,2.MD.B.5
 picture-bar-graphs|2|data|Build and interpret picture and bar graphs|categorical-data|2.MD.D.10
@@ -691,6 +692,7 @@ const skillTitles: Record<string, string> = {
   "ruler-measurement": "Measuring length with a ruler",
   "number-line-arithmetic": "Sums and differences on a number line",
   "clock-five-minutes": "Telling time to five minutes",
+  "clock-minutes": "Telling time to the minute",
   "money-values": "Coins and bills",
   "line-plots": "Line plots of lengths",
   "picture-bar-graphs": "Picture graphs and bar graphs",

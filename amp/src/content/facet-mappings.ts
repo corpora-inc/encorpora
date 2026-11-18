@@ -292,7 +292,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   },
   {
     templateId: "clock-minute-match",
-    facetId: "clock-five-minutes.core",
+    facetId: "clock-minutes.core",
     extent: "partial",
     rationale:
       "Read an analog clock to the minute and choose the matching digital time, choose the analog clock for a digital time, and give the minutes after the hour. Does not assess elapsed time, a.m. and p.m., setting a clock by hand or time to the half minute.",

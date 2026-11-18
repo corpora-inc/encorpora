@@ -7,6 +7,7 @@ from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, rev
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
 import clause_coverage_oracle
+import clock_skill_oracle
 import fraction_clause_math_oracle
 import importlib
 import json
@@ -839,6 +840,8 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        # Every clock-skill case, whichever oracle solves it: the time fits the skill.
+        clock_skill_oracle.review_problem(problem)
         for clause in (clause_place_value, clause_transformation):
             if clause.handles(public):
                 clause.review_problem(problem)
@@ -1024,6 +1027,7 @@ def review(stream):
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
     clause_coverage_oracle.self_test()
+    clock_skill_oracle.self_test()
     review_clause_fixtures()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()

@@ -271,3 +271,51 @@ test("Missing Factor navigation offers an unknown factor, and equality has conne
     ),
   );
 });
+
+test("clocks to the minute have their own skill; five-minute clocks ask only five-minute times, and saved problems replay", () => {
+  const moved = templates.find((t) => t.id === "clock-minute-match")!;
+  assert.equal(moved.skillId, "clock-minutes");
+  assert.equal(moved.version, 2);
+  assert.equal(nodes.get("clock-minutes")?.title, "Telling time to the minute");
+  assert.ok(
+    nodes.get("clock-minutes")?.prerequisites.includes("clock-five-minutes"),
+  );
+  assert.ok(
+    objectiveForSkill("clock-minutes"),
+    "clock-minutes has an exposure objective",
+  );
+  assert.deepEqual(
+    templates
+      .filter((t) => t.skillId === "clock-five-minutes")
+      .map((t) => t.id)
+      .sort(),
+    [
+      "clock-am-pm",
+      "match-clock-five-minutes",
+      "minutes-past-hour",
+      "read-clock-five-minutes",
+    ],
+  );
+  assert.deepEqual(
+    actualFacetMappings
+      .filter((m) => m.templateId === "clock-minute-match")
+      .map((m) => m.facetId),
+    ["clock-minutes.core"],
+  );
+  for (let seed = 0; seed < 64; seed++) {
+    const current = generateProblem("clock-minute-match", `minute-${seed}`);
+    assert.equal(current.public.skillId, "clock-minutes");
+    assert.equal(current.public.templateVersion, 2);
+    // A problem saved at v1 replays exactly, on the skill it was answered in.
+    const saved = generateProblem("clock-minute-match", `minute-${seed}`, 1);
+    assert.equal(saved.public.skillId, "clock-five-minutes");
+    assert.equal(saved.public.templateVersion, 1);
+    assert.equal(saved.public.id, current.public.id);
+    assert.equal(saved.public.prompt, current.public.prompt);
+    assert.deepEqual(saved.public.figure, current.public.figure);
+    assert.equal(saved.answer, current.answer);
+    assert.ok(gradeAnswer(saved, saved.answer));
+  }
+  const pathways = answerPathways("clock-five-minutes", skills, templates);
+  assert.ok(pathways.leadsTo.some((s) => s.id === "clock-minutes"));
+});

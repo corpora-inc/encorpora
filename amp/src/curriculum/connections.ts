@@ -231,6 +231,7 @@ ten-more-less|mental-tens-hundreds|extension|Changing the tens digit by one exte
 mental-tens-hundreds|powers-of-ten|extension|Shifting a value by ten or one hundred in place value becomes multiplying and dividing by powers of ten.|multiply-power-of-ten
 counting-arithmetic|number-line-arithmetic|extension|Counting on and back is the same as hopping forward and back along a number line.|number-line-hops
 addition-facts|multiplication-meaning|application|Repeated addition of equal groups gives a multiplication total, so fluent sums make equal-group totals easier.|equal-tray-total
+clock-minutes|elapsed-time|application|Finding elapsed time to the minute starts by reading the start and end clocks to the minute, then counting the minutes between them.|clock-elapsed-minutes
 money-values|decimal-arithmetic|application|Dollars and cents are hundredths of a dollar. Adding money is adding decimals aligned by place.|decimal-addition
 money-values|decimal-money-operations|application|Counting coins and bills gives a total in dollars and cents, which is a decimal through hundredths.|money-model-decimal
 decimal-money-operations|decimal-arithmetic|extension|Adding and subtracting money through hundredths is the same place-value alignment used for other decimals.|decimal-sum-difference
