@@ -1,0 +1,3238 @@
+{
+ "id": "protractor-reading--sp",
+ "title": "Measuring angles",
+ "skill": "angle-measure",
+ "teaches": [
+  "turn-degrees",
+  "angle-recognize",
+  "protractor-ray-choice",
+  "protractor-angles-select",
+  "angle-benchmark-estimate",
+  "adjacent-angles",
+  "adjacent-angle-equation"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -3.9,
+     3.6,
+     4.5
+    ],
+    "points": {
+     "V1": [
+      -2.5,
+      1.2
+     ],
+     "A1": [
+      1.7,
+      1.2
+     ],
+     "A2": [
+      1.137,
+      3.3
+     ],
+     "V2": [
+      -2.5,
+      -2.5
+     ],
+     "B1": [
+      -0.1,
+      -2.5
+     ],
+     "B2": [
+      -3.7,
+      -0.422
+     ],
+     "LA": [
+      -2.5,
+      0.4
+     ],
+     "LB": [
+      -2.5,
+      -3.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "aa",
+      "angle": [
+       "A1",
+       "V1",
+       "A2"
+      ],
+      "r": 56,
+      "fill": "warm-fill",
+      "ink": "warm"
+     },
+     {
+      "id": "ab",
+      "angle": [
+       "B1",
+       "V2",
+       "B2"
+      ],
+      "r": 56,
+      "fill": "blue-fill",
+      "ink": "blue"
+     },
+     {
+      "id": "ra1",
+      "seg": [
+       "V1",
+       "A1"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "ra2",
+      "seg": [
+       "V1",
+       "A2"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "rb1",
+      "seg": [
+       "V2",
+       "B1"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "rb2",
+      "seg": [
+       "V2",
+       "B2"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "va",
+      "dot": "V1",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "vb",
+      "dot": "V2",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "la",
+      "label": "A",
+      "at": "LA",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "lb",
+      "label": "B",
+      "at": "LB",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are two angles, A and B. Each one is made of two rays that start at the same point.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Which angle is bigger?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ra1",
+        "ra2"
+       ],
+       "at": "A",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "rb1",
+        "rb2"
+       ],
+       "at": "B",
+       "until": "Each"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ra1",
+        "ra2",
+        "rb1",
+        "rb2"
+       ],
+       "at": "rays",
+       "until": "that"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "va",
+        "vb"
+       ],
+       "at": "point"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which one is bigger?",
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "A! Look how long its rays are!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "ra1",
+        "ra2"
+       ],
+       "at": "long"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let us trim the rays of A, down to the same length as B.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A1": [
+         -0.1,
+         1.2
+        ],
+        "A2": [
+         -0.422,
+         2.4
+        ]
+       },
+       "at": "trim",
+       "dur": 1.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now, which one opens wider?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "aa",
+        "ab"
+       ],
+       "at": "wider"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "B. It opens much wider. So the rays do not matter?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "ab",
+        "rb1",
+        "rb2"
+       ],
+       "at": "B",
+       "until": "So"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ra1",
+        "ra2",
+        "rb1",
+        "rb2"
+       ],
+       "at": "rays"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right. An angle is not measured by its rays. It is measured by its turn. Let us watch one turn.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\text{angle} = \\text{turn}",
+       "at": "turn",
+       "nth": 1
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ra1",
+        "ra2",
+        "rb1",
+        "rb2"
+       ],
+       "at": "rays",
+       "until": "It"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "aa",
+        "ab"
+       ],
+       "at": "turn",
+       "nth": 1,
+       "until": "Let"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.4,
+     -4.4,
+     4.4,
+     4.4
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "S": [
+      3.0,
+      0
+     ],
+     "H": {
+      "on": "ring",
+      "deg": 0
+     },
+     "HL": {
+      "along": [
+       "V",
+       "H"
+      ],
+      "t": 1.5
+     },
+     "Q90": [
+      0,
+      2
+     ],
+     "LV": [
+      0,
+      -1.05
+     ],
+     "L10": [
+      4.136,
+      0.729
+     ],
+     "L20": [
+      3.947,
+      1.436
+     ],
+     "L30": [
+      3.637,
+      2.1
+     ],
+     "L40": [
+      3.217,
+      2.7
+     ],
+     "L50": [
+      2.7,
+      3.217
+     ],
+     "L60": [
+      2.1,
+      3.637
+     ],
+     "L90": [
+      0,
+      3.75
+     ],
+     "L180": [
+      -3.2,
+      0.6
+     ],
+     "L360": [
+      3.2,
+      -0.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "ring",
+      "circle": "V",
+      "r": 2,
+      "ink": "muted",
+      "w": 2
+     },
+     {
+      "id": "fan",
+      "sweep": "H",
+      "r": 80,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "sq",
+      "angle": [
+       "S",
+       "V",
+       "Q90"
+      ],
+      "right": true,
+      "r": 70,
+      "fill": "none",
+      "ink": "warm"
+     },
+     {
+      "id": "still",
+      "seg": [
+       "V",
+       "S"
+      ],
+      "ink": "ink",
+      "w": 10,
+      "start": true
+     },
+     {
+      "id": "turn",
+      "seg": [
+       "V",
+       "HL"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "vtx",
+      "dot": "V",
+      "ink": "ink",
+      "r": 12,
+      "start": true
+     },
+     {
+      "id": "vlab",
+      "label": "\\text{vertex}",
+      "at": "LV",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted"
+     },
+     {
+      "id": "n10",
+      "label": "10",
+      "at": "L10",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n20",
+      "label": "20",
+      "at": "L20",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n30",
+      "label": "30",
+      "at": "L30",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n40",
+      "label": "40",
+      "at": "L40",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n50",
+      "label": "50",
+      "at": "L50",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n60",
+      "label": "60",
+      "at": "L60",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n90",
+      "label": "90^\\circ",
+      "at": "L90",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n180",
+      "label": "180^\\circ",
+      "at": "L180",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "n360",
+      "label": "360^\\circ",
+      "at": "L360",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two rays lie one on top of the other, starting from one point. That point is the vertex.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "An angle is a turn"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "still",
+        "turn"
+       ],
+       "at": "rays",
+       "until": "starting"
+      },
+      {
+       "do": "show",
+       "target": "vlab",
+       "at": "vertex"
+      },
+      {
+       "do": "highlight",
+       "target": "vtx",
+       "at": "vertex"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One ray stays still. The other one turns.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "still",
+       "at": "stays",
+       "until": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "turn",
+       "at": "turns"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "As it turns, it sweeps out space behind it. Let us count the turn, in degrees.",
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten. Twenty. Thirty. Forty. Fifty. Sixty.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 10,
+       "at": "Ten",
+       "dur": 0.55
+      },
+      {
+       "do": "show",
+       "target": "n10",
+       "at": "Ten"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 20,
+       "at": "Twenty",
+       "dur": 0.55
+      },
+      {
+       "do": "show",
+       "target": "n20",
+       "at": "Twenty"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 30,
+       "at": "Thirty",
+       "dur": 0.55
+      },
+      {
+       "do": "show",
+       "target": "n30",
+       "at": "Thirty"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 40,
+       "at": "Forty",
+       "dur": 0.55
+      },
+      {
+       "do": "show",
+       "target": "n40",
+       "at": "Forty"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 50,
+       "at": "Fifty",
+       "dur": 0.55
+      },
+      {
+       "do": "show",
+       "target": "n50",
+       "at": "Fifty"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 60,
+       "at": "Sixty",
+       "dur": 0.55
+      },
+      {
+       "do": "show",
+       "target": "n60",
+       "at": "Sixty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It stops. The turn from one ray to the other is sixty degrees.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "fan",
+        "n60"
+       ],
+       "at": "sixty"
+      },
+      {
+       "do": "write",
+       "tex": "60^\\circ",
+       "at": "sixty",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Turn on. At ninety degrees, the ray stands straight up. A square corner.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 90,
+       "at": "ninety",
+       "dur": 1.1
+      },
+      {
+       "do": "show",
+       "target": [
+        "n90",
+        "sq"
+       ],
+       "at": "straight"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n10",
+        "n20",
+        "n30",
+        "n40",
+        "n50",
+        "n60"
+       ],
+       "at": "ninety"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "At one hundred eighty degrees, the two rays make a straight line.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 180,
+       "at": "eighty",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "n180",
+       "at": "straight"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n90",
+        "sq"
+       ],
+       "at": "eighty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And at three hundred sixty degrees, it has gone all the way round, back to where it began. One full turn.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 360,
+       "at": "three",
+       "dur": 2.6
+      },
+      {
+       "do": "hide",
+       "target": "n180",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "n360",
+       "at": "began"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{full turn} = 360^\\circ",
+       "at": "full",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So one degree must be a really tiny piece of the way round!",
+     "pause": 0.05
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.6,
+     6.9,
+     6.9
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "Q0": [
+      6.1284,
+      5.1422
+     ],
+     "Q1": [
+      6.0377,
+      5.2485
+     ],
+     "Q2": [
+      5.9452,
+      5.353
+     ],
+     "Q3": [
+      5.8508,
+      5.456
+     ],
+     "Q4": [
+      5.7547,
+      5.5573
+     ],
+     "Q5": [
+      5.6569,
+      5.6569
+     ],
+     "Q6": [
+      5.5573,
+      5.7547
+     ],
+     "Q7": [
+      5.456,
+      5.8508
+     ],
+     "Q8": [
+      5.353,
+      5.9452
+     ],
+     "Q9": [
+      5.2485,
+      6.0377
+     ],
+     "Q10": [
+      5.1422,
+      6.1284
+     ]
+    },
+    "parts": [
+     {
+      "id": "w0",
+      "poly": [
+       "V",
+       "Q0",
+       "Q1"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w1",
+      "poly": [
+       "V",
+       "Q1",
+       "Q2"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w2",
+      "poly": [
+       "V",
+       "Q2",
+       "Q3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w3",
+      "poly": [
+       "V",
+       "Q3",
+       "Q4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w4",
+      "poly": [
+       "V",
+       "Q4",
+       "Q5"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w5",
+      "poly": [
+       "V",
+       "Q5",
+       "Q6"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w6",
+      "poly": [
+       "V",
+       "Q6",
+       "Q7"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w7",
+      "poly": [
+       "V",
+       "Q7",
+       "Q8"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w8",
+      "poly": [
+       "V",
+       "Q8",
+       "Q9"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "w9",
+      "poly": [
+       "V",
+       "Q9",
+       "Q10"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 1,
+      "group": "fan"
+     },
+     {
+      "id": "ro",
+      "seg": [
+       "V",
+       "Q0"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "rp",
+      "seg": [
+       "V",
+       "Q10"
+      ],
+      "ink": "ink",
+      "w": 3
+     },
+     {
+      "id": "vt",
+      "dot": "V",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "one",
+      "label": "1^\\circ",
+      "at": "Q5",
+      "dir": "ne",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "ten",
+      "dim": [
+       "Q0",
+       "Q10"
+      ],
+      "side": "ne",
+      "tex": "10^\\circ",
+      "ink": "warm",
+      "far": 1.5
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Yes! Look closely at one degree. It is a sliver of turn, this thin.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One degree: a tiny turn"
+      },
+      {
+       "do": "show",
+       "target": [
+        "w5",
+        "one"
+       ],
+       "at": "sliver"
+      },
+      {
+       "do": "highlight",
+       "target": "w5",
+       "at": "thin"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Lay ten slivers side by side, and you have ten degrees.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "w0",
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w6",
+        "w7",
+        "w8",
+        "w9",
+        "ro",
+        "rp"
+       ],
+       "at": "ten"
+      },
+      {
+       "do": "hide",
+       "target": "one",
+       "at": "side"
+      },
+      {
+       "do": "show",
+       "target": "ten",
+       "at": "degrees"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A full turn holds three hundred sixty of these slivers. That is why a full turn is three hundred sixty degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "1\\text{ full turn} = 360 \\text{ slivers}",
+       "at": "three",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ sliver} = 1^\\circ",
+       "at": "That",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three hundred sixty tiny turns!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "w5",
+       "at": "tiny"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the measure of an angle just counts the slivers inside it. Sixty slivers, sixty degrees.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "w0",
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5",
+        "w6",
+        "w7",
+        "w8",
+        "w9"
+       ],
+       "at": "slivers",
+       "nth": 1,
+       "until": "Sixty"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.9,
+     -1.0,
+     4.4,
+     4.2
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "S": [
+      3.2,
+      0
+     ],
+     "K": [
+      1.6,
+      2.771
+     ],
+     "H": {
+      "on": "ring",
+      "deg": 60
+     }
+    },
+    "parts": [
+     {
+      "id": "ring",
+      "circle": "V",
+      "r": 2,
+      "ink": "muted",
+      "w": 2
+     },
+     {
+      "id": "fan",
+      "sweep": "H",
+      "r": 240,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "tex": "60^\\circ",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "still",
+      "seg": [
+       "V",
+       "S"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "turn",
+      "seg": [
+       "V",
+       "K"
+      ],
+      "ink": "accent",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "vtx",
+      "dot": "V",
+      "ink": "ink",
+      "r": 11,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back to sixty degrees. Now stretch both rays longer.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Change the rays. Not the turn."
+      },
+      {
+       "do": "move",
+       "points": {
+        "K": [
+         1.9,
+         3.291
+        ],
+        "S": [
+         3.8,
+         0
+        ]
+       },
+       "at": "stretch",
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now squeeze them shorter.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "K": [
+         1.0,
+         1.732
+        ],
+        "S": [
+         2.0,
+         0
+        ]
+       },
+       "at": "squeeze",
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The fan does not change. The count does not change. Sixty degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "K": [
+         1.5,
+         2.598
+        ],
+        "S": [
+         3.0,
+         0
+        ]
+       },
+       "at": "The",
+       "dur": 1.2
+      },
+      {
+       "do": "highlight",
+       "target": "fan",
+       "at": "Sixty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It is the same angle. Only the rays got longer and shorter!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "fan",
+       "at": "same",
+       "until": "Only"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "still",
+        "turn"
+       ],
+       "at": "rays"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the size of an angle is how far one ray has turned from the other. Nothing else.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "text",
+       "text": "Size of an angle = how far one ray has $\\textbf{turned}$",
+       "at": "far"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 340,
+     "maxHeight": 280,
+     "elements": [
+      {
+       "id": "p",
+       "type": "protractor",
+       "rays": [
+        0,
+        60
+       ],
+       "labels": [
+        "A",
+        "O",
+        "B"
+       ]
+      },
+      {
+       "id": "sweep",
+       "type": "angle",
+       "rays": [
+        0,
+        60
+       ],
+       "length": 1.25,
+       "marksOnly": true,
+       "marks": [
+        {
+         "from": 0,
+         "to": 1,
+         "measure": true,
+         "derived": true,
+         "color": "warm"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Counting slivers one at a time is slow. A protractor is half a turn, with the degrees already counted for us.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A protractor: half a turn, counted"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.body",
+         "until": "with"
+        }
+       ],
+       "at": "half"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.tick"
+        }
+       ],
+       "at": "degrees"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put its center on the vertex, and its zero line along the ray that stayed still.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        }
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.vertex",
+         "until": "and"
+        }
+       ],
+       "at": "vertex"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two scales run opposite ways. Start at the zero that sits on the still ray.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.0"
+        }
+       ],
+       "at": "Start"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Follow that scale to the other ray. Twenty, forty, sixty. Sixty degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "trace",
+         "target": "sweep.mark.0"
+        }
+       ],
+       "at": "Follow"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.20"
+        }
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.40"
+        }
+       ],
+       "at": "forty"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.60",
+         "until": "degrees"
+        }
+       ],
+       "at": "Sixty",
+       "nth": 1
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "sweep.measure.0"
+        }
+       ],
+       "at": "Sixty",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "But I read one hundred twenty!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.120"
+        }
+       ],
+       "at": "one"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.1"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.60"
+        }
+       ],
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is the other scale. It started from the other side, so its zero is not on our still ray. It does not count the turn we made.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.0"
+        }
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.180"
+        }
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0",
+         "until": "It",
+         "untilNth": 2
+        }
+       ],
+       "at": "still"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "sweep.mark.0"
+        }
+       ],
+       "at": "turn"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The rule: use the zero that sits on the still ray.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "text",
+       "text": "Start at the $\\textbf{0}$ on the still ray. Stay on that scale.",
+       "at": "rule"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.0"
+        }
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        }
+       ],
+       "at": "still"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 340,
+     "maxHeight": 280,
+     "elements": [
+      {
+       "id": "p",
+       "type": "protractor",
+       "rays": [
+        180,
+        140
+       ],
+       "labels": [
+        "A",
+        "O",
+        "B"
+       ]
+      },
+      {
+       "id": "sweep",
+       "type": "angle",
+       "rays": [
+        180,
+        140
+       ],
+       "length": 1.25,
+       "marksOnly": true,
+       "marks": [
+        {
+         "from": 0,
+         "to": 1,
+         "measure": true,
+         "derived": true,
+         "clockwise": true,
+         "color": "warm"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now an angle that opens the other way. The still ray points left.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Opens the other way"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        }
+       ],
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The zero on that ray belongs to the other scale. So we use that one. Follow it to the other ray: forty degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.180"
+        }
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "trace",
+         "target": "sweep.mark.0"
+        }
+       ],
+       "at": "Follow"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.40"
+        },
+        {
+         "do": "appear",
+         "target": "sweep.measure.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.140"
+        }
+       ],
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So I look for the zero on the still ray first. The scale comes after.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0",
+         "until": "first"
+        }
+       ],
+       "at": "still"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.180"
+        }
+       ],
+       "at": "scale"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Always. And when a question says, use this ray as zero, that ray is the still ray. Find the scale that starts there.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0",
+         "until": "Find"
+        }
+       ],
+       "at": "this"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.outer.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.180"
+        }
+       ],
+       "at": "starts"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     -0.8,
+     5.2,
+     5.2
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "E0": [
+      4,
+      0
+     ],
+     "E30": [
+      3.464,
+      2
+     ],
+     "E45": [
+      2.828,
+      2.828
+     ],
+     "E60": [
+      2,
+      3.464
+     ],
+     "E90": [
+      0,
+      4
+     ],
+     "T30": [
+      4.0,
+      2.56
+     ],
+     "T45": [
+      3.25,
+      3.39
+     ],
+     "T60": [
+      2.3,
+      4.0
+     ],
+     "T90": [
+      0,
+      4.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "sq",
+      "angle": [
+       "E0",
+       "V",
+       "E90"
+      ],
+      "right": true,
+      "r": 80,
+      "fill": "gold-fill",
+      "ink": "gold"
+     },
+     {
+      "id": "a60",
+      "angle": [
+       "E0",
+       "V",
+       "E60"
+      ],
+      "r": 100,
+      "fill": "warm-fill",
+      "ink": "warm"
+     },
+     {
+      "id": "r0",
+      "seg": [
+       "V",
+       "E0"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "r90",
+      "seg": [
+       "V",
+       "E90"
+      ],
+      "ink": "ink",
+      "w": 6
+     },
+     {
+      "id": "r60",
+      "seg": [
+       "V",
+       "E60"
+      ],
+      "ink": "accent",
+      "w": 6
+     },
+     {
+      "id": "r45",
+      "seg": [
+       "V",
+       "E45"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "dash": true
+     },
+     {
+      "id": "r30",
+      "seg": [
+       "V",
+       "E30"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "dash": true
+     },
+     {
+      "id": "vt",
+      "dot": "V",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "l90",
+      "label": "90^\\circ",
+      "at": "T90",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "l60",
+      "label": "60^\\circ",
+      "at": "T60",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "l45",
+      "label": "45^\\circ",
+      "at": "T45",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "l30",
+      "label": "30^\\circ",
+      "at": "T30",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Before you trust a reading, ask: does it make sense? Compare with a square corner. That is ninety degrees.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Does the reading make sense?"
+      },
+      {
+       "do": "show",
+       "target": [
+        "r90",
+        "sq",
+        "l90"
+       ],
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This angle is narrower than a square corner. So it must be less than ninety. One hundred twenty could not be right.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "r60",
+        "a60"
+       ],
+       "at": "narrower"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{narrower than a square corner} \\rightarrow \\text{less than } 90^\\circ",
+       "at": "less",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "r90",
+        "sq"
+       ],
+       "at": "square",
+       "until": "So"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "r90",
+        "sq"
+       ],
+       "at": "ninety",
+       "until": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "a60",
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Benchmarks help you estimate. Half a square corner is forty five degrees.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "r45",
+        "l45"
+       ],
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the square corner into three equal turns, and you get thirty degrees, and sixty degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "r30",
+        "l30"
+       ],
+       "at": "thirty"
+      },
+      {
+       "do": "show",
+       "target": "l60",
+       "at": "sixty"
+      },
+      {
+       "do": "hide",
+       "target": "l45",
+       "at": "three"
+      },
+      {
+       "do": "hide",
+       "target": "r45",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So I can tell thirty from sixty just by looking.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "r30",
+        "l30"
+       ],
+       "at": "thirty",
+       "until": "from"
+      },
+      {
+       "do": "highlight",
+       "target": "r60",
+       "at": "sixty"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.4,
+     -3.4,
+     3.4,
+     3.4
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "H": {
+      "on": "ring",
+      "deg": 0
+     },
+     "S": [
+      2.4,
+      0
+     ],
+     "X1": [
+      0,
+      2.4
+     ],
+     "X2": [
+      -2.4,
+      0
+     ],
+     "X3": [
+      0,
+      -2.4
+     ],
+     "Y1": [
+      1.2,
+      2.078
+     ],
+     "Y2": [
+      -1.2,
+      2.078
+     ],
+     "Y3": [
+      -1.2,
+      -2.078
+     ],
+     "Y4": [
+      1.2,
+      -2.078
+     ],
+     "LQ": [
+      -2.05,
+      2.6
+     ],
+     "LS": [
+      -2.05,
+      2.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "ring",
+      "circle": "V",
+      "r": 2.4,
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "fan",
+      "sweep": "H",
+      "r": 240,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "tex": "?",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "q1",
+      "seg": [
+       "V",
+       "X1"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "q2",
+      "seg": [
+       "V",
+       "X2"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "q3",
+      "seg": [
+       "V",
+       "X3"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "V",
+       "Y1"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "V",
+       "Y2"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "V",
+       "Y3"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "s4",
+      "seg": [
+       "V",
+       "Y4"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "still",
+      "seg": [
+       "V",
+       "S"
+      ],
+      "ink": "ink",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "turn",
+      "seg": [
+       "V",
+       "H"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "vtx",
+      "dot": "V",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "lq",
+      "label": "\\tfrac{1}{4}\\text{ turn}",
+      "at": "LQ",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "ls",
+      "label": "\\tfrac{1}{6}\\text{ turn}",
+      "at": "LS",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Sometimes you are told an angle is a fraction of the full turn. Then divide the three hundred sixty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A fraction of a full turn"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{full turn} = 360^\\circ",
+       "at": "three",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the turn into four equal parts. One quarter. Three hundred sixty divided by four is ninety.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "q1",
+        "q2",
+        "q3"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 90,
+       "at": "quarter",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "lq",
+       "at": "quarter"
+      },
+      {
+       "do": "write",
+       "tex": "360 \\div 4 = 90",
+       "at": "divided"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut it into six equal parts instead. One sixth. Three hundred sixty divided by six is sixty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "q1",
+        "q3",
+        "lq"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": 60,
+       "at": "sixth",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "ls",
+       "at": "sixth"
+      },
+      {
+       "do": "write",
+       "tex": "360 \\div 6 = 60",
+       "at": "divided"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Our sixty degrees is exactly one sixth of the way round!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "fan",
+       "at": "sixth"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     -0.8,
+     5.4,
+     5.4
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "E0": [
+      4,
+      0
+     ],
+     "E35": [
+      3.277,
+      2.294
+     ],
+     "E90": [
+      0,
+      4
+     ],
+     "L35": [
+      2.4,
+      0.75
+     ],
+     "L55": [
+      1.1,
+      2.15
+     ],
+     "L90": [
+      3.35,
+      3.35
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "angle": [
+       "E0",
+       "V",
+       "E90"
+      ],
+      "right": true,
+      "r": 175,
+      "fill": "none",
+      "ink": "gold"
+     },
+     {
+      "id": "p1",
+      "angle": [
+       "E0",
+       "V",
+       "E35"
+      ],
+      "r": 90,
+      "fill": "warm-fill",
+      "ink": "warm"
+     },
+     {
+      "id": "p2",
+      "angle": [
+       "E35",
+       "V",
+       "E90"
+      ],
+      "r": 90,
+      "fill": "blue-fill",
+      "ink": "blue"
+     },
+     {
+      "id": "r0",
+      "seg": [
+       "V",
+       "E0"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "r35",
+      "seg": [
+       "V",
+       "E35"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "r90",
+      "seg": [
+       "V",
+       "E90"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "vt",
+      "dot": "V",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "l35",
+      "label": "35^\\circ",
+      "at": "L35",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "l55",
+      "label": "55^\\circ",
+      "at": "L55",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "l90",
+      "label": "90^\\circ",
+      "at": "L90",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Angles that sit side by side, sharing a ray, do not overlap. So their measures add.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Side by side, angles add"
+      },
+      {
+       "do": "highlight",
+       "target": "r35",
+       "at": "sharing",
+       "until": "do"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here is thirty five degrees. Next to it, fifty five degrees.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "p1",
+        "l35"
+       ],
+       "at": "thirty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "p2",
+        "l55"
+       ],
+       "at": "fifty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Together they fill a square corner. Thirty five plus fifty five is ninety.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "whole",
+        "l90"
+       ],
+       "at": "square"
+      },
+      {
+       "do": "write",
+       "tex": "35 + 55 = 90",
+       "at": "plus",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The whole angle is just the parts added up.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole",
+       "until": "parts"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "p1",
+        "l35",
+        "p2",
+        "l55"
+       ],
+       "at": "parts"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.2,
+     -1.0,
+     5.2,
+     5.2
+    ],
+    "points": {
+     "V": [
+      0,
+      0
+     ],
+     "E0": [
+      4,
+      0
+     ],
+     "E45": [
+      2.828,
+      2.828
+     ],
+     "E120": [
+      -2,
+      3.464
+     ],
+     "L45": [
+      2.5,
+      1.0
+     ],
+     "LX": [
+      0.4,
+      2.7
+     ],
+     "L120": [
+      -0.9,
+      4.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "angle": [
+       "E0",
+       "V",
+       "E120"
+      ],
+      "r": 125,
+      "fill": "none",
+      "ink": "gold"
+     },
+     {
+      "id": "p1",
+      "angle": [
+       "E0",
+       "V",
+       "E45"
+      ],
+      "r": 85,
+      "fill": "warm-fill",
+      "ink": "warm"
+     },
+     {
+      "id": "p2",
+      "angle": [
+       "E45",
+       "V",
+       "E120"
+      ],
+      "r": 85,
+      "fill": "blue-fill",
+      "ink": "blue"
+     },
+     {
+      "id": "r0",
+      "seg": [
+       "V",
+       "E0"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "r45",
+      "seg": [
+       "V",
+       "E45"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "r120",
+      "seg": [
+       "V",
+       "E120"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "vt",
+      "dot": "V",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "l45",
+      "label": "45^\\circ",
+      "at": "L45",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "lx",
+      "label": "x",
+      "at": "LX",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "l120",
+      "label": "120^\\circ",
+      "at": "L120",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the whole angle is one hundred twenty degrees. One part is forty five degrees.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find the missing part"
+      },
+      {
+       "do": "show",
+       "target": [
+        "whole",
+        "l120"
+       ],
+       "at": "whole"
+      },
+      {
+       "do": "show",
+       "target": [
+        "p1",
+        "l45"
+       ],
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The other part we do not know yet. Call it *x*.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "p2",
+       "at": "other"
+      },
+      {
+       "do": "show",
+       "target": "lx",
+       "at": "Call"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The parts add up to the whole. *x* plus forty five equals one hundred twenty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "x + 45 = 120",
+       "at": "plus",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "p1",
+        "p2",
+        "l45",
+        "lx"
+       ],
+       "at": "parts",
+       "until": "whole"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole",
+       "until": "plus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To find *x*, take the part we know away from the whole. One hundred twenty minus forty five.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "x = 120 - 45",
+       "at": "minus"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "p1",
+        "l45"
+       ],
+       "at": "part",
+       "until": "away"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole",
+       "until": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So *x* is seventy five degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "x = 75^\\circ",
+       "at": "seventy"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "p2",
+        "lx"
+       ],
+       "at": "seventy"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And it looks right. It is less than a square corner.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "p2",
+        "lx"
+       ],
+       "at": "looks"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 340,
+     "maxHeight": 280,
+     "elements": [
+      {
+       "id": "p",
+       "type": "protractor",
+       "rays": [
+        30,
+        110
+       ],
+       "labels": [
+        "A",
+        "O",
+        "B"
+       ]
+      },
+      {
+       "id": "sweep",
+       "type": "angle",
+       "rays": [
+        30,
+        110
+       ],
+       "length": 1.25,
+       "marksOnly": true,
+       "marks": [
+        {
+         "from": 0,
+         "to": 1,
+         "measure": true,
+         "derived": true,
+         "color": "warm"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more. Sometimes two rays are drawn on one protractor, and neither sits on zero.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Two rays, neither on zero"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.ray.1"
+        }
+       ],
+       "at": "rays"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.0"
+        }
+       ],
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Read both from the same scale. One ray reads thirty. The other reads one hundred ten.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.30"
+        }
+       ],
+       "at": "thirty"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.1"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.110"
+        }
+       ],
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The angle between them is the difference. One hundred ten minus thirty is eighty degrees.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "trace",
+         "target": "sweep.mark.0"
+        },
+        {
+         "do": "appear",
+         "target": "sweep.measure.0"
+        }
+       ],
+       "at": "difference"
+      },
+      {
+       "do": "write",
+       "tex": "110 - 30 = 80",
+       "at": "minus",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Each reading counts the turn from zero, so I take away the first thirty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.tick.30"
+        }
+       ],
+       "at": "thirty"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 340,
+     "maxHeight": 280,
+     "elements": [
+      {
+       "id": "p",
+       "type": "protractor",
+       "rays": [
+        0,
+        60
+       ],
+       "labels": [
+        "A",
+        "O",
+        "B"
+       ]
+      },
+      {
+       "id": "sweep",
+       "type": "angle",
+       "rays": [
+        0,
+        60
+       ],
+       "length": 1.25,
+       "marksOnly": true,
+       "marks": [
+        {
+         "from": 0,
+         "to": 1,
+         "measure": true,
+         "derived": true,
+         "color": "warm"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "So here is the whole idea. An angle is a turn. A degree is one tiny sliver of a full turn, three hundred sixty to the way round.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "An angle is a turn"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        }
+       ],
+       "at": "angle"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.tick"
+        }
+       ],
+       "at": "sliver"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A protractor counts those slivers for you. Not by how long the rays are. By how far the turn goes.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.inner.0"
+        }
+       ],
+       "at": "counts"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.ray.1"
+        }
+       ],
+       "at": "rays"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start at zero on one ray. Read the turn to the other.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "p.ray.0"
+        },
+        {
+         "do": "highlight",
+         "target": "p.inner.0"
+        }
+       ],
+       "at": "Start"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "trace",
+         "target": "sweep.mark.0"
+        },
+        {
+         "do": "appear",
+         "target": "sweep.measure.0"
+        }
+       ],
+       "at": "Read"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
