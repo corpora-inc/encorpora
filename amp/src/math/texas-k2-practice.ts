@@ -164,9 +164,14 @@ export const texasK2Templates: readonly TemplateMetadata[] = [
   },
   {
     id: "clock-minute-match",
-    version: 1,
+    // v2 moves the type to its own skill: its times are to the minute, which
+    // a five-minute skill must not ask (4:01). Same problems; v1 replays on
+    // clock-five-minutes.
+    version: 2,
+    reprintsFrom: 1,
+    previousSkillId: "clock-five-minutes",
     title: "Clocks to the minute",
-    skillId: "clock-five-minutes",
+    skillId: "clock-minutes",
     gradeBand: "K–2",
     difficultyOffset: 0.35,
     ...choice,

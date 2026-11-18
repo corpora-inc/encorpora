@@ -128,18 +128,29 @@
   /* Its own size and weight, not its label's. */
   font-size: var(--text-body);
   font-weight: 400;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
 }
 .nameInput::placeholder {
   color: var(--field-placeholder);
   opacity: 1;
 }
+/* The shared field states (ui/Controls.module.css .input): hover darkens
+   the edge, focus hugs the field with a halo, an error keeps its edge. */
+.nameInput:hover:not(:disabled, :focus, [aria-invalid="true"]) {
+  border-color: var(--field-border-hover);
+}
 .nameInput:focus-visible {
-  border-color: var(--color-primary);
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--color-focus-ring);
+  box-shadow: var(--field-focus);
 }
 .nameInput[aria-invalid="true"] {
   border-color: var(--color-danger-accent);
+}
+.nameInput[aria-invalid="true"]:focus-visible {
+  box-shadow: var(--field-focus-invalid);
 }
 .fixedYear {
   display: flex;

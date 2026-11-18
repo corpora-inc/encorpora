@@ -8,13 +8,15 @@ import { secureChromium } from "../browser-security.mjs";
  *       [--widths 320,390,768,1280] [--shots DIR]
  *
  * For every screen on the frame (the family's seven tabs, a child's page and
- * their Pathways and Inventory, the three Account tabs, practice, an adult's
- * own record, a new parent's child and learner workbooks), at 320, 390, 768
- * and 1280 px, light and dark, in Chromium and WebKit:
+ * their Pathways and Inventory, the account overlays over the family's
+ * Settings (sign-in & security, billing, privacy), practice, an adult's own
+ * record, a new parent's child and learner workbooks), at 320, 390, 768 and
+ * 1280 px, light and dark, in Chromium and WebKit:
  *
  * - the logo's box is identical on every screen;
  * - the logo opens the drawer, which shows the same logo in the same spot,
- *   and that logo closes it;
+ *   and that logo closes it; an overlay covers the frame, so it closes
+ *   first (Escape), back to its hub with the logo where it was;
  * - a group's tabs keep their boxes on every screen of the group, and moving
  *   between them by tab keeps the very same bar (it never remounts);
  * - nothing moves from first paint to settled (layout shift, both engines);
@@ -54,8 +56,6 @@ const fixture = await startShellFixture({
 });
 const { origin } = fixture;
 let familyPath = "";
-let practicePath = "";
-let starterChildPath = "";
 
 /** The paid parent also starts their own practice, so `/me` has a record. */
 {
@@ -90,19 +90,7 @@ let starterChildPath = "";
   );
   if (!own) throw Error("Paid fixture must hold a family");
   familyPath = `/family/${own.familyId as string}`;
-  // Each screen is measured at its own address, never an older one that
-  // hops there (a hop is a second screen, with its own account refresh).
-  const page = await context.newPage();
-  await page.goto(`${origin}/practice`);
-  await page.waitForURL((url) => /^\/practice\/[^/]+$/.test(url.pathname));
-  practicePath = new URL(page.url()).pathname;
   await context.close();
-  const starter = await fixture.context(browser, "starter");
-  const starterPage = await starter.newPage();
-  await starterPage.goto(`${origin}/overview`);
-  await starterPage.waitForURL((url) => /\/kids\/[^/]+$/.test(url.pathname));
-  starterChildPath = new URL(starterPage.url()).pathname;
-  await starter.close();
   await browser.close();
 }
 
@@ -110,11 +98,11 @@ type Screen = {
   id: string;
   path: string;
   state: ShellState;
-  group: "family" | "record" | "account" | "practice" | "me" | "plain";
+  group: "family" | "record" | "practice" | "me" | "plain";
   /** Shown once the screen has its data. */
   ready: (page: Page) => Promise<unknown>;
-  /** An overlay over the account's hub (features/account/overlays.tsx): the
-   * screen behind, its logo included, is covered until it closes. */
+  /** An overlay over its hub (app/account-overlays.tsx): modal, so the
+   * frame under it is reached once it closes. */
   overlay?: true;
 };
 /** A family screen has its data once its heading is in the dense frame. */
@@ -172,33 +160,35 @@ const screens: Screen[] = [
     group: "plain",
     ready: (p) => p.locator('main[aria-busy="false"]').waitFor(),
   },
+  // The account overlays over the family's Settings, its settings hub
+  // (features/spaces/settings-hub.ts): the family's bar and tabs under them.
   {
     id: "security",
-    path: "/account/security",
+    path: `${familyPath}/settings/security`,
     state: "paid",
-    group: "account",
+    group: "family",
     overlay: true,
     ready: (p) =>
       p
-        .getByRole("heading", { name: "Sign-in & security", exact: true })
+        .getByRole("dialog", { name: "Sign-in & security" })
+        .getByText("Passkeys")
+        .first()
         .waitFor(),
   },
   {
     id: "billing",
-    path: "/account/billing",
+    path: `${familyPath}/settings/billing`,
     state: "paid",
-    group: "account",
+    group: "family",
     overlay: true,
-    // The Billing overlay, its plans in place.
     ready: (p) => p.locator("[data-billing-panel]").first().waitFor(),
   },
   {
     id: "privacy",
-    path: "/account/privacy",
+    path: `${familyPath}/settings/privacy`,
     state: "paid",
-    group: "account",
+    group: "family",
     overlay: true,
-    // The Privacy overlay (features/privacy) over the account's hub.
     ready: (p) => p.locator("[data-privacy-panels]").first().waitFor(),
   },
   {
@@ -225,12 +215,9 @@ const screens: Screen[] = [
   },
 ];
 // The child's addresses need the family the setup above found.
-for (const screen of screens) {
+for (const screen of screens)
   if (screen.id.startsWith("child"))
     screen.path = `${jordan()}${screen.id === "child" ? "" : `/${screen.id.slice(6)}`}`;
-  if (screen.id === "practice") screen.path = practicePath;
-  if (screen.id === "starter-child") screen.path = starterChildPath;
-}
 
 /** Installed before any page script: the requests the screen makes, and
  * every element whose own visible text changes while nothing was pressed. */
@@ -441,12 +428,19 @@ for (const engine of engines) {
             path: `${shots}/${screen.id}-${width}-${theme}.png`,
           });
 
-        // The drawer opens from the logo and closes on the same spot. An
-        // overlay covers the logo; it closes to the screen behind first.
+        // An overlay closes first, back to its hub; the logo stays put.
         if (screen.overlay) {
-          await context.close();
-          continue;
+          await page.keyboard.press("Escape");
+          await page.getByRole("dialog").waitFor({ state: "detached" });
+          check(
+            same(
+              await page.locator("[data-app-logo]").first().boundingBox(),
+              bar,
+            ),
+            `${tag}: the logo moved when the overlay closed`,
+          );
         }
+        // The drawer opens from the logo and closes on the same spot.
         await page.locator("[data-app-logo]").first().click();
         const close = page.locator("[data-shell-close]");
         await close.waitFor();
@@ -503,7 +497,6 @@ for (const engine of engines) {
           ],
         ],
         ["record", `${jordan()}/pathways`, ["inventory", "pathways"]],
-        ["account", "/account/security", ["access", "privacy", "security"]],
       ] as const) {
         const screen = screens.find((s) => s.path === path)!;
         const { context, page, errors, requests } = await open(

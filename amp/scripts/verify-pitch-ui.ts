@@ -1162,7 +1162,36 @@ async function journeys(browser: Browser, engine: string) {
       // A wrong code says so in place; the right one signs in.
       await form.getByLabel("Code").fill("111111");
       await form.getByRole("button", { name: "Continue" }).click();
+      // Said once, at the field (its own line, read as its description),
+      // never also as a toast: the one error pattern.
       await page.getByText("That code doesn’t match").waitFor();
+      assert.equal(
+        await page.getByText("That code doesn’t match").count(),
+        1,
+        `${tag}: the wrong code is said once`,
+      );
+      assert.equal(
+        await page.locator("[data-app-toast]").count(),
+        0,
+        `${tag}: no toast for a field's error`,
+      );
+      const code = form.getByLabel("Code");
+      assert.equal(await code.getAttribute("aria-invalid"), "true", tag);
+      const described = (await code.getAttribute("aria-describedby")) ?? "";
+      assert.match(
+        (
+          await page
+            .locator(
+              described
+                .split(" ")
+                .map((id) => `[id="${id}"]`)
+                .join(", "),
+            )
+            .allTextContents()
+        ).join(" "),
+        /That code doesn’t match/,
+        `${tag}: the message describes the field`,
+      );
       assert.equal(api.signedIn, false, `${tag}: no session on a wrong code`);
       await form.getByLabel("Code").fill("246 810");
       await form.getByRole("button", { name: "Continue" }).click();

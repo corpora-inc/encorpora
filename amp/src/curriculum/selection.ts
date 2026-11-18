@@ -24,7 +24,7 @@ decimals|6|6|decimal-fractions,compare-decimals,decimal-money-operations,decimal
 number-structure|3|3|factors-multiples,gcf-lcm,irrational-numbers,approximate-roots,scientific-notation,number-system-closure
 signed-numbers|5|5|signed-numbers,absolute-value,signed-addition,signed-multiplication
 measurement|4|4|compare-attributes,measure-equal-units,ruler-measurement,mass-volume,unit-conversion,measurement-conversions,units-and-precision
-clock-money|3|3|clock-half-hours,clock-five-minutes,money-values,elapsed-time
+clock-money|3|3|clock-half-hours,clock-five-minutes,clock-minutes,money-values,elapsed-time
 shape-properties|3|3|name-shapes,compose-shapes,shape-attributes,polygon-properties,quadrilateral-categories,shape-hierarchy,geometric-definitions,build-and-draw-shapes,composite-shapes
 area-volume|5|5|rectangle-area,perimeter,area-perimeter-models,volume-cubes,prism-volume,triangle-area,fractional-prism-volume,surface-area,circle-measurement,composite-measurement,curved-solid-volume,solid-volume-models,coordinate-measurement,area-by-counting-squares
 angles-lines|4|4|angle-measure,lines-symmetry,angle-relationships,triangle-angle-theorems
