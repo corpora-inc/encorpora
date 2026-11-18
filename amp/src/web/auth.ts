@@ -66,6 +66,20 @@ export function authConfig(): Promise<AuthConfig> {
     );
   });
 }
+/**
+ * What the session check goes on when the sign-in configuration didn't load
+ * (a blocker, a dropped request, a server hiccup). Whether someone is signed
+ * in doesn't depend on which sign-in methods are offered: an external
+ * sign-in is built in (`oidcConfigured`), and otherwise AMP's own session
+ * endpoint answers for itself (it exists only with AMP's accounts). A school
+ * sign-in in hand is checked as though offered; its endpoint says 404 where
+ * it isn't. Only the sign-in screens need the methods, and they retry them.
+ */
+function sessionConfiguration(): AuthConfig {
+  return oidcConfigured
+    ? { mode: "oidc" }
+    : { mode: "accounts", passwords: false, providers: [], clever: true };
+}
 export interface AuthSession {
   token: string;
   accountId: string;
@@ -116,7 +130,13 @@ export async function accessSession(): Promise<AuthSession | null> {
   speculative?.catch((error: unknown) =>
     console.warn("AMP: the early session check failed", error),
   );
-  const configuration = await authConfig();
+  const configuration = await authConfig().catch((error: unknown) => {
+    console.warn(
+      "AMP: the session is checked without the sign-in configuration",
+      error,
+    );
+    return sessionConfiguration();
+  });
   if (configuration.mode === "accounts") {
     // Only where a school sign-in exists (its readable hint cookie) or one
     // is completing: never a round trip and a 401 on every boot.

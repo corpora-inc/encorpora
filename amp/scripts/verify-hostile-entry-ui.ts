@@ -35,7 +35,8 @@ import { eventBatchSchema } from "../src/analytics/events";
  *   injecting scripts that throw on load, from timers and as rejections;
  * - third-party cookies off; Global Privacy Control on;
  * - each call before sign-up failing in turn: prices, invoice offers, the
- *   sign-in configuration, the sign-up intent and the event collector;
+ *   sign-in configuration, the session check, the sign-up intent and the
+ *   event collector. `/` is the pitch whichever fails;
  * - a deploy: the sign-up screen's file 404s once (one automatic reload), or
  *   until the visitor reloads (one automatic reload, then a message and
  *   Reload in place), the app's entry file 404s, and its stylesheet 404s
@@ -163,6 +164,7 @@ type Fail =
   | "prices"
   | "invoice-offers"
   | "auth-config"
+  | "session"
   | "intent"
   | "events"
   | "sign-up-chunk-once"
@@ -195,15 +197,8 @@ const cases: Case[] = [
   { name: "gpc", gpc: true, continueWithGoogle: true },
   { name: "fail-prices", fail: "prices" },
   { name: "fail-invoice-offers", fail: "invoice-offers" },
-  {
-    name: "fail-auth-config",
-    fail: "auth-config",
-    // Still open after improve-first-visit (#2422): `/` needs the sign-in
-    // configuration to choose the pitch (home-decision.ts) and the app's
-    // session (auth.ts), so a failed lookup shows the full-screen route
-    // error at `/` instead of the pitch, and Try it free is never offered.
-    pending: "`/` shows the pitch when the sign-in configuration fails",
-  },
+  { name: "fail-auth-config", fail: "auth-config" },
+  { name: "fail-session", fail: "session", continueWithGoogle: true },
   { name: "fail-intent", fail: "intent", continueWithGoogle: true },
   { name: "fail-events", fail: "events", continueWithGoogle: true },
   { name: "deploy-once", fail: "sign-up-chunk-once" },
@@ -277,6 +272,7 @@ const failedPath: Record<Fail, RegExp> = {
   prices: /^\/api\/v1\/billing\/prices$/,
   "invoice-offers": /^\/api\/v1\/funding\/invoice-offers$/,
   "auth-config": /^\/api\/v1\/auth-config$/,
+  session: /^\/api\/auth\/get-session$/,
   intent: /^\/api\/v1\/parent-followup\/intent$/,
   events: /^\/api\/v1\/events$/,
   "sign-up-chunk-once": /^\/assets\/SignInScreen-[\w-]+\.js$/,
@@ -447,6 +443,24 @@ async function run(
       await page.screenshot({ path: `${shots}/${tag}-message.png` });
       state.failing = false;
       await alert.getByRole("button", { name: "Reload" }).click();
+    }
+    if (test.fail === "auth-config" || test.fail === "session") {
+      // `/` is the landing page whatever failed: its heading, Try it free
+      // ready to press, and no error.
+      await page
+        .getByRole("heading", { level: 1 })
+        .filter({ hasText: "Kids put in the time" })
+        .waitFor();
+      assert.ok(
+        await tryButton(page).first().isEnabled(),
+        `${tag}: Try it free can be pressed`,
+      );
+      assert.equal(
+        await page.getByRole("alert").count(),
+        0,
+        `${tag}: no error at \`/\``,
+      );
+      await page.screenshot({ path: `${shots}/${tag}-landing.png` });
     }
     await tryButton(page).first().click();
     if (test.fail === "sign-up-chunk") {

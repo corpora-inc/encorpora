@@ -14,6 +14,7 @@ import { accessSession } from "../auth";
 afterEach(() => {
   calls.order = [];
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
 });
 
 // A first screen waits on both. The session check used to start only after
@@ -37,4 +38,23 @@ test("the session check starts without waiting for the sign-in configuration", a
   ]);
   answer(Response.json({ mode: "accounts", passwords: true, providers: [] }));
   await expect(session).resolves.toBeNull();
+});
+
+// Production, 2026-11-17: a failed sign-in configuration failed the session
+// check with it, so `/` showed a full-screen error instead of the pitch.
+// Whether someone is signed in doesn't depend on the sign-in methods.
+test("the session check doesn't need the sign-in configuration", async () => {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => {
+      throw new TypeError("Failed to fetch");
+    }),
+  );
+  // A production build (development builds fall back to development
+  // sign-in), on a fresh page: the first test's configuration is not kept.
+  vi.stubEnv("DEV", false);
+  vi.resetModules();
+  const fresh = await import("../auth");
+  await expect(fresh.accessSession()).resolves.toBeNull();
+  expect(calls.order).toContain("get-session");
 });
