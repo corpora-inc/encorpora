@@ -1,0 +1,5 @@
+{
+  "rowan": { "ref": "house/rowan.wav" },
+  "wren": { "ref": "house/wren.wav" },
+  "pip": { "ref": "house/pip.wav", "params": { "exaggeration": 0.5 } }
+}

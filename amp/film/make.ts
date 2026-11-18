@@ -7,6 +7,7 @@
  *   npx tsx film/make.ts <template-id> --dry --board    plus storyboard.jpg: the end of every beat, and each held highlight
  *   npx tsx film/make.ts <template-id> --res 540 --fps 30   a quick look
  *   npx tsx film/make.ts <template-id> --still 12.5,40  single frames
+ *   npx tsx film/make.ts <template-id> --provider spark    house voices from the Spark (spark-voice/README.md)
  *
  * Voice takes are cached by their text, so editing one shot only pays for that shot.
  */
@@ -38,6 +39,8 @@ const { values, positionals } = parseArgs({
   options: {
     /** Re-voice a speaker for this run: `--voice narrator=paul`, `--voice learner=champ`. */
     voice: { type: "string", multiple: true, default: [] },
+    /** Whose voices fill the speakers `--voice` leaves open: elevenlabs (default) or spark, the house voices. */
+    provider: { type: "string", default: "elevenlabs" },
     res: { type: "string", default: "2160" },
     fps: { type: "string", default: "60" },
     check: { type: "boolean", default: false },
@@ -83,12 +86,15 @@ const overrides = Object.fromEntries(values.voice.map((v) => {
   if (!m) throw new Error(`--voice takes role=voice, not "${v}"`);
   return [m[1]!, m[2]!];
 }));
+if (values.provider !== "elevenlabs" && values.provider !== "spark") throw new Error(`--provider is elevenlabs or spark, not "${values.provider}"`);
 // Overrides name approved voices. A speaker left without a distinct one fails when the film is voiced, not in a dry check.
-const cast = resolveCast(script, overrides);
+const cast = resolveCast(script, overrides, undefined, values.provider);
 const runs = runsOf(screenplay, cast);
 
 // ------------------------------------------------------------------ voice
 let charsSpent = 0;
+/** Takes made this run (not read from the cache), and the retakes among all takes. */
+let takesMade = 0, retakes = 0;
 const tokens = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
 /** Shorten long silences inside a take, cutting only where it is measured silent; word times stay true. */
 function tighten(pcm: Int16Array, words: WordTime[], maxGap = 0.34) {
@@ -140,6 +146,8 @@ async function voice(): Promise<Timing> {
     const where = `Shot ${si + 1}${cast.named ? ` (${run.role.role})` : ""}`;
     const r = made[ri]!.take;
     charsSpent += made[ri]!.spent;
+    takesMade += made[ri]!.made;
+    retakes += made[ri]!.tries - 1;
     for (const f of made[ri]!.faults) voiceNotes.push(`${where}: no take passed every check (the same in each try): ${f}. Listen there.`);
     // Sounds in the take that are no word: a stray is made silent, a word's last hiss that came
     // loose is joined back to it, and the take keeps only ROOM of room tone beyond its first and
@@ -452,11 +460,11 @@ try {
     const rows = Math.ceil(Math.ceil(timing.duration / every) / 4);
     execFileSync("ffmpeg", ["-v", "error", "-y", "-i", film, "-vf", `fps=1/${every},scale=640:-1,tile=4x${rows}`, "-frames:v", "1", "-q:v", "4", join(OUT, "contact.jpg")]);
     rmSync(dir, { recursive: true, force: true });
-    const report = { id, res, fps, seconds: Math.round(timing.duration * 10) / 10, uniqueFrames: unique, totalFrames: total, timings: clock, wallSeconds: Math.round((Date.now() - started) / 1000), charsSpent, problems, voiceNotes };
+    const report = { id, res, fps, seconds: Math.round(timing.duration * 10) / 10, uniqueFrames: unique, totalFrames: total, timings: clock, wallSeconds: Math.round((Date.now() - started) / 1000), charsSpent, takesMade, retakes, problems, voiceNotes };
     writeFileSync(join(OUT, "report.json"), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report));
   } else {
-    console.log(JSON.stringify({ id, ...(values.dry ? { dry: true } : {}), seconds: Math.round(timing.duration * 10) / 10, problems, charsSpent }));
+    console.log(JSON.stringify({ id, ...(values.dry ? { dry: true } : {}), seconds: Math.round(timing.duration * 10) / 10, problems, charsSpent, takesMade, retakes, voiceSeconds: clock.voice }));
   }
 } finally {
   await browser.close();

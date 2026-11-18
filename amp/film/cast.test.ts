@@ -52,7 +52,7 @@ describe("resolveCast", () => {
     expect(() => resolveCast(flat, { narrator: "champ" })).toThrow(/not approved for the narrator/);
     expect(() => approvedVoice("someone", "x")).toThrow(/not an approved voice/);
     expect(() => approvedVoice("constructor", "x")).toThrow(/not an approved voice/);
-    expect(Object.keys(APPROVED)).toEqual([NARRATOR_ID, "J3Ei0Lj6fAobhIqY5ySH", "SYXbTJsLE7zmSjr1DchT"]);
+    expect(Object.keys(APPROVED)).toEqual([NARRATOR_ID, "J3Ei0Lj6fAobhIqY5ySH", "SYXbTJsLE7zmSjr1DchT", "house-rowan", "house-wren", "house-pip"]);
   });
   it("rejects people and voice bindings in the screenplay", () => {
     expect(scriptSchema.safeParse({ ...play, cast: { teacher: { voice: "paul" }, learner: {} } }).success).toBe(false);

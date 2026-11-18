@@ -25,7 +25,8 @@ const timingFor = (voices: Record<string, string>): Timing => ({
 
 it("dry-checks two learners without a third approved voice, and stages them from a test registry", () => {
   const script = scriptSchema.parse(JSON.parse(readFileSync("film/lessons/count-objects--speakers.json", "utf8")));
-  expect(VOICES.filter((voice) => voice.kinds.includes("learner")).map((voice) => voice.short)).toEqual(["champ"]);
+  // House voices are chosen only on request (`--voice`, `--provider spark`), so the default pool is ElevenLabs'.
+  expect(VOICES.filter((voice) => voice.kinds.includes("learner") && !voice.provider).map((voice) => voice.short)).toEqual(["champ"]);
 
   const dry = resolveCast(script);
   expect(dry.roles.map((role) => [role.role, role.voice?.id ?? null])).toEqual([

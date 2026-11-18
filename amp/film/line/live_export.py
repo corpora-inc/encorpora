@@ -11,7 +11,8 @@ import urllib.request
 from providers import clean_environment, now, write_json
 from state import display_script, shared_lock, read_json
 
-NAMES = {'XescS24CsOySAkKrLAO3': 'Madeline', 'J3Ei0Lj6fAobhIqY5ySH': 'Paul', 'SYXbTJsLE7zmSjr1DchT': 'Champ'}
+NAMES = {'XescS24CsOySAkKrLAO3': 'Madeline', 'J3Ei0Lj6fAobhIqY5ySH': 'Paul', 'SYXbTJsLE7zmSjr1DchT': 'Champ',
+         'house-rowan': 'Rowan', 'house-wren': 'Wren', 'house-pip': 'Pip'}  # house voices, film/voices.ts
 ALLOWED = {'id', 'title', 'problemType', 'skill', 'skillTitle', 'grade', 'strand', 'standards', 'script', 'timing', 'figure'}
 
 
@@ -64,7 +65,7 @@ def player_copy(payload):
         if voice not in NAMES:
             raise ValueError('Unapproved playback voice')
         value['script']['cast'][role] = {'voice': voice, 'name': NAMES[voice],
-                                       **({'tag': '[energetic]'} if role=='learner' else {})}
+                                       **({'tag': '[energetic]'} if voice=='SYXbTJsLE7zmSjr1DchT' else {})}
     return value
 
 

@@ -4,7 +4,7 @@
  *
  * A take is kept only if it passes every check:
  *   - a speech-to-text pass hears exactly the words of the script (nothing skipped,
- *     repeated, garbled or misread),
+ *     repeated, garbled or misread): ElevenLabs Scribe, or Whisper on the Spark for a house voice,
  *   - it ends in silence (the voice was not cut off),
  *   - it never clips,
  *   - no stray sound (a hiss, click or breath) sits too close to a word to be
@@ -20,6 +20,7 @@ import { join } from "node:path";
 import { EDGE, envelope, even, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
+import { SPARK_TRIES, sparkHear, sparkTake } from "./spark";
 import { displayText, heldLetterFaults, scriptWords } from "./letters";
 import type { WordTime } from "./schema";
 import { describe, strayPlan, type TimedWord } from "./strays";
@@ -27,14 +28,15 @@ import { describe, strayPlan, type TimedWord } from "./strays";
 /** The narrator: Madeline Brousseaux, by exact id (docs/amp-media-pipeline.md). Other approved voices are in voices.ts. */
 export const VOICE_ID = NARRATOR_ID;
 export { MODEL };
-/** The cache key of a take: voice, model, text, and the voice's tag when it has one. */
+/** The cache key of a take: voice, model, text, and the voice's tag when it has one. A house voice's key also names its provider. */
 export const takeKey = (voice: Voice, text: string) => createHash("sha256").update(JSON.stringify(takeKeyParts(voice, text))).digest("hex").slice(0, 24);
 const HEAR_MODEL = "scribe_v2";
 const TRIES = 3;
 
 export type Alignment = { characters: string[]; character_start_times_seconds: number[]; character_end_times_seconds: number[] };
-export type Take = { audio: string; alignment: Alignment };
-type Heard = { text: string; words: { text: string; start: number; end: number; type: string }[] };
+/** `audio` is base64 16-bit PCM at 44.1 kHz. A house take records the seed it was made with. */
+export type Take = { audio: string; alignment: Alignment; seed?: number };
+export type Heard = { text: string; words: { text: string; start: number; end: number; type: string }[] };
 
 function apiKey() {
   if (process.env.ELEVEN_LABS_API_KEY) return process.env.ELEVEN_LABS_API_KEY;
@@ -194,9 +196,13 @@ export function wordsOf(a: Alignment, script?: string): WordTime[] {
 const heardOf = new WeakMap<Take, TimedWord[]>();
 export const heardWords = (take: Take): TimedWord[] => heardOf.get(take) ?? [];
 
-async function generate(voice: Voice, text: string, prev: string | undefined, next: string | undefined, seed?: number): Promise<Take> {
+/** Try `k` of a take: ElevenLabs, or the house voice service on the Spark. */
+async function generate(voice: Voice, text: string, prev: string | undefined, next: string | undefined, k: number): Promise<Take> {
   // Authoring sessions run with FILM_NO_VOICE=1: only a reviewer spends voice characters.
   if (process.env.FILM_NO_VOICE) throw new Error("Voicing is off in this session (FILM_NO_VOICE). Check the screenplay with --dry.");
+  // House voices read each take on its own: the service has no neighbouring-text context.
+  if (voice.spark) return sparkTake(voice, spokenText(voice, text), k);
+  const seed = k ? 1000 + k : undefined;
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice.id}/with-timestamps?output_format=pcm_44100`, {
     method: "POST",
     headers: { "xi-api-key": apiKey(), "Content-Type": "application/json" },
@@ -215,8 +221,14 @@ async function generate(voice: Voice, text: string, prev: string | undefined, ne
   return { audio: body.audio_base64, alignment: body.alignment ?? body.normalized_alignment };
 }
 
-async function hear(pcm: Int16Array, cache: string): Promise<Heard> {
+/** What a speech-to-text pass hears in a take: ElevenLabs Scribe, or for a house take Whisper on the Spark (no ElevenLabs credits). */
+async function hear(pcm: Int16Array, cache: string, local = false): Promise<Heard> {
   if (existsSync(cache)) return JSON.parse(readFileSync(cache, "utf8"));
+  if (local) {
+    const heard = await sparkHear(pcm);
+    writeFileSync(cache, JSON.stringify(heard));
+    return heard;
+  }
   const form = new FormData();
   form.set("model_id", HEAR_MODEL);
   form.set("language_code", "en");
@@ -237,7 +249,7 @@ async function hear(pcm: Int16Array, cache: string): Promise<Heard> {
 }
 
 /** What is wrong with a take, if anything. Empty means it is good to use. */
-export async function judge(text: string, take: Take, cache: string) {
+export async function judge(text: string, take: Take, cache: string, voice?: Voice) {
   const pcm = pcmOf(take), env = envelope(pcm);
   const faults: string[] = heldLetterFaults(text, wordsOf(take.alignment));
   const tail = env.slice(-5);
@@ -246,7 +258,7 @@ export async function judge(text: string, take: Take, cache: string) {
     run = pcm[i] === 32767 || pcm[i] === -32768 ? run + 1 : 0;
     if (run === 3) { faults.push(`it clips at ${(i / SR).toFixed(2)} s`); break; }
   }
-  const heard = await hear(pcm, cache);
+  const heard = await hear(pcm, cache, !!voice?.spark);
   for (const d of differences(text, heard))
     faults.push(`at ${d.at.toFixed(1)} s the script says "${d.want}" but the voice says "${d.got}"`);
   // A stray sound in a pause is removed when the film is made; one too close to a word cannot be.
@@ -268,19 +280,24 @@ export async function goodTake(dir: string, text: string, prev?: string, next?: 
   let spent = 0;
   let best: { take: Take; faults: string[] } | undefined;
   let last: string[] = [];
-  for (let k = 0; k < TRIES; k++) {
+  // A house take costs no characters, so it may be tried more often.
+  const tries = voice.spark ? SPARK_TRIES : TRIES;
+  let made = 0, tried = 0;
+  for (let k = 0; k < tries; k++) {
+    tried++;
     const file = k ? join(dir, `${hash}.${k}.json`) : path;
     let take: Take;
     if (existsSync(file)) take = JSON.parse(readFileSync(file, "utf8"));
     else {
-      take = await generate(voice, text, prev, next, k ? 1000 + k : undefined);
-      spent += text.length;
+      take = await generate(voice, text, prev, next, k);
+      made++;
+      if (!voice.spark) spent += text.length;
       writeFileSync(file, JSON.stringify(take));
     }
-    const faults = await judge(text, take, heardPath(k));
+    const faults = await judge(text, take, heardPath(k), voice);
     if (!faults.length) {
       if (k) writeFileSync(path, JSON.stringify(take)), writeFileSync(heardPath(0), readFileSync(heardPath(k)));
-      return { take, faults, spent };
+      return { take, faults, spent, tries: tried, made };
     }
     if (!best || faults.length < best.faults.length) best = { take, faults };
     // A difference that comes back in the next take is the script or the matcher,
@@ -289,7 +306,7 @@ export async function goodTake(dir: string, text: string, prev?: string, next?: 
     if (k > 0 && faults.some((f) => last.includes(gist(f)))) break;
     last = faults.map(gist);
   }
-  return { take: best!.take, faults: best!.faults, spent };
+  return { take: best!.take, faults: best!.faults, spent, tries: tried, made };
 }
 
 if (process.argv[1]?.endsWith("voice.ts")) {
@@ -308,7 +325,7 @@ if (process.argv[1]?.endsWith("voice.ts")) {
     const hash = takeKey(r.role.voice!, r.text);
     const file = join(dir, `${hash}.json`);
     if (!existsSync(file)) { console.log(`${who}: no take yet`); continue; }
-    const faults = await judge(r.text, JSON.parse(readFileSync(file, "utf8")), join(dir, `${hash}.heard.json`));
+    const faults = await judge(r.text, JSON.parse(readFileSync(file, "utf8")), join(dir, `${hash}.heard.json`), r.role.voice);
     console.log(`${who}: ${faults.length ? faults.join("; ") : "good"}`);
     bad += faults.length ? 1 : 0;
   }
