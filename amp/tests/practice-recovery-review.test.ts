@@ -94,6 +94,7 @@ test("a persisted focus unsupported by an older client cannot block mixed or exp
     recentSkips: async () => [],
     recentWorkbooks: async () => [],
     isAdult: async () => false,
+    saveLevelDay: async () => {},
     skillEvidence: async () => [],
     practiceSettings: async () => state,
     frontier: async () =>

@@ -510,11 +510,19 @@ test(
     const adult = await learner(`amp|adult-${randomUUID()}`, true);
     // A trial that became an adult: only answers after the adoption.
     const adopted = await learner(`trial:${randomUUID()}`);
+    // A child removed from another family's class: its roster row lets go of
+    // it, which hides that its answers did roll up.
+    const removed = await learner(`amp|parent-${randomUUID()}`);
+    await rostered(removed, day(-10));
     // A deleted learner keeps no rollups.
     const gone = await learner(`amp|parent-${randomUUID()}`);
 
-    for (const id of [pupil, child, joiner, adult, adopted, gone])
+    for (const id of [pupil, child, joiner, adult, adopted, gone, removed])
       for (const a of ANSWERS) await answer(db, id, a, day(-3));
+    await db.query(
+      "UPDATE amp_people SET learner_id=NULL WHERE learner_id=$1",
+      [removed],
+    );
     await rostered(joiner, day(-2));
     await db.query(
       "UPDATE amp_learners SET adult=true,birth_year=NULL,account_id=$2 WHERE id=$1",
@@ -525,7 +533,7 @@ test(
        VALUES($1,$2,$3,now()+interval '1 day',$4,'amp|adopter')`,
       [randomUUID(), "a".repeat(64), adopted, day(-2)],
     );
-    for (const id of [pupil, joiner, adult, adopted])
+    for (const id of [pupil, joiner, adult, adopted, removed])
       await answer(db, id, ANSWERS[0]!, day(-1));
     await db.query("UPDATE amp_learners SET deleted_at=now() WHERE id=$1", [
       gone,
@@ -541,11 +549,13 @@ test(
         ).rows[0].n,
       );
     const before = new Map<string, number>();
-    for (const id of [pupil, child, joiner, adult, adopted, gone])
+    for (const id of [pupil, child, joiner, adult, adopted, gone, removed])
       before.set(id, await attempts(id));
     assert.deepEqual(
-      [pupil, child, joiner, adult, adopted, gone].map((id) => before.get(id)),
-      [5, 0, 1, 5, 1, 0],
+      [pupil, child, joiner, adult, adopted, gone, removed].map((id) =>
+        before.get(id),
+      ),
+      [5, 0, 1, 5, 1, 0, 4],
     );
 
     await db.query(
@@ -557,9 +567,12 @@ test(
     // Every live learner now holds every answer, once.
     assert.deepEqual(
       await Promise.all(
-        [pupil, child, joiner, adult, adopted, gone].map(attempts),
+        [pupil, child, joiner, adult, adopted, gone, removed].map(attempts),
       ),
-      [5, 4, 5, 5, 5, 0],
+      // The removed child's day already counts its rolled-up answers: adding
+      // them again would pass what is stored, so it is left as it was (its
+      // one answer after leaving, on that same day, stays uncounted).
+      [5, 4, 5, 5, 5, 0, 4],
     );
     // The backfilled rows are the rows the trigger writes for the same answers.
     const fresh = await learner(`amp|parent-${randomUUID()}`);

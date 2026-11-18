@@ -139,6 +139,7 @@ const repository = {
     return run({
       hasAccess: async () => true,
       isAdult: async () => false,
+      saveLevelDay: async () => {},
       frontier: async () => simulated.frontier,
       skillEvidence: async () => simulated.evidence,
       recentAttempts: async () => simulated.attempts.slice(-12),

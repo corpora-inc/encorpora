@@ -9,6 +9,7 @@ import { practiceLearners } from "./adult-learner";
 import { meKey, queryClient, sessionOptions } from "./query";
 import { isStudentDevice, studentSession } from "./student-device";
 import { HelpQueue, onHelp } from "./help-events";
+import type { HelpEvent } from "../../schools/help-contracts";
 
 /** Active time for a learner's own record, the same for every learner: a
  * school or family-class student's session sends to the school's activity
@@ -207,9 +208,13 @@ export function startActivity(
         activeMs: fresh,
       });
   }
+  /** Sends what is counted to the destination it was counted for. A flush
+   * (`to` given: another learner is about to be chosen) takes everything
+   * counted so far at once, so none of it is sent later to the next one. */
   async function send(leaving: boolean, to?: Destination) {
     bank();
-    const target = to === undefined ? destination() : to;
+    const flushing = to !== undefined;
+    const target = flushing ? to : destination();
     if (!target || (!queue.length && !help.size)) {
       if (!target) {
         queue.length = 0;
@@ -217,46 +222,55 @@ export function startActivity(
       }
       return;
     }
-    const deltas = queue.splice(0, MAX_DELTAS);
     const takenAt = performance.now();
-    const events = help.take(takenAt);
-    try {
-      const response = await requestFetch(target.url, {
-        method: "POST",
-        keepalive: leaving,
-        credentials: "same-origin",
-        headers: {
-          ...(target.token ? { Authorization: `Bearer ${target.token}` } : {}),
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          deltas: deltas.map((d) => ({
-            ...d,
-            activeMs: Math.min(90_000, d.activeMs),
-          })),
-          ...(events.length ? { events } : {}),
-        }),
+    const batches: { deltas: Delta[]; events: HelpEvent[] }[] = [];
+    do
+      batches.push({
+        deltas: queue.splice(0, MAX_DELTAS),
+        events: help.take(takenAt),
       });
-      // Lost time is a wrong record for a teacher and a family: every
-      // refusal is said aloud, with the server's reason.
-      if (!response.ok)
-        console.error(
-          "Active time not saved",
-          response.status,
-          await response
-            .json()
-            .then((body: { error?: unknown }) => body?.error ?? null)
-            .catch((error: unknown) => {
-              console.warn("The refusal's reason wasn’t readable", error);
-              return null;
-            }),
-        );
-    } catch (error) {
-      // Offline: the help waits for the next heartbeat (time already passed
-      // can't be claimed again, so its deltas are not kept).
-      help.restore(events, takenAt);
-      console.error("Active time not saved", error);
-    }
+    while (flushing && (queue.length || help.size));
+    for (const { deltas, events } of batches)
+      try {
+        const response = await requestFetch(target.url, {
+          method: "POST",
+          keepalive: leaving,
+          credentials: "same-origin",
+          headers: {
+            ...(target.token
+              ? { Authorization: `Bearer ${target.token}` }
+              : {}),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            deltas: deltas.map((d) => ({
+              ...d,
+              activeMs: Math.min(90_000, d.activeMs),
+            })),
+            ...(events.length ? { events } : {}),
+          }),
+        });
+        // Lost time is a wrong record for a teacher and a family: every
+        // refusal is said aloud, with the server's reason.
+        if (!response.ok)
+          console.error(
+            "Active time not saved",
+            response.status,
+            await response
+              .json()
+              .then((body: { error?: unknown }) => body?.error ?? null)
+              .catch((error: unknown) => {
+                console.warn("The refusal's reason wasn’t readable", error);
+                return null;
+              }),
+          );
+      } catch (error) {
+        // Offline: the help waits for the next heartbeat (time already
+        // passed can't be claimed again, so its deltas are not kept). A
+        // flushed learner's help would go to the next learner, so it goes.
+        if (!flushing) help.restore(events, takenAt);
+        console.error("Active time not saved", error);
+      }
   }
   const interact = () => clock.sample(performance.now(), visible(), true);
   const leave = () => void send(true);

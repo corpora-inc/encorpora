@@ -71,38 +71,31 @@ BEGIN
   RETURN NEW;
 END $$;
 
--- When a learner's active time was last credited, for every learner an
--- account practices as (its children, its adult, its practice profiles), so
--- one heartbeat claims no more than the time since the last. A school
--- student's session row does this for students. amp_adult_activity, the
--- adult-only clock it replaces, is no longer written; its rows start this one.
-CREATE TABLE amp_learner_activity (
-  learner_id text PRIMARY KEY REFERENCES amp_learners(id) ON DELETE CASCADE,
-  seen_at timestamptz NOT NULL
-);
-INSERT INTO amp_learner_activity(learner_id,seen_at)
-SELECT learner_id,seen_at FROM amp_adult_activity;
-
--- Backfill: the answers the old trigger skipped, rolled up exactly as the
--- trigger above rolls up a new one. An answer was skipped when, as it was
--- stored, its learner had no roster row yet and was not yet an adult (an
--- adult is one from creation, or from the adoption of the trial it was). An
+-- Backfill: the answers the old trigger skipped, rolled up as the trigger
+-- above rolls up a new one. An answer was skipped when, as it was stored, its
+-- learner had no roster row yet and was not yet an adult (an adult is one
+-- from creation, or from the adoption of the trial it was). A roster row can
+-- also be let go of later (a child removed from another family's class),
+-- which hides that its answers did roll up, so no day may end up counting
+-- more answers than are stored for it: a (learner, day, skill) whose rollup
+-- plus the backfill would exceed its stored answers is left as it was. An
 -- answer stored before the first rollup (0087) by a learner already rostered
--- then was skipped by no rule and is left as it was. Weeks follow from the
--- day rows' own trigger. Level days, active time and help were never sent
--- for these learners, so nothing here can recreate them.
+-- then is left as it was too. Weeks follow from the day rows' own trigger.
+-- Level days, active time and help were never sent for these learners, so
+-- nothing here can recreate them.
 WITH since AS (
-  SELECT l.id,
+  SELECT l.id,amp_learner_zone(l.id) AS zone,
     LEAST(
       COALESCE((SELECT p.created_at FROM amp_people p WHERE p.learner_id=l.id),'infinity'),
       CASE WHEN NOT l.adult THEN 'infinity'::timestamptz
         ELSE COALESCE((SELECT max(t.adopted_at) FROM amp_trials t WHERE t.learner_id=l.id),'-infinity') END
     ) AS rolled_from
   FROM amp_learners l WHERE l.deleted_at IS NULL
-), skipped AS (
+), stored AS (
   SELECT a.learner_id,
-    ((a.outcome->>'createdAt')::timestamptz AT TIME ZONE amp_learner_zone(a.learner_id))::date AS day,
+    ((a.outcome->>'createdAt')::timestamptz AT TIME ZONE s.zone)::date AS day,
     a.outcome->>'skillId' AS skill_id,
+    a.created_at<s.rolled_from AS skipped,
     COALESCE((a.outcome->>'correct')::boolean,false) AS correct,
     COALESCE((a.outcome->>'assisted')::boolean,false) AS assisted,
     COALESCE((a.outcome->>'correct')::boolean,false)
@@ -111,20 +104,32 @@ WITH since AS (
     COALESCE(i.content->'selection'->>'reason'='review',false) AS review,
     CASE WHEN jsonb_typeof(a.outcome->'help')='array' THEN a.outcome->'help' ELSE '[]'::jsonb END AS help
   FROM amp_attempts a
-  JOIN since s ON s.id=a.learner_id AND a.created_at<s.rolled_from
+  JOIN since s ON s.id=a.learner_id
   LEFT JOIN amp_instances i ON i.id=a.problem_id
   -- The trigger would refuse an answer without these; none should lack them.
   WHERE a.outcome->>'skillId' IS NOT NULL AND a.outcome->>'createdAt' IS NOT NULL
+), bucket AS (
+  SELECT learner_id,day,skill_id,count(*)::int AS answers,
+    count(*) FILTER (WHERE skipped)::int AS attempts,
+    count(*) FILTER (WHERE skipped AND correct)::int AS correct,
+    count(*) FILTER (WHERE skipped AND independent)::int AS independent,
+    count(*) FILTER (WHERE skipped AND assisted)::int AS assisted,
+    count(*) FILTER (WHERE skipped AND review)::int AS review,
+    count(*) FILTER (WHERE skipped AND review AND independent)::int AS review_independent,
+    count(*) FILTER (WHERE skipped AND help ? 'hint')::int AS with_hint,
+    count(*) FILTER (WHERE skipped AND help ? 'lesson')::int AS with_lesson,
+    count(*) FILTER (WHERE skipped AND help ? 'video')::int AS with_video,
+    count(*) FILTER (WHERE skipped AND help ? 'example')::int AS with_example,
+    count(*) FILTER (WHERE skipped AND help ? 'person')::int AS with_person
+  FROM stored GROUP BY learner_id,day,skill_id
 )
 INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent,
   with_hint,with_lesson,with_video,with_example,with_person)
-SELECT learner_id,day,skill_id,count(*)::int,count(*) FILTER (WHERE correct)::int,
-  count(*) FILTER (WHERE independent)::int,count(*) FILTER (WHERE assisted)::int,
-  count(*) FILTER (WHERE review)::int,count(*) FILTER (WHERE review AND independent)::int,
-  count(*) FILTER (WHERE help ? 'hint')::int,count(*) FILTER (WHERE help ? 'lesson')::int,
-  count(*) FILTER (WHERE help ? 'video')::int,count(*) FILTER (WHERE help ? 'example')::int,
-  count(*) FILTER (WHERE help ? 'person')::int
-FROM skipped GROUP BY learner_id,day,skill_id
+SELECT b.learner_id,b.day,b.skill_id,b.attempts,b.correct,b.independent,b.assisted,b.review,b.review_independent,
+  b.with_hint,b.with_lesson,b.with_video,b.with_example,b.with_person
+FROM bucket b
+LEFT JOIN amp_skill_days r ON r.learner_id=b.learner_id AND r.day=b.day AND r.skill_id=b.skill_id
+WHERE b.attempts>0 AND COALESCE(r.attempts,0)+b.attempts<=b.answers
 ON CONFLICT(learner_id,day,skill_id) DO UPDATE SET
   attempts=amp_skill_days.attempts+EXCLUDED.attempts,
   correct=amp_skill_days.correct+EXCLUDED.correct,
@@ -137,3 +142,17 @@ ON CONFLICT(learner_id,day,skill_id) DO UPDATE SET
   with_video=amp_skill_days.with_video+EXCLUDED.with_video,
   with_example=amp_skill_days.with_example+EXCLUDED.with_example,
   with_person=amp_skill_days.with_person+EXCLUDED.with_person;
+
+-- When a learner's active time was last credited, for every learner an
+-- account practices as (its children, its adult, its practice profiles), so
+-- one heartbeat claims no more than the time since the last. A school
+-- student's session row does this for students. amp_adult_activity, the
+-- adult-only clock it replaces, is no longer written; its rows start this one.
+-- Last in the migration: its foreign key locks writes to amp_learners until
+-- the migration commits, so that is held only briefly.
+CREATE TABLE amp_learner_activity (
+  learner_id text PRIMARY KEY REFERENCES amp_learners(id) ON DELETE CASCADE,
+  seen_at timestamptz NOT NULL
+);
+INSERT INTO amp_learner_activity(learner_id,seen_at)
+SELECT learner_id,seen_at FROM amp_adult_activity;

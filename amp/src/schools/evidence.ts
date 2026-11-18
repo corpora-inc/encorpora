@@ -63,18 +63,15 @@ export const heartbeatDeltas = (
 export const CREDITED_SKILL =
   "COALESCE(i.content->'public'->>'skillId',raw.skill_id,'')";
 
-/** One heartbeat as one statement, outside the learner lock. `live` selects
- * the learner it credits (`learner_id`, `timezone`, `previous`: when time was
- * last credited) and `touch` moves that clock to now. The deltas' total is
- * scaled down to the time since `previous` plus five seconds, and to 90
- * seconds at most. A problem that isn't this learner's counts toward its
- * surface with no skill. Help events ride along (`help-events.ts`).
- * Parameters: $1 deltas, $2 cap, $3 slack, $4 help events, then `live`'s. */
-export const heartbeatSql = (
-  live: string,
-  touch: string,
-  extra = "",
-) => `WITH live AS (${live}), room AS (
+/** The heartbeat's crediting, shared by every heartbeat: one statement,
+ * outside the learner lock, whose `live` CTE names the learner it credits
+ * (`learner_id`, `timezone`, `previous`: when time was last credited). The
+ * deltas' total is scaled down to the time since `previous` plus five
+ * seconds, and to 90 seconds at most. A problem that isn't this learner's
+ * counts toward its surface with no skill. Help events ride along
+ * (`helpEventsCte(4)`). Parameters: $1 deltas, $2 cap, $3 slack, $4 help
+ * events, then the `live` CTE's own. */
+const HEARTBEAT_CREDIT = `room AS (
     SELECT LEAST($2::bigint,
       floor(GREATEST(0,extract(epoch FROM now()-previous))*1000)::bigint+$3::bigint) AS ms FROM live
   ), raw AS (
@@ -92,8 +89,7 @@ export const heartbeatSql = (
     SELECT live.learner_id,(now() AT TIME ZONE live.timezone)::date,c.surface,c.skill_id,sum(c.ms)
     FROM credited c CROSS JOIN live WHERE c.ms>0 GROUP BY live.learner_id,live.timezone,c.surface,c.skill_id
     ON CONFLICT(learner_id,day,surface,skill_id) DO UPDATE SET active_ms=amp_active_days.active_ms+EXCLUDED.active_ms
-  ), touched AS (${touch})${extra ? `, ${extra}` : ""}, ${helpEventsCte(4)}
-  SELECT count(*)::int AS live FROM live`;
+  )`;
 
 /** The heartbeat's first four parameters. */
 const heartbeatParams = (body: unknown) => {
@@ -116,17 +112,20 @@ export async function recordHeartbeat(
   const params = heartbeatParams(body);
   if (!/^st_[A-Za-z0-9_-]{43}$/.test(token)) return false;
   const { rows } = await pool.query(
-    heartbeatSql(
-      `SELECT s.id,s.person_id,s.last_seen_at AS previous,p.learner_id,p.timezone
+    `WITH live AS (
+       SELECT s.id,s.person_id,s.last_seen_at AS previous,p.learner_id,p.timezone
        FROM amp_student_sessions s
        JOIN amp_people p ON p.id=s.person_id
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
        WHERE s.token_hash=$5 AND s.revoked_at IS NULL AND s.expires_at>now()
          AND p.deleted_at IS NULL AND ${ACTIVE_STUDENT}
-       FOR UPDATE OF s`,
-      "UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id",
-      `demo_seen AS (${touchDemoOfPersonSql("(SELECT person_id FROM live)")})`,
-    ),
+       FOR UPDATE OF s
+     ), ${HEARTBEAT_CREDIT}, touched AS (
+       UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id
+     ), demo_seen AS (
+       ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
+     ), ${helpEventsCte(4)}
+     SELECT count(*)::int AS live FROM live`,
     [...params, hashStudentToken(token)],
   );
   return rows[0].live === 1;
@@ -156,13 +155,15 @@ export async function recordLearnerActivity(
     [learnerId, accountId, HEARTBEAT_MAX_MS],
   );
   const { rows } = await pool.query(
-    heartbeatSql(
-      `SELECT l.id AS learner_id,amp_learner_zone(l.id) AS timezone,a.seen_at AS previous
+    `WITH live AS (
+       SELECT l.id AS learner_id,amp_learner_zone(l.id) AS timezone,a.seen_at AS previous
        FROM amp_learners l JOIN amp_learner_activity a ON a.learner_id=l.id
        WHERE ${theirs(5, 6)}
-       FOR UPDATE OF a`,
-      "UPDATE amp_learner_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id",
-    ),
+       FOR UPDATE OF a
+     ), ${HEARTBEAT_CREDIT}, touched AS (
+       UPDATE amp_learner_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id
+     ), ${helpEventsCte(4)}
+     SELECT count(*)::int AS live FROM live`,
     [...params, learnerId, accountId],
   );
   return rows[0].live === 1;
