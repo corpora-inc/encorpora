@@ -45,6 +45,19 @@ const ease = (u: number) => {
  * out are a short smooth ease, with no bounce.
  */
 const EMPH_GROW = 0.15;
+/** At full light a shape grows by at most this many stage pixels: a small thing grows its 15%, a big box barely moves. */
+export const EMPH_GROW_MAX_PX = 10;
+/** The scale for a lit shape `size` pixels across at light `em` (0 to 1): calm on big shapes, unchanged on small ones. */
+/** Horizontal padding of a boxed board line (answer, problem); 0 for a plain line. */
+export function boxedPadding(el: HTMLElement): number {
+  if (!el.classList.contains("answer") && !el.classList.contains("problem")) return 0;
+  const cs = getComputedStyle(el);
+  return (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+}
+export function emphScale(size: number, em: number): number {
+  if (!(size > 0)) return 1 + EMPH_GROW * em;
+  return 1 + Math.min(EMPH_GROW * size, EMPH_GROW_MAX_PX) * em / size;
+}
 const EMPH_IN = 0.2;
 const EMPH_OUT = 0.22;
 /** How far a lit base-ten block's fill deepens toward the ink, in percent. */
@@ -532,7 +545,7 @@ function localBoxToViewport(fit: HTMLElement, l: number, t: number, r: number, b
 function setFactor(el: SVGElement | HTMLElement, factor: number) {
   const em0 = Number(el.dataset.em0 || 0);
   const grow = em0 * factor;
-  const k = 1 + EMPH_GROW * grow;
+  const k = 1 + EMPH_GROW * grow * (el instanceof SVGElement && el.dataset.cap ? Number(el.dataset.cap) : 1);
   if (el instanceof HTMLElement && el.dataset.ox) {
     const ox = parseFloat(el.dataset.ox), oy = parseFloat(el.dataset.oy ?? "0");
     const cx = parseFloat(el.dataset.cx ?? "0"), cy = parseFloat(el.dataset.cy ?? "0");
@@ -1803,7 +1816,12 @@ class GeoStage {
           if (box.width >= 0.4 || box.height >= 0.4) { cx = box.x + box.width / 2; cy = box.y + box.height / 2; }
         }
         if (cx !== undefined && cy !== undefined) {
-          const k = 1 + EMPH_GROW * em;
+          let size = 0;
+          if (!about) { try { const bb = el.getBBox(); size = Math.max(bb.width, bb.height); } catch { /* not laid out */ } }
+          const k = about ? 1 + EMPH_GROW * em : emphScale(size, em);
+          // a big shape's growth is capped; remember the ratio so a later crowding pass (setFactor) keeps the cap
+          if (!about && em > 0.02) el.dataset.cap = ((k - 1) / (EMPH_GROW * em)).toFixed(4);
+          else delete el.dataset.cap;
           aboutTf = `translate(${cx.toFixed(2)} ${cy.toFixed(2)}) scale(${k.toFixed(4)}) translate(${(-cx).toFixed(2)} ${(-cy).toFixed(2)})`;
           el.dataset.ax = cx.toFixed(2); el.dataset.ay = cy.toFixed(2);
           // The branch just wrote the resting stroke. Keep it, then thicken.
@@ -3423,9 +3441,12 @@ class Board {
       delete m.dataset.split;
       m.classList.remove("film-eq");
       m.style.removeProperty("--film-fit");
+      // a boxed line (an answer, a problem card) fits inside its own padding, not the bare column
+      const pad = boxedPadding(it.el);
+      const roomHere = Math.max(1, room - pad);
       const w = m.getBoundingClientRect().width;
-      if (w <= room + 0.5) continue;
-      const fit = room / w;
+      if (w <= roomHere + 0.5) continue;
+      const fit = roomHere / w;
       const parts = flat ? splitEquation(flat) : null;
       // Scale while the type stays readable. Below that, break at the equals sign.
       if (!parts || fit >= floor - 1e-3) {
@@ -3438,7 +3459,7 @@ class Board {
       m.innerHTML = `<span class="film-eq-lhs">${tex(parts.lhs, true)}</span><span class="film-eq-rhs">${tex("=" + parts.rhs, true)}</span>`;
       const w2 = m.getBoundingClientRect().width;
       // A side with no further equals still has to fit the window, whole.
-      if (w2 > room + 0.5) m.style.setProperty("--film-fit", (floor * room / w2).toFixed(4));
+      if (w2 > roomHere + 0.5) m.style.setProperty("--film-fit", (floor * roomHere / w2).toFixed(4));
     }
   }
   /** Place one column's lines and return how far it reaches left and right of its center. */

@@ -334,8 +334,10 @@ test.each(LINE_PARTS)("lit line geometry: $id", async (part) => {
       expect(b.thickness).toBeGreaterThan(a.thickness);
       expect(b.stroke).not.toBe(a.stroke);
       if (part.id === "poly") {
-        expect(b.width).toBeGreaterThan(a.width * 1.05);
-        expect(b.height).toBeGreaterThan(a.height * 1.05);
+        // a lit poly grows, calmly: a few pixels, never its old 15% (a big box must not jump)
+        expect(b.width).toBeGreaterThan(a.width + 3);
+        expect(b.height).toBeGreaterThan(a.height + 3);
+        expect(b.width - a.width).toBeLessThan(a.width * 0.15);
       } else {
         for (let j = 0; j < a.points.length; j++) {
           expect(Math.hypot(b.points[j]!.x - a.points[j]!.x, b.points[j]!.y - a.points[j]!.y)).toBeLessThan(0.1);
