@@ -628,11 +628,11 @@ async function journey(browser: Browser, engine: string, width: number) {
     // The record opens from the student's row (a sheet over Students; no
     // query string names it).
     await head.goto(`${origin}/school/${orgId}/students`);
+    await head.getByRole("textbox", { name: "Search students" }).fill(REMOVED);
+    // A row on a wide screen, a card on a phone: the name opens it.
     await head
-      .getByRole("textbox", { name: "Search students" })
-      .fill(REMOVED);
-    await head
-      .getByRole("button", { name: new RegExp(`^${REMOVED}\\b`) })
+      .getByRole("main")
+      .getByText(new RegExp(`^${REMOVED}\\b`))
       .first()
       .click();
     const record = head.getByRole("dialog");
