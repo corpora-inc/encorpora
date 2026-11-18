@@ -81,6 +81,7 @@ export const CASES = [
   ["work-diagram", "partial-products-by-place"],
   ["work-captions", "bracket-steps"],
   ["work-derivation", "solve-justify-linear"],
+  ["work-columns", "multidigit-decimal-sum"],
   ["shape-composer", "compose-flat-shape"],
 ] as const;
 const SIZES: [number, number][] = [
@@ -114,6 +115,7 @@ const VERIFY = [
   "work-diagram",
   "work-captions",
   "work-derivation",
+  "work-columns",
   "shape-composer",
 ];
 const browsers =
@@ -196,6 +198,11 @@ const frontier = {
   strands: {},
 };
 
+const seedCycles: Record<string, number[]> = {
+  "solve-justify-linear": [2, 9, 10],
+  "multidigit-decimal-sum": [10, 2, 20],
+};
+
 /** One synthetic learning API per context. `grade` decides the next result. */
 async function mockApi(context: BrowserContext, templateId: string) {
   const state = {
@@ -250,13 +257,20 @@ async function mockApi(context: BrowserContext, templateId: string) {
       const problem = generateProblemFor(
         state.templateId,
         (problemIndex === 0 ? firstSeeds[state.templateId] : undefined) ??
-          // Fill-ins only: given lines and reasons beside typed ones, a
-          // fixed list of steps on every problem of the case.
-          (state.templateId === "solve-justify-linear"
-            ? `polish-solve-justify-linear-${[2, 9, 10][problemIndex % 3]}`
+          // Every problem of the case is the surface under test: fill-ins
+          // with given lines beside typed ones; column methods with
+          // borrowing marks, then a carry into the tens, then no marks.
+          (seedCycles[state.templateId]
+            ? `polish-${state.templateId}-${seedCycles[state.templateId]![problemIndex % 3]}`
             : undefined) ??
           `polish-${state.templateId}-${problemIndex}`,
         body.figureCapabilities ?? [],
+        undefined,
+        // The column method is a clause surface, served (as the API does)
+        // to a client that declares structured work.
+        state.templateId === "multidigit-decimal-sum"
+          ? (body.responseCapabilities ?? [])
+          : [],
       );
       problem.public = responseForClient(
         problem.public,

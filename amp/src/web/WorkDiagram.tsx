@@ -10,7 +10,8 @@ import {
 
 /* A fixed build drawn where its entries mean something: an area model with
    each width typed along its side and each area typed inside its region, or
-   written lines with each entry in its place ("3 × 5 = [ ]"). The entries
+   written lines with each entry in its place ("3 × 5 = [ ]"), or a column
+   method with each digit of the result in its column. The entries
    themselves (inputs, keypad, notes, marks) are StructuredWorkInput's; this
    module only places them. Styles live in work-diagram.css. */
 
@@ -35,7 +36,7 @@ function Slot({
   slots: DiagramSlots;
   at: WorkRef;
   name: string;
-  role: "side" | "region" | "line";
+  role: "side" | "region" | "line" | "column" | "mark";
 }) {
   const mark = slots.mark(at);
   return (
@@ -52,10 +53,15 @@ function Slot({
  * until it is typed. */
 function Echo({ text }: { text: string }) {
   const v = text.trim();
-  if (!v) return <span className="work-echo" data-empty="" aria-hidden="true" />;
+  if (!v)
+    return <span className="work-echo" data-empty="" aria-hidden="true" />;
   return (
     <span className="work-echo">
-      {/^-?\d+(?:\.\d+)?$/.test(v) ? <MathText text={`$${numberTex(v)}$`} /> : v}
+      {/^-?\d+(?:\.\d+)?$/.test(v) ? (
+        <MathText text={`$${numberTex(v)}$`} />
+      ) : (
+        v
+      )}
     </span>
   );
 }
@@ -87,7 +93,13 @@ function Phrase({
             <MathText text={t.text} />
           </span>
         ) : "field" in t ? (
-          <Slot key={n} slots={slots} at={t.field} name={name(t.field)} role="line" />
+          <Slot
+            key={n}
+            slots={slots}
+            at={t.field}
+            name={name(t.field)}
+            role="line"
+          />
         ) : (
           <Echo key={n} text={slots.value(t.echo)} />
         ),
@@ -99,7 +111,8 @@ function Phrase({
 /** An entry is named by what its line computes ("9 times 5"), with its own
  * label when the line has several. */
 function lineNamer(tokens: WorkToken[], slots: DiagramSlots) {
-  const head = tokens[0] && "text" in tokens[0] ? spokenMath(tokens[0].text) : "";
+  const head =
+    tokens[0] && "text" in tokens[0] ? spokenMath(tokens[0].text) : "";
   const fields = tokens.filter((t) => "field" in t).length;
   return (at: WorkRef) =>
     !head ? slots.label(at) : fields > 1 ? `${head}, ${slots.label(at)}` : head;
@@ -119,7 +132,13 @@ function Line({ tokens, slots }: { tokens: WorkToken[]; slots: DiagramSlots }) {
 
 /** Written lines with their "=" signs in one column: what each line
  * computes on the left, the work on the right. */
-function Lines({ lines, slots }: { lines: WorkToken[][]; slots: DiagramSlots }) {
+function Lines({
+  lines,
+  slots,
+}: {
+  lines: WorkToken[][];
+  slots: DiagramSlots;
+}) {
   return (
     <div className="work-lines">
       {lines.map((tokens, n) => {
@@ -303,6 +322,93 @@ function AreaModel({
   );
 }
 
+/** A written column method: the numbers one digit to a column, points
+ * aligned, the sign before the last line, a rule, and an entry for each
+ * digit of the result in its own column. Where regrouping changes a
+ * column, an entry above it takes the new top value, and in a subtraction
+ * the top digit it replaces is struck through, as on paper. */
+function ColumnMethod({
+  d,
+  slots,
+}: {
+  d: Extract<WorkDiagram, { kind: "columns" }>;
+  slots: DiagramSlots;
+}) {
+  const point = (c: number) => d.lines.some((l) => l[c] === ".");
+  const columns = `var(--work-sign) ${d.answer
+    .map((_, c) => (point(c) ? "var(--work-point)" : "var(--work-digit)"))
+    .join(" ")}`;
+  const subtract = d.operation === "−";
+  const spoken = (l: string[]) => l.join("");
+  return (
+    <div className="work-diagram" data-kind="columns">
+      <div
+        className="work-column-method"
+        role="group"
+        aria-label={`${spoken(d.lines[0]!)} ${subtract ? "minus" : "plus"} ${spoken(d.lines.at(-1)!)}, in columns`}
+        style={{ gridTemplateColumns: columns }}
+      >
+        {d.marks.some(Boolean) && (
+          <>
+            <span />
+            {d.marks.map((m, c) =>
+              m ? (
+                <Slot
+                  key={`m${c}`}
+                  slots={slots}
+                  at={m.field}
+                  name={slots.label(m.field)}
+                  role="mark"
+                />
+              ) : (
+                <span key={`m${c}`} />
+              ),
+            )}
+          </>
+        )}
+        {d.lines.map((line, n) => (
+          <Fragment key={`l${n}`}>
+            <span className="work-column-sign" aria-hidden="true">
+              {n === d.lines.length - 1 ? d.operation : ""}
+            </span>
+            {line.map((ch, c) => (
+              <span
+                key={c}
+                className="work-column-digit"
+                aria-hidden="true"
+                data-struck={subtract && n === 0 && d.marks[c] ? "" : undefined}
+              >
+                {ch}
+              </span>
+            ))}
+          </Fragment>
+        ))}
+        <span className="work-column-rule" aria-hidden="true" />
+        <span />
+        {d.answer.map((cell, c) =>
+          "field" in cell ? (
+            <Slot
+              key={`a${c}`}
+              slots={slots}
+              at={cell.field}
+              name={slots.label(cell.field)}
+              role="column"
+            />
+          ) : (
+            <span
+              key={`a${c}`}
+              className="work-column-digit"
+              aria-hidden="true"
+            >
+              {cell.given}
+            </span>
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
 /** A diagram in place of the list of rows. */
 export function WorkDiagramView({
   diagram,
@@ -312,6 +418,8 @@ export function WorkDiagramView({
   slots: DiagramSlots;
 }) {
   if (diagram.kind === "area") return <AreaModel d={diagram} slots={slots} />;
+  if (diagram.kind === "columns")
+    return <ColumnMethod d={diagram} slots={slots} />;
   return (
     <div className="work-diagram" data-kind="lines">
       <Lines lines={diagram.lines} slots={slots} />

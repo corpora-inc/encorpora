@@ -1896,8 +1896,10 @@ export function PracticeWorkspace(props: Props) {
             </h2>
             {problem.figure &&
               !marking &&
-              // An area model drawn by the work replaces the figure.
+              // An area model or a column method drawn by the work replaces
+              // the figure.
               work?.diagram?.kind !== "area" &&
+              work?.diagram?.kind !== "columns" &&
               (choice ||
               plot ||
               trend ||

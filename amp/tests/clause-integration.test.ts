@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
-import { buildClause, clauseFamilies } from "../src/math/clause-variants";
+import {
+  buildClause,
+  clauseFamilies,
+  clauseRevisions,
+} from "../src/math/clause-variants";
 import {
   clientCanDraw,
   figureCapabilities,
@@ -102,16 +106,15 @@ test("clause variants are reachable, grade their answers, and declare every answ
         "At least 25% of 120 current transformation draws are translations",
       );
     if (clauseFamilies[meta.id]) {
+      // The version before its clause surfaces (later revisions add more).
+      const before = meta.version - 1 - (clauseRevisions[meta.id] ?? 0);
       for (let i = 0; i < 8; i++) {
-        const old = generateProblem(meta.id, `stored:${i}`, meta.version - 1);
+        const old = generateProblem(meta.id, `stored:${i}`, before);
         assert.ok(
           !old.variant?.axes?.clause,
           `${meta.id} changed a stored version`,
         );
-        assert.deepEqual(
-          old,
-          generateProblem(meta.id, `stored:${i}`, meta.version - 1),
-        );
+        assert.deepEqual(old, generateProblem(meta.id, `stored:${i}`, before));
       }
     }
   }

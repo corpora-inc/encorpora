@@ -5,6 +5,15 @@ import { numberWords } from "./staar-gap-practice";
 import { array, numberLine, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
 import {
+  gradingFits,
+  structuralProblem,
+  type StructuredWorkResponse,
+  type WorkDiagram,
+  type WorkField,
+  type WorkRef,
+} from "./structured-work";
+import { generatingVersion } from "./variation/axes";
+import {
   blockFigure,
   choice,
   dec,
@@ -862,6 +871,8 @@ function verticalSetup(
   bottom: string,
   operation: string,
   blanks: string[],
+  /** What a screen reader hears for the figure (version 3 on). */
+  title?: string,
 ): Teaching["figure"] {
   const elements: Element[] = [];
   const width = Math.max(top.length, bottom.length, 5);
@@ -882,7 +893,11 @@ function verticalSetup(
   );
   return {
     kind: "scene",
-    scene: scene(...elements).build({ width: 230, maxHeight: 180 }),
+    scene: scene(...elements).build({
+      width: 230,
+      maxHeight: 180,
+      ...(title ? { title } : {}),
+    }),
   };
 }
 
@@ -999,6 +1014,10 @@ function algorithm(c: Context): GeneratedProblem {
     hi = Math.max(a, b),
     lo = Math.min(a, b),
     answer = add ? hi + lo : hi - lo;
+  if ((generatingVersion() ?? c.meta.version) >= 3)
+    return columnsWork(c, hi, lo, add);
+  // Version 2 reproduces as saved, its identity included.
+  c = { ...c, meta: { ...c.meta, version: 2 } };
   const ones = add ? (hi % 10) + (lo % 10) : (hi % 10) - (lo % 10),
     carry = add ? Math.floor(ones / 10) : Number(ones < 0);
   return work(
@@ -1031,6 +1050,148 @@ function algorithm(c: Context): GeneratedProblem {
       },
     ],
   );
+}
+
+const PLACES = ["Tens", "Ones", "Tenths", "Hundredths"] as const;
+/** Digits of a number of hundredths, one per place of PLACES. */
+const placeDigits = (n: number) => [
+  Math.floor(n / 1000) % 10,
+  Math.floor(n / 100) % 10,
+  Math.floor(n / 10) % 10,
+  n % 10,
+];
+
+/** Aligned columns, version 3: the learner writes each digit of the result
+ * in its column, under the numbers as written on paper. A mark goes above
+ * a column only where regrouping changes it: the 1 carried into it, or, in
+ * a subtraction, the new value of its top digit. With no regrouping there
+ * is no mark at all, so a count of 0 is never asked for. */
+function columnsWork(
+  c: Context,
+  hi: number,
+  lo: number,
+  add: boolean,
+): GeneratedProblem {
+  const answer = add ? hi + lo : hi - lo,
+    top = placeDigits(hi),
+    bottom = placeDigits(lo),
+    result = placeDigits(answer);
+  // Right to left: hundredths (3), tenths (2), ones (1); a sum may reach
+  // the tens (0), which holds no written digit and so no mark.
+  const mark: (number | null)[] = [null, null, null, null];
+  const lines: string[] = [];
+  if (add) {
+    let carry = 0;
+    for (let k = 3; k >= 1; k--) {
+      if (carry) mark[k] = 1;
+      const sum = top[k]! + bottom[k]! + carry;
+      lines.unshift(
+        `${PLACES[k]}: ${[top[k], bottom[k], ...(carry ? [carry] : [])].join(" + ")} = ${sum}.${
+          sum >= 10
+            ? k > 1
+              ? ` Write ${sum % 10} and carry 1 to the ${PLACES[k - 1]!.toLowerCase()}.`
+              : ` Write ${sum % 10} in the ones and 1 in the tens.`
+            : ""
+        }`,
+      );
+      carry = sum >= 10 ? 1 : 0;
+    }
+  } else {
+    const value = [...top];
+    for (let k = 3; k >= 1; k--) {
+      const lent = value[k]! !== top[k]!;
+      if (value[k]! < bottom[k]!) {
+        value[k] = value[k]! + 10;
+        value[k - 1] = value[k - 1]! - 1;
+      }
+      if (value[k] !== top[k]) mark[k] = value[k]!;
+      const borrowed = value[k]! >= 10 && top[k]! - (lent ? 1 : 0) < bottom[k]!;
+      lines.unshift(
+        `${PLACES[k]}: ${
+          borrowed
+            ? `${top[k]! - (lent ? 1 : 0)} is less than ${bottom[k]}, so exchange 1 ${PLACES[k - 1]!.toLowerCase().replace(/s$/, "")} for 10 ${PLACES[k]!.toLowerCase()}. `
+            : ""
+        }${value[k]} − ${bottom[k]} = ${value[k]! - bottom[k]!}.`,
+      );
+    }
+  }
+  lines.reverse();
+  const first = answer >= 1000 ? 0 : 1;
+  const places = [3, 2, 1, 0].filter((k) => k >= first);
+  type Cell = { label: string; value: string; maxLength: number };
+  const rows: { label: string; cells: Cell[] }[] = places.map((k) => {
+    const name = PLACES[k]!.toLowerCase();
+    const cells: Cell[] = [];
+    if (mark[k] !== null)
+      cells.push({
+        label: add ? `Carried to the ${name}` : `${PLACES[k]} after regrouping`,
+        value: String(mark[k]),
+        maxLength: 2,
+      });
+    cells.push({
+      label: `${PLACES[k]} digit`,
+      value: String(result[k]),
+      maxLength: 1,
+    });
+    return { label: PLACES[k]!, cells };
+  });
+  const at = (k: number, digit: boolean): WorkRef => {
+    const i = places.indexOf(k);
+    return [i, digit ? rows[i]!.cells.length - 1 : 0];
+  };
+  const p = work(
+    c,
+    teaching(
+      `Use aligned columns to find ${tex(`${dec(hi)}${add ? "+" : "-"}${dec(lo)}`)}.`,
+      `Line up the decimal points in ${dec(hi)} and ${dec(lo)}. Start with hundredths.`,
+      [...lines, `The ${add ? "sum" : "difference"} is ${dec(answer)}.`],
+      verticalSetup(
+        (hi / 100).toFixed(2),
+        (lo / 100).toFixed(2),
+        add ? "+" : "−",
+        [answer >= 1000 ? "□□.□□" : "□.□□"],
+        `${(hi / 100).toFixed(2)} ${add ? "plus" : "minus"} ${(lo / 100).toFixed(2)}, written in aligned columns`,
+      ),
+    ),
+    rows.map((row) => ({
+      label: row.label,
+      fields: row.cells.map((cell) => ({
+        field: {
+          kind: "number",
+          label: cell.label,
+          maxLength: cell.maxLength,
+        } as WorkField,
+        value: cell.value,
+      })),
+    })),
+  );
+  // Columns left to right: the tens when the result reaches them, the ones,
+  // the point, the tenths and the hundredths.
+  const columns = [...(first === 0 ? [0] : []), 1, -1, 2, 3];
+  const written = (n: number) =>
+    columns.map((k) =>
+      k === -1 ? "." : k === 0 && n < 1000 ? "" : String(placeDigits(n)[k]),
+    );
+  const diagram: WorkDiagram = {
+    kind: "columns",
+    operation: add ? "+" : "−",
+    lines: [written(hi), written(lo)],
+    answer: columns.map((k) =>
+      k === -1 ? { given: "." } : { field: at(k, true) },
+    ),
+    marks: columns.map((k) =>
+      k >= 1 && mark[k] !== null ? { field: at(k, false) } : null,
+    ),
+  };
+  const response = {
+    ...(p.public.response as StructuredWorkResponse),
+    diagram,
+  };
+  const problem = structuralProblem(response);
+  if (problem) throw new Error(`columns: ${problem}`);
+  if (!p.workGrading || !gradingFits(response, p.workGrading))
+    throw new Error("columns grading");
+  return { ...p, public: { ...p.public, response } };
 }
 
 /** Math units between the three written methods (and the place-value

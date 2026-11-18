@@ -267,6 +267,56 @@
   border-radius: 6px;
 }
 
+/* ---------- a column method: digits in their columns ---------- */
+/* The numbers one digit to a column, points aligned, the sign before the
+   last line, a rule, and an entry for each digit of the result. A mark
+   entry above a column holds its new top value; the digit it replaces is
+   struck through. Every entry is a full 44 px target. */
+.work-diagram[data-kind="columns"] {
+  --work-sign: 24px;
+  --work-digit: var(--target-size);
+  --work-point: 14px;
+}
+.work-column-method {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  gap: var(--space-2) 6px;
+  color: var(--color-on-surface);
+  font-size: 26px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.work-column-digit,
+.work-column-sign {
+  display: grid;
+  place-items: center;
+  min-height: 32px;
+}
+.work-column-sign {
+  justify-self: start;
+}
+.work-column-digit[data-struck] {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: var(--color-muted-text);
+}
+.work-column-rule {
+  grid-column: 1 / -1;
+  justify-self: stretch;
+  border-top: 2px solid var(--color-figure-ink);
+}
+.work .work-diagram .work-slot[data-role="column"] input.work-input,
+.work .work-diagram .work-slot[data-role="mark"] input.work-input {
+  width: var(--target-size);
+  padding-inline: 0;
+  font-size: 22px;
+}
+.work .work-diagram .work-slot[data-role="mark"] input.work-input {
+  font-size: 17px;
+}
+
 /* A phone's stage (320 to 384 px viewports): three parts still sit side by
    side. At full size they need about 335 px (the down side's column, three
    92 px parts and the marks' room); a 384 px phone's stage is 322. */
