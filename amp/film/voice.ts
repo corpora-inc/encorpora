@@ -89,6 +89,8 @@ export function spokenWords(items: { text: string; t: number }[]) {
       .replace(/(\d)\.(?=\d)/g, "$1 point ")
       .replace(/[’']/g, "")
       .replace(/(\p{L})-(?=\p{L})/gu, "$1 ")
+      // "a 4-foot snake", "a 3-meter ribbon": a hyphen from a number to a word joins them, it is no minus
+      .replace(/(\d)-(?=\p{L})/gu, "$1 ")
       .replace(/[−–]|-(?=\s*[\d\p{L}(])/gu, " minus ")
       .replace(/\+/g, " plus ").replace(/=/g, " equals ").replace(/[×·]/g, " times ").replace(/÷/g, " divided by ")
       .replace(/°/g, " degrees ").replace(/%/g, " percent ")

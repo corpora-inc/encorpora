@@ -20,6 +20,7 @@ const same: [string, string][] = [
   ["negative four, negative four", "(-4, -4)"],
   ["f of x equals x minus three, squared, plus nine", "f(x) = (x - 3)² + 9"],
   ["x squared plus six x", "x^2 + 6x"],
+  ["A four foot snake, a three meter ribbon", "A 4-foot snake, a 3-meter ribbon"],
 ];
 
 describe("spoken", () => {
