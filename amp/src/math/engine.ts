@@ -1000,6 +1000,19 @@ export function generateProblemFor(
       return generateCounterBuilderFallback(seed);
     }
     const problem = generateProblem(templateId, seed, version);
+    // A column method (aligned-columns sums) reaches only a client that
+    // draws one; an older client is served the version before it.
+    const work = problem.public.response;
+    if (
+      work.kind === "structured-work" &&
+      work.diagram?.kind === "columns" &&
+      !responseCapabilities.includes("work-columns-v1")
+    )
+      return generateProblem(
+        templateId,
+        seed,
+        problem.public.templateVersion - 1,
+      );
     if (!problem.variant?.axes?.clause && !problem.variant?.axes?.task)
       return problem;
     const kind = problem.public.response.kind;

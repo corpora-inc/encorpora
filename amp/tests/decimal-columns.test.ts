@@ -2,8 +2,17 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import test from "node:test";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
-import { generatedProblemSchema } from "../src/math/contracts";
+import {
+  generateProblem,
+  generateProblemFor,
+  gradeAnswer,
+  templates,
+} from "../src/math/engine";
+import {
+  figureCapabilities,
+  generatedProblemSchema,
+  responseCapabilities,
+} from "../src/math/contracts";
 import {
   diagramMarks,
   structuralProblem,
@@ -140,4 +149,21 @@ print(len(cases))
   );
   assert.equal(result.status, 0, result.stderr || String(result.error));
   assert.ok(Number(result.stdout.trim()) > 100, result.stdout);
+});
+
+test("a client that does not draw a column method is served version 2", () => {
+  const seed = Array.from({ length: 50 }, (_, i) => `client-${i}`).find(
+    (s) => columnsOf(s) !== null,
+  )!;
+  const older = responseCapabilities.filter((c) => c !== "work-columns-v1");
+  const served = (caps: readonly string[]) =>
+    generateProblemFor(id, seed, [...figureCapabilities], undefined, caps);
+  const now = served(responseCapabilities);
+  assert.equal(now.public.templateVersion, 3);
+  assert.equal(
+    now.public.response.kind === "structured-work" &&
+      now.public.response.diagram?.kind,
+    "columns",
+  );
+  assert.deepEqual(served(older), generateProblem(id, seed, 2));
 });
