@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { initialLevel } from "../../../learning/frontier";
 import { gradeName } from "../../../learning/level-check";
 import type { PracticeSettings } from "../../../learning/practice-settings";
-import type { AuthSession } from "../../auth";
 import { learnerWhere } from "../../lib/learner-where";
 import { learnerFrontierOptions } from "../../lib/learning-view";
 import { invalidateAccount } from "../../lib/query";
-import { forSession } from "../../lib/session";
+import { forSession, useSessionOrNull } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { Loading } from "../../ui/Loading";
@@ -30,21 +29,25 @@ export type ResetLearner = {
  * (`/frontier`, lib/learner-where.ts), and the grade their birth year
  * starts them at (`initialLevel`).
  */
-export function usePracticeLevel(
-  session: AuthSession | null,
-  learner: ResetLearner,
-) {
+export function usePracticeLevel(learner: ResetLearner) {
+  const session = useSessionOrNull();
   const frontier = useQuery(
     forSession(session, (signedIn) =>
       learnerFrontierOptions(signedIn, learner.id),
     ),
   );
+  useEffect(() => {
+    if (frontier.isError)
+      console.error("The practice level didn’t load", frontier.error);
+  }, [frontier.isError, frontier.error]);
   const where = learnerWhere(frontier.data?.overall);
   return {
     /** "Grade 8"; null before any answer since the last reset. */
     now: where?.bestName ?? null,
     /** Read: whether `now` is known. */
     known: !!session && frontier.isSuccess,
+    /** The level couldn't be read (a reset still works). */
+    failed: frontier.isError,
     startsAt:
       learner.birthYear != null
         ? gradeName(initialLevel({ birthYear: learner.birthYear }))
@@ -60,10 +63,10 @@ export function usePracticeLevel(
  * every view of the level reads the account's one store again.
  */
 export function useResetPracticeLevel(
-  session: AuthSession | null,
   learnerId: string,
   onReset?: (saved: PracticeSettings) => Promise<void> | void,
 ) {
+  const session = useSessionOrNull();
   const adjust = usePracticeAdjustment({
     identity: session?.accountId ?? "guest",
     learnerId,
@@ -74,14 +77,9 @@ export function useResetPracticeLevel(
   async function reset() {
     setError("");
     setSaving(true);
+    let saved: PracticeSettings | null;
     try {
-      const saved = await adjust.change({ kind: "reset" });
-      if (!saved) return false;
-      // The child's page, Pathways, Today and practice all read the level
-      // from the account's store.
-      if (session) await invalidateAccount(session.accountId);
-      await onReset?.(saved);
-      return true;
+      saved = await adjust.change({ kind: "reset" });
     } catch (failure) {
       console.error("AMP couldn’t reset the practice level", failure);
       setError(
@@ -89,10 +87,23 @@ export function useResetPracticeLevel(
           ? failure.message
           : "The level wasn’t reset. Try again.",
       );
+      setSaving(false);
       return false;
+    }
+    // Reset: what follows never says it wasn't. The child's page, Pathways,
+    // Today and practice all read the level from the account's store; a
+    // failed read there says so where it shows.
+    try {
+      if (saved) {
+        if (session) await invalidateAccount(session.accountId);
+        await onReset?.(saved);
+      }
+    } catch (failure) {
+      console.error("After a practice-level reset", failure);
     } finally {
       setSaving(false);
     }
+    return !!saved;
   }
   return { reset, saving, error };
 }
@@ -111,7 +122,6 @@ const RESET_ICON = (
  * row with the level and a Reset button).
  */
 export function ResetPracticeLevel({
-  session,
   learner,
   look,
   resetFrom,
@@ -120,7 +130,6 @@ export function ResetPracticeLevel({
   onReset,
   rowClass,
 }: {
-  session: AuthSession | null;
   learner: ResetLearner;
   look: "menu" | "row";
   /** Where a reset starts again, said in the confirmation; by default the
@@ -138,15 +147,13 @@ export function ResetPracticeLevel({
     action: string;
   };
 }) {
-  const level = usePracticeLevel(session, learner);
-  const { reset, saving, error } = useResetPracticeLevel(
-    session,
-    learner.id,
-    onReset,
-  );
+  const level = usePracticeLevel(learner);
+  const { reset, saving, error } = useResetPracticeLevel(learner.id, onReset);
   const [open, setOpen] = useState(false);
   const show = () => setOpen(true);
-  const now: ReactNode = !level.known ? (
+  const now: ReactNode = level.failed ? (
+    "Didn’t load"
+  ) : !level.known ? (
     <Loading inline>{null}</Loading>
   ) : (
     (level.now ?? "Not measured yet")

@@ -2205,9 +2205,8 @@ function LegacyScreen({ owner }: { owner: string | null }) {
               !student && (
                 <ResetPracticeLevel
                   look="menu"
-                  session={session}
                   learner={learner}
-                  own
+                  own={ownLearner}
                   disabled={busy || !!pending}
                   resetFrom={
                     learner.simulation
@@ -2222,8 +2221,8 @@ function LegacyScreen({ owner }: { owner: string | null }) {
                       await practiceChanged({ kind: "reset" }, saved);
                     } finally {
                       setBusy(false);
+                      closeShellDrawer();
                     }
-                    closeShellDrawer();
                   }}
                 />
               )

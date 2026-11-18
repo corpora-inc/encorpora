@@ -731,7 +731,6 @@ function ChildSettingsRows({
         {caps.changePracticeSettings && child.birthYear != null && (
           <ResetPracticeLevel
             look="row"
-            session={session}
             learner={child}
             disabled={busy}
             rowClass={{
