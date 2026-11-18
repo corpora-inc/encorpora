@@ -181,7 +181,7 @@ const screens: Screen[] = [
     state: "paid",
     group: "family",
     overlay: true,
-    ready: (p) => p.locator("[data-account-body]").first().waitFor(),
+    ready: (p) => p.locator("[data-billing-panel]").first().waitFor(),
   },
   {
     id: "privacy",
