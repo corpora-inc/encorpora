@@ -180,6 +180,75 @@
     ],
     "skill": "addition-within-20"
   },
+  "adjacent-angle-equation": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
+  },
+  "adjacent-angles": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
+  },
+  "angle-benchmark-estimate": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
+  },
   "angle-chase-chain": {
     "id": "triangle-angle-sum--st",
     "version": "2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25",
@@ -201,6 +270,29 @@
       }
     ],
     "skill": "triangle-angle-theorems"
+  },
+  "angle-recognize": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
   },
   "area-model-product": {
     "id": "area-model-product--sa",
@@ -7205,6 +7297,75 @@
     ],
     "skill": "exponent-laws"
   },
+  "protractor-angles-select": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
+  },
+  "protractor-ray-choice": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
+  },
+  "protractor-reading": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
+  },
   "purchase-change": {
     "id": "delivery-then-use--sd",
     "version": "0a82af7092c6fd3b0793e0836d7a8d502eb425e5d1b852ee71030f8678190d72",
@@ -10856,6 +11017,29 @@
       }
     ],
     "skill": "turn-around-facts"
+  },
+  "turn-degrees": {
+    "id": "protractor-reading--sp",
+    "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+    "title": "Measuring angles",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+    "duration": 364.830022675737,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/protractor-reading--sp/261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23/audio.m4a",
+        "version": "261db23e623973af2ced0cd78a103f0d2469b75b0569e7f89332c0ecd8db2b23",
+        "duration": 364.830022675737
+      }
+    ],
+    "skill": "angle-measure"
   },
   "two-digit-symbol": {
     "id": "compare-two-digit--sc",
