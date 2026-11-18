@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { spoken } from "./voice";
+import { spoken, spokenWords } from "./voice";
 
 /** Transcripts spell things their own way; each pair must normalize the same, or the voice is retaken for nothing. */
 const same: [string, string][] = [
@@ -27,7 +27,15 @@ describe("spoken", () => {
   it.each(same)("%s", (script, heard) => {
     expect(spoken(heard)).toEqual(spoken(script));
   });
-  it("leaves ordinary words alone", () => {
+  it("reads a number joined to a word as words, also when the transcriber splits them", () => {
+    const words = (...texts: string[]) => spokenWords(texts.map((text, t) => ({ text, t }))).map((x) => x.w);
+    expect(words("A", "4", "-foot", "snake")).toEqual(spoken("A four foot snake"));
+    expect(words("Seven", "-twelfths", "are", "left.")).toEqual(spoken("Seven twelfths are left."));
+    expect(words("equals", "-x")).toEqual(spoken("equals minus x"));
+    expect(spoken("Five 12ths and one 5th")).toEqual(spoken("Five twelfths and one fifth"));
+    expect(words("x", "-3")).toEqual(spoken("x minus three"));
+  });
+    it("leaves ordinary words alone", () => {
     expect(spoken("the third point")).toEqual(["the", "third", "point"]);
   });
   it("keeps different numbers different", () => {

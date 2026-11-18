@@ -65,6 +65,10 @@ const PER: Record<string, number> = {
   half: 2, halves: 2, third: 3, thirds: 3, fourth: 4, fourths: 4, quarter: 4, quarters: 4, fifth: 5, fifths: 5,
   sixth: 6, sixths: 6, seventh: 7, sevenths: 7, eighth: 8, eighths: 8, ninth: 9, ninths: 9, tenth: 10, tenths: 10,
 };
+/** Ordinals a transcriber may write in digits ("12ths"). */
+const ORDINAL: Record<string, string> = {
+  "3": "third", "4": "fourth", "5": "fifth", "6": "sixth", "7": "seventh", "8": "eighth", "9": "ninth", "10": "tenth", "12": "twelfth", "100": "hundredth",
+};
 /** Words a transcript may add or drop without changing what was said. */
 const FILLER = new Set(["and"]);
 const isNum = (w: string | undefined) => !!w && (w in SMALL || w in TENS || w in SCALE);
@@ -76,9 +80,16 @@ const isNum = (w: string | undefined) => !!w && (w in SMALL || w in TENS || w in
  */
 export function spokenWords(items: { text: string; t: number }[]) {
   const toks: { w: string; t: number }[] = [];
+  let before = "";
   for (const it of items) {
-    const s = it.text
+    // a transcriber may split "4-foot" or "four-foot" into "four" and "-foot": a hyphen that joins a
+    // word to the one before is no minus ("-x" after a word stays minus x)
+    const piece = /[\p{L}\p{N}]$/u.test(before) ? it.text.replace(/^-(?=\p{L}{2})/u, "") : it.text;
+    before = it.text;
+    const s = piece
       .toLowerCase()
+      // a transcriber's "12ths" or "5th" is the word: "twelfths", "fifth"
+      .replace(/\b(\d+)(ths?)\b/g, (m, n: string, suffix: string) => (ORDINAL[n] ? ORDINAL[n] + (suffix === "ths" ? "s" : "") : m))
       .replace(/(\d),(?=\d{3}\b)/g, "$1")
       .replace(/\$\s?(\d+)\.(\d\d)\b/g, " $1 dollars $2 cents ")
       .replace(/(\d)\s*\/\s*(\d)/g, "$1 over $2")
