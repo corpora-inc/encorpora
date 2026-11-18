@@ -98,12 +98,13 @@ export function ChildActivity({
           ]}
         />
       </div>
-      {/* A child who has never practiced has nothing to wait for: their
-          line shows at once. Otherwise every daily state (the wait, a
-          failure, a quiet fortnight, one day) holds the chart's height, so
-          nothing below moves when the days arrive. */}
+      {/* Every daily state (never practiced, the wait, a failure, a quiet
+          fortnight, one day) holds the chart's height, so nothing below
+          moves when the days arrive or the record refreshes. A child who
+          has never practiced has nothing to wait for: their line shows at
+          once. */}
       {unit === "day" && !practiced ? (
-        <p>No practice in the past two weeks.</p>
+        <p className={styles.reserve}>No practice in the past two weeks.</p>
       ) : unit === "day" && time.isPending ? (
         <div className={styles.reserve} data-activity-reserve="">
           <Loading inline>Loading practice time…</Loading>

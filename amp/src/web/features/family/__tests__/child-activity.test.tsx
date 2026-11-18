@@ -33,7 +33,7 @@ test("while a child's practice time loads, the chart's room is held, so nothing 
   expect(screen.queryByRole("group")).toBeNull();
 });
 
-test("a child who has never practiced shows their line at once, with no wait for the days", () => {
+test("a child who has never practiced shows their line at once, in the chart's height", () => {
   const client = new QueryClient();
   const place = {
     session: { accountId: "amp|parent", token: "t" },
@@ -50,5 +50,9 @@ test("a child who has never practiced shows their line at once, with no wait for
     </QueryClientProvider>,
   );
   expect(document.querySelector("[data-activity-reserve]")).toBeNull();
-  screen.getByText("No practice in the past two weeks.");
+  // It holds the chart's height: a first practice arriving later moves
+  // nothing below (the child page's Skills earned).
+  expect(
+    screen.getByText("No practice in the past two weeks.").className,
+  ).toMatch(/reserve/);
 });
