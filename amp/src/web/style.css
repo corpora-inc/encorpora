@@ -316,14 +316,19 @@ nav button:hover {
   color: var(--color-on-surface);
   text-decoration: underline;
 }
+/* The shared secondary button (ui/Controls.module.css), for the legacy
+   screens' `.secondary` class: one look everywhere (tokens.css
+   --button-secondary-*). */
 .secondary {
-  border: 1px solid var(--color-border);
-  background: transparent;
-  color: var(--color-primary);
+  border: 1px solid var(--button-secondary-edge);
+  background: var(--button-secondary);
+  color: var(--button-on-secondary);
   font-size: 13px;
 }
-.secondary:hover {
-  background: var(--color-success);
+.secondary:hover:not(:disabled) {
+  border-color: var(--button-secondary-edge-hover);
+  background: var(--button-secondary-hover);
+  filter: none;
 }
 .companion {
   padding: 28px;

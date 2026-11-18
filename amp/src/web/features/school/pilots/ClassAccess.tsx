@@ -37,6 +37,7 @@ import {
 } from "./presentation";
 import styles from "./Pilot.module.css";
 import school from "../School.module.css";
+import { Form } from "../../../ui/Form";
 
 type Place = { org: string; class: string };
 
@@ -806,7 +807,7 @@ function RequestSeatsSheet({
               </p>
             </div>
           ) : (
-            <form className={styles.sheetBody} onSubmit={submit}>
+            <Form className={styles.sheetBody} onSubmit={submit}>
               {editing && (
                 <p className={styles.quiet}>
                   Saving creates a new link to share with your school.
@@ -846,7 +847,7 @@ function RequestSeatsSheet({
                   </Button>
                 )}
               </div>
-            </form>
+            </Form>
           )}
         </div>
       </Sheet>
@@ -907,7 +908,7 @@ function AuthorizeSheet({
         title="Start practice"
         description={`30 days, through ${practiceDate(until)}`}
       >
-        <form className={styles.sheetBody} onSubmit={submit}>
+        <Form className={styles.sheetBody} onSubmit={submit}>
           <Authorization
             name={name}
             authorized={authorized}
@@ -925,7 +926,7 @@ function AuthorizeSheet({
               Start practice
             </Button>
           </div>
-        </form>
+        </Form>
       </Sheet>
       <Toast message={error} onDismiss={() => setError("")} />
     </>

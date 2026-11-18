@@ -9,6 +9,7 @@ import { classesOptions, currentSession, refreshSchool } from "../api";
 import { FormNote } from "../parts";
 import schoolStyles from "../School.module.css";
 import { moveStudent, transferOptionsQuery } from "./org-api";
+import { Form } from "../../../ui/Form";
 
 const seatWords = {
   stays: "Their seat stays: the license covers both schools.",
@@ -84,7 +85,7 @@ export function TransferSheet({
       title={`Move ${name}`}
       description={options ? `From ${options.from.name}` : undefined}
     >
-      <form
+      <Form
         className={schoolStyles.sheetForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -140,7 +141,7 @@ export function TransferSheet({
         >
           Move {name}
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }

@@ -3,7 +3,7 @@ import { Button } from "../../ui/Button";
 import { number, shortDay, TipZone } from "../school/classes/teacher-shared";
 import { practiceMinutes } from "../../lib/practice-minutes";
 import { childTimeOptions } from "./api";
-import { practiceTime, type Interval } from "./ChildActivity";
+import { intervalDetail, practiceTime, type Interval } from "./ChildActivity";
 import type { FamilyPlace } from "./FamilyFrame";
 import styles from "./FamilyWeek.module.css";
 
@@ -23,7 +23,9 @@ const weekday = (day: string) =>
  * The family's week on Today, compact: practice time each day this week,
  * every child's together, and the skills earned, from the same daily time
  * each child's page reads: seven day slots, Monday first, today marked, a
- * quiet day a faint tick, each day's figures on hover, tap and focus. Nothing before the week's first practice, so an empty week is the
+ * quiet day a faint tick, each day's figures on hover, tap and focus (a day
+ * still ahead has none: `intervalDetail`). Nothing before the week's first
+ * practice, so an empty week is the
  * children's cards saying "Not started", never a row of zeros. The chart
  * holds its height while the days arrive.
  */
@@ -100,9 +102,7 @@ export function FamilyWeek({ place }: { place: FamilyPlace }) {
                 className={`${styles.day} ${
                   entry.date === data.today.date ? styles.today : ""
                 } ${entry.date > data.today.date ? styles.ahead : ""}`}
-                tabIndex={0}
-                aria-label={label(entry)}
-                data-tip={label(entry)}
+                {...intervalDetail(label(entry), entry.date > data.today.date)}
                 data-week-day={entry.date}
               >
                 <span className={styles.track}>

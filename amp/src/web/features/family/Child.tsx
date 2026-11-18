@@ -53,6 +53,7 @@ import { ChildActivity } from "./ChildActivity";
 import { useSheet } from "../../nav/sheet";
 import { Sheet } from "../../ui/Sheet";
 import { PayLink } from "../pay/link";
+import { Form } from "../../ui/Form";
 
 /**
  * A child's page (`/family/<family>/kids/<learner>`): the same record a
@@ -646,9 +647,8 @@ function ChildSettingsRows({
         {(caps.rename || naming) && (
           <div className={styles.setting}>
             {naming ? (
-              <form
+              <Form
                 className={styles.form}
-                noValidate
                 onSubmit={(event) => {
                   event.preventDefault();
                   void rename();
@@ -690,7 +690,7 @@ function ChildSettingsRows({
                     Cancel
                   </Button>
                 </div>
-              </form>
+              </Form>
             ) : (
               <>
                 <div className={styles.settingText}>

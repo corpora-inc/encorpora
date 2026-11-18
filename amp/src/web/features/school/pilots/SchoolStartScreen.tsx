@@ -28,6 +28,7 @@ import {
   type StartStep,
 } from "./start-steps";
 import styles from "./Start.module.css";
+import { Form } from "../../../ui/Form";
 
 /** The most names one class takes at setup (the start contract's limit). */
 const MAX_NAMES = 500;
@@ -167,7 +168,7 @@ function ClassStep({ start }: { start: Start }) {
           </>
         }
       >
-        <form
+        <Form
           id={formId}
           className={styles.fields}
           onSubmit={(event) => {
@@ -233,7 +234,7 @@ function ClassStep({ start }: { start: Start }) {
               ))}
             </Select>
           </div>
-        </form>
+        </Form>
       </StepFrame>
       <Toast message={error} onDismiss={() => setError("")} />
     </>
@@ -384,7 +385,7 @@ function StudentsStep({ start }: { start: Start }) {
           )
         }
       >
-        <form
+        <Form
           id={formId}
           className={styles.fields}
           onSubmit={(event) => {
@@ -422,7 +423,7 @@ function StudentsStep({ start }: { start: Start }) {
             errors={{ name: fieldErrors.signerName }}
             disabled={busy}
           />
-        </form>
+        </Form>
       </StepFrame>
     </>
   );

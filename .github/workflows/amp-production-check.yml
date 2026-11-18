@@ -7,9 +7,20 @@ name: AMP production check
 # finds each new release by its version and checks it once; a failure fails
 # this workflow and files or updates one issue. It never rolls back or gates a
 # deploy (fail forward). Read-only: page loads only.
+#
+# GitHub's schedule is best effort. The original `*/10` poll (minute 0 among
+# its slots, the busiest time of the hour) produced no scheduled run at all,
+# and this repository's daily 06:23 deep-check schedule fires 5 to 10 hours
+# late. So the poll runs twice an hour away from the top of the hour, and each
+# `main` CI completion is a second trigger that does not depend on the
+# scheduler. Both only check a release not yet checked.
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '17,47 * * * *'
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
   workflow_dispatch: {}
   # The deploy can ask for a check the moment a rollout finishes.
   repository_dispatch:
@@ -31,6 +42,9 @@ env:
 
 jobs:
   release:
+    # Only CI runs for pushes to main, never a pull request's CI from a fork
+    # branch that happens to be named main.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.event == 'push'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
@@ -83,8 +97,9 @@ jobs:
 
   entry:
     needs: release
-    # Each release once on the poll; every dispatch, PR and manual run checks.
-    if: needs.release.outputs.checked != 'true' || github.event_name != 'schedule'
+    # Each release once on the poll and after CI; every dispatch, PR and
+    # manual run checks.
+    if: needs.release.outputs.checked != 'true' || (github.event_name != 'schedule' && github.event_name != 'workflow_run')
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:

@@ -10,6 +10,7 @@ import { fundingOffersOptions, offerInterval } from "./api";
 import { legacyPayTarget } from "./paths";
 import { usePayStore, type LearnerChoice, type PayInterval } from "./store";
 import { stripeReturnTarget } from "./stripe-return";
+import { loadSettingsHub } from "../spaces/settings-hub";
 
 /* The one hop from each older pay address (app/legacy-aliases.ts), loaded
    only when one is opened. Each computes its target once from canonical
@@ -115,7 +116,10 @@ export async function legacyHop(hop: LegacyHop, input: Input): Promise<string> {
   if (hop === "card" && (text(search.purchase) || text(search.billing)))
     return (
       (await stripeReturnTarget(session, search, "learner")) ??
-      "/account/billing"
+      (await loadSettingsHub(session, "billing").catch((error: unknown) => {
+        console.error("The account's settings hub didn't load", error);
+        return "/account/billing";
+      }))
     );
   const target = legacyPayTarget(
     me,

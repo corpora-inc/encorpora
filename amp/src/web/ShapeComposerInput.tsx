@@ -18,6 +18,7 @@ import {
   type ShapePiece,
   type ShapePlacement,
 } from "../math/shape-composer";
+import { Form } from "./ui/Form";
 
 export const emptyShapeAnswer = (r: ShapeComposerResponse): ShapeAnswer =>
   r.stages.map(() => []);
@@ -616,7 +617,7 @@ export function ShapeComposerAnswer({
   const a = parseShapeAnswer(r, value) ?? emptyShapeAnswer(r),
     hasPieces = a[stageIndex]!.length > 0;
   return (
-    <form
+    <Form
       className="shape-answer"
       onSubmit={(e) => {
         e.preventDefault();
@@ -649,6 +650,6 @@ export function ShapeComposerAnswer({
       >
         {stageIndex < r.stages.length - 1 ? "Join pieces" : "Check"}
       </button>
-    </form>
+    </Form>
   );
 }

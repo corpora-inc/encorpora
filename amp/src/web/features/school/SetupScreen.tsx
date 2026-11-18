@@ -46,6 +46,7 @@ import { YearRibbon } from "./YearRibbon";
 // step's content as they landed.
 import "./SchoolFrame.module.css";
 import styles from "./Setup.module.css";
+import { Form } from "../../ui/Form";
 
 const stepNames: Record<SetupStep, string> = {
   school: "School",
@@ -203,7 +204,7 @@ function SchoolStep({ state, orgId }: { state: SetupState; orgId: string }) {
       }
     >
       <h1>Where will you use AMP?</h1>
-      <form
+      <Form
         className={styles.form}
         onSubmit={(event) => {
           event.preventDefault();
@@ -256,7 +257,7 @@ function SchoolStep({ state, orgId }: { state: SetupState; orgId: string }) {
             ))}
           </Select>
         </div>
-      </form>
+      </Form>
       <Toast message={error} onDismiss={() => setError("")} />
     </Frame>
   );
@@ -602,7 +603,7 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
       </ul>
       {/* The one agreement control, as a teacher's class setup has it
           (pilots/Authorization): who signs, the tick, the text a tap away. */}
-      <form
+      <Form
         className={styles.signer}
         onSubmit={(event) => {
           event.preventDefault();
@@ -622,7 +623,7 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
           errors={errors}
           disabled={busy || !!accepted}
         />
-      </form>
+      </Form>
       <Toast message={error} onDismiss={() => setError("")} />
     </Frame>
   );

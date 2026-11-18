@@ -24,6 +24,7 @@ import { TextField } from "../../ui/TextField";
 import styles from "./InvoiceForm.module.css";
 import { invoiceOffersOptions, offerRefunds } from "./invoice-offers";
 import { invoiceDocumentSchema as responseSchema } from "./invoice-document";
+import { Form } from "../../ui/Form";
 const currency = (amount: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
     amount / 100,
@@ -224,7 +225,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
               </a>
             </>
           ) : (
-            <form onSubmit={(event) => void submit(event)}>
+            <Form onSubmit={(event) => void submit(event)}>
               {/* Every term's line is laid out in one cell and only the
                   chosen one shows, so switching never moves the form. */}
               <div className={styles.price}>
@@ -329,7 +330,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
               <p className={styles.notice}>
                 Start learning today. Submit your invoice within 14 days.
               </p>
-            </form>
+            </Form>
           )}
         </>
       )}

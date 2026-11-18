@@ -111,14 +111,16 @@ function stripeValues(searchStr: string): PurchaseReturn | null {
 }
 
 /** Where a Stripe return lands: that learner's confirmation, or (a learner
- * return this account can't place) Billing, saying so. */
+ * return this account can't place, the billing portal's return) Billing at
+ * the account's own settings hub (a family's Settings), saying so. */
 async function resolveStripe(
   session: AuthSession,
   values: PurchaseReturn,
   kind: "learner" | "enrollment",
-  fallback: string | undefined,
+  fallback: "billing" | undefined,
 ): Promise<string | undefined> {
-  const { stripeReturnTarget } = await import("../features/pay/stripe-return");
+  const { stripeReturnTarget, billingHub } =
+    await import("../features/pay/stripe-return");
   const href = await stripeReturnTarget(
     session,
     {
@@ -130,7 +132,7 @@ async function resolveStripe(
   if (href) return href;
   if (kind === "learner" && values.purchaseId)
     useReturnNotices.getState().set(session.accountId, "purchase-unmatched");
-  return fallback;
+  return fallback ? billingHub(session) : undefined;
 }
 
 /** Stripe's return to a learner's checkout (at `/`) or a parent's
@@ -141,7 +143,7 @@ export async function stripeReturn(
   location: Location,
   kind: "learner" | "enrollment",
   session: AuthSession | null,
-  fallback?: string,
+  fallback?: "billing",
 ) {
   const values = stripeValues(location.searchStr);
   if (!values) return;
@@ -178,12 +180,7 @@ export async function resumeStripeReturn() {
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
   clearPurchaseReturn();
-  const href = await resolveStripe(
-    session,
-    kept,
-    "learner",
-    "/account/billing",
-  );
+  const href = await resolveStripe(session, kept, "learner", "billing");
   throw redirect({ href: href ?? "/account/billing", replace: true });
 }
 
@@ -192,7 +189,7 @@ export async function resumeStripeReturn() {
 export async function homeReturn(location: Location) {
   const search = (location.search ?? {}) as Record<string, unknown>;
   const session = await queryClient.ensureQueryData(sessionOptions);
-  await stripeReturn(location, "learner", session, "/account/billing");
+  await stripeReturn(location, "learner", session, "billing");
   if (!session) return;
   if ("signed-in" in search) {
     // A provider's sign-in: a sign-up intent kept from before its redirect

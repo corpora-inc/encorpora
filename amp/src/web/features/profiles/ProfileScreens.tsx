@@ -42,6 +42,7 @@ import { LevelScreen } from "./LevelScreen";
 import { setLevelDraft, useLevelDraft } from "./level-draft";
 import styles from "./Profiles.module.css";
 import { useToRoot } from "../../nav/root";
+import { Form } from "../../ui/Form";
 
 const paceOptions: SegmentedOption<ProfilePace>[] = profilePaces.map(
   (pace) => ({
@@ -166,9 +167,8 @@ function ProfileForm({
   const summary = levelsSummary(levels);
   return (
     <>
-      <form
+      <Form
         className={styles.form}
-        noValidate
         onSubmit={(event: FormEvent) => {
           event.preventDefault();
           if (empty || pending) return;
@@ -244,7 +244,7 @@ function ProfileForm({
           </Button>
           {aside}
         </div>
-      </form>
+      </Form>
       <Dialog
         aboveNavigation
         fullOnPhone

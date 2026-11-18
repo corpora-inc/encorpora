@@ -108,9 +108,9 @@
 }
 /* Edit name: outlined, the same size and type as its neighbours. */
 .family-actions .secondary {
-  border: 1px solid var(--color-border-strong);
-  background: transparent;
-  color: var(--color-primary);
+  border: 1px solid var(--button-secondary-edge);
+  background: var(--button-secondary);
+  color: var(--button-on-secondary);
   font-size: inherit;
 }
 .family-secondary,

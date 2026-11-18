@@ -64,7 +64,10 @@
     border-radius: var(--radius-panel) var(--radius-panel) 0 0;
     animation-name: from-bottom;
   }
-  .tall {
+  /* A frame (ui/LayerFrame, nav/RouteSheet) whose panel asks for the full
+     height (`SheetPanel`'s `tall`) takes it while that panel shows. */
+  .tall,
+  .sheet:has(> * > [data-sheet-tall]) {
     height: 88dvh;
   }
   /* A phone's header is compact: the title a step down the type scale, the
@@ -87,13 +90,15 @@
   }
   /* Content that arrives later can fill in the detail line: it has its one
      line from the start, so nothing moves when it lands. */
-  .tall .heading {
+  .tall .heading,
+  .sheet:has(> * > [data-sheet-tall]) .heading {
     min-height: calc(
       (44px - var(--text-heading-3) * 1.25) / 2 + var(--text-heading-3) * 1.25 +
         var(--text-table) * 1.35
     );
   }
-  .tall .description {
+  .tall .description,
+  .sheet:has(> * > [data-sheet-tall]) .description {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

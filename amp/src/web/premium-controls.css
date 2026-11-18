@@ -32,8 +32,9 @@
   stroke-linejoin: round;
 }
 .premium-select:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 3px;
+  outline: none;
+  border-color: var(--color-focus-ring);
+  box-shadow: var(--field-focus);
 }
 .premium-options {
   width: min(420px, calc(100vw - 32px));

@@ -65,12 +65,37 @@ test("the week's minutes each day, every child's together, and the skills earned
   expect(days).toHaveLength(7);
   expect(days[0]!.getAttribute("aria-label")).toMatch(/30 min · 2 problems/);
   expect(days[1]!.getAttribute("aria-label")).toMatch(/5 min/);
-  // A quiet day says so; today is the one marked.
-  expect(days[3]!.getAttribute("aria-label")).toMatch(/no practice/);
+  // Today is the one marked.
   expect(days[2]!.getAttribute("aria-label")).toMatch(/^Today/);
+  // A day still ahead keeps its slot but offers nothing: no tip on hover or
+  // tap, no focus stop, nothing for a screen reader.
+  for (const ahead of [...days].slice(3)) {
+    expect(ahead.getAttribute("data-tip")).toBeNull();
+    expect(ahead.getAttribute("tabindex")).toBeNull();
+    expect(ahead.getAttribute("aria-hidden")).toBe("true");
+  }
+  for (const past of [...days].slice(0, 3)) {
+    expect(past.getAttribute("data-tip")).toBeTruthy();
+    expect(past.getAttribute("tabindex")).toBe("0");
+  }
   // Day initials under the columns, no caption inside the axis.
   expect(days[0]!.textContent).toBe("M");
   expect(screen.queryByText(/Minutes per day/)).toBeNull();
+});
+
+test("a quiet day already past says so", () => {
+  time("pip", [["2026-11-17", 5]]);
+  time("wren", []);
+  render(
+    <QueryClientProvider client={queryClient}>
+      <FamilyWeek place={place(5)} />
+    </QueryClientProvider>,
+  );
+  const monday = screen.getByRole("group", {
+    name: "Practice time each day this week",
+  }).children[0]!;
+  expect(monday.getAttribute("data-tip")).toMatch(/no practice/);
+  expect(monday.getAttribute("tabindex")).toBe("0");
 });
 
 test("nothing before the week's first practice", () => {

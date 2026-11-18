@@ -12,6 +12,7 @@ import { currentSession, refreshSchool } from "../api";
 import { Actions, Aside, PlainPage, plainStyles } from "../PlainPage";
 import { Authorization } from "./Authorization";
 import { pilotApi } from "./api";
+import { Form } from "../../../ui/Form";
 
 /** One request per visit, kept on this device, so a retry or a reload
  * never makes a second school. */
@@ -103,7 +104,7 @@ export function SchoolCreateScreen() {
   }
   return (
     <PlainPage title="Set up your school">
-      <form
+      <Form
         className={plainStyles.form}
         onSubmit={(event) => {
           event.preventDefault();
@@ -139,7 +140,7 @@ export function SchoolCreateScreen() {
             Create school
           </Button>
         </Actions>
-      </form>
+      </Form>
       <Aside>
         <Button
           variant="quiet"

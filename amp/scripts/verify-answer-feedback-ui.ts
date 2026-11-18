@@ -392,6 +392,11 @@ try {
               dock: b.toJSON(),
               surface: surface.getBoundingClientRect().toJSON(),
               radius: getComputedStyle(sheet).borderTopLeftRadius,
+              flush: [
+                getComputedStyle(sheet).borderTopRightRadius,
+                getComputedStyle(sheet).borderBottomRightRadius,
+                getComputedStyle(sheet).borderBottomLeftRadius,
+              ].join(" "),
             };
           });
         assert(
@@ -400,13 +405,16 @@ try {
           `${mode} ${width}: the sheet fills the answer column: ${JSON.stringify(column)}`,
         );
         // Immersive: no card around practice. The stage meets the screen's
-        // edges, and the panel is flush to the right and bottom edges.
+        // edges, and the panel is flush to the right and bottom edges. Its
+        // free corner, under the bar beside the problem, is rounded, never
+        // a hard right angle against the bar's rule.
         assert(
           column.surface.left <= 1 &&
             column.surface.right >= width - 1 &&
             column.sheet.right >= width - 1 &&
             column.sheet.bottom >= height - 1 &&
-            column.radius === "0px",
+            column.radius === "20px" &&
+            column.flush === "0px 0px 0px",
           `${mode} ${width}: practice is edge to edge, the panel flush: ${JSON.stringify(column)}`,
         );
       } else await why.click();

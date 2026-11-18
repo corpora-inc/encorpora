@@ -16,6 +16,7 @@ import { OrgFrame } from "./OrgFrame";
 import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
+import { Form } from "../../ui/Form";
 
 /** A seat count as the overview writes it: 9,992, not 9992. */
 const count = (value: number | undefined) =>
@@ -30,7 +31,7 @@ function RequestSeats({ orgId, waiting }: { orgId: string; waiting: number }) {
   const [error, setError] = useState("");
   useLoggedError(error);
   return (
-    <form
+    <Form
       className={styles.seatRequest}
       onSubmit={(event) => {
         event.preventDefault();
@@ -86,7 +87,7 @@ function RequestSeats({ orgId, waiting }: { orgId: string; waiting: number }) {
       >
         Request seats
       </Button>
-    </form>
+    </Form>
   );
 }
 

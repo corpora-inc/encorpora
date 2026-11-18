@@ -421,16 +421,19 @@
   flex: 0 1 auto;
   min-width: 0;
   padding-inline: var(--space-4);
-  border: 1px solid var(--color-border-strong);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
+  /* The shared secondary button: Next stays the one primary action. */
+  border: 1px solid var(--button-secondary-edge);
+  background: var(--button-secondary);
+  color: var(--button-on-secondary);
   font-size: 15px;
-  font-weight: 650;
+  font-weight: var(--button-weight);
 }
 @media (hover: hover) {
   .mixed-action:hover:not(:disabled) {
-    background: var(--color-secondary);
-    color: var(--color-on-secondary);
+    background: var(--button-secondary-hover);
+    border-color: var(--button-secondary-edge-hover);
+    color: var(--button-on-secondary);
+    filter: none;
   }
 }
 
@@ -570,8 +573,12 @@
   /* Absolutely placed in the answer column's grid area: the panel covers the
      column it replaces, flush to the screen's right and bottom edges and to
      the bar above, whatever the answer form's height. Its tone and the rule
-     on its left divide it from the problem; no card, radius or shadow. Both
-     grid lines are explicit; an auto end line would mean the padding edge. */
+     on its left divide it from the problem; no card or shadow. Its one free
+     corner, under the bar beside the problem, is rounded: a sheet resting
+     in the column, never a hard right angle against the bar's rule. The
+     rule tapers into the curve (no top border), so the bar keeps its one
+     line. Both grid lines are explicit; an auto end line would mean the
+     padding edge. */
   .practice-surface > .feedback {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -583,7 +590,7 @@
     padding: var(--space-5) var(--space-5)
       calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
     border-width: 0 0 0 1px;
-    border-radius: 0;
+    border-radius: var(--radius-panel) 0 0 0;
     box-shadow: none;
   }
   /* The column's full height: the result reads at the top, the worked

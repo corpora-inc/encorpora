@@ -198,14 +198,13 @@ const cases: Case[] = [
   {
     name: "fail-auth-config",
     fail: "auth-config",
-    pending: "improve-first-visit: sign-in configuration retry",
+    // Still open after improve-first-visit (#2422): `/` needs the sign-in
+    // configuration to choose the pitch (home-decision.ts) and the app's
+    // session (auth.ts), so a failed lookup shows the full-screen route
+    // error at `/` instead of the pitch, and Try it free is never offered.
+    pending: "`/` shows the pitch when the sign-in configuration fails",
   },
-  {
-    name: "fail-intent",
-    fail: "intent",
-    continueWithGoogle: true,
-    pending: "improve-first-visit: the sign-up intent doesn't block",
-  },
+  { name: "fail-intent", fail: "intent", continueWithGoogle: true },
   { name: "fail-events", fail: "events", continueWithGoogle: true },
   { name: "deploy-once", fail: "sign-up-chunk-once" },
   { name: "deploy-stuck", fail: "sign-up-chunk" },

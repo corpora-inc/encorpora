@@ -25,7 +25,8 @@ export type Finding = {
     | "skip-miss-mark"
     | "feedback-gap"
     | "motion-under-reduce"
-    | "tinted-answer";
+    | "tinted-answer"
+    | "needless-scroll";
   selector: string;
   text: string;
   detail: string;
@@ -161,12 +162,50 @@ export async function probe(page: Page): Promise<Finding[]> {
           // or on another control's visible box.
           const cx = r.left + r.width / 2,
             cy = r.top + r.height / 2;
+          // The pixel the browser hit-tests: a fractional point rounds, so
+          // one just inside a viewport or scrollport edge is tested (and
+          // clipped) on the far side of it, like the centre check below.
           const points = [
             [0, -21],
             [0, 21],
             [-21, 0],
             [21, 0],
-          ].map(([dx, dy]) => [cx + dx!, cy + dy!] as const);
+          ].map(
+            ([dx, dy]) =>
+              [Math.round(cx + dx!), Math.round(cy + dy!)] as const,
+          );
+          // Nor may the area cover any part of another control's visible
+          // box: the word sits above its neighbours (z-index), so it would
+          // take that control's presses there. Other words' areas may
+          // overlap it; each is a full target.
+          const area = {
+            left: cx - w / 2,
+            right: cx + w / 2,
+            top: cy - h / 2,
+            bottom: cy + h / 2,
+          };
+          for (const other of root.querySelectorAll(interactive)) {
+            if (other === e || other.contains(e) || e.contains(other)) continue;
+            if (!visible(other) || (other as HTMLButtonElement).disabled)
+              continue;
+            if (
+              getComputedStyle(other).display.startsWith("inline") &&
+              other.parentElement?.closest("p, li, h1, h2, h3, legend, label, dd")
+            )
+              continue;
+            const o = other.getBoundingClientRect();
+            const across =
+              Math.min(area.right, o.right) - Math.max(area.left, o.left);
+            const down =
+              Math.min(area.bottom, o.bottom) - Math.max(area.top, o.top);
+            if (across > 0.5 && down > 0.5)
+              found.push({
+                kind: "small-target",
+                selector: name(e),
+                text: text(e),
+                detail: `inline hit area overlaps ${name(other)} "${text(other).slice(0, 30)}" by ${Math.round(across)}×${Math.round(down)}`,
+              });
+          }
           const onScreen = points.every(
             ([x, y]) => x >= 0 && y >= 0 && x < innerWidth && y < innerHeight,
           );
@@ -517,6 +556,70 @@ export async function probe(page: Page): Promise<Finding[]> {
             });
         }
       }
+    // A problem that fits its stage does not scroll. With no sheet, keypad
+    // or dialog over it, the stage's scroll range is exactly what the
+    // problem paints: a reservation (bottom padding, a min-height, a spacer)
+    // that makes a fitting problem scrollable, or leaves it scrolled, is a
+    // defect. The problem's natural height is measured from what it paints
+    // (text, controls, figures, bordered or filled boxes, an entry's reserved
+    // preview line) plus the content's own padding, so an empty reservation
+    // never counts as content.
+    const stageEl = document.querySelector<HTMLElement>(".problem-stage");
+    const contentEl = stageEl?.querySelector<HTMLElement>(".problem-content");
+    if (
+      stageEl &&
+      contentEl &&
+      !dialog &&
+      !sheet &&
+      !document.querySelector(".work-keypad")
+    ) {
+      const top = contentEl.getBoundingClientRect().top;
+      const cs = getComputedStyle(contentEl);
+      let bottom = top + (parseFloat(cs.paddingTop) || 0);
+      const painted = (e: Element) => {
+        // An entry's preview line is reserved on purpose (no shift when it
+        // fills), so it counts as the problem's own height.
+        if (
+          e.matches(
+            "img, svg, canvas, video, input, button, textarea, .work-note",
+          )
+        )
+          return true;
+        for (const n of e.childNodes)
+          if (n.nodeType === 3 && n.textContent?.trim()) return true;
+        const s = getComputedStyle(e);
+        const border = (["Top", "Right", "Bottom", "Left"] as const).some(
+          (side) =>
+            parseFloat(
+              s.getPropertyValue(`border-${side.toLowerCase()}-width`),
+            ) > 0 &&
+            s.getPropertyValue(`border-${side.toLowerCase()}-style`) !== "none",
+        );
+        const fill =
+          s.backgroundImage !== "none" ||
+          !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(s.backgroundColor);
+        return border || fill;
+      };
+      for (const e of contentEl.querySelectorAll("*")) {
+        if (!visible(e) || e.closest(".sr-only, .katex-mathml")) continue;
+        if (!painted(e)) continue;
+        bottom = Math.max(bottom, e.getBoundingClientRect().bottom);
+      }
+      const natural = Math.ceil(
+        bottom - top + (parseFloat(cs.paddingBottom) || 0),
+      );
+      const overflow = stageEl.scrollHeight - stageEl.clientHeight;
+      if (
+        natural <= stageEl.clientHeight &&
+        (overflow > 1 || stageEl.scrollTop > 0)
+      )
+        found.push({
+          kind: "needless-scroll",
+          selector: name(stageEl),
+          text: "",
+          detail: `problem paints ${natural}px in a ${stageEl.clientHeight}px stage, yet scrolls ${stageEl.scrollHeight}px (scrollTop ${Math.round(stageEl.scrollTop)})`,
+        });
+    }
     // Answer fields are plain paper with a clear border: their fill is the
     // answer role (white in light, the page in dark), never a cream tint.
     const probeColor = document.createElement("span");

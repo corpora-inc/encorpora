@@ -105,7 +105,12 @@ export function ParentConsentCenter({
     };
   }, [identity]);
   async function act(kind: "begin" | "ack" | "withdraw") {
-    if (kind === "begin" && !emailInput.current?.reportValidity()) return;
+    // The field says what is wrong in its own line (ui/field-validation.ts),
+    // never in a browser bubble.
+    if (kind === "begin" && emailInput.current?.checkValidity() === false) {
+      emailInput.current.focus();
+      return;
+    }
     if (pending.current) return;
     pending.current = true;
     const current = epoch.current;

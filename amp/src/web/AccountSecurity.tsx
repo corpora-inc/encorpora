@@ -13,6 +13,7 @@ import { buttonClass } from "./ui/Button";
 import "./account-security.css";
 import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
 import { LinkCleverButton } from "./features/school/clever/LinkCleverButton";
+import { Form } from "./ui/Form";
 
 type Summary = {
   email: string;
@@ -291,7 +292,7 @@ export function AccountSecurity({
                         {summary.passkeys.map((key) => (
                           <div className="security-method" key={key.id}>
                             {rename === key.id ? (
-                              <form
+                              <Form
                                 onSubmit={(e) =>
                                   submit(e, async () => {
                                     checked(
@@ -327,7 +328,7 @@ export function AccountSecurity({
                                     Cancel
                                   </button>
                                 </div>
-                              </form>
+                              </Form>
                             ) : (
                               <>
                                 <strong>{key.name || "Passkey"}</strong>
@@ -361,7 +362,7 @@ export function AccountSecurity({
                           </div>
                         ))}
                         {!rename && (
-                          <form
+                          <Form
                             onSubmit={(e) =>
                               submit(e, async () => {
                                 checked(
@@ -385,14 +386,14 @@ export function AccountSecurity({
                               placeholder="For example, personal laptop"
                             />
                             <button disabled={busy}>Add passkey</button>
-                          </form>
+                          </Form>
                         )}
                       </>
                     )}
                     {id === "password" &&
                       (summary.passwords ? (
                         summary.hasPassword ? (
-                          <form
+                          <Form
                             onSubmit={(e) =>
                               submit(e, async () => {
                                 checked(
@@ -425,7 +426,7 @@ export function AccountSecurity({
                               other sessions.
                             </p>
                             <button disabled={busy}>Change password</button>
-                          </form>
+                          </Form>
                         ) : (
                           <>
                             <p>
@@ -487,7 +488,7 @@ export function AccountSecurity({
                                 )}
                               </code>
                             </details>
-                            <form
+                            <Form
                               onSubmit={(e) =>
                                 submit(e, async () => {
                                   checked(
@@ -509,6 +510,9 @@ export function AccountSecurity({
                                 inputMode="numeric"
                                 autoComplete="one-time-code"
                                 pattern="[0-9]{6}"
+                                messages={{
+                                  pattern: "Enter the 6 digits from the app.",
+                                }}
                                 required
                                 maxLength={6}
                                 value={code}
@@ -517,10 +521,10 @@ export function AccountSecurity({
                                 }
                               />
                               <button disabled={busy}>Verify and enable</button>
-                            </form>
+                            </Form>
                           </>
                         ) : (
-                          <form
+                          <Form
                             onSubmit={(e) =>
                               submit(e, async () => {
                                 if (summary.twoFactorEnabled) {
@@ -589,7 +593,7 @@ export function AccountSecurity({
                                 </button>
                               )}
                             </div>
-                          </form>
+                          </Form>
                         )}
                         {feedback}
                         {!!backupCodes.length && (

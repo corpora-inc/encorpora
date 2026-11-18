@@ -19,6 +19,7 @@ import { schoolsOptions } from "./org-api";
 import { SchoolTable } from "./OverviewScreen";
 import schoolStyles from "../School.module.css";
 import { z } from "zod";
+import { Form } from "../../../ui/Form";
 
 function AddSchool({
   orgId,
@@ -70,7 +71,7 @@ function AddSchool({
   };
   return (
     <Sheet open={open} onOpenChange={onOpenChange} title="Add a school">
-      <form
+      <Form
         className={schoolStyles.sheetForm}
         onSubmit={(event) => {
           event.preventDefault();
@@ -112,7 +113,7 @@ function AddSchool({
         >
           Add school
         </Button>
-      </form>
+      </Form>
     </Sheet>
   );
 }
