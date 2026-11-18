@@ -29,6 +29,11 @@ import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
 import { recordPrint } from "../schools/help-events.js";
 import { recordLearnerActivity } from "../schools/evidence.js";
+import {
+  recordCheckin,
+  type CheckinKind,
+  type CheckinRole,
+} from "../learning/checkins.js";
 import { readLearnerSkill } from "../schools/teacher-reads.js";
 import type { StudentSkillResponse } from "../schools/teacher-contracts.js";
 import {
@@ -198,6 +203,10 @@ export class ApiError extends Error {
     super(message);
   }
 }
+/** Whose sign-in made a practice change (migration 0145): a student's own
+ * session, or an account's. An account's sign-in on a family device is the
+ * parent's and the child's alike, so `account` can't say which of them. */
+export type PracticeChangeSource = "student" | "account";
 export interface LearnerTransaction {
   practiceSettings(): Promise<PracticeSettings>;
   practiceChange(
@@ -206,6 +215,7 @@ export interface LearnerTransaction {
   savePracticeChange(
     change: PracticeChange,
     result: PracticeSettings,
+    madeIn?: PracticeChangeSource,
   ): Promise<void>;
   startingPoint(): Promise<PracticeStartingPoint>;
   setStartingPoint(band: StartingBand): Promise<void>;
@@ -285,6 +295,13 @@ export interface Repository {
     lessonId: string,
     kind: string,
   ): Promise<void>;
+  /** Records an adult checking in on a learner (`learning/checkins.ts`). */
+  recordCheckin?(
+    log: Parameters<typeof recordCheckin>[1],
+    learnerId: string,
+    role: CheckinRole,
+    kind: CheckinKind,
+  ): Promise<void>;
   /** Credits a heartbeat of active time and help to one of the account's
    * learners (`recordLearnerActivity`). False when it has no such learner. */
   recordActivity?(
@@ -338,6 +355,14 @@ export class PostgresRepository implements Repository {
   readonly pool: Pool;
   recordPrint(learnerId: string, lessonId: string, kind: string) {
     return recordPrint(this.pool, learnerId, lessonId, kind);
+  }
+  recordCheckin(
+    log: Parameters<typeof recordCheckin>[1],
+    learnerId: string,
+    role: CheckinRole,
+    kind: CheckinKind,
+  ) {
+    return recordCheckin(this.pool, log, learnerId, role, kind);
   }
   recordActivity(accountId: string, learnerId: string, body: unknown) {
     return recordLearnerActivity(this.pool, accountId, learnerId, body);
@@ -746,14 +771,19 @@ export class PgTransaction implements LearnerTransaction {
     return rows[0] as
       { change: PracticeChange; result: PracticeSettings } | undefined;
   }
-  async savePracticeChange(change: PracticeChange, result: PracticeSettings) {
+  async savePracticeChange(
+    change: PracticeChange,
+    result: PracticeSettings,
+    madeIn?: PracticeChangeSource,
+  ) {
     await this.db.query(
-      "INSERT INTO amp_practice_changes(learner_id,request_id,change,result) VALUES($1,$2,$3,$4)",
+      "INSERT INTO amp_practice_changes(learner_id,request_id,change,result,made_in) VALUES($1,$2,$3,$4,$5)",
       [
         this.learnerId,
         change.requestId,
         JSON.stringify(change),
         JSON.stringify(result),
+        madeIn ?? null,
       ],
     );
     await this.db.query(

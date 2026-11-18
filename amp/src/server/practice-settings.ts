@@ -4,7 +4,11 @@ import { historicalTemplates } from "../math/historical-templates";
 import { templates } from "../math/engine";
 import type { PracticeChange } from "../learning/practice-settings";
 import { strandEstimate, targetGrade } from "../learning/frontier";
-import { ApiError, type LearnerTransaction } from "./repository";
+import {
+  ApiError,
+  type LearnerTransaction,
+  type PracticeChangeSource,
+} from "./repository";
 import { templateGrade } from "./mixed-practice";
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
@@ -14,6 +18,8 @@ const nodes = new Map(skills.map((s) => [s.id, s]));
 export async function changePractice(
   tx: LearnerTransaction,
   change: PracticeChange,
+  /** Whose sign-in made it (`PracticeChangeSource`). */
+  madeIn?: PracticeChangeSource,
 ) {
   const receipt = await tx.practiceChange(change.requestId);
   if (receipt) {
@@ -105,6 +111,6 @@ export async function changePractice(
       throw new ApiError(400, "This skill has no practice problems.");
     next.focusSkillId = change.skillId;
   }
-  await tx.savePracticeChange(change, next);
+  await tx.savePracticeChange(change, next, madeIn);
   return next;
 }

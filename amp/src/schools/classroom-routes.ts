@@ -1,4 +1,5 @@
 import { workbookFilename, workbookDisposition } from "../workbook/filename.js";
+import { recordStaffCheckin } from "../learning/checkins.js";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
@@ -178,14 +179,24 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
     action: "workbooks.write",
     target: classParam,
     bodyLimit: 1024,
-    handler: async ({ request, reply, target, pool, services }) => {
+    handler: async ({ request, reply, actor, target, pool, services }) => {
+      const student = studentOf(request);
       const made = await makeStudentWorkbook(
         pool,
         learningFrom(services),
         target,
-        studentOf(request),
+        student,
         stackWorkbookSchema.parse(request.body),
       );
+      // A workbook made for one student is work assigned to them.
+      if (made.status === 201)
+        await recordStaffCheckin(
+          pool,
+          request.log,
+          actor,
+          { ...target, personId: student },
+          "assign",
+        );
       return reply.code(made.status).send(made.body);
     },
   });
@@ -246,6 +257,14 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
         workbook,
         entries,
       );
+      if (saved.recorded)
+        await recordStaffCheckin(
+          pool,
+          request.log,
+          actor,
+          { ...target, personId: student },
+          "score",
+        );
       if (saved.recorded)
         await recordEvent(pool, {
           orgId: target.orgId,

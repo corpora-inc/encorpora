@@ -30,6 +30,8 @@ export type PlayerOptions = {
   /** Called as playback starts and stops (the learner route counts it as
    * attention). */
   onPlayingChange?: (playing: boolean) => void;
+  /** Called when the film plays to its end. */
+  onEnded?: () => void;
 };
 export const filmClock = (s: number) =>
   `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -122,7 +124,8 @@ export function mountFilmPlayer(
   speedMenu.setAttribute("role", "menu");
   speedMenu.hidden = true;
   const fullscreen = el("button", "live-fullscreen", controls, "Full screen");
-  fullscreen.hidden = options.fullscreen === false || !document.fullscreenEnabled;
+  fullscreen.hidden =
+    options.fullscreen === false || !document.fullscreenEnabled;
   const plainClick = (event: MouseEvent) =>
     !event.metaKey && !event.ctrlKey && !event.shiftKey && event.button === 0;
   if (options.backHref && options.backLabel) {
@@ -288,6 +291,7 @@ export function mountFilmPlayer(
   audio.onended = () => {
     draw(duration);
     state();
+    options.onEnded?.();
   };
   audio.onseeked = () => draw(audio.currentTime);
   audio.onwaiting = () => waiting("Loading narration…");
@@ -309,8 +313,15 @@ export function mountFilmPlayer(
     speed.textContent = `${rate}×`;
     speed.setAttribute("aria-label", `Playback speed: ${rate}×`);
     for (const button of speedMenu.querySelectorAll("button"))
-      button.setAttribute("aria-checked", String(Number(button.dataset.rate) === rate));
-    try { localStorage.setItem("live-speed", String(rate)); } catch { /* Storage is optional. */ }
+      button.setAttribute(
+        "aria-checked",
+        String(Number(button.dataset.rate) === rate),
+      );
+    try {
+      localStorage.setItem("live-speed", String(rate));
+    } catch {
+      /* Storage is optional. */
+    }
   };
   const closeSpeed = () => {
     speedMenu.hidden = true;
@@ -321,13 +332,19 @@ export function mountFilmPlayer(
     const button = el("button", "live-speed-option", speedMenu, `${rate}×`);
     button.dataset.rate = String(rate);
     button.setAttribute("role", "menuitemradio");
-    button.onclick = () => { setRate(rate); closeSpeed(); speed.focus(); };
+    button.onclick = () => {
+      setRate(rate);
+      closeSpeed();
+      speed.focus();
+    };
   }
   let savedRate = 1;
   try {
     const value = Number(localStorage.getItem("live-speed"));
     if (rates.includes(value)) savedRate = value;
-  } catch { /* Storage is optional. */ }
+  } catch {
+    /* Storage is optional. */
+  }
   setRate(savedRate);
   speed.onclick = () => {
     const open = speedMenu.hidden;
@@ -339,7 +356,11 @@ export function mountFilmPlayer(
     if (!speedWrap.contains(event.target as Node)) closeSpeed();
   });
   speedWrap.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") { closeSpeed(); speed.focus(); event.stopPropagation(); }
+    if (event.key === "Escape") {
+      closeSpeed();
+      speed.focus();
+      event.stopPropagation();
+    }
   });
   fullscreen.onclick = () => {
     const operation = document.fullscreenElement

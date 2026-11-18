@@ -79,6 +79,7 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_ad_collection_withdrawals: "account",
   amp_ad_order_attribution: "account",
   amp_adult_activity: "learner",
+  amp_adult_checkins: "learner",
   amp_advertising_permissions: "account",
   amp_attempts: "learner",
   amp_auth_accounts: "sign-in",

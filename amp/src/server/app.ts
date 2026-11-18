@@ -570,8 +570,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
     // school account's.
     if (change.kind === "reset" || change.kind === "gradeLevel")
       assertFamilyManaged(account, request);
+    const madeIn =
+      studentBearer(request) || isSchoolAccount(account)
+        ? "student"
+        : "account";
     return options.repository.transaction(account, learnerId, (tx) =>
-      changePractice(tx, change),
+      changePractice(tx, change, madeIn),
     );
   });
   app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {

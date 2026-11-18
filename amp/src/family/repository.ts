@@ -579,6 +579,7 @@ export class FamilyRepository {
     for (const table of [
       "amp_active_days",
       "amp_adult_activity",
+      "amp_adult_checkins",
       "amp_learner_activity",
       "amp_learner_weeks",
       "amp_level_days",
@@ -863,6 +864,18 @@ export class FamilyRepository {
             "SELECT jsonb_build_object('learnerId',h.learner_id,'day',h.day,'kind',h.kind,'skillId',h.skill_id,'opened',h.opened) AS value FROM amp_help_days h JOIN amp_learners l ON l.id=h.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY h.learner_id,h.day,h.kind,h.skill_id",
           ],
         );
+      // When a parent or a teacher checked in on a child (migration 0145).
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_adult_checkins') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "adult-checkin",
+          "SELECT jsonb_build_object('learnerId',c.learner_id,'at',c.at,'role',c.role,'kind',c.kind) AS value FROM amp_adult_checkins c JOIN amp_learners l ON l.id=c.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY c.learner_id,c.at",
+        ]);
       if (
         (await client.query("SELECT to_regclass('amp_workbooks') AS relation"))
           .rows[0]?.relation

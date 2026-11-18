@@ -1,4 +1,5 @@
 import { createHash, createHmac, randomUUID } from "node:crypto";
+import { recordCheckin } from "../learning/checkins.js";
 import type { Pool, PoolClient } from "pg";
 import { SchoolError } from "./contracts.js";
 import { levelAndRange } from "../learning/level-check.js";
@@ -211,6 +212,7 @@ const shift = (iso: string, days: number) =>
 export async function parentView(
   pool: Pool,
   token: string,
+  log: Parameters<typeof recordCheckin>[1],
 ): Promise<ParentView> {
   if (!SHARE_TOKEN.test(token)) throw ended();
   const person = (
@@ -292,6 +294,8 @@ export async function parentView(
   const course = contexts
     .map((context) => courseBand(context.courseBands))
     .find(Boolean);
+  // Holding the school's parent link: a parent reading the record.
+  await recordCheckin(pool, log, person.learnerId, "parent", "view");
   return {
     student: { name: person.name, first: person.first },
     schoolName: school.name,

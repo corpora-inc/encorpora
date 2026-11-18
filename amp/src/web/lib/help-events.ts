@@ -1,7 +1,4 @@
-import type {
-  HelpEvent,
-  HelpSource,
-} from "../../schools/help-contracts";
+import type { HelpEvent, HelpSource } from "../../schools/help-contracts";
 
 /** Help a learner opens: a lesson, a hint, a worked explanation or a video.
  * Each one is queued here and rides on the next active-time heartbeat
@@ -25,7 +22,10 @@ export const HELP_PER_SEND = 20;
 
 const listeners = new Set<(note: HelpNote, at: number) => void>();
 /** Which kinds of help each unanswered problem had, newest problems last. */
-const usedBefore = new Map<string, Set<"hint" | "lesson" | "video" | "example">>();
+const usedBefore = new Map<
+  string,
+  Set<"hint" | "lesson" | "video" | "example">
+>();
 const REMEMBERED_PROBLEMS = 50;
 /** One hint step counts once per problem, however often it is reopened. */
 const hintsSeen = new Set<string>();
@@ -39,7 +39,12 @@ export function noteHelp(note: HelpNote, at = performance.now()) {
     if (hintsSeen.size > REMEMBERED_PROBLEMS * 4)
       hintsSeen.delete(hintsSeen.values().next().value!);
   }
-  if (note.problemId) {
+  // Playing a video is the same help as opening it, which already counts.
+  if (
+    note.problemId &&
+    note.kind !== "video_play" &&
+    note.kind !== "video_complete"
+  ) {
     const used = usedBefore.get(note.problemId) ?? new Set();
     used.add(note.kind);
     usedBefore.delete(note.problemId);

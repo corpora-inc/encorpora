@@ -129,7 +129,7 @@ export function registerCurriculumRoutes(
  * student. */
 export function registerShareExchange(scope: FastifyInstance, pool: Pool) {
   scope.post("/api/v1/school/share/view", limited, async (request) =>
-    parentView(pool, shareTokenSchema.parse(request.body).token),
+    parentView(pool, shareTokenSchema.parse(request.body).token, request.log),
   );
 }
 

@@ -1,4 +1,5 @@
 import { recordActivation } from "../analytics/activation.js";
+import { recordCheckin } from "../learning/checkins.js";
 import { STARTER_ANSWERS } from "../analytics/events.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import {
@@ -198,9 +199,17 @@ export async function registerFamilyRoutes(
         const { family, learner } = familyParams
           .extend({ learner: z.string().min(1).max(200) })
           .parse(request.params);
-        return familyChildProgressSchema.parse(
+        const progress = familyChildProgressSchema.parse(
           await familyChildProgress(options.pool, account, family, learner),
         );
+        await recordCheckin(
+          options.pool,
+          request.log,
+          learner,
+          "parent",
+          "view",
+        );
+        return progress;
       },
     );
     for (const csv of [false, true]) {
@@ -219,6 +228,13 @@ export async function registerFamilyRoutes(
             learner,
             period,
             from,
+          );
+          await recordCheckin(
+            options.pool,
+            request.log,
+            learner,
+            "parent",
+            "view",
           );
           if (!csv) return familyChildTimeSchema.parse(time);
           return reply
@@ -254,6 +270,13 @@ export async function registerFamilyRoutes(
           account,
           family,
           learner,
+        );
+        await recordCheckin(
+          options.pool,
+          request.log,
+          learner,
+          "parent",
+          "view",
         );
         const { html, footer } = progressReportHtml({
           paper: format,
