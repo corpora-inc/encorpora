@@ -94,6 +94,11 @@ function RouteSheetFrame({
           }}
           onCloseAutoFocus={(event) => {
             event.preventDefault();
+            // Focus goes back to the opener only if nothing has taken it
+            // since: a picker opened as the layer finished closing keeps
+            // it (moving focus would close that picker).
+            const active = document.activeElement;
+            if (active && active !== document.body) return;
             const target = opener.current;
             if (target?.isConnected && target !== document.body)
               target.focus({ preventScroll: true });
