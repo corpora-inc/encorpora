@@ -13,11 +13,16 @@ import type { AuthSession } from "../../../auth";
 
 const state = vi.hoisted(() => ({
   session: null as AuthSession | null,
+  /** The session check fails (a dropped request, a server hiccup). */
+  sessionFails: false,
   posts: [] as { url: string; body: unknown }[],
   refundPolicy: undefined as string | undefined,
 }));
 vi.mock("../../../auth", () => ({
-  accessSession: vi.fn(async () => state.session),
+  accessSession: vi.fn(async () => {
+    if (state.sessionFails) throw new TypeError("Failed to fetch");
+    return state.session;
+  }),
   authConfig: async () => ({
     mode: "accounts",
     passwords: true,
@@ -89,6 +94,7 @@ beforeEach(() => {
   localStorage.clear();
   sessionStorage.clear();
   state.session = null;
+  state.sessionFails = false;
   state.posts = [];
   state.refundPolicy = undefined;
   vi.stubGlobal("matchMedia", (query: string) => ({
@@ -248,3 +254,46 @@ test("Arizona ESA's Buy never promises a full refund", async () => {
   ).toBeTruthy();
   expect(screen.queryByText(/full refund/)).toBeNull();
 });
+
+// The session check itself failing never blocks the pitch: a browser no
+// account was last signed in on gets the landing page and a working Try it
+// free; one that was keeps the error and its Try again, never the pitch.
+test("an unreadable session at / is the pitch unless an account was known", async () => {
+  state.sessionFails = true;
+  const { router } = await open("/");
+  expect(
+    await screen.findByRole(
+      "heading",
+      { name: "Kids put in the time and AMP does the rest." },
+      { timeout: 10_000 },
+    ),
+  ).toBeTruthy();
+  expect(screen.queryByText("This screen could not be loaded.")).toBeNull();
+  await act(async () =>
+    fireEvent.click(screen.getAllByRole("button", { name: "Try it free" })[0]!),
+  );
+  await screen.findByRole(
+    "heading",
+    { name: "Sign-up screen" },
+    { timeout: 10_000 },
+  );
+  expect(router.state.location.pathname).toBe("/sign-up");
+}, 30_000);
+
+test("an unreadable session for a known account keeps the error, not the pitch", async () => {
+  state.sessionFails = true;
+  const { noteSignedIn } = await import("../../../lib/session-hint");
+  noteSignedIn(true);
+  await open("/");
+  expect(
+    await screen.findByText(
+      "This screen could not be loaded.",
+      {},
+      { timeout: 10_000 },
+    ),
+  ).toBeTruthy();
+  expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  expect(
+    screen.queryByText("Kids put in the time and AMP does the rest."),
+  ).toBeNull();
+}, 30_000);

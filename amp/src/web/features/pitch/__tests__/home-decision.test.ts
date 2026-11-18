@@ -12,16 +12,23 @@ const accounts = {
   passwords: true,
   providers: [],
 };
+/** The API's answers; `failed` makes a call fail as a dropped request. */
+const failed = Symbol("failed");
 function answer(config: unknown, session: unknown) {
   vi.stubGlobal(
     "fetch",
-    vi.fn(async (url: string) =>
-      url === "/api/v1/auth-config"
-        ? Response.json(config)
-        : url === "/api/auth/get-session"
-          ? Response.json(session)
-          : new Response(null, { status: 404 }),
-    ),
+    vi.fn(async (url: string) => {
+      const value =
+        url === "/api/v1/auth-config"
+          ? config
+          : url === "/api/auth/get-session"
+            ? session
+            : undefined;
+      if (value === failed) throw new TypeError("Failed to fetch");
+      return value === undefined
+        ? new Response(null, { status: 404 })
+        : Response.json(value);
+    }),
   );
 }
 beforeEach(() => {
@@ -92,4 +99,25 @@ test("a deployment that signs in elsewhere is the app's to decide", async () => 
   const fresh = await import("../home-decision");
   answer({ mode: "oidc" }, null);
   expect(await fresh.signedOutVisitor()).toBe(false);
+});
+
+// A blocker, a dropped request or a server hiccup on the sign-in methods
+// left `/` on a full-screen error, with no Try it free. Whether to show the
+// pitch is the session's answer; only the sign-in screens need the methods.
+test("the pitch doesn't wait on the sign-in configuration", async () => {
+  vi.resetModules();
+  const fresh = await import("../home-decision");
+  answer(failed, null);
+  expect(await fresh.signedOutVisitor(), "no one signed in").toBe(true);
+  vi.resetModules();
+  const again = await import("../home-decision");
+  answer(failed, { session: { token: "t" }, user: { id: "u" } });
+  expect(await again.signedOutVisitor(), "signed in").toBe(false);
+});
+
+test("a session that can't be read is the app's to decide", async () => {
+  vi.resetModules();
+  const fresh = await import("../home-decision");
+  answer(accounts, failed);
+  await expect(fresh.signedOutVisitor()).rejects.toThrow("Failed to fetch");
 });

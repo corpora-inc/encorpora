@@ -42,18 +42,29 @@ export function mayShowPitch(search: Record<string, unknown>): boolean {
 }
 
 /**
- * No one is signed in on this browser: AMP's own accounts, and no session.
- * These are the two answers the home document preloads
+ * No one is signed in on this browser: AMP's own session endpoint answers
+ * that no one is. These are the two answers the home document preloads
  * (`scripts/build-home-document.ts`), asked as the app asks them, so each
- * preload is used once. Anything else is the app's to decide.
+ * preload is used once. The sign-in configuration only rules out a
+ * deployment that signs in elsewhere: when it doesn't load, the session's
+ * answer decides (its endpoint exists only with AMP's own accounts), so the
+ * pitch never waits on the sign-in methods, which only the sign-in screens
+ * need (and retry). A session that can't be read is the app's to decide.
  */
 export async function signedOutVisitor(): Promise<boolean> {
   const [config, session] = await Promise.all([
-    fetchAuthConfig(),
+    fetchAuthConfig().catch((error: unknown) => {
+      console.warn("`/` decides without the sign-in configuration", error);
+      return null;
+    }),
     fetch("/api/auth/get-session", {
       credentials: "include",
       signal: AbortSignal.timeout(10000),
     }).then((response) => (response.ok ? response.json() : undefined)),
   ]);
-  return config.mode === "accounts" && session === null && showsPitch(null);
+  return (
+    (config === null || config.mode === "accounts") &&
+    session === null &&
+    showsPitch(null)
+  );
 }
