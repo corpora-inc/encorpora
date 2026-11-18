@@ -190,6 +190,9 @@ try {
             strands: {},
           },
         });
+      // The family's Settings read its second parent (none here).
+      if (path === "/api/v1/family/second-parent")
+        return route.fulfill({ json: { secondParent: null } });
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -278,9 +281,8 @@ try {
       afterClose,
       "unmounted consent response cannot invalidate or refresh parent state",
     );
-    await page.evaluate((hash) => {
-      location.hash = hash;
-    }, fragment);
+    // The email's link again (the center closed to the page behind it).
+    await page.goto(`http://127.0.0.1:4387/${fragment}`);
     await page.getByRole("heading", { name: "Review and respond" }).waitFor();
     const otherAccount = page.waitForResponse(
       (response) =>
@@ -348,7 +350,8 @@ try {
     await page
       .getByRole("button", { name: "Continue to family", exact: true })
       .click();
-    await page.getByText("Consent is active.", { exact: true }).waitFor();
+    // It closes to the page behind it.
+    await page.locator(".parent-consent-center").waitFor({ state: "detached" });
     assert.deepEqual(faults, []);
     await page.close();
   }

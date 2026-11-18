@@ -888,10 +888,11 @@ async function journeys(browser: Browser, engine: string) {
     await printer.page
       .getByText(`${students.length} workbooks ready, ${expected} pages.`)
       .waitFor();
-    // The URL holds the number, so a refresh and a reprint are the same set.
+    // The set is the screen's view (school view store), never a query
+    // string; the reload below proves a refresh keeps it.
     check(
-      `${engine} the set is in the URL`,
-      printer.page.url().includes("set=1"),
+      `${engine} the set is off the URL`,
+      !new URL(printer.page.url()).search,
       printer.page.url(),
     );
     const made = await db.query(
@@ -1507,7 +1508,8 @@ async function sweep(
     await settle(picking.page, 900);
     await geometry(picking.page, `${label} two boards`);
     await shoot(picking.page, engine, "standings-two-boards", width, theme);
-    await picker.getByRole("radio", { name: /./ }).first().click();
+    // Back to the other board.
+    await picker.getByRole("radio", { checked: false }).click();
     await heading(picking.page, "Growth this term").waitFor();
     await picking.context.close();
     contexts.splice(contexts.indexOf(picking.context), 1);
