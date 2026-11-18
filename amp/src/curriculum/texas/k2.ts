@@ -1376,7 +1376,7 @@ const courses: readonly TexasCourse[] = [
       [
         "g2-clock-minute",
         ["9.G"],
-        ["clock-five-minutes"],
+        ["clock-minutes"],
         [],
         "Read an analog clock to the nearest minute",
         "Missing demand: Times not on a five-minute mark; one-minute increments and digital clock matching. Suggested family: read-clock-minute.",

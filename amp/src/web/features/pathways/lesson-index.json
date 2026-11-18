@@ -121,7 +121,7 @@
   "clock-am-pm": ["Morning or evening time","clock-five-minutes"],
   "clock-elapsed-minutes": ["Elapsed minutes","elapsed-time"],
   "clock-hour-read": ["Name the hour","clock-half-hours"],
-  "clock-minute-match": ["Clocks to the minute","clock-five-minutes"],
+  "clock-minute-match": ["Clocks to the minute","clock-minutes"],
   "coin-name-and-cent-value": ["Name a coin and write its value","money-values"],
   "coin-total": ["Count coins","money-values"],
   "combination-count": ["Count unordered selections","permutations-combinations"],
