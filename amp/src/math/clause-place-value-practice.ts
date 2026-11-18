@@ -1099,19 +1099,27 @@ function columnsWork(
   } else {
     const value = [...top];
     for (let k = 3; k >= 1; k--) {
-      const lent = value[k]! !== top[k]!;
-      if (value[k]! < bottom[k]!) {
-        value[k] = value[k]! + 10;
+      const place = PLACES[k]!.toLowerCase(),
+        left = PLACES[k - 1]!.toLowerCase().replace(/s$/, "");
+      // What the column holds after giving 1 to the column on its right.
+      const after = value[k]!,
+        lent = after !== top[k]!,
+        borrow = after < bottom[k]!;
+      if (borrow) {
+        value[k] = after + 10;
         value[k - 1] = value[k - 1]! - 1;
       }
       if (value[k] !== top[k]) mark[k] = value[k]!;
-      const borrowed = value[k]! >= 10 && top[k]! - (lent ? 1 : 0) < bottom[k]!;
+      const why =
+        borrow && after < 0
+          ? `There are no ${place} to give, so exchange 1 ${left} for 10 ${place} and give 1 to the right: ${value[k]} ${place} are left. `
+          : borrow
+            ? `${lent ? `${after} after the exchange; ` : ""}${after} is less than ${bottom[k]}, so exchange 1 ${left} for 10 ${place}. `
+            : lent
+              ? `${after} after the exchange. `
+              : "";
       lines.unshift(
-        `${PLACES[k]}: ${
-          borrowed
-            ? `${top[k]! - (lent ? 1 : 0)} is less than ${bottom[k]}, so exchange 1 ${PLACES[k - 1]!.toLowerCase().replace(/s$/, "")} for 10 ${PLACES[k]!.toLowerCase()}. `
-            : ""
-        }${value[k]} − ${bottom[k]} = ${value[k]! - bottom[k]!}.`,
+        `${PLACES[k]}: ${why}${value[k]} − ${bottom[k]} = ${value[k]! - bottom[k]!}.`,
       );
     }
   }
