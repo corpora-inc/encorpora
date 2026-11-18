@@ -1086,29 +1086,6 @@
     ],
     "skill": "clock-half-hours"
   },
-  "clock-minute-match": {
-    "id": "read-clock-five-minutes--sr",
-    "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
-    "title": "Two hands tell the time",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
-    "duration": 119.94,
-    "teacher": "Madeline Brousseaux",
-    "capability": "lesson-film-v2",
-    "editions": [
-      {
-        "voices": {
-          "teacher": "XescS24CsOySAkKrLAO3",
-          "learner": "SYXbTJsLE7zmSjr1DchT"
-        },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
-        "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
-        "duration": 119.94
-      }
-    ],
-    "skill": "clock-five-minutes"
-  },
   "coin-name-and-cent-value": {
     "id": "compare-money-sets--sc",
     "version": "32a1fe2b4a82200d52f858e243c552148f1d50ba40a2aa296e4fced701fc03f3",
