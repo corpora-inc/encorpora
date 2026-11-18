@@ -57,6 +57,7 @@ import { recordPendingIntent, recordSignupIntent } from "./signup-intent";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { useBrowserHandoff } from "./OpenInBrowser";
 import { Form } from "../../ui/Form";
+import { FieldError } from "../../ui/field-validation";
 
 /** The sign-up code's length (server/sign-in-methods.ts SIGN_UP_CODE_LENGTH). */
 const SIGN_UP_CODE_DIGITS = 6;
@@ -216,6 +217,10 @@ export function SignInScreen() {
                 : "",
   );
   useLoggedError(error);
+  // A failure that belongs to one field shows in that field's line only
+  // (ui/field-validation.ts FieldError), never also as the toast.
+  const [fieldError, setFieldError] = useState<FieldError | null>(null);
+  useLoggedError(fieldError?.message ?? "");
   // A notice carried from another screen (an email that already has an
   // account) shows once, on arrival.
   const [notice, setNotice] = useState(() => useAuthDraft.getState().notice);
@@ -226,6 +231,7 @@ export function SignInScreen() {
   function go(next: Step | "create-password") {
     setStep(next);
     setError("");
+    setFieldError(null);
     setNotice("");
     setMethodHint(null);
   }
@@ -418,12 +424,17 @@ export function SignInScreen() {
   ) {
     setBusy(true);
     setError("");
+    setFieldError(null);
     try {
       if (stage) await measureAuth(stage, work);
       else await work();
     } catch (failure) {
       console.warn("A sign-in step didn’t finish", failure);
       setPending(null);
+      if (failure instanceof FieldError) {
+        setFieldError(failure);
+        return;
+      }
       setError(
         failure instanceof TypeError
           ? "We couldn’t connect. Check your connection and try again."
@@ -488,6 +499,7 @@ export function SignInScreen() {
   function showCode(address: string) {
     setEmailCode("");
     setCodeFor(address);
+    setFieldError(null);
     setNotice("");
   }
   function confirmCode(event: FormEvent) {
@@ -506,7 +518,8 @@ export function SignInScreen() {
       const refused = result.error as
         (typeof result.error & { code?: string }) | null;
       if (refused)
-        throw new Error(
+        throw new FieldError(
+          "code",
           refused.code === "OTP_EXPIRED"
             ? "That code expired. Send a new code and enter it here."
             : refused.code === "TOO_MANY_ATTEMPTS"
@@ -878,7 +891,13 @@ export function SignInScreen() {
               }}
               maxLength={SIGN_UP_CODE_DIGITS + 2}
               value={emailCode}
-              onChange={(e) => setEmailCode(e.target.value)}
+              error={
+                fieldError?.field === "code" ? fieldError.message : undefined
+              }
+              onChange={(e) => {
+                setEmailCode(e.target.value);
+                setFieldError(null);
+              }}
             />
             <Button
               variant="primary"
