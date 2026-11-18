@@ -19,6 +19,8 @@ export function LessonVideo({
   const heading = useId();
   const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [played, setPlayed] = useState(false);
+  const [completed, setCompleted] = useState(false);
   useHelpSurface(!!help && open, "video", help?.problemId);
   useEffect(() => (playing ? attendWhilePlaying() : undefined), [playing]);
   const [attempt, setAttempt] = useState(0);
@@ -39,6 +41,10 @@ export function LessonVideo({
               problemId: help.problemId,
             });
           if (open) setPlaying(false);
+          else {
+            setPlayed(false);
+            setCompleted(false);
+          }
           setOpen(!open);
         }}
         aria-expanded={open}
@@ -59,9 +65,33 @@ export function LessonVideo({
               poster={video.assets.poster.url}
               src={video.assets.video.url}
               aria-label={video.title}
-              onPlaying={() => setPlaying(true)}
+              onPlaying={() => {
+                // Its playback, once per opening: started, then played to
+                // the end (`video` records the opening itself).
+                if (help && !played) {
+                  setPlayed(true);
+                  noteHelp({
+                    kind: "video_play",
+                    source: help.source,
+                    ref: templateId,
+                    problemId: help.problemId,
+                  });
+                }
+                setPlaying(true);
+              }}
               onPause={() => setPlaying(false)}
-              onEnded={() => setPlaying(false)}
+              onEnded={() => {
+                setPlaying(false);
+                if (help && !completed) {
+                  setCompleted(true);
+                  noteHelp({
+                    kind: "video_complete",
+                    source: help.source,
+                    ref: templateId,
+                    problemId: help.problemId,
+                  });
+                }
+              }}
               onError={() =>
                 setError(
                   "The video could not load. Try again or read the transcript below.",

@@ -18,6 +18,14 @@ import "./film-route.css";
 
 /** Where the film was opened (the entry before it in this tab's history):
  * a path inside this app, never a film itself (lib/return-to.ts). */
+/** Where help opened from, by the screen the film was opened over. */
+const sourceOf = (back: string) =>
+  back.startsWith("/practice")
+    ? "practice"
+    : back.startsWith("/lessons")
+      ? "lessons"
+      : "pathways";
+
 export function filmFrom(value: unknown) {
   const from = returnTarget(value);
   return from && !/^\/lessons\/[^/?#]+\/watch(?:[?#]|$)/.test(from)
@@ -74,11 +82,7 @@ export function FilmScreen() {
     if (film)
       noteHelp({
         kind: "video",
-        source: back.startsWith("/practice")
-          ? "practice"
-          : back.startsWith("/lessons")
-            ? "lessons"
-            : "pathways",
+        source: sourceOf(back),
         ref: templateId,
         problemId,
       });
@@ -88,6 +92,11 @@ export function FilmScreen() {
     const previous = document.title;
     document.title = `${film.title} · AMP`;
     let attending: (() => void) | null = null;
+    let played = false;
+    let completed = false;
+    // Its playback, once per opening: started, and played to the end.
+    const playback = (kind: "video_play" | "video_complete") =>
+      noteHelp({ kind, source: sourceOf(back), ref: templateId, problemId });
     const dispose = mountFilmPlayer(host.current, {
       ...film,
       // An overlay over where it was opened: ✕ closes to it, as the
@@ -96,6 +105,15 @@ export function FilmScreen() {
       onPlayingChange: (playing) => {
         attending?.();
         attending = playing ? attendWhilePlaying() : null;
+        if (playing && !played) {
+          played = true;
+          playback("video_play");
+        }
+      },
+      onEnded: () => {
+        if (completed) return;
+        completed = true;
+        playback("video_complete");
       },
     });
     return () => {
@@ -103,7 +121,7 @@ export function FilmScreen() {
       dispose();
       document.title = previous;
     };
-  }, [film, ready, back, router]);
+  }, [film, ready, back, router, templateId, problemId]);
   return (
     <main className="film-route" ref={host}>
       {metadata.isPending || film ? (

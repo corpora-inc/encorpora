@@ -10,6 +10,9 @@ export const helpKinds = [
   "print",
 ] as const;
 export type HelpKind = (typeof helpKinds)[number];
+/** A video's playback, beside its opening (`video`): it was played, and
+ * played to its end (migration 0145). Not help an answer had. */
+export const videoPlaybackKinds = ["video_play", "video_complete"] as const;
 /** Where it was opened. */
 export const helpSources = [
   "practice",
@@ -39,7 +42,7 @@ const ref = z
   .optional();
 export const helpEventSchema = z.strictObject({
   /** A print is recorded by the server when it sends the PDF, never claimed. */
-  kind: z.enum(["lesson", "hint", "example", "video"]),
+  kind: z.enum(["lesson", "hint", "example", "video", ...videoPlaybackKinds]),
   source: z.enum(helpSources),
   /** The problem type (template id), or a reference lesson's id. */
   ref,
@@ -84,4 +87,3 @@ export const helpWeekResource = z.object({
     person: z.number(),
   }),
 });
-

@@ -1,4 +1,5 @@
 import type { AccountMail } from "../email/email.js";
+import { recordStaffCheckin } from "../learning/checkins.js";
 import { classPracticeGate, inSnapshot } from "./pilot-access.js";
 import { joinTeacherPilot } from "./pilots.js";
 import { adultNameSql } from "../account/profile.js";
@@ -568,15 +569,17 @@ defineSchoolRoute({
   action: "students.read",
   target: ({ params }) =>
     ({ kind: "student", personId: params.student! }) as const,
-  handler: async ({ request, target, pool }) => {
+  handler: async ({ request, actor, target, pool }) => {
     const range = rangeSchema.parse(request.query);
     const roster = await studentRoster(pool, target.personId);
-    return {
+    const read = {
       range,
       totals: (await totals(pool, roster, range))[0] ?? null,
       days: await perDay(pool, roster, range),
       skills: await perSkill(pool, roster, range),
     };
+    await recordStaffCheckin(pool, request.log, actor, target, "view");
+    return read;
   },
 });
 defineSignInRoutes(defineSchoolRoute);

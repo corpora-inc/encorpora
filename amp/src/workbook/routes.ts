@@ -489,6 +489,20 @@ export function registerWorkbookRoutes(
             return { status: made.status, body: workbookSummary(made.record) };
           },
         );
+        // A new workbook made for a child from a grown-up's sign-in is work
+        // assigned to them (an adult's own is their own practice).
+        if (
+          result.status === 201 &&
+          !trial &&
+          !isSchoolAccount(accountId) &&
+          !studentBearer(request)
+        )
+          await options.repository.recordCheckin?.(
+            request.log,
+            learnerId,
+            "parent",
+            "assign",
+          );
         // Answer only after the transaction commits.
         return reply.code(result.status).send(result.body);
       },
@@ -577,6 +591,13 @@ export function registerWorkbookRoutes(
             };
           },
         );
+        if (result.recorded)
+          await options.repository.recordCheckin?.(
+            request.log,
+            learnerId,
+            "parent",
+            "score",
+          );
         return reply.send(result);
       } catch (error) {
         if (error instanceof PaperEntryError)

@@ -1,4 +1,5 @@
 import type { FastifyReply } from "fastify";
+import { recordStaffCheckin } from "../learning/checkins.js";
 import { z } from "zod";
 import { createProfile, studentLevels } from "../account/practice-profiles.js";
 import { FamilyRepository } from "../family/repository.js";
@@ -227,6 +228,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         can(actor, "grades.write", target),
       );
       if (!evidence) throw new SchoolError(404, "not_found");
+      await recordStaffCheckin(
+        pool,
+        request.log,
+        actor,
+        { ...target, personId: student },
+        "view",
+      );
       return evidence;
     },
   });
@@ -250,7 +258,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/students/:student/time`,
     action: "students.read",
     target: classParam,
-    handler: async ({ request, target, pool, services }) => {
+    handler: async ({ request, actor, target, pool, services }) => {
       const { period, from } = timeQuerySchema.parse(request.query);
       const { student } = request.params as { student: string };
       const time = await readStudentTime(
@@ -261,6 +269,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         from,
       );
       if (!time) throw new SchoolError(404, "not_found");
+      await recordStaffCheckin(
+        pool,
+        request.log,
+        actor,
+        { ...target, personId: student },
+        "view",
+      );
       return time;
     },
   });
@@ -437,7 +452,11 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
-    handler: ({ actor, target, pool }) => studentRecord(pool, actor, target),
+    handler: async ({ request, actor, target, pool }) => {
+      const record = await studentRecord(pool, actor, target);
+      await recordStaffCheckin(pool, request.log, actor, target, "view");
+      return record;
+    },
   });
   // One skill, for a skill layer: a student's counts and answers on it, or
   // a class's counts. Whoever can read the student or the class.
@@ -447,10 +466,11 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
-    handler: async ({ request, target, pool }) => {
+    handler: async ({ request, actor, target, pool }) => {
       const { skill } = skillParams.parse(request.params);
       const found = await readStudentSkill(pool, target.personId, skill);
       if (!found) throw new SchoolError(404, "not_found");
+      await recordStaffCheckin(pool, request.log, actor, target, "view");
       return found;
     },
   });
@@ -472,7 +492,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
-    handler: async ({ request, target, pool }) => {
+    handler: async ({ request, actor, target, pool }) => {
       const { attempt } = workParams.parse(request.params);
       const { skill } = workQuery.parse(request.query);
       const replay = await readWorkReplay(
@@ -482,6 +502,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         skill,
       );
       if (!replay) throw new SchoolError(404, "not_found");
+      await recordStaffCheckin(pool, request.log, actor, target, "view");
       return replay;
     },
   });
@@ -537,6 +558,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         "Progress report",
       );
       if (!pdf) throw new SchoolError(503, "report_unavailable", 30);
+      await recordStaffCheckin(pool, request.log, actor, target, "view");
       return download(
         reply,
         "application/pdf",
