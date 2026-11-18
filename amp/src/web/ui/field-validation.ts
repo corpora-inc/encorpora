@@ -182,3 +182,19 @@ export function useFieldValidation({
     },
   };
 }
+
+/**
+ * A failure that belongs to one field (a code that doesn't match, an address
+ * the server refused). A form's action throws it; the form says it in that
+ * field's line (TextField `error`) and nowhere else: never also in a toast.
+ * The one error pattern: inline at its cause, or a toast, never both.
+ */
+export class FieldError extends Error {
+  constructor(
+    readonly field: string,
+    message: string,
+  ) {
+    super(message);
+    this.name = "FieldError";
+  }
+}
