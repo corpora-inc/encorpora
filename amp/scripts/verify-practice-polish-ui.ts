@@ -79,6 +79,8 @@ export const CASES = [
   ["work-fill", "scale-drawing-work"],
   ["work-proof", "two-column-congruence-proof"],
   ["work-diagram", "partial-products-by-place"],
+  ["work-captions", "bracket-steps"],
+  ["shape-composer", "compose-flat-shape"],
 ] as const;
 const SIZES: [number, number][] = [
   [320, 568],
@@ -109,6 +111,8 @@ const VERIFY = [
   "figure-choice",
   "work-steps",
   "work-diagram",
+  "work-captions",
+  "shape-composer",
 ];
 const browsers =
   list(process.env.AUDIT_BROWSERS) ??
@@ -238,6 +242,8 @@ async function mockApi(context: BrowserContext, templateId: string) {
         "trig-equation-solutions": "95d3e70d-9422-4921-b88f-0407b2bb0fad",
         "randomization-test-decision": "tablet-independent-5",
         "order-whole-numbers-slots": "721a617f-1a51-4990-8ce8-4357815eb50e",
+        // Five pieces in the tray, the most a stage holds.
+        "compose-flat-shape": "polish-compose-flat-shape-8",
       };
       const problem = generateProblemFor(
         state.templateId,
@@ -405,6 +411,11 @@ async function fill(page: Page, kind: string) {
       await page.keyboard.press("ArrowRight");
       await page.keyboard.press("ArrowUp");
     }
+    return;
+  }
+  if (kind === "shape-composer") {
+    await page.locator(".shape-tray button").first().click();
+    await page.locator(".shape-grid button").first().click();
     return;
   }
   if (kind.startsWith("work")) {
@@ -719,6 +730,78 @@ async function runCase(
       ...(deep ? { axe: await axe(page) } : {}),
       ...(deep && !phone ? { focus: await focusWalk(page) } : {}),
     });
+    if (label.startsWith("work")) {
+      // A step of several fields names each box above it, visibly, and its
+      // boxes stay level whatever their names' lengths.
+      const named = await page.evaluate(() =>
+        [...document.querySelectorAll(".work-row")].flatMap((row) => {
+          const cells = [
+            ...row.querySelectorAll<HTMLElement>(
+              ".work-fields > .work-cell, .work-cells > .work-cell",
+            ),
+          ];
+          if (
+            cells.length < 2 ||
+            !row.querySelector(".work-fields[data-captioned]")
+          )
+            return [];
+          const boxes = cells.map((c) =>
+            c
+              .querySelector(".work-input, .work-choice, .work-given")!
+              .getBoundingClientRect(),
+          );
+          const captions = cells.map((c) => {
+            const e = c.querySelector<HTMLElement>(".work-cell-caption");
+            const b = e?.getBoundingClientRect();
+            return {
+              text: e?.textContent?.trim() ?? "",
+              shown: !!b && b.height > 0 && b.width > 0,
+            };
+          });
+          const level = boxes.every(
+            (b) =>
+              b.top >= boxes[0]!.bottom ||
+              b.bottom <= boxes[0]!.top ||
+              Math.abs(b.top - boxes[0]!.top) <= 1,
+          );
+          return [{ captions, level }];
+        }),
+      );
+      if (label === "work-captions" || label === "work-steps")
+        assert.ok(named.length > 0, `${label}: a step of several fields`);
+      for (const step of named) {
+        assert.ok(
+          step.captions.every((c) => c.text && c.shown),
+          `${label} ${width}×${height}: every field of a step is named: ${JSON.stringify(step.captions)}`,
+        );
+        assert.ok(
+          step.level,
+          `${label} ${width}×${height}: a step's boxes are level`,
+        );
+      }
+    }
+    if (label === "shape-composer") {
+      // Five pieces sit in one tray row at every width, and on a phone the
+      // whole problem fits its stage: no scroll to reach a piece.
+      const fit = await page.evaluate(() => {
+        const buttons = [...document.querySelectorAll(".shape-tray button")];
+        const stage = document.querySelector(".problem-stage")!;
+        return {
+          pieces: buttons.length,
+          rows: new Set(
+            buttons.map((b) => Math.round(b.getBoundingClientRect().top)),
+          ).size,
+          overflow: stage.scrollHeight - stage.clientHeight,
+        };
+      });
+      assert.equal(fit.pieces, 5, "The five-piece tray is the rendered stage");
+      assert.equal(fit.rows, 1, `${width}×${height}: the tray is one row`);
+      if (phone && height >= 700)
+        assert.ok(
+          fit.overflow <= 1,
+          `${width}×${height}: the shape problem fits its stage (${fit.overflow}px over)`,
+        );
+    }
     // Touch phones answer on AMP's keypad: the system keyboard never rises
     // over the problem for numeric or worked entry.
     if (phone && browserName === "chromium") {
@@ -786,78 +869,84 @@ async function runCase(
     before = await anchors(page);
     await fill(page, label);
     await record("filled", before);
-    before = await anchors(page);
-    api.grade = false;
-    const check = visibleCheck(page);
-    if (!(await check.isEnabled()))
-      throw new Error("Check stayed disabled after fill");
-    await check.click();
-    await page.locator(".feedback.incorrect").waitFor();
-    await page.waitForTimeout(300);
-    await record("incorrect", before, deep ? { axe: await axe(page) } : {});
-    // Right
-    await page.locator(".next-action").click();
-    await page.locator(".feedback").waitFor({ state: "detached" });
-    await page.waitForTimeout(200);
-    await takeShifts(page);
-    const slotBoxes = () =>
-      page.locator(".multi-part-slots").evaluate((list) => {
-        const scroll = list.closest(".problem-stage")!.scrollTop;
-        return [
-          ...list.querySelectorAll(".multi-part-slot-label, .multi-part-blank"),
-        ].map((element) => {
-          const r = element.getBoundingClientRect();
-          return [r.x, r.y + scroll, r.width, r.height].map(Math.round);
-        });
-      });
-    const unfilledSlots = label === "parts-slots" ? await slotBoxes() : null;
-    if (unfilledSlots) await record("long-options", null);
-    before = await anchors(page);
-    await fill(page, label);
-    if (unfilledSlots) {
-      assert.deepEqual(
-        await slotBoxes(),
-        unfilledSlots,
-        "Choosing long options preserves the label and picker positions",
-      );
-      await record("long-options-filled", before);
-    }
-    before = await anchors(page);
-    api.grade = true;
-    await visibleCheck(page).click();
-    await page.locator(".feedback.correct").waitFor();
-    await page.waitForTimeout(1300);
-    await record("correct", before);
-    if (unfilledSlots)
-      assert.deepEqual(
-        await slotBoxes(),
-        unfilledSlots,
-        "Feedback preserves the label and picker positions",
-      );
-    const why = page.getByRole("button", { name: "See why", exact: true });
-    if (await why.count()) {
+    // The composer's review redraws the board above the feedback sheet; its
+    // own suite (verify-shape-composer-ui.ts) checks those states.
+    if (label !== "shape-composer") {
       before = await anchors(page);
-      await why.first().click();
+      api.grade = false;
+      const check = visibleCheck(page);
+      if (!(await check.isEnabled()))
+        throw new Error("Check stayed disabled after fill");
+      await check.click();
+      await page.locator(".feedback.incorrect").waitFor();
+      await page.waitForTimeout(300);
+      await record("incorrect", before, deep ? { axe: await axe(page) } : {});
+      // Right
+      await page.locator(".next-action").click();
+      await page.locator(".feedback").waitFor({ state: "detached" });
       await page.waitForTimeout(200);
-      await record(
-        "see-why",
-        (await page.locator("dialog[open]").count()) ? null : before,
-      );
-      if (await page.locator("dialog[open]").count()) {
-        await page.keyboard.press("Escape");
+      await takeShifts(page);
+      const slotBoxes = () =>
+        page.locator(".multi-part-slots").evaluate((list) => {
+          const scroll = list.closest(".problem-stage")!.scrollTop;
+          return [
+            ...list.querySelectorAll(
+              ".multi-part-slot-label, .multi-part-blank",
+            ),
+          ].map((element) => {
+            const r = element.getBoundingClientRect();
+            return [r.x, r.y + scroll, r.width, r.height].map(Math.round);
+          });
+        });
+      const unfilledSlots = label === "parts-slots" ? await slotBoxes() : null;
+      if (unfilledSlots) await record("long-options", null);
+      before = await anchors(page);
+      await fill(page, label);
+      if (unfilledSlots) {
+        assert.deepEqual(
+          await slotBoxes(),
+          unfilledSlots,
+          "Choosing long options preserves the label and picker positions",
+        );
+        await record("long-options-filled", before);
       }
+      before = await anchors(page);
+      api.grade = true;
+      await visibleCheck(page).click();
+      await page.locator(".feedback.correct").waitFor();
+      await page.waitForTimeout(1300);
+      await record("correct", before);
+      if (unfilledSlots)
+        assert.deepEqual(
+          await slotBoxes(),
+          unfilledSlots,
+          "Feedback preserves the label and picker positions",
+        );
+      const why = page.getByRole("button", { name: "See why", exact: true });
+      if (await why.count()) {
+        before = await anchors(page);
+        await why.first().click();
+        await page.waitForTimeout(200);
+        await record(
+          "see-why",
+          (await page.locator("dialog[open]").count()) ? null : before,
+        );
+        if (await page.locator("dialog[open]").count()) {
+          await page.keyboard.press("Escape");
+        }
+      }
+      // Skip
+      await page.locator(".next-action").click();
+      await page.locator(".feedback").waitFor({ state: "detached" });
+      await page.waitForTimeout(200);
+      await takeShifts(page);
+      before = await anchors(page);
+      const skip = page.getByRole("button", { name: /Skip/ }).first();
+      await skip.click();
+      await page.locator(".feedback.skipped").waitFor();
+      await page.waitForTimeout(300);
+      await record("skipped", before);
     }
-    // Skip
-    await page.locator(".next-action").click();
-    await page.locator(".feedback").waitFor({ state: "detached" });
-    await page.waitForTimeout(200);
-    await takeShifts(page);
-    before = await anchors(page);
-    const skip = page.getByRole("button", { name: /Skip/ }).first();
-    await skip.click();
-    await page.locator(".feedback.skipped").waitFor();
-    await page.waitForTimeout(300);
-    await record("skipped", before);
   } catch (error) {
     const screenshot = `${dir}/${label}-error.png`;
     await page.screenshot({ path: screenshot }).catch(() => {});
@@ -1060,7 +1149,8 @@ async function probeSelfTest(browser: Browser) {
   await page.locator("p").evaluate((p) => {
     const word = p.querySelector(".t")!.getBoundingClientRect();
     const centre = word.top + word.height / 2;
-    (p as HTMLElement).style.marginTop = `${120 + innerHeight - 21 - 0.43 - centre}px`;
+    (p as HTMLElement).style.marginTop =
+      `${120 + innerHeight - 21 - 0.43 - centre}px`;
   });
   const atEdge = await probe(page);
   await page.setContent(
@@ -1266,6 +1356,16 @@ try {
         for (const theme of themes)
           jobs.push(() =>
             runCase(browser, name, phoneCase, [384, 688], theme, "account"),
+          );
+    // A 360 px phone, where the five-piece tray once wrapped to two rows
+    // and the problem needed a scroll.
+    if (!process.env.AUDIT_SIZES)
+      for (const phoneCase of cases.filter(
+        ([label]) => label === "shape-composer",
+      ))
+        for (const theme of themes)
+          jobs.push(() =>
+            runCase(browser, name, phoneCase, [360, 740], theme, "account"),
           );
     let next = 0;
     await Promise.all(

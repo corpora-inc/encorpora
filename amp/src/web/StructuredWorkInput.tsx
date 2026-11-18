@@ -483,6 +483,25 @@ export function StructuredWorkInput({
     r.rows.every((row) => row.fields.every((f) => f.kind === "number"));
   // What an open list adds: its row label ("Pair") when it has one.
   const item = r.open && r.rows[0]?.label ? r.rows[0].label : noun;
+  // A step with two or more fields names each one over its box, so the boxes
+  // are never told apart by position alone. Names that are all the same
+  // would only repeat ("Coefficient", "Coefficient"); a unit tells those
+  // apart. An open list's rows share one shape, so its first row names the
+  // columns for the rest.
+  const captioned = (row: WorkRow, i: number) =>
+    r.layout === "steps" &&
+    row.fields.length > 1 &&
+    new Set(row.fields.map((f) => f.label)).size > 1 &&
+    (!r.open || i === 0);
+  // A hyphenated name ("Second bring-down") wraps at its space, never at
+  // its hyphen.
+  const caption = (f: WorkField) => (
+    <span className="work-cell-caption" aria-hidden="true">
+      <MathText
+        text={f.label.includes("$") ? f.label : f.label.replace(/-/g, "\u2011")}
+      />
+    </span>
+  );
 
   function press(k: string) {
     if (!active || locked) return;
@@ -930,21 +949,32 @@ export function StructuredWorkInput({
         const row = rowShape(r, i);
         // An open list's row label names its item ("Pair"), not each row.
         const label = r.open ? undefined : row.label;
+        const named = captioned(row, i);
         return (
           <li key={i} className="work-row" data-mark={markOf(i)}>
             <span className="work-number" aria-hidden="true">
               {i + 1}
             </span>
-            <span className="work-fields">
+            <span
+              className="work-fields"
+              data-captioned={named ? "" : undefined}
+            >
               {label && (
                 <span className="work-label">
                   <MathText text={label} />
                 </span>
               )}
               {compact ? (
-                <span className="work-cells">
+                <span
+                  className="work-cells"
+                  // Named columns keep one width on every row of the list.
+                  data-captioned={
+                    (r.open ? captioned(r.rows[0]!, 0) : named) ? "" : undefined
+                  }
+                >
                   {row.fields.map((f, j) => (
                     <span key={j} className="work-cell" data-field={f.kind}>
+                      {named && caption(f)}
                       {fieldControl(i, j, f, row)}
                     </span>
                   ))}
@@ -952,11 +982,7 @@ export function StructuredWorkInput({
               ) : (
                 row.fields.map((f, j) => (
                   <span key={j} className="work-cell" data-field={f.kind}>
-                    {r.layout === "proof" && (
-                      <span className="work-cell-caption" aria-hidden="true">
-                        {f.label}
-                      </span>
-                    )}
+                    {(r.layout === "proof" || named) && caption(f)}
                     {fieldControl(i, j, f, row)}
                   </span>
                 ))

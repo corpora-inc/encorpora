@@ -202,21 +202,25 @@
 .shape-composer[data-resolved] .shape-grid button::before {
   visibility: hidden;
 }
+/* The tray is one row: a column for each piece (at most six), each piece
+   drawn to fit its column, so the board, tray and tools fit a phone's stage
+   with no scroll. */
 .shape-tray {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(var(--tray-count, 4), minmax(0, 1fr));
+  gap: 4px;
   padding: 8px 0;
 }
 .shape-tray button {
   position: relative;
   min-width: 0;
-  min-height: 88px;
+  min-height: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 2px;
-  padding: 4px;
+  padding: 4px 3px;
   touch-action: none;
   white-space: normal;
   border-width: 2px;
@@ -236,8 +240,43 @@
   font-size: 0.75rem;
   line-height: 1.25;
 }
-.shape-tray button > span:not(.shape-piece-check) {
+/* A piece's name sits under it where the longest name ("trapezoid") fits a
+   column whole: 72 px a column. A narrower tray shows the pieces alone; each
+   button still names its piece. Every piece in a tray shows its name or none
+   does, from the first frame. */
+.shape-piece-name {
+  display: none;
   min-height: 2.5em;
+}
+@container (min-width: 72px) {
+  .shape-tray[data-count="1"] .shape-piece-name {
+    display: block;
+  }
+}
+@container (min-width: 148px) {
+  .shape-tray[data-count="2"] .shape-piece-name {
+    display: block;
+  }
+}
+@container (min-width: 224px) {
+  .shape-tray[data-count="3"] .shape-piece-name {
+    display: block;
+  }
+}
+@container (min-width: 300px) {
+  .shape-tray[data-count="4"] .shape-piece-name {
+    display: block;
+  }
+}
+@container (min-width: 376px) {
+  .shape-tray[data-count="5"] .shape-piece-name {
+    display: block;
+  }
+}
+@container (min-width: 452px) {
+  .shape-tray[data-count="6"] .shape-piece-name {
+    display: block;
+  }
 }
 .shape-tray [data-placed] .shape-piece-icon {
   opacity: 0.4;
