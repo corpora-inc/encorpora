@@ -1,0 +1,2142 @@
+{
+ "id": "equivalent-numerator--se",
+ "title": "Generating equivalent fractions",
+ "skill": "fraction-equivalence",
+ "teaches": [
+  "equivalent-denominator",
+  "fraction-equivalence-choice",
+  "equivalent-fractions-select",
+  "equivalent-fractions-number-line"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     1,
+     10,
+     9.4
+    ],
+    "points": {
+     "o": [
+      1,
+      7
+     ],
+     "nm": [
+      5,
+      2.3
+     ],
+     "ma": [
+      6.3333,
+      7.3
+     ],
+     "mb": [
+      6.3333,
+      3.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "b",
+      "bar": "o",
+      "w": 8,
+      "h": 2.8,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "n23",
+      "label": "\\frac{2}{3}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n46",
+      "label": "\\frac{4}{6}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n69",
+      "label": "\\frac{6}{9}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "mk",
+      "seg": [
+       "ma",
+       "mb"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "dash": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two fractions: two thirds, and four sixths. Which one is more?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which is more: $\\frac{2}{3}$ or $\\frac{4}{6}$?",
+       "at": "Two"
+      },
+      {
+       "do": "shade",
+       "target": "b",
+       "to": 0.6666667,
+       "at": "thirds",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four sixths! Those numbers are bigger, so it must be more.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{4}{6}>\\frac{2}{3}\\;?",
+       "id": "guess",
+       "at": "Four",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "more"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is the guess almost everyone makes. Bigger numbers feel like a bigger amount. But numbers can fool us. So let's watch the pieces.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "amount",
+       "until": "But"
+      },
+      {
+       "do": "text",
+       "text": "Numbers can fool us.",
+       "at": "But"
+      },
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "pieces"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here is two thirds. One whole bar, cut into three equal pieces. Two of the pieces are shaded.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "whole",
+       "until": "cut"
+      },
+      {
+       "do": "show",
+       "target": "b.unit",
+       "at": "equal"
+      },
+      {
+       "do": "hide",
+       "target": "b.unit",
+       "at": "Two",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "shaded"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now make one cut. It runs along the whole bar, and splits every piece in two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "partition",
+       "target": "b",
+       "into": 6,
+       "at": "cut",
+       "dur": 3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The shaded pieces split. The empty pieces split too. Every single piece.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "shaded",
+       "until": "empty"
+      },
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "Every"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now count. Six pieces in the whole bar. Four of them shaded.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "Six",
+       "until": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "n23",
+       "at": "Six",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "n46",
+       "at": "pieces",
+       "dur": 0.5
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Wait. The shaded part did not change at all! It ends in exactly the same place.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "shaded",
+       "until": "It"
+      },
+      {
+       "do": "show",
+       "target": "mk",
+       "at": "same",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It did not. Same amount, a different name. Two thirds equals four sixths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{2}{3}=\\frac{4}{6}",
+       "at": "Two",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look at the numbers. Two shaded pieces became four. Three pieces in the whole became six. Both times, two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{2}{3}=\\frac{2\\times2}{3\\times2}=\\frac{4}{6}",
+       "at": "numbers"
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "shaded",
+       "until": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": "b.title",
+       "at": "Three",
+       "until": "Both"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So there are more pieces, but each piece is smaller!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "b.unit",
+       "at": "each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Now put the bar back, and this time, cut every piece into three.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "b.unit"
+      },
+      {
+       "do": "partition",
+       "target": "b",
+       "into": 3,
+       "at": "back",
+       "dur": 1.2
+      },
+      {
+       "do": "hide",
+       "target": "n46",
+       "at": "back",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "n23",
+       "at": "and",
+       "dur": 0.5
+      },
+      {
+       "do": "partition",
+       "target": "b",
+       "into": 9,
+       "at": "cut",
+       "dur": 2.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine pieces. Six of them shaded. Six ninths.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "n23",
+       "at": "Nine",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "n69",
+       "at": "pieces",
+       "dur": 0.5
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{2}{3}=\\frac{2\\times3}{3\\times3}=\\frac{6}{9}",
+       "at": "Six",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And the shading? Still ending in exactly the same place.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "mk",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So four sixths is not more. They are equal!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "strike",
+       "target": "guess",
+       "at": "not"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut every piece the same way, and the amount never changes. Only the number of pieces does.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "amount",
+       "until": "Only"
+      },
+      {
+       "do": "text",
+       "text": "Same amount. Only the number of pieces changes.",
+       "at": "Only"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1,
+     10,
+     9.4
+    ],
+    "points": {
+     "o": [
+      1,
+      7
+     ],
+     "nm": [
+      5,
+      2.3
+     ],
+     "ma": [
+      7,
+      7.3
+     ],
+     "mb": [
+      7,
+      3.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "b",
+      "bar": "o",
+      "w": 8,
+      "h": 2.8,
+      "divisions": 8,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "n68",
+      "label": "\\frac{6}{8}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n34",
+      "label": "\\frac{3}{4}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "mk",
+      "seg": [
+       "ma",
+       "mb"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "dash": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now let's run it backward. Here is six eighths: eight pieces, and six of them shaded.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Make $\\frac{6}{8}$ with fewer, bigger pieces."
+      },
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "eight",
+       "until": "and"
+      },
+      {
+       "do": "shade",
+       "target": "b",
+       "to": 0.75,
+       "at": "six",
+       "nth": 2,
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That is a lot of tiny pieces. Can we use fewer?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "b.unit",
+       "at": "tiny"
+      },
+      {
+       "do": "hide",
+       "target": "b.unit",
+       "at": "Can"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We can, if we join the pieces in pairs. Watch the cuts fade away, two pieces at a time.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "pairs",
+       "until": "Watch"
+      },
+      {
+       "do": "partition",
+       "target": "b",
+       "into": 4,
+       "at": "fade",
+       "dur": 3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four pieces now, and three of them shaded. Six eighths is three fourths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "Four",
+       "until": "three"
+      },
+      {
+       "do": "hide",
+       "target": "n68",
+       "at": "Four",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "n34",
+       "at": "pieces",
+       "dur": 0.5
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{6}{8}=\\frac{6\\div2}{8\\div2}=\\frac{3}{4}",
+       "at": "Six",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We divided the top by two, and the bottom by two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "top",
+       "until": "bottom"
+      },
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "bottom"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And the shading never moved!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "mk",
+       "at": "shading",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Joining pieces and cutting pieces are the same idea. When every piece is treated the same way, the amount stays put.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Treat every piece the same way: the amount stays put.",
+       "at": "When"
+      },
+      {
+       "do": "highlight",
+       "target": "mk",
+       "at": "stays"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1,
+     10,
+     9.4
+    ],
+    "points": {
+     "o": [
+      1,
+      7
+     ],
+     "nm": [
+      5,
+      2.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "b",
+      "bar": "o",
+      "w": 8,
+      "h": 2.8,
+      "divisions": 4,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "n34",
+      "label": "\\frac{3}{4}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n912",
+      "label": "\\frac{9}{12}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A quick one. Three fourths equals what, over twelve? We need the missing top number.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac{3}{4}=\\frac{?}{12}$"
+      },
+      {
+       "do": "shade",
+       "target": "b",
+       "to": 0.75,
+       "at": "Three",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Fourths to twelfths. Twelve is three times four!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "b.unit",
+       "at": "Fourths"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So every fourth gets cut into three smaller pieces.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "b.unit"
+      },
+      {
+       "do": "partition",
+       "target": "b",
+       "into": 12,
+       "at": "cut",
+       "dur": 2.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve pieces in the whole. Now count the shaded ones: nine.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "Twelve",
+       "until": "Now"
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "shaded"
+      },
+      {
+       "do": "hide",
+       "target": "n34",
+       "at": "ones",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "n912",
+       "at": "nine",
+       "dur": 0.5
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{3\\times3}{4\\times3}=\\frac{9}{12}",
+       "at": "nine"
+      },
+      {
+       "do": "answer",
+       "tex": "9",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The bottom got multiplied by three, so the top has to be multiplied by three too.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "bottom",
+       "until": "so"
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "top"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same number, top and bottom. That is the whole rule.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Same number on top and bottom.",
+       "at": "Same"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1,
+     10,
+     9.4
+    ],
+    "points": {
+     "o": [
+      1,
+      7
+     ],
+     "nm": [
+      5,
+      2.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "b",
+      "bar": "o",
+      "w": 8,
+      "h": 2.8,
+      "divisions": 15,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "n1015",
+      "label": "\\frac{10}{15}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n23",
+      "label": "\\frac{2}{3}",
+      "at": "nm",
+      "dir": "c",
+      "size": "xl"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the missing number is on the bottom. Ten fifteenths equals two over what?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac{10}{15}=\\frac{2}{?}$"
+      },
+      {
+       "do": "shade",
+       "target": "b",
+       "to": 0.6666667,
+       "at": "Ten",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The top went from ten down to two. That is ten divided by five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "top",
+       "until": "That"
+      },
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So group the pieces in fives.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "partition",
+       "target": "b",
+       "into": 3,
+       "at": "group",
+       "dur": 2.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each group of five becomes one piece. Fifteen pieces make three groups, and two of the groups are shaded.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "Fifteen",
+       "until": "and"
+      },
+      {
+       "do": "hide",
+       "target": "n1015",
+       "at": "Fifteen",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "n23",
+       "at": "pieces",
+       "dur": 0.5
+      },
+      {
+       "do": "highlight",
+       "target": "b.part",
+       "at": "shaded"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{10\\div5}{15\\div5}=\\frac{2}{3}",
+       "at": "three"
+      },
+      {
+       "do": "answer",
+       "tex": "3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So the missing bottom number is three!",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b.whole",
+       "at": "three"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     10,
+     10
+    ],
+    "points": {
+     "oa": [
+      1,
+      8.2
+     ],
+     "ob": [
+      1,
+      3.9
+     ],
+     "la": [
+      5,
+      5.28
+     ],
+     "lb": [
+      5,
+      0.97
+     ],
+     "ma": [
+      6.3333,
+      8.35
+     ],
+     "mb": [
+      6.3333,
+      2.05
+     ],
+     "na": [
+      7,
+      8.35
+     ],
+     "nb": [
+      7,
+      2.05
+     ]
+    },
+    "parts": [
+     {
+      "id": "a",
+      "bar": "oa",
+      "w": 8,
+      "h": 1.7,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "c",
+      "bar": "ob",
+      "w": 8,
+      "h": 1.7,
+      "divisions": 4,
+      "ink": "blue"
+     },
+     {
+      "id": "ta",
+      "label": "\\frac{2}{3}",
+      "at": "la",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tb",
+      "label": "\\frac{3}{4}",
+      "at": "lb",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "mk23",
+      "seg": [
+       "ma",
+       "mb"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "mk34",
+      "seg": [
+       "na",
+       "nb"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "dash": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "I have a shortcut! Start with two thirds. Add one to the top, add one to the bottom. That makes three fourths!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Add 1 to the top and the bottom. Same amount?",
+       "at": "shortcut"
+      },
+      {
+       "do": "shade",
+       "target": "a",
+       "to": 0.6666667,
+       "at": "two",
+       "dur": 1.2
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{2+1}{3+1}=\\frac{3}{4}\\;?",
+       "id": "slip",
+       "at": "Add",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A good thing to test. Let's draw both, with the same whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "c.title",
+       "dur": 0.05
+      },
+      {
+       "do": "show",
+       "target": [
+        "c",
+        "tb"
+       ],
+       "at": "draw"
+      },
+      {
+       "do": "shade",
+       "target": "c",
+       "to": 0.75,
+       "at": "same",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two thirds ends here. Three fourths ends further along. They are not the same amount.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "mk23",
+       "at": "here",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "mk34",
+       "at": "further",
+       "dur": 0.8
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "not"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Adding one did not cut every piece the same way. It just made a different amount.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a.part",
+        "c.part"
+       ],
+       "at": "different"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Only multiplying, or dividing, keeps it equal. The same number, top and bottom.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Multiply or divide top and bottom by the same number.",
+       "at": "Only"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     10,
+     10
+    ],
+    "points": {
+     "oa": [
+      1,
+      8.2
+     ],
+     "ob": [
+      1,
+      3.9
+     ],
+     "la": [
+      5,
+      5.28
+     ],
+     "lb": [
+      5,
+      0.97
+     ],
+     "ma": [
+      6.3333,
+      8.35
+     ],
+     "mb": [
+      6.3333,
+      2.05
+     ]
+    },
+    "parts": [
+     {
+      "id": "a",
+      "bar": "oa",
+      "w": 8,
+      "h": 1.7,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "c",
+      "bar": "ob",
+      "w": 8,
+      "h": 1.7,
+      "divisions": 6,
+      "ink": "blue"
+     },
+     {
+      "id": "ta",
+      "label": "\\frac{2}{3}",
+      "at": "la",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tb",
+      "label": "\\frac{4}{6}",
+      "at": "lb",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "tb2",
+      "label": "\\frac{2}{6}",
+      "at": "lb",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "mk",
+      "seg": [
+       "ma",
+       "mb"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "dash": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What if only one number changes? Take two thirds, and two sixths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Compare $\\frac{2}{3}$ and $\\frac{2}{6}$"
+      },
+      {
+       "do": "hide",
+       "target": "c.title",
+       "dur": 0.05
+      },
+      {
+       "do": "shade",
+       "target": "a",
+       "to": 0.6666667,
+       "at": "two",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": [
+        "c",
+        "tb"
+       ],
+       "at": "sixths"
+      },
+      {
+       "do": "shade",
+       "target": "c",
+       "to": 0.6666667,
+       "at": "sixths",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four sixths lines up with two thirds. Same amount.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "mk",
+       "at": "lines",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But two sixths keeps just two of those little pieces.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "c",
+       "to": 0.3333333,
+       "at": "just",
+       "dur": 2
+      },
+      {
+       "do": "hide",
+       "target": "tb",
+       "at": "just",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "target": "tb2",
+       "at": "two",
+       "dur": 0.5,
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{2}{3}\\ne\\frac{2}{6}",
+       "at": "two",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That is much shorter. It is only half as much!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c.part",
+       "at": "shorter"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The pieces shrank, but we did not take any more of them. To keep the amount, the top has to grow along with the bottom.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "c.unit",
+       "at": "shrank"
+      },
+      {
+       "do": "hide",
+       "target": "c.unit",
+       "at": "but"
+      },
+      {
+       "do": "highlight",
+       "target": "c.part",
+       "at": "take",
+       "until": "To"
+      },
+      {
+       "do": "text",
+       "text": "To keep the amount, change both numbers together.",
+       "at": "keep"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0.5,
+     10,
+     8.5
+    ],
+    "points": {
+     "l0": [
+      1,
+      6.2
+     ],
+     "l1": [
+      9,
+      6.2
+     ],
+     "z0": [
+      1,
+      5.25
+     ],
+     "z1": [
+      9,
+      5.25
+     ],
+     "p": [
+      5,
+      6.2
+     ],
+     "t0a": [
+      1,
+      5.85
+     ],
+     "t0b": [
+      1,
+      6.55
+     ],
+     "t1a": [
+      9,
+      5.85
+     ],
+     "t1b": [
+      9,
+      6.55
+     ],
+     "h5a": [
+      5,
+      5.85
+     ],
+     "h5b": [
+      5,
+      6.55
+     ],
+     "q3a": [
+      3,
+      5.9
+     ],
+     "q3b": [
+      3,
+      6.5
+     ],
+     "q7a": [
+      7,
+      5.9
+     ],
+     "q7b": [
+      7,
+      6.5
+     ],
+     "e2a": [
+      2,
+      5.95
+     ],
+     "e2b": [
+      2,
+      6.45
+     ],
+     "e4a": [
+      4,
+      5.95
+     ],
+     "e4b": [
+      4,
+      6.45
+     ],
+     "e6a": [
+      6,
+      5.95
+     ],
+     "e6b": [
+      6,
+      6.45
+     ],
+     "e8a": [
+      8,
+      5.95
+     ],
+     "e8b": [
+      8,
+      6.45
+     ],
+     "g1": [
+      5,
+      5.0
+     ],
+     "g2": [
+      5,
+      4.3
+     ],
+     "n1": [
+      2.8,
+      2.7
+     ],
+     "n2": [
+      5,
+      2.7
+     ],
+     "n3": [
+      7.2,
+      2.7
+     ],
+     "q1": [
+      3.9,
+      2.7
+     ],
+     "q2": [
+      6.1,
+      2.7
+     ],
+     "pl": [
+      5,
+      7.15
+     ]
+    },
+    "parts": [
+     {
+      "id": "line",
+      "seg": [
+       "l0",
+       "l1"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "k0",
+      "seg": [
+       "t0a",
+       "t0b"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "k1",
+      "seg": [
+       "t1a",
+       "t1b"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "lz",
+      "label": "0",
+      "at": "z0",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lo",
+      "label": "1",
+      "at": "z1",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "kh",
+      "seg": [
+       "h5a",
+       "h5b"
+      ],
+      "ink": "accent",
+      "w": 2.5,
+      "group": "halves"
+     },
+     {
+      "id": "kq3",
+      "seg": [
+       "q3a",
+       "q3b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "fourths"
+     },
+     {
+      "id": "kq7",
+      "seg": [
+       "q7a",
+       "q7b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "fourths"
+     },
+     {
+      "id": "ke2",
+      "seg": [
+       "e2a",
+       "e2b"
+      ],
+      "ink": "violet",
+      "w": 1.8,
+      "group": "eighths"
+     },
+     {
+      "id": "ke4",
+      "seg": [
+       "e4a",
+       "e4b"
+      ],
+      "ink": "violet",
+      "w": 1.8,
+      "group": "eighths"
+     },
+     {
+      "id": "ke6",
+      "seg": [
+       "e6a",
+       "e6b"
+      ],
+      "ink": "violet",
+      "w": 1.8,
+      "group": "eighths"
+     },
+     {
+      "id": "ke8",
+      "seg": [
+       "e8a",
+       "e8b"
+      ],
+      "ink": "violet",
+      "w": 1.8,
+      "group": "eighths"
+     },
+     {
+      "id": "pt",
+      "dot": "p",
+      "ink": "warm",
+      "r": 13
+     },
+     {
+      "id": "lp",
+      "label": "P",
+      "at": "pl",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "drop",
+      "seg": [
+       "g1",
+       "g2"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "dash": true
+     },
+     {
+      "id": "n12",
+      "label": "\\frac{1}{2}",
+      "at": "n1",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "eq1",
+      "label": "=",
+      "at": "q1",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "n24",
+      "label": "\\frac{2}{4}",
+      "at": "n2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "eq2",
+      "label": "=",
+      "at": "q2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "n48",
+      "label": "\\frac{4}{8}",
+      "at": "n3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Equivalent fractions live on the number line too. Here is zero, and here is one. And here, a point called P.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Name point $P$."
+      },
+      {
+       "do": "highlight",
+       "target": "lz",
+       "at": "zero",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "lo",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pt",
+        "lp"
+       ],
+       "at": "point"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the line from zero to one in halves. P sits on one half.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "halves",
+       "at": "halves"
+      },
+      {
+       "do": "show",
+       "target": [
+        "drop",
+        "n12"
+       ],
+       "at": "sits"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut each half in two: fourths. Now P is two fourths.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "fourths",
+       "at": "fourths"
+      },
+      {
+       "do": "show",
+       "target": [
+        "eq1",
+        "n24"
+       ],
+       "at": "two",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The same point, with a new name!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "pt",
+       "at": "same",
+       "until": "with"
+      },
+      {
+       "do": "highlight",
+       "target": "n24",
+       "at": "new"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut again: eighths. Now P is four eighths. One point, and a different name each time.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "eighths",
+       "at": "eighths"
+      },
+      {
+       "do": "show",
+       "target": [
+        "eq2",
+        "n48"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "pt",
+       "at": "One",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "n12",
+        "n24",
+        "n48"
+       ],
+       "at": "different"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A fraction has endless names. Multiply the top and the bottom of one half by five: five tenths. By seven: seven fourteenths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "n12",
+        "n24",
+        "n48"
+       ],
+       "at": "endless",
+       "until": "Multiply"
+      },
+      {
+       "do": "highlight",
+       "target": "n12",
+       "at": "half",
+       "until": "by"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1\\times5}{2\\times5}=\\frac{5}{10}",
+       "at": "tenths",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1\\times7}{2\\times7}=\\frac{7}{14}",
+       "at": "fourteenths"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Why is it still one half? Seven sevenths is a special form of one. And multiplying by one changes nothing.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Seven"
+      },
+      {
+       "do": "highlight",
+       "target": "n12",
+       "at": "half",
+       "until": "Seven"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{7}{7}=1",
+       "at": "sevenths"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{7}{14}=\\frac{1}{2}\\times\\frac{7}{7}=\\frac{1}{2}",
+       "at": "multiplying"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So to test a choice, ask one question: was the top and the bottom multiplied, or divided, by the same number?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "n12",
+        "n24",
+        "n48"
+       ],
+       "at": "choice",
+       "until": "was"
+      },
+      {
+       "do": "text",
+       "text": "Same number, top and bottom: times or divided by.",
+       "at": "multiplied"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0.5,
+     10,
+     10.2
+    ],
+    "points": {
+     "oa": [
+      0.6,
+      8.6
+     ],
+     "ob": [
+      0.6,
+      5.9
+     ],
+     "oc": [
+      0.6,
+      3.2
+     ],
+     "la": [
+      8.9,
+      7.85
+     ],
+     "lb": [
+      8.9,
+      5.15
+     ],
+     "lc": [
+      8.9,
+      2.45
+     ],
+     "ma": [
+      5.1333,
+      8.75
+     ],
+     "mb": [
+      5.1333,
+      1.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "a",
+      "bar": "oa",
+      "w": 6.8,
+      "h": 1.5,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": "\\text{One whole bar}"
+     },
+     {
+      "id": "c",
+      "bar": "ob",
+      "w": 6.8,
+      "h": 1.5,
+      "divisions": 6,
+      "ink": "blue"
+     },
+     {
+      "id": "d",
+      "bar": "oc",
+      "w": 6.8,
+      "h": 1.5,
+      "divisions": 9,
+      "ink": "violet"
+     },
+     {
+      "id": "ta",
+      "label": "\\frac{2}{3}",
+      "at": "la",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "tb",
+      "label": "\\frac{4}{6}",
+      "at": "lb",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "td",
+      "label": "\\frac{6}{9}",
+      "at": "lc",
+      "dir": "c",
+      "size": "l",
+      "ink": "violet"
+     },
+     {
+      "id": "mk",
+      "seg": [
+       "ma",
+       "mb"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "dash": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let's stack them. Two thirds. Four sixths. Six ninths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "One amount, 3 names."
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c.title",
+        "d.title"
+       ],
+       "dur": 0.05
+      },
+      {
+       "do": "shade",
+       "target": "a",
+       "to": 0.6666667,
+       "at": "Two",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": [
+        "c",
+        "tb"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "shade",
+       "target": "c",
+       "to": 0.6666667,
+       "at": "Four",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": [
+        "d",
+        "td"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "shade",
+       "target": "d",
+       "to": 0.6666667,
+       "at": "Six",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three bars, three different cuts. And all the shading ends on one line.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "mk",
+       "at": "line",
+       "dur": 1
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The numbers change, but the amount does not.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "mk",
+       "at": "amount"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Remember: multiply the top and the bottom by the same number, or divide them by the same number. The amount stays the same.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{a}{b}=\\frac{a\\times n}{b\\times n}=\\frac{a\\div n}{b\\div n}",
+       "at": "multiply",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "a.part",
+        "c.part",
+        "d.part"
+       ],
+       "at": "divide",
+       "until": "amount"
+      },
+      {
+       "do": "highlight",
+       "target": "mk",
+       "at": "stays"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

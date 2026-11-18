@@ -1560,6 +1560,52 @@
     ],
     "skill": "compare-attributes"
   },
+  "comparison-amount": {
+    "id": "comparison-amount--sc",
+    "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+    "title": "Additive and multiplicative comparison",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+    "duration": 346.14,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+        "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+        "duration": 346.14
+      }
+    ],
+    "skill": "multiplicative-comparison"
+  },
+  "comparison-factor": {
+    "id": "comparison-amount--sc",
+    "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+    "title": "Additive and multiplicative comparison",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+    "duration": 346.14,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+        "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+        "duration": 346.14
+      }
+    ],
+    "skill": "multiplicative-comparison"
+  },
   "complete-area-model": {
     "id": "area-model-product--sa",
     "version": "63d849e131abce1bbee3b8944bfc88493b5d7b2faf0a856874a4ca7d45523641",
@@ -2928,6 +2974,98 @@
       }
     ]
   },
+  "equivalent-denominator": {
+    "id": "equivalent-numerator--se",
+    "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+    "title": "Generating equivalent fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+    "duration": 323.859977324263,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+        "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+        "duration": 323.859977324263
+      }
+    ],
+    "skill": "fraction-equivalence"
+  },
+  "equivalent-fractions-number-line": {
+    "id": "equivalent-numerator--se",
+    "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+    "title": "Generating equivalent fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+    "duration": 323.859977324263,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+        "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+        "duration": 323.859977324263
+      }
+    ],
+    "skill": "fraction-equivalence"
+  },
+  "equivalent-fractions-select": {
+    "id": "equivalent-numerator--se",
+    "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+    "title": "Generating equivalent fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+    "duration": 323.859977324263,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+        "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+        "duration": 323.859977324263
+      }
+    ],
+    "skill": "fraction-equivalence"
+  },
+  "equivalent-numerator": {
+    "id": "equivalent-numerator--se",
+    "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+    "title": "Generating equivalent fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+    "duration": 323.859977324263,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+        "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+        "duration": 323.859977324263
+      }
+    ],
+    "skill": "fraction-equivalence"
+  },
   "even-as-equal-addends": {
     "id": "pairing-leftover--so",
     "version": "71fdc7d790c18210afc23f0b497433964ee05bcc2894562c419deeb24f711330",
@@ -3496,6 +3634,29 @@
     ],
     "skill": "name-shapes"
   },
+  "fraction-benchmark-reasonable": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
   "fraction-choice-compare": {
     "id": "compare-unlike-fractions",
     "version": "18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a",
@@ -3517,6 +3678,52 @@
       }
     ],
     "skill": "fraction-comparison"
+  },
+  "fraction-decompositions-select": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
+  "fraction-equivalence-choice": {
+    "id": "equivalent-numerator--se",
+    "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+    "title": "Generating equivalent fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+    "duration": 323.859977324263,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equivalent-numerator--se/688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25/audio.m4a",
+        "version": "688fb56ee566436ae0ceb19432855b7212adfb055ed516e60a1c6a3f575ade25",
+        "duration": 323.859977324263
+      }
+    ],
+    "skill": "fraction-equivalence"
   },
   "fraction-forms-blanks": {
     "id": "percent-amounts-blanks",
@@ -4282,6 +4489,75 @@
     ],
     "skill": "halves-and-quarters"
   },
+  "like-fraction-difference": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
+  "like-fraction-missing-part": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
+  "like-fraction-sum-story": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
   "line-equation-forms": {
     "id": "line-equation-forms--sf",
     "version": "9eb1cb748d7e2e0a9ea209cbdaa725348ffd0ef113a238671e127a746878d173",
@@ -4928,6 +5204,29 @@
       }
     ],
     "skill": "clock-half-hours"
+  },
+  "mcas-comparison-equations-select": {
+    "id": "comparison-amount--sc",
+    "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+    "title": "Additive and multiplicative comparison",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+    "duration": 346.14,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+        "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+        "duration": 346.14
+      }
+    ],
+    "skill": "multiplicative-comparison"
   },
   "mcas-cylinder-scaling-select": {
     "id": "cylinder-volume--sc",
@@ -10112,6 +10411,52 @@
       }
     ],
     "skill": "rectangle-area"
+  },
+  "times-as-many-comparison": {
+    "id": "comparison-amount--sc",
+    "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+    "title": "Additive and multiplicative comparison",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+    "duration": 346.14,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+        "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+        "duration": 346.14
+      }
+    ],
+    "skill": "multiplicative-comparison"
+  },
+  "times-as-many-counts": {
+    "id": "comparison-amount--sc",
+    "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+    "title": "Additive and multiplicative comparison",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+    "duration": 346.14,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/comparison-amount--sc/0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5/audio.m4a",
+        "version": "0ffd338bcf85fb50343c4c3ce07e40bcde6662719a9e34bc00d271ffbdb42ae5",
+        "duration": 346.14
+      }
+    ],
+    "skill": "multiplicative-comparison"
   },
   "times-table-pattern": {
     "id": "times-table-pattern--st",
