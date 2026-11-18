@@ -336,8 +336,10 @@
   .summary strong {
     font-size: 24px;
   }
+  /* minmax(0, …): a control's own minimum never widens the column past
+     the screen (a 320 px phone with a classic scrollbar ran 15 px over). */
   .filters {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .filters {
     margin-bottom: var(--space-4);

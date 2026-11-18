@@ -30,7 +30,9 @@
   letter-spacing: -0.015em;
   line-height: 1.12;
   text-wrap: balance;
-  overflow-wrap: normal;
+  /* Words wrap whole; only a single word wider than the line (a child's
+     30-letter nickname on a phone) breaks, rather than run off the screen. */
+  overflow-wrap: anywhere;
 }
 .title:focus {
   outline: none;

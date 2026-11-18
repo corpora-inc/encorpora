@@ -84,9 +84,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
-    # The longest lanes take 40 to 50 minutes on a typical runner; slow runners
-    # have taken 60.
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+    # Each lane's checks take about 25 to 35 minutes after the browser
+    # install; ui-1 and family-b are split so none nears the limit on a slow
+    # runner.
     timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'
@@ -164,16 +165,22 @@ jobs:
       - name: Selected browser entrypoints
         if: matrix.lane == 'selected'
         run: node scripts/run-ci-tests.mjs browser
-      - if: matrix.lane == 'ui-1'
-        run: npm run test:ui:1
+      - if: matrix.lane == 'ui-1a'
+        run: npm run test:ui:1a
+      - if: matrix.lane == 'ui-1b'
+        run: npm run test:ui:1b
       - if: matrix.lane == 'ui-2a'
         run: npm run test:ui:2a
       - if: matrix.lane == 'ui-2b'
         run: npm run test:ui:2b
       - if: matrix.lane == 'family-a'
         run: npm run test:family-ui:a
-      - if: matrix.lane == 'family-b'
-        run: npm run test:family-ui:b
+      - if: matrix.lane == 'family-b1'
+        run: npm run test:family-ui:b1
+      - if: matrix.lane == 'family-b2'
+        run: npm run test:family-ui:b2
+      - if: matrix.lane == 'family-b3'
+        run: npm run test:family-ui:b3
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
       - if: startsWith(matrix.lane, 'contrast-')
         env:
@@ -189,10 +196,95 @@ jobs:
           path: amp/artifacts/contrast/
           if-no-files-found: ignore
           retention-days: 7
+      - name: Remove this job's PostgreSQL container
+        if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        env:
+          CI_POSTGRES_CONTAINER_ID: ${{ steps.ci-postgres.outputs.container_id }}
+        run: |
+          set -euo pipefail
+          [[ "$CI_POSTGRES_CONTAINER_ID" =~ ^[0-9a-f]{64}$ ]]
+          docker rm --force --volumes "$CI_POSTGRES_CONTAINER_ID"
+
+  # The native session's Rust half, in a lane of its own with a cached
+  # toolchain build, so no UI lane pays for installing and compiling Rust.
+  amp-native-session:
+    timeout-minutes: 45
+    needs: changes
+    if: needs.changes.outputs.native == 'true'
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: amp
+    env:
+      AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
+      FONTCONFIG_FILE: ${{ github.workspace }}/amp/scripts/ci-fonts.conf
+      AMP_EXPECT_UI_FONT: Roboto
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - name: Start PostgreSQL after trust verification
+        id: ci-postgres
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          container_id=$(docker run --detach \
+            --publish 127.0.0.1:5432:5432 \
+            --env POSTGRES_USER=amp --env POSTGRES_PASSWORD=amp --env POSTGRES_DB=amp_test \
+            --health-cmd 'pg_isready -U amp' --health-interval 5s --health-timeout 5s --health-retries 10 \
+            postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24)
+          [[ "$container_id" =~ ^[0-9a-f]{64}$ ]]
+          printf 'container_id=%s\n' "$container_id" >> "$GITHUB_OUTPUT"
+          for attempt in {1..20}; do
+            health=$(docker inspect --format '{{.State.Health.Status}}' "$container_id")
+            printf 'PostgreSQL health check %s: %s\n' "$attempt" "$health"
+            if [ "$health" = healthy ]; then exit 0; fi
+            if [ "$health" = unhealthy ]; then break; fi
+            sleep 5
+          done
+          echo 'PostgreSQL failed its bounded health check' >&2
+          exit 1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps firefox webkit && npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
+      # test:payment-ui and the print suites inspect PDFs with pdfinfo.
+      - name: Install PDF inspection tools and the Android UI font
+        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match 'system\-ui' && fc-match sans-serif
+      - name: Verify the actual browser UI font
+        run: node scripts/verify-ci-fonts.mjs
       - uses: dtolnay/rust-toolchain@1.93.0
-        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: amp/mobile/session-core
       - run: npm run test:native-session
-        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')
       - name: Remove this job's PostgreSQL container
         if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
         shell: bash
@@ -533,7 +625,7 @@ jobs:
           fi
 
   report:
-    needs: [changes, amp-browser, amp-ui-sweep, amp-ui-coverage, amp-content]
+    needs: [changes, amp-browser, amp-native-session, amp-ui-sweep, amp-ui-coverage, amp-content]
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-24.04
     permissions:

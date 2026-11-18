@@ -18,6 +18,7 @@
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-practice-profiles-ui.ts [--port 4560]
  */
 import { mkdir, realpath, writeFile } from "node:fs/promises";
+import { CANCELLED_BY_NAVIGATION } from "./lib/cancelled-by-navigation";
 import { randomBytes, randomUUID } from "node:crypto";
 import pg from "pg";
 import {
@@ -116,7 +117,6 @@ const DAY = 86_400_000;
 const day = (offset: number) =>
   new Date(Date.now() + offset * DAY).toISOString().slice(0, 10);
 const last: { page: Page | null } = { page: null };
-const CANCELLED_BY_NAVIGATION = /due to access control checks/;
 
 async function signUp(page: Page, email: string, name: string) {
   await page.goto(`${origin}/sign-up`);

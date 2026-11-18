@@ -267,8 +267,10 @@
   border-radius: 6px;
 }
 
-/* The narrowest phones (320 px): three parts still sit side by side. */
-@container (max-width: 319px) {
+/* A phone's stage (320 to 384 px viewports): three parts still sit side by
+   side. At full size they need about 335 px (the down side's column, three
+   92 px parts and the marks' room); a 384 px phone's stage is 322. */
+@container (max-width: 343px) {
   .work-diagram {
     --work-part-min: 72px;
     --work-side-entry: 60px;
@@ -288,6 +290,21 @@
   .work-line,
   .work-phrase {
     gap: 6px;
+  }
+}
+/* A 320 px phone's stage (258 px, 244 inside the diagram): three parts of
+   a four-digit division beside a two-digit side (6,394 ÷ 46 = 100 + 30 + 9)
+   need every pixel, so the parts, their entries and the down side's room
+   take a little less. A four-digit area still fits its entry. */
+@container (max-width: 279px) {
+  .work-diagram {
+    --work-part-min: 66px;
+    --work-side-entry: 58px;
+    --work-region-entry: 58px;
+    --work-line-entry: 58px;
+  }
+  .work-area-side[data-axis="down"] {
+    padding-right: var(--space-1);
   }
 }
 @container (min-width: 480px) {

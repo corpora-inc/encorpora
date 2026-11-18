@@ -7,6 +7,8 @@ import type { Page } from "playwright";
 
 export type ShellProbe = {
   overflow: number;
+  /** What reaches past the window's right edge, when something does. */
+  overflowing: string[];
   smallTargets: string[];
   inlineTargets: number;
   midWordWraps: string[];
@@ -169,12 +171,22 @@ export async function probe(page: Page): Promise<ShellProbe> {
       const r = el.getBoundingClientRect();
       if (r.width >= 43.5 && r.height >= 43.5) continue;
       const display = getComputedStyle(el).display;
-      // WCAG 2.5.8 exempts links inside running text.
+      // WCAG 2.5.8 exempts a target inside running text: a link, or a
+      // button drawn as one, no taller than its line (a button computes as
+      // inline-block even when set inline).
+      const line = (() => {
+        const st = getComputedStyle(el.parentElement ?? el);
+        const height = parseFloat(st.lineHeight);
+        return Number.isNaN(height) ? parseFloat(st.fontSize) * 1.5 : height;
+      })();
       if (
-        el.tagName === "A" &&
-        display === "inline" &&
+        (el.tagName === "A"
+          ? display === "inline"
+          : el.tagName === "BUTTON" &&
+            /^inline/.test(display) &&
+            r.height <= line + 4) &&
         el.parentElement &&
-        /^(P|LI|SPAN|SMALL|DD|TD)$/.test(el.parentElement.tagName) &&
+        /^(P|LI|SPAN|SMALL|DD|TD|LABEL)$/.test(el.parentElement.tagName) &&
         (el.parentElement.textContent ?? "").trim().length >
           (el.textContent ?? "").trim().length + 12
       ) {
@@ -246,6 +258,17 @@ export async function probe(page: Page): Promise<ShellProbe> {
       )
         truncated.push(describe(el));
     }
+    // Opaque feet stuck to the bottom of the screen, and where they begin.
+    const stickyFeet = [...document.querySelectorAll<HTMLElement>("body *")]
+      .filter((el) => {
+        const st = getComputedStyle(el);
+        return (
+          st.position === "sticky" &&
+          st.bottom === "0px" &&
+          !/^(transparent|rgba\(\d+, \d+, \d+, 0\))$/.test(st.backgroundColor)
+        );
+      })
+      .map((el) => ({ el, top: el.getBoundingClientRect().top }));
     // Overlap counts only what is visible: each box is clipped by its
     // scrolling or clipping ancestors.
     const clipped = (el: HTMLElement) => {
@@ -271,6 +294,12 @@ export async function probe(page: Page): Promise<ShellProbe> {
         const bar = document.querySelector("[data-app-bar]");
         if (bar) top = Math.max(top, bar.getBoundingClientRect().bottom);
       }
+      // Likewise a step's opaque foot held to the bottom of the screen
+      // (`position: sticky; bottom: 0`, onboarding/setup): what scrolls
+      // under it is hidden, and scrolled to the end nothing sits there.
+      for (const foot of stickyFeet)
+        if (!foot.el.contains(el) && bottom > foot.top)
+          bottom = Math.max(top, foot.top);
       return { left, top, right, bottom };
     };
     const boxes = controls
@@ -282,6 +311,15 @@ export async function probe(page: Page): Promise<ShellProbe> {
         const a = boxes[i]!,
           b = boxes[j]!;
         if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
+        // A list row whose link is the row itself, with a figure's tip
+        // layered over it as its own target (school/class-columns.tsx).
+        const row = a.el.closest("[data-list-row]");
+        if (
+          row &&
+          row === b.el.closest("[data-list-row]") &&
+          [a.el, b.el].some((el) => el.matches("[data-figure-tip]"))
+        )
+          continue;
         const x = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left);
         const y = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
         if (x > 1 && y > 1)
@@ -296,6 +334,23 @@ export async function probe(page: Page): Promise<ShellProbe> {
           document.body.scrollWidth,
         ) - innerWidth,
       ),
+      overflowing:
+        Math.max(
+          document.documentElement.scrollWidth,
+          document.body.scrollWidth,
+        ) > innerWidth
+          ? [...document.querySelectorAll<HTMLElement>("body *")]
+              .filter(
+                (el) =>
+                  el.getBoundingClientRect().right > innerWidth + 0.5 &&
+                  getComputedStyle(el).position !== "fixed",
+              )
+              .slice(-5)
+              .map(
+                (el) =>
+                  `${describe(el)} right ${Math.round(el.getBoundingClientRect().right)}`,
+              )
+          : [],
       smallTargets: [...new Set(smallTargets)],
       inlineTargets,
       midWordWraps: [...new Set(midWordWraps)],

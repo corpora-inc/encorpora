@@ -205,6 +205,9 @@ try {
         viewport: { width: width!, height: height! },
         colorScheme: theme,
         hasTouch: width! < 400,
+        // A phone is a mobile browser: overlay scrollbars, no gutter (the
+        // Linux runner's desktop Chromium reserves classic ones).
+        isMobile: width! < 400,
         reducedMotion: "reduce",
       });
       await context.addInitScript("globalThis.__name = (f) => f");

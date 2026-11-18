@@ -732,7 +732,10 @@ async function journeys(browser: Browser, engine: string) {
     // No in-page Back: the menu is the way to practice.
     await reader.page.getByRole("button", { name: "Open AMP menu" }).click();
     await reader.page.getByRole("link", { name: "Practice" }).click();
-    await reader.page.waitForURL("**/practice");
+    // Practice is at the learner's own address.
+    await reader.page.waitForURL((url) =>
+      /^\/practice\/[^/]+$/.test(url.pathname),
+    );
     check(
       `${engine} a student sends no analytics`,
       !collected.length,
@@ -885,10 +888,11 @@ async function journeys(browser: Browser, engine: string) {
     await printer.page
       .getByText(`${students.length} workbooks ready, ${expected} pages.`)
       .waitFor();
-    // The URL holds the number, so a refresh and a reprint are the same set.
+    // The set is the screen's view (school view store), never a query
+    // string; the reload below proves a refresh keeps it.
     check(
-      `${engine} the set is in the URL`,
-      printer.page.url().includes("set=1"),
+      `${engine} the set is off the URL`,
+      !new URL(printer.page.url()).search,
       printer.page.url(),
     );
     const made = await db.query(
@@ -1114,14 +1118,10 @@ async function journeys(browser: Browser, engine: string) {
       `${engine} phone marks saved`,
       (await phone.page.locator("li", { hasText: /Right$/ }).count()) >= 1,
     );
+    // The student shown is the marking screen's view (school view store,
+    // no query string): On to the next one.
     await phone.page.getByRole("button", { name: "On to Hana S." }).click();
     await phone.page.getByText("Hana S.").waitFor();
-    check(
-      `${engine} a real URL per student`,
-      phone.page.url().includes(`student=${students[6]!.personId}`),
-    );
-    await phone.page.goBack();
-    await phone.page.getByText("Felix G.").waitFor();
   } catch (error) {
     let shot = 0;
     for (const { context } of open)
@@ -1508,7 +1508,8 @@ async function sweep(
     await settle(picking.page, 900);
     await geometry(picking.page, `${label} two boards`);
     await shoot(picking.page, engine, "standings-two-boards", width, theme);
-    await picker.getByRole("radio", { name: /./ }).first().click();
+    // Back to the other board.
+    await picker.getByRole("radio", { checked: false }).click();
     await heading(picking.page, "Growth this term").waitFor();
     await picking.context.close();
     contexts.splice(contexts.indexOf(picking.context), 1);

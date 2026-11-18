@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { addChildInSheet } from "./lib/add-child";
 import { openMenu, returnToParent } from "./ui-controls";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
@@ -137,19 +138,7 @@ async function addChild(page: Page, name: string) {
   }
   await page.waitForURL((url) => url.pathname.endsWith("/settings"));
   await page.getByRole("button", { name: "Add a child", exact: true }).click();
-  const sheet = page.getByRole("dialog", { name: "Add a child" });
-  await sheet.getByLabel("Name", { exact: true }).fill(name);
-  await sheet.getByRole("button", { name: "Birth year", exact: true }).click();
-  await page
-    .getByRole("dialog", { name: "Birth year" })
-    .getByRole("option", { name: "2016", exact: true })
-    .click();
-  await sheet.getByRole("button", { name: "Add child", exact: true }).click();
-  await sheet
-    .getByText(`${name} is in your family.`, { exact: true })
-    .waitFor();
-  await page.keyboard.press("Escape");
-  await sheet.waitFor({ state: "detached" });
+  await addChildInSheet(page, { name });
 }
 async function signedIn(page: Page, email: string) {
   // The root is an intermediate redirect. Wait for this parent's actual
@@ -419,7 +408,11 @@ try {
   await addChild(sibling, "Sibling");
   await sibling.close();
 
-  // Session rotation must update AMP's in-memory API bearer token too.
+  // Session rotation must update AMP's in-memory API bearer token too. The
+  // parent closes Sign-in & security (an overlay over Settings) first.
+  const security = page.getByRole("dialog", { name: "Sign-in & security" });
+  await security.getByRole("button", { name: "Close", exact: true }).click();
+  await security.waitFor({ state: "detached" });
   await addChild(page, "Maya");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
@@ -556,8 +549,11 @@ try {
   );
   const prepared = await page.evaluate(async () => {
     const modulePath = "/src/web/account-client.ts";
-    const { accountClient } = await import(modulePath);
-    const added = await accountClient.passkey.addPasskey({
+    // Passkeys are their own client, loaded when used (account-client.ts).
+    const { accountClient, passkeyAccountClient } = await import(modulePath);
+    const added = await (
+      await passkeyAccountClient()
+    ).passkey.addPasskey({
       name: "Authentication race key",
     });
     if (added.error)
@@ -580,8 +576,11 @@ try {
   );
   const authenticating = page.evaluate(async () => {
     const modulePath = "/src/web/account-client.ts";
-    const { accountClient } = await import(modulePath);
-    return (await accountClient.signIn.passkey()).error?.code ?? null;
+    const { passkeyAccountClient } = await import(modulePath);
+    return (
+      (await (await passkeyAccountClient()).signIn.passkey()).error?.code ??
+      null
+    );
   });
   let removingProof: Promise<{ statusCode: number }> | undefined;
   try {

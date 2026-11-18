@@ -26,11 +26,13 @@ async function returnToHistory(page: Page) {
     (window as Window & { __historyDocument?: boolean }).__historyDocument =
       true;
   });
-  if (new URL(page.url()).pathname === "/progress")
-    await navigateApp(page, "Progress");
-  for (let n = 0; n < 6 && new URL(page.url()).pathname !== "/progress"; n++)
-    await page.goBack();
-  assert.equal(new URL(page.url()).pathname, "/progress");
+  // Progress and an idea's detail are each an address of their own
+  // (/progress, /progress/skills/<id>).
+  const atProgress = () =>
+    /^\/progress(\/|$)/.test(new URL(page.url()).pathname);
+  if (atProgress()) await navigateApp(page, "Progress");
+  for (let n = 0; n < 6 && !atProgress(); n++) await page.goBack();
+  assert.ok(atProgress(), new URL(page.url()).pathname);
   assert.equal(
     await page.evaluate(
       () =>
@@ -230,7 +232,10 @@ try {
           exact: typeof filterName === "string",
         })
         .click();
-      for (;;) {
+      // The first two pages of each filter: every card's detail fits, and
+      // paging forward keeps them fitting. (Explore lists every idea, over
+      // 300; walking them all at every width took hours and proved no more.)
+      for (let pageNumber = 0; pageNumber < 2; pageNumber++) {
         await page.waitForTimeout(30);
         if (!strict) await assertPhoneLandscapeSmoke(page, String(filterName));
         const fits =
@@ -300,14 +305,13 @@ try {
   await page
     .getByRole("main", { name: "Number Builders", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-book-id") ===
       "number-builders",
   );
-  assert.equal(new URL(page.url()).pathname, "/progress");
-  assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
+  assert.equal(new URL(page.url()).pathname, "/progress/skills/count-to-20");
   const batchPromise = page.waitForResponse(
     (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
   );
@@ -319,14 +323,14 @@ try {
   const problem = batch.problems[0];
   assert.equal(problem.skillId, "count-to-20");
   await returnToHistory(page);
-  assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
+  assert.equal(new URL(page.url()).pathname, "/progress/skills/count-to-20");
   await page
     .getByRole("button", { name: "Open related book", exact: true })
     .click();
   await page
     .getByRole("main", { name: "Number Builders", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await resume(page);
   await page
     .locator("#answer")
@@ -437,12 +441,9 @@ try {
       .getByRole("button", { name: "Try one problem", exact: true })
       .click();
     await batchStarted;
-    // The learner moves on to their Pathways (the lessons library is no
-    // destination of its own: docs/design/ia.md).
-    await page
-      .getByRole("link", { name: "Pathways", exact: true })
-      .first()
-      .click();
+    // The learner moves on, by the menu, to their record (practice shows
+    // no tabs; its way out is the menu).
+    await navigateApp(page, "Progress");
     const obsoleteBatch = page.waitForResponse(
       (response) =>
         response.url().endsWith("/batches") &&
@@ -458,11 +459,8 @@ try {
         ),
     );
     assert.equal(await page.getByRole("alert").count(), 0, failure.error);
-    assert.equal(new URL(page.url()).pathname, "/pathways", failure.error);
-    assert.equal(await page.locator(".progress-workspace").count(), 0);
-    await page
-      .getByRole("heading", { name: "Pathways", exact: true })
-      .waitFor();
+    // The late answer never pulls them back into practice.
+    assert.equal(new URL(page.url()).pathname, "/overview", failure.error);
     await returnToHistory(page);
   }
 
@@ -492,7 +490,7 @@ try {
   await page
     .getByRole("button", { name: "Open related book", exact: true })
     .click();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-book-id") ===
@@ -508,7 +506,7 @@ try {
   await page
     .getByRole("main", { name: "Balance and Change", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-book-id") ===

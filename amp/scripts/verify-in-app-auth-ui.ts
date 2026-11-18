@@ -512,17 +512,24 @@ try {
           }),
         );
         await page.goto(origin + "/sign-up");
-        await page
-          .getByRole("button", {
-            name: "Create account with a passkey",
-            exact: true,
-          })
-          .waitFor();
-        assert.ok(await page.locator('[data-provider="google"]').isVisible());
-        assert.equal(
-          await page.getByLabel("Password", { exact: true }).count(),
-          0,
+        // Passkey-first wherever the browser has WebAuthn (Linux WebKit, the
+        // runner's, has none: it offers the password form instead).
+        const webauthn = await page.evaluate(
+          () => typeof PublicKeyCredential !== "undefined",
         );
+        if (webauthn) {
+          await page
+            .getByRole("button", {
+              name: "Create account with a passkey",
+              exact: true,
+            })
+            .waitFor();
+          assert.equal(
+            await page.getByLabel("Password", { exact: true }).count(),
+            0,
+          );
+        } else await page.getByLabel("Password", { exact: true }).waitFor();
+        assert.ok(await page.locator('[data-provider="google"]').isVisible());
         // Google signs in here directly: no handoff, no hint.
         let social = 0;
         await page.route("**/api/auth/sign-in/social", (route) => {

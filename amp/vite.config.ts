@@ -225,6 +225,10 @@ export default defineConfig({
   },
   // A preview on other ports (scripts/design-preview.sh) sets both.
   server: {
+    // On CI nothing edits the sources while a check runs, so no dev server
+    // watches them: the runner's watcher walked into /run/udev (ELOOP) and
+    // past the system's watch limit (ENOSPC), ending whole lanes.
+    ...(process.env.CI ? { watch: null } : {}),
     port: Number(process.env.AMP_WEB_PORT ?? 4310),
     proxy: {
       "/api": `http://127.0.0.1:${process.env.AMP_API_PORT ?? 4311}`,

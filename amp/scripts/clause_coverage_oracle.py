@@ -684,7 +684,7 @@ def proof_rules(public):
         a, c = re.search(r'Prove \\angle ([A-Z]{3})\\cong\\angle ([A-Z]{3})', prompt).groups()
         b = 'COD' if a == 'BOC' else 'BOC'
         return [
-            row(f'\\angle {a},\\angle {b}\\text{{ and }}\\angle {b},\\angle {c}\\text{{ are linear pairs}}', 'Definition of linear pair'),
+            row(f'$\\angle {a},\\angle {b}$ and $\\angle {b},\\angle {c}$ are linear pairs', 'Definition of linear pair'),
             row(f'm\\angle {a}+m\\angle {b}=180^\\circ,\\quad m\\angle {b}+m\\angle {c}=180^\\circ', 'Linear pair postulate', 0),
             row(f'm\\angle {a}+m\\angle {b}=m\\angle {b}+m\\angle {c}', 'Transitive property of equality', 1),
             row(f'm\\angle {a}=m\\angle {c}', 'Subtraction property of equality', 2),

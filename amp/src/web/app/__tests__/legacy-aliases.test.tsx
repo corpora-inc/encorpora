@@ -324,6 +324,7 @@ const EXAMPLES: Example[] = [
 
   { from: `/continue/${CHILD}`, world: "family parent", lands: FAMILY_PAY },
   { from: `/pay/${CHILD}`, world: "family parent", lands: FAMILY_PAY },
+  { from: "/purchase", world: "family parent", lands: FAMILY_PAY },
   { from: "/purchase/annual", world: "family parent", lands: FAMILY_PAY },
   { from: "/purchase/choose", world: "family parent", lands: FAMILY_PAY },
   {

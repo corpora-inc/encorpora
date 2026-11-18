@@ -392,7 +392,9 @@ try {
       createdAt: new Date().toISOString(),
     },
   ];
-  await page.reload();
+  // Back on the screen itself (the failed link's sign-in prompt above is
+  // its own state).
+  await page.goto(`${origin}/school/connect`);
   await page
     .getByText("Roster connection requested. We’ll email you the invitation.")
     .waitFor();

@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { publicRead } from "./lib/public-reads";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -207,6 +208,8 @@ async function serve(page: Page, faults: string[]) {
       return route.fulfill({
         json: { available: true, offer: offers[0], offers },
       });
+    const read = publicRead(path);
+    if (read) return route.fulfill({ json: read });
     // The signed-out pitch at `/` prices its plans before it paints.
     if (path === "/billing/prices")
       return route.fulfill({ json: { available: true, offers } });
@@ -312,11 +315,10 @@ try {
     },
   );
   await page.getByRole("button", { name: "Try it free" }).first().click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/sign-up" &&
-      url.searchParams.get("return") === "free-practice",
-  );
+  // Sign-up's address is plain; the tab keeps why it signed up
+  // (lib/program-choice.ts).
+  await page.waitForURL((url) => url.pathname === "/sign-up" && !url.search);
+  await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
   // Sign-in is supplied by this analytics fixture. A new account continues
   // where sign-up sends free practice: the starter.
   await page.evaluate(async () => {
@@ -352,10 +354,8 @@ try {
   await page.goto(`${origin}/continue/funnel-child`);
   await page.getByRole("radio", { name: /Monthly/ }).click();
   await page.getByRole("radio", { name: /Annual/ }).click();
-  await page.getByRole("checkbox").click();
-  await page
-    .getByRole("button", { name: "Continue to secure checkout" })
-    .click();
+  // No parent checkbox before paying (#2402); the card pays at Stripe.
+  await page.getByRole("button", { name: "Continue to Stripe" }).click();
   await page
     .getByRole("heading", { name: "Stripe Checkout fixture" })
     .waitFor();
@@ -371,13 +371,18 @@ try {
   );
   await linkCheckoutVisitor(pool, checkout, checkoutVisitors[0]);
   phase = "processing";
+  // Stripe's return opens the pay overlay's confirmation, which claims the
+  // paid plan for the child (features/pay/CardDone.tsx).
+  const claimed = page.waitForResponse((response) =>
+    response.url().endsWith("/billing/enrollment/claim"),
+  );
   await page.goto(
     `${origin}/start/purchase?billing=processing&purchase=${purchaseId}`,
   );
-  // Paid: the plan becomes the child's and the screen goes back.
   await page.waitForURL((url) => !url.pathname.startsWith("/start"), {
     timeout: 15000,
   });
+  await claimed;
   assert.equal(phase, "assigned", "the paid plan is claimed for the child");
   await recordVerifiedPurchase(pool, checkout, "year");
   await milestones(page, [

@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { publicRead } from "./lib/public-reads";
 import { chooseLearner, openMenu } from "./ui-controls";
 import {
   FIXTURE_FAMILY_ID,
@@ -179,6 +180,8 @@ async function fixturePage(family: (token: string) => FamilySummary) {
       });
     if (path === "/api/v1/events/context" && route.request().method() === "GET")
       return route.fulfill({ json: { generation: "initial" } });
+    const read = publicRead(path.replace(/^\/api\/v1/, ""));
+    if (read) return route.fulfill({ json: read });
     // First-party funnel beacons (verified in verify-funnel-ui).
     if (path === "/api/v1/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -251,7 +254,9 @@ try {
   {
     const { page, errors } = await fixturePage(() => summary("Unused"));
     try {
-      await open(page);
+      // An app address (`/` opens the landing when the session can't be
+      // read, #2448).
+      await open(page, "/overview");
       await page.evaluate(() => (window as any).sessionReview.reject());
       await page
         .getByRole("alert")
@@ -283,6 +288,7 @@ try {
       sawHeld = resolve;
     });
     let requests = 0;
+    let holdNext = false;
     let networkDone!: Promise<"finished" | "failed">;
     let finishHandler!: () => void;
     const handlerDone = new Promise<void>((resolve) => {
@@ -291,7 +297,9 @@ try {
     await page.route("**/api/v1/me", async (route) => {
       const snapshot = structuredClone(family);
       requests++;
-      const isHeld = requests === 2;
+      // The account read started just before the rename (below) is held.
+      const isHeld = holdNext;
+      holdNext = false;
       try {
         if (isHeld) {
           const request = route.request();
@@ -301,11 +309,14 @@ try {
             page
               .waitForEvent("requestfinished", {
                 predicate: (value) => value === request,
+                // Held until the rename is done, however long that takes.
+                timeout: 0,
               })
               .then(() => "finished" as const),
             page
               .waitForEvent("requestfailed", {
                 predicate: (value) => value === request,
+                timeout: 0,
               })
               .then(() => "failed" as const),
           ]);
@@ -340,7 +351,9 @@ try {
       },
     );
     try {
-      await open(page);
+      // An app address (`/` signed out is the light pitch, which a sign-in
+      // leaves by loading the app).
+      await open(page, "/overview");
       await page.evaluate(() =>
         (window as any).sessionReview.emit({
           token: "current-token",
@@ -350,10 +363,23 @@ try {
       await page.locator("[data-app-logo]").waitFor();
       // The child's own page holds their name (docs/architecture/spaces.md).
       await chooseLearner(page, "current-child");
-      await held;
       await page
         .getByRole("heading", { name: "Before rename", exact: true })
         .waitFor();
+      // An account read starts (as a refresh does) and is held while the
+      // rename happens; its older snapshot then arrives late.
+      holdNext = true;
+      await page.evaluate(async () => {
+        const modulePath = "/src/web/lib/query.ts";
+        const { queryClient, meKey } = await import(modulePath);
+        void queryClient.refetchQueries({ queryKey: meKey("current-parent") });
+      });
+      await held;
+      // The name is in the child's Settings fold.
+      await page
+        .locator("summary")
+        .filter({ hasText: /^Settings$/ })
+        .click();
       await page.getByRole("button", { name: "Change", exact: true }).click();
       await page.getByLabel("Name", { exact: true }).fill("After rename");
       await page

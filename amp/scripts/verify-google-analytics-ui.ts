@@ -47,7 +47,8 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     } else if (googleAdsPing(url)) {
       await route.fulfill({ status: 204 }); // Nor any ad measurement ping.
     } else if (url.hostname === "www.googletagmanager.com") {
-      tagLoads++;
+      // The tag itself (the SDK also calls its own host for other files).
+      if (url.pathname === "/gtag/js") tagLoads++;
       await route.continue(); // Run the actual SDK, not a made-up gtag substitute.
     } else if (url.hostname === "amp.corpora.inc") {
       await route.fulfill({
@@ -285,7 +286,7 @@ test("the pitch reaches GA with its titles and video, Buy and try events, saniti
       } else if (googleAdsPing(url)) {
         await route.fulfill({ status: 204 });
       } else if (url.hostname === "www.googletagmanager.com") {
-        tagLoads++;
+        if (url.pathname === "/gtag/js") tagLoads++;
         await route.continue(); // The actual SDK.
       } else if (url.hostname === "amp.corpora.inc") {
         if (url.pathname === "/api/v1/events") {

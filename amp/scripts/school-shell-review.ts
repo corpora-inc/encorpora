@@ -208,7 +208,17 @@ export async function classShellJourney(page: Page) {
   await page.keyboard.press("Escape");
   await page.keyboard.press("Escape");
   await drawer.waitFor({ state: "hidden" });
-  const activeVisible = () =>
+  // One current tab once the address has settled (a link marks itself
+  // current as the address changes; the bar's own mark follows the route).
+  const activeVisible = async () => {
+    await page.waitForFunction(
+      () =>
+        document.querySelectorAll('[data-app-bar] [aria-current="page"]')
+          .length === 1,
+    );
+    return activeTabVisible();
+  };
+  const activeTabVisible = () =>
     page.locator('[data-app-bar] [aria-current="page"]').evaluate((tab) => {
       const box = tab.getBoundingClientRect();
       const strip = tab.parentElement!.getBoundingClientRect();

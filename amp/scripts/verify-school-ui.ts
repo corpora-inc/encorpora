@@ -301,7 +301,8 @@ async function journey(browser: Browser, engine: string, width: number) {
     const orgId = school.orgId;
     check(
       `${label} setup opens at the calendar for the issued school`,
-      head.url().includes(`org=${orgId}`),
+      // The school is in the path (no query strings carry app state).
+      new URL(head.url()).pathname === `/school/${orgId}/setup/calendar`,
       head.url(),
     );
     await head.getByRole("button", { name: "Continue" }).click();
@@ -484,7 +485,9 @@ async function journey(browser: Browser, engine: string, width: number) {
         .click();
     await heading(pictures, "Remember these 3");
     await pictures.getByRole("button", { name: "These are mine" }).click();
-    await pictures.waitForURL("**/practice");
+    await pictures.waitForURL((url) =>
+      /^\/practice\/[^/]+$/.test(url.pathname),
+    );
     // Five problems: practiced this week means 5 active minutes or 5
     // problems (src/schools/teacher-reads.ts).
     await answerSome(pictures, 5);
@@ -497,7 +500,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     )?.token;
     assert.ok(token, "Felix has a card");
     await card.goto(`${origin}/c#${token}`);
-    await card.waitForURL("**/practice");
+    await card.waitForURL((url) => /^\/practice\/[^/]+$/.test(url.pathname));
     check(
       `${label} the card leaves the address bar`,
       !card.url().includes(token),
@@ -622,9 +625,16 @@ async function journey(browser: Browser, engine: string, width: number) {
     // 8. Removing a student frees the seat and deletes their learning.
     last = head;
     const theo = roster.get(REMOVED)!;
-    await head.goto(
-      `${origin}/school/${orgId}/students?student=${theo.personId}`,
-    );
+    // The record opens from the student's row (a sheet over Students; no
+    // query string names it).
+    await head.goto(`${origin}/school/${orgId}/students`);
+    await head.getByRole("textbox", { name: "Search students" }).fill(REMOVED);
+    // A row on a wide screen, a card on a phone: the name opens it.
+    await head
+      .getByRole("main")
+      .getByText(new RegExp(`^${REMOVED}\\b`))
+      .first()
+      .click();
     const record = head.getByRole("dialog");
     await record.getByRole("button", { name: "Remove student" }).click();
     await record

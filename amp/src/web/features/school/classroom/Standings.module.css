@@ -50,10 +50,9 @@
 .main {
   display: block;
 }
+/* The class picker takes the column's width: as a shrink-to-fit flex item
+   its equal-share grid sized to nothing on a phone, the names overlapping. */
 .picker {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
   margin-bottom: var(--space-5);
 }
 .head {

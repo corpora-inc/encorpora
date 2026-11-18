@@ -48,7 +48,7 @@
   flex-basis: 100%;
   min-height: calc(var(--text-small) * 1.45);
   margin: 0;
-  color: var(--color-danger);
+  color: var(--color-danger-accent);
   font-size: var(--text-small);
   line-height: 1.45;
 }

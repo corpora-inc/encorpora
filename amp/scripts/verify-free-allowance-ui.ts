@@ -228,15 +228,23 @@ async function newContext(
         for (const entry of list.getEntries() as unknown as {
           value: number;
           hadRecentInput: boolean;
-          sources?: { node?: Node | null }[];
+          sources?: {
+            node?: Node | null;
+            previousRect: DOMRectReadOnly;
+            currentRect: DOMRectReadOnly;
+          }[];
         }[]) {
           if (entry.hadRecentInput || sources.length > 30) continue;
-          const nodes = (entry.sources ?? []).map(({ node }) => {
-            const el = node instanceof Element ? node : node?.parentElement;
-            return el
-              ? `${el.tagName.toLowerCase()}.${String(el.className).slice(0, 30)} "${(el.textContent ?? "").trim().slice(0, 30)}"`
-              : "?";
-          });
+          const nodes = (entry.sources ?? []).map(
+            ({ node, previousRect: a, currentRect: b }) => {
+              const el = node instanceof Element ? node : node?.parentElement;
+              const rect = (r: DOMRectReadOnly) =>
+                `${Math.round(r.y)}+${Math.round(r.height)}`;
+              return el
+                ? `${el.tagName.toLowerCase()}.${String(el.className).slice(0, 30)} "${(el.textContent ?? "").trim().slice(0, 30)}" ${rect(a)}→${rect(b)}`
+                : "?";
+            },
+          );
           sources.push(`${entry.value.toFixed(3)} ${nodes.join(" | ")}`);
         }
       }).observe({ type: "layout-shift", buffered: true });
@@ -368,7 +376,11 @@ async function journey(
   // (features/family/Child.tsx; the family's /workbooks is a one-hop alias).
   const familyPath = new URL(page.url()).pathname;
   const workbooksOf = async (child: { id: string }) => {
-    await page.goto(`${origin}${familyPath}/kids/${child.id}`);
+    // Already on the child's page (Back to family returns there): no second
+    // load over the app's own (WebKit interrupts one with the other).
+    const path = `${familyPath}/kids/${child.id}`;
+    if (new URL(page.url()).pathname !== path)
+      await page.goto(`${origin}${path}`);
     await page.locator("[data-child-workbooks]").waitFor();
   };
   await workbooksOf(fox);

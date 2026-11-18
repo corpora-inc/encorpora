@@ -190,6 +190,9 @@ try {
             strands: {},
           },
         });
+      // The family's Settings read its second parent (none here).
+      if (path === "/api/v1/family/second-parent")
+        return route.fulfill({ json: { secondParent: null } });
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -199,47 +202,24 @@ try {
         json: { error: "unexpected_fixture" },
       });
     });
-    // Account's own pages (docs/architecture/spaces.md, "Account"): Sign-in,
-    // then its Privacy tab.
-    await page.goto("http://127.0.0.1:4387/account/security");
+    // A family parent's privacy is the family's Settings' Privacy overlay;
+    // its Learning permission panel says when consent can't be given here.
+    await page.goto(
+      `http://127.0.0.1:4387/family/${FIXTURE_FAMILY_ID}/settings/privacy`,
+    );
     await page
-      .getByRole("link", { name: "Privacy", exact: true })
-      .first()
-      .click();
-    await page.waitForURL((url) => url.pathname === "/account/privacy");
-    await page.screenshot({
-      path: `artifacts/consent-app/privacy-${width}.png`,
-    });
-    await page.locator('[data-privacy-choice="consent"]').click();
-    await page
-      .getByRole("button", { name: "Consent options", exact: true })
+      .locator("summary")
+      .filter({ hasText: "Learning permission" })
       .click();
     await page
-      .getByRole("heading", { name: "Enrollment is unavailable" })
+      .getByText("Consent can’t be given here right now. Try again later.", {
+        exact: true,
+      })
       .waitFor();
     if (!strict) await assertPhoneLandscapeSmoke(page, "Consent unavailable");
-    else
-      for (const selector of [
-        ".parent-consent-center header button",
-        ".parent-consent-center footer button",
-      ]) {
-        const box = await page.locator(selector).first().boundingBox();
-        assert.ok(
-          box && box.y >= 0 && box.y + box.height <= height + 1,
-          `${selector} fits ${width}`,
-        );
-      }
     await page.screenshot({
       path: `artifacts/consent-app/unavailable-${width}.png`,
     });
-    await page.getByRole("button", { name: "Back", exact: true }).click();
-    await page
-      .getByRole("button", { name: "Consent options", exact: true })
-      .waitFor();
-    assert.equal(
-      await page.evaluate(() => document.activeElement?.textContent?.trim()),
-      "Consent options",
-    );
     view = {
       available: true,
       consentActive: false,
@@ -292,9 +272,7 @@ try {
     await page.locator(".parent-consent-center footer button").first().click();
     await enteredPromise;
     await page.getByRole("button", { name: "Back", exact: true }).click();
-    await page
-      .getByRole("button", { name: "Consent options", exact: true })
-      .waitFor();
+    await page.locator(".parent-consent-center").waitFor({ state: "detached" });
     const afterClose = familyReads;
     release();
     await page.waitForTimeout(150);
@@ -303,9 +281,8 @@ try {
       afterClose,
       "unmounted consent response cannot invalidate or refresh parent state",
     );
-    await page.evaluate((hash) => {
-      location.hash = hash;
-    }, fragment);
+    // The email's link again (the center closed to the page behind it).
+    await page.goto(`http://127.0.0.1:4387/${fragment}`);
     await page.getByRole("heading", { name: "Review and respond" }).waitFor();
     const otherAccount = page.waitForResponse(
       (response) =>
@@ -373,7 +350,8 @@ try {
     await page
       .getByRole("button", { name: "Continue to family", exact: true })
       .click();
-    await page.getByText("Consent is active.", { exact: true }).waitFor();
+    // It closes to the page behind it.
+    await page.locator(".parent-consent-center").waitFor({ state: "detached" });
     assert.deepEqual(faults, []);
     await page.close();
   }

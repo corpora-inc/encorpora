@@ -1,4 +1,5 @@
 import { schoolShellReview } from "./school-shell-review";
+import { CANCELLED_BY_NAVIGATION } from "./lib/cancelled-by-navigation";
 /**
  * The teacher's product in real browsers, against the real API and a real
  * database: a class of 24 provisioned the real way, with real answers through
@@ -78,8 +79,6 @@ const webPort = Number(argument("--port") ?? 4400),
 const TEACHER = "development-household";
 const SHOTS_FOR_REVIEW = new Set([1280, 390]);
 
-/** How WebKit reports a request cut off by leaving the page. */
-const CANCELLED_BY_NAVIGATION = /due to access control checks/;
 const failures: string[] = [];
 function check(label: string, ok: boolean, detail: unknown = "") {
   if (!ok) failures.push(`${label}: ${JSON.stringify(detail)}`);

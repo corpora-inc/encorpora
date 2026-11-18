@@ -537,10 +537,9 @@ function verticalProof(r: Random): Proof {
   return {
     prompt: `Lines $AC$ and $BD$ intersect at $O$. Points $A,O,C$ and $B,O,D$ are collinear. Prove $\\angle ${a}\\cong\\angle ${c}$.`,
     lines: [
+      // Words outside the math, so a long statement wraps on a phone.
       line(
-        m(
-          `\\angle ${a},\\angle ${b}\\text{ and }\\angle ${b},\\angle ${c}\\text{ are linear pairs}`,
-        ),
+        `$\\angle ${a},\\angle ${b}$ and $\\angle ${b},\\angle ${c}$ are linear pairs`,
         "Definition of linear pair",
       ),
       line(
@@ -571,9 +570,7 @@ function verticalProof(r: Random): Proof {
       "Addition property of equality",
       "Corresponding angles are congruent",
     ],
-    extra: [
-      m(`\\angle ${a}\\text{ and }\\angle ${c}\\text{ form a linear pair}`),
-    ],
+    extra: [`$\\angle ${a}$ and $\\angle ${c}$ form a linear pair`],
     figure: drawing({ at, segments: ["AC", "BD"] }),
     hint: "Both target angles form a linear pair with the same neighboring angle, so compare their sums of 180°.",
     explanation: [

@@ -227,8 +227,15 @@ const root = createRootRoute({
       .catch((error: unknown) =>
         console.warn("The session didn’t load ahead", error),
       );
+    // The document's first screen already read the account in this load: a
+    // hop on the way to it (an alias, `/practice` to the learner's own
+    // address) is the same screen and reads it once.
+    const firstLoadRead =
+      !router.state.resolvedLocation &&
+      !!session &&
+      queryClient.getQueryData(meOptions(session).queryKey) !== undefined;
     // The resource's observer shows its own error; this refresh only logs.
-    if (session)
+    if (session && !firstLoadRead)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
         .catch((error: unknown) =>

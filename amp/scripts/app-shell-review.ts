@@ -232,8 +232,11 @@ export async function verifyShellReview({
               `${tag}: the refreshed map moved`,
             );
           } else if (kind === "library-reader-loading") {
-            // A refresh of one lesson: the reader's frame paints at once and
-            // the lesson fills it; no page-sized heading in between.
+            // A refresh of one lesson's old address: the address is checked
+            // against the catalog first (app/legacy-aliases.ts, so a lesson
+            // AMP no longer has goes to Pathways in one hop, never after a
+            // frame paints). While it is, no page-sized heading paints; then
+            // the reader opens whole, and nothing in it moves.
             const lesson = lessons[0]!;
             await page.route(/\/api\/v1\/catalog(?:\/map)?$/, async (route) => {
               await held;
@@ -243,8 +246,7 @@ export async function verifyShellReview({
               `${fixture.origin}/lessons/${encodeURIComponent(lesson.id)}`,
               { waitUntil: "domcontentloaded" },
             );
-            await page.locator('.library-main[aria-busy="true"]').waitFor();
-            await settle(page, 150);
+            await settle(page, 400);
             const problems: string[] = [];
             const oversized = await page.evaluate(() =>
               [...document.querySelectorAll("main h1, main h2")]
@@ -259,26 +261,24 @@ export async function verifyShellReview({
               problems.push(
                 `an oversized heading paints while the lesson loads: ${oversized.join(", ")}`,
               );
+            release();
+            await page.locator(".lesson-reader h2").first().waitFor();
             const before = {
               reader: await boxOf(page, ".lesson-reader"),
               back: await boxOf(page, ".lesson-reader .card-top button"),
             };
-            release();
-            await page
-              .locator('.lesson-reader:not([aria-busy="true"]) h2')
-              .waitFor();
-            await settle(page, 150);
+            await settle(page, 300);
             const after = {
               reader: await boxOf(page, ".lesson-reader"),
               back: await boxOf(page, ".lesson-reader .card-top button"),
             };
             if (!sameBox(before.reader, after.reader, ["x", "y", "width"]))
               problems.push(
-                `the reader frame is not in place while the lesson loads: ${JSON.stringify(before.reader)} → ${JSON.stringify(after.reader)}`,
+                `the reader moved after it opened: ${JSON.stringify(before.reader)} → ${JSON.stringify(after.reader)}`,
               );
             if (!sameBox(before.back, after.back))
               problems.push(
-                `“All lessons” moved when the lesson arrived: ${JSON.stringify(before.back)} → ${JSON.stringify(after.back)}`,
+                `the reader's way back moved after it opened: ${JSON.stringify(before.back)} → ${JSON.stringify(after.back)}`,
               );
             // A problem type's short lesson needs no catalog: refreshed, it
             // opens while the catalog is still on its way.

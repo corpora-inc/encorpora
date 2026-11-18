@@ -19,6 +19,7 @@
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-places-ui.ts [--port 4432]
  */
 import type { LinkedMessage } from "../src/email/email.js";
+import { CANCELLED_BY_NAVIGATION } from "./lib/cancelled-by-navigation";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import pg from "pg";
@@ -126,8 +127,6 @@ const PASSWORD = "synthetic long fixture passphrase";
 const day = (offset: number) =>
   new Date(Date.now() + offset * 86_400_000).toISOString().slice(0, 10);
 const last: { page: Page | null } = { page: null };
-/** How WebKit reports a request cut off by leaving the page. */
-const CANCELLED_BY_NAVIGATION = /due to access control checks/;
 
 async function signUp(page: Page, email: string) {
   const fallback = page.getByRole("button", {

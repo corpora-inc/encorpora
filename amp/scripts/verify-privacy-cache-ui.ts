@@ -71,20 +71,24 @@ try {
     // offers only its places, so the parent opens it there.
     await page.goto("http://127.0.0.1:4350/practice");
     await familyBatchWaiting;
-    // Account, then its Privacy tab, from the drawer, in this document.
+    // A family parent's account settings are the family's Settings; its
+    // Privacy row opens Privacy over it, from the drawer, in this document.
     const drawer = await openMenu(page);
-    await drawer.getByRole("link", { name: "Account", exact: true }).click();
-    await page.waitForURL((url) => url.pathname === "/account/security");
+    await drawer.getByRole("link", { name: "Settings", exact: true }).click();
+    await page.waitForURL((url) =>
+      /^\/family\/[^/]+\/settings$/.test(url.pathname),
+    );
+    const settings = new URL(page.url()).pathname;
+    await page.locator("[data-settings-privacy-row]").click();
+    await page.waitForURL((url) => url.pathname === `${settings}/privacy`);
+    // Each privacy panel is a disclosure (ui/Disclosure.tsx).
     await page
-      .getByRole("link", { name: "Privacy", exact: true })
-      .first()
-      .click();
-    await page.waitForURL((url) => url.pathname === "/account/privacy");
-    await page
-      .getByRole("button", {
-        name:
-          mutation === "withdraw" ? "Learning consent" : "Delete learning data",
-        exact: false,
+      .locator("summary")
+      .filter({
+        hasText:
+          mutation === "withdraw"
+            ? "Learning permission"
+            : "Delete learning data",
       })
       .click();
     // Synthetic mutation isolates this browser race from the shared test account.
@@ -112,26 +116,18 @@ try {
         json: { error: "family_service_unavailable" },
       }),
     );
-    await page
-      .getByRole("button", {
-        name: mutation === "withdraw" ? "Withdraw consent" : "Review deletion",
-        exact: true,
-      })
-      .click();
-    await page
-      .getByRole("dialog")
-      .getByRole("button", {
-        name:
-          mutation === "withdraw" ? "Withdraw consent" : "Delete learning data",
-        exact: true,
-      })
-      .click();
-    await page
-      .getByText(
-        "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
-        { exact: true },
-      )
-      .waitFor();
+    // The change is saved while the account's refresh fails (503).
+    const saved = page.waitForResponse((response) =>
+      /\/family\/(consent\/withdraw|delete-learning-data)$/.test(
+        new URL(response.url()).pathname,
+      ),
+    );
+    // Withdrawing asks once more in place; deleting is its one button.
+    if (mutation === "withdraw") {
+      await page.locator("[data-consent-withdraw]").click();
+      await page.locator("[data-consent-withdraw-confirm]").click();
+    } else await page.locator("[data-delete-learning]").click();
+    await (await saved).finished();
     const releasedBatch = page.waitForResponse((response) =>
       response.url().endsWith("/batches"),
     );
@@ -143,9 +139,12 @@ try {
         window as Window & { __privacyRaceDocument?: boolean }
       ).__privacyRaceDocument = true;
     });
-    for (const path of ["/account/privacy", "/account/security", "/practice"]) {
+    for (const back of [
+      (path: string) => path === settings,
+      (path: string) => path.startsWith("/practice"),
+    ]) {
       await page.goBack();
-      await page.waitForURL((url) => url.pathname === path);
+      await page.waitForURL((url) => back(url.pathname));
     }
     assert.equal(
       await page.evaluate(
@@ -169,10 +168,10 @@ try {
       await page.getByRole("navigation", { name: "Learning sections" }).count(),
       0,
     );
-    // The account stays reachable from the drawer.
+    // The family's Settings stay reachable from the drawer.
     const after = await openMenu(page);
-    await after.getByRole("link", { name: "Account", exact: true }).click();
-    await page.waitForURL((url) => url.pathname === "/account/security");
+    await after.getByRole("link", { name: "Settings", exact: true }).click();
+    await page.waitForURL((url) => url.pathname === settings);
     assert.deepEqual(errors, []);
     await page.close();
     console.log(

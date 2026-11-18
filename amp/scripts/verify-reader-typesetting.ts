@@ -35,11 +35,19 @@ const fixtures = [
   "x = 5?!;: Then continue.",
   "3 × (3/2) + 2(−1) = 9/2 − 2 = 9/2 − 4/2 = 5/2.",
 ];
+// The page is set from a string, so a relative @import cannot load (and an
+// @import after other rules is ignored). Inline each one, as the bundler
+// does, so tokens such as --width-content-wide reach the reader layout.
+const stylesheet = (url: URL): string =>
+  readFileSync(url, "utf8").replace(
+    /@import\s+"([^"]+)";/g,
+    (_, path: string) => stylesheet(new URL(path, url)),
+  );
 const css = [
-  readFileSync(new URL("../src/web/style.css", import.meta.url), "utf8"),
-  readFileSync(new URL("../src/web/practice.css", import.meta.url), "utf8"),
+  stylesheet(new URL("../src/web/style.css", import.meta.url)),
+  stylesheet(new URL("../src/web/practice.css", import.meta.url)),
   printMathCss(),
-  readFileSync(new URL("../src/web/theme.css", import.meta.url), "utf8"),
+  stylesheet(new URL("../src/web/theme.css", import.meta.url)),
   printMathStyles,
   ".lesson-reader .worked-example li{padding:5px 0;line-height:1.6}",
 ].join("\n");
@@ -272,11 +280,16 @@ try {
         "MathML retains original mathematical expression",
       );
     }
-    assert.ok(
-      result.examples
-        .filter((example) => example.index < 5 || example.index >= 9)
-        .every((example) => example.checkedPunctuation > 0),
-    );
+    // Inline math keeps its sentence punctuation on the formula's last line.
+    // A trailing display drops its one sentence period, so nothing follows it.
+    for (const example of result.examples.filter(
+      (example) => example.index < 5 || example.index >= 9,
+    ))
+      assert.equal(
+        example.checkedPunctuation > 0,
+        trailingDisplayMath(fixtures[example.index]!) === null,
+        `punctuation after math: fixture ${example.index}`,
+      );
   }
   assert.deepEqual(
     layoutFailures,
@@ -306,21 +319,26 @@ try {
     content:
       ".print-math-punctuation>.print-math{display:inline-block!important}.print-math-punctuation .katex-html>.base:last-child{display:inline-block!important}",
   });
-  const brokenGap = await page
-    .locator('[data-fixture="0"] .print-math-punctuation')
+  // Fixture 2's chain breaks across lines at 320px in the reader's measure.
+  const { brokenGap, multiline } = await page
+    .locator('[data-fixture="2"] .print-math-punctuation')
     .evaluate((wrapper) => {
       const punctuation = wrapper.lastChild!;
       const range = document.createRange();
       range.setStart(punctuation, 0);
       range.setEnd(punctuation, 1);
-      const finalTerm = wrapper.querySelector(
-        ".katex-html > .base:last-child",
-      )!;
-      return (
-        range.getBoundingClientRect().left -
-        finalTerm.getBoundingClientRect().right
-      );
+      const bases = wrapper.querySelectorAll(".katex-html > .base");
+      const finalTerm = bases[bases.length - 1]!;
+      return {
+        brokenGap:
+          range.getBoundingClientRect().left -
+          finalTerm.getBoundingClientRect().right,
+        multiline:
+          bases[0]!.getBoundingClientRect().bottom <=
+          finalTerm.getBoundingClientRect().top,
+      };
     });
+  assert.ok(multiline, "punctuation-gap fixture must span lines");
   assert.ok(brokenGap > 4, "multiline punctuation-gap mutation must fail");
   // A bare wbr happens to work in Chromium, but regresses WebKit wrapping.
   // Its structural guard must therefore reject it even in Chromium-only CI.

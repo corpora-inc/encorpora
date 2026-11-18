@@ -62,8 +62,10 @@
   justify-self: start;
   min-width: 0;
   max-width: 100%;
-  margin-inline: calc(-1 * var(--space-1));
-  padding: var(--space-1);
+  /* The hover fill keeps a label's room on each side; the text stays on
+     the column's edge. */
+  margin-inline: calc(-1 * var(--space-2));
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-small);
   color: var(--color-on-surface);
   font-size: var(--text-heading-3);
@@ -112,8 +114,8 @@
   align-items: center;
   justify-self: start;
   min-height: 44px;
-  margin-inline: calc(-1 * var(--space-1));
-  padding-inline: var(--space-1);
+  margin-inline: calc(-1 * var(--space-2));
+  padding-inline: var(--space-2);
   border-radius: var(--radius-small);
   color: var(--color-primary);
   font-size: var(--text-table-small);

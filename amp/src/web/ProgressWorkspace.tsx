@@ -148,6 +148,8 @@ export function ProgressWorkspace({
   const list = useRef<HTMLDivElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
   const [capacity, setCapacity] = useState(2);
+  // The stage size the page was last sized for.
+  const sized = useRef<string | null>(null);
   const [largeText, setLargeText] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const returnSkill = useRef<string | null>(null);
@@ -164,6 +166,9 @@ export function ProgressWorkspace({
   useLayoutEffect(() => {
     const target = list.current;
     if (!target) return;
+    // The size this stage was last sized for, when it mounts again.
+    const before = sized.current;
+    let resized = false;
     const measure = () => {
       const font = Number.parseFloat(getComputedStyle(target).fontSize) || 16;
       const grid = target.querySelector(".progress-cards");
@@ -182,15 +187,22 @@ export function ProgressWorkspace({
       const gap = grid
         ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
         : 12;
+      // The stage back at the size the page was sized for (an idea's detail
+      // closed): the page keeps its size, with any row the guard below
+      // dropped, so it never shows one row longer for a frame. Any other
+      // size, or a resize since, sizes it again.
+      const size = `${target.clientWidth}x${target.clientHeight}x${columns}x${largeText}`;
+      if (!resized && size === before) return;
+      resized = true;
+      sized.current = size;
+      // As many rows as the stage holds: a tall screen's page never leaves
+      // a card-sized gap under its cards.
       setCapacity(
         largeText
           ? 1
           : Math.max(
               1,
-              Math.min(
-                3,
-                Math.floor((target.clientHeight + gap) / (card + gap)),
-              ),
+              Math.floor((target.clientHeight + gap) / (card + gap)),
             ) * columns,
       );
     };

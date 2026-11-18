@@ -327,6 +327,21 @@ header {
     padding: 4px 0;
     font-size: 14px;
   }
+  /* The grade chip shares the phone's one topic line with the skill's
+     name, so the row (and the stage under it) keeps its height: the chip
+     is compact and carries the area's colour on its edge in place of the
+     dot. A name too long for the line still wraps, whole. */
+  .practice-surface > .practice-topic:has(> .problem-grade) {
+    gap: 6px;
+  }
+  .practice-surface > .practice-topic:has(> .problem-grade)::before {
+    display: none;
+  }
+  .practice-surface > .practice-topic > .problem-grade {
+    padding: 0 4px;
+    border-color: var(--strand, var(--color-border));
+    font-size: 12px;
+  }
 }
 .problem-content .question {
   font-weight: 600;

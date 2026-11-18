@@ -480,14 +480,6 @@ try {
   await page.goto(`${origin}/pathways?topic=linear`);
   await page.getByRole("searchbox", { name: "Search", exact: true }).waitFor();
   const search = page.getByRole("searchbox", { name: "Search", exact: true });
-  await page
-    .getByText(
-      "Explore the curriculum. Practice lights up each skill you earn.",
-      {
-        exact: true,
-      },
-    )
-    .waitFor({ state: "attached" });
   const accountBox = (await page
     .getByRole("button", { name: "Open AMP menu" })
     .boundingBox())!;

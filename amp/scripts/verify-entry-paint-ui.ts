@@ -135,14 +135,22 @@ try {
               var root = document.getElementById('root');
               if(root && root.querySelector('.app-loading-mark')) window.entryStarted = true;
               if(window.entryStarted && !window.entryFinished) {
-                var mark = root.querySelector('.app-loading-mark');
+                // Painted loaders only: a retry's Suspense keeps the failed
+                // screen in the DOM, hidden, under the one loading frame.
+                var painted = Array.prototype.filter.call(
+                  root.querySelectorAll(".app-loading"),
+                  function (e) { return e.getClientRects().length > 0; }
+                );
+                var mark = painted.length
+                  ? painted[0].querySelector('.app-loading-mark')
+                  : root.querySelector('.app-loading-mark');
                 var box = mark && mark.getBoundingClientRect();
-                var wave = root.querySelector(".app-loading-wave");
+                var wave = mark && mark.querySelector(".app-loading-wave");
                 var animation = wave && wave.getAnimations()[0];
                 window.entryPaints.push({
                   blank: !root.children.length || (!mark && !root.innerText.trim()),
                   html: !mark && !root.innerText.trim() ? root.innerHTML.slice(0,400) : null,
-                  loaders: root.querySelectorAll(".app-loading").length,
+                  loaders: painted.length,
                   waveStart: animation ? animation.startTime : null,
                   oldHeader: !!root.querySelector('.app-loading-bar'),
                   mark: box ? [box.x, box.y, box.width, box.height] : null
@@ -268,15 +276,23 @@ try {
           }
           account.release();
           if (scenario === "error") {
-            await page.getByRole("alert").waitFor();
-            await verifyWave(page, false);
+            // A session that can't be read at `/`, with no account found on
+            // this browser before, opens the landing (#2448).
+            await page.locator("#pitch-title").waitFor();
             await page.screenshot({
               path: `${shots}/${engine.name()}-${colorScheme}-${width}-error.png`,
             });
             failSession = false;
-            await page.getByRole("button", { name: "Try again" }).click();
           }
           if (scenario === "new") {
+            // A new account meets the launcher's welcome at `/` (never a
+            // forward, app/sign-in-gate.ts toOnlyPlace); Get started opens
+            // the first step.
+            await page
+              .getByRole("heading", { name: "Welcome to AMP" })
+              .waitFor();
+            assert.equal(new URL(page.url()).pathname, "/");
+            await page.locator('[data-launch="start"]').click();
             await page.waitForURL(`${origin}/start`);
             await page
               .getByRole("heading", { name: "What brings you to AMP?" })
@@ -290,7 +306,9 @@ try {
               .first()
               .waitFor();
           } else {
-            await page.locator(".app-loading").waitFor({ state: "detached" });
+            await page.waitForFunction(
+              () => !document.querySelector(".app-loading"),
+            );
           }
           const frames = await page.evaluate<
             {

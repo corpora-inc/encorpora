@@ -179,7 +179,8 @@ try {
     .click();
   await firstBatch;
   await child.getByLabel("Problem workspace", { exact: true }).waitFor();
-  assert.equal(new URL(child.url()).pathname, "/practice");
+  // The device's child practices at their own address.
+  assert.match(new URL(child.url()).pathname, /^\/practice\/[^/]+$/);
   assert.deepEqual([...new Set(batches)], [persona.learnerId]);
   const credentials = (
     await fixture.db.query<{ active: number; locked: number }>(

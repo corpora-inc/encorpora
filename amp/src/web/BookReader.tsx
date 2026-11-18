@@ -7,6 +7,7 @@ import { readingFrames } from "../books/reading.js";
 import { MathText } from "../publishing/MathText.js";
 import { FocusDialog } from "./PracticeWorkspace.js";
 import { BookScreenFigure } from "./BookScreenFigure.js";
+import layer from "./ui/LayerControls.module.css";
 import "./book-reader.css";
 import "./early-number-reader.css";
 type Solution = Extract<BookBlock, { kind: "solution" }>;
@@ -35,6 +36,17 @@ export function BookReader({
     [error, setError] = useState("");
   const heading = useRef<HTMLHeadingElement>(null),
     stage = useRef<HTMLElement>(null);
+  // Escape puts the book down, as it does a layer, once nothing is open over
+  // it (Contents, a model, the question, a solution close first).
+  const overlaid = contents || modelOpen || questionOpen || !!solution;
+  useEffect(() => {
+    if (overlaid) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !event.defaultPrevented) onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [overlaid, onClose]);
   const frame = frames[position]!,
     page = book.pages.find((p) => p.id === frame.pageId)!,
     block = frame.block;
@@ -185,13 +197,24 @@ export function BookReader({
       data-presentation={book.presentation}
       data-page-kind={page.kind}
     >
+      {/* The book is a layer over the screen it was opened from: Contents,
+          its title, and the one cross that puts it down (no in-page Back;
+          browser Back and Escape do the same). */}
       <header className="reader-toolbar">
-        <button className="text-button" onClick={onClose}>
-          ← Back
-        </button>
-        <span>{book.title}</span>
         <button className="text-button" onClick={() => setContents(true)}>
           Contents
+        </button>
+        <span>{book.title}</span>
+        <button
+          type="button"
+          className={layer.close}
+          aria-label="Close book"
+          data-layer-close=""
+          onClick={onClose}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
       </header>
       <div className="reader-heading">

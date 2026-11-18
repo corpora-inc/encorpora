@@ -301,7 +301,7 @@ try {
     );
     await page.getByRole("button", { name: "Next →", exact: true }).click();
     const selected = await page.locator(".reader-position>span").innerText();
-    await page.getByRole("button", { name: "← Back", exact: true }).click();
+    await page.getByRole("button", { name: "Close book", exact: true }).click();
     await page.locator(".book-reader").waitFor({ state: "detached" });
     // Browser Back reopens the book where the reader left it.
     await page.goBack();
@@ -354,7 +354,7 @@ try {
       .filter({ hasText: /reading edition is available/ })
       .waitFor();
     // The reader's Back leaves the book for the learner's Pathways.
-    await page.getByRole("button", { name: "← Back", exact: true }).click();
+    await page.getByRole("button", { name: "Close book", exact: true }).click();
     await page.waitForURL((address) => address.pathname === "/pathways");
     await page.locator(".book-reader").waitFor({ state: "detached" });
     let releaseOpen!: () => void;

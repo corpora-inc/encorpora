@@ -16,7 +16,7 @@ A same-parent token renewal preserves the current workspace. Changing accounts c
 
 ## Verification
 
-`npm run test:purchase-app-ui` exercises the actual app with a controlled identity adapter and intercepted API responses. It checks parent entry and return focus, unavailable providers, owned checkout returns, same-parent token renewal and delayed account-switch responses at phone and landscape sizes. The fixture makes no live charges. The separate annual, funded-purchase and database suites verify provider workflows and ledger behavior.
+Purchases are paid in the pay overlay: `npm run test:payment-ui`, `npm run test:funnel-ui` and `scripts/verify-checkout-privacy-ui.ts` exercise it in the actual app with intercepted API responses (no live charges), and `scripts/verify-session-ui.ts` covers same-parent token renewal and account changes. The separate annual, funded-purchase and database suites verify provider workflows and ledger behavior.
 
 Hosted release requires configured identity, verified consent, privacy/support operations and reviewed provider agreements. Mounting these workspaces does not enable a merchant account or confer program approval.
 

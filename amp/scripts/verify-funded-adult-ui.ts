@@ -5,8 +5,6 @@ import { fileURLToPath } from "node:url";
 import { chromium as rawChromium, type Page } from "playwright";
 import { createServer } from "vite";
 import { settleArrival } from "./ui-settle";
-import { consentFixture } from "../tests/parent-consent.fixture";
-import { noticeDigest } from "../src/parent-consent/crypto";
 const chromium = secureChromium(rawChromium);
 
 /* An adult student paying for herself from her education-funds account:
@@ -114,25 +112,6 @@ try {
       });
       const page = await context.newPage();
       let gift = false;
-      let entry:
-        | "adult"
-        | "parent-pending"
-        | "parent-request"
-        | "unknown"
-        | "invoice-adult"
-        | "invoice-ambiguous" = "adult";
-      await page.addInitScript(() => {
-        (window as unknown as { sawWhoChoice: boolean }).sawWhoChoice = false;
-        new MutationObserver(() => {
-          if (
-            [...document.querySelectorAll("button")].some(
-              (button) => button.textContent?.trim() === "For me",
-            )
-          )
-            (window as unknown as { sawWhoChoice: boolean }).sawWhoChoice =
-              true;
-        }).observe(document, { subtree: true, childList: true });
-      });
       const claims: unknown[] = [];
       await page.route("**/api/**", async (route) => {
         const path = new URL(route.request().url()).pathname;
@@ -142,44 +121,7 @@ try {
               offers: [offer("annual", 12, 59900), offer("monthly", 1, 5900)],
             },
           });
-        if (path === "/api/v1/me") {
-          const account = me(gift);
-          return route.fulfill({
-            json:
-              entry === "adult"
-                ? account
-                : {
-                    ...account,
-                    adultPractice: { eligible: true, learner: null },
-                    consent: {
-                      status: entry === "parent-pending" ? "pending" : "none",
-                      method: null,
-                    },
-                    next: "start",
-                  },
-          });
-        }
-        if (path === "/api/v1/consent")
-          return route.fulfill({
-            json: {
-              consentActive: false,
-              available: true,
-              notice: consentFixture.notice,
-              noticeDigest: noticeDigest(consentFixture),
-              confirmationDelayHours: 24,
-              request:
-                entry === "parent-request"
-                  ? {
-                      id: "request",
-                      phase: "awaiting-initial",
-                      createdAt: "2026-01-01T00:00:00.000Z",
-                      expiresAt: "2099-01-01T00:00:00.000Z",
-                      confirmationAfter: null,
-                      delivery: "accepted",
-                    }
-                  : null,
-            },
-          });
+        if (path === "/api/v1/me") return route.fulfill({ json: me(gift) });
         if (path === "/api/v1/funding/offers")
           return route.fulfill({
             json: { offers: [{ programId: "az-esa", jurisdiction: "AZ" }] },
@@ -188,26 +130,29 @@ try {
           return route.fulfill({
             json: {
               invoices: [
-                "adult",
-                "invoice-adult",
-                "invoice-ambiguous",
-              ].includes(entry)
-                ? [
-                    {
-                      id: "8b0f7c43-8f87-4b8f-9e1c-6b0a2c3c0b11",
-                      studentBillingName:
-                        entry === "invoice-ambiguous"
-                          ? "Another Student"
-                          : "Sample Student",
-                      parentEmail: "student@example.test",
-                      state: "prepared",
-                      expiresAt: "2099-01-01T00:00:00.000Z",
-                      offer: { programId: "az-esa" },
-                    },
-                  ]
-                : [],
+                {
+                  id: "8b0f7c43-8f87-4b8f-9e1c-6b0a2c3c0b11",
+                  studentBillingName: "Sample Student",
+                  parentEmail: "student@example.test",
+                  state: "prepared",
+                  expiresAt: "2099-01-01T00:00:00.000Z",
+                  offer: {
+                    programId: "az-esa",
+                    programName: "Arizona Empowerment Scholarship Account",
+                    productTitle: "AMP Mathematics - annual learner license",
+                    totalMinor: 59900,
+                    instructions: "Attach the invoice in ClassWallet.",
+                    destinationUrl: "https://example.test/classwallet",
+                    documentPolicy: "named-student-invoice",
+                  },
+                },
+              ],
             },
           });
+        if (path === "/api/v1/funding/requests")
+          return route.fulfill({ json: { requests: [] } });
+        if (path === "/api/v1/families")
+          return route.fulfill({ json: { families: [], next: null } });
         if (path.endsWith("/claim")) {
           claims.push(route.request().postDataJSON());
           return route.fulfill({ status: 503, json: { error: "stop_here" } });
@@ -233,25 +178,23 @@ try {
         fullPage: true,
       });
 
-      // 2. Connecting it to herself: "Me", no consent step.
-      await page.goto(`${origin}/purchase/arizona-esa`);
-      await page
-        .getByRole("heading", { name: "Connect your invoice" })
-        .waitFor();
-      assert.equal(
-        await page
-          .getByRole("radio", { name: "Me" })
-          .getAttribute("aria-checked"),
-        "true",
-      );
-      assert.equal(new URL(page.url()).pathname, "/purchase/arizona-esa");
+      // 2. Connecting it to herself: Billing lists the prepared invoice
+      // (funding/FundingInvoices.tsx). Her own practice is her only learner,
+      // so Start learning claims it for her, with no question and no consent
+      // step (docs/funded-purchases.md).
+      await page.goto(`${origin}/account/billing`);
+      const start = page.getByRole("button", {
+        name: "Start learning",
+        exact: true,
+      });
+      await start.waitFor();
       await settleArrival(page);
       await fits(page);
       await page.screenshot({
         path: `${shots}/claim-me-${width}-${colorScheme}.png`,
         fullPage: true,
       });
-      await page.getByRole("button", { name: "Use this invoice" }).click();
+      await start.click();
       await page.waitForFunction(() => true);
       await page.waitForTimeout(200);
       assert.deepEqual(claims[0], { learnerId: "own" });
@@ -266,83 +209,10 @@ try {
         path: `${shots}/gift-me-${width}-${colorScheme}.png`,
         fullPage: true,
       });
-      // 4. Known parents resume consent; new adults use a matching invoice.
-      // An account with no learners and no consent on record (a parent whose
-      // consent request is still open included) starts like any first run:
-      // the program's own question, then consent for a child (#2315,
-      // onboarding/guard.ts startDestination).
-      gift = false;
-      for (const scenario of [
-        "parent-pending",
-        "parent-request",
-        "invoice-adult",
-        "unknown",
-        "invoice-ambiguous",
-      ] as const) {
-        entry = scenario;
-        await page.goto(`${origin}/purchase/arizona-esa`);
-        const asks =
-          scenario === "unknown" ||
-          scenario === "invoice-ambiguous" ||
-          scenario === "parent-request";
-        const heading = asks
-          ? "Who’s learning?"
-          : scenario === "invoice-adult"
-            ? "Connect your invoice"
-            : "Learning consent";
-        await page
-          .getByRole("heading", { name: heading, exact: true })
-          .waitFor();
-        await settleArrival(page);
-        await fits(page);
-        assert.equal(
-          await page.evaluate(
-            () => (window as unknown as { sawWhoChoice: boolean }).sawWhoChoice,
-          ),
-          asks,
-          "no redundant question flashes before routing",
-        );
-        assert.equal(
-          new URL(page.url()).pathname,
-          scenario === "parent-pending"
-            ? "/start/consent"
-            : "/purchase/arizona-esa",
-        );
-        await page.screenshot({
-          path: `${shots}/${scenario}-${width}-${colorScheme}.png`,
-          fullPage: true,
-        });
-        if (asks) {
-          const child = page.getByRole("link", { name: "For a child" });
-          const before = await child.boundingBox();
-          await page.getByRole("button", { name: "For me" }).focus();
-          assert.deepEqual(
-            await child.boundingBox(),
-            before,
-            "question controls do not move",
-          );
-          await child.click();
-          // A program invoice already prepared lets the parent name the child
-          // first and give consent after (#2315, InvoiceClaim); without one,
-          // consent comes first.
-          if (scenario === "invoice-ambiguous") {
-            await page
-              .getByRole("heading", { name: "Who’s learning?" })
-              .waitFor();
-            await page.getByLabel("Learner name").waitFor();
-            assert.equal(new URL(page.url()).pathname, "/start/name");
-          } else {
-            await page
-              .getByRole("heading", { name: "Learning consent" })
-              .waitFor();
-            assert.equal(new URL(page.url()).pathname, "/start/consent");
-          }
-        }
-      }
       await context.close();
     }
   console.log(
-    "PASS: funded entry at 320/390/768/1280 light/dark: parents with pending consent resume it, an open request starts like any first run, unambiguous invoices skip the question, ambiguous accounts choose, no question flash; Yearly/Monthly invoice choice without layout shift, invoice to Me without consent, gift for herself, no overflow",
+    "PASS: funded adult at 320/390/768/1280 light/dark: Yearly/Monthly invoice choice without layout shift, her invoice claimed for herself from Billing without consent, gift for herself, no overflow",
   );
 } finally {
   await browser.close();

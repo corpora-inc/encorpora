@@ -1352,10 +1352,14 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       readerCapabilities,
       ...(problem ? { problemId: problem.id } : {}),
     }).catch((error) => navigationFailure(navigation, learner.id, error));
+    // Another screen was chosen meanwhile: this book no longer opens. Still
+    // at the book's own address (a quick Back to it raced the way out), it
+    // does: a dropped open would leave "Opening your book…" for good.
     if (
       !data ||
       learnerNow() !== learner.id ||
-      navigationEpoch.current !== navigation
+      (navigationEpoch.current !== navigation &&
+        router.state.location.pathname !== `/books/${id}`)
     )
       return;
     const suggested =
@@ -1374,15 +1378,31 @@ function LegacyScreen({ owner }: { owner: string | null }) {
           : (bookPositions.current[`${learner.id}:${id}`] ?? 0),
     });
   }
+  // A book's own address opens it: on arrival, and on every return to it
+  // (Back after its reader closed), which this screen's own route can miss
+  // when it was not the screen between.
+  const opening = useRef<string | null>(null);
+  const openAddressedBook = useRef((_id: string) => {});
+  openAddressedBook.current = (id: string) => {
+    if (!learner || loadedBook?.book.id === id || opening.current === id)
+      return;
+    opening.current = id;
+    void action(() => openBook(id)).finally(() => {
+      if (opening.current === id) opening.current = null;
+    });
+  };
   useEffect(() => {
-    if (
-      route.parts[0] === "books" &&
-      route.parts[1] &&
-      learner &&
-      loadedBook?.book.id !== route.parts[1]
-    )
-      void action(() => openBook(route.parts[1]));
+    if (route.parts[0] === "books" && route.parts[1])
+      openAddressedBook.current(route.parts[1]);
   }, [route.location.pathname, learner?.id]);
+  useEffect(
+    () =>
+      router.subscribe("onResolved", ({ toLocation }) => {
+        const id = /^\/books\/([^/]+)$/.exec(toLocation.pathname)?.[1];
+        if (id) openAddressedBook.current(decodeURIComponent(id));
+      }),
+    [router],
+  );
   async function downloadBook(id: string) {
     if (nativeRuntime)
       throw new Error("PDF downloads require the configured web application.");

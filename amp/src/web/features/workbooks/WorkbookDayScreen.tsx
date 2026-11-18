@@ -278,6 +278,17 @@ function Today({ learner, date }: DayProps) {
       setSaving(false);
     }
   }
+  // The learner's areas set the options' height (their chips wrap to rows):
+  // the day waits for them, so the workbook below never drops when they
+  // land. A failed read still opens the day, with Mixed alone.
+  if (areas.isPending)
+    return (
+      <div className={`${styles.skeleton} amp-skeleton`} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+    );
   // A workbook that can't be made because the free ones are used is not a
   // failure: the card says so calmly, in the same place.
   const loadError = unavailable ? null : (history.error ?? workbook.error);

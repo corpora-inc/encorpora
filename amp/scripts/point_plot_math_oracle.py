@@ -888,8 +888,9 @@ def review_transform(problem):
     labels = [n + PRIME for n, _ in vertices]
     require(response["pointLabels"] == labels, "Slots must be the primed vertices in order")
     require(response["label"] == "Place " + english(labels), "Label")
+    # The pre-image is drawn: a triangle closed, a segment as its one edge.
     require(response.get("given") == {
-        "vertices": [{"x": p[0], "y": p[1], "label": n} for n, p in vertices], "closed": size == 3},
+        "vertices": [{"x": p[0], "y": p[1], "label": n} for n, p in vertices], "closed": size == 3, "edges": True},
         "Given shape disagrees with the prompt")
     require(len(set(images)) == size, "Images coincide")
     require(all(in_grid(p) for p in images), "An image falls outside the grid")
@@ -1051,7 +1052,7 @@ def handwritten():
         labels = [n + PRIME for n in names]
         response = response_for(len(points), True, "polygon", "Place " + english(labels), labels,
                                 {"vertices": [{"x": x, "y": y, "label": n} for n, x, y in points],
-                                 "closed": shape == "Triangle"})
+                                 "closed": shape == "Triangle", "edges": True})
         maps = [f"${n}({x}, {y})$ maps to ${n}'({ix}, {iy})$." for (n, x, y), (ix, iy) in zip(points, images)]
         last = (f"so triangle ${names[0]}'{names[1]}'{names[2]}'$ is congruent to triangle ${names}$." if shape == "Triangle"
                 else f"so ${names[0]}'{names[1]}'$ has the same length as ${names}$.")
@@ -1249,6 +1250,7 @@ def self_test():
     mutate("root", setter("public", "prompt", value="Graph $y = 2\\sqrt{x + 3} - 1$ by placing its vertex and 2 more points."),
            "a root has no vertex")
     mutate("segment", setter("public", "response", "given", "closed", value=True), "closed segment")
+    mutate("segment", setter("public", "response", "given", "edges", value=False), "given segment not drawn")
     mutate("segment", setter("public", "response", "connect", value="line"), "segment connect")
     out = copy.deepcopy(cases["segment"])
     out["public"]["prompt"] = out["public"]["prompt"].replace("2 units down", "6 units up")

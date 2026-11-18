@@ -219,7 +219,9 @@ try {
       await page.screenshot({
         path: `${shots}/guided-start-${width}-${theme}.png`,
       });
-      await page.route("**/api/v1/start", (r) =>
+      // Each child is saved as it is added; Next then reads the family
+      // again, which fails here.
+      await page.route("**/api/v1/me", (r) =>
         r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
       );
       // Scroll first, so the click's scroll is not mistaken for a shift.
@@ -236,7 +238,7 @@ try {
       await page.screenshot({
         path: `${shots}/setup-error-${width}-${theme}.png`,
       });
-      await page.unroute("**/api/v1/start");
+      await page.unroute("**/api/v1/me");
       await page.getByRole("button", { name: "Dismiss message" }).click();
       await page.getByRole("button", { name: "Next", exact: true }).click();
       // One child practices first, on this device: their first problem.
@@ -280,7 +282,7 @@ try {
             await page.screenshot({ path: `${shots}/reload-failure.png` });
             throw error;
           });
-        assert.equal(new URL(page.url()).pathname, "/practice");
+        assert.match(new URL(page.url()).pathname, /^\/practice\/[^/]+$/);
         await fits(page);
       }
       // Sign out gives the device back to the parent, on the family's Today.
@@ -289,7 +291,8 @@ try {
         .filter({ visible: true })
         .first()
         .click();
-      await page.getByRole("button", { name: "Sign out", exact: true }).click();
+      // On a handed device it is named for the place it goes back to.
+      await page.getByRole("button", { name: /^Back to / }).click();
       await page.waitForURL((u) => /^\/family\/[^/]+$/.test(u.pathname));
       const familyPath = new URL(page.url()).pathname;
       await page.locator("[data-today-title]").waitFor();
@@ -299,10 +302,11 @@ try {
       const child = first.name;
       // The family's settings, at its own address (`/family/learners` is an
       // older one), list the child.
+      // A child's row in Settings opens their settings in place.
       const childRow = (name: string) =>
-        page
-          .locator("main")
-          .getByRole("link", { name: new RegExp(`^${name}`) });
+        page.locator("main [data-child-settings-open]").filter({
+          hasText: new RegExp(`^${name}`),
+        });
       await page.goto(`${origin}/family/learners`);
       await page.waitForURL(`**${familyPath}/settings`);
       await page
@@ -323,37 +327,37 @@ try {
       await page.waitForURL((u) => u.pathname === familyPath);
       await page.goBack();
       await childRow(child).waitFor();
-      // Add a child: the sheet's year picker, a failed save in place, then
-      // the child, chosen.
+      // Add a child: the sheet's year picker, which saves the child; a
+      // failed save says so in place, and Done saves it again.
       await page
         .getByRole("button", { name: "Add a child", exact: true })
         .click();
       const sheet = page.getByRole("dialog", { name: "Add a child" });
-      await sheet.getByLabel("Name", { exact: true }).fill("Jordan");
       await sheet
-        .getByRole("button", { name: "Birth year", exact: true })
+        .getByRole("textbox", { name: /^Name, / })
+        .last()
+        .fill("Jordan");
+      await sheet
+        .getByRole("button", { name: "Birth year, Jordan", exact: true })
         .click();
-      const years = page.getByRole("dialog", { name: "Birth year" });
+      const years = page.getByRole("dialog", { name: "Birth year, Jordan" });
       await years.waitFor();
       await contrast(page, '[role="dialog"] [role=option]');
       await fits(page);
       await page.screenshot({
         path: `${shots}/year-picker-${width}-${theme}.png`,
       });
-      await years.getByRole("option", { name: "2018", exact: true }).click();
-      await years.waitFor({ state: "detached" });
-      const add = sheet.getByRole("button", { name: "Add child", exact: true });
-      // Scroll before measuring so viewport movement is not mistaken for layout shift.
-      await add.scrollIntoViewIfNeeded();
-      const formBox = await sheet.locator("form").boundingBox();
+      const formBox = await sheet.locator("[data-add-children]").boundingBox();
       await page.route("**/api/v1/learners", (r) =>
         r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
       );
-      await add.click();
-      await sheet.getByRole("alert").waitFor();
+      await years.getByRole("option", { name: "2018", exact: true }).click();
+      await years.waitFor({ state: "detached" });
+      // The failure is a toast over the sheet (ui/Toast.tsx).
+      await page.getByRole("alert").filter({ hasText: /./ }).first().waitFor();
       await ready(page);
       await stable(
-        sheet.locator("form"),
+        sheet.locator("[data-add-children]"),
         formBox,
         "failed family save does not move form",
       );
@@ -362,15 +366,22 @@ try {
         path: `${shots}/family-error-${width}-${theme}.png`,
       });
       await page.unroute("**/api/v1/learners");
+      // "Choose the year again": the year was cleared; choosing it saves.
       const created = page.waitForResponse(
         (r) =>
           new URL(r.url()).pathname === "/api/v1/learners" &&
-          r.request().method() === "POST",
+          r.request().method() === "POST" &&
+          r.ok(),
       );
-      await add.click();
+      await sheet
+        .getByRole("button", { name: "Birth year, Jordan", exact: true })
+        .click();
+      await page
+        .getByRole("dialog", { name: "Birth year, Jordan" })
+        .getByRole("option", { name: "2018", exact: true })
+        .click();
       const jordan = ((await (await created).json()) as { id: string }).id;
-      await sheet.getByText("Jordan is in your family.").waitFor();
-      await page.keyboard.press("Escape");
+      await sheet.getByRole("button", { name: "Done", exact: true }).click();
       await sheet.waitFor({ state: "detached" });
       // The new child is in the drawer and on Settings at once.
       await childRow("Jordan").waitFor();
@@ -407,7 +418,8 @@ try {
       await fits(page);
       // The child's own pages: their Pathways and their record.
       await page.goto(`${origin}${familyPath}/kids/${first.id}/pathways`);
-      await page.locator(".pathways-viewport").waitFor();
+      // The map's list (the 3D view is optional since #2416).
+      await page.locator(".pathways-workspace").waitFor();
       await fits(page);
       await page.screenshot({
         path: `${shots}/pathways-${width}-${theme}.png`,
@@ -455,25 +467,23 @@ try {
         // A setup screen opened cold while `/me` fails: a designed error
         // with a retry that works.
         await page.goto(`${origin}/continue/${first.id}`);
-        await page.getByRole("heading", { name: "This didn’t load" }).waitFor();
-        await page
-          .getByRole("button", { name: "Try again", exact: true })
-          .waitFor();
+        const retry = page.getByRole("button", {
+          name: "Try again",
+          exact: true,
+        });
+        await retry.waitFor();
         await fits(page);
         await page.screenshot({ path: `${shots}/cold-family-error.png` });
         await page.unroute("**/api/v1/me");
-        await page
-          .getByRole("button", { name: "Try again", exact: true })
-          .click();
-        await page
-          .getByRole("heading", { name: "Continue with AMP" })
-          .waitFor();
+        // Try again works: the error gives way to the screen.
+        await retry.click();
+        await retry.waitFor({ state: "detached" });
         await page.goto(`${origin}/family/learners`);
         await childRow("Jordan").waitFor();
       }
       if (width === 320 && theme === "light") {
-        // A parent approving another family's child pays for the plan before
-        // any learner of their own; an unconfirmed email is confirmed first.
+        // A gift is bound to the address it was made out to: an unconfirmed
+        // email is confirmed first (onboarding/guard.ts).
         const actual = await (
           await context.request.get(`${origin}/api/v1/me`)
         ).json();
@@ -481,9 +491,7 @@ try {
           route.fulfill({
             json: {
               ...actual,
-              next: "start",
-              familyApproval: { id: "synthetic-approval" },
-              consent: { status: "none", method: null },
+              next: "accept-gift",
               account: {
                 ...actual.account,
                 emailVerified: false,
@@ -492,11 +500,10 @@ try {
             },
           }),
         );
-        await page.goto(`${origin}/start/plan`);
+        await page.goto(`${origin}/access`);
         await page
           .getByRole("heading", { name: "Confirm your email" })
           .waitFor();
-        assert.match(page.url(), /start\/verify-email/);
         let releaseEmail!: () => void;
         const emailHold = new Promise<void>((resolve) => {
           releaseEmail = resolve;
@@ -529,7 +536,6 @@ try {
           })
           .waitFor();
         await stable(resend, box, "email failure controls stay in place");
-        await page.getByRole("button", { name: "Dismiss message" }).click();
         await page.getByRole("button", { name: "I’ve confirmed it" }).click();
         await page
           .getByText(
@@ -584,9 +590,9 @@ try {
       await page.screenshot({
         path: `${shots}/no-child-${width}-${theme}.png`,
       });
+      // Add a child opens its sheet in place.
       await page.getByRole("button", { name: "Add a child" }).click();
-      await page.waitForURL("**/start/parent");
-      await page.getByRole("heading", { name: "Add your kids" }).waitFor();
+      await page.getByRole("dialog", { name: "Add a child" }).waitFor();
       await page.unrouteAll({ behavior: "wait" });
       assert.deepEqual(faults, []);
       console.log("Complete viewport fixture auth requests", authRequests);

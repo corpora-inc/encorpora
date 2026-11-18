@@ -22,7 +22,9 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 4394, strictPort: true },
+  // Nothing changes on disk during a check: no watcher, which on CI walked
+  // into the runner's /run/udev and crashed with ELOOP.
+  server: { host: "127.0.0.1", port: 4394, strictPort: true, watch: null },
 });
 await vite.listen();
 const browser = await chromium.launch();
@@ -42,7 +44,9 @@ try {
     .waitFor();
   assert.equal(new URL(page.url()).pathname, "/sign-in");
   assert.equal(await page.title(), "Sign In | AMP");
-  assert.equal(new URL(page.url()).searchParams.get("error"), "link_failed");
+  // A provider's error is read once, then leaves the address
+  // (app/third-party-returns.ts).
+  assert.equal(new URL(page.url()).searchParams.get("error"), null);
   await page.goto("http://127.0.0.1:4394/?reset-password&error=INVALID_TOKEN");
   await page
     .getByRole("heading", { name: "Reset your password", exact: true })
@@ -53,7 +57,8 @@ try {
       { exact: true },
     )
     .waitFor();
-  assert.equal(new URL(page.url()).pathname, "/sign-in/forgot");
+  // An expired reset link opens the reset screen at its own address.
+  assert.equal(new URL(page.url()).pathname, "/reset-password");
   assert.equal(await page.title(), "Reset Your Password | AMP");
   await page.goto("http://127.0.0.1:4394/sign-up");
   await page.getByRole("heading", { name: "Create your account" }).waitFor();
@@ -91,7 +96,7 @@ try {
     await route.fulfill({ json: me });
   });
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("group", { name: "Birth year" }).waitFor();
+  await page.getByRole("group", { name: "Starting point" }).waitFor();
   assert.equal(
     await page.locator(".app-loading").count(),
     0,
@@ -128,14 +133,14 @@ try {
     countingTitle,
   );
   assert.match(await map.title(), new RegExp(countingTitle));
-  // A skill's older address opens it as a layer over the map, in one hop
-  // to the map's own address (nav/legacy-layers.ts); closing it leaves the
-  // map, whose title drops the skill's.
-  assert.equal(new URL(map.url()).pathname, "/pathways");
+  // A skill is at its own address, a layer over the map (#2416); closing it
+  // leaves the map, at the map's address, whose title drops the skill's.
+  assert.equal(new URL(map.url()).pathname, "/pathways/count-to-20");
   assert.equal(new URL(map.url()).searchParams.get("open"), null);
   await waitForLayers(map, ["skill:count-to-20"]);
   await map.getByRole("button", { name: "Close", exact: true }).click();
   await waitForLayers(map, []);
+  await map.waitForURL((url) => url.pathname === "/pathways");
   await map.waitForFunction(
     (title) => !document.title.includes(title),
     countingTitle,

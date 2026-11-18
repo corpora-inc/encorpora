@@ -100,7 +100,9 @@ async function watch(page: Page, act: () => unknown, limit = 15_000) {
     if (current) seen.push({ ...current, open });
     if (open > 0) quiet = 0;
     else if (!quiet) quiet = Date.now();
-    else if (Date.now() - quiet > 900) break;
+    // Settled: the network quiet and the screen's content in (a slow
+    // runner can pause between requests while a file loads).
+    else if (Date.now() - quiet > 900 && (current?.text ?? 0) > 40) break;
     await page.waitForTimeout(50);
   }
   page.off("request", started);

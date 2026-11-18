@@ -35,7 +35,10 @@ await admin.query(`CREATE SCHEMA ${schema}`);
 const scoped = new URL(database);
 scoped.searchParams.set("options", `-c search_path=${schema}`);
 await migrate(scoped.href);
-const repository = new PostgresRepository(scoped.href);
+// No free problems here: a learner's practice is the license's, so the
+// identity checks below see exactly what a native session may supply (every
+// learner starts with free problems otherwise).
+const repository = new PostgresRepository(scoped.href, { freeProblems: 0 });
 const origin = "http://127.0.0.1:4441",
   issuer = `${origin}/`,
   clientId = "native-fixture",
@@ -790,7 +793,7 @@ try {
     .click();
   await page.getByRole("region", { name: "Reading workspace" }).waitFor();
   assert.equal(await page.getByRole("button", { name: /Download/ }).count(), 0);
-  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.getByRole("button", { name: "Close book", exact: true }).click();
   await page.getByRole("button", { name: "Account menu" }).count();
   await page.getByLabel("Account menu").click();
   // An Account menu item since #1155 (verify-session-ui uses the same role).
