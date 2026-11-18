@@ -3496,6 +3496,29 @@
     ],
     "skill": "name-shapes"
   },
+  "fraction-benchmark-reasonable": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
   "fraction-choice-compare": {
     "id": "compare-unlike-fractions",
     "version": "18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a",
@@ -3517,6 +3540,29 @@
       }
     ],
     "skill": "fraction-comparison"
+  },
+  "fraction-decompositions-select": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
   },
   "fraction-forms-blanks": {
     "id": "percent-amounts-blanks",
@@ -4281,6 +4327,75 @@
       }
     ],
     "skill": "halves-and-quarters"
+  },
+  "like-fraction-difference": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
+  "like-fraction-missing-part": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
+  },
+  "like-fraction-sum-story": {
+    "id": "like-fraction-sum-story--sl",
+    "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+    "title": "Adding and subtracting like fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+    "duration": 287.969977324263,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/like-fraction-sum-story--sl/8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008/audio.m4a",
+        "version": "8e6b2b365bf96e7d94b7c7977aeb943d55ab71f0e0caa4e4578dad45c0ec5008",
+        "duration": 287.969977324263
+      }
+    ],
+    "skill": "like-fraction-addition"
   },
   "line-equation-forms": {
     "id": "line-equation-forms--sf",
