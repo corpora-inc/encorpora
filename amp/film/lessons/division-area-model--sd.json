@@ -1,0 +1,4532 @@
+{
+ "id": "division-area-model--sd",
+ "title": "Dividing by a one-digit number",
+ "skill": "whole-division",
+ "teaches": [
+  "complete-division-model",
+  "divide-by-one-digit",
+  "division-remainder",
+  "quotient-remainder-one-digit"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.0,
+     14.4,
+     11.2
+    ],
+    "points": {
+     "tf1": [
+      1.6,
+      8.6
+     ],
+     "tf2": [
+      13.6,
+      8.6
+     ],
+     "tf3": [
+      13.6,
+      9.6
+     ],
+     "tf4": [
+      1.6,
+      9.6
+     ],
+     "tb1": [
+      1.6,
+      8.6
+     ],
+     "tb2": [
+      13.6,
+      8.6
+     ],
+     "tt2": [
+      13.6,
+      9.6
+     ],
+     "tt1": [
+      1.6,
+      9.6
+     ],
+     "cpt": [
+      9.43,
+      10.75
+     ],
+     "cnt": [
+      2.6,
+      10.6
+     ],
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx3": [
+      13.6,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      6.6,
+      5.6
+     ],
+     "tx2": [
+      11.6,
+      5.6
+     ],
+     "tx3": [
+      13.6,
+      5.6
+     ],
+     "fx1": [
+      14.0,
+      5.6
+     ],
+     "fx2": [
+      14.0,
+      1.2
+     ],
+     "s1a": [
+      8.6,
+      8.6
+     ],
+     "s1b": [
+      13.6,
+      8.6
+     ],
+     "s1c": [
+      13.6,
+      9.6
+     ],
+     "s1d": [
+      8.6,
+      9.6
+     ],
+     "s2a": [
+      3.6,
+      8.6
+     ],
+     "s2b": [
+      8.6,
+      8.6
+     ],
+     "s2c": [
+      8.6,
+      9.6
+     ],
+     "s2d": [
+      3.6,
+      9.6
+     ],
+     "s3a": [
+      1.6,
+      8.6
+     ],
+     "s3b": [
+      3.6,
+      8.6
+     ],
+     "s3c": [
+      3.6,
+      9.6
+     ],
+     "s3d": [
+      1.6,
+      9.6
+     ],
+     "l1": [
+      4.1,
+      3.4
+     ],
+     "l2": [
+      9.1,
+      3.4
+     ],
+     "l3": [
+      12.6,
+      3.4
+     ],
+     "c_n96": [
+      4.58,
+      11.0
+     ],
+     "c_n56": [
+      4.58,
+      11.0
+     ],
+     "c_n16": [
+      4.58,
+      11.0
+     ],
+     "c_n0": [
+      4.995,
+      11.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tankframe",
+      "poly": [
+       "tf1",
+       "tf2",
+       "tf3",
+       "tf4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tank",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tt2",
+       "tt1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "label": "\\text{squares left}",
+      "at": "cpt",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n96",
+      "label": "96",
+      "at": "c_n96",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n56",
+      "label": "56",
+      "at": "c_n56",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n16",
+      "label": "16",
+      "at": "c_n16",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n0",
+      "label": "0",
+      "at": "c_n0",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lft",
+      "seg": [
+       "bx0",
+       "tx0"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "ot",
+      "seg": [
+       "tx0",
+       "fx1"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "dash": true
+     },
+     {
+      "id": "ob",
+      "seg": [
+       "bx0",
+       "fx2"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "dash": true
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink"
+     },
+     {
+      "id": "dimq",
+      "dim": [
+       "tx0",
+       "fx1"
+      ],
+      "side": "n",
+      "tex": "?",
+      "ink": "accent"
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2
+     },
+     {
+      "id": "s3",
+      "poly": [
+       "s3a",
+       "s3b",
+       "s3c",
+       "s3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "a1",
+      "label": "40",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a2",
+      "label": "40",
+      "at": "l2",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a3",
+      "label": "16",
+      "at": "l3",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "10",
+      "ink": "accent"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "10",
+      "ink": "blue"
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "tx2",
+       "tx3"
+      ],
+      "side": "n",
+      "tex": "4",
+      "ink": "warm"
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx3"
+      ],
+      "side": "s",
+      "tex": "10+10+4=24",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a division that looks big. Ninety-six divided by four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Dividing finds a missing side"
+      },
+      {
+       "do": "problem",
+       "text": "$96 \\div 4$"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "Ninety-six"
+      },
+      {
+       "do": "highlight",
+       "target": "n96",
+       "at": "Ninety-six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ninety-six? That is not in my four times table!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n96",
+       "at": "Ninety-six",
+       "until": "That"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "True. But you do not need ninety-six in your table. You only need facts you already know, used one chunk at a time.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\times10=40",
+       "fresh": true,
+       "at": "chunk"
+      },
+      {
+       "do": "highlight",
+       "target": "n96",
+       "at": "ninety-six",
+       "until": "only"
+      },
+      {
+       "do": "text",
+       "text": "Use facts you already know.",
+       "at": "facts"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Picture a rectangle, four squares tall. All of these squares have to fill it. How long must it be?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "lft",
+        "ot",
+        "ob",
+        "dh"
+       ],
+       "at": "rectangle"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "four",
+       "until": "tall"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "All",
+       "until": "How"
+      },
+      {
+       "do": "show",
+       "target": "dimq",
+       "at": "long"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So four times something has to make ninety-six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\times ?=96",
+       "fresh": true,
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "dimq",
+       "at": "something",
+       "until": "ninety-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes! That missing side is the answer to the division. Let us build the rectangle one easy chunk at a time.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dimq",
+       "at": "missing",
+       "until": "answer"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lft",
+        "ot",
+        "ob"
+       ],
+       "at": "build"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "First, a chunk ten long. Four times ten is forty. Watch forty squares leave the pile and line up.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "dimq",
+        "ot",
+        "ob"
+       ],
+       "at": "First"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "Watch"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s1a": [
+         1.6,
+         1.2
+        ],
+        "s1b": [
+         6.6,
+         1.2
+        ],
+        "s1c": [
+         6.6,
+         5.6
+        ],
+        "s1d": [
+         1.6,
+         5.6
+        ],
+        "tb2": [
+         8.6,
+         8.6
+        ],
+        "tt2": [
+         8.6,
+         9.6
+        ]
+       },
+       "at": "leave",
+       "dur": 1.8
+      },
+      {
+       "do": "hide",
+       "target": "n96",
+       "at": "line"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n56",
+        "a1"
+       ],
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Forty used. Ninety-six take away forty leaves fifty-six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "a1",
+       "at": "Forty",
+       "until": "Ninety-six"
+      },
+      {
+       "do": "write",
+       "tex": "96-4\\times10=56",
+       "fresh": true,
+       "at": "take"
+      },
+      {
+       "do": "highlight",
+       "target": "n56",
+       "at": "leaves"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Another chunk of ten, another forty. Sixteen left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "d2"
+       ],
+       "at": "Another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s2a": [
+         6.6,
+         1.2
+        ],
+        "s2b": [
+         11.6,
+         1.2
+        ],
+        "s2c": [
+         11.6,
+         5.6
+        ],
+        "s2d": [
+         6.6,
+         5.6
+        ],
+        "tb2": [
+         3.6,
+         8.6
+        ],
+        "tt2": [
+         3.6,
+         9.6
+        ]
+       },
+       "at": "ten",
+       "dur": 1.8
+      },
+      {
+       "do": "hide",
+       "target": "n56",
+       "at": "Sixteen"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n16",
+        "a2"
+       ],
+       "at": "Sixteen"
+      },
+      {
+       "do": "write",
+       "tex": "56-4\\times10=16",
+       "fresh": true,
+       "at": "Sixteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four times what makes sixteen?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n16",
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four times four! That one is in my table!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "Four",
+       "until": "times"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. A chunk four long uses every square.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s3",
+        "d3"
+       ],
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s3a": [
+         11.6,
+         1.2
+        ],
+        "s3b": [
+         13.6,
+         1.2
+        ],
+        "s3c": [
+         13.6,
+         5.6
+        ],
+        "s3d": [
+         11.6,
+         5.6
+        ],
+        "tb2": [
+         1.6,
+         8.6
+        ],
+        "tt2": [
+         1.6,
+         9.6
+        ]
+       },
+       "at": "uses",
+       "dur": 1.5
+      },
+      {
+       "do": "write",
+       "tex": "16-4\\times4=0",
+       "fresh": true,
+       "at": "Yes"
+      },
+      {
+       "do": "hide",
+       "target": "n16",
+       "at": "every"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n0",
+        "a3"
+       ],
+       "at": "every"
+      },
+      {
+       "do": "hide",
+       "target": "tank",
+       "at": "every"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Empty! Now read the missing side along the top: ten, ten, and four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "ten",
+       "until": "ten",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "ten",
+       "nth": 2,
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten plus ten plus four is twenty-four. So ninety-six divided by four equals twenty-four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "10+10+4=24",
+       "fresh": true,
+       "at": "Ten"
+      },
+      {
+       "do": "show",
+       "target": "dimtot",
+       "at": "plus",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "at": "So"
+      },
+      {
+       "do": "answer",
+       "tex": "96\\div4=24",
+       "at": "divided"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And I only used my table! Four times ten, and four times four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "d1",
+        "d2"
+       ],
+       "at": "ten",
+       "until": "four",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "four",
+       "nth": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.0,
+     14.4,
+     11.2
+    ],
+    "points": {
+     "tf1": [
+      1.6,
+      8.6
+     ],
+     "tf2": [
+      13.6,
+      8.6
+     ],
+     "tf3": [
+      13.6,
+      9.6
+     ],
+     "tf4": [
+      1.6,
+      9.6
+     ],
+     "tb1": [
+      1.6,
+      8.6
+     ],
+     "tb2": [
+      13.6,
+      8.6
+     ],
+     "tt2": [
+      13.6,
+      9.6
+     ],
+     "tt1": [
+      1.6,
+      9.6
+     ],
+     "cpt": [
+      9.43,
+      10.75
+     ],
+     "cnt": [
+      2.6,
+      10.6
+     ],
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx2": [
+      13.6,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      11.6,
+      5.6
+     ],
+     "tx2": [
+      13.6,
+      5.6
+     ],
+     "s1a": [
+      3.6,
+      8.6
+     ],
+     "s1b": [
+      13.6,
+      8.6
+     ],
+     "s1c": [
+      13.6,
+      9.6
+     ],
+     "s1d": [
+      3.6,
+      9.6
+     ],
+     "s2a": [
+      1.6,
+      8.6
+     ],
+     "s2b": [
+      3.6,
+      8.6
+     ],
+     "s2c": [
+      3.6,
+      9.6
+     ],
+     "s2d": [
+      1.6,
+      9.6
+     ],
+     "l1": [
+      6.6,
+      3.4
+     ],
+     "l2": [
+      12.6,
+      3.4
+     ],
+     "c_n96": [
+      4.58,
+      11.0
+     ],
+     "c_n16": [
+      4.58,
+      11.0
+     ],
+     "c_n0": [
+      4.995,
+      11.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tankframe",
+      "poly": [
+       "tf1",
+       "tf2",
+       "tf3",
+       "tf4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tank",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tt2",
+       "tt1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "label": "\\text{squares left}",
+      "at": "cpt",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n96",
+      "label": "96",
+      "at": "c_n96",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n16",
+      "label": "16",
+      "at": "c_n16",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n0",
+      "label": "0",
+      "at": "c_n0",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lft",
+      "seg": [
+       "bx0",
+       "tx0"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "a1",
+      "label": "80",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a2",
+      "label": "16",
+      "at": "l2",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "20",
+      "ink": "violet"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "4",
+      "ink": "warm"
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx2"
+      ],
+      "side": "s",
+      "tex": "20+4=24",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now build the very same rectangle with different chunks. Who wants a bigger bite?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Any chunks work"
+      },
+      {
+       "do": "problem",
+       "text": "$96 \\div 4$"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twenty! Four times twenty is eighty. That is in my table too.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "d1"
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s1a": [
+         1.6,
+         1.2
+        ],
+        "s1b": [
+         11.6,
+         1.2
+        ],
+        "s1c": [
+         11.6,
+         5.6
+        ],
+        "s1d": [
+         1.6,
+         5.6
+        ],
+        "tb2": [
+         3.6,
+         8.6
+        ],
+        "tt2": [
+         3.6,
+         9.6
+        ]
+       },
+       "at": "Four",
+       "dur": 2
+      },
+      {
+       "do": "hide",
+       "target": "n96",
+       "at": "eighty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n16",
+        "a1"
+       ],
+       "at": "eighty"
+      },
+      {
+       "do": "write",
+       "tex": "96-4\\times20=16",
+       "fresh": true,
+       "at": "eighty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Sixteen left. Sixteen is four times four. One more chunk, four long.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n16",
+       "at": "Sixteen",
+       "until": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "d2"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s2a": [
+         11.6,
+         1.2
+        ],
+        "s2b": [
+         13.6,
+         1.2
+        ],
+        "s2c": [
+         13.6,
+         5.6
+        ],
+        "s2d": [
+         11.6,
+         5.6
+        ],
+        "tb2": [
+         1.6,
+         8.6
+        ],
+        "tt2": [
+         1.6,
+         9.6
+        ]
+       },
+       "at": "chunk",
+       "dur": 1.5
+      },
+      {
+       "do": "write",
+       "tex": "16-4\\times4=0",
+       "fresh": true,
+       "at": "times"
+      },
+      {
+       "do": "hide",
+       "target": "n16",
+       "at": "long"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n0",
+        "a2"
+       ],
+       "at": "long"
+      },
+      {
+       "do": "hide",
+       "target": "tank",
+       "at": "long"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty plus four. Twenty-four, again!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "dimtot",
+       "at": "plus"
+      },
+      {
+       "do": "write",
+       "tex": "20+4=24",
+       "fresh": true,
+       "at": "Twenty"
+      },
+      {
+       "do": "answer",
+       "tex": "96\\div4=24",
+       "at": "again"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Different chunks, but the same length!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dimtot",
+       "at": "Different"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Always. Pick chunks that feel easy, but never one that goes over. Thirty fours is one hundred twenty, which is too many.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "s1",
+        "s2"
+       ],
+       "at": "easy",
+       "until": "never"
+      },
+      {
+       "do": "highlight",
+       "target": "tankframe",
+       "at": "Thirty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here is a quick way to see it, too. Twenty-five fours make one hundred.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "quick"
+      },
+      {
+       "do": "write",
+       "tex": "25\\times4=100",
+       "at": "Twenty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ninety-six is one four less than one hundred. So it takes one four fewer: twenty-four of them.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "100-4=96",
+       "at": "less"
+      },
+      {
+       "do": "write",
+       "tex": "96\\div4=25-1=24",
+       "at": "twenty-four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.0,
+     14.4,
+     11.2
+    ],
+    "points": {
+     "tf1": [
+      1.6,
+      8.6
+     ],
+     "tf2": [
+      13.6,
+      8.6
+     ],
+     "tf3": [
+      13.6,
+      9.6
+     ],
+     "tf4": [
+      1.6,
+      9.6
+     ],
+     "tb1": [
+      1.6,
+      8.6
+     ],
+     "tb2": [
+      13.6,
+      8.6
+     ],
+     "tt2": [
+      13.6,
+      9.6
+     ],
+     "tt1": [
+      1.6,
+      9.6
+     ],
+     "cpt": [
+      9.845,
+      10.75
+     ],
+     "cnt": [
+      2.6,
+      10.6
+     ],
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx3": [
+      13.0,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      7.6,
+      5.6
+     ],
+     "tx2": [
+      11.2,
+      5.6
+     ],
+     "tx3": [
+      13.0,
+      5.6
+     ],
+     "s1a": [
+      5.149,
+      8.6
+     ],
+     "s1b": [
+      13.6,
+      8.6
+     ],
+     "s1c": [
+      13.6,
+      9.6
+     ],
+     "s1d": [
+      5.149,
+      9.6
+     ],
+     "s2a": [
+      1.769,
+      8.6
+     ],
+     "s2b": [
+      5.149,
+      8.6
+     ],
+     "s2c": [
+      5.149,
+      9.6
+     ],
+     "s2d": [
+      1.769,
+      9.6
+     ],
+     "s3a": [
+      1.6,
+      8.6
+     ],
+     "s3b": [
+      1.769,
+      8.6
+     ],
+     "s3c": [
+      1.769,
+      9.6
+     ],
+     "s3d": [
+      1.6,
+      9.6
+     ],
+     "l1": [
+      4.6,
+      3.4
+     ],
+     "l2": [
+      9.4,
+      3.4
+     ],
+     "l3": [
+      12.1,
+      3.4
+     ],
+     "c_n852": [
+      4.58,
+      11.0
+     ],
+     "c_n252": [
+      4.58,
+      11.0
+     ],
+     "c_n12": [
+      4.995,
+      11.0
+     ],
+     "c_n0": [
+      5.41,
+      11.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tankframe",
+      "poly": [
+       "tf1",
+       "tf2",
+       "tf3",
+       "tf4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tank",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tt2",
+       "tt1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "label": "\\text{squares left}",
+      "at": "cpt",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n852",
+      "label": "852",
+      "at": "c_n852",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n252",
+      "label": "252",
+      "at": "c_n252",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n12",
+      "label": "12",
+      "at": "c_n12",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n0",
+      "label": "0",
+      "at": "c_n0",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lft",
+      "seg": [
+       "bx0",
+       "tx0"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "6",
+      "ink": "ink"
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2
+     },
+     {
+      "id": "s3",
+      "poly": [
+       "s3a",
+       "s3b",
+       "s3c",
+       "s3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "a1",
+      "label": "600",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a2",
+      "label": "240",
+      "at": "l2",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a3",
+      "label": "12",
+      "at": "l3",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "100",
+      "ink": "accent"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "40",
+      "ink": "blue"
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "tx2",
+       "tx3"
+      ],
+      "side": "n",
+      "tex": "2",
+      "ink": "warm"
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx3"
+      ],
+      "side": "s",
+      "tex": "100+40+2=142",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now a much bigger one. Eight hundred fifty-two divided by six.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Bigger numbers, same idea"
+      },
+      {
+       "do": "problem",
+       "text": "$852 \\div 6$"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "Eight"
+      },
+      {
+       "do": "highlight",
+       "target": "n852",
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same idea: a rectangle six tall. We squeeze the picture to fit, but the numbers stay true. Start with the biggest chunk that does not go over.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "lft",
+        "dh"
+       ],
+       "at": "rectangle"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "six",
+       "until": "We"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "biggest"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six times one hundred is six hundred. Two hundreds would be twelve hundred, too many. So, one hundred.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n852",
+       "at": "Six",
+       "until": "Two"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "too",
+       "until": "So"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "So"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A chunk one hundred long. Six hundred squares line up, and two hundred fifty-two are left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s1a": [
+         1.6,
+         1.2
+        ],
+        "s1b": [
+         7.6,
+         1.2
+        ],
+        "s1c": [
+         7.6,
+         5.6
+        ],
+        "s1d": [
+         1.6,
+         5.6
+        ],
+        "tb2": [
+         5.149,
+         8.6
+        ],
+        "tt2": [
+         5.149,
+         9.6
+        ]
+       },
+       "at": "Six",
+       "dur": 2
+      },
+      {
+       "do": "write",
+       "tex": "852-6\\times100=252",
+       "fresh": true,
+       "at": "line"
+      },
+      {
+       "do": "hide",
+       "target": "n852",
+       "at": "line"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n252",
+        "a1"
+       ],
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tens now. Six times fifty is three hundred, too many. Six times forty is two hundred forty, so forty fits.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n252",
+       "at": "Tens",
+       "until": "Six"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "forty"
+      },
+      {
+       "do": "highlight",
+       "target": "n252",
+       "at": "too",
+       "until": "Six",
+       "untilNth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A chunk forty long. Two hundred forty squares line up. Twelve are left.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "s2",
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s2a": [
+         7.6,
+         1.2
+        ],
+        "s2b": [
+         11.2,
+         1.2
+        ],
+        "s2c": [
+         11.2,
+         5.6
+        ],
+        "s2d": [
+         7.6,
+         5.6
+        ],
+        "tb2": [
+         1.769,
+         8.6
+        ],
+        "tt2": [
+         1.769,
+         9.6
+        ]
+       },
+       "at": "Two",
+       "dur": 1.8
+      },
+      {
+       "do": "write",
+       "tex": "252-6\\times40=12",
+       "fresh": true,
+       "at": "chunk"
+      },
+      {
+       "do": "hide",
+       "target": "n252",
+       "at": "line"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n12",
+        "a2"
+       ],
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twelve is two sixes! Six times two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n12",
+       "at": "Twelve",
+       "until": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. One last chunk, two long, and the pile is gone.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s3",
+        "d3"
+       ],
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s3a": [
+         11.2,
+         1.2
+        ],
+        "s3b": [
+         13.0,
+         1.2
+        ],
+        "s3c": [
+         13.0,
+         5.6
+        ],
+        "s3d": [
+         11.2,
+         5.6
+        ],
+        "tb2": [
+         1.6,
+         8.6
+        ],
+        "tt2": [
+         1.6,
+         9.6
+        ]
+       },
+       "at": "two",
+       "dur": 1.4
+      },
+      {
+       "do": "write",
+       "tex": "12-6\\times2=0",
+       "fresh": true,
+       "at": "last"
+      },
+      {
+       "do": "hide",
+       "target": "n12",
+       "at": "gone"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n0",
+        "a3"
+       ],
+       "at": "gone"
+      },
+      {
+       "do": "hide",
+       "target": "tank",
+       "at": "gone"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred plus forty plus two is one hundred forty-two. So eight hundred fifty-two divided by six is one hundred forty-two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "hundred",
+       "until": "forty"
+      },
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "forty",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "dimtot",
+       "at": "is"
+      },
+      {
+       "do": "write",
+       "tex": "100+40+2=142",
+       "fresh": true,
+       "at": "One"
+      },
+      {
+       "do": "answer",
+       "tex": "852\\div6=142",
+       "at": "divided"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.0,
+     14.4,
+     11.2
+    ],
+    "points": {
+     "tf1": [
+      1.6,
+      8.6
+     ],
+     "tf2": [
+      13.6,
+      8.6
+     ],
+     "tf3": [
+      13.6,
+      9.6
+     ],
+     "tf4": [
+      1.6,
+      9.6
+     ],
+     "tb1": [
+      1.6,
+      8.6
+     ],
+     "tb2": [
+      13.6,
+      8.6
+     ],
+     "tt2": [
+      13.6,
+      9.6
+     ],
+     "tt1": [
+      1.6,
+      9.6
+     ],
+     "cpt": [
+      9.43,
+      10.75
+     ],
+     "cnt": [
+      2.6,
+      10.6
+     ],
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx2": [
+      8.6,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      6.6,
+      5.6
+     ],
+     "tx2": [
+      8.6,
+      5.6
+     ],
+     "s1a": [
+      5.464,
+      8.6
+     ],
+     "s1b": [
+      13.6,
+      8.6
+     ],
+     "s1c": [
+      13.6,
+      9.6
+     ],
+     "s1d": [
+      5.464,
+      9.6
+     ],
+     "s2a": [
+      2.21,
+      8.6
+     ],
+     "s2b": [
+      5.464,
+      8.6
+     ],
+     "s2c": [
+      5.464,
+      9.6
+     ],
+     "s2d": [
+      2.21,
+      9.6
+     ],
+     "r1a": [
+      1.6,
+      8.6
+     ],
+     "r1b": [
+      2.21,
+      8.6
+     ],
+     "r1c": [
+      2.21,
+      9.6
+     ],
+     "r1d": [
+      1.6,
+      9.6
+     ],
+     "r2a": [
+      1.6,
+      8.6
+     ],
+     "r2b": [
+      2.21,
+      8.6
+     ],
+     "r2c": [
+      2.21,
+      9.6
+     ],
+     "r2d": [
+      1.6,
+      9.6
+     ],
+     "r3a": [
+      1.6,
+      8.6
+     ],
+     "r3b": [
+      2.21,
+      8.6
+     ],
+     "r3c": [
+      2.21,
+      9.6
+     ],
+     "r3d": [
+      1.6,
+      9.6
+     ],
+     "g1": [
+      9,
+      1.2
+     ],
+     "g2": [
+      10.2,
+      1.2
+     ],
+     "g3": [
+      10.2,
+      5.6
+     ],
+     "g4": [
+      9,
+      5.6
+     ],
+     "q1": [
+      9,
+      4.5
+     ],
+     "q2": [
+      10.2,
+      4.5
+     ],
+     "q3": [
+      10.2,
+      5.6
+     ],
+     "q4": [
+      9,
+      5.6
+     ],
+     "l1": [
+      4.1,
+      3.4
+     ],
+     "l2": [
+      7.6,
+      3.4
+     ],
+     "lr": [
+      12.5,
+      3.4
+     ],
+     "c_n59": [
+      4.58,
+      11.0
+     ],
+     "c_n19": [
+      4.58,
+      11.0
+     ],
+     "c_n3": [
+      4.995,
+      11.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tankframe",
+      "poly": [
+       "tf1",
+       "tf2",
+       "tf3",
+       "tf4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tank",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tt2",
+       "tt1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "label": "\\text{squares left}",
+      "at": "cpt",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n59",
+      "label": "59",
+      "at": "c_n59",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n19",
+      "label": "19",
+      "at": "c_n19",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "c_n3",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lft",
+      "seg": [
+       "bx0",
+       "tx0"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink"
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2
+     },
+     {
+      "id": "gcol",
+      "poly": [
+       "g1",
+       "g2",
+       "g3",
+       "g4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2
+     },
+     {
+      "id": "r1",
+      "poly": [
+       "r1a",
+       "r1b",
+       "r1c",
+       "r1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "r2",
+      "poly": [
+       "r2a",
+       "r2b",
+       "r2c",
+       "r2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "r3",
+      "poly": [
+       "r3a",
+       "r3b",
+       "r3c",
+       "r3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "rq",
+      "poly": [
+       "q1",
+       "q2",
+       "q3",
+       "q4"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "rqf",
+      "poly": [
+       "q1",
+       "q2",
+       "q3",
+       "q4"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "a1",
+      "label": "40",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a2",
+      "label": "16",
+      "at": "l2",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "rem",
+      "label": "\\substack{\\text{remainder}\\\\3}",
+      "at": "lr",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "10",
+      "ink": "accent"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "4",
+      "ink": "blue"
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx2"
+      ],
+      "side": "s",
+      "tex": "10+4=14",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Sometimes the pile does not empty exactly. Try fifty-nine divided by four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "When something is left over"
+      },
+      {
+       "do": "problem",
+       "text": "$59 \\div 4$"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "pile",
+       "until": "Try"
+      },
+      {
+       "do": "highlight",
+       "target": "n59",
+       "at": "pile",
+       "until": "Try"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same rectangle, four tall. A chunk ten long: forty squares line up. Nineteen are left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "lft",
+        "dh"
+       ],
+       "at": "rectangle"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "d1"
+       ],
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s1a": [
+         1.6,
+         1.2
+        ],
+        "s1b": [
+         6.6,
+         1.2
+        ],
+        "s1c": [
+         6.6,
+         5.6
+        ],
+        "s1d": [
+         1.6,
+         5.6
+        ],
+        "tb2": [
+         5.464,
+         8.6
+        ],
+        "tt2": [
+         5.464,
+         9.6
+        ]
+       },
+       "at": "forty",
+       "dur": 1.8
+      },
+      {
+       "do": "hide",
+       "target": "n59",
+       "at": "Nineteen"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n19",
+        "a1"
+       ],
+       "at": "Nineteen"
+      },
+      {
+       "do": "write",
+       "tex": "59-4\\times10=19",
+       "fresh": true,
+       "at": "Nineteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four times four is sixteen, so a chunk four long. Three are left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "d2"
+       ],
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s2a": [
+         6.6,
+         1.2
+        ],
+        "s2b": [
+         8.6,
+         1.2
+        ],
+        "s2c": [
+         8.6,
+         5.6
+        ],
+        "s2d": [
+         6.6,
+         5.6
+        ],
+        "tb2": [
+         2.21,
+         8.6
+        ],
+        "tt2": [
+         2.21,
+         9.6
+        ]
+       },
+       "at": "long",
+       "dur": 1.6
+      },
+      {
+       "do": "write",
+       "tex": "19-4\\times4=3",
+       "fresh": true,
+       "at": "sixteen"
+      },
+      {
+       "do": "hide",
+       "target": "n19",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n3",
+        "a2"
+       ],
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Can three squares make one more column? A column here is four tall.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n3",
+       "at": "three",
+       "until": "make"
+      },
+      {
+       "do": "show",
+       "target": [
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "make"
+      },
+      {
+       "do": "show",
+       "target": "gcol",
+       "at": "column"
+      },
+      {
+       "do": "move",
+       "points": {
+        "r1a": [
+         9,
+         1.2
+        ],
+        "r1b": [
+         10.2,
+         1.2
+        ],
+        "r1c": [
+         10.2,
+         2.3
+        ],
+        "r1d": [
+         9,
+         2.3
+        ],
+        "r2a": [
+         9,
+         2.3
+        ],
+        "r2b": [
+         10.2,
+         2.3
+        ],
+        "r2c": [
+         10.2,
+         3.4
+        ],
+        "r2d": [
+         9,
+         3.4
+        ],
+        "r3a": [
+         9,
+         3.4
+        ],
+        "r3b": [
+         10.2,
+         3.4
+        ],
+        "r3c": [
+         10.2,
+         4.5
+        ],
+        "r3d": [
+         9,
+         4.5
+        ],
+        "tb2": [
+         1.6,
+         8.6
+        ],
+        "tt2": [
+         1.6,
+         9.6
+        ]
+       },
+       "at": "column",
+       "dur": 1.8
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n3",
+        "cap"
+       ],
+       "at": "tall"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three is not enough. One square short!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "rq",
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "rq",
+       "at": "short"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right. Those three are the remainder, what is left over when no full column fits. Fifty-nine divided by four is fourteen, remainder three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "rq",
+       "at": "Right"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "three",
+       "until": "remainder"
+      },
+      {
+       "do": "show",
+       "target": "rem",
+       "at": "remainder"
+      },
+      {
+       "do": "show",
+       "target": "dimtot",
+       "at": "fourteen"
+      },
+      {
+       "do": "answer",
+       "tex": "59\\div4=14\\text{ remainder }3",
+       "at": "fourteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Could the remainder be four? No! With four squares, the column is whole, and we take one more.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rem",
+       "at": "remainder",
+       "until": "four"
+      },
+      {
+       "do": "show",
+       "target": "rqf",
+       "at": "column"
+      },
+      {
+       "do": "highlight",
+       "target": "gcol",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the remainder is always smaller than the number you divide by. Here, smaller than four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "rqf",
+       "at": "So"
+      },
+      {
+       "do": "highlight",
+       "target": "rem",
+       "at": "remainder",
+       "until": "number"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "Here"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check it by multiplying back. Four times fourteen is fifty-six. Add the three left over: fifty-nine.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\times14+3=59",
+       "fresh": true,
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s1",
+        "s2"
+       ],
+       "at": "Four",
+       "until": "Add"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "Add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or start from a friendly number. Fifteen fours make sixty, just one more than fifty-nine.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "friendly"
+      },
+      {
+       "do": "write",
+       "tex": "15\\times4=60",
+       "at": "Fifteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Sixty is too many, so take one four away. Fourteen fours make fifty-six, and three are left over.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "60-4=56",
+       "at": "away"
+      },
+      {
+       "do": "write",
+       "tex": "59\\div4=14\\text{ remainder }3",
+       "at": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.0,
+     14.4,
+     11.2
+    ],
+    "points": {
+     "tf1": [
+      1.6,
+      8.6
+     ],
+     "tf2": [
+      13.6,
+      8.6
+     ],
+     "tf3": [
+      13.6,
+      9.6
+     ],
+     "tf4": [
+      1.6,
+      9.6
+     ],
+     "tb1": [
+      1.6,
+      8.6
+     ],
+     "tb2": [
+      13.6,
+      8.6
+     ],
+     "tt2": [
+      13.6,
+      9.6
+     ],
+     "tt1": [
+      1.6,
+      9.6
+     ],
+     "cpt": [
+      9.845,
+      10.75
+     ],
+     "cnt": [
+      2.6,
+      10.6
+     ],
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx2": [
+      10.4,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      8.6,
+      5.6
+     ],
+     "tx2": [
+      10.4,
+      5.6
+     ],
+     "s1a": [
+      1.95,
+      8.6
+     ],
+     "s1b": [
+      13.6,
+      8.6
+     ],
+     "s1c": [
+      13.6,
+      9.6
+     ],
+     "s1d": [
+      1.95,
+      9.6
+     ],
+     "s2a": [
+      1.6,
+      8.6
+     ],
+     "s2b": [
+      1.95,
+      8.6
+     ],
+     "s2c": [
+      1.95,
+      9.6
+     ],
+     "s2d": [
+      1.6,
+      9.6
+     ],
+     "h1": [
+      8.6,
+      1.2
+     ],
+     "h2": [
+      10.4,
+      1.2
+     ],
+     "h3": [
+      10.4,
+      5.6
+     ],
+     "h4": [
+      8.6,
+      5.6
+     ],
+     "lh": [
+      9.5,
+      3.4
+     ],
+     "ln": [
+      9.5,
+      0.1
+     ],
+     "l1": [
+      5.1,
+      3.4
+     ],
+     "l2": [
+      9.5,
+      3.4
+     ],
+     "c_n824": [
+      4.58,
+      11.0
+     ],
+     "c_n24": [
+      4.995,
+      11.0
+     ],
+     "c_n0": [
+      5.41,
+      11.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tankframe",
+      "poly": [
+       "tf1",
+       "tf2",
+       "tf3",
+       "tf4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tank",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tt2",
+       "tt1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "label": "\\text{squares left}",
+      "at": "cpt",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n824",
+      "label": "824",
+      "at": "c_n824",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n24",
+      "label": "24",
+      "at": "c_n24",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n0",
+      "label": "0",
+      "at": "c_n0",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lft",
+      "seg": [
+       "bx0",
+       "tx0"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "gh",
+      "poly": [
+       "h1",
+       "h2",
+       "h3",
+       "h4"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "ghl",
+      "label": "40",
+      "at": "lh",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "note",
+      "label": "\\text{only 24 left}",
+      "at": "ln",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "a1",
+      "label": "800",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a2",
+      "label": "24",
+      "at": "l2",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "200",
+      "ink": "accent"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "6",
+      "ink": "warm"
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx2"
+      ],
+      "side": "s",
+      "tex": "200+0+6=206",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is where many of us slip. Eight hundred twenty-four divided by four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Watch for a zero"
+      },
+      {
+       "do": "problem",
+       "text": "$824 \\div 4$"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "Eight"
+      },
+      {
+       "do": "highlight",
+       "target": "n824",
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two hundred first. Four times two hundred is eight hundred. Twenty-four are left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "d1"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s1a": [
+         1.6,
+         1.2
+        ],
+        "s1b": [
+         8.6,
+         1.2
+        ],
+        "s1c": [
+         8.6,
+         5.6
+        ],
+        "s1d": [
+         1.6,
+         5.6
+        ],
+        "tb2": [
+         1.95,
+         8.6
+        ],
+        "tt2": [
+         1.95,
+         9.6
+        ]
+       },
+       "at": "Four",
+       "dur": 2
+      },
+      {
+       "do": "write",
+       "tex": "824-4\\times200=24",
+       "fresh": true,
+       "at": "eight"
+      },
+      {
+       "do": "hide",
+       "target": "n824",
+       "at": "left"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n24",
+        "a1"
+       ],
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tens? Four times ten is forty, but only twenty-four are left. Too many!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "gh",
+       "at": "Tens"
+      },
+      {
+       "do": "show",
+       "target": "ghl",
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": "note",
+       "at": "only"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "n24",
+        "note"
+       ],
+       "at": "Too"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So there is no tens chunk at all!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "gh",
+       "at": "no"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Right. Zero tens. The ghost goes away, and the tens place holds a zero.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "gh",
+        "ghl",
+        "note"
+       ],
+       "at": "ghost"
+      },
+      {
+       "do": "write",
+       "tex": "200+0",
+       "fresh": true,
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ones: four times six is twenty-four. A chunk six long uses every square.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "d2"
+       ],
+       "at": "chunk"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s2a": [
+         8.6,
+         1.2
+        ],
+        "s2b": [
+         10.4,
+         1.2
+        ],
+        "s2c": [
+         10.4,
+         5.6
+        ],
+        "s2d": [
+         8.6,
+         5.6
+        ],
+        "tb2": [
+         1.6,
+         8.6
+        ],
+        "tt2": [
+         1.6,
+         9.6
+        ]
+       },
+       "at": "uses",
+       "dur": 1.4
+      },
+      {
+       "do": "write",
+       "tex": "24-4\\times6=0",
+       "fresh": true,
+       "at": "four"
+      },
+      {
+       "do": "hide",
+       "target": "n24",
+       "at": "square"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n0",
+        "a2"
+       ],
+       "at": "square"
+      },
+      {
+       "do": "hide",
+       "target": "tank",
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two hundred plus zero plus six makes two hundred six in all.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "dimtot",
+       "at": "makes"
+      },
+      {
+       "do": "write",
+       "tex": "200+0+6=206",
+       "fresh": true,
+       "at": "Two"
+      },
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "Two",
+       "until": "plus"
+      },
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "six",
+       "until": "makes"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I almost wrote twenty-six!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "26",
+       "id": "oops",
+       "fresh": true,
+       "at": "almost"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is the trap. The zero holds the tens place. Two hundred six, not twenty-six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "strike",
+       "target": "oops",
+       "at": "trap"
+      },
+      {
+       "do": "highlight",
+       "target": "dimtot",
+       "at": "Two"
+      },
+      {
+       "do": "answer",
+       "tex": "824\\div4=206",
+       "at": "Two"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.0,
+     14.4,
+     11.2
+    ],
+    "points": {
+     "tf1": [
+      1.6,
+      8.6
+     ],
+     "tf2": [
+      13.6,
+      8.6
+     ],
+     "tf3": [
+      13.6,
+      9.6
+     ],
+     "tf4": [
+      1.6,
+      9.6
+     ],
+     "tb1": [
+      1.6,
+      8.6
+     ],
+     "tb2": [
+      13.6,
+      8.6
+     ],
+     "tt2": [
+      13.6,
+      9.6
+     ],
+     "tt1": [
+      1.6,
+      9.6
+     ],
+     "cpt": [
+      10.435,
+      10.75
+     ],
+     "cnt": [
+      2.8,
+      10.6
+     ],
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx3": [
+      12.8,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      8.0,
+      5.6
+     ],
+     "tx2": [
+      11.2,
+      5.6
+     ],
+     "tx3": [
+      12.8,
+      5.6
+     ],
+     "s1a": [
+      3.633,
+      8.6
+     ],
+     "s1b": [
+      13.6,
+      8.6
+     ],
+     "s1c": [
+      13.6,
+      9.6
+     ],
+     "s1d": [
+      3.633,
+      9.6
+     ],
+     "s2a": [
+      1.64,
+      8.6
+     ],
+     "s2b": [
+      3.633,
+      8.6
+     ],
+     "s2c": [
+      3.633,
+      9.6
+     ],
+     "s2d": [
+      1.64,
+      9.6
+     ],
+     "s3a": [
+      1.6,
+      8.6
+     ],
+     "s3b": [
+      1.64,
+      8.6
+     ],
+     "s3c": [
+      1.64,
+      9.6
+     ],
+     "s3d": [
+      1.6,
+      9.6
+     ],
+     "l1": [
+      4.8,
+      3.4
+     ],
+     "l2": [
+      9.6,
+      3.4
+     ],
+     "l3": [
+      12.0,
+      3.4
+     ],
+     "c_n3612": [
+      4.58,
+      11.0
+     ],
+     "c_n612": [
+      5.17,
+      11.0
+     ],
+     "c_n12": [
+      5.585,
+      11.0
+     ],
+     "c_n0": [
+      6.0,
+      11.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "tankframe",
+      "poly": [
+       "tf1",
+       "tf2",
+       "tf3",
+       "tf4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "tank",
+      "poly": [
+       "tb1",
+       "tb2",
+       "tt2",
+       "tt1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cap",
+      "label": "\\text{squares left}",
+      "at": "cpt",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3612",
+      "label": "3{,}612",
+      "at": "c_n3612",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n612",
+      "label": "612",
+      "at": "c_n612",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n12",
+      "label": "12",
+      "at": "c_n12",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n0",
+      "label": "0",
+      "at": "c_n0",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lft",
+      "seg": [
+       "bx0",
+       "tx0"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "3",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2
+     },
+     {
+      "id": "s3",
+      "poly": [
+       "s3a",
+       "s3b",
+       "s3c",
+       "s3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "a1",
+      "label": "3000",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "a2",
+      "label": "600",
+      "at": "l2",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "a3",
+      "label": "12",
+      "at": "l3",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "1000",
+      "ink": "accent"
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "200",
+      "ink": "blue"
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "tx2",
+       "tx3"
+      ],
+      "side": "n",
+      "tex": "4",
+      "ink": "warm"
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx3"
+      ],
+      "side": "s",
+      "tex": "1000+200+0+4=1204",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more, with four digits. Three thousand six hundred twelve divided by three.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Four digits"
+      },
+      {
+       "do": "problem",
+       "text": "$3{,}612 \\div 3$"
+      },
+      {
+       "do": "highlight",
+       "target": "tank",
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": "n3612",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A thousand first. Three times a thousand is three thousand. Six hundred twelve are left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "d1"
+       ],
+       "at": "thousand"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s1a": [
+         1.6,
+         1.2
+        ],
+        "s1b": [
+         8.0,
+         1.2
+        ],
+        "s1c": [
+         8.0,
+         5.6
+        ],
+        "s1d": [
+         1.6,
+         5.6
+        ],
+        "tb2": [
+         3.633,
+         8.6
+        ],
+        "tt2": [
+         3.633,
+         9.6
+        ]
+       },
+       "at": "Three",
+       "dur": 2
+      },
+      {
+       "do": "write",
+       "tex": "3612-3\\times1000=612",
+       "fresh": true,
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": "n3612",
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n612",
+        "a1"
+       ],
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two hundred next. Three times two hundred is six hundred. Twelve are left.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "d2"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s2a": [
+         8.0,
+         1.2
+        ],
+        "s2b": [
+         11.2,
+         1.2
+        ],
+        "s2c": [
+         11.2,
+         5.6
+        ],
+        "s2d": [
+         8.0,
+         5.6
+        ],
+        "tb2": [
+         1.64,
+         8.6
+        ],
+        "tt2": [
+         1.64,
+         9.6
+        ]
+       },
+       "at": "Three",
+       "dur": 1.6
+      },
+      {
+       "do": "write",
+       "tex": "612-3\\times200=12",
+       "fresh": true,
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": "n612",
+       "at": "Twelve"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n12",
+        "a2"
+       ],
+       "at": "Twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tens? Three times ten is thirty, more than twelve. So zero tens again. Then four: three fours make twelve.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n12",
+       "at": "more",
+       "until": "So"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s3",
+        "d3"
+       ],
+       "at": "Then"
+      },
+      {
+       "do": "move",
+       "points": {
+        "s3a": [
+         11.2,
+         1.2
+        ],
+        "s3b": [
+         12.8,
+         1.2
+        ],
+        "s3c": [
+         12.8,
+         5.6
+        ],
+        "s3d": [
+         11.2,
+         5.6
+        ],
+        "tb2": [
+         1.6,
+         8.6
+        ],
+        "tt2": [
+         1.6,
+         9.6
+        ]
+       },
+       "at": "three",
+       "nth": 2,
+       "dur": 1.4
+      },
+      {
+       "do": "hide",
+       "target": "n12",
+       "at": "twelve",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": [
+        "n0",
+        "a3"
+       ],
+       "at": "twelve",
+       "nth": 2
+      },
+      {
+       "do": "hide",
+       "target": "tank",
+       "at": "twelve",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One thousand plus two hundred plus zero plus four is one thousand two hundred four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "dimtot",
+       "at": "is"
+      },
+      {
+       "do": "write",
+       "tex": "1000+200+0+4=1204",
+       "fresh": true,
+       "at": "One"
+      },
+      {
+       "do": "answer",
+       "tex": "3{,}612\\div3=1{,}204",
+       "at": "is"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.2,
+     -1.0,
+     14.4,
+     9.0
+    ],
+    "points": {
+     "bx0": [
+      1.6,
+      1.2
+     ],
+     "bx1": [
+      6.6,
+      1.2
+     ],
+     "bx2": [
+      11.6,
+      1.2
+     ],
+     "bx3": [
+      13.6,
+      1.2
+     ],
+     "tx0": [
+      1.6,
+      5.6
+     ],
+     "tx1": [
+      6.6,
+      5.6
+     ],
+     "tx2": [
+      11.6,
+      5.6
+     ],
+     "tx3": [
+      13.6,
+      5.6
+     ],
+     "l1": [
+      4.1,
+      3.4
+     ],
+     "l2": [
+      9.1,
+      3.4
+     ],
+     "l3": [
+      12.6,
+      3.4
+     ],
+     "lt": [
+      7.6,
+      8.75
+     ]
+    },
+    "parts": [
+     {
+      "id": "c1",
+      "poly": [
+       "bx0",
+       "bx1",
+       "tx1",
+       "tx0"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "bx1",
+       "bx2",
+       "tx2",
+       "tx1"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "bx2",
+       "bx3",
+       "tx3",
+       "tx2"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a1",
+      "label": "40",
+      "at": "l1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "a2",
+      "label": "40",
+      "at": "l2",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "a3",
+      "label": "16",
+      "at": "l3",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "bx0",
+       "tx0"
+      ],
+      "side": "w",
+      "tex": "4",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dim": [
+       "tx0",
+       "tx1"
+      ],
+      "side": "n",
+      "tex": "10",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "d2",
+      "dim": [
+       "tx1",
+       "tx2"
+      ],
+      "side": "n",
+      "tex": "10",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "d3",
+      "dim": [
+       "tx2",
+       "tx3"
+      ],
+      "side": "n",
+      "tex": "4",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "dimtot",
+      "dim": [
+       "bx0",
+       "bx3"
+      ],
+      "side": "s",
+      "tex": "10+10+4=24",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "total",
+      "label": "96\\text{ squares}",
+      "at": "lt",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "So here is the whole idea in one picture. A rectangle four tall, with ninety-six squares inside.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Build it in chunks"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "four",
+       "until": "with"
+      },
+      {
+       "do": "highlight",
+       "target": "total",
+       "at": "ninety-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three chunks from facts you know: forty, forty, and sixteen. Their lengths are ten, ten, and four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1",
+        "d1"
+       ],
+       "at": "forty",
+       "until": "forty",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "c2",
+        "d2"
+       ],
+       "at": "forty",
+       "nth": 2,
+       "until": "sixteen"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "c3",
+        "d3"
+       ],
+       "at": "sixteen",
+       "until": "Their"
+      },
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "ten",
+       "until": "ten",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "ten",
+       "nth": 2,
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add the lengths, and you have the missing side: twenty-four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dimtot",
+       "at": "Add"
+      },
+      {
+       "do": "answer",
+       "tex": "96\\div4=24",
+       "at": "side"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Build the rectangle in chunks you know. Add up the lengths. And whatever is left over, too small to make one more column, is the remainder.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1",
+        "c2",
+        "c3"
+       ],
+       "at": "Build",
+       "until": "Add"
+      },
+      {
+       "do": "text",
+       "text": "1. Build in chunks you know.",
+       "at": "Build"
+      },
+      {
+       "do": "highlight",
+       "target": "dimtot",
+       "at": "Add",
+       "until": "whatever"
+      },
+      {
+       "do": "text",
+       "text": "2. Add the lengths.",
+       "at": "Add"
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "column"
+      },
+      {
+       "do": "text",
+       "text": "3. Left over: the remainder.",
+       "at": "whatever"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Chunks, lengths, remainder. Now I can divide anything!",
+     "pause": 0.5,
+     "do": []
+    }
+   ]
+  }
+ ]
+}
