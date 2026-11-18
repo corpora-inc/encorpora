@@ -418,7 +418,8 @@ try {
       await fits(page);
       // The child's own pages: their Pathways and their record.
       await page.goto(`${origin}${familyPath}/kids/${first.id}/pathways`);
-      await page.locator(".pathways-viewport").waitFor();
+      // The map's list (the 3D view is optional since #2416).
+      await page.locator(".pathways-workspace").waitFor();
       await fits(page);
       await page.screenshot({
         path: `${shots}/pathways-${width}-${theme}.png`,
@@ -466,25 +467,23 @@ try {
         // A setup screen opened cold while `/me` fails: a designed error
         // with a retry that works.
         await page.goto(`${origin}/continue/${first.id}`);
-        await page.getByRole("heading", { name: "This didn’t load" }).waitFor();
-        await page
-          .getByRole("button", { name: "Try again", exact: true })
-          .waitFor();
+        const retry = page.getByRole("button", {
+          name: "Try again",
+          exact: true,
+        });
+        await retry.waitFor();
         await fits(page);
         await page.screenshot({ path: `${shots}/cold-family-error.png` });
         await page.unroute("**/api/v1/me");
-        await page
-          .getByRole("button", { name: "Try again", exact: true })
-          .click();
-        await page
-          .getByRole("heading", { name: "Continue with AMP" })
-          .waitFor();
+        // Try again works: the error gives way to the screen.
+        await retry.click();
+        await retry.waitFor({ state: "detached" });
         await page.goto(`${origin}/family/learners`);
         await childRow("Jordan").waitFor();
       }
       if (width === 320 && theme === "light") {
-        // A parent approving another family's child pays for the plan before
-        // any learner of their own; an unconfirmed email is confirmed first.
+        // A gift is bound to the address it was made out to: an unconfirmed
+        // email is confirmed first (onboarding/guard.ts).
         const actual = await (
           await context.request.get(`${origin}/api/v1/me`)
         ).json();
@@ -492,9 +491,7 @@ try {
           route.fulfill({
             json: {
               ...actual,
-              next: "start",
-              familyApproval: { id: "synthetic-approval" },
-              consent: { status: "none", method: null },
+              next: "accept-gift",
               account: {
                 ...actual.account,
                 emailVerified: false,
@@ -503,11 +500,10 @@ try {
             },
           }),
         );
-        await page.goto(`${origin}/start/plan`);
+        await page.goto(`${origin}/access`);
         await page
           .getByRole("heading", { name: "Confirm your email" })
           .waitFor();
-        assert.match(page.url(), /start\/verify-email/);
         let releaseEmail!: () => void;
         const emailHold = new Promise<void>((resolve) => {
           releaseEmail = resolve;
@@ -540,7 +536,6 @@ try {
           })
           .waitFor();
         await stable(resend, box, "email failure controls stay in place");
-        await page.getByRole("button", { name: "Dismiss message" }).click();
         await page.getByRole("button", { name: "I’ve confirmed it" }).click();
         await page
           .getByText(
@@ -595,9 +590,9 @@ try {
       await page.screenshot({
         path: `${shots}/no-child-${width}-${theme}.png`,
       });
+      // Add a child opens its sheet in place.
       await page.getByRole("button", { name: "Add a child" }).click();
-      await page.waitForURL("**/start/parent");
-      await page.getByRole("heading", { name: "Add your kids" }).waitFor();
+      await page.getByRole("dialog", { name: "Add a child" }).waitFor();
       await page.unrouteAll({ behavior: "wait" });
       assert.deepEqual(faults, []);
       console.log("Complete viewport fixture auth requests", authRequests);

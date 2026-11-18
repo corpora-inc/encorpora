@@ -376,7 +376,11 @@ async function journey(
   // (features/family/Child.tsx; the family's /workbooks is a one-hop alias).
   const familyPath = new URL(page.url()).pathname;
   const workbooksOf = async (child: { id: string }) => {
-    await page.goto(`${origin}${familyPath}/kids/${child.id}`);
+    // Already on the child's page (Back to family returns there): no second
+    // load over the app's own (WebKit interrupts one with the other).
+    const path = `${familyPath}/kids/${child.id}`;
+    if (new URL(page.url()).pathname !== path)
+      await page.goto(`${origin}${path}`);
     await page.locator("[data-child-workbooks]").waitFor();
   };
   await workbooksOf(fox);
