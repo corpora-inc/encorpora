@@ -184,9 +184,8 @@ try {
       await page.screenshot({
         path: `${shots}/film-${viewport.width}-${theme}.png`,
       });
-      await page
-        .getByRole("link", { name: "Back to lesson", exact: true })
-        .click();
+      // The film closes (no in-page Back) to the lesson it opened from.
+      await page.getByRole("link", { name: "Close film", exact: true }).click();
       await watch.waitFor();
       assert.equal(
         await page.locator("audio").count(),
@@ -206,16 +205,14 @@ try {
         await page.reload();
         await ready(page);
         await page
-          .getByRole("link", { name: "Back to lesson", exact: true })
+          .getByRole("link", { name: "Close film", exact: true })
           .click();
         // A parent reads a child's map: the child's practice is their own
         // session (PathwaysScreen readOnly), so the lesson offers no Try.
         // Practice the same problem type at the address Try opens.
         await watch.waitFor();
         assert.equal(
-          await page
-            .getByRole("link", { name: /^Practice/ })
-            .count(),
+          await page.getByRole("link", { name: /^Practice/ }).count(),
           0,
           "A child's map offers the adult no practice of its own",
         );
@@ -237,7 +234,10 @@ try {
           0,
           "A lesson sheet cannot trap focus behind the film",
         );
-        await page.getByRole("link", { name: "Back to problem" }).click();
+        // Closing the film returns to the problem it opened over.
+        await page
+          .getByRole("link", { name: "Close film", exact: true })
+          .click();
         await problem.waitFor();
         assert.equal(
           await problem.getAttribute("data-problem-id"),

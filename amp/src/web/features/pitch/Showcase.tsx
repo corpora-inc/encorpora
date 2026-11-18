@@ -15,15 +15,16 @@ import {
 } from "./showcase-files";
 import { showcaseSlides, type ShowcaseSlide } from "./showcase-slides";
 import styles from "./Showcase.module.css";
+import { mediaMatches, onMediaChange } from "../../lib/media-query";
 
 /** How long each slide rests before the next fades in. */
 const ADVANCE_MS = 6500;
 const reducedQuery = "(prefers-reduced-motion: reduce)";
 const count = showcaseSlides.length;
 
-const prefersReducedMotion = () =>
-  typeof window.matchMedia === "function" &&
-  window.matchMedia(reducedQuery).matches;
+// Media queries through lib/media-query.ts: an in-app browser may have no
+// matchMedia listeners at all (verify-in-app-browser-ui, "apis").
+const prefersReducedMotion = () => mediaMatches(reducedQuery);
 
 const subscribeVisibility = (change: () => void) => {
   document.addEventListener("visibilitychange", change);
@@ -31,11 +32,8 @@ const subscribeVisibility = (change: () => void) => {
 };
 const pageVisible = () => document.visibilityState === "visible";
 
-const subscribeNarrow = (change: () => void) => {
-  const query = window.matchMedia(narrowQuery);
-  query.addEventListener("change", change);
-  return () => query.removeEventListener("change", change);
-};
+const subscribeNarrow = (change: () => void) =>
+  onMediaChange(narrowQuery, change);
 
 /** True once the page has loaded and the browser is idle: the later slides'
  * files start then, never in the first screen's bandwidth. */
@@ -121,7 +119,7 @@ function AppShot({ slide, first }: { slide: ShowcaseSlide; first: boolean }) {
 function PaperShot({ slide }: { slide: ShowcaseSlide }) {
   const narrow = useSyncExternalStore(
     subscribeNarrow,
-    () => window.matchMedia(narrowQuery).matches,
+    () => mediaMatches(narrowQuery),
     () => false,
   );
   return (
@@ -164,13 +162,9 @@ export function Showcase() {
 
   // A visitor who turns on reduced motion mid-visit stops the rotation.
   useEffect(() => {
-    if (typeof window.matchMedia !== "function") return;
-    const query = window.matchMedia(reducedQuery);
-    const change = () => {
-      if (query.matches) setPlaying(false);
-    };
-    query.addEventListener("change", change);
-    return () => query.removeEventListener("change", change);
+    return onMediaChange(reducedQuery, () => {
+      if (mediaMatches(reducedQuery)) setPlaying(false);
+    });
   }, []);
 
   useEffect(() => {
