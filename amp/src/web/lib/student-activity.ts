@@ -5,7 +5,6 @@ import type { Me } from "../../account/contracts";
 import type { AuthSession } from "../auth";
 import { currentLearner, useLearnerStore } from "../learner-store";
 import { nativeRuntime } from "../native-runtime";
-import { practiceLearners } from "./adult-learner";
 import { meKey, queryClient, sessionOptions } from "./query";
 import { isStudentDevice, studentSession } from "./student-device";
 import { HelpQueue, onHelp } from "./help-events";
@@ -113,7 +112,10 @@ function chosenLearner(
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
   const learnerId = pick(session.accountId);
   if (!me?.signedIn || !learnerId) return null;
-  return practiceLearners(me).some((learner) => learner.id === learnerId)
+  // One it practices as (`practiceLearners`), by id alone.
+  return me.learners.some((learner) => learner.id === learnerId) ||
+    me.adultPractice?.learner?.id === learnerId ||
+    !!me.practiceProfiles?.some((profile) => profile.id === learnerId)
     ? {
         url: `/api/v1/learners/${encodeURIComponent(learnerId)}/activity`,
         token: session.token,
