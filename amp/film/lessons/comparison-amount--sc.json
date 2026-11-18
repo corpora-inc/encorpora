@@ -1,0 +1,3937 @@
+{
+ "id": "comparison-amount--sc",
+ "title": "Additive and multiplicative comparison",
+ "teaches": [
+  "comparison-factor",
+  "times-as-many-comparison",
+  "times-as-many-counts",
+  "mcas-comparison-equations-select"
+ ],
+ "skill": "multiplicative-comparison",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     -3.4,
+     19.5,
+     16.6
+    ],
+    "points": {
+     "ma": [
+      0.75,
+      15
+     ],
+     "mb": [
+      6.75,
+      15
+     ],
+     "mc": [
+      6.75,
+      13
+     ],
+     "md": [
+      0.75,
+      13
+     ],
+     "ua": [
+      0.75,
+      15
+     ],
+     "ub": [
+      6.75,
+      15
+     ],
+     "uc": [
+      6.75,
+      13
+     ],
+     "ud": [
+      0.75,
+      13
+     ],
+     "pa": [
+      10.75,
+      9.35
+     ],
+     "pb": [
+      13.75,
+      9.35
+     ],
+     "pc": [
+      13.75,
+      7.35
+     ],
+     "pd": [
+      10.75,
+      7.35
+     ],
+     "c1a": [
+      0.75,
+      15
+     ],
+     "c1b": [
+      6.75,
+      15
+     ],
+     "c1c": [
+      6.75,
+      13
+     ],
+     "c1d": [
+      0.75,
+      13
+     ],
+     "c2a": [
+      0.75,
+      15
+     ],
+     "c2b": [
+      6.75,
+      15
+     ],
+     "c2c": [
+      6.75,
+      13
+     ],
+     "c2d": [
+      0.75,
+      13
+     ],
+     "c3a": [
+      0.75,
+      15
+     ],
+     "c3b": [
+      6.75,
+      15
+     ],
+     "c3c": [
+      6.75,
+      13
+     ],
+     "c3d": [
+      0.75,
+      13
+     ],
+     "lMiaP": [
+      2.2,
+      15.9
+     ],
+     "nMiaP": [
+      3.75,
+      14
+     ],
+     "nUP": [
+      3.75,
+      8.35
+     ],
+     "n3P": [
+      8.25,
+      8.35
+     ],
+     "n1P": [
+      3.75,
+      0.1
+     ],
+     "n2P": [
+      9.75,
+      0.1
+     ],
+     "n3cP": [
+      15.75,
+      0.1
+     ],
+     "lMoreP": [
+      5.25,
+      11.175
+     ],
+     "lTimesP": [
+      9.75,
+      2.8
+     ],
+     "d1": [
+      0.75,
+      7.35
+     ],
+     "d2": [
+      9.75,
+      7.35
+     ],
+     "e1": [
+      0.75,
+      -0.9
+     ],
+     "e2": [
+      18.75,
+      -0.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "mia",
+      "poly": [
+       "ma",
+       "mb",
+       "mc",
+       "md"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "lmia",
+      "label": "\\text{Mia}",
+      "at": "lMiaP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nmia",
+      "label": "6",
+      "at": "nMiaP",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "mcopy",
+      "poly": [
+       "ua",
+       "ub",
+       "uc",
+       "ud"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "gm"
+     },
+     {
+      "id": "nu",
+      "label": "6",
+      "at": "nUP",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "piece3",
+      "poly": [
+       "pa",
+       "pb",
+       "pc",
+       "pd"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "group": "gp"
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "n3P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "lmore",
+      "label": "\\text{Leo has 3 more}",
+      "at": "lMoreP",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "dmore",
+      "dim": [
+       "d1",
+       "d2"
+      ],
+      "side": "s",
+      "tex": "6+3=9"
+     },
+     {
+      "id": "c1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g1"
+     },
+     {
+      "id": "n1",
+      "label": "6",
+      "at": "n1P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g2"
+     },
+     {
+      "id": "n2",
+      "label": "6",
+      "at": "n2P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g3"
+     },
+     {
+      "id": "n3c",
+      "label": "6",
+      "at": "n3cP",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "ltimes",
+      "label": "\\text{Leo has 3 times as many}",
+      "at": "lTimesP",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "dtimes",
+      "dim": [
+       "e1",
+       "e2"
+      ],
+      "side": "s",
+      "tex": "3\\times6=18"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Mia has six stickers.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "header",
+       "text": "More, or times as many?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nmia"
+       ],
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Leo has three times as many stickers as Mia. How many does Leo have?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "problem",
+       "text": "Mia has 6 stickers. Leo has 3 times as many. How many does Leo have?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Nine! Six plus three.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "6+3=9",
+       "id": "guess",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine is a real answer. But it answers a different sentence.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "guess",
+       "at": "Nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It answers this one: Leo has three more than Mia.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "lmore",
+       "at": "this"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Mia's strip of six comes down.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "gm",
+       "at": "comes"
+      },
+      {
+       "do": "slide",
+       "target": "gm",
+       "by": [
+        0,
+        -5.65
+       ],
+       "at": "comes",
+       "dur": 1.3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Leo adds a small piece of three.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "nu",
+       "at": "Leo"
+      },
+      {
+       "do": "show",
+       "target": "gp",
+       "at": "small"
+      },
+      {
+       "do": "slide",
+       "target": "gp",
+       "by": [
+        -4,
+        0
+       ],
+       "at": "small",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": "n3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six, and three more. Nine.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "gm",
+       "at": "Six",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "gp",
+       "at": "three",
+       "until": "Nine"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "Nine"
+      },
+      {
+       "do": "show",
+       "target": "dmore",
+       "at": "Nine"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That's just what I did!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "just"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. That is a plus story.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "plus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now the other sentence: Leo has three times as many.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "ltimes",
+       "at": "other"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Times as many does not add a small piece. It copies Mia's whole strip.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "piece3",
+       "at": "small",
+       "until": "It"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nmia"
+       ],
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "All of Mia's six slides down. That is one time.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "g1",
+       "at": "slides"
+      },
+      {
+       "do": "slide",
+       "target": "g1",
+       "by": [
+        0,
+        -13.9
+       ],
+       "at": "slides",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "time"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Copy the whole strip again, right beside it. Two times. Twelve.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "g2",
+       "at": "again"
+      },
+      {
+       "do": "slide",
+       "target": "g2",
+       "by": [
+        6,
+        -13.9
+       ],
+       "at": "again",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And once more. Three times. Eighteen.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "g3",
+       "at": "once"
+      },
+      {
+       "do": "slide",
+       "target": "g3",
+       "by": [
+        12,
+        -13.9
+       ],
+       "at": "once",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "n3c",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "dtimes",
+       "at": "Eighteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Whoa. Eighteen is way more than nine!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "g1",
+        "g2",
+        "g3"
+       ],
+       "at": "Eighteen"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Mia's strip stays on top for scale. Three more makes nine. Three times as many makes eighteen.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nmia"
+       ],
+       "at": "Mia's",
+       "until": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "Three",
+       "until": "Three",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "g1",
+        "g2",
+        "g3"
+       ],
+       "at": "Three",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So Leo has eighteen stickers.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times6=18",
+       "fresh": true,
+       "at": "So"
+      },
+      {
+       "do": "answer",
+       "tex": "18\\text{ stickers}",
+       "at": "eighteen"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     2.5,
+     19.5,
+     16.2
+    ],
+    "points": {
+     "ma": [
+      0.75,
+      14
+     ],
+     "mb": [
+      5.25,
+      14
+     ],
+     "mc": [
+      5.25,
+      11.5
+     ],
+     "md": [
+      0.75,
+      11.5
+     ],
+     "la": [
+      0.75,
+      8
+     ],
+     "lb": [
+      18.75,
+      8
+     ],
+     "lc": [
+      18.75,
+      5.5
+     ],
+     "ld": [
+      0.75,
+      5.5
+     ],
+     "ea": [
+      5.25,
+      8
+     ],
+     "eb": [
+      18.75,
+      8
+     ],
+     "ec": [
+      18.75,
+      5.5
+     ],
+     "ed": [
+      5.25,
+      5.5
+     ],
+     "k1a": [
+      0.75,
+      14
+     ],
+     "k1b": [
+      5.25,
+      14
+     ],
+     "k1c": [
+      5.25,
+      11.5
+     ],
+     "k1d": [
+      0.75,
+      11.5
+     ],
+     "k2a": [
+      0.75,
+      14
+     ],
+     "k2b": [
+      5.25,
+      14
+     ],
+     "k2c": [
+      5.25,
+      11.5
+     ],
+     "k2d": [
+      0.75,
+      11.5
+     ],
+     "k3a": [
+      0.75,
+      14
+     ],
+     "k3b": [
+      5.25,
+      14
+     ],
+     "k3c": [
+      5.25,
+      11.5
+     ],
+     "k3d": [
+      0.75,
+      11.5
+     ],
+     "k4a": [
+      0.75,
+      14
+     ],
+     "k4b": [
+      5.25,
+      14
+     ],
+     "k4c": [
+      5.25,
+      11.5
+     ],
+     "k4d": [
+      0.75,
+      11.5
+     ],
+     "lMiaP": [
+      3.0,
+      15.0
+     ],
+     "nMiaP": [
+      3.0,
+      12.75
+     ],
+     "eP": [
+      12,
+      6.75
+     ],
+     "q1P": [
+      3.0,
+      3.9
+     ],
+     "q2P": [
+      7.5,
+      3.9
+     ],
+     "q3P": [
+      12.0,
+      3.9
+     ],
+     "q4P": [
+      16.5,
+      3.9
+     ],
+     "dt1": [
+      0.75,
+      8
+     ],
+     "dt2": [
+      18.75,
+      8
+     ]
+    },
+    "parts": [
+     {
+      "id": "mia",
+      "poly": [
+       "ma",
+       "mb",
+       "mc",
+       "md"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "lmia",
+      "label": "\\text{Mia has 6}",
+      "at": "lMiaP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nmia",
+      "label": "6",
+      "at": "nMiaP",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "leo",
+      "poly": [
+       "la",
+       "lb",
+       "lc",
+       "ld"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "dleo",
+      "dim": [
+       "dt1",
+       "dt2"
+      ],
+      "side": "n",
+      "tex": "\\text{Leo has } 24",
+      "start": true
+     },
+     {
+      "id": "extra",
+      "poly": [
+       "ea",
+       "eb",
+       "ec",
+       "ed"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "sheer": true,
+      "w": 2
+     },
+     {
+      "id": "nextra",
+      "label": "\\text{18 more}",
+      "at": "eP",
+      "dir": "c",
+      "size": "xl",
+      "halo": true
+     },
+     {
+      "id": "k1",
+      "poly": [
+       "k1a",
+       "k1b",
+       "k1c",
+       "k1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "k2",
+      "poly": [
+       "k2a",
+       "k2b",
+       "k2c",
+       "k2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "k3",
+      "poly": [
+       "k3a",
+       "k3b",
+       "k3c",
+       "k3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "k4",
+      "poly": [
+       "k4a",
+       "k4b",
+       "k4c",
+       "k4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "q1",
+      "label": "1",
+      "at": "q1P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "q2",
+      "label": "2",
+      "at": "q2P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "q3",
+      "label": "3",
+      "at": "q3P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "q4",
+      "label": "4",
+      "at": "q4P",
+      "dir": "c",
+      "size": "xl"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A different question. Mia has six marbles, and Leo has twenty four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How many times as many?"
+      },
+      {
+       "do": "problem",
+       "text": "Mia has 6 marbles. Leo has 24. Leo has how many times as many as Mia?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nmia"
+       ],
+       "at": "six",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "leo",
+        "dleo"
+       ],
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Leo has eighteen more!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "extra",
+        "nextra"
+       ],
+       "at": "eighteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "True. Eighteen more. But the question asks for times as many.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "extra",
+        "nextra"
+       ],
+       "at": "But"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That means: how many copies of Mia's six make Leo's twenty four?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nmia"
+       ],
+       "at": "copies",
+       "until": "make"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "leo",
+        "dleo"
+       ],
+       "at": "Leo's"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Lay Mia's strip along Leo's. One. Two. Three. Four. It fits exactly four times.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "k1",
+        "q1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "slide",
+       "target": "k1",
+       "by": [
+        0,
+        -6
+       ],
+       "at": "One",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": [
+        "k2",
+        "q2"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "slide",
+       "target": "k2",
+       "by": [
+        4.5,
+        -6
+       ],
+       "at": "Two",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": [
+        "k3",
+        "q3"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "slide",
+       "target": "k3",
+       "by": [
+        9,
+        -6
+       ],
+       "at": "Three",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": [
+        "k4",
+        "q4"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "k4",
+       "by": [
+        13.5,
+        -6
+       ],
+       "at": "Four",
+       "dur": 0.9
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty four divided by six is four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "24\\div6=4",
+       "fresh": true,
+       "at": "Twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check it. Four times six is twenty four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times6=24",
+       "fresh": true,
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Leo has four times as many marbles as Mia.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\text{ times as many}",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So eighteen more, and four times as many. Both are true!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "extra",
+        "nextra"
+       ],
+       "at": "eighteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both true. One compares by taking away. The other compares by copying.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "extra",
+        "nextra"
+       ],
+       "at": "taking",
+       "until": "The"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "extra",
+        "nextra"
+       ],
+       "at": "The"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+       ],
+       "at": "copying"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     4.6,
+     19,
+     16.6
+    ],
+    "points": {
+     "la": [
+      0.75,
+      14
+     ],
+     "lb": [
+      18.25,
+      14
+     ],
+     "lc": [
+      18.25,
+      11.5
+     ],
+     "ld": [
+      0.75,
+      11.5
+     ],
+     "dt1": [
+      0.75,
+      14
+     ],
+     "dt2": [
+      18.25,
+      14
+     ],
+     "p1a": [
+      0.75,
+      8.5
+     ],
+     "p1b": [
+      4.25,
+      8.5
+     ],
+     "p1c": [
+      4.25,
+      6
+     ],
+     "p1d": [
+      0.75,
+      6
+     ],
+     "p2a": [
+      4.25,
+      8.5
+     ],
+     "p2b": [
+      7.75,
+      8.5
+     ],
+     "p2c": [
+      7.75,
+      6
+     ],
+     "p2d": [
+      4.25,
+      6
+     ],
+     "p3a": [
+      7.75,
+      8.5
+     ],
+     "p3b": [
+      11.25,
+      8.5
+     ],
+     "p3c": [
+      11.25,
+      6
+     ],
+     "p3d": [
+      7.75,
+      6
+     ],
+     "p4a": [
+      11.25,
+      8.5
+     ],
+     "p4b": [
+      14.75,
+      8.5
+     ],
+     "p4c": [
+      14.75,
+      6
+     ],
+     "p4d": [
+      11.25,
+      6
+     ],
+     "p5a": [
+      14.75,
+      8.5
+     ],
+     "p5b": [
+      18.25,
+      8.5
+     ],
+     "p5c": [
+      18.25,
+      6
+     ],
+     "p5d": [
+      14.75,
+      6
+     ],
+     "v1t": [
+      4.25,
+      14
+     ],
+     "v1b": [
+      4.25,
+      11.5
+     ],
+     "v2t": [
+      7.75,
+      14
+     ],
+     "v2b": [
+      7.75,
+      11.5
+     ],
+     "v3t": [
+      11.25,
+      14
+     ],
+     "v3b": [
+      11.25,
+      11.5
+     ],
+     "v4t": [
+      14.75,
+      14
+     ],
+     "v4b": [
+      14.75,
+      11.5
+     ],
+     "n1P": [
+      2.5,
+      7.25
+     ],
+     "n2P": [
+      6.0,
+      7.25
+     ],
+     "n3P": [
+      9.5,
+      7.25
+     ],
+     "n4P": [
+      13.0,
+      7.25
+     ],
+     "n5P": [
+      16.5,
+      7.25
+     ],
+     "lMiaP": [
+      4.9,
+      10.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "leo",
+      "poly": [
+       "la",
+       "lb",
+       "lc",
+       "ld"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "dleo",
+      "dim": [
+       "dt1",
+       "dt2"
+      ],
+      "side": "n",
+      "tex": "\\text{Leo has } 35",
+      "start": true
+     },
+     {
+      "id": "p1",
+      "poly": [
+       "p1a",
+       "p1b",
+       "p1c",
+       "p1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "p2",
+      "poly": [
+       "p2a",
+       "p2b",
+       "p2c",
+       "p2d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "p3",
+      "poly": [
+       "p3a",
+       "p3b",
+       "p3c",
+       "p3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "p4",
+      "poly": [
+       "p4a",
+       "p4b",
+       "p4c",
+       "p4d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "p5",
+      "poly": [
+       "p5a",
+       "p5b",
+       "p5c",
+       "p5d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "v1t",
+       "v1b"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "v2t",
+       "v2b"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "v3t",
+       "v3b"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "v4",
+      "seg": [
+       "v4t",
+       "v4b"
+      ],
+      "ink": "ink",
+      "w": 2.5
+     },
+     {
+      "id": "q1",
+      "label": "?",
+      "at": "n1P",
+      "dir": "c",
+      "size": "xl",
+      "group": "qs"
+     },
+     {
+      "id": "q2",
+      "label": "?",
+      "at": "n2P",
+      "dir": "c",
+      "size": "xl",
+      "group": "qs"
+     },
+     {
+      "id": "q3",
+      "label": "?",
+      "at": "n3P",
+      "dir": "c",
+      "size": "xl",
+      "group": "qs"
+     },
+     {
+      "id": "q4",
+      "label": "?",
+      "at": "n4P",
+      "dir": "c",
+      "size": "xl",
+      "group": "qs"
+     },
+     {
+      "id": "q5",
+      "label": "?",
+      "at": "n5P",
+      "dir": "c",
+      "size": "xl",
+      "group": "qs"
+     },
+     {
+      "id": "s1",
+      "label": "7",
+      "at": "n1P",
+      "dir": "c",
+      "size": "xl",
+      "group": "sevens"
+     },
+     {
+      "id": "s2",
+      "label": "7",
+      "at": "n2P",
+      "dir": "c",
+      "size": "xl",
+      "group": "sevens"
+     },
+     {
+      "id": "s3",
+      "label": "7",
+      "at": "n3P",
+      "dir": "c",
+      "size": "xl",
+      "group": "sevens"
+     },
+     {
+      "id": "s4",
+      "label": "7",
+      "at": "n4P",
+      "dir": "c",
+      "size": "xl",
+      "group": "sevens"
+     },
+     {
+      "id": "s5",
+      "label": "7",
+      "at": "n5P",
+      "dir": "c",
+      "size": "xl",
+      "group": "sevens"
+     },
+     {
+      "id": "lmia",
+      "label": "\\text{Mia's amount}",
+      "at": "lMiaP",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the smaller amount is missing. Leo has thirty five stickers.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The smaller amount is missing"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "leo",
+        "dleo"
+       ],
+       "at": "thirty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is five times as many as Mia has. How many does Mia have?",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "problem",
+       "text": "Leo has 35 stickers, 5 times as many as Mia. How many does Mia have?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Mia's amount is hiding, so we mark it with a question mark.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "p1",
+        "q1",
+        "lmia"
+       ],
+       "at": "hiding"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Leo has five times as many. So five of Mia's strips, end to end, make Leo's. Two. Three. Four. Five strips in all.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "p2",
+        "q2"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "p3",
+        "q3"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "p4",
+        "q4"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "p5",
+        "q5"
+       ],
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So if I cut Leo's thirty five into five equal pieces, each piece is Mia's!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+       ],
+       "at": "cut"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Thirty five shared into five equal pieces. Seven in each.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "35\\div5=7",
+       "fresh": true,
+       "at": "Thirty"
+      },
+      {
+       "do": "hide",
+       "target": "qs",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "sevens",
+       "at": "Seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check by copying: five times seven is thirty five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "5\\times7=35",
+       "fresh": true,
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+       ],
+       "at": "copying"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Mia has seven stickers.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "7\\text{ stickers}",
+       "at": "seven"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     0.0,
+     19.5,
+     15.2
+    ],
+    "points": {
+     "r1a": [
+      1,
+      12.5
+     ],
+     "r1b": [
+      18.28,
+      12.5
+     ],
+     "r1c": [
+      18.28,
+      9.5
+     ],
+     "r1d": [
+      1,
+      9.5
+     ],
+     "r2a": [
+      1,
+      12.5
+     ],
+     "r2b": [
+      18.28,
+      12.5
+     ],
+     "r2c": [
+      18.28,
+      9.5
+     ],
+     "r2d": [
+      1,
+      9.5
+     ],
+     "r3a": [
+      1,
+      12.5
+     ],
+     "r3b": [
+      18.28,
+      12.5
+     ],
+     "r3c": [
+      18.28,
+      9.5
+     ],
+     "r3d": [
+      1,
+      9.5
+     ],
+     "n1P": [
+      9.64,
+      11.0
+     ],
+     "n2P": [
+      9.64,
+      8.0
+     ],
+     "n3P": [
+      9.64,
+      5.0
+     ],
+     "t1": [
+      1,
+      12.5
+     ],
+     "t2": [
+      18.28,
+      12.5
+     ],
+     "s1": [
+      1,
+      12.5
+     ],
+     "s2": [
+      1,
+      3.5
+     ],
+     "k1a": [
+      1,
+      12.5
+     ],
+     "k1b": [
+      1.72,
+      12.5
+     ],
+     "k1c": [
+      1.72,
+      3.5
+     ],
+     "k1d": [
+      1,
+      3.5
+     ],
+     "k2a": [
+      1.72,
+      12.5
+     ],
+     "k2b": [
+      2.44,
+      12.5
+     ],
+     "k2c": [
+      2.44,
+      3.5
+     ],
+     "k2d": [
+      1.72,
+      3.5
+     ],
+     "k3a": [
+      2.44,
+      12.5
+     ],
+     "k3b": [
+      3.16,
+      12.5
+     ],
+     "k3c": [
+      3.16,
+      3.5
+     ],
+     "k3d": [
+      2.44,
+      3.5
+     ],
+     "k4a": [
+      17.56,
+      12.5
+     ],
+     "k4b": [
+      18.28,
+      12.5
+     ],
+     "k4c": [
+      18.28,
+      3.5
+     ],
+     "k4d": [
+      17.56,
+      3.5
+     ],
+     "dotsP": [
+      4.6,
+      8.2
+     ],
+     "n72P": [
+      9.64,
+      1.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "r1",
+      "poly": [
+       "r1a",
+       "r1b",
+       "r1c",
+       "r1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "gr1",
+      "start": true
+     },
+     {
+      "id": "nr1",
+      "label": "24",
+      "at": "n1P",
+      "dir": "c",
+      "size": "xl",
+      "group": "gr1",
+      "start": true
+     },
+     {
+      "id": "r2",
+      "poly": [
+       "r2a",
+       "r2b",
+       "r2c",
+       "r2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "group": "gr2"
+     },
+     {
+      "id": "nr2",
+      "label": "24",
+      "at": "n2P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "r3",
+      "poly": [
+       "r3a",
+       "r3b",
+       "r3c",
+       "r3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "gr3"
+     },
+     {
+      "id": "nr3",
+      "label": "24",
+      "at": "n3P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "dtop",
+      "dim": [
+       "t1",
+       "t2"
+      ],
+      "side": "n",
+      "tex": "24",
+      "start": true
+     },
+     {
+      "id": "dleft",
+      "dim": [
+       "s1",
+       "s2"
+      ],
+      "side": "w",
+      "tex": "3"
+     },
+     {
+      "id": "col1",
+      "poly": [
+       "k1a",
+       "k1b",
+       "k1c",
+       "k1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "sheer": true,
+      "w": 2.5,
+      "group": "cols"
+     },
+     {
+      "id": "col2",
+      "poly": [
+       "k2a",
+       "k2b",
+       "k2c",
+       "k2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "sheer": true,
+      "w": 2.5,
+      "group": "cols"
+     },
+     {
+      "id": "col3",
+      "poly": [
+       "k3a",
+       "k3b",
+       "k3c",
+       "k3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "sheer": true,
+      "w": 2.5,
+      "group": "cols"
+     },
+     {
+      "id": "col24",
+      "poly": [
+       "k4a",
+       "k4b",
+       "k4c",
+       "k4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "sheer": true,
+      "w": 2.5,
+      "group": "cols"
+     },
+     {
+      "id": "dots",
+      "label": "\\cdots",
+      "at": "dotsP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "n72",
+      "label": "72",
+      "at": "n72P",
+      "dir": "c",
+      "size": "xl"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A multiplication can be read as a comparison. Take three times twenty four is seventy two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A multiplication is a comparison"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times24=72",
+       "fresh": true,
+       "at": "Take"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gr1",
+        "dtop"
+       ],
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here is one strip of twenty four. Slide a copy down. And another copy.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "gr2",
+       "at": "Slide"
+      },
+      {
+       "do": "slide",
+       "target": "gr2",
+       "by": [
+        0,
+        -3.0
+       ],
+       "at": "Slide",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": "nr2",
+       "at": "And"
+      },
+      {
+       "do": "show",
+       "target": "gr3",
+       "at": "another"
+      },
+      {
+       "do": "slide",
+       "target": "gr3",
+       "by": [
+        0,
+        -6.0
+       ],
+       "at": "another",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "nr3",
+        "dleft"
+       ],
+       "at": "copy",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three copies of twenty four, and that is seventy two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "n72",
+       "at": "seventy"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gr1",
+        "gr2",
+        "gr3"
+       ],
+       "at": "Three",
+       "until": "and"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So seventy two is three times as many as twenty four, exactly.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "72 is 3 times as many as 24",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "But look down the columns. Every column has three squares!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "col1",
+       "at": "Every"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. One column of three, and another, and another, all the way along to twenty four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "col2",
+       "at": "another"
+      },
+      {
+       "do": "show",
+       "target": "col3",
+       "at": "another",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": [
+        "dots",
+        "col24"
+       ],
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty four copies of three. So seventy two is also twenty four times as many as three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "cols",
+       "at": "Twenty",
+       "until": "So"
+      },
+      {
+       "do": "text",
+       "text": "72 is 24 times as many as 3",
+       "at": "also"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One multiplication, two comparisons. It works for every one. Thirty five equals five times seven says thirty five is five times as many as seven, and seven times as many as five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "35=5\\times7",
+       "fresh": true,
+       "at": "Thirty"
+      },
+      {
+       "do": "text",
+       "text": "35 is 5 times as many as 7",
+       "at": "five",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "35 is 7 times as many as 5",
+       "at": "seven",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     4.6,
+     19.5,
+     16.6
+    ],
+    "points": {
+     "o1a": [
+      0.9,
+      8.5
+     ],
+     "o1b": [
+      17.7,
+      8.5
+     ],
+     "o1c": [
+      17.7,
+      6
+     ],
+     "o1d": [
+      0.9,
+      6
+     ],
+     "ma": [
+      0.9,
+      14
+     ],
+     "mb": [
+      5.1,
+      14
+     ],
+     "mc": [
+      5.1,
+      11.5
+     ],
+     "md": [
+      0.9,
+      11.5
+     ],
+     "k1a": [
+      0.9,
+      14
+     ],
+     "k1b": [
+      5.1,
+      14
+     ],
+     "k1c": [
+      5.1,
+      11.5
+     ],
+     "k1d": [
+      0.9,
+      11.5
+     ],
+     "k2a": [
+      0.9,
+      14
+     ],
+     "k2b": [
+      5.1,
+      14
+     ],
+     "k2c": [
+      5.1,
+      11.5
+     ],
+     "k2d": [
+      0.9,
+      11.5
+     ],
+     "k3a": [
+      0.9,
+      14
+     ],
+     "k3b": [
+      5.1,
+      14
+     ],
+     "k3c": [
+      5.1,
+      11.5
+     ],
+     "k3d": [
+      0.9,
+      11.5
+     ],
+     "k4a": [
+      0.9,
+      14
+     ],
+     "k4b": [
+      5.1,
+      14
+     ],
+     "k4c": [
+      5.1,
+      11.5
+     ],
+     "k4d": [
+      0.9,
+      11.5
+     ],
+     "lMiaP": [
+      3.0,
+      15.4
+     ],
+     "nMP": [
+      3.0,
+      12.75
+     ],
+     "m1P": [
+      3.0,
+      7.25
+     ],
+     "m2P": [
+      7.2,
+      7.25
+     ],
+     "m3P": [
+      11.4,
+      7.25
+     ],
+     "m4P": [
+      15.6,
+      7.25
+     ],
+     "dt1": [
+      0.9,
+      8.5
+     ],
+     "dt2": [
+      17.7,
+      8.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "mia",
+      "poly": [
+       "ma",
+       "mb",
+       "mc",
+       "md"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "lmia",
+      "label": "\\text{Mia has } m",
+      "at": "lMiaP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nm",
+      "label": "m",
+      "at": "nMP",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "leo",
+      "poly": [
+       "o1a",
+       "o1b",
+       "o1c",
+       "o1d"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "dleo",
+      "dim": [
+       "dt1",
+       "dt2"
+      ],
+      "side": "n",
+      "tex": "\\text{Leo has } 28",
+      "start": true
+     },
+     {
+      "id": "k1",
+      "poly": [
+       "k1a",
+       "k1b",
+       "k1c",
+       "k1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g1"
+     },
+     {
+      "id": "m1",
+      "label": "m",
+      "at": "m1P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "k2",
+      "poly": [
+       "k2a",
+       "k2b",
+       "k2c",
+       "k2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "group": "g2"
+     },
+     {
+      "id": "m2",
+      "label": "m",
+      "at": "m2P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "k3",
+      "poly": [
+       "k3a",
+       "k3b",
+       "k3c",
+       "k3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g3"
+     },
+     {
+      "id": "m3",
+      "label": "m",
+      "at": "m3P",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "k4",
+      "poly": [
+       "k4a",
+       "k4b",
+       "k4c",
+       "k4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "group": "g4"
+     },
+     {
+      "id": "m4",
+      "label": "m",
+      "at": "m4P",
+      "dir": "c",
+      "size": "xl"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now a story, and we choose the equations. Leo has twenty eight stickers, four times as many as Mia.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Which equations fit the story?"
+      },
+      {
+       "do": "problem",
+       "text": "Leo has 28 stickers, 4 times as many as Mia. Let $m$ be the number Mia has."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "leo",
+        "dleo"
+       ],
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let *m* be the number Mia has. The letter stands for the amount we do not know.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nm",
+        "lmia"
+       ],
+       "at": "Let",
+       "until": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "nm",
+       "at": "letter"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Leo's twenty eight is four copies of Mia's. One. Two. Three. Four. That is four copies of *m*.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "k1",
+       "at": "One"
+      },
+      {
+       "do": "slide",
+       "target": "k1",
+       "by": [
+        0,
+        -5.5
+       ],
+       "at": "One",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "k2",
+       "at": "Two"
+      },
+      {
+       "do": "slide",
+       "target": "k2",
+       "by": [
+        4.2,
+        -5.5
+       ],
+       "at": "Two",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": [
+        "k3",
+        "m1"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "slide",
+       "target": "k3",
+       "by": [
+        8.4,
+        -5.5
+       ],
+       "at": "Three",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": [
+        "k4",
+        "m2"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "k4",
+       "by": [
+        12.6,
+        -5.5
+       ],
+       "at": "Four",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": [
+        "m3",
+        "m4"
+       ],
+       "at": "That"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four copies of *m* make twenty eight. So four times *m* equals twenty eight fits.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\times m=28",
+       "note": "\\text{fits}",
+       "fresh": true,
+       "id": "e1",
+       "at": "So"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or share twenty eight into four equal pieces. Twenty eight divided by four equals *m* fits too.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "28\\div4=m",
+       "note": "\\text{fits}",
+       "fresh": true,
+       "id": "e2",
+       "at": "Twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "What about twenty eight plus four equals *m*?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "28+4=m",
+       "fresh": true,
+       "id": "e3",
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That says Mia has more than Leo. She has less. It does not fit.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "strike",
+       "target": "e3",
+       "at": "does"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And *m* plus four equals twenty eight?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "m+4=28",
+       "fresh": true,
+       "id": "e4",
+       "at": "plus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is a four more story: one small piece of four, not four whole copies. It does not fit.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "k1",
+       "at": "one",
+       "until": "not"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+       ],
+       "at": "whole",
+       "until": "It"
+      },
+      {
+       "do": "strike",
+       "target": "e4",
+       "at": "does"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty eight divided by four is seven. Mia has seven stickers.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "m=7",
+       "at": "seven"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1.0,
+     19.5,
+     17.4
+    ],
+    "points": {
+     "a1a": [
+      0.75,
+      15
+     ],
+     "a1b": [
+      3.75,
+      15
+     ],
+     "a1c": [
+      3.75,
+      13
+     ],
+     "a1d": [
+      0.75,
+      13
+     ],
+     "b1a": [
+      0.75,
+      9.4
+     ],
+     "b1b": [
+      3.75,
+      9.4
+     ],
+     "b1c": [
+      3.75,
+      7.4
+     ],
+     "b1d": [
+      0.75,
+      7.4
+     ],
+     "b2a": [
+      3.75,
+      9.4
+     ],
+     "b2b": [
+      6.75,
+      9.4
+     ],
+     "b2c": [
+      6.75,
+      7.4
+     ],
+     "b2d": [
+      3.75,
+      7.4
+     ],
+     "b3a": [
+      6.75,
+      9.4
+     ],
+     "b3b": [
+      9.75,
+      9.4
+     ],
+     "b3c": [
+      9.75,
+      7.4
+     ],
+     "b3d": [
+      6.75,
+      7.4
+     ],
+     "c1a": [
+      0.75,
+      3.8
+     ],
+     "c1b": [
+      3.75,
+      3.8
+     ],
+     "c1c": [
+      3.75,
+      1.8
+     ],
+     "c1d": [
+      0.75,
+      1.8
+     ],
+     "c2a": [
+      3.75,
+      3.8
+     ],
+     "c2b": [
+      6.75,
+      3.8
+     ],
+     "c2c": [
+      6.75,
+      1.8
+     ],
+     "c2d": [
+      3.75,
+      1.8
+     ],
+     "c3a": [
+      6.75,
+      3.8
+     ],
+     "c3b": [
+      9.75,
+      3.8
+     ],
+     "c3c": [
+      9.75,
+      1.8
+     ],
+     "c3d": [
+      6.75,
+      1.8
+     ],
+     "c4a": [
+      9.75,
+      3.8
+     ],
+     "c4b": [
+      12.75,
+      3.8
+     ],
+     "c4c": [
+      12.75,
+      1.8
+     ],
+     "c4d": [
+      9.75,
+      1.8
+     ],
+     "c5a": [
+      12.75,
+      3.8
+     ],
+     "c5b": [
+      15.75,
+      3.8
+     ],
+     "c5c": [
+      15.75,
+      1.8
+     ],
+     "c5d": [
+      12.75,
+      1.8
+     ],
+     "c6a": [
+      15.75,
+      3.8
+     ],
+     "c6b": [
+      18.75,
+      3.8
+     ],
+     "c6c": [
+      18.75,
+      1.8
+     ],
+     "c6d": [
+      15.75,
+      1.8
+     ],
+     "lAP": [
+      3.4,
+      16.0
+     ],
+     "lBP": [
+      3.4,
+      10.4
+     ],
+     "lCP": [
+      3.6,
+      4.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "a1",
+      "poly": [
+       "a1a",
+       "a1b",
+       "a1c",
+       "a1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "la",
+      "label": "\\text{4 apples}",
+      "at": "lAP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "b1",
+      "poly": [
+       "b1a",
+       "b1b",
+       "b1c",
+       "b1d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "solid": true,
+      "group": "pears"
+     },
+     {
+      "id": "b2",
+      "poly": [
+       "b2a",
+       "b2b",
+       "b2c",
+       "b2d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "solid": true,
+      "group": "pears"
+     },
+     {
+      "id": "b3",
+      "poly": [
+       "b3a",
+       "b3b",
+       "b3c",
+       "b3d"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "solid": true,
+      "group": "pears"
+     },
+     {
+      "id": "lb",
+      "label": "\\text{12 pears}",
+      "at": "lBP",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "c1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "solid": true,
+      "group": "plumsA"
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "solid": true,
+      "group": "plumsA"
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "solid": true,
+      "group": "plumsA"
+     },
+     {
+      "id": "c4",
+      "poly": [
+       "c4a",
+       "c4b",
+       "c4c",
+       "c4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "group": "plumsB"
+     },
+     {
+      "id": "c5",
+      "poly": [
+       "c5a",
+       "c5b",
+       "c5c",
+       "c5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "group": "plumsB"
+     },
+     {
+      "id": "c6",
+      "poly": [
+       "c6a",
+       "c6b",
+       "c6c",
+       "c6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "solid": true,
+      "group": "plumsB"
+     },
+     {
+      "id": "lc",
+      "label": "\\text{24 plums}",
+      "at": "lCP",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One last picture: a table of three counts.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Comparing three counts"
+      },
+      {
+       "do": "problem",
+       "text": "Apples: 4. Pears: 12. Plums: 24."
+      },
+      {
+       "do": "highlight",
+       "target": "a1",
+       "at": "picture"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four apples, twelve pears, twenty four plums.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a1",
+        "la"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "lb",
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": "lc",
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We can compare any two. Draw each count as a strip, and let the apple strip be our unit.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a1",
+        "la"
+       ],
+       "at": "We",
+       "until": "Draw"
+      },
+      {
+       "do": "highlight",
+       "target": "a1",
+       "at": "unit"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Pears first. How many apple strips fit? One. Two. Three.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "lb",
+       "at": "Pears"
+      },
+      {
+       "do": "show",
+       "target": "b1",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "b2",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "b3",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve is three times as many as four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "12=3\\times4",
+       "fresh": true,
+       "at": "Twelve"
+      },
+      {
+       "do": "highlight",
+       "target": "pears",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now plums. The first twelve are exactly the pears.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "plumsA",
+       "at": "plums"
+      },
+      {
+       "do": "highlight",
+       "target": "lc",
+       "at": "plums",
+       "until": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "plumsA",
+       "at": "first"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And the next twelve are the pears again. Plums are two times as many as pears.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "plumsB",
+       "at": "next"
+      },
+      {
+       "do": "highlight",
+       "target": "plumsB",
+       "at": "next",
+       "until": "Plums"
+      },
+      {
+       "do": "write",
+       "tex": "24=2\\times12",
+       "fresh": true,
+       "at": "Plums"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And there are six apple strips in the plums!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "plumsA",
+        "plumsB"
+       ],
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Plums are six times as many as apples. One count, three different comparisons.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "24=6\\times4",
+       "fresh": true,
+       "at": "six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -3.4,
+     19.5,
+     16.6
+    ],
+    "points": {
+     "ma": [
+      0.75,
+      15
+     ],
+     "mb": [
+      6.75,
+      15
+     ],
+     "mc": [
+      6.75,
+      13
+     ],
+     "md": [
+      0.75,
+      13
+     ],
+     "ua": [
+      0.75,
+      9.35
+     ],
+     "ub": [
+      6.75,
+      9.35
+     ],
+     "uc": [
+      6.75,
+      7.35
+     ],
+     "ud": [
+      0.75,
+      7.35
+     ],
+     "pa": [
+      6.75,
+      9.35
+     ],
+     "pb": [
+      9.75,
+      9.35
+     ],
+     "pc": [
+      9.75,
+      7.35
+     ],
+     "pd": [
+      6.75,
+      7.35
+     ],
+     "c1a": [
+      0.75,
+      1.1
+     ],
+     "c1b": [
+      6.75,
+      1.1
+     ],
+     "c1c": [
+      6.75,
+      -0.9
+     ],
+     "c1d": [
+      0.75,
+      -0.9
+     ],
+     "c2a": [
+      6.75,
+      1.1
+     ],
+     "c2b": [
+      12.75,
+      1.1
+     ],
+     "c2c": [
+      12.75,
+      -0.9
+     ],
+     "c2d": [
+      6.75,
+      -0.9
+     ],
+     "c3a": [
+      12.75,
+      1.1
+     ],
+     "c3b": [
+      18.75,
+      1.1
+     ],
+     "c3c": [
+      18.75,
+      -0.9
+     ],
+     "c3d": [
+      12.75,
+      -0.9
+     ],
+     "lMiaP": [
+      2.2,
+      15.9
+     ],
+     "nMiaP": [
+      3.75,
+      14
+     ],
+     "nUP": [
+      3.75,
+      8.35
+     ],
+     "n3P": [
+      8.25,
+      8.35
+     ],
+     "n1P": [
+      3.75,
+      0.1
+     ],
+     "n2P": [
+      9.75,
+      0.1
+     ],
+     "n3cP": [
+      15.75,
+      0.1
+     ],
+     "lMoreP": [
+      5.25,
+      11.175
+     ],
+     "lTimesP": [
+      9.75,
+      2.8
+     ],
+     "d1": [
+      0.75,
+      7.35
+     ],
+     "d2": [
+      9.75,
+      7.35
+     ],
+     "e1": [
+      0.75,
+      -0.9
+     ],
+     "e2": [
+      18.75,
+      -0.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "mia",
+      "poly": [
+       "ma",
+       "mb",
+       "mc",
+       "md"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "lmia",
+      "label": "\\text{Mia}",
+      "at": "lMiaP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nmia",
+      "label": "6",
+      "at": "nMiaP",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "mcopy",
+      "poly": [
+       "ua",
+       "ub",
+       "uc",
+       "ud"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "gm",
+      "start": true
+     },
+     {
+      "id": "nu",
+      "label": "6",
+      "at": "nUP",
+      "dir": "c",
+      "size": "xl",
+      "group": "gm",
+      "start": true
+     },
+     {
+      "id": "piece3",
+      "poly": [
+       "pa",
+       "pb",
+       "pc",
+       "pd"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "solid": true,
+      "group": "gp",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "n3P",
+      "dir": "c",
+      "size": "xl",
+      "group": "gp",
+      "start": true
+     },
+     {
+      "id": "lmore",
+      "label": "\\text{3 more: add a piece}",
+      "at": "lMoreP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "dmore",
+      "dim": [
+       "d1",
+       "d2"
+      ],
+      "side": "s",
+      "tex": "6+3=9",
+      "start": true
+     },
+     {
+      "id": "c1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g1",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "6",
+      "at": "n1P",
+      "dir": "c",
+      "size": "xl",
+      "group": "g1",
+      "start": true
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g2",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "6",
+      "at": "n2P",
+      "dir": "c",
+      "size": "xl",
+      "group": "g2",
+      "start": true
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "solid": true,
+      "group": "g3",
+      "start": true
+     },
+     {
+      "id": "n3c",
+      "label": "6",
+      "at": "n3cP",
+      "dir": "c",
+      "size": "xl",
+      "group": "g3",
+      "start": true
+     },
+     {
+      "id": "ltimes",
+      "label": "\\text{3 times as many: copy the whole}",
+      "at": "lTimesP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "dtimes",
+      "dim": [
+       "e1",
+       "e2"
+      ],
+      "side": "s",
+      "tex": "3\\times6=18",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are the two sentences again, with Mia's strip on top for scale.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "More adds a piece. Times as many copies the whole."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "mia",
+        "nmia"
+       ],
+       "at": "Mia's"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three more. Six plus three is nine. One small piece added.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "Three",
+       "until": "One"
+      },
+      {
+       "do": "write",
+       "tex": "6+3=9",
+       "fresh": true,
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "gp",
+       "at": "small"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three times as many. Three times six is eighteen. The whole strip, copied three times.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "g1",
+        "g2",
+        "g3"
+       ],
+       "at": "Three",
+       "until": "The"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times6=18",
+       "fresh": true,
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "mia",
+       "at": "whole",
+       "until": "copied"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "g1",
+        "g2",
+        "g3"
+       ],
+       "at": "copied"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So when I hear times as many, I copy the whole thing. I do not just add.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "g1",
+        "g2",
+        "g3"
+       ],
+       "at": "copy",
+       "until": "do"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp"
+       ],
+       "at": "add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is it. More adds a piece.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gm",
+        "gp",
+        "dmore"
+       ],
+       "at": "adds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Times as many copies the whole amount.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "g1",
+        "g2",
+        "g3",
+        "dtimes"
+       ],
+       "at": "copies"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
