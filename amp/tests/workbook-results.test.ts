@@ -58,7 +58,6 @@ function memory() {
           hasAccess: async () => true,
           practiceSettings: async () => defaultPracticeSettings(),
           frontier: async () => simulated.frontier,
-          onSchoolRoster: async () => false,
           isAdult: async () => false,
           saveLevelDay: async () => undefined,
           skillEvidence: async () => simulated.evidence,

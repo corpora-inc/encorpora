@@ -152,6 +152,7 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_instances: "learner",
   amp_journey_actions: "none",
   amp_journey_generations: "account",
+  amp_learner_activity: "learner",
   amp_learner_weeks: "learner",
   amp_learners: "learner",
   amp_level_days: "learner",

@@ -579,6 +579,7 @@ export class FamilyRepository {
     for (const table of [
       "amp_active_days",
       "amp_adult_activity",
+      "amp_learner_activity",
       "amp_learner_weeks",
       "amp_level_days",
       "amp_skill_days",

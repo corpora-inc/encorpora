@@ -219,8 +219,9 @@ test("paper keeps a numeric answer box and exact full-weight grading", async () 
     saveAttempt: async (outcome: Outcome) => {
       attempts.push(outcome);
     },
-    onSchoolRoster: async () => false,
     isAdult: async () => false,
+    frontier: async () => ({}),
+    saveLevelDay: async () => {},
   } as unknown as LearnerTransaction;
   assert.deepEqual(
     (await resultRows(tx, record)).map((row) => row.entry),

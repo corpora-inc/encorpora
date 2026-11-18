@@ -24,10 +24,6 @@ import { Providers } from "./providers";
 import { router } from "./router";
 import "./styles";
 import { preloadMathFonts } from "./preload-math-fonts";
-import {
-  startAdultActivity,
-  startStudentActivity,
-} from "../lib/student-activity";
 import { changeSession } from "../lib/session-generation";
 import { authConfigOptions, queryClient, sessionOptions } from "../lib/query";
 import { fetchAuthConfig } from "../auth-config";
@@ -41,12 +37,20 @@ function start() {
   if (started) return;
   started = true;
   const { engagement } = startDocumentRuntime();
-  const studentActivity = startStudentActivity();
-  const adultActivity = startAdultActivity();
+  // Active time for a learner's record: its own chunk, started as soon as it
+  // loads (it reads the route itself), so the entry stays within its budget.
+  let activities: { navigate(path: string): void }[] = [];
+  void import("../lib/student-activity")
+    .then(({ startStudentActivity, startLearnerActivity }) => {
+      activities = [startStudentActivity(), startLearnerActivity()];
+    })
+    .catch((error: unknown) =>
+      console.error("Active time could not start", error),
+    );
   router.subscribe("onResolved", () => {
     engagement.navigate(router.state.location.pathname);
-    studentActivity.navigate(router.state.location.pathname);
-    adultActivity.navigate(router.state.location.pathname);
+    for (const activity of activities)
+      activity.navigate(router.state.location.pathname);
     trackGooglePage();
     if (screenOf(router.state.location.pathname) !== "pitch")
       preloadMathFonts();

@@ -63,8 +63,8 @@ const repository = {
     if (id !== learnerId) throw new ApiError(404, "Learner not found");
     return run({
       hasAccess: async () => true,
-      onSchoolRoster: async () => false,
       isAdult: async () => false,
+      saveLevelDay: async () => {},
       frontier: async () => simulated.frontier,
       skillEvidence: async () => simulated.evidence,
       recentAttempts: async () => simulated.attempts.slice(-12),

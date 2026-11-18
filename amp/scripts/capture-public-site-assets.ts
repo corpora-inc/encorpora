@@ -138,8 +138,8 @@ const repository = {
     assert.equal(id, learnerId, "Only the synthetic learner exists");
     return run({
       hasAccess: async () => true,
-      onSchoolRoster: async () => false,
       isAdult: async () => false,
+      saveLevelDay: async () => {},
       frontier: async () => simulated.frontier,
       skillEvidence: async () => simulated.evidence,
       recentAttempts: async () => simulated.attempts.slice(-12),

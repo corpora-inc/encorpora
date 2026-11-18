@@ -14,8 +14,11 @@ import {
   noteAttention,
   showHelpSurface,
   startActivity,
+  startLearnerActivity,
   startStudentActivity,
 } from "../student-activity";
+import { meKey, queryClient, sessionOptions } from "../query";
+import { selectLearner } from "../../learner-store";
 
 const fetchMock = vi.fn((_url: string, _init: RequestInit) =>
   Promise.resolve(new Response(null, { status: 204 })),
@@ -192,4 +195,104 @@ test("a refused heartbeat is logged with its reason", async () => {
     403,
     "request_origin_invalid",
   );
+});
+
+test("an account sends each chosen learner's time to that learner", async () => {
+  // A parent's device: two children, neither in a class, practice in turn
+  // under the parent's sign-in. Each one's time is theirs.
+  sessionStorage.clear();
+  localStorage.clear();
+  const account = "amp|parent-fixture";
+  queryClient.setQueryData(sessionOptions.queryKey, {
+    accountId: account,
+    token: "parent-token",
+  } as never);
+  queryClient.setQueryData(meKey(account), {
+    signedIn: true,
+    learners: [{ id: "child-a" }, { id: "child-b" }],
+  } as never);
+  selectLearner("child-a", account);
+  const activity = startLearnerActivity();
+  activity.navigate("/practice");
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(12_000);
+  // Choosing the other child sends the first one's time first.
+  selectLearner("child-b", account);
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(7_000);
+  // A learner the account doesn't practice as gets nothing.
+  selectLearner("someone-else", account);
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(5_000);
+  activity.stop();
+  const sent = fetchMock.mock.calls.map(([url, init]) => ({
+    url,
+    auth: (init.headers as Record<string, string>).Authorization,
+    ms: (JSON.parse(init.body as string).deltas as { activeMs: number }[])
+      .map((d) => d.activeMs)
+      .reduce((a, b) => a + b, 0),
+  }));
+  expect(sent).toEqual([
+    {
+      url: "/api/v1/learners/child-a/activity",
+      auth: "Bearer parent-token",
+      ms: 12_000,
+    },
+    {
+      url: "/api/v1/learners/child-b/activity",
+      auth: "Bearer parent-token",
+      ms: 7_000,
+    },
+  ]);
+  queryClient.clear();
+});
+
+test("a switch sends all of the first learner's time and help to them", async () => {
+  sessionStorage.clear();
+  localStorage.clear();
+  const account = "amp|parent-fixture";
+  queryClient.setQueryData(sessionOptions.queryKey, {
+    accountId: account,
+    token: "parent-token",
+  } as never);
+  queryClient.setQueryData(meKey(account), {
+    signedIn: true,
+    learners: [{ id: "child-a" }, { id: "child-b" }],
+  } as never);
+  selectLearner("child-a", account);
+  const activity = startLearnerActivity();
+  activity.navigate("/practice");
+  // More deltas and help than one heartbeat carries.
+  for (let i = 0; i < 14; i++) {
+    noteActiveProblem(`p${i}`);
+    window.dispatchEvent(new Event("pointerdown"));
+    noteHelp({ kind: "lesson", source: "lessons", ref: `t-${i}` });
+    await vi.advanceTimersByTimeAsync(1_000);
+  }
+  for (let i = 0; i < 10; i++)
+    noteHelp({ kind: "lesson", source: "lessons", ref: `u-${i}` });
+  selectLearner("child-b", account);
+  await vi.advanceTimersByTimeAsync(0);
+  const toA = fetchMock.mock.calls.filter(([url]) =>
+    String(url).includes("child-a"),
+  );
+  const bodiesA = toA.map(([, init]) => JSON.parse(init.body as string));
+  expect(bodiesA.flatMap((b) => b.deltas)).toHaveLength(14);
+  expect(bodiesA.flatMap((b) => b.events ?? [])).toHaveLength(24);
+  // Nothing of child A's waits for child B's heartbeat.
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(30_000);
+  activity.stop();
+  const toB = fetchMock.mock.calls
+    .filter(([url]) => String(url).includes("child-b"))
+    .map(([, init]) => JSON.parse(init.body as string));
+  expect(toB.flatMap((b) => b.events ?? [])).toHaveLength(0);
+  expect(
+    toB
+      .flatMap((b) => b.deltas)
+      .every(
+        (d: { problemId?: string }) => !d.problemId || d.problemId === "p13",
+      ),
+  ).toBe(true);
+  queryClient.clear();
 });
