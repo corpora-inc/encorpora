@@ -80,6 +80,7 @@ export const CASES = [
   ["work-proof", "two-column-congruence-proof"],
   ["work-diagram", "partial-products-by-place"],
   ["work-captions", "bracket-steps"],
+  ["work-derivation", "solve-justify-linear"],
   ["shape-composer", "compose-flat-shape"],
 ] as const;
 const SIZES: [number, number][] = [
@@ -112,6 +113,7 @@ const VERIFY = [
   "work-steps",
   "work-diagram",
   "work-captions",
+  "work-derivation",
   "shape-composer",
 ];
 const browsers =
@@ -248,6 +250,11 @@ async function mockApi(context: BrowserContext, templateId: string) {
       const problem = generateProblemFor(
         state.templateId,
         (problemIndex === 0 ? firstSeeds[state.templateId] : undefined) ??
+          // Fill-ins only: given lines and reasons beside typed ones, a
+          // fixed list of steps on every problem of the case.
+          (state.templateId === "solve-justify-linear"
+            ? `polish-solve-justify-linear-${[2, 9, 10][problemIndex % 3]}`
+            : undefined) ??
           `polish-${state.templateId}-${problemIndex}`,
         body.figureCapabilities ?? [],
       );
@@ -425,7 +432,11 @@ async function fill(page: Page, kind: string) {
         const input = inputs.nth(i);
         if (await input.inputValue()) continue;
         await input.scrollIntoViewIfNeeded();
-        await input.fill("1");
+        // An entry that takes a relation needs one to be complete.
+        const kind = await input.getAttribute("placeholder");
+        await input.fill(
+          kind === "Equation" ? "x=1" : kind === "Inequality" ? "x<1" : "1",
+        );
       }
       // Next walks the entries; on the last it closes the keypad.
       const next = page.locator('.work-keypad [data-key="next"]:visible');
@@ -767,7 +778,11 @@ async function runCase(
           return [{ captions, level }];
         }),
       );
-      if (label === "work-captions" || label === "work-steps")
+      if (
+        label === "work-captions" ||
+        label === "work-steps" ||
+        label === "work-derivation"
+      )
         assert.ok(named.length > 0, `${label}: a step of several fields`);
       for (const step of named) {
         assert.ok(
@@ -1014,7 +1029,13 @@ async function assertKeypadRoom(page: Page, where: string, dir: string) {
   const closed = await stageState(page);
   const first = page.locator(".problem-stage .work-input").first();
   if (!(await first.count())) return;
-  const box = (await first.boundingBox())!;
+  // The entry is its box and, for an expression, the typeset line under it:
+  // the keypad keeps both in view (StructuredWorkInput).
+  const box = (await first
+    .locator(
+      "xpath=ancestor::*[contains(concat(' ', @class, ' '), ' work-entry ')][1]",
+    )
+    .boundingBox())!;
   await first.tap();
   await page.locator(".work-keypad").waitFor();
   await settle(page);
