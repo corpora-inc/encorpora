@@ -1,0 +1,2458 @@
+{
+ "id": "like-fraction-sum-story--sl",
+ "title": "Adding and subtracting like fractions",
+ "teaches": [
+  "like-fraction-difference",
+  "like-fraction-missing-part",
+  "fraction-decompositions-select",
+  "fraction-benchmark-reasonable"
+ ],
+ "skill": "like-fraction-addition",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     1.4,
+     10,
+     5.0
+    ],
+    "points": {
+     "A": [
+      0.5,
+      3.6
+     ],
+     "u1": [
+      1.0625,
+      3.6
+     ],
+     "p2": [
+      1.625,
+      3.6
+     ],
+     "p3": [
+      4.4375,
+      3.6
+     ],
+     "c1": [
+      1.0625,
+      3.0
+     ],
+     "c2": [
+      2.1875,
+      3.0
+     ],
+     "c3": [
+      3.3125,
+      3.0
+     ],
+     "c4": [
+      4.4375,
+      3.0
+     ],
+     "c5": [
+      5.5625,
+      3.0
+     ],
+     "D0": [
+      0.5,
+      2.4
+     ],
+     "D5": [
+      6.125,
+      2.4
+     ],
+     "G": [
+      2.75,
+      3.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "b8",
+      "bar": "A",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 8,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "blu",
+      "bar": "A",
+      "w": 2.25,
+      "h": 1.2,
+      "divisions": 2,
+      "ink": "blue",
+      "title": ""
+     },
+     {
+      "id": "grn",
+      "bar": "G",
+      "w": 3.375,
+      "h": 1.2,
+      "divisions": 3,
+      "ink": "accent",
+      "title": ""
+     },
+     {
+      "id": "l18",
+      "label": "\\frac18",
+      "at": "u1",
+      "dir": "n",
+      "size": "xl"
+     },
+     {
+      "id": "l28",
+      "label": "\\frac28",
+      "at": "p2",
+      "dir": "n",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "l38",
+      "label": "\\frac38",
+      "at": "p3",
+      "dir": "n",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "c1",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "group": "counts"
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "c2",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "group": "counts"
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "c3",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "group": "counts"
+     },
+     {
+      "id": "n4",
+      "label": "4",
+      "at": "c4",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "group": "counts"
+     },
+     {
+      "id": "n5",
+      "label": "5",
+      "at": "c5",
+      "dir": "c",
+      "size": "l",
+      "halo": true,
+      "group": "counts"
+     },
+     {
+      "id": "span",
+      "dim": [
+       "D0",
+       "D5"
+      ],
+      "side": "s",
+      "tex": "5\\text{ eighths}",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a problem. Two eighths plus three eighths.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Adding like fractions"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac28+\\frac38=\\;?$",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Easy! Add the tops, add the bottoms. Five sixteenths!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac{2+3}{8+8}",
+       "id": "slip",
+       "fresh": true,
+       "at": "tops"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac{5}{16}",
+       "id": "wrong",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Hmm. Let us see what kind of pieces we really have. This bar is one whole, cut into eight equal pieces. Each piece is one eighth.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b8",
+       "at": "bar",
+       "until": "Each"
+      },
+      {
+       "do": "show",
+       "target": "l18",
+       "at": "Each"
+      },
+      {
+       "do": "show",
+       "target": "b8.unit",
+       "at": "Each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two eighths is two of those pieces. Color them blue.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "l18",
+       "at": "Two"
+      },
+      {
+       "do": "hide",
+       "target": "b8.unit",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "l28",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "blu",
+       "at": "Color"
+      },
+      {
+       "do": "shade",
+       "target": "blu",
+       "to": 1,
+       "at": "Color"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And three eighths is three more pieces. Green, right beside them.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "l38",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "grn",
+       "at": "Green"
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 1,
+       "at": "Green"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now count the pieces. One, two, three, four, five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "n3",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "n4",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "n5",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five pieces. And how big is each piece? Still an eighth. Five eighths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "blu",
+        "grn"
+       ],
+       "at": "big",
+       "until": "Still"
+      },
+      {
+       "do": "show",
+       "target": "span",
+       "at": "Five",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac58",
+       "fresh": true,
+       "at": "Five",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We counted how many. We never changed how big.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b8",
+       "at": "big"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0,
+     10,
+     5.4
+    ],
+    "points": {
+     "pa": [
+      0.8,
+      4.6
+     ],
+     "pb": [
+      0.8,
+      1.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "A",
+      "things": "apple",
+      "n": 2,
+      "at": "pa",
+      "slots": 5,
+      "size": 1.6,
+      "count": true
+     },
+     {
+      "id": "B",
+      "things": "apple",
+      "n": 3,
+      "at": "pb",
+      "size": 1.6
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "It is just like two apples and three apples.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Count the things"
+      },
+      {
+       "do": "text",
+       "text": "2 apples and 3 apples",
+       "at": "apples"
+      },
+      {
+       "do": "arrive",
+       "target": "A",
+       "at": "two"
+      },
+      {
+       "do": "arrive",
+       "target": "B",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Put them together and count. One, two, three, four, five apples!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "send",
+       "target": "B",
+       "to": "A",
+       "at": "Put"
+      },
+      {
+       "do": "count",
+       "target": "A",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two apples plus three apples is five apples. Eighths work the same way. Two eighths plus three eighths is five eighths.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\footnotesize 2\\text{ apples}+3\\text{ apples}=5\\text{ apples}",
+       "fresh": true,
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "\\footnotesize 2\\text{ eighths}+3\\text{ eighths}=5\\text{ eighths}",
+       "at": "Eighths"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -0.3,
+     10,
+     5.5
+    ],
+    "points": {
+     "A": [
+      0.5,
+      4.4
+     ],
+     "C": [
+      0.5,
+      1.0
+     ],
+     "p2": [
+      1.625,
+      4.4
+     ],
+     "p3": [
+      4.4375,
+      4.4
+     ],
+     "r8": [
+      5.0,
+      5.75
+     ],
+     "r16": [
+      1.906,
+      -0.2
+     ],
+     "Ga": [
+      2.75,
+      3.05
+     ],
+     "Gb": [
+      6.125,
+      3.05
+     ],
+     "Gc": [
+      6.125,
+      1.85
+     ],
+     "Gd": [
+      2.75,
+      1.85
+     ],
+     "Gm": [
+      4.4375,
+      2.45
+     ],
+     "G": [
+      2.75,
+      4.4
+     ],
+     "H1": [
+      3.3125,
+      1.0
+     ],
+     "H2": [
+      3.3125,
+      2.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "b8",
+      "bar": "A",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 8,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "blu",
+      "bar": "A",
+      "w": 2.25,
+      "h": 1.2,
+      "divisions": 2,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "grn",
+      "bar": "G",
+      "w": 3.375,
+      "h": 1.2,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "l28",
+      "label": "\\frac28",
+      "at": "p2",
+      "dir": "n",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "l38",
+      "label": "\\frac38",
+      "at": "p3",
+      "dir": "n",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "e8",
+      "label": "=\\frac58",
+      "at": "r8",
+      "dir": "e",
+      "size": "l"
+     },
+     {
+      "id": "b16",
+      "bar": "C",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 16,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "s16",
+      "bar": "C",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 16,
+      "ink": "warm",
+      "title": ""
+     },
+     {
+      "id": "e16",
+      "label": "\\frac{5}{16}",
+      "at": "r16",
+      "dir": "s",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "gcopy",
+      "poly": [
+       "Ga",
+       "Gb",
+       "Gc",
+       "Gd"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "glab",
+      "label": "\\frac38",
+      "at": "Gm",
+      "dir": "c",
+      "size": "s",
+      "ink": "accent"
+     },
+     {
+      "id": "guide",
+      "seg": [
+       "H1",
+       "H2"
+      ],
+      "ink": "warm",
+      "w": 4,
+      "dash": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is two eighths plus three eighths again. Five eighths, drawn as it really is.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Is five sixteenths sensible?"
+      },
+      {
+       "do": "shade",
+       "target": "blu",
+       "to": 1,
+       "at": "Here"
+      },
+      {
+       "do": "show",
+       "target": "l28",
+       "at": "two"
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 1,
+       "at": "plus"
+      },
+      {
+       "do": "show",
+       "target": "l38",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "e8",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac58",
+       "fresh": true,
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now let us draw the answer from before, five sixteenths, honestly. One whole, exactly the same length, cut into sixteen equal pieces.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "b16",
+       "at": "draw"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b8",
+        "b16"
+       ],
+       "at": "same",
+       "until": "cut"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Shade five of the little pieces.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "s16",
+       "to": 0.3125,
+       "at": "Shade"
+      },
+      {
+       "do": "show",
+       "target": "s16",
+       "at": "Shade"
+      },
+      {
+       "do": "show",
+       "target": "e16",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Wait. That bar is short! Is it shorter than the green part all by itself?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "s16",
+       "at": "short",
+       "until": "Is",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "grn",
+       "at": "green"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let us find out. Slide the green three eighths down and lay it over the bottom bar.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "gcopy",
+        "glab"
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "gcopy",
+        "glab"
+       ],
+       "by": [
+        -2.25,
+        -0.6
+       ],
+       "at": "down",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "guide",
+       "at": "lay"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three eighths alone sticks out past the end of five sixteenths. The answer is smaller than one of the things we added.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gcopy",
+        "glab"
+       ],
+       "at": "sticks",
+       "until": "answer"
+      },
+      {
+       "do": "highlight",
+       "target": "guide",
+       "at": "end",
+       "until": "answer"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We put two pieces together, and got less than one of them alone. That cannot be right. Two pieces together are more than either piece.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac{5}{16}",
+       "id": "wrong",
+       "fresh": true,
+       "at": "put"
+      },
+      {
+       "do": "highlight",
+       "target": "s16",
+       "at": "less",
+       "until": "That"
+      },
+      {
+       "do": "strike",
+       "target": "wrong",
+       "at": "cannot"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "blu",
+        "grn"
+       ],
+       "at": "Two",
+       "nth": 2,
+       "until": "either"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What went wrong? Adding the bottoms made new, smaller pieces. But the pieces were eighths. Adding does not change them.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b16",
+       "at": "new",
+       "until": "But"
+      },
+      {
+       "do": "highlight",
+       "target": "b8",
+       "at": "eighths",
+       "until": "Adding",
+       "untilNth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The bottom number is the name of the piece. It stays. Only the count changes: two plus three is five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "gcopy",
+        "glab",
+        "guide",
+        "s16",
+        "b16",
+        "e16"
+       ],
+       "at": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "b8",
+       "at": "name",
+       "until": "Only"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "blu",
+        "grn"
+       ],
+       "at": "count"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac{2+3}{8}",
+       "fresh": true,
+       "at": "two"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac58",
+       "at": "five"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -0.3,
+     10,
+     5.5
+    ],
+    "points": {
+     "A": [
+      0.5,
+      4.4
+     ],
+     "C": [
+      0.5,
+      2.2
+     ],
+     "u7": [
+      4.4375,
+      4.4
+     ],
+     "k4": [
+      2.75,
+      1.05
+     ],
+     "x1": [
+      6.3,
+      4.4
+     ],
+     "E": [
+      5.0,
+      4.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "t8",
+      "bar": "A",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 8,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "tb",
+      "bar": "A",
+      "w": 4.5,
+      "h": 1.2,
+      "divisions": 4,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "tc",
+      "bar": "E",
+      "w": 3.375,
+      "h": 1.2,
+      "divisions": 3,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "tw",
+      "bar": "E",
+      "w": 3.375,
+      "h": 1.2,
+      "divisions": 3,
+      "ink": "warm",
+      "title": ""
+     },
+     {
+      "id": "l78",
+      "label": "\\frac78",
+      "at": "u7",
+      "dir": "n",
+      "size": "xl"
+     },
+     {
+      "id": "b8",
+      "bar": "C",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 8,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "bb",
+      "bar": "C",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 8,
+      "ink": "blue",
+      "title": ""
+     },
+     {
+      "id": "l38",
+      "label": "-\\frac38",
+      "at": "x1",
+      "dir": "n",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "l48",
+      "label": "\\frac48",
+      "at": "k4",
+      "dir": "s",
+      "size": "xl",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Taking away works the same way. Seven eighths minus three eighths.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Taking away"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac78-\\frac38=\\;?$",
+       "at": "Seven"
+      },
+      {
+       "do": "shade",
+       "target": "tb",
+       "to": 1,
+       "at": "Seven"
+      },
+      {
+       "do": "shade",
+       "target": "tc",
+       "to": 1,
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "l78",
+       "at": "Seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with seven pieces. Three of them leave.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "tw",
+       "at": "leave",
+       "dur": 0.5
+      },
+      {
+       "do": "shade",
+       "target": "tw",
+       "to": 1,
+       "at": "leave",
+       "dur": 0.01
+      },
+      {
+       "do": "show",
+       "target": "l38",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look at the bar underneath: what is left? Four pieces. And each one is still an eighth.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "b8",
+       "at": "Look"
+      },
+      {
+       "do": "show",
+       "target": "bb",
+       "at": "Four"
+      },
+      {
+       "do": "shade",
+       "target": "bb",
+       "to": 0.5,
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "l48",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac78-\\frac38=\\frac48",
+       "fresh": true,
+       "at": "still"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven minus three is four. Four eighths. And that is one half!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\frac48=\\frac12",
+       "at": "half"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     0.6,
+     10,
+     5.4
+    ],
+    "points": {
+     "A": [
+      0.5,
+      3.8
+     ],
+     "p3": [
+      1.85,
+      3.8
+     ],
+     "q6": [
+      5.9,
+      3.8
+     ],
+     "D0": [
+      0.5,
+      2.6
+     ],
+     "D9": [
+      8.6,
+      2.6
+     ],
+     "G": [
+      3.2,
+      3.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "b10",
+      "bar": "A",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 10,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "blu",
+      "bar": "A",
+      "w": 2.7,
+      "h": 1.2,
+      "divisions": 3,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "grn",
+      "bar": "G",
+      "w": 5.4,
+      "h": 1.2,
+      "divisions": 6,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "l3",
+      "label": "\\frac{3}{10}",
+      "at": "p3",
+      "dir": "n",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "lq",
+      "label": "\\frac{?}{10}",
+      "at": "q6",
+      "dir": "n",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "l9",
+      "dim": [
+       "D0",
+       "D9"
+      ],
+      "side": "s",
+      "tex": "\\frac{9}{10}\\text{ in all}",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Sometimes a part is missing. Three tenths plus how many tenths makes nine tenths?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A missing part"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac{3}{10}+\\frac{?}{10}=\\frac{9}{10}$",
+       "at": "Three"
+      },
+      {
+       "do": "shade",
+       "target": "blu",
+       "to": 1,
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "lq",
+       "at": "how"
+      },
+      {
+       "do": "show",
+       "target": "l9",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The pieces are all tenths, so I just count the pieces I still need. Four, five, six, seven, eight, nine.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b10",
+       "at": "tenths",
+       "until": "so"
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 0.1667,
+       "at": "Four",
+       "dur": 0.4
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 0.3333,
+       "at": "five",
+       "dur": 0.4
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 0.5,
+       "at": "six",
+       "dur": 0.4
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 0.6667,
+       "at": "seven",
+       "dur": 0.4
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 0.8333,
+       "at": "eight",
+       "dur": 0.4
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 1.0,
+       "at": "nine",
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "From four up to nine is six more pieces. Or take away: nine tenths minus three tenths is six tenths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "grn",
+       "at": "six",
+       "until": "Or"
+      },
+      {
+       "do": "write",
+       "tex": "9-3=6",
+       "fresh": true,
+       "at": "take"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac{3}{10}+\\frac{6}{10}=\\frac{9}{10}",
+       "at": "six",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -0.2,
+     10,
+     5.8
+    ],
+    "points": {
+     "A": [
+      0.5,
+      5.2
+     ],
+     "B": [
+      0.5,
+      3.6
+     ],
+     "C": [
+      0.5,
+      2.0
+     ],
+     "B2": [
+      3.5,
+      3.6
+     ],
+     "C2": [
+      6.5,
+      2.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "a6",
+      "bar": "A",
+      "w": 9,
+      "h": 1.1,
+      "divisions": 6,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "ab",
+      "bar": "A",
+      "w": 9,
+      "h": 1.1,
+      "divisions": 6,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "b6",
+      "bar": "B",
+      "w": 9,
+      "h": 1.1,
+      "divisions": 6,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "bb",
+      "bar": "B",
+      "w": 3.0,
+      "h": 1.1,
+      "divisions": 2,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "bg",
+      "bar": "B2",
+      "w": 4.5,
+      "h": 1.1,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "c6",
+      "bar": "C",
+      "w": 9,
+      "h": 1.1,
+      "divisions": 6,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "cb",
+      "bar": "C",
+      "w": 6.0,
+      "h": 1.1,
+      "divisions": 4,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "cg",
+      "bar": "C2",
+      "w": 1.5,
+      "h": 1.1,
+      "divisions": 1,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One amount can be built in many ways. Take five sixths: five pieces, each one sixth.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One amount, many sums"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac56=\\frac16+\\frac16+\\frac16+\\frac16+\\frac16",
+       "fresh": true,
+       "at": "amount"
+      },
+      {
+       "do": "shade",
+       "target": "ab",
+       "to": 0.8333,
+       "at": "five",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or cut the five pieces into two groups. Two sixths, and three sixths.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "bb",
+       "to": 1,
+       "at": "Two"
+      },
+      {
+       "do": "shade",
+       "target": "bg",
+       "from": 0,
+       "to": 1,
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac56=\\frac26+\\frac36",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Or four sixths and one sixth!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "cb",
+       "to": 1,
+       "at": "four"
+      },
+      {
+       "do": "shade",
+       "target": "cg",
+       "from": 0,
+       "to": 1,
+       "at": "one"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac56=\\frac46+\\frac16",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three different sums. Look: every bar ends in the same place. The pieces are regrouped, but the amount never moves.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "ab",
+        "bg",
+        "cg"
+       ],
+       "at": "same",
+       "until": "pieces"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ab",
+        "bb",
+        "bg",
+        "cb",
+        "cg"
+       ],
+       "at": "regrouped"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -0.2,
+     10,
+     6.0
+    ],
+    "points": {
+     "A": [
+      0.5,
+      5.4
+     ],
+     "B": [
+      0.5,
+      3.9
+     ],
+     "C": [
+      0.5,
+      2.1
+     ],
+     "D": [
+      5.3,
+      2.1
+     ],
+     "t1": [
+      4.9,
+      4.95
+     ],
+     "t2": [
+      4.9,
+      3.45
+     ],
+     "Cg": [
+      3.65,
+      2.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "r1",
+      "bar": "A",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "r1b",
+      "bar": "A",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "r2",
+      "bar": "B",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "r2g",
+      "bar": "B",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "accent",
+      "title": ""
+     },
+     {
+      "id": "go",
+      "label": "\\text{to the park}",
+      "at": "t1",
+      "dir": "e",
+      "size": "m"
+     },
+     {
+      "id": "back",
+      "label": "\\text{and back}",
+      "at": "t2",
+      "dir": "e",
+      "size": "m"
+     },
+     {
+      "id": "m1",
+      "bar": "C",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "m1b",
+      "bar": "C",
+      "w": 3.15,
+      "h": 0.9,
+      "divisions": 3,
+      "ink": "blue",
+      "title": ""
+     },
+     {
+      "id": "m1g",
+      "bar": "Cg",
+      "w": 1.05,
+      "h": 0.9,
+      "divisions": 1,
+      "ink": "accent",
+      "title": ""
+     },
+     {
+      "id": "m2",
+      "bar": "D",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "m2g",
+      "bar": "D",
+      "w": 4.2,
+      "h": 0.9,
+      "divisions": 4,
+      "ink": "accent",
+      "title": ""
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now a story. Mia walks three fourths of a mile to the park, and three fourths of a mile back. How far is that in all?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A story past one whole"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac34+\\frac34\\text{ miles}$",
+       "at": "Mia"
+      },
+      {
+       "do": "shade",
+       "target": "r1b",
+       "to": 0.75,
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "go",
+       "at": "park"
+      },
+      {
+       "do": "show",
+       "target": [
+        "r2",
+        "r2g",
+        "back"
+       ],
+       "at": "three",
+       "nth": 2
+      },
+      {
+       "do": "shade",
+       "target": "r2g",
+       "to": 0.75,
+       "at": "fourths",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Both are fourths, so I add the counts. Three plus three is six. Six fourths!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "r1b",
+        "r2g"
+       ],
+       "at": "counts"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac34+\\frac34=\\frac64",
+       "fresh": true,
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six fourths is more than one mile. A whole mile is four fourths. Fill up one whole mile first.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "m1",
+        "m1b",
+        "m1g"
+       ],
+       "at": "whole"
+      },
+      {
+       "do": "shade",
+       "target": "m1b",
+       "to": 1,
+       "at": "Fill"
+      },
+      {
+       "do": "shade",
+       "target": "m1g",
+       "from": 0,
+       "to": 1,
+       "at": "first"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac64=\\frac44+\\frac24",
+       "fresh": true,
+       "at": "Fill"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four of the fourths make one whole mile. Two fourths are left over.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "m1b",
+        "m1g"
+       ],
+       "at": "make",
+       "until": "Two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "m2",
+        "m2g"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "shade",
+       "target": "m2g",
+       "to": 0.5,
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One mile and two fourths. That is one and a half miles. And six fourths is also three halves.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "m1b",
+        "m1g"
+       ],
+       "at": "One",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "m2g",
+       "at": "two",
+       "until": "That"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "m1b",
+        "m1g",
+        "m2g"
+       ],
+       "at": "one",
+       "nth": 2,
+       "until": "six"
+      },
+      {
+       "do": "answer",
+       "tex": "1\\tfrac24=\\tfrac64=\\tfrac32\\text{ miles}",
+       "at": "One"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.2,
+     10,
+     9.0
+    ],
+    "points": {
+     "A": [
+      0.5,
+      6.5
+     ],
+     "B": [
+      0.5,
+      4.6
+     ],
+     "C": [
+      0.5,
+      2.7
+     ],
+     "D": [
+      0.5,
+      0.8
+     ],
+     "h1": [
+      5.0,
+      6.5
+     ],
+     "h2": [
+      5.0,
+      -0.6
+     ],
+     "a1": [
+      2.1875,
+      5.8
+     ],
+     "b1": [
+      2.1875,
+      3.9
+     ],
+     "c1": [
+      4.4375,
+      2.0
+     ],
+     "d1": [
+      2.46875,
+      0.1
+     ],
+     "Cg": [
+      3.875,
+      2.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "a8",
+      "bar": "A",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 8,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "ab",
+      "bar": "A",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 8,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "b8",
+      "bar": "B",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 8,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "bg",
+      "bar": "B",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 8,
+      "ink": "accent",
+      "title": ""
+     },
+     {
+      "id": "c8",
+      "bar": "C",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 8,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "cb",
+      "bar": "C",
+      "w": 3.375,
+      "h": 1.4,
+      "divisions": 3,
+      "ink": "blue",
+      "title": ""
+     },
+     {
+      "id": "cg",
+      "bar": "Cg",
+      "w": 4.5,
+      "h": 1.4,
+      "divisions": 4,
+      "ink": "accent",
+      "title": ""
+     },
+     {
+      "id": "d16",
+      "bar": "D",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 16,
+      "ink": "ink",
+      "title": ""
+     },
+     {
+      "id": "dw",
+      "bar": "D",
+      "w": 9,
+      "h": 1.4,
+      "divisions": 16,
+      "ink": "warm",
+      "title": ""
+     },
+     {
+      "id": "half",
+      "seg": [
+       "h1",
+       "h2"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "hlab",
+      "label": "\\frac12",
+      "at": "h1",
+      "dir": "n",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "la",
+      "label": "\\frac38",
+      "at": "a1",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     },
+     {
+      "id": "lb",
+      "label": "\\frac48",
+      "at": "b1",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     },
+     {
+      "id": "lc",
+      "label": "\\frac78",
+      "at": "c1",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     },
+     {
+      "id": "ld",
+      "label": "\\frac{7}{16}",
+      "at": "d1",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One more tool: ask whether an answer is sensible. Try three eighths plus four eighths.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Is the answer sensible?"
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac38+\\frac48=\\;?$",
+       "at": "tool"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three eighths is a little less than one half. Four eighths is exactly one half.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "shade",
+       "target": "ab",
+       "to": 0.375,
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "la",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "half",
+        "hlab"
+       ],
+       "at": "half"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b8",
+        "bg"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "shade",
+       "target": "bg",
+       "to": 0.5,
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "lb",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So together they must be a little less than one whole. Seven eighths fits.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "c8",
+        "cb",
+        "cg"
+       ],
+       "at": "together"
+      },
+      {
+       "do": "shade",
+       "target": "cb",
+       "to": 1,
+       "at": "together"
+      },
+      {
+       "do": "shade",
+       "target": "cg",
+       "from": 0,
+       "to": 1,
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "lc",
+       "at": "Seven"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac38+\\frac48=\\frac78",
+       "fresh": true,
+       "at": "Seven"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And seven sixteenths? That is the add the bottoms answer.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "d16",
+        "dw"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "shade",
+       "target": "dw",
+       "to": 0.4375,
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "ld",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven sixteenths does not even reach one half, but four eighths alone is one half. Seven sixteenths cannot be right.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "dw",
+        "half"
+       ],
+       "at": "reach",
+       "until": "but"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bg",
+        "half"
+       ],
+       "at": "four",
+       "until": "Seven",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "dw",
+       "at": "Seven",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\tfrac{7}{16}<\\tfrac12\\;\\text{ so no}",
+       "fresh": true,
+       "at": "cannot"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1.4,
+     10,
+     5.0
+    ],
+    "points": {
+     "A": [
+      0.5,
+      3.6
+     ],
+     "p2": [
+      1.625,
+      3.6
+     ],
+     "p3": [
+      4.4375,
+      3.6
+     ],
+     "D0": [
+      0.5,
+      2.4
+     ],
+     "D5": [
+      6.125,
+      2.4
+     ],
+     "G": [
+      2.75,
+      3.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "b8",
+      "bar": "A",
+      "w": 9,
+      "h": 1.2,
+      "divisions": 8,
+      "ink": "ink",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "blu",
+      "bar": "A",
+      "w": 2.25,
+      "h": 1.2,
+      "divisions": 2,
+      "ink": "blue",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "grn",
+      "bar": "G",
+      "w": 3.375,
+      "h": 1.2,
+      "divisions": 3,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "l28",
+      "label": "\\frac28",
+      "at": "p2",
+      "dir": "n",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "l38",
+      "label": "\\frac38",
+      "at": "p3",
+      "dir": "n",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "span",
+      "dim": [
+       "D0",
+       "D5"
+      ],
+      "side": "s",
+      "tex": "\\displaystyle\\frac58",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back to where we began. Two eighths in blue, three eighths in green.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Count the pieces. The size stays."
+      },
+      {
+       "do": "problem",
+       "text": "$\\frac28+\\frac38=\\;?$",
+       "at": "Two"
+      },
+      {
+       "do": "shade",
+       "target": "blu",
+       "to": 1,
+       "at": "blue"
+      },
+      {
+       "do": "show",
+       "target": "l28",
+       "at": "Two"
+      },
+      {
+       "do": "shade",
+       "target": "grn",
+       "from": 0,
+       "to": 1,
+       "at": "green"
+      },
+      {
+       "do": "show",
+       "target": "l38",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Five pieces, and every piece is an eighth. Five eighths!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "span",
+       "at": "Five",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\frac28+\\frac38=\\frac58",
+       "fresh": true,
+       "at": "Five",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same size pieces: add how many. The size stays.",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "blu",
+        "grn"
+       ],
+       "at": "size"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac58",
+       "at": "stays"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
