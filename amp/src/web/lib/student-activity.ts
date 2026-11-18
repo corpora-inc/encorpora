@@ -124,8 +124,9 @@ function chosenLearner(
 /** A learner's time on an account: practice, lessons, help and the map,
  * while that learner is the one chosen. The family's screens, a school's and
  * a record are not practice. Choosing another learner first sends the time
- * so far to the one it was counted for. (The native app practices offline
- * and keeps its time on the device.) */
+ * so far to the one it was counted for. The native app sends its answers
+ * through its own session, which has no activity route yet, so its time is
+ * not counted. */
 export function startLearnerActivity(): Activity {
   if (isStudentDevice() || nativeRuntime) return idle;
   const activity = startActivity(
