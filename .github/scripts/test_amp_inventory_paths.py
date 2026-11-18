@@ -96,7 +96,8 @@ def test_deep_checks_are_separate_from_release_gate():
                           ('amp-build', 'npm run build')):
         assert command in [s.get('run', '') for s in ci['jobs'][lane]['steps']]
     assert set(deep['jobs']['report']['needs']) == {
-        'changes', 'amp-browser', 'amp-ui-sweep', 'amp-ui-coverage', 'amp-content'}
+        'changes', 'amp-browser', 'amp-native-session', 'amp-ui-sweep',
+        'amp-ui-coverage', 'amp-content'}
     content = str(deep['jobs']['amp-content-checks']['steps'])
     for command in ('npm run audit', 'npm run review:math', 'npm run test:inventory',
                     'npm run test:placement-sim'):
