@@ -10,7 +10,7 @@
  */
 import type { Script } from "./schema";
 import { respellingKey, voiceText } from "./letters";
-import { isRoleKind, NARRATOR_ID, VOICES, voicesFor, type RoleKind, type VoiceSpec } from "./voices";
+import { isRoleKind, NARRATOR_ID, VOICES, voicesFor, type RoleKind, type VoiceProvider, type VoiceSpec } from "./voices";
 
 export { NARRATOR_ID };
 export const MODEL = "eleven_v4";
@@ -26,7 +26,8 @@ export const APPROVED: Record<string, { short: string; name: string; roles: Role
     ...(voice.tag ? { tag: voice.tag } : {}),
   }]));
 
-export type Voice = { id: string; tag?: string };
+/** `spark` names the service model and voice of a house voice; ElevenLabs voices have none. */
+export type Voice = { id: string; tag?: string; spark?: { model: string; voice: string } };
 /** `role` is the speaker key. `kind` is teacher, learner, narrator, or a later kind. `voice` is absent when no distinct approved voice is left. */
 export type Role = { role: string; kind: RoleKind; name: string; voice?: Voice };
 export type Cast = { roles: Role[]; named: boolean };
@@ -40,24 +41,29 @@ export function approvedVoice(v: string, where: string, registry: readonly Voice
   throw new Error(`${where}: "${v}" is not an approved voice. Use one of: ${registry.map((voice) => `${voice.short} (${voice.id})`).join(", ")}.`);
 }
 
-/** FNV-1a over the film ID gives a stable choice independent of catalog order. */
-export function defaultVoice(kind: RoleKind, filmId: string, registry: readonly VoiceSpec[] = VOICES): string {
-  if (kind === "narrator") return NARRATOR_ID;
-  const eligible = voicesFor(kind, registry);
+/**
+ * FNV-1a over the film ID gives a stable choice independent of catalog order.
+ * Defaults come from one provider's voices (ElevenLabs unless asked), so adding
+ * house voices changes no existing film's default.
+ */
+export function defaultVoice(kind: RoleKind, filmId: string, registry: readonly VoiceSpec[] = VOICES, provider: VoiceProvider = "elevenlabs"): string {
+  if (kind === "narrator" && provider === "elevenlabs") return NARRATOR_ID;
+  const eligible = voicesFor(kind, registry, provider);
   if (!eligible.length) throw new Error(`No approved voices for ${kind}`);
   // The first learner voice stays Champ, so a one-learner film is unchanged
   // when another learner voice is added. Teachers are balanced across films.
   if (kind !== "teacher") return eligible[0]!.id;
+  // Hashed over this provider's teachers, so a provider's default never depends on another's list.
   let hash = 2166136261;
   for (const char of filmId) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
   return eligible[hash % eligible.length]!.id;
 }
 
 /** The next eligible voice for this kind that this film has not used yet, or none. */
-function distinctVoice(kind: RoleKind, filmId: string, used: ReadonlySet<string>, registry: readonly VoiceSpec[]): string | undefined {
-  const eligible = voicesFor(kind, registry);
+function distinctVoice(kind: RoleKind, filmId: string, used: ReadonlySet<string>, registry: readonly VoiceSpec[], provider: VoiceProvider): string | undefined {
+  const eligible = voicesFor(kind, registry, provider);
   if (!eligible.length) return undefined;
-  const preferred = defaultVoice(kind, filmId, registry);
+  const preferred = defaultVoice(kind, filmId, registry, provider);
   const start = Math.max(0, eligible.findIndex((voice) => voice.id === preferred));
   for (let i = 0; i < eligible.length; i++) {
     const id = eligible[(start + i) % eligible.length]!.id;
@@ -82,22 +88,24 @@ function speakersOf(script: Pick<Script, "cast">): SpeakerDecl[] {
  * The speakers of a script, in cast order, each with its voice.
  * `overrides` (speaker key → voice id or short name) re-voice this run.
  * `registry` defaults to the approved voices. A test passes its own list.
+ * `provider` chooses whose voices fill the speakers no override names.
  * A script without a cast has the single speaker `narrator`.
  * A speaker with no distinct voice left is unbound. Voicing rejects that. A dry check does not.
  */
-export function resolveCast(script: Pick<Script, "id" | "cast" | "shots">, overrides: Record<string, string> = {}, registry: readonly VoiceSpec[] = VOICES): Cast {
+export function resolveCast(script: Pick<Script, "id" | "cast" | "shots">, overrides: Record<string, string> = {}, registry: readonly VoiceSpec[] = VOICES, provider: VoiceProvider = "elevenlabs"): Cast {
   const speakers = speakersOf(script);
   const used = new Set<string>();
   const roles: Role[] = speakers.map((speaker) => {
     const requested = overrides[speaker.key];
-    const id = requested ? approvedVoice(requested, `cast.${speaker.key}`, registry) : distinctVoice(speaker.kind, script.id, used, registry);
+    const id = requested ? approvedVoice(requested, `cast.${speaker.key}`, registry) : distinctVoice(speaker.kind, script.id, used, registry, provider);
     if (!id) return { role: speaker.key, kind: speaker.kind, name: speaker.key };
     const spec = registry.find((voice) => voice.id === id);
     if (!spec) throw new Error(`cast.${speaker.key}: missing voice`);
     if (!spec.kinds.includes(speaker.kind)) throw new Error(`${spec.name} is not approved for the ${speaker.kind} role`);
     if (used.has(id)) throw new Error(`${spec.name} is already assigned to another speaker`);
     used.add(id);
-    return { role: speaker.key, kind: speaker.kind, name: spec.name, voice: { id, ...(spec.tag ? { tag: spec.tag } : {}) } };
+    const spark = spec.provider === "spark" ? { spark: { model: spec.model!, voice: spec.short } } : {};
+    return { role: speaker.key, kind: speaker.kind, name: spec.name, voice: { id, ...(spec.tag ? { tag: spec.tag } : {}), ...spark } };
   });
   for (const key of Object.keys(overrides)) {
     if (!speakers.some((speaker) => speaker.key === key))
@@ -169,7 +177,8 @@ export const spokenText = (voice: Voice, text: string) => (voice.tag ? `${voice.
  * itself is in voice.ts: this module also runs in the browser.)
  */
 export function takeKeyParts(voice: Voice, text: string): unknown[] {
-  const parts: unknown[] = [voice.id, MODEL, text];
+  // A house take is keyed by provider, model and voice; the try's seed is in its file name (voice.ts).
+  const parts: unknown[] = voice.spark ? ["spark", voice.spark.model, voice.id, text] : [voice.id, MODEL, text];
   if (voice.tag) parts.push(voice.tag);
   const respelled = respellingKey(text);
   if (respelled) parts.push(respelled);

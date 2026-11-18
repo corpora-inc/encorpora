@@ -139,3 +139,25 @@ test("adding, changing, or removing routing needs no new export and preserves me
     expect(published).not.toHaveProperty("teaches");
   }
 });
+
+test("a house-voice edition publishes like any other, and names its teacher", () => {
+  const id = `${own}--house`;
+  const script = {
+    id,
+    title: "Solve an equation",
+    cast: { teacher: {}, learner: {} },
+    shots: [{ beats: [{ say: "Find the missing number." }, { speaker: "learner", say: "Seven!" }] }],
+  };
+  const exported = (voices: Record<string, string>) => ({
+    id,
+    title: script.title,
+    problemType: own,
+    script,
+    timing: { duration: 4, voices, shots: [[{ start: 0, end: 2, words: [] }, { start: 2.5, end: 3, words: [] }]] },
+  });
+  const house = planFilm(id, exported({ teacher: "house-rowan", learner: "house-pip" }), script, audio, knownTypes);
+  expect(house.film.teacher).toBe("Rowan");
+  expect(house.film.editions[0]!.voices).toEqual({ teacher: "house-rowan", learner: "house-pip" });
+  expect(filmManifestSchema.safeParse(filmManifest([house]).manifest).success).toBe(true);
+  expect(() => planFilm(id, exported({ teacher: "house-someone", learner: "house-pip" }), script, audio, knownTypes)).toThrow(/not an approved voice/);
+});

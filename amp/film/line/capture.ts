@@ -22,6 +22,7 @@ if (!['127.0.0.1', 'localhost', '[::1]'].includes(base.hostname)) throw new Erro
 const browser = await secureChromium(rawChromium).launch();
 const voices: Record<string, string> = {
   XescS24CsOySAkKrLAO3: 'Madeline', J3Ei0Lj6fAobhIqY5ySH: 'Paul', SYXbTJsLE7zmSjr1DchT: 'Champ',
+  'house-rowan': 'Rowan', 'house-wren': 'Wren', 'house-pip': 'Pip',
 };
 try {
   for (const item of items) {
@@ -37,7 +38,7 @@ try {
       if (typeof entry.voice === 'string') continue;
       const voice = played.timing.voices?.[role];
       if (!voice || !voices[voice]) throw new Error(`No saved approved voice for ${role}`);
-      played.script.cast[role] = { voice, name: voices[voice], ...(role==='learner' ? { tag: '[energetic]' } : {}) };
+      played.script.cast[role] = { voice, name: voices[voice], ...(voice==='SYXbTJsLE7zmSjr1DchT' ? { tag: '[energetic]' } : {}) };
     }
     const beats = payload.timing.shots.flat();
     const shotEnds = payload.timing.shots.flatMap((shot, si) => shot.map((_, bi) =>

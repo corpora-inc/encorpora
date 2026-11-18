@@ -24,7 +24,10 @@ npm run film:build
 Unit tests need no credentials, audio or browser. Rendering and layout checks
 need Playwright Chromium (`node scripts/install-browser.mjs`); media export
 also needs FFmpeg. Voice generation needs `ELEVEN_LABS_API_KEY` in the
-environment and uses a paid service. `FILM_NO_VOICE=1` disables generation.
+environment and uses a paid service, except for the house voices, which our
+own service on the Spark makes ([spark-voice/README.md](spark-voice/README.md),
+`FILM_SPARK_VOICE_URL`; their takes are checked by Whisper on the Spark, so
+they spend no ElevenLabs credits). `FILM_NO_VOICE=1` disables generation.
 
 ## Author and play
 
@@ -61,7 +64,9 @@ valid. A film may have several speakers of one kind. The
 Champ. The film ID chooses a stable default teacher. The learner is Champ, and
 two speakers of one film never share a voice. A film with more speakers of one
 kind than approved voices of that kind still passes `--dry`; voicing fails
-instead of reusing a voice. Use
+instead of reusing a voice. The house voices Rowan and Wren (teachers) and Pip (learner) are
+never chosen by default: `--voice teacher=rowan --voice learner=pip`, or
+`--provider spark` for every speaker, voices an edition with them. Use
 `--voice teacher=paul` for an explicit edition; exact voice IDs are saved with
 timing, keyed by speaker key, so playback uses the recorded voice. Solo films
 retain their narrator behavior. Adding a voice is one entry in `voices.ts`.

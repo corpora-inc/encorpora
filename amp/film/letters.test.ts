@@ -121,7 +121,7 @@ describe("letter names", () => {
     cache.set(`/takes/${key}.1.heard.json`, heard);
     expect(await judge(text, short, `/takes/${key}.heard.json`)).toEqual(['at 0.0 s the letter "a" was read as a word, not as a letter']);
     const result = await goodTake("/takes", text);
-    expect(result).toEqual({ take: held, faults: [], spent: 0 });
+    expect(result).toEqual({ take: held, faults: [], spent: 0, tries: 2, made: 0 });
     expect(JSON.parse(cache.get(`/takes/${key}.json`)!)).toEqual(held);
   });
 });

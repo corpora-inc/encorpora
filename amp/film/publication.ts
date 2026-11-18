@@ -375,7 +375,8 @@ export function planFilm(
   const teacher = cast.roles.find(
     (r) => r.kind === "teacher" || r.kind === "narrator",
   );
-  if (!teacher || !["Madeline Brousseaux", "Paul"].includes(teacher.name))
+  // Any approved teacher voice: Madeline, Paul, or a house teacher (voices.ts).
+  if (!teacher?.voice || !APPROVED[teacher.voice.id]?.roles.some((kind) => kind === "teacher" || kind === "narrator"))
     throw new Error(`Missing approved teacher: ${id}`);
   if (
     timing.voices &&
