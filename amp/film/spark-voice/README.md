@@ -103,7 +103,7 @@ for a first load, or while the load average is over 16.
 On the Mac:
 
 ```sh
-export FILM_SPARK_VOICE_URL=http://<spark address>:18093
+export FILM_SPARK_VOICE_URL=http://<spark IPv4 address>:18093   # the address the service binds; a .local name may resolve to IPv6 and be refused
 npx tsx film/make.ts list-all-pairs--sl --voice teacher=ellis --voice learner=remy --check
 npx tsx film/make.ts <film-id> --provider spark --check    # every speaker in house voices
 ```
