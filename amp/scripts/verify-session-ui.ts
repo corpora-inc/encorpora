@@ -254,7 +254,9 @@ try {
   {
     const { page, errors } = await fixturePage(() => summary("Unused"));
     try {
-      await open(page);
+      // An app address (`/` opens the landing when the session can't be
+      // read, #2448).
+      await open(page, "/overview");
       await page.evaluate(() => (window as any).sessionReview.reject());
       await page
         .getByRole("alert")
@@ -286,6 +288,7 @@ try {
       sawHeld = resolve;
     });
     let requests = 0;
+    let holdNext = false;
     let networkDone!: Promise<"finished" | "failed">;
     let finishHandler!: () => void;
     const handlerDone = new Promise<void>((resolve) => {
@@ -294,7 +297,9 @@ try {
     await page.route("**/api/v1/me", async (route) => {
       const snapshot = structuredClone(family);
       requests++;
-      const isHeld = requests === 2;
+      // The account read started just before the rename (below) is held.
+      const isHeld = holdNext;
+      holdNext = false;
       try {
         if (isHeld) {
           const request = route.request();
@@ -358,12 +363,23 @@ try {
       await page.locator("[data-app-logo]").waitFor();
       // The child's own page holds their name (docs/architecture/spaces.md).
       await chooseLearner(page, "current-child");
-      await held;
       await page
         .getByRole("heading", { name: "Before rename", exact: true })
         .waitFor();
+      // An account read starts (as a refresh does) and is held while the
+      // rename happens; its older snapshot then arrives late.
+      holdNext = true;
+      await page.evaluate(async () => {
+        const modulePath = "/src/web/lib/query.ts";
+        const { queryClient, meKey } = await import(modulePath);
+        void queryClient.refetchQueries({ queryKey: meKey("current-parent") });
+      });
+      await held;
       // The name is in the child's Settings fold.
-      await page.locator("summary").filter({ hasText: /^Settings$/ }).click();
+      await page
+        .locator("summary")
+        .filter({ hasText: /^Settings$/ })
+        .click();
       await page.getByRole("button", { name: "Change", exact: true }).click();
       await page.getByLabel("Name", { exact: true }).fill("After rename");
       await page
