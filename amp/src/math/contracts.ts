@@ -317,6 +317,9 @@ export const responseCapabilities = [
   "trend-line-fit-v1",
   "peg-board-v1",
   "equal-addends-v1",
+  /** Structured work laid out as a written column method (a `columns`
+   * diagram). A client without it is served the version before. */
+  "work-columns-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */

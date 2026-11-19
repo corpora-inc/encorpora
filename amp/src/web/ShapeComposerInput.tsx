@@ -3,6 +3,7 @@ import {
   useId,
   useRef,
   useState,
+  type CSSProperties,
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
@@ -127,7 +128,8 @@ export function ShapeComposerInput({
     a =
       parseShapeAnswer(r, (showAnswer || skipped) && answer ? answer : value) ??
       emptyShapeAnswer(r),
-    placements = a[stageIndex]!;
+    placements = a[stageIndex]!,
+    trayCount = stage.tray.reduce((n, piece) => n + piece.copies, 0);
   const drawn = placements.map((p) => ({
     p,
     piece: stage.tray.find((t) => t.id === p.pieceId)!,
@@ -479,7 +481,14 @@ export function ShapeComposerInput({
           })}
         </div>
       </div>
-      <div className="shape-tray" role="group" aria-label="Piece tray">
+      {/* One row of equal columns, however many pieces (shape-composer.css). */}
+      <div
+        className="shape-tray"
+        role="group"
+        aria-label="Piece tray"
+        data-count={trayCount}
+        style={{ "--tray-count": trayCount } as CSSProperties}
+      >
         {stage.tray.flatMap((piece) =>
           Array.from({ length: piece.copies }, (_, copy) => {
             const p =
@@ -517,7 +526,7 @@ export function ShapeComposerInput({
                 <div className="shape-piece-icon">
                   <PieceIcon piece={piece} pose={p} />
                 </div>
-                <span>{piece.name}</span>
+                <span className="shape-piece-name">{piece.name}</span>
                 {used && (
                   <span className="shape-piece-check" aria-hidden="true">
                     ✓

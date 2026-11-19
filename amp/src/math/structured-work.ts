@@ -138,9 +138,7 @@ export type WorkRef = [number, number];
 /** One piece of a written line: words or mathematics (typeset as in a
  * prompt), an entry typed there, or another entry echoed as typed. */
 export type WorkToken =
-  | { text: string }
-  | { field: WorkRef }
-  | { echo: WorkRef };
+  { text: string } | { field: WorkRef } | { echo: WorkRef };
 /** An entry placed on a figure, with the word that names it there. */
 export interface WorkPlacement {
   field: WorkRef;
@@ -164,7 +162,12 @@ export interface WorkAreaPart {
  * fills with 0 for the learner, so the transport keeps every field.
  *
  * `lines`: the work as written lines, each entry where it belongs
- * ("3 × 5 = [ ]"). */
+ * ("3 × 5 = [ ]").
+ *
+ * `columns`: a written column method. The numbers are written one digit
+ * per column with their points aligned, the sign before the last; under
+ * the rule each column holds an entry or a printed character (the point);
+ * above the top line, an entry only where regrouping changes a column. */
 export type WorkDiagram =
   | {
       kind: "area";
@@ -174,7 +177,17 @@ export type WorkDiagram =
       lines?: WorkToken[][];
       zeros?: WorkRef[];
     }
-  | { kind: "lines"; lines: WorkToken[][] };
+  | { kind: "lines"; lines: WorkToken[][] }
+  | {
+      kind: "columns";
+      operation: "+" | "−";
+      /** Top first; one cell per column: a digit, "." or "" (blank). */
+      lines: string[][];
+      answer: WorkColumnCell[];
+      marks: ({ field: WorkRef } | null)[];
+    };
+/** A column under the rule: a printed character ("." or "") or an entry. */
+export type WorkColumnCell = { given: string } | { field: WorkRef };
 
 /* ------------------------------------------------------------ schema */
 
@@ -242,7 +255,11 @@ const rowSchema = z
   })
   .strict();
 const refSchema = z.tuple([
-  z.number().int().min(0).max(MAX_WORK_ROWS - 1),
+  z
+    .number()
+    .int()
+    .min(0)
+    .max(MAX_WORK_ROWS - 1),
   z.number().int().min(0).max(1),
 ]);
 const caption = z.string().trim().min(1).max(24);
@@ -252,6 +269,7 @@ const tokenSchema = z.union([
   z.object({ echo: refSchema }).strict(),
 ]);
 const lineSchema = z.array(tokenSchema).min(1).max(12);
+const columnChar = z.string().regex(/^[0-9.]?$/);
 const partSchema = z
   .object({
     size: z.number().int().min(1).max(1000),
@@ -272,7 +290,10 @@ const diagramSchema = z.discriminatedUnion("kind", [
       down: z.array(partSchema).min(1).max(4),
       regions: z.array(
         z.array(
-          z.object({ field: refSchema, caption: caption.optional() }).strict().nullable(),
+          z
+            .object({ field: refSchema, caption: caption.optional() })
+            .strict()
+            .nullable(),
         ),
       ),
       lines: z.array(lineSchema).min(1).max(3).optional(),
@@ -291,6 +312,32 @@ const diagramSchema = z.discriminatedUnion("kind", [
       lines: z.array(lineSchema).min(1).max(MAX_WORK_ROWS),
     })
     .strict(),
+  z
+    .object({
+      kind: z.literal("columns"),
+      operation: z.enum(["+", "−"]),
+      lines: z.array(z.array(columnChar).min(2).max(8)).min(2).max(3),
+      answer: z
+        .array(
+          z.union([
+            z.object({ given: columnChar }).strict(),
+            z.object({ field: refSchema }).strict(),
+          ]),
+        )
+        .min(2)
+        .max(8),
+      marks: z
+        .array(z.object({ field: refSchema }).strict().nullable())
+        .min(2)
+        .max(8),
+    })
+    .strict()
+    .refine(
+      (d) =>
+        d.lines.every((l) => l.length === d.answer.length) &&
+        d.marks.length === d.answer.length,
+      "One cell per column on every line",
+    ),
 ]);
 /** Every entry a diagram places, in page order (sides, regions, lines). */
 export function diagramFields(d: WorkDiagram): WorkRef[] {
@@ -299,7 +346,10 @@ export function diagramFields(d: WorkDiagram): WorkRef[] {
     for (const t of tokens) if ("field" in t) out.push(t.field);
   };
   if (d.kind === "lines") d.lines.forEach(line);
-  else {
+  else if (d.kind === "columns") {
+    for (const m of d.marks) if (m) out.push(m.field);
+    for (const c of d.answer) if ("field" in c) out.push(c.field);
+  } else {
     for (const p of [...d.across, ...d.down]) if (p.field) out.push(p.field);
     for (const row of d.regions) for (const c of row) if (c) out.push(c.field);
     d.lines?.forEach(line);
@@ -363,6 +413,11 @@ function diagramProblem(r: StructuredWorkResponse): string | null {
   if (!placed.every(learner)) return "A diagram places an unknown field";
   if (zeros.some(([i, j]) => r.rows[i]!.fields[j]!.kind !== "number"))
     return "An undrawn place is a number";
+  if (
+    d.kind === "columns" &&
+    !diagramFields(d).every(([i, j]) => r.rows[i]!.fields[j]!.kind === "number")
+  )
+    return "A column entry is a number";
   const keys = placed.map(([i, j]) => `${i}:${j}`);
   if (new Set(keys).size !== keys.length)
     return "A diagram places a field twice";
@@ -371,7 +426,8 @@ function diagramProblem(r: StructuredWorkResponse): string | null {
     0,
   );
   if (keys.length !== total) return "A diagram leaves a field out";
-  const lines = d.kind === "lines" ? d.lines : (d.lines ?? []);
+  const lines =
+    d.kind === "lines" ? d.lines : d.kind === "area" ? (d.lines ?? []) : [];
   for (const line of lines)
     for (const t of line)
       if ("echo" in t && !learner(t.echo))
@@ -900,7 +956,9 @@ function markLinearClasses(
 ): WorkMarks {
   const marks = rows.map((row, i) => {
     const text = row.values[0] ?? "";
-    return classifyLinearRight(grading.p, grading.q, text) === grading.classes[i];
+    return (
+      classifyLinearRight(grading.p, grading.q, text) === grading.classes[i]
+    );
   });
   const notes = marks.flatMap((ok, i) =>
     ok

@@ -169,6 +169,104 @@ def structured(public, expected):
     return json.dumps(rows, separators=(',', ':'))
 
 
+def decimal_columns(public, a_text, sign, b_text):
+    """Aligned-column decimal sum or difference with regrouping marks.
+
+    Recomputes the column layout, both written lines, the answer digits and
+    every regrouping mark from the prompt alone, requires the diagram to place
+    exactly those, and returns the key in the response's row/field shape."""
+    response, diagram = public['response'], public['response']['diagram']
+    require(diagram.get('kind') == 'columns', 'Column diagram')
+    require(set(diagram) == {'kind', 'operation', 'lines', 'answer', 'marks'}, 'Column diagram has exactly its parts')
+    for text in (a_text, b_text):
+        # The prompt writes whole hundredths without trailing zeros (2.30 is
+        # "2.3", 3.00 is "3"); the column lines annex zeros to two places.
+        require(re.fullmatch(r'[1-9]\d*(?:\.\d?[1-9])?', text) is not None,
+                'Each number is written in hundredths without trailing zeros')
+        require(Fraction(101, 100) <= value(text) <= Fraction(899, 100), 'Each number is between 1.01 and 8.99')
+    add = sign == '+'
+    require(diagram['operation'] == ('+' if add else '−'), 'Column operation matches the prompt')
+    a, b = int(value(a_text) * 100), int(value(b_text) * 100)
+    require(add or a >= b, 'The larger number is written on top')
+    result = a + b if add else a - b
+    # Place exponents left to right: enough whole places for both numbers and
+    # the result (the result's ones digit is written even when it is 0), then
+    # tenths and hundredths; the decimal point gets its own column.
+    whole = max(len(str(n // 100)) for n in (a, b, result))
+    places = list(range(whole - 1, -3, -1))
+    point = whole
+
+    def digit(n, place):
+        return n // 10 ** (place + 2) % 10 if place <= 0 or n // 10 ** (place + 2) else None
+
+    def written(n):
+        cells = ['' if digit(n, p) is None else str(digit(n, p)) for p in places]
+        return cells[:point] + ['.'] + cells[point:]
+
+    require(diagram['lines'] == [written(a), written(b)], 'Both numbers are written right-aligned on their decimal points')
+    columns = len(places) + 1
+    require(len(diagram['answer']) == columns and len(diagram['marks']) == columns, 'One answer and one mark entry per column')
+
+    def column(i):
+        return i if i < point else i + 1
+
+    # Regrouping, right to left. Addition: a 1 carried into a column that has a
+    # written digit gets a box holding 1 (a carry into a new leading place is
+    # that place's answer digit, not a mark). Subtraction: a column's top value
+    # loses 1 when it lends to the right and gains 10 when it borrows from the
+    # left; a box holds the new value wherever it differs from the printed digit.
+    marks, carry = {}, 0
+    top, bottom = written(a), written(b)
+    for i in reversed(range(len(places))):
+        c = column(i)
+        t, u = digit(a, places[i]) or 0, digit(b, places[i]) or 0
+        if add:
+            if carry and (top[c] or bottom[c]):
+                marks[c] = 1
+            carry = int(t + u + carry >= 10)
+        else:
+            current = t - carry
+            carry = int(current < u)
+            current += 10 * carry
+            if current != t:
+                marks[c] = current
+    require(carry == 0, 'Regrouping ends inside the written columns')
+
+    rows = [['' for _ in row['fields']] for row in response['rows']]
+    placed = set()
+
+    def put(entry, target, context):
+        require(isinstance(entry, dict) and set(entry) == {'field'}, context + ' is an entered field')
+        ref = entry['field']
+        require(isinstance(ref, list) and len(ref) == 2 and all(isinstance(n, int) for n in ref), context + ' names a row and field')
+        i, j = ref
+        require(0 <= i < len(response['rows']) and 0 <= j < len(response['rows'][i]['fields']), context + ' names an existing field')
+        field = response['rows'][i]['fields'][j]
+        require(field.get('given') is None and field['kind'] == 'number', context + ' is a learner number field')
+        require((i, j) not in placed, 'A diagram places a field once')
+        placed.add((i, j))
+        rows[i][j] = str(target)
+
+    for c, entry in enumerate(diagram['answer']):
+        if c == point:
+            require(entry == {'given': '.'}, 'The decimal point is printed in its column')
+            continue
+        d = digit(result, places[c if c < point else c - 1])
+        if d is None:
+            require(entry == {'given': ''}, 'No answer digit left of the result')
+        else:
+            put(entry, d, 'An answer digit')
+    for c, entry in enumerate(diagram['marks']):
+        if c in marks:
+            put(entry, marks[c], 'A regrouping mark')
+        else:
+            require(entry is None, 'A mark appears only where regrouping changes a column')
+    learner = {(i, j) for i, row in enumerate(response['rows'])
+               for j, field in enumerate(row['fields']) if field.get('given') is None}
+    require(placed == learner, 'The diagram places every learner field')
+    return json.dumps(rows, separators=(',', ':'))
+
+
 def agreed(n, one, many):
     return f"{n} {one if int(n) == 1 else many}"
 
@@ -382,6 +480,8 @@ def solve(public):
             return structured(public, [[scale], [a*scale, b*scale], [q//10, q%10], [0], [q]])
         a_text, sign, b_text = re.search(r'find (' + NUMBER + r')([+-])(' + NUMBER + r')\.', prompt).groups()
         a, b = value(a_text), value(b_text)
+        if response.get('diagram') is not None:
+            return decimal_columns(public, a_text, sign, b_text)
         hundredths = int(a * 100) % 10 + (1 if sign == '+' else -1) * (int(b * 100) % 10)
         regroup = int(hundredths >= 10) if sign == '+' else int(hundredths < 0)
         return structured(public, [[hundredths % 10, regroup], [a+b if sign == '+' else a-b]])

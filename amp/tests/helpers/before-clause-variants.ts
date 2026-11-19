@@ -1,5 +1,8 @@
 import { generateProblem, templates } from "../../src/math/engine";
-import { clauseFamilies } from "../../src/math/clause-variants";
+import {
+  clauseFamilies,
+  clauseRevisions,
+} from "../../src/math/clause-variants";
 import { clauseExtensions } from "../../src/math/clause-extensions";
 
 /** Regression tests for the previously published surfaces keep exercising
@@ -15,7 +18,7 @@ export function generateBeforeClauses(
     seed,
     version ??
       ((clauseFamilies[id] || clauseExtensions[id]) && current
-        ? current.version - 1
+        ? current.version - 1 - (clauseRevisions[id] ?? 0)
         : undefined),
   );
 }
