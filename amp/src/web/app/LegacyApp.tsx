@@ -4,6 +4,8 @@ import {
 } from "../features/practice/curriculum-filter";
 import { requestFetch } from "../lib/request-transport";
 import { PracticeControls } from "../features/practice/PracticeControls";
+import { ResetPracticeLevel } from "../features/practice/ResetPracticeLevel";
+import type { PracticeSettings } from "../../learning/practice-settings";
 import {
   practiceSettingsOptions,
   usePracticeAdjustment,
@@ -1189,26 +1191,34 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     setBusy(true);
     try {
       const saved = await adjustments.change(intent);
-      if (!saved || learnerNow() !== learner.id) return;
-      upcoming.current = null;
-      setQueue([]);
-      if (intent.kind !== "together") {
-        practiceFilter.current = {};
-        changingFilter.current = (filterKey ?? "{}") !== "{}";
-        navigate(practiceHref(), { replace: true });
-        setPending(null);
-        const strand =
-          intent.kind === "easier"
-            ? Object.entries(saved.strandStarts).find(
-                ([, reset]) => reset.revision === saved.revision,
-              )?.[0]
-            : undefined;
-        await loadBatch("", strand);
-        await refreshProgress();
-      }
+      if (!saved) return;
+      await practiceChanged(intent, saved);
     } finally {
       setBusy(false);
     }
+  }
+  /** Practice after a saved change (here, or ResetPracticeLevel's): the
+   * problems already asked for belong to the old settings. */
+  async function practiceChanged(
+    intent: PracticeIntent,
+    saved: PracticeSettings,
+  ) {
+    if (!learner || learnerNow() !== learner.id) return;
+    upcoming.current = null;
+    setQueue([]);
+    if (intent.kind === "together") return;
+    practiceFilter.current = {};
+    changingFilter.current = (filterKey ?? "{}") !== "{}";
+    navigate(practiceHref(), { replace: true });
+    setPending(null);
+    const strand =
+      intent.kind === "easier"
+        ? Object.entries(saved.strandStarts).find(
+            ([, reset]) => reset.revision === saved.revision,
+          )?.[0]
+        : undefined;
+    await loadBatch("", strand);
+    await refreshProgress();
   }
   async function next() {
     const ready = upcoming.current;
@@ -2189,14 +2199,33 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             busy={busy || !!pending}
             apply={adjustPractice}
             close={closeShellDrawer}
-            canReset={!student}
             together={!ownLearner}
-            resetFrom={
-              learner.simulation
-                ? "Start again from this profile’s levels."
-                : ownLearner
-                  ? "Start again from where you chose to begin."
-                  : undefined
+            reset={
+              // A child's own session: their grown-up or school manages it.
+              !student && (
+                <ResetPracticeLevel
+                  look="menu"
+                  learner={learner}
+                  own={ownLearner}
+                  disabled={busy || !!pending}
+                  resetFrom={
+                    learner.simulation
+                      ? "Start again from this profile’s levels."
+                      : ownLearner
+                        ? "Start again from where you chose to begin."
+                        : undefined
+                  }
+                  onReset={async (saved) => {
+                    setBusy(true);
+                    try {
+                      await practiceChanged({ kind: "reset" }, saved);
+                    } finally {
+                      setBusy(false);
+                      closeShellDrawer();
+                    }
+                  }}
+                />
+              )
             }
           />,
           drawerSettings,

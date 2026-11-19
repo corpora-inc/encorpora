@@ -20,6 +20,8 @@ import { buttonClass } from "../../../ui/Button";
 import { ChildActions, ChildSettings, ChildSettingsSheet } from "../Child";
 import type { FamilyChild } from "../api";
 import type { FamilyPlace } from "../FamilyFrame";
+import { initialLevel } from "../../../../learning/frontier";
+import { gradeName } from "../../../../learning/level-check";
 
 /* The server, as the consent routes answer it (src/parent-consent). */
 const NOTICE = {
@@ -43,12 +45,23 @@ const NOTICE = {
 const server = vi.hoisted(() => ({
   calls: [] as { path: string; body: unknown }[],
   view: null as unknown,
+  frontier: null as unknown,
 }));
 vi.mock("../../../lib/api", async (actual) => ({
   ...(await actual<typeof import("../../../lib/api")>()),
   request: vi.fn(
     async (path: string, _schema: unknown, options?: { body?: unknown }) => {
       server.calls.push({ path, body: options?.body });
+      if (path.endsWith("/frontier")) return server.frontier;
+      if (path.endsWith("/practice-state"))
+        return {
+          revision: 3,
+          epoch: 1,
+          workingTogether: false,
+          focusSkillId: null,
+          gradeLevelShown: true,
+          strandStarts: {},
+        };
       if (path === "/consent/requests")
         server.view = {
           ...(server.view as object),
@@ -305,4 +318,106 @@ test("Escape closes a child's settings sheet from anywhere in it, also right aft
   });
   // One Escape: the sheet closes, never only the "Name saved." toast over it.
   await waitFor(() => expect(closed).toContain(true));
+});
+
+/* The holder's practice-level reset (features/practice/ResetPracticeLevel):
+   the level now, where it starts again, one confirmation. */
+const holderChild = {
+  ...child,
+  capabilities: { ...child.capabilities, changePracticeSettings: true },
+} as FamilyChild;
+const atGrade8 = {
+  expected: 4,
+  overall: {
+    level: 8,
+    sd: 0.4,
+    answered: 60,
+    independent: 60,
+    low: 7.6,
+    high: 8.4,
+  },
+  strands: {},
+};
+
+test("the holder resets a child's practice level from their settings, with the level now and where it starts again", async () => {
+  server.frontier = atGrade8;
+  mount(
+    <ChildSettingsSheet
+      place={place}
+      child={holderChild}
+      open
+      onOpenChange={() => {}}
+    />,
+  );
+  const sheet = await screen.findByRole("dialog", { name: child.name });
+  const start = gradeName(initialLevel({ birthYear: 2016 }));
+  const row = sheet.querySelector("[data-reset-level]") as HTMLElement;
+  expect(within(row).getByText("Practice level", { selector: "dt" }));
+  await waitFor(() =>
+    expect(row.querySelector("dd")!.textContent).toBe(
+      `Now: Grade 8 · resets to ${start}`,
+    ),
+  );
+  fireEvent.click(
+    within(row).getByRole("button", { name: "Reset Foobar’s practice level" }),
+  );
+  const confirm = await screen.findByRole("dialog", {
+    name: "Reset practice level?",
+  });
+  expect(confirm.querySelector("[data-reset-now]")!.textContent).toBe(
+    "Grade 8",
+  );
+  expect(confirm.querySelector("[data-reset-start]")!.textContent).toBe(start);
+  expect(confirm.textContent).toContain(
+    "Practice starts again from Foobar’s birth year. Foobar’s XP and skill history stay.",
+  );
+  // Nothing is sent until the parent confirms.
+  expect(
+    server.calls.some(
+      (call) => (call.body as { kind?: string } | undefined)?.kind === "reset",
+    ),
+  ).toBe(false);
+  fireEvent.click(within(confirm).getByRole("button", { name: "Reset level" }));
+  await waitFor(() =>
+    expect(
+      screen.queryByRole("dialog", { name: "Reset practice level?" }),
+    ).toBeNull(),
+  );
+  const sent = server.calls.find(
+    (call) => (call.body as { kind?: string } | undefined)?.kind === "reset",
+  );
+  expect(sent?.path).toBe("/learners/foo/practice-state");
+  expect(sent?.body).toMatchObject({ kind: "reset", revision: 3 });
+});
+
+test("before any answer the row says so, and the reset still starts from the birth year", async () => {
+  server.frontier = {
+    ...atGrade8,
+    overall: { level: 4, sd: 1, answered: 0, independent: 0 },
+  };
+  mount(<ChildSettings place={place} child={holderChild} />);
+  const fold = await settingsFold();
+  const row = fold.querySelector("[data-reset-level]") as HTMLElement;
+  await waitFor(() =>
+    expect(row.querySelector("dd")!.textContent).toMatch(
+      /^Not measured yet · resets to /,
+    ),
+  );
+});
+
+test("no reset where the holder can't decide it: a second parent, or a child with no birth year", async () => {
+  server.frontier = atGrade8;
+  // A second parent's projection: no practice settings of the child's.
+  mount(<ChildSettings place={place} child={child} />);
+  await settingsFold();
+  expect(document.querySelector("[data-reset-level]")).toBeNull();
+  cleanup();
+  mount(
+    <ChildSettings
+      place={place}
+      child={{ ...holderChild, birthYear: null } as FamilyChild}
+    />,
+  );
+  await settingsFold();
+  expect(document.querySelector("[data-reset-level]")).toBeNull();
 });

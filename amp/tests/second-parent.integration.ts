@@ -538,6 +538,99 @@ test(
     );
 
     await t.test(
+      "resetting a child's practice level is the holder's alone",
+      async () => {
+        const path = `/api/v1/learners/${maya}/practice-state`;
+        // Answers to reset: a measured level on the child's page.
+        const answer = async (count: number) => {
+          for (let answered = 0; answered < count;) {
+            const { problems } = await ok(
+              post(`/api/v1/learners/${maya}/batches`, holder, { count: 3 }),
+            );
+            for (const problem of problems as { id: string }[]) {
+              await ok(
+                post(`/api/v1/learners/${maya}/attempts`, holder, {
+                  problemId: problem.id,
+                  requestId: randomUUID(),
+                  response: answered % 2 ? "1" : "2",
+                }),
+              );
+              answered++;
+            }
+          }
+        };
+        await answer(6);
+        const holderFamily = (await ok(get("/api/v1/families", holder)))
+          .families[0].familyId as string;
+        const pageLevel = async () =>
+          (
+            await ok(
+              get(
+                `/api/v1/families/${holderFamily}/children/${maya}/progress`,
+                holder,
+              ),
+            )
+          ).level as { overall: { answered: number } } | null;
+        assert.ok((await pageLevel())?.overall.answered, "measured before");
+        const before = await ok(get(path, holder));
+        const reset = (headers: Record<string, string>) =>
+          app.inject({
+            method: "POST",
+            url: path,
+            headers,
+            payload: {
+              kind: "reset",
+              requestId: randomUUID(),
+              revision: before.revision,
+            },
+          });
+        // The family's projection offers it to the holder only (the child's
+        // settings show the row by this capability).
+        const offered = async (account: string) => {
+          const { families } = await ok(get("/api/v1/families", account));
+          const familyId = families[0].familyId as string;
+          const projection = await ok(
+            get(`/api/v1/families/${familyId}`, account),
+          );
+          return projection.children.find(
+            (entry: { id: string }) => entry.id === maya,
+          ).capabilities.changePracticeSettings as boolean;
+        };
+        assert.equal(await offered(holder), true);
+        assert.equal(await offered(rowan), false);
+        // The second parent is refused, and the child's own session (a
+        // device either parent handed over) too.
+        await refused(reset(as(rowan)), 403);
+        const handed = (
+          await ok(
+            post(`/api/v1/family/learners/${maya}/practice-here`, holder),
+            201,
+          )
+        ).token as string;
+        await refused(reset({ authorization: `Bearer ${handed}` }), 403);
+        await denied(reset(as(stranger)));
+        assert.deepEqual(await ok(get(path, holder)), before);
+        // The holder resets it: a new practice epoch.
+        const after = await ok(reset(as(holder)));
+        assert.equal(after.epoch, before.epoch + 1);
+        assert.equal(after.revision, before.revision + 1);
+        const { overall } = await ok(
+          get(`/api/v1/learners/${maya}/frontier`, holder),
+        );
+        assert.equal(overall.answered, 0);
+        // The child's page reads it at once: no level until new answers.
+        assert.equal(await pageLevel(), null);
+        // Their next answers measure it again, from the new start.
+        // (a day's level is stored as practice is planned).
+        await answer(3);
+        await ok(
+          post(`/api/v1/learners/${maya}/batches`, holder, { count: 1 }),
+        );
+        assert.equal((await pageLevel())?.overall.answered, 3);
+      },
+    );
+
+    await t.test(
       "her own practice is free while a child has access, and ends when none does",
       async () => {
         await ok(

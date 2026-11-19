@@ -29,6 +29,7 @@ import type { WorkbookLearner } from "../workbooks/WorkbookFrame";
 import { childWorkbookPaths, WorkbookPathsContext } from "../workbooks/paths";
 import { SatMathFocus } from "../practice/SatMathFocus";
 import { ChildPracticeSettings } from "./Practice";
+import { ResetPracticeLevel } from "../practice/ResetPracticeLevel";
 import { rememberContinuation } from "../continue/memory";
 import {
   RecordLevels,
@@ -563,8 +564,8 @@ export function ChildSettingsSheet({
   );
 }
 
-/** The rows of a child's settings: their name, birth year, practice
- * settings, sign-in pictures, then learning permission and deleting their
+/** The rows of a child's settings: their name, birth year, practice level
+ * (Reset), practice settings, sign-in pictures, then learning permission and deleting their
  * learning data, each a disclosure in place (never a sheet over a sheet).
  * `onDeleted` leaves whatever is about this child once their data is gone. */
 function ChildSettingsRows({
@@ -723,6 +724,21 @@ function ChildSettingsRows({
               />
             </div>
           </div>
+        )}
+        {/* The holder starts their practice level again from the birth
+            year (the server refuses anyone else); without a year there is
+            nowhere to start from. The row's own "Now" says it worked. */}
+        {caps.changePracticeSettings && child.birthYear != null && (
+          <ResetPracticeLevel
+            look="row"
+            learner={child}
+            disabled={busy}
+            rowClass={{
+              row: styles.setting,
+              text: styles.settingText,
+              action: styles.settingAction,
+            }}
+          />
         )}
         {caps.changePracticeSettings && (
           <ChildPracticeSettings place={place} child={child} />

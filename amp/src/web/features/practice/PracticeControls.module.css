@@ -34,3 +34,24 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
+/* A reset's confirmation: the level now and where it starts again, each on
+   its own line, held from the first frame (the wave waits in place). */
+.levels {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-3);
+}
+.levels > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 1.5em;
+}
+.levels dt {
+  color: var(--color-muted-text);
+}
+.levels dd {
+  margin: 0;
+  font-weight: 650;
+  text-align: end;
+}
