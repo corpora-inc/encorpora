@@ -446,6 +446,14 @@ const capabilities: Record<string, ResponseCapability[]> = {
   "dilation-measure": ["structured-work-v1"],
 };
 
+/** Revisions of a family's clause surfaces after the one that introduced
+ * them: each adds one to the template version. The clause axis keeps the
+ * version it arrived in, so every earlier version draws as it did. */
+export const clauseRevisions: Readonly<Record<string, number>> = {
+  // 3: the aligned-columns work is written in its columns.
+  "multidigit-decimal-sum": 1,
+};
+
 /** Catalog revision only. Original generator metadata stays untouched so
  * stored versions reproduce their old bytes and random streams. */
 export function clauseMetadata(meta: TemplateMetadata): TemplateMetadata {
@@ -463,7 +471,7 @@ export function clauseMetadata(meta: TemplateMetadata): TemplateMetadata {
   ];
   return {
     ...meta,
-    version: extended ? 2 : meta.version + 1,
+    version: extended ? 2 : meta.version + 1 + (clauseRevisions[meta.id] ?? 0),
     ...(!meta.requiredResponseCapability
       ? { hasNumericVariants: true as const }
       : {}),
@@ -518,7 +526,7 @@ export function withClauseVariants(
       clause: defineAxis("clause", values, {
         legacy: "legacy",
         weights: [2, ...families.map(() => 3)],
-        since: meta.version,
+        since: meta.version - (clauseRevisions[id] ?? 0),
         needs: Object.fromEntries(
           values.slice(1).map((v) => [v, "scenes-v1" as const]),
         ),

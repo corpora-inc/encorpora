@@ -226,6 +226,7 @@ test("guess chance comes from each family's answer schema and is never understat
     "counter-builder-v1": "counter-builder",
     "peg-board-v1": "peg-board",
     "equal-addends-v1": "equal-addends",
+    "work-columns-v1": "structured-work",
   };
   let choiceFamilies = 0;
   for (const template of templates) {

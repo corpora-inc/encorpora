@@ -83,8 +83,13 @@ export function keypadKeys(r: StructuredWorkResponse): string[] {
   const add = (k: string) => {
     if (!keys.includes(k)) keys.push(k);
   };
-  // A place's digit (one character) takes digits and nothing else.
-  if (fields.every((f) => f.kind === "number" && f.maxLength === 1)) return [];
+  // A place's digit (one character) takes digits and nothing else, as does
+  // every entry of a column method (its digits and regrouping marks).
+  if (
+    r.diagram?.kind === "columns" ||
+    fields.every((f) => f.kind === "number" && f.maxLength === 1)
+  )
+    return [];
   for (const f of fields)
     if (f.kind === "expression") for (const v of f.variables ?? []) add(v);
   const expressions = fields.some((f) => f.kind === "expression");
