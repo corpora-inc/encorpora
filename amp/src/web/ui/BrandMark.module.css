@@ -21,13 +21,16 @@
   font-weight: 500;
   color: var(--color-muted-text);
 }
-/* The full name only where it fits whole beside the header's other control. */
-@container (max-width: 330px) {
+/* The full name only where it fits whole beside the header's other control.
+   Measured in Chromium and WebKit with the system font: whole from a 374 px
+   viewport beside Sign in (a 375 px iPhone keeps it), from 384 px beside
+   Schools. Below, it goes rather than clipping mid-word. */
+@container (max-width: 341px) {
   .expansion {
     display: none;
   }
 }
-@container (max-width: 350px) {
+@container (max-width: 351px) {
   .besideLong {
     display: none;
   }
