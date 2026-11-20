@@ -49,24 +49,7 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-.wordmark {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-}
-.expansion {
-  overflow: hidden;
-  text-overflow: clip;
-  font-size: var(--text-small);
-  font-weight: 500;
-  color: var(--color-muted-text);
-}
-/* The full name only where it fits whole beside Sign in. */
-@container (max-width: 330px) {
-  .expansion {
-    display: none;
-  }
-}
+/* The wave, "AMP" and the full name: ui/BrandMark, shared with /research. */
 /* The word, not its hover fill, ends on the content edge. */
 .signIn {
   flex: none;

@@ -1,15 +1,7 @@
-/* `/research`. The school pages' calm layout: a title, the report itself as a
-   card, then each topic on its own line with its body beside it. */
-.main {
-  box-sizing: border-box;
-  display: grid;
-  align-content: start;
-  gap: var(--space-7);
-  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
-  margin-inline: auto;
-  padding: var(--space-5) var(--schools-gutter) 0;
-  min-width: 0;
-}
+/* `/research`, in the homepage's frame (pitch/Pitch.module.css): the same
+   width, header and footer, and on wide screens the same split, the copy
+   column on the left and the rest on the right. The title sits beside the
+   report, and each section's heading stays in view while its section scrolls. */
 .main p {
   margin: 0;
 }
@@ -17,23 +9,17 @@
   display: grid;
   gap: var(--space-5);
 }
-.main .title {
-  margin: 0;
-  max-width: 14em;
-  color: var(--color-on-surface);
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(38px, 4vw + 20px, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.022em;
-  text-wrap: balance;
+.copy {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
 }
-.lede {
-  max-width: 38em;
-  color: var(--color-muted-text);
-  font-size: 19px;
-  line-height: 1.55;
-  text-wrap: pretty;
+@media (min-width: 960px) {
+  .intro {
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+    column-gap: var(--pitch-gutter);
+    align-items: center;
+  }
 }
 
 /* The report. */
@@ -42,7 +28,6 @@
   display: grid;
   justify-items: start;
   gap: var(--space-3);
-  max-width: 44em;
   padding: var(--space-5) var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-panel);
@@ -93,16 +78,18 @@
 .topic {
   display: grid;
   gap: var(--space-3);
-  padding-block: var(--space-5) 0;
+  padding-top: var(--space-5);
   border-top: 1px solid var(--color-border);
 }
 .main .topic h2 {
   margin: 0;
   color: var(--color-on-surface);
-  font-family: var(--font-display);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(24px, 0.6vw + 20px, 28px);
+  font-size: 28px;
   line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 .topicBody {
   display: grid;
@@ -127,16 +114,18 @@
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* Wide: the heading in the copy column, held in view while its section
+   scrolls past; the body beside it. */
 @media (min-width: 960px) {
   .topic {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--space-5);
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+    column-gap: var(--pitch-gutter);
   }
-  .topic h2 {
-    grid-column: 1 / span 4;
-  }
-  .topicBody {
-    grid-column: 5 / -1;
+  .main .topic h2 {
+    position: sticky;
+    top: var(--space-5);
+    align-self: start;
+    max-width: 12em;
   }
 }
 

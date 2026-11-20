@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { brand } from "../../../brand";
 import { LandingView } from "../../lib/LandingView";
 import { track, trackOnce } from "../../lib/analytics";
+import { BrandMark } from "../../ui/BrandMark";
 import { Button, buttonClass } from "../../ui/Button";
 import { SiteFooter } from "../support/SiteFooter";
 import {
@@ -116,8 +117,7 @@ export function PitchPage() {
           className={styles.brand}
           aria-label={`${brand.name} ${brand.expansion}, home`}
         >
-          <span className={styles.wordmark}>{brand.name}</span>{" "}
-          <span className={styles.expansion}>{brand.expansion}</span>
+          <BrandMark />
         </PitchLink>
         <PitchLink
           place={authStep("sign-in")}

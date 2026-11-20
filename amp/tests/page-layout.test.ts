@@ -355,7 +355,7 @@ const ROUTES_EXEMPT: Record<string, string> = {
   "features/schools/index.ts#TrustScreen":
     "the signed-out schools site, in its own PublicFrame",
   "features/research/index.ts#ResearchScreen":
-    "the public research page, in the schools site's frame",
+    "the public research page, in the homepage's frame (pitch/Pitch.module.css)",
   "features/school/standing/index.ts#ClassStandingScreen":
     "the school's curves (StandingScreen renders Page) with the class's overlay over them",
   "features/school/join/index.ts#ContinueScreen":
