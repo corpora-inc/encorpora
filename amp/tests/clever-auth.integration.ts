@@ -498,9 +498,12 @@ test(
     const link = await app.inject({
       method: "POST",
       url: "/api/v1/school/sso/clever/link",
-      headers: { origin },
+      // A student's earlier tap on this browser's student entry.
+      headers: { origin, cookie: "amp.clever-as=student" },
     });
     assert.equal(link.statusCode, 200, link.body);
+    // An adult linking is never answered with the student's screen.
+    assert.match(cookieOf(link, "amp.clever-as"), /^amp\.clever-as=$/);
     const linkFlow = {
       state: new URL(link.json().url).searchParams.get("state")!,
       cookie: cookieOf(link, "amp.clever-flow"),

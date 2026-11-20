@@ -220,6 +220,31 @@ test("the request copies as written, and says so in place", async () => {
   expect(writeText).toHaveBeenCalledWith(
     document.querySelector("[data-district-message]")!.textContent,
   );
+  expect(screen.getByRole("status").textContent).toBe("Message copied");
+});
+
+test("a refused clipboard leaves the message selected, and says so", async () => {
+  const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.stubGlobal("navigator", {
+    ...navigator,
+    clipboard: { writeText: async () => Promise.reject(new Error("denied")) },
+  });
+  clever({ cleverDistrictSignupUrl: SIGNUP });
+  at("/clever/not-added", "/clever/$reason", CleverProblemScreen);
+  fireEvent.click(await screen.findByRole("button", { name: /Copy message/ }));
+  await screen.findByRole("button", { name: /^Selected$/ });
+  expect(getSelection()!.toString()).toBe(
+    document.querySelector("[data-district-message]")!.textContent,
+  );
+  expect(screen.getByRole("status").textContent).toBe(
+    "Message selected. Copy it.",
+  );
+  // Never silent.
+  expect(warn).toHaveBeenCalledWith(
+    "The clipboard refused the district message",
+    expect.any(Error),
+  );
+  warn.mockRestore();
 });
 
 test("without a configured signup page the request links AMP's schools page", async () => {

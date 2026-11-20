@@ -73,7 +73,7 @@ export function DistrictRequest({
         <Button variant="quiet" onClick={() => void copy()}>
           {/* Every label in one cell: the widest holds the button's size, so
               the button never moves when its label changes. */}
-          <span className={styles.labels} aria-live="polite">
+          <span className={styles.labels}>
             {(
               [
                 [null, "Copy message"],
@@ -91,6 +91,14 @@ export function DistrictRequest({
             ))}
           </span>
         </Button>
+        {/* What the copy did, said once to a screen reader. */}
+        <span className={styles.srOnly} role="status">
+          {copied === "copied"
+            ? "Message copied"
+            : copied === "select"
+              ? "Message selected. Copy it."
+              : ""}
+        </span>
       </div>
       <p className={styles.note}>
         Your pilot classes move into the district roster later. No work is lost.

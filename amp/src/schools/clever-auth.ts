@@ -311,7 +311,12 @@ export async function registerCleverAuthRoutes(
     const proof = await options.freshAccountSession?.(request);
     if (!recent(proof) || proof.accountId !== account)
       return reply.code(403).send({ error: "reauth_required" });
-    return { url: await start(reply, proof) };
+    const url = await start(reply, proof);
+    // An adult linking: never a student's screen from an earlier tap on
+    // this browser's student entry.
+    if (requestCookie(request, AUDIENCE_COOKIE))
+      cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
+    return { url };
   });
   /** The same state and code a finished callback already redeemed: a
    * refresh, the Back button, or a link opened twice. It is never exchanged
