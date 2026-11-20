@@ -64,7 +64,10 @@ function base(draft: AssignmentDraft, now: Date, update = false) {
   const future = draft.dueAt.getTime() > now.getTime();
   if (!future && !update) throw new LmsError("lms_due_date_past");
   const link = new URL(draft.link);
-  if (link.protocol !== "https:" && link.hostname !== "127.0.0.1")
+  if (!(
+    link.protocol === "https:" ||
+    (link.protocol === "http:" && link.hostname === "127.0.0.1")
+  ))
     throw new LmsError("lms_bad_request");
   return {
     title: draft.title,
@@ -133,11 +136,18 @@ export function submissionsOpen(
 /** What AMP's evidence says for one student: a score, or no work yet, and
  * whether the window has closed (the grade is final and handed back). */
 export type DesiredGrade = { points: number | null; final: boolean };
-/** What the LMS last reported. `null`: the student has no submission there
- * (not enrolled, not matched, or never listed). */
+/** What the LMS last reported. `null`: it lists no submission for the
+ * student (not in its copy of the section, or not matched), so there is
+ * nothing to write to. */
 export type ObservedSubmission = {
   state: SubmissionState | null;
   points: number | null;
+} | null;
+/** What AMP last wrote: the points, and whether AMP itself turned the work in
+ * (only then may AMP take it back). */
+export type SentSubmission = {
+  points: number | null;
+  turnedIn: boolean;
 } | null;
 export type SubmissionPlan =
   | { kind: "none" }
@@ -156,69 +166,70 @@ const samePoints = (a: number | null, b: number | null) =>
  * - Work before the due date: the grade so far, with the submission turned in
  *   where the LMS allows (`submitted`).
  * - Final: the grade, handed back (`returned`) where the LMS allows.
- * - Work AMP had turned in that no longer counts (a narrower window, a changed
- *   target): Google Classroom reclaims it; elsewhere it is left for the teacher.
+ * - Work AMP turned in that no longer counts (a narrower window, a changed
+ *   target): Google Classroom reclaims it; elsewhere it is left for the
+ *   teacher. A student's own turn-in is never reclaimed.
+ * - Converges on points: an LMS that keeps its own state (Canvas without an
+ *   attachment) is not written again once the grade matches.
  */
 export function planSubmission(
   lms: LmsType,
   observed: ObservedSubmission,
   desired: DesiredGrade,
-  sent: { points: number | null } | null,
+  sent: SentSubmission,
 ): SubmissionPlan {
-  const state = observed?.state ?? null;
-  const points = observed?.points ?? null;
+  if (observed === null) return { kind: "none" };
+  const { state, points } = observed;
   if (desired.points === null) {
     if (sent?.points == null) return { kind: "none" };
-    if (lms === "google_classroom" && state === "submitted")
+    if (lms !== "google_classroom")
+      return { kind: "unsupported", code: "lms_reclaim_unsupported" };
+    if (state === "submitted" && sent.turnedIn)
       return { kind: "write", bodies: [{ state: "reclaimed" }] };
-    return lms === "google_classroom" && state !== "returned"
-      ? { kind: "none" }
-      : { kind: "unsupported", code: "lms_reclaim_unsupported" };
+    return state === "returned"
+      ? { kind: "unsupported", code: "lms_reclaim_unsupported" }
+      : { kind: "none" };
   }
   const grade = Math.round(desired.points * 100) / 100;
-  const graded = samePoints(points, grade);
-  if (lms === "canvas") {
-    return graded && state !== "created" && state !== null
-      ? { kind: "none" }
-      : {
-          kind: "write",
-          bodies: [{ grade_points: grade, state: "submitted" }],
-        };
+  if (samePoints(points, grade)) {
+    // Classroom alone has a hand-back AMP must still make.
+    if (lms !== "google_classroom" || !desired.final || state === "returned")
+      return { kind: "none" };
   }
-  if (lms === "schoology") {
-    return graded
-      ? { kind: "none" }
-      : { kind: "write", bodies: [{ grade_points: grade }] };
-  }
-  // Google Classroom.
-  const turnedIn = state === "submitted" || state === "returned";
-  if (!desired.final) {
-    if (!turnedIn)
-      return {
-        kind: "write",
-        bodies: [{ state: "submitted", grade_points: grade }],
-      };
-    return graded
-      ? { kind: "none" }
-      : { kind: "write", bodies: [{ grade_points: grade }] };
-  }
-  if (state === "returned")
-    return graded
-      ? { kind: "none" }
-      : { kind: "write", bodies: [{ grade_points: grade }] };
-  if (state === "submitted")
+  if (lms === "canvas")
+    // Canvas sets state itself; SpeedGrader needs it sent.
     return {
       kind: "write",
-      bodies: [{ grade_points: grade, state: "returned" }],
+      bodies: [{ grade_points: grade, state: "submitted" }],
     };
+  if (lms === "schoology")
+    return { kind: "write", bodies: [{ grade_points: grade }] };
+  // Google Classroom.
+  const graded = samePoints(points, grade);
+  if (state === "returned")
+    return { kind: "write", bodies: [{ grade_points: grade }] };
+  if (state === "submitted")
+    return desired.final
+      ? {
+          kind: "write",
+          bodies: [{ grade_points: grade, state: "returned" }],
+        }
+      : graded
+        ? { kind: "none" }
+        : { kind: "write", bodies: [{ grade_points: grade }] };
+  // created or reclaimed: AMP turns it in.
   return {
     kind: "write",
-    bodies: [
-      { state: "submitted", grade_points: grade },
-      { state: "returned" },
-    ],
+    bodies: desired.final
+      ? [{ state: "submitted", grade_points: grade }, { state: "returned" }]
+      : [{ state: "submitted", grade_points: grade }],
   };
 }
+
+/** Whether a write left the work turned in by AMP. */
+export const turnsIn = (plan: SubmissionPlan) =>
+  plan.kind === "write" &&
+  plan.bodies.some((body) => body.state === "submitted");
 
 /** Points for a practice goal: the share of the target minutes practised,
  * capped at the full score. Only measured on-screen minutes count. */

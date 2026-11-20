@@ -36,12 +36,15 @@ export type LmsClientOptions = {
 };
 
 /**
- * The district-app token's LMS Connect calls. Server-side only; tokens never
+ * The district-app token's LMS Connect calls. Make one instance per pass: its
+ * request budget does not refill. Server-side only; tokens never
  * reach errors, logs or storage.
  *
  * Retries: a 429 is always retried after the reset Clever names (the request
  * was not processed). Reads, PATCH and DELETE are idempotent and retry network
- * failures and 5xx with 1, 2 and 4 second waits. A POST that fails without an
+ * failures and 5xx with 1, 2 and 4 second waits, except a PATCH that moves a
+ * submission's state: Classroom refuses a repeated transition, so an outage
+ * there is reported and the next pass rereads the submission. A POST that fails without an
  * answer may still have created the assignment, and Clever has no list
  * endpoint or idempotency key to check, so it is never retried here: the
  * caller records `lms_create_outcome_unknown` and a person decides.
@@ -69,6 +72,9 @@ export class LmsClient {
     path: string,
     token: string,
     body?: unknown,
+    /** Safe to repeat after an outage. A POST never is; a PATCH that moves a
+     * submission's state isn't either (Classroom refuses submitted→submitted). */
+    repeatable = method !== "POST",
   ): Promise<unknown> {
     const url = new URL(path, ORIGIN);
     if (
@@ -79,7 +85,7 @@ export class LmsClient {
       url.hash
     )
       throw new LmsError("lms_invalid_response");
-    const idempotent = method !== "POST";
+    const create = method === "POST";
     for (let attempt = 0; ; attempt++) {
       if (this.remaining <= 0) throw new LmsError("lms_budget_exhausted");
       this.remaining--;
@@ -103,18 +109,28 @@ export class LmsClient {
           ),
         });
       } catch {
-        if (!idempotent) throw new LmsError("lms_create_outcome_unknown");
-        if (attempt >= 3) throw new LmsError("lms_network_failed");
+        if (create) throw new LmsError("lms_create_outcome_unknown");
+        if (!repeatable || attempt >= 3)
+          throw new LmsError("lms_network_failed");
         await this.sleep(1000 * 2 ** attempt);
         continue;
       }
       if (response.ok) {
-        const text = await response.text();
+        // A 2xx to a create means it exists, readable answer or not.
+        const unreadable = create
+          ? "lms_create_outcome_unknown"
+          : "lms_invalid_response";
+        let text: string;
+        try {
+          text = await response.text();
+        } catch {
+          throw new LmsError(unreadable, response.status);
+        }
         if (!text.trim()) return null;
         try {
           return JSON.parse(text);
         } catch {
-          throw new LmsError("lms_invalid_response", response.status);
+          throw new LmsError(unreadable, response.status);
         }
       }
       const message = await safeMessage(response);
@@ -123,10 +139,11 @@ export class LmsClient {
         await this.sleep(this.resetDelay(response, attempt));
         continue;
       }
+      // Any 5xx to a create may have created it, whatever the body says.
+      if (create && response.status >= 500)
+        throw new LmsError("lms_create_outcome_unknown", response.status);
       if (response.status >= 500 && code === "lms_unavailable") {
-        if (!idempotent)
-          throw new LmsError("lms_create_outcome_unknown", response.status);
-        if (attempt < 3) {
+        if (repeatable && attempt < 3) {
           await this.sleep(1000 * 2 ** attempt);
           continue;
         }
@@ -154,11 +171,17 @@ export class LmsClient {
     token: string,
     schema: z.ZodType<T>,
     body?: unknown,
+    repeatable?: boolean,
   ): Promise<T> {
     const parsed = z
       .object({ data: schema })
-      .safeParse(await this.request(method, path, token, body));
-    if (!parsed.success) throw new LmsError("lms_invalid_response");
+      .safeParse(await this.request(method, path, token, body, repeatable));
+    if (!parsed.success)
+      throw new LmsError(
+        method === "POST"
+          ? "lms_create_outcome_unknown"
+          : "lms_invalid_response",
+      );
     return parsed.data.data;
   }
   private assignmentPath(section: string, assignment?: string) {
@@ -212,18 +235,23 @@ export class LmsClient {
     }
     return rows;
   }
-  createAssignment(
+  /** The created assignment. Any answer AMP can't use (unreadable, or an ID
+   * it couldn't address later) is `lms_create_outcome_unknown`: it exists. */
+  async createAssignment(
     token: string,
     section: string,
     body: AssignmentBody,
   ): Promise<CleverAssignment> {
-    return this.data(
+    const created = await this.data(
       "POST",
       this.assignmentPath(section),
       token,
       assignmentSchema,
       body,
     );
+    if (!assignmentId.safeParse(created.id).success)
+      throw new LmsError("lms_create_outcome_unknown");
+    return created;
   }
   getAssignment(
     token: string,
@@ -334,6 +362,7 @@ export class LmsClient {
       token,
       submissionSchema,
       body,
+      body.state === undefined,
     );
   }
 }

@@ -16,6 +16,7 @@ import {
   planSubmission,
   practicePoints,
   submissionsOpen,
+  turnsIn,
   type AssignmentDraft,
 } from "../src/schools/clever/lms-payloads.js";
 
@@ -428,18 +429,19 @@ test("the submission plan uses only transitions each LMS supports", () => {
   const created = { state: "created" as const, points: null };
   const submitted = { state: "submitted" as const, points: 40 };
   const returned = { state: "returned" as const, points: 40 };
+  const ampTurnedIn = { points: 40, turnedIn: true };
 
-  // No work: nothing is ever written, before or after the due date.
   for (const lms of ["canvas", "schoology", "google_classroom"] as const) {
+    // No work: nothing is ever written, before or after the due date.
     assert.deepEqual(planSubmission(lms, created, none, null), {
       kind: "none",
     });
     assert.deepEqual(
       planSubmission(lms, created, { points: null, final: true }, null),
-      {
-        kind: "none",
-      },
+      { kind: "none" },
     );
+    // No submission listed: nothing to write to (no 404 every pass).
+    assert.deepEqual(planSubmission(lms, null, final, null), { kind: "none" });
   }
   // Google Classroom: explicit state out of created; returned only from submitted.
   assert.deepEqual(
@@ -450,10 +452,8 @@ test("the submission plan uses only transitions each LMS supports", () => {
     },
   );
   assert.deepEqual(
-    planSubmission("google_classroom", submitted, progress, { points: 40 }),
-    {
-      kind: "none",
-    },
+    planSubmission("google_classroom", submitted, progress, ampTurnedIn),
+    { kind: "none" },
   );
   assert.deepEqual(
     planSubmission(
@@ -475,7 +475,16 @@ test("the submission plan uses only transitions each LMS supports", () => {
   assert.deepEqual(planSubmission("google_classroom", returned, final, null), {
     kind: "none",
   });
-  // A teacher's later regrade in the LMS is overwritten only when AMP's changes.
+  assert.deepEqual(
+    planSubmission(
+      "google_classroom",
+      { state: "reclaimed", points: null },
+      progress,
+      null,
+    ),
+    { kind: "write", bodies: [{ state: "submitted", grade_points: 40 }] },
+  );
+  // A later regrade in the LMS is overwritten only when AMP's grade differs.
   assert.deepEqual(
     planSubmission(
       "google_classroom",
@@ -485,31 +494,51 @@ test("the submission plan uses only transitions each LMS supports", () => {
     ),
     { kind: "write", bodies: [{ grade_points: 40 }] },
   );
-  // Work that no longer counts: reclaimed in Classroom, never to created.
+  // Work AMP turned in that no longer counts is reclaimed; a student's own
+  // turn-in is not, and nothing goes back to created.
   assert.deepEqual(
-    planSubmission("google_classroom", submitted, none, { points: 40 }),
+    planSubmission("google_classroom", submitted, none, ampTurnedIn),
     {
       kind: "write",
       bodies: [{ state: "reclaimed" }],
     },
   );
   assert.deepEqual(
-    planSubmission("google_classroom", returned, none, { points: 40 }),
+    planSubmission("google_classroom", submitted, none, {
+      points: 40,
+      turnedIn: false,
+    }),
+    { kind: "none" },
+  );
+  assert.deepEqual(
+    planSubmission("google_classroom", returned, none, ampTurnedIn),
     {
       kind: "unsupported",
       code: "lms_reclaim_unsupported",
     },
   );
+  assert.equal(
+    turnsIn(planSubmission("google_classroom", created, progress, null)),
+    true,
+  );
+  assert.equal(
+    turnsIn(planSubmission("google_classroom", submitted, final, null)),
+    false,
+  );
 
-  // Canvas: grade_points with state for SpeedGrader; no returned/reclaimed.
+  // Canvas: grade_points with state for SpeedGrader; converges on points even
+  // though Canvas keeps its own state.
   assert.deepEqual(planSubmission("canvas", created, final, null), {
     kind: "write",
     bodies: [{ grade_points: 40, state: "submitted" }],
   });
-  assert.deepEqual(planSubmission("canvas", submitted, final, null), {
-    kind: "none",
-  });
-  assert.deepEqual(planSubmission("canvas", submitted, none, { points: 40 }), {
+  assert.deepEqual(
+    planSubmission("canvas", { state: "created", points: 40 }, final, null),
+    {
+      kind: "none",
+    },
+  );
+  assert.deepEqual(planSubmission("canvas", submitted, none, ampTurnedIn), {
     kind: "unsupported",
     code: "lms_reclaim_unsupported",
   });
@@ -522,10 +551,93 @@ test("the submission plan uses only transitions each LMS supports", () => {
   assert.deepEqual(planSubmission("schoology", returned, final, null), {
     kind: "none",
   });
-  assert.deepEqual(planSubmission("schoology", null, final, null), {
-    kind: "write",
-    bodies: [{ grade_points: 40 }],
+  assert.deepEqual(planSubmission("schoology", submitted, none, ampTurnedIn), {
+    kind: "unsupported",
+    code: "lms_reclaim_unsupported",
   });
+});
+
+test("an answer to a create that AMP can't use still means it exists", async () => {
+  const body = assignmentCreateBody("canvas", draft(), now);
+  const cases: (Response | Error)[] = [
+    new Response('{"data":{"id":"c8f5', { status: 201 }),
+    new Response(
+      JSON.stringify({ data: { id: assignment, state: "published" } }),
+      { status: 201 },
+    ),
+    new Response(JSON.stringify({ data: { id: "../../users" } }), {
+      status: 200,
+    }),
+    status(502, "<html>unpublished</html>"),
+  ];
+  for (const answer of cases) {
+    const { client, calls } = fake([
+      answer,
+      ok(fixture("assignment-created.json")),
+    ]);
+    await assert.rejects(
+      client.createAssignment(token, section, body),
+      (error: unknown) =>
+        error instanceof LmsError &&
+        error.lmsCode === "lms_create_outcome_unknown",
+    );
+    assert.equal(calls.length, 1);
+  }
+  // A dropped body stream after a 2xx.
+  const broken = new Response(
+    new ReadableStream({
+      start(controller) {
+        controller.error(new Error("reset"));
+      },
+    }),
+    { status: 200 },
+  );
+  const { client } = fake([broken]);
+  await assert.rejects(
+    client.createAssignment(token, section, body),
+    (error: unknown) =>
+      error instanceof LmsError &&
+      error.lmsCode === "lms_create_outcome_unknown",
+  );
+});
+
+test("a submission write that moves state is not repeated after an outage", async () => {
+  const moving = fake([status(502), ok(fixture("submission-updated.json"))]);
+  await assert.rejects(
+    moving.client.updateSubmission(token, section, assignment, student, {
+      state: "submitted",
+      grade_points: 80,
+    }),
+    (error: unknown) =>
+      error instanceof LmsError && error.lmsCode === "lms_unavailable",
+  );
+  assert.equal(moving.calls.length, 1);
+  const network = fake([new TypeError("socket")]);
+  await assert.rejects(
+    network.client.updateSubmission(token, section, assignment, student, {
+      state: "returned",
+    }),
+    (error: unknown) =>
+      error instanceof LmsError && error.lmsCode === "lms_network_failed",
+  );
+  assert.equal(network.calls.length, 1);
+});
+
+test("an assignment link is HTTPS, or plain HTTP on loopback only", () => {
+  for (const link of [
+    "javascript://127.0.0.1/%0aalert(1)",
+    "http://amp.example/",
+    "ftp://127.0.0.1/",
+  ])
+    assert.throws(
+      () => assignmentCreateBody("canvas", draft({ link }), now),
+      link,
+    );
+  assignmentCreateBody(
+    "canvas",
+    draft({ link: "http://127.0.0.1:4310/" }),
+    now,
+  );
 });
 
 test("practice points are measured minutes against the target; finals must be numeric", () => {
