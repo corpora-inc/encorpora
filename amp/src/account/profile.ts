@@ -52,21 +52,20 @@ export async function accountProfile(
         [profile.given_name, profile.family_name].filter(Boolean).join(" ") ||
         null,
     };
-  const name =
+  const mailbox =
     account.startsWith("amp|") && exists.auth
-      ? realAdultName(
-          (
-            await db.query("SELECT name FROM amp_auth_users WHERE id=$1", [
-              account.slice(4),
-            ])
-          ).rows[0]?.name,
-        )
-      : null;
-  // Staff who sign in through their school (Clever) have no mailbox name:
+      ? (
+          await db.query("SELECT name FROM amp_auth_users WHERE id=$1", [
+            account.slice(4),
+          ])
+        ).rows[0]
+      : undefined;
+  const name = realAdultName(mailbox?.name);
+  // Staff who sign in through their school (Clever) have no mailbox at all:
   // their school's roster names them, so a shared school computer shows whose
-  // session it is.
+  // session it is. A mailbox account keeps only the name it gave itself.
   const rostered =
-    !name && account.startsWith("amp|") && exists.people
+    !mailbox && account.startsWith("amp|") && exists.people
       ? ((
           await db.query(
             `SELECT name FROM (SELECT ${adultNameSql()} AS name,p.created_at,p.id FROM amp_people p WHERE p.account_id=$1 AND p.deleted_at IS NULL) named

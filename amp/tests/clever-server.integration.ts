@@ -514,6 +514,27 @@ test(
     assert.equal(loneView.school.orgName, "Escuela Señora Núñez");
     assert.equal(loneView.school.className, undefined);
     assert.equal(loneView.school.practice, "waiting");
+    // Only a school-only (Clever) account takes its roster name. A mailbox
+    // account with no name of its own keeps none, never a name another
+    // person typed for it on an invitation.
+    const nameless = await signUp("nameless@example.test");
+    await pool.query("UPDATE amp_auth_users SET name='Teacher' WHERE id=$1", [
+      nameless.user.id,
+    ]);
+    await pool.query(
+      "INSERT INTO amp_people(id,tenant_id,given_name,family_name,handle,timezone,account_id) VALUES($1,$2,'Mr','Smth','invited-typo','UTC',$3)",
+      [randomUUID(), org.id, `amp|${nameless.user.id}`],
+    );
+    assert.equal(
+      (
+        await accountSummary(
+          pool,
+          new FamilyRepository(pool),
+          `amp|${nameless.user.id}`,
+        )
+      ).account.displayName,
+      null,
+    );
     await pool.query(
       "UPDATE amp_clever_connections SET status='disconnected',disconnected_at=now() WHERE id=$1",
       [connection.id],
