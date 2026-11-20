@@ -390,7 +390,17 @@ try {
         .getAttribute("href")
     )?.includes("next=%2Fschool%2Fconnect"),
   );
+  // The prompt takes the button's place, under the pointer: the router
+  // preloads /sign-in on that hover (defaultPreload "intent"), and a
+  // preload never leaves the screen (it once handed this deployment's
+  // sign-in off to `/`).
+  await page.getByRole("link", { name: "Sign in again", exact: true }).hover();
+  // The screen polls, so the network never idles: a settle window instead
+  // (the old hand-off left within ~100 ms of the hover).
+  await page.waitForTimeout(1500);
+  assert.equal(new URL(page.url()).pathname, "/school/connect");
   await capture("link-reauth");
+  assert.equal(new URL(page.url()).pathname, "/school/connect");
   // Not on Clever: one quiet way to tell us, never a form or a vendor's
   // name in the way of Link Clever.
   await page
@@ -401,6 +411,15 @@ try {
     .waitFor();
   assert.equal(await page.getByText(/AnySchool/).count(), 0);
   assert.equal(rosterRequests, 0);
+  // Signing in again comes back to this screen and its Link Clever, never
+  // `/` (this deployment's sign-in is its external authority's).
+  const beforeSignIn = paths.length;
+  await page.getByRole("link", { name: "Sign in again", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Link Clever", exact: true })
+    .waitFor();
+  assert.equal(new URL(page.url()).pathname, "/school/connect");
+  assert.ok(!paths.slice(beforeSignIn).includes("/"), String(paths));
   // A connection already asked for says where it stands, in one line.
   state.requests = [
     {
