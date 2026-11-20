@@ -1,4 +1,5 @@
 import type { PoolClient } from "pg";
+import { institutionPilotOn } from "./institution-pilot.js";
 import { FamilyRepository } from "../family/repository.js";
 import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
@@ -335,11 +336,15 @@ export async function licenseView(repo: SchoolRepository, orgId: string) {
   const seats = licenses.reduce((sum, row) => sum + row.seats, 0);
   const used = licenses.reduce((sum, row) => sum + row.used, 0);
   const shown = licenses[0] ?? latest;
+  const pilot = await institutionPilotOn(repo.pool, org.path);
   return {
     seats,
     used,
     available: Math.max(0, seats - used),
-    waiting,
+    // Under an institution's pilot, a student in a class is covered and one
+    // in no class needs a class, not a seat (the overview's rule).
+    waiting: pilot ? 0 : waiting,
+    pilot,
     license: shown
       ? {
           id: shown.id,

@@ -93,6 +93,17 @@ export function practiceDate(iso: string, now = new Date()) {
   return (date.getFullYear() === now.getFullYear() ? short : long).format(date);
 }
 
+/** An institution's pilot (a Clever district's) as the class screens show
+ * a running pilot: active through `endsAt`, then its grace. */
+export function institutionPilotView(
+  pilot: { endsAt: string; graceEndsAt: string },
+  now = new Date(),
+): Extract<AccessView, { kind: "active" | "ending" }> {
+  return Date.parse(pilot.endsAt) > now.getTime()
+    ? { kind: "active", until: pilot.endsAt }
+    : { kind: "ending", until: pilot.graceEndsAt };
+}
+
 /** The class header's quiet line while a pilot or its grace runs: "Free
  * pilot · 23 days left". Null otherwise. Whole days, rounded up: the last
  * day reads "1 day left", never 0. */

@@ -15,6 +15,7 @@ import { medianInterval } from "./standing-math.js";
 import { levelSdSql } from "./student-sd.js";
 import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
 import { medianOf, practiced, practicedSql } from "./practice-rules.js";
+import { institutionPilotOn } from "./institution-pilot.js";
 
 type Database = Pick<PoolClient, "query">;
 const DAY = 86_400_000;
@@ -461,13 +462,14 @@ export function attentionFor({
           DAY,
       )
     : null;
-  if (daysLeft === null)
+  // While an institution's pilot runs, practice runs without a license.
+  if (daysLeft === null && !seats.pilot)
     items.push({
       id: "no-license",
       title: "There’s no license here yet",
       detail: "Students can’t practice until there is one with seats.",
       action: { label: "Open the license", org: org.id, path: "license" },
-      rule: "Shown while there’s no license here.",
+      rule: "Shown while there’s no license or pilot here.",
     });
   if (daysLeft !== null && daysLeft <= ATTENTION.licenseDays)
     items.push({
@@ -641,6 +643,7 @@ export async function readOverview(
     trend,
     [classList, members],
     seats,
+    pilot,
     schools,
     unsigned,
     year,
@@ -659,6 +662,7 @@ export async function readOverview(
         ] as const,
     ),
     seatsHere(pool, org),
+    institutionPilotOn(pool, org.path),
     schoolsBelow(pool, orgId),
     unsignedSchools(pool, orgId),
     yearHere(pool, org),
@@ -673,10 +677,12 @@ export async function readOverview(
   ]);
   const seatRows = {
     ...seats,
-    waiting: students.reduce(
-      (sum, student) => sum + (student.seated ? 0 : 1),
-      0,
-    ),
+    pilot,
+    // An institution's pilot covers every student in a class here; one in
+    // no class needs a class, not a seat.
+    waiting: pilot
+      ? 0
+      : students.reduce((sum, student) => sum + (student.seated ? 0 : 1), 0),
   };
   const byPerson = new Map(students.map((student) => [student.id, student]));
   const enrolled = new Map<string, StudentFact[]>();

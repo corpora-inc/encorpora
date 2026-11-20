@@ -94,6 +94,7 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_classes: "place",
   amp_class_authorizations: "place",
   amp_class_pilots: "place",
+  amp_org_pilots: "place",
   amp_lms_assignments: "place",
   amp_lms_submissions: "place",
   amp_teacher_pilots: "account",

@@ -43,6 +43,14 @@ export const classLiveSql = (c: string, o: string) =>
   `(${c}.archived_at IS NULL AND EXISTS(SELECT 1 FROM amp_academic_sessions live_s
      WHERE live_s.id=${c}.session_id AND live_s.ends_on>=(now() AT TIME ZONE ${o}.timezone)::date))`;
 
+/** The pilots covering a class, as a subquery of pilot ids: its own (a
+ * teacher's, `amp_class_pilots`) and any of an org on its path (a Clever
+ * district's, `amp_org_pilots`). The same pair `amp_school_pilot_until`
+ * reads. `c` and `o` alias the class and its org. */
+export const classPilotIdsSql = (c: string, o: string) =>
+  `(SELECT cp.pilot_id FROM amp_class_pilots cp WHERE cp.class_id=${c}.id
+     UNION ALL SELECT op.pilot_id FROM amp_org_pilots op WHERE op.org_id=ANY(${o}.path))`;
+
 /** Why a school class's students can't practice, when they can't: it has
  * no students yet (or, for a class made before pilots started by
  * themselves, no pilot), or practice has ended. `null` when sign-in leads
@@ -110,8 +118,8 @@ export async function classPracticeStates(
     `SELECT c.id,o.demo OR o.kind='family' AS exempt,${classLiveSql("c", "o")} AS live,
       EXISTS(SELECT 1 FROM amp_school_licenses l WHERE l.org_id=ANY(o.path)
         AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()) AS licensed,
-      EXISTS(SELECT 1 FROM amp_class_pilots cp JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
-        WHERE cp.class_id=c.id AND t.started_at<=now()) AS started,
+      EXISTS(SELECT 1 FROM amp_teacher_pilots t
+        WHERE t.id IN ${classPilotIdsSql("c", "o")} AND t.started_at<=now()) AS started,
       EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
         WHERE e.class_id=c.id AND e.role='student'
           AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)) AS rostered,
@@ -219,7 +227,7 @@ export async function classRecheckQuery(
        -- Every current class a student is in (its pilot may cover them).
        placed AS MATERIALIZED (
          SELECT x.* FROM pupils u CROSS JOIN LATERAL (
-           SELECT e.person_id AS person,e.begin_on,e.end_on,c.id AS class,o.timezone
+           SELECT e.person_id AS person,e.begin_on,e.end_on,c.id AS class,o.timezone,o.path
            FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
            JOIN amp_orgs o ON o.id=c.org_id
            WHERE e.person_id=u.person AND e.role='student'
@@ -238,13 +246,20 @@ export async function classRecheckQuery(
            FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
            WHERE r.person_id=u.person AND r.role='student'
              AND (r.end_on IS NULL OR r.end_on>=current_date-2) OFFSET 0) x),
-       -- The pilots of the classes the students are in, by each class.
+       -- The pilots of the classes the students are in, by each class, and
+       -- of each org on those classes' paths (a district's), by each org.
        pilots AS MATERIALIZED (
          SELECT DISTINCT t.id,t.started_at,t.ends_at,t.grace_ends_at
          FROM (SELECT DISTINCT class FROM placed) e CROSS JOIN LATERAL (
            SELECT t.id,t.started_at,t.ends_at,t.grace_ends_at FROM amp_class_pilots cp
            JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
-           WHERE cp.class_id=e.class OFFSET 0) t),
+           WHERE cp.class_id=e.class OFFSET 0) t
+         UNION
+         SELECT t.id,t.started_at,t.ends_at,t.grace_ends_at
+         FROM (SELECT DISTINCT unnest(path) AS org FROM placed) u CROSS JOIN LATERAL (
+           SELECT t.id,t.started_at,t.ends_at,t.grace_ends_at FROM amp_org_pilots op
+           JOIN amp_teacher_pilots t ON t.id=op.pilot_id
+           WHERE op.org_id=u.org OFFSET 0) t),
        mine AS (
          SELECT r.id,r.role,r.begin_on,r.end_on,o.timezone FROM amp_people me
          JOIN amp_org_roles r ON r.person_id=me.id JOIN amp_orgs o ON o.id=r.org_id, klass k

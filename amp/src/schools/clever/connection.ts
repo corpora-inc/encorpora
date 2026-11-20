@@ -3,6 +3,10 @@ import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { cleverId, CleverSyncError } from "./model.js";
+import {
+  cleverDistrictPilotKey,
+  startInstitutionPilot,
+} from "../institution-pilot.js";
 
 export const connectionInput = z.object({
   environment: z.enum(["sandbox", "production"]),
@@ -66,6 +70,13 @@ export async function registerCleverConnectionIn(
   );
   if (!result.rowCount)
     throw new CleverSyncError("clever_district_already_bound");
+  // Connecting starts the district's one pilot for every class it shares
+  // (founder ruling 2026-11-20); reconnecting finds the same dates.
+  await startInstitutionPilot(
+    db,
+    input.tenantId,
+    cleverDistrictPilotKey(input.environment, input.districtId),
+  );
   return { id: result.rows[0].id as string };
 }
 

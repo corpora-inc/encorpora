@@ -6,6 +6,7 @@ import {
 } from "../src/schools/pilot-contracts.js";
 import {
   accessView,
+  institutionPilotView,
   pilotLeft,
   practiceDate,
   practiceView,
@@ -162,6 +163,26 @@ test("the header says how many pilot or grace days are left, never 0", () => {
   );
   assert.equal(pilotLeft({ kind: "ended" }, now), null);
   assert.equal(pilotLeft({ kind: "paid" }, now), null);
+});
+
+test("a district's pilot reads as the class pilot does: free, then grace", () => {
+  const pilot = {
+    endsAt: "2026-12-06T15:00:00Z",
+    graceEndsAt: "2026-12-20T15:00:00Z",
+  };
+  assert.equal(
+    pilotLeft(institutionPilotView(pilot, now), now),
+    "Free pilot · 23 days left",
+  );
+  const later = new Date("2026-12-10T15:00:00Z");
+  assert.deepEqual(institutionPilotView(pilot, later), {
+    kind: "ending",
+    until: pilot.graceEndsAt,
+  });
+  assert.equal(
+    pilotLeft(institutionPilotView(pilot, later), later),
+    "Grace period · 10 days left",
+  );
 });
 
 test("a class whose pilot runs waits for students, never for its teacher", () => {

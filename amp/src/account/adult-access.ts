@@ -1,5 +1,6 @@
 import type { PoolClient } from "pg";
 import { activeToday } from "../schools/principal.js";
+import { classPilotIdsSql } from "../schools/pilot-access.js";
 
 /** Adult access is derived from live teaching and family sources. All readers
  * that can encounter an adult grant use accessGrantsFor on their own database
@@ -37,7 +38,7 @@ export async function adultPracticeEnd(
        JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
        JOIN amp_orgs o ON o.id=c.org_id AND NOT o.demo AND o.kind<>'family'
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role='teacher' AND r.org_id=ANY(o.path)
-       JOIN amp_class_pilots cp ON cp.class_id=c.id JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
+       JOIN amp_teacher_pilots t ON t.id IN ${classPilotIdsSql("c", "o")}
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND t.started_at<=now()
          AND ${activeToday("e", "o")} AND ${activeToday("r", "o")}
        UNION ALL

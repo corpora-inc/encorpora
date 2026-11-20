@@ -72,6 +72,12 @@ export const pilotStateSchema = z.object({
     .optional(),
 });
 export type PilotState = z.infer<typeof pilotStateSchema>;
+/** An institution's pilot (a Clever district's), for the overview and the
+ * license: free practice through `endsAt`, then grace through `graceEndsAt`. */
+export const institutionPilotSchema = z.object({
+  endsAt: z.string(),
+  graceEndsAt: z.string(),
+});
 export const schoolPurchaseSchema = z.strictObject({
   orgId: z.uuid(),
   classIds: z.array(z.uuid()).min(1).max(500),

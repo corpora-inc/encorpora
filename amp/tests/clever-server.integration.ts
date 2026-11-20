@@ -421,24 +421,34 @@ test(
       ).statusCode,
       401,
     );
-    // Before the teacher signs in, the synced section has no pilot.
+    // Before the teacher signs in, the synced section already runs on the
+    // district's pilot (founder ruling 2026-11-20): nothing waits on them.
     const section = (
       await pool.query(
         "SELECT c.id FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.name='Math' AND o.path[1]=$1",
         [org.id],
       )
     ).rows[0] as { id: string };
-    assert.equal((await classPilotState(pool, section.id)).status, "ready");
-    assert.equal(await classPracticeGate(pool, section.id), "waiting");
-    // No pilot, no license: this one really does wait for its teacher.
-    assert.equal((await classPractice(pool, section.id, null)).wait, "start");
+    const districtPilot = await classPilotState(pool, section.id);
+    assert.equal(districtPilot.status, "active");
+    assert.equal(await classPracticeGate(pool, section.id), null);
+    assert.equal((await classPractice(pool, section.id, null)).wait, null);
     subject = teacher;
     const renewed = await finish(await start());
     const renewedCookie = cookieOf(renewed, "amp.provider-session");
-    // Signing in is all a Clever teacher does: their section's pilot runs,
-    // with no license and nothing to press.
-    assert.equal((await classPilotState(pool, section.id)).status, "active");
+    // Signing in starts nothing of the teacher's own: the section keeps the
+    // district's dates, with no license and nothing to press.
+    assert.deepEqual(await classPilotState(pool, section.id), districtPilot);
     assert.equal(await classPracticeGate(pool, section.id), null);
+    assert.equal(
+      (
+        await pool.query(
+          "SELECT count(*)::int AS n FROM amp_class_pilots WHERE class_id=$1",
+          [section.id],
+        )
+      ).rows[0].n,
+      0,
+    );
     const renewedSession = (
       await app.inject({
         method: "GET",

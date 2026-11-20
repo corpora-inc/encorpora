@@ -161,6 +161,9 @@ export async function removeOrgTree(
   await purge("classPilots", "amp_class_pilots", "class_id=ANY($1::uuid[])", [
     classes,
   ]);
+  // The link only: an institution's pilot and its eligibility digest stay,
+  // so reconnecting the same district finds the same dates.
+  await purge("orgPilots", "amp_org_pilots", "org_id=ANY($1::uuid[])", [orgs]);
   await purge("schoolStarts", "amp_school_starts", "org_id=ANY($1::uuid[])", [
     orgs,
   ]);

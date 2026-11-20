@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { institutionPilotSchema } from "./pilot-contracts.js";
 import { divisionKinds, isIsoDate } from "./calendar.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import {
@@ -65,6 +66,9 @@ export const overviewResponse = z.object({
     evaluation: z.boolean(),
     /** Set when the seats are a pool held above this school. */
     sharedWith: z.string().nullable(),
+    /** The institution's pilot (a Clever district's) while it or its grace
+     * runs: practice runs without a license until `graceEndsAt`. */
+    pilot: institutionPilotSchema.nullish(),
   }),
   week: z.object({
     students: count,
