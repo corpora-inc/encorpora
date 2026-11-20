@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signOut } from "../../auth";
 import { useLearningView } from "../../lib/learning-view";
-import { handedStudentDevice } from "../../lib/student-device";
+import { handedStudentDevice, studentSession } from "../../lib/student-device";
 import { StudentSignOut } from "../practice/StudentSignOut";
 import styles from "./SessionMark.module.css";
 
@@ -10,10 +10,13 @@ import styles from "./SessionMark.module.css";
  * school computer is shared, so the name is always in view and Sign out is
  * one tap. Other adults' bars are unchanged; a device a parent handed to
  * their child keeps its way home. */
-export function SessionMark() {
+export function SessionMark({ named }: { named?: string | null }) {
   const { account } = useLearningView({ records: false });
   const [busy, setBusy] = useState(false);
-  const kind = account?.account.kind;
+  // A student's way out holds its place from the first paint, before (or
+  // without) their account: their session is on this device already.
+  const student = !!studentSession();
+  const kind = account?.account.kind ?? (student ? "student" : undefined);
   if (kind !== "student" && kind !== "provider") return null;
   if (kind === "student" && handedStudentDevice())
     return <StudentSignOut inBar />;
@@ -21,11 +24,13 @@ export function SessionMark() {
     kind === "student"
       ? account?.learners[0]?.name
       : account?.account.displayName;
+  // Named once: not again when the bar already shows it at the start.
+  const shown = name && name !== named ? name : null;
   return (
     <div className={styles.mark} data-session-mark={kind}>
-      {name && (
-        <span className={styles.name} title={name} data-session-name="">
-          {name}
+      {shown && (
+        <span className={styles.name} title={shown} data-session-name="">
+          {shown}
         </span>
       )}
       <button

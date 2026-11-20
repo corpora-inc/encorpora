@@ -268,7 +268,12 @@ function ShellBar({
                 />
               );
             case "sign-out":
-              return <SessionMark key={action} />;
+              return (
+                <SessionMark
+                  key={action}
+                  named={space.label && !practice ? space.label : null}
+                />
+              );
             case "profile-back":
               return <ProfileBackAction key={action} />;
             case "family-back":
@@ -276,7 +281,9 @@ function ShellBar({
           }
         })}
         {/* A school session names itself on every screen (SessionMark). */}
-        {!space.actions.includes("sign-out") && <SessionMark />}
+        {!space.actions.includes("sign-out") && (
+          <SessionMark named={space.label && !practice ? space.label : null} />
+        )}
       </div>
     </header>
   );

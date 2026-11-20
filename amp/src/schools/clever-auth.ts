@@ -110,10 +110,10 @@ export async function exchangeCleverIdentity(
     .parse(await tokenResponse.json());
   if (token.token_type && token.token_type.toLowerCase() !== "bearer")
     throw new Error("clever_token_type");
-  const read = async (path: string) => {
+  const read = async (path: string, seconds = 15) => {
     const response = await transport(`https://api.clever.com/v3.0${path}`, {
       redirect: "error",
-      signal: AbortSignal.timeout(15_000),
+      signal: AbortSignal.timeout(seconds * 1000),
       headers: { authorization: `Bearer ${token.access_token}` },
     });
     if (!response.ok) throw new Error("clever_profile_failed");
@@ -125,24 +125,30 @@ export async function exchangeCleverIdentity(
       data: z.object({ id, district: id, type: z.literal("user").optional() }),
     })
     .parse(await read("/me"));
+  // The district's name says which Clever district this sign-in is for. It
+  // only labels screens: read beside the profile, briefly, and a failure is
+  // logged and never stops a sign-in.
+  const district = read(`/districts/${encodeURIComponent(me.data.district)}`, 3)
+    .then(
+      (body) =>
+        z.object({ data: z.object({ id, name: label }) }).parse(body).data,
+    )
+    .then((found) =>
+      found.id === me.data.district ? found.name || undefined : undefined,
+    )
+    .catch((error: unknown) => {
+      console.warn(
+        "Clever district name not read",
+        error instanceof Error ? error.message : String(error),
+      );
+      return undefined;
+    });
   const user = z
     .object({ data: userSchema })
     .parse(await read(`/users/${encodeURIComponent(me.data.id)}`)).data;
   if (user.id !== me.data.id || user.district !== me.data.district)
     throw new Error("clever_identity_mismatch");
-  // The district's name says which Clever district this sign-in is for. It
-  // only labels the screen, so a failure to read it never stops a sign-in.
-  const districtName = await read(
-    `/districts/${encodeURIComponent(user.district)}`,
-  )
-    .then(
-      (body) =>
-        z.object({ data: z.object({ id, name: label }) }).parse(body).data,
-    )
-    .then((district) =>
-      district.id === user.district ? district.name || undefined : undefined,
-    )
-    .catch(() => undefined);
+  const districtName = await district;
   const name =
     [user.name?.first, user.name?.last].filter(Boolean).join(" ") || undefined;
   const roles = Object.entries(user.roles)

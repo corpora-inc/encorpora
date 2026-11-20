@@ -44,7 +44,8 @@ export const cleverProblems: Record<
  * Clever's own button tries again. */
 export function CleverProblemScreen() {
   const { reason } = useParams({ strict: false }) as { reason?: string };
-  const cause = cleverProblems[reason ?? ""] ? reason! : "failed";
+  const cause =
+    reason && Object.hasOwn(cleverProblems, reason) ? reason : "failed";
   const problem = cleverProblems[cause]!;
   // Every failure is logged where it is seen, never in silence.
   useEffect(() => {

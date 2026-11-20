@@ -109,7 +109,8 @@ test("each student cause asks for their teacher", async () => {
 });
 
 test("a provider failure tries again and names the way to reach us", async () => {
-  at("/clever/whatever", "/clever/$reason", CleverProblemScreen);
+  // Any cause AMP doesn't name, an object's own keys included.
+  at("/clever/constructor", "/clever/$reason", CleverProblemScreen);
   expect(
     await screen.findByRole("heading", {
       name: "Clever sign-in didn’t finish.",

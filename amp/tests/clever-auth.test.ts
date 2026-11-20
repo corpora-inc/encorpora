@@ -59,10 +59,10 @@ test("Clever identity uses subject and provider roles without treating email as 
     },
   );
   // Every Identity API read names its version explicitly.
-  assert.deepEqual(calls.slice(1), [
+  assert.deepEqual(calls.slice(1).sort(), [
+    "https://api.clever.com/v3.0/districts/district-1",
     "https://api.clever.com/v3.0/me",
     "https://api.clever.com/v3.0/users/teacher-1",
-    "https://api.clever.com/v3.0/districts/district-1",
   ]);
 });
 test("a Clever sign-in carries the person's and district's names for display, as written", async () => {

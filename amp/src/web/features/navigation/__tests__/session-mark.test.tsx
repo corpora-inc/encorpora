@@ -41,7 +41,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-function mark(accountId: string, me: object) {
+function mark(accountId: string, me: object, named?: string) {
   vi.stubGlobal("fetch", () => new Promise<never>(() => {}));
   const session = { accountId, token: "t" };
   queryClient.setQueryData(sessionOptions.queryKey, session);
@@ -54,7 +54,7 @@ function mark(accountId: string, me: object) {
   } as unknown as SignedInMe as never);
   render(
     <QueryClientProvider client={queryClient}>
-      <SessionMark />
+      <SessionMark named={named} />
     </QueryClientProvider>,
   );
 }
@@ -85,6 +85,41 @@ test("Clever-signed-in staff see their name and Sign out", async () => {
   expect(
     screen.getByRole("button", { name: "Sign out Haley Hahn" }),
   ).toBeTruthy();
+});
+
+test("a student's Sign out holds its place before their account loads", async () => {
+  vi.stubGlobal("fetch", () => new Promise<never>(() => {}));
+  localStorage.setItem(
+    "amp.student",
+    JSON.stringify({ accountId: "school:student", token: "st_fixture" }),
+  );
+  try {
+    const session = { accountId: "school:student", token: "st_fixture" };
+    queryClient.setQueryData(sessionOptions.queryKey, session);
+    render(
+      <QueryClientProvider client={queryClient}>
+        <SessionMark />
+      </QueryClientProvider>,
+    );
+    expect(screen.getByRole("button", { name: "Sign out" })).toBeTruthy();
+  } finally {
+    localStorage.removeItem("amp.student");
+  }
+});
+
+test("a name the bar already shows is not repeated", async () => {
+  mark(
+    "school:student",
+    {
+      account: { id: "school:student", kind: "student", email: null },
+      learners: [{ id: "l", name: "Angelo Sawayn", birthYear: 2015 }],
+    },
+    "Angelo Sawayn",
+  );
+  expect(
+    await screen.findByRole("button", { name: "Sign out Angelo Sawayn" }),
+  ).toBeTruthy();
+  expect(screen.queryByText("Angelo Sawayn")).toBeNull();
 });
 
 test("a parent's bar is unchanged", async () => {
