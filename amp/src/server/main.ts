@@ -63,6 +63,7 @@ import {
 import { PostgresRepository } from "./repository";
 import { freeProblemsSetting } from "./trials";
 import { cleverAuthOptions, cleverConfiguration } from "./clever.js";
+import { lmsConnectEnabled } from "../schools/clever/lms-config.js";
 import { withProviderSessions } from "../identity/provider-principals.js";
 import { registerCleverAuthRoutes } from "../schools/clever-auth.js";
 import { resolveCleverPerson } from "../schools/clever/identity.js";
@@ -97,6 +98,10 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
 const accountsConfig =
   authMode === "accounts" ? accountsConfiguration(process.env) : undefined;
 const cleverConfig = cleverConfiguration(process.env, accountsConfig);
+/** LMS Connect is off until enabled; it needs Clever and API v3.1. */
+const lmsConnect = lmsConnectEnabled(process.env);
+if (lmsConnect && !cleverConfig)
+  throw new Error("AMP_CLEVER_LMS_CONNECT requires the Clever variables");
 const linkSecret = linkSecretConfiguration(process.env);
 if (accountsConfig) accountsConfig.clever = !!cleverConfig;
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
@@ -216,6 +221,9 @@ await registerSchoolRoutes(app, {
   authenticate,
   services: {
     ...(schoolNow ? { now: schoolNow } : {}),
+    ...(cleverConfig && lmsConnect
+      ? { lms: { environment: cleverConfig.environment } }
+      : {}),
     secret: linkSecret,
     origin: accounts?.config.baseURL ?? "",
     origins: schoolPageOrigins,

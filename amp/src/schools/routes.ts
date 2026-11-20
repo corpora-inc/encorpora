@@ -24,6 +24,7 @@ import { readPlaces } from "./places.js";
 import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
+import { defineLmsRoutes } from "./lms-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
 import { defineStandingRoutes } from "./standing-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
@@ -105,6 +106,9 @@ export type SchoolServices = {
    * production), so a rule that depends on the weekday can be shown on any
    * day. */
   now?: () => Date;
+  /** Clever LMS Connect, once enabled for the app
+   * (`AMP_CLEVER_LMS_CONNECT=enabled`). Absent: no LMS screens or routes. */
+  lms?: { environment: "sandbox" | "production" };
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -587,6 +591,7 @@ definePilotRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
+defineLmsRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
 defineStandingRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);

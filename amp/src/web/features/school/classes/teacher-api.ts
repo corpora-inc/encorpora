@@ -31,6 +31,10 @@ import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { request } from "../../../lib/api";
 import { qk } from "../../../lib/keys";
+import {
+  lmsResponse,
+  type LmsAssignmentInput,
+} from "../../../../schools/lms-contracts";
 
 export type Place = { org: string; class: string };
 type Session = AuthSession | null;
@@ -249,6 +253,11 @@ export const studentRecordOptions = (session: Session, student: string) =>
   });
 
 const messages: Record<string, string> = {
+  lms_due_date_past: "Choose a due date after today.",
+  lms_due_before_opens: "The due date has to be on or after the first day.",
+  lms_term_already_linked: "This term already has an assignment here.",
+  lms_assignment_busy: "It’s being published right now. Try again in a moment.",
+  lms_assignment_closed: "This assignment can’t change any more.",
   term_closed: "This term is closed, so its grades can’t change.",
   term_empty: "This term has no students to close.",
   setting_locked:
@@ -339,6 +348,39 @@ export function useSetCurve(session: Session, place: Place) {
     onSettled: () => refresh(),
   });
 }
+/** The class's LMS assignments (Clever LMS Connect). */
+export const lmsOptions = (session: Session, place: Place) =>
+  queryOptions({
+    queryKey: classKey(session, place, "lms"),
+    enabled: !!session,
+    queryFn: read(session, `${CLASS(place)}/lms`, lmsResponse),
+  });
+export type LmsChange =
+  | { kind: "create"; input: LmsAssignmentInput }
+  | { kind: "update"; id: string; input: LmsAssignmentInput }
+  | { kind: "delete" | "sync" | "republish"; id: string };
+/** Every LMS change: the server queues it, and the class's reads refresh. */
+export function useLmsChange(session: Session, place: Place) {
+  const refresh = useClassRefresh(session, place);
+  return useMutation({
+    mutationFn: (change: LmsChange) =>
+      request(
+        change.kind === "create"
+          ? `${CLASS(place)}/lms/assignments`
+          : `${CLASS(place)}/lms/assignments/${change.id}${change.kind === "update" ? "" : `/${change.kind}`}`,
+        z.object({}).passthrough(),
+        {
+          token: session?.token,
+          body:
+            change.kind === "create" || change.kind === "update"
+              ? change.input
+              : {},
+        },
+      ),
+    onSettled: () => refresh(),
+  });
+}
+
 export function useCloseTerm(session: Session, place: Place) {
   const refresh = useClassRefresh(session, place);
   return useMutation({

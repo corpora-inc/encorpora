@@ -37,6 +37,7 @@ import {
 import { EvidenceSheet } from "./EvidenceSheet";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurveSheet, CurveStrip } from "./GradeCurve";
+import { LmsSheet, lmsLabel } from "./LmsSheet";
 import {
   downloadGradebook,
   downloadOneRoster,
@@ -317,6 +318,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
   const evidence = useKeyedSheet("student");
   const curveSheet = useSheet("curve");
   const exportSheet = useSheet("export");
+  const lmsSheet = useSheet("lms");
   // Settings of a small class opens this with its close sheet.
   const closeSheet = useSheet("close");
   const requested = uuidOr(search.term);
@@ -474,8 +476,7 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
     !!data?.curve &&
     rows.length > 1 &&
     !rows.some((row) => row.suggestion.status === "facts-only");
-  const curveOpen =
-    curved && editable && whole && curveSheet.open;
+  const curveOpen = curved && editable && whole && curveSheet.open;
   // Nobody has a week's work yet: what a grade will look like, not a table of
   // dashes.
   const waiting =
@@ -591,17 +592,25 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
                   // A week of work starts with class: the board's code.
-                  // A family's Today is its tab, in the bar.
+                  // A family's Today is its tab, in the bar. A class with an
+                  // LMS can publish its first assignment before any work.
                   given || family ? undefined : (
-                    <Link
-                      to="/$"
-                      params={{
-                        _splat: classUrl(place.org, place.class, "start"),
-                      }}
-                      className={buttonClass("primary")}
-                    >
-                      Start class
-                    </Link>
+                    <div className={styles.emptyActions}>
+                      <Link
+                        to="/$"
+                        params={{
+                          _splat: classUrl(place.org, place.class, "start"),
+                        }}
+                        className={buttonClass("primary")}
+                      >
+                        Start class
+                      </Link>
+                      {whole && data.lms && (
+                        <Button variant="secondary" onClick={lmsSheet.show}>
+                          {lmsLabel(data.lms)}
+                        </Button>
+                      )}
+                    </div>
                   )
                 }
               >
@@ -639,6 +648,12 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                   {whole && (
                     <Button variant="quiet" onClick={exportSheet.show}>
                       Export
+                    </Button>
+                  )}
+                  {whole && data.lms && (
+                    // The class's LMS through Clever, by its own name.
+                    <Button variant="quiet" onClick={lmsSheet.show}>
+                      {lmsLabel(data.lms)}
                     </Button>
                   )}
                   <ViewLink
@@ -742,6 +757,17 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
               term={term}
               onMessage={setMessage}
               onError={setError}
+            />
+          )}
+          {whole && data.lms && (
+            <LmsSheet
+              open={lmsSheet.open}
+              onOpenChange={(next) => {
+                if (!next) lmsSheet.close();
+              }}
+              place={place}
+              lms={data.lms}
+              weeklyTargetMinutes={data.weeklyTargetMinutes}
             />
           )}
           <Dialog

@@ -1,7 +1,10 @@
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
-import { z } from "zod";
 import { SchoolError } from "../contracts.js";
+import {
+  lmsAssignmentInput,
+  type LmsAssignmentInput,
+} from "../lms-contracts.js";
 import { classContext, termById, termsFor } from "../term-grades.js";
 import type { LmsType } from "./lms-model.js";
 
@@ -12,27 +15,7 @@ type Environment = "sandbox" | "production";
  * A teacher's side of LMS Connect. Every function here only reads and writes
  * AMP's rows; the LMS worker (`lms-worker.ts`) makes every Clever call.
  */
-const day = z.iso.date();
-const title = z.string().trim().min(1).max(120);
-const points = z.number().finite().positive().max(1000);
-export const lmsAssignmentInput = z.discriminatedUnion("kind", [
-  z.strictObject({
-    kind: z.literal("practice"),
-    title,
-    pointsPossible: points,
-    targetMinutes: z.number().int().min(1).max(6000),
-    opensOn: day,
-    dueOn: day,
-  }),
-  z.strictObject({
-    kind: z.literal("term_grade"),
-    title,
-    pointsPossible: points,
-    termId: z.uuid(),
-    dueOn: day,
-  }),
-]);
-export type LmsAssignmentInput = z.infer<typeof lmsAssignmentInput>;
+export { lmsAssignmentInput, type LmsAssignmentInput };
 
 /** The class's Clever section, district connection and what Clever last said
  * about its LMS. Null: not a Clever section of an active connection here. */
@@ -198,10 +181,11 @@ export async function deleteLmsAssignment(
   const row = await owned(db, args.classId, args.id);
   if (row.status === "creating")
     throw new SchoolError(409, "lms_assignment_busy", 5);
+  // A column already deleted in the LMS just leaves the list.
   const next =
     row.status === "published"
       ? "deleting"
-      : ["pending", "unknown"].includes(row.status)
+      : ["pending", "unknown", "missing"].includes(row.status)
         ? "deleted"
         : row.status;
   const changed = await db.query(
