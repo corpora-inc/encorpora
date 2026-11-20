@@ -7,40 +7,41 @@ import {
   researchPage as page,
 } from "../../../research/report";
 import { buttonClass } from "../../ui/Button";
-import { WaveMark } from "../../ui/NavigationSheet";
+import { BrandMark } from "../../ui/BrandMark";
 import { RootLink } from "../../nav/root";
 import { SiteFooter } from "../support/SiteFooter";
-import frame from "../schools/PublicFrame.module.css";
+// The homepage's frame: its width, header, brand and footer, so `/` and
+// `/research` sit on the same lines.
+import frame from "../pitch/Pitch.module.css";
 import styles from "./Research.module.css";
 
 /** `/research`: the research behind AMP in plain words, for parents and
  * schools, with the report itself one tap away. The words live in
- * `src/research/report.ts`, which the static document repeats. */
+ * `src/research/report.ts`, which the static document repeats. On wide
+ * screens the title sits beside the report, and each section's heading stays
+ * in view while its section scrolls. */
 export function ResearchScreen() {
   return (
     <div className={frame.page} data-research="">
       <header className={frame.header}>
-        <div className={frame.headerRow}>
-          <RootLink
-            className={frame.brand}
-            aria-label={`${brand.name} ${brand.expansion}, home`}
-          >
-            <WaveMark />
-            <span className={frame.wordmark}>{brand.name}</span>
-          </RootLink>
-          <div className={frame.headerLinks}>
-            <Link to="/schools" className={buttonClass("quiet")}>
-              For schools
-            </Link>
-          </div>
-        </div>
+        <RootLink
+          className={frame.brand}
+          aria-label={`${brand.name} ${brand.expansion}, home`}
+        >
+          <BrandMark beside="long" />
+        </RootLink>
+        <Link to="/schools" className={buttonClass("quiet", frame.signIn)}>
+          Schools
+        </Link>
       </header>
-      <main className={styles.main}>
+      <main className={`${frame.main} ${styles.main}`}>
         <section className={styles.intro} aria-labelledby="research-title">
-          <h1 id="research-title" className={styles.title}>
-            {page.title}
-          </h1>
-          <p className={styles.lede}>{page.lede}</p>
+          <div className={styles.copy}>
+            <h1 id="research-title" className={frame.title}>
+              {page.title}
+            </h1>
+            <p className={frame.lede}>{page.lede}</p>
+          </div>
           <ReportCard />
         </section>
 
