@@ -29,6 +29,8 @@ export type Connection = {
   status: string;
   events_enabled: boolean;
   event_cursor: string | null;
+  events_baseline_at: Date | null;
+  events_unavailable_at: Date | null;
   last_full_sync_at: Date | null;
   last_sync_at: Date | null;
 };

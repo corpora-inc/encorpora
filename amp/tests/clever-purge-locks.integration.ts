@@ -118,7 +118,7 @@ for (const phase of ["download", "apply"] as const)
               return source;
             },
           },
-          { db: importer },
+          { db: importer, mode: "full" },
         ).catch((error) => error as Error);
         await fetchEntered;
         const purge = await db.connect(),

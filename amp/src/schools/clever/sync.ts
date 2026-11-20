@@ -32,6 +32,9 @@ export type SyncResult = {
     terms: number;
   };
   cursor: string | null;
+  /** "unavailable": Clever refused /events; the run fell back to a full
+   * snapshot and the connection is on the daily schedule until it allows them. */
+  events: "enabled" | "disabled" | "unavailable";
 };
 type Client = Pick<
   CleverClient,
@@ -83,6 +86,39 @@ export function applyEvents(
   };
 }
 
+/** Clever answers 401/403 on /events when Events are not enabled for the app
+ * or the district. That is a missing capability, not a broken roster. */
+const eventsRefused = (error: unknown): error is CleverHttpError =>
+  error instanceof CleverHttpError && [401, 403].includes(error.status);
+
+type Watermark = {
+  cursor: string | null;
+  baseline: Date | null;
+  refused: CleverHttpError | null;
+};
+/** Capture the Events watermark BEFORE scanning the snapshot: changes made
+ * during the scan are replayed idempotently by the next Events run. An empty
+ * feed is still a baseline (cursor null: read the feed from its start). */
+async function watermark(
+  client: Client,
+  token: string,
+  connection: Connection,
+  now: Date,
+): Promise<Watermark> {
+  if (!connection.events_enabled)
+    return { cursor: null, baseline: null, refused: null };
+  try {
+    return {
+      cursor: await client.latestEvent(token),
+      baseline: now,
+      refused: null,
+    };
+  } catch (error) {
+    if (!eventsRefused(error)) throw error;
+    return { cursor: null, baseline: null, refused: error };
+  }
+}
+
 export function safeSyncError(error: unknown): string {
   if (error instanceof CleverSyncError) return error.code;
   if (error instanceof z.ZodError) return "clever_invalid_response";
@@ -129,7 +165,8 @@ export async function syncCleverConnection(
       options.stageOnly ||
       options.mode === "full" ||
       !connection.events_enabled ||
-      !connection.event_cursor ||
+      connection.events_unavailable_at ||
+      !connection.events_baseline_at ||
       !connection.last_sync_at ||
       now.getTime() - connection.last_sync_at.getTime() > 27 * 86_400_000 ||
       (options.mode !== "events" &&
@@ -165,9 +202,11 @@ export async function syncCleverConnection(
     }
     let snapshot: Snapshot | undefined;
     let cursor = connection.event_cursor;
+    let baseline = connection.events_baseline_at;
+    let refused: CleverHttpError | null = null;
     if (mode === "events") {
       try {
-        const events = await client.events(token, cursor!);
+        const events = await client.events(token, cursor);
         // Most polls have no changes. Do not read/rewrite a whole district for
         // an empty feed; the daily full snapshot still repairs local drift.
         if (events.length) {
@@ -181,7 +220,10 @@ export async function syncCleverConnection(
       } catch (error) {
         // A retained cursor can expire, and a delta may require dependencies
         // absent from a partial sharing change. A complete read repairs both.
+        // Events withdrawn for the app or district: fall back to the full
+        // snapshot rather than failing the roster.
         if (
+          !eventsRefused(error) &&
           !(
             error instanceof CleverHttpError &&
             [400, 404].includes(error.status)
@@ -198,19 +240,29 @@ export async function syncCleverConnection(
         )
           throw error;
         mode = "full";
-        cursor = connection.events_enabled
-          ? await client.latestEvent(token)
-          : null;
+        ({ cursor, baseline, refused } = eventsRefused(error)
+          ? { cursor: null, baseline: null, refused: error }
+          : await watermark(client, token, connection, now));
         snapshot = await client.snapshot(connection.district_id, token);
       }
     } else {
-      // Capture the watermark BEFORE scanning the snapshot. Concurrent changes
-      // will be replayed idempotently on the next Events run.
-      cursor = connection.events_enabled
-        ? await client.latestEvent(token)
-        : null;
+      ({ cursor, baseline, refused } = await watermark(
+        client,
+        token,
+        connection,
+        now,
+      ));
       snapshot = await client.snapshot(connection.district_id, token);
     }
+    if (refused)
+      console.warn(
+        "[schools] Clever Events refused; this district syncs by daily full snapshot until Clever allows /events",
+        {
+          connectionId,
+          status: refused.status,
+          since: (connection.events_unavailable_at ?? now).toISOString(),
+        },
+      );
     if (snapshot) snapshot = validateSnapshot(snapshot, connection.district_id);
     await db.query("BEGIN");
     transactionOpen = true;
@@ -252,7 +304,8 @@ export async function syncCleverConnection(
       await db.query(
         `UPDATE amp_clever_connections SET event_cursor=$2,last_sync_at=$3,
       last_full_sync_at=CASE WHEN $4='full' THEN $3 ELSE last_full_sync_at END,
-      connection_type=$5,launch_date=$6,last_clever_sync=$7 WHERE id=$1`,
+      connection_type=$5,launch_date=$6,last_clever_sync=$7,
+      events_baseline_at=$8,events_unavailable_at=$9 WHERE id=$1`,
         [
           connectionId,
           cursor,
@@ -261,6 +314,8 @@ export async function syncCleverConnection(
           snapshot.district.connection_type ?? null,
           snapshot.district.launch_date?.slice(0, 10) || null,
           snapshot.district.last_clever_sync ?? null,
+          baseline,
+          refused ? (connection.events_unavailable_at ?? now) : null,
         ],
       );
     await db.query(
@@ -279,7 +334,17 @@ export async function syncCleverConnection(
     );
     await db.query("COMMIT");
     transactionOpen = false;
-    return { runId, mode, counts, cursor };
+    return {
+      runId,
+      mode,
+      counts,
+      cursor,
+      events: !connection.events_enabled
+        ? "disabled"
+        : refused
+          ? "unavailable"
+          : "enabled",
+    };
   } catch (error) {
     await db.query("ROLLBACK");
     transactionOpen = false;
