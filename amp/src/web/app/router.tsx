@@ -937,6 +937,16 @@ const joinContinue = createRoute({
   staticData: { space: "student" },
   component: lazyRouteComponent(joinScreens, "ContinueScreen"),
 });
+/** A Clever sign-in that stopped, by its cause (school/clever-auth.ts). */
+const cleverProblem = createRoute({
+  getParentRoute: () => root,
+  path: "/clever/$reason",
+  staticData: { space: "public" },
+  component: lazyRouteComponent(
+    () => import("../features/school/clever/CleverProblemScreen"),
+    "CleverProblemScreen",
+  ),
+});
 const joinClass = createRoute({
   getParentRoute: () => root,
   path: "/join/$code",
@@ -1622,6 +1632,7 @@ export const router = createRouter({
     appScreen.addChildren([home, fallback, lessonFilm, lessonFilmProblem]),
     join,
     joinContinue,
+    cleverProblem,
     joinClass,
     joinPictures,
     signInCard,

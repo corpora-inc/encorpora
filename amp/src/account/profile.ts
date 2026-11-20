@@ -27,13 +27,25 @@ export const realAdultName = (name: string | null | undefined) => {
     ? value
     : null;
 };
+/** The display names a Clever sign-in carried (school/clever-auth.ts):
+ * labels only, never identity. */
+export const cleverDisplay = (claims: unknown) => {
+  const value = (claims ?? {}) as { name?: unknown; districtName?: unknown };
+  return {
+    name: typeof value.name === "string" && value.name ? value.name : undefined,
+    districtName:
+      typeof value.districtName === "string" && value.districtName
+        ? value.districtName
+        : undefined,
+  };
+};
 export async function accountProfile(
   db: Database,
   account: string,
 ): Promise<AdultProfile> {
   const exists = (
     await db.query(
-      "SELECT to_regclass('amp_account_profiles') AS profile,to_regclass('amp_auth_users') AS auth,to_regclass('amp_people') AS people",
+      "SELECT to_regclass('amp_account_profiles') AS profile,to_regclass('amp_auth_users') AS auth,to_regclass('amp_people') AS people,to_regclass('amp_provider_identities') AS identities",
     )
   ).rows[0];
   const profile = exists.profile
@@ -74,9 +86,26 @@ export async function accountProfile(
           )
         ).rows[0]?.name ?? null)
       : null;
+  // Before any roster names them, Clever's own name for them from their
+  // latest sign-in (a district admin authorizing AMP for the first time).
+  const signedIn =
+    !mailbox && !rostered && account.startsWith("amp|") && exists.identities
+      ? (cleverDisplay(
+          (
+            await db.query(
+              "SELECT claims FROM amp_provider_identities WHERE account_id=$1 ORDER BY verified_at DESC LIMIT 1",
+              [account],
+            )
+          ).rows[0]?.claims,
+        ).name ?? null)
+      : null;
   // A provider's full name is usable as supplied, but does not establish how
   // that person divides it into given and family names.
-  return { givenName: null, familyName: null, displayName: name ?? rostered };
+  return {
+    givenName: null,
+    familyName: null,
+    displayName: name ?? rostered ?? signedIn,
+  };
 }
 export async function setAccountProfile(
   pool: Pool,

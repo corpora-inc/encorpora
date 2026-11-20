@@ -1,0 +1,64 @@
+/* The name, then Sign out, at the bar's end. The name gives way first: it
+   shortens before anything else in the bar moves. */
+.mark {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.name {
+  min-width: 0;
+  max-width: min(36vw, 22ch);
+  overflow: hidden;
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.signOut {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted-text);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  cursor: pointer;
+}
+.signOut:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.signOut:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.signOut svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* A phone keeps the name and the door; the word joins when there's room. */
+.label {
+  display: none;
+}
+@media (min-width: 640px) {
+  .label {
+    display: inline;
+  }
+}

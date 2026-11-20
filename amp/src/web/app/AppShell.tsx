@@ -35,7 +35,7 @@ import {
   ProfileBackAction,
   ProfileMark,
 } from "../features/profiles/ProfileBar";
-import { StudentSignOut } from "../features/practice/StudentSignOut";
+import { SessionMark } from "../features/navigation/SessionMark";
 import { FamilyReturn } from "../features/family/FamilyReturn";
 import { Tabs } from "../ui/Tabs";
 import { Toast } from "../ui/Toast";
@@ -268,13 +268,15 @@ function ShellBar({
                 />
               );
             case "sign-out":
-              return <StudentSignOut key={action} inBar />;
+              return <SessionMark key={action} />;
             case "profile-back":
               return <ProfileBackAction key={action} />;
             case "family-back":
               return <FamilyReturn key={action} />;
           }
         })}
+        {/* A school session names itself on every screen (SessionMark). */}
+        {!space.actions.includes("sign-out") && <SessionMark />}
       </div>
     </header>
   );

@@ -202,6 +202,8 @@ try {
       districtId: "fixture",
       roles: ["district_admin"],
       personId: null,
+      name: "Jane Smith",
+      districtName: "Certification ISD",
     },
     existingSchools: [{ id: schoolId, name: "Existing school" }],
     connection: {
@@ -242,6 +244,16 @@ try {
   await page
     .getByRole("heading", { name: "Reconnect your district" })
     .waitFor();
+  // Mid-setup, outside the app: who Clever signed in, the way out, and
+  // their name already in the agreement (Clever certification).
+  await page
+    .getByText("Signed in as Jane Smith · Certification ISD", { exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "Sign out", exact: true }).waitFor();
+  assert.equal(
+    await page.getByRole("textbox", { name: /name/i }).first().inputValue(),
+    "Jane Smith",
+  );
   assert.equal(new URL(page.url()).hash, "");
   assert.equal(
     await page.evaluate(() => localStorage.getItem("amp.student")),
@@ -477,9 +489,20 @@ try {
     await cleverLink().waitFor();
   }
   await capture("clever-student-not-rostered");
+  // A stopped Clever sign-in has its own screen by cause, never the adult
+  // sign-in form: a child's words and Clever's button to try again.
+  await page.goto(`${origin}/clever/not-connected`);
+  await page
+    .getByRole("heading", { name: "Your school isn’t on AMP yet." })
+    .waitFor();
+  await page.getByText("Ask your teacher.", { exact: true }).waitFor();
+  assert.equal(await page.getByLabel(/password/i).count(), 0);
+  await capture("clever-not-connected");
+  await page.goto(`${origin}/clever/failed`);
+  await page.getByText("support@corpora.inc", { exact: true }).waitFor();
   // Students and staff always have a way in from sign-in, not only after a
   // failure, and a student signed out on a shared computer from /join.
-  for (const path of ["/sign-in", "/join"]) {
+  for (const path of ["/sign-in", "/join", "/clever/not-connected"]) {
     await page.goto(`${origin}${path}`);
     await cleverLink().waitFor();
     assert.equal(
@@ -507,7 +530,7 @@ try {
         true,
       );
     }
-    await capture(`clever-log-in-${path.slice(1)}`);
+    await capture(`clever-log-in-${path.slice(1).replaceAll("/", "-")}`);
   }
   assert.deepEqual(failures, []);
   console.info(

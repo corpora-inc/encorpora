@@ -55,9 +55,15 @@ const ROOT = "/api/v1/school/sso/clever";
 const FLOW_COOKIE = "amp.clever-flow";
 const OPAQUE = /^[\w-]{43}$/;
 const id = z.string().min(1).max(128);
+/** Display only: never an identity key, never matched against anything. */
+const label = z.string().trim().max(200).optional().catch(undefined);
 const userSchema = z.object({
   id,
   district: id,
+  name: z
+    .object({ first: label, middle: label, last: label })
+    .optional()
+    .catch(undefined),
   roles: z.object({
     teacher: z
       .object({ schools: z.array(id).optional() })
@@ -74,7 +80,8 @@ const userSchema = z.object({
 });
 
 /** A profile email is not a verified mailbox. Only the provider's subject,
- * district, role and school claims enter the authentication model. */
+ * district, role and school claims enter the authentication model; the
+ * person's and district's names are kept beside them for display. */
 export async function exchangeCleverIdentity(
   config: CleverAuthConfig,
   code: string,
@@ -123,6 +130,21 @@ export async function exchangeCleverIdentity(
     .parse(await read(`/users/${encodeURIComponent(me.data.id)}`)).data;
   if (user.id !== me.data.id || user.district !== me.data.district)
     throw new Error("clever_identity_mismatch");
+  // The district's name says which Clever district this sign-in is for. It
+  // only labels the screen, so a failure to read it never stops a sign-in.
+  const districtName = await read(
+    `/districts/${encodeURIComponent(user.district)}`,
+  )
+    .then(
+      (body) =>
+        z.object({ data: z.object({ id, name: label }) }).parse(body).data,
+    )
+    .then((district) =>
+      district.id === user.district ? district.name || undefined : undefined,
+    )
+    .catch(() => undefined);
+  const name =
+    [user.name?.first, user.name?.last].filter(Boolean).join(" ") || undefined;
   const roles = Object.entries(user.roles)
     .filter(([, value]) => value !== undefined)
     .map(([role]) => role);
@@ -142,9 +164,26 @@ export async function exchangeCleverIdentity(
         ...(user.roles.staff?.schools ?? []),
       ]),
     ],
+    ...(name ? { name } : {}),
+    ...(districtName ? { districtName } : {}),
   };
 }
 
+/** Why a Clever student has no AMP learner: their district never connected
+ * AMP, disconnected it, or hasn't shared their class. */
+async function studentRefusal(pool: Pool, claims: CleverClaims) {
+  const connection = (
+    await pool.query(
+      "SELECT status FROM amp_clever_connections WHERE environment=$1 AND district_id=$2",
+      [claims.environment, claims.districtId],
+    )
+  ).rows[0] as { status: string } | undefined;
+  return !connection
+    ? "clever_student_not_connected"
+    : connection.status !== "active"
+      ? "clever_student_disconnected"
+      : "clever_student_not_on_roster";
+}
 function cookie(
   reply: FastifyReply,
   name: string,
@@ -272,7 +311,7 @@ export async function registerCleverAuthRoutes(
         "Clever sign-in failed",
       );
       return reply.redirect(
-        `/sign-in?error=${query.data?.error === "access_denied" ? "clever_sign_in_canceled" : "clever_sign_in_failed"}`,
+        `/clever/${query.data?.error === "access_denied" ? "canceled" : "failed"}`,
       );
     }
     const { code, state } = query.data;
@@ -291,7 +330,7 @@ export async function registerCleverAuthRoutes(
         { cleverSignInFailed: "clever_invalid_state" },
         "Clever sign-in failed",
       );
-      return reply.redirect("/sign-in?error=clever_sign_in_failed");
+      return reply.redirect("/clever/failed");
     }
     cookie(reply, FLOW_COOKIE, "", secure, 0, ROOT);
     try {
@@ -323,9 +362,9 @@ export async function registerCleverAuthRoutes(
           !person ||
           !person.roles.includes("student")
         )
-          throw new Error("clever_student_unavailable");
+          throw new Error(await studentRefusal(pool, claims));
         const grant = await options.signInPerson(person.personId);
-        if (!grant) throw new Error("clever_student_unavailable");
+        if (!grant) throw new Error("clever_student_not_on_roster");
         await revokeProviderSession(pool, request);
         await options.clearAccountSession?.(request, reply);
         cookie(reply, PROVIDER_COOKIE, "", secure, 0);
@@ -392,19 +431,19 @@ export async function registerCleverAuthRoutes(
         "Clever sign-in failed",
       );
       if (error instanceof Error && error.message === "clever_sign_in_busy")
-        return reply.redirect("/sign-in?error=clever_sign_in_busy");
-      // Each refusal a person can act on has its own message on the
-      // sign-in page; anything else is a retryable "didn't finish".
-      if (
-        error instanceof Error &&
-        error.message === "clever_student_unavailable"
-      )
-        return reply.redirect("/sign-in?error=clever_student_not_rostered");
-      if (
-        error instanceof Error &&
-        error.message === "clever_contact_unsupported"
-      )
-        return reply.redirect("/sign-in?error=clever_contact_unsupported");
+        return reply.redirect("/clever/busy");
+      // Each refusal a person can act on has its own screen, never the adult
+      // sign-in form; anything else is a retryable "didn't finish".
+      const cause =
+        error instanceof Error
+          ? {
+              clever_student_not_connected: "not-connected",
+              clever_student_disconnected: "disconnected",
+              clever_student_not_on_roster: "not-on-roster",
+              clever_contact_unsupported: "guardian",
+            }[error.message]
+          : undefined;
+      if (cause) return reply.redirect(`/clever/${cause}`);
       if (error instanceof Error && error.message === "identity_already_linked")
         return reply.redirect(
           "/school/connect?error=clever_identity_already_linked",
@@ -421,7 +460,7 @@ export async function registerCleverAuthRoutes(
         error.message === "clever_link_proof_expired"
       )
         return reply.redirect("/school/connect?error=clever_link_expired");
-      return reply.redirect("/sign-in?error=clever_sign_in_failed");
+      return reply.redirect("/clever/failed");
     }
   });
   app.get("/api/v1/provider/session", async (request, reply) => {

@@ -25,6 +25,9 @@ export const connectionStatusSchema = z.object({
       districtId: z.string(),
       roles: z.array(z.string()),
       personId: z.string().nullable(),
+      // Clever's names for the person and district, for display only.
+      name: z.string().nullable().optional(),
+      districtName: z.string().nullable().optional(),
     })
     .nullable(),
   connection: z

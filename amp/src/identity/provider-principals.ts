@@ -14,6 +14,10 @@ export type CleverClaims = {
   userId: string;
   roles: string[];
   schools: string[];
+  /** For display ("Signed in as"): Clever's name for the person and their
+   * district, as of the last sign-in. Never used to match or authorize. */
+  name?: string;
+  districtName?: string;
 };
 export type CleverPerson = {
   connectionId: string;

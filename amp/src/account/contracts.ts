@@ -88,6 +88,9 @@ const accountSchema = z.object({
   /** Set for a school student, whose token and learner the school manages.
    * Staff are ordinary accounts: one person can be a teacher and a parent. */
   kind: z.enum(["student", "provider"]).optional(),
+  /** A school-only (Clever) account's district, by Clever's name for it:
+   * shown with whose session this is. */
+  districtName: z.string().optional(),
 });
 export const meSchema = z.discriminatedUnion("signedIn", [
   z.object({ signedIn: z.literal(false), next: z.literal("sign-in") }),
