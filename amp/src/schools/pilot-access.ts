@@ -369,13 +369,17 @@ export async function assertSignInOpen(
 }
 
 /** A signed-in student's gate, for `/me`: only for a school's student whom
- * nothing covers (`pilot` from schoolPilotAccess). */
+ * nothing covers (`pilot` from schoolPilotAccess). A student in no class
+ * (rostered, no section yet) waits on being added to one: no start, end or
+ * seat is theirs to wait on. */
 export async function studentPracticeGate(
   db: Pick<PoolClient, "query">,
   pilot: { managed: boolean; until: Date | null },
   homePath: string[] | string,
-): Promise<PracticeGate | "seat" | null> {
+  inClass: boolean,
+): Promise<PracticeGate | "seat" | "noClass" | null> {
   if (!pilot.managed) return null;
+  if (!inClass) return "noClass";
   const licensed = (
     await db.query(
       `SELECT 1 FROM amp_school_licenses l WHERE l.org_id=ANY($1::uuid[])

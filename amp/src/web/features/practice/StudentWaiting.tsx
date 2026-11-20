@@ -1,13 +1,22 @@
 import type { ReactNode } from "react";
 import join from "../school/join/Join.module.css";
 
+/** Why a school's student can't practice: in no class yet, practice not
+ * started, ended, or no seat. */
+export type StudentGate = "noClass" | "waiting" | "ended" | "seat";
+
 /** What a school's student is told when they can't practice yet, in school
  * terms: never a family's free problems, never "your grown-up". A class's
  * name stays on one line. */
 export function studentWaitingWords(
-  gate: "waiting" | "ended" | "seat",
+  gate: StudentGate,
   className?: string,
 ): { title: ReactNode; detail?: string } {
+  if (gate === "noClass")
+    return {
+      title: "You’re not in a math class in AMP yet.",
+      detail: "Ask your teacher to add you.",
+    };
   if (gate === "waiting")
     return { title: "Your teacher hasn’t started practice yet." };
   if (gate === "ended")
@@ -34,7 +43,7 @@ export function PracticeGate({
   className,
   heading = "h1",
 }: {
-  gate: "waiting" | "ended" | "seat";
+  gate: StudentGate;
   className?: string;
   heading?: "h1" | "h2";
 }) {
@@ -53,7 +62,7 @@ export function StudentWaiting({
   gate,
   className,
 }: {
-  gate: "waiting" | "ended" | "seat";
+  gate: StudentGate;
   className?: string;
 }) {
   return (

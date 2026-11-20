@@ -26,8 +26,8 @@ export function Launcher() {
   const me = useQuery(forSession(useSessionOrNull(), meOptions)).data;
   const account = me?.signedIn ? me : null;
   const { groups, loading } = usePlaces(account);
-  // A school's student who can't practice yet (no seat, practice not
-  // started or ended) is told why here, never offered a practice that only
+  // A school's student who can't practice yet (in no class, no seat,
+  // practice not started or ended) is told why here, never offered a practice that only
   // says so: the school's word for it, else no seat for a learner who can't
   // practice (as practice itself decides, app/LegacyApp.tsx).
   const own =

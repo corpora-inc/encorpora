@@ -513,7 +513,7 @@ test(
     assert.equal(loneView.learners[0]!.name, "Zoë Solo");
     assert.equal(loneView.school.orgName, "Escuela Señora Núñez");
     assert.equal(loneView.school.className, undefined);
-    assert.equal(loneView.school.practice, "waiting");
+    assert.equal(loneView.school.practice, "noClass");
     // Only a school-only (Clever) account takes its roster name. A mailbox
     // account with no name of its own keeps none, never a name another
     // person typed for it on an invitation.

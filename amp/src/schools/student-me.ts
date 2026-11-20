@@ -108,7 +108,7 @@ export async function studentMe(
   // on a family's free problems: the app says which, in school terms.
   const practice = covered
     ? null
-    : await studentPracticeGate(pool, pilot, home.path);
+    : await studentPracticeGate(pool, pilot, home.path, classes.length > 0);
   const settings = await enrollmentSettings(pool, personId, home, classes);
   const practiceState = (
     await pool.query(
