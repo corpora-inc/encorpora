@@ -258,7 +258,10 @@ test(
             /consent_required/,
           );
           const teen = await learner(owner, 2010);
-          assert.equal((await gifts.activate(owner, next.id, teen))?.learnerId, teen);
+          assert.equal(
+            (await gifts.activate(owner, next.id, teen))?.learnerId,
+            teen,
+          );
         },
       );
       await t.test(
@@ -583,6 +586,45 @@ test(
           // A child added after revocation is not covered.
           const after = await learning.create(family.owner, "After", 2017);
           assert.deepEqual(await grantsOf(after.id), []);
+        },
+      );
+      await t.test(
+        "a gift the parent took before adding a child moves to the first child; the parent keeps practicing",
+        async () => {
+          const owner = await account("parentfirst");
+          const adult = await adultLearner(owner);
+          const gift = await issue("parentfirst@example.test", 1);
+          const taken = (await gifts.activate(owner, gift.id, adult))!;
+          assert.deepEqual(
+            (await grantsOf(adult)).map((g) => g.id),
+            [`email-gift:${gift.id}`],
+          );
+          const child = await learning.create(owner, "Child", 2014);
+          assert.deepEqual(
+            (await grantsOf(child.id)).map((g) => [
+              g.id,
+              g.status,
+              g.ends_at.toISOString(),
+            ]),
+            [[`email-gift:${gift.id}`, "active", taken.endsAt]],
+          );
+          assert.equal(
+            (await activeEnd(child.id))?.toISOString(),
+            taken.endsAt,
+          );
+          // The parent practices free while the child has access.
+          assert.deepEqual(
+            (await grantsOf(adult)).map((g) => g.id),
+            [`adult:${adult}`],
+          );
+          assert.equal((await activeEnd(adult))?.toISOString(), taken.endsAt);
+          // It moves once: a second child gets nothing from it.
+          const second = await learning.create(owner, "Second", 2016);
+          assert.deepEqual(await grantsOf(second.id), []);
+          assert.deepEqual(
+            (await grantsOf(child.id)).map((g) => g.id),
+            [`email-gift:${gift.id}`],
+          );
         },
       );
       await t.test(

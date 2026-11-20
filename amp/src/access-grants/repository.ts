@@ -210,6 +210,57 @@ async function activateFamilyGift(
   };
 }
 
+/** A learner gift the parent took for their own practice, before any child
+ * was added, moves to the first child added without access. The parent then
+ * practices free while that child has access (docs/families.md), so nobody
+ * loses a day and the gift reaches a child. The term keeps its dates. Funded
+ * bridges and paid grants never move. Null when there is nothing to move. */
+async function moveParentGiftToChild(
+  db: PoolClient,
+  accountId: string,
+  learnerId: string,
+) {
+  const child = await db.query(
+    "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND NOT adult AND NOT simulation AND deleted_at IS NULL",
+    [learnerId, accountId],
+  );
+  if (!child.rowCount) return null;
+  const access = await accessGrantsFor(db, [learnerId]);
+  if (access.grants.some((g) => grantReserved(g, access.now))) return null;
+  const gift = (
+    await db.query<{
+      id: string;
+      grant_id: string;
+      activated_at: Date;
+      ends_at: Date;
+    }>(
+      `SELECT g.id,g.grant_id,g.activated_at,g.ends_at FROM amp_access_gifts g
+       JOIN amp_learners l ON l.id=g.learner_id AND l.account_id=$1 AND l.adult AND NOT l.simulation
+       JOIN amp_grants r ON r.id=g.grant_id AND r.learner_id=l.id AND r.status='active' AND r.ends_at>now()
+       WHERE g.account_id=$1 AND g.covers='learner' AND g.source<>'funded-pending'
+         AND g.activated_at IS NOT NULL AND g.revoked_at IS NULL
+       ORDER BY g.ends_at DESC,g.id LIMIT 1 FOR UPDATE OF g,r`,
+      [accountId],
+    )
+  ).rows[0];
+  if (!gift) return null;
+  await db.query("UPDATE amp_grants SET learner_id=$2 WHERE id=$1", [
+    gift.grant_id,
+    learnerId,
+  ]);
+  await db.query("UPDATE amp_access_gifts SET learner_id=$2 WHERE id=$1", [
+    gift.id,
+    learnerId,
+  ]);
+  await refreshFamilyAdult(db, accountId);
+  return {
+    id: gift.id,
+    learnerId,
+    startsAt: gift.activated_at.toISOString(),
+    endsAt: gift.ends_at.toISOString(),
+  };
+}
+
 /** Caller holds the account lock in a transaction. Also used by learner
  * creation/adoption, where a family gift in force covers the new child first. */
 export async function activateGiftInTransaction(
@@ -278,7 +329,9 @@ export async function activateGiftInTransaction(
   ).rows[0];
   if (!gift) {
     if (options.giftId) throw new AccessGiftError(404, "gift_unavailable");
-    return null;
+    return options.fundingInvoiceId || learnerId === undefined
+      ? null
+      : moveParentGiftToChild(db, accountId, learnerId);
   }
   if (
     gift.source === "funded-pending" &&
