@@ -717,6 +717,12 @@ a.workRow:focus-visible {
   justify-items: start;
   width: 100%;
 }
+/* The waiting gradebook's actions: Start class, and the class's LMS. */
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
 .exportHint {
   max-width: 60ch;
   color: var(--color-muted-text);

@@ -411,7 +411,7 @@ export async function readGradebook(
   context: ClassContext,
   requestedTerm: string | undefined,
   canEdit: boolean,
-): Promise<GradebookResponse> {
+): Promise<Omit<GradebookResponse, "lms">> {
   const terms = await termsFor(pool, context);
   const term = requestedTerm
     ? termById(terms, requestedTerm)

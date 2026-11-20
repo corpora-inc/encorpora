@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { gradeCurveSchema, isValidCurve } from "./grade-curve.js";
 import { helpWeekResource } from "./help-contracts.js";
+import { lmsSummary } from "./lms-contracts.js";
 import {
   skillEvidenceResource,
   workItemResource,
@@ -151,6 +152,8 @@ export const gradebookResponse = z.object({
   targetOwn: z.boolean().default(false),
   inheritedTargetMinutes: z.number().nullable().default(null),
   canEdit: z.boolean(),
+  /** The class's LMS through Clever LMS Connect; null without one. */
+  lms: lmsSummary.nullable().default(null),
   students: z.array(gradeRowResource),
   /** The teacher's curve for this term (frozen with a closed one), and a
    * starting curve from the class's own work for the whole roster. */

@@ -775,6 +775,8 @@ test(
             workbook: randomUUID(),
             // A recent-work replay: another tenant's student's attempt.
             attempt: randomUUID(),
+            // Another class's LMS assignment, or none at all.
+            assignment: randomUUID(),
             skill,
           };
           const known = new Set(Object.keys(fixtures));

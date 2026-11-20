@@ -1,0 +1,73 @@
+/* The class's LMS sheet: a short list of gradebook columns and their state. */
+.sheet {
+  display: grid;
+  gap: var(--space-4);
+  font-size: var(--text-table);
+}
+/* Reserved whether or not there is something to say, so nothing below moves
+   when Clever's state arrives. */
+.district {
+  min-height: 1.45em;
+  margin: 0;
+  color: var(--color-warning-accent);
+  line-height: 1.45;
+}
+.new {
+  justify-self: start;
+}
+.list {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.row {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.rowHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.title {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.detail {
+  color: var(--color-muted-text);
+}
+.issue {
+  min-height: 1.45em;
+  color: var(--color-warning-accent);
+  line-height: 1.45;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.form {
+  display: grid;
+  gap: var(--space-3);
+}
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-3);
+}
+/* Paired fields share a row and shrink to it; an input's own width never
+   pushes into its neighbour. */
+.pair > * {
+  min-width: 0;
+}
+.pair input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}

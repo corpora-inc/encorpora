@@ -57,6 +57,7 @@ import {
   readToday,
 } from "./teacher-reads.js";
 import { readWorkReplay } from "./work-replay.js";
+import { lmsSummaryFor } from "./lms-routes.js";
 
 const reportCardsPdfQuery = paperQuery.extend({
   term: z.uuid(),
@@ -122,12 +123,17 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     target: classParam,
     handler: async ({ request, actor, target, pool, services }) => {
       const { term } = gradebookQuerySchema.parse(request.query);
-      return readGradebook(
-        pool,
-        await classContext(pool, target.classId, services.now?.()),
-        term,
-        can(actor, "grades.write", target),
-      );
+      return {
+        ...(await readGradebook(
+          pool,
+          await classContext(pool, target.classId, services.now?.()),
+          term,
+          can(actor, "grades.write", target),
+        )),
+        // The class's LMS through Clever, read with the page so its button
+        // never arrives late.
+        lms: await lmsSummaryFor(pool, services, target.classId),
+      };
     },
   });
   define({
