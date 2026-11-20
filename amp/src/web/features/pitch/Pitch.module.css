@@ -376,6 +376,11 @@
   font-size: var(--text-label);
   line-height: 1.45;
 }
+/* Under "Why children move faster": one quiet way to the evidence. */
+.researchLink {
+  margin: 0;
+  font-size: var(--text-body);
+}
 .inlineLink {
   color: var(--color-primary);
   font-weight: 650;

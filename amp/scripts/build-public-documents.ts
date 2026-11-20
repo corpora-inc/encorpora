@@ -5,6 +5,7 @@ import { brandTitle } from "../src/brand.js";
 import { createRequire } from "node:module";
 import { routeHead, applyRouteHead } from "../src/web/app/route-head.js";
 import { documentRoutePatterns, publicDocumentPaths } from "../src/web/app/document-routes.js";
+import { researchJsonLd, researchStaticHtml, researchStaticStyles } from "../src/research/static-document.js";
 const { JSDOM } = createRequire(import.meta.url)("jsdom") as { JSDOM: new (html: string) => { window: { document: Document }; serialize(): string } };
 const dist = new URL("../dist/", import.meta.url);
 const shell = await readFile(new URL("index.html", dist), "utf8");
@@ -13,9 +14,35 @@ for (const path of publicDocumentPaths.filter(path => path !== "/")) {
   const head = routeHead(path, "pitch");
   if (!head?.canonical) throw new Error(`Missing public document metadata: ${path}`);
   applyRouteHead(dom.window.document, head);
+  // `/research` carries its words and the report's structured data in the
+  // document itself, for crawlers that don't run the app. The words sit after
+  // `#root`, hidden: a browser paints the loading wave and then the page, never
+  // a third layout, and `#root` keeps the wave as its only child for the entry
+  // guard. Without JavaScript, the noscript style shows them.
+  if (path === "/research") {
+    const doc = dom.window.document;
+    const root = doc.getElementById("root");
+    if (!root) throw new Error("The app shell has no #root");
+    const words = doc.createElement("div");
+    words.innerHTML = researchStaticHtml();
+    const article = words.firstElementChild!;
+    article.setAttribute("hidden", "");
+    root.after(article);
+    const style = doc.createElement("style");
+    style.textContent = researchStaticStyles;
+    doc.head.append(style);
+    const data = doc.createElement("script");
+    data.type = "application/ld+json";
+    data.textContent = JSON.stringify(researchJsonLd()).replace(/</g, "\\u003c");
+    doc.head.append(data);
+  }
   const directory = new URL(`${path.slice(1)}/`, dist);
   await mkdir(directory, { recursive: true });
-  await writeFile(new URL("index.html", directory), dom.serialize());
+  // A parser with scripting on reads <noscript> as text, so it goes in last.
+  const html = path === "/research"
+    ? dom.serialize().replace("</head>", "<noscript><style>.research-static[hidden]{display:block}</style></noscript></head>")
+    : dom.serialize();
+  await writeFile(new URL("index.html", directory), html);
 }
 const missing = new JSDOM(shell);
 const doc = missing.window.document;
@@ -31,4 +58,4 @@ await writeFile(new URL("not-found.css", dist), tokens + '\nbody{margin:0;backgr
 const artifacts = new URL("../artifacts/", import.meta.url);
 await mkdir(artifacts, { recursive: true });
 await writeFile(new URL("document-routes-nginx-map.conf", artifacts), documentRoutesNginxMap(documentRoutePatterns));
-console.log("Built public school metadata, a 404 document and the browser-route map.");
+console.log("Built public school and research metadata, a 404 document and the browser-route map.");

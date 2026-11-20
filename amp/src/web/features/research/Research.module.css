@@ -1,0 +1,192 @@
+/* `/research`. The school pages' calm layout: a title, the report itself as a
+   card, then each topic on its own line with its body beside it. */
+.main {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: var(--space-7);
+  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
+  margin-inline: auto;
+  padding: var(--space-5) var(--schools-gutter) 0;
+  min-width: 0;
+}
+.main p {
+  margin: 0;
+}
+.intro {
+  display: grid;
+  gap: var(--space-5);
+}
+.main .title {
+  margin: 0;
+  max-width: 14em;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 4vw + 20px, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+.lede {
+  max-width: 38em;
+  color: var(--color-muted-text);
+  font-size: 19px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* The report. */
+.card {
+  box-sizing: border-box;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  max-width: 44em;
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+@media (min-width: 720px) {
+  .card {
+    padding: var(--space-6);
+  }
+}
+.kicker {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+.main .cardTitle {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 1vw + 20px, 30px);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.byline,
+.status {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.5;
+}
+.card a:not(.download) {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.download {
+  margin-top: var(--space-2);
+}
+.conflict {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.5;
+}
+
+/* The topics. */
+.topic {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-5) 0;
+  border-top: 1px solid var(--color-border);
+}
+.main .topic h2 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 0.6vw + 20px, 28px);
+  line-height: 1.2;
+}
+.topicBody {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 44em;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+.topicBody p {
+  color: inherit;
+  text-wrap: pretty;
+}
+.topicBody a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.topicBody a:focus-visible,
+.card a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+@media (min-width: 960px) {
+  .topic {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+  .topic h2 {
+    grid-column: 1 / span 4;
+  }
+  .topicBody {
+    grid-column: 5 / -1;
+  }
+}
+
+.components,
+.phases {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.components li {
+  display: grid;
+  gap: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--color-primary);
+}
+.main .components h3 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.evidence {
+  font-style: italic;
+}
+.sources {
+  font-style: normal;
+  font-size: var(--text-label);
+}
+.phases {
+  gap: var(--space-4);
+}
+.phases li {
+  display: grid;
+  gap: var(--space-1);
+}
+.phases strong {
+  color: var(--color-on-surface);
+  font-weight: 700;
+}
+.when {
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+}
+.citation {
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  overflow-wrap: anywhere;
+}

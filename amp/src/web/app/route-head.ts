@@ -16,7 +16,8 @@ export function pitchDescription(programName?: string) {
   return `A complete math curriculum${programName ? ` for ${programName} families` : ""}, from counting to precalculus. AMP finds your child’s level and chooses each next problem, with lessons and printable workbooks built in.`;
 }
 
-/** What a search result says about the school pages, which aren't for parents. */
+/** What a search result says about the school pages, which aren't for parents,
+ * and the research page, which is for everyone. */
 const schoolDescriptions: Readonly<Record<string, string>> = {
   "/schools":
     "A complete math curriculum for your school, from counting to precalculus: unlimited problems and personalized workbooks, a suggested grade range with its evidence, and sign-in with no email.",
@@ -24,6 +25,8 @@ const schoolDescriptions: Readonly<Record<string, string>> = {
     "AMP’s scope and sequence: every objective from Kindergarten through Precalculus, with its standards and prerequisites. Read it online or download the PDF or CSV.",
   "/schools/trust":
     "How AMP handles student data: what’s collected, what isn’t, who signs in, retention, export and deletion, and the student data agreement as schools accept it.",
+  "/research":
+    "The research behind AMP: each part of the program, the published evidence for it, and the studies that will measure AMP on a national test. Read AMP’s ESSA Tier 4 report online or as a PDF.",
 };
 
 export type RouteHead = {

@@ -1485,6 +1485,17 @@ const schoolsTrust = createRoute({
   beforeLoad: notInTheApp,
   component: lazyRouteComponent(schoolsPublic, "TrustScreen"),
 });
+/** The research behind AMP, with its report: public, for parents and schools. */
+const research = createRoute({
+  getParentRoute: () => root,
+  path: "/research",
+  staticData: { space: "public" },
+  beforeLoad: notInTheApp,
+  component: lazyRouteComponent(
+    () => import("../features/research"),
+    "ResearchScreen",
+  ),
+});
 /** A family's progress link. Its secret is in the fragment, which `share-entry`
  * has already taken out of the address bar. */
 const familyLink = createRoute({
@@ -1665,6 +1676,7 @@ export const router = createRouter({
     schoolsHome,
     schoolsScope,
     schoolsTrust,
+    research,
     schoolsContinue,
     schoolStart,
     schoolStartStudents,

@@ -70,6 +70,7 @@ export const publicAppPageTitles: Readonly<Record<string, string>> = {
   "/schools": "AMP for Schools: a complete math curriculum",
   "/schools/scope-and-sequence": "Scope and Sequence | AMP for Schools",
   "/schools/trust": "Student Data | AMP for Schools",
+  "/research": "The Research Behind AMP: ESSA Tier 4 Logic Model | AMP",
 };
 
 /** The signed-in home at `/`: a private screen, so GA never receives it. */
