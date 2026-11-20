@@ -1,0 +1,22 @@
+[
+  { "status": 400, "body": "{\"message\":\"missing required field(s): title, description, due_date\"}", "code": "lms_missing_field" },
+  { "status": 400, "body": "{\"message\":\"request body is required, but was empty\"}", "code": "lms_missing_field" },
+  { "status": 400, "body": "{\"message\":\"due_date must be in the future\"}", "code": "lms_due_date_past" },
+  { "status": 400, "body": "Invalid character ' ' in string escape code", "code": "lms_bad_request" },
+  { "status": 400, "body": "{\"message\":\"validation failure list:\\nsubmission_types.0 in body should be one of [link file text discussion]\"}", "code": "lms_bad_request" },
+  { "status": 400, "body": "{\"message\":\"invalid character ',' looking for beginning of value\"}", "code": "lms_bad_request" },
+  { "status": 400, "body": "{\"message\":\"INVALID_ID\"}", "code": "lms_invalid_id" },
+  { "status": 400, "body": "{\"message\":\"NOT_FOUND: Person with id clever:657b35c16a1a3e5c217dcd10 not found for this integration.\"}", "code": "lms_grader_not_found" },
+  { "status": 400, "body": "{\"message\":\"parsing time \\\"YYYY-MM-DD\\\": day out of range\"}", "code": "lms_due_date_past" },
+  { "status": 400, "body": "{\"message\":\"MISSING_REQUIRED_FIELD\"}", "code": "lms_missing_field" },
+  { "status": 400, "body": "{\"message\":\"no valid users found in Canvas\"}", "code": "lms_no_valid_users" },
+  { "status": 401, "body": "{\"message\": \"No authorization provided\"}", "code": "lms_unauthorized" },
+  { "status": 403, "body": "{\"message\": \"Could not authorize token\"}", "code": "lms_forbidden" },
+  { "status": 404, "body": "{\"message\":\"Assignment does not exist\"}", "code": "lms_assignment_missing" },
+  { "status": 404, "body": "{\"message\":\"User not found\"}", "code": "lms_user_not_found" },
+  { "status": 405, "body": "", "code": "lms_method_not_allowed" },
+  { "status": 400, "body": "{\"message\":\"UNSUPPORTED_OPERATION: Canvas does not allow updating submissions on unpublished (draft) assignments.\"}", "code": "lms_assignment_unpublished" },
+  { "status": 400, "body": "{\"message\":\"FIELD_IGNORED: start_date\"}", "code": "lms_field_ignored" },
+  { "status": 400, "body": "{\"message\":\"Schoology does not support submission type of link\"}", "code": "lms_attachment_unsupported" },
+  { "status": 500, "body": "{\"message\":\"Error updating submission\"}", "code": "lms_submission_update_failed" }
+]

@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "created": "2024-11-06T23:28:07.532Z",
+      "id": "e38e69a6-2239-4bab-987e-6fc7924d6a62",
+      "state": "created",
+      "user_id": "657b35c16a1a3e5c217dcd2e"
+    },
+    {
+      "created": "2024-11-06T23:28:17.398Z",
+      "id": "fad5435a-8cf4-4718-8332-8f0df90169bf",
+      "state": "created",
+      "user_id": "657b35c16a1a3e5c217dcd31"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "uri": "/v3.1/sections/657b35c16a1a3e5c217dcd72/assignments/c8f5eced-1ae1-45d9-97ce-0d4f6c0157d5/submissions"
+    }
+  ]
+}
