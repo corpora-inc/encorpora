@@ -10,14 +10,16 @@ import { continuationUrl } from "../lib/funded-entry";
  *   "intent"`): nobody asked to go there yet. Navigating now would take the
  *   screen they are on (`/school/connect`'s "Sign in again" after a refused
  *   Clever link went to `/`).
- * - Otherwise: the gate's own continuation (`/school/connect`), so the
- *   authority's return lands back where sign-in was asked for. With none,
- *   `/`.
+ * - Otherwise: the gate's own continuation (`/school/connect`), never a
+ *   bounce through `/`; a sign-in that reloads the page (development)
+ *   lands back there. OIDC still returns to its fixed `redirect_uri`. With
+ *   no continuation, `/`. A carried link's fragment (an invitation token)
+ *   is left out of the history entry.
  */
 export function externalSignInFrom(
   mode: string,
   { preload, search }: { preload: boolean; search: Record<string, unknown> },
 ): string | null {
   if (mode === "accounts" || preload) return null;
-  return continuationUrl(search);
+  return continuationUrl(search).split("#")[0] || "/";
 }
