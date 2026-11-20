@@ -1,8 +1,10 @@
 import { z } from "zod";
 import { divisionKinds, isIsoDate } from "./calendar.js";
+import { AGREEMENT_VERSION } from "./agreement.js";
 import {
   gradeLevelSchema,
   orgKinds,
+  plainName,
   ssoProviders,
   timezone,
 } from "./contracts.js";
@@ -386,11 +388,35 @@ export const integrationsResponse = z.object({
       requestedAt: z.string().nullable(),
     }),
   ),
+  /** Clever AnySchool, for a school not on Clever. Null where it doesn't
+   * apply: a school inside a district, or one already on Clever. */
+  anyschool: z
+    .object({
+      status: z.enum(["none", "requested", "invited", "connected"]),
+      setupEmail: z.string().nullable(),
+      requestedAt: z.string().nullable(),
+      invitedAt: z.string().nullable(),
+      /** The AnySchool district in AMP, once connected. */
+      districtOrgId: z.uuid().nullable(),
+      imported: z.boolean(),
+    })
+    .nullable()
+    .default(null),
 });
 export type IntegrationsResponse = z.infer<typeof integrationsResponse>;
 export const setProviderSchema = z.strictObject({
   provider: z.enum(ssoProviders),
   enabled: z.boolean(),
+});
+/** A school not on Clever asks for Clever AnySchool. Clever's invitation
+ * needs only the email of the administrator who will do Clever's setup (its
+ * link works for that address alone); the school's name comes from AMP. The
+ * signer accepts the student data agreement for the school's roster. */
+export const anySchoolRequestSchema = z.strictObject({
+  setupEmail: z.email().max(254),
+  signerName: plainName,
+  agreementVersion: z.literal(AGREEMENT_VERSION),
+  authorized: z.literal(true),
 });
 export const requestIntegrationSchema = z.strictObject({
   id: z.enum([...integrationRequests, ...ssoProviders]),

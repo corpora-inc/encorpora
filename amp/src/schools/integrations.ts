@@ -11,6 +11,7 @@ import type { SchoolRepository } from "./repository.js";
 import type { SchoolServices } from "./routes.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import { YEAR_IN_USE } from "./years.js";
+import { anySchoolState } from "./clever/anyschool.js";
 
 export const integrationLabels: Record<string, string> = {
   clever: "Clever",
@@ -26,7 +27,7 @@ export async function readIntegrations(
   orgId: string,
   services: SchoolServices,
 ): Promise<IntegrationsResponse> {
-  const [schools, students, classes, requests] = await Promise.all([
+  const [schools, students, classes, requests, anyschool] = await Promise.all([
     pool.query(
       "SELECT sign_in_providers AS providers FROM amp_orgs WHERE path @> ARRAY[$1]::uuid[] AND kind='school'",
       [orgId],
@@ -60,6 +61,7 @@ export async function readIntegrations(
        ORDER BY detail->'after'->>'id',"at" DESC`,
       [orgId],
     ),
+    anySchoolState(pool, orgId),
   ]);
   const requested = new Map<string, Date>(
     requests.rows.map((row) => [row.id, row.at]),
@@ -92,6 +94,7 @@ export async function readIntegrations(
       id,
       requestedAt: at(id),
     })),
+    anyschool,
   };
 }
 

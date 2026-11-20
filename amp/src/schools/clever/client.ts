@@ -174,6 +174,40 @@ export class CleverClient {
     if (!value) throw new CleverSyncError("district_token_missing");
     return value;
   }
+  /** Every district that has shared data with this app: one district-app
+   * token each. Clever sends no event for a new district, an AnySchool one
+   * included; this list is how one is found. Tokens never leave this call. */
+  async sharedDistricts(): Promise<string[]> {
+    const auth = Buffer.from(
+      `${this.options.clientId}:${this.options.clientSecret}`,
+    ).toString("base64");
+    const response = z
+      .object({
+        data: z.array(
+          z.object({
+            owner: z.object({ id: cleverId, type: z.string() }).optional(),
+            district: cleverId.optional(),
+          }),
+        ),
+      })
+      .parse(
+        await this.request(
+          new URL("https://clever.com/oauth/tokens"),
+          `Basic ${auth}`,
+        ),
+      );
+    return [
+      ...new Set(
+        response.data.flatMap((token) =>
+          token.owner?.type === "district"
+            ? [token.owner.id]
+            : token.district
+              ? [token.district]
+              : [],
+        ),
+      ),
+    ];
+  }
   async snapshot(districtId: string, token: string): Promise<Snapshot> {
     const district = await this.get(
       `/districts/${districtId}`,

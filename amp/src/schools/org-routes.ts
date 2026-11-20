@@ -19,6 +19,7 @@ import {
   requestIntegrationSchema,
 } from "./org-contracts.js";
 import { readOverview, readSchools } from "./org-reads.js";
+import { requestAnySchool } from "./clever/anyschool.js";
 import { readPractice } from "./practice-views.js";
 import { eraseBatch, readPrivacy, schoolExport } from "./privacy.js";
 import { rolloverOptions, runRollover } from "./rollover.js";
@@ -312,6 +313,62 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
           detail: { after: { id, label } },
         }),
       );
+      return readIntegrations(pool, target.orgId, services);
+    },
+  });
+
+  // Clever AnySchool: the school asks; an operator sends Clever's invitation
+  // to the setup email (docs/clever-anyschool.md). The request is the record;
+  // the mail only tells the operator to look.
+  define({
+    method: "POST",
+    url: `${ORG}/integrations/anyschool`,
+    action: "integrations.manage",
+    target: orgParam,
+    bodyLimit: 2048,
+    handler: async ({ request, actor, target, pool, repository, services }) => {
+      if (
+        (await eventsSince(
+          repository,
+          target.orgId,
+          "integration.requested",
+          1,
+        )) >= SEAT_REQUESTS_PER_HOUR
+      )
+        throw new SchoolError(429, "too_many_requests");
+      const asked = await requestAnySchool(
+        repository,
+        {
+          orgId: target.orgId,
+          accountId: actor.accountId,
+          actorPersonId: actorPerson(actor, target),
+        },
+        request.body,
+      );
+      if (services.mail && asked.created) {
+        const { name } = (
+          await pool.query("SELECT name FROM amp_orgs WHERE id=$1", [
+            target.orgId,
+          ])
+        ).rows[0];
+        await services
+          .mail(
+            SEAT_REQUEST_MAILBOX,
+            integrationRequest({
+              name,
+              label: "Clever AnySchool",
+              orgId: target.orgId,
+              requester: null,
+              origin: services.origin,
+            }),
+          )
+          .catch((error) =>
+            console.error("[schools] AnySchool request mail not sent", {
+              requestId: asked.id,
+              message: (error as Error).message,
+            }),
+          );
+      }
       return readIntegrations(pool, target.orgId, services);
     },
   });

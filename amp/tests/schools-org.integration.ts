@@ -6,6 +6,7 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
+import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { ERASE_BATCH } from "../src/schools/privacy.js";
 import { weeklyTargetsFor } from "../src/schools/term-grades.js";
 import { readOverview } from "../src/schools/org-reads.js";
@@ -827,6 +828,85 @@ test(
             mailed.at(-1)!.subject,
             /Clever for Alder Street School/,
           );
+          // Clever AnySchool is for a school of its own, not one in a district.
+          const anyschool = {
+            setupEmail: "office@cedar.example",
+            signerName: "Ruth Adeyemi",
+            agreementVersion: AGREEMENT_VERSION,
+            authorized: true,
+          };
+          assert.equal(view.anyschool, null);
+          assert.equal(
+            (
+              await post(
+                `/orgs/${alder.id}/integrations/anyschool`,
+                HEAD,
+                anyschool,
+              )
+            ).statusCode,
+            409,
+          );
+          const cedar = await schools.createOrg(
+            { kind: "school", name: "Cedar Academy", timezone: "UTC" },
+            signed,
+          );
+          await schools.addStaff({
+            orgId: cedar.id,
+            role: "admin",
+            givenName: "Ruth",
+            accountId: HEAD,
+          });
+          await schools.addStaff({
+            orgId: cedar.id,
+            role: "viewer",
+            givenName: "Vera",
+            accountId: VIEWER,
+          });
+          assert.equal(
+            (await get(`/orgs/${cedar.id}/integrations`, VIEWER)).json()
+              .anyschool.status,
+            "none",
+          );
+          assert.equal(
+            (
+              await post(
+                `/orgs/${cedar.id}/integrations/anyschool`,
+                VIEWER,
+                anyschool,
+              )
+            ).statusCode,
+            404,
+          );
+          assert.equal(
+            (
+              await post(`/orgs/${cedar.id}/integrations/anyschool`, HEAD, {
+                ...anyschool,
+                authorized: false,
+              })
+            ).statusCode,
+            400,
+          );
+          const requested = await post(
+            `/orgs/${cedar.id}/integrations/anyschool`,
+            HEAD,
+            anyschool,
+          );
+          assert.equal(requested.statusCode, 200, requested.body);
+          assert.equal(requested.json().anyschool.status, "requested");
+          assert.equal(
+            requested.json().anyschool.setupEmail,
+            "office@cedar.example",
+          );
+          assert.match(
+            mailed.at(-1)!.subject,
+            /Clever AnySchool for Cedar Academy/,
+          );
+          const sent = mailed.length;
+          await post(`/orgs/${cedar.id}/integrations/anyschool`, HEAD, {
+            ...anyschool,
+            setupEmail: "head@cedar.example",
+          });
+          assert.equal(mailed.length, sent, "a correction mails no one");
         },
       );
 

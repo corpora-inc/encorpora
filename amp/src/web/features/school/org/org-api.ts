@@ -1,6 +1,8 @@
 import { queryOptions } from "@tanstack/react-query";
+import type { z } from "zod";
 import {
   activityPeopleResponse,
+  anySchoolRequestSchema,
   activityResponse,
   eraseResponse,
   integrationsResponse,
@@ -121,6 +123,16 @@ export const requestIntegration = (
 ) =>
   call(`/orgs/${orgId}/integrations/request`, integrationsResponse, session, {
     body: { id },
+  });
+
+/** Ask for Clever AnySchool: Clever's invitation goes to `setupEmail`. */
+export const requestAnySchool = (
+  session: AuthSession,
+  orgId: string,
+  body: z.input<typeof anySchoolRequestSchema>,
+) =>
+  call(`/orgs/${orgId}/integrations/anyschool`, integrationsResponse, session, {
+    body: anySchoolRequestSchema.parse(body),
   });
 
 export const privacyOptions = (session: AuthSession, orgId: string) =>
