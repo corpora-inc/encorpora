@@ -76,6 +76,7 @@ export function spaceOfPath(pathname: string): RouteSpace {
   if (
     [
       "/schools",
+      "/research",
       "/clever",
       "/sign-in",
       "/sign-up",

@@ -177,6 +177,11 @@ export function PitchPage() {
               </span>
             </li>
           </ul>
+          <p className={styles.researchLink}>
+            <PitchLink place={{ to: "/research" }} className={styles.inlineLink}>
+              The research behind AMP
+            </PitchLink>
+          </p>
         </section>
         {pitchVideo && (
           <section className={styles.details} aria-labelledby="pitch-film">
@@ -271,6 +276,7 @@ export function PitchPage() {
       </main>
       <SiteFooter className={styles.footer}>
         <PitchLink place={{ to: "/schools" }}>For schools</PitchLink>
+        <PitchLink place={{ to: "/research" }}>Research</PitchLink>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
       </SiteFooter>

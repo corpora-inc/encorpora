@@ -4,6 +4,7 @@ export const publicDocumentPaths = [
   "/schools",
   "/schools/trust",
   "/schools/scope-and-sequence",
+  "/research",
 ] as const;
 export const indexableDocumentPath = (path: string) => {
   const clean = path.replace(/\/$/, "") || "/";

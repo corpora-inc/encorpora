@@ -57,6 +57,7 @@ export function PublicFrame({
       <SiteFooter className={styles.footer}>
         <Link to="/schools/scope-and-sequence">Scope and sequence</Link>
         <Link to="/schools/trust">Student data</Link>
+        <Link to="/research">Research</Link>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
       </SiteFooter>

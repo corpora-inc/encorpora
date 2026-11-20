@@ -6,3 +6,5 @@
 # Generated one-line-per-family index: sibling branches add adjacent lines.
 # Keep both on merge/rebase; tests/family-index.test.ts fails if the result is stale.
 amp/src/families/index.ts merge=union
+# Published research PDFs ship in the AMP web image, whose build does not pull LFS.
+amp/public/research/*.pdf -filter -diff -merge binary

@@ -1,0 +1,1 @@
+export { ResearchScreen } from "./ResearchScreen";
