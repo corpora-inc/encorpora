@@ -10,6 +10,7 @@ import { generateHandle, type SchoolRepository } from "../repository.js";
 import type { CleverClient } from "./client.js";
 import { registerCleverConnectionIn } from "./connection.js";
 import { cleverId, districtSchema, type CleverEnvironment } from "./model.js";
+import { safeSyncError } from "./sync.js";
 
 /** Clever AnySchool brings a school that is not on Clever into Clever: Clever
  * hosts the setup (a spreadsheet upload, SFTP or the school's own SIS) and the
@@ -31,9 +32,10 @@ export type CleverOperator = {
 
 const OPEN = ["requested", "invited"];
 
-/** The school's own request, from its integrations page. One open request per
- * school: asking again before the invitation corrects the setup email; after
- * it, the request stands as sent. */
+/** The school's own request, from its integrations page. One standing request
+ * per school: asking again before the invitation corrects the setup email;
+ * once invited or connected, the request stands as sent. Only a signed
+ * request (this one, never the unsigned legacy contact form) is the school's. */
 export async function requestAnySchool(
   repo: SchoolRepository,
   input: { orgId: string; accountId: string; actorPersonId?: string | null },
@@ -46,27 +48,27 @@ export async function requestAnySchool(
     ]);
     const org = (
       await db.query(
-        `SELECT name,kind,parent_id,demo,
-          EXISTS(SELECT 1 FROM amp_clever_connections c WHERE c.tenant_id=o.path[1] AND c.status='active') AS connected
-         FROM amp_orgs o WHERE id=$1`,
+        "SELECT name,kind,parent_id,demo FROM amp_orgs WHERE id=$1",
         [input.orgId],
       )
     ).rows[0];
     if (!org || org.demo) throw new SchoolError(404, "not_found");
-    if (org.connected)
-      throw new SchoolError(409, "anyschool_already_connected");
+    // A Clever connection belongs to a district; a school inside one (an
+    // adopted AnySchool school included) is already rostered through it.
     if (org.kind !== "school" || org.parent_id)
       throw new SchoolError(409, "anyschool_root_school_required");
     const open = (
       await db.query(
-        `SELECT id,status FROM amp_school_connection_requests
-         WHERE org_id=$1 AND method='anyschool' AND status = ANY($2::text[])
-         ORDER BY created_at DESC LIMIT 1 FOR UPDATE`,
+        `SELECT r.id,r.status FROM amp_school_connection_requests r
+         WHERE r.org_id=$1 AND r.method='anyschool' AND r.signer_name IS NOT NULL
+           AND (r.status = ANY($2::text[]) OR r.status='connected' AND EXISTS(
+             SELECT 1 FROM amp_clever_connections c WHERE c.id=r.connection_id AND c.status='active'))
+         ORDER BY r.created_at DESC LIMIT 1 FOR UPDATE OF r`,
         [input.orgId, OPEN],
       )
     ).rows[0];
-    if (open?.status === "invited")
-      return { id: open.id as string, status: "invited", created: false };
+    if (open && open.status !== "requested")
+      return { id: open.id as string, status: open.status, created: false };
     const email = body.setupEmail.toLowerCase();
     if (open) {
       await db.query(
@@ -110,16 +112,17 @@ export async function requestAnySchool(
 }
 
 /** What the school's integrations page shows about its request. Null when
- * AnySchool does not apply: not a root school, or already on Clever. */
+ * AnySchool does not apply: a school inside a district (on Clever through
+ * it, or not) that never asked. */
 export async function anySchoolState(pool: Pool, orgId: string) {
   const row = (
     await pool.query(
       `SELECT o.kind='school' AND o.parent_id IS NULL AND NOT o.demo AS eligible,
-        EXISTS(SELECT 1 FROM amp_clever_connections c WHERE c.tenant_id=o.path[1] AND c.status='active') AS on_clever,
         r.status,r.contact_email,r.created_at,r.invited_at,c.tenant_id AS district_org_id,
         c.last_sync_at IS NOT NULL AS imported
        FROM amp_orgs o LEFT JOIN LATERAL (
-         SELECT * FROM amp_school_connection_requests WHERE org_id=o.id AND method='anyschool' AND status<>'closed'
+         SELECT * FROM amp_school_connection_requests WHERE org_id=o.id AND method='anyschool'
+           AND signer_name IS NOT NULL AND status<>'closed'
          ORDER BY created_at DESC LIMIT 1) r ON true
        LEFT JOIN amp_clever_connections c ON c.id=r.connection_id AND c.status='active'
        WHERE o.id=$1`,
@@ -128,7 +131,7 @@ export async function anySchoolState(pool: Pool, orgId: string) {
   ).rows[0];
   // A school adopted into its AnySchool district reads its connection from
   // the district; the request stays with the school that asked.
-  if (!row || (!row.status && (!row.eligible || row.on_clever))) return null;
+  if (!row || (!row.status && !row.eligible)) return null;
   return {
     status: (row.status ?? "none") as
       "none" | "requested" | "invited" | "connected",
@@ -169,13 +172,17 @@ export async function recordAnySchoolInvite(
   return repo.transaction(async (db) => {
     const request = (
       await db.query(
-        "SELECT status FROM amp_school_connection_requests WHERE id=$1 AND method='anyschool' FOR UPDATE",
+        "SELECT status,signer_name FROM amp_school_connection_requests WHERE id=$1 AND method='anyschool' FOR UPDATE",
         [input.id],
       )
     ).rows[0];
     if (!request) throw new SchoolError(404, "request_not_found");
     if (!OPEN.includes(request.status))
       throw new SchoolError(409, "anyschool_request_not_open");
+    // Never invite on the unsigned legacy contact form: no one accepted the
+    // agreement, and connecting would refuse it.
+    if (!request.signer_name)
+      throw new SchoolError(409, "anyschool_agreement_required");
     if (
       input.districtId &&
       (
@@ -239,6 +246,14 @@ export async function connectAnySchool(
     request.clever_district_id !== input.districtId
   )
     throw new SchoolError(409, "anyschool_district_mismatch");
+  const claimed = (districtId: string) =>
+    repo.pool.query(
+      `SELECT 1 FROM amp_school_connection_requests WHERE clever_district_id=$1 AND id<>$2 AND status<>'closed'`,
+      [districtId, input.id],
+    );
+  // The district goes to the request it was made for, and no other.
+  if ((await claimed(districtId)).rowCount)
+    throw new SchoolError(409, "anyschool_district_already_requested");
   if (!request.signer_name || request.agreement_version !== AGREEMENT_VERSION)
     throw new SchoolError(409, "anyschool_agreement_required");
   if (!request.org_id) throw new SchoolError(409, "anyschool_school_required");
@@ -287,6 +302,16 @@ export async function connectAnySchool(
     ).rows[0];
     if (locked.connection_id || !OPEN.includes(locked.status))
       throw new SchoolError(409, "anyschool_request_not_open");
+    // Again under the lock: an invitation recorded meanwhile wins.
+    if (
+      (
+        await db.query(
+          `SELECT 1 FROM amp_school_connection_requests WHERE clever_district_id=$1 AND id<>$2 AND status<>'closed'`,
+          [districtId, input.id],
+        )
+      ).rowCount
+    )
+      throw new SchoolError(409, "anyschool_district_already_requested");
     if (
       (
         await db.query(
@@ -464,42 +489,52 @@ export async function cleverLaunchSummary(
     connections
       .filter((c) => c.environment === environment && states.includes(c.state))
       .reduce((sum, c) => sum + c.schools, 0);
-  let awaitingConnection:
-    | {
-        districtId: string;
-        name: string | null;
-        connectionType: string | null;
-      }[]
-    | null = null;
+  type Shared = {
+    districtId: string;
+    name: string | null;
+    connectionType: string | null;
+  };
+  /** Null without credentials, or when Clever can't answer (`awaitingError`):
+   * the queue still reads AMP's own records. */
+  let awaitingConnection: Shared[] | null = null,
+    awaitingError: string | null = null;
   if (clever) {
     const known = new Set(
       connections
         .filter((c) => c.environment === clever.environment)
         .map((c) => c.districtId),
     );
-    awaitingConnection = [];
-    for (const districtId of (await clever.client.sharedDistricts())
-      .filter((id) => !known.has(id))
-      .slice(0, 50)) {
-      try {
-        const token = await clever.client.districtToken(districtId);
-        const district = await clever.client.get(
-          `/districts/${districtId}`,
-          token,
-          districtSchema,
-        );
-        awaitingConnection.push({
-          districtId,
-          name: district.name,
-          connectionType: district.connection_type ?? null,
-        });
-      } catch {
-        awaitingConnection.push({
-          districtId,
-          name: null,
-          connectionType: null,
-        });
+    try {
+      const shared = await clever.client.sharedDistricts();
+      const found: Shared[] = [];
+      for (const districtId of shared
+        .filter((id) => !known.has(id))
+        .slice(0, 50)) {
+        try {
+          const token = await clever.client.districtToken(districtId);
+          const district = await clever.client.get(
+            `/districts/${districtId}`,
+            token,
+            districtSchema,
+          );
+          found.push({
+            districtId,
+            name: district.name,
+            connectionType: district.connection_type ?? null,
+          });
+        } catch (error) {
+          console.error("[schools] Clever district unreadable", {
+            code: safeSyncError(error),
+          });
+          found.push({ districtId, name: null, connectionType: null });
+        }
       }
+      awaitingConnection = found;
+    } catch (error) {
+      awaitingError = safeSyncError(error);
+      console.error("[schools] Clever shared districts unavailable", {
+        code: awaitingError,
+      });
     }
   }
   return {
@@ -513,5 +548,6 @@ export async function cleverLaunchSummary(
     },
     connections,
     awaitingConnection,
+    awaitingError,
   };
 }

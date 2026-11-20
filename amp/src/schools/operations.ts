@@ -28,7 +28,8 @@ export async function schoolOperations(
       connections: (
         await repo.pool.query(
           `SELECT r.id,r.method,r.status,r.institution_name,r.contact_email,r.org_id,r.created_at,r.invited_at,
-            r.clever_district_id,r.connection_id,c.sync_paused AS staged,c.last_sync_at
+            r.clever_district_id,r.connection_id,c.sync_paused AS staged,c.last_sync_at,
+            r.signer_name IS NOT NULL AS signed
            FROM amp_school_connection_requests r LEFT JOIN amp_clever_connections c ON c.id=r.connection_id
            WHERE r.status IN ('requested','invited') OR r.status='connected' AND c.status='active' AND c.last_sync_at IS NULL
            ORDER BY r.created_at LIMIT 200`,

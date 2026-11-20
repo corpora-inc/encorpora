@@ -171,6 +171,21 @@ export function cleverFromEnv(env: NodeJS.ProcessEnv): CleverOperator | null {
   };
 }
 
+/** The queue reads AMP's own records whatever Clever's configuration says. */
+function queueClever() {
+  try {
+    return cleverFromEnv(process.env);
+  } catch (error) {
+    console.error(
+      JSON.stringify({
+        warning:
+          error instanceof SchoolError ? error.code : "clever_unconfigured",
+      }),
+    );
+    return null;
+  }
+}
+
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
   const [command, file] = process.argv.slice(2);
   if (!process.env.AMP_DATABASE_URL || !command || !file)
@@ -189,9 +204,11 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
           command,
           input,
           command === "create-school" ? servicesFromEnv() : undefined,
-          ["school-queue", "anyschool-connect"].includes(command)
+          command === "anyschool-connect"
             ? cleverFromEnv(process.env)
-            : null,
+            : command === "school-queue"
+              ? queueClever()
+              : null,
           process.env.AMP_ACCOUNTS_URL?.replace(/\/+$/, "") ?? "",
         ),
       ),

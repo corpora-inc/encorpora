@@ -24,7 +24,7 @@ A school that already uses Clever does not need this. Its district administrator
 
 Commands run as `npm run school:admin -- <command> <private-input.json>`, in the API image with the production database (see [schools](schools.md)). `anyschool-connect` and `school-queue` also need the worker's `AMP_CLEVER_ENVIRONMENT`, `AMP_CLEVER_CLIENT_ID`, `AMP_CLEVER_CLIENT_SECRET` and `AMP_CLEVER_API_VERSION`. `AMP_ACCOUNTS_URL` makes the printed adoption link a full URL. Output is private: it includes the setup email.
 
-1. **Find the request.** Run `school-queue` with `{}`. Under `connections`, an AnySchool request has `method: "anyschool"`, `status: "requested"`, its `id`, `institution_name` and `contact_email`. The contact email is the setup email.
+1. **Find the request.** Run `school-queue` with `{}`. Under `connections`, an AnySchool request has `method: "anyschool"`, `status: "requested"`, `signed: true`, its `id`, `institution_name` and `contact_email`. The contact email is the setup email. A row with `signed: false` came from the older contact form: nobody accepted the agreement, and `anyschool-invite` refuses it. Ask the school's administrator to use the Integrations page.
 2. **Invite in Clever.**
    1. In the Clever App Dashboard, go to **Home > Invite Districts > Add an AnySchool District**. The partner article calls the button **Connect to an AnySchool district**.
    2. Enter the request's `institution_name`, then select **Create new district**.
@@ -38,6 +38,7 @@ Commands run as `npm run school:admin -- <command> <private-input.json>`, in the
    - Clever has no token yet (`district_not_authorized`): the school has not finished.
    - The district is not AnySchool (`anyschool_connection_type_mismatch`). A Secure Sync district connects through its own administrator. A district that omits `connection_type` can be connected with `"confirmAnySchool": true`, after checking in the dashboard that it is the one from step 2.
    - The requester no longer administers the school (`anyschool_requester_authority_ended`).
+   - Another request already holds that district (`anyschool_district_already_requested`).
    - The request's agreement is missing or out of date (`anyschool_agreement_required`). The school asks again.
 
    On success it prints `districtOrgId` and `adoptUrl`. Within a minute the worker caches the roster for review. It creates no one.
@@ -54,7 +55,7 @@ Clever counts schools. `school-queue` reports them by environment under `clever`
 - `launchedSchools`: schools in active, unpaused connections. These are imported or importing.
 - `stagedSchools`: schools cached for adoption review. Nobody has been created yet.
 - `connections`: each connection with its `state`, `connectionType`, `launchDate` and school count.
-- `awaitingConnection`: districts that shared data with AMP but are not connected. AMP imports nothing from them.
+- `awaitingConnection`: districts that shared data with AMP but are not connected. AMP imports nothing from them. It is `null` without Clever credentials. When Clever can't answer, `awaitingError` names the code and the rest of the queue still reads.
 
 AMP imports only connections that a district administrator or this procedure created. It reads only what the district shares. Before connecting, compare `launchedSchools.production` with the number of schools the Clever contract covers. Capacity is never a gate on starting a class.
 

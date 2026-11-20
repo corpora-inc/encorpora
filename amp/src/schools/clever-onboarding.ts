@@ -355,7 +355,7 @@ export async function registerCleverOnboarding(
         const result = (
           await pool.query(
             `INSERT INTO amp_school_connection_requests(id,account_id,org_id,institution_name,contact_email,method)
-        VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(account_id,method,lower(contact_email)) WHERE status IN ('requested','invited')
+        VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(account_id,method,lower(contact_email)) WHERE status IN ('requested','invited') AND signer_name IS NULL
         DO UPDATE SET updated_at=amp_school_connection_requests.updated_at RETURNING id,status`,
             [
               randomUUID(),

@@ -335,6 +335,18 @@ test(
             null,
             "without credentials the queue still reads AMP's own counts",
           );
+          const shared = clever.client.sharedDistricts;
+          clever.client.sharedDistricts = async () => {
+            throw new CleverSyncError("clever_http_503");
+          };
+          const down = await ops("school-queue", {});
+          clever.client.sharedDistricts = shared;
+          assert.equal(down.clever.awaitingConnection, null);
+          assert.equal(
+            down.clever.awaitingError,
+            "clever_http_503",
+            "Clever down: the queue still answers, and says why",
+          );
           assert.equal(
             (
               await db!.query(
@@ -480,6 +492,20 @@ test(
             ops("anyschool-import", { id: requestId }),
             /anyschool_schools_unmatched/,
             "an unmatched Clever school would duplicate the pilot's learners",
+          );
+          const again = await requestAnySchool(
+            repo,
+            { orgId: school.id, accountId: leaderAccount },
+            ask,
+          );
+          assert.deepEqual(
+            again,
+            { id: requestId, status: "connected", created: false },
+            "asking again once connected keeps the connected request",
+          );
+          assert.equal(
+            (await anySchoolState(db!, school.id))?.districtOrgId,
+            districtOrgId,
           );
         },
       );
@@ -659,7 +685,7 @@ test(
       );
 
       await t.test(
-        "a school's own request needs a root school and an unconnected one",
+        "a school's own request: a root school, signed, one district each",
         async () => {
           await assert.rejects(
             requestAnySchool(
@@ -667,8 +693,8 @@ test(
               { orgId: pilot.id, accountId: teacherAccount },
               ask,
             ),
-            /anyschool_already_connected/,
-            "the adopted pilot is on Clever now",
+            /anyschool_root_school_required/,
+            "the adopted pilot is in its AnySchool district now",
           );
           const child = await repo.createOrg({
             kind: "school",
@@ -718,6 +744,56 @@ test(
           await assert.rejects(
             ops("anyschool-invite", { id: stale.id, districtId: D }),
             /anyschool_district_already_requested/,
+          );
+          // One administrator, two schools, the same setup email.
+          const third = await repo.createOrg({
+            kind: "school",
+            name: "Third School",
+            timezone: "America/Chicago",
+          });
+          await repo.addStaff({
+            orgId: third.id,
+            role: "admin",
+            givenName: "Head",
+            accountId: leaderAccount,
+          });
+          const thirdAsk = await requestAnySchool(
+            repo,
+            { orgId: third.id, accountId: leaderAccount },
+            ask,
+          );
+          assert.notEqual(thirdAsk.id, stale.id);
+          // A district claimed by one request never connects another.
+          const CLAIMED = "a00000000000000000000003";
+          tokens.add(CLAIMED);
+          await ops("anyschool-invite", {
+            id: thirdAsk.id,
+            districtId: CLAIMED,
+          });
+          await assert.rejects(
+            ops("anyschool-connect", { id: stale.id, districtId: CLAIMED }),
+            /anyschool_district_already_requested/,
+          );
+          // The unsigned legacy contact form is not the school's request.
+          const legacy = randomUUID();
+          await db!.query(
+            `INSERT INTO amp_school_connection_requests(id,account_id,org_id,institution_name,contact_email,method)
+             VALUES($1,$2,$3,'Fourth','teacher@personal.example','anyschool')`,
+            [legacy, teacherAccount, other.id],
+          );
+          assert.equal(
+            (await anySchoolState(db!, other.id))?.setupEmail,
+            "head@academy.example",
+          );
+          await assert.rejects(
+            ops("anyschool-invite", { id: legacy }),
+            /anyschool_agreement_required/,
+          );
+          assert.equal(
+            (await ops("school-queue", {})).connections.find(
+              (r: { id: string }) => r.id === legacy,
+            ).signed,
+            false,
           );
         },
       );
