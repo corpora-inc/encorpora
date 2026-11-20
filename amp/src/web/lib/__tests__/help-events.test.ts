@@ -127,8 +127,8 @@ test("help rides on the heartbeat, with time under the help's surface", async ()
     problemId: "p1",
     step: 1,
   });
-  // Sent with the first heartbeat (30 s), 20 s after it happened.
-  expect(events[0].ageMs).toBe(20_000);
+  // Sent early, 1.5 s after it happened, not with the 30 s heartbeat.
+  expect(events[0].ageMs).toBe(1_500);
 });
 
 test("a learner whose time isn't recorded sends nothing, help included", async () => {
@@ -144,13 +144,17 @@ test("offline: help waits for the next heartbeat", async () => {
   const said = vi.spyOn(console, "error").mockImplementation(() => {});
   const activity = startActivity(() => ({ url: "/beat", token: "t" }));
   noteHelp({ kind: "lesson", source: "pathways", ref: "x" });
+  // The early send fails; the next heartbeat carries it, once.
   await vi.advanceTimersByTimeAsync(30_000);
   await vi.advanceTimersByTimeAsync(30_000);
   activity.stop();
   const sent = bodies();
   expect(sent[0].events).toHaveLength(1);
+  expect(sent[0].events[0].ageMs).toBe(1_500);
   expect(sent[1].events).toHaveLength(1);
-  expect(sent[1].events[0].ageMs).toBe(60_000);
+  expect(sent[1].events[0].ageMs).toBe(30_000);
+  expect(sent.slice(2).flatMap((b) => b.events ?? [])).toHaveLength(0);
+  expect(said).toHaveBeenCalled();
 });
 
 test("a student signed in after boot is counted, without a reload", async () => {
@@ -277,7 +281,12 @@ test("a switch sends all of the first learner's time and help to them", async ()
     String(url).includes("child-a"),
   );
   const bodiesA = toA.map(([, init]) => JSON.parse(init.body as string));
-  expect(bodiesA.flatMap((b) => b.deltas)).toHaveLength(14);
+  // Early sends split the time into more requests; none of it is lost.
+  expect(
+    bodiesA
+      .flatMap((b) => b.deltas)
+      .reduce((sum: number, d: { activeMs: number }) => sum + d.activeMs, 0),
+  ).toBe(14_000);
   expect(bodiesA.flatMap((b) => b.events ?? [])).toHaveLength(24);
   // Nothing of child A's waits for child B's heartbeat.
   window.dispatchEvent(new Event("pointerdown"));
