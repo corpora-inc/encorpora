@@ -620,6 +620,8 @@ test(
           userId: U,
           roles: ["district_admin"],
           schools: [],
+          name: "Jane Smith-Núñez",
+          districtName: "Distrito Escolar de Peñasco",
         },
         null,
       );
@@ -660,6 +662,34 @@ test(
       });
       await app.ready();
       try {
+        // Before any roster, the connect screen knows whom Clever signed in:
+        // it names them, and fills in their name to sign the agreement.
+        const before = await app.inject({
+          url: "/api/v1/school/clever/status",
+          headers: { authorization: `Bearer ${admin.token}` },
+        });
+        assert.equal(before.statusCode, 200, before.body);
+        assert.equal(before.json().connection, null);
+        assert.equal(before.json().identity.name, "Jane Smith-Núñez");
+        assert.equal(
+          before.json().identity.districtName,
+          "Distrito Escolar de Peñasco",
+        );
+        // The app's bar names the session from /me before any roster does.
+        const { accountSummary } = await import("../src/account/repository.js");
+        const { FamilyRepository } =
+          await import("../src/family/repository.js");
+        const unrostered = await accountSummary(
+          db,
+          new FamilyRepository(db),
+          admin.accountId,
+        );
+        assert.equal(unrostered.account.kind, "provider");
+        assert.equal(unrostered.account.displayName, "Jane Smith-Núñez");
+        assert.equal(
+          unrostered.account.districtName,
+          "Distrito Escolar de Peñasco",
+        );
         const response = await app.inject({
           method: "POST",
           url: "/api/v1/school/clever/connect",

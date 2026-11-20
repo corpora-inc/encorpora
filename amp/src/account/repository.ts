@@ -1,4 +1,4 @@
-import { accountProfile } from "./profile.js";
+import { accountProfile, cleverDisplay } from "./profile.js";
 import { readSetup } from "./first-run.js";
 import { followDemo } from "../schools/demo/shared.js";
 import { availableGift } from "../access-grants/repository.js";
@@ -70,6 +70,7 @@ export async function accountSummary(
   let email: string | null = null,
     emailVerified = true;
   let providerOnly = false;
+  let providerDistrict: string | undefined;
   if (
     accountId.startsWith("amp|") &&
     (await pool.query("SELECT to_regclass('amp_auth_users') AS relation"))
@@ -97,6 +98,15 @@ export async function accountSummary(
             [accountId],
           )
         ).rowCount;
+      if (providerOnly)
+        providerDistrict = cleverDisplay(
+          (
+            await pool.query(
+              "SELECT claims FROM amp_provider_identities WHERE account_id=$1 ORDER BY verified_at DESC LIMIT 1",
+              [accountId],
+            )
+          ).rows[0]?.claims,
+        ).districtName;
     }
   }
   const record = (
@@ -215,6 +225,7 @@ export async function accountSummary(
       confirmationRequired:
         !emailVerified && !providerOnly && !families.development,
       ...(providerOnly ? { kind: "provider" as const } : {}),
+      ...(providerDistrict ? { districtName: providerDistrict } : {}),
     },
     consent: {
       status: active

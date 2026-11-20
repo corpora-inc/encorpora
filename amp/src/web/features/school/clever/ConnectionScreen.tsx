@@ -21,7 +21,10 @@ import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
 import { orgsOptions } from "../api";
 import { adoptPath } from "../paths";
 import { Authorization } from "../pilots/Authorization";
-import { cleverOnboardingSession } from "./onboarding-session";
+import {
+  clearCleverOnboardingSession,
+  cleverOnboardingSession,
+} from "./onboarding-session";
 import { linkClever as linkAccount } from "./link";
 import {
   cleverEnabled,
@@ -106,6 +109,21 @@ export function ConnectionScreen() {
   const identity = data?.identity,
     connection = data?.connection;
   const admin = identity?.roles.includes("district_admin") ?? false;
+  // Clever's name for the signer, filled in once; whatever is typed wins.
+  useEffect(() => {
+    const given = identity?.name;
+    if (given) setName((typed) => typed || given);
+  }, [identity?.name]);
+  const [leaving, setLeaving] = useState(false);
+  // A shared school computer: whoever Clever signed in mid-setup can leave
+  // from here.
+  function signOutHere() {
+    setLeaving(true);
+    // The setup proof lives only in this tab; clearing it ends the session.
+    clearCleverOnboardingSession();
+    location.assign("/");
+  }
+
   const onboarding = !!credential?.onboarding;
   const paused = connection?.status === "active" && connection.syncPaused;
   const authorityFailed =
@@ -494,6 +512,30 @@ export function ConnectionScreen() {
     };
   const content = (
     <PlainPage title={state.title || undefined}>
+      {/* Signed in, the bar names the session (SessionMark); mid-setup,
+          outside the app, this line does. */}
+      {identity && !session && (
+        <div className={styles.signedIn} data-signed-in-as="">
+          <p>
+            {identity.name ? (
+              <>
+                Signed in as <strong>{identity.name}</strong>
+              </>
+            ) : (
+              "Signed in with Clever"
+            )}
+            {identity.districtName && ` · ${identity.districtName}`}
+          </p>
+          <Button
+            variant="quiet"
+            disabled={leaving}
+            aria-busy={leaving || undefined}
+            onClick={signOutHere}
+          >
+            Sign out
+          </Button>
+        </div>
+      )}
       {state.body}
       <Toast
         message={error === "reauth" ? "" : error}

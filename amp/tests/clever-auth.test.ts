@@ -58,7 +58,50 @@ test("Clever identity uses subject and provider roles without treating email as 
       schools: ["school-1", "school-2"],
     },
   );
-  assert.equal(calls.length, 3);
+  // Every Identity API read names its version explicitly.
+  assert.deepEqual(calls.slice(1).sort(), [
+    "https://api.clever.com/v3.0/districts/district-1",
+    "https://api.clever.com/v3.0/me",
+    "https://api.clever.com/v3.0/users/teacher-1",
+  ]);
+});
+test("a Clever sign-in carries the person's and district's names for display, as written", async () => {
+  let districtFails = false;
+  const transport: typeof fetch = async (input) => {
+    const url = String(input);
+    if (url.endsWith("/tokens"))
+      return Response.json({ access_token: "fixture-access" });
+    if (url.endsWith("/me"))
+      return Response.json({ data: { id: "admin-1", district: "district-1" } });
+    if (url.endsWith("/districts/district-1"))
+      return districtFails
+        ? new Response("unavailable", { status: 503 })
+        : Response.json({
+            data: { id: "district-1", name: "Distrito Escolar de Peñasco" },
+          });
+    return Response.json({
+      data: {
+        id: "admin-1",
+        district: "district-1",
+        name: { first: "Jane", middle: "Q", last: "Smith-Núñez" },
+        roles: { district_admin: {} },
+      },
+    });
+  };
+  assert.deepEqual(await exchangeCleverIdentity(config, "code", transport), {
+    environment: "sandbox",
+    districtId: "district-1",
+    userId: "admin-1",
+    roles: ["district_admin"],
+    schools: [],
+    name: "Jane Smith-Núñez",
+    districtName: "Distrito Escolar de Peñasco",
+  });
+  // The district's name only labels the screen: without it, sign-in goes on.
+  districtFails = true;
+  const claims = await exchangeCleverIdentity(config, "code", transport);
+  assert.equal(claims.name, "Jane Smith-Núñez");
+  assert.equal(claims.districtName, undefined);
 });
 test("Clever rejects a mismatched district and impossible student/adult roles", async () => {
   for (const user of [

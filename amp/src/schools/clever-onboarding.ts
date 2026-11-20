@@ -298,6 +298,8 @@ export async function registerCleverOnboarding(
               districtId: identity.districtId,
               roles: identity.roles,
               personId: identity.personId,
+              name: identity.name ?? null,
+              districtName: identity.districtName ?? null,
             }
           : null,
         connection,

@@ -222,8 +222,8 @@ test(
     // A refusal at Clever's consent screen says so; any other provider error
     // is a retryable failure. Neither is exchanged.
     for (const [error, code] of [
-      ["access_denied", "clever_sign_in_canceled"],
-      ["server_error", "clever_sign_in_failed"],
+      ["access_denied", "canceled"],
+      ["server_error", "failed"],
     ])
       assert.equal(
         (
@@ -232,7 +232,7 @@ test(
             url: `/api/v1/school/sso/clever/callback?error=${error}`,
           })
         ).headers.location,
-        `/sign-in?error=${code}`,
+        `/clever/${code}`,
       );
     assert.equal(exchanges, 1);
     const flow = await start();
@@ -240,10 +240,7 @@ test(
       method: "GET",
       url: `/api/v1/school/sso/clever/callback?code=stolen&state=${flow.state}`,
     });
-    assert.equal(
-      noCookie.headers.location,
-      "/sign-in?error=clever_sign_in_failed",
-    );
+    assert.equal(noCookie.headers.location, "/clever/failed");
     assert.equal(exchanges, 1);
     const [first, duplicate] = await Promise.all([
       finish(flow, "one-code"),
@@ -275,10 +272,7 @@ test(
       method: "GET",
       url: `/api/v1/school/sso/clever/callback?code=other-code&state=${flow.state}`,
     });
-    assert.equal(
-      forged.headers.location,
-      "/sign-in?error=clever_sign_in_failed",
-    );
+    assert.equal(forged.headers.location, "/clever/failed");
     assert.equal(exchanges, 2);
     const sessionCookie = cookieOf(signed, "amp.provider-session");
     const sessionResponse = await app.inject({
@@ -480,7 +474,7 @@ test(
           url: `/api/v1/school/sso/clever/callback?code=link-code&state=${linkState}`,
         })
       ).headers.location,
-      "/sign-in?error=clever_sign_in_failed",
+      "/clever/failed",
     );
     assert.equal(
       (
@@ -508,15 +502,37 @@ test(
     // create an adult principal or a learner.
     subject = "student-1";
     roles = { student: {} };
+    // A student AMP has no learner for is told why, by their district's
+    // connection: shared but not their class, paused, or never connected.
     assert.equal(
       (await finish(await start())).headers.location,
-      "/sign-in?error=clever_student_not_rostered",
+      "/clever/not-on-roster",
+    );
+    await pool.query(
+      "UPDATE amp_clever_connections SET status='disconnected',disconnected_at=now() WHERE id=$1",
+      [connectionId],
+    );
+    assert.equal(
+      (await finish(await start())).headers.location,
+      "/clever/disconnected",
+    );
+    await pool.query(
+      "UPDATE amp_clever_connections SET district_id='1000000000000000000000ff' WHERE id=$1",
+      [connectionId],
+    );
+    assert.equal(
+      (await finish(await start())).headers.location,
+      "/clever/not-connected",
+    );
+    await pool.query(
+      "UPDATE amp_clever_connections SET status='active',disconnected_at=NULL,district_id='100000000000000000000001' WHERE id=$1",
+      [connectionId],
     );
     assert.equal(studentSignIns, 0);
     roles = { contact: {} };
     assert.equal(
       (await finish(await start())).headers.location,
-      "/sign-in?error=clever_contact_unsupported",
+      "/clever/guardian",
     );
     assert.equal(
       (
