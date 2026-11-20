@@ -454,15 +454,61 @@ try {
       exact: true,
     })
     .waitFor();
-  await page
-    .getByRole("link", { name: "Sign in with Clever", exact: true })
-    .waitFor();
+  const cleverLink = () =>
+    page.getByRole("link", { name: "Log in with Clever", exact: true });
+  await cleverLink().waitFor();
   await capture("clever-sign-in-busy");
-  // Clever staff always have a way in from sign-in, not only after a failure.
-  await page.goto(`${origin}/sign-in`);
-  await page
-    .getByRole("link", { name: "Sign in with Clever", exact: true })
-    .waitFor();
+  // Each Clever refusal a person can act on says what to do, under Clever's
+  // own button (dev.clever.com/docs/clever-sso-assets).
+  for (const [code, text] of [
+    ["clever_sign_in_failed", "Clever sign-in didn’t finish. Try again."],
+    ["clever_sign_in_canceled", "Clever sign-in was canceled."],
+    [
+      "clever_student_not_rostered",
+      "AMP can’t find your class yet. Ask your teacher.",
+    ],
+    [
+      "clever_contact_unsupported",
+      "Clever sign-in is for students and school staff.",
+    ],
+  ]) {
+    await page.goto(`${origin}/sign-in?error=${code}`);
+    await page.getByText(text, { exact: true }).waitFor();
+    await cleverLink().waitFor();
+  }
+  await capture("clever-student-not-rostered");
+  // Students and staff always have a way in from sign-in, not only after a
+  // failure, and a student signed out on a shared computer from /join.
+  for (const path of ["/sign-in", "/join"]) {
+    await page.goto(`${origin}${path}`);
+    await cleverLink().waitFor();
+    assert.equal(
+      await cleverLink().getAttribute("href"),
+      "/api/v1/school/sso/clever/start",
+    );
+    // Clever's artwork at its own size, whole and inside a phone's width.
+    for (const width of [320, 1280]) {
+      await page.setViewportSize({ width, height: 800 });
+      const box = (await cleverLink().locator("img").boundingBox())!;
+      assert.ok(box.width > 200 && box.width <= width - 16, `${path} ${width}`);
+      assert.ok(Math.abs(box.width / box.height - 267 / 50) < 0.05);
+      assert.equal(
+        await page.evaluate(
+          () =>
+            document.documentElement.scrollWidth <=
+            document.documentElement.clientWidth,
+        ),
+        true,
+      );
+      assert.equal(
+        await cleverLink()
+          .locator("img")
+          .evaluate((image: HTMLImageElement) => image.naturalWidth > 0),
+        true,
+      );
+    }
+    await capture(`clever-log-in-${path.slice(1)}`);
+  }
   assert.deepEqual(failures, []);
   console.info(
     "Clever connection, paused authority recovery, teacher hand-off and confirmed purchase browser states passed.",

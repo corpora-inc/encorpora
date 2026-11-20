@@ -1,0 +1,18 @@
+/* Clever's artwork at its own proportions, centered in the column, no wider
+   than the column on a narrow phone. */
+.button {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  max-width: 100%;
+  border-radius: 7px;
+}
+.button img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

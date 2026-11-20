@@ -225,14 +225,13 @@ export async function registerCleverAuthRoutes(
     }).toString();
     return url.href;
   };
-  app.get(
-    `${ROOT}/start`,
-    { config: { rateLimit: { max: 30, timeWindow: "1 minute" } } },
-    async (_request, reply) => {
-      reply.header("cache-control", "no-store");
-      return reply.redirect(await start(reply));
-    },
-  );
+  // A whole school signs in from one address at the bell, and a Portal launch
+  // reaches the callback twice per person. These routes keep the deployment's
+  // per-address limit for anonymous pages, never a tighter one.
+  app.get(`${ROOT}/start`, async (_request, reply) => {
+    reply.header("cache-control", "no-store");
+    return reply.redirect(await start(reply));
+  });
   app.post(`${ROOT}/link`, async (request, reply) => {
     reply.header("cache-control", "no-store");
     if (!sameOrigin(request))
@@ -243,147 +242,188 @@ export async function registerCleverAuthRoutes(
       return reply.code(403).send({ error: "reauth_required" });
     return { url: await start(reply, proof) };
   });
-  app.get(
-    `${ROOT}/callback`,
-    { config: { rateLimit: { max: 60, timeWindow: "1 minute" } } },
-    async (request, reply) => {
-      reply
-        .header("cache-control", "no-store")
-        .header("referrer-policy", "no-referrer");
-      const query = z
-        .object({
-          code: z.string().max(4096).optional(),
-          state: z.string().max(128).optional(),
-          error: z.string().max(256).optional(),
-        })
-        .safeParse(request.query);
-      if (!query.success || query.data.error || !query.data.code)
-        return reply.redirect("/sign-in?error=clever_sign_in_failed");
-      const { code, state } = query.data;
-      // Clever Portal initiates a callback without AMP state. Discard that code
-      // and restart in this browser; never redeem an unbound authorization code.
-      if (!state) return reply.redirect(await start(reply));
-      const browser = requestCookie(request, FLOW_COOKIE);
-      if (!OPAQUE.test(state) || !browser || !OPAQUE.test(browser))
-        return reply.redirect("/sign-in?error=clever_sign_in_failed");
-      cookie(reply, FLOW_COOKIE, "", secure, 0, ROOT);
-      try {
-        // Claim before any network call. Code hash uniqueness also prevents the
-        // same provider code being redeemed through two separately valid flows.
-        const flow = (
-          await pool.query(
-            `UPDATE amp_provider_oauth_flows SET consumed_at=now(),code_hash=$3
+  /** The same state and code a finished callback already redeemed: a
+   * refresh, the Back button, or a link opened twice. It is never exchanged
+   * again. Restarting signs this browser in afresh instead of showing an
+   * error; the restart carries new state, so it cannot repeat itself. An
+   * account link is never restarted as a plain sign-in. */
+  const redeemed = async (state: string, code: string) =>
+    OPAQUE.test(state) &&
+    !!(
+      await pool.query(
+        "SELECT 1 FROM amp_provider_oauth_flows WHERE state_hash=$1 AND code_hash=$2 AND consumed_at IS NOT NULL AND link_account_id IS NULL",
+        [providerHash(state), providerHash(code)],
+      )
+    ).rowCount;
+  app.get(`${ROOT}/callback`, async (request, reply) => {
+    reply
+      .header("cache-control", "no-store")
+      .header("referrer-policy", "no-referrer");
+    const query = z
+      .object({
+        code: z.string().max(4096).optional(),
+        state: z.string().max(128).optional(),
+        error: z.string().max(256).optional(),
+      })
+      .safeParse(request.query);
+    if (!query.success || query.data.error || !query.data.code) {
+      request.log.warn(
+        { cleverSignInFailed: query.data?.error ?? "missing_code" },
+        "Clever sign-in failed",
+      );
+      return reply.redirect(
+        `/sign-in?error=${query.data?.error === "access_denied" ? "clever_sign_in_canceled" : "clever_sign_in_failed"}`,
+      );
+    }
+    const { code, state } = query.data;
+    // Clever Portal and Instant Login reach the callback without AMP state.
+    // Discard that code and restart in this browser; never redeem an unbound
+    // authorization code. The restart always carries AMP state, so it is
+    // answered by the branch below, never by this one again.
+    if (!state) return reply.redirect(await start(reply));
+    const browser = requestCookie(request, FLOW_COOKIE);
+    if (!OPAQUE.test(state) || !browser || !OPAQUE.test(browser)) {
+      if (await redeemed(state, code)) {
+        request.log.info("Clever callback repeated; sign-in restarted");
+        return reply.redirect(await start(reply));
+      }
+      request.log.warn(
+        { cleverSignInFailed: "clever_invalid_state" },
+        "Clever sign-in failed",
+      );
+      return reply.redirect("/sign-in?error=clever_sign_in_failed");
+    }
+    cookie(reply, FLOW_COOKIE, "", secure, 0, ROOT);
+    try {
+      // Claim before any network call. Code hash uniqueness also prevents the
+      // same provider code being redeemed through two separately valid flows.
+      const flow = (
+        await pool.query(
+          `UPDATE amp_provider_oauth_flows SET consumed_at=now(),code_hash=$3
         WHERE state_hash=$1 AND browser_hash=$2 AND expires_at>now() AND consumed_at IS NULL
         RETURNING link_account_id,link_proof_hash`,
-            [providerHash(state), providerHash(browser), providerHash(code)],
-          )
-        ).rows[0];
-        if (!flow) throw new Error("clever_invalid_state");
-        if (flow.link_account_id) {
-          const proof = await options.freshAccountSession?.(request);
-          if (
-            !recent(proof) ||
-            proof.accountId !== flow.link_account_id ||
-            proofHash(proof) !== flow.link_proof_hash
-          )
-            throw new Error("clever_link_proof_expired");
-        }
-        const claims = await exchangeCleverIdentity(
-          config,
-          code,
-          options.fetch,
-        );
-        const person = await options.resolvePerson(claims);
-        if (claims.roles.includes("student")) {
-          if (
-            flow.link_account_id ||
-            !person ||
-            !person.roles.includes("student")
-          )
-            throw new Error("clever_student_unavailable");
-          const grant = await options.signInPerson(person.personId);
-          if (!grant) throw new Error("clever_student_unavailable");
-          await revokeProviderSession(pool, request);
-          await options.clearAccountSession?.(request, reply);
-          cookie(reply, PROVIDER_COOKIE, "", secure, 0);
-          return reply.redirect(
-            `/join/continue#${Buffer.from(JSON.stringify(grant)).toString("base64url")}`,
-          );
-        }
-        if (
-          !isCleverAdult(claims.roles) ||
-          (person && !isCleverAdult(person.roles))
+          [providerHash(state), providerHash(browser), providerHash(code)],
         )
-          throw new Error("clever_staff_unavailable");
-        const session = await establishProviderPrincipal(
-          pool,
-          claims,
-          person,
-          flow.link_account_id,
-        );
-        await revokeProviderSession(pool, request);
-        if (!flow.link_account_id)
-          await options.clearAccountSession?.(request, reply);
-        if (session.onboarding) {
-          cookie(reply, PROVIDER_COOKIE, "", secure, 0);
-          return reply.redirect(
-            `/school/connect#clever-onboarding=${session.token}`,
-          );
-        }
-        // Signing in is all a Clever teacher does: their synced sections
-        // start their pilot now, licensed district or not (founder ruling
-        // 2026-11-15). A failure here never stops the sign-in; the class
-        // offers Start instead.
-        try {
-          await startTeacherPilots(
-            new SchoolRepository(pool),
-            session.accountId,
-          );
-        } catch (error) {
-          request.log.error(
-            { error: error instanceof Error ? error.message : String(error) },
-            "Clever teacher's pilot didn't start",
-          );
-        }
-        cookie(reply, PROVIDER_COOKIE, session.token, secure, 7200);
-        return reply.redirect(
-          `${person ? "/school" : "/school/connect"}#clever-session=${session.token}`,
-        );
-      } catch (error) {
-        request.log.warn(
-          {
-            cleverSignInFailed:
-              error instanceof Error && /^clever_/.test(error.message)
-                ? error.message
-                : "identity_failed",
-          },
-          "Clever sign-in failed",
-        );
-        if (error instanceof Error && error.message === "clever_sign_in_busy")
-          return reply.redirect("/school/connect?error=clever_sign_in_busy");
+      ).rows[0];
+      if (!flow) throw new Error("clever_invalid_state");
+      if (flow.link_account_id) {
+        const proof = await options.freshAccountSession?.(request);
         if (
-          error instanceof Error &&
-          error.message === "identity_already_linked"
+          !recent(proof) ||
+          proof.accountId !== flow.link_account_id ||
+          proofHash(proof) !== flow.link_proof_hash
         )
-          return reply.redirect(
-            "/school/connect?error=clever_identity_already_linked",
-          );
-        if (
-          error instanceof Error &&
-          error.message === "clever_account_link_required"
-        )
-          return reply.redirect(
-            "/school/connect?error=clever_account_link_required",
-          );
-        if (
-          error instanceof Error &&
-          error.message === "clever_link_proof_expired"
-        )
-          return reply.redirect("/school/connect?error=clever_link_expired");
-        return reply.redirect("/sign-in?error=clever_sign_in_failed");
+          throw new Error("clever_link_proof_expired");
       }
-    },
-  );
+      const claims = await exchangeCleverIdentity(config, code, options.fetch);
+      const person = await options.resolvePerson(claims);
+      if (claims.roles.includes("student")) {
+        if (
+          flow.link_account_id ||
+          !person ||
+          !person.roles.includes("student")
+        )
+          throw new Error("clever_student_unavailable");
+        const grant = await options.signInPerson(person.personId);
+        if (!grant) throw new Error("clever_student_unavailable");
+        await revokeProviderSession(pool, request);
+        await options.clearAccountSession?.(request, reply);
+        cookie(reply, PROVIDER_COOKIE, "", secure, 0);
+        return reply.redirect(
+          `/join/continue#${Buffer.from(JSON.stringify(grant)).toString("base64url")}`,
+        );
+      }
+      if (claims.roles.includes("contact"))
+        throw new Error("clever_contact_unsupported");
+      if (
+        !isCleverAdult(claims.roles) ||
+        (person && !isCleverAdult(person.roles))
+      )
+        throw new Error("clever_staff_unavailable");
+      const session = await establishProviderPrincipal(
+        pool,
+        claims,
+        person,
+        flow.link_account_id,
+      );
+      await revokeProviderSession(pool, request);
+      if (!flow.link_account_id)
+        await options.clearAccountSession?.(request, reply);
+      if (session.onboarding) {
+        cookie(reply, PROVIDER_COOKIE, "", secure, 0);
+        return reply.redirect(
+          `/school/connect#clever-onboarding=${session.token}`,
+        );
+      }
+      // Signing in is all a Clever teacher does: their synced sections
+      // start their pilot now, licensed district or not (founder ruling
+      // 2026-11-15). A failure here never stops the sign-in; the class
+      // offers Start instead.
+      try {
+        await startTeacherPilots(new SchoolRepository(pool), session.accountId);
+      } catch (error) {
+        request.log.error(
+          { error: error instanceof Error ? error.message : String(error) },
+          "Clever teacher's pilot didn't start",
+        );
+      }
+      cookie(reply, PROVIDER_COOKIE, session.token, secure, 7200);
+      return reply.redirect(
+        `${person ? "/school" : "/school/connect"}#clever-session=${session.token}`,
+      );
+    } catch (error) {
+      // The other half of a duplicate that arrived together with the first:
+      // it lost the claim, so it signs in afresh rather than showing an error.
+      if (
+        error instanceof Error &&
+        error.message === "clever_invalid_state" &&
+        (await redeemed(state, code))
+      ) {
+        request.log.info("Clever callback repeated; sign-in restarted");
+        return reply.redirect(await start(reply));
+      }
+      request.log.warn(
+        {
+          cleverSignInFailed:
+            error instanceof Error && /^clever_/.test(error.message)
+              ? error.message
+              : "identity_failed",
+        },
+        "Clever sign-in failed",
+      );
+      if (error instanceof Error && error.message === "clever_sign_in_busy")
+        return reply.redirect("/sign-in?error=clever_sign_in_busy");
+      // Each refusal a person can act on has its own message on the
+      // sign-in page; anything else is a retryable "didn't finish".
+      if (
+        error instanceof Error &&
+        error.message === "clever_student_unavailable"
+      )
+        return reply.redirect("/sign-in?error=clever_student_not_rostered");
+      if (
+        error instanceof Error &&
+        error.message === "clever_contact_unsupported"
+      )
+        return reply.redirect("/sign-in?error=clever_contact_unsupported");
+      if (error instanceof Error && error.message === "identity_already_linked")
+        return reply.redirect(
+          "/school/connect?error=clever_identity_already_linked",
+        );
+      if (
+        error instanceof Error &&
+        error.message === "clever_account_link_required"
+      )
+        return reply.redirect(
+          "/school/connect?error=clever_account_link_required",
+        );
+      if (
+        error instanceof Error &&
+        error.message === "clever_link_proof_expired"
+      )
+        return reply.redirect("/school/connect?error=clever_link_expired");
+      return reply.redirect("/sign-in?error=clever_sign_in_failed");
+    }
+  });
   app.get("/api/v1/provider/session", async (request, reply) => {
     reply.header("cache-control", "no-store");
     // No credential readback across sites, even if a CORS policy changes.

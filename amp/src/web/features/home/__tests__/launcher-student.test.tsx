@@ -79,3 +79,20 @@ test("a student whose learner can't practice, with no word from the school, has 
     }),
   ).toBeTruthy();
 });
+
+test("a student in no class yet (rostered by Clever, no section) is told practice hasn't started", async () => {
+  // The shape a classless Clever student's /me has (clever-server.integration).
+  const me = student("waiting");
+  await mount({
+    ...me,
+    school: { orgName: "Escuela Señora Núñez", practice: "waiting" },
+  });
+  expect(
+    await screen.findByRole("heading", {
+      name: "Your teacher hasn’t started practice yet.",
+    }),
+  ).toBeTruthy();
+  expect(
+    screen.queryByRole("link", { name: "Continue practicing" }),
+  ).toBeNull();
+});

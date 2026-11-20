@@ -8,7 +8,7 @@ import {
 } from "../../../parent-followup/contracts";
 import styles from "./Auth.module.css";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
-import { Button, buttonClass } from "../../ui/Button";
+import { Button } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
@@ -58,9 +58,21 @@ import { LoadingScreen } from "../../ui/LoadingScreen";
 import { useBrowserHandoff } from "./OpenInBrowser";
 import { Form } from "../../ui/Form";
 import { FieldError } from "../../ui/field-validation";
+import { CleverLogInButton } from "../school/clever/CleverLogInButton";
 
 /** The sign-up code's length (server/sign-in-methods.ts SIGN_UP_CODE_LENGTH). */
 const SIGN_UP_CODE_DIGITS = 6;
+/** Why a Clever sign-in came back here (school/clever-auth.ts), said so the
+ * person knows what to do next. Clever's button sits right below. */
+const cleverArrivals: Record<string, string> = {
+  clever_sign_in_failed: "Clever sign-in didn’t finish. Try again.",
+  clever_sign_in_busy: "Clever sign-in is busy. Try again in a moment.",
+  clever_sign_in_canceled: "Clever sign-in was canceled.",
+  clever_student_not_rostered:
+    "AMP can’t find your class yet. Ask your teacher.",
+  clever_contact_unsupported:
+    "Clever sign-in is for students and school staff.",
+};
 
 /** The fragment that marks a sign-in handed off from an in-app browser:
  * Google starts on arrival. A fragment never reaches the server or a log. */
@@ -200,21 +212,19 @@ export function SignInScreen() {
   const [error, setError] = useState(
     invalidReset || arrivalCode === "reset_link_invalid"
       ? "That password reset link expired or is invalid. Request a new link."
-      : arrivalCode === "clever_sign_in_failed"
-        ? "Clever sign-in didn’t finish."
-        : arrivalCode === "clever_sign_in_busy"
-          ? "Clever sign-in is busy. Try again in a moment."
-          : arrivalCode === "link_failed"
-            ? "That login could not be linked. Sign in again, then try linking it from Security."
-            : arrivalCode && isProvider(errorProvider)
-              ? socialErrorMessage(
-                  copy,
-                  arrivalCode,
-                  providerNames[errorProvider],
-                )
-              : arrivalCode
-                ? "That sign-in did not complete. Try again."
-                : "",
+      : arrivalCode && Object.hasOwn(cleverArrivals, arrivalCode)
+        ? cleverArrivals[arrivalCode]
+        : arrivalCode === "link_failed"
+          ? "That login could not be linked. Sign in again, then try linking it from Security."
+          : arrivalCode && isProvider(errorProvider)
+            ? socialErrorMessage(
+                copy,
+                arrivalCode,
+                providerNames[errorProvider],
+              )
+            : arrivalCode
+              ? "That sign-in did not complete. Try again."
+              : "",
   );
   useLoggedError(error);
   // A failure that belongs to one field shows in that field's line only
@@ -829,21 +839,10 @@ export function SignInScreen() {
           takeFocus
           onDismiss={() => setError("")}
         />
-        {/* School staff signed in by Clever: always a way in from here, the
-            first choice after a Clever sign-in that didn't finish. */}
+        {/* Students and school staff in a Clever district: always a way in
+            from here, right under any Clever sign-in that didn't finish. */}
         {accounts && config.clever && step === "sign-in" && (
-          <a
-            href="/api/v1/school/sso/clever/start"
-            className={buttonClass(
-              ["clever_sign_in_failed", "clever_sign_in_busy"].includes(
-                arrivalCode ?? "",
-              )
-                ? "primary"
-                : "secondary",
-            )}
-          >
-            Sign in with Clever
-          </a>
+          <CleverLogInButton />
         )}
         {showProviders && (
           <ProviderButtons
