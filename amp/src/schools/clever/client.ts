@@ -235,10 +235,14 @@ export class CleverClient {
     );
     return events.at(-1)?.id ?? null;
   }
-  async events(token: string, after: string): Promise<CleverEvent[]> {
-    cleverId.parse(after);
+  /** `after` null reads the feed from its start: the baseline snapshot began
+   * when the feed was empty, so every retained event is newer than it. */
+  async events(token: string, after: string | null): Promise<CleverEvent[]> {
+    if (after !== null) cleverId.parse(after);
     return this.list(
-      `/events?starting_after=${after}&limit=1000`,
+      after === null
+        ? "/events?limit=1000"
+        : `/events?starting_after=${after}&limit=1000`,
       token,
       eventSchema,
     );
