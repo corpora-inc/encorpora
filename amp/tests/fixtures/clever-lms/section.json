@@ -1,0 +1,22 @@
+{
+  "data": {
+    "course": "6532b9a1f1c2b30059b3bbc1",
+    "created": "2026-08-12T16:04:31.112Z",
+    "district": "5800eb48a6d68b0223000001",
+    "ext": {},
+    "grade": "4",
+    "id": "657b35c16a1a3e5c217dcd72",
+    "last_modified": "2026-11-19T22:10:04.000Z",
+    "lms_status": { "synced_in_lms": true },
+    "name": "Math 4 - Period 2",
+    "period": "2",
+    "school": "6532b9a1f1c2b30059b3bb01",
+    "section_number": "2",
+    "sis_id": "M4-2",
+    "students": ["657b35c16a1a3e5c217dcd2e", "657b35c16a1a3e5c217dcd31"],
+    "subject": "math",
+    "teacher": "657b35c16a1a3e5c217dcd10",
+    "teachers": ["657b35c16a1a3e5c217dcd10"],
+    "term_id": "6532b9a1f1c2b30059b3bbf0"
+  }
+}

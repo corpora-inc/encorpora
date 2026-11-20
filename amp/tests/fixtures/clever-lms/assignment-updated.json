@@ -1,0 +1,25 @@
+{
+  "data": {
+    "assignee_mode": "all",
+    "attachments": [
+      {
+        "title": "Clever | Connect every student to a world of learning",
+        "type": "link",
+        "url": "https://clever.com"
+      }
+    ],
+    "created": "2024-11-06T23:28:06.713Z",
+    "description": "Example description",
+    "due_date": "2032-02-29T23:48:24.000Z",
+    "grading_type": "points",
+    "id": "c8f5eced-1ae1-45d9-97ce-0d4f6c0157d5",
+    "last_modified": "2024-11-06T23:35:10.000Z",
+    "max_attempts": 1,
+    "points_possible": 50,
+    "state": "open",
+    "submission_types": [
+      "link"
+    ],
+    "title": "Second Title"
+  }
+}
