@@ -57,6 +57,10 @@ const ALLOWED: Record<string, [count: number, reason: string]> = {
   ],
   "auth.ts": [3, "sign-in and sign-out hand off with a full load"],
   "lib/api.ts": [1, "an ended session reloads into sign-in"],
+  "features/school/clever/ConnectionScreen.tsx": [
+    1,
+    "signing out mid-setup ends the tab's Clever setup proof with a full load, as auth.ts sign-out does",
+  ],
   "features/school/clever/link.ts": [
     1,
     "explicit account linking hands off to Clever OAuth",
