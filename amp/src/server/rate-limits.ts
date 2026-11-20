@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import rateLimit from "@fastify/rate-limit";
 import type { FastifyInstance, FastifyRequest } from "fastify";
 
 /**
@@ -55,6 +56,21 @@ export function fixedWindow(windowMs: number) {
     },
     count: (key: string, now = Date.now()) => current(key, now)?.count ?? 0,
   };
+}
+
+/** The deployment's limits, before any route: signed-in requests per
+ * credential, so a household or co-op behind one address is not throttled as
+ * one client; anonymous requests per client address; and every request per
+ * address. Await it before adding routes outside a plugin. */
+export function registerRateLimits(app: FastifyInstance) {
+  const registered = app.register(rateLimit, {
+    max: (_request, key) =>
+      isAnonymous(key) ? ANONYMOUS_RATE_LIMIT : GLOBAL_RATE_LIMIT,
+    timeWindow: "1 minute",
+    keyGenerator: rateLimitKey,
+  });
+  limitEachAddress(app);
+  return registered;
 }
 
 export function limitEachAddress(

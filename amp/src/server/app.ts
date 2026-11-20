@@ -22,14 +22,7 @@ import { workbookTemplateIds } from "../workbook/results.js";
 import type { WorkbookRenderer } from "../workbook/pdf.js";
 import { readFile } from "node:fs/promises";
 import Fastify, { type FastifyInstance } from "fastify";
-import rateLimit from "@fastify/rate-limit";
-import {
-  ANONYMOUS_RATE_LIMIT,
-  GLOBAL_RATE_LIMIT,
-  isAnonymous,
-  limitEachAddress,
-  rateLimitKey,
-} from "./rate-limits";
+import { registerRateLimits } from "./rate-limits";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
 import {
@@ -226,16 +219,7 @@ export function buildApp(options: AppOptions) {
     }
     return payload;
   });
-  // Signed-in requests are limited per credential, so a household or co-op
-  // behind one address is not throttled as one client; anonymous requests
-  // are limited per client address.
-  app.register(rateLimit, {
-    max: (_request, key) =>
-      isAnonymous(key) ? ANONYMOUS_RATE_LIMIT : GLOBAL_RATE_LIMIT,
-    timeWindow: "1 minute",
-    keyGenerator: rateLimitKey,
-  });
-  limitEachAddress(app);
+  registerRateLimits(app);
   // Routes load after the limiter so its per-route hook sees every route;
   // fastify-plugin keeps hooks and the error handler on the root instance.
   app.register(fp(async (app) => routes(app, options)));

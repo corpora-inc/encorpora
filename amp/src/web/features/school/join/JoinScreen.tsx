@@ -1,5 +1,6 @@
 import { reportError } from "../../../lib/report-error";
 import { useNavigate, useSearch } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import {
   formatJoinCode,
@@ -9,7 +10,9 @@ import {
 import { Button } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
-import { queryClient } from "../../../lib/query";
+import { authConfigOptions, queryClient } from "../../../lib/query";
+import { CleverLogInButton } from "../clever/CleverLogInButton";
+import { cleverEnabled } from "../clever/enabled";
 import {
   finishingSignIn,
   joinRosterOptions,
@@ -32,9 +35,12 @@ function CardMark() {
   );
 }
 
-/** `/join`: a class code, or a card held up to the camera. */
+/** `/join`: a class code, a card held up to the camera, or, in a Clever
+ * district, Clever's own sign-in. A student signed out on a shared
+ * computer lands here, so each way back in is on this one screen. */
 export function JoinScreen() {
   const navigate = useNavigate();
+  const clever = cleverEnabled(useQuery(authConfigOptions).data);
   const finish = useFinishSignIn();
   const input = useRef<HTMLInputElement>(null);
   const [code, setCode] = useState("");
@@ -200,6 +206,7 @@ export function JoinScreen() {
             )}
           </Button>
         )}
+        {clever && !scanning && <CleverLogInButton />}
       </div>
     </JoinFrame>
   );

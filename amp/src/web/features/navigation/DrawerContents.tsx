@@ -343,7 +343,8 @@ export default function DrawerContents({
 }
 
 /** Sign out ends the drawer's list and scrolls with it. The student's
- * identity is shown above navigation, and named in this action's tooltip. */
+ * identity is shown above navigation, and named in this action's tooltip;
+ * a school-signed-in adult's is shown just above it. */
 export function DrawerFooter({ close }: { close: () => void }) {
   const view = useLearningView({ records: false });
   const [busy, setBusy] = useState(false);
@@ -369,6 +370,13 @@ export function DrawerFooter({ close }: { close: () => void }) {
   // address never shows here: screen recordings of the menu stay clean, and
   // Account holds it.
   const name = student ? (account?.learners[0]?.name ?? "") : "";
+  // Staff signed in through their school (Clever) share school computers, so
+  // they see whose session this is: their roster name and school.
+  const schoolAdult =
+    account?.account.kind === "provider" ? account.account.displayName : null;
+  const schools = [
+    ...new Set((account?.staffOf ?? []).map((place) => place.orgName)),
+  ].join(" · ");
   // A handed device goes back to the place it was handed from, by name.
   const label =
     student && handedStudentDevice()
@@ -380,6 +388,13 @@ export function DrawerFooter({ close }: { close: () => void }) {
       aria-label="Current account"
       data-signed-in
     >
+      {schoolAdult && (
+        <div className={styles.current} data-signed-in-as="">
+          <span className={styles.kicker}>Signed in as</span>
+          <strong>{schoolAdult}</strong>
+          {schools && <span className={styles.context}>{schools}</span>}
+        </div>
+      )}
       <div className={styles.signOut}>
         <button
           aria-label={label === "Sign out" && name ? `Sign out ${name}` : label}

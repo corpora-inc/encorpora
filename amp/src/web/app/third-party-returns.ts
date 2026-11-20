@@ -264,7 +264,11 @@ export const signInArrivalPending = () => !!useAuthDraft.getState().arrival;
 
 /** Clever's refusal on `/school/connect`, the one search that screen reads
  * (spread into its route's options). */
-const CLEVER_ERRORS = ["clever_identity_already_linked", "clever_link_expired"];
+const CLEVER_ERRORS = [
+  "clever_identity_already_linked",
+  "clever_account_link_required",
+  "clever_link_expired",
+];
 export const cleverReturn = {
   validateSearch: (search: Record<string, unknown>): { error?: string } =>
     CLEVER_ERRORS.includes(String(search.error))

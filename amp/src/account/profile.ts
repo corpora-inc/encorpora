@@ -33,7 +33,7 @@ export async function accountProfile(
 ): Promise<AdultProfile> {
   const exists = (
     await db.query(
-      "SELECT to_regclass('amp_account_profiles') AS profile,to_regclass('amp_auth_users') AS auth",
+      "SELECT to_regclass('amp_account_profiles') AS profile,to_regclass('amp_auth_users') AS auth,to_regclass('amp_people') AS people",
     )
   ).rows[0];
   const profile = exists.profile
@@ -52,19 +52,31 @@ export async function accountProfile(
         [profile.given_name, profile.family_name].filter(Boolean).join(" ") ||
         null,
     };
-  const name =
+  const mailbox =
     account.startsWith("amp|") && exists.auth
-      ? realAdultName(
-          (
-            await db.query("SELECT name FROM amp_auth_users WHERE id=$1", [
-              account.slice(4),
-            ])
-          ).rows[0]?.name,
-        )
+      ? (
+          await db.query("SELECT name FROM amp_auth_users WHERE id=$1", [
+            account.slice(4),
+          ])
+        ).rows[0]
+      : undefined;
+  const name = realAdultName(mailbox?.name);
+  // Staff who sign in through their school (Clever) have no mailbox at all:
+  // their school's roster names them, so a shared school computer shows whose
+  // session it is. A mailbox account keeps only the name it gave itself.
+  const rostered =
+    !mailbox && account.startsWith("amp|") && exists.people
+      ? ((
+          await db.query(
+            `SELECT name FROM (SELECT ${adultNameSql()} AS name,p.created_at,p.id FROM amp_people p WHERE p.account_id=$1 AND p.deleted_at IS NULL) named
+             WHERE name IS NOT NULL ORDER BY created_at,id LIMIT 1`,
+            [account],
+          )
+        ).rows[0]?.name ?? null)
       : null;
   // A provider's full name is usable as supplied, but does not establish how
   // that person divides it into given and family names.
-  return { givenName: null, familyName: null, displayName: name };
+  return { givenName: null, familyName: null, displayName: name ?? rostered };
 }
 export async function setAccountProfile(
   pool: Pool,

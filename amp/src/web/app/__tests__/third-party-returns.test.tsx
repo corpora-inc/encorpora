@@ -9,6 +9,7 @@ import { familyPlacesOptions } from "../../features/family/api";
 import { usePayStore } from "../../features/pay/store";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import {
+  cleverReturn,
   homeReturn,
   resumeStripeReturn,
   stripeReturn,
@@ -321,4 +322,14 @@ test("in an app's own browser, an arrival stays on the address its Open in brows
   } finally {
     agent.mockRestore();
   }
+});
+
+test("/school/connect keeps every Clever refusal it explains, and nothing else", () => {
+  for (const error of [
+    "clever_identity_already_linked",
+    "clever_account_link_required",
+    "clever_link_expired",
+  ])
+    expect(cleverReturn.validateSearch({ error })).toEqual({ error });
+  expect(cleverReturn.validateSearch({ error: "anything_else" })).toEqual({});
 });

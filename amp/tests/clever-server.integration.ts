@@ -22,6 +22,9 @@ import { syncCleverConnection } from "../src/schools/clever/sync.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { resolveStudentSession } from "../src/schools/principal.js";
 import { classPilotState } from "../src/schools/pilots.js";
+import { studentMe } from "../src/schools/student-me.js";
+import { accountSummary } from "../src/account/repository.js";
+import { FamilyRepository } from "../src/family/repository.js";
 import {
   classPractice,
   classPracticeGate,
@@ -84,7 +87,10 @@ test(
       school = "200000000000000000000001",
       student = "300000000000000000000001",
       teacher = "300000000000000000000002",
-      linkedTeacher = "300000000000000000000003";
+      linkedTeacher = "300000000000000000000003",
+      // Rostered at the school, in no section.
+      classlessTeacher = "300000000000000000000004",
+      classlessStudent = "300000000000000000000005";
     let subject = linkedTeacher;
     const transport: typeof fetch = async (input) => {
       if (String(input).endsWith("/tokens"))
@@ -96,7 +102,7 @@ test(
           id: subject,
           district,
           roles:
-            subject === student
+            subject === student || subject === classlessStudent
               ? { student: { school } }
               : { teacher: { schools: [school] } },
         },
@@ -290,19 +296,32 @@ test(
         events: async () => [],
         snapshot: async () => ({
           district: { id: district, name: "Fixture District" },
-          schools: [{ id: school, district, name: "Fixture School" }],
+          // Names arrive from Clever as UTF-8 and are shown as written.
+          schools: [{ id: school, district, name: "Escuela Señora Núñez" }],
           users: [
             {
               id: student,
               district,
-              name: { first: "Student" },
+              name: { first: "Iñaki", last: "Peña" },
               roles: { student: { school } },
             },
             {
               id: teacher,
               district,
-              name: { first: "Teacher" },
+              name: { first: "Inés", last: "Muñoz-Ébano" },
               roles: { teacher: { schools: [school] } },
+            },
+            {
+              id: classlessTeacher,
+              district,
+              name: { first: "Teo", last: "Vacío" },
+              roles: { teacher: { schools: [school] } },
+            },
+            {
+              id: classlessStudent,
+              district,
+              name: { first: "Zoë", last: "Solo" },
+              roles: { student: { school } },
             },
           ],
           sections: [
@@ -355,6 +374,13 @@ test(
     const studentSession = await resolveStudentSession(pool, grant.token);
     assert.ok(studentSession);
     assert.equal(studentSession.accountId, grant.accountId);
+    // The student sees their own name and school, exactly as Clever wrote them.
+    const studentView = await studentMe(pool, grant.token);
+    assert.equal(studentView.learners[0]!.name, "Iñaki Peña");
+    assert.equal(
+      (studentView as { school?: { orgName: string } }).school?.orgName,
+      "Escuela Señora Núñez",
+    );
     assert.equal(
       (
         await pool.query(
@@ -429,6 +455,85 @@ test(
         })
       ).statusCode,
       200,
+    );
+    // The teacher has no mailbox name: AMP shows whose session this is by
+    // their roster name and school.
+    const teacherView = await accountSummary(
+      pool,
+      new FamilyRepository(pool),
+      renewedSession.accountId,
+    );
+    assert.equal(teacherView.account.kind, "provider");
+    assert.equal(teacherView.account.displayName, "Inés Muñoz-Ébano");
+    assert.deepEqual(
+      teacherView.staffOf?.map((place) => place.orgName),
+      ["Escuela Señora Núñez"],
+    );
+    // Rostered, in no section yet: the teacher reaches their school (whose
+    // Classes says so, classes-empty.test) and the student their school's
+    // waiting screen (launcher-student.test), never a failure.
+    subject = classlessTeacher;
+    const classless = await finish(await start());
+    assert.match(
+      String(classless.headers.location),
+      /^\/school#clever-session=/,
+    );
+    const classlessSession = (
+      await app.inject({
+        method: "GET",
+        url: "/api/v1/provider/session",
+        headers: { cookie: cookieOf(classless, "amp.provider-session") },
+      })
+    ).json();
+    const classlessView = await accountSummary(
+      pool,
+      new FamilyRepository(pool),
+      classlessSession.accountId,
+    );
+    assert.equal(classlessView.account.displayName, "Teo Vacío");
+    assert.deepEqual(
+      classlessView.staffOf?.map(({ orgName, role }) => ({ orgName, role })),
+      [{ orgName: "Escuela Señora Núñez", role: "teacher" }],
+    );
+    subject = classlessStudent;
+    const lone = await finish(await start());
+    assert.match(String(lone.headers.location), /^\/join\/continue#/);
+    const loneView = (await studentMe(
+      pool,
+      JSON.parse(
+        Buffer.from(
+          String(lone.headers.location).split("#")[1],
+          "base64url",
+        ).toString(),
+      ).token,
+    )) as unknown as {
+      learners: { name: string }[];
+      school: { orgName: string; className?: string; practice?: string };
+    };
+    assert.equal(loneView.learners[0]!.name, "Zoë Solo");
+    assert.equal(loneView.school.orgName, "Escuela Señora Núñez");
+    assert.equal(loneView.school.className, undefined);
+    assert.equal(loneView.school.practice, "waiting");
+    // Only a school-only (Clever) account takes its roster name. A mailbox
+    // account with no name of its own keeps none, never a name another
+    // person typed for it on an invitation.
+    const nameless = await signUp("nameless@example.test");
+    await pool.query("UPDATE amp_auth_users SET name='Teacher' WHERE id=$1", [
+      nameless.user.id,
+    ]);
+    await pool.query(
+      "INSERT INTO amp_people(id,tenant_id,given_name,family_name,handle,timezone,account_id) VALUES($1,$2,'Mr','Smth','invited-typo','UTC',$3)",
+      [randomUUID(), org.id, `amp|${nameless.user.id}`],
+    );
+    assert.equal(
+      (
+        await accountSummary(
+          pool,
+          new FamilyRepository(pool),
+          `amp|${nameless.user.id}`,
+        )
+      ).account.displayName,
+      null,
     );
     await pool.query(
       "UPDATE amp_clever_connections SET status='disconnected',disconnected_at=now() WHERE id=$1",

@@ -22,6 +22,7 @@ import {
   createAccounts,
   registerAccountRoutes,
 } from "../src/server/accounts.js";
+import { registerRateLimits } from "../src/server/rate-limits.js";
 
 test(
   "Clever SSO: single-use browser proof, mailbox-independent staff, explicit linking, student isolation and erasure",
@@ -56,6 +57,8 @@ test(
       trustedOrigins: [],
       clever: true,
     });
+    // The deployment's own limits: a school signs in from one address.
+    await registerRateLimits(app);
     await registerAccountRoutes(app, accounts);
     let exchanges = 0;
     let subject = "200000000000000000000001";
@@ -168,7 +171,9 @@ test(
         },
       });
 
-    // A Portal-provided code is discarded and never exchanged without AMP state.
+    // A Portal or Instant Login code is discarded and never exchanged without
+    // AMP state. The restart carries AMP state, so it finishes rather than
+    // restarting again.
     const portal = await app.inject({
       method: "GET",
       url: "/api/v1/school/sso/clever/callback?code=portal-code",
@@ -178,13 +183,68 @@ test(
       /^https:\/\/clever.com\/oauth\/authorize/,
     );
     assert.equal(exchanges, 0);
+    const portalFlow = {
+      state: new URL(String(portal.headers.location)).searchParams.get(
+        "state",
+      )!,
+      cookie: cookieOf(portal, "amp.clever-flow"),
+    };
+    assert.match(portalFlow.state, /^[\w-]{43}$/);
+    const portalSignedIn = await finish(portalFlow, "portal-restarted-code");
+    assert.match(
+      String(portalSignedIn.headers.location),
+      /^\/school\/connect#clever-session=/,
+    );
+    assert.equal(exchanges, 1);
+    // A building of students launching from the Portal at the bell shares one
+    // address; each launch reaches the callback twice. None is refused.
+    const bell = await Promise.all(
+      Array.from({ length: 120 }, (_, n) =>
+        app.inject({
+          method: "GET",
+          url: `/api/v1/school/sso/clever/callback?code=bell-${n}`,
+        }),
+      ),
+    );
+    assert.deepEqual(
+      [...new Set(bell.map((response) => response.statusCode))],
+      [302],
+    );
+    assert.equal(
+      (
+        await app.inject({
+          method: "GET",
+          url: "/api/v1/school/sso/clever/start",
+        })
+      ).statusCode,
+      302,
+    );
+    // A refusal at Clever's consent screen says so; any other provider error
+    // is a retryable failure. Neither is exchanged.
+    for (const [error, code] of [
+      ["access_denied", "clever_sign_in_canceled"],
+      ["server_error", "clever_sign_in_failed"],
+    ])
+      assert.equal(
+        (
+          await app.inject({
+            method: "GET",
+            url: `/api/v1/school/sso/clever/callback?error=${error}`,
+          })
+        ).headers.location,
+        `/sign-in?error=${code}`,
+      );
+    assert.equal(exchanges, 1);
     const flow = await start();
     const noCookie = await app.inject({
       method: "GET",
       url: `/api/v1/school/sso/clever/callback?code=stolen&state=${flow.state}`,
     });
-    assert.match(String(noCookie.headers.location), /error=/);
-    assert.equal(exchanges, 0);
+    assert.equal(
+      noCookie.headers.location,
+      "/sign-in?error=clever_sign_in_failed",
+    );
+    assert.equal(exchanges, 1);
     const [first, duplicate] = await Promise.all([
       finish(flow, "one-code"),
       finish(flow, "one-code"),
@@ -193,7 +253,33 @@ test(
       response.headers.location?.startsWith("/school/connect#clever-session="),
     )!;
     assert.ok(signed);
-    assert.equal(exchanges, 1);
+    assert.equal(exchanges, 2);
+    // The duplicate that lost the claim restarts sign-in instead of showing
+    // an error, and so does replaying the finished callback (a refresh or the
+    // Back button, after its flow cookie was cleared). Neither exchanges again.
+    const lost = signed === first ? duplicate : first;
+    assert.match(
+      String(lost.headers.location),
+      /^https:\/\/clever.com\/oauth\/authorize\?.*state=[\w-]{43}/,
+    );
+    const replay = await app.inject({
+      method: "GET",
+      url: `/api/v1/school/sso/clever/callback?code=one-code&state=${flow.state}`,
+    });
+    assert.match(
+      String(replay.headers.location),
+      /^https:\/\/clever.com\/oauth\/authorize/,
+    );
+    // A state that was never redeemed with that code is not a repeat.
+    const forged = await app.inject({
+      method: "GET",
+      url: `/api/v1/school/sso/clever/callback?code=other-code&state=${flow.state}`,
+    });
+    assert.equal(
+      forged.headers.location,
+      "/sign-in?error=clever_sign_in_failed",
+    );
+    assert.equal(exchanges, 2);
     const sessionCookie = cookieOf(signed, "amp.provider-session");
     const sessionResponse = await app.inject({
       method: "GET",
@@ -376,13 +462,25 @@ test(
       url: "/api/v1/school/sso/clever/link",
       headers: { origin },
     });
-    const linked = await finish({
-      state: new URL(newLink.json().url).searchParams.get("state")!,
-      cookie: cookieOf(newLink, "amp.clever-flow"),
-    });
+    const linkState = new URL(newLink.json().url).searchParams.get("state")!;
+    const linked = await finish(
+      { state: linkState, cookie: cookieOf(newLink, "amp.clever-flow") },
+      "link-code",
+    );
     assert.match(
       String(linked.headers.location),
       /^\/school(?:\/connect)?#clever-session=/,
+    );
+    // A repeated link callback is never restarted as a plain sign-in, which
+    // would replace the linked mailbox session.
+    assert.equal(
+      (
+        await app.inject({
+          method: "GET",
+          url: `/api/v1/school/sso/clever/callback?code=link-code&state=${linkState}`,
+        })
+      ).headers.location,
+      "/sign-in?error=clever_sign_in_failed",
     );
     assert.equal(
       (
@@ -410,15 +508,15 @@ test(
     // create an adult principal or a learner.
     subject = "student-1";
     roles = { student: {} };
-    assert.match(
-      String((await finish(await start())).headers.location),
-      /error=/,
+    assert.equal(
+      (await finish(await start())).headers.location,
+      "/sign-in?error=clever_student_not_rostered",
     );
     assert.equal(studentSignIns, 0);
     roles = { contact: {} };
-    assert.match(
-      String((await finish(await start())).headers.location),
-      /error=/,
+    assert.equal(
+      (await finish(await start())).headers.location,
+      "/sign-in?error=clever_contact_unsupported",
     );
     assert.equal(
       (
