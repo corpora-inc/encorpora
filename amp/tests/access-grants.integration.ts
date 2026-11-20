@@ -258,7 +258,10 @@ test(
             /consent_required/,
           );
           const teen = await learner(owner, 2010);
-          assert.equal((await gifts.activate(owner, next.id, teen))?.learnerId, teen);
+          assert.equal(
+            (await gifts.activate(owner, next.id, teen))?.learnerId,
+            teen,
+          );
         },
       );
       await t.test(
@@ -583,6 +586,51 @@ test(
           // A child added after revocation is not covered.
           const after = await learning.create(family.owner, "After", 2017);
           assert.deepEqual(await grantsOf(after.id), []);
+        },
+      );
+      await t.test(
+        "a gift the parent took before adding a child also covers the first child; once; revoking ends both",
+        async () => {
+          const owner = await account("parentfirst");
+          const adult = await adultLearner(owner);
+          const gift = await issue("parentfirst@example.test", 1);
+          const taken = (await gifts.activate(owner, gift.id, adult))!;
+          const child = await learning.create(owner, "Child", 2014);
+          const shared = `email-gift:${gift.id}:${child.id}`;
+          assert.deepEqual(
+            (await grantsOf(child.id)).map((g) => [
+              g.id,
+              g.status,
+              g.ends_at.toISOString(),
+            ]),
+            [[shared, "active", taken.endsAt]],
+          );
+          // The parent keeps their own grant.
+          assert.ok(
+            (await grantsOf(adult)).some(
+              (g) => g.id === `email-gift:${gift.id}` && g.status === "active",
+            ),
+          );
+          assert.equal((await activeEnd(adult))?.toISOString(), taken.endsAt);
+          // Once: a second child gets nothing from it.
+          const second = await learning.create(owner, "Second", 2016);
+          assert.deepEqual(await grantsOf(second.id), []);
+          await gifts.revoke(gift.id);
+          assert.equal(await activeEnd(child.id), null);
+          assert.equal(await activeEnd(adult), null);
+        },
+      );
+      await t.test(
+        "a gift the parent chose while a child existed stays theirs",
+        async () => {
+          const owner = await account("parentchose");
+          const first = await learner(owner);
+          const adult = await adultLearner(owner);
+          const gift = await issue("parentchose@example.test", 1);
+          await gifts.activate(owner, gift.id, adult);
+          const later = await learning.create(owner, "Later", 2016);
+          assert.deepEqual(await grantsOf(later.id), []);
+          assert.deepEqual(await grantsOf(first), []);
         },
       );
       await t.test(

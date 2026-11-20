@@ -137,7 +137,10 @@ export async function coverWithFamilyGift(
   if (!(await installed(db))) return null;
   await lockAccountGifts(db, accountId);
   if (await paidAssignmentWaiting(db, accountId)) return null;
-  return familyCover(db, accountId, learnerId);
+  return (
+    (await familyCover(db, accountId, learnerId)) ??
+    shareParentGiftWithChild(db, accountId, learnerId)
+  );
 }
 async function familyCover(
   db: PoolClient,
@@ -210,6 +213,52 @@ async function activateFamilyGift(
   };
 }
 
+/** A learner gift the parent took for their own practice before any child
+ * was added also covers the first child added without access, to the same
+ * end: the parent keeps their grant, and the child gets their own
+ * `email-gift:<gift>:<learner>` grant beside it. Once per gift. A gift the
+ * parent chose while a child already existed stays theirs alone. Funded
+ * bridges and paid grants never extend. The caller holds the account and
+ * gift locks. Null when there is nothing to share. */
+async function shareParentGiftWithChild(
+  db: PoolClient,
+  accountId: string,
+  learnerId: string,
+) {
+  const child = await db.query(
+    "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND NOT adult AND NOT simulation AND deleted_at IS NULL",
+    [learnerId, accountId],
+  );
+  if (!child.rowCount) return null;
+  const access = await accessGrantsFor(db, [learnerId]);
+  if (access.grants.some((g) => grantReserved(g, access.now))) return null;
+  const gift = (
+    await db.query<{ id: string; ends_at: Date }>(
+      `SELECT g.id,g.ends_at FROM amp_access_gifts g
+       JOIN amp_learners l ON l.id=g.learner_id AND l.account_id=$1 AND l.adult AND NOT l.simulation
+       JOIN amp_grants r ON r.id=g.grant_id AND r.learner_id=l.id AND r.status='active' AND r.ends_at>now()
+       WHERE g.account_id=$1 AND g.covers='learner' AND g.source<>'funded-pending'
+         AND g.activated_at IS NOT NULL AND g.revoked_at IS NULL
+         AND NOT EXISTS(SELECT 1 FROM amp_learners c WHERE c.account_id=$1 AND NOT c.adult
+           AND NOT c.simulation AND c.id<>$2 AND c.created_at<=g.activated_at)
+         AND NOT EXISTS(SELECT 1 FROM amp_grants x WHERE starts_with(x.id,'email-gift:'||g.id||':'))
+       ORDER BY g.ends_at DESC,g.id LIMIT 1`,
+      [accountId, learnerId],
+    )
+  ).rows[0];
+  if (!gift) return null;
+  const now = (await db.query<{ now: Date }>("SELECT now() AS now")).rows[0]!
+    .now;
+  await grantFamilyChild(db, accountId, gift.id, learnerId, now, gift.ends_at);
+  await refreshFamilyAdult(db, accountId);
+  return {
+    id: gift.id,
+    learnerId,
+    startsAt: now.toISOString(),
+    endsAt: gift.ends_at.toISOString(),
+  };
+}
+
 /** Caller holds the account lock in a transaction. Also used by learner
  * creation/adoption, where a family gift in force covers the new child first. */
 export async function activateGiftInTransaction(
@@ -278,7 +327,9 @@ export async function activateGiftInTransaction(
   ).rows[0];
   if (!gift) {
     if (options.giftId) throw new AccessGiftError(404, "gift_unavailable");
-    return null;
+    return options.fundingInvoiceId || learnerId === undefined
+      ? null
+      : shareParentGiftWithChild(db, accountId, learnerId);
   }
   if (
     gift.source === "funded-pending" &&
@@ -484,13 +535,13 @@ export class AccessGiftRepository {
           "UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now()) WHERE id=$1",
           [id],
         );
-        // A family gift ends every child's grant it made, kept as revoked.
-        if (gift.covers === "family")
-          await db.query(
-            "UPDATE amp_grants SET status='revoked' WHERE starts_with(id,$1)",
-            [`email-gift:${id}:`],
-          );
-        else if (gift.grant_id)
+        // A gift ends every child's grant it made, kept as revoked: a family
+        // gift's, and the child a parent's own gift was shared with.
+        await db.query(
+          "UPDATE amp_grants SET status='revoked' WHERE starts_with(id,$1)",
+          [`email-gift:${id}:`],
+        );
+        if (gift.covers !== "family" && gift.grant_id)
           await db.query("UPDATE amp_grants SET status='revoked' WHERE id=$1", [
             gift.grant_id,
           ]);
