@@ -13,6 +13,7 @@ import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Segmented } from "../../../ui/Segmented";
 import { Toast } from "../../../ui/Toast";
 import { ProviderMark } from "../../auth/ProviderButtons";
+import { AnySchoolAction, anySchoolDetail } from "./AnySchool";
 import { currentSession, orgOptions, refreshSchool } from "../api";
 import { number } from "../classes/teacher-shared";
 import { OrgFrame } from "../OrgFrame";
@@ -322,6 +323,21 @@ export function IntegrationsScreen() {
                   </Row>
                 );
               })}
+              {clever &&
+                data.anyschool &&
+                (canManage || data.anyschool.status !== "none") && (
+                  <Row
+                    title="Clever AnySchool"
+                    detail={anySchoolDetail(data.anyschool)}
+                  >
+                    <AnySchoolAction
+                      orgId={orgId}
+                      state={data.anyschool}
+                      canManage={canManage}
+                      onDone={setNotice}
+                    />
+                  </Row>
+                )}
             </ul>
           </section>
         </div>

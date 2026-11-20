@@ -16,6 +16,11 @@ import { SchoolRepository } from "../src/schools/repository.js";
 import type { SchoolServices } from "../src/schools/routes.js";
 import { deleteOrg } from "./school-delete-org.js";
 import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
+import {
+  CleverClient,
+  cleverApiVersion,
+} from "../src/schools/clever/client.js";
+import type { CleverOperator } from "../src/schools/clever/anyschool.js";
 
 /** Operating AMP for Schools, for privileged agents: there is no admin UI.
  *
@@ -39,7 +44,22 @@ import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
  * issue-license          {orgId, seats, endsAt, startsAt?, reference?, classIds?}
  * extend-pilot           {pilotId, until, reason, operatorReference}
  * school-queue           {} (private output includes institution contacts)
+ *     Open connection requests, purchases and release reviews, and `clever`:
+ *     launched and staged schools per environment (Clever's partner license
+ *     counts schools) with each connection. With the Clever variables below,
+ *     also the districts that shared with AMP but are not connected.
  * connection-request-status {id,status: "invited"|"connected"|"closed",reference}
+ * anyschool-invite       {id, districtId?, reference?}
+ *     Records Clever's AnySchool invitation, sent from the Clever dashboard to
+ *     the request's setup email. Again after a re-send. See docs/clever-anyschool.md.
+ * anyschool-connect      {id, districtId?, confirmAnySchool?: true}
+ *     After the school's setup shared its data: makes its district in AMP with
+ *     the agreement from the request and the requester as administrator, and
+ *     stages the roster. Needs AMP_CLEVER_ENVIRONMENT, AMP_CLEVER_CLIENT_ID,
+ *     AMP_CLEVER_CLIENT_SECRET and AMP_CLEVER_API_VERSION; AMP_ACCOUNTS_URL prints
+ *     the adoption link as a full URL.
+ * anyschool-import       {id, allowNewSchools?: true}
+ *     Starts the import once every staged Clever school is matched by adoption.
  * purchase-status        {id,status: "quoted"|"awaiting_po"|"invoiced"|"closed",reference}
  * activate-purchase      {id,seats,startsAt?,endsAt,reference} (idempotent by request)
  * set-seats              {licenseId, seats}
@@ -61,13 +81,18 @@ export async function schoolAdmin(
   input: unknown,
   /** Invitation keys and the account mail path, for `create-school`. */
   services?: Pick<SchoolServices, "secret" | "origin" | "mail">,
+  clever?: CleverOperator | null,
+  origin = "",
 ): Promise<unknown> {
   switch (command) {
     case "school-queue":
     case "connection-request-status":
+    case "anyschool-invite":
+    case "anyschool-connect":
+    case "anyschool-import":
     case "purchase-status":
     case "activate-purchase":
-      return schoolOperations(repository, command, input);
+      return schoolOperations(repository, command, input, clever, origin);
     case "extend-pilot":
       return extendTeacherPilot(repository, input);
     case "create-school": {
@@ -130,6 +155,22 @@ function servicesFromEnv(): Pick<SchoolServices, "secret" | "origin" | "mail"> {
   };
 }
 
+/** Clever's credentials from the worker's variables, when they are set. */
+export function cleverFromEnv(env: NodeJS.ProcessEnv): CleverOperator | null {
+  const environment = env.AMP_CLEVER_ENVIRONMENT;
+  if (!env.AMP_CLEVER_CLIENT_ID || !env.AMP_CLEVER_CLIENT_SECRET) return null;
+  if (environment !== "sandbox" && environment !== "production")
+    throw new SchoolError(503, "clever_environment_invalid");
+  return {
+    environment,
+    client: new CleverClient({
+      clientId: env.AMP_CLEVER_CLIENT_ID,
+      clientSecret: env.AMP_CLEVER_CLIENT_SECRET,
+      apiVersion: cleverApiVersion(env.AMP_CLEVER_API_VERSION),
+    }),
+  };
+}
+
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
   const [command, file] = process.argv.slice(2);
   if (!process.env.AMP_DATABASE_URL || !command || !file)
@@ -148,6 +189,10 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
           command,
           input,
           command === "create-school" ? servicesFromEnv() : undefined,
+          ["school-queue", "anyschool-connect"].includes(command)
+            ? cleverFromEnv(process.env)
+            : null,
+          process.env.AMP_ACCOUNTS_URL?.replace(/\/+$/, "") ?? "",
         ),
       ),
     );

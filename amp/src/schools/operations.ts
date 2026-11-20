@@ -4,6 +4,13 @@ import type { Pool } from "pg";
 import { SchoolError } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
 import { recordEvent } from "./events.js";
+import {
+  cleverLaunchSummary,
+  connectAnySchool,
+  importAnySchool,
+  recordAnySchoolInvite,
+  type CleverOperator,
+} from "./clever/anyschool.js";
 
 /** Operator workflow only. A teacher's buyer request neither purchases seats
  * nor changes authority. Payment/PO authorization is recorded explicitly. */
@@ -11,15 +18,23 @@ export async function schoolOperations(
   repo: SchoolRepository,
   command: string,
   raw: unknown,
+  /** Clever credentials, for the commands that read Clever. */
+  clever?: CleverOperator | null,
+  origin = "",
 ) {
   if (command === "school-queue") {
     z.strictObject({}).parse(raw);
     return {
       connections: (
         await repo.pool.query(
-          `SELECT id,method,status,institution_name,contact_email,created_at FROM amp_school_connection_requests WHERE status IN ('requested','invited') ORDER BY created_at LIMIT 200`,
+          `SELECT r.id,r.method,r.status,r.institution_name,r.contact_email,r.org_id,r.created_at,r.invited_at,
+            r.clever_district_id,r.connection_id,c.sync_paused AS staged,c.last_sync_at
+           FROM amp_school_connection_requests r LEFT JOIN amp_clever_connections c ON c.id=r.connection_id
+           WHERE r.status IN ('requested','invited') OR r.status='connected' AND c.status='active' AND c.last_sync_at IS NULL
+           ORDER BY r.created_at LIMIT 200`,
         )
       ).rows,
+      clever: await cleverLaunchSummary(repo.pool, clever),
       purchases: (
         await repo.pool.query(
           `SELECT id,org_id,class_ids,seats,status,created_at FROM amp_school_purchase_requests WHERE status NOT IN ('active','closed') ORDER BY created_at LIMIT 200`,
@@ -47,6 +62,12 @@ export async function schoolOperations(
     if (!result.rowCount) throw new SchoolError(404, "request_not_found");
     return result.rows[0];
   }
+  if (command === "anyschool-invite") return recordAnySchoolInvite(repo, raw);
+  if (command === "anyschool-connect") {
+    if (!clever) throw new SchoolError(503, "clever_unconfigured");
+    return connectAnySchool(repo, clever, raw, origin);
+  }
+  if (command === "anyschool-import") return importAnySchool(repo, raw);
   if (command === "purchase-status") {
     const input = z
       .strictObject({
