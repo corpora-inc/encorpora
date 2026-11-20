@@ -236,6 +236,49 @@ test(
 );
 
 test(
+  "any client error on the Events probe still lets the snapshot sync",
+  enabled,
+  (t) =>
+    fixture(async ({ db, district }) => {
+      t.mock.method(console, "warn", () => {});
+      const { id } = await registerCleverConnection(db, {
+        environment: "sandbox",
+        districtId: D,
+        tenantId: await district(),
+      });
+      const result = await syncCleverConnection(db, id, {
+        districtToken: async () => "fixture",
+        snapshot: async () => roster(student(U1, "Ada")),
+        latestEvent: async () => {
+          throw new CleverHttpError(404);
+        },
+        events: async () => [],
+      });
+      assert.equal(result.mode, "full");
+      assert.equal(result.events, "unavailable");
+      assert.equal(result.counts.users, 1);
+      assert.ok((await row(db, id)).events_unavailable_at);
+      // A server error is not a missing capability: the run fails and retries.
+      await assert.rejects(
+        syncCleverConnection(
+          db,
+          id,
+          {
+            districtToken: async () => "fixture",
+            snapshot: async () => roster(student(U1, "Ada")),
+            latestEvent: async () => {
+              throw new CleverHttpError(503);
+            },
+            events: async () => [],
+          },
+          { mode: "full" },
+        ),
+        /clever_http_503/,
+      );
+    }),
+);
+
+test(
   "the first Events run continues from the watermark taken before the snapshot",
   enabled,
   () =>

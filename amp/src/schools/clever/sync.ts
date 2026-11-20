@@ -114,7 +114,16 @@ async function watermark(
       refused: null,
     };
   } catch (error) {
-    if (!eventsRefused(error)) throw error;
+    // The probe only decides whether Events can be used. Any client error
+    // (Clever's code for "no Events access" is not guaranteed to be 401/403)
+    // must not stop a district that syncs by snapshot from syncing at all.
+    // 429 and 5xx were already retried; those still fail the run.
+    if (!(
+      error instanceof CleverHttpError &&
+      error.status >= 400 &&
+      error.status < 500
+    ))
+      throw error;
     return { cursor: null, baseline: null, refused: error };
   }
 }
