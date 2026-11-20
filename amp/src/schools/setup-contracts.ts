@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { institutionPilotSchema } from "./pilot-contracts.js";
 import { isIsoDate, divisionKinds } from "./calendar.js";
 import {
   email,
@@ -232,6 +233,8 @@ export const licenseViewSchema = z.object({
       evaluation: z.boolean(),
     })
     .nullable(),
+  /** The institution's pilot while it or its grace runs (`institutionPilotOn`). */
+  pilot: institutionPilotSchema.nullish(),
 });
 export type LicenseView = z.infer<typeof licenseViewSchema>;
 

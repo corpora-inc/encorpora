@@ -1,6 +1,6 @@
 # Bring an existing AMP school into a district
 
-School adoption moves a standalone school's existing records under a district. Learners keep their IDs, work and progress. Classes keep their IDs, join codes and pilot associations. Licenses and pilot deadlines do not restart.
+School adoption moves a standalone school's existing records under a district. Learners keep their IDs, work and progress. Classes keep their IDs, join codes and pilot associations. Licenses and pilot deadlines do not restart. A district with its own pilot (a connected Clever district's) covers an adopted school's classes too, on the district's dates.
 
 Both institutions authorize the move. The district must have an active school data agreement and an AMP administrator. The school approves through its administrator. A teacher may approve their own standalone pilot school only if they created it and all its classes, teach every active class and student, and no other staff member has access. A school name or email domain never establishes ownership.
 

@@ -5,6 +5,7 @@ import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import type { StudentGrant } from "./contracts.js";
 import { startTeacherPilots } from "./pilots.js";
+import { ensureCleverDistrictPilot } from "./institution-pilot.js";
 import { SchoolRepository } from "./repository.js";
 import {
   establishProviderPrincipal,
@@ -361,6 +362,18 @@ export async function registerCleverAuthRoutes(
           throw new Error("clever_link_proof_expired");
       }
       const claims = await exchangeCleverIdentity(config, code, options.fetch);
+      // A district connected before its pilot started by itself gets it at
+      // its people's next sign-in (founder ruling 2026-11-20). A failure
+      // never stops the sign-in; the next roster sync tries again.
+      await ensureCleverDistrictPilot(pool, {
+        environment: claims.environment,
+        districtId: claims.districtId,
+      }).catch((error: unknown) =>
+        request.log.error(
+          { error: error instanceof Error ? error.message : String(error) },
+          "Clever district's pilot didn't start",
+        ),
+      );
       const person = await options.resolvePerson(claims);
       if (claims.roles.includes("student")) {
         if (
@@ -400,10 +413,10 @@ export async function registerCleverAuthRoutes(
           `/school/connect#clever-onboarding=${session.token}`,
         );
       }
-      // Signing in is all a Clever teacher does: their synced sections
-      // start their pilot now, licensed district or not (founder ruling
-      // 2026-11-15). A failure here never stops the sign-in; the class
-      // offers Start instead.
+      // Signing in is all a Clever teacher does. A connected district's
+      // sections already run on its pilot (founder ruling 2026-11-20); any
+      // other synced section starts the teacher's own pilot now (2026-11-15).
+      // A failure here never stops the sign-in; the class offers Start.
       try {
         await startTeacherPilots(new SchoolRepository(pool), session.accountId);
       } catch (error) {

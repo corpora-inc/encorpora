@@ -5,6 +5,7 @@ import { z } from "zod";
 import { providerEligibilityKeys } from "../identity/provider-principals.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import { activeToday } from "./principal.js";
+import { classPilotIdsSql } from "./pilot-access.js";
 import { loadActor, can, actorPerson } from "./authz.js";
 import { plainName, SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
@@ -454,8 +455,10 @@ export async function activateClassPilot(
 /** Puts a class on `accountId`'s pilot: the account's one lifetime window,
  * made on first use (`PILOT_DAYS`, then `GRACE_DAYS` of grace) and shared, on
  * those dates, by every class it starts afterwards. Nothing happens for a
- * family's or a demo's class, a class already on a pilot, or one a current
- * license covers (a negotiated school's seats need no trial). The caller is
+ * family's or a demo's class, a class already on a pilot, one a current
+ * license covers (a negotiated school's seats need no trial), or one in an
+ * institution with a pilot of its own (a Clever district's, running or over:
+ * the district's one trial, never topped up by its teachers'). The caller is
  * in a transaction and holds the account's lock. Returns the pilot, if any. */
 export async function joinTeacherPilot(
   client: PoolClient,
@@ -468,7 +471,8 @@ export async function joinTeacherPilot(
   const klass = (
     await client.query(
       `SELECT c.org_id,o.kind,o.demo,
-        EXISTS(SELECT 1 FROM amp_class_pilots cp WHERE cp.class_id=c.id) AS piloted,
+        EXISTS(SELECT 1 FROM amp_class_pilots cp WHERE cp.class_id=c.id)
+          OR EXISTS(SELECT 1 FROM amp_org_pilots op WHERE op.org_id=ANY(o.path)) AS piloted,
         EXISTS(SELECT 1 FROM amp_school_licenses l WHERE l.org_id=ANY(o.path)
           AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()) AS licensed
       FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
@@ -534,7 +538,8 @@ export async function joinTeacherPilot(
 }
 
 /** Every class this account teaches today that has no pilot joins its
- * pilot: a Clever teacher's synced sections, the moment they sign in. */
+ * pilot: a Clever teacher's synced sections, the moment they sign in. A
+ * connected district's sections already run on its pilot and are skipped. */
 export async function startTeacherPilots(
   repo: SchoolRepository,
   accountId: string,
@@ -551,6 +556,7 @@ export async function startTeacherPilots(
         JOIN amp_orgs o ON o.id=c.org_id AND NOT o.demo AND o.kind<>'family'
         WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
           AND NOT EXISTS(SELECT 1 FROM amp_class_pilots cp WHERE cp.class_id=c.id)
+          AND NOT EXISTS(SELECT 1 FROM amp_org_pilots op WHERE op.org_id=ANY(o.path))
         ORDER BY c.id,p.id`,
         [accountId],
       )
@@ -589,11 +595,15 @@ export async function classPilotState(
   classId: string,
   accountId?: string,
 ) {
+  // The class's own pilot or its institution's (`classPilotIdsSql`): the
+  // one that covers it longest, as amp_school_pilot_until reads them.
   let row = (
     await db.query(
-      `SELECT t.id,t.started_at,t.ends_at,greatest(t.grace_ends_at,
+      `SELECT * FROM (SELECT t.id,t.started_at,t.ends_at,greatest(t.grace_ends_at,
     (SELECT max(x.until_at) FROM amp_pilot_extensions x WHERE x.pilot_id=t.id)) AS grace_ends_at,
-    now() AS observed_at FROM amp_class_pilots cp JOIN amp_teacher_pilots t ON t.id=cp.pilot_id WHERE cp.class_id=$1`,
+    now() AS observed_at FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+    JOIN amp_teacher_pilots t ON t.id IN ${classPilotIdsSql("c", "o")} WHERE c.id=$1) p
+    ORDER BY p.grace_ends_at DESC,p.id LIMIT 1`,
       [classId],
     )
   ).rows[0];

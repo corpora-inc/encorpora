@@ -153,14 +153,18 @@ export async function schoolOperations(
 }
 
 /** Review only: never automatically disconnect a school. Active paid capacity,
- * any active pilot/extension, or other valid learner grants keep the connection. */
+ * any active pilot/extension (a class's, or the district's own), or other
+ * valid learner grants keep the connection. */
 export async function refreshConnectionReviews(pool: Pool) {
-  await pool.query(`WITH eligible AS (
+  await pool.query(`WITH tenant_pilots AS (
+    SELECT o.path[1] AS tenant,cp.pilot_id FROM amp_class_pilots cp JOIN amp_classes k ON k.id=cp.class_id
+      JOIN amp_orgs o ON o.id=k.org_id
+    UNION ALL SELECT o.path[1],op.pilot_id FROM amp_org_pilots op JOIN amp_orgs o ON o.id=op.org_id
+  ), eligible AS (
     SELECT c.id FROM amp_clever_connections c WHERE c.status='active'
-    AND EXISTS(SELECT 1 FROM amp_class_pilots cp JOIN amp_classes k ON k.id=cp.class_id
-      JOIN amp_orgs o ON o.id=k.org_id WHERE o.path[1]=c.tenant_id)
-    AND NOT EXISTS(SELECT 1 FROM amp_class_pilots cp JOIN amp_teacher_pilots p ON p.id=cp.pilot_id
-      JOIN amp_classes k ON k.id=cp.class_id JOIN amp_orgs o ON o.id=k.org_id WHERE o.path[1]=c.tenant_id
+    AND EXISTS(SELECT 1 FROM tenant_pilots tp WHERE tp.tenant=c.tenant_id)
+    AND NOT EXISTS(SELECT 1 FROM tenant_pilots tp JOIN amp_teacher_pilots p ON p.id=tp.pilot_id
+      WHERE tp.tenant=c.tenant_id
       AND greatest(p.grace_ends_at,(SELECT max(until_at) FROM amp_pilot_extensions WHERE pilot_id=p.id))>now())
     AND NOT EXISTS(SELECT 1 FROM amp_school_licenses l JOIN amp_orgs o ON o.id=l.org_id
       WHERE o.path[1]=c.tenant_id AND l.status='active' AND l.ends_at>now())

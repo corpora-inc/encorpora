@@ -43,6 +43,7 @@ import { measureOf, MEASURES } from "../practice/heat";
 import { DoseResponse, type DoseDots } from "./DoseResponse";
 import { overviewOptions, practiceOptions } from "./org-api";
 import { PracticeMap } from "./PracticeMap";
+import { institutionPilotView, pilotLeft } from "../pilots/presentation";
 import styles from "./Org.module.css";
 
 const DAY = 86_400_000;
@@ -311,21 +312,35 @@ function Seats({
   const ended = !!seats.endsAt && Date.parse(seats.endsAt) <= Date.now();
   const zone =
     useQuery(orgOptions(currentSession(), orgId)).data?.timezone ?? "UTC";
+  // No seats in force while the institution's pilot runs: the pilot is
+  // what lets students practice, so the card says so.
+  const pilot =
+    seats.pilot && !seats.seats ? institutionPilotView(seats.pilot) : null;
   return (
     <section aria-labelledby="overview-seats" className={styles.seats}>
       <h2 id="overview-seats">Seats</h2>
-      <p className={styles.seatFigure}>
-        {number(seats.used)} of {number(seats.seats)} in use
-      </p>
-      <span className={styles.seatTrack} aria-hidden="true">
-        <span className={styles.seatFill} style={{ width: `${share}%` }} />
-      </span>
+      {pilot ? (
+        <p className={styles.seatFigure}>{pilotLeft(pilot)}</p>
+      ) : (
+        <>
+          <p className={styles.seatFigure}>
+            {number(seats.used)} of {number(seats.seats)} in use
+          </p>
+          <span className={styles.seatTrack} aria-hidden="true">
+            <span className={styles.seatFill} style={{ width: `${share}%` }} />
+          </span>
+        </>
+      )}
       <div className={styles.seatFoot}>
         <p className={styles.seatDates}>
-          {seats.endsAt
-            ? `${ended ? "Ended" : seats.evaluation ? "Evaluation, through" : "Through"} ${formatLastDay(seats.endsAt, zone)}`
-            : "No license yet"}
-          {seats.sharedWith ? `. Shared across ${seats.sharedWith}.` : ""}
+          {pilot
+            ? `Through ${formatLastDay(pilot.until, zone)}`
+            : seats.endsAt
+              ? `${ended ? "Ended" : seats.evaluation ? "Evaluation, through" : "Through"} ${formatLastDay(seats.endsAt, zone)}`
+              : "No license yet"}
+          {!pilot && seats.sharedWith
+            ? `. Shared across ${seats.sharedWith}.`
+            : ""}
         </p>
         <Link
           to="/$"

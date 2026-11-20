@@ -11,6 +11,7 @@ import {
   type Snapshot,
 } from "./model.js";
 import { requireAgreement } from "./connection.js";
+import { ensureCleverDistrictPilot } from "../institution-pilot.js";
 import {
   applySnapshot,
   stageSnapshot,
@@ -143,6 +144,8 @@ export async function syncCleverConnection(
       [connectionId, now],
     );
     await requireAgreement(db, connection.tenant_id);
+    // A district connected before its pilot started by itself (2026-11-20).
+    await ensureCleverDistrictPilot(db, { connectionId });
     await db.query(
       "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,started_at) VALUES($1,$2,$3,'running',$4)",
       [runId, connectionId, mode, now],

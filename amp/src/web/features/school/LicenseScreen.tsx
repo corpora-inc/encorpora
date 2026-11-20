@@ -15,6 +15,7 @@ import { currentSession, licenseOptions, orgOptions, school } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
+import { institutionPilotView, pilotLeft } from "./pilots/presentation";
 import styles from "./School.module.css";
 import { Form } from "../../ui/Form";
 
@@ -101,18 +102,26 @@ export function LicenseSection({ orgId }: { orgId: string }) {
   const license = data?.license;
   const ended = !!license && Date.parse(license.endsAt) <= Date.now();
   const zone = org?.timezone ?? "UTC";
+  // With no seats in force, a running institution pilot is what lets
+  // students practice: its line stands where the license's dates would.
+  const pilot =
+    data?.pilot && !data.seats ? institutionPilotView(data.pilot) : null;
   return (
     <section className={styles.settingsSection} aria-labelledby="license">
       <div className={styles.settingsHead}>
         <div>
           <h2 id="license">License</h2>
           <p className={styles.quiet}>
-            {license
-              ? ended
-                ? `Ended ${formatLastDay(license.endsAt, zone)}`
-                : `${license.evaluation ? "Evaluation, through" : "Through"} ${formatLastDay(license.endsAt, zone)}`
-              : "\u00a0"}
-            {license?.reference ? ` · Reference ${license.reference}` : ""}
+            {pilot
+              ? pilotLeft(pilot)
+              : license
+                ? ended
+                  ? `Ended ${formatLastDay(license.endsAt, zone)}`
+                  : `${license.evaluation ? "Evaluation, through" : "Through"} ${formatLastDay(license.endsAt, zone)}`
+                : "\u00a0"}
+            {!pilot && license?.reference
+              ? ` · Reference ${license.reference}`
+              : ""}
           </p>
         </div>
       </div>
