@@ -15,12 +15,19 @@ for (const path of publicDocumentPaths.filter(path => path !== "/")) {
   if (!head?.canonical) throw new Error(`Missing public document metadata: ${path}`);
   applyRouteHead(dom.window.document, head);
   // `/research` carries its words and the report's structured data in the
-  // document itself, for crawlers that don't run the app.
+  // document itself, for crawlers that don't run the app. The words sit after
+  // `#root`, hidden: a browser paints the loading wave and then the page, never
+  // a third layout, and `#root` keeps the wave as its only child for the entry
+  // guard. Without JavaScript, the noscript style shows them.
   if (path === "/research") {
     const doc = dom.window.document;
     const root = doc.getElementById("root");
     if (!root) throw new Error("The app shell has no #root");
-    root.innerHTML = researchStaticHtml();
+    const words = doc.createElement("div");
+    words.innerHTML = researchStaticHtml();
+    const article = words.firstElementChild!;
+    article.setAttribute("hidden", "");
+    root.after(article);
     const style = doc.createElement("style");
     style.textContent = researchStaticStyles;
     doc.head.append(style);
@@ -31,7 +38,11 @@ for (const path of publicDocumentPaths.filter(path => path !== "/")) {
   }
   const directory = new URL(`${path.slice(1)}/`, dist);
   await mkdir(directory, { recursive: true });
-  await writeFile(new URL("index.html", directory), dom.serialize());
+  // A parser with scripting on reads <noscript> as text, so it goes in last.
+  const html = path === "/research"
+    ? dom.serialize().replace("</head>", "<noscript><style>.research-static[hidden]{display:block}</style></noscript></head>")
+    : dom.serialize();
+  await writeFile(new URL("index.html", directory), html);
 }
 const missing = new JSDOM(shell);
 const doc = missing.window.document;
