@@ -31,6 +31,12 @@ export interface StripeEnvironment {
 export interface Environment {
   origin: string;
   stripe: StripeEnvironment;
+  /**
+   * The Clever namespace this environment's app lives in. Sandbox and
+   * production are separate Clever apps with their own credentials
+   * (docs/clever-onboarding.md, Production go-live).
+   */
+  clever: { environment: "sandbox" | "production" };
 }
 
 export const environments: Record<EnvironmentName, Environment> = {
@@ -41,6 +47,7 @@ export const environments: Record<EnvironmentName, Environment> = {
       productId: "prod_VStv6AR38jUxQ5",
       retiredPriceIds: retiredIds(false),
     },
+    clever: { environment: "sandbox" },
   },
   prod: {
     origin: "https://amp.corpora.inc",
@@ -49,6 +56,7 @@ export const environments: Record<EnvironmentName, Environment> = {
       productId: "prod_VTD2GqZXy2tSQL",
       retiredPriceIds: retiredIds(true),
     },
+    clever: { environment: "production" },
   },
 };
 

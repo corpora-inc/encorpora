@@ -2,9 +2,10 @@
  * The settings each environment's secret must hold: names only, never values.
  * `npm run infra -- env check --env <env>` reads the environment the API will
  * run with and fails, naming the settings, when a declared group is missing or
- * a sign-in provider is only partly configured.
+ * a sign-in provider (or Clever) is only partly configured.
  */
 import { campaignOrigin } from "../src/analytics/campaign-routes.ts";
+import { cleverConfiguration } from "../src/server/clever.ts";
 import {
   authProviders,
   socialProviders,
@@ -62,6 +63,14 @@ export const settingGroups = {
     "AMP_APPLE_KEY_ID",
     "AMP_APPLE_PRIVATE_KEY",
   ],
+  /** Clever SSO and roster sync (docs/clever-onboarding.md): all four or none.
+   * AMP_CLEVER_DISTRICT_SIGNUP_URL is optional; the API's loader checks it. */
+  clever: [
+    "AMP_CLEVER_CLIENT_ID",
+    "AMP_CLEVER_CLIENT_SECRET",
+    "AMP_CLEVER_ENVIRONMENT",
+    "AMP_CLEVER_API_VERSION",
+  ],
 } as const satisfies Record<string, readonly string[]>;
 export type SettingGroup = keyof typeof settingGroups;
 
@@ -70,7 +79,17 @@ export const environmentSettings: Record<
   EnvironmentName,
   readonly SettingGroup[]
 > = {
-  stage: ["server", "mail", "stripe", "google", "github", "microsoft", "apple"],
+  stage: [
+    "server",
+    "mail",
+    "stripe",
+    "google",
+    "github",
+    "microsoft",
+    "apple",
+    "clever",
+  ],
+  // Clever joins prod when Clever certifies AMP; until then it is all or none.
   prod: [
     "server",
     "mail",
@@ -103,7 +122,8 @@ export function checkEnvironment(
   ][]) {
     const missing = names.filter((name) => !set(name));
     const provider = (socialProviders as readonly string[]).includes(group);
-    const allOrNone = provider || group === "stripe-extra";
+    const allOrNone =
+      provider || group === "stripe-extra" || group === "clever";
     if (!missing.length) {
       report.ok.push(group);
       if (provider && !required.has(group))
@@ -138,6 +158,36 @@ export function checkEnvironment(
   expect("AMP_STRIPE_APP_ORIGIN", origin);
   expect("AMP_STRIPE_MODE", environments[environment].stripe.mode);
   expect("AMP_APPLE_CLIENT_ID", authProviders.apple.servicesId.identifier);
+  // Sandbox credentials never reach prod, nor production credentials stage.
+  expect(
+    "AMP_CLEVER_ENVIRONMENT",
+    environments[environment].clever.environment,
+  );
+  // Then the API's own loader, so whatever passes here also starts the API:
+  // a signup URL alone, padded values and a bad URL or version all fail.
+  // Its messages name settings, never values.
+  const clever = [
+    ...settingGroups.clever,
+    "AMP_CLEVER_DISTRICT_SIGNUP_URL",
+  ] as const;
+  if (
+    clever.some((name) => env[name]) &&
+    !report.errors.some((e) => /^clever\b/.test(e))
+  ) {
+    try {
+      cleverConfiguration(env as NodeJS.ProcessEnv, {
+        baseURL: origin,
+        production: true,
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "";
+      report.errors.push(
+        message === "clever_api_version_invalid"
+          ? "AMP_CLEVER_API_VERSION is not a supported version"
+          : `clever: ${message || "invalid configuration"}`,
+      );
+    }
+  }
   return report;
 }
 

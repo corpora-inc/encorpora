@@ -50,7 +50,7 @@ The deploy pipeline runs `stripe apply` for each environment before it changes t
 npm run infra -- env check --env prod
 ```
 
-The check fails, naming the missing settings, when a declared group is incomplete or a sign-in provider is only partly configured. The API refuses to start in that state, and the check says so before the release changes. It also checks the public values that must match the declarations: `AMP_ACCOUNTS_URL` and `AMP_STRIPE_APP_ORIGIN` are the environment's origin, `AMP_STRIPE_MODE` is its declared mode, and `AMP_APPLE_CLIENT_ID` is the declared Services ID. A complete provider that is not declared for the environment is a warning.
+The check fails, naming the missing settings, when a declared group is incomplete or a sign-in provider is only partly configured. The API refuses to start in that state, and the check says so before the release changes. It also checks the public values that must match the declarations: `AMP_ACCOUNTS_URL` and `AMP_STRIPE_APP_ORIGIN` are the environment's origin, `AMP_STRIPE_MODE` is its declared mode, `AMP_APPLE_CLIENT_ID` is the declared Services ID, and `AMP_CLEVER_ENVIRONMENT` is `sandbox` on stage and `production` on prod. Clever's four settings are required on stage and all or none on prod until Clever certifies AMP ([Production go-live](clever-onboarding.md#production-go-live)). When any Clever setting is present, the check also runs the API's own Clever loader. A complete provider that is not declared for the environment is a warning.
 
 To add a setting, declare it in `infra/secrets.ts` in the same pull request that makes the API read it. Then add the value to each environment's secret before that commit deploys.
 
