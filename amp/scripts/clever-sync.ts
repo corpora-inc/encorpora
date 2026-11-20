@@ -9,6 +9,8 @@ import {
   cleverApiVersion,
 } from "../src/schools/clever/client.js";
 import { registerCleverConnection } from "../src/schools/clever/connection.js";
+import { lmsConnectEnabled } from "../src/schools/clever/lms-config.js";
+import { lmsPassFailed, runLmsPasses } from "./clever-lms.js";
 import {
   safeSyncError,
   syncCleverConnection,
@@ -83,6 +85,17 @@ export async function cleverSyncCommand(
       }
     }
     if (results.some((result) => "error" in result)) process.exitCode = 1;
+    // The scheduled pass also returns LMS grades, after rosters are current,
+    // once LMS Connect is enabled for the app.
+    if (
+      (!rest[0] || rest[0] === "all") &&
+      (!rest[1] || rest[1] === "auto") &&
+      lmsConnectEnabled(env)
+    ) {
+      const lms = await runLmsPasses(pool, env);
+      if (lmsPassFailed(lms)) process.exitCode = 1;
+      return [...results, { lms }];
+    }
     return results;
   } finally {
     await pool.end();
