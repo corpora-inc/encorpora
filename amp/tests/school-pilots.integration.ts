@@ -213,9 +213,13 @@ test(
       const ended = await studentMe(db, signedIn.token, true);
       assert.equal(ended.signedIn && ended.school?.practice, "ended");
       assert.equal(
-        await studentPracticeGate(db, { managed: false, until: null }, [
-          created.orgId,
-        ]),
+        // Not a school's managed student: no gate, even in no class.
+        await studentPracticeGate(
+          db,
+          { managed: false, until: null },
+          [created.orgId],
+          false,
+        ),
         null,
       );
       assert.equal(

@@ -20,7 +20,10 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-function student(practice?: "seat" | "waiting" | "ended", canPractice = true) {
+function student(
+  practice?: "noClass" | "seat" | "waiting" | "ended",
+  canPractice = true,
+) {
   return {
     signedIn: true,
     account: { id: SESSION.accountId, kind: "student", email: null },
@@ -80,18 +83,35 @@ test("a student whose learner can't practice, with no word from the school, has 
   ).toBeTruthy();
 });
 
-test("a student in no class yet (rostered by Clever, no section) is told practice hasn't started", async () => {
+test("a student in no class yet (rostered by Clever, no section) is asked to be added to one", async () => {
   // The shape a classless Clever student's /me has (clever-server.integration).
-  const me = student("waiting");
+  const me = student("noClass");
   await mount({
     ...me,
-    school: { orgName: "Escuela Señora Núñez", practice: "waiting" },
+    school: { orgName: "Escuela Señora Núñez", practice: "noClass" },
   });
+  expect(
+    await screen.findByRole("heading", {
+      name: "You’re not in a math class in AMP yet.",
+    }),
+  ).toBeTruthy();
+  expect(screen.getByText("Ask your teacher to add you.")).toBeTruthy();
+  expect(
+    screen.queryByText("Your teacher hasn’t started practice yet."),
+  ).toBeNull();
+  expect(
+    screen.queryByRole("link", { name: "Continue practicing" }),
+  ).toBeNull();
+});
+
+test("a student whose class hasn't started practice is told so", async () => {
+  await mount(student("waiting"));
   expect(
     await screen.findByRole("heading", {
       name: "Your teacher hasn’t started practice yet.",
     }),
   ).toBeTruthy();
+  expect(screen.queryByText("Ask your teacher to add you.")).toBeNull();
   expect(
     screen.queryByRole("link", { name: "Continue practicing" }),
   ).toBeNull();

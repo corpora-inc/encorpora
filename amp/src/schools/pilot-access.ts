@@ -369,21 +369,28 @@ export async function assertSignInOpen(
 }
 
 /** A signed-in student's gate, for `/me`: only for a school's student whom
- * nothing covers (`pilot` from schoolPilotAccess). */
+ * nothing covers (`pilot` from schoolPilotAccess). A student in no class
+ * (rostered, no section yet) waits on being added to one, unless a
+ * school-wide license (no `class_ids`) could seat them where they are. */
 export async function studentPracticeGate(
   db: Pick<PoolClient, "query">,
   pilot: { managed: boolean; until: Date | null },
   homePath: string[] | string,
-): Promise<PracticeGate | "seat" | null> {
+  inClass: boolean,
+): Promise<PracticeGate | "seat" | "noClass" | null> {
   if (!pilot.managed) return null;
-  const licensed = (
-    await db.query(
-      `SELECT 1 FROM amp_school_licenses l WHERE l.org_id=ANY($1::uuid[])
-        AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now() LIMIT 1`,
+  const license = (
+    await db.query<{ schoolWide: boolean | null }>(
+      `SELECT bool_or(l.class_ids IS NULL) AS "schoolWide" FROM amp_school_licenses l
+        WHERE l.org_id=ANY($1::uuid[])
+          AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()`,
       [homePath],
     )
-  ).rowCount;
+  ).rows[0]?.schoolWide;
+  // No license is null; only class licenses, false. A class's license seats
+  // only that class's students.
+  if (!inClass) return license ? "seat" : "noClass";
   // A school with seats: the teacher gives this student one.
-  if (licensed) return "seat";
+  if (license != null) return "seat";
   return pilot.until ? "ended" : "waiting";
 }

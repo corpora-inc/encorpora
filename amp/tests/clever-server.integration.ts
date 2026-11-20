@@ -498,22 +498,39 @@ test(
     subject = classlessStudent;
     const lone = await finish(await start());
     assert.match(String(lone.headers.location), /^\/join\/continue#/);
-    const loneView = (await studentMe(
-      pool,
-      JSON.parse(
-        Buffer.from(
-          String(lone.headers.location).split("#")[1],
-          "base64url",
-        ).toString(),
-      ).token,
-    )) as unknown as {
+    const loneToken = JSON.parse(
+      Buffer.from(
+        String(lone.headers.location).split("#")[1],
+        "base64url",
+      ).toString(),
+    ).token;
+    const loneView = (await studentMe(pool, loneToken)) as unknown as {
       learners: { name: string }[];
       school: { orgName: string; className?: string; practice?: string };
     };
     assert.equal(loneView.learners[0]!.name, "Zoë Solo");
     assert.equal(loneView.school.orgName, "Escuela Señora Núñez");
     assert.equal(loneView.school.className, undefined);
-    assert.equal(loneView.school.practice, "waiting");
+    assert.equal(loneView.school.practice, "noClass");
+    // A class's license seats only that class: still no class to be in. A
+    // school-wide one could seat them where they are: the seat is the wait.
+    const license = randomUUID();
+    await pool.query(
+      `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,class_ids)
+       VALUES($1,$2,0,now()-interval '1 day',now()+interval '1 day',$3)`,
+      [license, org.id, [section.id]],
+    );
+    const lonePractice = async () => {
+      const me = await studentMe(pool, loneToken);
+      return me.signedIn ? me.school?.practice : undefined;
+    };
+    assert.equal(await lonePractice(), "noClass");
+    await pool.query(
+      "UPDATE amp_school_licenses SET class_ids=NULL WHERE id=$1",
+      [license],
+    );
+    assert.equal(await lonePractice(), "seat");
+    await pool.query("DELETE FROM amp_school_licenses WHERE id=$1", [license]);
     // Only a school-only (Clever) account takes its roster name. A mailbox
     // account with no name of its own keeps none, never a name another
     // person typed for it on an invitation.
