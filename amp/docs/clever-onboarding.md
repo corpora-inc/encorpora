@@ -71,13 +71,15 @@ Clever certifies AMP, then clones the development app into a production app. The
    - the district setup wizard copied from the development app.
 2. Add the production credentials to the prod environment's secret, `corpora-amp-prod-env`: `AMP_CLEVER_CLIENT_ID`, `AMP_CLEVER_CLIENT_SECRET`, `AMP_CLEVER_ENVIRONMENT=production` and `AMP_CLEVER_API_VERSION`. Add `AMP_CLEVER_DISTRICT_SIGNUP_URL` too if the production app has a schools.clever.com signup link. Never put the values in the repository or a transcript.
 3. Set the deploy variable `DEPLOY_CLEVER_SYNC_ENABLED=true` on the `corpora-amp-prod` deployment environment. It unsuspends the roster worker; unset or `false` keeps it suspended.
-4. Deploy prod. Before anything changes, the deploy runs `npm run infra -- env check --env prod`. That check requires all four Clever settings or none, and `AMP_CLEVER_ENVIRONMENT=production`. The deploy's own preflight also refuses to start the worker without a complete production set. A refused deploy changes nothing.
+4. Deploy prod. Before anything changes, the deploy runs two checks. Its preflight refuses to start the worker without a complete production set. `npm run infra -- env check --env prod` requires all four Clever settings or none, and `AMP_CLEVER_ENVIRONMENT=production`. It then runs the API's own Clever loader, so a padded value or a bad signup URL fails here, not at startup. A refused deploy changes nothing.
 5. Verify:
    - `https://amp.corpora.inc/api/v1/auth-config` shows `"clever":true`;
    - a district administrator connects a district at `/school/connect`;
    - the worker's first run completes and imports that district's roster.
 
 Roll back by setting `DEPLOY_CLEVER_SYNC_ENABLED=false`, removing the `AMP_CLEVER_*` lines from `corpora-amp-prod-env` and deploying prod. The variable alone stops the worker and keeps sign-in. Removing the settings turns off Clever sign-in. A suspended worker starts no new runs; a run already in progress finishes.
+
+Once production is settled, a pull request can add `clever` to prod's declared groups in `infra/secrets.ts`. A secret rotation that drops the settings then fails the check instead of quietly turning Clever off. Rolling back after that also needs that line reverted.
 
 ## Limits
 

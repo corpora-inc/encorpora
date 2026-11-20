@@ -5,7 +5,7 @@
  * a sign-in provider (or Clever) is only partly configured.
  */
 import { campaignOrigin } from "../src/analytics/campaign-routes.ts";
-import { cleverApiVersion } from "../src/schools/clever/client.ts";
+import { cleverConfiguration } from "../src/server/clever.ts";
 import {
   authProviders,
   socialProviders,
@@ -64,7 +64,7 @@ export const settingGroups = {
     "AMP_APPLE_PRIVATE_KEY",
   ],
   /** Clever SSO and roster sync (docs/clever-onboarding.md): all four or none.
-   * AMP_CLEVER_DISTRICT_SIGNUP_URL is optional and checked by the API. */
+   * AMP_CLEVER_DISTRICT_SIGNUP_URL is optional; the API's loader checks it. */
   clever: [
     "AMP_CLEVER_CLIENT_ID",
     "AMP_CLEVER_CLIENT_SECRET",
@@ -163,11 +163,29 @@ export function checkEnvironment(
     "AMP_CLEVER_ENVIRONMENT",
     environments[environment].clever.environment,
   );
-  if (set("AMP_CLEVER_API_VERSION")) {
+  // Then the API's own loader, so whatever passes here also starts the API:
+  // a signup URL alone, padded values and a bad URL or version all fail.
+  // Its messages name settings, never values.
+  const clever = [
+    ...settingGroups.clever,
+    "AMP_CLEVER_DISTRICT_SIGNUP_URL",
+  ] as const;
+  if (
+    clever.some((name) => env[name]) &&
+    !report.errors.some((e) => /^clever\b/.test(e))
+  ) {
     try {
-      cleverApiVersion(env.AMP_CLEVER_API_VERSION);
-    } catch {
-      report.errors.push("AMP_CLEVER_API_VERSION is not a supported version");
+      cleverConfiguration(env as NodeJS.ProcessEnv, {
+        baseURL: origin,
+        production: true,
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "";
+      report.errors.push(
+        message === "clever_api_version_invalid"
+          ? "AMP_CLEVER_API_VERSION is not a supported version"
+          : `clever: ${message || "invalid configuration"}`,
+      );
     }
   }
   return report;

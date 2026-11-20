@@ -166,6 +166,42 @@ test("Clever is required on stage, all or none on prod, in its own namespace", (
   ]);
 });
 
+test("whatever passes the Clever check also starts the API", () => {
+  const prod = completeEnv("prod");
+  const signup = "https://schools.clever.com/example";
+  // A signup URL alone turns Clever on in the API without credentials.
+  assert.deepEqual(
+    checkEnvironment("prod", {
+      ...prod,
+      AMP_CLEVER_DISTRICT_SIGNUP_URL: signup,
+    }).errors,
+    ["clever: Missing or invalid AMP_CLEVER_CLIENT_ID"],
+  );
+  const live = { ...prod, ...cleverEnv("prod") };
+  assert.deepEqual(
+    checkEnvironment("prod", {
+      ...live,
+      AMP_CLEVER_DISTRICT_SIGNUP_URL: signup,
+    }).errors,
+    [],
+  );
+  // A pasted value with a trailing newline or space.
+  for (const padded of ["secret\n", "secret "])
+    assert.deepEqual(
+      checkEnvironment("prod", { ...live, AMP_CLEVER_CLIENT_SECRET: padded })
+        .errors,
+      ["clever: Missing or invalid AMP_CLEVER_CLIENT_SECRET"],
+    );
+  const bad = checkEnvironment("prod", {
+    ...live,
+    AMP_CLEVER_DISTRICT_SIGNUP_URL: "http://schools.clever.com/example",
+  }).errors;
+  assert.equal(bad.length, 1);
+  assert.match(bad[0], /^clever: AMP_CLEVER_DISTRICT_SIGNUP_URL must be/);
+  // Messages name settings, never values.
+  for (const message of bad) assert.doesNotMatch(message, /secret|example/);
+});
+
 test("public values must match the declarations", () => {
   const env = completeEnv("prod");
   env.AMP_ACCOUNTS_URL = environments.stage.origin;
