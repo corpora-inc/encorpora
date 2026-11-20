@@ -194,7 +194,8 @@ const day = (n: 1 | 2 | 3): Snapshot => {
     student(
       user.longName,
       "Thomas".repeat(25),
-      "Streich",
+      // Over the limit with an emoji on the cut.
+      "a" + "\u{1F600}".repeat(120),
       { sis_id: "503355910" },
       "thomas_s.example.net",
     ),
@@ -491,6 +492,7 @@ test(
         assert.equal(jose.email, `o"hara@example.org`);
         const thomas = await person(user.longName);
         assert.equal(thomas.given_name, "Thomas".repeat(25).slice(0, 100));
+        assert.equal(thomas.family_name, "a" + "\u{1F600}".repeat(99));
         assert.equal(thomas.email, "thomas_s.example.net");
         const li = await person(user.shortName);
         assert.equal(li.given_name, "Li");

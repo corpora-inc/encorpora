@@ -38,13 +38,17 @@ type Binding = {
   archived_at: Date | null;
   metadata: Record<string, unknown>;
 };
+/** Cut by code point, as PostgreSQL's char_length counts, so a limit never
+ * splits a surrogate pair (an emoji) into text the database rejects. */
+const cut = (value: string, length: number) =>
+  [...value].slice(0, length).join("");
 const text = (
   value: string | null | undefined,
   fallback: string,
   length = 100,
-) => value?.trim().slice(0, length) || fallback;
+) => cut(value?.trim() ?? "", length) || fallback;
 const optional = (value: string | null | undefined, length = 100) =>
-  value?.trim().slice(0, length) || null;
+  cut(value?.trim() ?? "", length) || null;
 const key = (kind: Kind, id: string) => `${kind}:${id}`;
 
 /** Reconstruct the last committed source snapshot for an Events delta. */
@@ -338,6 +342,9 @@ export async function applySnapshot(
     );
     return fallbackSession;
   };
+  const yesterday = new Date(Date.parse(`${today}T00:00:00Z`) - 86_400_000)
+    .toISOString()
+    .slice(0, 10);
   const termIds = new Set(snapshot.terms.map((t) => t.id)),
     courseIds = new Set(snapshot.courses.map((c) => c.id));
   // Sections at one school can share a name, course, period and term (Clever
@@ -357,9 +364,11 @@ export async function applySnapshot(
     const bySis =
       sis.every((x) => x && x.length <= 24) && new Set(sis).size === sis.length;
     const suffix = ` (${bySis ? s.sis_id!.trim() : s.id})`;
-    return `${base.slice(0, 100 - suffix.length).trimEnd()}${suffix}`;
+    return `${cut(base, 100 - suffix.length).trimEnd()}${suffix}`;
   };
-  // The day each existing class was created, in the institution's zone.
+  // The day before each existing class was created, in the institution's
+  // zone. A run that crosses midnight creates a class "today" by its start but
+  // stamps created_at after midnight; a day's slack keeps both reads agreeing.
   const createdOn = new Map<string, string>();
   await batches(
     snapshot.sections.flatMap((s) => {
@@ -369,7 +378,7 @@ export async function applySnapshot(
     async (ids) => {
       for (const row of (
         await db.query(
-          `SELECT id,to_char(created_at AT TIME ZONE $2,'YYYY-MM-DD') AS day
+          `SELECT id,to_char((created_at AT TIME ZONE $2)::date-1,'YYYY-MM-DD') AS day
           FROM amp_classes WHERE id=ANY($1::uuid[])`,
           [ids, root.timezone],
         )
@@ -398,7 +407,7 @@ export async function applySnapshot(
         ? termDates(term.record as Term)?.[1]
         : undefined;
     const hasDates =
-      !!term?.local_id && !!ends && ends >= (createdOn.get(id) ?? today);
+      !!term?.local_id && !!ends && ends >= (createdOn.get(id) ?? yesterday);
     const name = className(section);
     classes.push({
       id,
