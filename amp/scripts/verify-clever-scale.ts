@@ -644,7 +644,8 @@ try {
   assert.equal(firstCounts.people, studentCount + teacherCount + 3);
   assert.equal(firstCounts.learners, studentCount);
   assert.equal(firstCounts.classes, teacherCount);
-  assert.equal(firstCounts.active_roles, studentCount + teacherCount + 2);
+  // District admin, SchoolTechLead staff and PortalOnly staff each hold one admin role.
+  assert.equal(firstCounts.active_roles, studentCount + teacherCount + 3);
   assert.equal(firstCounts.active_enrollments, studentCount + teacherCount);
   assert.equal(
     firstCounts.source_memberships,
@@ -759,15 +760,16 @@ try {
     classIds: [firstClass],
   });
   assert.equal(can(viewer, "students.read", orgTarget(firstSchool)), true);
-  assert.equal(
-    can(portalStaffActor, "org.read", orgTarget(firstSchool)),
-    false,
-  );
+  // PortalOnly is Clever's default staff role: the same school-admin scope.
+  assert.equal(can(portalStaffActor, "org.read", orgTarget(firstSchool)), true);
   assert.equal(
     can(portalStaffActor, "students.read", orgTarget(firstSchool)),
+    true,
+  );
+  assert.equal(
+    can(portalStaffActor, "students.read", orgTarget(lastSchool)),
     false,
   );
-  assert.deepEqual(portalStaffActor.roles, []);
   assert.deepEqual(portalStaffActor.classes, []);
   assert.equal(can(viewer, "students.read", orgTarget(lastSchool)), false);
   assert.equal(
@@ -1049,7 +1051,7 @@ try {
           "first import counts and every school's distribution",
           "repeat stable person/learner/membership IDs",
           "teacher class scope",
-          "staff school-admin scope and PortalOnly denial",
+          "staff school-admin scope, PortalOnly included",
           "district admin tenant scope",
           "student denied staff access",
           "Events transfer retains learner and attempt",

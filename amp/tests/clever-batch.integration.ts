@@ -210,14 +210,14 @@ test(
       );
 
       await t.test(
-        "staff administer their schools unless PortalOnly; demotion ends source authority without changing teacher/admin co-roles",
+        "staff administer their schools, PortalOnly (Clever's default) included; demotion ends source authority without changing teacher/admin co-roles",
         async () => {
           assert.deepEqual(await liveRoles(techLead), ["admin"]);
-          assert.deepEqual(await liveRoles(portal), []);
+          assert.deepEqual(await liveRoles(portal), ["admin"]);
           assert.deepEqual(await liveRoles(plainStaff), ["admin"]);
           // The authorization view honours a staff school-admin role, not
           // only district administrators (migration 0142).
-          for (const id of [techLead, plainStaff])
+          for (const id of [techLead, portal, plainStaff])
             assert.deepEqual(
               (
                 await db.query(
@@ -273,23 +273,25 @@ test(
             await attempt("school binding archived", [
               "UPDATE amp_clever_bindings SET archived_at=now() WHERE connection_id=$1 AND kind='school'",
             ]);
-            await attempt("staff marked PortalOnly", [
-              `UPDATE amp_clever_bindings SET record=jsonb_set(record,'{roles,staff,roles}','["PortalOnly"]')
+            await attempt("staff role gone from the record", [
+              `UPDATE amp_clever_bindings SET record=record #- '{roles,staff}'
            WHERE connection_id=$1 AND kind='user' AND clever_id='${plainStaff}'`,
             ]);
           } finally {
             await guard.query("ROLLBACK");
             guard.release();
           }
-          assert.deepEqual(await liveRoles(teacher), ["teacher"]);
-          assert.deepEqual(await liveRoles(administrator), ["admin"]);
-          source.users.find((u) => u.id === techLead)!.roles.staff!.roles = [
-            "PortalOnly",
-          ];
+          assert.deepEqual(await liveRoles(teacher), ["admin", "teacher"]);
+          // District admin at the root, PortalOnly staff admin at the school.
+          assert.deepEqual(await liveRoles(administrator), ["admin", "admin"]);
+          source.users.find((u) => u.id === techLead)!.roles = {
+            teacher: { school: schoolId },
+          };
           await sync();
-          assert.deepEqual(await liveRoles(techLead), []);
-          assert.deepEqual(await liveRoles(teacher), ["teacher"]);
-          assert.deepEqual(await liveRoles(administrator), ["admin"]);
+          assert.deepEqual(await liveRoles(techLead), ["teacher"]);
+          assert.deepEqual(await liveRoles(teacher), ["admin", "teacher"]);
+          // District admin at the root, PortalOnly staff admin at the school.
+          assert.deepEqual(await liveRoles(administrator), ["admin", "admin"]);
         },
       );
 

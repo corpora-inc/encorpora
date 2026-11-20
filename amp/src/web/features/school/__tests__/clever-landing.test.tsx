@@ -17,7 +17,7 @@ import { CleverProblemScreen } from "../clever/CleverProblemScreen";
 
 /*
  * Where a Clever sign-in can leave someone with nothing to open: staff with
- * no school in AMP (PortalOnly), and a sign-in that stopped. Each says why
+ * no school in AMP (none listed on their staff record), and a sign-in that stopped. Each says why
  * and what to do, never a broken screen or the adult sign-in form.
  */
 const SESSION = { accountId: "amp|staff", token: "t" };

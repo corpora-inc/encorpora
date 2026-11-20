@@ -97,7 +97,7 @@ AnySchool data uses the same adapter and validation as Secure Sync. These differ
 | No email | Allowed. Email never establishes identity |
 | No NCES, MDR, low or high grade; `school_number` as typed | Not used |
 | One teacher per section row | Co-teachers are optional |
-| `staff` users, usually with no sub-roles | School administrators. `PortalOnly` staff get no authority |
+| `staff` users, usually with no sub-roles | School administrators, `PortalOnly` (Clever's default) included |
 | `connection_type: "anyschool"`, `sis_type: "sftp"` | Stored with the connection and shown in the queue |
 | Removal on re-upload | Archived as with any district. Learning records stay |
 

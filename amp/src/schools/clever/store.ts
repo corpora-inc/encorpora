@@ -340,6 +340,43 @@ export async function applySnapshot(
   };
   const termIds = new Set(snapshot.terms.map((t) => t.id)),
     courseIds = new Set(snapshot.courses.map((c) => c.id));
+  // Sections at one school can share a name, course, period and term (Clever
+  // certification scenario 5). Their classes carry the section's SIS ID, or
+  // its Clever ID when SIS IDs are missing, repeated or long, so a teacher can
+  // tell them apart on every screen that shows a class name.
+  const sameName = new Map<string, Snapshot["sections"]>();
+  const nameKey = (s: Snapshot["sections"][number]) =>
+    `${s.school}\u0000${text(s.name, "Class")}`;
+  for (const s of snapshot.sections)
+    sameName.set(nameKey(s), [...(sameName.get(nameKey(s)) ?? []), s]);
+  const className = (s: Snapshot["sections"][number]) => {
+    const base = text(s.name, "Class"),
+      group = sameName.get(nameKey(s))!;
+    if (group.length < 2) return base;
+    const sis = group.map((x) => x.sis_id?.trim() ?? "");
+    const bySis =
+      sis.every((x) => x && x.length <= 24) && new Set(sis).size === sis.length;
+    const suffix = ` (${bySis ? s.sis_id!.trim() : s.id})`;
+    return `${base.slice(0, 100 - suffix.length).trimEnd()}${suffix}`;
+  };
+  // The day each existing class was created, in the institution's zone.
+  const createdOn = new Map<string, string>();
+  await batches(
+    snapshot.sections.flatMap((s) => {
+      const id = lookup("section", s.id)?.local_id ?? reviewedClasses.get(s.id);
+      return id ? [id] : [];
+    }),
+    async (ids) => {
+      for (const row of (
+        await db.query(
+          `SELECT id,to_char(created_at AT TIME ZONE $2,'YYYY-MM-DD') AS day
+          FROM amp_classes WHERE id=ANY($1::uuid[])`,
+          [ids, root.timezone],
+        )
+      ).rows)
+        createdOn.set(row.id, row.day);
+    },
+  );
   const classes = [];
   for (const section of snapshot.sections) {
     const prior = lookup("section", section.id),
@@ -349,17 +386,33 @@ export async function applySnapshot(
       section.term_id && termIds.has(section.term_id)
         ? lookup("term", section.term_id)
         : undefined;
-    const hasDates = term?.metadata.datesAvailable === true;
+    // Clever's sharing decides whether a section is current, and term dates
+    // are optional and "Not Guaranteed" (dev.clever.com/docs/terms). A term
+    // that had already ended before AMP first held the class is stale source
+    // data (Certification ISD's terms ended in 2013-2018): the class keeps
+    // taking practice in this year's calendar instead of opening as an ended
+    // class (scenario 37). A term that ends after the class began still ends
+    // it, as any AMP class ends with its session.
+    const ends =
+      term?.metadata.datesAvailable === true
+        ? termDates(term.record as Term)?.[1]
+        : undefined;
+    const hasDates =
+      !!term?.local_id && !!ends && ends >= (createdOn.get(id) ?? today);
+    const name = className(section);
     classes.push({
       id,
       fresh: !known,
       org_id: local("school", section.school)!,
-      session_id: hasDates && term?.local_id ? term.local_id : await fallback(),
-      name: text(section.name, "Class"),
-      old_name: text(
-        (prior?.record as { name?: string } | undefined)?.name,
-        "Class",
-      ),
+      session_id: hasDates ? term!.local_id! : await fallback(),
+      name,
+      old_name:
+        typeof prior?.metadata.className === "string"
+          ? prior.metadata.className
+          : text(
+              (prior?.record as { name?: string } | undefined)?.name,
+              "Class",
+            ),
       grading_kind: hasDates ? "custom" : "year",
       join_code: known ? null : generateJoinCode(),
       course_id:
@@ -368,7 +421,10 @@ export async function applySnapshot(
           : null,
       restore: !!prior?.archived_at,
     });
-    save("section", section, id, { syntheticCalendar: !hasDates });
+    save("section", section, id, {
+      syntheticCalendar: !hasDates,
+      className: name,
+    });
   }
   await batches(
     classes.filter((c) => c.fresh),
@@ -424,11 +480,10 @@ export async function applySnapshot(
     const profile = user.roles[role];
     if (!profile) return;
     // Clever v3 "staff" are school administrators (principals, counselors,
-    // tech leads). PortalOnly marks staff a district grants Clever Portal
-    // access only, so they receive no school authority in AMP.
+    // tech leads). PortalOnly is Clever's default staff role ("the standard
+    // portal experience"); SchoolTechLead adds Clever-side powers. Either way
+    // a district that shares a staff member shares them as a school admin.
     // https://dev.clever.com/docs/api-v3-upgrade-guide
-    if (role === "staff" && user.roles.staff?.roles?.includes("PortalOnly"))
-      return;
     for (const sourceId of new Set([
       ...(profile.schools ?? []),
       ...(profile.school ? [profile.school] : []),
