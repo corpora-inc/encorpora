@@ -32,7 +32,18 @@ function completeEnv(environment: "stage" | "prod") {
   env.AMP_STRIPE_MODE = environments[environment].stripe.mode;
   if (env.AMP_APPLE_CLIENT_ID)
     env.AMP_APPLE_CLIENT_ID = authProviders.apple.servicesId.identifier;
+  if (env.AMP_CLEVER_ENVIRONMENT) Object.assign(env, cleverEnv(environment));
   return env;
+}
+
+/** A complete Clever set for an environment, with synthetic credentials. */
+function cleverEnv(environment: "stage" | "prod") {
+  return {
+    AMP_CLEVER_CLIENT_ID: "synthetic",
+    AMP_CLEVER_CLIENT_SECRET: "synthetic",
+    AMP_CLEVER_ENVIRONMENT: environments[environment].clever.environment,
+    AMP_CLEVER_API_VERSION: "3.0",
+  };
 }
 
 test("the declared providers are the ones the server offers", () => {
@@ -115,6 +126,44 @@ test("an undeclared provider is complete or absent, never partial", () => {
   ]);
   for (const name of settingGroups.github) delete env[name];
   assert.deepEqual(checkEnvironment("stage", env, declared).errors, []);
+});
+
+test("Clever is required on stage, all or none on prod, in its own namespace", () => {
+  assert.equal(environments.stage.clever.environment, "sandbox");
+  assert.equal(environments.prod.clever.environment, "production");
+  assert.ok(environmentSettings.stage.includes("clever"));
+
+  const stage = completeEnv("stage");
+  assert.deepEqual(checkEnvironment("stage", stage).errors, []);
+  delete stage.AMP_CLEVER_API_VERSION;
+  assert.deepEqual(checkEnvironment("stage", stage).errors, [
+    "clever: missing AMP_CLEVER_API_VERSION",
+  ]);
+  stage.AMP_CLEVER_API_VERSION = "4.0";
+  stage.AMP_CLEVER_ENVIRONMENT = "production";
+  assert.deepEqual(checkEnvironment("stage", stage).errors, [
+    "AMP_CLEVER_ENVIRONMENT is not sandbox",
+    "AMP_CLEVER_API_VERSION is not a supported version",
+  ]);
+
+  // Prod before certification: absent passes; after, the production set.
+  const prod = completeEnv("prod");
+  assert.equal(prod.AMP_CLEVER_ENVIRONMENT, undefined);
+  assert.deepEqual(checkEnvironment("prod", prod).errors, []);
+  Object.assign(prod, cleverEnv("prod"), { AMP_CLEVER_API_VERSION: "3.1" });
+  const live = checkEnvironment("prod", prod);
+  assert.deepEqual(live.errors, []);
+  assert.ok(live.ok.includes("clever"));
+  assert.deepEqual(live.warnings, []);
+  prod.AMP_CLEVER_ENVIRONMENT = "sandbox";
+  assert.deepEqual(checkEnvironment("prod", prod).errors, [
+    "AMP_CLEVER_ENVIRONMENT is not production",
+  ]);
+  delete prod.AMP_CLEVER_CLIENT_SECRET;
+  prod.AMP_CLEVER_ENVIRONMENT = "production";
+  assert.deepEqual(checkEnvironment("prod", prod).errors, [
+    "clever is partly configured: missing AMP_CLEVER_CLIENT_SECRET (set all or none)",
+  ]);
 });
 
 test("public values must match the declarations", () => {
