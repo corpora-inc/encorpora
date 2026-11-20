@@ -103,7 +103,10 @@ const lmsConnect = lmsConnectEnabled(process.env);
 if (lmsConnect && !cleverConfig)
   throw new Error("AMP_CLEVER_LMS_CONNECT requires the Clever variables");
 const linkSecret = linkSecretConfiguration(process.env);
-if (accountsConfig) accountsConfig.clever = !!cleverConfig;
+if (accountsConfig) {
+  accountsConfig.clever = !!cleverConfig;
+  accountsConfig.cleverDistrictSignupUrl = cleverConfig?.districtSignupUrl;
+}
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   pool: serverPoolOptions,
   development,

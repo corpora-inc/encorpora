@@ -1,0 +1,52 @@
+/* The request a teacher forwards to their district (DistrictRequest.tsx):
+   a heading, the message as text to read or copy, and its two ways out. */
+.request {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.heading {
+  margin: 0;
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.message {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+/* Every label of the copy button in one grid cell: the widest sizes it. */
+.labels {
+  display: inline-grid;
+}
+.labels > span {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+.labels > span[data-shown] {
+  visibility: visible;
+}
+.note {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}

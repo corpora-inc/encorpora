@@ -8,9 +8,22 @@ import {
   RouterProvider,
   type RouteComponent,
 } from "@tanstack/react-router";
-import { cleanup, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from "@testing-library/react";
 import { afterEach, expect, test, vi } from "vitest";
-import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
+import type { AuthConfig } from "../../../auth-config";
+import { CLEVER_SIGN_IN_CAUSES } from "../../../../schools/clever-sign-in-causes";
+import {
+  authConfigOptions,
+  meOptions,
+  queryClient,
+  sessionOptions,
+} from "../../../lib/query";
 import { orgsOptions } from "../api";
 import { ChooserScreen } from "../ChooserScreen";
 import { CleverProblemScreen } from "../clever/CleverProblemScreen";
@@ -82,15 +95,20 @@ test("anyone else with no school is offered a class", async () => {
   expect(screen.getByRole("link", { name: "Set up your class" })).toBeTruthy();
 });
 
-test("a student whose school isn't on AMP is told to ask their teacher", async () => {
+test("a student whose school hasn't set up AMP is told to ask their teacher", async () => {
   at("/clever/not-connected", "/clever/$reason", CleverProblemScreen);
   expect(
     await screen.findByRole("heading", {
-      name: "Your school isn’t on AMP yet.",
+      name: "Your school hasn’t set up AMP yet.",
     }),
   ).toBeTruthy();
   expect(screen.getByText("Ask your teacher.")).toBeTruthy();
-  expect(screen.getByRole("link", { name: "Log in with Clever" })).toBeTruthy();
+  // Trying again stays the student's sign-in.
+  expect(
+    screen
+      .getByRole("link", { name: "Log in with Clever" })
+      .getAttribute("href"),
+  ).toBe("/api/v1/school/sso/clever/start?as=student");
   // A child's screen: no adult sign-in form, no support address.
   expect(screen.queryByLabelText(/password/i)).toBeNull();
   expect(screen.queryByText("support@corpora.inc")).toBeNull();
@@ -121,4 +139,99 @@ test("a provider failure tries again and names the way to reach us", async () =>
   expect(
     screen.getByRole("link", { name: "Sign in another way" }),
   ).toBeTruthy();
+});
+
+const SIGNUP = "https://schools.clever.com/signup/fixture";
+function clever(config: { cleverDistrictSignupUrl?: string } = {}) {
+  const advertised: AuthConfig = {
+    mode: "accounts",
+    passwords: true,
+    providers: [],
+    clever: true,
+    ...config,
+  };
+  queryClient.setQueryData(authConfigOptions.queryKey, advertised);
+}
+
+test("every cause the server sends has its own words", async () => {
+  for (const cause of CLEVER_SIGN_IN_CAUSES.filter((c) => c !== "failed")) {
+    clever();
+    at(`/clever/${cause}`, "/clever/$reason", CleverProblemScreen);
+    const heading = await screen.findByRole("heading", { level: 1 });
+    expect(heading.textContent, cause).not.toBe(
+      "Clever sign-in didn’t finish.",
+    );
+    cleanup();
+    queryClient.clear();
+  }
+});
+
+test("a teacher whose district hasn't added AMP starts a pilot now and forwards the request", async () => {
+  clever({ cleverDistrictSignupUrl: SIGNUP });
+  at("/clever/not-added", "/clever/$reason", CleverProblemScreen);
+  expect(
+    await screen.findByRole("heading", {
+      level: 1,
+      name: "Your district hasn’t added AMP yet",
+    }),
+  ).toBeTruthy();
+  expect(screen.getByText("No approval needed.")).toBeTruthy();
+  // Never blocked: the pilot is the first thing to do.
+  expect(
+    screen
+      .getByRole("link", { name: "Start a free pilot" })
+      .getAttribute("href"),
+  ).toBe("/school/start");
+  const request = screen.getByRole("region", {
+    name: "Ask your district to add AMP",
+  });
+  const message = request.querySelector("[data-district-message]")!;
+  expect(message.textContent).toContain(SIGNUP);
+  // Their own mail, to whoever they choose: no recipient filled in.
+  const mail = within(request)
+    .getByRole("link", { name: "Email it" })
+    .getAttribute("href")!;
+  expect(mail).toMatch(/^mailto:\?subject=/);
+  expect(decodeURIComponent(mail.split("body=")[1]!)).toBe(message.textContent);
+  expect(
+    within(request)
+      .getByRole("link", { name: "District admin? Add AMP in Clever" })
+      .getAttribute("href"),
+  ).toBe(SIGNUP);
+  expect(
+    within(request).getByText(
+      "Your pilot classes move into the district roster later. No work is lost.",
+    ),
+  ).toBeTruthy();
+  expect(screen.getByText("Student? Ask your teacher.")).toBeTruthy();
+  // The school pages' footer names the way to reach us, once.
+  expect(screen.getAllByText("support@corpora.inc")).toHaveLength(1);
+  expect(screen.queryByLabelText(/password/i)).toBeNull();
+});
+
+test("the request copies as written, and says so in place", async () => {
+  const writeText = vi.fn(async () => {});
+  vi.stubGlobal("navigator", { ...navigator, clipboard: { writeText } });
+  clever({ cleverDistrictSignupUrl: SIGNUP });
+  at("/clever/not-added", "/clever/$reason", CleverProblemScreen);
+  const copy = await screen.findByRole("button", { name: /Copy message/ });
+  fireEvent.click(copy);
+  await screen.findByRole("button", { name: /^Copied$/ });
+  expect(writeText).toHaveBeenCalledWith(
+    document.querySelector("[data-district-message]")!.textContent,
+  );
+});
+
+test("without a configured signup page the request links AMP's schools page", async () => {
+  clever();
+  at("/clever/not-added", "/clever/$reason", CleverProblemScreen);
+  await screen.findByRole("heading", {
+    name: "Your district hasn’t added AMP yet",
+  });
+  expect(
+    document.querySelector("[data-district-message]")!.textContent,
+  ).toContain(`${location.origin}/schools`);
+  expect(
+    screen.queryByRole("link", { name: "District admin? Add AMP in Clever" }),
+  ).toBeNull();
 });

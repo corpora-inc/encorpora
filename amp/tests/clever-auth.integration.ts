@@ -56,12 +56,14 @@ test(
       passwords: true,
       trustedOrigins: [],
       clever: true,
+      cleverDistrictSignupUrl: "https://schools.clever.com/signup/fixture",
     });
     // The deployment's own limits: a school signs in from one address.
     await registerRateLimits(app);
     await registerAccountRoutes(app, accounts);
     let exchanges = 0;
     let subject = "200000000000000000000001";
+    let district = "100000000000000000000001";
     let roles: Record<string, object> = {
       teacher: { schools: ["300000000000000000000001"] },
     };
@@ -106,12 +108,12 @@ test(
         if (String(input).endsWith("/me"))
           return Response.json({
             type: "user",
-            data: { id: subject, district: "100000000000000000000001" },
+            data: { id: subject, district },
           });
         return Response.json({
           data: {
             id: subject,
-            district: "100000000000000000000001",
+            district,
             email: "existing@example.test",
             roles,
           },
@@ -130,10 +132,14 @@ test(
       accountId: await authenticate(request),
     }));
     await app.ready();
+    // The page a district adds AMP on is public: anyone forwards it.
+    const advertised = (
+      await app.inject({ method: "GET", url: "/api/v1/auth-config" })
+    ).json();
+    assert.equal(advertised.clever, true);
     assert.equal(
-      (await app.inject({ method: "GET", url: "/api/v1/auth-config" })).json()
-        .clever,
-      true,
+      advertised.cleverDistrictSignupUrl,
+      "https://schools.clever.com/signup/fixture",
     );
     const cookieOf = (
       response: { headers: Record<string, unknown> },
@@ -234,6 +240,64 @@ test(
         ).headers.location,
         `/clever/${code}`,
       );
+    assert.equal(exchanges, 1);
+    // Every sign-in asks Clever to come back for someone whose district
+    // hasn't added AMP (or hasn't shared them with it), never to stop on
+    // Clever's own error page.
+    const asked = await app.inject({
+      method: "GET",
+      url: "/api/v1/school/sso/clever/start",
+    });
+    assert.equal(
+      new URL(String(asked.headers.location)).searchParams.get(
+        "return_unshared",
+      ),
+      "true",
+    );
+    // Clever answers that with unauthorized-user and no code, and says
+    // nothing of who it was. An adult's start opens the teacher's way in;
+    // the student entry's start opens the student's screen.
+    const unshared = async (startUrl: string) => {
+      const begun = await app.inject({ method: "GET", url: startUrl });
+      const state = new URL(String(begun.headers.location)).searchParams.get(
+        "state",
+      );
+      const answered = await app.inject({
+        method: "GET",
+        url: `/api/v1/school/sso/clever/callback?error=unauthorized-user&state=${state}`,
+        headers: {
+          cookie: [
+            cookieOf(begun, "amp.clever-flow"),
+            cookieOf(begun, "amp.clever-as"),
+          ].join("; "),
+        },
+      });
+      // The attempt ends: neither cookie outlives it.
+      assert.match(cookieOf(answered, "amp.clever-as"), /^amp\.clever-as=$/);
+      assert.match(
+        cookieOf(answered, "amp.clever-flow"),
+        /^amp\.clever-flow=$/,
+      );
+      return answered.headers.location;
+    };
+    assert.equal(
+      await unshared("/api/v1/school/sso/clever/start"),
+      "/clever/not-added",
+    );
+    assert.equal(
+      await unshared("/api/v1/school/sso/clever/start?as=student"),
+      "/clever/not-connected",
+    );
+    // An adult whose Clever never named them (no cookie at all) is an adult.
+    assert.equal(
+      (
+        await app.inject({
+          method: "GET",
+          url: "/api/v1/school/sso/clever/callback?error=unauthorized-user",
+        })
+      ).headers.location,
+      "/clever/not-added",
+    );
     assert.equal(exchanges, 1);
     const flow = await start();
     const noCookie = await app.inject({
@@ -689,6 +753,31 @@ test(
         })
       ).statusCode,
       401,
+    );
+
+    // A district that added AMP in Clever but hasn't connected it in AMP:
+    // its district admin and its teacher both reach setup with a working
+    // session. Setup asks the admin to connect, and offers the teacher a
+    // pilot and the request to forward (ConnectionScreen).
+    district = "1000000000000000000000aa";
+    for (const [who, as] of [
+      ["200000000000000000000004", { district_admin: {} }],
+      ["200000000000000000000005", { teacher: { schools: [] } }],
+    ] as const) {
+      subject = who;
+      roles = as;
+      const reached = await finish(await start());
+      assert.match(
+        String(reached.headers.location),
+        /^\/school\/connect#clever-session=ps_/,
+      );
+    }
+    // Its students are told their school hasn't set AMP up.
+    subject = "student-unconnected";
+    roles = { student: {} };
+    assert.equal(
+      (await finish(await start())).headers.location,
+      "/clever/not-connected",
     );
   },
 );

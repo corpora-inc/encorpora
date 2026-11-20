@@ -206,7 +206,7 @@ export function JoinScreen() {
             )}
           </Button>
         )}
-        {clever && !scanning && <CleverLogInButton />}
+        {clever && !scanning && <CleverLogInButton student />}
       </div>
     </JoinFrame>
   );
