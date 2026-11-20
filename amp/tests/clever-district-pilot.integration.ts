@@ -21,7 +21,10 @@ import {
   startSchoolClass,
   startTeacherPilots,
 } from "../src/schools/pilots.js";
-import { ensureCleverDistrictPilot } from "../src/schools/institution-pilot.js";
+import {
+  cleverDistrictPilotKey,
+  ensureCleverDistrictPilot,
+} from "../src/schools/institution-pilot.js";
 import { studentMe } from "../src/schools/student-me.js";
 import { readOverview } from "../src/schools/org-reads.js";
 import { licenseView } from "../src/schools/roster.js";
@@ -461,6 +464,37 @@ test(
           null,
         );
       });
+      await t.test(
+        "another district later bound to the same org shares its pilot, wherever it goes next",
+        async () => {
+          const orgOf3 = (
+            await db!.query(
+              "SELECT tenant_id FROM amp_clever_connections WHERE district_id=$1",
+              [id(1, 3)],
+            )
+          ).rows[0].tenant_id as string;
+          const pilot = (await pilotOf(orgOf3))!.id;
+          await db!.query(
+            "DELETE FROM amp_clever_connections WHERE district_id=$1",
+            [id(1, 3)],
+          );
+          await registerCleverConnection(db!, {
+            environment: "sandbox",
+            districtId: id(1, 4),
+            tenantId: orgOf3,
+          });
+          assert.equal((await pilotOf(orgOf3))?.id, pilot);
+          assert.equal(
+            (
+              await db!.query(
+                "SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=$1",
+                [cleverDistrictPilotKey("sandbox", id(1, 4))],
+              )
+            ).rows[0]?.pilot_id,
+            pilot,
+          );
+        },
+      );
     } finally {
       await db?.end();
       await admin.query(`DROP SCHEMA ${schema} CASCADE`);

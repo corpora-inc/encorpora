@@ -24,15 +24,28 @@ export async function startInstitutionPilot(
   orgId: string,
   key: string,
 ): Promise<string> {
+  // The identity, then the org (always in this order): two identities
+  // starting on one org at once take turns.
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
     `pilot-identity:${key}`,
+  ]);
+  await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+    `org-pilot:${orgId}`,
   ]);
   const linked = (
     await db.query("SELECT pilot_id FROM amp_org_pilots WHERE org_id=$1", [
       orgId,
     ])
   ).rows[0]?.pilot_id as string | undefined;
-  if (linked) return linked;
+  if (linked) {
+    // A second identity on an org that has its pilot shares that pilot:
+    // moving it to another org later never starts a fresh one.
+    await db.query(
+      "INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id,confirmed) VALUES($1,$2,true) ON CONFLICT DO NOTHING",
+      [key, linked],
+    );
+    return linked;
+  }
   let pilot = (
     await db.query(
       "SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=$1",
@@ -75,30 +88,29 @@ export async function ensureCleverDistrictPilot(
     | { connectionId: string }
     | { environment: "sandbox" | "production"; districtId: string },
 ): Promise<string | null> {
+  // Every sign-in asks: one read, and a transaction only when there is a
+  // pilot to start.
+  const row = (
+    await source.query(
+      `SELECT c.tenant_id,c.environment,c.district_id,
+           EXISTS(SELECT 1 FROM amp_org_pilots op WHERE op.org_id=c.tenant_id) AS started
+         FROM amp_clever_connections c WHERE c.status='active'
+           AND (c.id::text=$1 OR (c.environment=$2 AND c.district_id=$3))`,
+      "connectionId" in connection
+        ? [connection.connectionId, null, null]
+        : [null, connection.environment, connection.districtId],
+    )
+  ).rows[0];
+  if (!row || row.started) return null;
   const own = !("release" in source);
   const db = own ? await (source as Pool).connect() : (source as PoolClient);
   try {
     await db.query("BEGIN");
-    const row = (
-      await db.query(
-        `SELECT c.tenant_id,c.environment,c.district_id,
-           EXISTS(SELECT 1 FROM amp_org_pilots op WHERE op.org_id=c.tenant_id) AS started
-         FROM amp_clever_connections c WHERE c.status='active'
-           AND (c.id::text=$1 OR (c.environment=$2 AND c.district_id=$3))`,
-        "connectionId" in connection
-          ? [connection.connectionId, null, null]
-          : [null, connection.environment, connection.districtId],
-      )
-    ).rows[0];
-    const pilot = !row
-      ? null
-      : row.started
-        ? null
-        : await startInstitutionPilot(
-            db,
-            row.tenant_id,
-            cleverDistrictPilotKey(row.environment, row.district_id),
-          );
+    const pilot = await startInstitutionPilot(
+      db,
+      row.tenant_id,
+      cleverDistrictPilotKey(row.environment, row.district_id),
+    );
     await db.query("COMMIT");
     return pilot;
   } catch (error) {
