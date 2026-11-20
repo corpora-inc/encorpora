@@ -6,6 +6,10 @@ import type { Authenticator } from "../server/auth.js";
 import type { StudentGrant } from "./contracts.js";
 import { startTeacherPilots } from "./pilots.js";
 import { ensureCleverDistrictPilot } from "./institution-pilot.js";
+import {
+  cleverProblemPath,
+  type CleverSignInCause,
+} from "./clever-sign-in-causes.js";
 import { SchoolRepository } from "./repository.js";
 import {
   establishProviderPrincipal,
@@ -54,6 +58,9 @@ export type CleverAuthOptions = {
 };
 const ROOT = "/api/v1/school/sso/clever";
 const FLOW_COOKIE = "amp.clever-flow";
+/** Who started the sign-in: `student` from the student entry. Only picks
+ * which screen an unauthorized-user answer opens; it authorizes nothing. */
+const AUDIENCE_COOKIE = "amp.clever-as";
 const OPAQUE = /^[\w-]{43}$/;
 const id = z.string().min(1).max(128);
 /** Display only: never an identity key, never matched against anything. */
@@ -176,6 +183,14 @@ export async function exchangeCleverIdentity(
   };
 }
 
+/** The refusals a person can act on, each to its own screen. */
+const REFUSALS: Record<string, CleverSignInCause> = {
+  clever_student_not_connected: "not-connected",
+  clever_student_disconnected: "disconnected",
+  clever_student_not_on_roster: "not-on-roster",
+  clever_contact_unsupported: "guardian",
+};
+
 /** Why a Clever student has no AMP learner: their district never connected
  * AMP, disconnected it, or hasn't shared their class. */
 async function studentRefusal(pool: Pool, claims: CleverClaims) {
@@ -268,15 +283,25 @@ export async function registerCleverAuthRoutes(
       redirect_uri: `${config.origin}${ROOT}/callback`,
       response_type: "code",
       state,
+      // Someone whose district hasn't added AMP, or hasn't shared them with
+      // it, comes back with error=unauthorized-user instead of stopping on a
+      // Clever error page. A teacher can then start a pilot.
+      return_unshared: "true",
     }).toString();
     return url.href;
   };
   // A whole school signs in from one address at the bell, and a Portal launch
   // reaches the callback twice per person. These routes keep the deployment's
   // per-address limit for anonymous pages, never a tighter one.
-  app.get(`${ROOT}/start`, async (_request, reply) => {
+  app.get(`${ROOT}/start`, async (request, reply) => {
     reply.header("cache-control", "no-store");
-    return reply.redirect(await start(reply));
+    const authorize = await start(reply);
+    const student =
+      (request.query as { as?: unknown } | undefined)?.as === "student";
+    if (student) cookie(reply, AUDIENCE_COOKIE, "student", secure, 600, ROOT);
+    else if (requestCookie(request, AUDIENCE_COOKIE))
+      cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
+    return reply.redirect(authorize);
   });
   app.post(`${ROOT}/link`, async (request, reply) => {
     reply.header("cache-control", "no-store");
@@ -286,7 +311,12 @@ export async function registerCleverAuthRoutes(
     const proof = await options.freshAccountSession?.(request);
     if (!recent(proof) || proof.accountId !== account)
       return reply.code(403).send({ error: "reauth_required" });
-    return { url: await start(reply, proof) };
+    const url = await start(reply, proof);
+    // An adult linking: never a student's screen from an earlier tap on
+    // this browser's student entry.
+    if (requestCookie(request, AUDIENCE_COOKIE))
+      cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
+    return { url };
   });
   /** The same state and code a finished callback already redeemed: a
    * refresh, the Back button, or a link opened twice. It is never exchanged
@@ -313,13 +343,27 @@ export async function registerCleverAuthRoutes(
       })
       .safeParse(request.query);
     if (!query.success || query.data.error || !query.data.code) {
+      const error = query.data?.error;
       request.log.warn(
-        { cleverSignInFailed: query.data?.error ?? "missing_code" },
+        { cleverSignInFailed: error ?? "missing_code" },
         "Clever sign-in failed",
       );
-      return reply.redirect(
-        `/clever/${query.data?.error === "access_denied" ? "canceled" : "failed"}`,
-      );
+      // Clever names no role with unauthorized-user: whoever started from
+      // the student entry is a student; anyone else sees the teacher's way
+      // in, which also tells a student to ask their teacher.
+      const student = requestCookie(request, AUDIENCE_COOKIE) === "student";
+      // An error answer ends this attempt; Clever's button starts afresh.
+      cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
+      cookie(reply, FLOW_COOKIE, "", secure, 0, ROOT);
+      const cause: CleverSignInCause =
+        error === "access_denied"
+          ? "canceled"
+          : error === "unauthorized-user"
+            ? student
+              ? "not-connected"
+              : "not-added"
+            : "failed";
+      return reply.redirect(cleverProblemPath(cause));
     }
     const { code, state } = query.data;
     // Clever Portal and Instant Login reach the callback without AMP state.
@@ -337,9 +381,10 @@ export async function registerCleverAuthRoutes(
         { cleverSignInFailed: "clever_invalid_state" },
         "Clever sign-in failed",
       );
-      return reply.redirect("/clever/failed");
+      return reply.redirect(cleverProblemPath("failed"));
     }
     cookie(reply, FLOW_COOKIE, "", secure, 0, ROOT);
+    cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
     try {
       // Claim before any network call. Code hash uniqueness also prevents the
       // same provider code being redeemed through two separately valid flows.
@@ -450,19 +495,11 @@ export async function registerCleverAuthRoutes(
         "Clever sign-in failed",
       );
       if (error instanceof Error && error.message === "clever_sign_in_busy")
-        return reply.redirect("/clever/busy");
+        return reply.redirect(cleverProblemPath("busy"));
       // Each refusal a person can act on has its own screen, never the adult
       // sign-in form; anything else is a retryable "didn't finish".
-      const cause =
-        error instanceof Error
-          ? {
-              clever_student_not_connected: "not-connected",
-              clever_student_disconnected: "disconnected",
-              clever_student_not_on_roster: "not-on-roster",
-              clever_contact_unsupported: "guardian",
-            }[error.message]
-          : undefined;
-      if (cause) return reply.redirect(`/clever/${cause}`);
+      if (error instanceof Error && Object.hasOwn(REFUSALS, error.message))
+        return reply.redirect(cleverProblemPath(REFUSALS[error.message]!));
       if (error instanceof Error && error.message === "identity_already_linked")
         return reply.redirect(
           "/school/connect?error=clever_identity_already_linked",
@@ -479,7 +516,7 @@ export async function registerCleverAuthRoutes(
         error.message === "clever_link_proof_expired"
       )
         return reply.redirect("/school/connect?error=clever_link_expired");
-      return reply.redirect("/clever/failed");
+      return reply.redirect(cleverProblemPath("failed"));
     }
   });
   app.get("/api/v1/provider/session", async (request, reply) => {

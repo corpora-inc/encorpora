@@ -25,6 +25,7 @@ import {
   clearCleverOnboardingSession,
   cleverOnboardingSession,
 } from "./onboarding-session";
+import { DistrictRequest } from "./DistrictRequest";
 import { linkClever as linkAccount } from "./link";
 import {
   cleverEnabled,
@@ -376,20 +377,26 @@ export function ConnectionScreen() {
             </Form>
           ),
         }
-      : {
-          title: "Connect your school",
+      : // AMP is in the district's Clever; only a district admin's
+        // sign-in connects it. The teacher's pilot starts now, and the
+        // request goes to the admin ready to forward.
+        {
+          title: connection
+            ? "Your district admin reconnects AMP"
+            : "Your district admin finishes setup",
           body: (
             <>
-              <Lead>Your district admin connects Clever.</Lead>
+              <Lead>It takes one Clever sign-in. You don’t have to wait.</Lead>
               <Actions>
                 <Link
                   to="/school/start"
                   className={buttonClass("primary")}
                   data-primary
                 >
-                  Set up your class
+                  Start a free pilot
                 </Link>
               </Actions>
+              <DistrictRequest step="connect" />
             </>
           ),
         };

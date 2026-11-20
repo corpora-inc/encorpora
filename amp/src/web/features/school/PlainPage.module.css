@@ -60,6 +60,15 @@
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
 }
+/* A line of words among the quiet links: on their 44 px rhythm. */
+.aside > p {
+  display: flex;
+  align-items: center;
+  min-height: var(--target-size);
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
 @media (max-width: 479px) {
   /* The one primary action of a step spans the column on a phone. */
   .actions > :first-child:last-child,

@@ -19,6 +19,9 @@ const USER_CONTENT = new Set([
   "features/pathways/share-image.ts: An estimate from my practice so far.",
   // The statement a teacher signs, in the first person.
   "features/school/pilots/Authorization.tsx: My school authorizes me to use AMP with this class, and I accept the",
+  // The request a teacher forwards to their district, in their own voice.
+  "features/school/clever/DistrictRequest.tsx: I’d like to use AMP (Adaptive Math Pathways) with my classes. Please add it to our Clever account so rosters sync and students log in with Clever:",
+  "features/school/clever/DistrictRequest.tsx: I’m starting a free pilot now. My classes move into the district roster when it’s connected.",
 ]);
 
 /** "my" followed by a word, anywhere, as a word of its own. */

@@ -86,6 +86,8 @@ const CLIENT_IP_HEADER = "x-amp-client-ip";
 export interface AccountsConfig {
   /** Clever school sign-in is registered separately from mailbox providers. */
   clever?: boolean;
+  /** Clever's page where a district adds AMP: public, for anyone to forward. */
+  cleverDistrictSignupUrl?: string;
   baseURL: string;
   secret: string;
   production: boolean;
@@ -811,6 +813,9 @@ export async function registerAccountRoutes(
     parentFollowup: !!config.parentFollowup,
     providers: enabledProviders(config),
     ...(config.clever ? { clever: true } : {}),
+    ...(config.clever && config.cleverDistrictSignupUrl
+      ? { cleverDistrictSignupUrl: config.cleverDistrictSignupUrl }
+      : {}),
   }));
   await app.register(async (scope) => {
     scope.removeAllContentTypeParsers();

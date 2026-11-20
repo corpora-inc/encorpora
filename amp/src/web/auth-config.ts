@@ -10,6 +10,8 @@ export type AuthConfig =
       parentFollowup?: boolean;
       providers: string[];
       clever?: boolean;
+      /** Clever's page where a district adds AMP, when configured. */
+      cleverDistrictSignupUrl?: string;
     }
   | { mode: "oidc" | "development" | "native" };
 

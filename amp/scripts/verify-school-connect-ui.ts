@@ -48,7 +48,13 @@ const freshState = () => ({
 });
 api.get("/api/v1/auth-config", async () =>
   accountsMode
-    ? { mode: "accounts", passwords: true, providers: [], clever: true }
+    ? {
+        mode: "accounts",
+        passwords: true,
+        providers: [],
+        clever: true,
+        cleverDistrictSignupUrl: "https://schools.clever.com/signup/fixture",
+      }
     : { mode: "development" },
 );
 api.get("/api/v1/provider/session", async (_request, reply) =>
@@ -419,8 +425,30 @@ try {
     identity: { districtId: "fixture", roles: ["teacher"], personId: null },
   };
   await page.reload();
-  await page.getByText("Your district admin connects Clever.").waitFor();
-  await page.getByRole("link", { name: "Set up your class" }).waitFor();
+  // A teacher whose district added AMP in Clever but hasn't connected it:
+  // the pilot now, and the admin's one sign-in to forward.
+  await page
+    .getByRole("heading", { name: "Your district admin finishes setup" })
+    .waitFor();
+  assert.equal(
+    await page
+      .getByRole("link", { name: "Start a free pilot" })
+      .getAttribute("href"),
+    "/school/start",
+  );
+  const handOff = page.getByRole("region", {
+    name: "Send this to your district admin",
+  });
+  assert.match(
+    (await handOff.locator("[data-district-message]").textContent())!,
+    new RegExp(`${origin}/school/connect`),
+  );
+  assert.match(
+    (await handOff
+      .getByRole("link", { name: "Email it" })
+      .getAttribute("href"))!,
+    /^mailto:\?subject=/,
+  );
   assert.equal(
     await page.getByText("Your roster invitation is in your email.").count(),
     0,
@@ -493,21 +521,69 @@ try {
   // sign-in form: a child's words and Clever's button to try again.
   await page.goto(`${origin}/clever/not-connected`);
   await page
-    .getByRole("heading", { name: "Your school isn’t on AMP yet." })
+    .getByRole("heading", { name: "Your school hasn’t set up AMP yet." })
     .waitFor();
   await page.getByText("Ask your teacher.", { exact: true }).waitFor();
   assert.equal(await page.getByLabel(/password/i).count(), 0);
   await capture("clever-not-connected");
   await page.goto(`${origin}/clever/failed`);
   await page.getByText("support@corpora.inc", { exact: true }).waitFor();
+  // A teacher or school leader whose district hasn't added AMP in Clever is
+  // never blocked: the pilot first, then the request to forward.
+  await page.goto(`${origin}/clever/not-added`);
+  await page
+    .getByRole("heading", { name: "Your district hasn’t added AMP yet" })
+    .waitFor();
+  assert.equal(
+    await page
+      .getByRole("link", { name: "Start a free pilot" })
+      .getAttribute("href"),
+    "/school/start",
+  );
+  const ask = page.getByRole("region", {
+    name: "Ask your district to add AMP",
+  });
+  assert.match(
+    (await ask.locator("[data-district-message]").textContent())!,
+    /https:\/\/schools\.clever\.com\/signup\/fixture/,
+  );
+  assert.equal(
+    await ask
+      .getByRole("link", { name: "District admin? Add AMP in Clever" })
+      .getAttribute("href"),
+    "https://schools.clever.com/signup/fixture",
+  );
+  assert.match(
+    (await ask.getByRole("link", { name: "Email it" }).getAttribute("href"))!,
+    /^mailto:\?subject=/,
+  );
+  assert.equal(await page.getByLabel(/password/i).count(), 0);
+  // Copying says so in place; the button keeps its size whatever it says.
+  const copyButton = ask.getByRole("button", { name: "Copy message" });
+  const before = (await copyButton.boundingBox())!;
+  await copyButton.click();
+  const after = ask.getByRole("button", { name: /^(Copied|Selected)$/ });
+  await after.waitFor();
+  const settled = (await after.boundingBox())!;
+  assert.deepEqual(
+    [settled.width, settled.height, settled.x, settled.y],
+    [before.width, before.height, before.x, before.y],
+  );
+  await page.reload();
+  await ask.waitFor();
+  await capture("clever-not-added");
   // Students and staff always have a way in from sign-in, not only after a
   // failure, and a student signed out on a shared computer from /join.
   for (const path of ["/sign-in", "/join", "/clever/not-connected"]) {
     await page.goto(`${origin}${path}`);
     await cleverLink().waitFor();
+    // The student entry's sign-in says so: a district that hasn't added
+    // AMP then answers with the student's screen.
     assert.equal(
       await cleverLink().getAttribute("href"),
-      "/api/v1/school/sso/clever/start",
+      path === "/sign-in"
+        ? "/api/v1/school/sso/clever/start"
+        : "/api/v1/school/sso/clever/start?as=student",
     );
     // Clever's artwork at its own size, whole and inside a phone's width.
     for (const width of [320, 1280]) {
