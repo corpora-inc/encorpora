@@ -25,7 +25,7 @@ describe("routing", () => {
     expect(cast.roles.map((role) => role.voice?.id)).toEqual([defaultVoice("teacher", script.id), "SYXbTJsLE7zmSjr1DchT"]);
     expect(cast.roles.every((role) => !role.voice?.spark)).toBe(true);
     expect(resolveCast({ id: "x", shots: [] }).roles[0]!.voice?.id).toBe(NARRATOR_ID);
-    expect(VOICES.filter((voice) => providerOf(voice) === "elevenlabs").map((voice) => voice.short)).toEqual(["madeline", "paul", "champ"]);
+    expect(VOICES.filter((voice) => providerOf(voice) === "elevenlabs").map((voice) => voice.short)).toEqual(["madeline", "paul", "champ", "sparkles"]);
   });
 
   it("sends house voices to the Spark by name or by provider", () => {

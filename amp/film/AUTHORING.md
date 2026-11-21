@@ -119,10 +119,10 @@ A film may have several speakers of one kind. The first speaker says beats with 
 | Kind | Voices |
 |---|---|
 | Teacher | Madeline Brousseaux (`XescS24CsOySAkKrLAO3`) or Paul (`J3Ei0Lj6fAobhIqY5ySH`) |
-| Learner | Champ (`SYXbTJsLE7zmSjr1DchT`), with the `[energetic]` delivery tag |
+| Learner | Champ (`SYXbTJsLE7zmSjr1DchT`), with the `[energetic]` delivery tag, or Sparkles (`tapn1QwocNXk3viVSowa`), a girl |
 | Narrator | Madeline or Paul |
 
-A stable hash of the film ID selects the default teacher, distributing films between Madeline and Paul independently of catalog order. The learner is Champ. A later speaker of the same kind takes the next eligible voice, and two speakers in one film never share a voice. A film with more speakers of one kind than approved voices of that kind still passes `--dry`. Voicing it fails (`needs another approved learner voice`, with that kind's name) instead of reusing a voice. Override a speaker with `--voice teacher=paul`. Paul cannot be the learner. Adding a voice is one entry in `voices.ts`. Adding a role kind is one name in that file's kind list.
+A stable hash of the film ID selects the default teacher, distributing films between Madeline and Paul independently of catalog order. A film's learner is Champ unless it is voiced with `--voice learner=sparkles`. A later speaker of the same kind takes the next eligible voice (a second learner is Sparkles), and two speakers in one film never share a voice. A film with more speakers of one kind than approved voices of that kind still passes `--dry`. Voicing it fails (`needs another approved learner voice`, with that kind's name) instead of reusing a voice. Override a speaker with `--voice teacher=paul`. Paul cannot be the learner. Adding a voice is one entry in `voices.ts`. Adding a role kind is one name in that file's kind list.
 
 Each production saves its exact voice bindings in `timing.json`, keyed by speaker key. A two-speaker film's binding stays `{teacher, learner}`. The renderer and live player use those bindings to choose the recorded voice. Names are not drawn on the picture. Use a separate `--out` directory for each voice edition. Consecutive beats by one speaker form a take; a change of speaker adds a half-second breath. Cache keys include the voice ID, model, words and delivery tag.
 
