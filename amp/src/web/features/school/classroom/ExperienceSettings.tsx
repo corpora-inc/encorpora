@@ -227,9 +227,11 @@ function SettingRow<K extends ExperienceKey>({
               onClick={() => onLock(!lockedHere)}
             >
               <LockMark open={!lockedHere} />
-              {lockedHere
-                ? "Locked for everyone below"
-                : "Lock for everyone below"}
+              {/* A class has only its students below it. */}
+              {lockedHere ? "Locked" : "Lock"} for{" "}
+              {experience.scope.kind === "class"
+                ? "students"
+                : "everyone below"}
             </Button>
           </div>
         )}
