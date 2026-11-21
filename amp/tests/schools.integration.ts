@@ -777,6 +777,9 @@ test(
             attempt: randomUUID(),
             // Another class's LMS assignment, or none at all.
             assignment: randomUUID(),
+            // A live signal that does not exist: resolving it must 404 for
+            // everyone outside the class.
+            signal: randomUUID(),
             skill,
           };
           const known = new Set(Object.keys(fixtures));
