@@ -21,6 +21,7 @@ import { FamilyNotice } from "./today/FamilyNotice";
 import { Feed } from "./today/Feed";
 import { PracticeSlot } from "./today/PracticeSlot";
 import { todoEntries, useChecks } from "./today/todo-entries";
+import { useCockpitShown } from "./today/use-cockpit-shown";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import { pilotLeft } from "../pilots/presentation";
@@ -213,6 +214,9 @@ export function TodayScreen() {
     board: false,
   });
   const cockpit = headed && can.has("session.read");
+  // While the cockpit shows a session, a phone's header gives its code one
+  // short row so the roster starts on the first screen.
+  const live = useCockpitShown(place, cockpit);
   // A class's code has its own place (PracticeSlot), loading or failing
   // there without holding the page.
   const loading = access.pending || org.isPending || today.isPending;
@@ -227,7 +231,7 @@ export function TodayScreen() {
       {!data ? (
         <LoadFailed what="Today" onRetry={() => void today.refetch()} />
       ) : (
-        <div className={todayStyles.today}>
+        <div className={todayStyles.today} data-live={live || undefined}>
           <header className={todayStyles.head}>
             {/* The title is the class's name: never a greeting or the
                 viewer's own name. */}
@@ -257,6 +261,7 @@ export function TodayScreen() {
                 board
                 manage={presence.data?.canManage ?? false}
                 locked={!!presence.data?.class.joinLockedUntil}
+                live={live}
               />
             )}
           </header>

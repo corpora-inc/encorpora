@@ -413,12 +413,44 @@ async function liveRun(
   const started = await boxes(page);
   // The bar keeps its place (on a desktop it gives the totals room beside
   // it, so its width may change; never where it is).
-  for (const name of ["header", "control"])
+  for (const name of ["header", "control"]) {
+    const before = above[name];
+    const after = started[name];
+    // On a phone the header gives the code one short row while a session
+    // runs (L8): the bar comes up under the title, once, at the tap, so the
+    // live roster starts on the first screen. It never moves down or
+    // sideways; from 560 px nothing moves.
+    const phoneBar = name === "control" && width < 560;
     if (
-      above[name]?.y !== started[name]?.y ||
-      above[name]?.x !== started[name]?.x
+      before?.x !== after?.x ||
+      (phoneBar ? (after?.y ?? 0) > (before?.y ?? 0) : before?.y !== after?.y)
     )
       fail(`${width}px: starting moved ${name}`);
+  }
+  if (width === 390) {
+    // The first screen holds the Live bar, the totals, the requests strip
+    // and at least four students without scrolling.
+    const first = await page.evaluate((viewport) => {
+      const rows = [
+        ...document.querySelectorAll<HTMLElement>("[data-live-row]"),
+      ];
+      return {
+        rowsShown: rows.filter(
+          (row) => row.getBoundingClientRect().bottom <= viewport,
+        ).length,
+        stripShown:
+          (document.querySelector("[data-live-strip]")?.getBoundingClientRect()
+            .bottom ?? Infinity) <= viewport,
+      };
+    }, height(width));
+    console.log(
+      `390px: first screen shows ${first.rowsShown} students, strip ${first.stripShown}`,
+    );
+    if (first.rowsShown < 4 || !first.stripShown)
+      fail(
+        `390px: the first screen shows ${first.rowsShown} students (needs 4) and the strip ${first.stripShown}`,
+      );
+  }
   await shot(page, `started-${width}`);
   // From here on, nothing moves until Stop.
   const from = await now(page);
