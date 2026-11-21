@@ -79,6 +79,8 @@ export function shellFrame(
       (
         {
           start: "today",
+          // A session's report sits under Time, beside the sessions list.
+          sessions: "time",
           "report-cards": "gradebook",
           cards: "roster",
           import: "roster",

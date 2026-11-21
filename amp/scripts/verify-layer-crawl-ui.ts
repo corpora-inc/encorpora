@@ -128,6 +128,8 @@ const UNREACHABLE: Record<string, string> = {
   "/learners/$learnerId/workbooks/$workbookId/results":
     "a printed workbook's marked results",
   "/school/$org/classes/$class/workbooks/$date": "a printed workbook's day",
+  "/school/$org/classes/$class/sessions/$session":
+    "a live session's report; the seeded classes have run none (verify-live-cockpit-screen-ui opens one)",
 };
 /** Screens that only forward an old address to where it lives now: they
  * are reached as an address is, inside the same place. */
