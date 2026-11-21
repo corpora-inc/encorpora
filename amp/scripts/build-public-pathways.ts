@@ -3,6 +3,8 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { Resvg } from "@resvg/resvg-js";
 import { skills } from "../src/curriculum/catalog";
+import { versusPath } from "../src/versus/catalog";
+import { readVersus } from "../src/versus/files";
 import { templates } from "../src/math/engine";
 import {
   bandLabel,
@@ -369,6 +371,9 @@ const urls = [
   "/schools/scope-and-sequence",
   "/schools/trust",
   "/research",
+  // The comparisons: the hub, then one page each, in the catalog's order.
+  "/versus",
+  ...readVersus().catalog.map((entry) => versusPath(entry.slug)),
   ...skills.map((skill) => skillUrl(skill.id)),
 ];
 await writeFile(

@@ -3,7 +3,23 @@
  * that don't run JavaScript (scripts/build-public-documents.ts). Every claim
  * here comes from the report itself; change the report first. */
 
+/** A component's address on `/research` (`/research#review`). Other pages
+ * link to it (src/versus), so an id never changes once published. */
+export const researchComponentIds = [
+  "level",
+  "feedback",
+  "lessons",
+  "hints",
+  "mastery",
+  "review",
+  "films",
+  "progress",
+  "incentives",
+] as const;
+export type ResearchComponentId = (typeof researchComponentIds)[number];
+
 export type ResearchComponent = {
+  id: ResearchComponentId;
   title: string;
   what: string;
   research: string;
@@ -57,6 +73,7 @@ export const researchPage = {
   componentsHeading: "What AMP does, and the research behind it",
   components: [
     {
+      id: "level",
       title: "Practice at the learner’s level",
       what: "AMP keeps an estimate of each learner’s level in every strand of math and aims each problem just within reach.",
       research:
@@ -64,6 +81,7 @@ export const researchPage = {
       sources: "Vygotsky, 1978; Bjork & Bjork, 2011",
     },
     {
+      id: "feedback",
       title: "Feedback after every answer",
       what: "Right or wrong, the correct answer, and a worked explanation of the method.",
       research:
@@ -71,12 +89,14 @@ export const researchPage = {
       sources: "Hattie & Timperley, 2007; Shute, 2008",
     },
     {
+      id: "lessons",
       title: "Lessons with worked examples",
       what: "Every problem type has a written lesson: the goal, the terms, the steps, the most common mistake and a worked example.",
       research: "Studying worked examples speeds learning in mathematics.",
       sources: "Sweller & Cooper, 1985; Barbieri et al., 2023",
     },
     {
+      id: "hints",
       title: "One-step hints",
       what: "A hint gives the first move, never the answer. An answer helped by a hint doesn’t count toward mastery.",
       research:
@@ -84,6 +104,7 @@ export const researchPage = {
       sources: "Wood, Bruner & Ross, 1976",
     },
     {
+      id: "mastery",
       title: "Mastery, and repair of gaps",
       what: "A skill counts as learned when four of the last five answers are right without help. Repeated misses send practice back to what the skill builds on.",
       research:
@@ -91,6 +112,7 @@ export const researchPage = {
       sources: "Bloom, 1968; Kulik, Kulik & Bangert-Drowns, 1990",
     },
     {
+      id: "review",
       title: "Spaced, mixed review",
       what: "Learned skills come back after six hours, a day, three days, a week, two weeks and a month, mixed in with other topics.",
       research:
@@ -99,6 +121,7 @@ export const researchPage = {
         "Roediger & Karpicke, 2006; Cepeda et al., 2006; Rohrer & Taylor, 2007; Dunlosky et al., 2013",
     },
     {
+      id: "films",
       title: "Narrated lesson films",
       what: "Animated worked examples, with the figure drawn in step with the narration.",
       research:
@@ -106,6 +129,7 @@ export const researchPage = {
       sources: "Mayer, 2020; Höffler & Leutner, 2007",
     },
     {
+      id: "progress",
       title: "Progress parents and teachers can see",
       what: "Levels, skills, time and workbooks for parents. For teachers, who needs them today, which students share a gap, and grades that open to their evidence.",
       research:
@@ -113,6 +137,7 @@ export const researchPage = {
       sources: "Fuchs & Fuchs, 1986; Kraft & Rogers, 2015; Bergman, 2021",
     },
     {
+      id: "incentives",
       title: "Incentives",
       what: "Points, skill records and celebrations now, and a growing set of incentives that parents and teachers set themselves.",
       research:
@@ -157,6 +182,13 @@ export const researchPage = {
   },
   contact: "skylar@corpora.inc",
 } as const;
+
+/** A component of the report by its id. */
+export function researchComponent(id: ResearchComponentId) {
+  const found = researchPage.components.find((entry) => entry.id === id);
+  if (!found) throw new Error(`No research component: ${id}`);
+  return found;
+}
 
 /** "Saveland, S. (2026). Title. Corpora Inc. https://doi.org/…" */
 export function reportCitation(doi: string | null = report.doi) {

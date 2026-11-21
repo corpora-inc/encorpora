@@ -6,6 +6,7 @@ import { LandingView } from "../../lib/LandingView";
 import { track, trackOnce } from "../../lib/analytics";
 import { BrandMark } from "../../ui/BrandMark";
 import { Button, buttonClass } from "../../ui/Button";
+import { FreeNote, TryFreeButton } from "./TryFree";
 import { SiteFooter } from "../support/SiteFooter";
 import {
   BuyOptions,
@@ -16,15 +17,12 @@ import {
 } from "./BuyOptions";
 import { PitchLink, usePitchNav } from "./nav";
 import { PitchVideo } from "./PitchVideo";
-import { choosePitchAction, pitchTarget } from "./targets";
 import { keepSignUpIntent } from "../../lib/program-choice";
 import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
 import { pitchVideo } from "./video";
 import { Showcase } from "./Showcase";
 import styles from "./Pitch.module.css";
-import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
 
 /** Data the pitch renders with, loaded before it mounts so it paints once,
  * complete. */
@@ -70,24 +68,9 @@ export function PitchPage() {
       : "every cent";
   // Try it free: the first screen's one action, and again beside Buy.
   const tryFree = (variant: "primary" | "secondary") => (
-    <Button
-      variant={variant}
-      className={styles.tryButton}
-      onClick={() => {
-        track("try_click");
-        choosePitchAction("try");
-        nav.go(pitchTarget("try", search));
-      }}
-    >
-      Try it free
-    </Button>
+    <TryFreeButton variant={variant} className={styles.tryButton} />
   );
-  const freeNote = (
-    <p className={styles.note}>
-      No credit card. {FREE_ONLINE_PROBLEMS} free problems and{" "}
-      {TRIAL_WORKBOOKS_MAX} workbooks.
-    </p>
-  );
+  const freeNote = <FreeNote className={styles.note} />;
   // The free trial, under Buy: the other way in, never left alone.
   const free = (
     <div className={styles.free} data-free-trial="">
@@ -277,6 +260,7 @@ export function PitchPage() {
       <SiteFooter className={styles.footer}>
         <PitchLink place={{ to: "/schools" }}>For schools</PitchLink>
         <PitchLink place={{ to: "/research" }}>Research</PitchLink>
+        <PitchLink place={{ to: "/versus" }}>Compare</PitchLink>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
       </SiteFooter>

@@ -1,0 +1,94 @@
+{
+  "slug": "i-ready",
+  "name": "i-Ready",
+  "maker": "Curriculum Associates",
+  "category": "school",
+  "checked": "2026-11-15",
+  "description": "i-Ready Personalized Instruction is sold to schools and covers K–8. AMP is a complete math curriculum families buy directly, through precalculus.",
+  "verdict": "i-Ready Personalized Instruction for Mathematics is a school program: it isn’t sold for home use, and a school’s assessment and teachers decide its lessons [1][2]. AMP is a complete math curriculum a family can start today, from counting to precalculus.",
+  "theirs": [
+    "i-Ready is a family of products from Curriculum Associates. This page compares AMP with i-Ready Personalized Instruction for Mathematics, a supplemental digital program [1]. Curriculum Associates also sells separate core mathematics and print products.",
+    "Personalized Instruction is guided by the results of the i-Ready Inform assessment. Those results assign each student a path of lessons, and teachers can assign lessons of their own. Schools use its reports beside classroom teaching [1][3].",
+    "Its purchasing page says Personalized Instruction is not sold for homeschool or private-home use [2]."
+  ],
+  "credit": [
+    "One system for a school: the assessment, the lessons it assigns and the reports [1][3].",
+    "Teachers can assign lessons that fit what the class is studying [1].",
+    "Lessons adjust their support while a student works [1]."
+  ],
+  "reasons": [
+    {
+      "title": "A family can buy it",
+      "body": "i-Ready Personalized Instruction is not sold for home use [2]. A parent creates an AMP learner and practice begins the same day."
+    },
+    {
+      "title": "It keeps going after grade 8",
+      "body": "i-Ready lists Personalized Instruction content for kindergarten through grade 8 [1]. AMP runs from counting through precalculus in one program."
+    },
+    {
+      "title": "Every next problem is chosen from the last one",
+      "body": "i-Ready sets a lesson path from an assessment, and a teacher can assign lessons [1]. AMP chooses each next problem from what the learner just did, and brings learned skills back for review.",
+      "research": ["level", "review"]
+    },
+    {
+      "title": "It works on your schedule, with paper when you want it",
+      "body": "School access to i-Ready follows a teacher’s assignments. AMP is yours at home, with a lesson and a worked explanation at every problem and printable workbooks made for each learner.",
+      "research": ["feedback", "lessons"]
+    }
+  ],
+  "evidence": {
+    "theirs": [
+      "Curriculum Associates describes Personalized Instruction and the Inform assessment on its own pages [1][3]. This comparison makes no claim about studies of i-Ready."
+    ],
+    "ours": [
+      "AMP’s research report sets out each part of the program and the published research behind it. It is AMP’s ESSA Tier 4 rationale, and the studies it plans are pre-registered and published whatever the result."
+    ]
+  },
+  "rows": {
+    "buyers": "Schools. Not sold for homeschool or private-home use [2].",
+    "range": "Personalized Instruction: kindergarten through grade 8. The Inform assessment: K–12 [1][3].",
+    "start": "The i-Ready Inform assessment [3].",
+    "next": "A lesson path set from assessment results, and lessons a teacher assigns [1].",
+    "adult": "A teacher assigns lessons and reads the reports [1].",
+    "reports": "Reports for teachers and schools [1][3]."
+  },
+  "fit": {
+    "them": [
+      "Your school already uses it, and its lessons follow the school’s assessment.",
+      "You are a school that wants the assessment, the instruction and the reports from one company."
+    ],
+    "amp": [
+      "You want math at home that you can start and manage yourself.",
+      "You need a curriculum that continues into high school mathematics.",
+      "You want printable workbooks and an explanation at every problem."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is this comparison about every i-Ready math product?",
+      "answer": "No. It is about i-Ready Personalized Instruction for Mathematics and the assessment that guides it [1][3]. Curriculum Associates also sells separate core mathematics and print products."
+    },
+    {
+      "question": "Can I buy i-Ready Personalized Instruction for home use?",
+      "answer": "Its purchasing page says it is not sold for homeschool or private-home use [2]. AMP is sold directly to families."
+    },
+    {
+      "question": "My child uses i-Ready at school. Can we use AMP at home too?",
+      "answer": "Yes. AMP is a separate home routine: create a learner and begin practice on your own schedule."
+    }
+  ],
+  "sources": [
+    {
+      "title": "i-Ready Personalized Instruction for Mathematics (Curriculum Associates)",
+      "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/mathematics"
+    },
+    {
+      "title": "Purchasing i-Ready Personalized Instruction (Curriculum Associates)",
+      "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/purchasing"
+    },
+    {
+      "title": "i-Ready Assessment: Inform (Curriculum Associates)",
+      "url": "https://www.curriculumassociates.com/programs/i-ready-assessment/admin-resources/diagnostic"
+    }
+  ]
+}

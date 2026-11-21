@@ -71,6 +71,7 @@ export const publicAppPageTitles: Readonly<Record<string, string>> = {
   "/schools/scope-and-sequence": "Scope and Sequence | AMP for Schools",
   "/schools/trust": "Student Data | AMP for Schools",
   "/research": "The Research Behind AMP: ESSA Tier 4 Logic Model | AMP",
+  "/versus": "AMP vs Other Math Programs | AMP",
 };
 
 /** The signed-in home at `/`: a private screen, so GA never receives it. */
@@ -192,6 +193,10 @@ export function appPageTitle(
     /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/.test(clean)
   )
     return;
+  // The comparisons own their heads too: a comparison's comes from its own
+  // content, which loads with its screen (features/versus), never with the
+  // app's entry. GA still receives the hub's title from the table above.
+  if (/^\/versus(?:\/[^/]+)?$/.test(clean)) return;
   if (clean === "/" && home === "app") return appHomeTitle;
   const title = publicAppPageTitle(location, home);
   if (title) return title;

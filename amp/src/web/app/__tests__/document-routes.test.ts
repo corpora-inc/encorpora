@@ -11,6 +11,7 @@
 import { expect, test } from "vitest";
 import { knownDocumentPath } from "../document-routes";
 import { router } from "../router";
+import { loadVersusPage, versusCatalog } from "../../../versus/pages";
 
 type Entry = { fullPath: string; isRoot?: boolean };
 
@@ -71,6 +72,33 @@ test("the pay overlays are served at every host, with and without a trailing sla
     "/family/f1/pay",
   ])
     expect(knownDocumentPath(path), path).toBe(false);
+});
+
+test("the comparisons are served: the hub and one page each, nothing deeper", () => {
+  for (const path of [
+    "/versus",
+    "/versus/",
+    "/versus/i-ready",
+    "/versus/i-ready/",
+  ])
+    expect(knownDocumentPath(path), path).toBe(true);
+  expect(routes).toContain("/versus");
+  expect(routes).toContain("/versus/$slug");
+  for (const path of ["/versus/i-ready/more", "/versusx", "/versus//"])
+    expect(knownDocumentPath(path), path).toBe(false);
+});
+
+test("every comparison the hub lists opens in the app, and nothing else does", async () => {
+  // The app loads a comparison's file by its slug (src/versus/pages.ts); the
+  // build writes a document for each one in the catalog.
+  expect(versusCatalog.length).toBeGreaterThan(0);
+  for (const entry of versusCatalog) {
+    const page = await loadVersusPage(entry.slug);
+    expect(page?.slug, entry.slug).toBe(entry.slug);
+    expect(page?.name, entry.slug).toBe(entry.name);
+  }
+  for (const slug of ["no-such-program", "../catalog", ""])
+    expect(await loadVersusPage(slug), slug).toBeUndefined();
 });
 
 test("a listed exception is still a route, so the list can't go stale", () => {

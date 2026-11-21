@@ -39,7 +39,8 @@ export type RouteHead = {
 };
 
 /** App titles share GA's fixed labels; indexing uses a separate public-document policy.
- * Undefined for the public skill map, whose screens set their own. */
+ * Undefined for the public skill map and the comparisons (`/versus`), whose
+ * screens set their own. */
 export function routeHead(
   location: string,
   home: HomeScreen,

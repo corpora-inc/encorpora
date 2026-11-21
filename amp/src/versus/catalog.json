@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "i-ready",
+    "name": "i-Ready",
+    "category": "school",
+    "line": "i-Ready is sold to schools. AMP is a complete math curriculum a family can start today."
+  },
+  {
+    "slug": "ctcmath",
+    "name": "CTCMath",
+    "category": "courses",
+    "line": "CTCMath teaches by video, lesson by lesson. AMP chooses the next problem and brings review back."
+  }
+]

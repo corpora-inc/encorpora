@@ -1,0 +1,87 @@
+{
+  "slug": "ctcmath",
+  "name": "CTCMath",
+  "category": "courses",
+  "checked": "2026-11-15",
+  "description": "CTCMath teaches K–12 math with short video lessons, then questions. AMP chooses every next problem, mixes in review and prints workbooks for each learner.",
+  "verdict": "CTCMath is built around short narrated video lessons, each followed by its own questions [1]. AMP starts from the problem: it chooses each next one, explains it there, and brings earlier skills back for review.",
+  "theirs": [
+    "CTCMath gives a homeschool day a clear shape: watch a short tutorial, answer interactive questions or use a worksheet, then look at the results [1].",
+    "A membership covers kindergarten through grade 12 and lets a learner move between grades, so a family can go back to earlier material [1][2]."
+  ],
+  "credit": [
+    "A teacher’s spoken explanation before the learner tries a topic [1].",
+    "Automated marking and diagnostic tests by topic [1].",
+    "Printable worksheets, one-page lesson summaries and worked solutions [2].",
+    "Access to every grade, so earlier lessons stay open [2]."
+  ],
+  "reasons": [
+    {
+      "title": "AMP decides what to practice next",
+      "body": "CTCMath follows each video with that lesson’s questions [1]. AMP chooses every next problem from what the learner just did, so nobody has to pick the day’s topic.",
+      "research": ["level"]
+    },
+    {
+      "title": "Review comes back on its own",
+      "body": "A child can explain a lesson right after watching it. AMP brings the same skill back days and weeks later, mixed in with other topics.",
+      "research": ["review"]
+    },
+    {
+      "title": "Gaps get repaired",
+      "body": "When a skill keeps going wrong, AMP sends practice back to what that skill builds on, and keeps what is already learned in review.",
+      "research": ["mastery"]
+    },
+    {
+      "title": "The explanation is at the problem",
+      "body": "Every AMP problem carries a hint, a short lesson and a step-by-step explanation, so help arrives while the learner is working on it.",
+      "research": ["feedback", "hints", "lessons"]
+    }
+  ],
+  "evidence": {
+    "theirs": [
+      "CTCMath describes how its lessons work on its own site [1][2]. This comparison makes no claim about studies of CTCMath."
+    ],
+    "ours": [
+      "AMP’s research report sets out each part of the program and the published research behind it. It is AMP’s ESSA Tier 4 rationale, and the studies it plans are pre-registered and published whatever the result."
+    ]
+  },
+  "rows": {
+    "range": "Kindergarten through grade 12, with access to every grade [1][2].",
+    "start": "Diagnostic tests by topic [1].",
+    "teaching": "Short narrated video tutorials [1].",
+    "next": "Each video lesson is followed by its own questions [1].",
+    "print": "Printable worksheets, one-page lesson summaries and worked solutions [2].",
+    "reports": "Automated marking, with results to review [1]."
+  },
+  "fit": {
+    "them": [
+      "Your child wants a teacher’s spoken explanation before trying a topic.",
+      "You like choosing the lesson and following a watch-then-practice routine."
+    ],
+    "amp": [
+      "You want the program to choose what to practice next.",
+      "You want review that returns on its own, mixed across topics.",
+      "You want printed workbooks made from where each learner is."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Does CTCMath include worksheets?",
+      "answer": "Yes. CTCMath describes printable worksheets, one-page tutorial summaries and worked solutions [2]. AMP prints workbooks made for each learner, with solutions."
+    },
+    {
+      "question": "When is AMP the stronger fit?",
+      "answer": "When you want the program to choose a continuing mix of practice and review, with an explanation at the problem and printable work for time away from the screen."
+    }
+  ],
+  "sources": [
+    {
+      "title": "CTCMath: How It Works",
+      "url": "https://www.ctcmath.com/how-it-works"
+    },
+    {
+      "title": "CTCMath: Frequently Asked Questions",
+      "url": "https://ctcmath.com/faq"
+    }
+  ]
+}

@@ -356,6 +356,12 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the signed-out schools site, in its own PublicFrame",
   "features/research/index.ts#ResearchScreen":
     "the public research page, in the homepage's frame (pitch/Pitch.module.css)",
+  "features/versus/index.ts#VersusHubScreen":
+    "the public comparisons, in the homepage's frame (pitch/Pitch.module.css)",
+  "features/versus/index.ts#VersusPageScreen":
+    "the public comparisons, in the homepage's frame (pitch/Pitch.module.css)",
+  "features/versus/index.ts#VersusMissingScreen":
+    "the not-found screen, for a comparison that doesn't exist",
   "features/school/standing/index.ts#ClassStandingScreen":
     "the school's curves (StandingScreen renders Page) with the class's overlay over them",
   "features/school/join/index.ts#ContinueScreen":

@@ -57,7 +57,7 @@ export function ResearchScreen() {
           <div className={styles.topicBody}>
             <ol className={styles.components}>
               {page.components.map((component) => (
-                <li key={component.title}>
+                <li key={component.id} id={component.id}>
                   <h3>{component.title}</h3>
                   <p>{component.what}</p>
                   <p className={styles.evidence}>
@@ -118,6 +118,7 @@ export function ResearchScreen() {
       <SiteFooter className={frame.footer}>
         <Link to="/schools">For schools</Link>
         <Link to="/schools/trust">Student data</Link>
+        <Link to="/versus">Compare</Link>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
       </SiteFooter>
