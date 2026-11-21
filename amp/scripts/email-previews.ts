@@ -20,6 +20,7 @@ import { setupInvitation } from "../src/schools/onboarding.js";
 import { seatRequest, staffInvitation } from "../src/schools/setup-routes.js";
 import { integrationRequest } from "../src/schools/org-routes.js";
 import { schoolInquiry } from "../src/schools/share-routes.js";
+import { pilotSignupNotice } from "../src/research/pilot-routes.js";
 import { followupMail, type MailConfig } from "../src/parent-followup/mail.js";
 import { consentMail } from "../src/parent-consent/mail.js";
 import type { ConsentPolicy } from "../src/parent-consent/contracts.js";
@@ -260,6 +261,28 @@ export function emailPreviews(): EmailPreview[] {
             message:
               "We would like to pilot AMP with two sixth-grade classes.\n\nCan we start next week?",
           },
+          origin,
+        ),
+      ),
+    },
+    {
+      id: "research-pilot-signup",
+      title: "Pilot interest list signup (to Corpora)",
+      email: linked(
+        pilotSignupNotice(
+          {
+            role: "parent",
+            name: "Alex Example",
+            email: "alex@example.com",
+            learners: 2,
+            bands: ["3-5", "6-8"],
+            setting: "home",
+            place: "AZ",
+            tests: ["map"],
+            source: "A homeschool group",
+            news: true,
+          },
+          { total: 37, returning: false },
           origin,
         ),
       ),

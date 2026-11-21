@@ -369,6 +369,7 @@ const urls = [
   "/schools/scope-and-sequence",
   "/schools/trust",
   "/research",
+  "/research/pilot",
   ...skills.map((skill) => skillUrl(skill.id)),
 ];
 await writeFile(

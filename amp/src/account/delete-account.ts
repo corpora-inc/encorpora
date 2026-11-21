@@ -197,6 +197,7 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_provider_sessions: "account",
   amp_provider_oauth_flows: "account",
   amp_purchase_consents: "consent-evidence",
+  amp_research_pilot_interest: "account",
   amp_school_events: "place",
   amp_school_licenses: "place",
   amp_scope_settings: "place",
@@ -736,6 +737,12 @@ export async function deleteAccount(
         "DELETE FROM amp_access_gifts WHERE account_id=$1 OR ($2::text IS NOT NULL AND lower(recipient_email)=lower($2))",
         [accountId, plan.email],
       );
+      // The pilot interest list is kept by email, not by account.
+      if (plan.email)
+        await client.query(
+          "DELETE FROM amp_research_pilot_interest WHERE lower(email)=lower($1)",
+          [plan.email],
+        );
 
       await client.query(
         "DELETE FROM amp_funded_pending_eligibility WHERE account_id=$1",
