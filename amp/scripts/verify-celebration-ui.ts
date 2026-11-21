@@ -28,14 +28,20 @@ import { developmentAuth } from "../src/server/auth";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { migrate } from "./migrate";
-import { practiceHere } from "./ui-controls";
+import { openMenu, practiceHere } from "./ui-controls";
 import { openHome } from "./launcher";
+import { resolveTheme, type Rgba } from "./color-system";
+import { practicePath } from "../src/web/features/spaces/identity";
 
 const chromium = secureChromium(rawChromium);
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw Error("AMP_TEST_DATABASE_URL is required");
 const WEB = Number(process.env.AMP_CELEBRATION_WEB_PORT ?? 4826);
 const API = WEB + 1;
+/** Roles whose colors carry meaning and stay Calm's in Colorful (as
+ * tests/color-roles.test.ts has them). */
+const FIXED =
+  /^--color-(strand-|grade-|heat-|dose-|coin-|bill-|avatar-|on-avatar-|provider|on-provider|brand-|print-)/;
 const ANSWERS = 20;
 const THROTTLE = 6;
 const LONG_TASK = 50;
@@ -241,6 +247,7 @@ async function run(look: "calm" | "bold") {
   await cdp.send("Emulation.setCPUThrottlingRate", { rate: THROTTLE });
   const played = new Set<string>();
   const windows: [number, number][] = [];
+  const hueWindows: [number, number][] = [];
   let calmProblem: Buffer | null = null;
   let calmFeedback: Buffer | null = null;
   for (let i = 0; i < ANSWERS; i++) {
@@ -305,6 +312,11 @@ async function run(look: "calm" | "bold") {
     await page.getByRole("button", { name: /^Next/ }).click();
     await page.locator(".feedback").waitFor({ state: "detached" });
     await page.locator("#answer").waitFor();
+    // The new problem's world turns (400 ms): one property, every role.
+    // Nothing else runs while it does.
+    const turned = await page.evaluate(() => performance.now());
+    await page.waitForTimeout(700);
+    hueWindows.push([turned + 60, turned + 700]);
   }
   const probe = await page.evaluate(
     () => (window as unknown as { __probe: Probe }).__probe,
@@ -316,15 +328,19 @@ async function run(look: "calm" | "bold") {
     await writeFile(`${out}calm-feedback.png`, calmFeedback);
   }
   await browser.close();
-  return { probe, played, windows };
+  return { probe, played, windows, hueWindows };
 }
 
 let failed = false;
-// `--calm`: the Calm half only.
+// `--calm`: the Calm half only; `--sweep`: the leftover-color sweep only.
 const calmOnly = process.argv.includes("--calm");
+const sweepOnly = process.argv.includes("--sweep");
 try {
-  if (!calmOnly) await colorful();
-  await calmRun();
+  if (!sweepOnly) {
+    if (!calmOnly) await colorful();
+    await calmRun();
+  }
+  if (!calmOnly) await leftoverSweep();
   console.log("verify-celebration-ui: passed");
 } catch (error) {
   failed = true;
@@ -362,6 +378,17 @@ async function colorful() {
     inTails,
   );
   assert.equal(inTails.length, 0, "no long task while a celebration plays");
+  const inTurns = bold.probe.longTasks.filter((task) =>
+    bold.hueWindows.some(
+      ([from, to]) =>
+        task.start >= from && task.start < to && task.duration > LONG_TASK,
+    ),
+  );
+  console.log(
+    `Long tasks while a new problem's world turned: ${inTurns.length}`,
+    inTurns,
+  );
+  assert.equal(inTurns.length, 0, "turning the world is no long task");
   const shift = bold.probe.shifts.reduce((sum, entry) => sum + entry.value, 0);
   console.log(`Layout shift in Colorful: ${shift}`, bold.probe.shifts);
   assert.equal(shift, 0, "Colorful moves nothing");
@@ -384,4 +411,297 @@ async function calmRun() {
   const calmShift = calm.probe.shifts.reduce((sum, e) => sum + e.value, 0);
   console.log(`Calm: no overlay, no look; layout shift ${calmShift}`);
   assert.equal(calm.probe.celebration.length, 0, "Calm celebrates nothing");
+}
+
+/** Every color only Calm uses: each other role's value, light and dark,
+ * less any that a fixed role shares (it may rightly show), white and black. */
+function calmOnlyColors() {
+  const seen = new Map<string, string>();
+  const fixed = new Set<string>();
+  const key = ([r, g, b, a]: Rgba) =>
+    [r, g, b].map((v) => Math.round(v)).join(",") + "," + a.toFixed(2);
+  for (const theme of ["light", "dark"] as const) {
+    const { color, names } = resolveTheme(theme);
+    for (const name of names.filter((n) => n.startsWith("--color-"))) {
+      const value = key(color(name));
+      if (FIXED.test(name)) fixed.add(value);
+      else if (!seen.has(value)) seen.set(value, `${name} (${theme})`);
+    }
+  }
+  for (const value of [...fixed, "255,255,255,1.00", "0,0,0,1.00"])
+    seen.delete(value);
+  return seen;
+}
+
+/** Every computed color on screen that is one of Calm's own, with where. */
+function leftovers(calm: [string, string][]) {
+  const known = new Map(calm);
+  const props = [
+    "color",
+    "background-color",
+    "border-top-color",
+    "border-right-color",
+    "border-bottom-color",
+    "border-left-color",
+    "outline-color",
+    "fill",
+    "stroke",
+    "text-decoration-color",
+  ];
+  const parse = (value: string) => {
+    const m =
+      /^rgba?\(([\d.]+),? ([\d.]+),? ([\d.]+)(?:,? \/? ?([\d.]+))?\)$/.exec(
+        value,
+      );
+    if (!m) return null;
+    const a = m[4] == null ? 1 : Number(m[4]);
+    if (a === 0) return null;
+    return (
+      [m[1], m[2], m[3]].map((v) => Math.round(Number(v))).join(",") +
+      "," +
+      a.toFixed(2)
+    );
+  };
+  const found: string[] = [];
+  for (const element of document.querySelectorAll<Element>("body *")) {
+    if (element.closest("[data-celebration], script, style")) continue;
+    const box = element.getBoundingClientRect();
+    if (!box.width || !box.height) continue;
+    if (
+      !element.checkVisibility({
+        opacityProperty: true,
+        visibilityProperty: true,
+      })
+    )
+      continue;
+    const style = getComputedStyle(element);
+    for (const prop of props) {
+      if (
+        prop.startsWith("border") &&
+        style.getPropertyValue(prop.replace("color", "width")) === "0px"
+      )
+        continue;
+      if (prop === "outline-color" && style.outlineStyle === "none") continue;
+      if (
+        (prop === "fill" || prop === "stroke") &&
+        !(element instanceof SVGElement)
+      )
+        continue;
+      if (
+        prop === "text-decoration-color" &&
+        !style.textDecorationLine.includes("line")
+      )
+        continue;
+      const value = parse(style.getPropertyValue(prop));
+      if (value && known.has(value)) {
+        const cls =
+          typeof element.className === "string"
+            ? element.className.split(/\s+/).slice(0, 2).join(".")
+            : "";
+        found.push(
+          `${element.tagName.toLowerCase()}${cls ? "." + cls : ""} ${prop} = ${known.get(value)}`,
+        );
+      }
+    }
+  }
+  return [...new Set(found)];
+}
+
+/**
+ * The leftover-color sweep: a learner's Colorful screens at two hues, every
+ * answer kind and every panel practice opens, fail on any color that is
+ * Calm's own. A role Colorful forgot shows up here, not to a child.
+ */
+async function leftoverSweep() {
+  const calm = [...calmOnlyColors()];
+  const browser = await chromium.launch();
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+  });
+  const page = await context.newPage();
+  page.setDefaultTimeout(30_000);
+  page.on("pageerror", (error) => console.error("page error:", error.message));
+  await page.addInitScript("window.__name = (fn) => fn");
+  await chooseLook(page, "bold");
+  const problems: Record<string, string> = {
+    keypad: "mean-data",
+    "choice-figures": "find-quadrilateral",
+    "figure-cards": "which-is-a-unit-square",
+    tiles: "build-the-number-sentence",
+    "fill-ins": "place-shift-value",
+    "structured-work": "oblique-triangle-solve",
+    "multi-select": "fact-equation-truth-select",
+  };
+  const found = new Map<string, string[]>();
+  const look = async (where: string, hue: number) => {
+    await page.evaluate((h) => {
+      document.documentElement.style.setProperty("--look-hue", `${h}deg`);
+    }, hue);
+    await page.waitForTimeout(650);
+    const bad = await page.evaluate(leftovers, calm);
+    if (bad.length) found.set(`${where} at ${hue}°`, bad);
+    await page.screenshot({ path: `${out}sweep-${where}-${hue}.png` });
+  };
+  await openHome(page, origin);
+  await practiceHere(page, learner.id);
+  for (const hue of [40, 220]) {
+    for (const [kind, template] of Object.entries(problems)) {
+      await page.goto(origin + practicePath(learner.id, { template }));
+      await page.locator(".problem-content").waitFor();
+      await page.waitForTimeout(400);
+      await look(kind, hue);
+    }
+    // A keypad problem's panels and both results.
+    await page.goto(
+      origin + practicePath(learner.id, { template: "mean-data" }),
+    );
+    await page.locator("#answer").waitFor();
+    for (const [name, button] of [
+      ["hint", "Hint"],
+      ["lesson", "Lesson"],
+    ] as const) {
+      await page
+        .getByRole("button", { name: button, exact: true })
+        .first()
+        .click();
+      await page.waitForTimeout(800);
+      await look(name, hue);
+      await page.keyboard.press("Escape");
+      await page.waitForTimeout(300);
+    }
+    await page.route("**/attempts", async (route) => {
+      const response = await route.fetch();
+      const body = await response.json();
+      await route.fulfill({
+        response,
+        json: { ...body, correct: false, assisted: false },
+      });
+    });
+    await page.locator("#answer").fill("999");
+    await page.getByRole("button", { name: "Check" }).click();
+    await page.locator(".feedback.incorrect").waitFor();
+    await look("not-yet", hue);
+    const why = page.getByRole("button", { name: "See why" });
+    if (await why.count()) {
+      await why.first().click();
+      await page.waitForTimeout(500);
+      await look("see-why", hue);
+    }
+    const buildsOn = page.getByRole("button", { name: /Builds on/ });
+    if (await buildsOn.count()) {
+      await buildsOn.first().click();
+      await page.waitForTimeout(500);
+      await look("builds-on", hue);
+      await page.keyboard.press("Escape");
+    }
+    await page.unroute("**/attempts");
+    await page.route("**/attempts", async (route) => {
+      const response = await route.fetch();
+      const body = await response.json();
+      await route.fulfill({
+        response,
+        json: { ...body, correct: true, assisted: false },
+      });
+    });
+    await page.getByRole("button", { name: /^Next/ }).click();
+    await page.locator("#answer").waitFor();
+    await page.locator("#answer").fill("1");
+    await page.getByRole("button", { name: "Check" }).click();
+    await page.locator(".feedback.correct").waitFor();
+    await page.waitForTimeout(1600);
+    await look("right", hue);
+    await page.unroute("**/attempts");
+    const drawer = await openMenu(page);
+    await drawer.waitFor();
+    await page.waitForTimeout(400);
+    await look("drawer", hue);
+    await page.keyboard.press("Escape");
+  }
+  await browser.close();
+  // A school student's own screens, on a running preview with a class's
+  // sign-in: AMP_SWEEP_STUDENT=<origin>|<class code>|<name>|<pictures,…>
+  // (scripts/design-preview.sh seeds one: fox, boat, kite).
+  const student = process.env.AMP_SWEEP_STUDENT?.split("|");
+  if (student) {
+    const [at, code, name, pictures] = student as [
+      string,
+      string,
+      string,
+      string,
+    ];
+    const other = await chromium.launch();
+    const signedIn = await other.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    const kid = await signedIn.newPage();
+    kid.setDefaultTimeout(30_000);
+    await kid.addInitScript("window.__name = (fn) => fn");
+    await kid.goto(`${at}/join/${code}`);
+    await kid.getByText(name).click();
+    for (const picture of pictures.split(","))
+      await kid
+        .getByRole("button", { name: new RegExp(picture, "i") })
+        .first()
+        .click();
+    await kid.waitForURL((url) => url.pathname.startsWith("/practice"));
+    const token = await kid.evaluate(
+      () =>
+        JSON.parse(sessionStorage.getItem("amp.student") ?? "{}")
+          .token as string,
+    );
+    const id = new URL(kid.url()).pathname.split("/")[2]!;
+    const headers = { authorization: `Bearer ${token}`, origin: at };
+    const path = `${at}/api/v1/learners/${id}/practice-state`;
+    const state = (await (await kid.request.get(path, { headers })).json()) as {
+      revision: number;
+      effectiveLook: string;
+    };
+    if (state.effectiveLook !== "bold")
+      await kid.request.post(path, {
+        headers,
+        data: {
+          kind: "look",
+          look: "bold",
+          revision: state.revision,
+          requestId: crypto.randomUUID(),
+        },
+      });
+    const seen = async (where: string) => {
+      for (const hue of [40, 220]) {
+        await kid.evaluate((h) => {
+          document.documentElement.style.setProperty("--look-hue", `${h}deg`);
+        }, hue);
+        await kid.waitForTimeout(650);
+        const bad = await kid.evaluate(leftovers, calm);
+        if (bad.length) found.set(`student ${where} at ${hue}°`, bad);
+        await kid.screenshot({
+          path: `${out}sweep-student-${where}-${hue}.png`,
+        });
+      }
+    };
+    await kid.reload();
+    await kid.locator(".problem-content").waitFor();
+    await seen("practice");
+    const menu = await openMenu(kid);
+    await menu.waitFor();
+    await seen("drawer");
+    await kid.keyboard.press("Escape");
+    for (const screen of ["/overview", "/standings"]) {
+      await kid.goto(at + screen);
+      await kid.waitForTimeout(2000);
+      await seen(screen.slice(1));
+    }
+    await other.close();
+  }
+  const count = [...found.values()].reduce((n, list) => n + list.length, 0);
+  for (const [where, list] of found)
+    console.log(`Calm's colors left at ${where}:\n  ${list.join("\n  ")}`);
+  console.log(
+    `Leftover-color sweep: ${count} Calm color(s) on Colorful screens.`,
+  );
+  assert.equal(
+    count,
+    0,
+    "no Calm color is left on a learner's Colorful screens",
+  );
 }

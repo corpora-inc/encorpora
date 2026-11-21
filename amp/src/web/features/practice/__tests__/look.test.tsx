@@ -1,3 +1,4 @@
+import "../celebration/__tests__/css-stub";
 import {
   cleanup,
   fireEvent,

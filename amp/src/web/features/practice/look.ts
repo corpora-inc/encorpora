@@ -6,6 +6,12 @@ import {
   practiceSettingsOptions,
   type PracticeScope,
 } from "./practice-settings";
+import {
+  clearHue,
+  colorfulSupported,
+  paintHue,
+  useHueStore,
+} from "./celebration/hue";
 
 const REDUCED = "(prefers-reduced-motion: reduce)";
 /** Whether this device asks for less motion, live. */
@@ -21,15 +27,24 @@ export const usePrefersReducedMotion = () =>
  * child going from practice to their standings) never takes it from the
  * next one, and goes with the last. */
 let holders = 0;
-function holdBold() {
+function holdBold(learner: string) {
   const root = document.documentElement;
   holders++;
+  // The learner's latest world, until practice moves it on.
+  if (!root.style.getPropertyValue("--look-hue"))
+    paintHue(useHueStore.getState().latest(learner));
   root.setAttribute("data-look", "bold");
   return () => {
     holders = Math.max(0, holders - 1);
-    if (holders === 0) root.removeAttribute("data-look");
+    if (holders > 0) return;
+    root.removeAttribute("data-look");
+    clearHue();
   };
 }
+/** Checked once: a browser without oklch() and registered properties
+ * shows Calm, and the answer records Calm. */
+let supported: boolean | null = null;
+const canShowColorful = () => (supported ??= colorfulSupported());
 
 const LOOK_ATTRIBUTE = { attributes: true, attributeFilter: ["data-look"] };
 /** The look on screen now (what `<html>` paints), live: the one thing a
@@ -64,13 +79,13 @@ export function useLook(scope: PracticeScope, enabled = true) {
     ...practiceSettingsOptions(scope),
     enabled: enabled && !!learner,
   });
-  const look: Look | null = enabled
-    ? (state.data?.effectiveLook ?? null)
-    : null;
+  const chosen = enabled ? (state.data?.effectiveLook ?? null) : null;
+  const look: Look | null =
+    chosen === "bold" && !canShowColorful() ? "calm" : chosen;
   const reduced = usePrefersReducedMotion();
   useLayoutEffect(() => {
     if (look !== "bold") return;
-    return holdBold();
+    return holdBold(learner);
   }, [look, learner]);
   /** What to record on an answer: the look actually shown; null until known. */
   const shown: ShownLook | null = look ? shownLook(look, reduced) : null;

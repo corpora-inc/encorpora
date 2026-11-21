@@ -1851,7 +1851,7 @@ export function PracticeWorkspace(props: Props) {
       <Celebration
         outcome={review ? null : outcome}
         mastered={props.mastered}
-        problemId={problem.id}
+        problem={problem}
       />
       <section
         className="practice-surface"

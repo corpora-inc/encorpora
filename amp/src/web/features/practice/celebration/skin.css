@@ -1,50 +1,65 @@
 /*
- * Colorful's dress around practice, beyond its token roles (ui/tokens.css):
- * a band of the confetti colors along the bar's foot, buttons with a press
- * you can feel, and each new problem arriving quickly. All of it is keyed on
- * `:root[data-look="bold"]`, so Calm is exactly as it was; none of it
- * changes a size, so nothing moves.
+ * Colorful's dress, beyond its role colors (ui/tokens.css turns every role
+ * with the problem's hue). The stage stays as empty as Calm's: no scenery,
+ * no frame around the problem. The color is in the controls and the moments:
+ * buttons, keys and choices you can press, a right answer that lands, a new
+ * problem that arrives. All of it is keyed on `:root[data-look="bold"]`, so
+ * Calm is exactly as it was, and none of it changes a size.
  */
-:root[data-look="bold"] [data-app-bar] {
-  box-shadow: none;
-}
-:root[data-look="bold"] [data-app-bar]::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--color-celebrate-4),
-    var(--color-celebrate-1) 30%,
-    var(--color-celebrate-2) 55%,
-    var(--color-celebrate-5) 78%,
-    var(--color-celebrate-3)
-  );
-  pointer-events: none;
-}
 
-/* The answer's own buttons: a solid lower edge, pressed down on a tap. */
+/* ── Things to press: a hard lower edge that goes down on a tap ──────── */
 :root[data-look="bold"]
   .practice-workspace
   :is(.next-action, form button[type="submit"]):not(:disabled) {
-  box-shadow: inset 0 -4px 0
-    color-mix(in srgb, var(--color-on-surface) 28%, var(--color-primary));
+  border-radius: 16px;
+  font-weight: 800;
+  box-shadow: inset 0 -5px 0 var(--color-primary-edge);
+  transition: transform 90ms ease-out;
 }
 :root[data-look="bold"]
   .practice-workspace
   :is(.next-action, form button[type="submit"]):not(:disabled):active {
-  box-shadow: inset 0 -1px 0
-    color-mix(in srgb, var(--color-on-surface) 28%, var(--color-primary));
+  box-shadow: inset 0 -2px 0 var(--color-primary-edge);
+  transform: translateY(3px);
+}
+:root[data-look="bold"] .math-keypad button {
+  background: var(--color-key);
+  color: var(--color-on-key);
+  border: 1px solid var(--color-key-edge);
+  border-radius: 12px;
+  box-shadow: inset 0 -4px 0 var(--color-key-edge);
+  font-weight: 700;
+  transition: transform 70ms ease-out;
+}
+:root[data-look="bold"] .math-keypad button:hover {
+  background: var(--color-secondary);
+}
+:root[data-look="bold"] .math-keypad button:active {
+  background: var(--color-secondary);
+  box-shadow: inset 0 -1px 0 var(--color-key-edge);
+  transform: translateY(3px);
+}
+:root[data-look="bold"] .answer-dock .choice-option,
+:root[data-look="bold"] .figure-choice-card {
+  border-color: var(--color-key-edge);
+  box-shadow: inset 0 -4px 0 var(--color-key-edge);
+  transition: transform 80ms ease-out;
+}
+:root[data-look="bold"] .answer-dock .choice-option:active,
+:root[data-look="bold"] .figure-choice-card:active {
   transform: translateY(2px);
 }
-
-/* A choice's letters each wear a confetti color, quietly: a tint behind
-   the letter, never behind the math. The chosen one takes the accent. */
+:root[data-look="bold"] .answer-dock .choice-option.selected,
+:root[data-look="bold"] .figure-choice-card[data-selected] {
+  border-color: var(--color-primary);
+  box-shadow:
+    inset 0 0 0 2px var(--color-primary),
+    inset 0 -5px 0 var(--color-primary);
+}
+/* A choice's letters each wear a neighbor of the hue: a tint behind the
+   letter, never behind the math. The chosen one takes the accent. */
 :root[data-look="bold"] .choice-option:not(.selected) .choice-letter {
-  background: color-mix(in srgb, var(--hue) 26%, var(--color-surface));
+  background: color-mix(in srgb, var(--hue) 30%, var(--color-surface));
 }
 :root[data-look="bold"] .choice-option:nth-of-type(4n + 1) {
   --hue: var(--color-celebrate-1);
@@ -53,31 +68,122 @@
   --hue: var(--color-celebrate-2);
 }
 :root[data-look="bold"] .choice-option:nth-of-type(4n + 3) {
-  --hue: var(--color-celebrate-3);
-}
-:root[data-look="bold"] .choice-option:nth-of-type(4n + 4) {
   --hue: var(--color-celebrate-4);
 }
-
-/* A right answer's sheet: the success roles, with a bright top edge. */
-:root[data-look="bold"] .feedback.correct {
-  border-color: var(--color-success-accent);
-  box-shadow:
-    inset 0 4px 0 var(--color-celebrate-5),
-    0 -8px 40px var(--color-shadow);
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 4) {
+  --hue: var(--color-celebrate-5);
 }
 
-/* A new problem arrives in 180 ms: it fades up from just below. The math
-   only moves as a whole, and only for that moment. */
+/* ── A right answer lands ────────────────────────────────────────────── */
+/* The sheet is the world's bright color; the mark is always a green check
+   in a white disc, and it slams in. */
+:root[data-look="bold"] .feedback.correct {
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 -10px 40px var(--color-shadow);
+}
+:root[data-look="bold"] .feedback.correct .result-mark {
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
+  background: var(--color-mark-disc);
+  color: var(--color-correct);
+  box-shadow:
+    0 0 0 3px var(--color-correct),
+    0 4px 0 3px var(--color-primary-edge);
+  font-size: 28px;
+  font-weight: 900;
+}
+:root[data-look="bold"] .feedback.correct .result-mark::after {
+  border-color: var(--color-correct);
+}
+:root[data-look="bold"] .feedback.correct .feedback-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+:root[data-look="bold"] .feedback.correct .feedback-title small {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+/* The wave is Calm's; the moment is Colorful's own. */
+:root[data-look="bold"] .feedback-wave {
+  display: none;
+}
 @media (prefers-reduced-motion: no-preference) {
-  :root[data-look="bold"] .practice-workspace .problem-content {
-    animation: colorful-problem-in 180ms var(--ease-standard) both;
+  :root[data-look="bold"] .feedback.correct .result-mark {
+    animation: colorful-slam 560ms cubic-bezier(0.2, 1.6, 0.35, 1) both;
+  }
+  /* Next, after a win, glows on and off: the way on is plain. A ring of
+     its own, so the button itself never moves under a finger. */
+  :root[data-look="bold"] .feedback.correct .next-action:not(:disabled) {
+    position: relative;
+  }
+  :root[data-look="bold"] .feedback.correct .next-action:not(:disabled)::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 20px;
+    border: 3px solid var(--color-primary);
+    pointer-events: none;
+    opacity: 0;
+    animation: colorful-breathe 1.6s ease-out 900ms infinite;
   }
 }
+@keyframes colorful-slam {
+  0% {
+    transform: scale(2.4) rotate(-25deg);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(0.85) rotate(6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.08) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+@keyframes colorful-breathe {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06, 1.25);
+  }
+}
+
+/* ── Not yet: kind, warm, still ──────────────────────────────────────── */
+:root[data-look="bold"] .feedback.incorrect {
+  background: var(--color-danger);
+  border: 2px solid
+    color-mix(in srgb, var(--color-danger-accent) 45%, var(--color-danger));
+}
+:root[data-look="bold"] .feedback.incorrect .result-mark {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  background: var(--color-mark-disc);
+  color: var(--color-danger-accent);
+  box-shadow: 0 0 0 3px var(--color-danger-accent);
+  font-size: 20px;
+}
+
+/* ── A new problem arrives: up from below, past its place, and settles ─ */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"] .practice-workspace .problem-content {
+    animation: colorful-problem-in 220ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+  }
+}
+/* Translate only: the workspace measures the problem's box as it mounts. */
 @keyframes colorful-problem-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(36px);
   }
 }
 
