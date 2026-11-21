@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-query";
 import {
   liveSnapshotResponse,
+  resolveSignalResponse,
   sessionListResponse,
   sessionReportResponse,
   startSessionResponse,
@@ -131,6 +132,71 @@ export function useStopSession(place: Place) {
       return refreshClass(client, session, place);
     },
   });
+}
+
+/** `POST …/signals/:signal/resolve`: a raised hand, seen. (A forgotten
+ * picture is resolved by resetting the student's pictures, the roster's
+ * `useResetPictures`, which the server answers for here with a 409.) The
+ * request leaves the snapshot at once on success; the stream's `signals`
+ * message says the same a moment later. */
+export function useResolveSignal(place: Place) {
+  const session = useSession();
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (signalId: string) =>
+      request(
+        `${CLASS(place)}/signals/${encodeURIComponent(signalId)}/resolve`,
+        resolveSignalResponse,
+        { token: session.token, method: "POST", body: {} },
+      ),
+    onSuccess: (_answer, signalId) =>
+      dropSignal(client, session, place, signalId),
+  });
+}
+
+/** A request answered: out of the snapshot the cache holds. */
+export function dropSignal(
+  client: QueryClient,
+  session: AuthSession,
+  place: Place,
+  signalId: string,
+) {
+  client.setQueryData<LiveSnapshot>(
+    liveKey(session, place),
+    (held) =>
+      held && {
+        ...held,
+        signals: held.signals.filter((signal) => signal.id !== signalId),
+      },
+  );
+}
+
+/**
+ * The last snapshot of a session that ended while this device watched it
+ * (by its planned end, the four-hour limit, a Stop here or elsewhere), kept
+ * so the screen can show that session, still and whole, as it ended, with
+ * the way to its report, instead of the page collapsing under the adult.
+ * Not under the class's prefix: refreshing the class never asks for it.
+ * `endedAt` is when this device learned it ended.
+ */
+export type EndedView = { snapshot: LiveSnapshot; endedAt: number };
+export const liveEndedKey = (session: AuthSession, place: Place) =>
+  qk.account(session.accountId, "school", "live-ended", place.org, place.class);
+
+/** What the snapshot held before a message and holds after it: a session
+ * that was there and is gone has ended (pure). */
+export function endedBetween(
+  before: LiveSnapshot | undefined,
+  after: LiveSnapshot | undefined,
+): EndedView | null {
+  // A new session in its place is shown live, not the old one ended.
+  if (!before?.session || !after || after.session) return null;
+  const endsAt = Date.parse(before.session.endsAt);
+  const seen = Date.parse(after.serverNow);
+  return {
+    snapshot: before,
+    endedAt: Number.isFinite(seen) ? Math.min(endsAt, seen) : endsAt,
+  };
 }
 
 /** What one stream message does to the snapshot the cache holds. Pure:

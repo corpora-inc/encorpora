@@ -32,10 +32,13 @@ export function stripFit(width: number, count: number) {
 }
 
 export type SignalActions = {
-  /** A raised hand: the adult is coming. */
-  onAcknowledge: (signal: LiveSignal) => void;
-  /** A forgotten picture: new pictures at the next sign-in. */
-  onResetPictures: (signal: LiveSignal) => void;
+  /** A raised hand: the adult is coming. Absent: this adult can't answer
+   * one, and a hand shows without its button. */
+  onAcknowledge?: (signal: LiveSignal) => void;
+  /** A forgotten picture: new pictures at the next sign-in. Absent: this
+   * adult can't reset pictures (an aide), and the request shows without its
+   * button, for the class's teacher. */
+  onResetPictures?: (signal: LiveSignal) => void;
   /** Requests whose action is on its way (its button shows the wave). */
   pending?: ReadonlySet<string>;
 };
@@ -55,10 +58,8 @@ function Request({
 }) {
   const words = SIGNAL_WORDS[signal.kind];
   const busy = actions.pending?.has(signal.id) ?? false;
-  const act = () =>
-    signal.kind === "hand"
-      ? actions.onAcknowledge(signal)
-      : actions.onResetPictures(signal);
+  const act =
+    signal.kind === "hand" ? actions.onAcknowledge : actions.onResetPictures;
   return (
     <li
       className={inSheet ? styles.sheetRow : styles.request}
@@ -75,16 +76,18 @@ function Request({
           </span>
         </span>
       </span>
-      <Button
-        variant="secondary"
-        className={styles.action}
-        aria-busy={busy || undefined}
-        disabled={busy}
-        aria-label={`${inSheet ? words.action : words.short}: ${signal.name}, ${words.what.toLowerCase()}`}
-        onClick={act}
-      >
-        <span>{inSheet ? words.action : words.short}</span>
-      </Button>
+      {act && (
+        <Button
+          variant="secondary"
+          className={styles.action}
+          aria-busy={busy || undefined}
+          disabled={busy}
+          aria-label={`${inSheet ? words.action : words.short}: ${signal.name}, ${words.what.toLowerCase()}`}
+          onClick={() => act(signal)}
+        >
+          <span>{inSheet ? words.action : words.short}</span>
+        </Button>
+      )}
     </li>
   );
 }

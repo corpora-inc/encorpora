@@ -173,6 +173,9 @@
   --grid-inline: var(--space-2);
 }
 .gridBox {
+  /* Its own scroll: the header sticks to this box's top, not under the app
+     bar as a page's tables do (a school frame sets that for its pages). */
+  --grid-sticky-top: 0px;
   flex: 1 1 auto;
   min-height: 0;
   overflow: auto;

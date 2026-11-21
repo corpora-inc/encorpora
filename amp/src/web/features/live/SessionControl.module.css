@@ -51,6 +51,24 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
+.liveWords {
+  display: inline-grid;
+}
+.liveWords > span {
+  grid-area: 1 / 1;
+}
+.live:not([data-stale]) .liveWords > span:last-child,
+.live[data-stale] .liveWords > span:first-child {
+  visibility: hidden;
+}
+.live[data-stale] {
+  background: var(--color-surface-sunken);
+  color: var(--color-muted-text);
+}
+.live[data-stale] .pulse {
+  background: var(--color-muted-text);
+  animation: none;
+}
 .pulse {
   width: 8px;
   height: 8px;
@@ -67,6 +85,43 @@
   .pulse {
     animation: none;
   }
+}
+/* Ended: the same pill's place and size, quiet, then when, then the ways
+   on at the end, where Stop was. */
+.ended {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  height: 28px;
+  padding-inline: var(--space-3);
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.endedWhen {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.endedTime {
+  font-size: var(--text-figure);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.endedActions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  margin-inline-start: auto;
 }
 .clock {
   display: flex;

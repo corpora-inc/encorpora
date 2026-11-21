@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { LiveSession } from "../../../schools/live/contracts";
 import { Button } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
@@ -51,7 +51,24 @@ export type SessionControlProps = {
   canManage: boolean;
   /** The start button's words: "Start class", "Start practice". */
   startLabel: string;
+  /** The live numbers may be old (the device is offline, or nothing has
+   * come for a while): the live mark says "Offline" in its place. */
+  stale?: boolean;
+  /** A session that ended while the adult watched, shown in the same bar:
+   * when it started and ended, and the screen's own ways on (its report,
+   * Done). Only while nothing runs. */
+  ended?: {
+    startedAt: string;
+    endedAt: number;
+    actions: ReactNode;
+  } | null;
 };
+
+const timeOfDay = (at: number) =>
+  new Date(at).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
 
 /**
  * The session's one control, a fixed bar (56 px on a phone). At rest: Start,
@@ -60,21 +77,47 @@ export type SessionControlProps = {
  * tabular figures) and Stop, which asks first in the app's own dialog.
  */
 export function SessionControl(props: SessionControlProps) {
-  const { live, canManage } = props;
+  const { live, canManage, ended } = props;
   return (
     <div
       className={styles.bar}
       data-live-control=""
-      data-state={live ? "live" : "resting"}
+      data-state={live ? "live" : ended ? "ended" : "resting"}
     >
       {live ? (
         <Running {...props} live={live} />
+      ) : ended ? (
+        <Ended {...ended} />
       ) : canManage ? (
         <Resting {...props} />
       ) : (
         <p className={styles.quiet}>No session running</p>
       )}
     </div>
+  );
+}
+
+/** A session that has ended: the mark, when, how long, and the ways on. */
+function Ended({
+  startedAt,
+  endedAt,
+  actions,
+}: NonNullable<SessionControlProps["ended"]>) {
+  const minutes = Math.max(
+    0,
+    Math.round((endedAt - Date.parse(startedAt)) / 60_000),
+  );
+  return (
+    <>
+      <span className={styles.ended}>Ended</span>
+      <span className={styles.endedWhen}>
+        <span className={styles.endedTime}>{timeOfDay(endedAt)}</span>
+        <span className={styles.detail}>
+          {minutes < 1 ? "under a minute" : `${minutes} min`}
+        </span>
+      </span>
+      <span className={styles.endedActions}>{actions}</span>
+    </>
   );
 }
 
@@ -136,6 +179,7 @@ function Running({
   onStop,
   stopping = false,
   canManage,
+  stale = false,
 }: SessionControlProps & { live: LiveSession }) {
   const [asking, setAsking] = useState(false);
   const clock = sessionClock(session, now);
@@ -144,9 +188,13 @@ function Running({
   );
   return (
     <>
-      <span className={styles.live}>
+      {/* Both words hold the mark's width, so neither moves the clock. */}
+      <span className={styles.live} data-stale={stale || undefined}>
         <span className={styles.pulse} aria-hidden="true" />
-        Live
+        <span className={styles.liveWords}>
+          <span aria-hidden={stale || undefined}>Live</span>
+          <span aria-hidden={!stale || undefined}>Offline</span>
+        </span>
       </span>
       <span
         className={styles.clock}
