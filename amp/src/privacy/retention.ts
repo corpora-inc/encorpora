@@ -1,6 +1,7 @@
 import type { Pool, PoolClient } from "pg";
 import { FamilyRepository } from "../family/repository.js";
 import { closeDueSessions } from "../schools/live/sessions.js";
+import { expireSignals } from "../schools/live/signals.js";
 import { RETENTION, RETENTION_BATCH } from "./retention-periods.js";
 
 /*
@@ -238,6 +239,24 @@ export async function purgeClassEvents(
   const clock = validClock(at);
   const closedClassSessions = await closeDueSessions(pool);
   const limit = RETENTION_BATCH.batchSize * 10;
+  // Expiry frees the partial unique key before the longer deletion window.
+  // Each batch and its live notifications commit together.
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query("SET LOCAL lock_timeout='5s'");
+      await client.query("SET LOCAL statement_timeout='30s'");
+      const expired = await expireSignals(client, at, limit);
+      await client.query("COMMIT");
+      if (expired < limit) break;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
   let expiredClassEvents = 0,
     expiredClassSignals = 0;
   for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {

@@ -352,6 +352,7 @@ import {
   generateSatNumericEntryProblem,
 } from "./sat-numeric-entry-practice";
 import { satSprDecimalAccepted } from "./sat-spr-entry";
+import { ungroupThousands } from "./thousands";
 import {
   hsStateGapTemplates,
   generateHsStateGapProblem,
@@ -757,7 +758,7 @@ export function isValidResponse(
     return normalizeStructuredWork(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
-    : normalizeAnswer(response) !== null;
+    : normalizeAnswer(ungroupThousands(response)) !== null;
 }
 export function gradeAnswer(
   problem: GeneratedProblem,
@@ -819,7 +820,7 @@ export function gradeAnswer(
     return (
       isValidResponse(problem.public, response) && response === problem.answer
     );
-  const answer = normalizeAnswer(response);
+  const answer = normalizeAnswer(ungroupThousands(response));
   if (answer !== null && answer === normalizeAnswer(problem.answer))
     return true;
   return (

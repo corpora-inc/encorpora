@@ -59,6 +59,7 @@
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "demo:terms": "tsx scripts/demo-terms.ts",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
+    "test:celebration-ui": "tsx scripts/verify-celebration-ui.ts",
     "build": "npm run build:lesson-index && npm run lint:controls && npm run lint:navigation && npm run check:document-routes && npm run tsc && vite build && npm run build:public-pathways",
     "check:document-routes": "vitest run --environment jsdom src/web/app/__tests__/document-routes.test.ts",
     "build:lesson-index": "tsx scripts/build-lesson-index.ts",

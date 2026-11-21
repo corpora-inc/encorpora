@@ -8,6 +8,7 @@ import { meOptions, queryClient } from "../lib/query";
 import { preload } from "../features/school/core-api";
 import {
   childProgressOptions,
+  familyDashboardOptions,
   familyOptions,
   familyPlacesOptions,
 } from "../features/family/api";
@@ -279,6 +280,13 @@ export function familyRoutes(root: AnyRoute) {
   const today = createRoute({
     getParentRoute: () => family,
     id: "today",
+    // The dashboard (each child's week, areas and focus) paints with the
+    // children, never after them.
+    loader: async ({ context, params }) => {
+      const { session } = context as unknown as { session: AuthSession };
+      const id = (params as { family: string }).family;
+      await preload(familyDashboardOptions(session, id));
+    },
     component: lazyRouteComponent(payHosts, "TodayPayHost"),
   });
   return [

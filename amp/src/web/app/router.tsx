@@ -111,6 +111,7 @@ import { applyRouteHead, routeHead } from "./route-head";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { externalSignInFrom } from "./external-sign-in";
 import { applyDeferredIdentity } from "../features/school/join/api";
 import { settleLegacyLayers } from "../nav/links";
 import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
@@ -336,20 +337,35 @@ const auth = lazyRouteComponent(
 async function loadAuthConfig() {
   // A failed read is the screen's own retry (SignInScreen's ConfigRetry),
   // never the route's error screen.
-  const config = await queryClient
+  return queryClient
     .ensureQueryData(authConfigOptions)
     .catch((error: unknown) => {
       console.error("Sign-in methods didn’t load", error);
       return null;
     });
-  if (!config) return null;
-  // A deployment without its own accounts signs in with its external
-  // authority: the auth screens hand straight to it.
-  if (config.mode !== "accounts") {
-    window.history.replaceState({}, "", "/");
-    await (await import("../auth")).signIn();
-  }
-  return config;
+}
+/** A deployment without its own accounts signs in with its external
+ * authority: the auth screens hand straight to it, from the address sign-in
+ * was asked for. A guard, not the loader: it runs on every navigation, and
+ * never while only preloading (a loader's preloaded result is reused, and a
+ * hover over "Sign in again" must not leave the screen). */
+async function handOffExternalSignIn({
+  preload,
+  location,
+}: {
+  preload: boolean;
+  location: { search: unknown };
+}) {
+  if (preload) return;
+  const config = await loadAuthConfig();
+  if (!config) return;
+  const from = externalSignInFrom(config.mode, {
+    preload,
+    search: (location.search ?? {}) as Record<string, unknown>,
+  });
+  if (from === null) return;
+  window.history.replaceState({}, "", from);
+  await (await import("../auth")).signIn();
 }
 const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
@@ -512,11 +528,13 @@ export const homeRouteId = () => home.id;
 async function beforeAuthEntry({
   search,
   location,
+  preload,
 }: {
   search: Record<string, unknown>;
   location: { pathname: string; searchStr: string; search: unknown };
+  preload: boolean;
 }) {
-  if (nativeRuntime) return;
+  if (nativeRuntime) return handOffExternalSignIn({ preload, location });
   notForStudents();
   // A sign-in that failed comes back with its code: kept, then one hop to
   // the clean address.
@@ -540,7 +558,10 @@ async function beforeAuthEntry({
             return null;
           });
   // The screen stays: an older link's arrival leaves its address first.
-  if (!session) return arrivalReturn(location);
+  if (!session) {
+    arrivalReturn(location);
+    return handOffExternalSignIn({ preload, location });
+  }
   // Signed in already: the sign-in gate's way back, once.
   const next = continuationUrl(search);
   // Nothing asked for: the account's own place, never `/`.
@@ -613,6 +634,7 @@ const signInStep = createRoute({
   getParentRoute: () => root,
   path: "/sign-in/$step",
   staticData: { space: "public" },
+  beforeLoad: handOffExternalSignIn,
   loader: loadAuthConfig,
   component: auth,
   params: {
@@ -625,6 +647,7 @@ const reset = createRoute({
   getParentRoute: () => root,
   path: "/reset-password",
   staticData: { space: "public" },
+  beforeLoad: handOffExternalSignIn,
   loader: loadAuthConfig,
   component: auth,
 });

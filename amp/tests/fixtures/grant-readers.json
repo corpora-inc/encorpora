@@ -42,7 +42,7 @@
   {
     "path": "scripts/dev-new-user.ts",
     "hash": "a6526e810ba3f5de6a807ae76a6504fc1072c19033f7d33bf512870b7d29266a",
-    "reason": "Development-only Vite serve middleware (never in a production build) whose generic query passthrough runs one statement: marking a new-\u2026@personas.amp.test account's email verified in a loopback database. It reads no grants or entitlements."
+    "reason": "Development-only Vite serve middleware (never in a production build) whose generic query passthrough runs one statement: marking a new-…@personas.amp.test account's email verified in a loopback database. It reads no grants or entitlements."
   },
   {
     "path": "scripts/migrate.ts",
@@ -106,6 +106,11 @@
   },
   {
     "path": "src/access-grants/repository.ts",
+    "hash": "7b768f85e644c81d6c9c243dda8f8a5dd35d949f93f7da48fd79f8325b941bdb",
+    "reason": "Parent gift sharing reads the parent's own active grant tied to the gift to find a gift still in force; it grants the first child access and never authorizes adult learning from a projection."
+  },
+  {
+    "path": "src/access-grants/repository.ts",
     "hash": "cb509eca0f5ca3990555e59f2d48cc6c14cde1eac65ec7d134f2e2a89d1864f8",
     "reason": "Gift grant INSERT selects the explicitly owned non-adult learner; it writes access rather than authorizing from an adult projection."
   },
@@ -121,8 +126,8 @@
   },
   {
     "path": "src/account/adult-access.ts",
-    "hash": "a05e5fc41cfde163aa73ee1e757f6b9ba5af9b779298221698d235426e17eacf",
-    "reason": "Central resolver: reads direct grants and live non-adult source grants; replaces every adult projection before returning current access."
+    "hash": "39b0845ff2156565e77c136ca71310e8c828c4c825e095d197bd3eb5d5b1cb1a",
+    "reason": "Central resolver: reads direct grants and live non-adult source grants, and a teacher class pilot or its district pilot (classPilotIdsSql); replaces every adult projection before returning current access."
   },
   {
     "path": "src/account/delete-account.ts",
@@ -237,7 +242,7 @@
   {
     "path": "src/funding-purchase/provision.ts",
     "hash": "f93523f4cc150345319d0f0d9cbb4200aab00a54f847ee1597e584dab13f0abd",
-    "reason": "Provisioning under the exclusive account lock revokes only this owned learner\u2019s funded-pending bridge grants; an expired invoice is further scoped to its own gift-linked grant. Paid and derived adult grants are untouched, and entitlement checks use accessGrantsFor."
+    "reason": "Provisioning under the exclusive account lock revokes only this owned learner’s funded-pending bridge grants; an expired invoice is further scoped to its own gift-linked grant. Paid and derived adult grants are untouched, and entitlement checks use accessGrantsFor."
   },
   {
     "path": "src/funding-purchase/repository.ts",
@@ -361,7 +366,7 @@
   },
   {
     "path": "src/schools/operations.ts",
-    "hash": "3b71d984cea494368d95295459340596803c07da99091c2b1d27b93b8ff10e32",
+    "hash": "f0bbcaac90bbe322604b0a45332f5f028ea6d117e1300b27837fc19b35a9138e",
     "reason": "Connection retention reads amp_people.learner_id roster records; an account-owned adult learner is separate from the staff person and is not linked there."
   },
   {
@@ -381,12 +386,12 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "3324086f50167604b289db68b501f498ea225004077fe7641e653d2b6e6801b4",
+    "hash": "1969d046075d049812bdb32a3e74351efd32c6c322bcc99886f166e1e0de471d",
     "reason": "Class practice recheck statement reads grant start and end moments of the class's student enrollments only, per pupil; it schedules a re-read and never authorizes adult learning."
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "5ac8575012222021f3cb5278f8e94bea61798ccb4e93c18b929363fc8c623df6",
+    "hash": "563bb5603e59adf6d60f6ad8db4ad956a3bc3bac96ca5ad54005de9605613a3e",
     "reason": "Class practice gate reads grants of the class's entering students only (studentInClassSql: role 'student'), never the separate teacher adult learner."
   },
   {

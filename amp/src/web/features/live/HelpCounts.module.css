@@ -1,0 +1,30 @@
+.counts {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 40px);
+  align-items: center;
+  font-variant-numeric: var(--numeric);
+}
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-on-surface);
+  font-size: var(--text-table);
+}
+/* A zero is there to read, quietly. */
+.count[data-zero] {
+  color: var(--color-subtle-text);
+}
+.count[data-zero] .glyph {
+  opacity: 0.5;
+}
+.glyph {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--color-muted-text);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

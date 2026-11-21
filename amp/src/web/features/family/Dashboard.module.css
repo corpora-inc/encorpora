@@ -1,0 +1,284 @@
+/* A family's Today as its dashboard (Today.tsx, Dashboard.tsx). One column
+   under 1024 px; from there the children take 2fr and the day's facts 1fr
+   (docs/design/ia.md, "Two columns"). No cards: blocks part by a hairline. */
+.layout {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .layout[data-side] {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+}
+.kids {
+  display: grid;
+  min-width: 0;
+}
+.kidsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-bottom: var(--space-3);
+}
+.kidsTitle {
+  margin: 0;
+}
+.side {
+  display: grid;
+  gap: var(--space-6);
+  align-content: start;
+  min-width: 0;
+}
+@media (max-width: 1023px) {
+  .side {
+    gap: var(--space-5);
+  }
+}
+
+.list,
+.heroKids {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.block {
+  display: grid;
+  min-width: 0;
+  padding-bottom: var(--space-5);
+  border-top: 1px solid var(--color-border-strong);
+}
+.block + .block {
+  padding-top: var(--space-2);
+}
+.list > [data-family-self] {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+/* A child's week on their row. */
+.facts {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+.figures {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 359px) {
+  .facts {
+    gap: var(--space-2);
+  }
+}
+.figures strong {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+
+/* Access and its link, one quiet line under the row. */
+.access {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-3);
+  min-height: 32px;
+  margin: calc(-1 * var(--space-1)) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.access > a {
+  margin-block: calc(-1 * var(--space-2));
+}
+
+.child {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  padding-top: var(--space-2);
+}
+.notYet {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.skill {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+}
+.skill:hover {
+  color: var(--color-primary);
+  text-decoration-color: currentColor;
+}
+
+/* An area's skills not asked yet: a quiet link to the sheet. */
+.notAsked {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  margin-inline-end: calc(-1 * var(--space-2));
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.notAsked:hover {
+  background: var(--color-surface-hover);
+}
+.notAsked:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.notAsked svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.allAsked {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  white-space: nowrap;
+}
+
+.failed {
+  margin: 0 0 var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+
+/* The sheet of skills not asked yet. */
+.sheet {
+  display: grid;
+  gap: var(--space-3);
+}
+.skills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skillRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 56px;
+  border-top: 1px solid var(--color-border);
+}
+.sheetNote {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+
+/* How the children get in: the QR beside its link and the code. */
+.getIn {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.getIn h2 {
+  margin: 0;
+}
+.getInBody {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+.qr {
+  display: block;
+  width: 112px;
+  height: 112px;
+  border-radius: var(--radius-small);
+}
+.getInWays {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+  min-width: 0;
+  font-size: var(--text-table);
+}
+.getInWays p {
+  margin: 0;
+}
+.getInLead {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.4;
+}
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-2);
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.code {
+  color: var(--color-muted-text);
+}
+.code strong {
+  color: var(--color-on-surface);
+  font-variant-numeric: var(--numeric);
+  letter-spacing: 0.04em;
+}
+.moreWays {
+  margin-inline-start: calc(-1 * var(--space-3));
+}
+
+/* Day 0: one centred column (ia.md rule 7). */
+.hero {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--width-form);
+  margin: var(--space-5) auto 0;
+  text-align: center;
+}
+.hero h2 {
+  margin: 0;
+}
+.heroScale {
+  display: block;
+  width: 100%;
+  height: 44px;
+}
+.heroLead {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.hero .heroKids {
+  width: 100%;
+  margin-top: var(--space-2);
+  text-align: start;
+}
+.heroKids > li + li {
+  border-top: 1px solid var(--color-border);
+}
+.hero > .getIn,
+.hero > div {
+  width: 100%;
+  margin-top: var(--space-5);
+  text-align: start;
+}

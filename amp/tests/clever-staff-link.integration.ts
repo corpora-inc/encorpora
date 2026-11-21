@@ -83,13 +83,19 @@ test(
           courses: [],
           terms: [],
         };
+        // Each call is a new complete roster, read as a full snapshot.
         const sync = (source = snapshot) =>
-          syncCleverConnection(db, connection.id, {
-            districtToken: async () => "fixture",
-            snapshot: async () => source,
-            latestEvent: async () => null,
-            events: async () => [],
-          });
+          syncCleverConnection(
+            db,
+            connection.id,
+            {
+              districtToken: async () => "fixture",
+              snapshot: async () => source,
+              latestEvent: async () => null,
+              events: async () => [],
+            },
+            { mode: "full" },
+          );
         const prove = async (
           userId: string,
           account = accountId,
