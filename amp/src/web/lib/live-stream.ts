@@ -12,6 +12,15 @@ import { isRetired } from "./session-generation";
  * snapshot every `pollMs` instead and tries the stream again after
  * `retryStreamMs`. A hidden page holds no stream and polls nothing; showing
  * it again starts a fresh stream, whose first message is the whole state.
+ *
+ * Leaving the page lets go of every read first. A navigation cuts what is
+ * still in flight, and WebKit reports each cut fetch as a console error
+ * ("… due to access control checks"); a fetch aborted here is not reported.
+ * WebKit cuts fetches right after `beforeunload` and before `pagehide`, so
+ * the stream, the poll and the screen's own snapshot read (`onLeave`) all
+ * stop on `beforeunload`. A page that stays after it (a download, a leave
+ * that didn't happen) reads again after `leaveGraceMs`; a page restored from
+ * the back-forward cache reads again on `pageshow`.
  */
 
 export type LiveStreamTiming = {
@@ -28,6 +37,8 @@ export type LiveStreamTiming = {
   minLifeMs: number;
   /** After this many failures in a row, poll until the next retry. */
   failuresBeforePolling: number;
+  /** After `beforeunload`, a page still here this long reads again. */
+  leaveGraceMs: number;
 };
 export const LIVE_STREAM_TIMING: LiveStreamTiming = {
   watchdogMs: 25_000,
@@ -36,6 +47,7 @@ export const LIVE_STREAM_TIMING: LiveStreamTiming = {
   backoffMs: (failures) => Math.min(30_000, 1_000 * 2 ** (failures - 1)),
   minLifeMs: 5_000,
   failuresBeforePolling: 3,
+  leaveGraceMs: 3_000,
 };
 
 export type LiveStreamMode =
@@ -51,6 +63,9 @@ export type LiveStreamOptions = {
   /** Reads the same state the plain way (the snapshot GET): the fallback.
    * Rejects on failure; it is logged by whoever reads. */
   poll: () => Promise<unknown>;
+  /** Stops the screen's own snapshot read if it is in flight (the query
+   * behind `poll`): called as the page is left, before the browser cuts it. */
+  onLeave?: () => void;
   /** The fallback polls this often (the student's state changes rarely). */
   timing?: Partial<LiveStreamTiming>;
   onMode?: (mode: LiveStreamMode) => void;
@@ -60,6 +75,7 @@ export type LiveStreamOptions = {
     Document,
     "visibilityState" | "addEventListener" | "removeEventListener"
   >;
+  window?: Pick<Window, "addEventListener" | "removeEventListener">;
 };
 
 export type LiveStream = { close(): void; readonly mode: LiveStreamMode };
@@ -112,6 +128,8 @@ export class EventStreamParser {
 export function openLiveStream(options: LiveStreamOptions): LiveStream {
   const timing = { ...LIVE_STREAM_TIMING, ...options.timing };
   const doc = options.document ?? document;
+  const win =
+    options.window ?? (typeof window === "undefined" ? undefined : window);
   const send = options.fetch ?? requestFetch;
   let mode: LiveStreamMode = "connecting";
   let controller: AbortController | null = null;
@@ -119,8 +137,11 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
   let reconnect: ReturnType<typeof setTimeout> | undefined;
   let pollTimer: ReturnType<typeof setTimeout> | undefined;
   let retry: ReturnType<typeof setTimeout> | undefined;
+  let stay: ReturnType<typeof setTimeout> | undefined;
   /** Polling instead of streaming, until a retried stream delivers bytes. */
   let polling = false;
+  /** Each polling run: a poll that settles after its run ended does nothing. */
+  let pollRun = 0;
   let pollFailures = 0;
   let failures = 0;
   const setMode = (next: LiveStreamMode) => {
@@ -128,7 +149,10 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     mode = next;
     options.onMode?.(next);
   };
-  const hidden = () => doc.visibilityState === "hidden";
+  /** `beforeunload` or `pagehide` came, and the page hasn't come back. */
+  let leaving = false;
+  /** Hidden, or being left: hold nothing. */
+  const hidden = () => doc.visibilityState === "hidden" || leaving;
   /** Read fresh after every await: `close()` can run meanwhile. */
   const closed = () => mode === "closed";
 
@@ -140,29 +164,35 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
   }
   function stopPolling() {
     polling = false;
+    pollRun++;
     clearTimeout(pollTimer);
     clearTimeout(retry);
   }
 
   function pollNow() {
     if (!polling || mode === "closed" || hidden()) return;
+    const run = pollRun;
+    // A poll that settles after its run ended (hidden, left, streaming
+    // again, closed) neither logs nor schedules another.
+    const current = () => run === pollRun && polling && !hidden();
     options.poll().then(
       () => {
+        if (!current()) return;
         pollFailures = 0;
-        if (polling) pollTimer = setTimeout(pollNow, timing.pollMs);
+        pollTimer = setTimeout(pollNow, timing.pollMs);
       },
       (error: unknown) => {
+        if (!current()) return;
         // The read logs its own failure; this says why polling slows.
         pollFailures++;
         console.warn("AMP: the live view couldn’t refresh; trying again", {
           path: options.path,
           error,
         });
-        if (polling)
-          pollTimer = setTimeout(
-            pollNow,
-            Math.min(60_000, timing.pollMs * 2 ** pollFailures),
-          );
+        pollTimer = setTimeout(
+          pollNow,
+          Math.min(60_000, timing.pollMs * 2 ** pollFailures),
+        );
       },
     );
   }
@@ -303,16 +333,15 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     }
   }
 
-  function onVisibility() {
-    if (mode === "closed") return;
-    if (hidden()) {
-      const wasPolling = polling;
-      stopStream();
-      stopPolling();
-      polling = wasPolling;
-      setMode("paused");
-      return;
-    }
+  /** Hold nothing, and remember whether to poll or stream when shown. */
+  function pause() {
+    const wasPolling = polling;
+    stopStream();
+    stopPolling();
+    polling = wasPolling;
+    setMode("paused");
+  }
+  function resume() {
     failures = 0;
     if (polling) {
       polling = false;
@@ -320,15 +349,51 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     } else void connect();
   }
 
+  function onVisibility() {
+    if (mode === "closed") return;
+    if (hidden()) pause();
+    else if (mode === "paused") resume();
+  }
+
+  /** The page is being left (`beforeunload`) or put away (`pagehide`): let
+   * go of every read before the browser cuts it. */
+  function onLeave(event: Event) {
+    if (mode === "closed") return;
+    clearTimeout(stay);
+    if (!leaving) {
+      leaving = true;
+      pause();
+      options.onLeave?.();
+    }
+    // Still here after a `beforeunload`: nothing left after all.
+    if (event.type === "beforeunload")
+      stay = setTimeout(onReturn, timing.leaveGraceMs);
+  }
+  function onReturn() {
+    if (mode === "closed" || !leaving) return;
+    leaving = false;
+    if (doc.visibilityState !== "hidden") resume();
+  }
+  function onPageShow(event: Event) {
+    if ((event as PageTransitionEvent).persisted) onReturn();
+  }
+
   function close() {
     if (mode === "closed") return;
     stopStream();
     stopPolling();
+    clearTimeout(stay);
     setMode("closed");
     doc.removeEventListener("visibilitychange", onVisibility);
+    win?.removeEventListener("beforeunload", onLeave);
+    win?.removeEventListener("pagehide", onLeave);
+    win?.removeEventListener("pageshow", onPageShow);
   }
 
   doc.addEventListener("visibilitychange", onVisibility);
+  win?.addEventListener("beforeunload", onLeave);
+  win?.addEventListener("pagehide", onLeave);
+  win?.addEventListener("pageshow", onPageShow);
   if (hidden()) setMode("paused");
   else void connect();
   return {

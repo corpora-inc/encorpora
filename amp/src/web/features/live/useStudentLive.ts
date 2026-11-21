@@ -35,6 +35,7 @@ export function useStudentLive() {
           applyStudentMessage(held, event, data),
         ),
       poll: () => client.fetchQuery({ ...options, staleTime: 0 }),
+      onLeave: () => void client.cancelQueries({ queryKey: options.queryKey }),
       timing: { pollMs: STUDENT_POLL_MS },
     });
     return () => stream.close();

@@ -63,6 +63,7 @@ export function useLiveClass(place: Place) {
             return snapshot;
           });
       },
+      onLeave: () => void client.cancelQueries({ queryKey: options.queryKey }),
     });
     return () => stream.close();
   }, [client, session, org, classId]);
