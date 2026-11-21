@@ -43,7 +43,7 @@ const CLASS = ({ class: id }: Place) => `/school/classes/${id}`;
  * refreshes the map, the gradebook and the roster alike. */
 /** A class's reads, and one student's record, under the account's school
  * keys (lib/keys.ts). */
-const classKey = (session: Session, place: Place, ...rest: unknown[]) =>
+export const classKey = (session: Session, place: Place, ...rest: unknown[]) =>
   qk.account(
     session?.accountId ?? null,
     "school",

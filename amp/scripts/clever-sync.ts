@@ -32,20 +32,22 @@ export async function cleverSyncCommand(
   try {
     if (command === "bind") {
       const [districtId, tenantId, events] = rest;
+      // Events are on by default. `no-events` is the operator opt-out; it
+      // survives later self-serve reconnects. `events` turns them back on.
       if (
         !districtId ||
         !tenantId ||
-        (events && events !== "events") ||
+        (events && events !== "events" && events !== "no-events") ||
         rest.length > 3
       )
         throw new Error(
-          "Usage: clever-sync.ts bind DISTRICT_ID TENANT_ID [events]",
+          "Usage: clever-sync.ts bind DISTRICT_ID TENANT_ID [events|no-events]",
         );
       return await registerCleverConnection(pool, {
         environment,
         districtId,
         tenantId,
-        ...(events === "events" ? { eventsEnabled: true } : {}),
+        ...(events ? { eventsEnabled: events === "events" } : {}),
       });
     }
     if (

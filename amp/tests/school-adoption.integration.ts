@@ -964,12 +964,17 @@ test(
           const removed = structuredClone(snapshot);
           removed.users = removed.users.filter((u) => u.id !== studentId);
           removed.sections[0]!.students = [];
-          await syncCleverConnection(db!, connection.id, {
-            districtToken: async () => "not-persisted",
-            latestEvent: async () => null,
-            events: async () => [],
-            snapshot: async () => removed,
-          });
+          await syncCleverConnection(
+            db!,
+            connection.id,
+            {
+              districtToken: async () => "not-persisted",
+              latestEvent: async () => null,
+              events: async () => [],
+              snapshot: async () => removed,
+            },
+            { mode: "full" },
+          );
           assert.equal(
             (
               await db!.query(

@@ -1,0 +1,74 @@
+/* A status mark (StatusMark.tsx). Colors come from the theme's accent roles,
+   so light and dark each keep their contrast; the shapes differ too. */
+.mark {
+  --mark: var(--color-on-surface);
+  flex: none;
+  display: block;
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+}
+.mark[data-size="large"] {
+  width: 28px;
+  height: 28px;
+}
+.mark[data-status="working"] {
+  --mark: var(--color-primary);
+}
+.mark[data-status="flying"] {
+  --mark: var(--color-success-accent);
+}
+.mark[data-status="struggling"] {
+  --mark: var(--color-danger-accent);
+}
+.mark[data-status="idle"] {
+  --mark: var(--color-warning-accent);
+}
+.mark[data-status="not_signed_in"] {
+  --mark: var(--color-border-strong);
+}
+.fill,
+.dot {
+  fill: var(--mark);
+}
+.glyph {
+  fill: none;
+  stroke: var(--color-surface);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dot {
+  fill: var(--color-surface);
+}
+.ring,
+.dashed {
+  fill: none;
+  stroke: var(--mark);
+  stroke-width: 2.5;
+}
+.dashed {
+  stroke-width: 2;
+  stroke-dasharray: 3.2 2.9;
+}
+.pause {
+  fill: none;
+  stroke: var(--mark);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.changed {
+  transform-origin: 12px 12px;
+  animation: settle 320ms var(--ease-standard);
+}
+@keyframes settle {
+  from {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .changed {
+    animation: none;
+  }
+}

@@ -279,8 +279,10 @@ const day = (n: 1 | 2 | 3): Snapshot => {
         district: D,
         name: "This year",
         start_date: iso(-60),
-        // Day 3: the term ends while Clever still shares its section.
-        end_date: n === 3 ? iso(-1) : iso(200),
+        // Day 3: the term ends while Clever still shares its section. Two
+        // days back, not one: the class's calendar is the school's local date,
+        // and "yesterday" in UTC is still today there for hours of every day.
+        end_date: n === 3 ? iso(-2) : iso(200),
       },
       {
         id: FUTURE,

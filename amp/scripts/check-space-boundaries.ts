@@ -49,6 +49,9 @@ export const SHARED = [
   // A learner's row, week, areas, focus and the skill key: the family's
   // dashboard and a class's live roster compose the same parts.
   /^features\/learners\//,
+  // The live session's parts (round 2026-11-20, lane L): a class's Today
+  // and a family's Today compose them, words and actions arriving as props.
+  /^features\/live\//,
 ];
 
 /** Composition layers a shared module never reaches, by path from src/web. */

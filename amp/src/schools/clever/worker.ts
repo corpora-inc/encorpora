@@ -48,7 +48,8 @@ export async function runDueCleverSync(pool: Pool, id: string, client: Client) {
       await db.query(
         `SELECT tenant_id,sync_paused,clock_timestamp()::text AS started_at FROM amp_clever_connections
       WHERE id=$1 AND status='active' AND (NOT sync_paused OR sync_requested_at IS NOT NULL) AND (next_attempt_at IS NULL OR next_attempt_at<=now()) AND (sync_requested_at IS NOT NULL OR last_sync_at IS NULL
-       OR last_sync_at<now()-CASE WHEN events_enabled THEN interval '5 minutes' ELSE interval '1 day' END)`,
+       OR last_sync_at<now()-CASE WHEN events_enabled AND events_unavailable_at IS NULL
+         THEN interval '5 minutes' ELSE interval '1 day' END)`,
         [id],
       )
     ).rows[0];
