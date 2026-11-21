@@ -49,10 +49,12 @@ describe("resolveCast", () => {
       expect(() => resolveCast(play, { learner })).toThrow(/not approved for the learner/);
     }
     expect(() => resolveCast(play, { teacher: "champ" })).toThrow(/not approved for the teacher/);
+    expect(() => resolveCast(play, { teacher: "sparkles" })).toThrow(/not approved for the teacher/);
+    expect(resolveCast(play, { learner: "sparkles" }).roles.map((r) => [r.name, r.voice?.id, r.voice?.tag])[1]).toEqual(["Sparkles", "tapn1QwocNXk3viVSowa", undefined]);
     expect(() => resolveCast(flat, { narrator: "champ" })).toThrow(/not approved for the narrator/);
     expect(() => approvedVoice("someone", "x")).toThrow(/not an approved voice/);
     expect(() => approvedVoice("constructor", "x")).toThrow(/not an approved voice/);
-    expect(Object.keys(APPROVED)).toEqual([NARRATOR_ID, "J3Ei0Lj6fAobhIqY5ySH", "SYXbTJsLE7zmSjr1DchT", "house-ellis", "house-hazel", "house-remy", "house-rowan", "house-wren", "house-pip"]);
+    expect(Object.keys(APPROVED)).toEqual([NARRATOR_ID, "J3Ei0Lj6fAobhIqY5ySH", "SYXbTJsLE7zmSjr1DchT", "tapn1QwocNXk3viVSowa", "house-ellis", "house-hazel", "house-remy", "house-rowan", "house-wren", "house-pip"]);
   });
   it("rejects people and voice bindings in the screenplay", () => {
     expect(scriptSchema.safeParse({ ...play, cast: { teacher: { voice: "paul" }, learner: {} } }).success).toBe(false);

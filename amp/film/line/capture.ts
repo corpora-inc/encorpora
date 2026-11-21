@@ -21,7 +21,7 @@ const base = new URL(values.url);
 if (!['127.0.0.1', 'localhost', '[::1]'].includes(base.hostname)) throw new Error("Capture requires the existing local review server");
 const browser = await secureChromium(rawChromium).launch();
 const voices: Record<string, string> = {
-  XescS24CsOySAkKrLAO3: 'Madeline', J3Ei0Lj6fAobhIqY5ySH: 'Paul', SYXbTJsLE7zmSjr1DchT: 'Champ',
+  XescS24CsOySAkKrLAO3: 'Madeline', J3Ei0Lj6fAobhIqY5ySH: 'Paul', SYXbTJsLE7zmSjr1DchT: 'Champ', tapn1QwocNXk3viVSowa: 'Sparkles',
   'house-rowan': 'Rowan', 'house-wren': 'Wren', 'house-pip': 'Pip',
   'house-ellis': 'Ellis', 'house-hazel': 'Hazel', 'house-remy': 'Remy',
 };
