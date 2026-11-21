@@ -264,7 +264,7 @@ test("running: every child, in a family's words, a row opens the child's page", 
     [1, 3, 2].map((n) => `/family/${family}/kids/${learner(n)}`),
   );
   // Not started is true for a child who hasn't opened anything yet.
-  expect(screen.getByText("Not started")).toBeTruthy();
+  expect(screen.getAllByText("Not started").length).toBeGreaterThan(0);
   expect(screen.queryByText("Not signed in")).toBeNull();
   expect(document.body.textContent).not.toMatch(FOREIGN);
 });

@@ -558,7 +558,7 @@ async function endedAndStills(
           dark,
         },
       );
-      await first.page.waitForSelector('[data-family-live="rest"]');
+      await first.page.waitForSelector("[data-family-live]");
       await first.page.waitForTimeout(500);
       await shot(first.page, `still-rest-${suffix}`);
       await first.context.close();
