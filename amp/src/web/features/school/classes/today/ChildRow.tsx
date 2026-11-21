@@ -1,5 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { practiceMinutes } from "../../../../lib/practice-minutes";
+import {
+  lastPracticed,
+  QUIET_WEEK,
+  weekFigure,
+} from "../../../learners/week-words";
+// Moved to features/learners; kept here for the screens not yet moved.
+export { lastPracticed, QUIET_WEEK, weekFigure };
 import type { SignedInMe } from "../../../../../account/contracts";
 import type { TodayStudentResource } from "../../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../../ui/Button";
@@ -7,43 +13,6 @@ import styles from "./Today.module.css";
 import { PayLink } from "../../../pay/link";
 
 type Learner = SignedInMe["learners"][number];
-const DAY = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  timeZone: "UTC",
-});
-const DAY_MS = 86_400_000;
-const count = (n: number, one: string) => `${n} ${n === 1 ? one : `${one}s`}`;
-
-/** "Today", "Yesterday", or the day: when they last practiced. */
-export function lastPracticed(day: string, today: string) {
-  const ago = Math.round(
-    (Date.parse(`${today}T00:00:00Z`) - Date.parse(`${day}T00:00:00Z`)) /
-      DAY_MS,
-  );
-  if (ago <= 0) return "Today";
-  if (ago === 1) return "Yesterday";
-  return DAY.format(new Date(`${day}T12:00:00Z`));
-}
-
-/** A practiced child's week with nothing in it yet: one quiet line, never
- * "None" (the same words as a family's Today and a child's page). */
-export const QUIET_WEEK = "No practice yet this week";
-
-/** A week's figure for a child who has practiced before: minutes over
- * problems, or null for a week with nothing in it yet (QUIET_WEEK). */
-export function weekFigure(minutes: number, problems: number) {
-  const value = practiceMinutes(minutes, problems);
-  if (!value) return null;
-  return {
-    value,
-    label:
-      minutes > 0 || problems > 0
-        ? `${count(problems, "problem")} this week`
-        : "this week",
-  };
-}
-
 /** One value over what it counts. */
 function Fact({ value, label }: { value: string; label: string }) {
   return (
