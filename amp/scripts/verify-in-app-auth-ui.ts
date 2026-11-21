@@ -519,6 +519,8 @@ try {
         const webauthn = await page.evaluate(
           () => typeof PublicKeyCredential === "function",
         );
+        // Chromium always has it: the passkey-first branch is never skipped.
+        if (engine === "chromium") assert.ok(webauthn, `${name}: no WebAuthn`);
         if (webauthn) {
           await page
             .getByRole("button", {
