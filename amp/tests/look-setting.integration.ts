@@ -310,6 +310,89 @@ test(
     );
 
     await t.test(
+      "a teacher locks the class's look; an org lock still wins",
+      async () => {
+        const read = (
+          await get(`/api/v1/school/classes/${period.id}/experience`, teacher)
+        ).json();
+        assert.deepEqual(read.lockable, ["look"]);
+        assert.equal(read.canLock, false);
+        const locked = await post(
+          `/api/v1/school/classes/${period.id}/experience`,
+          teacher,
+          {
+            values: { look: "calm" },
+            locks: { look: true },
+          },
+        );
+        assert.equal(locked.statusCode, 200, locked.body);
+        assert.equal(locked.json().settings.look.lockedBy.name, "Grade 5 Math");
+        // A teacher can lock only the look.
+        const other = await post(
+          `/api/v1/school/classes/${period.id}/experience`,
+          teacher,
+          {
+            locks: { levels: true },
+          },
+        );
+        assert.equal(other.statusCode, 400, other.body);
+        // Every student in the class: calm, held by the class, whatever they chose.
+        for (const student of [ada, bo]) {
+          const state = await stateOf(student.learnerId, student.token);
+          assert.deepEqual(
+            [
+              state.effectiveLook,
+              state.lookLocked,
+              (state as { lookLockedBy?: string }).lookLockedBy,
+            ],
+            ["calm", true, "class"],
+          );
+          assert.equal(
+            (await choose(student.learnerId, student.token, "bold")).statusCode,
+            409,
+          );
+        }
+        // The school locks bold above it: the school's lock wins.
+        const above = await writeOrg(school.id, districtAdmin, {
+          values: { look: "bold" },
+          locks: { look: true },
+        });
+        assert.equal(above.statusCode, 200, above.body);
+        assert.equal(
+          (await stateOf(ada.learnerId, ada.token)).effectiveLook,
+          "bold",
+        );
+        const refused = await post(
+          `/api/v1/school/classes/${period.id}/experience`,
+          teacher,
+          {
+            locks: { look: false },
+          },
+        );
+        assert.equal(refused.statusCode, 409);
+        await writeOrg(school.id, districtAdmin, { locks: { look: false } });
+        // The class's own lock holds again, then the teacher frees it.
+        assert.equal(
+          (await stateOf(bo.learnerId, bo.token)).effectiveLook,
+          "calm",
+        );
+        const freed = await post(
+          `/api/v1/school/classes/${period.id}/experience`,
+          teacher,
+          {
+            locks: { look: false },
+          },
+        );
+        assert.equal(freed.statusCode, 200, freed.body);
+        assert.equal((await stateOf(bo.learnerId, bo.token)).lookLocked, false);
+        assert.equal(
+          (await choose(bo.learnerId, bo.token, "bold")).statusCode,
+          200,
+        );
+      },
+    );
+
+    await t.test(
       "an attempt with and without look saves; the stored outcome carries it",
       async () => {
         const path = `/api/v1/learners/${ada.learnerId}`;

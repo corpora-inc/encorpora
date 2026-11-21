@@ -74,6 +74,7 @@ export const schoolActions = [
   // starting and stopping a session.
   "session.read",
   "session.manage",
+  "signal.resolve",
 ] as const;
 export type OrgKind = (typeof orgKinds)[number];
 export type OrgRole = (typeof orgRoles)[number];

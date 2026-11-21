@@ -33,6 +33,10 @@ import {
   defineLiveStreamRoutes,
   registerStudentLiveRoutes,
 } from "./live/stream-routes.js";
+import {
+  defineSignalRoutes,
+  registerStudentSignalRoutes,
+} from "./live/signal-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
@@ -298,6 +302,7 @@ export async function registerSchoolRoutes(
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
     registerJoinRoutes(scope, repository, services.oidc);
+    registerStudentSignalRoutes(scope, repository);
     registerBuyerHandoff(scope, options.pool);
     registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
@@ -617,3 +622,4 @@ defineShareRoutes(defineSchoolRoute);
 defineDemoRoutes(defineSchoolRoute);
 defineLiveRoutes(defineSchoolRoute);
 defineLiveStreamRoutes(defineSchoolRoute);
+defineSignalRoutes(defineSchoolRoute);
