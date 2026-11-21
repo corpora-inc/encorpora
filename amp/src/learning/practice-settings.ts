@@ -12,6 +12,9 @@ export const practiceSettingsSchema = z.object({
   /** How practice looks for this learner (their own or a grown-up's
    * choice). Null follows the class, then Calm (`resolveLook`). */
   look: lookSchema.nullable().default(null),
+  /** A grown-up holds `look` for the child: the child's own sessions can't
+   * change it (a parent's can). Needs a look to hold; locking sets one. */
+  lookAdultLock: z.boolean().default(false),
   strandStarts: z
     .record(
       z.string(),
@@ -30,6 +33,7 @@ export const defaultPracticeSettings = (): PracticeSettings => ({
   focusSkillId: null,
   gradeLevelShown: true,
   look: null,
+  lookAdultLock: false,
   strandStarts: {},
 });
 const identity = {
@@ -64,6 +68,9 @@ export const practiceChangeSchema = z.discriminatedUnion("kind", [
     })
     .strict(),
   z
+    .object({ ...identity, kind: z.literal("lookLock"), locked: z.boolean() })
+    .strict(),
+  z
     .object({
       ...identity,
       kind: z.literal("focus"),
@@ -78,5 +85,7 @@ export type PracticeChange = z.infer<typeof practiceChangeSchema>;
 export const practiceStateSchema = practiceSettingsSchema.extend({
   effectiveLook: lookSchema,
   lookLocked: z.boolean(),
+  /** Who holds it: the class (or school), or a grown-up. */
+  lookLockedBy: z.enum(["class", "adult"]).nullable().default(null),
 });
 export type PracticeState = z.infer<typeof practiceStateSchema>;

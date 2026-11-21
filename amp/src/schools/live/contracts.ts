@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { joinPictureSchema } from "../contracts.js";
 
 /* Live class sessions (#2465): what the snapshot, the session routes, the
    stream (L2), the cockpit components (L3), signals (L4) and the session
@@ -36,6 +37,52 @@ export const signalResolutions = [
 export type SignalResolution = (typeof signalResolutions)[number];
 /** An open signal nobody resolved stops showing after this long. */
 export const SIGNAL_OPEN_MS = 30 * 60_000;
+
+/** Student writes accept only a hand; identity comes from the student token. */
+export const studentSignalBody = z.strictObject({ kind: z.literal("hand") });
+export type StudentSignalBody = z.infer<typeof studentSignalBody>;
+export const forgotPictureBody = joinPictureSchema.pick({
+  code: true,
+  personId: true,
+});
+export const forgotPictureQuery = forgotPictureBody;
+export type ForgotPictureBody = z.infer<typeof forgotPictureBody>;
+export type ForgotPictureQuery = z.infer<typeof forgotPictureQuery>;
+export const raiseForgotPictureResponse = z.object({
+  state: z.literal("waiting"),
+});
+export type RaiseForgotPictureResponse = z.infer<
+  typeof raiseForgotPictureResponse
+>;
+export const forgotPictureResponse = z.object({
+  state: z.enum(["waiting", "reset", "none"]),
+});
+export type ForgotPictureResponse = z.infer<typeof forgotPictureResponse>;
+
+/** Own requests and a resolved hand. Names and adult identity are not needed. */
+export const studentSignalResource = z.object({
+  id,
+  classId: id,
+  personId: id,
+  kind: z.enum(signalKinds),
+  createdAt: instant,
+  resolvedAt: instant.nullable(),
+  resolution: z.enum(signalResolutions).nullable(),
+});
+export type StudentSignal = z.infer<typeof studentSignalResource>;
+export const studentSignalsResponse = z.object({
+  signals: z.array(studentSignalResource),
+});
+export type StudentSignalsResponse = z.infer<typeof studentSignalsResponse>;
+export const resolveSignalBody = z
+  .strictObject({})
+  .nullish()
+  .transform((body) => body ?? {});
+export type ResolveSignalBody = z.input<typeof resolveSignalBody>;
+export const resolveSignalResponse = z.object({
+  signal: studentSignalResource,
+});
+export type ResolveSignalResponse = z.infer<typeof resolveSignalResponse>;
 
 /** What an outbox row says changed (`amp_class_events.kind`). */
 export const classEventKinds = [

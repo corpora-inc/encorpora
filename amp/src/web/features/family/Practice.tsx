@@ -256,7 +256,7 @@ export function ChildPracticeSettings({
       {!settings.isError && (
         <div className={styles.setting} data-child-look="">
           <div className={styles.settingText} style={{ gridColumn: "1 / -1" }}>
-            <LookSetting scope={scope} who="the class" flush />
+            <LookSetting scope={scope} flush adult />
           </div>
         </div>
       )}
