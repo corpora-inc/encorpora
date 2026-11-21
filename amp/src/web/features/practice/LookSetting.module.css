@@ -1,0 +1,26 @@
+.look {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-2) var(--space-1);
+  min-width: 0;
+}
+.flush {
+  padding-inline: 0;
+}
+/* Always a line tall, so a lock appearing or clearing moves nothing. */
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 1.35em;
+  color: var(--color-on-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.why {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 400;
+}

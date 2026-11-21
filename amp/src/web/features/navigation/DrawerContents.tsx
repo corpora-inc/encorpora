@@ -186,6 +186,12 @@ export default function DrawerContents({
   // same switches for everyone (practice/FeedbackPreferences.tsx).
   const learning = kind === "me" || kind === "student";
   const family = kind === "family";
+  // The learner whose menu this is, when the space names one; the look
+  // setting falls back to the learner on screen.
+  const spaceLearner =
+    space?.space === "student" || space?.space === "me"
+      ? (space.learner?.id ?? null)
+      : null;
   return (
     <>
       {(view.error || view.identityError) && (
@@ -336,7 +342,7 @@ export default function DrawerContents({
         {!learning && !family && (
           <div ref={setDrawerSettings} data-drawer-settings />
         )}
-        <FeedbackPreferences />
+        <FeedbackPreferences learning={learning} learnerId={spaceLearner} />
       </div>
     </>
   );

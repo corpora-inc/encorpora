@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { queryOptions } from "@tanstack/react-query";
 import {
-  practiceSettingsSchema,
+  practiceStateSchema,
   type PracticeChange,
 } from "../../../learning/practice-settings";
 import { request } from "../../lib/api";
@@ -25,7 +25,7 @@ export const practiceSettingsOptions = (scope: PracticeScope) =>
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,
-        practiceSettingsSchema,
+        practiceStateSchema,
         { token: scope.token, signal },
       ),
     staleTime: 0,
@@ -74,7 +74,7 @@ export function usePracticeAdjustment(scope: PracticeScope) {
     try {
       const result = await request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,
-        practiceSettingsSchema,
+        practiceStateSchema,
         { token: scope.token, body: saved.change },
       );
       if (!active()) return null;

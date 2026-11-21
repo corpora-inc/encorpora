@@ -112,13 +112,14 @@ test("a write to a key locked above is rejected; unlocked keys go through", () =
   assert.doesNotThrow(() => assertSettingsWritable([], { levels: "shown" }));
 });
 
-test("the schema holds the four settings, a weekly target, and nothing else", () => {
+test("the schema holds the five settings, a weekly target, and nothing else", () => {
   assert.equal(
     schoolSettingsSchema.safeParse({
       levels: "hidden",
       standings: "off",
       measure: "growth",
       deviceMode: "shared",
+      look: "calm",
     }).success,
     true,
   );
@@ -128,6 +129,7 @@ test("the schema holds the four settings, a weekly target, and nothing else", ()
       standings: "off",
       measure: "growth",
       deviceMode: "shared",
+      look: "calm",
       gradingScale: "curve",
     }).success,
     false,
