@@ -18,6 +18,10 @@ POLICY = {
 # These directories contain application screens/providers, not the shared
 # mathematical figures imported by publication rendering on the server.
 APP_UI = ('amp/src/web/app/', 'amp/src/web/features/')
+# Browser guards too long to run in one job (every person at both widths):
+# the deep-checks matrix splits them by person group and width, so a change to
+# one selects that matrix, never a single lane that runs it whole.
+SHARDED_BROWSER = ('amp/scripts/verify-no-flash-ui.ts', 'amp/scripts/no-flash-judge.ts')
 NATIVE = ('amp/mobile/', 'amp/src/web/native-', 'amp/src/web/Native',
           'amp/scripts/verify-native-session.')
 # Independent exact math oracles. They are Python, so no runtime, build or
@@ -243,6 +247,10 @@ def plan(paths, root=ROOT, full=False, quick=False):
         if path in CONTENT_TESTS or path == 'amp/tests/independent-review.test.ts':
             result.update(content=True, typecheck=True)
             reasons.append('Content validation entrypoint')
+            continue
+        if path in SHARDED_BROWSER:
+            result.update(typecheck=True, browser=True)
+            reasons.append('Sharded browser guard')
             continue
         if path in entries and (root / path).is_file() and not referenced_entry(path, root):
             result['browser_scripts'].append(relative)

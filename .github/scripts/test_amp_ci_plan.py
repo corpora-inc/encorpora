@@ -26,6 +26,13 @@ def test_unit_entrypoint_and_browser_entrypoint_are_independent():
     assert not any(result[key] for key in ('database', 'build', 'browser', 'content'))
 
 
+@pytest.mark.parametrize('path', ['amp/scripts/verify-no-flash-ui.ts', 'amp/scripts/no-flash-judge.ts'])
+def test_the_no_flash_guard_runs_only_as_its_sharded_matrix(path):
+    result = plan([path])
+    assert result['browser'] and not result['browser_scripts'], result
+    assert result['typecheck']
+
+
 @pytest.mark.parametrize('path', ['amp/docs/deployment.md', 'amp/README.md', 'amp/AGENTS.md'])
 def test_documentation_does_not_start_expensive_jobs(path):
     result = plan([path])
