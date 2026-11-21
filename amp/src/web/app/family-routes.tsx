@@ -8,7 +8,6 @@ import { meOptions, queryClient } from "../lib/query";
 import { preload } from "../features/school/core-api";
 import {
   childProgressOptions,
-  familyDashboardOptions,
   familyOptions,
   familyPlacesOptions,
 } from "../features/family/api";
@@ -285,6 +284,8 @@ export function familyRoutes(root: AnyRoute) {
     loader: async ({ context, params }) => {
       const { session } = context as unknown as { session: AuthSession };
       const id = (params as { family: string }).family;
+      const { familyDashboardOptions } =
+        await import("../features/family/dashboard-api");
       await preload(familyDashboardOptions(session, id));
     },
     component: lazyRouteComponent(payHosts, "TodayPayHost"),
@@ -314,30 +315,12 @@ export function familyRoutes(root: AnyRoute) {
         staticData: { overList: true },
         // The page under it, and the results themselves: the sheet opens
         // whole, its title the workbook's own.
-        loader: async (input) => {
-          const { session } = input.context as unknown as {
-            session: AuthSession;
-          };
-          const {
-            family: id,
-            learner,
-            workbookId,
-          } = input.params as {
-            family: string;
-            learner: string;
-            workbookId: string;
-          };
-          const [data, { workbookResultsOptions }] = await Promise.all([
-            queryClient
-              .ensureQueryData(familyOptions(session, id))
-              .catch(orNull("The family")),
-            import("../features/workbooks/api"),
-            childLoader(input),
-          ]);
-          const child = data?.children.find((entry) => entry.id === learner);
-          if (child?.capabilities.readWorkbooks)
-            await preload(workbookResultsOptions(session, learner, workbookId));
-        },
+        loader: async (input) =>
+          (await import("./family-workbook-results")).resultsLoader(
+            input,
+            childLoader,
+            orNull("The family"),
+          ),
         component: screen("ChildScreen"),
       }),
       childScreen(

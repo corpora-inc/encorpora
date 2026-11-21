@@ -17,7 +17,7 @@ import {
 import {
   familyDashboardSchema,
   focusKeys,
-} from "../src/family/projection-contracts";
+} from "../src/family/dashboard-contracts";
 import { templates } from "../src/math/engine";
 
 const answer = (

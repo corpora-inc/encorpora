@@ -16,7 +16,8 @@ import { Feed, type FeedEntry } from "../school/classes/today/Feed";
 import { useChecks } from "../school/classes/today/todo-entries";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { fullDay } from "../school/classes/teacher-shared";
-import { familyDashboardOptions, type FamilyChild } from "./api";
+import { type FamilyChild } from "./api";
+import { familyDashboardOptions } from "./dashboard-api";
 import { selectLearner } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
@@ -362,7 +363,8 @@ export function FamilyTodayScreen() {
   const place = useFamilyPlace();
   const { data, family, session, me } = place;
   const dashboard = useQuery(familyDashboardOptions(session, family));
-  const board = dashboard.data?.familyId === family ? dashboard.data : undefined;
+  const board =
+    dashboard.data?.familyId === family ? dashboard.data : undefined;
   const billing = useQuery({
     ...fundingRecordsOptions(session),
     enabled:
@@ -475,8 +477,7 @@ export function FamilyTodayScreen() {
   // With one access for all, Billing is one link on that line; a child's
   // own line only says what is theirs alone (an invoice waiting).
   const accessLine = (child: FamilyChild) =>
-    !sharedAccess ||
-    (data?.capabilities.manageBilling && pendingFor(child)) ? (
+    !sharedAccess || (data?.capabilities.manageBilling && pendingFor(child)) ? (
       <p className={dash.access}>
         {!sharedAccess && <AccessFact child={child} inline />}
         {data?.capabilities.manageBilling && (
@@ -615,10 +616,7 @@ export function FamilyTodayScreen() {
               className={dash.layout}
               data-side={entries.length > 0 || !!board || !!getIn || undefined}
             >
-              <section
-                aria-labelledby="family-kids"
-                className={dash.kids}
-              >
+              <section aria-labelledby="family-kids" className={dash.kids}>
                 <div className={dash.kidsHead}>
                   <h2 id="family-kids" className={dash.kidsTitle}>
                     {children.length === 1 ? "Your child" : "Your kids"}
@@ -634,7 +632,9 @@ export function FamilyTodayScreen() {
                         {" · "}
                         <Link
                           to="/$"
-                          params={{ _splat: familyHref(family, "settings/billing") }}
+                          params={{
+                            _splat: familyHref(family, "settings/billing"),
+                          }}
                           className={styles.accessLink}
                           data-shared-billing=""
                         >
@@ -657,7 +657,9 @@ export function FamilyTodayScreen() {
                 )}
                 <ul
                   className={dash.list}
-                  aria-label={children.length === 1 ? "Your child" : "Your kids"}
+                  aria-label={
+                    children.length === 1 ? "Your child" : "Your kids"
+                  }
                   style={actionWidth(children)}
                   data-family-kids=""
                 >

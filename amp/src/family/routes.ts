@@ -3,13 +3,13 @@ import { recordCheckin } from "../learning/checkins.js";
 import { STARTER_ANSWERS } from "../analytics/events.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import {
-  familyDashboardSchema,
   familyPlacesSchema,
   familyProjectionSchema,
   familyChildProgressSchema,
   familyChildTimeSchema,
   familyTeachingSchema,
 } from "./projection-contracts.js";
+import { familyDashboardSchema } from "./dashboard-contracts.js";
 import {
   familyDashboard,
   familyProjection,
