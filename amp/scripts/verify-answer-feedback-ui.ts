@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
@@ -239,7 +240,7 @@ try {
               ...(body.kind === "focus" ? { focusSkillId: body.skillId } : {}),
             };
           }
-          return route.fulfill({ json: practice });
+          return route.fulfill({ json: practiceStateFixture(practice) });
         }
         if (path.endsWith("/batches")) {
           batches.push(body.templateId ?? null);

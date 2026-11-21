@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { writeLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
@@ -19,7 +20,6 @@ import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";
-import { defaultPracticeSettings } from "../src/learning/practice-settings";
 
 // Real auth client, session broadcasts, router and menus; synthetic HTTP only.
 const vite = await createServer({ server: { host: "127.0.0.1", port: 0 } });
@@ -219,7 +219,7 @@ try {
         },
       });
     if (path.endsWith("/practice-state"))
-      return route.fulfill({ json: defaultPracticeSettings() });
+      return route.fulfill({ json: practiceStateFixture() });
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
       return route.fulfill({

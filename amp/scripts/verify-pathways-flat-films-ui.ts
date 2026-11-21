@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { openLayers, openOf } from "./layer-probe";
@@ -10,7 +11,6 @@ import { lessonFilms } from "../src/content/lesson-films";
 import { skills } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
-import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import { fixtureMe } from "./me-fixture";
 const chromium = secureChromium(rawChromium);
 
@@ -162,7 +162,7 @@ async function fixture(
         ),
       });
     if (pathname.endsWith("/practice-state"))
-      return route.fulfill({ json: defaultPracticeSettings() });
+      return route.fulfill({ json: practiceStateFixture() });
     if (pathname.includes("/problem-lessons/")) {
       if (holdLessons) await new Promise((r) => setTimeout(r, holdLessons));
       await lessonGate;
