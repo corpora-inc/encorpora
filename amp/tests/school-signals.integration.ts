@@ -426,6 +426,51 @@ test(
       },
     );
 
+    await t.test(
+      "a student's own withdrawal clears a forgotten-picture request",
+      async () => {
+        const input = { code: await code(classA), personId: ben.personId };
+        const withdrawPath = `${forgotPath}/withdraw`;
+        const take = (body: object) =>
+          app.inject({ method: "POST", url: withdrawPath, payload: body });
+        // Refused exactly like the neighbours.
+        for (const bad of [
+          { code: "WRONG-CODE", personId: ben.personId },
+          { code: await code(classB), personId: ben.personId },
+        ]) {
+          const refused = await take(bad);
+          const neighbour = await join(bad);
+          assert.equal(refused.statusCode, neighbour.statusCode);
+          assert.deepEqual(refused.json(), neighbour.json());
+        }
+        await ok(join(input));
+        const forgotten = (await open(ben.personId))[0];
+        assert.equal(
+          (await live(classA)).signals.some((s) => s.id === forgotten.id),
+          true,
+        );
+        assert.deepEqual(
+          await writes(() => ok(take(input)), [event(classA, ben.personId)]),
+          { state: "none" },
+        );
+        assert.equal((await stored(forgotten.id)).resolution, "withdrawn");
+        assert.equal(
+          (await live(classA)).signals.some((s) => s.id === forgotten.id),
+          false,
+        );
+        assert.deepEqual(await ok(state(input)), { state: "none" });
+        // Again: nothing to take back, nothing written.
+        assert.deepEqual(await writes(() => ok(take(input)), []), {
+          state: "none",
+        });
+        // A later ask works again.
+        await writes(() => ok(join(input)), [event(classA, ben.personId)]);
+        assert.deepEqual(await ok(state(input)), { state: "waiting" });
+        assert.equal((await open(ben.personId)).length, 1);
+        await ok(take(input));
+      },
+    );
+
     // Failure at the outbox write must roll back both the reset and resolution.
     await db.query(
       "CREATE TABLE signal_test_failures(person_id uuid PRIMARY KEY)",

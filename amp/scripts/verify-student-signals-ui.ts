@@ -149,6 +149,7 @@ function same(
   for (const name of Object.keys(before)) {
     const a = before[name];
     const b = after[name];
+    if (!a && !b) continue;
     // A first time has no action: its row stays, and the rest proves it.
     if (name === "forgot" && a && !b) continue;
     assert.ok(a && b, `${label}: ${name} missing`);
@@ -188,7 +189,7 @@ try {
       await setPictures(A.id);
       await page.goto(`${web}/join/${code}/${A.id}`);
       await page
-        .getByRole("button", { name: "I forgot the pictures" })
+        .getByRole("button", { name: "Forgot your pictures?" })
         .waitFor();
       const watch = {
         slots: "ol",
@@ -198,7 +199,7 @@ try {
       };
       const picking = await boxes(page, watch);
       await page.screenshot({ path: `${shots}/forgot-1-picking-${tag}.png` });
-      await page.getByRole("button", { name: "I forgot the pictures" }).click();
+      await page.getByRole("button", { name: "Forgot your pictures?" }).click();
       await page.getByText("Your teacher has been asked.").waitFor();
       await page.waitForTimeout(400);
       const asked = await boxes(page, watch);
@@ -234,10 +235,8 @@ try {
       // Back out: ask again, then remember.
       await setPictures(A.id);
       await page.reload();
-      await page.getByRole("button", { name: "I forgot the pictures" }).click();
-      await page
-        .getByRole("button", { name: "I remember the pictures" })
-        .click();
+      await page.getByRole("button", { name: "Forgot your pictures?" }).click();
+      await page.getByRole("button", { name: "Pick your pictures" }).click();
       await page.getByText("Pick your 3 pictures").waitFor();
       same(`${tag} back out`, picking, await boxes(page, watch));
       checks++;
@@ -327,31 +326,198 @@ try {
       await context.close();
     }
 
-  // ---- the bar at 320 ------------------------------------------------------
-  for (const theme of ["light", "dark"] as const) {
-    const context = await browser.newContext({
-      viewport: { width: 320, height: 640 },
-      colorScheme: theme,
+  // ---- the practice bar, Calm and Colorful, at 320 and 390 -----------------
+  /** The student's own look, set the way their settings would (their token). */
+  async function setLook(personId: string, look: "calm" | "bold") {
+    await setPictures(personId);
+    const grant = (await (
+      await fetch(`${api}/api/v1/school/join/picture`, {
+        method: "POST",
+        headers: { Origin: web, "content-type": "application/json" },
+        body: JSON.stringify({
+          code,
+          personId,
+          pictures: mine,
+          set: false,
+        }),
+      })
+    ).json()) as { token: string };
+    const headers = {
+      Origin: web,
+      "content-type": "application/json",
+      authorization: `Bearer ${grant.token}`,
+    };
+    const me = (await (
+      await fetch(`${api}/api/v1/me`, { headers })
+    ).json()) as {
+      learners: { id: string }[];
+    };
+    const path = `${api}/api/v1/learners/${me.learners[0]!.id}/practice-state`;
+    const state = (await (await fetch(path, { headers })).json()) as {
+      revision: number;
+    };
+    const response = await fetch(path, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        kind: "look",
+        look,
+        requestId: crypto.randomUUID(),
+        revision: state.revision,
+      }),
     });
-    const page = await context.newPage();
-    await setPictures(B.id);
-    await page.goto(`${web}/join/${code}/${B.id}`);
-    await pictureButtons(page).first().waitFor();
-    await pick(page);
-    const hand = page.getByRole("button", { name: "Raise hand" });
-    await hand.waitFor({ timeout: 30_000 });
-    await page.waitForTimeout(800);
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - innerWidth,
+    assert.ok(
+      response.ok,
+      `setting the look ${response.status} ${await response.clone().text()}`,
     );
-    assert.ok(overflow <= 0, `320: horizontal overflow ${overflow}`);
-    await page.screenshot({
-      path: `${shots}/bar-320-${theme}.png`,
-      clip: { x: 0, y: 0, width: 320, height: 120 },
-    });
-    await context.close();
-    checks++;
   }
+  const overlap = (a: Box, b: Box) =>
+    a.x < b.x + b.width - 1 &&
+    b.x < a.x + a.width - 1 &&
+    a.y < b.y + b.height - 1 &&
+    b.y < a.y + a.height - 1;
+  for (const look of ["calm", "bold"] as const)
+    for (const width of [320, 390])
+      for (const theme of ["light", "dark"] as const) {
+        const tag = `${look === "bold" ? "colorful" : "calm"}-${width}-${theme}`;
+        await setLook(B.id, look);
+        const context = await browser.newContext({
+          viewport: { width, height: 740 },
+          colorScheme: theme,
+        });
+        const page = await context.newPage();
+        await page.goto(`${web}/join/${code}/${B.id}`);
+        await pictureButtons(page).first().waitFor();
+        await pick(page);
+        const hand = page.getByRole("button", { name: "Raise hand" });
+        await hand.waitFor({ timeout: 30_000 });
+        if (look === "bold")
+          await page
+            .locator("[class*='_chip_'][data-shown]")
+            .waitFor({ timeout: 15_000 });
+        // An earlier run's note is gone before the first measure.
+        await page
+          .getByRole("status")
+          .waitFor({ state: "detached", timeout: 10_000 })
+          .catch(() => {});
+        await page.waitForTimeout(1200);
+        const parts = {
+          hand: "button[aria-label='Raise hand']",
+          signOut: "[data-student-sign-out]",
+          chip: "[class*='_chip_'][data-shown]",
+          topic: ".practice-topic, .workspace-topic",
+          stage: ".problem-stage",
+        };
+        const settle = async (label: string, shot: string) => {
+          await page.waitForTimeout(500);
+          const now = await boxes(page, parts);
+          const overflow = await page.evaluate(
+            () => document.documentElement.scrollWidth - innerWidth,
+          );
+          assert.ok(overflow <= 0, `${tag} ${label}: overflow ${overflow}`);
+          const handBox = now.hand!;
+          assert.ok(
+            handBox.width >= 44 && handBox.height >= 44,
+            `${tag}: 44 px`,
+          );
+          for (const other of ["signOut", "chip"] as const)
+            if (now[other])
+              assert.ok(
+                !overlap(handBox, now[other]!),
+                `${tag} ${label}: hand overlaps ${other}`,
+              );
+          if (now.chip && now.signOut)
+            assert.ok(
+              !overlap(now.chip, now.signOut),
+              `${tag}: chip over sign-out`,
+            );
+          // The note must not meet the chip.
+          const note = await boxes(page, { note: "[role='status']" });
+          if (note.note && now.chip)
+            assert.ok(
+              !overlap(note.note, now.chip),
+              `${tag} ${label}: note over chip`,
+            );
+          await page.screenshot({
+            path: `${shots}/bar-${shot}-${tag}.png`,
+            clip: { x: 0, y: 0, width, height: 190 },
+          });
+          return now;
+        };
+        const down = await settle("down", "1-down");
+        await hand.click();
+        await page.waitForFunction(
+          () =>
+            document
+              .querySelector("button[aria-label='Raise hand']")
+              ?.getAttribute("aria-pressed") === "true",
+        );
+        const up = await settle("up", "2-up");
+        same(
+          `${tag} down -> up`,
+          {
+            hand: down.hand,
+            signOut: down.signOut,
+            chip: down.chip,
+            stage: down.stage,
+          },
+          {
+            hand: up.hand,
+            signOut: up.signOut,
+            chip: up.chip,
+            stage: up.stage,
+          },
+        );
+        const raised = (await live()).signals.find(
+          (x) => x.personId === B.id && x.kind === "hand",
+        );
+        assert.ok(raised, `${tag}: hand in the snapshot`);
+        if (look === "bold")
+          await page.evaluate(
+            (hue) =>
+              document.documentElement.style.setProperty("--look-hue", hue),
+            width === 320 ? "30deg" : "210deg",
+          );
+        await teacher(
+          "POST",
+          `/api/v1/school/classes/${room.id}/signals/${raised.id}/resolve`,
+          {},
+        );
+        await page
+          .getByRole("status")
+          .filter({ hasText: "Your teacher saw it." })
+          .waitFor({ timeout: 12_000 });
+        const seen = await settle("seen", "3-seen");
+        same(
+          `${tag} up -> seen`,
+          {
+            hand: up.hand,
+            signOut: up.signOut,
+            chip: up.chip,
+            stage: up.stage,
+          },
+          {
+            hand: seen.hand,
+            signOut: seen.signOut,
+            chip: seen.chip,
+            stage: seen.stage,
+          },
+        );
+        // The note and button take the world's color: role tokens.
+        const colors = await page.evaluate(() => {
+          const note = document.querySelector("[role='status']");
+          const button = document.querySelector(
+            "button[aria-label='Raise hand']",
+          );
+          return {
+            note: note ? getComputedStyle(note).backgroundColor : "",
+            button: button ? getComputedStyle(button).backgroundColor : "",
+          };
+        });
+        console.log(`  ${tag}: note ${colors.note}, button ${colors.button}`);
+        await context.close();
+        checks++;
+      }
 } finally {
   await browser.close();
   await pool.end();

@@ -144,6 +144,12 @@ export const signInWithPictures = (input: {
 export const askForgotPicture = (input: { code: string; personId: string }) =>
   post("forgot-picture", input, raiseForgotPictureResponse);
 
+/** The student remembered: takes the request back (`POST …/forgot-picture/withdraw`). */
+export const withdrawForgotPicture = (input: {
+  code: string;
+  personId: string;
+}) => post("forgot-picture/withdraw", input, forgotPictureResponse);
+
 /** Where that request stands (`GET …/forgot-picture`): waiting, reset, or none. */
 export const readForgotPicture = (input: { code: string; personId: string }) =>
   post(
