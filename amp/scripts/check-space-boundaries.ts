@@ -60,6 +60,12 @@ const WORDS = "features/spaces/words.ts";
 
 /** Named exceptions: importer → the composition module it may import, why. */
 export const ALLOWED: Record<string, [string, string][]> = {
+  "features/practice/points.ts": [
+    [
+      "features/spaces/useAddressed.ts",
+      "whose practice is on screen, from its address, for that learner's points (Colorful's chip and the +1): no place, no space, no words",
+    ],
+  ],
   "features/pay/address.ts": [
     [
       "features/spaces/learner-urls.ts",

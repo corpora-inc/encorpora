@@ -1,0 +1,64 @@
+/*
+ * Colorful's dress around practice, beyond its token roles (ui/tokens.css):
+ * a band of the confetti colors along the bar's foot, buttons with a press
+ * you can feel, and each new problem arriving quickly. All of it is keyed on
+ * `:root[data-look="bold"]`, so Calm is exactly as it was; none of it
+ * changes a size, so nothing moves.
+ */
+:root[data-look="bold"] [data-app-bar] {
+  box-shadow: none;
+}
+:root[data-look="bold"] [data-app-bar]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-celebrate-4),
+    var(--color-celebrate-1) 30%,
+    var(--color-celebrate-2) 55%,
+    var(--color-celebrate-5) 78%,
+    var(--color-celebrate-3)
+  );
+  pointer-events: none;
+}
+
+/* The answer's own buttons: a solid lower edge, pressed down on a tap. */
+:root[data-look="bold"]
+  .practice-workspace
+  :is(.next-action, form button[type="submit"]):not(:disabled) {
+  box-shadow: inset 0 -4px 0
+    color-mix(in srgb, var(--color-on-surface) 28%, var(--color-primary));
+}
+:root[data-look="bold"]
+  .practice-workspace
+  :is(.next-action, form button[type="submit"]):not(:disabled):active {
+  box-shadow: inset 0 -1px 0
+    color-mix(in srgb, var(--color-on-surface) 28%, var(--color-primary));
+  transform: translateY(2px);
+}
+
+/* A right answer's sheet: the success roles, with a bright top edge. */
+:root[data-look="bold"] .feedback.correct {
+  border-color: var(--color-success-accent);
+  box-shadow:
+    inset 0 4px 0 var(--color-celebrate-5),
+    0 -8px 40px var(--color-shadow);
+}
+
+/* A new problem arrives in 180 ms: it fades up from just below. The math
+   only moves as a whole, and only for that moment. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"] .practice-workspace .problem-content {
+    animation: colorful-problem-in 180ms var(--ease-standard) both;
+  }
+}
+@keyframes colorful-problem-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}

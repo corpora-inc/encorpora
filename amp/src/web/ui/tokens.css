@@ -404,6 +404,137 @@
 }
 
 /*
+ * Colorful ("bold" in code, learning/look.ts): the look a learner may choose
+ * for practice. `data-look="bold"` on <html> (features/practice/look.ts)
+ * swaps the roles that carry practice: the page around the problem, the
+ * accent and its buttons, a right answer's sheet, and adds the points chip
+ * and the confetti palette. It never touches the figure roles, the danger
+ * roles (a miss stays kind and calm) or anything a problem draws: color goes
+ * around the math, never through it. Same rules as above: role pairs, light
+ * here, dark in the two blocks below (identical), every key in both, and
+ * tests/color-roles.test.ts proves each pair over theme × look.
+ */
+:root[data-look="bold"] {
+  --color-surface: #f6f3ff;
+  --color-on-surface: #221a4d;
+  --color-surface-raised: #f6f3ff;
+  --color-on-surface-raised: #221a4d;
+  --color-surface-sunken: #ebe5fd;
+  --color-on-surface-sunken: #221a4d;
+  --color-answer: #ffffff;
+  --color-on-answer: #221a4d;
+  --color-answer-border: #7466c4;
+  --color-menu: #f6f3ff;
+  --color-on-menu: #221a4d;
+  --color-primary: #4b2ed8;
+  --color-on-primary: #ffffff;
+  --color-secondary: #e7e0ff;
+  --color-on-secondary: #35209c;
+  --color-selected: #4b2ed8;
+  --color-on-selected: #ffffff;
+  --color-success: #d3f7e0;
+  --color-on-success: #0b512a;
+  --color-success-accent: #0a7639;
+  --color-muted-text: #4f4685;
+  --color-subtle-text: #5a5290;
+  --color-border: #ddd5fa;
+  --color-border-strong: #7466c4;
+  --color-focus-ring: #4b2ed8;
+  --color-shadow: #3a1fb026;
+  --color-meter: #4b2ed8;
+  /* The points chip: sunshine with deep ink, its edge, and the press of
+     a right answer arriving. */
+  --color-points: #ffcb2e;
+  --color-on-points: #3b2500;
+  --color-points-edge: #e59a00;
+  /* Confetti and sparks: marks only, never text, never a status. */
+  --color-celebrate-1: #ff3d7f;
+  --color-celebrate-2: #ffb000;
+  --color-celebrate-3: #00b5c8;
+  --color-celebrate-4: #6a45ff;
+  --color-celebrate-5: #21c55d;
+  --color-celebrate-6: #ff7a1a;
+}
+@media screen and (prefers-color-scheme: dark) {
+  :root[data-look="bold"]:not([data-theme="light"]) {
+    --color-surface: #17123a;
+    --color-on-surface: #efeaff;
+    --color-surface-raised: #17123a;
+    --color-on-surface-raised: #efeaff;
+    --color-surface-sunken: #251e52;
+    --color-on-surface-sunken: #efeaff;
+    --color-answer: #17123a;
+    --color-on-answer: #efeaff;
+    --color-answer-border: #8d82d6;
+    --color-menu: #251e52;
+    --color-on-menu: #f3f0ff;
+    --color-primary: #b6a6ff;
+    --color-on-primary: #1a0f4a;
+    --color-secondary: #2d2468;
+    --color-on-secondary: #e6dfff;
+    --color-selected: #b6a6ff;
+    --color-on-selected: #1a0f4a;
+    --color-success: #11452b;
+    --color-on-success: #d3f8e1;
+    --color-success-accent: #5fe597;
+    --color-muted-text: #c6bdf2;
+    --color-subtle-text: #b8afe8;
+    --color-border: #3b3175;
+    --color-border-strong: #8d82d6;
+    --color-focus-ring: #c9bdff;
+    --color-shadow: #00000073;
+    --color-meter: #a998ff;
+    --color-points: #ffd23f;
+    --color-on-points: #2e1d00;
+    --color-points-edge: #ffb000;
+    --color-celebrate-1: #ff5c95;
+    --color-celebrate-2: #ffc53d;
+    --color-celebrate-3: #2fd8e8;
+    --color-celebrate-4: #9b80ff;
+    --color-celebrate-5: #4ade80;
+    --color-celebrate-6: #ff9445;
+  }
+}
+:root[data-look="bold"][data-theme="dark"] {
+  --color-surface: #17123a;
+  --color-on-surface: #efeaff;
+  --color-surface-raised: #17123a;
+  --color-on-surface-raised: #efeaff;
+  --color-surface-sunken: #251e52;
+  --color-on-surface-sunken: #efeaff;
+  --color-answer: #17123a;
+  --color-on-answer: #efeaff;
+  --color-answer-border: #8d82d6;
+  --color-menu: #251e52;
+  --color-on-menu: #f3f0ff;
+  --color-primary: #b6a6ff;
+  --color-on-primary: #1a0f4a;
+  --color-secondary: #2d2468;
+  --color-on-secondary: #e6dfff;
+  --color-selected: #b6a6ff;
+  --color-on-selected: #1a0f4a;
+  --color-success: #11452b;
+  --color-on-success: #d3f8e1;
+  --color-success-accent: #5fe597;
+  --color-muted-text: #c6bdf2;
+  --color-subtle-text: #b8afe8;
+  --color-border: #3b3175;
+  --color-border-strong: #8d82d6;
+  --color-focus-ring: #c9bdff;
+  --color-shadow: #00000073;
+  --color-meter: #a998ff;
+  --color-points: #ffd23f;
+  --color-on-points: #2e1d00;
+  --color-points-edge: #ffb000;
+  --color-celebrate-1: #ff5c95;
+  --color-celebrate-2: #ffc53d;
+  --color-celebrate-3: #2fd8e8;
+  --color-celebrate-4: #9b80ff;
+  --color-celebrate-5: #4ade80;
+  --color-celebrate-6: #ff9445;
+}
+
+/*
  * Derived state layers: the role's own `on-` color laid over the role at fixed
  * opacities. Hover 8%, active/pressed/open 14%. Foreground never changes, so a
  * state can never pair a new background with an unreadable label.

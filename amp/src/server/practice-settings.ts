@@ -8,6 +8,7 @@ import type {
   PracticeState,
 } from "../learning/practice-settings";
 import { resolveLook } from "../learning/look";
+import { pointsOf } from "../learning/points";
 import { strandEstimate, targetGrade } from "../learning/frontier";
 import {
   ApiError,
@@ -16,16 +17,26 @@ import {
 } from "./repository";
 import { templateGrade } from "./mixed-practice";
 
-/** The settings with the look that applies now and whether a class locked it. */
+/** The look that applies now and whether a class locked it. */
+async function lookOf(tx: LearnerTransaction, settings: PracticeSettings) {
+  return resolveLook({ own: settings.look, classes: await tx.classLooks() });
+}
+
+/** The settings with the look that applies now, whether a class locked it,
+ * and the learner's points. */
 export async function practiceState(
   tx: LearnerTransaction,
   settings: PracticeSettings,
 ): Promise<PracticeState> {
-  const { look, locked } = resolveLook({
-    own: settings.look,
-    classes: await tx.classLooks(),
-  });
-  return { ...settings, effectiveLook: look, lookLocked: locked };
+  // One transaction, one connection: one query after the other.
+  const { look, locked } = await lookOf(tx, settings);
+  const evidence = await tx.skillEvidence();
+  return {
+    ...settings,
+    effectiveLook: look,
+    lookLocked: locked,
+    points: pointsOf(evidence),
+  };
 }
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
@@ -126,7 +137,7 @@ export async function changePractice(
   } else if (change.kind === "look") {
     // Display only, like the grade level. A learner, their grown-up or a
     // teacher's class may choose it, until a class locks it.
-    if ((await practiceState(tx, previous)).lookLocked)
+    if ((await lookOf(tx, previous)).locked)
       throw new ApiError(409, "Your class chose how practice looks.");
     next.look = change.look;
   } else {

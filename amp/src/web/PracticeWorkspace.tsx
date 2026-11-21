@@ -98,6 +98,7 @@ import { visibleSteps, type Step } from "../math/scene/timeline";
 import type { ProblemFlagInput } from "../feedback/problem-flags";
 import { problemFlagBody } from "./problem-flag";
 import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
+import { Celebration } from "./features/practice/celebration/Celebration";
 import {
   prepareFeedbackSound,
   playCorrectFeedback,
@@ -1847,6 +1848,11 @@ export function PracticeWorkspace(props: Props) {
   );
   return (
     <main className="practice-workspace" aria-label="Math practice">
+      <Celebration
+        outcome={review ? null : outcome}
+        mastered={props.mastered}
+        problemId={problem.id}
+      />
       <section
         className="practice-surface"
         data-line-plot-landscape={shortLinePlot || undefined}
