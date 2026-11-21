@@ -1,5 +1,4 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
 import { exitPractice, startTopic } from "./ui-practice";
 /** Controlled system-browser/OS-callback adapter around the production Rust session core. */
 import assert from "node:assert/strict";
@@ -745,12 +744,18 @@ try {
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Parent sign in" }).click();
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learnerA.id,
-  );
+  // The account's one learner is already chosen: a chooser shows only
+  // between two or more (features/spaces/learner-choice.ts, #2404). The
+  // birth year saved below is that learner's.
   await page.getByRole("option", { name: "2016", exact: true }).click();
-  await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Learner", exact: true }).count(),
+    0,
+  );
+  // Home's action is "Start practicing" since #2157.
+  await page
+    .getByRole("button", { name: "Start practicing", exact: true })
+    .waitFor();
   // No device toggle for grade numbers: a grown-up's view shows them.
   assert.equal(
     await page.getByRole("checkbox", { name: /grade numbers/i }).count(),

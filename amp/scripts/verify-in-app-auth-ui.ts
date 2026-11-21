@@ -512,10 +512,12 @@ try {
           }),
         );
         await page.goto(origin + "/sign-up");
-        // Passkey-first wherever the browser has WebAuthn (Linux WebKit, the
-        // runner's, has none: it offers the password form instead).
+        // Passkey-first wherever the browser has WebAuthn, as the app decides
+        // it (@simplewebauthn/browser `browserSupportsWebAuthn`: a
+        // PublicKeyCredential constructor). The runner's Linux WebKit has
+        // only a PublicKeyCredential object: it offers the password form.
         const webauthn = await page.evaluate(
-          () => typeof PublicKeyCredential !== "undefined",
+          () => typeof PublicKeyCredential === "function",
         );
         if (webauthn) {
           await page
