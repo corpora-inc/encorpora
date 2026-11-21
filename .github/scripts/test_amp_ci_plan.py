@@ -26,6 +26,13 @@ def test_unit_entrypoint_and_browser_entrypoint_are_independent():
     assert not any(result[key] for key in ('database', 'build', 'browser', 'content'))
 
 
+@pytest.mark.parametrize('path', ['amp/scripts/verify-no-flash-ui.ts', 'amp/scripts/no-flash-judge.ts'])
+def test_the_no_flash_guard_runs_only_as_its_sharded_matrix(path):
+    result = plan([path])
+    assert result['browser'] and not result['browser_scripts'], result
+    assert result['typecheck']
+
+
 @pytest.mark.parametrize('path', ['amp/docs/deployment.md', 'amp/README.md', 'amp/AGENTS.md'])
 def test_documentation_does_not_start_expensive_jobs(path):
     result = plan([path])
@@ -191,7 +198,7 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "no-flash-a-390", "no-flash-a-1280", "no-flash-b-390", "no-flash-b-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
     for command, lane in [('npm run test:ui:1a', 'ui-1a'), ('npm run test:ui:1b', 'ui-1b'),
                           ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
@@ -201,6 +208,14 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
     no_flash = next(step for step in browser['steps'] if 'test:no-flash-ui' in step.get('run', ''))
     assert no_flash['if'] == "startsWith(matrix.lane, 'no-flash-')"
+    # One lane per person group and width: every person the script knows is in
+    # exactly one lane's case, and no lane runs more than one width.
+    lanes = re.findall(r'"(no-flash-[a-z-]+-\d+)"', browser['strategy']['matrix']['lane'])
+    assert len(lanes) == 14 and len(set(lanes)) == 14
+    assert {lane.rsplit('-', 1)[1] for lane in lanes} == {'390', '1280'}
+    people = sorted(re.findall(r'--people "\$people"|people=([\w,-]+)', no_flash['run']))
+    assert sorted(','.join(p for p in people if p).split(',')) == sorted(
+        'family second-parent adult-3wk tutor teacher-class school student signed-out'.split())
     # The native session's Rust half runs in its own lane with a cached
     # build; no browser lane installs Rust.
     assert not any('rust' in str(step.get('uses', '')) for step in browser['steps'])

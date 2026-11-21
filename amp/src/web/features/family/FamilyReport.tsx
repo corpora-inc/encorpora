@@ -13,7 +13,7 @@ import {
 import { LoadFailed } from "../school/classes/teacher-shared";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 import { peopleOf } from "./redirects";
-import { familyDashboardOptions } from "./api";
+import { familyDashboardOptions } from "./dashboard-api";
 
 /** A stored session's report, in a family's words. */
 export const FAMILY_REPORT_WORDS: ReportWords = {

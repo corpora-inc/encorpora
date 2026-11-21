@@ -116,22 +116,32 @@ export function clearHue() {
   const style = document.documentElement.style;
   style.removeProperty("--look-hue");
   style.removeProperty("--look-boost");
+  arrived();
 }
 
-/** Whether this browser can draw Colorful: oklch() colors and registered
- * properties. Without them, Calm is shown (and recorded). */
-export function colorfulSupported() {
-  try {
-    return (
-      typeof CSS !== "undefined" &&
-      "registerProperty" in CSS &&
-      // tokens.css's own feature query: oklch() with calc() in its hue.
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--colorful-unsupported")
-        .trim() === ""
-    );
-  } catch (error) {
-    console.warn("Colorful's support check failed; Calm shows", error);
-    return false;
-  }
+/** While the dress is first going on, the world does not turn (tokens.css
+ * turns it only without this attribute): a load arrives in its own hue, in
+ * one frame, and never sweeps there from the property's first value. */
+const ARRIVING = "data-look-arriving";
+/** A screen with no problem (a student's standings) has nothing to wait
+ * for; it has arrived by now. */
+const ARRIVAL_LIMIT_MS = 1500;
+let arrival: ReturnType<typeof setTimeout> | undefined;
+/** The dress is going on: hold the turn until what it dresses has painted. */
+export function arriving() {
+  document.documentElement.setAttribute(ARRIVING, "");
+  clearTimeout(arrival);
+  arrival = setTimeout(arrived, ARRIVAL_LIMIT_MS);
+}
+/** The world may turn from here on. */
+export function arrived() {
+  clearTimeout(arrival);
+  arrival = undefined;
+  document.documentElement.removeAttribute(ARRIVING);
+}
+/** The first problem's hue is on the page: once that frame has painted,
+ * the next problem turns the world. */
+export function arriveAfterPaint() {
+  if (!document.documentElement.hasAttribute(ARRIVING)) return;
+  requestAnimationFrame(() => requestAnimationFrame(arrived));
 }

@@ -5,8 +5,7 @@ import { gradeNumber } from "../learning/frontier.js";
 import { levelRange } from "../learning/level-check.js";
 import { templates } from "../math/engine.js";
 import type { LevelEstimate } from "../schools/evidence.js";
-import type { FocusKey } from "./projection-contracts.js";
-import { focusKeys } from "./projection-contracts.js";
+import { focusKeys, type FocusKey } from "./dashboard-contracts.js";
 
 /*
  * The family dashboard's pure parts (docs/architecture/family-api.md,

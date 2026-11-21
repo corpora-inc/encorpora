@@ -545,9 +545,11 @@
     --colorful-unsupported: 1;
   }
 }
-/* The world turns with the problem, in step with its entrance. */
+/* The world turns with the problem, in step with its entrance. It does not
+   turn while the dress is first going on (celebration/hue.ts): a load
+   arrives in its hue. */
 @media (prefers-reduced-motion: no-preference) {
-  :root[data-look="bold"] {
+  :root[data-look="bold"]:not([data-look-arriving]) {
     transition:
       --look-hue 400ms var(--ease-standard),
       --look-boost 600ms ease-out;

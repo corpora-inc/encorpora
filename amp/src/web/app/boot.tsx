@@ -20,7 +20,7 @@ import { ChunkRecoveryNotice } from "../ui/ChunkRecoveryNotice";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./RouterView";
-import { applyRouteHead, routeHead } from "./route-head";
+import { applyRouteHead, mapTitleAhead, routeHead } from "./route-head";
 import { Providers } from "./providers";
 import { router } from "./router";
 import "./styles";
@@ -109,6 +109,11 @@ function render() {
  * Written again, the same, once the route resolves (RouterView). */
 function headAhead(pathname: string, search: string) {
   if (pathname === "/") return;
+  const map = mapTitleAhead(pathname);
+  if (map) {
+    document.title = map;
+    return;
+  }
   const head = routeHead(`${pathname}${search}`, "app");
   if (head) applyRouteHead(document, head);
 }

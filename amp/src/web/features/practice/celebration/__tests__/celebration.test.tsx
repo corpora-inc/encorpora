@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { queryClient } from "../../../../lib/query";
 import { practiceSettingsOptions } from "../../practice-settings";
 import { creditAnswer, isCredited, usePoints } from "../../points";
-import { Celebration } from "../Celebration";
+import { Celebration, preloadColorful } from "../Celebration";
 import { dropStage } from "../stage";
 import { useCelebrationStore } from "../store";
 import { GOLDEN_ANGLE, hueAt, startHue, useHueStore } from "../hue";
@@ -72,7 +72,9 @@ const settle = () => act(async () => new Promise((r) => setTimeout(r, 40)));
 const total = () =>
   queryClient.getQueryData(practiceSettingsOptions(scope).queryKey)?.points;
 
-beforeEach(() => {
+beforeEach(async () => {
+  // As the app has it when the look resolves, before any answer.
+  await preloadColorful();
   queryClient.clear();
   useCelebrationStore.setState({ runs: {}, played: {}, streakOf: {} });
   server.points = 88;

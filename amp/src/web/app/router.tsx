@@ -113,7 +113,7 @@ import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { externalSignInFrom } from "./external-sign-in";
-import { applyDeferredIdentity } from "../features/school/join/api";
+import { applyDeferredIdentity } from "../features/school/join/deferred-identity";
 import { settleLegacyLayers } from "../nav/links";
 import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
@@ -879,51 +879,19 @@ const beforeWorkbooks = ({
 }: {
   location: { pathname: string; searchStr: string };
 }) => requireSignedIn(location, { web: true, adults: true });
-/** A learner's workbook screen paints whole: what it shows first (the list,
- * a day's workbook and its areas, a workbook's results) arrives with it, for
- * a learner this account may read (the account is known by now: the root's
- * `beforeLoad`). A failed read is the screen's own to say. */
+/** A learner's workbook screen paints whole: its first reads arrive with it
+ * (app/workbook-loaders.ts, fetched with the route, never in the entry). */
 const workbookLoader =
-  (
-    reads: (
-      api: typeof import("../features/workbooks/api"),
-      session: AuthSession,
-      params: Record<string, string>,
-    ) => { queryKey: readonly unknown[] }[],
-  ) =>
-  async ({ params }: { params: Record<string, string> }) => {
-    const session = queryClient.getQueryData(sessionOptions.queryKey);
-    if (!session) return;
-    const me = queryClient.getQueryData(meOptions(session).queryKey);
-    const learner = me?.signedIn
-      ? me.family.learners.find(
-          (entry) => entry.id === params.learnerId && !entry.deletedAt,
-        )
-      : undefined;
-    const [api, { canReadWorkbooks }] = await Promise.all([
-      import("../features/workbooks/api"),
-      import("../features/workbooks/model"),
-    ]);
-    if (!learner || !canReadWorkbooks(learner)) return;
-    await Promise.all(
-      reads(api, session, params).map((options) =>
-        queryClient
-          .ensureQueryData(options as never)
-          .catch((error: unknown) =>
-            console.warn("The workbook didn’t load ahead", error),
-          ),
-      ),
-    );
-  };
+  (name: "history" | "day" | "results") =>
+  async (input: { params: Record<string, string> }) =>
+    (await import("./workbook-loaders")).workbookLoaders[name](input);
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
-  loader: workbookLoader((api, session, { learnerId }) => [
-    api.workbookHistoryOptions(session, learnerId!),
-  ]),
+  loader: workbookLoader("history"),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
     "WorkbookHistoryScreen",
@@ -934,11 +902,7 @@ const workbookDay = createRoute({
   path: "/learners/$learnerId/workbooks/$date",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
-  loader: workbookLoader((api, session, { learnerId, date }) => [
-    api.workbookHistoryOptions(session, learnerId!),
-    api.workbookHistoryOptions(session, learnerId!, date),
-    api.workbookAreasOptions(session, learnerId!),
-  ]),
+  loader: workbookLoader("day"),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
     "WorkbookDayScreen",
@@ -949,9 +913,7 @@ const workbookResults = createRoute({
   path: "/learners/$learnerId/workbooks/$workbookId/results",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
-  loader: workbookLoader((api, session, { learnerId, workbookId }) => [
-    api.workbookResultsOptions(session, learnerId!, workbookId!),
-  ]),
+  loader: workbookLoader("results"),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
@@ -1108,10 +1070,12 @@ const schoolClass = createRoute({
       ),
       // The bar's Start class and whether a session runs: with the frame.
       loadClassSessionAction(),
-      classLive((context as { session: AuthSession }).session, {
-        org: params.org,
-        class: params.class,
-      }),
+      liveLoaders().then((loaders) =>
+        loaders.classLive((context as { session: AuthSession }).session, {
+          org: params.org,
+          class: params.class,
+        }),
+      ),
     ]),
 });
 const schoolClassToday = createRoute({
@@ -1139,25 +1103,14 @@ const schoolClassToday = createRoute({
       import("../features/school/classes/teacher-api").then(
         ({ todayOptions }) => preload(todayOptions(session, place)),
       ),
-      classLive(session, place),
+      liveLoaders().then((loaders) => loaders.classLive(session, place)),
     ]);
   },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
-/** A class's live snapshot, for someone who may watch its sessions. */
-async function classLive(
-  session: AuthSession,
-  place: { org: string; class: string },
-) {
-  const [year, { liveOptions }] = await Promise.all([
-    preload(classYearOptions(session, place.class)) as Promise<
-      { can?: readonly string[] } | undefined
-    >,
-    import("../features/live/api"),
-  ]);
-  if (year?.can?.includes("session.read"))
-    await preload(liveOptions(session, place));
-}
+/** A class's live reads, fetched with its routes (app/class-live-loaders.ts),
+ * never in the entry's code. */
+const liveLoaders = () => import("./class-live-loaders");
 /** The map with everything its first paint shows: a small class's map
  * (six or fewer, ClassMap.tsx) carries each learner's grade line, so its
  * gradebook loads with it rather than pushing the page down after. */
@@ -1192,18 +1145,11 @@ const schoolClassTime = createRoute({
   getParentRoute: () => schoolClass,
   path: "time",
   // The class's sessions, at the report's foot, arrive with it.
-  loader: async ({ context, params }) => {
-    const session = (context as { session: AuthSession }).session;
-    const place = { org: params.org, class: params.class };
-    const [year, { sessionsOptions }] = await Promise.all([
-      preload(classYearOptions(session, place.class)) as Promise<
-        { can?: readonly string[] } | undefined
-      >,
-      import("../features/live/api"),
-    ]);
-    if (year?.can?.includes("session.read"))
-      await preload(sessionsOptions(session, place));
-  },
+  loader: async ({ context, params }) =>
+    (await liveLoaders()).classSessions(
+      (context as { session: AuthSession }).session,
+      { org: params.org, class: params.class },
+    ),
   component: lazyRouteComponent(classScreens, "TimeScreen"),
 });
 /** One session's stored report (#2465), under the class's Time. Its read
@@ -1212,21 +1158,12 @@ const schoolClassTime = createRoute({
 const schoolClassSession = createRoute({
   getParentRoute: () => schoolClass,
   path: "sessions/$session",
-  loader: async ({ context, params }) => {
-    const session = (context as { session: AuthSession }).session;
-    const { sessionReportOptions } = await import("../features/live/api");
-    await queryClient
-      .ensureQueryData(
-        sessionReportOptions(
-          session,
-          { org: params.org, class: params.class },
-          params.session,
-        ),
-      )
-      .catch((error: unknown) =>
-        console.warn("The session's report didn’t load ahead", error),
-      );
-  },
+  loader: async ({ context, params }) =>
+    (await liveLoaders()).sessionReport(
+      (context as { session: AuthSession }).session,
+      { org: params.org, class: params.class },
+      params.session,
+    ),
   component: lazyRouteComponent(classScreens, "SessionReportScreen"),
 });
 const schoolClassReportCards = createRoute({
@@ -1752,8 +1689,19 @@ const fallback = createRoute({
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
   loader: async ({ location }) => {
+    const student = (
+      queryClient.getQueryData(sessionOptions.queryKey) as
+        AuthSession | null | undefined
+    )?.token?.startsWith("st_");
     await Promise.all([
       legacy.preload?.(),
+      // A school student's practice bar holds the raised hand: its code
+      // arrives with the screen, so the bar never gains a button after
+      // paint. Nobody else downloads it.
+      student &&
+        import("../features/live/RaiseHandSlot").then((slot) =>
+          slot.preloadRaiseHand(),
+        ),
       location.pathname === "/overview" &&
         import("../lib/learning-view").then((view) =>
           view.preloadOverviewLevel({
@@ -2078,7 +2026,7 @@ router.subscribe("onResolved", ({ toLocation }) => {
 // A device handed to a child from a parent's screen: the child's identity
 // arrives in the same render as the screen that mounts next (practice), so
 // the parent's screen never redraws for the child first
-// (features/school/join/api.ts).
+// (features/school/join/deferred-identity.ts).
 router.subscribe("onBeforeRouteMount", () => applyDeferredIdentity());
 // A link from before the layer store names its layers in the address
 // (`?open=`): once the screen is on view they move into the store

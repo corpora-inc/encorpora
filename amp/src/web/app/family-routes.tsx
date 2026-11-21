@@ -5,10 +5,9 @@ import {
 } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
-import { classYearOptions, preload } from "../features/school/core-api";
+import { preload } from "../features/school/core-api";
 import {
   childProgressOptions,
-  familyDashboardOptions,
   familyOptions,
   familyPlacesOptions,
 } from "../features/family/api";
@@ -45,47 +44,6 @@ async function ownFamily(session: AuthSession) {
     .fetchQuery(familyPlacesOptions(session))
     .catch(orNull("Your families"));
   return { places, family: landingFamily(places) };
-}
-
-/**
- * A family's practice sessions, with the Today that shows them: the class's
- * `can`, the live snapshot (a session already running paints with the
- * cockpit in place, its chunk loaded with it) and the first page of past
- * sessions, for a parent who may watch them. Nothing is asked of a family
- * that may not (a co-teacher, say), and a family with nothing running loads
- * none of the cockpit's code.
- */
-async function familySessions(session: AuthSession, familyId: string) {
-  const [data, me] = await Promise.all([
-    queryClient
-      .ensureQueryData(familyOptions(session, familyId))
-      .catch(orNull("The family")),
-    queryClient
-      .ensureQueryData(meOptions(session))
-      .catch(orNull("Your account")),
-  ]);
-  const own = ownClassOf(me?.signedIn ? me : null, familyId, data);
-  if (!own) return null;
-  const [year, { liveOptions, sessionsOptions }] = await Promise.all([
-    preload(classYearOptions(session, own.id)) as Promise<
-      { can?: readonly string[] } | undefined
-    >,
-    import("../features/live/api"),
-  ]);
-  if (!year?.can?.includes("session.read")) return null;
-  const place = { org: own.org, class: own.id };
-  const [snapshot] = await Promise.all([
-    preload(liveOptions(session, place)) as Promise<
-      { session: unknown; signals: unknown[] } | undefined
-    >,
-    preload(sessionsOptions(session, place)),
-  ]);
-  // Running, or a child asking: the cockpit is there on first paint.
-  if (snapshot && (snapshot.session || snapshot.signals.length > 0))
-    await import("../features/family/cockpit-chunk").then(
-      ({ loadFamilyCockpit }) => loadFamilyCockpit(),
-    );
-  return own;
 }
 
 export function familyRoutes(root: AnyRoute) {
@@ -326,6 +284,9 @@ export function familyRoutes(root: AnyRoute) {
     loader: async ({ context, params }) => {
       const { session } = context as unknown as { session: AuthSession };
       const id = (params as { family: string }).family;
+      const { familyDashboardOptions } =
+        await import("../features/family/dashboard-api");
+      const { familySessions } = await import("./family-live-loaders");
       await Promise.all([
         preload(familyDashboardOptions(session, id)),
         familySessions(session, id),
@@ -347,23 +308,25 @@ export function familyRoutes(root: AnyRoute) {
         family: string;
         session: string;
       };
-      const [own, { sessionReportOptions }] = await Promise.all([
+      const [
+        { familySessions },
+        { sessionReport },
+        { familyDashboardOptions },
+      ] = await Promise.all([
+        import("./family-live-loaders"),
+        import("./class-live-loaders"),
+        import("../features/family/dashboard-api"),
+      ]);
+      const [own] = await Promise.all([
         familySessions(session, id),
-        import("../features/live/api"),
         preload(familyDashboardOptions(session, id)),
       ]);
       if (own)
-        await queryClient
-          .ensureQueryData(
-            sessionReportOptions(
-              session,
-              { org: own.org, class: own.id },
-              sessionId,
-            ),
-          )
-          .catch((error: unknown) =>
-            console.warn("The session's report didn’t load ahead", error),
-          );
+        await sessionReport(
+          session,
+          { org: own.org, class: own.id },
+          sessionId,
+        );
     },
     component: lazyRouteComponent(
       () => import("../features/family/FamilyReport"),
@@ -396,30 +359,12 @@ export function familyRoutes(root: AnyRoute) {
         staticData: { overList: true },
         // The page under it, and the results themselves: the sheet opens
         // whole, its title the workbook's own.
-        loader: async (input) => {
-          const { session } = input.context as unknown as {
-            session: AuthSession;
-          };
-          const {
-            family: id,
-            learner,
-            workbookId,
-          } = input.params as {
-            family: string;
-            learner: string;
-            workbookId: string;
-          };
-          const [data, { workbookResultsOptions }] = await Promise.all([
-            queryClient
-              .ensureQueryData(familyOptions(session, id))
-              .catch(orNull("The family")),
-            import("../features/workbooks/api"),
-            childLoader(input),
-          ]);
-          const child = data?.children.find((entry) => entry.id === learner);
-          if (child?.capabilities.readWorkbooks)
-            await preload(workbookResultsOptions(session, learner, workbookId));
-        },
+        loader: async (input) =>
+          (await import("./family-workbook-results")).resultsLoader(
+            input,
+            childLoader,
+            orNull("The family"),
+          ),
         component: screen("ChildScreen"),
       }),
       childScreen(
