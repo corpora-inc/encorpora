@@ -37,6 +37,7 @@ import {
   type StudentResource,
 } from "./contracts.js";
 import { recordEvent } from "./events.js";
+import { notePersonEvent } from "./live/events.js";
 import { YEAR_IN_USE } from "./years.js";
 import { allocateLabel } from "../server/learner-label.js";
 
@@ -852,6 +853,8 @@ export class SchoolRepository {
           expiresAt,
         ],
       );
+      // Signed in: a running class session sees them arrive (schools/live).
+      await notePersonEvent(client, student.id, "presence");
       return {
         token,
         accountId: schoolAccountId(student.id),

@@ -27,6 +27,7 @@ import { defineTeacherRoutes } from "./teacher-routes.js";
 import { defineLmsRoutes } from "./lms-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
 import { defineStandingRoutes } from "./standing-routes.js";
+import { defineLiveRoutes } from "./live/routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
@@ -597,3 +598,4 @@ defineStandingRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);
 defineDemoRoutes(defineSchoolRoute);
+defineLiveRoutes(defineSchoolRoute);
