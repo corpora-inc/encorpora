@@ -1,0 +1,42 @@
+/* The last five answers (RecentAnswers.tsx): five fixed slots. */
+.strip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  width: calc(5 * 12px + 4 * 4px);
+  height: 12px;
+}
+.cell,
+.strip .newest {
+  display: block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+}
+.slot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  overflow: visible;
+}
+.right {
+  fill: var(--color-success-accent);
+}
+.assisted {
+  fill: none;
+  stroke: var(--color-success-accent);
+  stroke-width: 2;
+}
+.wrong {
+  fill: none;
+  stroke: var(--color-danger-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.empty {
+  fill: var(--color-border-strong);
+  opacity: 0.55;
+}

@@ -54,11 +54,18 @@ export async function registerCleverConnectionIn(
     if (!acquired) throw new SchoolError(409, "clever_sync_already_running", 1);
   }
   await requireAgreement(db, input.tenantId);
+  // Events are on unless an operator turned them off (`eventsEnabled: false`).
+  // A reconnect without the flag keeps whatever the connection had, so an
+  // operator's opt-out survives a district re-running self-serve connect.
+  // Reconnecting a disconnected district drops its Events baseline, so the
+  // first sync afterwards is a complete snapshot, not a delta on archived rows.
   const result = await db.query(
     `INSERT INTO amp_clever_connections(id,environment,district_id,tenant_id,events_enabled)
-    VALUES($1,$2,$3,$4,COALESCE($5,false))
+    VALUES($1,$2,$3,$4,COALESCE($5,true))
     ON CONFLICT(environment,district_id) DO UPDATE SET status='active',disconnected_at=NULL,
-      events_enabled=COALESCE($5,amp_clever_connections.events_enabled)
+      events_enabled=COALESCE($5,amp_clever_connections.events_enabled),
+      events_baseline_at=CASE WHEN amp_clever_connections.status='active'
+        THEN amp_clever_connections.events_baseline_at END
     WHERE amp_clever_connections.tenant_id=EXCLUDED.tenant_id RETURNING id`,
     [
       randomUUID(),

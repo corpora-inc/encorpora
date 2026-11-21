@@ -1,0 +1,133 @@
+/* The "Needs you" strip (SignalStrip.tsx): one fixed 48 px line. Requests
+   are objects to touch, so each is a tinted pill; the strip itself is the
+   page, with a hairline under it. */
+.strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  height: 48px;
+  min-width: 0;
+  overflow: hidden;
+}
+.label {
+  display: none;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  width: 112px;
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.strip[data-roomy] .label,
+.strip[data-empty] .label {
+  display: flex;
+}
+.count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding-inline: 6px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: var(--color-warning-accent);
+  color: var(--color-surface);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  font-weight: 700;
+}
+.count:empty {
+  visibility: hidden;
+}
+.quiet {
+  margin: 0;
+  color: var(--color-subtle-text);
+  font-size: var(--text-table);
+}
+.requests {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.request {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  height: 48px;
+  padding: 2px 2px 2px var(--space-3);
+  border-radius: var(--radius-control);
+  background: var(--color-warning);
+  color: var(--color-on-warning);
+}
+.who {
+  display: grid;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.name {
+  overflow: hidden;
+  font-size: var(--text-table);
+  font-weight: 650;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.what {
+  overflow: hidden;
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  line-height: 1.25;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.request .action,
+.sheetRow .action {
+  flex: none;
+  min-height: 44px;
+  padding-block: 0;
+  padding-inline: var(--space-3);
+  font-size: var(--text-table);
+}
+.strip .more {
+  flex: none;
+  width: 56px;
+  min-height: 44px;
+  margin-inline-start: auto;
+  padding: 0;
+  font-variant-numeric: var(--numeric);
+}
+.sheetList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sheetRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 64px;
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
