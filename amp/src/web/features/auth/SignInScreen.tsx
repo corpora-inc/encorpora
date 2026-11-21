@@ -45,6 +45,7 @@ import {
   continuationUrl,
   fundedAttribution,
 } from "../../lib/funded-entry";
+import { useInvitedEmail } from "../school/invited-email";
 import { useAuthDraft } from "./draft";
 import { authMove } from "../../app/auth-links";
 import {
@@ -250,6 +251,7 @@ export function SignInScreen() {
   // it free or Buy, a partner's link; never on the address). A sign-in on
   // its way somewhere else (a school, an invitation) isn't a pitch sign-up.
   const carry = continuationSearch(routeLocation.search);
+  useInvitedEmail(carry.return === "school-invite");
   const intent =
     carry.return && carry.return !== "free-practice" ? {} : signUpIntent();
   const entry = carry.entry ?? intent.entry;
@@ -1114,15 +1116,33 @@ export function SignInScreen() {
               >
                 Forgot password?
               </button>
-              <button
-                className="text-button"
-                disabled={busy || !!pending}
-                onClick={() => go("create")}
-              >
-                Create an account
-              </button>
+              {carry.return !== "school-invite" && (
+                <button
+                  className="text-button"
+                  disabled={busy || !!pending}
+                  onClick={() => go("create")}
+                >
+                  Create an account
+                </button>
+              )}
             </>
           )}
+          {step === "sign-in" &&
+            passwords &&
+            carry.return === "school-invite" && (
+              // An invitee who has no account yet finds the way in plainly,
+              // as the sign-up screen offers the way back.
+              <p className={`${styles.hint} ${styles.switchAccount}`}>
+                New to AMP?{" "}
+                <button
+                  className={styles.inlineLink}
+                  disabled={busy || !!pending}
+                  onClick={() => go("create")}
+                >
+                  Create an account
+                </button>
+              </p>
+            )}
           {step === "create" && (
             <>
               {passkeyCreate && passwords && !passkeyMethod && (
