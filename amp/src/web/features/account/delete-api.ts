@@ -15,7 +15,11 @@ export const deletionPreviewOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: qk.account(session.accountId, "deletion"),
     staleTime: 0,
-    refetchOnMount: "always",
+    // Fresh each time the overlay opens: read again on mount, unless the
+    // overlay's own route just read it (app/account-overlays.tsx), so it
+    // opens whole rather than reading twice and swapping in its list.
+    refetchOnMount: ({ state }: { state: { dataUpdatedAt: number } }) =>
+      Date.now() - state.dataUpdatedAt > 5_000,
     retry: false,
     queryFn: async ({ signal }) => {
       const started = Date.now();
