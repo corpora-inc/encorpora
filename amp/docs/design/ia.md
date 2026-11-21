@@ -30,8 +30,8 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 | -------------------- | --------------------------- | ------------------------------------------------------------- | -------------------------- |
 | My practice          | an adult learner            | Overview · Pathways · Inventory                               | ▶ Practice                 |
 | Family               | a parent, the second parent | Today · Settings                                              | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor                     | Today · Map · Workbooks · Time · Report cards · People · Settings | Start class                |
-| Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class                |
+| Class (tutor, co-op) | a tutor                     | Today · Map · Workbooks · Time · Report cards · People · Settings | Start class (a live session) |
+| Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class (a live session) |
 | School               | an admin                    | Overview · Classes · Staff · Activity · Settings              | none                       |
 | Account              | everyone, from the drawer   | Sign-in · Learners · Billing · Privacy                        | none                       |
 
@@ -104,7 +104,7 @@ Every setting lives in exactly one place, chosen by its scope: school (or distri
 | Data agreement, what AMP collects, export, deletion                               | school                         | School Settings → Privacy and data                                                                         | —                                                       |
 | Google and Microsoft sign-in, rostering                                           | school                         | School Settings → Integrations                                                                             | Staff → Sign-in help                                    |
 | Staff and their roles                                                             | school                         | Staff                                                                                                      | —                                                       |
-| Class code and join link                                                          | class                          | Class Settings                                                                                             | the Start class board shows it                          |
+| Class code and join link                                                          | class                          | Class Settings                                                                                             | Today's code and the sign-in board show it              |
 | Roster and sign-in cards                                                          | class                          | Students (school class) or People (family org)                                                             | —                                                       |
 | Second parent, co-teachers, other families' children                              | family org                     | People                                                                                                     | —                                                       |
 | A learner's name, birth year, SAT focus, deletion                                 | learner                        | Account → Learners                                                                                         | —                                                       |
@@ -164,7 +164,9 @@ Each of these is that person's own composition of shared components (rule 6). Th
 
 ### Teacher (a school's class)
 
-- **Today:** the Today feed, as in the product shots. Each item is an action with its reason:
+- **Today is the live session's cockpit (#2465).** Its top is the session control: at rest Start class with its length and the requests strip ("Needs you", one line); while a session runs, the cockpit (clock and Stop, the totals, requests, every student live, needs-you first, rows that never reorder by themselves). The feed and the week stay below it. Stop asks, then opens the session's report, a page of its own under Time (`sessions/<session>`): the headline, who to follow up with first, every student, the skills worked on. It prints with Cmd+P. Time lists the class's sessions. A session that ends by its own time stays on screen as it ended, with its report a tap away.
+- **The bar's Start class starts the session** and lands on Today; on Today itself the page's control is the action. While a session runs, every other tab's bar shows Live with the clock, back to Today. The projected sign-in board opens from Today's code (Full screen); the cockpit is private, the board public.
+- **Today's feed:** as in the product shots. Each item is an action with its reason:
   - a group stuck on a skill (Teach this lesson, or Print a group sheet);
   - a student to sit with;
   - students behind the week's target;
