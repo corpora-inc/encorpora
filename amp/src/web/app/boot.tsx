@@ -104,14 +104,23 @@ function render() {
 }
 
 /** The app, on every document but the signed-out pitch's. */
+/** The title of the address the first screen loads, before it paints:
+ * `index.html` carries the pitch's, and only `/` may still become the pitch.
+ * Written again, the same, once the route resolves (RouterView). */
+function headAhead(pathname: string, search: string) {
+  if (pathname === "/") return;
+  const head = routeHead(`${pathname}${search}`, "app");
+  if (head) applyRouteHead(document, head);
+}
+
 export function bootApp() {
-  // The screen's title from its first frame: `index.html` carries the
-  // pitch's, and only `/` may still become the pitch. Written again, the same,
-  // once the route resolves (RouterView).
-  if (location.pathname !== "/") {
-    const head = routeHead(`${location.pathname}${location.search}`, "app");
-    if (head) applyRouteHead(document, head);
-  }
+  headAhead(location.pathname, location.search);
+  // A hop on the way to the first screen (an old address, the sign-in gate)
+  // names the screen it lands on, before that screen paints.
+  const stop = router.subscribe("onBeforeLoad", ({ toLocation }) => {
+    if (router.state.resolvedLocation) return stop();
+    headAhead(toLocation.pathname, toLocation.searchStr);
+  });
   start();
   render();
 }
