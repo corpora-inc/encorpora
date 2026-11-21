@@ -857,7 +857,11 @@ export class SchoolRepository {
       // Signed in: a running class session sees them arrive (schools/live).
       await notePersonEvent(client, student.id, "presence");
       await resolvePersonSignals(
-        client, student.id, "forgot_picture", "withdrawn", student.id,
+        client,
+        student.id,
+        "forgot_picture",
+        "withdrawn",
+        student.id,
       );
       return {
         token,

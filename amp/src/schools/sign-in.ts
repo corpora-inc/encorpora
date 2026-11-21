@@ -550,7 +550,11 @@ export class SchoolSignIn {
         detail: { before: { picturesSet: !!reset.rowCount } },
       });
       await resolvePersonSignals(
-        client, personId, "forgot_picture", "reset", actorPersonId,
+        client,
+        personId,
+        "forgot_picture",
+        "reset",
+        actorPersonId,
       );
       return { reset: !!reset.rowCount };
     });
