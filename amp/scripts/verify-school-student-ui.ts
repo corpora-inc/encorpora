@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { readLearner } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
@@ -10,10 +11,11 @@ import { retentionNotice } from "../src/family/contracts";
 /** A school student in the real app with its real auth module, against a mocked
  * API: no parent chrome, nothing to buy, no analytics, and a bad token lands on
  * /join. Student sign-in itself is in verify-school-sign-in-ui.ts. */
-const port = 4393,
+const port = Number(process.env.AMP_WEB_PORT ?? 4393),
   origin = `http://127.0.0.1:${port}`;
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-student",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-student",
   server: { host: "127.0.0.1", port, strictPort: true },
 });
 const shots = process.env.AMP_UI_ARTIFACTS ?? "artifacts/school-student";
@@ -152,15 +154,7 @@ async function open(
         json: { asOf: "2026-01-01T00:00:00.000Z", skills: [] },
       });
     if (path.endsWith("/practice-state"))
-      return route.fulfill({
-        json: {
-          epoch: 0,
-          revision: 0,
-          strandStarts: {},
-          focusSkillId: null,
-          workingTogether: false,
-        },
-      });
+      return route.fulfill({ json: practiceStateFixture() });
     if (path.endsWith("/batches")) {
       if (state.batchRefused) state.seated = false;
       return route.fulfill({
@@ -341,6 +335,14 @@ try {
       assert.equal(await page.getByText("Choose a plan").count(), 0);
       await noOverflow(page, `seat card ${label}`);
       await page.screenshot({ path: `${shots}/seat-${label}.png` });
+      // The screen's own reads come first, its look's among them: a
+      // student's screens wear their look (features/practice/LookHost.tsx),
+      // read once its code is in. The drawer then reuses them.
+      const look = `/api/v1/learners/${learnerId}/practice-state`;
+      if (!requests.includes(look))
+        await page.waitForResponse(
+          (response) => new URL(response.url()).pathname === look,
+        );
       const reads = requests.length;
       await drawer(page);
       const menu = page.getByRole("navigation", { name: "AMP navigation" });
