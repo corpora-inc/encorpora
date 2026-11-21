@@ -619,7 +619,8 @@
   .today[data-live] .head {
     gap: var(--space-1);
   }
-  .today[data-live] .heldLine {
+  /* Always, note or none: one arriving late would push the roster down. */
+  .today[data-live] .title p[data-pilot-left] {
     display: none;
   }
 }
