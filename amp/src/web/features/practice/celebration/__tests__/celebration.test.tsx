@@ -57,7 +57,8 @@ const running = () =>
   [...document.querySelectorAll<HTMLElement>("[data-part][data-run]")].map(
     (node) => `${node.dataset.part}:${node.dataset.kind}`,
   );
-const settle = () => act(async () => new Promise((r) => setTimeout(r, 0)));
+// A frame: moments start on the frame after the verdict.
+const settle = () => act(async () => new Promise((r) => setTimeout(r, 40)));
 const total = () =>
   queryClient.getQueryData(practiceSettingsOptions(scope).queryKey)?.points;
 

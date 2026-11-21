@@ -360,5 +360,51 @@ test(
         assert.equal(refused.statusCode, 400);
       },
     );
+
+    await t.test(
+      "practice-state carries points: every right answer without help",
+      async () => {
+        const path = `/api/v1/learners/${ada.learnerId}`;
+        const points = async () =>
+          ((await stateOf(ada.learnerId, ada.token)) as { points?: number })
+            .points;
+        const answer = async (right: boolean) => {
+          const batch = await post(`${path}/batches`, ada.token, {
+            templateId: "add-within-20",
+            count: 1,
+            figureCapabilities: ["scenes-v1"],
+          });
+          const problem = batch.json().problems[0];
+          const stored = await learning.transaction(
+            schoolAccountId(ada.personId),
+            ada.learnerId,
+            (tx) => tx.problem(problem.id),
+          );
+          const attempt = await post(`${path}/attempts`, ada.token, {
+            problemId: problem.id,
+            requestId: randomUUID(),
+            response: right ? stored!.answer : "999",
+          });
+          assert.equal(attempt.statusCode, 200, attempt.body);
+          assert.equal(attempt.json().correct, right);
+        };
+        // The four right answers above.
+        const before = await points();
+        assert.equal(before, 4);
+        await answer(true);
+        assert.equal(await points(), before + 1);
+        await answer(false);
+        assert.equal(await points(), before + 1, "a miss takes nothing");
+        // The look change's answer carries the same total.
+        const changed = await post(`${path}/practice-state`, ada.token, {
+          kind: "look",
+          look: "bold",
+          revision: (await stateOf(ada.learnerId, ada.token)).revision,
+          requestId: randomUUID(),
+        });
+        assert.equal(changed.statusCode, 200, changed.body);
+        assert.equal(changed.json().points, before + 1);
+      },
+    );
   },
 );

@@ -15,7 +15,7 @@ const CHIP_WIDTH = 104;
 const CHIP_HEIGHT = 36;
 /** How long each moment runs, in ms (the CSS durations, plus any delay). */
 export const DURATION = {
-  burst: 760,
+  burst: 900,
   flight: 560,
   confetti: 2900,
   stamp: 1500,
@@ -46,6 +46,14 @@ type Group =
   "burst" | "flyer" | "confetti" | "stamp" | "sweep" | "chip" | "chipSparks";
 
 export type Stage = ReturnType<typeof createStage>;
+type Play = {
+  moments: readonly Moment[];
+  /** The total before and after the answer; null: unknown (no "+1"). */
+  from: number | null;
+  to: number | null;
+  /** No motion: each moment is a plain change of state. */
+  reduced: boolean;
+};
 
 function element<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -83,12 +91,12 @@ export function createStage(host: HTMLElement = document.body) {
 
   // The burst: rays from the result mark.
   const burst = element("div", styles.burst!, root);
-  const sparks = pieceCount(14, cores);
+  const sparks = pieceCount(18, cores);
   for (let i = 0; i < sparks; i++) {
     const spark = element("i", styles.spark!, burst);
     const angle = (360 / sparks) * i + (rand() * 14 - 7);
     spark.style.setProperty("--angle", `${angle.toFixed(1)}deg`);
-    spark.style.setProperty("--reach", `${Math.round(70 + rand() * 60)}px`);
+    spark.style.setProperty("--reach", `${Math.round(80 + rand() * 75)}px`);
     spark.style.setProperty(
       "--hue",
       `var(--color-celebrate-${(i % HUES) + 1})`,
@@ -275,6 +283,16 @@ export function createStage(host: HTMLElement = document.body) {
     watching = null;
   }
 
+  /** The total, without motion (a moment already rolling it keeps its
+   * numbers). */
+  function setPoints(total: number | null) {
+    points = total;
+    if (!chip.dataset.run) {
+      from.textContent = "";
+      to.textContent = total == null ? "" : format(total);
+    }
+    show();
+  }
   const center = (rect: DOMRect | undefined) =>
     rect
       ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
@@ -301,7 +319,8 @@ export function createStage(host: HTMLElement = document.body) {
       holders++;
       if (holders === 1) {
         watch();
-        place();
+        // Measured with the next frame's own layout, never in a commit.
+        schedule();
       }
       show();
     },
@@ -315,102 +334,34 @@ export function createStage(host: HTMLElement = document.body) {
         show();
       });
     },
-    /** The total, without motion (a moment already rolling it keeps
-     * its numbers). */
-    setPoints(total: number | null) {
-      points = total;
-      if (!chip.dataset.run) {
-        from.textContent = "";
-        to.textContent = total == null ? "" : format(total);
-      }
-      show();
-    },
+    setPoints,
     /**
      * Plays what an answer earned. `from`/`to`: the total before and after
      * it (null when unknown: no "+1" flies). `reduced`: no motion; each
      * moment is a plain change of state instead (the number changes, the
      * chip lights, the stamp shows and goes).
      */
-    play(input: {
-      moments: readonly Moment[];
-      from: number | null;
-      to: number | null;
-      reduced: boolean;
-    }) {
-      const { moments, reduced } = input;
-      if (!placed) place();
-      const origin = center(mark());
-      const chipMoment = moments.find((moment): moment is ChipMoment =>
-        /^(streak|points)-/.test(moment),
-      );
-      if (reduced) {
-        this.setPoints(input.to ?? points);
-        if (moments.length) {
-          chip.dataset.lit = "";
-          window.setTimeout(() => delete chip.dataset.lit, DURATION.chip);
+    play(input: Play) {
+      // On the next frame: the verdict paints first, and the positions read
+      // here come from that frame's own layout, done once.
+      requestAnimationFrame(() => {
+        void document.documentElement.offsetHeight;
+        const start = performance.now();
+        playNow(input);
+        try {
+          performance.measure("amp-celebration", { start });
+        } catch (error) {
+          console.warn("Celebration timing not recorded", error);
         }
-        const word = moments.includes("strong")
-          ? "Strong"
-          : moments.includes("earned")
-            ? "Earned"
-            : null;
-        if (word) {
-          stampWord.textContent = word;
-          placeStamp(origin);
-          stamp.dataset.still = "";
-          window.setTimeout(() => delete stamp.dataset.still, DURATION.stamp);
-        }
-        return;
-      }
-      if (moments.includes("right")) {
-        burst.style.setProperty("--x", `${Math.round(origin.x)}px`);
-        burst.style.setProperty("--y", `${Math.round(origin.y)}px`);
-        run("burst", "right", DURATION.burst);
-        if (input.from != null && input.to != null) {
-          points = input.to;
-          const target = chip.getBoundingClientRect();
-          flyer.style.setProperty("--from-x", `${Math.round(origin.x)}px`);
-          flyer.style.setProperty("--from-y", `${Math.round(origin.y)}px`);
-          flyer.style.setProperty(
-            "--to-x",
-            `${Math.round(target.left + target.width / 2)}px`,
-          );
-          flyer.style.setProperty(
-            "--to-y",
-            `${Math.round(target.top + target.height / 2)}px`,
-          );
-          run("flyer", "right", DURATION.flight, true);
-          // The old number rolls away as the "+1" lands; the chip pops (a
-          // bigger pop for its own moments).
-          from.textContent = format(input.from);
-          to.textContent = format(input.to);
-          chip.style.setProperty("--land", `${DURATION.flight - 60}ms`);
-          run(
-            "chip",
-            chipMoment ?? "tick",
-            DURATION.flight + DURATION.chip,
-            true,
-          );
-          show();
-        }
-      }
-      if (chipMoment) {
-        chipSparks.style.setProperty("--after", `${DURATION.flight - 60}ms`);
-        run("chipSparks", chipMoment, DURATION.flight + DURATION.chip, true);
-      }
-      if (moments.includes("earned")) {
-        stampWord.textContent = "Earned";
-        placeStamp(origin);
-        run("stamp", "earned", DURATION.stamp);
-      }
-      if (moments.includes("strong"))
-        run("confetti", "strong", DURATION.confetti);
+      });
     },
     /** A new problem: the glint along the bar's foot. */
     sweep(reduced: boolean) {
       if (reduced) return;
-      if (!placed) place();
-      run("sweep", "new", DURATION.sweep, true);
+      requestAnimationFrame(() => {
+        if (!placed) place();
+        run("sweep", "new", DURATION.sweep, true);
+      });
     },
     running,
     destroy() {
@@ -419,6 +370,77 @@ export function createStage(host: HTMLElement = document.body) {
       root.remove();
     },
   };
+
+  function playNow(input: Play) {
+    const { moments, reduced } = input;
+    if (!placed) place();
+    const origin = center(mark());
+    const chipMoment = moments.find((moment): moment is ChipMoment =>
+      /^(streak|points)-/.test(moment),
+    );
+    if (reduced) {
+      setPoints(input.to ?? points);
+      if (moments.length) {
+        chip.dataset.lit = "";
+        window.setTimeout(() => delete chip.dataset.lit, DURATION.chip);
+      }
+      const word = moments.includes("strong")
+        ? "Strong"
+        : moments.includes("earned")
+          ? "Earned"
+          : null;
+      if (word) {
+        stampWord.textContent = word;
+        placeStamp(origin);
+        stamp.dataset.still = "";
+        window.setTimeout(() => delete stamp.dataset.still, DURATION.stamp);
+      }
+      return;
+    }
+    if (moments.includes("right")) {
+      burst.style.setProperty("--x", `${Math.round(origin.x)}px`);
+      burst.style.setProperty("--y", `${Math.round(origin.y)}px`);
+      run("burst", "right", DURATION.burst);
+      if (input.from != null && input.to != null) {
+        points = input.to;
+        const target = chip.getBoundingClientRect();
+        flyer.style.setProperty("--from-x", `${Math.round(origin.x)}px`);
+        flyer.style.setProperty("--from-y", `${Math.round(origin.y)}px`);
+        flyer.style.setProperty(
+          "--to-x",
+          `${Math.round(target.left + target.width / 2)}px`,
+        );
+        flyer.style.setProperty(
+          "--to-y",
+          `${Math.round(target.top + target.height / 2)}px`,
+        );
+        run("flyer", "right", DURATION.flight, true);
+        // The old number rolls away as the "+1" lands; the chip pops (a
+        // bigger pop for its own moments).
+        from.textContent = format(input.from);
+        to.textContent = format(input.to);
+        chip.style.setProperty("--land", `${DURATION.flight - 60}ms`);
+        run(
+          "chip",
+          chipMoment ?? "tick",
+          DURATION.flight + DURATION.chip,
+          true,
+        );
+        show();
+      }
+    }
+    if (chipMoment) {
+      chipSparks.style.setProperty("--after", `${DURATION.flight - 60}ms`);
+      run("chipSparks", chipMoment, DURATION.flight + DURATION.chip, true);
+    }
+    if (moments.includes("earned")) {
+      stampWord.textContent = "Earned";
+      placeStamp(origin);
+      run("stamp", "earned", DURATION.stamp);
+    }
+    if (moments.includes("strong"))
+      run("confetti", "strong", DURATION.confetti);
+  }
 
   /** The stamp lands on the feedback sheet's upper corner, beside the mark
    * (or, with no sheet, high in the middle). */

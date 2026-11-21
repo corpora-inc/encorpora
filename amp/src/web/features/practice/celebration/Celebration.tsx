@@ -71,6 +71,7 @@ export function Celebration({ outcome, mastered, problemId }: Props) {
   useLayoutEffect(() => {
     if (!outcome || seen.current === outcome.id || !scope) return;
     seen.current = outcome.id;
+    const started = performance.now();
     const learner = learnerKey(scope);
     const store = useCelebrationStore.getState();
     const before = points;
@@ -96,10 +97,21 @@ export function Celebration({ outcome, mastered, problemId }: Props) {
         to: counted && before != null ? before + 1 : null,
         reduced,
       });
+    measured(started);
     // Graded once per answer; the rest is read as it stood then.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [outcome?.id]);
   return null;
+}
+
+/** The celebration's own main-thread time, as a user timing entry
+ * (scripts/verify-celebration-ui.ts holds it under a long task). */
+function measured(start: number) {
+  try {
+    performance.measure("amp-celebration", { start });
+  } catch (error) {
+    console.warn("Celebration timing not recorded", error);
+  }
 }
 
 /** The Strong moment's sound: the milestone chord, once the answer's own
@@ -136,8 +148,10 @@ export function useEvidenceMoments(
       before,
     }).filter((moment) => store.play(outcome.id, moment));
     if (!moments.length) return;
+    const started = performance.now();
     if (moments.includes("strong")) playMilestoneSoon();
     stage().play({ moments, from: null, to: null, reduced });
+    measured(started);
     // Once, when the record arrives.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [outcome?.id, !!evidence]);
