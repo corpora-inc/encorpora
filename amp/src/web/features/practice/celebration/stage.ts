@@ -199,9 +199,14 @@ export function createStage(host: HTMLElement = document.body) {
     else delete chip.dataset.shown;
   };
 
-  /** Where the chip sits: in the app bar's top row, at the right end of the
-   * widest free stretch nearest the right (after the topic, before the bar's
-   * own actions and tools, whatever they are), else just under the bar. */
+  /**
+   * Where the chip sits: in the app bar's top row, at the right end of the
+   * free stretch nearest the right (after the topic, before the bar's own
+   * tools and actions, whatever they are, including slots they keep
+   * hidden). Where the row is too full (a phone with a name in the bar),
+   * it takes the wordmark's place beside the logo's wave, which stays the
+   * menu's button under it. Else just under the bar.
+   */
   function place() {
     placed = true;
     const bar = document.querySelector("[data-app-bar]");
@@ -209,13 +214,15 @@ export function createStage(host: HTMLElement = document.body) {
     let left = width - CHIP_WIDTH - 16;
     let top = 10;
     let foot = 56;
+    let byLogo = false;
     if (bar) {
       const box = bar.getBoundingClientRect();
       const logo = bar.firstElementChild?.getBoundingClientRect();
       const rowTop = box.top;
       const rowBottom = logo ? logo.bottom + 6 : box.top + 56;
       foot = box.bottom;
-      const taken: [number, number][] = [];
+      const wordmark = bar.querySelector("[data-navigation-trigger] span");
+      const taken: [number, number, boolean][] = [];
       for (const node of bar.querySelectorAll<HTMLElement | SVGElement>("*")) {
         const leaf =
           node instanceof SVGSVGElement ||
@@ -224,34 +231,54 @@ export function createStage(host: HTMLElement = document.body) {
             (child) =>
               child.nodeType === Node.TEXT_NODE && !!child.textContent?.trim(),
           );
-        if (!leaf) continue;
+        // The logo's button is its mark and its wordmark, each its own.
+        if (!leaf || node.hasAttribute("data-navigation-trigger")) continue;
         const rect = node.getBoundingClientRect();
         if (!rect.width || !rect.height) continue;
         if (rect.bottom <= rowTop || rect.top >= rowBottom) continue;
-        taken.push([rect.left, rect.right]);
+        taken.push([rect.left, rect.right, node === wordmark]);
       }
       taken.sort((a, b) => a[0] - b[0]);
       const inset = width >= 768 ? 24 : 12;
       const gap = 12;
-      // Free stretches between what the row holds, right to left.
-      const edges: [number, number][] = [];
-      let cursor = box.left + inset;
-      for (const [start, end] of taken) {
-        if (start > cursor) edges.push([cursor, start]);
-        cursor = Math.max(cursor, end);
-      }
-      edges.push([cursor, box.right - inset]);
-      const fits = edges
+      const need = CHIP_WIDTH + gap * 2;
+      /** Free stretches between what the row holds. */
+      const stretches = (
+        free: (entry: [number, number, boolean]) => boolean,
+      ) => {
+        const edges: [number, number][] = [];
+        let cursor = box.left + inset;
+        for (const entry of taken) {
+          if (free(entry)) continue;
+          if (entry[0] > cursor) edges.push([cursor, entry[0]]);
+          cursor = Math.max(cursor, entry[1]);
+        }
+        edges.push([cursor, box.right - inset]);
+        return edges;
+      };
+      const middle = (rowTop + rowBottom - 6 - CHIP_HEIGHT) / 2;
+      const fits = stretches(() => false)
         .reverse()
-        .find(([start, end]) => end - start >= CHIP_WIDTH + gap * 2);
+        .find(([start, end]) => end - start >= need);
+      const beside = fits
+        ? undefined
+        : stretches(([, , mark]) => mark).find(
+            ([start, end]) => end - start >= CHIP_WIDTH + gap,
+          );
       if (fits) {
         left = fits[1] - gap - CHIP_WIDTH;
-        top = rowTop + (rowBottom - 6 - rowTop - CHIP_HEIGHT) / 2 + 3;
+        top = middle;
+      } else if (beside) {
+        left = beside[0] + gap / 2;
+        top = middle;
+        byLogo = true;
       } else {
         left = box.right - inset - CHIP_WIDTH;
         top = box.bottom + 8;
       }
     }
+    if (byLogo) document.documentElement.dataset.pointsChip = "logo";
+    else delete document.documentElement.dataset.pointsChip;
     root.style.setProperty("--chip-left", `${Math.round(left)}px`);
     root.style.setProperty("--chip-top", `${Math.round(top)}px`);
     root.style.setProperty("--bar-foot", `${Math.round(foot)}px`);
@@ -276,6 +303,9 @@ export function createStage(host: HTMLElement = document.body) {
         subtree: true,
         characterData: true,
       });
+    // The bar's content settles after the chip first shows (a name, the
+    // tools): look again once things have drawn.
+    window.setTimeout(schedule, 300);
   }
   function unwatch() {
     window.removeEventListener("resize", schedule);
@@ -331,6 +361,7 @@ export function createStage(host: HTMLElement = document.body) {
       queueMicrotask(() => {
         if (holders > 0) return;
         unwatch();
+        delete document.documentElement.dataset.pointsChip;
         show();
       });
     },
@@ -366,6 +397,7 @@ export function createStage(host: HTMLElement = document.body) {
     running,
     destroy() {
       unwatch();
+      delete document.documentElement.dataset.pointsChip;
       for (const timer of timers.values()) window.clearTimeout(timer);
       root.remove();
     },

@@ -41,6 +41,24 @@
   transform: translateY(2px);
 }
 
+/* A choice's letters each wear a confetti color, quietly: a tint behind
+   the letter, never behind the math. The chosen one takes the accent. */
+:root[data-look="bold"] .choice-option:not(.selected) .choice-letter {
+  background: color-mix(in srgb, var(--hue) 26%, var(--color-surface));
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 1) {
+  --hue: var(--color-celebrate-1);
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 2) {
+  --hue: var(--color-celebrate-2);
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 3) {
+  --hue: var(--color-celebrate-3);
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 4) {
+  --hue: var(--color-celebrate-4);
+}
+
 /* A right answer's sheet: the success roles, with a bright top edge. */
 :root[data-look="bold"] .feedback.correct {
   border-color: var(--color-success-accent);
@@ -61,4 +79,13 @@
     opacity: 0;
     transform: translateY(12px);
   }
+}
+
+/* A phone's bar with no room for the points chip: the chip takes the
+   wordmark's place beside the wave (celebration/stage.ts). The logo stays
+   the menu's button, its size unchanged. */
+:root[data-look="bold"][data-points-chip="logo"]
+  [data-navigation-trigger]
+  span {
+  visibility: hidden;
 }

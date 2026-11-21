@@ -100,6 +100,18 @@ test("leaving practice (host disabled) clears it", async () => {
   expect(bold()).toBeNull();
 });
 
+test("two hosts (a student's screens and their practice) share it: it stays until the last leaves", async () => {
+  const shell = render(wrap(<Host learnerId="maya" />));
+  const practice = render(wrap(<Host learnerId="maya" />));
+  await waitFor(() => expect(bold()).toBe("bold"));
+  // Practice leaves for standings: the shell still holds it.
+  practice.unmount();
+  expect(bold()).toBe("bold");
+  // The student signs out (the shell's host goes): gone.
+  shell.unmount();
+  expect(bold()).toBeNull();
+});
+
 test("the setting offers Calm and Colorful, saves a choice as the look change", async () => {
   render(wrap(<LookSetting scope={scope("sam")} />));
   const colorful = await screen.findByRole("radio", { name: "Colorful" });
