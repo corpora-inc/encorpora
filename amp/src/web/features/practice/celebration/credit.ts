@@ -98,10 +98,12 @@ export function useEvidenceMoments(
       before,
     }).filter((moment) => store.play(outcome.id, moment));
     if (!moments.length) return;
-    const started = performance.now();
     if (moments.includes("strong")) playMilestoneSoon();
     import("./stage").then(
       ({ stage }) => {
+        // Timed from here: the wait for the code is not the celebration's
+        // own work on the main thread.
+        const started = performance.now();
         stage().play({ moments, from: null, to: null, reduced });
         measured(started);
       },
