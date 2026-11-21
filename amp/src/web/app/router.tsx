@@ -390,6 +390,10 @@ async function beforeStart({
     // kept for the account; the next steps are plain paths.
     fundedSetup(session.accountId, location.search),
   );
+  // Nothing left to set up: the account's own place in this one hop, never
+  // `/` and a second hop from there.
+  if (target === "/" && !Object.keys(search).length)
+    await toOwnPlace(me.signedIn ? me : undefined);
   if (target) elsewhere(withQuery(target, search));
 }
 /**
