@@ -15,8 +15,7 @@ export function LookHost({ scope }: { scope: PracticeScope }) {
   // paints their screens, before that code or the server's answer arrives
   // (look-ahead.ts). Here, not in the app frame: only a student's screens
   // mount this, and the frame's own effects stay as they were for everyone
-  // else (a layout effect there changed how an adult's Overview sized its
-  // page of cards; scripts/verify-progress-ui.ts).
+  // else.
   const learner = scope.learnerId;
   useLayoutEffect(() => dressAhead(learner), [learner]);
   return (
