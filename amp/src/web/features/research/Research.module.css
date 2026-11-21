@@ -1,43 +1,123 @@
 /* `/research`, in the homepage's frame (pitch/Pitch.module.css): the same
-   width, header and footer, and on wide screens the same split, the copy
-   column on the left and the rest on the right. The title sits beside the
-   report, and each section's heading stays in view while its section scrolls. */
+   width, header and footer. The title spans the page; below it the summary
+   and the report, side by side on wide screens on the homepage's split. Each
+   section's heading stays in view while its section scrolls. */
 .main p {
   margin: 0;
 }
+
+/* The first screen. */
 .intro {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "title" "lede" "report";
   gap: var(--space-5);
+  padding-block: clamp(var(--space-5), 6vw, 104px)
+    clamp(var(--space-3), 3vw, 48px);
 }
-.copy {
-  display: grid;
-  align-content: start;
-  gap: var(--space-3);
+.main .title {
+  grid-area: title;
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(44px, 5.4vw + 18px, 92px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
-@media (min-width: 960px) {
+.lede {
+  grid-area: lede;
+  max-width: 34em;
+  color: var(--color-muted-text);
+  font-size: clamp(18px, 0.5vw + 15px, 22px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (min-width: 720px) {
+  .intro {
+    row-gap: clamp(var(--space-5), 3.5vw, 56px);
+  }
+}
+/* Wide: the summary on the copy column, the report beside it. */
+@media (min-width: 1100px) {
   .intro {
     grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+    grid-template-areas:
+      "title title"
+      "lede report";
     column-gap: var(--pitch-gutter);
-    align-items: center;
+    align-items: start;
+  }
+}
+@media (min-width: 1640px) {
+  .main .title {
+    font-size: clamp(92px, 5.6vw, 112px);
   }
 }
 
-/* The report. */
-.card {
-  box-sizing: border-box;
+/* The report: its first page beside what it is, then the PDF. */
+.report {
+  grid-area: report;
   display: grid;
-  justify-items: start;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
+  grid-template-columns: 96px minmax(0, 1fr);
+  grid-template-areas:
+    "cover about"
+    "action action"
+    "note note";
+  align-items: start;
+  gap: var(--space-4);
+  max-width: 44em;
 }
-@media (min-width: 720px) {
-  .card {
-    padding: var(--space-6);
+@media (min-width: 560px) {
+  .report {
+    grid-template-columns: clamp(140px, 15vw, 184px) minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "cover about"
+      "cover action"
+      "cover note";
+    column-gap: var(--space-5);
+    row-gap: var(--space-4);
   }
+}
+.cover {
+  grid-area: cover;
+  display: block;
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 2px 4px rgb(24 62 58 / 0.06),
+    0 14px 32px -12px rgb(24 62 58 / 0.32);
+  overflow: hidden;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.cover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 2px 4px rgb(24 62 58 / 0.06),
+    0 20px 40px -12px rgb(24 62 58 / 0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover {
+    transition: none;
+  }
+  .cover:hover {
+    transform: none;
+  }
+}
+.about {
+  grid-area: about;
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
 }
 .kicker {
   color: var(--color-muted-text);
@@ -45,13 +125,14 @@
   font-weight: 650;
   letter-spacing: 0.02em;
 }
-.main .cardTitle {
+.main .reportTitle {
   margin: 0;
-  color: inherit;
-  font-family: var(--font-display);
+  color: var(--color-on-surface);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(24px, 1vw + 20px, 30px);
+  font-size: clamp(20px, 0.9vw + 15px, 28px);
   line-height: 1.2;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 .byline,
@@ -60,15 +141,18 @@
   font-size: var(--text-label);
   line-height: 1.5;
 }
-.card a:not(.download) {
+.about a {
   color: var(--color-primary);
   font-weight: 600;
   text-underline-offset: 3px;
 }
 .download {
-  margin-top: var(--space-2);
+  grid-area: action;
+  justify-self: start;
 }
 .conflict {
+  grid-area: note;
+  max-width: 36em;
   color: var(--color-muted-text);
   font-size: var(--text-label);
   line-height: 1.5;
@@ -109,7 +193,7 @@
   text-underline-offset: 3px;
 }
 .topicBody a:focus-visible,
-.card a:focus-visible {
+.about a:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
   border-radius: 4px;

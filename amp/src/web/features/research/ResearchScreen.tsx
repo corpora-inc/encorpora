@@ -17,9 +17,9 @@ import styles from "./Research.module.css";
 
 /** `/research`: the research behind AMP in plain words, for parents and
  * schools, with the report itself one tap away. The words live in
- * `src/research/report.ts`, which the static document repeats. On wide
- * screens the title sits beside the report, and each section's heading stays
- * in view while its section scrolls. */
+ * `src/research/report.ts`, which the static document repeats. The title
+ * spans the page; on wide screens the report sits beside the summary, and
+ * each section's heading stays in view while its section scrolls. */
 export function ResearchScreen() {
   return (
     <div className={frame.page} data-research="">
@@ -36,12 +36,10 @@ export function ResearchScreen() {
       </header>
       <main className={`${frame.main} ${styles.main}`}>
         <section className={styles.intro} aria-labelledby="research-title">
-          <div className={styles.copy}>
-            <h1 id="research-title" className={frame.title}>
-              {page.title}
-            </h1>
-            <p className={frame.lede}>{page.lede}</p>
-          </div>
+          <h1 id="research-title" className={styles.title}>
+            {page.title}
+          </h1>
+          <p className={styles.lede}>{page.lede}</p>
           <ReportCard />
         </section>
 
@@ -127,27 +125,44 @@ export function ResearchScreen() {
   );
 }
 
-/** The report itself: what it is, where it stands, and the PDF. */
+/** The report itself: its first page, what it is, where it stands, and the
+ * PDF. */
 function ReportCard() {
   return (
-    <article className={styles.card} aria-labelledby="research-report">
-      <p className={styles.kicker}>
-        {report.series} · ESSA Tier 4 rationale
-      </p>
-      <h2 id="research-report" className={styles.cardTitle}>
-        {report.title}
-      </h2>
-      <p className={styles.byline}>
-        <a href={report.orcid}>{report.author}</a>, {report.affiliation} ·{" "}
-        {report.publishedLabel} · {report.pages} pages
-      </p>
-      <p className={styles.status} data-report-status="">
-        {report.doi ? (
-          <a href={`https://doi.org/${report.doi}`}>{reportStatus()}</a>
-        ) : (
-          reportStatus()
-        )}
-      </p>
+    <article className={styles.report} aria-labelledby="research-report">
+      <a
+        href={report.pdf}
+        className={styles.cover}
+        tabIndex={-1}
+        aria-hidden="true"
+      >
+        <img
+          src={report.cover.src}
+          width={report.cover.width}
+          height={report.cover.height}
+          alt=""
+          decoding="async"
+        />
+      </a>
+      <div className={styles.about}>
+        <p className={styles.kicker}>
+          {report.series} · ESSA Tier 4 rationale
+        </p>
+        <h2 id="research-report" className={styles.reportTitle}>
+          {report.title}
+        </h2>
+        <p className={styles.byline}>
+          <a href={report.orcid}>{report.author}</a>, {report.affiliation} ·{" "}
+          {report.publishedLabel} · {report.pages} pages
+        </p>
+        <p className={styles.status} data-report-status="">
+          {report.doi ? (
+            <a href={`https://doi.org/${report.doi}`}>{reportStatus()}</a>
+          ) : (
+            reportStatus()
+          )}
+        </p>
+      </div>
       <a
         href={report.pdf}
         className={buttonClass("primary", styles.download)}
