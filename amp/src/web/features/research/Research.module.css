@@ -87,8 +87,8 @@
   border-radius: 3px;
   box-shadow:
     0 0 0 1px var(--color-border),
-    0 2px 4px rgb(24 62 58 / 0.06),
-    0 14px 32px -12px rgb(24 62 58 / 0.32);
+    0 2px 4px var(--color-shadow),
+    0 14px 32px -10px var(--color-shadow);
   overflow: hidden;
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
@@ -96,14 +96,13 @@
   display: block;
   width: 100%;
   height: auto;
-  background: #fff;
 }
 .cover:hover {
   transform: translateY(-2px);
   box-shadow:
     0 0 0 1px var(--color-border),
-    0 2px 4px rgb(24 62 58 / 0.06),
-    0 20px 40px -12px rgb(24 62 58 / 0.4);
+    0 2px 4px var(--color-shadow),
+    0 22px 44px -10px var(--color-shadow);
 }
 @media (prefers-reduced-motion: reduce) {
   .cover {
