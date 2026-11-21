@@ -3,6 +3,7 @@ import {
   appPageTitle,
   pitchProgramId,
   programNames,
+  publicAppPageTitles,
   splitLocation,
   type HomeScreen,
 } from "../../analytics/page-titles";
@@ -60,6 +61,17 @@ export function routeHead(
       ? new URL(path, publicOrigin).href : null,
     robots: indexableDocumentPath(path) && !(path === "/" && home !== "pitch") ? null : "noindex, follow",
   };
+}
+
+/** The skill map's index writes its own head when it mounts
+ * (features/pathways/pathways-metadata.ts). Until then a document that isn't
+ * its prerendered page (the old `/lessons` address, which lands on the map;
+ * a development server) would wear another screen's title for a frame: this
+ * is the map's, known before anything paints. */
+export function mapTitleAhead(pathname: string): string | undefined {
+  return /^\/(?:pathways|lessons)\/?$/.test(pathname)
+    ? publicAppPageTitles["/pathways"]
+    : undefined;
 }
 
 // Skill-map pages are prerendered with their own tags; this never edits those.
