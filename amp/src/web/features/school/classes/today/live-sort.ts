@@ -58,8 +58,7 @@ export function useLiveSort(place: { org: string; class: string }) {
   const accountId = useSessionOrNull()?.accountId;
   const scope = scopeOf(accountId, place);
   const view = useViewStore((state) => state.views[scope]) as
-    | SortView
-    | undefined;
+    SortView | undefined;
   const set = useCallback(
     (sort: LiveSort) =>
       useViewStore.getState().patch(scope, {
@@ -79,19 +78,17 @@ export function useLiveLength(place: { org: string; class: string }) {
   const accountId = useSessionOrNull()?.accountId;
   const scope = scopeOf(accountId, place);
   const minutes = useViewStore(
-    (state) => (state.views[scope] as { liveLength?: number } | undefined)
-      ?.liveLength,
+    (state) =>
+      (state.views[scope] as { liveLength?: number } | undefined)?.liveLength,
   );
   const set = useCallback(
     (length: SessionLength) =>
-      useViewStore
-        .getState()
-        .patch(scope, { liveLength: length ?? undefined }),
+      useViewStore.getState().patch(scope, { liveLength: length ?? undefined }),
     [scope],
   );
-  const length: SessionLength = (SESSION_LENGTHS as readonly unknown[]).includes(
-    minutes,
-  )
+  const length: SessionLength = (
+    SESSION_LENGTHS as readonly unknown[]
+  ).includes(minutes)
     ? (minutes as SessionLength)
     : null;
   return [length, set] as const;

@@ -51,13 +51,7 @@ export function ClassSessionAction({
   const [error, setError] = useState("");
   const running = live.data?.session ?? null;
   const manage = can.includes("session.manage");
-  const state = today
-    ? "held"
-    : running
-      ? "live"
-      : manage
-        ? "start"
-        : "held";
+  const state = today ? "held" : running ? "live" : manage ? "start" : "held";
   const toToday = () =>
     navigate({ to: "/school/$org/classes/$class/today", params: place });
   return (

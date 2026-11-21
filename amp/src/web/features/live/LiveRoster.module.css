@@ -125,6 +125,10 @@
   display: inline-flex;
 }
 .score {
+  /* The column's full width, its figures at the end: a figure that grows a
+     digit never moves the box. */
+  justify-self: stretch;
+  text-align: end;
   font-size: var(--text-table);
   line-height: 1.2;
   white-space: nowrap;

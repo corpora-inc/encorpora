@@ -27,7 +27,7 @@
  *       [--shots <dir>]   every state at 390 and 1280 light and dark, and
  *                         live and the report at 320 and 768
  *       [--video <dir>]   a recording of the 390 and 1280 runs
- *       [--updates 200] [--skip-ended]
+ *       [--updates 200] [--skip-ended] [--stills-only]
  *
  * The simulator (scripts/live-class-sim.ts) makes and reuses only its own
  * org and class, and is loopback-only.
@@ -114,7 +114,12 @@ function simulate(minutes: number) {
   });
 }
 
-async function call(token: string, method: string, path: string, body?: unknown) {
+async function call(
+  token: string,
+  method: string,
+  path: string,
+  body?: unknown,
+) {
   const response = await fetch(`${api}/api/v1${path}`, {
     method,
     headers: {
@@ -128,7 +133,11 @@ async function call(token: string, method: string, path: string, body?: unknown)
 }
 /** No session running: a run starts from rest. */
 async function rest(token: string, classId: string) {
-  const live = (await call(token, "GET", `/school/classes/${classId}/live`)) as {
+  const live = (await call(
+    token,
+    "GET",
+    `/school/classes/${classId}/live`,
+  )) as {
     session: { id: string } | null;
   };
   if (live.session)
@@ -260,7 +269,11 @@ const rowTexts = (page: Page) =>
     return out;
   });
 
-function compareBoxes(where: string, before: Record<string, Box>, after: Record<string, Box>) {
+function compareBoxes(
+  where: string,
+  before: Record<string, Box>,
+  after: Record<string, Box>,
+) {
   for (const [name, box] of Object.entries(before)) {
     const next = after[name];
     if (!next) continue; // a row that left (never in a class of 14)
@@ -270,7 +283,9 @@ function compareBoxes(where: string, before: Record<string, Box>, after: Record<
       box.width !== next.width ||
       box.height !== next.height
     ) {
-      fail(`${where}: ${name} moved ${JSON.stringify(box)} → ${JSON.stringify(next)}`);
+      fail(
+        `${where}: ${name} moved ${JSON.stringify(box)} → ${JSON.stringify(next)}`,
+      );
       return;
     }
   }
@@ -292,6 +307,8 @@ async function coldLoad(
     viewport: { width: 390, height: 844 },
     storageState: state,
   });
+  // tsx names functions with a helper the page lacks.
+  await context.addInitScript("globalThis.__name ??= (f) => f;");
   await context.addInitScript(recorder);
   const page = await context.newPage();
   const cdp = await context.newCDPSession(page);
@@ -332,7 +349,9 @@ async function coldLoad(
   console.log(`cold ${name}: ${states.length} state(s), CLS ${cls.toFixed(4)}`);
   if (!final?.destination) fail(`cold ${name}: never reached it: ${trail}`);
   if (states.length > 2)
-    fail(`cold ${name}: ${states.length - 1} changes after the frame: ${trail}`);
+    fail(
+      `cold ${name}: ${states.length - 1} changes after the frame: ${trail}`,
+    );
   // One neutral frame at most: a wait with no words, never another screen.
   if (states.length === 2 && states[0]!.text !== "")
     fail(`cold ${name}: the first frame showed something else: ${trail}`);
@@ -349,7 +368,7 @@ async function openToday(
   state: Awaited<ReturnType<typeof teacherState>>,
   path: string,
   width: number,
-  options: { dark?: boolean; record?: boolean } = {},
+  options: { dark?: boolean; record?: boolean; ready?: string } = {},
 ) {
   const context = await browser.newContext({
     viewport: { width, height: height(width) },
@@ -359,11 +378,17 @@ async function openToday(
       ? { recordVideo: { dir: video, size: { width, height: height(width) } } }
       : {}),
   });
+  // tsx names functions with a helper the page lacks.
+  await context.addInitScript("globalThis.__name ??= (f) => f;");
   await context.addInitScript(recorder);
   const page = await context.newPage();
-  page.on("pageerror", (error) => fail(`${width}px page error: ${error.message}`));
-  await page.goto(origin + path, { waitUntil: "networkidle" }).catch(() => undefined);
-  await page.waitForSelector("[data-cockpit]");
+  page.on("pageerror", (error) =>
+    fail(`${width}px page error: ${error.message}`),
+  );
+  await page
+    .goto(origin + path, { waitUntil: "networkidle" })
+    .catch(() => undefined);
+  await page.waitForSelector(options.ready ?? "[data-cockpit]");
   return { context, page };
 }
 
@@ -386,8 +411,13 @@ async function liveRun(
   await page.waitForSelector('[data-cockpit="live"] [data-live-roster]');
   await page.waitForTimeout(1500);
   const started = await boxes(page);
+  // The bar keeps its place (on a desktop it gives the totals room beside
+  // it, so its width may change; never where it is).
   for (const name of ["header", "control"])
-    if (JSON.stringify(above[name]) !== JSON.stringify(started[name]))
+    if (
+      above[name]?.y !== started[name]?.y ||
+      above[name]?.x !== started[name]?.x
+    )
       fail(`${width}px: starting moved ${name}`);
   await shot(page, `started-${width}`);
   // From here on, nothing moves until Stop.
@@ -406,7 +436,8 @@ async function liveRun(
     compareBoxes(`${width}px after ${updates} updates`, before, after);
     before = after;
   }
-  if (updates < UPDATES) fail(`${width}px: only ${updates} row updates arrived`);
+  if (updates < UPDATES)
+    fail(`${width}px: only ${updates} row updates arrived`);
   // Requests: answer whatever is open (a hand, a forgotten picture).
   for (const name of ["Got it", "Reset"]) {
     const button = page
@@ -426,7 +457,10 @@ async function liveRun(
   if (width === 1280) await layerKeepsCockpit(page);
   // Stop asks first, then opens the report.
   await page.getByRole("button", { name: "Stop" }).click();
-  await page.getByRole("dialog").getByRole("button", { name: "Stop session" }).click();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Stop session" })
+    .click();
   await page.waitForSelector("[data-session-report]", { timeout: 20_000 });
   if (!/\/sessions\/[0-9a-f-]+$/.test(new URL(page.url()).pathname))
     fail(`${width}px: Stop landed on ${page.url()}`);
@@ -435,14 +469,18 @@ async function liveRun(
   const report = new URL(page.url()).pathname;
   const file = await page.video()?.path();
   await context.close();
-  if (file && video) await rename(file, `${video}/start-to-report-${width}.webm`);
+  if (file && video)
+    await rename(file, `${video}/start-to-report-${width}.webm`);
   return report;
 }
 
 // ---- 3. a student layer leaves the cockpit as it was ------------------------
 async function layerKeepsCockpit(page: Page) {
   // Sort by problems (a header), scroll the roster a little.
-  await page.getByRole("button", { name: /^Problems/ }).first().click();
+  await page
+    .getByRole("button", { name: /^Problems/ })
+    .first()
+    .click();
   await page.waitForTimeout(300);
   await page.evaluate(() => {
     const box = document.querySelector("[data-live-roster] > div");
@@ -474,7 +512,9 @@ async function layerKeepsCockpit(page: Page) {
     `layer: sorted "${before.sorted}", roster scroll ${before.roster} → ${after.roster}, page ${before.page} → ${after.page}`,
   );
   if (before.roster !== after.roster || before.page !== after.page)
-    fail(`the student layer moved the cockpit: ${JSON.stringify({ before, after })}`);
+    fail(
+      `the student layer moved the cockpit: ${JSON.stringify({ before, after })}`,
+    );
   if (before.sorted !== after.sorted || before.order !== after.order)
     fail("the student layer changed the cockpit's sort or order");
 }
@@ -507,15 +547,20 @@ async function endsOnItsOwn(
     await page.waitForTimeout(1000);
     const after = await boxes(page);
     for (const name of ["header", "control", "totals", "strip", "roster"])
-      if (JSON.stringify(marks[index]!.boxes[name]) !== JSON.stringify(after[name]))
+      if (
+        JSON.stringify(marks[index]!.boxes[name]) !==
+        JSON.stringify(after[name])
+      )
         fail(`${width}px: ending on its own moved ${name}`);
     const cls = (await shifts(page))
       .filter((s) => s.at > marks[index]!.from)
       .reduce((sum, s) => sum + s.value, 0);
     console.log(`${width}px: ended on its own, CLS ${cls.toFixed(4)}`);
-    if (cls > 0) fail(`${width}px: ending on its own shifted ${cls.toFixed(4)}`);
+    if (cls > 0)
+      fail(`${width}px: ending on its own shifted ${cls.toFixed(4)}`);
     const report = page.getByRole("link", { name: "See the report" });
-    if (!(await report.isVisible())) fail(`${width}px: ended without its report link`);
+    if (!(await report.isVisible()))
+      fail(`${width}px: ended without its report link`);
     await shot(page, `ended-${width}`);
     await context.close();
   }
@@ -535,11 +580,15 @@ async function stills(
   for (const dark of [false, true])
     for (const width of [390, 1280]) {
       const suffix = `${width}${dark ? "-dark" : ""}`;
-      const { context, page } = await openToday(browser, state, report, width, { dark });
+      const { context, page } = await openToday(browser, state, report, width, {
+        dark,
+        ready: "[data-session-report]",
+      });
       await page.waitForTimeout(800);
       await shot(page, `report-${suffix}`);
-      await page.goto(origin + time, { waitUntil: "networkidle" });
+      await page.goto(origin + time, { waitUntil: "load" });
       await page.waitForSelector("#class-sessions");
+      await page.waitForTimeout(800);
       await page.locator("#class-sessions").scrollIntoViewIfNeeded();
       await page.screenshot({ path: `${shots}/sessions-${suffix}.png` });
       await context.close();
@@ -547,7 +596,9 @@ async function stills(
   // Resting and busy, dark; just started, every width already.
   await rest(token, classId);
   for (const width of [390, 1280]) {
-    const { context, page } = await openToday(browser, state, today, width, { dark: true });
+    const { context, page } = await openToday(browser, state, today, width, {
+      dark: true,
+    });
     await page.waitForSelector('[data-cockpit="resting"]');
     await shot(page, `resting-${width}-dark`);
     await context.close();
@@ -555,14 +606,18 @@ async function stills(
   await call(token, "POST", `/school/classes/${classId}/sessions`, {});
   await new Promise((resolve) => setTimeout(resolve, 30_000));
   for (const width of [390, 1280]) {
-    const { context, page } = await openToday(browser, state, today, width, { dark: true });
+    const { context, page } = await openToday(browser, state, today, width, {
+      dark: true,
+    });
     await page.waitForSelector('[data-cockpit="live"]');
     await page.waitForTimeout(2000);
     await shot(page, `live-${width}-dark`);
     await context.close();
   }
   for (const width of [320, 768]) {
-    const { context, page } = await openToday(browser, state, report, width);
+    const { context, page } = await openToday(browser, state, report, width, {
+      ready: "[data-session-report]",
+    });
     await page.waitForTimeout(800);
     await shot(page, `report-${width}`);
     await context.close();
@@ -579,6 +634,27 @@ try {
   const classId = today.split("/")[4]!;
   const state = await teacherState(browser);
   await rest(token, classId);
+  if (flag("stills-only")) {
+    // The newest stopped session's report, for the stills alone.
+    const list = (await call(
+      token,
+      "GET",
+      `/school/classes/${classId}/sessions`,
+    )) as {
+      sessions: { id: string; endedAt: string | null }[];
+    };
+    const last = list.sessions.find((entry) => entry.endedAt);
+    assert.ok(last, "a stopped session to show");
+    await stills(
+      browser,
+      state,
+      today,
+      today.replace(/\/today$/, `/sessions/${last.id}`),
+      token,
+      classId,
+    );
+    process.exit(0);
+  }
   await coldLoad(browser, state, today, "Today at rest");
   let report = "";
   for (const width of WIDTHS) {
@@ -598,4 +674,6 @@ try {
   if (sim?.pid && sim.exitCode === null) process.kill(-sim.pid, "SIGTERM");
 }
 assert.deepEqual(failures, [], failures.join("\n"));
-console.log("The live cockpit screen holds still, loads in one frame and reports.");
+console.log(
+  "The live cockpit screen holds still, loads in one frame and reports.",
+);

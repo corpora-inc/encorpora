@@ -114,6 +114,9 @@ export function ClassCockpit({
   words,
   can,
   showGradeNumbers,
+  link = studentLink,
+  reportLink: givenReportLink,
+  onStopped,
 }: {
   place: Place;
   /** A session can be started here now (its students can practice, or a
@@ -124,6 +127,14 @@ export function ClassCockpit({
   can: CockpitPermissions;
   /** Levels in the roster: staff see them. */
   showGradeNumbers: boolean;
+  /** Where a student opens: by default the student layer. A family's Today
+   * gives its own (a child's page). */
+  link?: StudentLink;
+  /** A stopped session's report, as a link: by default the class's
+   * `sessions/<session>` under Time. */
+  reportLink?: (sessionId: string, children: ReactNode) => ReactNode;
+  /** After Stop: by default the class's report opens. */
+  onStopped?: (sessionId: string) => void;
 }) {
   const session = useSession();
   const client = useQueryClient();
@@ -214,15 +225,17 @@ export function ClassCockpit({
     />
   );
   const done = () => client.setQueryData(liveEndedKey(session, place), null);
-  const reportLink = (id: string, children: ReactNode) => (
-    <Link
-      to="/school/$org/classes/$class/sessions/$session"
-      params={{ ...place, session: id }}
-      className={buttonClass("primary")}
-    >
-      {children}
-    </Link>
-  );
+  const reportLink =
+    givenReportLink ??
+    ((id: string, children: ReactNode) => (
+      <Link
+        to="/school/$org/classes/$class/sessions/$session"
+        params={{ ...place, session: id }}
+        className={buttonClass("primary")}
+      >
+        {children}
+      </Link>
+    ));
   const control = (
     <SessionControl
       live={running}
@@ -247,6 +260,7 @@ export function ClassCockpit({
           .mutateAsync(running.id)
           .then((report) => {
             done();
+            if (onStopped) return onStopped(report.session.id);
             return navigate({
               to: "/school/$org/classes/$class/sessions/$session",
               params: { ...place, session: report.session.id },
@@ -319,7 +333,7 @@ export function ClassCockpit({
             sort={sort}
             onSortChange={setSort}
             showGradeNumbers={showGradeNumbers}
-            link={studentLink}
+            link={link}
             label={words.roster}
             nameHeader={words.nameHeader}
           />

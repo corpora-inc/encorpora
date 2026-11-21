@@ -232,8 +232,17 @@ function detailLine(
     parts.push(<span key="level">Level {levelText(row.level)}</span>);
   if (view.layout === "phone")
     parts.push(<span key="ago">{agoText(lastActive(row), view.now)}</span>);
-  return parts.flatMap((part, index) =>
-    index === 0 ? [part] : [<span key={`dot-${index}`}> · </span>, part],
+  // Keyed by what leads it: when the status, skill or level changes, the
+  // line is drawn anew rather than its words sliding along (a layout shift
+  // to the browser). Only "last active", at its end, changes in place.
+  return (
+    <span
+      key={`${status}|${row.skill?.id ?? row.problems === 0}|${view.showGradeNumbers ? row.level : ""}`}
+    >
+      {parts.flatMap((part, index) =>
+        index === 0 ? [part] : [<span key={`dot-${index}`}> · </span>, part],
+      )}
+    </span>
   );
 }
 
@@ -373,7 +382,9 @@ function List(view: RosterView) {
                       className={styles.colAgo}
                       aria-label={`Last active ${agoWords(ago, now)}`}
                     >
-                      {agoText(ago, now)}
+                      {/* Right-aligned: a new word is a new node, never
+                          one sliding over. */}
+                      <span key={agoText(ago, now)}>{agoText(ago, now)}</span>
                     </span>
                   </>
                 ) : (
@@ -463,7 +474,7 @@ function Grid(view: RosterView) {
   // Before a student signs in, their counts are blank, not a wall of zeros.
   const number = (row: LiveRow, value: number) =>
     statuses.get(row.personId) === "not_signed_in" ? null : (
-      <span className={value === 0 ? styles.zero : undefined}>
+      <span key={value} className={value === 0 ? styles.zero : undefined}>
         <Changed value={value}>{value}</Changed>
       </span>
     );
@@ -584,7 +595,11 @@ function Grid(view: RosterView) {
       header: "Last active",
       width: 72,
       align: "end",
-      cell: (row) => agoText(lastActive(row), now),
+      cell: (row) => {
+        const text = agoText(lastActive(row), now);
+        // Right-aligned: a new word is a new node, never one sliding over.
+        return <span key={text}>{text}</span>;
+      },
       cellLabel: (row) => agoWords(lastActive(row), now),
     },
   ];

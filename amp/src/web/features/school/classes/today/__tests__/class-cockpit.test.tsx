@@ -62,7 +62,11 @@ const place = { org: "o", class: "22222222-2222-4222-8222-222222222222" };
 const NOW = Date.parse("2026-11-30T14:05:00.000Z");
 const iso = (ms: number) => new Date(NOW + ms).toISOString();
 const person = (n: number) => `00000000-0000-4000-8000-00000000000${n}`;
-const row = (n: number, name: string, patch: Partial<LiveRow> = {}): LiveRow => ({
+const row = (
+  n: number,
+  name: string,
+  patch: Partial<LiveRow> = {},
+): LiveRow => ({
   personId: person(n),
   name,
   problems: 0,

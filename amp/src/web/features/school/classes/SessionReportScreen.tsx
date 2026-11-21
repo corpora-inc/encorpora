@@ -53,12 +53,14 @@ const plural = (count: number, one: string, many = `${one}s`) =>
   `${count} ${count === 1 ? one : many}`;
 
 /** How it ended, in a few words. */
-const ENDED: Record<NonNullable<SessionReport["session"]["endReason"]>, string> =
-  {
-    stopped: "stopped",
-    planned_end: "ended on time",
-    time_limit: "ended at the four-hour limit",
-  };
+const ENDED: Record<
+  NonNullable<SessionReport["session"]["endReason"]>,
+  string
+> = {
+  stopped: "stopped",
+  planned_end: "ended on time",
+  time_limit: "ended at the four-hour limit",
+};
 
 /** Right answers given with help: right, less those on their own. */
 const rightWithHelp = (row: ReportRow) =>
@@ -304,8 +306,7 @@ export function SessionReportScreen() {
   const report = useQuery({
     ...sessionReportOptions(session, place, params.session),
     retry: (count, error) =>
-      !(error instanceof AppError && (error.status ?? 500) < 500) &&
-      count < 2,
+      !(error instanceof AppError && (error.status ?? 500) < 500) && count < 2,
   });
   const className = useQuery({
     ...classesOptions(currentSession(), place.org),
@@ -478,8 +479,7 @@ function Report({
                     {entry.endedNeedingHelp > 0 && (
                       <span className={styles.skillHelp}>
                         {" "}
-                        · {entry.endedNeedingHelp} needed help on it at the
-                        end
+                        · {entry.endedNeedingHelp} needed help on it at the end
                       </span>
                     )}
                   </span>
@@ -501,7 +501,9 @@ function Report({
               a long session still prints on a sheet or two. */}
           {single.length > 0 && (
             <div className={styles.singles}>
-              <h3>{shared.length > 0 ? "One student each" : "Each by one student"}</h3>
+              <h3>
+                {shared.length > 0 ? "One student each" : "Each by one student"}
+              </h3>
               <ul className={styles.singleList}>
                 {single.map((entry) => {
                   const row = entry.students[0]!;
@@ -519,7 +521,8 @@ function Report({
                         <Student row={row} className={styles.person}>
                           {row.name}
                         </Student>
-                        {entry.endedNeedingHelp > 0 && " · needed help at the end"}
+                        {entry.endedNeedingHelp > 0 &&
+                          " · needed help at the end"}
                       </span>
                     </li>
                   );

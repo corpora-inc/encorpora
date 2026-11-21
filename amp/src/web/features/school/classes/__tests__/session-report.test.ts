@@ -98,7 +98,11 @@ test("the cockpit's sort: needs-you first unless chosen, kept flat", () => {
   expect(sortOf(undefined)).toEqual(DEFAULT_COCKPIT_SORT);
   expect(DEFAULT_COCKPIT_SORT.key).toBe("attention");
   expect(
-    sortOf({ liveSort: "problems", liveDirection: "descending", liveVersion: 3 }),
+    sortOf({
+      liveSort: "problems",
+      liveDirection: "descending",
+      liveVersion: 3,
+    }),
   ).toEqual({ key: "problems", direction: "descending", version: 3 });
   expect(sortOf({ liveSort: "nonsense" })).toEqual(DEFAULT_COCKPIT_SORT);
 });
