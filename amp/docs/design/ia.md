@@ -29,8 +29,8 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 | Place                | Who                         | Tabs                                                          | Bar action                 |
 | -------------------- | --------------------------- | ------------------------------------------------------------- | -------------------------- |
 | My practice          | an adult learner            | Overview · Pathways · Inventory                               | ▶ Practice                 |
-| Family               | a parent, the second parent | Today · Progress · Settings            | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor                     | Today · Progress · Settings            | Start class                |
+| Family               | a parent, the second parent | Today · Settings                                              | ▶ Practice (picks a child) |
+| Class (tutor, co-op) | a tutor                     | Today · Map · Workbooks · Time · Report cards · People · Settings | Start class                |
 | Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class                |
 | School               | an admin                    | Overview · Classes · Staff · Activity · Settings              | none                       |
 | Account              | everyone, from the drawer   | Sign-in · Learners · Billing · Privacy                        | none                       |
@@ -143,12 +143,14 @@ Each of these is that person's own composition of shared components (rule 6). Th
 ### Parent (Family)
 
 - **First run:** "Parent" → each child's name (a parent-entered nickname) and birth year → the first child's first problem on this device. Consent and access are steps inside that flow, never a separate page.
-- **Today, day 0:** a centred hero. Each child's name is shown with "Practice" as the one prominent action, and the class code sits quietly below for a child's own device.
-- **Today, with data:** the Today feed, led by the children.
-  - First, one row per child: name, this week (minutes, problems, last practiced), and the one action that works now, "Practice" or, when the free problems are used, "Continue with AMP". Access dates belong in Billing, not on Today.
-  - Then feed items when there is something to act on: a skill missed three times, no practice in a week, ready for more, the weekly target.
-  - Then a compact This week line.
-- **Progress:** one child opens directly to their record, with current estimates, daily practice time, earned skills and recent work. Several children share a comparison; each has an explicit View progress link. Detailed practice time and report cards are linked from Progress.
+- **Today, day 0:** a centred hero: the level scale every child will fill, one sentence, each child's name with "Practice" as the prominent action, and how the children get in (QR, link, family code) quietly below.
+- **Today, with data: the parent's dashboard.** A parent sees how each child is doing in five seconds.
+  - One block per child, parted by a hairline, no cards. Its row: the name (their page), this week's seven day dots, minutes, problems and percent right, and the one action that works now, "Practice" or "Continue with AMP".
+  - Under it, what AMP is working on and why: the last problems grouped as Catching up, Reviewing, Checking earlier skills, New ground or Chosen practice, each with its skills.
+  - Then the five areas: where the child is working (the likely range and best guess, grade numbers only with that child's switch on) and what was checked in the two grades below, as one bar of Strong, Earned, Tried and Not asked yet. "N not asked" opens those skills, each one tap from practice held to it. A caption says how many answers the levels rest on and that AMP started from the birth year.
+  - The key to the bars sits once above the children, always on screen: Strong is 4 of the last 5 right without help; Earned is right once without help.
+  - Beside the children from 1024 px (under them on a phone): the feed (a skill missed three times, no practice in a week, ready for more, the weekly target), This week for the family, and How your kids get in.
+- **A child's page:** their name opens their record, with current estimates, daily practice time, earned skills, recent work, workbooks, practice time and report cards.
 - **Workbooks:** each child’s printable practice and recorded paper work.
 - **Settings:** children, people and sharing, the class code, the school year, the weekly target, and what children see (levels, standings, devices).
 - **The second parent** sees the same Family screens. She sees no buying, consent, naming or deletion.
