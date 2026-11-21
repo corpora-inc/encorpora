@@ -20,6 +20,10 @@ export const report = {
   publishedLabel: "November 2026",
   pages: 27,
   pdf: "/research/amp-rr2-logic-model.pdf",
+  /** The PDF's first page, 480 px wide. Re-render it with the PDF:
+   * `pdftoppm -f 1 -l 1 -scale-to-x 480 -scale-to-y -1 -png <pdf> cover`,
+   * then `cwebp -q 82 cover-01.png -o amp-rr2-cover.webp`. */
+  cover: { src: "/research/amp-rr2-cover.webp", width: 480, height: 622 },
   /** Set when EdArXiv assigns it; until then the page says it's submitted. */
   doi: null as string | null,
   license: "https://creativecommons.org/licenses/by/4.0/",
