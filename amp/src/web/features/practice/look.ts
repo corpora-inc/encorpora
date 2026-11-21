@@ -12,6 +12,9 @@ import {
   paintHue,
   useHueStore,
 } from "./celebration/hue";
+// Colorful's dress goes wherever the look can be held: practice, and a
+// student's other screens (the app frame holds it there).
+import "./celebration/skin.css";
 
 const REDUCED = "(prefers-reduced-motion: reduce)";
 /** Whether this device asks for less motion, live. */

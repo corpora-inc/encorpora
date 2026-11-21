@@ -187,6 +187,16 @@
   }
 }
 
+/* A student's phone: the points chip sits at the end of the topic's line
+   (celebration/stage.ts), which keeps the room for it on every problem. */
+@media (max-width: 419px) {
+  :root[data-look="bold"]:has([data-app-bar][data-space="student"])
+    .practice-surface
+    > .practice-topic {
+    padding-inline-end: 100px;
+  }
+}
+
 /* A phone's bar with no room for the points chip: the chip takes the
    wordmark's place beside the wave (celebration/stage.ts). The logo stays
    the menu's button, its size unchanged. */
@@ -194,4 +204,11 @@
   [data-navigation-trigger]
   span {
   visibility: hidden;
+}
+
+/* The page itself: the boot page's own colors (index.html) give way to the
+   world's, as Calm's tokens do through `:root`. */
+:root[data-look="bold"] body {
+  color: var(--color-on-surface);
+  background: var(--color-surface);
 }

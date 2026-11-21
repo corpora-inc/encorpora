@@ -13,7 +13,6 @@ import {
   type Moment,
   type SkillEvidence,
 } from "./tier";
-import "./skin.css";
 
 type Props = {
   /** The answer on screen, once graded. */

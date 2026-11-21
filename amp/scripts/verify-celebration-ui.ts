@@ -463,7 +463,10 @@ function leftovers(calm: [string, string][]) {
     );
   };
   const found: string[] = [];
-  for (const element of document.querySelectorAll<Element>("body *")) {
+  // A problem whose words name its figure's colors keeps Calm's marks on
+  // purpose (data-figure-colors="named"): its drawing is not a leftover.
+  const named = document.documentElement.dataset.figureColors === "named";
+  for (const element of document.querySelectorAll<Element>("body, body *")) {
     if (element.closest("[data-celebration], script, style")) continue;
     const box = element.getBoundingClientRect();
     if (!box.width || !box.height) continue;
@@ -484,7 +487,7 @@ function leftovers(calm: [string, string][]) {
       if (prop === "outline-color" && style.outlineStyle === "none") continue;
       if (
         (prop === "fill" || prop === "stroke") &&
-        !(element instanceof SVGElement)
+        (!(element instanceof SVGElement) || named)
       )
         continue;
       if (

@@ -73,6 +73,19 @@
 .chip[data-shown] {
   opacity: 1;
 }
+/* A phone's chip: compact, one size whatever its number. */
+@media (max-width: 419px) {
+  .chip {
+    width: 92px;
+    padding: 0 10px 0 7px;
+    gap: 4px;
+    font-size: 16px;
+  }
+  .chipStar {
+    width: 19px;
+    height: 19px;
+  }
+}
 .chipStar {
   flex: none;
   width: 22px;
