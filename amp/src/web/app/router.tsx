@@ -107,6 +107,7 @@ import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
 import { appReturn } from "../features/spaces/returns";
 import { loadSpaceFrame } from "../features/spaces/useSpace";
+import { applyRouteHead, routeHead } from "./route-head";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
@@ -435,10 +436,19 @@ const home = createRoute({
     program: search.program,
     ...campaignSearch(search),
   }),
-  loader: async ({ deps, location }) => {
+  loader: async ({ deps, location, preload }) => {
     const session = homeSession(location.search);
     const shown = showsPitch(session);
     setPitchShown(shown);
+    // Decided: `/`'s title is the screen's before it paints (index.html
+    // carries the pitch's; RouterView writes the same once it resolves).
+    // Only on the document's first screen: a later move keeps the screen
+    // it leaves, and its title, until `/` paints.
+    const head =
+      !preload &&
+      !router.state.resolvedLocation &&
+      routeHead(location.href, shown ? "pitch" : "app");
+    if (head) applyRouteHead(document, head);
     if (!shown) {
       // Signed in, `/` is the launcher: its places arrive with it, so it
       // paints whole (the native app keeps its own screen here).
@@ -1252,8 +1262,16 @@ const schoolConnect = createRoute({
   beforeLoad: async () => {
     admit({ web: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
-    if (config.mode === "accounts" && !config.clever)
+    if (config.mode === "accounts" && !config.clever) {
+      // Class setup's own guard, here, so this is one hop: a student's
+      // device to its practice, someone signed out to sign-in that comes
+      // back to setup, everyone else to setup.
+      await requireSignedIn(
+        { pathname: "/school/start", searchStr: "" },
+        { web: true, adults: true, back: "here" },
+      );
       elsewhere("/school/start");
+    }
     if (studentSession()) {
       // The component may already have captured a hash-only completion.
       // Await its validation; only the helper can replace a student, and
