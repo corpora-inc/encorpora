@@ -73,7 +73,7 @@ const mount = () =>
     </QueryClientProvider>,
   );
 const forgotButton = () =>
-  screen.findByRole("button", { name: "I forgot my pictures" });
+  screen.findByRole("button", { name: "I forgot the pictures" });
 
 test("picking: the action is offered; asking shows the waiting state in place", async () => {
   mount();
@@ -81,7 +81,7 @@ test("picking: the action is offered; asking shows the waiting state in place", 
   expect(await screen.findByText("Your teacher has been asked.")).toBeTruthy();
   expect(ask).toHaveBeenCalledWith({ code: CODE, personId: PERSON });
   expect(
-    screen.getByRole("button", { name: "I remember my pictures" }),
+    screen.getByRole("button", { name: "I remember the pictures" }),
   ).toBeTruthy();
   // The picture buttons rest.
   expect(
@@ -123,7 +123,7 @@ test("backing out returns to picking", async () => {
   mount();
   fireEvent.click(await forgotButton());
   fireEvent.click(
-    await screen.findByRole("button", { name: "I remember my pictures" }),
+    await screen.findByRole("button", { name: "I remember the pictures" }),
   );
   expect(await screen.findByText("Pick your 3 pictures")).toBeTruthy();
   expect(useForgotStore.getState().asked).toEqual({});

@@ -188,7 +188,7 @@ try {
       await setPictures(A.id);
       await page.goto(`${web}/join/${code}/${A.id}`);
       await page
-        .getByRole("button", { name: "I forgot my pictures" })
+        .getByRole("button", { name: "I forgot the pictures" })
         .waitFor();
       const watch = {
         slots: "ol",
@@ -198,7 +198,7 @@ try {
       };
       const picking = await boxes(page, watch);
       await page.screenshot({ path: `${shots}/forgot-1-picking-${tag}.png` });
-      await page.getByRole("button", { name: "I forgot my pictures" }).click();
+      await page.getByRole("button", { name: "I forgot the pictures" }).click();
       await page.getByText("Your teacher has been asked.").waitFor();
       await page.waitForTimeout(400);
       const asked = await boxes(page, watch);
@@ -234,9 +234,9 @@ try {
       // Back out: ask again, then remember.
       await setPictures(A.id);
       await page.reload();
-      await page.getByRole("button", { name: "I forgot my pictures" }).click();
+      await page.getByRole("button", { name: "I forgot the pictures" }).click();
       await page
-        .getByRole("button", { name: "I remember my pictures" })
+        .getByRole("button", { name: "I remember the pictures" })
         .click();
       await page.getByText("Pick your 3 pictures").waitFor();
       same(`${tag} back out`, picking, await boxes(page, watch));

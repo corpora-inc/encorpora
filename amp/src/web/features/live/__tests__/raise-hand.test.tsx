@@ -10,6 +10,7 @@ import {
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { StudentSignal } from "../../../../schools/live/contracts";
 import type { StudentLive } from "../../../../schools/live/stream-contracts";
+import type { AuthSession } from "../../../auth";
 import { sessionOptions } from "../../../lib/query";
 import { studentLiveKey } from "../api";
 
@@ -69,9 +70,12 @@ afterEach(() => {
 });
 
 function mount(token: string | null, held?: StudentLive) {
-  client.setQueryData(
-    sessionOptions.queryKey,
-    token ? { accountId: "acct", token } : null,
+  const held_session: AuthSession | null = token
+    ? { accountId: "acct", token }
+    : null;
+  client.setQueryData<AuthSession | null>(
+    sessionOptions.queryKey as never,
+    held_session,
   );
   if (held && token)
     client.setQueryData(studentLiveKey({ accountId: "acct", token }), held);
