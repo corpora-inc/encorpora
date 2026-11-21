@@ -3,10 +3,12 @@ import { z } from "zod";
 import {
   familyChildTimeSchema,
   familyChildProgressSchema,
+  familyDashboardSchema,
   familyPlacesSchema,
   familyProjectionSchema,
   familyTeachingSchema,
   type FamilyChildProgress,
+  type FamilyDashboard,
   type FamilyPlaces,
   type FamilyProjection,
   type FamilyTeaching,
@@ -25,8 +27,16 @@ import { invalidateAccount, queryClient } from "../../lib/query";
  * answer for another account is never read.
  */
 
-export type { FamilyChildProgress, FamilyPlaces, FamilyProjection };
+export type {
+  FamilyChildProgress,
+  FamilyDashboard,
+  FamilyPlaces,
+  FamilyProjection,
+};
 export type FamilyChild = FamilyProjection["children"][number];
+export type DashboardChild = FamilyDashboard["children"][number];
+export type DashboardArea = DashboardChild["areas"][number];
+export type { FocusKey } from "../../../family/projection-contracts";
 export type FamilyPlace = FamilyPlaces["families"][number];
 
 const key = (session: AuthSession, ...rest: unknown[]) =>
@@ -59,6 +69,23 @@ export const familyOptions = (session: AuthSession, family: string) =>
       request(
         `/families/${encodeURIComponent(family)}`,
         familyProjectionSchema,
+        { token: session.token, signal },
+      ),
+  });
+
+/** One family's dashboard: per own child, the week (days, minutes,
+ * problems, right answers), each day of it, the five areas with what was
+ * checked below each, and why AMP picked the recent problems; the children's
+ * code when this reader may manage devices. A child's actions and access
+ * stay on `familyOptions` (same learner IDs, same order). */
+export const familyDashboardOptions = (session: AuthSession, family: string) =>
+  queryOptions({
+    queryKey: key(session, family, "dashboard"),
+    enabled: adult(session) && !!family,
+    queryFn: ({ signal }) =>
+      request(
+        `/families/${encodeURIComponent(family)}/dashboard`,
+        familyDashboardSchema,
         { token: session.token, signal },
       ),
   });

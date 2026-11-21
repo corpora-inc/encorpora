@@ -30,8 +30,22 @@ import {
 import { parentConsentStates } from "../server/account-access.js";
 import { adultNameSql } from "../account/profile.js";
 
-import { perDay } from "../schools/evidence.js";
+import { randomUUID } from "node:crypto";
+import { areas, strandAreas } from "../curriculum/areas.js";
+import { formatJoinCode } from "../schools/contracts.js";
+import { levels, perDay, totals } from "../schools/evidence.js";
+import { classPracticeGate } from "../schools/pilot-access.js";
 import type { TimePeriod } from "../schools/teacher-contracts.js";
+import { weekStart } from "../schools/today.js";
+import {
+  areaLevels,
+  checkedBelow,
+  dashboardLevel,
+  FOCUS_WINDOW,
+  focusMix,
+  type CheckedEvidence,
+  type FocusAnswer,
+} from "./dashboard.js";
 
 export type FamilyRole = "holder" | "second-parent" | "co-teacher";
 type Identity = {
@@ -480,6 +494,171 @@ export async function familyProjection(
     children: projected,
     today: { date: today.today, tasks: today.todos, week: today.week },
   };
+}
+/** Days `from`…`to` inclusive, ISO dates. */
+function daysOf(from: string, to: string): string[] {
+  const days: string[] = [];
+  for (
+    let at = Date.parse(`${from}T00:00:00Z`);
+    at <= Date.parse(`${to}T00:00:00Z`);
+    at += 86_400_000
+  )
+    days.push(new Date(at).toISOString().slice(0, 10));
+  return days;
+}
+
+/**
+ * The family's dashboard: one block per own child, from a fixed number of
+ * reads for any number of children (docs/architecture/family-api.md,
+ * "Family dashboard"). The week's facts, each day of it, the five areas
+ * with what was checked below each, and why AMP picked the recent problems.
+ * Kept out of `familyProjection`, which every family screen and mutation
+ * refetches.
+ */
+export async function familyDashboard(
+  pool: Pool,
+  account: string,
+  familyId: string,
+) {
+  const { row, role, actor } = await authorize(pool, account, familyId);
+  if (role === "co-teacher") throw new FamilyError(403, "family_parent_only");
+  const owned = (
+    await pool.query<{
+      id: string;
+      name: string;
+      grade_level_shown: boolean;
+    }>(
+      `SELECT l.id,l.name,
+         COALESCE((s.state->>'gradeLevelShown')::boolean,true) AS grade_level_shown
+       FROM amp_learners l LEFT JOIN amp_practice_settings s ON s.learner_id=l.id
+       WHERE l.account_id=$1 AND l.deleted_at IS NULL AND NOT l.adult
+       ORDER BY l.created_at,l.id LIMIT 1001`,
+      [row.holder],
+    )
+  ).rows;
+  if (owned.length > 1000) throw new FamilyError(409, "family_child_limit");
+  const ids = owned.map((child) => child.id);
+  // The evidence reads key a roster by UUID; a learner ID is opaque.
+  const roster = owned.map((child) => ({
+    personId: randomUUID(),
+    learnerId: child.id,
+  }));
+  const personOf = new Map(roster.map((m) => [m.learnerId, m.personId]));
+  const context = await familyContext(pool, row);
+  const today = context.today;
+  const week = { from: weekStart(today), to: today };
+  const devices =
+    !!row.classId &&
+    can(actor, "signin.manage", targetFor(row.orgId!, row.classId));
+  const [weekly, daily, stored, recent, evidence, join] = await Promise.all([
+    totals(pool, roster, week),
+    perDay(pool, roster, week),
+    levels(pool, roster),
+    ids.length
+      ? pool.query<FocusAnswer & { learnerId: string }>(
+          `SELECT l.id AS "learnerId",
+             COALESCE(a.outcome->>'skillId',i.content->'public'->>'skillId') AS "skillId",
+             i.content->'selection'->>'reason' AS reason,
+             i.content->'selection'->'trace'->>'purpose' AS purpose,
+             i.content->'selection'->>'focusSkillId' AS "focusSkillId"
+           FROM unnest($1::text[]) l(id)
+           CROSS JOIN LATERAL (SELECT problem_id,outcome,evidence_sequence FROM amp_attempts
+             WHERE learner_id=l.id ORDER BY evidence_sequence DESC LIMIT $2) a
+           JOIN amp_instances i ON i.id=a.problem_id AND i.learner_id=l.id
+           ORDER BY l.id,a.evidence_sequence DESC`,
+          [ids, FOCUS_WINDOW],
+        )
+      : Promise.resolve({ rows: [] }),
+    ids.length
+      ? pool.query<CheckedEvidence & { learnerId: string; skillId: string }>(
+          `SELECT learner_id AS "learnerId",skill_id AS "skillId",
+             COALESCE((state->>'attempts')::int,0) AS attempts,
+             COALESCE((state->>'independentCorrect')::int,0) AS "independentCorrect",
+             state->>'status' AS status
+           FROM amp_skill_evidence WHERE learner_id=ANY($1::text[])`,
+          [ids],
+        )
+      : Promise.resolve({ rows: [] }),
+    devices ? familyJoin(pool, row.classId!) : Promise.resolve(null),
+  ]);
+  const byPerson = <T extends { personId: string }>(rows: readonly T[]) =>
+    new Map(rows.map((entry) => [entry.personId, entry]));
+  const weekRows = byPerson(weekly);
+  const levelRows = byPerson(stored);
+  const days = daysOf(week.from, week.to);
+  return {
+    familyId,
+    today,
+    week,
+    join,
+    children: owned.map((child) => {
+      const person = personOf.get(child.id)!;
+      const facts = weekRows.get(person);
+      const level = levelRows.get(person);
+      const byDay = new Map(
+        daily
+          .filter((entry) => entry.personId === person)
+          .map((entry) => [entry.day, entry]),
+      );
+      const mine = new Map(
+        evidence.rows
+          .filter((entry) => entry.learnerId === child.id)
+          .map((entry) => [entry.skillId, entry]),
+      );
+      const overall = dashboardLevel(level?.overall);
+      const byArea = areaLevels(
+        level?.strands ?? {},
+        (strand) => strandAreas[strand],
+      );
+      return {
+        id: child.id,
+        name: child.name,
+        gradeLevelShown: child.grade_level_shown,
+        week: {
+          days: facts?.daysActive ?? 0,
+          minutes: facts?.activeMinutes ?? 0,
+          problems: facts?.problems ?? 0,
+          correct: facts?.correct ?? 0,
+          independent: facts?.independent ?? 0,
+          lastPracticed: facts?.lastActive ?? null,
+        },
+        daily: days.map((day) => ({
+          day,
+          minutes: byDay.get(day)?.activeMinutes ?? 0,
+          problems: byDay.get(day)?.problems ?? 0,
+        })),
+        level: overall,
+        areas: areas.map(({ id, title }) => ({
+          area: id,
+          title,
+          level: byArea[id],
+          checked: checkedBelow(
+            id,
+            byArea[id]?.level ?? overall?.level ?? null,
+            mine,
+          ),
+        })),
+        focus: focusMix(
+          recent.rows.filter((entry) => entry.learnerId === child.id),
+        ),
+      };
+    }),
+  };
+}
+/** The family class's code while its children can practice (SPEC R14, as
+ * the Devices sheet shows it), with the app path it opens. */
+async function familyJoin(pool: Pool, classId: string) {
+  const [code, gate] = await Promise.all([
+    pool.query<{ join_code: string | null }>(
+      "SELECT join_code FROM amp_classes WHERE id=$1 AND archived_at IS NULL",
+      [classId],
+    ),
+    classPracticeGate(pool, classId),
+  ]);
+  const value = code.rows[0]?.join_code;
+  if (!value || gate) return null;
+  const shown = formatJoinCode(value);
+  return { code: shown, path: `/join/${shown}` };
 }
 async function ownedChild(
   pool: Pool,
