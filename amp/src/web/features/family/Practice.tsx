@@ -12,6 +12,7 @@ import switches from "../../ui/Switch.module.css";
 import { Loading } from "../../ui/Loading";
 import { Switch } from "../../ui/Switch";
 import { Toast } from "../../ui/Toast";
+import { LookSetting } from "../practice/LookSetting";
 import {
   practiceSettingsOptions,
   usePracticeAdjustment,
@@ -248,6 +249,14 @@ export function ChildPracticeSettings({
                 }
               />
             )}
+          </div>
+        </div>
+      )}
+      {/* How practice looks for this child, on any device. */}
+      {!settings.isError && (
+        <div className={styles.setting} data-child-look="">
+          <div className={styles.settingText} style={{ gridColumn: "1 / -1" }}>
+            <LookSetting scope={scope} who="the class" flush />
           </div>
         </div>
       )}

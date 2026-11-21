@@ -2,7 +2,12 @@ import { isDeepStrictEqual } from "node:util";
 import { skills } from "../curriculum/catalog";
 import { historicalTemplates } from "../math/historical-templates";
 import { templates } from "../math/engine";
-import type { PracticeChange } from "../learning/practice-settings";
+import type {
+  PracticeChange,
+  PracticeSettings,
+  PracticeState,
+} from "../learning/practice-settings";
+import { resolveLook } from "../learning/look";
 import { strandEstimate, targetGrade } from "../learning/frontier";
 import {
   ApiError,
@@ -10,6 +15,18 @@ import {
   type PracticeChangeSource,
 } from "./repository";
 import { templateGrade } from "./mixed-practice";
+
+/** The settings with the look that applies now and whether a class locked it. */
+export async function practiceState(
+  tx: LearnerTransaction,
+  settings: PracticeSettings,
+): Promise<PracticeState> {
+  const { look, locked } = resolveLook({
+    own: settings.look,
+    classes: await tx.classLooks(),
+  });
+  return { ...settings, effectiveLook: look, lookLocked: locked };
+}
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
 
@@ -106,6 +123,12 @@ export async function changePractice(
   } else if (change.kind === "gradeLevel") {
     // Display only: practice, levels and evidence are unchanged.
     next.gradeLevelShown = change.shown;
+  } else if (change.kind === "look") {
+    // Display only, like the grade level. A learner, their grown-up or a
+    // teacher's class may choose it, until a class locks it.
+    if ((await practiceState(tx, previous)).lookLocked)
+      throw new ApiError(409, "Your class chose how practice looks.");
+    next.look = change.look;
   } else {
     if (change.skillId && !templates.some((t) => t.skillId === change.skillId))
       throw new ApiError(400, "This skill has no practice problems.");

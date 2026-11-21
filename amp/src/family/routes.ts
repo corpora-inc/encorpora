@@ -3,6 +3,7 @@ import { recordCheckin } from "../learning/checkins.js";
 import { STARTER_ANSWERS } from "../analytics/events.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import {
+  familyDashboardSchema,
   familyPlacesSchema,
   familyProjectionSchema,
   familyChildProgressSchema,
@@ -10,6 +11,7 @@ import {
   familyTeachingSchema,
 } from "./projection-contracts.js";
 import {
+  familyDashboard,
   familyProjection,
   familyChildProgress,
   familyChildTime,
@@ -183,6 +185,13 @@ export async function registerFamilyRoutes(
           options.development,
           options.billingConfig,
         ),
+      );
+    });
+    scope.get("/api/v1/families/:family/dashboard", async (request) => {
+      const account = await options.authenticate(request);
+      const { family } = familyParams.parse(request.params);
+      return familyDashboardSchema.parse(
+        await familyDashboard(options.pool, account, family),
       );
     });
     scope.get("/api/v1/families/:family/teaching", async (request) => {

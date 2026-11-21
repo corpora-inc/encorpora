@@ -131,6 +131,7 @@ export async function experienceView(
       standings: setting("standings"),
       measure: setting("measure"),
       deviceMode: setting("deviceMode"),
+      look: setting("look"),
     },
     ...(students ? { students } : {}),
     ...(own ? { teacherLine: { shown: own.shown } } : {}),

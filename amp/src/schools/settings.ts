@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { looks } from "../learning/look.js";
 
 /** What a school decides about the student experience. One schema, one
  * resolver: district → school → class → student, and a level above can lock. */
@@ -12,6 +13,7 @@ export const schoolSettingsSchema = z.strictObject({
   standings: z.enum(standingsScopes),
   measure: z.enum(standingsMeasures),
   deviceMode: z.enum(deviceModes),
+  look: z.enum(looks),
   weeklyTargetMinutes: z.number().int().min(1).max(10_080).optional(),
 });
 export type SchoolSettings = z.infer<typeof schoolSettingsSchema>;
@@ -24,6 +26,7 @@ export const defaultSettings = {
   standings: "off",
   measure: "growth",
   deviceMode: "shared",
+  look: "calm",
 } as const satisfies SchoolSettings;
 
 export type ScopeKind = "org" | "class" | "person";

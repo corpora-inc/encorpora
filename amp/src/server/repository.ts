@@ -28,6 +28,8 @@ import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
 import { recordPrint } from "../schools/help-events.js";
+import { learnerClassLooks } from "../schools/learner-look.js";
+import type { ClassLook, ShownLook } from "../learning/look.js";
 import { recordLearnerActivity } from "../schools/evidence.js";
 import { noteLearnerEvent } from "../schools/live/events.js";
 import {
@@ -173,6 +175,9 @@ export type Outcome = {
   /** The kinds of help the answer had (`answerHelp`); absent for none and
    * for answers stored before it was recorded. */
   help?: ("hint" | "lesson" | "video" | "example" | "person")[];
+  /** The look on screen when it was answered (`learning/look.ts`); absent
+   * from older and native clients. */
+  look?: ShownLook;
   /** Where the answer came from; absent for in-app answers. */
   evidenceSource?: "paper";
   /** Below 1 for evidence weaker than a graded answer (a parent's mark
@@ -210,6 +215,8 @@ export class ApiError extends Error {
 export type PracticeChangeSource = "student" | "account";
 export interface LearnerTransaction {
   practiceSettings(): Promise<PracticeSettings>;
+  /** What this learner's classes say about look (`learning/look.ts`). */
+  classLooks(): Promise<ClassLook[]>;
   practiceChange(
     requestId: string,
   ): Promise<{ change: PracticeChange; result: PracticeSettings } | undefined>;
@@ -763,6 +770,9 @@ export class PgTransaction implements LearnerTransaction {
           ? practiceSettingsSchema.parse(rows[0].state)
           : defaultPracticeSettings(),
       ));
+  }
+  classLooks(): Promise<ClassLook[]> {
+    return learnerClassLooks(this.db, this.learnerId);
   }
   async practiceChange(requestId: string) {
     const { rows } = await this.db.query(
