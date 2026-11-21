@@ -272,8 +272,13 @@ export function createGoogleAnalytics(
         ownTitle,
       );
       // A page that titles itself is measured when its screen says its
-      // title, once: not on arrival, before the screen has it.
-      if (!title) return;
+      // title, once: not on arrival, before the screen has it. An untitled
+      // stop in between (a comparison that doesn't exist) forgets the last
+      // title, so coming back to the page before it is a new view.
+      if (!title) {
+        previousTitle = undefined;
+        return;
+      }
       if (sameGoogleVisit(previous, page) && title === previousTitle) return;
       const referrer = previous || safeReferrer(document.referrer);
       const pageParams = {
