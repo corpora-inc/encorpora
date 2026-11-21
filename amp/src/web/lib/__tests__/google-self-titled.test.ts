@@ -88,3 +88,22 @@ test("a slug with no comparison is never measured, and a private page still reti
   expect(pageViews()).toEqual([]);
   expect(gaWindow["ga-disable-G-TGEK0ZGHMD"]).toBe(true);
 });
+
+test("coming back from a comparison that doesn't exist counts the page again", () => {
+  const google = start("/versus/i-ready");
+  google.navigate();
+  google.navigate("AMP vs i-Ready | AMP");
+  // A link to a page with no comparison: its screen never gives a title.
+  at("/versus/no-such");
+  google.navigate();
+  expect(pageViews()).toHaveLength(1);
+  // Back to the comparison: a new view of it, sent once.
+  at("/versus/i-ready");
+  google.navigate();
+  google.navigate("AMP vs i-Ready | AMP");
+  google.navigate("AMP vs i-Ready | AMP");
+  expect(pageViews().map((view) => view.page_location)).toEqual([
+    "https://amp.corpora.inc/versus/i-ready",
+    "https://amp.corpora.inc/versus/i-ready",
+  ]);
+});

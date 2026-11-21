@@ -276,7 +276,7 @@ export function createGoogleAnalytics(
       // stop in between (a comparison that doesn't exist) forgets the last
       // title, so coming back to the page before it is a new view.
       if (!title) {
-        previousTitle = undefined;
+        if (!sameGoogleVisit(previous, page)) previousTitle = undefined;
         return;
       }
       if (sameGoogleVisit(previous, page) && title === previousTitle) return;
