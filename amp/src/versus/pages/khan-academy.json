@@ -1,0 +1,156 @@
+{
+  "slug": "khan-academy",
+  "name": "Khan Academy",
+  "maker": "Khan Academy",
+  "category": "adaptive",
+  "checked": "2026-11-21",
+  "benefit": "Practice with the plan built in",
+  "line": "Khan Academy is free and the adult plans it; AMP chooses every problem and brings old skills back on a schedule.",
+  "description": "AMP vs Khan Academy and Khanmigo: what free Khan offers, what its trials found, and why AMP plans every problem and every review itself.",
+  "verdict": "Khan Academy is free [1], runs from pre-K through multivariable calculus [6], and has randomized trials behind it [16]. It is also a library an adult has to run: the parent picks courses and sets the routine [4], and in Khan's own district data about 9% of students reached its recommended 30 minutes a week [21]. AMP costs $599 a year for the first child, and for that it does the running: it finds the level, chooses every problem, shows worked steps after every answer and schedules review.",
+  "theirs": [
+    "Khan Academy is a nonprofit funded by donors and grants. Its whole library is free, with no ads and no contracts [1]. The math runs from pre-K through multivariable calculus, including AP Calculus AB and BC and AP Statistics [6]. Khan says it is best used as a supplement to regular schooling, and that it is not an accredited school [5].",
+    "A course is split into units [15]. A learner watches a short video or reads an article, then practices with hints and instant feedback [10][29]. Exercises, quizzes, unit tests and Course Challenges move each skill up or down a level [15], and a later mixed-skill assessment can raise a skill to Mastered [7]. At home, the parent chooses the courses, sets the routine and makes assignments from a free Parent Dashboard [4].",
+    "Khanmigo is Khan's AI tutor. It sits on content pages and guides with questions instead of giving answers, and families pay $4 a month or $44 a year for up to 10 children [2][3]. It does not appear on quizzes, unit tests, Course Challenges or Mastery Challenges [35]. Schools buy seats at $10 per student a year [30]. In classrooms, a redesigned experience adds teacher-assigned Missions [13], and US partner districts get a Readiness Check that adds practice on earlier skills [11][37]."
+  ],
+  "credit": [
+    "It is free. The whole library costs nothing and shows no ads [1]. Khanmigo adds an AI tutor for $44 a year, and one plan covers up to 10 children [2][3]. AMP costs far more.",
+    "It goes further. Khan teaches AP Calculus AB and BC, AP Statistics and multivariable calculus [6]. AMP stops at precalculus.",
+    "Randomized evidence. A university-run two-year trial in 18 Tennessee middle schools found gains, and trials of coached use found larger ones [16][18].",
+    "Video, apps and languages. Short videos with captions and speed controls, iOS and Android apps, and full sites in more than two dozen languages, Spanish among them [36][10][28][27]. AMP is a web app in English, with lesson films for a growing share of problem types.",
+    "A real last step for Mastered. A skill reaches Mastered only after it is right again on a later mixed-skill assessment, and misses there move it back down [7]."
+  ],
+  "reasons": [
+    {
+      "title": "AMP does the planning Khan leaves to the parent",
+      "body": "Khan Academy's homeschool guide asks the parent to choose courses, set a routine, make assignments and monitor reports [4]. Its larger randomized gains came with adults running it: weekly coaching for teachers raised scores 0.12 to 0.22 standard deviations, with the gains from classrooms averaging at least 35 minutes a week [18]. In Khan's national study of about 200,000 students, average use was 10 to 15 minutes a week [20]. AMP places the learner, chooses each next problem from the learner's answers, checks it and schedules review, so the adult's part is to make the time.",
+      "research": ["level"]
+    },
+    {
+      "title": "Old skills come back without anyone asking",
+      "body": "In Classic Khan Academy, review is the Mastery Challenge: six questions on three earlier skills, started by the learner, at most one every 12 hours [9][14]. Cathy Duffy's review says the courses do not review earlier units until the final exam [10]. A district add-on advertises spiral review, and we found no published schedule for it [32]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and 1 month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [25].",
+      "research": ["review"]
+    },
+    {
+      "title": "Gaps get repaired at home, not only in class",
+      "body": "Khan's Readiness Check finds gaps from earlier grades and adds practice on them before related grade-level work [11][12]. A teacher assigns it, and only in US partner districts [37]. Independent learners stay on the Classic experience [13][14], where Khan says a learner may see recommended lessons after an activity [15]. We found no automatic step back to prerequisites after repeated misses documented there. In AMP, two misses in a row on any skill send practice to what that skill builds on, for every learner from counting to precalculus.",
+      "research": ["mastery", "level"]
+    },
+    {
+      "title": "The explanation comes without asking for it",
+      "body": "In the two-year Tennessee trial, Khanmigo's help was a message away, and the median student messaged it in only 17% of the exercise sessions in which they made a mistake [16]. AMP does not wait to be asked. After every answer it shows whether it was right, the correct answer and the worked steps. Across 40 studies of computer-based feedback, in a mix of ages and subjects, feedback that explains averaged 0.49, against 0.05 for marking right or wrong only [26].",
+      "research": ["feedback"]
+    },
+    {
+      "title": "Strong means four of five, without help",
+      "body": "Khan marks a skill Proficient after one exercise with every question right, and one miss can be erased by a correct bonus question [7][8]. AMP calls a skill Strong only when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded but never counts, and a skill due for review drops back to Building until it is shown again.",
+      "research": ["mastery", "hints"]
+    },
+    {
+      "title": "Workbooks on paper, made for each learner",
+      "body": "We found no printable math practice in Khan's help center. The printables it offers are a progress tracker and motivational pages [33][4]. AMP prints unlimited workbooks built from each learner's own record, each with a worked answer key, and results entered from paper count toward the learner's level."
+    }
+  ],
+  "evidence": {
+    "theirs": [
+      "Khan Academy has more randomized evidence than most math programs. The largest recent trial ran for two years in 18 middle schools in Hamilton County, Tennessee, with about 6,900 students in daily intervention math [16][17]. University of Toronto researchers ran it with outside funders, and Khan staff advised on the platform and helped arrange the district partnership and data sharing [16]. Adding Khan Academy with Khanmigo raised math scores about 0.06 standard deviations a year across both years and 0.08 in the second, against grades that kept their usual remediation, often other math software. Year one alone showed no significant effect. The paper is a working paper, not yet peer reviewed, and the authors say the gains resemble what Khan practice without AI predicts [16].",
+      "Larger effects came with adult support. In two experiments, weekly coaching that helped teachers use Khan for mastery practice raised scores 0.12 to 0.22 standard deviations, with the gains from classrooms averaging at least 35 minutes a week [18]. In government middle schools in India that all had Khan Academy, adding a dedicated on-site staff member to run it raised use from 7.2 to 47.4 minutes a week and math scores by almost half a standard deviation over 31 weeks [19]. Both trials test the support, not Khan Academy against no Khan Academy.",
+      "Khan's own larger numbers come from heavy users. In its 2021-22 MAP Accelerator analysis, 18,009 of 329,957 students, about 5.5% by our arithmetic, reached 30 minutes a week, and the brief says it cannot rule out self-selection [22]. In its November 2024 results about 9% reached that dose [21]. The students who use a program most differ from the rest before they start.",
+      "Evidence for ESSA lists Khan Academy and Khanmigo without a rating (\"No studies met inclusion requirements\") [23][24]. Neither has a What Works Clearinghouse intervention report."
+    ],
+    "ours": [
+      "We built AMP on findings that have held up in trials, and we think they matter most where Khan Academy leaves the choice to the learner. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [25]. AMP schedules that review for every learned skill. Feedback that explains averaged 0.49 across 40 studies, against 0.05 for right or wrong alone [26], and AMP shows worked steps after every answer, asked for or not. Khan's own research adds a third lesson: gains follow minutes [18][20]. Our bet is that a program that does the planning gets more of those minutes, and we have committed to testing that in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "rows": {
+    "price": "Free, with no ads [1]. Khanmigo for families: $4 a month or $44 a year, covering up to 10 children [2][3]. Schools: $10 per student a year [30].",
+    "buyers": "Anyone can use it free [1]. Khanmigo family plans need a US billing address [3]. Schools buy up to 1,000 seats online; larger districts buy an Enterprise plan [30][31].",
+    "range": "Pre-K through multivariable calculus, including AP Calculus AB and BC and AP Statistics [6].",
+    "start": "The adult picks the course. A Course Challenge over the whole course can find gaps [4]. US partner districts add a Readiness Check of about 36 questions [11][37].",
+    "teaching": "Short videos and articles, then exercises with hints and instant feedback [10][29]. Khanmigo, the AI tutor, for paying families [3][35].",
+    "next": "At home, the learner or parent chooses [4]. In classrooms on the new experience, teachers assign Missions [13].",
+    "mastery": "Proficient: every question right on an exercise, and one miss can be erased by a bonus question. Mastered: right again on a later mixed-skill assessment [7][8].",
+    "review": "Mastery Challenges: six mixed questions on earlier skills, started by the learner, at most one every 12 hours [9]. No fixed spacing schedule found.",
+    "print": "No printable math practice found in its help center. Printables are a progress tracker and motivational pages [33][4].",
+    "adult": "Khan's homeschool guide asks the parent to choose content, set a routine, make assignments, monitor reports and offer guidance [4].",
+    "reports": "Free parent reports: activity by course, a learner report and assignment scores. Khanmigo parents can read their children's chats [34][3].",
+    "evidence": "Several randomized trials. A university-run two-year trial found about 0.06 to 0.08 SD a year [16]. No Evidence for ESSA rating [23]."
+  },
+  "fit": {
+    "them": [
+      "Cost decides it. Khan Academy is free, and Khanmigo covers up to 10 children for $44 a year [1][2][3].",
+      "Your learner is ready for calculus, AP Calculus or AP Statistics [6].",
+      "Your family learns in Spanish or another language besides English, or wants a phone or tablet app [27][28].",
+      "You need a program with randomized trials behind it today [16][18]."
+    ],
+    "amp": [
+      "You want the program, not the parent, to choose every problem and decide when old skills come back.",
+      "You want every answer followed by the worked steps, without anyone having to ask.",
+      "You want gaps repaired at home, not only in a district classroom.",
+      "You want printed workbooks made for your child, with worked answer keys, that count toward the level online.",
+      "You want a level in each of 14 strands of math, so a strength in one never hides a gap in another."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Why pay for AMP when Khan Academy is free?",
+      "answer": "Khan Academy is free, and Khanmigo is $4 a month or $44 a year for up to 10 children [1][2][3]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each additional child, with the first 100 answers free and a full refund within 30 days. The price buys the planning: AMP places the learner, chooses every problem, schedules review and prints workbooks, from counting through precalculus."
+    },
+    {
+      "question": "Does Khanmigo help kids learn math?",
+      "answer": "In a two-year randomized trial in 18 Tennessee middle schools, adding Khan Academy with Khanmigo raised math scores about 0.06 to 0.08 standard deviations a year [16]. The authors say those gains resemble what Khan practice without AI predicts. The median student messaged Khanmigo in 17% of the exercise sessions in which they made a mistake [16]."
+    },
+    {
+      "question": "Does AMP have an AI tutor like Khanmigo?",
+      "answer": "No. No AI model runs while a learner works in AMP. Every problem type has a one-step hint that never gives the answer and a written lesson with a worked example, and an answer given after help does not count toward mastery."
+    },
+    {
+      "question": "Can we use AMP and Khan Academy together?",
+      "answer": "Yes. Khan's videos are free to anyone [1]. A learner can watch one on a topic and practice in AMP, which keeps the level in each strand and brings the skill back for review."
+    },
+    {
+      "question": "Is AMP proven to work better than Khan Academy?",
+      "answer": "Not yet. Khan Academy has randomized trials of its own [16][18], and AMP's planned studies are set out in the evidence section above. This page argues from how each program is built and from the research behind those choices."
+    }
+  ],
+  "sources": [
+    { "title": "Does it cost money to use Khan Academy? (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/202260114" },
+    { "title": "Khanmigo pricing (Khan Academy)", "url": "https://www.khanmigo.ai/pricing" },
+    { "title": "Khanmigo for parents (Khan Academy)", "url": "https://www.khanmigo.ai/parents" },
+    { "title": "How to use Khan Academy to homeschool (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/36065978206221" },
+    { "title": "Certificates or diploma (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/115006697467" },
+    { "title": "Which courses have Mastery enabled (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/360014675332" },
+    { "title": "How Mastery levels work (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/5548760867853" },
+    { "title": "How a student earns Proficient (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/35916723756685" },
+    { "title": "Mastery Challenges (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/360037494231" },
+    { "title": "Khan Academy Math, grades K-8 (Cathy Duffy Reviews)", "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/grades-k-6/khan-academy-math-grades-k-8" },
+    { "title": "What is the Readiness Check? (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/47686822980365" },
+    { "title": "Readiness Missions and Readiness exercises (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/47777820626573" },
+    { "title": "What's changing for students in the reimagined Khan Academy (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/46056261189773" },
+    { "title": "Course Mastery in the reimagined experience (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/47216131257997" },
+    { "title": "Course and Unit Mastery (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/115002552631" },
+    { "title": "Oreopoulos & Low (2026), One click away: AI tutoring with Khanmigo (NBER w35620)", "url": "https://www.nber.org/papers/w35620" },
+    { "title": "Khan Academy blog, multiple studies show Khan Academy drives learning gains", "url": "https://blog.khanacademy.org/multiple-studies-show-khan-academy-drives-learning-gains-evidence-for-our-platforms-effectiveness" },
+    { "title": "Oreopoulos et al., Teaching teachers to use computer assisted learning effectively (JHR 2026; NBER w32388)", "url": "https://doi.org/10.3368/jhr.1224-13977R2" },
+    { "title": "Oreopoulos, Keyes-Krysakowski & Agarwal (2026), supervised ed-tech support in India (NBER w34683)", "url": "https://www.nber.org/papers/w34683" },
+    { "title": "Khan Academy blog, national study in top journal finds Khan Academy learning gains", "url": "https://blog.khanacademy.org/national-study-in-top-journal-finds-khan-academy-learning-gains-after-accounting-for-key-unmeasured-factors/" },
+    { "title": "Khan Academy efficacy results, November 2024 (Khan Academy blog)", "url": "https://blog.khanacademy.org/khan-academy-efficacy-results-november-2024/" },
+    { "title": "Elevating math scores: MAP Accelerator 2021-22 brief (Khan Academy)", "url": "https://blog.khanacademy.org/wp-content/uploads/2023/09/MAP_Accelerator_21_22_Brief-1.pdf" },
+    { "title": "Khan Academy (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/khan-academy/" },
+    { "title": "Khanmigo (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/khanmigo/" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Languages Khan Academy is available in (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/226457308" },
+    { "title": "Official Khan Academy mobile apps (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/202487540" },
+    { "title": "Khan Academy website review (Common Sense Media)", "url": "https://www.commonsensemedia.org/website-reviews/khan-academy" },
+    { "title": "Purchasing Enterprise Starter (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/42088874994573" },
+    { "title": "What's included in Enterprise Starter and Enterprise (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/42088251619213" },
+    { "title": "Khan Academy Districts Enterprise and Learning Paths (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/360050959352" },
+    { "title": "Printable progress tracker (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/18386816796685" },
+    { "title": "Parent reports (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/36120531499789" },
+    { "title": "Where Khanmigo is available (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/13982530363533" },
+    { "title": "Accessibility features in the reimagined Khan Academy (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/46935855939469" },
+    { "title": "How do I assign a Readiness Check to my class? (Khan Academy Help Center)", "url": "https://support.khanacademy.org/hc/en-us/articles/47777404512909" }
+  ]
+}

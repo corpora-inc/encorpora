@@ -3,47 +3,95 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { documentRoutesNginxMap } from "./lib/nginx-map";
 import { brandTitle } from "../src/brand.js";
 import { createRequire } from "node:module";
-import { routeHead, applyRouteHead } from "../src/web/app/route-head.js";
+import { routeHead, applyRouteHead, type RouteHead } from "../src/web/app/route-head.js";
 import { documentRoutePatterns, publicDocumentPaths } from "../src/web/app/document-routes.js";
 import { researchJsonLd, researchStaticHtml, researchStaticStyles } from "../src/research/static-document.js";
+import { versusPath } from "../src/versus/catalog.js";
+import { readVersus } from "../src/versus/files.js";
+import { versusHubHead, versusHubJsonLd, versusPageHead, versusPageJsonLd } from "../src/versus/head.js";
+import { versusHubStaticHtml, versusPageStaticHtml, versusStaticClass, versusStaticStyles } from "../src/versus/static-document.js";
 const { JSDOM } = createRequire(import.meta.url)("jsdom") as { JSDOM: new (html: string) => { window: { document: Document }; serialize(): string } };
 const dist = new URL("../dist/", import.meta.url);
 const shell = await readFile(new URL("index.html", dist), "utf8");
-for (const path of publicDocumentPaths.filter(path => path !== "/")) {
+/** A page's words and structured data, in the document itself, for crawlers
+ * that don't run the app. The words sit after `#root`, hidden: a browser
+ * paints the loading wave and then the page, never a third layout, and
+ * `#root` keeps the wave as its only child for the entry guard. Without
+ * JavaScript, the noscript style shows them. */
+type StaticWords = {
+  /** One element, carrying `className`. */
+  html: string;
+  className: string;
+  styles: string;
+  data: readonly object[];
+  /** Marks the structured data, for a screen that replaces its own. */
+  dataAttribute?: string;
+};
+async function writeDocument(path: string, head: RouteHead, words?: StaticWords) {
   const dom = new JSDOM(shell);
-  const head = routeHead(path, "pitch");
-  if (!head?.canonical) throw new Error(`Missing public document metadata: ${path}`);
-  applyRouteHead(dom.window.document, head);
-  // `/research` carries its words and the report's structured data in the
-  // document itself, for crawlers that don't run the app. The words sit after
-  // `#root`, hidden: a browser paints the loading wave and then the page, never
-  // a third layout, and `#root` keeps the wave as its only child for the entry
-  // guard. Without JavaScript, the noscript style shows them.
-  if (path === "/research") {
-    const doc = dom.window.document;
+  const doc = dom.window.document;
+  applyRouteHead(doc, head);
+  if (words) {
     const root = doc.getElementById("root");
     if (!root) throw new Error("The app shell has no #root");
-    const words = doc.createElement("div");
-    words.innerHTML = researchStaticHtml();
-    const article = words.firstElementChild!;
+    const holder = doc.createElement("div");
+    holder.innerHTML = words.html;
+    const article = holder.firstElementChild;
+    if (!article || holder.childElementCount !== 1 || !article.classList.contains(words.className))
+      throw new Error(`The static words of ${path} are not one .${words.className} element`);
     article.setAttribute("hidden", "");
     root.after(article);
     const style = doc.createElement("style");
-    style.textContent = researchStaticStyles;
+    style.textContent = words.styles;
     doc.head.append(style);
-    const data = doc.createElement("script");
-    data.type = "application/ld+json";
-    data.textContent = JSON.stringify(researchJsonLd()).replace(/</g, "\\u003c");
-    doc.head.append(data);
+    for (const entry of words.data) {
+      const data = doc.createElement("script");
+      data.type = "application/ld+json";
+      if (words.dataAttribute) data.setAttribute(words.dataAttribute, "");
+      data.textContent = JSON.stringify(entry).replace(/</g, "\\u003c");
+      doc.head.append(data);
+    }
   }
   const directory = new URL(`${path.slice(1)}/`, dist);
   await mkdir(directory, { recursive: true });
   // A parser with scripting on reads <noscript> as text, so it goes in last.
-  const html = path === "/research"
-    ? dom.serialize().replace("</head>", "<noscript><style>.research-static[hidden]{display:block}</style></noscript></head>")
+  const html = words
+    ? dom.serialize().replace("</head>", `<noscript><style>.${words.className}[hidden]{display:block}</style></noscript></head>`)
     : dom.serialize();
   await writeFile(new URL("index.html", directory), html);
 }
+// The comparisons (`/versus`): read from disk and checked, so a build never
+// publishes content the validator rejects (npm run versus:check).
+const versus = readVersus();
+const versusWords = (html: string, data: readonly object[]): StaticWords => ({
+  html,
+  className: versusStaticClass,
+  styles: versusStaticStyles,
+  data,
+  dataAttribute: "data-versus-data",
+});
+const staticWords: Readonly<Record<string, StaticWords>> = {
+  "/research": {
+    html: researchStaticHtml(),
+    className: "research-static",
+    styles: researchStaticStyles,
+    data: [researchJsonLd()],
+  },
+};
+for (const path of publicDocumentPaths.filter(path => path !== "/")) {
+  const head = routeHead(path, "pitch");
+  if (!head?.canonical) throw new Error(`Missing public document metadata: ${path}`);
+  await writeDocument(path, head, staticWords[path]);
+}
+// The comparisons' hub, then one document per comparison, each with its own
+// head, words and data.
+await writeDocument("/versus", versusHubHead, versusWords(versusHubStaticHtml(versus.catalog), versusHubJsonLd()));
+for (const page of versus.pages)
+  await writeDocument(
+    versusPath(page.slug),
+    versusPageHead(page),
+    versusWords(versusPageStaticHtml(page, versus.catalog), versusPageJsonLd(page)),
+  );
 const missing = new JSDOM(shell);
 const doc = missing.window.document;
 // The page names AMP by its brand title (src/brand.ts), never a second name.
@@ -58,4 +106,4 @@ await writeFile(new URL("not-found.css", dist), tokens + '\nbody{margin:0;backgr
 const artifacts = new URL("../artifacts/", import.meta.url);
 await mkdir(artifacts, { recursive: true });
 await writeFile(new URL("document-routes-nginx-map.conf", artifacts), documentRoutesNginxMap(documentRoutePatterns));
-console.log("Built public school and research metadata, a 404 document and the browser-route map.");
+console.log(`Built public school, research and comparison documents (${versus.pages.length} comparisons), a 404 document and the browser-route map.`);

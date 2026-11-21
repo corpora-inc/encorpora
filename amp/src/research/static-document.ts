@@ -40,7 +40,7 @@ ${paragraphs(page.idea.paragraphs)}
 <ol>${page.components
     .map(
       (component) =>
-        `<li><h3>${escape(component.title)}</h3><p>${escape(component.what)}</p><p><em>${escape(component.research)}</em> <small>(${escape(component.sources)})</small></p></li>`,
+        `<li id="${escape(component.id)}"><h3>${escape(component.title)}</h3><p>${escape(component.what)}</p><p><em>${escape(component.research)}</em> <small>(${escape(component.sources)})</small></p></li>`,
     )
     .join("")}</ol>
 <p>${escape(page.combined)}</p>

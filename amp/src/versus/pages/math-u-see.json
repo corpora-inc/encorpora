@@ -1,0 +1,127 @@
+{
+  "slug": "math-u-see",
+  "name": "Math-U-See",
+  "maker": "Demme Learning",
+  "category": "books",
+  "checked": "2026-11-21",
+  "line": "Math-U-See is taught by a parent with blocks and video. AMP checks every answer and picks the next problem itself.",
+  "description": "AMP vs Math-U-See: blocks, video and a parent who teaches and grades, or practice that checks every answer and schedules review. Prices and evidence.",
+  "verdict": "Math-U-See is a long-running homeschool series with a clear method: Steve Demme teaches on video, then the parent teaches the lesson again with blocks and grades the pages [1][6]. It runs through calculus and costs less [1][4]. AMP places the learner in each part of math, checks and explains every answer the moment it is given, and brings old skills back on a schedule, with no lesson for the adult to teach or grade.",
+  "reasons": [
+    {
+      "title": "Every answer is checked the moment it is given",
+      "body": "In Math-U-See the child works the workbook page and the parent grades it afterward with the solutions book [6]. Its digital tools page describes no automatic grading of lesson work and no gradebook [3]. AMP marks each answer right or wrong, shows the correct answer and the worked steps, and moves on. A mistake is explained while the problem is still in front of the learner, not at the end of the page.",
+      "research": ["feedback"]
+    },
+    {
+      "title": "The adult does not have to teach first",
+      "body": "Math-U-See asks the parent to watch Steve Demme's video lesson, then teach it with the blocks [6]. AMP teaches at the problem: every problem type has a one-step hint, a written lesson with a worked example, and worked steps after the answer. Many adults feel unsure of math, and that is common. In a correlational study of 438 first and second graders, children of math-anxious parents learned less math over the year, but only when those parents often helped with homework [14]. The study is about homework help, not about any one program.",
+      "research": ["lessons", "hints"]
+    },
+    {
+      "title": "A level for each part of math, not one book",
+      "body": "Math-U-See places a child into one level with a yes-or-no online tool or a classroom placement test [7][9]. From there the lessons come in a set order [6][8]. AMP keeps a separate level in each of 14 strands and chooses every next problem from the learner's answers. A child strong in geometry and still building fractions has a separate level in each.",
+      "research": ["level"]
+    },
+    {
+      "title": "Review on a published schedule",
+      "body": "Math-U-See builds in review of earlier concepts [6]. We found no published schedule for it in the pages we read. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. Anyone can read the rule in AMP's public code.",
+      "research": ["review"]
+    },
+    {
+      "title": "Mastery has a rule, and misses lead back",
+      "body": "Math-U-See asks a student to master each lesson before moving on, at about a week a lesson [6]. We found no stated rule for when a lesson counts as mastered, so it appears to rest on the adult's judgment. In AMP a skill is Strong at four of the last five answers right without help, and an answer after a hint does not count. Two misses in a row send practice back to what the skill builds on.",
+      "research": ["mastery"]
+    },
+    {
+      "title": "Workbooks made for one learner",
+      "body": "Math-U-See's student workbook is the same for every child; at Primer level it costs $40 [5]. Its Worksheet Generator makes extra sheets through Pre-Algebra [6]. AMP prints unlimited workbooks built from the learner's own record, with review due that day and a worked answer key. Results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Digital plans $70 to $295.95 a year, each with 5 student accounts [4]. Print: Primer set $205.63; student workbook alone $40 [5].",
+    "buyers": "Families, through its store and subscriptions [4][5]. Schools get classroom placement tests; no school price on its classroom placement page [7].",
+    "range": "Primer through Calculus. Levels have names, not grade numbers [1][7].",
+    "start": "An online placement tool, or a written classroom placement test, sets one starting level [7][9].",
+    "teaching": "Video lessons by Steve Demme, an instruction manual, and integer blocks the parent teaches with [5][6].",
+    "next": "The next lesson in a set order, once the current one is mastered [6][8].",
+    "mastery": "Master each lesson before moving on, about a week per lesson [6]. No stated rule for when a lesson counts as mastered.",
+    "review": "Review of earlier concepts is built in [6]. No published schedule found.",
+    "print": "Print is the core: student workbook and tests, instruction manual, solutions [5][6]. A Worksheet Generator makes extra sheets through Pre-Algebra [6].",
+    "adult": "Watch the video, teach the lesson with the blocks, assign the pages and grade them with the solutions [6].",
+    "reports": "Its digital tools page describes no automatic grading of lesson work, gradebook or progress reports [3].",
+    "evidence": "No rating from Evidence for ESSA [10]. No What Works Clearinghouse intervention report [11]. The publisher cites no studies [8]."
+  },
+  "theirs": [
+    "Math-U-See is published by Demme Learning, a family-owned company in Lancaster, Pennsylvania, that has sold learning materials since 1990 [1]. Steve Demme built it while teaching math to a homeschool co-op in Massachusetts, around integer blocks and video lessons [2]. The levels run from Primer through Calculus, named rather than numbered by grade [1][7].",
+    "Cathy Duffy's review describes a typical lesson. The parent watches the video first, then works through the lesson with the child and the blocks. The child practices in the workbook, mostly alone, and the parent grades with the solutions book. A lesson takes about a week, or as long as mastery takes. High schoolers work more on their own from the video and the manual [6].",
+    "Families buy print sets, a digital subscription, or both [4][5]. The digital side adds virtual manipulatives, an online drill tool and a worksheet generator [1][3]. Placement starts with an online tool, and placement specialists answer by phone and live chat [9]."
+  ],
+  "credit": [
+    "Hands-on blocks. Concepts are built with integer blocks, including rectangle building, through Pre-Algebra [6]. AMP is on a screen, with only a few models a learner builds.",
+    "One teacher on video, Steve Demme, with one method from Primer up [2][6]. AMP's films are animated and cover a growing share of problem types, not every lesson.",
+    "Calculus. Math-U-See's levels go one course further than AMP, which stops at precalculus [1].",
+    "A lower price. Digital plans start at $70 a year for up to five student accounts, and a free account includes the first three lessons of each level [3][4].",
+    "People to ask and paper that needs no connection. Placement specialists answer by phone and live chat [9], and printed books and DVDs need no connection [6]."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Math-U-See on its site or in the two main clearinghouses as of November 2026. Evidence for ESSA lists Math-U-See without a rating (\"No studies met inclusion requirements\") [10]. It has no What Works Clearinghouse intervention report [11]. The Math-U-See home page links no research page [1].",
+      "Demme Learning calls its approach research-based but cites no studies [8]. The Math-U-See home page says research shows manipulatives deepen understanding, and gives no source [1]. The method has real support: the What Works Clearinghouse's 2021 guide for elementary students who struggle in math rates concrete and semi-concrete representations as strong evidence [15]. That supports blocks in general. It is not a study of Math-U-See."
+    ],
+    "ours": [
+      "AMP's two clearest departures from a parent-graded book rest on strong findings. Feedback that explains: across 40 studies of computer-based feedback, it averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [13]. These are averages by feedback type, not a head-to-head trial. Mixed, spaced practice: 62% against 38% on the researchers' own test a month later, in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations [12]. AMP builds both in. We expect that to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Choose Math-U-See if you want your child to learn with blocks in hand and a teacher on video, with you at the table.",
+      "Choose Math-U-See if you want math mostly off screens: books, a DVD and a pencil.",
+      "Choose Math-U-See if your teen is headed for calculus and you want one series the whole way.",
+      "Choose Math-U-See if price decides it: one digital plan covers up to five students for $70 to $295.95 a year."
+    ],
+    "amp": [
+      "You don't have time to teach and grade every lesson, or would rather not.",
+      "You want every miss explained the moment it happens.",
+      "Your child is ahead in some parts of math and behind in others.",
+      "You want old skills to come back on a schedule without planning it.",
+      "You love your Math-U-See books and want daily practice that finds the gaps beside them."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Math-U-See?",
+      "answer": "Yes. Math-U-See's digital plans cost $70 to $295.95 a year for up to five student accounts [4], and its Primer print set is $205.63 [5]. AMP is $599 a year or $59 a month for the first child and $399 a year or $39 a month for each more; that buys placement, a chosen problem every time, checking, scheduled review and personalized workbooks from counting through precalculus."
+    },
+    {
+      "question": "Can we use AMP alongside Math-U-See?",
+      "answer": "Yes. A family can keep teaching Math-U-See lessons and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it does not need to know where you are in the book."
+    },
+    {
+      "question": "Does AMP have manipulatives like Math-U-See's blocks?",
+      "answer": "Not physical ones. AMP has a few on-screen models a learner builds, such as a peg board and a counter builder. If hands-on blocks matter most for your child, Math-U-See offers them and AMP does not [6]."
+    },
+    {
+      "question": "Has Math-U-See been shown to work in studies?",
+      "answer": "We found no outcome study. Evidence for ESSA lists it without a rating, and it has no What Works Clearinghouse intervention report [10][11]."
+    }
+  ],
+  "sources": [
+    { "title": "Math-U-See home page (Demme Learning)", "url": "https://mathusee.com/" },
+    { "title": "About Math-U-See (Demme Learning)", "url": "https://mathusee.com/about/" },
+    { "title": "Math-U-See digital tools (Demme Learning)", "url": "https://mathusee.com/digital-tools/" },
+    { "title": "Demme Learning subscription plans", "url": "https://new.demmelearning.com/subscribe" },
+    { "title": "Math-U-See store: shop by level (Demme Learning)", "url": "https://store.demmelearning.com/mus-shop-now" },
+    { "title": "Math-U-See review (Cathy Duffy Reviews)", "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-k-6/math-u-see" },
+    { "title": "Math-U-See classroom placement (Demme Learning)", "url": "https://mathusee.com/classroom-placement/" },
+    { "title": "Demme Learning home page", "url": "https://demmelearning.com/" },
+    { "title": "Math-U-See placement (Demme Learning)", "url": "https://mathusee.com/placement/" },
+    { "title": "Math-U-See (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/math-u-see/" },
+    { "title": "What Works Clearinghouse intervention reports", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Maloney et al. (2015), Intergenerational effects of parents' math anxiety, Psychological Science 26(9)", "url": "https://doi.org/10.1177/0956797615592630" },
+    { "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades", "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26" }
+  ]
+}

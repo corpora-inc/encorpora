@@ -39,7 +39,7 @@ export function ResearchScreen() {
         <div className={styles.topicBody}>
           <ol className={styles.components}>
             {page.components.map((component) => (
-              <li key={component.title}>
+              <li key={component.id} id={component.id}>
                 <h3>{component.title}</h3>
                 <p>{component.what}</p>
                 <p className={styles.evidence}>

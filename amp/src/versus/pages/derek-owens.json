@@ -1,0 +1,120 @@
+{
+  "slug": "derek-owens",
+  "name": "Derek Owens",
+  "maker": "Lucid Education, LLC",
+  "category": "courses",
+  "checked": "2026-11-21",
+  "benefit": "Feedback on every answer",
+  "line": "Derek Owens teaches each course by recorded lecture. AMP chooses every problem and checks each answer at once.",
+  "description": "AMP vs Derek Owens: a teacher's recorded courses with hand-graded papers, or practice that finds the level and explains every answer at once.",
+  "verdict": "Derek Owens teaches math and physics to homeschool students himself, on recorded lectures, and a person grades the work [1][2][3]. That is real teaching from a real teacher. AMP works another way: it finds the learner's level, checks and explains each answer the moment it is given, and brings old topics back on a schedule, from counting through precalculus.",
+  "reasons": [
+    {
+      "title": "Every answer is checked the moment it is given",
+      "body": "In a Derek Owens course, homework and tests go in by email, fax or mail, and come back as graded papers, scanned and emailed [3]. In AMP each answer is marked at once, with the correct answer and the worked steps. A mistake is explained before the next problem, while the problem is still fresh. In studies of computer-based feedback, explanations had the largest average effect [7].",
+      "research": ["feedback"]
+    },
+    {
+      "title": "Each problem is aimed at the learner's level",
+      "body": "The Derek Owens FAQ describes no placement test. A student gets both Regular and Honors work in the first month, then picks one [4], and does the same assignments and tests as the in-class students [3]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers. A student strong in algebra and unsure of fractions gets work in both.",
+      "research": ["level"]
+    },
+    {
+      "title": "One price covers every part of math",
+      "body": "Derek Owens charges a $15 enrollment fee, then $65 a month per course with instructor grading [2]. The half-price option, $32.50 a month, makes a parent the grader, working from supplied solutions [2]. More than one course takes $10 a month off each, except with parent grading [2]. AMP costs $59 a month or $599 a year for the first child, and $39 or $399 for each more. That covers counting through precalculus, with every answer checked, so no adult has to grade."
+    },
+    {
+      "title": "Gaps from earlier grades get found and practiced",
+      "body": "Derek Owens's math courses begin at Prealgebra [1], and a course follows one fixed sequence of assignments, Regular or Honors [3][4]. AMP runs from counting onward. Two misses in a row on a skill send practice back to what that skill builds on. A student stuck in Algebra 1 because of fractions practices fractions.",
+      "research": ["mastery", "level"]
+    },
+    {
+      "title": "Earlier topics come back on a schedule",
+      "body": "We found no scheduled review of earlier topics in the course pages and FAQ we read [3][4]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [8].",
+      "research": ["review"]
+    }
+  ],
+  "rows": {
+    "price": "$15 enrollment, then $65 a month per course graded by the instructor, or $32.50 graded by a parent [2]. No charge for months away [2].",
+    "buyers": "Homeschool families [1]. No school or per-student pricing on its prices page [2].",
+    "range": "Single courses from Prealgebra to AP Calculus, plus Physical Science, Physics and Computer Science [1]. No elementary math courses listed [1].",
+    "start": "No placement test described. Students get Regular and Honors work in the first month, then choose one [4].",
+    "teaching": "Recorded video lectures by Derek Owens. Students fill in skeleton notes and work the examples with him [3].",
+    "next": "The course's own sequence of assignments, Regular or Honors, the same as in-class students. The family sets the pace [3][4].",
+    "mastery": "Graded homework and tests, the same ones in-class students take [3]. No mastery rule found in its published materials [3][4].",
+    "review": "No scheduled review of earlier topics found in its published materials [3][4].",
+    "print": "Printed workbooks of the lecture notes through Lulu.com, or PDFs. The same for every student [3].",
+    "adult": "With parent grading, grades every paper from supplied solutions [2]. Otherwise an instructor grades the work sent in [3].",
+    "reports": "Graded papers, scanned and emailed to the student and parents [3]. No online gradebook found in its published materials [3].",
+    "evidence": "No outcome study found on the vendor pages we read, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][4][5][6]."
+  },
+  "theirs": [
+    "Derek Owens offers math and physics courses for homeschool students, run through his company, Lucid Education, LLC [1]. Online, he teaches Prealgebra, Algebra 1, Geometry, Algebra 2, Precalculus and AP Calculus, plus Physical Science, Physics, Computer Science and Western Civilization [1]. He also teaches live classes in the Atlanta area, at Eastside Academic Studies in Lilburn and Metro Academic Studies in Buckhead [1].",
+    "An online lesson is a recorded lecture that matches his live classes, on the web or on CD or DVD [3]. The student fills in a skeleton set of lecture notes and works the example problems as he does. Then come homework and tests, the same ones his in-class students take. Work goes in by email, fax or mail, and the graded papers come back scanned, by email, to the student and parents [3].",
+    "Families choose instructor grading, or grade at home from supplied solutions for half the tuition [2]. Students may start any time and set their own pace, and many follow a nine-month year [1][3]. In the first month a student gets both Regular and Honors work, then picks one [4]."
+  ],
+  "credit": [
+    "A real teacher. Derek Owens teaches every lesson himself on recorded video, and students work the examples beside him in the lecture notes [3]. AMP has no teacher on video.",
+    "A person reads and grades the written work [3]. AMP checks typed answers and typed lines of work, not handwritten solutions.",
+    "Courses AMP does not offer: AP Calculus, Physics, Physical Science and Computer Science [1]. AMP stops at precalculus and teaches only math.",
+    "A lower monthly price for a family that grades at home: $32.50 a month per course, with months away paused at no charge [2].",
+    "Courses that accredited programs use, an Honors track, and lectures on CD or DVD for use offline [3][4]. AMP has no accreditation, transcripts or offline mode."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Derek Owens's courses. The course pages and FAQ we read describe how the courses work and make no claims about results [1][3][4]. Derek Owens has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report, as of November 2026 [5][6]. Not finding a study is not evidence that the courses fall short. It means the choice between the two rests on how each is built."
+    ],
+    "ours": [
+      "The two programs share one well-supported method. Derek Owens works examples on video while students fill in the notes [3], and AMP attaches a worked example to every problem type. Across 55 studies, worked examples improved math performance by an average of g = 0.48 [9]. They part at what happens after an answer. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged 0.49, the correct answer alone 0.32, and right or wrong only 0.05 [7]. In a randomized trial, mixed and spaced practice beat practice in blocks 62% to 38% on the researchers' test a month later [8]. We expect a program that explains every answer at once and brings old topics back on a schedule to help a learner keep more of what they learn. That is our bet.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your student is in Prealgebra or beyond and learns best from a teacher's lecture and printed notes [3].",
+      "You want a person to grade written work, or courses that accredited programs use [3][4].",
+      "You need AP Calculus, Physics or another science course [1].",
+      "You will grade at home and want the lowest monthly price: $32.50 a course [2]."
+    ],
+    "amp": [
+      "You want every answer checked and explained the moment it is given.",
+      "Your child is younger than Prealgebra, or has gaps from earlier grades.",
+      "You don't want to plan, teach or grade, and want earlier topics brought back on a schedule.",
+      "You teach children at different levels and want one program that finds each one's level in every part of math.",
+      "You want paper practice made for your learner, with a worked answer key."
+    ]
+  },
+  "questions": [
+    {
+      "question": "How much does Derek Owens cost compared with AMP?",
+      "answer": "Derek Owens charges a $15 enrollment fee, then $65 a month per course with instructor grading, or $32.50 if a parent grades [2]. AMP is $59 a month or $599 a year for the first child and covers all of math from counting through precalculus. A family that grades at home pays Derek Owens less per course."
+    },
+    {
+      "question": "Can we use AMP alongside a Derek Owens course?",
+      "answer": "Yes. The course gives the lecture and the graded tests. AMP places the learner within the first 24 problems and keeps a level in each part of math, repairs earlier gaps and brings old skills back on a schedule."
+    },
+    {
+      "question": "Are Derek Owens courses accredited?",
+      "answer": "Not by themselves. Accredited programs, including Northeast Independent Preparatory Academy and St. Nicholas Academy, use them [4]. AMP is not accredited and issues no transcripts."
+    },
+    {
+      "question": "Does AMP have video lessons like Derek Owens?",
+      "answer": "Not a teacher on camera. AMP has narrated, animated lesson films for a growing share of problem types, and a written lesson, a hint and worked steps for every one. Derek Owens teaches every lesson by recorded lecture [3]."
+    },
+    {
+      "question": "Does AMP teach AP Calculus or physics?",
+      "answer": "No. AMP stops at precalculus and teaches only math. Derek Owens offers AP Calculus, Physics and Physical Science [1]."
+    }
+  ],
+  "sources": [
+    { "title": "Derek Owens: Math and Physics Courses for Homeschool Students (home page)", "url": "https://www.derekowens.com/" },
+    { "title": "Prices (Derek Owens)", "url": "https://www.derekowens.com/prices.php" },
+    { "title": "Online classes (Derek Owens)", "url": "https://www.derekowens.com/onlineclasses.php" },
+    { "title": "Frequently asked questions (Derek Owens)", "url": "https://www.derekowens.com/faq.php" },
+    { "title": "Evidence for ESSA, search for Derek Owens", "url": "https://evidenceforessa.org/?s=Derek+Owens" },
+    { "title": "What Works Clearinghouse intervention reports", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance", "url": "https://doi.org/10.1007/s10648-023-09745-1" }
+  ]
+}

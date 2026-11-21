@@ -74,6 +74,13 @@ export const publicAppPageTitles: Readonly<Record<string, string>> = {
   "/research/pilot": "Join the AMP Pilot Study | AMP",
 };
 
+/** Public pages that title themselves: the comparisons (`/versus` and
+ * `/versus/<slug>`), whose titles come from their own content, loaded with
+ * their screens and never with the app's entry. Their screens write the
+ * document title and hand the same title to GA (features/versus). The slug
+ * is a file's name: lower-case letters, digits and hyphens, nothing else. */
+export const selfTitledPath = /^\/versus(?:\/[a-z0-9-]+)?$/;
+
 /** The signed-in home at `/`: a private screen, so GA never receives it. */
 const appHomeTitle = "AMP · Adaptive Math Pathways";
 
@@ -193,6 +200,8 @@ export function appPageTitle(
     /^\/family\/[^/]+\/kids\/[^/]+\/pathways$/.test(clean)
   )
     return;
+  // So do the comparisons.
+  if (selfTitledPath.test(clean)) return;
   if (clean === "/" && home === "app") return appHomeTitle;
   const title = publicAppPageTitle(location, home);
   if (title) return title;

@@ -1,0 +1,160 @@
+{
+  "slug": "life-of-fred",
+  "name": "Life of Fred",
+  "maker": "Polka Dot Publishing",
+  "category": "books",
+  "checked": "2026-11-21",
+  "benefit": "Practice at the learner's level",
+  "line": "Life of Fred teaches math through a story, in one order for every child. AMP sets the level and checks each answer.",
+  "description": "AMP vs Life of Fred: math told as a story in one fixed order, against a program that finds each learner's level, checks every answer and schedules review.",
+  "verdict": "Life of Fred tells math as a funny novel, runs from grade 1 into college math, and costs $8.31 to $30.49 a math book at one bookseller [3][4][5]. Its reviewer says it concentrates on concepts more than drill, and we found no placement test, mastery rule or review schedule [3][4]. AMP finds each learner's level, checks and explains every answer, and brings old skills back on a schedule, and it can sit beside the books.",
+  "reasons": [
+    {
+      "title": "AMP finds each learner's level in every strand",
+      "body": "We found no placement test for Life of Fred, and the books are meant to be used in order [3][4]. Where to start and what to skip is the adult's call, and every child meets the same chapters in the same sequence. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands, with no separate test, then chooses every next problem from the answers: new work, a prerequisite, or review. A learner strong in geometry and unsure in fractions gets work in both.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Every answer is checked and explained at once",
+      "body": "In Life of Fred the learner checks the answers printed on the next page [4]. The site that sells the series says the books do not give step-by-step answers to every question [2]. AMP marks each answer the moment it is given and shows the correct answer with worked steps. Across 40 studies of computer-based feedback, mixing ages and subjects, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right or wrong only 0.05 [8].",
+      "research": [
+        "feedback"
+      ]
+    },
+    {
+      "title": "Practice that never runs out",
+      "body": "Cathy Duffy, who lists Life of Fred as a Top Pick, says its text concentrates on concepts rather than computation practice and drill, and that a parent might feel the child is not doing enough math, though she adds that supplementing may not be needed [4]. More practice comes in separate Zillions of Practice Problems books [3][5]. AMP makes a fresh problem every time from 1,384 problem types, and 547 of them need a typed number, fraction or line of work, not a choice. For paper, it prints unlimited workbooks made for the learner, with worked answer keys."
+    },
+    {
+      "title": "Learned means right without help",
+      "body": "We found no rule in Life of Fred's reviews for when a topic counts as learned [3]. The adult or learner decides when to move on. In AMP a skill is Strong when four of the last five answers are right without help, and an answer given after a hint or the lesson does not count. Two misses in a row send practice back to what the skill builds on, so practice returns to the prerequisite first.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Old topics come back on a schedule",
+      "body": "Ideas do carry forward in Life of Fred: functions met in one book return in a later one [4]. We found no schedule for reviewing earlier topics [3][4]. AMP brings each learned skill back after 6 hours, then 1, 3, 7, 14 and 30 days, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [9].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "The adult gets a record without keeping one",
+      "body": "Life of Fred has no dashboard, gradebook or transcript, and the adult grades from the answers in the book [3][4]. AMP records every answer. It shows the level in each strand with its likely range, skills earned, time by day and skill, and the actual problems behind each number. Progress reports and report cards print.",
+      "research": [
+        "progress"
+      ]
+    }
+  ],
+  "rows": {
+    "price": "Hardcover math books, paid once: $8.31 to $30.49 each at one bookseller's discount prices, checked November 2026 [5]. Prices vary by store [3].",
+    "buyers": "Families, through booksellers [2][5]. We found no subscription or school license [2].",
+    "range": "Grade 1 books through algebra, geometry and trigonometry, then calculus, statistics and linear algebra [3][4][5].",
+    "start": "No placement test found. The books are meant to be used in order [3][4].",
+    "teaching": "A novel about Fred, a five-year-old math teacher, in black-and-white text. Applications can come before the method [3]. We found no video or software [3][4].",
+    "next": "The next chapter in the book. The adult or learner sets the pace [3][4].",
+    "mastery": "No mastery rule found [3]. The learner checks answers printed on the next page [4].",
+    "review": "No scheduled review found [3][4]. Some ideas reappear in later books [4].",
+    "print": "The whole course is hardcover print with answers inside, the same book for every child [3][4].",
+    "adult": "Choose the book, check answers with the built-in keys, and decide the pace. How much the adult teaches varies [3][4].",
+    "reports": "None found: no dashboard, gradebook or transcript [3][4].",
+    "evidence": "No entry in Evidence for ESSA [6]. No What Works Clearinghouse intervention report [7]. No outcome study found on its sites [1][2]."
+  },
+  "theirs": [
+    "Life of Fred is a series of hardcover math books written by Dr. Stanley Schmidt [3] and published by Polka Dot Publishing [1]. Cathy Duffy describes him as a retired math teacher [3][4]. The series starts with elementary books named Apples through Jelly Beans, then runs through fractions, decimals and percents, pre-algebra, algebra, geometry and trigonometry, and on to calculus, statistics and linear algebra [3][4][5].",
+    "Each chapter is part of a story about Fred, a five-year-old math teacher, and the humor is a large part of the appeal [3][4]. The learner reads, then answers a short set of \"Your Turn to Play\" questions, with the answers on the next page [4]. Chapters end with problem sets [3]. The books are written for independent study and meant to be used in order [3][4].",
+    "The books are black and white and non-consumable, so a younger sibling can use the same copy [3]. Extra practice comes in separate Zillions of Practice Problems books [3][5]. We found no video or software, and the books are written for independent study [3][4]."
+  ],
+  "credit": [
+    "A story. Math told as a novel, with humor that wins over learners who dislike worksheets [3][4]. AMP has no story.",
+    "It goes further than AMP: calculus, statistics and linear algebra [3][5]. AMP stops at precalculus.",
+    "A far lower price. Math books cost $8.31 to $30.49 each at one bookseller, paid once and reusable by the next child [3][5]. AMP is a yearly or monthly license.",
+    "No screen, no account and no subscription. The books work anywhere, offline [3]. AMP runs in a browser.",
+    "Cathy Duffy lists it among her Top Picks [3][4]. A reader she quotes says it would be their one choice [4]."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Life of Fred on its sites, in Evidence for ESSA or in the What Works Clearinghouse as of November 2026. It has no entry in Evidence for ESSA [6] and no What Works Clearinghouse intervention report [7]. The site that sells the series says that finishing it prepares a student for third-year college math [2]. We found no data published with that claim.",
+      "Its strongest endorsement is a reviewer's. Cathy Duffy lists Life of Fred among her Top Picks [3][4]. That is an informed opinion, not a study with a comparison group."
+    ],
+    "ours": [
+      "A book can explain an idea well. What it cannot do is watch the answers. We built AMP around two findings about what happens after the reading. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only; the studies mix ages and subjects and are not a head-to-head trial [8]. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for blocked practice on the researchers' own test a month later [9]. AMP applies both at every problem, at the learner's own level. We expect that to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child loves stories and learns best by reading.",
+      "Your learner is headed past precalculus, into calculus, statistics or linear algebra.",
+      "You want books bought once and passed down, with no screen and no subscription.",
+      "Your learner reads well and likes to work alone from a book."
+    ],
+    "amp": [
+      "You want the program, not the adult, to find the level and choose each problem.",
+      "Your child needs more practice than Life of Fred gives, checked and explained at once.",
+      "You want old topics to come back on a schedule, without planning it.",
+      "You want a record of what has been learned, with the actual problems behind it.",
+      "You love Fred and want daily practice beside the books."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Life of Fred a complete math curriculum?",
+      "answer": "Cathy Duffy treats it as a full course [3][4]. She also says it concentrates on concepts rather than drill, and that a parent might feel the child is not doing enough math, though supplementing may not be needed [4]. Separate Zillions of Practice Problems books add more [3][5]."
+    },
+    {
+      "question": "Can I use AMP with Life of Fred?",
+      "answer": "Yes. Many families could keep reading Fred for the story and the ideas, and use AMP for daily practice. AMP places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there."
+    },
+    {
+      "question": "Is AMP more expensive than Life of Fred?",
+      "answer": "Yes, by a wide margin. Life of Fred math books cost $8.31 to $30.49 each at one bookseller, paid once [5]. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more, with two parents practicing free. The price buys placement, a chosen problem at every step, checking, scheduled review and personalized workbooks from counting to precalculus."
+    },
+    {
+      "question": "Does Life of Fred have a placement test?",
+      "answer": "We found none [3][4]. The books are meant to be used in order [4]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Life of Fred home page (Polka Dot Publishing)",
+      "url": "https://www.lifeoffred.com/"
+    },
+    {
+      "title": "Life of Fred books (JOY Center of Learning, bookseller)",
+      "url": "https://www.lifeoffred.uniquemath.com/"
+    },
+    {
+      "title": "Life of Fred Math Series, middle school through high school (Cathy Duffy Reviews)",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-7-8/life-of-fred-math-series-middle-school-through-high-school"
+    },
+    {
+      "title": "Life of Fred Math, elementary (Cathy Duffy Reviews)",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-k-6/life-of-fred-math-elementary"
+    },
+    {
+      "title": "Life of Fred (Christianbook)",
+      "url": "https://www.christianbook.com/page/homeschool/math/life-of-fred"
+    },
+    {
+      "title": "Math programs (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/programs/math"
+    },
+    {
+      "title": "What Works Clearinghouse intervention reports",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment (ERIC record)",
+      "url": "https://eric.ed.gov/?id=EJ1081708"
+    },
+    {
+      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    }
+  ]
+}

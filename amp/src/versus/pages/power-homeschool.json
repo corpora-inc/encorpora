@@ -1,0 +1,177 @@
+{
+  "slug": "power-homeschool",
+  "name": "Power Homeschool",
+  "maker": "Power Homeschool LLC",
+  "category": "all-in-one",
+  "checked": "2026-11-21",
+  "benefit": "Math that starts where they are",
+  "line": "Power Homeschool teaches many subjects by video from lesson one; AMP teaches only math, at each learner's level.",
+  "description": "AMP vs Power Homeschool: video courses in many subjects that start at lesson one, against math practice that finds the level and explains every answer.",
+  "verdict": "Power Homeschool gives a family many subjects, a teacher on video for each lesson, and up to six courses for $99 a month per student [3][4]. In math, each course starts at the beginning, and we found no published rule for mastery [3][4]. AMP is only math: it finds the level in each strand, explains every answer, brings old skills back on a schedule, and costs $59 a month or $599 a year.",
+  "reasons": [
+    {
+      "title": "AMP starts where the learner is",
+      "body": "Power Homeschool's FAQ says students start at the beginning of each course [3]. Its course pages say students move quickly through what they know, and describe Prism Diagnostics, which finds gaps and provides targeted instruction videos [6][7]. AMP has no course to work through first. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math, so a learner ahead in geometry and behind in fractions practices each at its own level.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "For math alone, AMP costs less",
+      "body": "Power Homeschool charges $99 a month per student, or $79 with the Roger Billings Scholarship, and the rate is the same for one course or six [3]. AMP is $59 a month or $599 a year for the first child, and $39 a month or $399 a year for each more. AMP starts free with 100 answers and 5 workbooks and refunds in full within 30 days. Power Homeschool does not refund monthly payments made before a cancellation [2]."
+    },
+    {
+      "title": "Every answer comes back explained",
+      "body": "A Power Homeschool lesson is a video from a teacher, then practice, with more help videos when a concept does not land [4]. Its student page does not say what a learner sees after a wrong answer [4]. AMP shows the correct answer and the worked steps after every answer, and every problem has a one-step hint that never gives the answer away. Across 40 studies of computer-based feedback, in mixed ages and subjects, feedback that explains averaged 0.49, the correct answer alone 0.32, and right or wrong alone 0.05 [14].",
+      "research": [
+        "feedback",
+        "hints"
+      ]
+    },
+    {
+      "title": "A mastery rule anyone can read",
+      "body": "Power Homeschool says a student must master each concept before the next lesson [4]. We found no statement of what counts as mastery on the pages we read [4][10]. AMP's rule is public: four of the last five answers right without help. An answer after a hint or the lesson does not count, and two misses in a row send practice back to what the skill builds on.",
+      "research": [
+        "mastery"
+      ]
+    },
+    {
+      "title": "Old skills return on a set schedule",
+      "body": "Power Homeschool describes Vectored Instruction, which finds gaps and brings back earlier lesson material to reinforce them [6]. We found no schedule for that review. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the clock. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test about a month later, against 38% for practice in blocks [13].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Paper workbooks made for each learner",
+      "body": "Power Homeschool's materials are online and included in the monthly rate, and some courses add digital books [2]. We found no printable workbooks or answer keys. AMP prints unlimited workbooks built from each learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level, so a day away from the screen still moves practice forward."
+    }
+  ],
+  "rows": {
+    "price": "$99 a month per student, or $79 with the Roger Billings Scholarship, for up to six courses at a time [3]. Past monthly payments are not refunded [2].",
+    "buyers": "Families, directly [2]. A National Cyberschool option offers Acellus at no cost to families who partner with a local public district [1]. We found no free trial [2].",
+    "range": "PreK through grade 12, hundreds of courses [1]. Math from kindergarten through Pre-Calculus, plus Trigonometry and Business Math. No calculus listed [5][6].",
+    "start": "Each course starts at the beginning [3]. Prism Diagnostics is described as finding gaps and providing targeted instruction videos [6].",
+    "teaching": "A short video lesson from a teacher, then practice problems. Extra help videos and a Lesson Manual when a concept does not land [4].",
+    "next": "The course's own sequence: each lesson builds on the last, and the next opens when it is done [10]. Help videos are added when a concept does not land [4].",
+    "mastery": "A student must master each concept before the next lesson [4]. We found no published threshold.",
+    "review": "Vectored Instruction is described as finding gaps and bringing back earlier lesson material [6]. We found no review schedule.",
+    "print": "Materials are online and included in the monthly rate; some courses add digital books [2]. We found no printable workbooks or answer keys.",
+    "adult": "Supervises, sets weekly goals for each course and can follow every answer in the Live Monitor. The system grades the work [3][10].",
+    "reports": "Every answer in the Live Monitor, alerts on struggling concepts, course grades, attendance in days and hours, report cards with GPA [10].",
+    "evidence": "We found no outcome study on its site. No entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [11][12]."
+  },
+  "theirs": [
+    "Power Homeschool is run by Power Homeschool LLC. It sells Acellus online courses to families who teach at home, and its sign-in links point to Acellus [8]. It offers hundreds of courses from PreK through grade 12, and a student can take up to six at a time for one monthly rate [1][3]. In math it runs from kindergarten through Pre-Calculus, with Trigonometry, Business Math, College Exam Math Prep and math fact practice courses, and Spanish versions of Grade 6 Math, Pre-Algebra and Algebra I [5][6][7].",
+    "A lesson is a short video taught by a teacher, followed by practice problems on the concept. If a student does not grasp it, the program offers more in-depth help videos and a Lesson Manual [4]. Lessons run in order, and the next opens when the last is done [10]. The parent sets weekly goals for each course and supervises; the system grades the work [3][10]. Courses are self-paced and come without teacher support [3].",
+    "Acellus Academy is a separate online private school, run by the International Academy of Science, a Kansas City nonprofit [9]. Power Homeschool issues no diploma and points families who want one to the Academy [3]. This page compares Power Homeschool's math with AMP."
+  ],
+  "credit": [
+    "Many subjects in one subscription: hundreds of courses from PreK through grade 12, up to six at a time for one rate [1][3]. For a full program, that is far less per subject than AMP, which teaches only math.",
+    "A teacher on video for every lesson, with more help videos when a concept does not land [4]. AMP has narrated, animated films for a growing share of problem types and no human teacher on video.",
+    "The records a homeschool keeps: attendance in days and hours, course grades and printable report cards with GPA [10], plus a path to a diploma through Acellus Academy [3][9]. AMP has report cards but no GPA, transcript or course credit.",
+    "Spanish versions of Grade 6 Math, Pre-Algebra and Algebra I [5][7]. AMP is in English only.",
+    "Works on Mac, Windows, iOS and Android devices [3]. AMP runs in a web browser and has no app in the app stores."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Power Homeschool on its site: no randomized trial, no comparison-group study, no usage study. Power Homeschool and Acellus have no entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [11][12].",
+      "Its About page says its approach accelerates learning, and its middle school page calls its courses more effective than traditional options. Neither page cites data or a source for the claim [7][8]. The rule for mastery, and how Prism Diagnostics and Vectored Instruction decide what a student sees, are not described on the pages we read [4][6], so we could not check them."
+    ],
+    "ours": [
+      "Power Homeschool leads each lesson with a teacher on video [4]. AMP leads with the problem and brings the explanation to it. The data on that choice are weaker than a trial: in an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The authors estimate the benefit of extra doing at more than six times that of extra watching or reading, and the data are correlational [15]. Add the trial evidence for mixed, spaced practice [13] and for feedback that explains [14], and we expect a math program built on all three to do better than a course that starts at lesson one. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "You want one subscription for many subjects, with a teacher on video for each lesson.",
+      "You need course grades, a GPA, or a path to a diploma.",
+      "Your child will study Grade 6 Math, Pre-Algebra or Algebra I in Spanish.",
+      "You plan to use most of its six courses, so the monthly rate covers far more than math."
+    ],
+    "amp": [
+      "Math is the subject you most want right, and you have a plan for the rest.",
+      "Your child is ahead in one part of math and behind in another, and should not start a course at lesson one.",
+      "You want every miss answered with the correct answer and the worked steps.",
+      "You want old skills brought back on a schedule, and paper workbooks with answer keys.",
+      "You want to try it free first, with a full refund within 30 days."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP cheaper than Power Homeschool?",
+      "answer": "For math alone, yes. AMP is $59 a month or $599 a year for the first child and $39 a month for each more; Power Homeschool is $99 a month per student, or $79 with the Roger Billings Scholarship [3]. Its rate covers up to six courses at a time, so for a full program it costs less per subject."
+    },
+    {
+      "question": "Can we use AMP for math and Power Homeschool for everything else?",
+      "answer": "Yes. AMP is a separate math program that runs in a web browser. Power Homeschool's rate is the same for one course or six [3], so dropping its math course does not lower the bill."
+    },
+    {
+      "question": "Is Power Homeschool the same as Acellus?",
+      "answer": "Power Homeschool sells Acellus courses to families who homeschool [1], and its sign-in links lead to Acellus [8]. Acellus Academy is a separate online private school, and it is where Power Homeschool sends families who want a diploma [3][9]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Power Homeschool home page",
+      "url": "https://www.powerhomeschool.org/"
+    },
+    {
+      "title": "Enroll (Power Homeschool)",
+      "url": "https://account.powerhomeschool.org/enroll/"
+    },
+    {
+      "title": "Frequently asked questions (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/faq/"
+    },
+    {
+      "title": "The student experience (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/how-it-works/student-experience/"
+    },
+    {
+      "title": "High school courses (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/courses/high-school/"
+    },
+    {
+      "title": "Elementary courses (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/courses/elementary/"
+    },
+    {
+      "title": "Middle school courses (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/courses/middle-school/"
+    },
+    {
+      "title": "About (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/about/"
+    },
+    {
+      "title": "Acellus Academy home page",
+      "url": "https://www.acellusacademy.com/"
+    },
+    {
+      "title": "The parent experience (Power Homeschool)",
+      "url": "https://www.powerhomeschool.org/how-it-works/parent-experience/"
+    },
+    {
+      "title": "Search for Acellus (Evidence for ESSA, Johns Hopkins University)",
+      "url": "https://www.evidenceforessa.org/?s=acellus"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Koedinger et al. (2015), Learning is not a spectator sport",
+      "url": "https://doi.org/10.1145/2724660.2724681"
+    }
+  ]
+}

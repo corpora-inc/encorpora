@@ -1,0 +1,440 @@
+/* The comparisons: `/versus` and `/versus/<slug>`, in the homepage's frame
+   (pitch/Pitch.module.css) and on the research page's topics
+   (research/Research.module.css: a rule, the heading in the copy column,
+   the body beside it). What is here is the comparisons' own: the first
+   screen, the side-by-side table, and the lists. Every part has its final
+   size before it paints: the words arrive with the screen. */
+
+.main {
+  min-width: 0;
+}
+
+/* The first screen: the title, the verdict, Try it free. */
+.intro {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: clamp(var(--space-5), 5vw, 80px)
+    clamp(var(--space-3), 3vw, 48px);
+}
+.intro .title {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(36px, 4.2vw + 18px, 76px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+.lede {
+  max-width: 36em;
+  color: var(--color-muted-text);
+  font-size: clamp(18px, 0.5vw + 15px, 22px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+/* As on the homepage's first screen. */
+.start {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 26em;
+}
+.start .try {
+  width: 100%;
+  min-height: 56px;
+  font-size: var(--text-body);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+}
+.note {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+
+/* A citation: the source's number, raised, a link to it in Sources. */
+.cite {
+  font-size: 0.72em;
+  line-height: 0;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.cite span {
+  color: var(--color-muted-text);
+}
+.main .cite a {
+  padding: 0 0.1em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.main .cite a:hover {
+  text-decoration: underline;
+}
+.main .cite a:focus-visible,
+.sub a:focus-visible,
+.table a:focus-visible,
+.fit a:focus-visible,
+.why a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Lists inside a topic: no markers of their own, one rhythm. */
+.plain {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plain li {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.main .sub {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+/* Why AMP: each reason under AMP's rule, as the research page's parts are. */
+.reasons {
+  gap: var(--space-5);
+}
+.reasons li {
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--color-primary);
+}
+.research {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  font-size: var(--text-label);
+}
+.research a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+}
+
+/* What it does well, and each side of the choice: short items, a dash each. */
+.points {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.points li {
+  position: relative;
+  padding-left: 1.4em;
+  text-wrap: pretty;
+}
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 0.8em;
+  border-top: 1px solid var(--color-border-strong);
+}
+
+/* Side by side. The section spans the page: a heading, then the table.
+   AMP's column comes first and reads as the default: its words in the
+   page's ink under AMP's rule, the other program's in the quieter ink. */
+.compare {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.main .compare h2,
+.main .fit h2,
+.main .why h2 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.table {
+  display: grid;
+  grid-template-columns: minmax(9.5em, 0.5fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--space-5);
+  width: 100%;
+  margin: 0;
+  border: 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.table thead,
+.table tbody,
+.table tr {
+  display: contents;
+}
+.table th,
+.table td {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-3) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  background: none;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+/* The column names. AMP's sits on its rule; the first corner is empty. */
+.table thead th,
+.table thead td {
+  align-self: end;
+  padding: 0 0 var(--space-2);
+  border-top: 0;
+  font-size: var(--text-label);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-muted-text);
+}
+.table thead .ours {
+  color: var(--color-on-surface);
+}
+.table tbody tr:first-child .ours {
+  border-top: 2px solid var(--color-primary);
+  /* The heavier rule takes its extra pixel from the padding, so the row's
+     three cells keep one baseline. */
+  padding-top: calc(var(--space-3) - 1px);
+}
+.table tbody th {
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  font-weight: 700;
+  line-height: 1.6;
+}
+.table .ours {
+  color: var(--color-on-surface);
+}
+.table .theirs {
+  color: var(--color-muted-text);
+}
+/* Whose cell it is, said in the cell: only where the rows stack. */
+.who {
+  display: none;
+}
+/* Narrow: each row is its name, then AMP, then the other program. */
+@media (max-width: 699px) {
+  .table {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* The column names leave the screen, not the table's reading. */
+  .table thead th,
+  .table thead td {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .table tbody th {
+    padding: var(--space-4) 0 var(--space-1);
+    font-size: var(--text-body);
+    line-height: 1.4;
+  }
+  .table tbody td,
+  .table tbody tr:first-child .ours {
+    padding: var(--space-1) 0 var(--space-2) var(--space-3);
+    border-top: 0;
+    border-left: 2px solid var(--color-border);
+  }
+  .table tbody .ours,
+  .table tbody tr:first-child .ours {
+    border-left-color: var(--color-primary);
+  }
+  .table tbody .theirs {
+    margin-bottom: var(--space-3);
+  }
+  .who {
+    display: block;
+    font-size: var(--text-small);
+    font-weight: 700;
+    line-height: 1.5;
+  }
+}
+
+/* The evidence: each side under its name. */
+.side {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* The choice: the other program, then AMP, side by side where there is
+   room, on the page's split. */
+.fit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+.fit > div {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.fit .mine {
+  color: var(--color-on-surface);
+}
+@media (min-width: 700px) {
+  .fit {
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+    column-gap: var(--pitch-gutter);
+  }
+}
+
+/* Questions. */
+.questions {
+  gap: var(--space-5);
+}
+
+/* Sources: numbered, as the citations name them. */
+.sources {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0 0 0 1.6em;
+  font-size: var(--text-label);
+  line-height: 1.5;
+}
+.sources li {
+  padding-left: var(--space-1);
+  /* A citation's link lands with air above its source. */
+  scroll-margin-top: var(--space-6);
+  overflow-wrap: anywhere;
+}
+.sources li:target {
+  color: var(--color-on-surface);
+}
+.sources li::marker {
+  color: var(--color-on-surface);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.small {
+  font-size: var(--text-label);
+  line-height: 1.5;
+}
+
+/* Other comparisons, and the hub's index: the name, then why AMP, one line
+   each where there is room. */
+.index {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.index li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 var(--space-4);
+  align-items: baseline;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+}
+.index li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.main .index a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  justify-self: start;
+  color: var(--color-on-surface);
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.main .index a:hover {
+  color: var(--color-primary);
+  text-decoration-thickness: 2px;
+}
+.index span {
+  font-size: var(--text-label);
+  line-height: 1.5;
+  text-wrap: pretty;
+  padding-bottom: var(--space-1);
+}
+@media (min-width: 620px) {
+  .index li {
+    grid-template-columns: minmax(0, 13em) minmax(0, 1fr);
+  }
+  .index span {
+    padding-bottom: 0;
+  }
+}
+.all {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+}
+
+/* The hub's strip: three parts of AMP, each a door to its research. */
+.why {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+.why ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4) var(--pitch-gutter);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.why li {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--color-primary);
+}
+.why a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.why li a {
+  color: var(--color-on-surface);
+  font-weight: 700;
+}
+.why li a:hover {
+  color: var(--color-primary);
+}
+@media (min-width: 760px) {
+  .why ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
