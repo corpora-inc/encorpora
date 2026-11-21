@@ -163,6 +163,25 @@ export function elsewhere(
     : redirect({ ...target, replace: true } as never);
 }
 
+/** `elsewhere`, for a target that may itself be an old address (a family
+ * org's school home, say): straight to where that address opens now
+ * (app/legacy-aliases.ts), never a second hop from it. */
+export async function elsewhereOnce(target: string): Promise<never> {
+  const { aliasTarget } = await import("./legacy-aliases");
+  const next = (
+    await aliasTarget({ pathname: target, search: {}, searchStr: "" })
+  )?.target;
+  if (!next) return elsewhere(target);
+  if (typeof next === "string") return elsewhere(next);
+  if ("href" in next) return elsewhere(next.href);
+  return elsewhere({
+    to: next.to,
+    search: next.search,
+    hash: next.hash,
+    state: next.state,
+  });
+}
+
 /**
  * A signed-in person on a screen that isn't theirs (or an address that only
  * names "your place"): one hop to their own place, never through `/`.
