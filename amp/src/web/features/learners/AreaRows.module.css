@@ -1,0 +1,150 @@
+/* A learner's five areas (AreaRows): one grid for the head and every row,
+   fixed heights (76 px on a phone, two lines; 44 px from 600 px, one). */
+.areas {
+  display: grid;
+  min-width: 0;
+}
+.head,
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  grid-template-areas: "title title action" "level checked checked";
+  column-gap: var(--space-4);
+  align-items: center;
+  min-width: 0;
+}
+/* Nothing checked below (a learner at the start of the scale): the title
+   and the level share one 44 px line. */
+.areas:not([data-checking]) .head,
+.areas:not([data-checking]) .row {
+  grid-template-columns: minmax(7rem, 9rem) minmax(0, 1fr);
+  grid-template-areas: "title level";
+}
+.areas:not([data-checking]) .row {
+  grid-template-rows: 44px;
+  height: 44px;
+}
+.areas:not([data-checking]) .action {
+  display: none;
+}
+.head {
+  grid-template-areas: "level checked checked";
+  padding-bottom: var(--space-1);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+}
+.areas:not([data-checking]) .head {
+  grid-template-areas: ". level";
+}
+.levelHead {
+  grid-area: level;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.checkedHead {
+  grid-area: checked;
+  align-self: end;
+  min-width: 0;
+}
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.row {
+  grid-template-rows: 44px 32px;
+  height: 76px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--color-border);
+}
+.title {
+  grid-area: title;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--text-table);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.level {
+  grid-area: level;
+  display: block;
+  height: 32px;
+  min-width: 0;
+}
+.checked {
+  grid-area: checked;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 32px;
+}
+.action {
+  grid-area: action;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.checkedCell {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.grades {
+  flex: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.bar {
+  display: flex;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+  height: 10px;
+}
+.bar > span {
+  flex: var(--share) 1 0;
+  min-width: 3px;
+  border-radius: 2px;
+}
+.none {
+  color: var(--color-muted-text);
+}
+.caption {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.4;
+}
+
+@media (min-width: 600px) {
+  .head,
+  .row {
+    grid-template-columns:
+      minmax(8rem, 10.5rem) minmax(0, 1.2fr) minmax(0, 1fr)
+      var(--area-action, 9rem);
+    grid-template-areas: "title level checked action";
+  }
+  .areas:not([data-checking]) .head,
+  .areas:not([data-checking]) .row {
+    grid-template-columns:
+      minmax(8rem, 10.5rem) minmax(0, 1fr) var(--area-action, 9rem);
+    grid-template-areas: "title level action";
+  }
+  .head {
+    grid-template-areas: ". level checked .";
+  }
+  .areas:not([data-checking]) .head {
+    grid-template-areas: ". level .";
+  }
+  .row {
+    grid-template-rows: 44px;
+    height: 44px;
+  }
+}
