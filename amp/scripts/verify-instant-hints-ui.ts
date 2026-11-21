@@ -66,7 +66,8 @@ const root = new URL("../", import.meta.url).pathname;
 const vite = await createServer({
   root,
   configFile: root + "vite.config.ts",
-  cacheDir: "node_modules/.vite-instant-hints",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-instant-hints",
   server: {
     host: "127.0.0.1",
     port,

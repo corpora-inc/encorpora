@@ -44,7 +44,7 @@ await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  cacheDir: "node_modules/.vite-recovery",
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-recovery",
   server: {
     host: "127.0.0.1",
     port,
