@@ -304,7 +304,32 @@ export function familyRoutes(root: AnyRoute) {
         getParentRoute: () => family,
         path: "kids/$learner/workbooks/$workbookId/results",
         staticData: { overList: true },
-        loader: childLoader,
+        // The page under it, and the results themselves: the sheet opens
+        // whole, its title the workbook's own.
+        loader: async (input) => {
+          const { session } = input.context as unknown as {
+            session: AuthSession;
+          };
+          const {
+            family: id,
+            learner,
+            workbookId,
+          } = input.params as {
+            family: string;
+            learner: string;
+            workbookId: string;
+          };
+          const [data, { workbookResultsOptions }] = await Promise.all([
+            queryClient
+              .ensureQueryData(familyOptions(session, id))
+              .catch(orNull("The family")),
+            import("../features/workbooks/api"),
+            childLoader(input),
+          ]);
+          const child = data?.children.find((entry) => entry.id === learner);
+          if (child?.capabilities.readWorkbooks)
+            await preload(workbookResultsOptions(session, learner, workbookId));
+        },
         component: screen("ChildScreen"),
       }),
       childScreen(

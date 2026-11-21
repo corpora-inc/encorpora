@@ -20,6 +20,7 @@ import { ChunkRecoveryNotice } from "../ui/ChunkRecoveryNotice";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./RouterView";
+import { applyRouteHead, routeHead } from "./route-head";
 import { Providers } from "./providers";
 import { router } from "./router";
 import "./styles";
@@ -104,6 +105,13 @@ function render() {
 
 /** The app, on every document but the signed-out pitch's. */
 export function bootApp() {
+  // The screen's title from its first frame: `index.html` carries the
+  // pitch's, and only `/` may still become the pitch. Written again, the same,
+  // once the route resolves (RouterView).
+  if (location.pathname !== "/") {
+    const head = routeHead(`${location.pathname}${location.search}`, "app");
+    if (head) applyRouteHead(document, head);
+  }
   start();
   render();
 }

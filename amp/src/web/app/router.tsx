@@ -106,6 +106,7 @@ import { familyRoutes } from "./family-routes";
 import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
 import { appReturn } from "../features/spaces/returns";
+import { loadSpaceFrame } from "../features/spaces/useSpace";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
@@ -227,15 +228,24 @@ const root = createRootRoute({
       .catch((error: unknown) =>
         console.warn("The session didn’t load ahead", error),
       );
-    // The document's first screen already read the account in this load: a
-    // hop on the way to it (an alias, `/practice` to the learner's own
-    // address) is the same screen and reads it once.
-    const firstLoadRead =
-      !router.state.resolvedLocation &&
+    const known =
       !!session &&
       queryClient.getQueryData(meOptions(session).queryKey) !== undefined;
-    // The resource's observer shows its own error; this refresh only logs.
-    if (session && !firstLoadRead)
+    // Who this is and the place the address names are known before any
+    // screen renders, so the frame's first paint is the destination's
+    // (features/spaces/useSpace.ts `loadSpaceFrame`). Cached, it costs
+    // nothing: a warm move paints at once.
+    await loadSpaceFrame(
+      session ?? null,
+      location.pathname,
+      location.search as Record<string, unknown>,
+    );
+    // A later move refreshes an account already known, without waiting on
+    // it. (The document's first screen read it just now; a hop on the way to
+    // it, an alias or `/practice` to the learner's own address, is the same
+    // screen and reads it once.) The resource's observer shows its own
+    // error; this refresh only logs.
+    if (session && known && router.state.resolvedLocation)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
         .catch((error: unknown) =>
@@ -831,12 +841,51 @@ const beforeWorkbooks = ({
 }: {
   location: { pathname: string; searchStr: string };
 }) => requireSignedIn(location, { web: true, adults: true });
+/** A learner's workbook screen paints whole: what it shows first (the list,
+ * a day's workbook and its areas, a workbook's results) arrives with it, for
+ * a learner this account may read (the account is known by now: the root's
+ * `beforeLoad`). A failed read is the screen's own to say. */
+const workbookLoader =
+  (
+    reads: (
+      api: typeof import("../features/workbooks/api"),
+      session: AuthSession,
+      params: Record<string, string>,
+    ) => { queryKey: readonly unknown[] }[],
+  ) =>
+  async ({ params }: { params: Record<string, string> }) => {
+    const session = queryClient.getQueryData(sessionOptions.queryKey);
+    if (!session) return;
+    const me = queryClient.getQueryData(meOptions(session).queryKey);
+    const learner = me?.signedIn
+      ? me.family.learners.find(
+          (entry) => entry.id === params.learnerId && !entry.deletedAt,
+        )
+      : undefined;
+    const [api, { canReadWorkbooks }] = await Promise.all([
+      import("../features/workbooks/api"),
+      import("../features/workbooks/model"),
+    ]);
+    if (!learner || !canReadWorkbooks(learner)) return;
+    await Promise.all(
+      reads(api, session, params).map((options) =>
+        queryClient
+          .ensureQueryData(options as never)
+          .catch((error: unknown) =>
+            console.warn("The workbook didn’t load ahead", error),
+          ),
+      ),
+    );
+  };
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader((api, session, { learnerId }) => [
+    api.workbookHistoryOptions(session, learnerId!),
+  ]),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
     "WorkbookHistoryScreen",
@@ -847,6 +896,11 @@ const workbookDay = createRoute({
   path: "/learners/$learnerId/workbooks/$date",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader((api, session, { learnerId, date }) => [
+    api.workbookHistoryOptions(session, learnerId!),
+    api.workbookHistoryOptions(session, learnerId!, date),
+    api.workbookAreasOptions(session, learnerId!),
+  ]),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
     "WorkbookDayScreen",
@@ -857,6 +911,9 @@ const workbookResults = createRoute({
   path: "/learners/$learnerId/workbooks/$workbookId/results",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader((api, session, { learnerId, workbookId }) => [
+    api.workbookResultsOptions(session, learnerId!, workbookId!),
+  ]),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
