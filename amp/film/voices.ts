@@ -3,7 +3,9 @@
  *
  * Role kinds are this list: append a name to grow them. A voice is one entry
  * below: id, display name, the kinds it may play, and a delivery tag when it
- * has one. Nothing else in the kit names a voice.
+ * has one. The production line keeps its own lists of ElevenLabs ids, which a
+ * new voice joins: line/quota-hook.mjs, line/accounting.py, and the name maps
+ * in line/capture.ts and line/live_export.py.
  */
 export const ROLE_KINDS = ["teacher", "learner", "narrator"] as const;
 export type RoleKind = (typeof ROLE_KINDS)[number];
