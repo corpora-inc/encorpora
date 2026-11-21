@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { signOut } from "../../auth";
-import { useLearningView } from "../../lib/learning-view";
+import { useAccountOnHand } from "../../lib/session";
 import {
   handedHome,
   handedReturnName,
@@ -13,7 +13,7 @@ import styles from "./StudentSignOut.module.css";
  * device a parent handed to their child shows the family's way home
  * instead (`HandedHome`). */
 export function StudentSignOut({ inBar = false }: { inBar?: boolean }) {
-  const { account } = useLearningView({ records: false });
+  const account = useAccountOnHand();
   const name =
     account?.account.kind === "student" ? account.learners[0]?.name : null;
   if (handedStudentDevice()) return <HandedHome inBar={inBar} />;

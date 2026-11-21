@@ -512,18 +512,35 @@ try {
           }),
         );
         await page.goto(origin + "/sign-up");
-        // Passkey-first wherever the browser has WebAuthn (Linux WebKit, the
-        // runner's, has none: it offers the password form instead).
+        // Passkey-first wherever the browser has WebAuthn, as the app decides
+        // it (@simplewebauthn/browser `browserSupportsWebAuthn`: a
+        // PublicKeyCredential constructor). The runner's Linux WebKit has
+        // only a PublicKeyCredential object: it offers the password form.
         const webauthn = await page.evaluate(
-          () => typeof PublicKeyCredential !== "undefined",
+          () => typeof PublicKeyCredential === "function",
         );
+        // Chromium always has it: the passkey-first branch is never skipped.
+        if (engine === "chromium") assert.ok(webauthn, `${name}: no WebAuthn`);
         if (webauthn) {
           await page
             .getByRole("button", {
               name: "Create account with a passkey",
               exact: true,
             })
-            .waitFor();
+            .waitFor()
+            .catch(async (error) => {
+              // What the screen offered instead, and what the browser said.
+              console.error(
+                `${engine} ${name}: no passkey-first sign-up`,
+                await page.evaluate(() => ({
+                  url: location.href,
+                  secure: isSecureContext,
+                  credential: typeof PublicKeyCredential,
+                  text: document.body.innerText.slice(0, 800),
+                })),
+              );
+              throw error;
+            });
           assert.equal(
             await page.getByLabel("Password", { exact: true }).count(),
             0,
