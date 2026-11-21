@@ -1,20 +1,17 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
-import { playCorrectFeedback, setFeedbackVoice } from "../feedback-preferences";
+import { useLayoutEffect, useRef, type RefObject } from "react";
+import { setFeedbackVoice } from "../feedback-preferences";
 import { useLookOnScreen, usePrefersReducedMotion } from "../look";
-import { creditAnswer, usePoints, usePracticeScope } from "../points";
+import { usePoints, usePracticeScope } from "../points";
+import { measured, type Credit } from "./credit";
 import { colorfulVoice } from "./sound";
 import { hueOf, paintHue } from "./hue";
 import { stage } from "./stage";
 import { learnerKey, useCelebrationStore } from "./store";
-import {
-  evidenceMoments,
-  momentsFor,
-  type Answer,
-  type Moment,
-  type SkillEvidence,
-} from "./tier";
+import { momentsFor, type Answer } from "./tier";
 
 type Props = {
+  /** What counting the answer on screen brought (credit.ts), read here. */
+  credit: RefObject<Credit | null>;
   /** The answer on screen, once graded. */
   outcome: (Answer & { skillId: string }) | null;
   /** The existing "Skill mastered" moment, when the host knows it. */
@@ -53,26 +50,23 @@ export const boostFor = (streak: number) =>
   streak < 3 ? 0 : Math.min(1, (streak - 2) / 8);
 
 /**
- * Practice's one seam for Colorful (PracticeWorkspace renders it once,
- * inside its `<main>`). It counts a right answer without help into the
- * learner's points, keeps the run of right answers, and plays what the
- * answer earned (tier.ts) on the page's one overlay (stage.ts). It renders
- * nothing itself: the overlay outlives each problem, so a celebration's tail
- * plays on over the next one, and nothing here can move the page or wait
- * on the learner. In Calm it only counts the point.
+ * What Colorful shows, loaded only for a learner whose look is Colorful
+ * (Celebration.tsx is the seam). It plays what the answer earned (tier.ts)
+ * on the page's one overlay (stage.ts), turns the world to each problem's
+ * hue, and lends the answer's sound its run. It renders nothing itself: the
+ * overlay outlives each problem, so a celebration's tail plays on over the
+ * next one, and nothing here can move the page or wait on the learner. The
+ * answer was counted just before this runs (credit.ts).
  */
-export function Celebration({ outcome, mastered, problem }: Props) {
+export function Colorful({ credit, outcome, mastered, problem }: Props) {
   const problemId = problem.id;
   const scope = usePracticeScope();
-  const look = useLookOnScreen();
   const reduced = usePrefersReducedMotion();
   const points = usePoints();
-  const colorful = look === "bold" && !!scope;
+  const colorful = !!scope;
   // An answer already on screen when this mounts (a return from a book)
   // was celebrated when it arrived.
   const seen = useRef(outcome?.id ?? null);
-  // The run an answer brought, for this answer's sound.
-  const streak = useRef<number | null>(null);
 
   useLayoutEffect(() => {
     if (!colorful) return;
@@ -85,8 +79,10 @@ export function Celebration({ outcome, mastered, problem }: Props) {
   }, [colorful, points]);
   useLayoutEffect(() => {
     if (!colorful) return;
-    return setFeedbackVoice(colorfulVoice(() => streak.current));
-  }, [colorful]);
+    return setFeedbackVoice(
+      colorfulVoice(() => credit.current?.streak ?? null),
+    );
+  }, [colorful, credit]);
 
   // A new problem turns the world to its own hue, with its entrance
   // (skin.css), in the commit that shows it. A run in progress keeps its
@@ -106,26 +102,21 @@ export function Celebration({ outcome, mastered, problem }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [problemId, colorful]);
 
-  // Grading: runs in the commit that shows the verdict, before the
-  // workspace plays its sound (sound.ts reads the run).
+  // The verdict: runs in the commit that shows it, after the seam counted
+  // the answer (a sibling before this one) and before the workspace plays
+  // its sound (sound.ts reads the run).
   useLayoutEffect(() => {
     if (!outcome || seen.current === outcome.id || !scope) return;
     seen.current = outcome.id;
     const started = performance.now();
-    const learner = learnerKey(scope);
+    const counted = credit.current;
+    if (!counted || counted.answer !== outcome.id) return;
     const store = useCelebrationStore.getState();
-    const before = points;
-    const counted = creditAnswer(scope, outcome);
-    const run = store.count(learner, outcome);
-    streak.current = counted ? run : null;
-    if (!outcome.correct || outcome.assisted)
-      store.saw(learner, outcome.skillId, "practicing");
-    if (!colorful) return;
     const moments = momentsFor({
       answer: outcome,
-      look,
-      streak: run,
-      pointsBefore: before,
+      look: "bold",
+      streak: counted.run,
+      pointsBefore: counted.before,
       mastered: !!mastered,
     }).filter((moment) => store.play(outcome.id, moment));
     // (A host that knows "mastered" with the answer has already played
@@ -133,67 +124,15 @@ export function Celebration({ outcome, mastered, problem }: Props) {
     if (moments.length)
       stage().play({
         moments,
-        from: counted ? before : null,
-        to: counted && before != null ? before + 1 : null,
+        from: counted.counted ? counted.before : null,
+        to:
+          counted.counted && counted.before != null ? counted.before + 1 : null,
         reduced,
-        streak: counted ? run : 0,
+        streak: counted.counted ? counted.run : 0,
       });
     measured(started);
     // Graded once per answer; the rest is read as it stood then.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [outcome?.id]);
   return null;
-}
-
-/** The celebration's own main-thread time, as a user timing entry
- * (scripts/verify-celebration-ui.ts holds it under a long task). */
-function measured(start: number) {
-  try {
-    performance.measure("amp-celebration", { start });
-  } catch (error) {
-    console.warn("Celebration timing not recorded", error);
-  }
-}
-
-/** The Strong moment's sound: the milestone chord, once the answer's own
- * sound has started (the workspace plays it in this same commit). */
-function playMilestoneSoon() {
-  window.setTimeout(() => playCorrectFeedback(true), 180);
-}
-
-/**
- * The skill's record arriving after a right answer (AnswerFeedback loads
- * it): Strong when this answer made it so, else Earned when it was the
- * skill's first right answer without help. Each plays once per answer.
- */
-export function useEvidenceMoments(
-  outcome: (Answer & { skillId: string }) | null,
-  evidence: SkillEvidence | undefined,
-) {
-  const scope = usePracticeScope();
-  const look = useLookOnScreen();
-  const reduced = usePrefersReducedMotion();
-  useEffect(() => {
-    if (!outcome || !evidence || !scope) return;
-    const learner = learnerKey(scope);
-    const store = useCelebrationStore.getState();
-    const before = store.runs[learner]?.skills[outcome.skillId];
-    // Each answer's record is read once: a later look at it (a remount)
-    // must not treat its own status as the one before it.
-    if (!store.play(outcome.id, "evidence")) return;
-    store.saw(learner, outcome.skillId, evidence.status);
-    const moments: Moment[] = evidenceMoments({
-      answer: outcome,
-      look: look === "bold" ? "bold" : "calm",
-      evidence,
-      before,
-    }).filter((moment) => store.play(outcome.id, moment));
-    if (!moments.length) return;
-    const started = performance.now();
-    if (moments.includes("strong")) playMilestoneSoon();
-    stage().play({ moments, from: null, to: null, reduced });
-    measured(started);
-    // Once, when the record arrives.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outcome?.id, !!evidence]);
 }

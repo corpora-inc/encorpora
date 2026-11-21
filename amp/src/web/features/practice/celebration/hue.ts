@@ -117,21 +117,3 @@ export function clearHue() {
   style.removeProperty("--look-hue");
   style.removeProperty("--look-boost");
 }
-
-/** Whether this browser can draw Colorful: oklch() colors and registered
- * properties. Without them, Calm is shown (and recorded). */
-export function colorfulSupported() {
-  try {
-    return (
-      typeof CSS !== "undefined" &&
-      "registerProperty" in CSS &&
-      // tokens.css's own feature query: oklch() with calc() in its hue.
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--colorful-unsupported")
-        .trim() === ""
-    );
-  } catch (error) {
-    console.warn("Colorful's support check failed; Calm shows", error);
-    return false;
-  }
-}

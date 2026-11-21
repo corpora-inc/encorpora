@@ -1,21 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { useLayoutEffect, useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { shownLook, type Look, type ShownLook } from "../../../learning/look";
 import { mediaMatches, onMediaChange } from "../../lib/media-query";
 import {
   practiceSettingsOptions,
   type PracticeScope,
 } from "./practice-settings";
-import {
-  clearHue,
-  colorfulSupported,
-  paintHue,
-  useHueStore,
-} from "./celebration/hue";
-// Colorful's dress goes wherever the look can be held: practice, and a
-// student's other screens (the app frame holds it there).
-import "./celebration/skin.css";
-
 const REDUCED = "(prefers-reduced-motion: reduce)";
 /** Whether this device asks for less motion, live. */
 export const usePrefersReducedMotion = () =>
@@ -25,24 +15,25 @@ export const usePrefersReducedMotion = () =>
     () => false,
   );
 
-/** Every host that asks for Colorful right now (practice, a student's own
- * screens). The attribute stays while any one does, so a host leaving (a
- * child going from practice to their standings) never takes it from the
- * next one, and goes with the last. */
-let holders = 0;
-function holdBold(learner: string) {
-  const root = document.documentElement;
-  holders++;
-  // The learner's latest world, until practice moves it on.
-  if (!root.style.getPropertyValue("--look-hue"))
-    paintHue(useHueStore.getState().latest(learner));
-  root.setAttribute("data-look", "bold");
-  return () => {
-    holders = Math.max(0, holders - 1);
-    if (holders > 0) return;
-    root.removeAttribute("data-look");
-    clearHue();
-  };
+/** Colorful's dress: its hue code and stylesheet, fetched only when a
+ * learner's look is Colorful (a Calm learner never downloads them). */
+const loadDress = () => import("./celebration/dress");
+/** Whether this browser can draw Colorful: oklch() colors and registered
+ * properties. Without them, Calm is shown (and recorded). */
+function colorfulSupported() {
+  try {
+    return (
+      typeof CSS !== "undefined" &&
+      "registerProperty" in CSS &&
+      // tokens.css's own feature query: oklch() with calc() in its hue.
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--colorful-unsupported")
+        .trim() === ""
+    );
+  } catch (error) {
+    console.warn("Colorful's support check failed; Calm shows", error);
+    return false;
+  }
 }
 /** Checked once: a browser without oklch() and registered properties
  * shows Calm, and the answer records Calm. */
@@ -86,9 +77,21 @@ export function useLook(scope: PracticeScope, enabled = true) {
   const look: Look | null =
     chosen === "bold" && !canShowColorful() ? "calm" : chosen;
   const reduced = usePrefersReducedMotion();
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (look !== "bold") return;
-    return holdBold(learner);
+    let release: (() => void) | undefined;
+    let gone = false;
+    loadDress().then(
+      (dress) => {
+        if (gone) return;
+        release = dress.holdBold(learner);
+      },
+      (error: unknown) => console.warn("Colorful's dress didn’t load", error),
+    );
+    return () => {
+      gone = true;
+      release?.();
+    };
   }, [look, learner]);
   /** What to record on an answer: the look actually shown; null until known. */
   const shown: ShownLook | null = look ? shownLook(look, reduced) : null;

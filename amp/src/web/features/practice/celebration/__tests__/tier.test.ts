@@ -8,7 +8,7 @@ import {
 } from "../tier";
 import { colorfulVoice, streakLift } from "../sound";
 import { burstCount, pieceCount } from "../stage";
-import { boostFor, namesFigureColors } from "../Celebration";
+import { boostFor, namesFigureColors } from "../Colorful";
 
 const right = { id: "a1", correct: true, assisted: false };
 const helped = { id: "a2", correct: true, assisted: true };
