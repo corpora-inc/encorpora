@@ -40,6 +40,7 @@ import {
   type Relation,
   type RelationOp,
 } from "./expression.js";
+import { ungroupThousands } from "./thousands.js";
 
 /** The structured-work protocol (`structured-work-v1`).
  *
@@ -627,7 +628,10 @@ export function checkEntry(
         ok: false,
         error: "Write one number without spaces; use a fraction such as 45/2",
       };
-    const value = text.replace(/[−–]/g, "-").replace(/\s+/g, "");
+    const value = ungroupThousands(text.replace(/[−–]/g, "-")).replace(
+      /\s+/g,
+      "",
+    );
     return qParse(value)
       ? { ok: true, value }
       : {

@@ -1,7 +1,9 @@
+import { ungroupThousands } from "./thousands";
+
 /** Mirrors the server's accepted answer forms (engine.normalizeAnswer) so a
  * malformed answer is caught at the input before any request is made. */
 export function acceptedAnswer(input: string): boolean {
-  const s = input
+  const s = ungroupThousands(input)
     .trim()
     .replaceAll("−", "-")
     .replace(/^([+-]?)\./, "$10.");
