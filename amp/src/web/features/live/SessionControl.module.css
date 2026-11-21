@@ -1,0 +1,119 @@
+/* The session control (SessionControl.tsx): one fixed 56 px bar, at rest
+   and running alike, so starting never moves what is under it. */
+.bar {
+  container: live-control / inline-size;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  height: 56px;
+  min-width: 0;
+}
+.quiet {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.bar .start {
+  flex: none;
+  min-height: 48px;
+}
+.lengthWide {
+  display: none;
+  flex: 0 1 440px;
+  min-width: 0;
+}
+.lengthNarrow {
+  display: flex;
+  flex: none;
+}
+@container live-control (min-width: 600px) {
+  .lengthWide {
+    display: block;
+  }
+  .lengthNarrow {
+    display: none;
+  }
+}
+
+.live {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  height: 28px;
+  padding-inline: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  background: var(--color-success);
+  color: var(--color-on-success);
+  font-size: var(--text-table-small);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success-accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+  }
+}
+.clock {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.time {
+  min-width: 4.2ch;
+  font-size: var(--text-figure);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.clock[data-ending] .time {
+  color: var(--color-warning-accent);
+}
+.detail {
+  overflow: hidden;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  text-overflow: ellipsis;
+}
+.bar .stop {
+  flex: none;
+  min-height: 44px;
+  margin-inline-start: auto;
+  padding-block: 0;
+}
+.confirm {
+  display: grid;
+  gap: var(--space-5);
+}
+.confirm p {
+  margin: 0;
+}
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+/* The narrowest phones: "16:04 left", the plan's length left out. */
+@container live-control (max-width: 330px) {
+  .plan {
+    display: none;
+  }
+}
