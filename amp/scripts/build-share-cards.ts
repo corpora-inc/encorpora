@@ -5,11 +5,13 @@
  *
  * Recording renders each card and writes its content-hashed address and alt
  * text to src/web/app/share-cards.json, which the route head reads, so the
- * app and the prerendered documents name the same picture. `npm run build`
- * records first; commit the file (tests/share-cards.test.ts checks it).
- * `--dist` runs after `vite build`: it writes the PNGs under
- * dist/assets/share-cards/ and fails if a card no longer matches the record,
- * so a document never names a missing picture. */
+ * app and the prerendered documents name the same picture. Run it after
+ * changing a card or what it draws from (src/research/report.ts), and commit
+ * the file. `--dist` runs after `vite build` (`npm run build` and the image
+ * build): it writes the PNGs under dist/assets/share-cards/ and fails if a
+ * card no longer matches the record, so a stale record fails the pull
+ * request's build, never the deploy alone, and a document never names a
+ * missing picture. Recording is never part of the build: the build checks. */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import {
   renderShareCards,

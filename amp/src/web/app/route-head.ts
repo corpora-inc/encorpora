@@ -39,7 +39,9 @@ export type RouteHead = {
   canonical: string | null;
   robots: "noindex, follow" | null;
   /** The share card, 1200×630, absolute. Undefined keeps the document's own
-   * (the product card `index.html` carries), unless a route has written one. */
+   * (the product card `index.html` carries) until a route writes a card;
+   * from then on a route without one has none. Crawlers read the served
+   * document, never a head the app rewrote. */
   image?: string | null;
   /** What the card shows, for a reader who can't see it. */
   imageAlt?: string;

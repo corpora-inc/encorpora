@@ -110,7 +110,11 @@ await writeFile(new URL("not-found.css", dist), tokens + '\nbody{margin:0;backgr
 for (const path of publicDocumentPaths)
   for (const file of path === "/" ? ["index.html", "home.html"] : [`${path.slice(1)}/index.html`]) {
     const page = new JSDOM(await readFile(new URL(file, dist), "utf8")).window.document;
-    const tag = (selector: string) => page.head.querySelector<HTMLMetaElement>(`meta[${selector}]`)?.content ?? "";
+    // One tag of each kind: a second would leave a reader to pick.
+    const tag = (selector: string) => {
+      const tags = page.head.querySelectorAll<HTMLMetaElement>(`meta[${selector}]`);
+      return tags.length === 1 ? tags[0]!.content : "";
+    };
     const image = tag('property="og:image"');
     const problem =
       !image.startsWith(`${publicOrigin}/assets/`) ? "no og:image"

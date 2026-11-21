@@ -59,7 +59,7 @@
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "demo:terms": "tsx scripts/demo-terms.ts",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
-    "build": "npm run build:lesson-index && npm run build:share-cards && npm run lint:controls && npm run lint:navigation && npm run check:document-routes && npm run tsc && vite build && npm run build:public-pathways",
+    "build": "npm run build:lesson-index && npm run lint:controls && npm run lint:navigation && npm run check:document-routes && npm run tsc && vite build && npm run build:public-pathways",
     "versus:check": "tsx scripts/versus-check.ts",
     "versus:catalog": "tsx scripts/versus-catalog.ts",
     "test:versus-ui": "tsx scripts/verify-versus-ui.ts",
