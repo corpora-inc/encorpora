@@ -276,6 +276,11 @@
 .heroKids > li + li {
   border-top: 1px solid var(--color-border);
 }
+/* A child's own access line under their row: room below it, so its link's
+   target never reaches the next row. */
+.heroKids > li:has(> p) {
+  padding-bottom: var(--space-3);
+}
 .hero > .getIn,
 .hero > div {
   width: 100%;
