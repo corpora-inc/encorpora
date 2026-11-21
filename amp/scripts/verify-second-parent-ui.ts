@@ -6,11 +6,16 @@
  *      family (`/family/<family>`), then its People and adds a second
  *      parent: an email, Send. The row waits, masked, with Copy link, Send
  *      again and Remove, and the action to invite is gone.
- *   2. Another account opens the mailed link and is told, on one calm screen,
- *      which address the invitation is for, with Use another account.
- *   3. The invited parent opens the link in a second browser, creates an
- *      account with that address and joins as a parent: the family's Today
- *      with "Practice with Maya", and nothing that is the holder's.
+ *   2. The mailed link, signed out, names the family and the address and
+ *      has one way forward, Continue: the sign-in, with that address filled
+ *      in (it never says whether the address has an account). Another
+ *      account made from there is told, on one calm screen, which address
+ *      the invitation is for, with Use another account, whose sign-in again
+ *      starts with the invited address.
+ *   3. The invited parent opens the link in a second browser, continues,
+ *      creates an account with that address and joins as a parent: the
+ *      family's Today with "Practice with Maya", and nothing that is the
+ *      holder's.
  *   4. From Today she reads Maya's page, Pathways and Inventory, then
  *      through the place switcher starts her own practice.
  *   5. The holder sees her joined on People: the action to invite is gone.
@@ -59,7 +64,7 @@ const argument = (name: string) => {
 const webPort = Number(argument("--port") ?? 4540);
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
-const committed = "docs/reviews/second-parent";
+const committed = process.env.AMP_UI_REVIEW ?? "docs/reviews/second-parent";
 const scratch = "artifacts/second-parent";
 await mkdir(committed, { recursive: true });
 await mkdir(scratch, { recursive: true });
@@ -155,6 +160,28 @@ async function createAccount(page: Page, email: string) {
   await page.getByLabel("Email").fill(email);
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
+}
+/** Whether the sign-in's address field holds `email` within 5 s. */
+async function filledWith(page: Page, email: string) {
+  const field = page.getByLabel("Email");
+  await field.waitFor();
+  for (let waited = 0; waited < 5_000; waited += 100) {
+    if ((await field.inputValue()) === email) return true;
+    await page.waitForTimeout(100);
+  }
+  return false;
+}
+/** The invitation's one way forward: Continue opens the sign-in with the
+ * invited address filled in, and a newcomer creates an account from it. */
+async function continueToSignIn(page: Page, invited: string, label: string) {
+  await page.getByRole("link", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/sign-in/);
+  check(
+    `${label} the sign-in starts with the invited address`,
+    await filledWith(page, invited),
+    await page.getByLabel("Email").inputValue(),
+  );
+  await page.getByRole("button", { name: "Create an account" }).click();
 }
 async function accountOf(page: Page) {
   const session = await (
@@ -392,11 +419,22 @@ async function journey(
   last.page = other;
   await other.goto(link);
   await heading(other, joinFamily);
-  await other.getByText(`sign in with ${rowanEmail} to accept`).waitFor();
+  await other
+    .getByText(`Continue with ${rowanEmail} to accept`, { exact: false })
+    .waitFor();
+  check(
+    `${label} the signed-out link has one way forward, Continue`,
+    (await other
+      .getByRole("link", { name: "Continue", exact: true })
+      .count()) === 1 &&
+      (await other
+        .getByRole("link", { name: /Create an account|already have/i })
+        .count()) === 0 &&
+      (await other.getByRole("button", { name: /Join/ }).count()) === 0,
+  );
   await measured(other, `${label} link signed out`);
   await shot(other, "link-signed-out", width, theme, engine);
-  await other.getByRole("link", { name: "Create an account" }).click();
-  await other.waitForURL(/\/sign-up/);
+  await continueToSignIn(other, rowanEmail, label);
   await createAccount(other, `sky-${tag}@example.test`);
   await other.waitForURL(/\/school\/invite/);
   await heading(other, "This invitation is for another address");
@@ -411,6 +449,13 @@ async function journey(
   await shot(other, "wrong-account", width, theme, engine);
   await another.click();
   await other.waitForURL(/\/sign-in/);
+  // The other sign-in starts with the invited address again (it is looked
+  // up from the carried link, so it arrives a moment after the field).
+  check(
+    `${label} Use another account's sign-in starts with ${rowanEmail}`,
+    await filledWith(other, rowanEmail),
+    await other.getByLabel("Email").inputValue(),
+  );
   await otherContext.close();
 
   // 3. The invited parent, in her own browser.
@@ -420,8 +465,7 @@ async function journey(
   last.page = rowan;
   await rowan.goto(link);
   await heading(rowan, joinFamily);
-  await rowan.getByRole("link", { name: "Create an account" }).click();
-  await rowan.waitForURL(/\/sign-up/);
+  await continueToSignIn(rowan, rowanEmail, `${label} invited parent`);
   await createAccount(rowan, rowanEmail);
   await rowan.waitForURL(/\/school\/invite/);
   await heading(rowan, joinFamily);
