@@ -16,10 +16,13 @@ import {
   type PilotInterestRow,
 } from "./pilot.js";
 
-/** Per address per hour, and from everyone per hour. A person signs up once;
- * a family with two adults, twice. */
+/** Sign-ups per address per hour: a person signs up once, a family with two
+ * adults twice. */
 export const PILOT_SIGNUPS_PER_ADDRESS = 5;
-export const PILOT_SIGNUPS_PER_HOUR = 300;
+/** Notices to the mailbox per hour, from everyone. Past it, sign-ups are still
+ * saved and only the notices stop: a burst from many addresses can't close the
+ * form to real people, nor fill the inbox. */
+export const PILOT_NOTICES_PER_HOUR = 60;
 
 /** The notice to the company mailbox: who joined, and how long the list is.
  * The person who signed up gets no mail from this form, so it can't be used to
@@ -136,24 +139,24 @@ export async function registerResearchPilotRoutes(
         const { website, ...signup } = pilotInterestSchema.parse(request.body);
         if (website) return reply.code(204).send();
         if (
-          !hourly.consume(`address:${request.ip}`, PILOT_SIGNUPS_PER_ADDRESS) ||
-          !hourly.consume("all", PILOT_SIGNUPS_PER_HOUR)
+          !hourly.consume(`address:${request.ip}`, PILOT_SIGNUPS_PER_ADDRESS)
         ) {
           reply.header("Retry-After", 3600);
           return reply.code(429).send({ error: "too_many_requests" });
         }
         const listed = await savePilotInterest(options.pool, signup);
         // The entry is saved; a notice that doesn't send loses nothing.
-        await options
-          .mail?.(
-            INQUIRY_MAILBOX,
-            pilotSignupNotice(signup, listed, options.origin),
-          )
-          .catch((error: Error) =>
-            console.error("[research] pilot signup notice not sent", {
-              message: error.message,
-            }),
-          );
+        if (hourly.consume("notices", PILOT_NOTICES_PER_HOUR))
+          await options
+            .mail?.(
+              INQUIRY_MAILBOX,
+              pilotSignupNotice(signup, listed, options.origin),
+            )
+            .catch((error: Error) =>
+              console.error("[research] pilot signup notice not sent", {
+                message: error.message,
+              }),
+            );
         return reply.code(204).send();
       },
     );

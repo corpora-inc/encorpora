@@ -1,7 +1,10 @@
 /** The pilot interest list at `/research/pilot`: who wants to hear when AMP's
  * pilot study (RR-3) opens enrolment. It is a list, not enrolment. Nothing on
  * it is research data, and nobody on it is a participant until they give
- * research permission through the study itself. The page and the server share
+ * research permission through the study itself. Nothing confirms an address
+ * either: anyone can add or change an entry. So the first message to the list
+ * asks each person to confirm, and nothing else (AMP news included) goes to an
+ * address until it has. The page and the server share
  * these choices, so a label and the value stored never drift apart. */
 import { z } from "zod";
 import { stateNames } from "../web/us-states.js";

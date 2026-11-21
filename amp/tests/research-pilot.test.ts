@@ -3,6 +3,7 @@ import { test } from "node:test";
 import type { Pool } from "pg";
 import type { LinkedMessage } from "../src/email/email.js";
 import {
+  PILOT_NOTICES_PER_HOUR,
   PILOT_SIGNUPS_PER_ADDRESS,
   registerResearchPilotRoutes,
 } from "../src/research/pilot-routes.js";
@@ -162,4 +163,22 @@ test("the entry is kept when the notice can't send, or there is no mail", async 
     assert.equal(queries.length, 1);
     await server.close();
   }
+});
+
+test("past the hourly notices, sign-ups are still saved and the inbox stays quiet", async () => {
+  const { server, queries, sent } = await app();
+  for (let i = 0; i < PILOT_NOTICES_PER_HOUR + 3; i++)
+    assert.equal(
+      (
+        await post(
+          server,
+          { ...signup, email: `n${i}@fixture.example` },
+          { ip: `198.51.${Math.floor(i / 4)}.${i % 4}` },
+        )
+      ).statusCode,
+      204,
+    );
+  assert.equal(queries.length, PILOT_NOTICES_PER_HOUR + 3);
+  assert.equal(sent.length, PILOT_NOTICES_PER_HOUR);
+  await server.close();
 });

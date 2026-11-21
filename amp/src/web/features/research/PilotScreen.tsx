@@ -8,6 +8,7 @@ import {
 import { Link } from "@tanstack/react-router";
 import {
   pilotBands,
+  pilotInterestSchema,
   pilotPlaces,
   pilotRoles,
   pilotSettings,
@@ -125,7 +126,8 @@ function PilotForm() {
     const count = Number(learners.replace(/[,\s]/g, ""));
     const next: Partial<Record<Field, string>> = {};
     if (!role) next.role = "Choose one.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+    // The server's own rule, so an address it would refuse is marked here.
+    if (!pilotInterestSchema.shape.email.safeParse(email.trim()).success)
       next.email = "Enter an email address we can write to.";
     if (!(Number.isInteger(count) && count > 0 && count <= 100_000))
       next.learners = "Enter a number, like 2.";
