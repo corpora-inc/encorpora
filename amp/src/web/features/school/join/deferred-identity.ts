@@ -10,6 +10,9 @@ let waiting: AuthSession | null = null;
 export function deferIdentity(session: AuthSession) {
   waiting = session;
 }
+/** The identity the next screen will show, while a hand-over waits: a
+ * route's loader reads it to load what that person's screen holds. */
+export const deferredIdentity = (): AuthSession | null => waiting;
 /** Shows the handed child's identity, if one waits: called as the router
  * mounts the next screen, so the switch renders with practice. Keeps the
  * child's `/me`, fetched before the move, across the switch. */

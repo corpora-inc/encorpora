@@ -113,7 +113,10 @@ import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { externalSignInFrom } from "./external-sign-in";
-import { applyDeferredIdentity } from "../features/school/join/deferred-identity";
+import {
+  applyDeferredIdentity,
+  deferredIdentity,
+} from "../features/school/join/deferred-identity";
 import { settleLegacyLayers } from "../nav/links";
 import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
@@ -1689,9 +1692,13 @@ const fallback = createRoute({
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
   loader: async ({ location }) => {
+    // The person this screen shows: a hand-over's child, whose identity
+    // arrives with the screen itself (features/school/join/deferred-identity.ts),
+    // or whoever is signed in.
     const student = (
-      queryClient.getQueryData(sessionOptions.queryKey) as
-        AuthSession | null | undefined
+      deferredIdentity() ??
+      (queryClient.getQueryData(sessionOptions.queryKey) as
+        AuthSession | null | undefined)
     )?.token?.startsWith("st_");
     await Promise.all([
       legacy.preload?.(),
