@@ -4,7 +4,7 @@ import { useLookOnScreen, usePrefersReducedMotion } from "../look";
 import { usePoints, usePracticeScope } from "../points";
 import { measured, type Credit } from "./credit";
 import { colorfulVoice } from "./sound";
-import { hueOf, paintHue } from "./hue";
+import { arriveAfterPaint, hueOf, paintHue } from "./hue";
 import { stage } from "./stage";
 import { learnerKey, useCelebrationStore } from "./store";
 import { momentsFor, type Answer } from "./tier";
@@ -95,6 +95,8 @@ export function Colorful({ credit, outcome, mastered, problem }: Props) {
     const run =
       useCelebrationStore.getState().runs[learnerKey(scope)]?.streak ?? 0;
     paintHue(hueOf(scope.learnerId, problemId), boostFor(run));
+    // A load's first problem arrives in its hue; later ones turn the world.
+    arriveAfterPaint();
     return () => {
       delete root.dataset.figureColors;
     };
