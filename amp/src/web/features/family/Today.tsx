@@ -521,6 +521,27 @@ export function FamilyTodayScreen() {
         )}
       </p>
     ) : null;
+  // The children's access, dated once when they share it: on Day 0 too, so
+  // a parent who just paid sees it from the first visit.
+  const sharedLine = sharedAccess && data && (
+    <p className={styles.shared} data-shared-access="">
+      {children.length === 2 ? "Both have" : "All have"} AMP through{" "}
+      {sharedAccess}
+      {data.capabilities.manageBilling && (
+        <>
+          {" · "}
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(family, "settings/billing") }}
+            className={styles.accessLink}
+            data-shared-billing=""
+          >
+            Manage access
+          </Link>
+        </>
+      )}
+    </p>
+  );
   const self = (practiceSelf || startSelf) && (
     <LearnerRow
       as="li"
@@ -632,16 +653,14 @@ export function FamilyTodayScreen() {
                 data-family-kids=""
               >
                 {children.map((child) => (
-                  <LearnerRow
-                    key={child.id}
-                    as="li"
-                    data-child={child.id}
-                    name={name(child)}
-                    action={action(child)}
-                  />
+                  <li key={child.id} data-child={child.id}>
+                    <LearnerRow name={name(child)} action={action(child)} />
+                    {accessLine(child)}
+                  </li>
                 ))}
                 {self}
               </ul>
+              {sharedLine}
               {live}
             </FamilyHero>
           ) : (
@@ -657,27 +676,7 @@ export function FamilyTodayScreen() {
                   </h2>
                   {checking && <SkillKey level="Likely level" />}
                 </div>
-                {sharedAccess && (
-                  <p className={styles.shared} data-shared-access="">
-                    {children.length === 2 ? "Both have" : "All have"} AMP
-                    through {sharedAccess}
-                    {data.capabilities.manageBilling && (
-                      <>
-                        {" · "}
-                        <Link
-                          to="/$"
-                          params={{
-                            _splat: familyHref(family, "settings/billing"),
-                          }}
-                          className={styles.accessLink}
-                          data-shared-billing=""
-                        >
-                          Manage access
-                        </Link>
-                      </>
-                    )}
-                  </p>
-                )}
+                {sharedLine}
                 {dashboard.isError && (
                   <p role="alert" className={dash.failed}>
                     The week and levels didn’t load.{" "}
