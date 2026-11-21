@@ -24,10 +24,7 @@ const states = {
   points: { fixture: "correct", loop: [["right", "points-10"]] },
   choice: { fixture: "choice", loop: [] },
   wrong: { fixture: "wrong", loop: [] },
-} satisfies Record<
-  string,
-  { fixture: PracticeFixtureId; loop: Moment[][] }
->;
+} satisfies Record<string, { fixture: PracticeFixtureId; loop: Moment[][] }>;
 export type ColorfulState = keyof typeof states;
 
 /** The chip's totals as the loop goes round: one to five digits, so its

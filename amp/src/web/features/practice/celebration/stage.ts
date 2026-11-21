@@ -479,9 +479,10 @@ export function createStage(host: HTMLElement = document.body) {
   function placeStamp(origin: { x: number; y: number }) {
     const sheet = document.querySelector(".feedback")?.getBoundingClientRect();
     const x = sheet
-      ? Math.min(sheet.right - 64, window.innerWidth - 64)
+      ? Math.min(sheet.right - 84, window.innerWidth - 84)
       : origin.x;
-    const y = sheet ? Math.max(sheet.top + 8, 64) : origin.y;
+    // Level with the sheet's head, clear of the bar and its chip.
+    const y = sheet ? Math.max(sheet.top + 34, 104) : origin.y;
     stamp.style.setProperty("--x", `${Math.round(x)}px`);
     stamp.style.setProperty("--y", `${Math.round(y)}px`);
   }
