@@ -23,6 +23,7 @@ export function CockpitFrame({
   roster,
   stickyTop = 0,
   height,
+  flow = false,
 }: {
   control: ReactNode;
   /** Absent at rest: the control alone. */
@@ -35,6 +36,10 @@ export function CockpitFrame({
   /** The desktop frame's height, in CSS; by default the viewport under
    * `stickyTop`. */
   height?: string;
+  /** A short roster (a family's): on a desktop too, the rows follow the
+   * bar and the totals at their own height; the frame is never a fixed box
+   * with a roster scrolling inside it. */
+  flow?: boolean;
 }) {
   const style = {
     "--live-sticky-top":
@@ -47,6 +52,7 @@ export function CockpitFrame({
         className={styles.frame}
         data-live-frame=""
         data-resting={roster === undefined || undefined}
+        data-flow={flow || undefined}
       >
         <div className={styles.control}>{control}</div>
         {totals !== undefined && <div className={styles.totals}>{totals}</div>}

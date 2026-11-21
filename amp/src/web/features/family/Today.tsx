@@ -16,7 +16,12 @@ import { Feed, type FeedEntry } from "../school/classes/today/Feed";
 import { useChecks } from "../school/classes/today/todo-entries";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { fullDay } from "../school/classes/teacher-shared";
+import { standing } from "../../lib/AppError";
+import { classYearOptions } from "../school/core-api";
 import { familyDashboardOptions, type FamilyChild } from "./api";
+import { FamilyLive } from "./FamilyLive";
+import { PastSessions } from "./PastSessions";
+import { peopleOf } from "./redirects";
 import { selectLearner } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
@@ -362,7 +367,8 @@ export function FamilyTodayScreen() {
   const place = useFamilyPlace();
   const { data, family, session, me } = place;
   const dashboard = useQuery(familyDashboardOptions(session, family));
-  const board = dashboard.data?.familyId === family ? dashboard.data : undefined;
+  const board =
+    dashboard.data?.familyId === family ? dashboard.data : undefined;
   const billing = useQuery({
     ...fundingRecordsOptions(session),
     enabled:
@@ -381,6 +387,33 @@ export function FamilyTodayScreen() {
   const byId = new Map(children.map((child) => [child.id, child]));
   const boards = new Map(board?.children.map((child) => [child.id, child]));
   const own = place.own;
+  // The family's class is where its practice sessions live (the live
+  // section, the past sessions): its `can` says what this parent may do.
+  const classPlace = own ? { org: own.org, class: own.id } : null;
+  const can = new Set(
+    standing(
+      useQuery({
+        ...classYearOptions(session, own?.id ?? ""),
+        enabled: !!own,
+        refetchOnMount: false,
+      }),
+    )?.can ?? [],
+  );
+  const watch = !!classPlace && can.has("session.read");
+  const live = watch && classPlace && (
+    <FamilyLive
+      family={family}
+      place={classPlace}
+      can={{
+        resolve: can.has("signal.resolve"),
+        resetPictures: can.has("signin.manage"),
+      }}
+      people={peopleOf(children, classPlace.class)}
+      levelShown={
+        new Map(board?.children.map((kid) => [kid.id, kid.gradeLevelShown]))
+      }
+    />
+  );
   const manageDevices = children.some(
     (child) => child.capabilities.manageDevices,
   );
@@ -475,8 +508,7 @@ export function FamilyTodayScreen() {
   // With one access for all, Billing is one link on that line; a child's
   // own line only says what is theirs alone (an invoice waiting).
   const accessLine = (child: FamilyChild) =>
-    !sharedAccess ||
-    (data?.capabilities.manageBilling && pendingFor(child)) ? (
+    !sharedAccess || (data?.capabilities.manageBilling && pendingFor(child)) ? (
       <p className={dash.access}>
         {!sharedAccess && <AccessFact child={child} inline />}
         {data?.capabilities.manageBilling && (
@@ -609,16 +641,15 @@ export function FamilyTodayScreen() {
                 ))}
                 {self}
               </ul>
+              {live}
             </FamilyHero>
           ) : (
             <div
               className={dash.layout}
               data-side={entries.length > 0 || !!board || !!getIn || undefined}
             >
-              <section
-                aria-labelledby="family-kids"
-                className={dash.kids}
-              >
+              <section aria-labelledby="family-kids" className={dash.kids}>
+                {live}
                 <div className={dash.kidsHead}>
                   <h2 id="family-kids" className={dash.kidsTitle}>
                     {children.length === 1 ? "Your child" : "Your kids"}
@@ -634,7 +665,9 @@ export function FamilyTodayScreen() {
                         {" · "}
                         <Link
                           to="/$"
-                          params={{ _splat: familyHref(family, "settings/billing") }}
+                          params={{
+                            _splat: familyHref(family, "settings/billing"),
+                          }}
                           className={styles.accessLink}
                           data-shared-billing=""
                         >
@@ -657,7 +690,9 @@ export function FamilyTodayScreen() {
                 )}
                 <ul
                   className={dash.list}
-                  aria-label={children.length === 1 ? "Your child" : "Your kids"}
+                  aria-label={
+                    children.length === 1 ? "Your child" : "Your kids"
+                  }
                   style={actionWidth(children)}
                   data-family-kids=""
                 >
@@ -710,6 +745,9 @@ export function FamilyTodayScreen() {
                 {children.length > 1 && <ForAllKids place={place} />}
               </div>
             </div>
+          )}
+          {watch && classPlace && !dayZero && (
+            <PastSessions family={family} place={classPlace} />
           )}
           {sheets}
         </div>

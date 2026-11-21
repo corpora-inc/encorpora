@@ -71,3 +71,13 @@
     min-height: 0;
   }
 }
+
+/* A short roster: wide, the bar and the totals share a band, then the rows
+   at their own height. */
+@container live-frame (min-width: 960px) {
+  .frame[data-flow] {
+    grid-template-rows: auto auto auto;
+    height: auto;
+    min-height: 0;
+  }
+}

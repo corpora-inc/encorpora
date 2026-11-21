@@ -140,6 +140,16 @@ export type LiveRosterProps = {
   /** On a desktop the grid fills its parent's height and scrolls inside
    * it (CockpitFrame gives it one); this styles that box. */
   className?: string;
+  /** A short list (a family's one to four children): the rows of a
+   * tablet at any width, never the grid, and no sort: they keep the order
+   * of the list given. */
+  short?: boolean;
+  /** Words a screen says in place of a status's own ("Not signed in":
+   * "Not started" for a family). */
+  statusWords?: Partial<Record<LiveStatus, string>>;
+  /** Levels per row, where one screen shows some and not others (a child
+   * whose grade level is switched off): wins over `showGradeNumbers`. */
+  levelShown?: (personId: string) => boolean;
 };
 
 /**
@@ -152,7 +162,9 @@ export type LiveRosterProps = {
  */
 export function LiveRoster(props: LiveRosterProps) {
   const root = useRef<HTMLDivElement>(null);
-  const layout = useLiveLayout(root);
+  const measured = useLiveLayout(root);
+  const layout: LiveLayout =
+    props.short && measured === "desktop" ? "tablet" : measured;
   const { rows, now, startedAt, rules = LIVE_RULES, signals = [] } = props;
   const statuses = useMemo(
     () => liveStatuses(rows, { now, startedAt }, rules),
@@ -210,25 +222,31 @@ function Requests({ signals }: { signals: readonly LiveSignal[] | undefined }) {
 function detailLine(
   row: LiveRow,
   status: LiveStatus,
-  view: Pick<RosterView, "now" | "showGradeNumbers" | "layout">,
+  view: Pick<
+    RosterView,
+    "now" | "showGradeNumbers" | "layout" | "statusWords" | "levelShown"
+  >,
 ) {
+  const word = (at: LiveStatus) =>
+    view.statusWords?.[at] ?? STATUS_WORDS[at].word;
+  const level = view.levelShown?.(row.personId) ?? view.showGradeNumbers;
   const parts: ReactNode[] = [];
   if (status === "not_signed_in")
     return (
       <span className={styles.statusWord} data-status={status}>
-        {STATUS_WORDS[status].word}
+        {word(status)}
       </span>
     );
   if (status !== "working")
     parts.push(
       <span key="status" className={styles.statusWord} data-status={status}>
-        {STATUS_WORDS[status].word}
+        {word(status)}
       </span>,
     );
   if (row.skill) parts.push(<span key="skill">{row.skill.title}</span>);
   else if (row.problems === 0)
     parts.push(<span key="skill">No answers yet</span>);
-  if (view.showGradeNumbers && row.level !== null)
+  if (level && row.level !== null)
     parts.push(<span key="level">{levelText(row.level)}</span>);
   if (view.layout === "phone")
     parts.push(<span key="ago">{agoText(lastActive(row), view.now)}</span>);
@@ -237,7 +255,7 @@ function detailLine(
   // to the browser). Only "last active", at its end, changes in place.
   return (
     <span
-      key={`${status}|${row.skill?.id ?? row.problems === 0}|${view.showGradeNumbers ? row.level : ""}`}
+      key={`${status}|${row.skill?.id ?? row.problems === 0}|${level ? row.level : ""}`}
     >
       {parts.flatMap((part, index) =>
         index === 0 ? [part] : [<span key={`dot-${index}`}> · </span>, part],
@@ -308,9 +326,11 @@ function List(view: RosterView) {
     sort.key === key ? sort.direction : undefined;
   return (
     <>
-      <div className={styles.bar}>
-        <SortControl {...view} />
-      </div>
+      {!view.short && (
+        <div className={styles.bar}>
+          <SortControl {...view} />
+        </div>
+      )}
       <div className={styles.head} aria-hidden="true">
         <span className={styles.headName}>{view.nameHeader}</span>
         <span className={styles.headFacts}>
@@ -351,6 +371,7 @@ function List(view: RosterView) {
               mark={
                 <StatusMark
                   status={status}
+                  word={view.statusWords?.[status]}
                   size={tablet ? "regular" : "large"}
                 />
               }

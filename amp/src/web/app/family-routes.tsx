@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
-import { preload } from "../features/school/core-api";
+import { classYearOptions, preload } from "../features/school/core-api";
 import {
   childProgressOptions,
   familyDashboardOptions,
@@ -45,6 +45,47 @@ async function ownFamily(session: AuthSession) {
     .fetchQuery(familyPlacesOptions(session))
     .catch(orNull("Your families"));
   return { places, family: landingFamily(places) };
+}
+
+/**
+ * A family's practice sessions, with the Today that shows them: the class's
+ * `can`, the live snapshot (a session already running paints with the
+ * cockpit in place, its chunk loaded with it) and the first page of past
+ * sessions, for a parent who may watch them. Nothing is asked of a family
+ * that may not (a co-teacher, say), and a family with nothing running loads
+ * none of the cockpit's code.
+ */
+async function familySessions(session: AuthSession, familyId: string) {
+  const [data, me] = await Promise.all([
+    queryClient
+      .ensureQueryData(familyOptions(session, familyId))
+      .catch(orNull("The family")),
+    queryClient
+      .ensureQueryData(meOptions(session))
+      .catch(orNull("Your account")),
+  ]);
+  const own = ownClassOf(me?.signedIn ? me : null, familyId, data);
+  if (!own) return null;
+  const [year, { liveOptions, sessionsOptions }] = await Promise.all([
+    preload(classYearOptions(session, own.id)) as Promise<
+      { can?: readonly string[] } | undefined
+    >,
+    import("../features/live/api"),
+  ]);
+  if (!year?.can?.includes("session.read")) return null;
+  const place = { org: own.org, class: own.id };
+  const [snapshot] = await Promise.all([
+    preload(liveOptions(session, place)) as Promise<
+      { session: unknown; signals: unknown[] } | undefined
+    >,
+    preload(sessionsOptions(session, place)),
+  ]);
+  // Running, or a child asking: the cockpit is there on first paint.
+  if (snapshot && (snapshot.session || snapshot.signals.length > 0))
+    await import("../features/family/cockpit-chunk").then(
+      ({ loadFamilyCockpit }) => loadFamilyCockpit(),
+    );
+  return own;
 }
 
 export function familyRoutes(root: AnyRoute) {
@@ -285,9 +326,49 @@ export function familyRoutes(root: AnyRoute) {
     loader: async ({ context, params }) => {
       const { session } = context as unknown as { session: AuthSession };
       const id = (params as { family: string }).family;
-      await preload(familyDashboardOptions(session, id));
+      await Promise.all([
+        preload(familyDashboardOptions(session, id)),
+        familySessions(session, id),
+      ]);
     },
     component: lazyRouteComponent(payHosts, "TodayPayHost"),
+  });
+  /** A stopped session's stored report, under Today (a family has no Time
+   * tab). Its read comes with it, with the dashboard's per-child settings;
+   * a session still running answers 409, which the screen shows as the way
+   * back to the live view. Its own chunk: the report's code is never part
+   * of Today's. */
+  const sessionReport = createRoute({
+    getParentRoute: () => family,
+    path: "sessions/$session",
+    loader: async ({ context, params }) => {
+      const { session } = context as unknown as { session: AuthSession };
+      const { family: id, session: sessionId } = params as {
+        family: string;
+        session: string;
+      };
+      const [own, { sessionReportOptions }] = await Promise.all([
+        familySessions(session, id),
+        import("../features/live/api"),
+        preload(familyDashboardOptions(session, id)),
+      ]);
+      if (own)
+        await queryClient
+          .ensureQueryData(
+            sessionReportOptions(
+              session,
+              { org: own.org, class: own.id },
+              sessionId,
+            ),
+          )
+          .catch((error: unknown) =>
+            console.warn("The session's report didn’t load ahead", error),
+          );
+    },
+    component: lazyRouteComponent(
+      () => import("../features/family/FamilyReport"),
+      "FamilyReportScreen",
+    ),
   });
   return [
     landing,
@@ -297,6 +378,7 @@ export function familyRoutes(root: AnyRoute) {
       // Today, with the pay overlay its "Continue with AMP" opens over it
       // (`pay/<learner>`, features/pay): Today stays mounted behind.
       today.addChildren([...payOverlays(today, "pay/$learner")]),
+      sessionReport,
       childPage.addChildren([...payOverlays(childPage, "pay")]),
       // A child's workbook day and results: overlays over their page, at
       // their own addresses, closing (✕) back to it. Over the page, never a

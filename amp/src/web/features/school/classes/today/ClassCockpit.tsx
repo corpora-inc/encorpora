@@ -11,6 +11,7 @@ import {
 import type {
   LiveSignal,
   LiveSnapshot,
+  LiveStatus,
 } from "../../../../../schools/live/contracts";
 import { EntityLink } from "../../../../nav/links";
 import { reportError } from "../../../../lib/report-error";
@@ -51,6 +52,18 @@ export type CockpitWords = {
   nameHeader: string;
   /** The roster, for assistive technology: "Students in this session". */
   roster: string;
+  /** What Stop's question says is kept (the control's own by default). */
+  kept?: string;
+  /** A status's word where the screen says it differently. */
+  statusWords?: Partial<Record<LiveStatus, string>>;
+};
+
+/** A short list for a family (one to four children): rows of a tablet at
+ * any width, in name order, the frame at its own height, and levels as
+ * each child's own setting says. */
+export type ShortList = {
+  /** Whether this person's level is shown (their "Show grade level"). */
+  levelShown: (personId: string) => boolean;
 };
 
 /** What this adult may do here, from the class's `can`. */
@@ -67,6 +80,13 @@ const studentLink: StudentLink = ({ personId, className, children }) => (
     {children}
   </EntityLink>
 );
+
+/** A short list's one order. */
+const SHORT_SORT = {
+  key: "name",
+  direction: "ascending",
+  version: 0,
+} as const;
 
 /** The totals hold still between seconds: only a changed figure redraws. */
 const Totals = memo(LiveTotals);
@@ -117,6 +137,7 @@ export function ClassCockpit({
   link = studentLink,
   reportLink: givenReportLink,
   onStopped,
+  short,
 }: {
   place: Place;
   /** A session can be started here now (its students can practice, or a
@@ -135,6 +156,8 @@ export function ClassCockpit({
   reportLink?: (sessionId: string, children: ReactNode) => ReactNode;
   /** After Stop: by default the class's report opens. */
   onStopped?: (sessionId: string) => void;
+  /** A family's: see `ShortList`. */
+  short?: ShortList;
 }) {
   const session = useSession();
   const client = useQueryClient();
@@ -153,7 +176,8 @@ export function ClassCockpit({
   const shown: LiveSnapshot | undefined = still?.snapshot ?? snapshot;
   const now = useServerNow(snapshot?.serverNow, still?.endedAt);
   const stale = useLiveStale(place.class);
-  const [sort, setSort] = useLiveSort(place);
+  const [chosen, setSort] = useLiveSort(place);
+  const sort = short ? SHORT_SORT : chosen;
   const [length, setLength] = useLiveLength(place);
   const start = useStartSession(place);
   const stop = useStopSession(place);
@@ -280,6 +304,7 @@ export function ClassCockpit({
       canManage={snapshot.can.manage}
       startLabel={words.start}
       stale={stale}
+      keptWords={words.kept}
       ended={
         still?.snapshot.session
           ? {
@@ -314,7 +339,8 @@ export function ClassCockpit({
     <div ref={fill.ref} data-cockpit={still ? "ended" : "live"}>
       <CockpitFrame
         stickyTop="var(--shell-bar, 0px)"
-        height={fill.height}
+        height={short ? undefined : fill.height}
+        flow={!!short}
         control={control}
         totals={
           <Totals
@@ -336,6 +362,9 @@ export function ClassCockpit({
             link={link}
             label={words.roster}
             nameHeader={words.nameHeader}
+            short={!!short}
+            statusWords={words.statusWords}
+            levelShown={short?.levelShown}
           />
         }
       />

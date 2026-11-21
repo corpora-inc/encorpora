@@ -58,8 +58,11 @@ export function StatusMark({
   status,
   size = "regular",
   decorative = false,
+  word,
 }: {
   status: LiveStatus;
+  /** The screen's own word for it, where it says it differently. */
+  word?: string;
   /** `regular` 22 px for grids; `large` 28 px for phone rows. */
   size?: "regular" | "large";
   decorative?: boolean;
@@ -68,7 +71,7 @@ export function StatusMark({
   // motion); the first paint is still.
   const [seen, setSeen] = useState({ status, changes: 0 });
   if (seen.status !== status) setSeen({ status, changes: seen.changes + 1 });
-  const words = STATUS_WORDS[status];
+  const said = word ?? STATUS_WORDS[status].word;
   return (
     <svg
       className={styles.mark}
@@ -77,9 +80,9 @@ export function StatusMark({
       viewBox="0 0 24 24"
       role={decorative ? undefined : "img"}
       aria-hidden={decorative || undefined}
-      aria-label={decorative ? undefined : words.word}
+      aria-label={decorative ? undefined : said}
     >
-      {!decorative && <title>{words.word}</title>}
+      {!decorative && <title>{said}</title>}
       <g
         key={seen.changes}
         className={seen.changes > 0 ? styles.changed : undefined}

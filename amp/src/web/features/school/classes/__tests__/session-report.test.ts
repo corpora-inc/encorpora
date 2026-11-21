@@ -5,7 +5,11 @@ import type {
 } from "../../../../../schools/live/contracts";
 import { LIVE_RULES } from "../../../../../schools/live/status";
 import { endedBetween } from "../../../live/api";
-import { followUp, sessionSkills } from "../SessionReportScreen";
+import {
+  CLASS_REPORT_WORDS,
+  followUp,
+  sessionSkills,
+} from "../SessionReportScreen";
 import { DEFAULT_COCKPIT_SORT, sortOf } from "../today/live-sort";
 
 /* What the report derives from the stored rows (#2465): who to follow up
@@ -70,7 +74,7 @@ test("follow up first: each student once, in the first group that fits", () => {
     followUp(rows).map((group) => [
       group.title,
       group.members.map((member) => member.name),
-      group.members.map((member) => group.fact(member)),
+      group.members.map((member) => group.fact(member, CLASS_REPORT_WORDS)),
     ]),
   ).toEqual([
     ["Didn’t sign in", ["Ana"], [""]],

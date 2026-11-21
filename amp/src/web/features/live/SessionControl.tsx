@@ -51,6 +51,9 @@ export type SessionControlProps = {
   canManage: boolean;
   /** The start button's words: "Start class", "Start practice". */
   startLabel: string;
+  /** What Stop's question tells the adult stays safe, after how long it
+   * ran: a class's words by default. */
+  keptWords?: string;
   /** The live numbers may be old (the device is offline, or nothing has
    * come for a while): the live mark says "Offline" in its place. */
   stale?: boolean;
@@ -180,6 +183,7 @@ function Running({
   stopping = false,
   canManage,
   stale = false,
+  keptWords = "Students keep their work, and the session’s report is kept.",
 }: SessionControlProps & { live: LiveSession }) {
   const [asking, setAsking] = useState(false);
   const clock = sessionClock(session, now);
@@ -225,7 +229,7 @@ function Running({
             {minutes < 1
               ? "It has run for less than a minute."
               : `It has run for ${minutes} ${minutes === 1 ? "minute" : "minutes"}.`}{" "}
-            Students keep their work, and the session’s report is kept.
+            {keptWords}
           </p>
           <div className={styles.confirmActions}>
             <Button variant="secondary" onClick={() => setAsking(false)}>

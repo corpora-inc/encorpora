@@ -55,7 +55,9 @@ test("the desktop grid's Level column and the phone's line show the words", () =
     />,
   );
   const grid = screen.getByRole("grid", { name: "Students" });
-  const text = within(grid).getAllByRole("row").map((r) => r.textContent);
+  const text = within(grid)
+    .getAllByRole("row")
+    .map((r) => r.textContent);
   expect(text.join("|")).toMatch(/Gr 4/);
   expect(text.join("|")).not.toMatch(/3\.6|0\.1|-0\.7|−0\.7/);
   unmount();
