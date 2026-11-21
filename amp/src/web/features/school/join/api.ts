@@ -14,6 +14,10 @@ import {
   type SchoolPicture,
   type StudentGrant,
 } from "../../../../schools/contracts";
+import {
+  forgotPictureResponse,
+  raiseForgotPictureResponse,
+} from "../../../../schools/live/contracts";
 import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { qk } from "../../../lib/keys";
@@ -73,15 +77,15 @@ export class JoinError extends AppError {
  * using the shared transport boundary for the request itself. */
 async function post<T>(
   path: string,
-  body: object,
+  body: object | null,
   schema: z.ZodType<T>,
 ): Promise<T> {
   let response: Response;
   try {
     response = await requestFetch(`/api/v1/school/join/${path}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      method: body ? "POST" : "GET",
+      headers: body ? { "Content-Type": "application/json" } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
       signal: AbortSignal.timeout(15_000),
     });
   } catch (error) {
@@ -135,6 +139,18 @@ export const signInWithPictures = (input: {
   pictures: SchoolPicture[];
   set: boolean;
 }) => post("picture", input, studentGrantResource);
+
+/** "I forgot my pictures": asks the class's adult (`POST …/forgot-picture`). */
+export const askForgotPicture = (input: { code: string; personId: string }) =>
+  post("forgot-picture", input, raiseForgotPictureResponse);
+
+/** Where that request stands (`GET …/forgot-picture`): waiting, reset, or none. */
+export const readForgotPicture = (input: { code: string; personId: string }) =>
+  post(
+    `forgot-picture?${new URLSearchParams(input)}`,
+    null,
+    forgotPictureResponse,
+  );
 
 export const signInWithCard = (token: string) =>
   post("card", { token }, studentGrantResource);

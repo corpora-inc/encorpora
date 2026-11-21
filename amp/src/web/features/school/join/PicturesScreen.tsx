@@ -21,6 +21,7 @@ import {
 } from "./api";
 import { JoinProblem } from "./ClassScreen";
 import { JoinFrame } from "./JoinFrame";
+import { useForgotPicture } from "./forgot";
 import { Picture, pictureNames } from "./pictures";
 import styles from "./Join.module.css";
 
@@ -36,10 +37,12 @@ export function PicturesScreen() {
   const router = useRouter();
   const finish = useFinishSignIn();
   const [stop, setStop] = useState<Stop | null>(null);
+  const forgot = useForgotPicture(code, params.person);
   const roster = useQuery({
     ...joinRosterOptions(code),
-    // While stopped, a teacher's reset shows up here without a reload.
-    refetchInterval: stop ? 5000 : false,
+    // While stopped or waiting on the adult, a reset shows up here without
+    // a reload.
+    refetchInterval: stop || forgot.waiting ? 5000 : false,
   });
   const student = roster.data?.students.find((s) => s.id === params.person);
   const firstTime = student ? !student.picturesSet : false;
@@ -72,6 +75,7 @@ export function PicturesScreen() {
       setStop(null);
       setPicks([]);
       setMessage("");
+      forgot.done();
     }
     wasFirstTime.current = firstTime;
   }, [firstTime]);
@@ -89,6 +93,7 @@ export function PicturesScreen() {
           set: firstTime,
         }),
       );
+      forgot.done();
     } catch (error) {
       const failure = error as JoinError;
       // The screen says what happened; the log keeps which failure it was.
@@ -138,7 +143,7 @@ export function PicturesScreen() {
     }
   }
   function pick(picture: SchoolPicture) {
-    if (busy || stop) return;
+    if (busy || stop || (forgot.waiting && !firstTime)) return;
     clearTimeout(clearing.current);
     if (message) setMessage("");
     setCanRetry(false);
@@ -168,13 +173,17 @@ export function PicturesScreen() {
       />
     );
   const confirming = firstTime && picks.length === PICKS && !busy && !stop;
-  const title = stop
-    ? stop.message
-    : confirming
-      ? "Remember these 3"
-      : firstTime
-        ? "Pick 3 pictures you’ll remember"
-        : "Pick your 3 pictures";
+  const adult = roster.data.class.kind === "family" ? "parent" : "teacher";
+  const waiting = forgot.waiting && !firstTime;
+  const title = waiting
+    ? `Your ${adult} has been asked.`
+    : stop
+      ? stop.message
+      : confirming
+        ? "Remember these 3"
+        : firstTime
+          ? "Pick 3 pictures you’ll remember"
+          : "Pick your 3 pictures";
   return (
     <JoinFrame step="pictures" code={formatJoinCode(code)} width="wide">
       <div className={styles.pictures}>
@@ -185,7 +194,7 @@ export function PicturesScreen() {
           </p>
           <h1
             className={styles.title}
-            data-stopped={stop ? true : undefined}
+            data-stopped={stop && !waiting ? true : undefined}
             aria-live="polite"
           >
             {title}
@@ -209,6 +218,14 @@ export function PicturesScreen() {
           <div className={styles.message} aria-live="polite">
             {busy ? (
               <Loading inline />
+            ) : waiting ? (
+              <span className={styles.problem}>
+                This screen moves on by itself.
+              </span>
+            ) : forgot.failed ? (
+              <span className={styles.problem} role="alert">
+                Your {adult} wasn’t asked. Try again.
+              </span>
             ) : (
               message && (
                 <span className={styles.problem} role="alert">
@@ -217,11 +234,28 @@ export function PicturesScreen() {
               )
             )}
           </div>
+          <div className={styles.forgot}>
+            {!firstTime && (
+              <Button
+                variant="quiet"
+                disabled={busy || forgot.asking}
+                onClick={waiting ? forgot.giveUp : forgot.ask}
+              >
+                {waiting
+                  ? "I remember my pictures"
+                  : forgot.failed
+                    ? "Ask again"
+                    : "I forgot my pictures"}
+              </Button>
+            )}
+          </div>
         </div>
         <div className={styles.pad}>
           <div
             className={styles.grid}
-            data-resting={confirming || canRetry || !!stop || busy || undefined}
+            data-resting={
+              confirming || canRetry || !!stop || waiting || busy || undefined
+            }
             inert={confirming || canRetry || undefined}
           >
             {schoolPictures.map((picture) => (
@@ -231,7 +265,7 @@ export function PicturesScreen() {
                 className={styles.pictureButton}
                 aria-label={pictureNames[picture]}
                 aria-pressed={picks.includes(picture)}
-                disabled={!!stop || busy || confirming}
+                disabled={!!stop || busy || confirming || waiting}
                 onClick={() => pick(picture)}
               >
                 <Picture name={picture} />
