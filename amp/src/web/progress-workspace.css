@@ -106,8 +106,12 @@
   color: var(--color-on-selected);
 }
 .progress-card-stage {
-  /* A card with a one-line title; page sizes are counted in these. */
+  /* A page's layout: its columns, a card with a one-line title, and the gap
+     between them. Page sizes are counted in these, whatever is on screen
+     (progress-page-size.ts). */
+  --progress-columns: 1;
   --progress-card-estimate: 141px;
+  --progress-card-gap: 12px;
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -115,8 +119,8 @@
 }
 .progress-cards {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(var(--progress-columns), minmax(0, 1fr));
+  gap: var(--progress-card-gap);
   align-content: start;
 }
 .progress-skill-card {
@@ -358,8 +362,8 @@
   color: var(--color-subtle-text);
 }
 @media (min-width: 900px) {
-  .progress-cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .progress-card-stage {
+    --progress-columns: 2;
   }
   .progress-detail-content {
     display: grid;
@@ -433,9 +437,7 @@
   /* Phone cards are shorter, and a tighter gap fits one more on a page. */
   .progress-card-stage {
     --progress-card-estimate: 132px;
-  }
-  .progress-cards {
-    gap: 10px;
+    --progress-card-gap: 10px;
   }
   .progress-card-title {
     font-size: 1.125rem;
@@ -608,6 +610,7 @@
 .progress-workspace.large-text .progress-card-stage {
   /* The scrolling page needs the cards' intrinsic height. */
   container-type: normal;
+  --progress-columns: 1;
 }
 .progress-workspace.large-text .progress-heading {
   flex-wrap: wrap;
@@ -639,9 +642,6 @@
 }
 .progress-workspace.large-text .progress-page-controls {
   flex-wrap: wrap;
-}
-.progress-workspace.large-text .progress-cards {
-  grid-template-columns: 1fr;
 }
 .progress-workspace.large-text .progress-controls {
   flex-wrap: wrap;
