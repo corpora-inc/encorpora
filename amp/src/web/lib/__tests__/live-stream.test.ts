@@ -6,6 +6,8 @@ import {
   type LiveStreamMode,
   type LiveStreamOptions,
 } from "../live-stream";
+import { createPageLeave, type PageLeave } from "../page-leave";
+import { fakeWindow, type FakeWindow } from "./fake-window";
 
 /** A stream the test writes to, as a server would. */
 function serverStream(status = 200) {
@@ -54,25 +56,8 @@ const doc = {
     for (const listener of this.listeners) listener();
   },
 };
-/** The window's page-lifecycle events, by type. */
-const win = {
-  listeners: new Map<string, Set<(event: Event) => void>>(),
-  addEventListener(type: string, listener: (event: Event) => void) {
-    if (!this.listeners.has(type)) this.listeners.set(type, new Set());
-    this.listeners.get(type)!.add(listener);
-  },
-  removeEventListener(type: string, listener: (event: Event) => void) {
-    this.listeners.get(type)?.delete(listener);
-  },
-  fire(type: "beforeunload" | "pagehide" | "pageshow", persisted = false) {
-    const event = Object.assign(new Event(type), { persisted });
-    for (const listener of this.listeners.get(type) ?? []) listener(event);
-  },
-  count() {
-    return [...this.listeners.values()].reduce((n, set) => n + set.size, 0);
-  },
-};
-let left: Mock<() => void>;
+let win: FakeWindow;
+let page: PageLeave;
 const tick = (ms = 0) => vi.advanceTimersByTimeAsync(ms);
 
 beforeEach(() => {
@@ -83,8 +68,8 @@ beforeEach(() => {
   modes = [];
   doc.visibilityState = "visible";
   doc.listeners.clear();
-  win.listeners.clear();
-  left = vi.fn();
+  win = fakeWindow();
+  page = createPageLeave(win);
   poll = vi.fn(() => Promise.resolve() as Promise<unknown>);
   fetchMock = vi.fn((_url: string, init: RequestInit) => {
     const next = responses.shift()?.() ?? serverStream();
@@ -111,10 +96,9 @@ const open = (timing = {}) =>
     poll,
     timing,
     onMode: (mode) => modes.push(mode),
-    onLeave: left,
     fetch: fetchMock as never,
     document: doc as unknown as LiveStreamOptions["document"],
-    window: win as unknown as LiveStreamOptions["window"],
+    page,
   });
 /** A poll the test settles. */
 function heldPoll() {
@@ -343,7 +327,11 @@ test("closing (unmount) aborts the stream and stops everything", async () => {
   expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(poll).not.toHaveBeenCalled();
   expect(doc.listeners.size).toBe(0);
-  expect(win.count()).toBe(0);
+  // Closed: the page leaving and coming back starts nothing.
+  win.fire("beforeunload");
+  win.fire("pointerdown");
+  await tick(60_000);
+  expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(modes.at(-1)).toBe("closed");
 });
 
@@ -355,29 +343,42 @@ test("leaving the page lets go of every read before the browser cuts it", async 
   await tick();
   // WebKit cuts fetches right after `beforeunload`, before `pagehide`.
   win.fire("beforeunload");
-  await tick();
   expect(servers[0]!.aborted).toBe(true);
-  expect(left).toHaveBeenCalledTimes(1);
   expect(stream.mode).toBe("paused");
+  await tick(10 * 60_000);
   win.fire("pagehide");
   await tick(10 * 60_000);
   // Nothing is retried for a screen that is gone, and nothing is reported.
   expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(poll).not.toHaveBeenCalled();
-  expect(left).toHaveBeenCalledTimes(1);
   expect(warn).not.toHaveBeenCalled();
   stream.close();
 });
 
-test("a page still here after beforeunload reads again", async () => {
+test("a stream opened while the page is leaving starts nothing until it is back", async () => {
+  win.fire("beforeunload");
+  const stream = open();
+  await tick(60_000);
+  expect(fetchMock).not.toHaveBeenCalled();
+  expect(stream.mode).toBe("paused");
+  // A press on the page: the leave didn't happen.
+  win.fire("pointerdown");
+  await tick();
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+  stream.close();
+});
+
+test("a page still here after beforeunload reads again only when used", async () => {
   const stream = open();
   await tick();
   servers[0]!.write(": open\n\n");
   await tick();
   win.fire("beforeunload");
-  await tick(LIVE_STREAM_TIMING.leaveGraceMs - 1);
+  // No timer decides it: a slow navigation still holds the old page.
+  await tick(10 * 60_000);
   expect(fetchMock).toHaveBeenCalledTimes(1);
-  await tick(1);
+  win.fire("keydown");
+  await tick();
   expect(fetchMock).toHaveBeenCalledTimes(2);
   servers[1]!.write(": open\n\n");
   await tick();
@@ -389,9 +390,11 @@ test("a page restored from the back-forward cache reads again", async () => {
   const stream = open();
   await tick();
   win.fire("pagehide", true);
+  expect(servers[0]!.aborted).toBe(true);
+  // Put away for sure: a stray event doesn't bring it back.
+  win.fire("focus");
   await tick(60_000);
   expect(fetchMock).toHaveBeenCalledTimes(1);
-  expect(servers[0]!.aborted).toBe(true);
   win.fire("pageshow", true);
   await tick();
   expect(fetchMock).toHaveBeenCalledTimes(2);
@@ -407,9 +410,7 @@ test("a poll in flight when the page is left neither logs nor polls again", asyn
   expect(poll).toHaveBeenCalledTimes(1);
   warn.mockClear();
   win.fire("beforeunload");
-  expect(left).toHaveBeenCalledTimes(1);
-  // The screen's read was cancelled (`onLeave`): its poll rejects.
-  settle().reject(new Error("CancelledError"));
+  settle().reject(new Error("cut"));
   await tick();
   win.fire("pagehide");
   await tick(10 * 60_000);

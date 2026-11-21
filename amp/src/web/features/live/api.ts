@@ -23,6 +23,7 @@ import {
 } from "../../../schools/live/stream-contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
+import { readWhileHere } from "../../lib/page-leave";
 import { qk } from "../../lib/keys";
 import { useSession } from "../../lib/session";
 import { classKey, type Place } from "../school/classes/teacher-api";
@@ -45,11 +46,15 @@ export const liveKey = (session: AuthSession, place: Place) =>
 export const liveOptions = (session: AuthSession, place: Place) =>
   queryOptions({
     queryKey: liveKey(session, place),
+    // Never cut by the page's leave (lib/page-leave.ts): the stream's poll
+    // and the bar's quiet look read it too.
     queryFn: ({ signal }) =>
-      request(`${CLASS(place)}/live`, liveSnapshotResponse, {
-        token: session.token,
-        signal,
-      }),
+      readWhileHere(signal, (signal) =>
+        request(`${CLASS(place)}/live`, liveSnapshotResponse, {
+          token: session.token,
+          signal,
+        }),
+      ),
     // The stream keeps it current, and a shown page reconnects with a
     // fresh snapshot: a focus refetch would only read it twice.
     refetchOnWindowFocus: false,
@@ -264,11 +269,14 @@ export const studentLiveKey = (session: AuthSession) =>
 export const studentLiveOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: studentLiveKey(session),
+    // Never cut by the page's leave (lib/page-leave.ts).
     queryFn: ({ signal }) =>
-      request("/school/student/live", studentLiveResponse, {
-        token: session.token,
-        signal,
-      }),
+      readWhileHere(signal, (signal) =>
+        request("/school/student/live", studentLiveResponse, {
+          token: session.token,
+          signal,
+        }),
+      ),
     refetchOnWindowFocus: false,
   });
 

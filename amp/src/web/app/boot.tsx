@@ -9,6 +9,8 @@ import "../share-entry";
 // (home-entry.tsx) imports it first itself.
 import "../consent-entry";
 import "../capability-entry";
+// Knows from the first moment when the page is being left (live reads).
+import "../lib/page-leave";
 import { errorDetails } from "../../analytics/error-details";
 import {
   screenOf,

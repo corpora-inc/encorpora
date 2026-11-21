@@ -1,3 +1,4 @@
+import { pageLeave, type PageLeave } from "./page-leave";
 import { requestFetch } from "./request-transport";
 import { isRetired } from "./session-generation";
 
@@ -13,14 +14,10 @@ import { isRetired } from "./session-generation";
  * `retryStreamMs`. A hidden page holds no stream and polls nothing; showing
  * it again starts a fresh stream, whose first message is the whole state.
  *
- * Leaving the page lets go of every read first. A navigation cuts what is
- * still in flight, and WebKit reports each cut fetch as a console error
- * ("… due to access control checks"); a fetch aborted here is not reported.
- * WebKit cuts fetches right after `beforeunload` and before `pagehide`, so
- * the stream, the poll and the screen's own snapshot read (`onLeave`) all
- * stop on `beforeunload`. A page that stays after it (a download, a leave
- * that didn't happen) reads again after `leaveGraceMs`; a page restored from
- * the back-forward cache reads again on `pageshow`.
+ * A page being left holds nothing either (lib/page-leave.ts): the stream
+ * and the poll stop the moment it starts leaving, before the browser cuts
+ * them, and nothing starts until the page is here again. The snapshot read
+ * behind `poll` is the screen's own query, read with `readWhileHere`.
  */
 
 export type LiveStreamTiming = {
@@ -37,8 +34,6 @@ export type LiveStreamTiming = {
   minLifeMs: number;
   /** After this many failures in a row, poll until the next retry. */
   failuresBeforePolling: number;
-  /** After `beforeunload`, a page still here this long reads again. */
-  leaveGraceMs: number;
 };
 export const LIVE_STREAM_TIMING: LiveStreamTiming = {
   watchdogMs: 25_000,
@@ -47,7 +42,6 @@ export const LIVE_STREAM_TIMING: LiveStreamTiming = {
   backoffMs: (failures) => Math.min(30_000, 1_000 * 2 ** (failures - 1)),
   minLifeMs: 5_000,
   failuresBeforePolling: 3,
-  leaveGraceMs: 3_000,
 };
 
 export type LiveStreamMode =
@@ -63,9 +57,6 @@ export type LiveStreamOptions = {
   /** Reads the same state the plain way (the snapshot GET): the fallback.
    * Rejects on failure; it is logged by whoever reads. */
   poll: () => Promise<unknown>;
-  /** Stops the screen's own snapshot read if it is in flight (the query
-   * behind `poll`): called as the page is left, before the browser cuts it. */
-  onLeave?: () => void;
   /** The fallback polls this often (the student's state changes rarely). */
   timing?: Partial<LiveStreamTiming>;
   onMode?: (mode: LiveStreamMode) => void;
@@ -75,7 +66,7 @@ export type LiveStreamOptions = {
     Document,
     "visibilityState" | "addEventListener" | "removeEventListener"
   >;
-  window?: Pick<Window, "addEventListener" | "removeEventListener">;
+  page?: PageLeave;
 };
 
 export type LiveStream = { close(): void; readonly mode: LiveStreamMode };
@@ -128,8 +119,7 @@ export class EventStreamParser {
 export function openLiveStream(options: LiveStreamOptions): LiveStream {
   const timing = { ...LIVE_STREAM_TIMING, ...options.timing };
   const doc = options.document ?? document;
-  const win =
-    options.window ?? (typeof window === "undefined" ? undefined : window);
+  const page = options.page ?? pageLeave;
   const send = options.fetch ?? requestFetch;
   let mode: LiveStreamMode = "connecting";
   let controller: AbortController | null = null;
@@ -137,7 +127,6 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
   let reconnect: ReturnType<typeof setTimeout> | undefined;
   let pollTimer: ReturnType<typeof setTimeout> | undefined;
   let retry: ReturnType<typeof setTimeout> | undefined;
-  let stay: ReturnType<typeof setTimeout> | undefined;
   /** Polling instead of streaming, until a retried stream delivers bytes. */
   let polling = false;
   /** Each polling run: a poll that settles after its run ended does nothing. */
@@ -149,10 +138,8 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     mode = next;
     options.onMode?.(next);
   };
-  /** `beforeunload` or `pagehide` came, and the page hasn't come back. */
-  let leaving = false;
-  /** Hidden, or being left: hold nothing. */
-  const hidden = () => doc.visibilityState === "hidden" || leaving;
+  /** Hidden, or being left: hold nothing, start nothing. */
+  const hidden = () => doc.visibilityState === "hidden" || page.leaving();
   /** Read fresh after every await: `close()` can run meanwhile. */
   const closed = () => mode === "closed";
 
@@ -239,6 +226,11 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     stopStream();
     const stream = new AbortController();
     controller = stream;
+    // The page's leave aborts this fetch in the same listener that starts it
+    // (lib/page-leave.ts), whatever else is still to run.
+    const leave = page.leaveSignal();
+    const leaving = () => stream.abort();
+    leave.addEventListener("abort", leaving, { once: true });
     if (!polling) setMode("connecting");
     armWatchdog(stream);
     const opened = Date.now();
@@ -330,6 +322,8 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
         error,
       });
       failed(error);
+    } finally {
+      leave.removeEventListener("abort", leaving);
     }
   }
 
@@ -355,45 +349,25 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     else if (mode === "paused") resume();
   }
 
-  /** The page is being left (`beforeunload`) or put away (`pagehide`): let
-   * go of every read before the browser cuts it. */
-  function onLeave(event: Event) {
-    if (mode === "closed") return;
-    clearTimeout(stay);
-    if (!leaving) {
-      leaving = true;
-      pause();
-      options.onLeave?.();
-    }
-    // Still here after a `beforeunload`: nothing left after all.
-    if (event.type === "beforeunload")
-      stay = setTimeout(onReturn, timing.leaveGraceMs);
-  }
-  function onReturn() {
-    if (mode === "closed" || !leaving) return;
-    leaving = false;
-    if (doc.visibilityState !== "hidden") resume();
-  }
-  function onPageShow(event: Event) {
-    if ((event as PageTransitionEvent).persisted) onReturn();
-  }
+  const unsubscribe = page.subscribe({
+    leave: () => {
+      if (mode !== "closed") pause();
+    },
+    back: () => {
+      if (mode === "paused" && !hidden()) resume();
+    },
+  });
 
   function close() {
     if (mode === "closed") return;
     stopStream();
     stopPolling();
-    clearTimeout(stay);
     setMode("closed");
     doc.removeEventListener("visibilitychange", onVisibility);
-    win?.removeEventListener("beforeunload", onLeave);
-    win?.removeEventListener("pagehide", onLeave);
-    win?.removeEventListener("pageshow", onPageShow);
+    unsubscribe();
   }
 
   doc.addEventListener("visibilitychange", onVisibility);
-  win?.addEventListener("beforeunload", onLeave);
-  win?.addEventListener("pagehide", onLeave);
-  win?.addEventListener("pageshow", onPageShow);
   if (hidden()) setMode("paused");
   else void connect();
   return {
