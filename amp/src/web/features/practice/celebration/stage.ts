@@ -6,20 +6,26 @@
  * Every piece is drawn ahead and moved only by CSS keyframes on transform
  * and opacity (Celebration.module.css): nothing here can shift the layout,
  * take a tap, or delay the next problem. A moment already running is not
- * started again over itself; slow machines get half the pieces.
+ * started again over itself; slower machines get fewer pieces. Nothing here
+ * shows while a child is working: only the points chip stays.
  */
 import styles from "./Celebration.module.css";
 import type { ChipMoment, Moment } from "./tier";
 
-const CHIP_WIDTH = 104;
+/** The chip's one size per screen class (Celebration.module.css): a phone
+ * gets the compact chip. It never changes size with its number. */
+const PHONE = 420;
+const chipWidth = () => (window.innerWidth < PHONE ? 92 : 104);
 const CHIP_HEIGHT = 36;
 /** How long each moment runs, in ms (the CSS durations, plus any delay). */
 export const DURATION = {
-  burst: 900,
+  burst: 1000,
   flight: 560,
-  confetti: 2900,
+  flash: 480,
+  combo: 1300,
+  confetti: 3000,
+  badge: 2000,
   stamp: 1500,
-  sweep: 520,
   chip: 900,
 } as const;
 
@@ -27,6 +33,10 @@ export const DURATION = {
  * Chromebook, an old laptop). */
 export const pieceCount = (full: number, cores?: number) =>
   (cores ?? 8) <= 2 ? Math.ceil(full / 2) : full;
+/** A right answer's burst, by the machine: 40 pieces on a capable phone or
+ * laptop, 28 on four cores, 16 on two or fewer. */
+export const burstCount = (cores?: number) =>
+  (cores ?? 8) <= 2 ? 16 : (cores ?? 8) <= 4 ? 28 : 40;
 
 /** Seeded, so every page draws the same confetti: no randomness per frame. */
 function random(seed: number) {
@@ -43,7 +53,15 @@ const STAR =
   "M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4L2.8 9.3l6.4-.8z";
 
 type Group =
-  "burst" | "flyer" | "confetti" | "stamp" | "sweep" | "chip" | "chipSparks";
+  | "burst"
+  | "flash"
+  | "flyer"
+  | "confetti"
+  | "badge"
+  | "combo"
+  | "stamp"
+  | "chip"
+  | "chipSparks";
 
 export type Stage = ReturnType<typeof createStage>;
 type Play = {
@@ -53,6 +71,9 @@ type Play = {
   to: number | null;
   /** No motion: each moment is a plain change of state. */
   reduced: boolean;
+  /** Right answers without help in a row, this one counted: each win in a
+   * run is bigger than the last. */
+  streak?: number;
 };
 
 function element<K extends keyof HTMLElementTagNameMap>(
@@ -86,48 +107,81 @@ export function createStage(host: HTMLElement = document.body) {
   root.setAttribute("aria-hidden", "true");
   root.setAttribute("data-celebration", "");
 
-  // The sweep: a glint along the bar's foot as a new problem arrives.
-  const sweep = element("div", styles.sweep!, root);
+  // The win's pulse: the whole screen glows in the world's color, once.
+  const flash = element("div", styles.flash!, root);
 
-  // The burst: rays from the result mark.
+  // The burst: rays and dots from the result mark, two rings behind them.
   const burst = element("div", styles.burst!, root);
-  const sparks = pieceCount(18, cores);
+  const halo = element("i", styles.halo!, burst);
+  halo.dataset.halo = "";
+  element("i", styles.halo2!, burst);
+  const sparks = burstCount(cores);
   for (let i = 0; i < sparks; i++) {
     const spark = element("i", styles.spark!, burst);
     const angle = (360 / sparks) * i + (rand() * 14 - 7);
     spark.style.setProperty("--angle", `${angle.toFixed(1)}deg`);
-    spark.style.setProperty("--reach", `${Math.round(80 + rand() * 75)}px`);
+    spark.style.setProperty("--reach", `${Math.round(80 + rand() * 110)}px`);
     spark.style.setProperty(
       "--hue",
       `var(--color-celebrate-${(i % HUES) + 1})`,
     );
     spark.style.setProperty("--delay", `${Math.round(rand() * 60)}ms`);
-    if (i % 3 === 0) spark.dataset.shape = "dot";
+    spark.dataset.shape = ["ray", "dot", "ray", "star"][i % 4]!;
   }
-  const halo = element("i", styles.halo!, burst);
-  halo.dataset.halo = "";
 
-  // "+1", flying from the mark to the chip.
+  // "+1", flying from the mark to the chip, three fading copies behind it
+  // for a trail.
   const flyer = element("div", styles.flyer!, root);
-  const flyerY = element("div", styles.flyerY!, flyer);
-  element("span", styles.flyerPill!, flyerY).textContent = "+1";
+  for (const trail of [3, 2, 1, 0]) {
+    const lane = element("div", styles.flyerLane!, flyer);
+    lane.style.setProperty("--trail", String(trail));
+    const rise = element("div", styles.flyerY!, lane);
+    element("span", styles.flyerPill!, rise).textContent = "+1";
+  }
 
-  // Confetti: the Strong moment, across the whole screen.
+  // Confetti cannons: Strong, from both bottom corners at once.
   const confetti = element("div", styles.confetti!, root);
-  const pieces = pieceCount(44, cores);
+  const pieces = pieceCount(80, cores);
   for (let i = 0; i < pieces; i++) {
     const piece = element("i", styles.piece!, confetti);
-    piece.style.setProperty("--x", `${(rand() * 100).toFixed(1)}vw`);
-    piece.style.setProperty("--drift", `${Math.round(rand() * 160 - 80)}px`);
-    piece.style.setProperty("--spin", `${Math.round(rand() * 900 - 450)}deg`);
-    piece.style.setProperty("--delay", `${Math.round(rand() * 420)}ms`);
-    piece.style.setProperty("--fall", `${Math.round(1700 + rand() * 800)}ms`);
+    const left = i % 2 === 0;
+    piece.dataset.side = left ? "left" : "right";
+    // Up and inward, each a little differently, then down past the foot.
+    const across = 18 + rand() * 62;
+    piece.style.setProperty(
+      "--dx",
+      `${(left ? across : -across).toFixed(1)}vw`,
+    );
+    piece.style.setProperty("--rise", `${Math.round(45 + rand() * 45)}vh`);
+    piece.style.setProperty("--spin", `${Math.round(rand() * 1080 - 540)}deg`);
+    piece.style.setProperty("--delay", `${Math.round(rand() * 260)}ms`);
+    piece.style.setProperty("--fly", `${Math.round(1900 + rand() * 900)}ms`);
     piece.style.setProperty(
       "--hue",
-      `var(--color-celebrate-${(i % HUES) + 1})`,
+      i % 7 === 0
+        ? "var(--color-points)"
+        : `var(--color-celebrate-${(i % HUES) + 1})`,
     );
-    piece.dataset.shape = ["ribbon", "dot", "square"][i % 3]!;
+    piece.dataset.shape = ["ribbon", "dot", "square", "star"][i % 4]!;
   }
+  // Strong's badge: a big star that stamps in, the word across it.
+  const badge = element("div", styles.badge!, root);
+  badge.append(svgStar(styles.badgeStar!));
+  element("span", styles.badgeWord!, badge).textContent = "Strong";
+
+  // A run's counter, under the chip: a bolt and "×5".
+  const combo = element("div", styles.combo!, root);
+  const bolt = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  bolt.setAttribute("viewBox", "0 0 24 24");
+  bolt.setAttribute("class", styles.comboBolt!);
+  const boltPath = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "path",
+  );
+  boltPath.setAttribute("d", "M13.5 2 4 13.6h6.2L9 22l10-12.2h-6.4z");
+  bolt.append(boltPath);
+  combo.append(bolt);
+  const comboCount = element("span", styles.comboCount!, combo);
 
   // The stamp: a skill earned (or, without motion, Strong).
   const stamp = element("div", styles.stamp!, root);
@@ -154,10 +208,12 @@ export function createStage(host: HTMLElement = document.body) {
 
   const groups: Record<Group, HTMLElement> = {
     burst,
+    flash,
     flyer,
     confetti,
+    badge,
+    combo,
     stamp,
-    sweep,
     chip,
     chipSparks,
   };
@@ -205,22 +261,33 @@ export function createStage(host: HTMLElement = document.body) {
    * tools and actions, whatever they are, including slots they keep
    * hidden). Where the row is too full (a phone with a name in the bar),
    * it takes the wordmark's place beside the logo's wave, which stays the
-   * menu's button under it. Else just under the bar.
+   * menu's button under it. A student's phone bar (their name, sign-out,
+   * the calculator, a raised hand) never has room: there the chip sits at
+   * the end of the topic's line, which keeps that room for it (skin.css),
+   * the same on every problem.
    */
   function place() {
     placed = true;
+    const CHIP_WIDTH = chipWidth();
     const bar = document.querySelector("[data-app-bar]");
     const width = window.innerWidth;
     let left = width - CHIP_WIDTH - 16;
     let top = 10;
-    let foot = 56;
     let byLogo = false;
-    if (bar) {
+    const topic = document.querySelector(".practice-surface > .practice-topic");
+    const topicBox = topic?.getBoundingClientRect();
+    if (
+      bar?.getAttribute("data-space") === "student" &&
+      width < PHONE &&
+      topicBox?.height
+    ) {
+      left = topicBox.right - CHIP_WIDTH;
+      top = topicBox.top + (topicBox.height - CHIP_HEIGHT) / 2;
+    } else if (bar) {
       const box = bar.getBoundingClientRect();
       const logo = bar.firstElementChild?.getBoundingClientRect();
       const rowTop = box.top;
       const rowBottom = logo ? logo.bottom + 6 : box.top + 56;
-      foot = box.bottom;
       const wordmark = bar.querySelector("[data-navigation-trigger] span");
       const taken: [number, number, boolean][] = [];
       for (const node of bar.querySelectorAll<HTMLElement | SVGElement>("*")) {
@@ -281,7 +348,6 @@ export function createStage(host: HTMLElement = document.body) {
     else delete document.documentElement.dataset.pointsChip;
     root.style.setProperty("--chip-left", `${Math.round(left)}px`);
     root.style.setProperty("--chip-top", `${Math.round(top)}px`);
-    root.style.setProperty("--bar-foot", `${Math.round(foot)}px`);
   }
   let frame = 0;
   const schedule = () => {
@@ -386,14 +452,6 @@ export function createStage(host: HTMLElement = document.body) {
         }
       });
     },
-    /** A new problem: the glint along the bar's foot. */
-    sweep(reduced: boolean) {
-      if (reduced) return;
-      requestAnimationFrame(() => {
-        if (!placed) place();
-        run("sweep", "new", DURATION.sweep, true);
-      });
-    },
     running,
     destroy() {
       unwatch();
@@ -416,23 +474,44 @@ export function createStage(host: HTMLElement = document.body) {
         chip.dataset.lit = "";
         window.setTimeout(() => delete chip.dataset.lit, DURATION.chip);
       }
-      const word = moments.includes("strong")
-        ? "Strong"
-        : moments.includes("earned")
-          ? "Earned"
-          : null;
-      if (word) {
-        stampWord.textContent = word;
+      // Strong's badge, Earned's stamp and a run's counter simply show,
+      // then go.
+      const still = (node: HTMLElement, ms: number) => {
+        node.dataset.still = "";
+        window.setTimeout(() => delete node.dataset.still, ms);
+      };
+      if (moments.includes("strong")) still(badge, DURATION.badge);
+      else if (moments.includes("earned")) {
+        stampWord.textContent = "Earned";
         placeStamp(origin);
-        stamp.dataset.still = "";
-        window.setTimeout(() => delete stamp.dataset.still, DURATION.stamp);
+        still(stamp, DURATION.stamp);
+      }
+      if ((input.streak ?? 0) >= 3 && moments.includes("right")) {
+        comboCount.textContent = `×${input.streak}`;
+        still(combo, DURATION.combo);
       }
       return;
     }
+    // Each win in a run is bigger than the last, up to twice as big at 10.
+    const win = 1 + Math.min(10, Math.max(0, (input.streak ?? 1) - 1)) / 9;
+    root.style.setProperty("--win", win.toFixed(2));
     if (moments.includes("right")) {
       burst.style.setProperty("--x", `${Math.round(origin.x)}px`);
       burst.style.setProperty("--y", `${Math.round(origin.y)}px`);
       run("burst", "right", DURATION.burst);
+      flash.style.setProperty("--x", `${Math.round(origin.x)}px`);
+      flash.style.setProperty("--y", `${Math.round(origin.y)}px`);
+      run("flash", "right", DURATION.flash, true);
+      if ((input.streak ?? 0) >= 3) {
+        comboCount.textContent = `×${input.streak}`;
+        combo.dataset.level =
+          (input.streak ?? 0) >= 10
+            ? "3"
+            : (input.streak ?? 0) >= 5
+              ? "2"
+              : "1";
+        run("combo", "streak", DURATION.flight + DURATION.combo, true);
+      }
       if (input.from != null && input.to != null) {
         points = input.to;
         const target = chip.getBoundingClientRect();
@@ -470,8 +549,11 @@ export function createStage(host: HTMLElement = document.body) {
       placeStamp(origin);
       run("stamp", "earned", DURATION.stamp);
     }
-    if (moments.includes("strong"))
+    if (moments.includes("strong")) {
       run("confetti", "strong", DURATION.confetti);
+      run("badge", "strong", DURATION.badge, true);
+      run("flash", "strong", DURATION.flash * 2, true);
+    }
   }
 
   /** The stamp lands on the feedback sheet's upper corner, beside the mark

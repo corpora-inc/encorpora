@@ -61,6 +61,114 @@ const choice: PublicProblem = {
   },
 };
 
+/** Four quadrilaterals to choose from, drawn by the real figure code (the
+ * shape of a generated "Which shape is a rhombus?" problem). */
+const figures: PublicProblem = {
+  id: "design-figures",
+  templateId: "design-quadrilaterals-template",
+  templateVersion: 1,
+  seed: "design",
+  prompt: "Which shape is a rhombus?",
+  skillId: "design-quadrilaterals",
+  response: {
+    kind: "choice",
+    label: "Choose one answer",
+    options: [
+      {
+        id: "option-a",
+        label: "A",
+      },
+      {
+        id: "option-b",
+        label: "B",
+      },
+      {
+        id: "option-c",
+        label: "C",
+      },
+      {
+        id: "option-d",
+        label: "D",
+      },
+    ],
+  },
+  figure: {
+    kind: "scene",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          id: "shapes",
+          type: "shapes",
+          items: [
+            {
+              label: "A",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [-1.1655, -0.708],
+                    [0.8829, -0.3468],
+                    [1.1655, 0.708],
+                    [-0.8829, 0.3468],
+                  ],
+                },
+              ],
+              marks: "sides-angles",
+            },
+            {
+              label: "B",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [-0.2883, 1.4884],
+                    [-1.1776, -0.9548],
+                    [0.2883, -1.4884],
+                    [1.1776, 0.9548],
+                  ],
+                },
+              ],
+              marks: "sides-angles",
+            },
+            {
+              label: "C",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [-0.4068, 1.1178],
+                    [-1.064, -0.1175],
+                    [0.5802, -1.5942],
+                    [0.8906, 0.5939],
+                  ],
+                },
+              ],
+              marks: "sides-angles",
+            },
+            {
+              label: "D",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [1.0421, 1.2419],
+                    [-0.717, 0.6016],
+                    [-1.0421, -1.2419],
+                    [0.717, -0.6016],
+                  ],
+                },
+              ],
+              marks: "sides-angles",
+            },
+          ],
+        },
+      ],
+    },
+  },
+};
+
 const typedExplanation = [
   "There are 3 trays, and each tray holds 12 muffins.",
   "Equal groups multiply: 3 × 12 = 36.",
@@ -142,6 +250,28 @@ export const practiceFixtures = {
     response: "",
     outcome: "skipped",
   },
+  figures: {
+    problem: figures,
+    answer: "option-d",
+    explanation: [
+      "A small square mark shows a right angle. Matching tick marks show equal sides.",
+      "A rhombus has 4 equal sides.",
+      "Shape D has 4 equal sides, but no right angles, so it is the rhombus.",
+    ],
+    response: "option-d",
+    outcome: null,
+  },
+  "figures-correct": {
+    problem: figures,
+    answer: "option-d",
+    explanation: [
+      "A small square mark shows a right angle. Matching tick marks show equal sides.",
+      "A rhombus has 4 equal sides.",
+      "Shape D has 4 equal sides, but no right angles, so it is the rhombus.",
+    ],
+    response: "option-d",
+    outcome: "correct",
+  },
   error: {
     problem: typed,
     answer: "36",
@@ -204,6 +334,12 @@ export const answerSkills: AnswerSkill[] = [
     prerequisites: ["design-multiply"],
   },
 ];
+answerSkills.push({
+  id: "design-quadrilaterals",
+  title: "Quadrilaterals by their sides and angles",
+  description: "Name a four-sided shape from its marks.",
+  gradeBand: "3–5",
+});
 export const answerTemplates = answerSkills.map((skill) => ({
   id: `${skill.id}-template`,
   skillId: skill.id,
