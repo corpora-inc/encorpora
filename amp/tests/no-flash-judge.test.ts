@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { judge, type Id } from "../scripts/no-flash-judge";
+import {
+  judge,
+  prerenderedInProduction,
+  type Id,
+} from "../scripts/no-flash-judge";
 
 const url = "/learners/l1/workbooks/w1/results";
 const frame = (t: number, part: Partial<Id>): Id => ({
@@ -95,5 +99,80 @@ test("the destination's bar with its wave, before its main, is the one frame", (
       shifts: [],
     }).problems.join(),
     /other screen/,
+  );
+});
+
+// A skill's page: production serves it prerendered, with its own title; the
+// check's server serves the bare index.html (the pitch's static title) and
+// the map writes the skill's title when its catalog arrives.
+const PITCH = "AMP: Adaptive Math Pathways, a complete math curriculum";
+const SKILL = "Counting objects to 20 | AMP Pathways";
+const skillFrame = (t: number, part: Partial<Id>): Id =>
+  frame(t, {
+    url: "/pathways/count-to-20",
+    bar: "me/tabs/",
+    tabs: "Practice|Levels|Workbooks|Pathways|Inventory",
+    ...part,
+  });
+const bareWave = skillFrame(1, {
+  bar: "",
+  tabs: "",
+  boot: true,
+  title: PITCH,
+  titled: false,
+});
+const skillShell = skillFrame(200, { wait: true, title: PITCH, titled: false });
+const skillOpen = { main: "Pathways", sheet: "Counting objects to 20" };
+
+test("prerendered in production: the skill map and each skill's page", () => {
+  assert.equal(prerenderedInProduction("/pathways"), true);
+  assert.equal(prerenderedInProduction("/pathways/count-to-20"), true);
+  assert.equal(prerenderedInProduction("/me"), false);
+  assert.equal(prerenderedInProduction("/pathways/a/b"), false);
+});
+
+test("a bare stand-in's static title, before the app writes one, is no identity", () => {
+  const skill = skillFrame(400, { ...skillOpen, title: SKILL, titled: true });
+  assert.deepEqual(
+    judge({
+      ids: [bareWave, skillShell, skill],
+      hops: [],
+      shifts: [],
+      prerendered: true,
+    }).problems,
+    [],
+  );
+  // The same frames at an address production does not prerender: the
+  // static title was the document's, so its change is a flash.
+  assert.deepEqual(
+    judge({ ids: [bareWave, skillShell, skill], hops: [], shifts: [] })
+      .problems,
+    [`title changed: ${PITCH} → ${SKILL}`],
+  );
+});
+
+test("a title the app wrote, then another, fails even where production prerenders", () => {
+  const MAP = "Explore Math Skills | AMP Pathways";
+  const written = skillFrame(200, { wait: true, title: MAP, titled: true });
+  const skill = skillFrame(400, { ...skillOpen, title: SKILL, titled: true });
+  assert.deepEqual(
+    judge({
+      ids: [bareWave, written, skill],
+      hops: [],
+      shifts: [],
+      prerendered: true,
+    }).problems,
+    [`title changed: ${MAP} → ${SKILL}`],
+  );
+  // A recording without the mark counts every title as the app's.
+  const unmarked = skillFrame(200, { wait: true, title: PITCH });
+  assert.deepEqual(
+    judge({
+      ids: [bareWave, unmarked, { ...skill, titled: undefined }],
+      hops: [],
+      shifts: [],
+      prerendered: true,
+    }).problems,
+    [`title changed: ${PITCH} → ${SKILL}`],
   );
 });

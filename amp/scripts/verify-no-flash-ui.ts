@@ -39,7 +39,7 @@ import {
   personaEmail,
 } from "../src/web/features/dev/persona-list";
 import { startPersonaStack } from "./persona-stack";
-import { judge, type Load } from "./no-flash-judge";
+import { judge, prerenderedInProduction, type Load } from "./no-flash-judge";
 import { fill, paramPattern, trim, type Route } from "./route-addresses";
 
 const chromium = secureChromium(rawChromium);
@@ -119,6 +119,20 @@ const OBSERVER = `(() => {
   w.__shifts = [];
   const t0 = performance.now();
   let last = "";
+  // Whether the app has written the title: until it does, a bare document
+  // wears index.html's static one (no-flash-judge.ts, prerendered). A
+  // prerendered document's own head counts as written from the start.
+  let written = false;
+  w.__ownHead = false;
+  const titleProperty = Object.getOwnPropertyDescriptor(Document.prototype, "title");
+  if (titleProperty && titleProperty.set)
+    Object.defineProperty(Document.prototype, "title", {
+      ...titleProperty,
+      set(value) {
+        written = true;
+        titleProperty.set.call(this, value);
+      },
+    });
   const text = (el) => (el && el.innerText ? el.innerText : "").replace(/\\s+/g, " ").trim();
   const snap = () => {
     const bar = document.querySelector("[data-app-bar]");
@@ -138,6 +152,7 @@ const OBSERVER = `(() => {
       sheet,
       boot,
       wait: document.querySelectorAll(".amp-skeleton, [aria-busy=true]").length > 0,
+      titled: written || (w.__ownHead ||= !!document.querySelector("[data-pathways-static]")),
     };
     const key = JSON.stringify(s);
     if (key === last) return;
@@ -214,11 +229,22 @@ async function coldLoad(context: BrowserContext, path: string): Promise<Load> {
   const load = (await page
     .evaluate(() => {
       const w = window as unknown as Record<string, unknown>;
-      return { ids: w.__ids, hops: w.__hops, shifts: w.__shifts };
+      return {
+        ids: w.__ids,
+        hops: w.__hops,
+        shifts: w.__shifts,
+        bare: !w.__ownHead,
+      };
     })
-    .catch(() => ({ ids: [], hops: [], shifts: [] }))) as Load;
+    .catch(() => ({ ids: [], hops: [], shifts: [], bare: false }))) as Load & {
+    bare: boolean;
+  };
   await page.close();
-  return load;
+  const { bare, ...recorded } = load;
+  return {
+    ...recorded,
+    prerendered: bare && prerenderedInProduction(trim(path)),
+  };
 }
 
 /** Every same-origin link in `scope`. */

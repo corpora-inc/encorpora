@@ -17,13 +17,27 @@ export type Id = {
   sheet: string;
   boot: boolean;
   wait: boolean;
+  /** The title is the app's own (it has written one) or the document's
+   * prerendered one; false while a bare `index.html` still wears its static
+   * title. Absent: treated as the app's. */
+  titled?: boolean;
 };
 export type Hop = { t: number; from: string; to: string; how: string };
 export type Load = {
   ids: Id[];
   hops: Hop[];
   shifts: { t: number; v: number }[];
+  /** Production serves this address as its own prerendered document, with
+   * its own title from the first byte (`prerenderedInProduction`), and the
+   * server under test served the bare `index.html` in its place. */
+  prerendered?: boolean;
 };
+
+/** Addresses production serves as prerendered documents with their own
+ * title: the skill map and each skill's page (scripts/build-public-pathways.ts,
+ * served by docker/nginx.conf's `/pathways/` locations). */
+export const prerenderedInProduction = (path: string) =>
+  /^\/pathways(?:\/[a-z0-9-]+)?\/?$/.test(path);
 
 /** The neutral frame: the boot wave alone, or nothing painted yet. */
 const neutral = (id: Id) =>
@@ -36,7 +50,12 @@ const label = (id: Id) =>
     : `${id.bar || "no bar"}${id.tabs ? ` [${id.tabs}]` : ""} ${id.main}${id.h1 ? ` "${id.h1}"` : ""}${id.sheet ? ` sheet "${id.sheet}"` : ""}${id.wait ? " …" : ""}`;
 
 /** What a load did wrong, if anything. */
-export function judge({ ids = [], hops = [], shifts = [] }: Load) {
+export function judge({
+  ids = [],
+  hops = [],
+  shifts = [],
+  prerendered = false,
+}: Load) {
   const problems: string[] = [];
   const painted = ids.filter((id) => !neutral(id));
   const final = painted.at(-1);
@@ -77,7 +96,18 @@ export function judge({ ids = [], hops = [], shifts = [] }: Load) {
   if (inside.length > 2)
     problems.push(`${inside.length - 1} changes inside the destination`);
   const firstPaint = painted[0]!.t;
-  const titles = [...new Set(painted.map((id) => id.title))];
+  // Where production serves a prerendered document, its title is there from
+  // the first byte. The bare document here wears the pitch's static title
+  // until the app writes the screen's: that stand-in is no identity the
+  // person would see. Any title the app writes still counts, so a change
+  // from one written title to another fails.
+  const titles = [
+    ...new Set(
+      painted
+        .filter((id) => !prerendered || id.titled !== false)
+        .map((id) => id.title),
+    ),
+  ];
   if (titles.length > 1) problems.push(`title changed: ${titles.join(" → ")}`);
   if (hops.length > 1)
     problems.push(
