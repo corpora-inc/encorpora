@@ -6,7 +6,7 @@ import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 
 export const RESERVE = 50_000;
-const VOICES = new Set(['XescS24CsOySAkKrLAO3', 'J3Ei0Lj6fAobhIqY5ySH', 'SYXbTJsLE7zmSjr1DchT']);
+const VOICES = new Set(['XescS24CsOySAkKrLAO3', 'J3Ei0Lj6fAobhIqY5ySH', 'SYXbTJsLE7zmSjr1DchT', 'tapn1QwocNXk3viVSowa']);
 
 export function remainingBudget(state, liveRemaining) {
   if (!Number.isFinite(liveRemaining) || liveRemaining < 0) throw new Error('Invalid voice quota');

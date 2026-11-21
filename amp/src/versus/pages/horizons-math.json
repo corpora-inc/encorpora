@@ -1,0 +1,131 @@
+{
+  "slug": "horizons-math",
+  "name": "Horizons Math",
+  "maker": "Alpha Omega Publications",
+  "category": "books",
+  "checked": "2026-11-21",
+  "benefit": "Review that follows the child",
+  "line": "Horizons Math is taught and graded by a parent from the book. AMP checks every answer and plans review per child.",
+  "description": "AMP vs Horizons Math: a parent-taught spiral workbook series, or practice that checks every answer and schedules review per child. Prices and evidence.",
+  "verdict": "Horizons Math is a colorful, low-cost print series from a Christian publisher, built for a parent who teaches each lesson and grades each page [1][4][7][9]. Its spiral brings topics back on the same schedule for every child [1]. AMP checks and explains every answer as it is given, keeps a level in each part of math, and brings back the skills each learner has shown on a schedule of its own, with no lesson for the adult to teach or grade.",
+  "reasons": [
+    {
+      "title": "No lesson for the adult to teach or grade",
+      "body": "Horizons asks the parent to teach each day's lesson from the teacher's guide, then grade the workbook pages with the answer key, and AOP says the program needs active parent involvement [1]. AMP places the learner, chooses each problem, checks it and schedules review. Every problem type has a one-step hint that never gives the answer and a written lesson with a worked example. An adult can still sit beside the child, but the work does not wait for one.",
+      "research": ["lessons", "hints"]
+    },
+    {
+      "title": "Each answer is checked when it is given",
+      "body": "In Horizons the child works the pages and the parent marks them later with the key [1]. Its published materials describe no hints for the child [1]. AMP marks each answer right or wrong, shows the correct answer and the worked steps, then serves the next problem. The child sees what went wrong before moving on, not after the page is done.",
+      "research": ["feedback"]
+    },
+    {
+      "title": "Review follows the child, not the book",
+      "body": "Horizons is a spiral: concepts are \"repeatedly revisited\" as related ones are introduced [1]. That is real review, but on the book's timetable, the same for every child. AMP brings each skill a learner has shown back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts that skill's schedule over. In a randomized trial of 787 seventh graders, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12].",
+      "research": ["review"]
+    },
+    {
+      "title": "A level in each part of math, from answers",
+      "body": "Horizons places a child with a printed readiness test that the parent scores from an answer key [6]. After that, the lessons come in the book's fixed order [1]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math and keeps adjusting with every answer. A child quick with shapes but unsure of fractions practices each at its own level in the same session.",
+      "research": ["level"]
+    },
+    {
+      "title": "Misses lead back to the missing piece",
+      "body": "AOP describes Horizons as spiral rather than mastery-based [1]. The sequence is set, and AOP's pages describe nothing in it that sends a child back to earlier skills on its own; the parent decides [1]. In AMP a skill counts as Strong at four of the last five answers right without help, and an answer after a hint does not count. Two misses in a row send practice to what the skill builds on.",
+      "research": ["mastery"]
+    },
+    {
+      "title": "Paper made for one learner",
+      "body": "Horizons gives every child the same workbook pages, and each child needs their own set [1]; a retailer lists each workbook at $38.75, two per child a year through grade 6 [7][8]. AMP prints unlimited workbooks built from the learner's own record: today's idea, practice, review that is due, and a challenge, each with a worked answer key. Results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "$120 for a grade's complete set at Christianbook; extra student workbooks $38.75, two per child a year through grade 6 [7]. AOP's Horizons page lists no prices [1].",
+    "buyers": "Families, from AOP and retailers [1][7]. AOP is an approved vendor through education savings account wallets in 24 listed states [5].",
+    "range": "Kindergarten through grade 6, then Pre-Algebra (grade 7) and Algebra I (grade 8) [1][7].",
+    "start": "Free printable readiness tests for grades 1 to 6, Pre-Algebra and Algebra I, scored by the parent [6].",
+    "teaching": "The parent teaches a daily lesson from the teacher's guide, with hands-on activities using mostly household items. The set is books and a guide [8][9].",
+    "next": "The next lesson in the book, in a fixed spiral order, the same for every child [1].",
+    "mastery": "No mastery rule. AOP describes Horizons as spiral rather than mastery-based [1].",
+    "review": "Spiral: concepts return as related ones are introduced, on the book's schedule rather than each child's [1].",
+    "print": "Print is the whole program: student workbooks, one set per child, and a teacher's guide with answer keys, the same pages for every child [1][8][9].",
+    "adult": "Teach the daily lesson, assign the workbook pages, grade them with the answer key, and decide when to reteach [1].",
+    "reports": "The parent grades the pages with the answer key [1]. We found no automatic reports for Horizons in AOP's published materials [1].",
+    "evidence": "No entry in Evidence for ESSA [10]. No What Works Clearinghouse intervention report [11]. Its Horizons page cites no research [1]."
+  },
+  "theirs": [
+    "Horizons Math is published by Alpha Omega Publications (AOP), a Christian homeschool publisher that says it has offered Christian homeschooling for more than 45 years [4]. Horizons is one of four AOP brands, beside LIFEPAC, Monarch and Ignite Christian Academy [4]. Horizons Math runs from kindergarten through grade 6, then Pre-Algebra and Algebra I [1][7].",
+    "A grade comes as a set of two student workbooks and the teacher's guide [8][9]. Each day the parent teaches the lesson from the guide, one-on-one, often with hands-on activities that use household items. The child works the matching workbook pages, and the parent grades them with the answer key [1][8]. The guide also holds a daily planner, teaching tips and extra worksheets [9]. AOP calls the design spiral: topics come back as new, related ones are introduced [1].",
+    "AOP also sells LIFEPAC, print worktexts for math from kindergarten through grade 12, and Monarch, an online program for grades 3 to 12 [2][3]. Those are different products, and this page does not compare them."
+  ],
+  "credit": [
+    "A lower price. A grade's complete set sells for $120 at retail, about a fifth of AMP's yearly price, and a second child in the same grade adds only workbooks [7].",
+    "Math on paper. Horizons is a print series, built around books and a pencil [1][8]. AMP's practice runs in a browser, though its workbooks print.",
+    "A parent at the table. Lessons are one-on-one and teacher-led, with hands-on activities, and manipulatives kits are sold for kindergarten through grade 6 [7][8]. AMP has no human teacher and only a few on-screen models a learner builds.",
+    "Education funds in many states. AOP is an approved vendor through wallets such as ClassWallet and Odyssey in 24 listed states [5]. AMP is offered through three: Arizona ESA, Arkansas EFA and New Hampshire EFA.",
+    "A Christian publisher with a path through high school, including Ignite Christian Academy, an accredited online school with certified teachers [2][3][4]."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Horizons Math on AOP's Horizons and LIFEPAC pages, in Evidence for ESSA, or in the What Works Clearinghouse as of November 2026. Horizons Math has no entry in Evidence for ESSA [10] and no What Works Clearinghouse intervention report [11]. The clearinghouse's report titled Direct Instruction/Horizons covers an SRA reading program, a different product [11].",
+      "AOP's Horizons page calls the series award-winning but names no award, and it cites no research or efficacy data [1]. Its spiral design has support in principle: in a randomized trial of 787 seventh graders, mixed, spaced practice beat practice in blocks a month later [12]. That trial tested the order of practice problems, not Horizons."
+    ],
+    "ours": [
+      "Two findings bear most on this choice. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.32 for the correct answer alone and 0.05 for marking right or wrong [13]. These are averages by feedback type, not a head-to-head trial. Across 55 studies in math, worked examples averaged g = 0.48 [14]. An answer key gives the adult the right answer; AMP gives the learner worked steps after every answer and a worked example in every lesson, without waiting for anyone to grade. We expect that to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Choose Horizons Math if you want to teach math yourself, at the table, from a book and a pencil.",
+      "Choose Horizons Math if cost decides it: about $120 for a grade's set at retail [7].",
+      "Choose Horizons Math if you want curriculum from a Christian publisher, with an accredited online school in the same family [2].",
+      "Choose Horizons Math if your education savings account pays AOP and does not yet pay AMP [5]."
+    ],
+    "amp": [
+      "You can't teach and grade a math lesson every day, or would rather not.",
+      "You want each miss explained right away, not when the page is graded.",
+      "Your child is ahead in some parts of math and still building others.",
+      "Your teen is heading past Algebra I and you want one program through precalculus.",
+      "You like your Horizons books and want daily practice beside them that finds gaps and brings old skills back."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Horizons Math?",
+      "answer": "Yes. As checked on November 21, 2026, a complete Horizons Math set for one grade sells for $120 at Christianbook, and through grade 6 each extra child needs two workbooks at $38.75 each [7]. AMP is $599 a year or $59 a month for the first child and $399 a year or $39 a month for each more. That buys placement in each strand, a chosen problem every time, checking, scheduled review and unlimited personalized workbooks, from counting through precalculus."
+    },
+    {
+      "question": "Is Horizons Math spiral or mastery?",
+      "answer": "Spiral. AOP says concepts are revisited as new, related ones are introduced, and contrasts this with mastery-based learning [1]. AMP has both: a mastery rule for each skill, and scheduled review of skills already learned."
+    },
+    {
+      "question": "Can we use AMP alongside Horizons Math?",
+      "answer": "Yes. A parent can keep teaching Horizons lessons and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it needs no lesson number from you."
+    },
+    {
+      "question": "What comes after Horizons Algebra I?",
+      "answer": "Horizons Math ends with Algebra I, and AOP points families to its LIFEPAC or Monarch programs for high school [1]. AMP continues through Geometry, Algebra 2 and Precalculus in the same program, on one prerequisite map."
+    },
+    {
+      "question": "Has Horizons Math been shown to work in studies?",
+      "answer": "We found no outcome study. Horizons Math has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report [10][11]. AMP has no outcome study yet either."
+    }
+  ],
+  "sources": [
+    { "title": "Horizons curriculum overview and FAQ (Alpha Omega Publications)", "url": "https://www.aop.com/curriculum/horizons" },
+    { "title": "Monarch online curriculum (Alpha Omega Publications)", "url": "https://www.aop.com/curriculum/monarch" },
+    { "title": "LIFEPAC curriculum (Alpha Omega Publications)", "url": "https://www.aop.com/curriculum/lifepac" },
+    { "title": "About Alpha Omega Publications", "url": "https://www.aop.com/pages/about-us" },
+    { "title": "Education funding with AOP (Alpha Omega Publications)", "url": "https://www.aop.com/pages/education-funding-with-aop" },
+    { "title": "Assessment and placement tests (Alpha Omega Publications)", "url": "https://www.aop.com/pages/assessment-and-placement-tests" },
+    { "title": "Horizons Math (Christianbook)", "url": "https://www.christianbook.com/page/homeschool/alpha-omega/horizons/horizons-math" },
+    { "title": "Horizons Math Grade 3 Complete Set (Christianbook)", "url": "https://www.christianbook.com/horizons-math-grade-3-complete/9780867179620/pd/30050" },
+    { "title": "Horizons Math 3 boxed set (Rainbow Resource Center)", "url": "https://www.rainbowresource.com/product/sku/000713" },
+    { "title": "Math programs (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/programs/math/" },
+    { "title": "What Works Clearinghouse intervention reports", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance, Educational Psychology Review 35", "url": "https://doi.org/10.1007/s10648-023-09745-1" }
+  ]
+}

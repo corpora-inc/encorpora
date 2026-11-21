@@ -1,0 +1,22 @@
+{
+  "/schools": {
+    "image": "/assets/share-cards/schools-a5d3fc8a39cf.png",
+    "alt": "AMP for Schools: a complete math curriculum, from Kindergarten to Precalculus."
+  },
+  "/schools/trust": {
+    "image": "/assets/share-cards/schools-trust-c5e503120398.png",
+    "alt": "How AMP handles student data: what’s collected, who signs in, retention and deletion."
+  },
+  "/schools/scope-and-sequence": {
+    "image": "/assets/share-cards/schools-scope-fd17fbdc9bc7.png",
+    "alt": "AMP’s scope and sequence: every objective from Kindergarten to Precalculus."
+  },
+  "/research": {
+    "image": "/assets/share-cards/research-5f3acbf6def3.png",
+    "alt": "AMP Research Report 2: Logic Model and Theory of Change, AMP’s ESSA Tier 4 rationale."
+  },
+  "/research/pilot": {
+    "image": "/assets/share-cards/research-pilot-905d1575f68d.png",
+    "alt": "Join the AMP pilot study: math growth with AMP, measured on a national test."
+  }
+}

@@ -67,6 +67,7 @@ import { lmsConnectEnabled } from "../schools/clever/lms-config.js";
 import { withProviderSessions } from "../identity/provider-principals.js";
 import { registerCleverAuthRoutes } from "../schools/clever-auth.js";
 import { resolveCleverPerson } from "../schools/clever/identity.js";
+import { registerResearchPilotRoutes } from "../research/pilot-routes.js";
 /** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
  * ingress address. Anything else is a configuration error. */
 function trustedProxies(value: string | undefined) {
@@ -254,6 +255,12 @@ await registerSchoolRoutes(app, {
         }
       : {}),
   },
+});
+await registerResearchPilotRoutes(app, {
+  pool: repository.pool,
+  origins: schoolPageOrigins ?? [],
+  origin: accounts?.config.baseURL ?? "",
+  ...(accounts ? { mail: accounts.send } : {}),
 });
 await registerCleverOnboarding(app, {
   pool: repository.pool,

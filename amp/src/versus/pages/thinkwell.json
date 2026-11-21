@@ -1,0 +1,196 @@
+{
+  "slug": "thinkwell",
+  "name": "Thinkwell",
+  "maker": "Thinkwell",
+  "category": "courses",
+  "checked": "2026-11-21",
+  "benefit": "Practice that finds the level",
+  "line": "Thinkwell teaches by professor video in a set order. AMP chooses every problem from the learner's last answer.",
+  "description": "AMP vs Thinkwell: video courses taught by professors in a set order, grade 6 to calculus, or practice that adapts at every answer from counting to precalculus.",
+  "verdict": "Thinkwell gives a learner a university professor on video, a full course with a midterm and a final, and official transcripts from a WASC-accredited provider [2][4]. Its lessons run in a set order, from a printed placement test that picks the course [2][3]. AMP finds the level in each part of math, chooses every problem from the last answer, and brings old skills back on a schedule.",
+  "theirs": [
+    "Thinkwell makes video courses for homeschool families, and its About page says it also supplies colleges and universities [7]. Its homeschool math runs from grade 6 through calculus, with honors versions from grade 6 through Algebra 2 [1]. University professors teach the lectures. The only math professor its professors page lists is Edward Burger, a former president of Southwestern University [5].",
+    "Each lesson follows the same pattern. The learner watches a 5 to 10 minute video, then works auto-graded exercises with step-by-step explanations and can retry them as often as they like. Printable worksheets and study notes are optional. Quizzes, chapter tests, a midterm and a final make up the grade. A course comes with 12 months of access and a suggested week-by-week plan the family can speed up or slow down [2].",
+    "Thinkwell also sells one-on-one live tutoring by the month [8] and offers Studdy Buddy, which it calls an \"Intelligent Math Tutor\" [9]. Charter schools and grant programs can order it by purchase order [6]."
+  ],
+  "credit": [
+    "Accreditation. Thinkwell is WASC accredited as a Supplementary Education Provider, six of its math courses meet the University of California A-G requirement, and it sends official transcripts [4]. AMP offers no credit or transcripts.",
+    "Trigonometry and calculus courses, and honors versions from grade 6 through Algebra 2 [1]. AMP stops at precalculus.",
+    "Named university professors on video, with captions and printable transcripts [2][5]. AMP's animated films cover a growing share of its problem types, not every lesson.",
+    "Live one-on-one tutoring with certified math instructors, sold by the month [8]. AMP has no live tutors.",
+    "A strong public rating: 4.7 on Trustpilot from 471 reviews, where reviewers praise being able to work on paper [10]."
+  ],
+  "reasons": [
+    {
+      "title": "AMP finds the level in each part of math",
+      "body": "Thinkwell's placement tests are printed, 16 to 25 questions long, and with a scoring guide. The result picks one course [3]. AMP needs no separate test. It places the learner within the first 24 problems, keeps a level in each of 14 strands of math and keeps adjusting, so a learner ready for algebra but unsure with fractions practices each where they stand.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The problem comes first, and help comes to it",
+      "body": "Each Thinkwell lesson opens with a 5 to 10 minute lecture, and the exercises follow [2]. AMP starts with a problem. A one-step hint, a written lesson with a worked example and, for a growing share of problem types, a narrated film are one tap away, and worked steps follow every answer. In correlational data from an online course for adults, students who did more interactive practice learned more than students who watched more video [16].",
+      "research": [
+        "hints",
+        "lessons",
+        "feedback",
+        "films"
+      ]
+    },
+    {
+      "title": "A miss leads back to the missing skill",
+      "body": "After a wrong answer, Thinkwell shows a step-by-step explanation and lets the learner try the exercise again [2]. We found no automatic step back to earlier skills in its published materials [2]. In AMP two misses in a row on a skill send practice to what that skill builds on. Thinkwell's math starts at grade 6 [1].",
+      "research": [
+        "mastery",
+        "level"
+      ]
+    },
+    {
+      "title": "Old skills return on a schedule",
+      "body": "Thinkwell's review is worksheets and study notes for each topic, plus practice exams, and it describes no schedule for bringing earlier skills back [2]. AMP returns each learned skill after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [15].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Mastery is earned skill by skill, without help",
+      "body": "Thinkwell's course grade counts quizzes and chapter tests at 30% each and the midterm and final at 20% each. It states no mastery rule for single skills [2]. AMP marks a skill Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded but does not move the level.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Paper practice made for each learner",
+      "body": "Thinkwell offers printable worksheets with answer keys and study notes for each topic, and sells companion books [1][2]. Every student gets the same pages. AMP prints unlimited workbooks built from the learner's own record, each with a worked answer key, and results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "buyers": "Families buy courses online. Charter schools and grant programs order by purchase order; school prices are not published [6].",
+    "range": "Grade 6 through calculus, with honors versions from grade 6 through Algebra 2. Nothing below grade 6 [1].",
+    "start": "Free printable placement tests, 16 to 25 questions each, each with a scoring guide. The result picks a course [3].",
+    "teaching": "A 5 to 10 minute video lecture by a university professor, then auto-graded exercises with step-by-step explanations [2][5].",
+    "next": "The next lesson in the course's set order, on a suggested week-by-week plan the family can speed up or slow down [2].",
+    "mastery": "No mastery rule stated. The grade weights quizzes 30%, chapter tests 30%, midterm 20% and final 20% [2].",
+    "review": "Worksheets and study notes for each topic, plus practice exams. No schedule for bringing earlier skills back described [2].",
+    "print": "Printable worksheets with answer keys and study notes, plus companion books sold separately. The same for every student [1][2].",
+    "adult": "Buys and assigns the course, sets the pace, chooses the letter grade, and contacts support to allow a test retake [2].",
+    "reports": "Auto-graded online gradebook. Certificate and printed grades on request. Official transcripts with credit value sent to schools [2][4].",
+    "evidence": "No outcome study found on its site. No Evidence for ESSA entry or What Works Clearinghouse intervention report, November 2026 [1][13][14].",
+    "price": "Sold by the course, with 12 months of access [2]. We could not read its current prices when we checked."
+  },
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Thinkwell, randomized or with a comparison group, on its site, and it claims no ESSA tier on the pages we read [1]. It has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [13][14].",
+      "What Thinkwell publishes instead is testimony. Blogger reviews from 2019, hosted on its site, include comments on better understanding, and one on fewer errors [11]. Its All-Stars page tells student success stories without test scores [12]. Its professors page cites teaching awards and \"rave reviews from students worldwide\" [5]. None of these compares students who used Thinkwell with students who did not."
+    ],
+    "ours": [
+      "Thinkwell and AMP agree that a learner needs a clear explanation. Thinkwell's comes from a professor before the exercises; AMP's comes with each problem. Where we differ is what happens next. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, students whose practice mixed and spaced earlier topics scored 62% on the researchers' own test a month later, against 38% for students who practiced one topic at a time [15]. In an online psychology course for adults, the authors estimate that extra doing was worth more than six times as much as extra watching or reading, from correlational data [16]. We built AMP on those findings and expect it to show in outcomes. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your high schooler needs accredited courses with transcripts, or University of California A-G credit.",
+      "Your learner is ready for trigonometry or calculus.",
+      "Your child learns best from a professor on video and you want a course with quizzes, tests, a midterm and a final.",
+      "You want live one-on-one tutoring from the same company, or your charter school already orders Thinkwell."
+    ],
+    "amp": [
+      "You want the program to find where your child is in each part of math, not only which course to start.",
+      "Your child needs to revisit earlier grades, or is younger than grade 6.",
+      "You want old skills to come back on a schedule, without planning it.",
+      "You want paper practice made for your child, with worked answer keys, that counts toward their level.",
+      "You want to see the level in each strand of math and the actual problems behind it."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Thinkwell accredited? Is AMP?",
+      "answer": "Thinkwell is WASC accredited as a Supplementary Education Provider, six of its math courses meet the University of California A-G requirement, and it sends official transcripts on request. The receiving school decides whether to accept the credit [4]. AMP is not accredited and does not issue transcripts or course credit; it gives progress reports and report cards."
+    },
+    {
+      "question": "Does Thinkwell adapt to my child?",
+      "answer": "Its placement tests choose a course [3]. Inside a course, lessons follow a set order on a suggested week-by-week plan the family can speed up or slow down, and its How it works page describes no adaptivity [2]. AMP chooses every problem from the learner's answers."
+    },
+    {
+      "question": "How does AMP's price compare with Thinkwell's?",
+      "answer": "AMP costs $599 a year or $59 a month for the first child, then $399 or $39 for each more, with a full refund within 30 days, and covers every level from counting through precalculus. Thinkwell sells each course with 12 months of access [2]. We could not confirm its current course prices when we checked, so compare them on its store [1]."
+    },
+    {
+      "question": "Can we use AMP alongside Thinkwell?",
+      "answer": "Yes. A learner can watch Thinkwell's lectures and practice in AMP, which brings earlier skills back on a schedule. A parent can also pick any skill on AMP's map and practice it directly."
+    },
+    {
+      "question": "Does AMP teach calculus?",
+      "answer": "No. AMP stops at precalculus. Thinkwell offers trigonometry and calculus courses [1]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Thinkwell Homeschool courses (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/"
+    },
+    {
+      "title": "How it works (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/how-it-works-1"
+    },
+    {
+      "title": "Placement tests (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/placement-tests"
+    },
+    {
+      "title": "Accreditation (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/accreditation"
+    },
+    {
+      "title": "About our professors (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/about-our-professors"
+    },
+    {
+      "title": "Charter schools (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/charter-schools"
+    },
+    {
+      "title": "About us (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/about-us"
+    },
+    {
+      "title": "Office hours and live tutoring (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/collections/office-hours-live-tutoring"
+    },
+    {
+      "title": "Studdy Buddy (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/studdy-buddy"
+    },
+    {
+      "title": "Thinkwell Homeschool reviews (Trustpilot)",
+      "url": "https://www.trustpilot.com/review/thinkwellhomeschool.com"
+    },
+    {
+      "title": "Reviews (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/reviews"
+    },
+    {
+      "title": "Thinkwell All-Stars (Thinkwell)",
+      "url": "https://www.thinkwellhomeschool.com/pages/thinkwell-allstars"
+    },
+    {
+      "title": "Evidence for ESSA, site search for Thinkwell",
+      "url": "https://evidenceforessa.org/?s=thinkwell"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Koedinger et al. (2015), Learning is not a spectator sport: Doing is better than watching for learning from a MOOC",
+      "url": "https://doi.org/10.1145/2724660.2724681"
+    }
+  ]
+}

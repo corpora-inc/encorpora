@@ -1,0 +1,161 @@
+{
+  "slug": "freckle-math",
+  "name": "Freckle",
+  "maker": "Renaissance",
+  "category": "school",
+  "checked": "2026-11-21",
+  "benefit": "Stated mastery, scheduled review",
+  "line": "Freckle is free practice built for classrooms. AMP is a full program with a stated mastery rule and scheduled review.",
+  "description": "AMP vs Freckle: what Freckle's free and Premium tiers offer, what its studies show, and why AMP states its mastery rule and schedules review.",
+  "verdict": "Freckle gives any student free, unlimited practice, and it can place students from a school's Star or FastBridge scores [1][2]. We found no stated mastery rule or review schedule on its pages, and its published growth figures compare students who used it at recommended levels with non-users [1][2]. AMP costs more, publishes its rules for mastery and review, and prints workbooks made for each learner.",
+  "reasons": [
+    {
+      "title": "Mastered means four of five without help",
+      "body": "Freckle advertises mastery tracking and goal setting, but its published pages give no rule for when a skill counts as mastered [2]. It lists hints and guided practice, and we found nothing on whether an answer after help still counts [1]. In AMP a skill is Strong when four of the last five answers are right without help, and an answer given after a hint or the lesson never counts. The adult can read exactly what the label means.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "A separate level for each part of math",
+      "body": "Freckle places a student with a brief placement assessment or with Star or FastBridge scores, then adapts to the student's level [1][3]. Its pages do not say how finely it tracks that level or what follows repeated misses [1][3]. AMP keeps a level in each of 14 strands, so a strength in geometry never hides a gap in fractions. Two misses in a row on a skill send practice to what that skill builds on.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Learned skills return on a fixed schedule",
+      "body": "We found no scheduled review of earlier skills on Freckle's published pages [1][2][3]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the clock. In a randomized trial of 787 seventh graders, students whose practice mixed and spaced old topics scored 62% on the researchers' own test a month later; students who practiced one topic at a time scored 38% [9].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Paper practice made for each learner",
+      "body": "We found no printable workbooks in Freckle's published materials; it runs on the web and in an iPad app [1][2][5]. AMP prints unlimited workbooks composed from the learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level, so time at the table and time on screen build one record."
+    },
+    {
+      "title": "A parent at home gets the teacher's view",
+      "body": "Freckle's free access gives unlimited self-paced practice and a limited number of teacher assignments, and it describes Premium for schools and districts with no published price [1][2]. AMP charges a family one price for the whole program. A parent teaching at home gets the same class view a school teacher gets: level by strand, time by day and skill, and the actual problems behind every number.",
+      "research": [
+        "progress"
+      ]
+    }
+  ],
+  "rows": {
+    "price": "Free for classrooms and families. Premium, for schools and districts, has no published price [1][2].",
+    "buyers": "Anyone can use free access [2]. Premium is described for schools and districts [2]. The iPad app is free [5].",
+    "range": "Kindergarten through Algebra 2 in math, aligned to state standards, Renaissance says [1].",
+    "start": "A brief placement assessment, or a school's Star or FastBridge scores [1].",
+    "teaching": "Hints, guided practice, instructional videos and vocabulary help, with Spanish support in many math activities [1][4].",
+    "next": "An adaptive pathway that adjusts to the student's level, plus skills or standards a teacher assigns [1][3].",
+    "mastery": "Mastery tracking is advertised. We found no stated rule for what counts as mastered [2].",
+    "review": "No scheduled review of earlier skills found in its published materials [1][2][3].",
+    "print": "No printable workbooks found in its published materials [1][2][3].",
+    "adult": "A teacher assigns skills or standards to individuals, groups or the class, and reads the reports [1][3].",
+    "reports": "Usage, performance and progress reports, performance by standard, and class, school and district dashboards [1][4].",
+    "evidence": "Vendor-reported growth for students at recommended use [1]. No entry in Evidence for ESSA or the What Works Clearinghouse [7][8]."
+  },
+  "theirs": [
+    "Freckle is a K-12 practice platform from Renaissance, the company behind Star Assessments and FastBridge [1][2]. The App Store lists it as Freckle by Renaissance, from Freckle Education, Inc. [5]. This page covers Freckle's math. Renaissance lists kindergarten through Algebra 2, aligned to state standards, with more than 92,000 math questions [1].",
+    "Freckle's home page says it is designed to be both student-paced and teacher-led [2]. A student starts with a brief placement assessment, or the school's Star or FastBridge data sets the start [1]. The student then works an adaptive pathway, and a teacher can assign skills or standards to individuals, groups or the whole class [1][3]. Supports include hints, guided practice, instructional videos and vocabulary help [1][4].",
+    "There are two tiers. Free access, for classrooms and families, gives unlimited self-paced practice and a limited number of teacher assignments. Premium is for schools and districts [2]. Renaissance publishes no Premium price and sends schools to its Premium pages [1][2]."
+  ],
+  "credit": [
+    "Free. Any student can practice without limit at no cost, at school or at home [2]. AMP costs $599 a year after 100 free answers.",
+    "Placement from Star Assessments or FastBridge scores, for a school that already gives those tests [1]. AMP has no normed test.",
+    "Spanish support in many math activities, and an iPad app [1][5]. AMP is English only and runs in the browser.",
+    "School-scale tools: Clever and ClassLink rostering, assignment by standard, and class, school and district dashboards [1]."
+  ],
+  "evidence": {
+    "theirs": [
+      "Renaissance's Freckle page reports that students who used Freckle at recommended levels reached median student growth percentiles of about 51 to 52 in math, against about 47 for non-users [1]. It adds that consistent users, at least 18 weeks at recommended levels, gained about three extra weeks of learning [1]. The page names no sample, grades, years or study authors, and does not say who the 18-week figure is compared with.",
+      "Both figures are for students who used Freckle at recommended levels. In our reading, students who use a program most differ from the rest before they start, so such a comparison cannot show what Freckle caused. Laurence Holt, in an essay on vendor studies of online math programs, reports that the gains come from the small share of students who use them as recommended [6].",
+      "Renaissance also states that a LearnPlatform study gives Freckle math ESSA Level II, moderate evidence, for grades 1 to 5 [1]. We have not reviewed that study. Freckle Math has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026, and we found no independent randomized trial [7][8]."
+    ],
+    "ours": [
+      "Two of AMP's rules match findings from meta-analyses. Every problem type has a written lesson with a worked example, and a meta-analysis of 55 studies, from elementary school to college, found worked examples improve math performance, g = 0.48 on average [10]. Every answer is followed by the correct answer and worked steps; across 40 studies of computer-based feedback, of mixed ages and subjects, feedback that explains averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [11]. We expect a program built this way, with review on a schedule, to show it in outcomes, and we have committed in public to finding out.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "You need free practice, and your budget is zero.",
+      "Your school already tests with Star or FastBridge and wants practice placed from those scores.",
+      "Your students need Spanish support or an iPad app.",
+      "You teach a class and want to assign online practice by state standard."
+    ],
+    "amp": [
+      "You want to know exactly what counts as mastered: four of the last five right without help.",
+      "You want old skills brought back on a schedule, without planning it.",
+      "You want a level in each part of math, and practice that steps back to the missing piece after two misses.",
+      "You want paper too: workbooks made for your child, each with a worked answer key.",
+      "You teach at home and want the same view of the work a school teacher gets."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Freckle free?",
+      "answer": "Partly. Free access, for classrooms and families, gives unlimited self-paced practice and a limited number of teacher assignments; Premium is for schools and districts, with no published price [1][2]. AMP is free for the first 100 answers and 5 workbooks per learner, then $599 a year or $59 a month."
+    },
+    {
+      "question": "Why pay for AMP when Freckle is free?",
+      "answer": "The price buys the planning. AMP finds the level in each of 14 strands, chooses every problem, schedules review and prints workbooks with worked answer keys. If free practice is all a learner needs, Freckle's free access is a real option [2]."
+    },
+    {
+      "question": "Is Freckle proven to work?",
+      "answer": "Renaissance reports higher growth for students who used Freckle at recommended levels than for non-users, a comparison that favors the students who use it most [1]. Freckle Math has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [7][8]."
+    },
+    {
+      "question": "My child uses Freckle at school. Can we use AMP at home?",
+      "answer": "Yes. AMP is a separate program a family buys directly. It places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Freckle (Renaissance)",
+      "url": "https://www.renaissance.com/products/freckle/"
+    },
+    {
+      "title": "Freckle home page (Renaissance)",
+      "url": "https://www.freckle.com/"
+    },
+    {
+      "title": "Freckle Math (Renaissance)",
+      "url": "https://www.freckle.com/math"
+    },
+    {
+      "title": "Funding Freckle (Renaissance)",
+      "url": "https://www.renaissance.com/products/freckle/funding/"
+    },
+    {
+      "title": "Freckle by Renaissance (Apple App Store)",
+      "url": "https://apps.apple.com/app/id708421745"
+    },
+    {
+      "title": "Holt (2024), The 5 percent problem (Education Next)",
+      "url": "https://www.educationnext.org/5-percent-problem-online-mathematics-programs-may-benefit-most-kids-who-need-it-least/"
+    },
+    {
+      "title": "Evidence for ESSA, math programs (Johns Hopkins University)",
+      "url": "https://www.evidenceforessa.org/programs/math"
+    },
+    {
+      "title": "What Works Clearinghouse, intervention reports (Institute of Education Sciences)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    }
+  ]
+}

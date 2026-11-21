@@ -1605,6 +1605,33 @@ const research = createRoute({
     "ResearchScreen",
   ),
 });
+/** The pilot study's interest list: public, for families and schools. */
+const researchPilot = createRoute({
+  getParentRoute: () => root,
+  path: "/research/pilot",
+  staticData: { space: "public" },
+  beforeLoad: notInTheApp,
+  component: lazyRouteComponent(
+    () => import("../features/research"),
+    "PilotScreen",
+  ),
+});
+/** The comparisons, one chunk between them: the hub, and AMP beside one
+ * other program. A page's words are its own file, loaded with it. */
+const versusScreens = () => import("../features/versus");
+const versus = createRoute({
+  getParentRoute: () => root,
+  // One route for both, so the app's entry carries one: `/versus` is the
+  // hub, `/versus/<slug>` a comparison.
+  path: "/versus/{-$slug}",
+  staticData: { space: "public" },
+  beforeLoad: notInTheApp,
+  // A comparison's words arrive before the screen paints: one paint,
+  // nothing moves. A slug with no comparison is not found.
+  loader: async ({ params }) =>
+    (await versusScreens()).loadComparison(params.slug),
+  component: lazyRouteComponent(versusScreens, "VersusScreen"),
+});
 /** A family's progress link. Its secret is in the fragment, which `share-entry`
  * has already taken out of the address bar. */
 const familyLink = createRoute({
@@ -1802,6 +1829,8 @@ export const router = createRouter({
     schoolsScope,
     schoolsTrust,
     research,
+    researchPilot,
+    versus,
     schoolsContinue,
     schoolStart,
     schoolStartStudents,

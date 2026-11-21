@@ -11,7 +11,7 @@ import urllib.request
 from providers import clean_environment, now, write_json
 from state import display_script, shared_lock, read_json
 
-NAMES = {'XescS24CsOySAkKrLAO3': 'Madeline', 'J3Ei0Lj6fAobhIqY5ySH': 'Paul', 'SYXbTJsLE7zmSjr1DchT': 'Champ',
+NAMES = {'XescS24CsOySAkKrLAO3': 'Madeline', 'J3Ei0Lj6fAobhIqY5ySH': 'Paul', 'SYXbTJsLE7zmSjr1DchT': 'Champ', 'tapn1QwocNXk3viVSowa': 'Sparkles',
          'house-rowan': 'Rowan', 'house-wren': 'Wren', 'house-pip': 'Pip',
          'house-ellis': 'Ellis', 'house-hazel': 'Hazel', 'house-remy': 'Remy'}  # house voices, film/voices.ts
 ALLOWED = {'id', 'title', 'problemType', 'skill', 'skillTitle', 'grade', 'strand', 'standards', 'script', 'timing', 'figure'}
