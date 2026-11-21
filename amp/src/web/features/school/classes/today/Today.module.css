@@ -553,7 +553,7 @@
 }
 @media (max-width: 559px) {
   .codeSlot[data-live-slot] .codeSlotHold,
-  .codeSlot[data-live-slot] .codeSlotShown > :not(.liveCode) {
+  .codeSlot[data-live-slot="open"] .codeSlotShown > :not(.liveCode) {
     display: none;
   }
   .codeSlot[data-live-slot] .liveCode {
@@ -628,7 +628,8 @@
 /* While the code is still being read, the same one short row, quiet. */
 @media (max-width: 559px) {
   .codeSlot[data-live-slot] .slotPlaceholder {
-    display: block;
+    display: flex;
+    align-items: center;
     height: var(--target-size);
     min-height: 0;
   }
@@ -639,6 +640,16 @@
     display: block;
     width: 60%;
     height: 20px;
-    margin-top: 12px;
+  }
+}
+
+/* Both the quiet read and the code: exactly one target high, so the code
+   arriving moves nothing. */
+@media (max-width: 559px) {
+  .codeSlot[data-live-slot] .liveCode,
+  .codeSlot[data-live-slot] .slotPlaceholder {
+    box-sizing: border-box;
+    height: var(--target-size);
+    min-height: 0;
   }
 }

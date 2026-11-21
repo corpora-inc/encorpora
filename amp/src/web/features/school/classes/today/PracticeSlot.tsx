@@ -198,7 +198,7 @@ export function PracticeSlot({
       className={styles.codeSlot}
       data-code-slot={state}
       data-live-slot={
-        live && (state === "open" || state === "checking") ? "" : undefined
+        live && (state === "open" || state === "checking") ? state : undefined
       }
     >
       <div className={styles.codeSlotHold} aria-hidden="true" inert>
