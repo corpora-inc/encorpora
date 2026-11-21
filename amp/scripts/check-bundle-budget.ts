@@ -29,8 +29,14 @@ const budget = {
    * bar (it paints with the bar, so nothing moves) and in-frame waits as
    * overlays add 0.2 KB: 291.2 KB. The one validation pattern every form
    * uses (ui/Form, ui/field-validation: messages in the field's own line,
-   * never the browser’s bubble) adds 0.2 KB: 291.4 KB. */
-  entryJs: 292 * KB,
+   * never the browser’s bubble) adds 0.2 KB: 291.4 KB.
+   * 2026-11-21: main 291.7 KB; live sessions add 1.3 KB that must run
+   * first, after everything that could wait was moved out (Colorful, the
+   * raised hand, the cockpit, the reports and every live loader load with
+   * their screens): the class and family session routes, the slot for the
+   * bar's session action (it paints with the bar, so nothing moves), and
+   * the slots for a student's look and hand: 293.0 KB. */
+  entryJs: 293.5 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,
