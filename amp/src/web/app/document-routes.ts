@@ -157,6 +157,7 @@ export const documentRoutePatterns: readonly string[] = [
   "^/schools/scope-and-sequence/?$",
   "^/schools/trust/?$",
   "^/research/?$",
+  "^/research/pilot/?$",
   "^/versus/?$",
   "^/versus/[^/]+/?$",
   "^/sign-in/?$",

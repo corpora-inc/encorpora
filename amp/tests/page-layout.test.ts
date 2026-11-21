@@ -356,6 +356,8 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the signed-out schools site, in its own PublicFrame",
   "features/research/index.ts#ResearchScreen":
     "the public research page, in the homepage's frame (pitch/Pitch.module.css)",
+  "features/research/index.ts#PilotScreen":
+    "the pilot study's interest list, in the research pages' frame (ResearchFrame)",
   "features/versus/index.ts#VersusScreen":
     "the public comparisons, in the homepage's frame (pitch/Pitch.module.css)",
   "features/school/standing/index.ts#ClassStandingScreen":

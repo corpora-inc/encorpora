@@ -371,6 +371,7 @@ const urls = [
   "/schools/scope-and-sequence",
   "/schools/trust",
   "/research",
+  "/research/pilot",
   // The comparisons: the hub, then one page each, in the catalog's order.
   "/versus",
   ...readVersus().catalog.map((entry) => versusPath(entry.slug)),

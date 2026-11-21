@@ -1519,6 +1519,17 @@ const research = createRoute({
     "ResearchScreen",
   ),
 });
+/** The pilot study's interest list: public, for families and schools. */
+const researchPilot = createRoute({
+  getParentRoute: () => root,
+  path: "/research/pilot",
+  staticData: { space: "public" },
+  beforeLoad: notInTheApp,
+  component: lazyRouteComponent(
+    () => import("../features/research"),
+    "PilotScreen",
+  ),
+});
 /** The comparisons, one chunk between them: the hub, and AMP beside one
  * other program. A page's words are its own file, loaded with it. */
 const versusScreens = () => import("../features/versus");
@@ -1716,6 +1727,7 @@ export const router = createRouter({
     schoolsScope,
     schoolsTrust,
     research,
+    researchPilot,
     versus,
     schoolsContinue,
     schoolStart,

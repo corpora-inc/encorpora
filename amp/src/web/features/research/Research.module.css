@@ -90,7 +90,9 @@
     0 2px 4px var(--color-shadow),
     0 14px 32px -10px var(--color-shadow);
   overflow: hidden;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
 }
 .cover img {
   display: block;
@@ -259,6 +261,10 @@
 .when {
   color: var(--color-on-surface);
   font-size: var(--text-label);
+}
+/* The pilot list, under the phases: the one way to take part. */
+.join {
+  justify-self: start;
 }
 .citation {
   padding: var(--space-3) var(--space-4);

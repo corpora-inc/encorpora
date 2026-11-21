@@ -189,6 +189,42 @@ export function researchComponent(id: ResearchComponentId) {
   if (!found) throw new Error(`No research component: ${id}`);
   return found;
 }
+/** `/research/pilot`: the pilot study's interest list. Every term of the
+ * exchange comes from RR-3 (the pilot protocol); change it there first. */
+export const pilotPage = {
+  title: "Join the AMP pilot study",
+  lede: "The pilot measures how much children’s math scores grow with AMP, on a national test. Add your name and we’ll write when enrollment opens.",
+  status:
+    "Enrollment opens once the study’s ethics review is complete. Joining the list commits you to nothing.",
+  exchange: {
+    heading: "What taking part means",
+    receive: {
+      label: "You receive",
+      items: [
+        "AMP, free for every enrolled learner during the study",
+        "A normed math test arranged by the study, if your child doesn’t already take one",
+        "A short report on your child’s growth at the end",
+        "The published results, whatever they show",
+      ],
+    },
+    provide: {
+      label: "You provide",
+      items: [
+        "Permission to use your child’s AMP records for research, under a study ID",
+        "A math score from the start and the end: MAP Growth, i-Ready or Star Math",
+        "Two short surveys, about 10 minutes each",
+      ],
+    },
+    now: "You don’t have to wait. Anyone can start AMP free today, and current users can join the study.",
+  },
+  form: {
+    heading: "Join the list",
+    privacy:
+      "We use this list only to write to you about the study, and with AMP news if you ask for it. To be removed, write to skylar@corpora.inc.",
+    thanks: "You’re on the list.",
+    next: "When enrollment opens, we’ll send the dates and the permission form to",
+  },
+} as const;
 
 /** "Saveland, S. (2026). Title. Corpora Inc. https://doi.org/…" */
 export function reportCitation(doi: string | null = report.doi) {

@@ -27,6 +27,8 @@ const schoolDescriptions: Readonly<Record<string, string>> = {
     "How AMP handles student data: what’s collected, what isn’t, who signs in, retention, export and deletion, and the student data agreement as schools accept it.",
   "/research":
     "The research behind AMP: each part of the program, the published evidence for it, and the studies that will measure AMP on a national test. Read AMP’s ESSA Tier 4 report online or as a PDF.",
+  "/research/pilot":
+    "Join the list for AMP’s pilot study: free AMP during the study, a normed math test if your child needs one, and a report on their growth. Enrollment opens once the study’s ethics review is complete.",
 };
 
 export type RouteHead = {
