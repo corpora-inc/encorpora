@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, type RefObject } from "react";
 import { setFeedbackVoice } from "../feedback-preferences";
+import { rememberLook } from "../look-ahead";
 import { useLookOnScreen, usePrefersReducedMotion } from "../look";
 import { usePoints, usePracticeScope } from "../points";
 import { measured, type Credit } from "./credit";
@@ -94,7 +95,10 @@ export function Colorful({ credit, outcome, mastered, problem }: Props) {
     else delete root.dataset.figureColors;
     const run =
       useCelebrationStore.getState().runs[learnerKey(scope)]?.streak ?? 0;
-    paintHue(hueOf(scope.learnerId, problemId), boostFor(run));
+    const hue = hueOf(scope.learnerId, problemId);
+    paintHue(hue, boostFor(run));
+    // The next cold load arrives in this world (look-ahead.ts).
+    rememberLook(scope.learnerId, hue);
     // A load's first problem arrives in its hue; later ones turn the world.
     arriveAfterPaint();
     return () => {

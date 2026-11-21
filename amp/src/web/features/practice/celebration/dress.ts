@@ -1,3 +1,4 @@
+import { claimAhead, rememberLook } from "../look-ahead";
 import { arriving, clearHue, paintHue, useHueStore } from "./hue";
 // Colorful's dress goes wherever the look can be held: practice, and a
 // student's other screens (the app frame holds it there). Only a learner in
@@ -12,12 +13,16 @@ let holders = 0;
 /** Puts the dress on and returns what takes it off. */
 export function holdBold(learner: string) {
   const root = document.documentElement;
-  // The dress going on is not a turn: it arrives in its hue (hue.ts).
-  if (holders === 0 && root.getAttribute("data-look") !== "bold") arriving();
+  // The dress going on is not a turn: it arrives in its hue (hue.ts). What
+  // this device put on ahead of the server's answer (look-ahead.ts) is the
+  // same arrival, still under way.
+  if (holders === 0) arriving();
+  claimAhead();
   holders++;
   // The learner's latest world, until practice moves it on.
-  if (!root.style.getPropertyValue("--look-hue"))
-    paintHue(useHueStore.getState().latest(learner));
+  const latest = useHueStore.getState().latest(learner);
+  if (!root.style.getPropertyValue("--look-hue")) paintHue(latest);
+  rememberLook(learner, latest);
   root.setAttribute("data-look", "bold");
   return () => {
     holders = Math.max(0, holders - 1);

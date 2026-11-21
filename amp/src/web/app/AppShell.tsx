@@ -6,6 +6,7 @@ import {
   lazy,
   Suspense,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type CSSProperties,
@@ -52,6 +53,7 @@ import bar from "../ui/AppBar.module.css";
 import styles from "./AppShell.module.css";
 import { secondParentChild } from "../features/second-parent/api";
 import { LookHost } from "../features/practice/LookHost";
+import { dressAhead } from "../features/practice/look-ahead";
 
 const loadDrawer = () => import("../features/navigation/ShellDrawer");
 const ShellDrawer = lazy(loadDrawer);
@@ -89,6 +91,13 @@ export function AppShell({ children }: { children: ReactNode }) {
   // wear the look they chose; an adult's places never do, and signing the
   // student out takes it away (features/practice/look.ts).
   const student = resolved?.space === "student" ? resolved.learner : null;
+  // What this device remembers of their look is on before their first
+  // paint; the server's answer (LookHost, below) keeps it or takes it off.
+  const studentId = student?.id;
+  useLayoutEffect(() => {
+    if (!studentId) return;
+    return dressAhead(studentId);
+  }, [studentId]);
   // The same place asked again for the same account keeps its frame while
   // it answers (features/spaces/hold.ts).
   const held = useRef<Held>(null);

@@ -35,8 +35,11 @@ const budget = {
    * raised hand, the cockpit, the reports and every live loader load with
    * their screens): the class and family session routes, the slot for the
    * bar's session action (it paints with the bar, so nothing moves), and
-   * the slots for a student's look and hand: 293.0 KB. */
-  entryJs: 293.5 * KB,
+   * the slots for a student's look and hand: 293.0 KB. The look this
+   * device remembers for a learner, put on before their first paint so a
+   * Colorful learner never sees Calm first (features/practice/
+   * look-ahead.ts), adds 0.5 KB: 293.5 KB. */
+  entryJs: 294 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,

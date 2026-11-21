@@ -1,7 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useSyncExternalStore } from "react";
 import { shownLook, type Look, type ShownLook } from "../../../learning/look";
 import { mediaMatches, onMediaChange } from "../../lib/media-query";
+import {
+  canShowColorful,
+  clearAhead,
+  dressAhead,
+  rememberLook,
+} from "./look-ahead";
 import {
   practiceSettingsOptions,
   type PracticeScope,
@@ -18,28 +24,6 @@ export const usePrefersReducedMotion = () =>
 /** Colorful's dress: its hue code and stylesheet, fetched only when a
  * learner's look is Colorful (a Calm learner never downloads them). */
 const loadDress = () => import("./celebration/dress");
-/** Whether this browser can draw Colorful: oklch() colors and registered
- * properties. Without them, Calm is shown (and recorded). */
-function colorfulSupported() {
-  try {
-    return (
-      typeof CSS !== "undefined" &&
-      "registerProperty" in CSS &&
-      // tokens.css's own feature query: oklch() with calc() in its hue.
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--colorful-unsupported")
-        .trim() === ""
-    );
-  } catch (error) {
-    console.warn("Colorful's support check failed; Calm shows", error);
-    return false;
-  }
-}
-/** Checked once: a browser without oklch() and registered properties
- * shows Calm, and the answer records Calm. */
-let supported: boolean | null = null;
-const canShowColorful = () => (supported ??= colorfulSupported());
-
 const LOOK_ATTRIBUTE = { attributes: true, attributeFilter: ["data-look"] };
 /** The look on screen now (what `<html>` paints), live: the one thing a
  * celebration asks before it plays, so nothing plays in Calm. */
@@ -77,7 +61,18 @@ export function useLook(scope: PracticeScope, enabled = true) {
   const look: Look | null =
     chosen === "bold" && !canShowColorful() ? "calm" : chosen;
   const reduced = usePrefersReducedMotion();
+  // What this device remembers of the learner's look goes on in the commit
+  // that first paints their screen, before the server answers (look-ahead.ts).
+  useLayoutEffect(() => {
+    if (!enabled || !learner) return;
+    return dressAhead(learner);
+  }, [enabled, learner]);
   useEffect(() => {
+    if (look === "calm" && learner) {
+      // The server's answer: Calm. Nothing remembered may say otherwise.
+      rememberLook(learner, null);
+      clearAhead();
+    }
     if (look !== "bold") return;
     let release: (() => void) | undefined;
     let gone = false;
