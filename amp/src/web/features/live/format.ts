@@ -1,4 +1,5 @@
 import type { LiveRow } from "../../../schools/live/contracts";
+import { shortGrade } from "../../ui/level-range/scale";
 
 /* Numbers and times as the cockpit shows them. Every figure is short and
    of a bounded width, so a cell sized for its widest value never moves. */
@@ -12,9 +13,11 @@ export function percentText(correct: number, problems: number) {
 export const percentValue = (row: Pick<LiveRow, "correct" | "problems">) =>
   row.problems > 0 ? row.correct / row.problems : -1;
 
-/** A level on the grade scale: "4.2". */
+/** A level in the grade words the class map and the gradebook use: "K",
+ * "Gr 4", "Alg 1". The stored decimal (3.6, even a negative) is only for
+ * sorting; nobody reads it. */
 export const levelText = (level: number | null) =>
-  level === null ? "—" : level.toFixed(1);
+  level === null ? "—" : shortGrade(level);
 
 /** How long ago, in at most six characters: "now", "45s", "3 min", "2 h". */
 export function agoText(at: string | null, now: number) {

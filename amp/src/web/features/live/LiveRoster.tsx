@@ -229,7 +229,7 @@ function detailLine(
   else if (row.problems === 0)
     parts.push(<span key="skill">No answers yet</span>);
   if (view.showGradeNumbers && row.level !== null)
-    parts.push(<span key="level">Level {levelText(row.level)}</span>);
+    parts.push(<span key="level">{levelText(row.level)}</span>);
   if (view.layout === "phone")
     parts.push(<span key="ago">{agoText(lastActive(row), view.now)}</span>);
   // Keyed by what leads it: when the status, skill or level changes, the
