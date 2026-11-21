@@ -580,6 +580,7 @@ export class FamilyRepository {
       "amp_active_days",
       "amp_adult_activity",
       "amp_adult_checkins",
+      "amp_class_session_students",
       "amp_learner_activity",
       "amp_learner_weeks",
       "amp_level_days",
@@ -875,6 +876,18 @@ export class FamilyRepository {
         datasets.push([
           "adult-checkin",
           "SELECT jsonb_build_object('learnerId',c.learner_id,'at',c.at,'role',c.role,'kind',c.kind) AS value FROM amp_adult_checkins c JOIN amp_learners l ON l.id=c.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY c.learner_id,c.at",
+        ]);
+      // A child's rows in their class's stopped live sessions (migration 0149).
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_class_session_students') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "class-session",
+          "SELECT jsonb_build_object('learnerId',x.learner_id,'sessionId',x.session_id,'startedAt',s.started_at,'endedAt',s.ended_at,'problems',x.problems,'correct',x.correct,'independent',x.independent,'assisted',x.assisted,'hints',x.hints,'lessons',x.lessons,'examples',x.examples,'videos',x.videos,'skills',x.skills,'skillId',x.skill_id,'level',x.level,'firstSeenAt',x.first_seen_at,'firstAnswerAt',x.first_answer_at,'lastAnswerAt',x.last_answer_at,'status',x.status) AS value FROM amp_class_session_students x JOIN amp_class_sessions s ON s.id=x.session_id JOIN amp_learners l ON l.id=x.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY x.learner_id,s.started_at,x.session_id",
         ]);
       if (
         (await client.query("SELECT to_regclass('amp_workbooks') AS relation"))

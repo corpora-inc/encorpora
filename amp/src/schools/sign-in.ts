@@ -31,6 +31,7 @@ import { recordEvent } from "./events.js";
 import { activeToday, studentInClassSql } from "./principal.js";
 import { generateJoinCode, type SchoolRepository } from "./repository.js";
 import { studentDeviceMode } from "./settings.js";
+import { resolvePersonSignals } from "./live/signals.js";
 
 /** Five wrong tries pause one student, briefly: a child who forgot asks the
  * teacher, and a guesser gets almost nowhere. */
@@ -189,22 +190,32 @@ export class SchoolSignIn {
     };
   }
 
-  async picture(input: {
-    code: string;
-    personId: string;
-    pictures: SchoolPicture[];
-    set?: boolean;
-  }): Promise<StudentGrant> {
+  /** Shared code and roster check for pictures and forgotten-picture requests.
+   * The picture attempt keeps its timing work and failed-attempt accounting. */
+  async pictureStudent(
+    input: { code: string; personId: string },
+    pictures?: SchoolPicture[],
+  ): Promise<LiveClass> {
     const found = await this.prepareClass(input.code);
     const student = await this.pool.query(
       `SELECT p.id FROM ${STUDENTS_OF_CLASS} WHERE c.id=$1 AND p.id=$2 AND ${IN_CLASS}`,
       [found.id, input.personId],
     );
     if (!student.rowCount) {
-      await burn(input.pictures);
+      if (pictures) await burn(pictures);
       await this.classFailure(found);
       throw new SchoolError(422, "wrong_pictures");
     }
+    return found;
+  }
+
+  async picture(input: {
+    code: string;
+    personId: string;
+    pictures: SchoolPicture[];
+    set?: boolean;
+  }): Promise<StudentGrant> {
+    const found = await this.pictureStudent(input, input.pictures);
     let credential = await this.activePictures(input.personId);
     if (!credential) {
       if (!input.set) {
@@ -538,6 +549,13 @@ export class SchoolSignIn {
         targetId: personId,
         detail: { before: { picturesSet: !!reset.rowCount } },
       });
+      await resolvePersonSignals(
+        client,
+        personId,
+        "forgot_picture",
+        "reset",
+        actorPersonId,
+      );
       return { reset: !!reset.rowCount };
     });
   }

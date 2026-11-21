@@ -24,11 +24,13 @@ test("no one has chosen: calm", () => {
   assert.deepEqual(resolveLook({ own: null, classes: [] }), {
     look: "calm",
     locked: false,
+    lockedBy: null,
   });
   // A class that only carries the default is no choice.
   assert.deepEqual(resolveLook({ own: null, classes: [cls("calm", false)] }), {
     look: "calm",
     locked: false,
+    lockedBy: null,
   });
 });
 
@@ -48,6 +50,7 @@ test("a learner with no choice follows the class", () => {
   assert.deepEqual(resolveLook({ own: null, classes: [cls("bold")] }), {
     look: "bold",
     locked: false,
+    lockedBy: null,
   });
   // One class chose, one is on the default: the choice stands.
   assert.equal(
@@ -66,11 +69,11 @@ test("two unlocked classes that disagree: calm", () => {
 test("a locked class wins over the learner's own choice", () => {
   assert.deepEqual(
     resolveLook({ own: "calm", classes: [cls("bold", true, true)] }),
-    { look: "bold", locked: true },
+    { look: "bold", locked: true, lockedBy: "class" },
   );
   assert.deepEqual(
     resolveLook({ own: "bold", classes: [cls("calm", true, true)] }),
-    { look: "calm", locked: true },
+    { look: "calm", locked: true, lockedBy: "class" },
   );
 });
 
@@ -80,7 +83,7 @@ test("a lock beats an unlocked class beside it", () => {
       own: null,
       classes: [cls("calm"), cls("bold", true, true)],
     }),
-    { look: "bold", locked: true },
+    { look: "bold", locked: true, lockedBy: "class" },
   );
 });
 
@@ -97,7 +100,7 @@ test("two locked classes agree or fall back to calm", () => {
       own: "bold",
       classes: [cls("bold", true, true), cls("calm", true, true)],
     }),
-    { look: "calm", locked: true },
+    { look: "calm", locked: true, lockedBy: "class" },
   );
 });
 
@@ -159,4 +162,58 @@ test("through resolveSettings: a lock above holds, a class value is read", () =>
     ["bold", null, "c"],
   );
   assert.equal(resolveSettings([]).look.value, "calm");
+});
+
+test("a grown-up's lock holds the child's own choice", () => {
+  assert.deepEqual(
+    resolveLook({ own: "bold", ownLocked: true, classes: [cls("calm")] }),
+    { look: "bold", locked: true, lockedBy: "adult" },
+  );
+  // Without a look to hold there is nothing to lock.
+  assert.deepEqual(resolveLook({ own: null, ownLocked: true, classes: [] }), {
+    look: "calm",
+    locked: false,
+    lockedBy: null,
+  });
+  // A solo, unlocked learner keeps full control.
+  assert.equal(resolveLook({ own: "bold", classes: [] }).locked, false);
+});
+
+test("a class's lock beats a grown-up's, and disagreeing locked classes are calm", () => {
+  assert.deepEqual(
+    resolveLook({
+      own: "bold",
+      ownLocked: true,
+      classes: [cls("calm", true, true)],
+    }),
+    { look: "calm", locked: true, lockedBy: "class" },
+  );
+  assert.equal(
+    resolveLook({
+      own: "bold",
+      ownLocked: true,
+      classes: [cls("bold", true, true), cls("calm", true, true)],
+    }).look,
+    "calm",
+  );
+});
+
+test("the look lock is a grown-up's change with one boolean", () => {
+  assert.equal(
+    practiceChangeSchema.parse({
+      kind: "lookLock",
+      locked: true,
+      requestId: id,
+      revision: 0,
+    }).kind,
+    "lookLock",
+  );
+  assert.throws(() =>
+    practiceChangeSchema.parse({
+      kind: "lookLock",
+      requestId: id,
+      revision: 0,
+    }),
+  );
+  assert.equal(defaultPracticeSettings().lookAdultLock, false);
 });

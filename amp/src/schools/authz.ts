@@ -116,6 +116,8 @@ const VIEWER = new Set<SchoolAction>([
   "workbooks.read",
 ]);
 const AIDE_CLASS = new Set<SchoolAction>([
+  "session.read",
+  "signal.resolve",
   "classes.read",
   "students.read",
   "signin.read",
@@ -138,6 +140,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "grades.write",
   "settings.write",
   "share.manage",
+  "session.manage",
 ]);
 const SELF = new Set<SchoolAction>([
   "orgs.list",
@@ -167,6 +170,9 @@ const FAMILY = new Set<SchoolAction>([
   "workbooks.write",
   "staff.read",
   "staff.manage",
+  "session.read",
+  "session.manage",
+  "signal.resolve",
 ]);
 
 /** What a demo place never does (docs/schools.md#demo-places): add or move a

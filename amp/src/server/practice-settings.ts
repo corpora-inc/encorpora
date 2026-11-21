@@ -21,11 +21,17 @@ export async function practiceState(
   tx: LearnerTransaction,
   settings: PracticeSettings,
 ): Promise<PracticeState> {
-  const { look, locked } = resolveLook({
+  const { look, locked, lockedBy } = resolveLook({
     own: settings.look,
+    ownLocked: settings.lookAdultLock,
     classes: await tx.classLooks(),
   });
-  return { ...settings, effectiveLook: look, lookLocked: locked };
+  return {
+    ...settings,
+    effectiveLook: look,
+    lookLocked: locked,
+    lookLockedBy: lockedBy,
+  };
 }
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
@@ -126,9 +132,23 @@ export async function changePractice(
   } else if (change.kind === "look") {
     // Display only, like the grade level. A learner, their grown-up or a
     // teacher's class may choose it, until a class locks it.
-    if ((await practiceState(tx, previous)).lookLocked)
+    // A class's lock holds for everyone. A grown-up's holds against the
+    // child's own sessions (madeIn "student"); the grown-up's sign-in may
+    // still change it.
+    const { lookLockedBy } = await practiceState(tx, previous);
+    if (lookLockedBy === "class")
       throw new ApiError(409, "Your class chose how practice looks.");
+    if (lookLockedBy === "adult" && madeIn === "student")
+      throw new ApiError(409, "A parent chose how practice looks.");
     next.look = change.look;
+  } else if (change.kind === "lookLock") {
+    // Only a grown-up (the route refuses a student's session). Locking
+    // holds the look as it is now, so there is something to hold.
+    const now = await practiceState(tx, previous);
+    if (now.lookLockedBy === "class")
+      throw new ApiError(409, "Your class chose how practice looks.");
+    if (change.locked) next.look = next.look ?? now.effectiveLook;
+    next.lookAdultLock = change.locked;
   } else {
     if (change.skillId && !templates.some((t) => t.skillId === change.skillId))
       throw new ApiError(400, "This skill has no practice problems.");

@@ -341,4 +341,26 @@ test("S1: while the invitation loads there is no action to press", async () => {
   await mount(InviteScreen, "/school/invite");
   expect(screen.queryByRole("link", { name: "Continue" })).toBeNull();
   expect(document.querySelector("[aria-busy='true']")).not.toBeNull();
+  // No "for Schools" before the invitation says what it is for: the brand
+  // would swap to plain AMP for a family once it arrived.
+  expect(document.body.textContent).toMatch(/AMP/);
+  expect(document.body.textContent).not.toMatch(/for Schools/);
+});
+
+test('S1: a sign-in sent here by "Use another account" starts with the invited address', async () => {
+  const { useAuthDraft } = await import("../../auth/draft");
+  const { useInvitedEmail } = await import("../../school/invited-email");
+  const Probe = () => {
+    useInvitedEmail(true);
+    return null;
+  };
+  useAuthDraft.getState().setEmail("");
+  rememberInvite(TOKEN, { switching: true });
+  await mount(Probe, "/sign-in");
+  expect(useAuthDraft.getState().email).toBe("parent@example.test");
+  // What the person already typed stays.
+  cleanup();
+  useAuthDraft.getState().setEmail("typed@example.test");
+  await mount(Probe, "/sign-in");
+  expect(useAuthDraft.getState().email).toBe("typed@example.test");
 });
