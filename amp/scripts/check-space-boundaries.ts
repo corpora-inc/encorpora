@@ -46,6 +46,12 @@ export const SHARED = [
   /^features\/pathways\/Graph\.tsx$/,
   /^features\/workbooks\/WorkbookList\.tsx$/,
   /^features\/continue\/AllowancePause\.tsx$/,
+  // A learner's row, week, areas, focus and the skill key: the family's
+  // dashboard and a class's live roster compose the same parts.
+  /^features\/learners\//,
+  // The live session's parts (round 2026-11-20, lane L): a class's Today
+  // and a family's Today compose them, words and actions arriving as props.
+  /^features\/live\//,
 ];
 
 /** Composition layers a shared module never reaches, by path from src/web. */
@@ -60,6 +66,12 @@ const WORDS = "features/spaces/words.ts";
 
 /** Named exceptions: importer → the composition module it may import, why. */
 export const ALLOWED: Record<string, [string, string][]> = {
+  "features/practice/points.ts": [
+    [
+      "features/spaces/useAddressed.ts",
+      "whose practice is on screen, from its address, for that learner's points (Colorful's chip and the +1): no place, no space, no words",
+    ],
+  ],
   "features/pay/address.ts": [
     [
       "features/spaces/learner-urls.ts",

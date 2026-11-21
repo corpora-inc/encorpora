@@ -207,8 +207,12 @@ try {
   await page.getByRole("button", { name: "Add 2 students" }).click();
   await page.waitForURL(/\/roster$/);
   await page.getByText("2 students added", { exact: true }).waitFor();
-  // Students in: the class is open, no Start practice anywhere.
-  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  // Students in: the class is open, no Start practice anywhere. The
+  // roster's slot leads to the sign-in board while it runs (the bar's Start
+  // class starts a live session, #2465).
+  await page
+    .getByRole("link", { name: "Sign-in board", exact: true })
+    .waitFor();
   assert.equal(
     await page.getByRole("button", { name: "Start practice" }).count(),
     0,
@@ -257,7 +261,9 @@ try {
     .click();
   await page.getByRole("button", { name: "Add 1 student" }).click();
   await page.waitForURL(/\/roster$/);
-  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  await page
+    .getByRole("link", { name: "Sign-in board", exact: true })
+    .waitFor();
   assert.deepEqual(
     (await learning.pool.query("SELECT id,ends_at FROM amp_teacher_pilots"))
       .rows,
@@ -468,15 +474,15 @@ try {
   await page
     .getByRole("heading", { name: "1 of 2 students have practice access" })
     .waitFor();
-  await page
-    .locator('a[data-shell-action][aria-label="Start class"]')
-    .waitFor();
-  assert.equal(
-    await page
-      .locator('a[data-shell-action][aria-label="Start class"]')
-      .getAttribute("href"),
-    `/school/${created.org_id}/classes/${created.class_id}/start`,
-  );
+  // Today's own session control offers Start class only where students can
+  // practice (ClassCockpit `available`); the bar's slot is held on Today.
+  const startClass = page.getByRole("button", {
+    name: "Start class",
+    exact: true,
+  });
+  await startClass.waitFor();
+  assert.equal(await startClass.count(), 1);
+  assert.equal(await startClass.isEnabled(), true);
   await capture("partial-coverage");
   await page.unroute(pilotUrl);
   await page.unroute(yearUrl);

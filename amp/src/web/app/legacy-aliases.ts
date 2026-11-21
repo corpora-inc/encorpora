@@ -383,7 +383,11 @@ const familyLearners = (sheet?: string) => async (old: OldAddress) => {
         to: familyPath(family, "settings"),
         ...(sheet ? { state: sheetState(sheet) } : {}),
       }
-    : "/family";
+    : // No family of their own yet: the starter makes one, in this one hop
+      // (as `/family` itself would send them, app/family-routes.tsx).
+      places.families.some((entry) => entry.role !== "co-teacher")
+      ? "/family"
+      : "/start/parent";
 };
 
 /** An older family leaf that is part of Settings now, its sheet (`sheet`)
@@ -552,9 +556,8 @@ async function inventoryTarget(old: OldAddress): Promise<string> {
       searchStr: rest.size ? `?${rest}` : "",
     })) ?? clean;
   const session = await sessionIfAny();
-  const { useInventoryViewStore } = await import(
-    "../features/inventory/inventory-view"
-  );
+  const { useInventoryViewStore } =
+    await import("../features/inventory/inventory-view");
   useInventoryViewStore
     .getState()
     .set(layerScope(href.split(/[?#]/)[0]!, session?.accountId), view);
@@ -983,10 +986,17 @@ export const LEGACY_ALIASES: readonly LegacyAlias[] = [
   {
     from: "/school/$org/experience",
     about: "the student experience, from before Settings",
-    to: ({ params }) => ({
-      to: `/school/${params.org}/settings`,
-      hash: "student-experience",
-    }),
+    to: async (old) => {
+      const settings = `/school/${old.params.org}/settings`;
+      // A family's or a tutor's org keeps its settings in its class: there
+      // in this one hop (the guard's own answer), never via the org's.
+      const { familyEquivalent } = await import("./school-guards");
+      await familyEquivalent("settings")({
+        location: { ...old, pathname: settings },
+        params: { org: old.params.org },
+      });
+      return { to: settings, hash: "student-experience" };
+    },
   },
 
   // A family's older addresses.

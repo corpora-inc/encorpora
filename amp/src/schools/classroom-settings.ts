@@ -3,6 +3,7 @@ import type { Actor, SchoolTarget } from "./authz.js";
 import { can } from "./authz.js";
 import {
   classExperienceWriteSchema,
+  classLockable,
   experienceKeys,
   leaveOffSchema,
   orgExperienceWriteSchema,
@@ -119,6 +120,11 @@ export async function experienceView(
     },
     canEdit: edit,
     canLock: edit && target.kind === "org",
+    lockable: !edit
+      ? []
+      : target.kind === "org"
+        ? [...experienceKeys]
+        : [...classLockable],
     // A family's or tutor's class has only its own board: there is no
     // school or district around it.
     standingsOptions: standingsScopes.filter((scope) =>
@@ -131,6 +137,7 @@ export async function experienceView(
       standings: setting("standings"),
       measure: setting("measure"),
       deviceMode: setting("deviceMode"),
+      look: setting("look"),
     },
     ...(students ? { students } : {}),
     ...(own ? { teacherLine: { shown: own.shown } } : {}),
@@ -216,9 +223,9 @@ export async function writeExperience(
   const input =
     target.kind === "org"
       ? orgExperienceWriteSchema.parse(raw)
-      : { ...classExperienceWriteSchema.parse(raw), locks: undefined };
+      : classExperienceWriteSchema.parse(raw);
   const values = input.values ?? {};
-  const locks = input.locks ?? {};
+  const locks: Partial<Record<ExperienceKey, boolean>> = input.locks ?? {};
   const touched = experienceKeys.filter(
     (key) => values[key] !== undefined || locks[key] !== undefined,
   );

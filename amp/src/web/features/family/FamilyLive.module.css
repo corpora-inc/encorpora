@@ -1,0 +1,49 @@
+/* A family's live section (FamilyLive.tsx): above the children, one
+   column, a short list. At rest it is one 56 px bar. */
+.slot {
+  min-width: 0;
+  margin-bottom: var(--space-5);
+}
+/* The cockpit's code is on its way: its bar's height, held. */
+.held {
+  height: 56px;
+}
+
+/* Past sessions, at the foot of Today: a heading, then a line each, parted
+   by a hairline. */
+.title {
+  margin: 0 0 var(--space-2);
+}
+.sessions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sessions li + li {
+  border-top: 1px solid var(--color-border);
+}
+.sessionLink {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  min-height: 48px;
+  padding-block: var(--space-2);
+  color: inherit;
+  text-decoration: none;
+}
+.sessionLink:hover .sessionWhen {
+  color: var(--color-primary);
+}
+.sessionWhen {
+  font-weight: 600;
+}
+.sessionFacts {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+.older {
+  margin-inline-start: calc(-1 * var(--space-3));
+}

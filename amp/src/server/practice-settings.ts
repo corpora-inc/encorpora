@@ -2,7 +2,13 @@ import { isDeepStrictEqual } from "node:util";
 import { skills } from "../curriculum/catalog";
 import { historicalTemplates } from "../math/historical-templates";
 import { templates } from "../math/engine";
-import type { PracticeChange } from "../learning/practice-settings";
+import type {
+  PracticeChange,
+  PracticeSettings,
+  PracticeState,
+} from "../learning/practice-settings";
+import { resolveLook } from "../learning/look";
+import { pointsOf } from "../learning/points";
 import { strandEstimate, targetGrade } from "../learning/frontier";
 import {
   ApiError,
@@ -10,6 +16,33 @@ import {
   type PracticeChangeSource,
 } from "./repository";
 import { templateGrade } from "./mixed-practice";
+
+/** The look that applies now, whether it is locked and by whom. */
+async function lookOf(tx: LearnerTransaction, settings: PracticeSettings) {
+  return resolveLook({
+    own: settings.look,
+    ownLocked: settings.lookAdultLock,
+    classes: await tx.classLooks(),
+  });
+}
+
+/** The settings with the look that applies now, whether a class locked it,
+ * and the learner's points. */
+export async function practiceState(
+  tx: LearnerTransaction,
+  settings: PracticeSettings,
+): Promise<PracticeState> {
+  // One transaction, one connection: one query after the other.
+  const { look, locked, lockedBy } = await lookOf(tx, settings);
+  const evidence = await tx.skillEvidence();
+  return {
+    ...settings,
+    effectiveLook: look,
+    lookLocked: locked,
+    lookLockedBy: lockedBy,
+    points: pointsOf(evidence),
+  };
+}
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
 
@@ -106,6 +139,26 @@ export async function changePractice(
   } else if (change.kind === "gradeLevel") {
     // Display only: practice, levels and evidence are unchanged.
     next.gradeLevelShown = change.shown;
+  } else if (change.kind === "look") {
+    // Display only, like the grade level. A learner, their grown-up or a
+    // teacher's class may choose it, until a class locks it.
+    // A class's lock holds for everyone. A grown-up's holds against the
+    // child's own sessions (madeIn "student"); the grown-up's sign-in may
+    // still change it.
+    const { lockedBy: lookLockedBy } = await lookOf(tx, previous);
+    if (lookLockedBy === "class")
+      throw new ApiError(409, "Your class chose how practice looks.");
+    if (lookLockedBy === "adult" && madeIn === "student")
+      throw new ApiError(409, "A parent chose how practice looks.");
+    next.look = change.look;
+  } else if (change.kind === "lookLock") {
+    // Only a grown-up (the route refuses a student's session). Locking
+    // holds the look as it is now, so there is something to hold.
+    const now = await lookOf(tx, previous);
+    if (now.lockedBy === "class")
+      throw new ApiError(409, "Your class chose how practice looks.");
+    if (change.locked) next.look = next.look ?? now.look;
+    next.lookAdultLock = change.locked;
   } else {
     if (change.skillId && !templates.some((t) => t.skillId === change.skillId))
       throw new ApiError(400, "This skill has no practice problems.");

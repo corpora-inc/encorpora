@@ -180,8 +180,9 @@ export function InviteScreen() {
   };
   return (
     <Page width="narrow" className={styles.inviteCard} data-dense>
-      {/* A family's second parent isn't joining a school. */}
-      {!session && <Brand for={view?.secondParent ? null : undefined} />}
+      {/* One wordmark before and after the invitation is known: it never
+          says "for Schools", which a family's invitee isn't joining. */}
+      {!session && <Brand for={null} />}
       {!parsed ? (
         <>
           <h1>Open your invitation from its email</h1>
@@ -351,25 +352,22 @@ export function InviteScreen() {
           </h1>
           <p>
             {family
-              ? `${inviter ? `${inviter} invited you` : "You’re invited"} as the second parent. Create an account or sign in with ${view.email} to accept: Google, Microsoft, Apple, a password or a passkey.`
+              ? `${inviter ? `${inviter} invited you` : "You’re invited"} as the second parent. Continue with ${view.email} to accept: Google, Microsoft, Apple, a password or a passkey.`
               : view.setup
-                ? "AMP for Schools is ready for your school, and you’re its admin. Create an account or sign in to set it up."
-                : `You’ve been invited as ${roleWord(view.role)}. Create an account or sign in to accept.`}
+                ? "AMP for Schools is ready for your school, and you’re its admin. Continue to set it up."
+                : `You’ve been invited as ${roleWord(view.role)}. Continue to accept.`}
           </p>
+          {/* One way forward. Whether this address has an account is never
+              told to the holder of a link (sign-up answers the same either
+              way, `SignInScreen`), so the one button opens the sign-in, which
+              signs in or creates, with the address already filled in. */}
           <div className={styles.inviteActions}>
             <Link
-              {...signInLink({ return: "school-invite" }, "/sign-up")}
+              {...signInLink({ return: "school-invite" })}
               className={buttonClass("primary")}
               onClick={carry}
             >
-              Create an account
-            </Link>
-            <Link
-              {...signInLink({ return: "school-invite" })}
-              className={buttonClass("secondary")}
-              onClick={carry}
-            >
-              I already have one
+              Continue
             </Link>
           </div>
         </>

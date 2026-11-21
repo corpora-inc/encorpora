@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import {
@@ -273,7 +274,7 @@ async function fixture(
           practice.set(learnerId, state);
         }
       }
-      return route.fulfill({ json: state });
+      return route.fulfill({ json: practiceStateFixture(state) });
     }
     if (/\/catalog(?:\/map)?$/.test(pathname))
       return route.fulfill({

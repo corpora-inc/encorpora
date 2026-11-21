@@ -548,7 +548,8 @@ async function sweep(
     // The roster.
     await page.goto(origin + classUrl(big.id, "roster"));
     await heading(page, "Roster").waitFor();
-    await page.getByRole("link", { name: "Start class" }).waitFor();
+    // The roster's way to the projected board (Start class is a session).
+    await page.getByRole("link", { name: "Sign-in board" }).waitFor();
     await settled(page);
     await geometry(page, `${label} roster`);
     await shoot(page, engine, "roster", width, theme);

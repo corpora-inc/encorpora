@@ -42,6 +42,13 @@ export const RETENTION = {
    * opened, a lesson PDF printed), from when they happened. Their day and
    * week counts stay with the learner's learning records. */
   helpEventDays: 400,
+  /** The live class outbox (`amp_class_events`): "this student's row
+   * changed", with no content, from when it was written. Kept a day only for
+   * a session that nobody closed until the next retention run. */
+  classEventHours: 24,
+  /** A student's request to the adult in class (a raised hand, "I forgot my
+   * picture"), from when it was raised. */
+  classSignalDays: 30,
   /** Privacy activity log. */
   privacyAuditDays: 90,
   /** A visitor's place in the shared demo school (all synthetic) after they

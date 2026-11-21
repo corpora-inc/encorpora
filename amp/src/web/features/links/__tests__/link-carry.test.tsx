@@ -156,7 +156,11 @@ test.each(["invite", "approval"] as const)(
     await mount(Screen, path);
     expect(carried()).toBeNull();
     expect(localStorage.length).toBe(0);
-    fireEvent.click(screen.getByRole("link", { name: "I already have one" }));
+    fireEvent.click(
+      screen.getByRole("link", {
+        name: kind === "invite" ? "Continue" : "I already have one",
+      }),
+    );
     expect(carried()).toBe(TOKEN);
   },
 );
@@ -165,7 +169,7 @@ test("CP-2 r4 N2: a carried invitation lasts as long as the page's hold", async 
   const now = Date.now();
   hold("/school/invite");
   await mount(InviteScreen, "/school/invite");
-  fireEvent.click(screen.getByRole("link", { name: "Create an account" }));
+  fireEvent.click(screen.getByRole("link", { name: "Continue" }));
   expect(continuationUrl({ return: "school-invite" })).toBe(
     `/school/invite#${TOKEN}`,
   );
@@ -291,4 +295,72 @@ test("CP-2 r4 N3: an approval's “Use another account” returns to the approva
   expect(continuationUrl({ return: "family-approval" })).toBe(
     `/family/approve#${TOKEN}`,
   );
+});
+
+// S1: one way forward on the signed-out invitation, whoever it is for. Whether
+// the address has an account is never told, so there is one "Continue".
+test.each([
+  [
+    "a family's second parent",
+    { ...invite, inviterName: "Pat" },
+    /Pat invited you as the second parent\. Continue with parent@example\.test to accept/,
+  ],
+  [
+    "a co-teacher",
+    { ...invite, secondParent: undefined, setup: false },
+    /invited as a teacher\. Continue to accept\./,
+  ],
+  [
+    "a school's admin",
+    { ...invite, secondParent: undefined, role: "admin", setup: true },
+    /you’re its admin\. Continue to set it up\./,
+  ],
+])(
+  "S1: %s sees one Continue and no account question",
+  async (_, view, copy) => {
+    vi.mocked(school.lookupInvite).mockResolvedValue(view as never);
+    hold("/school/invite");
+    await mount(InviteScreen, "/school/invite");
+    expect(document.body.textContent).toMatch(copy);
+    expect(screen.getAllByRole("link", { name: "Continue" })).toHaveLength(1);
+    expect(screen.queryByText("Create an account")).toBeNull();
+    expect(screen.queryByText("I already have one")).toBeNull();
+    // The invited address starts the sign-in.
+    const { useAuthDraft } = await import("../../auth/draft");
+    expect(useAuthDraft.getState().email).toBe("parent@example.test");
+    // It leaves to the sign-in, never to a sign-up that answers differently.
+    expect(
+      screen.getByRole("link", { name: "Continue" }).getAttribute("href"),
+    ).toContain("/sign-in");
+  },
+);
+
+test("S1: while the invitation loads there is no action to press", async () => {
+  vi.mocked(school.lookupInvite).mockReturnValue(new Promise(() => {}));
+  hold("/school/invite");
+  await mount(InviteScreen, "/school/invite");
+  expect(screen.queryByRole("link", { name: "Continue" })).toBeNull();
+  expect(document.querySelector("[aria-busy='true']")).not.toBeNull();
+  // No "for Schools" before the invitation says what it is for: the brand
+  // would swap to plain AMP for a family once it arrived.
+  expect(document.body.textContent).toMatch(/AMP/);
+  expect(document.body.textContent).not.toMatch(/for Schools/);
+});
+
+test('S1: a sign-in sent here by "Use another account" starts with the invited address', async () => {
+  const { useAuthDraft } = await import("../../auth/draft");
+  const { useInvitedEmail } = await import("../../school/invited-email");
+  const Probe = () => {
+    useInvitedEmail(true);
+    return null;
+  };
+  useAuthDraft.getState().setEmail("");
+  rememberInvite(TOKEN, { switching: true });
+  await mount(Probe, "/sign-in");
+  expect(useAuthDraft.getState().email).toBe("parent@example.test");
+  // What the person already typed stays.
+  cleanup();
+  useAuthDraft.getState().setEmail("typed@example.test");
+  await mount(Probe, "/sign-in");
+  expect(useAuthDraft.getState().email).toBe("typed@example.test");
 });

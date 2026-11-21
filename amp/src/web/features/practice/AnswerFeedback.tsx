@@ -13,6 +13,8 @@ import {
 } from "./answer-pathways";
 import { answerProgressSchema } from "./answer-progress";
 import styles from "./AnswerFeedback.module.css";
+import { useEvidenceMoments } from "./celebration/Celebration";
+import { usePoints } from "./points";
 
 export function AnswerFeedback({
   outcome,
@@ -51,6 +53,10 @@ export function AnswerFeedback({
   const evidence = progress.data?.skills.find(
     (s) => s.skillId === outcome.skillId,
   );
+  // The learner's points with this answer counted (null: not known here).
+  const points = usePoints(outcome);
+  // Colorful's Strong and Earned moments, as the skill's record arrives.
+  useEvidenceMoments(outcome, evidence);
   const [direction, setDirection] = useState<"buildsOn" | "leadsTo" | null>(
     null,
   );
@@ -61,7 +67,11 @@ export function AnswerFeedback({
       <div className={styles.skillLine}>
         <strong>{paths.skill.title}</strong>
         {outcome.correct && !outcome.assisted && !outcome.skipped && (
-          <span className={styles.xp}>+1 XP</span>
+          <span className={styles.xp} data-points={points ?? undefined}>
+            {points == null
+              ? "+1 point"
+              : `+1 · ${points.toLocaleString("en-US")} ${points === 1 ? "point" : "points"}`}
+          </span>
         )}
       </div>
       {outcome.correct && !outcome.skipped && (

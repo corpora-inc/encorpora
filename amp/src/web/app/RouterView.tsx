@@ -1,7 +1,7 @@
 import { RouterProvider, useRouterState } from "@tanstack/react-router";
 import { LoadingScreen } from "../ui/LoadingScreen";
 import { homeRouteId, router } from "./router";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import type { HomeScreen } from "../../analytics/page-titles";
 import { applyRouteHead, routeHead } from "./route-head";
 
@@ -33,7 +33,9 @@ export function RouterView() {
       return `${pitch ? "pitch" : "app"} ${resolved.pathname}${resolved.searchStr}`;
     },
   });
-  useEffect(() => {
+  // Before the browser paints the screen it names: the title never lags a
+  // frame behind the screen (a hop from `/` to a place, say).
+  useLayoutEffect(() => {
     if (!head) return;
     const split = head.indexOf(" ");
     const next = routeHead(

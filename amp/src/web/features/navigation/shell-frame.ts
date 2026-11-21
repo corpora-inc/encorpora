@@ -79,6 +79,8 @@ export function shellFrame(
       (
         {
           start: "today",
+          // A session's report sits under Time, beside the sessions list.
+          sessions: "time",
           "report-cards": "gradebook",
           cards: "roster",
           import: "roster",
@@ -143,6 +145,9 @@ export function shellFrame(
           // the children on Today.
           "": "today",
           kids: "today",
+          // A practice session's report, reached from Today's past sessions
+          // and the live view's Stop.
+          sessions: "today",
           map: "today",
           time: "today",
           reports: "today",

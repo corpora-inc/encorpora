@@ -67,8 +67,10 @@ await registerSchoolRoutes(app, {
   pool: repository.pool,
   authenticate: developmentAuth(),
 });
-await app.listen({ host: "127.0.0.1", port: 4393 });
-const origin = "http://127.0.0.1:4392";
+// Ports: 4392 and the next, or AMP_CONTRAST_PORT and the next.
+const webPort = Number(process.env.AMP_CONTRAST_PORT ?? 4392);
+await app.listen({ host: "127.0.0.1", port: webPort + 1 });
+const origin = `http://127.0.0.1:${webPort}`;
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -76,9 +78,9 @@ const vite = await createServer({
   server: {
     fs: { strict: false },
     host: "127.0.0.1",
-    port: 4392,
+    port: webPort,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4393" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${webPort + 1}` } },
   },
 });
 await vite.listen();
@@ -355,7 +357,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     } catch (error) {
       console.error(
         `Sweep step failed: ${theme} ${width} ${state}`,
-        String(error).split("\n")[0],
+        String(error).split("\n").slice(0, 30).join("\n"),
       );
       await page
         .screenshot({
@@ -493,43 +495,73 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     await page.getByRole("button", { name: "Check" }).click();
     await page.locator(panel).waitFor();
   };
-  await step("practice-problem", async () => {
-    await page.goto(`${origin}${family}`);
-    await practiceHere(page, learner.id);
-    await startTopic(page, "mean-data");
-    await page.locator("#answer").waitFor();
+  /** The child's practice, every feedback state, in one look: Calm's
+   * states are named plainly, Colorful's with `colorful-` before them. */
+  const practiceStates = async (prefix: "" | "colorful-") => {
+    pinned = "mean-data";
+    await step(`${prefix}practice-problem`, async () => {
+      await page.goto(`${origin}${family}`);
+      await practiceHere(page, learner.id);
+      await startTopic(page, "mean-data");
+      await page.locator("#answer").waitFor();
+      if (prefix)
+        await page.waitForFunction(
+          () => document.documentElement.getAttribute("data-look") === "bold",
+        );
+    });
+    await step(`${prefix}feedback-incorrect`, async () => {
+      await page.locator("#answer").fill("999");
+      await check(".solution-panel");
+    });
+    await step(`${prefix}feedback-correct`, async () => {
+      await verdict(true, false);
+      await next();
+      await page.locator("#answer").fill("1");
+      await check(".solution-panel.correct");
+    });
+    await step(`${prefix}feedback-assisted`, async () => {
+      await verdict(true, true);
+      await next();
+      await page.locator("#answer").fill("1");
+      pinned = "larger-share"; // multiple choice from here on
+      await check(".solution-panel.correct");
+    });
+    await step(`${prefix}choice-problem`, async () => {
+      await next();
+      // Where a child taps: the option itself.
+      await page.locator(".choice-option").first().click();
+    });
+    await step(`${prefix}choice-feedback-incorrect`, async () => {
+      await verdict(false, false);
+      await check(".solution-panel.incorrect");
+    });
+    await step(`${prefix}choice-feedback-correct`, async () => {
+      await verdict(true, false);
+      await next();
+      // Where a child taps: the option itself.
+      await page.locator(".choice-option").first().click();
+      await check(".solution-panel.correct");
+    });
+  };
+  await practiceStates("");
+  // Colorful (learning/look.ts): the same states in its colors, chosen as
+  // the child's own look.
+  const statePath = `${origin}/api/v1/learners/${learner.id}/practice-state`;
+  const headers = { origin, authorization: "Bearer amp-local-development" };
+  const { revision } = (await (
+    await page.request.get(statePath, { headers })
+  ).json()) as { revision: number };
+  const chosen = await page.request.post(statePath, {
+    headers,
+    data: {
+      kind: "look",
+      look: "bold",
+      revision,
+      requestId: crypto.randomUUID(),
+    },
   });
-  await step("feedback-incorrect", async () => {
-    await page.locator("#answer").fill("999");
-    await check(".solution-panel");
-  });
-  await step("feedback-correct", async () => {
-    await verdict(true, false);
-    await next();
-    await page.locator("#answer").fill("1");
-    await check(".solution-panel.correct");
-  });
-  await step("feedback-assisted", async () => {
-    await verdict(true, true);
-    await next();
-    await page.locator("#answer").fill("1");
-    pinned = "larger-share"; // multiple choice from here on
-    await check(".solution-panel.correct");
-  });
-  await step("choice-problem", async () => {
-    await next();
-    await page.getByRole("radio").first().check();
-  });
-  await step("choice-feedback-incorrect", async () => {
-    await verdict(false, false);
-    await check(".solution-panel.incorrect");
-  });
-  await step("choice-feedback-correct", async () => {
-    await verdict(true, false);
-    await next();
-    await page.getByRole("radio").first().check();
-    await check(".solution-panel.correct");
-  });
+  if (!chosen.ok()) throw Error(`Colorful not chosen: ${await chosen.text()}`);
+  await practiceStates("colorful-");
   await page.unroute("**/attempts");
   await page.unroute("**/batches");
   await step("child-drawer-open", async () => {

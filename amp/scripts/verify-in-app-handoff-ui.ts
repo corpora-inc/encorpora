@@ -267,7 +267,24 @@ try {
     for (const method of ["", "google", "passkey"]) {
       const destination =
         kind === "school-invite" ? "/school/invite" : "/family/approve";
+      // The school invitation has one way forward, "Continue" (e1ff913b8);
+      // the family approval still offers account creation and sign-in.
+      const forward = (haveOne: boolean) =>
+        kind === "school-invite"
+          ? "Continue"
+          : haveOne
+            ? "I already have one"
+            : "Create an account";
       const fragment = "r".repeat(43) + "." + "s".repeat(43);
+      // "Continue" opens the sign-in, which signs in or creates; a person
+      // with no account takes its "Create an account" button (1 of the
+      // sign-in's own steps, SignInScreen "New to AMP?").
+      const createHere = async (page: import("playwright").Page) => {
+        if (kind === "school-invite")
+          await page
+            .getByRole("button", { name: "Create an account", exact: true })
+            .click();
+      };
       const app = await context("instagram-0", method),
         p = await app.newPage();
       const ordinary = await context(false, method),
@@ -275,9 +292,10 @@ try {
       try {
         await p.goto(origin + destination + "#" + fragment);
         await p
-          .getByRole("link", { name: "Create an account", exact: true })
+          .getByRole("link", { name: forward(false), exact: true })
           .click();
         await p.getByLabel("Password", { exact: true }).waitFor();
+        if (method) await createHere(p);
         assert.equal(new URL(p.url()).searchParams.get("return"), kind);
         const before = await p.evaluate(async () => {
           // @ts-expect-error Vite serves this source module in the browser.
@@ -322,7 +340,7 @@ try {
         );
         await q.goto(copied);
         await q
-          .getByRole("link", { name: "Create an account", exact: true })
+          .getByRole("link", { name: forward(false), exact: true })
           .waitFor();
         // Opening the link holds it in this page's memory only: nothing
         // another tab or a later page could read (capability-entry.ts).
@@ -332,7 +350,7 @@ try {
         );
         await q
           .getByRole("link", {
-            name: method ? "I already have one" : "Create an account",
+            name: forward(!!method),
             exact: true,
           })
           .click();
@@ -346,6 +364,7 @@ try {
           fragment,
         );
         await q.locator('[data-provider="google"]').waitFor();
+        if (!method) await createHere(q);
         await q
           .getByRole("button", {
             name: method
@@ -364,7 +383,7 @@ try {
         assert.equal(after, destination + "#" + fragment);
         await q.goto(origin + after);
         await q
-          .getByRole("link", { name: "Create an account", exact: true })
+          .getByRole("link", { name: forward(false), exact: true })
           .waitFor();
         assert.equal(
           await q.getByRole("heading", { name: /isn’t valid/ }).count(),

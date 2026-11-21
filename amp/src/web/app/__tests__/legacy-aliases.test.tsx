@@ -603,7 +603,8 @@ const EXAMPLES: Example[] = [
     lands: `/family/${FAMILY}/settings`,
     sheet: "add-children",
   },
-  { from: "/family/learners", world: "adult", lands: "/family" },
+  // No family yet: the starter, in one hop (never `/family` and a second).
+  { from: "/family/learners", world: "adult", lands: "/start/parent" },
   { from: "/family/not-an-id", world: "adult", lands: "/family" },
   { from: "/family/not-an-id/settings", world: "adult", lands: "/family" },
   {
@@ -856,9 +857,8 @@ test("an older inventory link's view lands in its view store, keyed by the scree
 });
 
 test("signed out, /try keeps the free trial as why the tab signs up", async () => {
-  const { signUpIntent, resetProgramChoiceForTests } = await import(
-    "../../lib/program-choice"
-  );
+  const { signUpIntent, resetProgramChoiceForTests } =
+    await import("../../lib/program-choice");
   sessionStorage.clear();
   resetProgramChoiceForTests();
   enter("signed out");

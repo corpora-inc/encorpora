@@ -84,7 +84,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
     # Each lane's checks take about 25 to 35 minutes after the browser
     # install; ui-1 and family-b are split so none nears the limit on a slow
     # runner.
@@ -181,6 +181,34 @@ jobs:
         run: npm run test:family-ui:b2
       - if: matrix.lane == 'family-b3'
         run: npm run test:family-ui:b3
+      # No flash (amp/AGENTS.md): every route each person can reach, cold, on
+      # a slow phone. One lane per person and width: a person's routes take
+      # about 15 minutes at one width on a slow runner, so no lane nears a
+      # third of the job's limit (the cheap people share a lane).
+      - if: startsWith(matrix.lane, 'no-flash-')
+        env:
+          AMP_NO_FLASH_LANE: ${{ matrix.lane }}
+        run: |
+          lane="${AMP_NO_FLASH_LANE#no-flash-}"
+          case "$lane" in
+            family-*) people=family ;;
+            second-parent-*) people=second-parent ;;
+            adult-*) people=adult-3wk ;;
+            tutor-*) people=tutor ;;
+            teacher-*) people=teacher-class ;;
+            school-*) people=school ;;
+            student-*) people=student,signed-out ;;
+            *) echo "Unknown no-flash lane $AMP_NO_FLASH_LANE" >&2; exit 1 ;;
+          esac
+          npm run test:no-flash-ui -- --people "$people" --widths "${lane##*-}"
+      - name: Preserve the no-flash table
+        if: always() && startsWith(matrix.lane, 'no-flash-')
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-no-flash-${{ matrix.lane }}-${{ github.run_attempt }}
+          path: amp/artifacts/no-flash/
+          if-no-files-found: ignore
+          retention-days: 7
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
       - if: startsWith(matrix.lane, 'contrast-')
         env:

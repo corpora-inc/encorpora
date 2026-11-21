@@ -55,15 +55,18 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4955 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const webPort = Number(process.env.AMP_WEB_PORT ?? 4954);
+await app.listen({ host: "127.0.0.1", port: webPort + 1 });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-practice-answer",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-practice-answer",
   server: {
     watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
-    port: 4954,
+    port: webPort,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4955" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${webPort + 1}` } },
   },
 });
 await vite.listen();
@@ -99,7 +102,7 @@ try {
     "77e73c1e-b008-4c2a-9172-388b554e9c51",
   );
   representatives.set(responseShape(inline.public.response), inline);
-  await page.goto("http://127.0.0.1:4954/overview");
+  await page.goto(`http://127.0.0.1:${webPort}/overview`);
   // The parent hands the device to the child, whose practice is their own.
   await practiceHere(page, learner.id);
   // Keep exiting menus mounted long enough to exercise the overlap reliably.

@@ -13,7 +13,8 @@
  * (`scripts/design-preview.sh`). Loopback only; it refuses anything else.
  * Run it on an empty database: a persona that already exists is skipped.
  * `AMP_PERSONAS=adult-3wk,family` seeds only those (a browser check's
- * fixture, scripts/verify-smooth-load-ui.ts).
+ * fixture, scripts/verify-smooth-load-ui.ts); `second-parent` seeds the
+ * family she joins.
  */
 import pg from "pg";
 import { alignPersonaEnrollments } from "./persona-enrollment";
@@ -158,7 +159,10 @@ async function history(
   const span = Math.max(1, weeks * 7);
   const shape = weeks
     ? Array.from({ length: weeks + 1 }, (_, i) => 0.75 + 0.06 * i)
-    : [1, 1];
+    : // No history yet: one plain week. (A two-entry shape makes the
+      // first week a short one, which drops Thursdays and Fridays, so a
+      // day-1 persona seeded then had no session.)
+      [1, 1, 1];
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
@@ -306,7 +310,10 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
           persona: persona("Child", "Ashby", 4.1, {
             answers: 14,
             minutes: 12,
-            every: 40,
+            // Every weekday may hold the one sitting (`joined` and
+            // `lastActive` keep it to yesterday); a larger `every` keeps
+            // only Mondays, and the child had no session at all.
+            every: 1,
             lastActive: 1,
             joined: 1,
             growth: 0,
@@ -460,7 +467,12 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
   },
 };
 
-const only = process.env.AMP_PERSONAS?.split(",").map((slug) => slug.trim());
+/** People made inside another's seed: asking for one seeds the other. */
+const MADE_WITH: Record<string, string> = { "second-parent": "family" };
+const only = process.env.AMP_PERSONAS?.split(",").map((slug) => {
+  const trimmed = slug.trim();
+  return MADE_WITH[trimmed] ?? trimmed;
+});
 for (const person of PREVIEW_PERSONAS) {
   const seed = seeds[person.slug];
   if (!seed || person.slug === "second-parent") continue;

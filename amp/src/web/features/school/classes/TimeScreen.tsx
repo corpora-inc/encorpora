@@ -40,6 +40,7 @@ import { useStaffSession } from "./api";
 import { useClassHost, wholeClass, type ClassHost } from "./host";
 import { TimeDetail } from "./ProgressRecord";
 import { HelpUsed } from "./HelpUsed";
+import { SessionList } from "./SessionList";
 import { AppError } from "../../../lib/AppError";
 import { mergeTimeCsv } from "./time-csv";
 import {
@@ -61,7 +62,6 @@ import {
 } from "./teacher-api";
 import {
   buttonClass,
-  classUrl,
   dayRange,
   fullDay,
   LoadFailed,
@@ -796,20 +796,6 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
                       : "No practice time yet"
                   }
                   example={<ExampleTime />}
-                  action={
-                    // A family's Today is its tab, in the bar.
-                    family ? undefined : (
-                      <Link
-                        to="/$"
-                        params={{
-                          _splat: classUrl(place.org, place.class, "start"),
-                        }}
-                        className={buttonClass("primary")}
-                      >
-                        Start class
-                      </Link>
-                    )
-                  }
                 />
               </div>
             </>
@@ -954,6 +940,9 @@ export function TimeScreen({ host: given }: { host?: ClassHost } = {}) {
               )}
             </>
           )}
+          {/* The class's live sessions, each opening its report (#2465). A
+              host's own children in other groups have none here. */}
+          {whole && !family && <SessionList place={place} />}
         </div>
       )}
       <DaySheet

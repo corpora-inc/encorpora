@@ -385,8 +385,10 @@ button.copyPrimary {
   color: var(--color-on-surface);
   font-weight: 600;
 }
+/* The loading frame holds at least the tallest loaded invitation (a family's
+ * at phone width), so nothing below it moves when the invitation arrives. */
 .inviteWait {
-  min-height: 220px;
+  min-height: 232px;
 }
 .inviteForm {
   display: grid;

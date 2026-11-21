@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Practice polish verification and audit: drives the real practice app (Vite dev server,
@@ -242,7 +243,7 @@ async function mockApi(context: BrowserContext, templateId: string) {
     if (path.endsWith("/practice-state")) {
       if (route.request().method() === "POST")
         practice = { ...practice, revision: practice.revision + 1 };
-      return json(practice);
+      return json(practiceStateFixture(practice));
     }
     if (path.endsWith("/batches")) {
       const problemIndex = state.count++;

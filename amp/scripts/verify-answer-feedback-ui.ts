@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
@@ -239,7 +240,7 @@ try {
               ...(body.kind === "focus" ? { focusSkillId: body.skillId } : {}),
             };
           }
-          return route.fulfill({ json: practice });
+          return route.fulfill({ json: practiceStateFixture(practice) });
         }
         if (path.endsWith("/batches")) {
           batches.push(body.templateId ?? null);
@@ -313,7 +314,8 @@ try {
       let release = () => {};
       holdProgress = new Promise((resolve) => (release = resolve));
       await submit(page, (await current()).answer);
-      await page.getByText("+1 XP", { exact: true }).waitFor();
+      // "+1", with the learner's points when the server sends them.
+      await page.getByText(/^\+1( point| · [\d,]+ points?)$/).waitFor();
       // The win lands on the sheet, never drawn over the problem.
       assert.equal(await page.locator(".practice-celebration").count(), 0);
       // While the strength loads: its loaded space, wordless (no status).
@@ -491,7 +493,7 @@ try {
       await page
         .getByRole("button", { name: "Builds on", exact: false })
         .waitFor();
-      assert.equal(await page.getByText("+1 XP", { exact: true }).count(), 0);
+      assert.equal(await page.getByText(/^\+1( |$)/).count(), 0);
       if (width < 900) await solvedInView(page, `${mode} ${width} incorrect`);
       await page.screenshot({
         path: `${output}/${mode}-${width}-${theme}-incorrect.png`,

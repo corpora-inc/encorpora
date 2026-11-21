@@ -131,16 +131,19 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4351 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4350);
+const ORIGIN = `http://127.0.0.1:${WEB_PORT}`;
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  cacheDir: "node_modules/.vite-ui-review",
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-ui-review",
   server: {
     host: "127.0.0.1",
-    port: 4350,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4351" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -170,10 +173,10 @@ try {
     requestsInWindow++;
   });
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("http://127.0.0.1:4350/overview");
+  await page.goto(`${ORIGIN}/overview`);
   // The parent hands the device to the child, whose practice is their own.
   await practiceHere(page, learner.id);
-  await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
+  await page.goto(`${ORIGIN}/lessons?strand=data&topic=mean-data`);
   await page.getByRole("link", { name: /^Practice/ }).waitFor();
   await page.reload();
   await page.getByRole("link", { name: /^Practice/ }).waitFor();
@@ -762,7 +765,7 @@ try {
     `Logo moved: ${sections.join(" / ")}`,
   );
   // The detailed progress reader retains its own address.
-  await page.goto("http://127.0.0.1:4350/progress");
+  await page.goto(`${ORIGIN}/progress`);
   await page.locator(".progress-skill-card").first().waitFor();
   // The navigation drawer leaves the page in place and returns keyboard focus.
   progress("navigation drawer geometry and focus");
@@ -817,7 +820,7 @@ try {
   // a maximum-length nickname: the year saves them, Done closes the sheet.
   const family = /^\/family\/[^/]+/.exec(familyPath)?.[0];
   assert.ok(family, `back with the parent at ${familyPath}`);
-  await page.goto(`http://127.0.0.1:4350${family}/settings`);
+  await page.goto(`${ORIGIN}${family}/settings`);
   await page.getByRole("button", { name: "Add a child", exact: true }).click();
   const { id: addedId, name: nickname } = await addChildInSheet(page, {
     name: "LongNickname".repeat(5),

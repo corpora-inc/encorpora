@@ -7,27 +7,42 @@ import type { TodayTodo } from "../../../schools/teacher-contracts";
 import { EntityLink } from "../../nav/links";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
-import { RowButton, RowList } from "../../ui/RowList";
 import { Toast } from "../../ui/Toast";
 import { rememberContinuation } from "../continue/memory";
-import { lastPracticed } from "../school/classes/today/ChildRow";
+import { lastPracticed } from "../learners/week-words";
+import { LearnerRow } from "../learners/LearnerRow";
+import { SkillKey } from "../learners/SkillKey";
 import { Feed, type FeedEntry } from "../school/classes/today/Feed";
 import { useChecks } from "../school/classes/today/todo-entries";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { fullDay } from "../school/classes/teacher-shared";
-import type { FamilyChild } from "./api";
+import { standing } from "../../lib/AppError";
+import { classYearOptions } from "../school/core-api";
+import { type FamilyChild } from "./api";
+import { familyDashboardOptions } from "./dashboard-api";
+import { FamilyLive } from "./FamilyLive";
+import { PastSessions } from "./PastSessions";
+import { peopleOf } from "./redirects";
 import { selectLearner } from "../../learner-store";
 import { useStartOwnPractice } from "../me/api";
 import { rememberPlace } from "../onboarding/place-memory";
 import { AddChildrenSheet } from "./AddChildren";
 import { accessUntil, sharedAccessOf } from "./access";
 import { DevicesSheet } from "./Devices";
-import { FamilyWeek } from "./FamilyWeek";
+import {
+  actionWidth,
+  ChildDashboard,
+  ChildWeekFacts,
+  FamilyHero,
+  FamilyWeekSummary,
+  GetIn,
+  NotAskedSheet,
+} from "./Dashboard";
+import dash from "./Dashboard.module.css";
 import { FamilyReportCards } from "./Records";
 import { useSheet } from "../../nav/sheet";
 import { ActionRow } from "../../ui/ActionRow";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
-import { ColumnList, ColumnRow, type Column } from "../../ui/ColumnList";
 import styles from "./Family.module.css";
 import { PayLink } from "../pay/link";
 import { practiceParams } from "../spaces/identity";
@@ -40,14 +55,19 @@ export function Fact({
   value,
   label,
   wide = false,
+  inline = false,
 }: {
   value: string;
   label: string;
   /** Takes the two cells the week's figures will, so the row holds. */
   wide?: boolean;
+  /** On one line, the value then its label (a line under a child's row). */
+  inline?: boolean;
 }) {
   return (
-    <span className={`${styles.fact} ${wide ? styles.factWide : ""}`}>
+    <span
+      className={`${styles.fact} ${wide ? styles.factWide : ""} ${inline ? styles.factInline : ""}`}
+    >
       <span className={styles.factValue}>{value}</span>
       <span className={styles.factLabel}>{label}</span>
     </span>
@@ -55,16 +75,27 @@ export function Fact({
 }
 
 /** Access, or the free problems left: what lets this child practice. */
-export function AccessFact({ child }: { child: FamilyChild }) {
+export function AccessFact({
+  child,
+  inline = false,
+}: {
+  child: FamilyChild;
+  inline?: boolean;
+}) {
   if (child.access.hasAccess) {
     const until = accessUntil(child);
     return (
-      <Fact value="Active" label={until ? `through ${until}` : "access"} />
+      <Fact
+        value="Active"
+        label={until ? `through ${until}` : "access"}
+        inline={inline}
+      />
     );
   }
   const left = child.access.freeAllowance.problems.remaining;
   return (
     <Fact
+      inline={inline}
       value={String(left)}
       label={left === 1 ? "free problem left" : "free problems left"}
     />
@@ -176,16 +207,6 @@ export function LastPracticedFact({
     <Fact value={lastPracticed(last, today)} label="last practiced" />
   ) : null;
 }
-/** Today's children: name, this week, last practiced, access (when the
- * family shows it per child), action. */
-const kidColumns = (access: boolean): Column[] => [
-  { key: "name", track: "minmax(120px, 1.2fr)", part: "title" },
-  { key: "week", track: "minmax(0, 1fr)" },
-  { key: "last", track: "minmax(0, 1fr)" },
-  ...(access ? [{ key: "access", track: "minmax(0, 1fr)" }] : []),
-  { key: "action", track: "auto", part: "action" as const },
-];
-
 /**
  * The one action that works for a child now: their practice on this device
  * ("Practice"), else, for the parent who buys, "Continue with
@@ -334,16 +355,21 @@ function familyEntries(
 }
 
 /**
- * A family's Today (`/family/<family>`): the date, then each of the family's
- * own children on one line (their page, this week, when they last practiced,
- * access or free problems left, and "Let Maya practice here", the same width
- * on every row), then what needs a parent today and the week in plain words.
- * Only the family's own children: another family's child in a tutoring group
- * is never here (docs/architecture/family-api.md).
+ * A family's Today (`/family/<family>`), the parent's dashboard: the date,
+ * then each of the family's own children as one block (their row: page,
+ * this week, how many right, Practice; what AMP is working on with them and
+ * why; their five areas with what was checked below each), the key to the
+ * bars once, then what needs a parent today, the family's week and how the
+ * children get in. Before any answer, a centred start (ia.md rule 7). Only
+ * the family's own children: another family's child in a tutoring group is
+ * never here (docs/architecture/family-api.md).
  */
 export function FamilyTodayScreen() {
   const place = useFamilyPlace();
   const { data, family, session, me } = place;
+  const dashboard = useQuery(familyDashboardOptions(session, family));
+  const board =
+    dashboard.data?.familyId === family ? dashboard.data : undefined;
   const billing = useQuery({
     ...fundingRecordsOptions(session),
     enabled:
@@ -360,7 +386,35 @@ export function FamilyTodayScreen() {
   const children = data?.children ?? [];
   const sharedAccess = sharedAccessOf(children);
   const byId = new Map(children.map((child) => [child.id, child]));
+  const boards = new Map(board?.children.map((child) => [child.id, child]));
   const own = place.own;
+  // The family's class is where its practice sessions live (the live
+  // section, the past sessions): its `can` says what this parent may do.
+  const classPlace = own ? { org: own.org, class: own.id } : null;
+  const can = new Set(
+    standing(
+      useQuery({
+        ...classYearOptions(session, own?.id ?? ""),
+        enabled: !!own,
+        refetchOnMount: false,
+      }),
+    )?.can ?? [],
+  );
+  const watch = !!classPlace && can.has("session.read");
+  const live = watch && classPlace && (
+    <FamilyLive
+      family={family}
+      place={classPlace}
+      can={{
+        resolve: can.has("signal.resolve"),
+        resetPictures: can.has("signin.manage"),
+      }}
+      people={peopleOf(children, classPlace.class)}
+      levelShown={
+        new Map(board?.children.map((kid) => [kid.id, kid.gradeLevelShown]))
+      }
+    />
+  );
   const manageDevices = children.some(
     (child) => child.capabilities.manageDevices,
   );
@@ -368,6 +422,19 @@ export function FamilyTodayScreen() {
   const [ownError, setOwnError] = useState("");
   const practiceSelf = !!me?.adultPractice?.learner;
   const startSelf = !practiceSelf && me?.adultPractice?.eligible === true;
+  const today = data?.today.date ?? "";
+  // Day 0: no child has answered anything yet.
+  const dayZero =
+    children.length > 0 &&
+    children.every(
+      (child) =>
+        !child.week.lastPracticed &&
+        !(boards.get(child.id)?.level ?? null) &&
+        !boards.get(child.id)?.week.lastPracticed,
+    );
+  const checking = !!board?.children.some((child) =>
+    child.areas.some((area) => area.checked),
+  );
   const entries = data
     ? familyEntries(
         data.today.tasks,
@@ -392,12 +459,166 @@ export function FamilyTodayScreen() {
         devices.show,
       )
     : [];
+  const action = (child: FamilyChild) => (
+    <span className={styles.action}>
+      <ChildAction
+        child={child}
+        family={family}
+        accountId={session.accountId}
+        starting={starting}
+        onPracticeHere={(id) => void handOver(id)}
+        primary
+      />
+    </span>
+  );
+  const name = (child: FamilyChild) => (
+    <Link
+      to="/$"
+      params={{ _splat: familyHref(family, `kids/${child.id}`) }}
+      className={styles.kidName}
+      data-child-link={child.id}
+    >
+      {child.name}
+      <svg viewBox="0 0 12 12" aria-hidden="true">
+        <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
+      </svg>
+    </Link>
+  );
+  const moreWays =
+    own && manageDevices ? (
+      <Button
+        variant="quiet"
+        className={dash.moreWays}
+        data-own-devices=""
+        onClick={devices.show}
+      >
+        Cards, a new code and more
+      </Button>
+    ) : null;
+  const getIn = board?.join ? (
+    <GetIn join={board.join} more={moreWays} />
+  ) : moreWays ? (
+    <div>{moreWays}</div>
+  ) : null;
+  const pendingFor = (child: FamilyChild) =>
+    billing.data?.requests.some(
+      (invoice) =>
+        invoice.learnerId === child.id &&
+        invoice.fundedPending?.status === "funded-pending",
+    ) ?? false;
+  // With one access for all, Billing is one link on that line; a child's
+  // own line only says what is theirs alone (an invoice waiting).
+  const accessLine = (child: FamilyChild) =>
+    !sharedAccess || (data?.capabilities.manageBilling && pendingFor(child)) ? (
+      <p className={dash.access}>
+        {!sharedAccess && <AccessFact child={child} inline />}
+        {data?.capabilities.manageBilling && (
+          <ChildBillingLink
+            child={child}
+            family={family}
+            pending={pendingFor(child)}
+          />
+        )}
+      </p>
+    ) : null;
+  // The children's access, dated once when they share it: on Day 0 too, so
+  // a parent who just paid sees it from the first visit.
+  const sharedLine = sharedAccess && data && (
+    <p className={styles.shared} data-shared-access="">
+      {children.length === 2 ? "Both have" : "All have"} AMP through{" "}
+      {sharedAccess}
+      {data.capabilities.manageBilling && (
+        <>
+          {" · "}
+          <Link
+            to="/$"
+            params={{ _splat: familyHref(family, "settings/billing") }}
+            className={styles.accessLink}
+            data-shared-billing=""
+          >
+            Manage access
+          </Link>
+        </>
+      )}
+    </p>
+  );
+  const self = (practiceSelf || startSelf) && (
+    <LearnerRow
+      as="li"
+      data-family-self=""
+      name={<span className={styles.kidName}>You</span>}
+      action={
+        practiceSelf ? (
+          <Link
+            to="/$"
+            params={practiceParams(me!.adultPractice!.learner!.id)}
+            className={buttonClass("secondary")}
+            aria-label="Practice as yourself"
+            onClick={() => rememberPlace(session.accountId, "home")}
+          >
+            Practice
+          </Link>
+        ) : (
+          <Button
+            variant="secondary"
+            aria-label="Practice as yourself"
+            aria-busy={startOwn.isPending || undefined}
+            onClick={() => {
+              if (startOwn.isPending) return;
+              setOwnError("");
+              void startOwn
+                .mutateAsync(undefined)
+                .then((learner) => {
+                  rememberPlace(session.accountId, "home");
+                  return navigate({
+                    to: "/$",
+                    params: practiceParams(learner),
+                  });
+                })
+                .catch((failure: unknown) => {
+                  console.error("Own practice didn’t start", failure);
+                  setOwnError("Practice didn’t start. Try again.");
+                });
+            }}
+          >
+            Practice
+          </Button>
+        )
+      }
+    />
+  );
+  const sheets = (
+    <>
+      {own && manageDevices && (
+        <DevicesSheet
+          place={place}
+          classId={own.id}
+          open={devices.open}
+          onOpenChange={devices.onOpenChange}
+        />
+      )}
+      {place.holder && (
+        <AddChildrenSheet
+          open={adding.open}
+          onOpenChange={adding.onOpenChange}
+        />
+      )}
+      <NotAskedSheet
+        dashboard={board}
+        children={children}
+        starting={starting}
+        onPractice={(learner, filter) => void handOver(learner, filter)}
+      />
+    </>
+  );
   return (
     <FamilyFrame
       place={place}
-      title={
-        data && <span data-today-title="">{fullDay(data.today.date)}</span>
-      }
+      width="wide"
+      // The dashboard arrives with the route (its loader); a cold visit
+      // waits for it whole rather than drawing the children twice.
+      loading={children.length > 0 && dashboard.isPending}
+      title={data && <span data-today-title="">{fullDay(today)}</span>}
     >
       {data && (
         <div className={styles.page}>
@@ -420,183 +641,115 @@ export function FamilyTodayScreen() {
                 The parent who invited you adds the children.
               </EmptyState>
             )
-          ) : (
-            <section aria-labelledby="family-kids">
-              <h2 id="family-kids" className={styles.sectionTitle}>
-                {children.length === 1 ? "Your child" : "Your kids"}
-              </h2>
-              {sharedAccess && (
-                <p className={styles.shared} data-shared-access="">
-                  {children.length === 2 ? "Both have" : "All have"} AMP through{" "}
-                  {sharedAccess}
-                </p>
-              )}
-              <ColumnList
-                label={children.length === 1 ? "Your child" : "Your kids"}
-                columns={kidColumns(
-                  !sharedAccess || !!data.capabilities.manageBilling,
-                )}
+          ) : dayZero ? (
+            <FamilyHero
+              single={children.length === 1 ? children[0]!.name : null}
+              getIn={getIn}
+            >
+              <ul
+                className={dash.heroKids}
+                aria-label={children.length === 1 ? "Your child" : "Your kids"}
+                style={actionWidth(children)}
                 data-family-kids=""
               >
                 {children.map((child) => (
-                  <ColumnRow
-                    key={child.id}
-                    data-child={child.id}
-                    cells={{
-                      name: (
-                        <Link
-                          to="/$"
-                          params={{
-                            _splat: familyHref(family, `kids/${child.id}`),
-                          }}
-                          className={styles.kidName}
-                          data-child-link={child.id}
-                        >
-                          {child.name}
-                          <svg viewBox="0 0 12 12" aria-hidden="true">
-                            <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
-                          </svg>
-                        </Link>
-                      ),
-                      week: <WeekFact child={child} />,
-                      last: (
-                        <LastPracticedFact
-                          child={child}
-                          today={data.today.date}
-                        />
-                      ),
-                      access: (
-                        <span className={styles.access}>
-                          {!sharedAccess && <AccessFact child={child} />}
-                          {data.capabilities.manageBilling && (
-                            <ChildBillingLink
-                              child={child}
-                              family={family}
-                              pending={
-                                billing.data?.requests.some(
-                                  (invoice) =>
-                                    invoice.learnerId === child.id &&
-                                    invoice.fundedPending?.status ===
-                                      "funded-pending",
-                                ) ?? false
-                              }
-                            />
-                          )}
-                        </span>
-                      ),
-                      action: (
-                        <span className={styles.action}>
-                          <ChildAction
-                            child={child}
-                            family={family}
-                            accountId={session.accountId}
-                            starting={starting}
-                            onPracticeHere={(id) => void handOver(id)}
-                            primary
-                          />
-                        </span>
-                      ),
-                    }}
-                  />
+                  <li key={child.id} data-child={child.id}>
+                    <LearnerRow name={name(child)} action={action(child)} />
+                    {accessLine(child)}
+                  </li>
                 ))}
-                {(practiceSelf || startSelf) && (
-                  <ColumnRow
-                    data-family-self=""
-                    cells={{
-                      name: <span className={styles.kidName}>You</span>,
-                      action: (
-                        <span className={styles.action}>
-                          {practiceSelf ? (
-                            <Link
-                              to="/$"
-                              params={practiceParams(
-                                me!.adultPractice!.learner!.id,
-                              )}
-                              className={buttonClass("secondary")}
-                              aria-label="Practice as yourself"
-                              onClick={() =>
-                                rememberPlace(session.accountId, "home")
-                              }
-                            >
-                              Practice
-                            </Link>
-                          ) : (
-                            <Button
-                              variant="secondary"
-                              aria-label="Practice as yourself"
-                              aria-busy={startOwn.isPending || undefined}
-                              onClick={() => {
-                                if (startOwn.isPending) return;
-                                setOwnError("");
-                                void startOwn
-                                  .mutateAsync(undefined)
-                                  .then((learner) => {
-                                    rememberPlace(session.accountId, "home");
-                                    return navigate({
-                                      to: "/$",
-                                      params: practiceParams(learner),
-                                    });
-                                  })
-                                  .catch((failure: unknown) => {
-                                    console.error(
-                                      "Own practice didn’t start",
-                                      failure,
-                                    );
-                                    setOwnError(
-                                      "Practice didn’t start. Try again.",
-                                    );
-                                  });
-                              }}
-                            >
-                              Practice
-                            </Button>
-                          )}
-                        </span>
-                      ),
-                    }}
+                {self}
+              </ul>
+              {sharedLine}
+              {live}
+            </FamilyHero>
+          ) : (
+            <div
+              className={dash.layout}
+              data-side={entries.length > 0 || !!board || !!getIn || undefined}
+            >
+              <section aria-labelledby="family-kids" className={dash.kids}>
+                {live}
+                <div className={dash.kidsHead}>
+                  <h2 id="family-kids" className={dash.kidsTitle}>
+                    {children.length === 1 ? "Your child" : "Your kids"}
+                  </h2>
+                  {checking && <SkillKey level="Likely level" />}
+                </div>
+                {sharedLine}
+                {dashboard.isError && (
+                  <p role="alert" className={dash.failed}>
+                    The week and levels didn’t load.{" "}
+                    <Button
+                      variant="quiet"
+                      onClick={() => void dashboard.refetch()}
+                    >
+                      Try again
+                    </Button>
+                  </p>
+                )}
+                <ul
+                  className={dash.list}
+                  aria-label={
+                    children.length === 1 ? "Your child" : "Your kids"
+                  }
+                  style={actionWidth(children)}
+                  data-family-kids=""
+                >
+                  {children.map((child) => {
+                    const childBoard = boards.get(child.id);
+                    return (
+                      <li
+                        key={child.id}
+                        className={dash.block}
+                        data-child={child.id}
+                      >
+                        <LearnerRow
+                          name={name(child)}
+                          facts={
+                            <ChildWeekFacts
+                              child={child}
+                              board={childBoard}
+                              today={today}
+                              from={board?.week.from}
+                            />
+                          }
+                          action={action(child)}
+                        />
+                        {accessLine(child)}
+                        {childBoard && (
+                          <ChildDashboard child={child} board={childBoard} />
+                        )}
+                      </li>
+                    );
+                  })}
+                  {self}
+                </ul>
+              </section>
+              <div className={dash.side}>
+                {entries.length > 0 && (
+                  <section aria-labelledby="family-feed">
+                    <h2 id="family-feed" className={styles.sectionTitle}>
+                      For today
+                    </h2>
+                    <Feed entries={entries} done={done} onDone={setDone} />
+                  </section>
+                )}
+                {board && (
+                  <FamilyWeekSummary
+                    dashboard={board}
+                    objectives={data.today.week.objectives}
                   />
                 )}
-              </ColumnList>
-              {own && manageDevices ? (
-                <div className={styles.quiet}>
-                  <RowList label="More ways to practice">
-                    {own && manageDevices && (
-                      <RowButton
-                        title="Their own devices"
-                        meta="A code, a QR code or a printed card"
-                        data-own-devices=""
-                        onClick={devices.show}
-                      />
-                    )}
-                  </RowList>
-                </div>
-              ) : null}
-            </section>
+                {getIn}
+                {children.length > 1 && <ForAllKids place={place} />}
+              </div>
+            </div>
           )}
-          {entries.length > 0 && (
-            <section aria-labelledby="family-feed">
-              <h2 id="family-feed" className={styles.sectionTitle}>
-                For today
-              </h2>
-              <Feed entries={entries} done={done} onDone={setDone} />
-            </section>
+          {watch && classPlace && !dayZero && (
+            <PastSessions family={family} place={classPlace} />
           )}
-          {children.length > 0 && <FamilyWeek place={place} />}
-          {children.length > 1 && <ForAllKids place={place} />}
-          {own && manageDevices && (
-            <DevicesSheet
-              place={place}
-              classId={own.id}
-              open={devices.open}
-              onOpenChange={devices.onOpenChange}
-            />
-          )}
-          {place.holder && (
-            <AddChildrenSheet
-              open={adding.open}
-              onOpenChange={adding.onOpenChange}
-            />
-          )}
+          {sheets}
         </div>
       )}
       <Toast

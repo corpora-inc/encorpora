@@ -1,0 +1,359 @@
+/* A session's report (SessionReportScreen.tsx): a title and its line, the
+   session's figures, who to follow up with, every student, the skills.
+   Sections by space and a heading, rows by a hairline, no cards. */
+.page {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .page {
+    gap: var(--space-7);
+  }
+}
+.head {
+  display: grid;
+  gap: var(--space-1);
+}
+.when {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.of {
+  color: var(--color-muted-text);
+  font-size: 0.7em;
+  font-weight: 500;
+}
+.printOnly {
+  display: none;
+}
+
+.section {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.section h2 {
+  margin: 0;
+}
+
+/* Follow up first: one column of groups on a phone, two from a tablet. */
+.groups {
+  display: grid;
+  gap: var(--space-5) var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.group {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.group h3 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.count {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.people {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.people li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 44px;
+  border-top: 1px solid var(--color-border);
+}
+.person {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.person:hover {
+  color: var(--color-primary);
+}
+.fact {
+  flex: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+
+/* At the foot of Time, a section apart. */
+.listSection {
+  margin-top: var(--space-7);
+}
+.more {
+  justify-self: start;
+}
+
+/* Every student. */
+.student {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  max-width: 100%;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* The live roster's colors for the same words. */
+.statusWord {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.statusWord[data-status="struggling"] {
+  color: var(--color-danger-accent);
+}
+.statusWord[data-status="idle"] {
+  color: var(--color-warning-accent);
+}
+.statusWord[data-status="flying"] {
+  color: var(--color-success-accent);
+}
+.statusWord[data-status="not_signed_in"] {
+  color: var(--color-muted-text);
+  font-weight: 500;
+}
+.statusWord[data-status="working"] {
+  font-weight: 500;
+}
+.skills {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.skillLink {
+  color: inherit;
+  text-decoration: none;
+}
+.skillLink:hover {
+  color: var(--color-primary);
+}
+
+/* The skills, most worked on first. */
+.skillList {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skillRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+@media (min-width: 768px) {
+  .skillRow {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-areas:
+      "title count"
+      "who who";
+    column-gap: var(--space-5);
+  }
+  .skillTitle {
+    grid-area: title;
+  }
+  .skillCount {
+    grid-area: count;
+    text-align: end;
+  }
+  .skillWho {
+    grid-area: who;
+  }
+}
+.skillTitle {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skillTitle:hover {
+  color: var(--color-primary);
+}
+.skillCount {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.skillHelp {
+  color: var(--color-on-surface);
+}
+.skillWho {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.skillWho .person {
+  font-weight: 500;
+}
+
+/* Skills one student worked on: short lines in columns. */
+.singles {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.singles h3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+.singleList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 1;
+  column-gap: var(--space-6);
+  font-size: var(--text-table-small);
+}
+@media (min-width: 768px) {
+  .singleList {
+    columns: 2;
+  }
+}
+@media (min-width: 1100px) {
+  .singleList {
+    columns: 3;
+  }
+}
+.singleList li {
+  break-inside: avoid;
+  padding-block: var(--space-1);
+}
+.singleWho {
+  color: var(--color-muted-text);
+}
+.singleWho .person {
+  font-weight: 500;
+}
+
+/* On paper (Cmd+P): white, black ink, the class named, every skill in
+   full, sections kept whole where they fit. The grid's own scroll and
+   sticky parts lie flat. */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  .page {
+    gap: 18px;
+    color: var(--color-print-ink);
+    background: var(--color-print-paper);
+    font-size: 11px;
+  }
+  .printOnly {
+    display: block;
+    margin: 0;
+    color: var(--color-print-ink);
+    font-weight: 600;
+  }
+  .when,
+  .count,
+  .fact,
+  .skillCount,
+  .skillWho,
+  .statusWord,
+  .of {
+    color: var(--color-print-ink);
+  }
+  .people li,
+  .skillRow {
+    min-height: 0;
+    padding-block: 3px;
+    border-top-color: var(--color-print-rule);
+  }
+  .group,
+  .skillRow {
+    break-inside: avoid;
+  }
+  .groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .singleList {
+    columns: 3;
+    font-size: 9px;
+  }
+  .singleWho {
+    color: var(--color-print-ink);
+  }
+  .skillList {
+    display: block;
+    columns: 2;
+    column-gap: 24px;
+  }
+  .skillRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title count"
+      "who who";
+    gap: 0 8px;
+  }
+  .skillTitle {
+    grid-area: title;
+  }
+  .skillCount {
+    grid-area: count;
+  }
+  .skillWho {
+    grid-area: who;
+  }
+  :global(html:has([data-session-report])),
+  :global(html:has([data-session-report]) body),
+  :global(html:has([data-session-report]) [data-app-frame]) {
+    background: var(--color-print-paper);
+  }
+  .grid :global(*) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  /* The grid lies flat: no scroll box, no sticky header. */
+  .grid,
+  .grid > :global(*),
+  .grid > :global(*) > :global(*) {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  .grid :global(th) {
+    position: static !important;
+  }
+  /* Each student's skills are listed under "Skills in this session":
+     on paper the column gives its room to the figures. */
+  .grid :global([data-column="skills"]) {
+    visibility: hidden;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .grid :global(colgroup col:nth-child(8)) {
+    width: 0 !important;
+  }
+}

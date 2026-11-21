@@ -185,7 +185,7 @@ test("the layout's colours are AMP's role tokens", () => {
   };
   const themes = {
     light: block(":root {"),
-    dark: block(':root[data-theme="dark"] {'),
+    dark: block(':root[data-theme="dark"]:not([data-look="bold"]) {'),
   };
   for (const [role, names] of Object.entries(EMAIL_TOKENS))
     for (const theme of ["light", "dark"] as const) {

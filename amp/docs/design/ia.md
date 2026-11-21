@@ -29,9 +29,9 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 | Place                | Who                         | Tabs                                                          | Bar action                 |
 | -------------------- | --------------------------- | ------------------------------------------------------------- | -------------------------- |
 | My practice          | an adult learner            | Overview · Pathways · Inventory                               | ▶ Practice                 |
-| Family               | a parent, the second parent | Today · Progress · Settings            | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor                     | Today · Progress · Settings            | Start class                |
-| Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class                |
+| Family               | a parent, the second parent | Today · Settings                                              | ▶ Practice (picks a child) |
+| Class (tutor, co-op) | a tutor                     | Today · Map · Workbooks · Time · Report cards · People · Settings | Start class (a live session) |
+| Class (school)       | a teacher                   | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class (a live session) |
 | School               | an admin                    | Overview · Classes · Staff · Activity · Settings              | none                       |
 | Account              | everyone, from the drawer   | Sign-in · Learners · Billing · Privacy                        | none                       |
 
@@ -104,7 +104,7 @@ Every setting lives in exactly one place, chosen by its scope: school (or distri
 | Data agreement, what AMP collects, export, deletion                               | school                         | School Settings → Privacy and data                                                                         | —                                                       |
 | Google and Microsoft sign-in, rostering                                           | school                         | School Settings → Integrations                                                                             | Staff → Sign-in help                                    |
 | Staff and their roles                                                             | school                         | Staff                                                                                                      | —                                                       |
-| Class code and join link                                                          | class                          | Class Settings                                                                                             | the Start class board shows it                          |
+| Class code and join link                                                          | class                          | Class Settings                                                                                             | Today's code and the sign-in board show it              |
 | Roster and sign-in cards                                                          | class                          | Students (school class) or People (family org)                                                             | —                                                       |
 | Second parent, co-teachers, other families' children                              | family org                     | People                                                                                                     | —                                                       |
 | A learner's name, birth year, SAT focus, deletion                                 | learner                        | Account → Learners                                                                                         | —                                                       |
@@ -143,12 +143,15 @@ Each of these is that person's own composition of shared components (rule 6). Th
 ### Parent (Family)
 
 - **First run:** "Parent" → each child's name (a parent-entered nickname) and birth year → the first child's first problem on this device. Consent and access are steps inside that flow, never a separate page.
-- **Today, day 0:** a centred hero. Each child's name is shown with "Practice" as the one prominent action, and the class code sits quietly below for a child's own device.
-- **Today, with data:** the Today feed, led by the children.
-  - First, one row per child: name, this week (minutes, problems, last practiced), and the one action that works now, "Practice" or, when the free problems are used, "Continue with AMP". Access dates belong in Billing, not on Today.
-  - Then feed items when there is something to act on: a skill missed three times, no practice in a week, ready for more, the weekly target.
-  - Then a compact This week line.
-- **Progress:** one child opens directly to their record, with current estimates, daily practice time, earned skills and recent work. Several children share a comparison; each has an explicit View progress link. Detailed practice time and report cards are linked from Progress.
+- **Today, day 0:** a centred hero: the level scale every child will fill, one sentence, each child's name with "Practice" as the prominent action, and how the children get in (QR, link, family code) quietly below.
+- **Today, with data: the parent's dashboard.** A parent sees how each child is doing in five seconds.
+  - One block per child, parted by a hairline, no cards. Its row: the name (their page), this week's seven day dots, minutes, problems and percent right, and the one action that works now, "Practice" or "Continue with AMP".
+  - Under it, what AMP is working on and why: the last problems grouped as Catching up, Reviewing, Checking earlier skills, New ground or Chosen practice, each with its skills.
+  - Then the five areas: where the child is working (the likely range and best guess, grade numbers only with that child's switch on) and what was checked in the two grades below, as one bar of Strong, Earned, Tried and Not asked yet. "N not asked" opens those skills, each one tap from practice held to it. A caption says how many answers the levels rest on and that AMP started from the birth year.
+  - The key to the bars sits once above the children, always on screen: Strong is 4 of the last 5 right without help; Earned is right once without help.
+  - Beside the children from 1024 px (under them on a phone): the feed (a skill missed three times, no practice in a week, ready for more, the weekly target), This week for the family, and How your kids get in.
+- **Today, a live practice session (round 2026-11-20, L8).** A family's class runs the same session a teacher's does, in a family's words. At rest the dashboard has one quiet bar above "Your kids": Start practice with the optional length. While a session runs the cockpit takes the bar's place and the children's live rows sit above the dashboard's blocks: clock and Stop, the totals, the requests ("Got it" for a raised hand, "Reset" for a forgotten picture), then one row per child (status, last five answers, problems, percent right, help, skill, last active), a short list at every width, never a grid. A child's row opens the child's page. A child on the parent's device who hasn't answered yet reads "Not started". Levels show per child, in grade words, only where that child's "Show grade level" is on. Stop asks, then opens the report at `/family/<family>/sessions/<session>` with Today the current tab; past sessions are a compact "Past sessions" list at the foot of Today, which does not render before the first one has ended. The second parent sees and stops the same session. The cockpit's code is its own chunk: a family with no session running never downloads it.
+- **A child's page:** their name opens their record, with current estimates, daily practice time, earned skills, recent work, workbooks, practice time and report cards.
 - **Workbooks:** each child’s printable practice and recorded paper work.
 - **Settings:** children, people and sharing, the class code, the school year, the weekly target, and what children see (levels, standings, devices).
 - **The second parent** sees the same Family screens. She sees no buying, consent, naming or deletion.
@@ -162,7 +165,9 @@ Each of these is that person's own composition of shared components (rule 6). Th
 
 ### Teacher (a school's class)
 
-- **Today:** the Today feed, as in the product shots. Each item is an action with its reason:
+- **Today is the live session's cockpit (#2465).** Its top is the session control: at rest Start class with its length and the requests strip ("Needs you", one line); while a session runs, the cockpit (clock and Stop, the totals, requests, every student live, needs-you first, rows that never reorder by themselves). The feed and the week stay below it. Stop asks, then opens the session's report, a page of its own under Time (`sessions/<session>`): the headline, who to follow up with first, every student, the skills worked on. It prints with Cmd+P. Time lists the class's sessions. A session that ends by its own time stays on screen as it ended, with its report a tap away.
+- **The bar's Start class starts the session** and lands on Today; on Today itself the page's control is the action. While a session runs, every other tab's bar shows Live with the clock, back to Today. The projected sign-in board opens from Today's code (Full screen); the cockpit is private, the board public.
+- **Today's feed:** as in the product shots. Each item is an action with its reason:
   - a group stuck on a skill (Teach this lesson, or Print a group sheet);
   - a student to sit with;
   - students behind the week's target;

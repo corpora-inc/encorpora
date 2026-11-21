@@ -73,9 +73,12 @@ export function FamilyFrame({
   title,
   description,
   area,
+  width,
   children,
 }: {
   place: FamilyPlace;
+  /** A dashboard's content width (Today); every other screen's standard. */
+  width?: "wide";
   /** The level the screen shows (a child's), for an area opened over it. */
   area?: AreaSource;
   /** The screen's own data is still on its way. */
@@ -89,6 +92,7 @@ export function FamilyFrame({
   const content = (body: ReactNode) => (
     <Page
       id="family-content"
+      width={width}
       tabIndex={-1}
       className={styles.screen}
       data-dense

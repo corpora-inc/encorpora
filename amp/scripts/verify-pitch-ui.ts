@@ -63,9 +63,9 @@ export function notifyDeviceSessionChanged(){}export function notifyAccountSessi
 export async function signIn(){}export async function signOut(){}
 export async function authConfig(){const r=await fetch('/api/v1/auth-config');if(!r.ok)throw new Error('auth config '+r.status);return r.json();}`;
 const vite = await createServer({
-  cacheDir: noMedia
-    ? "node_modules/.vite-pitch-text"
-    : "node_modules/.vite-pitch",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ??
+    (noMedia ? "node_modules/.vite-pitch-text" : "node_modules/.vite-pitch"),
   logLevel: "error",
   plugins: [
     {

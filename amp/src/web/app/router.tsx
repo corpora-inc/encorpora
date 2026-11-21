@@ -102,15 +102,21 @@ import {
   preload,
 } from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
+import { loadClassSessionAction } from "../features/school/classes/session-action-slot";
 import { familyRoutes } from "./family-routes";
 import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
 import { appReturn } from "../features/spaces/returns";
+import { loadSpaceFrame } from "../features/spaces/useSpace";
+import { applyRouteHead, routeHead } from "./route-head";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { externalSignInFrom } from "./external-sign-in";
-import { applyDeferredIdentity } from "../features/school/join/api";
+import {
+  applyDeferredIdentity,
+  deferredIdentity,
+} from "../features/school/join/deferred-identity";
 import { settleLegacyLayers } from "../nav/links";
 import { layerScope, seedLayers, useLayerStore } from "../nav/layer-store";
 import {
@@ -228,15 +234,24 @@ const root = createRootRoute({
       .catch((error: unknown) =>
         console.warn("The session didn’t load ahead", error),
       );
-    // The document's first screen already read the account in this load: a
-    // hop on the way to it (an alias, `/practice` to the learner's own
-    // address) is the same screen and reads it once.
-    const firstLoadRead =
-      !router.state.resolvedLocation &&
+    const known =
       !!session &&
       queryClient.getQueryData(meOptions(session).queryKey) !== undefined;
-    // The resource's observer shows its own error; this refresh only logs.
-    if (session && !firstLoadRead)
+    // Who this is and the place the address names are known before any
+    // screen renders, so the frame's first paint is the destination's
+    // (features/spaces/useSpace.ts `loadSpaceFrame`). Cached, it costs
+    // nothing: a warm move paints at once.
+    await loadSpaceFrame(
+      session ?? null,
+      location.pathname,
+      location.search as Record<string, unknown>,
+    );
+    // A later move refreshes an account already known, without waiting on
+    // it. (The document's first screen read it just now; a hop on the way to
+    // it, an alias or `/practice` to the learner's own address, is the same
+    // screen and reads it once.) The resource's observer shows its own
+    // error; this refresh only logs.
+    if (session && known && router.state.resolvedLocation)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
         .catch((error: unknown) =>
@@ -396,6 +411,10 @@ async function beforeStart({
     // kept for the account; the next steps are plain paths.
     fundedSetup(session.accountId, location.search),
   );
+  // Nothing left to set up: the account's own place in this one hop, never
+  // `/` and a second hop from there.
+  if (target === "/" && !Object.keys(search).length)
+    await toOwnPlace(me.signedIn ? me : undefined);
   if (target) elsewhere(withQuery(target, search));
 }
 /**
@@ -437,10 +456,19 @@ const home = createRoute({
     program: search.program,
     ...campaignSearch(search),
   }),
-  loader: async ({ deps, location }) => {
+  loader: async ({ deps, location, preload }) => {
     const session = homeSession(location.search);
     const shown = showsPitch(session);
     setPitchShown(shown);
+    // Decided: `/`'s title is the screen's before it paints (index.html
+    // carries the pitch's; RouterView writes the same once it resolves).
+    // Only on the document's first screen: a later move keeps the screen
+    // it leaves, and its title, until `/` paints.
+    const head =
+      !preload &&
+      !router.state.resolvedLocation &&
+      routeHead(location.href, shown ? "pitch" : "app");
+    if (head) applyRouteHead(document, head);
     if (!shown) {
       // Signed in, `/` is the launcher: its places arrive with it, so it
       // paints whole (the native app keeps its own screen here).
@@ -854,12 +882,19 @@ const beforeWorkbooks = ({
 }: {
   location: { pathname: string; searchStr: string };
 }) => requireSignedIn(location, { web: true, adults: true });
+/** A learner's workbook screen paints whole: its first reads arrive with it
+ * (app/workbook-loaders.ts, fetched with the route, never in the entry). */
+const workbookLoader =
+  (name: "history" | "day" | "results") =>
+  async (input: { params: Record<string, string> }) =>
+    (await import("./workbook-loaders")).workbookLoaders[name](input);
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader("history"),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
     "WorkbookHistoryScreen",
@@ -870,6 +905,7 @@ const workbookDay = createRoute({
   path: "/learners/$learnerId/workbooks/$date",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader("day"),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
     "WorkbookDayScreen",
@@ -880,6 +916,7 @@ const workbookResults = createRoute({
   path: "/learners/$learnerId/workbooks/$workbookId/results",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader("results"),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
@@ -1034,6 +1071,14 @@ const schoolClass = createRoute({
           params.class,
         ),
       ),
+      // The bar's Start class and whether a session runs: with the frame.
+      loadClassSessionAction(),
+      liveLoaders().then((loaders) =>
+        loaders.classLive((context as { session: AuthSession }).session, {
+          org: params.org,
+          class: params.class,
+        }),
+      ),
     ]),
 });
 const schoolClassToday = createRoute({
@@ -1043,19 +1088,32 @@ const schoolClassToday = createRoute({
   // the screen paints.
   loader: async ({ context, params }) => {
     const session = (context as { session: AuthSession }).session;
+    const place = { org: params.org, class: params.class };
     const me = await queryClient
       .ensureQueryData(meOptions(session))
       .catch((error: unknown) =>
         console.warn("The account didn’t load ahead", error),
       );
-    if (me?.signedIn && me.familyClass?.classId === params.class)
-      await Promise.all([
-        preload(approvalsOptions(session)),
-        preload(secondParentOptions(session)),
-      ]);
+    await Promise.all([
+      me?.signedIn &&
+        me.familyClass?.classId === params.class &&
+        Promise.all([
+          preload(approvalsOptions(session)),
+          preload(secondParentOptions(session)),
+        ]),
+      // Today's feed and week, and its live session (#2465): the cockpit
+      // paints with the page, at rest or running, never after it.
+      import("../features/school/classes/teacher-api").then(
+        ({ todayOptions }) => preload(todayOptions(session, place)),
+      ),
+      liveLoaders().then((loaders) => loaders.classLive(session, place)),
+    ]);
   },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
+/** A class's live reads, fetched with its routes (app/class-live-loaders.ts),
+ * never in the entry's code. */
+const liveLoaders = () => import("./class-live-loaders");
 /** The map with everything its first paint shows: a small class's map
  * (six or fewer, ClassMap.tsx) carries each learner's grade line, so its
  * gradebook loads with it rather than pushing the page down after. */
@@ -1089,7 +1147,27 @@ const schoolClassGradebook = createRoute({
 const schoolClassTime = createRoute({
   getParentRoute: () => schoolClass,
   path: "time",
+  // The class's sessions, at the report's foot, arrive with it.
+  loader: async ({ context, params }) =>
+    (await liveLoaders()).classSessions(
+      (context as { session: AuthSession }).session,
+      { org: params.org, class: params.class },
+    ),
   component: lazyRouteComponent(classScreens, "TimeScreen"),
+});
+/** One session's stored report (#2465), under the class's Time. Its read
+ * comes with it; a session still running answers 409, which the screen
+ * shows as the way back to the live view. */
+const schoolClassSession = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "sessions/$session",
+  loader: async ({ context, params }) =>
+    (await liveLoaders()).sessionReport(
+      (context as { session: AuthSession }).session,
+      { org: params.org, class: params.class },
+      params.session,
+    ),
+  component: lazyRouteComponent(classScreens, "SessionReportScreen"),
 });
 const schoolClassReportCards = createRoute({
   getParentRoute: () => schoolClass,
@@ -1214,8 +1292,16 @@ const schoolConnect = createRoute({
   beforeLoad: async () => {
     admit({ web: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
-    if (config.mode === "accounts" && !config.clever)
+    if (config.mode === "accounts" && !config.clever) {
+      // Class setup's own guard, here, so this is one hop: a student's
+      // device to its practice, someone signed out to sign-in that comes
+      // back to setup, everyone else to setup.
+      await requireSignedIn(
+        { pathname: "/school/start", searchStr: "" },
+        { web: true, adults: true, back: "here" },
+      );
       elsewhere("/school/start");
+    }
     if (studentSession()) {
       // The component may already have captured a hash-only completion.
       // Await its validation; only the helper can replace a student, and
@@ -1606,8 +1692,23 @@ const fallback = createRoute({
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
   loader: async ({ location }) => {
+    // The person this screen shows: a hand-over's child, whose identity
+    // arrives with the screen itself (features/school/join/deferred-identity.ts),
+    // or whoever is signed in.
+    const student = (
+      deferredIdentity() ??
+      (queryClient.getQueryData(sessionOptions.queryKey) as
+        AuthSession | null | undefined)
+    )?.token?.startsWith("st_");
     await Promise.all([
       legacy.preload?.(),
+      // A school student's practice bar holds the raised hand: its code
+      // arrives with the screen, so the bar never gains a button after
+      // paint. Nobody else downloads it.
+      student &&
+        import("../features/live/RaiseHandSlot").then((slot) =>
+          slot.preloadRaiseHand(),
+        ),
       location.pathname === "/overview" &&
         import("../lib/learning-view").then((view) =>
           view.preloadOverviewLevel({
@@ -1675,6 +1776,7 @@ export const router = createRouter({
       schoolClassMap,
       schoolClassGradebook,
       schoolClassTime,
+      schoolClassSession,
       schoolClassReportCards,
       schoolClassSettings,
       schoolClassRoster,
@@ -1931,7 +2033,7 @@ router.subscribe("onResolved", ({ toLocation }) => {
 // A device handed to a child from a parent's screen: the child's identity
 // arrives in the same render as the screen that mounts next (practice), so
 // the parent's screen never redraws for the child first
-// (features/school/join/api.ts).
+// (features/school/join/deferred-identity.ts).
 router.subscribe("onBeforeRouteMount", () => applyDeferredIdentity());
 // A link from before the layer store names its layers in the address
 // (`?open=`): once the screen is on view they move into the store

@@ -46,6 +46,7 @@ import {
 import { ENTITY_KINDS, OPEN_KEY } from "../src/web/nav/entities";
 import { storedLayers } from "./layer-probe";
 import { startPersonaStack } from "./persona-stack";
+import { fill, trim, type Route } from "./route-addresses";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -128,6 +129,8 @@ const UNREACHABLE: Record<string, string> = {
   "/learners/$learnerId/workbooks/$workbookId/results":
     "a printed workbook's marked results",
   "/school/$org/classes/$class/workbooks/$date": "a printed workbook's day",
+  "/school/$org/classes/$class/sessions/$session":
+    "a live session's report; the seeded classes have run none (verify-live-cockpit-screen-ui opens one)",
 };
 /** Screens that only forward an old address to where it lives now: they
  * are reached as an address is, inside the same place. */
@@ -147,8 +150,6 @@ const view = (page: Page): View => {
   const url = new URL(page.url());
   return { path: url.pathname, search: url.searchParams };
 };
-const trim = (path: string) =>
-  path.length > 1 ? path.replace(/\/+$/, "") : path;
 /** The screen's layers (nav/layer-store.ts): never in its address. */
 const layers = (page: Page) => storedLayers(page);
 /** The page's own view: its search without the layers and what they read. */
@@ -263,46 +264,10 @@ async function land(page: Page, path: string) {
   return trim(view(page).path);
 }
 
-type Route = { path: string; page: boolean };
 /** The person's place: where `/` opens them, and its class. */
 type Context = { org?: string; classId?: string; family: boolean };
 /** A concrete page of a place, to crawl: its kind and prefix. */
 type PlacePage = { type: "class" | "school" | "practice"; path: string };
-
-const paramPattern = (path: string) =>
-  new RegExp(
-    `^${trim(path)
-      .replace(/[()*+.?[\\\]^{|}]/g, "\\$&")
-      .replace(/\/\$$/, "/(.+)")
-      .replace(/\$[A-Za-z]+/g, "([^/]+)")}$`,
-  );
-
-/** The route's address with what is known filled in, or null. */
-function fill(
-  route: Route,
-  known: Record<string, string>,
-  seen: Iterable<string>,
-) {
-  const path = trim(route.path);
-  if (SPLATS[route.path] !== undefined) {
-    const filled = path
-      .replace(/\$org/, known.org ?? "$org")
-      .replace(/\$class/, known.class ?? "$class")
-      .replace(/\/\$$/, `/${SPLATS[route.path]}`);
-    return filled.includes("$") ? null : filled;
-  }
-  const filled = path.replace(/\$([A-Za-z]+)/g, (whole, name: string) =>
-    name in known ? known[name]! : whole,
-  );
-  if (!filled.includes("$")) return filled;
-  // An id only the person's own screens know: an address they link to.
-  const pattern = paramPattern(filled);
-  for (const href of seen) {
-    const at = href.split("?")[0]!;
-    if (pattern.test(at)) return at;
-  }
-  return null;
-}
 
 /** Which place a reached page belongs to, for this person, if any. */
 function placeOf(path: string, context: Context): PlacePage["type"] | null {
@@ -719,7 +684,7 @@ try {
     const reach = async () => {
       for (const route of table!) {
         if (route.path in UNREACHABLE || tried.has(route.path)) continue;
-        const path = fill(route, known, seen);
+        const path = fill(route, known, seen, SPLATS);
         if (!path) continue;
         const ours = placeOf(path, place);
         if (!ours && reachedRoutes.has(route.path)) continue;

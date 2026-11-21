@@ -1,0 +1,75 @@
+/* One learner's row (LearnerRow). Fixed heights: 64 px on a phone, 56 px
+   from 600 px, 44 px in a dense desktop grid. Nothing inside wraps a second
+   time, so a number changing never moves the row or the rows under it.
+   `--learner-action` (set by the list) gives every row's action one width. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto var(--learner-action, auto);
+  grid-template-areas:
+    "name status action"
+    "facts facts facts";
+  grid-template-rows: 44px 20px;
+  align-items: center;
+  column-gap: var(--space-3);
+  height: 64px;
+  box-sizing: border-box;
+  min-width: 0;
+  list-style: none;
+}
+.name {
+  grid-area: name;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.facts {
+  grid-area: facts;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  line-height: 20px;
+  white-space: nowrap;
+}
+.status {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: var(--text-table-small);
+  white-space: nowrap;
+}
+.action {
+  grid-area: action;
+  display: grid;
+  justify-items: stretch;
+  min-width: 0;
+}
+
+@media (min-width: 600px) {
+  .row {
+    grid-template-columns:
+      minmax(7rem, var(--learner-name, 11rem)) minmax(0, 1fr) auto
+      var(--learner-action, auto);
+    grid-template-areas: "name facts status action";
+    grid-template-rows: 56px;
+    height: 56px;
+  }
+  .facts {
+    font-size: var(--text-table);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dense {
+    grid-template-rows: 44px;
+    height: 44px;
+  }
+}

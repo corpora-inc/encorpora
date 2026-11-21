@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { seedLearnerScript } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import { settleArrival } from "./ui-settle";
@@ -16,7 +17,6 @@ import {
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
-import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import {
   assertProblemReachable,
   assertPhoneLandscapeSmoke,
@@ -175,7 +175,7 @@ try {
           });
     if (path.endsWith("/frontier")) return route.fulfill({ json: frontier });
     if (path.endsWith("/practice-state"))
-      return route.fulfill({ json: defaultPracticeSettings() });
+      return route.fulfill({ json: practiceStateFixture() });
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/batches"))
       return route.fulfill({

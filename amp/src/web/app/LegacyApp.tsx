@@ -11,6 +11,8 @@ import {
   usePracticeAdjustment,
   type PracticeIntent,
 } from "../features/practice/practice-settings";
+import type { ShownLook } from "../../learning/look";
+import { useLook } from "../features/practice/look";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
@@ -95,6 +97,7 @@ import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
 import { AnswerFeedback } from "../features/practice/AnswerFeedback";
+import { Celebration } from "../features/practice/celebration/Celebration";
 import { ProblemGrade } from "../features/practice/ProblemGrade";
 import { PracticeWorkspace, usePracticeViewport } from "../PracticeWorkspace";
 import {
@@ -511,13 +514,18 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     upcoming.current = null;
     navigationEpoch.current++;
   }, [filterKey]);
-  // Loaded with the first practice problem (and only then), so a focused
-  // skill's "Mixed practice" action is already known when that problem's
-  // feedback opens.
+  // One read of the learner's practice-state per practice: the look needs it
+  // before the first problem paints, and a focused skill's "Mixed practice"
+  // action is then already known when that problem's feedback opens. Both
+  // readers share one condition: a reader enabled later finds the read
+  // stale (staleTime 0) and asks the server again.
+  const readsPractice = !!learner && !nativeRuntime && tab === "practice";
   const practiceSettings = useQuery({
     ...practiceSettingsOptions(adjustments.scope),
-    enabled: !!learner && !nativeRuntime && tab === "practice" && !!problem,
+    enabled: readsPractice,
   });
+  // The look for this learner's practice (`data-look` on <html> while here).
+  const practiceLook = useLook(adjustments.scope, readsPractice);
   const [books, setBooks] = useState<BookSummary[]>([]);
   const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
@@ -644,6 +652,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       response: string;
       hintViewed?: boolean;
       help?: ("hint" | "lesson" | "video" | "example")[];
+      look?: ShownLook;
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
@@ -1246,6 +1255,8 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       response,
       ...(problem.hintSupport && hint ? { hintViewed: true } : {}),
       ...(help.length ? { help } : {}),
+      // The look actually shown, once known (older servers ignore it).
+      ...(practiceLook.shown ? { look: practiceLook.shown } : {}),
     };
     setPending(attempt);
     try {
@@ -1972,6 +1983,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             response={response}
             setResponse={setResponse}
             outcome={outcome}
+            celebration={<Celebration outcome={outcome} problem={problem} />}
             answerFeedback={
               outcome &&
               catalog &&

@@ -1,12 +1,11 @@
 import { setFinishingSignIn } from "./finishing";
+import { applyDeferredIdentity, deferIdentity } from "./deferred-identity";
 import { familyPracticeState } from "../../../lib/family-practice-history";
 import type { PracticeFilter } from "../../practice/curriculum-filter";
 import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
-import { createStore } from "zustand/vanilla";
-import type { AuthSession } from "../../../auth";
 import type { z } from "zod";
 import {
   joinRosterResource,
@@ -14,6 +13,10 @@ import {
   type SchoolPicture,
   type StudentGrant,
 } from "../../../../schools/contracts";
+import {
+  forgotPictureResponse,
+  raiseForgotPictureResponse,
+} from "../../../../schools/live/contracts";
 import { notifyDeviceSessionChanged } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { qk } from "../../../lib/keys";
@@ -73,15 +76,15 @@ export class JoinError extends AppError {
  * using the shared transport boundary for the request itself. */
 async function post<T>(
   path: string,
-  body: object,
+  body: object | null,
   schema: z.ZodType<T>,
 ): Promise<T> {
   let response: Response;
   try {
     response = await requestFetch(`/api/v1/school/join/${path}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      method: body ? "POST" : "GET",
+      headers: body ? { "Content-Type": "application/json" } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
       signal: AbortSignal.timeout(15_000),
     });
   } catch (error) {
@@ -136,6 +139,24 @@ export const signInWithPictures = (input: {
   set: boolean;
 }) => post("picture", input, studentGrantResource);
 
+/** "I forgot my pictures": asks the class's adult (`POST …/forgot-picture`). */
+export const askForgotPicture = (input: { code: string; personId: string }) =>
+  post("forgot-picture", input, raiseForgotPictureResponse);
+
+/** The student remembered: takes the request back (`POST …/forgot-picture/withdraw`). */
+export const withdrawForgotPicture = (input: {
+  code: string;
+  personId: string;
+}) => post("forgot-picture/withdraw", input, forgotPictureResponse);
+
+/** Where that request stands (`GET …/forgot-picture`): waiting, reset, or none. */
+export const readForgotPicture = (input: { code: string; personId: string }) =>
+  post(
+    `forgot-picture?${new URLSearchParams(input)}`,
+    null,
+    forgotPictureResponse,
+  );
+
 export const signInWithCard = (token: string) =>
   post("card", { token }, studentGrantResource);
 
@@ -174,12 +195,20 @@ export function useFinishSignIn() {
       else notifyDeviceSessionChanged(session, { handoff: handed });
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
-      const me = await queryClient
-        .fetchQuery(meOptions(session))
-        .catch((error) => {
+      // The raised hand's code too: a student's practice bar holds it from
+      // its first frame, and fetched here it never slows the route's loader
+      // (app/router.tsx, `/$`) past the moment practice mounts.
+      const [me] = await Promise.all([
+        queryClient.fetchQuery(meOptions(session)).catch((error) => {
           console.warn("Practice will load `/me` itself", error);
           return null;
-        });
+        }),
+        import("../../live/RaiseHandSlot")
+          .then((slot) => slot.preloadRaiseHand())
+          .catch((error: unknown) =>
+            console.warn("The raised hand will load with practice", error),
+          ),
+      ]);
       // Straight to the student's practice, at its own address: one entry.
       const learner =
         learnerId ?? (me?.signedIn ? me.learners[0]?.id : undefined);
@@ -207,24 +236,4 @@ export function useFinishSignIn() {
     },
     [navigate],
   );
-}
-
-/** The identity a hand-over is waiting to show with practice. */
-const handOver = createStore<{ session: AuthSession | null }>(() => ({
-  session: null,
-}));
-function deferIdentity(session: AuthSession) {
-  handOver.setState({ session });
-}
-/** Shows the handed child's identity, if one waits: called as the router
- * mounts the next screen, so the switch renders with practice. Keeps the
- * child's `/me`, fetched before the move, across the switch. */
-export function applyDeferredIdentity() {
-  const session = handOver.getState().session;
-  if (!session) return;
-  handOver.setState({ session: null });
-  const me = queryClient.getQueryData(meOptions(session).queryKey);
-  // A family hand-over: Providers keeps the tree and the parent's cache.
-  notifyDeviceSessionChanged(session, { handoff: true });
-  if (me) queryClient.setQueryData(meOptions(session).queryKey, me);
 }

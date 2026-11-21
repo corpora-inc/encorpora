@@ -107,7 +107,7 @@ export function contrast(a: string, b: string) {
 }
 
 /** Each theme's text-on-surface pairs from tokens.css, with their ratios:
- * light is `:root`, dark is `:root[data-theme="dark"]` (the media query
+ * light is `:root`, dark is `:root[data-theme="dark"]` outside Colorful (the media query
  * repeats it). */
 export function textContrast() {
   const tokens = readFileSync(join(root, "ui/tokens.css"), "utf8");
@@ -125,7 +125,7 @@ export function textContrast() {
   };
   return [
     ["light", block(":root")],
-    ["dark", block(':root[data-theme="dark"]')],
+    ["dark", block(':root[data-theme="dark"]:not([data-look="bold"])')],
   ].flatMap(([theme, read]) =>
     TEXT_TOKENS.flatMap((text) =>
       SURFACE_TOKENS.map((surface) => ({
