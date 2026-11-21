@@ -40,6 +40,9 @@ type Activity = {
 };
 const idle: Activity = { navigate: () => {}, flush: () => {}, stop() {} };
 const SEND_EVERY_MS = 30_000;
+/** Help reaches the server this soon after it is opened, not at the next
+ * heartbeat: a teacher's live screen shows it as it happens. */
+export const HELP_SEND_AFTER_MS = 1_500;
 const MAX_DELTAS = 10;
 
 export function surfaceOf(path: string): Surface {
@@ -182,7 +185,23 @@ export function startActivity(
   };
   const queue: Delta[] = [];
   const help = new HelpQueue();
-  const unsubscribe = onHelp((note, at) => help.push(note, at));
+  /** The early send for help, when one is waiting. */
+  let helpTimer: ReturnType<typeof setTimeout> | undefined;
+  /** Help sends within `HELP_SEND_AFTER_MS` of the first note since the last
+   * send, so several opens go in one request. It is the heartbeat itself
+   * (`send`): the deltas counted so far ride with it and the server's clock
+   * moves with them, so a learner's credit is the same whenever it is sent. */
+  function sendHelpSoon() {
+    if (helpTimer !== undefined || stopped) return;
+    helpTimer = setTimeout(() => {
+      helpTimer = undefined;
+      void send(false);
+    }, HELP_SEND_AFTER_MS);
+  }
+  const unsubscribe = onHelp((note, at) => {
+    help.push(note, at);
+    sendHelpSoon();
+  });
   const visible = () =>
     document.visibilityState === "visible" && document.hasFocus();
   let clock = new EngagementClock(performance.now(), visible());
@@ -225,6 +244,11 @@ export function startActivity(
       }
       return;
     }
+    // Anything sent now answers the early send that was waiting.
+    if (helpTimer !== undefined) {
+      clearTimeout(helpTimer);
+      helpTimer = undefined;
+    }
     const takenAt = performance.now();
     const batches: { deltas: Delta[]; events: HelpEvent[] }[] = [];
     do
@@ -233,6 +257,8 @@ export function startActivity(
         events: help.take(takenAt),
       });
     while (flushing && (queue.length || help.size));
+    // More help than one request carries goes in the next early send.
+    if (!flushing && help.size) sendHelpSoon();
     for (const { deltas, events } of batches)
       try {
         const response = await requestFetch(target.url, {
@@ -317,6 +343,7 @@ export function startActivity(
       running.delete(watcher);
       unsubscribe();
       clearInterval(timer);
+      if (helpTimer !== undefined) clearTimeout(helpTimer);
       for (const e of interactions) window.removeEventListener(e, interact);
       window.removeEventListener("focus", interact);
       window.removeEventListener("blur", leave);
