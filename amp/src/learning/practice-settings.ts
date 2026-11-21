@@ -81,11 +81,14 @@ export const practiceChangeSchema = z.discriminatedUnion("kind", [
 export type PracticeChange = z.infer<typeof practiceChangeSchema>;
 
 /** What `/practice-state` answers: the stored settings, and the look that
- * applies to this learner now and whether a class locked it. */
+ * applies to this learner now and whether a class locked it, and their
+ * points (`learning/points.ts`) so practice shows the total on first paint.
+ * Points may be absent (an older server); a screen then shows none. */
 export const practiceStateSchema = practiceSettingsSchema.extend({
   effectiveLook: lookSchema,
   lookLocked: z.boolean(),
   /** Who holds it: the class (or school), or a grown-up. */
   lookLockedBy: z.enum(["class", "adult"]).nullable().default(null),
+  points: z.number().int().nonnegative().optional(),
 });
 export type PracticeState = z.infer<typeof practiceStateSchema>;

@@ -8,7 +8,6 @@ import type { TodayResponse } from "../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { meOptions } from "../../../lib/query";
-import { secondParentOptions } from "../../second-parent/api";
 import { currentSession, orgOptions } from "../api";
 import { classYearOptions } from "../org/org-api";
 import { useDemoOrg } from "../demo/DemoPlace";
@@ -19,7 +18,6 @@ import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { mapOptions, todayOptions } from "./teacher-api";
 import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
 import { FamilyNotice } from "./today/FamilyNotice";
-import { FamilyToday } from "./today/FamilyToday";
 import { Feed } from "./today/Feed";
 import { PracticeSlot } from "./today/PracticeSlot";
 import { todoEntries, useChecks } from "./today/todo-entries";
@@ -157,11 +155,9 @@ function ClassToday({
   );
 }
 
-/** Today for one class, about today (docs/design/ia.md). A class's: its name
- * and the date, the class code, the feed, the week. A family's: the date
- * (never the parent's own name), the code, each child on a line, the same
- * feed in a parent's words, the week. Who else teaches or belongs lives on
- * People. */
+/** Today for one class, about today (docs/design/ia.md): its name and the
+ * date, the class code, the feed, the week. A family's own Today is
+ * features/family/Today.tsx. Who else teaches or belongs lives on People. */
 export function TodayScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/today" });
   const session = useStaffSession();
@@ -173,22 +169,16 @@ export function TodayScreen() {
   // A family-kind class reached at its class address is a tutoring group: a
   // parent's own family class opens at /family, so this is the classroom
   // composition, the whole group, in a classroom's words.
-  const family = false;
   const today = useQuery(todayOptions(session, place));
-  // The class code, for a student's own device: with Today, never after it.
+  // The class's sign-in standing, for the header's practice slot.
   const presence = useQuery(presenceOptions(session, place));
-  const code = presence.data?.class.joinCode;
   const me = useQuery(meOptions(account)).data;
   const signedIn = me?.signedIn ? me : undefined;
   const holder = signedIn?.familyClass?.classId === place.class;
-  const secondParent = useQuery({
-    ...secondParentOptions(account),
-    enabled: holder,
-  });
   const data = today.data;
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
-  const pilotNote = family ? null : pilotLeft(access.view);
+  const pilotNote = pilotLeft(access.view);
   // The header's practice slot (PracticeSlot): the Start action, the code,
   // Request seats, one height in every state, so practice opening during
   // this visit moves nothing (CP-3 r6).
@@ -200,15 +190,10 @@ export function TodayScreen() {
       }),
     )?.can ?? []
   ).includes("signin.read");
-  const headed = !family && !!data && data.students.length > 0 && signInRead;
-  const loading =
-    access.pending ||
-    org.isPending ||
-    today.isPending ||
-    // A class's code has its own place (PracticeSlot), loading or failing
-    // there without holding the page: only a family's Today waits for it.
-    (family && presence.isPending) ||
-    (holder && secondParent.isPending);
+  const headed = !!data && data.students.length > 0 && signInRead;
+  // A class's code has its own place (PracticeSlot), loading or failing
+  // there without holding the page.
+  const loading = access.pending || org.isPending || today.isPending;
   return (
     <ClassFrame
       org={place.org}
@@ -222,26 +207,22 @@ export function TodayScreen() {
       ) : (
         <div className={todayStyles.today}>
           <header className={todayStyles.head}>
-            {/* The title is the day for a family and the class's name for
-                a class: never a greeting or the viewer's own name. */}
-            {family ? (
-              <h1 data-today-title="">{fullDay(data.today)}</h1>
-            ) : (
-              <div className={todayStyles.title}>
-                <h1 data-today-title="">{data.class.name}</h1>
-                <p>{fullDay(data.today)}</p>
-                {/* Days left in the pilot or its grace. Its line is always
-                    held, so a pilot starting, its grace or the paywall
-                    never moves the header (premium rule 1). */}
-                <p
-                  data-pilot-left=""
-                  aria-hidden={pilotNote ? undefined : true}
-                  className={pilotNote ? undefined : todayStyles.heldLine}
-                >
-                  {pilotNote ?? "\u00a0"}
-                </p>
-              </div>
-            )}
+            {/* The title is the class's name: never a greeting or the
+                viewer's own name. */}
+            <div className={todayStyles.title}>
+              <h1 data-today-title="">{data.class.name}</h1>
+              <p>{fullDay(data.today)}</p>
+              {/* Days left in the pilot or its grace. Its line is always
+                  held, so a pilot starting, its grace or the paywall never
+                  moves the header (premium rule 1). */}
+              <p
+                data-pilot-left=""
+                aria-hidden={pilotNote ? undefined : true}
+                className={pilotNote ? undefined : todayStyles.heldLine}
+              >
+                {pilotNote ?? "\u00a0"}
+              </p>
+            </div>
             {/* The code waits for a roster, and for practice. A family's
                 children mostly practice on the parent's device: their code
                 is an option under the children, not the page's lead. */}
@@ -258,21 +239,8 @@ export function TodayScreen() {
             )}
           </header>
           {signedIn && holder && <FamilyNotice me={signedIn} />}
-          {family ? (
-            <FamilyToday
-              data={data}
-              place={place}
-              code={code ?? null}
-
-              me={signedIn}
-              secondParent={holder ? secondParent.data : undefined}
-            />
-          ) : (
-            <>
-              <ClassToday data={data} place={place} headed={headed} />
-              <AccessSheets place={place} />
-            </>
-          )}
+          <ClassToday data={data} place={place} headed={headed} />
+          <AccessSheets place={place} />
         </div>
       )}
     </ClassFrame>
@@ -291,7 +259,6 @@ export function MapScreen() {
   // A family-kind class reached at its class address is a tutoring group: a
   // parent's own family class opens at /family, so this is the classroom
   // composition, the whole group, in a classroom's words.
-  const family = false;
   const words = spaceWords("classroom");
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
@@ -315,13 +282,13 @@ export function MapScreen() {
         <LoadFailed what="The class map" onRetry={() => void map.refetch()} />
       ) : map.data.students.length === 0 ? (
         <div className={styles.page}>
-          <ScreenTitle>{family ? "Map" : "Class map"}</ScreenTitle>
+          <ScreenTitle>Class map</ScreenTitle>
           <EmptyMap org={place.org} classId={place.class} />
         </div>
       ) : (
         <div>
           <div className={styles.mapHead}>
-            <ScreenTitle>{family ? "Map" : "Class map"}</ScreenTitle>
+            <ScreenTitle>Class map</ScreenTitle>
             <MapKey data={map.data} words={words} />
           </div>
           <ClassMap

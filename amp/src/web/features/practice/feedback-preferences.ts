@@ -82,6 +82,21 @@ export function prepareFeedbackSound() {
   }
 }
 
+/** A look's own right-answer sound: the notes (Hz) to play in order, and
+ * whether each gets a soft octave above it. Null: the plain sound. Colorful
+ * registers one (celebration/sound.ts); Calm never does. */
+export type FeedbackVoice = (
+  milestone: boolean,
+) => { notes: readonly number[]; rich?: boolean; step?: number } | null;
+let voice: FeedbackVoice | null = null;
+/** Use `next` for right answers until the returned release is called. */
+export function setFeedbackVoice(next: FeedbackVoice) {
+  voice = next;
+  return () => {
+    if (voice === next) voice = null;
+  };
+}
+
 /** Never awaited by the learning loop. Existing outcomes do not call this. */
 export function playCorrectFeedback(milestone = false) {
   const preferences = useFeedbackPreferences.getState();
@@ -96,14 +111,28 @@ export function playCorrectFeedback(milestone = false) {
   if (!preferences.sound || !context || context.state !== "running") return;
   try {
     const audio = context;
-    const notes = milestone ? [523.25, 659.25, 783.99] : [659.25, 783.99];
-    notes.forEach((frequency, i) => {
+    let custom: ReturnType<FeedbackVoice> = null;
+    try {
+      custom = voice?.(milestone) ?? null;
+    } catch (error) {
+      console.warn("Feedback voice failed; the plain sound plays", error);
+    }
+    const notes =
+      custom?.notes ??
+      (milestone ? [523.25, 659.25, 783.99] : [659.25, 783.99]);
+    const step = custom?.step ?? 0.07;
+    const tone = (
+      frequency: number,
+      at: number,
+      peak: number,
+      type: OscillatorType,
+    ) => {
       const oscillator = audio.createOscillator();
       const gain = audio.createGain();
-      const at = audio.currentTime + i * 0.07;
+      oscillator.type = type;
       oscillator.frequency.value = frequency;
       gain.gain.setValueAtTime(0, at);
-      gain.gain.linearRampToValueAtTime(0.035, at + 0.012);
+      gain.gain.linearRampToValueAtTime(peak, at + 0.012);
       gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.16);
       oscillator.connect(gain).connect(audio.destination);
       oscillator.start(at);
@@ -112,6 +141,11 @@ export function playCorrectFeedback(milestone = false) {
         oscillator.disconnect();
         gain.disconnect();
       };
+    };
+    notes.forEach((frequency, i) => {
+      const at = audio.currentTime + i * step;
+      tone(frequency, at, 0.035, "sine");
+      if (custom?.rich) tone(frequency * 2, at, 0.01, "triangle");
     });
   } catch (error) {
     // Feedback never affects answer delivery or progression.

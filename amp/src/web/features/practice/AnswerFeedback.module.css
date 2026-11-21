@@ -21,7 +21,14 @@
   border-radius: var(--radius-control);
   padding: var(--space-1) var(--space-2);
   font-weight: 750;
+  font-variant-numeric: var(--numeric);
   white-space: nowrap;
+}
+/* Colorful: the points' own sunshine, as on the chip. */
+:global(:root[data-look="bold"]) .xp {
+  color: var(--color-on-points);
+  background: var(--color-points);
+  border-color: var(--color-points-edge);
 }
 /* Reserved for the loaded two-line strength ("Building" over a note that
    wraps once on a phone), so its arrival never grows the feedback sheet. */

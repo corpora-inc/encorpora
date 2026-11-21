@@ -4,7 +4,11 @@ import type { ProgressRecord } from "../../../schools/teacher-contracts";
 import { Loading } from "../../ui/Loading";
 import { Segmented } from "../../ui/Segmented";
 import { shortDay, TipZone } from "../school/classes/teacher-shared";
-import { practiceMinutes } from "../../lib/practice-minutes";
+import {
+  intervalDetail,
+  practiceTime,
+  type Interval,
+} from "../learners/week-words";
 import { childTimeOptions } from "./api";
 import type { FamilyPlace } from "./FamilyFrame";
 import styles from "./ChildActivity.module.css";
@@ -14,31 +18,9 @@ const shift = (day: string, offset: number) =>
     .toISOString()
     .slice(0, 10);
 
-export type Interval = { date: string; minutes: number; problems?: number };
-
-/** A day's or a week's practice in words, the one way every family screen
- * says it (lib/practice-minutes.ts): "4 min · 9 problems", "<1 min · 14
- * problems", "1 min"; null when nothing was done. */
-export function practiceTime(entry: Interval): string | null {
-  const minutes = practiceMinutes(entry.minutes, entry.problems ?? 0);
-  if (!minutes) return null;
-  return entry.problems === undefined
-    ? minutes
-    : `${minutes} · ${entry.problems} ${entry.problems === 1 ? "problem" : "problems"}`;
-}
-
-/**
- * What a chart column offers about its interval, the one rule for every
- * practice-time chart (a child's page, the family's week): its detail on
- * hover, tap and keyboard focus (TipZone reads `data-tip`). An interval
- * still ahead (a day after today) has happened to no one yet: it keeps its
- * place in the row but has no detail, no tip and no focus stop.
- */
-export function intervalDetail(text: string, ahead = false) {
-  return ahead
-    ? ({ "aria-hidden": true, "data-ahead": "" } as const)
-    : ({ tabIndex: 0, "aria-label": text, "data-tip": text } as const);
-}
+// The words of a practice interval and what its chart column offers live
+// with the learners' shared parts (learners/week-words.ts).
+export { intervalDetail, practiceTime, type Interval };
 
 /** Daily and weekly activity share one chart, beginning with practice.
  * Keep quiet intervals after that first practice; a single interval is a fact. */
