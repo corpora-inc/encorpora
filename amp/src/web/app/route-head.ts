@@ -1,4 +1,5 @@
 import { indexableDocumentPath } from "./document-index";
+import shareCards from "./share-cards.json";
 import {
   appPageTitle,
   pitchProgramId,
@@ -37,8 +38,19 @@ export type RouteHead = {
   /** Public routes only: the path alone, without campaign, click or program labels. */
   canonical: string | null;
   robots: "noindex, follow" | null;
+  /** The share card, 1200×630, absolute. Undefined keeps the document's own
+   * (the product card `index.html` carries) until a route writes a card;
+   * from then on a route without one has none. Crawlers read the served
+   * document, never a head the app rewrote. */
   image?: string | null;
+  /** What the card shows, for a reader who can't see it. */
+  imageAlt?: string;
 };
+
+/** Each public page's share card, by path: built and recorded by
+ * scripts/build-share-cards.ts. `/` keeps the product card in `index.html`. */
+const cards: Readonly<Record<string, { image: string; alt: string }>> =
+  shareCards;
 
 /** App titles share GA's fixed labels; indexing uses a separate public-document policy.
  * Undefined for the public skill map and the comparisons (`/versus`), whose
@@ -54,11 +66,16 @@ export function routeHead(
     path === "/" && home === "pitch"
       ? pitchProgramId(search.get("program"))
       : undefined;
+  const card = cards[path];
   return {
     title,
     description:
       schoolDescriptions[path] ??
       pitchDescription(program && programNames[program]),
+    ...(card && {
+      image: new URL(card.image, publicOrigin).href,
+      imageAlt: card.alt,
+    }),
     canonical: indexableDocumentPath(path) && !(path === "/" && home !== "pitch")
       ? new URL(path, publicOrigin).href : null,
     robots: indexableDocumentPath(path) && !(path === "/" && home !== "pitch") ? null : "noindex, follow",
@@ -86,14 +103,23 @@ export function applyRouteHead(doc: Document, head: RouteHead) {
   meta(doc, "name", "description").content = head.description;
   if (head.robots) meta(doc, "name", "robots").content = head.robots;
   else doc.querySelectorAll(`meta[name="robots"]${own}`).forEach(tag => tag.remove());
-  if (head.image !== undefined || doc.querySelector("[data-pathways-current-image]")) {
-    for (const [attribute, key] of [["property", "og:image"], ["name", "twitter:image"]] as const) {
-      if (head.image) {
-        const tag = meta(doc, attribute, key); tag.content = head.image;
-        tag.setAttribute("data-pathways-current-image", "");
+  // Once a route has written a card, a route without one shows none, never
+  // the last page's.
+  if (head.image !== undefined || doc.querySelector("[data-route-image]")) {
+    const { image, imageAlt } = head;
+    for (const [attribute, key, content] of [
+      ["property", "og:image", image],
+      ["name", "twitter:image", image],
+      ["property", "og:image:width", image && "1200"],
+      ["property", "og:image:height", image && "630"],
+      ["property", "og:image:alt", image && imageAlt],
+      ["name", "twitter:image:alt", image && imageAlt],
+    ] as const) {
+      if (content) {
+        const tag = meta(doc, attribute, key); tag.content = content;
+        tag.setAttribute("data-route-image", "");
       } else doc.querySelectorAll(`meta[${attribute}="${key}"]`).forEach(tag => tag.remove());
     }
-    if (!head.image) doc.querySelectorAll('meta[property="og:image:width"],meta[property="og:image:height"]').forEach(tag => tag.remove());
   }
   let canonical = doc.head.querySelector<HTMLLinkElement>(
     `link[rel="canonical"]${own}`,
