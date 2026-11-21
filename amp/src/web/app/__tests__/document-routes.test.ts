@@ -82,8 +82,8 @@ test("the comparisons are served: the hub and one page each, nothing deeper", ()
     "/versus/i-ready/",
   ])
     expect(knownDocumentPath(path), path).toBe(true);
-  expect(routes).toContain("/versus");
-  expect(routes).toContain("/versus/$slug");
+  // One route serves both: the hub, and a comparison by its slug.
+  expect(routes).toContain("/versus/{-$slug}");
   for (const path of ["/versus/i-ready/more", "/versusx", "/versus//"])
     expect(knownDocumentPath(path), path).toBe(false);
 });

@@ -1522,24 +1522,18 @@ const research = createRoute({
 /** The comparisons, one chunk between them: the hub, and AMP beside one
  * other program. A page's words are its own file, loaded with it. */
 const versusScreens = () => import("../features/versus");
-const versusHub = createRoute({
+const versus = createRoute({
   getParentRoute: () => root,
-  path: "/versus",
+  // One route for both, so the app's entry carries one: `/versus` is the
+  // hub, `/versus/<slug>` a comparison.
+  path: "/versus/{-$slug}",
   staticData: { space: "public" },
   beforeLoad: notInTheApp,
-  component: lazyRouteComponent(versusScreens, "VersusHubScreen"),
-});
-const versusPage = createRoute({
-  getParentRoute: () => root,
-  path: "/versus/$slug",
-  staticData: { space: "public" },
-  beforeLoad: notInTheApp,
-  // The words arrive before the screen paints: one paint, nothing moves.
-  // A slug with no comparison is not found (features/versus/load.ts).
+  // A comparison's words arrive before the screen paints: one paint,
+  // nothing moves. A slug with no comparison is not found.
   loader: async ({ params }) =>
     (await versusScreens()).loadComparison(params.slug),
-  component: lazyRouteComponent(versusScreens, "VersusPageScreen"),
-  notFoundComponent: lazyRouteComponent(versusScreens, "VersusMissingScreen"),
+  component: lazyRouteComponent(versusScreens, "VersusScreen"),
 });
 /** A family's progress link. Its secret is in the fragment, which `share-entry`
  * has already taken out of the address bar. */
@@ -1722,8 +1716,7 @@ export const router = createRouter({
     schoolsScope,
     schoolsTrust,
     research,
-    versusHub,
-    versusPage,
+    versus,
     schoolsContinue,
     schoolStart,
     schoolStartStudents,

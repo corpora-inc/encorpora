@@ -1,8 +1,10 @@
 /** The comparison pages' content model (`/versus`, `/versus/<slug>`).
  *
- * `catalog.json` is the hub's list. `pages/<slug>.json` is one competitor.
- * AMP's own side (the table's rows, the categories) is `amp.ts`. Check any
- * change with `npm run versus:check` (validate.ts). */
+ * `pages/<slug>.json` is one competitor, and the only file its writer
+ * touches. `catalog.json`, the hub's list, is derived from the pages
+ * (`npm run versus:catalog`). AMP's own side (the table's rows, the
+ * categories) is `amp.ts`. Check one page with `npm run versus:check --
+ * <slug>`, or everything with `npm run versus:check` (validate.ts). */
 import type { ResearchComponentId } from "../research/report";
 
 /** The hub's groups, in the order it shows them. */
@@ -36,7 +38,8 @@ export const versusRowIds = [
 ] as const;
 export type VersusRowId = (typeof versusRowIds)[number];
 
-/** One line of the hub: `catalog.json` is a list of these. */
+/** One line of the hub: `catalog.json` is a list of these, written from the
+ * pages by `npm run versus:catalog` and never by hand. */
 export type VersusCatalogEntry = {
   /** The page's address (`/versus/<slug>`) and its file's name. */
   slug: string;
@@ -61,6 +64,9 @@ export type VersusPage = {
   /** The day the facts were checked, "2026-11-21"; shown as "Checked
    * November 2026". */
   checked: string;
+  /** The hub's line for this page: one sentence on why AMP over this one.
+   * At most 120 characters, and no citation marker. */
+  line: string;
   /** The words after the name in the page's title ("AMP vs i-Ready: <benefit>
    * | AMP"). Optional: without it the title takes its category's
    * (`amp.ts`). At most 32 characters. */
@@ -71,13 +77,14 @@ export type VersusPage = {
   verdict: string;
   /** "What <name> is": one to three fair paragraphs. */
   theirs: string[];
-  /** "What <name> does well": two to four short items. */
+  /** "What <name> does well": two to five short items. */
   credit: string[];
-  /** "Why AMP": three to six, each with the research it rests on. */
+  /** "Why AMP": three to eight, each with the research it rests on. */
   reasons: { title: string; body: string; research?: ResearchComponentId[] }[];
-  /** "The evidence": paragraphs about theirs, then ours. */
+  /** "The evidence": one to four paragraphs about theirs, then one to
+   * three about ours. */
   evidence: { theirs: string[]; ours: string[] };
-  /** The competitor's cell for each table row it has. */
+  /** The competitor's cell for each table row it has: at most 30 words. */
   rows: Partial<Record<VersusRowId, string>>;
   /** "Choose <name> if" and "Choose AMP if". */
   fit: { them: string[]; amp: string[] };

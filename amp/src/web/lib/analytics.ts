@@ -53,13 +53,15 @@ let google: ReturnType<typeof createGoogleAnalytics> | undefined;
 export function googleSignupContext() {
   return google?.signupContext();
 }
-export function trackGooglePage(): void {
+/** Measure this page in GA. `ownTitle`: a page that titles itself (a
+ * comparison) passes its document title once it has written it. */
+export function trackGooglePage(ownTitle?: string): void {
   if (nativeRuntime || (!analyticsAllowed() && !google)) return;
   (google ??= createGoogleAnalytics({
     home: () => (pitchShown ? "pitch" : "app"),
     blocked: isStudentDevice,
     arrival: arrivalTitleLabels,
-  })).navigate();
+  })).navigate(ownTitle);
 }
 
 /** First-party journey collection. A bounded tab queue survives reloads;

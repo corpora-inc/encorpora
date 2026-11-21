@@ -1,7 +1,6 @@
 /** The comparison pages' head tags and the few strings built from a page:
  * one source for the app (which writes them on navigation), the static
  * documents and the structured data. */
-import { publicAppPageTitles } from "../analytics/page-titles";
 import { publicOrigin, type RouteHead } from "../web/app/route-head";
 import {
   researchComponent,
@@ -25,9 +24,9 @@ export function versusPageTitle(
   return full.length <= TITLE_LIMIT ? full : `AMP vs ${page.name} | AMP`;
 }
 
-/** The hub's head. Its title is the one GA receives for `/versus`. */
+/** The hub's head. */
 export const versusHubHead: RouteHead = {
-  title: publicAppPageTitles["/versus"]!,
+  title: "AMP vs Other Math Programs | AMP",
   description:
     "How AMP compares with other math programs: what each one is, what it does well and where AMP differs, side by side and with sources.",
   canonical: new URL("/versus", publicOrigin).href,

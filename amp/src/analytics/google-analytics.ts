@@ -9,6 +9,7 @@ import {
   pitchProgramId,
   publicAppPageTitle,
   publicAppPageTitles,
+  selfTitledPath,
   type HomeScreen,
   type PitchProgramId,
 } from "./page-titles";
@@ -19,7 +20,8 @@ const disabledKey = `ga-disable-${GA_MEASUREMENT_ID}`;
 const clickKeys = ["gclid", "gbraid", "wbraid"];
 const publicAppPaths = new Set(Object.keys(publicAppPageTitles));
 
-/** A finite public route list. Private routes, fragments and arbitrary parameters
+/** A finite public route list, and the comparisons by their one path shape
+ * (`/versus`, `/versus/<slug>`). Private routes, fragments and arbitrary parameters
  * never become GA page locations. Learning activity stays in first-party reports.
  * `/` is public only while it shows the signed-out pitch; the signed-in home
  * is a learning screen.
@@ -36,7 +38,10 @@ export function googlePage(
   if (url.hostname === "corpora.inc" && Object.hasOwn(sitePages, path))
     safePath = path;
   if (url.hostname === "amp.corpora.inc") {
-    if (publicAppPaths.has(path) && (path !== "/" || home === "pitch"))
+    if (
+      (publicAppPaths.has(path) && (path !== "/" || home === "pitch")) ||
+      selfTitledPath.test(path)
+    )
       safePath = path;
   }
   if (!safePath) return;
@@ -65,16 +70,20 @@ export function googlePage(
 
 /** The page title GA receives: the same fixed table the app's document title
  * uses, so GA groups the pitch, its funded-program variants and each sign-up
- * intent separately. Never a document title, form value or account label. */
+ * intent separately. Never a form value or account label. A page that titles
+ * itself (a comparison, `selfTitledPath`) has the title its screen gives,
+ * `own`, which is its document title; until its screen gives one, none. */
 export function googlePageTitle(
   input: string,
   home: HomeScreen = "pitch",
   sitePages: Readonly<Record<string, string>> = marketingPageTitles,
+  own?: string,
 ): string | undefined {
   const page = googlePage(input, home, sitePages);
   if (!page) return;
-  if (new URL(page).hostname === "corpora.inc")
-    return sitePages[new URL(page).pathname];
+  const { hostname, pathname } = new URL(page);
+  if (hostname === "corpora.inc") return sitePages[pathname];
+  if (selfTitledPath.test(pathname)) return own;
   const url = new URL(input);
   return publicAppPageTitle(url.pathname + url.search, home);
 }
@@ -239,7 +248,8 @@ export function createGoogleAnalytics(
   function command(..._args: unknown[]) {
     (w.dataLayer ??= []).push(arguments);
   }
-  function navigate() {
+  /** Measure this page. `ownTitle`: from a page that titles itself. */
+  function navigate(ownTitle?: string) {
     try {
       const home = options.home?.() ?? "pitch";
       const page = permitted()
@@ -259,7 +269,11 @@ export function createGoogleAnalytics(
         labelled(location.href),
         home,
         options.sitePages,
+        ownTitle,
       );
+      // A page that titles itself is measured when its screen says its
+      // title, once: not on arrival, before the screen has it.
+      if (!title) return;
       if (sameGoogleVisit(previous, page) && title === previousTitle) return;
       const referrer = previous || safeReferrer(document.referrer);
       const pageParams = {

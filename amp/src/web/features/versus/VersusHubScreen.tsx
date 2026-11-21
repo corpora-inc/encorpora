@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect } from "react";
 import { researchComponent, researchPage } from "../../../research/report";
 import { versusHub } from "../../../versus/amp";
 import { versusGroups } from "../../../versus/catalog";
 import { versusHubHead, versusHubJsonLd } from "../../../versus/head";
 import { versusCatalog } from "../../../versus/pages";
-import { applyRouteHead } from "../../app/route-head";
-import { Topic, useStructuredData, VersusFrame } from "./VersusFrame";
+import { Topic, usePageHead, VersusFrame } from "./VersusFrame";
+import { VERSUS } from "./links";
 import styles from "./Versus.module.css";
 
 const groups = versusGroups(versusCatalog);
@@ -16,11 +15,9 @@ const data = versusHubJsonLd();
  * on why AMP. The words are `src/versus/amp.ts` and `catalog.json`, which
  * the static document repeats. */
 export function VersusHubScreen() {
-  // The hub's own head, as each comparison writes its own.
-  useEffect(() => applyRouteHead(document, versusHubHead), []);
-  useStructuredData(data);
+  usePageHead(versusHubHead, data);
   return (
-    <VersusFrame beside={{ to: "/schools", label: "Schools" }}>
+    <VersusFrame beside="schools">
       <section className={styles.intro} aria-labelledby="versus-title">
         <h1 id="versus-title" className={styles.title}>
           {versusHub.title}
@@ -58,7 +55,7 @@ export function VersusHubScreen() {
           <ul className={styles.index} data-versus-category={category.id}>
             {entries.map((entry) => (
               <li key={entry.slug}>
-                <Link to="/versus/$slug" params={{ slug: entry.slug }}>
+                <Link to={VERSUS} params={{ slug: entry.slug }}>
                   AMP vs {entry.name}
                 </Link>
                 <span>{entry.line}</span>

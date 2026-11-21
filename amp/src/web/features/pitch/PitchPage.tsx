@@ -68,7 +68,11 @@ export function PitchPage() {
       : "every cent";
   // Try it free: the first screen's one action, and again beside Buy.
   const tryFree = (variant: "primary" | "secondary") => (
-    <TryFreeButton variant={variant} className={styles.tryButton} />
+    <TryFreeButton
+      variant={variant}
+      className={styles.tryButton}
+      go={nav.go}
+    />
   );
   const freeNote = <FreeNote className={styles.note} />;
   // The free trial, under Buy: the other way in, never left alone.

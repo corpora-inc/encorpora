@@ -3,6 +3,7 @@
   "name": "CTCMath",
   "category": "courses",
   "checked": "2026-11-15",
+  "line": "CTCMath teaches by video, lesson by lesson. AMP chooses the next problem and brings review back.",
   "description": "CTCMath teaches K–12 math with short video lessons, then questions. AMP chooses every next problem, mixes in review and prints workbooks for each learner.",
   "verdict": "CTCMath is built around short narrated video lessons, each followed by its own questions [1]. AMP starts from the problem: it chooses each next one, explains it there, and brings earlier skills back for review.",
   "theirs": [

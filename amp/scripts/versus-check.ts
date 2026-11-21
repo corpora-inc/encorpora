@@ -1,18 +1,34 @@
 /**
- * Check the comparison content (src/versus/catalog.json and pages/*.json)
- * against its rules (src/versus/validate.ts): the schema, slugs and the
- * catalog, categories, table rows, research ids, citations and sources.
- * Prints each problem with its file and place, and fails if there is one.
+ * Check the comparison content against its rules (src/versus/validate.ts):
+ * the schema, slugs, categories, table rows, research ids, citations and
+ * sources. Prints each problem with its file and place, and fails if there
+ * is one.
  *
- *     npm run versus:check
+ *     npm run versus:check            every page, and that catalog.json is
+ *                                     what the pages give
+ *     npm run versus:check -- ixl     src/versus/pages/ixl.json alone:
+ *                                     nothing about the catalog or any
+ *                                     other page
  */
-import { checkVersusFiles, readVersusFiles } from "../src/versus/files";
+import {
+  checkVersusFiles,
+  checkVersusPage,
+  countVersusPages,
+} from "../src/versus/files";
 
-const problems = checkVersusFiles();
-const { files } = readVersusFiles();
+const slugs = process.argv.slice(2).map((name) =>
+  // A slug, or the file's own name or path.
+  name.replace(/^.*\//, "").replace(/\.json$/, ""),
+);
+const problems = slugs.length
+  ? slugs.flatMap((slug) => checkVersusPage(slug))
+  : checkVersusFiles();
 if (problems.length === 0) {
+  const pages = countVersusPages();
   console.log(
-    `Comparison content is valid: ${files.pages.length} page${files.pages.length === 1 ? "" : "s"} and the catalog.`,
+    slugs.length
+      ? `Valid: ${slugs.map((slug) => `src/versus/pages/${slug}.json`).join(", ")}.`
+      : `Comparison content is valid: ${pages} page${pages === 1 ? "" : "s"}, and catalog.json matches them.`,
   );
 } else {
   const byFile = new Map<string, string[]>();

@@ -2,20 +2,21 @@ import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
 import { track } from "../../lib/analytics";
 import { Button } from "../../ui/Button";
-import { usePitchNav } from "./nav";
+import type { PitchPlace } from "./nav";
 import { choosePitchAction, pitchTarget } from "./targets";
 
 /** Try it free: AMP's one way in for a new visitor, the same on the homepage
- * and on every public page that offers it (the comparisons, `/versus`). It
- * moves through `usePitchNav`, so it renders inside a `PitchNavProvider`. */
+ * and on every public page that offers it (the comparisons, `/versus`).
+ * `go` moves the page: the pitch's own navigation, or the router's. */
 export function TryFreeButton({
   variant,
   className,
+  go,
 }: {
   variant: "primary" | "secondary";
   className?: string;
+  go: (place: PitchPlace) => void;
 }) {
-  const nav = usePitchNav();
   return (
     <Button
       variant={variant}
@@ -23,7 +24,8 @@ export function TryFreeButton({
       onClick={() => {
         track("try_click");
         choosePitchAction("try");
-        nav.go(pitchTarget("try", nav.search));
+        // Try needs no program: its place is sign-up, whatever the arrival.
+        go(pitchTarget("try", {}));
       }}
     >
       Try it free

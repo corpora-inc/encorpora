@@ -1,5 +1,5 @@
-import { Link, useLoaderData } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useMemo } from "react";
 import { researchPage } from "../../../research/report";
 import { versusContact, versusRows } from "../../../versus/amp";
 import { relatedComparisons } from "../../../versus/catalog";
@@ -12,12 +12,10 @@ import {
 } from "../../../versus/head";
 import { versusCatalog } from "../../../versus/pages";
 import type { VersusPage } from "../../../versus/types";
-import { applyRouteHead } from "../../app/route-head";
-import { PitchNavProvider } from "../pitch/nav";
-import { useRouterPitchNav } from "../pitch/router-nav";
 import { FreeNote, TryFreeButton } from "../pitch/TryFree";
 import { Cited } from "./Cited";
-import { Topic, useStructuredData, VersusFrame } from "./VersusFrame";
+import { Topic, usePageHead, VersusFrame } from "./VersusFrame";
+import { VERSUS, versusHubLink } from "./links";
 import styles from "./Versus.module.css";
 
 /** `/versus/<slug>`: AMP beside one other program. Why AMP first, then the
@@ -25,18 +23,17 @@ import styles from "./Versus.module.css";
  * suits, and every source. The words are the page's file
  * (`src/versus/pages/<slug>.json`), which arrives with the screen, and AMP's
  * side (`src/versus/amp.ts`); the static document repeats them. */
-export function VersusPageScreen() {
-  const page = useLoaderData({ from: "/versus/$slug" }) as VersusPage;
-  // The page's own head: its title, description and address, written when
-  // the page shows (the app's route head leaves the comparisons alone).
-  useEffect(() => applyRouteHead(document, versusPageHead(page)), [page]);
-  useStructuredData(useMemo(() => versusPageJsonLd(page), [page]));
+export function VersusPageScreen({ page }: { page: VersusPage }) {
+  usePageHead(
+    useMemo(() => versusPageHead(page), [page]),
+    useMemo(() => versusPageJsonLd(page), [page]),
+  );
   const rows = versusRows.filter((row) => page.rows[row.id] !== undefined);
   const related = relatedComparisons(page.slug, versusCatalog);
-  const nav = useRouterPitchNav();
+  const navigate = useNavigate();
   const { name } = page;
   return (
-    <VersusFrame beside={{ to: "/versus", label: "Compare" }}>
+    <VersusFrame beside="hub">
       <section className={styles.intro} aria-labelledby="versus-title">
         <h1 id="versus-title" className={styles.title}>
           AMP vs {name}
@@ -46,9 +43,11 @@ export function VersusPageScreen() {
         </p>
         {/* The homepage's one action, to the same place. */}
         <div className={styles.start} data-versus-action="">
-          <PitchNavProvider value={nav}>
-            <TryFreeButton variant="primary" className={styles.try} />
-          </PitchNavProvider>
+          <TryFreeButton
+            variant="primary"
+            className={styles.try}
+            go={(place) => void navigate(place as never)}
+          />
           <FreeNote className={styles.note} />
         </div>
       </section>
@@ -213,7 +212,7 @@ export function VersusPageScreen() {
           <ul className={styles.index}>
             {related.map((entry) => (
               <li key={entry.slug}>
-                <Link to="/versus/$slug" params={{ slug: entry.slug }}>
+                <Link to={VERSUS} params={{ slug: entry.slug }}>
                   AMP vs {entry.name}
                 </Link>
                 <span>{entry.line}</span>
@@ -222,7 +221,7 @@ export function VersusPageScreen() {
           </ul>
         )}
         <p>
-          <Link to="/versus" className={styles.all}>
+          <Link {...versusHubLink} className={styles.all}>
             All comparisons
           </Link>
         </p>

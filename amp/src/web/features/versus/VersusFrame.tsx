@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { brand } from "../../../brand";
+import { applyRouteHead, type RouteHead } from "../../app/route-head";
+import { trackGooglePage } from "../../lib/analytics";
 import { RootLink } from "../../nav/root";
 import { BrandMark } from "../../ui/BrandMark";
 import { buttonClass } from "../../ui/Button";
@@ -11,17 +13,20 @@ import frame from "../pitch/Pitch.module.css";
 // The research page's topics: a rule, the heading in the copy column, the
 // body beside it.
 import topics from "../research/Research.module.css";
+import { versusHubLink } from "./links";
 import styles from "./Versus.module.css";
 
 /** The comparisons' frame: the homepage's header and footer around a page
- * of topics. `beside` is the header's one other place. */
+ * of topics. `beside` is the header's one other place: the hub from a
+ * comparison, the school pages from the hub (as on `/research`). */
 export function VersusFrame({
   beside,
   children,
 }: {
-  beside: { to: "/versus" | "/schools"; label: string };
+  beside: "hub" | "schools";
   children: ReactNode;
 }) {
+  const quiet = buttonClass("quiet", frame.signIn);
   return (
     <div className={frame.page} data-versus="">
       <header className={frame.header}>
@@ -31,9 +36,15 @@ export function VersusFrame({
         >
           <BrandMark beside="long" />
         </RootLink>
-        <Link to={beside.to} className={buttonClass("quiet", frame.signIn)}>
-          {beside.label}
-        </Link>
+        {beside === "hub" ? (
+          <Link {...versusHubLink} className={quiet}>
+            Compare
+          </Link>
+        ) : (
+          <Link to="/schools" className={quiet}>
+            Schools
+          </Link>
+        )}
       </header>
       <main className={`${frame.main} ${topics.main} ${styles.main}`}>
         {children}
@@ -66,12 +77,17 @@ export function Topic({
   );
 }
 
-/** The page's structured data, in the head while the page shows. The
- * static document carries the same data (scripts/build-public-documents.ts);
- * this takes its place, so a page reached inside the app never keeps the
- * last page's. */
-export function useStructuredData(data: readonly object[]) {
+/** A comparison page's head, written when the page shows: its title,
+ * description and address (the app's route head leaves the comparisons
+ * alone), and its structured data. The static document carries the same
+ * (scripts/build-public-documents.ts); this takes its place, so a page
+ * reached inside the app never keeps the last page's. GA measures the page
+ * here, with the title just written (analytics/page-titles.ts
+ * `selfTitledPath`). */
+export function usePageHead(head: RouteHead, data: readonly object[]) {
   useEffect(() => {
+    applyRouteHead(document, head);
+    trackGooglePage(head.title);
     document.head
       .querySelectorAll("script[data-versus-data]")
       .forEach((script) => script.remove());
@@ -84,5 +100,5 @@ export function useStructuredData(data: readonly object[]) {
       return script;
     });
     return () => added.forEach((script) => script.remove());
-  }, [data]);
+  }, [head, data]);
 }

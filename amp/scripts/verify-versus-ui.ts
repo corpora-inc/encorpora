@@ -38,11 +38,10 @@ import {
   type Page,
 } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
-import { publicAppPageTitles } from "../src/analytics/page-titles";
 import { versusRows, type VersusRow } from "../src/versus/amp";
 import { relatedComparisons, versusGroups } from "../src/versus/catalog";
 import { readVersus } from "../src/versus/files";
-import { versusPageHead } from "../src/versus/head";
+import { versusHubHead, versusPageHead } from "../src/versus/head";
 import type { VersusPage } from "../src/versus/types";
 import { knownDocumentPath } from "../src/web/app/document-routes";
 import { settle, shellRecord, shiftRecorder } from "./app-shell-probe";
@@ -322,7 +321,7 @@ try {
     check("/versus is a document", hub.status === 200, hub.status);
     check(
       "/versus title",
-      hub.html.includes(`<title>${publicAppPageTitles["/versus"]}</title>`),
+      hub.html.includes(`<title>${versusHubHead.title}</title>`),
     );
     check(
       "/versus canonical",
@@ -439,7 +438,7 @@ try {
       const hubHead = await head(hub);
       check(
         `${tag} /versus head`,
-        hubHead.title === publicAppPageTitles["/versus"] &&
+        hubHead.title === versusHubHead.title &&
           hubHead.canonical.join() === "https://amp.corpora.inc/versus" &&
           hubHead.robots === null &&
           hubHead.data.join() === "BreadcrumbList",
@@ -762,6 +761,14 @@ try {
           landed.hash === `#${component}`,
         landed,
       );
+      // And the research page's own way to the comparisons is the hub.
+      check(
+        `${tag} /research links to the hub`,
+        (await page
+          .locator("#root footer")
+          .getByRole("link", { name: "Compare", exact: true })
+          .getAttribute("href")) === "/versus",
+      );
       await page.close();
       await context.close();
     }
@@ -793,7 +800,7 @@ try {
       .waitFor();
     await page.waitForFunction(
       (title) => document.title === title,
-      publicAppPageTitles["/versus"],
+      versusHubHead.title,
     );
     let now = await head(page);
     check(
@@ -843,7 +850,7 @@ try {
       await page.goBack();
       await page.waitForFunction(
         (title) => document.title === title,
-        publicAppPageTitles["/versus"],
+        versusHubHead.title,
       );
       await page.goBack();
       await page.waitForFunction(

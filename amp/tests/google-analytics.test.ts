@@ -325,3 +325,79 @@ test("GA drops unlisted actions, out-of-range values and extra props", () => {
   });
   assert.equal(googleEvent("checkout_start", {}, page)?.name, "begin_checkout");
 });
+
+test("the comparisons are measured by their path alone, with the title their screen gives", () => {
+  // The hub and one comparison each: the path, and nothing private from the query.
+  for (const path of ["/versus", "/versus/i-ready", "/versus/khan-academy"]) {
+    assert.equal(
+      googlePage(`https://amp.corpora.inc${path}`),
+      `https://amp.corpora.inc${path}`,
+    );
+    assert.equal(
+      googlePage(
+        `https://amp.corpora.inc${path}/?email=private%40example.test&q=secret#source-2`,
+      ),
+      `https://amp.corpora.inc${path}`,
+      "no query string, fragment or trailing slash",
+    );
+    // Signed in or out, a comparison is a public page.
+    assert.equal(
+      googlePage(`https://amp.corpora.inc${path}`, "app"),
+      `https://amp.corpora.inc${path}`,
+    );
+  }
+  // Campaign labels and click ids travel as they do for every public page.
+  assert.equal(
+    googlePage(
+      "https://amp.corpora.inc/versus/i-ready?utm_source=Google&utm_medium=cpc&gclid=Valid_Click_123&name=private",
+    ),
+    "https://amp.corpora.inc/versus/i-ready?utm_source=google&utm_medium=cpc&gclid=Valid_Click_123",
+  );
+  // Only that shape, and only on AMP.
+  for (const url of [
+    "https://amp.corpora.inc/versus/i-ready/more",
+    "https://amp.corpora.inc/versus/I-Ready",
+    "https://amp.corpora.inc/versus/a%2Fb",
+    "https://amp.corpora.inc/versus/i_ready",
+    "https://amp.corpora.inc/versusx",
+    "https://corpora.inc/versus/i-ready",
+    "http://amp.corpora.inc/versus/i-ready",
+  ])
+    assert.equal(googlePage(url), undefined, url);
+
+  // The title is the page's document title, which its screen gives. Before
+  // the screen has one, there is none, so nothing is sent with a wrong one.
+  const title = "AMP vs i-Ready: Math Families Can Buy | AMP";
+  const url = "https://amp.corpora.inc/versus/i-ready?utm_source=google";
+  assert.equal(googlePageTitle(url), undefined);
+  assert.equal(googlePageTitle(url, "pitch", undefined, title), title);
+  assert.equal(googlePageTitle(url, "app", undefined, title), title);
+  // A screen's title is never taken for any other page.
+  assert.equal(
+    googlePageTitle(
+      "https://amp.corpora.inc/sign-up",
+      "pitch",
+      undefined,
+      title,
+    ),
+    "Create Your Account | AMP",
+  );
+  assert.equal(
+    googlePageTitle(
+      "https://amp.corpora.inc/account/private",
+      "pitch",
+      undefined,
+      title,
+    ),
+    undefined,
+  );
+  assert.equal(
+    googlePageTitle(
+      "https://corpora.inc/esa/arizona-esa/",
+      "pitch",
+      undefined,
+      title,
+    ),
+    "Arizona ESA | AMP",
+  );
+});
