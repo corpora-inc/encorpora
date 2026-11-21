@@ -10,13 +10,13 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { meOptions } from "../../../lib/query";
 import { currentSession, orgOptions } from "../api";
 import { classYearOptions } from "../org/org-api";
-import { useDemoOrg } from "../demo/DemoPlace";
 import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { ClassMap, MapKey } from "./ClassMap";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { mapOptions, todayOptions } from "./teacher-api";
 import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
+import { ClassCockpit, type CockpitWords } from "./today/ClassCockpit";
 import { FamilyNotice } from "./today/FamilyNotice";
 import { Feed } from "./today/Feed";
 import { PracticeSlot } from "./today/PracticeSlot";
@@ -32,18 +32,28 @@ import {
   useClassAccess,
 } from "../pilots/ClassAccess";
 
+const COCKPIT_WORDS: CockpitWords = {
+  start: "Start class",
+  nameHeader: "Student",
+  roster: "Students in this session",
+};
+
 /** A class's Today (the /schools product shot): a feed of what to do and
  * why, then the week in a line. No map: Map is its own tab. */
 function ClassToday({
   data,
   place,
   headed,
+  cockpit,
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
   /** The header's practice slot says where practice stands (PracticeSlot):
    * starting, waiting, ended and "couldn't check" live there, not here. */
   headed: boolean;
+  /** The session control is on the page above: it is how class starts, so
+   * the feed doesn't say "Start class" again. */
+  cockpit: boolean;
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
   const { start: canStart } = useSchoolNavigation({
@@ -90,6 +100,7 @@ function ClassToday({
     todos: data.todos.filter(
       (todo) =>
         (adds || todo.id !== "add-students") &&
+        !(cockpit && todo.id === "start-class") &&
         ((canStart && !closed) ||
           (todo.id !== "start-class" &&
             !("tab" in todo.action && todo.action.tab === "start"))),
@@ -176,21 +187,32 @@ export function TodayScreen() {
   const signedIn = me?.signedIn ? me : undefined;
   const holder = signedIn?.familyClass?.classId === place.class;
   const data = today.data;
-  const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
   const pilotNote = pilotLeft(access.view);
   // The header's practice slot (PracticeSlot): the Start action, the code,
   // Request seats, one height in every state, so practice opening during
   // this visit moves nothing (CP-3 r6).
-  const signInRead = (
+  const can = new Set(
     standing(
       useQuery({
         ...classYearOptions(account, place.class),
         refetchOnMount: false,
       }),
-    )?.can ?? []
-  ).includes("signin.read");
+    )?.can ?? [],
+  );
+  const signInRead = can.has("signin.read");
   const headed = !!data && data.students.length > 0 && signInRead;
+  // The live session (#2465): where students can practice (or a demo), for
+  // anyone who may watch one. A session already running always shows.
+  const { start: canStart } = useSchoolNavigation({
+    kind: "class",
+    org: place.org,
+    classId: place.class,
+    active: "today",
+    leaf: "today",
+    board: false,
+  });
+  const cockpit = headed && can.has("session.read");
   // A class's code has its own place (PracticeSlot), loading or failing
   // there without holding the page.
   const loading = access.pending || org.isPending || today.isPending;
@@ -230,16 +252,35 @@ export function TodayScreen() {
               <PracticeSlot
                 place={place}
                 words={spaceWords("classroom")}
-                // The bar's Start class opens the board, except in a demo
-                // (its bar leads to the real class).
-                board={demo}
+                // The board, projected, is opened from the code: the bar's
+                // Start class starts the session (#2465).
+                board
                 manage={presence.data?.canManage ?? false}
                 locked={!!presence.data?.class.joinLockedUntil}
               />
             )}
           </header>
           {signedIn && holder && <FamilyNotice me={signedIn} />}
-          <ClassToday data={data} place={place} headed={headed} />
+          {cockpit && (
+            <ClassCockpit
+              place={place}
+              available={canStart}
+              words={COCKPIT_WORDS}
+              can={{
+                resolve: can.has("signal.resolve"),
+                resetPictures: can.has("signin.manage"),
+              }}
+              // Staff see levels, as on the map and in grades; the class's
+              // "levels" setting is what its students see.
+              showGradeNumbers
+            />
+          )}
+          <ClassToday
+            data={data}
+            place={place}
+            headed={headed}
+            cockpit={cockpit && canStart}
+          />
           <AccessSheets place={place} />
         </div>
       )}
@@ -260,16 +301,8 @@ export function MapScreen() {
   // parent's own family class opens at /family, so this is the classroom
   // composition, the whole group, in a classroom's words.
   const words = spaceWords("classroom");
-  // The class's code board, where students join; offered as the map's one
-  // step only where the bar would offer it (a current class).
-  const { start } = useSchoolNavigation({
-    kind: "class",
-    org: place.org,
-    classId: place.class,
-    active: "map",
-    leaf: "map",
-    board: false,
-  });
+  // Start class is the bar's (a live session, #2465): the map has none of
+  // its own.
   return (
     <ClassFrame
       org={place.org}
@@ -297,17 +330,6 @@ export function MapScreen() {
             crossCutting
             // Ranges in grade words, as everywhere else ("Gr 7–Geom").
             plain
-            action={
-              start ? (
-                <Link
-                  to="/$"
-                  params={{ _splat: classUrl(place.org, place.class, "start") }}
-                  className={buttonClass("primary")}
-                >
-                  Start class
-                </Link>
-              ) : undefined
-            }
           />
         </div>
       )}

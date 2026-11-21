@@ -373,15 +373,16 @@ export function RosterScreen() {
               )}
             </div>
             <div className={styles.actions}>
-              {/* One primary slot: Start practice before the pilot, Start
-                  class while it runs, Request seats after. */}
+              {/* One slot: Start practice before the pilot, the sign-in
+                  board while it runs (the bar's Start class starts a
+                  session), Request seats after. */}
               {!family && canStart && !closed ? (
                 <Link
                   to="/school/$org/classes/$class/start"
                   params={params}
-                  className={buttonClass("primary")}
+                  className={buttonClass("secondary")}
                 >
-                  Start class
+                  Sign-in board
                 </Link>
               ) : (
                 !family &&

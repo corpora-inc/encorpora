@@ -331,7 +331,8 @@ function Content() {
 test("CP-2 r3 M1: a new session whose account didn't load shows nothing of the old one", async () => {
   seedSchool();
   await mount(classPath, Content);
-  expect(screen.getByRole("link", { name: "Start class" })).toBeTruthy();
+  // The class's bar action (Start class, #2465) is drawn for this session.
+  expect(document.querySelector("[data-class-action]")).toBeTruthy();
   const old = deferred();
   const late = queryClient
     .fetchQuery({
@@ -359,7 +360,7 @@ test("CP-2 r3 M1: a new session whose account didn't load shows nothing of the o
   const kept = queryClient.getQueryData(orgOptions(auth, O).queryKey) as
     { name: string } | undefined;
   expect(kept?.name).not.toBe("OLD LATE RESPONSE");
-  expect(screen.queryByRole("link", { name: "Start class" })).toBeNull();
+  expect(document.querySelector("[data-class-action]")).toBeNull();
   expect(screen.queryByText(/old screen state/)).toBeNull();
   expect(screen.queryByText(/OLD LATE RESPONSE/)).toBeNull();
 });

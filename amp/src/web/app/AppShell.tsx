@@ -36,6 +36,10 @@ import {
   ProfileMark,
 } from "../features/profiles/ProfileBar";
 import { SessionMark } from "../features/navigation/SessionMark";
+import {
+  useClassSessionAction,
+  type ClassSessionActionProps,
+} from "../features/school/classes/session-action-slot";
 import { FamilyReturn } from "../features/family/FamilyReturn";
 import { Tabs } from "../ui/Tabs";
 import { Toast } from "../ui/Toast";
@@ -182,10 +186,6 @@ function ShellBar({
   const practice = space.bar === "practice";
   const demo =
     (space.space === "classroom" || space.space === "school") && space.org.demo;
-  const board =
-    (space.space === "classroom" || space.space === "family") &&
-    space.class?.board === true;
-  const today = space.active === "today" && !board;
   const tabs =
     space.bar === "tabs" ? (
       <Tabs
@@ -253,24 +253,13 @@ function ShellBar({
               );
             case "start-class":
               return space.space === "classroom" ? (
-                <Link
+                <ClassAction
                   key={action}
-                  to="/$"
-                  params={{
-                    _splat: `school/${space.org.id}/classes/${space.class.id}/start`,
-                  }}
-                  className={bar.actionLink}
-                  aria-label="Start class"
-                  data-shell-action
-                  aria-hidden={!today || undefined}
-                  tabIndex={today ? undefined : -1}
-                  style={{ visibility: today ? "visible" : "hidden" }}
-                >
-                  <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
-                  </svg>
-                  <span className={bar.actionLabel}>Start class</span>
-                </Link>
+                  org={space.org.id}
+                  classId={space.class.id}
+                  // Today's own control (and its board) start class there.
+                  today={space.active === "today"}
+                />
               ) : null;
             case "practice":
               return (
@@ -299,6 +288,23 @@ function ShellBar({
         )}
       </div>
     </header>
+  );
+}
+
+/** A class's Start class (#2465): its code comes with the class's route;
+ * until it is here the bar holds the action's place, unseen. */
+function ClassAction(props: ClassSessionActionProps) {
+  const Action = useClassSessionAction();
+  if (Action) return <Action {...props} />;
+  return (
+    <span
+      className={bar.actionLink}
+      aria-hidden="true"
+      data-class-action=""
+      style={{ visibility: "hidden" }}
+    >
+      <span className={bar.actionLabel}>Start class</span>
+    </span>
   );
 }
 
