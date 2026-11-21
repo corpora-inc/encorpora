@@ -1131,6 +1131,11 @@ test(
           teacher = deleteLmsAssignment(db, { classId, id }).catch(
             (error) => error,
           );
+          // The teacher's call must be decided (busy) before the slipped
+          // write below: started together, the delete could read the row
+          // after that write, find it deleted and succeed, a race that failed
+          // this test now and then.
+          await teacher;
           // …and a write that slipped past the guard is still honoured.
           await db.query(
             "UPDATE amp_lms_assignments SET status='deleted' WHERE id=$1",
