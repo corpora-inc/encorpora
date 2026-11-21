@@ -1,9 +1,10 @@
-import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { afterEach, beforeEach, expect, test, vi, type Mock } from "vitest";
 import {
   EventStreamParser,
   LIVE_STREAM_TIMING,
   openLiveStream,
   type LiveStreamMode,
+  type LiveStreamOptions,
 } from "../live-stream";
 
 /** A stream the test writes to, as a server would. */
@@ -36,7 +37,7 @@ type Server = ReturnType<typeof serverStream>;
 let servers: Server[];
 let responses: (() => Server | Error)[];
 let fetchMock: ReturnType<typeof vi.fn>;
-let poll: ReturnType<typeof vi.fn>;
+let poll: Mock<() => Promise<unknown>>;
 let events: [string, unknown][];
 let modes: LiveStreamMode[];
 const doc = {
@@ -63,7 +64,7 @@ beforeEach(() => {
   modes = [];
   doc.visibilityState = "visible";
   doc.listeners.clear();
-  poll = vi.fn(() => Promise.resolve());
+  poll = vi.fn(() => Promise.resolve() as Promise<unknown>);
   fetchMock = vi.fn((_url: string, init: RequestInit) => {
     const next = responses.shift()?.() ?? serverStream();
     if (next instanceof Error) return Promise.reject(next);
@@ -90,7 +91,7 @@ const open = (timing = {}) =>
     timing,
     onMode: (mode) => modes.push(mode),
     fetch: fetchMock as never,
-    document: doc,
+    document: doc as unknown as LiveStreamOptions["document"],
   });
 
 const FRAMES =

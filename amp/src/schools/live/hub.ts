@@ -16,7 +16,8 @@ import {
   type StudentLive,
   type StudentSignal,
 } from "./stream-contracts.js";
-import { readStudentSignals, toStudentSession } from "./student.js";
+import { readStudentSignals } from "./signals.js";
+import { toStudentSession } from "./student.js";
 
 /* The live hub (#2465, work package L2): one per server process. Every
    stream in the process shares one tail of the `amp_class_events` outbox: a
@@ -420,18 +421,21 @@ export class LiveHub {
           if (subscriber.fresh || moved) students.add(subscriber);
         }
       }
-      if (signalReads.size) {
+      // One read per student (two tabs share it), as L4's own route reads.
+      const read = new Map<string, Promise<StudentSignal[]>>();
+      for (const subscriber of signalReads) {
         try {
-          const read = await readStudentSignals(this.db, [...signalReads]);
-          for (const subscriber of signalReads) {
-            subscriber.signals = read.get(subscriber.personId) ?? [];
-            students.add(subscriber);
-          }
+          const signals =
+            read.get(subscriber.personId) ??
+            readStudentSignals(this.db, subscriber.personId);
+          read.set(subscriber.personId, signals);
+          subscriber.signals = await signals;
+          students.add(subscriber);
         } catch (error) {
-          for (const subscriber of signalReads) students.delete(subscriber);
+          students.delete(subscriber);
           this.log.error(
             failure(error),
-            "live hub: students' requests weren't read; read again on the next change",
+            "live hub: a student's requests weren't read; read again on their next change",
           );
         }
       }

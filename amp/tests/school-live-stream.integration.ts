@@ -8,7 +8,6 @@ import { migrate } from "../scripts/migrate.js";
 import { schoolAdmin } from "../scripts/school-admin.js";
 import { practiceResponse } from "../scripts/ui-practice-answer.js";
 import { liveSnapshotResponse } from "../src/schools/live/contracts.js";
-import { noteClassEvent } from "../src/schools/live/events.js";
 import {
   DEFAULT_STREAM_TIMING,
   streamLifetimeMs,
@@ -58,7 +57,10 @@ function stream(base: string, path: string, token?: string) {
     const decoder = new TextDecoder();
     let buffer = "";
     try {
-      for await (const chunk of response.body) {
+      const reader = response.body.getReader();
+      for (;;) {
+        const { value: chunk, done } = await reader.read();
+        if (done) break;
         buffer += decoder.decode(chunk as Uint8Array, { stream: true });
         let cut: number;
         while ((cut = buffer.indexOf("\n\n")) >= 0) {
@@ -469,9 +471,12 @@ test(
     });
 
     await t.test("a student's stream carries only their own", async (t) => {
-      const ivyWatch = stream(b.base, studentPath, ivyToken);
-      const jonWatch = stream(b.base, studentPath, jonToken);
-      const staff = stream(b.base, staffPath, teacher);
+      // Its own process with streams that live their full 85-95 s: this
+      // test outlasts process B's four.
+      const d = await instance();
+      const ivyWatch = stream(d.base, studentPath, ivyToken);
+      const jonWatch = stream(d.base, studentPath, jonToken);
+      const staff = stream(d.base, staffPath, teacher);
       t.after(() => [ivyWatch, jonWatch, staff].forEach((w) => w.close()));
       const first = studentLiveResponse.parse(
         (await ivyWatch.next((f) => f.event === "snapshot", 5_000, true)).data,
@@ -490,22 +495,12 @@ test(
       ]);
       await jonWatch.next((f) => f.event === "snapshot", 5_000, true);
       await staff.next((f) => f.event === "snapshot", 5_000, true);
-      // Ivy raises her hand (work package L4 writes these; written here as it
-      // will, with its outbox row).
+      // Ivy raises her hand, through L4's route on the other process.
       const hand = (
-        await rows(
-          `INSERT INTO amp_class_signals(id,class_id,person_id,kind) VALUES($1,$2,$3,'hand') RETURNING id`,
-          randomUUID(),
-          classId,
-          ivy.personId,
-        )
-      )[0].id as string;
-      await noteClassEvent(db, {
-        classId,
-        sessionId: session.id,
-        personId: ivy.personId,
-        kind: "signal",
-      });
+        await ok(a.app, "POST", "/api/v1/school/student/signals", ivyToken, {
+          kind: "hand",
+        })
+      ).signals[0].id as string;
       const raised = studentLiveResponse.parse(
         (
           await ivyWatch.next(
@@ -525,16 +520,13 @@ test(
         [[ivy.personId, "hand"]],
       );
       // The teacher sees it; Ivy's screen moves on by itself.
-      await db.query(
-        `UPDATE amp_class_signals SET resolved_at=now(),resolution='acknowledged' WHERE id=$1`,
-        [hand],
+      await ok(
+        a.app,
+        "POST",
+        `/api/v1/school/classes/${classId}/signals/${hand}/resolve`,
+        teacher,
+        {},
       );
-      await noteClassEvent(db, {
-        classId,
-        sessionId: session.id,
-        personId: ivy.personId,
-        kind: "signal",
-      });
       const seen = studentLiveResponse.parse(
         (
           await ivyWatch.next(
@@ -549,7 +541,7 @@ test(
       assert.ok(seen.signals[0]!.resolvedAt);
       // The poll a client falls back to says the same.
       const polled = studentLiveResponse.parse(
-        await ok(b.app, "GET", "/api/v1/school/student/live", ivyToken),
+        await ok(d.app, "GET", "/api/v1/school/student/live", ivyToken),
       );
       assert.deepEqual(polled.signals, seen.signals);
       assert.deepEqual(polled.sessions, seen.sessions);

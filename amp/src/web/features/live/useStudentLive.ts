@@ -43,7 +43,7 @@ export function useStudentLive() {
   return {
     /** The sessions running in the student's classes now. */
     sessions: live?.sessions ?? [],
-    /** Their own requests: open, or resolved in the last 30 minutes. */
+    /** Their own requests: open, or resolved in the last minute. */
     signals: live?.signals ?? [],
     /** A session is running in one of their classes. */
     inSession: !!live?.sessions.length,

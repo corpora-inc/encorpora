@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { LiveRow, LiveSnapshot } from "../../../../schools/live/contracts";
 import { LIVE_RULES, liveTotals } from "../../../../schools/live/status";
+import type { AuthSession } from "../../../auth";
 import type { LiveStreamOptions } from "../../../lib/live-stream";
 import { sessionOptions } from "../../../lib/query";
 import { applyLiveMessage, liveKey, studentLiveKey } from "../api";
@@ -225,6 +226,7 @@ test("useStudentLive: a student's own state; nothing for an adult", async () => 
         {
           id: "55555555-5555-4555-8555-555555555555",
           classId: CLASS,
+          personId: person(1),
           kind: "hand",
           createdAt: NOW,
           resolvedAt: NOW,
@@ -239,10 +241,8 @@ test("useStudentLive: a student's own state; nothing for an adult", async () => 
   expect(opened[0]!.close).toHaveBeenCalledTimes(1);
 
   const adults = queries();
-  adults.setQueryData(sessionOptions.queryKey, {
-    accountId: "amp|parent",
-    token: "t-2",
-  });
+  const parent: AuthSession = { accountId: "amp|parent", token: "t-2" };
+  adults.setQueryData(sessionOptions.queryKey, parent);
   const adult = renderHook(() => useStudentLive(), { wrapper: wrap(adults) });
   expect(opened).toHaveLength(1);
   expect(adult.result.current.sessions).toEqual([]);

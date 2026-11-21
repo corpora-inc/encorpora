@@ -3,8 +3,8 @@ import {
   liveRowResource,
   liveSnapshotResponse,
   signalResource,
-  signalKinds,
-  signalResolutions,
+  studentSignalResource,
+  type StudentSignal,
 } from "./contracts.js";
 
 /* The live stream's wire format (#2465, work package L2). Server-sent events
@@ -64,18 +64,11 @@ export const studentSessionResource = z.object({
 });
 export type StudentSession = z.infer<typeof studentSessionResource>;
 
-/** One of the student's own requests: open, or resolved in the last 30
- * minutes, so their screen can move on by itself ("your teacher saw your
- * hand"). Never anyone else's. */
-export const studentSignalResource = z.object({
-  id: z.uuid(),
-  classId: z.uuid(),
-  kind: z.enum(signalKinds),
-  createdAt: z.iso.datetime(),
-  resolvedAt: z.iso.datetime().nullable(),
-  resolution: z.enum(signalResolutions).nullable(),
-});
-export type StudentSignal = z.infer<typeof studentSignalResource>;
+/** The student's own requests, as `GET /api/v1/school/student/signals`
+ * (work package L4) reads them: open, or resolved in the last minute, so
+ * their screen can move on by itself ("your teacher saw your hand"). Never
+ * anyone else's. */
+export { studentSignalResource, type StudentSignal };
 
 /** `GET /api/v1/school/student/live` and the student stream's `snapshot`:
  * the sessions running in the student's classes and their own requests,

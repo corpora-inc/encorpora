@@ -129,6 +129,8 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
     options.onMode?.(next);
   };
   const hidden = () => doc.visibilityState === "hidden";
+  /** Read fresh after every await: `close()` can run meanwhile. */
+  const closed = () => mode === "closed";
 
   function stopStream() {
     controller?.abort();
@@ -286,7 +288,7 @@ export function openLiveStream(options: LiveStreamOptions): LiveStream {
         bye === "shutdown" ? Math.floor(Math.random() * 1_000) : 0,
       );
     } catch (error) {
-      if (stream.signal.aborted || mode === "closed") return;
+      if (stream.signal.aborted || closed()) return;
       clearTimeout(watchdog);
       controller = null;
       if (isRetired(options.token)) {

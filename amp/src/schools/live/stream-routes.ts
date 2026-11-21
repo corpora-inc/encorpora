@@ -7,11 +7,8 @@ import type { defineSchoolRoute } from "../routes.js";
 import type { LiveHub } from "./hub.js";
 import { openSession } from "./sessions.js";
 import type { StudentLive } from "./stream-contracts.js";
-import {
-  readStudentSignals,
-  studentClassIds,
-  toStudentSession,
-} from "./student.js";
+import { readStudentSignals } from "./signals.js";
+import { studentClassIds, toStudentSession } from "./student.js";
 
 /* The live streams (#2465, work package L2). Each connect is authorized
    afresh, the same way as the read beside it, and then holds no database
@@ -72,9 +69,7 @@ export async function readStudentLive(
     const session = await openSession(pool, classId);
     if (session) sessions.push(toStudentSession(session));
   }
-  const signals =
-    (await readStudentSignals(pool, [{ personId, classIds }])).get(personId) ??
-    [];
+  const signals = await readStudentSignals(pool, personId);
   return { serverNow: new Date().toISOString(), sessions, signals };
 }
 
