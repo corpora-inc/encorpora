@@ -13,7 +13,8 @@
  * (`scripts/design-preview.sh`). Loopback only; it refuses anything else.
  * Run it on an empty database: a persona that already exists is skipped.
  * `AMP_PERSONAS=adult-3wk,family` seeds only those (a browser check's
- * fixture, scripts/verify-smooth-load-ui.ts).
+ * fixture, scripts/verify-smooth-load-ui.ts); `second-parent` seeds the
+ * family she joins.
  */
 import pg from "pg";
 import { alignPersonaEnrollments } from "./persona-enrollment";
@@ -466,7 +467,12 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
   },
 };
 
-const only = process.env.AMP_PERSONAS?.split(",").map((slug) => slug.trim());
+/** People made inside another's seed: asking for one seeds the other. */
+const MADE_WITH: Record<string, string> = { "second-parent": "family" };
+const only = process.env.AMP_PERSONAS?.split(",").map((slug) => {
+  const trimmed = slug.trim();
+  return MADE_WITH[trimmed] ?? trimmed;
+});
 for (const person of PREVIEW_PERSONAS) {
   const seed = seeds[person.slug];
   if (!seed || person.slug === "second-parent") continue;
