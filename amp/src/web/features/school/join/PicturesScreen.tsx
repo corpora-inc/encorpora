@@ -238,6 +238,7 @@ export function PicturesScreen() {
             {!firstTime && (
               <Button
                 variant="quiet"
+                className={styles.forgotButton}
                 disabled={busy || forgot.asking}
                 onClick={waiting ? forgot.giveUp : forgot.ask}
               >

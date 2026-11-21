@@ -315,7 +315,12 @@
 .forgot {
   display: grid;
   place-items: center;
+  height: 44px;
+}
+.forgot .forgotButton.forgotButton {
+  height: 44px;
   min-height: 44px;
+  padding-block: 0;
 }
 .pad {
   position: relative;
