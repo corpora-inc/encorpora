@@ -358,6 +358,8 @@ const ROUTES_EXEMPT: Record<string, string> = {
     "the public research page, in the homepage's frame (pitch/Pitch.module.css)",
   "features/research/index.ts#PilotScreen":
     "the pilot study's interest list, in the research pages' frame (ResearchFrame)",
+  "features/versus/index.ts#VersusScreen":
+    "the public comparisons, in the homepage's frame (pitch/Pitch.module.css)",
   "features/school/standing/index.ts#ClassStandingScreen":
     "the school's curves (StandingScreen renders Page) with the class's overlay over them",
   "features/school/join/index.ts#ContinueScreen":

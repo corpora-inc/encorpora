@@ -1,0 +1,182 @@
+{
+  "slug": "abeka",
+  "name": "Abeka",
+  "category": "books",
+  "checked": "2026-11-21",
+  "benefit": "Math at each child's level",
+  "line": "Abeka moves every child through the same 170 days of lessons. AMP sets a level in each part of math.",
+  "description": "AMP vs Abeka: a fixed video and textbook course the parent grades, or practice that finds each child's level and checks every answer. Prices and evidence.",
+  "verdict": "Abeka is a complete Christian curriculum from K4 through grade 12, with teachers on video, printed books, and accredited transcripts and a diploma through Abeka Academy [1][2][4]. Every child in a grade gets the same 170 days of lessons in the same order, and the adult grades the work, which Abeka staff may review [3][4][7]. AMP finds the level in each part of math, checks and explains every answer as it is given, and brings old skills back on a schedule.",
+  "reasons": [
+    {
+      "title": "Each strand at its own level, not one grade",
+      "body": "Abeka Academy gives every child in a grade the same 170 days of lessons in a fixed order, designed to finish in ten months [3]. The adult picks the grade, or a single subject [2]. AMP keeps a separate level in each of 14 strands of math and chooses every next problem from the learner's answers. A child ahead in geometry and behind in fractions can work at both levels in the same session.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Every answer is checked and explained at once",
+      "body": "Abeka's materials include answer keys and quiz and test books [9], and items a parent has graded are reviewed by Abeka staff [7]. We found no description of what happens at the moment a child answers wrong. AMP marks each answer when it is given, shows the correct answer and the worked steps, then moves on. The error is explained while the problem is still on the screen, and feedback that explains is the kind research favors [13].",
+      "research": [
+        "feedback"
+      ]
+    },
+    {
+      "title": "Less for the adult to schedule and grade",
+      "body": "In Abeka Academy the parent sets the calendar and tracks and assigns work on a dashboard [3]. In the video-only option the parent keeps the records, and keys come with the quizzes and tests [4]. In the accredited option the parent submits work and progress reports every grading period [4]. AMP places the learner, chooses each problem, checks it and schedules review. The adult has nothing to plan, teach or grade.",
+      "research": [
+        "progress"
+      ]
+    },
+    {
+      "title": "A miss leads back to the missing piece",
+      "body": "Abeka measures progress with quizzes, tests and exams, and each day brings the next of 170 lessons in a fixed order [3]. We found no mastery rule and no step back to earlier skills in its published materials. In AMP, two misses in a row send practice to what the skill builds on. A skill counts as Strong only when four of the last five answers are right without help.",
+      "research": [
+        "mastery"
+      ]
+    },
+    {
+      "title": "Old skills return on a published schedule",
+      "body": "Abeka's Grade 12 page describes lessons with reviews and drills [8]. We found no published schedule for when a skill comes back. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Paper made for one learner",
+      "body": "Abeka's textbooks, workbooks and test books come as full-grade kits, one set for each grade [9]. AMP prints unlimited workbooks built from the learner's own record: today's idea, practice, the review that is due and a challenge, with a worked answer key. Results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Paid in full: Arithmetic 1 video course $505 with books, $443 without [14]. Grade 12 accredited video and books enrollment $1,853 [8].",
+    "buyers": "Families, as Parent Led books or Abeka Academy video enrollment, and Christian schools [1][3][9].",
+    "range": "Abeka Academy runs from K4 through grade 12. Grade 12 math is Precalculus or an elective [2][8].",
+    "start": "The adult chooses the grade, or buys a single subject [2].",
+    "teaching": "Master teachers teach on video. The Video and Books option includes student textbooks [3][5].",
+    "next": "The next of 170 lessons in a fixed order, designed to finish in ten months [3].",
+    "mastery": "Progress is measured by quizzes, tests and exams [3]. No mastery rule stated in the materials we read.",
+    "review": "Its Grade 12 page lists reviews and drills in lessons [8]. No published review schedule found.",
+    "print": "Print is the core: textbooks, teacher editions, quiz and test books and answer keys, in full-grade kits [9].",
+    "adult": "Set the calendar, supervise, and grade work; keys come with quizzes and tests. For accreditation, submit work and progress reports each grading period [3][4].",
+    "reports": "A dashboard and progress reports [2][3]. The accredited option adds report cards, a transcript and a diploma [4].",
+    "evidence": "No outcome study found. No Evidence for ESSA entry. The WWC's only Abeka report (early childhood, 2005) found no qualifying studies [10][11]."
+  },
+  "theirs": [
+    "Abeka is a Christian publisher; its site is copyrighted by Pensacola Christian College [1]. It publishes curriculum taught from a Christian perspective, for homeschool families and Christian schools [1]. Its math is called Arithmetic through grade 6, and grade 12 offers Precalculus or a math elective [2][8].",
+    "Families buy it two ways. Parent Led kits hold the textbooks, teacher editions, quiz and test books and answer keys, sold as \"all you need for the entire year\" [9]. Abeka Academy adds video: 170 days of lessons from master teachers, with a named teacher for each course, and student textbooks in the Video and Books option [3][5]. A grade is designed to take ten months, with twelve allowed, and a family can start any day [3]. Each math lesson takes about 40 minutes of video, and math can be bought as a single subject, unaccredited [14]. Lessons stream or come on DVD, and help is by phone, chat and email [3][6].",
+    "Abeka Academy comes in two forms. In the accredited option Abeka keeps permanent records, issues report cards and a transcript, grades exams in grades 9-12, and offers standardized testing and a diploma [4]. Its staff review the work a parent has graded and may change the grade [7]. In the video-only option the parent keeps the records [4]."
+  ],
+  "credit": [
+    "Accreditation, transcripts and a diploma. Abeka Academy's accredited option keeps the records and handles report cards and standardized testing [4]. AMP offers no accreditation, transcript or course credit.",
+    "Lessons taught by master teachers on video, with a free video manual for the parent [3][6]. AMP's films are animated and cover a growing share of problem types, not every lesson.",
+    "Paper and DVDs that work with no internet [2][9]. AMP needs a connection to practice, though its workbooks print.",
+    "A whole grade, every subject, in one enrollment from K4 through grade 12 [2][3]. AMP is only math.",
+    "A Christian perspective across the curriculum, for families who want it [1]."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Abeka's math on its site or in the two main clearinghouses as of November 2026. Abeka has no entry in Evidence for ESSA [10]. The What Works Clearinghouse's only Abeka report dates from 2005. It covers early childhood education, not math, and found no studies that met its standards [11].",
+      "Abeka's home page says its textbooks are \"tested in the real world\" and cites no study [1]. Abeka Academy is accredited by MSA CESS and FACCS [4]. That accreditation covers records, grading and diplomas; no outcome data comes with it on the pages we read [4]."
+    ],
+    "ours": [
+      "Two rules set AMP apart from a fixed course graded by hand, and both have research behind them. Feedback at the moment of the answer, with the reason: across 40 studies of computer-based feedback, feedback that explains averaged 0.49, the correct answer alone 0.32, and right or wrong only 0.05 [13]. These are average effects across ages and subjects, not a head-to-head trial. Review spread out and mixed with other topics beat practice in blocks in a randomized trial that meets What Works Clearinghouse standards without reservations [12]. AMP gives the first at every answer and the second on a schedule. We expect that to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Choose Abeka if you want an accredited program with report cards, a transcript and a diploma.",
+      "Choose Abeka if you want lessons taught by a teacher on video, and every subject from one Christian publisher.",
+      "Choose Abeka if you want math on paper and DVD, with no internet needed.",
+      "Choose Abeka if you want one fixed daily plan to follow from the first lesson to the last."
+    ],
+    "amp": [
+      "Your child is ahead in some parts of math and behind in others.",
+      "You want every answer checked and explained the moment it is given.",
+      "You would rather not grade math or plan review yourself.",
+      "You use Abeka for other subjects and want math practice that finds the gaps beside it.",
+      "You want to try before paying: 100 answers and 5 workbooks free, with no card."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Abeka?",
+      "answer": "For one grade of math, Abeka costs less: its grade 1 video course, Arithmetic 1, is $505 with books or $443 video only, paid in full, and its 10-month plan shows $59.00 or $52.80 a month, with an $85 fee per payment-plan order [14]. A grade 12 accredited enrollment with video and books is $1,853 paid in full [8]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, and that covers counting through precalculus, with placement, a chosen problem every time, checking, scheduled review and personalized workbooks."
+    },
+    {
+      "question": "Can we use AMP alongside Abeka?",
+      "answer": "Yes. A family can keep Abeka's books or video lessons and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it does not need to know where you are in the book."
+    },
+    {
+      "question": "Is AMP accredited like Abeka Academy?",
+      "answer": "No. AMP issues report cards and progress reports, but no transcript, credit or diploma. Abeka Academy's accredited option keeps records and issues a transcript and a diploma [4]."
+    },
+    {
+      "question": "Has Abeka Math been shown to work in studies?",
+      "answer": "We found no outcome study. Abeka has no entry in Evidence for ESSA, and the What Works Clearinghouse's only Abeka report, on early childhood in 2005, found no studies that met its standards [10][11]."
+    },
+    {
+      "question": "Can I try either one before paying?",
+      "answer": "We found no free trial of Abeka Academy, though sample video lessons can be watched [3]. Its 30-day money-back guarantee gives full credit for returned materials, and the refund shrinks after that [2]. AMP gives every learner 100 answers and 5 workbooks free with no card, and a full refund within 30 days."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Abeka home page",
+      "url": "https://www.abeka.com/"
+    },
+    {
+      "title": "Abeka Academy pricing, fees and refunds (Abeka)",
+      "url": "https://www.abeka.com/AbekaAcademy/Pricing.aspx"
+    },
+    {
+      "title": "Abeka Academy overview (Abeka)",
+      "url": "https://abeka.com/academy"
+    },
+    {
+      "title": "Abeka Academy: accredited and video instruction compared (Abeka)",
+      "url": "https://abeka.com/abekaacademy/comparison.aspx"
+    },
+    {
+      "title": "Grade 1 video program (Abeka)",
+      "url": "https://www.abeka.com/Academic/Courses/Grade1.aspx"
+    },
+    {
+      "title": "Video lessons (Abeka)",
+      "url": "https://www.abeka.com/homeschool/products/videolessons/"
+    },
+    {
+      "title": "Video Homeschool enrollment agreement (Abeka)",
+      "url": "https://www.abeka.com/HomeschoolEnrollmentAgreement.aspx"
+    },
+    {
+      "title": "Grade 12 Video and Books, accredited enrollment (Abeka)",
+      "url": "https://www.abeka.com/ABekaOnline/BookDescription.aspx?sbn=422355"
+    },
+    {
+      "title": "Parent Led homeschool materials (Abeka)",
+      "url": "https://www.abeka.com/homeschool/products/parentled/"
+    },
+    {
+      "title": "Evidence for ESSA, site search for Abeka",
+      "url": "https://evidenceforessa.org/?s=abeka"
+    },
+    {
+      "title": "What Works Clearinghouse intervention report: A Beka (Early Childhood Education, 2005)",
+      "url": "https://ies.ed.gov/ncee/WWC/InterventionReport/3"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Arithmetic 1 Video Instruction, prices and payment plans (Abeka)",
+      "url": "https://www.abeka.com/ABekaOnline/BookDescription.aspx?sbn=371807"
+    }
+  ]
+}

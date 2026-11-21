@@ -1,0 +1,169 @@
+{
+  "slug": "xtramath",
+  "name": "XtraMath",
+  "category": "games",
+  "checked": "2026-11-21",
+  "benefit": "Math beyond the facts",
+  "line": "XtraMath drills math facts against a clock. AMP teaches and practices all of math, from counting to precalculus.",
+  "description": "AMP vs XtraMath: a free, timed drill for addition, subtraction, multiplication and division facts, beside a full adaptive math program. How they fit together.",
+  "verdict": "XtraMath is a free nonprofit tool that builds quick recall of math facts in about ten minutes a day [1][4]. By its maker's account it does not teach the strategies behind the facts, and it does not cover the rest of math [5][7]. AMP teaches with a hint, a lesson and worked steps, chooses every problem from counting to precalculus, and brings old skills back on a schedule, so many learners can use both.",
+  "reasons": [
+    {
+      "title": "XtraMath covers math facts, AMP covers all of math",
+      "body": "XtraMath practices addition, subtraction, multiplication and division facts, plus custom fact programs a teacher sets up [1][5]. We found no work on fractions, geometry or algebra in its materials. AMP runs from counting through precalculus in one program: 336 skills in 14 strands, with a separate level in each strand.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "A learner who doesn't know it gets taught",
+      "body": "XtraMath's maker describes the program as an adaptive set of flashcards and says it does not teach the underlying strategies or concepts behind an operation [7]. We found no lessons, worked examples or hints in its published materials [4][7]. In AMP every problem type has a one-step hint that never gives the answer and a written lesson with a worked example. After every answer the learner sees the correct answer and the worked steps.",
+      "research": [
+        "hints",
+        "lessons",
+        "feedback"
+      ]
+    },
+    {
+      "title": "Misses lead back to what the skill builds on",
+      "body": "XtraMath adjusts the mix of facts to each student's strengths and weaknesses, and brings in harder facts once a set of 10 is fluent [4][7]. Its range ends at the four operations. In AMP two misses in a row on a skill send practice to the skills it builds on, and an answer given after a hint does not count toward mastery.",
+      "research": [
+        "mastery",
+        "level"
+      ]
+    },
+    {
+      "title": "No clock in AMP",
+      "body": "Each XtraMath fact has a time limit, six seconds by default, shown as a moving bar; teachers can lengthen or hide it [4]. Common Sense Media's editors call the program dull, and the summaries on its page of parent and kid reviews describe stress, anxiety and penalties for mistakes [8]. Those are reviewers' accounts. AMP has no timer on any problem. For a learner who finds a clock stressful, that matters. For building speed, the clock is XtraMath's point."
+    },
+    {
+      "title": "Review that reaches every skill",
+      "body": "XtraMath opens each session with a two-minute quiz on earlier facts and uses spaced repetition in practice [4]. That is real review, for facts. AMP schedules review for every skill a learner earns: 6 hours, 1 day, 3 days, 1 week, 2 weeks and 1 month after success, mixed with other topics, and a miss resets it. In a randomized trial of 787 seventh graders, mixed, spaced practice scored 62% against 38% for blocked practice on the researchers' own test a month later [12].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Paper made for one learner",
+      "body": "XtraMath Pro adds printable math and STEM activities and classroom resources [3][5]. We found no worksheets made for an individual student. AMP prints unlimited workbooks composed from the learner's own record, each with a worked answer key, and results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Standard plan free. Family Pro $6 a year for three children, $2 each more. Teacher Pro $79 a year. School Pro $2 per student, 125 minimum [2].",
+    "buyers": "Families, teachers and schools, directly. Schools can pay by purchase order, card or check [2].",
+    "range": "Math facts only: addition, subtraction, multiplication and division, plus custom fact programs [1][5].",
+    "start": "A placement quiz across the four operations that usually spans two or three days. Listed as a Pro feature [3][4][5].",
+    "teaching": "No lessons, worked examples or hints found in its published materials. The maker calls it adaptive flashcards [4][7].",
+    "next": "A mix of facts set by each student's strengths and weaknesses. Harder facts arrive once a set of 10 is fluent [4][7].",
+    "mastery": "A student advances when the fluency score in an operation reaches 100. The time limit is six seconds by default [4][7].",
+    "review": "A two-minute quiz on earlier facts opens each session, and practice uses spaced repetition. Intervals are not published [4].",
+    "print": "With Pro: printable math and STEM activities in English and Spanish. No personalized worksheets found [3][5].",
+    "adult": "Create accounts, choose the program and time limit, and read the reports [1][4].",
+    "reports": "Accuracy, speed and fluency per student and operation in every plan. Pro adds class and student briefs and monthly and weekly reports [1][3].",
+    "evidence": "Listed by Evidence for ESSA without a rating. No What Works Clearinghouse intervention report. The site cites an educator survey [1][9]."
+  },
+  "theirs": [
+    "XtraMath is a nonprofit based in Seattle, founded in 2009 [1]. It reports more than 6.2 million students and 575,000 teachers in over 50 countries in 2023–24 [1]. It does one job: recall of addition, subtraction, multiplication and division facts, plus custom fact programs teachers define [1][5]. Its maker describes the program as adaptive flashcards [7].",
+    "A new student starts with a placement quiz, which usually spans two or three days [4]. After that a session takes about ten minutes. It opens with a two-minute quiz on facts learned before, then two practice activities. Each fact has a time limit, six seconds by default, shown as a moving bar [4]. A fluency score of 100 in one operation moves the student to the next [7].",
+    "The adult sets up accounts, picks the program and reads reports [1][4]. When a parent or teacher turns it on, a free game world called Awakening opens after the daily session [6]. XtraMath calls its flagship a math fact fluency program [1]."
+  ],
+  "credit": [
+    "Free. The Standard plan costs nothing, and Family Pro is $6 a year for three children [2]. AMP costs far more.",
+    "Timed fact practice, which AMP does not have. A What Works Clearinghouse practice guide rates regular timed fluency activities as strong evidence for elementary students who struggle in math [10]. XtraMath's daily session, about ten minutes, is that kind of practice [4].",
+    "Very little work for the adult. Reports come with every plan, including the free one [3], and teachers can lengthen or hide the timer [4].",
+    "Things AMP lacks: an optional game world after practice [6], printable activities in Spanish [5], and ClassLink as well as Clever rostering [3]."
+  ],
+  "evidence": {
+    "theirs": [
+      "XtraMath's home page calls the program \"ESSA Tier IV certified\" [1]. Tier IV is ESSA's rationale level: a stated logic for why a program should work, not a study of whether it did. It is the same level AMP's own published report claims. The site also reports that 96% of educators agree XtraMath helps students meet grade-level standards [1]. That is a survey of opinion, not a measure of learning.",
+      "Evidence for ESSA, the Johns Hopkins clearinghouse, lists XtraMath without a rating: \"No studies met inclusion requirements\" [9]. XtraMath has no What Works Clearinghouse intervention report, and we found no outcome study on its own site, as of November 2026. Its family page calls Awakening research-backed but names no study [6]."
+    ],
+    "ours": [
+      "The research backs both jobs. A What Works Clearinghouse practice guide rates regular timed activities to build fluency as strong evidence for elementary students who struggle in math [10]. That is XtraMath's job, and AMP does not do it. The same guide rates systematic instruction as strong evidence too [10], and worked examples raised math performance by g = 0.48 across 55 studies [11]. AMP gives every problem type a lesson with a worked example and shows worked steps after every answer. In a randomized trial, mixed, spaced practice scored 62% against 38% on the researchers' own test a month later [12], and AMP schedules that kind of review for every skill it teaches. We think a learner who is missing a method needs teaching before speed. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "You want free, ten-minute daily practice of addition, subtraction, multiplication and division facts.",
+      "You want your child to answer facts fast, against a clock you can set.",
+      "You already have a math curriculum and need only a fact-fluency add-on with automatic reports.",
+      "You teach a class and want a free fluency tool with Clever or ClassLink rostering."
+    ],
+    "amp": [
+      "Your child needs more than facts: place value, fractions, geometry, algebra and on to precalculus.",
+      "When your child misses something, you want it taught: a hint, a lesson with a worked example, and the worked answer.",
+      "You want old skills from every part of math to come back on a schedule, without planning it.",
+      "Your child works better without a timer.",
+      "You want workbooks made for your child, each with a worked answer key."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Can my child use XtraMath and AMP together?",
+      "answer": "Yes. They do different jobs. XtraMath gives about ten minutes of timed fact practice a day [4]. AMP teaches and practices the rest of math with no timer, and it has no timed drills of its own."
+    },
+    {
+      "question": "Is AMP more expensive than XtraMath?",
+      "answer": "Yes, by a wide margin. XtraMath's Standard plan is free and Family Pro is $6 a year for three children [2]. AMP is $599 a year or $59 a month for the first child, then $399 or $39 for each more, and the first 100 answers and 5 workbooks are free. The price buys a program that places the learner, chooses every problem, teaches, schedules review and prints workbooks from counting to precalculus."
+    },
+    {
+      "question": "Does XtraMath teach math?",
+      "answer": "It practices facts. Its maker describes it as adaptive flashcards, and we found no lessons, worked examples or hints in its published materials [4][7]. AMP pairs every problem type with a hint and a lesson."
+    },
+    {
+      "question": "Is XtraMath proven to work?",
+      "answer": "Evidence for ESSA lists it without a rating because no studies met its inclusion requirements [9]. XtraMath cites ESSA Tier IV and an educator survey [1]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "XtraMath home page",
+      "url": "https://home.xtramath.org/"
+    },
+    {
+      "title": "XtraMath Pro pricing (XtraMath)",
+      "url": "https://xtramath.org/home/pricing/"
+    },
+    {
+      "title": "XtraMath 2026–27 pricing and plan comparison (PDF)",
+      "url": "https://xtramath.org/home/assets/xtramath-pricing-2026-27.pdf"
+    },
+    {
+      "title": "What do students do in XtraMath? (XtraMath support)",
+      "url": "https://home.xtramath.org/support/what-do-students-do-in-xtramath"
+    },
+    {
+      "title": "What do you get with the premium licenses? (XtraMath support)",
+      "url": "https://home.xtramath.org/support/what-do-you-get-with-the-premium-licenses"
+    },
+    {
+      "title": "XtraMath for families (XtraMath)",
+      "url": "https://home.xtramath.org/family"
+    },
+    {
+      "title": "How does XtraMath work? (XtraMath support)",
+      "url": "https://home.xtramath.org/support/how-does-xtramath-work"
+    },
+    {
+      "title": "XtraMath review (Common Sense Media)",
+      "url": "https://www.commonsensemedia.org/website-reviews/xtramath"
+    },
+    {
+      "title": "XtraMath (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/xtramath/"
+    },
+    {
+      "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
+    },
+    {
+      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "slug": "zearn",
+  "name": "Zearn",
+  "maker": "Zearn",
+  "category": "school",
+  "checked": "2026-11-21",
+  "benefit": "Starts at the learner’s level",
+  "line": "Zearn takes a class through one grade’s lessons in order; AMP finds each learner’s level and schedules review.",
+  "description": "AMP vs Zearn: Zearn is free and has a large independent trial. AMP places each learner by strand, schedules review, and runs from counting to precalculus.",
+  "verdict": "Zearn is free for families, rated well by EdReports for kindergarten to grade 5, and studied in a large independent randomized trial [10][16][3]. By default it moves every student through the same grade-level lessons in a fixed order and checks each lesson once, at its end [3]. AMP finds the level in each part of math, repairs a gap when it shows, brings learned skills back on a schedule, and runs on to precalculus.",
+  "reasons": [
+    {
+      "title": "AMP starts where the learner is",
+      "body": "Zearn has no placement test. By default every student starts at Mission 1, Lesson 1 of the assigned grade and moves strictly in order; a teacher can reassign a student elsewhere in the K–8 library [3]. AMP has no separate test either, but it places the learner within the first 24 problems and keeps a level in each of 14 strands of math and keeps adjusting. A learner strong in geometry and shaky in fractions gets work aimed at each.",
+      "research": ["level"]
+    },
+    {
+      "title": "A gap gets practiced at its source",
+      "body": "Zearn keeps students in grade-level lessons by design and gives help for a gap inside the lesson, rather than moving a student back to an earlier grade’s lessons [7][8]. Zearn’s own observational study of 600,000 students found less struggle on the next lesson this way [8]. In RAND’s trial the lowest-scoring quarter of students showed no sign of benefiting less, but in year two they completed a median of 59 grade-level lessons in about the same time the top quarter took to complete 118 [3]. In AMP, two misses in a row on a skill send practice to the specific skills it builds on, while every other strand stays at its own level, so the gap itself gets practiced without dropping the learner a grade.",
+      "research": ["level", "mastery"]
+    },
+    {
+      "title": "Learned skills come back on a schedule",
+      "body": "Zearn checks mastery once, with the Tower of Power quiz at the end of each lesson; 100% opens the next lesson [3]. We found no scheduled review of earlier lessons on the Zearn pages that describe its lessons [4][6]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. A miss resets the schedule, and a skill marked Strong falls back to Building when it is due.",
+      "research": ["review", "mastery"]
+    },
+    {
+      "title": "It keeps going after grade 8",
+      "body": "Zearn covers kindergarten through grade 8, and its middle-school page names no high-school course [4][5]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and Precalculus on one map of 336 skills. A learner does not have to change programs at high school, and one who is ahead can move into later courses at any time."
+    },
+    {
+      "title": "Built for a home, not borrowed from a classroom",
+      "body": "A Zearn family uses the same free account a teacher gets, for one teacher and up to 35 students, and adds the child to a class roster [1][10]. Zearn says the program is designed to complement teacher-led instruction [9]. AMP expects no lesson from the adult. Every problem type has a one-step hint and a written lesson with a worked example, every answer is followed by worked steps, and 961 reference lessons each carry a parent guide.",
+      "research": ["lessons", "hints", "feedback"]
+    },
+    {
+      "title": "Paper made for the learner",
+      "body": "Zearn’s free account includes printable student and teacher materials, and Zearn sells printed books at $20 and $12 per student and $110 per teacher [1][13][11]. The printed books are the same for every student in a grade. AMP prints unlimited workbooks composed from the learner’s own record, each with a worked answer key, and results entered from paper count toward the learner’s level."
+    }
+  ],
+  "rows": {
+    "price": "Free for families and for one teacher with up to 35 students [10][1]. Schools by quote; Evidence for ESSA lists $3,500 per school a year [2].",
+    "buyers": "Anyone, free, for one teacher and up to 35 students [1]. Schools buy a School Account with training and Spanish lessons [1][12].",
+    "range": "Kindergarten through grade 8, about 120 lessons per grade [15]. No high-school course named [5].",
+    "start": "No placement test. Students start at Mission 1, Lesson 1 of the assigned grade. A teacher can reassign [3].",
+    "teaching": "Lessons of about 30 minutes: fluency warm-up, short videos with on-screen teachers and digital manipulatives, problems on screen and on paper [4][6][15].",
+    "next": "The next lesson in a fixed order. Teachers assign units and recommended foundational lessons [3][13].",
+    "mastery": "100% on the lesson’s Tower of Power quiz, with unlimited attempts, opens the next lesson [3].",
+    "review": "No scheduled review of earlier lessons found on its lesson pages [4][6].",
+    "print": "Printable student and teacher materials download free [1][13]. Printed books: $12 to $20 per student, $110 per teacher [11]. Not personalized.",
+    "adult": "Assigns units, watches live reports and alerts, assigns foundational lessons, and in the intended model teaches the lesson [6][9][13].",
+    "reports": "LiveView, Class Snapshot, pace and progress reports, and alerts when a student struggles on a quiz [6][13].",
+    "evidence": "Rated Strong by Evidence for ESSA [2]. Independent randomized trial: state test +0.07 SD, not significant; MAP +0.11, exploratory [3]."
+  },
+  "theirs": [
+    "Zearn Math comes from Zearn, a nonprofit. Zearn says 1 in 4 elementary students use it [18]. Its lessons cover kindergarten through grade 8. The kindergarten to grade 5 lessons derive from Eureka Math under license from Great Minds, and grades 6 to 8 from Open Up Resources’ 6–8 Math [17]. Schools use it mostly as a supplement to classroom teaching [15].",
+    "A teacher assigns a Mission, a unit that matches class instruction, and students work through its lessons in order [6]. A lesson takes about 30 minutes [15]. It opens with fluency activities. Then come short videos with on-screen teachers that pause for the student to solve problems, on screen and on paper [3][4]. It closes with the Tower of Power, a quiz that needs 100% to open the next lesson. Zearn recommends three lessons a week [3].",
+    "Families and teachers use a free Individual Account [1][10]. Schools buy a School Account, which adds training and, for kindergarten to grade 2, digital lessons in Spanish [1][12]."
+  ],
+  "credit": [
+    "Free. A family, or a teacher with up to 35 students, gets all of Zearn Math’s instructional materials at no cost [1][10]. AMP costs $599 a year or $59 a month for the first child.",
+    "Evidence AMP does not have yet: an independent randomized trial run by RAND and funded by the U.S. Institute of Education Sciences, and a Strong rating from Evidence for ESSA [3][2].",
+    "A coherent curriculum that lines up with what many classrooms teach. EdReports rated the 2018 kindergarten to grade 5 edition as meeting expectations in every gateway, in a 2021 report [16].",
+    "People on screen. On-screen teachers and kids, with digital manipulatives and visual models [4][6]. Text-to-speech and captions [7]. AMP has narrated, animated films for a growing share of problem types, with no presenters and no read-aloud.",
+    "Fluency work in every lesson, including fluency games [3][6], and Spanish digital lessons for kindergarten to grade 2 in School Accounts [12]. AMP has no games, no timed drills and no Spanish."
+  ],
+  "evidence": {
+    "theirs": [
+      "Zearn’s strongest evidence is an independent randomized trial. RAND researchers, funded by the U.S. Institute of Education Sciences, randomly assigned 64 schools in a large Texas district, with more than 10,000 students in grades 3 to 5, and followed them for two years [3]. Zearn helped design the study and supplied teacher training, coaching calls typically every two weeks, and prize challenges. Control schools kept their usual programs, which included other math software. After two years the effect on the state STAAR test was +0.07 standard deviations, “positive but not statistically significant” in the authors’ words. On the MAP test it was +0.11, significant but labeled exploratory [3].",
+      "Use was the hard part. In the first year 18% of students reached the goal of 90 lessons; in the second year 50% did [3]. For scale, across 1,942 effects from 747 randomized trials of school programs measured on standardized tests, the median is 0.10 standard deviations [20].",
+      "Evidence for ESSA rates Zearn Math Strong, based on three studies including one randomized trial (average effect size +0.09) [2]. The other two are Johns Hopkins matched comparisons. In Louisiana in 2023–24, in a study run with Zearn and funded by Accelerate, students in three districts using Zearn with coaching scored +0.20 SD higher on the state test than matched students in districts averaging under one Zearn lesson a week. Against districts Zearn picked as planning a full rollout, the difference was +0.09, not significant [14]. A 2019 study of 15 schools found no significant difference overall [2][3].",
+      "Zearn’s 2023 program overview says consistent use leads to 2x learning gains and that users grew state scores 2.5 times more than matched students who did not use Zearn Math [13]. Those figures come from Zearn’s own studies, which compare students who met a usage target, such as three lessons a week, with matched students who did not [15][3]. RAND’s researchers say such estimates are likely biased upward, because students who use a program more likely differ in ways matching cannot capture [3]. RAND also reports that, as of April 2025, the What Works Clearinghouse had not reviewed any study of Zearn Math [3]."
+    ],
+    "ours": [
+      "Zearn moves through topics in order and checks each lesson once, at its end. AMP is built on a different finding. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, students whose practice mixed and spaced earlier topics scored 62% on a test a month later, against 38% for practice in blocks [19]. The test was the researchers’ own. AMP brings every learned skill back on a schedule, mixed with other topics, and aims each problem at the learner’s level in each strand. We expect that to show in outcomes. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "You need a program that costs nothing. Zearn is free for a family.",
+      "Your school teaches Eureka Math and wants a supplement built on the same lessons.",
+      "Your district needs a program rated Strong by Evidence for ESSA.",
+      "Your child needs text-to-speech, a teacher on video, or Spanish lessons in kindergarten to grade 2, which come with a school account."
+    ],
+    "amp": [
+      "Your child is ahead in one part of math and behind in another, and you want practice aimed at each.",
+      "You teach at home and want the program to place, check, explain and schedule review, with nothing to grade.",
+      "You want learned skills to come back weeks later, without planning it.",
+      "Your learner is past grade 8, or will be soon.",
+      "You want paper too: workbooks made for your learner, with worked answer keys, that count toward the level."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Zearn is free. Why would a family pay for AMP?",
+      "answer": "Zearn costs a family nothing [10]. AMP costs $599 a year or $59 a month for the first child, and buys placement in every strand of math, a next problem chosen from each answer, scheduled review, unlimited personalized workbooks, and math from counting to precalculus. The first 100 answers are free, with no card, and a full refund is available within 30 days."
+    },
+    {
+      "question": "Does Zearn work?",
+      "answer": "In RAND’s randomized trial of more than 10,000 Texas students, the two-year effect on the state test was +0.07 standard deviations, not statistically significant, and +0.11 on the MAP test, an exploratory result [3]. Evidence for ESSA rates Zearn Math Strong [2]. Zearn’s larger headline numbers come from comparing students who met a usage target with matched students who did not [13][15]."
+    },
+    {
+      "question": "Does Zearn have a placement test?",
+      "answer": "No. By default every student starts at Mission 1, Lesson 1 of the assigned grade, and a teacher can move a student elsewhere in the K–8 library [3]. AMP places a learner within the first 24 problems and keeps a level in each of 14 strands."
+    },
+    {
+      "question": "Does Zearn cover algebra or high school math?",
+      "answer": "Zearn covers kindergarten through grade 8, and its middle-school page names no high-school course [4][5]. AMP continues through Algebra 1, Geometry, Algebra 2 and Precalculus."
+    },
+    {
+      "question": "My child uses Zearn at school. Can we use AMP at home?",
+      "answer": "Yes. AMP is a separate program that runs in any current browser. It finds the level in each part of math and chooses practice from there, on your schedule."
+    }
+  ],
+  "sources": [
+    { "title": "Zearn Math pricing and account types (Zearn)", "url": "https://about.zearn.org/math-resources/pricing" },
+    { "title": "Zearn Math (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/zearn-math/" },
+    { "title": "Pane, Doss, Todd & Seaman (2025), Efficacy of Zearn Math over two years in grades 3 to 5: An experiment in Texas (RAND; EdWorkingPaper 25-1211)", "url": "https://edworkingpapers.com/sites/default/files/ai25-1211.pdf" },
+    { "title": "Zearn Math digital lessons (Zearn)", "url": "https://about.zearn.org/digital-lessons" },
+    { "title": "Zearn Math for middle school (Zearn)", "url": "https://about.zearn.org/middle-school-math" },
+    { "title": "How Zearn Math works (Zearn)", "url": "https://about.zearn.org/how-zearn-math-works" },
+    { "title": "Math learning acceleration, grade 4 (Zearn)", "url": "https://about.zearn.org/math-learning-acceleration/grade-4" },
+    { "title": "Catching Up and Moving Forward (Zearn, 2022)", "url": "https://webassets.zearn.org/Implementation/Zearn_LearningAccelerationStudy.pdf" },
+    { "title": "Why Zearn Math (Zearn)", "url": "https://about.zearn.org/why-zearn-math" },
+    { "title": "Zearn Math for families (Ohio Statewide Family Engagement Center)", "url": "https://ohiofamiliesengage.osu.edu/?p=36124" },
+    { "title": "Zearn Math printed materials (Zearn)", "url": "https://about.zearn.org/math-resources/printed-materials" },
+    { "title": "Zearn Math in Spanish (Zearn)", "url": "https://about.zearn.org/zearn-in-spanish" },
+    { "title": "Zearn Math middle school program overview (Zearn, 2023)", "url": "https://webassets.zearn.org/Implementation/ZearnMathMSProgramOverview.pdf" },
+    { "title": "Storey & Neitzel (2025), Evaluation of Zearn Supplemental with dedicated implementation support (Johns Hopkins CRRE)", "url": "https://webassets.zearn.org/Implementation/EvaluationofZearnSupplementalwithDedicatedImplementationSupport.pdf" },
+    { "title": "Zearn efficacy research methodology (Zearn)", "url": "https://webassets.zearn.org/Implementation/EfficacyResearchMethodology.pdf" },
+    { "title": "Zearn K–5 (2018 edition) report (EdReports)", "url": "https://edreports.org/reports/overview/zearn-2018" },
+    { "title": "Zearn terms of use (Zearn)", "url": "https://about.zearn.org/terms" },
+    { "title": "Zearn (about.zearn.org)", "url": "https://about.zearn.org/" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Kraft (2020), Interpreting effect sizes of education interventions, Educational Researcher 49(4)", "url": "https://doi.org/10.3102/0013189X20912798" }
+  ]
+}

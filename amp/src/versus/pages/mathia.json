@@ -1,0 +1,164 @@
+{
+  "slug": "mathia",
+  "name": "MATHia",
+  "maker": "Carnegie Learning",
+  "category": "school",
+  "checked": "2026-11-21",
+  "benefit": "Counting through precalculus",
+  "line": "MATHia is a school tutor for grades 6 to 12. AMP is open to families and runs from counting to precalculus.",
+  "description": "AMP vs MATHia: MATHia checks each step and has a large trial behind its blended algebra course. AMP sells to families and runs from counting to precalculus.",
+  "verdict": "MATHia follows each step of a student's work, and the blended algebra course its evidence comes from has a large independent randomized trial behind it [1][5]. It is sold to schools for grades 6 to 12 and works beside a teacher who decides what comes next [1][2]. AMP is open to any family, runs from counting to precalculus, and makes those choices itself at every answer.",
+  "reasons": [
+    {
+      "title": "A family can buy AMP today",
+      "body": "Carnegie Learning publishes no price for MATHia, and its MATHia pages ask schools to contact the company [1][2]. We found no family or homeschool plan on its pages [1][2][3]. AMP is sold to families, tutors and schools alike, and the first 100 answers and 5 workbooks are free, with no card."
+    },
+    {
+      "title": "One program from counting to precalculus",
+      "body": "MATHia covers grades 6 to 12 and ends at Algebra II and Integrated Math III; we found no precalculus course on its pages [2]. Younger students need a different product, the game-based MATHia Adventure [3]. AMP runs from counting through precalculus on one map of 336 skills, so a learner who is far ahead, or behind in one part of math, never has to change programs.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "AMP makes the calls a MATHia teacher makes",
+      "body": "Carnegie Learning built MATHia to work alongside core instruction, and the teacher decides what comes next [1]. In the version tested at scale, classes spent three days a week with a teacher and two on the software [7]. AMP places the learner within the first 24 problems, keeps a level in each of 14 strands, chooses every problem after that, and sends practice back to what a skill builds on after two misses in a row. Every problem type has a hint and a written lesson with a worked example, so no adult has to teach first.",
+      "research": [
+        "level",
+        "mastery",
+        "lessons"
+      ]
+    },
+    {
+      "title": "Learned skills come back on a schedule",
+      "body": "In the studied version, students advanced through the software as they mastered skills [7]. We found no scheduled review of mastered skills on its MATHia pages [1][2]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss resets the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks [11].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Paper made for each learner",
+      "body": "MATHia is software. In the blended course, paper comes as student textbooks and worksheets [7], and we found no printable work made for the individual student. AMP prints unlimited workbooks composed from the learner's own record, each with a worked answer key, and results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Not published. Its MATHia pages ask schools to contact the company [1][2].",
+    "buyers": "Schools and districts. We found no family or homeschool plan [1][2][3].",
+    "range": "MATHia: grades 6 to 12, through Algebra II and Integrated Math III [2]. Kindergarten to grade 5 is a separate game-based product, MATHia Adventure [3].",
+    "start": "No placement test described on its MATHia pages. The teacher assigns the work [1].",
+    "teaching": "Problem solving with hints that respond to the student's strategy, checked step by step [1]. In blended courses a teacher and textbook carry the lessons [7].",
+    "next": "Practice on skills not yet mastered, inside the work the teacher assigns. The teacher decides what comes next [1].",
+    "mastery": "Progress by mastery, skill by skill, shown on a Skillometer [1][7]. We found no published mastery rule.",
+    "review": "No scheduled review of mastered skills found on its MATHia pages [1][2].",
+    "print": "Student textbooks and worksheets in the blended course [7]. No printable work made for the individual student found.",
+    "adult": "A teacher assigns the work, watches LiveLab to see who is working or idle, and decides what comes next [1][2].",
+    "reports": "For teachers: LiveLab, Data Insights, the Skillometer, skill-by-skill progress toward mastery and projected outcomes [1][2].",
+    "evidence": "Blended Algebra I course: randomized trial, none in year one, about 0.2 SD in year two in high schools [5]. MATHia alone: unrated by Evidence for ESSA [9]."
+  },
+  "theirs": [
+    "MATHia comes from Carnegie Learning, a Pittsburgh company [1]. It is tutoring software for grades 6 to 12, from middle-school math through Algebra I, Geometry, Algebra II and Integrated Math I to III [2]. Carnegie Learning sells it to schools as a supplement that works alongside core instruction [1]. A separate product, MATHia Adventure, offers game-based practice for kindergarten to grade 5 [3].",
+    "A student works through workspaces of real problems. MATHia responds to each step of the student's reasoning, not only the final answer, and its hints respond to the student's strategy [1]. Practice targets the skills the student has not yet mastered, and a Skillometer shows progress. The teacher assigns the work, watches LiveLab to see who is working and who is idle, and decides what comes next [1][2].",
+    "MATHia's research comes from Cognitive Tutor, Carnegie Learning's earlier blended algebra course. In the version studied at scale, classes spent three days a week with a teacher and textbook and two days on the software [7]. Carnegie Learning still sells blended courses that pair MATHia with a curriculum [10]. This page compares the software."
+  ],
+  "credit": [
+    "Step-by-step tutoring. MATHia follows each step of a student's reasoning in a multistep problem, and its hints respond to the student's strategy [1]. AMP checks final answers exactly and typed lines of work on 64 problem types. It does not follow freehand steps.",
+    "A large randomized trial of Carnegie Learning's blended Cognitive Tutor Algebra I course in seven states, run by RAND researchers, with its cost analysis sponsored by the U.S. Institute of Education Sciences [5][8].",
+    "Classroom tools at scale. LiveLab shows a teacher who is working and who is idle as it happens, and teachers assign the work [1][2]. AMP shows who needs the teacher today, but has no live view of each student's current problem, and its teachers cannot assign a skill for online practice.",
+    "A full course, not only practice. Carnegie Learning sells blended courses with textbooks and teacher training [4][7]. For kindergarten to grade 5, MATHia Adventure adds games, badges and star ratings [3]. AMP has no games."
+  ],
+  "evidence": {
+    "theirs": [
+      "MATHia's strongest evidence comes from Cognitive Tutor Algebra I, Carnegie Learning's earlier blended course. RAND researchers matched schools into pairs in seven states, randomly assigned one school in each pair to the course, and followed them for two years; the cost analysis of the trial was sponsored by the U.S. Institute of Education Sciences [5][7][8]. In high schools alone the trial covered 73 schools in 51 districts and more than 11,000 students [7]. Classes spent three days a week with a teacher and two on the software, against the schools' usual textbooks, and took an algebra exam [7]. There was no effect in the first year. In the second year high schools gained about 0.2 standard deviations, about 8 percentile points for the median student [5][6]. The middle-school estimate was similar in size but not significant [6].",
+      "The What Works Clearinghouse, using its own calculations, found no significant effect in year one and a year-two gain that lost significance after adjusting for multiple comparisons [7]. It also noted that students enrolled several months after schools were assigned, which weakens the randomization. Its 2016 report on Cognitive Tutor Algebra I covered five studies with algebra findings, with an average gain of 4 percentile points and a range from -7 to +19. For Cognitive Tutor Geometry, one randomized study of 669 students, it found potentially negative effects, -8 points [7].",
+      "Evidence for ESSA rates Carnegie Learning's High School Math Solution Algebra I, which pairs MATHia with the curriculum, Strong: three Cognitive Tutor Algebra I studies, average effect size +0.04 [10]. It lists MATHia on its own without a rating: \"Qualifying studies found no significant positive outcomes\" [9]. Carnegie Learning's research page says standalone MATHia meets ESSA Tier 2 [4].",
+      "Carnegie Learning's research page says the blended course \"nearly doubled growth\" in year two, which is the second-year result of the same trial [4]. It also cites EMERALDS, in which students who completed more MATHia workspaces in middle school did better in Algebra I [1][4]. That compares heavier users with lighter ones, and students who use a program most differ from the rest before they start. The MATHia Adventure page cites no outcome study [3]."
+    ],
+    "ours": [
+      "MATHia moves a student on as skills are mastered [7]. AMP adds two things the research supports. Mixed, spaced review: in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, students whose practice mixed and spaced earlier topics scored 62% on a test a month later, against 38% for practice in blocks; the test was the researchers' own [11]. Worked examples: across 55 studies in math they improved performance with an average effect of g = 0.48 [12], and every AMP problem type has one. We expect a program that does both at every problem, and that any family can use, to show it in outcomes. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "You run a middle or high school and want software that checks each step of multistep algebra.",
+      "You want the course behind a large independent randomized trial, and will run it as studied: about three days of class to two on the software.",
+      "Your teachers want to assign the work themselves and watch the room live.",
+      "You want game-based practice with badges for kindergarten to grade 5."
+    ],
+    "amp": [
+      "You are a family. MATHia is sold to schools. AMP is sold to you.",
+      "Your learner is below grade 6, or ready for precalculus.",
+      "No one at home has time to teach math first. AMP places, chooses, explains and repairs gaps on its own.",
+      "You want learned skills to come back on a schedule, and paper made for your child.",
+      "You teach a class and want the program to place each student, with who needs you today on one screen."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Can parents or homeschoolers buy MATHia?",
+      "answer": "We found no family or homeschool plan. Carnegie Learning's MATHia pages publish no price and ask schools to contact the company [1][2]. AMP sells to families directly, at $599 a year or $59 a month for the first child, and the first 100 answers are free."
+    },
+    {
+      "question": "Is MATHia proven to work?",
+      "answer": "Its blended Cognitive Tutor Algebra I course showed no effect in the first year of a large randomized trial and about 0.2 standard deviations in the second, in high schools [5]. Evidence for ESSA rates the blended High School Math Solution Algebra I Strong and lists MATHia on its own without a rating [10][9]."
+    },
+    {
+      "question": "Does AMP check each step the way MATHia does?",
+      "answer": "Not in the same way. MATHia responds to each step of a student's reasoning as they work [1]. AMP checks the final answer exactly, checks typed lines of work on 64 problem types, and shows the full worked steps after every answer."
+    },
+    {
+      "question": "My child uses MATHia at school. Can we use AMP at home?",
+      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each strand of math, and it covers the grades before and after MATHia's as well."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MATHia (Carnegie Learning)",
+      "url": "https://www.carnegielearning.com/solutions/math/mathia/"
+    },
+    {
+      "title": "MATHia demo and samples (Carnegie Learning)",
+      "url": "https://www.carnegielearning.com/solutions/math/mathia/demo"
+    },
+    {
+      "title": "MATHia Adventure (Carnegie Learning)",
+      "url": "https://www.carnegielearning.com/solutions/math/mathia-adventure/"
+    },
+    {
+      "title": "Research (Carnegie Learning)",
+      "url": "https://www.carnegielearning.com/research/"
+    },
+    {
+      "title": "Pane, Griffin, McCaffrey & Karam (2014), Effectiveness of Cognitive Tutor Algebra I at scale, Educational Evaluation and Policy Analysis 36(2)",
+      "url": "https://doi.org/10.3102/0162373713507480"
+    },
+    {
+      "title": "RAND research brief RB-9746 on the Cognitive Tutor Algebra I trial",
+      "url": "https://www.rand.org/pubs/research_briefs/RB9746.html"
+    },
+    {
+      "title": "What Works Clearinghouse (2016), Cognitive Tutor intervention report",
+      "url": "https://ies.ed.gov/ncee/WWC/Docs/InterventionReports/wwc_cognitivetutor_062116.pdf"
+    },
+    {
+      "title": "RAND technical report TR-1171-1, cost analysis of the Cognitive Tutor Algebra I trial",
+      "url": "https://www.rand.org/pubs/technical_reports/TR1171-1.html"
+    },
+    {
+      "title": "MATHia (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/mathia/"
+    },
+    {
+      "title": "Carnegie Learning High School Math Solution Algebra I (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/carnegie-learning-high-school-math-solution/"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
+  ]
+}

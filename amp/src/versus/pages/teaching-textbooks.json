@@ -1,0 +1,202 @@
+{
+  "slug": "teaching-textbooks",
+  "name": "Teaching Textbooks",
+  "maker": "Teaching Textbooks, LLC",
+  "category": "courses",
+  "checked": "2026-11-21",
+  "benefit": "Practice that finds the level",
+  "line": "Teaching Textbooks gives every student the same lessons; AMP chooses each next problem from the learner's answers.",
+  "description": "AMP vs Teaching Textbooks: a fixed video course that starts at Math 3, or practice that finds each learner's level from counting to precalculus.",
+  "verdict": "Teaching Textbooks is a gentle, low-priced course: a narrated lecture every lesson, every problem read aloud, and a person to call when a child is stuck [2]. It gives every student at a level the same lessons in the same order, and its own chart first lists some grade 5 topics in Math 7 [10][12]. AMP finds the level in each strand of math, chooses every next problem from the learner's answers, and runs from counting to precalculus on one license.",
+  "theirs": [
+    "Teaching Textbooks is an Oklahoma City company that sells math courses to families and to schools [2][8]. The current version has ten courses, Math 3 through Pre-Calculus, each its own app for computers, tablets and phones [1][9]. A family buys one course for one student for twelve months, with up to three months of pause time [2].",
+    "Each lesson opens with an animated, narrated lecture with frequent interaction [4][11]. A problem set follows that mixes new and earlier topics [2]. Every problem is read aloud and graded on entry. A wrong answer gets a second chance, and a step-by-step video solution is there after answering [1][2][11]. A quiz comes about every seventh lesson [11].",
+    "The adult gives a printable placement test to choose the level, sets a start date, and then follows a gradebook and a daily progress email. There is no lesson planning and no grading to do [1][2][6][11]."
+  ],
+  "credit": [
+    "A low price. One course costs $48.95 to $83.95 for a year, and the Family Plan caps four to eight children at $239.95 a year [2][3].",
+    "Every problem read aloud, a narrated lecture for every lesson and a video solution for every problem [1][2]. AMP does not read problems aloud, and its films cover a growing share of problem types, not all of them.",
+    "Free tutoring by phone with a person [2]. AMP has no human help.",
+    "Apps in four app stores, with up to six lessons offline [2][9]. AMP runs in a web browser and needs a connection.",
+    "Earlier topics mixed into every assignment, and a free 15-lesson trial with no card and no time limit [1][2][5]."
+  ],
+  "reasons": [
+    {
+      "title": "Every answer sets the next problem",
+      "body": "Teaching Textbooks is a course of lessons in a set order [2][11]. The parent picks the level with a printable test whose pass guidelines the vendor calls \"very rough\" [6], and Cathy Duffy notes that many students, especially advanced ones, need one level above their grade [11]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then chooses every problem from the learner's answers. While a learner is still climbing, every second problem reaches higher.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Grade 5 topics in grade 5",
+      "body": "Teaching Textbooks' published scope and sequence first lists the coordinate plane and the volume of solid figures in Math 7, and box plots and histograms in Math 7 too [10]. The Common Core puts the first two in grade 5 and the others in grade 6 [12][13][14]. Other topics arrive on time, such as two-digit divisors in Math 5 [10][12]. The reviewer Cathy Duffy calls the series college-prep, though \"not as rigorous as some other courses\" [11]. AMP's skills are aligned to every numbered Common Core standard from kindergarten to grade 8, and a learner ahead in one strand moves ahead there.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "One license from counting to precalculus",
+      "body": "Teaching Textbooks starts at Math 3, so it has no course for kindergarten through grade 2 [1]. Each enrollment covers one level for one student and cannot be shared, and a student who finishes early needs a new purchase for the next level [2]. AMP covers counting through precalculus in one program, 336 skills on one map, and a learner can move into any band as the answers show it."
+    },
+    {
+      "title": "Learned means right without help",
+      "body": "Teaching Textbooks keeps a running course average and gives a quiz about every seventh lesson [4][11]. We found no rule that marks a single skill learned, and no automatic step back to a prerequisite; the next lesson comes next [2][4]. In AMP a skill is strong when four of the last five answers are right without help, and an answer given after a hint does not count. Two misses in a row send practice back to what the skill builds on.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Review follows each learner's own answers",
+      "body": "Teaching Textbooks mixes earlier topics into every assignment, in the same order for every student [2]. That is a sound idea, and AMP uses it too. AMP also keeps a schedule for each skill each learner has shown: back after 6 hours, a day, 3 days, a week, 2 weeks and a month, mixed with other topics. A miss starts that schedule over.",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "The problem comes first, the lecture on call",
+      "body": "Each Teaching Textbooks lesson opens with a narrated lecture, and each level holds at least 100 hours of audiovisual teaching [2][4]. AMP starts with a problem and keeps the hint, the written lesson with a worked example and, for a growing share of types, a narrated film at that problem. In an online psychology course for adults, extra doing was linked to more than six times the benefit of extra watching or reading, though the data are correlational [19].",
+      "research": [
+        "hints",
+        "lessons",
+        "films"
+      ]
+    }
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no study of how much students learn with Teaching Textbooks. We found no research page on its website, and its reviews page holds parent testimonials [1][15]. Teaching Textbooks has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [16][17].",
+      "Its FAQ calls the review in every assignment a proven method for building skills and long-term retention [2]. Research on spaced and mixed practice supports the general idea. We found no study that tests Teaching Textbooks itself."
+    ],
+    "ours": [
+      "Teaching Textbooks and AMP share one rule with strong support: mix earlier topics into practice. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks. The test was the researchers' own [18]. AMP adds three things: the return of each skill timed to the learner's own answers, a level in every strand, and credit only for answers given without help. We expect that to show in outcomes, and we have committed in public to measuring it.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "rows": {
+    "price": "$48.95 to $83.95 per course for 12 months, one student and one level [2]. Family Plan: $239.95 a year for four to eight children [3].",
+    "buyers": "Families, and schools by purchase order at the same per-student price with no site license [2]. Free trial: the first 15 lessons of any course, no card [1][5].",
+    "range": "Math 3 through Pre-Calculus: ten courses, one app each [1][9]. No course for kindergarten through grade 2.",
+    "start": "Printable placement tests the parent gives and scores, with rough pass guidelines [6].",
+    "teaching": "A narrated, animated lecture opens every lesson. Every problem is read aloud, many have hints, and each has a step-by-step video solution [1][2][11].",
+    "next": "The next lesson in a fixed order, the same for every student [2][11].",
+    "mastery": "A running course average and a quiz about every seventh lesson [4][11]. No skill-by-skill mastery rule found.",
+    "review": "Earlier topics mixed into every assignment, on the same fixed schedule for every student [2].",
+    "print": "The same eBook for every student, printable from the parent portal. Printed textbook with answer key: $42.95 to $66.95 [2][7].",
+    "adult": "Choose the level with the placement test, set the start date, then follow the gradebook and daily email [2][6][11].",
+    "reports": "A printable gradebook by lesson that shows hint use, second attempts and solution views, plus a daily progress email [4][11].",
+    "evidence": "No outcome study on its site. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [15][16][17]."
+  },
+  "fit": {
+    "them": [
+      "Your budget is tight, or you teach four to eight children at once.",
+      "Your child needs every problem read aloud, or learns best from a lecture every lesson.",
+      "You want a person to call when your child is stuck.",
+      "You need tablet apps or offline lessons today."
+    ],
+    "amp": [
+      "Your child is younger than Math 3, or ahead in some parts of math and behind in others.",
+      "You want each problem chosen from the last answer, and repeated misses to lead back to the missing piece.",
+      "You want topics like the coordinate plane and the volume of solids when the Common Core teaches them.",
+      "You want paper practice made for your child, with the results counting toward the level.",
+      "You want one license per child that covers every level, from counting to precalculus."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Teaching Textbooks behind grade level?",
+      "answer": "On some topics, by its own chart. Its published scope and sequence first lists the coordinate plane and the volume of solid figures in Math 7, where the Common Core puts them in grade 5, though other topics, such as two-digit divisors, arrive on time [10][12][13]. When a parent is unsure, the company advises giving the higher level's placement test first [6]."
+    },
+    {
+      "question": "Is AMP more expensive than Teaching Textbooks?",
+      "answer": "Yes. A Teaching Textbooks course costs $48.95 to $83.95 for 12 months, and the Family Plan caps four to eight children at $239.95 a year [2][3]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, and that buys every level from counting to precalculus, problems chosen from each answer, scheduled review and unlimited personalized workbooks."
+    },
+    {
+      "question": "Can my child use AMP alongside Teaching Textbooks?",
+      "answer": "Yes. AMP is a separate program that places the learner within the first 24 problems and keeps a level in each part of math and works from there. The first 100 answers and 5 workbooks are free, with no card."
+    },
+    {
+      "question": "Is there research showing Teaching Textbooks works?",
+      "answer": "We found no study of its effect on learning, and it has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [16][17]. The evidence section above says where AMP's own studies stand."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Teaching Textbooks home page",
+      "url": "https://www.teachingtextbooks.com/"
+    },
+    {
+      "title": "Teaching Textbooks frequently asked questions",
+      "url": "https://www.teachingtextbooks.com/faqs"
+    },
+    {
+      "title": "Teaching Textbooks Family Plan",
+      "url": "https://www.teachingtextbooks.com/familyplan.html"
+    },
+    {
+      "title": "Teaching Textbooks Math 3 (Version 4) course page",
+      "url": "https://www.teachingtextbooks.com/math3-version4.html/"
+    },
+    {
+      "title": "Teaching Textbooks free trial",
+      "url": "https://www.teachingtextbooks.com/free-trial"
+    },
+    {
+      "title": "Teaching Textbooks placement tests",
+      "url": "https://www.teachingtextbooks.com/placement/"
+    },
+    {
+      "title": "Teaching Textbooks printed textbooks",
+      "url": "https://www.teachingtextbooks.com/printed-textbooks/"
+    },
+    {
+      "title": "Teaching Textbooks contact page",
+      "url": "https://www.teachingtextbooks.com/contact-us/"
+    },
+    {
+      "title": "Teaching Textbooks app downloads",
+      "url": "https://www.teachingtextbooks.com/downloads/"
+    },
+    {
+      "title": "Teaching Textbooks scope and sequence, Math 3 to Math 7 (PDF)",
+      "url": "https://content.teachingtextbooksapp.com/magentoimages/Scope__Sequence_Math_3_to_7.pdf"
+    },
+    {
+      "title": "Cathy Duffy Reviews, Teaching Textbooks Math 3 through Pre-Calculus",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-9-12/teaching-textbooks-math-3-through-precalculus"
+    },
+    {
+      "title": "Common Core State Standards, Grade 5 introduction",
+      "url": "https://www.thecorestandards.org/Math/Content/5/introduction/"
+    },
+    {
+      "title": "Common Core State Standards, Grade 5 Geometry (5.G)",
+      "url": "https://www.thecorestandards.org/Math/Content/5/G/"
+    },
+    {
+      "title": "Common Core State Standards, Grade 6 Statistics and Probability (6.SP)",
+      "url": "https://www.thecorestandards.org/Math/Content/6/SP/"
+    },
+    {
+      "title": "Teaching Textbooks reviews page",
+      "url": "https://www.teachingtextbooks.com/reviews/"
+    },
+    {
+      "title": "What Works Clearinghouse product search: Teaching Textbooks",
+      "url": "https://ies.ed.gov/ncee/wwc/Search/Products?searchTerm=Teaching%20Textbooks"
+    },
+    {
+      "title": "Evidence for ESSA, math programs",
+      "url": "https://www.evidenceforessa.org/programs/math/"
+    },
+    {
+      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Koedinger et al. (2015), Learning is not a spectator sport",
+      "url": "https://doi.org/10.1145/2724660.2724681"
+    }
+  ]
+}

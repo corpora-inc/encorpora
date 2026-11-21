@@ -159,7 +159,9 @@
   line-height: 1.5;
 }
 
-/* The topics. */
+/* The topics. The comparisons (features/versus) are pages of these too:
+   they use `.main`, `.topic` and `.topicBody` from here, so both change
+   together. */
 .topic {
   display: grid;
   gap: var(--space-3);
@@ -227,6 +229,9 @@
   gap: var(--space-1);
   padding-top: var(--space-3);
   border-top: 2px solid var(--color-primary);
+  /* A link to one component (`/research#review`) lands with air above its
+     rule. The section's sticky heading is in the other column, never over it. */
+  scroll-margin-top: var(--space-5);
 }
 .main .components h3 {
   margin: 0;

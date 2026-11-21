@@ -30,6 +30,9 @@ export function ResearchFrame({ children }: { children: ReactNode }) {
       <SiteFooter className={frame.footer}>
         <Link to="/schools">For schools</Link>
         <Link to="/schools/trust">Student data</Link>
+        <Link to="/versus/{-$slug}" params={{ slug: undefined }}>
+          Compare
+        </Link>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
       </SiteFooter>

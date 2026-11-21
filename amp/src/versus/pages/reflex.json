@@ -1,0 +1,185 @@
+{
+  "slug": "reflex",
+  "name": "Reflex",
+  "maker": "ExploreLearning",
+  "category": "games",
+  "checked": "2026-11-21",
+  "benefit": "All of math, not only facts",
+  "line": "Reflex builds fast recall of math facts. AMP teaches all of math, counting through precalculus, and works beside it.",
+  "description": "AMP vs Reflex: what Reflex's fact-fluency games do well, what its studies show, and why AMP covers all of math from counting through precalculus.",
+  "verdict": "Reflex is a polished game for one job: fast recall of the basic facts of addition, subtraction, multiplication and division [1]. It has two studies in a national intervention chart, and AMP has no timed drills. AMP is a whole math program that teaches each skill, explains every answer and brings old skills back on a schedule, and many learners can use both.",
+  "reasons": [
+    {
+      "title": "AMP covers all of math, not only facts",
+      "body": "Reflex practices the basic facts of the four operations, and its sibling Frax practices fractions [1][2]. We found no measurement, geometry, word-problem or algebra content in the published materials for either. AMP runs from counting through precalculus in one program: 336 skills, 1,384 problem types and one map of what builds on what. A learner who masters facts in Reflex still needs a program for the rest.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "A lesson and worked steps for every skill",
+      "body": "Reflex teaches through fact families and just-in-time coaching, and learners build recall by playing [1][6]. We found no written lessons or worked examples in its published materials. Every AMP problem type has a one-step hint that never gives the answer and a written lesson with a worked example, and every answer is followed by worked steps. That matters when a learner does not yet understand a skill, not only when recall is slow.",
+      "research": [
+        "lessons",
+        "hints",
+        "feedback"
+      ]
+    },
+    {
+      "title": "Misses lead back to what a skill builds on",
+      "body": "Reflex chooses which facts to practice, organized by fact family, inside the four operations [1]. AMP keeps a level in each of 14 strands of math and chooses every problem from the learner's answers. Two misses in a row on a skill send practice to what it builds on, and 310 of the 528 links in AMP's map reach into another grade band.",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Every rule is public, down to the review dates",
+      "body": "Reflex says it delivers \"the right facts at the right time\" [1], but we found no published mastery rule or review schedule on its pages. AMP publishes both. A skill is Strong after four of the last five answers are right without help, and it comes back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. The whole program is open source, so anyone can check.",
+      "research": [
+        "mastery",
+        "review"
+      ]
+    },
+    {
+      "title": "Paper practice made for each learner",
+      "body": "We found no printable practice for Reflex. Frax offers offline activities for teachers [2]. AMP prints unlimited workbooks built from each learner's own record, each with a worked answer key, and results entered from paper count toward the learner's level."
+    },
+    {
+      "title": "AMP publishes its price and starts free",
+      "body": "We found no published price for Reflex. Its product page asks visitors to request pricing, and its research page ends with a request for a quote [1][6]. It does offer a free 30-day trial [4]. AMP lists its price: $599 a year or $59 a month for the first child. Any family can start with 100 free answers and 5 workbooks, with no card."
+    }
+  ],
+  "rows": {
+    "price": "No published price found. Pricing is given on request [1][6]. A free 30-day trial [4].",
+    "buyers": "Sold mainly to schools, through demos, pilots and quotes [1][6]. Its site also mentions parents who use the reports [4].",
+    "range": "Reflex: basic facts in all four operations, grade 2 and up [1][4]. Frax, a separate program: fractions, grade 3 and up [3].",
+    "start": "A quick fluency check at the start of every session [1].",
+    "teaching": "Fact families and brief just-in-time coaching, then practice in games [1][6]. No written lessons found.",
+    "next": "The program picks which facts come next, by fact family [1]. The rule is not published on the pages we read.",
+    "mastery": "Fluency: fast, accurate recall. Games ask for faster answers as a learner improves [1]. No mastery rule published.",
+    "review": "No published review schedule found [1].",
+    "print": "None found for Reflex. Frax has offline activities for teachers [2].",
+    "adult": "Teachers read reports; no planning is described [1]. Frax teachers also run offline activities and mission reviews [2].",
+    "reports": "Reports for teachers and parents [4]. Frax adds real-time monitoring of who is struggling [2].",
+    "evidence": "Two studies in a national intervention chart, on targeted measures [10]. No Evidence for ESSA rating [8][9]. A company-run district study [3][4]."
+  },
+  "theirs": [
+    "Reflex comes from ExploreLearning, which also makes Frax for fractions and Gizmos simulations [3]. Reflex builds fluency with the basic facts of addition, subtraction, multiplication and division, for grade 2 and up [1][4]. ExploreLearning says it has served millions of students over a decade [6].",
+    "Each session starts with a quick fluency check and just-in-time coaching [1]. Then the learner practices in games, ten or more in all, that ask for faster answers as recall grows [1]. Practice is built on fact families, the links between related facts [1][6]. Learners earn tokens on an island with characters called Crabby and Coach Penny, buy avatar accessories, grow a Progress Tree, earn certificates and can join class competitions [1][4].",
+    "Frax is a separate fractions game for grade 3 and up [3]. Each mission has three or four activities and takes about 30 minutes, and the work rests on number lines and length models [2][7]. This page compares AMP mainly with Reflex."
+  ],
+  "credit": [
+    "Timed fact fluency is its whole job. The What Works Clearinghouse rates regular timed fluency activities as strong evidence for students who struggle [12]. AMP has no timed drills.",
+    "Games and rewards made for children: characters, tokens, avatar accessories, certificates and class competitions [1][4]. AMP has none of these.",
+    "Published studies: two Reflex studies in the National Center on Intensive Intervention's tools chart, with statistically significant effects on targeted measures [10].",
+    "Frax builds fractions on number lines and length models, drawn from published research on how children learn fraction size [7]."
+  ],
+  "evidence": {
+    "theirs": [
+      "The National Center on Intensive Intervention (NCII) lists two Reflex studies in its academic intervention tools chart, both group designs with statistically significant effects on targeted measures. It rates the design of Rudel (2016) convincing, with an effect of 0.84, and Sarrell (2014) partially convincing, with 0.58 [10]. Frax has no entry.",
+      "Evidence for ESSA lists Reflex twice, as Reflex Math and as ExploreLearning Reflex. Both pages say \"No studies met inclusion requirements\" [8][9]. Frax has no entry there, and the What Works Clearinghouse has no intervention report for either program [11].",
+      "ExploreLearning's featured study comes from one Florida district. Students who used Reflex and Frax gained more on the i-Ready Diagnostic than students who did not, were 60% more likely to meet typical growth goals and twice as likely to meet stretch goals [3]. The Reflex site says ExploreLearning conducted it [4]. It compares users with non-users, and students who use a program can differ from the rest before they start. The pages we read give no sample size, hours of use or effect size. ExploreLearning labels the study ESSA Tier 2 [3].",
+      "ExploreLearning says Frax is three times as effective as the average fractions intervention for third graders and five times for fourth graders [5]. The page does not say what that average is or who ran the study. ExploreLearning also cites more than 18 third-party studies across its products, not listed on the page we read [3]. We found no randomized trial of Reflex or Frax."
+    ],
+    "ours": [
+      "Reflex is built on a practice with strong support. The What Works Clearinghouse's 2021 guide for elementary students who struggle in math rates regular timed activities to build fluency as strong evidence [12]. AMP has no timed drills, so on that point Reflex does what AMP does not. AMP's rules rest on other findings: worked examples raised math performance by g = 0.48 across 55 studies [14], and mixed, spaced practice scored 62% against 38% a month later, on the researchers' own test, in a randomized trial of 787 seventh graders [13]. We expect a program that applies these across all of math to carry a learner further than fact practice alone. That is our bet, and fast facts help either way.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child understands what the operations mean and needs fast, automatic recall of the facts.",
+      "Your child loves games, characters and earning rewards.",
+      "You teach elementary grades and want a fact-fluency station or a fractions unit for the class.",
+      "You want a fluency tool with studies in a national intervention chart today."
+    ],
+    "amp": [
+      "You want one program for all of math, from counting through precalculus.",
+      "Your child needs to understand a skill, not only recall it: a hint, a lesson and worked steps every time.",
+      "You want misses to lead back to what a skill builds on, and old skills to return on a schedule.",
+      "You want printed practice made for your child, with an answer key.",
+      "You want Reflex for facts and a full program for everything else. The two fit together."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Reflex a full math curriculum?",
+      "answer": "No. Reflex practices the basic facts of addition, subtraction, multiplication and division, and Frax practices fractions [1][2]. A learner needs another program for the rest of math. AMP covers counting through precalculus."
+    },
+    {
+      "question": "Does AMP have timed fact practice like Reflex?",
+      "answer": "No. AMP has fact-practice problems, but nothing is timed and it does not record how fast a learner answers. For fast recall, Reflex is the tool built for the job."
+    },
+    {
+      "question": "Can we use Reflex and AMP together?",
+      "answer": "Yes. They do different jobs. Reflex builds fast recall of facts [1]. AMP places the learner across all of math, teaches each skill, explains every answer and schedules review."
+    },
+    {
+      "question": "How much does Reflex cost compared with AMP?",
+      "answer": "We found no published price for Reflex; ExploreLearning gives pricing on request and offers a free 30-day trial [1][4]. AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each additional child. Any family can start AMP with 100 free answers and no card."
+    },
+    {
+      "question": "What do Reflex's studies show?",
+      "answer": "Two Reflex studies in the NCII intervention chart show positive effects on targeted measures [10]. Evidence for ESSA lists it without a rating [8][9], and ExploreLearning's district study compares users with non-users [3]. We found no randomized trial."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Reflex (ExploreLearning)",
+      "url": "https://www.explorelearning.com/our-products/reflex"
+    },
+    {
+      "title": "Frax (ExploreLearning)",
+      "url": "https://www.explorelearning.com/our-products/frax"
+    },
+    {
+      "title": "Research and efficacy (ExploreLearning)",
+      "url": "https://www.explorelearning.com/research"
+    },
+    {
+      "title": "Reflex Math Fact Fluency (ExploreLearning)",
+      "url": "https://reflex.explorelearning.com/"
+    },
+    {
+      "title": "Frax fractions program (ExploreLearning)",
+      "url": "https://frax.explorelearning.com/"
+    },
+    {
+      "title": "The research behind Reflex (ExploreLearning)",
+      "url": "https://reflex.explorelearning.com/research/research-behind-reflex"
+    },
+    {
+      "title": "The research behind Frax (ExploreLearning)",
+      "url": "https://frax.explorelearning.com/research/research-behind-frax"
+    },
+    {
+      "title": "Reflex Math (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/reflex-math/"
+    },
+    {
+      "title": "ExploreLearning Reflex (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/explorelearning-reflex/"
+    },
+    {
+      "title": "Academic intervention tools chart (National Center on Intensive Intervention)",
+      "url": "https://charts.intensiveintervention.org/aintervention"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance, Educational Psychology Review 35",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
+  ]
+}
