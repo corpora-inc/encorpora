@@ -1,12 +1,11 @@
 import { setFinishingSignIn } from "./finishing";
+import { applyDeferredIdentity, deferIdentity } from "./deferred-identity";
 import { familyPracticeState } from "../../../lib/family-practice-history";
 import type { PracticeFilter } from "../../practice/curriculum-filter";
 import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
-import { createStore } from "zustand/vanilla";
-import type { AuthSession } from "../../../auth";
 import type { z } from "zod";
 import {
   joinRosterResource,
@@ -223,24 +222,4 @@ export function useFinishSignIn() {
     },
     [navigate],
   );
-}
-
-/** The identity a hand-over is waiting to show with practice. */
-const handOver = createStore<{ session: AuthSession | null }>(() => ({
-  session: null,
-}));
-function deferIdentity(session: AuthSession) {
-  handOver.setState({ session });
-}
-/** Shows the handed child's identity, if one waits: called as the router
- * mounts the next screen, so the switch renders with practice. Keeps the
- * child's `/me`, fetched before the move, across the switch. */
-export function applyDeferredIdentity() {
-  const session = handOver.getState().session;
-  if (!session) return;
-  handOver.setState({ session: null });
-  const me = queryClient.getQueryData(meOptions(session).queryKey);
-  // A family hand-over: Providers keeps the tree and the parent's cache.
-  notifyDeviceSessionChanged(session, { handoff: true });
-  if (me) queryClient.setQueryData(meOptions(session).queryKey, me);
 }
