@@ -81,7 +81,7 @@
     ],
     "ours": [
       "AMP's rules come from well-tested findings. Mixed, spaced practice: 62% against 38% a month later on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [13]. Feedback that explains: an average effect of 0.49 across 40 studies of computer-based feedback, against 0.05 for feedback that only marks right or wrong [14]. The independent i-Ready study points the same way on time: associations grew with lessons completed, up to a point [4]. We built AMP on these methods and expect that to show in outcomes. That is our bet, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -114,7 +114,7 @@
     },
     {
       "question": "My child uses i-Ready at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program. It finds the level in each of 14 strands of math within the first 24 problems and chooses practice from there, on your schedule."
+      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math and chooses practice from there, on your schedule."
     },
     {
       "question": "Can a school use AMP in place of i-Ready?",

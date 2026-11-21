@@ -10,7 +10,7 @@
   "reasons": [
     {
       "title": "Every problem is chosen from the last answer",
-      "body": "MathHelp.com's courses are chapters of lessons, such as 116 lessons in 12 chapters for Algebra 1 [5], and learners set their own pace inside each lesson [4]. We found no problem-by-problem adjustment of difficulty in its published materials. AMP keeps a separate level in each of 14 strands of math, found within the first 24 problems, and picks every next problem from the learner's answers: new work, a prerequisite, or review.",
+      "body": "MathHelp.com's courses are chapters of lessons, such as 116 lessons in 12 chapters for Algebra 1 [5], and learners set their own pace inside each lesson [4]. We found no problem-by-problem adjustment of difficulty in its published materials. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and picks every next problem from the learner's answers: new work, a prerequisite, or review.",
       "research": [
         "level"
       ]
@@ -78,7 +78,7 @@
     ],
     "ours": [
       "MathHelp.com builds each lesson around a teacher's video [5]. AMP starts with a problem and brings the hint, the lesson and the worked steps to it. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the authors estimate the benefit of extra doing at more than six times that of extra watching or reading, from correlational data [16]. Mixed, spaced practice beat practice in blocks 62% to 38% on the researchers' own test in a randomized trial with 787 seventh graders [15]; the mixed practice was also spaced, so the result combines the two. We expect a program that starts with doing and brings old skills back on a schedule to help a learner keep more of what they learn. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -106,7 +106,7 @@
     },
     {
       "question": "Can we use AMP alongside MathHelp.com?",
-      "answer": "Yes. MathHelp.com can teach a course by video [5] while AMP finds the level in each part of math within the first 24 problems, sends practice back to earlier skills after misses and brings old skills back on a schedule."
+      "answer": "Yes. MathHelp.com can teach a course by video [5] while AMP places the learner within the first 24 problems and keeps a level in each part of math, sends practice back to earlier skills after misses and brings old skills back on a schedule."
     },
     {
       "question": "Is AMP better than MathHelp.com?",

@@ -4,7 +4,7 @@
   "maker": "Renaissance",
   "category": "school",
   "checked": "2026-11-21",
-  "benefit": "stated mastery, scheduled review",
+  "benefit": "Stated mastery, scheduled review",
   "line": "Freckle is free practice built for classrooms. AMP is a full program with a stated mastery rule and scheduled review.",
   "description": "AMP vs Freckle: what Freckle's free and Premium tiers offer, what its studies show, and why AMP states its mastery rule and schedules review.",
   "verdict": "Freckle gives any student free, unlimited practice, and it can place students from a school's Star or FastBridge scores [1][2]. We found no stated mastery rule or review schedule on its pages, and its published growth figures compare students who used it at recommended levels with non-users [1][2]. AMP costs more, publishes its rules for mastery and review, and prints workbooks made for each learner.",
@@ -76,7 +76,7 @@
     ],
     "ours": [
       "Two of AMP's rules match findings from meta-analyses. Every problem type has a written lesson with a worked example, and a meta-analysis of 55 studies, from elementary school to college, found worked examples improve math performance, g = 0.48 on average [10]. Every answer is followed by the correct answer and worked steps; across 40 studies of computer-based feedback, of mixed ages and subjects, feedback that explains averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [11]. We expect a program built this way, with review on a schedule, to show it in outcomes, and we have committed in public to finding out.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -109,7 +109,7 @@
     },
     {
       "question": "My child uses Freckle at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program a family buys directly. It finds the level in each part of math within the first 24 problems and chooses practice from there."
+      "answer": "Yes. AMP is a separate program a family buys directly. It places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there."
     }
   ],
   "sources": [

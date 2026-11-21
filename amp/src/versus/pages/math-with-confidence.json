@@ -30,7 +30,7 @@
     },
     {
       "title": "AMP finds the level in each part of math",
-      "body": "Math with Confidence has no placement test that we found. The author's guidance is to use the grade that matches the child's age, and her list of skills each grade assumes is the check [1][6]. For grade 5 that list includes multiplication and division facts in about three seconds, and long division [6]. AMP finds the level in each of 14 strands within the first 24 problems, with no separate test. A child ahead in geometry and behind in fractions gets work at both levels.",
+      "body": "Math with Confidence has no placement test that we found. The author's guidance is to use the grade that matches the child's age, and her list of skills each grade assumes is the check [1][6]. For grade 5 that list includes multiplication and division facts in about three seconds, and long division [6]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, with no separate test. A child ahead in geometry and behind in fractions gets work at both levels.",
       "research": [
         "level"
       ]
@@ -68,7 +68,7 @@
     ],
     "ours": [
       "AMP is built on findings about how math is learned. Worked examples: across 55 studies, mostly on researchers' own tests, they improved math performance with an average effect of g = 0.48 [11]. AMP has one for every problem type, beside the problem, and shows worked steps after every answer. The two jobs a printed book leaves to the adult, mixed review on a schedule and an explanation after every answer, rest on the trial and the review cited above [9][10]. We expect a program that does them at every problem to show it in outcomes, and we have committed to measuring that in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "rows": {

@@ -4,7 +4,7 @@
   "maker": "DoodleLearning",
   "category": "adaptive",
   "checked": "2026-11-21",
-  "benefit": "math that goes past grade 5",
+  "benefit": "Math that goes past grade 5",
   "line": "DoodleMath is a game-rich app for grades K-5. AMP runs to precalculus, with stated mastery and review rules.",
   "description": "AMP vs DoodleMath: what each costs, what Doodle's own studies show, and why AMP's mastery rule, scheduled review and reach past grade 5 matter.",
   "verdict": "DoodleMath is a low-cost app for kindergarten through grade 5, with badges, stars and streaks, and almost nothing for a parent to do [1][2][5][12]. AMP costs more and has no games. It runs from counting through precalculus, publishes the rule for when a skill is learned, and brings every learned skill back on a fixed schedule.",
@@ -85,7 +85,7 @@
     ],
     "ours": [
       "Two findings bear most on this choice. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17]. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right or wrong alone 0.05 [18]. AMP's fixed review schedule and its worked answer after every problem put both findings into every session. We will measure whether it does.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

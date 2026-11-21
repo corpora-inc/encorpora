@@ -7,74 +7,85 @@
   "benefit": "A plan and checked answers",
   "line": "A chatbot answers what a child asks; AMP chooses each problem, checks every answer and schedules review.",
   "description": "AMP vs ChatGPT for math: what trials found when students learned with chatbots, and how AMP places, checks every answer and schedules review instead.",
-  "verdict": "ChatGPT, Claude and Gemini will explain almost any math problem at any hour, and each has a free plan [2][8][11]. We found no sequence of topics, mastery rule or review schedule in their makers' descriptions of their learning modes [1][10][14], and all three makers warn that answers can be wrong [5][9][13]. AMP chooses every problem, checks every answer with tested code, and schedules review, with no AI model running while a child works.",
+  "verdict": "ChatGPT, Claude and Gemini will explain almost any math problem at any hour, and each has a free plan [2][7][10]. We found no sequence of topics, mastery rule or review schedule in their makers' descriptions of their learning modes [1][9][13], and all three makers warn that answers can be wrong [5][8][12]. AMP chooses every problem, checks every answer with tested code, and schedules review, with no AI model running while a child works.",
   "reasons": [
     {
       "title": "AMP decides what comes next",
-      "body": "OpenAI describes study mode as a way to work through problems step by step, tuned to the user with questions and memory of earlier chats [1]. We found no placement test, skill map or sequence of topics in that description [1]. AMP keeps a level in each of 14 strands of math, finds it within the first 24 problems, and chooses every next problem from the last answer: new work, a prerequisite, or review. With a chatbot, the adult has to plan all of that.",
-      "research": ["level"]
+      "body": "OpenAI describes study mode as a way to work through problems step by step, with questions that assess skill level and memory from earlier chats [1]. That description has no placement test, skill map or sequence of topics [1]. AMP keeps a level in each of 14 strands of math, places the learner within the first 24 problems, and chooses every next problem from the learner's answers: new work, a prerequisite, or review. With a chatbot, the adult has to plan all of that.",
+      "research": [
+        "level"
+      ]
     },
     {
       "title": "Help in AMP cannot turn into the answer",
-      "body": "In a randomized field experiment with nearly 1,000 high school math students, unrestricted GPT-4 raised practice scores by 48%, and those students then scored 17% lower on exams than students who never had it [19]. A guarded tutor version largely mitigated that harm [19]. ChatGPT's study mode also aims to guide instead of answer, but a student can switch it off in the middle of a conversation [1]. A parent with a linked teen account can now turn it on from parental controls, so each new chat starts in it; we found no way to lock it on [6]. AMP's hint gives one step and never the answer, and an answer given after a hint does not count toward mastery.",
-      "research": ["hints", "mastery"]
+      "body": "In a randomized field experiment with nearly 1,000 high school math students, unrestricted GPT-4 raised practice scores by 48%, and once access was removed those students scored 17% lower on exams than students who never had it [18]. A guarded tutor version largely mitigated that harm [18]. ChatGPT's study mode also aims to guide instead of answer, and OpenAI lists toggling it on and off during a conversation as a feature [1]. A parent with a linked teen account can turn it on from parental controls, so each new chat starts in it; OpenAI's page does not say it can be locked on [6]. AMP's hint gives one step and never the answer, and an answer given after a hint does not count toward mastery.",
+      "research": [
+        "hints",
+        "mastery"
+      ]
     },
     {
       "title": "Every answer is checked by code, not a model",
-      "body": "OpenAI, Anthropic and Google each warn in their terms or help pages that output can be wrong [5][9][13]. In the same trial, run in 2023, plain GPT-4 gave a correct answer only 51% of the time on the study's 57 practice problems [19]. Newer models score far higher on contest tests [7], but those tests check final answers, not whether a hint or a worked step is right. In AMP no AI model runs while a learner works: every problem, hint and worked solution comes from tested code, and 185 independent checkers re-derive the answers.",
-      "research": ["feedback"]
+      "body": "OpenAI, Anthropic and Google each warn in their terms or help pages that output can be wrong [5][8][12]. Anthropic's terms add that users should not rely on outputs without confirming their accuracy [8], and OpenAI says study mode may make mistakes across conversations [1]. In AMP no AI model runs while a learner works: every problem, hint and worked solution comes from tested code, and 185 independent checkers re-derive the answers.",
+      "research": [
+        "feedback"
+      ]
     },
     {
       "title": "Learned skills come back on a schedule",
-      "body": "ChatGPT can remember earlier chats [2], but we found no review schedule or mastery rule in OpenAI's, Google's or Anthropic's descriptions of their learning modes [1][14][10]. AMP marks a skill Strong at four of the last five answers right without help, then brings it back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [24].",
-      "research": ["mastery", "review"]
+      "body": "Study mode and Guided Learning quiz the learner inside a chat [1][13], and ChatGPT can remember earlier chats [2]. Their makers' descriptions, and Anthropic's description of Claude's learning mode, give no rule for when a skill is learned and no schedule for bringing it back [1][13][9]. AMP marks a skill Strong at four of the last five answers right without help, then brings it back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [22].",
+      "research": [
+        "mastery",
+        "review"
+      ]
     },
     {
       "title": "Built for children from kindergarten up",
-      "body": "OpenAI's terms require ChatGPT users to be at least 13, with a parent's permission under 18 [5]. Claude's consumer terms require users to be at least 18 [9]. Gemini is for 13 and over [12]; a younger child needs a parent to turn it on through Family Link, and Google tells parents its filters are not perfect [13]. In AMP a child never holds an account: an adult adds the child, AMP stores only a birth year, and the problems start at counting."
+      "body": "OpenAI's terms require ChatGPT users to be at least 13, with a parent's permission under 18 [5]. Claude's consumer terms require users to be at least 18 [8]. Gemini is for 13 and over [11]; a younger child needs a parent to turn it on through Family Link, and Google tells parents its filters are not perfect [12]. In AMP a child is never an account holder: an adult adds the child, AMP stores only a birth year, and the problems start at counting."
     },
     {
       "title": "The adult sees what was learned",
-      "body": "ChatGPT's parental controls let a parent set quiet hours, turn off memory or voice, and get alerts on signs of acute distress [6]. They are safety settings, not a learning report, and we found no progress report for the adult or skill map in OpenAI's descriptions of them or of study mode [6][1]. AMP shows the level in every strand with its likely range, the skills earned, time by day, and the actual problems behind each number. It also prints workbooks made for the learner, each with a worked answer key, and results entered from paper count.",
-      "research": ["progress"]
+      "body": "ChatGPT's parental controls let a parent set quiet hours, turn off memory or voice, and get alerts on signs of acute distress [6]. They are safety settings. Study mode's quizzes give the learner feedback inside the chat [1], and OpenAI's descriptions of parental controls and study mode include no progress report for the adult and no skill map [6][1]. AMP shows the level in every strand with its likely range, the skills earned, and time by day, and the record opens to the actual problems with the help used. It also prints workbooks made for the learner, each with a worked answer key, and results entered from paper count.",
+      "research": [
+        "progress"
+      ]
     }
   ],
   "rows": {
-    "price": "Free plan. Go $8 a month in the U.S., which may include ads; Plus $20 a month [2][3][4]. Claude Pro $20 a month [8]. Gemini paid plans from $4.99 a month [11].",
-    "buyers": "Anyone old enough. ChatGPT: 13 and up, with a parent's permission under 18 [5]. Claude: 18 and up [9]. Gemini under 13 only through a parent [13].",
-    "range": "No grade range or sequence. It will attempt any math it is given, up to contest problems [7].",
-    "start": "No placement test. Study mode gauges skill level with questions and memory of earlier chats [1]. We found no stored or shown level.",
+    "price": "Free plan. Go $8 a month in the U.S., which may include ads; Plus $20 a month, billed monthly [2][3][4]. Claude Pro $20 billed monthly [7]. Google AI Plus $4.99 a month [10].",
+    "buyers": "Anyone old enough. ChatGPT: 13 and up, with a parent's permission under 18 [5]. Claude: 18 and up [8]. Gemini under 13 only through a parent [12].",
+    "range": "A general chatbot: no grade range. The learner brings the topic; study mode's examples include Bayes' theorem and game theory [1].",
+    "start": "No placement test. Study mode assesses skill level with questions and memory from earlier chats [1]. OpenAI describes no stored or shown level.",
     "teaching": "Explanations in text or voice on request [2]. Study mode asks guiding questions, gives hints and quizzes [1]. OpenAI warns output may not always be accurate [5].",
-    "next": "Whatever the learner or the adult asks next. We found no sequence of topics in OpenAI's description of study mode [1].",
-    "mastery": "No mastery rule found in the published descriptions of study mode, learning mode or Guided Learning [1][10][14].",
-    "review": "No scheduled review found in the makers' descriptions [1][10][14]. ChatGPT can remember earlier chats [2].",
-    "print": "No workbooks. It can draft a worksheet when asked; the model writes the answer key, and OpenAI warns output may not always be accurate [5].",
+    "next": "Whatever the learner or the adult asks next. OpenAI's description of study mode sets no sequence of topics [1].",
+    "mastery": "No mastery rule found in the published descriptions of study mode, learning mode or Guided Learning [1][9][13].",
+    "review": "No scheduled review found in the makers' descriptions [1][9][13]. ChatGPT can remember earlier chats [2].",
+    "print": "A chat app, not a workbook program. Any worksheet it writes falls under OpenAI's warning that output may not always be accurate [5].",
     "adult": "Choose the topics and their order, find the problems, judge when a skill is learned, plan review, keep records, and check that study mode stays on [1].",
     "reports": "The chat history. ChatGPT's parental controls cover quiet hours, memory, voice and distress alerts, not learning [6].",
-    "evidence": "No outcome study of study mode, learning mode or Guided Learning found. No entry in Evidence for ESSA or the What Works Clearinghouse [22][23]."
+    "evidence": "No outcome study of study mode, learning mode or Guided Learning found; OpenAI says research is still taking shape [1]. No entry in Evidence for ESSA or the What Works Clearinghouse [20][21]."
   },
   "theirs": [
-    "This page is about using a general AI chatbot as a child's math tutor in place of a math program. ChatGPT, from OpenAI, is the best known: OpenAI reported 700 million weekly active users in September 2025 [17], and 26% of U.S. teens said in fall 2024 that they had used it for schoolwork [18]. The same points apply to Anthropic's Claude and Google's Gemini.",
-    "A session has no set shape. A learner types or photographs a problem, often from another book or a homework sheet, and the chatbot explains, by text or by voice [2]. OpenAI added study mode in July 2025 so that students work through problems step by step with guiding questions, hints and quizzes instead of only getting an answer [1]. Google's Guided Learning for Gemini does much the same [14], and Anthropic built a learning mode for Claude for Education [10].",
+    "This page is about using a general AI chatbot as a child's math tutor in place of a math program. ChatGPT, from OpenAI, is the best known: OpenAI reported 700 million weekly active users in September 2025 [16], and 26% of U.S. teens said in fall 2024 that they had used it for schoolwork [17]. The same points apply to Anthropic's Claude and Google's Gemini.",
+    "A session has no set shape. A learner types or photographs a problem, often from another book or a homework sheet, and the chatbot explains, by text or by voice [2]. OpenAI added study mode in July 2025 so that students work through problems step by step with guiding questions, hints and quizzes instead of only getting an answer [1]. Google's Guided Learning for Gemini does much the same [13], and Anthropic built a learning mode for Claude for Education [9].",
     "None of the three is sold as a math curriculum. The learner or the adult decides what to ask, in what order, and when to move on [1]."
   ],
   "credit": [
-    "Price. ChatGPT, Claude and Gemini each have a free plan, and ChatGPT Plus is $20 a month [2][3][8][11]. AMP costs more.",
-    "It answers the learner's own question: any problem, from any book, explained again in other words when the first try does not land. A learner can photograph handwritten work and get comments on it [2]. AMP explains only its own problems and does not check freehand work.",
-    "Voice and other languages. A child can talk with ChatGPT instead of typing [2], and Google says the Gemini web app works in more than 70 languages [16]. AMP is in English only and does not read problems aloud.",
-    "No ceiling. GPT-5 scored 94.6% on the AIME 2025 contest without tools [7], and a chatbot will take on calculus and beyond. AMP stops at precalculus.",
-    "Learning modes designed with teachers and pedagogy experts, built around Socratic questions, hints and checks for understanding [1][14]."
+    "Price. ChatGPT, Claude and Gemini each have a free plan, and ChatGPT Plus is $20 a month [2][3][7][10]. AMP costs more.",
+    "It answers the learner's own question: any problem, from any book, explained again in other words when the first try does not land. A learner can upload a photo of handwritten work and ask about it [2]. AMP explains only its own problems and does not check freehand work.",
+    "Voice and other languages. A child can talk with ChatGPT instead of typing [2], and Google says the Gemini web app works in more than 70 languages [15]. AMP is in English only and does not read problems aloud.",
+    "No ceiling. A learner can take a chatbot past school math; OpenAI's study mode examples include Bayes' theorem and game theory [1]. AMP stops at precalculus.",
+    "Learning modes designed with teachers and pedagogy experts, built around Socratic questions, hints and checks for understanding [1][13]."
   ],
   "evidence": {
     "theirs": [
-      "We found no study of ChatGPT's study mode, Claude's learning mode or Gemini's Guided Learning that measures K-12 math outcomes. OpenAI writes that research on AI in education is still taking shape and that longer studies will follow [1]. Google's Guided Learning announcement reports no outcome data [14], and LearnLM, the model family behind it, was judged by expert raters' preferences, not by what students learned [15]. General-purpose AI chatbots have no entry in Evidence for ESSA or the What Works Clearinghouse, as of November 2026 [22][23].",
-      "The most direct test of a chatbot as a math helper is a field experiment by Bastani and colleagues, published in PNAS in 2025 [19]. Classes of nearly 1,000 students in grades 9 to 11 at a Turkish high school were randomly assigned to plain GPT-4, a GPT-4 tutor given teacher-written solutions and told to hint without revealing answers, or no AI, over four 90-minute sessions. Plain GPT-4 raised practice scores by 48% and lowered later exam scores, taken without AI, by 17%. The tutor version largely mitigated that harm; its exam scores were statistically indistinguishable from the control group's [19].",
-      "Khanmigo is Khan Academy's AI tutor, a different product, but its trial shows what happens when a guarded chat tutor is offered every day. In a two-year randomized trial in 18 Tennessee middle schools, adding Khan Academy with Khanmigo to daily remedial math raised scores by about 0.06 to 0.08 standard deviations a year, gains the authors say resemble what Khan Academy practice without AI predicts. The median student messaged Khanmigo in only 17% of the exercise sessions in which they made a mistake [20]. The paper is a working paper, not yet peer reviewed.",
-      "Structure changes the picture. In a randomized crossover trial in a Harvard physics course, a GPT-4 tutor given instructor-written step-by-step solutions, which walked students through each part of a problem in order, beat an in-class active-learning lesson on the post-test (median 4.5 against 3.5) in a median of 49 minutes against about 60 in class [21]. It covered two lessons in one college course, with a test right after each lesson [21]. The guarded tutor in the Turkish trial and the Harvard tutor were both given worked solutions first [19][21]. A chat window opened at home starts with none."
+      "We found no study of ChatGPT's study mode, Claude's learning mode or Gemini's Guided Learning that measures K-12 math outcomes. OpenAI writes that research on AI in education is still taking shape and that longer studies will follow [1]. Google's Guided Learning announcement reports no outcome data [13], and the LearnLM technical report evaluates the model family behind it by expert raters' preferences, not by what students learned [14]. General-purpose AI chatbots have no entry in Evidence for ESSA or the What Works Clearinghouse, as of November 2026 [20][21].",
+      "The most direct test of a chatbot as a math helper is a field experiment by Bastani and colleagues, published in PNAS in 2025 [18]. Classes of nearly 1,000 students in grades 9 to 11 at a Turkish high school were randomly assigned to plain GPT-4, a GPT-4 tutor given teacher-written solutions and told to hint without revealing answers, or no AI, over four 90-minute sessions. Plain GPT-4 raised practice scores by 48% and lowered later exam scores, taken without AI, by 17%. The tutor version largely mitigated that harm; its exam scores were statistically indistinguishable from the control group's [18].",
+      "Khanmigo is Khan Academy's AI tutor, a different product, but its trial shows what happens when a guarded chat tutor is offered every day. In a two-year randomized trial in 18 Tennessee middle schools, adding Khan Academy with Khanmigo to daily remedial math raised scores by about 0.06 to 0.08 standard deviations a year, gains the authors say resemble what Khan Academy practice without AI predicts. The median student messaged Khanmigo in only 17% of the exercise sessions in which they made a mistake [19]. The paper is a working paper, not yet peer reviewed."
     ],
     "ours": [
-      "Two rules in AMP answer what these trials found. Help never replaces the work: a hint gives one step and never the answer, and a hinted answer does not move the level. And help does not wait to be asked: after every answer AMP shows the correct answer and the worked steps. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [25]. We think a set path, exact checking and scheduled review will do more for most children than an open chat window, and we have committed in public to measuring AMP's results.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two rules in AMP answer what these trials found. Help never replaces the work: a hint gives one step and never the answer, and a hinted answer does not move the level. And help does not wait to be asked: after every answer AMP shows the correct answer and the worked steps. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [23]. We think a set path, exact checking and scheduled review will do more for most children than an open chat window, and we have committed in public to measuring AMP's results.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -85,7 +96,7 @@
       "Your child already has a math program and is stuck on one problem tonight."
     ],
     "amp": [
-      "Your child is under 13. ChatGPT and Claude are not open to them [5][9]; AMP starts at counting.",
+      "Your child is under 13. ChatGPT and Claude are not open to them [5][8]; AMP starts at counting.",
       "You want the program to choose each problem, decide when a skill is learned and bring it back, so you do not have to.",
       "You want every answer checked exactly, by code anyone can read.",
       "You want a record of what your child has learned, strand by strand and skill by skill.",
@@ -95,19 +106,19 @@
   "questions": [
     {
       "question": "Can ChatGPT replace a math curriculum for my child?",
-      "answer": "OpenAI does not offer it as one. Study mode helps a student work through problems step by step [1], but we found no sequence of topics, mastery rule or review schedule in its published materials. The adult has to supply those, and that is the work AMP does."
+      "answer": "OpenAI does not offer it as one. Study mode helps a student work through problems step by step with questions, hints and quizzes [1], but OpenAI's description sets no sequence of topics, mastery rule or review schedule [1]. The adult has to supply those, and that is the work AMP does."
     },
     {
       "question": "Does using ChatGPT for math hurt learning?",
-      "answer": "It can, depending on how it is used. In a randomized field experiment, high school students with unrestricted GPT-4 scored 17% lower on later exams than students without it, and a guarded tutor version largely mitigated that harm [19]. Study mode is meant to guide instead of answer, but a student can switch it off mid-conversation [1]."
+      "answer": "It can, depending on how it is used. In a randomized field experiment, high school students with unrestricted GPT-4 scored 17% lower on later exams than students without it, and a guarded tutor version largely mitigated that harm [18]. Study mode is meant to guide instead of answer, and a student can toggle it off during a conversation [1]."
     },
     {
       "question": "How old does a child have to be to use ChatGPT, Claude or Gemini?",
-      "answer": "ChatGPT: at least 13, with a parent's permission under 18 [5]. Claude: at least 18 [9]. Gemini: 13 and over, or younger if a parent turns it on through Family Link [12][13]."
+      "answer": "ChatGPT: at least 13, with a parent's permission under 18 [5]. Claude: at least 18 [8]. Gemini: 13 and over, or younger if a parent turns it on through Family Link [11][12]."
     },
     {
       "question": "Is AMP more expensive than ChatGPT?",
-      "answer": "Yes. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each additional child, while ChatGPT has a free plan, Go at $8 a month and Plus at $20 a month, or $240 over 12 months by our arithmetic [2][3][4]. AMP's price buys the plan a chatbot leaves to the adult: placement, every next problem, exact checking, scheduled review, and printable workbooks with answer keys, from counting through precalculus. The first 100 answers are free, and there is a full refund within 30 days."
+      "answer": "Yes. AMP is $599 a year or $59 a month for the first child and $399 a year or $39 a month for each additional child, while ChatGPT has a free plan, Go at $8 a month and Plus at $20 a month, billed monthly [2][3][4]. AMP's price buys the plan a chatbot leaves to the adult: placement, every next problem, exact checking, scheduled review, and printable workbooks with answer keys, from counting through precalculus. The first 100 answers are free, and there is a full refund within 30 days."
     },
     {
       "question": "Does AMP use AI?",
@@ -121,7 +132,6 @@
     { "title": "Introducing ChatGPT Go (OpenAI, January 2026)", "url": "https://openai.com/index/introducing-chatgpt-go/" },
     { "title": "Terms of Use (OpenAI)", "url": "https://openai.com/policies/terms-of-use/" },
     { "title": "Introducing parental controls (OpenAI)", "url": "https://openai.com/index/introducing-parental-controls/" },
-    { "title": "Introducing GPT-5 (OpenAI, August 2025)", "url": "https://openai.com/index/introducing-gpt-5/" },
     { "title": "Claude plans and pricing (Anthropic)", "url": "https://claude.com/pricing" },
     { "title": "Consumer Terms of Service (Anthropic)", "url": "https://www.anthropic.com/legal/consumer-terms" },
     { "title": "Introducing Claude for Education (Anthropic, April 2025)", "url": "https://www.anthropic.com/news/introducing-claude-for-education" },
@@ -135,7 +145,6 @@
     { "title": "About a quarter of U.S. teens have used ChatGPT for schoolwork (Pew Research Center, January 2025)", "url": "https://www.pewresearch.org/short-reads/2025/01/15/about-a-quarter-of-us-teens-have-used-chatgpt-for-schoolwork-double-the-share-in-2023/" },
     { "title": "Bastani et al. (2025), Generative AI without guardrails can harm learning (PNAS)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/" },
     { "title": "Oreopoulos & Low (2026), One click away: AI tutoring with Khanmigo (NBER w35620)", "url": "https://www.nber.org/papers/w35620" },
-    { "title": "Kestin et al. (2025), AI tutoring outperforms in-class active learning (Scientific Reports)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/" },
     { "title": "Math programs (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/programs/math" },
     { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
     { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },

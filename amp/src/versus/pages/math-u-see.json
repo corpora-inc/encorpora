@@ -71,7 +71,7 @@
     ],
     "ours": [
       "AMP's two clearest departures from a parent-graded book rest on strong findings. Feedback that explains: across 40 studies of computer-based feedback, it averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [13]. These are averages by feedback type, not a head-to-head trial. Mixed, spaced practice: 62% against 38% on the researchers' own test a month later, in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations [12]. AMP builds both in. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -96,7 +96,7 @@
     },
     {
       "question": "Can we use AMP alongside Math-U-See?",
-      "answer": "Yes. A family can keep teaching Math-U-See lessons and use AMP for daily practice and review. AMP finds the level in each strand of math within the first 24 problems, so it does not need to know where you are in the book."
+      "answer": "Yes. A family can keep teaching Math-U-See lessons and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it does not need to know where you are in the book."
     },
     {
       "question": "Does AMP have manipulatives like Math-U-See's blocks?",

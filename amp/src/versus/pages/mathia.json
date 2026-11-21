@@ -22,7 +22,7 @@
     },
     {
       "title": "AMP makes the calls a MATHia teacher makes",
-      "body": "Carnegie Learning built MATHia to work alongside core instruction, and the teacher decides what comes next [1]. In the version tested at scale, classes spent three days a week with a teacher and two on the software [7]. AMP places the learner in each of 14 strands within the first 24 problems, chooses every problem after that, and sends practice back to what a skill builds on after two misses in a row. Every problem type has a hint and a written lesson with a worked example, so no adult has to teach first.",
+      "body": "Carnegie Learning built MATHia to work alongside core instruction, and the teacher decides what comes next [1]. In the version tested at scale, classes spent three days a week with a teacher and two on the software [7]. AMP places the learner within the first 24 problems, keeps a level in each of 14 strands, chooses every problem after that, and sends practice back to what a skill builds on after two misses in a row. Every problem type has a hint and a written lesson with a worked example, so no adult has to teach first.",
       "research": [
         "level",
         "mastery",
@@ -75,7 +75,7 @@
     ],
     "ours": [
       "MATHia moves a student on as skills are mastered [7]. AMP adds two things the research supports. Mixed, spaced review: in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, students whose practice mixed and spaced earlier topics scored 62% on a test a month later, against 38% for practice in blocks; the test was the researchers' own [11]. Worked examples: across 55 studies in math they improved performance with an average effect of g = 0.48 [12], and every AMP problem type has one. We expect a program that does both at every problem, and that any family can use, to show it in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -108,7 +108,7 @@
     },
     {
       "question": "My child uses MATHia at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program. It finds the level in each strand of math within the first 24 problems, and it covers the grades before and after MATHia's as well."
+      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each strand of math, and it covers the grades before and after MATHia's as well."
     }
   ],
   "sources": [

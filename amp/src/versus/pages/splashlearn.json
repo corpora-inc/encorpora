@@ -31,7 +31,7 @@
     },
     {
       "title": "A separate level in each part of math",
-      "body": "AMP keeps a level in each of 14 strands and finds them inside practice, within the first 24 problems, with no separate test. A child can be at grade 3 in fractions and grade 5 in geometry, and practice targets each. SplashLearn says its practice adapts to each student along a personalized learning path [5][7]. We found no placement step or diagnostic described on the pages we read [3][5][7].",
+      "body": "AMP keeps a level in each of 14 strands and places the learner inside practice, within the first 24 problems, with no separate test. A child can be at grade 3 in fractions and grade 5 in geometry, and practice targets each. SplashLearn says its practice adapts to each student along a personalized learning path [5][7]. We found no placement step or diagnostic described on the pages we read [3][5][7].",
       "research": [
         "level"
       ]
@@ -81,7 +81,7 @@
     ],
     "ours": [
       "AMP's rules follow findings that have held up. Mixed, spaced practice beat practice in blocks a month later, 62% to 38%, in a randomized trial that meets What Works Clearinghouse standards without reservations, on the researchers' own test [12]. Worked examples in math average an effect of g = 0.48 across 55 studies [13]. SplashLearn's own study found that children who solved more problems each week ended with higher mastery scores [9]. In AMP every one of those problems ends in its worked steps, and old skills come back on schedule. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -106,7 +106,7 @@
     },
     {
       "question": "What comes after SplashLearn's grade 5?",
-      "answer": "SplashLearn's math ends at grade 5 [1]. AMP continues through grades 6 to 8, Algebra 1, Geometry, Algebra 2 and Precalculus, and finds the level in each part of math within the first 24 problems."
+      "answer": "SplashLearn's math ends at grade 5 [1]. AMP continues through grades 6 to 8, Algebra 1, Geometry, Algebra 2 and Precalculus, and places the learner within the first 24 problems and keeps a level in each part of math."
     },
     {
       "question": "Does AMP have games like SplashLearn?",

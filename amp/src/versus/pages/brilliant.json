@@ -3,10 +3,10 @@
   "name": "Brilliant",
   "category": "adaptive",
   "checked": "2026-11-21",
-  "benefit": "a rule for mastery and review",
+  "benefit": "A rule for mastery and review",
   "line": "Brilliant teaches with interactive problems from about grade 4; AMP starts at counting and schedules every review.",
   "description": "AMP vs Brilliant: interactive lessons and an AI tutor from about grade 4, or one program from counting to precalculus with a mastery rule and set review.",
-  "verdict": "Brilliant builds its lessons from interactive problems, with apps, an AI tutor and coding courses [1][10], for far less than AMP costs [2]. Its math starts near grade 4, and we found no stated mastery rule or review schedule in its published materials [7][9][11]. AMP runs from counting to precalculus, chooses every next problem, and brings each learned skill back on a fixed schedule.",
+  "verdict": "Brilliant builds its lessons from interactive problems, with apps, an AI tutor and coding courses [1][10], for less than AMP costs [2]. Its math starts near grade 4, and we found no stated mastery rule or review schedule in its published materials [7][9][11]. AMP runs from counting to precalculus, chooses every next problem, and brings each learned skill back on a fixed schedule.",
   "reasons": [
     {
       "title": "AMP starts at counting, not at fractions",
@@ -54,7 +54,7 @@
     }
   ],
   "rows": {
-    "price": "Pricing page: Individual $20 or $14 a month, Family (six seats) $40 or $28; 30% Black Friday sale on annual plans, billed as one payment [2]. Limited free tier [3].",
+    "price": "Monthly: Individual $40, Family (six seats) $60 a month. Annual, billed yearly: Individual $14, Family $28 a month, Black Friday prices 30% off $20 and $40 [2]. Free tier [3].",
     "buyers": "Families and individuals, online or through app stores [2]. Trials need a card [4]. ESA funds in Arizona, Arkansas and Florida [5].",
     "range": "From fractions at about grade 4 to opening calculus topics, plus coding and science [1][7]. No complete K–3 arithmetic sequence [7].",
     "start": "A short diagnostic at signup picks a starting topic. Jumping ahead takes a passed level check [12].",
@@ -62,7 +62,7 @@
     "next": "A recommended topic order; Premium learners may take topics in any order [19]. Practice uses learning history to pick problems [9].",
     "mastery": "A skill check ends each concept. No stated mastery threshold found in its published materials [11].",
     "review": "Ideas return across sessions; missed unit-check problems add review lessons [9][11]. No schedule of intervals found [9].",
-    "print": "No printables found for its main courses. The free K–5 library mentions printable worksheets in a guide [20]. Lessons need an internet connection [6].",
+    "print": "Lessons need an internet connection and are not available offline [6]. The free K–5 library mentions printable worksheets in a guide [20].",
     "adult": "None required. Built for learners who work independently [18]. Homeschool families keep their own records [8].",
     "reports": "Parent dashboard on Family or Single Child plans: days active, problems solved, accuracy on checks. Not a grade, it says [13].",
     "evidence": "No outcome study found on its site, in Evidence for ESSA or WWC intervention reports [21][22]. Its Koji figures are behavioral signals, not a controlled study [18]."
@@ -76,7 +76,7 @@
     "Interactive, visual lessons that run into calculus, plus courses in coding, data science and AI [1][7]. AMP stops at precalculus and teaches only math.",
     "Koji, an AI tutor that sees the problem, asks guiding questions and can sketch on the screen, built not to hand over answers [10]. AMP has no chat tutor.",
     "Apps for iPhone and Android as well as the web, with streaks and XP [16][17]. AMP runs in a browser, with no store apps and no streaks.",
-    "A much lower price, a family plan with six seats, a free tier, and free classroom access for eligible teachers [2][3][15].",
+    "A lower price, a family plan with six seats, a free tier, and free classroom access for eligible teachers [2][3][15].",
     "ESA funds in Florida as well as Arizona and Arkansas, and ACS WASC accreditation [5][14]. AMP takes no Florida funds, and has no accreditation."
   ],
   "evidence": {
@@ -87,7 +87,7 @@
     ],
     "ours": [
       "Brilliant and AMP lean on some of the same science: Brilliant names spacing and interleaving [9]. AMP turns them into a rule. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [23]. Worked examples, which AMP attaches to every problem type, average g = 0.48 across 55 studies [24]. We expect a program that applies both at every problem to show it in outcomes, and we have committed to measuring that in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -95,7 +95,7 @@
       "Your child is in about grade 4 or above, loves puzzles, and wants coding or data science beside math.",
       "You want a phone or tablet app, or an AI tutor your child can talk a problem through with.",
       "Your learner is ready to start calculus, which AMP does not teach.",
-      "You want enrichment beside a core curriculum, at a much lower price, or paid from a Florida ESA."
+      "You want enrichment beside a core curriculum, at a lower price, or paid from a Florida ESA."
     ],
     "amp": [
       "Your child is in kindergarten through grade 3, or still building arithmetic. AMP starts at counting.",
@@ -112,7 +112,7 @@
     },
     {
       "question": "Is AMP more expensive than Brilliant?",
-      "answer": "Yes. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more, with two parents practicing free. On November 21, 2026, Brilliant's pricing page showed Individual at $20 or $14 a month and Family, with six seats, at $40 or $28, with 30% off annual plans for Black Friday [2]."
+      "answer": "Yes. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more, with two parents practicing free. On November 21, 2026, Brilliant's pricing page showed Individual at $40 a month on the monthly plan, or $14 a month on the annual plan, billed as one payment. Family, with six seats, was $60 a month, or $28 a month on the annual plan. The annual prices were a Black Friday sale, 30% off $20 and $40 [2]."
     },
     {
       "question": "Does AMP have an AI tutor like Koji?",

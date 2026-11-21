@@ -21,7 +21,7 @@
   "reasons": [
     {
       "title": "AMP finds the level and adapts at every answer",
-      "body": "UnLock Math offers free readiness tests to download, and the family chooses a course; lessons then run in course order with a pacing guide [3][10]. Its FAQ mentions an adaptive assessment system but does not say what adapts or how [3]. AMP has no separate test. It finds the level in each of 14 strands within the first 24 problems, then chooses every problem from the learner's answers: new work, a prerequisite, or review.",
+      "body": "UnLock Math offers free readiness tests to download, and the family chooses a course; lessons then run in course order with a pacing guide [3][10]. Its FAQ mentions an adaptive assessment system but does not say what adapts or how [3]. AMP has no separate test. It places the learner within the first 24 problems and keeps a level in each of 14 strands, then chooses every problem from the learner's answers: new work, a prerequisite, or review.",
       "research": ["level"]
     },
     {
@@ -56,7 +56,7 @@
     ],
     "ours": [
       "UnLock Math and AMP agree that review belongs in every day. They differ in how far back it reaches and what sets it. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [14]. Across 317 experiments, mostly on verbal recall, the best gap between study sessions grew with how long the material had to be remembered [15]. So AMP spaces each skill's review out to a month and starts over after a miss. We expect that to show in what a learner still knows months later, and we have committed to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "rows": {

@@ -4,7 +4,7 @@
   "maker": "CK-12 Foundation",
   "category": "adaptive",
   "checked": "2026-11-21",
-  "benefit": "practice that plans itself",
+  "benefit": "Practice that plans itself",
   "line": "CK-12 offers free math books and an AI chat tutor. AMP picks, checks and explains every problem, from counting on.",
   "description": "AMP vs CK-12: a free nonprofit library of math books with an AI chat tutor, against a program that picks, checks and explains every problem.",
   "verdict": "CK-12 is free, made by a nonprofit, and reaches past AMP into calculus, science and nearly 50 languages [2][3]. Much of it is led by the learner: books to read and a chat tutor to ask [3][5]. AMP costs $599 a year for the first child and makes those choices itself: it finds the level, picks every problem, and explains every answer with worked steps.",
@@ -12,27 +12,38 @@
     {
       "title": "AMP decides what comes next",
       "body": "CK-12's math comes as digital textbooks, adaptive practice and a chat tutor [2]. Common Sense Media notes that younger children may need a parent's help to find their material [3]. In CK-12's own study of its tutor, teachers said students struggled with prompting it [5]. AMP keeps a level in each of 14 strands of math and picks every problem from the learner's answers: new work, a prerequisite, or review.",
-      "research": ["level"]
+      "research": [
+        "level"
+      ]
     },
     {
       "title": "Every answer is checked exactly and explained",
       "body": "Kid reviewers on Common Sense Media's CK-12 page, as the page summarizes them, reported unclear quiz questions, answers marked right or wrong incorrectly, and a lack of clear explanations [3]. No AI model runs while a learner works in AMP. Every problem comes from tested code, and 185 independent checkers re-derive the answers. After each answer the learner sees right or wrong, the correct answer and the worked steps.",
-      "research": ["feedback"]
+      "research": [
+        "feedback"
+      ]
     },
     {
       "title": "Help gives the first step, never the answer",
       "body": "CK-12's tutor, Flexi, is a chat box a student types questions into [1]. In CK-12's own study, teachers worried about students leaning on it too much and about plagiarism [5]. That study did not test Flexi. In a field experiment with nearly 1,000 high school math students in Turkey, unrestricted GPT-4 raised practice scores by 48%, and once access was removed those students scored 17% lower on exams than students who never had AI; a tutor version with learning safeguards largely mitigated that harm [6]. AMP builds the safeguard into its rules: a hint is one step that never contains the answer, and an answer after a hint does not count toward mastery.",
-      "research": ["hints", "mastery"]
+      "research": [
+        "hints",
+        "mastery"
+      ]
     },
     {
       "title": "It starts at counting",
       "body": "CK-12's math FlexBooks begin at grade 1 [2]. Common Sense Media finds most of the site suited to older children and teens [3]. AMP starts with counting in kindergarten, finds a young learner's level inside the first 24 problems with no separate test, and needs no adult to plan the next lesson.",
-      "research": ["level"]
+      "research": [
+        "level"
+      ]
     },
     {
       "title": "Learned means a rule anyone can read",
       "body": "CK-12's efficacy page reports that two in three students improve their skill level, without defining a skill level or naming a comparison group [4]. In AMP a skill is Strong after four of the last five answers are right without help. Two misses in a row send practice back to what the skill builds on. The rule sits in AMP's public source code.",
-      "research": ["mastery"]
+      "research": [
+        "mastery"
+      ]
     }
   ],
   "rows": {
@@ -67,7 +78,7 @@
     ],
     "ours": [
       "AMP's rules follow findings that have held up across many studies. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49 (the studies mix ages and subjects), the correct answer alone 0.32, and right-or-wrong only 0.05 [9]. AMP shows the worked steps after every answer. Across 55 studies, from elementary school to college, worked examples improved math performance by g = 0.48 [10]. Every AMP problem type has a lesson with one. We expect that structure, applied at every problem, to show in outcomes. That is our bet, and we will test it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -108,15 +119,45 @@
     }
   ],
   "sources": [
-    { "title": "CK-12 for students (CK-12 Foundation)", "url": "https://www.ck12.org/student/" },
-    { "title": "CK-12 mission, products and FlexBooks (CK-12 Foundation)", "url": "https://info.ck12.org/mission" },
-    { "title": "CK-12 website review (Common Sense Media)", "url": "https://www.commonsensemedia.org/website-reviews/ck-12" },
-    { "title": "Efficacy studies (CK-12 Foundation)", "url": "https://info.ck12.org/efficacy-studies" },
-    { "title": "Flexi, CK-12's AI student tutor: Spring 2025 study (CK-12 Foundation with Leanlab Education)", "url": "https://info.ck12.org/impact-team-studies/flexi-ck-12s-ai-student-tutor-spring-2025-study" },
-    { "title": "Bastani et al. (2025), Generative AI without guardrails can harm learning (PNAS)", "url": "https://doi.org/10.1073/pnas.2422633122" },
-    { "title": "CK-12 Series (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/ck-12-series/" },
-    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
-    { "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment", "url": "https://doi.org/10.3102/0034654314564881" },
-    { "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance", "url": "https://doi.org/10.1007/s10648-023-09745-1" }
+    {
+      "title": "CK-12 for students (CK-12 Foundation)",
+      "url": "https://www.ck12.org/student/"
+    },
+    {
+      "title": "CK-12 mission, products and FlexBooks (CK-12 Foundation)",
+      "url": "https://info.ck12.org/mission"
+    },
+    {
+      "title": "CK-12 website review (Common Sense Media)",
+      "url": "https://www.commonsensemedia.org/website-reviews/ck-12"
+    },
+    {
+      "title": "Efficacy studies (CK-12 Foundation)",
+      "url": "https://info.ck12.org/efficacy-studies"
+    },
+    {
+      "title": "Flexi, CK-12's AI student tutor: Spring 2025 study (CK-12 Foundation with Leanlab Education)",
+      "url": "https://info.ck12.org/impact-team-studies/flexi-ck-12s-ai-student-tutor-spring-2025-study"
+    },
+    {
+      "title": "Bastani et al. (2025), Generative AI without guardrails can harm learning (PNAS)",
+      "url": "https://doi.org/10.1073/pnas.2422633122"
+    },
+    {
+      "title": "CK-12 Series (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/ck-12-series/"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
   ]
 }

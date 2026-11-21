@@ -34,7 +34,7 @@ export const versusRows: readonly VersusRow[] = [
   {
     id: "start",
     label: "Finding the starting point",
-    amp: "No separate test. AMP finds the level in each of 14 strands of math within the first 24 problems, and keeps adjusting.",
+    amp: "No separate test. Placement takes the first 24 problems of practice. After that, every answer adjusts a level in each of 14 strands of math.",
   },
   {
     id: "teaching",
@@ -74,7 +74,7 @@ export const versusRows: readonly VersusRow[] = [
   {
     id: "evidence",
     label: "Evidence",
-    amp: "A published rationale (ESSA Tier 4) with the research behind each part, public source code, and pre-registered outcome studies from 2027.",
+    amp: "A published rationale (ESSA Tier 4) with the research behind each part, public source code, and outcome studies from 2027, each registered before it starts.",
   },
 ];
 
@@ -94,49 +94,49 @@ export const versusCategories: readonly VersusCategoryInfo[] = [
     id: "adaptive",
     title: "Adaptive practice programs",
     blurb: "Programs that choose practice from a learner’s answers.",
-    benefit: "Every Answer Sets the Next",
+    benefit: "Every answer sets the next",
   },
   {
     id: "school",
     title: "Programs schools assign",
     blurb: "Programs a student meets through a school or a district.",
-    benefit: "Adapts at Every Answer",
+    benefit: "Adapts at every answer",
   },
   {
     id: "courses",
     title: "Online courses and video lessons",
     blurb: "A teacher on video, then practice.",
-    benefit: "Practice That Adapts",
+    benefit: "Practice that adapts",
   },
   {
     id: "all-in-one",
     title: "All-in-one homeschool programs and online schools",
     blurb: "Every subject in one subscription, math among them.",
-    benefit: "Math at the Learner’s Level",
+    benefit: "Math at the learner’s level",
   },
   {
     id: "books",
     title: "Books and workbooks",
     blurb: "Printed curricula an adult teaches from.",
-    benefit: "Workbooks That Adapt",
+    benefit: "Practice that checks itself",
   },
   {
     id: "games",
     title: "Math games",
     blurb: "Practice inside a game.",
-    benefit: "Math That Builds Mastery",
+    benefit: "Every minute is math",
   },
   {
     id: "tutoring",
     title: "Tutors and learning centers",
     blurb: "A person or a center, by the hour or the month.",
-    benefit: "Daily Practice at Home",
+    benefit: "Daily practice at home",
   },
   {
     id: "ai",
     title: "AI tutors and homework apps",
     blurb: "Chat tutors, and apps that solve a photographed problem.",
-    benefit: "Teaching, Not Just Answers",
+    benefit: "Teaching, not just answers",
   },
 ];
 

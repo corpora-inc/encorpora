@@ -25,7 +25,7 @@
     },
     {
       "title": "It starts at the learner's level, not below",
-      "body": "Kumon starts each child on work that should feel quick and easy; students \"start below grade level to build a strong foundation\" [8][9]. Its FAQ says more significant progress develops over six to twelve months [2]. AMP finds the level in each strand within the first 24 problems and aims each problem just within reach. While a learner is still climbing, every second problem reaches higher.",
+      "body": "Kumon starts each child on work that should feel quick and easy; students \"start below grade level to build a strong foundation\" [8][9]. Its FAQ says more significant progress develops over six to twelve months [2]. AMP places the learner within the first 24 problems and keeps a level in each strand and aims each problem just within reach. While a learner is still climbing, every second problem reaches higher.",
       "research": ["level"]
     },
     {
@@ -68,7 +68,7 @@
     ],
     "ours": [
       "AMP is built on findings that held up in trials. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, the correct answer alone 0.32, and right-or-wrong marking 0.05 [23]. Mixed, spaced practice scored 62% against 38% for blocked practice on the researchers' own test a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [24]. Kumon's trial shows what a fixed daily routine of calculation can do. We expect a program that explains every answer, covers every strand and schedules review to reach further. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

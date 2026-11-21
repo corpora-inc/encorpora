@@ -16,7 +16,7 @@
     },
     {
       "title": "Each problem is aimed at the learner's level",
-      "body": "The Derek Owens FAQ describes no placement test. A student gets both Regular and Honors work in the first month, then picks one [4], and does the same assignments and tests as the in-class students [3]. AMP keeps a separate level in each of 14 strands of math, found within the first 24 problems, and chooses every next problem from the learner's answers. A student strong in algebra and unsure of fractions gets work in both.",
+      "body": "The Derek Owens FAQ describes no placement test. A student gets both Regular and Honors work in the first month, then picks one [4], and does the same assignments and tests as the in-class students [3]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers. A student strong in algebra and unsure of fractions gets work in both.",
       "research": ["level"]
     },
     {
@@ -66,7 +66,7 @@
     ],
     "ours": [
       "The two programs share one well-supported method. Derek Owens works examples on video while students fill in the notes [3], and AMP attaches a worked example to every problem type. Across 55 studies, worked examples improved math performance by an average of g = 0.48 [9]. They part at what happens after an answer. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged 0.49, the correct answer alone 0.32, and right or wrong only 0.05 [7]. In a randomized trial, mixed and spaced practice beat practice in blocks 62% to 38% on the researchers' test a month later [8]. We expect a program that explains every answer at once and brings old topics back on a schedule to help a learner keep more of what they learn. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -91,7 +91,7 @@
     },
     {
       "question": "Can we use AMP alongside a Derek Owens course?",
-      "answer": "Yes. The course gives the lecture and the graded tests. AMP finds the level in each part of math within the first 24 problems, repairs earlier gaps and brings old skills back on a schedule."
+      "answer": "Yes. The course gives the lecture and the graded tests. AMP places the learner within the first 24 problems and keeps a level in each part of math, repairs earlier gaps and brings old skills back on a schedule."
     },
     {
       "question": "Are Derek Owens courses accredited?",

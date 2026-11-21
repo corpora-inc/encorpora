@@ -83,7 +83,7 @@
     ],
     "ours": [
       "AMP's rules come from findings that have held up in trials. Mixed, spaced practice scored 62% against 38% a month later, on the researchers' own test, in a randomized trial with seventh graders that meets What Works Clearinghouse standards without reservations [15]. Feedback that explains averaged 0.49 across 40 studies, against 0.05 for right or wrong alone [16]. AMP applies both: worked steps after each answer, and old skills brought back on a schedule. The feedback effects were lower in primary school settings. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -120,7 +120,7 @@
     },
     {
       "question": "Can my child use Mathseeds and AMP together?",
-      "answer": "Yes. They are separate programs. AMP finds the level in each part of math within the first 24 problems and chooses practice from there."
+      "answer": "Yes. They are separate programs. AMP places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there."
     }
   ],
   "sources": [

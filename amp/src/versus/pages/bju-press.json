@@ -10,7 +10,7 @@
   "reasons": [
     {
       "title": "Practice at the learner's level, not the grade's",
-      "body": "BJU Press sells math one grade at a time, and its Homeschool Hub lays out each course as a schedule of lessons the parent can adjust [2][6]. AMP keeps a separate level in each of 14 strands of math, found within the first 24 problems, and chooses every next problem from the learner's answers. A learner working a grade up in geometry and a grade down in fractions practices at both levels in the same week.",
+      "body": "BJU Press sells math one grade at a time, and its Homeschool Hub lays out each course as a schedule of lessons the parent can adjust [2][6]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers. A learner working a grade up in geometry and a grade down in fractions practices at both levels in the same week.",
       "research": [
         "level"
       ]
@@ -79,7 +79,7 @@
     ],
     "ours": [
       "Two of AMP's rules supply what a book leaves to the adult. Feedback that explains: across 40 studies of computer-based feedback of mixed ages and subjects, it averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [10]. Mixed, spaced practice: in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, it scored 62% on the researchers' own test a month later, against 38% for practice in blocks [9]. AMP builds both into its practice. We think that will show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -104,7 +104,7 @@
     },
     {
       "question": "Can we use AMP alongside BJU Press Math?",
-      "answer": "Yes. A family can keep its BJU Press lessons and use AMP for daily practice and review. AMP finds the level in each strand of math within the first 24 problems, so it does not need to know which lesson you are on."
+      "answer": "Yes. A family can keep its BJU Press lessons and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it does not need to know which lesson you are on."
     },
     {
       "question": "Is AMP a Christian curriculum like BJU Press?",

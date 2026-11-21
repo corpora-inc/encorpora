@@ -74,7 +74,7 @@
     ],
     "ours": [
       "Saxon's central idea has strong research behind it, and AMP keeps it. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [16]. Spacing research adds a second rule: the best gap between reviews grows with how long the material must last, in studies of verbal recall [17]. A printed book fixes those gaps for everyone. AMP widens them for each skill and each learner, and restarts them after a miss. We expect review timed to the learner to beat review timed to the page. That is our bet, and we have committed to testing AMP in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -95,7 +95,7 @@
   "questions": [
     {
       "question": "Can I use AMP with Saxon Math?",
-      "answer": "Yes. A family can keep teaching Saxon's lessons and use AMP for practice and review. AMP finds the level in each part of math within the first 24 problems, schedules review for each skill, and prints workbooks with worked answer keys."
+      "answer": "Yes. A family can keep teaching Saxon's lessons and use AMP for practice and review. AMP places the learner within the first 24 problems and keeps a level in each part of math, schedules review for each skill, and prints workbooks with worked answer keys."
     },
     {
       "question": "Is AMP more expensive than Saxon Math?",

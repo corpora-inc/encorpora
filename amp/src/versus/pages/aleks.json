@@ -86,7 +86,7 @@
     ],
     "ours": [
       "The two strongest studies of ALEKS by university researchers found no advantage over ordinary teaching [3][4]. We built AMP to do more than match it, from findings that held up in trials. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% against 38% for practice in blocks on the researchers' test a month later, and the study meets What Works Clearinghouse standards without reservations [34]. AMP mixes review into practice on a fixed schedule; ALEKS's review comes mainly in periodic checks [5]. Worked examples averaged an effect of g = 0.48 across 55 studies in math, from elementary school to college [35], and every AMP problem type has one. We expect this to show in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

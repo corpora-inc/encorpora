@@ -18,7 +18,7 @@
     },
     {
       "title": "A level for each part of math, not one book",
-      "body": "The series places a child with a free Readiness Test for each level, then follows that level's lessons in order [1][5]. AMP keeps a separate level in each of 14 strands and finds them inside the first 24 problems, with no test for the adult to give or score. A child who is quick with shapes and unsure with fractions gets work at both heights in the same session.",
+      "body": "The series places a child with a free Readiness Test for each level, then follows that level's lessons in order [1][5]. AMP keeps a separate level in each of 14 strands and places the learner within the first 24 problems, with no test for the adult to give or score. A child who is quick with shapes and unsure with fractions gets work at both heights in the same session.",
       "research": [
         "level"
       ]
@@ -83,7 +83,7 @@
     ],
     "ours": [
       "Two of AMP's rules rest on findings that have held up. Mixed, spaced practice scored 62% against 38% for practice in blocks on the researchers' own test a month later, in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations [13]. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only, across mixed ages and subjects, with smaller effects in primary and high school settings [14]. A well-made book can teach well and still leave both to the adult's calendar. AMP builds both into its rules, and we expect that to show in outcomes. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

@@ -81,7 +81,7 @@
     ],
     "ours": [
       "Two findings bear most on this choice. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and marking right or wrong 0.05 [17]. The studies mix ages and subjects, and the figures are averages by feedback type, not a head-to-head trial. In a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice beat practice in blocks a month later, 62% to 38%, on a test the researchers wrote [16]. AMP puts both into every session: worked steps after every answer, and review on a fixed schedule. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -114,7 +114,7 @@
     },
     {
       "question": "My child uses Mathletics at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program. It finds the level in each part of math within the first 24 problems and chooses practice from there, on your schedule."
+      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there, on your schedule."
     }
   ],
   "sources": [

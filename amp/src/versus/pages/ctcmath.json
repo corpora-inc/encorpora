@@ -10,7 +10,7 @@
   "reasons": [
     {
       "title": "AMP finds the level, so the adult doesn't have to",
-      "body": "CTCMath's placement tests cover one topic at a time in K-8 and return a list of lessons that may need review [2]. Cathy Duffy notes that the program does not automatically prescribe a grade level or course from the tests [4]. The adult can then assign lessons with due dates [5][9]. AMP finds the level in each of 14 strands of math within the first 24 problems, with no separate test, and keeps adjusting at every answer.",
+      "body": "CTCMath's placement tests cover one topic at a time in K-8 and return a list of lessons that may need review [2]. Cathy Duffy notes that the program does not automatically prescribe a grade level or course from the tests [4]. The adult can then assign lessons with due dates [5][9]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, with no separate test, and keeps adjusting at every answer.",
       "research": [
         "level"
       ]
@@ -87,7 +87,7 @@
     ],
     "ours": [
       "AMP's review rule comes from a trial that holds up. In a randomized trial of 787 seventh graders, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks; the What Works Clearinghouse says it meets its standards without reservations, though the test was the researchers' own [12]. On watching versus doing, the best data are weaker: in an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The authors estimate the benefit of extra doing at more than six times that of extra watching or reading; the data are correlational [13]. We think a program that starts with the problem and times review to each skill will do better than one that starts with a video and reviews by the week. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -124,7 +124,7 @@
     },
     {
       "question": "Can my child watch CTCMath videos and practice in AMP?",
-      "answer": "Yes. They are separate programs. AMP finds the level in each strand within the first 24 problems, whatever else a learner uses."
+      "answer": "Yes. They are separate programs. AMP places the learner within the first 24 problems and keeps a level in each strand, whatever else a learner uses."
     }
   ],
   "sources": [

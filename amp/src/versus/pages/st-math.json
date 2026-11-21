@@ -20,7 +20,7 @@
     },
     {
       "title": "It starts at the learner's level, strand by strand",
-      "body": "We found no placement test in ST Math: a student starts on the Journey for their grade [8], and MIND recommends keeping students on their assigned grade [7]. Moving a struggling child to an earlier grade is a choice an adult makes by hand [7][31]. In the independent trial, the lowest performers finished under half their grade's content, and the authors suggested they may have needed below-grade work [14]. AMP finds the level in each of 14 strands within the first 24 problems, and two misses in a row send practice back to what the skill builds on.",
+      "body": "We found no placement test in ST Math: a student starts on the Journey for their grade [8], and MIND recommends keeping students on their assigned grade [7]. Moving a struggling child to an earlier grade is a choice an adult makes by hand [7][31]. In the independent trial, the lowest performers finished under half their grade's content, and the authors suggested they may have needed below-grade work [14]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, and two misses in a row send practice back to what the skill builds on.",
       "research": [
         "level",
         "mastery"
@@ -83,7 +83,7 @@
     ],
     "ours": [
       "Two findings shape how AMP teaches where ST Math leaves it to the puzzle or the adult. Across 55 studies, worked examples improved math performance with an average effect of g = 0.48 [35]. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, the correct answer alone 0.32, and right-or-wrong alone 0.05 [34]. AMP puts a worked example in every lesson and the worked steps after every answer, and schedules review on top. We expect that design to show in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

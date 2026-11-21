@@ -23,7 +23,7 @@
   "reasons": [
     {
       "title": "Every answer sets the next problem",
-      "body": "Teaching Textbooks is a course of lessons in a set order [2][11]. The parent picks the level with a printable test whose pass guidelines the vendor calls \"very rough\" [6], and Cathy Duffy notes that many students, especially advanced ones, need one level above their grade [11]. AMP finds the level in each of 14 strands of math within the first 24 problems, then chooses every problem from the learner's answers. While a learner is still climbing, every second problem reaches higher.",
+      "body": "Teaching Textbooks is a course of lessons in a set order [2][11]. The parent picks the level with a printable test whose pass guidelines the vendor calls \"very rough\" [6], and Cathy Duffy notes that many students, especially advanced ones, need one level above their grade [11]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then chooses every problem from the learner's answers. While a learner is still climbing, every second problem reaches higher.",
       "research": [
         "level"
       ]
@@ -71,7 +71,7 @@
     ],
     "ours": [
       "Teaching Textbooks and AMP share one rule with strong support: mix earlier topics into practice. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks. The test was the researchers' own [18]. AMP adds three things: the return of each skill timed to the learner's own answers, a level in every strand, and credit only for answers given without help. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "rows": {
@@ -114,7 +114,7 @@
     },
     {
       "question": "Can my child use AMP alongside Teaching Textbooks?",
-      "answer": "Yes. AMP is a separate program that finds the level in each part of math within the first 24 problems and works from there. The first 100 answers and 5 workbooks are free, with no card."
+      "answer": "Yes. AMP is a separate program that places the learner within the first 24 problems and keeps a level in each part of math and works from there. The first 100 answers and 5 workbooks are free, with no card."
     },
     {
       "question": "Is there research showing Teaching Textbooks works?",

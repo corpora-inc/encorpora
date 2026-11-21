@@ -4,14 +4,14 @@
   "maker": "Miaplaza Inc.",
   "category": "all-in-one",
   "checked": "2026-11-21",
-  "benefit": "math that adapts at every answer",
+  "benefit": "Math that adapts at every answer",
   "line": "Miacademy covers every subject at a grade the parent picks. AMP is only math, set by the learner's answers.",
   "description": "AMP vs Miacademy: an all-subject K-8 homeschool program with parent-set grades, beside a math-only program that sets each problem from the last answer.",
   "verdict": "Miacademy covers every subject from kindergarten to grade 8 in one subscription, with video lessons, games, a gradebook and accreditation as a supplementary program, for $480 a year per student [1][5][8]. Its math follows a grade level the parent chooses [5][6]. AMP is only math: it finds the level in each strand from the answers, explains every miss, and brings old skills back on a schedule, from counting through precalculus.",
   "reasons": [
     {
       "title": "The level comes from answers, not a grade pick",
-      "body": "In Miacademy the parent chooses the grade level that fits the child, and a learner can skip known topics or switch levels [5][6][7]. We found no placement test or adaptive engine described on its math pages [2][5][6][7]. AMP finds the level in each of 14 strands of math within the first 24 problems, then chooses every next problem from the answers: new work, a prerequisite, or review. A learner at grade 3 in fractions and grade 6 in geometry gets practice at both.",
+      "body": "In Miacademy the parent chooses the grade level that fits the child, and a learner can skip known topics or switch levels [5][6][7]. We found no placement test or adaptive engine described on its math pages [2][5][6][7]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then chooses every next problem from the answers: new work, a prerequisite, or review. A learner at grade 3 in fractions and grade 6 in geometry gets practice at both.",
       "research": [
         "level"
       ]
@@ -79,7 +79,7 @@
     ],
     "ours": [
       "We built AMP on findings from trials and reviews. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong alone. These are averages by feedback type, and effects were smaller in primary and high school settings [12]. Mixed, spaced practice scored 61% against 38% for practice in blocks a month later, in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations. The test was the researchers' own, and the mixed practice was also spaced [11]. Miacademy's spiral shares the idea of returning to old skills [7]; AMP times each return to the learner's own answers. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

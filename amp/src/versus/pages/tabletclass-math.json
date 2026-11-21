@@ -23,7 +23,7 @@
   "reasons": [
     {
       "title": "AMP finds the starting point itself",
-      "body": "TabletClass Math is sold as separate courses, and a downloadable placement test helps a family choose one, at least for Algebra 1 [10]. One course then sets the level for every topic in it. AMP finds a level in each of 14 strands of math within the first 24 problems, with no separate test, and keeps adjusting after that.",
+      "body": "TabletClass Math is sold as separate courses, and a downloadable placement test helps a family choose one, at least for Algebra 1 [10]. One course then sets the level for every topic in it. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, with no separate test, and keeps adjusting after that.",
       "research": [
         "level"
       ]
@@ -85,7 +85,7 @@
     ],
     "ours": [
       "AMP's review rule draws on one of the clearest trials in math practice. With 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks. The trial meets What Works Clearinghouse standards without reservations, though the test was the researchers' own [13]. A course that moves chapter by chapter leaves that spacing to the family; AMP schedules it for every learned skill. We expect that, with placement and checking built in, to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

@@ -4,7 +4,7 @@
   "maker": "Thinkwell",
   "category": "courses",
   "checked": "2026-11-21",
-  "benefit": "practice that finds the level",
+  "benefit": "Practice that finds the level",
   "line": "Thinkwell teaches by professor video in a set order. AMP chooses every problem from the learner's last answer.",
   "description": "AMP vs Thinkwell: video courses taught by professors in a set order, grade 6 to calculus, or practice that adapts at every answer from counting to precalculus.",
   "verdict": "Thinkwell gives a learner a university professor on video, a full course with a midterm and a final, and official transcripts from a WASC-accredited provider [2][4]. Its lessons run in a set order, from a printed placement test that picks the course [2][3]. AMP finds the level in each part of math, chooses every problem from the last answer, and brings old skills back on a schedule.",
@@ -23,7 +23,7 @@
   "reasons": [
     {
       "title": "AMP finds the level in each part of math",
-      "body": "Thinkwell's placement tests are printed, 16 to 25 questions long, and with a scoring guide. The result picks one course [3]. AMP needs no separate test. It finds the learner's level in each of 14 strands of math within the first 24 problems and keeps adjusting, so a learner ready for algebra but unsure with fractions practices each where they stand.",
+      "body": "Thinkwell's placement tests are printed, 16 to 25 questions long, and with a scoring guide. The result picks one course [3]. AMP needs no separate test. It places the learner within the first 24 problems, keeps a level in each of 14 strands of math and keeps adjusting, so a learner ready for algebra but unsure with fractions practices each where they stand.",
       "research": [
         "level"
       ]
@@ -87,7 +87,7 @@
     ],
     "ours": [
       "Thinkwell and AMP agree that a learner needs a clear explanation. Thinkwell's comes from a professor before the exercises; AMP's comes with each problem. Where we differ is what happens next. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, students whose practice mixed and spaced earlier topics scored 62% on the researchers' own test a month later, against 38% for students who practiced one topic at a time [15]. In an online psychology course for adults, the authors estimate that extra doing was worth more than six times as much as extra watching or reading, from correlational data [16]. We built AMP on those findings and expect it to show in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

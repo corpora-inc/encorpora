@@ -48,6 +48,12 @@
     "line": "Mathletics motivates with points, races and games. AMP picks each problem, explains each miss and schedules review."
   },
   {
+    "slug": "mathspace",
+    "name": "Mathspace",
+    "category": "adaptive",
+    "line": "Mathspace checks each line of work for a teacher's class. AMP picks every problem and counts only unaided answers."
+  },
+  {
     "slug": "dreambox-math",
     "name": "DreamBox Math",
     "category": "school",
@@ -192,6 +198,12 @@
     "line": "Study.com teaches all subjects by video in a set order. AMP is only math and picks each problem from the last answer."
   },
   {
+    "slug": "time4learning",
+    "name": "Time4Learning",
+    "category": "all-in-one",
+    "line": "Time4Learning teaches every core subject at a grade the parent picks; AMP teaches math at the level each answer shows."
+  },
+  {
     "slug": "abeka",
     "name": "Abeka",
     "category": "books",
@@ -297,7 +309,7 @@
     "slug": "matific",
     "name": "Matific",
     "category": "games",
-    "line": "Matific teaches through short games. AMP picks each problem from the last answer and schedules review."
+    "line": "Matific keeps one learning level per child. AMP keeps one in each of 14 strands and schedules review."
   },
   {
     "slug": "prodigy-math",
@@ -351,7 +363,7 @@
     "slug": "outschool",
     "name": "Outschool",
     "category": "tutoring",
-    "line": "Outschool is a marketplace of live classes. AMP is one math program that chooses every problem, every day."
+    "line": "Outschool lists live classes by independent teachers. AMP is one math program that chooses every problem."
   },
   {
     "slug": "russian-school-of-mathematics",
@@ -369,7 +381,7 @@
     "slug": "thinkster-math",
     "name": "Thinkster Math",
     "category": "tutoring",
-    "line": "Thinkster pairs worksheets with a weekly tutor. AMP chooses every problem itself, for $59 a month."
+    "line": "Thinkster pairs AI practice with a weekly tutor. AMP shows worked steps every time, for $59 a month."
   },
   {
     "slug": "chatgpt",

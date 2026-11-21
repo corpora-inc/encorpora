@@ -11,7 +11,7 @@
   "reasons": [
     {
       "title": "AMP finds the level in every part of math",
-      "body": "Shormann Math posts a placement test to choose the course [5]. From there every student works the same 100 lessons in order [2], and the first 25 review or introduce prerequisite skills for everyone [3]. AMP keeps a separate level in each of 14 strands of math, found within the first 24 problems, and chooses every next problem from the learner's answers. A strength in one strand never hides a gap in another.",
+      "body": "Shormann Math posts a placement test to choose the course [5]. From there every student works the same 100 lessons in order [2], and the first 25 review or introduce prerequisite skills for everyone [3]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers. A strength in one strand never hides a gap in another.",
       "research": [
         "level"
       ]
@@ -85,7 +85,7 @@
     ],
     "ours": [
       "Shormann Math and AMP share two methods with strong research behind them. Both teach through worked examples, which improved math performance by an average of g = 0.48 across 55 studies [9]. Both mix old problems in with new. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [8]. They part on who decides. Shormann Math fixes the lessons and the mix for every student. In AMP each learner's answers set the level, send practice back to a missing skill and time each review. We expect that to help a learner keep more of what they learn. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

@@ -11,7 +11,7 @@
   "reasons": [
     {
       "title": "AMP finds each learner's level in every strand",
-      "body": "We found no placement test for Life of Fred, and the books are meant to be used in order [3][4]. Where to start and what to skip is the adult's call, and every child meets the same chapters in the same sequence. AMP sets a separate level in each of 14 strands within the first 24 problems, with no separate test, then chooses every next problem from the answers: new work, a prerequisite, or review. A learner strong in geometry and unsure in fractions gets work in both.",
+      "body": "We found no placement test for Life of Fred, and the books are meant to be used in order [3][4]. Where to start and what to skip is the adult's call, and every child meets the same chapters in the same sequence. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands, with no separate test, then chooses every next problem from the answers: new work, a prerequisite, or review. A learner strong in geometry and unsure in fractions gets work in both.",
       "research": [
         "level"
       ]
@@ -83,7 +83,7 @@
     ],
     "ours": [
       "A book can explain an idea well. What it cannot do is watch the answers. We built AMP around two findings about what happens after the reading. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only; the studies mix ages and subjects and are not a head-to-head trial [8]. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for blocked practice on the researchers' own test a month later [9]. AMP applies both at every problem, at the learner's own level. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -108,7 +108,7 @@
     },
     {
       "question": "Can I use AMP with Life of Fred?",
-      "answer": "Yes. Many families could keep reading Fred for the story and the ideas, and use AMP for daily practice. AMP finds the level in each part of math within the first 24 problems and chooses practice from there."
+      "answer": "Yes. Many families could keep reading Fred for the story and the ideas, and use AMP for daily practice. AMP places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there."
     },
     {
       "question": "Is AMP more expensive than Life of Fred?",

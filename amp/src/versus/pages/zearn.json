@@ -11,7 +11,7 @@
   "reasons": [
     {
       "title": "AMP starts where the learner is",
-      "body": "Zearn has no placement test. By default every student starts at Mission 1, Lesson 1 of the assigned grade and moves strictly in order; a teacher can reassign a student elsewhere in the K–8 library [3]. AMP has no separate test either, but it finds the level in each of 14 strands of math within the first 24 problems and keeps adjusting. A learner strong in geometry and shaky in fractions gets work aimed at each.",
+      "body": "Zearn has no placement test. By default every student starts at Mission 1, Lesson 1 of the assigned grade and moves strictly in order; a teacher can reassign a student elsewhere in the K–8 library [3]. AMP has no separate test either, but it places the learner within the first 24 problems and keeps a level in each of 14 strands of math and keeps adjusting. A learner strong in geometry and shaky in fractions gets work aimed at each.",
       "research": ["level"]
     },
     {
@@ -73,7 +73,7 @@
     ],
     "ours": [
       "Zearn moves through topics in order and checks each lesson once, at its end. AMP is built on a different finding. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, students whose practice mixed and spaced earlier topics scored 62% on a test a month later, against 38% for practice in blocks [19]. The test was the researchers’ own. AMP brings every learned skill back on a schedule, mixed with other topics, and aims each problem at the learner’s level in each strand. We expect that to show in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -102,7 +102,7 @@
     },
     {
       "question": "Does Zearn have a placement test?",
-      "answer": "No. By default every student starts at Mission 1, Lesson 1 of the assigned grade, and a teacher can move a student elsewhere in the K–8 library [3]. AMP places a learner in each of 14 strands within the first 24 problems."
+      "answer": "No. By default every student starts at Mission 1, Lesson 1 of the assigned grade, and a teacher can move a student elsewhere in the K–8 library [3]. AMP places a learner within the first 24 problems and keeps a level in each of 14 strands."
     },
     {
       "question": "Does Zearn cover algebra or high school math?",

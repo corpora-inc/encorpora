@@ -11,7 +11,7 @@
   "reasons": [
     {
       "title": "AMP starts where the learner is",
-      "body": "Power Homeschool's FAQ says students start at the beginning of each course [3]. Its course pages say students move quickly through what they know, and describe Prism Diagnostics, which finds gaps and provides targeted instruction videos [6][7]. AMP has no course to work through first. It finds the level in each of 14 strands of math within the first 24 problems, so a learner ahead in geometry and behind in fractions practices each at its own level.",
+      "body": "Power Homeschool's FAQ says students start at the beginning of each course [3]. Its course pages say students move quickly through what they know, and describe Prism Diagnostics, which finds gaps and provides targeted instruction videos [6][7]. AMP has no course to work through first. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math, so a learner ahead in geometry and behind in fractions practices each at its own level.",
       "research": [
         "level"
       ]
@@ -80,7 +80,7 @@
     ],
     "ours": [
       "Power Homeschool leads each lesson with a teacher on video [4]. AMP leads with the problem and brings the explanation to it. The data on that choice are weaker than a trial: in an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The authors estimate the benefit of extra doing at more than six times that of extra watching or reading, and the data are correlational [15]. Add the trial evidence for mixed, spaced practice [13] and for feedback that explains [14], and we expect a math program built on all three to do better than a course that starts at lesson one. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

@@ -4,7 +4,7 @@
   "maker": "Imagine Learning",
   "category": "school",
   "checked": "2026-11-21",
-  "benefit": "math a family can buy",
+  "benefit": "Math a family can buy",
   "line": "Imagine Math is a school program with no posted price. AMP sells to families and brings skills back on a schedule.",
   "description": "AMP vs Imagine Math: how Imagine Learning's school program places and passes students, what its studies show, and why any family can start AMP today.",
   "verdict": "Imagine Math brings real strengths to a school: live tutors inside lessons, a placement test with a Quantile measure, and a Promising rating from Evidence for ESSA [3][4][8]. Its pages show no price [2], and a lesson counts as passed at 75% on its closing quiz in one of its studies [6]. AMP is sold to families too, counts a skill only after four of the last five answers are right without help, and brings it back on a schedule.",
@@ -83,7 +83,7 @@
     ],
     "ours": [
       "We built AMP's review and lessons on findings that have held up. Mixed, spaced practice beat practice in blocks 62% to 38% a month later on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [9]. Worked examples raised math performance by g = 0.48 on average across 55 studies [10], and every AMP problem type has a lesson with one. Imagine Math's own Idaho data link more practice to higher scores, though that is a link and not proof [5]. Our bet is that a program which brings each skill back on a schedule, and which a family can open any day, will show it in outcomes. We have committed to measuring that in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

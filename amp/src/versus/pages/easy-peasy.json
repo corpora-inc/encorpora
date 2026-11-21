@@ -4,7 +4,7 @@
   "maker": "Lee Giles and family",
   "category": "all-in-one",
   "checked": "2026-11-21",
-  "benefit": "every answer checked at once",
+  "benefit": "Every answer checked at once",
   "line": "Easy Peasy is a free daily plan for every subject. AMP is only math, and it adapts and checks at every answer.",
   "description": "AMP vs Easy Peasy All-in-One Homeschool: a free daily plan for every subject, or math that finds the level, explains each answer and schedules review.",
   "verdict": "Easy Peasy All-in-One Homeschool gives a family a free Christian plan for every subject from preschool through grade 8, begun by a parent who put her own children's lessons online [1][2]. Its math is a fixed run of daily lessons, from grade 5 on built on outside videos and exercises, and the parent checks the work and keeps the records [3][7][8][9]. AMP costs $599 a year and takes on that part: it finds the level, checks and explains every answer, brings old skills back on a schedule and keeps the record, from counting through precalculus.",
@@ -85,7 +85,7 @@
     ],
     "ours": [
       "Two of AMP's rules come from findings that have held up. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [16]. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged 0.49, the correct answer alone 0.32 and right-or-wrong alone 0.05 [15]. We expect a program that explains every answer and schedules review without a parent's planning to help a learner keep more of the math they learn. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -110,7 +110,7 @@
     },
     {
       "question": "Can we keep Easy Peasy for other subjects and use AMP for math?",
-      "answer": "Yes. AMP teaches only math, so it sits beside any plan for the other subjects. It finds the level in each strand of math within the first 24 problems, whichever Easy Peasy course a child was in."
+      "answer": "Yes. AMP teaches only math, so it sits beside any plan for the other subjects. It places the learner within the first 24 problems and keeps a level in each strand of math, whichever Easy Peasy course a child was in."
     },
     {
       "question": "Why pay $599 a year when Easy Peasy math is free?",

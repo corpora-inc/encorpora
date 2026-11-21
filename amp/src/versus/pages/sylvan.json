@@ -5,34 +5,38 @@
   "checked": "2026-11-21",
   "benefit": "Daily practice, not by the hour",
   "line": "Sylvan tutors in booked sessions, priced by the hour. AMP gives daily practice at home for $59 a month.",
-  "description": "AMP vs Sylvan Learning: a live tutor at about $50 an hour, or adaptive math practice at home every day for $59 a month. What each offers and has shown.",
-  "verdict": "Sylvan Learning puts a live, Sylvan-certified teacher with a child, at a local center or online [1], and we think a good tutor is hard to beat. Its sessions typically average $50 to $55 an hour [3]. For $59 a month, AMP finds the level in each strand of math, explains every answer and brings old skills back on a schedule, any day, at home.",
+  "description": "AMP vs Sylvan Learning: a live tutor at a typical $50 to $55 an hour, or adaptive math practice at home any day for $59 a month. What each offers.",
+  "verdict": "Sylvan Learning puts a live, Sylvan-certified teacher with a child, at a local center or online [1], and we think a good tutor is hard to beat. Its sessions typically average $50 to $55 an hour, and most students attend 2 to 4 hours a week [3][5]. For $59 a month, AMP keeps a level in each of 14 strands of math, explains every answer and brings old skills back on a schedule, any day, at home.",
   "reasons": [
     {
       "title": "A month of AMP costs about one Sylvan hour",
-      "body": "Sylvan's sessions, online or in person, typically average $50 to $55 an hour [3]. At its centers, each independently owned location sets the price, and a typical start is $50 or more per session [2]. AMP is $59 a month or $599 a year for unlimited practice, and the first 100 answers are free. By our arithmetic, four one-hour sessions a month at those rates come to $200 or more."
+      "body": "Sylvan says its online and in-person sessions typically average $50 to $55 an hour [3], and its pricing page lists a typical rate of $50 or more per session, set by each locally owned center [2]. Its FAQ says most students attend 2 to 4 hours a week [5], which by our arithmetic comes to $100 to $220 a week. AMP is $59 a month or $599 a year for the first child. The first 100 answers are free, with no card."
     },
     {
-      "title": "Practice any day, with no appointment",
-      "body": "Sylvan teaches in scheduled sessions, in person at a center or live online [1]. To begin, a parent requests the free assessment, and the center makes contact within one business day [1]. AMP starts the same day without a card, at home, in any current browser. Practice can happen any day the learner is ready."
+      "title": "Help and review any day, not only in sessions",
+      "body": "Sylvan teaches in sessions that typically run about an hour, scheduled with the center, which recommends how often to come [5]. Its comparison sheet also lists online activities for learning outside the center [12]. In AMP, the hint, the lesson, the worked steps and the review schedule are there for every problem, any day, with no booking. It starts the same day, without a card.",
+      "research": [
+        "hints",
+        "lessons"
+      ]
     },
     {
       "title": "Placement happens inside practice, in 14 strands",
-      "body": "Sylvan places a child with a free Insight Assessment that covers a single subject, and builds a personal plan from it [1]. AMP has no separate test. It finds the level in each of 14 strands of math within the first 24 problems, then updates the estimate with every answer. A learner can be strong in geometry and still get practice aimed at fractions.",
+      "body": "Sylvan starts with its Insight Assessment, a computer-adaptive test given before the plan is made, one subject per free assessment [12][1]. Sylvan says it shows how a child performs compared with other students in the same grade [11]. AMP has no separate test. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math, which every answer adjusts, so a learner can be strong in geometry and still get practice aimed at fractions.",
       "research": [
         "level"
       ]
     },
     {
       "title": "Old skills come back on a schedule",
-      "body": "AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss resets the schedule. We found no review schedule on Sylvan's math tutoring pages [1]. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on a surprise test a month later, against 38% for practice in blocks [8]. The researchers wrote the test, and the mixed practice was also spaced.",
+      "body": "Sylvan's comparison sheet says its approach focuses on what a child needs without repeating skills already learned [12]. AMP brings learned skills back on purpose: after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss resets the schedule. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on a surprise test a month later, against 38% for practice in blocks [8]. The researchers wrote the test, and the mixed practice was also spaced.",
       "research": [
         "review"
       ]
     },
     {
-      "title": "The rules are public, and help never counts",
-      "body": "Sylvan says its program adapts to a child's skill level and pace [1], but we found no mastery rule on its pages. AMP's rule is written down and in public code: four of the last five answers right without help. An answer given after a hint or the lesson does not count, and two misses in a row send practice back to what the skill builds on.",
+      "title": "The mastery rule is public, and help never counts",
+      "body": "Sylvan's guarantee promises mastery of at least 50 skills in 50 hours of instruction, with free extra hours if the promised results do not come [10]. Its pages do not say what counts as mastering a skill. AMP's rule is in public code: four of the last five answers right without help. An answer given after a hint or the lesson does not count, and two misses in a row send practice back to what the skill builds on.",
       "research": [
         "mastery",
         "hints"
@@ -40,37 +44,38 @@
     }
   ],
   "rows": {
-    "price": "Set by each center: a typical start of $50 or more per session [2]. Sessions typically average $50 to $55 an hour [3]. Most families choose monthly memberships [1].",
-    "buyers": "Families, through a local center. Each location is independently owned and operated and sets its own price [2].",
+    "price": "Personalized Tutoring and Homework Help: a typical $50 or more per session, by center [2]. Sessions typically average $50 to $55 an hour [3].",
+    "buyers": "Families, through a local center or its online sessions. Centers are locally owned and operated and set their own prices [2].",
     "range": "Kindergarten through grade 12, from homework help to pre-calculus [1].",
-    "start": "A free Insight Assessment, one subject per assessment, that leads to a personal plan [1].",
-    "teaching": "A live Sylvan-certified teacher, in person at a center or, at many centers, online, following the child's personal plan [1].",
-    "next": "The personal plan from the assessment, which Sylvan says adapts to a child's skill level and pace [1].",
-    "mastery": "No mastery rule found on its math tutoring pages [1].",
-    "review": "No review schedule found on its math tutoring pages [1].",
-    "adult": "Requests the free assessment, picks a membership with the local center, and schedules sessions [1].",
-    "evidence": "No outcome study found on its site. Evidence for ESSA has an entry named SylvanSync Mathematics, without a rating [6]. Its growth claim names no study [4]."
+    "start": "A free, computer-adaptive Insight Assessment, one subject per free assessment, then a personal plan [12][1].",
+    "teaching": "A live Sylvan-certified teacher at a low student-to-teacher ratio, at a center or, at many centers, online [5][1].",
+    "next": "SylvanSync, Sylvan's instructional system, places the child and tracks progress; tutors adapt to skill level and pace [12].",
+    "mastery": "Guarantee: mastery of at least 50 skills in 50 hours, for SylvanSync Math and Reading, grades 3 to 12 [10].",
+    "review": "Its comparison sheet says it focuses on what the child needs without repeating skills already learned [12].",
+    "adult": "Requests the free assessment, chooses a membership with the local center, and schedules sessions, most often 2 to 4 hours a week [1][5].",
+    "reports": "A parent portal with online progress tracking, and regularly scheduled progress meetings [12].",
+    "evidence": "Says independent research shows up to 2 to 3 times more growth, naming no study [4]. Evidence for ESSA: SylvanSync Mathematics, no rating [6]."
   },
   "theirs": [
-    "Sylvan Learning is a tutoring brand with local centers and live online sessions [1]. Its site describes its centers as locally owned [5], and says Sylvan has helped students and families for over 40 years [4]. This page is about its math tutoring.",
-    "Math tutoring runs from kindergarten through grade 12, from homework help to pre-calculus, including algebra, fractions, geometry, trigonometry, and probability and statistics [1]. A child works with a Sylvan-certified teacher, in person at a center or, at many centers, live online, with the same personalized plan [1]. Sylvan presents it as support alongside school that follows school standards [1].",
-    "It starts with a free Insight Assessment in one subject. The local center then explains the plan and the options, and most families choose a monthly membership with no long-term contract [1]."
+    "Sylvan Learning is a tutoring brand with locally owned centers and live online sessions [2][3]. It says it has helped students and families for over 40 years [4]. This page is about its math tutoring.",
+    "Math tutoring runs from kindergarten through grade 12, from homework help to pre-calculus, including algebra, fractions, geometry, trigonometry, and probability and statistics [1]. A child works with a Sylvan-certified teacher at a low student-to-teacher ratio, in person at a center or, at many centers, live online with the same personalized plan [5][1]. Sessions typically run about an hour [5]. Sylvan's instructional system, SylvanSync, places the child and tracks progress, and a reward system gives prizes and tokens for effort and perseverance [12].",
+    "It starts with a free Insight Assessment in one subject [1]. The local center then explains the plan and the options, and most families choose a monthly membership with no long-term contract [1]."
   ],
   "credit": [
-    "A live, Sylvan-certified teacher, in person or online [1]. A live teacher can listen, ask a question back and change course in the middle of a problem. AMP has no live teacher and no chat tutor.",
-    "A center to go to [1]. The work happens away from home, with an adult who is not the parent.",
-    "A free assessment to start, and a monthly membership with no long-term contract [1].",
-    "Homework help alongside school, from kindergarten through pre-calculus [1]. AMP follows its own sequence, not this week's school assignments."
+    "A live, Sylvan-certified teacher at a low student-to-teacher ratio, in person or online [1][5]. A live teacher can listen, ask a question back and change course in the middle of a problem. AMP has no live teacher and no chat tutor.",
+    "A center to go to, with an adult who is not the parent, and a reward system with prizes and tokens [12]. AMP has no prizes, badges or rewards store.",
+    "A results guarantee: free additional tutoring hours if a student does not see the promised results, for SylvanSync Math and Reading in grades 3 to 12, at participating locations [10]. AMP's terms promise no learning result.",
+    "Homework help alongside school, from kindergarten through pre-calculus, and a monthly membership with no long-term contract [1]. AMP follows its own sequence, not this week's school assignments."
   ],
   "evidence": {
     "theirs": [
-      "Sylvan's about page says that, based on independent research, its students see \"up to two to three times more academic growth\" than other students [4]. The page names no study, sample or design, and the page links to no research. In our reading, an \"up to\" figure describes a best case, not a typical result.",
-      "As of November 2026, we found no outcome study of Sylvan's math tutoring on its site. Evidence for ESSA has an entry named SylvanSync Mathematics, which we take to be Sylvan's, with no rating and the note \"No studies met inclusion requirements\" [6]. We found no What Works Clearinghouse intervention report for it.",
+      "Sylvan's about page says that, based on independent research, its students see \"up to two to three times more academic growth\" than other students [4]. The page names no study, sample or design. In our reading, a figure given as an upper bound describes a best case, not a typical result.",
+      "As of November 2026, we found no outcome study of Sylvan's math tutoring on its site. Evidence for ESSA has an entry named SylvanSync Mathematics, with no rating and the note \"No studies met inclusion requirements\" [6]. SylvanSync is the name Sylvan gives its math and reading programs [10]. We found no What Works Clearinghouse intervention report for it.",
       "Tutoring as a method has strong evidence. A 2026 meta-analysis of 263 randomized trials found a pooled effect of 0.40 standard deviations, falling to 0.16 to 0.22 for large U.S. programs measured on standardized tests [7]. Those trials studied tutoring programs in general, not Sylvan."
     ],
     "ours": [
       "AMP is built on methods with strong evidence in math, applied at every problem. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, against 0.05 for marking right or wrong only [9]. These are averages by feedback type across ages and subjects, not a head-to-head trial. Mixed, spaced practice scored 62% against 38% a month later, in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, on a test the researchers wrote [8]. AMP explains every answer and schedules every review, every day the learner practices. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -91,11 +96,15 @@
   "questions": [
     {
       "question": "How much does Sylvan Learning cost for math?",
-      "answer": "Each center sets its own price. Sylvan's pricing page gives a typical start of $50 or more per session [2], and its online tutoring page says sessions average $50 to $55 an hour [3]. AMP is $599 a year or $59 a month for the first child."
+      "answer": "Each locally owned center sets its own price. Sylvan's pricing page gives a typical rate of $50 or more per session [2], its online tutoring page says sessions average $50 to $55 an hour [3], and its FAQ says most students attend 2 to 4 hours a week [5]. AMP is $599 a year or $59 a month for the first child."
     },
     {
       "question": "Has Sylvan shown that its tutoring works?",
-      "answer": "Sylvan's site says its students see up to two to three times more growth, citing independent research, but names no study [4]. We found no outcome study on its site, and the Evidence for ESSA entry named SylvanSync Mathematics has no rating [6]."
+      "answer": "Sylvan's site says its students see up to two to three times more growth, citing independent research, but names no study [4]. Evidence for ESSA lists SylvanSync Mathematics, the name of Sylvan's math program, with no rating [6][10]."
+    },
+    {
+      "question": "Does Sylvan guarantee results?",
+      "answer": "At participating locations, Sylvan offers free additional tutoring hours if promised results do not come, for SylvanSync Math and Reading in grades 3 to 12. A student must attend at least 4 hours a week and complete 50 hours within 14 weeks [10]. AMP gives a full refund within 30 days and promises no learning result."
     },
     {
       "question": "Can we use AMP and Sylvan together?",
@@ -109,35 +118,47 @@
     },
     {
       "title": "Pricing (Sylvan Learning)",
-      "url": "https://www.sylvanlearning.com/pricing/"
+      "url": "https://www.sylvanlearning.com/how-sylvan-works/pricing/"
     },
     {
       "title": "Online tutoring (Sylvan Learning)",
       "url": "https://www.sylvanlearning.com/tutoring/online-tutoring/"
     },
     {
-      "title": "About us (Sylvan Learning)",
-      "url": "https://www.sylvanlearning.com/about-us/"
+      "title": "About Sylvan (Sylvan Learning)",
+      "url": "https://www.sylvanlearning.com/about-sylvan/"
     },
     {
-      "title": "Sylvan Learning home page",
-      "url": "https://www.sylvanlearning.com/"
+      "title": "Frequently asked questions (Sylvan Learning)",
+      "url": "https://www.sylvanlearning.com/how-sylvan-works/faqs/"
     },
     {
       "title": "SylvanSync Mathematics (Evidence for ESSA)",
       "url": "https://www.evidenceforessa.org/program/sylvansync-mathematics/"
     },
     {
-      "title": "Kraft, Schueler & Falken (2026), What impacts should we expect from tutoring at scale? Review of Educational Research",
+      "title": "Kraft, Schueler & Falken (2026), What impacts should we expect from tutoring at scale?",
       "url": "https://doi.org/10.3102/00346543261446660"
     },
     {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment",
       "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "The Sylvan Guarantee (Sylvan Learning)",
+      "url": "https://www.sylvanlearning.com/how-sylvan-works/why-sylvan/our-guarantee/"
+    },
+    {
+      "title": "How Sylvan works (Sylvan Learning)",
+      "url": "https://www.sylvanlearning.com/how-sylvan-works/"
+    },
+    {
+      "title": "How Sylvan's Personalized Tutoring compares (Sylvan Learning, undated PDF)",
+      "url": "https://www.sylvanlearning.com/wp-content/uploads/how-sylvan-compares.pdf"
     }
   ]
 }

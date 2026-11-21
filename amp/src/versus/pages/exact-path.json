@@ -19,7 +19,7 @@
     },
     {
       "title": "No test day: the level comes from practice",
-      "body": "Exact Path starts with Insights, a separate computer-adaptive diagnostic, and Growth delivers personalized learning paths [1]. AMP has no separate test. It finds the level in each of 14 strands of math within the first 24 problems, then updates it after every answer given without help. A learner can sit at grade 3 in fractions and grade 6 in geometry, and practice follows both.",
+      "body": "Exact Path starts with Insights, a separate computer-adaptive diagnostic, and Growth delivers personalized learning paths [1]. AMP has no separate test. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then updates it after every answer given without help. A learner can sit at grade 3 in fractions and grade 6 in geometry, and practice follows both.",
       "research": [
         "level"
       ]
@@ -78,7 +78,7 @@
     ],
     "ours": [
       "Two findings sit behind rules that AMP publishes and that we found no published version of for Exact Path. Spaced, mixed review: in a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% against 38% for practice in blocks, on a test a month later [12]. Feedback: across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right-or-wrong marking 0.05 [13]. AMP schedules the first and gives the second after every answer. We think that design, used most days, will show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -111,7 +111,7 @@
     },
     {
       "question": "My child uses Exact Path at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program a family buys directly. It finds the level in each part of math within the first 24 problems, with no test, and the first 100 answers are free."
+      "answer": "Yes. AMP is a separate program a family buys directly. It places the learner within the first 24 problems and keeps a level in each part of math, with no test, and the first 100 answers are free."
     },
     {
       "question": "Is AMP proven to work better than Exact Path?",

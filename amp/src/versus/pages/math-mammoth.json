@@ -16,7 +16,7 @@
     },
     {
       "title": "A level for each part of math, kept current",
-      "body": "Math Mammoth places a child with a free end-of-year test for each grade: 80 to 89% means start the next grade, below 50% means try a lower test [12]. From there the child follows the book's fixed order, and the adult decides what to add [11]. AMP finds a level in each of 14 strands within the first 24 problems and keeps adjusting with every answer. A child strong in geometry and still building fractions works at both levels in the same session.",
+      "body": "Math Mammoth places a child with a free end-of-year test for each grade: 80 to 89% means start the next grade, below 50% means try a lower test [12]. From there the child follows the book's fixed order, and the adult decides what to add [11]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands and keeps adjusting with every answer. A child strong in geometry and still building fractions works at both levels in the same session.",
       "research": ["level"]
     },
     {
@@ -71,7 +71,7 @@
     ],
     "ours": [
       "A mastery book teaches one topic at a time and leaves the timing of review to the adult. AMP schedules it, and spacing is among the best-supported methods in learning research. A review of ten study techniques rated two as high utility, spaced practice and practice testing [18]. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17]. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -100,7 +100,7 @@
     },
     {
       "question": "What comes after Math Mammoth?",
-      "answer": "Math Mammoth does not offer algebra 1 or above [2]. AMP continues through Algebra 1, Geometry, Algebra 2 and Precalculus, and finds the learner's level in each strand within the first 24 problems."
+      "answer": "Math Mammoth does not offer algebra 1 or above [2]. AMP continues through Algebra 1, Geometry, Algebra 2 and Precalculus, and places the learner within the first 24 problems, with a level in each strand."
     },
     {
       "question": "Is Math Mammoth self-teaching?",

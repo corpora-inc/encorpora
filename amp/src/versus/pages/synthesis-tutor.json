@@ -30,7 +30,7 @@
     },
     {
       "title": "Every problem chosen from the learner's answers",
-      "body": "Synthesis Tutor adapts inside a lesson and moves on by lessons. On its Starter plan the child chooses lessons from a map; placement checks and a lesson planner come with Pro [1]. AMP does this for every learner: it finds the level in each of 14 strands within the first 24 problems, then picks each next problem as new work, a prerequisite, or review.",
+      "body": "Synthesis Tutor adapts inside a lesson and moves on by lessons. On its Starter plan the child chooses lessons from a map; placement checks and a lesson planner come with Pro [1]. AMP does this for every learner: it places the learner within the first 24 problems and keeps a level in each of 14 strands, then picks each next problem as new work, a prerequisite, or review.",
       "research": [
         "level"
       ]
@@ -82,7 +82,7 @@
     ],
     "ours": [
       "We built AMP's rules on findings that have held up in trials. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later, against 38% for blocked practice [14]. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [16]. AMP applies both at every problem. We expect that to show in outcomes; that is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

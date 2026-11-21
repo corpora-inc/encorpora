@@ -6,7 +6,7 @@
   "benefit": "Mastery by a published rule",
   "line": "AdaptedMind makes elementary math practice a game; AMP runs to precalculus on published mastery and review rules.",
   "description": "AMP vs AdaptedMind: what each costs, what AdaptedMind has shown, and how AMP's published mastery and review rules carry a learner through precalculus.",
-  "verdict": "AdaptedMind is a low-priced math program for the elementary grades, with points, badges and a teacher's video for every missed problem, and Trustpilot reviewers rate it 4.5 of 5 [1][4][7]. On the AdaptedMind pages we read, we found no rule for when a skill counts as learned or when old skills come back [1]. AMP publishes both, adjusts its level in 14 strands at every answer, and runs from counting through precalculus.",
+  "verdict": "AdaptedMind is a low-priced math program for the elementary grades, with points, badges and a teacher's video for every missed problem, and Trustpilot reviewers rate it 4.5 of 5 [1][4][7]. It says an algorithm adjusts difficulty to each student [1]. AMP publishes its rules for when a skill counts as learned and when it comes back, keeps a level in each of 14 strands, and runs from counting through precalculus.",
   "reasons": [
     {
       "title": "AMP says exactly what counts as learned",
@@ -20,7 +20,7 @@
     },
     {
       "title": "A level in each part of math, adjusted every answer",
-      "body": "AdaptedMind sets its starting point with a pretest, then adjusts difficulty as a student practices [1]. Reviews quoted by Brighterly, a company that sells its own tutoring, report work beyond a child's abilities or at the wrong grade level [5]. AMP has no separate test. It keeps a level in each of 14 strands of math, finds them within the first 24 problems, and chooses every next problem from the answers: new work, a prerequisite, or review.",
+      "body": "AdaptedMind sets its starting point with a pretest, then adjusts difficulty as a student practices [1]. Reviews quoted by Brighterly, a company that sells its own tutoring, report work beyond a child's abilities or at the wrong grade level [5]. AMP has no separate test. It keeps a level in each of 14 strands of math, places the learner within the first 24 problems, and chooses every next problem from the answers: new work, a prerequisite, or review.",
       "research": ["level"]
     },
     {
@@ -31,14 +31,10 @@
     {
       "title": "It runs through high school math",
       "body": "AdaptedMind's home page calls it a K-6 curriculum [1]. Its grade picker goes to grade 8, where grades 6, 7 and 8 each list 172 lessons and \"more coming soon\" [12]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and Precalculus: 336 skills on one prerequisite map. A learner ready for algebra at ten, or still building fractions at fourteen, stays in the same program."
-    },
-    {
-      "title": "Paper workbooks made for each learner",
-      "body": "On the AdaptedMind pages we read, we found no printable workbooks or answer keys [1]. AMP prints unlimited workbooks built from each learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level."
     }
   ],
   "rows": {
-    "price": "Homeschool.com lists $10 a month [4]. Brighterly gives $9.95 a month per subject after a 30-day free trial [5]. A family membership covers up to five children [3].",
+    "price": "$9.95 per month, recurring monthly, after a 30-day free trial. Includes up to 5 children, per its sign-up page [4].",
     "buyers": "Families and teachers. Teachers at public or nonprofit schools get a 30-day free trial for up to 35 students [3].",
     "range": "Its home page calls it a K-6 curriculum [1]. Its grade picker lists grades 1 to 8; grades 6 to 8 are labeled as still growing [12].",
     "start": "A pretest sets the starting point in the curriculum [1].",
@@ -46,7 +42,6 @@
     "next": "An algorithm finds strengths and weaknesses and adjusts difficulty [1]. We found no published rules for how.",
     "mastery": "We found no mastery rule on the AdaptedMind pages we read [1].",
     "review": "Formative assessments on new and old skills, per its home page [1]. We found no review schedule.",
-    "print": "We found no printable workbooks or answer keys on the AdaptedMind pages we read [1].",
     "adult": "Little, by its account: a child works independently, and reports can go straight to a parent's inbox [1].",
     "reports": "Real-time data and reports by email. Classroom reporting for teachers [1].",
     "evidence": "No outcome study found. No entry in Evidence for ESSA and no What Works Clearinghouse intervention report, as of November 2026 [8][9]."
@@ -57,9 +52,9 @@
   ],
   "credit": [
     "A game layer with points, badges and monsters, which many reviewers say children enjoy [1][5][7]. AMP has no games, avatars or badges.",
-    "A low price: about $10 a month [4][5], with one family membership covering up to five children [3]. AMP costs more.",
+    "A low price: $9.95 a month after a 30-day free trial, covering up to five children [4]. AMP costs more.",
     "A large library of teacher-made explanation videos, over 10,000 by its own count [1]. AMP has far fewer films.",
-    "An app as well as the website [5][6], and reading, science and social studies from the same company [2][5]. AMP has no app in the stores and teaches only math.",
+    "An app as well as the website [6], and reading, science and social studies from the same company [2][5]. AMP has no app in the stores and teaches only math.",
     "Trustpilot reviewers rate it 4.5 of 5 across 1,125 reviews [7]."
   ],
   "evidence": {
@@ -69,7 +64,7 @@
     ],
     "ours": [
       "AMP's review and teaching rules come from well-tested findings. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks on the researchers' own test [10]. Worked examples improve math performance, with an average effect of g = 0.48 across 55 studies [11]. AdaptedMind explains a missed problem in a video [1]. AMP gives every problem type a lesson with a worked example, shows worked steps after every answer, and adds a published rule for when a skill is learned and a fixed schedule for when it comes back. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -90,7 +85,7 @@
   "questions": [
     {
       "question": "Is AMP more expensive than AdaptedMind?",
-      "answer": "Yes. AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each additional child. Homeschool.com lists AdaptedMind at $10 a month [4], and Brighterly gives $9.95 a month per subject [5]. AMP's price covers counting through precalculus, a level in every strand, scheduled review and unlimited printed workbooks, and it is free to start with 100 answers and 5 workbooks per learner."
+      "answer": "Yes. AMP costs $599 a year or $59 a month for the first child, and $399 a year or $39 a month for each additional child. AdaptedMind's sign-up page gives $9.95 a month after a 30-day free trial, for up to 5 children [4]. AMP's price covers counting through precalculus, a level in each of 14 strands, scheduled review and unlimited printable workbooks, and it is free to start with 100 answers and 5 workbooks per learner."
     },
     {
       "question": "What grades does AdaptedMind cover?",
@@ -109,9 +104,9 @@
     { "title": "AdaptedMind home page", "url": "https://www.adaptedmind.com/" },
     { "title": "AdaptedMind enrollment page", "url": "https://www.adaptedmind.com/Begin-Enrollment.html" },
     { "title": "AdaptedMind Math (EdTech Impact)", "url": "https://edtechimpact.com/products/adaptedmind-math/" },
-    { "title": "Adapted Mind Math (Homeschool.com resource guide)", "url": "https://www.homeschool.com/resource-guide/adapted-mind-math/" },
+    { "title": "AdaptedMind free trial sign-up", "url": "https://www.adaptedmind.com/Math-Worksheets.html" },
     { "title": "AdaptedMind reviews (Brighterly, a tutoring company)", "url": "https://brighterly.com/blog/adapted-mind-reviews/" },
-    { "title": "AdaptedMind Math app reviews (JustUseApp)", "url": "https://justuseapp.com/en/app/6473857440/adaptedmind-math/reviews" },
+    { "title": "AdaptedMind Math (App Store)", "url": "https://apps.apple.com/us/app/adaptedmind-math/id6473857440" },
     { "title": "AdaptedMind reviews (Trustpilot)", "url": "https://www.trustpilot.com/review/adaptedmind.com" },
     { "title": "Evidence for ESSA, site search for AdaptedMind", "url": "https://www.evidenceforessa.org/?s=adaptedmind" },
     { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },

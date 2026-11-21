@@ -3,7 +3,7 @@
   "name": "Sumdog",
   "category": "games",
   "checked": "2026-11-21",
-  "benefit": "practice that teaches",
+  "benefit": "Practice that teaches",
   "line": "Sumdog wraps practice in games and coins. AMP teaches each skill, explains every miss and schedules review.",
   "description": "AMP vs Sumdog: math games with coins and avatars, or a hint, a worked example and scheduled review at every problem, from counting to precalculus.",
   "verdict": "Sumdog turns math practice into games, with coins, avatar costumes and class contests, and a family pays $8.99 a month for up to three children [4][13]. We found no lessons, hints, mastery rule or scheduled review in its published materials [5][11]. AMP teaches at every problem, explains every miss and brings learned skills back on a schedule, from counting through precalculus.",
@@ -78,7 +78,7 @@
     ],
     "ours": [
       "Games can make practice welcome. What a child meets inside the practice matters too. Across 55 studies, worked examples raised math performance by an average of g = 0.48, mostly on researchers' own tests [18]. Across 40 studies of computer-based feedback in mixed ages and subjects, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right or wrong alone 0.05 [19]. AMP puts a worked example in the lesson for every problem type and shows the worked steps after every answer. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

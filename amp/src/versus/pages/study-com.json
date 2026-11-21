@@ -15,7 +15,7 @@
     },
     {
       "title": "AMP finds the level in each part of math",
-      "body": "Study.com describes no placement test. A family picks a course by grade, and the course runs in a set order of chapters and lessons [1][2]. AMP finds the level in each of 14 strands within the first 24 problems, then picks every next problem from the answers: new work, a prerequisite, or review. A learner can work at grade 6 in geometry and grade 3 in fractions at the same time.",
+      "body": "Study.com describes no placement test. A family picks a course by grade, and the course runs in a set order of chapters and lessons [1][2]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, then picks every next problem from the answers: new work, a prerequisite, or review. A learner can work at grade 6 in geometry and grade 3 in fractions at the same time.",
       "research": ["level"]
     },
     {
@@ -76,7 +76,7 @@
     ],
     "ours": [
       "The research behind AMP is about what a learner does after the explanation. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and marking right or wrong only 0.05; these are averages across studies, not a head-to-head trial [9]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [10]. AMP explains every answer and schedules mixed review of every learned skill. We expect that to show in outcomes against a course of videos and quizzes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {

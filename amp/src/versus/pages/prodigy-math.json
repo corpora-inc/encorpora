@@ -74,7 +74,7 @@
     ],
     "ours": [
       "AMP is built on findings that have held up in research. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and marking right or wrong only 0.05 [19]. Mixed, spaced practice scored 62% against 38% a month later in a randomized trial that meets What Works Clearinghouse standards without reservations [18]. We expect a program that spends every minute on problems, and explains every one, to do more for a child's math than practice set inside a game. That is our belief, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -107,7 +107,7 @@
     },
     {
       "question": "My child loves Prodigy. Can we use AMP too?",
-      "answer": "Yes. They are separate programs. AMP finds the level in each part of math within the first 24 problems, and the first 100 answers are free."
+      "answer": "Yes. They are separate programs. AMP places the learner within the first 24 problems and keeps a level in each part of math, and the first 100 answers are free."
     },
     {
       "question": "Does AMP have games or rewards like Prodigy?",

@@ -26,7 +26,7 @@
     },
     {
       "title": "A level in 14 strands, moved by every answer",
-      "body": "Happy Numbers sets the starting point with a required multiple-choice placement test of 20 to 30 questions, taking 10 to 40 minutes [7]. AMP gives no separate test. It finds the level in each of 14 strands within the first 24 problems and keeps moving it with every answer, so work in fractions and work in geometry are each aimed where the learner actually is.",
+      "body": "Happy Numbers sets the starting point with a required multiple-choice placement test of 20 to 30 questions, taking 10 to 40 minutes [7]. AMP gives no separate test. It places the learner within the first 24 problems and keeps a level in each of 14 strands and keeps moving it with every answer, so work in fractions and work in geometry are each aimed where the learner actually is.",
       "research": ["level"]
     },
     {
@@ -69,7 +69,7 @@
     ],
     "ours": [
       "AMP's review schedule rests on a tested finding. In a randomized trial that meets What Works Clearinghouse standards without reservations, seventh graders who practiced mixed, spaced problems scored 62% on the researchers' test a month later, against 38% for blocked practice [15]. AMP also explains every answer with worked steps: across 40 studies of computer-based feedback in mixed ages and subjects, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong alone [16]. Happy Numbers' studies point the same way on dose: more practice went with more growth [10][11]. We expect a program that builds these rules into every problem, from counting to precalculus, to show it in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
   },
   "fit": {
@@ -102,7 +102,7 @@
     },
     {
       "question": "My child uses Happy Numbers at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program a family can start today, free for the first 100 answers. It finds the level in each part of math within the first 24 problems, with no separate test."
+      "answer": "Yes. AMP is a separate program a family can start today, free for the first 100 answers. It places the learner within the first 24 problems and keeps a level in each part of math, with no separate test."
     }
   ],
   "sources": [
