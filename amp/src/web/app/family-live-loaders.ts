@@ -2,6 +2,7 @@ import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
 import { classYearOptions, preload } from "../features/school/core-api";
 import { familyOptions } from "../features/family/api";
+import { sessionReport } from "./class-live-loaders";
 import { ownClassOf } from "../features/spaces/resolve";
 
 const orNull =
@@ -50,4 +51,32 @@ export async function familySessions(session: AuthSession, familyId: string) {
       ({ loadFamilyCockpit }) => loadFamilyCockpit(),
     );
   return own;
+}
+
+/** Today's reads: the dashboard, and the family's sessions. */
+export async function todayLoader(session: AuthSession, id: string) {
+  const { familyDashboardOptions } =
+    await import("../features/family/dashboard-api");
+  await Promise.all([
+    preload(familyDashboardOptions(session, id)),
+    familySessions(session, id),
+  ]);
+}
+
+/** A session's report, with the dashboard's per-child settings. */
+export async function reportLoader(input: {
+  context: unknown;
+  params: unknown;
+}) {
+  const { session } = input.context as { session: AuthSession };
+  const { family: id, session: sessionId } = input.params as {
+    family: string;
+    session: string;
+  };
+  const [own] = await Promise.all([
+    familySessions(session, id),
+    todayLoader(session, id).catch(orNull("The family's dashboard")),
+  ]);
+  if (own)
+    await sessionReport(session, { org: own.org, class: own.id }, sessionId);
 }

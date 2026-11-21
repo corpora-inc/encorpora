@@ -284,13 +284,7 @@ export function familyRoutes(root: AnyRoute) {
     loader: async ({ context, params }) => {
       const { session } = context as unknown as { session: AuthSession };
       const id = (params as { family: string }).family;
-      const { familyDashboardOptions } =
-        await import("../features/family/dashboard-api");
-      const { familySessions } = await import("./family-live-loaders");
-      await Promise.all([
-        preload(familyDashboardOptions(session, id)),
-        familySessions(session, id),
-      ]);
+      await (await import("./family-live-loaders")).todayLoader(session, id);
     },
     component: lazyRouteComponent(payHosts, "TodayPayHost"),
   });
@@ -302,32 +296,8 @@ export function familyRoutes(root: AnyRoute) {
   const sessionReport = createRoute({
     getParentRoute: () => family,
     path: "sessions/$session",
-    loader: async ({ context, params }) => {
-      const { session } = context as unknown as { session: AuthSession };
-      const { family: id, session: sessionId } = params as {
-        family: string;
-        session: string;
-      };
-      const [
-        { familySessions },
-        { sessionReport },
-        { familyDashboardOptions },
-      ] = await Promise.all([
-        import("./family-live-loaders"),
-        import("./class-live-loaders"),
-        import("../features/family/dashboard-api"),
-      ]);
-      const [own] = await Promise.all([
-        familySessions(session, id),
-        preload(familyDashboardOptions(session, id)),
-      ]);
-      if (own)
-        await sessionReport(
-          session,
-          { org: own.org, class: own.id },
-          sessionId,
-        );
-    },
+    loader: async (input) =>
+      (await import("./family-live-loaders")).reportLoader(input),
     component: lazyRouteComponent(
       () => import("../features/family/FamilyReport"),
       "FamilyReportScreen",
