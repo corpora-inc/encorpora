@@ -185,19 +185,27 @@ async function coldLoad(context: BrowserContext, path: string): Promise<Load> {
   await page
     .goto(origin + path, { waitUntil: "load", timeout: 120_000 })
     .catch((error: unknown) => console.warn(`${path} didn't load`, error));
-  // Settled: the screen's identity unchanged for a while (a screen that
-  // polls never goes network-idle), at most 30 s.
+  // Settled: something past the wave painted, then the screen's identity
+  // unchanged for a while (a screen that polls never goes network-idle);
+  // at most a minute.
   const quiet = FAST ? 1500 : 4000;
   let count = -1;
-  for (let still = 0, waited = 0; still < quiet && waited < 30_000;) {
+  for (let still = 0, waited = 0; still < quiet && waited < 60_000;) {
     await page.waitForTimeout(250);
     waited += 250;
     const now = await page
-      .evaluate(
-        () => (window as unknown as { __ids?: unknown[] }).__ids?.length ?? 0,
-      )
+      .evaluate(() => {
+        const ids =
+          (window as unknown as { __ids?: Record<string, unknown>[] }).__ids ??
+          [];
+        // Past the wave: an app bar, a main landmark or a heading.
+        const painted = ids.some(
+          (id) => !id.boot && (!!id.bar || !!id.main || !!id.h1),
+        );
+        return painted ? ids.length : -1;
+      })
       .catch(() => -1);
-    still = now === count ? still + 250 : 0;
+    still = now >= 0 && now === count ? still + 250 : 0;
     count = now;
   }
   const load = (await page
@@ -240,6 +248,7 @@ async function personContext(browser: Browser, person: string, width: number) {
   const context = await browser.newContext({
     viewport: { width, height: width < 600 ? 844 : 860 },
   });
+  await context.addInitScript(OBSERVER);
   if (person === "signed-out") return context;
   if (person === "student") {
     const grant = await studentGrant(browser);
@@ -256,7 +265,6 @@ async function personContext(browser: Browser, person: string, width: number) {
     );
     assert.ok(response.ok(), `${person} signs in: ${response.status()}`);
   }
-  await context.addInitScript(OBSERVER);
   return context;
 }
 
@@ -283,7 +291,11 @@ async function studentGrant(browser: Browser) {
     });
     const page = await context.newPage();
     const home = await settle(page, "/");
-    const classId = home.match(/^\/school\/[^/]+\/classes\/([^/]+)/)?.[1];
+    // Their class: where `/` opened, or the first class it lists.
+    const classOf = (path: string) =>
+      path.match(/^\/school\/[^/]+\/classes\/([^/]+)/)?.[1];
+    const classId =
+      classOf(home) ?? (await hrefs(page)).map(classOf).find(Boolean);
     assert.ok(classId, `the teacher's class (home ${home})`);
     const headers = await bearer(context);
     const cards = await context.request.post(

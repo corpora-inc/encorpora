@@ -36,7 +36,7 @@ const label = (id: Id) =>
     : `${id.bar || "no bar"}${id.tabs ? ` [${id.tabs}]` : ""} ${id.main}${id.h1 ? ` "${id.h1}"` : ""}${id.sheet ? ` sheet "${id.sheet}"` : ""}${id.wait ? " …" : ""}`;
 
 /** What a load did wrong, if anything. */
-export function judge({ ids, hops, shifts }: Load) {
+export function judge({ ids = [], hops = [], shifts = [] }: Load) {
   const problems: string[] = [];
   const painted = ids.filter((id) => !neutral(id));
   const final = painted.at(-1);
