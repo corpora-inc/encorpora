@@ -18,6 +18,7 @@ import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { verifyAccessToken } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate.js";
+import { FREE_ONLINE_PROBLEMS } from "../src/learning/free-allowance.js";
 import {
   figureCapabilities,
   responseCapabilities,
@@ -35,11 +36,11 @@ await admin.query(`CREATE SCHEMA ${schema}`);
 const scoped = new URL(database);
 scoped.searchParams.set("options", `-c search_path=${schema}`);
 await migrate(scoped.href);
-// No free problems here: a learner's practice is the license's, so the
-// identity checks below see exactly what a native session may supply (every
-// learner starts with free problems otherwise).
-const repository = new PostgresRepository(scoped.href, { freeProblems: 0 });
-const origin = "http://127.0.0.1:4441",
+const repository = new PostgresRepository(scoped.href);
+// CI's ports; a local run beside other servers names its own.
+const webPort = Number(process.env.AMP_NATIVE_WEB_PORT ?? 4440),
+  providerPort = Number(process.env.AMP_NATIVE_PROVIDER_PORT ?? 4441);
+const origin = `http://127.0.0.1:${providerPort}`,
   issuer = `${origin}/`,
   clientId = "native-fixture",
   audience = "amp-fixture";
@@ -78,6 +79,14 @@ for (const learner of [learnerA, learnerB])
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 hour',now()+interval '1 hour')",
     [randomUUID(), learner.id],
   );
+// No free problems here: a learner's practice is the license's, so the
+// identity checks below see exactly what a native session may supply. Every
+// learner has its own free online problems whatever its license (#2082), and
+// the repository's freeProblems option sizes only the anonymous trial's.
+await repository.pool.query(
+  "UPDATE amp_learners SET free_online_used=$1 WHERE id=ANY($2)",
+  [FREE_ONLINE_PROBLEMS, [learnerA.id, learnerB.id]],
+);
 let mode = "valid",
   tokenCalls = 0,
   refreshCalls = 0,
@@ -266,7 +275,7 @@ const provider = httpServer(async (req, res) => {
   }
 });
 await new Promise<void>((resolve) =>
-  provider.listen(4441, "127.0.0.1", resolve),
+  provider.listen(providerPort, "127.0.0.1", resolve),
 );
 const rust = spawn(
   "cargo",
@@ -339,7 +348,7 @@ function rpc(command: string, args: Record<string, unknown> = {}) {
   });
 }
 const vite = await createServer({
-  server: { host: "127.0.0.1", port: 4440, strictPort: true },
+  server: { host: "127.0.0.1", port: webPort, strictPort: true },
 });
 await vite.listen();
 const browser = await (
@@ -550,9 +559,10 @@ try {
   });
   assert.equal(
     unlicensed.status,
-    403,
+    402,
     "Verified native identity must not supply a learning entitlement",
   );
+  assert.deepEqual(unlicensed.data, { error: "free-allowance-complete" });
   await repository.pool.query(
     "UPDATE amp_grants SET status='active' WHERE learner_id=$1",
     [learnerA.id],
@@ -702,7 +712,7 @@ try {
   await mkdir(new URL("../artifacts/native-session/", import.meta.url), {
     recursive: true,
   });
-  await page.goto("http://127.0.0.1:4440");
+  await page.goto(`http://127.0.0.1:${webPort}`);
   for (const viewport of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
