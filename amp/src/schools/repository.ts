@@ -38,6 +38,7 @@ import {
 } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { notePersonEvent } from "./live/events.js";
+import { resolvePersonSignals } from "./live/signals.js";
 import { YEAR_IN_USE } from "./years.js";
 import { allocateLabel } from "../server/learner-label.js";
 
@@ -855,6 +856,9 @@ export class SchoolRepository {
       );
       // Signed in: a running class session sees them arrive (schools/live).
       await notePersonEvent(client, student.id, "presence");
+      await resolvePersonSignals(
+        client, student.id, "forgot_picture", "withdrawn", student.id,
+      );
       return {
         token,
         accountId: schoolAccountId(student.id),

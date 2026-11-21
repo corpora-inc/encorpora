@@ -117,6 +117,7 @@ const VIEWER = new Set<SchoolAction>([
 ]);
 const AIDE_CLASS = new Set<SchoolAction>([
   "session.read",
+  "signal.resolve",
   "classes.read",
   "students.read",
   "signin.read",
@@ -171,6 +172,7 @@ const FAMILY = new Set<SchoolAction>([
   "staff.manage",
   "session.read",
   "session.manage",
+  "signal.resolve",
 ]);
 
 /** What a demo place never does (docs/schools.md#demo-places): add or move a

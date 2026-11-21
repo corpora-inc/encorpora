@@ -28,6 +28,10 @@ import { defineLmsRoutes } from "./lms-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
 import { defineStandingRoutes } from "./standing-routes.js";
 import { defineLiveRoutes } from "./live/routes.js";
+import {
+  defineSignalRoutes,
+  registerStudentSignalRoutes,
+} from "./live/signal-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
@@ -284,6 +288,7 @@ export async function registerSchoolRoutes(
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
     registerJoinRoutes(scope, repository, services.oidc);
+    registerStudentSignalRoutes(scope, repository);
     registerBuyerHandoff(scope, options.pool);
     registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
@@ -599,3 +604,4 @@ defineClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);
 defineDemoRoutes(defineSchoolRoute);
 defineLiveRoutes(defineSchoolRoute);
+defineSignalRoutes(defineSchoolRoute);
