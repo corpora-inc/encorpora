@@ -73,7 +73,10 @@ export const renamedMigrations: Readonly<Record<string, readonly string[]>> = {
     "0133-level-practice.sql",
     "0132-level-practice.sql",
   ],
-  "0149-clever-portal-staff.sql": ["0148-clever-portal-staff.sql"],
+  "0150-clever-portal-staff.sql": [
+    "0149-clever-portal-staff.sql",
+    "0148-clever-portal-staff.sql",
+  ],
 };
 /** Applied files rewritten before release, with the checksums a development or
  * preview database may hold. Each earlier version reached the same schema
