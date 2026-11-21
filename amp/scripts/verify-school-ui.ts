@@ -163,6 +163,17 @@ function rosterCsv() {
   return `${lines.join("\r\n")}\r\n`;
 }
 
+/** The invitation's one way forward (InviteScreen, e1ff913b8): "Continue"
+ * opens the sign-in, which signs in or creates; a person with no account
+ * takes its "Create an account" to the sign-up. */
+async function continueToSignUp(page: Page) {
+  await page.getByRole("link", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/sign-in/);
+  await page
+    .getByRole("button", { name: "Create an account", exact: true })
+    .click();
+  await page.waitForURL(/\/sign-up/);
+}
 async function signUp(page: Page, email: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
@@ -291,8 +302,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     assert.equal(setupMail?.to, headEmail, "The setup link was mailed");
     await head.goto(school.setupUrl);
     await heading(head, `Set up ${schoolName}`);
-    await head.getByRole("link", { name: "Create an account" }).click();
-    await head.waitForURL(/\/sign-up/);
+    await continueToSignUp(head);
     await signUp(head, headEmail);
     await heading(head, `Set up ${schoolName}`);
     await head.getByLabel(/Your name/).fill("Ruth Adeyemi");
@@ -365,8 +375,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     teacher.setDefaultTimeout(30_000);
     await teacher.goto(invitation.url);
     await heading(teacher, `Join ${schoolName}`);
-    await teacher.getByRole("link", { name: "Create an account" }).click();
-    await teacher.waitForURL(/\/sign-up/);
+    await continueToSignUp(teacher);
     await signUp(teacher, teacherEmail);
     await heading(teacher, `Join ${schoolName}`);
     await teacher.getByLabel(/Your name/).fill("Grace Okafor");
