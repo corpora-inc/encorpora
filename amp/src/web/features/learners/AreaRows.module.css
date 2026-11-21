@@ -74,6 +74,12 @@
   height: 32px;
   min-width: 0;
 }
+/* An area not answered yet: its pill keeps to its own cell. */
+.level [data-level-not-started] > span {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .checked {
   grid-area: checked;
   display: flex;

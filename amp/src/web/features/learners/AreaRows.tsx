@@ -146,7 +146,7 @@ export function AreaRows({
                   estimated={row.level.answered < FEW_ANSWERS}
                 />
               ) : (
-                <LevelNotStarted label="No answers yet" />
+                <LevelNotStarted label="Not yet" />
               )}
             </span>
             {checking && (
