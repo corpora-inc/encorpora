@@ -97,6 +97,7 @@ import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
 import { AnswerFeedback } from "../features/practice/AnswerFeedback";
+import { Celebration } from "../features/practice/celebration/Celebration";
 import { ProblemGrade } from "../features/practice/ProblemGrade";
 import { PracticeWorkspace, usePracticeViewport } from "../PracticeWorkspace";
 import {
@@ -1982,6 +1983,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             response={response}
             setResponse={setResponse}
             outcome={outcome}
+            celebration={<Celebration outcome={outcome} problem={problem} />}
             answerFeedback={
               outcome &&
               catalog &&

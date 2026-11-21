@@ -35,8 +35,8 @@ export const preloadColorful = colorful.preload;
 const Colorful = colorful.Component;
 
 /**
- * Practice's one seam for Colorful (PracticeWorkspace renders it once,
- * inside its `<main>`). In every look it counts a right answer without help
+ * Practice's one seam for Colorful (the practice host, app/LegacyApp.tsx,
+ * hands it to PracticeWorkspace, which renders it once inside its `<main>`). In every look it counts a right answer without help
  * into the learner's points and keeps the run of right answers: those are
  * the learner's own. Only in Colorful does it render what the answer earned,
  * through code a Calm learner never downloads. It renders nothing itself,

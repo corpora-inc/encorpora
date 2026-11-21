@@ -98,7 +98,6 @@ import { visibleSteps, type Step } from "../math/scene/timeline";
 import type { ProblemFlagInput } from "../feedback/problem-flags";
 import { problemFlagBody } from "./problem-flag";
 import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
-import { Celebration } from "./features/practice/celebration/Celebration";
 import { StudentHand } from "./features/live/RaiseHandSlot";
 import {
   prepareFeedbackSound,
@@ -259,6 +258,12 @@ type Props = {
   mastered?: string | null;
   /** Progress and optional one-problem branches; Next remains adaptive. */
   answerFeedback?: ReactNode;
+  /** The practice host's celebration seam (features/practice/celebration/
+   * Celebration.tsx), rendered once inside `<main>`: it counts the
+   * learner's points and plays Colorful. The host passes it because it reads
+   * the session, the address and the Query cache, which the workspace never
+   * does; a replay, the gallery and a layout harness pass none. */
+  celebration?: ReactNode;
   /** A compact offer in the feedback sheet, just before Next. */
   feedbackAside?: ReactNode;
   /** Leaves a chosen skill for adaptive mixed practice. Present only while
@@ -1850,11 +1855,7 @@ export function PracticeWorkspace(props: Props) {
   );
   return (
     <main className="practice-workspace" aria-label="Math practice">
-      <Celebration
-        outcome={review ? null : outcome}
-        mastered={props.mastered}
-        problem={problem}
-      />
+      {props.celebration}
       <section
         className="practice-surface"
         data-line-plot-landscape={shortLinePlot || undefined}
