@@ -45,10 +45,14 @@
   display: flex;
   flex: none;
 }
-.headLabel {
+/* End-aligned over end-aligned figures: the chevron's room sits before
+   the word, so the word's end lines up with the numbers'. */
+.head .headLabel {
   display: inline-flex;
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: flex-end;
+  /* Reversed, so the start is the right. */
+  justify-content: flex-start;
   gap: 2px;
   white-space: nowrap;
 }
@@ -103,10 +107,6 @@
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   text-align: end;
-}
-.head .colHelp,
-.head .colRecent {
-  justify-content: flex-end;
 }
 .head .colNumber,
 .head .colAgo {

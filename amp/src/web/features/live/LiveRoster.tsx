@@ -137,8 +137,8 @@ export type LiveRosterProps = {
   label: string;
   /** The first column's heading: "Student", "Child". */
   nameHeader: string;
-  /** Height of the grid's scrolling box on a desktop; it fills its parent
-   * by default. */
+  /** On a desktop the grid fills its parent's height and scrolls inside
+   * it (CockpitFrame gives it one); this styles that box. */
   className?: string;
 };
 
