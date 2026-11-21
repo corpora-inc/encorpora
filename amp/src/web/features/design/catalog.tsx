@@ -9,6 +9,7 @@ import { PracticeSection, PracticeSpecimen } from "./sections/practice";
 import { StateSections, stateSpecimens } from "./sections/states";
 import { TableSections } from "./sections/tables";
 import { WorkbookSections } from "./sections/workbooks";
+import { liveContents, LiveSections, liveSpecimens } from "./live/LiveGallery";
 
 /** The gallery's table of contents: each group, its sections' anchors and
  * names, in page order. Tests and the inventory (docs/components.md) use
@@ -37,6 +38,7 @@ export const contents: {
       { id: "avatar", title: "Avatar" },
     ],
   },
+  liveContents,
   {
     group: "Controls",
     sections: [
@@ -91,6 +93,7 @@ export function GallerySections() {
       <PracticeSection />
       <LevelSections />
       <TableSections />
+      <LiveSections />
       <ControlSections />
       <StateSections />
       <WorkbookSections />
@@ -112,4 +115,5 @@ export const specimens: Record<string, () => ReactNode> = {
   ...stateSpecimens,
   ...overlaySpecimens,
   ...tabRowSpecimens,
+  ...liveSpecimens,
 };
