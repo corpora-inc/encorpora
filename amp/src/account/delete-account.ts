@@ -94,6 +94,12 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_classes: "place",
   amp_class_authorizations: "place",
   amp_class_pilots: "place",
+  // Live class sessions (migration 0149): a report's student rows also go
+  // with the learner, by cascade.
+  amp_class_sessions: "place",
+  amp_class_session_students: "learner",
+  amp_class_signals: "place",
+  amp_class_events: "place",
   amp_org_pilots: "place",
   amp_lms_assignments: "place",
   amp_lms_submissions: "place",

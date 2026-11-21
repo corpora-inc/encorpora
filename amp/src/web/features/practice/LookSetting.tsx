@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import type { Look } from "../../../learning/look";
 import { AppError } from "../../lib/AppError";
+import { LockMark } from "../school/classroom/SettingMeta";
 import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
 import {
@@ -24,14 +25,16 @@ const OPTIONS: { value: Look; label: string }[] = [
  */
 export function LookSetting({
   scope,
-  who = "your class",
   flush = false,
+  adult = false,
 }: {
   /** No side inset, for a list whose rows already have none. */
   flush?: boolean;
+  /** A grown-up's view of the child (their settings): may change a look a
+   * parent locked, and holds or frees it with the lock. The child's own
+   * menu is not this. */
+  adult?: boolean;
   scope: PracticeScope;
-  /** Whose choice a lock is, in the sentence "Set by …". */
-  who?: string;
 }) {
   const state = useQuery(practiceSettingsOptions(scope));
   const adjust = usePracticeAdjustment(scope);
@@ -42,7 +45,24 @@ export function LookSetting({
       console.error("The look setting didn’t load", state.error);
   }, [state.isError, state.error]);
   const data = state.data;
-  const locked = data?.lookLocked === true;
+  const by = data?.lookLockedBy ?? null;
+  // A class's lock holds for everyone; a parent's holds for the child.
+  const locked = by === "class" || (by === "adult" && !adult);
+  const lock = async (on: boolean) => {
+    setBusy(true);
+    try {
+      await adjust.change({ kind: "lookLock", locked: on });
+    } catch (failure) {
+      console.error("The look lock didn’t save", failure);
+      setError(
+        failure instanceof AppError && failure.message
+          ? failure.message
+          : "That change didn’t save. Try again.",
+      );
+    } finally {
+      setBusy(false);
+    }
+  };
   const choose = async (look: Look) => {
     setBusy(true);
     try {
@@ -63,9 +83,28 @@ export function LookSetting({
       className={`${styles.look} ${flush ? styles.flush : ""}`}
       data-look-setting=""
     >
-      <div className={styles.head}>
+      <div className={`${styles.head} ${adult ? styles.tall : ""}`}>
         <span>Look</span>
-        <span className={styles.why}>{locked ? `Set by ${who}` : ""}</span>
+        {adult && by !== "class" ? (
+          <button
+            type="button"
+            className={styles.lock}
+            aria-pressed={by === "adult"}
+            disabled={!data || busy}
+            onClick={() => void lock(by !== "adult")}
+          >
+            <LockMark open={by !== "adult"} />
+            Lock
+          </button>
+        ) : (
+          <span className={styles.why}>
+            {by === "class"
+              ? "Set by the class"
+              : by === "adult"
+                ? "Set by a parent"
+                : ""}
+          </span>
+        )}
       </div>
       <Segmented
         label="Look"

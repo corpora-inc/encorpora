@@ -15,6 +15,7 @@ type State = {
   look: string | null;
   effectiveLook: string;
   lookLocked: boolean;
+  lookLockedBy: "class" | "adult" | null;
 };
 const server = vi.hoisted(() => ({
   states: {} as Record<string, unknown>,
@@ -27,6 +28,16 @@ vi.mock("../../../lib/api", async (actual) => ({
       const id = path.split("/")[2]!;
       if (options?.body) {
         server.posts.push({ path, body: options.body });
+        const sent = options.body as { kind: string; locked?: boolean };
+        if (sent.kind === "lookLock") {
+          const next = {
+            ...(server.states[id] as object),
+            lookLocked: !!sent.locked,
+            lookLockedBy: sent.locked ? "adult" : null,
+          };
+          server.states[id] = next;
+          return next;
+        }
         const next = {
           ...(server.states[id] as object),
           look: (options.body as { look: string }).look,
@@ -54,9 +65,30 @@ beforeEach(() => {
   queryClient.clear();
   server.posts = [];
   server.states = {
-    maya: state({ look: null, effectiveLook: "bold", lookLocked: false }),
-    sam: state({ look: null, effectiveLook: "calm", lookLocked: false }),
-    lockedKid: state({ look: null, effectiveLook: "calm", lookLocked: true }),
+    maya: state({
+      look: null,
+      effectiveLook: "bold",
+      lookLocked: false,
+      lookLockedBy: null,
+    }),
+    sam: state({
+      look: null,
+      effectiveLook: "calm",
+      lookLocked: false,
+      lookLockedBy: null,
+    }),
+    lockedKid: state({
+      look: null,
+      effectiveLook: "calm",
+      lookLocked: true,
+      lookLockedBy: "class",
+    }),
+    held: state({
+      look: "bold",
+      effectiveLook: "bold",
+      lookLocked: true,
+      lookLockedBy: "adult",
+    }),
   };
 });
 afterEach(() => {
@@ -136,12 +168,52 @@ test("the setting offers Calm and Colorful, saves a choice as the look change", 
 
 test("locked by a class: disabled, with the reason in the label row", async () => {
   render(wrap(<LookSetting scope={scope("lockedKid")} />));
-  expect(await screen.findByText("Set by your class")).toBeTruthy();
+  expect(await screen.findByText("Set by the class")).toBeTruthy();
   expect(
     (screen.getByRole("radio", { name: "Colorful" }) as HTMLButtonElement)
       .disabled,
   ).toBe(true);
   expect(
     (screen.getByRole("radio", { name: "Calm" }) as HTMLButtonElement).disabled,
+  ).toBe(true);
+});
+
+test("a parent's lock: the child's menu is disabled with the reason", async () => {
+  render(wrap(<LookSetting scope={scope("held")} />));
+  expect(await screen.findByText("Set by a parent")).toBeTruthy();
+  expect(
+    (screen.getByRole("radio", { name: "Colorful" }) as HTMLButtonElement)
+      .disabled,
+  ).toBe(true);
+});
+
+test("a parent's own view stays free to change, and holds or frees with the lock", async () => {
+  render(wrap(<LookSetting scope={scope("held")} adult />));
+  const lock = await screen.findByRole("button", { name: "Lock" });
+  await waitFor(() => expect(lock.getAttribute("aria-pressed")).toBe("true"));
+  expect(
+    (screen.getByRole("radio", { name: "Calm" }) as HTMLButtonElement).disabled,
+  ).toBe(false);
+  fireEvent.click(lock);
+  await waitFor(() =>
+    expect(server.posts[0]?.body).toMatchObject({
+      kind: "lookLock",
+      locked: false,
+    }),
+  );
+  await waitFor(() =>
+    expect(
+      screen.getByRole("button", { name: "Lock" }).getAttribute("aria-pressed"),
+    ).toBe("false"),
+  );
+});
+
+test("a class's lock holds for the parent's view too, and says so", async () => {
+  render(wrap(<LookSetting scope={scope("lockedKid")} adult />));
+  expect(await screen.findByText("Set by the class")).toBeTruthy();
+  expect(screen.queryByRole("button", { name: "Lock" })).toBeNull();
+  expect(
+    (screen.getByRole("radio", { name: "Colorful" }) as HTMLButtonElement)
+      .disabled,
   ).toBe(true);
 });

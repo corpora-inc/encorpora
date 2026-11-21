@@ -180,8 +180,9 @@ export function InviteScreen() {
   };
   return (
     <Page width="narrow" className={styles.inviteCard} data-dense>
-      {/* A family's second parent isn't joining a school. */}
-      {!session && <Brand for={view?.secondParent ? null : undefined} />}
+      {/* One wordmark before and after the invitation is known: it never
+          says "for Schools", which a family's invitee isn't joining. */}
+      {!session && <Brand for={null} />}
       {!parsed ? (
         <>
           <h1>Open your invitation from its email</h1>

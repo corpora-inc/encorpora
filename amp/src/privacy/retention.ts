@@ -1,5 +1,7 @@
 import type { Pool, PoolClient } from "pg";
 import { FamilyRepository } from "../family/repository.js";
+import { closeDueSessions } from "../schools/live/sessions.js";
+import { expireSignals } from "../schools/live/signals.js";
 import { RETENTION, RETENTION_BATCH } from "./retention-periods.js";
 
 /*
@@ -219,6 +221,63 @@ export async function purgeHelpEvents(
     if ((gone.rowCount ?? 0) < RETENTION_BATCH.batchSize * 10) break;
   }
   return { expiredHelpEvents };
+}
+
+/** Live class sessions (src/schools/live): closes every session past its end
+ * first, so its report is stored from the outbox's presence rows, then deletes
+ * outbox rows `classEventHours` after they were written and signals
+ * `classSignalDays` after they were raised. Stored session reports stay with
+ * the class and go with a deleted learner. */
+export async function purgeClassEvents(
+  pool: Pool,
+  at = new Date(),
+): Promise<{
+  closedClassSessions: number;
+  expiredClassEvents: number;
+  expiredClassSignals: number;
+}> {
+  const clock = validClock(at);
+  const closedClassSessions = await closeDueSessions(pool);
+  const limit = RETENTION_BATCH.batchSize * 10;
+  // Expiry frees the partial unique key before the longer deletion window.
+  // Each batch and its live notifications commit together.
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query("SET LOCAL lock_timeout='5s'");
+      await client.query("SET LOCAL statement_timeout='30s'");
+      const expired = await expireSignals(client, at, limit);
+      await client.query("COMMIT");
+      if (expired < limit) break;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+  let expiredClassEvents = 0,
+    expiredClassSignals = 0;
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const gone = await pool.query(
+      `DELETE FROM amp_class_events WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_class_events
+      WHERE created_at<=$1::timestamptz-make_interval(hours=>$2) LIMIT $3))`,
+      [clock, RETENTION.classEventHours, limit],
+    );
+    expiredClassEvents += gone.rowCount ?? 0;
+    if ((gone.rowCount ?? 0) < limit) break;
+  }
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const gone = await pool.query(
+      `DELETE FROM amp_class_signals WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_class_signals
+      WHERE created_at<=$1::timestamptz-make_interval(days=>$2) LIMIT $3))`,
+      [clock, RETENTION.classSignalDays, limit],
+    );
+    expiredClassSignals += gone.rowCount ?? 0;
+    if ((gone.rowCount ?? 0) < limit) break;
+  }
+  return { closedClassSessions, expiredClassEvents, expiredClassSignals };
 }
 
 /** Latest transaction or licence end for commerce order `o`. */

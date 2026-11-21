@@ -31,6 +31,7 @@ import { recordPrint } from "../schools/help-events.js";
 import { learnerClassLooks } from "../schools/learner-look.js";
 import type { ClassLook, ShownLook } from "../learning/look.js";
 import { recordLearnerActivity } from "../schools/evidence.js";
+import { noteLearnerEvent } from "../schools/live/events.js";
 import {
   recordCheckin,
   type CheckinKind,
@@ -1191,6 +1192,9 @@ export class PgTransaction implements LearnerTransaction {
     if (outcome.evidenceSource !== "paper") await this.chargeFreeOnline();
     await recordTrialMilestones(this.db, this.learnerId, this.limits);
     await recordLearnerActivation(this.db, this.learnerId, "answer");
+    // Live class sessions: tell a running session's cockpit (schools/live).
+    if (outcome.evidenceSource !== "paper")
+      await noteLearnerEvent(this.db, this.learnerId, "answer");
   }
   async trialProgress() {
     const result = await this.db.query(

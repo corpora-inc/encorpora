@@ -31,22 +31,32 @@ const agreed = (classes: readonly ClassLook[]): Look | null =>
       ? classes[0]!.value
       : defaultLook;
 
+/** Who holds the look so the learner can't change it. */
+export type LookLockedBy = "class" | "adult";
+
 /**
- * Pure. The look a learner sees, and whether a class locked it:
- * 1. a locked class value wins (two locked classes that disagree: calm);
- * 2. else the learner's own choice (null inherits);
+ * Pure. The look a learner sees, and who (if anyone) locked it:
+ * 1. a locked class value wins, a teacher's or a school's (two locked
+ *    classes that disagree: calm);
+ * 2. else the learner's own choice (null inherits), which a grown-up may
+ *    have locked for them;
  * 3. else what their classes chose (a family's class is the family default);
  * 4. else calm.
  */
 export function resolveLook(input: {
   own: Look | null;
+  /** A grown-up locked the learner's own choice. */
+  ownLocked?: boolean;
   classes: readonly ClassLook[];
-}): { look: Look; locked: boolean } {
-  const locked = agreed(input.classes.filter((entry) => entry.locked));
-  if (locked) return { look: locked, locked: true };
-  if (input.own) return { look: input.own, locked: false };
+}): { look: Look; locked: boolean; lockedBy: LookLockedBy | null } {
+  const byClass = agreed(input.classes.filter((entry) => entry.locked));
+  if (byClass) return { look: byClass, locked: true, lockedBy: "class" };
+  if (input.own)
+    return input.ownLocked
+      ? { look: input.own, locked: true, lockedBy: "adult" }
+      : { look: input.own, locked: false, lockedBy: null };
   const chosen = agreed(input.classes.filter((entry) => entry.set));
-  return { look: chosen ?? defaultLook, locked: false };
+  return { look: chosen ?? defaultLook, locked: false, lockedBy: null };
 }
 
 /** The value recorded on an attempt for the look on screen. */

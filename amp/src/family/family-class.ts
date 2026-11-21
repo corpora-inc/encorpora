@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { completedGrade } from "../learning/frontier.js";
 import { recordEvent } from "../schools/events.js";
+import { notePersonEvent } from "../schools/live/events.js";
 import {
   generateStudentToken,
   hashStudentToken,
@@ -349,6 +350,8 @@ export async function practiceHere(
     "INSERT INTO amp_student_sessions(id,token_hash,person_id,mode,expires_at,started_by) VALUES($1,$2,$3,'shared',$4,$5)",
     [randomUUID(), hashStudentToken(token), person.id, expiresAt, startedBy],
   );
+  // Signed in: a running class session sees them arrive (schools/live).
+  await notePersonEvent(client, person.id, "presence");
   return {
     token,
     // The browser keys every student's sign-in by their person; the server
