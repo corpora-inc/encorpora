@@ -1,4 +1,3 @@
-import { createStore } from "zustand/vanilla";
 import type { AuthSession } from "../../../auth";
 import { notifyDeviceSessionChanged } from "../../../auth";
 import { meOptions, queryClient } from "../../../lib/query";
@@ -7,19 +6,17 @@ import { meOptions, queryClient } from "../../../lib/query";
 // carries the join screens' contracts into the entry's code.
 
 /** The identity a hand-over is waiting to show with practice. */
-const handOver = createStore<{ session: AuthSession | null }>(() => ({
-  session: null,
-}));
+let waiting: AuthSession | null = null;
 export function deferIdentity(session: AuthSession) {
-  handOver.setState({ session });
+  waiting = session;
 }
 /** Shows the handed child's identity, if one waits: called as the router
  * mounts the next screen, so the switch renders with practice. Keeps the
  * child's `/me`, fetched before the move, across the switch. */
 export function applyDeferredIdentity() {
-  const session = handOver.getState().session;
+  const session = waiting;
   if (!session) return;
-  handOver.setState({ session: null });
+  waiting = null;
   const me = queryClient.getQueryData(meOptions(session).queryKey);
   // A family hand-over: Providers keeps the tree and the parent's cache.
   notifyDeviceSessionChanged(session, { handoff: true });
