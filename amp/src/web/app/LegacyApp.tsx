@@ -11,6 +11,8 @@ import {
   usePracticeAdjustment,
   type PracticeIntent,
 } from "../features/practice/practice-settings";
+import type { ShownLook } from "../../learning/look";
+import { useLook } from "../features/practice/look";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
@@ -518,6 +520,11 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     ...practiceSettingsOptions(adjustments.scope),
     enabled: !!learner && !nativeRuntime && tab === "practice" && !!problem,
   });
+  // The look for this learner's practice (`data-look` on <html> while here).
+  const practiceLook = useLook(
+    adjustments.scope,
+    !!learner && !nativeRuntime && tab === "practice",
+  );
   const [books, setBooks] = useState<BookSummary[]>([]);
   const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
@@ -644,6 +651,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       response: string;
       hintViewed?: boolean;
       help?: ("hint" | "lesson" | "video" | "example")[];
+      look?: ShownLook;
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
@@ -1246,6 +1254,8 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       response,
       ...(problem.hintSupport && hint ? { hintViewed: true } : {}),
       ...(help.length ? { help } : {}),
+      // The look actually shown, once known (older servers ignore it).
+      ...(practiceLook.shown ? { look: practiceLook.shown } : {}),
     };
     setPending(attempt);
     try {

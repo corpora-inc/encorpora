@@ -126,11 +126,23 @@ const deviceRow: Row<"deviceMode"> = {
   ],
   describe: { shared: DEVICE_LINE, personal: DEVICE_LINE },
 };
+/** How practice looks for the class's students. Nothing to explain: the
+ * two words say it. */
+const lookRow: Row<"look"> = {
+  key: "look",
+  title: "Look",
+  options: [
+    { value: "calm", label: "Calm" },
+    { value: "bold", label: "Colorful" },
+  ],
+  describe: { calm: "", bold: "" },
+};
 const rowOf: { [K in ExperienceKey]: Row<K> } = {
   levels: levelsRow,
   standings: standingsRow,
   measure: measureRow,
   deviceMode: deviceRow,
+  look: lookRow,
 };
 
 function SettingRow<K extends ExperienceKey>({
@@ -168,7 +180,7 @@ function SettingRow<K extends ExperienceKey>({
     <section className={styles.row} aria-labelledby={`setting-${row.key}`}>
       <div className={styles.rowText}>
         <h2 id={`setting-${row.key}`}>{row.title}</h2>
-        <p>{note ?? describe[value]}</p>
+        {(note ?? describe[value]) && <p>{note ?? describe[value]}</p>}
       </div>
       <div className={styles.rowControl}>
         <Segmented
@@ -267,6 +279,7 @@ export function ExperienceSettings({
     lockedKeys.find(
       (key) =>
         key !== "deviceMode" &&
+        key !== "look" &&
         settings[key].value !== experienceValues[preset][key],
     );
   const choose = (preset: ExperiencePreset) => {
@@ -394,6 +407,7 @@ export function ExperienceSettings({
         {row("standings")}
         {row("measure")}
         {teacherRow}
+        {row("look")}
         {row("deviceMode")}
       </div>
       {experience.students && (

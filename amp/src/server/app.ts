@@ -8,7 +8,8 @@ import {
 import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
 import { reportFrontier } from "../learning/frontier-report";
 import { practiceChangeSchema } from "../learning/practice-settings";
-import { changePractice } from "./practice-settings";
+import { shownLookSchema } from "../learning/look";
+import { changePractice, practiceState } from "./practice-settings";
 import { satPracticeConfiguration } from "../learning/assessment-profile.js";
 import {
   assertPracticePolicy,
@@ -119,6 +120,9 @@ const attemptSchema = z
       .array(z.enum(["hint", "lesson", "video", "example"]))
       .max(4)
       .optional(),
+    /** The look on screen as the client drew it (`learning/look.ts`). Older
+     * and native clients omit it. */
+    look: shownLookSchema.optional(),
   })
   .strict();
 /** Strips one-time secrets (password-reset and verification tokens, OAuth
@@ -542,8 +546,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
   app.get("/api/v1/learners/:learnerId/practice-state", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
-    return options.repository.transaction(account, learnerId, (tx) =>
-      tx.practiceSettings(),
+    return options.repository.transaction(account, learnerId, async (tx) =>
+      practiceState(tx, await tx.practiceSettings()),
     );
   });
   app.post("/api/v1/learners/:learnerId/practice-state", async (request) => {
@@ -558,8 +562,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
       studentBearer(request) || isSchoolAccount(account)
         ? "student"
         : "account";
-    return options.repository.transaction(account, learnerId, (tx) =>
-      changePractice(tx, change, madeIn),
+    return options.repository.transaction(account, learnerId, async (tx) =>
+      practiceState(tx, await changePractice(tx, change, madeIn)),
     );
   });
   app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {
@@ -1240,6 +1244,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         correct: gradeAnswer(problem, response),
         assisted: !!problem.hintViewed || !!problem.lessonViewed || togetherNow,
         ...(help.length ? { help } : {}),
+        ...(input.look ? { look: input.look } : {}),
         explanation:
           problem.public.response.kind === "line-plot-build" &&
           !gradeAnswer(problem, response)
