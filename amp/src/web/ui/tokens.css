@@ -155,7 +155,7 @@
   --color-dose-4: #942b22;
 }
 @media screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme="light"]):not([data-look="bold"]) {
     color-scheme: dark;
     --color-surface: #122522;
     --color-on-surface: #e9f0e8;
@@ -279,7 +279,7 @@
     --color-dose-4: #ef8a63;
   }
 }
-:root[data-theme="dark"] {
+:root[data-theme="dark"]:not([data-look="bold"]) {
   color-scheme: dark;
   --color-surface: #122522;
   --color-on-surface: #e9f0e8;
@@ -404,134 +404,154 @@
 }
 
 /*
- * Colorful ("bold" in code, learning/look.ts): the look a learner may choose
- * for practice. `data-look="bold"` on <html> (features/practice/look.ts)
- * swaps the roles that carry practice: the page around the problem, the
- * accent and its buttons, a right answer's sheet, and adds the points chip
- * and the confetti palette. It never touches the figure roles, the danger
- * roles (a miss stays kind and calm) or anything a problem draws: color goes
- * around the math, never through it. Same rules as above: role pairs, light
- * here, dark in the two blocks below (identical), every key in both, and
- * tests/color-roles.test.ts proves each pair over theme × look.
+ * Colorful ("bold" in code, learning/look.ts): one bright world generated
+ * from a single hue, `--look-hue`, which practice moves on with every
+ * problem (features/practice/celebration/hue.ts). Every role a learner's
+ * screens draw is an oklch() of that hue with its own fixed lightness and
+ * chroma, so contrast holds at every hue (tests/color-roles.test.ts proves
+ * it around the circle). Colorful is one scheme: Calm's dark blocks above
+ * never apply under it. Colors that carry meaning do not turn: a right
+ * answer's mark is green and a miss's amber, points are gold, and the math
+ * area, grade, heat, dose, coin, bill and avatar colors keep Calm's values.
+ * `--look-boost` (0 to 1) is a streak: a little more color on the page.
  */
-:root[data-look="bold"] {
-  --color-surface: #f6f3ff;
-  --color-on-surface: #221a4d;
-  --color-surface-raised: #f6f3ff;
-  --color-on-surface-raised: #221a4d;
-  --color-surface-sunken: #ebe5fd;
-  --color-on-surface-sunken: #221a4d;
-  --color-answer: #ffffff;
-  --color-on-answer: #221a4d;
-  --color-answer-border: #7466c4;
-  --color-menu: #f6f3ff;
-  --color-on-menu: #221a4d;
-  --color-primary: #4b2ed8;
-  --color-on-primary: #ffffff;
-  --color-secondary: #e7e0ff;
-  --color-on-secondary: #35209c;
-  --color-selected: #4b2ed8;
-  --color-on-selected: #ffffff;
-  --color-success: #d3f7e0;
-  --color-on-success: #0b512a;
-  --color-success-accent: #0a7639;
-  --color-muted-text: #4f4685;
-  --color-subtle-text: #5a5290;
-  --color-border: #ddd5fa;
-  --color-border-strong: #7466c4;
-  --color-focus-ring: #4b2ed8;
-  --color-shadow: #3a1fb026;
-  --color-meter: #4b2ed8;
-  /* The points chip: sunshine with deep ink, its edge, and the press of
-     a right answer arriving. */
-  --color-points: #ffcb2e;
-  --color-on-points: #3b2500;
-  --color-points-edge: #e59a00;
-  /* Confetti and sparks: marks only, never text, never a status. */
-  --color-celebrate-1: #ff3d7f;
-  --color-celebrate-2: #ffb000;
-  --color-celebrate-3: #00b5c8;
-  --color-celebrate-4: #6a45ff;
-  --color-celebrate-5: #21c55d;
-  --color-celebrate-6: #ff7a1a;
+@property --look-hue {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 250deg;
 }
-@media screen and (prefers-color-scheme: dark) {
-  :root[data-look="bold"]:not([data-theme="light"]) {
-    --color-surface: #17123a;
-    --color-on-surface: #efeaff;
-    --color-surface-raised: #17123a;
-    --color-on-surface-raised: #efeaff;
-    --color-surface-sunken: #251e52;
-    --color-on-surface-sunken: #efeaff;
-    --color-answer: #17123a;
-    --color-on-answer: #efeaff;
-    --color-answer-border: #8d82d6;
-    --color-menu: #251e52;
-    --color-on-menu: #f3f0ff;
-    --color-primary: #b6a6ff;
-    --color-on-primary: #1a0f4a;
-    --color-secondary: #2d2468;
-    --color-on-secondary: #e6dfff;
-    --color-selected: #b6a6ff;
-    --color-on-selected: #1a0f4a;
-    --color-success: #11452b;
-    --color-on-success: #d3f8e1;
-    --color-success-accent: #5fe597;
-    --color-muted-text: #c6bdf2;
-    --color-subtle-text: #b8afe8;
-    --color-border: #3b3175;
-    --color-border-strong: #8d82d6;
-    --color-focus-ring: #c9bdff;
-    --color-shadow: #00000073;
-    --color-meter: #a998ff;
-    --color-points: #ffd23f;
-    --color-on-points: #2e1d00;
-    --color-points-edge: #ffb000;
-    --color-celebrate-1: #ff5c95;
-    --color-celebrate-2: #ffc53d;
-    --color-celebrate-3: #2fd8e8;
-    --color-celebrate-4: #9b80ff;
-    --color-celebrate-5: #4ade80;
-    --color-celebrate-6: #ff9445;
+@property --look-boost {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+:root[data-look="bold"] {
+  color-scheme: light;
+  --look-hue: 250deg;
+  --look-boost: 0;
+  /* The action's hue: the world's own, except in its yellows, where a dark
+     enough yellow for white text is only brown; there the action takes the
+     violet across the circle. */
+  --look-action-hue: calc(
+    var(--look-hue) + 150deg *
+      max(0, min(1, (cos(var(--look-hue) - 88deg) - 0.72) * 12))
+  );
+  /* Page and its surfaces: a bright tint of the hue, ink of the same hue. */
+  --color-surface: oklch(
+    0.955 calc(0.045 + 0.035 * var(--look-boost)) var(--look-hue)
+  );
+  --color-on-surface: oklch(0.27 0.09 var(--look-hue));
+  --color-surface-raised: oklch(
+    0.955 calc(0.045 + 0.035 * var(--look-boost)) var(--look-hue)
+  );
+  --color-on-surface-raised: oklch(0.27 0.09 var(--look-hue));
+  --color-surface-sunken: oklch(0.92 0.05 var(--look-hue));
+  --color-on-surface-sunken: oklch(0.27 0.09 var(--look-hue));
+  --color-answer: oklch(0.995 0.008 var(--look-hue));
+  --color-on-answer: oklch(0.27 0.09 var(--look-hue));
+  --color-answer-border: oklch(0.55 0.12 var(--look-hue));
+  --color-menu: oklch(0.975 0.03 var(--look-hue));
+  --color-on-menu: oklch(0.27 0.09 var(--look-hue));
+  /* The one action: chunky, vivid, a hard lower edge that presses. */
+  --color-primary: oklch(0.42 0.19 var(--look-action-hue));
+  --color-on-primary: oklch(1 0 0);
+  --color-primary-edge: oklch(0.34 0.14 var(--look-action-hue));
+  --color-secondary: oklch(0.93 0.055 var(--look-hue));
+  --color-on-secondary: oklch(0.32 0.13 var(--look-hue));
+  --color-selected: oklch(0.42 0.19 var(--look-action-hue));
+  --color-on-selected: oklch(1 0 0);
+  /* A right answer: the sheet is the hue, bright; its mark is always green. */
+  --color-success: oklch(0.91 0.1 var(--look-hue));
+  --color-on-success: oklch(0.27 0.09 var(--look-hue));
+  --color-success-accent: oklch(0.44 0.13 150);
+  /* A miss: a warm tint of the page, a kind amber mark. Never red. */
+  --color-not-yet-tint: oklch(0.86 0.09 75);
+  --color-danger: color-mix(
+    in srgb,
+    var(--color-not-yet-tint) 35%,
+    var(--color-surface)
+  );
+  --color-on-danger: oklch(0.3 0.07 55);
+  --color-danger-accent: oklch(0.48 0.12 60);
+  --color-warning: oklch(0.935 0.06 90);
+  --color-on-warning: oklch(0.33 0.07 70);
+  --color-warning-accent: oklch(0.47 0.11 70);
+  --color-info: oklch(0.935 0.045 240);
+  --color-on-info: oklch(0.33 0.09 250);
+  --color-info-accent: oklch(0.48 0.12 250);
+  /* Text, edges and focus. */
+  --color-muted-text: oklch(0.42 0.08 var(--look-hue));
+  --color-subtle-text: oklch(0.45 0.07 var(--look-hue));
+  --color-border: oklch(0.87 0.06 var(--look-hue));
+  --color-border-strong: oklch(0.55 0.11 var(--look-hue));
+  --color-focus-ring: oklch(0.5 0.19 var(--look-action-hue));
+  --color-scrim: oklch(0.22 0.06 var(--look-hue) / 0.6);
+  --color-shadow: oklch(0.3 0.1 var(--look-hue) / 0.16);
+  --color-meter: oklch(0.52 0.18 var(--look-action-hue));
+  --color-rail: oklch(0.93 0.05 var(--look-hue));
+  --color-on-rail: oklch(0.27 0.09 var(--look-hue));
+  --color-course-band: oklch(0.55 0.17 var(--look-hue) / 0.12);
+  /* Figures: paper, ink, grid and axis of the hue; their three marks at the hue,
+     +150° and +60°, so two or three roles in one figure stay apart. A problem
+     that names its figure colors ("teal", "rust", "gold") keeps Calm's
+     (`data-figure-colors="named"`, below). */
+  --color-figure-paper: oklch(0.99 0.012 var(--look-hue));
+  --color-figure-ink: oklch(0.3 0.08 var(--look-hue));
+  --color-figure-grid: oklch(0.86 0.035 var(--look-hue));
+  --color-figure-axis: oklch(0.55 0.07 var(--look-hue));
+  --color-figure-accent: oklch(0.52 0.15 var(--look-hue));
+  --color-figure-accent-fill: oklch(0.9 0.07 var(--look-hue));
+  --color-figure-accent-fill-strong: oklch(0.86 0.08 var(--look-hue));
+  --color-figure-warm: oklch(0.52 0.15 calc(var(--look-hue) + 150deg));
+  --color-figure-warm-fill: oklch(0.9 0.07 calc(var(--look-hue) + 150deg));
+  --color-figure-gold: oklch(0.54 0.14 calc(var(--look-hue) + 60deg));
+  --color-figure-gold-fill: oklch(0.9 0.07 calc(var(--look-hue) + 60deg));
+  --color-figure-gold-fill-strong: oklch(
+    0.86 0.08 calc(var(--look-hue) + 60deg)
+  );
+  --color-figure-empty: oklch(0.965 0.02 var(--look-hue));
+  /* Practice's own: keys, the marks, the points (always gold), confetti. */
+  --color-key: oklch(0.995 0.008 var(--look-hue));
+  --color-on-key: oklch(0.27 0.09 var(--look-hue));
+  --color-key-edge: oklch(0.8 0.07 var(--look-hue));
+  --color-mark-disc: oklch(1 0 0);
+  --color-correct: oklch(0.56 0.17 148);
+  --color-points: oklch(0.86 0.16 88);
+  --color-on-points: oklch(0.3 0.07 70);
+  --color-points-edge: oklch(0.7 0.15 75);
+  --color-celebrate-1: oklch(0.72 0.18 var(--look-hue));
+  --color-celebrate-2: oklch(0.74 0.16 calc(var(--look-hue) + 60deg));
+  --color-celebrate-3: oklch(0.72 0.17 calc(var(--look-hue) + 120deg));
+  --color-celebrate-4: oklch(0.68 0.18 calc(var(--look-hue) + 180deg));
+  --color-celebrate-5: oklch(0.75 0.17 calc(var(--look-hue) + 240deg));
+  --color-celebrate-6: oklch(0.72 0.17 calc(var(--look-hue) + 300deg));
+}
+/* A problem whose words name its figure's colors keeps Calm's marks, so
+   "the teal pieces" are teal (set per problem by the celebration seam). */
+:root[data-look="bold"][data-figure-colors="named"] {
+  --color-figure-accent: #20776d;
+  --color-figure-accent-fill: #d4e9e1;
+  --color-figure-accent-fill-strong: #c5ded6;
+  --color-figure-warm: #9c4420;
+  --color-figure-warm-fill: #f2d5c3;
+  --color-figure-gold: #9a5c12;
+  --color-figure-gold-fill: #fae2b9;
+  --color-figure-gold-fill-strong: #f5dfc5;
+}
+/* A browser that can't draw Colorful's colors says so here, where the
+   colors are; features/practice/celebration/hue.ts reads it and shows Calm. */
+@supports not (color: oklch(0.5 0.1 calc(10deg + 5deg))) {
+  :root {
+    --colorful-unsupported: 1;
   }
 }
-:root[data-look="bold"][data-theme="dark"] {
-  --color-surface: #17123a;
-  --color-on-surface: #efeaff;
-  --color-surface-raised: #17123a;
-  --color-on-surface-raised: #efeaff;
-  --color-surface-sunken: #251e52;
-  --color-on-surface-sunken: #efeaff;
-  --color-answer: #17123a;
-  --color-on-answer: #efeaff;
-  --color-answer-border: #8d82d6;
-  --color-menu: #251e52;
-  --color-on-menu: #f3f0ff;
-  --color-primary: #b6a6ff;
-  --color-on-primary: #1a0f4a;
-  --color-secondary: #2d2468;
-  --color-on-secondary: #e6dfff;
-  --color-selected: #b6a6ff;
-  --color-on-selected: #1a0f4a;
-  --color-success: #11452b;
-  --color-on-success: #d3f8e1;
-  --color-success-accent: #5fe597;
-  --color-muted-text: #c6bdf2;
-  --color-subtle-text: #b8afe8;
-  --color-border: #3b3175;
-  --color-border-strong: #8d82d6;
-  --color-focus-ring: #c9bdff;
-  --color-shadow: #00000073;
-  --color-meter: #a998ff;
-  --color-points: #ffd23f;
-  --color-on-points: #2e1d00;
-  --color-points-edge: #ffb000;
-  --color-celebrate-1: #ff5c95;
-  --color-celebrate-2: #ffc53d;
-  --color-celebrate-3: #2fd8e8;
-  --color-celebrate-4: #9b80ff;
-  --color-celebrate-5: #4ade80;
-  --color-celebrate-6: #ff9445;
+/* The world turns with the problem, in step with its entrance. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"] {
+    transition:
+      --look-hue 400ms var(--ease-standard),
+      --look-boost 600ms ease-out;
+  }
 }
 
 /*
@@ -642,6 +662,8 @@
     #000 86%,
     transparent
   );
+  /* A five-point star, as a mask (Colorful's collectible progress). */
+  --star-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.8l3.1 6.5 7.1.9-5.2 4.9 1.3 7-6.3-3.4-6.3 3.4 1.3-7L1.8 9.2l7.1-.9z'/%3E%3C/svg%3E");
   /* The trailing edge of a strip that scrolls: its last pixels fade, so a cut
      label reads as "more", not as clipped. */
   --scroll-edge: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
