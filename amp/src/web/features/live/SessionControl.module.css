@@ -27,6 +27,18 @@
   display: flex;
   flex: none;
 }
+.startShort {
+  display: none;
+}
+/* The narrowest phone: Start and the length stepper side by side. */
+@container live-control (max-width: 330px) {
+  .startFull {
+    display: none;
+  }
+  .startShort {
+    display: inline;
+  }
+}
 @container live-control (min-width: 600px) {
   .lengthWide {
     display: block;

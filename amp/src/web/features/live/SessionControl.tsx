@@ -137,11 +137,17 @@ function Resting({
       <Button
         variant="primary"
         className={styles.start}
+        aria-label={startLabel}
         aria-busy={starting || undefined}
         disabled={starting}
         onClick={() => onStart(length)}
       >
-        <span>{startLabel}</span>
+        {/* A phone's narrowest bar has room for the verb alone beside the
+            length; the button's name stays whole. */}
+        <span className={styles.startFull}>{startLabel}</span>
+        <span className={styles.startShort} aria-hidden="true">
+          Start
+        </span>
       </Button>
       {/* Wide: every length at once. Narrow: a stepper through them. */}
       <div className={styles.lengthWide}>
