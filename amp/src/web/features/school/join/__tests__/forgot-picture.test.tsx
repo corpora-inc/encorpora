@@ -15,6 +15,7 @@ const roster = { students: [{ id: PERSON, name: "Ada", picturesSet: true }] };
 let kind: "class" | "family" = "class";
 const ask = vi.fn();
 const read = vi.fn();
+const withdraw = vi.fn();
 const lookup = vi.fn();
 const finish = vi.fn();
 
@@ -35,6 +36,7 @@ vi.mock("../api", async (original) => ({
   }),
   askForgotPicture: (input: unknown) => ask(input),
   readForgotPicture: (input: unknown) => read(input),
+  withdrawForgotPicture: (input: unknown) => withdraw(input),
   signInWithPictures: vi.fn(),
   useFinishSignIn: () => finish,
   finishingSignIn: () => false,
@@ -52,6 +54,7 @@ beforeEach(() => {
   useForgotStore.setState({ asked: {} });
   queryClient.clear();
   ask.mockReset().mockResolvedValue({ state: "waiting" });
+  withdraw.mockReset().mockResolvedValue({ state: "none" });
   read.mockReset().mockResolvedValue({ state: "waiting" });
   lookup.mockReset().mockImplementation(async () => ({
     class: { name: "Room", kind },
@@ -73,7 +76,7 @@ const mount = () =>
     </QueryClientProvider>,
   );
 const forgotButton = () =>
-  screen.findByRole("button", { name: "I forgot the pictures" });
+  screen.findByRole("button", { name: "Forgot your pictures?" });
 
 test("picking: the action is offered; asking shows the waiting state in place", async () => {
   mount();
@@ -81,7 +84,7 @@ test("picking: the action is offered; asking shows the waiting state in place", 
   expect(await screen.findByText("Your teacher has been asked.")).toBeTruthy();
   expect(ask).toHaveBeenCalledWith({ code: CODE, personId: PERSON });
   expect(
-    screen.getByRole("button", { name: "I remember the pictures" }),
+    screen.getByRole("button", { name: "Pick your pictures" }),
   ).toBeTruthy();
   // The picture buttons rest.
   expect(
@@ -123,10 +126,11 @@ test("backing out returns to picking", async () => {
   mount();
   fireEvent.click(await forgotButton());
   fireEvent.click(
-    await screen.findByRole("button", { name: "I remember the pictures" }),
+    await screen.findByRole("button", { name: "Pick your pictures" }),
   );
   expect(await screen.findByText("Pick your 3 pictures")).toBeTruthy();
   expect(useForgotStore.getState().asked).toEqual({});
+  expect(withdraw).toHaveBeenCalledWith({ code: CODE, personId: PERSON });
 });
 
 test("a failed ask says so plainly and retries", async () => {

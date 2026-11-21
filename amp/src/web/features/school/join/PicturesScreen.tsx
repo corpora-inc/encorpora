@@ -243,10 +243,10 @@ export function PicturesScreen() {
                 onClick={waiting ? forgot.giveUp : forgot.ask}
               >
                 {waiting
-                  ? "I remember the pictures"
+                  ? "Pick your pictures"
                   : forgot.failed
                     ? "Ask again"
-                    : "I forgot the pictures"}
+                    : "Forgot your pictures?"}
               </Button>
             )}
           </div>

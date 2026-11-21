@@ -3,7 +3,14 @@ import { useEffect } from "react";
 import type { LiveSnapshot } from "../../../schools/live/contracts";
 import { openLiveStream } from "../../lib/live-stream";
 import { useSession } from "../../lib/session";
-import { applyLiveMessage, liveOptions, type Place } from "./api";
+import {
+  applyLiveMessage,
+  endedBetween,
+  liveEndedKey,
+  liveOptions,
+  type Place,
+} from "./api";
+import { noteHeard, noteMode } from "./stream-health";
 
 /**
  * A class's live view, kept current while mounted (#2465): the snapshot
@@ -23,15 +30,39 @@ export function useLiveClass(place: Place) {
   const query = useQuery(liveOptions(session, place));
   const { org, class: classId } = place;
   useEffect(() => {
-    const options = liveOptions(session, { org, class: classId });
+    const place = { org, class: classId };
+    const options = liveOptions(session, place);
+    // A session that ends while this is open is kept, still, for the
+    // screen to show as it ended (`liveEndedKey`).
+    const noteEnd = (before: LiveSnapshot | undefined) => {
+      const ended = endedBetween(
+        before,
+        client.getQueryData<LiveSnapshot>(options.queryKey),
+      );
+      if (ended) client.setQueryData(liveEndedKey(session, place), ended);
+    };
     const stream = openLiveStream({
       path: `/school/classes/${encodeURIComponent(classId)}/live/stream`,
       token: session.token,
-      onEvent: (event, data) =>
+      onMode: (mode) => noteMode(classId, mode),
+      onEvent: (event, data) => {
+        noteHeard(classId);
+        const before = client.getQueryData<LiveSnapshot>(options.queryKey);
         client.setQueryData<LiveSnapshot>(options.queryKey, (held) =>
           applyLiveMessage(held, event, data),
-        ),
-      poll: () => client.fetchQuery({ ...options, staleTime: 0 }),
+        );
+        noteEnd(before);
+      },
+      poll: () => {
+        const before = client.getQueryData<LiveSnapshot>(options.queryKey);
+        return client
+          .fetchQuery({ ...options, staleTime: 0 })
+          .then((snapshot) => {
+            noteHeard(classId);
+            noteEnd(before);
+            return snapshot;
+          });
+      },
     });
     return () => stream.close();
   }, [client, session, org, classId]);

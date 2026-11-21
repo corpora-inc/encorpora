@@ -3,7 +3,12 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { qk } from "../../../lib/keys";
 import { queryClient } from "../../../lib/query";
-import { askForgotPicture, joinRosterOptions, readForgotPicture } from "./api";
+import {
+  askForgotPicture,
+  joinRosterOptions,
+  readForgotPicture,
+  withdrawForgotPicture,
+} from "./api";
 
 /* "I forgot my pictures" (#2464): the student's side. The request is held on
    this device, per class and student, so a refresh comes back to the waiting
@@ -109,6 +114,11 @@ export function useForgotPicture(code: string, personId: string) {
     giveUp: () => {
       ask.reset();
       useForgotStore.getState().clear(key);
+      // Takes the request back, so the adult's list clears. Failing is
+      // harmless (it expires), and says so in the log.
+      void withdrawForgotPicture({ code, personId }).catch((error) =>
+        console.warn("The picture request wasn’t taken back", error),
+      );
     },
     /** The reset happened, or they signed in: nothing is held. */
     done: () => useForgotStore.getState().clear(key),

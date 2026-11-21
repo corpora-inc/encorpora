@@ -102,6 +102,7 @@ import {
   preload,
 } from "../features/school/core-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
+import { loadClassSessionAction } from "../features/school/classes/session-action-slot";
 import { familyRoutes } from "./family-routes";
 import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
@@ -1067,6 +1068,12 @@ const schoolClass = createRoute({
           params.class,
         ),
       ),
+      // The bar's Start class and whether a session runs: with the frame.
+      loadClassSessionAction(),
+      classLive((context as { session: AuthSession }).session, {
+        org: params.org,
+        class: params.class,
+      }),
     ]),
 });
 const schoolClassToday = createRoute({
@@ -1076,19 +1083,43 @@ const schoolClassToday = createRoute({
   // the screen paints.
   loader: async ({ context, params }) => {
     const session = (context as { session: AuthSession }).session;
+    const place = { org: params.org, class: params.class };
     const me = await queryClient
       .ensureQueryData(meOptions(session))
       .catch((error: unknown) =>
         console.warn("The account didn’t load ahead", error),
       );
-    if (me?.signedIn && me.familyClass?.classId === params.class)
-      await Promise.all([
-        preload(approvalsOptions(session)),
-        preload(secondParentOptions(session)),
-      ]);
+    await Promise.all([
+      me?.signedIn &&
+        me.familyClass?.classId === params.class &&
+        Promise.all([
+          preload(approvalsOptions(session)),
+          preload(secondParentOptions(session)),
+        ]),
+      // Today's feed and week, and its live session (#2465): the cockpit
+      // paints with the page, at rest or running, never after it.
+      import("../features/school/classes/teacher-api").then(
+        ({ todayOptions }) => preload(todayOptions(session, place)),
+      ),
+      classLive(session, place),
+    ]);
   },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
+/** A class's live snapshot, for someone who may watch its sessions. */
+async function classLive(
+  session: AuthSession,
+  place: { org: string; class: string },
+) {
+  const [year, { liveOptions }] = await Promise.all([
+    preload(classYearOptions(session, place.class)) as Promise<
+      { can?: readonly string[] } | undefined
+    >,
+    import("../features/live/api"),
+  ]);
+  if (year?.can?.includes("session.read"))
+    await preload(liveOptions(session, place));
+}
 /** The map with everything its first paint shows: a small class's map
  * (six or fewer, ClassMap.tsx) carries each learner's grade line, so its
  * gradebook loads with it rather than pushing the page down after. */
@@ -1122,7 +1153,43 @@ const schoolClassGradebook = createRoute({
 const schoolClassTime = createRoute({
   getParentRoute: () => schoolClass,
   path: "time",
+  // The class's sessions, at the report's foot, arrive with it.
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const place = { org: params.org, class: params.class };
+    const [year, { sessionsOptions }] = await Promise.all([
+      preload(classYearOptions(session, place.class)) as Promise<
+        { can?: readonly string[] } | undefined
+      >,
+      import("../features/live/api"),
+    ]);
+    if (year?.can?.includes("session.read"))
+      await preload(sessionsOptions(session, place));
+  },
   component: lazyRouteComponent(classScreens, "TimeScreen"),
+});
+/** One session's stored report (#2465), under the class's Time. Its read
+ * comes with it; a session still running answers 409, which the screen
+ * shows as the way back to the live view. */
+const schoolClassSession = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "sessions/$session",
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const { sessionReportOptions } = await import("../features/live/api");
+    await queryClient
+      .ensureQueryData(
+        sessionReportOptions(
+          session,
+          { org: params.org, class: params.class },
+          params.session,
+        ),
+      )
+      .catch((error: unknown) =>
+        console.warn("The session's report didn’t load ahead", error),
+      );
+  },
+  component: lazyRouteComponent(classScreens, "SessionReportScreen"),
 });
 const schoolClassReportCards = createRoute({
   getParentRoute: () => schoolClass,
@@ -1727,6 +1794,7 @@ export const router = createRouter({
       schoolClassMap,
       schoolClassGradebook,
       schoolClassTime,
+      schoolClassSession,
       schoolClassReportCards,
       schoolClassSettings,
       schoolClassRoster,

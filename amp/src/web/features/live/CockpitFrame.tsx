@@ -29,14 +29,16 @@ export function CockpitFrame({
   totals?: ReactNode;
   strip?: ReactNode;
   roster?: ReactNode;
-  /** Px from the viewport's top where the bar sticks (under an app bar). */
-  stickyTop?: number;
+  /** Where the bar sticks, from the viewport's top (under an app bar): px,
+   * or a CSS length ("var(--shell-bar)"). */
+  stickyTop?: number | string;
   /** The desktop frame's height, in CSS; by default the viewport under
    * `stickyTop`. */
   height?: string;
 }) {
   const style = {
-    "--live-sticky-top": `${stickyTop}px`,
+    "--live-sticky-top":
+      typeof stickyTop === "number" ? `${stickyTop}px` : stickyTop,
     ...(height ? { "--live-frame-height": height } : {}),
   } as CSSProperties;
   return (

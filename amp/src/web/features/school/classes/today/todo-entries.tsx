@@ -123,7 +123,9 @@ export function TodoAction({
       }
       className={buttonClass(look)}
     >
-      {action.label}
+      {/* "Start class" starts the live session now (the bar, Today's
+          control); the board a to-do opens is the sign-in board. */}
+      {action.tab === "start" ? "Sign-in board" : action.label}
     </Link>
   );
 }

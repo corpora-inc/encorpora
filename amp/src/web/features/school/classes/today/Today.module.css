@@ -8,7 +8,8 @@
 }
 
 /* The title (a class's name over the date, or a family's date), with the
-   class code beside it from 720 px. */
+   class code beside it from 960 px: the code's row (Copy link, Full screen,
+   the QR) and the name both whole, never the name broken a word a line. */
 .head {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -26,7 +27,7 @@
 .heldLine {
   visibility: hidden;
 }
-@container (min-width: 720px) {
+@container (min-width: 960px) {
   .head {
     grid-template-columns: minmax(0, 1fr) auto;
   }
@@ -122,7 +123,7 @@
 .inlineLink:hover {
   background: var(--color-surface-hover);
 }
-@container (min-width: 720px) {
+@container (min-width: 960px) {
   .head .signIn {
     justify-items: end;
     text-align: end;

@@ -591,25 +591,14 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 title="Suggested grades appear after a week of work"
                 example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
-                  // A week of work starts with class: the board's code.
+                  // A week of work starts with class: the bar's Start class.
                   // A family's Today is its tab, in the bar. A class with an
                   // LMS can publish its first assignment before any work.
-                  given || family ? undefined : (
+                  given || family || !(whole && data.lms) ? undefined : (
                     <div className={styles.emptyActions}>
-                      <Link
-                        to="/$"
-                        params={{
-                          _splat: classUrl(place.org, place.class, "start"),
-                        }}
-                        className={buttonClass("primary")}
-                      >
-                        Start class
-                      </Link>
-                      {whole && data.lms && (
-                        <Button variant="secondary" onClick={lmsSheet.show}>
-                          {lmsLabel(data.lms)}
-                        </Button>
-                      )}
+                      <Button variant="secondary" onClick={lmsSheet.show}>
+                        {lmsLabel(data.lms)}
+                      </Button>
                     </div>
                   )
                 }

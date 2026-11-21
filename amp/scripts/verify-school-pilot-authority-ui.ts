@@ -190,7 +190,8 @@ try {
   await page
     .getByRole("button", { name: "Start practice", exact: true })
     .click();
-  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  // Practice open: Today's own session control offers Start class (#2465).
+  await page.getByRole("button", { name: "Start class", exact: true }).waitFor();
   assert.equal(
     (
       await learning.pool.query(
