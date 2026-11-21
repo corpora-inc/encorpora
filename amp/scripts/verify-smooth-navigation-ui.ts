@@ -387,7 +387,8 @@ try {
           await context.close();
         }
 
-        // 5. This week: no detail on a day still ahead.
+        // 5. This week: no detail on a day still ahead. (On a Monday the
+        // fixture's week holds one day, a fact with no chart: ia.md rule 1.)
         {
           const { context, page } = await open(
             browser,
@@ -398,6 +399,11 @@ try {
           );
           await familyToday(page);
           const week = page.locator("[data-family-week]");
+          await week.waitFor();
+          if ((await week.locator("[data-week-day]").count()) === 0) {
+            await context.close();
+            continue;
+          }
           await week.locator("[data-week-day]").first().waitFor();
           const days = await week
             .locator("[data-week-day]")
