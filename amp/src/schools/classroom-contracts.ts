@@ -66,6 +66,9 @@ export const experienceResource = z.object({
   canEdit: z.boolean(),
   /** Whether a lock here means anything: an admin, at an org. */
   canLock: z.boolean(),
+  /** The settings this person may lock for the people below: an admin's
+   * at an org, anything; a class's teacher, only the look. */
+  lockable: z.array(z.enum(experienceKeys)),
   /** The boards that exist here: a school on its own has no district. */
   standingsOptions: z.array(z.enum(standingsScopes)),
   settings: z.object({
@@ -93,8 +96,12 @@ const writableValues = z.strictObject({
   deviceMode: z.enum(deviceModes).nullable().optional(),
   look: z.enum(looks).nullable().optional(),
 });
+/** What a class may lock for its own students. Every other setting is a
+ * school's to lock, so a class that sends one is refused. */
+export const classLockable: readonly ExperienceKey[] = ["look"];
 export const classExperienceWriteSchema = z.strictObject({
-  values: writableValues,
+  values: writableValues.optional(),
+  locks: z.strictObject({ look: z.boolean().optional() }).optional(),
 });
 export const orgExperienceWriteSchema = z.strictObject({
   values: writableValues.optional(),

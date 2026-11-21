@@ -556,7 +556,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const change = practiceChangeSchema.parse(request.body);
     // A grown-up's choices: never the learner's own session's, nor a
     // school account's.
-    if (change.kind === "reset" || change.kind === "gradeLevel")
+    if (
+      change.kind === "reset" ||
+      change.kind === "gradeLevel" ||
+      change.kind === "lookLock"
+    )
       assertFamilyManaged(account, request);
     const madeIn =
       studentBearer(request) || isSchoolAccount(account)
