@@ -259,7 +259,13 @@ export class LiveHub {
     if (this.timer || this.closed) return;
     this.timer = setInterval(() => this.due(), this.intervalMs);
     this.timer.unref();
-    this.window = { at: Date.now(), ticks: 0, queries: 0, tickMs: 0 };
+    // Counted from now: the totals run on across idle spells.
+    this.window = {
+      at: Date.now(),
+      ticks: this.numbers.ticks,
+      queries: this.numbers.queries,
+      tickMs: this.numbers.totalTickMs,
+    };
     this.statsTimer = setInterval(() => this.report(), this.statsEveryMs);
     this.statsTimer.unref();
   }
@@ -313,6 +319,7 @@ export class LiveHub {
   }
 
   private report() {
+    const memory = process.memoryUsage();
     const seconds = Math.max(1, (Date.now() - this.window.at) / 1000);
     const ticks = this.numbers.ticks - this.window.ticks;
     this.log.info(
@@ -331,7 +338,8 @@ export class LiveHub {
             ((this.numbers.queries - this.window.queries) / seconds) * 10,
           ) / 10,
         overruns: this.numbers.overruns,
-        rssMb: Math.round(process.memoryUsage().rss / 1048576),
+        rssMb: Math.round(memory.rss / 1048576),
+        heapMb: Math.round(memory.heapUsed / 1048576),
       },
       "live hub",
     );
