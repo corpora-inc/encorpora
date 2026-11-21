@@ -240,7 +240,7 @@ export function DeleteAccountPanel() {
             </Link>
           </div>
         </div>
-      ) : !data || preview.isFetching ? (
+      ) : !data ? (
         <div className={styles.reserve} aria-busy={!preview.error}>
           {preview.error ? (
             <div className={pages.footActions}>
@@ -313,7 +313,8 @@ export function DeleteAccountPanel() {
                 type="submit"
                 variant="primary"
                 className={styles.delete}
-                disabled={!confirmed || remove.isPending}
+                // A fresh read under way holds the button, never the list.
+                disabled={!confirmed || remove.isPending || preview.isFetching}
                 aria-busy={remove.isPending || undefined}
               >
                 Delete account

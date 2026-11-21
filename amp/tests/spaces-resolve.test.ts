@@ -1390,3 +1390,20 @@ test("Q-3: no menu offers one feature twice, for any persona on any screen", () 
   }
   assert.ok(checked > 500);
 });
+
+test("a learner's address before the account answers is loading, never unavailable", () => {
+  // 2026-11-20: a parent's cold load of a child's printed-workbook link
+  // showed "This isn't available to your account" until `/me` arrived.
+  const pending = resolveSpace(at("/learners/pip/workbooks/w1/results"), {
+    kind: "adult",
+    me: null,
+    learnerId: null,
+  });
+  assert.equal((pending as { status: string }).status, "loading");
+  // Once it has, a learner who isn't theirs is unavailable.
+  const answered = resolveSpace(
+    at("/learners/stranger/workbooks/w1/results"),
+    adult(me({ learners: [child("pip", "Pip")] }), null),
+  );
+  assert.equal((answered as { status: string }).status, "unavailable");
+});

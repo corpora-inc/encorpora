@@ -191,7 +191,7 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "no-flash-a-390", "no-flash-a-1280", "no-flash-b-390", "no-flash-b-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
     for command, lane in [('npm run test:ui:1a', 'ui-1a'), ('npm run test:ui:1b', 'ui-1b'),
                           ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
@@ -199,6 +199,8 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
                           ('npm run test:family-ui:b2', 'family-b2'), ('npm run test:family-ui:b3', 'family-b3'),
                           ('node scripts/run-ci-tests.mjs browser', 'selected')]:
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
+    no_flash = next(step for step in browser['steps'] if 'test:no-flash-ui' in step.get('run', ''))
+    assert no_flash['if'] == "startsWith(matrix.lane, 'no-flash-')"
     # The native session's Rust half runs in its own lane with a cached
     # build; no browser lane installs Rust.
     assert not any('rust' in str(step.get('uses', '')) for step in browser['steps'])
