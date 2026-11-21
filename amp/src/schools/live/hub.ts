@@ -219,20 +219,24 @@ export class LiveHub {
     // Already gone (the client left while the stream opened).
     if (!subscriber.sink.open) return;
     this.subscribers.add(subscriber);
+    let unknown = false;
     for (const classId of classIds) {
-      const state = this.classes.get(classId) ?? {
-        staff: new Set(),
-        students: new Set(),
-        session: undefined,
-      };
-      this.classes.set(classId, state);
+      let state = this.classes.get(classId);
+      if (!state) {
+        state = { staff: new Set(), students: new Set(), session: undefined };
+        this.classes.set(classId, state);
+        unknown = true;
+      }
       if (subscriber.kind === "staff") state.staff.add(subscriber);
       else state.students.add(subscriber);
     }
     this.start();
-    // Its first snapshot comes from a tick, in order with every other read:
-    // never older than a `rows` message sent after it.
-    this.run();
+    // Its first snapshot comes from a tick, in order with every other read,
+    // so it is never older than a `rows` message sent after it. A class the
+    // hub already follows waits for the next one (under a second): a class's
+    // streams reconnect every 85-95 s, and a tick for each would multiply the
+    // reads. A class it doesn't follow yet is read now.
+    if (unknown) this.run();
   }
 
   private remove(subscriber: Subscriber) {
