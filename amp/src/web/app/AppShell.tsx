@@ -47,6 +47,7 @@ import { PlaceName } from "../ui/PlaceName";
 import bar from "../ui/AppBar.module.css";
 import styles from "./AppShell.module.css";
 import { secondParentChild } from "../features/second-parent/api";
+import { useLook } from "../features/practice/look";
 
 const loadDrawer = () => import("../features/navigation/ShellDrawer");
 const ShellDrawer = lazy(loadDrawer);
@@ -80,6 +81,18 @@ export function AppShell({ children }: { children: ReactNode }) {
   // The space of the screen on view (features/spaces): its bar, tabs,
   // actions, drawer and words all come from this one description.
   const resolved = useSpace(nativeRuntime ? null : match);
+  // A signed-in student's own screens (practice, their record, standings)
+  // wear the look they chose; an adult's places never do, and signing the
+  // student out takes it away (features/practice/look.ts).
+  const student = resolved?.space === "student" ? resolved.learner : null;
+  useLook(
+    {
+      identity: session?.accountId ?? "",
+      learnerId: student?.id ?? "",
+      token: session?.token,
+    },
+    !!session && !!student,
+  );
   // The same place asked again for the same account keeps its frame while
   // it answers (features/spaces/hold.ts).
   const held = useRef<Held>(null);

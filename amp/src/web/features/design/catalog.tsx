@@ -6,6 +6,7 @@ import { NavigationSections, tabRowSpecimens } from "./sections/navigation";
 import { OverlaySections, overlaySpecimens } from "./sections/overlays";
 import { PatternSections } from "./sections/patterns";
 import { PracticeSection, PracticeSpecimen } from "./sections/practice";
+import { ColorfulSection, colorfulSpecimens } from "./sections/colorful";
 import { StateSections, stateSpecimens } from "./sections/states";
 import { TableSections } from "./sections/tables";
 import { WorkbookSections } from "./sections/workbooks";
@@ -20,7 +21,10 @@ export const contents: {
 }[] = [
   {
     group: "Practice",
-    sections: [{ id: "practice", title: "Problem stage and feedback" }],
+    sections: [
+      { id: "practice", title: "Problem stage and feedback" },
+      { id: "colorful", title: "Colorful" },
+    ],
   },
   {
     group: "Levels",
@@ -91,6 +95,7 @@ export function GallerySections() {
   return (
     <>
       <PracticeSection />
+      <ColorfulSection />
       <LevelSections />
       <TableSections />
       <LiveSections />
@@ -112,6 +117,7 @@ export const specimens: Record<string, () => ReactNode> = {
       () => <PracticeSpecimen id={id} />,
     ]),
   ),
+  ...colorfulSpecimens,
   ...stateSpecimens,
   ...overlaySpecimens,
   ...tabRowSpecimens,

@@ -28,6 +28,11 @@ import { defineLmsRoutes } from "./lms-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
 import { defineStandingRoutes } from "./standing-routes.js";
 import { defineLiveRoutes } from "./live/routes.js";
+import { LiveHub, type LiveHubOptions } from "./live/hub.js";
+import {
+  defineLiveStreamRoutes,
+  registerStudentLiveRoutes,
+} from "./live/stream-routes.js";
 import {
   defineSignalRoutes,
   registerStudentSignalRoutes,
@@ -87,6 +92,8 @@ export type SchoolRouteContext<T extends SchoolTarget = SchoolTarget> = {
    * snapshot its reader was authorized in. */
   db: Pick<PoolClient, "query">;
   services: SchoolServices;
+  /** This process's live hub: the streams (src/schools/live/hub.ts). */
+  live: LiveHub;
 };
 /** What school routes need from the server around them. */
 export type SchoolServices = {
@@ -231,9 +238,16 @@ export async function registerSchoolRoutes(
     pool: Pool;
     authenticate: Authenticator;
     services?: SchoolServices;
+    /** The live hub's timing and cap; a test shortens them. */
+    live?: LiveHubOptions;
   },
-): Promise<void> {
+): Promise<{ live: LiveHub }> {
   const repository = new SchoolRepository(options.pool);
+  // One hub per process: every live stream shares its one tail of the
+  // outbox. Streams end before the server stops (clients reconnect to
+  // another pod), and the hub's last tick finishes before the pool closes.
+  const live = new LiveHub(options.pool, app.log, options.live);
+  app.addHook("preClose", () => live.close());
   const services: SchoolServices = options.services ?? {
     secret: randomBytes(32).toString("hex"),
     origin: "",
@@ -322,6 +336,7 @@ export async function registerSchoolRoutes(
         return reply.code(204).send();
       },
     );
+    registerStudentLiveRoutes(scope, { pool: options.pool, live });
     for (const route of schoolRoutes)
       scope.route({
         method: route.method,
@@ -363,6 +378,7 @@ export async function registerSchoolRoutes(
               services,
               pool: options.pool,
               db,
+              live,
             });
           };
           return route.snapshot
@@ -371,6 +387,7 @@ export async function registerSchoolRoutes(
         },
       });
   });
+  return { live };
 }
 
 const orgParam = ({ params }: TargetInput) =>
@@ -604,4 +621,5 @@ defineClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);
 defineDemoRoutes(defineSchoolRoute);
 defineLiveRoutes(defineSchoolRoute);
+defineLiveStreamRoutes(defineSchoolRoute);
 defineSignalRoutes(defineSchoolRoute);

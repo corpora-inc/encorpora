@@ -7,6 +7,8 @@ import { readFileSync } from "node:fs";
 
 export type Rgba = [number, number, number, number];
 export type Theme = "light" | "dark";
+/** Calm is the base; Colorful ("bold") overrides some roles over it. */
+export type Look = "calm" | "bold";
 
 export const tokensPath = new URL("../src/web/ui/tokens.css", import.meta.url);
 
@@ -45,7 +47,23 @@ export function tokenBlocks(css = readFileSync(tokensPath, "utf8")) {
     css,
     /@media screen and \(prefers-color-scheme: dark\)/,
   );
+  // Colorful's blocks: light, and the two dark forms (learning/look.ts).
+  const boldMedia = [
+    ...css.matchAll(/@media screen and \(prefers-color-scheme: dark\)/g),
+  ]
+    .map((m) => ruleBody(css.slice(m.index), /@media/))
+    .find((body) => body.includes(':root[data-look="bold"]'));
   return {
+    boldLight: declarations(ruleBody(css, /^:root\[data-look="bold"\]\s*\{/m)),
+    boldDarkSystem: declarations(
+      ruleBody(
+        boldMedia ?? "",
+        /:root\[data-look="bold"\]:not\(\[data-theme="light"\]\)/,
+      ),
+    ),
+    boldDarkExplicit: declarations(
+      ruleBody(css, /:root\[data-look="bold"\]\[data-theme="dark"\]\s*\{/),
+    ),
     light: declarations(ruleBody(css, /^:root\s*\{/m)),
     darkSystem: declarations(
       ruleBody(media, /:root:not\(\[data-theme="light"\]\)/),
@@ -70,11 +88,18 @@ function hex(value: string): Rgba {
   return [n(0), n(2), n(4), h.length === 8 ? n(6) / 255 : 1];
 }
 
-export function resolveTheme(theme: Theme, css?: string) {
+/** Every role in `theme`, as `look` paints it: the base theme, Colorful's
+ * overrides over it, then the derived layers (which read whichever won). */
+export function resolveTheme(theme: Theme, css?: string, look: Look = "calm") {
   const blocks = tokenBlocks(css);
   const vars = new Map([
     ...blocks.light,
     ...(theme === "dark" ? blocks.darkSystem : []),
+    ...(look === "bold"
+      ? theme === "dark"
+        ? blocks.boldDarkSystem
+        : blocks.boldLight
+      : []),
     ...blocks.shared,
   ]);
   const cache = new Map<string, Rgba>();

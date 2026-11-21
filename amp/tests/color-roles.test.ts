@@ -4,6 +4,7 @@ import {
   contrast,
   resolveTheme,
   tokenBlocks,
+  type Look,
   type Theme,
 } from "../scripts/color-system.js";
 
@@ -49,13 +50,15 @@ const resting = [
   "answer",
 ];
 
-function check(theme: Theme) {
-  const { color } = resolveTheme(theme);
+function check(theme: Theme, look: Look) {
+  const { color } = resolveTheme(theme, undefined, look);
   const failures: string[] = [];
   const need = (fg: string, bg: string, min: number) => {
     const ratio = contrast(color(`--color-${fg}`), color(`--color-${bg}`));
     if (ratio < min)
-      failures.push(`${theme}: ${fg} on ${bg} = ${ratio.toFixed(2)} < ${min}`);
+      failures.push(
+        `${theme} ${look}: ${fg} on ${bg} = ${ratio.toFixed(2)} < ${min}`,
+      );
   };
   for (const [role, states] of pairs)
     for (const state of states) need(`on-${role}`, role + state, TEXT);
@@ -122,12 +125,47 @@ function check(theme: Theme) {
   ])
     for (const bg of ["surface", "surface-raised", "surface-sunken"])
       need(`strand-${strand}`, bg, UI);
+  if (look === "bold") {
+    // The points chip: its number is text on the chip, and the chip (a
+    // shape, with its edge) reads on every surface practice draws it over.
+    need("on-points", "points", TEXT);
+    for (const bg of ["surface", "surface-raised", "success"])
+      if (contrast(color("--color-points"), color(`--color-${bg}`)) < UI)
+        need("points-edge", bg, 1.5);
+    // Confetti is decoration, but no piece may vanish into the page.
+    for (const hue of [1, 2, 3, 4, 5, 6])
+      for (const bg of ["surface", "success"])
+        need(`celebrate-${hue}`, bg, 1.5);
+  }
   return failures;
 }
 
 for (const theme of ["light", "dark"] as const)
-  test(`every color role pair and state layer is readable in ${theme}`, () =>
-    assert.deepEqual(check(theme), []));
+  for (const look of ["calm", "bold"] as const)
+    test(`every color role pair and state layer is readable in ${theme}, ${look}`, () =>
+      assert.deepEqual(check(theme, look), []));
+
+test("Colorful is defined once per theme: both dark forms agree, every key in both themes", () => {
+  const { boldLight, boldDarkSystem, boldDarkExplicit, light } = tokenBlocks();
+  assert.deepEqual([...boldDarkExplicit], [...boldDarkSystem]);
+  assert.deepEqual([...boldDarkSystem.keys()], [...boldLight.keys()]);
+  // Colorful only swaps roles that exist, or adds its own (points, confetti).
+  for (const key of boldLight.keys())
+    assert.ok(
+      light.has(key) ||
+        /^--color-(points|on-points|points-edge|celebrate-\d)$/.test(key),
+      `${key} is not a role Calm has`,
+    );
+  // A miss stays kind and calm in either look; a problem's figures and the
+  // math they draw keep their own colors.
+  for (const key of boldLight.keys())
+    assert.ok(
+      !/^--color-(danger|on-danger|warning|on-warning|figure-|strand-)/.test(
+        key,
+      ),
+      `Colorful must not restyle ${key}`,
+    );
+});
 
 test("dark values are defined once: system and explicit dark blocks agree", () => {
   const { darkSystem, darkExplicit, light } = tokenBlocks();

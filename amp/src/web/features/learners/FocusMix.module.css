@@ -1,0 +1,55 @@
+/* What AMP is working on (FocusMix): a reason and its count in one
+   column, the skills behind it beside. */
+.focus {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.label {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.lines {
+  display: grid;
+  margin: 0;
+}
+.line {
+  display: grid;
+  grid-template-columns: minmax(10.5rem, max-content) minmax(0, 1fr);
+  column-gap: var(--space-4);
+  align-items: baseline;
+  padding: var(--space-1) 0;
+  font-size: var(--text-table);
+  line-height: 1.45;
+}
+.line dt {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-weight: 600;
+}
+.count {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+  font-weight: 600;
+}
+.line dd {
+  margin: 0;
+  min-width: 0;
+}
+.more {
+  color: var(--color-muted-text);
+}
+
+@media (max-width: 599px) {
+  .line {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .line dt {
+    justify-content: flex-start;
+  }
+}
