@@ -17,6 +17,23 @@ const guess = () =>
     ? DESKTOP_FROM
     : window.innerWidth - (window.innerWidth >= 768 ? 48 : 32);
 
+/** Calls `measure` when the element's size changes, on the next frame: a
+ * form that changes inside the observer's own delivery can change the
+ * element's size again, which the browser reports as a page error
+ * ("ResizeObserver loop completed with undelivered notifications"). */
+export function observeWidth(element: Element, measure: () => void) {
+  let frame = 0;
+  const observer = new ResizeObserver(() => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(measure);
+  });
+  observer.observe(element);
+  return () => {
+    cancelAnimationFrame(frame);
+    observer.disconnect();
+  };
+}
+
 /** This element's form, measured before paint and on every resize. */
 export function useLiveLayout(ref: RefObject<HTMLElement | null>): LiveLayout {
   const [layout, setLayout] = useState<LiveLayout>(() => layoutFor(guess()));
@@ -28,9 +45,7 @@ export function useLiveLayout(ref: RefObject<HTMLElement | null>): LiveLayout {
       if (element.clientWidth > 0) setLayout(layoutFor(element.clientWidth));
     };
     measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(element);
-    return () => observer.disconnect();
+    return observeWidth(element, measure);
   }, [ref]);
   return layout;
 }

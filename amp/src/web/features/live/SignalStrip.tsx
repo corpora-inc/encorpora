@@ -3,6 +3,7 @@ import type { LiveSignal } from "../../../schools/live/contracts";
 import { Button } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
 import { agoText, agoWords } from "./format";
+import { observeWidth } from "./layout";
 import { SIGNAL_WORDS, SignalGlyph } from "./SignalGlyph";
 import styles from "./SignalStrip.module.css";
 
@@ -125,9 +126,7 @@ export function SignalStrip({
       if (element.clientWidth > 0) setWidth(element.clientWidth);
     };
     measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(element);
-    return () => observer.disconnect();
+    return observeWidth(element, measure);
   }, []);
   const [open, setOpen] = useState(false);
   const ordered = [...signals].sort(
