@@ -281,6 +281,20 @@ try {
       );
     }
 } finally {
-  await browser.close();
-  await fixture.close();
+  // Teardown is bounded. On the CI runner one of these closes never settled
+  // after every case had passed, and the lane ran to its 75-minute limit
+  // with the later checks unrun.
+  const closed = (async () => {
+    await browser.close();
+    await fixture.close();
+    return true;
+  })();
+  const waited = new Promise<false>((resolve) =>
+    setTimeout(() => resolve(false), 30_000).unref(),
+  );
+  if (!(await Promise.race([closed, waited])))
+    console.warn("Lesson film check: teardown did not finish in 30 s; exiting");
 }
+// Every case passed (a failure above has already thrown): leave now, whatever
+// handle a close left open.
+process.exit(0);
