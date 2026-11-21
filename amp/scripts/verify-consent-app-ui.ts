@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { fixtureMe } from "./me-fixture";
 import {
   FIXTURE_FAMILY_ID,
@@ -193,6 +194,10 @@ try {
       // The family's Settings read its second parent (none here).
       if (path === "/api/v1/family/second-parent")
         return route.fulfill({ json: { secondParent: null } });
+      // The family's child practice view reads its practice-state once
+      // (fec1d4a53: the look and points come from it).
+      if (path.endsWith("/practice-state") && req.method() === "GET")
+        return route.fulfill({ json: practiceStateFixture() });
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
