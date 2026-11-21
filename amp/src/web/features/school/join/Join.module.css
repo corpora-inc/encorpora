@@ -310,6 +310,18 @@
 .pictures .message {
   min-height: 2.6em;
 }
+/* "I forgot my pictures": one quiet 44 px row, always there (empty for a
+   first time), so asking and waiting move nothing. */
+.forgot {
+  display: grid;
+  place-items: center;
+  height: 44px;
+}
+.forgot .forgotButton.forgotButton {
+  height: 44px;
+  min-height: 44px;
+  padding-block: 0;
+}
 .pad {
   position: relative;
   display: grid;
@@ -317,12 +329,12 @@
   /* The room the stepper, name, prompt, slots and message take above it and
      the foot below: the pad gets the rest, so the screen never scrolls and
      a pick in the last row can't move the stepper off the top (#26). */
-  --chrome-block: 480px;
+  --chrome-block: 528px;
   max-width: max(220px, calc(100dvh - var(--chrome-block)));
 }
 @media (max-width: 719.98px) {
   .pad {
-    --chrome-block: 410px;
+    --chrome-block: 458px;
   }
 }
 /* The pictures fill the screen to its foot: only a small margin under them. */
@@ -347,7 +359,7 @@
     --slot: min(21vw, 92px, 9.5dvh);
   }
   .pad {
-    --chrome-block: calc(290px + 9.5dvh);
+    --chrome-block: calc(338px + 9.5dvh);
   }
 }
 .grid {

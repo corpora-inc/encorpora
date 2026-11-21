@@ -7,7 +7,8 @@ import {
   streakMoment,
 } from "../tier";
 import { colorfulVoice, streakLift } from "../sound";
-import { pieceCount } from "../stage";
+import { burstCount, pieceCount } from "../stage";
+import { boostFor, namesFigureColors } from "../Celebration";
 
 const right = { id: "a1", correct: true, assisted: false };
 const helped = { id: "a2", correct: true, assisted: true };
@@ -183,5 +184,31 @@ describe("sound and weight", () => {
       22, 22, 44,
     ]);
     expect(pieceCount(14)).toBe(14);
+    // The right answer's burst, by the machine.
+    expect([burstCount(2), burstCount(4), burstCount(8), burstCount()]).toEqual(
+      [16, 28, 40, 40],
+    );
+  });
+  it("a run lifts the page's color from 3 in a row; a break lets it go", () => {
+    expect([0, 2, 3, 6, 10, 20].map(boostFor)).toEqual([
+      0, 0, 0.125, 0.5, 1, 1,
+    ]);
+  });
+  it("finds a figure color named in a problem's words, not elsewhere", () => {
+    expect(
+      namesFigureColors({ prompt: "The gold arrow goes from w to v." }),
+    ).toBe(true);
+    expect(
+      namesFigureColors({
+        prompt: "Which equations match?",
+        response: { options: [{ label: "teal pieces" }] },
+      }),
+    ).toBe(true);
+    expect(namesFigureColors({ prompt: "A bag holds 3 red counters." })).toBe(
+      false,
+    );
+    expect(namesFigureColors({ prompt: "Which shape is a rhombus?" })).toBe(
+      false,
+    );
   });
 });

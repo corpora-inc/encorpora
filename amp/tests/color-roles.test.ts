@@ -3,10 +3,33 @@ import assert from "node:assert/strict";
 import {
   contrast,
   resolveTheme,
+  type Rgba,
   tokenBlocks,
-  type Look,
+  type Colorful,
   type Theme,
 } from "../scripts/color-system.js";
+
+/** sRGB (0–255) to OKLab, for how far apart two marks look. */
+function oklab([r, g, b]: Rgba) {
+  const lin = [r, g, b].map((v) => {
+    v /= 255;
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  });
+  const l = Math.cbrt(
+    0.4122214708 * lin[0]! + 0.5363325363 * lin[1]! + 0.0514459929 * lin[2]!,
+  );
+  const m = Math.cbrt(
+    0.2119034982 * lin[0]! + 0.6806995451 * lin[1]! + 0.1073969566 * lin[2]!,
+  );
+  const s = Math.cbrt(
+    0.0883024619 * lin[0]! + 0.2817188376 * lin[1]! + 0.6299787005 * lin[2]!,
+  );
+  return [
+    0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+    1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+  ];
+}
 
 const TEXT = 4.5,
   UI = 3;
@@ -50,8 +73,11 @@ const resting = [
   "answer",
 ];
 
-function check(theme: Theme, look: Look) {
-  const { color } = resolveTheme(theme, undefined, look);
+function check(theme: Theme, colorful?: Colorful) {
+  const look = colorful
+    ? `colorful ${colorful.hue}°${colorful.boost ? " boosted" : ""}${colorful.named ? " named" : ""}${colorful.wide ? " wide" : ""}`
+    : "calm";
+  const { color } = resolveTheme(theme, undefined, colorful);
   const failures: string[] = [];
   const need = (fg: string, bg: string, min: number) => {
     const ratio = contrast(color(`--color-${fg}`), color(`--color-${bg}`));
@@ -125,46 +151,119 @@ function check(theme: Theme, look: Look) {
   ])
     for (const bg of ["surface", "surface-raised", "surface-sunken"])
       need(`strand-${strand}`, bg, UI);
-  if (look === "bold") {
-    // The points chip: its number is text on the chip, and the chip (a
-    // shape, with its edge) reads on every surface practice draws it over.
+  if (colorful) {
+    // Practice's own pairs: the points chip, the keys, a right answer's
+    // green check in its white disc, a miss's amber mark, the button's
+    // edge against the page.
     need("on-points", "points", TEXT);
-    for (const bg of ["surface", "surface-raised", "success"])
-      if (contrast(color("--color-points"), color(`--color-${bg}`)) < UI)
-        need("points-edge", bg, 1.5);
+    need("on-key", "key", TEXT);
+    need("key-edge", "surface", 1.3);
+    need("correct", "mark-disc", UI);
+    need("mark-disc", "success", 1.1);
+    need("danger-accent", "danger", UI);
+    need("on-danger", "danger", TEXT);
+    need("primary", "success", UI);
+    need("on-success", "success", TEXT);
+    need("muted-text", "success", TEXT);
     // Confetti is decoration, but no piece may vanish into the page.
     for (const hue of [1, 2, 3, 4, 5, 6])
-      for (const bg of ["surface", "success"])
-        need(`celebrate-${hue}`, bg, 1.5);
+      need(`celebrate-${hue}`, "surface", 1.5);
+    // A figure's three marks stay apart from each other at every hue
+    // (named marks are Calm's own, tested above).
+    const marks = ["accent", "warm", "gold"].map((mark) =>
+      oklab(color(`--color-figure-${mark}`)),
+    );
+    for (const [i, j] of [
+      [0, 1],
+      [0, 2],
+      [1, 2],
+    ] as const) {
+      const distance = Math.hypot(
+        marks[i]![0] - marks[j]![0],
+        marks[i]![1] - marks[j]![1],
+        marks[i]![2] - marks[j]![2],
+      );
+      if (distance < 0.1 && !colorful.named)
+        failures.push(
+          `${look}: figure marks ${i} and ${j} too close (ΔE ${distance.toFixed(3)})`,
+        );
+    }
   }
   return failures;
 }
 
 for (const theme of ["light", "dark"] as const)
-  for (const look of ["calm", "bold"] as const)
-    test(`every color role pair and state layer is readable in ${theme}, ${look}`, () =>
-      assert.deepEqual(check(theme, look), []));
+  test(`every color role pair and state layer is readable in Calm ${theme}`, () =>
+    assert.deepEqual(check(theme), []));
 
-test("Colorful is defined once per theme: both dark forms agree, every key in both themes", () => {
-  const { boldLight, boldDarkSystem, boldDarkExplicit, light } = tokenBlocks();
-  assert.deepEqual([...boldDarkExplicit], [...boldDarkSystem]);
-  assert.deepEqual([...boldDarkSystem.keys()], [...boldLight.keys()]);
-  // Colorful only swaps roles that exist, or adds its own (points, confetti).
-  for (const key of boldLight.keys())
-    assert.ok(
-      light.has(key) ||
-        /^--color-(points|on-points|points-edge|celebrate-\d)$/.test(key),
-      `${key} is not a role Calm has`,
+/** Colorful's hue samples: the whole circle, every 5°. */
+const hues = Array.from({ length: 72 }, (_, i) => i * 5);
+test("Colorful: every pair is readable at every hue, at rest and on a streak", () => {
+  // As an sRGB laptop shows it (clipped) and as a wide-gamut phone does.
+  const failures = hues.flatMap((hue) =>
+    [false, true].flatMap((wide) => [
+      ...check("light", { hue, wide }),
+      ...check("light", { hue, boost: 1, wide }),
+      ...check("light", { hue, named: true, wide }),
+    ]),
+  );
+  assert.deepEqual(failures, []);
+});
+
+test("Colorful is one scheme: the system's dark setting changes nothing", () => {
+  for (const hue of [0, 120, 240]) {
+    const light = resolveTheme("light", undefined, { hue });
+    const dark = resolveTheme("dark", undefined, { hue });
+    for (const name of light.names.filter((n) => n.startsWith("--color-")))
+      assert.deepEqual(light.color(name), dark.color(name), name);
+  }
+});
+
+/** Roles whose colors carry meaning, left as Calm's in Colorful: the math
+ * areas, grade letters, practice heat and dose, coin and bill metal, the
+ * avatars that tell people apart, provider brands, and print. */
+const FIXED =
+  /^--color-(strand-|grade-|heat-|dose-|coin-|bill-|avatar-|on-avatar-|provider|on-provider|brand-|print-)/;
+
+test("Colorful turns every other role with the hue: nothing of Calm's is left", () => {
+  const { light, bold } = tokenBlocks();
+  const missing = [...light.keys()].filter(
+    (key) => key.startsWith("--color-") && !FIXED.test(key) && !bold.has(key),
+  );
+  assert.deepEqual(missing, []);
+  for (const key of bold.keys())
+    assert.ok(!FIXED.test(key), `Colorful must leave ${key} as Calm's`);
+  // Every turning role really turns: two hues give two colors.
+  const at = (hue: number) => resolveTheme("light", undefined, { hue });
+  const [a, b] = [at(30), at(210)];
+  const constant = new Set([
+    "--color-on-primary",
+    "--color-on-selected",
+    "--color-success-accent",
+    "--color-not-yet-tint",
+    "--color-on-danger",
+    "--color-danger-accent",
+    "--color-warning",
+    "--color-on-warning",
+    "--color-warning-accent",
+    "--color-info",
+    "--color-on-info",
+    "--color-info-accent",
+    "--color-mark-disc",
+    "--color-correct",
+    "--color-points",
+    "--color-on-points",
+    "--color-points-edge",
+  ]);
+  for (const key of bold.keys()) {
+    if (!key.startsWith("--color-")) continue;
+    const same = JSON.stringify(a.color(key)) === JSON.stringify(b.color(key));
+    assert.equal(
+      same,
+      constant.has(key),
+      `${key} ${same ? "does not turn" : "turns"}`,
     );
-  // A miss stays kind and calm in either look; a problem's figures and the
-  // math they draw keep their own colors.
-  for (const key of boldLight.keys())
-    assert.ok(
-      !/^--color-(danger|on-danger|warning|on-warning|figure-|strand-)/.test(
-        key,
-      ),
-      `Colorful must not restyle ${key}`,
-    );
+  }
 });
 
 test("dark values are defined once: system and explicit dark blocks agree", () => {

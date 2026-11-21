@@ -76,6 +76,26 @@ export function registerStudentSignalRoutes(
     const found = await signIn.pictureStudent(input);
     return forgotPictureState(repository.pool, found.id, input.personId);
   });
+  // The student remembered: the request is taken back, so the adult's list
+  // clears. Same validation, limit and refusals as the neighbours.
+  scope.post(
+    "/api/v1/school/join/forgot-picture/withdraw",
+    limited,
+    async (request) => {
+      const input = forgotPictureBody.parse(request.body);
+      await signIn.pictureStudent(input);
+      await repository.transaction((db) =>
+        resolvePersonSignals(
+          db,
+          input.personId,
+          "forgot_picture",
+          "withdrawn",
+          input.personId,
+        ),
+      );
+      return { state: "none" as const };
+    },
+  );
 }
 
 export function defineSignalRoutes(define: typeof defineSchoolRoute) {

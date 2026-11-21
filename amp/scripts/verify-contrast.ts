@@ -357,7 +357,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     } catch (error) {
       console.error(
         `Sweep step failed: ${theme} ${width} ${state}`,
-        String(error).split("\n")[0],
+        String(error).split("\n").slice(0, 30).join("\n"),
       );
       await page
         .screenshot({
@@ -528,7 +528,8 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     });
     await step(`${prefix}choice-problem`, async () => {
       await next();
-      await page.getByRole("radio").first().check();
+      // Where a child taps: the option itself.
+      await page.locator(".choice-option").first().click();
     });
     await step(`${prefix}choice-feedback-incorrect`, async () => {
       await verdict(false, false);
@@ -537,7 +538,8 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     await step(`${prefix}choice-feedback-correct`, async () => {
       await verdict(true, false);
       await next();
-      await page.getByRole("radio").first().check();
+      // Where a child taps: the option itself.
+      await page.locator(".choice-option").first().click();
       await check(".solution-panel.correct");
     });
   };

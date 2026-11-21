@@ -591,6 +591,13 @@ function resolveOnce(
     // The address named someone this account doesn't read: unavailable,
     // never whoever was chosen before.
     const foreign = route === "learner" && !chosen && !!named;
+    // Whose it is can't be said before the account answers: still loading
+    // (failed, if its read failed), never "not available" to its owner.
+    if (foreign && !me)
+      return {
+        ...meSpace({ ...base, ...words("me") }, frame, me, null, "", true),
+        status: "loading",
+      } as SpaceDescriptor;
     if (chosen?.kind === "child")
       return familySpace({ ...base, ...words("family") }, frame, me, {
         orgId: chosen.family ?? me?.familyClass?.orgId ?? null,

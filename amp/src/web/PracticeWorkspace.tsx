@@ -99,6 +99,7 @@ import type { ProblemFlagInput } from "../feedback/problem-flags";
 import { problemFlagBody } from "./problem-flag";
 import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
 import { Celebration } from "./features/practice/celebration/Celebration";
+import { RaiseHand } from "./features/live/RaiseHand";
 import {
   prepareFeedbackSound,
   playCorrectFeedback,
@@ -1844,6 +1845,7 @@ export function PracticeWorkspace(props: Props) {
           </svg>
         </span>
       )}
+      {props.toolbarInFrame && <RaiseHand />}
     </>
   );
   return (
@@ -1851,7 +1853,7 @@ export function PracticeWorkspace(props: Props) {
       <Celebration
         outcome={review ? null : outcome}
         mastered={props.mastered}
-        problemId={problem.id}
+        problem={problem}
       />
       <section
         className="practice-surface"

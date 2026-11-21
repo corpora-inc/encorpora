@@ -1,3 +1,4 @@
+import "./css-stub";
 import { act, cleanup, render } from "@testing-library/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -7,6 +8,7 @@ import { creditAnswer, isCredited, usePoints } from "../../points";
 import { Celebration } from "../Celebration";
 import { dropStage } from "../stage";
 import { useCelebrationStore } from "../store";
+import { GOLDEN_ANGLE, hueAt, startHue, useHueStore } from "../hue";
 
 const who = vi.hoisted(() => ({ learner: "kid-1" as string | null }));
 vi.mock("../../../../lib/session", async (actual) => ({
@@ -44,10 +46,18 @@ const answer = (correct: boolean, assisted = false) => ({
 });
 type Outcome = ReturnType<typeof answer> | null;
 
-function Host({ outcome, problem }: { outcome: Outcome; problem: string }) {
+function Host({
+  outcome,
+  problem,
+  prompt = "What is 3 + 4?",
+}: {
+  outcome: Outcome;
+  problem: string;
+  prompt?: string;
+}) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Celebration outcome={outcome} problemId={problem} />
+      <Celebration outcome={outcome} problem={{ id: problem, prompt }} />
     </QueryClientProvider>
   );
 }
@@ -72,6 +82,9 @@ afterEach(() => {
   cleanup();
   dropStage();
   document.documentElement.removeAttribute("data-look");
+  document.documentElement.removeAttribute("style");
+  localStorage.clear();
+  useHueStore.setState({ learners: {} });
 });
 
 /** Mounts practice on a problem, as the workspace does, and answers it. */
@@ -97,13 +110,13 @@ describe("Celebration", () => {
 
   it("a miss plays nothing and changes no points", async () => {
     await answerWith(answer(false));
-    expect(running().filter((r) => !r.startsWith("sweep"))).toEqual([]);
+    expect(running().filter((r) => !r.startsWith("chip:"))).toEqual([]);
     expect(total()).toBe(88);
   });
 
   it("a right answer with help: kind, plain feedback, no point", async () => {
     await answerWith(answer(true, true));
-    expect(running().filter((r) => !r.startsWith("sweep"))).toEqual([]);
+    expect(running().filter((r) => !r.startsWith("chip:"))).toEqual([]);
     expect(total()).toBe(88);
   });
 
@@ -118,7 +131,7 @@ describe("Celebration", () => {
     const done = answer(true);
     render(<Host outcome={done} problem="p1" />);
     await settle();
-    expect(running().filter((r) => !r.startsWith("sweep"))).toEqual([]);
+    expect(running().filter((r) => !r.startsWith("chip:"))).toEqual([]);
     expect(total()).toBe(88);
   });
 
@@ -151,6 +164,56 @@ describe("Celebration", () => {
     expect(running()).toEqual(
       expect.arrayContaining(["chip:points-10", "chipSparks:points-10"]),
     );
+  });
+});
+
+describe("the world's hue", () => {
+  const hue = () =>
+    document.documentElement.style.getPropertyValue("--look-hue");
+  it("turns by the golden angle with each new problem, from the learner's own start", async () => {
+    document.documentElement.setAttribute("data-look", "bold");
+    const view = render(<Host outcome={null} problem="p1" />);
+    await settle();
+    expect(hue()).toBe(`${startHue("kid-1")}deg`);
+    view.rerender(<Host outcome={null} problem="p2" />);
+    await settle();
+    expect(hue()).toBe(`${hueAt("kid-1", 1)}deg`);
+    expect(hueAt("kid-1", 1)).toBe(
+      Math.round((startHue("kid-1") + GOLDEN_ANGLE) % 360),
+    );
+  });
+  it("keeps a problem's hue when it comes back (a reload, Back)", async () => {
+    document.documentElement.setAttribute("data-look", "bold");
+    const view = render(<Host outcome={null} problem="p1" />);
+    await settle();
+    view.rerender(<Host outcome={null} problem="p2" />);
+    await settle();
+    const second = hue();
+    view.rerender(<Host outcome={null} problem="p1" />);
+    await settle();
+    view.rerender(<Host outcome={null} problem="p2" />);
+    await settle();
+    expect(hue()).toBe(second);
+  });
+  it("leaves the figure's marks as Calm's when the words name them", async () => {
+    document.documentElement.setAttribute("data-look", "bold");
+    const view = render(
+      <Host
+        outcome={null}
+        problem="p1"
+        prompt="Some pieces are teal and some rust."
+      />,
+    );
+    await settle();
+    expect(document.documentElement.dataset.figureColors).toBe("named");
+    view.rerender(<Host outcome={null} problem="p2" />);
+    await settle();
+    expect(document.documentElement.dataset.figureColors).toBeUndefined();
+  });
+  it("sets nothing in Calm", async () => {
+    render(<Host outcome={null} problem="p1" />);
+    await settle();
+    expect(hue()).toBe("");
   });
 });
 

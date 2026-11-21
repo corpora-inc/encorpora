@@ -3,6 +3,7 @@ import { playCorrectFeedback, setFeedbackVoice } from "../feedback-preferences";
 import { useLookOnScreen, usePrefersReducedMotion } from "../look";
 import { creditAnswer, usePoints, usePracticeScope } from "../points";
 import { colorfulVoice } from "./sound";
+import { hueOf, paintHue } from "./hue";
 import { stage } from "./stage";
 import { learnerKey, useCelebrationStore } from "./store";
 import {
@@ -12,16 +13,44 @@ import {
   type Moment,
   type SkillEvidence,
 } from "./tier";
-import "./skin.css";
 
 type Props = {
   /** The answer on screen, once graded. */
   outcome: (Answer & { skillId: string }) | null;
   /** The existing "Skill mastered" moment, when the host knows it. */
   mastered?: string | null;
-  /** The problem on screen: a new one arrives with the sweep. */
-  problemId: string;
+  /** The problem on screen: a new one turns the world to its hue. */
+  problem: {
+    id: string;
+    prompt?: unknown;
+    response?: unknown;
+    hintSupport?: unknown;
+  };
 };
+
+/** The names templates give the figure roles accent, warm and gold, as
+ * Calm draws them ("some teal and some rust", "the gold arrow"). */
+const NAMED_COLORS = /\b(teal|rust|gold)\b/i;
+/** Whether the problem's words (its prompt, its answer's options and
+ * labels, its hint) name a figure color: then the figure keeps Calm's marks,
+ * so the words stay true. */
+export const namesFigureColors = (problem: {
+  prompt?: unknown;
+  response?: unknown;
+  hintSupport?: unknown;
+}) => {
+  try {
+    return NAMED_COLORS.test(
+      JSON.stringify([problem.prompt, problem.response, problem.hintSupport]),
+    );
+  } catch (error) {
+    console.warn("A problem's words were not read for color names", error);
+    return true;
+  }
+};
+/** A streak's extra color on the page: from 3 right in a row, full at 10. */
+export const boostFor = (streak: number) =>
+  streak < 3 ? 0 : Math.min(1, (streak - 2) / 8);
 
 /**
  * Practice's one seam for Colorful (PracticeWorkspace renders it once,
@@ -32,7 +61,8 @@ type Props = {
  * plays on over the next one, and nothing here can move the page or wait
  * on the learner. In Calm it only counts the point.
  */
-export function Celebration({ outcome, mastered, problemId }: Props) {
+export function Celebration({ outcome, mastered, problem }: Props) {
+  const problemId = problem.id;
   const scope = usePracticeScope();
   const look = useLookOnScreen();
   const reduced = usePrefersReducedMotion();
@@ -58,13 +88,23 @@ export function Celebration({ outcome, mastered, problemId }: Props) {
     return setFeedbackVoice(colorfulVoice(() => streak.current));
   }, [colorful]);
 
-  // A new problem: the glint along the bar (the problem's own entrance is
-  // CSS, skin.css).
+  // A new problem turns the world to its own hue, with its entrance
+  // (skin.css), in the commit that shows it. A run in progress keeps its
+  // extra color; a broken one has quietly let it go.
   useLayoutEffect(() => {
-    if (colorful) stage().sweep(reduced);
-    // Keyed on the problem only: a change of look is not a new problem.
+    if (!colorful || !scope) return;
+    const root = document.documentElement;
+    if (namesFigureColors(problem)) root.dataset.figureColors = "named";
+    else delete root.dataset.figureColors;
+    const run =
+      useCelebrationStore.getState().runs[learnerKey(scope)]?.streak ?? 0;
+    paintHue(hueOf(scope.learnerId, problemId), boostFor(run));
+    return () => {
+      delete root.dataset.figureColors;
+    };
+    // Keyed on the problem: the same problem keeps its world.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [problemId]);
+  }, [problemId, colorful]);
 
   // Grading: runs in the commit that shows the verdict, before the
   // workspace plays its sound (sound.ts reads the run).
@@ -96,6 +136,7 @@ export function Celebration({ outcome, mastered, problemId }: Props) {
         from: counted ? before : null,
         to: counted && before != null ? before + 1 : null,
         reduced,
+        streak: counted ? run : 0,
       });
     measured(started);
     // Graded once per answer; the rest is read as it stood then.

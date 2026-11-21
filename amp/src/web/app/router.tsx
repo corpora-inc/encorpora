@@ -107,6 +107,8 @@ import { familyRoutes } from "./family-routes";
 import { accountOverlays } from "./account-overlays";
 import { payAddresses } from "./pay-routes";
 import { appReturn } from "../features/spaces/returns";
+import { loadSpaceFrame } from "../features/spaces/useSpace";
+import { applyRouteHead, routeHead } from "./route-head";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
@@ -229,15 +231,24 @@ const root = createRootRoute({
       .catch((error: unknown) =>
         console.warn("The session didn’t load ahead", error),
       );
-    // The document's first screen already read the account in this load: a
-    // hop on the way to it (an alias, `/practice` to the learner's own
-    // address) is the same screen and reads it once.
-    const firstLoadRead =
-      !router.state.resolvedLocation &&
+    const known =
       !!session &&
       queryClient.getQueryData(meOptions(session).queryKey) !== undefined;
-    // The resource's observer shows its own error; this refresh only logs.
-    if (session && !firstLoadRead)
+    // Who this is and the place the address names are known before any
+    // screen renders, so the frame's first paint is the destination's
+    // (features/spaces/useSpace.ts `loadSpaceFrame`). Cached, it costs
+    // nothing: a warm move paints at once.
+    await loadSpaceFrame(
+      session ?? null,
+      location.pathname,
+      location.search as Record<string, unknown>,
+    );
+    // A later move refreshes an account already known, without waiting on
+    // it. (The document's first screen read it just now; a hop on the way to
+    // it, an alias or `/practice` to the learner's own address, is the same
+    // screen and reads it once.) The resource's observer shows its own
+    // error; this refresh only logs.
+    if (session && known && router.state.resolvedLocation)
       void queryClient
         .fetchQuery({ ...meOptions(session), staleTime: 0 })
         .catch((error: unknown) =>
@@ -397,6 +408,10 @@ async function beforeStart({
     // kept for the account; the next steps are plain paths.
     fundedSetup(session.accountId, location.search),
   );
+  // Nothing left to set up: the account's own place in this one hop, never
+  // `/` and a second hop from there.
+  if (target === "/" && !Object.keys(search).length)
+    await toOwnPlace(me.signedIn ? me : undefined);
   if (target) elsewhere(withQuery(target, search));
 }
 /**
@@ -438,10 +453,19 @@ const home = createRoute({
     program: search.program,
     ...campaignSearch(search),
   }),
-  loader: async ({ deps, location }) => {
+  loader: async ({ deps, location, preload }) => {
     const session = homeSession(location.search);
     const shown = showsPitch(session);
     setPitchShown(shown);
+    // Decided: `/`'s title is the screen's before it paints (index.html
+    // carries the pitch's; RouterView writes the same once it resolves).
+    // Only on the document's first screen: a later move keeps the screen
+    // it leaves, and its title, until `/` paints.
+    const head =
+      !preload &&
+      !router.state.resolvedLocation &&
+      routeHead(location.href, shown ? "pitch" : "app");
+    if (head) applyRouteHead(document, head);
     if (!shown) {
       // Signed in, `/` is the launcher: its places arrive with it, so it
       // paints whole (the native app keeps its own screen here).
@@ -855,12 +879,51 @@ const beforeWorkbooks = ({
 }: {
   location: { pathname: string; searchStr: string };
 }) => requireSignedIn(location, { web: true, adults: true });
+/** A learner's workbook screen paints whole: what it shows first (the list,
+ * a day's workbook and its areas, a workbook's results) arrives with it, for
+ * a learner this account may read (the account is known by now: the root's
+ * `beforeLoad`). A failed read is the screen's own to say. */
+const workbookLoader =
+  (
+    reads: (
+      api: typeof import("../features/workbooks/api"),
+      session: AuthSession,
+      params: Record<string, string>,
+    ) => { queryKey: readonly unknown[] }[],
+  ) =>
+  async ({ params }: { params: Record<string, string> }) => {
+    const session = queryClient.getQueryData(sessionOptions.queryKey);
+    if (!session) return;
+    const me = queryClient.getQueryData(meOptions(session).queryKey);
+    const learner = me?.signedIn
+      ? me.family.learners.find(
+          (entry) => entry.id === params.learnerId && !entry.deletedAt,
+        )
+      : undefined;
+    const [api, { canReadWorkbooks }] = await Promise.all([
+      import("../features/workbooks/api"),
+      import("../features/workbooks/model"),
+    ]);
+    if (!learner || !canReadWorkbooks(learner)) return;
+    await Promise.all(
+      reads(api, session, params).map((options) =>
+        queryClient
+          .ensureQueryData(options as never)
+          .catch((error: unknown) =>
+            console.warn("The workbook didn’t load ahead", error),
+          ),
+      ),
+    );
+  };
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader((api, session, { learnerId }) => [
+    api.workbookHistoryOptions(session, learnerId!),
+  ]),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
     "WorkbookHistoryScreen",
@@ -871,6 +934,11 @@ const workbookDay = createRoute({
   path: "/learners/$learnerId/workbooks/$date",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader((api, session, { learnerId, date }) => [
+    api.workbookHistoryOptions(session, learnerId!),
+    api.workbookHistoryOptions(session, learnerId!, date),
+    api.workbookAreasOptions(session, learnerId!),
+  ]),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
     "WorkbookDayScreen",
@@ -881,6 +949,9 @@ const workbookResults = createRoute({
   path: "/learners/$learnerId/workbooks/$workbookId/results",
   staticData: { space: "learner" },
   beforeLoad: beforeWorkbooks,
+  loader: workbookLoader((api, session, { learnerId, workbookId }) => [
+    api.workbookResultsOptions(session, learnerId!, workbookId!),
+  ]),
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
@@ -1281,8 +1352,16 @@ const schoolConnect = createRoute({
   beforeLoad: async () => {
     admit({ web: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
-    if (config.mode === "accounts" && !config.clever)
+    if (config.mode === "accounts" && !config.clever) {
+      // Class setup's own guard, here, so this is one hop: a student's
+      // device to its practice, someone signed out to sign-in that comes
+      // back to setup, everyone else to setup.
+      await requireSignedIn(
+        { pathname: "/school/start", searchStr: "" },
+        { web: true, adults: true, back: "here" },
+      );
       elsewhere("/school/start");
+    }
     if (studentSession()) {
       // The component may already have captured a hash-only completion.
       // Await its validation; only the helper can replace a student, and
