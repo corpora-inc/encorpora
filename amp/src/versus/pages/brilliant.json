@@ -1,0 +1,228 @@
+{
+  "slug": "brilliant",
+  "name": "Brilliant",
+  "category": "adaptive",
+  "checked": "2026-11-21",
+  "benefit": "a rule for mastery and review",
+  "line": "Brilliant teaches with interactive problems from about grade 4; AMP starts at counting and schedules every review.",
+  "description": "AMP vs Brilliant: interactive lessons and an AI tutor from about grade 4, or one program from counting to precalculus with a mastery rule and set review.",
+  "verdict": "Brilliant builds its lessons from interactive problems, with apps, an AI tutor and coding courses [1][10], for far less than AMP costs [2]. Its math starts near grade 4, and we found no stated mastery rule or review schedule in its published materials [7][9][11]. AMP runs from counting to precalculus, chooses every next problem, and brings each learned skill back on a fixed schedule.",
+  "reasons": [
+    {
+      "title": "AMP starts at counting, not at fractions",
+      "body": "Brilliant's math begins with fractions at about grade 4 or 5 and runs to the opening topics of calculus [7]. Its help center says it \"does not present a complete K–3 arithmetic sequence\" [7]. Its free K–5 practice library held kindergarten and grade 1 quizzes when we checked, with grades 2 to 5 marked coming soon [20]. AMP covers counting through precalculus on one map of 336 skills, so a learner who struggles with fractions is sent back to the skills fractions build on, however early they sit.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "A written rule for when a skill is learned",
+      "body": "Each Brilliant concept ends with a skill check, and unit checks reach back to earlier material [11]. We found no stated threshold for mastery in its published materials [11]. In AMP a skill counts as learned when four of the last five answers are right without help, and an answer given after a hint or the lesson does not count. Two misses in a row send practice back to what the skill builds on, and the rule sits in public code anyone can read.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Old skills come back on a fixed schedule",
+      "body": "Brilliant says important ideas return across sessions, and it names spacing and interleaving among its methods [9]. Missed problems on a unit check add review lessons to the plan [11]. We found no schedule of review intervals in its published materials [9]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over.",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "A worked example behind every problem",
+      "body": "Brilliant's lessons often pose a question before showing the procedure, then connect visual models to the notation [9]. In AMP every one of the 1,384 problem types has a written lesson with a worked example, and worked steps follow every answer, right or wrong. Across 55 studies, worked examples improved math performance by an average of g = 0.48 [24].",
+      "research": [
+        "lessons",
+        "feedback"
+      ]
+    },
+    {
+      "title": "Paper workbooks, and records a homeschool can keep",
+      "body": "Brilliant needs an internet connection, and its lessons are not available offline [6]. It tells homeschool families to build their own portfolio and records [8]. Its parent dashboard comes only with Family or Single Child plans, shows activity and accuracy on checks, and says it is not a grade [13]. AMP prints unlimited workbooks made for each learner, with worked answer keys, and gives the adult a level in every strand, progress reports and report cards.",
+      "research": [
+        "progress"
+      ]
+    },
+    {
+      "title": "No AI model writes what a learner sees",
+      "body": "Koji, Brilliant's AI tutor, is built partly on a third-party language model and is designed to ask guiding questions rather than hand over answers [10]. AMP runs no AI model while a learner works. Each hint is one step built from the problem's own numbers, a test checks that no hint gives the answer, and 185 independent checkers re-derive the answers.",
+      "research": [
+        "hints"
+      ]
+    }
+  ],
+  "rows": {
+    "price": "Pricing page: Individual $20 or $14 a month, Family (six seats) $40 or $28; 30% Black Friday sale on annual plans, billed as one payment [2]. Limited free tier [3].",
+    "buyers": "Families and individuals, online or through app stores [2]. Trials need a card [4]. ESA funds in Arizona, Arkansas and Florida [5].",
+    "range": "From fractions at about grade 4 to opening calculus topics, plus coding and science [1][7]. No complete K–3 arithmetic sequence [7].",
+    "start": "A short diagnostic at signup picks a starting topic. Jumping ahead takes a passed level check [12].",
+    "teaching": "Interactive problems: move a point, test a pattern, pick a strategy [9]. Koji, an AI tutor, asks guiding questions [10].",
+    "next": "A recommended topic order; Premium learners may take topics in any order [19]. Practice uses learning history to pick problems [9].",
+    "mastery": "A skill check ends each concept. No stated mastery threshold found in its published materials [11].",
+    "review": "Ideas return across sessions; missed unit-check problems add review lessons [9][11]. No schedule of intervals found [9].",
+    "print": "No printables found for its main courses. The free K–5 library mentions printable worksheets in a guide [20]. Lessons need an internet connection [6].",
+    "adult": "None required. Built for learners who work independently [18]. Homeschool families keep their own records [8].",
+    "reports": "Parent dashboard on Family or Single Child plans: days active, problems solved, accuracy on checks. Not a grade, it says [13].",
+    "evidence": "No outcome study found on its site, in Evidence for ESSA or WWC intervention reports [21][22]. Its Koji figures are behavioral signals, not a controlled study [18]."
+  },
+  "theirs": [
+    "Brilliant teaches math, coding, data science and science through short interactive lessons, on the web and in apps for iPhone and Android [1][16]. Its math runs from fractions at about grade 4 to the opening topics of calculus [7]. It says it is trusted by more than 5,000 schools [1].",
+    "A learner opens a topic and works through short concepts built from interactive problems: move a point, test a pattern, estimate, choose a strategy [9]. Each concept ends with a skill check. Unit checks cover the unit and earlier material, and use a map of prerequisite skills to find the gap behind a miss [11]. A short diagnostic at signup picks the starting topic [12]. Koji, an AI tutor drawn as a character, can see the problem, ask guiding questions and sketch on the interactive [10]. Streaks and XP track the habit [17].",
+    "Brilliant describes itself as a fit for learners who work independently [18]. It says it is not a complete K–12 school, and that it can serve as the core for math with other support in the early grades [8]. A free tier unlocks two concepts or practice sets a day [3]."
+  ],
+  "credit": [
+    "Interactive, visual lessons that run into calculus, plus courses in coding, data science and AI [1][7]. AMP stops at precalculus and teaches only math.",
+    "Koji, an AI tutor that sees the problem, asks guiding questions and can sketch on the screen, built not to hand over answers [10]. AMP has no chat tutor.",
+    "Apps for iPhone and Android as well as the web, with streaks and XP [16][17]. AMP runs in a browser, with no store apps and no streaks.",
+    "A much lower price, a family plan with six seats, a free tier, and free classroom access for eligible teachers [2][3][15].",
+    "ESA funds in Florida as well as Arizona and Arkansas, and ACS WASC accreditation [5][14]. AMP takes no Florida funds, and has no accreditation."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no study of Brilliant's effect on math achievement on its website, in Evidence for ESSA, or among the What Works Clearinghouse's intervention reports, as of November 2026 [21][22].",
+      "Brilliant's own numbers come from a July 2026 analysis of middle and high school learners who asked Koji for help. 94% tried again, 66% then answered correctly without Koji giving the answer, and 87% of those who moved on got the next problem right [18]. Brilliant calls these behavioral signals and says they are not a substitute for a controlled academic study [18]. The analysis describes no comparison group, and the figures describe behavior inside the product, not test scores.",
+      "Its FAQ says interactive learning is \"6x more effective\" than passive methods, and links a news article; the page describes no study of Brilliant [6]."
+    ],
+    "ours": [
+      "Brilliant and AMP lean on some of the same science: Brilliant names spacing and interleaving [9]. AMP turns them into a rule. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [23]. Worked examples, which AMP attaches to every problem type, average g = 0.48 across 55 studies [24]. We expect a program that applies both at every problem to show it in outcomes, and we have committed to measuring that in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child is in about grade 4 or above, loves puzzles, and wants coding or data science beside math.",
+      "You want a phone or tablet app, or an AI tutor your child can talk a problem through with.",
+      "Your learner is ready to start calculus, which AMP does not teach.",
+      "You want enrichment beside a core curriculum, at a much lower price, or paid from a Florida ESA."
+    ],
+    "amp": [
+      "Your child is in kindergarten through grade 3, or still building arithmetic. AMP starts at counting.",
+      "You want the program to choose every next problem and to say when a skill is learned, by a rule you can read.",
+      "You want old skills brought back on a schedule, without planning it.",
+      "You want paper too: workbooks made for your child, each with a worked answer key.",
+      "You keep homeschool records and want a level in every strand, report cards, and the problems behind each number."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Brilliant a complete math curriculum?",
+      "answer": "Brilliant says it is not a complete K–12 school, and that early elementary learners may need other support [8]. It does not present a complete K–3 arithmetic sequence [7]. AMP runs from counting through precalculus in one program."
+    },
+    {
+      "question": "Is AMP more expensive than Brilliant?",
+      "answer": "Yes. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more, with two parents practicing free. On November 21, 2026, Brilliant's pricing page showed Individual at $20 or $14 a month and Family, with six seats, at $40 or $28, with 30% off annual plans for Black Friday [2]."
+    },
+    {
+      "question": "Does AMP have an AI tutor like Koji?",
+      "answer": "No. AMP runs no AI model while a learner works. Every problem type has a one-step hint that never gives the answer, a written lesson with a worked example, and worked steps after each answer."
+    },
+    {
+      "question": "Can we use AMP and Brilliant together?",
+      "answer": "Yes. Some families may use AMP for the core path and its review schedule, and Brilliant for interactive puzzles or coding. AMP's first 100 answers and 5 workbooks are free, with no card."
+    },
+    {
+      "question": "Has Brilliant been shown to raise math scores?",
+      "answer": "We found no outcome study of Brilliant on its site, in Evidence for ESSA or in the What Works Clearinghouse's intervention reports [21][22]. Its published figures track behavior inside the app, and Brilliant says they are not a substitute for a controlled study [18]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Brilliant (home page)",
+      "url": "https://brilliant.org/"
+    },
+    {
+      "title": "Brilliant Premium pricing (Brilliant)",
+      "url": "https://brilliant.org/subscribe/"
+    },
+    {
+      "title": "What's the difference between Free and Premium? (Brilliant Help)",
+      "url": "https://brilliant.org/help/pricing-and-plans/what-s-the-difference-between-free-and-premium/"
+    },
+    {
+      "title": "Does Brilliant offer any free trials? (Brilliant Help)",
+      "url": "https://brilliant.org/help/pricing-and-plans/does-brilliant-offer-any-free-trials/"
+    },
+    {
+      "title": "Ways to pay for Brilliant (Brilliant Help)",
+      "url": "https://brilliant.org/help/pricing-and-plans/ways-to-pay-for-brilliant/"
+    },
+    {
+      "title": "Frequently asked questions (Brilliant)",
+      "url": "https://brilliant.org/faq/"
+    },
+    {
+      "title": "What math does Brilliant cover? (Brilliant Help)",
+      "url": "https://brilliant.org/help/courses-and-curriculum/what-math-does-brilliant-cover/"
+    },
+    {
+      "title": "Can I use Brilliant for homeschooling? (Brilliant Help)",
+      "url": "https://brilliant.org/help/using-brilliant/can-i-use-brilliant-for-homeschooling/"
+    },
+    {
+      "title": "How Brilliant teaches math (Brilliant)",
+      "url": "https://brilliant.org/resources/choosing-brilliant/how-brilliant-teaches-math/"
+    },
+    {
+      "title": "How does Koji work? (Brilliant Help)",
+      "url": "https://brilliant.org/help/features/how-does-koji-work/"
+    },
+    {
+      "title": "Skill checks and unit checks (Brilliant)",
+      "url": "https://brilliant.org/assessments/"
+    },
+    {
+      "title": "Course placement guide (Brilliant Help)",
+      "url": "https://brilliant.org/help/parents-and-families/course-placement-guide/"
+    },
+    {
+      "title": "Parent progress dashboards on Brilliant (Brilliant Help)",
+      "url": "https://brilliant.org/help/features/parent-progress-dashboards-on-brilliant/"
+    },
+    {
+      "title": "Is Brilliant accredited? (Brilliant Help)",
+      "url": "https://brilliant.org/help/using-brilliant/is-brilliant-accredited/"
+    },
+    {
+      "title": "Brilliant for educators (Brilliant)",
+      "url": "https://brilliant.org/educators/"
+    },
+    {
+      "title": "Where can I use Brilliant? (Brilliant Help)",
+      "url": "https://brilliant.org/help/using-brilliant/where-can-i-use-brilliant/"
+    },
+    {
+      "title": "Does Brilliant offer certificates? (Brilliant Help)",
+      "url": "https://brilliant.org/help/courses-and-curriculum/does-brilliant-offer-certificates/"
+    },
+    {
+      "title": "Is Brilliant worth it? (Brilliant)",
+      "url": "https://brilliant.org/resources/choosing-brilliant/is-brilliant-worth-it/"
+    },
+    {
+      "title": "What are learning paths? (Brilliant Help)",
+      "url": "https://brilliant.org/help/features/what-are-learning-paths/"
+    },
+    {
+      "title": "Free K–5 math practice (Brilliant)",
+      "url": "https://brilliant.org/practice/"
+    },
+    {
+      "title": "Evidence for ESSA, site search for Brilliant",
+      "url": "https://www.evidenceforessa.org/?s=brilliant"
+    },
+    {
+      "title": "What Works Clearinghouse, intervention reports",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
+  ]
+}

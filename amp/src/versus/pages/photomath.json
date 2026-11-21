@@ -1,0 +1,129 @@
+{
+  "slug": "photomath",
+  "name": "Photomath",
+  "maker": "Google",
+  "category": "ai",
+  "checked": "2026-11-21",
+  "benefit": "The learner does the math",
+  "line": "Photomath solves the problem a learner photographs. AMP chooses the next problem and asks the learner to solve it.",
+  "description": "AMP vs Photomath: a free app that solves the homework a learner photographs, and a program that makes the learner answer and chooses what comes next.",
+  "verdict": "Photomath, now owned by Google, solves the math problem a learner photographs or types and shows the solution step by step, free [1][3]. That makes it a good way to check work. It is not a course: we found no placement, practice plan, review or progress report on its pages [1][2]. AMP asks the learner to do the math, chooses every next problem from the answers, and brings learned skills back on a schedule.",
+  "reasons": [
+    {
+      "title": "The learner works the problem, not the app",
+      "body": "Photomath shows the full solution to a scanned or typed problem, step by step [1]. Common Sense Media's summary reads \"Point, scan, solve support tool; watch for cheating\" [5]. In AMP the worked steps come after the learner answers, once, or skips, and a skip earns nothing. A hint gives only the first step, never the answer, and an answer given after a hint does not count toward mastery.",
+      "research": ["hints", "mastery"]
+    },
+    {
+      "title": "AMP decides what to practice next",
+      "body": "Photomath works on whatever problem it is shown. We found no placement, practice plan or record of what a learner knows in its published materials [1][2]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers: new work, a prerequisite, or review. Two misses in a row on a skill send practice back to what it builds on.",
+      "research": ["level", "mastery"]
+    },
+    {
+      "title": "Learned skills come back on a schedule",
+      "body": "We found no review of earlier skills in Photomath's published materials [1][2]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own surprise test a month later, against 38% for practice in blocks [14].",
+      "research": ["review"]
+    },
+    {
+      "title": "An adult can see what was learned",
+      "body": "We found no parent or teacher view, report or gradebook on Photomath's pages [1]. AMP shows the adult the working level with its likely range, a map of all 14 strands, the skills earned, time by day, and the actual problems the learner answered. For a teacher, the Today screen lists who needs help and which students share a gap.",
+      "research": ["progress"]
+    },
+    {
+      "title": "A lesson for every skill, counting to precalculus",
+      "body": "Photomath explains the problem in front of it, and Plus adds more than 400 animated tutorials [1][2]. AMP is a whole program: 336 skills on one prerequisite map, and a written lesson with a worked example for every one of its 1,384 problem types. 961 reference lessons each carry a guide for the parent, and narrated films cover a growing share of problem types.",
+      "research": ["lessons", "films"]
+    }
+  ],
+  "rows": {
+    "price": "Basic is free. Plus is $9.99 a month or $69.99 a year, with a trial of unstated length [1][2].",
+    "buyers": "Individuals, billed through the app store [4]. We found no school plan or education-fund payment on its pages [1].",
+    "range": "Elementary math, algebra, geometry, trigonometry, statistics and calculus [1]. No course to follow: it solves the problems a learner brings.",
+    "start": "None needed. The learner photographs or types a problem. We found no placement or diagnostic [1][2].",
+    "teaching": "Step-by-step solutions, sometimes by more than one method [1]. Plus adds animated tutorials, deeper explanations and contextual hints [2].",
+    "next": "The learner decides, by bringing the next problem [1].",
+    "mastery": "No practice to grade and no mastery rule found in its published materials [1][2].",
+    "review": "No scheduled review found in its published materials [1][2].",
+    "print": "No printable practice or workbooks found [1].",
+    "adult": "Nothing to set up, and nothing to see: we found no parent or teacher view [1].",
+    "reports": "No parent or teacher reports found in its published materials [1].",
+    "evidence": "One small before-and-after study with no comparison group [11]. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [8][9]."
+  },
+  "theirs": [
+    "Photomath is a homework app. A learner points a phone camera at a math problem, printed or handwritten, or types it in, and the app shows the solution step by step [1][13]. It launched in 2014, and Google completed its purchase in 2023 [13]. The App Store lists Google LLC as the seller [3].",
+    "The free tier gives step-by-step explanations and can show more than one method, across elementary math, algebra, geometry, trigonometry, statistics and calculus [1]. Photomath Plus, at $9.99 a month or $69.99 a year, adds what Google calls \"AI-powered animated tutorials, deeper explanations and contextual hints\", with more than 400 tutorials [1][2]. A session lasts as long as the learner has problems to enter.",
+    "Symbolab and Mathway also solve an entered problem and show the steps. Symbolab, a Learneo business, adds an AI chat about individual steps, practice problems with hints, quizzes and progress reports [6]. Mathway, backed by Chegg, solves for free and charges for the full work of every step [7]."
+  ],
+  "credit": [
+    "Free, step-by-step solutions to the problem a learner actually has, sometimes by more than one method [1]. It reads handwriting, so a learner can check finished work on paper [13]. AMP cannot read a problem from a school assignment.",
+    "Phone apps rated 4.8 from about 733,000 App Store ratings, in English and 31 other languages, Spanish among them [3][13]. AMP runs in a web browser, in English only.",
+    "It reaches calculus, and Plus has more than 400 animated tutorials [1][2]. AMP stops at precalculus and has 154 lesson films so far.",
+    "A low price: free, or $69.99 a year for Plus [1][2]."
+  ],
+  "evidence": {
+    "theirs": [
+      "Photomath's home page says its step-by-step explanations help a learner learn as they go, and cites no study [1]. Photomath, Symbolab and Mathway have no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [8][9].",
+      "A search of ERIC, the education research index, found two papers about the app [10]. One, from 2015, is an article on teaching in a world with Photomath, not a study of outcomes. The other, from 2023, gave Photomath to 49 eleventh graders at one school in the Philippines and compared their pre-calculus performance, self-reliance and interest before and after. It reported significant gains on all three, with no comparison group, so it cannot separate the app from the rest of the course [11].",
+      "A 2026 study in Kyrgyzstan gave 80 tenth graders five digital tools, Photomath among them, for eight weeks and reported higher mastery than a control group. It cannot show what Photomath alone did [12]."
+    ],
+    "ours": [
+      "We found no randomized trial of a photo solver on its own. The closest is about an AI chatbot, not a solver. In a field experiment with nearly 1,000 high school math students in Turkey, unrestricted GPT-4 access raised practice scores by 48%. Once access was removed, those students scored 17% lower on exams than students who never had AI, and a tutor version with learning safeguards largely mitigated that harm [15]. A review of ten common study techniques rated two as high utility: practice testing and spaced practice [16]. AMP is built on both. Every problem asks the learner for an answer, hints stop at the first step, and learned skills return on a schedule. We expect that to show in outcomes, and we have committed in public to measuring it.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child needs to check tonight's homework from a school textbook, step by step.",
+      "You want a free tool, or one under $70 a year [1].",
+      "You need calculus, or an app in Spanish or another language [1][3].",
+      "Your learner is a teen or adult who knows the material and is stuck on one step."
+    ],
+    "amp": [
+      "You want your child to work the problems, with hints that give the first step and never the answer.",
+      "You want a program to decide what comes next, from counting to precalculus, at the level of each part of math.",
+      "You want learned skills to come back on a schedule, without planning it.",
+      "You want to see what your child has learned, and to print workbooks with worked answer keys.",
+      "You want no AI model running while your child works: every problem, hint and explanation comes from tested code."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Photomath?",
+      "answer": "Yes. Photomath Basic is free, and Plus costs $9.99 a month or $69.99 a year [1][2]. AMP costs $599 a year or $59 a month for the first child, and that price buys a program that places the learner, chooses and checks every problem, schedules review and prints workbooks, from counting to precalculus."
+    },
+    {
+      "question": "Can AMP solve my child's homework?",
+      "answer": "No. AMP cannot read a photographed problem. It serves its own problems, chosen from the learner's answers, and teaches the skills behind them."
+    },
+    {
+      "question": "Is using Photomath cheating?",
+      "answer": "It depends on how it is used. Common Sense Media warns about using it as a shortcut to completing assignments [5]. We think checking finished work, or studying a second method after trying a problem, are fair uses."
+    },
+    {
+      "question": "Can my child use Photomath and AMP together?",
+      "answer": "Yes. They do different jobs. A solver can check a school assignment, and AMP builds the skills underneath with practice chosen for the learner."
+    },
+    {
+      "question": "Are Symbolab and Mathway any different?",
+      "answer": "They also solve an entered problem and show the steps. Symbolab adds an AI chat, practice problems with hints, quizzes and progress reports [6], and Mathway charges for the full work of every step [7]. We found no placement or scheduled review on either home page [6][7]."
+    }
+  ],
+  "sources": [
+    { "title": "Photomath home page", "url": "https://photomath.com/" },
+    { "title": "Photomath Plus overview (Photomath Help, Google)", "url": "https://support.google.com/photomath/answer/14330572" },
+    { "title": "Photomath on the App Store", "url": "https://apps.apple.com/us/app/photomath/id919087726" },
+    { "title": "Issues with Plus subscription (Photomath Help, Google)", "url": "https://support.google.com/photomath/answer/14332458" },
+    { "title": "Photomath review (Common Sense Media)", "url": "https://www.commonsensemedia.org/app-reviews/photomath" },
+    { "title": "Symbolab home page", "url": "https://www.symbolab.com/" },
+    { "title": "Mathway home page", "url": "https://www.mathway.com/" },
+    { "title": "Math programs (Evidence for ESSA, Johns Hopkins University)", "url": "https://www.evidenceforessa.org/programs/math" },
+    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "ERIC search for Photomath", "url": "https://eric.ed.gov/?q=photomath" },
+    { "title": "Capinding (2023), Revolutionizing Pre-Calculus Education: Photomath's AI-Powered Mathematics Tutorship (ERIC)", "url": "https://eric.ed.gov/?id=EJ1409630" },
+    { "title": "Dzhaparova, Kerimbayev & Koomanova (2026), Blended Learning in School Mathematics with Digital Tools to Enhance Student Understanding (ERIC)", "url": "https://eric.ed.gov/?id=EJ1519701" },
+    { "title": "Photomath (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Photomath" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Bastani et al. (2025), Generative AI without guardrails can harm learning (PNAS)", "url": "https://doi.org/10.1073/pnas.2422633122" },
+    { "title": "Dunlosky et al. (2013), Improving students' learning with effective learning techniques", "url": "https://doi.org/10.1177/1529100612453266" }
+  ]
+}

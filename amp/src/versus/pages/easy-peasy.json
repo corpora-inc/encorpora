@@ -1,0 +1,190 @@
+{
+  "slug": "easy-peasy",
+  "name": "Easy Peasy All-in-One Homeschool",
+  "maker": "Lee Giles and family",
+  "category": "all-in-one",
+  "checked": "2026-11-21",
+  "benefit": "every answer checked at once",
+  "line": "Easy Peasy is a free daily plan for every subject. AMP is only math, and it adapts and checks at every answer.",
+  "description": "AMP vs Easy Peasy All-in-One Homeschool: a free daily plan for every subject, or math that finds the level, explains each answer and schedules review.",
+  "verdict": "Easy Peasy All-in-One Homeschool gives a family a free Christian plan for every subject from preschool through grade 8, begun by a parent who put her own children's lessons online [1][2]. Its math is a fixed run of daily lessons, from grade 5 on built on outside videos and exercises, and the parent checks the work and keeps the records [3][7][8][9]. AMP costs $599 a year and takes on that part: it finds the level, checks and explains every answer, brings old skills back on a schedule and keeps the record, from counting through precalculus.",
+  "theirs": [
+    "Easy Peasy All-in-One Homeschool is a free online Christian curriculum for preschool through grade 8. Lee Giles began it in 2011 by putting her own children's assignments online, and donations are her family's income [1][2]. It covers reading, math, science, Spanish, Bible, art, music, PE and health, and logic, with 180 days of lessons in each grade [1]. High school courses, Algebra 1 among them, live on a sister site [1][4].",
+    "Each day's lesson is a numbered list of steps. In EP Math 1 that is often a video or a song, an online practice activity, then a written or hands-on task, and many lessons end with a link to fact-practice games [7]. Math 5/6 is an ordered list of 139 videos and exercises and suggests about 30 minutes a day; the videos are mostly from Khan Academy and the exercises are often on other sites [8]. Cathy Duffy lists Khan Academy, Master Math and MathIsFun as its sources for grades 5 to 8 [9]. The math courses run Kinder Math and More, Math 1 to 4, Math 5/6, Math 6/7 and Pre-Algebra [4].",
+    "The parent supplies a computer and internet, stays available and keeps the records [2]. A free planner, My EP, holds each child's place for up to ten children; the FAQ calls it \"essentially a digital bookmark\" [3][11]. Cathy Duffy's review notes that younger children need considerably more help, while independent readers can work alone [9]."
+  ],
+  "credit": [
+    "It is free. The online curriculum needs no registration and no payment, and donations are the family's income [1][2][3]. AMP costs $599 a year for the first child.",
+    "Every subject in one daily plan, preschool through grade 8, with 180 days of lessons per grade [1]. A four-year history, science and Bible cycle lets siblings study the same topics together [9]. AMP teaches only math.",
+    "Hands-on math and fact games. Early lessons use videos, songs and hands-on tasks with coins, and many end with a link to fact-practice games [7]. AMP has no math games and no timed fact drills.",
+    "A Christian curriculum with a large community around it. Cathy Duffy counts more than 100 Facebook pages for its families [9]."
+  ],
+  "reasons": [
+    {
+      "title": "Each problem is chosen from the last answer",
+      "body": "Easy Peasy lays out 180 days of lessons for each grade, in a fixed order [1]. A placement test suggests the starting course, and after that the parent moves a child with next-course and previous-course buttons [3][10]. AMP keeps a separate level in each of 14 strands of math and chooses every next problem from the learner's answers: new work, a prerequisite, or review. A child strong in geometry and unsure of fractions gets work in both.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Every answer is checked and explained at once",
+      "body": "In EP Math 1 the parent checks the work [7]. Worksheet answers sit on password-protected pages that share one password [3][9]. In Math 5/6 the exercises are on outside sites, so any checking is done by whichever site hosts them [8]. AMP marks each answer the moment it is given and shows the correct answer and the worked steps. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged 0.49 and right-or-wrong alone 0.05 [15].",
+      "research": [
+        "feedback"
+      ]
+    },
+    {
+      "title": "Every problem carries its own lesson",
+      "body": "From Math 5/6 on, Easy Peasy's lessons send learners to outside videos, mostly from Khan Academy, and to practice on other sites [8][9]. Cathy Duffy's review finds the quality uneven, depending on which outside source a lesson links to [9]. In AMP every one of 1,384 problem types has a one-step hint that never gives the answer, a written lesson with a worked example, and worked steps after the answer. The explanation comes to the problem, in one place.",
+      "research": [
+        "lessons",
+        "hints"
+      ]
+    },
+    {
+      "title": "Help never counts as mastery",
+      "body": "Math 5/6 asks students to stay on an exercise until they get five in a row right, on the outside site that hosts it [8]. Easy Peasy's own planner, My EP, is described in its FAQ as \"essentially a digital bookmark\" that keeps track of where a child is in the curriculum [3]. In AMP a skill is Strong when four of the last five answers are right without help, and an answer after a hint or the lesson does not count. Two misses in a row send practice back to what the skill builds on.",
+      "research": [
+        "mastery"
+      ]
+    },
+    {
+      "title": "Old skills come back on a schedule",
+      "body": "Easy Peasy's math lessons include occasional review lessons, such as lessons 54, 111 and 129 in EP Math 1 and lesson 41 in Math 5/6 [7][8]. We found no schedule that brings a learned skill back at set intervals in those pages or the FAQ [3][7][8]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [16].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "What $599 a year pays for",
+      "body": "Easy Peasy's online curriculum is free [1][3]. The FAQ makes the parent responsible for creating, maintaining and providing records [3]. AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each more. That pays for the math work a parent would otherwise do: placing, checking, scheduling review and keeping a record of the level in every strand, from counting through precalculus. The first 100 answers and 5 workbooks are free, with no card.",
+      "research": [
+        "progress"
+      ]
+    }
+  ],
+  "rows": {
+    "price": "Free online, with no registration [1][3]. My EP asks a suggested donation [1]. Optional books are sold; its store page shows no prices [6].",
+    "buyers": "Families. A free curriculum resource, not a school, with no enrollment [2].",
+    "range": "Preschool through grade 8. Math runs from Kinder Math and More to Pre-Algebra; Algebra 1 is on its high school site [4][5].",
+    "start": "A placement test for kindergarten to grade 8, plus a math placement guide [5][10]. Not meant as an ongoing assessment [5].",
+    "teaching": "Linked videos, songs, online practice and hands-on tasks [7]. Grades 5 to 8 rely on outside sites, including Khan Academy [8][9].",
+    "next": "A fixed sequence of daily lessons, 180 per grade [1]. The parent moves a child with next-course or previous-course buttons [3].",
+    "mastery": "Math 5/6: \"five in a row correct\" on an outside exercise before moving on [8]. EP's planner is a bookmark [3].",
+    "review": "Occasional review lessons in Math 1 and Math 5/6 [7][8]. No schedule of returns to learned skills found in them or the FAQ [3].",
+    "print": "Free printable worksheets, or purchased printables and workbooks; some math levels are fully offline [3][9]. One set of pages per course.",
+    "adult": "Supply a computer, be available and keep records [2]. In Math 1, decide on printables, check work and help with hands-on tasks [7].",
+    "reports": "The parent creates, maintains and provides records [3]. My EP marks days complete and is a digital bookmark [3][11].",
+    "evidence": "No outcome study found on its site. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [13][14]."
+  },
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of Easy Peasy All-in-One Homeschool: no trial, no comparison group and no report of results on the pages we read [1][2][3]. It has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [13][14]. Its site makes no claim of measured results that we could find. Finding no study is not evidence that the program falls short. It means the choice rests on how each program is built.",
+      "Its praise comes from families. On Trustpilot it is rated about 4.5 of 5 across 49 reviews, 96% of them five-star, praised for its cost, its faith and its ease of use [12]. Reviews measure satisfaction, not learning against children who used something else."
+    ],
+    "ours": [
+      "Two of AMP's rules come from findings that have held up. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [16]. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged 0.49, the correct answer alone 0.32 and right-or-wrong alone 0.05 [15]. We expect a program that explains every answer and schedules review without a parent's planning to help a learner keep more of the math they learn. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Cost decides it. Easy Peasy's online curriculum is free, with no registration [1][3].",
+      "You want one daily plan for every subject, preschool through grade 8, with siblings sharing history and science [1][9].",
+      "You want a Christian curriculum, with Bible as a subject, and a large community of families [1][9].",
+      "Your child learns well from videos, songs, hands-on work and fact games, and you like to check the work yourself [7]."
+    ],
+    "amp": [
+      "You want math placed and adjusted at every answer, not by moving a course forward or back.",
+      "You want every answer checked and explained the moment it is given.",
+      "You want old skills brought back on a schedule, and a record of the level kept for you.",
+      "You want printed practice made for your child, with a worked answer key, that counts toward the level online.",
+      "You use Easy Peasy for other subjects and want one math program from counting through precalculus beside it."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Easy Peasy All-in-One Homeschool really free?",
+      "answer": "Yes. The site says \"it's all free\", and the online curriculum needs no registration [1][3]. The family sells optional offline and printable books and asks a suggested donation for the My EP planner [1][3]."
+    },
+    {
+      "question": "Can we keep Easy Peasy for other subjects and use AMP for math?",
+      "answer": "Yes. AMP teaches only math, so it sits beside any plan for the other subjects. It finds the level in each strand of math within the first 24 problems, whichever Easy Peasy course a child was in."
+    },
+    {
+      "question": "Why pay $599 a year when Easy Peasy math is free?",
+      "answer": "In Easy Peasy the parent keeps the records, decides when a child moves and, in Math 1, checks the work [2][3][7]. AMP does those for $599 a year or $59 a month for the first child. The first 100 answers and 5 workbooks are free, with no card, and a full refund is available within 30 days."
+    },
+    {
+      "question": "Has Easy Peasy math been studied?",
+      "answer": "We found no outcome study of it, and it has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [13][14]. The comparison on this page rests on how each program is built."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Easy Peasy All-in-One Homeschool (home page)",
+      "url": "https://allinonehomeschool.com/"
+    },
+    {
+      "title": "About (Easy Peasy All-in-One Homeschool)",
+      "url": "https://allinonehomeschool.com/about/"
+    },
+    {
+      "title": "Frequently asked questions (Easy Peasy All-in-One Homeschool)",
+      "url": "https://allinonehomeschool.com/faq/"
+    },
+    {
+      "title": "Math courses (Easy Peasy All-in-One Homeschool)",
+      "url": "https://allinonehomeschool.com/math/"
+    },
+    {
+      "title": "Placement guides (Easy Peasy All-in-One Homeschool)",
+      "url": "https://allinonehomeschool.com/placement-guides/"
+    },
+    {
+      "title": "Store (Easy Peasy All-in-One Homeschool)",
+      "url": "https://epallinone.com/store"
+    },
+    {
+      "title": "EP Math 1 lessons (Easy Peasy All-in-One Homeschool)",
+      "url": "https://allinonehomeschool.com/ep-math-1/"
+    },
+    {
+      "title": "EP Math 5/6 lessons (Easy Peasy All-in-One Homeschool)",
+      "url": "https://allinonehomeschool.com/ep-math-5-6/"
+    },
+    {
+      "title": "Easy Peasy All-in-One Homeschool review (Cathy Duffy Reviews)",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/unit-studies-all-in-one-programs/all-in-one-programs/easy-peasy-all-in-one-homeschool"
+    },
+    {
+      "title": "Placement test (Easy Peasy All-in-One Homeschool)",
+      "url": "https://epallinone.com/placement/"
+    },
+    {
+      "title": "My EP Assignments",
+      "url": "https://www.myepassignments.com/"
+    },
+    {
+      "title": "Easy Peasy All-in-One Homeschool reviews (Trustpilot)",
+      "url": "https://www.trustpilot.com/review/allinonehomeschool.com"
+    },
+    {
+      "title": "Math programs (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/programs/math"
+    },
+    {
+      "title": "What Works Clearinghouse, intervention reports",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    }
+  ]
+}

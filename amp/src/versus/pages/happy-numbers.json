@@ -1,0 +1,127 @@
+{
+  "slug": "happy-numbers",
+  "name": "Happy Numbers",
+  "maker": "Happy Numbers Inc.",
+  "category": "school",
+  "checked": "2026-11-21",
+  "benefit": "One program to precalculus",
+  "line": "Happy Numbers covers PreK to grade 5. AMP runs on to precalculus and brings learned skills back on a schedule.",
+  "description": "AMP vs Happy Numbers: the two prices, what Happy Numbers' own studies show, and why AMP runs past grade 5 with a level in each strand and scheduled review.",
+  "verdict": "Happy Numbers gives young children hands-on, voice-prompted math tasks, and a homeschool plan costs $99 a year [2]. It stops at grade 5, and its studies compare heavier and lighter users on its own test [10][11]. AMP runs from counting through precalculus, moves a level in each of 14 strands with every answer, and brings learned skills back on a fixed schedule.",
+  "reasons": [
+    {
+      "title": "It keeps going after grade 5",
+      "body": "Happy Numbers covers PreK through grade 5 [1]. AMP runs from counting through precalculus in one program, with 336 skills on one prerequisite map. A learner who finishes grade 5 work keeps the same record and moves straight on, and a learner far ahead in one part of math is never held to a grade.",
+      "research": ["level"]
+    },
+    {
+      "title": "Learned skills come back on a schedule",
+      "body": "Some Happy Numbers tasks revisit earlier skills, and benchmark tests check progress during the year [6][9]. We found no scheduled review of learned skills in its published curriculum pages [4][6]. AMP brings each skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [15].",
+      "research": ["review"]
+    },
+    {
+      "title": "Progress means skills held without help",
+      "body": "Happy Numbers sets its goals in minutes and tasks: 45 minutes a week in K-2, 70 in grades 3-5, and 225 to 330 tasks a year in kindergarten [3][10]. Its studies measure use the same way, by tasks solved [10][11]. In AMP a skill counts as Strong only when four of the last five answers are right without a hint or the lesson. Two misses in a row send practice back to what the skill builds on.",
+      "research": ["mastery", "hints"]
+    },
+    {
+      "title": "A level in 14 strands, moved by every answer",
+      "body": "Happy Numbers sets the starting point with a required multiple-choice placement test of 20 to 30 questions, taking 10 to 40 minutes [7]. AMP gives no separate test. It finds the level in each of 14 strands within the first 24 problems and keeps moving it with every answer, so work in fractions and work in geometry are each aimed where the learner actually is.",
+      "research": ["level"]
+    },
+    {
+      "title": "The adult at home gets the teacher's view",
+      "body": "Happy Numbers is built so students work on their own while a teacher runs small groups [1], and specific Quantile measures come only with a school or district license [8]. In AMP a homeschool family is a class: the parent sees the level in every strand, the actual problems behind each number, and printable progress reports. Each of 961 reference lessons carries a parent guide, and every workbook comes with a worked answer key.",
+      "research": ["progress"]
+    }
+  ],
+  "rows": {
+    "price": "Homeschool: $99 per student per year, $49 for each additional student [2]. Schools: from $370 a classroom, or $4,950 a school [2].",
+    "buyers": "Families, through a homeschool plan, and schools by classroom, school or district; districts by quote [2].",
+    "range": "PreK through grade 5 [1].",
+    "start": "A required, untimed, multiple-choice placement test of 20 to 30 questions, scored on the Quantile scale [7][8].",
+    "teaching": "Interactive tasks: drag-and-drop and tapping with voice prompts in PreK, objects and diagrams before equations. In grade 3, hints in early task levels, none in later ones [4][6].",
+    "next": "Curriculum tasks from the placement starting point [7]. We found no published rule for skipping ahead or returning to prerequisites [4][6].",
+    "mastery": "Goals counted in minutes and tasks [3][10]. We found no published rule for when a skill counts as learned [4][6].",
+    "review": "Some tasks revisit earlier skills [6]. No scheduled review of learned skills found in its published curriculum pages [4][6].",
+    "print": "No printable workbooks found on its curriculum or pricing pages [2][4].",
+    "adult": "In school, students work on their own while the teacher runs small groups and reads reports. Time and task targets are set per student [1][3][9].",
+    "reports": "Weekly dashboard, skills reports, school-level and district-level reports [9]. Specific Quantile measures need a school or district license [8].",
+    "evidence": "Two correlational studies it commissioned, measured on its own test [10][11]. Evidence for ESSA lists it without a rating [13]. No randomized trial found [3]."
+  },
+  "theirs": [
+    "Happy Numbers is a PreK to grade 5 math program from Happy Numbers Inc. of San Francisco, which says it is helping 2 million students [1]. It presents itself as a math curriculum delivered through technology, so students can work on their own while the teacher runs small groups [1]. In the company's own kindergarten case study, a school used it beside its core program, GO Math! [17].",
+    "A student begins with a required placement test: adaptive, multiple choice, 20 to 30 questions by grade, and untimed [7]. It sets a starting point on the Quantile scale [7][8]. Then the student works through curriculum tasks. In PreK these are tapping and dragging activities with automatic voice prompts, and kindergarten adds a sound feature that lets non-readers hear shape names [4][5]. Both start from objects and move toward symbols. In grade 3, tasks build from objects and tape diagrams to arrays and equations, with hints in a task's early levels and none in its later ones [6]. Some modules include a pretest or an exit ticket [4].",
+    "Schools buy by the classroom, the school or the district, and families can buy a homeschool plan [2]. The company also sells Happy Letters, a K-2 reading program, which this page does not compare [2]."
+  ],
+  "credit": [
+    "Hands-on early math. PreK tasks are tapping and dragging with voice prompts, and kindergarten has a sound feature for children who do not read yet [4][5]. AMP does not read problems aloud and starts at kindergarten.",
+    "A lower price: $99 a year for a homeschooled student and $49 for each sibling [2], about a sixth of AMP's price for one child.",
+    "Placement and benchmark tests aligned to the Quantile Framework [7][8]. AMP's level is not linked to any national scale.",
+    "Fact-fluency practice and game-style activities [6]. AMP has no games and no fluency drills against a clock.",
+    "School plumbing: Clever and ClassLink sign-in, weekly dashboards, and school and district reports [1][9]."
+  ],
+  "evidence": {
+    "theirs": [
+      "Happy Numbers' main studies are two reports by LearnPlatform by Instructure, commissioned by Happy Numbers [10][11]. The first followed 540 kindergarten and grade 1 students in 30 schools of one midwestern district in 2021-22. It compared students by how many tasks they solved, controlling for fall scores. There was no group of non-users. Students with high use scored above students with low use by 0.45 standard deviations in kindergarten and 0.56 in grade 1 [10].",
+      "The second followed 1,590 students in grades 2 to 5 in two midwestern districts in 2022-23. Each extra 10 tasks went with 2.3 to 6.0 more points on the end-of-year test, depending on grade [11]. Both studies scored students on Happy Numbers' own test, which the first report calls \"non-independent\" [10]. A 2023-24 company brief on more than 113,000 students found the same pattern, heavier use with more growth on its own scale, with no comparison group [12].",
+      "All three compare students by how much they used the program. Students who do more tasks differ from students who do fewer before they start, and a fall score is the only control. Happy Numbers calls the two LearnPlatform reports ESSA Tier III [3]. Evidence for ESSA lists Happy Numbers without a rating (\"No studies met inclusion requirements\") [13], and the What Works Clearinghouse has no intervention report on it [14]. We found no randomized trial of Happy Numbers."
+    ],
+    "ours": [
+      "AMP's review schedule rests on a tested finding. In a randomized trial that meets What Works Clearinghouse standards without reservations, seventh graders who practiced mixed, spaced problems scored 62% on the researchers' test a month later, against 38% for blocked practice [15]. AMP also explains every answer with worked steps: across 40 studies of computer-based feedback in mixed ages and subjects, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong alone [16]. Happy Numbers' studies point the same way on dose: more practice went with more growth [10][11]. We expect a program that builds these rules into every problem, from counting to precalculus, to show it in outcomes. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child is in PreK or kindergarten and needs voice prompts and hands-on tasks before reading well [4][5].",
+      "You want the lowest yearly price: $99 for one homeschooled student, $49 for each sibling [2].",
+      "Your school wants placement on the Quantile scale, ClassLink sign-in, and district reports [1][8][9].",
+      "You want fact-fluency practice and game-style activities in the same program [6]."
+    ],
+    "amp": [
+      "Your child is in grade 4 or 5 and you want one program that carries on through middle school and high school math.",
+      "You want learned skills to come back on a schedule, without planning it.",
+      "You want a skill to count only when it is right without help.",
+      "You teach at home and want the full teacher view, worked answer keys and workbooks printed for your child.",
+      "Your learner is far ahead in one part of math and still building another."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Happy Numbers?",
+      "answer": "Yes. A Happy Numbers homeschool plan is $99 a year per student and $49 for each sibling [2]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, and that covers counting through precalculus, unlimited personalized workbooks, and free practice for two parents."
+    },
+    {
+      "question": "What grades does Happy Numbers cover?",
+      "answer": "PreK through grade 5 [1]. AMP covers kindergarten counting through precalculus, so a learner leaving grade 5 stays in the same program."
+    },
+    {
+      "question": "Is Happy Numbers backed by research?",
+      "answer": "It has two studies it commissioned from LearnPlatform, both comparing students who used it more with students who used it less, on Happy Numbers' own test [10][11]. Evidence for ESSA lists it without a rating [13]. AMP has no outcome study yet; its first begins in 2027."
+    },
+    {
+      "question": "My child uses Happy Numbers at school. Can we use AMP at home?",
+      "answer": "Yes. AMP is a separate program a family can start today, free for the first 100 answers. It finds the level in each part of math within the first 24 problems, with no separate test."
+    }
+  ],
+  "sources": [
+    { "title": "Happy Numbers home page", "url": "https://happynumbers.com/" },
+    { "title": "Happy Numbers pricing", "url": "https://happynumbers.com/pricing" },
+    { "title": "Happy Numbers results proven by research (Happy Numbers blog)", "url": "https://happynumbers.com/blog/happy-numbers-results-proven-by-research/" },
+    { "title": "Happy Numbers math curriculum: PreK", "url": "https://happynumbers.com/math" },
+    { "title": "Happy Numbers math curriculum: Kindergarten", "url": "https://happynumbers.com/math/kindergarten" },
+    { "title": "Happy Numbers math curriculum: Grade 3", "url": "https://happynumbers.com/math/grade3" },
+    { "title": "First run: placement test to create a learning pathway (Happy Numbers help center)", "url": "https://help.happynumbers.com/article/372-first-run-placement-test-to-create-a-learning-pathway" },
+    { "title": "The Quantile measures and Happy Numbers assessments (Happy Numbers help center)", "url": "https://help.happynumbers.com/article/262-the-quantile-measures-and-happy-numbers-assessments" },
+    { "title": "Happy Numbers help center", "url": "https://help.happynumbers.com/en/" },
+    { "title": "Lee, Long & Shah (2023), Happy Numbers ESSA Level III Study (2021-2022), LearnPlatform by Instructure", "url": "https://shared.happynumbers.com/ESSA-Level-III-Report.pdf" },
+    { "title": "Lee, Allen Green & Shah (2023), Happy Numbers ESSA Level III Study, Grades 2-5 (2022-23), LearnPlatform by Instructure", "url": "https://shared.happynumbers.com/ESSA-Level-III-Report-G2-5.pdf" },
+    { "title": "Impact of Happy Numbers Personalized Instruction on Student Learning Gains, 2023-24 (Happy Numbers)", "url": "https://shared.happynumbers.com/happy-numbers-impact-evaluation23-24.pdf" },
+    { "title": "Happy Numbers (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/happy-numbers/" },
+    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Hitting math benchmarks in K-2: a case study (Happy Numbers blog)", "url": "https://happynumbers.com/blog/hitting-math-benchmarks-in-k-2-case-study/" }
+  ]
+}

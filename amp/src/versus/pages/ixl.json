@@ -1,0 +1,271 @@
+{
+  "slug": "ixl",
+  "name": "IXL",
+  "maker": "IXL Learning",
+  "category": "adaptive",
+  "checked": "2026-11-21",
+  "benefit": "A mastery rule you can read",
+  "line": "In IXL the learner or an adult picks each skill; AMP picks every next problem and schedules review.",
+  "description": "AMP vs IXL: IXL's price, SmartScore and studies, and how AMP chooses each problem, uses a public mastery rule and brings old skills back on schedule.",
+  "verdict": "IXL is broad and low-priced, with apps, a normed diagnostic and one randomized trial behind it [1][3][14][11][24]. It is a bank of skills: someone picks the skill, a proprietary score decides mastery, and we found no scheduled review [5][8][9]. AMP chooses every problem, uses a mastery rule anyone can read, and brings learned skills back on a schedule.",
+  "reasons": [
+    {
+      "title": "A mastery rule you can read",
+      "body": "IXL's SmartScore runs from 0 to 100. It falls after a wrong answer, its gains taper off near the top, and from 90 on the questions are the hardest in the skill [5][6][8]. IXL calls its algorithm proprietary [5]. Common Sense Media's summary of parent reviews says the scoring \"penalizes them harshly for small mistakes\" [29]. AMP's rule is fixed and in its public code: Strong means four of the last five right without help, so one miss after a run of right answers is made up by the next right answer.",
+      "research": [
+        "mastery"
+      ]
+    },
+    {
+      "title": "AMP decides what comes next, gaps included",
+      "body": "In IXL the learner or an adult opens a skill: from a grade list, from IXL's recommendations, or from skills a parent stars [9][31]. Recommendations can point to building-block skills for a trouble spot, and IXL presents them as options for students to explore [9]. AMP chooses every problem from the learner's answers. Two misses in a row on a skill send practice back to what it builds on, without anyone having to notice the gap first.",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Help before the answer, and help does not count",
+      "body": "Inside a skill, IXL's feedback comes after a wrong answer, as a step-by-step explanation of the correct one [7]. Its written lessons cover grade 3 through Geometry [12]. Every AMP problem type, from counting to precalculus, has a one-step hint that never gives the answer and a lesson with a worked example, both open before the learner answers. An answer given after help is recorded but does not count toward mastery or move the level.",
+      "research": [
+        "hints",
+        "lessons"
+      ]
+    },
+    {
+      "title": "Learned skills come back on a schedule",
+      "body": "IXL practice stays inside one skill: a right answer brings a similar or slightly harder question [8]. We found no scheduled review of mastered skills in the IXL help articles and design paper we read [8][9]. IXL's own researchers have studied spacing among students who happened to space their practice [28]. AMP schedules it for every learner: each learned skill returns after 6 hours, 1 day, 3 days, 1 week, 2 weeks and 1 month, mixed with other topics, and a miss starts the schedule over.",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Paper made from the learner's own work",
+      "body": "IXL calls its practice an interactive worksheet and points families who want paper to its printed workbooks sold on Amazon [13]. We found no personalized printable practice. AMP prints unlimited workbooks built from the learner's own levels, with a review section of skills that are due and a worked answer key. Results entered from paper count toward the level."
+    }
+  ],
+  "rows": {
+    "price": "IXL Math: $79 a year or $9.95 a month for one child. Each extra child $40 a year or $4 a month [2][3]. 30-day refund [4].",
+    "buyers": "Families directly, and schools: a classroom license covers one teacher and 25 to 100 students [30]. Ten free questions a day [21].",
+    "range": "Pre-K through Calculus, plus Integrated Math 1 to 3 [1]. Language arts, science and social studies available in the same membership [21].",
+    "start": "A separate normed diagnostic: about 45 minutes, at most 60, as a benchmark [10][11]. Or the learner opens any skill at any grade [35].",
+    "teaching": "A step-by-step explanation after a wrong answer [7]. Written lessons for grade 3 through Geometry [12]. Video tutorials [1][20].",
+    "next": "The learner or an adult picks a skill. Recommendations suggest next skills, including building-block skills for trouble spots [9].",
+    "mastery": "A SmartScore of 100. It rises on right answers and falls on wrong ones, by a proprietary formula [5]. From 90, the hardest questions [6].",
+    "review": "No scheduled review of mastered skills found in the help articles and design paper we read [8][9]. Practice stays inside one skill [8].",
+    "print": "No personalized worksheets found. IXL points to its printed workbooks, sold on Amazon [13].",
+    "adult": "Stars skills for a child and reads per-child analytics [31][3]. Teachers can set SmartScore goals [36]. IXL says it reinforces concepts taught in lessons [34].",
+    "reports": "Per-child analytics for families [3]. Teacher reports include a questions log with iPad scratchpad work [37]. Certificates for questions, time and skills, by weekly email [38].",
+    "evidence": "One randomized trial: +0.13 SD on Star Math, +0.03 (not significant) on the state test [24]. Rated Strong by Evidence for ESSA [25]."
+  },
+  "theirs": [
+    "IXL comes from IXL Learning, which also owns Rosetta Stone, Education.com, Wyzant and other brands. Its company page claims a reach of one in three U.S. students [22]. IXL Math runs from Pre-K through Calculus, with its skills listed by grade and course [1]. Families buy memberships. Schools buy classroom licenses for 25 to 100 students, or ask for a quote for more than one classroom [30].",
+    "A learner opens a skill: from a grade list, from IXL's recommendations, or from skills a parent or teacher has starred [9][31]. Questions come one at a time and are marked at once [13]. A right answer brings a similar or slightly harder question; a wrong one brings an explanation [7][8]. A SmartScore from 0 to 100 tracks the skill. 80 is proficient, 90 opens the Challenge Zone of the hardest questions, and 100 is mastered [5][6].",
+    "Around the practice sit a nationally normed diagnostic, LevelUp, whose math benchmark takes about 45 minutes and at most 60 [10][11]; more than 350 math and language arts games for Pre-K to grade 5 [19]; and a Fluency Zone with timed Raceway challenges for math facts [20]."
+  ],
+  "credit": [
+    "A far lower price: $79 a year for IXL Math, and $40 a year for each extra child [3]. Ten questions a day are free [21].",
+    "Breadth AMP lacks: Pre-K through Calculus and Integrated Math 1 to 3, with language arts, science and social studies in the same membership [1][21].",
+    "A nationally normed diagnostic. LevelUp's norms come from more than a million students in over 4,000 schools [11]. AMP has no normed test.",
+    "Apps for iPad, iPhone, Android and Fire tablets [14][15][16]. Audio support through grade 2, which an adult can extend to every grade [17]. Math questions can be shown in more than 120 languages [18]. AMP has no store apps and no read-aloud, and it is in English only.",
+    "Outside evidence: a randomized trial run by Johns Hopkins University researchers, and a Strong rating from Evidence for ESSA [24][25]."
+  ],
+  "evidence": {
+    "theirs": [
+      "IXL's strongest study is a randomized trial run by the Center for Research and Reform in Education at Johns Hopkins University, which contracted with IXL Learning to do it [24]. In spring 2023, classes in four elementary schools in Holland, Michigan, were randomly assigned to use IXL Math or not: 545 students in grades 3 to 5. Students used it for about 10 hours in grade 3 and 7 to 8 hours in grades 4 and 5 over the semester. IXL classes gained 0.13 standard deviations more on Star Math, a significant result. On Michigan's state test, M-STEP, the difference was 0.03 and not statistically significant [24].",
+      "Evidence for ESSA rates IXL Math Strong, based on this one randomized study of 545 students in grades 3 to 5, with an average effect size of +0.08 [25]. The same Johns Hopkins center runs Evidence for ESSA [25].",
+      "Most of IXL's other research is its own. Its research page lists 214 entries, 7 of them tagged as third-party [23]. A 2019 IXL study in one virtual charter school matched about 3,000 users with similar non-users over a semester and found 0.05 standard deviations on MAP; its larger headline number is for students who mastered 25 or more skills [27]. A three-year Oklahoma study by an IXL researcher counted a school as an IXL school if at least 10% of its students used IXL Math, and reports 0.23 on school proficiency rates, an effect the author says should be read at the school level, not the student level [26]. Designs like these cannot fully separate the program's effect from differences in the schools and students that chose to use it most."
+    ],
+    "ours": [
+      "AMP's review schedule rests on two of the best-supported findings in learning research. A review of ten common study techniques rated spaced practice one of only two \"high utility\" techniques [33]. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced math practice scored 62% on a test a month later, against 38% for practice in blocks; the test was the researchers' own [32]. IXL leaves spacing to the learner; AMP schedules it for everyone. We expect that to show in what learners still know months later. That is our bet.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "You want math, language arts, science and social studies in one membership at a low price.",
+      "Your learner needs calculus, read-aloud, or questions in another language.",
+      "Your child enjoys games, timed fact races and practicing in a tablet app.",
+      "You run a school that needs a normed diagnostic and an Evidence for ESSA rating today."
+    ],
+    "amp": [
+      "You want the program to choose every next problem, and to go back to the missing piece on its own.",
+      "A score that drops near 100 discourages your child. AMP's rule is four of the last five, in public.",
+      "You want learned skills to come back on a schedule, mixed with other topics.",
+      "You want a hint before the answer and a worked lesson for every problem type.",
+      "You homeschool and want printed practice made for your child, with worked answer keys."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than IXL?",
+      "answer": "Yes, by a wide margin. IXL Math costs $79 a year or $9.95 a month for one child, and $40 a year for each extra child [2][3]. AMP costs $599 a year or $59 a month for the first child and $399 or $39 for each more; for that, it places the learner, chooses every problem, schedules review and prints workbooks from counting through precalculus."
+    },
+    {
+      "question": "Why does my child's IXL SmartScore go down?",
+      "answer": "IXL says the SmartScore weighs questions completed, question difficulty and consistency, and it falls after a wrong answer [5]. From 90 on, the Challenge Zone serves the hardest questions in the skill [6]. AMP's mastery rule is fixed and public: four of the last five right without help."
+    },
+    {
+      "question": "Is IXL proven to work?",
+      "answer": "One randomized trial found IXL classes gained 0.13 standard deviations on Star Math over a semester, and 0.03, not statistically significant, on Michigan's state test [24]. Evidence for ESSA rates IXL Math Strong on that study [25]. Most of IXL's other studies are its own [23]."
+    },
+    {
+      "question": "Can my child use AMP and IXL together?",
+      "answer": "Yes. They are separate programs. AMP finds the level in each of 14 strands of math within the first 24 problems and plans practice from there."
+    }
+  ],
+  "sources": [
+    {
+      "title": "IXL Math skills by grade and course (IXL)",
+      "url": "https://www.ixl.com/math"
+    },
+    {
+      "title": "IXL family membership pricing (IXL)",
+      "url": "https://www.ixl.com/membership/family/pricing"
+    },
+    {
+      "title": "Does a membership include all of my children? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1274040/does_a_membership_include_all_of_my_children_or_do_i_need_to_purchase_multiple_memberships"
+    },
+    {
+      "title": "How does the 30-day satisfaction guarantee work? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1273869/how_does_the_30_day_satisfaction_guarantee_work"
+    },
+    {
+      "title": "How does the SmartScore work? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1272663/how_does_the_smartscore_work"
+    },
+    {
+      "title": "What is the Challenge Zone? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1412270/what_is_the_challenge_zone"
+    },
+    {
+      "title": "What happens when students get a question wrong? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1318517/what_happens_when_students_get_a_question_wrong"
+    },
+    {
+      "title": "IXL Design Principles (IXL Learning)",
+      "url": "https://www.ixl.com/materials/us/research/IXL_Design_Principles.pdf"
+    },
+    {
+      "title": "What are IXL Recommendations? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/2956951/what_are_ixl_recommendations"
+    },
+    {
+      "title": "What is the IXL LevelUp Diagnostic? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/4843295/what_is_the_ixl_levelup_diagnostic"
+    },
+    {
+      "title": "Is the IXL LevelUp Diagnostic nationally normed? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/8754885/is_the_ixl_levelup_diagnostic_nationally_normed"
+    },
+    {
+      "title": "IXL Math lessons (IXL)",
+      "url": "https://www.ixl.com/math/lessons"
+    },
+    {
+      "title": "Does IXL provide worksheets? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1274081/does_ixl_provide_worksheets"
+    },
+    {
+      "title": "Can I use IXL on an iPad or iPhone? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1274101/can_i_use_ixl_on_an_ipad_or_iphone"
+    },
+    {
+      "title": "Is there an IXL Android app? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1492549/is_there_an_ixl_android_app"
+    },
+    {
+      "title": "Is there an IXL app for Fire tablets? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1681346/is_there_an_ixl_app_for_fire_tablets"
+    },
+    {
+      "title": "Is there audio available for additional support? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1273803/is_there_audio_available_for_additional_support"
+    },
+    {
+      "title": "Does IXL have support for English learners? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1628450/does_ixl_have_support_for_english_learners"
+    },
+    {
+      "title": "Does IXL have learning games? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1230002/does_ixl_have_learning_games"
+    },
+    {
+      "title": "IXL Math Fluency Zone (IXL)",
+      "url": "https://www.ixl.com/math/fluency-zone"
+    },
+    {
+      "title": "What subjects can I purchase on IXL? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1274039/what_subjects_can_i_purchase_on_ixl"
+    },
+    {
+      "title": "About IXL Learning (IXL)",
+      "url": "https://www.ixl.com/company"
+    },
+    {
+      "title": "IXL research (IXL Learning)",
+      "url": "https://www.ixl.com/research"
+    },
+    {
+      "title": "Copeland, Cook, Grant & Ross (2023), Randomized-Control Efficacy Study of IXL Math in Holland Public Schools, Johns Hopkins University CRRE",
+      "url": "https://www.ixl.com/materials/us/research/Randomized-Control_Efficacy_Study_of_IXL_Math.pdf"
+    },
+    {
+      "title": "IXL Math (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/ixl-math/"
+    },
+    {
+      "title": "Bashkov (2021), Assessing the Impact of IXL Math over Three Years: A Quasi-Experimental Study (IXL Learning)",
+      "url": "https://www.ixl.com/materials/us/research/IXL_Math_3-Year_QED_ESSA_Tier_2.pdf"
+    },
+    {
+      "title": "IXL Learning (2019), The Impact of IXL Math and IXL ELA on Student Achievement in Grades Pre-K to 12",
+      "url": "https://www.ixl.com/research/ESSA-Research-Report.pdf"
+    },
+    {
+      "title": "How IXL Supports Spacing and Productive Struggle (IXL Learning)",
+      "url": "https://www.ixl.com/materials/us/research/How_IXL_Supports_Spacing_and_Productive_Struggle.pdf"
+    },
+    {
+      "title": "IXL parent reviews (Common Sense Media)",
+      "url": "https://www.commonsensemedia.org/website-reviews/ixl/user-reviews/adult"
+    },
+    {
+      "title": "Can I purchase a classroom license for more than 25 students? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1274140/can_i_purchase_a_classroom_license_for_more_than_25_students"
+    },
+    {
+      "title": "Can I set assignments for my child to work on? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/3704675/can_i_set_assignments_for_my_child_to_work_on"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Dunlosky et al. (2013), Improving students' learning with effective learning techniques, Psychological Science in the Public Interest 14(1)",
+      "url": "https://doi.org/10.1177/1529100612453266"
+    },
+    {
+      "title": "Will my child earn homeschool credit? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/9389688/will_my_child_earn_homeschool_credit"
+    },
+    {
+      "title": "Can my students practice any grade level? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1272650/can_my_students_practice_any_grade_level"
+    },
+    {
+      "title": "Can I set a SmartScore goal for skills I suggest to students? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/3190937/can_i_set_a_smartscore_goal_for_skills_i_suggest_to_students"
+    },
+    {
+      "title": "Can I see student scratchpad work? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/6550227/can_i_see_student_scratchpad_work"
+    },
+    {
+      "title": "How do I earn certificates and awards? (IXL Help Center)",
+      "url": "https://www.ixl.com/help-center/article/1274212/how_do_i_earn_certificates_and_awards"
+    }
+  ]
+}

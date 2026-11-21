@@ -1,8 +1,7 @@
 /** AMP's own side of every comparison, kept once: the side-by-side table's
  * rows with AMP's cell, the hub's categories, and the hub's own words.
- * The wording here is a first draft drawn from the research report
- * (src/research/report.ts), the homepage and the prices (infra/stripe.ts);
- * tests/versus.test.ts holds the price cell to the prices on sale. */
+ * Every statement is true of the product on main; the prices come from
+ * infra/stripe.ts and tests/versus.test.ts holds the price cell to them. */
 import type { ResearchComponentId } from "../research/report";
 import type { VersusCategory, VersusRowId } from "./types";
 
@@ -20,62 +19,62 @@ export const versusRows: readonly VersusRow[] = [
   {
     id: "price",
     label: "Price",
-    amp: "$599 a year or $59 a month. Free to try without a card: 100 problems and 5 workbooks.",
+    amp: "$599 a year or $59 a month for the first child, then $399 or $39 for each more. Two parents practice free. Full refund within 30 days.",
   },
   {
     id: "buyers",
     label: "Who can buy",
-    amp: "Families and schools, directly. Arizona ESA, Arkansas EFA and New Hampshire EFA funds pay for it too.",
+    amp: "Families, tutors and schools, directly. Free to start without a card: 100 answers and 5 workbooks. Arizona ESA, Arkansas EFA and New Hampshire EFA funds pay for it.",
   },
   {
     id: "range",
     label: "Range",
-    amp: "Counting through precalculus, in one program.",
+    amp: "Counting through precalculus in one program: 336 skills on one map.",
   },
   {
     id: "start",
     label: "Finding the starting point",
-    amp: "AMP estimates the learner’s level in every strand of math from their answers.",
+    amp: "No separate test. AMP finds the level in each of 14 strands of math within the first 24 problems, and keeps adjusting.",
   },
   {
     id: "teaching",
     label: "Teaching",
-    amp: "A written lesson with a worked example for every problem type, a worked explanation after every answer, and narrated lesson films.",
+    amp: "A one-step hint and a written lesson with a worked example for every problem type. Worked steps after every answer. Narrated lesson films.",
   },
   {
     id: "next",
     label: "What decides the next problem",
-    amp: "AMP chooses every next problem from what the learner just did, aimed just within reach.",
+    amp: "AMP chooses every problem from the learner’s answers: new work just within reach, a prerequisite, or review.",
   },
   {
     id: "mastery",
     label: "Mastery",
-    amp: "Four of the last five answers right without help. Repeated misses send practice back to what the skill builds on.",
+    amp: "Four of the last five answers right without help. An answer after a hint doesn’t count. Two misses in a row send practice back to what the skill builds on.",
   },
   {
     id: "review",
     label: "Review",
-    amp: "Learned skills come back after six hours, a day, three days, a week, two weeks and a month, mixed in with other topics.",
+    amp: "Scheduled. Learned skills come back after six hours, a day, three days, a week, two weeks and a month, mixed with other topics.",
   },
   {
     id: "print",
     label: "Print",
-    amp: "Unlimited printable workbooks, made for each learner.",
+    amp: "Unlimited workbooks made for each learner, each with a worked answer key. Results entered from paper count.",
   },
   {
     id: "adult",
     label: "What the adult has to do",
-    amp: "Nothing to plan. The learner presses Next.",
+    amp: "Nothing to plan, teach or grade. AMP places the learner, chooses each problem, checks it and schedules review.",
   },
   {
     id: "reports",
     label: "Reports",
-    amp: "Levels, skills, time and workbooks for parents. For teachers, who needs them today and which students share a gap.",
+    amp: "The level in every strand with its likely range, skills, time, and the actual problems behind each number. For teachers, who needs them today.",
   },
   {
     id: "evidence",
     label: "Evidence",
-    amp: "A published ESSA Tier 4 report: the research behind each part of AMP, and pre-registered studies from 2027.",
+    amp: "A published rationale (ESSA Tier 4) with the research behind each part, public source code, and pre-registered outcome studies from 2027.",
   },
 ];
 
@@ -95,13 +94,13 @@ export const versusCategories: readonly VersusCategoryInfo[] = [
     id: "adaptive",
     title: "Adaptive practice programs",
     blurb: "Programs that choose practice from a learner’s answers.",
-    benefit: "Every Next Problem Chosen",
+    benefit: "Every Answer Sets the Next",
   },
   {
     id: "school",
     title: "Programs schools assign",
-    blurb: "Programs a child meets through a school or a district.",
-    benefit: "Math Families Can Buy",
+    blurb: "Programs a student meets through a school or a district.",
+    benefit: "Adapts at Every Answer",
   },
   {
     id: "courses",
@@ -118,7 +117,7 @@ export const versusCategories: readonly VersusCategoryInfo[] = [
   {
     id: "books",
     title: "Books and workbooks",
-    blurb: "Printed curricula a parent teaches from.",
+    blurb: "Printed curricula an adult teaches from.",
     benefit: "Workbooks That Adapt",
   },
   {
@@ -150,7 +149,7 @@ export function versusCategory(id: VersusCategory): VersusCategoryInfo {
 /** The hub's own words (`/versus`). */
 export const versusHub = {
   title: "AMP vs other math programs",
-  lede: "Every math program makes a choice about what a child does next. Here is how AMP’s differs from each, with sources.",
+  lede: "AMP beside each program families and schools weigh it against. What each does well, what it has proven, and why we built AMP differently. Every fact has a source.",
   /** The strip under the lede: three parts of AMP, each in the research
    * report's own words and linked to its place there. */
   why: {

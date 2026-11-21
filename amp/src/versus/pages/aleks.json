@@ -1,0 +1,271 @@
+{
+  "slug": "aleks",
+  "name": "ALEKS",
+  "maker": "McGraw Hill",
+  "category": "adaptive",
+  "checked": "2026-11-21",
+  "benefit": "Teaching and spaced review",
+  "line": "ALEKS retests in periodic Knowledge Checks; AMP brings each skill back on a fixed schedule in daily practice.",
+  "description": "AMP vs ALEKS: price, range, how each one teaches and reviews, what ALEKS's studies found, and who should pick which. Every fact about ALEKS has a source.",
+  "verdict": "ALEKS rests on decades of research into Knowledge Space Theory [2][22], and it costs $179.95 a year, under a third of AMP's yearly price [1]. A meta-analysis found it as good as classroom teaching but not better, and a randomized trial found no significant gain over teacher-led lessons [3][4]. AMP puts a hint, a lesson and worked steps at every problem, brings old skills back on a fixed schedule, and runs from counting to precalculus on one map.",
+  "reasons": [
+    {
+      "title": "Review comes on a schedule, mixed into practice",
+      "body": "ALEKS reviews mainly through Knowledge Checks that pause learning after 10 hours, or after 20 topics and 5 hours [5]. A wrong answer in a check, or choosing I Don't Know, can move a topic back to Remaining, to be learned again [5]. Being sent back is a frequent complaint in its Trustpilot reviews, many of them about college courses; ALEKS does not invite reviews there [6]. AMP brings each skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. A miss resets that skill's schedule, and the count of skills earned never goes down.",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Hint, lesson and worked steps at every problem",
+      "body": "ALEKS gives immediate feedback and learning aids, and describes step-by-step explanations for grades 6 to 12 [7]. We found no lesson videos for students on its K-12 pages [7][8]. One Trustpilot reviewer calls its explanations \"short and confusing\" [6]. Every one of AMP's 1,384 problem types has a one-step hint that never gives the answer, a written lesson with a worked example, and worked steps after every answer, plus narrated films for a growing share of types.",
+      "research": [
+        "hints",
+        "lessons",
+        "feedback",
+        "films"
+      ]
+    },
+    {
+      "title": "One map from counting to precalculus",
+      "body": "An ALEKS family plan runs one course at a time [9]. It excludes ALEKS Adventure, the K-5 program, so family math courses start at grade 3 [9][10]. ALEKS does not move a student into a higher or lower course on its own [11]. AMP keeps a level in each of 14 strands, so a learner can be at grade 3 in fractions and grade 6 in geometry. Two misses in a row send practice to what the skill builds on, even when that sits in an earlier grade.",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Help built in, and kept out of the score",
+      "body": "ALEKS starts with an Initial Knowledge Check [15], and parents are told never to help during an ALEKS assessment [12]. AMP places a learner inside practice, in the first 24 problems, with the hint and lesson in reach. An answer given after either is recorded as helped and does not move the level or count toward mastery. Each of AMP's 961 reference lessons carries a guide for the adult.",
+      "research": [
+        "hints",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Paper workbooks made for each learner",
+      "body": "ALEKS's QuickTables teacher module can generate customized fact worksheets [13]. In a family account, parents build quizzes in the online Master Account [14], and we found no printable workbooks for the family plan. AMP prints unlimited workbooks composed from the learner's own record, each with a worked answer key. Results entered from paper count toward the level."
+    },
+    {
+      "title": "A free start with no card, and a full refund",
+      "body": "The ALEKS free trial is three hours, used within 48 hours [15]. ALEKS gives no refunds or credits for partial terms [16], and its consumer terms make subscriptions of a month or less non-refundable [17]. AMP is free for 100 answers and 5 workbooks per learner with no card, and a personal payment is refunded in full within 30 days."
+    }
+  ],
+  "rows": {
+    "price": "$19.95 a month or $179.95 a year per student. Two students: $305.90 a year [1][16]. No refunds for partial terms [16].",
+    "buyers": "Families through ALEKS Independent Use [9]. Schools by quote or a published per-student price [18][19]. We found no education-fund payment option [16][20].",
+    "range": "Grades 3 to 12, calculus aligned to AP standards, and college courses [10][21]. K-5 Adventure is not in the family plan [9].",
+    "start": "An adaptive Initial Knowledge Check of about 20 to 30 questions, taken without help [2][22][12].",
+    "teaching": "Immediate feedback and learning aids; step-by-step explanations for grades 6 to 12 [7]. We found no lesson videos for students [7][8].",
+    "next": "ALEKS offers only topics the learner is ready to learn [23], in one course at a time [9].",
+    "mastery": "Topics sort into Learned, Mastered and Remaining. A miss in a Knowledge Check can send a topic back to Remaining [5].",
+    "review": "Knowledge Checks after 10 learning hours, or 20 topics and 5 hours, plus a Review mode [5]. It cites distributed practice [7]; we found no fixed schedule.",
+    "print": "Customized fact worksheets from the QuickTables teacher module [13]. We found no printable workbooks for families.",
+    "adult": "A parent watches progress, builds quizzes and edits settings [14][24]. Changing course is a manual step [11].",
+    "reports": "A pie chart of the course [25]. Quiz reports and a progress-report setting for parents [14][24]. Standards and district reports for schools [7][21].",
+    "evidence": "A meta-analysis: as good as classroom teaching, not better. A randomized trial: no significant gain [3][4]. No Evidence for ESSA rating [26]."
+  },
+  "theirs": [
+    "ALEKS stands for Assessment and Learning in Knowledge Spaces. A team led by Jean-Claude Falmagne at UC Irvine built it on Knowledge Space Theory, with major funding from the National Science Foundation [2][27]. ALEKS Corporation merged with McGraw Hill in 2013, and the company says more than 50 million students have used ALEKS [27]. Its main math courses run from grade 3 through college, including calculus [10][21], and ALEKS also covers chemistry, statistics and accounting [25]. Families buy it as ALEKS Independent Use [9].",
+    "A learner starts with an Initial Knowledge Check, an adaptive test of about 20 to 30 questions [22][2]. The result is a pie chart with one slice for each branch of the course [25]. ALEKS offers only topics the learner is ready to learn [23], and the learner works problems on them with immediate feedback and learning aids [7]. Knowledge Checks come back after every 5 to 10 hours of learning to retest the course [5]. A course takes at least 40 hours, and 100 hours or more is not unusual [28]. When the pie first reaches 100%, another check follows, and the learner works again through any topics that need it [29].",
+    "Schools can pair ALEKS with a textbook such as McGraw Hill's Reveal Math [8], and teachers can give homework, quizzes and tests outside the adaptive path [8][11]. ALEKS Adventure, a virtual world with stories for kindergarten through grade 5, is not part of the family plan [9][30]. This page compares the family plan and the grades 3 to 12 math program."
+  ],
+  "credit": [
+    "Price. $179.95 a year for one student, $305.90 for two, or $19.95 a month [1][16]. The yearly price is under a third of AMP's.",
+    "Range beyond AMP: calculus aligned to AP Calculus AB and BC, college courses, and SAT, ACT and GED prep [10][21]. A family subscription opens all standard courses, one at a time [9]. AMP stops at precalculus.",
+    "Most K-12 math courses in English and Spanish, plus one-click Spanish translation [10][8][7]. AMP is in English only.",
+    "Knowledge Checks that really retest. A topic a learner has not kept goes back on the path, which guards against counting it as known too soon [5].",
+    "Studies from outside the company: an independent meta-analysis and a randomized trial reviewed by the What Works Clearinghouse [3][4]."
+  ],
+  "evidence": {
+    "theirs": [
+      "The broadest study is a meta-analysis by Fang, Ren, Hu and Graesser (2019) of 15 studies with 24 samples of secondary and college students; the authors reported no conflict of interest [3]. It found ALEKS \"as good, but not better than, traditional classroom teaching.\" Results did not differ when ALEKS was the main instruction or a supplement, and effects were larger when ALEKS was used for shorter periods [3].",
+      "The What Works Clearinghouse has reviewed one randomized trial of ALEKS, Craig et al. (2013). It assigned 253 sixth graders in 16 classes at four schools in one West Tennessee district to ALEKS or to teacher-led lessons, after school, two hours twice a week for 25 weeks. On the state test the Clearinghouse found no statistically significant positive findings, and rated the study as meeting its standards with reservations [4].",
+      "McGraw Hill's own studies are more upbeat. Empirical Education, working with McGraw Hill, compared 31 Arizona schools where at least half of tested students took at least one ALEKS assessment with matched schools. In Algebra I, 5.1 percentage points fewer students scored at the lowest level and 4.2 more at the highest. The Algebra II result was smaller, and the Geometry result was small and negative. The report notes that school-level data cannot support claims about individual students [31]. McGraw Hill's headline that students with 75% or more ALEKS mastery are 2.7 times as likely to reach proficiency [7] comes from a company study. It compared those students' proficiency rate with that of all Algebra 1 test takers in five districts, a group that includes them [32]. Students who know more math score higher on both, so that comparison cannot show what ALEKS caused.",
+      "Evidence for ESSA lists ALEKS without a rating, because no studies met its inclusion requirements [26]. ALEKS has no What Works Clearinghouse intervention report [33]."
+    ],
+    "ours": [
+      "The two strongest studies of ALEKS by university researchers found no advantage over ordinary teaching [3][4]. We built AMP to do more than match it, from findings that held up in trials. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% against 38% for practice in blocks on the researchers' test a month later, and the study meets What Works Clearinghouse standards without reservations [34]. AMP mixes review into practice on a fixed schedule; ALEKS's review comes mainly in periodic checks [5]. Worked examples averaged an effect of g = 0.48 across 55 studies in math, from elementary school to college [35], and every AMP problem type has one. We expect this to show in outcomes. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Choose ALEKS if price decides it: $179.95 a year against AMP's $599.",
+      "Choose ALEKS if your learner needs calculus, college courses, or SAT, ACT or GED prep.",
+      "Choose ALEKS if your learner or school needs math in Spanish.",
+      "Choose ALEKS if you run a school that wants McGraw Hill's standards reports and gradebook, or already teaches Reveal Math."
+    ],
+    "amp": [
+      "Your child meets topics for the first time at home and needs a hint, a lesson and worked steps at every problem.",
+      "You want old skills to come back on a set schedule, mixed into daily practice.",
+      "Your child is below grade 3, or stronger in one part of math than in another.",
+      "You want paper workbooks made for your child, each with a worked answer key.",
+      "You want to start free with no card, and a full refund within 30 days."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is ALEKS cheaper than AMP?",
+      "answer": "Yes. ALEKS costs $179.95 a year or $19.95 a month for one student, and $305.90 a year for two [1][16]. AMP costs $599 a year or $59 a month for the first child and $399 or $39 for each more, with two parents practicing free. AMP's price buys a hint, a lesson and worked steps at every problem, scheduled review, and unlimited printable workbooks from counting to precalculus."
+    },
+    {
+      "question": "Why does ALEKS move topics I already learned back?",
+      "answer": "Its Knowledge Checks retest the course, and a wrong answer, or choosing I Don't Know, can return a topic to Remaining so it is learned again [5]. In AMP a miss resets that skill's review schedule, and the count of skills earned never goes down."
+    },
+    {
+      "question": "Does ALEKS work?",
+      "answer": "A meta-analysis of 15 studies found it as good as classroom teaching but not better, and a randomized trial reviewed by the What Works Clearinghouse found no statistically significant gain over teacher-led lessons [3][4]. Evidence for ESSA lists it without a rating [26]."
+    },
+    {
+      "question": "Can I use ALEKS at home with a kindergartner?",
+      "answer": "Not with the family plan. It excludes ALEKS Adventure, the K-5 program, so its math courses start at grade 3 [9][10]. AMP starts at counting."
+    },
+    {
+      "question": "Does AMP teach calculus like ALEKS?",
+      "answer": "No. AMP stops at precalculus. ALEKS launched calculus with AP Calculus AB coverage in 2025 and expanded it to AP Calculus AB and BC standards in 2026 [21]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "ALEKS for families: choose a subscription (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/explore/aleks-consumer/choose-subscription.html"
+    },
+    {
+      "title": "The research behind ALEKS (ALEKS)",
+      "url": "https://www.aleks.com/about_aleks/research_behind"
+    },
+    {
+      "title": "Fang, Ren, Hu & Graesser (2019), A meta-analysis of the effectiveness of ALEKS on learning, Educational Psychology 39(10)",
+      "url": "https://doi.org/10.1080/01443410.2018.1495829"
+    },
+    {
+      "title": "Craig et al. (2013), an after-school ALEKS program in grade 6 (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/WWC/Study/82204"
+    },
+    {
+      "title": "How do I review topics I've already learned in ALEKS? (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/how-do-i-review-topics-i-ve-already-learned-in-aleks.html"
+    },
+    {
+      "title": "ALEKS reviews (Trustpilot)",
+      "url": "https://www.trustpilot.com/review/aleks.com"
+    },
+    {
+      "title": "ALEKS for K-12 (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/program/microsites/MKTSP-GAB02M0.html"
+    },
+    {
+      "title": "ALEKS Math for K-12 (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/program/microsites/MKTSP-GAB02M0/browse/math.html"
+    },
+    {
+      "title": "ALEKS Independent Use (ALEKS)",
+      "url": "https://www.aleks.com/independent"
+    },
+    {
+      "title": "ALEKS K-12 course products (ALEKS)",
+      "url": "https://www.aleks.com/k12/course_products"
+    },
+    {
+      "title": "Which course do I start my student in? (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/i-need-a-course-recommendation-which-course-do-i-start-my-student-in.html"
+    },
+    {
+      "title": "How much can I help my child in ALEKS? (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/how-much-can-i-help-my-child-in-aleks.html"
+    },
+    {
+      "title": "ALEKS QuickTables (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/program/microsites/MKTSP-GAB02M0/browse/quicktables.html"
+    },
+    {
+      "title": "Creating a quiz in an Independent Use account (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/creating-a-quiz-and-reviewing-quiz-results-in-an-independent-use-account.html"
+    },
+    {
+      "title": "ALEKS free trial for families (ALEKS)",
+      "url": "https://www.aleks.com/free_trial/consumer"
+    },
+    {
+      "title": "Buy ALEKS now (ALEKS)",
+      "url": "https://www.aleks.com/buy_aleks_now"
+    },
+    {
+      "title": "Terms of use and consumer purchase terms (McGraw Hill)",
+      "url": "https://www.mheducation.com/terms-use.html"
+    },
+    {
+      "title": "Getting a quote for K-12 ALEKS subscriptions (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/how-can-i-obtain-a-quote-for-k-12-aleks-subscriptions.html"
+    },
+    {
+      "title": "ALEKS K-12 order online (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/program/microsites/MKTSP-GAB02M0/shop-now/order-online.html"
+    },
+    {
+      "title": "Payment types for K-12 subscriptions (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/what-types-of-payment-does-aleks-accept-for-k12-subscriptions.html"
+    },
+    {
+      "title": "What's new in ALEKS (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/program/microsites/MKTSP-GAB02M0/program-details/whats-new.html"
+    },
+    {
+      "title": "Knowledge Space Theory (ALEKS)",
+      "url": "https://www.aleks.com/about_aleks/knowledge_space_theory"
+    },
+    {
+      "title": "How ALEKS works, text description (ALEKS)",
+      "url": "https://www.aleks.com/about_aleks/HowALEKSWorks_TextDescription"
+    },
+    {
+      "title": "Editing your student's Independent Use account (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/editing-your-student-s-account-independent-use-account.html"
+    },
+    {
+      "title": "ALEKS overview (ALEKS)",
+      "url": "https://www.aleks.com/about_aleks/overview"
+    },
+    {
+      "title": "ALEKS (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/aleks/"
+    },
+    {
+      "title": "ALEKS company information (ALEKS)",
+      "url": "https://www.aleks.com/about_us/company_information"
+    },
+    {
+      "title": "How long does it take to complete an ALEKS course? (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/how-long-does-it-take-to-complete-an-aleks-course.html"
+    },
+    {
+      "title": "What happens when a student masters everything in the course? (ALEKS support)",
+      "url": "https://www.mheducation.com/support/aleks-support-center/knowledge/what-happens-in-aleks-when-my-student-completely-masters-everything-in-the-course-she-or-he-is-in.html"
+    },
+    {
+      "title": "ALEKS Adventure (McGraw Hill)",
+      "url": "https://www.mheducation.com/prek-12/program/microsites/MKTSP-GAB02M0/browse/adventure.html"
+    },
+    {
+      "title": "Empirical Education, ALEKS study in Arizona with McGraw Hill",
+      "url": "https://www.empiricaleducation.com/mcgraw-hill-education/"
+    },
+    {
+      "title": "The Impact of ALEKS Mastery on Student Proficiency in Math (McGraw Hill, 2022)",
+      "url": "https://www.mheducation.com/content/dam/mhe/research/prek-12/essa-tier-3/aleks-proficiency-study-2022.pdf"
+    },
+    {
+      "title": "What Works Clearinghouse product search: ALEKS",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?searchTerm=ALEKS"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
+  ]
+}

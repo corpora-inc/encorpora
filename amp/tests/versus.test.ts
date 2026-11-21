@@ -467,10 +467,13 @@ test("a writer's page checks alone; the catalog is stale until it is rewritten, 
   );
   const catalog = writeVersusCatalog(directory);
   assert.deepEqual(checkVersusFiles(directory), []);
+  assert.equal(catalog[0]?.slug, "half-written", "adaptive comes first on the hub, and Aardvark first in it");
   assert.deepEqual(
-    catalog.slice(0, 2).map((entry) => entry.slug),
+    catalog
+      .filter((entry) => ["half-written", "sample"].includes(entry.slug))
+      .map((entry) => entry.slug),
     ["half-written", "sample"],
-    "adaptive comes first on the hub, and Aardvark before Sample",
+    "within a category, by name: Aardvark before Sample",
   );
   assert.deepEqual(
     JSON.parse(readFileSync(new URL("catalog.json", directory), "utf8")),
@@ -556,7 +559,7 @@ test("citations are read one way", () => {
 test("a page's title names the benefit, and stays inside a search result", () => {
   assert.equal(
     versusPageTitle({ name: "i-Ready", category: "school" }),
-    "AMP vs i-Ready: Math Families Can Buy | AMP",
+    `AMP vs i-Ready: ${versusCategories.find((category) => category.id === "school")?.benefit} | AMP`,
   );
   assert.equal(
     versusPageTitle({
@@ -742,7 +745,7 @@ test("each comparison's static document carries its words, its sources and its d
     );
     const text = JSON.stringify(data);
     assert.ok(
-      !/Review|AggregateRating|ratingValue/.test(text),
+      !/"@type":"(?:Review|AggregateRating|Rating)"|ratingValue|reviewRating/.test(text),
       "never a review or a rating",
     );
     assert.ok(!/\[\d+\]/.test(text), "no citation marker in structured data");

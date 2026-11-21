@@ -3,93 +3,139 @@
   "name": "i-Ready",
   "maker": "Curriculum Associates",
   "category": "school",
-  "checked": "2026-11-15",
-  "line": "i-Ready is sold to schools. AMP is a complete math curriculum a family can start today.",
-  "description": "i-Ready Personalized Instruction is sold to schools and covers K–8. AMP is a complete math curriculum families buy directly, through precalculus.",
-  "verdict": "i-Ready Personalized Instruction for Mathematics is a school program: it isn’t sold for home use, and a school’s assessment and teachers decide its lessons [1][2]. AMP is a complete math curriculum a family can start today, from counting to precalculus.",
-  "theirs": [
-    "i-Ready is a family of products from Curriculum Associates. This page compares AMP with i-Ready Personalized Instruction for Mathematics, a supplemental digital program [1]. Curriculum Associates also sells separate core mathematics and print products.",
-    "Personalized Instruction is guided by the results of the i-Ready Inform assessment. Those results assign each student a path of lessons, and teachers can assign lessons of their own. Schools use its reports beside classroom teaching [1][3].",
-    "Its purchasing page says Personalized Instruction is not sold for homeschool or private-home use [2]."
-  ],
-  "credit": [
-    "One system for a school: the assessment, the lessons it assigns and the reports [1][3].",
-    "Teachers can assign lessons that fit what the class is studying [1].",
-    "Lessons adjust their support while a student works [1]."
-  ],
+  "checked": "2026-11-21",
+  "benefit": "Math a family can start",
+  "line": "i-Ready sells only to schools and sets a lesson path from a test. AMP adapts at every answer, at home or at school.",
+  "description": "AMP vs i-Ready: what i-Ready's studies show, why families can't buy its lessons, and how AMP adapts at every answer from counting to precalculus.",
+  "verdict": "i-Ready reaches nearly a third of American students, has a nationally normed diagnostic, and carries an Evidence for ESSA rating [9][15][8]. Its lessons are sold only to schools, and in an independent study, users averaged about eight hours of math lessons a year and scored about 0.04 standard deviations higher than non-users [4]. AMP chooses every problem from the learner's answers, shows the worked answer every time, and any family can start it today.",
   "reasons": [
     {
-      "title": "A family can buy it",
-      "body": "i-Ready Personalized Instruction is not sold for home use [2]. A parent creates an AMP learner and practice begins the same day."
+      "title": "A family can buy AMP",
+      "body": "Curriculum Associates states that i-Ready Personalized Instruction \"is not sold for home-school or private-home use\" [2]. Schools buy it with a minimum of 150 assessment licenses [2]. AMP is open to a family, a tutor or a school the same day, and the first 100 answers are free."
     },
     {
-      "title": "It keeps going after grade 8",
-      "body": "i-Ready lists Personalized Instruction content for kindergarten through grade 8 [1]. AMP runs from counting through precalculus in one program."
+      "title": "AMP picks each problem from the learner's answers",
+      "body": "i-Ready sets a path of lessons from a diagnostic given three times a year, in fall, winter and spring [10][12]. Teachers can add lessons or change the order, and lessons of 15 to 35 minutes expand and contract with performance [12][11][1]. AMP keeps a level in each of 14 strands of math and chooses each next problem from the learner's answers: new work, a prerequisite, or review.",
+      "research": ["level"]
     },
     {
-      "title": "Every next problem is chosen from the last one",
-      "body": "i-Ready sets a lesson path from an assessment, and a teacher can assign lessons [1]. AMP chooses each next problem from what the learner just did, and brings learned skills back for review.",
-      "research": ["level", "review"]
+      "title": "Every wrong answer gets the worked answer",
+      "body": "Curriculum Associates says its lessons give scaffolded feedback during practice [11]. Still, NBC News reported in 2026 that an eighth grader could see his overall score after a lesson, but not which questions he got wrong or the right answers [9]. Seventh graders in a 2019 WestEd study universally wanted to know exactly which answers they got wrong [7]. AMP shows right or wrong, the correct answer and the worked steps after every problem. In a review of 40 studies, feedback that explains had the largest average effect [14].",
+      "research": ["feedback"]
     },
     {
-      "title": "It works on your schedule, with paper when you want it",
-      "body": "School access to i-Ready follows a teacher’s assignments. AMP is yours at home, with a lesson and a worked explanation at every problem and printable workbooks made for each learner.",
-      "research": ["feedback", "lessons"]
+      "title": "A learner who knows it moves on",
+      "body": "In WestEd's study, students asked for a check of what they knew, or a way to test out of a lesson [7]. In AMP a skill shows as Strong when four of the last five answers are right without help. While a learner is still climbing, every second problem reaches higher, and a learner or parent can open any skill on the map and practice it directly.",
+      "research": ["mastery", "level"]
+    },
+    {
+      "title": "Misses lead back to the missing piece",
+      "body": "A failed i-Ready lesson is assigned again automatically. If the student fails again, a 2020 Curriculum Associates guide suggests the teacher step in or assign lessons at a lower grade level [11]. In AMP two misses in a row on a skill send practice to what that skill builds on. No one has to notice first.",
+      "research": ["mastery"]
+    },
+    {
+      "title": "Old skills come back on a schedule",
+      "body": "AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. We found no scheduled review of earlier skills in the i-Ready pages and guide we read [1][10][11][12]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [13].",
+      "research": ["review"]
+    },
+    {
+      "title": "Built to be used most days, at home or school",
+      "body": "Across 4.3 million i-Ready students in grades 1 to 5 in 2021-22, the typical student spent 22 hours on the platform for the year, reading and math combined, and 83% of lessons were done during school hours [6]. The authors of the independent study write that, consistent with prior research, online tools appear most effective at 40 to 100 hours a school year [4]. AMP works at home as well as at school. By our arithmetic, twenty minutes a day, four days a week, comes to 40 hours in 30 weeks."
+    },
+    {
+      "title": "It keeps going after grade 8, and on paper",
+      "body": "i-Ready Personalized Instruction covers kindergarten through grade 8, and older students use i-Ready Pro, a separate experience for grades 6 to 12 [1]. AMP runs from counting through precalculus in one program. It prints unlimited personalized workbooks with worked answer keys, and results entered from paper count toward the learner's level."
     }
+  ],
+  "rows": {
+    "price": "National list price to schools: $36.25 per student per year for the math assessment plus Personalized Instruction [3]. No family price [2].",
+    "buyers": "Schools and districts only, with a minimum of 150 assessment licenses [2].",
+    "range": "Personalized Instruction: kindergarten through grade 8. i-Ready Pro is a separate experience for grades 6 to 12 [1].",
+    "start": "A separate adaptive test, i-Ready Inform, given three times a year and taking about 30 to 60 minutes per subject [10].",
+    "teaching": "Online lessons of 15 to 35 minutes that may include animation, with practice, scaffolded feedback and a short, scored quiz [11].",
+    "next": "A lesson path built from the diagnostic. Teachers can add lessons or change the order [12].",
+    "mastery": "Passing the scored quiz at the end of a lesson. A failed lesson is automatically assigned again [11].",
+    "review": "We found no scheduled review of earlier skills in the pages and guide we read [1][10][11][12].",
+    "print": "Print resources individuals can order by phone [12]. We found no workbooks made for the individual student.",
+    "adult": "A teacher sets time expectations, monitors pass rates, assigns lessons and supports students who fail them [11].",
+    "reports": "Scale scores, placement levels and national percentile ranks from the diagnostic [15]. Time and pass rates for teachers [11]. NBC reports teachers do not see students' answers [9].",
+    "evidence": "The independent, peer-reviewed study we found: users 0.04 to 0.05 SD higher in math, described as not causal [4]. Evidence for ESSA: Moderate, on one company study [8]."
+  },
+  "theirs": [
+    "i-Ready comes from Curriculum Associates. Nearly 14 million students use it each year, nearly a third of American students from kindergarten to grade 12, NBC News reported in 2026 [9]. This page is about two of its parts: the adaptive diagnostic, now called i-Ready Inform, and i-Ready Personalized Instruction for Mathematics, the online lessons for kindergarten through grade 8 [1].",
+    "A student takes the diagnostic three times a year [10]. i-Ready builds a path of lessons from the result, and teachers can add lessons or change the order [12]. Each lesson combines instruction with practice and ends with a short, scored quiz [11]. Curriculum Associates describes the lessons as a supplement to classroom instruction [1].",
+    "Curriculum Associates also sells i-Ready Classroom Mathematics, a core curriculum, and print books. Those are different products, and this page does not compare them."
+  ],
+  "credit": [
+    "A nationally normed diagnostic, built on data from more than five million students [15]. Districts use its percentile ranks to decide intervention services [15]. AMP has no normed test.",
+    "Outside evidence: an independent, peer-reviewed study and an Evidence for ESSA rating of Moderate [4][8].",
+    "Lessons in Spanish as well as English [1]. AMP is in English only.",
+    "Teacher tools at district scale. In the independent study, students whose teachers assigned at least one lesson did a little better than students on the automatic path alone [4]."
   ],
   "evidence": {
     "theirs": [
-      "Curriculum Associates describes Personalized Instruction and the Inform assessment on its own pages [1][3]. This comparison makes no claim about studies of i-Ready."
+      "The strongest independent study we found is Darling-Aduana and Capers (2026), funded by the U.S. Institute of Education Sciences and published in the journal Online Learning [4]. It followed one southeastern district for two school years and compared almost 28,000 cases of i-Ready use with about 94,000 cases of non-use. Users scored 0.04 to 0.05 standard deviations higher in math on NWEA's MAP test, which the authors put at about two weeks of growth. They call the analysis descriptive, not causal [4].",
+      "Use was low. In years when i-Ready was available, 41% of students used it. Math users averaged 19.56 lessons in 2021-22 at 24.48 minutes each, about eight hours by our arithmetic. Students assigned 60 or more lessons showed larger associations, up to about 0.18 standard deviations. The authors write that, consistent with prior research, online tools appear most effective at 40 to 100 hours a school year [4].",
+      "Curriculum Associates' headline math number, 0.24 standard deviations by grade 5, comes from a study HumRRO prepared for the company [5][10]. It applies to 676 students who met the company's usage target (30 minutes a week for 18 weeks, with a 70% lesson pass rate) in all three years, compared with 665 matched students. For students with any use the estimate was 0.07 and not statistically significant, and the one-year and two-year results were not significant either [5]. Students who keep up a program for three years can differ from other students before it starts.",
+      "Evidence for ESSA rates i-Ready Personalized Instruction for math Moderate, on one quasi-experimental study of grade 5 students published by Curriculum Associates (+0.23) [8]. It does not count a company analysis limited to students who used the program with fidelity [8]. NBC News reported in 2026 that Curriculum Associates has not done a randomized controlled trial [9]."
     ],
     "ours": [
-      "AMP’s research report sets out each part of the program and the published research behind it. It is AMP’s ESSA Tier 4 rationale, and the studies it plans are pre-registered and published whatever the result."
+      "AMP's rules come from well-tested findings. Mixed, spaced practice: 62% against 38% a month later on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [13]. Feedback that explains: an average effect of 0.49 across 40 studies of computer-based feedback, against 0.05 for feedback that only marks right or wrong [14]. The independent i-Ready study points the same way on time: associations grew with lessons completed, up to a point [4]. We built AMP on these methods and expect that to show in outcomes. That is our bet, and we have committed in public to measuring it.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
     ]
-  },
-  "rows": {
-    "buyers": "Schools. Not sold for homeschool or private-home use [2].",
-    "range": "Personalized Instruction: kindergarten through grade 8. The Inform assessment: K–12 [1][3].",
-    "start": "The i-Ready Inform assessment [3].",
-    "next": "A lesson path set from assessment results, and lessons a teacher assigns [1].",
-    "adult": "A teacher assigns lessons and reads the reports [1].",
-    "reports": "Reports for teachers and schools [1][3]."
   },
   "fit": {
     "them": [
-      "Your school already uses it, and its lessons follow the school’s assessment.",
-      "You are a school that wants the assessment, the instruction and the reports from one company."
+      "You run a school or district that needs one normed screening test three times a year.",
+      "You need lessons in Spanish.",
+      "You need a program with an Evidence for ESSA rating today.",
+      "Your school already teaches with i-Ready Classroom Mathematics and wants one company for all of it."
     ],
     "amp": [
-      "You want math at home that you can start and manage yourself.",
-      "You need a curriculum that continues into high school mathematics.",
-      "You want printable workbooks and an explanation at every problem."
+      "You are a family. i-Ready's lessons are not for sale to you. AMP is.",
+      "You want every problem chosen from the learner's answers, and every miss explained.",
+      "You want old skills to come back on a schedule, without planning it.",
+      "Your learner is past grade 8, or at different levels in different parts of math.",
+      "You teach a class and want to see who needs you today, with the actual problems behind every number."
     ]
   },
   "questions": [
     {
-      "question": "Is this comparison about every i-Ready math product?",
-      "answer": "No. It is about i-Ready Personalized Instruction for Mathematics and the assessment that guides it [1][3]. Curriculum Associates also sells separate core mathematics and print products."
+      "question": "Can homeschoolers or parents buy i-Ready?",
+      "answer": "No. Curriculum Associates says i-Ready Personalized Instruction is not sold for home-school or private-home use, and that the subscription is bought by districts or schools, not individual families [2][12]. AMP is sold directly to families."
     },
     {
-      "question": "Can I buy i-Ready Personalized Instruction for home use?",
-      "answer": "Its purchasing page says it is not sold for homeschool or private-home use [2]. AMP is sold directly to families."
+      "question": "Does i-Ready work?",
+      "answer": "The strongest independent study we found reports a small positive association: users scored 0.04 to 0.05 standard deviations higher in math, at about eight hours of lessons a year, and the authors call it descriptive, not causal [4]. The company's larger numbers come from students who met a usage target for years [5]. NBC News reported that the company has not done a randomized controlled trial [9]."
     },
     {
-      "question": "My child uses i-Ready at school. Can we use AMP at home too?",
-      "answer": "Yes. AMP is a separate home routine: create a learner and begin practice on your own schedule."
+      "question": "Does AMP cost more than i-Ready?",
+      "answer": "Per student, yes. i-Ready's national list price to schools is $36.25 per student per year for the math assessment and lessons [3]. AMP costs a family $599 a year or $59 a month for the first child, then $399 or $39 for each more, and that covers counting through precalculus, unlimited printed workbooks, and two parents' own practice."
+    },
+    {
+      "question": "My child uses i-Ready at school. Can we use AMP at home?",
+      "answer": "Yes. AMP is a separate program. It finds the level in each of 14 strands of math within the first 24 problems and chooses practice from there, on your schedule."
+    },
+    {
+      "question": "Can a school use AMP in place of i-Ready?",
+      "answer": "For daily practice and teaching, yes. A teacher's first class starts a free 30-day pilot, with Clever sign-in and rostering. AMP does not replace a normed screening test."
     }
   ],
   "sources": [
-    {
-      "title": "i-Ready Personalized Instruction for Mathematics (Curriculum Associates)",
-      "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/mathematics"
-    },
-    {
-      "title": "Purchasing i-Ready Personalized Instruction (Curriculum Associates)",
-      "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/purchasing"
-    },
-    {
-      "title": "i-Ready Assessment: Inform (Curriculum Associates)",
-      "url": "https://www.curriculumassociates.com/programs/i-ready-assessment/admin-resources/diagnostic"
-    }
+    { "title": "i-Ready Personalized Instruction for Mathematics (Curriculum Associates)", "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/mathematics" },
+    { "title": "Purchasing i-Ready Personalized Instruction (Curriculum Associates)", "url": "https://www.curriculumassociates.com/programs/i-ready-learning/personalized-instruction/purchasing" },
+    { "title": "Pricing information (Curriculum Associates)", "url": "https://www.curriculumassociates.com/pricing-information" },
+    { "title": "Darling-Aduana & Capers (2026), Evaluating a personalized online learning tool for academic recovery: Lessons from i-Ready, Online Learning 30(2)", "url": "https://doi.org/10.24059/olj.v30i2.4916" },
+    { "title": "HumRRO (2025), i-Ready Personalized Instruction longitudinal impact study: Mathematics, final report, prepared for Curriculum Associates", "url": "https://cdn.bfldr.com/LS6J0F7/at/r8986k769t9kpqh7wx3sj7/2025_No113_PI_Math_Impact_FINAL.pdf" },
+    { "title": "Auletto (2024), How Students Use Digital Learning Materials, Northwestern University E4 Center", "url": "https://e4.northwestern.edu/files/2024/04/AA_Lesson-Usage-Brief_04_2024-279f84af017f4a47.pdf" },
+    { "title": "Marple et al. (2019), iReady in 7th Grade Math Classes: A Mixed Methods Case Study, WestEd (full report)", "url": "https://wested2024.s3.us-west-1.amazonaws.com/wp-content/uploads/2024/09/26104814/i-Ready-Study-Full-Report_FINAL.pdf" },
+    { "title": "i-Ready Personalized Instruction, Math (Evidence for ESSA)", "url": "https://evidenceforessa.org/program/i-ready-personalized-instruction-math" },
+    { "title": "The revolt against i-Ready: Private equity-backed software faces parent, teacher and student fury (NBC News, May 12, 2026)", "url": "https://www.nbcnews.com/news/education/iready-school-software-faces-parent-teacher-student-fury-rcna342850" },
+    { "title": "i-Ready evidence and impact (Curriculum Associates)", "url": "https://www.curriculumassociates.com/research-and-efficacy/i-ready-evidence-impact" },
+    { "title": "i-Ready Educator Guide: Supporting Students at Home (Curriculum Associates, 2020)", "url": "https://www.evergreenusd.org/documents/Staff%20Portal/IReady.pdf" },
+    { "title": "i-Ready frequently asked questions (Curriculum Associates)", "url": "https://www.curriculumassociates.com/support/faq/i-ready" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "i-Ready Diagnostic national norms (Curriculum Associates)", "url": "https://www.curriculumassociates.com/reviews/assessment/diagnostic-norms" }
   ]
 }

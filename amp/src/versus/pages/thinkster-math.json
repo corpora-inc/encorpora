@@ -1,0 +1,122 @@
+{
+  "slug": "thinkster-math",
+  "name": "Thinkster Math",
+  "category": "tutoring",
+  "checked": "2026-11-21",
+  "line": "Thinkster pairs worksheets with a weekly tutor. AMP chooses every problem itself, for $59 a month.",
+  "description": "AMP vs Thinkster Math: a weekly tutor and AI coach from $45 a session, or adaptive practice from counting to precalculus for $59 a month.",
+  "verdict": "Thinkster Math gives a learner a real tutor once a week and a coach who reviews the work, and that is worth something [2][3]. At its $45 starting price, a session every week comes to about three times AMP's $59 a month (our arithmetic) [2]. AMP chooses every problem from the last answer, explains every miss on the spot, and brings old skills back on a schedule.",
+  "theirs": [
+    "Thinkster Math is an online math tutoring service sold to families at hellothinkster.com. Its home page sums it up as tutoring personalized by patented AI and top math tutors [1]. The Signature plan pairs a learner with a masters-certified dedicated tutor for live 45-minute one-to-one sessions each week, and adds a 24/7 AI coach, a parent dashboard and a Mastery Map [2].",
+    "Between sessions the learner works through worksheets. In Cathy Duffy's 2019 review, a skills assessment came first, then an advisor called the parent and assigned a coach. The coach assigned about 15 online worksheets a week, one problem at a time, for 15 to 20 minutes a day, reviewed the work daily and left notes [3]. Each worksheet linked to a video tutorial, and the system recorded the learner's steps so the coach could see the reasoning [3]. The current guarantee terms ask for at least 10 worksheets a week [1].",
+    "Thinkster matches worksheets to school work by Common Core or state standards [4]. Cathy Duffy described it in 2019 as a supplement rather than a complete math program [3]."
+  ],
+  "credit": [
+    "A real person. Signature includes a masters-certified dedicated tutor and live 45-minute one-to-one sessions each week [2]. AMP has no tutors.",
+    "A coach who reads the work. In 2019 the system recorded the learner's problem-solving work so a person could follow the reasoning, and the coach left notes [3]. AMP checks typed lines of work on 64 problem types, not freehand work.",
+    "A 24/7 AI coach [2]. AMP has no AI tutor.",
+    "Practice tied to school. Worksheets are matched to the learner's Common Core or state standards [4].",
+    "Rewards for effort. In 2019 learners earned medals and points toward gift cards [3]. AMP has no games or reward store."
+  ],
+  "reasons": [
+    {
+      "title": "A month of AMP costs less than two sessions",
+      "body": "Thinkster's Signature plan starts at $45 per session, with live 45-minute sessions each week [2]. At that starting price, one session every week comes to about $195 a month (our arithmetic: $45 x 52 weeks / 12). AMP is $59 a month or $599 a year, with no session fees, however much the learner practices. Two parents practice free on the same plan."
+    },
+    {
+      "title": "AMP chooses every next problem itself",
+      "body": "Thinkster's home page credits its personalization to patented AI and top tutors [1]. In Cathy Duffy's 2019 review, a coach built a plan around two or three topics at a time and assigned the worksheets [3]. AMP keeps a separate level in each of 14 strands of math and chooses each next problem from the learner's answers: new work just within reach, a prerequisite, or review. No one has to assign anything.",
+      "research": ["level"]
+    },
+    {
+      "title": "Mastery is a rule anyone can read",
+      "body": "Thinkster's plan includes a Mastery Map [2]. We found no published rule for what counts as mastered on the pages we read [1][2][3]. In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson does not count, and two misses in a row send practice back to what the skill builds on. The rule is in AMP's public source code.",
+      "research": ["mastery", "hints"]
+    },
+    {
+      "title": "The explanation arrives with the answer",
+      "body": "In 2019 a Thinkster coach reviewed the work daily and left notes, and each worksheet linked to a video tutorial [3]. Today Thinkster lists a 24/7 AI coach with instant feedback [2]; we did not find what it says after a wrong answer. AMP explains at the moment of each answer: right or wrong, the correct answer and the worked steps, every time. Every problem type also has a written lesson with a worked example. Feedback that explains averaged 0.49 across 40 studies of computer-based feedback, against 0.05 for right-or-wrong alone [10].",
+      "research": ["feedback", "lessons"]
+    },
+    {
+      "title": "Old skills come back on a schedule",
+      "body": "We found no scheduled review of earlier skills in Thinkster's materials we read [1][2][3]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [9].",
+      "research": ["review"]
+    },
+    {
+      "title": "Paper practice that counts",
+      "body": "In 2019, Thinkster's worksheets were done on screen, one problem at a time, on a computer or tablet [3]. We found no printable workbooks [1][2][3]. AMP prints unlimited workbooks made for each learner, each with a worked answer key, and results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Signature plan from $45 per session, with live 45-minute 1:1 sessions each week [2]. A second plan, Ignite, is named; its price was not on the pages we read [1].",
+    "buyers": "Families, directly [2]. We found no school plans on the pages we read.",
+    "range": "Kindergarten through grade 8 in Cathy Duffy's 2019 review [3]. Worksheets are matched to Common Core or state standards [4].",
+    "start": "A skills assessment, then an advisor calls the parent and assigns a coach, per the 2019 review [3].",
+    "teaching": "A live 45-minute tutor session each week and a 24/7 AI coach [2]. A video tutorial linked to each worksheet [3].",
+    "next": "In 2019 a coach built a plan around two or three topics at a time and assigned worksheets [3]. The site credits patented AI with personalization [1].",
+    "mastery": "Plans include a Mastery Map [2]. No published mastery rule found on the pages we read.",
+    "review": "No scheduled review of earlier skills found on the pages we read [1][2][3].",
+    "print": "No printable workbooks found. In 2019 worksheets were done on a computer or tablet [3].",
+    "adult": "To keep the guarantee: at least 10 worksheets a week, 90% of tutor sessions attended, goals updated every 30 days, monthly parent feedback [1].",
+    "reports": "A parent dashboard [2]. Progress by concept, color-coded by mastery, and a phone app for parents in 2019 [3].",
+    "evidence": "No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [5][6]. No outcome study found."
+  },
+  "evidence": {
+    "theirs": [
+      "We found no published outcome study of Thinkster Math, randomized or with a comparison group, on the pages we read; Thinkster's own research page was not reachable when we checked. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [5][6].",
+      "In place of a study, Thinkster offers a guarantee: a full refund if a learner shows no \"measurable improvement\" after six months of consistent engagement [1]. The terms require at least 10 worksheets a week, at least 80% of assigned videos watched, 90% of live sessions attended, goals updated every 30 days and monthly parent feedback [1]. The page does not say how improvement is measured or who measures it [1]. In our view a guarantee is a business term, not evidence of learning.",
+      "Tutoring as a method has strong research behind it. Across 263 randomized trials, tutoring averaged 0.40 standard deviations; for large U.S. programs measured on standardized tests the figure was 0.16 to 0.22 [7]. Effects tended to be larger at three or more days a week [8]. Those trials did not test Thinkster. Signature's pricing page lists live 45-minute sessions each week [2]."
+    ],
+    "ours": [
+      "AMP's rules come from findings that have held up in trials. Worked examples improved math performance by an average of g = 0.48 across 55 studies [11], and AMP shows worked steps after every answer. Mixed, spaced practice scored 62% against 38% a month later on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [9], and AMP schedules that review for every learned skill. We think that, for a learner who needs practice more than conversation, a program that does this at every problem, most days, is a better buy than a weekly session. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child does best with a person who knows them, every week.",
+      "You want practice matched to what your child's school class covers now [4].",
+      "You want an AI coach available at any hour, alongside a tutor [2].",
+      "Your child responds to points and rewards [3]."
+    ],
+    "amp": [
+      "You want practice every day for less than two tutor sessions a month.",
+      "You want every problem chosen from the last answer, with no one assigning worksheets.",
+      "You want every miss explained the moment it happens, with worked steps.",
+      "You want old skills to come back on a schedule, without planning it.",
+      "You already pay a tutor and want daily practice between sessions."
+    ]
+  },
+  "questions": [
+    {
+      "question": "How much does Thinkster Math cost compared with AMP?",
+      "answer": "Thinkster's Signature plan starts at $45 per session, with live sessions each week [2]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, with a full refund within 30 days."
+    },
+    {
+      "question": "Does Thinkster Math guarantee results?",
+      "answer": "It promises a refund if a learner shows no measurable improvement after six months, if the family meets six engagement conditions, and the page does not define the measure [1]. AMP refunds any personal payment within 30 days with no reason needed. It does not promise a learning result."
+    },
+    {
+      "question": "Can AMP replace a Thinkster tutor?",
+      "answer": "Not as a person. AMP has no tutors and no AI tutor. It places the learner, chooses and checks every problem, and schedules review, and many families can use it between sessions with any tutor."
+    },
+    {
+      "question": "Is AMP proven to work better than Thinkster Math?",
+      "answer": "We cannot say that. We found no published outcome study of Thinkster Math [5][6], and where AMP's evidence stands is set out in the evidence section above."
+    }
+  ],
+  "sources": [
+    { "title": "Thinkster Math home page and guarantee terms (Thinkster)", "url": "https://www.hellothinkster.com/" },
+    { "title": "AI math tutoring programs and pricing (Thinkster)", "url": "https://www.hellothinkster.com/pricing-plans/ai-math-tutoring-programs" },
+    { "title": "Thinkster Math review (Cathy Duffy Reviews, 2019)", "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math-supplements/for-all-grade-levels/thinkster-math" },
+    { "title": "Thinkster Math vs Kumon Math (Thinkster)", "url": "https://www.hellothinkster.com/thinkster-math-vs-kumon-math-calculator" },
+    { "title": "Search for Thinkster (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/?s=thinkster" },
+    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Kraft, Schueler & Falken (2026), What impacts should we expect from tutoring at scale?", "url": "https://doi.org/10.3102/00346543261446660" },
+    { "title": "Nickow, Oreopoulos & Quan (2024), The promise of tutoring for PreK-12 learning (AERJ)", "url": "https://doi.org/10.3102/00028312231208687" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance", "url": "https://doi.org/10.1007/s10648-023-09745-1" }
+  ]
+}

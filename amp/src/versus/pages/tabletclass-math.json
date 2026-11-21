@@ -1,0 +1,182 @@
+{
+  "slug": "tabletclass-math",
+  "name": "TabletClass Math",
+  "maker": "TabletClass.com, LLC",
+  "category": "courses",
+  "checked": "2026-11-21",
+  "benefit": "A program that places and grades",
+  "line": "TabletClass Math is a video course in a set order. AMP finds the level and picks each problem from the last answer.",
+  "description": "AMP vs TabletClass Math: a video course the parent places and grades, beside a program that finds the level, checks every answer and schedules review.",
+  "verdict": "TabletClass Math gives a learner teacher-led video lessons from a certified math teacher, at a low listed price per course [1][2][6]. The family picks the course, the chapters run in a set order, and the parent grades the tests [3][4]. AMP finds the level in each part of math, chooses every problem, checks every answer and brings old skills back on a schedule.",
+  "theirs": [
+    "TabletClass Math is an online math course from TabletClass.com, LLC, online at tcmathacademy.com [1]. The site describes its instruction as 100% teacher-led, and its founder, John Zimmerman, is the teacher it features [1][2]. He lists a math degree, a master's in educational technology, certification to teach middle and high school math, and more than 25 years in the classroom [2]. The company reports more than a million YouTube subscribers [1].",
+    "The homeschool line has six courses: Foundations Math, Pre-Algebra, Algebra 1, Geometry, Algebra 2 and Pre-Calculus [1]. Each topic has a lesson video and Example Set videos with step-by-step solutions. The learner works a printable worksheet, checks it against the answer key or a solution video, and takes an online quiz at the end of each chapter [3]. A course is planned for about an hour a day, five days a week, over seven to ten months, in a web browser on a computer, tablet or phone [5].",
+    "A separate Parent Portal adds chapter tests, answer keys, a final exam, a pacing guide, grading directions and a completion certificate [4]. The site also sells courses for adults, among them GED, SAT and CLEP preparation [9]. This page compares the homeschool courses."
+  ],
+  "credit": [
+    "Teacher-led video lessons from a certified math teacher, with worked-example videos for each topic [2][3]. AMP's films are animated, use synthesized voices, and cover a growing share of problem types, not all of them.",
+    "Lower listed prices: $150 for a year or $25 a month for a course, plus $25 once for the Parent Portal [4][6][7]. AMP costs more.",
+    "A familiar course shape: named courses such as Geometry and Algebra 2, chapter tests, a final exam and a completion certificate for a homeschool record [1][4]. AMP gives report cards, not course credit.",
+    "A free preview of each course, with no sign-up and no card [1].",
+    "Courses for adults, including GED and CLEP preparation [9]."
+  ],
+  "reasons": [
+    {
+      "title": "AMP finds the starting point itself",
+      "body": "TabletClass Math is sold as separate courses, and a downloadable placement test helps a family choose one, at least for Algebra 1 [10]. One course then sets the level for every topic in it. AMP finds a level in each of 14 strands of math within the first 24 problems, with no separate test, and keeps adjusting after that.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Misses lead back to the missing piece",
+      "body": "After a wrong worksheet answer, a TabletClass learner checks the answer key or watches the solution video [3]. We found no automatic return to earlier skills; a family can choose Foundations Math, which the site describes as elementary and middle school review, instead [1]. In AMP, two misses in a row on a skill send practice to what that skill builds on, and a learner who keeps succeeding gets harder work sooner.",
+      "research": [
+        "mastery",
+        "level"
+      ]
+    },
+    {
+      "title": "Old topics return on a schedule",
+      "body": "TabletClass's course materials describe lessons, worksheets and chapter quizzes. We found no scheduled review of earlier chapters, only a mention of review sections in the Geometry course description [3]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks [13].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Every answer is checked without the parent",
+      "body": "In TabletClass Math the learner checks worksheets against a key, and the parent grades the chapter tests and final exam and works out the course grade from supplied directions [3][4]. AMP checks every answer the moment it is given and shows the correct answer with worked steps. A skill counts as learned when four of the last five answers are right without help. An answer given after a hint does not count.",
+      "research": [
+        "feedback",
+        "mastery"
+      ]
+    },
+    {
+      "title": "The learner starts by doing",
+      "body": "A TabletClass day opens with a lesson video and example videos, inside a plan of about an hour a day [3][5]. AMP opens with a problem and brings the help to it: a one-step hint that never gives the answer, a written lesson with a worked example and, for a growing share of problem types, a narrated film. In an online psychology course for adults, the authors estimated the benefit of extra doing at more than six times that of extra watching or reading. Their data are correlational [14].",
+      "research": [
+        "hints",
+        "lessons"
+      ]
+    },
+    {
+      "title": "Counting to precalculus, and paper made for each learner",
+      "body": "TabletClass's homeschool courses begin with Foundations Math, which the site describes as elementary and middle school review, then Pre-Algebra [1]. Its worksheets are printable and the same for everyone [3]. AMP runs from counting through precalculus on one map of 336 skills, so a family keeps one program as a child grows. It prints unlimited workbooks made from each learner's record, with worked answer keys, and results entered from paper count toward the level."
+    }
+  ],
+  "rows": {
+    "price": "Algebra 1 and Pre-Calculus checkouts list $150 for a year, $95 for six months, or $25 a month until cancelled [6][7]. Tests and keys need the $25 Parent Portal [4].",
+    "buyers": "Homeschool families and self-learners, middle school to adult, online [1][9]. Free course previews with no sign-up [1].",
+    "range": "Six courses: Foundations Math (described as elementary and middle school review), Pre-Algebra, Algebra 1, Geometry, Algebra 2 and Pre-Calculus [1].",
+    "start": "The family picks the course. A downloadable placement test helps, at least for Algebra 1 [10].",
+    "teaching": "Teacher-led lesson videos and worked-example videos featuring founder John Zimmerman, plus printable chapter notes [1][3].",
+    "next": "Chapters in a set order, the same for every learner. No adjustment to the learner described [3].",
+    "mastery": "No mastery rule found. A learner moves on by finishing chapters; the parent grades chapter tests and the final exam [3][4].",
+    "review": "No scheduled review of earlier chapters found in its course materials; the Geometry description mentions review sections [3].",
+    "print": "Printable worksheets with answer keys, and chapter notes, the same for every learner [3].",
+    "adult": "Picks the course, buys the Parent Portal, grades chapter tests and the final exam, and computes the course grade from supplied directions [4].",
+    "reports": "Online chapter quizzes scored automatically [3]. No learner dashboard found. The Portal gives a guidebook for a portfolio record [4].",
+    "evidence": "No outcome study found on its site; its testimonials are self-reported [8]. No entry in Evidence for ESSA or the What Works Clearinghouse [11][12]."
+  },
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of TabletClass Math on its site: no randomized trial and no comparison-group study. Its testimonials page lists self-reported results on the SAT, the GED, placement tests and course grades, with no sample size and no comparison group [8]. TabletClass Math has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [11][12].",
+      "The site describes the curriculum as \"Voted #1 Middle & High School Math Curriculum\" five years in a row. The page names Practical Homeschooling Magazine and The Old Schoolhouse as recognizing it [1]. That is a vote or recognition, not a measure of learning. It also lists \"Rigor and Mastery\" as a feature [1]; we found no stated rule for when a topic counts as mastered."
+    ],
+    "ours": [
+      "AMP's review rule draws on one of the clearest trials in math practice. With 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks. The trial meets What Works Clearinghouse standards without reservations, though the test was the researchers' own [13]. A course that moves chapter by chapter leaves that spacing to the family; AMP schedules it for every learned skill. We expect that, with placement and checking built in, to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child learns best from a real teacher explaining each lesson on video.",
+      "You want a traditional course, such as Algebra 1 or Geometry, with chapter tests, a final exam and a completion certificate.",
+      "Price comes first. One TabletClass course costs much less than a year of AMP.",
+      "You are an adult preparing for the GED or a CLEP exam."
+    ],
+    "amp": [
+      "You are not sure which course fits, or your child is ahead in one part of math and behind in another.",
+      "You want every answer checked and explained, with nothing for you to grade.",
+      "You want earlier topics to come back on a schedule, without planning it.",
+      "Your child is younger than pre-algebra, or you want one program from counting through precalculus.",
+      "You want paper too: workbooks made for your child, each with a worked answer key."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than TabletClass Math?",
+      "answer": "Yes. A TabletClass course checkout lists $150 for a year or $25 a month, plus $25 once for the Parent Portal [4][6]. AMP is $599 a year or $59 a month for the first child, and that covers every level from counting to precalculus, with placement, checking, scheduled review and printed workbooks included."
+    },
+    {
+      "question": "Does TabletClass Math adapt to my child?",
+      "answer": "Its materials describe chapters in a set order and a placement test for choosing a course [3][10]. We found no description of it changing difficulty or choosing problems from a learner's answers. AMP does both, at every answer."
+    },
+    {
+      "question": "Can we use AMP alongside TabletClass Math?",
+      "answer": "Yes. A learner can keep watching TabletClass lessons and use AMP for daily practice, review and gap repair. AMP finds the level on its own within the first 24 problems, so there is nothing to set up between them."
+    },
+    {
+      "question": "Has TabletClass Math been studied?",
+      "answer": "We found no outcome study on its site, and its testimonials are self-reported [8]. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [11][12]. AMP has no outcome study yet either."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Homeschool Math (TabletClass Math)",
+      "url": "https://tcmathacademy.com/homeschool-math/"
+    },
+    {
+      "title": "About (TabletClass Math)",
+      "url": "https://tcmathacademy.com/about/"
+    },
+    {
+      "title": "Course features (TabletClass Math)",
+      "url": "https://tcmathacademy.com/homeschool-math/course-features/"
+    },
+    {
+      "title": "Parent Portal (TabletClass Math)",
+      "url": "https://tcmathacademy.com/homeschool-math/parent-portal/"
+    },
+    {
+      "title": "Frequently asked questions (TabletClass Math)",
+      "url": "https://tcmathacademy.com/faqs/"
+    },
+    {
+      "title": "TabletClass Math Algebra 1, course checkout (Teachable)",
+      "url": "https://tabletclass-academy.teachable.com/p/tabletclass-math-algebra/"
+    },
+    {
+      "title": "TabletClass Math Pre-Calculus, course checkout (Teachable)",
+      "url": "https://tabletclass-academy.teachable.com/p/tabletclass-math-pre-calculus-homeschool-curriculum"
+    },
+    {
+      "title": "Testimonials (TabletClass Math)",
+      "url": "https://tcmathacademy.com/testimonials/"
+    },
+    {
+      "title": "TC Math Academy home page",
+      "url": "https://tcmathacademy.com/"
+    },
+    {
+      "title": "Homeschool Algebra 1 curriculum (TabletClass Math)",
+      "url": "https://tcmathacademy.com/courses/homeschool-algebra-1-curriculum/"
+    },
+    {
+      "title": "Math programs (Evidence for ESSA, Johns Hopkins University)",
+      "url": "https://www.evidenceforessa.org/programs/math"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Koedinger et al. (2015), Learning is not a spectator sport: Doing is better than watching for learning from a MOOC",
+      "url": "https://doi.org/10.1145/2724660.2724681"
+    }
+  ]
+}

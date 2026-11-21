@@ -1,0 +1,139 @@
+{
+  "slug": "beast-academy",
+  "name": "Beast Academy",
+  "maker": "Art of Problem Solving",
+  "category": "books",
+  "checked": "2026-11-21",
+  "benefit": "Practice set to each learner",
+  "line": "Beast Academy teaches through comics and hard puzzles to age 13. AMP sets each problem and runs to precalculus.",
+  "description": "AMP vs Beast Academy: what its comic books and puzzles do well, what its studies show, and how AMP adds level-set practice and review through precalculus.",
+  "verdict": "Beast Academy is a deep, demanding curriculum for ages 6 to 13, with comic-style lessons, hard puzzles and full solutions [1][12]. By default it follows one sequence after placement, and it ends at Level 5 [5][10][11]. AMP chooses every problem from the learner's answers, schedules review, and runs from counting to precalculus; many families could use both.",
+  "reasons": [
+    {
+      "title": "Each problem aimed at this learner's level",
+      "body": "Beast Academy places a learner with an adaptive test, then, by default, opens lessons in a fixed order as stars are earned [7][5][10]. Its maker means it to challenge [4], and in WestEd's student survey most least-favorite answers were about difficulty [14]. AMP keeps a separate level in each of 14 strands and picks every problem from the learner's answers, so a child strong in geometry and still building fractions gets each at the right height. While a learner is climbing, every second problem reaches higher.",
+      "research": ["level"]
+    },
+    {
+      "title": "One program from counting to precalculus",
+      "body": "Beast Academy's five levels cover ages 6 to 13 and stop at Level 5; the next step is Prealgebra, a separate AoPS course [1][11]. AMP covers 336 skills from counting through precalculus on one map, and a learner can move into any band. A child who races ahead keeps the same record and the same review schedule into algebra, geometry and precalculus."
+    },
+    {
+      "title": "Earlier chapters come back on a schedule",
+      "body": "Beast Academy teaches a topic in a chapter and tests it at the chapter's end [5]. Its puzzles give review inside lessons and in a Puzzle Lab [3], but we found no schedule that brings earlier chapters back in its published materials [4][5]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks [19].",
+      "research": ["review"]
+    },
+    {
+      "title": "A first step when stuck, not only the solution",
+      "body": "After a wrong answer in Beast Academy Online the learner can try again, and full solutions follow [3][5]. We found no hint system and no automatic step back to earlier skills in its published materials [3][5]. AMP offers a one-step hint on every problem that never gives the answer, shows worked steps after every answer, and sends practice back to what a skill builds on after two misses in a row. An answer given after a hint does not count toward mastery.",
+      "research": ["hints", "feedback"]
+    },
+    {
+      "title": "Paper made for one child, with the key",
+      "body": "Beast Academy's books are the same for every child, with step-by-step solutions in the Practice books [12]. Its maker suggests the adult assign Practice work by time, not by pages [4]. AMP prints unlimited workbooks composed from the learner's own record, with the skills due for review, a Challenge section above level, and a worked answer key. Results entered from paper count toward the learner's level."
+    },
+    {
+      "title": "A mastery rule anyone can read",
+      "body": "Beast Academy awards up to three stars per lesson, and the best attempt counts [5]. One star marks a lesson proficient and opens the next [8]. We found no published count of correct answers behind a star [5][8]. In AMP a skill is Strong when four of the last five answers are right without help, and that rule is in public code.",
+      "research": ["mastery"]
+    }
+  ],
+  "rows": {
+    "price": "Online: $15.99 a month or $99.99 a year; each sibling $10.99 or $64.99. Online plus one level of books: $160 [2]. Full refund within 14 days [20].",
+    "buyers": "Families, on its website, which also has a page for schools [1]. Yearly and bundle plans can be bought through ClassWallet; monthly plans cannot [1].",
+    "range": "Levels 1 to 5, ages 6 to 13: roughly grades 1 to 5, in more depth [1][4]. Then a separate AoPS Prealgebra course [11].",
+    "start": "An adaptive placement test that sets the starting level and chapter [7].",
+    "teaching": "Comic-style Guide books, more than 1,000 videos, puzzles, and full solutions after each problem [3][12].",
+    "next": "Lessons open in a fixed order as stars are earned [5]. Parents can switch to open modes [10].",
+    "mastery": "Up to three stars per lesson, best attempt counting; one star opens the next lesson. Chapter tests. No published count of correct answers per star found [5][8].",
+    "review": "Puzzles give review inside lessons and in a Puzzle Lab [3]. No schedule for bringing back earlier chapters found in its published materials [4][5].",
+    "print": "A full printed curriculum: Guide and Practice books for each level, with solutions. The same books for every child [12].",
+    "adult": "Online, the default order needs no parent involvement, the company says; for open modes it recommends supervision [10]. With books, the adult assigns the work [4].",
+    "reports": "Stars, trophies, problems correct, minutes, and each problem with the child's response and the solution [8].",
+    "evidence": "Two outside studies done for its maker: a matched comparison, many users in gifted and high-ability programs, and a usage study with no non-users [14][15]. No clearinghouse entry [17][18]."
+  },
+  "theirs": [
+    "Beast Academy is a math curriculum for ages 6 to 13 from Art of Problem Solving, in five levels [1]. It comes as printed books, as Beast Academy Online, or both. The company calls it a full curriculum, loosely based on the Common Core [4].",
+    "Each book level pairs Guide books, which teach in an illustrated comic style, with Practice books of exercises, problems and puzzles, with step-by-step solutions, many showing more than one approach [12]. Online, the Guide books are included, along with more than 1,000 videos taught by AoPS's Richard Rusczyk and puzzles by a world puzzle champion [3].",
+    "An online session runs on a computer or tablet, not a phone [9]. Lessons open in order as stars are earned, up to three per lesson, and a chapter test closes each chapter [5]. Stars earn Beast Bucks for building a monster avatar, and there are leaderboards [6]; parents set access to both [21]."
+  ],
+  "credit": [
+    "Depth. Rich problems and puzzles, including a Puzzle Lab, with solutions that in many cases show more than one way [3][12]. AMP has no puzzle strand to match it.",
+    "A complete printed curriculum a child can work through with no screen [12]. AMP prints workbooks but mails no books.",
+    "A lower price: $99.99 a year online, and $64.99 for each sibling [2]. By our arithmetic, AMP's yearly plan costs about six times as much for the first child.",
+    "A teacher's voice: more than 1,000 videos by AoPS's Richard Rusczyk, read-aloud in Levels 1 and 2, and live classes of up to 16 students [3][5][13]. AMP has 154 animated films and no live teacher.",
+    "Outcome evidence: two evaluations by outside researchers, one finding higher MAP scores for users than for matched non-users [14][15]."
+  ],
+  "evidence": {
+    "theirs": [
+      "Art of Problem Solving funded one outside evaluation and had another prepared for it. The first, by WestEd in 2022, was funded by AoPS. It compared 547 Mankato Area Public Schools students who used Beast Academy in both of two school years with non-users matched on a prior MAP score and demographics [14]. Users scored 8.78 points higher on the spring 2021 MAP Growth math test (228.28 against 219.50). The median user attempted 120 online lessons over the two years. Users included students in the district's gifted program and in a program for high-ability students from historically marginalized groups, plus 250 other users. The data are from the COVID years, no effect size in standard deviations is reported, and the authors urge caution in generalizing beyond this group [14].",
+      "AoPS describes this result as 1 to 2 additional grade levels at 30 minutes a week [16]. The brief reports RIT points and lessons attempted; we found no grade-level conversion or minutes-per-week figure in it [14].",
+      "The second, by the Utah Education Policy Center in 2025, was prepared for AoPS [15]. It analyzed 962 students who used Beast Academy Online in 12 elementary schools of one Utah district, with no group of non-users. After controls, each extra minute of use a month was linked to 0.004 standard deviations on end-of-year tests. Median use across all 1,443 users was 29.1 minutes a month. The authors call the effects modest and the findings associations, and the report describes them as Promising evidence under ESSA Tier 3 [15].",
+      "We found no randomized trial. Beast Academy has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [17][18]."
+    ],
+    "ours": [
+      "AMP's review rule rests on a trial that holds up. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks; the What Works Clearinghouse says the study meets its standards without reservations, though the test was the researchers' own [19]. We think practice aimed at each learner's level in every strand, with review on a schedule, will reach more children than a fixed sequence alone. That is our bet, not a finding.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child is ahead, loves puzzles, and wants hard problems more than coverage.",
+      "You want a beautiful printed curriculum your child can work from with no screen.",
+      "Your budget is tight, or you are buying for several children under 13.",
+      "You want live small-group classes, or the path into AoPS courses after Level 5."
+    ],
+    "amp": [
+      "You want each problem set to your child's level in every part of math, wherever that is.",
+      "You want a hint at the moment of a miss, and misses that lead back to the missing skill.",
+      "You want old skills to come back on a schedule, without planning it.",
+      "Your learner is past Level 5, or heading for algebra, geometry and precalculus.",
+      "You love Beast Academy and want daily practice and review beside it."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Can we use AMP and Beast Academy together?",
+      "answer": "Yes. Beast Academy brings the comic lessons and the hard puzzles [12]. AMP finds the level in each strand within the first 24 problems, fills gaps, and brings old skills back on a schedule, online or on printed workbooks."
+    },
+    {
+      "question": "Is AMP more expensive than Beast Academy?",
+      "answer": "Yes. Beast Academy Online is $99.99 a year or $15.99 a month, with each sibling at $64.99 a year [2]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, with two parents practicing free; for that it places the learner, chooses every problem, schedules review, prints workbooks and runs through precalculus."
+    },
+    {
+      "question": "What comes after Beast Academy Level 5?",
+      "answer": "AoPS points families to Prealgebra, a separate AoPS course or textbook [11]. AMP has no handoff: the same program continues through algebra, geometry and precalculus with the same record."
+    },
+    {
+      "question": "Is Beast Academy only for gifted children?",
+      "answer": "No. Its maker sells it as a full curriculum for ages 6 to 13 [1][4]. Both outside studies describe use with gifted and high-ability students, and in WestEd's student survey most least-favorite answers were about difficulty [14][15]."
+    },
+    {
+      "question": "Is AMP proven to work better than Beast Academy?",
+      "answer": "No. No study has compared the two programs. Beast Academy has two outside evaluations done for its maker, neither a randomized trial [14][15]. AMP's plan for its own outcome studies is in the evidence section above."
+    }
+  ],
+  "sources": [
+    { "title": "Beast Academy (Art of Problem Solving)", "url": "https://beastacademy.com/" },
+    { "title": "Ways to save on subscriptions and books (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1792549-ways-to-save-on-subscriptions-and-books" },
+    { "title": "Beast Academy Online (Art of Problem Solving)", "url": "https://beastacademy.com/online" },
+    { "title": "Frequently asked curriculum questions (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1799483-frequently-asked-curriculum-questions" },
+    { "title": "Class overview: lessons, stars and chapter tests (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1798922-class-overview" },
+    { "title": "Beast Builder and avatar overview (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1798927-beast-builder-and-avatar-overview" },
+    { "title": "How to determine your student's level using our placement test (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1861864-how-to-determine-your-student-s-level-using-our-placement-test" },
+    { "title": "Parent reporting overview (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1793720-parent-reporting-overview" },
+    { "title": "System requirements (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1811899-system-requirements" },
+    { "title": "How to update your student's lock scheme (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1792596-how-to-update-your-student-s-lock-scheme" },
+    { "title": "What's after Beast Academy Math? (Beast Academy help center)", "url": "https://help.beastacademy.com/a/2070639-what-s-after-beast-academy-math" },
+    { "title": "Beast Academy books (Art of Problem Solving)", "url": "https://beastacademy.com/books" },
+    { "title": "Beast Academy live classes (Art of Problem Solving)", "url": "https://beastacademy.com/live-classes" },
+    { "title": "Torre Gibney & Bojorquez (2022), Evaluation of Beast Academy, WestEd, funded by Art of Problem Solving", "url": "https://wested2024.s3.us-west-1.amazonaws.com/wp-content/uploads/2024/07/11172759/WestEd-Beast-Academy-Evaluation-Brief_FINAL-ADA.pdf" },
+    { "title": "Yildiz, Altermatt & Rorrer (2025), Associations between student use of Beast Academy Online and performance on end-of-year math assessments, Utah Education Policy Center", "url": "https://uepc.utah.edu/_resources/documents/beast-academy-report-2025.pdf" },
+    { "title": "Beast Academy moves Mankato students up an additional 1-2 grade levels (AoPS blog)", "url": "https://blog.artofproblemsolving.com/articles/beast-academy-moves-mankato-students-up-additional-1-2-grade-levels-on-national-map-assessment" },
+    { "title": "Math programs (Evidence for ESSA, Johns Hopkins University)", "url": "https://www.evidenceforessa.org/programs/math" },
+    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Beast Academy Online enrollment (Art of Problem Solving)", "url": "https://beastacademy.com/online/enroll" },
+    { "title": "Beast Academy Online quickstart guide (Beast Academy help center)", "url": "https://help.beastacademy.com/a/1798919-beast-academy-online-quickstart-guide" }
+  ]
+}

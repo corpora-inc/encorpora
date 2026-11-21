@@ -1,0 +1,173 @@
+{
+  "slug": "aops",
+  "name": "Art of Problem Solving",
+  "category": "books",
+  "checked": "2026-11-21",
+  "benefit": "Math at every learner's level",
+  "line": "AoPS teaches strong students hard problems, course by course. AMP meets any learner at their level, answer by answer.",
+  "description": "AMP vs Art of Problem Solving: contest-track books and classes, or practice that finds each learner's level and explains every answer. Prices and evidence.",
+  "verdict": "Art of Problem Solving is one of the best places anywhere for students who love hard problems: rigorous books, live classes through calculus, and a free practice site [1][2][3]. It is built for the contest track and sold by the course. AMP serves any learner from counting to precalculus, chooses and explains every problem, and brings old skills back on a schedule, and many families could use both.",
+  "reasons": [
+    {
+      "title": "Built for any learner, not only the contest track",
+      "body": "AoPS says its Prealgebra text goes much deeper than a traditional middle-school course and prepares students for contests such as MATHCOUNTS and the AMC 8 [5]. Its Alcumus practice site is pitched at high-performing students [2]. AMP starts wherever a learner is, from counting to precalculus, with a separate level in each of 14 strands. A child who is ahead in geometry and still building fractions gets work at both levels.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The next problem comes from the last answer",
+      "body": "An AoPS Online family chooses a course from the schedule, and the course sets the lessons [3]. Alcumus says it adapts, but we found no description of how it chooses problems [2]. AMP chooses every problem from the learner's answers: new work, a prerequisite, or review. Two misses in a row on a skill send practice back to what that skill builds on.",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Every answer is checked and explained at once",
+      "body": "With AoPS books, the learner works the problems and the adult or the learner checks them against a separate solutions manual, which gives full solutions rather than bare answers [5]. AMP marks each answer the moment it is given and shows the correct answer and the worked steps. The next problem is chosen with that answer in mind. An answer given after a hint or the lesson does not count toward mastery.",
+      "research": [
+        "feedback",
+        "hints"
+      ]
+    },
+    {
+      "title": "Old skills come back on a schedule",
+      "body": "AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. We found no scheduled review of earlier topics in AoPS's published course or book pages [3][5]. In a randomized trial of 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [11].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "One yearly price covers every level",
+      "body": "AoPS prices each course on its own: $465 to $470 for a 16-week live Math 6 class in prealgebra, $715 to $730 for 24 weeks of intermediate algebra, $835 to $855 for 25 weeks of calculus [3][4]. AMP is $599 a year or $59 a month for the first child, from counting through precalculus, with no fee per course. An AoPS class buys a live teacher, which AMP does not have."
+    },
+    {
+      "title": "Workbooks made for one learner",
+      "body": "An AoPS textbook is the same for every reader; the Prealgebra text alone runs 608 pages [5]. AMP prints unlimited workbooks built from the learner's own record: today's idea, practice, the review that is due and a challenge section, each with a worked answer key. Results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Per course: live Math 6, prealgebra (16 weeks) $465 to $470; Calculus (25 weeks) $835 to $855 [3][4]. Alcumus is free [2]. Academy campus: $759 a trimester at Frisco, plus fees [7].",
+    "buyers": "Families, directly, online [3]. No education-savings fund option found on its course pages [3][4]. In-person AoPS Academy campuses [6].",
+    "range": "Online classes from prealgebra through calculus, plus contest, physics and programming courses [3]. Grades 5 to 12 [1].",
+    "start": "The family picks a course from the schedule [3].",
+    "teaching": "Problem-first textbooks with full solutions manuals [5]. Live instructor-led Scholars classes, or self-paced Honors courses [3].",
+    "next": "The next lesson in the chosen course [3]. Alcumus is described as adaptive; we found no description of how it chooses [2].",
+    "mastery": "No stated mastery rule found in its published course, book or Alcumus pages [2][3][5].",
+    "review": "No scheduled review of earlier topics found in its published course or book pages [3][5].",
+    "print": "Print is central: textbooks and solutions manuals, the same for every buyer. The Prealgebra text has 608 pages and over 1,000 problems [5].",
+    "adult": "With the books, the adult plans and checks work against the solutions manual [5]. A live class has an instructor at a set weekly time [4].",
+    "reports": "No description of progress reports found for its online classes or Alcumus [2][3].",
+    "evidence": "No entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [9][10]. No outcome study found on its site [1]."
+  },
+  "theirs": [
+    "Art of Problem Solving (AoPS) is a math education company that dates itself to 1993, with texts, online classes and more for grades 5 to 12 [1]. Its home page lists Richard Rusczyk as founder and CEO [1]. It is known for contest results: AoPS says all six members of the U.S. team that won the 2024 International Math Olympiad were its alumni, and it counts a million problem solvers in its online community [1].",
+    "Its books teach problem first. The Prealgebra text has over 1,000 problems, and a separate solutions manual works every one in full [5]. AoPS Online sells courses one at a time, from Math 6 (prealgebra) through Math 11 (calculus), live, with self-paced Honors versions for Math 6 to 8, plus contest, physics and programming courses [3]. A live Scholars class meets once a week for 75 to 120 minutes, depending on the course [3][4].",
+    "Alcumus is AoPS's free online practice site [2]. AoPS Academy teaches grades 1 to 12 at in-person campuses [6]. This page compares AoPS's books, online classes and Alcumus with AMP. Beast Academy, a separate program for ages 6 to 13, is not covered here [8]."
+  ],
+  "credit": [
+    "Depth few programs match. Its Scholars classes add \"greater depth, pace, and emphasis on rigor and abstraction\" [4], and AoPS says all six members of the 2024 U.S. Olympiad team were its alumni [1].",
+    "Live teachers. Instructor-led classes run from prealgebra through calculus [3]. AMP has no live teachers or tutors.",
+    "Calculus and beyond: a calculus course, contest preparation, physics and Python [3]. AMP stops at precalculus and has no contest track.",
+    "Free practice and worked solutions. Alcumus costs nothing [2], and every book problem has a full solution in the manual [5].",
+    "A community and a school. A forum with a million problem solvers, and AoPS calls itself an ACS WASC accredited school [1]. AMP has neither."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of AoPS's books, online classes or Alcumus on its site. Art of Problem Solving has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [9][10].",
+      "Its evidence is its students. AoPS says all six members of the 2024 U.S. Olympiad team were AoPS alumni, and that in the last 12 years U.S. International Math Olympiad team members took more than 400 of its online courses [1]. That is a real record, and it shows where many of the strongest young mathematicians go. It cannot show how much the courses added, because students who seek out contest classes differ from other students before they start."
+    ],
+    "ours": [
+      "AMP's rules come from published research. Mixed, spaced practice scored 62% against 38% on a test a month later, in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations [11]. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [12]. AMP's review schedule mixes and spaces practice, and its worked steps explain every answer. We expect that to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Choose AoPS if your child loves hard problems and is aiming at contests such as MATHCOUNTS or AMC 8.",
+      "Choose AoPS if you want a live teacher and classmates every week.",
+      "Choose AoPS if your teen is ready for calculus, or wants contest, physics or programming courses.",
+      "Choose AoPS if you want free practice for a strong student: Alcumus costs nothing."
+    ],
+    "amp": [
+      "You want practice at your child's level in each part of math, wherever that is.",
+      "You want every answer checked and explained the moment it is given.",
+      "You want old skills to come back on a schedule, without planning it.",
+      "You want one program from counting through precalculus at one yearly price.",
+      "Your child takes AoPS classes and you want daily practice and review beside them."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Art of Problem Solving?",
+      "answer": "It depends on what you buy. AoPS Online charges per course, from $465 to $470 for a 16-week prealgebra class up to $835 or $855 for calculus, and Alcumus is free [2][3][4]. AMP is $599 a year or $59 a month for the first child and $399 a year or $39 a month for each more, covering every level from counting through precalculus."
+    },
+    {
+      "question": "Can we use AMP alongside AoPS books or classes?",
+      "answer": "Yes. Many families could use both: AoPS for hard problems and a live class, AMP for daily practice at the learner's level in each strand and scheduled review. AMP finds that level within the first 24 problems, so it does not need to know where you are in the book."
+    },
+    {
+      "question": "Does AMP go as far as AoPS?",
+      "answer": "No. AMP stops at precalculus and has no contest track. AoPS offers calculus, contest preparation, physics and programming courses [3]."
+    },
+    {
+      "question": "What if AoPS moves too fast for my child?",
+      "answer": "AoPS sells its Math 6 to 8 courses in two versions, self-paced Honors and live Scholars, and its Math 6 page says Scholars adds depth, pace and rigor over Honors [3][4]. AMP sets a separate level in each of 14 strands from the learner's own answers, and two misses in a row send practice back to what the skill builds on."
+    },
+    {
+      "question": "Has Art of Problem Solving been shown to work in studies?",
+      "answer": "We found no outcome study of it. It has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [9][10]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Art of Problem Solving home page",
+      "url": "https://artofproblemsolving.com/"
+    },
+    {
+      "title": "Alcumus (Art of Problem Solving)",
+      "url": "https://artofproblemsolving.com/alcumus"
+    },
+    {
+      "title": "AoPS Online class schedule and prices (Art of Problem Solving)",
+      "url": "https://artofproblemsolving.com/school/schedule.php?id=tapas"
+    },
+    {
+      "title": "Scholars Math 6: Prealgebra Part 1 course page (Art of Problem Solving)",
+      "url": "https://artofproblemsolving.com/school/course/prealgebra-pt1"
+    },
+    {
+      "title": "Prealgebra textbook (Art of Problem Solving store)",
+      "url": "https://artofproblemsolving.com/store/item/prealgebra"
+    },
+    {
+      "title": "AoPS Academy home page",
+      "url": "https://aopsacademy.org/"
+    },
+    {
+      "title": "AoPS Academy Frisco tuition and refunds",
+      "url": "https://aopsacademy.org/campus/frisco/tuition"
+    },
+    {
+      "title": "Beast Academy home page",
+      "url": "https://beastacademy.com/"
+    },
+    {
+      "title": "Evidence for ESSA search: art of problem solving",
+      "url": "https://evidenceforessa.org/?s=art+of+problem+solving"
+    },
+    {
+      "title": "What Works Clearinghouse intervention reports",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    }
+  ]
+}

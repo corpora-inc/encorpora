@@ -1,0 +1,192 @@
+{
+  "slug": "mathseeds",
+  "name": "Mathseeds",
+  "maker": "3P Learning",
+  "category": "games",
+  "checked": "2026-11-21",
+  "benefit": "Adapts at every answer",
+  "line": "Mathseeds teaches ages 3 to 9 lesson by lesson. AMP picks every problem from the answers, from counting to precalculus.",
+  "description": "AMP vs Mathseeds: a playful lesson program for ages 3 to 9, or practice that adapts at every answer, explains every miss and runs to precalculus.",
+  "verdict": "Mathseeds is a well-made program for young children, with characters, pets, narrated e-books and a low family price [1][2][3]. It moves lesson by lesson and, in schools, stops at grade 3 [3][5]. AMP chooses every problem from the learner's answers, shows the worked steps after every miss, brings old skills back on a schedule, and keeps going through precalculus.",
+  "reasons": [
+    {
+      "title": "Each problem is chosen from the last answer",
+      "body": "Mathseeds sets a starting point with a placement test, then moves lesson by lesson, and any lesson can be repeated as often as needed [4][3]. We found no description of how it adapts after placement in its published pages [3][5]. AMP keeps a separate level in each of 14 strands of math and picks every next problem from the answers so far: new work just within reach, a prerequisite, or review. A child can be ahead in number and still building in measurement, and practice follows both.",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "A mastery rule anyone can read",
+      "body": "Mathseeds says its Driving Tests and end-of-map quizzes make sure children achieve mastery [3]. We found no stated rule for what counts as mastery [3][6]. In AMP a skill is Strong when four of the last five answers are right without help, and an answer given after a hint does not count. Two misses in a row send practice back to what the skill builds on.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Every miss shows the worked steps",
+      "body": "Mathseeds' white paper says students get \"immediate encouragement, feedback, and error correction in a nonthreatening way\" [6]. We found no description of a hint or a worked explanation after a wrong answer in its published pages [3][6]. After every AMP answer the learner sees right or wrong, the correct answer and the worked steps. Across 40 studies of computer-based feedback in mixed ages and subjects (effects were lower in primary school settings), feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only [16].",
+      "research": [
+        "feedback",
+        "lessons"
+      ]
+    },
+    {
+      "title": "Learned skills come back on a schedule",
+      "body": "Mathseeds' white paper describes a spiral, with early concepts revisited in later lessons [6]. That is a design for the course. We found no review timed to each child's own answers in its published materials [3][6]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [15].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "It keeps going past grade 3",
+      "body": "Mathseeds is built for ages 3 to 9 and covers kindergarten through grade 3 in schools [1][5]. AMP runs from counting through precalculus in one program, with 336 skills on one map. A child who is ready for more in one part of math can move ahead there, and a family does not change programs at grade 4."
+    },
+    {
+      "title": "Workbooks printed for this child",
+      "body": "Mathseeds includes printable worksheets with the subscription [4][11]. It sells print workbooks for levels K to 2 that match online lessons 1 to 150, the same pages for every child [10]. AMP prints unlimited workbooks made from each learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Math only: $49.99 a year or $6.99 a month. With Reading Eggs: $13.99 a month or $99.99 a year ($74.99 first year, on sale). Up to 4 children [2].",
+    "buyers": "Families, with the first 30 days free for new customers. Schools buy by quote [2].",
+    "range": "Ages 3 to 9 at home. Kindergarten through grade 3 for schools [1][5].",
+    "start": "A placement test sets the starting lesson [4]. We found no description of its method.",
+    "teaching": "Short animated scenes with cartoon characters, nine activities per lesson, and an e-book the child reads or hears narrated [3][6].",
+    "next": "Lesson by lesson after placement. Any lesson can be repeated [3]. We found no problem-by-problem adaptation described [3][5].",
+    "mastery": "Driving Tests of 10 questions and end-of-map quizzes of 15 [6]. No stated rule for mastery found [3][6].",
+    "review": "Early concepts revisited in later lessons, a spiral by design [6]. No review scheduled from each child's answers found [3][6].",
+    "print": "Printable worksheets and certificates [4][11]. Print workbooks for K to 2, sold separately, cover lessons 1 to 150 [10]. None made for the individual child.",
+    "adult": "Light. Parents get progress reports and printables, and 36-week guides for adults who want to teach alongside it [4].",
+    "reports": "Progress reports for families [4]. Real-time reports and automated scoring for schools [5], and teacher and parent dashboards [6].",
+    "evidence": "A study contracted by 3P Learning: g = 0.14 for grade 3 users against 100 non-users in one district [7]. No Evidence for ESSA rating [14]."
+  },
+  "theirs": [
+    "Mathseeds is an online math program for children aged 3 to 9 [1]. Schools use it for kindergarten through grade 3 [5]. Blake eLearning develops it [8], and 3P Learning lists it among its products beside Reading Eggs and Mathletics [12]. Families can buy it alone or with Reading Eggs, for up to four children on one plan [2].",
+    "A lesson opens with a short animated scene featuring one of its cartoon characters. Nine activities follow, then an e-book the child can read or hear narrated. Finishing a lesson hatches a pet. Five lessons make a map, which ends in a quiz and a printable certificate [3]. Children earn golden acorns for lessons and activities and spend them on a treehouse and avatar items [3][6]. A placement test sets where a child starts [4].",
+    "Parents get progress reports and printables, and homeschool guides lay out a 36-week sequence for adults who want to teach alongside it [4]. Schools get real-time reports, a standards correlation [5] and teacher and parent dashboards [6]."
+  ],
+  "credit": [
+    "Built for the youngest learners: characters, pets, certificates and narrated e-books, from age 3 [1][3]. AMP has no games, avatars or read-aloud of problems.",
+    "A low price. Math alone is $49.99 a year for up to four children [2]. AMP is $599 a year for the first child.",
+    "Reading and math in one subscription with Reading Eggs [2]. AMP teaches only math.",
+    "A tablet app [11]. AMP runs in the browser and has no app in the stores.",
+    "Published studies with comparison groups, including one by an outside research firm under contract [7][8]."
+  ],
+  "evidence": {
+    "theirs": [
+      "Mathseeds' main study was run by LearnPlatform, which 3P Learning contracted [7]. It covers 2021-22 in ten elementary schools in one southeastern U.S. district. In grade 3, 605 users were compared with 100 students who did not use Mathseeds, adjusting for fall scores without random assignment. Users scored higher on NWEA MAP in the spring, by g = 0.14, with mean scores of 199 against 197 [7]. The company calls this ESSA Level II evidence [9].",
+      "In kindergarten through grade 2 the sample was mostly Mathseeds users, and the report compared students who completed many lessons (35 to 110) with students who completed few (0 to 13): g = 0.08 across those grades, significant in grade 1 and not in kindergarten or grade 2 [7]. Students who complete many lessons can differ from those who complete few before they start. Average use was 21 lessons a year in kindergarten, 18 in grade 1 and 13 in grade 2 [7].",
+      "An earlier kindergarten study, The Mathseeds Effect (2015-16), by SEG Measurement and MarketingWorks, compared 125 Mathseeds students with 192 others in six states and reported an effect of 0.48 on the SESAT 1 math test. It compared classes, without random assignment, and its page does not say who paid for it. Mathseeds classes were included only if they met a usage minimum, an average of 14 completed Mathseeds per student [8]. A 2019-20 case study of one Pennsylvania school reports 1.1 grade levels of progress, with no comparison group and without naming the measure [13].",
+      "Evidence for ESSA lists Mathseeds without a rating: \"No studies met inclusion requirements\" [14]."
+    ],
+    "ours": [
+      "AMP's rules come from findings that have held up in trials. Mixed, spaced practice scored 62% against 38% a month later, on the researchers' own test, in a randomized trial with seventh graders that meets What Works Clearinghouse standards without reservations [15]. Feedback that explains averaged 0.49 across 40 studies, against 0.05 for right or wrong alone [16]. AMP applies both: worked steps after each answer, and old skills brought back on a schedule. The feedback effects were lower in primary school settings. We expect that to show in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child is three to five and you want a program built around characters, pets and narrated stories.",
+      "You want reading and math together in one low-priced subscription for up to four children.",
+      "You want an app for a tablet.",
+      "You want a light supplement to a school's kindergarten to grade 3 math, and price matters most."
+    ],
+    "amp": [
+      "You want every problem chosen from your child's last answer, and every miss explained with worked steps.",
+      "You want old skills to come back on a schedule, without planning it.",
+      "Your child is ready for more than grade 3 in some part of math, or soon will be.",
+      "You want printed workbooks made for your child, with a worked answer key, that count toward the level.",
+      "You want to read the exact rules for mastery and review."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP more expensive than Mathseeds?",
+      "answer": "Yes. Mathseeds math alone is $49.99 a year or $6.99 a month for up to four children [2]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, with the first 100 answers and 5 workbooks free; the price buys a level in every strand, a chosen next problem, scheduled review, unlimited workbooks and math through precalculus."
+    },
+    {
+      "question": "What comes after Mathseeds?",
+      "answer": "Mathseeds ends at grade 3 in schools [5] and is built for ages 3 to 9 [1]. AMP runs from counting through precalculus in one program, so a child can start young and keep going in the same program."
+    },
+    {
+      "question": "Does Mathseeds have research behind it?",
+      "answer": "A study commissioned by 3P Learning found grade 3 users scored g = 0.14 higher than 100 non-users in one district, without random assignment [7]. Evidence for ESSA lists Mathseeds without a rating [14]."
+    },
+    {
+      "question": "Does AMP have games and rewards like Mathseeds?",
+      "answer": "No. AMP has no games, pets or avatars. A learner earns 1 XP for each correct answer without help, and each skill's bar fills as it grows."
+    },
+    {
+      "question": "Can my child use Mathseeds and AMP together?",
+      "answer": "Yes. They are separate programs. AMP finds the level in each part of math within the first 24 problems and chooses practice from there."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Mathseeds home page",
+      "url": "https://mathseeds.com/"
+    },
+    {
+      "title": "Mathseeds pricing",
+      "url": "https://mathseeds.com/pricing/"
+    },
+    {
+      "title": "Why Mathseeds works",
+      "url": "https://mathseeds.com/about/why-it-works/"
+    },
+    {
+      "title": "Mathseeds homeschool math program",
+      "url": "https://mathseeds.com/about/homeschool-math-program/"
+    },
+    {
+      "title": "Mathseeds for schools",
+      "url": "https://mathseeds.com/schools/"
+    },
+    {
+      "title": "Mathseeds white paper (Leman, Russo & Pike)",
+      "url": "https://mathseeds.com/schools/white-paper/"
+    },
+    {
+      "title": "Shah & Lee (2023), Mathseeds ESSA Level II report, LearnPlatform, prepared for 3P Learning",
+      "url": "https://marketing-cdn.3plearning.com/uploads/assets/MS/Mathseeds-3PLearning-Final-ESSA-Level-II-Report.pdf"
+    },
+    {
+      "title": "The Mathseeds Effect: 2015-16 effectiveness study",
+      "url": "https://mathseeds.com/schools/effectiveness-study/"
+    },
+    {
+      "title": "Mathseeds ESSA effectiveness study",
+      "url": "https://mathseeds.com/schools/essa-effectiveness-study/"
+    },
+    {
+      "title": "Mathseeds (Rainbow Resource Center)",
+      "url": "https://www.rainbowresource.com/mathseeds"
+    },
+    {
+      "title": "Reading Eggs and Mathseeds online program, 12-month subscription (Rainbow Resource Center)",
+      "url": "https://www.rainbowresource.com/product/041056/Reading-Eggs-and-Mathseeds-Online-Program-Bundled-12-month-subscription.html"
+    },
+    {
+      "title": "About 3P Learning",
+      "url": "https://www.3plearning.com/about/"
+    },
+    {
+      "title": "Mathseeds success during the COVID-19 shutdown",
+      "url": "https://mathseeds.com/about/remote-learning/"
+    },
+    {
+      "title": "Mathseeds (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/mathseeds/"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    }
+  ]
+}

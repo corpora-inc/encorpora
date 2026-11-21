@@ -1,0 +1,126 @@
+{
+  "slug": "good-and-beautiful-math",
+  "name": "The Good and the Beautiful Math",
+  "maker": "The Good and the Beautiful",
+  "category": "books",
+  "checked": "2026-11-21",
+  "benefit": "Practice that grades itself",
+  "line": "The Good and the Beautiful Math is a book a parent teaches, free as a PDF. AMP places, checks and schedules review.",
+  "description": "AMP vs The Good and the Beautiful Math: a free K-8 book a parent teaches and grades, or practice that places, checks and reviews. Prices and evidence.",
+  "verdict": "The Good and the Beautiful Math is a full-year course for each level from kindergarten through Pre-Algebra, taught by a parent from a colorful book with hands-on games, and its levels are free as PDFs [2][3][4]. AMP costs more. It finds the learner's level in each part of math, checks and explains every answer as it is given, brings old skills back on a schedule, and keeps going through precalculus.",
+  "reasons": [
+    {
+      "title": "Every answer is checked and explained at once",
+      "body": "In The Good and the Beautiful Math the adult runs the lesson, and the work is graded afterward from an optional answer key [2]. AMP marks every answer the moment it is given, shows the correct answer and the worked steps, and then serves the next problem. A mistake is explained while the problem is still in front of the learner, and no one has to grade a page.",
+      "research": ["feedback"]
+    },
+    {
+      "title": "A level for each part of math",
+      "body": "The Good and the Beautiful Math starts a child at one level with a placement test, then follows the book's 120 lessons in order [2][4]. AMP keeps a separate level in each of 14 strands and finds them inside the first 24 problems, with no separate test. A child who is quick with shapes and unsure of fractions gets work at both levels in the same session.",
+      "research": ["level"]
+    },
+    {
+      "title": "Mastery has a rule, review has a schedule",
+      "body": "We found no mastery rule or review schedule on its math product pages; the adult decides when to move on [2][4][5]. In AMP a skill is Strong at four of the last five answers right without help, and two misses in a row send practice back to what the skill builds on. Each learned skill returns after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics.",
+      "research": ["mastery", "review"]
+    },
+    {
+      "title": "Teaching at the problem, for child and adult",
+      "body": "Its Course Book is both the teacher's guide and the student's book, so the adult teaches each lesson [2][4]. AMP gives every problem type a one-step hint that never gives the answer and a written lesson with a worked example, and 961 reference lessons each carry a guide for the parent. Worked examples have a solid record in math: an average effect of g = 0.48 across 55 studies, mostly on researchers' own tests [11].",
+      "research": ["lessons", "hints"]
+    },
+    {
+      "title": "Fresh practice, printed for one child",
+      "body": "Its Course Books give every child the same pages [2][4]. The publisher sells an extra practice PDF for Pre-Algebra, and says the next Math 6 edition will bring more balanced problem counts and an optional extra practice PDF [3][5]. AMP makes each problem fresh and prints unlimited workbooks from the learner's own record, with the skills due for review and a worked answer key. Results entered from paper count toward the learner's level."
+    },
+    {
+      "title": "It keeps going past Pre-Algebra",
+      "body": "The Good and the Beautiful's math courses run from kindergarten to Pre-Algebra, its Level 8 [3][6]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and Precalculus on one map of 336 skills. A learner who is ahead can move into high school work without changing programs."
+    }
+  ],
+  "rows": {
+    "price": "Free as PDFs with an email sign-up [2][3][4]. Print sets listed at $58.98 to $89.95 a level; Math 3 and 6 answer keys $11.99 extra; all sold out 21 Nov 2026 [2][3][4][5].",
+    "buyers": "Homeschool families, through the publisher's own shop [6]. The free PDFs require joining its email list [2].",
+    "range": "Kindergarten through Pre-Algebra, called Level 8. Each level is a full year of 120 lessons [3][4][6].",
+    "start": "A placement test linked from each course page; the pages do not describe what it covers [2][3][4].",
+    "teaching": "The parent teaches from the Course Book with a Math Box of manipulatives and games [2][4]. Math 6 and Pre-Algebra add required free videos [3][5].",
+    "next": "The next of 120 lessons in the book's order. The adult sets the pace [2][4].",
+    "mastery": "No mastery rule found on its math product pages. The adult judges when a lesson is learned [2][4][5].",
+    "review": "No review schedule found on its math product pages [2][4][5].",
+    "print": "Print-first: full-color wire-bound Course Books (Math 1 has 323 pages) and answer keys, or free PDFs. The same pages for every child [2][4].",
+    "adult": "Teach each lesson from the Course Book, run the activities and games, and grade from the answer key [2][4].",
+    "reports": "No progress reports or dashboard found. The parent grades by hand [2].",
+    "evidence": "No entry in Evidence for ESSA [7] or the What Works Clearinghouse [8] as of November 2026. Its math pages cite no research [4][5]."
+  },
+  "theirs": [
+    "The Good and the Beautiful publishes homeschool curriculum in many subjects [6]. Its math line, sold as Simply Good and Beautiful Math, runs from kindergarten through Level 7, then Pre-Algebra as Level 8 [3][6]. Each level is a full-year course of 120 lessons [2][4]. Every level can be downloaded free as a PDF after joining the publisher's email list, and the publisher says the PDF matches the paid lessons [2][4].",
+    "The publisher describes a simple daily lesson format with activities and games, open and go [2]. The Course Book serves as both teacher's guide and student book. The parent leads the lesson, uses the Math Box of manipulatives, and grades from an answer key [2][4]. In Math 6 and Pre-Algebra, free videos are part of the course [3][5], and Pre-Algebra has a manual with complete solutions [3].",
+    "Printed sets come as full-color, wire-bound books, with game products and flashcards sold beside them [2][4]. The courses themselves are print or PDF. The publisher also offers apps, among them a Musical Multiplication App on a free trial [1]."
+  ],
+  "credit": [
+    "Free. The math levels we checked download as PDFs the publisher says match the paid lessons [2][3][4]. AMP's free start ends after 100 answers and 5 workbooks per learner.",
+    "Hands-on math. Lessons use a Math Box of manipulatives, games and full-color books [2][4]. AMP is on a screen, with only a few on-screen models a learner builds.",
+    "No screen and no connection needed. The books and printed PDFs work anywhere [2]. AMP runs only online, though its workbooks print.",
+    "Time at the table. A parent teaches every lesson from an open-and-go book with little preparation [2]. Some families want exactly that."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no outcome study of The Good and the Beautiful Math on its math product pages or in the two main clearinghouses as of November 2026. It has no entry in Evidence for ESSA [7] and no What Works Clearinghouse intervention report [8].",
+      "The Math 1 and Math 6 pages describe the program as \"the highest academics that beat national standards\" [4][5]. They name no standard, test or study behind that claim."
+    ],
+    "ours": [
+      "A book cannot answer a child the moment a problem is done, and it cannot know which old skill is due. AMP does both at every problem. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and a mark of right or wrong only 0.05 [9]. These are averages by feedback type across mixed ages and subjects, not a head-to-head trial. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% against 38% for practice in blocks on the researchers' own test a month later [10]. We think that shows in outcomes, and we have committed to measuring it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each is registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Choose The Good and the Beautiful Math if cost decides it: its math levels are free as PDFs.",
+      "Choose The Good and the Beautiful Math if you want to teach math yourself at the table, with manipulatives and games.",
+      "Choose The Good and the Beautiful Math if you want math off screens, or your home has no reliable internet.",
+      "Choose The Good and the Beautiful Math if you want one publisher's books across many subjects."
+    ],
+    "amp": [
+      "You want every answer checked and explained without grading pages yourself.",
+      "Your child is ahead in some parts of math and behind in others.",
+      "Your learner is finishing Pre-Algebra and needs algebra, geometry and precalculus next.",
+      "You want old skills to come back on a schedule without planning it.",
+      "You love your Good and the Beautiful books and want daily practice beside them that finds the gaps."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is The Good and the Beautiful Math really free?",
+      "answer": "The PDFs are. The math levels we checked are free downloads after joining the publisher's email list, and the publisher says the PDF matches the paid lessons [2][3][4]. Printed course sets cost extra [2][3][4]."
+    },
+    {
+      "question": "Is AMP more expensive than The Good and the Beautiful Math?",
+      "answer": "Yes. Its PDFs are free and its print course sets are listed at $58.98 to $89.95 a level [2][3][4]. AMP is $599 a year or $59 a month for the first child, and $399 a year or $39 a month for each more, with a full refund within 30 days. That buys a program that places the learner, chooses and checks every problem, schedules review and prints personalized workbooks from counting through precalculus."
+    },
+    {
+      "question": "Can we use AMP alongside The Good and the Beautiful Math?",
+      "answer": "Yes. A family can keep teaching the lessons from the book and use AMP for daily practice and review. AMP finds the level in each strand of math within the first 24 problems, so it does not need to know which lesson you are on."
+    },
+    {
+      "question": "What comes after The Good and the Beautiful Pre-Algebra?",
+      "answer": "Its math courses end at Pre-Algebra, Level 8 [3][6]. AMP continues through Algebra 1, Geometry, Algebra 2 and Precalculus in the same program."
+    },
+    {
+      "question": "Has The Good and the Beautiful Math been studied?",
+      "answer": "We found no outcome study. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [7][8]."
+    }
+  ],
+  "sources": [
+    { "title": "Free homeschool curriculum (The Good and the Beautiful)", "url": "https://www.goodandbeautiful.com/pages/free" },
+    { "title": "Simply Good and Beautiful Math 3 (The Good and the Beautiful)", "url": "https://www.goodandbeautiful.com/pages/free-downloads-simply-good-and-beautiful-math-3" },
+    { "title": "Simply Good and Beautiful Pre-Algebra (The Good and the Beautiful)", "url": "https://www.goodandbeautiful.com/pages/free-downloads-simply-good-and-beautiful-pre-algebra" },
+    { "title": "Simply Good and Beautiful Math 1 (The Good and the Beautiful)", "url": "https://www.goodandbeautiful.com/pages/free-downloads-simply-good-and-beautiful-math-1" },
+    { "title": "Simply Good and Beautiful Math 6 (The Good and the Beautiful)", "url": "https://www.goodandbeautiful.com/pages/free-downloads-simply-good-and-beautiful-math-6" },
+    { "title": "The Good and the Beautiful home page", "url": "https://www.goodandbeautiful.com" },
+    { "title": "Math programs (Evidence for ESSA, Johns Hopkins University)", "url": "https://www.evidenceforessa.org/programs/math" },
+    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
+    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
+    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
+    { "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance", "url": "https://doi.org/10.1007/s10648-023-09745-1" }
+  ]
+}
