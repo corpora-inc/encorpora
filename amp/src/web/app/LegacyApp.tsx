@@ -514,18 +514,18 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     upcoming.current = null;
     navigationEpoch.current++;
   }, [filterKey]);
-  // Loaded with the first practice problem (and only then), so a focused
-  // skill's "Mixed practice" action is already known when that problem's
-  // feedback opens.
+  // One read of the learner's practice-state per practice: the look needs it
+  // before the first problem paints, and a focused skill's "Mixed practice"
+  // action is then already known when that problem's feedback opens. Both
+  // readers share one condition: a reader enabled later finds the read
+  // stale (staleTime 0) and asks the server again.
+  const readsPractice = !!learner && !nativeRuntime && tab === "practice";
   const practiceSettings = useQuery({
     ...practiceSettingsOptions(adjustments.scope),
-    enabled: !!learner && !nativeRuntime && tab === "practice" && !!problem,
+    enabled: readsPractice,
   });
   // The look for this learner's practice (`data-look` on <html> while here).
-  const practiceLook = useLook(
-    adjustments.scope,
-    !!learner && !nativeRuntime && tab === "practice",
-  );
+  const practiceLook = useLook(adjustments.scope, readsPractice);
   const [books, setBooks] = useState<BookSummary[]>([]);
   const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
