@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signOut } from "../../auth";
-import { useLearningView } from "../../lib/learning-view";
+import { useAccountOnHand } from "../../lib/session";
 import { handedStudentDevice, studentSession } from "../../lib/student-device";
 import { StudentSignOut } from "../practice/StudentSignOut";
 import styles from "./SessionMark.module.css";
@@ -11,7 +11,7 @@ import styles from "./SessionMark.module.css";
  * one tap. Other adults' bars are unchanged; a device a parent handed to
  * their child keeps its way home. */
 export function SessionMark({ named }: { named?: string | null }) {
-  const { account } = useLearningView({ records: false });
+  const account = useAccountOnHand();
   const [busy, setBusy] = useState(false);
   // A student's way out holds its place from the first paint, before (or
   // without) their account: their session is on this device already.

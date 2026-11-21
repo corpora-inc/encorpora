@@ -1,8 +1,9 @@
 import { skipToken, useQuery } from "@tanstack/react-query";
 import { use } from "react";
+import type { SignedInMe } from "../../account/contracts";
 import type { AuthSession } from "../auth";
 import { AppError } from "./AppError";
-import { sessionOptions } from "./query";
+import { meOptions, sessionOptions } from "./query";
 
 /**
  * The current session, the one way a component reads it
@@ -27,6 +28,22 @@ export function useSession(): AuthSession {
 /** The session on a screen anyone may open: null when signed out. */
 export function useSessionOrNull(): AuthSession | null {
   return useQuery(sessionOptions).data ?? null;
+}
+
+/** This session's signed-in `/me` as the cache has it, for a mark that
+ * stays in the bar whatever the screen is doing (whose session it is, the
+ * way out). It loads `/me` when nothing has asked yet, but never asks again
+ * on mount after a failure: the shell keeps its bar while it says a screen
+ * didn't load, and a mark that retried as it mounted would start that screen
+ * loading again, fail, and mount once more, without end. The screen's loads,
+ * its "Try again" and window focus refresh it. */
+export function useAccountOnHand(): SignedInMe | null {
+  const session = useSessionOrNull();
+  const me = useQuery({
+    ...forSession(session, meOptions),
+    retryOnMount: false,
+  }).data;
+  return me?.signedIn && me.account.id === session?.accountId ? me : null;
 }
 
 /** The sign-in itself, with its loading and failure, for the one hook that

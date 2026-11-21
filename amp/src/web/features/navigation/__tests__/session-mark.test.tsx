@@ -135,3 +135,50 @@ test("a parent's bar is unchanged", async () => {
   expect(screen.queryByText("Ana Parent")).toBeNull();
   expect(screen.queryByRole("button", { name: /Sign out/ })).toBeNull();
 });
+
+// The shell keeps its bar, and this mark, while it says a screen's account
+// didn't load. A mark that asked for the failed `/me` again as it mounted
+// restarted the screen's load, failed, and mounted again, without end: the
+// failure and its Try again never stayed on screen (a handed device's
+// family icon is the same mark).
+test.each([
+  ["a student's", false],
+  ["a handed device's", true],
+])(
+  "%s mark never asks again for a failed account as it mounts",
+  async (_, handed) => {
+    let asked = 0;
+    vi.stubGlobal("fetch", async () => {
+      asked++;
+      return new Response(
+        JSON.stringify({ error: "temporarily_unavailable" }),
+        {
+          status: 503,
+          headers: { "content-type": "application/json" },
+        },
+      );
+    });
+    const session = { accountId: "school:student", token: "st_fixture" };
+    sessionStorage.setItem("amp.student", JSON.stringify(session));
+    if (handed) sessionStorage.setItem("amp.student.handed", "1");
+    try {
+      queryClient.setQueryData(sessionOptions.queryKey, session);
+      await queryClient.prefetchQuery({ ...meOptions(session), retry: false });
+      expect(
+        queryClient.getQueryState(meOptions(session).queryKey)?.status,
+      ).toBe("error");
+      asked = 0;
+      for (let mount = 0; mount < 3; mount++)
+        render(
+          <QueryClientProvider client={queryClient}>
+            <SessionMark />
+          </QueryClientProvider>,
+        ).unmount();
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      expect(asked).toBe(0);
+    } finally {
+      sessionStorage.removeItem("amp.student");
+      sessionStorage.removeItem("amp.student.handed");
+    }
+  },
+);

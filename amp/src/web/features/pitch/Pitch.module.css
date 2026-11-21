@@ -364,6 +364,12 @@
   margin: 0;
   font-size: var(--text-body);
 }
+/* On a line of its own, not in running text: a full-size target. */
+.researchLink a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+}
 .inlineLink {
   color: var(--color-primary);
   font-weight: 650;
