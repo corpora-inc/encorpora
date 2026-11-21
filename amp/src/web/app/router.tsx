@@ -1519,6 +1519,17 @@ const research = createRoute({
     "ResearchScreen",
   ),
 });
+/** The pilot study's interest list: public, for families and schools. */
+const researchPilot = createRoute({
+  getParentRoute: () => root,
+  path: "/research/pilot",
+  staticData: { space: "public" },
+  beforeLoad: notInTheApp,
+  component: lazyRouteComponent(
+    () => import("../features/research"),
+    "PilotScreen",
+  ),
+});
 /** A family's progress link. Its secret is in the fragment, which `share-entry`
  * has already taken out of the address bar. */
 const familyLink = createRoute({
@@ -1700,6 +1711,7 @@ export const router = createRouter({
     schoolsScope,
     schoolsTrust,
     research,
+    researchPilot,
     schoolsContinue,
     schoolStart,
     schoolStartStudents,
