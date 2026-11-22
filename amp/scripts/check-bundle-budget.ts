@@ -43,8 +43,11 @@ const budget = {
    * with the bar, so nothing moves), and the slots for a student's look
    * and hand. The look this device remembers for a learner, put on before
    * their first paint so a Colorful learner never sees Calm first
-   * (features/practice/look-ahead.ts), adds 0.5 KB. Together, measured: 294.3 KB. */
-  entryJs: 294.5 * KB,
+   * (features/practice/look-ahead.ts), adds 0.5 KB. Whether the page is
+   * being left (lib/page-leave.ts), known from the app's start so a live
+   * screen that mounts late starts no request the browser will refuse,
+   * adds 0.5 KB. Together, measured: 294.8 KB. */
+  entryJs: 295 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,
