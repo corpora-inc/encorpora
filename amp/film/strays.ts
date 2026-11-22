@@ -2,8 +2,9 @@
  * Sounds in the voice that are not where a word is.
  *
  * Every take is split into islands of sound (audio.ts `sounds`). An island
- * inside a word's timing is part of that word; so is any voiced island. The rest
- * are noise in a pause: a hiss, a breath, a click, or a consonant the voice let
+ * inside a word's timing is part of that word; so is a voiced island, except a
+ * detached burst at the file's end that both word timings place after speech.
+ * The rest are noise in a pause: a hiss, a breath, a click, or a consonant the voice let
  * drift away from its word. Which of these an island is depends on the words
  * beside it, so each one is judged against the word before and the word after:
  *
@@ -207,6 +208,17 @@ const within = (gap: number, limit: number) => gap <= limit + 1e-6;
 export function strayPlan(pcm: Int16Array, words: TimedWord[], heard: TimedWord[] = []): Stray[] {
   const all = sounds(pcm);
   const spans = [...words, ...heard];
+  // Some takes finish the sentence, fall silent, then start another voiced sound
+  // right at EOF. A fade would leave that extra sound in the film. Remove it
+  // only with both timings present: beyond every aligned word, at least a word
+  // tail past the transcript, and separated from every preceding sound by GAP.
+  // A held vowel, final consonant or uncertain timing keeps the normal checks.
+  const tail = all.at(-1), beforeTail = all.at(-2);
+  const terminal = tail && beforeTail && words.length && heard.length && isHeard(tail) && !isNoise(tail) &&
+    tail.end === Math.floor(pcm.length / (SR / 100)) / 100 &&
+    spans.every((w) => w.end <= tail.start) &&
+    heard.every((w) => w.end + WORD_TAIL <= tail.start) &&
+    !below(tail.start - beforeTail.end, GAP) ? tail : undefined;
   // Inside a word: ending well before the last word it overlaps ends (a timed start is often
   // late, and a stray hides under a stretched end), or covering most of a word's timed span
   // (a short word, "x", whose timing is narrower than its sound).
@@ -219,9 +231,13 @@ export function strayPlan(pcm: Int16Array, words: TimedWord[], heard: TimedWord[
   // crumb of its decay is not where it ends), and heard voice. Heard noise outside every word
   // is judged below.
   const substance = (s: Sound) => s.peak >= EDGE || s.end - s.start >= AUDIBLE_FOR - 1e-9;
-  const stays = all.filter((s) => (inside(s) && substance(s)) || (isHeard(s) && !isNoise(s)));
-  const judged = all.filter((s) => isHeard(s) && isNoise(s) && !inside(s));
-  const out: Stray[] = [];
+  const stays = all.filter((s) => s !== terminal && ((inside(s) && substance(s)) || (isHeard(s) && !isNoise(s))));
+  const judged = all.filter((s) => s !== terminal && isHeard(s) && isNoise(s) && !inside(s));
+  const out: Stray[] = terminal ? [{
+    kind: "remove", sound: { ...terminal, end: pcm.length / SR },
+    word: [...words].sort((a, b) => a.end - b.end).at(-1)!.text,
+    side: "after", gap: terminal.start - beforeTail!.end,
+  }] : [];
   const sorted = [...spans].sort((a, b) => a.start - b.start);
   // The word before a sound claims it when, in every timing given, the last word that starts
   // before the sound does not end open and its span covers at least TAIL_CLAIM of the sound.
