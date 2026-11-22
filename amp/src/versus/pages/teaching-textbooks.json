@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Teaching Textbooks the unit is the lesson: an animated, narrated lecture, then a problem set, with a quiz about every seventh lesson [2][3][7]. Across 55 studies, worked examples improve performance in math [12].",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Teaching Textbooks the unit is the lesson: an animated, narrated lecture, then a problem set, with a quiz about every seventh lesson [2][3][7]. Across 55 studies, worked examples improve performance in math [12].",
       "research": [
         "lessons",
         "hints",
@@ -75,7 +75,7 @@
     ],
     "ours": [
       "The two findings that bear most on this comparison: practice that mixes and spaces topics scored 62% against 38% for practice in blocks a month later, on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [11]; and worked examples improve math performance across 55 studies [12]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

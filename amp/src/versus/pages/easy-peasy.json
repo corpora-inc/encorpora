@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Easy Peasy the unit is the day's lesson, a numbered list of steps. In EP Math 1 that is often a video or a song, an online practice activity, then a written or hands-on task [6]. From Math 5/6 on, the steps send learners to outside videos, mostly from Khan Academy, and to exercises on other sites [7][8].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Easy Peasy the unit is the day's lesson, a numbered list of steps. In EP Math 1 that is often a video or a song, an online practice activity, then a written or hands-on task [6]. From Math 5/6 on, the steps send learners to outside videos, mostly from Khan Academy, and to exercises on other sites [7][8].",
       "research": [
         "lessons",
         "hints",
@@ -82,7 +82,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains had the largest average effect (0.49), the correct answer alone 0.32 and right or wrong alone 0.05 [13]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [14]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

@@ -84,6 +84,10 @@ export type VersusPage = {
   evidence: { theirs: string[]; ours: string[] };
   /** The competitor's cell for each table row it has: at most 30 words. */
   rows: Partial<Record<VersusRowId, string>>;
+  /** Rows where AMP's cell adds that it is open source (`versusOpenNote`):
+   * only where that is the contrast, as beside a proprietary score or a rule
+   * the other program does not state. Sparingly. */
+  open?: VersusRowId[];
   /** "Choose <name> if" and "Choose AMP if". */
   fit: { them: string[]; amp: string[] };
   /** Two to five; also the page's FAQ structured data. */

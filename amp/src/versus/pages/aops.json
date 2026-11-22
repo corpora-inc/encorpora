@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In AoPS Online the unit is the course, taken in a live class that meets once a week or at the learner's own pace [3][4]. In the books, problems come first and their full solutions are in a separate manual [5].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In AoPS Online the unit is the course, taken in a live class that meets once a week or at the learner's own pace [3][4]. In the books, problems come first and their full solutions are in a separate manual [5].",
       "research": [
         "lessons",
         "hints",
@@ -66,7 +66,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. Across 40 studies of computer-based feedback, at several ages and in several subjects, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [9]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, practice that mixed and spaced topics scored 62% a month later, against 38% for practice in blocks [8]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

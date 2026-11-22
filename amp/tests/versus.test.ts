@@ -20,7 +20,12 @@ import test from "node:test";
 import { stripeCatalog } from "../infra/stripe";
 import { researchComponentIds, researchPage } from "../src/research/report";
 import { researchStaticHtml } from "../src/research/static-document";
-import { versusCategories, versusHub, versusRows } from "../src/versus/amp";
+import {
+  versusCategories,
+  versusHub,
+  versusOpenSource,
+  versusRows,
+} from "../src/versus/amp";
 import {
   relatedComparisons,
   versusGroups,
@@ -532,7 +537,12 @@ test("AMP's side: every row and category, in order; principles, never settings o
     assert.deepEqual(citations(row.amp), [], `${row.id} cites no source`);
   }
   for (const reason of versusHub.why.reasons)
-    assert.ok(researchComponentIds.includes(reason.research), reason.title);
+    assert.ok(
+      reason.href === versusOpenSource ||
+        (reason.research !== undefined &&
+          researchComponentIds.includes(reason.research)),
+      reason.title,
+    );
   // AMP's side says principles, never settings (a threshold, an interval, a
   // count): the same rule the pages are held to.
   for (const words of [

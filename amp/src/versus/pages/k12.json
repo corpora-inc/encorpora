@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. At K12 the unit is the course, one per grade or subject [4]. In its schools, the day includes scheduled live classes with certified teachers, and the curriculum mixes interactive games, videos and hands-on activities [1][7]. Across 55 studies, worked examples improve performance in math [14].",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. At K12 the unit is the course, one per grade or subject [4]. In its schools, the day includes scheduled live classes with certified teachers, and the curriculum mixes interactive games, videos and hands-on activities [1][7]. Across 55 studies, worked examples improve performance in math [14].",
       "research": [
         "lessons",
         "hints",
@@ -57,6 +57,9 @@
     "reports": "Single courses are computer-graded [11]. The Learning Hub tracks each child's progress for the parent [6].",
     "evidence": "No rating in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9]. A company survey of graduates, with self-reported answers [10]."
   },
+  "open": [
+    "next"
+  ],
   "theirs": [
     "K12 is a brand of Stride, Inc. It runs online public schools and online private schools, such as K12 Private Academy and The Keystone School, from kindergarten through grade 12 [1][2]. Math is one course among many.",
     "In its schools, the day includes scheduled live classes with certified teachers, and the curriculum mixes interactive games, videos and hands-on activities [1][7]. A parent or other responsible adult acts as the student's Learning Coach and guides the student through lessons [1][3]. K12 also offers single courses to families who teach at home, with math from kindergarten through Calculus [4]. Algebra 1 can be taken as independent study or with teacher support [11]."
@@ -73,7 +76,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [13]. A meta-analysis of 55 studies found that worked examples improve mathematics performance [14]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

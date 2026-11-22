@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. Freckle's practice is an adaptive pathway, plus the skills or standards a teacher assigns [1][3]. Its supports include hints, guided practice, instructional videos and vocabulary help [1]. A meta-analysis of 55 studies, from elementary school to college, found that worked examples improve math performance [6].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. Freckle's practice is an adaptive pathway, plus the skills or standards a teacher assigns [1][3]. Its supports include hints, guided practice, instructional videos and vocabulary help [1]. A meta-analysis of 55 studies, from elementary school to college, found that worked examples improve math performance [6].",
       "research": [
         "lessons",
         "hints",
@@ -45,6 +45,9 @@
     "reports": "Usage, performance and progress reports, performance by standard, and class, school and district dashboards [1].",
     "evidence": "Company-reported growth for students at recommended use [1]. We found no entry in Evidence for ESSA or the What Works Clearinghouse [4][5]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
     "Freckle is a K-12 practice platform from Renaissance, the company behind Star Assessments and FastBridge [1][2]. This page covers Freckle's math, which Renaissance lists from kindergarten through Algebra 2, aligned to state standards [1].",
     "Freckle's home page says it is designed to be both student-paced and teacher-led [2]. A student starts with a brief placement assessment, or the school's Star or FastBridge data sets the start [1]. The student then works an adaptive pathway, and a teacher can assign skills or standards to individuals, groups or the whole class [1][3]. Supports include hints, guided practice, instructional videos and vocabulary help [1]."
@@ -61,7 +64,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. A meta-analysis of 55 studies found that worked examples improve math performance [6]. A meta-analysis of 40 studies of computer-based feedback, across ages and subjects, found the largest effects for feedback that explains [7]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

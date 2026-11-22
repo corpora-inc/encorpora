@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Brilliant the unit is the concept: a short run of interactive problems that often poses a question before showing the method, and ends in a skill check [4][6]. Across 55 studies, worked examples improve performance in math [15].",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Brilliant the unit is the concept: a short run of interactive problems that often poses a question before showing the method, and ends in a skill check [4][6]. Across 55 studies, worked examples improve performance in math [15].",
       "research": [
         "lessons",
         "hints",
@@ -33,7 +33,7 @@
     },
     {
       "title": "Moving on, and going back",
-      "body": "In AMP a skill counts as learned when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count. Repeated misses send practice back to what the skill builds on. In Brilliant a skill check ends each concept, and a unit check uses a map of prerequisite skills to find the gap behind a miss [6]. We found no stated rule in its published pages for when a skill counts as learned [6].",
+      "body": "In AMP a skill counts as learned when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count. Repeated misses send practice back to what the skill builds on. In Brilliant a skill check ends each concept, and a unit check uses a map of prerequisite skills to find the gap behind a miss [6]. We found no stated rule in its published pages for when a skill counts as learned [6]. AMP's rule is open source: open to peer review and contribution.",
       "research": [
         "mastery",
         "level"
@@ -66,6 +66,9 @@
     "reports": "A parent dashboard: days active, problems solved, accuracy on checks. It says it is not a grade [8].",
     "evidence": "No outcome study found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [12][13]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
     "Brilliant teaches math, coding, data science and science through short interactive lessons [1]. Its math runs from fractions at about grade 4 to the opening topics of calculus [2]. It describes itself as a fit for learners who work independently, and says it is not a complete K-12 school [9][3].",
     "A short diagnostic at signup picks a starting topic [7]. A learner then works through short concepts built from interactive problems: move a point, test a pattern, estimate, choose a strategy [4]. Each concept ends with a skill check. Unit checks cover the unit and earlier material, and use a map of prerequisite skills to find the gap behind a miss [6]. Koji, an AI tutor, can see the problem, ask guiding questions and sketch on the screen [5]."
@@ -81,7 +84,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [14]. Across 55 studies, worked examples improve math performance [15]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

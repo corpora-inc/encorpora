@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Mathspace the unit is the task. A teacher assigns it with a due date [2]. An adaptive task runs in rounds and ends after a set amount of practice, not when the student reaches mastery [3].",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Mathspace the unit is the task. A teacher assigns it with a due date [2]. An adaptive task runs in rounds and ends after a set amount of practice, not when the student reaches mastery [3].",
       "research": [
         "lessons",
         "hints",
@@ -85,7 +85,7 @@
     ],
     "ours": [
       "The two findings that bear most on this comparison: a review of ten common study techniques rated practice testing and spaced practice as high utility [28], and in a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [27]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

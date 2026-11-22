@@ -69,6 +69,7 @@ const pageKeys = [
   "reasons",
   "evidence",
   "rows",
+  "open",
   "fit",
   "questions",
   "sources",
@@ -321,6 +322,21 @@ export function validateVersusPage(
           `rows.${id}`,
           `is ${wordCount(cell)} words; at most ${versusLimits.rowWords}`,
         );
+    }
+  }
+
+  if (data.open !== undefined) {
+    const rows = isRecord(data.rows) ? Object.keys(data.rows) : [];
+    if (!Array.isArray(data.open) || data.open.length === 0)
+      problem("open", "must be a list of row ids, or left out");
+    else {
+      if (new Set(data.open).size !== data.open.length)
+        problem("open", "names a row twice");
+      if (data.open.length > 2)
+        problem("open", "names more than two rows; say it sparingly");
+      for (const id of data.open)
+        if (typeof id !== "string" || !rows.includes(id))
+          problem("open", `names a row the page's table does not have: ${String(id)}`);
     }
   }
 

@@ -11,7 +11,7 @@
   "reasons": [
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In CK-12 the unit is the book. Its math comes as FlexBooks, digital textbooks whose lessons mix text, video, audio and quizzes [2][3]. Across 55 studies, worked examples improve mathematics performance, with an average effect of g = 0.48 [9].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In CK-12 the unit is the book. Its math comes as FlexBooks, digital textbooks whose lessons mix text, video, audio and quizzes [2][3]. Across 55 studies, worked examples improve mathematics performance, with an average effect of g = 0.48 [9].",
       "research": [
         "lessons",
         "hints",
@@ -20,7 +20,7 @@
     },
     {
       "title": "Continuous assessment",
-      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. In CK-12 the learner or teacher picks the book and the lesson, and Common Sense Media notes that younger children may need a parent's help to find their material [3]. CK-12 also offers adaptive practice. We found no published rule for how it picks items [2].",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. In CK-12 the learner or teacher picks the book and the lesson, and Common Sense Media notes that younger children may need a parent's help to find their material [3]. CK-12 also offers adaptive practice. We found no published rule for how it picks items [2]. How AMP chooses each problem is open source: open to peer review and contribution.",
       "research": [
         "level"
       ]
@@ -53,6 +53,9 @@
     "reports": "Insights, a feature that helps teachers read student performance [4]. Links with Google Classroom, Canvas and Schoology [2].",
     "evidence": "We found no math entry in Evidence for ESSA and no What Works Clearinghouse intervention report [7][8]. CK-12's own studies report teachers' views and platform statistics [4][5]."
   },
+  "open": [
+    "next"
+  ],
   "theirs": [
     "CK-12 comes from the CK-12 Foundation, a nonprofit [2]. Its math is a set of FlexBooks, digital textbooks from grade 1 through algebra, geometry, trigonometry, precalculus and calculus, with college algebra and college precalculus above them [2]. The same site covers science and other subjects [2].",
     "A FlexBook lesson mixes text, video, audio and quizzes [3], and the site also lists interactive science simulations and PLIX interactive items [2]. Beside the books sits Flexi, an AI tutor a student asks in a chat box, on the web, in a Google Play app or on WhatsApp [1][2]. The learner or teacher picks the book and the lesson [3], and teachers assign work with a class code [1]."
@@ -70,7 +73,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. Across 55 studies, worked examples improve mathematics performance, with an average effect of g = 0.48 [9]. In a field experiment with nearly 1,000 high school math students in Turkey, students given unrestricted GPT-4 scored 17% lower on exams, once access was removed, than students who never had AI. A tutor version with learning safeguards largely mitigated that harm [6]. AMP gives a worked example at every problem, and no AI model runs while a learner works.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

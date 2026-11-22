@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a written lesson with a worked example, a narrated film where there is one, the worked answer after it is answered, and links to the skills it builds on and leads to. In Imagine Math the unit is the lesson: a string of interactive activities with scaffolded feedback, ending in a quiz [2][3]. From grade 3, help also comes from live sessions with a teacher [1]. A meta-analysis of 55 studies found that worked examples improve mathematics performance [7].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a written lesson with a worked example, a video lesson, the worked answer after it is answered, and links to the skills it builds on and leads to. In Imagine Math the unit is the lesson: a string of interactive activities with scaffolded feedback, ending in a quiz [2][3]. From grade 3, help also comes from live sessions with a teacher [1]. A meta-analysis of 55 studies found that worked examples improve mathematics performance [7].",
       "research": [
         "lessons",
         "hints",
@@ -70,7 +70,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. A meta-analysis of 55 studies found that worked examples improve mathematics performance, with an average effect of g = 0.48 [7]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [6]. AMP gives a worked example with every problem and brings learned skills back mixed with other math.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

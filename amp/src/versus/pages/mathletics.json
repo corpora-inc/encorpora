@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Mathletics the unit is the activity, a set of ten steps aligned to the curriculum [2]. Its teaching comes as animated tutorials and audio in elementary content, printable eBooks in secondary, and conceptual and activity videos [7][3]. Across 55 studies, worked examples improve performance in math [13].",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Mathletics the unit is the activity, a set of ten steps aligned to the curriculum [2]. Its teaching comes as animated tutorials and audio in elementary content, printable eBooks in secondary, and conceptual and activity videos [7][3]. Across 55 studies, worked examples improve performance in math [13].",
       "research": [
         "lessons",
         "hints",
@@ -76,7 +76,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later on a test the researchers wrote, against 38% for practice in blocks [12]. Across 55 studies, worked examples improve math performance [13]. AMP's problems carry worked examples, and learned skills come back mixed with other math at growing intervals.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

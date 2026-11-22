@@ -30,9 +30,13 @@ export function VersusHubScreen() {
         <ul>
           {versusHub.why.reasons.map((reason) => (
             <li key={reason.title}>
-              <Link to="/research" hash={reason.research}>
-                {reason.title}
-              </Link>
+              {reason.href ? (
+                <a href={reason.href}>{reason.title}</a>
+              ) : (
+                <Link to="/research" hash={reason.research}>
+                  {reason.title}
+                </Link>
+              )}
               <p>{reason.text}</p>
             </li>
           ))}

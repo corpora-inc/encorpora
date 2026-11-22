@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Thinkster the unit is the worksheet: targeted practice its AI creates, with a video tutorial, and a tutor's feedback afterward [1]. Across 55 studies, worked examples improve performance in math [9].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Thinkster the unit is the worksheet: targeted practice its AI creates, with a video tutorial, and a tutor's feedback afterward [1]. Across 55 studies, worked examples improve performance in math [9].",
       "research": [
         "lessons",
         "hints",
@@ -33,7 +33,7 @@
     },
     {
       "title": "Moving on, and going back",
-      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Thinkster says its engine traces a gap back through the concepts underneath it [1]. Its mastery map marks each skill green, yellow or red, and we found no stated rule for green [1][2].",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Thinkster says its engine traces a gap back through the concepts underneath it [1]. Its mastery map marks each skill green, yellow or red, and we found no stated rule for green [1][2]. AMP's rule is open source: open to peer review and contribution.",
       "research": [
         "mastery",
         "level"
@@ -59,6 +59,9 @@
     "reports": "A parent dashboard and daily progress reports: problems worked, tutor feedback, skill mastery levels [1].",
     "evidence": "No outcome study found, and no entry in Evidence for ESSA or the What Works Clearinghouse [4][5]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
     "Thinkster Math is an online math tutoring service. Its maker describes it as tutoring personalized by patented AI and top math tutors [1]. A learner works with one dedicated tutor in live 45-minute one-to-one sessions, one to three times a week, and has an AI coach at any hour [1][2].",
     "A learner starts with an assessment of about seven minutes that maps skills and gaps [1]. Day to day, the learner spends 15 to 20 minutes, five days a week, on worksheets of targeted practice that Thinkster's AI creates, each with a video tutorial [1]. The mastery map updates after every worksheet, tutors leave feedback on worksheets, and in each session the tutor reviews the learner's week of work [1]. The AI coach guides with Socratic prompts and does not give the answer [1][2]."
@@ -75,7 +78,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison: worked examples improve math performance across 55 studies [9], and practice that mixes and spaces topics scored 62% against 38% for practice in blocks a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [7]. AMP shows worked steps after every answer and brings learned skills back in ordinary practice, mixed with other math.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

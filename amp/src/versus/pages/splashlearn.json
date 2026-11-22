@@ -10,7 +10,7 @@
   "reasons": [
     {
       "title": "The problem is the unit",
-      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a film where there is one, the worked answer after it is answered, and links to the skills it builds on and leads to. In SplashLearn the unit is the game-based activity, which earns rewards [1][3]. Teachers assign lessons [4][6]. Across 55 studies, worked examples improve performance in math [11].",
+      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a video lesson, the worked answer after it is answered, and links to the skills it builds on and leads to. In SplashLearn the unit is the game-based activity, which earns rewards [1][3]. Teachers assign lessons [4][6]. Across 55 studies, worked examples improve performance in math [11].",
       "research": [
         "lessons",
         "hints",
@@ -68,7 +68,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. Worked examples improve mathematics performance, with an average effect of g = 0.48 across 55 studies [11]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [12]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

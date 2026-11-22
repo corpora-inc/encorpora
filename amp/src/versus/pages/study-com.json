@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Study.com the unit is the video lesson: a video of about five minutes, with a transcript and flashcards, then a short quiz [1][2]. Its FAQ says the vast majority of homeschool lessons are video lessons [2]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [7].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Study.com the unit is the video lesson: a video of about five minutes, with a transcript and flashcards, then a short quiz [1][2]. Its FAQ says the vast majority of homeschool lessons are video lessons [2]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [7].",
       "research": [
         "lessons",
         "hints",
@@ -33,7 +33,7 @@
     },
     {
       "title": "Moving on, and going back",
-      "body": "In AMP a learner shows a skill by getting it right without help, more than once, and moves on. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Study.com states no mastery rule. Scores are not averaged across tests, and the parent decides which ones count [2]. We found no automatic return to earlier skills in the pages we read [2].",
+      "body": "In AMP a learner shows a skill by getting it right without help, more than once, and moves on. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Study.com states no mastery rule. Scores are not averaged across tests, and the parent decides which ones count [2]. We found no automatic return to earlier skills in the pages we read [2]. AMP's rule is open source: open to peer review and contribution.",
       "research": [
         "mastery",
         "hints"
@@ -66,6 +66,9 @@
     "reports": "Each student's progress, a downloadable gradebook of quiz scores, and weekly progress reports [2].",
     "evidence": "No outcome study found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [5][6]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
     "Study.com makes online video courses, test prep and college-credit courses. Its homeschool edition covers every subject from grade 3 to 12 [1][2]. In math it has courses for grades 3 through 8, Algebra I, Geometry, Algebra II, Precalculus and Statistics 101 [1].",
     "A family picks a course, and the course runs in a set order of chapters and lessons [2]. Most lessons are a video of about five minutes, with a transcript and flashcards, and a short quiz ends each one. A test ends each chapter [1][2]. The parent sets the pace and the daily work, and can build a custom course from chosen lessons [2]. Expert instructors answer questions at any hour [1]."
@@ -81,7 +84,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the authors estimate the benefit of extra doing at more than six times that of extra watching or reading, and the data are correlational [7]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, practice that mixed and spaced topics scored 62% a month later, against 38% for practice in blocks [9]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

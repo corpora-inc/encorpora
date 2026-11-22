@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. AdaptedMind's grade picker sorts its math by grade, and lists grades 6 to 8 as lessons [4]. Practice is set inside a game, with points, badges and monsters [1]. Across 55 studies, worked examples improve performance in math [5].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. AdaptedMind's grade picker sorts its math by grade, and lists grades 6 to 8 as lessons [4]. Practice is set inside a game, with points, badges and monsters [1]. Across 55 studies, worked examples improve performance in math [5].",
       "research": [
         "lessons",
         "hints",
@@ -72,7 +72,7 @@
     ],
     "ours": [
       "The two findings that bear most on this comparison: worked examples improve math performance, with an average effect of g = 0.48 across 55 studies [5], and mixed, spaced practice scored 62% against 38% for practice in blocks a month later, in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations [7]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

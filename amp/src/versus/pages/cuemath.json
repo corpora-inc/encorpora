@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Cuemath the unit is the class: a live video session with one tutor, usually twice a week, with worksheets between classes [1][4][5]. Across 55 studies, worked examples improve performance in math [12].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Cuemath the unit is the class: a live video session with one tutor, usually twice a week, with worksheets between classes [1][4][5]. Across 55 studies, worked examples improve performance in math [12].",
       "research": [
         "lessons",
         "hints",
@@ -26,7 +26,7 @@
     },
     {
       "title": "Moving on, and going back",
-      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. In Cuemath the tutor decides what comes next, following the learner's school curriculum and goals [6]. Progress reports highlight concept mastery, and we found no stated rule for what counts as mastered [4].",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. In Cuemath the tutor decides what comes next, following the learner's school curriculum and goals [6]. Progress reports highlight concept mastery, and we found no stated rule for what counts as mastered [4]. AMP's rule is open source: open to peer review and contribution.",
       "research": [
         "mastery",
         "level"
@@ -51,6 +51,9 @@
     "reports": "Session feedback and progress reports in a parent app, and parent-teacher meetings [4][5].",
     "evidence": "No outcome study found on its site, and no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [7][8]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
     "Cuemath is an online math tutoring company. This page is about its live one-to-one classes in the United States [2]. Cuemath says its classes are taught by a live tutor, not by AI or recorded video [1].",
     "A learner starts with a MathFit Evaluation of about 65 minutes, then is matched with one tutor who teaches every class [1][6]. Classes are live video on Cuemath's own platform, with a whiteboard and manipulatives [5][6]. Most learners in kindergarten to grade 8 meet twice a week, and high schoolers three times [1]. The tutor follows the learner's school curriculum and goals [6] and adapts lessons in real time [4]. Between classes come homework that revises past topics and practice that mixes topics [4]."
@@ -68,7 +71,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison: worked examples improve math performance across 55 studies [12], and practice that mixes and spaces topics scored 62% against 38% for practice in blocks a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [11]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

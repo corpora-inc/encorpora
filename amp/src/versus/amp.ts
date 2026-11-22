@@ -32,7 +32,7 @@ export const versusRows: readonly VersusRow[] = [
   {
     id: "teaching",
     label: "Teaching",
-    amp: "At the problem. Each one carries a hint that gives the first step, a lesson with a worked example, a film where there is one, and the worked answer.",
+    amp: "At the problem. Each one carries a hint that gives the first step, a lesson with a worked example, a video lesson, and the worked answer.",
   },
   {
     id: "next",
@@ -70,6 +70,22 @@ export const versusRows: readonly VersusRow[] = [
     amp: "A published rationale with the research behind each part, public source code, and outcome studies registered before they start.",
   },
 ];
+
+/** AMP's source code, public. */
+export const versusOpenSource = "https://github.com/corpora-inc/encorpora";
+/** What AMP's cell adds in the rows a page names in `open`: beside a
+ * proprietary score or an unstated rule, the contrast is that AMP's is
+ * public. Said sparingly. */
+export const versusOpenNote =
+  "It is open source: open to peer review and contribution.";
+/** One claim in the hub's "Why AMP": a door to its research, or to the
+ * source code. */
+export type VersusWhy = {
+  title: string;
+  text: string;
+  research?: ResearchComponentId;
+  href?: string;
+};
 
 export type VersusCategoryInfo = {
   id: VersusCategory;
@@ -156,7 +172,7 @@ export const versusHub = {
       },
       {
         title: "The problem is the unit",
-        text: "Each problem carries its hint, its lesson, a film where there is one, the worked answer, and the skills it builds on and leads to.",
+        text: "Each problem carries its hint, its lesson, its video lesson, the worked answer, and the skills it builds on and leads to.",
         research: "lessons",
       },
       {
@@ -164,11 +180,12 @@ export const versusHub = {
         text: "Learned skills come back in ordinary practice, at growing intervals, mixed with other math.",
         research: "review",
       },
-    ] satisfies readonly {
-      title: string;
-      text: string;
-      research: ResearchComponentId;
-    }[],
+      {
+        title: "Open source",
+        text: "AMP’s rules and code are public: open to peer review, to change and to contribution.",
+        href: versusOpenSource,
+      },
+    ] satisfies readonly VersusWhy[] as readonly VersusWhy[],
   },
 } as const;
 

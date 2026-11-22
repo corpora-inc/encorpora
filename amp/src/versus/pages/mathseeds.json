@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Mathseeds the unit is the lesson: a short animated scene, nine activities, then an e-book the child reads or hears narrated [2]. A meta-analysis of 55 studies found that worked examples improve math performance [14].",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Mathseeds the unit is the lesson: a short animated scene, nine activities, then an e-book the child reads or hears narrated [2]. A meta-analysis of 55 studies found that worked examples improve math performance [14].",
       "research": [
         "lessons",
         "hints",
@@ -27,7 +27,7 @@
     },
     {
       "title": "Moving on, and going back",
-      "body": "In AMP a skill counts as learned when the learner gets it right without help, more than once. An answer after a hint or a lesson is marked as helped and does not count. Repeated misses send practice back to what the skill builds on. In Mathseeds, five lessons make a map, and the map ends in a quiz [2]. The company says its Driving Tests and end-of-map quizzes make sure children reach mastery [2]. We found no stated rule for what counts as mastery [2][5].",
+      "body": "In AMP a skill counts as learned when the learner gets it right without help, more than once. An answer after a hint or a lesson is marked as helped and does not count. Repeated misses send practice back to what the skill builds on. In Mathseeds, five lessons make a map, and the map ends in a quiz [2]. The company says its Driving Tests and end-of-map quizzes make sure children reach mastery [2]. We found no stated rule for what counts as mastery [2][5]. AMP's rule is open source: open to peer review and contribution.",
       "research": [
         "mastery",
         "hints"
@@ -74,7 +74,7 @@
     ],
     "ours": [
       "Two findings bear most on this comparison. A meta-analysis of 55 studies found that worked examples improve math performance, with an average effect of g = 0.48 [14]. The studies run from elementary school to college, and most use researcher-designed tests. In a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% against 38% for practice in blocks a month later, on the researchers' own test [13]. AMP applies both.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a film where there is one, the worked answer after it is answered, and links to the skills it builds on and leads to. In Sumdog the unit is the game. Questions come inside games, and right answers earn coins for avatar costumes and a virtual house [2][7][9]. Its math page describes games and questions, and no lessons, hints or worked examples [2]. Across 55 studies, worked examples improve math performance, mostly on researchers' own tests [14].",
+      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a video lesson, the worked answer after it is answered, and links to the skills it builds on and leads to. In Sumdog the unit is the game. Questions come inside games, and right answers earn coins for avatar costumes and a virtual house [2][7][9]. Its math page describes games and questions, and no lessons, hints or worked examples [2]. Across 55 studies, worked examples improve math performance, mostly on researchers' own tests [14].",
       "research": [
         "lessons",
         "hints",
@@ -68,7 +68,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. Worked examples improve mathematics performance, with an average effect of g = 0.48 across 55 studies, mostly on researchers' own tests [14]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [13]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

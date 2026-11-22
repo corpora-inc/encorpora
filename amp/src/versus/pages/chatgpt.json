@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In ChatGPT the unit is the conversation. A learner brings a question, and study mode answers with guiding questions, hints and quizzes in the chat [1].",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In ChatGPT the unit is the conversation. A learner brings a question, and study mode answers with guiding questions, hints and quizzes in the chat [1].",
       "research": [
         "lessons",
         "hints",
@@ -76,7 +76,7 @@
     ],
     "ours": [
       "The two findings that bear most on this comparison: across 40 studies of computer-based feedback, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [12]; and mixed, spaced practice scored 62% against 38% for practice in blocks a month later, in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations [11]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

@@ -18,7 +18,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Power Homeschool the unit is the video lesson: a short video taught by a teacher, then practice problems on the concept. If a student does not grasp it, the program offers more in-depth help videos and a Lesson Manual [4]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [13].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Power Homeschool the unit is the video lesson: a short video taught by a teacher, then practice problems on the concept. If a student does not grasp it, the program offers more in-depth help videos and a Lesson Manual [4]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [13].",
       "research": [
         "lessons",
         "hints",
@@ -60,6 +60,9 @@
     "reports": "Every answer in the Live Monitor, alerts on concepts a student finds hard, course grades, attendance and report cards [9].",
     "evidence": "We found no outcome study on its site, no entry in Evidence for ESSA and no What Works Clearinghouse intervention report [10][11]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
     "Power Homeschool is run by Power Homeschool LLC. It offers Acellus online courses, from PreK through grade 12, to families who teach at home, and its sign-in links point to Acellus [1][8]. In math it runs from kindergarten through Pre-Calculus, in grade and subject courses, with separate math fact practice courses [5][6][7].",
     "A student begins each course at the beginning [3]. A lesson is a short video taught by a teacher, followed by practice problems on the concept, and the student must master the concept before the next lesson. If a student does not grasp it, the program offers more in-depth help videos and a Lesson Manual [4]. Lessons run in order, and the next opens when the last is done. The parent sets weekly goals for each course and supervises, and the system grades the work [3][9]."
@@ -75,7 +78,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, practice that mixed and spaced topics scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the authors estimate the benefit of extra doing at more than six times that of extra watching or reading, and the data are correlational [13]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

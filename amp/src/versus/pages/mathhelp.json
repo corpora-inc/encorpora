@@ -10,7 +10,7 @@
   "reasons": [
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In MathHelp.com the unit is the lesson. Each one is built around a short video on a single concept from a classroom teacher, followed by guided practice with audio explanations [4][5][9]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the data are correlational [12].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In MathHelp.com the unit is the lesson. Each one is built around a short video on a single concept from a classroom teacher, followed by guided practice with audio explanations [4][5][9]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the data are correlational [12].",
       "research": [
         "lessons",
         "hints",
@@ -66,7 +66,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks. The mixed practice was also spaced, so the result combines the two [11]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages, from correlational data [12]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

@@ -10,7 +10,7 @@
   "reasons": [
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In XtraMath the unit is the fact, shown as a flashcard with a time limit [2][4]. Its maker says the program does not teach the strategies or concepts behind an operation [4]. Across 55 studies, worked examples improve performance in math [7].",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In XtraMath the unit is the fact, shown as a flashcard with a time limit [2][4]. Its maker says the program does not teach the strategies or concepts behind an operation [4]. Across 55 studies, worked examples improve performance in math [7].",
       "research": [
         "lessons",
         "hints",
@@ -68,7 +68,7 @@
     ],
     "ours": [
       "A meta-analysis of 55 studies found that worked examples improve mathematics performance, with an average effect of g = 0.48 [7]. Every AMP problem carries a worked example in its lesson and a worked answer after it is answered.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

@@ -3,7 +3,13 @@
  * crawlers. The build puts it in each page's document, hidden, as
  * `/research` does (scripts/build-public-documents.ts). */
 import { researchComponent, researchPage } from "../research/report";
-import { versusContact, versusHub, versusRows } from "./amp";
+import {
+  versusContact,
+  versusHub,
+  versusOpenNote,
+  versusOpenSource,
+  versusRows,
+} from "./amp";
 import { relatedComparisons, versusGroups, versusPath } from "./catalog";
 import { citedParts, sourceAnchor } from "./citations";
 import { checkedLabel, researchLink } from "./head";
@@ -56,7 +62,7 @@ export function versusHubStaticHtml(catalog: readonly VersusCatalogEntry[]) {
 <ul>${versusHub.why.reasons
     .map(
       (reason) =>
-        `<li><a href="/research#${reason.research}">${escape(reason.title)}</a>: ${escape(reason.text)}</li>`,
+        `<li><a href="${escape(reason.href ?? `/research#${reason.research}`)}">${escape(reason.title)}</a>: ${escape(reason.text)}</li>`,
     )
     .join("")}</ul>
 <p><a href="/research">${escape(researchPage.title)}</a></p>
@@ -109,7 +115,7 @@ ${page.reasons
 <tbody>${rows
     .map(
       (row) =>
-        `<tr><th scope="row">${escape(row.label)}</th><td>${escape(row.amp)}</td><td>${cited(page.rows[row.id]!)}</td></tr>`,
+        `<tr><th scope="row">${escape(row.label)}</th><td>${escape(row.amp)}${page.open?.includes(row.id) ? ` ${escape(versusOpenNote)}` : ""}</td><td>${cited(page.rows[row.id]!)}</td></tr>`,
     )
     .join("")}</tbody>
 </table>

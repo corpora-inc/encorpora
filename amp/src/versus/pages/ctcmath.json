@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In CTCMath the unit is the lesson. It opens with a video tutorial of about 4 to 9 minutes, and the questions follow [1][4]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [11].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In CTCMath the unit is the lesson. It opens with a video tutorial of about 4 to 9 minutes, and the questions follow [1][4]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [11].",
       "research": [
         "lessons",
         "hints",
@@ -74,7 +74,7 @@
     ],
     "ours": [
       "The two findings that bear on this comparison: mixed and spaced practice scored 62% against 38% for practice in blocks a month later, on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [10]; and in an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages, in data the authors call correlational [11]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

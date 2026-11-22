@@ -17,7 +17,7 @@
     },
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Outschool the unit is the class. A live class is a video meeting at scheduled times. It may meet once, run for weeks or a semester, or recur each week. Most include independent work before or after the meetings [3]. Across 55 studies, worked examples improve performance in math [9].",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Outschool the unit is the class. A live class is a video meeting at scheduled times. It may meet once, run for weeks or a semester, or recur each week. Most include independent work before or after the meetings [3]. Across 55 studies, worked examples improve performance in math [9].",
       "research": [
         "lessons",
         "hints",
@@ -75,7 +75,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison: feedback that explains had the largest average effect across 40 studies of computer-based feedback [10], and practice that mixes and spaces topics scored 62% against 38% for practice in blocks a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [11]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {

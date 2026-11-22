@@ -11,7 +11,7 @@
   "reasons": [
     {
       "title": "The problem is the unit",
-      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Life of Fred the unit is the chapter: part of a story about Fred, then a short set of questions [3][4]. Cathy Duffy writes that the text concentrates on concepts more than on computation practice and drill [4]. Across 55 studies, worked examples improve performance in math [10].",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Life of Fred the unit is the chapter: part of a story about Fred, then a short set of questions [3][4]. Cathy Duffy writes that the text concentrates on concepts more than on computation practice and drill [4]. Across 55 studies, worked examples improve performance in math [10].",
       "research": [
         "lessons",
         "hints",
@@ -75,7 +75,7 @@
     ],
     "ours": [
       "Two findings bear on this comparison. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect (0.49), giving the correct answer 0.32, and marking right or wrong only 0.05; the studies mix ages and subjects [8]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [9]. AMP applies both at every problem.",
-      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
