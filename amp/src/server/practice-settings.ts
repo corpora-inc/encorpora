@@ -139,6 +139,10 @@ export async function changePractice(
   } else if (change.kind === "gradeLevel") {
     // Display only: practice, levels and evidence are unchanged.
     next.gradeLevelShown = change.shown;
+  } else if (change.kind === "lookHue") {
+    // Display only. The color a learner keeps in Colorful, or (null) lets
+    // move on with every problem: theirs, whoever holds the look itself.
+    next.lookHue = change.hue;
   } else if (change.kind === "look") {
     // Display only, like the grade level. A learner, their grown-up or a
     // teacher's class may choose it, until a class locks it.

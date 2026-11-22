@@ -11,7 +11,7 @@ import "./skin.css";
  * next one, and goes with the last. */
 let holders = 0;
 /** Puts the dress on and returns what takes it off. */
-export function holdBold(learner: string) {
+export function holdBold(learner: string, kept: number | null = null) {
   const root = document.documentElement;
   // The dress going on is not a turn: it arrives in its hue (hue.ts). What
   // this device put on ahead of the server's answer (look-ahead.ts) is the
@@ -20,8 +20,10 @@ export function holdBold(learner: string) {
   claimAhead();
   holders++;
   // The learner's latest world, until practice moves it on.
-  const latest = useHueStore.getState().latest(learner);
-  if (!root.style.getPropertyValue("--look-hue")) paintHue(latest);
+  // The color they keep, or their latest world until practice moves it on.
+  const latest = kept ?? useHueStore.getState().latest(learner);
+  if (kept !== null || !root.style.getPropertyValue("--look-hue"))
+    paintHue(latest);
   rememberLook(learner, latest);
   root.setAttribute("data-look", "bold");
   return () => {
@@ -30,4 +32,11 @@ export function holdBold(learner: string) {
     root.removeAttribute("data-look");
     clearHue();
   };
+}
+
+/** The learner keeps this color from now on: it is on the page at once, and
+ * this device remembers it for their next first paint. */
+export function keepHue(learner: string, hue: number) {
+  paintHue(hue);
+  rememberLook(learner, hue);
 }

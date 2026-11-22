@@ -1,5 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useLayoutEffect, useSyncExternalStore } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useSyncExternalStore,
+} from "react";
 import { shownLook, type Look, type ShownLook } from "../../../learning/look";
 import { mediaMatches, onMediaChange } from "../../lib/media-query";
 import {
@@ -60,6 +65,8 @@ export function useLook(scope: PracticeScope, enabled = true) {
   const chosen = enabled ? (state.data?.effectiveLook ?? null) : null;
   const look: Look | null =
     chosen === "bold" && !canShowColorful() ? "calm" : chosen;
+  /** The one color they keep in Colorful; null moves on with each problem. */
+  const kept = look === "bold" ? (state.data?.lookHue ?? null) : null;
   const reduced = usePrefersReducedMotion();
   // What this device remembers of the learner's look goes on in the commit
   // that first paints their screen, before the server answers (look-ahead.ts).
@@ -67,6 +74,8 @@ export function useLook(scope: PracticeScope, enabled = true) {
     if (!enabled || !learner) return;
     return dressAhead(learner);
   }, [enabled, learner]);
+  const keptNow = useRef(kept);
+  keptNow.current = kept;
   useEffect(() => {
     if (look === "calm" && learner) {
       // The server's answer: Calm. Nothing remembered may say otherwise.
@@ -79,7 +88,7 @@ export function useLook(scope: PracticeScope, enabled = true) {
     loadDress().then(
       (dress) => {
         if (gone) return;
-        release = dress.holdBold(learner);
+        release = dress.holdBold(learner, keptNow.current);
       },
       (error: unknown) => console.warn("Colorful's dress didn’t load", error),
     );
@@ -88,6 +97,16 @@ export function useLook(scope: PracticeScope, enabled = true) {
       release?.();
     };
   }, [look, learner]);
+  // A color kept (or changed) while the dress is on goes on the page at
+  // once, on every screen that wears it. Letting it go changes nothing
+  // until the next problem brings its own.
+  useEffect(() => {
+    if (look !== "bold" || kept === null || !learner) return;
+    loadDress().then(
+      (dress) => dress.keepHue(learner, kept),
+      (error: unknown) => console.warn("Colorful's dress didn’t load", error),
+    );
+  }, [look, kept, learner]);
   /** What to record on an answer: the look actually shown; null until known. */
   const shown: ShownLook | null = look ? shownLook(look, reduced) : null;
   return { look, shown };

@@ -1,8 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
 import { useLayoutEffect, useRef, type RefObject } from "react";
 import { setFeedbackVoice } from "../feedback-preferences";
 import { rememberLook } from "../look-ahead";
 import { useLookOnScreen, usePrefersReducedMotion } from "../look";
 import { usePoints, usePracticeScope } from "../points";
+import { practiceSettingsOptions } from "../practice-settings";
 import { measured, type Credit } from "./credit";
 import { colorfulVoice } from "./sound";
 import { arriveAfterPaint, hueOf, paintHue } from "./hue";
@@ -65,6 +67,16 @@ export function Colorful({ credit, outcome, mastered, problem }: Props) {
   const reduced = usePrefersReducedMotion();
   const points = usePoints();
   const colorful = !!scope;
+  // The one color the learner keeps (LookSetting), or null: each problem
+  // brings its own.
+  const kept =
+    useQuery({
+      ...practiceSettingsOptions(scope ?? { identity: "", learnerId: "" }),
+      enabled: !!scope,
+      // The practice host keeps it fresh (as `usePoints`).
+      refetchOnMount: false,
+      select: (state) => state.lookHue ?? null,
+    }).data ?? null;
   // An answer already on screen when this mounts (a return from a book)
   // was celebrated when it arrived.
   const seen = useRef(outcome?.id ?? null);
@@ -95,7 +107,10 @@ export function Colorful({ credit, outcome, mastered, problem }: Props) {
     else delete root.dataset.figureColors;
     const run =
       useCelebrationStore.getState().runs[learnerKey(scope)]?.streak ?? 0;
-    const hue = hueOf(scope.learnerId, problemId);
+    // The problem takes its place in the run either way, so letting a kept
+    // color go picks the run up where it is.
+    const own = hueOf(scope.learnerId, problemId);
+    const hue = kept ?? own;
     paintHue(hue, boostFor(run));
     // The next cold load arrives in this world (look-ahead.ts).
     rememberLook(scope.learnerId, hue);
@@ -106,7 +121,7 @@ export function Colorful({ credit, outcome, mastered, problem }: Props) {
     };
     // Keyed on the problem: the same problem keeps its world.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [problemId, colorful]);
+  }, [problemId, colorful, kept]);
 
   // The verdict: runs in the commit that shows it, after the seam counted
   // the answer (a sibling before this one) and before the workspace plays

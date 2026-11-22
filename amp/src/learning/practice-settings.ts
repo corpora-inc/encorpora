@@ -15,6 +15,10 @@ export const practiceSettingsSchema = z.object({
   /** A grown-up holds `look` for the child: the child's own sessions can't
    * change it (a parent's can). Needs a look to hold; locking sets one. */
   lookAdultLock: z.boolean().default(false),
+  /** In Colorful, the one hue (0 to 359 degrees) the learner chose to keep.
+   * Null: the color moves on with every problem. Theirs alone: no lock
+   * holds it, and it means nothing in Calm. */
+  lookHue: z.number().int().min(0).max(359).nullable().default(null),
   strandStarts: z
     .record(
       z.string(),
@@ -34,6 +38,7 @@ export const defaultPracticeSettings = (): PracticeSettings => ({
   gradeLevelShown: true,
   look: null,
   lookAdultLock: false,
+  lookHue: null,
   strandStarts: {},
 });
 const identity = {
@@ -69,6 +74,13 @@ export const practiceChangeSchema = z.discriminatedUnion("kind", [
     .strict(),
   z
     .object({ ...identity, kind: z.literal("lookLock"), locked: z.boolean() })
+    .strict(),
+  z
+    .object({
+      ...identity,
+      kind: z.literal("lookHue"),
+      hue: z.number().int().min(0).max(359).nullable(),
+    })
     .strict(),
   z
     .object({

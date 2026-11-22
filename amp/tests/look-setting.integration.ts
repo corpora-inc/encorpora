@@ -487,6 +487,30 @@ test(
         });
         assert.equal(changed.statusCode, 200, changed.body);
         assert.equal(changed.json().points, before + 1);
+        // The learner keeps one color, then lets it go: their own choice,
+        // from their own sign-in.
+        assert.equal(changed.json().lookHue, null);
+        const keep = async (hue: unknown) =>
+          post(`${path}/practice-state`, ada.token, {
+            kind: "lookHue",
+            hue,
+            revision: (await stateOf(ada.learnerId, ada.token)).revision,
+            requestId: randomUUID(),
+          });
+        const kept = await keep(202);
+        assert.equal(kept.statusCode, 200, kept.body);
+        assert.equal(kept.json().lookHue, 202);
+        assert.equal(kept.json().effectiveLook, "bold");
+        assert.equal(
+          (await stateOf(ada.learnerId, ada.token)).lookHue,
+          202,
+          "it is stored, so it follows them to any device",
+        );
+        for (const bad of [360, -1, 12.5, "blue"])
+          assert.equal((await keep(bad)).statusCode, 400, String(bad));
+        const freed = await keep(null);
+        assert.equal(freed.statusCode, 200, freed.body);
+        assert.equal(freed.json().lookHue, null);
       },
     );
   },
