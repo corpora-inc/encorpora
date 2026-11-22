@@ -228,48 +228,70 @@ test("a class's lock holds for the parent's view too, and says so", async () => 
   ).toBe(true);
 });
 
-test("the learner's own menu keeps the color on screen, and lets it go", async () => {
-  // Colorful is on this screen in hue 202 (celebration/hue.ts paints it).
-  document.documentElement.style.setProperty("--look-hue", "202deg");
+test("the learner's own menu: the page follows the thumb, the color is kept when it is let go, and the wheel lets it go", async () => {
   render(wrap(<LookSetting scope={scope("maya")} />));
-  const colors = await screen.findByRole("radiogroup", { name: "Colors" });
-  const turning = await screen.findByRole("radio", { name: "Every problem" });
-  await waitFor(() =>
-    expect(turning.getAttribute("aria-checked")).toBe("true"),
+  const slider = (await screen.findByRole("slider", {
+    name: "Color",
+  })) as HTMLInputElement;
+  const wheel = screen.getByRole("button", {
+    name: "A new color every problem",
+  });
+  await waitFor(() => expect(wheel.getAttribute("aria-pressed")).toBe("true"));
+  fireEvent.change(slider, { target: { value: "120" } });
+  // Shown at once, with no turn, and not yet saved.
+  expect(document.documentElement.style.getPropertyValue("--look-hue")).toBe(
+    "120deg",
   );
-  fireEvent.click(screen.getByRole("radio", { name: "Keep this one" }));
+  expect(document.documentElement.hasAttribute("data-look-arriving")).toBe(
+    true,
+  );
+  expect(server.posts).toHaveLength(0);
+  fireEvent.pointerUp(slider);
   await waitFor(() =>
     expect(server.posts.at(-1)?.body).toMatchObject({
       kind: "lookHue",
-      hue: 202,
+      hue: 120,
     }),
   );
-  await waitFor(() =>
-    expect(
-      screen
-        .getByRole("radio", { name: "Keep this one" })
-        .getAttribute("aria-checked"),
-    ).toBe("true"),
+  expect(document.documentElement.hasAttribute("data-look-arriving")).toBe(
+    false,
   );
-  fireEvent.click(screen.getByRole("radio", { name: "Every problem" }));
+  await waitFor(() => expect(wheel.getAttribute("aria-pressed")).toBe("false"));
+  fireEvent.click(wheel);
   await waitFor(() =>
     expect(server.posts.at(-1)?.body).toMatchObject({
       kind: "lookHue",
       hue: null,
     }),
   );
-  expect(colors).toBeTruthy();
   document.documentElement.style.removeProperty("--look-hue");
 });
 
-test("in Calm the colors have nothing to choose, and a grown-up's view has no such row", async () => {
+test("a tap on the thumb keeps the color on screen; arriving by Tab keeps nothing", async () => {
+  document.documentElement.style.setProperty("--look-hue", "202deg");
+  render(wrap(<LookSetting scope={scope("maya")} />));
+  const slider = await screen.findByRole("slider", { name: "Color" });
+  await waitFor(() => expect((slider as HTMLInputElement).value).toBe("202"));
+  fireEvent.keyUp(slider, { key: "Tab" });
+  expect(server.posts).toHaveLength(0);
+  fireEvent.pointerUp(slider);
+  await waitFor(() =>
+    expect(server.posts.at(-1)?.body).toMatchObject({
+      kind: "lookHue",
+      hue: 202,
+    }),
+  );
+  document.documentElement.style.removeProperty("--look-hue");
+});
+
+test("in Calm the color has nothing to choose, and a grown-up's view has no such row", async () => {
   const calm = render(wrap(<LookSetting scope={scope("sam")} />));
-  const keep = await screen.findByRole("radio", { name: "Keep this one" });
-  await waitFor(() => expect((keep as HTMLButtonElement).disabled).toBe(true));
+  const slider = await screen.findByRole("slider", { name: "Color" });
+  await waitFor(() => expect((slider as HTMLInputElement).disabled).toBe(true));
   calm.unmount();
   render(wrap(<LookSetting scope={scope("maya")} adult />));
   await screen.findByRole("radio", { name: "Colorful" });
-  expect(screen.queryByRole("radiogroup", { name: "Colors" })).toBeNull();
+  expect(screen.queryByRole("slider", { name: "Color" })).toBeNull();
 });
 
 test("a kept color is the one on the page while the dress is on", async () => {

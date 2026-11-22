@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState, type CSSProperties } from "react";
 import type { Look } from "../../../learning/look";
 import { AppError } from "../../lib/AppError";
 import { LockMark } from "../school/classroom/SettingMeta";
@@ -16,13 +16,8 @@ const OPTIONS: { value: Look; label: string }[] = [
   { value: "calm", label: "Calm" },
   { value: "bold", label: "Colorful" },
 ];
-/** Colorful's colors: a new one with every problem, or the one on screen
- * now, kept. */
-type Colors = "turning" | "kept";
-const COLORS: { value: Colors; label: string }[] = [
-  { value: "turning", label: "Every problem" },
-  { value: "kept", label: "Keep this one" },
-];
+/** No turn while a hue is tried (ui/tokens.css): the page follows the thumb. */
+const ARRIVING = "data-look-arriving";
 /** The hue on the page now (celebration/hue.ts paints it on `<html>`), as
  * the setting stores it; null when Colorful is not on this screen. */
 function hueOnScreen(): number | null {
@@ -80,19 +75,25 @@ export function LookSetting({
       setBusy(false);
     }
   };
-  const keep = async (colors: Colors) => {
-    const hue = colors === "kept" ? hueOnScreen() : null;
-    // Nothing painted to keep (Colorful is not on this screen): say so.
-    if (colors === "kept" && hue === null) {
-      console.warn("No Colorful color is on this screen to keep");
-      setError("Open practice, then keep the color you like.");
-      return;
-    }
+  // The hue under the thumb while it moves; null when it rests.
+  const [picking, setPicking] = useState<number | null>(null);
+  /** Shows a hue on the page behind the menu at once, with no turn. */
+  const preview = (hue: number) => {
+    const root = document.documentElement;
+    root.setAttribute(ARRIVING, "");
+    root.style.setProperty("--look-hue", `${hue}deg`);
+    setPicking(hue);
+  };
+  /** Saves the color they keep, or (null) a new one with every problem. */
+  const keep = async (hue: number | null) => {
+    document.documentElement.removeAttribute(ARRIVING);
+    setPicking(null);
+    if (hue === (data?.lookHue ?? null)) return;
     setBusy(true);
     try {
       await adjust.change({ kind: "lookHue", hue });
     } catch (failure) {
-      console.error("The kept color didn’t save", failure);
+      console.error("The color didn’t save", failure);
       setError(
         failure instanceof AppError && failure.message
           ? failure.message
@@ -102,6 +103,12 @@ export function LookSetting({
       setBusy(false);
     }
   };
+  const colorful = data?.effectiveLook === "bold";
+  const kept = colorful ? (data?.lookHue ?? null) : null;
+  const colorLabel = useId();
+  // Where the thumb sits: the hue being picked, the one kept, or the one on
+  // the page now.
+  const shownHue = picking ?? kept ?? hueOnScreen() ?? 0;
   const choose = async (look: Look) => {
     setBusy(true);
     try {
@@ -156,29 +163,49 @@ export function LookSetting({
           if (next !== data?.effectiveLook) void choose(next);
         }}
       />
-      {/* The learner's own menu only: "this one" is the color on their
-          screen. Always there, so choosing a look moves nothing; in Calm it
+      {/* The learner's own menu only: the color is theirs, whoever chose the
+          look. Always there, so choosing a look moves nothing; in Calm it
           has nothing to choose. */}
       {!adult && (
         <>
           <div className={styles.head}>
-            <span>Colors</span>
+            <span id={colorLabel}>Color</span>
           </div>
-          <Segmented
-            label="Colors"
-            options={COLORS}
-            value={
-              data?.effectiveLook === "bold"
-                ? data.lookHue == null
-                  ? "turning"
-                  : "kept"
-                : null
-            }
-            compact
-            dense
-            disabled={!data || data.effectiveLook !== "bold" || busy}
-            onChange={(next) => void keep(next)}
-          />
+          <div className={styles.colors} data-off={colorful ? undefined : ""}>
+            <button
+              type="button"
+              className={styles.wheel}
+              aria-label="A new color every problem"
+              aria-pressed={colorful && kept === null && picking === null}
+              disabled={!colorful || busy}
+              onClick={() => void keep(null)}
+            />
+            <input
+              type="range"
+              className={styles.hue}
+              aria-labelledby={colorLabel}
+              min={0}
+              max={359}
+              step={1}
+              value={shownHue}
+              data-turning={kept === null && picking === null ? "" : undefined}
+              style={{ "--look-pick-hue": `${shownHue}deg` } as CSSProperties}
+              disabled={!colorful || busy}
+              onChange={(event) => preview(Number(event.target.value))}
+              // The choice is made when the thumb is let go, moved or not (a
+              // tap on it keeps the color on screen), or a key has moved it.
+              onPointerUp={(event) =>
+                void keep(Number(event.currentTarget.value))
+              }
+              onKeyUp={() => {
+                // Only a key that moved it: arriving here by Tab keeps nothing.
+                if (picking !== null) void keep(picking);
+              }}
+              onBlur={() => {
+                if (picking !== null) void keep(picking);
+              }}
+            />
+          </div>
         </>
       )}
       <Toast message={error} onDismiss={() => setError("")} />

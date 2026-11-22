@@ -545,6 +545,23 @@
     --colorful-unsupported: 1;
   }
 }
+/* The color picker in a learner's menu (features/practice/LookSetting):
+   every hue in a row, and all of them at once for "a new color every
+   problem". Fixed lightness and chroma, so the row is even from end to end;
+   the thumb is the hue it sits on. */
+:root {
+  --look-pick-track: linear-gradient(
+    to right in oklch longer hue,
+    oklch(0.8 0.13 0deg),
+    oklch(0.8 0.13 360deg)
+  );
+  --look-pick-wheel: conic-gradient(
+    in oklch longer hue,
+    oklch(0.8 0.13 0deg),
+    oklch(0.8 0.13 360deg)
+  );
+  --look-pick-thumb: oklch(0.62 0.17 var(--look-pick-hue, 250deg));
+}
 /* The world turns with the problem, in step with its entrance. It does not
    turn while the dress is first going on (celebration/hue.ts): a load
    arrives in its hue. */
