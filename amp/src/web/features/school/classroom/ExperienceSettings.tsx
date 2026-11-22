@@ -176,31 +176,22 @@ function SettingRow<K extends ExperienceKey>({
       option.value === value,
   );
   const describe = row.describe as Record<string, string>;
-  // Nobody has chosen a look: each student starts by their grade
-  // (learning/look.ts `startingLook`), so neither choice is this class's
-  // yet, and the row says where they start.
-  const unchosen = row.key === "look" && !setting.setBy;
-  const said =
-    note ??
-    (unchosen
-      ? "Not chosen. Students start Colorful through Grade 5 and Calm from Grade 6."
-      : describe[value]);
   return (
     <section className={styles.row} aria-labelledby={`setting-${row.key}`}>
       <div className={styles.rowText}>
         <h2 id={`setting-${row.key}`}>{row.title}</h2>
-        {said && <p>{said}</p>}
+        {(note ?? describe[value]) && <p>{note ?? describe[value]}</p>}
       </div>
       <div className={styles.rowControl}>
         <Segmented
           label={row.title}
           options={options}
-          value={unchosen ? null : value}
+          value={value}
           compact
           dense
           disabled={fixed || disabled}
           onChange={(next) => {
-            if (unchosen || next !== value) onValue(next);
+            if (next !== value) onValue(next);
           }}
         />
         <SettingMeta

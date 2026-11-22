@@ -12,14 +12,6 @@ export const shownLooks = ["calm", "bold", "bold-reduced"] as const;
 export const shownLookSchema = z.enum(shownLooks);
 export type ShownLook = z.infer<typeof shownLookSchema>;
 export const defaultLook: Look = "calm";
-/** Colorful is where a child starts through this grade (K is 0): the
- * elementary years. From grade 6, and for an adult or a learner whose grade
- * isn't known, it is Calm. Either may switch, unless a grown-up or a class
- * holds the look. */
-export const COLORFUL_THROUGH_GRADE = 5;
-/** The look a learner in this grade starts with, before anyone chooses. */
-export const startingLook = (grade: number | null): Look =>
-  grade !== null && grade <= COLORFUL_THROUGH_GRADE ? "bold" : defaultLook;
 
 /** What one class (with the school and district above it) says about look. */
 export type ClassLook = {
@@ -49,16 +41,13 @@ export type LookLockedBy = "class" | "adult";
  * 2. else the learner's own choice (null inherits), which a grown-up may
  *    have locked for them;
  * 3. else what their classes chose (a family's class is the family default);
- * 4. else where a learner their age starts (`startingLook`): calm when
- *    that isn't given.
+ * 4. else calm.
  */
 export function resolveLook(input: {
   own: Look | null;
   /** A grown-up locked the learner's own choice. */
   ownLocked?: boolean;
   classes: readonly ClassLook[];
-  /** Where this learner starts when nobody has chosen (`startingLook`). */
-  starting?: Look;
 }): { look: Look; locked: boolean; lockedBy: LookLockedBy | null } {
   const byClass = agreed(input.classes.filter((entry) => entry.locked));
   if (byClass) return { look: byClass, locked: true, lockedBy: "class" };
@@ -67,11 +56,7 @@ export function resolveLook(input: {
       ? { look: input.own, locked: true, lockedBy: "adult" }
       : { look: input.own, locked: false, lockedBy: null };
   const chosen = agreed(input.classes.filter((entry) => entry.set));
-  return {
-    look: chosen ?? input.starting ?? defaultLook,
-    locked: false,
-    lockedBy: null,
-  };
+  return { look: chosen ?? defaultLook, locked: false, lockedBy: null };
 }
 
 /** The value recorded on an attempt for the look on screen. */

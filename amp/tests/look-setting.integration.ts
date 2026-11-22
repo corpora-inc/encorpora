@@ -86,32 +86,10 @@ test(
       });
 
     await t.test(
-      "nobody has chosen: a child through grade 5 starts in Colorful, an older one and an adult in Calm",
-      async () => {
-        const parent = `amp|parent-${randomUUID()}`;
-        const year = new Date().getUTCFullYear();
-        const young = await learning.create(parent, "Pip", year - 7);
-        const older = await learning.create(parent, "Theo", year - 15);
-        const youngState = await stateOf(young.id, parent);
-        assert.deepEqual(
-          [youngState.look, youngState.effectiveLook, youngState.lookLocked],
-          [null, "bold", false],
-        );
-        assert.equal((await stateOf(older.id, parent)).effectiveLook, "calm");
-        // The start is not a choice: Calm is one change away and stays.
-        const calm = await choose(young.id, parent, "calm");
-        assert.equal(calm.statusCode, 200, calm.body);
-        assert.equal((await stateOf(young.id, parent)).effectiveLook, "calm");
-      },
-    );
-
-    await t.test(
       "a parent chooses for their child and can clear it",
       async () => {
         const parent = `amp|parent-${randomUUID()}`;
-        // In grade 6 or later, so she starts in Calm (the youngest start in
-        // Colorful: the case below).
-        const child = await learning.create(parent, "Maya", 2012);
+        const child = await learning.create(parent, "Maya", 2016);
         const first = await stateOf(child.id, parent);
         assert.deepEqual(
           [first.look, first.effectiveLook, first.lookLocked],

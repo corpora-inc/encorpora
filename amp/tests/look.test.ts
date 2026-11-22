@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   resolveLook,
-  startingLook,
   shownLook,
   type ClassLook,
   type Look,
@@ -217,30 +216,4 @@ test("the look lock is a grown-up's change with one boolean", () => {
     }),
   );
   assert.equal(defaultPracticeSettings().lookAdultLock, false);
-});
-
-test("where a learner starts when nobody has chosen: Colorful through grade 5, Calm after and for anyone whose grade isn't known", () => {
-  for (const grade of [0, 1, 5]) assert.equal(startingLook(grade), "bold");
-  for (const grade of [6, 9, 12, 13, null])
-    assert.equal(startingLook(grade), "calm");
-  // It is only the last resort: a class's choice, the learner's own and a
-  // lock all come first.
-  assert.equal(
-    resolveLook({ own: null, classes: [], starting: "bold" }).look,
-    "bold",
-  );
-  assert.equal(
-    resolveLook({ own: "calm", classes: [], starting: "bold" }).look,
-    "calm",
-  );
-  assert.equal(
-    resolveLook({ own: null, classes: [cls("calm")], starting: "bold" }).look,
-    "calm",
-  );
-  // A class nobody set a look for leaves the learner where they start.
-  assert.equal(
-    resolveLook({ own: null, classes: [cls("calm", false)], starting: "bold" })
-      .look,
-    "bold",
-  );
 });

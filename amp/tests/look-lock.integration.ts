@@ -65,7 +65,7 @@ test(
       [parent],
     );
     const maya = (
-      await post("/api/v1/learners", parent, { name: "Maya", birthYear: 2012 })
+      await post("/api/v1/learners", parent, { name: "Maya", birthYear: 2016 })
     ).json().id as string;
     await db.query(
       `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
@@ -155,8 +155,7 @@ test(
         const sam = (
           await post("/api/v1/learners", parent, {
             name: "Sam",
-            // Grade 6 or later: starts in Calm.
-            birthYear: 2012,
+            birthYear: 2015,
           })
         ).json().id as string;
         const p = `/api/v1/learners/${sam}/practice-state`;
