@@ -1,43 +1,71 @@
-/* `/research/pilot`, in the research pages' frame (ResearchFrame): the title
-   and its lede with the research page's type (Research.module.css), then the
-   exchange and the form as two of its topics. */
+/* `/research/pilot`: one centred column in the research pages' frame
+   (ResearchFrame): the title, what taking part means, then the form in a
+   card, one field to a row. */
+.column {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--space-6);
+  width: min(100%, var(--width-content));
+  margin-inline: auto;
+  padding-block: clamp(var(--space-5), 5vw, 72px) var(--space-5);
+}
+
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "title" "lede" "status";
-  gap: var(--space-4);
-  padding-block: clamp(var(--space-5), 6vw, 104px)
-    clamp(var(--space-3), 3vw, 48px);
+  gap: var(--space-3);
+}
+.title {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(36px, 3vw + 24px, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.lede {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: clamp(18px, 0.4vw + 16px, 20px);
+  line-height: 1.5;
+  text-wrap: pretty;
 }
 .status {
-  grid-area: status;
-  max-width: 34em;
+  margin: 0;
   color: var(--color-muted-text);
   font-size: var(--text-label);
   line-height: 1.5;
 }
-.status a {
+.status a,
+.section a {
   color: var(--color-primary);
   font-weight: 600;
   text-underline-offset: 3px;
 }
 
-/* What each side gives, side by side once there is room. */
-.exchange {
+/* What taking part means: two short lists, one under the other. */
+.section {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
+  color: var(--color-muted-text);
+  line-height: 1.55;
 }
-@media (min-width: 720px) {
-  .exchange {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.section h2,
+.card h2 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+}
+.section p {
+  margin: 0;
 }
 .side {
   display: grid;
-  align-content: start;
   gap: var(--space-2);
-  padding-top: var(--space-3);
-  border-top: 2px solid var(--color-primary);
 }
 .side h3 {
   margin: 0;
@@ -47,27 +75,34 @@
 }
 .side ul {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-1);
   margin: 0;
-  padding-left: 1.1em;
+  padding-left: 1.2em;
 }
 
-.form {
+/* The form, in a card. */
+.card {
+  box-sizing: border-box;
   display: grid;
-  gap: var(--space-3);
-  color: var(--color-on-surface);
-}
-.pair {
-  display: grid;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
 }
 @media (min-width: 720px) {
-  .pair {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .card {
+    padding: var(--space-6);
   }
 }
-.pair > *,
-.pair :global(input) {
+.form {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-on-surface);
+}
+.form > *,
+.form :global(input) {
   min-width: 0;
 }
 .group {
@@ -90,10 +125,10 @@
 .send {
   display: grid;
   gap: var(--space-2);
-  justify-items: start;
+  margin-top: var(--space-2);
 }
 .send button {
-  min-width: 160px;
+  width: 100%;
 }
 .failure {
   min-height: 1.4em;
@@ -119,5 +154,8 @@
   overflow-wrap: anywhere;
 }
 .privacy {
+  margin: 0;
+  color: var(--color-muted-text);
   font-size: var(--text-label);
+  line-height: 1.5;
 }
