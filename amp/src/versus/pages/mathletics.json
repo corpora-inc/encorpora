@@ -1,0 +1,194 @@
+{
+  "slug": "mathletics",
+  "name": "Mathletics",
+  "maker": "3P Learning",
+  "category": "adaptive",
+  "checked": "2026-11-21",
+  "benefit": "A mastery rule you can read",
+  "line": "Mathletics motivates with points, races and games. AMP picks each problem, explains each miss and schedules review.",
+  "description": "AMP vs Mathletics: points and races, or a published mastery rule, worked steps after every miss, scheduled review and math through precalculus.",
+  "verdict": "Mathletics is a lively practice program with races, avatars and apps that AMP does not have [2][6]. Its site says it is certified under ESSA, while Evidence for ESSA gives it no rating, and its Skill Quest page states no threshold for mastery [4][14][8]. AMP publishes every rule, chooses each problem from the learner's answers, explains every miss and brings old skills back on a schedule.",
+  "reasons": [
+    {
+      "title": "AMP publishes its rule for mastery",
+      "body": "Mathletics says Skill Quest learners move on only after they show mastery of earlier topics, but the page gives no threshold [8]. In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded and does not count. Anyone can read the rule in AMP's public source code.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Every next problem comes from the learner's answers",
+      "body": "Mathletics calls its activities adaptive, and Skill Quests move through topics by curriculum standard [8][12]. In school, the teacher sets up ability groups and assigns content to them [13]. AMP keeps a separate level in each of 14 strands and picks each problem from the answers so far: new work, a prerequisite, or review. Two misses in a row send practice back to what the skill builds on.",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Old skills come back on a schedule",
+      "body": "We found no scheduled review of earlier skills in Mathletics' published materials [8][9][12]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [16].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Every miss shows the worked steps",
+      "body": "Mathletics' accessibility statement mentions feedback for incorrect questions [6]. We found no description of what that feedback shows, whether a hint, the right answer or a worked solution [6][8]. After every AMP answer the learner sees right or wrong, the correct answer and the worked steps. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, against 0.05 for marking right or wrong only [17].",
+      "research": [
+        "feedback",
+        "lessons"
+      ]
+    },
+    {
+      "title": "One program from counting through precalculus",
+      "body": "Mathletics is built for ages 5 to 16 [1]. Its U.S. standards pages cover kindergarten through grade 8, plus Algebra I and Integrated Math III, and we found no precalculus there [4]. AMP runs from counting through precalculus on one map of 336 skills, with Geometry, Algebra 2 and Precalculus as bands of their own. A learner who is ahead in one part of math can go straight there."
+    },
+    {
+      "title": "Workbooks made for one learner, not a fixed library",
+      "body": "Mathletics offers a library of more than 600 printable worksheets with solutions [2]. AMP prints unlimited workbooks composed from each learner's own record: a warm-up, today's idea, practice, skills due for review, and a challenge. Each has an answer key with worked steps, and results entered from paper count toward the learner's level."
+    }
+  ],
+  "rows": {
+    "price": "Home prices are not published; they appear at checkout [11]. Monthly or yearly, with a discount for more than one child. Schools by quote [7].",
+    "buyers": "Families by subscription, schools by quote [7]. The 14-day free trial needs a card [2]. A 10-day money-back guarantee [11].",
+    "range": "Ages 5 to 16 [1]. U.S. alignment: kindergarten to grade 8, plus Algebra I and Integrated Math III [4].",
+    "start": "No placement test described for Skill Quests [8]. New Courses include a diagnostic test that earns points [9].",
+    "teaching": "Animated tutorials and audio in elementary content; adaptive practice and printable eBooks in secondary [12]. Conceptual and activity videos [3].",
+    "next": "Adaptive activities, and Skill Quests by curriculum standard [8][12]. In school, the teacher assigns content to ability groups [13].",
+    "mastery": "Skill Quests advance after mastery is shown. No threshold is published [8].",
+    "review": "No scheduled review of earlier skills found in its published materials [8][9][12].",
+    "print": "More than 600 printable worksheets with solutions [2]. None found that are made for the individual learner.",
+    "adult": "At school, the teacher sets ability groups, assigns content, prints login cards and reviews reports [13].",
+    "reports": "Real-time marking and reports from the learner up to the district [3]. A Parent Dashboard [2]; a weekly parent report for students whose school provides Mathletics [10].",
+    "evidence": "Claims ESSA Level II certification without naming a certifier [4]. Evidence for ESSA gives no rating; qualifying studies found no significant positive outcomes [14]."
+  },
+  "theirs": [
+    "Mathletics is an online math program from 3P Learning, the company behind Reading Eggs and Mathseeds [5]. It is built for ages 5 to 16, and its U.S. site claims more than 3 million students and 14,000 schools [1]. Families buy it by subscription, and schools buy it by quote [7].",
+    "At home, a child works through 10-step activities aligned to the curriculum, races other children in 60-second rounds of Live Mathletics, and plays games such as Multiverse Multiplication [2]. Skill Quests group questions by standard and move a learner on after mastery is shown [8]. Elementary content has animated tutorials and audio support; secondary content has adaptive practice and printable eBooks [12]. The features page also lists conceptual and activity videos [3].",
+    "In school, the student console has a Home area with tasks the teacher assigned, plus resources and games [13]. A correct answer in a Skill Quest or activity earns 10 points (1 in Live Mathletics), 1,000 points in a week earns a certificate, and points reset weekly [9]."
+  ],
+  "credit": [
+    "Games and races. Live Mathletics matches a child against children around the world in 60-second rounds, and games such as Multiverse Multiplication practice facts [2]. AMP has no games and no timed drills, and regular timed activities to build fluency are one of six recommendations the What Works Clearinghouse rates as strong evidence for elementary students who struggle in math [18].",
+    "Rewards children notice: points, an Avatar Maker, achievement levels from Bronze to Legend and weekly certificates [2][9][12]. AMP has no avatars.",
+    "Apps in the App Store and Google Play, and audio that reads instructions aloud [6]. AMP runs in a browser and has no read-aloud.",
+    "Classroom tools at scale: ability groups, assigned content, printed login cards and reports from the learner up to the district [1][3][13]. AMP teachers can print skill-focused sheets but cannot assign skills online."
+  ],
+  "evidence": {
+    "theirs": [
+      "Mathletics' U.S. standards page says the program is \"Certified under ESSA Level II\" [4]. The page names no certifying body and links no report. Its standards page says the resources are proven to drive student achievement [4], and its schools page says Mathletics is proven to improve students' math performance [12]. The home, About, standards and schools pages we read cite no study [1][4][5][12].",
+      "Evidence for ESSA, the Johns Hopkins clearinghouse, lists Mathletics without a rating. Its summary reads: \"Qualifying studies found no significant positive outcomes\" [14]. That means studies did qualify for review, and they did not find a significant positive effect. Mathletics has no What Works Clearinghouse intervention report [15]."
+    ],
+    "ours": [
+      "Two findings bear most on this choice. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and marking right or wrong 0.05 [17]. The studies mix ages and subjects, and the figures are averages by feedback type, not a head-to-head trial. In a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice beat practice in blocks a month later, 62% to 38%, on a test the researchers wrote [16]. AMP puts both into every session: worked steps after every answer, and review on a fixed schedule. We expect that to show in outcomes, and we have committed in public to measuring it.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child practices most when there are games, races against other children, avatars and certificates.",
+      "You want timed fact practice built in.",
+      "You need an app from the App Store or Google Play, or instructions read aloud.",
+      "Your school wants teachers to assign content to ability groups, with reports up to the district."
+    ],
+    "amp": [
+      "You want every next problem chosen for your child, with nothing to assign.",
+      "You want a mastery rule you can read, and old skills brought back on a schedule.",
+      "You want every miss explained with the correct answer and the worked steps.",
+      "Your learner is heading into Geometry, Algebra 2 or Precalculus.",
+      "You want paper workbooks made for your child, with results that count."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is Mathletics ESSA certified?",
+      "answer": "Its site says it is certified under ESSA Level II, but names no certifying body and links no study [4]. Evidence for ESSA lists Mathletics without a rating; the studies that qualified found no significant positive outcomes [14]."
+    },
+    {
+      "question": "How much does Mathletics cost compared with AMP?",
+      "answer": "Mathletics does not publish home prices; they appear at checkout, monthly or yearly, and its 14-day free trial needs a card [2][7][11]. AMP costs $599 a year or $59 a month for the first child and $399 or $39 for each additional child, and starts free with no card. That price covers placement, every problem chosen and checked, scheduled review, unlimited workbooks and math from counting through precalculus."
+    },
+    {
+      "question": "Does AMP have games like Live Mathletics?",
+      "answer": "No. AMP has no games, avatars or timed drills. A learner earns XP for each right answer given without help and sees each skill grow toward Strong."
+    },
+    {
+      "question": "My child uses Mathletics at school. Can we use AMP at home?",
+      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each part of math and chooses practice from there, on your schedule."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Mathletics United States home page (3P Learning)",
+      "url": "https://www.mathletics.com/us/"
+    },
+    {
+      "title": "Mathletics for home (3P Learning)",
+      "url": "https://www.mathletics.com/us/for-home/"
+    },
+    {
+      "title": "Mathletics features (3P Learning)",
+      "url": "https://www.mathletics.com/us/features/"
+    },
+    {
+      "title": "Mathletics United States curriculum alignment (3P Learning)",
+      "url": "https://www.mathletics.com/us/for-schools/united-states-curriculum/"
+    },
+    {
+      "title": "About Mathletics (3P Learning)",
+      "url": "https://www.mathletics.com/us/about/"
+    },
+    {
+      "title": "Mathletics accessibility statement (3P Learning)",
+      "url": "https://www.mathletics.com/us/accessibility/"
+    },
+    {
+      "title": "How much does Mathletics cost? (Mathletics help center)",
+      "url": "https://knowledgebase.mathletics.com/en_US/pricing/how-much-does-mathletics-cost"
+    },
+    {
+      "title": "What are Skill Quests? (Mathletics help center)",
+      "url": "https://knowledgebase.mathletics.com/en_US/skill-quests/what-are-skill-quests"
+    },
+    {
+      "title": "How can students earn points in Mathletics? (Mathletics help center)",
+      "url": "https://knowledgebase.mathletics.com/en_US/rewards-and-recognition/how-can-students-earn-points-in-mathletics"
+    },
+    {
+      "title": "Parents (Mathletics help center)",
+      "url": "https://knowledgebase.mathletics.com/en_US/parents"
+    },
+    {
+      "title": "3P Learning terms of use",
+      "url": "https://privacy.3plearning.com/terms"
+    },
+    {
+      "title": "Mathletics for schools (3P Learning)",
+      "url": "https://www.mathletics.com/us/for-schools/"
+    },
+    {
+      "title": "5 simple steps to Mathletics (Mathletics help center)",
+      "url": "https://knowledgebase.mathletics.com/en_US/5-simple-steps-to-mathletics"
+    },
+    {
+      "title": "Mathletics (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/mathletics/"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
+    }
+  ]
+}

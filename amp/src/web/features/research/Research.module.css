@@ -90,7 +90,9 @@
     0 2px 4px var(--color-shadow),
     0 14px 32px -10px var(--color-shadow);
   overflow: hidden;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
 }
 .cover img {
   display: block;
@@ -157,7 +159,9 @@
   line-height: 1.5;
 }
 
-/* The topics. */
+/* The topics. The comparisons (features/versus) are pages of these too:
+   they use `.main`, `.topic` and `.topicBody` from here, so both change
+   together. */
 .topic {
   display: grid;
   gap: var(--space-3);
@@ -225,6 +229,9 @@
   gap: var(--space-1);
   padding-top: var(--space-3);
   border-top: 2px solid var(--color-primary);
+  /* A link to one component (`/research#review`) lands with air above its
+     rule. The section's sticky heading is in the other column, never over it. */
+  scroll-margin-top: var(--space-5);
 }
 .main .components h3 {
   margin: 0;
@@ -254,6 +261,10 @@
 .when {
   color: var(--color-on-surface);
   font-size: var(--text-label);
+}
+/* The pilot list, under the phases: the one way to take part. */
+.join {
+  justify-self: start;
 }
 .citation {
   padding: var(--space-3) var(--space-4);

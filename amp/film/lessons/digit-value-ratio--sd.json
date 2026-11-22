@@ -1,0 +1,5136 @@
+{
+ "id": "digit-value-ratio--sd",
+ "title": "Place value of large numbers",
+ "skill": "large-place-value",
+ "teaches": [
+  "place-shift-value",
+  "multidigit-digit-value",
+  "digit-place-names",
+  "number-name-numeral",
+  "expanded-whole-slots",
+  "place-value-forms-select",
+  "compare-multidigit",
+  "compare-symbol-blanks",
+  "true-comparison-statement",
+  "order-whole-numbers-slots",
+  "number-between-bounds",
+  "round-large",
+  "large-number-line-point"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0.2,
+     2.2,
+     11.3,
+     8.0
+    ],
+    "points": {
+     "e0t": [
+      0.65,
+      7.75
+     ],
+     "e1t": [
+      2.35,
+      7.75
+     ],
+     "e2t": [
+      4.05,
+      7.75
+     ],
+     "e3t": [
+      5.75,
+      7.75
+     ],
+     "e4t": [
+      7.45,
+      7.75
+     ],
+     "e5t": [
+      9.15,
+      7.75
+     ],
+     "e6t": [
+      10.85,
+      7.75
+     ],
+     "e0b": [
+      0.65,
+      3.9
+     ],
+     "e1b": [
+      2.35,
+      3.9
+     ],
+     "e2b": [
+      4.05,
+      3.9
+     ],
+     "e3b": [
+      5.75,
+      3.9
+     ],
+     "e4b": [
+      7.45,
+      3.9
+     ],
+     "e5b": [
+      9.15,
+      3.9
+     ],
+     "e6b": [
+      10.85,
+      3.9
+     ],
+     "r1a": [
+      0.65,
+      6.7
+     ],
+     "r1b": [
+      10.85,
+      6.7
+     ],
+     "pv1": [
+      1.5,
+      7.2
+     ],
+     "pv2": [
+      3.2,
+      7.2
+     ],
+     "pv3": [
+      4.9,
+      7.2
+     ],
+     "pv4": [
+      6.6,
+      7.2
+     ],
+     "pv5": [
+      8.3,
+      7.2
+     ],
+     "pv6": [
+      10.0,
+      7.2
+     ],
+     "g3": [
+      4.9,
+      4.8
+     ],
+     "g4": [
+      6.6,
+      4.8
+     ],
+     "g5": [
+      8.3,
+      4.8
+     ],
+     "g6": [
+      10.0,
+      4.8
+     ],
+     "dd": [
+      10.0,
+      4.8
+     ],
+     "z1": [
+      10.0,
+      4.8
+     ],
+     "z2": [
+      10.0,
+      4.8
+     ],
+     "z3": [
+      10.0,
+      4.8
+     ],
+     "z4": [
+      10.0,
+      4.8
+     ],
+     "z5": [
+      10.0,
+      4.8
+     ],
+     "bp1": [
+      9.15,
+      3.9
+     ],
+     "bp2": [
+      10.85,
+      3.9
+     ],
+     "bp3": [
+      10.85,
+      6.7
+     ],
+     "bp4": [
+      9.15,
+      6.7
+     ],
+     "a1t": [
+      8.9,
+      5.7
+     ],
+     "a1h": [
+      7.7,
+      5.7
+     ],
+     "a2t": [
+      7.2,
+      5.7
+     ],
+     "a2h": [
+      6.0,
+      5.7
+     ],
+     "a3t": [
+      5.5,
+      5.7
+     ],
+     "a3h": [
+      4.3,
+      5.7
+     ],
+     "a4t": [
+      3.8,
+      5.7
+     ],
+     "a4h": [
+      2.6,
+      5.7
+     ],
+     "a5t": [
+      2.1,
+      5.7
+     ],
+     "a5h": [
+      0.9,
+      5.7
+     ],
+     "m1": [
+      8.3,
+      6.15
+     ],
+     "m2": [
+      6.6,
+      6.15
+     ],
+     "m3": [
+      4.9,
+      6.15
+     ],
+     "m4": [
+      3.2,
+      6.15
+     ],
+     "m5": [
+      1.5,
+      6.15
+     ],
+     "vr": [
+      5.75,
+      3.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "band",
+      "poly": [
+       "bp1",
+       "bp2",
+       "bp3",
+       "bp4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "ln0",
+      "seg": [
+       "e0b",
+       "e0t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln1",
+      "seg": [
+       "e1b",
+       "e1t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln2",
+      "seg": [
+       "e2b",
+       "e2t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln3",
+      "seg": [
+       "e3b",
+       "e3t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln4",
+      "seg": [
+       "e4b",
+       "e4t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln5",
+      "seg": [
+       "e5b",
+       "e5t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln6",
+      "seg": [
+       "e6b",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rt",
+      "seg": [
+       "e0t",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rm",
+      "seg": [
+       "r1a",
+       "r1b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rb",
+      "seg": [
+       "e0b",
+       "e6b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ph1",
+      "label": "\\scriptsize 100{,}000",
+      "at": "pv1",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph2",
+      "label": "\\scriptsize 10{,}000",
+      "at": "pv2",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph3",
+      "label": "\\scriptsize 1{,}000",
+      "at": "pv3",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph4",
+      "label": "\\scriptsize 100",
+      "at": "pv4",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph5",
+      "label": "\\scriptsize 10",
+      "at": "pv5",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph6",
+      "label": "\\scriptsize 1",
+      "at": "pv6",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "df3",
+      "label": "4",
+      "at": "g3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "df4",
+      "label": "4",
+      "at": "g4",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "df5",
+      "label": "4",
+      "at": "g5",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "df6",
+      "label": "4",
+      "at": "g6",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "dgd",
+      "label": "4",
+      "at": "dd",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "zz1",
+      "label": "0",
+      "at": "z1",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "zz2",
+      "label": "0",
+      "at": "z2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "zz3",
+      "label": "0",
+      "at": "z3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "zz4",
+      "label": "0",
+      "at": "z4",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "zz5",
+      "label": "0",
+      "at": "z5",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "w0",
+      "label": "\\text{worth }4",
+      "at": "vr",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "w1",
+      "label": "\\text{worth }40",
+      "at": "vr",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "w2",
+      "label": "\\text{worth }400",
+      "at": "vr",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "w3",
+      "label": "\\text{worth }4{,}000",
+      "at": "vr",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "w4",
+      "label": "\\text{worth }40{,}000",
+      "at": "vr",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "w5",
+      "label": "\\text{worth }400{,}000",
+      "at": "vr",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "a1",
+      "vector": [
+       "a1t",
+       "a1h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "a2",
+      "vector": [
+       "a2t",
+       "a2h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "a3",
+      "vector": [
+       "a3t",
+       "a3h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "a4",
+      "vector": [
+       "a4t",
+       "a4h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "a5",
+      "vector": [
+       "a5t",
+       "a5h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "x1",
+      "label": "\\times 10",
+      "at": "m1",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "x2",
+      "label": "\\times 10",
+      "at": "m2",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "x3",
+      "label": "\\times 10",
+      "at": "m3",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "x4",
+      "label": "\\times 10",
+      "at": "m4",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "x5",
+      "label": "\\times 10",
+      "at": "m5",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a number with four fours in it: four thousand, four hundred forty-four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Ten times the place to its right"
+      },
+      {
+       "do": "problem",
+       "text": "Are the four 4s in 4,444 worth the same?"
+      },
+      {
+       "do": "highlight",
+       "target": "df3",
+       "at": "thousand",
+       "until": "hundred"
+      },
+      {
+       "do": "highlight",
+       "target": "df4",
+       "at": "hundred",
+       "until": "forty-four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df5",
+        "df6"
+       ],
+       "at": "forty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four fours? They're all fours. They must be worth the same.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4=4=4=4",
+       "id": "guess",
+       "fresh": true,
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df3",
+        "df4",
+        "df5",
+        "df6"
+       ],
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Not quite! Each four is worth ten times the four on its right. Let's watch why.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "strike",
+       "target": "guess",
+       "at": "Not"
+      },
+      {
+       "do": "highlight",
+       "target": "df4",
+       "at": "four",
+       "until": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "df5",
+       "at": "four",
+       "nth": 2,
+       "until": "right"
+      },
+      {
+       "do": "text",
+       "text": "Each place is ten times the place to its right.",
+       "at": "Each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take one single four, and put it in the ones place.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "One 4, in the ones place.",
+       "at": "Take"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "df3",
+        "df4",
+        "df5",
+        "df6"
+       ],
+       "at": "single"
+      },
+      {
+       "do": "show",
+       "target": [
+        "band",
+        "dgd"
+       ],
+       "at": "put"
+      },
+      {
+       "do": "show",
+       "target": "w0",
+       "at": "ones"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide it one place to the left. A zero follows it in, to hold the ones place. Now it is worth forty. Ten times as much.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "a1",
+       "at": "Slide"
+      },
+      {
+       "do": "show",
+       "target": "x1",
+       "at": "left"
+      },
+      {
+       "do": "move",
+       "points": {
+        "dd": [
+         8.3,
+         4.8
+        ],
+        "bp1": [
+         7.45,
+         3.9
+        ],
+        "bp2": [
+         9.15,
+         3.9
+        ],
+        "bp3": [
+         9.15,
+         6.7
+        ],
+        "bp4": [
+         7.45,
+         6.7
+        ]
+       },
+       "at": "left",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "zz1",
+       "at": "zero"
+      },
+      {
+       "do": "hide",
+       "target": "w0",
+       "at": "Now"
+      },
+      {
+       "do": "show",
+       "target": "w1",
+       "at": "forty"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times10=40",
+       "at": "Ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Again! One more place to the left, and it is worth four hundred. Ten times as much again.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "a2",
+       "at": "Again"
+      },
+      {
+       "do": "show",
+       "target": "x2",
+       "at": "One"
+      },
+      {
+       "do": "move",
+       "points": {
+        "dd": [
+         6.6,
+         4.8
+        ],
+        "z1": [
+         8.3,
+         4.8
+        ],
+        "bp1": [
+         5.75,
+         3.9
+        ],
+        "bp2": [
+         7.45,
+         3.9
+        ],
+        "bp3": [
+         7.45,
+         6.7
+        ],
+        "bp4": [
+         5.75,
+         6.7
+        ]
+       },
+       "at": "One",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "zz2",
+       "at": "left"
+      },
+      {
+       "do": "hide",
+       "target": "w1",
+       "at": "worth"
+      },
+      {
+       "do": "show",
+       "target": "w2",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "40\\times10=400",
+       "at": "Ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And again. Now it is worth four thousand. Ten times as much, once more.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "a3",
+       "at": "again"
+      },
+      {
+       "do": "show",
+       "target": "x3",
+       "at": "Now"
+      },
+      {
+       "do": "move",
+       "points": {
+        "dd": [
+         4.9,
+         4.8
+        ],
+        "z1": [
+         6.6,
+         4.8
+        ],
+        "z2": [
+         8.3,
+         4.8
+        ],
+        "bp1": [
+         4.05,
+         3.9
+        ],
+        "bp2": [
+         5.75,
+         3.9
+        ],
+        "bp3": [
+         5.75,
+         6.7
+        ],
+        "bp4": [
+         4.05,
+         6.7
+        ]
+       },
+       "at": "And",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "zz3",
+       "at": "Now"
+      },
+      {
+       "do": "hide",
+       "target": "w2",
+       "at": "worth"
+      },
+      {
+       "do": "show",
+       "target": "w3",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "400\\times10=4{,}000",
+       "at": "Ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Forty thousand. Four hundred thousand. Ten times, and ten times again.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4{,}000\\times10=40{,}000",
+       "at": "Forty"
+      },
+      {
+       "do": "write",
+       "tex": "40{,}000\\times10=400{,}000",
+       "at": "Four"
+      },
+      {
+       "do": "draw",
+       "target": "a4",
+       "at": "Forty"
+      },
+      {
+       "do": "show",
+       "target": "x4",
+       "at": "Forty"
+      },
+      {
+       "do": "move",
+       "points": {
+        "dd": [
+         3.2,
+         4.8
+        ],
+        "z1": [
+         4.9,
+         4.8
+        ],
+        "z2": [
+         6.6,
+         4.8
+        ],
+        "z3": [
+         8.3,
+         4.8
+        ],
+        "bp1": [
+         2.35,
+         3.9
+        ],
+        "bp2": [
+         4.05,
+         3.9
+        ],
+        "bp3": [
+         4.05,
+         6.7
+        ],
+        "bp4": [
+         2.35,
+         6.7
+        ]
+       },
+       "at": "Forty",
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": "zz4",
+       "at": "thousand"
+      },
+      {
+       "do": "hide",
+       "target": "w3",
+       "at": "Forty"
+      },
+      {
+       "do": "show",
+       "target": "w4",
+       "at": "Forty"
+      },
+      {
+       "do": "draw",
+       "target": "a5",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "x5",
+       "at": "Four"
+      },
+      {
+       "do": "move",
+       "points": {
+        "dd": [
+         1.5,
+         4.8
+        ],
+        "z1": [
+         3.2,
+         4.8
+        ],
+        "z2": [
+         4.9,
+         4.8
+        ],
+        "z3": [
+         6.6,
+         4.8
+        ],
+        "z4": [
+         8.3,
+         4.8
+        ],
+        "bp1": [
+         0.65,
+         3.9
+        ],
+        "bp2": [
+         2.35,
+         3.9
+        ],
+        "bp3": [
+         2.35,
+         6.7
+        ],
+        "bp4": [
+         0.65,
+         6.7
+        ]
+       },
+       "at": "Four",
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": "zz5",
+       "at": "thousand",
+       "nth": 2
+      },
+      {
+       "do": "hide",
+       "target": "w4",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "w5",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It is the very same four! But it is worth more every time it moves left.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "The same 4, worth more at each step left.",
+       "at": "very"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "dgd",
+        "w5"
+       ],
+       "at": "very"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now slide it back, one place to the right. The four is worth ten times less.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "dd": [
+         3.2,
+         4.8
+        ],
+        "z1": [
+         4.9,
+         4.8
+        ],
+        "z2": [
+         6.6,
+         4.8
+        ],
+        "z3": [
+         8.3,
+         4.8
+        ],
+        "z4": [
+         10.0,
+         4.8
+        ],
+        "bp1": [
+         2.35,
+         3.9
+        ],
+        "bp2": [
+         4.05,
+         3.9
+        ],
+        "bp3": [
+         4.05,
+         6.7
+        ],
+        "bp4": [
+         2.35,
+         6.7
+        ]
+       },
+       "at": "slide",
+       "dur": 1.4
+      },
+      {
+       "do": "hide",
+       "target": [
+        "zz5",
+        "w5"
+       ],
+       "at": "slide"
+      },
+      {
+       "do": "show",
+       "target": "w4",
+       "at": "slide"
+      },
+      {
+       "do": "write",
+       "tex": "400{,}000\\div10=40{,}000",
+       "at": "ten"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "a5",
+        "x5"
+       ],
+       "at": "slide"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same four, every time. The place is what gives it its worth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "dgd",
+       "at": "four",
+       "until": "place"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "band",
+        "dgd"
+       ],
+       "at": "place"
+      },
+      {
+       "do": "text",
+       "text": "The place gives the digit its worth.",
+       "at": "place"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "b",
+      "blocks": [
+       "hundreds",
+       "tens",
+       "ones"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tens": 9,
+         "ones": 10
+        }
+       }
+      ],
+      "counts": true,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Why ten times? Let's see it with blocks. Here are nine tens, and ten ones.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Why ten times?"
+      },
+      {
+       "do": "problem",
+       "text": "What happens when ten of a small piece come together?"
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.tens",
+       "at": "nine",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "b.n.ones",
+       "at": "ten",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten ones squeeze together into one ten.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "join",
+       "target": "b.n.ones",
+       "at": "squeeze"
+      },
+      {
+       "do": "write",
+       "tex": "10\\text{ ones}=1\\text{ ten}",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And now there are ten tens!",
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten tens squeeze together into one hundred.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "10\\text{ tens}=1\\text{ hundred}",
+       "at": "Ten"
+      },
+      {
+       "do": "join",
+       "target": "b.n.tens",
+       "at": "squeeze"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten of one piece always make one of the next. That is why each place is worth ten times the place to its right.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "10 of one piece make 1 of the next.",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "So a place is worth 10 times the place to its right.",
+       "at": "That"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.2,
+     0.5,
+     11.3,
+     8.0
+    ],
+    "points": {
+     "e0t": [
+      0.65,
+      7.75
+     ],
+     "e1t": [
+      2.35,
+      7.75
+     ],
+     "e2t": [
+      4.05,
+      7.75
+     ],
+     "e3t": [
+      5.75,
+      7.75
+     ],
+     "e4t": [
+      7.45,
+      7.75
+     ],
+     "e5t": [
+      9.15,
+      7.75
+     ],
+     "e6t": [
+      10.85,
+      7.75
+     ],
+     "e0b": [
+      0.65,
+      3.05
+     ],
+     "e1b": [
+      2.35,
+      3.05
+     ],
+     "e2b": [
+      4.05,
+      3.05
+     ],
+     "e3b": [
+      5.75,
+      3.05
+     ],
+     "e4b": [
+      7.45,
+      3.05
+     ],
+     "e5b": [
+      9.15,
+      3.05
+     ],
+     "e6b": [
+      10.85,
+      3.05
+     ],
+     "r1a": [
+      0.65,
+      6.7
+     ],
+     "r1b": [
+      10.85,
+      6.7
+     ],
+     "r2a": [
+      0.65,
+      4.5
+     ],
+     "r2b": [
+      10.85,
+      4.5
+     ],
+     "pv1": [
+      1.5,
+      7.2
+     ],
+     "pv2": [
+      3.2,
+      7.2
+     ],
+     "pv3": [
+      4.9,
+      7.2
+     ],
+     "pv4": [
+      6.6,
+      7.2
+     ],
+     "pv5": [
+      8.3,
+      7.2
+     ],
+     "pv6": [
+      10.0,
+      7.2
+     ],
+     "g3": [
+      4.9,
+      5.6
+     ],
+     "g4": [
+      6.6,
+      5.6
+     ],
+     "g5": [
+      8.3,
+      5.6
+     ],
+     "g6": [
+      10.0,
+      5.6
+     ],
+     "k3": [
+      4.9,
+      3.8
+     ],
+     "k4": [
+      6.6,
+      3.8
+     ],
+     "k5": [
+      8.3,
+      3.8
+     ],
+     "k6": [
+      10.0,
+      3.8
+     ],
+     "t1t": [
+      9.7,
+      2.55
+     ],
+     "t1h": [
+      8.6,
+      2.55
+     ],
+     "t2t": [
+      8.0,
+      2.55
+     ],
+     "t2h": [
+      6.9,
+      2.55
+     ],
+     "t3t": [
+      6.3,
+      2.55
+     ],
+     "t3h": [
+      5.2,
+      2.55
+     ],
+     "tm1": [
+      9.15,
+      2.0
+     ],
+     "tm2": [
+      7.45,
+      2.0
+     ],
+     "tm3": [
+      5.75,
+      2.0
+     ],
+     "h1t": [
+      8.3,
+      1.35
+     ],
+     "h1h": [
+      4.9,
+      1.35
+     ],
+     "h1m": [
+      6.6,
+      0.8
+     ],
+     "h2t": [
+      10.0,
+      1.35
+     ],
+     "h2h": [
+      4.9,
+      1.35
+     ],
+     "h2m": [
+      7.45,
+      0.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "ln0",
+      "seg": [
+       "e0b",
+       "e0t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln1",
+      "seg": [
+       "e1b",
+       "e1t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln2",
+      "seg": [
+       "e2b",
+       "e2t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln3",
+      "seg": [
+       "e3b",
+       "e3t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln4",
+      "seg": [
+       "e4b",
+       "e4t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln5",
+      "seg": [
+       "e5b",
+       "e5t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln6",
+      "seg": [
+       "e6b",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rt",
+      "seg": [
+       "e0t",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rm",
+      "seg": [
+       "r1a",
+       "r1b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rv",
+      "seg": [
+       "r2a",
+       "r2b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rb",
+      "seg": [
+       "e0b",
+       "e6b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ph1",
+      "label": "\\scriptsize 100{,}000",
+      "at": "pv1",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph2",
+      "label": "\\scriptsize 10{,}000",
+      "at": "pv2",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph3",
+      "label": "\\scriptsize 1{,}000",
+      "at": "pv3",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph4",
+      "label": "\\scriptsize 100",
+      "at": "pv4",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph5",
+      "label": "\\scriptsize 10",
+      "at": "pv5",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph6",
+      "label": "\\scriptsize 1",
+      "at": "pv6",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "df3",
+      "label": "4",
+      "at": "g3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "df4",
+      "label": "4",
+      "at": "g4",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "df5",
+      "label": "4",
+      "at": "g5",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "df6",
+      "label": "4",
+      "at": "g6",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "wv3",
+      "label": "4{,}000",
+      "at": "k3",
+      "dir": "c",
+      "size": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "wv4",
+      "label": "400",
+      "at": "k4",
+      "dir": "c",
+      "size": "s",
+      "ink": "violet"
+     },
+     {
+      "id": "wv5",
+      "label": "40",
+      "at": "k5",
+      "dir": "c",
+      "size": "s",
+      "ink": "blue"
+     },
+     {
+      "id": "wv6",
+      "label": "4",
+      "at": "k6",
+      "dir": "c",
+      "size": "s",
+      "ink": "accent"
+     },
+     {
+      "id": "t1",
+      "vector": [
+       "t1t",
+       "t1h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "t2",
+      "vector": [
+       "t2t",
+       "t2h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "t3",
+      "vector": [
+       "t3t",
+       "t3h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "tx1",
+      "label": "\\times 10",
+      "at": "tm1",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "tx2",
+      "label": "\\times 10",
+      "at": "tm2",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "tx3",
+      "label": "\\times 10",
+      "at": "tm3",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "h1",
+      "vector": [
+       "h1t",
+       "h1h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "hx1",
+      "label": "\\times 10\\times 10=\\times 100",
+      "at": "h1m",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "h2",
+      "vector": [
+       "h2t",
+       "h2h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "hx2",
+      "label": "\\times 1{,}000",
+      "at": "h2m",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back to four, four, four, four. Now we can say what each four is worth.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Four fours, four different worths"
+      },
+      {
+       "do": "problem",
+       "text": "What is each 4 in 4,444 worth?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The four in the ones place is worth four. In the tens place, forty. In the hundreds place, four hundred. In the thousands place, four thousand.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "wv6",
+       "at": "ones"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times1=4",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "wv5",
+       "at": "tens"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times10=40",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "wv4",
+       "at": "hundreds"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times100=400",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "wv3",
+       "at": "thousands"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times1{,}000=4{,}000",
+       "at": "thousands"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df6",
+        "wv6"
+       ],
+       "at": "ones",
+       "until": "tens"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df5",
+        "wv5"
+       ],
+       "at": "tens",
+       "until": "hundreds"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df4",
+        "wv4"
+       ],
+       "at": "hundreds",
+       "until": "thousands"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df3",
+        "wv3"
+       ],
+       "at": "thousands"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look at the neighbors. From four up to forty, ten times. Up to four hundred, ten times again. Up to four thousand, ten times again.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "draw",
+       "target": "t1",
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": "tx1",
+       "at": "forty"
+      },
+      {
+       "do": "write",
+       "tex": "40\\div4=10",
+       "at": "forty"
+      },
+      {
+       "do": "draw",
+       "target": "t2",
+       "at": "hundred"
+      },
+      {
+       "do": "show",
+       "target": "tx2",
+       "at": "hundred"
+      },
+      {
+       "do": "write",
+       "tex": "400\\div40=10",
+       "at": "hundred"
+      },
+      {
+       "do": "draw",
+       "target": "t3",
+       "at": "thousand"
+      },
+      {
+       "do": "show",
+       "target": "tx3",
+       "at": "thousand"
+      },
+      {
+       "do": "write",
+       "tex": "4{,}000\\div400=10",
+       "at": "thousand"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So how much more is the thousands four than the tens four?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "The thousands 4 compared with the tens 4: how many times as much?",
+       "at": "So"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df3",
+        "wv3"
+       ],
+       "at": "thousands",
+       "until": "tens"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df5",
+        "wv5"
+       ],
+       "at": "tens"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two steps, ten times and then ten times again. Ten times ten is a hundred. Four thousand is one hundred times as much as forty.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "h1",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "hx1",
+       "at": "hundred"
+      },
+      {
+       "do": "write",
+       "tex": "4{,}000\\div40=100",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And from the ones four, all the way to the thousands four, it is three steps. Ten times ten times ten: one thousand times as much.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "h1",
+        "hx1"
+       ],
+       "at": "And"
+      },
+      {
+       "do": "draw",
+       "target": "h2",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "hx2",
+       "at": "thousand"
+      },
+      {
+       "do": "write",
+       "tex": "4{,}000\\div4=1{,}000",
+       "at": "thousand"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df6",
+        "wv6"
+       ],
+       "at": "ones",
+       "until": "thousands"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df3",
+        "wv3"
+       ],
+       "at": "thousands"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.2,
+     2.0,
+     11.3,
+     8.0
+    ],
+    "points": {
+     "e0t": [
+      0.65,
+      7.75
+     ],
+     "e1t": [
+      2.35,
+      7.75
+     ],
+     "e2t": [
+      4.05,
+      7.75
+     ],
+     "e3t": [
+      5.75,
+      7.75
+     ],
+     "e4t": [
+      7.45,
+      7.75
+     ],
+     "e5t": [
+      9.15,
+      7.75
+     ],
+     "e6t": [
+      10.85,
+      7.75
+     ],
+     "e0b": [
+      0.65,
+      4.5
+     ],
+     "e1b": [
+      2.35,
+      4.5
+     ],
+     "e2b": [
+      4.05,
+      4.5
+     ],
+     "e3b": [
+      5.75,
+      4.5
+     ],
+     "e4b": [
+      7.45,
+      4.5
+     ],
+     "e5b": [
+      9.15,
+      4.5
+     ],
+     "e6b": [
+      10.85,
+      4.5
+     ],
+     "r1a": [
+      0.65,
+      6.7
+     ],
+     "r1b": [
+      10.85,
+      6.7
+     ],
+     "pv1": [
+      1.5,
+      7.2
+     ],
+     "pv2": [
+      3.2,
+      7.2
+     ],
+     "pv3": [
+      4.9,
+      7.2
+     ],
+     "pv4": [
+      6.6,
+      7.2
+     ],
+     "pv5": [
+      8.3,
+      7.2
+     ],
+     "pv6": [
+      10.0,
+      7.2
+     ],
+     "g1": [
+      1.5,
+      5.6
+     ],
+     "g2": [
+      3.2,
+      5.6
+     ],
+     "g3": [
+      4.9,
+      5.6
+     ],
+     "g4": [
+      6.6,
+      5.6
+     ],
+     "g5": [
+      8.3,
+      5.6
+     ],
+     "g6": [
+      10.0,
+      5.6
+     ],
+     "bp1": [
+      2.35,
+      4.5
+     ],
+     "bp2": [
+      4.05,
+      4.5
+     ],
+     "bp3": [
+      4.05,
+      6.7
+     ],
+     "bp4": [
+      2.35,
+      6.7
+     ],
+     "nm": [
+      3.2,
+      3.75
+     ],
+     "vl": [
+      3.2,
+      2.75
+     ],
+     "ga1": [
+      0.75,
+      4.35
+     ],
+     "ga2": [
+      5.65,
+      4.35
+     ],
+     "gb1": [
+      5.85,
+      4.35
+     ],
+     "gb2": [
+      10.75,
+      4.35
+     ]
+    },
+    "parts": [
+     {
+      "id": "band",
+      "poly": [
+       "bp1",
+       "bp2",
+       "bp3",
+       "bp4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "ln0",
+      "seg": [
+       "e0b",
+       "e0t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln1",
+      "seg": [
+       "e1b",
+       "e1t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln2",
+      "seg": [
+       "e2b",
+       "e2t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln3",
+      "seg": [
+       "e3b",
+       "e3t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln4",
+      "seg": [
+       "e4b",
+       "e4t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln5",
+      "seg": [
+       "e5b",
+       "e5t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln6",
+      "seg": [
+       "e6b",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rt",
+      "seg": [
+       "e0t",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rm",
+      "seg": [
+       "r1a",
+       "r1b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rb",
+      "seg": [
+       "e0b",
+       "e6b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ph1",
+      "label": "\\scriptsize 100{,}000",
+      "at": "pv1",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph2",
+      "label": "\\scriptsize 10{,}000",
+      "at": "pv2",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph3",
+      "label": "\\scriptsize 1{,}000",
+      "at": "pv3",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph4",
+      "label": "\\scriptsize 100",
+      "at": "pv4",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph5",
+      "label": "\\scriptsize 10",
+      "at": "pv5",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph6",
+      "label": "\\scriptsize 1",
+      "at": "pv6",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "u1",
+      "label": "3",
+      "at": "g1",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "u2",
+      "label": "6",
+      "at": "g2",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "u3",
+      "label": "2",
+      "at": "g3",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "u4",
+      "label": "5",
+      "at": "g4",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "u5",
+      "label": "1",
+      "at": "g5",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "u6",
+      "label": "8",
+      "at": "g6",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "y1",
+      "label": "3",
+      "at": "g1",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "y2",
+      "label": "0",
+      "at": "g2",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "y3",
+      "label": "5",
+      "at": "g3",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "y4",
+      "label": "0",
+      "at": "g4",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "y5",
+      "label": "7",
+      "at": "g5",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "y6",
+      "label": "0",
+      "at": "g6",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "nmt",
+      "label": "\\text{ten thousands}",
+      "at": "nm",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "vlt",
+      "label": "60{,}000",
+      "at": "vl",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "dga",
+      "dim": [
+       "ga1",
+       "ga2"
+      ],
+      "side": "s",
+      "tex": "362\\text{ thousand}",
+      "ink": "accent"
+     },
+     {
+      "id": "dgb",
+      "dim": [
+       "gb1",
+       "gb2"
+      ],
+      "side": "s",
+      "tex": "518",
+      "ink": "warm"
+     },
+     {
+      "id": "dha",
+      "dim": [
+       "ga1",
+       "ga2"
+      ],
+      "side": "s",
+      "tex": "305\\text{ thousand}",
+      "ink": "accent"
+     },
+     {
+      "id": "dhb",
+      "dim": [
+       "gb1",
+       "gb2"
+      ],
+      "side": "s",
+      "tex": "070",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now a bigger number: three hundred sixty-two thousand, five hundred eighteen. What is the six worth?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The value of a digit"
+      },
+      {
+       "do": "problem",
+       "text": "In 362,518, what is the 6 worth?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6"
+       ],
+       "at": "three",
+       "until": "What"
+      },
+      {
+       "do": "highlight",
+       "target": "u2",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Find its place. Second from the left: the ten thousands place. Six ten thousands is sixty thousand.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "band",
+       "at": "place"
+      },
+      {
+       "do": "highlight",
+       "target": "u2",
+       "at": "place"
+      },
+      {
+       "do": "text",
+       "text": "Second place from the left: ten thousands.",
+       "at": "Second"
+      },
+      {
+       "do": "show",
+       "target": "nmt",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "vlt",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times10{,}000=60{,}000",
+       "at": "sixty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every digit works the same way: the digit times its place. Add them all up. Three hundred thousand, plus sixty thousand, plus two thousand, plus five hundred, plus ten, plus eight.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "nmt",
+        "vlt",
+        "band"
+       ],
+       "at": "Every"
+      },
+      {
+       "do": "write",
+       "tex": "362{,}518",
+       "at": "Every"
+      },
+      {
+       "do": "highlight",
+       "target": "u1",
+       "at": "Three",
+       "until": "sixty"
+      },
+      {
+       "do": "write",
+       "tex": "=300{,}000+60{,}000",
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": "u2",
+       "at": "sixty",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "u3",
+       "at": "two",
+       "until": "five"
+      },
+      {
+       "do": "write",
+       "tex": "+2{,}000+500",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "+10+8",
+       "at": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "u4",
+       "at": "five",
+       "until": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "u5",
+       "at": "ten",
+       "until": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": "u6",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To read a big number, split it into groups of three digits at the comma. The first group is three hundred sixty-two, and we say thousand after it. The second group is five hundred eighteen.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "dga",
+       "at": "first"
+      },
+      {
+       "do": "text",
+       "text": "362 thousand",
+       "at": "first"
+      },
+      {
+       "do": "show",
+       "target": "dgb",
+       "at": "second"
+      },
+      {
+       "do": "text",
+       "text": "518",
+       "at": "second"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three hundred sixty-two thousand, five hundred eighteen. Say each group, and name its place.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "u1",
+        "u2",
+        "u3",
+        "dga"
+       ],
+       "at": "Three",
+       "until": "five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "u4",
+        "u5",
+        "u6",
+        "dgb"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "text",
+       "text": "three hundred sixty-two thousand, five hundred eighteen",
+       "tone": "muted",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zeros need care. Let's write three hundred five thousand, seventy.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Write three hundred five thousand, seventy as a numeral."
+      },
+      {
+       "do": "hide",
+       "target": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6",
+        "dga",
+        "dgb"
+       ],
+       "at": "Zeros"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three hundred five thousand fills the first group: three, zero, five.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "dha",
+       "at": "fills"
+      },
+      {
+       "do": "show",
+       "target": "y1",
+       "at": "three",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "y2",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "y3",
+       "at": "five",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "305",
+       "fresh": true,
+       "at": "three",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now seventy. The second group needs three digits: no hundreds, seven tens, no ones.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "dhb",
+       "at": "Now"
+      },
+      {
+       "do": "show",
+       "target": "y4",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "y5",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "y6",
+       "at": "ones"
+      },
+      {
+       "do": "write",
+       "tex": "305{,}070",
+       "at": "ones"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So the zeros are holding places. What if I leave one out?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "y2",
+        "y4",
+        "y6"
+       ],
+       "at": "zeros",
+       "until": "What"
+      },
+      {
+       "do": "text",
+       "text": "Zeros hold the places.",
+       "at": "zeros"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the three slips one place to the right, and it is worth ten times less. That is thirty-five thousand, seventy. A different number!",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "y1",
+       "at": "three",
+       "until": "That"
+      },
+      {
+       "do": "write",
+       "tex": "35{,}070\\neq305{,}070",
+       "fresh": true,
+       "at": "That"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.2,
+     2.6,
+     11.3,
+     8.0
+    ],
+    "points": {
+     "e0t": [
+      0.65,
+      7.75
+     ],
+     "e1t": [
+      2.35,
+      7.75
+     ],
+     "e2t": [
+      4.05,
+      7.75
+     ],
+     "e3t": [
+      5.75,
+      7.75
+     ],
+     "e4t": [
+      7.45,
+      7.75
+     ],
+     "e5t": [
+      9.15,
+      7.75
+     ],
+     "e6t": [
+      10.85,
+      7.75
+     ],
+     "e0b": [
+      0.65,
+      2.7
+     ],
+     "e1b": [
+      2.35,
+      2.7
+     ],
+     "e2b": [
+      4.05,
+      2.7
+     ],
+     "e3b": [
+      5.75,
+      2.7
+     ],
+     "e4b": [
+      7.45,
+      2.7
+     ],
+     "e5b": [
+      9.15,
+      2.7
+     ],
+     "e6b": [
+      10.85,
+      2.7
+     ],
+     "r1a": [
+      0.65,
+      6.7
+     ],
+     "r1b": [
+      10.85,
+      6.7
+     ],
+     "pv1": [
+      1.5,
+      7.2
+     ],
+     "pv2": [
+      3.2,
+      7.2
+     ],
+     "pv3": [
+      4.9,
+      7.2
+     ],
+     "pv4": [
+      6.6,
+      7.2
+     ],
+     "pv5": [
+      8.3,
+      7.2
+     ],
+     "pv6": [
+      10.0,
+      7.2
+     ],
+     "a2": [
+      3.2,
+      5.95
+     ],
+     "a3": [
+      4.9,
+      5.95
+     ],
+     "a4": [
+      6.6,
+      5.95
+     ],
+     "a5": [
+      8.3,
+      5.95
+     ],
+     "a6": [
+      10.0,
+      5.95
+     ],
+     "b2": [
+      3.2,
+      4.7
+     ],
+     "b3": [
+      4.9,
+      4.7
+     ],
+     "b4": [
+      6.6,
+      4.7
+     ],
+     "b5": [
+      8.3,
+      4.7
+     ],
+     "b6": [
+      10.0,
+      4.7
+     ],
+     "c2": [
+      3.2,
+      3.45
+     ],
+     "c3": [
+      4.9,
+      3.45
+     ],
+     "c4": [
+      6.6,
+      3.45
+     ],
+     "c5": [
+      8.3,
+      3.45
+     ],
+     "c6": [
+      10.0,
+      3.45
+     ],
+     "bp1": [
+      2.35,
+      2.7
+     ],
+     "bp2": [
+      4.05,
+      2.7
+     ],
+     "bp3": [
+      4.05,
+      6.7
+     ],
+     "bp4": [
+      2.35,
+      6.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "band",
+      "poly": [
+       "bp1",
+       "bp2",
+       "bp3",
+       "bp4"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "ln0",
+      "seg": [
+       "e0b",
+       "e0t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln1",
+      "seg": [
+       "e1b",
+       "e1t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln2",
+      "seg": [
+       "e2b",
+       "e2t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln3",
+      "seg": [
+       "e3b",
+       "e3t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln4",
+      "seg": [
+       "e4b",
+       "e4t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln5",
+      "seg": [
+       "e5b",
+       "e5t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln6",
+      "seg": [
+       "e6b",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rt",
+      "seg": [
+       "e0t",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rm",
+      "seg": [
+       "r1a",
+       "r1b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rb",
+      "seg": [
+       "e0b",
+       "e6b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ph1",
+      "label": "\\scriptsize 100{,}000",
+      "at": "pv1",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph2",
+      "label": "\\scriptsize 10{,}000",
+      "at": "pv2",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph3",
+      "label": "\\scriptsize 1{,}000",
+      "at": "pv3",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph4",
+      "label": "\\scriptsize 100",
+      "at": "pv4",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph5",
+      "label": "\\scriptsize 10",
+      "at": "pv5",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph6",
+      "label": "\\scriptsize 1",
+      "at": "pv6",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "la2",
+      "label": "4",
+      "at": "a2",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "la3",
+      "label": "8",
+      "at": "a3",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "la4",
+      "label": "7",
+      "at": "a4",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "la5",
+      "label": "2",
+      "at": "a5",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "la6",
+      "label": "9",
+      "at": "a6",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lb2",
+      "label": "4",
+      "at": "b2",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lb3",
+      "label": "8",
+      "at": "b3",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lb4",
+      "label": "7",
+      "at": "b4",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lb5",
+      "label": "9",
+      "at": "b5",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lb6",
+      "label": "2",
+      "at": "b6",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lc2",
+      "label": "4",
+      "at": "c2",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "lc3",
+      "label": "8",
+      "at": "c3",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "lc4",
+      "label": "2",
+      "at": "c4",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "lc5",
+      "label": "7",
+      "at": "c5",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "lc6",
+      "label": "9",
+      "at": "c6",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which is greater: forty-eight thousand, seven hundred twenty-nine, or forty-eight thousand, seven hundred ninety-two? Line the numbers up, place under place.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Comparing numbers"
+      },
+      {
+       "do": "problem",
+       "text": "Compare 48,729 and 48,792."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "la2",
+        "la3",
+        "la4",
+        "la5",
+        "la6"
+       ],
+       "at": "forty-eight",
+       "until": "or"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lb2",
+        "lb3",
+        "lb4",
+        "lb5",
+        "lb6"
+       ],
+       "at": "or"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start at the left, where the places are biggest. Four ten thousands and four ten thousands: the same. Eight thousands, eight thousands: the same. Seven hundreds, seven hundreds: the same.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "band",
+       "at": "Four"
+      },
+      {
+       "do": "text",
+       "text": "Compare from the left, place by place.",
+       "at": "Start"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bp1": [
+         4.05,
+         2.7
+        ],
+        "bp2": [
+         5.75,
+         2.7
+        ],
+        "bp3": [
+         5.75,
+         6.7
+        ],
+        "bp4": [
+         4.05,
+         6.7
+        ]
+       },
+       "at": "Eight",
+       "dur": 0.9
+      },
+      {
+       "do": "text",
+       "text": "4 = 4, 8 = 8, 7 = 7: the same so far.",
+       "at": "Eight"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bp1": [
+         5.75,
+         2.7
+        ],
+        "bp2": [
+         7.45,
+         2.7
+        ],
+        "bp3": [
+         7.45,
+         6.7
+        ],
+        "bp4": [
+         5.75,
+         6.7
+        ]
+       },
+       "at": "Seven",
+       "dur": 0.9
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tens. Two tens against nine tens. Nine tens is more, so the second number is greater.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bp1": [
+         7.45,
+         2.7
+        ],
+        "bp2": [
+         9.15,
+         2.7
+        ],
+        "bp3": [
+         9.15,
+         6.7
+        ],
+        "bp4": [
+         7.45,
+         6.7
+        ]
+       },
+       "at": "Tens",
+       "dur": 0.9
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "la5",
+        "lb5"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "2 tens < 9 tens",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "48{,}729<48{,}792",
+       "at": "greater"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "But the first number ends in a nine, and the second ends in a two!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "la6",
+        "lb6"
+       ],
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine ones is only nine. Nine tens is ninety. The first place that is different decides, so the ones never get a vote.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "The first place that differs decides.",
+       "at": "first"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "la5",
+        "lb5"
+       ],
+       "at": "ninety"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now put three numbers in order, least to greatest. We add forty-eight thousand, two hundred seventy-nine.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Order from least to greatest: 48,729; 48,792; 48,279."
+      },
+      {
+       "do": "text",
+       "text": "Least is the smallest; greatest is the largest.",
+       "tone": "muted",
+       "at": "least"
+      },
+      {
+       "do": "show",
+       "target": [
+        "lc2",
+        "lc3",
+        "lc4",
+        "lc5",
+        "lc6"
+       ],
+       "at": "add"
+      },
+      {
+       "do": "hide",
+       "target": "band",
+       "at": "Now"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same plan. Ten thousands, thousands: all the same. Hundreds: seven, seven, and two. Two hundreds is the least, so this number comes first.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Same plan: from the left.",
+       "at": "plan"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bp1": [
+         2.35,
+         2.7
+        ],
+        "bp2": [
+         4.05,
+         2.7
+        ],
+        "bp3": [
+         4.05,
+         6.7
+        ],
+        "bp4": [
+         2.35,
+         6.7
+        ]
+       },
+       "at": "Ten",
+       "dur": 0.01
+      },
+      {
+       "do": "show",
+       "target": "band",
+       "at": "Ten"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bp1": [
+         4.05,
+         2.7
+        ],
+        "bp2": [
+         5.75,
+         2.7
+        ],
+        "bp3": [
+         5.75,
+         6.7
+        ],
+        "bp4": [
+         4.05,
+         6.7
+        ]
+       },
+       "at": "thousands",
+       "nth": 2,
+       "dur": 0.6
+      },
+      {
+       "do": "move",
+       "points": {
+        "bp1": [
+         5.75,
+         2.7
+        ],
+        "bp2": [
+         7.45,
+         2.7
+        ],
+        "bp3": [
+         7.45,
+         6.7
+        ],
+        "bp4": [
+         5.75,
+         6.7
+        ]
+       },
+       "at": "Hundreds",
+       "dur": 0.9
+      },
+      {
+       "do": "highlight",
+       "target": "lc4",
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "Hundreds: 7, 7 and 2. The 2 is least.",
+       "at": "Hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And we already know the other two: seven twenty-nine comes before seven ninety-two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "48{,}279<48{,}729<48{,}792",
+       "at": "And"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1.0,
+     11,
+     6.5
+    ],
+    "points": {
+     "n0": [
+      0.8,
+      3.5
+     ],
+     "n1": [
+      10.2,
+      3.5
+     ],
+     "s1": [
+      1.5,
+      3.5
+     ],
+     "s2": [
+      5.5,
+      3.5
+     ],
+     "s3": [
+      9.5,
+      3.5
+     ],
+     "u1": [
+      1.5,
+      2.85
+     ],
+     "u2": [
+      5.5,
+      2.85
+     ],
+     "u3": [
+      9.5,
+      2.85
+     ],
+     "q1": [
+      5.5,
+      3.35
+     ],
+     "q2": [
+      5.5,
+      5.0
+     ],
+     "qh": [
+      5.5,
+      5.4
+     ],
+     "z1": [
+      5.5,
+      3.3
+     ],
+     "z2": [
+      9.5,
+      3.3
+     ],
+     "z3": [
+      9.5,
+      3.7
+     ],
+     "z4": [
+      5.5,
+      3.7
+     ],
+     "p": [
+      7.33,
+      3.5
+     ],
+     "pl": [
+      7.33,
+      4.35
+     ],
+     "t7": [
+      7.1,
+      2.85
+     ],
+     "ar1": [
+      7.33,
+      4.0
+     ],
+     "ar2": [
+      9.5,
+      4.0
+     ],
+     "arm": [
+      8.4,
+      4.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "shade",
+      "poly": [
+       "z1",
+       "z2",
+       "z3",
+       "z4"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1
+     },
+     {
+      "id": "nl",
+      "seg": [
+       "n0",
+       "n1"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "ticks": 1,
+      "tickAt": [
+       0.0745,
+       0.1596,
+       0.2447,
+       0.3298,
+       0.4149,
+       0.5,
+       0.5851,
+       0.6702,
+       0.7553,
+       0.8404,
+       0.9255
+      ],
+      "start": true
+     },
+     {
+      "id": "lo",
+      "label": "48{,}000",
+      "at": "u1",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "hi",
+      "label": "49{,}000",
+      "at": "u3",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "mid",
+      "label": "48{,}500",
+      "at": "u2",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "half",
+      "seg": [
+       "q1",
+       "q2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "halft",
+      "label": "\\text{halfway}",
+      "at": "qh",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "t700",
+      "label": "48{,}700",
+      "at": "t7",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted"
+     },
+     {
+      "id": "dot",
+      "dot": "p",
+      "ink": "accent",
+      "r": 13
+     },
+     {
+      "id": "dotl",
+      "label": "48{,}729",
+      "at": "pl",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "jump",
+      "vector": [
+       "ar1",
+       "ar2"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "jumpl",
+      "label": "\\text{rounds up}",
+      "at": "arm",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now rounding. Round forty-eight thousand, seven hundred twenty-nine to the nearest thousand.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Rounding on a number line"
+      },
+      {
+       "do": "problem",
+       "text": "Round 48,729 to the nearest thousand."
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It lies between two thousands: forty-eight thousand, and forty-nine thousand. Each little tick is one hundred.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "lo",
+       "at": "forty-eight",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "hi",
+       "at": "forty-nine"
+      },
+      {
+       "do": "text",
+       "text": "48,000 < 48,729 < 49,000",
+       "at": "between"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven ticks along is forty-eight thousand, seven hundred. Twenty-nine more, and here is our number.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "dot",
+        "dotl"
+       ],
+       "at": "here"
+      },
+      {
+       "do": "text",
+       "text": "7 ticks of 100 = 700, then 29 more",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "t700",
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which thousand is it closer to? Find the halfway mark: forty-eight thousand, five hundred.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "mid",
+        "half",
+        "halft"
+       ],
+       "at": "halfway"
+      },
+      {
+       "do": "text",
+       "text": "Halfway is 48,500.",
+       "at": "halfway"
+      },
+      {
+       "do": "hide",
+       "target": "t700",
+       "at": "Which"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Our number is past halfway, so it rounds up to forty-nine thousand.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "shade",
+       "at": "past"
+      },
+      {
+       "do": "show",
+       "target": [
+        "jump",
+        "jumpl"
+       ],
+       "at": "rounds"
+      },
+      {
+       "do": "move",
+       "points": {
+        "p": [
+         9.5,
+         3.5
+        ]
+       },
+       "at": "rounds",
+       "dur": 1.6
+      },
+      {
+       "do": "hide",
+       "target": "dotl",
+       "at": "rounds"
+      },
+      {
+       "do": "write",
+       "tex": "48{,}729\\approx49{,}000",
+       "at": "rounds"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Can I do it without the line?",
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Look at the digit just right of the thousands place. It is a seven. Five or more rounds up. Four or less stays.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Look right of the rounding place: 7.",
+       "at": "Look"
+      },
+      {
+       "do": "text",
+       "text": "5 or more: round up. 4 or less: stay.",
+       "at": "Five"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     1.0,
+     11,
+     6.5
+    ],
+    "points": {
+     "n0": [
+      0.8,
+      3.5
+     ],
+     "n1": [
+      10.2,
+      3.5
+     ],
+     "u1": [
+      1.5,
+      2.85
+     ],
+     "u2": [
+      9.5,
+      2.85
+     ],
+     "k1": [
+      3.82,
+      3.5
+     ],
+     "k2": [
+      8.86,
+      3.5
+     ],
+     "kl1": [
+      3.82,
+      4.3
+     ],
+     "kl2": [
+      8.86,
+      4.3
+     ],
+     "z1": [
+      3.82,
+      3.3
+     ],
+     "z2": [
+      8.86,
+      3.3
+     ],
+     "z3": [
+      8.86,
+      3.7
+     ],
+     "z4": [
+      3.82,
+      3.7
+     ],
+     "c1": [
+      2.66,
+      3.5
+     ],
+     "c2": [
+      5.5,
+      3.5
+     ],
+     "c3": [
+      9.1,
+      3.5
+     ],
+     "cl1": [
+      2.66,
+      2.1
+     ],
+     "cl2": [
+      5.5,
+      2.1
+     ],
+     "cl3": [
+      9.1,
+      2.1
+     ],
+     "ck1": [
+      2.66,
+      4.3
+     ],
+     "ck3": [
+      9.1,
+      4.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "span",
+      "poly": [
+       "z1",
+       "z2",
+       "z3",
+       "z4"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1
+     },
+     {
+      "id": "nl",
+      "seg": [
+       "n0",
+       "n1"
+      ],
+      "ink": "ink",
+      "w": 2.5,
+      "ticks": 1,
+      "tickAt": [
+       0.0745,
+       0.1596,
+       0.2447,
+       0.3298,
+       0.4149,
+       0.5,
+       0.5851,
+       0.6702,
+       0.7553,
+       0.8404,
+       0.9255
+      ],
+      "start": true
+     },
+     {
+      "id": "lo",
+      "label": "48{,}700",
+      "at": "u1",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "hi",
+      "label": "48{,}800",
+      "at": "u2",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "ka",
+      "dot": "k1",
+      "ink": "violet",
+      "r": 10,
+      "start": true
+     },
+     {
+      "id": "kb",
+      "dot": "k2",
+      "ink": "violet",
+      "r": 10,
+      "start": true
+     },
+     {
+      "id": "kla",
+      "label": "48{,}729",
+      "at": "kl1",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "klb",
+      "label": "48{,}792",
+      "at": "kl2",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dot": "c1",
+      "ink": "warm",
+      "r": 10
+     },
+     {
+      "id": "dl1",
+      "label": "48{,}715",
+      "at": "cl1",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "d2",
+      "dot": "c2",
+      "ink": "accent",
+      "r": 10
+     },
+     {
+      "id": "dl2",
+      "label": "48{,}750",
+      "at": "cl2",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "d3",
+      "dot": "c3",
+      "ink": "warm",
+      "r": 10
+     },
+     {
+      "id": "dl3",
+      "label": "48{,}795",
+      "at": "cl3",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One last kind of question: find a number in between two others.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A number in between"
+      },
+      {
+       "do": "problem",
+       "text": "Which number is more than 48,729 and less than 48,792?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ka",
+        "kla",
+        "kb",
+        "klb"
+       ],
+       "at": "between"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "More than forty-eight thousand, seven hundred twenty-nine, and less than forty-eight thousand, seven hundred ninety-two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "ka",
+        "kla"
+       ],
+       "at": "More",
+       "until": "less"
+      },
+      {
+       "do": "write",
+       "tex": "48{,}729<{?}<48{,}792",
+       "fresh": true,
+       "at": "twenty-nine"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "kb",
+        "klb"
+       ],
+       "at": "less"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zoom in on the line. Each tick is ten. The numbers we want live in the gap between the two marks.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "span",
+       "at": "gap"
+      },
+      {
+       "do": "text",
+       "text": "Zoomed in: each tick is 10.",
+       "at": "Each"
+      },
+      {
+       "do": "text",
+       "text": "The answer lives in the gap.",
+       "at": "gap"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try forty-eight thousand, seven hundred fifteen. Same hundreds, but one ten is less than two tens. It lands before the gap. Too small.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d1",
+        "dl1"
+       ],
+       "at": "Try"
+      },
+      {
+       "do": "text",
+       "text": "Try 48,715: 1 ten < 2 tens.",
+       "at": "Same"
+      },
+      {
+       "do": "text",
+       "text": "Too small.",
+       "at": "Too"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try seven ninety-five. Nine tens, same as the top. Then five ones is more than two ones. Past the gap. Too big.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "d3",
+        "dl3"
+       ],
+       "at": "Try"
+      },
+      {
+       "do": "text",
+       "text": "Try 48,795: 9 tens = 9 tens, but 5 ones > 2 ones.",
+       "at": "Then"
+      },
+      {
+       "do": "text",
+       "text": "Too big.",
+       "at": "Too"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now seven fifty. Five tens is more than two tens, and less than nine tens. Inside the gap. That is the one.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d2",
+        "dl2"
+       ],
+       "at": "Now"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d2",
+        "dl2",
+        "span"
+       ],
+       "at": "Inside"
+      },
+      {
+       "do": "write",
+       "tex": "48{,}729<48{,}750<48{,}792",
+       "at": "Inside"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.2,
+     0.5,
+     11.3,
+     8.0
+    ],
+    "points": {
+     "e0t": [
+      0.65,
+      7.75
+     ],
+     "e1t": [
+      2.35,
+      7.75
+     ],
+     "e2t": [
+      4.05,
+      7.75
+     ],
+     "e3t": [
+      5.75,
+      7.75
+     ],
+     "e4t": [
+      7.45,
+      7.75
+     ],
+     "e5t": [
+      9.15,
+      7.75
+     ],
+     "e6t": [
+      10.85,
+      7.75
+     ],
+     "e0b": [
+      0.65,
+      3.05
+     ],
+     "e1b": [
+      2.35,
+      3.05
+     ],
+     "e2b": [
+      4.05,
+      3.05
+     ],
+     "e3b": [
+      5.75,
+      3.05
+     ],
+     "e4b": [
+      7.45,
+      3.05
+     ],
+     "e5b": [
+      9.15,
+      3.05
+     ],
+     "e6b": [
+      10.85,
+      3.05
+     ],
+     "r1a": [
+      0.65,
+      6.7
+     ],
+     "r1b": [
+      10.85,
+      6.7
+     ],
+     "r2a": [
+      0.65,
+      4.5
+     ],
+     "r2b": [
+      10.85,
+      4.5
+     ],
+     "pv1": [
+      1.5,
+      7.2
+     ],
+     "pv2": [
+      3.2,
+      7.2
+     ],
+     "pv3": [
+      4.9,
+      7.2
+     ],
+     "pv4": [
+      6.6,
+      7.2
+     ],
+     "pv5": [
+      8.3,
+      7.2
+     ],
+     "pv6": [
+      10.0,
+      7.2
+     ],
+     "g3": [
+      4.9,
+      5.6
+     ],
+     "g4": [
+      6.6,
+      5.6
+     ],
+     "g5": [
+      8.3,
+      5.6
+     ],
+     "g6": [
+      10.0,
+      5.6
+     ],
+     "k3": [
+      4.9,
+      3.8
+     ],
+     "k4": [
+      6.6,
+      3.8
+     ],
+     "k5": [
+      8.3,
+      3.8
+     ],
+     "k6": [
+      10.0,
+      3.8
+     ],
+     "t1t": [
+      9.7,
+      2.55
+     ],
+     "t1h": [
+      8.6,
+      2.55
+     ],
+     "t2t": [
+      8.0,
+      2.55
+     ],
+     "t2h": [
+      6.9,
+      2.55
+     ],
+     "t3t": [
+      6.3,
+      2.55
+     ],
+     "t3h": [
+      5.2,
+      2.55
+     ],
+     "tm1": [
+      9.15,
+      2.15
+     ],
+     "tm2": [
+      7.45,
+      2.15
+     ],
+     "tm3": [
+      5.75,
+      2.15
+     ]
+    },
+    "parts": [
+     {
+      "id": "ln0",
+      "seg": [
+       "e0b",
+       "e0t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln1",
+      "seg": [
+       "e1b",
+       "e1t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln2",
+      "seg": [
+       "e2b",
+       "e2t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln3",
+      "seg": [
+       "e3b",
+       "e3t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln4",
+      "seg": [
+       "e4b",
+       "e4t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln5",
+      "seg": [
+       "e5b",
+       "e5t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ln6",
+      "seg": [
+       "e6b",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rt",
+      "seg": [
+       "e0t",
+       "e6t"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rm",
+      "seg": [
+       "r1a",
+       "r1b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rv",
+      "seg": [
+       "r2a",
+       "r2b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "rb",
+      "seg": [
+       "e0b",
+       "e6b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "ph1",
+      "label": "\\scriptsize 100{,}000",
+      "at": "pv1",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph2",
+      "label": "\\scriptsize 10{,}000",
+      "at": "pv2",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph3",
+      "label": "\\scriptsize 1{,}000",
+      "at": "pv3",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph4",
+      "label": "\\scriptsize 100",
+      "at": "pv4",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph5",
+      "label": "\\scriptsize 10",
+      "at": "pv5",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph6",
+      "label": "\\scriptsize 1",
+      "at": "pv6",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "df3",
+      "label": "4",
+      "at": "g3",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "df4",
+      "label": "4",
+      "at": "g4",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "df5",
+      "label": "4",
+      "at": "g5",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "df6",
+      "label": "4",
+      "at": "g6",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "wv3",
+      "label": "4{,}000",
+      "at": "k3",
+      "dir": "c",
+      "size": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "wv4",
+      "label": "400",
+      "at": "k4",
+      "dir": "c",
+      "size": "s",
+      "ink": "violet"
+     },
+     {
+      "id": "wv5",
+      "label": "40",
+      "at": "k5",
+      "dir": "c",
+      "size": "s",
+      "ink": "blue"
+     },
+     {
+      "id": "wv6",
+      "label": "4",
+      "at": "k6",
+      "dir": "c",
+      "size": "s",
+      "ink": "accent"
+     },
+     {
+      "id": "t1",
+      "vector": [
+       "t1t",
+       "t1h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "t2",
+      "vector": [
+       "t2t",
+       "t2h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "t3",
+      "vector": [
+       "t3t",
+       "t3h"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "tx1",
+      "label": "\\times 10",
+      "at": "tm1",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "tx2",
+      "label": "\\times 10",
+      "at": "tm2",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "tx3",
+      "label": "\\times 10",
+      "at": "tm3",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let's end where we began, with four, four, four, four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Ten times the place to its right"
+      },
+      {
+       "do": "problem",
+       "text": "4,444"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Now I can see it. Four, forty, four hundred, four thousand.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "wv6",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "wv5",
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": "wv4",
+       "at": "hundred"
+      },
+      {
+       "do": "show",
+       "target": "wv3",
+       "at": "thousand"
+      },
+      {
+       "do": "text",
+       "text": "4, 40, 400, 4,000",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each is ten times the one on its right.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "t1",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "tx1",
+       "at": "ten"
+      },
+      {
+       "do": "draw",
+       "target": "t2",
+       "at": "times"
+      },
+      {
+       "do": "show",
+       "target": "tx2",
+       "at": "times"
+      },
+      {
+       "do": "draw",
+       "target": "t3",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "tx3",
+       "at": "one"
+      },
+      {
+       "do": "text",
+       "text": "Each place is ten times the place to its right.",
+       "at": "Each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That one fact reads a number, writes it, compares it, and rounds it, however long it is.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "df3",
+        "df4",
+        "df5",
+        "df6"
+       ],
+       "at": "reads",
+       "until": "rounds"
+      },
+      {
+       "do": "text",
+       "text": "Read. Write. Compare. Round.",
+       "at": "reads"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The place gives the digit its value. One place to the left is ten times as much.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "df3",
+        "df4",
+        "df5",
+        "df6",
+        "wv3",
+        "wv4",
+        "wv5",
+        "wv6"
+       ],
+       "at": "place",
+       "until": "One"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "df6",
+        "wv6",
+        "df5",
+        "wv5"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t1",
+        "tx1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "answer",
+       "tex": "1\\text{ left}=\\times10",
+       "at": "ten"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

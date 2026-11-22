@@ -507,6 +507,21 @@ test(
     };
 
     await t.test("deleting removes everything the account owns", async () => {
+      // The pilot interest list is kept by email, not by account: an entry
+      // under the account's address, in other letters, goes too.
+      await db.query(
+        `INSERT INTO amp_research_pilot_interest
+           (email,role,learners,bands,setting,place,tests)
+         VALUES (upper($1),'parent',1,'{3-5}','home','AZ','{}')`,
+        [ids.email],
+      );
+      assert.equal(
+        await count(
+          "SELECT count(*) n FROM amp_research_pilot_interest WHERE lower(email)=lower($1)",
+          [ids.email],
+        ),
+        1,
+      );
       assert.equal(
         await count(
           "SELECT count(*) n FROM amp_funding_invoice_reminders WHERE invoice_id=$1",
@@ -540,6 +555,13 @@ test(
         ids.pupil,
       ]);
       assert.deepEqual(found, { amp_account_deletions: 1 });
+      assert.equal(
+        await count(
+          "SELECT count(*) n FROM amp_research_pilot_interest WHERE lower(email)=lower($1)",
+          [ids.email],
+        ),
+        0,
+      );
       assert.equal(
         await count(
           "SELECT count(*) n FROM amp_funding_invoice_intents WHERE id=$1",

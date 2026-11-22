@@ -1,8 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
-import { fileURLToPath } from "node:url";
-import { Resvg } from "@resvg/resvg-js";
 import { skills } from "../src/curriculum/catalog";
+import { versusPath } from "../src/versus/catalog";
+import { readVersus } from "../src/versus/files";
 import { templates } from "../src/math/engine";
 import {
   bandLabel,
@@ -14,6 +13,14 @@ import {
   skillNeighbors,
   type Neighbor,
 } from "../src/web/features/pathways/neighbors";
+import {
+  cardColors,
+  cardFileName,
+  cardSvg as frameSvg,
+  escapeXml as escapeHtml,
+  renderCard,
+  titleLines,
+} from "./lib/share-card";
 
 const origin = "https://amp.corpora.inc";
 const destination = new URL("../dist/", import.meta.url);
@@ -32,32 +39,6 @@ const dependents = new Map(
 );
 const points = layout(skills);
 const positions = new Map(points.map((point) => [point.skill.id, point]));
-const fontFiles = ["Regular", "Bold"].map((weight) =>
-  fileURLToPath(
-    new URL(
-      `../node_modules/katex/dist/fonts/KaTeX_SansSerif-${weight}.ttf`,
-      import.meta.url,
-    ),
-  ),
-);
-
-function escapeHtml(value: string) {
-  return value.replace(/[&<>"']/g, (character) => {
-    switch (character) {
-      case "&":
-        return "&amp;";
-      case "<":
-        return "&lt;";
-      case ">":
-        return "&gt;";
-      case '"':
-        return "&quot;";
-      default:
-        return "&#39;";
-    }
-  });
-}
-
 function skillUrl(id: string) {
   return `/pathways/${encodeURIComponent(id)}`;
 }
@@ -66,8 +47,6 @@ function metaDescription(description: string) {
   return `${description.trim().replace(/[.!?]+$/, "")}. Explore this skill and its connections in AMP's free math map.`;
 }
 
-// The five areas' hues, in order (curriculum/areas.ts).
-const mapColors = ["#6dbce4", "#a58be3", "#efbd74", "#e694bb", "#8bd8bb"];
 const minX = Math.min(...points.map((point) => point.position[0]));
 const maxX = Math.max(...points.map((point) => point.position[0]));
 const minY = Math.min(...points.map((point) => point.position[1]));
@@ -87,46 +66,22 @@ const mapEdges = skills
       .map((prior) => {
         const from = project(prior);
         const to = project(skill.id);
-        return `<path d="M${from.x.toFixed(1)} ${from.y.toFixed(1)}L${to.x.toFixed(1)} ${to.y.toFixed(1)}" stroke="#6cabae" stroke-opacity=".22" stroke-width="1"/>`;
+        return `<path d="M${from.x.toFixed(1)} ${from.y.toFixed(1)}L${to.x.toFixed(1)} ${to.y.toFixed(1)}" stroke="${cardColors.line}" stroke-opacity=".22" stroke-width="1"/>`;
       }),
   )
   .join("");
 const mapNodes = skills
   .map((skill) => {
     const point = project(skill.id);
-    return `<circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="2.4" fill="${mapColors[areaSlot(skill)]}" fill-opacity=".7"/>`;
+    return `<circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="2.4" fill="${cardColors.areas[areaSlot(skill)]}" fill-opacity=".7"/>`;
   })
   .join("");
 
-function titleLines(title: string) {
-  const lines: string[] = [];
-  let line = "";
-  for (const word of title.split(" ")) {
-    if (line && `${line} ${word}`.length > 20) {
-      lines.push(line);
-      line = word;
-    } else line = line ? `${line} ${word}` : word;
-  }
-  if (line) lines.push(line);
-  return lines;
-}
-
 function cardSvg(skill?: (typeof skills)[number], product = false) {
   // The product card shares the pitch: its headline and what AMP is.
-  const title = product
-    ? "Math that adapts to every answer"
-    : (skill?.title ?? "Explore math skills");
   const lines = product
     ? ["Math that adapts", "to every answer"]
-    : titleLines(title);
-  const grade = "ADAPTIVE MATH PATHWAYS";
-  const titleY = lines.length > 1 ? 260 : 290;
-  if (
-    lines.length > 3 ||
-    lines.some((line) => line.length > 20) ||
-    titleY + (lines.length - 1) * 63 + 52 > 460
-  )
-    throw new Error(`Social card title exceeds its text area: ${title}`);
+    : titleLines(skill?.title ?? "Explore math skills");
   const selected = skill ? project(skill.id) : null;
   const closeConnections = skill
     ? [
@@ -139,28 +94,25 @@ function cardSvg(skill?: (typeof skills)[number], product = false) {
         .map(([from, to]) => {
           const a = project(from);
           const b = project(to);
-          return `<path d="M${a.x.toFixed(1)} ${a.y.toFixed(1)}L${b.x.toFixed(1)} ${b.y.toFixed(1)}" stroke="#8ce8df" stroke-opacity=".8" stroke-width="2"/>`;
+          return `<path d="M${a.x.toFixed(1)} ${a.y.toFixed(1)}L${b.x.toFixed(1)} ${b.y.toFixed(1)}" stroke="${cardColors.accent}" stroke-opacity=".8" stroke-width="2"/>`;
         })
         .join("")
     : "";
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-    <defs>
-      <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#071c25"/><stop offset="1" stop-color="#10263a"/></linearGradient>
-      <radialGradient id="glow"><stop stop-color="#165f70" stop-opacity=".7"/><stop offset="1" stop-color="#165f70" stop-opacity="0"/></radialGradient>
-      <clipPath id="map"><rect x="625" y="35" width="555" height="560" rx="26"/></clipPath>
-    </defs>
-    <rect width="1200" height="630" fill="url(#surface)"/>
-    <circle cx="900" cy="315" r="350" fill="url(#glow)"/>
-    <path d="M60 74c12-40 24-40 36 0s24 40 36 0 24-40 36 0" fill="none" stroke="#a1f0e4" stroke-width="3"/>
-    <text x="190" y="80" fill="#c8eee7" font-family="KaTeX_SansSerif" font-size="24">${product ? "AMP" : "AMP PATHWAYS"}</text>
-    <text x="64" y="180" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">${escapeHtml(grade)}</text>
-    ${lines.map((line, index) => `<text x="64" y="${titleY + index * 63}" fill="#f0f8f6" font-family="KaTeX_SansSerif" font-size="52">${escapeHtml(line)}</text>`).join("")}
-    <text x="64" y="492" fill="#bfd7d5" font-family="KaTeX_SansSerif" font-size="25">${product ? "A complete math curriculum" : "Explore the skill map"}</text>
-    <text x="64" y="550" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">amp.corpora.inc${product ? "" : "/pathways"}</text>
-    <g clip-path="url(#map)">${mapEdges}${closeConnections}${mapNodes}
-      ${selected ? `<circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="21" fill="none" stroke="#c5fff2" stroke-opacity=".65" stroke-width="2"/><circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="9" fill="#a1f0e4"/>` : ""}
-    </g>
-  </svg>`;
+  return frameSvg(
+    {
+      label: product ? "AMP" : "AMP PATHWAYS",
+      eyebrow: "ADAPTIVE MATH PATHWAYS",
+      lines,
+      subtitle: product
+        ? "A complete math curriculum"
+        : "Explore the skill map",
+      address: `amp.corpora.inc${product ? "" : "/pathways"}`,
+    },
+    `<g clip-path="url(#map)">${mapEdges}${closeConnections}${mapNodes}
+      ${selected ? `<circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="21" fill="none" stroke="${cardColors.halo}" stroke-opacity=".65" stroke-width="2"/><circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="9" fill="${cardColors.mark}"/>` : ""}
+    </g>`,
+    `<clipPath id="map"><rect x="625" y="35" width="555" height="560" rx="26"/></clipPath>`,
+  );
 }
 
 const imageDirectory = new URL("assets/pathway-cards/", destination);
@@ -171,17 +123,8 @@ async function writeCard(
   skill?: (typeof skills)[number],
   product = false,
 ) {
-  const png = new Resvg(cardSvg(skill, product), {
-    font: {
-      fontFiles,
-      loadSystemFonts: false,
-      defaultFontFamily: "KaTeX_SansSerif",
-    },
-  })
-    .render()
-    .asPng();
-  const hash = createHash("sha256").update(png).digest("hex").slice(0, 12);
-  const filename = `${id}-${hash}.png`;
+  const png = renderCard(cardSvg(skill, product));
+  const filename = cardFileName(id, png);
   await writeFile(new URL(filename, imageDirectory), png);
   cardUrls.set(id, `/assets/pathway-cards/${filename}`);
 }
@@ -369,6 +312,10 @@ const urls = [
   "/schools/scope-and-sequence",
   "/schools/trust",
   "/research",
+  "/research/pilot",
+  // The comparisons: the hub, then one page each, in the catalog's order.
+  "/versus",
+  ...readVersus().catalog.map((entry) => versusPath(entry.slug)),
   ...skills.map((skill) => skillUrl(skill.id)),
 ];
 await writeFile(

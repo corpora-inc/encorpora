@@ -8,6 +8,8 @@ import { createServer } from "vite";
 import { knownDocumentPath } from "../src/web/app/document-routes";
 import { mkdir } from "node:fs/promises";
 import { skillTitle, skills } from "../src/curriculum/catalog";
+import { readVersus } from "../src/versus/files";
+import { versusHubHead, versusPageHead } from "../src/versus/head";
 import { templates } from "../src/math/engine";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `export async function accessSession(){if(window.routeSession==='failed')throw new Error('Synthetic session outage');return window.routeSession ? {token:'synthetic',accountId:'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyDeviceSessionChanged(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
@@ -121,6 +123,31 @@ try {
     assert(knownDocumentPath(example), `Registered route missing server fallback: ${path}`);
   }
   await map.close();
+  // The comparisons write their own heads, as the skill map does: one
+  // comparison, the hub from inside the app, then a slug with no comparison.
+  const compared = readVersus().pages[0]!;
+  const comparedHead = versusPageHead(compared);
+  const versus = await browser.newPage();
+  await versus.route("**/api/v1/events**", route => route.fulfill({json:{}}));
+  await versus.goto(`http://127.0.0.1:4395/versus/${compared.slug}`);
+  await versus.getByRole("heading", { level: 1, name: `AMP vs ${compared.name}`, exact: true }).waitFor();
+  await versus.waitForFunction((title) => document.title === title, comparedHead.title);
+  assert.equal(await versus.locator('link[rel="canonical"]').getAttribute("href"), comparedHead.canonical);
+  assert.equal(await versus.locator('meta[name="description"]').getAttribute("content"), compared.description);
+  assert.equal(await versus.locator('meta[name="robots"]').count(), 0);
+  await versus.getByRole("link", { name: "All comparisons", exact: true }).click();
+  await versus.waitForFunction((title) => document.title === title, versusHubHead.title);
+  assert.equal(await versus.locator('link[rel="canonical"]').count(), 1);
+  assert.equal(await versus.locator('link[rel="canonical"]').getAttribute("href"), "https://amp.corpora.inc/versus");
+  assert.equal(await versus.locator('meta[name="robots"]').count(), 0);
+  await versus.goBack();
+  await versus.waitForFunction((title) => document.title === title, comparedHead.title);
+  assert.equal(await versus.locator('link[rel="canonical"]').getAttribute("href"), comparedHead.canonical);
+  await versus.goto("http://127.0.0.1:4395/versus/no-such-program");
+  await versus.getByRole("heading", { name: "Page not found", exact: true }).waitFor();
+  await versus.waitForFunction(() => document.querySelector('meta[name="robots"]')?.getAttribute("content") === "noindex, follow");
+  assert.equal(await versus.locator('link[rel="canonical"]').count(), 0);
+  await versus.close();
   for (const colorScheme of ["light", "dark"] as const) for (const width of [320,390,768,1280]) {
     const context = await browser.newContext({ viewport: { width, height: 900 }, colorScheme });
     const missing = await context.newPage();
@@ -141,7 +168,7 @@ try {
     assert.equal(await missing.locator('meta[name="robots"]').count(),0);
     await context.close();
   }
-  console.log("Document indexing: auth noindex, Pathways cleanup/history, route-registry parity and missing-page recovery pass at four widths/themes.");
+  console.log("Document indexing: auth noindex, Pathways cleanup/history, the comparisons' own heads, route-registry parity and missing-page recovery pass at four widths/themes.");
 } finally {
   await browser.close();
   await vite.close();

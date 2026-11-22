@@ -30,16 +30,21 @@ const budget = {
    * overlays add 0.2 KB: 291.2 KB. The one validation pattern every form
    * uses (ui/Form, ui/field-validation: messages in the field's own line,
    * never the browser’s bubble) adds 0.2 KB: 291.4 KB.
-   * 2026-11-21: main 291.7 KB; live sessions add 1.3 KB that must run
-   * first, after everything that could wait was moved out (Colorful, the
-   * raised hand, the cockpit, the reports and every live loader load with
-   * their screens): the class and family session routes, the slot for the
-   * bar's session action (it paints with the bar, so nothing moves), and
-   * the slots for a student's look and hand: 293.0 KB. The look this
-   * device remembers for a learner, put on before their first paint so a
-   * Colorful learner never sees Calm first (features/practice/
-   * look-ahead.ts), adds 0.5 KB: 293.5 KB. */
-  entryJs: 294 * KB,
+   * 2026-11-21: main 291.7 KB (298,684 B). Two public routes must be in the
+   * router before any screen: the pilot study's list (`/research/pilot`)
+   * and the comparisons (`/versus/{-$slug}`: one route for the hub and
+   * every page, its loader line, the path pattern the head and GA share,
+   * and four chunk names, about 0.26 KB; their screens, words and head
+   * writers load with the route). Together: 292.2 KB.
+   * Live sessions add 1.3 KB that must run first, after everything that
+   * could wait was moved out (Colorful, the raised hand, the cockpit, the
+   * reports and every live loader load with their screens): the class and
+   * family session routes, the slot for the bar's session action (it paints
+   * with the bar, so nothing moves), and the slots for a student's look
+   * and hand. The look this device remembers for a learner, put on before
+   * their first paint so a Colorful learner never sees Calm first
+   * (features/practice/look-ahead.ts), adds 0.5 KB. Together, measured: 294.3 KB. */
+  entryJs: 294.5 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,

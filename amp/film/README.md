@@ -61,7 +61,8 @@ Screenplays name speakers. A speaker key maps to a role kind (`teacher`,
 Keys that are themselves kinds may omit the kind, so existing screenplays stay
 valid. A film may have several speakers of one kind. The
 [voice registry](voices.ts) binds teachers to Madeline or Paul and learners to
-Champ. The film ID chooses a stable default teacher. The learner is Champ, and
+Champ or Sparkles. The film ID chooses a stable default teacher. The learner is
+Champ unless the film is voiced with `--voice learner=sparkles`, and
 two speakers of one film never share a voice. A film with more speakers of one
 kind than approved voices of that kind still passes `--dry`; voicing fails
 instead of reusing a voice. The house voices Ellis and Hazel (teachers) and Remy (learner) are

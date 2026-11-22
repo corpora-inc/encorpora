@@ -6,7 +6,7 @@ from providers import now, write_json
 from state import read_json
 
 TEACHERS = ('XescS24CsOySAkKrLAO3', 'J3Ei0Lj6fAobhIqY5ySH')
-VOICES = (*TEACHERS, 'SYXbTJsLE7zmSjr1DchT')
+VOICES = (*TEACHERS, 'SYXbTJsLE7zmSjr1DchT', 'tapn1QwocNXk3viVSowa')  # Champ, Sparkles
 
 def costs(root):
     records = [read_json(p) for p in (root/'runs').glob('**/*.json')]

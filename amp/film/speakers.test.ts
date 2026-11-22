@@ -9,9 +9,12 @@ import { VOICES, type VoiceSpec } from "./voices";
 
 const CHAMP = "SYXbTJsLE7zmSjr1DchT";
 const PAUL = "J3Ei0Lj6fAobhIqY5ySH";
+const SPARKLES = "tapn1QwocNXk3viVSowa";
 /** Not an approved voice. The test binds it; `VOICES` does not. */
 const SECOND: VoiceSpec = { id: "test-learner-2", name: "Test Learner", short: "testlearner", kinds: ["learner"] };
-const registry = [...VOICES, SECOND];
+/** The approved voices with one learner, as they were before Sparkles: a second learner has no voice. */
+const single = VOICES.filter((voice) => voice.short !== "sparkles");
+const registry = [...single, SECOND];
 
 const timingFor = (voices: Record<string, string>): Timing => ({
   duration: 8,
@@ -23,21 +26,29 @@ const timingFor = (voices: Record<string, string>): Timing => ({
   ]],
 });
 
-it("dry-checks two learners without a third approved voice, and stages them from a test registry", () => {
+it("gives two learners Champ and Sparkles, dry-checks a learner with no voice left, and stages a test registry", () => {
   const script = scriptSchema.parse(JSON.parse(readFileSync("film/lessons/count-objects--speakers.json", "utf8")));
   // House voices are chosen only on request (`--voice`, `--provider spark`), so the default pool is ElevenLabs'.
-  expect(VOICES.filter((voice) => voice.kinds.includes("learner") && !voice.provider).map((voice) => voice.short)).toEqual(["champ"]);
+  expect(VOICES.filter((voice) => voice.kinds.includes("learner") && !voice.provider).map((voice) => voice.short)).toEqual(["champ", "sparkles"]);
+  const pair = resolveCast(script);
+  expect(pair.roles.map((role) => [role.role, role.voice?.id, role.voice?.tag])).toEqual([
+    ["teacher", defaultVoice("teacher", script.id), undefined],
+    ["champ", CHAMP, "[energetic]"],
+    ["maya", SPARKLES, undefined],
+  ]);
+  expect(() => requireVoices(pair)).not.toThrow();
+  expect(voiceBindings(resolveCast(script, { champ: "sparkles", maya: "champ" }))).toMatchObject({ champ: SPARKLES, maya: CHAMP });
 
-  const dry = resolveCast(script);
+  const dry = resolveCast(script, {}, single);
   expect(dry.roles.map((role) => [role.role, role.voice?.id ?? null])).toEqual([
     ["teacher", defaultVoice("teacher", script.id)],
     ["champ", CHAMP],
     ["maya", null],
   ]);
   expect(Object.values(voiceBindings(dry)).filter((id) => id === CHAMP)).toEqual([CHAMP]);
-  expect(resolveCast(script, voiceBindings(dry))).toEqual(dry);
+  expect(resolveCast(script, voiceBindings(dry), single)).toEqual(dry);
   expect(() => requireVoices(dry)).toThrow(/needs another approved learner voice/);
-  expect(() => resolveCast(script, { maya: "champ" })).toThrow(/already assigned/);
+  expect(() => resolveCast(script, { maya: "champ" }, single)).toThrow(/already assigned/);
   expect(mathProblems(script)).toEqual([]);
 
   const dryRoot = document.createElement("div");

@@ -1,0 +1,180 @@
+{
+  "slug": "cuemath",
+  "name": "Cuemath",
+  "category": "tutoring",
+  "checked": "2026-11-21",
+  "benefit": "Daily practice at a lower price",
+  "line": "Cuemath sells live tutor classes two or three times a week. AMP is daily practice that places, checks and reviews.",
+  "description": "AMP vs Cuemath: what Cuemath's live tutors offer, what a year of classes costs, and how AMP gives daily practice that places, checks and reviews for less.",
+  "verdict": "Cuemath gives a child a live, vetted tutor two or three times a week [1][8], and tutoring has strong evidence in randomized trials [13]. AMP is not a tutor. It is practice for every day of the week that keeps a level in each of 14 strands, explains every answer and brings old skills back on a schedule, for $599 a year against $1,560 to $2,652 for a 12-month Cuemath plan of 104 classes [2].",
+  "reasons": [
+    {
+      "title": "A year of AMP costs well under a year of classes",
+      "body": "Cuemath's 12-month plans are 104 live classes billed every 52 weeks: $15 a class ($1,560) for 40-minute classes in kindergarten to grade 5, $20 ($2,080) for 55-minute classes in grades 3 to 7, and $25.50 ($2,652) in grades 8 to 12 [2]. AMP is $599 a year or $59 a month for the first child, with unlimited practice, and the account holder and a second parent practice free. By our arithmetic, a year of AMP for one child costs $961 to $2,053 less than these plans. The money buys different things: Cuemath buys hours with a person, AMP buys a program that plans and checks every problem."
+    },
+    {
+      "title": "Math every day, not two classes a week",
+      "body": "Cuemath says classes typically run twice a week in kindergarten to grade 8, and three times a week in high school [1]. Each class is a booked slot of 40 or 55 minutes, by grade and plan, on a laptop or desktop with video [2][6]. AMP has no slot to book. It runs in any current browser on a phone, tablet or computer, on any day, for as long as the learner works."
+    },
+    {
+      "title": "A mastery rule you can read",
+      "body": "Cuemath tracks mastery through tutors' assessments and progress reports that highlight concept mastery, but we found no stated rule for what counts as mastered [6]. In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded and does not count. Two misses in a row send practice back to what the skill builds on.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
+    },
+    {
+      "title": "Old skills come back on a schedule",
+      "body": "Cuemath's personalized practice mixes topics based on past performance, and its homework revises past topics alongside current chapters, which is a good idea [6]. We found no schedule of review intervals in its published materials [6][7]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, and a miss starts the schedule over. In a randomized trial of 787 seventh graders, mixed and spaced practice scored 62% a month later against 38% for practice in blocks [14].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Placed in practice, not in a 65-minute evaluation",
+      "body": "Cuemath starts with a 65-minute MathFit Evaluation with a specialist, then matches a tutor [1][8]. After that the tutor adapts lessons in real time [6]. AMP places the learner within the first 24 problems of ordinary practice and keeps a level in each of 14 strands of math. The adult sees each level with its likely range and the actual problems behind it.",
+      "research": [
+        "level",
+        "progress"
+      ]
+    },
+    {
+      "title": "Our claims point to code, not to percentages",
+      "body": "Cuemath's impact page says it \"improved students' reasoning skills by 24%\" and gives no sample, comparison group or method on the page [5]. AMP makes no outcome claim. Its mastery rule, review schedule and grading rule are public in its source code for anyone to read."
+    }
+  ],
+  "rows": {
+    "price": "12-month plan, 104 classes: $1,560 (grades K to 5, 40 minutes), $2,080 (3 to 7, 55 minutes), $2,652 (8 to 12) [2].",
+    "buyers": "Families. We found no school plan on its pricing page [2]. A free evaluation and trial class come first [1][8].",
+    "range": "Kindergarten through grade 8, Algebra 1 and 2, Geometry, Precalculus, AP Precalculus and AP Calculus [7]. Test prep for SAT, AMC 8, STAAR and more [1].",
+    "start": "A free 65-minute MathFit Evaluation with a specialist, then a match with one tutor [8].",
+    "teaching": "A live tutor teaches one child by video, with a shared whiteboard and on-screen manipulatives [7][8].",
+    "next": "The tutor decides, following the child's school curriculum and goals [8]. Practice mixes topics based on past performance and learning gaps [6].",
+    "mastery": "Tracked by tutors' assessments; progress reports highlight concept mastery [6]. No stated rule for what counts as mastered found [6].",
+    "review": "Practice mixes topics; homework revises past topics [6]. No schedule of review intervals found in its published materials [6][7].",
+    "print": "Practice worksheets and homework, with solutions, reached through its Leap platform [6].",
+    "adult": "Book class times and keep a computer with video ready. A writing tablet is highly recommended [1][6]. The tutor plans and teaches [8].",
+    "reports": "Session feedback and progress reports in a parent app, plus parent-teacher meetings [6][7].",
+    "evidence": "No outcome study found on its site. We found no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [10][11]."
+  },
+  "theirs": [
+    "Cuemath is an online math tutoring company. Manan Khurma founded it in 2013, starting at his home in Delhi [3]. It lists offices in Gurugram, India, and Dover, Delaware, and says it teaches more than 200,000 students with more than 4,000 tutors in over 80 countries [3]. This page compares its live one-to-one classes for families in the United States [1].",
+    "A family starts with a free MathFit Evaluation of about 65 minutes and a trial class, then is matched with one tutor who teaches every class [1][8]. Classes are live video on Cuemath's own platform, with a whiteboard, manipulatives and drawing tools [7][8]. Most students in kindergarten to grade 8 meet twice a week, and high schoolers three times [1]. Classes run 40 minutes in kindergarten to grade 2, 40 or 55 minutes in grades 3 to 5, and 55 minutes from grade 6 up [2]. The tutor follows the child's school curriculum and goals, and adds enrichment and test prep [8].",
+    "Between classes the child does homework that revises past topics and personalized practice that mixes topics [6], and a daily app offers about 15 minutes of mental math, puzzles and games [9]. Parents get session feedback, progress reports and parent-teacher meetings [6][7]. Cuemath says its tutors are mostly based in India and hold degrees in math, engineering or education [1]."
+  ],
+  "credit": [
+    "A live person. Cuemath says it hires under 1% of tutor applicants, after a math test, a teaching assessment and training, and keeps the same tutor for each child [8]. AMP has no live teachers or tutors.",
+    "Math past precalculus: AP Precalculus and AP Calculus [7], plus coaching for AMC 8, Math Kangaroo and state tests [1]. AMP stops at precalculus.",
+    "Help with this term's school math. The tutor follows the child's own school curriculum [8]. AMP follows its own map of skills.",
+    "A daily app with mental math, puzzles and games [9]. AMP has no games.",
+    "Families rate it highly: 4.9 out of 5 across more than 12,000 Trustpilot reviews [4]."
+  ],
+  "evidence": {
+    "theirs": [
+      "We found no study on Cuemath's site that compares its students' math learning with similar students who did not use it. We found no Cuemath entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [10][11].",
+      "Its impact page credits Cuemath with a 24% gain in reasoning skills and points to a 2024 conference paper, but gives no sample, comparison group or method [5]. A paper that Cuemath's own pages link to is a 2023 randomized trial of 742 tutors on a virtual tutoring platform. It tested a meter that shows tutors how much they and their students talk, and found that students talked more. The record does not name Cuemath. It measured talk, not math learning [5][12].",
+      "The homepage's 97.2% of parents who say their child improved, and the Trustpilot rating, are parents' own reports [1][4]. They show that families like the service. They do not measure learning.",
+      "Tutoring as a method has strong evidence. Across 263 randomized trials it averaged 0.40 standard deviations, and 0.16 to 0.22 in large U.S. programs measured on standardized tests [13]. That evidence is about tutoring in general, not about Cuemath's classes."
+    ],
+    "ours": [
+      "AMP is not a tutor, and we do not borrow tutoring's numbers for it. Its review rule comes from a trial that holds up: in a randomized trial of 787 seventh graders, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks. The What Works Clearinghouse says the study meets its standards without reservations, though the test was the researchers' own [14]. We think daily practice built on rules like this, alone or between a tutor's classes, gives a family more math for its money than classes alone. That is our bet, and we have committed to testing it in public.",
+      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+    ]
+  },
+  "fit": {
+    "them": [
+      "Your child needs a person: someone who sees confusion, talks it through and watches every step of the work.",
+      "Your child needs AP Calculus, or a coach for AMC 8 or Math Kangaroo.",
+      "You want help with this term's school math, in the school's own order.",
+      "You want a tutor, not a program, to own the plan."
+    ],
+    "amp": [
+      "You want math every day, at any hour, with no class to book.",
+      "You want every answer checked and explained the moment it is given.",
+      "You want old skills brought back on a schedule, and a mastery rule you can read.",
+      "You have more than one child. Each additional child is $399 a year.",
+      "You already pay a tutor and want daily practice between sessions."
+    ]
+  },
+  "questions": [
+    {
+      "question": "Is AMP cheaper than Cuemath?",
+      "answer": "Yes, for a year: Cuemath's 12-month plans are $1,560 to $2,652 for 104 live classes, by grade and class length [2]. AMP is $599 a year for the first child and $399 for each more, with unlimited practice. Cuemath's price buys hours with a tutor; AMP's buys a program that plans and checks every problem."
+    },
+    {
+      "question": "Does Cuemath use AI?",
+      "answer": "Cuemath says its classes are taught by a live tutor, not by AI or recorded video [1]. AMP runs no AI model while a learner works either. Every problem, hint and explanation comes from tested code."
+    },
+    {
+      "question": "Can we use AMP alongside Cuemath?",
+      "answer": "Yes. AMP is a separate program for the days between classes. It places the learner within the first 24 problems and keeps a level in each of 14 strands, and its printable progress report shows that level strand by strand, ready to share with a tutor."
+    },
+    {
+      "question": "Does AMP have live tutors?",
+      "answer": "No. AMP gives a one-step hint, a written lesson and worked steps for every problem, but no person teaches. A child who needs a person is better served by a tutor such as Cuemath."
+    },
+    {
+      "question": "Has Cuemath been shown to improve math scores?",
+      "answer": "We found no study comparing Cuemath students with similar students, and no Cuemath entry in Evidence for ESSA or the What Works Clearinghouse [10][11]. Tutoring in general has strong evidence [13]."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cuemath US home page",
+      "url": "https://www.cuemath.com/en-us/"
+    },
+    {
+      "title": "Pricing (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/pricing/"
+    },
+    {
+      "title": "About us (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/about-us/"
+    },
+    {
+      "title": "Cuemath reviews (Trustpilot)",
+      "url": "https://www.trustpilot.com/review/cuemath.com"
+    },
+    {
+      "title": "Our impact (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/our-impact/"
+    },
+    {
+      "title": "Frequently asked questions (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/frequently-asked-questions/"
+    },
+    {
+      "title": "Online math classes (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/math-online-classes/"
+    },
+    {
+      "title": "Online math tutor (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/online-math-tutor/"
+    },
+    {
+      "title": "High school math classes (Cuemath)",
+      "url": "https://www.cuemath.com/en-us/math-online-classes/high-school/"
+    },
+    {
+      "title": "Search for Cuemath (Evidence for ESSA, Johns Hopkins University)",
+      "url": "https://www.evidenceforessa.org/?s=cuemath"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Demszky, Wang, Geraghty & Yu (2023), Does feedback on talk time increase student engagement? (ERIC ED638947)",
+      "url": "https://eric.ed.gov/?id=ED638947"
+    },
+    {
+      "title": "Kraft, Schueler & Falken (2026), What impacts should we expect from tutoring at scale?",
+      "url": "https://doi.org/10.3102/00346543261446660"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    }
+  ]
+}
