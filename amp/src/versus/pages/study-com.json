@@ -2,130 +2,153 @@
   "slug": "study-com",
   "name": "Study.com",
   "category": "all-in-one",
-  "checked": "2026-11-21",
-  "benefit": "Math practice that adapts",
-  "line": "Study.com teaches all subjects by video in a set order. AMP is only math and picks each problem from the last answer.",
-  "description": "AMP vs Study.com: Study.com's math is short videos and quizzes in a set order. AMP finds the level, then chooses, explains and reviews every problem.",
-  "verdict": "Study.com puts every subject from grade 3 to 12 in one subscription, with short videos, a phone app and expert help at any hour [1][3]. Its math is a fixed course: watch a lesson, take a quiz, and the parent decides what comes next [2]. AMP is only math, from counting through precalculus. It finds the level, chooses every problem, explains every miss and brings old skills back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Study.com teaches math in video lessons, in a set order. In AMP, the problem is the unit and every answer sets the next.",
+  "description": "AMP vs Study.com: Study.com teaches math in video lessons and quizzes, in a set order. In AMP, assessment, teaching and review are continuous.",
+  "verdict": "Study.com teaches math in courses of video lessons, each followed by a short quiz, in a set order the parent paces [1][2]. In AMP, assessment and teaching are continuous: every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "The learner spends the time solving problems",
-      "body": "Study.com's FAQ says \"the vast majority\" of its homeschool lessons are video lessons, each followed by a short quiz [2]. In AMP the learner works problems one at a time, and the teaching comes to the problem: a hint, a lesson with a worked example, worked steps after the answer. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video; the authors put the benefit of extra doing at more than six times that of extra watching or reading, in correlational data [8].",
-      "research": ["lessons", "hints"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Study.com describes no placement test. The parent or learner picks a course at any grade, and the course runs in a set order of chapters and lessons, with a quiz after each lesson and a test after each chapter [1][2].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "AMP finds the level in each part of math",
-      "body": "Study.com describes no placement test. A family picks a course by grade, and the course runs in a set order of chapters and lessons [1][2]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, then picks every next problem from the answers: new work, a prerequisite, or review. A learner can work at grade 6 in geometry and grade 3 in fractions at the same time.",
-      "research": ["level"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Study.com the unit is the video lesson: a video of about five minutes, with a transcript and flashcards, then a short quiz [1][2]. Its FAQ says the vast majority of homeschool lessons are video lessons [2]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [7].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "A miss gets worked steps, not the same quiz",
-      "body": "Study.com's FAQ says a lesson quiz can be retaken with the same questions [2]. We found no hints or worked steps described for a missed quiz question in the pages we read [2]. Its homework library lists step-by-step solutions, a separate feature [3]. AMP shows right or wrong, the correct answer and the worked steps after every answer. Each next problem is generated fresh from its type.",
-      "research": ["feedback"]
+      "title": "Feedback on every answer",
+      "body": "After each answer AMP shows whether it was right, the correct answer and the worked steps. Study.com's FAQ says a lesson quiz can be retaken with the same questions [2]. We found no hints or worked steps for a missed quiz question in the pages we read [2]. Across 40 studies of computer feedback, feedback that explains had the largest average effect [8].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "Learned means four of five, without help",
-      "body": "Study.com states no mastery rule. Scores are not averaged across tests, and the parent decides which ones count [2]. In AMP a skill counts as Strong when four of the last five answers are right without help, and an answer after a hint or the lesson does not count. Two misses in a row send practice back to what the skill builds on. We found no automatic return to earlier skills in Study.com's materials [2].",
-      "research": ["mastery", "hints"]
+      "title": "Moving on, and going back",
+      "body": "In AMP a learner shows a skill by getting it right without help, more than once, and moves on. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Study.com states no mastery rule. Scores are not averaged across tests, and the parent decides which ones count [2]. We found no automatic return to earlier skills in the pages we read [2]. AMP's rule is open source: open to peer review and contribution.",
+      "research": [
+        "mastery",
+        "hints"
+      ]
     },
     {
-      "title": "Review arrives on a schedule, mixed with new work",
-      "body": "A Study.com course moves forward chapter by chapter, with a test at the end of each [2][4]. We found no scheduled review of earlier lessons in its published materials [2]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. A miss starts the schedule over.",
-      "research": ["review"]
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. A Study.com course moves forward chapter by chapter, with a test at the end of each [2][3]. We found no scheduled review of earlier lessons in the pages we read [2][3]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [9].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "The parent does not plan, pace or grade",
-      "body": "On Study.com the parent sets the pace, decides each day's work, grades the optional assignments and sets the final course grade [2]. AMP places the learner, chooses each problem, checks it exactly and schedules review. The adult sees the level in every strand, the time spent, and the actual problems behind each number.",
-      "research": ["progress"]
-    },
-    {
-      "title": "It starts at counting, and it prints",
-      "body": "The math courses on Study.com's homeschool list begin at grade 3 [1]. AMP runs from counting in kindergarten through precalculus in one program, 336 skills on one map. It prints unlimited workbooks made for each learner, each with a worked answer key, and results entered from paper count toward the level. We found no personalized workbooks on Study.com's homeschool plans [3]."
+      "title": "The adult's part",
+      "body": "In AMP the adult does not plan, teach or grade. AMP places the learner, chooses each problem, checks it and schedules review. The adult sees a level for each part of math and the actual problems behind every number. On Study.com the parent sets the pace, decides each day's work, grades the optional assignments and sets the final course grade [2].",
+      "research": [
+        "progress"
+      ]
     }
   ],
   "rows": {
-    "price": "Homeschool Edition: $59.99 a month, 45% off billed yearly. Basic Edition: $29.99 a month. All subjects. Extra-student fee not published [2][3].",
-    "buyers": "Families, directly, with one free parent admin account. No free trial listed: the FAQ offers a 30-day money-back guarantee, and the full term is charged at sign-up [2][4].",
-    "range": "Math from grade 3 through precalculus, plus Statistics 101 and a CLEP Calculus study guide. No math courses below grade 3 listed [1].",
-    "start": "No placement test or diagnostic described. The parent or learner picks any course at any grade [1][2].",
-    "teaching": "Video lessons of about five minutes, with transcripts, captions and flashcards. Expert instructors answer questions at any hour [1][2].",
-    "next": "A fixed order of chapters and lessons, or a parent-built Custom Course of up to 50 lessons [2].",
+    "range": "Grade 3 math through Precalculus, plus Statistics 101, in separate courses [1][4].",
+    "start": "The parent or learner picks a course at any grade. We found no placement test [1][2].",
+    "teaching": "Video lessons of about five minutes, with transcripts and flashcards. Expert instructors answer questions at any hour [1][2].",
+    "next": "The course's set order of chapters and lessons, or a custom course the parent builds from chosen lessons [2].",
     "mastery": "No stated rule. Lesson quizzes retake with the same questions, chapter tests with new ones. The parent decides which scores count [2].",
-    "review": "No scheduled review of earlier lessons found in its published materials [2][4].",
-    "print": "Printable lesson transcripts. 6th Grade Math includes a chapter of lesson plans. No personalized workbooks on the homeschool plans [2][3][4].",
-    "adult": "The parent sets the pace, plans daily work, grades optional assignments and sets the final course grade [2].",
-    "reports": "A free parent view: each student's progress, a downloadable gradebook of quiz scores, and weekly progress reports [2].",
-    "evidence": "No outcome study found on its site. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [6][7]."
+    "review": "A test at the end of each chapter. We found no scheduled review of earlier lessons [2][3].",
+    "print": "Printable lesson transcripts. 6th Grade Math includes a chapter of lesson plans [2][3].",
+    "adult": "Sets the pace, plans daily work, grades optional assignments and sets the final course grade [2].",
+    "reports": "Each student's progress, a downloadable gradebook of quiz scores, and weekly progress reports [2].",
+    "evidence": "No outcome study found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [5][6]."
   },
+  "open": [
+    "mastery"
+  ],
   "theirs": [
-    "Study.com sells online video courses, test prep and college-credit courses. Its homeschool edition sits inside the main site and covers every subject from grade 3 to 12 [1][3]. The company says more than 32,000 families use its homeschool programs [1]. This page compares the math: grades 3 through 8, Algebra I, Geometry, Algebra II, Precalculus and Statistics 101 [1].",
-    "A lesson is a video of about five minutes, with a transcript and flashcards. A short quiz ends each lesson, and a test ends each chapter [1][2]. Most homeschool lessons are video lessons [2]. The courses are long: 6th Grade Math has 13 chapters and 118 lessons, and Precalculus has 26 chapters and 205 [4][5].",
-    "The parent runs the plan. Study.com suggests a weekly lesson count toward an end date the parent sets, and a Custom Course tool builds a course from any lessons, up to 50 [2]. Expert instructors answer questions at any hour [1][3]."
+    "Study.com makes online video courses, test prep and college-credit courses. Its homeschool edition covers every subject from grade 3 to 12 [1][2]. In math it has courses for grades 3 through 8, Algebra I, Geometry, Algebra II, Precalculus and Statistics 101 [1].",
+    "A family picks a course, and the course runs in a set order of chapters and lessons [2]. Most lessons are a video of about five minutes, with a transcript and flashcards, and a short quiz ends each one. A test ends each chapter [1][2]. The parent sets the pace and the daily work, and can build a custom course from chosen lessons [2]. Expert instructors answer questions at any hour [1]."
   ],
   "credit": [
-    "Every subject from grade 3 to 12 in one subscription, with AP and CLEP test prep, for $59.99 a month, with 45% off advertised for annual billing [1][3]. AMP is only math.",
-    "Far more video than AMP: short lessons with transcripts, closed captions and speed control, and a mobile app [1][2]. AMP has films for a growing share of problem types and no app in the stores.",
-    "People to ask. Expert instructors answer questions at any hour, beside a library of 2.8 million answered homework questions [1][3]. AMP has no human help and no chat tutor.",
-    "A route to college credit: more than 235 courses recommended by ACE and NCCRS, earned through a proctored final on the College Accelerator plan, and College Saver Pro lists the same courses [2][3]. AMP offers no credit or transcripts.",
-    "Math past precalculus: Statistics 101, a CLEP Calculus study guide, and a precalculus course with lessons on limits, continuity and the formal definition of the derivative [1][5]. AMP stops at precalculus."
+    "Short video lessons with transcripts, captions and flashcards [1][2].",
+    "A person to ask. Expert instructors answer questions at any hour [1].",
+    "Chapter tests can be retaken with new questions [2]."
   ],
   "evidence": {
     "theirs": [
-      "We found no study of learning outcomes on Study.com's site: no randomized trial, no comparison-group study, no usage analysis. It claims no ESSA tier on the pages we read. Study.com has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report (checked November 2026) [6][7].",
-      "What it offers instead is scale and testimony. The company reports more than 32,000 homeschool families and 30 million monthly users across the whole site; these are its own counts [1][2][3]. The FAQ says homeschoolers do at least as well as public school students on tests and in college admission [2]. That is a claim about homeschooling in general. It does not measure Study.com."
+      "We found no outcome study of Study.com on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [5][6]."
     ],
     "ours": [
-      "The research behind AMP is about what a learner does after the explanation. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and marking right or wrong only 0.05; these are averages across studies, not a head-to-head trial [9]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [10]. AMP explains every answer and schedules mixed review of every learned skill. We expect that to show in outcomes against a course of videos and quizzes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the authors estimate the benefit of extra doing at more than six times that of extra watching or reading, and the data are correlational [7]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, practice that mixed and spaced topics scored 62% a month later, against 38% for practice in blocks [9]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want every subject, grades 3 to 12, in one subscription, with 45% off advertised for annual billing.",
-      "Your child learns well from short videos with transcripts and captions, on a phone app.",
-      "You want a person to answer questions at any hour.",
-      "Your high schooler wants college credit through proctored exams, or math past precalculus."
+      "Your child learns well from a short video lesson before practice, with a person to ask at any hour."
     ],
     "amp": [
-      "Your child is between counting and grade 3. Study.com's math starts at grade 3.",
-      "You want the program, not you, to find the level, choose each problem and check it.",
-      "You want every miss explained with worked steps, and old skills brought back on a schedule.",
-      "You like paper: unlimited workbooks made for your child, with worked answer keys.",
-      "You use Study.com for other subjects and want math that adapts to every answer."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer followed by the correct answer and the worked steps.",
+      "You want the program, not you, to choose each problem and check it.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than Study.com?",
-      "answer": "By the month they are close: AMP is $59 and Study.com's Homeschool Edition is $59.99 [3]. Study.com advertises 45% off for annual billing and covers every subject [3]. Its page does not show the yearly figure; by our arithmetic, 45% off twelve months at $59.99 is about $396, below AMP's $599. AMP's price buys a program that places the learner, chooses each problem, schedules review and prints workbooks, from counting through precalculus."
+      "question": "How is AMP different from Study.com?",
+      "answer": "Study.com teaches math in video lessons, each followed by a short quiz, in a set order the parent paces [1][2]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Does Study.com have a free trial?",
-      "answer": "Its FAQ answers the free-trial question with a 30-day money-back guarantee, and it charges the full term at sign-up [2][4]. AMP is free to start without a card, with 100 answers and 5 workbooks per learner, and a paid plan has a full refund within 30 days."
+      "question": "Does Study.com work?",
+      "answer": "We found no outcome study of Study.com on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [5][6]."
     },
     {
-      "question": "Does Study.com's math adapt to my child?",
-      "answer": "Not on its own. Study.com describes no placement test, lesson quizzes retake with the same questions, and the parent or learner chooses courses and pace [2]. Its \"customized learning path\" is the parent ordering lessons with the Custom Course tool [1][2]."
-    },
-    {
-      "question": "Can we use Study.com for other subjects and AMP for math?",
-      "answer": "Yes. AMP is only math, so it sits beside whatever covers the other subjects. It finds the level within the first 24 problems and needs no lesson plan from the parent."
-    },
-    {
-      "question": "Can my high schooler earn college credit with AMP or Study.com?",
-      "answer": "Study.com lists more than 235 courses for dual credit, with ACE and NCCRS recommendation. Credit needs a proctored final exam on the College Accelerator plan, and the FAQ says to check transfer with the college [2]. AMP offers no credit, transcripts or accreditation."
+      "question": "Can a learner use both?",
+      "answer": "Yes. A learner can use Study.com for other subjects and AMP for math. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    { "title": "Study.com Homeschool (Study.com)", "url": "https://study.com/homeschool/index.html" },
-    { "title": "Homeschool FAQ (Study.com)", "url": "https://study.com/homeschool/faq.html" },
-    { "title": "Homeschool plans and pricing (Study.com)", "url": "https://study.com/homeschool/plans.html" },
-    { "title": "6th Grade Math: Homeschool Curriculum (Study.com)", "url": "https://study.com/academy/course/6th-grade-math-homeschool-curriculum.html" },
-    { "title": "High School Precalculus course (Study.com)", "url": "https://study.com/academy/course/high-school-precalculus.html" },
-    { "title": "Evidence for ESSA, site search for Study.com", "url": "https://www.evidenceforessa.org/?s=study.com" },
-    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
-    { "title": "Koedinger et al. (2015), Learning is not a spectator sport", "url": "https://doi.org/10.1145/2724660.2724681" },
-    { "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment", "url": "https://doi.org/10.3102/0034654314564881" },
-    { "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" }
+    {
+      "title": "Study.com Homeschool (Study.com)",
+      "url": "https://study.com/homeschool/index.html"
+    },
+    {
+      "title": "Homeschool FAQ (Study.com)",
+      "url": "https://study.com/homeschool/faq.html"
+    },
+    {
+      "title": "6th Grade Math: Homeschool Curriculum (Study.com)",
+      "url": "https://study.com/academy/course/6th-grade-math-homeschool-curriculum.html"
+    },
+    {
+      "title": "High School Precalculus course (Study.com)",
+      "url": "https://study.com/academy/course/high-school-precalculus.html"
+    },
+    {
+      "title": "Evidence for ESSA, site search for Study.com",
+      "url": "https://www.evidenceforessa.org/?s=study.com"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Koedinger et al. (2015), Learning is not a spectator sport",
+      "url": "https://doi.org/10.1145/2724660.2724681"
+    },
+    {
+      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    }
   ]
 }

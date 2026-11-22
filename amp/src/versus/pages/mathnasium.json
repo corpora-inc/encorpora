@@ -3,117 +3,108 @@
   "name": "Mathnasium",
   "maker": "Mathnasium Franchisor LLC",
   "category": "tutoring",
-  "checked": "2026-11-21",
-  "line": "Mathnasium teaches in scheduled sessions, in a center or online. AMP gives checked, explained practice any day.",
-  "description": "AMP vs Mathnasium: live instructors in scheduled sessions against checked, adaptive math practice at home on any day. Price, method, review and evidence.",
-  "verdict": "Mathnasium puts a live instructor with a child, in a center or online, and for a child who needs a person, that is a real strength [1][7]. It recommends two to three sessions a week and assigns no homework, its FAQ sends families to a local center for prices, and its results page gives percentages with no stated method [1][3]. AMP brings checked, explained practice home on any day, brings each old skill back on a schedule, and puts its price on its website.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Mathnasium teaches a learning plan in sessions. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Mathnasium: Mathnasium teaches a plan set by assessment, in sessions. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Mathnasium assesses a learner at enrollment, builds a learning plan from the result, and teaches it in sessions with a live instructor [1][2]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Math happens between center visits too",
-      "body": "Mathnasium recommends two to three sessions a week and assigns no homework; part of each session goes to the child's school homework [1]. AMP is open at home on any day. Every answer is checked at once and followed by the correct answer and worked steps, and unlimited workbooks made for the learner print with a worked answer key. Across 40 studies of computer-based feedback, feedback that explains did best [11].",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. Every answer, right or wrong, updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Mathnasium assesses a learner at enrollment, in writing and out loud, and builds a learning plan from the result [1][2]. One center describes a Progress Check partway through the plan, and a new assessment before a new plan [6].",
       "research": [
-        "feedback"
+        "level"
       ]
     },
     {
-      "title": "AMP's price is on its website",
-      "body": "Mathnasium lists no prices. Its FAQ describes a flat enrollment fee with regular attendance, says pricing varies by program and area, and sends families to a local center; it also says it typically costs less than private tutoring [1]. AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each child after. That pays for placement, every problem chosen and checked, scheduled review and unlimited workbooks, from counting through precalculus. The first 100 answers and 5 workbooks are free, with no card."
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Mathnasium the unit is the session. An instructor teaches the plan, in a center or online, and the company recommends two to three sessions a week and assigns no homework [1][7]. Across 55 studies, worked examples improve performance in math [12].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "The plan changes at every answer",
-      "body": "Mathnasium builds a customized learning plan from a written and verbal assessment [1][2]. One center explains that each missed question becomes a skill in the plan, that a Progress Check partway through can move a student along, and that a new plan follows a new assessment [6]. AMP keeps a level in each of 14 strands of math and updates it after every answer given without help. From that it picks each next problem: new work, a prerequisite, or review. Two misses in a row on a skill send practice back to what that skill builds on.",
+      "title": "Help is recorded, not forbidden",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. So help stays in reach at every problem. In Mathnasium, a learner shows mastery on a separate check done without the instructor's help. One center describes it coming after 10 to 20 pages on a skill [5][6].",
       "research": [
-        "level",
+        "hints",
         "mastery"
       ]
     },
     {
-      "title": "Each old skill comes back on a schedule",
-      "body": "One Mathnasium center describes how it checks retention: a Progress Check about halfway through a learning plan, a Post-Assessment at its end, and skills not yet mastered folded into the next plan [6]. AMP brings each learned skill back on its own schedule, after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [10].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. One Mathnasium center describes how it checks retention: a Progress Check about halfway through a learning plan, a Post-Assessment at its end, and skills not yet mastered folded into the next plan [6]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [10].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Every rule is public",
-      "body": "Mathnasium describes its curriculum as proprietary [4]. One center describes its mastery check: after 10 to 20 pages on a skill, the student does a page without the instructor's help [6]. AMP's code is open source, so anyone can read its mastery rule (four of the last five right without help), its review schedule and its grading. An answer given after a hint or the lesson never counts toward mastery.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus. A learner further along in geometry than in fractions gets work at both levels, and repeated misses send practice back to what a skill builds on. Mathnasium's method is laid out in levels: seven of number sense, then algebra readiness, then algebra and higher math [2]. One center describes a Post-Assessment at the end of a plan, where 85% marks a level as mastered [6].",
       "research": [
-        "mastery",
-        "hints"
+        "level",
+        "mastery"
       ]
     }
   ],
   "rows": {
-    "price": "Not listed. The FAQ says pricing varies by program and area and sends families to a local center. It says it typically costs less than private tutoring [1].",
-    "buyers": "Families, through a local center. Enrollment starts with a form and a free assessment [4].",
-    "range": "Kindergarten through grade 12 [1]. Levels of number sense, then algebra readiness, then algebra and higher math [2].",
-    "start": "A free written and verbal assessment at enrollment, which can cover topics school has not reached yet [1][4].",
-    "teaching": "A live instructor, in a center or online [7], working through talk, pictures, writing, mental math and physical objects [2].",
-    "next": "A customized learning plan built from the assessment [1][2]. One center turns each missed question into a skill and works on three skills at a time [6].",
-    "mastery": "A mastery check after 10 to 20 pages on a skill, done without the instructor's help, as one center describes it [6].",
-    "review": "Retention checked at milestones, in one center's account: a Progress Check about halfway through a learning plan and a Post-Assessment at its end [6].",
-    "print": "Work is done in the center; one center says its pages are on iPads [6]. No homework is sent home [1].",
-    "adult": "Little: an instructor teaches each session, and no homework is assigned [1].",
-    "reports": "One center sends parents a monthly progress report (attendance, skills mastered and remaining) and makes a monthly call [6].",
-    "evidence": "Results-page percentages with no sample or method [3]. An FAQ claim of independent studies, none named [1]. No Evidence for ESSA entry and no WWC intervention report [8][9]."
+    "range": "Kindergarten through grade 12 [1]. Seven levels of number sense, then algebra readiness, then algebra and higher math [2].",
+    "start": "A separate written and verbal assessment at enrollment, which can cover topics school has not reached yet [1][4].",
+    "teaching": "A live instructor in sessions, in a center or online [1][7], using mental, visual, verbal, hands-on and written work [2].",
+    "next": "A learning plan built from the assessment [1][2]. One center turns each missed question into a skill and works on three skills at a time [6].",
+    "mastery": "A mastery check done without the instructor's help. One center gives it after 10 to 20 pages on a skill [5][6].",
+    "review": "Checked at milestones, in one center's account: a Progress Check partway through a plan and a Post-Assessment at its end [6].",
+    "print": "Work is done in sessions; one center says its pages are on iPads [6]. No homework is assigned [1].",
+    "adult": "An instructor teaches and grades the work [2][5]. No homework is assigned [1].",
+    "reports": "One center sends parents a monthly progress report, with attendance and skills mastered and remaining, and makes a monthly call [6].",
+    "evidence": "Results-page percentages with no sample or method [3]. We found no Evidence for ESSA entry and no What Works Clearinghouse intervention report [8][9]."
   },
   "theirs": [
-    "Mathnasium is a chain of after-school math learning centers. It was founded in Los Angeles in 2002, began franchising in 2003, and most centers are franchises [5]. Its FAQ counts more than 1,000 centers in the U.S. [1], and it also offers live online tutoring, Mathnasium@home [7]. It serves kindergarten through grade 12 and describes itself as an after-school mathematics program [1][4].",
-    "A family starts by contacting a local center and booking a free assessment, written and verbal [1][4]. From it the center builds a customized learning plan [2]. An instructor teaches for understanding, starting from what the child already knows, with mental, visual, verbal, hands-on and written work [2]. It recommends two to three sessions a week; part of each session goes to the child's school homework, and no homework is assigned [1].",
-    "The method is built around number sense: counting, wholes and parts, proportional thinking and related themes, across seven levels, then algebra readiness and higher math [2]. One center describes the cycle: three skills at a time, 10 to 20 pages on each, then a mastery check done without the instructor's help; a Progress Check partway through the plan; and a Post-Assessment at the end, where 85% marks a level as mastered [6]."
+    "Mathnasium is a chain of after-school math learning centers. It was founded in Los Angeles in 2002, and most centers are franchises [5]. It also teaches live online, through Mathnasium@home [7]. It serves kindergarten through grade 12 and describes itself as an after-school mathematics program [1][4].",
+    "A learner starts with a written and verbal assessment, and the center builds a customized learning plan from it [1][2]. An instructor teaches for understanding, starting from what the learner already knows, with mental, visual, verbal, hands-on and written work [2]. Mathnasium recommends two to three sessions a week, sets aside part of each session for school homework, and assigns no homework [1]. One center describes the cycle: three skills at a time, a mastery check on each, a Progress Check partway through the plan, and a Post-Assessment at the end [6]."
   ],
   "credit": [
-    "A live instructor teaches face to face, with talk, pictures, writing and physical objects [2]. AMP has no live teacher, and its few built models are on screen.",
-    "A person places the child: a free written and verbal assessment at enrollment that can reach past what school has taught [1][4].",
-    "Help with current school homework is part of each session [1]. AMP practices its own problems.",
-    "More than 1,000 centers in the U.S. [1], plus live online sessions with its instructors through Mathnasium@home [7]. Someone else runs math time, with no homework to oversee [1]."
+    "A live instructor teaches with talk, pictures, writing and physical objects, starting from what the learner already knows [2].",
+    "A person places the learner, in writing and out loud, and the assessment can reach past what school has taught [1][4].",
+    "Mastery is checked without help before a learner moves on [5][6]."
   ],
   "evidence": {
     "theirs": [
-      "Mathnasium's results page, under the heading \"Proven Outcomes\", gives three numbers: 94% of parents report improved skills and understanding, 93% report an improved attitude, and 90% of students saw improved school grades [3]. The page gives no sample size, method, date or comparison group. Two of the numbers are labeled as parent reports, and none is presented as a measured result.",
-      "Its FAQ says the method has been \"proven through the success of hundreds of thousands of students\" [1]. A count of past students is not a comparison with students who did not attend. The FAQ also says multiple independent studies found better scores on standards-based tests in 20 sessions or fewer, but it names no study and gives no sample or result [1]. As of November 2026 it has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9].",
-      "Tutoring as a whole has strong evidence. Across 263 randomized trials the average effect was 0.40 standard deviations, and 0.16 to 0.22 for large U.S. programs measured on standardized tests [12]. Those are averages across many tutoring programs, not results for Mathnasium."
+      "Mathnasium's results page, under the heading \"Proven Outcomes\", gives three numbers: 94% of parents report improved skills and understanding, 93% report an improved attitude, and 90% of students saw improved school grades [3]. The page gives no sample size, method, date or comparison group.",
+      "Its FAQ says multiple independent studies found better scores on standards-based tests, but it names no study and gives no sample or result [1]. We found no entry for Mathnasium in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9].",
+      "Tutoring as a whole has been studied widely. Across 263 randomized trials the average effect was 0.40 standard deviations, and 0.16 to 0.22 for large U.S. programs measured on standardized tests [11]. Those are averages across many tutoring programs, not results for Mathnasium."
     ],
     "ours": [
-      "AMP's rules come from findings that bear on the days between center visits. Feedback that explains averaged 0.49 across 40 studies of computer-based feedback, against 0.05 for marking right or wrong alone [11]. Mixed, spaced practice scored 62% against 38% a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [10]. We think checked, explained practice most days, with old skills returning on a schedule, gives a learner something center time alone does not. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings AMP leans on hardest: worked examples improve math performance across 55 studies [12], and practice that mixes and spaces topics scored 62% against 38% for practice in blocks a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [10]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Your child needs a person in the room to explain, notice frustration and encourage.",
-      "Your child learns best by talking math through and handling real objects.",
-      "You want help with this week's school homework as part of each session.",
-      "There is a center nearby and you want math handled outside the home, with no homework."
+      "Your child learns best by talking math through with a person and handling real objects."
     ],
     "amp": [
-      "You want math most days at home, not only on center days.",
-      "You want to see the price and try it free before you commit.",
-      "You want every miss explained and old skills brought back on a schedule, without planning it.",
-      "Your child already goes to Mathnasium and you want checked practice between visits.",
-      "Your learner is far ahead or behind in one part of math and needs each strand placed on its own."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math.",
+      "Your child goes to Mathnasium and you want checked practice between sessions."
     ]
   },
   "questions": [
     {
-      "question": "How much does Mathnasium cost?",
-      "answer": "Mathnasium does not list prices. Its FAQ says pricing varies by program and area and sends families to a local center [1]. It says it typically costs less than private tutoring [1]. AMP is $599 a year or $59 a month for the first child, and the first 100 answers are free."
+      "question": "How is AMP different from Mathnasium?",
+      "answer": "Mathnasium assesses a learner, builds a learning plan, and teaches it in sessions with an instructor [1][2]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Does Mathnasium give homework?",
-      "answer": "No. Mathnasium assigns no homework and sets aside session time for school homework [1]. AMP prints unlimited workbooks made for each learner, with worked answer keys, and results entered from paper count toward the learner's level."
+      "question": "Does Mathnasium work?",
+      "answer": "Its results page reports percentages with no sample or method [3]. Its FAQ cites independent studies but names none [1]. We found no entry in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9]."
     },
     {
-      "question": "Is Mathnasium proven to work?",
-      "answer": "Its results page reports percentages with no sample or method [3]. Its FAQ cites independent studies but names none [1]. It has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9]."
-    },
-    {
-      "question": "Can my child use AMP and Mathnasium at the same time?",
-      "answer": "Yes. AMP is a separate web program that places the learner within the first 24 problems and keeps a level in each of 14 strands. Mathnasium assigns no homework [1], so practice on AMP at home does not compete with center homework."
-    },
-    {
-      "question": "Does AMP replace a tutor?",
-      "answer": "No. AMP has no live teacher. It gives practice at the learner's level, with a hint, a lesson and worked steps for every problem, and it can sit beside a tutor or a center."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs, and Mathnasium assigns no homework [1]. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -158,12 +149,12 @@
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
-    },
-    {
       "title": "Kraft, Schueler & Falken (2026), What impacts should we expect from tutoring at scale?",
       "url": "https://doi.org/10.3102/00346543261446660"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]
 }

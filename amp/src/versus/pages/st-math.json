@@ -3,120 +3,107 @@
   "name": "ST Math",
   "maker": "MIND Education",
   "category": "school",
-  "checked": "2026-11-21",
+  "checked": "2026-11-22",
   "benefit": "Teaching at every problem",
-  "line": "ST Math teaches with visual puzzles to grade 8. AMP adds lessons, hints and scheduled review through precalculus.",
-  "description": "AMP vs ST Math: what ST Math's randomized trial found, how its visual puzzles teach, and how AMP adds lessons, hints and scheduled review through precalculus.",
-  "verdict": "ST Math has what few math programs have: an independent randomized trial, with a small effect, and a Strong rating from Evidence for ESSA [2][14]. Its visual puzzles start in PreK, and a family pays $99.99 a year for one child [1][3]. But we found no hints in the software, MIND's guide turns to an adult when a child is stuck, and it stops at grade 8 [6][1]. AMP teaches at every problem, finds the level in each part of math, and runs through precalculus.",
+  "line": "ST Math teaches with visual puzzles in a fixed order. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs ST Math: ST Math teaches through visual puzzles in a fixed sequence. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "ST Math teaches through visual puzzles in a fixed sequence, one grade's Journey at a time, and for a stuck student MIND's guide turns to an adult [3][5][7]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP teaches on the screen, at every problem",
-      "body": "ST Math teaches through the puzzle, and its feedback is an animation of what the answer does [4]. We found no hints in the software. For a stuck student, MIND's guide points to an adult's questions, hands-on materials and a few in-game tools, and says not to give the answer [6]. Modulo's homeschool review notes that some users want more direct instruction or guidance [30]. AMP gives every problem type a one-step hint and a written lesson with a worked example, and shows the correct answer and worked steps after every answer.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem. We found no placement test in ST Math: a student starts on the Journey for their grade [7], and the sequence is fixed, taken at the student's own pace [3]. In the full program, each objective from grade 2 opens and closes with a quiz, and students move on whatever their post-quiz score [9].",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In ST Math the teaching is the puzzle itself, concepts before symbols [1]. We found no hints in the software. For a stuck student, MIND's guide turns to an adult's questions, hands-on materials and a few in-game tools, and says not to give the answer [5]. Across 55 studies, worked examples improve performance in math [27].",
       "research": [
         "lessons",
         "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps. In ST Math an animation shows what the answer does: the penguin JiJi gets across or does not [3][22]. The authors of the independent trial noted that every student who picks the same wrong answer sees the same animation [11]. Across 40 studies of computer feedback, feedback that explains had the largest average effect [26].",
+      "research": [
         "feedback"
       ]
     },
     {
-      "title": "It starts at the learner's level, strand by strand",
-      "body": "We found no placement test in ST Math: a student starts on the Journey for their grade [8], and MIND recommends keeping students on their assigned grade [7]. Moving a struggling child to an earlier grade is a choice an adult makes by hand [7][31]. In the independent trial, the lowest performers finished under half their grade's content, and the authors suggested they may have needed below-grade work [14]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, and two misses in a row send practice back to what the skill builds on.",
+      "title": "Moving on, and going back",
+      "body": "In AMP a learner shows a skill by getting it right without help, more than once. AMP keeps a separate level for each part of math, and repeated misses send practice back to what the skill builds on. In ST Math the next level opens when every puzzle in a level is right. Two wrong answers restart the level, until 15 tries on it turn the restart off [3][8]. MIND recommends keeping a student on their assigned grade, and moving to an earlier grade is a step the adult takes [6][23]. In the independent trial, students with the lowest starting scores finished under half their grade's content, and the authors suggested they may have needed work from earlier grades [11].",
       "research": [
-        "level",
-        "mastery"
+        "mastery",
+        "level"
       ]
     },
     {
-      "title": "AMP measures mastery in numbers and symbols",
-      "body": "In ST Math a level counts when every puzzle in it is right, and two wrong answers restart it until 15 tries turn the restart off [4][9]. In the full program, a post-quiz of typical test questions closes each objective from grade 2, but students move on whatever they score [10]. The trial's authors suggested that transfer from the game to math tests may be lower than its developers expected [14]. AMP shows a skill as Strong at four of the last five answers right without help, and 547 of its problem types need a typed number, fraction, line of work, plot or built model.",
-      "research": [
-        "mastery"
-      ]
-    },
-    {
-      "title": "Old skills come back on a schedule",
-      "body": "ST Math returns to a topic where its fixed sequence spirals back to it [4]. Mixed Review sits in bonus content after the Journey [11], and the family version, ST Math Focus, leaves it out [3][5]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial of 787 seventh graders, students given mixed, spaced practice scored 62% on the researchers' own test a month later, and those who practiced in blocks scored 38% [33].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In ST Math, topics come back where the fixed sequence spirals to them [3]. Mixed Review is bonus content after the Journey [10], and the streamlined ST Math Focus leaves it out [4]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [25].",
       "research": [
         "review"
       ]
-    },
-    {
-      "title": "One program from counting through precalculus",
-      "body": "ST Math covers PreK through grade 8, and MIND calls it a supplemental program [1][4]. AMP runs from counting through precalculus on one map of 336 skills, so a learner never changes programs at grade 9. It prints unlimited workbooks made for each learner, each with a worked answer key. The only ST Math workbooks we found are fixed practice books for its Texas edition [24]."
-    },
-    {
-      "title": "It works on a phone and starts free",
-      "body": "MIND says the ST Math student experience does not support phones or Android tablets, and it needs a persistent high-speed connection [12]. We found no free trial; MIND points families to free sample games [13]. AMP runs in any current browser on a phone, tablet or computer. Every learner gets 100 answers and 5 workbooks free, with no card."
     }
   ],
   "rows": {
-    "price": "At home: $99.99 a year or $9.99 a month; each extra student $20 a year or $2 a month [3]. Schools: by quote [2].",
-    "buyers": "Families in the US, Canada and Mexico [27], and schools. We found no free trial; MIND offers free sample games [13].",
-    "range": "PreK through grade 8, as a supplemental program [1][4].",
-    "start": "We found no placement test. A student starts on the Journey for their grade [8].",
-    "teaching": "Visual, mostly wordless puzzles; an animation shows what each answer does [4][26]. We found no hints; MIND's guide has an adult coach a stuck student [6].",
-    "next": "A fixed sequence, at the student's own pace [4]. An adult can assign objectives from any grade [25].",
-    "mastery": "Every puzzle in a level right; two wrong answers restart it, until 15 tries turn restarts off [4][9]. Post-quiz scores do not hold students back [10].",
-    "review": "Topics spiral back in the fixed sequence [4]. Mixed Review is bonus content, left out of the family version [11][3][5].",
-    "print": "Printable Math Mats and classroom sheets, many in Spanish [6][20]. The only workbooks we found are fixed ones for the Texas edition [24].",
-    "adult": "Little to run at home. MIND's guides have an adult coach a stuck child and change the grade by hand [6][31].",
-    "reports": "Parents: objectives, puzzle goals and quiz scores [22]. Teachers: minutes, puzzles per minute and alerts on students [23][9].",
-    "evidence": "Rated Strong by Evidence for ESSA, average +0.07 [2]. One independent randomized trial: 0.07 SD after a year, marginally significant [14]."
+    "range": "PreK through grade 8, as a supplemental program [1][3].",
+    "start": "No placement test found in the pages we read. A student starts on the Journey for their grade [7].",
+    "teaching": "Visual, mostly wordless puzzles. An animation shows what each answer does [3][22]. For a stuck student, MIND's guide turns to an adult [5].",
+    "next": "A fixed sequence, at the student's own pace [3]. An adult can assign objectives from any grade [21].",
+    "mastery": "Every puzzle in a level right. Two wrong answers restart the level, until 15 tries turn the restart off [3][8]. Students move on whatever their post-quiz score [9].",
+    "review": "Topics spiral back in the fixed sequence [3]. Mixed Review is bonus content after the Journey [10].",
+    "print": "Printable Math Mats and classroom sheets, many in Spanish [5][17]. The only workbooks we found are fixed ones for the Texas edition [20].",
+    "adult": "In MIND's guides, the adult coaches a stuck student with questions and hands-on materials, and moves a student to an earlier grade by hand [5][6][23].",
+    "reports": "Parents: objectives, puzzle goals and quiz scores [18]. Teachers: minutes, puzzles per minute and alerts on students [19][8].",
+    "evidence": "Rated Strong by Evidence for ESSA, average +0.07 [2]. One independent randomized trial: 0.07 SD after a year, marginally significant [11]."
   },
   "theirs": [
-    "ST Math is made by MIND Education, a nonprofit founded in 1998 [28]. MIND's home page claims 1.6 million students and more than 4,600 schools [29]. Schools buy it as a PreK to grade 8 supplemental math program [1]. Families buy ST Math at Home, which runs a streamlined curriculum called ST Math Focus [3][5].",
-    "A child opens the Journey for their grade, a map of objectives. Each objective holds games, and each game holds levels of 5 to 8 puzzles [8][26]. A puzzle is a visual, mostly wordless problem: JiJi the penguin is blocked, the child moves objects such as fraction blocks or a number line, and an animation shows whether JiJi gets across [4][26][14]. In the full program, objectives from grade 2 open and close with a quiz, and the post-quiz uses typical test questions [10][5].",
-    "MIND's approach is \"concepts before symbols\" [1]. In schools, class discussions MIND calls Math Puzzle Talks help students explain and connect what they learned [1]. The help center ties gains to 60 or more minutes of use a week [4]."
+    "ST Math is made by MIND Education, a nonprofit founded in 1998 [24]. MIND describes it as a PreK to grade 8 supplemental math program, built on \"concepts before symbols\": a student meets an idea in a visual puzzle before its symbols [1][3]. In schools, class discussions MIND calls Math Puzzle Talks help students explain what they learned [1].",
+    "A student opens the Journey for their grade, a map of objectives. Each objective holds games, and each game holds levels of 5 to 8 puzzles [7][22]. A puzzle is a visual, mostly wordless problem: JiJi the penguin is blocked, the student moves objects such as fraction blocks or a number line, and an animation shows whether JiJi gets across [3][22][11]. In the full program, objectives from grade 2 open and close with a quiz [9]."
   ],
   "credit": [
-    "An independent randomized trial in 52 schools, funded by the U.S. Institute of Education Sciences, and a Strong rating from Evidence for ESSA [2][14][16].",
-    "Visual models a child moves, such as number lines and fraction blocks [4][26]. A What Works Clearinghouse guide for elementary students who struggle in math rates the evidence for concrete and semi-concrete representations, and for the number line, as strong [36]. AMP has 10 problem types with built models, not a full toolkit.",
-    "Puzzles designed to work without words [4], and quizzes and printables in Spanish [20][21]. AMP is in English only, with no read-aloud.",
-    "It starts in PreK and costs $99.99 a year for one child, plus $20 for each more [1][3]. That is about a sixth of AMP's family price."
+    "Visual models a learner moves, such as number lines and fraction blocks [3][22]. A What Works Clearinghouse guide for elementary math intervention rates the evidence for such representations, and for the number line, as strong [28].",
+    "Puzzles designed to work without words [3].",
+    "An independent randomized trial in 52 schools, funded by the U.S. Institute of Education Sciences [11][13]."
   ],
   "evidence": {
     "theirs": [
-      "Evidence for ESSA rates ST Math Strong for grades 3 to 6, based on four studies with an average effect of +0.07 [2]. One is an independent randomized trial. The other three were written by MIND or done by WestEd under contract to MIND [2][17][18].",
-      "The trial, by Rutherford and colleagues (2014), was run by independent researchers without oversight from MIND and funded by a U.S. Institute of Education Sciences grant [14][16]. It randomized 52 low-performing Southern California schools, and its analysis covered 13,803 students in grades 3 to 5. Classes in ST Math schools were scheduled for two 45-minute sessions a week. After one year the effect on the state math test was 0.07 standard deviations, marginally significant. After two years it was 0.15 and not significant. The abstract calls the effect on math scores negligible [14][15]. English learners and the lowest performers gained no more than other students [14].",
-      "WestEd's 2019 study, prepared under contract to MIND, matched grades in 474 schools across 16 states that adopted ST Math with similar grades that did not [17]. It found 0.13 on scale scores and 0.17 on percent proficient. Those effects are measured against the spread of school-grade averages, not of students, so they are not on the same scale as the trial's 0.07. WestEd notes that districts which chose the program may have differed in other ways, and its larger figures, 0.31 and 0.35, come from the 239 schools that met its usage thresholds [17].",
-      "A non-experimental Harvard study from 2020, in 13 school systems serving about 230,000 students, compared students whose weekly use rose by more than 10 minutes with similar students whose use stayed flat. It found close to 0.04 standard deviations. In grades 2 to 5, students averaged 49 minutes a week against a recommended 90, and \"None of the sites reached the recommended level\" [19]."
+      "Evidence for ESSA rates ST Math Strong for grades 3 to 6, on four studies with an average effect of +0.07 [2]. One is an independent randomized trial. The other three were written by MIND or done by WestEd under contract to MIND [2][14][15]. We found no What Works Clearinghouse intervention report for ST Math [29].",
+      "The trial, by Rutherford and colleagues (2014), was run by independent researchers without oversight from MIND and funded by a U.S. Institute of Education Sciences grant [11][13]. It randomized 52 low-performing Southern California schools, and its analysis covered 13,803 students in grades 3 to 5. Classes in ST Math schools were scheduled for two 45-minute sessions a week. After one year the effect on the state math test was 0.07 standard deviations, marginally significant. After two years it was 0.15 and not significant. The abstract calls the effect on math scores negligible [11][12]. English learners and students with the lowest starting scores gained no more than other students [11].",
+      "WestEd's 2019 study, prepared under contract to MIND, compared grades in 474 schools across 16 states that adopted ST Math with similar grades that did not. It found 0.13 on scale scores and 0.17 on percent proficient. Both are measured against the spread of school-grade averages rather than of students, so they are not on the same scale as the trial's 0.07. WestEd notes that districts which chose the program may have differed in other ways [14]. A non-experimental Harvard study from 2020, in 13 school systems, compared students whose weekly use rose by more than 10 minutes with similar students whose use stayed flat, and found close to 0.04 standard deviations. In grades 2 to 5, students averaged 49 minutes a week against a recommended 90 [16]."
     ],
     "ours": [
-      "Two findings shape how AMP teaches where ST Math leaves it to the puzzle or the adult. Across 55 studies, worked examples improved math performance with an average effect of g = 0.48 [35]. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, the correct answer alone 0.32, and right-or-wrong alone 0.05 [34]. AMP puts a worked example in every lesson and the worked steps after every answer, and schedules review on top. We expect that design to show in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear most on this comparison: across 55 studies, worked examples improved math performance, with an average effect of g = 0.48 [27], and across 40 studies of computer-based feedback, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong alone [26]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Your child is in PreK or not yet reading, and a wordless puzzle is the right first step.",
-      "You want a low-cost puzzle add-on beside a curriculum you already teach.",
-      "Your school needs a program rated Strong by Evidence for ESSA today.",
-      "Your child loves visual puzzles, and an adult is close by to help when one gets hard."
+      "Your child is not yet reading, and you want first math as visual puzzles without words."
     ],
     "amp": [
-      "You want the program to do the teaching: a hint, a lesson and the worked answer at every problem.",
-      "Your child is behind or ahead in one part of math, and you want practice to follow.",
-      "Your learner is past grade 8, or soon will be.",
-      "You want old skills to come back on a schedule, without planning it.",
-      "You want practice on a phone, or on paper with an answer key."
+      "You want the teaching on the screen at every problem: a hint, a lesson and the worked answer.",
+      "You want assessment, teaching and review in the same practice, with no separate quizzes.",
+      "Your learner is at different levels in different parts of math.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is past grade 8, or soon will be."
     ]
   },
   "questions": [
     {
-      "question": "Is ST Math a full math curriculum?",
-      "answer": "MIND's help center calls it a supplemental math program, and its At Home page says families can use it as part of a homeschool math program or beside another curriculum [4][32]. The family version leaves out Math Facts, Challenge and Mixed Review [3][5]. AMP covers counting through precalculus in one program, with lessons, practice and scheduled review."
+      "question": "How is AMP different from ST Math?",
+      "answer": "ST Math teaches through visual puzzles in a fixed sequence, and for a stuck student MIND's guide turns to an adult [3][5]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is AMP more expensive than ST Math?",
-      "answer": "Yes. ST Math at Home is $99.99 a year or $9.99 a month for one student, plus $20 a year or $2 a month for each additional student [3]. AMP is $599 a year or $59 a month for the first child and $399 or $39 for each more, and that covers lessons, hints, scheduled review and unlimited workbooks from counting through precalculus."
+      "question": "Does ST Math work?",
+      "answer": "Its independent randomized trial found 0.07 standard deviations on the state math test after one year, marginally significant, and no significant effect after two [11]. Evidence for ESSA rates it Strong, on four studies with an average effect of +0.07 [2]."
     },
     {
-      "question": "Does ST Math work on a phone or an Android tablet?",
-      "answer": "Not officially. MIND says the student experience does not support phones or Android tablets; it supports Chrome on a computer or Chromebook, Edge on Windows, and Safari on an iPad [12]. AMP runs in any current browser on a phone, tablet or computer."
-    },
-    {
-      "question": "Is ST Math proven to work?",
-      "answer": "Its independent randomized trial found 0.07 standard deviations after one year, marginally significant, and no significant effect after two [14]. Evidence for ESSA rates it Strong [2]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -127,10 +114,6 @@
     {
       "title": "ST Math (Spatial Temporal Math) (Evidence for ESSA)",
       "url": "https://evidenceforessa.org/program/st-math-spatial-temporal-math/"
-    },
-    {
-      "title": "ST Math at Home pricing (ST Math help center)",
-      "url": "https://help.stmath.com/hc/en-us/articles/43255083428247-ST-Math-at-Home-Pricing"
     },
     {
       "title": "What is ST Math? (ST Math help center)",
@@ -165,14 +148,6 @@
       "url": "https://help.stmath.com/hc/en-us/articles/20885855397143"
     },
     {
-      "title": "Technical requirements (ST Math help center)",
-      "url": "https://help.stmath.com/hc/en-us/articles/360053230814"
-    },
-    {
-      "title": "Demos and trials (ST Math help center)",
-      "url": "https://help.stmath.com/hc/en-us/articles/360051544734"
-    },
-    {
       "title": "Rutherford et al. (2014), A randomized trial of an elementary school mathematics software intervention: Spatial-Temporal Math, Journal of Research on Educational Effectiveness 7(4)",
       "url": "https://doi.org/10.1080/19345747.2013.856978"
     },
@@ -201,10 +176,6 @@
       "url": "https://help.stmath.com/hc/en-us/articles/360056473414"
     },
     {
-      "title": "Quiz data, in English and Spanish (ST Math help center)",
-      "url": "https://help.stmath.com/hc/en-us/articles/360043940354"
-    },
-    {
       "title": "ST Math at Home progress report (ST Math help center)",
       "url": "https://help.stmath.com/hc/en-us/articles/14797214494615"
     },
@@ -225,28 +196,12 @@
       "url": "https://help.stmath.com/hc/en-us/articles/360025968393"
     },
     {
-      "title": "Where ST Math at Home is available (ST Math help center)",
-      "url": "https://help.stmath.com/hc/en-us/articles/33983424212119"
-    },
-    {
-      "title": "About MIND Education",
-      "url": "https://www.mindeducation.org/about/"
-    },
-    {
-      "title": "MIND Education home page",
-      "url": "https://www.mindeducation.org/"
-    },
-    {
-      "title": "ST Math review (Modulo, 2024)",
-      "url": "https://www.modulo.app/all-resources/st-math-review"
-    },
-    {
       "title": "Changing an ST Math at Home student's grade Journey (ST Math help center)",
       "url": "https://help.stmath.com/hc/en-us/articles/8292984201239"
     },
     {
-      "title": "ST Math at Home (MIND Education)",
-      "url": "https://www.mindeducation.org/programs/st-math-at-home/"
+      "title": "About MIND Education",
+      "url": "https://www.mindeducation.org/about/"
     },
     {
       "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
@@ -263,6 +218,10 @@
     {
       "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
       "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
+    },
+    {
+      "title": "What Works Clearinghouse product search for ST Math (Institute of Education Sciences)",
+      "url": "https://ies.ed.gov/ncee/wwc/Search/Products?searchTerm=ST%20Math"
     }
   ]
 }

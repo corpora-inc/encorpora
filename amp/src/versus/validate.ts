@@ -69,6 +69,7 @@ const pageKeys = [
   "reasons",
   "evidence",
   "rows",
+  "open",
   "fit",
   "questions",
   "sources",
@@ -85,6 +86,77 @@ function isDay(value: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const date = new Date(`${value}T00:00:00Z`);
   return !Number.isNaN(date.getTime()) && date.toISOString().startsWith(value);
+}
+
+/** AMP's own settings and inventory counts: a mastery threshold, the review
+ * intervals, how many problems placement takes, how many strands or problem
+ * types there are. They change, and no reader chooses a program by one, so
+ * the comparisons say the principle (right without help, more than once;
+ * review at growing intervals) and never the number. Founder's ruling,
+ * 2026-11-22. */
+const ampSettings: readonly RegExp[] = [
+  /\bfour (?:of|in) (?:(?:the|its|their) )?(?:last )?five\b/i,
+  /\b4 (?:of|in) (?:the )?(?:last )?5\b/i,
+  /\b(?:24|twenty-four) (?:problems|answers)\b/i,
+  /\b(?:14|fourteen) strands\b/i,
+  /\b(?:6|six) hours, (?:1|one|a) day\b/i,
+  /\b(?:2|two) weeks and (?:1|one|a) month\b/i,
+  /\b(?:2|two) misses in a row\b/i,
+  /\b1,384\b/,
+  /\b336 skills\b/i,
+  /\b547 of\b/,
+  /\b961 (?:reference )?lessons\b/i,
+  /\b185 (?:independent )?checkers\b/i,
+  /\b154 (?:narrated |lesson |published )*films\b/i,
+];
+/** Price talk. The comparisons are about how each program teaches and why;
+ * what anything costs is not their subject, and a price is the first thing
+ * on a page to go stale. Founder's ruling, 2026-11-22. */
+const priceTalk: readonly RegExp[] = [
+  /[$]\s?\d/,
+  /\bpric(?:e|es|ed|ing|ey)\b/i,
+  /\bcheap(?:er|est|ly)?\b/i,
+  /\brefund/i,
+  /\bmoney[- ]back\b/i,
+  /\bcosts? (?:less|more|about|under|over|nothing|a fraction)\b/i,
+  /\b(?:low|lower|lowest)[- ]cost\b/i,
+  /\baffordab/i,
+];
+/** The price talk in a string, if any. */
+export function versusPriceTalk(words: string): string | undefined {
+  for (const pattern of priceTalk) {
+    const found = pattern.exec(words);
+    if (found) return found[0];
+  }
+  return undefined;
+}
+
+/** Salesman's lines: our beliefs, bets and wishes. A comparison states what
+ * each program does and what the research found, and stops. Founder's
+ * ruling, 2026-11-22. ("We found" and "we read" report what was checked, and
+ * are fine.) */
+const salesTalk: readonly RegExp[] = [
+  /\bwe (?:think|believe|expect|bet|hope|would rather|built AMP to)\b/i,
+  /\bour bet\b/i,
+  /\bthis page says why\b/i,
+  /\bthat is how math is learned\b/i,
+];
+/** The salesman's line in a string, if any. */
+export function versusSalesTalk(words: string): string | undefined {
+  for (const pattern of salesTalk) {
+    const found = pattern.exec(words);
+    if (found) return found[0];
+  }
+  return undefined;
+}
+
+/** The setting a string states, if any. */
+export function ampSetting(words: string): string | undefined {
+  for (const pattern of ampSettings) {
+    const found = pattern.exec(words);
+    if (found) return found[0];
+  }
+  return undefined;
 }
 
 /** Everything wrong with one page's file (`name` is "i-ready.json"). It
@@ -253,6 +325,21 @@ export function validateVersusPage(
     }
   }
 
+  if (data.open !== undefined) {
+    const rows = isRecord(data.rows) ? Object.keys(data.rows) : [];
+    if (!Array.isArray(data.open) || data.open.length === 0)
+      problem("open", "must be a list of row ids, or left out");
+    else {
+      if (new Set(data.open).size !== data.open.length)
+        problem("open", "names a row twice");
+      if (data.open.length > 2)
+        problem("open", "names more than two rows; say it sparingly");
+      for (const id of data.open)
+        if (typeof id !== "string" || !rows.includes(id))
+          problem("open", `names a row the page's table does not have: ${String(id)}`);
+    }
+  }
+
   const fit = record(data.fit, "fit", ["them", "amp"]);
   if (fit) {
     texts(fit.them, "fit.them", [1, Infinity]);
@@ -294,6 +381,32 @@ export function validateVersusPage(
     else urls.set(same, index);
   });
 
+  for (const { path, text: words } of [
+    ...prose,
+    ...(typeof data.line === "string" ? [{ path: "line", text: data.line }] : []),
+    ...(typeof data.description === "string"
+      ? [{ path: "description", text: data.description }]
+      : []),
+  ]) {
+    const setting = ampSetting(words);
+    if (setting)
+      problem(
+        path,
+        `states one of AMP's settings ("${setting}"): say the principle, not the number`,
+      );
+    const price = versusPriceTalk(words);
+    if (price)
+      problem(
+        path,
+        `talks about price ("${price}"): the comparisons are about how a program teaches, not what it costs`,
+      );
+    const sales = versusSalesTalk(words);
+    if (sales)
+      problem(
+        path,
+        `is a salesman's line ("${sales}"): say what each program does and what the research found`,
+      );
+  }
   for (const { path, text: words } of prose)
     for (const number of citations(words))
       if (number < 1 || number > sources.length)

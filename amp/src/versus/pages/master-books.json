@@ -3,134 +3,111 @@
   "name": "Math Lessons for a Living Education",
   "maker": "Master Books",
   "category": "books",
-  "checked": "2026-11-21",
-  "benefit": "Every answer checked at once",
-  "line": "A parent teaches Math Lessons for a Living Education from a storybook. AMP places, checks and reviews on its own.",
-  "description": "AMP vs Math Lessons for a Living Education: a story-led book a parent teaches for grades 1 to 6, or practice that places, checks and reviews itself.",
-  "verdict": "Math Lessons for a Living Education is a gentle, story-led course for grades 1 to 6, taught by a parent from a full-color workbook, for $39.19 a level at the publisher's sale price [1][2]. AMP costs more. It does the work a book leaves to the adult: it finds the level in each part of math, checks and explains every answer as it is given, and brings each skill back on a schedule set for the learner.",
+  "checked": "2026-11-22",
+  "benefit": "Feedback on every answer",
+  "line": "A parent teaches and checks Math Lessons for a Living Education. In AMP, both happen at every problem.",
+  "description": "AMP vs Math Lessons for a Living Education: daily lessons a parent teaches and checks. In AMP, assessment, teaching and review happen at every problem.",
+  "verdict": "Math Lessons for a Living Education is a series of printed workbooks of daily, story-led lessons. A parent teaches each lesson and checks the work [1][5]. In AMP, assessment, teaching and review are continuous: every answer is checked and explained, updates the learner's level and sets the next problem.",
   "reasons": [
     {
-      "title": "Mistakes are explained while the problem is still there",
-      "body": "Math Lessons for a Living Education is a printed workbook, so the adult checks a lesson's work after it is done [1]. AMP marks each answer the moment it is given and shows the correct answer and the worked steps before the next problem. The learner sees why at once, and no one has a page to grade.",
-      "research": [
-        "feedback"
-      ]
-    },
-    {
-      "title": "A level for each part of math, not one book",
-      "body": "The series places a child with a free Readiness Test for each level, then follows that level's lessons in order [1][5]. AMP keeps a separate level in each of 14 strands and places the learner within the first 24 problems, with no test for the adult to give or score. A child who is quick with shapes and unsure with fractions gets work at both heights in the same session.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Math Lessons for a Living Education places a child with a Readiness Test for each level. The adult reads the result and picks the book [1][4]. After that, the adult checks each lesson's work [1][5].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "A gap is traced back to where it starts",
-      "body": "We found no mastery rule on the series' product pages; the adult judges when a child is ready to move on [1][3][4]. In AMP a skill is Strong at four of the last five answers right without help, and an answer after a hint does not count. Two misses in a row send practice back to what the skill builds on, so a gap is fixed where it starts.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Math Lessons for a Living Education the unit is the daily lesson: a short story, copywork, oral narration and a hands-on activity, which the parent reads and guides with the child [1][5]. A meta-analysis of 55 studies found that worked examples improve mathematics performance [11].",
       "research": [
-        "mastery",
-        "hints"
+        "lessons",
+        "hints",
+        "films"
       ]
     },
     {
-      "title": "Review timed to the learner, not to the page",
-      "body": "The books build review in, with optional review activities, and Level 5 opens and closes with six review lessons [3][4]. That review falls at the same page for every child. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over.",
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps, before the next problem. In Math Lessons for a Living Education the parent checks the lesson's work after it is done [1][5]. A meta-analysis of 40 studies of computer-based feedback, across mixed ages and subjects, found the largest average effect for feedback that explains [10].",
+      "research": [
+        "feedback"
+      ]
+    },
+    {
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Math Lessons for a Living Education places review at fixed points in the book: optional review activities, and review lessons that open and close Level 5 [2][3]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [9].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "The adult's time goes to the child, not the answer key",
-      "body": "Math Lessons for a Living Education is built for a parent who teaches: a daily schedule, a lesson to read together, and a Teaching Companion with guidance on manipulatives and learning styles [1][6]. In AMP the adult has nothing to plan, teach or grade. An adult who wants to teach finds a parent guide in each of 961 reference lessons, and every printed workbook comes with a key that shows the worked steps.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, on one map of skills from counting through precalculus. A learner further along in geometry than in fractions gets work at both levels, and repeated misses send practice back to what a skill builds on. Math Lessons for a Living Education places a child in one level, one book for a grade, and follows its lessons in order [1][2][4]. In the pages we read, no rule for when to move on is given, and the adult decides [1][2][3].",
       "research": [
-        "lessons"
+        "level",
+        "mastery"
       ]
-    },
-    {
-      "title": "From counting to precalculus, and paper made for each child",
-      "body": "The series runs from grade 1 to grade 6, and every child works in the same printed book [1][5]. AMP runs from counting through precalculus in one program. It prints unlimited workbooks built from each learner's own record, with worked answer keys, and results entered from paper count toward the learner's level."
     }
   ],
   "rows": {
-    "price": "$39.19 per paperback level; Levels 1 to 5 list at $48.99. eBook $34.29. Level 6 teacher's guide sold separately [1][2][5]. One-time purchase.",
-    "buyers": "Anyone, as printed books or eBooks from the publisher's online store [1]. No subscription.",
-    "range": "Levels 1 to 6 for grades 1 to 6 [1][5]. Principles of Mathematics, a separate series, covers grades 7 and 8 [7].",
-    "start": "A free Readiness Test PDF for each level. The adult reads the result and picks the book [1][5].",
-    "teaching": "A parent teaches from the book: short stories, copywork, oral narration and hands-on manipulatives [1][3][6]. Optional video lessons sold separately [9].",
-    "next": "The next lesson in the book: 36 lessons a level on a daily schedule, in a fixed order [1][3].",
-    "mastery": "No mastery rule found on its product pages. The adult decides when to move on [1][3][4].",
-    "review": "Optional review activities, and at Level 5 six review lessons at each end [3][4]. The same for every child.",
-    "print": "Full-color, perforated, three-hole-punched workbooks of 344 to 396 pages [1][3][5]. One book for every child at that level.",
-    "adult": "Reads and teaches each lesson, sets out manipulatives, checks the work and sets the pace, following a daily schedule [1][6].",
-    "reports": "None built in; the adult keeps records. The Level 6 teacher's guide includes quizzes [5]. Principles of Mathematics has a downloadable assessment review test [7].",
-    "evidence": "None cited on its product pages. No entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [11][12]."
+    "range": "Levels 1 to 6, for grades 1 to 6 [1][4]. Principles of Mathematics, a separate series, covers grades 7 and 8 [6].",
+    "start": "A Readiness Test for each level, as a PDF. The adult reads the result and picks the book [1][4].",
+    "teaching": "A parent teaches from the book: a short story, copywork, oral narration and hands-on manipulatives [1][2][5]. Optional video lessons [7].",
+    "next": "The next lesson in the book, in a fixed order on a daily schedule [1][2].",
+    "mastery": "None found in the pages we read. The adult decides when to move on [1][2][3].",
+    "review": "Optional review activities, and review lessons at fixed places in the book, such as the start and end of Level 5 [2][3]. The same for every child.",
+    "print": "Print is the course: full-color, perforated, three-hole-punched workbooks [1][2][4]. The same book for every child at that level.",
+    "adult": "Reads and teaches each lesson, sets out manipulatives, checks the work and sets the pace, following a daily schedule [1][5].",
+    "reports": "None built in. The adult keeps records. The Level 6 teacher's guide includes quizzes [4].",
+    "evidence": "No outcome study is cited on its product pages [1]."
   },
   "theirs": [
-    "Math Lessons for a Living Education is a math series from Master Books, a Christian homeschool imprint of New Leaf Publishing Group in Green Forest, Arkansas [1][10]. Angela O'Dell wrote it [1]. Levels 1 to 6 cover grades 1 to 6 [1][5]. For grades 7 and 8 the publisher sells Principles of Mathematics, by a different author, and it also sells algebra and consumer math books [2][7]. A Christian worldview is a stated aim of the books [6][7].",
-    "Each level is a full-color workbook, and Levels 1 to 5 each hold 36 lessons laid out on a daily schedule [1][3]. Lessons take 15 to 30 minutes in the early levels and about 30 at Level 6 [1][3][4][5]. A lesson weaves together a short story, copywork, oral narration and a hands-on activity; at Level 1 the story follows twins named Charlie and Charlotte [1]. Every level has a section of manipulatives to cut out, such as place value mats and charts [1][5].",
-    "The parent reads the lesson with the child, guides the activity and checks the work [1][6]. A separate Teaching Companion adds advice on manipulatives, ideas for different learning styles and math games [6]. Optional video lessons are sold through Master Books Academy and stream for 18 months from purchase [9]."
+    "Math Lessons for a Living Education is a math series from Master Books, a Christian homeschool imprint of New Leaf Publishing Group [1][8]. Angela O'Dell wrote it [1]. Levels 1 to 6 cover grades 1 to 6, and Principles of Mathematics, a separate series by a different author, covers grades 7 and 8 [1][4][6]. A Christian worldview is a stated aim of the books [5][6].",
+    "A Readiness Test for each level helps the adult pick a book [1][4]. Each level is a full-color workbook of short lessons laid out on a daily schedule [1][2]. A lesson weaves together a short story, copywork, oral narration and a hands-on activity, with manipulatives to cut out [1][4]. The parent reads the lesson with the child, guides the activity and checks the work [1][5]. Optional video lessons are offered through Master Books Academy [7]."
   ],
   "credit": [
-    "A low, one-time price: $39.19 for a paperback level at the sale price shown, with no subscription [1][2]. AMP costs far more.",
-    "Hands-on learning AMP does not offer: physical manipulatives, copywork, oral narration and a story running through the lessons [1][3][6].",
-    "Screen-free by design. A child works in a printed book, offline [1]. AMP prints workbooks, but its practice runs on a screen.",
-    "A Christian worldview built into the books [6][7]. AMP is math only.",
-    "Families rate it highly on the publisher's site: 4.9 of 5 from 893 reviews for Level 1 when we checked [1]."
+    "Hands-on learning: physical manipulatives, copywork, oral narration and a story running through the lessons [1][2][5].",
+    "A parent teaches each lesson in person, from a daily schedule laid out in the book [1][5].",
+    "Review lessons are built into the books [2][3]."
   ],
   "evidence": {
     "theirs": [
-      "Its product pages cite no study of how much children learn with Math Lessons for a Living Education. The series has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [1][11][12].",
-      "What its pages do show is customer ratings, such as 4.9 of 5 from 893 reviews for Level 1 [1]. Ratings say how families feel about a book. They do not measure what children learned."
+      "We found no outcome study of Math Lessons for a Living Education on its product pages [1]."
     ],
     "ours": [
-      "Two of AMP's rules rest on findings that have held up. Mixed, spaced practice scored 62% against 38% for practice in blocks on the researchers' own test a month later, in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations [13]. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only, across mixed ages and subjects, with smaller effects in primary and high school settings [14]. A well-made book can teach well and still leave both to the adult's calendar. AMP builds both into its rules, and we expect that to show in outcomes. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In a meta-analysis of 40 studies of computer-based feedback, across mixed ages and subjects, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [10]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% against 38% for practice in blocks a month later, on the researchers' own test [9]. AMP shows the correct answer and the worked steps after every answer, and brings learned skills back mixed with other math.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want screen-free math your child does in a book, with stories, copywork and hands-on manipulatives.",
-      "You want a Christian worldview woven into math lessons.",
-      "You enjoy teaching math yourself, a short lesson a day, from a schedule laid out for you.",
-      "You want to pay about $39 a level, once, with no subscription."
+      "You want to teach math yourself from a book, with stories, copywork and hands-on manipulatives."
     ],
     "amp": [
-      "You want every answer checked and explained the moment it is given, with nothing for you to grade.",
-      "Your child is ahead in one part of math and behind in another.",
-      "You want old skills to come back on a schedule set for your child, without planning it.",
-      "Your child is past grade 6, or you want one program through precalculus.",
-      "You love your book and want AMP beside it for practice and review."
+      "You want each answer checked and explained the moment it is given, with no pages to grade.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice, mixed with other math.",
+      "Your learner is at different levels in different parts of math.",
+      "You want one program from counting through precalculus."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than Math Lessons for a Living Education?",
-      "answer": "Yes. A paperback level costs $39.19 at the publisher's sale price, paid once [1]. AMP is $599 a year or $59 a month for the first child. For that it places the learner, chooses and checks every problem, schedules review, prints workbooks with worked keys, and runs from counting through precalculus."
+      "question": "How is AMP different from Math Lessons for a Living Education?",
+      "answer": "Math Lessons for a Living Education is daily lessons a parent teaches from a workbook and checks [1][5]. AMP has no separate test: every answer is checked, explained and sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP alongside Math Lessons for a Living Education?",
-      "answer": "Yes. Many families can keep the book for its stories and hands-on lessons and use AMP for practice and review. AMP finds the learner's level on its own within the first 24 problems."
+      "question": "Does Math Lessons for a Living Education work?",
+      "answer": "We found no outcome study of it on its product pages [1]."
     },
     {
-      "question": "Has Math Lessons for a Living Education been studied?",
-      "answer": "Its product pages cite no outcome study, and the series has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report as of November 2026 [1][11][12]."
-    },
-    {
-      "question": "Does AMP include Christian content?",
-      "answer": "No. AMP is math only. Families who want faith woven into lessons can keep a Christian curriculum and add AMP for practice."
-    },
-    {
-      "question": "What happens if it isn't a fit?",
-      "answer": "AMP refunds personal payments in full within 30 days, no reason needed. Master Books takes back new, unused books within 30 days with a 15% restocking fee, and digital products are not refundable [8]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. A learner can keep the book for its stories and hands-on lessons and practice in AMP too. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
     {
       "title": "Math Lessons for a Living Education Level 1 (Master Books)",
       "url": "https://www.masterbooks.com/math-lessons-for-a-living-education-level-1"
-    },
-    {
-      "title": "Math curriculum (Master Books)",
-      "url": "https://www.masterbooks.com/math"
     },
     {
       "title": "Math Lessons for a Living Education Level 3 (Master Books)",
@@ -153,10 +130,6 @@
       "url": "https://www.masterbooks.com/principles-of-mathematics-book-1"
     },
     {
-      "title": "Returns policy (Master Books)",
-      "url": "https://www.masterbooks.com/returns"
-    },
-    {
       "title": "Master Books Academy",
       "url": "https://www.masterbooksacademy.com/"
     },
@@ -165,20 +138,16 @@
       "url": "https://www.nlpg.com/"
     },
     {
-      "title": "Math programs (Evidence for ESSA)",
-      "url": "https://www.evidenceforessa.org/programs/math/"
-    },
-    {
-      "title": "Intervention reports (What Works Clearinghouse)",
-      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
-    },
-    {
       "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
       "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
       "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]
 }

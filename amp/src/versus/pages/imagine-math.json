@@ -3,135 +3,103 @@
   "name": "Imagine Math",
   "maker": "Imagine Learning",
   "category": "school",
-  "checked": "2026-11-21",
-  "benefit": "Math a family can buy",
-  "line": "Imagine Math is a school program with no posted price. AMP sells to families and brings skills back on a schedule.",
-  "description": "AMP vs Imagine Math: how Imagine Learning's school program places and passes students, what its studies show, and why any family can start AMP today.",
-  "verdict": "Imagine Math brings real strengths to a school: live tutors inside lessons, a placement test with a Quantile measure, and a Promising rating from Evidence for ESSA [3][4][8]. Its pages show no price [2], and a lesson counts as passed at 75% on its closing quiz in one of its studies [6]. AMP is sold to families too, counts a skill only after four of the last five answers are right without help, and brings it back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Imagine Math places by test, then teaches by the lesson. In AMP, assessment, teaching and review are at every problem.",
+  "description": "AMP vs Imagine Math: Imagine Math places by test and teaches in lessons that end in a quiz. In AMP, assessment, teaching and review are continuous.",
+  "verdict": "Imagine Math places a student with a placement assessment, then moves them along a pathway of lessons, each ending in a quiz [2][3]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "A family can buy AMP today",
-      "body": "The Imagine Math pages we read show no price, trial or family plan [1][2][3]. The products page and the tutoring page send buyers to Contact Us [2][3]. In Idaho the state bought it centrally and offered it as an optional resource to districts [5]. AMP posts its price and sells to families, tutors and schools alike. The first 100 answers are free, with no card."
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Imagine Math builds a pathway of lessons from a placement assessment, and benchmark tests return during the year [1][2].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "A skill counts only when it holds up",
-      "body": "In a 2020-21 study of Imagine Math, a lesson counted as passed when a student scored 75% or better on the quiz at its end [6]. In AMP a skill turns Strong only after four of the last five answers are right without help, and the latest one is right too. An answer given after a hint or the lesson is recorded but never counts. When the skill comes due for review, it shows as Building again.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a written lesson with a worked example, a video lesson, the worked answer after it is answered, and links to the skills it builds on and leads to. In Imagine Math the unit is the lesson: a string of interactive activities with scaffolded feedback, ending in a quiz [2][3]. From grade 3, help also comes from live sessions with a teacher [1]. A meta-analysis of 55 studies found that worked examples improve mathematics performance [7].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. Repeated misses send practice back to what the skill builds on. In Imagine Math a lesson counts as passed at 75% or better on the quiz at its end, in the studies we read [2][5]. A student's goal is set in lessons passed [1].",
       "research": [
         "mastery",
         "hints"
       ]
     },
     {
-      "title": "Learned skills return on a set schedule",
-      "body": "We found no scheduled review of earlier skills in Imagine Math's published materials [1][4]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed in with other topics, and a miss restarts the clock. In a randomized trial with 787 seventh graders, students given mixed, spaced practice scored 62% on the researchers' own test a month later; students who practiced one topic at a time scored 38% [9].",
+      "title": "What the adult does",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. Imagine Math is built for a teacher who assigns work, reads class and student reports, and plans differentiated teaching [1].",
       "research": [
-        "review"
+        "progress"
       ]
-    },
-    {
-      "title": "Each answer picks the next problem",
-      "body": "Imagine Math builds a pathway of lessons from a placement assessment, describes adaptive practice and real-time adjustments, and uses benchmark tests during the year [4][5]. We found no public account of whether it sends a student back to a missing prerequisite [4][5]. AMP keeps a level in each of 14 strands and picks every problem from the learner's answers. Two misses in a row on a skill send practice to what that skill builds on.",
-      "research": [
-        "level"
-      ]
-    },
-    {
-      "title": "Help is built into every problem",
-      "body": "Imagine Learning's on-demand tutoring service, which covers several subjects, keeps set hours: 8 a.m. to 10 p.m. on weekdays, shorter on weekends [3]. AMP has no live tutor. Its help is in the program at any hour: each of its 1,384 problem types has a one-step hint that never gives the answer and a written lesson with a worked example. Because a hinted answer does not count toward mastery, help points the way without doing the work.",
-      "research": [
-        "hints",
-        "lessons"
-      ]
-    },
-    {
-      "title": "It goes on to precalculus, and onto paper",
-      "body": "Imagine Math runs from pre-kindergarten through Geometry [6], and the new Imagine+ Math covers kindergarten through grade 8 [1]. AMP runs from counting through Algebra 2 and precalculus on one map of 336 skills. Imagine Math offers printable worksheets, tasks and journal pages [4]; AMP prints unlimited workbooks built from each learner's own record, with worked answer keys, and results from paper count toward the level."
     }
   ],
   "rows": {
-    "price": "No price shown on the pages we read. The products and tutoring pages send buyers to Contact Us [1][2][3].",
-    "buyers": "Schools, districts and states; Idaho bought it statewide [5]. We found no family plan or trial [1][2][3].",
-    "range": "Imagine Math: pre-kindergarten through Geometry [6]. Imagine+ Math: kindergarten through grade 8 [1].",
-    "start": "A placement assessment builds the pathway [4][5]. Its reports track a Quantile measure from benchmark tests [4].",
-    "teaching": "Interactive lessons with scaffolded feedback, each ending in a quiz. Live help sessions with certified teachers from grade 3 [4][5].",
-    "next": "A pathway of lessons from the placement test. Imagine+ Math adds assignments teachers customize [1].",
-    "mastery": "A lesson passed at 75% or better on its closing quiz, as one study defines it [6].",
-    "review": "No scheduled review of earlier skills found in its published materials [1][4].",
-    "print": "Printable worksheets, application tasks and journaling pages [4]. None shown to be made for the individual student.",
-    "adult": "A teacher assigns, reads reports and plans differentiated teaching, aiming for 60 to 90 minutes a week from grade 3 [4][5].",
-    "reports": "Lessons passed, time, Quantile measure, percentile rank and instructional grade level, by class or student [4]. No parent reports found.",
-    "evidence": "Evidence for ESSA: Promising, two matched-comparison studies, average +0.06 [8]. Johns Hopkins study in Idaho: +0.04 [5]. No randomized trial of Imagine Math found."
+    "range": "Pre-kindergarten through Geometry [3].",
+    "start": "A placement assessment builds a pathway of lessons. Benchmark tests return during the year [1][2].",
+    "teaching": "Lessons of interactive activities with scaffolded feedback, each ending in a quiz. Live help sessions with a teacher from grade 3 [1][2].",
+    "next": "The pathway of lessons built from the placement assessment, and work the teacher assigns [1][2].",
+    "mastery": "A lesson passed at 75% or better on its closing quiz, in the studies we read [2][5].",
+    "review": "None found in the pages we read [1][2].",
+    "print": "Printable worksheets, application tasks and journaling pages [1].",
+    "adult": "A teacher assigns work, reads reports and plans differentiated teaching [1].",
+    "reports": "Lessons passed, time, Quantile measure, percentile rank and instructional grade level, by class or student [1].",
+    "evidence": "Evidence for ESSA: Promising, on two matched-comparison studies averaging +0.06 [4]. No randomized trial found."
   },
   "theirs": [
-    "Imagine Math is a supplemental math program from Imagine Learning, made to support and extend classroom teaching [5]. It runs from pre-kindergarten through Geometry [6]. In August 2026 Imagine Learning announced Imagine+ Math, which it calls \"a new K-8 supplemental solution\" [1]. Its math menu lists Imagine+ Math, Imagine Math and the fact game Imagine Math Facts as separate products [2].",
-    "A student starts with a placement assessment that builds a personal pathway of lessons [4][5]. Each lesson strings together interactive activities with scaffolded feedback and ends in a quiz; one study counts 75% or better as a pass [6]. Imagine Learning recommends 60 to 90 minutes a week from grade 3, usually two or three lessons, and 45 minutes for the youngest students [4][5]. From grade 3, students can reach live help sessions [4]. Its reports track a Quantile measure from benchmark tests [4].",
-    "This page compares AMP with Imagine Math and the new Imagine+ Math. Imagine Learning's core curriculum, Imagine IM, is a different product and is not compared here [2]."
+    "Imagine Math is a supplemental math program from Imagine Learning, designed to support and extend classroom instruction [2]. It runs from pre-kindergarten through Geometry [3].",
+    "A student starts with a placement assessment that builds a pathway of lessons [2]. Each lesson strings together interactive activities with scaffolded feedback and ends in a quiz [2][3]. Benchmark tests during the year track a Quantile measure, and from grade 3 a student can reach live help sessions with a teacher [1]. A teacher assigns work, reads the reports and plans differentiated teaching [1]."
   ],
   "credit": [
-    "A person to ask. Imagine Learning lists on-demand tutors into the evening and on weekends, and Imagine+ Math adds tutoring in English and Spanish [1][3]. AMP has no live tutor and is in English only.",
-    "A placement and benchmark test that reports a Quantile measure and a percentile rank [4]. AMP's placement is not normed.",
-    "Published studies and a rating: Promising from Evidence for ESSA, and an evaluation of more than 34,000 Idaho students by a Johns Hopkins University team [5][8].",
-    "Games. Imagine Math Facts drills the four operations in a 3D game environment, and the main program has tokens to earn [2][4][11]. AMP has no games and no timed fact drills.",
-    "Lessons for pre-kindergarten [6]. AMP begins in kindergarten."
+    "From grade 3, a student can reach a live teacher for help from inside a lesson [1].",
+    "Its placement and benchmark tests report a Quantile measure and a percentile rank [1].",
+    "It has been studied in matched comparisons, including a Johns Hopkins University evaluation in Idaho [2][4]."
   ],
   "evidence": {
     "theirs": [
-      "Evidence for ESSA, run by Johns Hopkins University, rates Imagine Math Promising, based on two matched-comparison studies with an average effect size of +0.06 [8]. One is the Imagine Learning charter-network study described below (+0.08). The other, by RMC Research in Indiana and Texas, was significant only for Indiana grades 3 to 5 (+0.13) [8]. Both compare students who used the program with similar students who did not. As of November 2026 we found no What Works Clearinghouse intervention report on Imagine Math, and we found no randomized trial of it.",
-      "The largest study we read is a Johns Hopkins University evaluation in Idaho, done with the state education department and Imagine Learning and posted by Imagine Learning [5]. It is not one of the two studies behind the rating, and the report does not name a funder. It matched 17,226 users in grades 4 to 8 with 17,226 similar non-users and compared spring 2025 state test scores. Finishing one lesson counted as using it. Users scored 5.21 points higher, an effect size of 0.04. Grades 4 and 7 reached 0.06, and students in special education 0.10 [5].",
-      "Students who passed 30 or more lessons scored higher still, 0.08 above matched peers [5]. That is a link, not proof: students who keep going differ from students who stop. A study published by Imagine Learning in a charter network in Florida and North Carolina found g = 0.078 on MAP Growth for 9,015 users against matched non-users; Imagine Math was used at teachers' discretion [6]. A company brief from one California district, titled \"Usage Drives Success,\" compares heavier users with lighter users, which cannot show cause [7].",
-      "Average use sat below the company's own target. Imagine Learning's logic model asks for 30 passed lessons before the end of the school year [4]. In the charter study users passed 21.2 lessons in 17.6 hours [6]. In the California brief, students in grades 7 to 9 passed 5.1 lessons in about 5 hours [7]."
+      "Evidence for ESSA, run by Johns Hopkins University, rates Imagine Math Promising, on two matched-comparison studies with an average effect size of +0.06 [4]. One is the charter-network study described below (+0.08). The other, by RMC Research in Indiana and Texas, was significant only for Indiana grades 3 to 5 (+0.13) [4]. Both compare students who used the program with similar students who did not. We found no What Works Clearinghouse intervention report on Imagine Math and no randomized trial of it.",
+      "A Johns Hopkins University team evaluated Imagine Math in Idaho with the state education department and Imagine Learning, and Imagine Learning posted the report [2]. It is not one of the two studies behind the rating, and the report does not name a funder. It matched 17,226 users in grades 4 to 8 with 17,226 similar non-users and compared spring 2025 state test scores. Finishing one lesson counted as use. Users scored 5.21 points higher, an effect size of 0.04. Grades 4 and 7 reached 0.06, and students in special education 0.10. Students who passed 30 or more lessons scored 0.08 above matched peers, a link that does not show cause [2].",
+      "A study published by Imagine Learning in a charter network in Florida and North Carolina found g = 0.078 on MAP Growth for 9,015 users against matched non-users. Imagine Math was used at teachers' discretion, and users passed 21.2 lessons in 17.6 hours on average [3]. A company brief from one California district compares heavier users with lighter users, which cannot show cause [5]."
     ],
     "ours": [
-      "We built AMP's review and lessons on findings that have held up. Mixed, spaced practice beat practice in blocks 62% to 38% a month later on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [9]. Worked examples raised math performance by g = 0.48 on average across 55 studies [10], and every AMP problem type has a lesson with one. Imagine Math's own Idaho data link more practice to higher scores, though that is a link and not proof [5]. Our bet is that a program which brings each skill back on a schedule, and which a family can open any day, will show it in outcomes. We have committed to measuring that in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. A meta-analysis of 55 studies found that worked examples improve mathematics performance, with an average effect of g = 0.48 [7]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [6]. AMP gives a worked example with every problem and brings learned skills back mixed with other math.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Your school wants live tutors that students can reach from inside a lesson.",
-      "You need a placement test that reports a Quantile measure and a percentile rank.",
-      "You need a program with an Evidence for ESSA rating today.",
-      "Your students need tutoring in Spanish, or lessons for pre-kindergarten."
+      "You want a student to be able to reach a live teacher for help from inside a lesson."
     ],
     "amp": [
-      "You are a family, a tutor or a co-op, and want a posted price and a start today.",
-      "You want a skill to count only when your child gets it right without help, again and again.",
-      "You want learned skills to come back on a schedule, without planning it.",
-      "Your learner is headed into Algebra 2 or precalculus.",
-      "You want workbooks made for your child, with worked answer keys."
+      "You want assessment, teaching and review in the same practice, with no placement or benchmark tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want a skill to count only when your child gets it right without help, more than once.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or headed past Geometry."
     ]
   },
   "questions": [
     {
-      "question": "Can parents buy Imagine Math?",
-      "answer": "We found no family plan, price or trial on Imagine Learning's site; its products and tutoring pages send buyers to Contact Us [1][2][3]. AMP is sold to families directly, and the first 100 answers are free, with no card."
+      "question": "How is AMP different from Imagine Math?",
+      "answer": "Imagine Math places a student with a placement assessment and moves them along a pathway of lessons, each ending in a quiz [2][3]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "How much does Imagine Math cost?",
-      "answer": "We found no published price; Imagine Learning's products and tutoring pages send visitors to Contact Us [2][3]. AMP costs $599 a year or $59 a month for the first child, and $399 a year or $39 a month for each more. That buys placement, every problem chosen and checked, scheduled review and unlimited workbooks from counting through precalculus."
+      "question": "Does Imagine Math work?",
+      "answer": "Evidence for ESSA rates it Promising, on two matched-comparison studies averaging +0.06 [4]. In a Johns Hopkins University evaluation of 34,452 Idaho students, users scored 0.04 standard deviations above matched non-users [2]. We found no randomized trial of Imagine Math."
     },
     {
-      "question": "What does the research on Imagine Math show?",
-      "answer": "Evidence for ESSA rates it Promising, on two matched-comparison studies averaging +0.06 [8]. In a Johns Hopkins study of 34,452 Idaho students, users scored 0.04 standard deviations above matched non-users [5]. We found no randomized trial of Imagine Math."
-    },
-    {
-      "question": "Is Imagine+ Math the same as Imagine Math?",
-      "answer": "Imagine Learning lists them as separate products. It announced Imagine+ Math in August 2026 as a new program for kindergarten through grade 8 [1][2]. We found no page that says whether it replaces Imagine Math."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers and chooses practice from there."
     }
   ],
   "sources": [
-    {
-      "title": "Imagine+ Math: new for back to school (Imagine Learning, August 2026)",
-      "url": "https://www.imaginelearning.com/program-updates/imagine-math-k-8-solution-coming-back-to-school-27/"
-    },
-    {
-      "title": "Math products (Imagine Learning)",
-      "url": "https://www.imaginelearning.com/products/math/"
-    },
-    {
-      "title": "Imagine Math On-Demand Tutoring (Imagine Learning)",
-      "url": "https://www.imaginelearning.com/products/math/imagine-math/on-demand-tutoring/"
-    },
     {
       "title": "Imagine Math logic model (Imagine Learning)",
       "url": "https://www.imaginelearning.com/wp-content/uploads/2022/11/MAT-Logic-Model.pdf"
@@ -145,24 +113,20 @@
       "url": "https://www.imaginelearning.com/wp-content/uploads/2023/07/Imagine-Math-Impact-Evaluation-in-Charter-School-Network.pdf"
     },
     {
-      "title": "Imagine Math usage drives success on CAASPP for grades 7-9, research brief (Imagine Learning)",
-      "url": "https://www.imaginelearning.com/wp-content/uploads/2026/04/MAT-Usage-Drives-Success-on-CAASPP-Research-Brief.pdf"
-    },
-    {
       "title": "Imagine Math (Evidence for ESSA)",
       "url": "https://www.evidenceforessa.org/program/imagine-math-2/"
+    },
+    {
+      "title": "Imagine Math usage drives success on CAASPP for grades 7-9, research brief (Imagine Learning)",
+      "url": "https://www.imaginelearning.com/wp-content/uploads/2026/04/MAT-Usage-Drives-Success-on-CAASPP-Research-Brief.pdf"
     },
     {
       "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
       "url": "https://doi.org/10.1007/s10648-023-09745-1"
-    },
-    {
-      "title": "Freeman, Wilson & Berrett (2024), Impact evaluation of Imagine Math Facts in a southwestern public school district (Imagine Learning)",
-      "url": "https://www.imaginelearning.com/wp-content/uploads/2024/07/MFC-SW-Impact-Evaluation.pdf"
     }
   ]
 }

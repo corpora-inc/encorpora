@@ -3,132 +3,106 @@
   "name": "DoodleMath",
   "maker": "DoodleLearning",
   "category": "adaptive",
-  "checked": "2026-11-21",
-  "benefit": "Math that goes past grade 5",
-  "line": "DoodleMath is a game-rich app for grades K-5. AMP runs to precalculus, with stated mastery and review rules.",
-  "description": "AMP vs DoodleMath: what each costs, what Doodle's own studies show, and why AMP's mastery rule, scheduled review and reach past grade 5 matter.",
-  "verdict": "DoodleMath is a low-cost app for kindergarten through grade 5, with badges, stars and streaks, and almost nothing for a parent to do [1][2][5][12]. AMP costs more and has no games. It runs from counting through precalculus, publishes the rule for when a skill is learned, and brings every learned skill back on a fixed schedule.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous review",
+  "line": "DoodleMath reviews in Power Ups about every 20 days. In AMP, learned skills come back in ordinary practice.",
+  "description": "AMP vs DoodleMath: DoodleMath teaches by topic and reviews in Power Ups. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "DoodleMath's algorithm builds a work plan from a child's answers, opens each new topic with an explanation, and returns to weak areas in a Power Up about every 20 days [6][7][8]. In AMP, assessment, teaching and review are continuous. Every answer sets the next problem, each problem carries its own hint, lesson and worked answer, and learned skills come back in ordinary practice.",
   "reasons": [
     {
-      "title": "It keeps going after grade 5",
-      "body": "DoodleMath covers kindergarten through grade 5 [1][3]. AMP runs from counting through precalculus in one program, on one map of 336 skills, with a separate level in each of 14 strands of math. A child who is ahead in one strand moves up in that strand, and a family does not have to change programs at middle school.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In DoodleMath, review comes in Power Ups: 15-question sets on areas its algorithm flags for support, usually about once every 20 days [8]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [15].",
       "research": [
-        "level"
+        "review"
       ]
     },
     {
-      "title": "A stated rule for when a skill is learned",
-      "body": "DoodleMath counts progress in stars and a DoodleAge, and we found no published rule for when a skill counts as mastered [10]. A hint sits behind a question-mark button [8]. In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded, but it does not count and does not move the level.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In DoodleMath the teaching comes with the topic. A new topic opens with an interactive explanation in three parts, a hint sits behind a question-mark button, and a Help button reopens the explanation [7]. Across 55 studies, worked examples improve performance in math [16].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "What counts as learned",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once, and repeated misses send practice back to what the skill builds on. DoodleMath counts progress in stars and a DoodleAge [9]. We found no rule for when a skill counts as learned in the pages we read [6][9].",
       "research": [
         "mastery",
         "hints"
       ]
     },
     {
-      "title": "Review on a schedule, not about every 20 days",
-      "body": "DoodleMath's Power Ups are 15-question sets aimed at areas where its algorithm thinks a child needs more support, usually about once every 20 days [9]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial, mixed and spaced practice beat practice in blocks by a wide margin on a test a month later [17].",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math and runs from counting through precalculus in one program, on one map of skills. A learner further along in one part than another gets work at both levels. DoodleMath covers kindergarten through grade 5 [1][2].",
       "research": [
-        "review"
+        "level"
       ]
-    },
-    {
-      "title": "The worked answer after every problem",
-      "body": "Doodle's help pages describe hints and a Help button that reopens the explanation [8]. The pages we read do not say what a learner sees after a wrong answer [8][11]. AMP shows right or wrong, the correct answer and the worked steps after every answer, and on most choice questions it explains the specific wrong choice. In studies of computer-based feedback, feedback that explains has the largest average effect [18].",
-      "research": [
-        "feedback"
-      ]
-    },
-    {
-      "title": "Every rule is public",
-      "body": "Doodle says its algorithm, Proxima, learns from each answer to adjust a child's work plan [7]. The help pages we read do not describe the model, a placement test, or what repeated misses lead to [7][9]. AMP's code is open source: anyone can read how it places a learner in the first 24 problems, the mastery rule and the review schedule. Two misses or hinted answers in a row on a skill send practice back to what that skill builds on.",
-      "research": [
-        "level",
-        "mastery"
-      ]
-    },
-    {
-      "title": "Paper workbooks that count toward the level",
-      "body": "We found no workbooks or worksheets on Doodle's home page or in the help pages we read [1][7]. AMP prints unlimited workbooks made from each learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level, so time away from the screen still moves practice forward."
     }
   ],
   "rows": {
-    "price": "$10.99 a month or $99.99 a year for one child and one subject. $179.99 a year for up to six children on one subject. Plans auto-renew [2].",
-    "buyers": "Families, on its website or in the App Store, after a 7-day free trial [2][3]. Schools book a demo [13].",
-    "range": "Kindergarten through grade 5, aligned to Common Core [1][3].",
-    "start": "No placement test described in its published materials. Its algorithm adjusts the work plan from each answer [7].",
-    "teaching": "Interactive explanations in three parts: a recap, a series of short steps, then applying it, with number lines, place-value counters and a fraction builder. Hints on request [8].",
-    "next": "Its algorithm, Proxima, sets each child's work plan. Parents can set work in any topic [5][7].",
-    "mastery": "No mastery rule published. Progress is counted in stars and a DoodleAge [10].",
-    "review": "Power Ups: 15-question sets on areas flagged for support, usually about every 20 days [9]. No fixed review schedule published.",
-    "print": "No workbooks or worksheets found on its home page or in the help pages read [1][7].",
-    "adult": "Little. Doodle says parents do not need to set or mark work. Parents can set work in any topic [5][7].",
-    "reports": "A Parent Dashboard, and an online hub that tracks progress [5][7].",
-    "evidence": "Two summer studies of its own, with no sample sizes published [4]. Claims ESSA Tier IV. No Evidence for ESSA or WWC entry [15][16]."
+    "range": "Kindergarten through grade 5, aligned to Common Core [1][2].",
+    "start": "No separate placement test described. Its algorithm, Proxima, learns from each answer and adjusts the work plan [6].",
+    "teaching": "At the topic. A new topic opens with an interactive explanation: a recap, short steps, then applying it. Hints on request [7].",
+    "next": "Proxima's work plan for each child. Parents can also set work in any topic [4][6].",
+    "mastery": "Progress is counted in stars and a DoodleAge [9]. No rule for when a skill is learned found in the pages we read [6][9].",
+    "review": "Power Ups: 15-question sets on areas its algorithm flags for support, usually about once every 20 days [8].",
+    "print": "None found in the pages we read [1][6].",
+    "adult": "By Doodle's account, parents do not need to set or mark work. They can set work in any topic [4].",
+    "reports": "A Parent Dashboard, and an online hub that tracks progress [4][6].",
+    "evidence": "Two summer studies of its own, with no sample sizes published [3]. No entry in Evidence for ESSA or the What Works Clearinghouse [13][14]."
   },
   "theirs": [
-    "DoodleMath, spelled DoodleMaths in the UK, is an app from DoodleLearning, whose U.S. site footer carries Discovery Education's name [1][7]. In the U.S. it covers kindergarten through grade 5 and is aligned to Common Core [1]. Doodle says it is loved by more than a million children worldwide [5]. The App Store lists iPhone and iPad apps that work offline [3].",
-    "Doodle's algorithm, Proxima, learns from each answered question and builds each child's work plan [7]. A new topic opens with an interactive explanation in three parts: a recap, a series of short steps, and a chance to apply it, with tools such as number lines, place-value counters and a fraction builder [8]. Questions come in many forms: typed answers, fractions, multiple choice, number lines, clocks and scales [11]. Children collect DoodleStars and keep a daily streak, with streak savers [12], and Doodle lists badges, educational games and virtual rewards [1]. About once every 20 days, a 15-question Power Up returns to areas Proxima flags for support [9].",
-    "Doodle says parents do not need to set or mark work, and home educators can let it run alone or set work on any curriculum topic [5]. A separate programme, DoodleTables, practices times tables [7]."
+    "DoodleMath, spelled DoodleMaths in the UK, is an app from DoodleLearning. In the U.S. it covers kindergarten through grade 5 and is aligned to Common Core [1]. By Doodle's account, home educators use it alongside their own curriculum [4].",
+    "Doodle's algorithm, Proxima, learns from each answered question and builds each child's work plan [6]. A new topic opens with an interactive explanation in three parts: a recap, a series of short steps, and a chance to apply it, with tools such as number lines, place-value counters and a fraction builder [7]. Questions come in many forms, including typed answers, fractions, number lines and multiple choice [10]. Children earn DoodleStars and keep a daily streak [11]. About once every 20 days, a 15-question Power Up returns to areas Proxima flags for support [8]."
   ],
   "credit": [
-    "Apps for iPhone and iPad that work offline [3]. AMP runs in a web browser and needs a connection.",
-    "Read-aloud of questions and explanations, colored overlays and scalable text [6]. AMP does not read problems aloud.",
-    "A game layer many children enjoy: DoodleStars, streaks, badges and virtual rewards [1][12]. AMP has no games, streaks or badges.",
-    "A much lower price: $99.99 a year for one child on one subject, or $179.99 a year for a family plan that its help center says covers up to six children [2].",
-    "A separate times-tables programme, DoodleTables, where parents can focus on a specific table [7]. AMP has fact practice but no fluency app."
+    "Interactive explanations with number lines, place-value counters and a fraction builder [7].",
+    "It adjusts each child's work plan from every answer [6].",
+    "Questions and explanations can be read aloud [5]."
   ],
   "evidence": {
     "theirs": [
-      "DoodleLearning's impact page describes two summer studies of 10-year-olds [4]. In the first, children chose how much to use the app, and results were compared by level of use. In the second, children were randomly given access to the app or not. The page gives no sample sizes, effect sizes, authors or dates, and the full report sits behind a form [4][14].",
-      "Comparisons by how much children chose to use an app can reflect differences that were there before the summer starts. A figure on Doodle's help pages has a similar problem. Credited to a University of Bath study, it says children earning 15 stars a day gained about 1.94 years in 12 months, against 0.84 for non-users [10]. It is measured in Doodle's own units, and the page gives no sample, authors or date. The same page calls 20 minutes a week \"scientifically proven to prevent learning loss\" [10].",
-      "Doodle states that DoodleMath meets ESSA Tier IV [4]. That is the tier for a published rationale, the same tier AMP claims for itself, and it is not an outcome result. DoodleMath has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [15][16]. We found no independent outcome study on Doodle's site."
+      "DoodleLearning's impact page describes two summer studies of its own with 10-year-olds [3]. In the first, children chose how much to use the app, and results were compared by level of use. In the second, children were randomly given access to the app or not. The page gives no sample sizes, effect sizes, authors or dates, and the full report sits behind a form [3][12].",
+      "A Doodle help page credits a University of Bath study with this figure: children earning 15 stars a day gained about 1.94 years in 12 months, against 0.84 for non-users [9]. It is measured in Doodle's own units, and the page gives no sample, authors or date [9].",
+      "Doodle states that DoodleMath meets ESSA Tier IV, the tier for a published rationale [3]. DoodleMath has no entry in Evidence for ESSA or the What Works Clearinghouse [13][14]. We found no independent outcome study on Doodle's site."
     ],
     "ours": [
-      "Two findings bear most on this choice. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17]. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right or wrong alone 0.05 [18]. AMP's fixed review schedule and its worked answer after every problem put both findings into every session. We will measure whether it does.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear most on this comparison: mixed, spaced practice scored 62% against 38% for practice in blocks on the researchers' own test a month later, in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations [15], and worked examples improve math performance, with an average effect of g = 0.48 across 55 studies [16]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want a low-cost daily habit for a child in kindergarten through grade 5.",
-      "Your child is motivated by stars and streaks.",
-      "Your child needs questions read aloud, or you need an app that works offline on a tablet.",
-      "You have several young children and want one plan for all of them under $200 a year."
+      "You want each new topic introduced with an interactive explanation and on-screen tools such as number lines."
     ],
     "amp": [
-      "Your learner is ahead, or will soon pass grade 5, and you want one program for the years after.",
-      "You want to know exactly when a skill counts as learned, and that hinted answers do not count.",
-      "You want old skills to come back on a schedule, mixed with other topics.",
-      "You want the correct answer and the worked steps after every problem.",
-      "You want printed workbooks made for your child, with worked answer keys."
+      "You want assessment, teaching and review in the same practice, with no separate test.",
+      "You want learned skills to keep coming back in ordinary practice, mixed with other math.",
+      "You want a hint and a lesson at every problem, and the worked steps after every answer.",
+      "You want a skill to count only when it is right without help, more than once.",
+      "Your learner is at different levels in different parts of math, or ready for math past grade 5."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than DoodleMath?",
-      "answer": "Yes. DoodleMath costs $10.99 a month or $99.99 a year for one child on one subject, and $179.99 a year covers a family plan its help center says covers up to six children [2]. AMP is $599 a year or $59 a month for the first child and $399 a year for each more, with two parents practicing free; the price pays for a program that places the learner, chooses every problem, schedules review, prints workbooks and runs through precalculus."
+      "question": "How is AMP different from DoodleMath?",
+      "answer": "DoodleMath builds a work plan from a child's answers, opens each new topic with an explanation, and returns to weak areas in a Power Up about every 20 days [6][7][8]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "What comes after DoodleMath ends at grade 5?",
-      "answer": "DoodleMath covers kindergarten through grade 5 [1][3]. AMP continues through grade 8, Algebra 1, Geometry, Algebra 2 and Precalculus in the same program, so a learner keeps the same record and level."
+      "question": "Does DoodleMath work?",
+      "answer": "DoodleLearning describes two summer studies of its own, with no sample sizes or effect sizes published [3]. DoodleMath has no entry in Evidence for ESSA or the What Works Clearinghouse, and we found no independent outcome study [13][14]."
     },
     {
-      "question": "Does AMP have an app like DoodleMath?",
-      "answer": "No. AMP runs in the web browser on a phone, tablet or computer, and needs a connection. DoodleMath has iPhone and iPad apps that work offline [3]."
-    },
-    {
-      "question": "Does DoodleMath have research behind it?",
-      "answer": "Doodle describes two summer studies of its own and claims ESSA Tier IV, the tier for a rationale [4]. Its headline growth figure compares children by how much they used the app, measured on Doodle's own scale [10]. DoodleMath has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [15][16]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
     {
       "title": "DoodleLearning, U.S. home page",
       "url": "https://doodlelearning.com/us/"
-    },
-    {
-      "title": "What is the cost of a subscription? (Doodle help center)",
-      "url": "https://help.doodlelearning.com/en/articles/2953428-what-is-the-cost-of-a-subscription"
     },
     {
       "title": "DoodleMath: Elementary Math (Apple App Store, U.S.)",
@@ -171,10 +145,6 @@
       "url": "https://help.doodlelearning.com/en/articles/5353093-what-is-a-streak"
     },
     {
-      "title": "Doodle for schools (DoodleLearning)",
-      "url": "https://doodlelearning.com/us/schools"
-    },
-    {
       "title": "Download the research report (DoodleLearning)",
       "url": "https://doodlelearning.com/us/download-research-form"
     },
@@ -191,8 +161,8 @@
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]
 }

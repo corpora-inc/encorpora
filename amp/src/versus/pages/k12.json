@@ -3,129 +3,112 @@
   "name": "K12",
   "maker": "Stride, Inc.",
   "category": "all-in-one",
-  "checked": "2026-11-21",
-  "benefit": "Math beside any school",
-  "line": "K12 runs full online schools; AMP is only math, chosen from each learner's answers, beside any school.",
-  "description": "AMP vs K12: a full online school beside a math program. What K12 offers, what it has shown, and why a family might add AMP for math.",
-  "verdict": "K12 runs full online schools, with certified teachers, core classes and electives, and its online public schools charge no tuition [1][4]. It is a school, and math is one course among many. AMP is only math: it chooses every problem from the learner's answers, schedules review, and fits beside any school or homeschool plan.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "K12, an online school, teaches math one course at a time. In AMP, assessment, teaching and review are continuous.",
+  "description": "AMP vs K12: online schools that teach math one course at a time, and a math program where assessment, teaching and review are continuous.",
+  "verdict": "K12 runs online schools and offers single courses. Math is one course among many, taught through live classes and lessons in its schools, with a Learning Coach at home [1][3]. Its 3rd Grade Math course has a mid-year test and an end-of-year test [12]. In AMP, assessment, teaching and review are continuous: every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "K12 is a school; AMP is the math",
-      "body": "K12's main offer is full-time school: tuition-free online public schools and online private schools, with certified teachers, core classes and electives [1][3][4]. AMP is only math. A family that teaches at home can use it as the whole math program. A family in any school, K12's included, can add it beside math class."
-    },
-    {
-      "title": "Every problem is chosen from the learner's answers",
-      "body": "K12's store sells math one course per grade or subject, from kindergarten through Calculus, and the buyer picks the course [5]. K12 says its curriculum adapts to each student's needs; the page does not say how [9]. AMP keeps a level in each of 14 strands of math and places the learner within the first 24 problems, with no separate test. Each next problem is new work, a prerequisite, or review, so a learner at grade 3 in fractions and grade 6 in geometry practices at both.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test and no test day. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem. K12 teaches math one course at a time. Its 3rd Grade Math course has a mid-year test and an end-of-year test [4][12].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Mastery and review run on stated rules",
-      "body": "K12's 3rd Grade Math is a course of 15 units, with a mid-year test and an end-of-year test [16]. In AMP a skill is Strong at four of the last five answers right without help, and an answer after a hint does not count. Two misses in a row send practice back to what the skill builds on. Learned skills come back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. At K12 the unit is the course, one per grade or subject [4]. In its schools, the day includes scheduled live classes with certified teachers, and the curriculum mixes interactive games, videos and hands-on activities [1][7]. Across 55 studies, worked examples improve performance in math [14].",
       "research": [
-        "mastery",
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus on one map of skills. A learner further along in geometry than in fractions gets work at both levels, and repeated misses send practice back to what a skill builds on. In K12's Learning Store, math comes one course per grade or subject, from kindergarten through Calculus, and the family picks the course [4].",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. K12's 3rd Grade Math course runs unit by unit, with a mid-year test and an end-of-year test [12]. We found no scheduled review of earlier skills in the pages we read [7][12]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [13].",
+      "research": [
         "review"
       ]
     },
     {
-      "title": "Less for the adult at home to run",
-      "body": "In K12's homeschool program, a Learning Coach, typically a parent or guardian, guides the student through lessons [4]. Its store rates parent involvement in 3rd Grade Math as high, with active daily involvement, and in Algebra 1 as low [16][15]. AMP places the learner, chooses each problem, checks each answer and schedules review. After every answer the learner sees the correct answer and worked steps, and each of 961 reference lessons carries a guide for the parent.",
-      "research": [
-        "feedback",
-        "lessons"
-      ]
-    },
-    {
-      "title": "One price covers counting through precalculus",
-      "body": "K12's Learning Store sells math a course at a time: Algebra 1 costs $200 for a full year of independent study, or $600 for a full year with teacher support [15]. A year of AMP costs more than one independent course: $599, or $59 a month. It covers every level, so a learner who races ahead or needs to go back never waits on the next course."
-    },
-    {
-      "title": "Workbooks made for this learner",
-      "body": "K12 provides books and supplies to students in its schools [1]. Its store courses are digital, and some math courses offer a materials kit as an add-on [16]. AMP prints unlimited workbooks composed from the learner's own answers, each with a worked answer key. Results entered from paper count toward the learner's level."
+      "title": "What the adult does",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. In K12's homeschool program, a Learning Coach, typically a parent or guardian, guides the student through lessons [3]. K12's Learning Store rates parent involvement in 3rd Grade Math as high, with active daily involvement, and in Algebra 1 as low [12][11]."
     }
   ],
   "rows": {
-    "price": "Online public school: no tuition [1]. Private schools: generally $4,995 to $6,995 a year [4]. Algebra 1: $200 a full year, $600 teacher-supported [15]. Tutoring: $34.99 per 30 minutes [8].",
-    "buyers": "Families enroll in an online public or private school [1][3], or buy single courses [5]. ESA and voucher funds in several states help pay private tuition [2].",
-    "range": "Schools cover kindergarten through grade 12 [3]. Math courses run through Calculus [5]. Tutoring reaches Statistics and Linear Algebra [6].",
-    "start": "Courses are sold by grade and subject; the buyer picks one [5].",
-    "teaching": "Scheduled live classes with certified teachers, plus interactive games, videos and hands-on activities [1][9].",
-    "next": "K12 says its curriculum adapts to each student; the page does not say how [9].",
-    "mastery": "Courses run unit by unit; 3rd Grade Math has a mid-year test and an end-of-year test [16].",
-    "review": "No scheduled review of earlier skills found on the pages we read [9][16].",
-    "print": "Its schools provide books and supplies [1]. Store courses are digital; some math courses offer a materials kit [16].",
-    "adult": "A Learning Coach, typically a parent or guardian, guides lessons [4]. Its store rates 3rd Grade Math high for parent involvement [16].",
-    "reports": "Certified teachers teach in its schools [1]. Store courses are computer-graded [15]. The free Learning Hub tracks each child's progress for the parent [7].",
-    "evidence": "No rating in Evidence for ESSA and no What Works Clearinghouse intervention report [10][11]. A company survey of graduates, with self-reported answers [12]."
+    "range": "Schools from kindergarten through grade 12 [2]. Math courses run through Calculus [4].",
+    "start": "Math comes one course per grade or subject. The family picks the course [4].",
+    "teaching": "In its schools, live classes with certified teachers. The curriculum mixes interactive games, videos and hands-on activities [1][7].",
+    "next": "The course's lessons, guided by a Learning Coach [3]. K12 says its curriculum adapts to each student; the page does not say how [7].",
+    "mastery": "Courses run unit by unit. 3rd Grade Math has a mid-year test and an end-of-year test [12].",
+    "review": "No scheduled review of earlier skills found in the pages we read [7][12].",
+    "print": "Its schools provide books and supplies [1]. Single courses are digital; some math courses offer a materials kit [12].",
+    "adult": "A Learning Coach, typically a parent or guardian, guides the student through lessons [3]. In its schools, certified teachers teach [1].",
+    "reports": "Single courses are computer-graded [11]. The Learning Hub tracks each child's progress for the parent [6].",
+    "evidence": "No rating in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9]. A company survey of graduates, with self-reported answers [10]."
   },
+  "open": [
+    "next"
+  ],
   "theirs": [
-    "K12 is a brand of Stride, Inc., which trades on the New York Stock Exchange. It calls itself the leader in online education since 2000 and says it has served more than 3 million registered learners [1]. Most of what it offers is school: tuition-free online public schools, and online private schools such as K12 Private Academy and The Keystone School [1][3].",
-    "In its schools, the day includes scheduled live classes with certified teachers [1], and the curriculum mixes interactive games, videos and hands-on activities [9]. Parents or other responsible adults act as the student's Learning Coach [1][4]. Math is one course among many.",
-    "K12 also sells to families who teach at home: single courses in its Learning Store, with math from kindergarten through Calculus [5], a free Learning Hub with more than 17,000 lessons, videos and activities [7], and paid tutoring [6][8]. This page compares AMP with K12's math as a family meets it in these offers."
+    "K12 is a brand of Stride, Inc. It runs online public schools and online private schools, such as K12 Private Academy and The Keystone School, from kindergarten through grade 12 [1][2]. Math is one course among many.",
+    "In its schools, the day includes scheduled live classes with certified teachers, and the curriculum mixes interactive games, videos and hands-on activities [1][7]. A parent or other responsible adult acts as the student's Learning Coach and guides the student through lessons [1][3]. K12 also offers single courses to families who teach at home, with math from kindergarten through Calculus [4]. Algebra 1 can be taken as independent study or with teacher support [11]."
   ],
   "credit": [
-    "A whole school: certified teachers, live classes, core classes and electives, with the structure K12 describes as a fully accredited program [1][4]. AMP has none of that.",
-    "Its online public schools charge no tuition, and its schools provide books and supplies [1]. For its private schools, K12 lists ESA and voucher programs in Alabama, Arizona, Arkansas, Texas and other states [2]. AMP costs $599 a year, with funds from three states.",
-    "Tutoring by certified teachers in math through Calculus, Statistics and Linear Algebra, from $34.99 for 30 minutes, with a free first session [6][8]. Beacon, its free step-by-step math help, covers grades 4 to 12 [6]. AMP has no tutors.",
-    "Math courses through Calculus, with optional teacher support [5][15]. AMP stops at precalculus.",
-    "A free Learning Hub with more than 17,000 lessons, videos and activities from kindergarten to grade 12, with no payment information needed [7]."
+    "Certified teachers and scheduled live classes in its schools [1].",
+    "Tutoring by certified teachers in math through Calculus, Statistics and Linear Algebra [5].",
+    "Math courses through Calculus, with optional teacher support [4][11]."
   ],
   "evidence": {
     "theirs": [
-      "K12 and Stride have no rating in Evidence for ESSA and no What Works Clearinghouse intervention report, as of November 2026 [10][11]. We found no study of K12's math courses.",
-      "K12's own evidence is a survey. On its Graduate Success page, K12's Future Readiness Survey found 74% of graduates of K12-powered schools optimistic about their career direction, against 56% of graduates of traditional schools [12]. The answers are self-reported, and the page gives no test scores."
+      "We found no study of K12's math courses. When we checked, K12 and Stride had no rating in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9].",
+      "K12's own evidence is a survey. On its Graduate Success page, K12's Future Readiness Survey found 74% of graduates of K12-powered schools optimistic about their career direction, against 56% of graduates of traditional schools [10]. The answers are self-reported, and the page gives no test scores."
     ],
     "ours": [
-      "At home, someone has to schedule review and explain mistakes. AMP does both by rule. In a randomized trial of 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks, on the researchers' own test; the What Works Clearinghouse says it meets its standards without reservations [13]. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, the correct answer alone 0.32, and right-or-wrong only 0.05 [14]. We expect a program built on these rules to show it in outcomes, and we have committed to measuring that in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [13]. A meta-analysis of 55 studies found that worked examples improve mathematics performance [14]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want a full school, with certified teachers, core classes and electives, and a tuition-free public option where you live.",
-      "Your learner needs Calculus or a course beyond it.",
-      "You want a live tutor for math.",
-      "Your state's ESA or voucher would pay for a full online private school."
+      "You want a full school, with certified teachers and live classes."
     ],
     "amp": [
-      "You teach at home and want math that places, chooses, checks and reviews for you.",
-      "Your child is in a school, K12's included, and you want daily math practice beside it.",
-      "You want every problem chosen from your child's answers, in each of 14 strands of math.",
-      "You want a mastery rule and a review schedule you can read.",
-      "You want paper too: workbooks made for your child, with worked answer keys."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your child is at different levels in different parts of math.",
+      "You want math the adult does not have to plan, teach or grade."
     ]
   },
   "questions": [
     {
-      "question": "Is K12 a math program?",
-      "answer": "No. K12 runs online public and private schools, and sells single courses and tutoring [1][5][6]. Math is one subject among many. AMP is only math."
+      "question": "How is AMP different from K12?",
+      "answer": "K12 runs online schools and offers single courses. Math is one course among many, with a Learning Coach guiding lessons [1][3]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can my child use AMP while enrolled in a K12 school?",
-      "answer": "Yes. AMP is a separate program, and it starts free: 100 answers and 5 workbooks per learner, with no card."
+      "question": "Does K12 work?",
+      "answer": "We found no study of K12's math courses. When we checked, K12 had no rating in Evidence for ESSA and no What Works Clearinghouse intervention report [8][9]. It publishes a survey of its graduates, with self-reported answers [10]."
     },
     {
-      "question": "Is AMP more expensive than K12?",
-      "answer": "K12's online public schools charge no tuition, and Algebra 1 in its store costs $200 for a full year of independent study, or $600 with teacher support [1][15]. AMP costs $599 a year or $59 a month for the first child, for every level from counting through precalculus. K12's private schools generally cost $4,995 to $6,995 a year in tuition for full-time school [4]."
-    },
-    {
-      "question": "Does K12 have research showing it works?",
-      "answer": "K12 has no Evidence for ESSA rating and no What Works Clearinghouse intervention report [10][11]. K12 publishes a survey of its graduates, with self-reported answers [12]."
-    },
-    {
-      "question": "Can I pay for AMP with an ESA?",
-      "answer": "Yes, with Arizona ESA, Arkansas EFA or New Hampshire EFA funds. K12 lists programs in more states, for its private schools [2]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever school they attend."
     }
   ],
   "sources": [
     {
       "title": "K12 home page (Stride, Inc.)",
       "url": "https://www.k12.com/"
-    },
-    {
-      "title": "Vouchers and scholarship programs (K12)",
-      "url": "https://www.k12.com/online-private-school/how-to-make-private-school-free/"
     },
     {
       "title": "Online private schools (K12)",
@@ -148,10 +131,6 @@
       "url": "https://www.k12.com/online-homeschool/learninghub/"
     },
     {
-      "title": "Tutoring pricing (K12 Tutoring)",
-      "url": "https://tutoring.k12.com/pricing/"
-    },
-    {
       "title": "The K12 curriculum (K12)",
       "url": "https://www.k12.com/steps-to-success/k12-curriculum/"
     },
@@ -168,20 +147,20 @@
       "url": "https://www.k12.com/steps-to-success/graduate-success/"
     },
     {
-      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
-      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
-    },
-    {
-      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment",
-      "url": "https://doi.org/10.3102/0034654314564881"
-    },
-    {
       "title": "Algebra 1, K12 Learning Store",
       "url": "https://learningstore.k12.com/products/algebra-1"
     },
     {
       "title": "3rd Grade Math, K12 Learning Store",
       "url": "https://learningstore.k12.com/products/math-3"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]
 }

@@ -3,131 +3,110 @@
   "name": "Shormann Math",
   "maker": "DIVE Interactive Education",
   "category": "courses",
-  "checked": "2026-11-21",
-  "benefit": "Practice at the learner's level",
-  "line": "Shormann Math teaches 100 video lessons in a fixed order. AMP chooses each problem from the learner's answers.",
-  "description": "AMP vs Shormann Math: a 100-lesson video course from Prealgebra to Calculus 2, or practice that finds the level and adapts at every answer.",
-  "verdict": "Shormann Math is a serious, low-priced course: Dr. Shormann teaches every lesson on video, old topics come back in the Saxon manner, and the line runs to Calculus 2 [1][3]. But every student gets the same 100 lessons in the same order [2]. AMP finds the learner's level in each part of math, chooses every problem from the answers, and starts at counting.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Shormann Math teaches by lecture and tests at set points. In AMP, assessment and teaching happen at every problem.",
+  "description": "AMP vs Shormann Math: Shormann teaches by recorded lecture and tests at set points. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Shormann Math teaches each lesson by recorded lecture, then practice, in a fixed order, with a quiz every fourth lesson and a cumulative exam every 25 [2][3]. In AMP, assessment and teaching are continuous. Every answer is checked and explained at once, updates the learner's level and sets the next problem.",
   "reasons": [
     {
-      "title": "AMP finds the level in every part of math",
-      "body": "Shormann Math posts a placement test to choose the course [5]. From there every student works the same 100 lessons in order [2], and the first 25 review or introduce prerequisite skills for everyone [3]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers. A strength in one strand never hides a gap in another.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Shormann Math uses a placement test to choose the course [5]. Inside the course every student works the same lessons in the same order, with a timed quiz every fourth lesson and a cumulative exam every 25 lessons [2][3].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Gaps get repaired the moment they show",
-      "body": "Shormann Math begins at Prealgebra, designed for grade 7 and up and for students who know their multiplication facts through 9 [4]. We found no automatic return to earlier skills inside a course in the pages we read [2][3]. In AMP two misses in a row on a skill send practice to what that skill builds on, on a map that runs back to counting. The learner practices the missing piece, then returns.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Shormann Math the unit is the lesson. It opens with flashcards of rules and definitions and a recorded whiteboard lecture by Dr. Shormann, during which the student works each example. The practice set comes after [2][3]. Across 55 studies, worked examples improve performance in math [9].",
       "research": [
-        "mastery",
-        "level"
-      ]
-    },
-    {
-      "title": "Learned means right without help",
-      "body": "A Shormann student gets up to four attempts on each problem, losing points with each miss, and the course grade weights practice, quizzes and exams [2][3]. We found no mastery rule in the pages we read. In AMP a learner answers once and then sees the correct answer and the worked steps. A skill counts as learned only when four of the last five answers are right without help. An answer given after a hint or the lesson does not count.",
-      "research": [
-        "mastery",
+        "lessons",
         "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Feedback on every answer",
+      "body": "After every answer, AMP shows whether it was right, the correct answer and the worked steps. Shormann Math grades the typed answers automatically. A student gets up to four attempts on each problem, with points taken off for each miss, and then video and PDF solutions open [2]. Across 40 studies of computer-based feedback, in mixed ages and subjects, feedback that explains had the largest average effect [10].",
+      "research": [
         "feedback"
       ]
     },
     {
-      "title": "Review follows the learner, not the book",
-      "body": "Shormann Math reviews in the Saxon manner: a concept comes back in several practice sets, then on a timed quiz and a quarterly exam [3]. That is a sound design, and the mix is the same for every student. AMP schedules review for each learner and each skill: 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month after a success, mixed with other topics. A miss starts that skill's schedule over.",
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped. A skill counts when the learner gets it right without help, more than once, and repeated misses send practice back to what the skill builds on, on one map from counting through precalculus. In Shormann Math a grade is weighted points across practice, quizzes and exams [2][3]. The first 25 lessons of each course review and introduce prerequisite skills, the same for every student [3].",
+      "research": [
+        "mastery",
+        "level"
+      ]
+    },
+    {
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Each learner's own answers decide when a skill is due back. Shormann Math reviews in the Saxon manner: a concept returns in several later practice sets, then on a timed quiz and a quarterly exam [3]. The course sets that order, the same for every student [2]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [8].",
       "research": [
         "review"
       ]
-    },
-    {
-      "title": "Practice starts with the problem, not a lecture",
-      "body": "A Shormann lesson opens with a recorded lecture of about 20 minutes, sometimes over 30, before 20 practice problems [2][3]. Cathy Duffy's review puts the pace at 1 to 1.5 hours a day, four or five days a week [3]. AMP has no fixed session length. Each problem carries its own hint and written lesson, one tap away. A learner who knows the idea goes straight to the work.",
-      "research": [
-        "lessons",
-        "hints"
-      ]
-    },
-    {
-      "title": "One program for every child in the family",
-      "body": "Shormann Math has no course below Prealgebra [1][4]. AMP runs from counting in kindergarten through precalculus, so a young child and a teenager use the same program and the same reports. Each additional child costs $399 a year or $39 a month, and two parents practice free."
     }
   ],
   "rows": {
-    "price": "Algebra 1 to Calculus 2: $154.99 a course on sale. Algebra 1 gets 24 months. Prealgebra: $119.99 for 12 months [1][2][4]. No refunds [2].",
-    "buyers": "Families, from the vendor's site [1]. Each student needs a unique email address [2].",
-    "range": "Prealgebra, for grade 7 and up, through Calculus 2, with integrated geometry [1][4]. No elementary courses [1].",
-    "start": "A placement test, posted by the vendor, chooses the course [5]. We found no placement within a course.",
-    "teaching": "Recorded whiteboard lectures by Dr. Shormann, about 20 minutes, and a printable eTextbook. Each problem links to a similar worked example [2][3].",
-    "next": "The next lesson in a fixed sequence of 100, the same for every student. The family sets the pace [2].",
-    "mastery": "Weighted points for practice, quizzes and exams. Up to four tries per problem, points off per miss [2][3]. No mastery rule found.",
-    "review": "Saxon-style: concepts return in later practice sets, quizzes and cumulative exams [2][3]. The same for every student, not timed to the learner.",
-    "print": "Printable eTextbook and teacher's guide. A full offline PDF set costs $159 [1][2]. The same pages for every student.",
-    "adult": "Little. The course is built for independent work. Parents read the teacher's guide and can view the gradebook [1][3].",
-    "reports": "Auto-graded work and weighted grades in a parent gradebook. Course credits listed per course [1][2].",
-    "evidence": "No outcome study found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][6][7]."
+    "range": "Prealgebra, for grade 7 and up, through Calculus 2, as separate courses, with geometry woven into the algebra courses [1][4].",
+    "start": "A placement test, posted by the maker, chooses the course. The course then runs in a fixed order [5][2].",
+    "teaching": "Recorded whiteboard lectures by Dr. Shormann and a printable eTextbook. Each problem links to a similar worked example [2][3].",
+    "next": "The next lesson in the course's fixed order, the same for every student. The family sets the pace [2].",
+    "mastery": "Weighted points for practice, quizzes and exams. Up to four tries per problem, with points off for each miss [2][3].",
+    "review": "In the Saxon manner: a concept returns in later practice sets, a timed quiz and a quarterly exam, on the course's schedule [3].",
+    "print": "A printable eTextbook and teacher's guide, the same for every student [1][2].",
+    "adult": "Reads the teacher's guide, views the gradebook, and can request grade changes or reset assignments. The course is built for independent work [1][2][3].",
+    "reports": "Automatic grades and weighted course grades in a parent gradebook [1][2].",
+    "evidence": "None found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][6][7]."
   },
   "theirs": [
-    "Shormann Math comes from DIVE Interactive Education, created by Dr. Shormann [1][5]. It is a line of self-paced online courses: Prealgebra, Algebra 1 and Algebra 2 with integrated geometry, Precalculus with Trigonometry, Calculus 1 and Calculus 2 [1]. Each is a full course, not a supplement. Algebra 1 is listed as one credit of Algebra 1 and half a credit of Geometry [2]. The method is Saxon's incremental approach with geometry woven in [1], taught from a Christian worldview [3].",
-    "Each course has 100 lessons on a 30-week schedule that can stretch to three or four semesters [2]. A lesson opens with digital flashcards of rules and definitions, then a recorded whiteboard lecture by Dr. Shormann, during which the student pauses to solve each example [2][3]. Then come 20 practice problems, worked on paper with the answers typed online. Every fourth lesson ends in a short timed quiz, and every 25 lessons in a cumulative exam [2][3].",
-    "The work is graded automatically. A student gets up to four attempts per problem, with points taken off for each miss, and then video and PDF solutions open [2]. Parents see a gradebook and can request grade changes or reset assignments [1][2]. Dr. Shormann also answers questions through a free Q&A service [2]."
+    "Shormann Math comes from DIVE Interactive Education, created by Dr. Shormann [1][5]. It is a line of self-paced online courses: Prealgebra, Algebra 1 and Algebra 2 with integrated geometry, Precalculus with Trigonometry, Calculus 1 and Calculus 2 [1]. The method is Saxon's incremental approach with geometry woven in [1], taught from a Christian worldview [3].",
+    "Each course is a fixed sequence of lessons [2]. A lesson opens with digital flashcards of rules and definitions, then a recorded whiteboard lecture by Dr. Shormann, during which the student pauses to solve each example [2][3]. Then come practice problems, worked on paper with the answers typed online and graded automatically. A short timed quiz comes every fourth lesson, and a cumulative exam every 25 lessons [2][3]."
   ],
   "credit": [
-    "Courses AMP does not have: Calculus 1 and 2, with lessons that prepare for CLEP and AP exams [1][3]. AMP stops at precalculus.",
-    "A real teacher. Dr. Shormann teaches every lesson on video and answers questions through a free Q&A service [2]. AMP has no teacher on video and no live help.",
-    "A low price for a full course: $154.99 for 24 months of Algebra 1, and a sibling for $45.99 on sale [1][2]. A year of AMP costs more.",
-    "Cumulative review in every lesson, in the Saxon manner [3]. Research on mixed, spaced practice points the same way [8].",
-    "Credit-bearing courses with recorded grades, and offline PDF and video sets [1][2]. AMP gives no course credit and has no offline mode."
+    "One teacher explains every lesson, and the student works each example with him [2][3].",
+    "Old topics keep returning in later practice sets, quizzes and exams, in the Saxon manner [3].",
+    "Each practice problem links to a similar worked example and the lecture that taught it [2]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Shormann Math. Its product page says the method \"develops fluency with less practice\" [1]. We saw no data behind that line on the pages we read [1][5]. Shormann Math has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report, as of November 2026 [6][7]. That is not evidence the course falls short. It means the choice rests on how each program is built."
+      "We found no outcome study of Shormann Math on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][5][6][7]."
     ],
     "ours": [
-      "Shormann Math and AMP share two methods with strong research behind them. Both teach through worked examples, which improved math performance by an average of g = 0.48 across 55 studies [9]. Both mix old problems in with new. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [8]. They part on who decides. Shormann Math fixes the lessons and the mix for every student. In AMP each learner's answers set the level, send practice back to a missing skill and time each review. We expect that to help a learner keep more of what they learn. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 40 studies of computer-based feedback, in mixed ages and subjects, feedback that explains had the largest average effect (0.49), against 0.32 for the correct answer alone and 0.05 for right or wrong only [10]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [8]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Your student is in Prealgebra or beyond and learns well from one teacher's lectures [2].",
-      "You need Calculus 1 or 2, or prep for the CLEP and AP exams [1][3].",
-      "You want a Christian worldview woven into the math [3].",
-      "You want a full course with credits and a gradebook for a transcript, at a low price per course [1][2]."
+      "You want one teacher's recorded lecture for each lesson, followed by a set of practice problems."
     ],
     "amp": [
-      "Your child is younger than Prealgebra, or you teach children of several ages.",
-      "You want each problem chosen from your learner's answers, with gaps repaired as they show.",
-      "You want practice without a lecture first, with the lesson one tap away on every problem.",
-      "You want old skills brought back on a schedule, with nothing to plan or grade.",
-      "You want to try it free first, with a full refund within 30 days if it doesn't fit."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer checked and explained the moment it is given.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want review timed to what your learner has learned and when.",
+      "Your learner is at different levels in different parts of math."
     ]
   },
   "questions": [
     {
-      "question": "How much does Shormann Math cost compared with AMP?",
-      "answer": "Shormann Math lists Algebra 1 through Calculus 2 at $154.99 a course on sale, down from $199.99, with 24 months of access listed for Algebra 1, and Prealgebra at $119.99 for 12 months [1][2][4]. The vendor says purchases \"can't be refunded or exchanged for any reason\" [2]. AMP is $599 a year or $59 a month for the first child, covers counting through precalculus, and is free to try for 100 answers."
+      "question": "How is AMP different from Shormann Math?",
+      "answer": "Shormann Math teaches each lesson by recorded lecture, then practice, with quizzes and exams at set points in a fixed order [2][3]. AMP has no separate test: every answer is checked and explained at once and sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP alongside Shormann Math?",
-      "answer": "Yes. Shormann Math gives the lectures, the course sequence and the graded exams. AMP finds the level in each part of math, repairs earlier gaps, brings old skills back on a schedule and prints workbooks made for the learner."
+      "question": "Does Shormann Math work?",
+      "answer": "We found no outcome study of Shormann Math on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][6][7]."
     },
     {
-      "question": "Does AMP teach calculus like Shormann Math?",
-      "answer": "No. AMP stops at precalculus. Shormann Math continues through Calculus 1 and 2, with CLEP and AP prep lessons [1][3]."
-    },
-    {
-      "question": "Does AMP have video lessons like Shormann Math?",
-      "answer": "Not a teacher on camera. AMP has narrated, animated lesson films for a growing share of problem types, plus a written lesson, a hint and worked steps for every one. Shormann Math teaches every lesson by recorded lecture [2]."
-    },
-    {
-      "question": "Does Shormann Math give course credit?",
-      "answer": "It lists credits per course, such as one credit of Algebra 1 and half a credit of Geometry for its Algebra 1 course [2]. AMP gives no course credit or transcripts."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
     {
-      "title": "Shormann Math self-paced eLearning courses and prices (DIVE Interactive Education)",
+      "title": "Shormann Math self-paced eLearning courses (DIVE Interactive Education)",
       "url": "https://diveintomath.com/shormann-math/"
     },
     {
@@ -159,8 +138,12 @@
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
       "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
     }
   ]
 }

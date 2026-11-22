@@ -2,119 +2,99 @@
   "slug": "splashlearn",
   "name": "SplashLearn",
   "category": "games",
-  "checked": "2026-11-21",
-  "benefit": "Math beyond grade 5",
-  "line": "SplashLearn turns PreK to grade 5 math into games. AMP explains every miss and runs from counting to precalculus.",
-  "description": "AMP vs SplashLearn: a game-based app for preschool to grade 5, and AMP's adaptive math with every miss explained, from counting through precalculus.",
-  "verdict": "SplashLearn makes preschool to grade 5 math and English into games, with apps, rewards and free use for schools and teachers [1][5]. Its math stops at grade 5, and we found no mastery rule or review schedule in its published materials [3][6][7]. AMP explains every miss with the worked answer, publishes its mastery and review rules, and runs from counting through precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "SplashLearn teaches in games with rewards, to grade 5. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs SplashLearn: SplashLearn teaches in games with rewards, to grade 5. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "SplashLearn teaches preschool to grade 5 math through game-based activities with rewards [3], along a personalized learning path [4][6], and reviews past topics in a live class once a month [7]. In AMP, assessment, teaching and review are continuous. Every answer updates the learner's level in that part of math and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP keeps going after grade 5",
-      "body": "SplashLearn's math runs from preschool through grade 5 [1][3]. AMP runs from counting through precalculus in one program, with 336 skills on one map. A learner who is ahead can move into middle school work at once, and no family has to change programs at grade 6."
-    },
-    {
-      "title": "Every miss comes with the worked answer",
-      "body": "After every answer AMP shows right or wrong, the correct answer and the worked steps. Every problem type also has a one-step hint that never gives the answer, and a written lesson with a worked example. SplashLearn's math and teacher pages describe games, rewards and adaptive practice [3][7]. We found no description there of what a child sees after a wrong answer.",
+      "title": "The problem is the unit",
+      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a video lesson, the worked answer after it is answered, and links to the skills it builds on and leads to. In SplashLearn the unit is the game-based activity, which earns rewards [1][3]. Teachers assign lessons [4][6]. Across 55 studies, worked examples improve performance in math [11].",
       "research": [
-        "feedback",
+        "lessons",
         "hints",
-        "lessons"
+        "films"
       ]
     },
     {
-      "title": "Help never counts as mastery",
-      "body": "In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded but does not move the level, and two misses in a row send practice back to what the skill builds on. We found no mastery rule on SplashLearn's program pages [3][6][7].",
-      "research": [
-        "mastery",
-        "hints"
-      ]
-    },
-    {
-      "title": "A separate level in each part of math",
-      "body": "AMP keeps a level in each of 14 strands and places the learner inside practice, within the first 24 problems, with no separate test. A child can be at grade 3 in fractions and grade 5 in geometry, and practice targets each. SplashLearn says its practice adapts to each student along a personalized learning path [5][7]. We found no placement step or diagnostic described on the pages we read [3][5][7].",
-      "research": [
-        "level"
-      ]
-    },
-    {
-      "title": "Old skills return on a schedule",
-      "body": "AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. We found no scheduled review of earlier skills in SplashLearn's published materials [3][6][7]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. SplashLearn runs a live class once a month, the Monthly Mash-up, in which a teacher reviews the past month's topics [7]. We found no scheduled review of earlier skills inside its practice on the pages we read [3][5][6]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Paper made for one learner",
-      "body": "SplashLearn offers free lesson plans and a library of printable worksheets [1][3]. We found none described as made for an individual child. AMP prints unlimited workbooks composed from each learner's own record, with review that is due and an answer key with worked steps. Results entered from paper count toward the learner's level."
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math and runs from counting through precalculus in one program. A learner further along in geometry than in fractions gets work at both levels. SplashLearn says its practice adapts to each student's level along a personalized learning path [4][6]. Its math runs from preschool through grade 5 [1][3].",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The adult does not plan",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. In SplashLearn, teachers assign lessons and read color-coded reports [4][6]. Its homeschool page presents it as flexible enough to fit a family's own lesson plans, with weekly progress reports [5].",
+      "research": [
+        "progress"
+      ]
     }
   ],
   "rows": {
-    "buyers": "Free for schools, districts and teachers [5]. Its parent sign-up page offers a free account and shows no prices [4].",
-    "range": "Preschool (ages 2 to 5) through grade 5, in math and English [1][3].",
-    "start": "No placement test or diagnostic found on the pages we read [3][5][7].",
-    "teaching": "Game-based activities with rewards [1][3]. A free monthly live class reviews the past month's topics [8]. Hints and worked examples are not described on the pages we read.",
-    "next": "SplashLearn says practice adapts to each student's level along a personalized learning path. Teachers can assign lessons [5][7].",
-    "mastery": "No mastery rule found on its program pages [3][6][7]. Its study used mastery scores from its own in-app assessment [9].",
-    "review": "No scheduled review of earlier skills found in its published materials [3][6][7].",
-    "print": "Printable worksheets and free lesson plans for preschool to grade 5 [1][3]. None found that are made for the individual child.",
-    "adult": "Teachers assign lessons and read reports [5][7]. Its homeschool page presents it as flexible enough to fit a family's own lesson plans [6].",
-    "reports": "Instant, printable, color-coded reports for teachers and a usage view for administrators [5][7]. Weekly progress reports for homeschool parents [6].",
-    "evidence": "One correlational study it published, measured on its own assessment, with no effect size [9]. Evidence for ESSA lists Splash Math, likely its earlier name, without a rating [10]."
+    "range": "Preschool, ages 2 to 5, through grade 5, in math and English [1][3].",
+    "start": "None found in the pages we read [3][4][6].",
+    "teaching": "Game-based activities with rewards, tagged to Common Core standards [3].",
+    "next": "Practice that adapts to each student's level along a personalized learning path. Teachers can assign lessons [4][6].",
+    "mastery": "None found in the pages we read [3][5][6]. Its study used mastery scores from its own in-app assessment [8].",
+    "review": "A live class once a month in which a teacher reviews the past month's topics [7].",
+    "print": "Printable worksheets and lesson plans, preschool to grade 5 [1][3].",
+    "adult": "Teachers assign lessons and read reports [4][6]. Its homeschool page presents it as fitting a family's own lesson plans [5].",
+    "reports": "Printable, color-coded reports for teachers [4][6]. Weekly progress reports for homeschool parents [5].",
+    "evidence": "One correlational study it published, measured on its own assessment, with no effect size [8]. Evidence for ESSA lists Splash Math, likely its earlier name, without a rating [9]."
   },
   "theirs": [
-    "SplashLearn is a game-based learning program in math and English for preschool through grade 5, on the web and in apps in the App Store and Google Play [1]. It reports tens of millions of learners and says it is used in 1 in 3 U.S. schools [2][7]. Besides the math and English programs, it runs a homeschool program, a summer program, printable worksheets and free lesson plans [1][3].",
-    "Children practice through game-based activities that earn rewards [3]. SplashLearn says the practice adapts to each child's level along a personalized learning path [5][7]. Its math is aligned to the Common Core, and activities are tagged with standards such as 3.NF.1 [3].",
-    "Schools, districts and teachers use it free, with Clever and Google Classroom roster sync. Teachers assign lessons and read color-coded reports [5][7]. Families can sign up free [4], and homeschool parents get weekly progress reports [6]. A free live class each month, the Monthly Mash-up, reviews the past month's topics with a teacher, live leaderboards and badges [8]."
+    "SplashLearn is a game-based learning program in math and English for preschool through grade 5, on the web and in apps [1]. Its math is aligned to the Common Core, and activities are tagged with standards such as 3.NF.1 [3]. It also offers printable worksheets and lesson plans [1][3].",
+    "Children practice through game-based activities that earn rewards [3]. SplashLearn says the practice adapts to each child's level along a personalized learning path, and teachers can assign lessons and read reports [4][6]. A live class each month, the Monthly Mash-up, reviews the past month's topics with a teacher [7]."
   ],
   "credit": [
-    "Free for schools, districts and teachers, with Clever and Google Classroom roster sync [5][7]. AMP gives a school a free 30-day pilot, then charges for licenses.",
-    "Games, rewards, badges and leaderboards, and a 10-week class challenge called SpringBoard [3][5][8]. AMP has no games, avatars, badges or streaks.",
-    "Apps in the App Store and Google Play [1]. AMP runs in a browser.",
-    "It starts at preschool, ages 2 to 5, and teaches English as well as math [1]. AMP starts at kindergarten and teaches only math.",
-    "Free live classes with teachers, recorded for later viewing [8], and free lesson plans for kindergarten to grade 5 [1][3]. AMP has no live teachers."
+    "Math practice in game form, from preschool age [1][3].",
+    "Each activity is tagged with the standard it teaches [3].",
+    "A teacher returns to the past month's topics in a live class [7]."
   ],
   "evidence": {
     "theirs": [
-      "SplashLearn's efficacy page says it meets the ESSA Tier 3 evidence standard [2]. The study behind that claim, described in a July 2025 company blog post, used 2023-24 data from kindergarten to grade 5 in one North Carolina public school district. SplashLearn ran it with Instructure and the International Centre for EdTech Impact, with support from the Jacobs Foundation [9].",
-      "The design is correlational. Students who solved more problems each week ended with higher mastery scores, especially in kindergarten to grade 4, after controlling for where they started. Mastery was measured by SplashLearn's own in-app assessment, not an outside test. The post gives no sample size and no effect size, and the post describes no comparison group that did not use SplashLearn [9]. Students who practice most each week often differ from the rest before they start.",
-      "Evidence for ESSA lists Splash Math, which we take to be SplashLearn's earlier name, without a rating: \"No studies met inclusion requirements\". The page names no provider [10]. We found no What Works Clearinghouse intervention report on it as of November 2026 [11]. The efficacy page also says 80% of learners gain confidence within four weeks, with no sample or method given [2]."
+      "SplashLearn's efficacy page says it meets the ESSA Tier 3 evidence standard [2]. The study behind that claim, described in a July 2025 company blog post, used 2023-24 data from kindergarten to grade 5 in one North Carolina public school district. SplashLearn ran it with Instructure and the International Centre for EdTech Impact, with support from the Jacobs Foundation [8].",
+      "The design is correlational. Students who solved more problems each week ended with higher mastery scores, especially in kindergarten to grade 4, after controlling for where they started. Mastery was measured by SplashLearn's own in-app assessment, not an outside test. The post gives no sample size and no effect size, and describes no comparison group that did not use SplashLearn [8]. Students who practice most each week often differ from the rest before they start.",
+      "Evidence for ESSA lists Splash Math, which we take to be SplashLearn's earlier name, without a rating: \"No studies met inclusion requirements\" [9]. The page names no provider [9]. We found no What Works Clearinghouse intervention report on it in our check [10]."
     ],
     "ours": [
-      "AMP's rules follow findings that have held up. Mixed, spaced practice beat practice in blocks a month later, 62% to 38%, in a randomized trial that meets What Works Clearinghouse standards without reservations, on the researchers' own test [12]. Worked examples in math average an effect of g = 0.48 across 55 studies [13]. SplashLearn's own study found that children who solved more problems each week ended with higher mastery scores [9]. In AMP every one of those problems ends in its worked steps, and old skills come back on schedule. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Worked examples improve mathematics performance, with an average effect of g = 0.48 across 55 studies [11]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [12]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You run a school or classroom and need a program at no cost, with Clever or Google Classroom.",
-      "Your child is a preschooler, or you want math and English in one app.",
-      "Your child practices most when it feels like a game, with rewards, badges and leaderboards.",
-      "You need an app from the App Store or Google Play, or free live classes with a teacher."
+      "Your child is young and practices most when math comes as a game."
     ],
     "amp": [
-      "Your child will need math past grade 5, or is already ahead of grade level.",
-      "You want every miss explained with the correct answer and the worked steps.",
-      "You want a mastery rule you can read, where an answer after a hint does not count.",
-      "You want old skills brought back on a schedule, without planning it.",
-      "You want paper workbooks made for your child, with results that count."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in ordinary practice.",
+      "Your learner is at different levels in different parts of math, or past grade 5.",
+      "You want the program to plan, teach and check the math, and to show you the problems behind every number."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than SplashLearn?",
-      "answer": "For schools, yes: SplashLearn says it is free for schools, districts and teachers [5], while AMP offers a free 30-day pilot and then paid licenses. SplashLearn's parent sign-up page offers a free account and shows no prices [4]. AMP costs $599 a year or $59 a month for the first child and $399 or $39 for each more, starts free with 100 answers and 5 workbooks and no card, and covers placement, every problem, scheduled review and workbooks from counting through precalculus."
+      "question": "How is AMP different from SplashLearn?",
+      "answer": "SplashLearn teaches preschool to grade 5 math in game-based activities with rewards, along a personalized learning path [3][4]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "What comes after SplashLearn's grade 5?",
-      "answer": "SplashLearn's math ends at grade 5 [1]. AMP continues through grades 6 to 8, Algebra 1, Geometry, Algebra 2 and Precalculus, and places the learner within the first 24 problems and keeps a level in each part of math."
+      "question": "Does SplashLearn work?",
+      "answer": "Its one study is correlational: students who solved more problems each week ended with higher mastery scores on SplashLearn's own assessment. It reports no effect size and no comparison group [8]. Evidence for ESSA lists Splash Math, likely its earlier name, without a rating [9]."
     },
     {
-      "question": "Does AMP have games like SplashLearn?",
-      "answer": "No. AMP has no games, avatars, badges or streaks. A learner earns 1 XP for each right answer given without help and watches each skill grow toward Strong."
-    },
-    {
-      "question": "Is SplashLearn ESSA certified?",
-      "answer": "SplashLearn says it meets the ESSA Tier 3 standard, based on a correlational study it ran with Instructure and the International Centre for EdTech Impact [2][9]. Evidence for ESSA lists Splash Math, which we take to be its earlier name, with no rating [10]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers and chooses practice from there."
     }
   ],
   "sources": [
@@ -129,10 +109,6 @@
     {
       "title": "SplashLearn math program",
       "url": "https://www.splashlearn.com/math"
-    },
-    {
-      "title": "SplashLearn parent sign-up",
-      "url": "https://www.splashlearn.com/parents/register"
     },
     {
       "title": "SplashLearn for schools and districts",
@@ -163,12 +139,12 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
-      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
-      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
-      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     }
   ]
 }
