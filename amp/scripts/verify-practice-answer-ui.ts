@@ -27,7 +27,7 @@ const responseShape = (response: ProblemResponse) =>
   response.kind === "multi-part-choice"
     ? `${response.kind}/${response.layout}/${response.reuse ?? false}`
     : response.kind === "structured-work"
-      ? `${response.kind}/${response.mode}/${response.layout}/${!!response.open}`
+      ? `${response.kind}/${response.mode}/${response.layout}/${!!response.open}/${response.diagram?.kind ?? "rows"}`
       : response.kind === "point-plot"
         ? `${response.kind}/${response.ordered}`
         : response.kind;
@@ -55,18 +55,23 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-// Its ports and Vite cache may be moved (a worktree's own range).
-const webPort = Number(process.env.AMP_WEB_PORT ?? 4954);
-await app.listen({ host: "127.0.0.1", port: webPort + 1 });
+await app.listen({
+  host: "127.0.0.1",
+  port: Number(process.env.PRACTICE_ANSWER_API_PORT ?? 4955),
+});
 const vite = await createServer({
   cacheDir:
     process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-practice-answer",
   server: {
     watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
-    port: webPort,
+    port: Number(process.env.PRACTICE_ANSWER_WEB_PORT ?? 4954),
     strictPort: true,
-    proxy: { "/api": { target: `http://127.0.0.1:${webPort + 1}` } },
+    proxy: {
+      "/api": {
+        target: `http://127.0.0.1:${process.env.PRACTICE_ANSWER_API_PORT ?? 4955}`,
+      },
+    },
   },
 });
 await vite.listen();
@@ -102,7 +107,9 @@ try {
     "77e73c1e-b008-4c2a-9172-388b554e9c51",
   );
   representatives.set(responseShape(inline.public.response), inline);
-  await page.goto(`http://127.0.0.1:${webPort}/overview`);
+  await page.goto(
+    `http://127.0.0.1:${process.env.PRACTICE_ANSWER_WEB_PORT ?? 4954}/overview`,
+  );
   // The parent hands the device to the child, whose practice is their own.
   await practiceHere(page, learner.id);
   // Keep exiting menus mounted long enough to exercise the overlap reliably.

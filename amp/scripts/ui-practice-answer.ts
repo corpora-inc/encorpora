@@ -16,6 +16,7 @@ import { fillCounterBuilder } from "./ui-counter-builder";
 import { fillTrendLine } from "./ui-trend-line-fit";
 import { initialTrendPoints } from "../src/math/trend-line-fit";
 import {
+  diagramZeros,
   parseWorkDraft,
   rowShape,
   type WorkDraft,
@@ -159,6 +160,35 @@ export async function preparePracticeAnswer(
             ];
           }
         }
+      } else if (schema.diagram) {
+        // A diagram (the column method, an area model, written lines)
+        // replaces the work rows: each entry sits where it means something
+        // and is the same `.work-input`, found by its field key. A place
+        // the diagram leaves out (its zeros) has no control.
+        for (const [index, values] of (plan as WorkDraft).entries())
+          for (const [fieldIndex, field] of rowShape(
+            schema,
+            index,
+          ).fields.entries()) {
+            if (field.given !== undefined || field.kind === "choice") continue;
+            const input = page.locator(
+              `.work-input[data-field="${index}:${fieldIndex}"]`,
+            );
+            if (!(await input.count())) {
+              assert.ok(
+                diagramZeros(schema).some(
+                  ([i, j]) => i === index && j === fieldIndex,
+                ),
+                `${template}/${problem.seed}: no control for entry ${index}:${fieldIndex}`,
+              );
+              continue;
+            }
+            await input.fill(values[fieldIndex]!);
+          }
+        // Next walks the entries; on the last it closes the keypad.
+        const next = page.locator('.work-keypad [data-key="next"]');
+        for (let n = 0; n < 24 && (await next.isVisible()); n++)
+          await next.click();
       } else {
         for (const [index, values] of (plan as WorkDraft).entries()) {
           if (schema.open && index > 0)
