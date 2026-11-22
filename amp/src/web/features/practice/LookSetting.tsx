@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useId, useState, type CSSProperties } from "react";
+import { useEffect, useId, useState } from "react";
 import type { Look } from "../../../learning/look";
 import { AppError } from "../../lib/AppError";
 import { LockMark } from "../school/classroom/SettingMeta";
+import { HuePicker } from "../../ui/HuePicker";
 import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
 import {
@@ -75,19 +76,15 @@ export function LookSetting({
       setBusy(false);
     }
   };
-  // The hue under the thumb while it moves; null when it rests.
-  const [picking, setPicking] = useState<number | null>(null);
   /** Shows a hue on the page behind the menu at once, with no turn. */
   const preview = (hue: number) => {
     const root = document.documentElement;
     root.setAttribute(ARRIVING, "");
     root.style.setProperty("--look-hue", `${hue}deg`);
-    setPicking(hue);
   };
   /** Saves the color they keep, or (null) a new one with every problem. */
   const keep = async (hue: number | null) => {
     document.documentElement.removeAttribute(ARRIVING);
-    setPicking(null);
     if (hue === (data?.lookHue ?? null)) return;
     setBusy(true);
     try {
@@ -106,9 +103,6 @@ export function LookSetting({
   const colorful = data?.effectiveLook === "bold";
   const kept = colorful ? (data?.lookHue ?? null) : null;
   const colorLabel = useId();
-  // Where the thumb sits: the hue being picked, the one kept, or the one on
-  // the page now.
-  const shownHue = picking ?? kept ?? hueOnScreen() ?? 0;
   const choose = async (look: Look) => {
     setBusy(true);
     try {
@@ -171,41 +165,15 @@ export function LookSetting({
           <div className={styles.head}>
             <span id={colorLabel}>Color</span>
           </div>
-          <div className={styles.colors} data-off={colorful ? undefined : ""}>
-            <button
-              type="button"
-              className={styles.wheel}
-              aria-label="A new color every problem"
-              aria-pressed={colorful && kept === null && picking === null}
-              disabled={!colorful || busy}
-              onClick={() => void keep(null)}
-            />
-            <input
-              type="range"
-              className={styles.hue}
-              aria-labelledby={colorLabel}
-              min={0}
-              max={359}
-              step={1}
-              value={shownHue}
-              data-turning={kept === null && picking === null ? "" : undefined}
-              style={{ "--look-pick-hue": `${shownHue}deg` } as CSSProperties}
-              disabled={!colorful || busy}
-              onChange={(event) => preview(Number(event.target.value))}
-              // The choice is made when the thumb is let go, moved or not (a
-              // tap on it keeps the color on screen), or a key has moved it.
-              onPointerUp={(event) =>
-                void keep(Number(event.currentTarget.value))
-              }
-              onKeyUp={() => {
-                // Only a key that moved it: arriving here by Tab keeps nothing.
-                if (picking !== null) void keep(picking);
-              }}
-              onBlur={() => {
-                if (picking !== null) void keep(picking);
-              }}
-            />
-          </div>
+          <HuePicker
+            labelledBy={colorLabel}
+            wheelLabel="A new color every problem"
+            value={kept}
+            resting={hueOnScreen() ?? 0}
+            disabled={!colorful || busy}
+            onPreview={preview}
+            onChoose={(hue) => void keep(hue)}
+          />
         </>
       )}
       <Toast message={error} onDismiss={() => setError("")} />

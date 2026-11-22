@@ -1,0 +1,96 @@
+/* The color row: one target tall, always there (in Calm it has nothing to
+   choose), so choosing a look moves nothing. */
+.colors {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--target-size);
+}
+.colors[data-off] {
+  opacity: 0.45;
+}
+/* A new color every problem: all of them at once. */
+.wheel {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.wheel::before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--look-pick-wheel);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+.wheel[aria-pressed="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-selected-tint);
+}
+.wheel:focus-visible,
+.hue:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.wheel:disabled,
+.hue:disabled {
+  cursor: default;
+}
+/* Every hue in a row; the thumb is the one it sits on. */
+.hue {
+  flex: 1;
+  min-width: 0;
+  height: var(--target-size);
+  margin: 0;
+  padding: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+.hue::-webkit-slider-runnable-track {
+  height: 14px;
+  border-radius: 7px;
+  background: var(--look-pick-track);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+.hue::-moz-range-track {
+  height: 14px;
+  border-radius: 7px;
+  background: var(--look-pick-track);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+.hue::-webkit-slider-thumb {
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -7px;
+  border: 3px solid var(--color-surface-raised);
+  border-radius: 50%;
+  background: var(--look-pick-thumb);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+.hue::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--color-surface-raised);
+  border-radius: 50%;
+  background: var(--look-pick-thumb);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+/* While every problem brings its own color, no one hue is chosen: the
+   thumb steps back. */
+.hue[data-turning]::-webkit-slider-thumb {
+  opacity: 0.35;
+}
+.hue[data-turning]::-moz-range-thumb {
+  opacity: 0.35;
+}
