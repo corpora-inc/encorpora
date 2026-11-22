@@ -50,6 +50,9 @@
   height: var(--target-size);
   margin: 0;
   padding: 0;
+  /* The app's field styles frame every input; this one is only its track. */
+  border: 0;
+  box-shadow: none;
   border-radius: var(--radius-control);
   background: transparent;
   appearance: none;
