@@ -53,11 +53,11 @@ export function versusHubStaticHtml(catalog: readonly VersusCatalogEntry[]) {
 <h1>${escape(versusHub.title)}</h1>
 <p>${escape(versusHub.lede)}</p>
 <h2>${escape(versusHub.why.heading)}</h2>
-<ul>${versusHub.why.components
-    .map((id) => {
-      const component = researchComponent(id);
-      return `<li><a href="/research#${id}">${escape(component.title)}</a>: ${escape(component.what)}</li>`;
-    })
+<ul>${versusHub.why.reasons
+    .map(
+      (reason) =>
+        `<li><a href="/research#${reason.research}">${escape(reason.title)}</a>: ${escape(reason.text)}</li>`,
+    )
     .join("")}</ul>
 <p><a href="/research">${escape(researchPage.title)}</a></p>
 ${versusGroups(catalog)

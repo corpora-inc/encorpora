@@ -3,163 +3,137 @@
   "name": "Mathspace",
   "maker": "Mathspace Pty Ltd",
   "category": "adaptive",
-  "checked": "2026-11-21",
-  "benefit": "Mastery earned without help",
-  "line": "Mathspace checks each line of work for a teacher's class. AMP picks every problem and counts only unaided answers.",
-  "description": "AMP vs Mathspace: Mathspace checks each line of working for school classes. AMP picks every problem, counts only unaided answers and schedules review.",
-  "verdict": "Mathspace checks every line of a student's working, is free for any single student, and costs schools $8 or $15 a student a year [2][1]. It is built around tasks a teacher assigns, and its adaptive tasks award diamonds for answers given after hints [4]. AMP chooses every problem itself, counts only answers given without help toward mastery, brings learned skills back on a schedule, and runs from counting to precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Mathspace works in assigned tasks and separate tests. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Mathspace: Mathspace works in assigned tasks and separate check-ins. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Mathspace is built around tasks a teacher assigns, with a separate adaptive test, the Skills Check-in, and each line of working checked as it is entered [2][1][8]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Mastery means right without help",
-      "body": "In an adaptive task, Mathspace awards diamonds for a correct final answer \"no matter if\" the student used hints, videos or lessons; only the Next Step button withholds them [4]. Its adaptive tasks now end after a set amount of practice, 6 to 15 stars over three rounds, not when the student reaches mastery [5]. In AMP a skill shows as Strong only when four of the last five answers are right without help, and an answer after a hint or the lesson does not move the level. A record built that way shows what the learner can do alone.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. Every answer updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Mathspace measures in Skills Check-ins, a separate adaptive test reported as a grade level, and recommends tasks from the results [1][5].",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Mathspace the unit is the task. A teacher assigns it with a due date [2]. An adaptive task runs in rounds and ends after a set amount of practice, not when the student reaches mastery [3].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Learned means right without help",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. In a Mathspace adaptive task, a correct final answer earns diamonds even if the student used hints, videos or the lesson. Only the Next Step button withholds them [4].",
       "research": [
         "mastery",
         "hints"
       ]
     },
     {
-      "title": "AMP chooses every next problem",
-      "body": "In Mathspace a teacher assigns tasks [6]. After check-ins, the dashboard recommends tasks, and the student can shuffle them or change the Skills Focus that drives them [7][8]. Inside an adaptive task, questions start easier and get harder as the student shows understanding [6]. AMP keeps a level in each of 14 strands of math and chooses each next problem from the learner's answers: new work just within reach, a prerequisite, or review. Nobody has to build a task first.",
-      "research": [
-        "level"
-      ]
-    },
-    {
-      "title": "Misses lead back to the missing piece",
-      "body": "Mathspace lists a topic's missing prerequisite skills as gaps, and recommends a topic as ready only once its prerequisites are mastered [9][7]. In the help articles we read, it does not send a struggling student back to a prerequisite on its own; the readiness article leaves the choice to the student and suggests teachers set a date for filling gaps [9]. In AMP two misses in a row on a skill send practice to what that skill builds on. No one has to notice first.",
+      "title": "Moving on, and going back",
+      "body": "In AMP repeated misses send practice back to what the skill builds on. Mathspace lists a topic's missing prerequisite skills as gaps, and recommends a topic as ready only once its prerequisites are mastered [6][5]. Its readiness article leaves the choice to the student and suggests teachers set a date for filling gaps [6].",
       "research": [
         "mastery",
         "level"
       ]
     },
     {
-      "title": "Learned skills come back on a schedule",
-      "body": "Mathspace's Revision bank holds questions a student has not yet answered correctly. A missed question returns after some time, with no interval given, and one correct answer removes it for good [10]. We found no scheduled review of skills already mastered [10]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Mathspace's Revision bank holds questions a student has not yet answered correctly. A missed question returns after some time, with no interval given, and one correct answer removes it for good [7]. We found no scheduled review of skills already mastered [7]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [27].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Built for a family to run at home",
-      "body": "Mathspace sells paid plans only to schools and other education institutions, with a minimum of 30 licences [1]. A family can use the free Personal account, but Mathspace says it does not offer a parent or guardian login. It offers parents emails instead: weekly summaries on its pricing page, and a reminder of tasks due the next day in its help center [1][12]. AMP is sold to families. The parent sees the level in every strand, the skills, the time and the actual problems, and has nothing to assign.",
-      "research": [
-        "progress"
-      ]
-    },
-    {
-      "title": "From counting to precalculus, at any pace",
-      "body": "In the US, Mathspace maps its content to standards for grades 3 to 12 [13], and Wikipedia describes its US range as grade 3 to Algebra 2 [18]. A student's grade level is set from their class unless a teacher overrides it, and recommended tasks run from grade 3 up to that grade [15]. AMP runs from counting through precalculus on one map of 336 skills. While a learner is climbing, every second problem reaches higher, and a parent can open any skill directly.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus. A learner further along in one part than another gets work at both levels. In Mathspace a student's grade level comes from their class unless a teacher overrides it, and recommended tasks run from grade 3 up to that grade [13].",
       "research": [
         "level"
       ]
-    },
-    {
-      "title": "Printed workbooks made for one learner",
-      "body": "Mathspace prints worksheets for select textbooks, and teachers can build class worksheets with answer keys in a beta [16][17]. We found nothing that prints a different workbook for each student from that student's own work. AMP prints unlimited workbooks composed from each learner's record, each with a worked answer key, and results entered from paper count toward the level."
     }
   ],
   "rows": {
-    "price": "Free Personal account for one class of up to 30. Schools: $8 (Classes) or $15 (Schools) per student per year. Schools Plus and districts by quote [1].",
-    "buyers": "Schools and other education institutions, minimum 30 licences [1]. Any student or teacher can open a free Personal account. No parent login [1].",
-    "range": "Content mapped to standards for grades 3 to 12 in the US [13]; Wikipedia gives grade 3 to Algebra 2 [18]. Nothing below grade 3.",
-    "start": "Skills Check-ins: an adaptive test on a Bayesian IRT model, reported as a grade level such as 8.5 [23]. The grade level is set from the student's class [15].",
-    "teaching": "Textbook lessons with videos, step-by-step hints, a worked solution for every textbook question, and Milo, an AI chat tutor [19][20][24][14].",
-    "next": "Teacher-assigned tasks, plus recommended topics the student chooses among. Inside a task, questions get harder as mastery rises [6][7].",
-    "mastery": "A target of Proficient or Mastered; we found no published thresholds [6][36]. Tasks end after 6 to 15 stars [5]; diamonds count answers given after hints [4].",
-    "review": "Revision: missed questions return after an unstated time and leave after one correct answer. No scheduled review of mastered skills found [10].",
-    "print": "Printable worksheets for select textbooks, answer keys, and custom class worksheets in beta [16][1][17]. We found none made from one student's record.",
-    "adult": "A teacher builds and assigns tasks with due dates, sets target mastery, and reads reports [6][22][35]. On a free account the learner largely directs themselves [1][11].",
-    "reports": "Task, student and class reports, a live view and an administrator dashboard [1]. Parents get emails, not a login: weekly summaries and due-task reminders [1][12].",
-    "evidence": "One Utah state evaluation comparing users with non-users: positive only for students using it over 33 minutes a week [29]. Evidence for ESSA: no rating [31]."
+    "range": "Content mapped to US standards for grades 3 to 12 [12].",
+    "start": "A separate adaptive test, the Skills Check-in, reported as a grade level such as 8.5 [1].",
+    "teaching": "Textbook lessons with videos, hints for the current step, worked solutions, and Milo, an AI chat tutor, beside the work [18][10][20][19].",
+    "next": "Tasks a teacher assigns, and recommended tasks the student picks among. Inside a task, questions get harder as the student shows understanding [2][5].",
+    "mastery": "For an adaptive task, a target of Proficient or Mastered, set by the teacher. Tasks end after a set amount of practice. Answers after hints still earn diamonds [2][3][4].",
+    "review": "Revision: missed questions return after a while and leave after one correct answer. No scheduled review of mastered skills found [7].",
+    "print": "Printable worksheets for select textbooks, and worksheets a teacher builds for a class in beta, with answer keys [14][15].",
+    "adult": "A teacher builds and assigns tasks with due dates, sets the target mastery, and reads reports [2][16].",
+    "reports": "Task, student and class reports with each student's work on each question, a live view, and an administrator dashboard [16].",
+    "evidence": "One Utah state evaluation comparing users with non-users: positive only for students using it over 33 minutes a week [21]. Evidence for ESSA: no rating [24]."
   },
   "theirs": [
-    "Mathspace is made by Mathspace Pty Ltd of Sydney, Australia, founded in 2010 [18][25]. It is an online math program for schools: an interactive textbook, practice that checks each line of working, adaptive tasks, diagnostic check-ins and an AI chat tutor called Milo [19][14]. US content is mapped to standards in every state for grades 3 to 12 [13], and districts can adopt it as a core curriculum, Mathspace Core [19]. Its Parents page counts 725,671 students worldwide [11].",
-    "Work comes from three places: tasks a teacher assigns, practice recommended after check-ins, and a Revision bank of missed questions [6][7][10]. Inside a question, the student writes the solution line by line, typed on the web or handwritten on an iPad, and each line is marked as it is entered [20][21][2]. Hints, for some questions a video of a similar problem, the lesson, a calculator, Milo and a Next Step button sit beside the work [20][14]. An adaptive task runs three rounds, and afterwards Fix mode lets the student redo missed questions until the due date [5][22].",
-    "Paid plans are for schools and other education institutions [1]. A family can use the free Personal account, with no parent login and no paid family plan [1]."
+    "Mathspace is made by Mathspace Pty Ltd of Sydney, Australia [17]. It is an online math program: an interactive textbook, practice that checks each line of working, adaptive tasks, diagnostic check-ins and an AI chat tutor called Milo [18][19]. US content is mapped to standards for grades 3 to 12 [12].",
+    "Work comes from tasks a teacher assigns, practice recommended after check-ins, and a Revision bank of missed questions [2][5][7]. Inside a question, the student writes the solution line by line, and each line is marked as it is entered [8]. Hints, for some questions a video, the lesson and a Next Step button sit beside the work [10]. After a task, Fix mode lets the student redo missed questions until the due date [11]."
   ],
   "credit": [
-    "It checks the student's own working, line by line. Each step is judged as it is entered, valid methods the authors did not foresee are accepted, and steps on a recommended path get hints made for that step [2][3]. AMP checks typed lines of work on 64 problem types; it does not check freehand working step by step.",
-    "Price. Any student or teacher can use a Personal account free, and schools pay $8 or $15 per student per year [1]. AMP costs far more per student.",
-    "Far more video and content: over 14,000 instructional videos, 40,000 question templates, and a worked solution for every textbook question [19][24]. AMP's films cover a growing share of problem types, far fewer than that.",
-    "Things AMP does not have: an iPad app with handwriting, an AI chat tutor that teachers can read and switch off, read-aloud in beta, and points, streaks and avatars in beta [25][21][14][26][27].",
-    "Outside review: EdReports rated its high school series as meeting expectations for focus, coherence and rigor, and as partially meeting expectations for usability [28]. AMP has no EdReports review."
+    "It checks each line of a student's working as it is entered, and accepts valid methods its authors did not foresee [8][9].",
+    "Hints are written for the step the student is on [10].",
+    "Every textbook question has a full worked solution, with a similar problem to try [20]."
   ],
   "evidence": {
     "theirs": [
-      "The outcome evidence we found is one state evaluation. The Utah Education Policy Center at the University of Utah studied the 2018-19 school year of the Utah STEM Action Center's grant program, through which schools bought licenses with state grant funds [29]. It compared 2,105 Mathspace users with 11,319 students from propensity-matched schools that did not use the funded programs, adjusting for student characteristics [29]. Users were compared with non-users; it was not a randomized trial.",
-      "Results depended on use. Only students using Mathspace more than 33 minutes a week differed significantly: a 9% higher probability of proficiency on Utah's RISE test (odds ratio 1.45) and growth percentiles 3.92 points higher. The two middle usage groups showed no significant difference, and students using it under 6 minutes a week had growth percentiles 4.67 points lower. Half the users logged 12 minutes a week or less [29]. Students who use a program most can differ from the rest before they start, so the study cannot show that Mathspace caused the gain.",
-      "Mathspace's Parents page cites a study of 94,000 students and a 53% increase in the likelihood of proficiency [11]. The company's blog places that study in Utah's 2017-18 school year, says 6,588 of those students used Mathspace, and does not state the design or give effect sizes [30]. Evidence for ESSA lists Mathspace without a rating: \"No studies met inclusion requirements\" [31]. We found no What Works Clearinghouse intervention report for it as of November 2026 [32]. EdReports rates alignment and usability, not learning outcomes [28]."
+      "The outcome evidence we found is one state evaluation. The Utah Education Policy Center at the University of Utah studied the 2018-19 school year of the Utah STEM Action Center's grant program [21]. It compared 2,105 Mathspace users with 11,319 students from matched schools that did not use the funded programs, adjusting for student characteristics. It was not a randomized trial [21].",
+      "Results depended on use. Only students using Mathspace more than 33 minutes a week differed significantly: a 9% higher probability of proficiency on Utah's RISE test and growth percentiles 3.92 points higher. The two middle usage groups showed no significant difference, and students using it under 6 minutes a week had growth percentiles 4.67 points lower. Half the users logged 12 minutes a week or less [21]. Students who use a program most can differ from the rest before they start, so the study cannot show that Mathspace caused the gain.",
+      "Mathspace's Parents page cites a study of 94,000 students and a 53% increase in the likelihood of proficiency [22]. The company's blog places that study in Utah's 2017-18 school year, says 6,588 of those students used Mathspace, and gives no design or effect sizes [23]. Evidence for ESSA lists Mathspace without a rating: \"No studies met inclusion requirements\" [24]. We found no What Works Clearinghouse intervention report for it when we checked [25]. EdReports reviewed its high school series for alignment and usability, not learning outcomes [26]."
     ],
     "ours": [
-      "Where AMP and Mathspace part ways, we built AMP on methods with strong research behind them. A review of ten common study techniques rated two as high utility: practice testing and spaced practice [33]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [34]. AMP schedules that review for every learned skill, and counts only answers given without help, so its record shows what a learner can do alone. We expect that to show in outcomes. That is our bet, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear most on this comparison: a review of ten common study techniques rated practice testing and spaced practice as high utility [28], and in a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [27]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "You want each line of a student's written working checked, typed or handwritten on an iPad [2][21].",
-      "You need it free: any student can open a Personal account [1].",
-      "You run a school that wants a low per-student price, teacher-assigned tasks, and a high school series EdReports has reviewed [1][28].",
-      "You want an AI chat tutor, or read-aloud (in beta), built in [14][26]."
+      "You want each line of a student's written working checked as it is entered [8]."
     ],
     "amp": [
-      "You are a family and want a program sold to you, with your own view of every skill and every problem.",
-      "Your child is below grade 3, or you want one program from counting through precalculus.",
-      "You want mastery to mean right without help.",
-      "You want old skills to come back on a schedule, and misses to lead back to the missing piece, without anyone planning it.",
-      "You want printed workbooks made for one learner, with worked answer keys."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a skill to count only when it is right without help.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or you want one program from counting through precalculus.",
+      "You want printed workbooks made from your child's own record, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "Can parents buy Mathspace?",
-      "answer": "Not as a paid plan. Mathspace sells paid packages only to schools and other education institutions, with a minimum of 30 licences, and says it does not offer a parent or guardian login [1]. A student can use the free Personal account. AMP is sold directly to families, and the parent sees everything."
+      "question": "How is AMP different from Mathspace?",
+      "answer": "Mathspace works in tasks a teacher assigns, with a separate Skills Check-in, and checks each line of working [2][1][8]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is AMP more expensive than Mathspace?",
-      "answer": "Yes. Mathspace is free for a single student, and schools pay $8 or $15 per student per year [1]. AMP costs a family $599 a year or $59 a month for the first child, then $399 or $39 for each more. That covers counting through precalculus, unlimited personalized workbooks, and two parents' own practice, and the first 100 answers and 5 workbooks are free."
+      "question": "Does Mathspace work?",
+      "answer": "The one outcome study we found, a Utah state evaluation, compared users with non-users. Only students using Mathspace more than 33 minutes a week did significantly better, and the study cannot show cause [21]. Evidence for ESSA lists it without a rating [24]."
     },
     {
-      "question": "Does AMP check every step like Mathspace?",
-      "answer": "No. Mathspace marks each line of working and accepts any valid method [2][3]. AMP checks final answers exactly, and typed lines of work on 64 problem types, then shows worked steps after every answer."
-    },
-    {
-      "question": "My child uses Mathspace at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then chooses practice and schedules review on its own."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
     {
-      "title": "Mathspace pricing and plans (Mathspace)",
-      "url": "https://mathspace.co/us/about-premium"
-    },
-    {
-      "title": "Immediate feedback (Mathspace help center)",
-      "url": "https://help.mathspace.co/immediate-feedback"
-    },
-    {
-      "title": "Answer methods support (Mathspace help center)",
-      "url": "https://help.mathspace.co/answer-methods-support"
-    },
-    {
-      "title": "Earning stars (Mathspace help center)",
-      "url": "https://help.mathspace.co/earning-stars"
-    },
-    {
-      "title": "New adaptive tasks (Mathspace help center)",
-      "url": "https://help.mathspace.co/new-adaptive-tasks"
+      "title": "Understanding Skills Check-ins (Mathspace help center)",
+      "url": "https://help.mathspace.co/understanding-skills-check-ins"
     },
     {
       "title": "Adaptive tasks (Mathspace help center)",
       "url": "https://help.mathspace.co/adaptive-task"
     },
     {
-      "title": "Recommended practice (Mathspace help center)",
-      "url": "https://help.mathspace.co/recommended-practice"
+      "title": "New adaptive tasks (Mathspace help center)",
+      "url": "https://help.mathspace.co/new-adaptive-tasks"
     },
     {
-      "title": "Skills Focus (Mathspace help center)",
-      "url": "https://help.mathspace.co/skills-focus"
+      "title": "Earning stars (Mathspace help center)",
+      "url": "https://help.mathspace.co/earning-stars"
+    },
+    {
+      "title": "Recommended practice (Mathspace help center)",
+      "url": "https://help.mathspace.co/recommended-practice"
     },
     {
       "title": "Topic readiness, student view (Mathspace help center)",
@@ -170,20 +144,24 @@
       "url": "https://help.mathspace.co/revision"
     },
     {
-      "title": "Mathspace for parents (Mathspace)",
-      "url": "https://mathspace.co/us/parents"
+      "title": "Immediate feedback (Mathspace help center)",
+      "url": "https://help.mathspace.co/immediate-feedback"
     },
     {
-      "title": "Parent emails (Mathspace help center)",
-      "url": "https://help.mathspace.co/parent-emails"
+      "title": "Answer methods support (Mathspace help center)",
+      "url": "https://help.mathspace.co/answer-methods-support"
+    },
+    {
+      "title": "Basic workbook features (Mathspace help center)",
+      "url": "https://help.mathspace.co/basic-workbook-features"
+    },
+    {
+      "title": "Fix mode (Mathspace help center)",
+      "url": "https://help.mathspace.co/fix-mode"
     },
     {
       "title": "Curriculum alignment (Mathspace)",
       "url": "https://mathspace.co/us/curriculum"
-    },
-    {
-      "title": "Milo, Mathspace's personal tutor (Mathspace help center)",
-      "url": "https://help.mathspace.co/mathspace-personal-tutor"
     },
     {
       "title": "Grade level assignment (Mathspace help center)",
@@ -194,8 +172,12 @@
       "url": "https://help.mathspace.co/mathspace-worksheets"
     },
     {
-      "title": "Custom worksheets, beta (Mathspace help center)",
+      "title": "Custom worksheets (Mathspace help center)",
       "url": "https://help.mathspace.co/custom-worksheets-beta"
+    },
+    {
+      "title": "Mathspace plans and features (Mathspace)",
+      "url": "https://mathspace.co/us/about-premium"
     },
     {
       "title": "Mathspace (Wikipedia)",
@@ -206,44 +188,20 @@
       "url": "https://mathspace.co/us/corecurriculum"
     },
     {
-      "title": "Basic workbook features (Mathspace help center)",
-      "url": "https://help.mathspace.co/basic-workbook-features"
-    },
-    {
-      "title": "Handwrite answers (Mathspace help center)",
-      "url": "https://help.mathspace.co/handwrite-answers"
-    },
-    {
-      "title": "Fix mode (Mathspace help center)",
-      "url": "https://help.mathspace.co/fix-mode"
-    },
-    {
-      "title": "Understanding Skills Check-ins (Mathspace help center)",
-      "url": "https://help.mathspace.co/understanding-skills-check-ins"
+      "title": "Milo, Mathspace's personal tutor (Mathspace help center)",
+      "url": "https://help.mathspace.co/mathspace-personal-tutor"
     },
     {
       "title": "Study the worked solutions (Mathspace help center)",
       "url": "https://help.mathspace.co/study-the-worked-solutions"
     },
     {
-      "title": "Mathspace for Students (Apple App Store)",
-      "url": "https://apps.apple.com/us/app/mathspace-for-students/id1445097311"
-    },
-    {
-      "title": "Read-aloud feature (Mathspace help center)",
-      "url": "https://help.mathspace.co/mathspaces-read-aloud-feature"
-    },
-    {
-      "title": "Gamification features (Mathspace help center)",
-      "url": "https://help.mathspace.co/gamification-features"
-    },
-    {
-      "title": "Mathspace High School Traditional Series (EdReports, 2024)",
-      "url": "https://edreports.org/reports/overview/mathspace-high-school-traditional-series-2023"
-    },
-    {
       "title": "Utah Education Policy Center (2020), K-12 Mathematics Personalized Learning Program 2018-19 Student Outcomes, Evaluation Addendum for Year 3",
       "url": "https://stem.utah.gov/wp-content/uploads/2026/08/UEPC_Math-Personalized-Learning-Evaluation_Y3_Fall-2020.pdf"
+    },
+    {
+      "title": "Mathspace for parents (Mathspace)",
+      "url": "https://mathspace.co/us/parents"
     },
     {
       "title": "Utah Education Policy Center recognizes Mathspace's impact on student growth (Mathspace blog, 2019)",
@@ -258,20 +216,16 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Dunlosky et al. (2013), Improving students' learning with effective learning techniques",
-      "url": "https://doi.org/10.1177/1529100612453266"
+      "title": "Mathspace High School Traditional Series (EdReports, 2024)",
+      "url": "https://edreports.org/reports/overview/mathspace-high-school-traditional-series-2023"
     },
     {
       "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Using Mathspace for free (Mathspace help center)",
-      "url": "https://help.mathspace.co/freemium-account"
-    },
-    {
-      "title": "Student mastery report (Mathspace help center)",
-      "url": "https://help.mathspace.co/student-reports-mastery"
+      "title": "Dunlosky et al. (2013), Improving students' learning with effective learning techniques",
+      "url": "https://doi.org/10.1177/1529100612453266"
     }
   ]
 }

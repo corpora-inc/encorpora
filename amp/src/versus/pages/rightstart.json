@@ -3,155 +3,117 @@
   "name": "RightStart Mathematics",
   "maker": "Activities for Learning",
   "category": "books",
-  "checked": "2026-11-21",
-  "benefit": "Practice that checks itself",
-  "line": "RightStart is taught by a parent with an abacus and card games. AMP places, checks and schedules review itself.",
-  "description": "AMP vs RightStart Mathematics: an abacus, card games and a parent who teaches every lesson, or practice that places, checks and reviews on its own.",
-  "verdict": "RightStart Mathematics is a homeschool program built on the Cotter Abacus and more than 300 card games, and for one young child it costs less [3][4][14]. The adult leads every lesson from a manual [7]. AMP teaches at the problem, checks and explains every answer, finds the level in each part of math, and brings old skills back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "Teaching at every problem",
+  "line": "In RightStart an adult teaches each lesson with an abacus. In AMP, teaching and assessment happen at every problem.",
+  "description": "AMP vs RightStart Mathematics: an adult teaches each lesson with an abacus and card games. In AMP, assessment, teaching and review are continuous.",
+  "verdict": "RightStart Mathematics is a print program in which an adult teaches each lesson from a manual, with an abacus and card games, in the manual's day-by-day order [1][2]. In AMP, assessment, teaching and review are continuous. Every answer is checked and explained, updates the learner's level and sets the next problem.",
   "reasons": [
     {
-      "title": "Teaching comes with every problem, no lesson plan needed",
-      "body": "A RightStart lesson is led by the adult, with the abacus and other materials, from a manual that guides the teacher day by day [7]. A parent reviewer notes that the manual tells the parent what to say. She also reports reading that some people dislike the amount of teacher involvement, though she did not find it too much [16]. AMP teaches at the problem instead: a one-step hint, a written lesson with a worked example, and worked steps after every answer. Math still happens on a day no one can sit down to teach.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. RightStart places a child with a short online questionnaire that the adult answers about what the child can do, which gives one starting level, and with written tests for children switching programs [4]. After that, lessons follow the manual's day-by-day order [1].",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In RightStart the unit is the lesson, which the adult teaches from a manual with the Cotter Abacus and other materials, followed by card games for practice [1][6]. Across 55 studies, worked examples improve performance in math [16].",
       "research": [
         "lessons",
         "hints",
-        "feedback"
+        "films"
       ]
     },
     {
-      "title": "Placement comes from the child's own answers",
-      "body": "RightStart's free placement test is a 2 to 3 minute online questionnaire about what the child can already do, and it gives one starting level [9]. AMP places the learner from their own answers in the first 24 problems, with a separate level in each of 14 strands of math, and keeps adjusting. A child sure of shapes and unsure of place value gets work at both levels in the same session.",
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once, and repeated misses send practice back to what the skill builds on. RightStart names mastery as a goal and describes it as understanding, with no stated rule for when a lesson counts as learned [3]. Lessons follow the manual's order, and the child advances at their own pace [1][2].",
       "research": [
+        "mastery",
         "level"
       ]
     },
     {
-      "title": "Old skills return on a published schedule",
-      "body": "RightStart practice comes through card games, with review worksheets kept to a minimum [7]. For students new to the second edition, review lessons open Levels B to F [10]. Its site argues that understanding reduces the need for review [8]. We found no schedule for when a skill comes back on the pages we read. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In RightStart, review comes mainly through card games, with few review worksheets [1]. Review lessons open Levels B to F for students new to its second edition [5]. The company holds that understanding reduces the need for review [3]. We found no schedule for when a skill comes back in the pages we read [1][3][5]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Learned means four of five right without help",
-      "body": "RightStart names mastery as a goal and describes no test for when a lesson is learned [8]. Lessons follow the manual's day-by-day order, and the child advances at their own pace [6][7]. In AMP a skill is Strong when four of the last five answers are right without help, and an answer after a hint does not count. Two misses in a row send practice back to what the skill builds on, without waiting for an adult to notice.",
-      "research": [
-        "mastery"
-      ]
-    },
-    {
-      "title": "One program from counting through precalculus",
-      "body": "RightStart's own levels run A through H, and Levels G and H are its middle school course [10]. Its store also sells other publishers' algebra, geometry, precalculus and calculus books, which are different books and methods [1]. AMP covers counting through precalculus on one map of 336 skills and stops there. A learner who races ahead in one strand can move into any part of that map, with no new set of books and no new method.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math and runs from counting through precalculus in one program, on one map of skills. A learner further along in geometry than in place value gets work at both levels. RightStart places a child at one level, A through H, in place of grades, and Levels G and H are its middle school course [2][4][5].",
       "research": [
         "level"
-      ]
-    },
-    {
-      "title": "Paper made for one learner",
-      "body": "RightStart's worksheets come with the level bundle, as print or a PDF, the same published pages for every child [5]. AMP prints unlimited workbooks built from the learner's own record, with today's review and a challenge section, each with a worked answer key. Results entered from paper count toward the learner's level.",
-      "research": [
-        "review"
       ]
     }
   ],
   "rows": {
-    "price": "Level bundle $99.25, or $109.25 with PDF worksheets [3]. Math Set of manipulatives $219.75, used at every level [4]. One-time purchase. Each extra child needs duplicate pieces [5].",
-    "buyers": "Families and tutors, through its own store [1][14]. A separate classroom edition for schools [1]. Returns within 60 days of receipt [10].",
-    "range": "Levels A to H instead of grades; G and H are middle school [6][10]. Higher courses are other publishers' books its store sells [1].",
-    "start": "A free 2 to 3 minute online questionnaire about what the child can do gives a starting level. Written tests for children switching programs [9].",
-    "teaching": "The adult teaches each lesson from the manual with the Cotter Abacus and other materials [7]. Optional videos for some levels [11][12].",
-    "next": "The next lesson in the manual's day-by-day order; the child advances at their own pace [6][7].",
-    "mastery": "Named as a goal and described as understanding. No stated rule for when a lesson counts as learned [8].",
-    "review": "Practice through card games, review worksheets kept to a minimum; review lessons open Levels B to F [7][10]. No schedule found on its pages.",
-    "print": "Print is the core: lesson manual, worksheets (print or PDF), appendix pages and card decks [4][5]. The same pages for every child.",
-    "adult": "Teach every lesson, play the practice games, and choose the starting level [7][9].",
-    "reports": "No progress reports or gradebook found on its home-school pages [1][7]. The adult keeps the record.",
-    "evidence": "One small Finnish kindergarten comparison: no significant difference from usual teaching [18]. A nine-child pilot with no group of similar children taught another way [19]. No Evidence for ESSA or WWC entry [20][21]."
+    "range": "Levels A through H in place of grades. Levels G and H are its middle school course [2][5].",
+    "start": "A short online questionnaire the adult answers about what the child can do gives one starting level. Written tests for children switching programs [4].",
+    "teaching": "The adult teaches each lesson from a manual with the Cotter Abacus and other materials, then the child practices through card games [1][6].",
+    "next": "The next lesson in the manual's day-by-day order. The child advances at their own pace [1][2].",
+    "mastery": "Named as a goal and described as understanding. No stated rule for when a lesson counts as learned [3].",
+    "review": "Mainly through card games, with few review worksheets. Review lessons open Levels B to F [1][5].",
+    "print": "Print is the core: lesson manual, worksheets, appendix pages and card decks. The same pages for every child [6][7].",
+    "adult": "Teaches every lesson, plays the practice games and chooses the starting level [1][4].",
+    "reports": "None found in the pages we read [1][10].",
+    "evidence": "One small Finnish kindergarten comparison: no significant difference from usual teaching [11]. A nine-child pilot with no comparison group [12]. No Evidence for ESSA or WWC entry found [13][14]."
   },
   "theirs": [
-    "RightStart Mathematics comes from Activities for Learning, which describes itself as a family-owned business [2]. The curriculum grew out of Joan Cotter's doctoral dissertation, according to the company [17]. The home-school program runs in Levels A through H in place of grades [10], and a child begins at the level that fits [6]. Level A covers addition and subtraction to 10, place value to hundreds, money, clocks, measurement and basic geometry [5].",
-    "The adult leads each lesson from the manual, with the Cotter Abacus, a two-sided abacus grouped in fives and tens, and other materials from the Math Set [4][7]. Practice comes mostly through card games, more than 300 of them, with no flash cards [7][14]. The company's view is that math should be \"95% is understood and only 5% memorized\" [8].",
-    "Families buy a book bundle for each level and one Math Set that serves every level [3][4]. Around them sit optional game videos, video lessons for Levels C to F, online classes for Levels G and H, six apps for phones and tablets, and Spanish-language lessons [1][11][12][13]. RightStart reports first place in Practical Homeschooling's readers' poll for elementary math twelve years in a row [15]."
+    "RightStart Mathematics comes from Activities for Learning, which describes itself as a family-owned business [8]. The curriculum grew out of Joan Cotter's doctoral dissertation, according to the company [9]. The home-school program runs in Levels A through H in place of grades. A child begins at the level that fits and advances at their own pace [2][5].",
+    "The adult leads each lesson from a manual that guides the teacher day by day, with the Cotter Abacus, a two-sided abacus grouped in fives and tens, and other materials [1][6]. Practice comes mostly through card games, with no flash cards and few review worksheets [1]. The company holds that math should be taught so that \"95% is understood and only 5% memorized\" [3]."
   ],
   "credit": [
-    "Hands-on materials. The Cotter Abacus and the Math Set's 23 items give a child something to hold for place value and facts [4][7]. A 2021 What Works Clearinghouse practice guide rates concrete and semi-concrete representations as strong evidence for elementary students who struggle in math [22]. AMP is on a screen, with only a few models a learner builds.",
-    "Games. More than 300 card games for practice, and six apps on iPhone, iPad and Android [13][14]. AMP has no games and no app in the stores.",
-    "A lower price for a young child, paid once: about $329 for Level A with the Math Set, then about $100 to $110 for each later level [3][4]. A 60-day return window [10].",
-    "Spanish-language lessons for several levels [1]. AMP is in English only.",
-    "Paper, wood and cards that need no screen or connection [5]. AMP needs a connection, though it prints workbooks."
+    "Hands-on teaching with the Cotter Abacus, grouped in fives and tens, and other materials a child can hold [1][6].",
+    "Fact practice through card games with an adult at the table, in place of flash cards [1].",
+    "A What Works Clearinghouse practice guide rates concrete and semi-concrete representations as strong evidence for elementary students who struggle in math [15]."
   ],
   "evidence": {
     "theirs": [
-      "Researchers at the University of Helsinki and the Niilo Mäki Institute in Finland compared RightStart with usual kindergarten teaching (Mononen, Aunio and Koponen, 2014) [18]. It was a comparison of classrooms, not a randomized trial: 38 children taught with RightStart and 32 taught as usual. The RightStart classes covered about 36 of the manual's 87 lessons. Both groups improved in counting, comparing numbers and addition facts. The study found no statistically significant difference between the groups after the lessons, or at a follow-up in first grade [18]. The authors call the sample small and ask that the results be read with caution [18].",
-      "A second paper from the same team followed nine children with specific language impairment taught with RightStart for seven months, 40 minutes two or three times a week, beside 32 typically developing peers [19]. The nine began with weaker skills. After the lessons their counting did not differ significantly from the peers', and in first grade they matched them in some skills and not in others. The authors call these encouraging signs. A foundation grant paid for the manipulatives. With no group of similar children taught another way, the pilot cannot show what RightStart itself caused [19].",
-      "RightStart Mathematics has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [20][21]. The company calls RightStart a research-based program. Its research page lists the two Finnish papers and a summary by Joan Cotter, and reports no results [17]. The 2021 What Works Clearinghouse practice guide rates concrete and semi-concrete representations as strong evidence for elementary students who struggle in math [22]. That supports the method; it is not a study of RightStart."
+      "Researchers at the University of Helsinki and the Niilo Mäki Institute in Finland compared RightStart with usual kindergarten teaching (Mononen, Aunio and Koponen, 2014) [11]. It compared classrooms, without random assignment: 38 children taught with RightStart and 32 taught as usual. The RightStart classes covered about 36 of the manual's 87 lessons. Both groups improved in counting, comparing numbers and addition facts. There was no statistically significant difference between the groups after the lessons, or at a follow-up in first grade. The authors call the sample small and ask that the results be read with caution [11].",
+      "A second paper from the same team followed nine children with specific language impairment, taught with RightStart for seven months, beside 32 typically developing peers [12]. The nine began with weaker skills. After the lessons their counting did not differ significantly from the peers', and in first grade they matched them in some skills and not in others. There was no group of similar children taught another way [12].",
+      "We found no entry for RightStart Mathematics in Evidence for ESSA or in What Works Clearinghouse intervention reports [13][14]. The company's research page lists the two Finnish papers and a summary by Joan Cotter [9]."
     ],
     "ours": [
-      "Two of AMP's rules do what a printed program leaves to the adult. Mixed, spaced practice: in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, students who practiced this way scored 62% on the researchers' own test a month later, against 38% for practice in blocks [23]. Feedback that explains: across 40 studies of computer-based feedback, it averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only; effects were smaller in primary and high school settings, and these are averages, not a head-to-head trial [24]. AMP schedules the first and gives the second after every answer, even when no adult is at the table. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 55 studies, worked examples improve performance in math [16]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Choose RightStart if you want to teach math yourself, at the table, with an abacus and materials your child can hold.",
-      "Choose RightStart if you want fact practice through card games, off screens.",
-      "Choose RightStart if your child learns best in Spanish.",
-      "Choose RightStart if you want to pay once: about $329 for the first level and the Math Set, then about $100 a level."
+      "You want to teach each math lesson yourself, at the table, with an abacus and card games."
     ],
     "amp": [
-      "You can't teach a lesson every day, or would rather not, and still want math every day.",
-      "You want every answer checked and explained the moment it is given.",
-      "Your child is ahead in some parts of math and behind in others.",
-      "You want old skills to come back on a schedule without planning it.",
-      "You love RightStart's abacus lessons and want daily practice beside them that finds the gaps."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer checked as it is given, with the worked steps.",
+      "You want learned skills to keep coming back in practice, set by your learner's own answers.",
+      "Your learner is at different levels in different parts of math, or past middle school math.",
+      "You want daily math that no adult needs to plan, teach or grade."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than RightStart Mathematics?",
-      "answer": "For one young child, yes (prices checked November 2026). RightStart's Level A bundle with PDF worksheets is $109.25 and the Math Set is $219.75, about $329 to start, then $99.25 to $109.25 for each later level [3][4]. AMP is $599 a year or $59 a month for the first child and $399 a year or $39 a month for each more; that buys placement, a chosen and checked problem every time, scheduled review and personalized workbooks from counting through precalculus."
+      "question": "How is AMP different from RightStart Mathematics?",
+      "answer": "In RightStart an adult teaches each lesson from a manual with an abacus, practice comes through card games, and lessons follow the manual's order [1][2]. AMP has no separate test: every answer is checked, explained and sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP alongside RightStart?",
-      "answer": "Yes. Keep teaching RightStart lessons with the abacus and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it does not need to know which RightStart level you are on."
+      "question": "Does RightStart Mathematics work?",
+      "answer": "One small Finnish kindergarten study compared it with usual teaching and found no statistically significant difference between the groups [11]. A nine-child pilot had no comparison group [12]. We found no entry in Evidence for ESSA or in What Works Clearinghouse intervention reports [13][14]."
     },
     {
-      "question": "Does AMP use an abacus or hands-on materials?",
-      "answer": "No physical materials, and no abacus. AMP has a few on-screen models a learner builds, such as a peg board and a counter builder. If hands-on work with an abacus matters most for your child, RightStart is built around that [4][7]."
-    },
-    {
-      "question": "Has RightStart Mathematics been tested in studies?",
-      "answer": "One small Finnish kindergarten study compared it with usual teaching and found no statistically significant difference between the groups [18]. It has no entry in Evidence for ESSA or the What Works Clearinghouse [20][21]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. An adult can keep teaching RightStart lessons with the abacus, and AMP places the learner from their first answers, whatever level the books are on."
     }
   ],
   "sources": [
     {
-      "title": "RightStart Mathematics home page (Activities for Learning)",
-      "url": "https://rightstartmath.com/"
-    },
-    {
-      "title": "About us (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/about-us/"
-    },
-    {
-      "title": "Book bundles, Levels A to F (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/product-category/homeschool-curriculum/book-bundles/"
-    },
-    {
-      "title": "RS2 Math Set (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/product/rs2-math-set/"
-    },
-    {
-      "title": "RightStart Mathematics Level A book bundle",
-      "url": "https://rightstartmath.com/product/rightstart-math-level-a-book-bundle/"
+      "title": "RightStart for home school (RightStart Mathematics)",
+      "url": "https://rightstartmath.com/our-curriculum/the-rightstart-difference/rightstart-for-home-school/"
     },
     {
       "title": "Our curriculum (RightStart Mathematics)",
       "url": "https://rightstartmath.com/our-curriculum/"
-    },
-    {
-      "title": "RightStart for home school (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/our-curriculum/the-rightstart-difference/rightstart-for-home-school/"
     },
     {
       "title": "The RightStart difference (RightStart Mathematics)",
@@ -166,32 +128,24 @@
       "url": "https://rightstartmath.com/faqs/"
     },
     {
-      "title": "Online classes and video lessons (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/product-category/homeschool-curriculum/online-classes/"
+      "title": "RS2 Math Set (RightStart Mathematics)",
+      "url": "https://rightstartmath.com/product/rs2-math-set/"
     },
     {
-      "title": "RightStart video courses",
-      "url": "https://learn.rightstartmath.com/"
+      "title": "RightStart Mathematics Level A book bundle",
+      "url": "https://rightstartmath.com/product/rightstart-math-level-a-book-bundle/"
     },
     {
-      "title": "RightStart apps (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/apps/"
-    },
-    {
-      "title": "RightStart for tutoring and card games (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/rightstart-for-tutoring/"
-    },
-    {
-      "title": "Awards (RightStart Mathematics)",
-      "url": "https://rightstartmath.com/awards/"
-    },
-    {
-      "title": "RightStart Math review (The Canadian Homeschooler)",
-      "url": "https://thecanadianhomeschooler.com/right-start-math-review/"
+      "title": "About us (RightStart Mathematics)",
+      "url": "https://rightstartmath.com/about-us/"
     },
     {
       "title": "Research (RightStart Mathematics)",
       "url": "https://rightstartmath.com/research/"
+    },
+    {
+      "title": "RightStart Mathematics home page (Activities for Learning)",
+      "url": "https://rightstartmath.com/"
     },
     {
       "title": "Mononen, Aunio & Koponen (2014), Investigating RightStart Mathematics kindergarten instruction in Finland, Journal of Early Childhood Education Research 3(1)",
@@ -214,12 +168,12 @@
       "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
     },
     {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
-      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance, Educational Psychology Review 35",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     }
   ]
 }

@@ -3,137 +3,105 @@
   "name": "Exact Path",
   "maker": "Edmentum",
   "category": "school",
-  "checked": "2026-11-21",
-  "benefit": "Open to families and teachers",
-  "line": "Exact Path is sold to schools by quote. AMP is open to any family or teacher today, and its rules are public.",
-  "description": "AMP vs Exact Path: what Edmentum's studies show, who can buy it, and how AMP sets the level, mastery and review from every answer, at home or at school.",
-  "verdict": "Exact Path gives schools a nationally normed diagnostic, learning paths in math and reading, and two Moderate ratings from Evidence for ESSA for its math paths [6][7][8]. It is sold to schools by quote, and we found no published rule for when a skill is mastered or when it comes back for review [1][5]. AMP is only math, any family or teacher can start it today, and its rules for level, mastery and review are written in public code.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Exact Path tests in a separate diagnostic, then delivers a path. In AMP, assessment, teaching and review are continuous.",
+  "description": "AMP vs Exact Path: Exact Path tests in a separate diagnostic, then delivers a learning path. In AMP, assessment, teaching and review are continuous.",
+  "verdict": "Exact Path assesses in Insights, a separate computer-adaptive diagnostic, then delivers a learning path of skills taught in short lessons [1][2]. In AMP, assessment, teaching and review are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "A family can buy AMP today",
-      "body": "Edmentum sells Exact Path to schools and districts through a quote or a call with a specialist [1][2]. Its quote form lets a visitor pick Parent as a role, but we found no family plan, price or trial [1][2]. AMP is sold to families directly, and each learner's first 100 answers and 5 workbooks are free, with no card."
-    },
-    {
-      "title": "A teacher can start without a quote",
-      "body": "We found Exact Path prices only in state and consortium documents [3][4]. Edmentum's state price sheets list professional learning on top of licenses: $750 for a session of up to two hours online, $2,500 for one of up to six hours on site [4][14]. In AMP, a teacher's first class starts a free 30-day pilot with no card and no approval. Clever sign-in and rostering are built in."
-    },
-    {
-      "title": "No test day: the level comes from practice",
-      "body": "Exact Path starts with Insights, a separate computer-adaptive diagnostic, and Growth delivers personalized learning paths [1]. AMP has no separate test. It places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then updates it after every answer given without help. A learner can sit at grade 3 in fractions and grade 6 in geometry, and practice follows both.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. Exact Path assesses in Insights, a separate computer-adaptive diagnostic, or takes scores from the MAP Growth or Star tests. Growth then delivers a personalized learning path [1][3].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "The mastery rule is written down",
-      "body": "The only target we found in Exact Path's published materials is eight skills completed a semester [1]. We found no rule for when a skill counts as mastered [1][5]. In AMP a skill is Strong when four of the last five answers are right without help, and an answer after a hint or the lesson does not count. Two misses in a row send practice back to what the skill builds on, and anyone can read the rule in AMP's public code.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Exact Path the learning path is made of skills, each taught in a short lesson with direct instruction, guided practice and embedded checks [1][2]. Edmentum's usage target counts skills completed [1]. A meta-analysis of 55 studies found that worked examples improve math performance [9].",
       "research": [
-        "mastery",
-        "hints"
+        "lessons",
+        "hints",
+        "films"
       ]
     },
     {
-      "title": "Learned skills return on a schedule",
-      "body": "We found no scheduled review of earlier skills in Exact Path's product pages [1][5]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and 1 month, mixed with other topics, and a miss restarts the schedule. In a randomized trial of 787 seventh graders, students whose practice was mixed and spaced scored 62% on the researchers' own test a month later; students who practiced in blocks scored 38% [12].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In Exact Path, practice toward state standards sits in a separate part, Proficiency, with standards-aligned practice and formative assessments [1]. We found no scheduled return of earlier skills on the learning path in the pages we read [1][2]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [8].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Workbooks made for each learner, and they count",
-      "body": "We found no printable student workbooks in Exact Path's product pages; Edmentum gives teachers resources for small-group instruction [5]. AMP prints unlimited workbooks built from each learner's own record, each with an answer key that shows the worked steps. Results entered from paper count toward the learner's level, so a day off screen still moves the plan."
+      "title": "The adult's part",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. In Exact Path a teacher assigns digital work, reads classroom data, and uses skill-level data to group students for small-group instruction, with resources from Edmentum for that teaching [1][2].",
+      "research": [
+        "progress"
+      ]
     }
   ],
   "rows": {
-    "price": "Sold by quote [1][2]. Ohio lists Insights math at $7.00 a student [4]; Oklahoma lists Core $20.00 and Core plus Proficiency $50.00, unit not stated [3]. Training extra [4].",
-    "buyers": "Schools and districts, through a quote [1][2]. We found no family plan, trial or refund terms.",
-    "range": "Kindergarten through grade 12 in math, reading and language arts. Proficiency practice adds science and social studies, grades 3-12 [1].",
-    "start": "Insights, a separate computer-adaptive diagnostic with Quantile measures and national percentile ranks [1][6]. Integrates with MAP Growth and Star scores [1].",
-    "teaching": "Short lessons with direct instruction, guided practice, embedded checks and just-in-time support [1][5].",
-    "next": "Growth delivers personalized, adaptive learning paths [1]. We found no published rule for how it picks the next skill.",
-    "mastery": "No mastery rule found in its published materials. Its page cites a target of eight skills completed a semester [1].",
-    "review": "No scheduled review of earlier skills found in its published materials [1][5].",
-    "print": "No printable student workbooks found. Teachers get resources for small-group instruction [5].",
-    "adult": "A teacher assigns digital work, reads classroom data and groups students by skill [1][5]. Each district gets a Customer Success Manager [5].",
-    "reports": "Real-time classroom data, Lexile and Quantile measures, national percentile ranks, and usage-to-impact reports [1][5][6].",
-    "evidence": "Two Moderate ratings from Evidence for ESSA, each on one Edmentum study: +0.06 in grade 6, +0.11 in grades 6-8 [7][8]."
+    "range": "Kindergarten through grade 12, in math, reading and language arts [1].",
+    "start": "Insights, a separate computer-adaptive diagnostic that looks for skills above and below the enrolled grade. It can also use MAP Growth or Star scores [1][3].",
+    "teaching": "Short lessons on a learning path: direct instruction, guided practice, embedded checks and just-in-time support [1][2].",
+    "next": "A personalized learning path that Growth delivers [1].",
+    "mastery": "None found in the pages we read [1][2]. Edmentum's usage target counts skills completed [1].",
+    "review": "Proficiency, a separate part with standards-aligned practice and formative assessments [1]. No scheduled return of earlier skills found [1][2].",
+    "print": "None found in the pages we read [2]. Teachers get resources for small-group instruction [2].",
+    "adult": "A teacher assigns digital work, reads classroom data and groups students by skill for small-group instruction [1][2].",
+    "reports": "Real-time classroom data, Lexile and Quantile measures, national percentile ranks, and reports that tie usage to growth [1][2][3].",
+    "evidence": "Two Moderate ratings from Evidence for ESSA, each on one study published by Edmentum: +0.06 in grade 6, +0.11 in grades 6-8 [4][5]."
   },
   "theirs": [
-    "Exact Path is made by Edmentum, an online-learning company that says it serves more than 5 million students in more than 6,200 U.S. public school districts [9]. It has three parts: Insights, an adaptive diagnostic; Growth, personalized learning paths; and Proficiency, standards-aligned practice and formative assessments [1]. It covers kindergarten through grade 12 in math, reading and language arts, and Proficiency adds science and social studies for grades 3-12 [1].",
-    "Students take Insights, a computer-adaptive test that looks for skills above or below the enrolled grade and reports Lexile and Quantile measures and national percentile ranks [1][6]. Growth then delivers a learning path of short lessons with guided practice and embedded checks [1][5]. Students earn Trophies and Challenge Badges [1]. Teachers use skill-level data to form small groups and assign digital work [1][5]. Edmentum lists state-aligned content for Indiana, Florida, Ohio and Texas [5].",
-    "Ohio's assessment form describes Exact Path as adaptive diagnostics with individualized learning paths [6]. Edmentum's other products, including its full online courses, are not part of this comparison."
+    "Exact Path is made by Edmentum. It has three parts: Insights, an adaptive diagnostic; Growth, personalized learning paths; and Proficiency, standards-aligned practice and formative assessments. It covers kindergarten through grade 12 in math, reading and language arts [1].",
+    "A student takes Insights, a computer-adaptive test that looks for skills above or below the enrolled grade and reports Lexile and Quantile measures and national percentile ranks [1][3]. Growth then delivers a learning path of short lessons with direct instruction, guided practice and embedded checks [1][2]. Teachers use skill-level data to form small groups and assign digital work [1][2]."
   ],
   "credit": [
-    "A nationally normed diagnostic. Insights reports Lexile and Quantile measures and national percentile ranks, and Ohio approves it as high-quality student data for grades 3-8 [6]. AMP has no normed test.",
-    "Two Moderate ratings from Evidence for ESSA for its math learning paths [7][8].",
-    "Breadth. One program covers math, reading and language arts from kindergarten through grade 12, with science and social studies practice for grades 3-12 [1]. AMP is math only.",
-    "A low price per student for screening: $7.00 for the Insights math diagnostic in Edmentum's Ohio catalog [4]. Integrations with MAP Growth and Star are also available [1].",
-    "District support: a Customer Success Manager for each district, and single sign-on, data exchange and LMS integration at no charge [4][5]."
+    "A nationally normed diagnostic that looks for skills above and below the enrolled grade [1][3].",
+    "Skill-level data a teacher can use to teach small groups [1][2].",
+    "Its math paths have been studied, with two Moderate ratings from Evidence for ESSA [4][5]."
   ],
   "evidence": {
     "theirs": [
-      "Exact Path has a rating most math programs lack. Evidence for ESSA rates Exact Path Growth (Math) Moderate, based on one quasi-experimental study of grade 6 students with an average effect of +0.06 [7]. The study, by Li, Butler, Ostrow and Dray (2025, published by Edmentum), included 4,597 students in Duval County, Florida, and compared students who completed at least one lesson with students who took only the diagnostic [7]. A second entry, Exact Path Proficiency plus Growth (Math), is also Moderate, on one study of 3,632 students in grades 6-8 with an effect of +0.11, published by Edmentum (Li, Ostrow, Somer and Dray, 2025) and comparing students who used both products with students who used neither [8].",
-      "Edmentum's own pages go further. Its product page reports ESSA Tier II evidence for students who complete at least eight skills, and gains of up to one to two months for Proficiency users over non-users [1]. One compares students who reached a usage mark with students who did not; the other compares users with non-users. Students who use a program most often differ from the rest before they start. The same page calls Exact Path \"proven 2-3x more effective\" than traditional interventions, and we found no comparison group or measure named for that figure [1][5].",
-      "Both rated studies were published by Edmentum, the maker of the product [7][8]. Across What Works Clearinghouse data, evaluations carried out or commissioned by a program's developer reported effects about 1.7 times larger, on average, than independent studies of the same programs [10][11]. Edmentum's landing page cites 15 ESSA-rated studies [5]; for math, Evidence for ESSA lists two Exact Path entries, each resting on one study [7][8]. We found no What Works Clearinghouse intervention report on Exact Path as of November 2026."
+      "Evidence for ESSA rates Exact Path Growth (Math) Moderate, on one quasi-experimental study by Li, Butler, Ostrow and Dray (2025), published by Edmentum. It included 4,597 grade 6 students in Duval County, Florida, and compared students who completed at least one lesson with students who took only the diagnostic. The average effect was +0.06 [4].",
+      "A second entry, Exact Path Proficiency plus Growth (Math), is also Moderate, on one study of 3,632 students in grades 6-8 by Li, Ostrow, Somer and Dray (2025), also published by Edmentum. It compared students who used both products with students who used neither, and found +0.11 [5]. Edmentum's product page reports ESSA Tier II evidence for students who complete at least eight skills, compared with students who do not [1].",
+      "Across What Works Clearinghouse data, evaluations carried out or commissioned by a program's developer reported effects about 1.7 times larger, on average, than independent studies of the same programs [6][7]. We found no What Works Clearinghouse intervention report on Exact Path as of November 2026."
     ],
     "ours": [
-      "Two findings sit behind rules that AMP publishes and that we found no published version of for Exact Path. Spaced, mixed review: in a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% against 38% for practice in blocks, on a test a month later [12]. Feedback: across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right-or-wrong marking 0.05 [13]. AMP schedules the first and gives the second after every answer. We think that design, used most days, will show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [8]. A meta-analysis of 55 studies found that worked examples improve math performance [9]. In AMP, learned skills return mixed with other math, and each problem has a lesson with a worked example.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "You run a school or district that needs a normed screener with Quantile measures and national percentile ranks, on a state's approved list [6].",
-      "You want one vendor for math, reading and language arts, with science and social studies practice [1].",
-      "You must buy a program with an Evidence for ESSA rating today [7][8].",
-      "You want a district partner: a Customer Success Manager, professional learning, and single sign-on and LMS links at no charge [4][5]."
+      "You run a school that needs a nationally normed diagnostic and skill-level data for teaching small groups."
     ],
     "amp": [
-      "You are a family. We found no way to buy Exact Path for home; AMP is sold to you directly.",
-      "You teach a class and want to start this week, with a free pilot and no quote.",
-      "You want to read the mastery rule and the review schedule, not take them on trust.",
-      "You want old skills to come back on a schedule, and printed workbooks that count.",
-      "You want a program that is only math, from counting through precalculus, with a level in each of 14 strands."
+      "You want assessment, teaching and review in the same practice, with no separate test.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math.",
+      "You want to see the actual problems behind every number."
     ]
   },
   "questions": [
     {
-      "question": "Can parents buy Exact Path for home use?",
-      "answer": "We found no family plan or price. Edmentum sells Exact Path to schools and districts through quotes, and its quote form offers Parent as a role but lists no prices [1][2]. AMP is sold to families directly, and the first 100 answers are free."
-    },
-    {
-      "question": "Is AMP more expensive than Exact Path?",
-      "answer": "In dollars per student, yes. Edmentum's Ohio catalog lists the Insights math diagnostic at $7.00 a student. An Oklahoma consortium table lists Exact Path Core at $20.00 and Core plus Proficiency at $50.00 for 2026-27 without naming a unit, and professional learning is priced separately [3][4]. AMP costs $599 a year or $59 a month for the first child, $399 a year or $39 a month for each additional child, and two parents practice free; a teacher's first class starts a free 30-day pilot. The price buys one math program from counting through precalculus that places, teaches, checks, schedules review and prints workbooks."
+      "question": "How is AMP different from Exact Path?",
+      "answer": "Exact Path assesses in Insights, a separate diagnostic, then delivers a learning path of short lessons [1][2]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
       "question": "Does Exact Path work?",
-      "answer": "Evidence for ESSA rates two Exact Path math entries Moderate: +0.06 in grade 6 and +0.11 in grades 6-8, each from one study published by Edmentum [7][8]. The grade 6 study compared students who completed at least one lesson with students who took only the diagnostic [7]."
+      "answer": "Evidence for ESSA rates two Exact Path math entries Moderate: +0.06 in grade 6 and +0.11 in grades 6-8, each on one study published by Edmentum [4][5]. The grade 6 study compared students who completed at least one lesson with students who took only the diagnostic [4]."
     },
     {
-      "question": "My child uses Exact Path at school. Can we use AMP at home?",
-      "answer": "Yes. AMP is a separate program a family buys directly. It places the learner within the first 24 problems and keeps a level in each part of math, with no test, and the first 100 answers are free."
-    },
-    {
-      "question": "Is AMP proven to work better than Exact Path?",
-      "answer": "No. Exact Path has two Moderate ratings from Evidence for ESSA [7][8]. AMP's first study begins in 2027, measured on a national test and published whatever it finds."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
     {
       "title": "Exact Path (Edmentum)",
       "url": "https://www.edmentum.com/products/exact-path/"
-    },
-    {
-      "title": "Get a quote (Edmentum)",
-      "url": "https://www.edmentum.com/get-a-quote/"
-    },
-    {
-      "title": "Edmentum Exact Path price table, 2026-27 (Oklahoma Horizon Consortium)",
-      "url": "https://horizon.ok.gov/?p=12173"
-    },
-    {
-      "title": "Edmentum Exact Path pricing catalog, Ohio, February 2026 (Edmentum)",
-      "url": "https://supportcdn.edmentum.com/docs/OH/EdmentumExactPathPricingOH.pdf"
     },
     {
       "title": "Reasons to choose Exact Path (Edmentum)",
@@ -152,10 +120,6 @@
       "url": "https://www.evidenceforessa.org/program/exact-path-proficiency-exact-path-growth-math/"
     },
     {
-      "title": "About Edmentum (Edmentum)",
-      "url": "https://www.edmentum.com/about/"
-    },
-    {
       "title": "Wolf et al. (2020), Average effect sizes in developer-commissioned and independent evaluations, Journal of Research on Educational Effectiveness 13(2)",
       "url": "https://doi.org/10.1080/19345747.2020.1726537"
     },
@@ -168,12 +132,8 @@
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
-    },
-    {
-      "title": "Exact Path screener information sheet, October 2026 (Kentucky Department of Education)",
-      "url": "https://www.education.ky.gov/curriculum/conpro/engla/Documents/Exact_Path.pdf"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]
 }

@@ -3,136 +3,180 @@
   "name": "Kumon",
   "maker": "Kumon Institute of Education",
   "category": "tutoring",
-  "checked": "2026-11-21",
-  "benefit": "Every answer explained",
-  "line": "Kumon builds calculation speed with repeated worksheets and twice-weekly center visits. AMP explains every answer.",
-  "description": "AMP vs Kumon: price, method and evidence. Kumon drills calculation through a center; AMP explains every answer at home, from counting to precalculus.",
-  "verdict": "Kumon gives a child a daily routine, a person who checks the work twice a week, and a randomized trial showing faster, more accurate calculation [1][6][19]. It teaches by repetition along one fixed sequence centered on calculation, and the median price posted by the US centers we sampled was $170 a month for one subject [14]. AMP explains every answer the moment it is given, keeps a level in every strand of math from counting to precalculus, and costs $599 a year.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Kumon repeats worksheet sets an instructor grades. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Kumon: Kumon repeats worksheet sets that an instructor grades. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Kumon's unit is the worksheet set: a child repeats each set until it is fast and accurate, and an instructor grades the work and decides what comes next [5][7][9]. In AMP, assessment, teaching and review are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Help arrives at the moment of the mistake",
-      "body": "Kumon instructors avoid giving the answer right away; the child must find which part is wrong and correct it [6][7]. Homework sheets are graded by center staff, or within about 24 hours by a Kumon grading center on Kumon Connect [5][6]. AMP shows the correct answer and the worked steps after every answer, and a one-step hint and a lesson are one tap away on every problem. Across 40 studies, feedback that explains had the largest effects [23].",
-      "research": ["feedback", "hints", "lessons"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. Every answer, right or wrong, updates the learner's level in that part of math and sets the next problem. In Kumon, a placement test sets the start, staff grade the worksheets, and each level ends with an Achievement Test of speed and accuracy [5][7][8]. Work done at home is graded at the next class, or within about 24 hours on Kumon Connect [4][5].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "Less than a third of a typical Kumon bill",
-      "body": "Each Kumon center sets its own tuition, charged per subject [2]. Of 150 US center pages we read in November 2026, 133 posted a price: a median of $170 a month plus registration and materials fees, or about $2,120 a year for one subject by our arithmetic [14]. Undated enrollment forms that two centers post online make tuition non-refundable and hold a deposit [16][17]. AMP costs $599 a year for the first child and refunds in full within 30 days. It runs at home on any schedule, with no class to attend."
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Kumon the unit is the worksheet set. A new skill is learned from worked examples printed where it begins, with no lecture, and the instructor gives hints in class only when needed [5][6][11].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "All of math, not calculation alone",
-      "body": "Kumon's math topic list runs from counting to calculus but does not name geometry or measurement [1]. In 2008, Forbes reported that instructors had long asked for more word problems and geometry, and that the company had declined [18]. AMP keeps a separate level in 14 strands, including geometry, measurement, data and probability, and chooses practice in each. A learner strong in arithmetic and new to shapes is seen as both.",
-      "research": ["level"]
+      "title": "Feedback on every answer",
+      "body": "After every answer, AMP shows whether it was right, the correct answer and the worked steps. Kumon instructors avoid giving the answer right away. The child finds which part of the answer is wrong and corrects only that part [5][6]. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for marking right or wrong [15].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "It starts at the learner's level, not below",
-      "body": "Kumon starts each child on work that should feel quick and easy; students \"start below grade level to build a strong foundation\" [8][9]. Its FAQ says more significant progress develops over six to twelve months [2]. AMP places the learner within the first 24 problems and keeps a level in each strand and aims each problem just within reach. While a learner is still climbing, every second problem reaches higher.",
-      "research": ["level"]
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Kumon repeats the same worksheet set until the child is fast and accurate, sometimes even after a perfect score [2][9]. Later levels build on earlier ones. We found no scheduled return to earlier skills in the Kumon pages we read [7][9]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks [16].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "Old skills come back on a schedule, mixed",
-      "body": "Kumon repeats the same worksheet set, sometimes even after a perfect score, until the child is fast and accurate [2][10]. Later levels build on earlier ones, but we found no scheduled return to earlier skills in its published materials [8][10]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks [24].",
-      "research": ["review"]
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts as learned when the learner gets it right without help, more than once, and practice moves on. Repeated misses send practice back to what the skill builds on. In Kumon the instructor decides whether a child repeats a set or moves on, from accuracy and time against its Standard Completion Time [7][9]. A child starts on work that should feel quick and easy, on purpose [7].",
+      "research": [
+        "mastery",
+        "level"
+      ]
+    },
+    {
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus. A learner further along in geometry than in fractions gets work at both levels. Kumon places a child at one point in a fixed sequence of worksheets, which runs from counting to calculus [1][7][10]. Its topic list does not name geometry or measurement [1].",
+      "research": [
+        "level"
+      ]
     }
   ],
   "rows": {
-    "price": "Set by each center, per subject [2]. Posted US prices in our sample: $115 to $255 a month, median $170, plus registration and materials fees [13][14].",
-    "buyers": "Families, through local franchised centers [2][15]. A free placement test [13]. No free trial found on the pages we read.",
-    "range": "Age 3 through high school, ending in calculus [2][12]. The topic list does not name geometry or measurement [1].",
-    "start": "A placement test at the center. Children start on work that should feel quick and easy, on purpose [8][9].",
-    "teaching": "No lectures [19]. Worked examples printed where a new skill begins, and instructor hints only when needed [6][7].",
-    "next": "The instructor decides, from a fixed sequence of worksheets, the child's accuracy, and time against a Standard Completion Time [8][7].",
-    "mastery": "Each level ends with an Achievement Test of speed and accuracy [9]. Sets are repeated until fast and nearly error-free [10][21].",
-    "review": "Repetition of the same set until it is fast [2][10]. No scheduled return to earlier skills found in its published materials [8].",
-    "print": "Paper is the traditional format: standard worksheets sent home for the days between classes [6][7]. Kumon Connect puts them on a family-supplied tablet [5].",
-    "adult": "Bring the child to the center twice a week or, where offered, join a virtual class, and keep the daily routine. Staff grade the work [1][6][11].",
-    "reports": "myKumon Portal: worksheets studied, levels completed, honor-roll status and badges. Kumon Connect adds time and score per worksheet [9].",
-    "evidence": "One independent randomized trial, in Bangladesh: large gains in calculation speed and accuracy [19]. In 2009 the What Works Clearinghouse found no study that met its standards [21]."
+    "range": "Age 3 through high school, ending in calculus [2][10]. The topic list does not name geometry or measurement [1].",
+    "start": "A placement test at the center. A child starts on work that should feel quick and easy, on purpose [7][8].",
+    "teaching": "No lectures [11]. Worked examples printed where a new skill begins, and instructor hints in class only when needed [5][6].",
+    "next": "The instructor decides, from a fixed sequence of worksheets, the child's accuracy, and time against a Standard Completion Time [6][7].",
+    "mastery": "A set is repeated until fast and accurate. Each level ends with an Achievement Test of speed and accuracy [8][9].",
+    "review": "Repetition of the same set until it is fast [2][9]. No scheduled return to earlier skills found in the pages we read [7].",
+    "print": "Standard paper worksheets, sent home for the days between classes [5][6]. Kumon Connect puts them on a tablet [4].",
+    "adult": "The instructor plans and grades. The parent brings the child to class twice a week and keeps the daily routine at home [1][5][7].",
+    "reports": "Worksheets studied and levels completed. On Kumon Connect, time and score for each worksheet [8].",
+    "evidence": "One independent randomized trial, in Bangladesh: large gains in calculation speed and accuracy [11]. In 2009 the What Works Clearinghouse found no study that met its standards [13]."
   },
   "theirs": [
-    "Kumon Math is an after-school worksheet program from Kumon Institute of Education in Japan. It began in 1954, when Toru Kumon, a math teacher, wrote short daily assignments for his son [3]. Kumon now counts 3.51 million subject enrollments in 61 countries and regions [4]. In the United States, local franchised centers run it for children from age 3 through high school [1][2][15].",
-    "A child goes to the center twice a week and does a packet of worksheets at home on the other five days, up to about 30 minutes a day per subject [1][2]. In class the child works independently. The instructor watches, gives hints only when needed, and grades the sheets; on an error, the child finds the mistake and corrects it [6]. New skills are learned from worked examples printed on the sheets, not from a lecture [7]. Many centers, though not all, also run virtual classes [2][11], and the Kumon Connect web app puts the worksheets on a tablet [5].",
-    "The method is small steps and repetition. A child starts on easy work, then repeats each set until it is fast and accurate against a Standard Completion Time [8][10]. Each level ends with an Achievement Test of speed and accuracy [9]. The sequence runs from counting to calculus [1][12]."
+    "Kumon Math is an after-school worksheet program from Kumon Institute of Education in Japan. It began in 1954, when Toru Kumon, a math teacher, wrote short daily assignments for his son [3]. In the United States, local centers run it for children from age 3 through high school [1][2].",
+    "A child goes to the center twice a week and does worksheets at home on the other days, up to about 30 minutes a day per subject [1][2]. In class the child works alone while the instructor watches, gives hints only when needed, and grades the sheets [5]. New skills are learned from worked examples printed on the sheets [6]. The child repeats each set until it is fast and accurate against a Standard Completion Time, and each level ends with an Achievement Test [7][8][9]."
   ],
   "credit": [
-    "A person watches the child work twice a week, in the room or by video, and adjusts the plan [6][11]. AMP has no live teacher.",
-    "A randomized trial. In Bangladesh, an independent cluster-randomized trial found large gains in calculation speed and accuracy [19].",
-    "Timed fluency is central: completion time guides each decision to repeat or advance [8][10]. A What Works Clearinghouse practice guide recommends regular timed activities to build fluency in elementary students who struggle in math, and rates the evidence for it strong [25]. AMP has no timed drills.",
-    "Paper and pencil, with no screen needed [5][19]. AMP prints workbooks, but it runs on a screen.",
-    "A longer runway: Kumon starts at age 3 and its top level reaches calculus [2][12]. AMP starts at kindergarten counting and stops at precalculus."
+    "A person watches the child work twice a week and adjusts the plan [5].",
+    "An independent randomized trial in Bangladesh found large gains in calculation speed and accuracy [11].",
+    "Fast, accurate calculation is a stated aim, and completion time guides each decision to repeat or advance [6][7][9]."
   ],
   "evidence": {
     "theirs": [
-      "Kumon's strongest evidence is a randomized trial in Bangladesh by Sawada, Mahmud, Seki and Kawarazaki, published in 2024 in Economic Development and Cultural Change [19]. Thirty-four non-formal primary schools in and near Dhaka were split at random, 17 to Kumon [19][20]. Students in grade 3 or 4 did one 30-minute Kumon session a day, six days a week, for eight months, with no homework. Teachers trained by Kumon supervised, and Kumon supplied the worksheets. The Japan Society for the Promotion of Science funded the study, and the authors say they ran it independently of Kumon [19].",
-      "The results are large on what Kumon trains. Kumon students scored about 0.47 standard deviations higher on a timed calculation test and about 1.0 higher on a speeded test of simple items. The authors note that parts of these tests resemble the daily worksheets. On the national primary school exam 8 and 20 months later, the gain was about 0.23, though only about half the students sat it [19]. The trial was registered about two years after it ended [20]. Its setting, non-formal schools in Bangladesh with no homework, is very different from an American family's.",
-      "In the United States the record is thinner. In 2009 the What Works Clearinghouse identified five studies of Kumon and found none within its elementary school math review that met its standards. The two with an eligible design failed because there was only one unit of analysis in one or both conditions [21]. Kumon has no entry in Evidence for ESSA as of November 2026 [22]."
+      "Kumon's strongest evidence is a randomized trial in Bangladesh by Sawada, Mahmud, Seki and Kawarazaki, published in 2024 in Economic Development and Cultural Change [11]. Thirty-four non-formal primary schools in and near Dhaka were split at random, 17 to Kumon [11][12]. Students in grade 3 or 4 did one 30-minute Kumon session a day, six days a week, for eight months, with no homework. Teachers trained by Kumon supervised, and Kumon supplied the worksheets. The Japan Society for the Promotion of Science funded the study, and the authors say they ran it independently of Kumon [11].",
+      "Kumon students scored about 0.47 standard deviations higher on a timed calculation test and about 1.0 higher on a speeded test of simple items. The authors note that parts of these tests resemble the daily worksheets. On the national primary school exam 8 and 20 months later, the gain was about 0.23, though only about half the students sat it [11]. The trial was registered about two years after it ended [12].",
+      "In 2009 the What Works Clearinghouse identified five studies of Kumon and found none within its elementary school math review that met its standards. The two with an eligible design failed because there was only one unit of analysis in one or both conditions [13]. We found no entry for Kumon in Evidence for ESSA [14]."
     ],
     "ours": [
-      "AMP is built on findings that held up in trials. Across 40 studies of computer-based feedback, feedback that explains averaged 0.49, the correct answer alone 0.32, and right-or-wrong marking 0.05 [23]. Mixed, spaced practice scored 62% against 38% for blocked practice on the researchers' own test a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [24]. Kumon's trial shows what a fixed daily routine of calculation can do. We expect a program that explains every answer, covers every strand and schedules review to reach further. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Across 40 studies of computer-based feedback, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for marking right or wrong [15]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks [16]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "The goal is fast, accurate arithmetic, and your child does well with a fixed daily routine.",
-      "You want paper and pencil, and an adult outside the family who sees the work twice a week.",
-      "You value a randomized trial behind the method, even one run in Bangladesh, over a published rationale.",
-      "Your child is three or four, or headed for calculus and wants one program all the way there."
+      "The goal is fast, accurate calculation, and your child does well with a fixed daily routine and a person who checks the work twice a week."
     ],
     "amp": [
-      "You want help the moment your child is stuck: a hint, a lesson, and the worked answer after every problem.",
-      "You want all of math, including geometry and measurement, not calculation alone.",
-      "You want practice to start at your child's level in each part of math and move up as the answers allow.",
-      "You would rather not keep a twice-weekly class schedule, and you want a full refund within 30 days if it is not the right fit.",
-      "You teach at home and want the program to place, check and schedule review, with workbooks to print."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer followed by the correct answer and the worked steps.",
+      "You want learned skills to keep coming back, mixed with other math.",
+      "Your learner is at different levels in different parts of math.",
+      "You teach at home and want the program to place, check and review, with workbooks to print."
     ]
   },
   "questions": [
     {
-      "question": "How much does Kumon cost compared with AMP?",
-      "answer": "Each Kumon center sets its own tuition, per subject [2]. In our November 2026 sample of 133 US center pages with posted prices, the median was $170 a month plus registration and materials fees, or about $2,120 a year for one subject by our arithmetic [14]. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each additional child."
-    },
-    {
-      "question": "Can my child use AMP alongside Kumon?",
-      "answer": "Yes. They do different jobs. Kumon drills calculation; AMP also covers geometry and measurement, which Kumon's topic list does not name [1], and finds the level in each strand."
+      "question": "How is AMP different from Kumon?",
+      "answer": "In Kumon a child repeats each worksheet set until it is fast and accurate, and an instructor grades the work and decides what comes next [5][7][9]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
       "question": "Does Kumon work?",
-      "answer": "For calculation, a randomized trial in Bangladesh found large gains in speed and accuracy and a smaller gain on a national exam [19]. In its 2009 review, the What Works Clearinghouse found no US study of Kumon that met its standards [21]."
+      "answer": "For calculation, an independent randomized trial in Bangladesh found large gains in speed and accuracy and a smaller gain on a national exam [11]. In its 2009 review, the What Works Clearinghouse found no study of Kumon within its elementary math review that met its standards [13]."
     },
     {
-      "question": "Does AMP time answers like Kumon?",
-      "answer": "No. AMP checks every answer exactly, but it has no timed drills and does not record speed. If fast recall of facts is the main goal, Kumon is built for it."
-    },
-    {
-      "question": "Can I try Kumon or AMP for free?",
-      "answer": "Kumon centers offer a free placement test [13]; we found no free trial. AMP is free to start without a card: 100 answers and 5 printable workbooks for each learner."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    { "title": "Kumon Math Program (Kumon North America)", "url": "https://www.kumon.com/math-program" },
-    { "title": "Frequently asked questions (Kumon North America)", "url": "https://www.kumon.com/frequently-asked-questions" },
-    { "title": "How Kumon works (Kumon North America)", "url": "https://www.kumon.com/how-kumon-works" },
-    { "title": "About Kumon: corporate profile (Kumon Institute of Education)", "url": "https://www.kumongroup.com/eng/about/" },
-    { "title": "Kumon Connect (Kumon North America)", "url": "https://www.kumon.com/kumon-connect" },
-    { "title": "The role of Kumon instructors (Kumon North America)", "url": "https://www.kumon.com/about-kumon/kumon-method/kumon-instructors/role" },
-    { "title": "Five features of Kumon worksheets (Kumon North America)", "url": "https://www.kumon.com/about-kumon/kumon-method/small-steps/five-features" },
-    { "title": "How does Kumon's individualized lesson planning work? (Kumon North America)", "url": "https://www.kumon.com/resources/how-does-kumons-individualized-lesson-planning-work/" },
-    { "title": "Understanding student progress in Kumon (Kumon North America)", "url": "https://www.kumon.com/resources/understanding-student-progress-in-kumon-what-to-look-for-and-where-to-find-it/" },
-    { "title": "Understanding completion time in Kumon: a parent's practical guide (Kumon North America)", "url": "https://www.kumon.com/resources/understanding-completion-time-in-kumon-a-parents-practical-guide/" },
-    { "title": "Kumon virtual classes (Kumon North America)", "url": "https://www.kumon.com/virtual-classes" },
-    { "title": "How Kumon's curriculum supports high school learning (Kumon North America)", "url": "https://www.kumon.com/resources/how-kumons-curriculum-supports-high-school-learning/" },
-    { "title": "Kumon of Monroe, NJ: center page with posted tuition and fees", "url": "https://www.kumon.com/monroe-NJ/aboutcenter" },
-    { "title": "Kumon US sitemap, from which we read 150 center pages on 2026-11-21", "url": "https://www.kumon.com/sitemap.xml" },
-    { "title": "Kumon franchise costs and fees, 2026 Franchise Disclosure Document summary (Franchise Direct)", "url": "https://www.franchisedirect.com/directory/kumon/ufoc/908" },
-    { "title": "Kumon of Bellevue (Bel-Red), WA: enrollment and fee form", "url": "https://form.jotform.com/231797772197170" },
-    { "title": "Kumon of Fort Lauderdale: financial agreement and policies", "url": "https://form.jotform.com/250594984211158" },
-    { "title": "Sticking to basics (Forbes, 2008)", "url": "https://www.forbes.com/global/2008/1110/076.html" },
-    { "title": "Sawada, Mahmud, Seki & Kawarazaki (2024), Fighting the learning crisis in developing countries: a randomized experiment of self-learning at the right level, Economic Development and Cultural Change 72(4)", "url": "https://doi.org/10.1086/725909" },
-    { "title": "AEA RCT Registry, trial AEARCTR-0002925", "url": "https://www.socialscienceregistry.org/trials/2925" },
-    { "title": "What Works Clearinghouse (2009), Kumon Mathematics Program intervention report", "url": "https://ies.ed.gov/ncee/WWC/Docs/InterventionReports/wwc_kumon_031009.pdf" },
-    { "title": "Evidence for ESSA, math programs", "url": "https://www.evidenceforessa.org/programs/math/" },
-    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
-    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades", "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26" }
+    {
+      "title": "Kumon Math Program (Kumon North America)",
+      "url": "https://www.kumon.com/math-program"
+    },
+    {
+      "title": "Frequently asked questions (Kumon North America)",
+      "url": "https://www.kumon.com/frequently-asked-questions"
+    },
+    {
+      "title": "How Kumon works (Kumon North America)",
+      "url": "https://www.kumon.com/how-kumon-works"
+    },
+    {
+      "title": "Kumon Connect (Kumon North America)",
+      "url": "https://www.kumon.com/kumon-connect"
+    },
+    {
+      "title": "The role of Kumon instructors (Kumon North America)",
+      "url": "https://www.kumon.com/about-kumon/kumon-method/kumon-instructors/role"
+    },
+    {
+      "title": "Five features of Kumon worksheets (Kumon North America)",
+      "url": "https://www.kumon.com/about-kumon/kumon-method/small-steps/five-features"
+    },
+    {
+      "title": "How does Kumon's individualized lesson planning work? (Kumon North America)",
+      "url": "https://www.kumon.com/resources/how-does-kumons-individualized-lesson-planning-work/"
+    },
+    {
+      "title": "Understanding student progress in Kumon (Kumon North America)",
+      "url": "https://www.kumon.com/resources/understanding-student-progress-in-kumon-what-to-look-for-and-where-to-find-it/"
+    },
+    {
+      "title": "Understanding completion time in Kumon: a parent's practical guide (Kumon North America)",
+      "url": "https://www.kumon.com/resources/understanding-completion-time-in-kumon-a-parents-practical-guide/"
+    },
+    {
+      "title": "How Kumon's curriculum supports high school learning (Kumon North America)",
+      "url": "https://www.kumon.com/resources/how-kumons-curriculum-supports-high-school-learning/"
+    },
+    {
+      "title": "Sawada, Mahmud, Seki & Kawarazaki (2024), Fighting the learning crisis in developing countries: a randomized experiment of self-learning at the right level, Economic Development and Cultural Change 72(4)",
+      "url": "https://doi.org/10.1086/725909"
+    },
+    {
+      "title": "AEA RCT Registry, trial AEARCTR-0002925",
+      "url": "https://www.socialscienceregistry.org/trials/2925"
+    },
+    {
+      "title": "What Works Clearinghouse (2009), Kumon Mathematics Program intervention report",
+      "url": "https://ies.ed.gov/ncee/WWC/Docs/InterventionReports/wwc_kumon_031009.pdf"
+    },
+    {
+      "title": "Evidence for ESSA, math programs",
+      "url": "https://www.evidenceforessa.org/programs/math/"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    }
   ]
 }

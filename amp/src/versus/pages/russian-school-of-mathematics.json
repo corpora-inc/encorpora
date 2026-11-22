@@ -3,105 +3,95 @@
   "name": "Russian School of Mathematics",
   "maker": "Russian School of Mathematics (RSM)",
   "category": "tutoring",
-  "checked": "2026-11-21",
-  "benefit": "Practice at each child's level",
-  "line": "Russian School of Mathematics teaches a class at one level. AMP sets each problem from the last answer.",
-  "description": "AMP vs Russian School of Mathematics: a weekly live class at one level, or practice any day that adapts at every answer. How they teach, price and evidence.",
-  "verdict": "Russian School of Mathematics gives a child a live teacher, a class of about a dozen and a contest program, and it has taught after school since 1997 [1][3]. Its practice comes in a weekly class at a level set for the class, plus homework [2][5]. AMP works at each learner's own level in every part of math, checks and explains every answer, and brings old skills back on a schedule, on any day, at a price published up front.",
-  "theirs": [
-    "Russian School of Mathematics, known as RSM, is a private after-school math program for kindergarten through grade 12 [1][4]. Inessa Rifkin and Irina Khavinson founded it. Classes began at Rifkin's kitchen table in 1997, and its first building opened in Newton, Massachusetts, in 1999. It is still a family business and does not franchise. RSM says it serves over 80,000 students across North America [3].",
-    "Its programs run Elementary K-2, Elementary 3-5, Middle School, High School and Competition, described as one continuous curriculum [1]. Each grade has three levels, and classes average 12 students [1]. RSM frames its approach as a classical tradition of using math to develop the mind [4]. RSM-Online teaches grades 2 to 10 live on video with the same curriculum, and younger grades use activities and manipulatives [2].",
-    "A free evaluation matches the child to a class level [2]. Online classes meet 1.5 to 4 hours a week, depending on grade: about 1.5 hours a class for younger students and 2 to 4 hours in high school [2][5]. Homework follows each class and should take about half as long as the lesson [5]. Its classes are held after school [4]."
-  ],
-  "credit": [
-    "A live teacher in a class that averages 12 students [1]. A child can ask a person and hear an answer in the moment. AMP has no live teachers or tutors.",
-    "A Competition program and a contest record. RSM reports that one in four of its students who entered the AMC 8 scored in the top 5%, and that its team placed 6th of 150 at HMMT [1][4]. AMP has no contest track.",
-    "Nearly three decades of teaching. Classes began in 1997, and RSM says it serves over 80,000 students across North America [3].",
-    "In-person classes through grade 12, and live online classes for grades 2 to 10 [1][2]. An in-person class happens off screens, with classmates. AMP is a web app and stops at precalculus."
-  ],
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "RSM teaches a weekly class at the level set for it. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Russian School of Mathematics: RSM teaches a weekly class at one level. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Russian School of Mathematics teaches a weekly live class at a level set for the class, with homework between classes [1][2][5]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level in that part of math and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Each child's level, not the level of a class",
-      "body": "RSM places a child in one of three levels for the grade after a free evaluation, and the class averages 12 students [1][2]. Its FAQ says that when homework runs far longer or shorter than half the lesson, the child may be in the wrong level [5]. AMP keeps a separate level in each of 14 strands of math and chooses every next problem from the learner's answers: new work, a prerequisite, or review. A child strong in geometry and unsure in fractions gets both at once.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. RSM places a child in a class level after an evaluation [2]. Its FAQ says that when homework runs far longer or shorter than half the lesson, the child may be in the wrong level [5].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Practice on any day, not only class day",
-      "body": "RSM teaches in a live class, in person or on video, 1.5 to 4 hours a week online, depending on grade [2]. Between classes there is homework [5]. AMP runs at any hour on a phone, tablet or computer, with no commute and no fixed slot. Each session picks up from the learner's last answer."
-    },
-    {
-      "title": "A price you can see before you enroll",
-      "body": "RSM does not publish tuition. Its online page offers a request form, and a PDF of costs by grade arrives by email [2]. AMP costs $599 a year or $59 a month for the first child, then $399 or $39 for each more, with 100 answers and 5 workbooks free and a full refund within 30 days. That buys placement, every problem chosen and checked, scheduled review and unlimited printed workbooks from counting to precalculus."
-    },
-    {
-      "title": "Every answer checked and explained on the spot",
-      "body": "In an RSM class a teacher can explain in the room. The practice between classes is homework, and we found no description of how or when it is checked on RSM's published pages [5]. AMP marks every answer at once, then shows the correct answer and the worked steps. Across 40 studies of computer-based feedback, in mixed ages and subjects, feedback that explains averaged 0.49, against 0.05 for marking right or wrong alone [9].",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math. A learner further along in geometry than in fractions gets work at both levels, and repeated misses send practice back to what a skill builds on. RSM teaches each grade at three levels, and a class that averages 12 students works at the level set for it [1].",
       "research": [
-        "feedback"
+        "level",
+        "mastery"
       ]
     },
     {
-      "title": "Old skills come back on a schedule",
-      "body": "AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss resets the clock. RSM describes one continuous curriculum, but we found no scheduled review of earlier skills on its published pages [1][4]. In a randomized trial with 787 seventh graders, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks [8].",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In RSM the unit is the weekly class: a live teacher teaches, in person or on video, and homework follows [2][5]. Across 55 studies, worked examples improve performance in math [8].",
       "research": [
-        "review"
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps. In RSM the practice between classes is homework, set to take about half as long as the lesson [5]. Across 40 studies of computer-based feedback, in mixed ages and subjects, feedback that explains had the largest average effect [9].",
+      "research": [
+        "feedback"
       ]
     }
   ],
   "rows": {
-    "price": "Not published. A tuition request form emails a PDF of costs by grade [2].",
-    "buyers": "Families, for classes at RSM locations or live online [1][2].",
     "range": "Kindergarten through grade 12 in person; grades 2 to 10 online [1][2].",
-    "start": "A free evaluation places the child in one of three class levels for the grade [1][2].",
+    "start": "An evaluation places the child in one of three class levels for the grade [1][2].",
     "teaching": "A live teacher with a class averaging 12 students, each week, then homework of about half the lesson's length [1][5].",
     "next": "The class's lessons for its level. If homework runs far longer or shorter than expected, the FAQ says the level may be wrong [5].",
-    "review": "No scheduled review of earlier skills found on its published pages [1][4].",
-    "adult": "Get the child to class or online each week, and see that homework gets done [5].",
-    "evidence": "No outcome study found. No entry in Evidence for ESSA or the What Works Clearinghouse [6][7]. Contest results are its own [1]."
+    "mastery": "None found in the pages we read [1][4].",
+    "review": "None found in the pages we read [1][4].",
+    "adult": "Gets the child to class, in person or online, each week, and sees that homework gets done [5].",
+    "evidence": "No outcome study found. No entry in Evidence for ESSA or the What Works Clearinghouse [6][7]."
   },
+  "theirs": [
+    "Russian School of Mathematics, known as RSM, is an after-school math program for kindergarten through grade 12 [1][4]. Classes began in 1997 [3]. RSM describes its programs as one continuous curriculum [1], and frames its approach as a classical tradition of using math to develop the mind [4].",
+    "An evaluation matches a child to a class level [2]. Each grade has three levels, and classes average 12 students [1]. A class meets each week with a live teacher, in person or on video, for 1.5 to 4 hours a week online depending on grade [2][5]. Homework follows each class and should take about half as long as the lesson [5]."
+  ],
+  "credit": [
+    "A live teacher in a small class. A learner can ask a person and hear an answer in the moment [1].",
+    "A Competition program for students drawn to contest math [1][4]."
+  ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of RSM on its site. Russian School of Mathematics has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [6][7].",
-      "RSM's evidence is its contest results. Its home page says \"Every 4th RSM student who participated scored in the top 5%\" on the AMC 8, and that its team placed 6th of 150 at HMMT [1]. RSM reports these results for the students who entered. They cover only students who chose to take the contest, and the site gives no comparison group, so they cannot show how much the classes added. RSM also says its students gain confidence in math, and gives no study for it [3]."
+      "We found no outcome study of RSM on its site. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [6][7].",
+      "RSM reports contest results for its students who entered, such as the AMC 8 and HMMT [1]. These count only students who chose to take part, with no comparison group."
     ],
     "ours": [
-      "Two of AMP's rules rest on findings that have held up. Mixed, spaced practice scored 62% against 38% a month later in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, on the researchers' own test [8]. Across 40 studies of computer-based feedback, in mixed ages and subjects, with smaller effects in primary and high school, feedback that explains averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [9]. A good teacher does much of this in the room. AMP does it at every problem, on the days between classes. We think steady practice at each child's own level will show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear most on this comparison: worked examples improve math performance across 55 studies [8], and across 40 studies of computer-based feedback, in mixed ages and subjects, with smaller effects in primary and high school, feedback that explains averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [9]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your child wants a live teacher and classmates, and learns best by asking a person.",
-      "Your child is aiming at math contests such as the AMC 8 and wants a team.",
-      "There is an RSM school near you, and a weekly class fits your family's week.",
-      "You want an outside program to set the pace and assign the homework."
+      "Your child learns best with a live teacher and classmates, in a weekly class."
     ],
     "amp": [
-      "You want practice at your child's level in each part of math, not the level of a class.",
-      "You want math at home on any day, at any hour, without a drive.",
-      "You want every answer checked and explained, and old skills brought back on a schedule.",
-      "You want to see the price before you enroll, and to start free.",
-      "Your child already takes RSM classes and could use daily practice between them."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want every answer checked and followed by the worked steps.",
+      "Your learner is at different levels in different parts of math."
     ]
   },
   "questions": [
     {
-      "question": "How much does Russian School of Mathematics cost?",
-      "answer": "RSM does not publish tuition on its site. A request form on its online page emails a PDF of costs by grade [2]. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more, and the first 100 answers are free."
+      "question": "How is AMP different from Russian School of Mathematics?",
+      "answer": "RSM places a child in a class level and teaches a weekly live class, with homework between classes [2][5]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can my child use AMP alongside RSM classes?",
-      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each part of math, then brings old skills back on a schedule, so it can fill the days between classes."
+      "question": "Does Russian School of Mathematics work?",
+      "answer": "We found no outcome study on its site. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [6][7]. RSM reports contest results for students who chose to enter, with no comparison group [1]."
     },
     {
-      "question": "Is AMP a replacement for a live math teacher?",
-      "answer": "No. AMP has no live teachers or tutors. It gives a one-step hint, a written lesson with a worked example and the worked steps for every problem, and a learner uses it alone or with an adult nearby."
-    },
-    {
-      "question": "Has RSM been shown to raise math achievement?",
-      "answer": "RSM reports contest results for students who chose to enter, such as the AMC 8 [1]. We found no outcome study, and it has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [6][7]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -134,8 +124,8 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
-      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
       "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",

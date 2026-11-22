@@ -2,116 +2,99 @@
   "slug": "sumdog",
   "name": "Sumdog",
   "category": "games",
-  "checked": "2026-11-21",
-  "benefit": "Practice that teaches",
-  "line": "Sumdog wraps practice in games and coins. AMP teaches each skill, explains every miss and schedules review.",
-  "description": "AMP vs Sumdog: math games with coins and avatars, or a hint, a worked example and scheduled review at every problem, from counting to precalculus.",
-  "verdict": "Sumdog turns math practice into games, with coins, avatar costumes and class contests, and a family pays $8.99 a month for up to three children [4][13]. We found no lessons, hints, mastery rule or scheduled review in its published materials [5][11]. AMP teaches at every problem, explains every miss and brings learned skills back on a schedule, from counting through precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Sumdog places with a test, then practice runs in games. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Sumdog: Sumdog places with a diagnostic test, then practice runs in games. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Sumdog places a child with a diagnostic test at first login, then sets math questions inside games, pitched to the level the test found [2][3]. In AMP, assessment, teaching and review are continuous. Every answer updates the learner's level in that part of math and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "A stuck child gets taught, not just another question",
-      "body": "Sumdog's math page describes games and questions pitched to the child's level. It describes no lessons, hints or worked examples [5]. In AMP every one of 1,384 problem types has a one-step hint that never gives the answer and a written lesson with a worked example. Every answer, right or wrong, is followed by the correct answer and the worked steps.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. Sumdog starts with a diagnostic test at first login, in two parts that can run over several sessions, and pitches its game questions to the level the test finds [3][2].",
       "research": [
-        "hints",
-        "lessons",
-        "feedback"
-      ]
-    },
-    {
-      "title": "Every minute on screen is a math problem",
-      "body": "In Sumdog, right answers earn coins that buy avatar costumes and items for a virtual house [12][13]. Common Sense Media's review warns that in one game \"dizzying graphics\" may keep children from focusing on math [13]. AMP has no game world, no shop and no costumes. Practice is one problem after another, and a right answer without help earns a point and counts toward that skill being Strong."
-    },
-    {
-      "title": "A mastery rule anyone can read",
-      "body": "Sumdog places a child with its diagnostic and pitches questions to that level, but its pages do not explain how the level changes or when a skill counts as learned [5][11]. In AMP a skill is Strong at four of the last five answers right without help. An answer after a hint does not count. Two misses in a row send practice back to what the skill builds on, and the rule sits in AMP's public source code.",
-      "research": [
-        "mastery",
         "level"
       ]
     },
     {
-      "title": "Learned skills come back on a schedule",
-      "body": "We found no scheduled review of learned skills on Sumdog's math or diagnostic pages [5][11]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17].",
+      "title": "The problem is the unit",
+      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a film where there is one, the worked answer after it is answered, and links to the skills it builds on and leads to. In Sumdog the unit is the game. Questions come inside games, and right answers earn coins for avatar costumes and a virtual house [2][7][9]. Its math page describes games and questions, and no lessons, hints or worked examples [2]. Across 55 studies, worked examples improve math performance, mostly on researchers' own tests [14].",
       "research": [
-        "review"
+        "lessons",
+        "hints",
+        "films"
       ]
     },
     {
-      "title": "Past age 14, and on paper too",
-      "body": "Sumdog is built for ages 5 to 14 [1], and its fluency program covers kindergarten to grade 5 [6]. AMP runs from counting through precalculus on one map of 336 skills. It prints unlimited workbooks made for each learner, with worked answer keys, and results entered from paper count toward the level. We found no printable practice on Sumdog's math or family pages [4][5]."
+      "title": "The adult's part",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. In Sumdog, teachers assign tasks on specific skills or let the questions adjust on their own [4], and parents can set work and monitor progress [5].",
+      "research": [
+        "progress"
+      ]
     },
     {
-      "title": "AMP costs more, starts free and refunds",
-      "body": "Sumdog costs far less: $8.99 a month covers math, spelling and grammar for up to three children and two adults [4]. Its family trial asks for payment details up front, and its terms make subscriptions non-refundable unless agreed in writing or required by law [4][7]. AMP is $59 a month or $599 a year for the first child, free to start with no card, and refunded in full within 30 days. The price buys placement, teaching, checking, scheduled review and printed workbooks across thirteen years of math."
+      "title": "From counting through precalculus",
+      "body": "AMP is one program from counting through precalculus, on one map of skills. It keeps a separate level for each part of math, so a learner further along in one part than another gets work at both levels, and repeated misses send practice back to what a skill builds on. Sumdog is built for ages 5 to 14 [1], and its fluency program covers kindergarten to grade 5 [8].",
+      "research": [
+        "level",
+        "mastery"
+      ]
     }
   ],
   "rows": {
-    "price": "Family: $8.99 a month, up to 3 children and 2 adults [4]. Schools: from $265 a year for a class of 35 [2]. Non-refundable unless agreed in writing or required by law [7].",
-    "buyers": "Families and schools. The family trial needs payment details and is for new customers [4]. School prices are quoted per school [2].",
-    "range": "Ages 5 to 14 [1]. The math page lists no grade levels [5]. Fluency Booster covers kindergarten to grade 5 [6].",
-    "start": "A 55-question diagnostic in two parts at first login, which can run over several sessions [11].",
-    "teaching": "Practice inside games. Its math page describes no lessons, hints or worked examples [5].",
-    "next": "Questions pitched to the level its diagnostic found, or skills an adult picks [10][11]. The method is not explained [5].",
-    "mastery": "No mastery rule found in its published materials [5][11].",
-    "review": "No scheduled review found in its published materials [5][11].",
-    "print": "No printable practice found on its math or family pages [4][5].",
-    "adult": "Parents can set work and watch progress [4]. Teachers assign skills or let questions adjust, and can enter class contests [9][10].",
-    "reports": "Diagnostic, intervention and activity reports that show gaps, for schools [10]. Progress reports for families [4].",
-    "evidence": "Its site cites a Glasgow study without a reference [3]. No entry in Evidence for ESSA or the What Works Clearinghouse [14][15]."
+    "range": "Ages 5 to 14 [1]. Its fluency program covers kindergarten to grade 5 [8].",
+    "start": "A diagnostic test at first login, in two parts, which can run over several sessions [3].",
+    "teaching": "Questions inside games. Its math page describes no lessons, hints or worked examples [2].",
+    "next": "Game questions pitched to the level its diagnostic found [2][3]. Teachers can assign specific skills or let questions adjust [4].",
+    "mastery": "None found in the pages we read [2][3].",
+    "review": "None found in the pages we read [2][3].",
+    "print": "None found in the pages we read [2][5].",
+    "adult": "Parents set work and monitor progress [5]. Teachers assign skills or let questions adjust, and can enter class contests [4][6].",
+    "reports": "Diagnostic, intervention and activity reports that show gaps, for schools [4]. Progress reports for families [5].",
+    "evidence": "Its site cites a Glasgow study without a reference [10]. We found no entry in Evidence for ESSA [11]."
   },
   "theirs": [
-    "Sumdog is made by Sumdog, a company founded in Edinburgh in 2010 [3]. It sells math, and spelling and grammar, to families and to schools, for ages 5 to 14 [1]. Sumdog says millions of children use it [3].",
-    "On first login a child starts a diagnostic of 55 questions in two parts, which can be spread over several sessions [11]. After that the child plays math games, 39 of them by the count on Sumdog's math page, with questions pitched to the level the diagnostic found [5]. Right answers earn coins for avatar costumes and a virtual house, and children can compete with classmates, friends or players worldwide at a similar level [12][13].",
-    "In schools, teachers assign tasks on specific skills or let the questions adjust on their own [10]. Class contests run from Monday morning to Friday noon and count up to 700 answers per student [9]. Sumdog also sells fluency practice: Fluency Booster for kindergarten to grade 5 [6], and a 25-question times-tables check in a timed setting [12]. It runs on phones, tablets and computers [9]."
+    "Sumdog is game-based practice in math, and in spelling and grammar, for ages 5 to 14 [1]. On first login a child starts a diagnostic test in two parts, which can run over several sessions [3]. After that the child plays math games, with questions pitched to the level the test found [2]. Right answers earn coins for avatar costumes and a virtual house [7][9].",
+    "In schools, teachers assign tasks on specific skills or let the questions adjust on their own [4], and classes can enter weekly contests with questions drawn from each student's diagnostic [6]. Sumdog also offers fluency practice: Fluency Booster for kindergarten to grade 5 [8], and a times-tables check with a time limit [7]."
   ],
   "credit": [
-    "Children who want a game get one: 39 games by the count on its math page, coins, avatar costumes, and class contests with certificates and prizes [5][9][13]. AMP has no games, avatars or streaks.",
-    "Fact fluency practice, from Fluency Booster to a timed times-tables check [6][12]. AMP has no timed drills, and the What Works Clearinghouse rates regular timed fluency activities as strong evidence for elementary students who struggle in math [16].",
-    "A much lower price. $8.99 a month covers up to three children and two adults, with spelling and grammar included [4]. AMP is $59 a month for the first child.",
-    "Apps. Sumdog subscriptions can be bought through Apple and Google, and are cancelled there [8]. AMP has no app in either store."
+    "A diagnostic places each child before practice begins [3].",
+    "Regular fact-fluency practice, including a timed times-tables check [7][8].",
+    "The What Works Clearinghouse rates regular timed fluency activities as strong evidence for elementary students who struggle in math [12]."
   ],
   "evidence": {
     "theirs": [
-      "Sumdog's about page cites an \"independent study in Glasgow\" and says 30 minutes a week almost doubles a child's fluency progress [3]. The page names no researchers, design, sample or effect size, and gives no reference, so we could not check it.",
-      "Sumdog's math, fluency, times-tables and contest pages cite no other study [5][6][9][12]. Its test bank was built with a grant from Nesta and the UK Department for Education [5]. That is a note about funding, not a result. The contests page counts more than 48,000 classes and over 3.5 billion questions a year [9]. Those numbers measure use, not learning.",
-      "Sumdog has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [14][15]. We found no outcome study of Sumdog that we could read."
+      "Sumdog's about page cites an \"independent study in Glasgow\" and says 30 minutes a week almost doubles a child's fluency progress [10]. The page names no researchers, design, sample or effect size and gives no reference, so we could not check it. Its math, fluency, times-tables and contest pages cite no other study [2][8][7][6].",
+      "We found no entry for Sumdog in the Evidence for ESSA search [11]. The pages we read link no outcome study of Sumdog."
     ],
     "ours": [
-      "Games can make practice welcome. What a child meets inside the practice matters too. Across 55 studies, worked examples raised math performance by an average of g = 0.48, mostly on researchers' own tests [18]. Across 40 studies of computer-based feedback in mixed ages and subjects, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right or wrong alone 0.05 [19]. AMP puts a worked example in the lesson for every problem type and shows the worked steps after every answer. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Worked examples improve mathematics performance, with an average effect of g = 0.48 across 55 studies, mostly on researchers' own tests [14]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [13]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your child practices most when the math is a game, with coins, costumes and contests.",
-      "You want timed times-tables and fact practice.",
-      "You want math plus spelling and grammar for up to three children at $8.99 a month.",
-      "You need an app from the App Store or Google Play."
+      "You want timed fact-fluency practice inside games for a child in the early grades."
     ],
     "amp": [
-      "You want your child taught when stuck: a hint, a lesson with a worked example, and the worked steps after every answer.",
-      "You want screen time spent on math, with no shop or costumes.",
-      "You want a mastery rule you can read, and learned skills brought back on a schedule.",
-      "Your learner is heading into Algebra, Geometry or Precalculus.",
-      "You want printed workbooks made for your child, with results that count."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or past age 14.",
+      "You want printed practice made from your child's own record, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "How much does Sumdog cost compared with AMP?",
-      "answer": "Sumdog Family is $8.99 a month for up to three children and two adults, with spelling and grammar included, and its terms say subscriptions are non-refundable unless agreed in writing or required by law [4][7]. AMP is $59 a month or $599 a year for the first child, and $39 or $399 for each more. AMP starts free without a card and refunds in full within 30 days."
+      "question": "How is AMP different from Sumdog?",
+      "answer": "Sumdog places a child with a diagnostic test, then sets questions inside games at that level [2][3]. AMP has no separate test: every answer sets the next problem in that part of math, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Does AMP have games like Sumdog?",
-      "answer": "No. AMP has no games, avatars, coins or streaks. A right answer without help earns a point, and the skill is marked Strong when four of the last five answers are right without help."
+      "question": "Does Sumdog work?",
+      "answer": "Its about page cites a study in Glasgow but gives no reference [10]. We found no entry for Sumdog in the Evidence for ESSA search [11]. The pages we read link no outcome study."
     },
     {
-      "question": "My child likes Sumdog. Can we use AMP as well?",
-      "answer": "Yes. They do different jobs. Sumdog offers games, fluency practice and a timed times-tables check [6][12]. AMP finds the level in each part of math, teaches at every problem and schedules review, and its first 100 answers are free."
-    },
-    {
-      "question": "Is there research behind Sumdog?",
-      "answer": "Its about page cites a study in Glasgow but gives no reference [3]. Sumdog has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [14][15]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers and chooses practice from there."
     }
   ],
   "sources": [
@@ -120,60 +103,44 @@
       "url": "https://learn.sumdog.com/en-us"
     },
     {
-      "title": "Pricing for schools (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/pricing-for-schools"
-    },
-    {
-      "title": "About us (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/who-we-are/about-us"
-    },
-    {
-      "title": "Sumdog Family (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/get-started/sumdog-family"
-    },
-    {
       "title": "Mathematics (Sumdog)",
       "url": "https://learn.sumdog.com/en-us/subjects/mathematics"
-    },
-    {
-      "title": "Math fluency (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/how-it-works/maths-fluency"
-    },
-    {
-      "title": "Terms of use (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/terms-of-use"
-    },
-    {
-      "title": "How do I cancel my subscription? (Sumdog help)",
-      "url": "https://support.sumdog.com/knowledge/how-do-i-cancel-my-subscription"
-    },
-    {
-      "title": "Math contests (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/how-it-works/engagement/maths-contests"
-    },
-    {
-      "title": "Get started: schools (Sumdog)",
-      "url": "https://learn.sumdog.com/en-us/get-started-schools"
     },
     {
       "title": "How does Sumdog know which questions to ask my child? (Sumdog help)",
       "url": "https://support.sumdog.com/knowledge/how-does-sumdog-know-which-questions-to-ask-my-child"
     },
     {
+      "title": "Get started: schools (Sumdog)",
+      "url": "https://learn.sumdog.com/en-us/get-started-schools"
+    },
+    {
+      "title": "Sumdog Family (Sumdog)",
+      "url": "https://learn.sumdog.com/en-us/get-started/sumdog-family"
+    },
+    {
+      "title": "Math contests (Sumdog)",
+      "url": "https://learn.sumdog.com/en-us/how-it-works/engagement/maths-contests"
+    },
+    {
       "title": "Times tables (Sumdog)",
       "url": "https://learn.sumdog.com/en-us/how-it-works/fluency/times-tables"
+    },
+    {
+      "title": "Math fluency (Sumdog)",
+      "url": "https://learn.sumdog.com/en-us/how-it-works/maths-fluency"
     },
     {
       "title": "Sumdog website review (Common Sense Media)",
       "url": "https://www.commonsensemedia.org/website-reviews/sumdog"
     },
     {
-      "title": "Evidence for ESSA search: sumdog",
-      "url": "https://www.evidenceforessa.org/?s=sumdog"
+      "title": "About us (Sumdog)",
+      "url": "https://learn.sumdog.com/en-us/who-we-are/about-us"
     },
     {
-      "title": "Intervention reports (What Works Clearinghouse)",
-      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+      "title": "Evidence for ESSA search: sumdog",
+      "url": "https://www.evidenceforessa.org/?s=sumdog"
     },
     {
       "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
@@ -186,10 +153,6 @@
     {
       "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
       "url": "https://doi.org/10.1007/s10648-023-09745-1"
-    },
-    {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
     }
   ]
 }

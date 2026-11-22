@@ -3,123 +3,106 @@
   "name": "Math with Confidence",
   "maker": "Well-Trained Mind Press",
   "category": "books",
-  "checked": "2026-11-21",
-  "benefit": "Placed, checked and reviewed",
-  "line": "Math with Confidence is a scripted K-6 book a parent teaches. AMP finds the level and checks every answer.",
-  "description": "AMP vs Math with Confidence: a scripted K-6 book a parent teaches, beside practice that finds the level and checks every answer through precalculus.",
-  "verdict": "Math with Confidence is a well-reviewed K-6 curriculum that a parent teaches from a script, with games and household objects, for a fraction of AMP's price [1][2][3]. The parent picks the grade, teaches each lesson, checks the pages and decides when to review [2][6]. AMP does those jobs at every answer, from counting through precalculus, and still prints paper.",
-  "theirs": [
-    "Math with Confidence is a homeschool math curriculum for kindergarten through grade 6, written by Kate Snow and published by Well-Trained Mind Press [1][2]. Each grade has an Instructor Guide for the parent and a student workbook. From grade 3 the workbook comes in two parts, A and B [1]. Print copies sell through Amazon, Well-Trained Mind Press and other booksellers. PDFs come only from the publisher [1][5].",
-    "A lesson is the parent and child together. The guide is scripted, so a parent can open it and teach [1][4]. In the early grades a lesson starts with a few minutes of warm-up and review, then 5 to 10 minutes of hands-on teaching, then a short workbook page [2]. Kindergarten through grade 2 has four core lessons a week and an enrichment day [2]. From grade 3 the parent leads the activities and the child then practices alone. In the fifth-grade pilot, families spent 30 to 45 minutes a lesson, 10 to 15 of them led by the parent [2][6].",
-    "The teaching uses manipulatives, ten-frames, games, scavenger hunts, pretend play and picture-book suggestions [2][5]. Each unit stays on one topic for several weeks and ends with a Checkpoint that lists what the child should know [1][2]."
-  ],
-  "credit": [
-    "A script a parent can open and teach from. One reviewer says it is not in any way \"dumbed-down\" [4]. Cathy Duffy lists it among her Top Picks [2].",
-    "Hands-on and playful: games, pretend play, scavenger hunts and objects from around the house [2]. AMP has no games, and the models a learner moves on screen are limited to a few problem types.",
-    "It costs far less. At Well-Trained Mind Press the kindergarten guide and workbook together are on sale from $43.92 in total, depending on format, and the guide can be reused for a younger sibling [3][4]. AMP is $599 a year for the first child.",
-    "No screen is needed. The workbooks are in full color, with alternate pages for color-blind students [4]."
-  ],
+  "checked": "2026-11-22",
+  "benefit": "Teaching at every problem",
+  "line": "In AMP, assessment, teaching and review are continuous. In Math with Confidence a parent teaches each lesson.",
+  "description": "AMP vs Math with Confidence: in AMP, assessment, teaching and review are continuous. In Math with Confidence a parent teaches each lesson and judges each unit.",
+  "verdict": "In AMP, assessment, teaching and review are continuous. Every answer is checked and explained, updates the learner's level and sets the next problem. Math with Confidence is a K-6 print curriculum in which a parent teaches each lesson from a scripted guide, checks the workbook pages, and judges each unit at its Checkpoint [1][2].",
   "reasons": [
     {
-      "title": "AMP teaches every problem, with or without an adult",
-      "body": "Math with Confidence is taught by the parent, every lesson. The adult reads the lesson, gathers objects, prints and cuts the paper pieces, teaches, and checks the workbook [2][4]. Cathy Duffy rates the parent instruction it needs as moderate to high [2]. In AMP every problem type has a one-step hint and a written lesson with a worked example, and worked steps follow every answer, so a learner can keep going on a day the adult is busy.",
-      "research": [
-        "lessons",
-        "hints"
-      ]
-    },
-    {
-      "title": "AMP finds the level in each part of math",
-      "body": "Math with Confidence has no placement test that we found. The author's guidance is to use the grade that matches the child's age, and her list of skills each grade assumes is the check [1][6]. For grade 5 that list includes multiplication and division facts in about three seconds, and long division [6]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, with no separate test. A child ahead in geometry and behind in fractions gets work at both levels.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Math with Confidence starts a child in the grade that matches their age, and the author lists the skills a grade assumes, for example grade 5 [1][4]. Each unit stays on one topic for several weeks [1][2]. Its checks come at the end of a unit: a Checkpoint that lists what the child should know, and from grade 3 a Unit Wrap-up [2].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Every answer is checked and explained at once",
-      "body": "In Math with Confidence the parent checks the workbook pages, and the built-in checks are the unit Checkpoints and, from grade 3, Unit Wrap-ups [2]. AMP marks every answer the moment it is given and shows the correct answer and the worked steps. A meta-analysis of 40 studies of computer-based feedback found average effects of 0.49 for feedback that explains, 0.32 for the correct answer alone and 0.05 for right or wrong only. These are averages by feedback type across ages and subjects, and effects were lower in primary and high school [10].",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Math with Confidence the unit is the lesson, taught by the parent from a scripted guide. In the early grades it is a warm-up and review, a few minutes of hands-on teaching with objects, then a short workbook page [1][2]. Across 55 studies, worked examples improve performance in math [5].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps, before the next problem. In Math with Confidence the parent grades the workbook pages [2]. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect [6]. These are averages by feedback type across ages and subjects, and effects were lower in primary and high school [6].",
       "research": [
         "feedback"
       ]
     },
     {
-      "title": "Old skills return on a schedule",
-      "body": "Math with Confidence uses warm-ups and spiral review to keep earlier skills fresh [2]. The pages and reviews we read state no fixed schedule for it [1][2]. AMP brings each learned skill back after 6 hours, then 1, 3, 7, 14 and 30 days, mixed with other topics, and a miss restarts the clock. In a randomized trial with 787 seventh graders, mixed practice, which was also spaced, scored 62% on the researchers' own test a month later, against 38% for practice in blocks [9].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Math with Confidence keeps earlier skills fresh with warm-ups and spiral review [2]. In a randomized trial with 787 seventh graders, mixed practice, which was also spaced, scored 62% on the researchers' own test a month later, against 38% for practice in blocks [7].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "A stuck skill leads back to what it needs",
-      "body": "At the end of each unit, a Math with Confidence Checkpoint lists the objectives the child should have met, and the parent decides whether to review or move on [2]. For shaky facts, the author suggests adding five minutes of daily practice [6]. In AMP two misses in a row on a skill send practice to the skills it builds on. A skill counts as Strong only after four of the last five answers are right without help.",
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once, and repeated misses send practice back to what the skill builds on. In Math with Confidence the parent reads the unit Checkpoint and decides whether to review or move on [2]. For weak facts, the author's grade 5 page suggests five minutes of daily practice [4].",
       "research": [
-        "mastery"
+        "mastery",
+        "level"
       ]
-    },
-    {
-      "title": "One program from counting to precalculus, on paper too",
-      "body": "Math with Confidence ends at grade 6, with one guide and fixed workbooks for each grade [1]. AMP runs from counting through precalculus in one program, so there is no new program to choose after grade 6. It prints unlimited workbooks made from each learner's own record, with a worked answer key, and results entered from paper count toward the level."
     }
+  ],
+  "rows": {
+    "range": "Kindergarten through grade 6, one grade at a time [1].",
+    "start": "No placement test found. The author advises the grade that matches the child's age, with a list of skills each grade assumes [1][4].",
+    "teaching": "A parent teaches each lesson from a scripted guide, with objects, games and picture books, then the child works a page [2][3].",
+    "next": "The next lesson in a fixed sequence of units. The parent decides whether to review or move on [2].",
+    "mastery": "Several weeks on each topic. A unit Checkpoint lists what the child should know, and the parent judges it [1][2].",
+    "review": "Warm-ups and spiral review to keep earlier skills fresh [2].",
+    "print": "Print or PDF is the whole program: a guide and one or two workbooks for each grade [1].",
+    "adult": "Teaches each lesson, gathers objects, prepares paper pieces and checks the workbook pages [2].",
+    "reports": "None built in. The parent grades, and Checkpoints and Unit Wrap-ups are the assessments [2].",
+    "evidence": "No entry in Evidence for ESSA. An author-run pilot has no comparison group [8][9]."
+  },
+  "theirs": [
+    "Math with Confidence is a homeschool math curriculum for kindergarten through grade 6, written by Kate Snow and published by Well-Trained Mind Press [1][2]. Each grade has an Instructor Guide for the parent and a student workbook, in two parts from grade 3 [1]. The guide is scripted, so a parent can open it and teach [1].",
+    "A lesson is the parent and child together. In the early grades it starts with warm-up and review, then a few minutes of hands-on teaching, then a short workbook page. From grade 3 the parent leads the activities and the child then practices alone [2]. The teaching uses manipulatives, ten-frames, games, pretend play and picture-book suggestions [2][3]. Each unit stays on one topic for several weeks and ends with a Checkpoint [1][2]."
+  ],
+  "credit": [
+    "Hands-on teaching with objects, games and pretend play, with a parent at the table [2].",
+    "A scripted guide a parent can open and teach from [1].",
+    "Warm-ups and spiral review bring earlier skills back [2]."
   ],
   "evidence": {
     "theirs": [
-      "Math with Confidence has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [7][8]. We did not find an independent outcome study in the sources we read.",
-      "The author's pages report a pilot in which 75% of students \"scored at the 98th or 99th percentile on a standardized test\" [1][5]. The author's follow-up article gives the details: 77 fifth-grade students took the math section of the California Achievement Test online in spring 2024, and the author paid for the testing [12]. Scores are set against test norms, not a comparison group of children using another program. The author calls it an informal survey, not a peer-reviewed study, and lists her own caveats: pilot families are committed and get extra support, they chose to take part, and other programs may do as well [12]. Scores like these show how those children did. Without a comparison group they cannot show what the curriculum added."
+      "Math with Confidence has no entry in Evidence for ESSA [8]. We found no independent outcome study.",
+      "The author's pages report a pilot in which 75% of students \"scored at the 98th or 99th percentile on a standardized test\" [1][3]. The author's follow-up article gives the details: 77 fifth-grade students took the math section of the California Achievement Test online in spring 2024, and the author paid for the testing [9]. Scores are set against test norms, with no comparison group. The author calls it an informal survey, not a peer-reviewed study, and lists her own caveats: pilot families are committed and get extra support, they chose to take part, and other programs may do as well [9]."
     ],
     "ours": [
-      "AMP is built on findings about how math is learned. Worked examples: across 55 studies, mostly on researchers' own tests, they improved math performance with an average effect of g = 0.48 [11]. AMP has one for every problem type, beside the problem, and shows worked steps after every answer. The two jobs a printed book leaves to the adult, mixed review on a schedule and an explanation after every answer, rest on the trial and the review cited above [9][10]. We expect a program that does them at every problem to show it in outcomes, and we have committed to measuring that in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect, 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only. These are averages by feedback type, and effects were lower in primary and high school [6]. In a randomized trial with 787 seventh graders, mixed practice, which was also spaced, scored 62% on the researchers' own test a month later, against 38% for practice in blocks [7]. AMP explains every answer and mixes its review into ordinary practice.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
-  },
-  "rows": {
-    "price": "Books, no subscription. Publisher prices, November 2026: kindergarten guide $27.96 to $33.96, workbook $15.96 to $20.36 [3]. Guide reusable for siblings [4].",
-    "buyers": "Anyone. Print from Amazon, Well-Trained Mind Press and other booksellers; PDFs only from the publisher [1][5].",
-    "range": "Kindergarten through grade 6 [1].",
-    "start": "No placement test found. The author advises the grade that matches the child's age, with a list of skills the grade assumes [1][6].",
-    "teaching": "The parent teaches from a scripted guide, with objects, games and picture books [2][5].",
-    "next": "A fixed sequence of units. The parent decides whether to review or move on [2].",
-    "mastery": "Several weeks per topic. A Checkpoint lists what the child should know; the parent judges it [1][2].",
-    "review": "Warm-ups and spiral review. No fixed review schedule in the materials we read [2].",
-    "print": "All print or PDF: one guide and one or two fixed workbooks per grade [1][4].",
-    "adult": "Teaches each lesson, gathers objects, prints and cuts paper pieces, checks pages. Grade 5 pilot: 10 to 15 parent-led minutes a lesson [2][6].",
-    "reports": "None built in. The parent grades; Checkpoints and Unit Wrap-ups are the assessments [2].",
-    "evidence": "No entry in Evidence for ESSA or the What Works Clearinghouse. An author-run pilot of 77 students, scored against test norms, has no comparison group [7][8][12]."
   },
   "fit": {
     "them": [
-      "You want to teach math yourself, at the table, from a script.",
-      "Your child is young and learns best with objects, games and play beside you.",
-      "You want math with no screen.",
-      "You want a kindergarten year for about $44 to $54 in books at sale prices, with a guide you can reuse for siblings."
+      "You want to teach each math lesson yourself, at the table, with objects and games."
     ],
     "amp": [
-      "You want your child to practice and learn on days you cannot teach.",
-      "You are not sure which grade fits, or your child is ahead in one part of math and behind in another.",
-      "You want every answer checked and explained, and old skills brought back on a schedule without planning it.",
-      "Your child is past grade 6, or soon will be, and you want one program through precalculus.",
-      "You love your book and want AMP beside it, to find gaps and print practice made for your child."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer checked as it is given, with the worked steps.",
+      "You want learned skills to keep coming back in practice, set by your learner's own answers.",
+      "Your learner is at different levels in different parts of math, or past grade 6.",
+      "You want paper practice too, from workbooks made from your learner's own record."
     ]
   },
   "questions": [
     {
-      "question": "Is Math with Confidence cheaper than AMP?",
-      "answer": "Yes, by a lot. At Well-Trained Mind Press the kindergarten guide and workbook together are on sale from $43.92 in total, depending on format, and the guide can be reused for siblings [3][4]. AMP costs $599 a year or $59 a month for the first child, and that price buys placement, a chosen next problem, checked answers, scheduled review and printed workbooks from counting through precalculus."
+      "question": "How is AMP different from Math with Confidence?",
+      "answer": "In Math with Confidence a parent teaches each lesson from a scripted guide, checks the pages, and judges each unit at its Checkpoint [1][2]. AMP has no separate test: every answer is checked, explained and sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP alongside Math with Confidence?",
-      "answer": "Yes. A family can keep teaching lessons from the book and use AMP for practice: it finds the level in each strand, checks every answer and brings old skills back on a schedule. Its workbooks print on paper, and results entered from paper count."
+      "question": "Does Math with Confidence work?",
+      "answer": "We found no independent outcome study, and no entry in Evidence for ESSA [8]. The author reports an informal pilot of 77 fifth graders, scored against test norms, with no comparison group [9]."
     },
     {
-      "question": "Does Math with Confidence have a placement test?",
-      "answer": "We found none. The author advises the grade that matches the child's age and lists the skills each grade assumes, such as multiplication and division facts in about three seconds for grade 5 [1][6]. AMP places a learner inside practice, within the first 24 problems."
-    },
-    {
-      "question": "What comes after Math with Confidence grade 6?",
-      "answer": "The series ends at grade 6 [1]. AMP continues through grades 7 and 8, Algebra 1, Geometry, Algebra 2 and Precalculus in the same program."
-    },
-    {
-      "question": "Is AMP proven to work better than Math with Confidence?",
-      "answer": "No. Math with Confidence has no entry in Evidence for ESSA or the What Works Clearinghouse [7][8], and AMP has no outcome study yet. AMP's first studies begin in 2027 and will be published whatever they find."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. A parent can keep teaching lessons from the book, and AMP places the learner from their first answers, whatever grade the book is in."
     }
   ],
   "sources": [
@@ -132,14 +115,6 @@
       "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/grades-k-6/math-with-confidence"
     },
     {
-      "title": "Math (Well-Trained Mind Press)",
-      "url": "https://welltrainedmind.com/c/subject/math/"
-    },
-    {
-      "title": "Math with Confidence curriculum review (Teacher Tutor Mom)",
-      "url": "https://teachertutormom.squarespace.com/blog/math-with-confidence-curriculum-review"
-    },
-    {
       "title": "Math with Confidence homeschool math curriculum (Kate's Homeschool Math)",
       "url": "https://kateshomeschoolmath.com/math-with-confidence-homeschool-math-curriculum/"
     },
@@ -148,24 +123,20 @@
       "url": "https://kateshomeschoolmath.com/fifth-grade-math-with-confidence/"
     },
     {
-      "title": "Evidence for ESSA search: Math with Confidence",
-      "url": "https://www.evidenceforessa.org/?s=math+with+confidence"
-    },
-    {
-      "title": "What Works Clearinghouse intervention reports",
-      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
-    },
-    {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
-      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance, Educational Psychology Review 35",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
       "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
       "url": "https://doi.org/10.3102/0034654314564881"
     },
     {
-      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance, Educational Psychology Review 35",
-      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Evidence for ESSA search: Math with Confidence",
+      "url": "https://www.evidenceforessa.org/?s=math+with+confidence"
     },
     {
       "title": "How do Math with Confidence students perform on standardized tests? (Kate's Homeschool Math)",

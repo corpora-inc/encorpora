@@ -3,123 +3,106 @@
   "name": "Math Academy",
   "maker": "Math Academy, LLC",
   "category": "adaptive",
-  "checked": "2026-11-21",
-  "benefit": "Starts at counting, with hints",
-  "line": "Math Academy starts at grade 4 and teaches in text. AMP starts at counting and adds hints, films and print.",
-  "description": "AMP vs Math Academy: both gate mastery on a prerequisite map. Math Academy reaches calculus; AMP starts at counting, with hints, films and print.",
-  "verdict": "Of the programs we compared, Math Academy is the closest to AMP in design, with a prerequisite map, mastery gates and scheduled review, and it goes far past precalculus into university math [1][4]. It starts at 4th grade, teaches in text, and gives no hints by design [2][3][8]. AMP starts at counting, offers a first step when a learner is stuck, adds narrated films, and prints workbooks made for each learner.",
+  "checked": "2026-11-22",
+  "benefit": "Teaching at every problem",
+  "line": "Math Academy places with a test and teaches by lesson. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Math Academy: Math Academy places with a diagnostic and teaches by lesson. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Math Academy places a learner with a diagnostic, teaches in lessons that open with a worked example, gives no hints by design, and schedules review as tasks and timed quizzes [3][4][8]. In AMP, assessment, teaching and review are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP starts at counting, Math Academy at grade 4",
-      "body": "Math Academy's courses begin at the 4th grade level. A new learner needs multiplication facts through 12 and must read independently [2][6]. AMP runs from counting in kindergarten through precalculus in one program, with 84 of its 336 skills in kindergarten through grade 3. A family with a 6-year-old and a 10-year-old can use one program for both.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Math Academy places a new learner with an adaptive diagnostic of 30 to 45 minutes [3]. After that, timed quizzes on earlier topics come at intervals, and lesson material is locked while they run [3][4].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "A stuck learner gets a first step",
-      "body": "Math Academy gives no hints by design. Its book argues that the system should not lower the bar by \"giving away hints\" [8]. A learner who misses gets more problems, and after too many misses the lesson halts and comes back later [4]. Every AMP problem type has a one-step hint that shows the first move and never the answer. The hinted answer is recorded but does not count toward mastery, so the bar stays where it was.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Math Academy the unit is the lesson: a worked example at each step, then practice problems until two in a row are right [3]. Its lessons are text with diagrams, and the company's book argues that following a video is not learning [3][8].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "A hint, recorded as help",
+      "body": "In AMP, a hint and a lesson are in reach at every problem. An answer given after either is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. Math Academy gives no hints by design. Its book argues that the system should not lower the bar by \"giving away hints\" [8]. A learner who misses reads the explanation and gets more problems, and after too many misses the lesson halts and comes back later [4][8].",
       "research": [
         "hints",
         "mastery"
       ]
     },
     {
-      "title": "Lessons a young learner can watch and hear",
-      "body": "Math Academy teaches in text with diagrams, and its homepage lists watching YouTube videos among the things its students can skip [1][3]. In a 2025 reply to an independent review, signed by Math Academy's Curriculum Director, the company said that \"some 4th-graders\" can learn from its text and that it must do more for those who cannot [10]. AMP pairs its written lessons with narrated, animated films for a growing share of problem types, most of the films in kindergarten through grade 3. AMP does not read problems aloud.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Math Academy schedules review for each student and topic, as review tasks and timed quizzes, and counts advanced work as partial review of the simpler skills inside it [3][4]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 61% on a surprise test a month later, against 38% for practice in blocks [13].",
       "research": [
-        "films",
-        "lessons"
+        "review"
       ]
     },
     {
-      "title": "Mastery without a clock or point penalties",
-      "body": "Math Academy's quizzes are timed, and in its diagnostic a correct answer that takes far longer than expected counts for less [3][4]. It takes XP away for rushing or guessing, and ranks students in weekly leagues by how fast they earn XP, with an opt-out [2][3]. AMP does not time answers. A skill is Strong when four of the last five answers are right without help, and points once earned are never taken away.",
+      "title": "One program from counting",
+      "body": "AMP is one program from counting through precalculus, on one map of skills, with a separate level for each part of math. A learner further along in one part than another gets work at both levels. Math Academy's courses begin at the 4th grade level. A new learner needs multiplication facts through 12 and must be able to read independently [2][6].",
       "research": [
-        "mastery"
+        "level"
       ]
-    },
-    {
-      "title": "The start is free, and each added child costs less",
-      "body": "Math Academy charges $49 a month per student, with no free trial and no sibling or family discount [1][2]. AMP costs more for one child: $59 a month or $599 a year. Each additional child is $39 a month or $399 a year, two parents practice free, and every learner's first 100 answers and 5 workbooks are free without a card. Both refund in full within 30 days [2]."
-    },
-    {
-      "title": "Practice on paper, made for one learner",
-      "body": "We found no workbooks, printable practice or answer keys in Math Academy's published materials. Learners work its problems online, with scratch paper beside them [1][2]. AMP prints unlimited workbooks built from the learner's own record, each with a worked answer key, and results entered from paper count toward the learner's level."
     }
   ],
   "rows": {
-    "price": "$49 a month per student [1]. No free trial, discounts or sibling pricing. Full refund within the first 30 days [2].",
-    "buyers": "Families and adult learners, by credit card. An approved vendor for three charter homeschool networks. No state ESA program named [2].",
-    "range": "Grade 4 through university math, including AP Calculus, linear algebra and differential equations. Requires times tables through 12 and independent reading [1][6].",
-    "start": "An adaptive diagnostic of about 30 to 45 minutes that also checks earlier foundations. Very slow correct answers count for less [3][4].",
-    "teaching": "Text lessons that start from a fully worked example, with diagrams where possible, and an explanation for every question. No video lessons found; no hints, by design [1][3][8].",
-    "next": "An algorithm chooses tasks over a map of prerequisites. The learner picks among the lessons, reviews and quizzes it unlocks [3][4].",
-    "mastery": "Two right in a row at each step of a lesson, with more problems until then. Too many misses halt the lesson for a later retry [3][4].",
-    "review": "Scheduled per student and topic. Advanced work counts as partial review of the simpler skills inside it. Timed quizzes about every 150 XP [3][4].",
-    "print": "No workbooks or printable practice found in its published materials. Learners use scratch paper [1][2].",
-    "adult": "Little. The system chooses and grades the work. The adult can set XP goals, workdays and breaks. Younger students may need supervision at first [2][3].",
+    "range": "Grade 4 math through AP Calculus and university courses. A new learner needs multiplication facts through 12 and independent reading [1][6].",
+    "start": "A separate adaptive diagnostic of about 30 to 45 minutes, which also checks earlier foundations. Very slow correct answers count for less [3][4].",
+    "teaching": "Text lessons with diagrams, each step opening with a worked example. Every question has an explanation. No hints, by design [3][8].",
+    "next": "An algorithm chooses tasks over a map of prerequisites. The learner picks among the lessons, reviews and quizzes it offers [3][4].",
+    "mastery": "Two right in a row at each step of a lesson. Too many misses halt the lesson for a later retry [3][4].",
+    "review": "Review tasks scheduled per student and topic, and timed quizzes on earlier topics. Advanced work counts as partial review of simpler skills [3][4].",
+    "print": "None found in the pages we read. Learners work online, with scratch paper [1][2].",
+    "adult": "The system chooses and grades the work. The adult can set XP goals, workdays and breaks [2][3].",
     "reports": "Daily activity and progress, notifications and a diagnostic report. Transcripts with grades and certificates of completion [1][2][3].",
-    "evidence": "No outcome study found. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [12][14]."
+    "evidence": "No outcome study found on its site, in Evidence for ESSA's math programs or in the What Works Clearinghouse product list [1][10][12]."
   },
   "theirs": [
-    "Math Academy is an online math program from Math Academy, LLC [1]. It grew out of an accelerated math program in Pasadena's public schools, which still runs on it [7]. The site still labels it beta [1]. Courses run from 4th grade math through AP Calculus BC and university courses such as linear algebra and differential equations, with SAT and ACT prep and a sequence for adults [1][6]. It is accredited by ACS WASC [1][2].",
-    "A new learner starts with an adaptive diagnostic of 30 to 45 minutes [3]. Each day brings a set of tasks to choose from: lessons, reviews, multistep problems and quizzes [3]. A lesson opens with a worked example and gives up to five practice problems per step. Two right in a row moves on [3]. Work is counted in XP, about one XP per focused minute, with a suggested pace of 20 to 40 XP a day [2]. A timed quiz on earlier topics comes about every 150 XP [3].",
-    "The company sets out its method in detail in a free book, The Math Academy Way [8]."
+    "Math Academy is an online math program from Math Academy, LLC [1]. It grew out of an accelerated math program in Pasadena's public schools, which still runs on it [7]. Courses run from 4th grade math through AP Calculus and university courses such as linear algebra and differential equations [1][6]. The company sets out its method in a book, The Math Academy Way [8].",
+    "A new learner starts with an adaptive diagnostic [3]. An algorithm then chooses tasks over a map of prerequisites, and each day the learner picks from them: lessons, reviews, multistep problems and quizzes [3][4]. A lesson opens with a worked example and gives practice problems at each step. Two right in a row moves on [3]. Review is scheduled for each student and topic, and timed quizzes on earlier topics come at intervals [3][4]. Work is counted in XP, about one XP per focused minute [2]."
   ],
   "credit": [
-    "It goes much further than AMP: AP Calculus AB and BC, and university courses from linear algebra to differential equations [1][6]. AMP stops at precalculus.",
-    "Accreditation by ACS WASC, transcripts with grades, certificates of completion, and courses schools can add for UC a-g credit [2]. AMP offers no credit.",
-    "Review that adapts more finely than AMP's: advanced work counts as partial review of the simpler skills inside it, and each student moves through review faster or slower on each topic [4]. AMP follows one published schedule.",
-    "It treats speed as evidence: its quizzes are timed, and in its diagnostic a correct answer that takes far longer than expected counts for less [3][4]. AMP does not time answers.",
-    "A lower price for one child: $49 a month, against AMP's $59 [1]."
+    "A map of prerequisites, with review scheduled for each student and topic, and advanced work counted as partial review of the simpler skills inside it [4].",
+    "Each lesson step opens with a fully worked example, and every question has an explanation [3].",
+    "A learner who keeps missing a lesson gets remedial review of its key prerequisites [4]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Math Academy, randomized or with a comparison group, on its site. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [12][14]. Evidence for ESSA does rate My Math Academy Strong, but that is a different product, for preschool and kindergarten, from another company, Age of Learning [13].",
-      "Math Academy's pedagogy page cites general research on mastery learning, spacing and interleaving. None of those studies tested Math Academy [5]. Its headline claim, learning at four times the speed of a regular class, compares the minutes in its courses with an estimate of class and homework time. It does not compare what students learned with a control group [1][2][8].",
-      "Its other results come from its own reports, without a comparison group. Justin Skycak, who wrote the company's book, writes that students in the Pasadena school program were invited after scoring at or above the 90th percentile on a middle school math placement exam, and that most who took AP Calculus BC in eighth grade passed. The post gives no counts [9]. In 2023 a former student told a Pasadena High School newspaper that the program's dropout rate was very high [11]. Lesson pass rates of 93% on the first try and 98% on the second describe lessons passed, not learning measured against other students [2]."
+      "We found no outcome study of Math Academy, randomized or with a comparison group, on its site, in Evidence for ESSA's math programs or in the What Works Clearinghouse product list [1][5][10][12]. Evidence for ESSA rates My Math Academy Strong, but that is a different product, for preschool and kindergarten, from another company, Age of Learning [11].",
+      "Math Academy's pedagogy page cites general research on mastery learning, spacing and interleaving. None of those studies tested Math Academy [5]. Its claim of learning at four times the speed of a regular class compares the minutes in its courses with an estimate of class and homework time, not learning against a comparison group [1][2][8]. Justin Skycak, who wrote the company's book, reports that students in the Pasadena school program were invited after scoring at or above the 90th percentile on a middle school math placement exam, and that most who took AP Calculus BC in eighth grade passed. The post gives no counts [9]."
     ],
     "ours": [
-      "Math Academy and AMP rest on much of the same research, and we are glad to say so. Both teach from worked examples [3], which averaged g = 0.48 across 55 studies in math [16]. Both mix earlier topics back into practice [4]. In a randomized trial in 54 seventh-grade math classes, mixed and spaced practice scored 61% on the researchers' unannounced test a month later, against 38% for practice in blocks [15]. Where we differ is the age a learner can start and what happens when a learner is stuck. We expect a first-step hint that does not count, narrated films and paper to keep more young learners practicing. That is our bet, not a finding.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on both programs. Worked examples improve math performance, with an average effect of g = 0.48 across 55 studies [14]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 61% on a surprise test a month later, against 38% for practice in blocks [13]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your child reads well, is in grade 4 or above, and wants to move fast toward AP Calculus or university math.",
-      "You need accredited credit, transcripts with grades, or UC a-g courses.",
-      "You are an adult rebuilding math for calculus, linear algebra or machine learning.",
-      "Your learner thrives on a daily XP target, timed quizzes and weekly leagues."
+      "Your learner reads independently, knows multiplication facts through 12, and wants to learn lesson by lesson from worked examples, without hints."
     ],
     "amp": [
-      "Your child is in kindergarten through grade 3.",
-      "You want a first step when your child is stuck, and a helped answer that does not count toward mastery.",
-      "You want mastery without timers, point penalties or leagues.",
-      "You want printed practice made from your child's record, with an answer key.",
-      "You teach several children or a class: each added child costs less, and a teacher's first class starts a free 30-day pilot."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint that gives the first step when your child is stuck, with the helped answer recorded.",
+      "Your child is starting with counting.",
+      "You want printable workbooks made from your child's own record, with worked answer keys.",
+      "You want to see the actual problems behind every number."
     ]
   },
   "questions": [
     {
-      "question": "Can a kindergartner or second grader use Math Academy?",
-      "answer": "Its courses begin at the 4th grade level, and it asks for multiplication facts through 12 and independent reading [2][6]. It has no kindergarten through grade 3 course. AMP starts at counting."
+      "question": "How is AMP different from Math Academy?",
+      "answer": "Math Academy places a learner with a diagnostic, teaches in lessons that open with a worked example, and gives no hints by design [3][8]. AMP has no separate test: every answer sets the next problem, each problem carries its own hint, lesson and worked answer, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is AMP more expensive than Math Academy?",
-      "answer": "For one child, yes. Math Academy is $49 a month per student [1]; AMP is $59 a month or $599 a year. Math Academy has no free trial or sibling discount [2], while AMP's first 100 answers are free and each additional child is $39 a month."
+      "question": "Does Math Academy work?",
+      "answer": "We found no outcome study of Math Academy on its site, in Evidence for ESSA's math programs or in the What Works Clearinghouse product list [1][10][12]. The results it reports come from its own data, including a selective school program [9]."
     },
     {
-      "question": "Does Math Academy have hints?",
-      "answer": "We found no hint feature in its published materials. Its book argues that a struggling student should not be handed hints; the program gives more practice and, after repeated misses, halts the lesson for a later retry [4][8]. AMP gives one hint that shows the first step, and the helped answer does not count toward mastery."
-    },
-    {
-      "question": "Is Math Academy proven to work?",
-      "answer": "We found no outcome study, and it has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [12][14]. The results it reports come from its own data, including a selective school program [9]."
-    },
-    {
-      "question": "Can a learner move from AMP to Math Academy?",
-      "answer": "Yes. AMP ends at precalculus. Math Academy offers AP Calculus and university courses, and its diagnostic places a new learner [1][3][6]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -160,14 +143,6 @@
       "url": "https://www.justinmath.com/math-academy-success-stories/"
     },
     {
-      "title": "Pershan, Math Academy Wants To Supercharge Your Learning (February 2025, with a reply signed by its Curriculum Director)",
-      "url": "https://pershmail.substack.com/p/math-academy-wants-to-supercharge"
-    },
-    {
-      "title": "Math Academy: a decade later (Pasadena Chronicle, May 2023)",
-      "url": "https://pasadenachronicle.org/2023/may/math-academy-a-decade-later"
-    },
-    {
       "title": "Math programs (Evidence for ESSA)",
       "url": "https://www.evidenceforessa.org/programs/math"
     },
@@ -180,11 +155,11 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products"
     },
     {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (ERIC)",
-      "url": "https://eric.ed.gov/?id=ED595322"
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice, Journal of Educational Psychology 112(1)",
+      "url": "https://doi.org/10.1037/edu0000367"
     },
     {
-      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
       "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]

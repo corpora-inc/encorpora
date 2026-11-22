@@ -23,8 +23,6 @@ export type VersusCategory = (typeof versusCategoryIds)[number];
 /** The side-by-side table's rows, in the order it shows them. A page shows
  * the rows its `rows` names. */
 export const versusRowIds = [
-  "price",
-  "buyers",
   "range",
   "start",
   "teaching",

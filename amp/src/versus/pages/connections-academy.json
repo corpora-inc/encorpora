@@ -3,112 +3,108 @@
   "name": "Connections Academy",
   "maker": "Pearson (Connections Education)",
   "category": "all-in-one",
-  "checked": "2026-11-21",
-  "benefit": "Math beside any school",
-  "line": "Connections Academy is a full-time online public school. AMP is only math, for home or beside any school.",
-  "description": "AMP vs Connections Academy: a tuition-free online public school, and a math program that keeps a level in each strand and chooses every problem.",
-  "verdict": "Connections Academy is a tuition-free online public school from Pearson, with certified teachers, live classes and accredited courses [1][2][3][7][8]. It is a school, and math is one subject in it. AMP is only math: it places the learner within the first 24 problems, keeps a level in each of 14 strands, chooses every problem, explains every miss and brings skills back on a schedule, for a family that teaches at home or wants more math beside any school.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Connections Academy, an online school, teaches math as a course. In AMP, assessment, teaching and review are continuous.",
+  "description": "AMP vs Connections Academy: an online school that teaches math as a course, and a math program where assessment, teaching and review are continuous.",
+  "verdict": "Connections Academy is a full-time online public school. Math is one course in it, taught through daily lessons, live classes and teacher-graded work, with benchmark assessments and state tests [3][5][7]. In AMP, assessment, teaching and review are continuous: every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP adds math without changing schools",
-      "body": "Connections Academy describes itself as a tuition-free online public school for kindergarten through grade 12 [1]. A child enrolls in the state's school, studies about 30 hours a week and takes state and benchmark tests [3][5]. AMP is only math. A family that teaches at home can use it as the math course, and a child at any school can use it beside school, starting the same day."
-    },
-    {
-      "title": "The adult does not have to teach the math",
-      "body": "Connections Academy asks a Learning Coach, a parent or trusted adult, to oversee schoolwork about 5 to 6 hours a day in elementary school and 2 to 3 hours in middle and high school [4]. The coach structures the day, gives one-on-one help and checks understanding [4]. In AMP the adult has nothing to plan, teach or grade. AMP places the learner, chooses each problem, checks it and schedules review."
-    },
-    {
-      "title": "Each part of math gets its own level",
-      "body": "Connections Academy places students in courses using their academic records [3]. Its pages say each school's courses meet state standards, and advanced younger students may work at a higher grade level when appropriate [3][6]. We found no placement test or adaptive practice described on the pages we read [3][5][9]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands and chooses every next problem from the learner's answers, so a learner ahead in geometry and behind in fractions gets work at both levels.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test and no test day. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem. Connections Academy places students in courses using their academic records. Its teachers evaluate student work, and students take benchmark assessments during the year and state tests [3].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Every miss comes with the worked answer",
-      "body": "At Connections Academy, teachers reinforce hard concepts in live classes and evaluate student work, and the Learning Coach gives one-on-one help and checks understanding [3][4][7]. Its sample lessons cover science, social studies, language arts and biology, but no math, so we could not see what its math shows after a wrong answer [10]. AMP shows right or wrong, the correct answer and worked steps after every problem, with a one-step hint and a written lesson there before the learner answers.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. At Connections Academy the unit is the course: daily lessons and assignments set out in a planner [5], lessons in text, video and audio, and live LiveLesson classes where teachers reinforce challenging concepts [7]. Across 55 studies, worked examples improve performance in math [14].",
       "research": [
-        "feedback",
+        "lessons",
         "hints",
-        "lessons"
+        "films"
       ]
     },
     {
-      "title": "A published mastery rule and review schedule",
-      "body": "Connections Academy's teachers evaluate student work and use assessment results to adjust support, alongside benchmark assessments and state tests [3]. We found no mastery rule, automatic return to earlier skills or scheduled review of math on the pages we read [3][9]. In AMP a skill is strong when four of the last five answers are right without help, and two misses in a row send practice back to what it builds on. Each learned skill comes back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics.",
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps. At Connections Academy, teachers evaluate student work, and the Learning Coach gives one-on-one help and checks understanding [3][4]. Across 40 studies of computer-based feedback, in a mix of ages and subjects, feedback that explains had the largest average effect [13].",
       "research": [
-        "mastery",
+        "feedback"
+      ]
+    },
+    {
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus on one map of skills. A learner further along in geometry than in fractions gets work at both levels, and repeated misses send practice back to what a skill builds on. Connections Academy teaches by course and grade. It places students in courses from their academic records, and advanced younger students may work at a higher grade level when appropriate [3][6].",
+      "research": [
+        "level",
+        "mastery"
+      ]
+    },
+    {
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. A Connections Academy student follows the course's daily lessons and assignments [5], with benchmark assessments during the year and state tests [3]. We found no scheduled return to earlier math in the pages we read [3][5][9]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [12].",
+      "research": [
         "review"
       ]
     },
     {
-      "title": "Paper made for the learner, not the course",
-      "body": "Elementary students at Connections Academy spend about 70% of their school day offline, and the school provides physical textbooks and workbooks [2][5]. AMP prints unlimited workbooks built from the learner's own answers, each with a worked answer key. Results entered from paper count toward the learner's level."
+      "title": "What the adult does",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. Connections Academy asks a Learning Coach, a parent or trusted adult, to oversee schoolwork about 5 to 6 hours a day in elementary school and 2 to 3 hours in middle and high school. The coach structures the day, gives one-on-one help and checks understanding [4]."
     }
   ],
   "rows": {
-    "price": "Tuition-free, paid with state tax dollars. Families pay for supplies, optional field trips and internet [2][3].",
-    "buyers": "Families, by enrolling a child full time in their state's Connections Academy school [1][5]. Most schools have enrollment deadlines [3].",
-    "range": "Full elementary, middle and high school courses, kindergarten through grade 12, with honors, AP and dual enrollment at most schools [6].",
-    "start": "Students are placed in courses from their academic records [3].",
-    "teaching": "Certified teachers, live online LiveLesson classes, and lessons with text, video and audio, plus physical textbooks [2][3][7].",
-    "next": "The course's daily lessons and assignments, shown in a planner [5]. No adaptive practice described on the pages we read [3][9].",
-    "mastery": "Teachers evaluate student work; benchmark assessments and state tests [3]. No mastery rule found on the pages we read [3][9].",
-    "review": "No scheduled review of earlier skills found on the pages we read [3][9].",
-    "print": "Physical textbooks and workbooks provided by the school. Elementary work is about 70% offline [2][5].",
-    "adult": "A Learning Coach oversees schoolwork: about 5 to 6 hours a day in elementary, 2 to 3 in middle and high school [4].",
-    "reports": "A gradebook of grades and assessments, and a planner of daily lessons [5]. Grades and diplomas from an accredited school [3][8].",
-    "evidence": "No entry in Evidence for ESSA or the What Works Clearinghouse [12][13]. Its published figures are parent satisfaction survey results [1][16]."
+    "range": "Kindergarten through grade 12: full elementary, middle and high school courses, math among them [1][6].",
+    "start": "Students are placed in courses using their academic records [3].",
+    "teaching": "Certified teachers in live online LiveLesson classes, lessons in text, video and audio, and physical textbooks [2][3][7].",
+    "next": "The course's daily lessons and assignments, set out in a planner [5].",
+    "mastery": "Teachers evaluate student work. Benchmark assessments during the year, and state tests [3].",
+    "review": "None found in the pages we read [3][5][9].",
+    "print": "Textbooks and workbooks from the school. Elementary work is about 70% offline [2][5].",
+    "adult": "A Learning Coach, a parent or trusted adult, structures the day, gives one-on-one help and checks understanding [4].",
+    "reports": "A gradebook of grades and assessments, and a planner of daily lessons [5].",
+    "evidence": "No study found on its curriculum or accreditation pages, in Evidence for ESSA or in What Works Clearinghouse intervention reports [6][8][10][11]."
   },
   "theirs": [
-    "Connections Academy is a tuition-free online public school program run by Connections Education, part of Pearson [1][8]. Its schools are run state by state, for kindergarten through grade 12 [1]. Families enroll a child full time, and the state pays with tax dollars [2]. Pearson reports more than 100,000 students [1].",
-    "Students learn about 30 hours a week. Elementary students spend about 30% of the school day on a computer and 70% offline; middle school is about 75% online and high school 90% [5]. The day mixes live LiveLesson classes, where teachers reinforce hard concepts and students join by microphone and chat, with independent lessons and assignments [3][7]. A parent or other trusted adult serves as Learning Coach, and certified teachers teach and evaluate the work [3][4].",
-    "Math is one subject in a full curriculum that the school says comes from leading educational publishers and meets state standards. Course choices vary by school [3]. The pages we read do not name the math courses or their publisher. Pearson also runs Pearson Online Academy, a separate tuition-based private online school [17]. This page does not compare it."
+    "Connections Academy is a full-time online public school program from Connections Education, part of Pearson. Its schools run state by state, for kindergarten through grade 12 [1]. Math is one subject in a full curriculum that the school says meets state standards. Course choices vary by school [3].",
+    "Students learn about 30 hours a week. Elementary students spend about 30% of the school day on a computer and 70% offline; middle school is about 75% online and high school 90% [5]. The day mixes live LiveLesson classes, where teachers reinforce challenging concepts, with independent lessons and assignments shown in a planner [5][7]. A parent or other trusted adult serves as Learning Coach, and certified teachers teach and evaluate the work [3][4]."
   ],
   "credit": [
-    "Tuition-free. The state pays; families cover supplies, optional field trips and internet [2]. AMP costs $599 a year or $59 a month for the first child.",
-    "Certified teachers and live online classes [3][7]. AMP has no live teachers or tutors.",
-    "A whole school: full courses from kindergarten through grade 12, with honors, AP and dual enrollment at most schools [6]. AMP is only math and ends at precalculus.",
-    "Grades and a diploma. Connections Education is accredited by Cognia, and its NCAA-approved courses are listed [3][8]. AMP gives no course credit or transcripts.",
-    "Special education and IEP support, and a stated commitment to WCAG 2.2 Level AA accessibility with published conformance reports [1][11]. AMP has no read-aloud and no published conformance report."
+    "Certified teachers, and live online classes where they reinforce challenging concepts [3][7].",
+    "A Learning Coach at home gives one-on-one help and checks understanding [4]."
   ],
   "evidence": {
     "theirs": [
-      "Connections Academy's curriculum and accreditation pages carry no study or data on how much its students learn, in math or any subject [6][8]. Connections Academy has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [12][13].",
-      "Its headline numbers measure satisfaction. The home page says 97% of parents say their child is receiving a quality education, based on its 2026 parent survey [1]. The reviews page names the survey but gives no sample size or method [16]."
+      "We found no study of how much Connections Academy students learn, in math or any subject, on its curriculum or accreditation pages, in Evidence for ESSA or in What Works Clearinghouse intervention reports [6][8][10][11]."
     ],
     "ours": [
-      "AMP's rules for math come from findings that have held up. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on a test about a month later, against 38% for practice in blocks. The test was the researchers' own [14]. Across 40 studies of computer-based feedback, in a mix of ages and subjects, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and right-or-wrong only 0.05 [15]. AMP builds both into every session: review mixed across topics on a schedule, and worked steps after every answer. We expect a learner who meets these rules at every problem to learn more math, at home or beside a full-time school. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12]. A meta-analysis of 40 studies of computer-based feedback, across ages and subjects, found the largest effects for feedback that explains [13]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "You want a full-time, tuition-free public school with certified teachers and live classes.",
-      "Your child needs grades and a diploma from an accredited school.",
-      "Your child needs special education or IEP services from a school.",
-      "Your child needs AP courses or dual enrollment."
+      "You want a full-time school with live classes and teachers who evaluate the work."
     ],
     "amp": [
-      "You teach at home and want math that places, checks and schedules review without you planning it.",
-      "Your child stays in their school and needs more math at the right level.",
-      "Your child is ahead in one part of math and behind in another.",
-      "You want every miss explained with worked steps, on screen and in the workbook answer key.",
-      "You want to start this week, without waiting for an enrollment window."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your child is at different levels in different parts of math.",
+      "You want math the adult does not have to plan, teach or grade."
     ]
   },
   "questions": [
     {
-      "question": "Is Connections Academy free?",
-      "answer": "Tuition is free: the school is paid for with state tax dollars. Families pay for supplies, optional field trips and internet [2]. AMP costs $599 a year or $59 a month for the first child, and the first 100 answers are free."
+      "question": "How is AMP different from Connections Academy?",
+      "answer": "Connections Academy is a full-time online public school. A learner follows a course's daily lessons and live classes, and teachers evaluate the work, with benchmark assessments and state tests [3][5]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is AMP a replacement for an online school?",
-      "answer": "No. AMP is math only, with no live teachers, other subjects, transcripts or diplomas. A family that homeschools on its own can use AMP as its math, and any student can use it beside school."
+      "question": "Does Connections Academy work?",
+      "answer": "We found no study of how much its students learn, on its curriculum or accreditation pages, in Evidence for ESSA or in What Works Clearinghouse intervention reports [6][8][10][11]."
     },
     {
-      "question": "My child is enrolled in Connections Academy. Can we use AMP too?",
-      "answer": "Yes. AMP is a separate program a family buys directly, and it runs in any current browser. It places the learner within the first 24 problems and keeps a level in each of 14 strands. It does not replace the school's math course or its grades."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever school they attend."
     }
   ],
   "sources": [
@@ -149,14 +145,6 @@
       "url": "https://www.connectionsacademy.com/program/learning-portal/"
     },
     {
-      "title": "Sample lessons (Connections Academy)",
-      "url": "https://www.connectionsacademy.com/program/sample-lessons/"
-    },
-    {
-      "title": "Accessibility statement (Connections Academy)",
-      "url": "https://www.connectionsacademy.com/accessibility/"
-    },
-    {
       "title": "Evidence for ESSA search: Connections Academy",
       "url": "https://www.evidenceforessa.org/?s=connections+academy"
     },
@@ -165,20 +153,16 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment",
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
       "url": "https://doi.org/10.3102/0034654314564881"
     },
     {
-      "title": "Reviews and parent survey (Connections Academy)",
-      "url": "https://www.connectionsacademy.com/about/reviews/"
-    },
-    {
-      "title": "Pearson Online Academy",
-      "url": "https://www.pearsononlineacademy.com/"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     }
   ]
 }

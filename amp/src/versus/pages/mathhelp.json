@@ -2,115 +2,97 @@
   "slug": "mathhelp",
   "name": "MathHelp.com",
   "category": "courses",
-  "checked": "2026-11-21",
-  "benefit": "Practice that finds the level",
-  "line": "MathHelp.com teaches by video, lesson by lesson. AMP picks every problem from the learner's last answers.",
-  "description": "AMP vs MathHelp.com: video courses from classroom teachers, lesson by lesson, or practice that finds the level and picks each problem from the last answer.",
-  "verdict": "MathHelp.com teaches 4th grade math through Algebra 2 with short videos from classroom teachers, and its reviewers praise how clear they are [10][11]. Its courses are chapters of lessons a learner works through [5]. AMP picks every problem from the learner's answers, sends misses back to what a skill builds on, and brings old skills back on a schedule, from counting through precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "MathHelp.com teaches lesson by lesson, by video. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs MathHelp.com: MathHelp.com teaches by video lesson, then quizzes. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "MathHelp.com teaches in lessons, each built around a teacher's video on one concept, then guided practice, then quizzes and tests, in a course chosen by grade or subject [3][5]. In AMP, the problem is the unit and assessment is continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Every problem is chosen from the last answer",
-      "body": "MathHelp.com's courses are chapters of lessons, such as 116 lessons in 12 chapters for Algebra 1 [5], and learners set their own pace inside each lesson [4]. We found no problem-by-problem adjustment of difficulty in its published materials. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and picks every next problem from the learner's answers: new work, a prerequisite, or review.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In MathHelp.com the unit is the lesson. Each one is built around a short video on a single concept from a classroom teacher, followed by guided practice with audio explanations [4][5][9]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the data are correlational [12].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. In MathHelp.com the family picks a course by grade or subject [3]. The learner works through its chapters of lessons, setting their own pace inside each lesson, with quizzes and tests after lessons [4][5].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Misses send practice back to earlier skills",
-      "body": "MathHelp.com sells one course per grade or subject, starting at 4th grade math [1][3]. A testimonial on its Algebra 1 page mentions a diagnostic quiz, and the page does not say what it does [5]. We found no automatic return to earlier skills. In AMP, two misses or helped answers in a row on a skill send practice to the skills it builds on, whatever grade they come from.",
-      "research": [
-        "mastery",
-        "level"
-      ]
-    },
-    {
-      "title": "Earlier lessons return without anyone planning it",
-      "body": "We found no scheduled review of earlier lessons in MathHelp.com's course pages or FAQ [5][9]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test about six weeks later, against 38% for practice in blocks [15].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. MathHelp.com's courses are chapters of lessons, each on a single concept, with quizzes and tests after them [5]. We found no scheduled return to earlier lessons in its course pages or answers to common questions [5][8]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks. The mixed practice was also spaced [11].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Learned means right without help",
-      "body": "MathHelp.com lessons lead to quizzes and tests [5], and we found no stated rule for when a skill counts as learned [9]. AMP marks a skill Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded, but it does not count toward mastery or move the level.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus on one map of skills. A learner further along in geometry than in fractions gets work at both levels, and repeated misses send practice back to what a skill builds on. MathHelp.com has one course for each grade or subject, from 4th grade math through Algebra 2, and the family chooses which one a learner takes [1][3].",
       "research": [
-        "mastery",
-        "hints"
+        "level",
+        "mastery"
       ]
-    },
-    {
-      "title": "From counting to precalculus, and on paper",
-      "body": "MathHelp.com's school courses start at 4th grade math and end at Algebra 2 [1]. AMP runs from counting in kindergarten through precalculus on one map of 336 skills. It prints unlimited workbooks made for each learner, each with a worked answer key, and results entered from paper count toward the level. We found no workbook product on MathHelp.com's course pages [5][8]."
-    },
-    {
-      "title": "A published price and a 30-day refund",
-      "body": "MathHelp.com shows no prices on its home, homeschool, course or FAQ pages, and its FAQ says it offers no pro-rated refunds or credits for partially used subscription periods [1][3][5][9]. AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each more, with the first 100 answers free and no card. A personal payment is refunded in full within 30 days, no reason needed."
     }
   ],
   "rows": {
-    "buyers": "Families and schools. Sign-up offers Homeschooling or Tutoring [6]. Schools email the sales team for licenses [1].",
-    "range": "4th, 5th and 6th grade math, Pre-Algebra, Algebra 1, Geometry and Algebra 2. Also college math and over 100 test-prep courses [1][2].",
+    "range": "4th grade math through Algebra 2, one course per grade or subject. Also college math and test-prep courses [1][2].",
     "start": "The family picks a course by grade or subject [3]. A testimonial on the Algebra 1 page mentions a diagnostic quiz; the page does not describe it [5].",
-    "teaching": "A short video on one concept from a classroom teacher, then guided practice with audio explanations [4][5][10].",
-    "next": "The course's chapters and lessons, at the learner's own pace [4][5]. No problem-by-problem adjustment found in its published materials.",
-    "mastery": "Quizzes and tests after lessons [5]. No mastery rule found in its published materials [9].",
-    "review": "No scheduled review of earlier lessons found in its published materials [5][9].",
-    "print": "No workbook made for the individual learner found on its course pages [5][8].",
-    "adult": "Little parent instruction needed, the company says [7].",
-    "reports": "A grade management system, with grade reports that can be exported or printed [9].",
-    "evidence": "No outcome study found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [7][13][14]."
+    "teaching": "A short video on one concept from a classroom teacher, then guided practice with audio explanations [4][5][9].",
+    "next": "The course's chapters of lessons. The learner sets the pace inside each lesson [4][5].",
+    "mastery": "Quizzes and tests after lessons [5].",
+    "review": "None found in the pages we read [5][8].",
+    "adult": "Picks the course [3]. Parents need to give little instruction, the company says [6].",
+    "reports": "A grade management system, with grade reports to export or print [8].",
+    "evidence": "No outcome study found on its site or in Evidence for ESSA [6][10]."
   },
   "theirs": [
-    "MathHelp.com sells online math courses to families and schools. Mike Maggart, a high school math teacher, founded it with his partner Charlie Hermes, and it began as Algebra 1 lessons on CDs [2]. Its school-age courses run from 4th grade math through Pre-Algebra, Algebra 1, Geometry and Algebra 2. It also sells college math and over 100 test-prep courses, among them the SAT, ACT, GED, Praxis and TSI [1][2]. This page compares the school-age courses.",
-    "Each lesson is built around a short video on a single concept, taught by one of its classroom teachers, Mr. Maggart among them [5][10]. Guided practice with audio explanations follows, then quizzes and tests [4][5]. Algebra 1 has 116 lessons in 12 chapters. Geometry has 85 lessons in 10 chapters, including proofs [5][8].",
-    "The company calls its courses a \"stand-alone curriculum, so no other material is required\" [7]. It says parents do not need to provide much instruction [7]. Families sign up for homeschooling or tutoring [6], pay by the month or the year, and can export or print grade reports [9]."
+    "MathHelp.com is a set of online math courses. Mike Maggart, a high school math teacher, founded it with his partner Charlie Hermes, and it began as Algebra 1 lessons on CDs [2]. Its school courses run from 4th grade math through Pre-Algebra, Algebra 1, Geometry and Algebra 2, and it also has college math and test-prep courses [1][2]. This page compares the school courses.",
+    "A learner works through a course by chapters of lessons, setting their own pace inside each lesson [4][5]. Each lesson is built around a short video on a single concept, taught by a classroom teacher, then guided practice with audio explanations, then quizzes and tests [4][5][9]. The company calls its courses a \"stand-alone curriculum, so no other material is required\" [6]."
   ],
   "credit": [
-    "A teacher on screen. Each lesson centers on a short video from a named classroom teacher [5][10], and Trustpilot reviewers rate MathHelp.com 4.9 out of 5 across 111 reviews and most often praise how clear it is [11]. AMP's films are animated, with no teacher on camera.",
-    "Complete courses in a familiar shape: Algebra 1 in 116 lessons, Geometry in 85, with proofs [5][8].",
-    "Over 100 test-prep courses, including the GED, Praxis, TSI and ALEKS placement, plus college math [1][2]. AMP has an SAT Math focus and no courses for those other exams.",
-    "A parent who is unsure of upper-level math can hand the teaching over, by the company's account [7]."
+    "A classroom teacher explains each concept on video, one idea at a time [5][9].",
+    "Guided practice comes with audio explanations [4].",
+    "Complete courses through Algebra 2, with proofs in Geometry [1][7]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of MathHelp.com's courses. We found no research page on its site, and its page for homeschool parents describes the courses without citing studies [3][7]. MathHelp.com has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report, as of November 2026 [13][14].",
-      "Its testimonials page lists score gains that customers report, mostly on adult placement and test-prep exams, with a few parents describing school courses [12]. These are accounts shared on the company's own site, not studies. Not finding a study is not evidence that the courses fall short. It means the choice between the two rests on how each is built."
+      "We found no outcome study of MathHelp.com on its site or in Evidence for ESSA [6][10]."
     ],
     "ours": [
-      "MathHelp.com builds each lesson around a teacher's video [5]. AMP starts with a problem and brings the hint, the lesson and the worked steps to it. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages; the authors estimate the benefit of extra doing at more than six times that of extra watching or reading, from correlational data [16]. Mixed, spaced practice beat practice in blocks 62% to 38% on the researchers' own test in a randomized trial with 787 seventh graders [15]; the mixed practice was also spaced, so the result combines the two. We expect a program that starts with doing and brings old skills back on a schedule to help a learner keep more of what they learn. That is our bet.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks. The mixed practice was also spaced, so the result combines the two [11]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages, from correlational data [12]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your student is between 4th grade and Algebra 2 and learns best from a teacher explaining each idea on video [5][10].",
-      "You want a complete Algebra 1 or Geometry course, chapter by chapter, with proofs [5][8].",
-      "Someone in your home is preparing for the GED, Praxis, TSI or ALEKS placement test [1]."
+      "Your child learns best from a teacher explaining each idea on video, one course at a time."
     ],
     "amp": [
-      "You want every problem chosen from your child's answers, in each part of math.",
-      "Your child is younger than 4th grade, or needs practice on skills from earlier grades.",
-      "You want earlier skills to come back on a schedule, without planning it.",
-      "You want printed practice made for your learner, with a worked answer key.",
-      "You want the price in plain view and a full refund within 30 days."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math.",
+      "Your learner needs math before 4th grade or after Algebra 2."
     ]
   },
   "questions": [
     {
-      "question": "How much does MathHelp.com cost compared with AMP?",
-      "answer": "MathHelp.com shows no prices on its home, homeschool or FAQ pages; it offers monthly and yearly subscriptions and gives no pro-rated refunds for unused time [1][3][9]. AMP is $599 a year or $59 a month for the first child, $399 or $39 for each more, with the first 100 answers free and a full refund within 30 days. That price covers counting through precalculus, with the level found, every problem chosen and review scheduled for you."
+      "question": "How is AMP different from MathHelp.com?",
+      "answer": "MathHelp.com teaches by lesson: a teacher's video on one concept, then guided practice, then quizzes and tests, in a course the family picks [3][5]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Does AMP have video lessons like MathHelp.com?",
-      "answer": "Not a teacher on camera. AMP has narrated, animated lesson films for a growing share of problem types, and a hint, a written lesson and worked steps for every one. MathHelp.com builds every lesson around a teacher's video [5][10]."
+      "question": "Does MathHelp.com work?",
+      "answer": "We found no outcome study of MathHelp.com on its site or in Evidence for ESSA [6][10]."
     },
     {
-      "question": "Can we use AMP alongside MathHelp.com?",
-      "answer": "Yes. MathHelp.com can teach a course by video [5] while AMP places the learner within the first 24 problems and keeps a level in each part of math, sends practice back to earlier skills after misses and brings old skills back on a schedule."
-    },
-    {
-      "question": "Is AMP better than MathHelp.com?",
-      "answer": "We think so for a learner who needs the next problem chosen from each answer, and this page shows how the two are built. We found no outcome study of MathHelp.com [13][14]. Our evidence section says where AMP's own evidence stands."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -135,10 +117,6 @@
       "url": "https://www.mathhelp.com/homeschool-algebra-1-curriculum/"
     },
     {
-      "title": "4th grade math help (MathHelp.com)",
-      "url": "https://www.mathhelp.com/4th-grade-math-help/"
-    },
-    {
       "title": "Why it's hard for parents to teach upper-level math courses at home (MathHelp.com)",
       "url": "https://www.mathhelp.com/homeschool-hard-for-parents-to-teacher-upper-level-math-courses-at-home/"
     },
@@ -155,27 +133,15 @@
       "url": "https://www.mathhelp.com/our_teachers/"
     },
     {
-      "title": "MathHelp.com reviews (Trustpilot)",
-      "url": "https://www.trustpilot.com/review/mathhelp.com"
-    },
-    {
-      "title": "Testimonials (MathHelp.com)",
-      "url": "https://www.mathhelp.com/math-help-testimonials/"
-    },
-    {
       "title": "Evidence for ESSA, search for MathHelp",
       "url": "https://www.evidenceforessa.org/?s=mathhelp"
     },
     {
-      "title": "What Works Clearinghouse intervention reports",
-      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
-    },
-    {
-      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Koedinger et al. (2015), Learning is not a spectator sport",
+      "title": "Koedinger, Kim, Jia, McLaughlin & Bier (2015), Learning is not a spectator sport: Doing is better than watching for learning from a MOOC",
       "url": "https://doi.org/10.1145/2724660.2724681"
     }
   ]

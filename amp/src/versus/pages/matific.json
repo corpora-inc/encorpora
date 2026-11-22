@@ -2,122 +2,157 @@
   "slug": "matific",
   "name": "Matific",
   "category": "games",
-  "checked": "2026-11-21",
-  "benefit": "A level for each part of math",
-  "line": "Matific keeps one learning level per child. AMP keeps one in each of 14 strands and schedules review.",
-  "description": "AMP vs Matific: Matific's math games around one learning level, against AMP's 14 strand levels, unaided mastery rule, scheduled review and precalculus.",
-  "verdict": "Matific turns math from kindergarten to grade 9 into short games, offers them in many languages, and has a positive 2017 study in grades 2 and 3 [1][3][5]. It keeps one learning level for each child and marks a topic mastered when a student is judged likely to earn 4 or more stars [11][12]. AMP keeps a level in each of 14 strands, counts only answers given without help, and brings every learned skill back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Matific teaches in short games at one learning level. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Matific: Matific teaches in short games at one learning level. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Matific teaches through short game-like activities on one concept, keeps one learning level for each student, and goes back to earlier grades when it detects a gap [2][3]. In AMP, assessment, teaching and review are continuous. Every answer updates the learner's level in that part of math and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Learned means right without help",
-      "body": "Matific's mastery report marks a topic Mastered when a student is judged likely to earn 4 or more stars on its activities, and the report is in beta [12]. Stars come from performance within each activity [13]. In AMP a skill is Strong at four of the last five answers right without help, and an answer after a hint never counts. The rule is in public source code that anyone can read.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. Matific starts a student at a learning level that is, by default, the grade of the class, and a parent can change it [3][6]. Teachers can set assessments in place of its automatic placement test [7].",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "The problem is the unit",
+      "body": "In AMP, each problem carries what a learner needs: a hint that gives the first step and never the answer, a written lesson with a worked example, a film where there is one, the worked answer after it is answered, and links to the skills it builds on and leads to. In Matific the unit is the episode: a game-like activity of 5 to 15 minutes on one concept [2], about five questions that rise in challenge [4]. Students earn stars for their performance in each activity [5]. Across 55 studies, worked examples improve performance in math [18].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, so a learner further along in one part than another gets work at both levels. Matific keeps one learning level for each student [3]. On its Adventure Island, Matific's AI chooses activities around that level, to close gaps or add challenge [3][8].",
+      "research": [
+        "level"
+      ]
+    },
+    {
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Matific's mastery report, which is in beta, marks a topic mastered when the student is judged likely to earn 4 or more stars on its activities [11]. A student moves to the next grade after completing all the material for the current one [3].",
       "research": [
         "mastery",
         "hints"
       ]
     },
     {
-      "title": "A level for each part of math",
-      "body": "Matific keeps one learning level for each student, by default the grade of the class [11]. When its algorithm detects a gap it draws work from earlier grades, and a student moves to the next grade after completing all material for the current one [11]. AMP keeps a level in each of 14 strands and picks every problem from the learner's answers: new work, a prerequisite, or review. A learner at grade 3 in fractions and grade 6 in geometry practices at both levels.",
-      "research": [
-        "level"
-      ]
-    },
-    {
-      "title": "Review comes on a schedule, not only after gaps",
-      "body": "Matific's parent page says it reinforces prior knowledge [2], and its algorithm returns to earlier grades when it detects a gap [11]. AMP does not wait for a gap. It brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. Mixed, spaced practice beat practice in blocks in a randomized trial with 787 seventh graders [10].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Matific goes back to work from earlier grades when its algorithm detects a gap [3]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [19].",
       "research": [
         "review"
       ]
-    },
-    {
-      "title": "It keeps going past grade 9",
-      "body": "Matific's activities run from kindergarten through grade 9, for ages 4 to 15 [1]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and precalculus in one program: 336 skills on one prerequisite map. A learner who is ahead in one part of math moves up in that strand alone, without waiting for a grade."
-    },
-    {
-      "title": "Paper made for one learner",
-      "body": "Matific's worksheets are printable resources in its activity library, and not all of them can be printed yet [16]. AMP builds each workbook from one learner's own record, as many as the family wants, each with an answer key that shows the worked steps. Results entered from paper count toward the learner's level."
     }
   ],
   "rows": {
-    "price": "Yearly plan US$79.00, billed every 12 months; monthly plan US$9.99 a month; 7-day free trial first [2]. Schools by quote [3].",
-    "buyers": "Families and schools [2][3]. Its site says it is distributed by Heinemann [1].",
     "range": "Kindergarten through grade 9, ages 4 to 15 [1].",
-    "start": "One learning level, by default the class grade [11]; parents can change it [19]. Teacher-set assessments replace its automatic placement test [17].",
-    "teaching": "Interactive mini-games in episodes of 5 to 15 minutes on one concept [5], with instructions, hints and feedback [15].",
-    "next": "Adventure Island: activities its AI chooses to close gaps or add challenge [14]. Training Zone: the student picks the skill [18].",
-    "mastery": "A topic counts as Mastered when the student is judged likely to earn 4 or more stars on its activities [12].",
-    "review": "Draws on earlier grades when its algorithm detects a gap [11]. No fixed review schedule found in its published materials [2][11].",
-    "print": "Printable worksheets in its activity library; not all can be printed yet [16].",
-    "adult": "Teachers assign episodes and worksheets [5]. In a sponsored case study, results depended on how teachers built it into lessons [6].",
-    "reports": "A parent report and dashboard [2]. For teachers, real-time analytics, an AI Teacher Assistant [3] and a mastery report in beta [12].",
-    "evidence": "2017 quasi-experiment, grades 2 and 3: effect size 0.19 on a district test, low-use classes excluded [5]. Unrated by Evidence for ESSA [7]."
+    "start": "One learning level, by default the grade of the class [3]. A parent can change it [6]. Teachers can set assessments in place of its placement test [7].",
+    "teaching": "Game-like activities of 5 to 15 minutes on one concept [2], with instructions, hints and feedback [10].",
+    "next": "On Adventure Island, its AI chooses activities to close gaps or add challenge [8]. In the Training Zone, the student picks the skill [9].",
+    "mastery": "A topic counts as mastered when the student is judged likely to earn 4 or more stars on its activities [11].",
+    "review": "Work from earlier grades when its algorithm detects a gap [3].",
+    "print": "Printable worksheets in its activity library; not all can be printed yet [12].",
+    "adult": "Teachers assign activities and worksheets [2]. In a case study, results depended on how teachers built it into lessons [4].",
+    "reports": "A parent report and dashboard [13]. For teachers, real-time analytics [14] and a mastery report, in beta [11].",
+    "evidence": "One 2017 quasi-experiment, grades 2 and 3: effect size 0.19 on a district test, low-use classes excluded [2]. No Evidence for ESSA rating [16]."
   },
   "theirs": [
-    "Matific is a game-based math program for ages 4 to 15, kindergarten through grade 9 [1]. Its site says it is distributed by Heinemann and claims learners in more than 70 countries [1]. Families subscribe through its parent page after a 7-day free trial, and schools buy through a consultant [2][3].",
-    "Work comes in episodes: game-like activities of 5 to 15 minutes on one concept [5], each about five questions that rise in challenge [6]. On Adventure Island, Matific's AI picks the next activities around the child's learning level [11][14]. In the Training Zone, students choose a skill and set the difficulty [18]. Children earn stars for their performance in each activity [13], and the parent page lists a parent report and dashboard [2].",
-    "Matific also offers a financial literacy program and an AI assistant for teachers [1][3]. This page compares the core math program."
+    "Matific is a game-based math program for ages 4 to 15, kindergarten through grade 9 [1]. Work comes in episodes: game-like activities of 5 to 15 minutes on one concept [2], each about five questions that rise in challenge [4]. Students earn stars for their performance in each activity [5].",
+    "Matific keeps one learning level for each student, by default the grade of the class [3]. On Adventure Island, its AI picks the next activities around that level [3][8]. In the Training Zone, students choose a skill and set the difficulty [9]."
   ],
   "credit": [
-    "Learning through play: short game-based episodes, built-in rewards, and a start at age 4 [1][2][5]. AMP has no games, avatars or streaks.",
-    "Many languages. Its teacher page claims more than 40 [3]. AMP is in English only.",
-    "A study with a comparison group: a 2017 quasi-experiment in Virginia found a positive effect overall, in grades 2 and 3 together [5].",
-    "Support for school use: activities teachers assign, lesson tips, real-time analytics and an AI Teacher Assistant [3][5].",
-    "Apps on the App Store, Google Play and Microsoft Store, with offline play through the app [2]. AMP runs in a browser and needs a connection."
+    "Learning through play, in short activities, from age 4 [1][2].",
+    "Instructions, hints and feedback inside each activity [10].",
+    "A study with a comparison group found a positive effect in grades 2 and 3 [2]."
   ],
   "evidence": {
     "theirs": [
-      "The Matific study with a comparison group is a 2017 evaluation by SEG Measurement in Hampton City Schools, Virginia [5]. About 1,477 second and third graders took part, and 1,056 with fall and spring scores were analysed, in classes that used Matific and classes that did not, on a 20-item district test. It was not randomized. Classes that completed fewer than 80 episodes were dropped from the Matific group, so only classes that met a usage target were counted.",
-      "Adjusted scores were 77.23 for the Matific classes and 73.67 for the others, an effect size of 0.19 overall [5]. The report gives the grade 2 effect as 0.24 in one place and 0.19 in another, and the grade 3 effect as 0.13 or 0.14, and it reports grade 3 as significant only at the 10% level [5]. The report does not say who paid for it, and Matific hosts it. Matific's research page presents the result under the heading three months of extra learning, without saying how that figure was reached [4].",
-      "A case study by Attard of Western Sydney University, sponsored by Slate Science, followed 16 teachers in eight primary schools with topic tests before and after [6]. Students gained 34% of the available marks. There was no comparison group, and the report says it cannot say how much Matific caused the gain [6]. Matific's home page reports this as a 34% improvement in results [1]. Its research page also lists pilots, teacher surveys and small classroom studies from many countries, several with no comparison group [4].",
-      "Matific's research page names no ESSA tier [4]. Evidence for ESSA lists it without a rating: \"No studies met inclusion requirements\" [7]. We found no What Works Clearinghouse intervention report on Matific (checked November 2026) [8]."
+      "The one Matific study with a comparison group we found is a 2017 evaluation by SEG Measurement in Hampton City Schools, Virginia [2]. About 1,477 second and third graders took part, and 1,056 with fall and spring scores were analysed, in classes that used Matific and classes that did not, on a 20-item district test. It was not randomized. Classes that completed fewer than 80 episodes were dropped from the Matific group. Adjusted scores were 77.23 for the Matific classes and 73.67 for the others, an effect size of 0.19 overall. The grade 3 effect was significant only at the 10% level [2]. The report does not say who paid for it, and Matific hosts it.",
+      "A case study by Attard of Western Sydney University, sponsored by Slate Science, followed 16 teachers in eight primary schools with topic tests before and after [4]. Students gained 34% of the available marks. There was no comparison group, and the report says it cannot say how much of the gain Matific caused [4]. Matific's research page also lists pilots, teacher surveys and small classroom studies from many countries, several with no comparison group [15].",
+      "Evidence for ESSA lists Matific without a rating: \"No studies met inclusion requirements\" [16]. We found no What Works Clearinghouse intervention report on Matific [17]."
     ],
     "ours": [
-      "Two findings bear most on this choice. Worked examples in math averaged an effect of g = 0.48 across 55 studies [9], and AMP pairs every problem type with one and shows worked steps after every answer. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [10]. AMP schedules that review for every learner. We think a program built on these methods will show it in outcomes, and we have committed in public to measuring that.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Worked examples improve mathematics performance, with an average effect of g = 0.48 across 55 studies [18]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [19]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your child is 4 to 7 and learns best through play.",
-      "You need math in a language other than English.",
-      "You need an app that works offline.",
-      "Your school wants a game-based supplement that teachers assign, with lesson tips and live analytics."
+      "Your child is young and learns best through short math games."
     ],
     "amp": [
-      "You want a clear line for learned: four of the last five right without help.",
-      "You want a level in each part of math, and every miss explained step by step.",
-      "You want review of old skills to happen without anyone planning it.",
-      "Your learner is heading into algebra, geometry or precalculus.",
-      "You want printed practice made for your child, with an answer key that shows the work."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or needs one program from counting through precalculus.",
+      "You want printed practice made from your child's own record, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "How much does Matific cost compared with AMP?",
-      "answer": "Matific's U.S. parent page lists a yearly plan at US$79.00, billed every 12 months, and a monthly plan at US$9.99, after a 7-day free trial [2]. AMP costs more: $599 a year or $59 a month for the first child and $399 or $39 for each more, free to start with 100 answers and 5 workbooks and no card, with a full refund within 30 days. For that price AMP finds the level in each strand, chooses every problem, schedules review, prints unlimited workbooks and runs through precalculus."
+      "question": "How is AMP different from Matific?",
+      "answer": "Matific teaches in short game-like activities at one learning level for each student, and goes back to earlier grades when it detects a gap [2][3]. AMP has no separate test: every answer sets the next problem in that part of math, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is Matific or AMP better for a young child?",
-      "answer": "Matific starts at age 4 and teaches through play [1][5], and AMP has no games. AMP starts at counting, with narrated films for many early skills and problems a child taps or builds, but it does not read problems aloud."
+      "question": "Does Matific work?",
+      "answer": "Its one study with a comparison group, a 2017 quasi-experiment in grades 2 and 3, found an effect of 0.19 standard deviations on a district test, counting only classes that met a usage target [2]. It was not randomized. Evidence for ESSA lists Matific without a rating [16]."
     },
     {
-      "question": "What does the research on Matific show?",
-      "answer": "Its one study with a comparison group, a 2017 quasi-experiment in grades 2 and 3, found an effect of 0.19 standard deviations overall on a district test, counting only classes that met a usage target [5]. Evidence for ESSA lists Matific without a rating [7]."
-    },
-    {
-      "question": "Does AMP have games like Matific?",
-      "answer": "No. AMP has no games, avatars or streaks. A correct answer without help earns 1 XP and fills part of that skill's bar, and the learner keeps a record of every skill met."
-    },
-    {
-      "question": "Can my child use Matific and AMP together?",
-      "answer": "Yes. They are separate programs. A family can keep Matific's games and use AMP for daily practice that finds the level in each part of math and schedules review."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers and chooses practice from there."
     }
   ],
   "sources": [
     {
       "title": "Matific home page (United States)",
       "url": "https://www.matific.com/us/en-us/home/"
+    },
+    {
+      "title": "SEG Measurement (2017), An Evaluation of Matific Use in Grades Two and Three",
+      "url": "https://www.matific.com/home/resources/media/documents/SEG-matific-study.pdf"
+    },
+    {
+      "title": "What is student learning level? (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15486174-what-is-student-learning-level"
+    },
+    {
+      "title": "Attard, Western Sydney University, Research Evaluation of Matific Mathematics Learning Resources",
+      "url": "https://www.matific.com/home/resources/media/documents/Booklet-Academic_Research_by_Western_Sydney_University.pdf"
+    },
+    {
+      "title": "StarMaster overview (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15485851-starmaster-overview"
+    },
+    {
+      "title": "Change my child's adaptive grade level (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15486139-parent-zone-change-my-child-s-adaptive-grade-level"
+    },
+    {
+      "title": "Assessments in Matific overview (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15485845-assessments-in-matific-overview"
+    },
+    {
+      "title": "Adventure Island (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15486168-adventure-island"
+    },
+    {
+      "title": "Explore activities in the Training Zone (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/17229368-explore-activities-in-the-training-zone"
+    },
+    {
+      "title": "Explore Matific as a Student (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15486149-explore-matific-as-a-student"
+    },
+    {
+      "title": "Student Mastery Report (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15485926-student-mastery-report"
+    },
+    {
+      "title": "Worksheets (Matific Help Center)",
+      "url": "https://help.matific.com/en/articles/15486027-worksheets"
     },
     {
       "title": "Matific for parents (United States)",
@@ -132,14 +167,6 @@
       "url": "https://www.matific.com/us/en-us/home/why-matific/research-and-efficacy/"
     },
     {
-      "title": "SEG Measurement (2017), An Evaluation of Matific Use in Grades Two and Three",
-      "url": "https://www.matific.com/home/resources/media/documents/SEG-matific-study.pdf"
-    },
-    {
-      "title": "Attard, Western Sydney University, Research Evaluation of Matific Mathematics Learning Resources",
-      "url": "https://www.matific.com/home/resources/media/documents/Booklet-Academic_Research_by_Western_Sydney_University.pdf"
-    },
-    {
       "title": "Matific (Evidence for ESSA)",
       "url": "https://www.evidenceforessa.org/program/matific/"
     },
@@ -148,48 +175,12 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
       "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
       "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
-    },
-    {
-      "title": "What is student learning level? (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15486174-what-is-student-learning-level"
-    },
-    {
-      "title": "Student Mastery Report (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15485926-student-mastery-report"
-    },
-    {
-      "title": "StarMaster overview (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15485851-starmaster-overview"
-    },
-    {
-      "title": "Adventure Island (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15486168-adventure-island"
-    },
-    {
-      "title": "Explore Matific as a Student (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15486149-explore-matific-as-a-student"
-    },
-    {
-      "title": "Worksheets (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15486027-worksheets"
-    },
-    {
-      "title": "Assessments in Matific overview (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15485845-assessments-in-matific-overview"
-    },
-    {
-      "title": "Explore activities in the Training Zone (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/17229368-explore-activities-in-the-training-zone"
-    },
-    {
-      "title": "Change my child's adaptive grade level (Matific Help Center)",
-      "url": "https://help.matific.com/en/articles/15486139-parent-zone-change-my-child-s-adaptive-grade-level"
     }
   ]
 }

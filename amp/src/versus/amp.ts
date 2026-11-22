@@ -1,7 +1,10 @@
 /** AMP's own side of every comparison, kept once: the side-by-side table's
  * rows with AMP's cell, the hub's categories, and the hub's own words.
- * Every statement is true of the product on main; the prices come from
- * infra/stripe.ts and tests/versus.test.ts holds the price cell to them. */
+ * Every statement is true of the product on main. The comparisons are about
+ * philosophy and rationale: how each program thinks a learner learns math,
+ * and why AMP's way is better. They are written to last: never price, never
+ * who sells to whom, never one of AMP's settings or counts (validate.ts
+ * refuses price and settings). */
 import type { ResearchComponentId } from "../research/report";
 import type { VersusCategory, VersusRowId } from "./types";
 
@@ -17,64 +20,54 @@ export type VersusRow = {
  * has a cell for. */
 export const versusRows: readonly VersusRow[] = [
   {
-    id: "price",
-    label: "Price",
-    amp: "$599 a year or $59 a month for the first child, then $399 or $39 for each more. Two parents practice free. Full refund within 30 days.",
-  },
-  {
-    id: "buyers",
-    label: "Who can buy",
-    amp: "Families, tutors and schools, directly. Free to start without a card: 100 answers and 5 workbooks. Arizona ESA, Arkansas EFA and New Hampshire EFA funds pay for it.",
-  },
-  {
     id: "range",
     label: "Range",
-    amp: "Counting through precalculus in one program: 336 skills on one map.",
+    amp: "Counting through precalculus in one program, on one map of skills.",
   },
   {
     id: "start",
     label: "Finding the starting point",
-    amp: "No separate test. Placement takes the first 24 problems of practice. After that, every answer adjusts a level in each of 14 strands of math.",
+    amp: "No separate test. Assessment is continuous: AMP places the learner from their first answers, and every answer after updates a level in each part of math.",
   },
   {
     id: "teaching",
     label: "Teaching",
-    amp: "A one-step hint and a written lesson with a worked example for every problem type. Worked steps after every answer. Narrated lesson films.",
+    amp: "At the problem. Each one carries a hint that gives the first step, a lesson with a worked example, a film where there is one, and the worked answer.",
   },
   {
     id: "next",
     label: "What decides the next problem",
-    amp: "AMP chooses every problem from the learner’s answers: new work just within reach, a prerequisite, or review.",
+    amp: "The learner’s own answers: new work just within reach, a gap to close, or an old skill due back.",
   },
   {
     id: "mastery",
-    label: "Mastery",
-    amp: "Four of the last five answers right without help. An answer after a hint doesn’t count. Two misses in a row send practice back to what the skill builds on.",
+    label: "What counts as learned",
+    amp: "Right without help, more than once. An answer after a hint doesn’t count.",
   },
   {
     id: "review",
     label: "Review",
-    amp: "Scheduled. Learned skills come back after six hours, a day, three days, a week, two weeks and a month, mixed with other topics.",
+    amp: "Continuous. Learned skills come back in ordinary practice, at growing intervals, mixed with other math.",
   },
   {
     id: "print",
-    label: "Print",
-    amp: "Unlimited workbooks made for each learner, each with a worked answer key. Results entered from paper count.",
+    label: "Paper",
+    amp: "Workbooks made for each learner, with worked answer keys. Work done on paper counts.",
   },
   {
     id: "adult",
-    label: "What the adult has to do",
-    amp: "Nothing to plan, teach or grade. AMP places the learner, chooses each problem, checks it and schedules review.",
+    label: "The adult’s part",
+    amp: "No planning, teaching or grading. AMP places the learner, chooses each problem, checks it and schedules review.",
   },
   {
     id: "reports",
-    label: "Reports",
-    amp: "The level in every strand with its likely range, skills, time, and the actual problems behind each number. For teachers, who needs them today.",
+    label: "What the adult sees",
+    amp: "A level for each part of math, and the actual problems behind every number.",
   },
   {
     id: "evidence",
     label: "Evidence",
-    amp: "A published rationale (ESSA Tier 4) with the research behind each part, public source code, and outcome studies from 2027, each registered before it starts.",
+    amp: "A published rationale with the research behind each part, public source code, and outcome studies registered before they start.",
   },
 ];
 
@@ -149,16 +142,33 @@ export function versusCategory(id: VersusCategory): VersusCategoryInfo {
 /** The hub's own words (`/versus`). */
 export const versusHub = {
   title: "AMP vs other math programs",
-  lede: "AMP beside each program families and schools weigh it against. What each does well, what it has proven, and why we built AMP differently. Every fact has a source.",
-  /** The strip under the lede: three parts of AMP, each in the research
-   * report's own words and linked to its place there. */
+  lede: "In AMP, assessment, teaching and review are continuous: they happen at every problem. Here is that design beside each of the other programs, with sources.",
+  /** Under the lede: the case for AMP in three claims, each a door to its
+   * research. Principles, never settings: a threshold or an interval can
+   * change, and no reader chooses a program by one. */
   why: {
     heading: "Why AMP",
-    components: [
-      "level",
-      "mastery",
-      "review",
-    ] satisfies ResearchComponentId[] as readonly ResearchComponentId[],
+    reasons: [
+      {
+        title: "Continuous assessment",
+        text: "There is no test day. Every answer updates the learner’s level in that part of math and sets the next problem.",
+        research: "level",
+      },
+      {
+        title: "The problem is the unit",
+        text: "Each problem carries its hint, its lesson, a film where there is one, the worked answer, and the skills it builds on and leads to.",
+        research: "lessons",
+      },
+      {
+        title: "Continuous review",
+        text: "Learned skills come back in ordinary practice, at growing intervals, mixed with other math.",
+        research: "review",
+      },
+    ] satisfies readonly {
+      title: string;
+      text: string;
+      research: ResearchComponentId;
+    }[],
   },
 } as const;
 

@@ -3,111 +3,111 @@
   "name": "Singapore Math",
   "maker": "Singapore Math Inc.",
   "category": "books",
-  "checked": "2026-11-21",
-  "benefit": "Every answer checked",
-  "line": "Singapore Math is printed books an adult places and grades. AMP places, checks and reviews at every answer.",
-  "description": "AMP vs Singapore Math: a respected print method beside a program that checks every answer, finds gaps strand by strand and schedules review.",
-  "verdict": "Singapore Math's books teach a respected method, from objects to pictures to symbols, and its free placement tests give a family a clear way in [1][3]. But a book cannot check an answer, find a gap in one part of math, or bring an old skill back on a schedule; the adult does all three. AMP does them at every problem, from counting through precalculus, and still prints paper.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Singapore Math teaches by half-year book. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Singapore Math: printed books an adult places and checks. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Singapore Math is printed books, a half-year book at a time: the adult reads a placement test to choose the book, and the lessons move from objects to pictures to symbols [1][3]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Every answer is checked and explained",
-      "body": "Singapore Math is a set of printed textbooks and workbooks [1]. A page cannot tell a child that an answer is wrong, or why; an adult has to. AMP marks every answer, shows the correct one and the worked steps, and only then moves on. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong alone [9].",
-      "research": [
-        "feedback"
-      ]
-    },
-    {
-      "title": "A level in each strand, not one book",
-      "body": "Singapore Math places a child by half-year book. Its placement tests take at least an hour each, are not meant to be scored, and do not cover every topic in a level [3]. AMP places the learner within the first 24 problems, with no separate test, and keeps a separate level in each of 14 strands of math that every answer adjusts. A learner can be at grade 6 in geometry and grade 3 in fractions, and practice targets each.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem. Singapore Math places a learner with a placement test for each half-year book. The tests are untimed and not scored. The adult watches how the learner works and which mistakes come up, then picks the book: pass 2A, take 2B [3].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "AMP finds and repairs gaps on its own",
-      "body": "Singapore Math's placement tests judge a level as a whole, and the company tells parents to check the scope and sequence for topics the tests leave out [3]. We found no automatic route back to a missing prerequisite in its materials [1][3]. In AMP, two misses in a row on a skill send practice to what that skill builds on. An answer given after a hint is recorded but does not count toward mastery.",
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps. Singapore Math is a set of printed textbooks and workbooks [1]. A learner works on paper, and the adult checks the work [2][3]. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only [8].",
       "research": [
-        "mastery",
-        "hints"
+        "feedback"
       ]
     },
     {
-      "title": "Old skills come back on a schedule",
-      "body": "We found no review schedule in Singapore Math's published materials [1][3]. AMP brings each learned skill back after 6 hours, then 1 day, 3 days, 1 week, 2 weeks and 1 month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on a test a month later, against 38% for practice in blocks [8].",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Singapore Math the unit is the half-year book and the lessons in it, which move from concrete objects to pictures to symbols [1][3]. Dimensions Math also has video lessons [1].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. Repeated misses send practice back to what the skill builds on. In Singapore Math the adult judges a level from the learner's work, not a score. The placement tests do not cover every topic in a level, and the company tells parents to check the scope and sequence for the rest [3].",
+      "research": [
+        "mastery"
+      ]
+    },
+    {
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Singapore Math calls its approach a \"mastery spiral\" [1]. We found no review schedule in its published materials [1][3]. In a randomized trial with 787 seventh graders, mixed practice, which was also spaced, scored 62% a month later on the researchers' own test, against 38% for practice in blocks [9].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "One program from counting to precalculus",
-      "body": "Dimensions Math, listed as the company's most popular curriculum, runs from pre-kindergarten to grade 8, and its placement tests stop at the end of grade 5; Primary Mathematics tests reach grade 6 [1][3]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and Precalculus on one map of 336 skills. A learner moves into the next band when ready, with no new books to order."
-    },
-    {
-      "title": "Workbooks made for one learner, with worked keys",
-      "body": "Singapore Math's books are printed editions, not made for one child, and orders ship in 5 to 14 business days [2]. AMP prints a new workbook whenever one is needed, built from the learner's own answers, with practice, skills due for review and a challenge section. Each comes with a worked answer key, and results entered from paper count toward the learner's level."
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus in one program. A learner further along in geometry than in fractions gets work at both levels. Singapore Math places a learner in one half-year book [3]. Dimensions Math runs from pre-kindergarten through grade 8 [1].",
+      "research": [
+        "level"
+      ]
     }
   ],
   "rows": {
-    "buyers": "Families and schools. Printed books by grade, each in A and B half-year books, with free shipping over $100 in the contiguous U.S. [2][3].",
-    "range": "Dimensions Math: pre-kindergarten to grade 8. Primary Mathematics in several editions, with placement tests from 1A to 6B [1][3].",
-    "start": "Free placement tests, untimed and not scored. The adult reads the child's work and picks a half-year book [3].",
-    "teaching": "Printed lessons that move from concrete objects to pictures to symbols [1]. Dimensions Math also offers a video subscription [1].",
-    "next": "The books' order, a half-year book at a time. Placement works the same way: pass 2A, take 2B [3].",
-    "mastery": "No numeric rule found. Placement tests judge a level by the adult's reading of the work, not a score [3].",
-    "review": "No review schedule found in its published materials [1][3].",
-    "print": "Printed textbooks and workbooks, shipped in 5 to 14 business days; not made for one child [2].",
-    "adult": "Reads an unscored placement test to choose the level, orders each book, and checks the child's work [2][3].",
-    "reports": "No gradebook or progress reports found for the books [1].",
-    "evidence": "Singapore Math: no Evidence for ESSA rating, and no studies met WWC standards (2015) [6][7]. HMH's Math in Focus, a separate program, is rated Strong [4]."
+    "range": "Dimensions Math: pre-kindergarten to grade 8. Primary Mathematics in several editions, with placement tests up to grade 6 [1][3].",
+    "start": "A placement test for each half-year book, untimed and not scored. The adult reads the work and picks the book [3].",
+    "teaching": "Printed lessons that move from concrete objects to pictures to symbols [1]. Dimensions Math also has video lessons [1].",
+    "next": "The books' order, a half-year book at a time: pass 2A, take 2B [3].",
+    "mastery": "Judged by the adult from the learner's work, not a score. Placement tests do not cover every topic in a level [3].",
+    "review": "A \"mastery spiral\" [1]. No review schedule found in its published materials [1][3].",
+    "print": "Printed textbooks and workbooks, not made for one learner [1][2].",
+    "adult": "Gives the placement test, reads the work to choose the level, and checks the learner's work [2][3].",
+    "reports": "None found in the pages we read [1].",
+    "evidence": "No studies met Evidence for ESSA or What Works Clearinghouse standards [6][7]. HMH's Math in Focus, a separate program, is rated Strong [4]."
   },
   "theirs": [
-    "Singapore Math Inc. sells the Singapore approach to math to U.S. families and schools, and says it was the first to bring it to the U.S. [1]. Its main series are Dimensions Math, for pre-kindergarten to grade 8 and listed as its most popular curriculum, and Primary Mathematics, sold in several editions [1]. The company owns the Singapore Math trademark jointly with Marshall Cavendish Education [1].",
-    "The books teach with concrete objects first, then pictures, then symbols, in what the company calls a \"mastery spiral\" [1]. Each grade comes in two books: A for the first half of the year, B for the second [3]. A family starts with a free placement test, untimed and not scored; the adult watches how the child works and which mistakes come up, then picks the book [3]. Supplements add extra practice, fluency work and word problems [1].",
-    "Math in Focus is a different program: a school edition of the Singapore approach for kindergarten to grade 8, published by Houghton Mifflin Harcourt with digital tools on its own platform [5]. This page compares AMP with Singapore Math Inc.'s books and names Math in Focus only where its evidence comes up."
+    "Singapore Math Inc. brings the Singapore approach to math to U.S. families and schools [1]. Its main series are Dimensions Math, for pre-kindergarten to grade 8, and Primary Mathematics, in several editions [1]. Math in Focus is a different program: a school edition of the Singapore approach, published by Houghton Mifflin Harcourt [5].",
+    "The books teach with concrete objects first, then pictures, then symbols, in what the company calls a \"mastery spiral\" [1]. Each grade comes in two books: A for the first half of the year, B for the second [3]. A family starts with a placement test, untimed and not scored; the adult watches how the learner works, then picks the book [2][3]. Supplements add practice, fluency work and word problems [1]."
   ],
   "credit": [
-    "A clear, well-known teaching method: concrete objects, then pictures, then symbols [1][5]. AMP teaches with written lessons, worked examples and films, not a sequence that starts with objects in the hand.",
-    "Math on paper, with no screen and no connection. AMP prints workbooks, but its practice needs a browser and an internet connection.",
-    "Free placement tests for every half-year level, and a plain path for homeschool families [2][3].",
-    "Real evidence for the approach in schools: HMH's Math in Focus, a separate Singapore-style program, is rated Strong by Evidence for ESSA [4]. AMP has no outcome study yet."
+    "Concrete objects, then pictures, then symbols [1]. The What Works Clearinghouse guide for elementary math intervention rates concrete and semi-concrete representations as strong evidence [10].",
+    "Placement read from the learner's work: how they solve, and which mistakes come up [3]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Dimensions Math or Primary Mathematics on Singapore Math Inc.'s site, in Evidence for ESSA or in the What Works Clearinghouse, as of November 2026. The home page cites no studies [1]. Evidence for ESSA lists Singapore Math without a rating, saying no studies met its inclusion requirements; the page does not mention Primary Mathematics or Dimensions Math [6]. The What Works Clearinghouse found no studies of Singapore Mathematics (reviewed as Primary Mathematics) that met its standards, in a report dated December 2015 [7].",
-      "The Singapore-style program with real evidence is HMH's Math in Focus. Evidence for ESSA rates it Strong: four studies, 3,444 students in grades 2 to 5, an average effect size of +0.15 on standardized measures [4]. One study, by Jaciw and colleagues at Empirical Education, is titled as a randomized trial; the others are by the Educational Research Institute of America, listed as HMH reports, and JEM & R LLC [4]. Teachers in the studies had summer training and four whole days of training during the year [4]. That is a school program taught by trained teachers, and its rating does not carry over to books a parent buys from Singapore Math Inc."
+      "As of November 2026, we found no outcome study of Dimensions Math or Primary Mathematics on Singapore Math Inc.'s site, in Evidence for ESSA or in What Works Clearinghouse intervention reports. The home page cites no studies [1]. Evidence for ESSA lists Singapore Math without a rating, because no studies met its inclusion requirements [6]. The What Works Clearinghouse found no studies of Singapore Mathematics, reviewed as Primary Mathematics, that met its standards, in a report dated December 2015 [7].",
+      "Evidence for ESSA rates HMH's Math in Focus Strong: four studies, 3,444 students in grades 2 to 5, an average effect size of +0.15 on standardized measures [4]. One study, by Jaciw and colleagues at Empirical Education, is titled as a randomized trial. The others are by the Educational Research Institute of America, listed as HMH reports, and JEM & R LLC [4]. Teachers in the studies had summer training and four whole days of training during the year [4]. The rating is for Math in Focus in schools, not for Singapore Math Inc.'s books [4][6]."
     ],
     "ours": [
-      "Two well-studied methods are ones a printed book leaves to the adult. Mixed, spaced practice scored 62% against 38% a month later in a randomized trial that meets What Works Clearinghouse standards without reservations, though on the researchers' own test, and the mixed practice was also spaced [8]. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged 0.49, and marking right or wrong alone averaged 0.05 [9]. AMP builds both into every problem, with no planning by the adult. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged an effect of 0.49, against 0.05 for marking right or wrong only [8]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed practice, which was also spaced, scored 62% a month later on the researchers' own test, against 38% for practice in blocks [9]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "You love teaching math yourself and want a book with a clear method of objects, pictures and symbols.",
-      "You want math on paper, with no screen and no connection.",
-      "You want free placement tests and printed books for each half of the year.",
-      "You run a school that wants a teacher-led Singapore-style curriculum with an Evidence for ESSA rating. That is HMH's Math in Focus [4]."
+      "You want to teach math yourself from a book, from objects to pictures to symbols."
     ],
     "amp": [
-      "You want every answer checked and explained, without grading it yourself.",
-      "Your child is further along in one part of math than another.",
-      "You want old skills to come back on a schedule, without planning it.",
-      "Your learner is heading past grade 8, toward algebra and precalculus.",
-      "You like your Singapore books and want daily practice and review beside them."
+      "You want every answer checked and explained as it is given.",
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or ready for algebra.",
+      "You want paper workbooks made from your learner's own record."
     ]
   },
   "questions": [
     {
-      "question": "Is Singapore Math the same as Math in Focus?",
-      "answer": "No. Math in Focus is HMH's school program based on the Singapore approach [5]. Singapore Math Inc. sells Dimensions Math and Primary Mathematics [1]. Math in Focus's Strong rating from Evidence for ESSA does not apply to them; Evidence for ESSA lists Singapore Math without a rating [4][6]."
+      "question": "How is AMP different from Singapore Math?",
+      "answer": "In Singapore Math the adult reads a placement test, picks a half-year book, and checks the work on paper [2][3]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can I use AMP with Singapore Math?",
-      "answer": "Yes. AMP places the learner within the first 24 problems and keeps a level in each strand, checks every answer and brings old skills back on a schedule. A parent can also pick a skill on AMP's map to practice the topic the book is on."
+      "question": "Does Singapore Math work?",
+      "answer": "We found no outcome study of Dimensions Math or Primary Mathematics on Singapore Math Inc.'s site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][6][7]. Evidence for ESSA rates HMH's Math in Focus, a separate Singapore-style school program, Strong [4]."
     },
     {
-      "question": "Is AMP more expensive than Singapore Math?",
-      "answer": "AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each more, with a full refund within 30 days. Singapore Math sells printed books by grade level, in A and B half-year books, with free shipping on orders over $100 in the contiguous U.S. [2][3]; its store lists current prices. AMP's price covers every level from counting through precalculus, unlimited personalized workbooks, and the checking and review scheduling."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. A learner can work from the books and practice in AMP, which places them from their first answers."
     }
   ],
   "sources": [
@@ -136,16 +136,20 @@
       "url": "https://www.evidenceforessa.org/program/singapore-math/"
     },
     {
-      "title": "Singapore Mathematics intervention report (What Works Clearinghouse, December 2015)",
+      "title": "Singapore Mathematics intervention report (What Works Clearinghouse), December 2015",
       "url": "https://ies.ed.gov/ncee/WWC/Intervention/60"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
     },
     {
       "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
+      "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
     }
   ]
 }

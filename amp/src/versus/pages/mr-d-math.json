@@ -2,125 +2,112 @@
   "slug": "mr-d-math",
   "name": "Mr. D Math",
   "category": "courses",
-  "checked": "2026-11-21",
-  "benefit": "Feedback at every answer",
-  "line": "Mr. D Math is a teacher-led course in a fixed order. AMP chooses each problem from the last answer.",
-  "description": "AMP vs Mr. D Math: a teacher-led video course in a fixed order, or practice chosen from each answer, explained at once and reviewed on a schedule.",
-  "verdict": "Mr. D Math gives a learner a human math teacher, live classes for those who want them, and courses through Calculus I that its site says satisfy homeschool diploma requirements [1][2][6]. Its lessons follow a fixed order, and a self-paced student checks each worksheet against the key after finishing it [8][16]. AMP chooses every problem from the learner's answers, explains each one the moment it is answered, and brings old skills back on a schedule.",
-  "theirs": [
-    "Mr. D Math is an online math school for grades 5 to 12, run by Dennis DiNoia, who has held Florida secondary math certification since 1988 [1][2][7]. It sells 5th Grade Math and Preparing for Pre-Algebra through Calculus I, plus Statistics, Consumer Math and SAT and ACT bootcamps, next to electives this page does not cover [2][16][18]. Its login and course catalog sit on the Edu20 platform [1][3].",
-    "Each course comes self-paced or live, and in a gamified version, where students earn points, badges and certificates and level up by scoring 80% or higher, or a traditional one [17]. A self-paced course starts any time and comes with a pace chart for 34 weeks [16]. A lesson goes in four steps: watch the recorded lesson, work a worksheet of about 20 questions, check it against the solution key, then take a computer-graded quiz [8]. Live students also join one 55-minute Zoom class a week from August to May [17].",
-    "The home page says the courses satisfy homeschool diploma requirements and support independent study for charter school and co-op students [1]. Families buy directly, and charter schools and grant programs that approve the vendor can pay for it [3][5]."
-  ],
-  "credit": [
-    "A human teacher. Live students get a weekly 55-minute class, and all students get live help sessions, three a week for live courses and two for self-paced [4][17]. Its site says email replies usually come within two hours [6]. AMP has no live teacher or tutor.",
-    "Credit for a transcript. Its site states WASC accreditation [1], and its catalog lists the live Algebra I, Geometry, Algebra II and Pre-Calculus courses as NCAA-approved [17]. AMP offers no accreditation or course credit.",
-    "Calculus I and SAT and ACT bootcamps [2][16]. AMP stops at precalculus.",
-    "Vendor status with charter schools and grant programs, with separate course catalogs for some charter schools [3][5]. AMP's education-fund purchases cover three state programs.",
-    "A lower price for a single course: $247 for a self-paced course in 2026-27, open until March 1, 2028 [16]."
-  ],
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Mr. D Math teaches by video lesson, worksheet and quiz. In AMP, assessment and teaching happen at every problem.",
+  "description": "AMP vs Mr. D Math: Mr. D Math teaches by video lesson, worksheet and quiz. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Mr. D Math teaches in lessons: a recorded video, a worksheet the student checks against a key, then a computer-graded quiz, in the course's order [4][7]. In AMP, assessment and teaching are continuous. Every answer is checked and explained at once, updates the learner's level and sets the next problem.",
   "reasons": [
     {
-      "title": "Every answer is checked and explained at once",
-      "body": "In a self-paced Mr. D Math lesson, the student works a worksheet of about 20 questions and then checks it against the solution key [8]. The keys show each step, color-coded to help find errors [9], and the student checks their own work against it [8]. AMP marks each answer the moment it is given, shows the correct answer and the worked steps, and offers a one-step hint beforehand that never gives the answer away.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Mr. D Math the unit is the lesson. The student watches a recorded lesson, works a worksheet of about 20 questions, checks it against the solution key, then takes a quiz [4]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more. The data are correlational [10].",
       "research": [
-        "feedback",
-        "hints"
+        "lessons",
+        "hints",
+        "films"
       ]
     },
     {
-      "title": "The next problem fits the learner, not the syllabus",
-      "body": "Mr. D Math's FAQ links a course-selection guide to help a family pick a course [4]. Inside a course, a self-paced student follows a pace chart to finish in 34 weeks, and a live student follows the instructor's pace [16][17]. AMP keeps a separate level in each of 14 strands of math and chooses every next problem from the learner's answers: new work, a prerequisite, or review.",
+      "title": "Feedback on every answer",
+      "body": "After every answer, AMP shows whether it was right, the correct answer and the worked steps. In a self-paced Mr. D Math lesson, the student works the whole worksheet, then checks it against the solution key [4]. The keys show each step, color-coded to help find errors [5].",
+      "research": [
+        "feedback"
+      ]
+    },
+    {
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. In a Mr. D Math course, assessment is the computer-graded quizzes, tests and exams set along the way [7].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "A gap sends practice back to its foundation",
-      "body": "In Mr. D Math, help with a stuck topic comes from live help sessions, two or three a week, or from email [4][6]. Its catalog starts at 5th Grade Math [18]. In AMP, two misses in a row on a skill send practice to what that skill builds on, on one map that starts at counting. Nobody has to notice the gap or book a session first.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Mr. D Math builds review into each course as set assignments: spiral reviews, mid-chapter reviews, chapter tests and semester exams [4][7]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [11].",
+      "research": [
+        "review"
+      ]
+    },
+    {
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped. A skill counts when the learner gets it right without help, more than once, and repeated misses send practice back to what the skill builds on. A Mr. D Math student moves to the next lesson on the course's pace chart, or at the instructor's pace in a live course [7][8]. Quizzes may be retaken with notes, and a student who is stuck can join a live help session [3][6].",
       "research": [
         "mastery",
         "level"
       ]
     },
     {
-      "title": "Old skills come back on a schedule",
-      "body": "Mr. D Math builds spiral reviews, mid-chapter reviews, chapter tests and semester exams into each course [8][16]. We found no review scheduled by time since a skill was learned. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with seventh graders, mixed and spaced practice beat practice in blocks on a test a month later [15].",
-      "research": [
-        "review"
-      ]
-    },
-    {
-      "title": "More practice, and paper made for one learner",
-      "body": "One review of Mr. D Math notes that students who want a lot of practice may need a supplement [8]. Its worksheets are printed from the course, with an optional printed binder, and we found nothing made for the individual student [4][8][9]. AMP generates each problem fresh, so there is always another one, and it prints unlimited workbooks built from the learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level."
-    },
-    {
-      "title": "One license covers counting through precalculus",
-      "body": "Mr. D Math sells each course separately: $247 for a self-paced course in 2026-27, open until March 1, 2028 [16]. Its FAQ offers one more year for a $25 fee, after which the course must be bought again [4]. An AMP license covers every level AMP teaches, with no course to buy or renew when a learner moves up a level. A learner ahead in geometry and behind in fractions practices both in the same place.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math and runs from counting through precalculus in one program. A learner further along in geometry than in fractions gets work at both levels. Mr. D Math works one course at a time, from 5th Grade Math through Calculus I, and the family picks the course with a course-selection guide [3][7][9].",
       "research": [
         "level"
       ]
     }
   ],
   "rows": {
-    "price": "$247 a self-paced course, 2026-27 [16]. Live year: $247 plus a $290 live-class fee, or $34 a month for 10 months [17].",
-    "buyers": "Families directly, and students at charter schools and grant programs that list it as a vendor [3][5].",
-    "range": "5th Grade Math and Preparing for Pre-Algebra through Calculus I, plus Statistics, Consumer Math and SAT and ACT bootcamps [2][16][18].",
-    "start": "The family picks the course, with a course-selection guide linked from its FAQ [4].",
-    "teaching": "Pre-recorded video lessons in its own method. Live courses add one 55-minute Zoom class a week [6][16][17].",
-    "next": "The next lesson in the course, on a 34-week pace chart, or at the instructor's pace for live courses [16][17].",
-    "mastery": "Grades come from computer-graded quizzes, tests and exams [16]. Quizzes may be retaken with notes [10].",
-    "review": "Spiral reviews, tests and exams built into the course [8][16]. No review scheduled by time interval found in its published materials.",
-    "print": "Worksheets and answer keys printed from the course, or an optional printed binder. Nothing personalized per student found [4][8][9].",
-    "adult": "Prints worksheets and may check work against the keys. For live students, instructors grade assigned work [8][9].",
-    "reports": "Computer-graded quiz, test and exam scores [16].",
-    "evidence": "No outcome study found on its site. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [12][13]."
+    "range": "Single courses from 5th Grade Math through Calculus I, plus Statistics and Consumer Math [2][7][9].",
+    "start": "The family picks the course, with a course-selection guide linked from its FAQ [3].",
+    "teaching": "A recorded video lesson, then a worksheet of about 20 questions. Live courses add one Zoom class a week [4][8].",
+    "next": "The next lesson in the course, on a 34-week pace chart, or at the instructor's pace in a live course [7][8].",
+    "mastery": "Grades from computer-graded quizzes, tests and exams [7]. Quizzes may be retaken with notes [6].",
+    "review": "Spiral reviews, mid-chapter reviews, chapter tests and semester exams, set in the course [4][7].",
+    "print": "Worksheets and answer keys printed from the course, or a printed binder. We found no version made for each student [3][4][5].",
+    "adult": "Prints worksheets and may check work against the keys. In live courses, instructors grade assigned work [4][5].",
+    "reports": "Computer-graded quiz, test and exam scores [7].",
+    "evidence": "None found on its site [1]."
   },
+  "theirs": [
+    "Mr. D Math is an online math school for grades 5 to 12, run by the teacher Dennis DiNoia [1][12]. Its math courses run from 5th Grade Math through Calculus I, with Statistics and Consumer Math beside them [2][7][9]. Each course comes self-paced or live, and in a gamified or a traditional version [8].",
+    "A self-paced lesson goes in four steps: watch the recorded lesson, work a worksheet of about 20 questions, check it against the solution key, then take a computer-graded quiz [4]. A self-paced student follows a pace chart through the course [7]. A live student also joins one Zoom class a week, and instructors grade assigned work [5][8]."
+  ],
+  "credit": [
+    "A teacher explains each lesson on video, and live students meet an instructor every week [4][8].",
+    "Live help sessions every week for a student who is stuck [3].",
+    "Answer keys show every step, color-coded to help a student find an error [5]."
+  ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Mr. D Math, randomized or with a comparison group, on its site. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [12][13].",
-      "The company describes its results without measuring them. Its home page speaks of a \"high completion rate\" and gives no figure [1]. Its reviews page offers six blog testimonials, with no scores, completion rates or sample sizes [11]. None of this compares students who took the courses with students who did not."
+      "We found no outcome study of Mr. D Math on its site [1]."
     ],
     "ours": [
-      "Mr. D Math teaches first and practices after. AMP spends the learner's time on problems and brings the explanation to each one. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more; the authors put the benefit of extra doing at more than six times that of extra watching or reading, in data that are correlational [14]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [15]. We expect a program that applies both at every problem to show it in outcomes. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The authors put the benefit of extra doing at more than six times that of extra watching or reading, in data that are correlational [10]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [11]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your teen wants a live teacher, a weekly class and someone to email with questions.",
-      "You need course credit for a transcript, or NCAA-approved live math courses.",
-      "Your student is ready for Calculus I.",
-      "Your charter school or grant program lists Mr. D Math as a vendor and will pay for it."
+      "You want a teacher on video, a weekly live class and live help sessions."
     ],
     "amp": [
-      "Your child is not yet in grade 5, or has gaps from earlier grades. AMP starts at counting.",
-      "You want each answer checked and explained the moment it is given.",
-      "You want old skills to come back on a schedule, without planning it.",
-      "Your learner is ahead in one part of math and behind in another.",
-      "You want more practice than a worksheet holds, and paper made for your learner when you want it."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer checked and explained the moment it is given.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math.",
+      "You want workbooks made for your learner, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "Is Mr. D Math cheaper than AMP?",
-      "answer": "For one self-paced course, yes: its catalog lists $247 for 2026-27 [16], and a live year adds a $290 live-class fee, or $34 a month for 10 months [17]. AMP is $599 a year or $59 a month for the first child and covers every level from counting through precalculus."
+      "question": "How is AMP different from Mr. D Math?",
+      "answer": "Mr. D Math teaches by recorded lesson, then a worksheet checked against a key, then a quiz, in the course's order [4][7]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Does Mr. D Math give high school credit?",
-      "answer": "Its site states WASC accreditation and says its courses satisfy homeschool diploma requirements [1]. Its catalog lists four live courses, Algebra I through Pre-Calculus, as NCAA-approved [17]. AMP offers no accreditation or course credit; it gives progress reports and report cards."
+      "question": "Does Mr. D Math work?",
+      "answer": "We found no outcome study of Mr. D Math on its site [1]."
     },
     {
-      "question": "Does AMP have live teachers like Mr. D Math?",
-      "answer": "No. Mr. D Math offers a weekly live class and two or three live help sessions a week [4][17]. AMP has no live teachers; it gives a one-step hint, a written lesson with a worked example and worked steps for every problem, and narrated films for a growing share of problem types."
-    },
-    {
-      "question": "Can we use AMP alongside a Mr. D Math course?",
-      "answer": "Yes. AMP is a separate program. It places the learner within the first 24 problems and keeps a level in each strand of math, then chooses practice and brings earlier skills back for review."
-    },
-    {
-      "question": "What grades does Mr. D Math cover?",
-      "answer": "Its catalog starts at 5th Grade Math and runs through Calculus I, with Statistics and Consumer Math as self-paced options [16][18]. AMP starts at counting and runs through precalculus."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers and chooses practice from there."
     }
   ],
   "sources": [
@@ -133,24 +120,8 @@
       "url": "https://mrdmath.com/courses-and-services"
     },
     {
-      "title": "Course catalog (Mr. D Math on Edu20)",
-      "url": "https://mrdmath.edu20.org/visitor_class_catalog"
-    },
-    {
       "title": "Frequently asked questions (Mr. D Math)",
       "url": "https://mrdmath.com/FAQ"
-    },
-    {
-      "title": "Charter school and grant funds (Mr. D Math)",
-      "url": "https://mrdmath.myshopify.com/pages/vendor-funds"
-    },
-    {
-      "title": "The Mr. D Math difference (Mr. D Math)",
-      "url": "https://mrdmath.com/difference"
-    },
-    {
-      "title": "About (Mr. D Math)",
-      "url": "https://mrdmath.com/about"
     },
     {
       "title": "Mr. D Math review (Homeschool Picks, 2026)",
@@ -165,16 +136,16 @@
       "url": "https://numaschool.com/learn/glossary/mr-d-math"
     },
     {
-      "title": "Course reviews (Mr. D Math)",
-      "url": "https://mrdmath.com/course-reviews"
+      "title": "Self-paced math courses (Mr. D Math catalog)",
+      "url": "https://mrdmath.edu20.org/visitor_class_catalog/category/950302"
     },
     {
-      "title": "Math programs (Evidence for ESSA)",
-      "url": "https://www.evidenceforessa.org/programs/math"
+      "title": "Live online math courses (Mr. D Math catalog)",
+      "url": "https://mrdmath.edu20.org/visitor_class_catalog/category/309269"
     },
     {
-      "title": "What Works Clearinghouse, intervention reports",
-      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+      "title": "5th Grade Math, self-paced (Mr. D Math catalog)",
+      "url": "https://mrdmath.edu20.org/visitor_class_catalog/category/959106"
     },
     {
       "title": "Koedinger et al. (2015), Learning is not a spectator sport",
@@ -185,16 +156,8 @@
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Self-paced math courses, 2026-27 (Mr. D Math catalog)",
-      "url": "https://mrdmath.edu20.org/visitor_class_catalog/category/950302"
-    },
-    {
-      "title": "Live online math courses (Mr. D Math catalog)",
-      "url": "https://mrdmath.edu20.org/visitor_class_catalog/category/309269"
-    },
-    {
-      "title": "5th Grade Math, self-paced (Mr. D Math catalog)",
-      "url": "https://mrdmath.edu20.org/visitor_class_catalog/category/959106"
+      "title": "About (Mr. D Math)",
+      "url": "https://mrdmath.com/about"
     }
   ]
 }

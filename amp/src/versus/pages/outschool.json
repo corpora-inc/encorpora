@@ -2,113 +2,106 @@
   "slug": "outschool",
   "name": "Outschool",
   "category": "tutoring",
-  "checked": "2026-11-21",
-  "benefit": "Daily practice that plans itself",
-  "line": "Outschool lists live classes by independent teachers. AMP is one math program that chooses every problem.",
-  "description": "AMP vs Outschool: live classes taught by independent teachers, against one math program that places, explains and reviews every day.",
-  "verdict": "Outschool gives a child a live teacher, classmates and more than 100,000 classes to choose from [1]. Its classes are taught by independent teachers, each teacher submits a class for Outschool's approval, and the family enrolls in the classes it picks [2][6]. AMP is one program from counting to precalculus that places the learner, chooses every problem, explains every answer and brings old skills back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Outschool's unit is a class the family chooses. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Outschool: Outschool lists classes by independent teachers. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Outschool's unit is the class: a live video meeting at set times, a self-paced course or a tutoring session, taught by an independent teacher and chosen by the family [1][2][3][4][5]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "One math path instead of a list of classes",
-      "body": "Outschool classes are taught by independent teachers, and each teacher submits a class for approval against Outschool's standards for content, learning goals and teacher expertise [2]. Families enroll in individual classes, and Outschool's AI helps them find classes and teachers [6][11]. So the order of math is the set of classes a family picks. AMP holds 336 skills on one map from counting to precalculus, places the learner within the first 24 problems, keeps a level in each of 14 strands and chooses every problem after that.",
-      "research": ["level"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after, right or wrong, updates the learner's level in that part of math and sets the next problem. In Outschool the family chooses each class, helped by AI class discovery and teacher matching [2][6]. Any grade or assessment is up to the class's teacher and is arranged with the family in advance [2].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "Practice any day, with every answer explained",
-      "body": "An Outschool live class meets by video at scheduled times, and most also involve independent work before or after the meetings [3]. AMP is there whenever the learner sits down, with no fixed session length. After each answer it shows right or wrong, the correct answer and the worked steps. Across 40 studies of computer-based feedback, feedback that explains averaged a larger effect than feedback that only marks right or wrong [17].",
-      "research": ["feedback"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Outschool the unit is the class. A live class is a video meeting at scheduled times. It may meet once, run for weeks or a semester, or recur each week. Most include independent work before or after the meetings [3]. Across 55 studies, worked examples improve performance in math [9].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "The same teaching for every learner",
-      "body": "Outschool screens and background-checks its teachers and asks for \"teaching experience, subject matter expertise, or a unique passion\" [2]. Common Sense Media notes that teaching credentials are not required and that inconsistent course quality is possible [9]. In AMP every problem type has a one-step hint that never gives the answer, a written lesson with a worked example, and full worked steps. Anyone can read them in the public code.",
-      "research": ["hints", "lessons"]
+      "title": "Feedback on every answer",
+      "body": "After each problem AMP shows whether it was right, the correct answer and the worked steps. In Outschool, feedback is a teacher's. In a live class the teacher meets learners by video at scheduled times [3]. In a self-paced class the teacher gives feedback by message on pre-recorded lessons [4]. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect [10].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "Old skills come back without anyone planning it",
-      "body": "Each Outschool class is its own teacher's, approved against standards for content and learning goals [2], and its independent work comes before or after its meetings [3]. Bringing back skills from earlier classes falls to the teachers and the family. In AMP a skill is Strong after four of the last five answers right without help, two misses in a row send practice back to what it builds on, and learned skills return after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial of 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks, on the researchers' own test [16].",
-      "research": ["mastery", "review"]
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. In Outschool what comes next is the next class the family enrolls in, and Outschool's AI suggests classes and teachers that may fit [2][6]. Certificates of completion are at each teacher's discretion [2].",
+      "research": [
+        "mastery",
+        "level"
+      ]
     },
     {
-      "title": "A record of the level, not only the classes",
-      "body": "Outschool does not offer credit for classes, and sharing grades or transcripts must be coordinated directly between parents and teachers [2]. Its AI gives families summaries of what a learner is experiencing in class [11]. AMP shows the level in every strand with its likely range, the skills earned and time by day and skill, in a record that opens to the actual problems. It prints progress reports and report cards.",
-      "research": ["progress"]
-    },
-    {
-      "title": "A flat price and a 30-day refund",
-      "body": "A recurring weekly Outschool class is charged as a subscription on Sunday mornings [3]. A membership is refunded in full only within 24 hours of the first month's purchase and only if no credits were used; renewal charges are not refunded [7]. For a personal payment, Outschool's Learning Experience Pledge returns a voucher, not cash [8]. AMP is $599 a year or $59 a month for the first child, and any personal payment is refunded in full within 30 days, no reason needed."
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In Outschool, each class is its own teacher's. Most live classes include independent work before or after the meetings, set by that teacher [3]. We found no scheduled review of earlier skills across classes in the pages we read [2][3]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks, on the researchers' own test [11].",
+      "research": [
+        "review"
+      ]
     }
   ],
   "rows": {
-    "price": "Each class has its own listed price, paid per class or with credits from a monthly membership [6]. Check current prices on Outschool's site.",
-    "buyers": "Families, plus schools and charters by purchase order [13]. Public funds accepted in select states through ClassWallet, Step Up for Students, Odyssey and others [10].",
-    "range": "More than 100,000 live classes across subjects, ages 1 to 18 [1]. The family enrolls in each math class it picks [6].",
-    "start": "The family picks a class, helped by Outschool's AI class discovery and teacher matching [6][11].",
-    "teaching": "A teacher on live video at set times, or pre-recorded lessons with teacher feedback [3][4]. Common Sense Media says inconsistent course quality is possible [9].",
-    "next": "The family enrolls in the next class. Outschool's AI suggests classes and teachers that may fit [6][11].",
-    "mastery": "Each teacher decides on any grade or assessment; certificates of completion are at the teacher's discretion [2].",
-    "review": "Most live classes add independent work before or after meetings [3]. No scheduled review found in its published materials [2][3].",
-    "print": "No workbooks found in its published materials [2][4]. Self-paced lessons can be saved for offline viewing in its mobile app [4].",
-    "adult": "Choose and enroll in classes, manage payment, arrange any grade with the teacher, and monitor participation [2][6][9].",
-    "reports": "AI summaries of what a learner experiences in class [11]. No credit for classes; grades or transcripts coordinated directly with the teacher [2].",
-    "evidence": "No entry in Evidence for ESSA and no intervention report in the What Works Clearinghouse (checked November 2026) [14][15]."
+    "range": "Online classes in many subjects, from tap dance to fractions, for ages 1 to 18, taught by independent teachers [1].",
+    "start": "The family chooses and enrolls in a class, helped by AI class discovery and teacher matching [2][6].",
+    "teaching": "A teacher on live video at set times, pre-recorded lessons with teacher feedback, or one-on-one tutoring [3][4][5].",
+    "next": "The family enrolls in the next class. Outschool's AI suggests classes and teachers that may fit [2][6].",
+    "mastery": "Each teacher decides on any grade or assessment, arranged with the family in advance. Certificates of completion are at the teacher's discretion [2].",
+    "review": "Most live classes include independent work before or after meetings, set by the class's teacher [3]. No scheduled review found in the pages we read [2][3].",
+    "print": "None found in the pages we read [2][4].",
+    "adult": "Chooses and enrolls in each class, and arranges any grade or assessment with the teacher [2].",
+    "reports": "AI summaries of what a learner experiences in class [6]. No credit for classes; grades or transcripts are arranged with the teacher [2].",
+    "evidence": "No outcome study found in the pages we read, and no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [7][8]."
   },
   "theirs": [
-    "Outschool describes itself as an educational platform of online classes for ages 1 to 18, taught by independent teachers. Its help center counts more than 100,000 live online classes and more than 900,000 learners in 174 countries, in subjects from \"tap dance to fractions\" [1]. Teachers apply to teach, and each new class must be approved against Outschool's standards before it is listed [2].",
-    "A live class is a video meeting at scheduled times. One-time classes meet once, short courses run 2 to 7 weeks, semester courses 8 weeks or more, and recurring weekly classes are charged weekly. Most include independent work before or after the meetings [3]. Self-paced classes offer a year of pre-recorded lessons with up to 20 weeks of teacher support [4]. Tutoring is one-on-one, booked from a teacher's available times [5].",
-    "Families pay per class or buy a monthly membership whose credits pay for classes [6]. The adult chooses the classes and arranges any grade or transcript directly with the teacher [2]. This page compares Outschool's math classes and tutoring with AMP."
+    "Outschool describes itself as an educational platform of online classes for ages 1 to 18, taught by independent teachers, in subjects from \"tap dance to fractions\" [1]. Teachers apply to teach, and each class must be approved against Outschool's standards for content, learning goals and teacher expertise before it is listed [2].",
+    "A live class is a video meeting at scheduled times. Some meet once, short courses run 2 to 7 weeks, semester courses 8 weeks or more, and recurring classes meet each week. Most include independent work before or after the meetings [3]. Self-paced classes offer pre-recorded lessons with teacher feedback [4], and tutoring is one-on-one, booked from a teacher's available times [5]. The family chooses each class [2]. This page compares Outschool's math classes and tutoring with AMP."
   ],
   "credit": [
-    "A live teacher who can hear a question and answer it in the moment. AMP has no live teacher or tutor.",
-    "One-on-one tutoring, booked from a teacher's available times [5], and classmates. Trustpilot reviewers praise engaging, patient teachers and small groups [12]. AMP has no classmates.",
-    "Breadth. More than 100,000 live classes, in subjects far beyond math, for ages 1 to 18 [1]. AMP is math only.",
-    "Public funds in many states, through ClassWallet, Step Up for Students, Odyssey and others [10]. AMP takes education funds in three states.",
-    "A way to try one class with no membership [6], and a mobile app that saves self-paced lessons for offline viewing [4]. AMP has no store app and no offline mode."
+    "A live teacher who can hear a question and answer it in the moment [3].",
+    "One-on-one tutoring with a teacher the family chooses [5].",
+    "Each class is reviewed against standards for content, learning goals and teacher expertise before it is listed [2]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Outschool's math classes on the pages we read. Outschool has no entry in Evidence for ESSA and no intervention report in the What Works Clearinghouse (checked November 2026) [14][15]. Its published numbers count reach: more than 900,000 learners in 174 countries [1]. On Trustpilot it scores 4.1 out of 5 across 3,603 reviews [12]. Those measure enrollment and satisfaction, not learning.",
-      "We think a study of Outschool as a whole would be hard to design, because each family takes different classes from different teachers. Tutoring itself has a strong record. Across 263 randomized trials, tutoring averaged 0.40 standard deviations, and 0.16 to 0.22 for large U.S. programs measured on standardized tests [18]. Those trials are of tutoring programs, not of Outschool, and we found no study of Outschool tutoring."
+      "We found no outcome study of Outschool's math classes in the pages we read, and no Outschool entry in Evidence for ESSA or intervention report in the What Works Clearinghouse (checked November 2026) [7][8].",
+      "Tutoring in general has strong evidence. Across 263 randomized trials it averaged 0.40 standard deviations, and 0.16 to 0.22 in large U.S. programs measured on standardized tests [12]. That evidence is about tutoring programs, not about Outschool."
     ],
     "ours": [
-      "A good teacher explains a wrong answer in the room. AMP explains every answer: right or wrong, the correct answer and the worked steps. Across 40 studies of computer-based feedback, in many ages and subjects, feedback that explains averaged an effect of 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [17]. AMP also brings old skills back on a schedule, mixed with other topics. In a randomized trial that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later against 38% for practice in blocks, on the researchers' own test [16]. We expect daily practice built this way to help a learner keep what a class teaches. That is our bet, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison: feedback that explains had the largest average effect across 40 studies of computer-based feedback [10], and practice that mixes and spaces topics scored 62% against 38% for practice in blocks a month later, in a randomized trial that meets What Works Clearinghouse standards without reservations [11]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "Your child learns best with a live teacher and classmates.",
-      "You want a tutor for one topic, an hour at a time.",
-      "You want one place for many subjects, not only math.",
-      "Your education fund is in a state where Outschool is an approved vendor and AMP is not."
+      "Your child learns best with a live teacher and classmates."
     ],
     "amp": [
-      "You want daily math that runs itself: placed, chosen, checked and reviewed.",
-      "Your child is ahead in one part of math and needs more work in another.",
-      "You want every answer explained with worked steps, the same way every time.",
-      "You want a set yearly or monthly price and a full refund within 30 days.",
-      "Your child takes an Outschool class and needs practice on the days between."
+      "You want assessment, teaching and review in the same practice, with no separate test.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your child is at different levels in different parts of math.",
+      "Your child takes a live class and wants math practice on the days between."
     ]
   },
   "questions": [
     {
-      "question": "Is Outschool a math curriculum?",
-      "answer": "Outschool describes itself as a platform of online classes taught by independent teachers [1]. Each teacher submits a class for approval against Outschool's standards, and the family enrolls in the classes it picks [2][6]. AMP is one math program with one sequence from counting to precalculus."
+      "question": "How is AMP different from Outschool?",
+      "answer": "Outschool's unit is the class, taught by an independent teacher and chosen by the family [1][2]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is AMP more expensive than Outschool?",
-      "answer": "It depends on how many classes a family takes. Each Outschool class has its own listed price, paid per class or with membership credits; check current prices on Outschool's site [6]. As checked in November 2026, AMP is $599 a year or $59 a month for the first child and $399 or $39 for each additional child, with unlimited workbooks."
+      "question": "Does Outschool work?",
+      "answer": "We found no outcome study of Outschool's math classes in the pages we read, and no Outschool entry in Evidence for ESSA or intervention report in the What Works Clearinghouse (checked November 2026) [7][8]. Tutoring in general has strong evidence in randomized trials [12]."
     },
     {
-      "question": "Can we use AMP alongside an Outschool math class?",
-      "answer": "Yes. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, then fills the days between classes with practice at that level and review on a schedule."
-    },
-    {
-      "question": "Can ESA funds pay for Outschool or AMP?",
-      "answer": "Outschool accepts public funds in select states, through ClassWallet, Step Up for Students, Odyssey and others [10]. Charter school funds cannot buy an Outschool membership [13]. AMP accepts Arizona ESA, Arkansas EFA and New Hampshire EFA funds."
-    },
-    {
-      "question": "Has Outschool been shown to raise math scores?",
-      "answer": "We found no outcome study. Outschool has no entry in Evidence for ESSA and no intervention report in the What Works Clearinghouse (checked November 2026) [14][15]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -133,36 +126,8 @@
       "url": "https://support.outschool.com/en/articles/8042932-tutoring-classes-for-parents"
     },
     {
-      "title": "Outschool payment options: FAQs for parents (Outschool help center)",
-      "url": "https://support.outschool.com/en/articles/14171096-outschool-payment-options-faqs-for-parents"
-    },
-    {
-      "title": "Cancellation policies for Outschool members (Outschool help center)",
-      "url": "https://support.outschool.com/en/articles/10421711-cancellation-policies-for-outschool-members"
-    },
-    {
-      "title": "Learning Experience Pledge (Outschool help center)",
-      "url": "https://support.outschool.com/en/articles/16379-learning-experience-pledge"
-    },
-    {
-      "title": "Outschool website review (Common Sense Media)",
-      "url": "https://www.commonsensemedia.org/website-reviews/outschool"
-    },
-    {
-      "title": "Using state public funding programs to purchase Outschool classes (Outschool help center)",
-      "url": "https://support.outschool.com/en/articles/9600510-using-state-public-funding-programs-to-purchase-outschool-classes"
-    },
-    {
       "title": "How AI enhances your family's Outschool experience (Outschool help center)",
       "url": "https://support.outschool.com/en/articles/11465844-how-ai-enhances-your-family-s-outschool-experience"
-    },
-    {
-      "title": "Outschool reviews (Trustpilot)",
-      "url": "https://www.trustpilot.com/review/outschool.com"
-    },
-    {
-      "title": "Help for families using charter school funds on Outschool (Outschool help center)",
-      "url": "https://support.outschool.com/en/articles/427452-help-for-families-using-charter-school-funds-on-outschool"
     },
     {
       "title": "Math programs (Evidence for ESSA)",
@@ -173,12 +138,16 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
-      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
       "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
       "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
       "title": "Kraft, Schueler & Falken (2026), What impacts should we expect from tutoring at scale?",

@@ -56,7 +56,10 @@ import {
   type VersusPage,
 } from "../src/versus/types";
 import {
+  ampSetting,
   validateVersus,
+  versusPriceTalk,
+  versusSalesTalk,
   validateVersusPage,
   versusCatalogFrom,
   versusLimits,
@@ -102,7 +105,7 @@ const sample = (): VersusPage => ({
     { title: "Three", body: "Third.", research: ["level", "mastery"] },
   ],
   evidence: { theirs: ["Theirs [1]."], ours: ["Ours."] },
-  rows: { price: "$10 a month [2].", range: "K–8." },
+  rows: { teaching: "Video lessons [2].", range: "K–8." },
   fit: { them: ["You want Sample."], amp: ["You want AMP."] },
   questions: [
     { question: "First?", answer: "Yes [1]." },
@@ -515,7 +518,7 @@ test("research components have stable ids, and the screen links land on them", (
   );
 });
 
-test("AMP's side: every row and category, in order, and the prices on sale", () => {
+test("AMP's side: every row and category, in order; principles, never settings or price", () => {
   assert.deepEqual(
     versusRows.map((row) => row.id),
     [...versusRowIds],
@@ -528,16 +531,70 @@ test("AMP's side: every row and category, in order, and the prices on sale", () 
     assert.ok(row.label && row.amp, row.id);
     assert.deepEqual(citations(row.amp), [], `${row.id} cites no source`);
   }
-  const dollars = (minor: number) => `$${minor / 100}`;
-  const price = versusRows.find((row) => row.id === "price")!.amp;
-  // The amounts on sale, however the cell words them.
-  for (const amount of [
-    dollars(stripeCatalog.prices.year.unitAmount),
-    dollars(stripeCatalog.prices.month.unitAmount),
+  for (const reason of versusHub.why.reasons)
+    assert.ok(researchComponentIds.includes(reason.research), reason.title);
+  // AMP's side says principles, never settings (a threshold, an interval, a
+  // count): the same rule the pages are held to.
+  for (const words of [
+    versusHub.lede,
+    ...versusHub.why.reasons.flatMap((reason) => [reason.title, reason.text]),
+    ...versusRows.map((row) => row.amp),
   ])
-    assert.match(price, new RegExp(`\\${amount}(?!\\d)`), price);
-  for (const id of versusHub.why.components)
-    assert.ok(researchComponentIds.includes(id), id);
+  {
+    assert.equal(ampSetting(words), undefined, words);
+    assert.equal(versusPriceTalk(words), undefined, words);
+  }
+});
+
+test("a page that talks about price is refused", () => {
+  for (const words of [
+    "ALEKS costs $179.95 a year, under a third of AMP's yearly price.",
+    "A lower price.",
+    "Is CTCMath cheaper than AMP?",
+    "Full refund within 30 days.",
+    "It costs less than a year of classes.",
+  ])
+    assert.ok(versusPriceTalk(words), words);
+  for (const words of [
+    "Khan Academy is a free library of lessons and practice.",
+    "AMP chooses every problem from the learner's answers.",
+    "Students averaged 5.42 hours answering questions across a school year.",
+  ])
+    assert.equal(versusPriceTalk(words), undefined, words);
+});
+
+test("a salesman's line is refused; a report of what we checked is not", () => {
+  for (const words of [
+    "We think that is how math is learned.",
+    "We would rather a learner spend that time learning.",
+    "That is our bet, and we will measure it in public.",
+    "We expect that to show in what learners can do.",
+  ])
+    assert.ok(versusSalesTalk(words), words);
+  for (const words of [
+    "We found no scheduled review in the pages we read.",
+    "In AMP, assessment and teaching are continuous.",
+  ])
+    assert.equal(versusSalesTalk(words), undefined, words);
+});
+
+test("a page that states one of AMP's settings is refused", () => {
+  for (const words of [
+    "A skill is Strong when four of the last five answers are right without help.",
+    "AMP places the learner within the first 24 problems.",
+    "It keeps a level in each of 14 strands.",
+    "Skills return after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month.",
+    "Two misses in a row send practice back.",
+    "547 of 1,384 problem types need a typed answer.",
+  ])
+    assert.ok(ampSetting(words), words);
+  for (const words of [
+    "A skill counts as learned when the learner gets it right without help, more than once.",
+    "Learned skills come back at growing intervals, mixed with other topics.",
+    "CTCMath's weekly review sheets have 26 problems.",
+    "Users averaged about eight hours of math a year.",
+  ])
+    assert.equal(ampSetting(words), undefined, words);
 });
 
 test("citations are read one way", () => {

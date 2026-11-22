@@ -3,402 +3,402 @@
     "slug": "aleks",
     "name": "ALEKS",
     "category": "adaptive",
-    "line": "ALEKS retests in periodic Knowledge Checks; AMP brings each skill back on a fixed schedule in daily practice."
+    "line": "ALEKS assesses in separate Knowledge Checks. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "brilliant",
     "name": "Brilliant",
     "category": "adaptive",
-    "line": "Brilliant teaches with interactive problems from about grade 4; AMP starts at counting and schedules every review."
+    "line": "Brilliant teaches in interactive concepts and tests at checks. In AMP, assessment, teaching and review are continuous."
   },
   {
     "slug": "ck-12",
     "name": "CK-12",
     "category": "adaptive",
-    "line": "CK-12 offers free math books and an AI chat tutor. AMP picks, checks and explains every problem, from counting on."
+    "line": "CK-12 pairs math textbooks with an AI chat tutor. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "doodlemath",
     "name": "DoodleMath",
     "category": "adaptive",
-    "line": "DoodleMath is a game-rich app for grades K-5. AMP runs to precalculus, with stated mastery and review rules."
+    "line": "DoodleMath reviews in Power Ups about every 20 days. In AMP, learned skills come back in ordinary practice."
   },
   {
     "slug": "ixl",
     "name": "IXL",
     "category": "adaptive",
-    "line": "In IXL the learner or an adult picks each skill; AMP picks every next problem and schedules review."
+    "line": "IXL practices one chosen skill at a time. In AMP, every answer sets the next problem, and learned skills come back."
   },
   {
     "slug": "khan-academy",
     "name": "Khan Academy",
     "category": "adaptive",
-    "line": "Khan Academy is free and the adult plans it; AMP chooses every problem and brings old skills back on a schedule."
+    "line": "Khan Academy teaches by course: videos, then exercises. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "math-academy",
     "name": "Math Academy",
     "category": "adaptive",
-    "line": "Math Academy starts at grade 4 and teaches in text. AMP starts at counting and adds hints, films and print."
+    "line": "Math Academy places with a test and teaches by lesson. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "mathletics",
     "name": "Mathletics",
     "category": "adaptive",
-    "line": "Mathletics motivates with points, races and games. AMP picks each problem, explains each miss and schedules review."
+    "line": "Mathletics practices in activities, quests and races. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "mathspace",
     "name": "Mathspace",
     "category": "adaptive",
-    "line": "Mathspace checks each line of work for a teacher's class. AMP picks every problem and counts only unaided answers."
+    "line": "Mathspace works in assigned tasks and separate tests. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "dreambox-math",
     "name": "DreamBox Math",
     "category": "school",
-    "line": "DreamBox is a K-8 supplement built on discovery. AMP runs through precalculus and explains every answer."
+    "line": "DreamBox teaches in lessons with virtual models. In AMP, each problem carries its own hint, lesson and worked answer."
   },
   {
     "slug": "exact-path",
     "name": "Exact Path",
     "category": "school",
-    "line": "Exact Path is sold to schools by quote. AMP is open to any family or teacher today, and its rules are public."
+    "line": "Exact Path tests in a separate diagnostic, then delivers a path. In AMP, assessment, teaching and review are continuous."
   },
   {
     "slug": "freckle-math",
     "name": "Freckle",
     "category": "school",
-    "line": "Freckle is free practice built for classrooms. AMP is a full program with a stated mastery rule and scheduled review."
+    "line": "Freckle places a student with a test, then adapts. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "happy-numbers",
     "name": "Happy Numbers",
     "category": "school",
-    "line": "Happy Numbers covers PreK to grade 5. AMP runs on to precalculus and brings learned skills back on a schedule."
+    "line": "Happy Numbers places with a test, then gives curriculum tasks. In AMP, assessment and teaching happen at every problem."
   },
   {
     "slug": "i-ready",
     "name": "i-Ready",
     "category": "school",
-    "line": "i-Ready sells only to schools and sets a lesson path from a test. AMP adapts at every answer, at home or at school."
+    "line": "i-Ready tests three times a year and assigns lessons. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "imagine-math",
     "name": "Imagine Math",
     "category": "school",
-    "line": "Imagine Math is a school program with no posted price. AMP sells to families and brings skills back on a schedule."
+    "line": "Imagine Math places by test, then teaches by the lesson. In AMP, assessment, teaching and review are at every problem."
   },
   {
     "slug": "mathia",
     "name": "MATHia",
     "category": "school",
-    "line": "MATHia is a school tutor for grades 6 to 12. AMP is open to families and runs from counting to precalculus."
+    "line": "MATHia tutors each step inside workspaces a teacher assigns. In AMP, every answer sets the next problem."
   },
   {
     "slug": "st-math",
     "name": "ST Math",
     "category": "school",
-    "line": "ST Math teaches with visual puzzles to grade 8. AMP adds lessons, hints and scheduled review through precalculus."
+    "line": "ST Math teaches with visual puzzles in a fixed order. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "zearn",
     "name": "Zearn",
     "category": "school",
-    "line": "Zearn takes a class through one grade’s lessons in order; AMP finds each learner’s level and schedules review."
+    "line": "Zearn's unit is a lesson, checked by a quiz at its end. In AMP, the problem is the unit, and assessment is continuous."
   },
   {
     "slug": "ctcmath",
     "name": "CTCMath",
     "category": "courses",
-    "line": "CTCMath teaches by video, then asks the lesson's questions; AMP places each learner and chooses every next problem."
+    "line": "CTCMath teaches by video lesson, then questions. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "derek-owens",
     "name": "Derek Owens",
     "category": "courses",
-    "line": "Derek Owens teaches each course by recorded lecture. AMP chooses every problem and checks each answer at once."
+    "line": "Derek Owens teaches by recorded lecture and graded papers. In AMP, assessment and teaching happen at every problem."
   },
   {
     "slug": "mathhelp",
     "name": "MathHelp.com",
     "category": "courses",
-    "line": "MathHelp.com teaches by video, lesson by lesson. AMP picks every problem from the learner's last answers."
+    "line": "MathHelp.com teaches lesson by lesson, by video. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "mr-d-math",
     "name": "Mr. D Math",
     "category": "courses",
-    "line": "Mr. D Math is a teacher-led course in a fixed order. AMP chooses each problem from the last answer."
+    "line": "Mr. D Math teaches by video lesson, worksheet and quiz. In AMP, assessment and teaching happen at every problem."
   },
   {
     "slug": "shormann-math",
     "name": "Shormann Math",
     "category": "courses",
-    "line": "Shormann Math teaches 100 video lessons in a fixed order. AMP chooses each problem from the learner's answers."
+    "line": "Shormann Math teaches by lecture and tests at set points. In AMP, assessment and teaching happen at every problem."
   },
   {
     "slug": "tabletclass-math",
     "name": "TabletClass Math",
     "category": "courses",
-    "line": "TabletClass Math is a video course in a set order. AMP finds the level and picks each problem from the last answer."
+    "line": "TabletClass Math teaches by video, chapter by chapter. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "teaching-textbooks",
     "name": "Teaching Textbooks",
     "category": "courses",
-    "line": "Teaching Textbooks gives every student the same lessons; AMP chooses each next problem from the learner's answers."
+    "line": "Teaching Textbooks teaches lesson by lesson, in a fixed order. In AMP, every answer sets the next problem."
   },
   {
     "slug": "thinkwell",
     "name": "Thinkwell",
     "category": "courses",
-    "line": "Thinkwell teaches by professor video in a set order. AMP chooses every problem from the learner's last answer."
+    "line": "Thinkwell teaches by video lecture in a set order. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "unlock-math",
     "name": "UnLock Math",
     "category": "courses",
-    "line": "UnLock Math teaches grades 6–12 by video, in course order. AMP finds the level and chooses every problem."
+    "line": "UnLock Math teaches by video lesson, in course order. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "connections-academy",
     "name": "Connections Academy",
     "category": "all-in-one",
-    "line": "Connections Academy is a full-time online public school. AMP is only math, for home or beside any school."
+    "line": "Connections Academy, an online school, teaches math as a course. In AMP, assessment, teaching and review are continuous."
   },
   {
     "slug": "easy-peasy",
     "name": "Easy Peasy All-in-One Homeschool",
     "category": "all-in-one",
-    "line": "Easy Peasy is a free daily plan for every subject. AMP is only math, and it adapts and checks at every answer."
+    "line": "Easy Peasy follows a fixed order of daily lessons. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "k12",
     "name": "K12",
     "category": "all-in-one",
-    "line": "K12 runs full online schools; AMP is only math, chosen from each learner's answers, beside any school."
+    "line": "K12, an online school, teaches math one course at a time. In AMP, assessment, teaching and review are continuous."
   },
   {
     "slug": "miacademy",
     "name": "Miacademy",
     "category": "all-in-one",
-    "line": "Miacademy covers every subject at a grade the parent picks. AMP is only math, set by the learner's answers."
+    "line": "Miacademy teaches math in video lessons at a grade the parent picks. In AMP, assessment and teaching are continuous."
   },
   {
     "slug": "power-homeschool",
     "name": "Power Homeschool",
     "category": "all-in-one",
-    "line": "Power Homeschool teaches many subjects by video from lesson one; AMP teaches only math, at each learner's level."
+    "line": "Power Homeschool teaches video lessons from the start of each course. In AMP, every answer sets the next problem."
   },
   {
     "slug": "study-com",
     "name": "Study.com",
     "category": "all-in-one",
-    "line": "Study.com teaches all subjects by video in a set order. AMP is only math and picks each problem from the last answer."
+    "line": "Study.com teaches math in video lessons, in a set order. In AMP, the problem is the unit and every answer sets the next."
   },
   {
     "slug": "time4learning",
     "name": "Time4Learning",
     "category": "all-in-one",
-    "line": "Time4Learning teaches every core subject at a grade the parent picks; AMP teaches math at the level each answer shows."
+    "line": "Time4Learning teaches math in a fixed order at a grade the parent picks. In AMP, assessment and teaching are continuous."
   },
   {
     "slug": "abeka",
     "name": "Abeka",
     "category": "books",
-    "line": "Abeka moves every child through the same 170 days of lessons. AMP sets a level in each part of math."
+    "line": "Abeka teaches a set daily lesson in a fixed order. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "aops",
     "name": "Art of Problem Solving",
     "category": "books",
-    "line": "AoPS teaches strong students hard problems, course by course. AMP meets any learner at their level, answer by answer."
+    "line": "AoPS teaches hard problems one course at a time. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "beast-academy",
     "name": "Beast Academy",
     "category": "books",
-    "line": "Beast Academy teaches through comics and hard puzzles to age 13. AMP sets each problem and runs to precalculus."
+    "line": "Beast Academy teaches by lesson and chapter, in a set order. In AMP, teaching and review happen at every problem."
   },
   {
     "slug": "bju-press",
     "name": "BJU Press Math",
     "category": "books",
-    "line": "BJU Press Math follows a set course for each grade. AMP chooses every next problem from the learner's own answers."
+    "line": "BJU Press Math is a course of lessons for each grade. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "christian-light",
     "name": "Christian Light Math",
     "category": "books",
-    "line": "Christian Light Math is a low-cost print course the adult teaches and grades. AMP checks and explains every answer."
+    "line": "Christian Light Math is printed lessons an adult teaches and checks. In AMP, both happen at every problem."
   },
   {
     "slug": "horizons-math",
     "name": "Horizons Math",
     "category": "books",
-    "line": "Horizons Math is taught and graded by a parent from the book. AMP checks every answer and plans review per child."
+    "line": "In Horizons Math a parent teaches and grades a daily lesson. In AMP, teaching and checking happen at every problem."
   },
   {
     "slug": "life-of-fred",
     "name": "Life of Fred",
     "category": "books",
-    "line": "Life of Fred teaches math through a story, in one order for every child. AMP sets the level and checks each answer."
+    "line": "Life of Fred teaches math in chapters of a story, in one order. In AMP, teaching and review happen at every problem."
   },
   {
     "slug": "master-books",
     "name": "Math Lessons for a Living Education",
     "category": "books",
-    "line": "A parent teaches Math Lessons for a Living Education from a storybook. AMP places, checks and reviews on its own."
+    "line": "A parent teaches and checks Math Lessons for a Living Education. In AMP, both happen at every problem."
   },
   {
     "slug": "math-mammoth",
     "name": "Math Mammoth",
     "category": "books",
-    "line": "Math Mammoth is a book the adult places, checks and reviews. AMP does all three, one answer at a time."
+    "line": "Math Mammoth teaches by worktext and chapter. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "math-with-confidence",
     "name": "Math with Confidence",
     "category": "books",
-    "line": "Math with Confidence is a scripted K-6 book a parent teaches. AMP finds the level and checks every answer."
+    "line": "In AMP, assessment, teaching and review are continuous. In Math with Confidence a parent teaches each lesson."
   },
   {
     "slug": "math-u-see",
     "name": "Math-U-See",
     "category": "books",
-    "line": "Math-U-See is taught by a parent with blocks and video. AMP checks every answer and picks the next problem itself."
+    "line": "Math-U-See is taught a lesson at a time, by video and a parent. In AMP, assessment, teaching and review are continuous."
   },
   {
     "slug": "rightstart",
     "name": "RightStart Mathematics",
     "category": "books",
-    "line": "RightStart is taught by a parent with an abacus and card games. AMP places, checks and schedules review itself."
+    "line": "In RightStart an adult teaches each lesson with an abacus. In AMP, teaching and assessment happen at every problem."
   },
   {
     "slug": "saxon",
     "name": "Saxon Math",
     "category": "books",
-    "line": "Saxon prints the same mixed review for every child; AMP times each skill's review to the learner's answers."
+    "line": "Saxon teaches from a book in a fixed order, and the adult checks the work. In AMP, every answer sets the next problem."
   },
   {
     "slug": "singapore-math",
     "name": "Singapore Math",
     "category": "books",
-    "line": "Singapore Math is printed books an adult places and grades. AMP places, checks and reviews at every answer."
+    "line": "Singapore Math teaches by half-year book. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "good-and-beautiful-math",
     "name": "The Good and the Beautiful Math",
     "category": "books",
-    "line": "The Good and the Beautiful Math is a book a parent teaches, free as a PDF. AMP places, checks and schedules review."
+    "line": "The Good and the Beautiful Math is daily lessons an adult teaches and grades. In AMP, both happen at every problem."
   },
   {
     "slug": "adaptedmind",
     "name": "AdaptedMind",
     "category": "games",
-    "line": "AdaptedMind makes elementary math practice a game; AMP runs to precalculus on published mastery and review rules."
+    "line": "AdaptedMind places with a pretest and explains misses on video. In AMP, assessment and teaching come at every problem."
   },
   {
     "slug": "mathseeds",
     "name": "Mathseeds",
     "category": "games",
-    "line": "Mathseeds teaches ages 3 to 9 lesson by lesson. AMP picks every problem from the answers, from counting to precalculus."
+    "line": "Mathseeds places a child, then moves lesson by lesson. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "matific",
     "name": "Matific",
     "category": "games",
-    "line": "Matific keeps one learning level per child. AMP keeps one in each of 14 strands and schedules review."
+    "line": "Matific teaches in short games at one learning level. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "prodigy-math",
     "name": "Prodigy Math",
     "category": "games",
-    "line": "Prodigy puts math questions inside a fantasy game; AMP is all math, each answer explained and used to pick the next."
+    "line": "Prodigy puts math questions inside a fantasy game. In AMP, the problem is the unit, and every answer sets the next."
   },
   {
     "slug": "reflex",
     "name": "Reflex",
     "category": "games",
-    "line": "Reflex builds fast recall of math facts. AMP teaches all of math, counting through precalculus, and works beside it."
+    "line": "Reflex builds fast recall of basic facts in games. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "splashlearn",
     "name": "SplashLearn",
     "category": "games",
-    "line": "SplashLearn turns PreK to grade 5 math into games. AMP explains every miss and runs from counting to precalculus."
+    "line": "SplashLearn teaches in games with rewards, to grade 5. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "sumdog",
     "name": "Sumdog",
     "category": "games",
-    "line": "Sumdog wraps practice in games and coins. AMP teaches each skill, explains every miss and schedules review."
+    "line": "Sumdog places with a test, then practice runs in games. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "xtramath",
     "name": "XtraMath",
     "category": "games",
-    "line": "XtraMath drills math facts against a clock. AMP teaches and practices all of math, from counting to precalculus."
+    "line": "XtraMath drills math facts as timed flashcards. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "cuemath",
     "name": "Cuemath",
     "category": "tutoring",
-    "line": "Cuemath sells live tutor classes two or three times a week. AMP is daily practice that places, checks and reviews."
+    "line": "Cuemath teaches in live classes with one tutor. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "kumon",
     "name": "Kumon",
     "category": "tutoring",
-    "line": "Kumon builds calculation speed with repeated worksheets and twice-weekly center visits. AMP explains every answer."
+    "line": "Kumon repeats worksheet sets an instructor grades. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "mathnasium",
     "name": "Mathnasium",
     "category": "tutoring",
-    "line": "Mathnasium teaches in scheduled sessions, in a center or online. AMP gives checked, explained practice any day."
+    "line": "Mathnasium teaches a learning plan in sessions. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "outschool",
     "name": "Outschool",
     "category": "tutoring",
-    "line": "Outschool lists live classes by independent teachers. AMP is one math program that chooses every problem."
+    "line": "Outschool's unit is a class the family chooses. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "russian-school-of-mathematics",
     "name": "Russian School of Mathematics",
     "category": "tutoring",
-    "line": "Russian School of Mathematics teaches a class at one level. AMP sets each problem from the last answer."
+    "line": "RSM teaches a weekly class at the level set for it. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "sylvan",
     "name": "Sylvan Learning",
     "category": "tutoring",
-    "line": "Sylvan tutors in booked sessions, priced by the hour. AMP gives daily practice at home for $59 a month."
+    "line": "Sylvan tests, then teaches a plan in tutoring sessions. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "thinkster-math",
     "name": "Thinkster Math",
     "category": "tutoring",
-    "line": "Thinkster pairs AI practice with a weekly tutor. AMP shows worked steps every time, for $59 a month."
+    "line": "Thinkster pairs AI-made worksheets with a live tutor. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "chatgpt",
     "name": "ChatGPT",
     "category": "ai",
-    "line": "A chatbot answers what a child asks; AMP chooses each problem, checks every answer and schedules review."
+    "line": "ChatGPT answers what a learner asks, in a chat. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "photomath",
     "name": "Photomath",
     "category": "ai",
-    "line": "Photomath solves the problem a learner photographs. AMP chooses the next problem and asks the learner to solve it."
+    "line": "Photomath solves the problem a learner scans. In AMP, assessment, teaching and review happen at every problem."
   },
   {
     "slug": "synthesis-tutor",
     "name": "Synthesis Tutor",
     "category": "ai",
-    "line": "Synthesis Tutor makes K–5 math playful; AMP runs to precalculus, with a stated mastery rule and scheduled review."
+    "line": "Synthesis Tutor teaches in short lessons on one idea. In AMP, assessment, teaching and review happen at every problem."
   }
 ]

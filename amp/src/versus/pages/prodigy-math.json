@@ -3,136 +3,149 @@
   "name": "Prodigy Math",
   "maker": "Prodigy Education",
   "category": "games",
-  "checked": "2026-11-21",
-  "benefit": "Every minute is math",
-  "line": "Prodigy puts math questions inside a fantasy game; AMP is all math, each answer explained and used to pick the next.",
-  "description": "AMP vs Prodigy Math: how much math a child does, what happens after a miss, what Prodigy's own studies show, and why AMP costs more.",
-  "verdict": "Prodigy Math is free for schools, children enjoy it, and teachers say it keeps a class engaged [5][9]. Its questions sit inside a game, and in a study Prodigy ran, fourth graders spent on average about five and a half hours in a whole school year answering them [13]. AMP is all math: every answer is checked and explained, and it sets the next problem, from counting through precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "Prodigy puts math questions inside a fantasy game. In AMP, the problem is the unit, and every answer sets the next.",
+  "description": "AMP vs Prodigy Math: Prodigy sets math questions inside a fantasy game. In AMP, the problem is the unit, with teaching and assessment at every one.",
+  "verdict": "Prodigy Math sets its questions inside a fantasy game, where a right answer casts a spell in a battle [7]. It sets question difficulty from a grade level [8]. In AMP, the problem is the unit. Every answer updates the learner's level in that part of math and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Every minute in AMP is math",
-      "body": "Prodigy's questions sit inside a game world of battles, gear and pets [10]. In one 19-minute session of the free home version, the complaint Fairplay (then CCFC) filed with the FTC in 2021 counted four math problems [10]. In a study Prodigy ran, fourth graders averaged 5.42 hours answering questions across a school year [13]. In AMP one problem follows another, each chosen from the last answer.",
-      "research": ["level"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a film where there is one, the worked answer afterward, and links to the skills it builds on and leads to. In Prodigy the unit is a battle in a fantasy game: a right answer to a math question casts a spell, and wins earn coins, gear and pets [7]. In a study Prodigy ran, fourth graders averaged 5.42 hours answering questions in a school year [8]. Across 55 studies, worked examples improve performance in math [14].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "A wrong answer is followed by teaching",
-      "body": "In a 2020 evaluation funded by Prodigy, Johns Hopkins researchers and teachers noted \"the lack of remediation and actual teaching\" [9][10]. Prodigy has since added video lessons and hint bubbles to the question screen [4][12]. Common Sense Media's review notes limited feedback for incorrect answers [11]. AMP shows the correct answer and the worked steps after every answer. Every problem type has a one-step hint that never gives the answer and a written lesson with a worked example.",
-      "research": ["feedback", "lessons", "hints"]
-    },
-    {
-      "title": "A learned skill has a rule and a schedule",
-      "body": "We found no published mastery rule and no scheduled review of earlier skills in the Prodigy pages we checked [1][4][6]. In AMP a skill is Strong when four of the last five answers are right without help, and two misses in a row send practice back to what it builds on. Learned skills come back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% against 38% on the researchers' test a month later [18].",
-      "research": ["mastery", "review"]
-    },
-    {
-      "title": "In AMP, progress comes only from math",
-      "body": "Prodigy's questions are free for everyone, and memberships change the game around them: members earn 2x to 3x treasure-track rewards, and Plus and Ultra add up to 720 Magicoin a month [2][3]. Fairplay's 2021 complaint alleged that a member with the same number of correct answers reached a higher wizard level, and counted 16 membership ads in that 19-minute session [10]. Prodigy told Education Week it mentions memberships sparingly and that 95 percent of players use the free version [12]. In AMP, points come only from a right answer given without help, and student devices carry no ads and no shop.",
-      "research": ["incentives"]
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps. In Prodigy a student who misses a question gets a second try [8], and the question screen offers video lessons and hint bubbles [2]. We found no worked steps after an answer in the pages we read [1][2]. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect [13].",
+      "research": [
+        "feedback"
+      ]
     },
     {
       "title": "A level for each part of math",
-      "body": "Prodigy sets question difficulty from a grade: the one the student or teacher picks, the placement test's, and a grade its algorithm assesses from recent answers [13]. Its study reports that algorithm grade as one number per student [13]. AMP keeps a separate level in each of 14 strands of math, so a strength in geometry never hides a gap in fractions.",
-      "research": ["level"]
-    },
-    {
-      "title": "From counting to precalculus, and on paper",
-      "body": "Prodigy Math covers grades 1 to 8 [1]. AMP runs from counting in kindergarten through precalculus, 336 skills on one map. Prodigy members can print curated worksheets [7]. AMP prints unlimited workbooks made from the learner's own practice, each with a worked answer key, and results entered from paper count toward the learner's level."
+      "body": "AMP has no separate test. It places a learner from their first answers and keeps a separate level for each part of math, so a learner further along in one part than another gets work at both levels. Prodigy runs a placement test the first time a student plays [2]. After that, question difficulty follows a grade: the one the student or teacher picks, the placement test's, and a grade its algorithm assesses from recent answers [8]. Its study reports the algorithm's grade as one number per student [8].",
+      "research": [
+        "level"
+      ]
     }
   ],
   "rows": {
-    "price": "Questions free. Memberships: Core $9.95 a month or $58.95 a year; Plus $14.95 or $88.95; Ultra $19.95 or $118.95 [2]. 25% off for siblings [3].",
-    "buyers": "Teachers and schools at no cost, including training [5]. Families play free or buy a membership [2].",
-    "range": "Math for grades 1 to 8, with over 1,500 skills, its teacher page says [1][4].",
-    "start": "A placement test the first time a student plays sets a starting grade [4]. Teachers can also get a progress snapshot twice a year [1].",
-    "teaching": "Video lessons, hint bubbles and read-aloud on the question screen [4]. No written lessons or worked explanations after each answer found in the pages we checked [1][4].",
-    "next": "Difficulty follows a grade: chosen, from the placement test, or assessed from recent answers. The algorithm brings in prerequisite or harder skills [13]. Teachers can assign skills [4].",
-    "mastery": "No published mastery rule found [1][6]. A student who misses gets a second try [13].",
-    "review": "No scheduled review of earlier skills found in its published materials [1][4].",
-    "print": "Members can print curated worksheets based on their Practice Areas report [7]. No answer keys found in the pages we checked [7].",
-    "adult": "Little to prepare [9]. Teachers can set assignments, tests, goals and in-game rewards [4]. Parents can set goals and send rewards [6].",
-    "reports": "Free teacher reports by strand and skill, and monthly report cards for parents [4][6]. Members get more, including Frustration Detection on Plus and Ultra [7].",
-    "evidence": "Studies run or paid for by Prodigy, none randomized [9][10][13][14]. Evidence for ESSA lists no qualifying study [16]."
+    "range": "Grades 1 to 8 [1].",
+    "start": "A placement test the first time a student plays sets a starting grade [2]. Teachers can also get a progress snapshot twice a year [1].",
+    "teaching": "Video lessons and hint bubbles on the question screen [2]. A student who misses gets a second try [8].",
+    "next": "Difficulty follows a grade: chosen, from the placement test, or assessed from recent answers. The algorithm brings in prerequisite or harder skills [8]. Teachers can assign skills [2].",
+    "mastery": "No published mastery rule found in the pages we read [1][4].",
+    "review": "No scheduled review of earlier skills found in the pages we read [1][2].",
+    "print": "Some accounts can print curated worksheets based on the learner's Practice Areas report [5]. No answer keys found in the pages we read [5].",
+    "adult": "Little to prepare [6]. Teachers can set assignments, tests, goals and in-game rewards [2]. Parents can set goals and send rewards [4].",
+    "reports": "Teacher reports by strand and skill [2]. Monthly report cards for parents [4].",
+    "evidence": "Studies run or paid for by Prodigy, none randomized [6][7][8][9]. Evidence for ESSA lists no qualifying study [11]."
   },
   "theirs": [
-    "Prodigy Math is a fantasy game for grades 1 to 8 from Prodigy Education [1][8]. Its teacher page says almost 800,000 teachers in more than 70,000 schools trust it [4]. Schools and teachers pay nothing, and families can play free [2][5]. Prodigy calls it a supplemental tool, used beside classroom teaching [5][13].",
-    "A student walks a wizard avatar through the game world. Meeting a monster starts a battle, and casting a spell takes a right answer to a math question. Wins earn coins, gear and pets [10]. A placement test runs the first time a student plays. After that an algorithm adjusts difficulty from recent answers and brings in prerequisite or harder skills [4][13]. The question screen offers video lessons, hint bubbles and read-aloud, and teachers can assign skills, run assessments and set class goals and rewards [4].",
-    "Prodigy says optional purchases by parents fund the whole program [5]. Members get more in-game currency and rewards, member-only areas, extra parent reports and printable worksheets [3][7]."
+    "Prodigy Math is a fantasy game for grades 1 to 8 from Prodigy Education [1]. Prodigy calls it a supplemental tool, used beside classroom teaching [3][8].",
+    "A student walks a wizard avatar through the game world. Meeting a monster starts a battle, and casting a spell takes a right answer to a math question. Wins earn coins, gear and pets [7]. A placement test runs the first time a student plays. After that an algorithm adjusts difficulty from recent answers and brings in prerequisite or harder skills [2][8]. The question screen offers video lessons and hint bubbles, and teachers can assign skills and set class goals and rewards [2]."
   ],
   "credit": [
-    "Children enjoy it. In the Johns Hopkins evaluation, students nearly unanimously said Prodigy made math easier and more fun, and teachers were emphatic about engagement [9]. The Android app holds 4.7 stars from about 69,000 reviews [8].",
-    "Free for every teacher and school, with free training and Clever, ClassLink and Google sign-in [5]. A teacher can start without a budget. AMP's school pilot is free for 30 days, then paid.",
-    "Far lower prices for families: the questions are free, and Core costs $58.95 a year [2]. AMP costs $599 a year for the first child.",
-    "An Android app, parent apps for iOS and Android, and read-aloud on the question screen [4][6][8]. AMP has no app in the stores and does not read problems aloud.",
-    "Outcome studies Prodigy can point to. They were run or paid for by Prodigy and none is randomized [9][10][13][14], but they exist."
+    "In the Johns Hopkins evaluation, students nearly unanimously said it made math easier and more fun [6].",
+    "Its algorithm adjusts difficulty from a student's recent answers and brings in prerequisite skills [8]."
   ],
   "evidence": {
     "theirs": [
-      "Prodigy's page for administrators says it has been independently evaluated and meets ESSA Tier 3 [5]. The Tier 3 sign-off we found sits in a study Prodigy ran itself: 448 fourth graders in one southern U.S. district in 2018–19, with no comparison group [13]. Students averaged 5.42 hours and 662 questions for the year. Accuracy in the game correlated with state test scores (r = .44), the number of questions answered much less (r = .12), and two Johns Hopkins researchers wrote that they believe the study meets Tier 3 [13]. The authors say causal claims cannot be made. In our view, accuracy largely reflects what a child already knew, so a link like this cannot show that the game taught the math.",
-      "Johns Hopkins' Center for Research and Reform in Education evaluated Prodigy in seven schools of one district, 577 K–5 students, with funding from Prodigy [9][10]. The design was correlational. For fourth graders, each extra question answered was linked to 0.00113 more points on the Texas state test, roughly 888 questions for one point. Questions answered at home showed no significant link, and students who used it most did not do significantly better than middle users [9][10].",
-      "The research page's headline, up to 5x greater improvement with heavy use [15], comes from a company study in California that compared school grades by how much they used Prodigy [14]. Its authors call the effects small, found no significant difference within cohorts, and write that the findings do not qualify for ESSA Tier II [14]. Prodigy's 2025 state reports, such as one on Texas grade 3, compare high-usage schools with the state average, with no matched comparison group [17].",
-      "Evidence for ESSA, run by the same Johns Hopkins center, lists Prodigy as \"No studies met inclusion requirements\" [16]. Every study we found was run or paid for by Prodigy, none is randomized, and most compare heavy users with lighter ones. Students who use a program most often differ from the rest before they start."
+      "Prodigy's page for administrators says it has been independently evaluated and meets ESSA Tier 3 [3]. The Tier 3 sign-off we found sits in a study written by Prodigy staff: 448 fourth graders in one southern U.S. district in 2018-19, with no comparison group [8]. Students averaged 5.42 hours and 662 questions for the year. Accuracy in the game correlated with state test scores (r = .44), and the number of questions answered much less (r = .12). Two Johns Hopkins researchers wrote that they believe the study meets Tier 3, and its authors say causal claims cannot be made [8].",
+      "Johns Hopkins' Center for Research and Reform in Education evaluated Prodigy in seven schools of one district, 577 students in kindergarten through grade 5, with funding from Prodigy [6][7]. The design was correlational. For fourth graders, each extra question answered was linked to 0.00113 more points on the Texas state test, roughly 888 questions for one point. Questions answered at home showed no significant link, and students who used it most did not do significantly better than middle users [6][7].",
+      "Prodigy's research page cites up to 5x greater improvement with heavy use [10]. That figure comes from a company study in California that compared school grades by how much they used Prodigy. Its authors call the effects small, found no significant difference within cohorts, and write that the findings do not qualify for ESSA Tier II [9]. Prodigy's 2025 state reports, such as one on Texas grade 3, compare high-usage schools with the state average, with no matched comparison group [12]. Every study we found was run or paid for by Prodigy, and none is randomized. Evidence for ESSA lists Prodigy as \"No studies met inclusion requirements\" [11]."
     ],
     "ours": [
-      "AMP is built on findings that have held up in research. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, the correct answer alone 0.32, and marking right or wrong only 0.05 [19]. Mixed, spaced practice scored 62% against 38% a month later in a randomized trial that meets What Works Clearinghouse standards without reservations [18]. We expect a program that spends every minute on problems, and explains every one, to do more for a child's math than practice set inside a game. That is our belief, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect (0.49), against 0.32 for giving the correct answer and 0.05 for marking right or wrong only [13]. Across 55 studies, worked examples improve mathematics performance [14]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and the code is public."
     ]
   },
   "fit": {
     "them": [
-      "You teach grades 1 to 8 and want a free practice station that takes little preparation [5][9].",
-      "Your child practices math gladly inside a game world, and that matters more to you than how much math fits in an hour.",
-      "You want to spend under $60 a year, or nothing at all [2].",
-      "You need an Android app, or questions read aloud [4][8]."
+      "Your child practices math most gladly inside a game world."
     ],
     "amp": [
-      "You want every minute of practice to be math, with no game world, shop or ads.",
-      "You want every miss explained with worked steps, and a lesson one tap away.",
-      "You want a clear rule for when a skill is learned, and review that brings it back on a schedule.",
-      "Your child is in kindergarten or past grade 8.",
-      "You want printed workbooks made from your child's own practice, with answer keys."
+      "You want every problem to carry its own hint, lesson and worked answer.",
+      "You want every answer followed by the worked steps.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math.",
+      "Your learner is in kindergarten or past grade 8."
     ]
   },
   "questions": [
     {
-      "question": "Is Prodigy Math free?",
-      "answer": "Its math questions are free, and schools pay nothing [2][5]. Memberships cost $58.95 to $118.95 a year, or $9.95 to $19.95 a month, and add game rewards, member areas, extra reports and printable worksheets [2][3][7]."
-    },
-    {
-      "question": "Why does AMP cost more than Prodigy?",
-      "answer": "AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more, with a full refund within 30 days. The price buys a program that finds the level in each strand, chooses and explains every problem, schedules review, prints workbooks and runs from counting through precalculus. The first 100 answers and 5 workbooks are free, with no card."
+      "question": "How is AMP different from Prodigy Math?",
+      "answer": "Prodigy sets math questions inside a fantasy game, where a right answer casts a spell [7], and sets question difficulty from a grade level [8]. In AMP the problem is the unit: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
       "question": "Does Prodigy Math work?",
-      "answer": "Every study we found was run or paid for by Prodigy, and none is randomized [9][10][13][14]. The Johns Hopkins evaluation linked roughly 888 questions to one point on the Texas state test [9][10]. Evidence for ESSA lists Prodigy without a rating [16]."
+      "answer": "Every study we found was run or paid for by Prodigy, and none is randomized [6][7][8][9]. The Johns Hopkins evaluation linked roughly 888 questions to one point on the Texas state test [6]. Evidence for ESSA lists no study of Prodigy that met its requirements [11]."
     },
     {
-      "question": "My child loves Prodigy. Can we use AMP too?",
-      "answer": "Yes. They are separate programs. AMP places the learner within the first 24 problems and keeps a level in each part of math, and the first 100 answers are free."
-    },
-    {
-      "question": "Does AMP have games or rewards like Prodigy?",
-      "answer": "No. AMP has no game world, avatars or shop. A right answer given without help earns 1 XP and fills part of that skill's bar, and small animations mark progress."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    { "title": "Prodigy Math product page and FAQ (Prodigy Education)", "url": "https://www.prodigygame.com/main-en/prodigy-math" },
-    { "title": "Prodigy membership prices for parents (Prodigy Education)", "url": "https://prodigygame.com/main-en/parents-learn-more-prices" },
-    { "title": "Prodigy memberships: plans, comparison and FAQ (Prodigy Education)", "url": "https://prodigygame.com/membership" },
-    { "title": "Prodigy for teachers (Prodigy Education)", "url": "https://www.prodigygame.com/main-en/teachers" },
-    { "title": "Prodigy for administrators (Prodigy Education)", "url": "https://www.prodigygame.com/main-en/administrators" },
-    { "title": "Prodigy for parents (Prodigy Education)", "url": "https://www.prodigygame.com/main-en/parents" },
-    { "title": "Choosing a Prodigy membership (Prodigy blog, December 2024)", "url": "https://prodigygame.com/main-en/blog/choosing-prodigy-membership" },
-    { "title": "Prodigy Math: Kids Game (Google Play)", "url": "https://play.google.com/store/apps/details?id=com.prodigygame.prodigy" },
-    { "title": "Johns Hopkins Center for Research and Reform in Education (January 2020), Evaluation of Prodigy: Key Findings", "url": "https://marketing.prodigygame.com/Prodigy-Evaluation-Key-Findings.pdf" },
-    { "title": "Fairplay/CCFC (2021), request for FTC investigation of Prodigy", "url": "https://fairplayforkids.org/wp-content/uploads/2021/02/Prodigy_Complaint_Feb21.pdf" },
-    { "title": "Prodigy Math Game review (Common Sense Media)", "url": "https://www.commonsensemedia.org/app-reviews/prodigy-math-game" },
-    { "title": "Popular interactive math game Prodigy is target of complaint to Federal Trade Commission (Education Week, February 2021)", "url": "https://www.edweek.org/technology/popular-interactive-math-game-prodigy-is-target-of-complaint-to-federal-trade-commission/2021/02" },
-    { "title": "Chen, DeSimone & Mohammed (2020), Evaluation of Prodigy: a correlational study, with the CRRE Tier 3 review (Prodigy Education)", "url": "https://marketing.prodigygame.com/evaluation-of-prodigy-test-prep-findings.pdf" },
-    { "title": "Oskin & Chen, Efficacy analysis: retrospective QED using CAASPP data (Prodigy Education)", "url": "https://marketing.prodigygame.com/California+Efficacy+Report+-+Updated.pdf" },
-    { "title": "Prodigy research (Prodigy Education)", "url": "https://www.prodigygame.com/main-en/research" },
-    { "title": "Prodigy (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/prodigy/" },
-    { "title": "Texas STAAR Grade 3 efficacy analysis, 2023–24 (Prodigy Education, 2025)", "url": "https://marketing.prodigygame.com/Texas-Grade-3-Efficacy-Report-White-Paper.pdf" },
-    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" }
+    {
+      "title": "Prodigy Math product page and FAQ (Prodigy Education)",
+      "url": "https://www.prodigygame.com/main-en/prodigy-math"
+    },
+    {
+      "title": "Prodigy for teachers (Prodigy Education)",
+      "url": "https://www.prodigygame.com/main-en/teachers"
+    },
+    {
+      "title": "Prodigy for administrators (Prodigy Education)",
+      "url": "https://www.prodigygame.com/main-en/administrators"
+    },
+    {
+      "title": "Prodigy for parents (Prodigy Education)",
+      "url": "https://www.prodigygame.com/main-en/parents"
+    },
+    {
+      "title": "Choosing a Prodigy membership (Prodigy blog, December 2024)",
+      "url": "https://prodigygame.com/main-en/blog/choosing-prodigy-membership"
+    },
+    {
+      "title": "Johns Hopkins Center for Research and Reform in Education (January 2020), Evaluation of Prodigy: Key Findings",
+      "url": "https://marketing.prodigygame.com/Prodigy-Evaluation-Key-Findings.pdf"
+    },
+    {
+      "title": "Fairplay/CCFC (2021), request for FTC investigation of Prodigy",
+      "url": "https://fairplayforkids.org/wp-content/uploads/2021/02/Prodigy_Complaint_Feb21.pdf"
+    },
+    {
+      "title": "Chen, DeSimone & Mohammed (2020), Evaluation of Prodigy: a correlational study, with the CRRE Tier 3 review (Prodigy Education)",
+      "url": "https://marketing.prodigygame.com/evaluation-of-prodigy-test-prep-findings.pdf"
+    },
+    {
+      "title": "Oskin & Chen, Efficacy analysis: retrospective QED using CAASPP data (Prodigy Education)",
+      "url": "https://marketing.prodigygame.com/California+Efficacy+Report+-+Updated.pdf"
+    },
+    {
+      "title": "Prodigy research (Prodigy Education)",
+      "url": "https://www.prodigygame.com/main-en/research"
+    },
+    {
+      "title": "Prodigy (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/prodigy/"
+    },
+    {
+      "title": "Texas STAAR Grade 3 efficacy analysis, 2023-24 (Prodigy Education, 2025)",
+      "url": "https://marketing.prodigygame.com/Texas-Grade-3-Efficacy-Report-White-Paper.pdf"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
   ]
 }
