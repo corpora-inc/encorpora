@@ -10,8 +10,8 @@ import { z } from "zod";
 import { stateNames } from "../web/us-states.js";
 
 export const pilotRoles = {
-  parent: "A parent or guardian",
-  educator: "A teacher or school leader",
+  parent: "Parent",
+  educator: "Teacher or school",
 } as const;
 export const pilotSettings = {
   home: "At home (including ESA families)",

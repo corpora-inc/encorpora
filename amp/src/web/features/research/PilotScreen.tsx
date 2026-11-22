@@ -28,53 +28,47 @@ import { TextField } from "../../ui/TextField";
 import { RootLink } from "../../nav/root";
 import { joinPilotList } from "./api";
 import { ResearchFrame } from "./ResearchFrame";
-import research from "./Research.module.css";
 import styles from "./Pilot.module.css";
 
-/** `/research/pilot`: the pilot study's interest list, in the research pages'
- * frame. What taking part means comes first, then the form. The words live in
- * `src/research/report.ts` (`pilotPage`), from RR-3. */
+/** `/research/pilot`: the pilot study's interest list. One centred column,
+ * as a sign-up page is: the title, what taking part means, then the form, one
+ * field to a row. The words live in `src/research/report.ts` (`pilotPage`),
+ * from RR-3. */
 export function PilotScreen() {
   return (
     <ResearchFrame>
-      <section className={styles.intro} aria-labelledby="pilot-title">
-        <h1 id="pilot-title" className={research.title}>
-          {page.title}
-        </h1>
-        <p className={research.lede}>{page.lede}</p>
-        <p className={styles.status}>
-          {page.status} <Link to="/research">The research behind AMP</Link>
-        </p>
-      </section>
+      <div className={styles.column}>
+        <div className={styles.intro}>
+          <h1 className={styles.title}>{page.title}</h1>
+          <p className={styles.lede}>{page.lede}</p>
+          <p className={styles.status}>
+            {page.status} <Link to="/research">The research behind AMP</Link>
+          </p>
+        </div>
 
-      <section className={research.topic} aria-labelledby="pilot-exchange">
-        <h2 id="pilot-exchange">{page.exchange.heading}</h2>
-        <div className={research.topicBody}>
-          <div className={styles.exchange}>
-            {[page.exchange.receive, page.exchange.provide].map((side) => (
-              <div key={side.label} className={styles.side}>
-                <h3>{side.label}</h3>
-                <ul>
-                  {side.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+        <section className={styles.section} aria-labelledby="pilot-exchange">
+          <h2 id="pilot-exchange">{page.exchange.heading}</h2>
+          {[page.exchange.receive, page.exchange.provide].map((side) => (
+            <div key={side.label} className={styles.side}>
+              <h3>{side.label}</h3>
+              <ul>
+                {side.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <p>
             {page.exchange.now} <RootLink>Start AMP free</RootLink>
           </p>
-        </div>
-      </section>
+        </section>
 
-      <section className={research.topic} aria-labelledby="pilot-join">
-        <h2 id="pilot-join">{page.form.heading}</h2>
-        <div className={research.topicBody}>
+        <section className={styles.card} aria-labelledby="pilot-join">
+          <h2 id="pilot-join">{page.form.heading}</h2>
           <PilotForm />
           <p className={styles.privacy}>{page.form.privacy}</p>
-        </div>
-      </section>
+        </section>
+      </div>
     </ResearchFrame>
   );
 }
@@ -183,47 +177,31 @@ function PilotForm() {
           onChange={setRole}
         />
       </Group>
-      <div className={styles.pair}>
-        <TextField
-          label="Your name (optional)"
-          autoComplete="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          maxLength={100}
-        />
-        <TextField
-          label="Your email"
-          type="email"
-          autoComplete="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          maxLength={254}
-          error={errors.email}
-        />
-      </div>
-      <div className={styles.pair}>
-        <TextField
-          label={learnersLabel}
-          inputMode="numeric"
-          placeholder="e.g. 2"
-          value={learners}
-          onChange={(event) => setLearners(event.target.value)}
-          maxLength={7}
-          error={errors.learners}
-        />
-        <Choice
-          label="Where they learn math"
-          value={setting}
-          onValueChange={setSetting}
-          error={errors.setting}
-        >
-          {options(pilotSettings).map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </Choice>
-      </div>
+      <TextField
+        label="Your email"
+        type="email"
+        autoComplete="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        maxLength={254}
+        error={errors.email}
+      />
+      <TextField
+        label="Your name (optional)"
+        autoComplete="name"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+        maxLength={100}
+      />
+      <TextField
+        label={learnersLabel}
+        inputMode="numeric"
+        placeholder="e.g. 2"
+        value={learners}
+        onChange={(event) => setLearners(event.target.value)}
+        maxLength={7}
+        error={errors.learners}
+      />
       <Group label="Grades" error={errors.bands}>
         <Chips
           label="Grades"
@@ -232,26 +210,30 @@ function PilotForm() {
           onChange={setBands}
         />
       </Group>
-      <div className={styles.pair}>
-        <Choice
-          label="State"
-          value={place}
-          onValueChange={setPlace}
-          error={errors.place}
-        >
-          {places.map(([code, label]) => (
-            <option key={code} value={code}>
-              {label}
-            </option>
-          ))}
-        </Choice>
-        <TextField
-          label="How you heard about the study (optional)"
-          value={source}
-          onChange={(event) => setSource(event.target.value)}
-          maxLength={300}
-        />
-      </div>
+      <Choice
+        label="Where they learn math"
+        value={setting}
+        onValueChange={setSetting}
+        error={errors.setting}
+      >
+        {options(pilotSettings).map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Choice>
+      <Choice
+        label="State"
+        value={place}
+        onValueChange={setPlace}
+        error={errors.place}
+      >
+        {places.map(([code, label]) => (
+          <option key={code} value={code}>
+            {label}
+          </option>
+        ))}
+      </Choice>
       <Group label="Math tests they already take (optional)">
         <Chips
           label="Math tests they already take"
@@ -260,11 +242,17 @@ function PilotForm() {
           onChange={setTests}
         />
       </Group>
+      <TextField
+        label="How you heard about the study (optional)"
+        value={source}
+        onChange={(event) => setSource(event.target.value)}
+        maxLength={300}
+      />
       <Checkbox checked={news} onChange={setNews}>
         Also send me AMP’s occasional news.
       </Checkbox>
       {/* Left empty by people; a form filler that completes it is thanked
-            and nothing is saved. */}
+          and nothing is saved. */}
       <Honeypot value={website} onChange={setWebsite} />
       <div className={styles.send}>
         <Button type="submit" variant="primary" aria-busy={busy || undefined}>
