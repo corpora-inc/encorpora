@@ -794,21 +794,53 @@ async function verifyLessonRecovery() {
     await page.close();
   }
 }
+/** Resolves once the page has not scrolled for `quietMs`. The popover layer
+ * (ui/popover-owner.ts) closes an open picker on any scroll, so a picker
+ * opened while a layer's scroll restoration is still landing is closed under
+ * the pointer: its option detaches and the click waits out its timeout. */
+async function scrollSettled(page: Page, quietMs = 500) {
+  // A string, not a function: the TypeScript runner's name helper does not
+  // exist in the page.
+  await page.evaluate(`new Promise((resolve) => {
+    let at = scrollY;
+    let since = performance.now();
+    const tick = () => {
+      if (scrollY !== at) {
+        at = scrollY;
+        since = performance.now();
+      } else if (performance.now() - since >= ${quietMs}) return resolve();
+      requestAnimationFrame(tick);
+    };
+    tick();
+  })`);
+}
 /** Chooses `value` from one of the map's designed pickers (never a native
- * select): open its button, then click the option. */
+ * select): open its button, then click the option. The picker opens only
+ * once the page has stopped scrolling; if a late scroll still closes it
+ * before the click lands (that is its designed behavior), it is opened
+ * again, a bounded number of times. */
 async function choose(page: Page, label: string, value: string) {
   const button = page.getByRole("button", { name: new RegExp(`^${label}`) });
   assert.equal(await button.getAttribute("aria-haspopup"), "listbox");
-  await button.click();
   const list = page.getByRole("listbox", { name: label, exact: true });
-  try {
-    await list.locator(`[role="option"][data-value="${value}"]`).click();
-  } catch (error) {
-    await page.screenshot({
-      path: `${output}/picker-failure.png`,
-      fullPage: true,
-    });
-    throw error;
+  for (let attempt = 1; ; attempt++) {
+    await scrollSettled(page);
+    if ((await button.getAttribute("aria-expanded")) !== "true")
+      await button.click();
+    try {
+      await list
+        .locator(`[role="option"][data-value="${value}"]`)
+        .click({ timeout: 5_000 });
+      break;
+    } catch (error) {
+      if (attempt === 3) {
+        await page.screenshot({
+          path: `${output}/picker-failure.png`,
+          fullPage: true,
+        });
+        throw error;
+      }
+    }
   }
   await list.waitFor({ state: "detached" });
   // Another learner is another address: the picker shows the choice once
