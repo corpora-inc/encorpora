@@ -348,6 +348,10 @@
 }
 .feedback-body .feedback-steps,
 .feedback-body .feedback-head:has(.solution-answer[data-long]) {
+  /* Never shrunk: the body scrolls instead. A long answer's head may shrink
+     in the side-by-side sheet (above); here, with no minimum, it collapsed
+     to nothing at the sheet's limit and the steps drew over it. */
+  flex: none;
   min-height: 0;
   overflow: visible;
   margin-block: 0;
