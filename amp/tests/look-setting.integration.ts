@@ -69,6 +69,7 @@ test(
         look: string | null;
         effectiveLook: string;
         lookLocked: boolean;
+        lookHue: number | null;
       };
     };
     /** Sends a look change as the one holding `token`. */

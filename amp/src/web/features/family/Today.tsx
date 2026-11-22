@@ -271,18 +271,24 @@ export function ChildAction({
   );
 }
 
+/** The family's week on this screen (Dashboard.tsx `FamilyWeekSummary`). */
+const FAMILY_WEEK = "family-week";
+
 /** Where a to-do's tab opens, straight there: a one-child family's child
- * page (practice time at its part); with several, the children are here. */
+ * page (practice time at its part). With several children, time is this
+ * screen's own week; a tab that would only reopen this screen has nowhere
+ * to go, and gets no button. */
 function tabTarget(
   tab: string,
   only: string | null,
-): { leaf: string; hash?: string } {
+): { leaf: string; hash?: string } | null {
   if ((tab === "map" || tab === "time") && only)
     return {
       leaf: `kids/${only}`,
       ...(tab === "time" ? { hash: "child-time" } : {}),
     };
-  return { leaf: tab === "settings" ? "settings" : "" };
+  if (tab === "time") return { leaf: "", hash: FAMILY_WEEK };
+  return tab === "settings" ? { leaf: "settings" } : null;
 }
 
 /** The server's to-dos for the family's own children, in a parent's words:
@@ -327,7 +333,9 @@ function familyEntries(
           {action.label}
         </Button>
       );
-    const { leaf, hash } = tabTarget(action.tab, only);
+    const target = tabTarget(action.tab, only);
+    if (!target) return null;
+    const { leaf, hash } = target;
     return (
       <Link
         to="/$"
