@@ -117,7 +117,8 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-setup",
+  // Its own dependency cache; a shared node_modules names one outside it.
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-setup",
   server: {
     // Other work edits the source while a check runs: no live reloads mid-check.
     hmr: false,
@@ -234,16 +235,17 @@ const ledgerRows = (page: Page) =>
 /** What a failed run was looking at. */
 const last: { page: Page | null } = { page: null };
 
-/** The invitation's one way forward (InviteScreen, e1ff913b8): "Continue"
- * opens the sign-in, which signs in or creates; a person with no account
- * takes its "Create an account" to the sign-up. */
+/** The invitation's one way forward (InviteScreen): "Continue" opens the
+ * screen the invited address needs. Nobody here has an account yet, so it
+ * opens creating one, with nothing to choose on the way. */
 async function continueToSignUp(page: Page) {
   await page.getByRole("link", { name: "Continue", exact: true }).click();
-  await page.waitForURL(/\/sign-in/);
-  await page
-    .getByRole("button", { name: "Create an account", exact: true })
-    .click();
-  await page.waitForURL(/\/sign-up/);
+  await page.waitForURL(/\/sign-(in|up)/);
+  assert.equal(
+    new URL(page.url()).pathname,
+    "/sign-up",
+    "an invited address with no account opens creating one",
+  );
 }
 async function signUp(page: Page, email: string) {
   // The default on a device with passkeys; a password is the second choice.

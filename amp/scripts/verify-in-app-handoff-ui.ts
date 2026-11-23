@@ -19,7 +19,9 @@ const output = arg("shots") || "artifacts/in-app-auth";
 await mkdir(output, { recursive: true });
 const vite = await createServer({
   logLevel: "error",
-  cacheDir: "node_modules/.vite-in-app-handoff",
+  // Its own dependency cache; a shared node_modules names one outside it.
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-in-app-handoff",
   plugins: [
     {
       name: "local-api-only",
@@ -113,8 +115,10 @@ async function context(inApp: false | string, method = "") {
             status: "open",
             orgName: "Review School",
             role: "teacher",
-            email: null,
+            email: "parent@example.test",
             setup: false,
+            // The invited address has an account when it has a method.
+            hasAccount: !!method,
           },
         },
       });
@@ -267,8 +271,9 @@ try {
     for (const method of ["", "google", "passkey"]) {
       const destination =
         kind === "school-invite" ? "/school/invite" : "/family/approve";
-      // The school invitation has one way forward, "Continue" (e1ff913b8);
-      // the family approval still offers account creation and sign-in.
+      // The school invitation has one way forward, "Continue", which opens
+      // the screen its address needs: creating an account, or signing in
+      // when it has one. The family approval still offers both.
       const forward = (haveOne: boolean) =>
         kind === "school-invite"
           ? "Continue"
@@ -276,9 +281,9 @@ try {
             ? "I already have one"
             : "Create an account";
       const fragment = "r".repeat(43) + "." + "s".repeat(43);
-      // "Continue" opens the sign-in, which signs in or creates; a person
-      // with no account takes its "Create an account" button (1 of the
-      // sign-in's own steps, SignInScreen "New to AMP?").
+      // An invited address with an account opens the sign-in; its "Create
+      // an account" (SignInScreen "New to AMP?") still leads to creating
+      // one, which answers with the method that account uses.
       const createHere = async (page: import("playwright").Page) => {
         if (kind === "school-invite")
           await page
@@ -364,7 +369,6 @@ try {
           fragment,
         );
         await q.locator('[data-provider="google"]').waitFor();
-        if (!method) await createHere(q);
         await q
           .getByRole("button", {
             name: method
