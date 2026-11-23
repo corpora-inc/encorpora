@@ -714,6 +714,82 @@ test(
     );
 
     await t.test(
+      "practice here is only for the family's own children: another family's learner is refused and nothing starts",
+      async () => {
+        // A parent's screen names the child to hand the device to by an id
+        // in its address; an id edited to another family's child, to
+        // another adult's own learner or to nobody starts no session.
+        const mine = await user("Odile Fixture");
+        const theirs = await user("Bram Fixture");
+        await consent(mine);
+        await consent(theirs);
+        const child = async (parent: string, name: string) => {
+          const made = await post("/api/v1/learners", parent, {
+            name,
+            birthYear: 2016,
+          });
+          assert.equal(made.statusCode, 201, made.body);
+          return made.json().id as string;
+        };
+        const nell = await child(mine, "Nell");
+        const otto = await child(theirs, "Otto");
+        // The other parent practices themselves too: their own learner.
+        const own = await post("/api/v1/me/practice", theirs, {
+          start: "algebra-1",
+          timezone: "America/Chicago",
+        });
+        assert.equal(own.statusCode, 201, own.body);
+        const adult = own.json().learnerId as string;
+        const started = () => count("amp_student_sessions");
+        const before = await started();
+        for (const learner of [otto, adult, randomUUID()]) {
+          const refused = await post(
+            `/api/v1/family/learners/${learner}/practice-here`,
+            mine,
+          );
+          assert.equal(refused.statusCode, 404, refused.body);
+          assert.match(refused.body, /learner_not_found/);
+          assert.equal(refused.json().token, undefined);
+        }
+        // Their own adult learner is nobody's child either.
+        assert.equal(
+          (await post(`/api/v1/family/learners/${adult}/practice-here`, theirs))
+            .statusCode,
+          404,
+        );
+        assert.equal(await started(), before, "no session was started");
+        // Each family's own child starts, as that child and nobody else.
+        for (const [parent, learner] of [
+          [mine, nell],
+          [theirs, otto],
+        ] as const) {
+          const here = await post(
+            `/api/v1/family/learners/${learner}/practice-here`,
+            parent,
+          );
+          assert.equal(here.statusCode, 201, here.body);
+          assert.deepEqual(
+            (await me(here.json().token)).learners.map(
+              (l: { id: string }) => l.id,
+            ),
+            [learner],
+          );
+          // The child's own session reads no other family's learner.
+          assert.notEqual(
+            (
+              await get(
+                `/api/v1/learners/${learner === nell ? otto : nell}/progress`,
+                here.json().token,
+              )
+            ).statusCode,
+            200,
+          );
+        }
+        assert.equal(await started(), before + 2);
+      },
+    );
+
+    await t.test(
       "parent child-detail writes advance an expired family year",
       async () => {
         const parent = await user("Write rollover Fixture");
