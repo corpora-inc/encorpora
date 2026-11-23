@@ -53,12 +53,16 @@ test("anyone the app decides for goes straight to the app", () => {
   noteSignedIn(false);
   expect(mayShowPitch({})).toBe(true);
 
+  // A student's device, as its page loads: a tab looks for the sign-in this
+  // browser remembers once per load (lib/student-device.ts).
+  sessionStorage.clear();
   localStorage.setItem(
     "amp.student",
     JSON.stringify({ accountId: "school:student-1", token: "st_synthetic" }),
   );
   expect(mayShowPitch({}), "a student's device").toBe(false);
   localStorage.clear();
+  sessionStorage.clear();
 
   document.cookie = "amp.provider=1";
   expect(mayShowPitch({}), "a school sign-in").toBe(false);

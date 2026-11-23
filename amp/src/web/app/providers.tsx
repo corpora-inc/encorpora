@@ -15,7 +15,7 @@ import { clearOnboardingDraft } from "../features/onboarding/state";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
-import { watchStudentIdle } from "../lib/student-device";
+import { settleTab, watchStudentIdle } from "../lib/student-device";
 import {
   meKey,
   meOptions,
@@ -123,6 +123,9 @@ function SessionProviders({
         // renewal refuses mutations until its own /me confirms. If that
         // fails, the shell's content guard keeps the screen out.
         retireSession(previous, session);
+        // A sign-in made in this tab makes it that person's, as the session
+        // check does (lib/query.ts `sessionOptions`).
+        settleTab(session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         // Leaving an account re-guards the screen on view (boot.tsx). A
