@@ -305,7 +305,6 @@ const blankRow = (student: Student): LiveRow => ({
   lastAnswerAt: null,
   lastHelpAt: null,
   lastSeenAt: null,
-  seenToday: false,
 });
 
 export type CockpitState = {
@@ -328,7 +327,6 @@ export function applyEvent(
       case "sign-in":
         return {
           ...row,
-          seenToday: true,
           firstSeenAt: row.firstSeenAt ?? when,
           lastSeenAt: when,
         };
@@ -355,7 +353,6 @@ export function applyEvent(
           firstAnswerAt: row.firstAnswerAt ?? when,
           lastAnswerAt: when,
           lastSeenAt: when,
-          seenToday: true,
           firstSeenAt: row.firstSeenAt ?? when,
         };
       }
@@ -365,7 +362,6 @@ export function applyEvent(
           [event.help]: row[event.help] + 1,
           lastHelpAt: when,
           lastSeenAt: when,
-          seenToday: true,
           firstSeenAt: row.firstSeenAt ?? when,
         };
       default:
