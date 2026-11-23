@@ -118,7 +118,7 @@ test("a quiet week says when they last practiced; a new child, not started", () 
     />,
   );
   expect(document.querySelector("[data-week-quiet]")!.textContent).toBe(
-    "No practice yet this week · last practiced Nov 12",
+    "Last practiced Nov 12",
   );
   rerender(
     <ChildWeekFacts

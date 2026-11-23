@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { audioProblems, cutOut, EDGE, envelope, even, loneSounds, loudness, silence, SPEAKING_LUFS, SR } from "./audio";
-import { inSilence, Voice } from "./fixtures/voice-signals";
+import { audioProblems, cutOut, decayingTail, fadeAround, fadeTakeEnd, TAKE_FADE, EDGE, envelope, even, loneSounds, loudness, silence, SPEAKING_LUFS, SR } from "./audio";
+import { endingVowel, inSilence, Voice } from "./fixtures/voice-signals";
 
 /** The loudest 2.5 ms (RMS) touching any stretch of digital silence: what the edge scan measures. */
 function edgeLevel(pcm: Int16Array) {
@@ -149,5 +149,31 @@ describe("the standalone scan", () => {
   it("does not list a loud or long hiss: the s of a word after its closure", () => {
     const v = new Voice().rest(0.1).say(0.3).rest(0.09).hiss(0.18, -27).rest(0.3);
     expect(loneSounds(inSilence(v.pcm()))).toEqual([]);
+  });
+});
+
+
+describe("a take ending at the decay of its final word", () => {
+  it.each([0, 137, 400])("finishes the decay cleanly, including %i partial-window samples", (extra) => {
+    const pcm = endingVowel(extra), end = 0.45 + pcm.length / SR;
+    const edits = [{ at: end, what: "pause" }, { at: end + 0.05, what: "turn" }];
+    const short = pcm.slice();
+    fadeAround(short, short.length, true, false, TAKE_FADE);
+    expect(audioProblems(inSilence(short, 0.45, 0.05), edits).some((p) => /not in silence/.test(p))).toBe(true);
+    expect(decayingTail(pcm)).toBe(true);
+    const fixed = pcm.slice();
+    fadeTakeEnd(fixed);
+    expect(fixed.slice(0, -2 * TAKE_FADE)).toEqual(pcm.slice(0, -2 * TAKE_FADE));
+    expect(audioProblems(inSilence(fixed, 0.45, 0.05), edits)).toEqual([]);
+    expect(edgeLevel(inSilence(fixed))).toBeLessThan(EDGE);
+  });
+
+  it("does not treat a sustained or rising cut-off word as a completed decay", () => {
+    for (const pcm of [tones([[200, 1]], -21, 0.5), new Voice().rest(0.1).say(0.6).pcm().slice(0, Math.round(0.3 * SR))]) {
+      expect(decayingTail(pcm)).toBe(false);
+      fadeTakeEnd(pcm);
+      expect(audioProblems(inSilence(pcm), [{ at: 0.45 + pcm.length / SR, what: "cut word" }]).length).toBeGreaterThan(0);
+    }
+    expect(decayingTail(new Int16Array(100))).toBe(false);
   });
 });

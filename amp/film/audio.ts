@@ -27,7 +27,7 @@ export const FLOOR = 0.0035;
 export const EDGE = 0.008;
 const HOP = SR / 100;
 const FADE = Math.round(SR * 0.005);
-/** Fade at the very start and end of a take. */
+/** Fade at the very start and end of a take with a quiet boundary. */
 export const TAKE_FADE = Math.round(SR * 0.02);
 
 /**
@@ -159,6 +159,24 @@ export function fadeAround(pcm: Int16Array, at: number, before = true, after = t
     if (before && at - 1 - k >= 0 && at - 1 - k < pcm.length) pcm[at - 1 - k] = Math.round(pcm[at - 1 - k]! * g);
     if (after && at + k < pcm.length) pcm[at + k] = Math.round(pcm[at + k]! * g);
   }
+}
+
+/**
+ * A completed vowel may decay right up to EOF instead of leaving room tone.
+ * Require five falling 10 ms windows and at least 12 dB of decay before using
+ * a longer fade. A sustained or rising word at EOF must still fail the check.
+ * Align these windows to EOF so a partial final analysis window is not lost.
+ */
+export function decayingTail(pcm: Int16Array) {
+  if (pcm.length < 5 * HOP) return false;
+  const tail = envelope(pcm.subarray(pcm.length - 5 * HOP));
+  return tail[0]! > 0 && tail[4]! < tail[0]! / 4 &&
+    tail.every((level, i) => i === 0 || level < tail[i - 1]!);
+}
+
+/** Finish a naturally decaying word over 40 ms; otherwise keep the quiet-edge fade. */
+export function fadeTakeEnd(pcm: Int16Array) {
+  fadeAround(pcm, pcm.length, true, false, decayingTail(pcm) ? 2 * TAKE_FADE : TAKE_FADE);
 }
 
 /**

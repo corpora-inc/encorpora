@@ -46,14 +46,19 @@
   padding: 0;
   list-style: none;
 }
+/* The list decides by its own width whether a child's row is one line or
+   two (LearnerRow.module.css `learner-rows`). */
+.list {
+  container: learner-rows / inline-size;
+}
+/* Every block starts the same distance under its hairline, the first too:
+   a row's button never sits on the line. */
 .block {
   display: grid;
   min-width: 0;
+  padding-top: var(--space-2);
   padding-bottom: var(--space-5);
   border-top: 1px solid var(--color-border-strong);
-}
-.block + .block {
-  padding-top: var(--space-2);
 }
 .list > [data-family-self] {
   border-top: 1px solid var(--color-border-strong);

@@ -67,6 +67,23 @@
   }
 }
 
+/* A list narrower than one line needs (a family's children beside the day's
+   column at 1024 px, or alone at 600 px) names itself `learner-rows`: its
+   rows keep the phone's two lines, so no figure is ever cut short. */
+@container learner-rows (max-width: 699px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto var(--learner-action, auto);
+    grid-template-areas:
+      "name status action"
+      "facts facts facts";
+    grid-template-rows: 44px 20px;
+    height: 64px;
+  }
+  .facts {
+    font-size: var(--text-table-small);
+  }
+}
+
 @media (min-width: 1024px) {
   .dense {
     grid-template-rows: 44px;
