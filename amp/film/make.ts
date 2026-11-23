@@ -21,7 +21,7 @@ import { createServer } from "vite";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { problemLesson } from "../src/content/problem-lessons";
-import { audioProblems, cutOut, envelope, even, fadeAround, FLOOR, quietRuns, SR, stamp, TAKE_FADE } from "./audio";
+import { audioProblems, cutOut, envelope, even, fadeAround, fadeTakeEnd, FLOOR, quietRuns, SR, stamp, TAKE_FADE } from "./audio";
 import { goodTake, heardWords, pcmOf, wordsOf } from "./voice";
 import { describe, JOIN, repairTake, strayPlan } from "./strays";
 import { scriptSchema, type BeatTime, type Script, type Timing, type WordTime } from "./schema";
@@ -110,7 +110,7 @@ function tighten(pcm: Int16Array, words: WordTime[], maxGap = 0.34) {
   }
   const { pcm: out, joins, map } = cutOut(pcm, cuts);
   fadeAround(out, 0, false, true, TAKE_FADE);
-  fadeAround(out, out.length, true, false, TAKE_FADE);
+  fadeTakeEnd(out);
   return { pcm: out, joins, map, words: words.map((w) => ({ text: w.text, start: map(w.start), end: map(w.end) })) };
 }
 function wav(pcm: Int16Array) {

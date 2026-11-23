@@ -2,8 +2,9 @@
  * Sounds in the voice that are not where a word is.
  *
  * Every take is split into islands of sound (audio.ts `sounds`). An island
- * inside a word's timing is part of that word; so is any voiced island. The rest
- * are noise in a pause: a hiss, a breath, a click, or a consonant the voice let
+ * inside a word's timing is part of that word; so is a voiced island, except a
+ * detached burst at the file's end after a completed, transcribed word.
+ * The rest are noise in a pause: a hiss, a breath, a click, or a consonant the voice let
  * drift away from its word. Which of these an island is depends on the words
  * beside it, so each one is judged against the word before and the word after:
  *
@@ -207,6 +208,29 @@ const within = (gap: number, limit: number) => gap <= limit + 1e-6;
 export function strayPlan(pcm: Int16Array, words: TimedWord[], heard: TimedWord[] = []): Stray[] {
   const all = sounds(pcm);
   const spans = [...words, ...heard];
+  // A terminal burst can contain brief quiet windows. Find the whole cluster
+  // after a word-tail-sized silence, rather than just its last 10 ms island.
+  // Alignment often stretches the last word to EOF (or starts it late in that
+  // silence); the transcript must place every word at least WORD_TAIL earlier,
+  // and neither timing may start a word in the burst. This does not remove a
+  // continuing vowel or a final syllable near its word. Never absorb a leading
+  // noise island: it could be the final stop release before the voiced burst.
+  const tail = all.at(-1);
+  let terminal: Sound[] = [];
+  if (tail && tail.end === Math.floor(pcm.length / (SR / 100)) / 100 && words.length && heard.length) {
+    let first = all.length - 1;
+    while (first > 0 && below(all[first]!.start - all[first - 1]!.end, GAP)) first--;
+    const cluster = all.slice(first), start = cluster[0]!.start;
+    if (first > 0 && !isNoise(cluster[0]!) && !below(start - all[first - 1]!.end, WORD_TAIL) && cluster.some((s) => isHeard(s) && !isNoise(s)) &&
+      spans.every((w) => within(w.start + WORD_TAIL, start)) && heard.every((w) => within(w.end + WORD_TAIL, start))) terminal = cluster;
+  }
+  // Keep the narrower case too: both timings end before the final island,
+  // with GAP of silence even if a quiet crumb interrupts the longer gap.
+  const beforeTail = all.at(-2);
+  if (!terminal.length && tail && beforeTail && words.length && heard.length && isHeard(tail) && !isNoise(tail) &&
+    tail.end === Math.floor(pcm.length / (SR / 100)) / 100 &&
+    spans.every((w) => w.end <= tail.start) && heard.every((w) => within(w.end + WORD_TAIL, tail.start)) &&
+    !below(tail.start - beforeTail.end, GAP)) terminal = [tail];
   // Inside a word: ending well before the last word it overlaps ends (a timed start is often
   // late, and a stray hides under a stretched end), or covering most of a word's timed span
   // (a short word, "x", whose timing is narrower than its sound).
@@ -219,9 +243,13 @@ export function strayPlan(pcm: Int16Array, words: TimedWord[], heard: TimedWord[
   // crumb of its decay is not where it ends), and heard voice. Heard noise outside every word
   // is judged below.
   const substance = (s: Sound) => s.peak >= EDGE || s.end - s.start >= AUDIBLE_FOR - 1e-9;
-  const stays = all.filter((s) => (inside(s) && substance(s)) || (isHeard(s) && !isNoise(s)));
-  const judged = all.filter((s) => isHeard(s) && isNoise(s) && !inside(s));
-  const out: Stray[] = [];
+  const stays = all.filter((s) => !terminal.includes(s) && ((inside(s) && substance(s)) || (isHeard(s) && !isNoise(s))));
+  const judged = all.filter((s) => !terminal.includes(s) && isHeard(s) && isNoise(s) && !inside(s));
+  const out: Stray[] = terminal.length ? [{
+    kind: "remove", sound: { ...terminal[0]!, end: pcm.length / SR },
+    word: [...words].sort((a, b) => a.end - b.end).at(-1)!.text,
+    side: "after", gap: terminal[0]!.start - all[all.indexOf(terminal[0]!) - 1]!.end,
+  }] : [];
   const sorted = [...spans].sort((a, b) => a.start - b.start);
   // The word before a sound claims it when, in every timing given, the last word that starts
   // before the sound does not end open and its span covers at least TAIL_CLAIM of the sound.

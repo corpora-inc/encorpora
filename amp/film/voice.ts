@@ -17,13 +17,13 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { EDGE, envelope, even, SR } from "./audio";
+import { audioProblems, decayingTail, EDGE, envelope, even, fadeTakeEnd, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
 import { SPARK_TRIES, sparkHear, sparkRecipe, sparkTake } from "./spark";
 import { displayText, heldLetterFaults, scriptWords } from "./letters";
 import type { WordTime } from "./schema";
-import { describe, strayPlan, type TimedWord } from "./strays";
+import { describe, repairTake, strayPlan, type TimedWord } from "./strays";
 
 /** The narrator: Madeline Brousseaux, by exact id (docs/amp-media-pipeline.md). Other approved voices are in voices.ts. */
 export const VOICE_ID = NARRATOR_ID;
@@ -271,12 +271,10 @@ async function hear(pcm: Int16Array, cache: string, local = false): Promise<Hear
 
 /** What is wrong with a take, if anything. Empty means it is good to use. */
 export async function judge(text: string, take: Take, cache: string, voice?: Voice) {
-  const pcm = pcmOf(take), env = envelope(pcm);
+  const pcm = pcmOf(take);
   const faults: string[] = heldLetterFaults(text, wordsOf(take.alignment));
   // A house take: sounds that are no word (a drone after the last word, a noise in a pause; spark-voice/quality.py).
   for (const f of take.faults ?? []) faults.push(f);
-  const tail = env.slice(-5);
-  if (!tail.length || Math.max(...tail) >= EDGE) faults.push("the voice is cut off at the end");
   for (let i = 0, run = 0; i < pcm.length; i++) {
     run = pcm[i] === 32767 || pcm[i] === -32768 ? run + 1 : 0;
     if (run === 3) { faults.push(`it clips at ${(i / SR).toFixed(2)} s`); break; }
@@ -287,7 +285,26 @@ export async function judge(text: string, take: Take, cache: string, voice?: Voi
   // A stray sound in a pause is removed when the film is made; one too close to a word cannot be.
   const said = heard.words.filter((w) => w.type === "word").map((w) => ({ text: w.text, start: w.start, end: w.end }));
   heardOf.set(take, said);
-  for (const s of strayPlan(even(pcm), wordsOf(take.alignment, text), said)) if (s.kind === "near") faults.push(describe(s));
+  const plan = strayPlan(even(pcm), wordsOf(take.alignment, text), said);
+  // Judge the ending that reaches the film. A removable sound after the final
+  // word is not a chopped word and does not need another paid take. Keep the
+  // original level for this check, as for the clipping check above.
+  const repaired = repairTake(pcm, plan).pcm;
+  const tail = envelope(repaired).slice(-5);
+  // A completed vowel can decay to EOF with no trailing room tone. Accept it
+  // only if its natural decay qualifies for the longer fade AND that fade at
+  // the film's speaking level makes a genuinely quiet join. Never judge a
+  // sustained/rising cutoff from faded samples: that would hide the cutoff.
+  let cleanDecay = false;
+  if (decayingTail(repaired)) {
+    const end = even(repaired);
+    fadeTakeEnd(end);
+    const joined = new Int16Array(end.length + Math.round(0.02 * SR));
+    joined.set(end);
+    cleanDecay = audioProblems(joined, [{ at: end.length / SR, what: "take end" }]).length === 0;
+  }
+  if (!cleanDecay && (!tail.length || Math.max(...tail) >= EDGE)) faults.push("the voice is cut off at the end");
+  for (const s of plan) if (s.kind === "near") faults.push(describe(s));
   return faults;
 }
 
