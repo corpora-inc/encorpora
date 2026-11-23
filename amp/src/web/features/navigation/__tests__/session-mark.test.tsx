@@ -89,6 +89,9 @@ test("Clever-signed-in staff see their name and Sign out", async () => {
 
 test("a student's Sign out holds its place before their account loads", async () => {
   vi.stubGlobal("fetch", () => new Promise<never>(() => {}));
+  // Their page's first load: a tab takes the sign-in its browser remembers
+  // once per load (lib/student-device.ts).
+  sessionStorage.clear();
   localStorage.setItem(
     "amp.student",
     JSON.stringify({ accountId: "school:student", token: "st_fixture" }),
@@ -104,6 +107,7 @@ test("a student's Sign out holds its place before their account loads", async ()
     expect(screen.getByRole("button", { name: "Sign out" })).toBeTruthy();
   } finally {
     localStorage.removeItem("amp.student");
+    sessionStorage.clear();
   }
 });
 

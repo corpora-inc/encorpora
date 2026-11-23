@@ -19,7 +19,6 @@ const output = arg("shots") || "artifacts/in-app-auth";
 await mkdir(output, { recursive: true });
 const vite = await createServer({
   logLevel: "error",
-  // Its own dependency cache; a shared node_modules names one outside it.
   cacheDir:
     process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-in-app-handoff",
   plugins: [
