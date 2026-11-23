@@ -329,17 +329,22 @@ try {
         assert.ok(taskFamilies.has(next.problem.template));
 
         // Parent settings change the next selection, preserving the open question.
-        // The family icon leads home to Today; the child's card opens
-        // their page, where the setting is.
-        await page.getByRole("link", { name: "Family", exact: true }).click();
-        await page.waitForURL((url) => /^\/family\/[^/]+$/.test(url.pathname));
+        // A problem's bar holds only the problem's tools: the way back is
+        // the menu's "Back to family", to the child's page the device was
+        // handed over from.
+        assert.equal(
+          await page.locator("header[data-app-bar] [data-handed-home]").count(),
+          0,
+          "The practice bar holds no family icon",
+        );
+        await page.locator("header [data-navigation-trigger]").click();
         await page
-          .locator(`main a[href$="/kids/${learnerId}"]`)
-          .first()
+          .getByRole("dialog")
+          .getByRole("button", { name: "Back to family", exact: true })
           .click();
         // The device returns to the family; the child's settings open from
         // their name in Settings.
-        await page.waitForURL((url) => url.pathname.startsWith("/family/"));
+        await page.waitForURL((url) => url.pathname === childPath);
         await page.goto(fixture.origin + `/family/${familyId}/settings`);
         await page.locator(`[data-child-settings-open="${learnerId}"]`).click();
         await toggle.waitFor();

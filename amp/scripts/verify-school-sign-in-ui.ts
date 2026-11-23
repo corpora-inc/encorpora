@@ -57,8 +57,9 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/school-sign-in";
 const ARTIFACTS = "artifacts/school-sign-in";
-const webPort = 4396,
-  apiPort = 4397,
+// Its own ports and Vite cache when another copy runs on this machine.
+const webPort = Number(process.env.AMP_SCHOOL_SIGN_IN_PORT ?? 4396),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const TEACHER = "development-household";
 const MINE = ["Fox", "Boat", "Kite"];
@@ -113,7 +114,8 @@ await registerAnalyticsRoutes(api, { pool: db, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-sign-in",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-sign-in",
   server: {
     host: "127.0.0.1",
     port: webPort,
@@ -402,7 +404,25 @@ async function sweep(
       practice.smallTargets.length === 0,
       practice.smallTargets,
     );
-    await page.getByRole("button", { name: "Sign out" }).waitFor();
+    // A problem's bar holds only the problem's tools: Sign out is the
+    // menu's, one tap away, under the student's name.
+    check(
+      `${label} practice bar has no Sign out`,
+      (await page
+        .locator("header[data-app-bar]")
+        .getByRole("button", { name: /^Sign out/ })
+        .count()) === 0,
+    );
+    await page.locator("header [data-navigation-trigger]").click();
+    const menu = page.getByRole("dialog");
+    await menu.getByRole("button", { name: /^Sign out/ }).waitFor();
+    await menu.getByText("Signed in as", { exact: true }).waitFor();
+    check(
+      `${label} one Sign out on practice`,
+      (await page.getByRole("button", { name: /^Sign out/ }).count()) === 1,
+    );
+    await page.keyboard.press("Escape");
+    await menu.waitFor({ state: "detached" });
 
     // Back from practice goes to the class, whichever way it came.
     await page.goBack();
@@ -677,8 +697,12 @@ async function journeys(browser: Browser, engine: string) {
     const { cls } = await shellRecord(teacherBoard.page);
     check(`${engine} board CLS`, cls <= 0.01, cls);
 
-    // One tap signs out, back to /join, leaving nothing behind.
-    await first.page.getByRole("button", { name: "Sign out" }).click();
+    // The menu's Sign out, back to /join, leaving nothing behind.
+    await first.page.locator("header [data-navigation-trigger]").click();
+    await first.page
+      .getByRole("dialog")
+      .getByRole("button", { name: /^Sign out/ })
+      .click();
     await first.page.waitForURL("**/join");
     check(
       `${engine} signed out`,
