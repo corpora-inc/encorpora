@@ -17,7 +17,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { EDGE, envelope, even, SR } from "./audio";
+import { audioProblems, decayingTail, EDGE, envelope, even, fadeTakeEnd, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
 import { SPARK_TRIES, sparkHear, sparkRecipe, sparkTake } from "./spark";
@@ -289,8 +289,21 @@ export async function judge(text: string, take: Take, cache: string, voice?: Voi
   // Judge the ending that reaches the film. A removable sound after the final
   // word is not a chopped word and does not need another paid take. Keep the
   // original level for this check, as for the clipping check above.
-  const tail = envelope(repairTake(pcm, plan).pcm).slice(-5);
-  if (!tail.length || Math.max(...tail) >= EDGE) faults.push("the voice is cut off at the end");
+  const repaired = repairTake(pcm, plan).pcm;
+  const tail = envelope(repaired).slice(-5);
+  // A completed vowel can decay to EOF with no trailing room tone. Accept it
+  // only if its natural decay qualifies for the longer fade AND that fade at
+  // the film's speaking level makes a genuinely quiet join. Never judge a
+  // sustained/rising cutoff from faded samples: that would hide the cutoff.
+  let cleanDecay = false;
+  if (decayingTail(repaired)) {
+    const end = even(repaired);
+    fadeTakeEnd(end);
+    const joined = new Int16Array(end.length + Math.round(0.02 * SR));
+    joined.set(end);
+    cleanDecay = audioProblems(joined, [{ at: end.length / SR, what: "take end" }]).length === 0;
+  }
+  if (!cleanDecay && (!tail.length || Math.max(...tail) >= EDGE)) faults.push("the voice is cut off at the end");
   for (const s of plan) if (s.kind === "near") faults.push(describe(s));
   return faults;
 }
