@@ -243,7 +243,7 @@ function columns(
     {
       id: "status",
       header: "At the end",
-      width: 104,
+      width: 100,
       compare: (a, b) => statusRank(a.status) - statusRank(b.status),
       cell: (row) => (
         <span className={styles.statusWord} data-status={row.status}>
@@ -274,7 +274,7 @@ function columns(
     {
       id: "independent",
       header: "On their own",
-      width: 92,
+      width: 80,
       align: "end",
       firstSort: "descending",
       compare: (a, b) => a.independent - b.independent,
@@ -283,7 +283,7 @@ function columns(
     {
       id: "helped",
       header: "Right with help",
-      width: 100,
+      width: 96,
       align: "end",
       firstSort: "descending",
       compare: (a, b) => rightWithHelp(a) - rightWithHelp(b),
@@ -292,23 +292,29 @@ function columns(
     {
       id: "help",
       header: "Help opened",
-      width: 148,
+      // Its four counts (136 px here) and the cell's inset: the skills
+      // start clear of them.
+      width: 156,
       firstSort: "descending",
       compare: (a, b) => helpCount(a) - helpCount(b),
       cell: (row) => <HelpCounts help={row} />,
       cellLabel: (row) => helpWords(row),
     },
     {
+      // Every skill's whole name, wrapping inside the row: the report is a
+      // frozen page, not a live table, so a row may be as tall as its list.
+      // The column takes the room the figures don't need.
       id: "skills",
       header: "Skills",
-      width: 150,
+      width: 200,
+      grow: true,
       firstSort: "descending",
       compare: (a, b) => a.skills.length - b.skills.length,
       cell: (row) =>
         row.skills.length === 0 ? (
-          "—"
+          <span className={styles.noSkills}>—</span>
         ) : (
-          <span className={styles.skills}>
+          <span className={styles.skills} data-report-skills="">
             {row.skills.map((skill, index) => (
               <span key={skill.id}>
                 {index > 0 && ", "}
