@@ -11,11 +11,7 @@ import { AreaRows, gradeSpan, type AreaRow } from "../learners/AreaRows";
 import { FocusMix } from "../learners/FocusMix";
 import { WeekDots } from "../learners/WeekSummary";
 import { WeekSummary } from "../learners/WeekSummary";
-import {
-  lastPracticed,
-  percentRight,
-  QUIET_WEEK,
-} from "../learners/week-words";
+import { lastPracticed, percentRight } from "../learners/week-words";
 import { CopyButton } from "../school/parts";
 import type { PracticeFilter } from "../practice/curriculum-filter";
 import type {
@@ -38,7 +34,8 @@ const plural = (n: number, one: string, many = `${one}s`) =>
   `${n.toLocaleString("en-US")} ${n === 1 ? one : many}`;
 
 /** A child's week on their row: seven dots, then minutes, problems and how
- * many were right; a quiet week says so with when they last practiced. */
+ * many were right; in a quiet week the empty dots say so and the words say
+ * when they last practiced (short enough never to be cut). */
 export function ChildWeekFacts({
   child,
   board,
@@ -81,7 +78,7 @@ export function ChildWeekFacts({
         </span>
       ) : (
         <span className={styles.figures} data-week-quiet="">
-          {QUIET_WEEK} · last practiced{" "}
+          Last practiced{" "}
           {lastPracticed(last, today).replace(/^(Today|Yesterday)$/, (day) =>
             day.toLowerCase(),
           )}

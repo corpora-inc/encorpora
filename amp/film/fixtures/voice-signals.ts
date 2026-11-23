@@ -68,3 +68,18 @@ export function inSilence(pcm: Int16Array, before = 0.45, after = 0.45) {
   out.set(pcm, Math.round(before * SR));
   return out;
 }
+
+/** A final vowel with a steep natural decay but no room tone before EOF. */
+export function endingVowel(extraSamples = 0) {
+  const pcm = new Voice().rest(0.1).say(0.4).pcm();
+  const out = new Int16Array(pcm.length + extraSamples);
+  out.set(pcm);
+  const levels = [0.07, 0.065, 0.054, 0.044, 0.025, 0.001];
+  const n = Math.round(0.05 * SR);
+  for (let i = 0; i < n; i++) {
+    const t = i / (SR / 100), j = Math.min(4, Math.floor(t));
+    const level = levels[j]! + (levels[j + 1]! - levels[j]!) * (t - j);
+    out[out.length - n + i] = Math.round(32768 * Math.SQRT2 * level * Math.sin(2 * Math.PI * 200 * i / SR));
+  }
+  return out;
+}
