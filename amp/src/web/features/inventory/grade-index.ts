@@ -7,6 +7,7 @@ import {
 import { isEarned } from "../../../learning/earned";
 import type { SkillStanding } from "../learners/SkillKey";
 import {
+  areas,
   areaSlot,
   bands,
   frontierRange,
@@ -16,14 +17,22 @@ import {
 } from "../pathways/model";
 
 /*
- * Inventory by grade: every skill of one grade for one learner, in teaching
- * order under the five areas, each with where the learner stands on it.
- * Pure: the screen (InventoryScreen.tsx) reads these.
+ * Inventory by grade: one grade as a flat index, every skill of it in
+ * teaching order under the five areas, each with where the learner stands
+ * on it and its problem types under it. Pure: the screen (GradeIndex.tsx)
+ * reads these.
  */
 
-/** A view's grade meaning "the learner's own": the grade their level's
- * best guess names, wherever it is when the screen opens. */
-export const OWN_GRADE = "own";
+/** How Inventory is sliced: one grade's whole index, or (as it always
+ * was) the learner's collection by area. */
+export type InventoryMode = "grade" | "area";
+/** The slice a view shows: the one chosen, else by grade for a grown-up
+ * reading a child's, by area for a learner's own. */
+export const inventoryMode = (
+  chosen: string | undefined,
+  child: boolean,
+): InventoryMode =>
+  chosen === "grade" || chosen === "area" ? chosen : child ? "grade" : "area";
 
 /** Grade names short enough for a row of thirteen (ui/level-range
  * `shortGrade`'s words, the number alone for a grade). */
@@ -48,17 +57,12 @@ export function ownBand(frontier: Frontier | undefined): string {
   return bands[Math.min(bands.length - 1, Math.max(0, at))]!;
 }
 
-/** The grade a view shows: none ("", every grade), the learner's own, or
- * the one chosen. A value that names no grade (an old or edited view) is
- * none. */
-export function viewedBand(
+/** The grade a by-grade view shows: the one chosen, else (none chosen, or
+ * a value that names no grade) the learner's own. */
+export const viewedBand = (
   grade: string | undefined,
   frontier: Frontier | undefined,
-): string | null {
-  if (!grade) return null;
-  if (grade === OWN_GRADE) return ownBand(frontier);
-  return bands.includes(grade) ? grade : null;
-}
+): string => (grade && bands.includes(grade) ? grade : ownBand(frontier));
 
 /** The engine's strands in the five areas' order (curriculum/areas.ts). */
 const strandOrder = [...Object.keys(strandAreas), ...crossCuttingStrands];
@@ -100,4 +104,46 @@ export function standingOf(evidence: Evidence | undefined): SkillStanding {
   if (!evidence || !(evidence.attempts > 0)) return "notAsked";
   if (evidence.status === "review-ready") return "strong";
   return isEarned(evidence) ? "earned" : "tried";
+}
+
+type ProblemType = { id: string; skillId: string; title?: string };
+/** One area of a grade's index: its skills in teaching order, each with
+ * its problem types as the catalog lists them. */
+export type IndexSection<Type extends ProblemType = ProblemType> = {
+  area: string;
+  title: string;
+  skills: { skill: MapSkill; types: Type[] }[];
+};
+/**
+ * One grade as a flat index: an area heading, then each of its skills (in
+ * `teachingOrder`), then that skill's problem types. Only areas the grade
+ * has; `only` keeps one area.
+ */
+export function gradeIndex<Type extends ProblemType>(
+  catalog: { skills: readonly MapSkill[]; templates: readonly Type[] },
+  band: string,
+  only: string | null = null,
+  /** A search's finds: only these skills are listed. */
+  found?: ReadonlySet<string>,
+): IndexSection<Type>[] {
+  const types = new Map<string, Type[]>();
+  for (const type of catalog.templates)
+    types.set(type.skillId, [...(types.get(type.skillId) ?? []), type]);
+  const ordered = teachingOrder(
+    catalog.skills.filter(
+      (skill) => skill.gradeBand === band && (!found || found.has(skill.id)),
+    ),
+    catalog.skills,
+  );
+  return areas
+    .map((area, slot) => ({
+      area: area.id,
+      title: area.title,
+      skills: ordered
+        .filter((skill) => areaSlot(skill) === slot)
+        .map((skill) => ({ skill, types: types.get(skill.id) ?? [] })),
+    }))
+    .filter(
+      (section) => section.skills.length && (!only || section.area === only),
+    );
 }

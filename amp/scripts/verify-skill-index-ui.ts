@@ -1,16 +1,22 @@
 /**
- * A child's skills by grade (Inventory, by grade), in a real browser, as a
- * family's parent at 390 and 1280:
+ * Inventory by grade (a child's skills as one grade's flat index), in a
+ * real browser, as a family's parent at 390 and 1280:
  *
- * - one tap from the child's block on Today opens their Inventory on their
- *   own grade: every skill of that grade, under the five areas in teaching
- *   order, each row's standing the dashboard's own word for the child's
- *   record on it, the key on screen;
- * - another grade is one tap, and nothing above the list moves;
- * - a refresh keeps the grade;
- * - "Overall" on the child's page opens the same view;
- * - a row opens the skill, and Practice there starts THAT child's practice
- *   held to the skill (the hand-over), with Back returning to the list;
+ * - one tap from the child's block on Today opens their Inventory by grade,
+ *   on their own grade: every skill of that grade under the five areas in
+ *   teaching order, each row's standing the dashboard's own word for the
+ *   child's record on it, each skill's problem types under it (all listed
+ *   from 768 px; behind the skill's own fold on a phone), the key on screen;
+ * - another grade is one tap, and nothing above the index moves; a refresh
+ *   keeps the grade;
+ * - "By area" is Inventory as it was (its collection and filters), the
+ *   switch holds its place, and "By grade" comes back to the same grade;
+ * - on paper the grade is a checklist: no controls, every problem type;
+ * - "All Grade N skills" in Overall on the child's page opens the same view
+ *   on that grade;
+ * - a problem type opens its lesson; a skill opens its layer, and Practice
+ *   there starts THAT child's practice held to the skill (the hand-over),
+ *   with Back returning to the index;
  * - no sideways overflow, no cut word, 44 px targets, no console error.
  *
  * By default it starts its own stack, as CI does (AMP_TEST_DATABASE_URL);
@@ -29,16 +35,15 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
-import { areas } from "../src/curriculum/areas";
 import {
+  gradeIndex,
   ownBand,
   shortBand,
   standingOf,
-  teachingOrder,
 } from "../src/web/features/inventory/grade-index";
 import { STANDING } from "../src/web/features/learners/SkillKey";
 import {
-  areaSlot,
+  bandLabel,
   bands,
   catalogSchema,
   frontierSchema,
@@ -109,17 +114,15 @@ try {
       .skills.map((entry) => [entry.skillId, entry]),
   );
   const own = ownBand(frontier);
-  /** A grade as the screen lists it: its skills in teaching order. */
-  const listed = (band: string) =>
-    teachingOrder(
-      catalog.skills.filter((skill) => skill.gradeBand === band),
-      catalog.skills,
-    );
-  const expected = listed(own);
+  /** A grade as the screen lists it: areas, their skills, their types. */
+  const listed = (band: string) => gradeIndex(catalog, band);
+  const skillsOf = (band: string) =>
+    listed(band).flatMap((section) => section.skills);
+  const expected = skillsOf(own);
   assert.ok(expected.length >= 10, `${own} has its skills`);
   const inventory = `/family/${family}/kids/${child.id}/inventory`;
   console.log(
-    `${CHILD}'s own grade: ${own} (${expected.length} skills), at ${origin}`,
+    `${CHILD}'s own grade: ${own} (${expected.length} skills, ${expected.reduce((sum, row) => sum + row.types.length, 0)} problem types), at ${origin}`,
   );
 
   for (const width of WIDTHS) {
@@ -145,42 +148,56 @@ try {
         0,
         at(`${what}: no sideways overflow`),
       );
-    const pressed = () =>
-      page
-        .locator("[data-grade-row] [aria-pressed=true]")
-        .getAttribute("data-grade");
+    const slice = (name: "By grade" | "By area") =>
+      page.getByRole("radio", { name, exact: true });
     const rows = () =>
-      page.locator("li[data-skill]").evaluateAll((items) =>
+      page.locator("[data-grade-index] li[data-skill]").evaluateAll((items) =>
         items.map((item) => ({
           id: item.getAttribute("data-skill")!,
           standing: item.getAttribute("data-standing")!,
           word: item.querySelector("[data-standing-word]")?.textContent ?? "",
-          height: Math.round(item.getBoundingClientRect().height),
+          swatch: !!item.querySelector("[data-standing-word]")
+            ?.previousElementSibling,
+          height: Math.round(
+            item.firstElementChild!.getBoundingClientRect().height,
+          ),
+          types: [...item.querySelectorAll("a[data-type]")].map((type) =>
+            type.getAttribute("data-type"),
+          ),
+          typesShown: [...item.querySelectorAll("a[data-type]")].filter(
+            (type) => type.getBoundingClientRect().height > 0,
+          ).length,
         })),
       );
-    /** The grade's whole list is on view, as the record says it. */
+    /** The grade's whole index is on view, as the record says it. */
     const showsGrade = async (band: string, what: string) => {
-      const skills = listed(band);
+      const sections = listed(band);
+      const skills = sections.flatMap((section) => section.skills);
       await page
-        .locator(`[data-grade-row] [data-grade="${band}"][aria-pressed=true]`)
+        .locator(`[data-grade-index="${band}"] [data-grade="${band}"]`)
+        .and(page.locator("[aria-pressed=true]"))
         .waitFor();
-      await page.locator(`li[data-skill="${skills[0]!.id}"]`).waitFor();
+      await page.locator(`li[data-skill="${skills[0]!.skill.id}"]`).waitFor();
       const shown = await rows();
       assert.deepEqual(
         shown.map((row) => row.id),
-        skills.map((skill) => skill.id),
+        skills.map((row) => row.skill.id),
         at(`${what}: every skill of the grade, in teaching order`),
       );
-      for (const row of shown) {
+      for (const [index, row] of shown.entries()) {
         const standing = standingOf(evidence.get(row.id));
         assert.equal(row.standing, standing, at(`${what}: ${row.id}`));
         assert.equal(row.word, STANDING[standing].term, at(row.id));
+        assert.ok(row.swatch, at(`${row.id} has its swatch`));
+        assert.deepEqual(
+          row.types,
+          skills[index]!.types.map((type) => type.id),
+          at(`${what}: ${row.id}'s problem types`),
+        );
       }
       assert.deepEqual(
-        await page.locator("main h2").allTextContents(),
-        areas
-          .filter((_, slot) => skills.some((skill) => areaSlot(skill) === slot))
-          .map((area) => area.title),
+        await page.locator("[data-grade-index] h2").allTextContents(),
+        sections.map((section) => section.title),
         at(`${what}: the areas, in order`),
       );
       return shown;
@@ -191,12 +208,18 @@ try {
     const link = page.locator(`a[data-skills-by-grade="${child.id}"]`);
     await link.waitFor({ timeout: 30_000 });
     await fits("Today");
-    const target = (await link.boundingBox())!;
-    assert.ok(target.height >= 44, at("the link is a 44 px target"));
+    assert.ok(
+      (await link.boundingBox())!.height >= 44,
+      at("the link is a 44 px target"),
+    );
     await link.click();
     await page.waitForURL((url) => url.pathname === inventory);
-    assert.equal(await pressed(), own, at("it opens on the child's own grade"));
     const shown = await showsGrade(own, "from Today");
+    assert.equal(
+      await slice("By grade").getAttribute("aria-checked"),
+      "true",
+      at("it opens by grade"),
+    );
     // The key, once, in the dashboard's words.
     assert.deepEqual(
       await page
@@ -208,18 +231,54 @@ try {
       at("the key"),
     );
     await fits("the grade");
-    // Rows: one height on a wide screen; nowhere a cut word or a small target.
+    const wide = width >= 768;
+    // From 768 px every problem type is listed; a phone folds them under
+    // their skill, one tap away.
+    for (const row of shown)
+      assert.equal(
+        row.typesShown,
+        wide ? row.types.length : 0,
+        at(`${row.id}: problem types ${wide ? "listed" : "folded"}`),
+      );
+    if (!wide) {
+      const first = page.locator(`li[data-skill="${shown[0]!.id}"]`);
+      const fold = first.getByRole("button", { name: /problem types?$/ });
+      assert.equal(
+        (await fold.innerText()).trim(),
+        `${shown[0]!.types.length} problem type${shown[0]!.types.length === 1 ? "" : "s"}`,
+        at("the fold counts its problem types"),
+      );
+      assert.ok((await fold.boundingBox())!.height >= 44, at("the fold"));
+      await fold.click();
+      assert.equal(
+        (await rows())[0]!.typesShown,
+        shown[0]!.types.length,
+        at("the fold opens its problem types"),
+      );
+      assert.ok(
+        (await first.locator("a[data-type]").first().boundingBox())!.height >=
+          44,
+        at("a problem type is a 44 px target"),
+      );
+      if (SHOTS)
+        await page.screenshot({ path: `${OUT}/grade-${width}-open.png` });
+      await fold.click();
+    }
+    // Skill rows: one height on a wide screen; nowhere a cut word or a small
+    // target.
     if (width >= 1024)
       assert.equal(
         new Set(shown.map((row) => row.height)).size,
         1,
         at(
-          `rows are one height: ${[...new Set(shown.map((row) => row.height))]}`,
+          `skill rows are one height: ${[...new Set(shown.map((row) => row.height))]}`,
         ),
       );
     assert.deepEqual(
       await page
-        .locator("li[data-skill] a, [data-skill-key] li, [data-grade-row] button")
+        .locator(
+          "[data-grade-index] li[data-skill] a, [data-skill-key] li, [data-grade-row] button, [role=radio]",
+        )
         .evaluateAll((items) =>
           items
             .filter((item) => item.scrollWidth > item.clientWidth + 1)
@@ -229,14 +288,18 @@ try {
       at("no cut word"),
     );
     assert.deepEqual(
-      await page.locator("[data-grade-row] button").evaluateAll((items) =>
-        items
-          .map((item) => item.getBoundingClientRect())
-          .filter((box) => box.height < 44 || box.width < 44)
-          .map((box) => `${box.width}x${box.height}`),
-      ),
+      await page
+        .locator(
+          "[data-grade-row] button, [role=radio], [data-grade-index] li[data-skill] > div a",
+        )
+        .evaluateAll((items) =>
+          items
+            .map((item) => item.getBoundingClientRect())
+            .filter((box) => box.height < 44 || box.width < 44)
+            .map((box) => `${box.width}x${box.height}`),
+        ),
       [],
-      at("every grade is a 44 px target"),
+      at("grades, the switch and skills are 44 px targets"),
     );
     // The chosen grade is on view in its row, however narrow the screen.
     assert.ok(
@@ -258,11 +321,48 @@ try {
         fullPage: true,
       });
 
-    // ---- another grade: one tap, and nothing above the list moves ----------
+    // ---- on paper: a checklist ------------------------------------------
+    await page.emulateMedia({ media: "print" });
+    assert.deepEqual(
+      await page
+        .locator(
+          "[data-app-bar], [data-grade-row], [role=radiogroup], [role=searchbox], [data-grade-index] button",
+        )
+        .evaluateAll((items) =>
+          items
+            .filter((item) => item.getBoundingClientRect().height > 0)
+            .map((item) => item.getAttribute("aria-label") ?? item.tagName),
+        ),
+      [],
+      at("no controls on paper"),
+    );
+    assert.deepEqual(
+      (await rows()).map((row) => row.typesShown),
+      shown.map((row) => row.types.length),
+      at("every problem type on paper"),
+    );
+    assert.match(
+      await page.locator("[data-grade-index] > p").first().innerText(),
+      new RegExp(`^${CHILD} · ${bandLabel(own)} skills$`),
+      at("the sheet says whose and which grade"),
+    );
+    if (SHOTS && width === WIDTHS.at(-1))
+      await page.screenshot({
+        path: `${OUT}/grade-print.png`,
+        fullPage: true,
+      });
+    await page.emulateMedia({ media: "screen" });
+
+    // ---- another grade: one tap, and nothing above the index moves --------
     const other = bands[bands.indexOf(own) > 0 ? bands.indexOf(own) - 1 : 1]!;
     const boxes = () =>
       page.evaluate(() =>
-        ["[data-grade-row]", "[data-skill-key]", "main h2"].map((selector) => {
+        [
+          "[role=radiogroup]",
+          "[data-grade-row]",
+          "[data-skill-key]",
+          "[data-grade-index] h2",
+        ].map((selector) => {
           const box = document.querySelector(selector)!.getBoundingClientRect();
           return [Math.round(box.x), Math.round(box.y), Math.round(box.height)];
         }),
@@ -270,11 +370,36 @@ try {
     const before = await boxes();
     await page.locator(`[data-grade-row] [data-grade="${other}"]`).click();
     await showsGrade(other, "another grade");
-    assert.deepEqual(await boxes(), before, at("nothing above the list moved"));
+    assert.deepEqual(
+      await boxes(),
+      before,
+      at("nothing above the index moved"),
+    );
     await fits("another grade");
     // A refresh keeps the grade.
     await page.reload();
     await showsGrade(other, "after a refresh");
+
+    // ---- by area is Inventory as it was; by grade comes back --------------
+    const switchBox = async () =>
+      (await page.getByRole("radiogroup", { name: "View" }).boundingBox())!;
+    const held = await switchBox();
+    await slice("By area").click();
+    await page.getByRole("group", { name: "Skills to show" }).waitFor();
+    assert.equal(
+      await page.locator("[data-grade-index]").count(),
+      0,
+      at("by area has no grade index"),
+    );
+    assert.ok(
+      (await page.locator("li[data-strength]").count()) > 0,
+      at("by area lists the collection"),
+    );
+    assert.deepEqual(await switchBox(), held, at("the switch holds its place"));
+    await fits("by area");
+    await slice("By grade").click();
+    await showsGrade(other, "by grade again");
+    assert.deepEqual(await switchBox(), held, at("the switch holds its place"));
     await page.locator(`[data-grade-row] [data-grade="${own}"]`).click();
     await showsGrade(own, "back to their own grade");
 
@@ -287,6 +412,11 @@ try {
       `[data-layer-panel] [data-skills-by-grade="${child.id}"] a`,
     );
     await byGrade.waitFor();
+    assert.equal(
+      (await byGrade.innerText()).trim(),
+      `All ${bandLabel(own)} skills`,
+      at("Overall names the grade"),
+    );
     assert.ok(
       (await byGrade.boundingBox())!.height >= 44,
       at("Overall's row is a 44 px target"),
@@ -298,13 +428,26 @@ try {
     await page.waitForURL((url) => url.pathname === inventory);
     await showsGrade(own, "from Overall");
 
-    // ---- a row opens the skill; Practice there is this child's -------------
+    // ---- a problem type opens its lesson ----------------------------------
+    const typed = expected[0]!;
+    const row = page.locator(`li[data-skill="${typed.skill.id}"]`);
+    if (!wide)
+      await row.getByRole("button", { name: /problem types?$/ }).click();
+    await row.locator(`a[data-type="${typed.types[0]!.id}"]`).click();
+    await page
+      .locator(`[data-layer-frame][data-layers="lesson:${typed.types[0]!.id}"]`)
+      .waitFor();
+    await fits("a lesson");
+    await page.keyboard.press("Escape");
+    await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
+
+    // ---- a skill opens its layer; Practice there is this child's -----------
     const pick =
       expected.find(
-        (skill) => standingOf(evidence.get(skill.id)) === "notAsked",
+        (entry) => standingOf(evidence.get(entry.skill.id)) === "notAsked",
       ) ?? expected[0]!;
-    await page.locator(`li[data-skill="${pick.id}"] a`).click();
-    const layer = page.locator(`[data-skill-layer="${pick.id}"]`);
+    await page.locator(`li[data-skill="${pick.skill.id}"] > div a`).click();
+    const layer = page.locator(`[data-skill-layer="${pick.skill.id}"]`);
     await layer.waitFor();
     await fits("the skill");
     const practice = page.locator(
@@ -327,17 +470,16 @@ try {
     await practice.click();
     await handed;
     await page.waitForURL(
-      (url) => url.pathname === `/practice/${child.id}/skills/${pick.id}`,
+      (url) => url.pathname === `/practice/${child.id}/skills/${pick.skill.id}`,
       { timeout: 30_000 },
     );
     await page.locator(".problem-stage .question").waitFor({ timeout: 30_000 });
-    // Back: the parent's list again, on the same grade.
+    // Back: the parent's index again, on the same grade.
     await page.goBack();
     await page.waitForURL((url) => url.pathname === inventory);
     await page
-      .locator(`[data-grade-row] [data-grade="${own}"][aria-pressed=true]`)
+      .locator(`[data-grade-index="${own}"] li[data-skill="${pick.skill.id}"]`)
       .waitFor({ timeout: 30_000 });
-    await page.locator(`li[data-skill="${pick.id}"]`).waitFor();
 
     assert.deepEqual(errors, [], at("no console error"));
     await context.close();
@@ -355,7 +497,7 @@ try {
     const page = await context.newPage();
     await page.goto(origin);
     await page.locator(`a[data-skills-by-grade="${child.id}"]`).click();
-    await page.locator(`li[data-skill="${expected[0]!.id}"]`).waitFor();
+    await page.locator(`li[data-skill="${expected[0]!.skill.id}"]`).waitFor();
     await page.screenshot({
       path: `${OUT}/grade-1280-dark.png`,
       fullPage: true,
@@ -363,7 +505,7 @@ try {
     await context.close();
   }
   console.log(
-    `Skills by grade: Today and Overall open ${CHILD}'s own grade (${shortBand(own)}), whole and in order; a row's skill starts ${CHILD}'s practice; passed at ${WIDTHS.join(", ")}.`,
+    `Inventory by grade: Today and Overall open ${CHILD}'s own grade (${shortBand(own)}), whole and in order, with its problem types; a skill starts ${CHILD}'s practice; passed at ${WIDTHS.join(", ")}.`,
   );
 } catch (error) {
   failed = error;

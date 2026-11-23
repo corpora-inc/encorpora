@@ -14,14 +14,15 @@ import {
   type MapSkill,
 } from "../../pathways/model";
 import {
-  OWN_GRADE,
+  gradeIndex,
+  inventoryMode,
   ownBand,
   shortBand,
   standingOf,
   teachingOrder,
   viewedBand,
 } from "../grade-index";
-import { useInventoryViewStore, showOwnGrade } from "../inventory-view";
+import { useInventoryViewStore, showByGrade } from "../inventory-view";
 
 // The catalog as the server sends it (server/app.ts `catalogSkills`).
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -192,12 +193,11 @@ test("a learner's own grade is their level's best guess, inside the curriculum",
   expect(ownBand(undefined)).toBe("K");
 });
 
-test("a view names one grade, the learner's own, or none", () => {
-  expect(viewedBand("", frontier(4))).toBeNull();
-  expect(viewedBand(undefined, frontier(4))).toBeNull();
-  expect(viewedBand(OWN_GRADE, frontier(4.2))).toBe("4");
+test("a view by grade shows the grade chosen, else the learner's own", () => {
+  expect(viewedBand("", frontier(4.2))).toBe("4");
+  expect(viewedBand(undefined, frontier(4.2))).toBe("4");
   expect(viewedBand("geometry", frontier(4))).toBe("geometry");
-  expect(viewedBand("grade-99", frontier(4))).toBeNull();
+  expect(viewedBand("grade-99", frontier(4.2))).toBe("4");
   expect(bands.map(shortBand)).toEqual([
     "K",
     "1",
@@ -215,19 +215,91 @@ test("a view names one grade, the learner's own, or none", () => {
   ]);
 });
 
-test("a link to a child's own grade resets the view it lands on", () => {
+test("a grown-up reading a child's opens by grade; a learner's own, by area", () => {
+  expect(inventoryMode("", true)).toBe("grade");
+  expect(inventoryMode(undefined, true)).toBe("grade");
+  expect(inventoryMode("", false)).toBe("area");
+  expect(inventoryMode(undefined, false)).toBe("area");
+  // The choice, once made, is kept either way.
+  expect(inventoryMode("area", true)).toBe("area");
+  expect(inventoryMode("grade", false)).toBe("grade");
+  expect(inventoryMode("sideways", true)).toBe("grade");
+});
+
+test("a grade's index: area, then skill, then its problem types", () => {
+  const types = templates.map(({ id, skillId, title }) => ({
+    id,
+    skillId,
+    title,
+  }));
+  for (const band of bands) {
+    const sections = gradeIndex({ skills: catalog, templates: types }, band);
+    const inGrade = catalog.filter((entry) => entry.gradeBand === band);
+    // Every skill of the grade once, in teaching order.
+    expect(
+      sections.flatMap((section) => section.skills.map((row) => row.skill.id)),
+    ).toEqual(teachingOrder(inGrade, catalog).map((entry) => entry.id));
+    for (const section of sections) {
+      expect(section.skills.length).toBeGreaterThan(0);
+      for (const row of section.skills) {
+        expect(areaOf(row.skill)).toBe(section.area);
+        // Every problem type of the skill, in the catalog's order.
+        expect(row.types.map((type) => type.id)).toEqual(
+          types
+            .filter((type) => type.skillId === row.skill.id)
+            .map((type) => type.id),
+        );
+        expect(row.types.length).toBeGreaterThan(0);
+      }
+    }
+  }
+  const fourth = gradeIndex({ skills: catalog, templates: types }, "4");
+  expect(fourth.map((section) => section.title)).toEqual([
+    "Number & operations",
+    "Algebra",
+    "Geometry",
+    "Measurement",
+    "Data & probability",
+  ]);
+  // One area of it; and only what a search found.
+  expect(
+    gradeIndex({ skills: catalog, templates: types }, "4", "geometry").map(
+      (section) => section.area,
+    ),
+  ).toEqual(["geometry"]);
+  const found = gradeIndex(
+    { skills: catalog, templates: types },
+    "4",
+    null,
+    new Set(["angle-measure", "whole-division", "count-to-20"]),
+  );
+  expect(
+    found.flatMap((section) => section.skills.map((row) => row.skill.id)),
+  ).toEqual(["whole-division", "angle-measure"]);
+  expect(
+    gradeIndex({ skills: catalog, templates: types }, "4", null, new Set()),
+  ).toEqual([]);
+});
+
+test("a link to a child's grade sets the view it lands on, and keeps the rest", () => {
   const path =
     "/family/11111111-1111-4111-8111-111111111111/kids/kid/inventory";
   const store = useInventoryViewStore.getState();
-  store.set(path, { topic: "angles", collection: "strong", area: "geometry" });
-  showOwnGrade(path);
+  store.set(path, { topic: "angles", collection: "strong", view: "area" });
+  showByGrade(path, "5");
   expect(useInventoryViewStore.getState().views[path]).toEqual({
-    topic: "",
-    collection: "",
+    topic: "angles",
+    collection: "strong",
     area: "",
-    grade: OWN_GRADE,
+    view: "grade",
+    grade: "5",
   });
-  // Every grade again, nothing else chosen: the view is forgotten.
-  useInventoryViewStore.getState().set(path, { grade: "" });
+  // Without a grade: the child's own.
+  showByGrade(path);
+  expect(useInventoryViewStore.getState().views[path]?.grade).toBe("");
+  // Nothing chosen any more: the view is forgotten.
+  useInventoryViewStore
+    .getState()
+    .set(path, { topic: "", collection: "", view: "" });
   expect(useInventoryViewStore.getState().views[path]).toBeUndefined();
 });

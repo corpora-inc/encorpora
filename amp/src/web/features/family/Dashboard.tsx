@@ -12,7 +12,7 @@ import { FocusMix } from "../learners/FocusMix";
 import { WeekDots } from "../learners/WeekSummary";
 import { WeekSummary } from "../learners/WeekSummary";
 import { lastPracticed, percentRight } from "../learners/week-words";
-import { showOwnGrade } from "../inventory/inventory-view";
+import { showByGrade } from "../inventory/inventory-view";
 import { childPath } from "../spaces/identity";
 import { CopyButton } from "../school/parts";
 import type { PracticeFilter } from "../practice/curriculum-filter";
@@ -169,8 +169,8 @@ export function ChildDashboard({
 }
 
 /** One tap from a child's block to every skill of their own grade, with
- * where they stand on each: their Inventory, opened by grade
- * (features/inventory). */
+ * where they stand on each: their Inventory, by grade (features/inventory).
+ * One quiet link under their areas, the block's last line. */
 function SkillsByGrade({ child }: { child: FamilyChild }) {
   const { family = "" } = useParams({ strict: false }) as { family?: string };
   if (!family || !child.capabilities.readProgress) return null;
@@ -183,7 +183,7 @@ function SkillsByGrade({ child }: { child: FamilyChild }) {
       aria-label={`${child.name}’s skills by grade`}
       data-skills-by-grade={child.id}
       // The address names the screen; its view opens on their own grade.
-      onClick={() => showOwnGrade(path)}
+      onClick={() => showByGrade(path)}
     >
       Skills by grade
       <svg viewBox="0 0 12 12" aria-hidden="true">
