@@ -2,125 +2,143 @@
   "slug": "unlock-math",
   "name": "UnLock Math",
   "category": "courses",
-  "checked": "2026-11-21",
-  "benefit": "Practice chosen at every answer",
-  "line": "UnLock Math teaches grades 6–12 by video, in course order. AMP finds the level and chooses every problem.",
-  "description": "AMP vs UnLock Math: a homeschool video course for grades 6–12 beside a program that finds the level and chooses every problem, from counting to precalculus.",
-  "verdict": "UnLock Math is a well-liked homeschool course: a real teacher on video, review in every lesson, automatic grading and a full high school path, at $299 a year [1][2][3][5][6]. The family picks the course, and lessons run in course order [3][10]. AMP finds the level in each of 14 strands, chooses every problem from the last answer, sends repeated misses back to the skill underneath, and spaces review out to a month.",
-  "theirs": [
-    "UnLock Math is an online math curriculum for homeschool families. Alesia Blackwood teaches the video lessons on camera [1][6]. The courses run from Foundations, which covers grades 2 to 6 in one course, through Pre-Algebra, Algebra 1, Geometry, Algebra 2 and Pre-Calculus, plus Integrated Math I to III [1][7][9]. Families buy directly or with education savings account funds, and there is also a charter-school path [3][8].",
-    "Every lesson follows the same pattern. A five-question Warm-Up brings back earlier lessons. A short video teaches the new idea. Ten practice questions follow, one at a time and rising in difficulty, with new sets available without limit. Stay Sharp then reviews the previous ten lessons, and optional Challenge Yourself problems reach further [6]. A wrong answer brings immediate feedback and a step-by-step solution [3][6].",
-    "Each lesson has printable notes, and each course has a printable textbook. Students can chat live with Alesia and her team for help, except California charter students [6]. Quizzes, assignments and tests are graded automatically into a parent Gradebook, and each course comes with a pacing guide [3][10]."
-  ],
-  "credit": [
-    "A real teacher. Alesia Blackwood teaches every video lesson, and students can chat live with her team when stuck [1][6]. AMP's films are animated, with no teacher on camera, and AMP has no live help.",
-    "Review in every lesson. The Warm-Up and Stay Sharp sets bring earlier lessons back each day, with no planning by the adult [6].",
-    "A high school path with credentials: four courses on the UC/CSU A-G list, a claim to meet high school transcript requirements, and ACT, SAT and PERT prep [1][3][7]. AMP offers no transcripts or course credit.",
-    "A lower price and wider ESA reach: $299 a year [2], and the company says it is an approved ESA vendor in 17 states [8]. AMP costs $599 a year and can be bought with funds from three state programs."
-  ],
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "UnLock Math teaches by video lesson, in course order. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs UnLock Math: UnLock Math teaches by video lesson, in course order. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "UnLock Math teaches in lessons: a short video, then practice and review, one lesson after another in a course the family chooses [2][3][6]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP finds the level and adapts at every answer",
-      "body": "UnLock Math offers free readiness tests to download, and the family chooses a course; lessons then run in course order with a pacing guide [3][10]. Its FAQ mentions an adaptive assessment system but does not say what adapts or how [3]. AMP has no separate test. It places the learner within the first 24 problems and keeps a level in each of 14 strands, then chooses every problem from the learner's answers: new work, a prerequisite, or review.",
-      "research": ["level"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. UnLock Math offers readiness tests to download, from Pre-Algebra to Pre-Calculus, and the family chooses a course [2][6]. Lessons then run in course order, with a pacing guide [2][6]. Its FAQ mentions an adaptive assessment system and does not say what adapts or how [2].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "A miss leads back to the skill underneath",
-      "body": "After a wrong answer, UnLock Math shows immediate feedback and a step-by-step solution [3][6]. Its How It Works page mentions no hints, and we found no step that sends a learner back to earlier skills [6]. Every AMP problem has a hint that gives the first move, never the answer. Two misses in a row on a skill send practice to what that skill builds on.",
-      "research": ["hints", "mastery"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In UnLock Math the unit is the lesson. A five-question Warm-Up comes first, then a short video teaches the new idea, then ten practice questions rising in difficulty, then Stay Sharp review [3]. A wrong answer brings a step-by-step solution [2][3]. Across 55 studies, worked examples improve performance in math [9].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "Mastery has a rule anyone can read",
-      "body": "UnLock Math says students are not pushed ahead until ideas truly click, and that its courses ensure mastery [3][10]. We found no rule on its site for when that point is reached. In AMP a skill is Strong when four of the last five answers are right without help, and an answer after a hint or the lesson never counts. The rule is in AMP's public source code.",
-      "research": ["mastery"]
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. When each skill returns is set by that learner's own answers. In UnLock Math, review is part of every lesson: the Warm-Up brings back five questions from earlier lessons, and Stay Sharp draws ten questions from the previous ten lessons [3]. As its page describes it, review is set by lesson position, not by time [3]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later on the researchers' own test, against 38% for practice in blocks [8].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "Review is timed to each learner's record",
-      "body": "UnLock Math builds review into every lesson: a five-question Warm-Up from earlier lessons and Stay Sharp, ten questions from the previous ten lessons [6]. That is a real strength. As its page describes it, the review is set by lesson position, not by time or by what a learner missed [6]. AMP brings each skill back 6 hours, 1 day, 3 days, 1 week, 2 weeks and 1 month after a success, mixed with other topics, and starts over after a miss.",
-      "research": ["review"]
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. Repeated misses send practice back to what the skill builds on. In UnLock Math a learner can take new sets of practice questions without limit [3], and the course moves on in its own order, with a pacing guide [2][6]. Its FAQ says students are not pushed ahead until ideas click, and we found no published rule for when that point is reached [2].",
+      "research": [
+        "mastery",
+        "hints"
+      ]
     },
     {
-      "title": "It starts at counting",
-      "body": "UnLock Math's first course, Foundations, covers grades 2 to 6 in 113 lessons, and the rest of the program is built for grades 6 to 12 [1][9]. AMP starts at counting in kindergarten and runs through precalculus on one map of 336 skills. Neither program teaches calculus. A younger sibling, or an older learner missing early skills, works in AMP at their own level in each strand.",
-      "research": ["level"]
-    },
-    {
-      "title": "Paper made for this learner",
-      "body": "UnLock Math provides printable notes for each lesson and a printable textbook for each course, the same for every student [6]. AMP prints unlimited workbooks composed from each learner's own record, each with a worked answer key. Results entered from paper count toward the learner's level."
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, on one map from counting through precalculus. A learner further along in geometry than in fractions gets work at both levels. In UnLock Math the family chooses a course, and lessons follow that course's order [2][6]. Foundations covers grades 2 to 6 in one course, and then come Pre-Algebra through Pre-Calculus [4][5].",
+      "research": [
+        "level"
+      ]
     }
+  ],
+  "rows": {
+    "range": "Foundations covers grades 2 to 6 in one course. Then Pre-Algebra through Pre-Calculus, plus Integrated Math I to III [4][5].",
+    "start": "Readiness tests to download, from Pre-Algebra to Pre-Calculus. The family chooses the course [2][6].",
+    "teaching": "Short video lessons taught by Alesia Blackwood, printable notes, live chat with her team (not for California charter students), and a step-by-step solution after a wrong answer [2][3].",
+    "next": "The next lesson in course order, with a pacing guide [6].",
+    "mastery": "Graded quizzes, assignments and tests. The FAQ says students are not pushed ahead until ideas click [2].",
+    "review": "In every lesson: a five-question Warm-Up from earlier lessons, and Stay Sharp, ten questions from the previous ten lessons [3].",
+    "print": "Printable notes for each lesson and a printable textbook for each course, the same for every student [3].",
+    "adult": "Picks the course, follows the pacing guide and checks the Gradebook. Grading is automatic [2][6].",
+    "reports": "A student Report Card and a parent Gradebook of graded quizzes, assignments and tests [2].",
+    "evidence": "None found on its site [1][7]."
+  },
+  "theirs": [
+    "UnLock Math is an online math curriculum for homeschool families. Alesia Blackwood teaches the video lessons on camera [1][3]. The courses run from Foundations, which covers grades 2 to 6 in one course, through Pre-Algebra, Algebra 1, Geometry, Algebra 2 and Pre-Calculus, plus Integrated Math I to III [1][4][5]. Its maker describes the method as a hybrid of mastery and spiral teaching [1][3].",
+    "Every lesson follows the same pattern. A five-question Warm-Up brings back earlier lessons. A short video teaches the new idea. Ten practice questions follow, one at a time and rising in difficulty, with new sets available without limit. Stay Sharp then reviews the previous ten lessons, and optional Challenge Yourself problems reach further [3]. Quizzes, assignments and tests are graded automatically into a parent Gradebook, and each course comes with a pacing guide [2][6]."
+  ],
+  "credit": [
+    "A teacher on video for every lesson, and live chat with her team for help, except for California charter students [1][3].",
+    "Review in every lesson. The Warm-Up and Stay Sharp bring earlier lessons back each day [3].",
+    "A step-by-step solution after a wrong answer [2][3]."
   ],
   "evidence": {
     "theirs": [
-      "We found no study of UnLock Math's effect on math achievement on its site, randomized or otherwise. It has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [12][13]. The home page links no research page, and the awards page cites no studies [1][4].",
-      "What it offers instead is reputation. The home page says it was \"Voted #1 Homeschool Math Curriculum\" [1], and the awards page lists awards from 2016 to 2022 [4]. Families rate it 4.4 out of 5 across 106 Trustpilot reviews [5], and its reviews page carries one parent's report of a 90th-percentile test score [11]. It describes its method as a hybrid of mastery and spiral teaching, and cites no study of it [1][6]. Votes, ratings and one family's score show that families like the course. They do not measure learning against a comparison group."
+      "We found no study of UnLock Math's effect on math achievement on its site. The home page links no research page, and its awards page cites no studies [1][7]. It describes its method as a hybrid of mastery and spiral teaching and cites no study of it [1][3]."
     ],
     "ours": [
-      "UnLock Math and AMP agree that review belongs in every day. They differ in how far back it reaches and what sets it. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [14]. Across 317 experiments, mostly on verbal recall, the best gap between study sessions grew with how long the material had to be remembered [15]. So AMP spaces each skill's review out to a month and starts over after a miss. We expect that to show in what a learner still knows months later, and we have committed to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 55 studies, worked examples improve performance in math [9]. In a randomized trial with 787 seventh graders, practice that mixed and spaced topics scored 62% a month later on the researchers' own test, against 38% for practice in blocks, and the trial meets What Works Clearinghouse standards without reservations [8]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
-  },
-  "rows": {
-    "price": "$299 a year, no auto-renewal, or $29.90 a month. Additional students $14.95. 14-day free trial without a card; 30-day refund [2].",
-    "buyers": "Families directly, ESA families, and a charter-school path [3]. The company says it is an approved ESA vendor in 17 states [8].",
-    "range": "Foundations covers grades 2 to 6 in one course. Then Pre-Algebra through Pre-Calculus, plus Integrated Math I to III [7][9].",
-    "start": "Free downloadable readiness tests, Pre-Algebra to Pre-Calculus. We found no placement test inside the program [3][6][10].",
-    "teaching": "Video lessons taught by Alesia Blackwood, printable notes, live chat with her team, and a step-by-step solution after a wrong answer [3][6].",
-    "next": "Lessons in course order, with a pacing guide. An adaptive assessment is mentioned, but how it adapts is not described [3][10].",
-    "mastery": "No published rule found. The FAQ says students move on once ideas click [3].",
-    "review": "In every lesson: a five-question Warm-Up from earlier lessons, and Stay Sharp, ten questions from the previous ten lessons [6].",
-    "print": "Printable notes for each lesson and a printable textbook for each course, the same for every student [6].",
-    "adult": "Picks the course, follows the pacing guide and checks the Gradebook. Grading is automatic [3][10].",
-    "reports": "Automatic grading of every quiz, assignment and test, a student Report Card and a parent Gradebook [3].",
-    "evidence": "No outcome study found on its site. No entry in Evidence for ESSA or the What Works Clearinghouse, November 2026 [12][13]."
   },
   "fit": {
     "them": [
-      "Your child learns best from a real teacher on video, with live chat for help when stuck.",
-      "You need high school transcripts or courses on the UC/CSU A-G list.",
-      "Your state's ESA approves UnLock Math and not AMP.",
-      "You want the lower price: $299 a year, against AMP's $599."
+      "Your child learns best from a teacher on video, with live chat for help."
     ],
     "amp": [
-      "You are not sure which course fits, or your child is at different levels in different parts of math.",
-      "You want each next problem chosen from the last answer, and repeated misses sent back to the skill underneath.",
-      "You want a mastery rule you can read, where help never counts.",
-      "Your child is in kindergarten or first grade, below where UnLock Math's courses begin.",
-      "You print, and want worksheets made for your child, with worked answer keys."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to come back at growing intervals, set by your child's own answers.",
+      "Your child is at different levels in different parts of math.",
+      "You print, and want workbooks made from your child's own record, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "Is UnLock Math adaptive?",
-      "answer": "Its FAQ mentions an adaptive assessment system, and its Foundations page lists adaptive questions [3][9]. Neither page says what adapts or how. Lessons follow course order with a pacing guide [10]."
+      "question": "How is AMP different from UnLock Math?",
+      "answer": "UnLock Math teaches through a video lesson and its practice, one lesson after another in course order [3][6]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Is AMP more expensive than UnLock Math?",
-      "answer": "Yes. UnLock Math costs $299 a year or $29.90 a month, and lists additional students at $14.95 [2]. AMP costs $599 a year or $59 a month for the first child, and $399 a year or $39 a month for each additional child. The price pays for a program that finds the level, chooses and checks every problem, schedules review and prints workbooks, from counting through precalculus."
+      "question": "Does UnLock Math work?",
+      "answer": "We found no study of its effect on math achievement on its site [1][7]."
     },
     {
-      "question": "Can I pay for UnLock Math or AMP with ESA funds?",
-      "answer": "UnLock Math says it is an approved ESA vendor in 17 states [8], and ESA purchases do not get its sibling discount [3]. AMP can be bought with Arizona ESA, Arkansas EFA and New Hampshire EFA funds."
-    },
-    {
-      "question": "Can we use UnLock Math and AMP together?",
-      "answer": "Yes. They are separate programs. A family can keep UnLock Math's video lessons and Gradebook for the course [3][6], and use AMP for practice at the learner's level in every strand, with review on a schedule."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    { "title": "UnLock Math home page", "url": "https://www.unlockmath.com/" },
-    { "title": "UnLock Math pricing", "url": "https://www.unlockmath.com/pricing" },
-    { "title": "UnLock Math frequently asked questions", "url": "https://www.unlockmath.com/pricing/faqs" },
-    { "title": "UnLock Math awards", "url": "https://www.unlockmath.com/awards" },
-    { "title": "UnLock Math reviews (Trustpilot)", "url": "https://www.trustpilot.com/review/unlockmath.com" },
-    { "title": "How UnLock Math works", "url": "https://www.unlockmath.com/how-it-works" },
-    { "title": "UnLock Math curriculum and A-G approvals", "url": "https://www.unlockmath.com/curriculum" },
-    { "title": "UnLock Math and ESA programs", "url": "https://www.unlockmath.com/esa" },
-    { "title": "UnLock Math Foundations course", "url": "https://www.unlockmath.com/foundations" },
-    { "title": "UnLock Math Pre-Algebra course", "url": "https://www.unlockmath.com/pre-algebra" },
-    { "title": "UnLock Math reviews and testimonials", "url": "https://www.unlockmath.com/reviews" },
-    { "title": "Evidence for ESSA, math programs", "url": "https://www.evidenceforessa.org/programs/math" },
-    { "title": "What Works Clearinghouse intervention reports", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
-    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "Cepeda et al. (2006), Distributed practice in verbal recall tasks, Psychological Bulletin 132(3)", "url": "https://doi.org/10.1037/0033-2909.132.3.354" }
+    {
+      "title": "UnLock Math home page",
+      "url": "https://www.unlockmath.com/"
+    },
+    {
+      "title": "UnLock Math frequently asked questions",
+      "url": "https://www.unlockmath.com/pricing/faqs"
+    },
+    {
+      "title": "How UnLock Math works",
+      "url": "https://www.unlockmath.com/how-it-works"
+    },
+    {
+      "title": "UnLock Math curriculum",
+      "url": "https://www.unlockmath.com/curriculum"
+    },
+    {
+      "title": "UnLock Math Foundations course",
+      "url": "https://www.unlockmath.com/foundations"
+    },
+    {
+      "title": "UnLock Math Pre-Algebra course",
+      "url": "https://www.unlockmath.com/pre-algebra"
+    },
+    {
+      "title": "UnLock Math awards",
+      "url": "https://www.unlockmath.com/awards"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    }
   ]
 }

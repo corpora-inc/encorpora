@@ -3,135 +3,175 @@
   "name": "Saxon Math",
   "maker": "HMH (Houghton Mifflin Harcourt)",
   "category": "books",
-  "checked": "2026-11-21",
-  "benefit": "Review timed to each learner",
-  "line": "Saxon prints the same mixed review for every child; AMP times each skill's review to the learner's answers.",
-  "description": "AMP vs Saxon Math: Saxon's cumulative review, price and research record, and how AMP times review to each learner and checks every answer at once.",
-  "verdict": "Saxon Math has built review of earlier lessons into every day's practice for decades, and a homeschool kit costs a fraction of AMP's yearly price [1][2][4]. That review is printed in the same order for every child, and a wrong answer waits until an adult checks it against the solutions manual [9]. AMP times each skill's review to the learner, checks every answer the moment it is given, and still prints paper.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Saxon teaches from a book in a fixed order, and the adult checks the work. In AMP, every answer sets the next problem.",
+  "description": "AMP vs Saxon Math: Saxon teaches from a book in a fixed order and tests every fifth lesson. In AMP, assessment, teaching and review are continuous.",
+  "verdict": "Saxon Math teaches one small idea a lesson from a printed book, mixes review of earlier lessons into every problem set, and tests after every fifth lesson, with the adult checking the work [1][6][8]. In AMP, assessment is continuous: every answer is checked at once, updates the learner's level and sets the next problem. Each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Review timed to each learner, not to the page",
-      "body": "HMH describes Saxon's practice as distributed through the year, with continual review of earlier lessons; every problem set mixes new work with old [1][11]. The mix is printed in the book, so every child meets an old topic at the same point, whether it came easily or barely. AMP brings each learned skill back after 6 hours, then 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. A miss starts that skill's schedule again.",
-      "research": ["review"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. Every answer updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. Saxon assesses with a cumulative test after every fifth lesson [7][8], and the adult grades it by hand [6].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "Every answer checked and explained at once",
-      "body": "In Saxon the parent checks daily work and tests by hand, with a solutions manual [9]. In the Algebra 1 kit, test problems have no step-by-step solutions unless the family buys the Saxon Teacher CD-ROMs [6]. AMP checks every answer exactly and shows right or wrong, the correct answer and the worked steps before the next problem. Feedback that explains is the kind with the largest effects in studies of computer-based feedback [18].",
-      "research": ["feedback"]
+      "title": "Feedback on every answer",
+      "body": "After every answer, AMP shows whether it was right, the correct answer and the worked steps. In Saxon, a wrong answer waits until the adult checks the work by hand, with a solutions manual [6]. Across 40 studies of computer feedback, feedback that explains had the largest average effect [15].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "Each problem chosen from the learner's answers",
-      "body": "Every Saxon student does the same lessons in the book's order, with about 30 mixed problems a lesson in grades 4 and 5 and in the 4th-edition algebra books [9][10]. The adult decides when to skip ahead or slow down. AMP keeps a level in each of 14 strands and picks every next problem from the answers so far: new work, a prerequisite, or review. While a learner is still climbing, every second problem reaches higher.",
-      "research": ["level", "mastery"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Saxon the unit is the lesson: one small new idea taught in text with worked examples, then practice [6][7]. Its newer books print beside each mixed problem the number of the lesson that taught it [6].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "Repeated misses lead back to the missing piece",
-      "body": "Saxon's test books include a Test Analysis Form that maps missed test problems to the lessons that taught them. The adult does the reteaching [9][10]. In AMP, two misses in a row on a skill send practice to the skills it builds on. A skill counts as strong only after four of the last five answers are right without help. No one has to spot the gap first.",
-      "research": ["mastery"]
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Each answer sets the next problem, and an old skill due back is one of the choices. Saxon also reviews continually: every problem set mixes the new lesson with earlier ones, in the order the book prints for every student [1][8]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [13].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "Help on the problem, not a lesson number",
-      "body": "We found no hints in the Saxon materials we read. Its newest books print beside each mixed problem the number of the lesson that taught it, so a student who misses one can look it up [9]. Every AMP problem type has a one-step hint that never gives the answer and a written lesson with a worked example, right beside the problem. Narrated lesson films cover a growing share of problem types.",
-      "research": ["hints", "lessons", "films"]
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, so a learner further along in one part than another gets work at both levels. A Saxon learner works through one book, lesson by lesson, in the book's order, and the adult sets the pace [4][6].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "Workbooks made for this learner, with worked keys",
-      "body": "A Saxon kit is the same printed book for every student [5]. AMP prints unlimited workbooks built from the learner's own record, with a section of skills due for review and an answer key that works every problem. Results entered from paper count toward the learner's level. A family can keep teaching Saxon's lessons and use AMP for practice and review."
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. Repeated misses send practice back to what the skill builds on. Saxon's test books include a Test Analysis Form that maps missed test problems to the lessons that taught them, and the adult does the reteaching [6].",
+      "research": [
+        "mastery"
+      ]
     }
   ],
   "rows": {
-    "price": "Homeschool kits $94.95 to $159.95 a course at Rainbow Resource [4]. Saxon Teacher CD-ROM for Math 5/4: $233.25 [7]. School prices by request [1].",
-    "buyers": "Families, through Rainbow Resource, HMH's homeschool partner [3]. Schools request information from HMH [1].",
-    "range": "Kindergarten through calculus, plus physics [4].",
-    "start": "A placement test linked from Rainbow Resource's kit page [5]. The adult picks the book.",
-    "teaching": "A written lesson on one small new idea, with worked examples [9][10]. In kindergarten through grade 3, a parent teaches from a scripted manual [8]. Video costs extra [7].",
-    "next": "The next lesson in the book, about 120 per book, in order [5]. The adult sets the pace.",
-    "mastery": "No per-skill mastery rule in the materials we read. A cumulative test after every five lessons [11].",
-    "review": "Mixed review of earlier lessons in every problem set, in the same order for every student [1][11].",
-    "print": "All print: textbook, tests and worksheets, and a solutions manual [5]. The same book for every child.",
-    "adult": "Leads every lesson in kindergarten through grade 3 [8]. From grade 4, checks daily work and tests by hand [9].",
-    "reports": "No reports beyond paper tests. A Test Analysis Form maps missed test problems to lessons [9][10].",
-    "evidence": "What Works Clearinghouse: mixed effects, grades 1 to 8 (2017) [11]. Evidence for ESSA: Promising, grades 1 and 2, +0.11 [13]. Algebra I: no discernible effects [12]."
+    "range": "Kindergarten through calculus, plus physics [3].",
+    "start": "A placement test, linked from the kit's retail page [4]. The adult picks the book.",
+    "teaching": "A written lesson on one small new idea, with worked examples [6][7]. In kindergarten through grade 3, a parent teaches from a scripted manual [5].",
+    "next": "The next lesson in the book, in order. The adult sets the pace [4][6].",
+    "mastery": "A cumulative test after every fifth lesson, checked by the adult [6][8].",
+    "review": "Mixed review of earlier lessons in every problem set, fixed in the book, the same for every student [1][8].",
+    "print": "All print: textbook, tests and a solutions manual. The same book for every learner [4].",
+    "adult": "Teaches each lesson from a script in kindergarten through grade 3 [5]. From grade 4, checks daily work and tests by hand [6].",
+    "reports": "Paper tests, graded by hand. A Test Analysis Form maps missed test problems to the lessons that taught them [6].",
+    "evidence": "What Works Clearinghouse: mixed effects, grades 1 to 8 [8]. Evidence for ESSA: Promising, grades 1 and 2 [10]. Algebra I: no discernible effects [9]."
   },
   "theirs": [
-    "Saxon Math is a print curriculum published by HMH. It began with John Saxon, who taught math at Rose State College for 14 years, and HMH says Saxon textbooks have been used since 1981 [2]. HMH lists its school editions without prices and asks schools to request information [1]. Families buy homeschool kits, from kindergarten through calculus, at Rainbow Resource, which HMH names as its homeschool partner [3][4].",
-    "From grade 4, a lesson opens with facts and mental math, then teaches one small new idea in text with worked examples [9][10]. Practice on that idea follows, then a mixed set of earlier work: about 30 problems a lesson in grades 4 and 5 and in the 4th-edition algebra books [9][10]. A cumulative test follows every fifth lesson [10][11]. A book holds about 120 lessons [5]. Most students read the lessons on their own, and the parent checks daily work and tests, with a solutions manual [9].",
-    "Kindergarten through grade 3 work differently. A parent teaches each lesson from a scripted manual, usually with manipulatives, after a daily Meeting on time, money and counting [8]. The kits are books: a text, tests and a solutions manual [5][6]. Video lessons are sold separately, such as HMH's Saxon Teacher CD-ROMs [7]."
+    "Saxon Math is a print curriculum from HMH, from kindergarten through calculus [1][3]. It began with John Saxon, who taught math at Rose State College, and HMH says Saxon textbooks have been used since 1981 [2]. HMH describes its practice as distributed through the year, with continual review of earlier lessons [1].",
+    "From grade 4, a lesson opens with facts and mental math, then teaches one small new idea in text with worked examples [6][7]. Practice on that idea follows, then a mixed set of problems from earlier lessons, and a cumulative test follows every fifth lesson [7][8]. Most students read the lessons on their own, in order, and the adult checks daily work and tests with a solutions manual [6]. In kindergarten through grade 3, a parent teaches each lesson from a scripted manual, usually with manipulatives [5]."
   ],
   "credit": [
-    "Mixed review of earlier lessons in every problem set, for every student, for decades [2][11]. It is the same idea at the heart of AMP's review.",
-    "A full year on paper, with no device needed, for $94.95 to $159.95 a kit at Rainbow Resource [4][5]. AMP costs more and has no offline mode.",
-    "Calculus and physics in the same series [4]. AMP stops at precalculus.",
-    "Scripted, hands-on lessons a parent leads in kindergarten through grade 3, with manipulatives [8]. AMP does not read problems aloud, so a child who cannot yet read needs an adult beside them.",
-    "Real outcome research: a federal randomized trial of four curricula, and an Evidence for ESSA rating of Promising for grades 1 and 2 [11][13]."
+    "Review of earlier lessons in every problem set, built into the books for decades [1][2].",
+    "A worked example with each new idea [6][7].",
+    "Outcome research in schools, including a federal randomized trial [8]."
   ],
   "evidence": {
     "theirs": [
-      "Saxon Math has real outcome research, all of it in schools. The What Works Clearinghouse's May 2017 report on Saxon's primary courses found 26 eligible studies. Five met its standards, all with reservations, covering 8,855 students in grades 1 to 8. Its rating is mixed effects, with an average gain of 8 percentile points, ranging from −1 to +16 across studies [11].",
-      "The only randomized trial of the five, by Agodini and colleagues for the Institute of Education Sciences, assigned four curricula to schools at random [11]. After two years, second graders using Saxon scored 0.25 standard deviations above those using Investigations, and about the same as those using Math Expressions (−0.02) or Scott Foresman–Addison Wesley (0.00). Pooled, the effect was +0.07 and not statistically significant. Saxon teachers also gave about six hours of math a week, against about five in the other curricula [11]. Evidence for ESSA rates Saxon Math Promising for grades 1 and 2 on a 2010 paper from the same trial, against Scott Foresman–Addison Wesley, with an average effect of +0.11 [13].",
-      "The other four studies compare groups that were not assigned at random. Their effects ran from +0.11 to +0.41, and none was statistically significant as the Clearinghouse calculated it [11]. For Algebra I it found no discernible effects (two studies, 198 students), and no study of Saxon Geometry, Algebra II or Advanced Math met its standards [12]. We found no outcome study of Saxon used at home in either the Clearinghouse's or Evidence for ESSA's records.",
-      "HMH's own ESSA summaries claim more: Strong for kindergarten through grade 5, and Promising for grades 9 to 12 [14][15]. The Strong claim reports the same trial's one-year result for second graders against Scott Foresman–Addison Wesley [14]; after two years, the Clearinghouse found no difference between the two (0.00) [11]. The high-school claim rests on a 1997 study of 120 juniors at two Georgia high schools, which the Clearinghouse found does not meet its standards [15][12]."
+      "The What Works Clearinghouse's May 2017 report on Saxon's primary courses found 26 eligible studies. Five met its standards, all with reservations, covering 8,855 students in grades 1 to 8. Its rating is mixed effects, with an average gain of 8 percentile points, ranging from −1 to +16 across studies [8]. Only one was a randomized trial. In the others, groups were not assigned at random. Their effects ran from +0.11 to +0.41, and none was statistically significant as the Clearinghouse calculated it [8].",
+      "The randomized trial, by Agodini and colleagues for the Institute of Education Sciences, assigned four curricula to schools at random [8]. After two years, second graders using Saxon scored 0.25 standard deviations above those using Investigations, and about the same as those using Math Expressions (−0.02) or Scott Foresman–Addison Wesley (0.00). Pooled, the effect was +0.07 and not statistically significant. Saxon teachers gave about six hours of math a week, against about five in the other curricula [8]. Evidence for ESSA rates Saxon Math Promising for grades 1 and 2, on a 2010 paper from the same trial, with an average effect of +0.11 [10].",
+      "For Algebra I the Clearinghouse found no discernible effects (two studies, 198 students), and no study of Saxon Geometry, Algebra II or Advanced Math met its standards [9]. HMH's own summaries claim Strong evidence for kindergarten through grade 5 and Promising for grades 9 to 12 [11][12]. The first rests on the same trial's one-year result for second graders against Scott Foresman–Addison Wesley; after two years the Clearinghouse found no difference between the two [8][11]. The second rests on a 1997 study of 120 juniors that the Clearinghouse found does not meet its standards [9][12]. We found no outcome study of Saxon used at home in the Clearinghouse's or Evidence for ESSA's records."
     ],
     "ours": [
-      "Saxon's central idea has strong research behind it, and AMP keeps it. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [16]. Spacing research adds a second rule: the best gap between reviews grows with how long the material must last, in studies of verbal recall [17]. A printed book fixes those gaps for everyone. AMP widens them for each skill and each learner, and restarts them after a miss. We expect review timed to the learner to beat review timed to the page. That is our bet, and we have committed to testing AMP in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [13]. A meta-analysis of 317 experiments in verbal recall found that spacing study sessions improves retention, and that the best gap between sessions grows with how long the material must be remembered [14]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want a screen-free curriculum, all on paper.",
-      "You want to spend about $95 to $160 a course on math rather than $599 a year.",
-      "You want to teach a scripted, hands-on lesson yourself from kindergarten through grade 3.",
-      "Your learner is headed for calculus or physics within one series."
+      "You want to teach from a printed book, with lessons in a fixed order and review built into every problem set."
     ],
     "amp": [
-      "You want review timed to your child's own answers, not to the book's page order.",
-      "You would rather not grade by hand, and want every miss explained the moment it happens.",
-      "You want each problem chosen from your child's answers, ahead where they are ready and back where a gap shows.",
-      "You want paper too: workbooks made for your child, with worked answer keys.",
-      "You like Saxon's lessons and want AMP's practice and review beside them."
+      "You want every answer checked at once and followed by the worked steps.",
+      "You want each problem, and each review, chosen from your child's own answers.",
+      "Your child is at different levels in different parts of math.",
+      "You want to see the actual problems behind every number, without grading by hand.",
+      "You want paper too: workbooks made for your child, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "Can I use AMP with Saxon Math?",
-      "answer": "Yes. A family can keep teaching Saxon's lessons and use AMP for practice and review. AMP places the learner within the first 24 problems and keeps a level in each part of math, schedules review for each skill, and prints workbooks with worked answer keys."
-    },
-    {
-      "question": "Is AMP more expensive than Saxon Math?",
-      "answer": "Yes. A Saxon homeschool kit costs $94.95 to $159.95 a course at Rainbow Resource [4]. AMP is $599 a year or $59 a month for the first child. That price covers placement, every problem chosen and checked, scheduled review, unlimited workbooks, and counting through precalculus."
+      "question": "How is AMP different from Saxon Math?",
+      "answer": "Saxon teaches one lesson at a time from a printed book, mixes review into every problem set, and tests after every fifth lesson, with the adult checking the work [1][6][8]. AMP has no separate test: every answer is checked at once and sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
       "question": "Does Saxon Math work?",
-      "answer": "In the What Works Clearinghouse's May 2017 review, Saxon had mixed effects in grades 1 to 8, with an average gain of 8 percentile points [11]. Evidence for ESSA rates it Promising for grades 1 and 2 [13]. For Algebra I the Clearinghouse found no discernible effects [12]."
+      "answer": "In the What Works Clearinghouse's 2017 review, Saxon had mixed effects in grades 1 to 8, with an average gain of 8 percentile points [8]. Evidence for ESSA rates it Promising for grades 1 and 2 [10]. For Algebra I the Clearinghouse found no discernible effects [9]."
     },
     {
-      "question": "Is Saxon Math spiral or mastery?",
-      "answer": "Saxon teaches in small steps and reviews them continually: each lesson adds one new idea, and every problem set mixes it with earlier lessons [1][11]. AMP does both. A skill counts as strong after four of the last five answers are right without help, and then it comes back on a schedule."
-    },
-    {
-      "question": "Does AMP go as far as Saxon Math?",
-      "answer": "No. Saxon runs through calculus and physics [4]. AMP runs from counting through precalculus in one program."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. A learner can keep Saxon's lessons and practice in AMP, which places them from their first answers."
     }
   ],
   "sources": [
-    { "title": "Saxon Math program page (HMH)", "url": "https://www.hmhco.com/programs/saxon-math" },
-    { "title": "John Saxon (HMH)", "url": "https://www.hmhco.com/people/john-saxon" },
-    { "title": "Homeschool (HMH)", "url": "https://www.hmhco.com/classroom-solutions/homeschool" },
-    { "title": "Saxon Math homeschool kits (Rainbow Resource Center)", "url": "https://www.rainbowresource.com/saxon-math" },
-    { "title": "Saxon Math 5/4 Homeschool Kit, 3rd edition (Rainbow Resource Center)", "url": "https://www.rainbowresource.com/024422.html" },
-    { "title": "Saxon Algebra 1 Homeschool Kit with Solutions Manual, 4th edition (Rainbow Resource Center)", "url": "https://www.rainbowresource.com/019975.html" },
-    { "title": "Saxon Math 5/4 Homeschool Saxon Teacher CD-ROM (HMH)", "url": "https://www.hmhco.com/shop/k12/saxon-teacher-cd-rom-3rd-edition/9781602773875" },
-    { "title": "Saxon Math K-3 review (Cathy Duffy Reviews)", "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-k-6/saxon-math-k3" },
-    { "title": "Saxon Math 5/4 through Calculus review (Cathy Duffy Reviews)", "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-9-12/saxon-math-54-through-calculus" },
-    { "title": "Saxon Math Intermediate series review (Cathy Duffy Reviews)", "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-k-6/saxon-math-intermediate-series" },
-    { "title": "What Works Clearinghouse (2017), Saxon Math intervention report, Primary Mathematics", "url": "https://ies.ed.gov/ncee/WWC/Docs/InterventionReports/wwc_saxonmath_051617.pdf" },
-    { "title": "What Works Clearinghouse (2016), Saxon Math intervention report, Secondary Mathematics", "url": "https://ies.ed.gov/ncee/wwc/Docs/InterventionReports/wwc_saxon_052416.pdf" },
-    { "title": "Saxon Math (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/saxon-math-elementary/" },
-    { "title": "Saxon Math K-5 ESSA evidence overview (HMH)", "url": "https://www.hmhco.com/documents/essa-evidence-criteria-16" },
-    { "title": "Saxon Math 9-12 ESSA evidence overview (HMH)", "url": "https://www.hmhco.com/documents/essa-evidence-criteria-21" },
-    { "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "Cepeda et al. (2006), Distributed practice in verbal recall tasks", "url": "https://doi.org/10.1037/0033-2909.132.3.354" },
-    { "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment", "url": "https://doi.org/10.3102/0034654314564881" }
+    {
+      "title": "Saxon Math program page (HMH)",
+      "url": "https://www.hmhco.com/programs/saxon-math"
+    },
+    {
+      "title": "John Saxon (HMH)",
+      "url": "https://www.hmhco.com/people/john-saxon"
+    },
+    {
+      "title": "Saxon Math homeschool kits (Rainbow Resource Center)",
+      "url": "https://www.rainbowresource.com/saxon-math"
+    },
+    {
+      "title": "Saxon Math 5/4 Homeschool Kit, 3rd edition (Rainbow Resource Center)",
+      "url": "https://www.rainbowresource.com/024422.html"
+    },
+    {
+      "title": "Saxon Math K-3 review (Cathy Duffy Reviews)",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-k-6/saxon-math-k3"
+    },
+    {
+      "title": "Saxon Math 5/4 through Calculus review (Cathy Duffy Reviews)",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-9-12/saxon-math-54-through-calculus"
+    },
+    {
+      "title": "Saxon Math Intermediate series review (Cathy Duffy Reviews)",
+      "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/math/math-grades-k-6/saxon-math-intermediate-series"
+    },
+    {
+      "title": "What Works Clearinghouse (2017), Saxon Math intervention report, Primary Mathematics",
+      "url": "https://ies.ed.gov/ncee/WWC/Docs/InterventionReports/wwc_saxonmath_051617.pdf"
+    },
+    {
+      "title": "What Works Clearinghouse (2016), Saxon Math intervention report, Secondary Mathematics",
+      "url": "https://ies.ed.gov/ncee/wwc/Docs/InterventionReports/wwc_saxon_052416.pdf"
+    },
+    {
+      "title": "Saxon Math (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/saxon-math-elementary/"
+    },
+    {
+      "title": "Saxon Math K-5 ESSA evidence overview (HMH)",
+      "url": "https://www.hmhco.com/documents/essa-evidence-criteria-16"
+    },
+    {
+      "title": "Saxon Math 9-12 ESSA evidence overview (HMH)",
+      "url": "https://www.hmhco.com/documents/essa-evidence-criteria-21"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Cepeda et al. (2006), Distributed practice in verbal recall tasks",
+      "url": "https://doi.org/10.1037/0033-2909.132.3.354"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    }
   ]
 }

@@ -3,141 +3,194 @@
   "name": "DreamBox Math",
   "maker": "Discovery Education",
   "category": "school",
-  "checked": "2026-11-21",
-  "benefit": "One program through precalculus",
-  "line": "DreamBox is a K-8 supplement built on discovery. AMP runs through precalculus and explains every answer.",
-  "description": "AMP vs DreamBox Math: what DreamBox's randomized trials found, where the K-8 supplement stops, and how AMP explains every answer through precalculus.",
-  "verdict": "DreamBox Math has randomized evidence in the early grades and a hands-on way of building number sense [16][15]. It is a K-8 supplement meant for about an hour a week, and in Harvard's study few students reached the dose DreamBox recommended [1][3][18]. AMP is one program from counting through precalculus that teaches every problem type, explains every answer, schedules review and prints workbooks.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "DreamBox teaches in lessons with virtual models. In AMP, each problem carries its own hint, lesson and worked answer.",
+  "description": "AMP vs DreamBox Math: DreamBox teaches in lessons with virtual manipulatives. In AMP, the problem is the unit, and review is continuous.",
+  "verdict": "DreamBox Math teaches in lessons worked with virtual manipulatives, and its engine picks the next lesson from how a learner worked in the last one [3][10]. In AMP, the problem is the unit. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "One program from counting through precalculus",
-      "body": "DreamBox Math covers kindergarten through grade 8 [2]. Its own help center calls it \"a supplemental digital product\", meant to support a core curriculum [3]. AMP runs from counting through precalculus on one map of 336 skills, with a lesson for every problem type. A learner who finishes grade 8 math keeps going in the same place."
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In DreamBox the unit is the lesson. A learner solves problems in it by working virtual manipulatives [10], and explicit instruction comes after exploration [2]. The engine then picks the next lesson from how the learner worked inside the last one [3]. Across 55 studies, worked examples improve performance in math [19].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "Every problem comes with its lesson and worked answer",
-      "body": "DreamBox teaches through exploration first and puts explicit instruction after it, inside the lesson [3]. When a struggle stops being productive, it says it will show the student how to do it [7]. We found no stand-alone written lesson or worked example for each type of problem in its help center or product pages. Common Sense Media's review says its items can focus more on practice than on instruction, and that children may want more explanation of some concepts [23]. Every one of AMP's 1,384 problem types has a one-step hint and a written lesson with a worked example, and every answer is followed by the correct answer and worked steps. Across 55 studies, worked examples improved math performance by g = 0.48 on average [25].",
-      "research": ["lessons", "feedback", "hints"]
+      "title": "Feedback on every answer",
+      "body": "After each problem AMP shows whether it was right, the correct answer and the worked steps. In DreamBox, the engine watches how the learner works and adjusts hints and scaffolding [2]. When a struggle stops being productive, DreamBox says it will show the learner how to do it, and eventually exit the lesson [5]. Across 40 studies of computer feedback, feedback that explains had the largest effect [20].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "Help inside AMP never counts as mastery",
-      "body": "DreamBox's help center asks adults not to help beyond coaching, because the engine would then adapt to the adult's understanding instead of the child's [7]. AMP builds help in. A hint gives the first step and never the answer, and every reference lesson carries a guide for the parent. An answer given after a hint or the lesson is recorded as helped, and it does not move the level or count toward mastery.",
-      "research": ["hints", "mastery"]
+      "title": "Help is recorded, not forbidden",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. So help stays in reach, and each lesson has a guide for the adult. DreamBox asks adults not to help beyond coaching, because the engine would then adapt to the adult's understanding instead of the learner's [5].",
+      "research": [
+        "hints",
+        "mastery"
+      ]
     },
     {
-      "title": "A mastery rule anyone can read",
-      "body": "We found no numeric mastery rule in DreamBox's help center or product pages [3][9]. In the Arizona study DreamBox commissioned, lessons counted as completed whether the student passed or failed them [19]. AMP calls a skill Strong only when four of the last five answers are right without help, and the rule sits in public code. Two misses in a row send practice back to what the skill builds on.",
-      "research": ["mastery"]
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In DreamBox, material comes back when the engine sees a struggle: the lesson's progress resets and the learner replays it [4]. We found no time-based review of skills already learned in the help center and product pages we read [1][2][4]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [18].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "Old skills come back on a schedule",
-      "body": "DreamBox returns to material when the engine sees a struggle, and resets the lesson so the student replays it [5]. We found no time-based review of skills already learned in its help center or product pages [3][5]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' test a month later, against 38% for practice in blocks [24].",
-      "research": ["review"]
+      "title": "Work on paper counts",
+      "body": "AMP makes printable workbooks for each learner from that learner's own record, with worked answer keys, and work done on paper counts. DreamBox Math has no printable worksheets, and its help center says, \"We do not encourage students to use pencil and paper\" during lessons [2]."
     },
     {
-      "title": "It runs on a phone or an Android tablet",
-      "body": "DreamBox's pricing page says it is not available on smartphones or Android tablets [1]. Its help center says it has no Android app, is not optimized for phones, and offers no technical support on Android devices [14]. AMP runs in any current browser on a phone, tablet or computer. It has no app-store app."
-    },
-    {
-      "title": "Paper is part of the plan",
-      "body": "DreamBox Math has no printable worksheets, and its help center says \"We do not encourage students to use pencil and paper\" while they play lessons [3]. AMP prints unlimited workbooks made for each learner, each with a worked answer key. Results entered from paper count toward the learner's level, so a day off screen still counts."
+      "title": "Counting through precalculus",
+      "body": "AMP is one program from counting through precalculus, on one map of skills, and each problem links to the skills it builds on and leads to. DreamBox Math covers kindergarten through grade 8 [1]. Its help center calls it a supplemental digital product, meant to support a core curriculum [2]."
     }
   ],
   "rows": {
-    "price": "Home: $99.95 a year or $12.95 a month for one child; $149.95 a year or $19.95 a month for a family plan [1]. Schools: no published price [2].",
-    "buyers": "Families directly, with a 14-day free trial [1]. Schools and districts through a demo request [2].",
-    "range": "Kindergarten through grade 8 [2]. Its maker describes it as a supplement to a core curriculum [3].",
-    "start": "At home, the child starts in the upcoming grade and the engine adjusts [8]. Schools can switch on Launchpad, a placement assessment at the start of each school year [9].",
-    "teaching": "Lessons worked with virtual manipulatives, with narrated directions and hints [15][12]. Explicit instruction comes after exploration [3]. No written lesson per problem type found.",
-    "next": "The engine picks the next lesson from how the child worked inside the last one. Adults can steer with Assignments [4].",
-    "mastery": "No numeric mastery rule found. A struggle on a concept resets that lesson's progress so it is replayed [5].",
-    "review": "No scheduled review found. Material returns when the engine sees a struggle, or when an adult assigns a review topic [5][8].",
-    "print": "No printable worksheets. DreamBox discourages pencil and paper during lessons [3].",
-    "adult": "Little to do. Adults are asked not to help beyond coaching, because help skews the engine [7].",
-    "reports": "A family dashboard: minutes and lessons per week against a five-lesson target, proficiency by standard, and lesson groups that may need attention [10].",
-    "evidence": "Rated Strong by Evidence for ESSA: two randomized studies, average +0.10, grades K-5 [16]. What Works Clearinghouse: potentially positive effects, grades K-1 (2013) [17]."
+    "range": "Kindergarten through grade 8 [1]. Its maker calls it a supplement to a core curriculum [2].",
+    "start": "At home, a learner starts in the upcoming grade and the engine adjusts [8]. Schools can add a placement assessment at the start of each school year [7].",
+    "teaching": "Inside lessons, worked with virtual manipulatives, with narrated directions and hints. Explicit instruction comes after exploration [10][11][2].",
+    "next": "The engine picks the next lesson from how the learner worked inside the last one. Adults can steer with Assignments [3].",
+    "mastery": "Counted in lessons. Some lessons replay with changed content until the learner shows proficiency, and a struggle resets a lesson's progress [4].",
+    "review": "When the engine sees a struggle, the lesson resets and is replayed [4]. An adult can assign a topic to review [8].",
+    "print": "No printable worksheets. DreamBox discourages pencil and paper during lessons [2].",
+    "adult": "Can steer with Assignments. Asked not to help beyond coaching, because help skews the engine [3][5].",
+    "reports": "Minutes and lessons per week against a weekly target, and proficiency by standard [9].",
+    "evidence": "Rated Strong by Evidence for ESSA: two randomized studies, grades K-5, average +0.10 [12]. What Works Clearinghouse: potentially positive effects, grades K-1 [13]."
   },
   "theirs": [
-    "DreamBox Math is an adaptive online math program for kindergarten through grade 8, made by Discovery Education [2]. Schools request a demo; no school price is published [2]. Families can subscribe at dreambox.com by the month, the half year, the year, or for a 10-year term [1].",
-    "A student signs in to one of three learning environments: one for grades K-2, one for 3-5 and one for 6-8 [6][12]. In a lesson, the child solves problems by working virtual manipulatives such as a math rack, a ten frame, a number line and bar models [15]. Directions and hints are narrated [12]. The engine watches how the child works, not only whether the answer is right, and adjusts difficulty, scaffolding, hints and pacing [3]. In grades 3-8, students collect coins to spend on avatars, music and wallpapers, unlock mini-games, and track a fixed goal of five lessons a week [6].",
-    "DreamBox sells home use as about an hour a week [1]. It is built to support a main curriculum, not to replace one [3]."
+    "DreamBox Math is an adaptive online math program for kindergarten through grade 8, made by Discovery Education [1]. Its help center calls it a supplemental digital product, meant to support a core curriculum [2].",
+    "A learner works in one of three environments, for grades K-2, 3-5 and 6-8 [6]. In a lesson, the learner solves problems by working virtual manipulatives such as a math rack, a ten frame, a number line and bar models [10]. Directions and hints are narrated [11]. The engine watches how the learner works, not only whether the answer is right, and adjusts difficulty, scaffolding, hints and pacing [2]. It then picks the next lesson [3]."
   ],
   "credit": [
-    "Randomized evidence: Evidence for ESSA rates DreamBox Math Strong, and the What Works Clearinghouse found potentially positive effects in kindergarten and first grade [16][17].",
-    "Hands-on models. Children build number sense with virtual manipulatives, and the engine adapts to the strategies they use, not only to the final answer [3][15]. AMP has a few built models, not a full set of manipulatives.",
-    "Spanish in every learning environment, and narrated directions and hints [11][12]. AMP is in English only and does not read problems aloud.",
-    "A lower price: $99.95 a year for one child, or $149.95 a year for a family plan [1]. AMP costs $599 a year for the first child.",
-    "Coins, avatars and mini-games for children who like them, and an iPad app [6][13]. AMP has no games and no app-store app."
+    "Hands-on models. Children build number sense by working virtual manipulatives [10].",
+    "It adapts to how a child works a problem, not only to the final answer [2].",
+    "Randomized trials found positive effects in the early grades [12][13]."
   ],
   "evidence": {
     "theirs": [
-      "DreamBox has randomized evidence, which many math programs lack. Evidence for ESSA rates DreamBox Math Strong, on two randomized studies with 13,320 students in grades K-5 and an average effect of +0.10 [16]. The What Works Clearinghouse found potentially positive effects in 2013 from one study: SRI International's randomized trial with 557 kindergarten and first-grade students at three Rocketship charter schools. Students who used DreamBox scored 0.11 standard deviations higher on the MAP math test than the comparison group, an improvement index of 4 percentile points [17].",
-      "The larger randomized study, by Lenard and Rhea (2019) in 24 North Carolina schools, found +0.12 on a number test in grades K-2 and +0.03 on the state test in grades 4-5 [16]. A 2024 randomized trial that compared DreamBox with Zearn among 115 kindergarten and first-grade students found results favoring DreamBox that were not statistically significant [22]. The measured effects are positive and small, and the clearest ones are in kindergarten through grade 2.",
-      "Use falls short of the dose. A 2016 Harvard study of Howard County schools and Rocketship charter schools, funded by a private gift, found students averaged 35 and 44 minutes a week, in the weeks they used it, when DreamBox recommended 60 to 90 [18]. Only 5.8% and 12.5% reached the recommended time. In Howard County, students who used DreamBox the average amount gained about 2 percentile points on MAP over similar non-users, and the authors could not rule out other causes [18].",
-      "DreamBox's newer studies were commissioned by DreamBox or Discovery Education, and most compare heavy users with light users. LearnPlatform's 2023 Arizona study found 0.12 for grade 7-8 users against weighted non-users; in grades K-6 fewer than 5% of students were non-users, so only amounts of use could be compared, and 11% averaged more than 5.5 lessons a week [19]. Its 2024 North Carolina study had no non-user group; 25% of students in grades K-2 and 11% in grades 3-5 did more than five lessons a week [20]. McREL's 2025 South Carolina study found that any use of DreamBox alone did not raise average school-level math scores, while schools with consistent use did score higher [21]."
+      "Evidence for ESSA rates DreamBox Math Strong, on two randomized studies with 13,320 students in grades K-5 and an average effect of +0.10 [12]. The larger, by Lenard and Rhea (2019) in 24 North Carolina schools, found +0.12 on a number test in grades K-2 and +0.03 on the state test in grades 4-5 [12]. The What Works Clearinghouse found potentially positive effects in 2013, from SRI International's randomized trial with 557 kindergarten and first-grade students at three Rocketship charter schools. Users scored 0.11 standard deviations higher on the MAP math test, an improvement index of 4 percentile points [13].",
+      "A 2024 randomized trial by Foster compared DreamBox with Zearn among 115 kindergarten and first-grade students. Results favored DreamBox and were not statistically significant [17]. A 2016 study by Harvard's Center for Education Policy Research, in Howard County schools and Rocketship charter schools, found students averaged 35 and 44 minutes a week in the weeks they used DreamBox, when DreamBox recommended 60 to 90. Only 5.8% and 12.5% reached the recommended time. In Howard County, students who used it the average amount gained about 2 percentile points on MAP over similar non-users, and the authors could not rule out other causes [14].",
+      "DreamBox's newer studies were commissioned by DreamBox or Discovery Education, and most compare heavier users with lighter users. LearnPlatform's 2023 Arizona study found 0.12 for grade 7-8 users against weighted non-users [15]. Its 2024 North Carolina study had no non-user group [16]. McREL's 2025 South Carolina study found that any use of DreamBox alone did not raise average school-level math scores, while schools with consistent use scored higher [21]."
     ],
     "ours": [
-      "Two findings bear on the main differences between DreamBox and AMP. Mixed, spaced review: in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [24]. Worked examples: across 55 studies they raised math performance by an average of g = 0.48 [25]. AMP schedules the first and attaches the second to every problem type. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 55 studies, worked examples improved math performance, with an average effect of g = 0.48 [19]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% against 38% for practice in blocks, on the researchers' own test a month later [18]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Your child is in kindergarten through grade 5 and you want a lower-cost, game-like supplement beside the math you already teach.",
-      "Your child learns in Spanish or needs directions read aloud.",
-      "Your child loves hands-on models, coins and avatars, and your family uses an iPad.",
-      "You run a school that must buy a program rated Strong by Evidence for ESSA."
+      "You want your child to build early number sense by working virtual models, with a program that reads how they work."
     ],
     "amp": [
-      "You want one program for all of math, from counting through precalculus, not an hour-a-week supplement.",
-      "You want a lesson with a worked example for every problem, and the worked answer after every one.",
-      "You want hints and lessons you can lean on together, with a parent guide in every reference lesson, and helped answers kept out of mastery.",
-      "You want old skills to come back on a schedule, and workbooks for days off screen.",
-      "Your family uses phones or Android tablets."
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want to help your child as they practice, with helped answers kept apart from what counts as learned.",
+      "You want learned skills to keep coming back in practice.",
+      "You want work on paper to count.",
+      "You want one program from counting through precalculus."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than DreamBox Math?",
-      "answer": "Yes. DreamBox Math costs $99.95 a year for one child or $149.95 a year for a family plan, with monthly plans at $12.95 and $19.95 [1]. AMP costs $599 a year or $59 a month for the first child and $399 a year or $39 a month for each additional child, and the account holder and a second parent practice free. The price buys one program from counting through precalculus, a lesson for every problem type, scheduled review and unlimited personalized workbooks."
+      "question": "How is AMP different from DreamBox Math?",
+      "answer": "DreamBox Math teaches in lessons worked with virtual manipulatives, and picks the next lesson from how a learner worked in the last one [3][10]. In AMP the problem is the unit: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
       "question": "Does DreamBox Math work?",
-      "answer": "Its randomized studies found small positive effects in the early grades: +0.11 and +0.12 in kindergarten through grade 2 [16][17]. The one randomized test in grades 4-5 found +0.03 on the state test [16]. In Harvard's study, few students used it as much as DreamBox recommended [18]."
+      "answer": "Its randomized studies found small positive effects in the early grades: +0.11 and +0.12 in kindergarten through grade 2 [12][13]. The one randomized test in grades 4-5 found +0.03 on the state test [12]. In Harvard's study, few students used it as much as DreamBox recommended [14]."
     },
     {
-      "question": "What comes after DreamBox Math?",
-      "answer": "DreamBox Math ends at grade 8 [2]. AMP continues through Algebra 1, Geometry, Algebra 2 and Precalculus, and places the learner within the first 24 problems and keeps a level in each part of math, with no separate test."
-    },
-    {
-      "question": "Can homeschoolers buy DreamBox Math?",
-      "answer": "Yes. DreamBox sells home plans for one child or a family, with a 14-day free trial [1]. Its help center suggests starting a child in the upcoming grade level [8]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    { "title": "DreamBox Math family pricing (DreamBox)", "url": "https://www.dreambox.com/family/pricing" },
-    { "title": "DreamBox Math (Discovery Education)", "url": "https://www.discoveryeducation.com/solutions/math/dreambox-math/" },
-    { "title": "How does DreamBox Math work? (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281843188243" },
-    { "title": "How DreamBox Math recommends lessons (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281828976659" },
-    { "title": "Continuous assessment and adaptivity (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281596241043" },
-    { "title": "Navigating the grades 3-5 and 6-8 environments (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281571910931" },
-    { "title": "When you shouldn't help your students (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27282183759123" },
-    { "title": "School family and home subscriber FAQs (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/31708362155923" },
-    { "title": "Student placement and initial standing (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281680026643" },
-    { "title": "Family dashboard overview (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27282140847251" },
-    { "title": "Changing a student's language (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281557114899" },
-    { "title": "Audio settings and narration (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/32871260341011" },
-    { "title": "System requirements (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281308584083" },
-    { "title": "Android devices and smartphones (DreamBox help center)", "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27282190278547" },
-    { "title": "DreamBox Math K-8 lesson samples (Discovery Education)", "url": "https://www.discoveryeducation.com/solutions/math/dreambox-math/k-8-math-lesson-samples/" },
-    { "title": "DreamBox Learning (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/dreambox-learning/" },
-    { "title": "DreamBox Learning intervention report, December 2013 (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/InterventionReport/627" },
-    { "title": "Harvard CEPR (2016), DreamBox Learning achievement growth in Howard County and Rocketship Education: key findings", "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2024/05/DE-DreamBox-Math-Harvard-Study-HCPSS-Rocketship.pdf" },
-    { "title": "LearnPlatform (2023), DreamBox Math ESSA Level II study, Arizona district", "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2025/02/DreamBox-Math-ESSA-Level-II-Efficacy-Arizona.pdf" },
-    { "title": "LearnPlatform by Instructure (2024), DreamBox Math ESSA Level III study, North Carolina district", "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2024/09/DreamBoxMath_2024_NC_TierIII_LearnPlatform_Report.pdf" },
-    { "title": "McREL International (2025), DreamBox Mathematics South Carolina usage impact study", "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2025/02/McREL_DreamBox-Math_South-Carolina_Impact-Study_2025.pdf" },
-    { "title": "Foster (2024), Evaluating the impact of supplemental computer-assisted math instruction in elementary school, Journal of Research on Educational Effectiveness 17(1)", "url": "https://doi.org/10.1080/19345747.2023.2174919" },
-    { "title": "DreamBox Learning Math review (Common Sense Media)", "url": "https://www.commonsensemedia.org/website-reviews/dreambox-learning-math" },
-    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance", "url": "https://doi.org/10.1007/s10648-023-09745-1" }
+    {
+      "title": "DreamBox Math (Discovery Education)",
+      "url": "https://www.discoveryeducation.com/solutions/math/dreambox-math/"
+    },
+    {
+      "title": "How does DreamBox Math work? (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281843188243"
+    },
+    {
+      "title": "How DreamBox Math recommends lessons (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281828976659"
+    },
+    {
+      "title": "Continuous assessment and adaptivity (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281596241043"
+    },
+    {
+      "title": "When you shouldn't help your students (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27282183759123"
+    },
+    {
+      "title": "Navigating the grades 3-5 and 6-8 environments (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281571910931"
+    },
+    {
+      "title": "Student placement and initial standing (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27281680026643"
+    },
+    {
+      "title": "School family and home subscriber FAQs (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/31708362155923"
+    },
+    {
+      "title": "Family dashboard overview (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/27282140847251"
+    },
+    {
+      "title": "DreamBox Math K-8 lesson samples (Discovery Education)",
+      "url": "https://www.discoveryeducation.com/solutions/math/dreambox-math/k-8-math-lesson-samples/"
+    },
+    {
+      "title": "Audio settings and narration (DreamBox help center)",
+      "url": "https://dreamboxlearning.zendesk.com/hc/en-us/articles/32871260341011"
+    },
+    {
+      "title": "DreamBox Learning (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/dreambox-learning/"
+    },
+    {
+      "title": "DreamBox Learning intervention report, December 2013 (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/InterventionReport/627"
+    },
+    {
+      "title": "Harvard CEPR (2016), DreamBox Learning achievement growth in Howard County and Rocketship Education: key findings",
+      "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2024/05/DE-DreamBox-Math-Harvard-Study-HCPSS-Rocketship.pdf"
+    },
+    {
+      "title": "LearnPlatform (2023), DreamBox Math ESSA Level II study, Arizona district",
+      "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2025/02/DreamBox-Math-ESSA-Level-II-Efficacy-Arizona.pdf"
+    },
+    {
+      "title": "LearnPlatform by Instructure (2024), DreamBox Math ESSA Level III study, North Carolina district",
+      "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2024/09/DreamBoxMath_2024_NC_TierIII_LearnPlatform_Report.pdf"
+    },
+    {
+      "title": "Foster (2024), Evaluating the impact of supplemental computer-assisted math instruction in elementary school, Journal of Research on Educational Effectiveness 17(1)",
+      "url": "https://doi.org/10.1080/19345747.2023.2174919"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "McREL International (2025), DreamBox Mathematics South Carolina usage impact study",
+      "url": "https://www-media.discoveryeducation.com/wp-content/uploads/2025/02/McREL_DreamBox-Math_South-Carolina_Impact-Study_2025.pdf"
+    }
   ]
 }

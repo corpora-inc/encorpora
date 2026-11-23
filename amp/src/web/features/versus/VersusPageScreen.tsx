@@ -1,7 +1,11 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { researchPage } from "../../../research/report";
-import { versusContact, versusRows } from "../../../versus/amp";
+import {
+  versusContact,
+  versusOpenNote,
+  versusRows,
+} from "../../../versus/amp";
 import { relatedComparisons } from "../../../versus/catalog";
 import { sourceAnchor } from "../../../versus/citations";
 import {
@@ -101,6 +105,7 @@ export function VersusPageScreen({ page }: { page: VersusPage }) {
                     AMP
                   </span>
                   {row.amp}
+                  {page.open?.includes(row.id) ? ` ${versusOpenNote}` : null}
                 </td>
                 <td role="cell" className={styles.theirs}>
                   <span className={styles.who} aria-hidden="true">

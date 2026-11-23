@@ -3,129 +3,106 @@
   "name": "Time4Learning",
   "maker": "Cambium Learning Group",
   "category": "all-in-one",
-  "checked": "2026-11-21",
-  "benefit": "Math that finds the level",
-  "line": "Time4Learning teaches every core subject at a grade the parent picks; AMP teaches math at the level each answer shows.",
-  "description": "AMP vs Time4Learning: an all-subject homeschool curriculum at a grade the parent picks, against math practice that finds the level and adapts at every answer.",
-  "verdict": "Time4Learning gives a family every core subject from PreK through grade 12 for $39.95 a month per student, or $27.96 a month on an annual plan, with filmed teachers in the upper grades [1][3][4]. In math, the parent picks the grade, lessons follow a fixed order, and we found no placement test, mastery rule or scheduled review [2][3]. AMP costs more and teaches only math, but it finds the level in each strand, chooses every problem from the learner's answers, and brings old skills back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Time4Learning teaches math in a fixed order at a grade the parent picks. In AMP, assessment and teaching are continuous.",
+  "description": "AMP vs Time4Learning: math lessons in a fixed sequence at a grade the parent picks, and math where assessment, teaching and review are continuous.",
+  "verdict": "Time4Learning is an online homeschool curriculum for every core subject. In math, a learner works through lessons in a fixed sequence, at a grade level the parent chooses [1][2]. In AMP, assessment and teaching are continuous: every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP finds the level, so the parent need not",
-      "body": "We found no placement test at Time4Learning. The parent chooses a grade level for each subject, and the FAQ suggests starting where the child begins to struggle on a grade's quizzes and tests [2]. Inside a course, lessons follow a fixed scope and sequence that the parent schedules with the Activity Planner [3], and Cathy Duffy's review says cartoons and transitions slow the lessons, which can cost quick learners time [9]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, then chooses every next problem from the learner's answers: new work, a prerequisite, or review.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test and no test day. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. It keeps a separate level for each part of math, so a learner further along in one part than another gets work at both levels. In Time4Learning the parent chooses a grade level for each subject and can change it at any time. Its FAQ suggests starting where a learner begins to have difficulty on a grade's quizzes and tests [1]. Inside a course, lessons follow a fixed scope and sequence that the parent schedules with the Activity Planner [2].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "A mastery rule anyone can read",
-      "body": "Time4Learning's FAQ does not mention mastery or a passing score [2]. In its grades 6 to 12 Cinema Series, students can retake assessments and the lowest score can be dropped [4], and Cathy Duffy found that some quizzes in the younger grades can be passed without much effort [9]. In AMP a skill shows as Strong only when four of the last five answers are right without help. An answer after a hint or the lesson does not count, and two misses in a row send practice back to what the skill builds on.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem in front of the learner: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Time4Learning the unit is the lesson: video instruction, interactive quizzes and printable worksheets [2]. In grades 6 to 12, filmed instructors teach in short segments [3]. Cathy Duffy's review describes a high school lesson as a presentation by a real person, then practice questions and usually a quiz [5]. A meta-analysis of 55 studies found that worked examples improve math performance [9].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. An answer given after a hint or a lesson is marked as helped and does not count as learned. Repeated misses send practice back to what the skill builds on. Time4Learning's FAQ does not mention mastery or a passing score [1]. In its grades 6 to 12 Cinema Series, students can retake assessments and the lowest score can be dropped [3].",
       "research": [
         "mastery",
         "hints"
       ]
     },
     {
-      "title": "Old skills come back on a schedule",
-      "body": "We found no scheduled review of earlier skills in Time4Learning's FAQ, its third-grade product page or its Cinema Series page [2][3][4]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss restarts the schedule. In a randomized trial with seventh graders, mixed, spaced practice beat practice in blocks on a test a month later [12].",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In Time4Learning, Cathy Duffy's review says, a learner can review earlier topics or retake lessons [5]. We found no scheduled review of earlier skills in its FAQ, its third-grade page or its Cinema Series page [1][2][3]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [8].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Every answer comes back explained",
-      "body": "In Time4Learning's grades 6 to 12 Cinema Series, feedback and scores show right away, with a point value on each question [4]. Cathy Duffy describes the program explaining why a right answer is right [9]; we found no description of what a learner sees after a wrong one. AMP shows right or wrong, the correct answer and the worked steps after every answer, and every problem has a one-step hint that never gives the answer away. Across 40 studies of computer-based feedback, feedback that explains had the largest average effect [13].",
-      "research": [
-        "feedback",
-        "hints"
-      ]
-    },
-    {
-      "title": "A refund window, and records that stay",
-      "body": "Time4Learning's Terms of Service, last updated March 25, 2026, say \"All payments for Memberships to Time4Learning are non-refundable,\" and add-ons and discounts are non-refundable too [5]. The same terms say that when a cancellation takes effect, Time4Learning deletes the student's history, data and reports, and they cannot be recovered [5]. AMP starts free with no card, refunds a personal payment in full within 30 days with no reason needed, and keeps a learner's records for 24 months after the later of last activity and the end of the license."
-    },
-    {
-      "title": "It runs on the phone or tablet at hand",
-      "body": "Time4Learning says it works on most devices with a 10-inch screen or larger [2]. Its FAQ says Android devices are not supported for grades K to 5, and Amazon Fire tablets are not supported. AMP runs in any current browser on a phone, tablet or computer. AMP has no app-store app, and we found none mentioned in Time4Learning's FAQ [2]. Both need a connection."
+      "title": "What the adult does",
+      "body": "In AMP the adult does not plan, teach or grade. Parents and teachers see a level for each part of math and the actual problems behind every number, and each lesson has a guide for the adult. Time4Learning offers no live teachers, and the parent acts as the teacher [1]. The parent picks the grade level in each subject, plans the days with the Activity Planner, reviews reports and grades writing with the scoring guides provided [1][5]."
     }
   ],
   "rows": {
-    "price": "$39.95 a month per student for a grade's courses, or $27.96 a month on an annual plan billed upfront. Sibling discounts up to 25%. Non-refundable [1][3][5].",
-    "buyers": "Families, with no free trial found [1][2]. Schools at $150 to $250 per student a year for 11 to 199 students [7]. Education funds in 23 states, by its own list [6].",
-    "range": "PreK through grade 12, every core subject. Math runs through Pre-Calculus and Advanced Math & Trigonometry [4][9].",
-    "start": "No placement test found. The parent picks a grade level for each subject and can change it at any time [2].",
-    "teaching": "Video instruction, interactive quizzes and printable worksheets in each lesson [3]. Animated lessons in the early grades; filmed instructors in grades 6 to 12 [9][4].",
-    "next": "A fixed scope and sequence in each course, scheduled by the parent with the Activity Planner [3].",
-    "mastery": "We found no mastery rule in its FAQ [2]. In grades 6 to 12, assessments can be retaken and the lowest score dropped [4].",
-    "review": "We found no scheduled review of earlier skills in its published materials [2][3][4].",
-    "print": "Printable worksheets in each lesson, with answer keys for parents [3][2]. Book bundles cost extra [3]. We found no worksheets made for the individual learner.",
-    "adult": "The parent teaches. The FAQ estimates 1 to 2 hours a day of parent time in grades K to 2, and 30 to 60 minutes in grades 3 to 8 [2].",
-    "reports": "Automatic grading, scores, time per activity and printable weekly reports [3][9]. Records are deleted when a cancellation takes effect [5].",
-    "evidence": "We found no outcome study. No Evidence for ESSA entry and no What Works Clearinghouse intervention report, as of November 2026 [10][11]."
+    "range": "PreK through grade 12, every core subject. Math runs through Pre-Calculus and Advanced Math & Trigonometry [3][5].",
+    "start": "The parent picks a grade level for each subject and can change it at any time. We found no placement test [1].",
+    "teaching": "Lessons with video instruction, interactive quizzes and printable worksheets [2]. Animated in the early grades; filmed instructors in grades 6 to 12 [5][3].",
+    "next": "A fixed scope and sequence in each course, scheduled by the parent with the Activity Planner [2].",
+    "mastery": "No mastery rule found in its FAQ [1]. In grades 6 to 12, assessments can be retaken and the lowest score dropped [3].",
+    "review": "No scheduled review of earlier skills found in the pages we read [1][2][3].",
+    "print": "Printable worksheets in each lesson, with answer keys for the parent online and in print [2][1].",
+    "adult": "The parent teaches: picks the grade level, plans the days with the Activity Planner, reviews reports and grades writing [1][5].",
+    "reports": "Automatic grading, scores, time per activity and weekly reports [2][5].",
+    "evidence": "No outcome study found on its homepage, About page or FAQ, in Evidence for ESSA or in What Works Clearinghouse intervention reports [10][4][1][6][7]."
   },
   "theirs": [
-    "Time4Learning is an online homeschool curriculum for PreK through grade 12, sold as one membership per grade. It is a brand of Cambium Learning Group, and by its own account it has been running for more than 20 years [8][14]. One membership covers up to seven courses, math among them, and the PreK to grade 5 plan adds Time4MathFacts, an elementary math game collection [1][2].",
-    "A learner logs in and works through lessons subject by subject, at their own pace. Its third-grade page says students typically spend one to two hours a day on it [3]. Each lesson has video instruction, interactive quizzes and printable worksheets [3]. Elementary lessons mix animation, pictures, text and activities [9]. In grades 6 to 12, the Cinema Series uses filmed instructors in short segments, and feedback and scores show right away [4].",
-    "The parent is the teacher. The FAQ says Time4Learning offers no live teachers [2]. The parent chooses a grade level in each subject, plans the days with the Activity Planner, reviews reports, and grades writing with the scoring guides provided [2][9]. Time4Learning describes itself as a curriculum provider, not an accredited school [2]."
+    "Time4Learning is an online homeschool curriculum for PreK through grade 12 that covers every core subject, math among them [3][5]. It is a brand of Cambium Learning Group [4]. It describes itself as a curriculum provider, not an accredited school, and it offers no live teachers [1].",
+    "A learner logs in and works through lessons subject by subject, at their own pace, at a grade level the parent chooses for each subject [1][2]. Each lesson has video instruction, interactive quizzes and printable worksheets [2]. Elementary lessons mix animation, pictures, text and activities [5]. In grades 6 to 12, the Cinema Series teaches with filmed instructors in short segments and shows feedback and scores right away [3]. The parent plans the days with the Activity Planner and reviews the reports [1][2]."
   ],
   "credit": [
-    "Every core subject from PreK to grade 12 for one price per grade: $39.95 a month, or $27.96 a month on an annual plan, with sibling discounts up to 25% [1][3]. AMP teaches only math, and costs more.",
-    "Filmed human teachers for grades 6 to 12 in the Cinema Series [4]. AMP's lesson films are animated, with synthesized narration, and cover a growing share of problem types.",
-    "Accepted by education-fund programs in 23 states, by its own list [6]. AMP is paid for today by Arizona's ESA and the Arkansas and New Hampshire EFAs.",
-    "Parent tools in one place: an Activity Planner, teaching guides and a transcript template [3][2]. AMP has no transcript template.",
-    "Time4MathFacts, an elementary math game collection, comes with the PreK to grade 5 plan, and a Spark Homework Helper add-on for middle and high school offers read-aloud, translation support and hints that withhold the answer, for $8 a month plus tax on a monthly plan [2]. AMP has no math games, no read-aloud and no languages other than English."
+    "Filmed instructors teach grades 6 to 12 in short segments [3].",
+    "In grades 6 to 12, feedback and scores show right away [3].",
+    "A learner can review earlier topics or retake lessons [5]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Time4Learning. Its homepage, About page and FAQ link to no study, and its page for school buyers cites no research [14][8][2][7]. As of November 2026, Time4Learning has no entry in Evidence for ESSA and no What Works Clearinghouse intervention report [10][11].",
-      "Its pages still speak of results. The homepage promises measurable, standards-aligned growth [14], and the Cinema Series page speaks of growth and mastery [4]. We found no published growth data and no stated mastery rule on any page we read."
+      "We found no study of how much students learn with Time4Learning. Its homepage, About page and FAQ link to no study, it has no entry in Evidence for ESSA, and the What Works Clearinghouse has no intervention report on it [10][4][1][6][7]."
     ],
     "ours": [
-      "Two findings shaped the AMP rules that matter most in this comparison. Mixed, spaced practice: in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, students who practiced that way scored 62% on the researchers' own test a month later, against 38% for practice in blocks [12]. Feedback that explains: across 40 studies of computer-based feedback, in mixed ages and subjects, explanations averaged an effect of 0.49, the correct answer alone 0.32, and right or wrong alone 0.05 [13]. AMP schedules mixed review and explains every answer. We built it on these methods and expect that to show in outcomes. That is our bet, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear most on this comparison: practice that mixes and spaces topics scored 62% on the researchers' own test a month later, against 38% for practice in blocks, in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations [8], and worked examples improve math performance across 55 studies [9]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want every core subject, PreK through grade 12, in one membership that costs less than AMP does for math alone.",
-      "Your middle or high schooler learns best from filmed teachers.",
-      "Your state's education fund lists Time4Learning and not AMP.",
-      "You want a lesson planner, a transcript template and math games in the same place."
+      "You want one curriculum for every subject, with math taught in lessons at a grade you choose.",
+      "Your middle or high schooler learns well from filmed instructors."
     ],
     "amp": [
-      "Your child is further along in one part of math than in another, and you want each practiced at its own level.",
-      "You want a program to place your child, choose each problem and check it, so you do not have to.",
-      "You want a stated mastery rule and old skills brought back on a schedule.",
-      "You use Time4Learning or another curriculum for other subjects and want math that adapts. AMP fits beside it.",
-      "You want a refund window, and records that are kept after you cancel."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math.",
+      "You use Time4Learning for other subjects and want a separate math program beside it."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than Time4Learning?",
-      "answer": "Yes. Time4Learning costs $39.95 a month per student, or $27.96 a month on an annual plan, about $336 a year by our arithmetic, for up to seven courses [1][3]. AMP costs $599 a year or $59 a month for math alone, then $399 or $39 for each more child. That buys placement in every strand, every problem chosen and checked, scheduled review, unlimited printable workbooks, and two parents' own practice."
+      "question": "How is AMP different from Time4Learning?",
+      "answer": "Time4Learning teaches math in lessons that follow a fixed sequence, at a grade level the parent chooses [1][2]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP for math and Time4Learning for other subjects?",
-      "answer": "Yes. AMP is only math and fits beside any curriculum. Time4Learning charges one price per student for up to seven courses [1], so its price stays the same when AMP covers math."
+      "question": "Does Time4Learning work?",
+      "answer": "We found no study of how much students learn with Time4Learning, on its homepage, About page or FAQ, in Evidence for ESSA or in What Works Clearinghouse intervention reports [10][4][1][6][7]."
     },
     {
-      "question": "Does Time4Learning have a placement test?",
-      "answer": "We found none. The parent picks a grade level for each subject, and the FAQ suggests starting where the child begins to have difficulty on a grade's quizzes and tests [2]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands, with no separate test."
-    },
-    {
-      "question": "Does Time4Learning give refunds?",
-      "answer": "Its Terms of Service, last updated March 25, 2026, make membership payments, add-ons and discounts non-refundable, and say student records are deleted after cancellation and cannot be recovered [5]. AMP refunds in full within 30 days of a personal payment, no reason needed."
-    },
-    {
-      "question": "Is Time4Learning accredited?",
-      "answer": "No. Time4Learning describes itself as a curriculum provider, not an accredited school, and the parent issues transcripts, using a template it provides [2]. AMP is not accredited either, and it does not issue transcripts or course credit."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs, and a learner can use Time4Learning for other subjects and AMP for math. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    {
-      "title": "Membership pricing and discounts (Time4Learning)",
-      "url": "https://www.time4learning.com/pages/membership-pricing-discounts"
-    },
     {
       "title": "Frequently asked questions (Time4Learning)",
       "url": "https://www.time4learning.com/pages/faq"
@@ -139,23 +116,11 @@
       "url": "https://www.time4learning.com/pages/lp-cinema-series"
     },
     {
-      "title": "Terms of Service, last updated March 25, 2026 (Time4Learning)",
-      "url": "https://www.time4learning.com/curriculum/terms.html"
-    },
-    {
-      "title": "ESA and state funding (Time4Learning)",
-      "url": "https://www.time4learning.com/pages/esa-page"
-    },
-    {
-      "title": "Bulk pricing for public schools (Time4Learning)",
-      "url": "https://www.time4learning.com/pages/lp-bulk-public-schools"
-    },
-    {
       "title": "About us (Time4Learning)",
       "url": "https://www.time4learning.com/pages/about-us"
     },
     {
-      "title": "Time4Learning review (Cathy Duffy Reviews, last edited November 11, 2025)",
+      "title": "Time4Learning review (Cathy Duffy Reviews)",
       "url": "https://cathyduffyreviews.com/homeschool-reviews-core-curricula/grade-level-packages-and-courses/preschool-through-grade-8/time-4-learning"
     },
     {
@@ -163,7 +128,7 @@
       "url": "https://evidenceforessa.org/?s=Time4Learning"
     },
     {
-      "title": "What Works Clearinghouse, all intervention reports (checked November 2026)",
+      "title": "What Works Clearinghouse, intervention reports (checked November 2026)",
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
@@ -171,8 +136,8 @@
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
-      "url": "https://doi.org/10.3102/0034654314564881"
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
     },
     {
       "title": "Time4Learning homepage",

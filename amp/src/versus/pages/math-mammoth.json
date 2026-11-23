@@ -3,129 +3,166 @@
   "name": "Math Mammoth",
   "maker": "Maria Miller",
   "category": "books",
-  "checked": "2026-11-21",
-  "benefit": "Checking and review built in",
-  "line": "Math Mammoth is a book the adult places, checks and reviews. AMP does all three, one answer at a time.",
-  "description": "AMP vs Math Mammoth: a $245.50 set of K-8 worktexts the adult checks by hand, or practice that explains every answer and schedules review. Prices and evidence.",
-  "verdict": "Math Mammoth is a visual set of worktexts that Maria Miller has written and sold since 2003. The full K-8 download costs $245.50, paid once [4][7]. The book is the same for every child, and the adult places the child, checks the work, finds the gaps and decides when to review [3][11][12]. AMP does those jobs itself at every answer, and it keeps going through precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "Continuous assessment",
+  "line": "Math Mammoth teaches by worktext and chapter. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs Math Mammoth: a worktext the adult places, checks and reviews. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "Math Mammoth is a set of worktexts: a learner reads a lesson, works the exercises on paper and takes a test at the end of each chapter, and the adult checks the work and decides what comes next [1][2]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "A wrong answer is explained on the spot",
-      "body": "In Math Mammoth a child works the exercises on paper. Then the child or the adult checks them against the answer key, and the adult decides what to do about a mistake [11]. AMP marks each answer as it is given and shows the correct answer with worked steps, and a one-step hint and a written lesson wait beside every problem. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49, and marking right or wrong alone averaged 0.05 [16].",
-      "research": ["feedback", "hints", "lessons"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem. Math Mammoth places a learner with an end-of-year test for a grade, scored against percent cutoffs [3]. From there the learner follows the book's order, with a test at the end of each chapter [2].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "A level for each part of math, kept current",
-      "body": "Math Mammoth places a child with a free end-of-year test for each grade: 80 to 89% means start the next grade, below 50% means try a lower test [12]. From there the child follows the book's fixed order, and the adult decides what to add [11]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands and keeps adjusting with every answer. A child strong in geometry and still building fractions works at both levels in the same session.",
-      "research": ["level"]
+      "title": "Feedback on every answer",
+      "body": "After every answer AMP shows whether it was right, the correct answer and the worked steps. In Math Mammoth a learner works the exercises on paper. The learner or the adult checks them against the answer key, and the adult decides what to do about a mistake [2]. Across 40 studies of computer-based feedback, of mixed ages and subjects, feedback that explains had the largest average effect, 0.49, against 0.05 for marking right or wrong only [11].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "Misses lead back to the skill underneath",
-      "body": "Math Mammoth fills gaps with its Blue Series, topic books the adult chooses and puts in order [3]. Its chapters end in a test, with no numeric rule for mastery that we could find [11]. In AMP, two misses in a row on a skill send practice to what that skill builds on. A skill counts as Strong at four of the last five answers right without help, after at least five tries.",
-      "research": ["mastery"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything hangs off the problem: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In Math Mammoth the unit is the lesson in the book: a few pages of explanation, worked examples and visual models, then a set of exercises [1][5]. Videos go with many lessons [6].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "Old skills return on a fixed schedule",
-      "body": "Math Mammoth ends each chapter with a mixed review lesson, includes cumulative review sheets, and sells spiral Skills Review workbooks separately [2][11]. When to use them is the adult's call [11]. AMP brings every learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. A miss starts the schedule over.",
-      "research": ["review"]
+      "title": "Moving on, and going back",
+      "body": "In AMP a skill counts when the learner gets it right without help, more than once. Repeated misses send practice back to what the skill builds on. Math Mammoth's chapters are built for mastery and end in a test, with no stated rule for what counts as mastered [2]. Gaps are filled with its Blue Series, topic books the adult chooses and puts in order [4].",
+      "research": [
+        "mastery"
+      ]
     },
     {
-      "title": "It keeps going past grade 8",
-      "body": "Math Mammoth's complete-curriculum page says it does not offer algebra 1 or above [2]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and Precalculus on one map of 336 skills. A learner who uses AMP beside the worktexts keeps the same program and the same record after grade 8."
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. Math Mammoth ends each chapter with a mixed review lesson, has cumulative review sheets, and offers separate spiral review workbooks. The adult decides when to use them [1][2]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [12].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "Paper printed for one learner",
-      "body": "Math Mammoth's books are the same for every child, and its worksheet maker adds practice on topics the adult picks [2]. AMP prints unlimited workbooks built from the learner's own record, with that day's review and a worked answer key. Results entered from paper count toward the learner's level. A family that loves Math Mammoth's lessons can keep them and use AMP for practice and review."
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, from counting through precalculus in one program. A learner further along in geometry than in fractions gets work at both levels. Math Mammoth places a learner at a grade, with section scores to spot gaps [3]. Its complete curriculum runs from kindergarten through grade 8 and does not offer algebra 1 or above [1].",
+      "research": [
+        "level"
+      ]
     }
   ],
   "rows": {
-    "price": "Downloads, paid once: K-8 bundle $245.50, K-4 $133, grades 5-8 $112.50 [4]. Printed copies sold by outside stores [8].",
-    "buyers": "Families, from the author's site; one license per teacher [5]. Schools by quote [6]. For ESA funds, the author points to resellers on state lists [5].",
-    "range": "Light Blue Series: kindergarten through grade 8. No algebra 1 or above [2].",
-    "start": "Free end-of-year placement tests for each grade, with percent cutoffs and section scores to spot gaps [12].",
-    "teaching": "Worktext lessons written to the student, with worked examples and visual models [2][7]. Free videos for many lessons [9][11].",
-    "next": "The next lesson in the book. The adult decides what to add, skip or review [11].",
-    "mastery": "Mastery-based chapters, each ending in a test. No numeric mastery rule stated [11].",
-    "review": "A mixed review lesson per chapter, cumulative review sheets, and spiral review workbooks sold separately. The adult times them [2][11].",
-    "print": "PDF books to print at home, with full answer keys and tests [2]. The same book for every child.",
-    "adult": "Plan the schedule, check answers with the key, give chapter tests, and choose when to add review or games. No scripted lessons [11].",
-    "reports": "None found. The adult grades by hand with the answer key; rubrics are optional [11].",
-    "evidence": "No rating from Evidence for ESSA [14]. No What Works Clearinghouse intervention report [15]. No outcome study found on its site [1][13]."
+    "range": "Kindergarten through grade 8. No algebra 1 or above [1].",
+    "start": "End-of-year placement tests for each grade, with percent cutoffs and section scores to spot gaps [3].",
+    "teaching": "Worktext lessons written to the student, with worked examples and visual models [1][5]. Videos for many lessons [6].",
+    "next": "The next lesson in the book. The adult decides what to add, skip or review [2].",
+    "mastery": "Mastery-based chapters, each ending in a test. No rule for mastery stated [2].",
+    "review": "A mixed review lesson per chapter, cumulative review sheets and separate spiral review workbooks. The adult times them [1][2].",
+    "print": "PDF books to print, with answer keys and tests [1]. The same book for every learner.",
+    "adult": "Plans the schedule, checks answers with the key, gives chapter tests, and chooses when to add review [2].",
+    "reports": "None found in the pages we read. The adult grades by hand with the answer key [2].",
+    "evidence": "No outcome study found on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [8][9][10]."
   },
   "theirs": [
-    "Math Mammoth is a series of math worktexts by Maria Miller, sold from MathMammoth.com since 2003 [7]. Miller holds a master's degree in mathematics and began writing after tutoring homeschoolers [7]. The complete curriculum, the Light Blue Series, runs from kindergarten through grade 8 [2]. The Blue Series holds the same lessons sorted by topic, for filling gaps or building a custom course [3].",
-    "A lesson is a few pages written to the student: an explanation, worked examples and visual models, then exercises on paper [2][7]. The author suggests watching a child for a week or two to find a workable pace, and gives a pages-per-week guide for each grade [11]. The adult plans the schedule, checks the work with the answer key and gives the chapter tests [11].",
-    "The books are PDF downloads. Families print them or buy printed copies from outside stores such as Lulu and Rainbow Resource [8]. Free extras include placement tests, videos for many lessons and online practice games [9][10][12]."
+    "Math Mammoth is a series of math worktexts written by Maria Miller, who holds a master's degree in mathematics and began writing after tutoring homeschoolers [5]. The complete curriculum, the Light Blue Series, runs from kindergarten through grade 8 [1]. The Blue Series holds the same lessons sorted by topic, for filling gaps or building a custom course [4]. Miller writes that visual models work much like manipulatives, before a learner moves to abstract work [5].",
+    "A lesson is a few pages written to the student: an explanation, worked examples and visual models, then exercises on paper [1][2]. Each chapter centers on one theme and ends with a mixed review and a test [2]. The adult plans the schedule, checks the work with the answer key and decides what to add [2]."
   ],
   "credit": [
-    "A much lower price. The K-8 download bundle is $245.50, paid once [4]. AMP costs $599 a year for the first child.",
-    "Lessons a child can read alone. The author writes that students can often read and study the lessons on their own [11].",
-    "Paper first, and fully offline once downloaded, apart from the worksheet maker [2]. AMP runs in a browser and needs a connection.",
-    "Free tools before you buy: placement tests with clear cutoffs, videos for many lessons, and online games for math facts [9][10][12]. AMP has no games.",
-    "Editions beyond the U.S. one: Spanish on a separate site, plus International, Canadian and South African versions [1]. AMP is in English only."
+    "Lessons written to the student. The author writes that students can often read and study them on their own [2].",
+    "Visual models before abstract work [5]. A What Works Clearinghouse guide rates concrete and semi-concrete representations as strong evidence for elementary math intervention [13].",
+    "A mixed review lesson at the end of every chapter [2]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of Math Mammoth on its site, in Evidence for ESSA or in the What Works Clearinghouse as of November 2026. Evidence for ESSA lists Math Mammoth without a rating (\"No studies met inclusion requirements\") [14]. The What Works Clearinghouse has no intervention report on it [15]. The home page cites no research [1].",
-      "Its own testimonials page carries parent and teacher stories, several with one child's test scores [13]. None that we read has a comparison group. Miller's visual models do have general support: the What Works Clearinghouse's 2021 guide for elementary students who struggle in math rates concrete and semi-concrete representations as strong evidence [19]. That backs the method in general. It is not a study of Math Mammoth."
+      "We found no outcome study of Math Mammoth on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports. Evidence for ESSA lists it without a rating, because no studies met its inclusion requirements [8]. The What Works Clearinghouse has no intervention report on it [9]. The home page cites no research [10].",
+      "Its testimonials page carries parent and teacher stories, some with one child's test scores. None that we read has a comparison group [7]."
     ],
     "ours": [
-      "A mastery book teaches one topic at a time and leaves the timing of review to the adult. AMP schedules it, and spacing is among the best-supported methods in learning research. A review of ten study techniques rated two as high utility, spaced practice and practice testing [18]. In a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [17]. We expect that to show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 40 studies of computer-based feedback, of mixed ages and subjects, feedback that explains had the largest average effect, 0.49, against 0.05 for marking right or wrong only [11]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [12]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Choose Math Mammoth if price comes first: one payment covers the K-8 books for your family.",
-      "Choose Math Mammoth if you want math on paper and off the internet.",
-      "Choose Math Mammoth if your child learns well from reading a book and you are glad to check the work.",
-      "Choose Math Mammoth if you need a Spanish, Canadian or South African edition."
+      "You want math from a book, on paper, with an adult who teaches from it and checks the work."
     ],
     "amp": [
-      "You want every answer checked and explained the moment it is given, without an answer key.",
-      "You want the level found in each part of math, and practice that follows the learner.",
-      "You want review to come back on its own schedule, without planning it.",
-      "Your learner is ready for algebra, geometry or beyond.",
-      "You love Math Mammoth's lessons and want checking, review and personal workbooks beside them."
+      "You want every answer checked and explained as it is given.",
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or ready for algebra.",
+      "You want paper workbooks made from your learner's own record."
     ]
   },
   "questions": [
     {
-      "question": "Is Math Mammoth cheaper than AMP?",
-      "answer": "Yes. The K-8 download bundle is $245.50, paid once [4]. AMP is $599 a year or $59 a month for the first child, and $399 or $39 for each more. That buys placement in every strand, a check and worked steps on every answer, scheduled review, unlimited personal workbooks and a range through precalculus."
+      "question": "How is AMP different from Math Mammoth?",
+      "answer": "In Math Mammoth a learner reads a lesson and works exercises on paper, and the adult checks them with the answer key and decides what comes next [2]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP alongside Math Mammoth?",
-      "answer": "Yes. Keep the worktexts for lessons and use AMP for practice, checking and review. AMP keeps its own order, but a parent can point practice at any skill on its map."
+      "question": "Does Math Mammoth work?",
+      "answer": "We found no outcome study of Math Mammoth on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [8][9][10]."
     },
     {
-      "question": "What comes after Math Mammoth?",
-      "answer": "Math Mammoth does not offer algebra 1 or above [2]. AMP continues through Algebra 1, Geometry, Algebra 2 and Precalculus, and places the learner within the first 24 problems, with a level in each strand."
-    },
-    {
-      "question": "Is Math Mammoth self-teaching?",
-      "answer": "The author calls it \"nearly self-teaching\" for many children [2]. The adult still plans the schedule, checks answers with the key, gives the tests and decides when to review [11]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. A learner can read lessons from the worktext and practice in AMP, which places them from their first answers."
     }
   ],
   "sources": [
-    { "title": "Math Mammoth home page", "url": "https://www.mathmammoth.com/" },
-    { "title": "Math Mammoth Light Blue Series: complete curriculum", "url": "https://www.mathmammoth.com/complete-curriculum" },
-    { "title": "Math Mammoth books: Light Blue and Blue Series", "url": "https://www.mathmammoth.com/books" },
-    { "title": "Math Mammoth bundles and packages", "url": "https://www.mathmammoth.com/packages" },
-    { "title": "Math Mammoth ordering FAQ", "url": "https://www.mathmammoth.com/faq-ordering.php" },
-    { "title": "Math Mammoth school licensing", "url": "https://www.mathmammoth.com/school-licensing.php" },
-    { "title": "About Math Mammoth and Maria Miller", "url": "https://www.mathmammoth.com/about.php" },
-    { "title": "Math Mammoth printed books", "url": "https://www.mathmammoth.com/printed_books" },
-    { "title": "Math Mammoth free videos", "url": "https://www.mathmammoth.com/videos/" },
-    { "title": "Math Mammoth free online practice", "url": "https://www.mathmammoth.com/practice/" },
-    { "title": "Math Mammoth Light Blue Series FAQ", "url": "https://www.mathmammoth.com/faq-lightblue.php" },
-    { "title": "Math Mammoth placement tests", "url": "https://www.mathmammoth.com/complete/placement_tests" },
-    { "title": "Math Mammoth testimonials", "url": "https://www.mathmammoth.com/testimonials" },
-    { "title": "Math Mammoth (Evidence for ESSA)", "url": "https://www.evidenceforessa.org/program/math-mammoth/" },
-    { "title": "What Works Clearinghouse intervention reports", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
-    { "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)", "url": "https://doi.org/10.3102/0034654314564881" },
-    { "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "Dunlosky et al. (2013), Improving students' learning with effective learning techniques", "url": "https://doi.org/10.1177/1529100612453266" },
-    { "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades", "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26" }
+    {
+      "title": "Math Mammoth Light Blue Series: complete curriculum",
+      "url": "https://www.mathmammoth.com/complete-curriculum"
+    },
+    {
+      "title": "Math Mammoth Light Blue Series FAQ",
+      "url": "https://www.mathmammoth.com/faq-lightblue.php"
+    },
+    {
+      "title": "Math Mammoth placement tests",
+      "url": "https://www.mathmammoth.com/complete/placement_tests"
+    },
+    {
+      "title": "Math Mammoth books: Light Blue and Blue Series",
+      "url": "https://www.mathmammoth.com/books"
+    },
+    {
+      "title": "About Math Mammoth and Maria Miller",
+      "url": "https://www.mathmammoth.com/about.php"
+    },
+    {
+      "title": "Math Mammoth videos",
+      "url": "https://www.mathmammoth.com/videos/"
+    },
+    {
+      "title": "Math Mammoth testimonials",
+      "url": "https://www.mathmammoth.com/testimonials"
+    },
+    {
+      "title": "Math Mammoth (Evidence for ESSA)",
+      "url": "https://www.evidenceforessa.org/program/math-mammoth/"
+    },
+    {
+      "title": "What Works Clearinghouse intervention reports",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    },
+    {
+      "title": "Math Mammoth home page",
+      "url": "https://www.mathmammoth.com/"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "What Works Clearinghouse (2021), Assisting students struggling with mathematics: Intervention in the elementary grades",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/26"
+    }
   ]
 }

@@ -2,129 +2,105 @@
   "slug": "ctcmath",
   "name": "CTCMath",
   "category": "courses",
-  "checked": "2026-11-21",
-  "benefit": "Practice that finds the level",
-  "line": "CTCMath teaches by video, then asks the lesson's questions; AMP places each learner and chooses every next problem.",
-  "description": "AMP vs CTCMath: price, placement, review and evidence. CTCMath teaches K-12 by short video; AMP finds the level and chooses every next problem.",
-  "verdict": "CTCMath is a low-priced K-12 video course with more than 1,400 short tutorials, and it reaches calculus [1][3]. Lessons follow the course or the adult's assignments, most questions are multiple choice, and grades 1 to 8 add a weekly review set [2][5][14]. AMP places each learner, chooses every problem from the learner's answers, checks typed answers exactly and brings each old skill back on its own schedule.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "CTCMath teaches by video lesson, then questions. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs CTCMath: CTCMath teaches by video lesson, then questions. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "CTCMath teaches by video lesson: a short tutorial, then questions, in the course order or the lessons an adult assigns [1][5]. Review comes in weekly sets in grades 1 to 8 [7]. In AMP, assessment, teaching and review are continuous: every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP finds the level, so the adult doesn't have to",
-      "body": "CTCMath's placement tests cover one topic at a time in K-8 and return a list of lessons that may need review [2]. Cathy Duffy notes that the program does not automatically prescribe a grade level or course from the tests [4]. The adult can then assign lessons with due dates [5][9]. AMP places the learner within the first 24 problems and keeps a level in each of 14 strands of math, with no separate test, and keeps adjusting at every answer.",
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. CTCMath's placement tests cover one K-8 topic at a time and list lessons that may need review [2]. Cathy Duffy notes that the program does not automatically prescribe a grade level or course from the tests [4]. The next lesson is the next one in the course, or one the adult assigns with a due date [5][6].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Practice first, and help at the problem",
-      "body": "Each CTCMath lesson opens with a video tutorial of about 4 to 9 minutes, and the questions follow [1][4]. A student with a low score can rewatch the tutorial and try a new set [4][5]. AMP starts with the problem. Help comes at the point of need: a one-step hint that never gives the answer, a written lesson with a worked example, and a narrated film for a growing share of problem types.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In CTCMath the unit is the lesson. It opens with a video tutorial of about 4 to 9 minutes, and the questions follow [1][4]. In an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The data are correlational [11].",
       "research": [
-        "hints",
         "lessons",
+        "hints",
         "films"
       ]
     },
     {
       "title": "Typed answers, checked exactly",
-      "body": "Most CTCMath worksheets use multiple choice [2]. A review site notes that CTCMath adds extra wrong answers to discourage guessing, and that students can sometimes work backward from the choices [5]. Some Algebra and Geometry lessons are self-graded against worked solutions [2][5]. In AMP, 547 of 1,384 problem types need a typed number, a fraction, lines of work, a plotted point or a built model. Every answer is checked exactly, and AMP's level estimate allows for the chance of a lucky guess on a choice question.",
+      "body": "Many AMP problems need a typed number, a fraction, lines of work or a plotted point, not a choice. Every answer is checked exactly. Most CTCMath worksheets are multiple choice [2], and a review notes that students can sometimes work backward from the choices [5]. Some of its Algebra and Geometry lessons are graded by the student against worked solutions [2].",
       "research": [
         "mastery"
       ]
     },
     {
-      "title": "Review timed to each learner's own answers",
-      "body": "CTCMath's lesson list gives grades 1 to 8 each 32 Weekly Revision Tasks [5][14], and Cathy Duffy describes printable weekly review sheets of 26 problems [4]. We found none in its Kindergarten or high school courses [14]. More review is a set the adult builds in the Question Bank Wizard, by topic, difficulty and length [4]. We found nothing in its published materials that times review to a learner's own answers [1][2][14]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics. A miss restarts that skill's schedule.",
-      "research": [
-        "review"
-      ]
-    },
-    {
-      "title": "One bar for learned, and help doesn't count",
-      "body": "In CTCMath the parent sets the passing score and how many attempts come before worked solutions appear [9]. Its Mastery feature rewards students who try more questions at higher difficulty [2]. In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson does not count. Two misses in a row send practice back to what the skill builds on, and anyone can read the rule in AMP's public source code.",
+      "title": "Moving on, and going back",
+      "body": "In AMP an answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. Repeated misses send practice back to what the skill builds on. In CTCMath the parent sets the passing score and how many attempts come before worked solutions appear [6]. A student with a low score can rewatch the tutorial and try a new set [4].",
       "research": [
         "mastery",
         "hints"
       ]
     },
     {
-      "title": "Workbooks made from the learner's own record",
-      "body": "CTCMath's Question Bank Wizard prints worksheets by the topic, difficulty and length the adult chooses [4]. AMP composes each workbook from the learner's own answers: a warm-up, a short lesson, practice, the skills due for review and a challenge. Each comes with a worked answer key, and results entered from paper count toward the learner's level.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. CTCMath's courses for grades 1 to 8 include Weekly Revision Tasks [5][7], and Cathy Duffy describes printable weekly review sheets [4]. We found none in its Kindergarten or high school courses [7]. Further review is a question set the adult builds by topic, difficulty and length [4]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [10].",
       "research": [
         "review"
       ]
     }
   ],
   "rows": {
-    "price": "One student: $257 a year or $39.90 a month. Family: $397 a year or $59.90 a month. Full refund within 365 days [6].",
-    "buyers": "Families and teachers, with a free trial [7]. Says it is an approved vendor for multiple state ESA/EFA programs and charter schools; the pages we read name none [1][8].",
-    "range": "Kindergarten through calculus, every grade in one membership [2][3].",
-    "start": "Optional placement tests by topic in K-8 list lessons to review. They do not automatically prescribe a grade or course [2][4].",
-    "teaching": "A video tutorial of 4 to 9 minutes from one teacher, then questions, with worked solutions after submitting [1][4].",
-    "next": "The course order, or lessons the adult assigns with due dates [5][9]. Reviewers say questions get easier or harder with performance [4][5].",
-    "mastery": "A passing score the parent sets, and how many attempts come before solutions appear [9]. A Mastery feature rewards more questions at higher difficulty [2].",
-    "review": "32 Weekly Revision Tasks a grade in grades 1 to 8, weekly review sheets of 26 problems, and question sets the adult builds [4][5][14]. None timed to a learner's answers found [1][2].",
-    "print": "One-page lesson summaries, worked solutions, review sheets, and worksheets built by topic, difficulty and length [1][4].",
-    "adult": "Can assign lessons and due dates, set passing scores and attempts, and print worksheets [4][5][9]. Some Algebra and Geometry lessons are self-graded [2].",
-    "reports": "Every lesson attempt with pass or fail, score and time [1]. A weekly emailed report and printable certificates [2][4].",
-    "evidence": "No outcome study found on the pages we read. No entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [10][11]."
+    "range": "Kindergarten through calculus, in courses: K-8, Algebra 1, Geometry, Algebra II, Pre-Calculus with Trigonometry, and Calculus [2][3].",
+    "start": "Optional placement tests for each K-8 topic list lessons to review. They do not automatically prescribe a grade level or course [2][4].",
+    "teaching": "A video tutorial of about 4 to 9 minutes, then questions, with worked solutions after submitting [1].",
+    "next": "The course order, or lessons the adult assigns with due dates [5]. Reviewers say questions get easier or harder with performance [4][5].",
+    "mastery": "A passing score the parent sets, and a number of attempts before solutions appear [6].",
+    "review": "Weekly Revision Tasks in grades 1 to 8, and question sets the adult builds by topic, difficulty and length [4][7].",
+    "print": "A one-page summary with each tutorial, worked solutions, weekly review sheets, and worksheets built by topic, difficulty and length [1][4].",
+    "adult": "Can assign lessons and due dates, set the passing score and attempts, and build extra question sets [4][5][6].",
+    "reports": "Every lesson attempt with pass or fail, score and time, and a weekly emailed report [1][2].",
+    "evidence": "No outcome study found on the pages we read. No entry in Evidence for ESSA or the What Works Clearinghouse when we checked [8][9]."
   },
   "theirs": [
-    "CTCMath is an online math course for kindergarten through grade 12. Cathy Duffy's review says Australian math teacher Patrick Murray created it and teaches it [4]. The company lists more than 1,400 tutorials and says more than 217,000 students have joined [1]. One membership opens every course: K-8, Algebra 1, Geometry, Algebra II, Pre-Calculus with Trigonometry, and Calculus [2][3].",
-    "A lesson starts with a tutorial of about 4 to 9 minutes, narrated over synchronized animation [1]. Then the learner answers interactive questions, marked automatically with worked solutions after submitting, or works an optional printable worksheet [1]. A one-page summary prints with each tutorial, and a speaker icon reads questions aloud [1][4]. Grades 1 to 8 each include 32 Weekly Revision Tasks [5][14]. Reward ribbons in bronze, silver, gold and platinum mark the level of accomplishment [4].",
-    "Parents can assign lessons with due dates, set the passing score, and set how many attempts come before solutions appear [5][9]. Placement tests for each K-8 topic list lessons that may need review [2]. Progress reports show each attempt, pass or fail, score and time spent, and a weekly report can go out by email [1][2]."
+    "CTCMath is an online math course for kindergarten through grade 12. Cathy Duffy's review says Australian math teacher Patrick Murray created it and teaches it [4]. Its courses run from K-8 through Algebra 1, Geometry, Algebra II, Pre-Calculus with Trigonometry, and Calculus [3].",
+    "A lesson starts with a tutorial of about 4 to 9 minutes, narrated over animation. Then the learner answers questions, marked automatically with worked solutions after submitting, or works a printable worksheet [1]. A one-page summary prints with each tutorial [1]. Placement tests for each K-8 topic list lessons that may need review [2], the adult can assign lessons with due dates [5], and grades 1 to 8 include Weekly Revision Tasks [7]."
   ],
   "credit": [
-    "A lower price. The family membership is $397 a year for several students, every grade through calculus, with a full refund within 365 days [2][6]. AMP is $599 a year for the first child and refunds within 30 days.",
-    "Far more video. More than 1,400 short tutorials from one teacher [1][4]. AMP has narrated films for a growing share of its problem types, not a video for every lesson.",
-    "Calculus [3]. AMP stops at precalculus.",
-    "Questions read aloud with a speaker icon [4]. AMP has no read-aloud.",
-    "Parent controls: due dates, passing scores, and attempts before solutions appear [5][9]."
+    "A short video lesson for each topic from one teacher, with a printable summary [1][4].",
+    "A weekly review habit built into grades 1 to 8 [4][7].",
+    "Questions can be read aloud [4]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of CTCMath on the pages of its site we read or in a search for studies of it: no randomized trial, no comparison-group study, no usage study. CTCMath has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [10][11].",
-      "Its homeschool page lists its benefits as what parents report, with no data [3]. The homepage says families can \"start seeing results as early as the very first lesson\" [7]. The page cites no data for it."
+      "We found no outcome study of CTCMath on the pages of its site we read [1][3]. It had no entry in Evidence for ESSA or the What Works Clearinghouse when we checked [8][9]."
     ],
     "ours": [
-      "AMP's review rule comes from a trial that holds up. In a randomized trial of 787 seventh graders, mixed, spaced practice scored 62% on a test a month later, against 38% for practice in blocks; the What Works Clearinghouse says it meets its standards without reservations, though the test was the researchers' own [12]. On watching versus doing, the best data are weaker: in an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages. The authors estimate the benefit of extra doing at more than six times that of extra watching or reading; the data are correlational [13]. We think a program that starts with the problem and times review to each skill will do better than one that starts with a video and reviews by the week. That is our bet, and we have committed to testing it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear on this comparison: mixed and spaced practice scored 62% against 38% for practice in blocks a month later, on the researchers' own test, in a randomized trial that meets What Works Clearinghouse standards without reservations [10]; and in an online psychology course for adults, students who did more interactive activities learned more than students who watched more video or read more pages, in data the authors call correlational [11]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You want one low price for several children, all the way to calculus.",
-      "Your child likes to watch a teacher explain a topic before trying it.",
-      "Your child needs questions read aloud.",
-      "Your education-fund program approves CTCMath and not AMP."
+      "Your child likes to watch a teacher explain a topic before trying it."
     ],
     "amp": [
-      "You want the program, not you, to place your child and choose each problem.",
-      "You want typed answers checked exactly, and help that never counts as mastery.",
-      "You want each old skill to come back on its own schedule, timed to your child's answers.",
-      "Your child is ahead in one part of math and behind in another.",
-      "You want printed workbooks built from your child's own practice, with worked answer keys."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want a hint, a lesson and the worked answer at every problem.",
+      "You want typed answers checked exactly, and help that never counts as learned.",
+      "You want learned skills to keep coming back in practice, mixed with other math.",
+      "Your child is at different levels in different parts of math."
     ]
   },
   "questions": [
     {
-      "question": "Is CTCMath cheaper than AMP?",
-      "answer": "Yes. CTCMath is $257 a year for one student or $397 a year for a family [6]. AMP is $599 a year for the first child and $399 for each more, and the account holder and a second parent practice free. The price buys a program that finds the level, chooses every problem, schedules review and prints unlimited workbooks from counting to precalculus."
+      "question": "How is AMP different from CTCMath?",
+      "answer": "CTCMath teaches by video lesson, then questions, in the course order or the lessons an adult assigns [1][5]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Does CTCMath adapt to my child?",
-      "answer": "Reviewers say questions get easier or harder with a student's performance [4][5]. Cathy Duffy notes that its tests do not automatically prescribe a grade level or course, and the adult can assign lessons [4][5]. AMP keeps a level in each of 14 strands and chooses every next problem from the learner's answers."
+      "question": "Does CTCMath work?",
+      "answer": "We found no outcome study of CTCMath on the pages of its site we read [1][3]. It had no entry in Evidence for ESSA or the What Works Clearinghouse when we checked [8][9]."
     },
     {
-      "question": "Is there research showing CTCMath works?",
-      "answer": "We found no outcome study on the pages of its site we read, and it has no entry in Evidence for ESSA or the What Works Clearinghouse as of November 2026 [10][11]. AMP's rationale and the research behind each part are in our report."
-    },
-    {
-      "question": "Does AMP teach calculus?",
-      "answer": "No. AMP runs from counting through precalculus. CTCMath's membership includes Calculus [3]."
-    },
-    {
-      "question": "Can my child watch CTCMath videos and practice in AMP?",
-      "answer": "Yes. They are separate programs. AMP places the learner within the first 24 problems and keeps a level in each strand, whatever else a learner uses."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -149,20 +125,12 @@
       "url": "https://homeschoolpicks.com/curriculum-reviews/ctc-math-review/"
     },
     {
-      "title": "Membership purchase (CTCMath)",
-      "url": "https://payments.ctcmath.com/purchase"
-    },
-    {
-      "title": "CTCMath home page",
-      "url": "https://www.ctcmath.com/"
-    },
-    {
-      "title": "Vendor funding (CTCMath)",
-      "url": "https://www.ctcmath.com/vendor-funding"
-    },
-    {
       "title": "CTC Math review, sponsored (Not That Hard to Homeschool)",
       "url": "https://www.notthathardtohomeschool.com/ctc-math-review/"
+    },
+    {
+      "title": "Complete US lesson list (CTCMath, spreadsheet)",
+      "url": "https://cdn.mathsonline.com.au/lesson_lists/CTCMath_United_States_Curriculum_Complete_Lesson_List.xlsx"
     },
     {
       "title": "Math programs (Evidence for ESSA, Johns Hopkins University)",
@@ -173,16 +141,12 @@
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
     },
     {
-      "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
       "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
     },
     {
-      "title": "Koedinger et al. (2015), Learning is not a spectator sport",
+      "title": "Koedinger, Kim, Jia, McLaughlin & Bier (2015), Learning is not a spectator sport: Doing is better than watching for learning from a MOOC",
       "url": "https://doi.org/10.1145/2724660.2724681"
-    },
-    {
-      "title": "Complete US lesson list (CTCMath, spreadsheet)",
-      "url": "https://cdn.mathsonline.com.au/lesson_lists/CTCMath_United_States_Curriculum_Complete_Lesson_List.xlsx"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { researchComponent, researchPage } from "../../../research/report";
+import { researchPage } from "../../../research/report";
 import { versusHub } from "../../../versus/amp";
 import { versusGroups } from "../../../versus/catalog";
 import { versusHubHead, versusHubJsonLd } from "../../../versus/head";
@@ -28,17 +28,18 @@ export function VersusHubScreen() {
       <section className={styles.why} aria-labelledby="versus-why">
         <h2 id="versus-why">{versusHub.why.heading}</h2>
         <ul>
-          {versusHub.why.components.map((id) => {
-            const component = researchComponent(id);
-            return (
-              <li key={id}>
-                <Link to="/research" hash={id}>
-                  {component.title}
+          {versusHub.why.reasons.map((reason) => (
+            <li key={reason.title}>
+              {reason.href ? (
+                <a href={reason.href}>{reason.title}</a>
+              ) : (
+                <Link to="/research" hash={reason.research}>
+                  {reason.title}
                 </Link>
-                <p>{component.what}</p>
-              </li>
-            );
-          })}
+              )}
+              <p>{reason.text}</p>
+            </li>
+          ))}
         </ul>
         <p>
           <Link to="/research">{researchPage.title}</Link>

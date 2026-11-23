@@ -3,120 +3,109 @@
   "name": "BJU Press Math",
   "maker": "BJU Press",
   "category": "books",
-  "checked": "2026-11-21",
-  "line": "BJU Press Math follows a set course for each grade. AMP chooses every next problem from the learner's own answers.",
-  "description": "AMP vs BJU Press Math: a Christian video and textbook course for each grade, or practice that adapts, checks every answer and schedules review.",
-  "verdict": "BJU Press Math is a full course for each grade from K5 through Precalculus, taught by a teacher on video or by a parent from the teacher's edition, within a Christian core curriculum [1][2][3]. It follows a set schedule of lessons, and its Hub lists automatic grading of online tests and quizzes for grade 5 and up [6]. AMP finds the learner's level in each part of math, checks and explains every answer as it is given, and brings old skills back on a schedule.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "BJU Press Math is a course of lessons for each grade. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs BJU Press Math: BJU teaches a set course of lessons for each grade. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "BJU Press Math is a course for each grade, taught lesson by lesson on a schedule, by a teacher on video or by a parent from the teacher's edition [1][3][4]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "Practice at the learner's level, not the grade's",
-      "body": "BJU Press sells math one grade at a time, and its Homeschool Hub lays out each course as a schedule of lessons the parent can adjust [2][6]. AMP places the learner within the first 24 problems, keeps a separate level in each of 14 strands of math, and chooses every next problem from the learner's answers. A learner working a grade up in geometry and a grade down in fractions practices at both levels in the same week.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In BJU Press Math the unit is the lesson. In Math 5, a video lesson opens with a brief review, teaches the new idea, has the student try problems alone, then goes over them with the teacher. Assigned work follows [3]. In the textbook format, the parent teaches each lesson from the teacher's edition [1].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test and no test day. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. In BJU Press Math the family chooses a course for one grade, and the Homeschool Hub lays it out as a schedule of lessons [2][4]. The parent can skip, replace or reschedule lessons [4].",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Every answer checked and explained as it is given",
-      "body": "In the Hub's video and DVD formats, online tests and quizzes grade themselves for grade 5 and up; the textbook format lists no automatic grading [6]. The Hub also provides answer keys and a gradebook the parent can edit [1][6]. The video teacher does go over the lesson's practice problems [3]. AMP marks each answer right or wrong and shows the correct answer and the worked steps while the problem is still on screen.",
+      "title": "Feedback on every answer",
+      "body": "After every answer, AMP shows whether it was right, the correct answer and the worked steps. In BJU Press Math the video teacher goes over the lesson's practice problems [3]. Online tests and quizzes grade themselves from grade 5 up, in the video and DVD formats [4]. The parent checks other work with answer keys [1][4]. Across 40 studies of computer-based feedback, of mixed ages and subjects, feedback that explains had the largest average effect [8].",
       "research": [
         "feedback"
       ]
     },
     {
-      "title": "Older skills return on a published schedule",
-      "body": "Each Math 5 video lesson opens with a brief review [3]. We found no schedule for returning to older skills in the course and Hub pages we read [3][6]. AMP brings each learned skill back after 6 hours, a day, 3 days, a week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule again. Anyone can read that rule in AMP's public code.",
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. In BJU Press Math, each Math 5 video lesson opens with a brief review [3]. We found no schedule for returning to older skills in the course and Hub pages we read [3][4]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [7].",
       "research": [
         "review"
       ]
     },
     {
-      "title": "Help at every problem, and help never counts",
-      "body": "BJU Press teaches through its video teacher or through the parent with the teacher's edition, and its math page mentions extra exercises for learners who struggle [1][2][3]. We found no stated rule for when a skill counts as mastered [3][6]. Every AMP problem type has a one-step hint that never gives the answer and a written lesson with a worked example. An answer given after either does not count, a skill is Strong at four of the last five right without help, and two misses in a row send practice back to what the skill builds on.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, on one map of skills from counting through precalculus. A learner further along in one part than another gets work at both levels, and repeated misses send practice back to what a skill builds on. BJU Press Math is a separate course for each grade, from K5 through Precalculus [2].",
       "research": [
-        "hints",
+        "level",
         "mastery"
       ]
     },
     {
-      "title": "One license covers every level",
-      "body": "A BJU Press course covers one grade, and the Math 5 online courses give 16 or 20 months of access, depending on when they were ordered [3][4]. An AMP license runs from counting through precalculus, by the month or the year. A learner who finishes a level early, or needs to go back a year in one strand, keeps going without a new purchase."
-    },
-    {
-      "title": "Workbooks printed for one learner",
-      "body": "BJU Press's print is strong: student textbooks, teacher's editions, handouts and answer keys [1][6]. Every child in a grade gets the same book. AMP prints unlimited workbooks built from one learner's record, with that learner's review due and a worked answer key, and results entered from paper count toward the learner's level."
+      "title": "Workbooks made for one learner",
+      "body": "AMP makes printable workbooks for each learner from that learner's own record, with worked answer keys, and work done on paper counts. BJU Press Math prints student textbooks, teacher's editions, handouts and answer keys for each course, the same for every learner in it [1][4]."
     }
   ],
   "rows": {
-    "buyers": "Families through its homeschool store [1]. Schools through a separate site with a school license that renews each school year [5].",
     "range": "K5 through Precalculus, one course per grade or subject, plus Consumer Math [2].",
-    "start": "The family chooses one grade's course, such as Math 5 [2][3].",
-    "teaching": "A teacher on video, about 20 minutes per Math 5 lesson, or a parent teaching from the teacher's edition [1][3].",
-    "next": "The next lesson on the course schedule. The parent can skip, replace or reschedule lessons [6].",
-    "mastery": "We found no stated rule for when a lesson or skill is mastered on its course or Hub pages [3][6].",
-    "review": "Each Math 5 lesson opens with a brief review [3]. No schedule for older skills found.",
-    "print": "Student textbooks, teacher's editions, handouts and answer keys, the same for every child [1][6]. eTextbooks in an app [6].",
-    "adult": "Run the Hub schedule, check work with the answer keys and keep grades. In the textbook-only format, teach each lesson from the teacher's edition [1][6].",
-    "reports": "A Hub gradebook with editable grades, reports and transcripts [6]. Automatic grading of online tests and quizzes for grade 5 and up, in the video and DVD formats [6].",
-    "evidence": "No entry in Evidence for ESSA or the What Works Clearinghouse, checked November 2026 [7][8]. Parent testimonials on its site [2].",
-    "price": "Not confirmed on its own pages. Courses are bought one at a time; a 0% interest payment plan applies to orders of $350 or more [1][3]."
+    "start": "The family chooses a course for one grade [2].",
+    "teaching": "A teacher on video, or the parent from the teacher's edition. A Math 5 lesson reviews, teaches, has the student try problems, then goes over them [1][3].",
+    "next": "The next lesson on the course schedule. The parent can skip, replace or reschedule lessons [4].",
+    "mastery": "None found in the pages we read [3][4].",
+    "review": "A brief review opens each Math 5 video lesson [3]. No schedule for older skills found in the pages we read [3][4].",
+    "print": "Student textbooks, teacher's editions, handouts and answer keys, the same for every learner in the course [1][4].",
+    "adult": "Runs the schedule, checks work with answer keys and keeps grades. In the textbook format, teaches each lesson from the teacher's edition [1][4].",
+    "reports": "A gradebook the parent can edit, with reports and transcripts. Online tests and quizzes grade themselves from grade 5 up, in video and DVD formats [4].",
+    "evidence": "No entry in Evidence for ESSA or the What Works Clearinghouse when checked [5][6]."
   },
   "theirs": [
-    "BJU Press is a Christian publisher of textbooks for schools and homeschools. It describes its homeschool line as an all-in-one core curriculum, taught from a biblical worldview [1]. The math runs from K5 through Precalculus, one course per grade, with Fundamentals of Math, Pre-Algebra and Consumer Math along the way [2]. Families buy from its homeschool store; schools buy through a separate site with a yearly school license [1][5].",
-    "Each course comes as textbooks with a teacher's edition the parent teaches from, as a DVD kit, or as an online video course in the Homeschool Hub [1][6]. In Math 5, a video lesson averages 20 minutes. It opens with a brief review, teaches the new idea, has the student try problems alone, and then goes over them with the teacher. Assigned work follows [3].",
-    "The Hub shows the parent what is due, what is done and what materials are needed, and lets the parent skip, replace or reschedule lessons [6]. In its video and DVD formats, online tests and quizzes for grade 5 and up grade themselves, and the gradebook can produce transcripts [6]."
+    "BJU Press is a Christian publisher of textbooks for schools and homeschools. It describes its homeschool line as an all-in-one core curriculum, taught from a biblical worldview [1]. The math runs from K5 through Precalculus, one course per grade, with Fundamentals of Math, Pre-Algebra and Consumer Math along the way [2].",
+    "Each course comes as textbooks with a teacher's edition the parent teaches from, as a DVD kit, or as an online video course in the Homeschool Hub [1][4]. In Math 5, a video lesson opens with a brief review, teaches the new idea, has the student try problems alone, and then goes over them with the teacher. Assigned work follows [3]. The Hub shows the parent what is due, what is done and what materials are needed [4]."
   ],
   "credit": [
-    "A teacher on video for every lesson of its video courses. Math 5 lessons average 20 minutes with one teacher, with animated segments, STEM projects and chapter review games [3]. AMP's films are animated and cover a growing share of problem types, not every lesson.",
-    "A full Christian core. Math sits beside every other subject, taught from a biblical worldview, from one publisher [1]. AMP is only math.",
-    "Records for high school. The Hub keeps a gradebook with editable grades and produces transcripts [6]. AMP has report cards, but no transcripts or course credit.",
-    "Books, DVDs and eTextbooks. eTextbooks can be read in the BJU Press Connect app, with text-to-speech [6]. AMP is a web app and does not read problems aloud.",
-    "Hands-on manipulatives in the elementary grades [2]. AMP has a few on-screen models a learner builds, and nothing to hold."
+    "A teacher on video for each lesson of its video courses, who works through the practice problems with the student [3].",
+    "A teacher's edition that gives the parent instructions, activities and added explanation for each lesson [1].",
+    "Hands-on manipulatives in the elementary grades [2]."
   ],
   "evidence": {
     "theirs": [
-      "BJU Press Math has no entry in Evidence for ESSA or the What Works Clearinghouse (checked November 2026) [7][8]. We found no outcome study on the BJU Press pages we read either.",
-      "Its home page says its courses are structured on educational best practices and its textbook lessons on \"sound academic research\", and cites no study on that page [1]. The math page offers parent testimonials, one of them about a child who tested well above average [2]. A testimonial is one family's report, not a study. So we have no outcome study of BJU Press Math to weigh, for or against."
+      "We found no outcome study of BJU Press Math in the BJU Press pages we read, in Evidence for ESSA or in What Works Clearinghouse intervention reports [5][6]."
     ],
     "ours": [
-      "Two of AMP's rules supply what a book leaves to the adult. Feedback that explains: across 40 studies of computer-based feedback of mixed ages and subjects, it averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [10]. Mixed, spaced practice: in a randomized trial of 787 seventh graders that meets What Works Clearinghouse standards without reservations, it scored 62% on the researchers' own test a month later, against 38% for practice in blocks [9]. AMP builds both into its practice. We think that will show in outcomes, and we have committed to measuring it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 40 studies of computer-based feedback, of mixed ages and subjects, feedback that explains averaged 0.49, against 0.32 for the correct answer alone and 0.05 for right or wrong only [8]. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [7]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Choose BJU Press Math if you want math taught from a biblical worldview, as part of one publisher's full Christian curriculum.",
-      "Choose BJU Press Math if you want a teacher on video for each lesson, and a textbook on the table.",
-      "Choose BJU Press Math if you need a gradebook and transcripts for your high schooler's records.",
-      "Choose BJU Press Math if you want to work from printed books or DVDs without streaming."
+      "You want a teacher on video to teach each lesson, with a textbook beside it."
     ],
     "amp": [
-      "You want practice that finds your child's level in each part of math and changes with every answer.",
-      "You want each mistake explained the moment it happens, at every grade, without grading pages.",
-      "You want older skills to come back on a schedule you don't have to plan.",
-      "Your child is ahead in some parts of math and behind in others, and one grade's book doesn't fit.",
-      "You love your BJU Press books and want daily practice that finds the gaps beside them."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want every answer checked and followed by the worked steps.",
+      "You want learned skills to keep coming back in practice.",
+      "Your child is at different levels in different parts of math.",
+      "You want workbooks made from your child's own record."
     ]
   },
   "questions": [
     {
-      "question": "How does AMP's price compare with BJU Press Math?",
-      "answer": "We could not confirm BJU Press's current course prices on its own site, so we do not quote them; it sells each course as a separate purchase, and its Math 5 online courses give 16 or 20 months of access, and offers a 0% interest payment plan on orders of $350 or more [1][3]. AMP is $599 a year or $59 a month for the first child, and $399 a year or $39 a month for each more. One AMP license covers every level from counting to precalculus, with placement, checking, scheduled review and personalized workbooks."
+      "question": "How is AMP different from BJU Press Math?",
+      "answer": "BJU Press Math teaches a course for each grade, lesson by lesson on a schedule, by a teacher on video or by the parent [2][3][4]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Can we use AMP alongside BJU Press Math?",
-      "answer": "Yes. A family can keep its BJU Press lessons and use AMP for daily practice and review. AMP places the learner within the first 24 problems and keeps a level in each strand of math, so it does not need to know which lesson you are on."
+      "question": "Does BJU Press Math work?",
+      "answer": "We found no outcome study of BJU Press Math in the BJU Press pages we read, in Evidence for ESSA or in What Works Clearinghouse intervention reports [5][6]."
     },
     {
-      "question": "Is AMP a Christian curriculum like BJU Press?",
-      "answer": "No. AMP is a math program only. A family that wants every subject taught from a biblical worldview will find that in BJU Press [1], and can still use AMP beside it for math practice."
-    },
-    {
-      "question": "Does AMP have a teacher on video like BJU Press?",
-      "answer": "Not for every lesson. AMP has a written lesson with a worked example for every problem type, and narrated, animated films for a growing share of them. If a teacher on screen for every lesson matters most, BJU Press's video course does that better [3]."
-    },
-    {
-      "question": "Has BJU Press Math been shown to work in studies?",
-      "answer": "We found no outcome study on the BJU Press pages we read, in Evidence for ESSA or in the What Works Clearinghouse (checked November 2026) [7][8]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. AMP is a separate program. It places a learner from their first answers, whatever lesson they are on elsewhere."
     }
   ],
   "sources": [
@@ -131,14 +120,6 @@
     {
       "title": "Math 5 Online with Books, 4th ed. (BJU Press Homeschool)",
       "url": "https://www.bjupresshomeschool.com/math-5-online-with-books%2c-4th-ed./5637428260.p"
-    },
-    {
-      "title": "Math 5 Online Only, 4th ed. (BJU Press Homeschool)",
-      "url": "https://www.bjupresshomeschool.com/math-5-online-only%2c-4th-ed./5637428261.p"
-    },
-    {
-      "title": "Math 5 Online Course, school edition (BJU Press)",
-      "url": "https://www.bjupress.com/math-5-online-course---print,-4th-ed./5637813186.p"
     },
     {
       "title": "Homeschool Hub (BJU Press Homeschool)",

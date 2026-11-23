@@ -2,116 +2,141 @@
   "slug": "adaptedmind",
   "name": "AdaptedMind",
   "category": "games",
-  "checked": "2026-11-21",
-  "benefit": "Mastery by a published rule",
-  "line": "AdaptedMind makes elementary math practice a game; AMP runs to precalculus on published mastery and review rules.",
-  "description": "AMP vs AdaptedMind: what each costs, what AdaptedMind has shown, and how AMP's published mastery and review rules carry a learner through precalculus.",
-  "verdict": "AdaptedMind is a low-priced math program for the elementary grades, with points, badges and a teacher's video for every missed problem, and Trustpilot reviewers rate it 4.5 of 5 [1][4][7]. It says an algorithm adjusts difficulty to each student [1]. AMP publishes its rules for when a skill counts as learned and when it comes back, keeps a level in each of 14 strands, and runs from counting through precalculus.",
+  "checked": "2026-11-22",
+  "benefit": "Teaching at every problem",
+  "line": "AdaptedMind places with a pretest and explains misses on video. In AMP, assessment and teaching come at every problem.",
+  "description": "AMP vs AdaptedMind: AdaptedMind places with a pretest and explains a missed problem on video. In AMP, assessment and teaching come at every problem.",
+  "verdict": "AdaptedMind places a student with a pretest, adjusts the difficulty as the student practices, and explains a missed problem in a teacher's video [1]. In AMP, assessment and teaching are continuous. Every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP says exactly what counts as learned",
-      "body": "AdaptedMind's home page says an algorithm finds each student's strengths and weaknesses and adjusts the difficulty [1]. On the AdaptedMind pages we read, we found no rule for when a skill counts as learned [1]. In AMP a skill is Strong when four of the last five answers are right without help. An answer given after a hint or the lesson is recorded, but it does not count.",
-      "research": ["mastery", "hints"]
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level in that part of math and sets the next problem: new work within reach, a gap to close, or an old skill due back. AdaptedMind starts with a pretest that sets the starting point in its curriculum, and then an algorithm adjusts the difficulty as the student practices [1].",
+      "research": [
+        "level"
+      ]
     },
     {
-      "title": "Old skills come back on a fixed schedule",
-      "body": "AdaptedMind's home page mentions automatic assessments on new and old skills, with no schedule given [1]. AMP brings each learned skill back after 6 hours, 1 day, 3 days, 1 week, 2 weeks and a month, mixed with other topics, and a miss starts the schedule over. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% on the researchers' own test a month later, against 38% for practice in blocks [10].",
-      "research": ["review"]
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step and never the answer, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. AdaptedMind's grade picker sorts its math by grade, and lists grades 6 to 8 as lessons [4]. Practice is set inside a game, with points, badges and monsters [1]. Across 55 studies, worked examples improve performance in math [5].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
     },
     {
-      "title": "A level in each part of math, adjusted every answer",
-      "body": "AdaptedMind sets its starting point with a pretest, then adjusts difficulty as a student practices [1]. Reviews quoted by Brighterly, a company that sells its own tutoring, report work beyond a child's abilities or at the wrong grade level [5]. AMP has no separate test. It keeps a level in each of 14 strands of math, places the learner within the first 24 problems, and chooses every next problem from the answers: new work, a prerequisite, or review.",
-      "research": ["level"]
+      "title": "Feedback on every answer",
+      "body": "After every answer, right or wrong, AMP shows the correct answer and the worked steps. In AdaptedMind the explanation comes with a missed problem: one of its teachers explains it in a video [1]. Across 40 studies of computer feedback, feedback that explains had the largest average effect [6].",
+      "research": [
+        "feedback"
+      ]
     },
     {
-      "title": "Help before the answer, worked steps after every one",
-      "body": "When a child misses a problem, one of AdaptedMind's teachers explains it in a video [1]. AMP offers a one-step hint and a written lesson with a worked example before the learner answers. The hint never gives the answer away. After every answer, right or wrong, AMP shows the correct answer and the worked steps.",
-      "research": ["hints", "feedback", "lessons"]
+      "title": "Continuous review",
+      "body": "In AMP, learned skills come back in ordinary practice, at growing intervals, mixed with other math. AdaptedMind's home page says it runs automatic assessments on new and old skills, and gives no schedule for them [1]. In a randomized trial with 787 seventh graders, mixed and spaced practice scored 62% a month later, against 38% for practice in blocks [7].",
+      "research": [
+        "review"
+      ]
     },
     {
-      "title": "It runs through high school math",
-      "body": "AdaptedMind's home page calls it a K-6 curriculum [1]. Its grade picker goes to grade 8, where grades 6, 7 and 8 each list 172 lessons and \"more coming soon\" [12]. AMP runs from counting through Algebra 1, Geometry, Algebra 2 and Precalculus: 336 skills on one prerequisite map. A learner ready for algebra at ten, or still building fractions at fourteen, stays in the same program."
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math and runs from counting through precalculus in one program, on one map of skills. A learner further along in one part than another gets work at both levels, and repeated misses send practice back to what a skill builds on. AdaptedMind's home page calls it a K-6 curriculum [1], and its grade picker lists grades 1 to 8 [4].",
+      "research": [
+        "level",
+        "mastery"
+      ]
     }
   ],
   "rows": {
-    "price": "$9.95 per month, recurring monthly, after a 30-day free trial. Includes up to 5 children, per its sign-up page [4].",
-    "buyers": "Families and teachers. Teachers at public or nonprofit schools get a 30-day free trial for up to 35 students [3].",
-    "range": "Its home page calls it a K-6 curriculum [1]. Its grade picker lists grades 1 to 8; grades 6 to 8 are labeled as still growing [12].",
+    "range": "Its home page calls it a K-6 curriculum [1]. Its grade picker lists grades 1 to 8 [4].",
     "start": "A pretest sets the starting point in the curriculum [1].",
-    "teaching": "When a problem is missed, one of its teachers explains it in a video. AdaptedMind says it has over 10,000 explanation videos [1].",
-    "next": "An algorithm finds strengths and weaknesses and adjusts difficulty [1]. We found no published rules for how.",
-    "mastery": "We found no mastery rule on the AdaptedMind pages we read [1].",
-    "review": "Formative assessments on new and old skills, per its home page [1]. We found no review schedule.",
-    "adult": "Little, by its account: a child works independently, and reports can go straight to a parent's inbox [1].",
+    "teaching": "When a problem is missed, one of its teachers explains it in a video [1].",
+    "next": "An algorithm finds each student's strengths and weaknesses and adjusts the difficulty [1].",
+    "mastery": "We found no mastery rule in the pages we read [1].",
+    "review": "Automatic assessments on new and old skills, per its home page. No schedule given [1].",
+    "adult": "A child works independently, by its account, and reports can go straight to a parent's email [1].",
     "reports": "Real-time data and reports by email. Classroom reporting for teachers [1].",
-    "evidence": "No outcome study found. No entry in Evidence for ESSA and no What Works Clearinghouse intervention report, as of November 2026 [8][9]."
+    "evidence": "No outcome study found on its home page, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][8][9]."
   },
   "theirs": [
-    "AdaptedMind is an online math program its home page calls a K-6 curriculum [1]. It comes from GloWorld, LLC, a United States company founded in 2010, according to EdTech Impact [3]. AdaptedMind says more than 2 million parents in nearly 200 countries have chosen it [1]. It sells to families and teachers, and it also sells reading, science and social studies [2][3][5].",
-    "Each student starts with a pretest that sets the starting point [1]. Practice is dressed as a game, with points, badges, monsters and characters [1][5]. When a problem is missed, one of AdaptedMind's teachers explains it in a video [1]. Reports can be sent to a parent's email [1]. AdaptedMind says it holds over 300,000 math problems and explanations and over 10,000 explanation videos [1]."
+    "AdaptedMind is an online math program its home page calls a K-6 curriculum [1]. It comes from GloWorld, LLC, a United States company founded in 2010, according to EdTech Impact [2]. The same company offers reading, science and social studies [3].",
+    "A student starts with a pretest that sets the starting point [1]. Practice is set inside a game, with points, badges and monsters, and an algorithm adjusts the difficulty as the student works [1]. When a problem is missed, one of AdaptedMind's teachers explains it in a video, and reports can go to a parent's email [1]."
   ],
   "credit": [
-    "A game layer with points, badges and monsters, which many reviewers say children enjoy [1][5][7]. AMP has no games, avatars or badges.",
-    "A low price: $9.95 a month after a 30-day free trial, covering up to five children [4]. AMP costs more.",
-    "A large library of teacher-made explanation videos, over 10,000 by its own count [1]. AMP has far fewer films.",
-    "An app as well as the website [6], and reading, science and social studies from the same company [2][5]. AMP has no app in the stores and teaches only math.",
-    "Trustpilot reviewers rate it 4.5 of 5 across 1,125 reviews [7]."
+    "A teacher's video explains a missed problem [1].",
+    "Placement from a pretest, then difficulty that adjusts as the student practices [1]."
   ],
   "evidence": {
     "theirs": [
-      "We found no outcome study of AdaptedMind on its home page, in Evidence for ESSA or in the What Works Clearinghouse's intervention reports, as of November 2026 [1][8][9]. That means no randomized trial, no matched comparison and no company-run study that we could find.",
-      "Its home page calls the curriculum \"research-based, common core aligned, and comprehensive\" and cites no study [1]. EdTech Impact's listing calls it evidence-based, also without a study or an ESSA tier [3]. The numbers AdaptedMind puts forward are about reach: more than 2 million parents and over 400 million problems solved [1]. Reach is not a learning result."
+      "We found no outcome study of AdaptedMind on its home page, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][8][9]."
     ],
     "ours": [
-      "AMP's review and teaching rules come from well-tested findings. In a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations, mixed, spaced practice scored 62% against 38% for practice in blocks on the researchers' own test [10]. Worked examples improve math performance, with an average effect of g = 0.48 across 55 studies [11]. AdaptedMind explains a missed problem in a video [1]. AMP gives every problem type a lesson with a worked example, shows worked steps after every answer, and adds a published rule for when a skill is learned and a fixed schedule for when it comes back. We expect that to show in outcomes, and we have committed in public to measuring it.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "The two findings that bear most on this comparison: worked examples improve math performance, with an average effect of g = 0.48 across 55 studies [5], and mixed, spaced practice scored 62% against 38% for practice in blocks a month later, in a randomized trial with 787 seventh graders that meets What Works Clearinghouse standards without reservations [7]. AMP applies both at every problem.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "Your child is in the elementary grades and practices longer for points, badges and characters.",
-      "You want a low monthly price, with one membership for up to five children.",
-      "You want an app on a phone or tablet.",
-      "You want reading, science and social studies from the same company."
+      "You want a teacher on video to explain a problem your child misses."
     ],
     "amp": [
-      "You want to know exactly what counts as learned: four of the last five right without help.",
-      "You want old skills to come back on a schedule, without planning it.",
-      "Your learner is past grade 6, or soon will be. AMP runs through precalculus.",
-      "You want a hint that gives the first step, and the worked steps after every answer.",
-      "You want paper too: workbooks made for your child, each with a worked answer key."
+      "You want assessment, teaching and review in the same practice, with no separate test.",
+      "You want a hint and a lesson at every problem, and the worked steps after every answer.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math, or ready for math past the elementary grades.",
+      "You want workbooks made from your child's own record, with worked answer keys."
     ]
   },
   "questions": [
     {
-      "question": "Is AMP more expensive than AdaptedMind?",
-      "answer": "Yes. AMP costs $599 a year or $59 a month for the first child, and $399 a year or $39 a month for each additional child. AdaptedMind's sign-up page gives $9.95 a month after a 30-day free trial, for up to 5 children [4]. AMP's price covers counting through precalculus, a level in each of 14 strands, scheduled review and unlimited printable workbooks, and it is free to start with 100 answers and 5 workbooks per learner."
+      "question": "How is AMP different from AdaptedMind?",
+      "answer": "AdaptedMind places a student with a pretest and explains a missed problem in a teacher's video [1]. AMP has no separate test: every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "What grades does AdaptedMind cover?",
-      "answer": "Its home page calls it a K-6 curriculum [1], and its grade picker lists grades 1 to 8, with grades 6 to 8 labeled as still growing [12]. AMP runs from counting through precalculus in one program."
+      "question": "Does AdaptedMind work?",
+      "answer": "We found no outcome study of AdaptedMind on its home page, in Evidence for ESSA or in What Works Clearinghouse intervention reports [1][8][9]."
     },
     {
-      "question": "Does AMP have games like AdaptedMind?",
-      "answer": "No. AdaptedMind rewards practice with points, badges and monsters [1]. AMP's reward is plainer: +1 XP for each right answer without help, and a record of every skill grown."
-    },
-    {
-      "question": "Has AdaptedMind been shown to work?",
-      "answer": "We found no outcome study of it, and no entry in Evidence for ESSA or a What Works Clearinghouse intervention report, as of November 2026 [8][9]. Where AMP's own evidence stands is set out in the evidence section of this page."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
-    { "title": "AdaptedMind home page", "url": "https://www.adaptedmind.com/" },
-    { "title": "AdaptedMind enrollment page", "url": "https://www.adaptedmind.com/Begin-Enrollment.html" },
-    { "title": "AdaptedMind Math (EdTech Impact)", "url": "https://edtechimpact.com/products/adaptedmind-math/" },
-    { "title": "AdaptedMind free trial sign-up", "url": "https://www.adaptedmind.com/Math-Worksheets.html" },
-    { "title": "AdaptedMind reviews (Brighterly, a tutoring company)", "url": "https://brighterly.com/blog/adapted-mind-reviews/" },
-    { "title": "AdaptedMind Math (App Store)", "url": "https://apps.apple.com/us/app/adaptedmind-math/id6473857440" },
-    { "title": "AdaptedMind reviews (Trustpilot)", "url": "https://www.trustpilot.com/review/adaptedmind.com" },
-    { "title": "Evidence for ESSA, site search for AdaptedMind", "url": "https://www.evidenceforessa.org/?s=adaptedmind" },
-    { "title": "Intervention reports (What Works Clearinghouse)", "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2" },
-    { "title": "Rohrer et al. (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)", "url": "https://ies.ed.gov/ncee/wwc/Study/88770" },
-    { "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance", "url": "https://doi.org/10.1007/s10648-023-09745-1" },
-    { "title": "AdaptedMind Math, choose a grade", "url": "https://www.adaptedmind.com/loggedout/lp-main" }
+    {
+      "title": "AdaptedMind home page",
+      "url": "https://www.adaptedmind.com/"
+    },
+    {
+      "title": "AdaptedMind Math (EdTech Impact)",
+      "url": "https://edtechimpact.com/products/adaptedmind-math/"
+    },
+    {
+      "title": "AdaptedMind enrollment page",
+      "url": "https://www.adaptedmind.com/Begin-Enrollment.html"
+    },
+    {
+      "title": "AdaptedMind Math, choose a grade",
+      "url": "https://www.adaptedmind.com/loggedout/lp-main"
+    },
+    {
+      "title": "Barbieri, Miller-Cotto, Clerjuste & Chawla (2023), A meta-analysis of the worked examples effect on mathematics performance",
+      "url": "https://doi.org/10.1007/s10648-023-09745-1"
+    },
+    {
+      "title": "Van der Kleij, Feskens & Eggen (2015), Effects of feedback in a computer-based learning environment, Review of Educational Research 85(4)",
+      "url": "https://doi.org/10.3102/0034654314564881"
+    },
+    {
+      "title": "Rohrer, Dedrick, Hartwig & Cheung (2020), A randomized controlled trial of interleaved mathematics practice (What Works Clearinghouse review)",
+      "url": "https://ies.ed.gov/ncee/wwc/Study/88770"
+    },
+    {
+      "title": "Evidence for ESSA, site search for AdaptedMind",
+      "url": "https://www.evidenceforessa.org/?s=adaptedmind"
+    },
+    {
+      "title": "Intervention reports (What Works Clearinghouse)",
+      "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
+    }
   ]
 }

@@ -190,12 +190,13 @@
   color: inherit;
   text-wrap: pretty;
 }
-.topicBody a {
+/* Words that link; a button keeps its own colors. */
+.topicBody a:not(.join) {
   color: var(--color-primary);
   font-weight: 600;
   text-underline-offset: 3px;
 }
-.topicBody a:focus-visible,
+.topicBody a:not(.join):focus-visible,
 .about a:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;

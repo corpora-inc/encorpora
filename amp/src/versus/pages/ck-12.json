@@ -3,119 +3,103 @@
   "name": "CK-12",
   "maker": "CK-12 Foundation",
   "category": "adaptive",
-  "checked": "2026-11-21",
-  "benefit": "Practice that plans itself",
-  "line": "CK-12 offers free math books and an AI chat tutor. AMP picks, checks and explains every problem, from counting on.",
-  "description": "AMP vs CK-12: a free nonprofit library of math books with an AI chat tutor, against a program that picks, checks and explains every problem.",
-  "verdict": "CK-12 is free, made by a nonprofit, and reaches past AMP into calculus, science and nearly 50 languages [2][3]. Much of it is led by the learner: books to read and a chat tutor to ask [3][5]. AMP costs $599 a year for the first child and makes those choices itself: it finds the level, picks every problem, and explains every answer with worked steps.",
+  "checked": "2026-11-22",
+  "benefit": "The problem is the unit",
+  "line": "CK-12 pairs math textbooks with an AI chat tutor. In AMP, assessment, teaching and review happen at every problem.",
+  "description": "AMP vs CK-12: CK-12 pairs digital math textbooks with an AI chat tutor. In AMP, assessment, teaching and review are continuous, at every problem.",
+  "verdict": "CK-12's math is a set of digital textbooks, with Flexi, an AI tutor a student asks in a chat box, beside them [1][2]. The learner or teacher picks the book and the lesson [3]. In AMP, assessment and teaching are continuous: every answer updates the learner's level and sets the next problem, and each problem carries its own hint, lesson and worked answer.",
   "reasons": [
     {
-      "title": "AMP decides what comes next",
-      "body": "CK-12's math comes as digital textbooks, adaptive practice and a chat tutor [2]. Common Sense Media notes that younger children may need a parent's help to find their material [3]. In CK-12's own study of its tutor, teachers said students struggled with prompting it [5]. AMP keeps a level in each of 14 strands of math and picks every problem from the learner's answers: new work, a prerequisite, or review.",
+      "title": "The problem is the unit",
+      "body": "In AMP, everything a learner needs hangs off the problem in front of them: a hint that gives the first step, a lesson with a worked example, a video lesson, the worked answer afterward, and links to the skills it builds on and leads to. In CK-12 the unit is the book. Its math comes as FlexBooks, digital textbooks whose lessons mix text, video, audio and quizzes [2][3]. Across 55 studies, worked examples improve mathematics performance, with an average effect of g = 0.48 [9].",
+      "research": [
+        "lessons",
+        "hints",
+        "films"
+      ]
+    },
+    {
+      "title": "Continuous assessment",
+      "body": "AMP has no separate test. It places a learner from their first answers, and every answer after updates the learner's level and sets the next problem: new work within reach, a gap to close, or an old skill due back. In CK-12 the learner or teacher picks the book and the lesson, and Common Sense Media notes that younger children may need a parent's help to find their material [3]. CK-12 also offers adaptive practice. We found no published rule for how it picks items [2]. How AMP chooses each problem is open source: open to peer review and contribution.",
       "research": [
         "level"
       ]
     },
     {
-      "title": "Every answer is checked exactly and explained",
-      "body": "Kid reviewers on Common Sense Media's CK-12 page, as the page summarizes them, reported unclear quiz questions, answers marked right or wrong incorrectly, and a lack of clear explanations [3]. No AI model runs while a learner works in AMP. Every problem comes from tested code, and 185 independent checkers re-derive the answers. After each answer the learner sees right or wrong, the correct answer and the worked steps.",
-      "research": [
-        "feedback"
-      ]
-    },
-    {
-      "title": "Help gives the first step, never the answer",
-      "body": "CK-12's tutor, Flexi, is a chat box a student types questions into [1]. In CK-12's own study, teachers worried about students leaning on it too much and about plagiarism [5]. That study did not test Flexi. In a field experiment with nearly 1,000 high school math students in Turkey, unrestricted GPT-4 raised practice scores by 48%, and once access was removed those students scored 17% lower on exams than students who never had AI; a tutor version with learning safeguards largely mitigated that harm [6]. AMP builds the safeguard into its rules: a hint is one step that never contains the answer, and an answer after a hint does not count toward mastery.",
+      "title": "Help gives the first step",
+      "body": "In AMP a hint gives the first step and never the answer. An answer given after a hint or a lesson is marked as helped and does not count as learned. A skill counts when the learner gets it right without help, more than once. CK-12's tutor, Flexi, is a chat box a student types questions into [1]. In CK-12's own study of Flexi, teachers raised concerns about students relying on it too much [5]. In a field experiment with nearly 1,000 high school math students in Turkey, which did not test Flexi, unrestricted GPT-4 raised practice scores by 48%. Once access was removed, those students scored 17% lower on exams than students who never had AI. A tutor version with learning safeguards largely mitigated that harm [6].",
       "research": [
         "hints",
         "mastery"
       ]
     },
     {
-      "title": "It starts at counting",
-      "body": "CK-12's math FlexBooks begin at grade 1 [2]. Common Sense Media finds most of the site suited to older children and teens [3]. AMP starts with counting in kindergarten, finds a young learner's level inside the first 24 problems with no separate test, and needs no adult to plan the next lesson.",
+      "title": "A level for each part of math",
+      "body": "AMP keeps a separate level for each part of math, on one map of skills from counting through precalculus. A learner further along in one part than another gets work at both levels, and repeated misses send practice back to what a skill builds on. CK-12's math is a set of separate books: grades 1 to 5 as one set, a middle school book for grades 6 to 8, then one for each course from algebra up [2].",
       "research": [
-        "level"
-      ]
-    },
-    {
-      "title": "Learned means a rule anyone can read",
-      "body": "CK-12's efficacy page reports that two in three students improve their skill level, without defining a skill level or naming a comparison group [4]. In AMP a skill is Strong after four of the last five answers are right without help. Two misses in a row send practice back to what the skill builds on. The rule sits in AMP's public source code.",
-      "research": [
+        "level",
         "mastery"
       ]
     }
   ],
   "rows": {
-    "price": "Free. CK-12 is a nonprofit and calls Flexi a free tutor for every student [2]. Common Sense Media lists the price as free [3]. We found no paid tier.",
-    "buyers": "Anyone. Students, families and teachers sign up free. Teachers assign work with a class code [1][2].",
-    "range": "FlexBooks from grade 1 through calculus, plus college algebra and college precalculus. No kindergarten math listed [2].",
-    "start": "CK-12 says its AI can judge in 2 to 4 questions whether a student is at, below or above grade on a concept. No accuracy figure given [4].",
-    "teaching": "Digital textbooks with text, video, audio and quizzes [3], plus Flexi, an AI chat tutor [1][2].",
-    "next": "Learners and teachers pick the book and lesson [3]. An adaptive practice product exists; we found no published rule for how it picks items [2].",
-    "mastery": "No published mastery rule found. Its efficacy page reports skill-level gains without defining a skill level [4].",
-    "adult": "Common Sense Media says younger children may need a parent's help to find their material [3].",
-    "reports": "A teacher-facing Insights feature [4]. Links with Google Classroom, Canvas and Schoology [2].",
-    "evidence": "No math entry in Evidence for ESSA and no WWC intervention report [7][8]. Its own studies report teacher opinions, small tests with no scores shown, and statistics with no stated method [4][5]."
+    "range": "FlexBooks from grade 1 through calculus, plus college algebra and college precalculus [2].",
+    "start": "CK-12 says its AI can judge in 2 to 4 questions whether a student is at, below or above grade on a concept. No accuracy figure is given [4].",
+    "teaching": "Digital textbooks with text, video, audio and quizzes [3], and Flexi, an AI tutor a student asks in a chat box [1][2].",
+    "next": "The learner or teacher picks the book and the lesson [3]. Adaptive practice exists; we found no published rule for how it picks items [2].",
+    "mastery": "None found in the pages we read [2][4].",
+    "review": "None found in the pages we read [2][3][4].",
+    "adult": "A teacher assigns work with a class code [1]. Common Sense Media says younger children may need a parent's help to find their material [3].",
+    "reports": "Insights, a feature that helps teachers read student performance [4]. Links with Google Classroom, Canvas and Schoology [2].",
+    "evidence": "We found no math entry in Evidence for ESSA and no What Works Clearinghouse intervention report [7][8]. CK-12's own studies report teachers' views and platform statistics [4][5]."
   },
+  "open": [
+    "next"
+  ],
   "theirs": [
-    "CK-12 comes from the CK-12 Foundation, a nonprofit that gives its materials away [2]. Its math is a set of FlexBooks, digital textbooks from grade 1 through algebra, geometry, trigonometry, precalculus and calculus, with college algebra and college precalculus above them [2]. The same site covers science, English, social studies and more [2].",
-    "A FlexBook lesson mixes text, video, audio and quizzes [3], and the site also lists interactive science simulations and PLIX interactive items [2]. Beside the books sits Flexi, an AI tutor a student asks in a chat box, on the web, in a Google Play app or on WhatsApp [1][2]. Teachers assign work with a class code and connect CK-12 to Google Classroom, Canvas or Schoology [1][2].",
-    "CK-12 also offers adaptive practice [2]. How it chooses items is not described on the pages we read, so this page does not guess at it."
+    "CK-12 comes from the CK-12 Foundation, a nonprofit [2]. Its math is a set of FlexBooks, digital textbooks from grade 1 through algebra, geometry, trigonometry, precalculus and calculus, with college algebra and college precalculus above them [2]. The same site covers science and other subjects [2].",
+    "A FlexBook lesson mixes text, video, audio and quizzes [3], and the site also lists interactive science simulations and PLIX interactive items [2]. Beside the books sits Flexi, an AI tutor a student asks in a chat box, on the web, in a Google Play app or on WhatsApp [1][2]. The learner or teacher picks the book and the lesson [3], and teachers assign work with a class code [1]."
   ],
   "credit": [
-    "Free, from a nonprofit [2][3]. A family pays nothing. AMP costs $599 a year for the first child.",
-    "More math at the top: calculus and college precalculus FlexBooks, past AMP's last course, precalculus [2].",
-    "Flexi answers a student's own questions in a chat, on the web, in a Google Play app and on WhatsApp [2]. AMP has no chat tutor and no app in the stores.",
-    "Material in nearly 50 languages, Common Sense Media reports [3]. AMP is in English only.",
-    "Science and other subjects on the same free site, with links to Google Classroom, Canvas and Schoology [2]."
+    "One place for math from grade 1 through calculus, in text, video, audio and quizzes [2][3].",
+    "Flexi answers the questions a learner asks in their own words [1][2].",
+    "Interactive science simulations and items beside the reading [2]."
   ],
   "evidence": {
     "theirs": [
-      "CK-12's efficacy page lists its studies [4]. The fullest is a six-week study of Flexi in spring 2025, run by CK-12 with Leanlab Education: ten middle and high school math and science teachers in five states, studied through surveys, diaries and focus groups [5]. It reports what teachers saw, with no test scores. Teachers reported more engagement, confidence and curiosity. They also reported that students struggled with prompting, that lower-readiness learners had trouble with comprehension, and worries about overreliance and plagiarism [5].",
-      "The other entries are small studies, such as a blind rating of Flexi against Khanmigo by 25 students and a five-day pre-test and post-test with 76 students in grades 7 and 8 who used Flexi to study; the page lists no results for the rating and no scores or effect sizes for the test [4]. It also gives platform statistics with no stated method. One says two of three students improve their skill level, with no sample size, date, comparison group or definition [4]. Without a comparison group, figures like these cannot show what the feature caused. The student page calls Flexi the \"World’s Most Powerful AI Tutor\" [1].",
-      "We found no CK-12 math study with a comparison group and published test results, on its site or in either national clearinghouse as of November 2026. Evidence for ESSA has no math entry for CK-12; its one CK-12 page, filed under science, reads \"No studies met inclusion requirements\" [7]. The What Works Clearinghouse has no intervention report on CK-12 [8]."
+      "CK-12's efficacy page lists its studies [4]. The fullest is a six-week study of Flexi in spring 2025, run by CK-12 with Leanlab Education: ten middle and high school math and science teachers in five states, studied through surveys, diaries and focus groups [5]. It reports what teachers saw, with no test scores. Teachers reported more engagement, confidence and curiosity. They also reported that students struggled with prompting, and worries about overreliance and plagiarism [5].",
+      "The other entries are small studies, such as a blind rating of Flexi against Khanmigo by 25 students and a five-day pre-test and post-test with 76 students in grades 7 and 8 who used Flexi to study. The page lists no results for the rating and no scores or effect sizes for the test [4]. It also gives platform statistics, such as two in three students improving their skill level, with no sample size, comparison group or definition [4].",
+      "We found no CK-12 math study with a comparison group and published test results. Evidence for ESSA has no math entry for CK-12; its one CK-12 page, filed under science, reads \"No studies met inclusion requirements\" [7]. The What Works Clearinghouse has no intervention report on CK-12 [8]."
     ],
     "ours": [
-      "AMP's rules follow findings that have held up across many studies. Across 40 studies of computer-based feedback, feedback that explains averaged an effect of 0.49 (the studies mix ages and subjects), the correct answer alone 0.32, and right-or-wrong only 0.05 [9]. AMP shows the worked steps after every answer. Across 55 studies, from elementary school to college, worked examples improved math performance by g = 0.48 [10]. Every AMP problem type has a lesson with one. We expect that structure, applied at every problem, to show in outcomes. That is our bet, and we will test it in public.",
-      "AMP is new, and its own outcome studies have not run yet. They begin in 2027: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. Until then, the research behind each part of AMP is laid out in our report, and the code is public."
+      "Two findings bear on this comparison. Across 55 studies, worked examples improve mathematics performance, with an average effect of g = 0.48 [9]. In a field experiment with nearly 1,000 high school math students in Turkey, students given unrestricted GPT-4 scored 17% lower on exams, once access was removed, than students who never had AI. A tutor version with learning safeguards largely mitigated that harm [6]. AMP gives a worked example at every problem, and no AI model runs while a learner works.",
+      "AMP's own outcome studies are planned: growth on a national test against hours of use, then comparison groups, then randomized trials. Each will be registered before it starts and published whatever it finds. The research behind each part of AMP is in our report, and AMP is open source."
     ]
   },
   "fit": {
     "them": [
-      "You need math at no cost.",
-      "Your learner is ready for calculus or college precalculus, or wants science on the same site.",
-      "Your child learns best in a language other than English.",
-      "You want an AI tutor that answers your child's own questions, or free textbooks that link to Google Classroom, Canvas or Schoology."
+      "You want a textbook to read and a tutor that answers your child's own questions."
     ],
     "amp": [
-      "You want the program, not your child, to decide what comes next.",
-      "You want every answer checked exactly and explained with worked steps.",
-      "You want help that gives a first step and never the answer.",
-      "Your child is starting with counting or the early grades.",
-      "You want printed workbooks made for your child, each with a worked answer key."
+      "You want assessment, teaching and review in the same practice, with no separate tests.",
+      "You want the program, not your child, to choose the next problem.",
+      "You want help that gives the first step and never the answer.",
+      "You want learned skills to keep coming back in practice.",
+      "Your learner is at different levels in different parts of math."
     ]
   },
   "questions": [
     {
-      "question": "Is CK-12 really free?",
-      "answer": "Yes, as far as we found. CK-12 is a nonprofit and calls Flexi a free tutor for every student [2], and Common Sense Media lists the site's price as free [3]. We found no paid tier."
+      "question": "How is AMP different from CK-12?",
+      "answer": "CK-12 pairs digital math textbooks with Flexi, an AI chat tutor, and the learner or teacher picks the lesson [1][2][3]. In AMP every answer sets the next problem, each problem carries its own teaching, and learned skills return in ordinary practice."
     },
     {
-      "question": "Why pay for AMP when CK-12 is free?",
-      "answer": "AMP costs $599 a year or $59 a month for the first child, and $399 or $39 for each more, with two parents practicing free. The price buys a program that places the learner, picks every problem, explains every answer, schedules review and prints workbooks with answer keys, from counting through precalculus. The first 100 answers are free, and there is a full refund within 30 days."
+      "question": "Does CK-12 work?",
+      "answer": "We found no CK-12 math study with a comparison group and published test results, on its site, in Evidence for ESSA or in What Works Clearinghouse intervention reports [4][7][8]. Its fullest study reports what ten teachers saw of Flexi, with no test scores [5]."
     },
     {
-      "question": "Does AMP have an AI tutor like Flexi?",
-      "answer": "No. Flexi is CK-12's AI chat tutor [1]. No AI model runs while a learner works in AMP: every problem, hint and explanation comes from tested code, and 185 independent checkers re-derive the answers."
-    },
-    {
-      "question": "Can we use CK-12 and AMP together?",
-      "answer": "Yes. A learner can read a FlexBook or ask Flexi about a new idea and practice in AMP. CK-12 also covers calculus and science, which AMP does not [2]."
-    },
-    {
-      "question": "Is AMP proven to work better than CK-12?",
-      "answer": "Not yet; the evidence section above says where AMP's studies stand. We found no CK-12 math study with a comparison group and published test results either [4][5]."
+      "question": "Can a learner use both?",
+      "answer": "Yes. They are separate programs. AMP places a learner from their first answers, whatever else they use."
     }
   ],
   "sources": [
@@ -150,10 +134,6 @@
     {
       "title": "Intervention reports (What Works Clearinghouse)",
       "url": "https://ies.ed.gov/ncee/WWC/Search/Products?productType=2"
-    },
-    {
-      "title": "Van der Kleij et al. (2015), Effects of feedback in a computer-based learning environment",
-      "url": "https://doi.org/10.3102/0034654314564881"
     },
     {
       "title": "Barbieri et al. (2023), A meta-analysis of the worked examples effect on mathematics performance",
