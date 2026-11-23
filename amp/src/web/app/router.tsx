@@ -1722,19 +1722,19 @@ const fallback = createRoute({
     // The person this screen shows: a hand-over's child, whose identity
     // arrives with the screen itself (features/school/join/deferred-identity.ts),
     // or whoever is signed in.
-    const student = (
+    const signedIn =
       deferredIdentity() ??
       (queryClient.getQueryData(sessionOptions.queryKey) as
-        AuthSession | null | undefined)
-    )?.token?.startsWith("st_");
+        AuthSession | null | undefined);
+    const student = signedIn?.token?.startsWith("st_") ? signedIn : null;
     await Promise.all([
       legacy.preload?.(),
-      // A school student's practice bar holds the raised hand: its code
-      // arrives with the screen, so the bar never gains a button after
-      // paint. Nobody else downloads it.
+      // A school student's practice bar holds the raised hand while a
+      // session runs: its code and whether one runs arrive with the screen,
+      // so the bar never gains a button after paint. Nobody else asks.
       student &&
         import("../features/live/RaiseHandSlot").then((slot) =>
-          slot.preloadRaiseHand(),
+          slot.preloadStudentHand(queryClient, student),
         ),
       location.pathname === "/overview" &&
         import("../lib/learning-view").then((view) =>

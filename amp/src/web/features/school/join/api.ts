@@ -195,16 +195,17 @@ export function useFinishSignIn() {
       else notifyDeviceSessionChanged(session, { handoff: handed });
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.
-      // The raised hand's code too: a student's practice bar holds it from
-      // its first frame, and fetched here it never slows the route's loader
-      // (app/router.tsx, `/$`) past the moment practice mounts.
+      // The raised hand's code too, and whether a session runs (the hand
+      // is in the bar only then): a student's practice bar is whole from
+      // its first frame, and fetched here they never slow the route's
+      // loader (app/router.tsx, `/$`) past the moment practice mounts.
       const [me] = await Promise.all([
         queryClient.fetchQuery(meOptions(session)).catch((error) => {
           console.warn("Practice will load `/me` itself", error);
           return null;
         }),
         import("../../live/RaiseHandSlot")
-          .then((slot) => slot.preloadRaiseHand())
+          .then((slot) => slot.preloadStudentHand(queryClient, session))
           .catch((error: unknown) =>
             console.warn("The raised hand will load with practice", error),
           ),

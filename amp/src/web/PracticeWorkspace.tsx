@@ -1809,6 +1809,7 @@ export function PracticeWorkspace(props: Props) {
         {topic}
       </span>
       {props.status && <span className="workspace-status">{props.status}</span>}
+      {props.toolbarInFrame && <StudentHand problem={problem.id} />}
       {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
       {review ? null : props.calculator &&
@@ -1850,7 +1851,6 @@ export function PracticeWorkspace(props: Props) {
           </svg>
         </span>
       )}
-      {props.toolbarInFrame && <StudentHand />}
     </>
   );
   return (

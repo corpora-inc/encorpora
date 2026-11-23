@@ -8,8 +8,18 @@
  *   - student B raises a hand in practice: it shows in the snapshot; the
  *     teacher acknowledges; B's button clears and "Your teacher saw it." shows.
  * Nothing on either screen may move through any step (at 390 and 1280, light
- * and dark), and the practice bar at 320 holds. Screenshots go to
- * $VERIFY_SHOTS.
+ * and dark).
+ *
+ * Then the practice bar itself, Calm and Colorful, at 320, 390, 768 and
+ * 1280, light and dark. A problem's bar holds only the problem's tools: no
+ * name and no Sign out (both are the menu's, once each). The raised hand is
+ * in one place at a time: the bar while a session runs, a row of the menu
+ * when none does. A session stopping or starting moves nothing in the bar
+ * (its height, the logo, the calculator's place, Colorful's points, the
+ * problem), and nothing in a menu that is open. On a calculator problem
+ * neither the calculator nor the hand stands a gap away from the bar's edge
+ * once the next problem arrives: the hand has the bar's end while a session
+ * runs, the calculator when none does. Screenshots go to $VERIFY_SHOTS.
  *
  *     VERIFY_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/amp_scratch_l4b \
  *     VERIFY_API=http://127.0.0.1:4871 VERIFY_WEB=http://127.0.0.1:4870 \
@@ -121,8 +131,19 @@ async function setPictures(personId: string) {
   });
   assert.ok(response.ok, `setting pictures ${response.status}`);
 }
-if (!(await live()).session)
-  await teacher("POST", `/api/v1/school/classes/${room.id}/sessions`, {});
+/** The class's session, running or stopped, by the teacher's own routes. */
+async function setSession(running: boolean) {
+  const now = await live();
+  if (running && !now.session)
+    await teacher("POST", `/api/v1/school/classes/${room!.id}/sessions`, {});
+  if (!running && now.session)
+    await teacher(
+      "POST",
+      `/api/v1/school/classes/${room!.id}/sessions/${now.session.id}/stop`,
+      {},
+    );
+}
+await setSession(true);
 
 // ---- helpers ---------------------------------------------------------------
 type Box = { x: number; y: number; width: number; height: number };
@@ -162,6 +183,42 @@ function same(
         `${label}: ${name}.${key} moved ${a[key]} -> ${b[key]}`,
       );
   }
+}
+const overlap = (a: Box, b: Box) =>
+  a.x < b.x + b.width - 1 &&
+  b.x < a.x + a.width - 1 &&
+  a.y < b.y + b.height - 1 &&
+  b.y < a.y + a.height - 1;
+/** "Your teacher saw it." is on screen, whole, and lies over nothing a
+ * student reads or uses: not the problem, not an answer control, not the
+ * bar's own controls, not Colorful's points. */
+async function noteClear(page: Page, label: string) {
+  const found = await boxes(page, {
+    note: "[data-hand-note]",
+    problem: ".problem-stage",
+    answer: ".answer-dock",
+    keypad: ".math-keypad",
+    logo: "header[data-app-bar] [data-navigation-trigger]",
+    hand: "header[data-app-bar] button[aria-label='Raise hand']",
+    calculator: "header[data-app-bar] .calculator-toggle",
+    chip: "[class*='_chip_'][data-shown]",
+  });
+  const note = found.note;
+  assert.ok(note && note.width > 0 && note.height > 0, `${label}: no note`);
+  const view = page.viewportSize()!;
+  assert.ok(
+    note.x >= 0 &&
+      note.y >= 0 &&
+      note.x + note.width <= view.width &&
+      note.y + note.height <= view.height,
+    `${label}: the note leaves the screen ${JSON.stringify(note)}`,
+  );
+  for (const [name, box] of Object.entries(found))
+    if (name !== "note" && box)
+      assert.ok(
+        !overlap(note, box),
+        `${label}: the note lies over the ${name}: ${JSON.stringify({ note, [name]: box })}`,
+      );
 }
 const pictureButtons = (page: Page) => page.locator("button[aria-pressed]");
 async function pick(page: Page) {
@@ -294,9 +351,10 @@ try {
         `${tag}: the pressed state cleared`,
       );
       same(`${tag} hand acknowledged`, down, await boxes(page, practiceWatch));
+      await noteClear(page, `${tag} hand acknowledged`);
       await page.screenshot({ path: `${shots}/hand-3-seen-${tag}.png` });
       await page
-        .getByRole("status")
+        .locator("[data-hand-note]")
         .waitFor({ state: "detached", timeout: 10_000 });
       same(`${tag} note gone`, down, await boxes(page, practiceWatch));
       checks++;
@@ -371,25 +429,23 @@ try {
       `setting the look ${response.status} ${await response.clone().text()}`,
     );
   }
-  const overlap = (a: Box, b: Box) =>
-    a.x < b.x + b.width - 1 &&
-    b.x < a.x + a.width - 1 &&
-    a.y < b.y + b.height - 1 &&
-    b.y < a.y + a.height - 1;
+  const BAR = "header[data-app-bar]";
+  const HAND = `${BAR} button[aria-label='Raise hand']`;
   for (const look of ["calm", "bold"] as const)
-    for (const width of [320, 390])
+    for (const width of [320, 390, 768, 1280])
       for (const theme of ["light", "dark"] as const) {
         const tag = `${look === "bold" ? "colorful" : "calm"}-${width}-${theme}`;
         await setLook(B.id, look);
+        await setSession(true);
         const context = await browser.newContext({
-          viewport: { width, height: 740 },
+          viewport: { width, height: width < 700 ? 740 : 800 },
           colorScheme: theme,
         });
         const page = await context.newPage();
         await page.goto(`${web}/join/${code}/${B.id}`);
         await pictureButtons(page).first().waitFor();
         await pick(page);
-        const hand = page.getByRole("button", { name: "Raise hand" });
+        const hand = page.locator(HAND);
         await hand.waitFor({ timeout: 30_000 });
         if (look === "bold")
           await page
@@ -397,77 +453,88 @@ try {
             .waitFor({ timeout: 15_000 });
         // An earlier run's note is gone before the first measure.
         await page
-          .getByRole("status")
+          .locator("[data-hand-note]")
           .waitFor({ state: "detached", timeout: 10_000 })
           .catch(() => {});
         await page.waitForTimeout(1200);
+        // What a session starting or stopping must never move.
         const parts = {
-          hand: "button[aria-label='Raise hand']",
-          signOut: "[data-student-sign-out]",
+          bar: BAR,
+          logo: `${BAR} [data-navigation-trigger]`,
+          slot: `${BAR} [data-raise-hand-slot]`,
+          calculator: `${BAR} .calculator-toggle, ${BAR} .no-calculator`,
           chip: "[class*='_chip_'][data-shown]",
           topic: ".practice-topic, .workspace-topic",
           stage: ".problem-stage",
         };
+        /** A problem's bar holds only the problem's tools. */
+        const onlyTools = async (label: string) => {
+          const found = await page.evaluate(
+            ({ bar, name }) => {
+              const header = document.querySelector(bar)!;
+              return {
+                marks: header.querySelectorAll(
+                  "[data-session-mark], [data-session-name], [data-session-sign-out], [data-student-sign-out], [data-handed-home]",
+                ).length,
+                named: (header.textContent ?? "").includes(name),
+                signOut: /sign out/i.test(header.textContent ?? ""),
+              };
+            },
+            { bar: BAR, name: B.name },
+          );
+          assert.equal(
+            found.marks,
+            0,
+            `${tag} ${label}: the practice bar holds a session mark`,
+          );
+          assert.ok(!found.named, `${tag} ${label}: the bar names the student`);
+          assert.ok(!found.signOut, `${tag} ${label}: the bar says Sign out`);
+        };
         const settle = async (label: string, shot: string) => {
           await page.waitForTimeout(500);
-          const now = await boxes(page, parts);
+          const now = await boxes(page, { ...parts, hand: HAND });
           const overflow = await page.evaluate(
             () => document.documentElement.scrollWidth - innerWidth,
           );
           assert.ok(overflow <= 0, `${tag} ${label}: overflow ${overflow}`);
-          const handBox = now.hand!;
-          assert.ok(
-            handBox.width >= 44 && handBox.height >= 44,
-            `${tag}: 44 px`,
-          );
-          for (const other of ["signOut", "chip"] as const)
-            if (now[other])
+          await onlyTools(label);
+          if (now.hand) {
+            assert.ok(
+              now.hand.width >= 44 && now.hand.height >= 44,
+              `${tag} ${label}: 44 px`,
+            );
+            for (const other of ["calculator", "chip", "logo"] as const)
+              if (now[other])
+                assert.ok(
+                  !overlap(now.hand, now[other]!),
+                  `${tag} ${label}: hand overlaps ${other}`,
+                );
+          }
+          for (const other of ["calculator", "logo"] as const)
+            if (now.chip && now[other])
               assert.ok(
-                !overlap(handBox, now[other]!),
-                `${tag} ${label}: hand overlaps ${other}`,
+                !overlap(now.chip, now[other]!),
+                `${tag} ${label}: chip over ${other}`,
               );
-          if (now.chip && now.signOut)
-            assert.ok(
-              !overlap(now.chip, now.signOut),
-              `${tag}: chip over sign-out`,
-            );
-          // The note must not meet the chip.
-          const note = await boxes(page, { note: "[role='status']" });
-          if (note.note && now.chip)
-            assert.ok(
-              !overlap(note.note, now.chip),
-              `${tag} ${label}: note over chip`,
-            );
           await page.screenshot({
             path: `${shots}/bar-${shot}-${tag}.png`,
             clip: { x: 0, y: 0, width, height: 190 },
           });
           return now;
         };
+        const pressed = (selector: string, value: "true" | "false") =>
+          page.waitForFunction(
+            ([target, wanted]) =>
+              document.querySelector(target!)?.getAttribute("aria-pressed") ===
+              wanted,
+            [selector, value],
+          );
         const down = await settle("down", "1-down");
+        assert.ok(down.hand, `${tag}: a session runs, the hand is in the bar`);
         await hand.click();
-        await page.waitForFunction(
-          () =>
-            document
-              .querySelector("button[aria-label='Raise hand']")
-              ?.getAttribute("aria-pressed") === "true",
-        );
+        await pressed(HAND, "true");
         const up = await settle("up", "2-up");
-        same(
-          `${tag} down -> up`,
-          {
-            hand: down.hand,
-            signOut: down.signOut,
-            chip: down.chip,
-            stage: down.stage,
-          },
-          {
-            hand: up.hand,
-            signOut: up.signOut,
-            chip: up.chip,
-            stage: up.stage,
-          },
-        );
+        same(`${tag} down -> up`, down, up);
         const raised = (await live()).signals.find(
           (x) => x.personId === B.id && x.kind === "hand",
         );
@@ -488,36 +555,284 @@ try {
           .filter({ hasText: "Your teacher saw it." })
           .waitFor({ timeout: 12_000 });
         const seen = await settle("seen", "3-seen");
-        same(
-          `${tag} up -> seen`,
-          {
-            hand: up.hand,
-            signOut: up.signOut,
-            chip: up.chip,
-            stage: up.stage,
-          },
-          {
-            hand: seen.hand,
-            signOut: seen.signOut,
-            chip: seen.chip,
-            stage: seen.stage,
-          },
-        );
+        same(`${tag} up -> seen`, up, seen);
+        await noteClear(page, `${tag} seen`);
+        await page.screenshot({ path: `${shots}/note-${tag}.png` });
         // The note and button take the world's color: role tokens.
-        const colors = await page.evaluate(() => {
-          const note = document.querySelector("[role='status']");
-          const button = document.querySelector(
-            "button[aria-label='Raise hand']",
-          );
+        const colors = await page.evaluate((selector) => {
+          const note = document.querySelector("[data-hand-note]");
+          const button = document.querySelector(selector);
           return {
             note: note ? getComputedStyle(note).backgroundColor : "",
             button: button ? getComputedStyle(button).backgroundColor : "",
           };
-        });
+        }, HAND);
         console.log(`  ${tag}: note ${colors.note}, button ${colors.button}`);
+        await page
+          .locator("[data-hand-note]")
+          .waitFor({ state: "detached", timeout: 10_000 });
+
+        // ---- the session stops: the hand leaves the bar, nothing moves ----
+        await setSession(false);
+        await page
+          .locator(`${BAR} [data-raise-hand-slot='rest']`)
+          .waitFor({ timeout: 15_000 });
+        const rest = await settle("rest", "4-rest");
+        assert.equal(rest.hand, null, `${tag}: no session, no hand in the bar`);
+        same(
+          `${tag} session stopped`,
+          { ...seen, hand: null },
+          { ...rest, hand: null },
+        );
+        assert.equal(
+          await page.getByRole("button", { name: "Raise hand" }).count(),
+          0,
+          `${tag}: the menu is closed and the bar has no hand`,
+        );
+
+        // ---- the menu: who is signed in, the hand, Sign out, once each ----
+        await page.locator(`${BAR} [data-navigation-trigger]`).click();
+        const menu = page.getByRole("dialog");
+        const row = menu.getByRole("button", { name: "Raise hand" });
+        await row.waitFor();
+        await page.waitForTimeout(500);
+        assert.equal(
+          await page.getByRole("button", { name: "Raise hand" }).count(),
+          1,
+          `${tag}: the hand is in one place`,
+        );
+        assert.equal(
+          await menu.getByText("Signed in as", { exact: true }).count(),
+          1,
+          `${tag}: the menu says who is signed in, once`,
+        );
+        assert.equal(
+          await menu.getByText(B.name, { exact: true }).count(),
+          1,
+          `${tag}: the menu names the student once`,
+        );
+        const out = menu.getByRole("button", { name: /^Sign out/ });
+        assert.equal(await out.count(), 1, `${tag}: one Sign out, the menu's`);
+        const menuParts = {
+          row: "[data-raise-hand='menu']",
+          name: "[data-navigation-sheet] [data-learner] strong",
+          signOut: "[data-navigation-sheet] [data-signed-in] button",
+          practice: "[data-navigation-sheet] nav a",
+        };
+        const menuDown = await boxes(page, menuParts);
+        assert.ok(
+          menuDown.row &&
+            menuDown.row.height >= 44 &&
+            menuDown.signOut &&
+            menuDown.signOut.height >= 44,
+          `${tag}: the menu's hand and Sign out are 44 px targets`,
+        );
+        assert.ok(
+          (await page.evaluate(
+            () => document.documentElement.scrollWidth - innerWidth,
+          )) <= 0,
+          `${tag}: the open menu overflows`,
+        );
+        await page.screenshot({ path: `${shots}/menu-1-rest-${tag}.png` });
+        await row.click();
+        await pressed("[data-raise-hand='menu']", "true");
+        await page.waitForTimeout(400);
+        same(
+          `${tag} menu hand down -> up`,
+          menuDown,
+          await boxes(page, menuParts),
+        );
+        await page.screenshot({ path: `${shots}/menu-2-up-${tag}.png` });
+        await page.waitForTimeout(1200);
+        assert.ok(
+          (await live()).signals.some(
+            (x) => x.personId === B.id && x.kind === "hand",
+          ),
+          `${tag}: the hand raised from the menu reached the teacher`,
+        );
+        await row.click();
+        await pressed("[data-raise-hand='menu']", "false");
+        await page.waitForTimeout(1200);
+        assert.ok(
+          !(await live()).signals.some(
+            (x) => x.personId === B.id && x.kind === "hand",
+          ),
+          `${tag}: lowered from the menu`,
+        );
+
+        // ---- a session starts under the open menu: its rows hold still ----
+        await setSession(true);
+        await page
+          .locator("[data-raise-hand='menu'][data-away]")
+          .waitFor({ state: "attached", timeout: 15_000 });
+        await page.waitForTimeout(400);
+        same(`${tag} session started, menu open`, menuDown, {
+          ...(await boxes(page, menuParts)),
+        });
+        assert.equal(
+          await menu.getByRole("button", { name: "Raise hand" }).count(),
+          0,
+          `${tag}: the menu's row gave way to the bar's hand`,
+        );
+        await page.keyboard.press("Escape");
+        await menu.waitFor({ state: "detached" });
+        await hand.waitFor();
+        const again = await settle("live again", "5-live-again");
+        same(`${tag} session started`, down, again);
+        assert.equal(
+          await page.getByRole("button", { name: "Raise hand" }).count(),
+          1,
+          `${tag}: the hand is in one place again`,
+        );
+        // Sign out from the menu ends the student's sign-in.
+        await page.locator(`${BAR} [data-navigation-trigger]`).click();
+        await menu.getByRole("button", { name: /^Sign out/ }).waitFor();
+        assert.equal(
+          await menu.getByRole("button", { name: "Raise hand" }).count(),
+          0,
+          `${tag}: a session runs, the menu has no hand`,
+        );
+        await menu.getByRole("button", { name: /^Sign out/ }).click();
+        await page.waitForURL("**/join");
+        assert.equal(
+          await page.evaluate(() => sessionStorage.getItem("amp.student")),
+          null,
+          `${tag}: signed out from the menu`,
+        );
         await context.close();
         checks++;
       }
+  // ---- with a calculator: nothing stands a gap away from the bar's end ----
+  for (const width of [390, 1280]) {
+    const tag = `calculator-${width}`;
+    await setLook(B.id, "calm");
+    await setSession(true);
+    const context = await browser.newContext({
+      viewport: { width, height: width < 700 ? 844 : 800 },
+    });
+    const page = await context.newPage();
+    await page.goto(`${web}/join/${code}/${B.id}`);
+    await pictureButtons(page).first().waitFor();
+    await pick(page);
+    await page.locator(".problem-stage").waitFor({ timeout: 30_000 });
+    // A problem type that allows the calculator at every grade.
+    await page.goto(
+      `${web}${new URL(page.url()).pathname}/types/purchase-change`,
+    );
+    const calculator = `${BAR} .calculator-toggle`;
+    await page.locator(calculator).waitFor({ timeout: 30_000 });
+    await page.locator(HAND).waitFor();
+    /** The bar's end (inside its padding), and where the two tools are. */
+    const ends = async () => {
+      await page.waitForTimeout(500);
+      return page.evaluate(
+        ([bar, hand, tool]) => {
+          const header = document.querySelector(bar!)!;
+          const [handBox, toolBox] = [hand!, tool!].map((selector) => {
+            const rect = document
+              .querySelector(selector)
+              ?.getBoundingClientRect();
+            return rect ? { left: rect.left, right: rect.right } : null;
+          });
+          return {
+            end:
+              header.getBoundingClientRect().right -
+              Number.parseFloat(getComputedStyle(header).paddingRight),
+            hand: handBox ?? null,
+            calculator: toolBox ?? null,
+          };
+        },
+        [BAR, HAND, calculator],
+      );
+    };
+    const near = (a: number, b: number) => Math.abs(a - b) <= 1;
+    /** The next problem of the same type, by Skip and Next. */
+    const nextProblem = async () => {
+      const before = await page
+        .locator(".problem-content")
+        .getAttribute("data-problem-id");
+      await page
+        .getByRole("button", { name: "Skip this problem and see its answer" })
+        .click();
+      await page.locator(".next-action").click();
+      await page.waitForFunction(
+        (id) =>
+          document
+            .querySelector(".problem-content")
+            ?.getAttribute("data-problem-id") !== id,
+        before,
+      );
+      await page.locator(calculator).waitFor();
+    };
+    // A session runs: the calculator, then the hand at the bar's end.
+    const live1 = await ends();
+    assert.ok(
+      live1.hand && live1.calculator && near(live1.hand.right, live1.end),
+      `${tag}: in a session the hand is at the bar's end ${JSON.stringify(live1)}`,
+    );
+    assert.ok(
+      live1.calculator.right <= live1.hand.left &&
+        live1.hand.left - live1.calculator.right <= 12,
+      `${tag}: the calculator sits beside the hand ${JSON.stringify(live1)}`,
+    );
+    await page.screenshot({
+      path: `${shots}/calculator-1-live-${tag}.png`,
+      clip: { x: 0, y: 0, width, height: 190 },
+    });
+    // It stops under this problem: the calculator stays where it is.
+    await setSession(false);
+    await page
+      .locator(`${BAR} [data-raise-hand-slot='rest']`)
+      .waitFor({ timeout: 15_000 });
+    const stopped = await ends();
+    assert.equal(stopped.hand, null, `${tag}: no session, no hand in the bar`);
+    assert.deepEqual(
+      stopped.calculator,
+      live1.calculator,
+      `${tag}: the calculator moved as the session stopped`,
+    );
+    // The next problem: the calculator has the bar's end.
+    await nextProblem();
+    const rest = await ends();
+    assert.ok(
+      rest.calculator && near(rest.calculator.right, rest.end),
+      `${tag}: with no session the calculator is at the bar's end ${JSON.stringify(rest)}`,
+    );
+    await page.screenshot({
+      path: `${shots}/calculator-2-rest-${tag}.png`,
+      clip: { x: 0, y: 0, width, height: 190 },
+    });
+    // A session starts under this problem: the hand shows in its kept
+    // place, and the calculator stays where it is.
+    await setSession(true);
+    await page.locator(HAND).waitFor({ timeout: 15_000 });
+    const started = await ends();
+    assert.deepEqual(
+      started.calculator,
+      rest.calculator,
+      `${tag}: the calculator moved as the session started`,
+    );
+    assert.ok(
+      started.hand &&
+        started.hand.right <= started.calculator!.left &&
+        started.calculator!.left - started.hand.right <= 12,
+      `${tag}: the hand shows beside the calculator ${JSON.stringify(started)}`,
+    );
+    await page.screenshot({
+      path: `${shots}/calculator-3-started-${tag}.png`,
+      clip: { x: 0, y: 0, width, height: 190 },
+    });
+    // The next problem: the hand has the bar's end again.
+    await nextProblem();
+    const live2 = await ends();
+    assert.deepEqual(
+      live2,
+      live1,
+      `${tag}: a session's next problem has the hand at the bar's end`,
+    );
+    await context.close();
+    checks++;
+  }
 } finally {
   await browser.close();
   await pool.end();
