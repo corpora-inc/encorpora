@@ -19,7 +19,8 @@ const output = arg("shots") || "artifacts/in-app-auth";
 await mkdir(output, { recursive: true });
 const vite = await createServer({
   logLevel: "error",
-  cacheDir: "node_modules/.vite-in-app-handoff",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-in-app-handoff",
   plugins: [
     {
       name: "local-api-only",
