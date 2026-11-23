@@ -371,6 +371,24 @@ async function colorful() {
     slowest < LONG_TASK,
     `the celebration's own work stays under a long task (${slowest} ms)`,
   );
+  // What the page did comes before how fast: on a machine busy with other
+  // work a frame can run a few ms over the long-task budget below, and that
+  // must not hide whether anything moved or a moment went missing.
+  const shift = bold.probe.shifts.reduce((sum, entry) => sum + entry.value, 0);
+  console.log(`Layout shift in Colorful: ${shift}`, bold.probe.shifts);
+  assert.equal(shift, 0, "Colorful moves nothing");
+  for (const moment of [
+    "burst:right",
+    "flyer:right",
+    "chip:tick",
+    "chipSparks:streak-3",
+    "chipSparks:streak-5",
+    "chipSparks:points-10",
+    "stamp:earned",
+    "confetti:strong",
+  ])
+    assert.ok(bold.played.has(moment), `${moment} played`);
+  console.log("Moments seen:", [...bold.played].sort().join(", "));
   const inTails = bold.probe.longTasks.filter((task) =>
     bold.windows.some(
       ([from, to]) =>
@@ -393,21 +411,6 @@ async function colorful() {
     inTurns,
   );
   assert.equal(inTurns.length, 0, "turning the world is no long task");
-  const shift = bold.probe.shifts.reduce((sum, entry) => sum + entry.value, 0);
-  console.log(`Layout shift in Colorful: ${shift}`, bold.probe.shifts);
-  assert.equal(shift, 0, "Colorful moves nothing");
-  for (const moment of [
-    "burst:right",
-    "flyer:right",
-    "chip:tick",
-    "chipSparks:streak-3",
-    "chipSparks:streak-5",
-    "chipSparks:points-10",
-    "stamp:earned",
-    "confetti:strong",
-  ])
-    assert.ok(bold.played.has(moment), `${moment} played`);
-  console.log("Moments seen:", [...bold.played].sort().join(", "));
 }
 
 /**
