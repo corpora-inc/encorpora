@@ -879,6 +879,8 @@ try {
     // ---- a layer keeps whose it is ---------------------------------------
     const width = WIDTHS.at(-1)!;
     for (const child of kids.filter((entry) => entry.canPractice)) {
+      // Which part is under way, for a failure's report.
+      let part = "a skill from their block";
       try {
         const other = who.children.find((entry) => entry.id !== child.id)!.id;
         const block = `[data-family-kids] > li[data-child="${child.id}"]`;
@@ -938,6 +940,7 @@ try {
             );
         };
         // A reload with the layer open: still theirs.
+        part = "a reload with the layer open";
         await link.click();
         await first.page.locator(practice).waitFor();
         await first.page.reload({ waitUntil: "load" });
@@ -951,6 +954,7 @@ try {
         await first.context.close();
 
         // Its shared link, in a fresh browser: theirs, and no trace is left.
+        part = "the layer’s shared link";
         assert.match(href, new RegExp(`[?&]for=${child.id}(&|$)`), href);
         const shared = await open(
           who,
@@ -993,6 +997,7 @@ try {
         await started(again.page, again.seen, "a skill’s shared link");
         await again.context.close();
 
+        part = "an edited address";
         // An edited address: a learner who isn't the family's has no control,
         // here or over the child's own page.
         const foreign = [
@@ -1039,6 +1044,7 @@ try {
             );
         }
 
+        part = "the family’s old class address";
         // The family's old class address, the child's record and a skill
         // open: their page, with their practice.
         if (who.place && child.person) {
@@ -1071,7 +1077,7 @@ try {
         }
       } catch (error) {
         fail(
-          `${slug} ${child.name}, a layer keeps whose it is: ${String(error).split("\n")[0]!.slice(0, 200)}`,
+          `${slug} ${child.name}, a layer keeps whose it is (${part}): ${String(error).split("\n")[0]!.slice(0, 200)}`,
         );
       }
     }
