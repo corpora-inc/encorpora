@@ -57,8 +57,9 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/school-sign-in";
 const ARTIFACTS = "artifacts/school-sign-in";
-const webPort = 4396,
-  apiPort = 4397,
+// `AMP_WEB_PORT` (the API takes the next one) keeps parallel local runs apart.
+const webPort = Number(process.env.AMP_WEB_PORT ?? 4396),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const TEACHER = "development-household";
 const MINE = ["Fox", "Boat", "Kite"];
@@ -113,7 +114,8 @@ await registerAnalyticsRoutes(api, { pool: db, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-sign-in",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-sign-in",
   server: {
     host: "127.0.0.1",
     port: webPort,
