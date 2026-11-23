@@ -158,6 +158,13 @@
   stroke: currentColor;
   stroke-width: 2;
 }
+/* The way to a child's skills by grade: the same quiet link, at the foot
+   of their block, on the column's edge. */
+.byGrade {
+  justify-self: start;
+  margin: calc(-1 * var(--space-3)) 0 0 calc(-1 * var(--space-2));
+  text-decoration: none;
+}
 .allAsked {
   color: var(--color-muted-text);
   font-size: var(--text-table-small);

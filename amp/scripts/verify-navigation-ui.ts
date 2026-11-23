@@ -680,7 +680,7 @@ try {
   await page.waitForURL((url) =>
     url.pathname.endsWith("/kids/avery/inventory"),
   );
-  await page.getByText("Not tried", { exact: true }).first().waitFor();
+  await page.locator('[data-strength="Not asked yet"]').first().waitFor();
   assert.equal(
     await page.locator('[data-strength="Strong"]').count(),
     0,

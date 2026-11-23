@@ -5,13 +5,27 @@ import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
-import { useDeferredValue, useMemo, useState, type CSSProperties } from "react";
+import {
+  useDeferredValue,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, Link } from "@tanstack/react-router";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
 import { useInventoryView } from "./inventory-view";
+import {
+  shortBand,
+  standingOf,
+  teachingOrder,
+  viewedBand,
+} from "./grade-index";
+import { SkillKey, STANDING, StandingSwatch } from "../learners/SkillKey";
 import {
   bandLabel,
   bands,
@@ -36,11 +50,18 @@ import {
   useSiteSearch,
 } from "../search/SiteSearch";
 
-/* Inventory: every skill the learner has met, how far each has grown and how
-   strong it is lately. The founder's reference for a dense screen: one flat
-   list across the page's width, filters whose counts follow the search and
-   the math area, and nothing that sits empty. A learner who hasn't answered
-   yet sees the whole curriculum they'll fill. */
+/* Inventory: every skill the learner has met, how far each has grown and
+   where they stand on it, in the dashboard's words (Strong, Earned, Tried,
+   Not asked yet; the key is on screen). The founder's reference for a dense
+   screen: one flat list across the page's width, filters whose counts
+   follow the search, the math area and the grade, and nothing that sits
+   empty. A learner who hasn't answered yet sees the whole curriculum
+   they'll fill.
+
+   By grade: with one grade chosen it lists every skill of that grade, in
+   teaching order under the five areas (grade-index.ts). A child's block on
+   a family's Today and their Overall open it on the child's own grade
+   (inventory-view.ts `showOwnGrade`); every other grade is one tap away. */
 
 type Filter = "tried" | "earned" | "strong" | "all";
 const filters: { id: Filter; label: string }[] = [
@@ -62,15 +83,6 @@ const readFilter = (value: unknown): Filter | null =>
       : null;
 const plural = (n: number, one: string, many = `${one}s`) =>
   `${n.toLocaleString()} ${n === 1 ? one : many}`;
-function strength(e?: Evidence) {
-  return !e?.attempts
-    ? "Not tried"
-    : e.status === "review-ready"
-      ? "Strong"
-      : e.independentCorrect
-        ? "Building"
-        : "Getting started";
-}
 const shows = (filter: Filter, e?: Evidence) =>
   filter === "all" ||
   (filter === "tried" && !!e?.attempts) ||
@@ -96,16 +108,23 @@ export function InventoryScreen() {
   const query = useDeferredValue(field.text.trim());
   // The math area, as Pathways names it (`?area=geometry`).
   const area = areaParam(inventoryView.area) ?? "";
+  // One grade, or every grade. Grade names show to grown-ups, and to a
+  // learner whose own screens show them: otherwise there is no grade here.
+  // (With one grade on view, a row doesn't repeat its name under its title.)
+  const band = shown ? viewedBand(inventoryView.grade, view.frontier) : null;
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
   );
   const allSkills = catalog.data?.skills ?? [];
-  // Counts follow the chosen math area and the search, so every number
-  // matches the list it opens.
-  const inArea = area
-    ? allSkills.filter((s) => areas[areaSlot(s)]?.id === area)
+  // Counts follow the chosen grade, math area and the search, so every
+  // number matches the list it opens.
+  const inGrade = band
+    ? allSkills.filter((s) => s.gradeBand === band)
     : allSkills;
+  const inArea = area
+    ? inGrade.filter((s) => areas[areaSlot(s)]?.id === area)
+    : inGrade;
   // The one search (features/search): its skills, best first, then any
   // other skill whose own words hold what was typed. Its lessons and math
   // words follow the list; every result opens its skill over the page.
@@ -145,11 +164,16 @@ export function InventoryScreen() {
   const count = (filter: Filter) =>
     matching.filter((s) => shows(filter, evidence.get(s.id))).length;
   const triedAnything = (view.evidence?.skills ?? []).some((e) => e.attempts);
-  // Before the first answer the collection is the whole curriculum.
+  // Before the first answer the collection is the whole curriculum; so is
+  // a grade's, until a collection is chosen: a grade opens on all of it.
   const filter =
-    readFilter(inventoryView.collection) ?? (triedAnything ? "tried" : "all");
-  const update = (values: { collection?: string; area?: string }) =>
-    inventoryView.set({ topic: field.carry(), ...values });
+    readFilter(inventoryView.collection) ??
+    (triedAnything && !band ? "tried" : "all");
+  const update = (values: {
+    collection?: string;
+    area?: string;
+    grade?: string;
+  }) => inventoryView.set({ topic: field.carry(), ...values });
   const earnedInArea = inArea.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
@@ -163,14 +187,17 @@ export function InventoryScreen() {
   const inCollection = matching.filter((s) =>
     shows(filter, evidence.get(s.id)),
   );
-  // A search lists best first; the whole collection, by grade then title.
+  // A search lists best first; one grade, in teaching order; the whole
+  // collection, by grade then title.
   const visible = needle
     ? inCollection
-    : inCollection.sort(
-        (a, b) =>
-          bands.indexOf(a.gradeBand) - bands.indexOf(b.gradeBand) ||
-          a.title.localeCompare(b.title),
-      );
+    : band
+      ? teachingOrder(inCollection, allSkills)
+      : inCollection.sort(
+          (a, b) =>
+            bands.indexOf(a.gradeBand) - bands.indexOf(b.gradeBand) ||
+            a.title.localeCompare(b.title),
+        );
   const busy = catalog.isPending || view.loading;
   const failure = catalog.error || view.error;
   const level =
@@ -186,6 +213,7 @@ export function InventoryScreen() {
     !child &&
     !triedAnything &&
     !inventoryView.collection &&
+    !inventoryView.grade &&
     !query &&
     !area;
   if (hero)
@@ -282,6 +310,12 @@ export function InventoryScreen() {
               ))}
             </div>
           )}
+          {shown && (
+            <GradeRow band={band} onChange={(grade) => update({ grade })} />
+          )}
+          <div className={styles.key}>
+            <SkillKey label="What the words mean" />
+          </div>
           {needle ? (
             <div
               className={styles.found}
@@ -301,7 +335,7 @@ export function InventoryScreen() {
                         key={skill.id}
                         skill={skill}
                         evidence={evidence.get(skill.id)}
-                        grade={shown}
+                        grade={shown && !band}
                         result
                       />
                     ))}
@@ -310,7 +344,9 @@ export function InventoryScreen() {
                   <Loading>Searching…</Loading>
                 ) : (
                   <p className={styles.lead}>
-                    No skills match. Try another search or math area.
+                    {band
+                      ? "No skills match. Try another search, math area or grade."
+                      : "No skills match. Try another search or math area."}
                   </p>
                 )}
               </section>
@@ -324,7 +360,9 @@ export function InventoryScreen() {
           ) : !visible.length ? (
             <p className={styles.lead}>
               {area
-                ? "No skills match. Try another math area."
+                ? band
+                  ? "No skills match. Try another math area or grade."
+                  : "No skills match. Try another math area."
                 : filter === "strong"
                   ? "No strong skills yet."
                   : "No skills here yet."}
@@ -345,7 +383,7 @@ export function InventoryScreen() {
                         key={skill.id}
                         skill={skill}
                         evidence={evidence.get(skill.id)}
-                        grade={shown}
+                        grade={shown && !band}
                       />
                     ))}
                   </ul>
@@ -361,7 +399,7 @@ export function InventoryScreen() {
                 twentieth of the skill’s bar. Both stay.
               </p>
               <p>
-                Strong skills go back to Building when they’re due for review.
+                Strong skills go back to Earned when they’re due for review.
                 Grade labels place a skill in the curriculum, not the learner.
               </p>
             </details>
@@ -407,8 +445,65 @@ function Stat({ value, label }: { value: number; label: string }) {
   );
 }
 
+/** One grade, or every grade: a row of all thirteen with "Every grade"
+ * first, each one tap. On a narrow screen it scrolls sideways, the chosen
+ * grade on view from the first frame. */
+function GradeRow({
+  band,
+  onChange,
+}: {
+  band: string | null;
+  onChange: (grade: string) => void;
+}) {
+  const row = useRef<HTMLDivElement>(null);
+  // Before paint, and only the row's own scroll: the page never moves.
+  useLayoutEffect(() => {
+    const strip = row.current;
+    const chosen = strip?.querySelector<HTMLElement>("[aria-pressed=true]");
+    if (!strip || !chosen) return;
+    const left = chosen.offsetLeft - strip.offsetLeft;
+    if (left < strip.scrollLeft)
+      strip.scrollLeft = Math.max(0, left - GRADE_PEEK);
+    else if (left + chosen.offsetWidth > strip.scrollLeft + strip.clientWidth)
+      strip.scrollLeft =
+        left + chosen.offsetWidth - strip.clientWidth + GRADE_PEEK;
+  }, [band]);
+  return (
+    <div
+      ref={row}
+      className={`${styles.filterRow} ${styles.gradeRow}`}
+      role="group"
+      aria-label="Grade"
+      data-grade-row=""
+    >
+      <button
+        type="button"
+        aria-pressed={band === null}
+        onClick={() => onChange("")}
+      >
+        Every grade
+      </button>
+      {bands.map((grade) => (
+        <button
+          key={grade}
+          type="button"
+          aria-pressed={band === grade}
+          aria-label={bandLabel(grade)}
+          data-grade={grade}
+          onClick={() => onChange(grade)}
+        >
+          {shortBand(grade)}
+        </button>
+      ))}
+    </div>
+  );
+}
+/** How much of the next grade shows beside the chosen one, so the row
+ * reads as one that scrolls. */
+const GRADE_PEEK = 40;
+
 /** One skill: its name, a bar that fills with independent successes in its
- * strand's colour, and how strong it is lately. */
+ * strand's colour, and where the learner stands on it. */
 function SkillRow({
   skill,
   evidence,
@@ -423,11 +518,13 @@ function SkillRow({
 }) {
   const score = illumination(evidence);
   const attempts = evidence?.attempts ?? 0;
-  const status = strength(evidence);
+  const standing = standingOf(evidence);
   return (
     <li
       className={styles.skill}
-      data-strength={status}
+      data-strength={STANDING[standing].term}
+      data-standing={standing}
+      data-skill={skill.id}
       style={
         {
           "--skill-hue": `var(--color-strand-${skill.strand}, var(--color-primary))`,
@@ -454,7 +551,10 @@ function SkillRow({
         <i style={{ width: `${score * 10}%` }} />
       </div>
       <div className={styles.strength}>
-        <strong>{status}</strong>
+        <span className={styles.standing}>
+          <StandingSwatch standing={standing} />
+          <strong data-standing-word="">{STANDING[standing].term}</strong>
+        </span>
         {attempts > 0 && <small>{plural(attempts, "attempt")}</small>}
       </div>
     </li>

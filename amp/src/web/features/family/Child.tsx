@@ -38,6 +38,9 @@ import {
 } from "../school/classes/ProgressRecord";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
+import layers from "../../nav/layers.module.css";
+import { showOwnGrade } from "../inventory/inventory-view";
+import { childPath } from "../spaces/identity";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet, SignInPictures } from "./Devices";
 import { ChildConsentPanel, ChildDeletePanel } from "../privacy/ChildPanels";
@@ -115,7 +118,17 @@ export function ChildScreen() {
       title={child?.name}
       description={child?.birthYear ? `Born ${child.birthYear}` : undefined}
       loading={!!child?.capabilities.readProgress && progress.isPending}
-      area={record ? areaSourceOf(record) : undefined}
+      area={
+        record
+          ? {
+              ...areaSourceOf(record),
+              // Under their whole level: every skill of their own grade.
+              overallMore: child && (
+                <ChildSkillsByGrade family={family} child={child} />
+              ),
+            }
+          : undefined
+      }
     >
       {data && child && (
         <div className={styles.page} data-child-page={child.id}>
@@ -243,6 +256,37 @@ export function ChildScreen() {
       )}
       <Toast message={error} onDismiss={clearError} />
     </FamilyFrame>
+  );
+}
+
+/** In a child's Overall: the way to every skill of their own grade, with
+ * where they stand on each (their Inventory, opened by grade). */
+function ChildSkillsByGrade({
+  family,
+  child,
+}: {
+  family: string;
+  child: FamilyChild;
+}) {
+  const path = childPath(family, child.id, "inventory");
+  return (
+    <section data-skills-by-grade={child.id}>
+      <h3 className={layers.heading}>By grade</h3>
+      <ul className={layers.rows}>
+        <li>
+          <Link
+            to="/$"
+            params={{ _splat: path.slice(1) }}
+            className={layers.row}
+            // The address names the screen; its view opens on their grade.
+            onClick={() => showOwnGrade(path)}
+          >
+            <span>Every skill of {child.name}’s grade</span>
+            <span className={layers.rowAction}>Open</span>
+          </Link>
+        </li>
+      </ul>
+    </section>
   );
 }
 

@@ -161,6 +161,21 @@
   outline: 2px solid var(--color-focus-ring);
   outline-offset: -2px;
 }
+/* The grades: the same row, each grade its own short name. It is always as
+   wide as the column and scrolls inside it when thirteen don't fit. */
+.gradeRow {
+  display: flex;
+}
+.gradeRow button {
+  justify-content: center;
+  min-width: 44px;
+  padding: 0 var(--space-3);
+}
+/* What Strong, Earned, Tried and Not asked yet mean, once, above the rows
+   (features/learners/SkillKey). */
+.key {
+  margin: calc(-1 * var(--space-2)) 0 var(--space-5);
+}
 .filterRow button span {
   min-width: 3ch;
   color: var(--color-subtle-text);
@@ -268,31 +283,38 @@
   background: var(--skill-hue);
   opacity: 0.72;
 }
-.skill[data-strength="Strong"] .meter i {
+.skill[data-standing="strong"] .meter i {
   opacity: 1;
 }
-.skill[data-strength="Not tried"] .meter {
+.skill[data-standing="notAsked"] .meter {
   background: var(--color-surface-sunken);
 }
+/* Where the learner stands: the key's swatch and word, then the attempts,
+   in a column of one width, so the words line up down the page. */
 .strength {
-  text-align: end;
+  display: grid;
+  justify-items: start;
+}
+.standing {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
 }
 .strength strong {
-  display: block;
   font-size: var(--text-label);
   font-weight: 600;
 }
-.skill[data-strength="Not tried"] .strength strong,
-.skill[data-strength="Getting started"] .strength strong {
+.skill[data-standing="notAsked"] .strength strong,
+.skill[data-standing="tried"] .strength strong {
   color: var(--color-muted-text);
   font-weight: 500;
-}
-.skill[data-strength="Strong"] .strength strong {
-  color: var(--color-on-success);
 }
 .strength small {
   display: block;
   margin-top: 2px;
+  /* Under the word, clear of the swatch. */
+  padding-inline-start: calc(14px + var(--space-2));
   color: var(--color-muted-text);
   font-size: var(--text-small);
   font-variant-numeric: var(--numeric);
@@ -372,8 +394,24 @@
     align-items: baseline;
     gap: var(--space-2);
   }
+  /* One width for every row, so the swatches line up and a standing that
+     changes never resizes the bar beside it. */
+  .strength {
+    width: 10.75rem;
+  }
   .strength small {
     margin: 0;
+    padding: 0;
+  }
+  .gradeRow {
+    margin: calc(-1 * var(--space-1)) 0 var(--space-4);
+  }
+  .gradeRow button {
+    flex: none;
+    padding: 0 var(--space-3);
+  }
+  .key {
+    margin: calc(-1 * var(--space-1)) 0 var(--space-4);
   }
   .strength small::before {
     content: "· ";

@@ -1,4 +1,4 @@
-import { useRouterState } from "@tanstack/react-router";
+import { Link, useParams, useRouterState } from "@tanstack/react-router";
 import type { CSSProperties, ReactNode } from "react";
 import { practiceMinutes } from "../../lib/practice-minutes";
 import { EntityLink } from "../../nav/links";
@@ -12,6 +12,8 @@ import { FocusMix } from "../learners/FocusMix";
 import { WeekDots } from "../learners/WeekSummary";
 import { WeekSummary } from "../learners/WeekSummary";
 import { lastPracticed, percentRight } from "../learners/week-words";
+import { showOwnGrade } from "../inventory/inventory-view";
+import { childPath } from "../spaces/identity";
 import { CopyButton } from "../school/parts";
 import type { PracticeFilter } from "../practice/curriculum-filter";
 import type {
@@ -161,7 +163,33 @@ export function ChildDashboard({
         action={action}
         caption={`Levels from ${plural(board.level.answered, "answer")}. AMP started from ${child.name}’s birth year.`}
       />
+      <SkillsByGrade child={child} />
     </div>
+  );
+}
+
+/** One tap from a child's block to every skill of their own grade, with
+ * where they stand on each: their Inventory, opened by grade
+ * (features/inventory). */
+function SkillsByGrade({ child }: { child: FamilyChild }) {
+  const { family = "" } = useParams({ strict: false }) as { family?: string };
+  if (!family || !child.capabilities.readProgress) return null;
+  const path = childPath(family, child.id, "inventory");
+  return (
+    <Link
+      to="/$"
+      params={{ _splat: path.slice(1) }}
+      className={`${styles.notAsked} ${styles.byGrade}`}
+      aria-label={`${child.name}’s skills by grade`}
+      data-skills-by-grade={child.id}
+      // The address names the screen; its view opens on their own grade.
+      onClick={() => showOwnGrade(path)}
+    >
+      Skills by grade
+      <svg viewBox="0 0 12 12" aria-hidden="true">
+        <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
+      </svg>
+    </Link>
   );
 }
 
@@ -235,8 +263,8 @@ export function NotAskedSheet({
           </ul>
           {checked.notAsked > checked.nearestNotAsked.length && (
             <p className={styles.sheetNote}>
-              The nearest {checked.nearestNotAsked.length} of{" "}
-              {checked.notAsked}.
+              The nearest {checked.nearestNotAsked.length} of {checked.notAsked}
+              .
             </p>
           )}
         </div>
@@ -342,7 +370,12 @@ export function GetIn({
           </p>
           <p className={styles.link} data-join-link="">
             <span translate="no">{text}</span>
-            <CopyButton text={link} label="Copy" copied="Copied" shareUrl={link} />
+            <CopyButton
+              text={link}
+              label="Copy"
+              copied="Copied"
+              shareUrl={link}
+            />
           </p>
           <p className={styles.code}>
             Family code{" "}
@@ -380,9 +413,16 @@ export function FamilyHero({
       data-family-hero=""
     >
       <span className={styles.heroScale} aria-hidden="true">
-        <LevelBar estimate={null} scale={{ lo: 0, hi: 12 }} size="large" moving />
+        <LevelBar
+          estimate={null}
+          scale={{ lo: 0, hi: 12 }}
+          size="large"
+          moving
+        />
       </span>
-      <h2 id="family-start">{single ? `Where ${single} starts` : "Where your kids start"}</h2>
+      <h2 id="family-start">
+        {single ? `Where ${single} starts` : "Where your kids start"}
+      </h2>
       <p className={styles.heroLead}>
         {single
           ? `AMP finds ${single}’s level in a few minutes of practice.`

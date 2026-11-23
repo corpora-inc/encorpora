@@ -1,10 +1,13 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { layerScope } from "../../nav/layer-store";
 import { useLayerScope } from "../../nav/links";
+import { OWN_GRADE } from "./grade-index";
 
 /**
  * How an inventory is being looked at: its search's text, its collection
- * (all, tried, earned, strong) and its math area. One owner per screen,
+ * (all, tried, earned, strong), its math area and its grade. One owner per
+ * screen,
  * keyed as the screen's layers are (nav/layer-store.ts `layerScope`: a
  * family child's address, else the account and the address), so Back, a
  * refresh and a return from practice find it as it was. The address names
@@ -17,8 +20,12 @@ export type InventoryView = {
   collection: string;
   /** A math area's id, as Pathways names it; "" for all. */
   area: string;
+  /** One grade or course (a band of features/pathways/model.ts), or the
+   * learner's own (`OWN_GRADE`); "" for every grade. Absent in a view kept
+   * from before it had one. */
+  grade?: string;
 };
-const NONE: InventoryView = { topic: "", collection: "", area: "" };
+const NONE: InventoryView = { topic: "", collection: "", area: "", grade: "" };
 
 type InventoryViewState = {
   views: Record<string, InventoryView>;
@@ -61,7 +68,8 @@ export const useInventoryViewStore = create<InventoryViewState>()(
         set((state) => {
           const before = state.views[scope];
           const next = { ...NONE, ...before, ...patch };
-          const empty = !next.topic && !next.collection && !next.area;
+          const empty =
+            !next.topic && !next.collection && !next.area && !next.grade;
           const kept = Object.entries(state.views)
             .filter(([key]) => key !== scope)
             .slice(-(SCOPES - 1));
@@ -88,4 +96,18 @@ export function useInventoryView() {
     set: (patch: Partial<InventoryView>) =>
       useInventoryViewStore.getState().set(scope, patch),
   };
+}
+
+/**
+ * A family's child's inventory, opened on their own grade with every skill
+ * of it: what a link to it sets as it is followed (a child's block on
+ * Today, their Overall). The address names the screen; this is its view.
+ */
+export function showOwnGrade(inventoryPath: string) {
+  useInventoryViewStore.getState().set(layerScope(inventoryPath, undefined), {
+    topic: "",
+    collection: "",
+    area: "",
+    grade: OWN_GRADE,
+  });
 }
