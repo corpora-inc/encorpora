@@ -15,6 +15,8 @@ import type { ChipMoment, Moment } from "./tier";
 /** The chip's one size per screen class (Celebration.module.css): a phone
  * gets the compact chip. It never changes size with its number. */
 const PHONE = 420;
+/** Below this the topic has a line of its own under the bar (theme.css). */
+const TOPIC_LINE = 640;
 const chipWidth = () => (window.innerWidth < PHONE ? 92 : 104);
 const CHIP_HEIGHT = 36;
 /** How long each moment runs, in ms (the CSS durations, plus any delay). */
@@ -261,10 +263,12 @@ export function createStage(host: HTMLElement = document.body) {
    * tools and actions, whatever they are, including slots they keep
    * hidden). Where the row is too full (a phone with a name in the bar),
    * it takes the wordmark's place beside the logo's wave, which stays the
-   * menu's button under it. A student's phone bar (their name, sign-out,
-   * the calculator, a raised hand) never has room: there the chip sits at
-   * the end of the topic's line, which keeps that room for it (skin.css),
-   * the same on every problem.
+   * menu's button under it. A student's bar (their name, sign-out, the
+   * calculator, a raised hand) has no room while the topic has its own line
+   * under it: there the chip sits at the end of that line, which keeps the
+   * room for it (skin.css), the same on every problem. Where the topic is
+   * in the bar, it keeps that room at its own end (skin.css), so the row
+   * always has a stretch for the chip and it never falls onto the problem.
    */
   function place() {
     placed = true;
@@ -278,7 +282,7 @@ export function createStage(host: HTMLElement = document.body) {
     const topicBox = topic?.getBoundingClientRect();
     if (
       bar?.getAttribute("data-space") === "student" &&
-      width < PHONE &&
+      width < TOPIC_LINE &&
       topicBox?.height
     ) {
       left = topicBox.right - CHIP_WIDTH;

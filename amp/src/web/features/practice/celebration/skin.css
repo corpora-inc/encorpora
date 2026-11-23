@@ -187,13 +187,34 @@
   }
 }
 
-/* A student's phone: the points chip sits at the end of the topic's line
-   (celebration/stage.ts), which keeps the room for it on every problem. */
+/* A student's topic line (under the bar, below 640 px): the points chip
+   sits at its end (celebration/stage.ts), which keeps the room for it on
+   every problem. The chip is 92 px on a phone and 104 px from 420 px. */
+@media (max-width: 639px) {
+  :root[data-look="bold"]:has([data-app-bar][data-space="student"])
+    .practice-surface
+    > .practice-topic {
+    padding-inline-end: 112px;
+  }
+}
 @media (max-width: 419px) {
   :root[data-look="bold"]:has([data-app-bar][data-space="student"])
     .practice-surface
     > .practice-topic {
     padding-inline-end: 100px;
+  }
+}
+/* The topic in the bar (from 640 px): it keeps the chip's room at its own
+   end, whatever the bar holds beside it (a name, sign-out, tools shown or
+   kept hidden), and shortens its own text first. Without it a full bar
+   left the chip nowhere but over the problem. 104 px and a 12 px gap each
+   side (celebration/stage.ts `need`). */
+@media (min-width: 640px) {
+  :root[data-look="bold"]
+    [data-app-bar]
+    .workspace-toolbar[data-in-frame]
+    .workspace-topic {
+    padding-inline-end: 128px;
   }
 }
 
