@@ -7,7 +7,8 @@ import type {
   PracticeSettings,
   PracticeState,
 } from "../learning/practice-settings";
-import { resolveLook } from "../learning/look";
+import { resolveLook, startingLook } from "../learning/look";
+import { completedGrade } from "../learning/starting-point";
 import { pointsOf } from "../learning/points";
 import { strandEstimate, targetGrade } from "../learning/frontier";
 import {
@@ -19,10 +20,15 @@ import { templateGrade } from "./mixed-practice";
 
 /** The look that applies now, whether it is locked and by whom. */
 async function lookOf(tx: LearnerTransaction, settings: PracticeSettings) {
+  // Their grade by age, as everywhere (K is 0); an adult has none.
+  const birthYear = (await tx.isAdult()) ? null : await tx.birthYear();
   return resolveLook({
     own: settings.look,
     ownLocked: settings.lookAdultLock,
     classes: await tx.classLooks(),
+    starting: startingLook(
+      birthYear === null ? null : Math.max(0, completedGrade(birthYear) + 1),
+    ),
   });
 }
 
