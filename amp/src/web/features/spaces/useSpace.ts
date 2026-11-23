@@ -15,6 +15,7 @@ import {
   pilotOptions,
 } from "../school/core-api";
 import { familyOptions, familyPlacesOptions } from "../family/api";
+import { lookFirst } from "../practice/look-ahead";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -113,6 +114,33 @@ const failedLookup = (query: Answer<unknown>) =>
   !refused(query.error) &&
   !replaced(query.error);
 
+/** A learner's own screen (a signed-in student's, any of them; anyone's
+ * practice, `/practice/<learner>`) paints in their look from its first
+ * frame: the look is read with the place (features/practice/look-ahead.ts
+ * `lookFirst`). A student's learner comes with their account. */
+async function lookAhead(
+  session: AuthSession,
+  student: boolean,
+  pathname: string,
+) {
+  let learnerId = /^\/practice\/([^/]+)/.exec(pathname)?.[1];
+  if (student) {
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch((error: unknown) => {
+        console.warn("A student's look waits for their account", error);
+        return undefined;
+      });
+    learnerId = me?.signedIn ? me.learners[0]?.id : undefined;
+  } else if (learnerId) learnerId = decodeURIComponent(learnerId);
+  if (!learnerId) return;
+  await lookFirst({
+    identity: session.accountId,
+    learnerId,
+    token: session.token,
+  });
+}
+
 /**
  * Everything `useSpace` reads for a screen at `pathname`, in the one cache,
  * before the screen renders: the account and the place the address names
@@ -146,6 +174,7 @@ export async function loadSpaceFrame(
   const familyId = frame?.kind === "family" ? frame.family : "";
   await Promise.all([
     ahead(meOptions(session)),
+    lookAhead(session, student, pathname),
     classId ? ahead(familyPlacesOptions(session)) : null,
     familyId ? ahead(familyOptions(session, familyId)) : null,
     classId ? ahead(classYearOptions(session, classId)) : null,

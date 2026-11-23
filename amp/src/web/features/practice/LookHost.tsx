@@ -1,10 +1,17 @@
-import { lazy, Suspense, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
+import { readyLazy } from "../../lib/ready-lazy";
 import { dressAhead } from "./look-ahead";
 import type { PracticeScope } from "./practice-settings";
 
-const Screen = lazy(() =>
-  import("./LookHostScreen").then((m) => ({ default: m.LookHostScreen })),
+// In hand before a student's first screen (look-first.ts fetches it ahead),
+// so the look is held from the first commit; otherwise it renders when it
+// arrives. Nothing is painted in its place either way.
+const screen = readyLazy<{ scope: PracticeScope }>(
+  async () => (await import("./LookHostScreen")).LookHostScreen,
+  "A student's look",
 );
+export const preloadLookHostScreen = screen.preload;
+const Screen = screen.Component;
 /** A student's own screens wear the look they chose (the app frame renders
  * this for a student only). Its code, with the practice-state read, the look
  * rules and Colorful's dress, loads with a student's screens and never for an
@@ -18,9 +25,5 @@ export function LookHost({ scope }: { scope: PracticeScope }) {
   // else.
   const learner = scope.learnerId;
   useLayoutEffect(() => dressAhead(learner), [learner]);
-  return (
-    <Suspense fallback={null}>
-      <Screen scope={scope} />
-    </Suspense>
-  );
+  return <Screen scope={scope} />;
 }
