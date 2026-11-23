@@ -42,14 +42,14 @@ export function GradeIndex({
   return (
     <div data-grade-index={band}>
       <GradeRow band={band} onChange={onBand} />
-      <div className={styles.key}>
-        <SkillKey label="What the words mean" />
-      </div>
       {/* Paper only: what the sheet is. */}
       <p className={styles.printHead}>
         {who ? `${who} · ` : ""}
         {bandLabel(band)} skills
       </p>
+      <div className={styles.key}>
+        <SkillKey label="What the words mean" />
+      </div>
       {sections.length ? (
         sections.map((section) => (
           <section

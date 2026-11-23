@@ -41,7 +41,6 @@ import {
   shortBand,
   standingOf,
 } from "../src/web/features/inventory/grade-index";
-import { STANDING } from "../src/web/features/learners/SkillKey";
 import {
   bandLabel,
   bands,
@@ -50,6 +49,13 @@ import {
   progressSchema,
 } from "../src/web/features/pathways/model";
 
+/** The dashboard's words for a standing (features/learners/SkillKey). */
+const WORDS = {
+  strong: "Strong",
+  earned: "Earned",
+  tried: "Tried",
+  notAsked: "Not asked yet",
+} as const;
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
   const at = process.argv.indexOf(`--${name}`);
@@ -187,7 +193,7 @@ try {
       for (const [index, row] of shown.entries()) {
         const standing = standingOf(evidence.get(row.id));
         assert.equal(row.standing, standing, at(`${what}: ${row.id}`));
-        assert.equal(row.word, STANDING[standing].term, at(row.id));
+        assert.equal(row.word, WORDS[standing], at(row.id));
         assert.ok(row.swatch, at(`${row.id} has its swatch`));
         assert.deepEqual(
           row.types,
@@ -422,8 +428,10 @@ try {
       at("Overall's row is a 44 px target"),
     );
     await fits("Overall");
-    if (SHOTS && width === WIDTHS.at(-1))
+    if (SHOTS && width === WIDTHS.at(-1)) {
+      await page.waitForTimeout(700);
       await page.screenshot({ path: `${OUT}/overall-${width}-light.png` });
+    }
     await byGrade.click();
     await page.waitForURL((url) => url.pathname === inventory);
     await showsGrade(own, "from Overall");
@@ -459,8 +467,11 @@ try {
       new RegExp(`with ${CHILD}$`),
       at("Practice names the child"),
     );
-    if (SHOTS)
+    if (SHOTS) {
+      // (The layer has slid in.)
+      await page.waitForTimeout(700);
       await page.screenshot({ path: `${OUT}/skill-${width}-light.png` });
+    }
     const handed = page.waitForRequest(
       (request) =>
         request.method() === "POST" &&

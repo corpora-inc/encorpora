@@ -367,15 +367,14 @@
   color: var(--color-muted-text);
   font-weight: 500;
 }
+/* Read across, then down: as many columns as fit. */
 .types {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  column-gap: var(--space-5);
   list-style: none;
   margin: 0;
   padding: 0;
-  columns: 3 15rem;
-  column-gap: var(--space-5);
-}
-.types li {
-  break-inside: avoid;
 }
 .type {
   display: flex;
@@ -461,7 +460,7 @@
   }
   .types {
     grid-column: 1 / -1;
-    columns: auto;
+    grid-template-columns: minmax(0, 1fr);
     padding-bottom: var(--space-2);
   }
   .types:not([data-open]) {
@@ -541,8 +540,8 @@
   }
   .types,
   .types:not([data-open]) {
-    display: block;
-    columns: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 0 0 0 var(--space-5);
   }
   .type {
