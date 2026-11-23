@@ -11,11 +11,12 @@
  *      family's, Stop opens the session's report, it names no child as
  *      itself, every request it sends is the parent's, and a reload keeps it.
  *   4. "Practice with Wren" in the parent's tab is Wren alone; Back hands the
- *      tab back to the parent. Theo's tab is still Theo's, across a reload.
+ *      tab back to the parent, and so does 30 idle minutes. Theo's tab is
+ *      still Theo's, across a reload.
  *   5. In a third tab Wren signs in through the same link: that tab is
  *      Wren's, Theo's stays Theo's, the parent's stays the parent's.
- *   6. The browser, opened again later (a new context from what it stored),
- *      is still signed in as the child who signed in last.
+ *   6. A new tab, and the browser opened again later (a new context from
+ *      what it stored), are signed in as the child who signed in last.
  *   7. Theo signs out in his tab: it is nobody's; the others are unmoved.
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-tab-identity-ui.ts [--port 4516]
@@ -223,8 +224,17 @@ const shown = (page: Page) =>
 const named = (text: string, kid: Kid) => new RegExp(`\\b${kid}\\b`).test(text);
 
 /** The tab is the parent's: on a screen of the family's, naming no child as
- * the person signed in, and everything it sent since `from` is the parent's. */
-async function isTheParents(page: Page, label: string, from: number) {
+ * the person signed in, and everything it sent since `from` is the parent's.
+ * A screen that loaded (a reload, an action) has asked the server something:
+ * `asked` holds it to that; a move inside the app may have had all it shows. */
+async function isTheParents(
+  page: Page,
+  label: string,
+  from: number,
+  { asked = true }: { asked?: boolean } = {},
+) {
+  // What the screen asks for has gone out.
+  await page.waitForLoadState("networkidle").catch(() => undefined);
   const tab = await shown(page);
   check(
     `${label}: on the family's screen`,
@@ -232,10 +242,12 @@ async function isTheParents(page: Page, label: string, from: number) {
     tab.path,
   );
   check(`${label}: no student's mark`, !tab.student && !tab.names.length, tab);
+  const who = await senders(page, from);
   check(
     `${label}: every request is the parent's`,
-    (await senders(page, from)).join() === "the parent",
-    await senders(page, from),
+    who.every((sender) => sender === "the parent") &&
+      (who.length === 1 || !asked),
+    who,
   );
 }
 /** The tab is that child's: practicing, named as nobody else, and everything
@@ -462,6 +474,7 @@ async function journey(width: number) {
       parent,
       `${label} the parent's tab on Settings`,
       parentFrom,
+      { asked: false },
     );
     await tap(
       parent
@@ -479,6 +492,7 @@ async function journey(width: number) {
       parent,
       `${label} the parent's tab back on Today`,
       parentFrom,
+      { asked: false },
     );
 
     // 4. The parent hands this tab to Wren and takes it back.
@@ -528,6 +542,42 @@ async function journey(width: number) {
         parentFrom,
       );
     }
+    // Handed over again and left alone for 30 minutes: the tab signs the
+    // child out by itself (a shared sign-in's idle rule) and is the parent's
+    // again, never the child this browser remembers.
+    if (
+      await tap(
+        parent.getByRole("button", { name: "Practice with Wren" }),
+        `${label} Practice with Wren, again`,
+      )
+    ) {
+      await practicing(parent);
+      await parent.evaluate(() =>
+        sessionStorage.setItem(
+          "amp.student.active",
+          String(Date.now() - 31 * 60_000),
+        ),
+      );
+      // The tab's own timer notices, on real time (every 15 s).
+      await parent
+        .waitForURL(today, { timeout: 25_000 })
+        .catch(() => undefined);
+      check(
+        `${label} an idle hand-over ends by itself, back on Today`,
+        parent.url() === today &&
+          (await parent.evaluate(() => !sessionStorage.getItem("amp.student"))),
+        parent.url(),
+      );
+      await todayTitle(parent);
+      parentFrom = mark(parent);
+      await parent.reload();
+      await todayTitle(parent);
+      await isTheParents(
+        parent,
+        `${label} the parent's tab after the idle sign-out`,
+        parentFrom,
+      );
+    }
     // Theo's tab never heard of it.
     theoFrom = mark(theo);
     await theo.bringToFront();
@@ -564,7 +614,12 @@ async function journey(width: number) {
       parentFrom,
     );
 
-    // 6. The browser opened again later: still the child who signed in last.
+    // 6. A new tab of this browser starts as the child it remembers (the
+    //    one who signed in last), and so does the browser opened again later.
+    const fresh = await openTab(context);
+    await fresh.goto(`${origin}/practice`);
+    await isTheChilds(fresh, "Wren", `${label} a new tab`, 0);
+    await fresh.close();
     const later = await browser.newContext({
       viewport: { width, height: width < 720 ? 844 : 900 },
       storageState: await context.storageState(),
