@@ -1,6 +1,14 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { closeDepth, isEntity, MAX_LAYERS, type Entity } from "./entities";
+import {
+  closeDepth,
+  FOR_KEY,
+  isEntity,
+  isLearnerId,
+  MAX_LAYERS,
+  readsKey,
+  type Entity,
+} from "./entities";
 
 /**
  * The layers open over each screen (docs/design/ia.md, "Navigation"): the
@@ -23,7 +31,21 @@ import { closeDepth, isEntity, MAX_LAYERS, type Entity } from "./entities";
 export type Layer = Entity & {
   /** An answer's replay narrowed to one skill (Previous and Next). */
   skill?: string;
+  /** The learner a skill, a lesson or an area was opened for (a child's
+   * block on a family's Today): the practice it offers is theirs. What is
+   * opened over it is for them too (`pushed`). */
+  for?: string;
 };
+
+/** Whether a layer of this kind says whose it was opened for. */
+const namesLearner = (layer: Entity) => readsKey(layer.kind, FOR_KEY);
+/** `layer`, for the learner the layer it goes over (or replaces) was opened
+ * for, unless it names its own: a lesson over a child's skill, a connected
+ * skill, the next area are that child's too. */
+const carried = (from: Layer | undefined, layer: Layer): Layer =>
+  !layer.for && from?.for && namesLearner(layer)
+    ? { ...layer, for: from.for }
+    : layer;
 
 /**
  * The skill your own Pathways names in its address (`/pathways/<skill>`):
@@ -102,7 +124,15 @@ const clean = (stack: Layer[]) =>
   stack
     .filter(isEntity)
     .slice(0, MAX_LAYERS)
-    .map(({ kind, id, skill }) => (skill ? { kind, id, skill } : { kind, id }));
+    .map(({ kind, id, skill, for: learner }) => ({
+      kind,
+      id,
+      ...(skill ? { skill } : {}),
+      // Only a well-formed learner id, on a layer that reads one.
+      ...(isLearnerId(learner) && namesLearner({ kind, id })
+        ? { for: learner }
+        : {}),
+    }));
 
 export const useLayerStore = create<LayerState>()(
   persist(
@@ -155,9 +185,17 @@ const same = (a: Entity, b: Entity) => a.kind === b.kind && a.id === b.id;
 export function pushed(stack: Layer[], layer: Layer): Layer[] {
   const at = stack.findIndex((entry) => same(entry, layer));
   if (at >= 0) return stack.slice(0, at + 1);
-  const next = [...stack, layer];
-  return next.length > MAX_LAYERS ? [...stack.slice(0, -1), layer] : next;
+  // Opened over a child's layer, it is that child's too.
+  const over = carried(stack.at(-1), layer);
+  const next = [...stack, over];
+  return next.length > MAX_LAYERS ? [...stack.slice(0, -1), over] : next;
 }
+/** The stack with its top layer swapped (Previous and Next, one area for
+ * another): the new one is for whoever the old one was. */
+export const swapped = (stack: Layer[], layer: Layer): Layer[] => [
+  ...stack.slice(0, -1),
+  carried(stack.at(-1), layer),
+];
 
 /** What a person can do with a screen's stack (nav/links.tsx `useLayers`). */
 export function layerActions(scope: string) {
@@ -185,7 +223,7 @@ export function layerActions(scope: string) {
       set(stack.slice(0, closeDepth(stack, index)), -1);
     },
     /** Swaps the top layer (Previous and Next through answers). */
-    replaceTop: (layer: Layer) => set([...get().slice(0, -1), layer], 1),
+    replaceTop: (layer: Layer) => set(swapped(get(), layer), 1),
   };
 }
 

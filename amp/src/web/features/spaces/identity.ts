@@ -147,6 +147,12 @@ const CHILD = new RegExp(
   "i",
 );
 
+const FAMILY = new RegExp(`^/family/(${UUID})(?:/|$)`, "i");
+/** The family whose screen an address is (`/family/<family>/…`: Today, a
+ * child's page, Settings), or null. */
+export const familyOf = (pathname: string) =>
+  FAMILY.exec(pathname)?.[1]?.toLowerCase() ?? null;
+
 /** The canonical address of a family's child's screen. */
 export const childPath = (
   family: string,

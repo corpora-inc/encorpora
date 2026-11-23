@@ -21,7 +21,10 @@ import {
 } from "../ui/level-range";
 import { percent } from "../ui/level-range/scale";
 import { EntityLink } from "./links";
-import { CurriculumPractice } from "../features/practice/CurriculumPractice";
+import {
+  CurriculumPractice,
+  type OpenedFor,
+} from "../features/practice/CurriculumPractice";
 import { LayerWait } from "./LayerWait";
 import layers from "./layers.module.css";
 import styles from "./AreaLayer.module.css";
@@ -105,12 +108,15 @@ type Entry = Placed["all"][number];
 export function AreaLayer({
   area,
   source,
+  opened,
   open,
   onClose,
   back,
 }: {
   area: string;
   source: AreaSource;
+  /** Whose the layer was opened for, where its stack says (nav/LayerHost). */
+  opened?: OpenedFor;
   open: boolean;
   onClose: () => void;
   back?: string;
@@ -138,7 +144,10 @@ export function AreaLayer({
     >
       <div className={layers.layer}>
         {(overall || strandNames[area]) && (
-          <CurriculumPractice filter={overall ? {} : { strand: area }} />
+          <CurriculumPractice
+            filter={overall ? {} : { strand: area }}
+            opened={opened}
+          />
         )}
         {!row?.estimate ? (
           <p className={layers.lede}>No level here yet.</p>

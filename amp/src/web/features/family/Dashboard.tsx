@@ -146,6 +146,9 @@ export function ChildDashboard({
         skill={(skill) => (
           <EntityLink
             entity={{ kind: "skill", id: skill.id }}
+            // This child's block: the skill, and what opens over it, offers
+            // their practice, whoever was last selected on this device.
+            with={{ for: child.id }}
             className={styles.skill}
           >
             {skill.title}

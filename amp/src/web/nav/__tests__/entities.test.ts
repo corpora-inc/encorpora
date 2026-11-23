@@ -1,9 +1,12 @@
 import { expect, test } from "vitest";
 import {
   closeDepth,
+  FOR_KEY,
+  isLearnerId,
   layerKeysLeft,
   popLayer,
   pushLayer,
+  readsKey,
   readStack,
   replaceTop,
   staffOnly,
@@ -99,4 +102,34 @@ test("closing puts the stack away, except back to an answer replay below", () =>
   expect(closeDepth(stack, 3)).toBe(2);
   // With no replay in the stack, everything closes to the page.
   expect(closeDepth(readStack("skill:a,lesson:b"), 1)).toBe(0);
+});
+
+test("a skill, a lesson and an area say whose they were opened for; a record and an answer are their own", () => {
+  for (const kind of ["skill", "lesson", "area"] as const)
+    expect(readsKey(kind, FOR_KEY)).toBe(true);
+  // A student's record and an answer name their student in their id.
+  for (const kind of ["student", "work", "own-work"] as const)
+    expect(readsKey(kind, FOR_KEY)).toBe(false);
+  expect(readsKey("work", "skill")).toBe(true);
+  expect(readsKey("skill", "skill")).toBe(false);
+  // `for` leaves the address with the last layer that reads it.
+  const stack = readStack("skill:fractions,lesson:a-type");
+  expect(layerKeysLeft(stack, stack.slice(0, 1))).toEqual([]);
+  expect(layerKeysLeft(stack, [])).toEqual([FOR_KEY]);
+});
+
+test("a learner's id is a uuid, and nothing else", () => {
+  expect(isLearnerId(S1)).toBe(true);
+  for (const value of [
+    "",
+    "pip",
+    `${S1} `,
+    `${S1},${S2}`,
+    "../kids",
+    undefined,
+    null,
+    [S1],
+    42,
+  ])
+    expect(isLearnerId(value)).toBe(false);
 });

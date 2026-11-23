@@ -300,6 +300,9 @@ function familyEntries(
   extra: (todo: TodayTodo) => ReactNode,
   /** Opens their own devices over Today (a "start" to-do). */
   openDevices: () => void,
+  /** The family's own child a to-do is about, when it names exactly one:
+   * the lesson or skill it opens offers that child's practice. */
+  about: (todo: TodayTodo) => string | undefined,
 ): FeedEntry[] {
   const action = (todo: TodayTodo, primary: boolean): ReactNode => {
     const look = primary ? "primary" : "secondary";
@@ -312,6 +315,7 @@ function familyEntries(
               ? { kind: "lesson", id: action.templateId }
               : { kind: "skill", id: action.skillId }
           }
+          with={{ for: about(todo) }}
           className={buttonClass(look)}
         >
           {action.label}
@@ -465,6 +469,10 @@ export function FamilyTodayScreen() {
           ) : null;
         },
         devices.show,
+        (todo) =>
+          todo.students.length === 1
+            ? byId.get(todo.students[0]!.id)?.id
+            : undefined,
       )
     : [];
   const action = (child: FamilyChild) => (
