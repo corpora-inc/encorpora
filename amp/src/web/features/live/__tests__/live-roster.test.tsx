@@ -107,15 +107,9 @@ test("a desktop grid: sortable headers call back with the next sort, and levels 
   const grid = screen.getByRole("grid", { name: "Students in this session" });
   for (const name of ["Student", "Status", "Problems", "Correct", "Level"])
     expect(within(grid).getByRole("button", { name })).toBeTruthy();
-  for (const header of [
-    "Hints",
-    "Lessons",
-    "Explanations",
-    "Videos",
-    "Skill",
-    "Last active",
-    "Last 5",
-  ])
+  // Help is one column of four counts, as a tablet's rows draw it: the
+  // skill has the room four word-headed columns took.
+  for (const header of ["Help", "Skill", "Last active", "Last 5"])
     expect(
       within(grid).getByRole("columnheader", { name: header }),
     ).toBeTruthy();

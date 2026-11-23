@@ -83,37 +83,26 @@
 }
 
 /* Fixed columns at a row's end. */
-.colRecent {
-  display: flex;
-  flex: none;
-  justify-content: flex-end;
-  width: 80px;
-}
-.colNumber {
-  flex: none;
-  width: 80px;
-  font-size: var(--text-table);
-  text-align: end;
-}
 .colHelp {
   display: flex;
   flex: none;
   justify-content: flex-end;
-  width: 168px;
+  /* Its four counts (160 px), clear of the percent before them. */
+  width: 176px;
 }
 .colAgo {
   flex: none;
-  width: 76px;
+  width: 68px;
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   text-align: end;
 }
-.head .colNumber,
 .head .colAgo {
   color: inherit;
   font-size: inherit;
 }
-/* A phone's end: percent of problems over the last five answers. */
+/* A row's end on a phone, and its first block on a tablet: percent of
+   problems over the last five answers. */
 .colPhone {
   display: grid;
   flex: none;
@@ -171,8 +160,8 @@
 
 /* Desktop: the grid scrolls in its own box under its sticky header, so the
    strip and totals above it never move. */
-/* Tighter cell insets than a gradebook's, so twelve columns fit the wide
-   page with whole header words. */
+/* Tighter cell insets than a gradebook's, so the columns fit a 960 px
+   frame with whole header words. */
 .gridBox [data-grid-mode] {
   --grid-inline: var(--space-2);
 }
@@ -213,11 +202,45 @@ a.gridLink:focus-visible {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+/* The grid's skill: up to two lines in the row's 44 px. */
 .skill {
-  display: block;
+  --fit-line: 1.25;
+}
+
+/* The line under a name (RosterRow's detail): a status never shrinks; the
+   skill has the rest and fits itself to it. */
+.detailLine {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.detailLine > .statusWord {
+  flex: none;
+}
+.dot {
+  color: var(--color-muted-text);
+  font-weight: 400;
+  white-space: pre;
+}
+.detailSkill {
+  flex: 1 1 0;
+}
+/* No skill yet: short facts on the one line; one with no room drops out
+   whole, never cut. */
+.detailRest {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 1.3em;
   overflow: hidden;
+  white-space: normal;
+}
+.detailFact {
+  display: inline-block;
   white-space: nowrap;
-  text-overflow: ellipsis;
+}
+.detailFact + .detailFact::before {
+  content: "·";
+  margin-inline: 0.3em;
 }
 .zero {
   color: var(--color-subtle-text);

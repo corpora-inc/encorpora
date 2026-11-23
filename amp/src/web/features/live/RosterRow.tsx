@@ -43,26 +43,29 @@ export function RosterRow({
   /** Opens the student; without it the row is not a link. */
   link?: StudentLink;
 }) {
-  const body = (
+  const who = (
     <>
-      <span className={styles.mark}>{mark}</span>
-      <span className={styles.who}>
-        <span className={styles.nameLine}>
-          <span className={styles.name}>{name}</span>
-          <span className={styles.badge}>{badge}</span>
-        </span>
-        <span className={styles.detail}>{detail}</span>
-      </span>
-      <span className={styles.facts}>{facts}</span>
+      <span className={styles.name}>{name}</span>
+      <span className={styles.badge}>{badge}</span>
     </>
   );
+  // The link is the name, and its reach is the whole row (RosterRow.module
+  // .css): what else can be tapped in the row (a skill's cut name) sits
+  // beside the link, never inside it.
   return (
     <li className={styles.row} data-density={density} data-live-row={personId}>
-      {link ? (
-        link({ personId, name, className: styles.body, children: body })
-      ) : (
-        <div className={styles.body}>{body}</div>
-      )}
+      <div className={styles.body}>
+        <span className={styles.mark}>{mark}</span>
+        <span className={styles.who}>
+          {link ? (
+            link({ personId, name, className: styles.nameLine, children: who })
+          ) : (
+            <span className={styles.nameLine}>{who}</span>
+          )}
+          <span className={styles.detail}>{detail}</span>
+        </span>
+        <span className={styles.facts}>{facts}</span>
+      </div>
     </li>
   );
 }

@@ -13,6 +13,7 @@ import {
 } from "../../ui/DataGrid";
 import { Menu, MenuItem } from "../../ui/Menu";
 import { Segmented } from "../../ui/Segmented";
+import { FitText } from "../../ui/FitText";
 import { Changed } from "./Changed";
 import {
   agoText,
@@ -21,7 +22,7 @@ import {
   levelText,
   percentText,
 } from "./format";
-import { HELP_KINDS, HelpCounts } from "./HelpCounts";
+import { HelpCounts, helpWords } from "./HelpCounts";
 import { useLiveLayout, type LiveLayout } from "./layout";
 import { RecentAnswers, recentWords } from "./RecentAnswers";
 import { RosterRow, type StudentLink } from "./RosterRow";
@@ -159,6 +160,10 @@ export type LiveRosterProps = {
  * active), and a dense grid of 44 px rows on a desktop. Rows never reorder
  * by themselves: numbers change in place, in tabular figures, with a brief
  * tint where one just changed.
+ *
+ * The skill's name gets the room the figures don't need and is never cut
+ * inside a word (ui/FitText): one line in a row, up to two in the grid,
+ * and where it still doesn't fit, a tap shows all of it.
  */
 export function LiveRoster(props: LiveRosterProps) {
   const root = useRef<HTMLDivElement>(null);
@@ -217,8 +222,10 @@ function Requests({ signals }: { signals: readonly LiveSignal[] | undefined }) {
   );
 }
 
-/** The line under a name: what needs the adult first, then the skill,
- * the level and when they last did something. */
+/** The line under a name: what needs the adult first, then the skill in
+ * the room that is left (whole words, the rest a tap away), the level and,
+ * on a phone, when they last did something. A tablet's level always shows;
+ * a phone's level and time show when the skill leaves them room. */
 function detailLine(
   row: LiveRow,
   status: LiveStatus,
@@ -230,35 +237,51 @@ function detailLine(
   const word = (at: LiveStatus) =>
     view.statusWords?.[at] ?? STATUS_WORDS[at].word;
   const level = view.levelShown?.(row.personId) ?? view.showGradeNumbers;
-  const parts: ReactNode[] = [];
   if (status === "not_signed_in")
     return (
       <span className={styles.statusWord} data-status={status}>
         {word(status)}
       </span>
     );
-  if (status !== "working")
-    parts.push(
-      <span key="status" className={styles.statusWord} data-status={status}>
-        {word(status)}
-      </span>,
-    );
-  if (row.skill) parts.push(<span key="skill">{row.skill.title}</span>);
-  else if (row.problems === 0)
-    parts.push(<span key="skill">No answers yet</span>);
-  if (level && row.level !== null)
-    parts.push(<span key="level">{levelText(row.level)}</span>);
-  if (view.layout === "phone")
-    parts.push(<span key="ago">{agoText(lastActive(row), view.now)}</span>);
+  const phone = view.layout === "phone";
+  const after = [
+    ...(level && row.level !== null ? [levelText(row.level)] : []),
+    ...(phone ? [agoText(lastActive(row), view.now)] : []),
+  ];
   // Keyed by what leads it: when the status, skill or level changes, the
   // line is drawn anew rather than its words sliding along (a layout shift
   // to the browser). Only "last active", at its end, changes in place.
   return (
     <span
       key={`${status}|${row.skill?.id ?? row.problems === 0}|${level ? row.level : ""}`}
+      className={styles.detailLine}
     >
-      {parts.flatMap((part, index) =>
-        index === 0 ? [part] : [<span key={`dot-${index}`}> · </span>, part],
+      {status !== "working" && (
+        <span className={styles.statusWord} data-status={status}>
+          {word(status)}
+          {(row.skill || row.problems === 0 || after.length > 0) && (
+            <span className={styles.dot}> · </span>
+          )}
+        </span>
+      )}
+      {row.skill ? (
+        <FitText
+          text={row.skill.title}
+          after={after}
+          reserve={phone ? 0 : after.length}
+          label="Skill"
+          className={styles.detailSkill}
+        />
+      ) : (
+        <span className={styles.detailRest}>
+          {[...(row.problems === 0 ? ["No answers yet"] : []), ...after].map(
+            (part, index) => (
+              <span key={index} className={styles.detailFact}>
+                <span key={part}>{part}</span>
+              </span>
+            ),
+          )}
+        </span>
       )}
     </span>
   );
@@ -334,26 +357,14 @@ function List(view: RosterView) {
       <div className={styles.head} aria-hidden="true">
         <span className={styles.headName}>{view.nameHeader}</span>
         <span className={styles.headFacts}>
-          {tablet ? (
+          <HeadLabel className={styles.colPhone} sorted={sortedBy("correct")}>
+            Correct
+          </HeadLabel>
+          {tablet && (
             <>
-              <HeadLabel className={styles.colRecent}>Last 5</HeadLabel>
-              <HeadLabel
-                className={styles.colNumber}
-                sorted={sortedBy("problems")}
-              >
-                Problems
-              </HeadLabel>
-              <HeadLabel
-                className={styles.colNumber}
-                sorted={sortedBy("correct")}
-              >
-                Correct
-              </HeadLabel>
               <HeadLabel className={styles.colHelp}>Help</HeadLabel>
               <HeadLabel className={styles.colAgo}>Last active</HeadLabel>
             </>
-          ) : (
-            <HeadLabel className={styles.colPhone}>Correct</HeadLabel>
           )}
         </span>
       </div>
@@ -378,37 +389,7 @@ function List(view: RosterView) {
               badge={<Requests signals={bySignal.get(row.personId)} />}
               detail={detailLine(row, status, view)}
               facts={
-                tablet ? (
-                  <>
-                    <span className={styles.colRecent}>
-                      <RecentAnswers
-                        recent={row.recent}
-                        answered={row.problems}
-                      />
-                    </span>
-                    <span className={styles.colNumber}>
-                      {status !== "not_signed_in" && (
-                        <Changed value={row.problems}>{row.problems}</Changed>
-                      )}
-                    </span>
-                    <span className={styles.colNumber}>
-                      <Changed value={percentText(row.correct, row.problems)}>
-                        {percentText(row.correct, row.problems)}
-                      </Changed>
-                    </span>
-                    <span className={styles.colHelp}>
-                      {status !== "not_signed_in" && <HelpCounts help={row} />}
-                    </span>
-                    <span
-                      className={styles.colAgo}
-                      aria-label={`Last active ${agoWords(ago, now)}`}
-                    >
-                      {/* Right-aligned: a new word is a new node, never
-                          one sliding over. */}
-                      <span key={agoText(ago, now)}>{agoText(ago, now)}</span>
-                    </span>
-                  </>
-                ) : (
+                <>
                   <span className={styles.colPhone}>
                     <span
                       className={styles.score}
@@ -439,7 +420,24 @@ function List(view: RosterView) {
                       answered={row.problems}
                     />
                   </span>
-                )
+                  {tablet && (
+                    <>
+                      <span className={styles.colHelp}>
+                        {status !== "not_signed_in" && (
+                          <HelpCounts help={row} />
+                        )}
+                      </span>
+                      <span
+                        className={styles.colAgo}
+                        aria-label={`Last active ${agoWords(ago, now)}`}
+                      >
+                        {/* Right-aligned: a new word is a new node, never
+                            one sliding over. */}
+                        <span key={agoText(ago, now)}>{agoText(ago, now)}</span>
+                      </span>
+                    </>
+                  )}
+                </>
               }
             />
           );
@@ -555,7 +553,7 @@ function Grid(view: RosterView) {
     {
       id: "problems",
       header: "Problems",
-      width: 92,
+      width: 88,
       align: "end",
       firstSort: "descending",
       compare: held,
@@ -564,7 +562,7 @@ function Grid(view: RosterView) {
     {
       id: "correct",
       header: "Correct",
-      width: 84,
+      width: 80,
       align: "end",
       firstSort: "descending",
       compare: held,
@@ -574,47 +572,60 @@ function Grid(view: RosterView) {
         </Changed>
       ),
     },
-    ...HELP_KINDS.map((kind): DataGridColumn<LiveRow> => ({
-      id: kind.key,
-      header: kind.header,
-      width:
-        kind.key === "examples"
-          ? 100
-          : kind.key === "lessons"
-            ? 68
-            : kind.key === "hints"
-              ? 56
-              : 64,
-      align: "end",
-      cell: (row) => number(row, row[kind.key]),
-    })),
     {
+      // The four kinds as the tablet's rows and the report draw them: four
+      // word-headed columns took the skill's room for figures of one digit.
+      id: "help",
+      header: "Help",
+      width: 176,
+      cell: (row) =>
+        statuses.get(row.personId) === "not_signed_in" ? null : (
+          <HelpCounts help={row} />
+        ),
+      cellLabel: (row) => helpWords(row),
+    },
+    {
+      // The name takes the room the figures don't need, on two lines where
+      // one won't hold it; what still doesn't fit is a tap away.
       id: "skill",
       header: "Skill",
       width: 120,
-      cell: (row) => (
-        <span className={styles.skill} title={row.skill?.title}>
-          {row.skill?.title ?? "—"}
-        </span>
-      ),
+      grow: true,
+      cell: (row) =>
+        row.skill ? (
+          <FitText
+            key={row.skill.id}
+            text={row.skill.title}
+            lines={2}
+            label="Skill"
+            className={styles.skill}
+          />
+        ) : (
+          "—"
+        ),
     },
     ...(view.showGradeNumbers
       ? [
           {
             id: "level",
             header: "Level",
-            width: 68,
+            width: 64,
             align: "end",
             firstSort: "descending",
             compare: held,
-            cell: (row) => levelText(row.level),
+            cell: (row) => {
+              const text = levelText(row.level);
+              // Right-aligned: a new word is a new node, never one sliding
+              // over ("Gr 8" to "Alg 1" is a layout shift otherwise).
+              return <span key={text}>{text}</span>;
+            },
           } satisfies DataGridColumn<LiveRow>,
         ]
       : []),
     {
       id: "active",
       header: "Last active",
-      width: 72,
+      width: 64,
       align: "end",
       cell: (row) => {
         const text = agoText(lastActive(row), now);
