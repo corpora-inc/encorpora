@@ -452,15 +452,17 @@ async function journey(browser: Browser, engine: string, width: number) {
     // Today before anyone works this week.
     await teacher.goto(`${klass}/today`);
     await todayTitle(teacher);
-    const working = async () =>
-      Number(
-        (
-          await teacher
-            .getByText(/^\d+ of 24$/)
-            .first()
-            .textContent()
-        )?.split(" ")[0],
-      );
+    // The week's facts show only once someone has worked this week: on the
+    // first day of a week the seeded term has nothing in it yet, and the
+    // count is 0 with no line to read.
+    const working = async (wait = 5_000) => {
+      const count = teacher.getByText(/^\d+ of 24$/).first();
+      const shown = await count
+        .waitFor({ state: "visible", timeout: wait })
+        .then(() => true)
+        .catch(() => false);
+      return shown ? Number((await count.textContent())?.split(" ")[0]) : 0;
+    };
     const before = await working();
 
     // 3. One student by pictures, one by card, on phones.
@@ -522,7 +524,8 @@ async function journey(browser: Browser, engine: string, width: number) {
     last = teacher;
     await teacher.reload();
     await todayTitle(teacher);
-    const after = await working();
+    // Two students have worked now: the line is there.
+    const after = await working(30_000);
     check(`${label} Today counts both students`, after === before + 2, {
       before,
       after,
