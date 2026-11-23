@@ -4,7 +4,7 @@ import { secureChromium } from "../browser-security.mjs";
  * a placed card leaves its outline, tapping a filled box takes the card
  * back, reused symbol cards stay in the tray, the keyboard places cards, and
  * nothing moves while placing, checking or marking, at 320/390/768/1280 px
- * in light and dark. Screenshots go to AMP_EVIDENCE_DIR (default
+ * in Calm (light and dark) and in Colorful. Screenshots go to AMP_EVIDENCE_DIR (default
  * artifacts/multi-part-cards-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -24,6 +24,7 @@ import {
 } from "../src/math/multi-part-choice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
@@ -34,7 +35,9 @@ const shots =
   process.env.AMP_EVIDENCE_DIR ??
   new URL("../artifacts/multi-part-cards-ui/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
-const origin = "http://127.0.0.1:4490";
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4490);
+const origin = `http://127.0.0.1:${WEB_PORT}`;
 await migrate(database);
 const repository = new PostgresRepository(database, {
   development: true,
@@ -55,14 +58,15 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4491 });
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
-    port: 4490,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4491" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -238,7 +242,8 @@ const shown = (page: Page, i: number) =>
 
 let checked = 0;
 try {
-  for (const theme of ["light", "dark"] as const)
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts).
+  for (const { look, theme, name } of lookThemes())
     for (const [width, height] of [
       [320, 568],
       [390, 844],
@@ -260,11 +265,13 @@ try {
         if (reply.url().endsWith("/attempts") && reply.status() !== 200)
           errors.push(`attempt ${reply.status()}`);
       });
+      await wearLook(repository, "development-household", learner.id, look);
       await page.goto(`${origin}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, `${width}-${name}`);
       for (const family of families) {
-        const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
-        const problem = instance(family, `${theme}:${width}`);
+        const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${name}`;
+        const problem = instance(family, `${name}:${width}`);
         await repository.transaction(
           "development-household",
           learner.id,
@@ -560,7 +567,7 @@ try {
     }
   assert.deepEqual(errors, [], "No browser page errors");
   console.log(
-    `Multi-part cards: ${checked} family × width × theme runs passed centering, aimed and next-box placement, take-back, reuse, keyboard placement, Check gating, marked feedback and zero layout shift; screenshots in ${shots}`,
+    `Multi-part cards: ${checked} family × width × look-and-theme runs passed centering, aimed and next-box placement, take-back, reuse, keyboard placement, Check gating, marked feedback and zero layout shift; screenshots in ${shots}`,
   );
 } catch (failure) {
   if (errors.length) console.error("Browser page errors:", errors);
