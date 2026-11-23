@@ -1,4 +1,5 @@
-/** Bundles the API and its workbook worker as production runs them. Guessing
+/** Bundles the API, its workbook worker and the acquisition pipeline command
+ * (`src/acquisition/cli.ts`) as production runs them. Guessing
  * chances are computed here, once per image, so no pod pays for them while a
  * learner waits. Both come from the same source, so they cannot disagree.
  * The demo's simulation is not bundled: its terms ship precomputed
@@ -11,7 +12,12 @@ import { guessChanceTable } from "../src/math/guess-chance";
 export const serverBuildOptions = (
   guessChances: Record<string, number>,
 ): BuildOptions => ({
-  entryPoints: ["src/server/main.ts", "src/workbook/compute-worker.ts"],
+  entryPoints: [
+    "src/server/main.ts",
+    "src/workbook/compute-worker.ts",
+    // The operator's pipeline command, so a pod runs it without compiling.
+    "src/acquisition/cli.ts",
+  ],
   bundle: true,
   platform: "node",
   format: "esm",
