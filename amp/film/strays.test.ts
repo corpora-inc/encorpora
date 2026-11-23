@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { audioProblems, EDGE, envelope, fadeAround, loneSounds, SR, TAKE_FADE } from "./audio";
-import { inSilence, Voice } from "./fixtures/voice-signals";
+import { endingVowel, inSilence, Voice } from "./fixtures/voice-signals";
 import { beginningOf, endingOf, JOIN, repairTake, ROOM, saidAs, SIBILANT, strayPlan, TAIL_CLAIM, WORD_TAIL, type TimedWord } from "./strays";
 import { judge, type Take } from "./voice";
 
@@ -57,11 +57,72 @@ describe("a voiced burst after the sentence at EOF", () => {
     }
   });
 
+  it("removes a detached burst under an overlong or late final-word alignment", () => {
+    const { pcm, words, heard } = wordAndTerminalBurst();
+    for (const start of [0.1, 0.6]) {
+      const stretched = [{ ...words[0]!, start, end: pcm.length / SR }];
+      const plan = strayPlan(pcm, stretched, heard);
+      expect(plan.map((s) => s.kind)).toEqual(["remove"]);
+      const fixed = repairTake(pcm, plan).pcm;
+      expect(fixed.slice(0, Math.round(0.5 * SR))).toEqual(pcm.slice(0, Math.round(0.5 * SR)));
+      expect(loudest(fixed, 0.9, fixed.length / SR)).toBe(0);
+      expect(audioProblems(inSilence(fixed), [{ at: 0.45 + fixed.length / SR, what: "pause" }])).toEqual([]);
+    }
+  });
+
+  it("removes the entire terminal cluster across brief quiet dips, including partial EOF windows", () => {
+    const pcm = new Voice().rest(0.1).say(0.4).rest(0.4).say(0.02).rest(0.01).say(0.2).pcm().slice(0, SR + 400);
+    const words = [{ text: "four?", start: 0.1, end: 0.8 }];
+    const heard = [{ text: "four?", start: 0.1, end: 0.5 }];
+    const plan = strayPlan(pcm, words, heard);
+    expect(plan).toHaveLength(1);
+    expect(plan[0]!.sound.start).toBeCloseTo(0.9, 2);
+    expect(plan[0]!.sound.end).toBe(pcm.length / SR);
+    const fixed = repairTake(pcm, plan).pcm;
+    expect(loudest(fixed, 0.9, fixed.length / SR)).toBe(0);
+    expect(fixed.slice(0, Math.round(0.5 * SR))).toEqual(pcm.slice(0, Math.round(0.5 * SR)));
+  });
+
+  it("keeps a final stop release before a separate terminal burst", () => {
+    const pcm = new Voice().rest(0.1).say(0.4).rest(0.25).hiss(0.1, -24).rest(0.05).say(0.3).pcm().slice(0, SR);
+    const words = [{ text: "eight.", start: 0.1, end: 0.7 }];
+    const heard = [{ text: "eight", start: 0.1, end: 0.5 }];
+    const plan = strayPlan(pcm, words, heard);
+    expect(plan).toHaveLength(1);
+    expect(plan[0]!.sound.start).toBeCloseTo(0.9, 2);
+    const fixed = repairTake(pcm, plan).pcm;
+    expect(fixed.slice(Math.round(0.75 * SR), Math.round(0.85 * SR))).toEqual(pcm.slice(Math.round(0.75 * SR), Math.round(0.85 * SR)));
+    expect(loudest(fixed, 0.9, fixed.length / SR)).toBe(0);
+  });
+
+  it.each([0.01, 0.02])("preserves a stop release only %s s before a voiced burst", (gap) => {
+    const pcm = new Voice().rest(0.1).say(0.4).rest(0.25).hiss(0.1, -24).rest(gap).say(0.3).pcm().slice(0, SR);
+    const words = [{ text: "eight.", start: 0.1, end: 0.7 }];
+    const heard = [{ text: "eight", start: 0.1, end: 0.5 }];
+    const plan = strayPlan(pcm, words, heard);
+    expect(plan).toEqual([]); // Too close to separate safely; the cutoff check must reject it.
+    const fixed = repairTake(pcm, plan).pcm;
+    expect(fixed.slice(Math.round(0.75 * SR), Math.round(0.85 * SR))).toEqual(pcm.slice(Math.round(0.75 * SR), Math.round(0.85 * SR)));
+    fadeAround(fixed, fixed.length, true, false, TAKE_FADE);
+    expect(audioProblems(inSilence(fixed), [{ at: 1.45, what: "take end" }]).length).toBeGreaterThan(0);
+  });
+
+  it("still repairs an unambiguous burst when a quiet crumb breaks the long silence", () => {
+    const pcm = new Voice().rest(0.1).say(0.4).rest(0.2).say(0.01, -46).rest(0.19).say(0.3).pcm().slice(0, SR);
+    const words = [{ text: "way.", start: 0.1, end: 0.85 }];
+    const heard = [{ text: "way", start: 0.1, end: 0.5 }];
+    const plan = strayPlan(pcm, words, heard);
+    expect(plan).toHaveLength(1);
+    expect(plan[0]!.sound.start).toBeCloseTo(0.9, 2);
+    expect(loudest(repairTake(pcm, plan).pcm, 0.9, 1)).toBe(0);
+  });
+
   it("keeps an uncertain ending, an unfinished word, and a final voiced syllable", () => {
     const { pcm, words, heard } = wordAndTerminalBurst();
     expect(strayPlan(pcm, words)).toEqual([]);
     expect(strayPlan(pcm, [], heard)).toEqual([]);
-    expect(strayPlan(pcm, [{ ...words[0]!, end: 1 }], heard)).toEqual([]);
+    // A new aligned word beginning in the burst is not an overlong ending.
+    expect(strayPlan(pcm, [{ ...words[0]!, start: 0.9, end: 1 }], heard)).toEqual([]);
     expect(strayPlan(pcm, words, [{ ...heard[0]!, end: 1 }])).toEqual([]);
     // A short gap may be inside a final word, even when both timings end early.
     const close = new Voice().rest(0.1).say(0.4).rest(0.02).say(0.3).pcm().slice(0, Math.round(0.62 * SR));
@@ -340,6 +401,17 @@ describe("judging a take", () => {
     const cut = new Voice().rest(0.1).say(0.5).pcm().slice(0, Math.round(0.4 * SR));
     const unfinished = take(cut, "way.", [{ text: "way.", start: 0.1, end: 0.4 }]);
     expect(await judge("way.", unfinished.t, unfinished.cache)).toContain("the voice is cut off at the end");
+  });
+
+  it("accepts a completed decaying vowel without a retake, but rejects earlier cuts into it", async () => {
+    const pcm = endingVowel(137);
+    const { t, cache } = take(pcm, "four?", [{ text: "four?", start: 0.1, end: pcm.length / SR }]);
+    expect(await judge("four?", t, cache)).toEqual([]);
+    for (const ms of [20, 30, 60]) {
+      const cut = pcm.slice(0, -Math.round(ms * SR / 1000));
+      const unfinished = take(cut, "four?", [{ text: "four?", start: 0.1, end: cut.length / SR }]);
+      expect(await judge("four?", unfinished.t, unfinished.cache)).toContain("the voice is cut off at the end");
+    }
   });
 
   it("passes a take whose last word ends in a sound that is no clean hiss, even 20 ms before the next word", async () => {
