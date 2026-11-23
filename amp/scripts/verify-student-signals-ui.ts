@@ -386,7 +386,13 @@ try {
 
   // ---- the practice bar, Calm and Colorful, at 320 and 390 -----------------
   /** The student's own look, set the way their settings would (their token). */
-  async function setLook(personId: string, look: "calm" | "bold") {
+  const setLook = (personId: string, look: "calm" | "bold") =>
+    savePractice(personId, { kind: "look", look });
+  /** One change to the student's practice settings, with their own token. */
+  async function savePractice(
+    personId: string,
+    change: Record<string, unknown>,
+  ) {
     await setPictures(personId);
     const grant = (await (
       await fetch(`${api}/api/v1/school/join/picture`, {
@@ -418,15 +424,14 @@ try {
       method: "POST",
       headers,
       body: JSON.stringify({
-        kind: "look",
-        look,
+        ...change,
         requestId: crypto.randomUUID(),
         revision: state.revision,
       }),
     });
     assert.ok(
       response.ok,
-      `setting the look ${response.status} ${await response.clone().text()}`,
+      `saving ${JSON.stringify(change)}: ${response.status} ${await response.clone().text()}`,
     );
   }
   const BAR = "header[data-app-bar]";
@@ -831,6 +836,8 @@ try {
       `${tag}: a session's next problem has the hand at the bar's end`,
     );
     await context.close();
+    // The student is left on mixed practice, as they were found.
+    await savePractice(B.id, { kind: "focus", skillId: null });
     checks++;
   }
 } finally {
