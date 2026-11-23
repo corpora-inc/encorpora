@@ -562,14 +562,22 @@ async function press(
 }
 
 // ---- the walk --------------------------------------------------------------
-/** Runs jobs a few at a time: each is a browser profile of its own. */
-async function pool(jobs: (() => Promise<void>)[]) {
-  let next = 0;
-  await Promise.all(
-    Array.from({ length: Math.min(JOBS, jobs.length) }, async () => {
-      while (next < jobs.length) await jobs[next++]!();
-    }),
-  );
+/** A press is a browser profile of its own: at most `--jobs` of them at
+ * once, whichever walks queued them. */
+let pressing = 0;
+const queued: (() => void)[] = [];
+async function limited(job: () => Promise<void>) {
+  if (pressing >= JOBS)
+    await new Promise<void>((resolve) => queued.push(resolve));
+  else pressing++;
+  try {
+    await job();
+  } finally {
+    // The next in line takes this place.
+    const next = queued.shift();
+    if (next) next();
+    else pressing--;
+  }
 }
 /** Controls that are no way into anything a child's: a download, a setting,
  * the family's own live session, the menu. */
@@ -629,7 +637,7 @@ async function walk(
    * other page (the family's grades, its workbooks) leaves their area. */
   area?: string,
 ) {
-  const jobs: (() => Promise<void>)[] = [];
+  const pending: Promise<void>[] = [];
   const visited = new Set<string>();
   // One page reads the root's tree; each press is a profile of its own.
   const reader = await open(who, width, root, [], selected);
@@ -694,17 +702,19 @@ async function walk(
           : scope === "[data-layer-frame]"
             ? heldBy(here.layers)
             : undefined;
-        jobs.push(() =>
-          press(
-            who,
-            width,
-            root,
-            steps,
-            step(control),
-            expect,
-            subject,
-            selected,
-            held,
+        pending.push(
+          limited(() =>
+            press(
+              who,
+              width,
+              root,
+              steps,
+              step(control),
+              expect,
+              subject,
+              selected,
+              held,
+            ),
           ),
         );
       }
@@ -756,7 +766,7 @@ async function walk(
   } finally {
     await reader.context.close();
   }
-  await pool(jobs);
+  await Promise.all(pending);
 }
 
 // ---- the run ---------------------------------------------------------------
@@ -779,7 +789,16 @@ try {
     const tasks = ((await api(who.token, `/families/${who.family}`)).body!.today
       .tasks ?? []) as { id: string; students: { id: string }[] }[];
     for (const width of WIDTHS) {
-      for (const child of kids) {
+      // The children's walks side by side: each reads its own pages, and
+      // their presses share the one limit.
+      const walked = (subject: string) =>
+        presses.filter(
+          (entry) =>
+            entry.who === slug &&
+            entry.width === width &&
+            entry.subject === subject,
+        );
+      const each = async (child: Child) => {
         // The device last chose someone else: the slip's own condition.
         const other = who.children.find((entry) => entry.id !== child.id)!.id;
         const expect: Expect = { kind: "child", child };
@@ -813,8 +832,7 @@ try {
             scope: "[data-child-page], [data-shell-action]",
           },
         ];
-        const before = presses.length;
-        if (NO_WALK) continue;
+        if (NO_WALK) return;
         for (const root of roots)
           await walk(
             who,
@@ -826,7 +844,7 @@ try {
             roots.map((entry) => entry.path).filter((path) => path !== today),
             `${today}/kids/${child.id}`,
           );
-        const mine = presses.slice(before);
+        const mine = walked(child.name);
         console.log(
           `  ${width}px ${child.name}: ${mine.length} practice controls pressed, ${mine.filter((entry) => !entry.ok).length} wrong`,
         );
@@ -834,10 +852,10 @@ try {
           fail(
             `${slug} ${width}px: no practice control found for ${child.name}`,
           );
-      }
+      };
+      await Promise.all(kids.map(each));
       // The adult's own row: their own practice, whoever was last selected.
       if (!ONLY_KIDS && !NO_WALK) {
-        const before = presses.length;
         await walk(
           who,
           width,
@@ -851,7 +869,7 @@ try {
           "the adult",
           who.children[0]!.id,
         );
-        const mine = presses.slice(before);
+        const mine = walked("the adult");
         console.log(
           `  ${width}px the adult: ${mine.length} pressed, ${mine.filter((entry) => !entry.ok).length} wrong`,
         );
