@@ -243,11 +243,13 @@ const CONTROLS = `(scope) => {
         sig, n, tag: element.tagName, name, href, data, section,
         entity: element.getAttribute("data-entity"),
         practice:
+          // A table's column named "Practice" sorts; it starts nothing.
+          !element.closest("th, [role=columnheader]") && (
           !!element.closest("[data-curriculum-practice]") ||
           element.hasAttribute("data-practice-here") ||
           element.hasAttribute("data-practice-skill") ||
           /^\\/practice(\\/|$)/.test(href ?? "") ||
-          /^(practice\\b|try (a|this|one)\\b|start practicing|let .+ practice)/i.test(said.trim()),
+          /^(practice\\b|try (a|this|one)\\b|start practicing|let .+ practice)/i.test(said.trim())),
         opener:
           element.hasAttribute("data-not-asked") ||
           element.hasAttribute("data-own-devices"),
@@ -623,6 +625,9 @@ async function walk(
   /** Pages that are roots of their own (the child's page): reached from
    * here they are pressed, and walked in their own turn. */
   own: readonly string[] = [],
+  /** The child's own pages (`/family/<f>/kids/<child>…`): a link to any
+   * other page (the family's grades, its workbooks) leaves their area. */
+  area?: string,
 ) {
   const jobs: (() => Promise<void>)[] = [];
   const visited = new Set<string>();
@@ -736,7 +741,14 @@ async function walk(
           );
           continue;
         }
-        const inner = scopeOf(await shown(page), here);
+        const now = await shown(page);
+        if (now.path !== here.path && !(area && now.path.startsWith(area))) {
+          console.log(
+            `    (leaves ${subject}’s area: ${[root.name, ...next.map((entry) => entry.label)].join(" → ")} is ${now.path.replace(/[0-9a-f]{8}-[0-9a-f-]{27}/g, "…")})`,
+          );
+          continue;
+        }
+        const inner = scopeOf(now, here);
         if (inner) await node(next, inner, depth + 1);
       }
     };
@@ -812,6 +824,7 @@ try {
             child.name,
             other,
             roots.map((entry) => entry.path).filter((path) => path !== today),
+            `${today}/kids/${child.id}`,
           );
         const mine = presses.slice(before);
         console.log(
