@@ -1,0 +1,115 @@
+/* A name in a box of one or two lines (FitText.tsx). The box never grows:
+   its height is at most its lines, and what the script shows always fits
+   them, so nothing here can move a row. */
+.root {
+  position: relative;
+  display: block;
+  min-width: 0;
+  /* A caller may set a tighter line (--fit-line); the box follows it. */
+  line-height: var(--fit-line, 1.3);
+}
+/* Static on purpose: the button's wider touch area is placed against the
+   root, so this box's clip does not cut it. */
+.box {
+  display: block;
+  max-height: calc(var(--fit-lines, 1) * var(--fit-line, 1.3) * 1em);
+  overflow: hidden;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+/* The same words in the same width, measured and never seen. */
+.probeBox {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+.probe {
+  display: block;
+  white-space: normal;
+}
+/* A short fact after the words, behind its dot. It breaks as one piece:
+   with no room left on the last line it drops out whole. */
+.fact {
+  display: inline-block;
+  white-space: nowrap;
+}
+.fact::before {
+  content: "·";
+  margin-inline: 0.3em;
+}
+/* The cut words are the button: the page's own text, no chrome. */
+.more {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+/* The app's buttons darken under the pointer and shrink when pressed; a
+   filter or a transform would also make the button the box its touch area
+   is placed against, and the clip above would cut that area to the words. */
+.more:hover:not(:disabled) {
+  filter: none;
+  color: var(--color-primary);
+}
+.more:active:not(:disabled) {
+  transform: none;
+}
+/* A first word wider than the box: as much of it as fits. */
+.clipped {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 44 px to touch, centred on the words, as wide as the box. A row with
+   another thing to tap right above the words places it lower
+   (--fit-touch-*). */
+.more::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset-inline: 0;
+  top: var(--fit-touch-top, 50%);
+  height: var(--fit-touch-height, 44px);
+  translate: 0 var(--fit-touch-shift, -50%);
+  border-radius: var(--radius-small);
+}
+/* The ring goes round the touch area: the box would clip one round the
+   words. */
+.more:focus-visible {
+  outline: none;
+}
+.more:focus-visible::after {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.more[aria-expanded="true"] {
+  color: var(--color-primary);
+}
+.panel {
+  position: fixed;
+  z-index: 50;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 16px));
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  font-size: var(--text-table);
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: normal;
+  text-wrap: pretty;
+}
