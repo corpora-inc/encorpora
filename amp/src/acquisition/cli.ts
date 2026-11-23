@@ -43,11 +43,16 @@ export type BatchResult = {
   errors: { index: number; action: string; message: string }[];
 };
 
+/** A command's action and kind, only when they look like ours: this runs
+ * before validation, and whatever it returns is printed. */
+const NAME = /^[a-z][a-z_-]{0,39}$/;
 const label = (command: unknown) => {
   if (!command || typeof command !== "object") return "unknown";
   const { action, kind } = command as { action?: unknown; kind?: unknown };
-  if (typeof action !== "string") return "unknown";
-  return typeof kind === "string" ? `${action}:${kind}` : action;
+  if (typeof action !== "string" || !NAME.test(action)) return "unknown";
+  return typeof kind === "string" && NAME.test(kind)
+    ? `${action}:${kind}`
+    : action;
 };
 
 /**
@@ -85,13 +90,29 @@ export async function applyBatch(
   return result;
 }
 
-async function readInput(limit: number) {
-  let data = "";
-  for await (const chunk of process.stdin) {
-    data += chunk.toString();
-    if (Buffer.byteLength(data) > limit) throw new Error("Input is too large");
+/**
+ * The whole input, decoded once. Decoding each chunk alone would split a
+ * character that straddles two chunks and store replacement characters, and
+ * the batch sent again would then differ from the first under the same keys.
+ */
+export async function readJson(
+  input: AsyncIterable<Buffer | string>,
+  limit: number,
+) {
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const chunk of input) {
+    const bytes = typeof chunk === "string" ? Buffer.from(chunk) : chunk;
+    size += bytes.length;
+    if (size > limit) throw new Error("Input is too large");
+    chunks.push(bytes);
   }
-  return JSON.parse(data) as unknown;
+  try {
+    return JSON.parse(Buffer.concat(chunks).toString("utf8")) as unknown;
+  } catch {
+    // The parser's own message quotes the input around the fault.
+    throw new Error("Input is not valid JSON");
+  }
 }
 
 export async function runCli(argv = process.argv.slice(2)) {
@@ -110,7 +131,10 @@ export async function runCli(argv = process.argv.slice(2)) {
     } else if (action === "apply") {
       console.log(
         JSON.stringify(
-          await runPipelineCommand(pool, await readInput(LIMIT.apply)),
+          await runPipelineCommand(
+            pool,
+            await readJson(process.stdin, LIMIT.apply),
+          ),
           null,
           2,
         ),
@@ -118,7 +142,7 @@ export async function runCli(argv = process.argv.slice(2)) {
     } else {
       const result = await applyBatch(
         (command) => runPipelineCommand(pool, command),
-        await readInput(LIMIT["apply-batch"]),
+        await readJson(process.stdin, LIMIT["apply-batch"]),
       );
       console.log(JSON.stringify(result, null, 2));
       if (result.failed) process.exitCode = 1;

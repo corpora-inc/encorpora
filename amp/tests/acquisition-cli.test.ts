@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
-import { mkdtempSync, symlinkSync } from "node:fs";
+import { mkdtempSync, rmSync, symlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { promisify } from "node:util";
 import { build } from "esbuild";
 import { serverBuildOptions } from "../scripts/build-server";
-import { applyBatch, BATCH_MAX, USAGE } from "../src/acquisition/cli";
+import { applyBatch, BATCH_MAX, readJson, USAGE } from "../src/acquisition/cli";
 
 test("a batch applies every command in order and counts replays", async () => {
   const seen: unknown[] = [];
@@ -90,7 +90,39 @@ test("a batch must be an array within the size limit", async () => {
   );
 });
 
-test("the server build ships the command as one file that runs on plain node", async () => {
+test("input is decoded whole, so a character split across chunks survives", async () => {
+  const bytes = Buffer.from(
+    JSON.stringify([{ subject: "AMP \u2014 caf\u00e9" }]),
+  );
+  const at = bytes.indexOf(0xe2) + 1; // inside the em dash's three bytes
+  async function* chunks() {
+    yield bytes.subarray(0, at);
+    yield bytes.subarray(at);
+  }
+  assert.deepEqual(await readJson(chunks(), 1000), [
+    { subject: "AMP \u2014 caf\u00e9" },
+  ]);
+  await assert.rejects(readJson(chunks(), 10), /too large/);
+  async function* broken() {
+    yield '[{"email":"parent@example.com",}]';
+  }
+  await assert.rejects(readJson(broken(), 1000), (error: Error) => {
+    assert.equal(error.message, "Input is not valid JSON");
+    return true;
+  });
+});
+
+test("a failure never prints what the input put where an action belongs", async () => {
+  const result = await applyBatch(async () => {
+    throw new Error("refused");
+  }, [{ action: "parent@example.com" }, { action: "claim", kind: "A B" }]);
+  assert.deepEqual(
+    result.errors.map((error) => error.action),
+    ["unknown", "claim"],
+  );
+});
+
+test("the server build ships the command as one file that runs on plain node", async (t) => {
   const root = new URL("..", import.meta.url).pathname;
   const outdir = mkdtempSync(join(tmpdir(), "pipeline-cli-"));
   // Packages stay external, as in the image, where they sit beside `src`.
@@ -129,6 +161,7 @@ test("the server build ships the command as one file that runs on plain node", a
   );
   // No TypeScript loader, no npm: usage is checked before any connection.
   const run = promisify(execFile);
+  t.after(() => rmSync(outdir, { recursive: true, force: true }));
   await assert.rejects(
     run(process.execPath, [join(outdir, "acquisition/cli.mjs"), "nonsense"], {
       env: { ...process.env, AMP_DATABASE_URL: "" },
