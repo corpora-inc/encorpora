@@ -15,7 +15,12 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { sessionReportOptions } from "../../live/api";
-import { helpCount, levelText, percentText } from "../../live/format";
+import {
+  helpCount,
+  levelText,
+  percentText,
+  sessionLength,
+} from "../../live/format";
 import { HelpCounts, helpWords } from "../../live/HelpCounts";
 import { StatusMark } from "../../live/StatusMark";
 import { STATUS_ORDER, STATUS_WORDS } from "../../live/status-words";
@@ -47,8 +52,6 @@ const day = (at: string) =>
     month: "long",
     day: "numeric",
   });
-const minutesBetween = (from: string, to: string) =>
-  Math.max(0, Math.round((Date.parse(to) - Date.parse(from)) / 60_000));
 const plural = (count: number, one: string, many = `${one}s`) =>
   `${count} ${count === 1 ? one : many}`;
 
@@ -444,7 +447,6 @@ export function Report({
   const [view, set] = useClassView();
   const { session, rows, totals } = report;
   const endedAt = session.endedAt ?? session.endsAt;
-  const minutes = minutesBetween(session.startedAt, endedAt);
   const groups = followUp(rows);
   const skills = sessionSkills(rows);
   const shared = skills.filter((entry) => entry.students.length > 1);
@@ -463,7 +465,7 @@ export function Report({
           <ScreenTitle>{`Session on ${day(session.startedAt)}`}</ScreenTitle>
           <p className={styles.when}>
             {clock(session.startedAt)} to {clock(endedAt)} ·{" "}
-            {minutes < 1 ? "under a minute" : plural(minutes, "minute")}
+            {sessionLength(session.startedAt, endedAt, "long")}
             {session.endReason ? ` · ${ENDED[session.endReason]}` : ""}
           </p>
         </div>
