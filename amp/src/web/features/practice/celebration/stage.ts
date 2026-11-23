@@ -307,7 +307,29 @@ export function createStage(host: HTMLElement = document.body) {
         const rect = node.getBoundingClientRect();
         if (!rect.width || !rect.height) continue;
         if (rect.bottom <= rowTop || rect.top >= rowBottom) continue;
-        taken.push([rect.left, rect.right, node === wordmark]);
+        // What shows of it: a name cut short with an ellipsis still measures
+        // its whole length, past the room its box keeps for the chip.
+        let from = rect.left;
+        let to = rect.right;
+        for (
+          let box = node.parentElement;
+          box && box !== bar;
+          box = box.parentElement
+        ) {
+          const style = getComputedStyle(box);
+          if (style.overflowX === "visible") continue;
+          const outer = box.getBoundingClientRect();
+          from = Math.max(
+            from,
+            outer.left + (Number.parseFloat(style.paddingLeft) || 0),
+          );
+          to = Math.min(
+            to,
+            outer.right - (Number.parseFloat(style.paddingRight) || 0),
+          );
+        }
+        if (to <= from) continue;
+        taken.push([from, to, node === wordmark]);
       }
       taken.sort((a, b) => a[0] - b[0]);
       const inset = width >= 768 ? 24 : 12;
