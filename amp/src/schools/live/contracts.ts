@@ -110,6 +110,9 @@ export type StartSessionBody = z.input<typeof startSessionBody>;
  * stored report names the version it was judged by. */
 export const liveRulesResource = z.object({
   version: z.number().int().positive(),
+  /** Seen on their own device within this long before now: here, even with
+   * nothing in the session yet. */
+  hereMs: z.number().int().positive(),
   /** No answer and no help opened for this long: idle. */
   idleMs: z.number().int().positive(),
   /** The last this-many answers all wrong: struggling. */
@@ -160,7 +163,8 @@ const counts = {
   independent: z.number().int().nonnegative(),
   /** Answers that had a hint or a lesson (`outcome.assisted`). */
   assisted: z.number().int().nonnegative(),
-  /** Help opened: hints revealed, lessons, worked explanations, videos. */
+  /** Help opened: hints revealed, lessons, worked explanations, videos. The
+   * student's own: in practice, or on their own sign-in. */
   hints: z.number().int().nonnegative(),
   lessons: z.number().int().nonnegative(),
   examples: z.number().int().nonnegative(),
@@ -180,22 +184,23 @@ export const liveRowResource = z.object({
   level: z.number().nullable(),
   /** Their last answers in the session, at most `rules.recent`, oldest first. */
   recent: z.array(liveOutcomeResource),
-  /** First seen in the session: signed in, a first heartbeat, an answer or
-   * help, whichever came first. */
+  /** First seen in the session: signed in, a first heartbeat in practice, a
+   * raised hand, an answer or help, whichever came first. Their own only: an
+   * adult's sign-in with this child chosen is not the child. */
   firstSeenAt: instant.nullable(),
   firstAnswerAt: instant.nullable(),
   lastAnswerAt: instant.nullable(),
   /** Last help opened in the session (any kind but a print). */
   lastHelpAt: instant.nullable(),
-  /** Last heartbeat or request from a student session, or from a parent's
-   * device practicing as them; any day. */
+  /** Last heartbeat or request from their own student sign-in (one they made,
+   * or the one a parent's "Practice" handed them), any day; null without one.
+   * Never an adult's device. */
   lastSeenAt: instant.nullable(),
-  /** `lastSeenAt` falls on today in the class's school's timezone. */
-  seenToday: z.boolean(),
 });
 export type LiveRow = z.infer<typeof liveRowResource>;
 
-/** The class at a glance. `present`: students not "not signed in". */
+/** The class at a glance. `present`: students not "not signed in" when it
+ * was computed; a live screen counts its own, on its clock (`isHere`). */
 export const liveTotalsResource = z.object({
   students: z.number().int().nonnegative(),
   present: z.number().int().nonnegative(),

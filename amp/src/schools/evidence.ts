@@ -70,8 +70,8 @@ export const CREDITED_SKILL =
  * deltas' total is scaled down to the time since `previous` plus five
  * seconds, and to 90 seconds at most. A problem that isn't this learner's
  * counts toward its surface with no skill. Help events ride along
- * (`helpEventsCte(4)`), and so does a running class session's note of them
- * (`liveHeartbeatCte(4)`). Parameters: $1 deltas, $2 cap, $3 slack, $4 help
+ * (`helpEventsCte(4)`), and so does a running class session's note of what
+ * is the learner's own (`liveHeartbeatCte(4, …)`). Parameters: $1 deltas, $2 cap, $3 slack, $4 help
  * events, then the `live` CTE's own. */
 const HEARTBEAT_CREDIT = `room AS (
     SELECT LEAST($2::bigint,
@@ -126,7 +126,7 @@ export async function recordHeartbeat(
        UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id
      ), demo_seen AS (
        ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
-     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4)}
+     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4, "student")}
      SELECT count(*)::int AS live FROM live`,
     [...params, hashStudentToken(token)],
   );
@@ -164,7 +164,7 @@ export async function recordLearnerActivity(
        FOR UPDATE OF a
      ), ${HEARTBEAT_CREDIT}, touched AS (
        UPDATE amp_learner_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id
-     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4)}
+     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4, "account")}
      SELECT count(*)::int AS live FROM live`,
     [...params, learnerId, accountId],
   );

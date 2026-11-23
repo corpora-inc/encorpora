@@ -85,7 +85,6 @@ const row = (
   lastAnswerAt: null,
   lastHelpAt: null,
   lastSeenAt: iso(-60_000),
-  seenToday: true,
   ...patch,
 });
 const SESSION = "33333333-3333-4333-8333-333333333333";
@@ -133,7 +132,7 @@ const snapshot = (patch: Partial<LiveSnapshot> = {}): LiveSnapshot => ({
   session: running,
   rules: LIVE_RULES,
   rows,
-  totals: liveTotals(rows),
+  totals: liveTotals(rows, NOW),
   signals: [],
   can: { manage: true },
   ...patch,
@@ -318,6 +317,24 @@ test("ended on its own: still and whole, with the report a tap away", async () =
   await waitFor(() =>
     expect(document.querySelector('[data-cockpit="resting"]')).toBeTruthy(),
   );
+});
+
+test("Here and a row's status turn together, on the clock", async () => {
+  // The session began five minutes ago. Ben signed in a little before it
+  // and has done nothing in it: here until ten minutes after he was last
+  // seen, then not signed in, with nothing arriving from the server.
+  const waiting = [
+    rows[0]!,
+    row(2, "Ben", { firstSeenAt: null, lastSeenAt: iso(-585_000) }),
+  ];
+  await mount(snapshot({ rows: waiting, totals: liveTotals(waiting, NOW) }));
+  expect(screen.getByLabelText("2 of 2 here")).toBeTruthy();
+  expect(screen.queryByRole("img", { name: "Not signed in" })).toBeNull();
+  await act(async () => {
+    vi.advanceTimersByTime(31_000);
+  });
+  expect(screen.getByLabelText("1 of 2 here")).toBeTruthy();
+  expect(screen.getByRole("img", { name: "Not signed in" })).toBeTruthy();
 });
 
 test("the clock redraws the cockpit, never what is beside it", async () => {

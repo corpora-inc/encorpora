@@ -8,6 +8,7 @@ import {
   type LiveStatus,
 } from "../src/schools/live/contracts";
 import {
+  isHere,
   LIVE_RULES,
   liveStatus,
   liveTotals,
@@ -24,7 +25,8 @@ const R: LiveOutcome = { correct: true, assisted: false };
 const H: LiveOutcome = { correct: true, assisted: true };
 const W: LiveOutcome = { correct: false, assisted: false };
 
-/** A student who signed in at the start and has done nothing yet. */
+/** A student whose own device was last seen at the start, signed in before
+ * it, and who has done nothing in the session yet. */
 const facts = (over: Partial<StatusFacts> = {}): StatusFacts => ({
   problems: 0,
   hints: 0,
@@ -35,9 +37,11 @@ const facts = (over: Partial<StatusFacts> = {}): StatusFacts => ({
   firstSeenAt: null,
   lastAnswerAt: null,
   lastHelpAt: null,
-  seenToday: true,
+  lastSeenAt: at(0),
   ...over,
 });
+/** No sign-in of their own was ever seen. */
+const UNSEEN = { lastSeenAt: null };
 /** Answered `recent` with the last answer `secondsAgo` before `now`. */
 const answered = (
   recent: LiveOutcome[],
@@ -55,36 +59,121 @@ const cases: {
   now: number;
   expect: LiveStatus;
 }[] = [
-  // 1. not signed in
+  // 1. not signed in: nothing of theirs in the session, and not seen in the
+  // ten minutes before now
   {
-    name: "not seen today, no activity in the session",
-    row: facts({ seenToday: false }),
+    name: "never seen, no activity in the session",
+    row: facts(UNSEEN),
     now: 30,
     expect: "not_signed_in",
   },
   {
-    name: "not seen today, a long time later, still not signed in (not idle)",
-    row: facts({ seenToday: false }),
+    name: "never seen, a long time later, still not signed in (not idle)",
+    row: facts(UNSEEN),
     now: 3600,
     expect: "not_signed_in",
   },
   {
-    name: "not seen today but answered on a parent's device: signed in",
-    row: facts({ seenToday: false, ...answered([R], 20) }),
+    name: "practiced three hours ago, the session starts now",
+    row: facts({ lastSeenAt: at(-3 * 3600) }),
+    now: 0,
+    expect: "not_signed_in",
+  },
+  {
+    name: "practiced three hours ago, two minutes in: not signed in, not idle",
+    row: facts({ lastSeenAt: at(-3 * 3600) }),
+    now: 120,
+    expect: "not_signed_in",
+  },
+  {
+    name: "seen 9 minutes ago, nothing in the session: here",
+    row: facts({ lastSeenAt: at(-510) }),
     now: 30,
     expect: "working",
   },
   {
-    name: "not seen today but opened a lesson in the session: signed in",
-    row: facts({ seenToday: false, lessons: 1, lastHelpAt: at(10) }),
+    name: "seen 11 minutes ago, nothing in the session",
+    row: facts({ lastSeenAt: at(-630) }),
+    now: 30,
+    expect: "not_signed_in",
+  },
+  {
+    name: "seen 9 minutes 59 seconds ago: here",
+    row: facts({ lastSeenAt: at(-599) }),
+    now: 0,
+    expect: "working",
+  },
+  {
+    name: "seen exactly 10 minutes ago: no longer here",
+    row: facts({ lastSeenAt: at(-600) }),
+    now: 0,
+    expect: "not_signed_in",
+  },
+  {
+    name: "seen at the start, quiet at two minutes while still here",
+    row: facts(),
+    now: 599,
+    expect: "idle",
+  },
+  {
+    name: "seen at the start and nothing since: not signed in at ten minutes",
+    row: facts(),
+    now: 600,
+    expect: "not_signed_in",
+  },
+  {
+    name: "a sighting a moment ahead of this clock is still here",
+    row: facts({ lastSeenAt: at(31) }),
     now: 30,
     expect: "working",
   },
   {
-    name: "not seen today but showed up in the session: signed in",
-    row: facts({ seenToday: false, firstSeenAt: at(5) }),
+    name: "an adult's device is never read: a child with nothing of their own",
+    row: facts(UNSEEN),
+    now: 5,
+    expect: "not_signed_in",
+  },
+  {
+    name: "never seen but answered on a parent's sign-in: here",
+    row: facts({ ...UNSEEN, ...answered([R], 20) }),
     now: 30,
     expect: "working",
+  },
+  {
+    name: "a handed-over child answering: here",
+    row: facts({ ...answered([R], 20), lastSeenAt: at(20) }),
+    now: 30,
+    expect: "working",
+  },
+  {
+    name: "never seen but opened a lesson in the session: here",
+    row: facts({ ...UNSEEN, lessons: 1, lastHelpAt: at(10) }),
+    now: 30,
+    expect: "working",
+  },
+  {
+    name: "never seen but showed up in the session (signed in, a hand): here",
+    row: facts({ ...UNSEEN, firstSeenAt: at(5) }),
+    now: 30,
+    expect: "working",
+  },
+  {
+    name: "an answer in the session, then 30 minutes of silence: quiet, still here",
+    row: facts({ ...answered([R], 20), lastSeenAt: at(25) }),
+    now: 20 + 1800,
+    expect: "idle",
+  },
+  {
+    name: "signed in during the session, then 30 minutes of silence: quiet",
+    row: facts({ firstSeenAt: at(5), lastSeenAt: at(5) }),
+    now: 5 + 1800,
+    expect: "idle",
+  },
+  {
+    name: "help in the session, then 30 minutes of silence: quiet",
+    row: facts({ ...UNSEEN, hints: 1, lastHelpAt: at(10) }),
+    now: 10 + 1800,
+    expect: "idle",
   },
   // 2. idle: 120 s with no answer or help, from max(start, first seen)
   {
@@ -247,6 +336,39 @@ test("live status: accepts a Date and a rules object", () => {
     ),
     "idle",
   );
+  assert.equal(
+    liveStatus(
+      row,
+      { now: START + 60_000, startedAt: at(0) },
+      { ...LIVE_RULES, hereMs: 60_000 },
+    ),
+    "not_signed_in",
+  );
+});
+
+test("live status: here is the first rule, and the rest keep their order", () => {
+  assert.equal(LIVE_RULES.version, 2);
+  assert.equal(LIVE_RULES.hereMs, 600_000);
+  assert.equal(LIVE_RULES.idleMs, 120_000);
+  // Three wrong in the session an hour ago: still here, and idle before
+  // struggling, as ever.
+  const row = facts({ ...UNSEEN, ...answered([W, W, W], 10) });
+  assert.equal(isHere(row, START + 3_600_000), true);
+  assert.equal(
+    liveStatus(row, { now: START + 3_600_000, startedAt: at(0) }),
+    "idle",
+  );
+  // Here by a recent sighting alone takes the same later rules.
+  const seen = facts({ lastSeenAt: at(-60) });
+  assert.equal(isHere(seen, new Date(START + 119_000)), true);
+  assert.equal(
+    liveStatus(seen, { now: START + 119_000, startedAt: at(0) }),
+    "working",
+  );
+  assert.equal(
+    liveStatus(seen, { now: START + 120_000, startedAt: at(0) }),
+    "idle",
+  );
 });
 
 const row = (over: Partial<LiveRow>): LiveRow => ({
@@ -268,14 +390,13 @@ const row = (over: Partial<LiveRow>): LiveRow => ({
   lastAnswerAt: null,
   lastHelpAt: null,
   lastSeenAt: null,
-  seenToday: false,
   ...over,
 });
 
 test("live totals: sums, who is present and who is answering", () => {
   const rows = [
     row({
-      seenToday: true,
+      lastSeenAt: at(-60),
       problems: 4,
       correct: 3,
       independent: 2,
@@ -283,11 +404,11 @@ test("live totals: sums, who is present and who is answering", () => {
       hints: 2,
     }),
     row({ problems: 1, correct: 1, independent: 1, videos: 1 }),
-    row({ seenToday: true }),
+    row({ lastSeenAt: at(-60) }),
     row({}),
   ];
   for (const r of rows) liveRowResource.parse(r);
-  assert.deepEqual(liveTotals(rows), {
+  assert.deepEqual(liveTotals(rows, START), {
     students: 4,
     present: 3,
     answering: 2,
@@ -308,15 +429,50 @@ test("live totals: sums, who is present and who is answering", () => {
         status: i === 3 ? ("not_signed_in" as const) : ("working" as const),
       })),
     ),
-    liveTotals(rows),
+    liveTotals(rows, START),
   );
   liveSnapshotResponse.parse({
     serverNow: at(0),
     session: null,
     rules: LIVE_RULES,
     rows: [],
-    totals: liveTotals([]),
+    totals: liveTotals([], START),
     signals: [],
     can: { manage: true },
   });
+});
+
+test("live totals: who is here follows the same rule as the status, on the clock", () => {
+  const rows = [
+    // Practiced this morning.
+    row({ lastSeenAt: at(-3 * 3600) }),
+    // Seen 9 minutes before the start, nothing since.
+    row({ lastSeenAt: at(-540) }),
+    // Answered in the session; a parent's sign-in, so never seen.
+    row({ problems: 1, firstSeenAt: at(20), lastAnswerAt: at(20) }),
+    // Raised a hand in the session.
+    row({ firstSeenAt: at(40), lastSeenAt: at(-1200) }),
+    // Nothing of their own.
+    row({}),
+  ];
+  const present = (seconds: number) =>
+    liveTotals(rows, START + seconds * 1000).present;
+  assert.equal(present(0), 3);
+  assert.equal(present(59), 3);
+  assert.equal(present(60), 2, "ten minutes after the last sighting");
+  assert.equal(present(1800), 2, "the session's own never lapse");
+  for (const seconds of [0, 59, 60, 1800])
+    assert.equal(
+      present(seconds),
+      rows.filter(
+        (r) =>
+          liveStatus(r, { now: START + seconds * 1000, startedAt: at(0) }) !==
+          "not_signed_in",
+      ).length,
+    );
+  assert.equal(liveTotals(rows, new Date(START)).present, 3);
+  assert.equal(
+    liveTotals(rows, START, { ...LIVE_RULES, hereMs: 60_000 }).present,
+    2,
+  );
 });

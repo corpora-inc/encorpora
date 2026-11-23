@@ -399,7 +399,7 @@ export async function readLiveSnapshot(
     session,
     rules: LIVE_RULES,
     rows,
-    totals: liveTotals(rows),
+    totals: liveTotals(rows, serverNow),
     signals,
     can: { manage },
   };

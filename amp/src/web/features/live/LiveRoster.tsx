@@ -57,6 +57,11 @@ export const answeringNow = (statuses: ReadonlyMap<string, LiveStatus>) =>
       status === "working" || status === "flying" || status === "struggling",
   ).length;
 
+/** How many are here now: everyone but "not signed in". It turns with the
+ * clock, as the statuses do (seen in the last ten minutes). */
+export const hereNow = (statuses: ReadonlyMap<string, LiveStatus>) =>
+  [...statuses.values()].filter((status) => status !== "not_signed_in").length;
+
 const collator = new Intl.Collator("en", { sensitivity: "base" });
 
 /**

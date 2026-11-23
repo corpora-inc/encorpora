@@ -246,7 +246,7 @@ export function applyLiveMessage(
       ...held,
       serverNow: parsed.data.serverNow,
       rows,
-      totals: liveTotals(rows),
+      totals: liveTotals(rows, Date.parse(parsed.data.serverNow)),
     };
   }
   if (event === STREAM_EVENTS.signals) {

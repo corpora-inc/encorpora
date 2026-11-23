@@ -8,11 +8,12 @@ import type {
 
 /* A student's live status, from the facts in their row. Pure and shared: the
    server judges the report with it when a session stops, and the web re-derives
-   `idle` on its own clock between updates. Imports types only, so the web can
-   import it. First match wins. */
+   it on its own clock between updates (who is here and who is idle both turn
+   with time). Imports types only, so the web can import it. First match wins. */
 
 export const LIVE_RULES: LiveRules = {
-  version: 1,
+  version: 2,
+  hereMs: 600_000,
   idleMs: 120_000,
   wrongRun: 3,
   recent: 5,
@@ -31,7 +32,7 @@ export type StatusFacts = Pick<
   | "firstSeenAt"
   | "lastAnswerAt"
   | "lastHelpAt"
-  | "seenToday"
+  | "lastSeenAt"
 >;
 
 const time = (iso: string | null) => (iso === null ? null : Date.parse(iso));
@@ -45,7 +46,26 @@ export const activeInSession = (row: StatusFacts) =>
   row.lastHelpAt !== null;
 
 /**
- * 1. `not_signed_in`: not seen today, and nothing in the session.
+ * Here: something of theirs happened in the session (an answer, help, a
+ * sign-in or a raised hand: `firstSeenAt`), or their own device was seen in
+ * the `hereMs` before `now`. Practice earlier in the day is not here, and an
+ * adult's device never is (`rows.ts` reads only what is the student's own).
+ */
+export function isHere(
+  row: StatusFacts,
+  now: number | Date,
+  rules: LiveRules = LIVE_RULES,
+): boolean {
+  if (activeInSession(row) || row.firstSeenAt !== null) return true;
+  const seen = time(row.lastSeenAt);
+  return (
+    seen !== null &&
+    (typeof now === "number" ? now : now.getTime()) - seen < rules.hereMs
+  );
+}
+
+/**
+ * 1. `not_signed_in`: not here (`isHere`).
  * 2. `idle`: no answer and no help for `idleMs`, counted from the later of the
  *    session's start and when they were first seen in it.
  * 3. `struggling`: the last `wrongRun` answers all wrong, or at most
@@ -59,8 +79,7 @@ export function liveStatus(
   rules: LiveRules = LIVE_RULES,
 ): LiveStatus {
   const now = typeof at.now === "number" ? at.now : at.now.getTime();
-  if (!row.seenToday && !activeInSession(row) && row.firstSeenAt === null)
-    return "not_signed_in";
+  if (!isHere(row, now, rules)) return "not_signed_in";
   const since = latest(
     Date.parse(at.startedAt),
     time(row.firstSeenAt),
@@ -120,16 +139,15 @@ const add = (
   return totals;
 };
 
-/** The class's totals over live rows. Present: anyone not "not signed in",
- * which doesn't depend on the clock. */
-export const liveTotals = (rows: readonly LiveRow[]): LiveTotals =>
+/** The class's totals over live rows at `now`. Present: anyone not "not
+ * signed in" (`isHere`), so it turns with the clock as that status does. */
+export const liveTotals = (
+  rows: readonly LiveRow[],
+  now: number | Date,
+  rules: LiveRules = LIVE_RULES,
+): LiveTotals =>
   rows.reduce(
-    (totals, row) =>
-      add(
-        totals,
-        row,
-        row.seenToday || activeInSession(row) || row.firstSeenAt !== null,
-      ),
+    (totals, row) => add(totals, row, isHere(row, now, rules)),
     zero(),
   );
 

@@ -55,7 +55,6 @@ const row = (
   lastAnswerAt: null,
   lastHelpAt: null,
   lastSeenAt: null,
-  seenToday: false,
   ...extra,
 });
 const snapshot = (rows: LiveRow[]): LiveSnapshot => ({
@@ -74,7 +73,7 @@ const snapshot = (rows: LiveRow[]): LiveSnapshot => ({
   },
   rules: LIVE_RULES,
   rows,
-  totals: liveTotals(rows),
+  totals: liveTotals(rows, Date.parse(NOW)),
   signals: [],
   can: { manage: true },
 });
@@ -89,7 +88,6 @@ const answered = row(1, "Ana", {
   ],
   firstSeenAt: NOW,
   lastAnswerAt: NOW,
-  seenToday: true,
 });
 
 test("a snapshot replaces; rows merge by person and the totals follow", () => {
