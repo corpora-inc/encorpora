@@ -103,8 +103,9 @@ export function CurriculumPractice({
           ...opened,
           addressed: addressedIdentity(location.pathname)?.id,
         }}
-        // A layer on a screen that shows several children names its skill.
-        detailed={!!opened}
+        // A layer opened for one child on a screen of several names its
+        // skill, and takes the place of the link that was there.
+        detailed={!!opened?.learner}
         own={view.account?.adultPractice?.learner?.id}
         filter={filter}
       />
