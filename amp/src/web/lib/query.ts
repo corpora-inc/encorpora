@@ -11,6 +11,7 @@ import { request } from "./api";
 import { qk } from "./keys";
 import { setAnalyticsSession } from "./analytics";
 import { noteSignedIn } from "./session-hint";
+import { settleTab } from "./student-device";
 import { setHomeAccount } from "./home-place";
 import { MOUNT_REFETCH_AFTER_MS, queryClient } from "./query-client";
 export { MOUNT_REFETCH_AFTER_MS, queryClient };
@@ -28,6 +29,9 @@ export const sessionOptions = queryOptions({
     // A completed (never a cancelled) check says which session is this
     // tab's: its token is current.
     changeSession(undefined, session?.token);
+    // And whose tab this is: an adult's never becomes the child this
+    // browser remembers from another tab (lib/student-device.ts).
+    settleTab(session);
     setAnalyticsSession(session);
     noteSignedIn(!!session);
     setHomeAccount(session?.accountId ?? null);
