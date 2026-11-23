@@ -132,7 +132,7 @@ const snapshot = (patch: Partial<LiveSnapshot> = {}): LiveSnapshot => ({
   session: running,
   rules: LIVE_RULES,
   rows,
-  totals: liveTotals(rows, NOW),
+  totals: liveTotals(rows, { now: NOW, startedAt: running.startedAt }),
   signals: [],
   can: { manage: true },
   ...patch,
@@ -327,9 +327,18 @@ test("Here and a row's status turn together, on the clock", async () => {
     rows[0]!,
     row(2, "Ben", { firstSeenAt: null, lastSeenAt: iso(-585_000) }),
   ];
-  await mount(snapshot({ rows: waiting, totals: liveTotals(waiting, NOW) }));
+  await mount(
+    snapshot({
+      rows: waiting,
+      totals: liveTotals(waiting, { now: NOW, startedAt: running.startedAt }),
+    }),
+  );
   expect(screen.getByLabelText("2 of 2 here")).toBeTruthy();
   expect(screen.queryByRole("img", { name: "Not signed in" })).toBeNull();
+  // Here, but nothing of his in the session yet: quiet, never working, and
+  // not among those answering now.
+  expect(screen.getByRole("img", { name: "Quiet" })).toBeTruthy();
+  expect(screen.getByLabelText("1 answering now")).toBeTruthy();
   await act(async () => {
     vi.advanceTimersByTime(31_000);
   });

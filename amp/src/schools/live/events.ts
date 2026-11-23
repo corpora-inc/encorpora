@@ -55,24 +55,25 @@ export async function notePersonEvent(
 }
 
 /** Whose sign-in a heartbeat came on. `student`: the learner's own, so all of
- * it is theirs. `account`: an adult's, with this learner chosen; a parent
- * reading a child's Pathways or lessons is not the child, so only time on one
- * of the learner's own problems, and help opened in practice, are theirs. */
+ * it is theirs. `account`: an adult's, with this learner chosen. Time on an
+ * adult's sign-in is never a child's presence, whatever screen it was on (a
+ * parent reading the child's Pathways, or looking at practice as them): only
+ * what is done in practice, an answer (`noteLearnerEvent`) or help opened
+ * there, is the child's. */
 export type HeartbeatSender = "student" | "account";
 
 /** A CTE for a heartbeat statement whose `live` CTE names the learner
- * (`learner_id`) and whose `raw` CTE holds its deltas (`problem_id`, `ms`):
- * `help` when the heartbeat carries help of theirs (`$<param>`, the
- * `helpEventsCte` rows), and `presence` on their first heartbeat in a
- * session, so a student who signed in before Start, or a child in practice
- * on a parent's sign-in, shows up without answering. */
+ * (`learner_id`): `help` when the heartbeat carries help of theirs
+ * (`$<param>`, the `helpEventsCte` rows), and `presence` on the first
+ * heartbeat in a session from their own sign-in, so a student who signed in
+ * before Start shows up without answering. */
 export const liveHeartbeatCte = (param: number, sender: HeartbeatSender) => {
   const [help, theirs] =
     sender === "student"
       ? [`jsonb_array_length($${param}::jsonb)>0`, "true"]
       : [
           `EXISTS (SELECT 1 FROM jsonb_array_elements($${param}::jsonb) e WHERE e->>'source'='practice')`,
-          `EXISTS (SELECT 1 FROM raw JOIN amp_instances i ON i.id=raw.problem_id AND i.learner_id=live.learner_id WHERE raw.ms>0)`,
+          "false",
         ];
   return `live_noted AS (
   INSERT INTO amp_class_events(class_id,session_id,person_id,kind)

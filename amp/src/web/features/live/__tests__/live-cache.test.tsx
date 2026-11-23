@@ -73,7 +73,7 @@ const snapshot = (rows: LiveRow[]): LiveSnapshot => ({
   },
   rules: LIVE_RULES,
   rows,
-  totals: liveTotals(rows, Date.parse(NOW)),
+  totals: liveTotals(rows, { now: Date.parse(NOW), startedAt: NOW }),
   signals: [],
   can: { manage: true },
 });

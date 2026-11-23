@@ -132,12 +132,17 @@ export async function readLiveRows(
          AND ${OWN_HELP}
      ) h
      -- Their own sign-in, last seen before the window's end: a session judged
-     -- after it ended doesn't count who arrived later.
+     -- after it ended doesn't count who arrived later. Nor does a sighting
+     -- from before an open "I forgot my picture": they are at the sign-in
+     -- screen, signed out of the device it was on.
      CROSS JOIN LATERAL (
        SELECT max(s.last_seen_at) AS last_seen FROM amp_student_sessions s
        WHERE s.person_id=r.person_id AND s.revoked_at IS NULL AND s.last_seen_at<$3::timestamptz
+         AND NOT EXISTS (SELECT 1 FROM amp_class_signals f
+           WHERE f.class_id=$1 AND f.person_id=r.person_id AND f.kind='forgot_picture'
+             AND f.resolved_at IS NULL AND f.created_at>s.last_seen_at)
      ) seen
-     -- Showed up in the session: signed in or first in practice (the presence
+     -- Showed up in the session: signed in, or first active on their own sign-in (the presence
      -- events), or raised a hand. "I forgot my picture" is not signed in.
      CROSS JOIN LATERAL (
        SELECT LEAST(

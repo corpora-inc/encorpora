@@ -101,7 +101,10 @@ function Cockpit({
       control={control}
       totals={
         <LiveTotals
-          totals={liveTotals(state.rows, state.now)}
+          totals={liveTotals(state.rows, {
+            now: state.now,
+            startedAt: live.startedAt,
+          })}
           hereNow={hereNow(statuses)}
           answeringNow={answeringNow(statuses)}
         />

@@ -139,7 +139,7 @@ const snapshot = (patch: Partial<LiveSnapshot> = {}): LiveSnapshot => ({
   session: running,
   rules: LIVE_RULES,
   rows: kids,
-  totals: liveTotals(kids, NOW),
+  totals: liveTotals(kids, { now: NOW, startedAt: running.startedAt }),
   signals: [],
   can: { manage: true },
   ...patch,

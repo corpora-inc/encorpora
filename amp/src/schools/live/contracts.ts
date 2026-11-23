@@ -110,8 +110,8 @@ export type StartSessionBody = z.input<typeof startSessionBody>;
  * stored report names the version it was judged by. */
 export const liveRulesResource = z.object({
   version: z.number().int().positive(),
-  /** Seen on their own device within this long before now: here, even with
-   * nothing in the session yet. */
+  /** Seen on their own device within this long before now: here on a live
+   * screen, even with nothing in the session yet (never in a report). */
   hereMs: z.number().int().positive(),
   /** No answer and no help opened for this long: idle. */
   idleMs: z.number().int().positive(),
@@ -184,7 +184,7 @@ export const liveRowResource = z.object({
   level: z.number().nullable(),
   /** Their last answers in the session, at most `rules.recent`, oldest first. */
   recent: z.array(liveOutcomeResource),
-  /** First seen in the session: signed in, a first heartbeat in practice, a
+  /** First seen in the session: signed in, a first heartbeat of their own, a
    * raised hand, an answer or help, whichever came first. Their own only: an
    * adult's sign-in with this child chosen is not the child. */
   firstSeenAt: instant.nullable(),
@@ -193,14 +193,16 @@ export const liveRowResource = z.object({
   /** Last help opened in the session (any kind but a print). */
   lastHelpAt: instant.nullable(),
   /** Last heartbeat or request from their own student sign-in (one they made,
-   * or the one a parent's "Practice" handed them), any day; null without one.
-   * Never an adult's device. */
+   * or the one a parent's "Practice" handed them), any day; null without one,
+   * or while "I forgot my picture" is open after it. At or after the
+   * session's start, it puts them in the session. Never an adult's device. */
   lastSeenAt: instant.nullable(),
 });
 export type LiveRow = z.infer<typeof liveRowResource>;
 
-/** The class at a glance. `present`: students not "not signed in" when it
- * was computed; a live screen counts its own, on its clock (`isHere`). */
+/** The class at a glance. `present`: students not "not signed in". Live, as
+ * of when it was computed (a screen counts its own, on its clock: `isHere`);
+ * in a report, who was in the session (`reportStatus`). */
 export const liveTotalsResource = z.object({
   students: z.number().int().nonnegative(),
   present: z.number().int().nonnegative(),
@@ -251,7 +253,8 @@ export const reportRowResource = z.object({
   firstSeenAt: instant.nullable(),
   firstAnswerAt: instant.nullable(),
   lastAnswerAt: instant.nullable(),
-  /** Their status when the session ended. */
+  /** Their status when the session ended, by the session's window alone:
+   * `not_signed_in` unless something of theirs happened in it. */
   status: z.enum(liveStatuses),
 });
 export type ReportRow = z.infer<typeof reportRowResource>;

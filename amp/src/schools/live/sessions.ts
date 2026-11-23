@@ -13,7 +13,12 @@ import {
 import { noteClassEvent, SESSION_ENDS_AT } from "./events.js";
 import { STUDENT_LABEL } from "../sign-in.js";
 import { readLiveRows, readOpenSignals, skillRef, toLiveRow } from "./rows.js";
-import { LIVE_RULES, liveStatus, liveTotals, reportTotals } from "./status.js";
+import {
+  LIVE_RULES,
+  liveTotals,
+  reportStatus,
+  reportTotals,
+} from "./status.js";
 
 type Database = Pick<PoolClient, "query">;
 
@@ -141,7 +146,7 @@ async function freeze(
             first_seen_at: row.firstSeenAt,
             first_answer_at: row.firstAnswerAt,
             last_answer_at: row.lastAnswerAt,
-            status: liveStatus(row, at),
+            status: reportStatus(row, at),
           })),
         ),
       ],
@@ -399,7 +404,10 @@ export async function readLiveSnapshot(
     session,
     rules: LIVE_RULES,
     rows,
-    totals: liveTotals(rows, serverNow),
+    totals: liveTotals(rows, {
+      now: serverNow,
+      startedAt: session?.startedAt ?? serverNow.toISOString(),
+    }),
     signals,
     can: { manage },
   };

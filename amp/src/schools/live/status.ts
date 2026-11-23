@@ -45,29 +45,45 @@ export const activeInSession = (row: StatusFacts) =>
   row.hints + row.lessons + row.examples + row.videos > 0 ||
   row.lastHelpAt !== null;
 
+type At = { now: number | Date; startedAt: string };
+const ms = (now: number | Date) =>
+  typeof now === "number" ? now : now.getTime();
+
 /**
- * Here: something of theirs happened in the session (an answer, help, a
- * sign-in or a raised hand: `firstSeenAt`), or their own device was seen in
- * the `hereMs` before `now`. Practice earlier in the day is not here, and an
- * adult's device never is (`rows.ts` reads only what is the student's own).
+ * In the session: something of theirs happened inside its window. An answer
+ * or help, a sign-in, a first heartbeat from their own sign-in or a raised hand
+ * (`firstSeenAt`), or their own sign-in seen since it started. This is what
+ * "signed in" and "started" mean for a session, and all a stored report
+ * goes by. An adult's device never counts (`rows.ts` reads only what is the
+ * student's own).
+ */
+export function inSession(row: StatusFacts, startedAt: string): boolean {
+  if (activeInSession(row) || row.firstSeenAt !== null) return true;
+  const seen = time(row.lastSeenAt);
+  return seen !== null && seen >= Date.parse(startedAt);
+}
+
+/**
+ * Here, on a live screen: in the session, or their own sign-in was seen in
+ * the `hereMs` before `now` (a class that signed in just before Start is in
+ * the room). Practice earlier in the day is not here.
  */
 export function isHere(
   row: StatusFacts,
-  now: number | Date,
+  at: At,
   rules: LiveRules = LIVE_RULES,
 ): boolean {
-  if (activeInSession(row) || row.firstSeenAt !== null) return true;
+  if (inSession(row, at.startedAt)) return true;
   const seen = time(row.lastSeenAt);
-  return (
-    seen !== null &&
-    (typeof now === "number" ? now : now.getTime()) - seen < rules.hereMs
-  );
+  return seen !== null && ms(at.now) - seen < rules.hereMs;
 }
 
 /**
  * 1. `not_signed_in`: not here (`isHere`).
  * 2. `idle`: no answer and no help for `idleMs`, counted from the later of the
- *    session's start and when they were first seen in it.
+ *    session's start and when they were first seen in it; or here with
+ *    nothing of theirs in the session yet (seen just before it), which is
+ *    never "working".
  * 3. `struggling`: the last `wrongRun` answers all wrong, or at most
  *    `struggleMaxCorrect` right of the last `recent`.
  * 4. `flying`: the last `recent` answers all right with no help.
@@ -75,11 +91,12 @@ export function isHere(
  */
 export function liveStatus(
   row: StatusFacts,
-  at: { now: number | Date; startedAt: string },
+  at: At,
   rules: LiveRules = LIVE_RULES,
 ): LiveStatus {
-  const now = typeof at.now === "number" ? at.now : at.now.getTime();
-  if (!isHere(row, now, rules)) return "not_signed_in";
+  const now = ms(at.now);
+  if (!isHere(row, at, rules)) return "not_signed_in";
+  if (!inSession(row, at.startedAt)) return "idle";
   const since = latest(
     Date.parse(at.startedAt),
     time(row.firstSeenAt),
@@ -103,6 +120,19 @@ export function liveStatus(
     return "flying";
   return "working";
 }
+
+/**
+ * A student's status in a stored report, judged when the session ended, by
+ * the session's window alone: whoever did nothing in it didn't sign in,
+ * however lately they were seen before it. A report never says "signed in"
+ * for a sign-in the session didn't see.
+ */
+export const reportStatus = (
+  row: StatusFacts,
+  at: At,
+  rules: LiveRules = LIVE_RULES,
+): LiveStatus =>
+  inSession(row, at.startedAt) ? liveStatus(row, at, rules) : "not_signed_in";
 
 const zero = (): LiveTotals => ({
   students: 0,
@@ -139,15 +169,15 @@ const add = (
   return totals;
 };
 
-/** The class's totals over live rows at `now`. Present: anyone not "not
+/** The class's totals over live rows at `at.now`. Present: anyone not "not
  * signed in" (`isHere`), so it turns with the clock as that status does. */
 export const liveTotals = (
   rows: readonly LiveRow[],
-  now: number | Date,
+  at: At,
   rules: LiveRules = LIVE_RULES,
 ): LiveTotals =>
   rows.reduce(
-    (totals, row) => add(totals, row, isHere(row, now, rules)),
+    (totals, row) => add(totals, row, isHere(row, at, rules)),
     zero(),
   );
 

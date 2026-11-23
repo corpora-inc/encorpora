@@ -612,7 +612,12 @@ function Grid(view: RosterView) {
             align: "end",
             firstSort: "descending",
             compare: held,
-            cell: (row) => levelText(row.level),
+            cell: (row) => {
+              const text = levelText(row.level);
+              // Right-aligned, as "Last active" is: a new word ("Gr 8" to
+              // "Alg 1") is a new node, never one sliding over.
+              return <span key={text}>{text}</span>;
+            },
           } satisfies DataGridColumn<LiveRow>,
         ]
       : []),

@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
 import { liveTotals } from "../../../../schools/live/status";
-import { hereNow, liveStatuses } from "../LiveRoster";
+import { answeringNow, hereNow, liveStatuses } from "../LiveRoster";
 import { LiveTotals } from "../LiveTotals";
 import { iso, row, START } from "./fixtures";
 
@@ -13,7 +13,7 @@ test("five fixed tiles: here of the class, answering now, problems, percent corr
     row("Bram", { problems: 4, correct: 2, lessons: 1 }),
     row("Cal", { firstSeenAt: null, lastSeenAt: null }),
   ];
-  const totals = liveTotals(rows, START);
+  const totals = liveTotals(rows, { now: START, startedAt: iso(0) });
   const here = hereNow(liveStatuses(rows, { now: START, startedAt: iso(0) }));
   expect(here).toBe(totals.present);
   const { container } = render(
@@ -36,7 +36,7 @@ test("five fixed tiles: here of the class, answering now, problems, percent corr
 test("before any answer, percent correct is a dash, said in words", () => {
   render(
     <LiveTotals
-      totals={liveTotals([row("Ada")], START)}
+      totals={liveTotals([row("Ada")], { now: START, startedAt: iso(0) })}
       hereNow={1}
       answeringNow={0}
     />,
@@ -53,12 +53,27 @@ test("Here turns with the clock: seen before the session, then nothing in it", (
   const here = (ms: number) =>
     hereNow(liveStatuses(rows, { now: START + ms, startedAt: iso(0) }));
   expect(here(4 * 60_000)).toBe(2);
+  // Here by a sighting before the session is never "answering now".
+  expect(
+    answeringNow(
+      liveStatuses(rows, { now: START + 60_000, startedAt: iso(0) }),
+    ),
+  ).toBe(1);
+  expect(
+    liveStatuses(rows, { now: START + 1000, startedAt: iso(0) }).get(
+      rows[1]!.personId,
+    ),
+  ).toBe("idle");
   expect(here(5 * 60_000)).toBe(1);
-  expect(liveTotals(rows, START + 4 * 60_000).present).toBe(2);
-  expect(liveTotals(rows, START + 5 * 60_000).present).toBe(1);
+  expect(
+    liveTotals(rows, { now: START + 4 * 60_000, startedAt: iso(0) }).present,
+  ).toBe(2);
+  expect(
+    liveTotals(rows, { now: START + 5 * 60_000, startedAt: iso(0) }).present,
+  ).toBe(1);
   render(
     <LiveTotals
-      totals={liveTotals(rows, START)}
+      totals={liveTotals(rows, { now: START, startedAt: iso(0) })}
       hereNow={here(5 * 60_000)}
       answeringNow={0}
     />,
