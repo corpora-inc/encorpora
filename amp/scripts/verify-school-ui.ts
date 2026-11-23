@@ -163,16 +163,17 @@ function rosterCsv() {
   return `${lines.join("\r\n")}\r\n`;
 }
 
-/** The invitation's one way forward (InviteScreen, e1ff913b8): "Continue"
- * opens the sign-in, which signs in or creates; a person with no account
- * takes its "Create an account" to the sign-up. */
+/** The invitation's one way forward (InviteScreen): "Continue" opens the
+ * screen the invited address needs. Nobody here has an account yet, so it
+ * opens creating one, with nothing to choose on the way. */
 async function continueToSignUp(page: Page) {
   await page.getByRole("link", { name: "Continue", exact: true }).click();
-  await page.waitForURL(/\/sign-in/);
-  await page
-    .getByRole("button", { name: "Create an account", exact: true })
-    .click();
-  await page.waitForURL(/\/sign-up/);
+  await page.waitForURL(/\/sign-(in|up)/);
+  assert.equal(
+    new URL(page.url()).pathname,
+    "/sign-up",
+    "an invited address with no account opens creating one",
+  );
 }
 async function signUp(page: Page, email: string) {
   const fallback = page.getByRole("button", {

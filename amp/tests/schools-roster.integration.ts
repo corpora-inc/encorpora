@@ -426,6 +426,8 @@ test(
           role: "admin",
           email: "head@linden.example",
           setup: true,
+          // Nobody has signed up with it yet.
+          hasAccount: false,
         });
         // Running it again while setup waits is the same invitation, and nothing new.
         const again = await issue(
@@ -962,6 +964,7 @@ test(
         role: "teacher",
         email: "teacher@gum.example",
         setup: false,
+        hasAccount: false,
       });
       // The mailed link proves the address at sign-up, so no second mail.
       const cookie = `amp.school-signup=${token}.${proof}`;
