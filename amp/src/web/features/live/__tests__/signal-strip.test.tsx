@@ -64,13 +64,22 @@ test("each request names the student, how long ago, and its one action", () => {
 });
 
 test("as many requests as fit show; the rest are one tap away in a sheet", () => {
-  // A phone shows one; a desktop as many of 264 px as fit.
-  expect(stripFit(358, 3)).toEqual({ shown: 1, chip: 264 });
-  expect(stripFit(1120, 3)).toEqual({ shown: 3, chip: 264 });
-  expect(stripFit(1120, 6)).toEqual({ shown: 3, chip: 264 });
-  // A 320 px phone: one request, narrowed to leave room for "+N".
-  expect(stripFit(288, 2)).toEqual({ shown: 1, chip: 216 });
-  expect(stripFit(1120, 0)).toEqual({ shown: 0, chip: 264 });
+  // A 390 px phone names two requests side by side, and only a third
+  // brings the "+N" button.
+  expect(stripFit(358, 1)).toEqual({ shown: 1, chip: 175 });
+  expect(stripFit(358, 2)).toEqual({ shown: 2, chip: 175 });
+  expect(stripFit(358, 3)).toEqual({ shown: 1, chip: 175 });
+  // A 320 px phone holds one, always clear of the button's place.
+  expect(stripFit(288, 1)).toEqual({ shown: 1, chip: 224 });
+  expect(stripFit(288, 2)).toEqual({ shown: 1, chip: 224 });
+  // A tablet: two, and still two beside the button.
+  expect(stripFit(720, 2)).toEqual({ shown: 2, chip: 264 });
+  expect(stripFit(720, 5)).toEqual({ shown: 2, chip: 264 });
+  // A desktop: four fit, three beside the button.
+  expect(stripFit(1120, 3)).toEqual({ shown: 3, chip: 244 });
+  expect(stripFit(1120, 4)).toEqual({ shown: 4, chip: 244 });
+  expect(stripFit(1120, 6)).toEqual({ shown: 3, chip: 244 });
+  expect(stripFit(1120, 0)).toEqual({ shown: 0, chip: 244 });
   Object.defineProperty(window, "innerWidth", {
     configurable: true,
     value: 390,
@@ -90,6 +99,7 @@ test("as many requests as fit show; the rest are one tap away in a sheet", () =>
     />,
   );
   expect(screen.getAllByRole("listitem")).toHaveLength(1);
+  expect(screen.getByRole("listitem").style.width).toBe("175px");
   fireEvent.click(
     screen.getByRole("button", { name: "2 more requests: show all" }),
   );
@@ -99,4 +109,48 @@ test("as many requests as fit show; the rest are one tap away in a sheet", () =>
     within(sheet).getByRole("button", { name: /Reset pictures: Hugo Bell/ }),
   );
   expect(reset).toHaveBeenCalledWith(signals[1]);
+});
+
+test("a request's width never depends on how many are open, and shown ones always fit", () => {
+  for (let width = 240; width <= 1440; width += 7) {
+    const { chip } = stripFit(width, 1);
+    const room = width - (width >= 560 ? 120 : 0);
+    for (let count = 0; count <= 12; count++) {
+      const fit = stripFit(width, count);
+      expect(fit.chip, `${width}px, ${count} open`).toBe(chip);
+      const more = fit.shown < count ? 64 : 0;
+      expect(
+        fit.shown * chip + Math.max(0, fit.shown - 1) * 8 + more,
+        `${width}px, ${count} open`,
+      ).toBeLessThanOrEqual(room);
+      // Never a "+N" while another whole request would fit without it.
+      if (fit.shown < count)
+        expect(count * chip + (count - 1) * 8).toBeGreaterThan(room);
+      if (count > 0) expect(fit.shown).toBeGreaterThan(0);
+    }
+  }
+});
+
+test("two requests on a phone both show their names, with no “+1”", () => {
+  Object.defineProperty(window, "innerWidth", {
+    configurable: true,
+    value: 390,
+  });
+  render(
+    <SignalStrip
+      signals={[
+        signal(gia, "forgot_picture", 20_000, now),
+        signal(hugo, "hand", 10_000, now),
+      ]}
+      now={now}
+      onAcknowledge={vi.fn()}
+      onResetPictures={vi.fn()}
+    />,
+  );
+  const strip = screen.getByRole("region", { name: "Needs you" });
+  expect(within(strip).getAllByRole("listitem")).toHaveLength(2);
+  expect(strip.textContent).toMatch(/Gia Tran.*Hugo Bell/);
+  expect(
+    within(strip).queryByRole("button", { name: /more request/ }),
+  ).toBeNull();
 });
