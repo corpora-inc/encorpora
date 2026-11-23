@@ -1,4 +1,8 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
@@ -6,6 +10,7 @@ import type { LiveRow, LiveSnapshot } from "../../../../schools/live/contracts";
 import { LIVE_RULES, liveTotals } from "../../../../schools/live/status";
 import type { AuthSession } from "../../../auth";
 import type { LiveStreamOptions } from "../../../lib/live-stream";
+import { qk } from "../../../lib/keys";
 import { sessionOptions } from "../../../lib/query";
 import { applyLiveMessage, liveKey, studentLiveKey } from "../api";
 import { useLiveClass } from "../useLiveClass";
@@ -247,4 +252,79 @@ test("useStudentLive: a student's own state; nothing for an adult", async () => 
   expect(opened).toHaveLength(1);
   expect(adult.result.current.sessions).toEqual([]);
   adult.unmount();
+});
+
+test("useStudentLive: each whole state from the stream marks the student's practice settings stale, so a class's look reaches an open practice", async () => {
+  const client = queries();
+  const student = { accountId: "school:abc", token: "st_token" };
+  client.setQueryData(sessionOptions.queryKey, student);
+  client.setQueryData(studentLiveKey(student), {
+    serverNow: NOW,
+    sessions: [],
+    signals: [],
+  });
+  // The practice screen's read of the student's settings, and another
+  // account's, which is none of this stream's business.
+  let look = "calm";
+  const read = vi.fn(async () => ({ effectiveLook: look }));
+  const mine = qk.practiceSettings(student.accountId, "learner-1");
+  const theirs = qk.practiceSettings("amp|parent", "learner-2");
+  const observe = (queryKey: readonly string[]) =>
+    renderHook(() => useQuery({ queryKey, queryFn: read, staleTime: 60_000 }), {
+      wrapper: wrap(client),
+    });
+  const own = observe(mine);
+  const other = observe(theirs);
+  await waitFor(() => expect(own.result.current.data).toBeTruthy());
+  await waitFor(() => expect(other.result.current.data).toBeTruthy());
+  expect(read).toHaveBeenCalledTimes(2);
+
+  const hook = renderHook(() => useStudentLive(), { wrapper: wrap(client) });
+  // The teacher chooses Colorful and locks it; nothing tells the student's
+  // screen until the stream's next whole state.
+  look = "bold";
+  expect(own.result.current.data).toEqual({ effectiveLook: "calm" });
+  act(() =>
+    opened[0]!.onEvent("snapshot", {
+      serverNow: NOW,
+      sessions: [],
+      signals: [],
+    }),
+  );
+  await waitFor(() =>
+    expect(own.result.current.data).toEqual({ effectiveLook: "bold" }),
+  );
+  // Only this student's settings were read again.
+  expect(read).toHaveBeenCalledTimes(3);
+  expect(client.getQueryState(theirs)?.isInvalidated).toBe(false);
+
+  // A goodbye is not a state: nothing is read.
+  act(() => opened[0]!.onEvent("bye", { reason: "rotate" }));
+  await Promise.resolve();
+  expect(read).toHaveBeenCalledTimes(3);
+
+  // A network that holds the stream: the poll reads them again once a
+  // stream's lifetime has passed, not on every poll.
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () =>
+      Response.json({ serverNow: NOW, sessions: [], signals: [] }),
+    ),
+  );
+  const start = Date.now();
+  const clock = vi.spyOn(Date, "now");
+  clock.mockReturnValue(start + 30_000);
+  look = "calm";
+  await act(() => opened[0]!.poll());
+  expect(read).toHaveBeenCalledTimes(3);
+  clock.mockReturnValue(start + 91_000);
+  await act(() => opened[0]!.poll());
+  await waitFor(() =>
+    expect(own.result.current.data).toEqual({ effectiveLook: "calm" }),
+  );
+  expect(read).toHaveBeenCalledTimes(4);
+  hook.unmount();
+  own.unmount();
+  other.unmount();
+  vi.unstubAllGlobals();
 });
