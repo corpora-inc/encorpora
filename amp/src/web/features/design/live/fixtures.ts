@@ -42,6 +42,18 @@ export const SKILLS: SkillRef[] = [
     title: "Place value to thousands",
     strand: "number",
   },
+  // Two of the catalog's longest names, so every state shows how a name
+  // that doesn't fit is cut (after a whole word, the rest a tap away).
+  {
+    id: "linear-and-nonlinear-systems",
+    title: "Solving a linear and a nonlinear equation together",
+    strand: "algebra",
+  },
+  {
+    id: "lines-and-symmetry",
+    title: "Parallel lines, perpendicular lines, and symmetry",
+    strand: "geometry",
+  },
 ];
 
 /** How a student behaves in the scripted session. */
@@ -479,6 +491,24 @@ export function fixtureState(
       return { ...base, rows, signals, size };
     }
   }
+}
+
+/** Exactly `count` open requests, from the first students down the class:
+ * for the check that the strip holds its box with none, one, two or five. */
+export function withSignals<State extends CockpitState>(
+  state: State,
+  count: number,
+): State {
+  return {
+    ...state,
+    signals: state.rows.slice(0, count).map((row, index) => ({
+      id: `set-${index}`,
+      personId: row.personId,
+      name: row.name,
+      kind: (index % 2 ? "hand" : "forgot_picture") as SignalKind,
+      createdAt: new Date(state.now - (30 + index * 20) * 1000).toISOString(),
+    })),
+  };
 }
 
 /** One random change, as a stream would bring it: an answer, help, a

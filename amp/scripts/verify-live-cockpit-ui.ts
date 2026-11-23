@@ -10,6 +10,12 @@
  * also checks that the changes really happened and that nothing scrolls
  * sideways.
  *
+ * Along the way, and at the end, every skill's name is whole or cut after a
+ * whole word with the rest a tap away (never inside a word, never a hover
+ * title), a cut name's tap shows all of it and moves nothing, and the
+ * requests strip holds its box with none, one, two and five requests open
+ * (two fit a 390 px phone without a "+N").
+ *
  *   npx tsx scripts/verify-live-cockpit-ui.ts [--origin http://127.0.0.1:4860]
  *     [--shots-only]    skip the check (only with --shots)
  *     [--shots <dir>]   also save each designed state at 390 and 1280 px in
@@ -20,6 +26,7 @@ import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, type Page } from "playwright";
 import { createServer, type ViteDevServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
+import { cutNameOpens, skillNames } from "./live-cockpit-checks";
 
 const chromium = secureChromium(rawChromium);
 const arg = (name: string) => {
@@ -118,7 +125,23 @@ try {
       requests: new Set<number>(),
       empty: false,
       marks: new Set<string>(),
+      names: 0,
+      whole: 0,
+      cut: 0,
+      clipped: 0,
     };
+    const names = async (when: string) => {
+      const result = await skillNames(page);
+      seen.names += result.total;
+      seen.whole += result.whole;
+      seen.cut += result.cut;
+      seen.clipped += result.clipped;
+      for (const failure of result.failures.slice(0, 5))
+        failures.push(`${width}px ${when}: ${failure}`);
+      return result;
+    };
+    const atFirst = await names("at first");
+    assert.ok(atFirst.total > 0, `${width}px: skills are named`);
     for (let change = 1; change <= CHANGES; change++) {
       await page.evaluate(
         (seed) => window.ampLiveFixture!.change(seed),
@@ -142,7 +165,78 @@ try {
       seen.requests.add(state.requests);
       seen.empty ||= state.empty;
       seen.marks.add(state.marks);
+      // The names change as students move on: checked as they do.
+      if (change % 20 === 0) await names(`change ${change}`);
     }
+    // The strip holds its box whatever is open: none, one, two, five.
+    const strips: Record<number, { shown: number; more: boolean }> = {};
+    for (const count of [0, 1, 2, 5, 0]) {
+      await page.evaluate(
+        (count) => window.ampLiveFixture!.signals(count),
+        count,
+      );
+      await frames(page);
+      const now = await measure(page);
+      for (const name of ["strip", "totals", "control", "roster", ...rows])
+        for (const side of ["x", "y", "width", "height"] as const)
+          if (Math.abs(now[name]![side] - before[name]![side]) > 0.5)
+            failures.push(
+              `${width}px with ${count} request(s): ${name} ${side} ${before[name]![side].toFixed(1)} → ${now[name]![side].toFixed(1)}`,
+            );
+      const strip = await page.evaluate(() => {
+        const strip = document.querySelector("[data-live-strip]")!;
+        const frame = strip.getBoundingClientRect();
+        const shown = [...strip.querySelectorAll<HTMLElement>("[data-signal]")];
+        return {
+          shown: shown.length,
+          more: [...strip.querySelectorAll("button")].some((button) =>
+            /^\+\d+$/.test(button.textContent ?? ""),
+          ),
+          // Every request shown, and its name, whole inside the strip.
+          inside: shown.every((item) => {
+            const box = item.getBoundingClientRect();
+            return (
+              box.left >= frame.left - 0.5 && box.right <= frame.right + 0.5
+            );
+          }),
+          empty: strip.hasAttribute("data-empty"),
+        };
+      });
+      strips[count] = strip;
+      if (!strip.inside)
+        failures.push(
+          `${width}px with ${count} request(s): one runs past the strip`,
+        );
+      if (strip.shown > count)
+        failures.push(`${width}px: ${strip.shown} shown of ${count}`);
+      if (count > 0 && strip.shown === 0)
+        failures.push(`${width}px with ${count} request(s): none shown`);
+      if (strip.more !== strip.shown < count)
+        failures.push(
+          `${width}px with ${count} request(s): ${strip.shown} shown, "+N" ${strip.more}`,
+        );
+      if ((count === 0) !== strip.empty)
+        failures.push(
+          `${width}px with ${count} request(s): empty ${strip.empty}`,
+        );
+    }
+    // Two requests fit a 390 px phone side by side: both names, no "+1".
+    if (width >= 390 && (strips[2]!.shown !== 2 || strips[2]!.more))
+      failures.push(
+        `${width}px with 2 requests: ${strips[2]!.shown} shown, "+N" ${strips[2]!.more}`,
+      );
+    // A cut name's tap shows all of it, and nothing under it moves. Last:
+    // reaching the name may scroll the page.
+    const tapped = await cutNameOpens(
+      page,
+      () => measure(page),
+      failures,
+      `${width}px`,
+    );
+    const atLast = await names("at the end");
+    assert.ok(seen.whole > 0, `${width}px: some names show whole`);
+    if (width >= 390)
+      assert.equal(seen.clipped, 0, `${width}px: no name is cut inside a word`);
     const last = await content(page);
     assert.notEqual(
       last.roster,
@@ -163,6 +257,9 @@ try {
     assert.deepEqual(errors, [], `${width}px: no page errors`);
     console.log(
       `${width}px: ${rows.length} rows, strip, totals and control held still over ${CHANGES} changes (requests shown: ${[...seen.requests].sort((a, b) => a - b).join(", ")})`,
+    );
+    console.log(
+      `${width}px: ${seen.names} skill names read, ${seen.whole} whole, ${seen.cut} cut after a whole word, ${seen.clipped} with a first word wider than the line (at the end ${atLast.whole} whole, ${atLast.cut} cut)${tapped ? "; a cut name's tap showed all of it" : "; none cut to tap"}; strip held with 0, 1, 2 and 5 requests (shown ${[1, 2, 5].map((count) => `${strips[count]!.shown}${strips[count]!.more ? "+" : ""}`).join(", ")})`,
     );
     await context.close();
   }
