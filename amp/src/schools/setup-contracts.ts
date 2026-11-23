@@ -207,6 +207,10 @@ export const inviteViewSchema = z.object({
   email: z.string().nullable(),
   /** The school's own admin, invited to set it up. */
   setup: z.boolean(),
+  /** On an open invitation only: whether the address it was sent to has an
+   * account, so the link's holder is sent to sign in or to create one,
+   * whichever will work. Absent once the invitation is over. */
+  hasAccount: z.boolean().optional(),
   /** A family's second parent (docs/families.md), invited to its class. She
    * accepts with the address the invitation went to. */
   secondParent: z
