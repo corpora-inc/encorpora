@@ -170,7 +170,13 @@ function FamilyPractice({
   if (!child?.capabilities.practiceHere || !child.access.canPractice)
     return null;
   return (
-    <div data-curriculum-practice data-practice-for={child.id}>
+    <div
+      data-curriculum-practice
+      data-practice-for={child.id}
+      // In a layer over a screen of several children the control fills the
+      // sheet's column, as the link it took the place of did.
+      style={detailed ? { display: "grid" } : undefined}
+    >
       <Button
         variant="primary"
         aria-label={
