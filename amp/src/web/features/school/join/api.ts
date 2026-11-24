@@ -23,6 +23,7 @@ import { qk } from "../../../lib/keys";
 import { meOptions, queryClient } from "../../../lib/query";
 import { rememberStudentSession } from "../../../lib/student-device";
 import { practiceParams } from "../../spaces/identity";
+import { logAhead } from "../../../lib/ahead";
 
 /** In a child's words: what happened, and what to do. */
 const messages: Record<string, string> = {
@@ -201,13 +202,13 @@ export function useFinishSignIn() {
       // loader (app/router.tsx, `/$`) past the moment practice mounts.
       const [me] = await Promise.all([
         queryClient.fetchQuery(meOptions(session)).catch((error) => {
-          console.warn("Practice will load `/me` itself", error);
+          logAhead("Practice will load `/me` itself", error);
           return null;
         }),
         import("../../live/RaiseHandSlot")
           .then((slot) => slot.preloadStudentHand(queryClient, session))
           .catch((error: unknown) =>
-            console.warn("The raised hand will load with practice", error),
+            logAhead("The raised hand will load with practice", error),
           ),
       ]);
       // Straight to the student's practice, at its own address: one entry.

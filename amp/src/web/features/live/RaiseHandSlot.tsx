@@ -2,6 +2,7 @@ import type { QueryClient } from "@tanstack/react-query";
 import type { AuthSession } from "../../auth";
 import { readyLazy } from "../../lib/ready-lazy";
 import { useSessionOrNull } from "../../lib/session";
+import { logAhead } from "../../lib/ahead";
 
 /** The raised hand's code loads only for a school student's practice: the
  * route's loader fetches it ahead of the screen (app/router.tsx, `/$`), so
@@ -27,7 +28,7 @@ export function preloadStudentHand(client: QueryClient, session: AuthSession) {
       client.ensureQueryData(studentLiveOptions(session)),
     )
     .catch((error: unknown) =>
-      console.warn("Whether a session runs will load with practice", error),
+      logAhead("Whether a session runs will load with practice", error),
     );
   return Promise.all([
     hand.preload(),

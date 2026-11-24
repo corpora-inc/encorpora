@@ -12,6 +12,7 @@
  */
 import { qk } from "../../lib/keys";
 import { queryClient } from "../../lib/query-client";
+import { logAhead } from "../../lib/ahead";
 
 const KEY = "amp.look-ahead";
 const LOOK = "data-look";
@@ -133,7 +134,7 @@ export function lookFirst(
     pending = import("./look-first")
       .then(({ lookBeforePaint }) => lookBeforePaint(scope))
       .catch((error: unknown) =>
-        console.warn("The look didn’t load ahead; the screen reads it", error),
+        logAhead("The look didn’t load ahead; the screen reads it", error),
       )
       .finally(() => reading.delete(key));
     reading.set(key, pending);

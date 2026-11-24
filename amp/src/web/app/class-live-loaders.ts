@@ -1,6 +1,7 @@
 import type { AuthSession } from "../auth";
 import { queryClient } from "../lib/query";
 import { classYearOptions, preload } from "../features/school/core-api";
+import { logAhead } from "../lib/ahead";
 
 type Place = { org: string; class: string };
 const watches = async (session: AuthSession, place: Place) =>
@@ -38,6 +39,6 @@ export async function sessionReport(
   await queryClient
     .ensureQueryData(sessionReportOptions(session, place, id))
     .catch((error: unknown) =>
-      console.warn("The session's report didn’t load ahead", error),
+      logAhead("The session's report didn’t load ahead", error),
     );
 }

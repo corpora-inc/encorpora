@@ -1,5 +1,6 @@
 import type { AuthSession } from "../auth";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
+import { logAhead } from "../lib/ahead";
 
 /** A learner's workbook screen paints whole: what it shows first (the list,
  * a day's workbook and its areas, a workbook's results) arrives with it, for
@@ -32,7 +33,7 @@ const loader =
         queryClient
           .ensureQueryData(options as never)
           .catch((error: unknown) =>
-            console.warn("The workbook didn’t load ahead", error),
+            logAhead("The workbook didn’t load ahead", error),
           ),
       ),
     );

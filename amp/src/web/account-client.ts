@@ -1,6 +1,7 @@
 import { requestFetch } from "./lib/request-transport";
 import { createAuthClient } from "better-auth/client";
 import { twoFactorClient } from "better-auth/client/plugins";
+import { logAhead } from "./lib/ahead";
 
 const basePath = "/api/auth";
 const fetchOptions = {
@@ -46,7 +47,7 @@ export function passkeyAccountClient(): Promise<PasskeyAccountClient> {
  * nothing but the server. A failure here is retried by the tap itself. */
 export function preloadPasskeys() {
   passkeyAccountClient().catch((error: unknown) =>
-    console.warn("The passkey client didn't load ahead", error),
+    logAhead("The passkey client didn't load ahead", error),
   );
 }
 async function createPasskeyClient() {

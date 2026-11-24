@@ -4,11 +4,12 @@ import { classYearOptions, preload } from "../features/school/core-api";
 import { familyOptions } from "../features/family/api";
 import { sessionReport } from "./class-live-loaders";
 import { ownClassOf } from "../features/spaces/resolve";
+import { logAhead } from "../lib/ahead";
 
 const orNull =
   (what: string) =>
   (error: unknown): null => {
-    console.warn(`${what} didn’t load ahead`, error);
+    logAhead(`${what} didn’t load ahead`, error);
     return null;
   };
 

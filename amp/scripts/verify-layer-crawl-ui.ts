@@ -15,8 +15,9 @@
  *
  * Then, on each page of a place they hold (their school's and class's pages,
  * or the pages of their own practice), every kind of entity link it shows:
- * open one, then one inside it (two layers), then pop with Escape, Back,
- * Forward, a refresh and Escape again. After every step: the place's prefix
+ * open one, then one of each kind inside it (two layers), then pop with
+ * Escape, Back, Forward, a refresh and Escape again. After every step: the
+ * place's prefix
  * never changes, the page under the layers is the same page with the same
  * view (its search and scroll), and no first-run screen ever shows. A layer
  * over another names, in its header, the one X returns to. Every registered
@@ -350,23 +351,43 @@ async function crawl(page: Page, place: PlacePage, person: string) {
         (href): [string, string] => [tab, href],
       ),
     );
-    const inner = top(page)
-      .locator("a[data-entity]:not([data-entity-step]):visible")
-      .first();
-    if (await inner.count()) {
-      const innerKind = (await inner.getAttribute("data-entity"))!;
+    // One of each kind the layer links to (a skill's lesson, and its
+    // workbook where one is offered): each opens over it, and Escape puts
+    // that one down.
+    const innerKinds = [
+      ...new Set(
+        await top(page)
+          .locator("a[data-entity]:not([data-entity-step]):visible")
+          .evaluateAll((links) =>
+            links.map((link) => link.getAttribute("data-entity")!),
+          ),
+      ),
+    ];
+    for (const innerKind of innerKinds) {
+      const inner = top(page)
+        .locator(
+          `a[data-entity="${innerKind}"]:not([data-entity-step]):visible`,
+        )
+        .first();
       reached.add(innerKind);
       reachedIn.add(`${place.type}:${innerKind}`);
       await inner.click();
-      await check(page, prefix, base, opened + 1, `${where}: nested`);
+      await check(
+        page,
+        prefix,
+        base,
+        opened + 1,
+        `${where}: nested ${innerKind}`,
+      );
       await shown(page);
-      await hint(page, `${where}: nested`);
+      await hint(page, `${where}: nested ${innerKind}`);
       if (shot < 6)
         await page.screenshot({
           path: `${OUT}/${String(++shot).padStart(2, "0")}-1280-${person}-${kind}-nested.png`,
         });
       await page.keyboard.press("Escape");
       await check(page, prefix, base, opened, `${where}: Escape`);
+      await shown(page);
     }
     // Layers are no steps in history: the page under them never moved,
     // scrolled where it was. Closing pops them a layer at a time; a refresh
