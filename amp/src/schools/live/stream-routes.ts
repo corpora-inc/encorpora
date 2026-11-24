@@ -8,7 +8,7 @@ import type { LiveHub } from "./hub.js";
 import { openSession } from "./sessions.js";
 import type { StudentLive } from "./stream-contracts.js";
 import { readStudentSignals } from "./signals.js";
-import { studentClassIds, toStudentSession } from "./student.js";
+import { studentClasses, toStudentSession } from "./student.js";
 
 /* The live streams (#2465, work package L2). Each connect is authorized
    afresh, the same way as the read beside it, and then holds no database
@@ -62,15 +62,20 @@ async function student(pool: Pool, request: FastifyRequest) {
 export async function readStudentLive(
   pool: Pool,
   personId: string,
-  classIds: readonly string[],
+  classes: { classIds: readonly string[]; familyClassIds: readonly string[] },
 ): Promise<StudentLive> {
   const sessions = [];
-  for (const classId of classIds) {
+  for (const classId of classes.classIds) {
     const session = await openSession(pool, classId);
     if (session) sessions.push(toStudentSession(session));
   }
   const signals = await readStudentSignals(pool, personId);
-  return { serverNow: new Date().toISOString(), sessions, signals };
+  return {
+    serverNow: new Date().toISOString(),
+    sessions,
+    signals,
+    familyClasses: [...classes.familyClassIds],
+  };
 }
 
 /** `GET /api/v1/school/student/live` and `…/live/stream`: what a student
@@ -85,13 +90,13 @@ export function registerStudentLiveRoutes(
     return readStudentLive(
       options.pool,
       personId,
-      await studentClassIds(options.pool, personId),
+      await studentClasses(options.pool, personId),
     );
   });
   scope.get("/api/v1/school/student/live/stream", async (request, reply) => {
     const { personId } = await student(options.pool, request);
-    const classIds = await studentClassIds(options.pool, personId);
-    if (!options.live.attachStudent(request, reply, { personId, classIds }))
+    const classes = await studentClasses(options.pool, personId);
+    if (!options.live.attachStudent(request, reply, { personId, ...classes }))
       throw busy();
     return reply;
   });
