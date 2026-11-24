@@ -10,6 +10,9 @@
  * memory now only covers a screen opened without it.
  * Small on purpose: this is all of Colorful the app's first code carries.
  */
+import { qk } from "../../lib/keys";
+import { queryClient } from "../../lib/query-client";
+
 const KEY = "amp.look-ahead";
 const LOOK = "data-look";
 /** No turn while it goes on (ui/tokens.css): it arrives in its hue. */
@@ -100,19 +103,40 @@ export function clearAhead() {
   root.style.removeProperty("--look-hue");
 }
 
+/** Reads under way, per learner: two screens asking share one. */
+const reading = new Map<string, Promise<void>>();
+
 /**
- * The learner's look, read before their first screen paints (the root's
- * `beforeLoad`, app/router.tsx). The work is look-first.ts, its own chunk;
- * a failed read is logged and the screen reads it as it always did.
+ * The learner's look, read before their first screen paints (the frame's
+ * loader, features/spaces/useSpace.ts). The work is look-first.ts, its own
+ * chunk; a failed read is logged and the screen reads it as it always did.
+ *
+ * Only a screen whose look is not in hand waits. Once the answer is in the
+ * cache, a later move asks nothing and returns in the same task: a move
+ * inside the app must land within the frame it was asked in (closing a book
+ * puts the focus back on its button on the next frame, and a chunk import
+ * here, even one already loaded, landed the screen a frame too late for it).
  */
-export async function lookFirst(
+export function lookFirst(
   scope: { identity: string; learnerId: string; token?: string } | null,
-) {
-  if (!scope?.learnerId) return;
-  try {
-    const { lookBeforePaint } = await import("./look-first");
-    await lookBeforePaint(scope);
-  } catch (error) {
-    console.warn("The look didn’t load ahead; the screen reads it", error);
+): Promise<void> {
+  if (!scope?.learnerId) return Promise.resolve();
+  if (
+    queryClient.getQueryData(
+      qk.practiceSettings(scope.identity, scope.learnerId),
+    ) !== undefined
+  )
+    return Promise.resolve();
+  const key = `${scope.identity}:${scope.learnerId}`;
+  let pending = reading.get(key);
+  if (!pending) {
+    pending = import("./look-first")
+      .then(({ lookBeforePaint }) => lookBeforePaint(scope))
+      .catch((error: unknown) =>
+        console.warn("The look didn’t load ahead; the screen reads it", error),
+      )
+      .finally(() => reading.delete(key));
+    reading.set(key, pending);
   }
+  return pending;
 }
