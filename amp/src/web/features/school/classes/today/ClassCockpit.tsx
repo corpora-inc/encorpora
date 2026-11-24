@@ -158,8 +158,9 @@ export function ClassCockpit({
   /** A stopped session's report, as a link: by default the class's
    * `sessions/<session>` under Time. */
   reportLink?: (sessionId: string, children: ReactNode) => ReactNode;
-  /** After Stop: by default the class's report opens. */
-  onStopped?: (sessionId: string) => void;
+  /** After Stop: by default the class's report opens. Answer with the
+   * move's promise: the cockpit holds its last frame until it is done. */
+  onStopped?: (sessionId: string) => void | Promise<unknown>;
   /** A family's: see `ShortList`. */
   short?: ShortList;
 }) {
@@ -174,10 +175,17 @@ export function ClassCockpit({
     staleTime: Infinity,
   }).data;
   const snapshot = live.data;
-  const running = snapshot?.session ?? null;
+  // Stop, pressed: the cockpit holds the session as it was, Stop still
+  // busy, until the report has the screen. The session ending under it (the
+  // read after Stop, or the stream's word) never shows the resting bar or
+  // the "ended" bar for a frame on the way, and nothing below it jumps
+  // (the round's rule: one frame, then the destination).
+  const [leaving, setLeaving] = useState<LiveSnapshot | null>(null);
+  const running = leaving?.session ?? snapshot?.session ?? null;
   // Only when nothing runs: a new session is shown live.
   const still = running ? null : (ended ?? null);
-  const shown: LiveSnapshot | undefined = still?.snapshot ?? snapshot;
+  const shown: LiveSnapshot | undefined =
+    leaving ?? still?.snapshot ?? snapshot;
   const now = useServerNow(snapshot?.serverNow, still?.endedAt);
   const stale = useLiveStale(place.class);
   const [chosen, setSort] = useLiveSort(place);
@@ -283,7 +291,8 @@ export function ClassCockpit({
         });
       }}
       onStop={() => {
-        if (!running) return;
+        if (!running || !snapshot.session) return;
+        setLeaving(snapshot);
         stop
           .mutateAsync(running.id)
           .then((report) => {
@@ -294,17 +303,20 @@ export function ClassCockpit({
               params: { ...place, session: report.session.id },
             });
           })
-          .catch((failure: unknown) =>
+          // The report took the screen, and this cockpit with it: nothing
+          // to put down. A Stop that failed is the live session again.
+          .catch((failure: unknown) => {
+            setLeaving(null);
             setError(
               reportError(failure, {
                 doing: "stop the session",
                 fallback: "The session didn’t stop. Try again.",
               }),
-            ),
-          );
+            );
+          });
       }}
       starting={start.isPending}
-      stopping={stop.isPending}
+      stopping={stop.isPending || leaving !== null}
       canManage={snapshot.can.manage}
       startLabel={words.start}
       stale={stale}

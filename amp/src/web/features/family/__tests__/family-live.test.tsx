@@ -25,7 +25,7 @@ import { queryClient, sessionOptions } from "../../../lib/query";
 import { liveKey } from "../../live/api";
 import { FamilyLive } from "../FamilyLive";
 import type { FamilyCockpitProps } from "../FamilyCockpit";
-import { familyCockpit, loadFamilyCockpit } from "../cockpit-chunk";
+import { loadFamilyCockpit } from "../cockpit-chunk";
 
 /* A family's live session on its Today: at rest only the quiet Start (the
  * roster's code isn't loaded); running, the cockpit in a family's words with
@@ -33,15 +33,16 @@ import { familyCockpit, loadFamilyCockpit } from "../cockpit-chunk";
  * shift, one frame on a cold load) are measured in a real browser by
  * scripts/verify-family-live-ui.ts. */
 
-// The first test holds the cockpit's code back until it has looked, and
-// counts how often `use` is asked.
-const chunk = vi.hoisted(() => {
-  let open = () => {};
-  const gate = new Promise<void>((resolve) => {
-    open = resolve;
-  });
-  return { held: false, gate, open, asked: 0 };
-});
+// One test holds the cockpit's code back itself (a promise it settles),
+// whatever the real chunk's state and however long a loaded machine takes to
+// import it; and every test counts how often `use` is asked.
+const chunk = vi.hoisted(() => ({
+  asked: 0,
+  /** While set: the cockpit's code as the test hands it over. */
+  late: null as Promise<unknown> | null,
+  /** What that promise has settled with, as the loader's own cache. */
+  loaded: null as unknown,
+}));
 vi.mock("react", async (original) => {
   const react = await original<typeof import("react")>();
   const use: typeof react.use = (usable) => {
@@ -50,9 +51,19 @@ vi.mock("react", async (original) => {
   };
   return { ...react, use };
 });
-vi.mock("../FamilyCockpit", async (original) => {
-  if (chunk.held) await chunk.gate;
-  return original<typeof import("../FamilyCockpit")>();
+vi.mock("../cockpit-chunk", async (original) => {
+  const real = await original<typeof import("../cockpit-chunk")>();
+  return {
+    ...real,
+    loadFamilyCockpit: () =>
+      (chunk.late ?? real.loadFamilyCockpit()) as ReturnType<
+        typeof real.loadFamilyCockpit
+      >,
+    familyCockpit: () =>
+      (chunk.late ? chunk.loaded : real.familyCockpit()) as ReturnType<
+        typeof real.familyCockpit
+      >,
+  };
 });
 vi.mock("../../live/useLiveClass", async () => {
   const { useQuery } = await import("@tanstack/react-query");
@@ -246,50 +257,64 @@ async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
 /** The words a family never reads on its own screens. */
 const FOREIGN = /\bstudents?\b|\bclass(?:es|room)?\b|\bteachers?\b/i;
 
-// First in the file: the cockpit's code is not in yet.
+// In any order, on any machine: the cockpit's code is this test's own
+// promise (never the real chunk's, which another test may have loaded, and
+// never a wait on how long an import takes under load).
 test("a session started elsewhere while Today is open: the cockpit's code arrives late, and React has nothing to say", async () => {
+  // The real cockpit, in hand before anything is on screen.
+  const { FamilyCockpit } = await import("../FamilyCockpit");
+  let arrive: () => void = () => {};
+  chunk.loaded = null;
+  chunk.late = new Promise((resolve) => {
+    arrive = () => {
+      chunk.loaded = FamilyCockpit;
+      resolve(FamilyCockpit);
+    };
+  });
   const said = vi.spyOn(console, "error");
-  chunk.held = true;
-  let waiting = 0;
   try {
     await mount(snapshot({ session: null, rows: [] }));
     expect(document.querySelector('[data-family-live="rest"]')).toBeTruthy();
-    // At rest, none of the roster's code.
-    expect(familyCockpit()).toBeNull();
+    const resting = chunk.asked;
     // The other parent starts it: the stream brings the session here, and
     // the cockpit's place is held while its code is on the way.
     await act(async () => {
       queryClient.setQueryData(liveKey(auth, place), snapshot());
     });
-    await waitFor(() =>
-      expect(
-        document.querySelector('[data-family-live="cockpit"]'),
-      ).toBeTruthy(),
+    await waitFor(
+      () =>
+        expect(
+          document.querySelector('[data-family-live="cockpit"]'),
+        ).toBeTruthy(),
+      { timeout: 10_000 },
     );
-    expect(familyCockpit()).toBeNull();
     expect(document.querySelector("[data-cockpit]")).toBeNull();
-    // It waited by asking `use`.
-    waiting = chunk.asked;
-    expect(waiting).toBeGreaterThan(0);
-  } finally {
+    // It waits by asking `use`.
+    const waiting = chunk.asked;
+    expect(waiting).toBeGreaterThan(resting);
+    // The code arrives.
     await act(async () => {
-      chunk.open();
+      arrive();
     });
+    await waitFor(
+      () =>
+        expect(document.querySelector('[data-cockpit="live"]')).toBeTruthy(),
+      { timeout: 10_000 },
+    );
+    expect(document.querySelectorAll("[data-live-row]").length).toBe(3);
+    // React's rule: a component that waited with `use` asks it again in the
+    // render that finishes. The cockpit did, with its code in.
+    expect(chunk.asked).toBeGreaterThan(waiting);
+    // What breaking the rule brings, when the page's other redraws fall a
+    // certain way between the two renders (so it was seen once in UAT, not
+    // every time): "This library called use() to suspend in a previous
+    // render but did not call use() when it finished".
+    expect(said.mock.calls.map((call) => String(call[0]))).toEqual([]);
+  } finally {
+    chunk.late = null;
+    chunk.loaded = null;
   }
-  await waitFor(() =>
-    expect(document.querySelector('[data-cockpit="live"]')).toBeTruthy(),
-  );
-  expect(familyCockpit()).not.toBeNull();
-  expect(document.querySelectorAll("[data-live-row]").length).toBe(3);
-  // React's rule: a component that waited with `use` asks it again in the
-  // render that finishes. The cockpit did, with its code in.
-  expect(chunk.asked).toBeGreaterThan(waiting);
-  // What breaking the rule brings, when the page's other redraws fall a
-  // certain way between the two renders (so it was seen once in UAT, not
-  // every time): "This library called use() to suspend in a previous
-  // render but did not call use() when it finished".
-  expect(said.mock.calls.map((call) => String(call[0]))).toEqual([]);
-});
+}, 60_000);
 
 test("at rest: one quiet Start practice, and none of the roster's code", async () => {
   await mount(snapshot({ session: null, rows: [] }));
@@ -457,4 +482,62 @@ test("Stop asks first, then the family's report opens", async () => {
   expect(router.state.location.pathname).toBe(
     `/family/${family}/sessions/${SESSION}`,
   );
+});
+
+test("Stop holds the session on screen until the report has it: never Today at rest on the way", async () => {
+  let answer: (report: unknown) => void = () => {};
+  stop.mockReturnValue(
+    new Promise((resolve) => {
+      answer = resolve;
+    }),
+  );
+  await mount(snapshot());
+  fireEvent.click(await screen.findByRole("button", { name: "Stop" }));
+  fireEvent.click(await screen.findByRole("button", { name: "Stop session" }));
+  expect(stop).toHaveBeenCalledWith(SESSION);
+  // The session ends under the cockpit (the read after Stop, the stream)
+  // before the report is on screen.
+  await act(async () => {
+    queryClient.setQueryData(
+      liveKey(auth, place),
+      snapshot({ session: null, rows: [], totals: totalsOf([]) }),
+    );
+  });
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(50);
+  });
+  const held = () => ({
+    live: !!document.querySelector('[data-cockpit="live"]'),
+    rows: document.querySelectorAll("[data-live-row]").length,
+    rest: !!document.querySelector(
+      '[data-cockpit="resting"], [data-cockpit="ended"]',
+    ),
+    start: screen.queryByRole("button", { name: "Start practice" }),
+  });
+  expect(held()).toEqual({ live: true, rows: 3, rest: false, start: null });
+  // The stored report arrives; the report's address takes over.
+  await act(async () => {
+    answer({ session: { ...running, id: SESSION } });
+    await vi.advanceTimersByTimeAsync(100);
+  });
+  expect(router.state.location.pathname).toBe(
+    `/family/${family}/sessions/${SESSION}`,
+  );
+  expect(held().rest).toBe(false);
+  expect(held().start).toBeNull();
+});
+
+test("a Stop that fails is the live session again, with its reason", async () => {
+  vi.spyOn(console, "error").mockImplementation(() => undefined);
+  stop.mockRejectedValue(new Error("offline"));
+  await mount(snapshot());
+  fireEvent.click(await screen.findByRole("button", { name: "Stop" }));
+  fireEvent.click(await screen.findByRole("button", { name: "Stop session" }));
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(50);
+  });
+  expect(document.querySelector('[data-cockpit="live"]')).toBeTruthy();
+  const again = screen.getByRole("button", { name: "Stop" });
+  expect(again.getAttribute("aria-busy")).not.toBe("true");
+  expect(document.body.textContent).toContain("The session didn’t stop");
 });

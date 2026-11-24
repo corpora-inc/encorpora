@@ -146,3 +146,84 @@ export async function cutNameOpens(
   failures.push(`${where}: a cut name's tap never showed the whole name`);
   return false;
 }
+
+type StopFrame = { t: number; state: string; below: number | null };
+
+/**
+ * From now on, every frame: which screen shows (the cockpit live, at rest
+ * or ended; the report; neither), and where what sits under the cockpit
+ * starts (`below`: a family's list of children). Start it before pressing
+ * "Stop session"; read it with `stopTrail` once the report shows.
+ */
+export const watchStop = (page: Page, below = "[data-family-kids]") =>
+  page.evaluate((selector) => {
+    const w = window as unknown as { __stop: StopFrame[] };
+    w.__stop = [];
+    const tick = () => {
+      const cockpit = document
+        .querySelector("[data-cockpit]")
+        ?.getAttribute("data-cockpit");
+      const under = document.querySelector(selector);
+      w.__stop.push({
+        t: Math.round(performance.now()),
+        state: document.querySelector("[data-session-report]")
+          ? "report"
+          : cockpit
+            ? cockpit
+            : document.querySelector('[data-family-live="rest"]')
+              ? "resting"
+              : document.querySelector("[data-family-live]")
+                ? "held"
+                : "neither",
+        below: under
+          ? Math.round(under.getBoundingClientRect().top + window.scrollY)
+          : null,
+      });
+      if (w.__stop.length < 3000) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, below);
+
+/**
+ * Stop is one move (the round's rule: one frame, then the destination):
+ * from "Stop session" the live session holds, with what is under it where
+ * it was, and then the report shows; at most one run of frames that is
+ * neither. Never the cockpit at rest, never its "ended" bar, on the way.
+ */
+export async function stopTrail(
+  page: Page,
+): Promise<{ trail: string; problems: string[] }> {
+  const frames = await page.evaluate(
+    () => (window as unknown as { __stop: StopFrame[] }).__stop,
+  );
+  const runs: { state: string; frames: number }[] = [];
+  for (const frame of frames) {
+    const last = runs.at(-1);
+    if (last?.state === frame.state) last.frames++;
+    else runs.push({ state: frame.state, frames: 1 });
+  }
+  const upTo = runs.findIndex((run) => run.state === "report");
+  const way = runs.slice(0, upTo < 0 ? runs.length : upTo + 1);
+  const trail = way
+    .map((run) => `${run.state} (${run.frames} frames)`)
+    .join(" → ");
+  const problems: string[] = [];
+  if (upTo < 0) problems.push(`Stop never reached the report: ${trail}`);
+  for (const run of way)
+    if (["resting", "ended", "held"].includes(run.state))
+      problems.push(
+        `Stop showed the cockpit ${run.state} for ${run.frames} frame(s) on the way to the report: ${trail}`,
+      );
+  if (way.filter((run) => run.state === "neither").length > 1)
+    problems.push(`Stop passed through more than one other frame: ${trail}`);
+  const tops = new Set(
+    frames
+      .filter((frame) => frame.state === "live" && frame.below !== null)
+      .map((frame) => frame.below),
+  );
+  if (tops.size > 1)
+    problems.push(
+      `what is under the cockpit jumped while the session stopped: ${[...tops].join(" → ")}px`,
+    );
+  return { trail, problems };
+}
