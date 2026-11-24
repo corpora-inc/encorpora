@@ -14,6 +14,8 @@
  * - on paper the grade is a checklist: no controls, every problem type;
  * - "All Grade N skills" in Overall on the child's page opens the same view
  *   on that grade;
+ * - a skill's layer states where the child stands in its row's own word
+ *   (one row of each standing the grade has): never a second word for it;
  * - a problem type opens its lesson; a skill opens its layer, and Practice
  *   there starts THAT child's practice held to the skill (the hand-over),
  *   with Back returning to the index;
@@ -538,12 +540,53 @@ try {
     await page.keyboard.press("Escape");
     await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
 
+    // ---- a row and its layer say one thing -------------------------------
+    /** Opens a skill from its row. Its layer states where the child stands
+     * in the row's own word (the key's four), and no other status. */
+    const openSkill = async (id: string) => {
+      const item = page.locator(`[data-grade-index] li[data-skill="${id}"]`);
+      const said = {
+        standing: await item.getAttribute("data-standing"),
+        word: (await item.locator("[data-standing-word]").innerText()).trim(),
+      };
+      await item.locator(":scope > div a").click();
+      const panel = page.locator("[data-layer-panel]");
+      await panel.locator(`[data-skill-layer="${id}"]`).waitFor();
+      const status = panel.locator("[data-skill-standing]");
+      await status.waitFor();
+      assert.deepEqual(
+        {
+          standing: await status.getAttribute("data-skill-standing"),
+          word: (
+            await status.locator("[data-standing-word]").innerText()
+          ).trim(),
+        },
+        said,
+        at(`${id}: the layer's standing is its row's`),
+      );
+      assert.equal(
+        await panel
+          .getByText(/^(Building|Not practiced yet|Getting started)$/)
+          .count(),
+        0,
+        at(`${id}: the layer has no second word for it`),
+      );
+    };
+    // One row of each standing the grade has.
+    for (const standing of ["strong", "earned", "tried", "notAsked"]) {
+      const one = shown.find((entry) => entry.standing === standing);
+      if (!one) continue;
+      await openSkill(one.id);
+      await page.keyboard.press("Escape");
+      await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
+    }
+
     // ---- a skill opens its layer; Practice there is this child's -----------
     const pick =
       expected.find(
         (entry) => standingOf(evidence.get(entry.skill.id)) === "notAsked",
       ) ?? expected[0]!;
-    await page.locator(`li[data-skill="${pick.skill.id}"] > div a`).click();
+    await openSkill(pick.skill.id);
     const layer = page.locator(`[data-skill-layer="${pick.skill.id}"]`);
     await layer.waitFor();
     await fits("the skill");
