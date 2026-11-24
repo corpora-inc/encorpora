@@ -1,7 +1,6 @@
 /**
  * The student's side of two requests to the teacher (#2464), in a real browser
- * against a running preview with a simulated class (scripts/live-class-sim.ts
- * has made "Live sim 1" once):
+ * with a simulated class (scripts/live-class-sim.ts makes "Live sim 1"):
  *   - student A forgets the pictures: the request shows in the teacher's live
  *     snapshot; the teacher resets through the real route; A's screen moves on
  *     to choosing new pictures by itself;
@@ -19,37 +18,89 @@
  * problem), and nothing in a menu that is open. On a calculator problem
  * neither the calculator nor the hand stands a gap away from the bar's edge
  * once the next problem arrives: the hand has the bar's end while a session
- * runs, the calculator when none does. Screenshots go to $VERIFY_SHOTS.
+ * runs, the calculator when none does. Screenshots go to $VERIFY_SHOTS
+ * (default artifacts/student-signals).
+ *
+ * By itself (as CI runs it, `npm run test:student-signals-ui`) it starts its
+ * own stack on a fresh schema of AMP_TEST_DATABASE_URL
+ * (scripts/persona-stack.ts) and has the simulator make the class:
+ *
+ *     AMP_TEST_DATABASE_URL=postgres://…/amp_test \
+ *     npx tsx scripts/verify-student-signals-ui.ts [--port 4890]
+ *
+ * Or against a running preview where the simulator has made the class once:
  *
  *     VERIFY_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/amp_scratch_l4b \
  *     VERIFY_API=http://127.0.0.1:4871 VERIFY_WEB=http://127.0.0.1:4870 \
  *     npx tsx scripts/verify-student-signals-ui.ts
  */
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import { mkdir } from "node:fs/promises";
 import pg from "pg";
 import { chromium as rawChromium, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { schoolPictures } from "../src/schools/contracts";
 import { PERSONA_PASSPHRASE } from "../src/web/features/dev/persona-list";
+import { startPersonaStack } from "./persona-stack";
 
-const databaseUrl = process.env.VERIFY_DATABASE_URL;
-const api = (process.env.VERIFY_API ?? "http://127.0.0.1:4871").replace(
-  /\/$/,
-  "",
-);
-const web = (process.env.VERIFY_WEB ?? "http://127.0.0.1:4870").replace(
-  /\/$/,
-  "",
-);
-const shots =
-  process.env.VERIFY_SHOTS ??
-  "/Users/skyl/corpora-media/AMP-media/2026-11-20-round/l4b";
-if (!databaseUrl) throw new Error("VERIFY_DATABASE_URL is required");
+const shots = process.env.VERIFY_SHOTS ?? "artifacts/student-signals";
+await mkdir(shots, { recursive: true });
+// No preview named: the check's own stack, and the simulator's class in it.
+const port = process.argv.indexOf("--port");
+const stack = process.env.VERIFY_DATABASE_URL
+  ? null
+  : await startPersonaStack({
+      webPort: port > 0 ? Number(process.argv[port + 1]) : 4890,
+      personas: ["teacher-class"],
+      name: "student_signals",
+      out: shots,
+    });
+const databaseUrl = stack?.database ?? process.env.VERIFY_DATABASE_URL!;
+const api = (
+  stack?.api ??
+  process.env.VERIFY_API ??
+  "http://127.0.0.1:4871"
+).replace(/\/$/, "");
+const web = (
+  stack?.origin ??
+  process.env.VERIFY_WEB ??
+  "http://127.0.0.1:4870"
+).replace(/\/$/, "");
 for (const url of [databaseUrl, api, web])
   if (!["127.0.0.1", "localhost"].includes(new URL(url).hostname))
     throw new Error(`Loopback only: ${url}`);
-await mkdir(shots, { recursive: true });
+if (stack) {
+  // The class and its students, made the real way: they arrive, sign in,
+  // and the simulator is done in seconds, with no session run.
+  const made = spawn(
+    "npx",
+    [
+      "tsx",
+      "scripts/live-class-sim.ts",
+      "--students",
+      "14",
+      "--minutes",
+      "0.05",
+      "--pace",
+      "0.05",
+      "--no-start",
+    ],
+    {
+      env: {
+        ...process.env,
+        AMP_SIM_DATABASE_URL: databaseUrl,
+        AMP_SIM_API: api,
+        AMP_SIM_WEB: web,
+      },
+      stdio: ["ignore", "ignore", "inherit"],
+    },
+  );
+  const code = await new Promise<number | null>((resolve) =>
+    made.on("exit", resolve),
+  );
+  assert.equal(code, 0, "the simulator makes its class");
+}
 const pool = new pg.Pool({ connectionString: databaseUrl });
 
 // ---- the teacher, by the real routes --------------------------------------
@@ -228,6 +279,7 @@ async function pick(page: Page) {
 const browser = await secureChromium(rawChromium).launch();
 const issues: string[] = [];
 let checks = 0;
+let failed = false;
 try {
   for (const theme of ["light", "dark"] as const)
     for (const width of [390, 1280]) {
@@ -840,9 +892,15 @@ try {
     await savePractice(B.id, { kind: "focus", skillId: null });
     checks++;
   }
+  if (issues.length) console.log(`console errors:\n${issues.join("\n")}`);
+  console.log(`verify-student-signals-ui: ${checks} checks passed`);
+} catch (error) {
+  failed = true;
+  console.error(error);
 } finally {
   await browser.close();
   await pool.end();
+  // The check's own stack: its servers stop and its schema goes.
+  await stack?.stop();
 }
-if (issues.length) console.log(`console errors:\n${issues.join("\n")}`);
-console.log(`verify-student-signals-ui: ${checks} checks passed`);
+process.exit(failed ? 1 : 0);
