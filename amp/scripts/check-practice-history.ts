@@ -110,7 +110,7 @@ try {
         assert.equal(await layersOf(page), stack);
       }
 
-      // Escape goes up one level (the cross closes the whole overlay).
+      // Escape goes up one level (as the cross does).
       await page.keyboard.press("Escape");
       await page.waitForTimeout(1200);
       assert.equal(
