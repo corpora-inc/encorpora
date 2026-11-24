@@ -120,6 +120,50 @@ console.log(
   `UI review: journeys in ${lookName(journeyLook)}${sweep.skip ? "" : `; templates in ${sweepLooks.map(lookName).join(" and ")}`}`,
 );
 
+/** The last things the page asked for and the documents it loaded: what a
+ * page that stopped answering was doing just before. */
+const lately: string[] = [];
+const note = (line: string) => {
+  lately.push(`${((Date.now() - startedAt) / 1000).toFixed(1)}s ${line}`);
+  if (lately.length > 40) lately.shift();
+};
+/**
+ * What a page that no longer answers is doing: its address, the stack it is
+ * running (the debugger pauses it wherever it is; a page that is idle and
+ * waiting never pauses, and that is said), and what it last asked for.
+ */
+async function whereThePageIs(page: Page): Promise<string> {
+  const lines = [`The page is not answering, at ${page.url()}`];
+  try {
+    const cdp = await page.context().newCDPSession(page);
+    const paused = new Promise<string>((resolve) => {
+      cdp.once("Debugger.paused", (event) =>
+        resolve(
+          event.callFrames
+            .slice(0, 16)
+            .map(
+              (frame) =>
+                `    at ${frame.functionName || "(anonymous)"} (${frame.url}:${frame.location.lineNumber + 1}:${(frame.location.columnNumber ?? 0) + 1})`,
+            )
+            .join("\n"),
+        ),
+      );
+    });
+    await within(cdp.send("Debugger.enable"), "the debugger", 4_000);
+    await within(cdp.send("Debugger.pause"), "the debugger's pause", 4_000);
+    lines.push(
+      "It is running:",
+      await within(paused, "the page to pause", 4_000),
+    );
+    await cdp.send("Debugger.resume").catch(() => undefined);
+  } catch (error) {
+    lines.push(
+      `The debugger did not pause it (${error instanceof Error ? error.message : String(error)}): it is not running script.`,
+    );
+  }
+  lines.push("What it did last:", ...lately.map((line) => `    ${line}`));
+  return lines.join("\n");
+}
 async function preserveFailure(page: Page, directory: string, detail: string) {
   try {
     await within(
@@ -141,6 +185,7 @@ async function preserveFailure(page: Page, directory: string, detail: string) {
     console.error(
       "UI failure diagnostics could not finish; preserving the original failure.",
     );
+    console.error(await whereThePageIs(page).catch((error) => String(error)));
   }
 }
 const app = buildApp({
@@ -176,6 +221,22 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
+  page.on("request", (request) =>
+    note(
+      `${request.method()} ${request.url().replace(ORIGIN, "").slice(0, 110)}${request.isNavigationRequest() ? " (document)" : ""}`,
+    ),
+  );
+  // A slower machine, when asked for (a runner, a school laptop): what only
+  // shows up when the page falls behind its own timers shows up here.
+  const slower = Number(process.env.AMP_UI_CPU_THROTTLE ?? 1);
+  if (slower > 1)
+    await (
+      await page.context().newCDPSession(page)
+    ).send("Emulation.setCPUThrottlingRate", { rate: slower });
+  page.on("crash", () => note("the page crashed"));
+  page.on("pageerror", (error) =>
+    note(`error: ${error.message.slice(0, 160)}`),
+  );
   // tsx names the helpers inside page functions (`__name`); every document
   // the journey opens has the page-side shim.
   await page.addInitScript("globalThis.__name ??= (f) => f");
@@ -622,139 +683,152 @@ try {
   // changed a size (or a chip that took a problem's room) fails here for the
   // template it happened to.
   const completedBy = new Map<Look, string[]>();
+  const sweepRounds = Math.max(
+    1,
+    Number(process.env.AMP_UI_SWEEP_ROUNDS ?? 1) || 1,
+  );
   for (const look of sweep.skip ? [] : sweepLooks) {
     await wearLook(repository, account, learner.id, look);
     const done: string[] = [];
     completedBy.set(look, done);
-    for (const [index, template] of templates.entries()) {
-      if (!selectedIds.has(template.id)) continue;
-      progress(
-        `template ${index + 1}/${templates.length} (${done.length + 1}/${sweep.selectedIds.length} in partition, ${lookName(look)}): ${template.id}`,
-      );
-      // Respect the real server rate limit during this accelerated catalog sweep.
-      if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75) {
-        const wait = Math.max(0, 60_100 - (Date.now() - windowStart));
-        console.log(`${phase}: respecting rate limit for ${wait}ms`);
-        await page.waitForTimeout(wait);
-      }
-      await within(
-        (async () => {
-          // Read the current answer form where every surface is inline, before
-          // testing compact viewports that can hide it behind the answer dialog.
-          await page.setViewportSize({ width: 1280, height: 900 });
-          await startTopic(page, template.id, { entry: "lesson-url" }).catch(
-            async (failure) => {
-              console.error(
-                "Lesson navigation failed",
-                template.id,
-                new URL(page.url()).pathname,
-                await page.locator("body").innerText(),
-              );
-              throw failure;
-            },
-          );
-          await assertLookOnScreen(page, look, template.id);
-          // startTopic waited for this template's problem. Structured work may
-          // scroll its answer rows on a tablet; they have their own check.
-          const structured = (await page.locator(".work-form").count()) > 0;
-          assert.ok(
-            await page.evaluate(
-              () => document.documentElement.scrollWidth <= innerWidth,
-            ),
-            `Overflow in ${template.id}`,
-          );
-          // Real phone browsers (their bars showing) and tablets are strict: the
-          // problem fits or scrolls cleanly, never clipped or hidden under the dock.
-          for (const size of [
-            { width: 390, height: 844 },
-            ...PHONE_REAL_BROWSERS,
-            { width: 320, height: 568 },
-            ...TABLETS,
-            PHONE_LANDSCAPE,
-          ]) {
-            await page.setViewportSize(size);
-            await answerSurfaceSettled(page).catch((failure) => {
-              // Name the problem type and viewport; the timeout alone does not.
-              throw new Error(
-                `${template.id} ${size.width}×${size.height}: the answer surface did not follow the viewport`,
-                { cause: failure },
-              );
-            });
-            if (isPhoneLandscape(size)) {
-              await assertPhoneLandscapeSmoke(page, template.id);
-              continue;
-            }
-            await assertProblemReachable(
-              page,
-              `${template.id} ${size.width}×${size.height}`,
+    // More draws of the same templates, when asked for
+    // (AMP_UI_SWEEP_ROUNDS): a fault only some draws of a problem show (a
+    // page that stops answering) is found by drawing again.
+    for (let round = 1; round <= sweepRounds; round++)
+      for (const [index, template] of templates.entries()) {
+        if (!selectedIds.has(template.id)) continue;
+        progress(
+          `template ${index + 1}/${templates.length} (${sweepRounds > 1 ? `draw ${round}/${sweepRounds}` : `${done.length + 1}/${sweep.selectedIds.length} in partition`}, ${lookName(look)}): ${template.id}`,
+        );
+        // Respect the real server rate limit during this accelerated catalog sweep.
+        if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75) {
+          const wait = Math.max(0, 60_100 - (Date.now() - windowStart));
+          console.log(`${phase}: respecting rate limit for ${wait}ms`);
+          await page.waitForTimeout(wait);
+        }
+        await within(
+          (async () => {
+            // Read the current answer form where every surface is inline, before
+            // testing compact viewports that can hide it behind the answer dialog.
+            await page.setViewportSize({ width: 1280, height: 900 });
+            await startTopic(page, template.id, { entry: "lesson-url" }).catch(
+              async (failure) => {
+                console.error(
+                  "Lesson navigation failed",
+                  template.id,
+                  new URL(page.url()).pathname,
+                  // A page that no longer answers says where it is instead:
+                  // a frozen screen is found by its stack, not by a timeout.
+                  await page
+                    .locator("body")
+                    .innerText({ timeout: 3_000 })
+                    .catch(async () => await whereThePageIs(page)),
+                );
+                throw failure;
+              },
             );
-            // Figure labels never outgrow the prompt or the figure type sizes,
-            // however much room the layout gives the figure.
-            assertFigureTextScale(
-              await figureTextScale(page),
-              `${template.id} ${size.width}×${size.height}`,
-              typeSizes.lg,
-              size.width >= 768,
+            await assertLookOnScreen(page, look, template.id);
+            // startTopic waited for this template's problem. Structured work may
+            // scroll its answer rows on a tablet; they have their own check.
+            const structured = (await page.locator(".work-form").count()) > 0;
+            assert.ok(
+              await page.evaluate(
+                () => document.documentElement.scrollWidth <= innerWidth,
+              ),
+              `Overflow in ${template.id}`,
             );
-            if (TABLETS.some((t) => t.width === size.width)) {
-              const why = await problemInView(page, {
-                allowStructuredWorkScroll: structured,
+            // Real phone browsers (their bars showing) and tablets are strict: the
+            // problem fits or scrolls cleanly, never clipped or hidden under the dock.
+            for (const size of [
+              { width: 390, height: 844 },
+              ...PHONE_REAL_BROWSERS,
+              { width: 320, height: 568 },
+              ...TABLETS,
+              PHONE_LANDSCAPE,
+            ]) {
+              await page.setViewportSize(size);
+              await answerSurfaceSettled(page).catch((failure) => {
+                // Name the problem type and viewport; the timeout alone does not.
+                throw new Error(
+                  `${template.id} ${size.width}×${size.height}: the answer surface did not follow the viewport`,
+                  { cause: failure },
+                );
               });
-              if (why.length) {
-                const key = `${size.width}×${size.height}`;
-                tabletScrolls.set(key, [
-                  ...(tabletScrolls.get(key) ?? []),
-                  `${template.id} (${lookName(look)}): ${why[0]}`,
-                ]);
-                if (isTabletLandscape(size))
-                  await page.screenshot({
-                    path: new URL(
-                      `../artifacts/screenshots/tablet-scroll-${template.id}-${size.width}.png`,
-                      import.meta.url,
-                    ).pathname,
-                  });
+              if (isPhoneLandscape(size)) {
+                await assertPhoneLandscapeSmoke(page, template.id);
+                continue;
               }
-            }
-            if (
-              size.width === 320 &&
-              [...equalGroupsDefinitions, ...algebraDefinitions].some(
-                (d) => d.id === template.id,
+              await assertProblemReachable(
+                page,
+                `${template.id} ${size.width}×${size.height}`,
+              );
+              // Figure labels never outgrow the prompt or the figure type sizes,
+              // however much room the layout gives the figure.
+              assertFigureTextScale(
+                await figureTextScale(page),
+                `${template.id} ${size.width}×${size.height}`,
+                typeSizes.lg,
+                size.width >= 768,
+              );
+              if (TABLETS.some((t) => t.width === size.width)) {
+                const why = await problemInView(page, {
+                  allowStructuredWorkScroll: structured,
+                });
+                if (why.length) {
+                  const key = `${size.width}×${size.height}`;
+                  tabletScrolls.set(key, [
+                    ...(tabletScrolls.get(key) ?? []),
+                    `${template.id} (${lookName(look)}): ${why[0]}`,
+                  ]);
+                  if (isTabletLandscape(size))
+                    await page.screenshot({
+                      path: new URL(
+                        `../artifacts/screenshots/tablet-scroll-${template.id}-${size.width}.png`,
+                        import.meta.url,
+                      ).pathname,
+                    });
+                }
+              }
+              if (
+                size.width === 320 &&
+                [...equalGroupsDefinitions, ...algebraDefinitions].some(
+                  (d) => d.id === template.id,
+                )
               )
+                await page.screenshot({
+                  path: new URL(
+                    `../artifacts/screenshots/${template.id}-compact.png`,
+                    import.meta.url,
+                  ).pathname,
+                });
+              if (template.id === "fraction-group-count" && size.width === 320)
+                await page.screenshot({
+                  path: new URL(
+                    "../artifacts/screenshots/fraction-group-count-compact.png",
+                    import.meta.url,
+                  ).pathname,
+                  fullPage: true,
+                });
+            }
+            await page.setViewportSize({ width: 390, height: 844 });
+            if (
+              template.id.startsWith("graphed-") ||
+              template.id.startsWith("clock-") ||
+              template.id.startsWith("bar-chart-")
             )
               await page.screenshot({
                 path: new URL(
-                  `../artifacts/screenshots/${template.id}-compact.png`,
-                  import.meta.url,
-                ).pathname,
-              });
-            if (template.id === "fraction-group-count" && size.width === 320)
-              await page.screenshot({
-                path: new URL(
-                  "../artifacts/screenshots/fraction-group-count-compact.png",
+                  `../artifacts/screenshots/${template.id}.png`,
                   import.meta.url,
                 ).pathname,
                 fullPage: true,
               });
-          }
-          await page.setViewportSize({ width: 390, height: 844 });
-          if (
-            template.id.startsWith("graphed-") ||
-            template.id.startsWith("clock-") ||
-            template.id.startsWith("bar-chart-")
-          )
-            await page.screenshot({
-              path: new URL(
-                `../artifacts/screenshots/${template.id}.png`,
-                import.meta.url,
-              ).pathname,
-              fullPage: true,
-            });
-        })(),
-        "template viewport checks",
-        60_000,
-      );
-      done.push(template.id);
-    }
+          })(),
+          "template viewport checks",
+          60_000,
+        );
+        if (round === 1) done.push(template.id);
+      }
   }
   for (const [look, done] of completedBy)
     assert.deepEqual(

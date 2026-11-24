@@ -94,6 +94,11 @@ async function answerWith(outcome: NonNullable<Outcome>, look = "bold") {
   if (look === "bold") document.documentElement.setAttribute("data-look", look);
   const view = render(<Host outcome={null} problem="p1" />);
   await settle();
+  // The server graded it and counted its point before the page heard: a
+  // read of practice-state from here on has it (practice reads it again
+  // with each answer where no stream feeds the tab: look-feed.ts).
+  if (outcome.correct && !outcome.assisted && server.points != null)
+    server.points++;
   view.rerender(<Host outcome={outcome} problem="p1" />);
   await settle();
   return view;

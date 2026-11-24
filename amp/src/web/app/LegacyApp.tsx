@@ -14,6 +14,7 @@ import {
 import type { ShownLook } from "../../learning/look";
 import { useLook } from "../features/practice/look";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
+import { useStudentStream } from "../features/live/RaiseHandSlot";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
 import { forSession, useSessionOrNull } from "../lib/session";
@@ -543,6 +544,10 @@ function LegacyScreen({ owner }: { owner: string | null }) {
   });
   // The look for this learner's practice (`data-look` on <html> while here).
   const practiceLook = useLook(adjustments.scope, readsPractice);
+  // A student's one stream, for as long as practice is on screen: here,
+  // above the workspace that mounts anew for each problem, so a new problem
+  // opens no stream (features/live/RaiseHandSlot.tsx).
+  useStudentStream(readsPractice);
   const [books, setBooks] = useState<BookSummary[]>([]);
   const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
