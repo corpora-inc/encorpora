@@ -22,6 +22,7 @@ import type { SchoolRepository } from "./repository.js";
 import {
   assertSettingsWritable,
   resolveSettings,
+  storedLook,
   SettingLockedError,
   standingsScopes,
   type SchoolSettings,
@@ -252,6 +253,23 @@ export async function writeExperience(
       else if (value !== undefined) nextValues[key] = value;
       if (locks[key] === true) nextLocked.add(key);
       if (locks[key] === false) nextLocked.delete(key);
+    }
+    // The look is "Allow Colorful": a scope keeps Calm, held (off), or
+    // nothing. A hold sent with Colorful is dropped, and choosing Colorful
+    // over a held Calm frees it in the same write (settings.ts `storedLook`).
+    if (touched.includes("look")) {
+      const look = storedLook(
+        nextValues.look,
+        nextLocked.has("look"),
+        resolveSettings(above).look.value,
+      );
+      if (look.held) {
+        nextValues.look = look.value;
+        nextLocked.add("look");
+      } else {
+        delete nextValues.look;
+        nextLocked.delete("look");
+      }
     }
     const pick = (from: Record<string, unknown>) =>
       Object.fromEntries(touched.map((key) => [key, from[key] ?? null]));

@@ -12,7 +12,6 @@ import switches from "../../ui/Switch.module.css";
 import { Loading } from "../../ui/Loading";
 import { Switch } from "../../ui/Switch";
 import { Toast } from "../../ui/Toast";
-import { LookSetting } from "../practice/LookSetting";
 import {
   practiceSettingsOptions,
   usePracticeAdjustment,
@@ -169,6 +168,7 @@ export function ChildPracticeSettings({
     intent:
       | { kind: "together"; enabled: boolean }
       | { kind: "gradeLevel"; shown: boolean }
+      | { kind: "allowColorful"; allowed: boolean }
       | { kind: "focus"; skillId: null },
   ) => {
     setBusy(true);
@@ -252,11 +252,40 @@ export function ChildPracticeSettings({
           </div>
         </div>
       )}
-      {/* How practice looks for this child, on any device. */}
+      {/* Whether this child may practice in Colorful, on any device. On,
+          the Look choice is the child's own, in their menu; off, they are
+          in Calm and have no Look choice. A class that has it off says so
+          here, and it can't be turned on for the one child. */}
       {!settings.isError && (
         <div className={styles.setting} data-child-look="">
           <div className={styles.settingText} style={{ gridColumn: "1 / -1" }}>
-            <LookSetting scope={scope} flush adult />
+            {!data ? (
+              <div
+                className={switches.row}
+                aria-busy="true"
+                data-switch-wait=""
+              >
+                <span className={switches.text}>
+                  <span>Allow Colorful</span>
+                </span>
+                <span className={switches.track} data-switch-loading="">
+                  <Loading inline>{null}</Loading>
+                </span>
+              </div>
+            ) : (
+              <Switch
+                label="Allow Colorful"
+                checked={!data.lookLocked}
+                disabled={data.lookLockedBy === "class"}
+                detail={
+                  data.lookLockedBy === "class" ? "Set by the class" : undefined
+                }
+                busy={busy}
+                onChange={(on) =>
+                  void change({ kind: "allowColorful", allowed: on })
+                }
+              />
+            )}
           </div>
         </div>
       )}

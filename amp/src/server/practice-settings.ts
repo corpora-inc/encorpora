@@ -2,6 +2,7 @@ import { isDeepStrictEqual } from "node:util";
 import { skills } from "../curriculum/catalog";
 import { historicalTemplates } from "../math/historical-templates";
 import { templates } from "../math/engine";
+import { allowsColorful } from "../learning/practice-settings";
 import type {
   PracticeChange,
   PracticeSettings,
@@ -24,7 +25,7 @@ async function lookOf(tx: LearnerTransaction, settings: PracticeSettings) {
   const birthYear = (await tx.isAdult()) ? null : await tx.birthYear();
   return resolveLook({
     own: settings.look,
-    ownLocked: settings.lookAdultLock,
+    ownOff: !allowsColorful(settings),
     classes: await tx.classLooks(),
     starting: startingLook(
       birthYear === null ? null : Math.max(0, completedGrade(birthYear) + 1),
@@ -150,25 +151,28 @@ export async function changePractice(
     // move on with every problem: theirs, whoever holds the look itself.
     next.lookHue = change.hue;
   } else if (change.kind === "look") {
-    // Display only, like the grade level. A learner, their grown-up or a
-    // teacher's class may choose it, until a class locks it.
-    // A class's lock holds for everyone. A grown-up's holds against the
-    // child's own sessions (madeIn "student"); the grown-up's sign-in may
-    // still change it.
-    const { lockedBy: lookLockedBy } = await lookOf(tx, previous);
-    if (lookLockedBy === "class")
-      throw new ApiError(409, "Your class chose how practice looks.");
-    if (lookLockedBy === "adult" && madeIn === "student")
-      throw new ApiError(409, "A parent chose how practice looks.");
+    // Display only, like the grade level, and the learner's own: Calm or
+    // Colorful, or (null) where their age starts. Colorful can't be chosen
+    // while an adult has it off, by a class above or for this child; the
+    // choice they had is kept for when it is allowed again.
+    if (change.look === "bold") {
+      const { lockedBy } = await lookOf(tx, previous);
+      if (lockedBy === "class")
+        throw new ApiError(409, "Your class turned Colorful off.");
+      if (lockedBy === "adult")
+        throw new ApiError(409, "A parent turned Colorful off.");
+    }
     next.look = change.look;
-  } else if (change.kind === "lookLock") {
-    // Only a grown-up (the route refuses a student's session). Locking
-    // holds the look as it is now, so there is something to hold.
+  } else if (change.kind === "allowColorful") {
+    // A grown-up's switch for the child (the route refuses a student's
+    // session). A class above that has it off holds it for everyone.
     const now = await lookOf(tx, previous);
     if (now.lockedBy === "class")
-      throw new ApiError(409, "Your class chose how practice looks.");
-    if (change.locked) next.look = next.look ?? now.look;
-    next.lookAdultLock = change.locked;
+      throw new ApiError(409, "The class turned Colorful off.");
+    next.colorfulAllowed = change.allowed;
+    // The lock that came before the switch is spent: the switch is the
+    // one record from here on.
+    next.lookAdultLock = false;
   } else {
     if (change.skillId && !templates.some((t) => t.skillId === change.skillId))
       throw new ApiError(400, "This skill has no practice problems.");

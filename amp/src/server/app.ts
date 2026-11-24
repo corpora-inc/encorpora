@@ -559,7 +559,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     if (
       change.kind === "reset" ||
       change.kind === "gradeLevel" ||
-      change.kind === "lookLock"
+      change.kind === "allowColorful"
     )
       assertFamilyManaged(account, request);
     const madeIn =

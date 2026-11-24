@@ -21,19 +21,22 @@ test("the browser checks' practice-state reads as practice reads it", () => {
   assert.equal(state.points, undefined);
 });
 
-test("a look the learner chose, and one a grown-up holds, apply as the server's", () => {
+test("a look the learner chose, and Colorful a grown-up turned off, apply as the server's", () => {
   const own = practiceStateFixture({
     ...defaultPracticeSettings(),
     look: "bold",
   });
   assert.equal(own.effectiveLook, "bold");
   assert.equal(own.lookLocked, false);
-  const held = practiceStateSchema.parse(
+  const off = practiceStateSchema.parse(
     practiceStateFixture(
-      { ...defaultPracticeSettings(), look: "bold", lookAdultLock: true },
+      { ...defaultPracticeSettings(), look: "bold", colorfulAllowed: false },
       12,
     ),
   );
-  assert.equal(held.lookLockedBy, "adult");
-  assert.equal(held.points, 12);
+  assert.deepEqual(
+    [off.effectiveLook, off.lookLocked, off.lookLockedBy, off.look],
+    ["calm", true, "adult", "bold"],
+  );
+  assert.equal(off.points, 12);
 });

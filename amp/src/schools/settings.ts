@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { looks } from "../learning/look.js";
+import { colorfulAllowed, looks, type Look } from "../learning/look.js";
 
 /** What a school decides about the student experience. One schema, one
  * resolver: district → school → class → student, and a level above can lock. */
@@ -48,6 +48,13 @@ export type ResolvedSettings = { [K in SettingKey]: ResolvedSetting<K> };
 
 const ref = ({ kind, id }: SettingsScope): ScopeRef => ({ kind, id });
 
+/** Whether a scope's lock on `key` holds, given the value in effect there.
+ * Every setting's does but the look's: the look is "Allow Colorful", off
+ * only as Calm, held (learning/look.ts `colorfulAllowed`). A lock stored
+ * beside Colorful holds nothing, for the scope and for everything below. */
+const lockHolds = (key: SettingKey, value: unknown): boolean =>
+  key !== "look" || !colorfulAllowed(value as Look, true);
+
 /** Pure. `chain` runs from the top: org path root first, then class, then
  * person. A stored value the schema no longer accepts is ignored, so a bad row
  * can't take a class down; a value below a lock is ignored as if unset. */
@@ -78,19 +85,42 @@ export function resolveSettings(
         setting.value = parsed.data;
         setting.setBy = ref(scope);
       }
-      if (scope.locked.includes(key)) setting.lockedBy = ref(scope);
+      if (scope.locked.includes(key) && lockHolds(key, setting.value))
+        setting.lockedBy = ref(scope);
     }
   return resolved as ResolvedSettings;
 }
 
-/** Keys of `changes` that a scope above has locked. */
+/** Keys of `changes` that a scope above has locked (a lock that holds:
+ * `resolveSettings`). */
 export function lockedKeys(
   above: readonly SettingsScope[],
   changes: Partial<SchoolSettings>,
 ): SettingKey[] {
-  return (Object.keys(changes) as SettingKey[]).filter((key) =>
-    above.some((scope) => scope.locked.includes(key)),
+  const resolved = resolveSettings(above);
+  return (Object.keys(changes) as SettingKey[]).filter(
+    (key) => resolved[key].lockedBy !== null,
   );
+}
+
+/**
+ * What a scope stores for the look once a write has been applied: the one
+ * pair that means "Allow Colorful: off" (Calm, held), or nothing at all.
+ * `inherited` is the look in effect from above, for a scope that holds
+ * without a value of its own. A hold beside Colorful is dropped, and so is
+ * a look nobody holds: an adult no longer chooses a starting look for
+ * anyone else, so there is nothing else for a scope to keep.
+ */
+export function storedLook(
+  own: unknown,
+  held: boolean,
+  inherited: Look,
+): { value: "calm"; held: true } | { value: undefined; held: false } {
+  const parsed = schoolSettingsSchema.shape.look.safeParse(own);
+  const value = parsed.success ? parsed.data : inherited;
+  return colorfulAllowed(value, held)
+    ? { value: undefined, held: false }
+    : { value: "calm", held: true };
 }
 /** A write to a key locked above is rejected; lower scopes never override. */
 export class SettingLockedError extends Error {

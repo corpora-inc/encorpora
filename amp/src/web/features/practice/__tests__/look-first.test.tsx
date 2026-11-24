@@ -43,7 +43,11 @@ beforeEach(() => {
   server.fail = false;
   server.states = { pip: state("bold"), theo: state("calm") };
 });
-afterEach(() => {
+afterEach(async () => {
+  // The read ahead starts Colorful's moments loading and does not wait for
+  // them. A test does: an import still under way when its file ends resolves
+  // against whatever the next file has set up.
+  await vi.dynamicImportSettled();
   cleanup();
   root.removeAttribute("data-look");
   root.removeAttribute("data-look-arriving");

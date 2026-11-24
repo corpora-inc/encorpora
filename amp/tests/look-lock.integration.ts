@@ -9,11 +9,12 @@ import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
 
-/* A parent's lock on a child's look: it holds against the child's own
-   session (a device handed over with "Let Maya practice here"), never
-   against the parent's. Every name here is made up. */
+/* A parent's "Allow Colorful" for a child: off, the child is in Calm and
+   nobody sets Colorful, by the child's own session (a device handed over
+   with "Let Maya practice here") or the parent's; the child's choice is
+   kept and applies again when it is on. Every name here is made up. */
 test(
-  "look lock: a parent holds a child's look; the child can't change it",
+  "Allow Colorful for a child: off is Calm for the child, and their choice is kept",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async (t) => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -97,95 +98,149 @@ test(
       return here.json().token as string;
     };
 
-    await t.test("the child chooses until a parent locks", async () => {
-      const child = await handedOver();
-      assert.equal(
-        (await send(child, { kind: "look", look: "bold" })).statusCode,
-        200,
-      );
-      assert.equal((await state(child)).lookLockedBy, null);
-      const locked = await send(parent, { kind: "lookLock", locked: true });
-      assert.equal(locked.statusCode, 200, locked.body);
-      assert.deepEqual(
-        [
-          locked.json().effectiveLook,
-          locked.json().lookLocked,
-          locked.json().lookLockedBy,
-        ],
-        ["bold", true, "adult"],
-      );
-    });
+    await t.test(
+      "the child chooses until a parent turns Colorful off",
+      async () => {
+        const child = await handedOver();
+        assert.equal(
+          (await send(child, { kind: "look", look: "bold" })).statusCode,
+          200,
+        );
+        assert.equal((await state(child)).lookLockedBy, null);
+        const off = await send(parent, {
+          kind: "allowColorful",
+          allowed: false,
+        });
+        assert.equal(off.statusCode, 200, off.body);
+        // Calm, off by the grown-up, and the child's own choice is kept.
+        assert.deepEqual(
+          [
+            off.json().effectiveLook,
+            off.json().lookLocked,
+            off.json().lookLockedBy,
+            off.json().look,
+            off.json().colorfulAllowed,
+          ],
+          ["calm", true, "adult", "bold", false],
+        );
+      },
+    );
 
     await t.test(
-      "locked: the handed-over child is refused, the parent is not",
+      "off: nobody sets Colorful, by the child's session or the parent's, and only a grown-up has the switch",
       async () => {
         const child = await handedOver();
         const seen = await state(child);
         assert.deepEqual(
           [seen.effectiveLook, seen.lookLocked, seen.lookLockedBy],
-          ["bold", true, "adult"],
+          ["calm", true, "adult"],
         );
-        const refused = await send(child, { kind: "look", look: "calm" });
+        const refused = await send(child, { kind: "look", look: "bold" });
         assert.equal(refused.statusCode, 409, refused.body);
-        assert.match(refused.json().error, /parent/);
+        assert.match(refused.json().error, /parent/i);
         assert.equal(
-          (await send(child, { kind: "look", look: null })).statusCode,
+          (await send(parent, { kind: "look", look: "bold" })).statusCode,
           409,
         );
-        // Only a grown-up holds or frees it.
+        // The switch is a grown-up's: never the child's own session's.
         assert.equal(
-          (await send(child, { kind: "lookLock", locked: false })).statusCode,
+          (await send(child, { kind: "allowColorful", allowed: true }))
+            .statusCode,
           403,
         );
-        assert.equal((await state(parent)).lookLocked, true);
-        // The parent, outside child mode, changes it and it stays held.
-        const changed = await send(parent, { kind: "look", look: "calm" });
-        assert.equal(changed.statusCode, 200, changed.body);
-        assert.deepEqual(
-          [changed.json().effectiveLook, changed.json().lookLockedBy],
-          ["calm", "adult"],
+        // The lock that came before the switch is no change any more.
+        assert.equal(
+          (await send(parent, { kind: "lookLock", locked: false })).statusCode,
+          400,
         );
-        assert.equal((await state(child)).effectiveLook, "calm");
+        const still = await state(parent);
+        assert.deepEqual(
+          [still.effectiveLook, still.lookLocked, still.look],
+          ["calm", true, "bold"],
+        );
       },
     );
 
     await t.test(
-      "locking with no look chosen holds what the child sees",
+      "on again: the choice the child had made applies at once",
       async () => {
-        const sam = (
-          await post("/api/v1/learners", parent, {
-            name: "Sam",
-            // Grade 6 or later: starts in Calm.
-            birthYear: 2012,
-          })
-        ).json().id as string;
-        const p = `/api/v1/learners/${sam}/practice-state`;
-        const before = (await get(p, parent)).json();
-        assert.equal(before.look, null);
-        const locked = await post(p, parent, {
-          kind: "lookLock",
-          locked: true,
-          revision: before.revision,
-          requestId: randomUUID(),
-        });
-        assert.equal(locked.statusCode, 200, locked.body);
+        const on = await send(parent, { kind: "allowColorful", allowed: true });
+        assert.equal(on.statusCode, 200, on.body);
         assert.deepEqual(
-          [locked.json().look, locked.json().lookLockedBy],
-          ["calm", "adult"],
+          [on.json().effectiveLook, on.json().lookLocked, on.json().look],
+          ["bold", false, "bold"],
         );
+        const child = await handedOver();
+        assert.equal(
+          (await send(child, { kind: "look", look: "calm" })).statusCode,
+          200,
+        );
+        assert.equal(
+          (await send(child, { kind: "look", look: "bold" })).statusCode,
+          200,
+        );
+        assert.equal((await state(parent)).effectiveLook, "bold");
       },
     );
 
-    await t.test("unlocked, the child has full control again", async () => {
-      const unlocked = await send(parent, { kind: "lookLock", locked: false });
-      assert.equal(unlocked.statusCode, 200, unlocked.body);
-      assert.equal(unlocked.json().lookLocked, false);
-      const child = await handedOver();
-      assert.equal(
-        (await send(child, { kind: "look", look: "bold" })).statusCode,
-        200,
-      );
-      assert.equal((await state(parent)).effectiveLook, "bold");
-    });
+    await t.test(
+      "stored before the switch: only a lock on Calm reads as off, and the switch replaces it",
+      async () => {
+        const stored = async (name: string, look: string, lock: boolean) => {
+          const kid = (
+            await post("/api/v1/learners", parent, { name, birthYear: 2012 })
+          ).json().id as string;
+          const p = `/api/v1/learners/${kid}/practice-state`;
+          // Make the row, then write it as the earlier lock left it.
+          const first = (await get(p, parent)).json();
+          const made = await post(p, parent, {
+            kind: "look",
+            look,
+            revision: first.revision,
+            requestId: randomUUID(),
+          });
+          assert.equal(made.statusCode, 200, made.body);
+          await db.query(
+            `UPDATE amp_practice_settings
+             SET state=(state - 'colorfulAllowed') || jsonb_build_object('lookAdultLock',$2::boolean)
+             WHERE learner_id=$1`,
+            [kid, lock],
+          );
+          return p;
+        };
+        const read = async (p: string) => {
+          const seen = (await get(p, parent)).json();
+          return [seen.effectiveLook, seen.lookLocked, seen.lookLockedBy];
+        };
+        assert.deepEqual(
+          await read(await stored("Colorful held", "bold", true)),
+          ["bold", false, null],
+        );
+        assert.deepEqual(await read(await stored("Calm free", "calm", false)), [
+          "calm",
+          false,
+          null,
+        ]);
+        const held = await stored("Calm held", "calm", true);
+        assert.deepEqual(await read(held), ["calm", true, "adult"]);
+        // Turning it on writes the switch and spends the old lock.
+        const before = (await get(held, parent)).json();
+        const on = await post(held, parent, {
+          kind: "allowColorful",
+          allowed: true,
+          revision: before.revision,
+          requestId: randomUUID(),
+        });
+        assert.equal(on.statusCode, 200, on.body);
+        assert.deepEqual(
+          [
+            on.json().lookLocked,
+            on.json().colorfulAllowed,
+            on.json().lookAdultLock,
+          ],
+          [false, true, false],
+        );
+      },
+    );
   },
 );

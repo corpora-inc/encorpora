@@ -221,36 +221,73 @@ test(
     const writeOrg = (orgId: string, token: string, body: object) =>
       post(`/api/v1/school/orgs/${orgId}/experience`, token, body);
 
+    const classView = async (classId: string, token: string) =>
+      (
+        await get(`/api/v1/school/classes/${classId}/experience`, token)
+      ).json() as {
+        lockable: string[];
+        canLock: boolean;
+        settings: {
+          look: {
+            value: string;
+            own: boolean;
+            lockedBy: { name: string } | null;
+          };
+        };
+      };
+    const OFF = { values: { look: "calm" }, locks: { look: true } };
+    const ON = { values: { look: null }, locks: { look: false } };
+    const sendClass = (classId: string, token: string, body: object) =>
+      post(`/api/v1/school/classes/${classId}/experience`, token, body);
+    const stored = async (kind: string, scope: string) =>
+      (
+        await db.query(
+          `SELECT "values"->>'look' AS look, 'look'=ANY(locked) AS held
+           FROM amp_scope_settings WHERE scope_kind=$1 AND scope_id=$2`,
+          [kind, scope],
+        )
+      ).rows[0] as { look: string | null; held: boolean } | undefined;
+
     await t.test(
-      "a teacher chooses for the class; a student can still choose their own",
+      "Colorful is allowed unless an adult turns it off: the look is the student's own, and a class keeps nothing else",
       async () => {
-        const read = await get(
-          `/api/v1/school/classes/${period.id}/experience`,
-          teacher,
-        );
-        assert.equal(read.json().settings.look.value, "calm");
-        const set = await writeClass(period.id, teacher, "bold");
-        assert.equal(set.statusCode, 200, set.body);
-        assert.equal(set.json().settings.look.value, "bold");
-        assert.equal(set.json().settings.look.own, true);
-        assert.equal(set.json().settings.look.lockedBy, null);
-        const seen = await stateOf(ada.learnerId, ada.token);
-        assert.deepEqual(
-          [seen.look, seen.effectiveLook, seen.lookLocked],
-          [null, "bold", false],
-        );
-        // Their own choice beats the class's, as the learner.
-        const own = await choose(ada.learnerId, ada.token, "calm");
-        assert.equal(own.statusCode, 200, own.body);
         assert.equal(
-          (await stateOf(ada.learnerId, ada.token)).effectiveLook,
-          "calm",
+          (await classView(period.id, teacher)).settings.look.lockedBy,
+          null,
         );
-        // Bo kept no choice and follows the class.
-        assert.equal(
-          (await stateOf(bo.learnerId, bo.token)).effectiveLook,
-          "bold",
-        );
+        const first = await stateOf(bo.learnerId, bo.token);
+        assert.deepEqual([first.look, first.lookLocked], [null, false]);
+        // An adult no longer chooses a starting look for anyone else: a
+        // look sent for the class, with or without a hold, is not kept.
+        for (const body of [
+          { values: { look: "bold" } },
+          { values: { look: "bold" }, locks: { look: true } },
+          { values: { look: "calm" } },
+          { locks: { look: false } },
+        ]) {
+          const sent = await sendClass(period.id, teacher, body);
+          assert.equal(sent.statusCode, 200, sent.body);
+          assert.deepEqual(
+            [sent.json().settings.look.own, sent.json().settings.look.lockedBy],
+            [false, null],
+            JSON.stringify(body),
+          );
+          const kept = await stored("class", period.id);
+          assert.deepEqual(
+            [kept?.look ?? null, kept?.held ?? false],
+            [null, false],
+          );
+          assert.deepEqual(await stateOf(bo.learnerId, bo.token), first);
+        }
+        // Ada chooses, either way, as the learner.
+        for (const look of ["bold", "calm", "bold"]) {
+          const own = await choose(ada.learnerId, ada.token, look);
+          assert.equal(own.statusCode, 200, own.body);
+          assert.equal(
+            (await stateOf(ada.learnerId, ada.token)).effectiveLook,
+            look,
+          );
+        }
         // A student can't write the class's setting.
         const refused = await writeClass(period.id, ada.token, "calm");
         assert.notEqual(refused.statusCode, 200);
@@ -258,43 +295,53 @@ test(
     );
 
     await t.test(
-      "a lock above rules: the class value is ignored, no one below can change it",
+      "off at the school: every class below is off and says who set it; nobody below turns it on; students are in Calm and can't set Colorful",
       async () => {
-        const locked = await writeOrg(school.id, districtAdmin, {
-          values: { look: "calm" },
-          locks: { look: true },
+        const off = await writeOrg(school.id, districtAdmin, OFF);
+        assert.equal(off.statusCode, 200, off.body);
+        assert.deepEqual(await stored("org", school.id), {
+          look: "calm",
+          held: true,
         });
-        assert.equal(locked.statusCode, 200, locked.body);
-        const below = await get(
-          `/api/v1/school/classes/${period.id}/experience`,
-          teacher,
-        );
-        assert.equal(below.json().settings.look.value, "calm");
-        assert.equal(
-          below.json().settings.look.lockedBy.name,
-          "Alder Street School",
-        );
-        const refused = await writeClass(period.id, teacher, "bold");
-        assert.equal(refused.statusCode, 409);
-        assert.deepEqual(refused.json(), { error: "setting_locked" });
-        // Ada chose calm, Bo follows the class's bold: the lock sets both to calm.
+        const below = await classView(period.id, teacher);
+        assert.equal(below.settings.look.lockedBy?.name, "Alder Street School");
+        for (const body of [ON, OFF, { values: { look: "bold" } }]) {
+          const refused = await sendClass(period.id, teacher, body);
+          assert.equal(refused.statusCode, 409);
+          assert.deepEqual(refused.json(), { error: "setting_locked" });
+        }
+        // Ada had chosen Colorful, Bo nothing: both are in Calm.
         for (const student of [ada, bo]) {
           const state = await stateOf(student.learnerId, student.token);
           assert.deepEqual(
-            [state.effectiveLook, state.lookLocked],
-            ["calm", true],
+            [
+              state.effectiveLook,
+              state.lookLocked,
+              (state as { lookLockedBy?: string }).lookLockedBy,
+            ],
+            ["calm", true, "class"],
           );
+          const blocked = await choose(
+            student.learnerId,
+            student.token,
+            "bold",
+          );
+          assert.equal(blocked.statusCode, 409, blocked.body);
         }
-        const blocked = await choose(bo.learnerId, bo.token, "bold");
-        assert.equal(blocked.statusCode, 409, blocked.body);
-        // Unlocked, the class's own value (bold) and the students' choices are back.
-        const open = await writeOrg(school.id, districtAdmin, {
-          locks: { look: false },
-        });
-        assert.equal(open.statusCode, 200, open.body);
-        const after = await stateOf(bo.learnerId, bo.token);
+        // Ada's own choice was kept, and is hers again when it is allowed.
+        assert.equal((await stateOf(ada.learnerId, ada.token)).look, "bold");
+        const on = await writeOrg(school.id, districtAdmin, ON);
+        assert.equal(on.statusCode, 200, on.body);
+        const kept = await stored("org", school.id);
         assert.deepEqual(
-          [after.effectiveLook, after.lookLocked],
+          [kept?.look ?? null, kept?.held ?? false],
+          [null, false],
+        );
+        assert.deepEqual(
+          [
+            (await stateOf(ada.learnerId, ada.token)).effectiveLook,
+            (await stateOf(ada.learnerId, ada.token)).lookLocked,
+          ],
           ["bold", false],
         );
         assert.equal(
@@ -304,62 +351,49 @@ test(
       },
     );
 
-    await t.test(
-      "two classes that disagree resolve to calm; locked, a locked one wins",
-      async () => {
-        // Cy is in the first class (bold, from above) and a second one (calm).
-        await db.query(
-          `INSERT INTO amp_enrollments(id,class_id,person_id,role,begin_on)
+    await t.test("a student in two classes: off in either is off", async () => {
+      await db.query(
+        `INSERT INTO amp_enrollments(id,class_id,person_id,role,begin_on)
          SELECT $4,$1,$2,'student',begin_on FROM amp_enrollments WHERE class_id=$3 AND person_id=$2`,
-          [second.id, both.personId, period.id, randomUUID()],
-        );
-        await writeClass(second.id, secondTeacher, "calm");
-        const state = await stateOf(both.learnerId, both.token);
-        assert.deepEqual(
-          [state.effectiveLook, state.lookLocked],
-          ["calm", false],
-        );
-        // A lock on one class's value (set at the class through its own org
-        // scope) is the only one: it wins over the other's.
-        await db.query(
-          `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values",locked)
-         VALUES('class',$1,'{"look":"bold"}','{look}')
-         ON CONFLICT(scope_kind,scope_id) DO UPDATE SET "values"=EXCLUDED."values",locked=EXCLUDED.locked`,
-          [second.id],
-        );
-        const wins = await stateOf(both.learnerId, both.token);
-        assert.deepEqual([wins.effectiveLook, wins.lookLocked], ["bold", true]);
-      },
-    );
+        [second.id, both.personId, period.id, randomUUID()],
+      );
+      assert.equal(
+        (await choose(both.learnerId, both.token, "bold")).statusCode,
+        200,
+      );
+      const off = await sendClass(second.id, secondTeacher, OFF);
+      assert.equal(off.statusCode, 200, off.body);
+      const state = await stateOf(both.learnerId, both.token);
+      assert.deepEqual([state.effectiveLook, state.lookLocked], ["calm", true]);
+      // The other class's students are untouched.
+      assert.equal((await stateOf(bo.learnerId, bo.token)).lookLocked, false);
+      assert.equal(
+        (await sendClass(second.id, secondTeacher, ON)).statusCode,
+        200,
+      );
+      assert.deepEqual(
+        [
+          (await stateOf(both.learnerId, both.token)).effectiveLook,
+          (await stateOf(both.learnerId, both.token)).lookLocked,
+        ],
+        ["bold", false],
+      );
+    });
 
     await t.test(
-      "a teacher locks the class's look; an org lock still wins",
+      "a teacher turns it off for the class; stored before the switch, a hold beside Colorful holds nothing, above or here",
       async () => {
-        const read = (
-          await get(`/api/v1/school/classes/${period.id}/experience`, teacher)
-        ).json();
+        const read = await classView(period.id, teacher);
         assert.deepEqual(read.lockable, ["look"]);
         assert.equal(read.canLock, false);
-        const locked = await post(
-          `/api/v1/school/classes/${period.id}/experience`,
-          teacher,
-          {
-            values: { look: "calm" },
-            locks: { look: true },
-          },
-        );
-        assert.equal(locked.statusCode, 200, locked.body);
-        assert.equal(locked.json().settings.look.lockedBy.name, "Grade 5 Math");
-        // A teacher can lock only the look.
-        const other = await post(
-          `/api/v1/school/classes/${period.id}/experience`,
-          teacher,
-          {
-            locks: { levels: true },
-          },
-        );
+        const off = await sendClass(period.id, teacher, OFF);
+        assert.equal(off.statusCode, 200, off.body);
+        assert.equal(off.json().settings.look.lockedBy.name, "Grade 5 Math");
+        // A teacher holds nothing but this.
+        const other = await sendClass(period.id, teacher, {
+          locks: { levels: true },
+        });
         assert.equal(other.statusCode, 400, other.body);
-        // Every student in the class: calm, held by the class, whatever they chose.
         for (const student of [ada, bo]) {
           const state = await stateOf(student.learnerId, student.token);
           assert.deepEqual(
@@ -375,42 +409,57 @@ test(
             409,
           );
         }
-        // The school locks bold above it: the school's lock wins.
-        const above = await writeOrg(school.id, districtAdmin, {
-          values: { look: "bold" },
-          locks: { look: true },
-        });
-        assert.equal(above.statusCode, 200, above.body);
+        // A school's Colorful with a lock, as the earlier lock stored it:
+        // it holds nothing. The class is still off by its own switch, and
+        // its teacher is not refused when turning it on.
+        const legacy = (kind: string, scope: string) =>
+          db.query(
+            `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values",locked)
+             VALUES($1,$2,'{"look":"bold"}','{look}')
+             ON CONFLICT(scope_kind,scope_id) DO UPDATE SET "values"=EXCLUDED."values",locked=EXCLUDED.locked`,
+            [kind, scope],
+          );
+        await legacy("org", school.id);
+        const under = await classView(period.id, teacher);
+        assert.equal(under.settings.look.lockedBy?.name, "Grade 5 Math");
         assert.equal(
-          (await stateOf(ada.learnerId, ada.token)).effectiveLook,
-          "bold",
+          (await writeOrg(school.id, districtAdmin, {})).statusCode,
+          200,
         );
-        const refused = await post(
-          `/api/v1/school/classes/${period.id}/experience`,
-          teacher,
-          {
-            locks: { look: false },
-          },
+        const on = await sendClass(period.id, teacher, ON);
+        assert.equal(on.statusCode, 200, on.body);
+        assert.equal(on.json().settings.look.lockedBy, null);
+        assert.deepEqual(
+          [
+            (await stateOf(ada.learnerId, ada.token)).effectiveLook,
+            (await stateOf(ada.learnerId, ada.token)).lookLocked,
+          ],
+          ["bold", false],
         );
-        assert.equal(refused.statusCode, 409);
-        await writeOrg(school.id, districtAdmin, { locks: { look: false } });
-        // The class's own lock holds again, then the teacher frees it.
+        // The same pair stored at the class itself: allowed, and the
+        // student still chooses.
+        await legacy("class", period.id);
         assert.equal(
-          (await stateOf(bo.learnerId, bo.token)).effectiveLook,
-          "calm",
+          (await classView(period.id, teacher)).settings.look.lockedBy,
+          null,
         );
-        const freed = await post(
-          `/api/v1/school/classes/${period.id}/experience`,
-          teacher,
-          {
-            locks: { look: false },
-          },
-        );
-        assert.equal(freed.statusCode, 200, freed.body);
         assert.equal((await stateOf(bo.learnerId, bo.token)).lookLocked, false);
+        assert.equal(
+          (await choose(bo.learnerId, bo.token, "calm")).statusCode,
+          200,
+        );
         assert.equal(
           (await choose(bo.learnerId, bo.token, "bold")).statusCode,
           200,
+        );
+        // Calm that nobody holds (a class's old starting look): allowed.
+        await db.query(
+          `UPDATE amp_scope_settings SET "values"='{"look":"calm"}',locked='{}' WHERE scope_kind='class' AND scope_id=$1`,
+          [period.id],
+        );
+        assert.equal(
+          (await stateOf(bo.learnerId, bo.token)).effectiveLook,
+          "bold",
         );
       },
     );
@@ -501,6 +550,19 @@ test(
         assert.equal(await points(), before + 1);
         await answer(false);
         assert.equal(await points(), before + 1, "a miss takes nothing");
+        // Points come from the answers, whatever the look: with Colorful
+        // off (no chip, no moments) a right answer still counts.
+        assert.equal(
+          (await sendClass(period.id, teacher, OFF)).statusCode,
+          200,
+        );
+        assert.equal(
+          (await stateOf(ada.learnerId, ada.token)).lookLocked,
+          true,
+        );
+        await answer(true);
+        assert.equal(await points(), before + 2, "Colorful off takes no point");
+        assert.equal((await sendClass(period.id, teacher, ON)).statusCode, 200);
         // The look change's answer carries the same total.
         const changed = await post(`${path}/practice-state`, ada.token, {
           kind: "look",
@@ -509,7 +571,7 @@ test(
           requestId: randomUUID(),
         });
         assert.equal(changed.statusCode, 200, changed.body);
-        assert.equal(changed.json().points, before + 1);
+        assert.equal(changed.json().points, before + 2);
         // The learner keeps one color, then lets it go: their own choice,
         // from their own sign-in.
         assert.equal(changed.json().lookHue, null);

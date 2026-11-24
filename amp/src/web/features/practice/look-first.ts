@@ -33,8 +33,11 @@ export async function lookBeforePaint(scope: PracticeScope) {
   if (state.effectiveLook !== "bold" || !canShowColorful()) return;
   await loadDress();
   // The moments and the points chip: wanted soon, never waited for.
-  void import("./celebration/Celebration").then(
-    (module) => module.preloadColorful(),
-    (error: unknown) => console.warn("Colorful didn’t load ahead", error),
-  );
+  // One chain, so a failure to load or to start is logged, never an
+  // unhandled rejection (the screen fetches it again when it needs it).
+  void import("./celebration/Celebration")
+    .then((module) => module.preloadColorful())
+    .catch((error: unknown) =>
+      console.warn("Colorful didn’t load ahead", error),
+    );
 }

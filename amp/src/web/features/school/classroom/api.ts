@@ -143,6 +143,17 @@ export function useExperienceWrite(session: Session, scope: ExperienceScope) {
             own: value !== null,
           } as never;
         }
+        // "Allow Colorful" shows at once too: off is held here, on is not
+        // (never over a place above that has it off).
+        const held = body.locks?.look;
+        const above =
+          before.settings.look.lockedBy &&
+          before.settings.look.lockedBy.id !== before.scope.id;
+        if (held !== undefined && !above)
+          settings.look = {
+            ...settings.look,
+            lockedBy: held ? before.scope : null,
+          } as never;
         client.setQueryData(queryKey, {
           ...before,
           settings: settings as Experience["settings"],

@@ -21,54 +21,62 @@ export const COLORFUL_THROUGH_GRADE = 5;
 export const startingLook = (grade: number | null): Look =>
   grade !== null && grade <= COLORFUL_THROUGH_GRADE ? "bold" : defaultLook;
 
+/**
+ * Colorful is allowed unless an adult turned it off. This is the one rule
+ * for what is stored, at every scope (a district, a school, a class, a
+ * child's own settings): Colorful is off only where the stored look is Calm
+ * AND it is held. That pair is what "Allow Colorful: off" writes, and it is
+ * what the earlier lock on Calm wrote. Everything else allows it: nothing
+ * stored, Calm not held, Colorful, and Colorful with a hold (a hold on
+ * Colorful never meant anything: nobody needs keeping in it).
+ */
+export const colorfulAllowed = (
+  stored: Look | null | undefined,
+  held: boolean,
+): boolean => !(held && stored === "calm");
+
 /** What one class (with the school and district above it) says about look. */
 export type ClassLook = {
+  /** The look stored for it: only Calm, held, means anything now. */
   value: Look;
-  /** Someone chose it; false is only the default. */
+  /** Someone stored one; false is only the default. */
   set: boolean;
-  /** A scope at or above the class locked it. */
+  /** A scope at or above the class holds it. */
   locked: boolean;
 };
 
-/** The one value several classes give: it, if they agree; otherwise calm,
- * the safer choice, as for `studentLevelVisibility`. */
-const agreed = (classes: readonly ClassLook[]): Look | null =>
-  classes.length === 0
-    ? null
-    : classes.every((entry) => entry.value === classes[0]!.value)
-      ? classes[0]!.value
-      : defaultLook;
-
-/** Who holds the look so the learner can't change it. */
+/** Who turned Colorful off for the learner. */
 export type LookLockedBy = "class" | "adult";
 
 /**
- * Pure. The look a learner sees, and who (if anyone) locked it:
- * 1. a locked class value wins, a teacher's or a school's (two locked
- *    classes that disagree: calm);
- * 2. else the learner's own choice (null inherits), which a grown-up may
- *    have locked for them;
- * 3. else what their classes chose (a family's class is the family default);
- * 4. else where a learner their age starts (`startingLook`): calm when
- *    that isn't given.
+ * Pure. The look a learner sees, and whether Colorful is off for them
+ * (`locked`) and by whom:
+ * 1. any of their classes (or its school or district) has Colorful off:
+ *    Calm, by the class;
+ * 2. else a grown-up of theirs has it off: Calm, by the adult;
+ * 3. else it is theirs to choose: their own choice, and until they make one,
+ *    where a learner their age starts (`startingLook`; Calm when not given).
+ *
+ * An adult no longer chooses a starting look for anyone else: a class's
+ * stored Colorful, or Calm that is not held, changes nothing here. A
+ * learner's own choice is kept while Colorful is off and applies again when
+ * it is allowed.
  */
 export function resolveLook(input: {
   own: Look | null;
-  /** A grown-up locked the learner's own choice. */
-  ownLocked?: boolean;
+  /** A grown-up turned Colorful off for the learner. */
+  ownOff?: boolean;
   classes: readonly ClassLook[];
-  /** Where this learner starts when nobody has chosen (`startingLook`). */
+  /** Where this learner starts when they have not chosen (`startingLook`). */
   starting?: Look;
 }): { look: Look; locked: boolean; lockedBy: LookLockedBy | null } {
-  const byClass = agreed(input.classes.filter((entry) => entry.locked));
-  if (byClass) return { look: byClass, locked: true, lockedBy: "class" };
-  if (input.own)
-    return input.ownLocked
-      ? { look: input.own, locked: true, lockedBy: "adult" }
-      : { look: input.own, locked: false, lockedBy: null };
-  const chosen = agreed(input.classes.filter((entry) => entry.set));
+  if (
+    input.classes.some((entry) => !colorfulAllowed(entry.value, entry.locked))
+  )
+    return { look: "calm", locked: true, lockedBy: "class" };
+  if (input.ownOff) return { look: "calm", locked: true, lockedBy: "adult" };
   return {
-    look: chosen ?? input.starting ?? defaultLook,
+    look: input.own ?? input.starting ?? defaultLook,
     locked: false,
     lockedBy: null,
   };
