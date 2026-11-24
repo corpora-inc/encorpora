@@ -309,7 +309,8 @@ try {
     };
 
     // ---- Today → the child's grade, one tap ------------------------------
-    await page.goto(origin);
+    // (By its address: an account with a second place opens elsewhere.)
+    await page.goto(`${origin}/family/${family}`);
     const link = page.locator(`a[data-skills-by-grade="${child.id}"]`);
     await link.waitFor({ timeout: 30_000 });
     await fits("Today");
@@ -900,7 +901,7 @@ try {
     });
     await stubAnalytics(context);
     const page = await context.newPage();
-    await page.goto(origin);
+    await page.goto(`${origin}/family/${family}`);
     await page.locator(`a[data-skills-by-grade="${child.id}"]`).click();
     await page.locator(`li[data-skill="${expected[0]!.skill.id}"]`).waitFor();
     await page.screenshot({
