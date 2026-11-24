@@ -169,6 +169,13 @@
   grid-template-columns: repeat(4, 36px);
 }
 
+/* A level ("Alg 1") and a time range never break in two: a row is one
+   line of figures. */
+.grid :global(td[data-column="level"]),
+.grid :global(td[data-column="answered"]) {
+  white-space: nowrap;
+}
+
 /* A row's skills and its control (RowSkills): the page's own text, no
    chrome; in the table it fills its cell. */
 .open {
