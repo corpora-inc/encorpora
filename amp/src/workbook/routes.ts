@@ -56,6 +56,13 @@ export function workbookIsCurrent(spec: WorkbookRecord["spec"]): boolean {
   );
 }
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;
+const catalogOrder = new Map(skills.map((skill, at) => [skill.id, at]));
+/** The skills a workbook is held to, as the screens name them: id and
+ * title, in the catalog's order. */
+export const heldSkills = (ids: readonly string[]) =>
+  [...ids]
+    .sort((a, b) => (catalogOrder.get(a) ?? 0) - (catalogOrder.get(b) ?? 0))
+    .map((id) => ({ id, title: skillTitle(id) }));
 const lessonTitle = new Map(lessons.map((l) => [l.id, l.title]));
 
 export function workbookSummary(
@@ -73,6 +80,9 @@ export function workbookSummary(
     estimatedMinutes: workbookMinutes(record.spec),
     choices: specChoices(record.spec),
     problems: record.spec.sections.reduce((n, s) => n + s.items.length, 0),
+    ...(record.spec.choices?.skills?.length
+      ? { skills: heldSkills(record.spec.choices.skills) }
+      : {}),
     ...(entered === undefined ? {} : { entered }),
     sections: record.spec.sections.map((s) => ({
       kind: s.kind,
@@ -124,6 +134,13 @@ export function composableDate(date: string, now: number): boolean {
 }
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
+/** The skills with a problem type that prints: a workbook can be held to
+ * these (the index offers Workbook on them alone). */
+export const printableSkills: ReadonlySet<string> = new Set(
+  templates
+    .filter((t) => nodes.has(t.skillId) && printable(t))
+    .map((t) => t.skillId),
+);
 const areaOrder = Object.keys(workbookAreaNames);
 /** Strands a parent can choose: printable work within a grade and a half
  * below to a grade above the strand's estimated level, in curriculum order. */
@@ -166,6 +183,20 @@ async function compose(
   // moved on) is left out rather than refused; none left is mixed. The
   // stored choices say what was used, and the screen follows them.
   const offered = new Set(workbookAreas(frontier));
+  // A workbook held to skills prints only theirs: a skill that isn't in the
+  // curriculum, or has no problem type that prints, is refused, never
+  // quietly replaced by mixed work.
+  const held = input.choices?.skills;
+  if (held) {
+    const unknown = held.filter((id) => !printableSkills.has(id));
+    if (unknown.length)
+      throw new ApiError(
+        400,
+        unknown.length === held.length
+          ? "These skills have no printable problems yet. Choose other skills."
+          : "One of these skills has no printable problems yet. Take it out and try again.",
+      );
+  }
   const choices = input.choices && {
     ...input.choices,
     areas: input.choices.areas.filter((a) => offered.has(a)),

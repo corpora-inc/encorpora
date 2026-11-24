@@ -18,7 +18,11 @@ import {
 } from "../learning/practice-policy.js";
 import fp from "fastify-plugin";
 import { registerBookRoutes } from "../books/routes.js";
-import { registerWorkbookRoutes, trialWorkbooks } from "../workbook/routes.js";
+import {
+  printableSkills,
+  registerWorkbookRoutes,
+  trialWorkbooks,
+} from "../workbook/routes.js";
 import { workbookTemplateIds } from "../workbook/results.js";
 import type { WorkbookRenderer } from "../workbook/pdf.js";
 import { readFile } from "node:fs/promises";
@@ -392,6 +396,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       ...skill,
       area: areaOf(skill),
       difficulty: skillDifficulty(skill.id, templates, nodes),
+      // Whether a workbook can be held to it: it has a problem type that
+      // prints (workbook/routes.ts `printableSkills`).
+      printable: printableSkills.has(skill.id),
     }));
   };
   app.get("/api/v1/catalog", async (request, reply) => {
