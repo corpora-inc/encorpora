@@ -190,6 +190,25 @@ async function run(look: "calm" | "bold") {
         });
     }).observe({ type: "layout-shift", buffered: true });
   });
+  // Every moment the stage starts, as it starts (stage.ts sets `data-run`
+  // on its part). The record's moments (Earned, Strong) start a frame or
+  // more after the strength shows, from an effect and the stage's own next
+  // frame; a look at the page at that instant can come before them.
+  await page.addInitScript(() => {
+    const started: string[] = [];
+    (window as unknown as { __moments: string[] }).__moments = started;
+    new MutationObserver((records) => {
+      for (const record of records) {
+        const node = record.target as HTMLElement;
+        if (node.dataset?.run && node.dataset.part)
+          started.push(`${node.dataset.part}:${node.dataset.kind}`);
+      }
+    }).observe(document, {
+      attributes: true,
+      attributeFilter: ["data-run"],
+      subtree: true,
+    });
+  });
   await chooseLook(page, look);
   // Typed problems only, so every answer is the same gesture.
   await page.route("**/batches", async (route) => {
@@ -321,6 +340,10 @@ async function run(look: "calm" | "bold") {
   const probe = await page.evaluate(
     () => (window as unknown as { __probe: Probe }).__probe,
   );
+  for (const moment of await page.evaluate(
+    () => (window as unknown as { __moments: string[] }).__moments,
+  ))
+    played.add(moment);
   if (look === "bold")
     await page.screenshot({ path: `${out}colorful-after-20.png` });
   else if (calmProblem && calmFeedback) {

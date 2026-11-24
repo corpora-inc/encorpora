@@ -59,6 +59,15 @@ export async function assertProgressPolish(page: Page, tag: string) {
   await page.getByRole("dialog", { name: "Math area" }).waitFor({
     state: "hidden",
   });
+  // The picker names the choice a render after its sheet closes. Read it
+  // once it has left the name before it: on a busy machine the read came
+  // first and reported “Data” as never replaced.
+  await picker
+    .locator("span")
+    .first()
+    .filter({ hasNotText: /^Data$/ })
+    .waitFor({ timeout: 5_000 })
+    .catch(() => undefined);
   const longest = await picker
     .locator("span")
     .first()
