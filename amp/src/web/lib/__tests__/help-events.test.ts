@@ -201,9 +201,19 @@ test("a refused heartbeat is logged with its reason", async () => {
   );
 });
 
-test("an account sends each chosen learner's time to that learner", async () => {
-  // A parent's device: two children, neither in a class, practice in turn
-  // under the parent's sign-in. Each one's time is theirs.
+const OWN = {
+  signedIn: true,
+  learners: [{ id: "child-a" }, { id: "child-b" }],
+  adultPractice: {
+    eligible: true,
+    learner: { id: "adult-a", name: "Fixture", active: true },
+  },
+  practiceProfiles: [{ id: "profile-b" }],
+};
+
+test("an account sends its own learners' time: the adult's and a practice profile's", async () => {
+  // An adult's sign-in is the adult: their own practice, then practice as
+  // a profile of theirs. Each one's time goes to that learner.
   sessionStorage.clear();
   localStorage.clear();
   const account = "amp|parent-fixture";
@@ -211,23 +221,22 @@ test("an account sends each chosen learner's time to that learner", async () => 
     accountId: account,
     token: "parent-token",
   } as never);
-  queryClient.setQueryData(meKey(account), {
-    signedIn: true,
-    learners: [{ id: "child-a" }, { id: "child-b" }],
-  } as never);
-  selectLearner("child-a", account);
+  queryClient.setQueryData(meKey(account), OWN as never);
+  selectLearner("adult-a", account);
   const activity = startLearnerActivity();
   activity.navigate("/practice");
   window.dispatchEvent(new Event("pointerdown"));
   await vi.advanceTimersByTimeAsync(12_000);
-  // Choosing the other child sends the first one's time first.
-  selectLearner("child-b", account);
+  // Choosing the profile sends the adult's own time first.
+  selectLearner("profile-b", account);
   window.dispatchEvent(new Event("pointerdown"));
   await vi.advanceTimersByTimeAsync(7_000);
-  // A learner the account doesn't practice as gets nothing.
-  selectLearner("someone-else", account);
-  window.dispatchEvent(new Event("pointerdown"));
-  await vi.advanceTimersByTimeAsync(5_000);
+  // A child of theirs, or anyone else, gets nothing from this sign-in.
+  for (const other of ["child-a", "someone-else"]) {
+    selectLearner(other, account);
+    window.dispatchEvent(new Event("pointerdown"));
+    await vi.advanceTimersByTimeAsync(5_000);
+  }
   activity.stop();
   const sent = fetchMock.mock.calls.map(([url, init]) => ({
     url,
@@ -238,12 +247,12 @@ test("an account sends each chosen learner's time to that learner", async () => 
   }));
   expect(sent).toEqual([
     {
-      url: "/api/v1/learners/child-a/activity",
+      url: "/api/v1/learners/adult-a/activity",
       auth: "Bearer parent-token",
       ms: 12_000,
     },
     {
-      url: "/api/v1/learners/child-b/activity",
+      url: "/api/v1/learners/profile-b/activity",
       auth: "Bearer parent-token",
       ms: 7_000,
     },
@@ -259,11 +268,8 @@ test("a switch sends all of the first learner's time and help to them", async ()
     accountId: account,
     token: "parent-token",
   } as never);
-  queryClient.setQueryData(meKey(account), {
-    signedIn: true,
-    learners: [{ id: "child-a" }, { id: "child-b" }],
-  } as never);
-  selectLearner("child-a", account);
+  queryClient.setQueryData(meKey(account), OWN as never);
+  selectLearner("adult-a", account);
   const activity = startLearnerActivity();
   activity.navigate("/practice");
   // More deltas and help than one heartbeat carries.
@@ -275,10 +281,10 @@ test("a switch sends all of the first learner's time and help to them", async ()
   }
   for (let i = 0; i < 10; i++)
     noteHelp({ kind: "lesson", source: "lessons", ref: `u-${i}` });
-  selectLearner("child-b", account);
+  selectLearner("profile-b", account);
   await vi.advanceTimersByTimeAsync(0);
   const toA = fetchMock.mock.calls.filter(([url]) =>
-    String(url).includes("child-a"),
+    String(url).includes("adult-a"),
   );
   const bodiesA = toA.map(([, init]) => JSON.parse(init.body as string));
   // Early sends split the time into more requests; none of it is lost.
@@ -288,12 +294,12 @@ test("a switch sends all of the first learner's time and help to them", async ()
       .reduce((sum: number, d: { activeMs: number }) => sum + d.activeMs, 0),
   ).toBe(14_000);
   expect(bodiesA.flatMap((b) => b.events ?? [])).toHaveLength(24);
-  // Nothing of child A's waits for child B's heartbeat.
+  // Nothing of the adult's own waits for the profile's heartbeat.
   window.dispatchEvent(new Event("pointerdown"));
   await vi.advanceTimersByTimeAsync(30_000);
   activity.stop();
   const toB = fetchMock.mock.calls
-    .filter(([url]) => String(url).includes("child-b"))
+    .filter(([url]) => String(url).includes("profile-b"))
     .map(([, init]) => JSON.parse(init.body as string));
   expect(toB.flatMap((b) => b.events ?? [])).toHaveLength(0);
   expect(
@@ -303,5 +309,59 @@ test("a switch sends all of the first learner's time and help to them", async ()
         (d: { problemId?: string }) => !d.problemId || d.problemId === "p13",
       ),
   ).toBe(true);
+  queryClient.clear();
+});
+
+test("an adult's tab with a child chosen sends nothing: not the app's address, Pathways, a lesson or a film", async () => {
+  // The parent reads their child's pages on their own sign-in. Whatever the
+  // address counts as, and whatever help they open, none of it is the
+  // child's: a child's time is sent only from a tab that is the child's.
+  sessionStorage.clear();
+  localStorage.clear();
+  const account = "amp|parent-fixture";
+  queryClient.setQueryData(sessionOptions.queryKey, {
+    accountId: account,
+    token: "parent-token",
+  } as never);
+  queryClient.setQueryData(meKey(account), OWN as never);
+  selectLearner("child-a", account);
+  const activity = startLearnerActivity();
+  for (const path of ["/", "/pathways", "/lessons/counting", "/practice"]) {
+    activity.navigate(path);
+    noteActiveProblem(`problem-on-${path}`);
+    window.dispatchEvent(new Event("pointerdown"));
+    await vi.advanceTimersByTimeAsync(31_000);
+  }
+  // A film: help showing over the route, playing.
+  const done = showHelpSurface({ surface: "video" });
+  noteHelp({ kind: "video", source: "pathways", ref: "add-within-20" });
+  noteAttention();
+  await vi.advanceTimersByTimeAsync(31_000);
+  done();
+  window.dispatchEvent(new Event("pagehide"));
+  activity.stop();
+  await vi.advanceTimersByTimeAsync(0);
+  expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([]);
+  // The same tab, handed to the child, is the child's: their own sign-in
+  // sends, to the student's own address.
+  sessionStorage.setItem(
+    "amp.student",
+    JSON.stringify({
+      accountId: "school:child-a",
+      token: `st_${"a".repeat(43)}`,
+    }),
+  );
+  sessionStorage.setItem("amp.student.handed", "1");
+  const handed = startStudentActivity();
+  handed.navigate("/practice");
+  window.dispatchEvent(new Event("pointerdown"));
+  noteHelp({ kind: "hint", source: "practice", ref: "add-within-20", step: 1 });
+  await vi.advanceTimersByTimeAsync(31_000);
+  handed.stop();
+  await vi.advanceTimersByTimeAsync(0);
+  const urls = [...new Set(fetchMock.mock.calls.map(([url]) => url))];
+  expect(urls).toEqual(["/api/v1/school/student/activity"]);
+  expect(bodies().flatMap((body) => body.events ?? [])).toHaveLength(1);
+  sessionStorage.clear();
   queryClient.clear();
 });

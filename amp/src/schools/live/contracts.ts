@@ -164,7 +164,7 @@ const counts = {
   /** Answers that had a hint or a lesson (`outcome.assisted`). */
   assisted: z.number().int().nonnegative(),
   /** Help opened: hints revealed, lessons, worked explanations, videos. The
-   * student's own: in practice, or on their own sign-in. */
+   * student's own: an adult's sign-in writes no child's help. */
   hints: z.number().int().nonnegative(),
   lessons: z.number().int().nonnegative(),
   examples: z.number().int().nonnegative(),

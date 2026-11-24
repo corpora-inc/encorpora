@@ -1178,10 +1178,10 @@ test(
         );
         assert.equal(snapshot.totals.present, 0);
 
-        // On the parent's sign-in, time is never the child: not the parent
-        // reading Maya's Pathways, nor practice open as her with nothing
-        // done. Her answer and the hint she opens in practice are hers. No
-        // student session, events keyed by learner.
+        // On the parent's sign-in, time and help are never the child's: not
+        // the parent reading Maya's Pathways, nor practice open as her, nor
+        // a hint opened there. Only an answer given as her is, as evidence
+        // always is. No student session, events keyed by learner.
         const mayaOnParent = await device(
           { personId: mayaPerson.id, learnerId: maya.id },
           parent,
@@ -1220,14 +1220,21 @@ test(
         );
         assert.deepEqual((await familyEvents()).slice(1), [
           [mayaPerson.id, "answer"],
-          [mayaPerson.id, "help"],
         ]);
+        assert.equal(
+          await count(
+            "SELECT count(*) AS n FROM amp_help_events WHERE learner_id=ANY($1::text[])",
+            [maya.id, nico.id],
+          ),
+          0,
+          "nothing a parent's sign-in sent is in a child's help",
+        );
         snapshot = await live(familyClass, parent);
         const row = rowOf(snapshot, mayaPerson.id);
         assert.equal(row.name, "Maya");
         assert.equal(row.problems, 1);
-        assert.equal(row.hints, 1);
-        assert.ok(row.lastHelpAt);
+        assert.equal(row.hints, 0);
+        assert.equal(row.lastHelpAt, null);
         assert.equal(
           row.lastSeenAt,
           morningSeen,
@@ -1246,14 +1253,21 @@ test(
           grant.token,
         );
         await nicoDevice.answer(true);
-        assert.deepEqual((await familyEvents()).slice(3), [
+        // A hint he opens on it is his.
+        await nicoDevice.beat({
+          deltas: [{ surface: "hint", activeMs: 2_000 }],
+          events: [helpEvent("hint")],
+        });
+        assert.deepEqual((await familyEvents()).slice(2), [
           [nicoPerson.id, "presence"],
           [nicoPerson.id, "answer"],
+          [nicoPerson.id, "help"],
         ]);
         snapshot = await live(familyClass, parent);
         assert.equal(status(snapshot, nicoPerson.id), "working");
         const handed = rowOf(snapshot, nicoPerson.id);
         assert.equal(handed.problems, 1);
+        assert.equal(handed.hints, 1);
         assert.ok(handed.lastAnswerAt && handed.lastSeenAt);
         assert.equal(snapshot.totals.present, 2);
 

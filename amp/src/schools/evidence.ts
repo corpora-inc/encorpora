@@ -70,8 +70,8 @@ export const CREDITED_SKILL =
  * deltas' total is scaled down to the time since `previous` plus five
  * seconds, and to 90 seconds at most. A problem that isn't this learner's
  * counts toward its surface with no skill. Help events ride along
- * (`helpEventsCte(4)`), and so does a running class session's note of what
- * is the learner's own (`liveHeartbeatCte(4, …)`). Parameters: $1 deltas, $2 cap, $3 slack, $4 help
+ * (`helpEventsCte(4)`), and so does a running class session's note of them
+ * (`liveHeartbeatCte(4)`). Parameters: $1 deltas, $2 cap, $3 slack, $4 help
  * events, then the `live` CTE's own. */
 const HEARTBEAT_CREDIT = `room AS (
     SELECT LEAST($2::bigint,
@@ -126,18 +126,29 @@ export async function recordHeartbeat(
        UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id
      ), demo_seen AS (
        ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
-     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4, "student")}
+     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4)}
      SELECT count(*)::int AS live FROM live`,
     [...params, hashStudentToken(token)],
   );
   return rows[0].live === 1;
 }
 
-/** Credits a heartbeat to a learner an account practices as: its children,
- * its adult, its practice profiles, a live trial's learner. Every one has a
- * clock (`amp_learner_activity`); a learner's first heartbeat starts it a
- * full heartbeat back, so it can claim what any later one can. False when
- * the account has no such learner. The caller has checked consent. */
+/** Credits a heartbeat sent on an account's own sign-in to a learner who is
+ * the one signed in: the account's adult, a practice profile of theirs, a
+ * live trial's learner. Each has a clock (`amp_learner_activity`); a
+ * learner's first heartbeat starts it a full heartbeat back, so it can claim
+ * what any later one can.
+ *
+ * A child's time and help are never written here. An adult's sign-in is the
+ * adult: a parent reading a child's page, Pathways, a lesson or a film with
+ * that child chosen is not the child. A child's own come on the child's own
+ * sign-in (`recordHeartbeat`), which a hand-over ("Practice" on a parent's
+ * device) also is. So a heartbeat naming one of the account's children is
+ * answered and nothing is written: an older client that still sends it
+ * can't change a child's record.
+ *
+ * False when the account has no such learner. The caller has checked
+ * consent. */
 export async function recordLearnerActivity(
   pool: Pool,
   accountId: string,
@@ -150,12 +161,24 @@ export async function recordLearnerActivity(
     `l.id=$${id} AND l.account_id=$${account} AND l.deleted_at IS NULL
      AND (l.account_id NOT LIKE 'trial:%' OR EXISTS (SELECT 1 FROM amp_trials t
        WHERE t.learner_id=l.id AND t.adopted_at IS NULL AND t.expires_at>now()))`;
-  await pool.query(
-    `INSERT INTO amp_learner_activity(learner_id,seen_at)
-     SELECT l.id,now()-make_interval(secs=>$3/1000.0) FROM amp_learners l WHERE ${theirs(1, 2)}
-     ON CONFLICT(learner_id) DO NOTHING`,
-    [learnerId, accountId, HEARTBEAT_MAX_MS],
-  );
+  const [mine] = (
+    await pool.query<{ own: boolean }>(
+      `WITH mine AS (
+         -- Their own: the adult or a practice profile of theirs (adult
+         -- learners both), or a trial's learner, who has no adult's sign-in.
+         SELECT l.id,(l.adult OR l.account_id LIKE 'trial:%') AS own
+         FROM amp_learners l WHERE ${theirs(1, 2)}
+       ), started AS (
+         INSERT INTO amp_learner_activity(learner_id,seen_at)
+         SELECT id,now()-make_interval(secs=>$3/1000.0) FROM mine WHERE own
+         ON CONFLICT(learner_id) DO NOTHING
+       )
+       SELECT own FROM mine`,
+      [learnerId, accountId, HEARTBEAT_MAX_MS],
+    )
+  ).rows;
+  if (!mine) return false;
+  if (!mine.own) return true;
   const { rows } = await pool.query(
     `WITH live AS (
        SELECT l.id AS learner_id,amp_learner_zone(l.id) AS timezone,a.seen_at AS previous
@@ -164,7 +187,7 @@ export async function recordLearnerActivity(
        FOR UPDATE OF a
      ), ${HEARTBEAT_CREDIT}, touched AS (
        UPDATE amp_learner_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id
-     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4, "account")}
+     ), ${helpEventsCte(4)}, ${liveHeartbeatCte(4)}
      SELECT count(*)::int AS live FROM live`,
     [...params, learnerId, accountId],
   );

@@ -268,10 +268,21 @@ test(
           beat,
         );
         assert.equal(school.statusCode, 204, school.body);
-        // The child's first heartbeat starts its clock a full heartbeat back.
-        const home = await post(
-          `/api/v1/learners/${child}/activity`,
+        // The child is handed the parent's device ("Practice"): a sign-in of
+        // its own, whose heartbeat is the child's as a school student's is.
+        const handed = await post(
+          `/api/v1/family/learners/${child}/practice-here`,
           parent,
+        );
+        assert.equal(handed.statusCode, 201, handed.body);
+        await db.query(
+          `UPDATE amp_student_sessions s SET last_seen_at=now()-interval '60 seconds'
+           FROM amp_people p WHERE p.id=s.person_id AND p.learner_id=$1`,
+          [child],
+        );
+        const home = await post(
+          "/api/v1/school/student/activity",
+          handed.json().token,
           beat,
         );
         assert.equal(home.statusCode, 204, home.body);
@@ -304,22 +315,43 @@ test(
         ).rows.map((r) => r.kind);
         assert.deepEqual(kinds, ["hint", "lesson", "print", "video"]);
 
-        // A family-class child on the parent's sign-in: rostered, so its
-        // answers always rolled up, and now its time and help do too.
-        const family = await post(
-          `/api/v1/learners/${classed}/activity`,
-          parent,
-          beat,
-        );
-        assert.equal(family.statusCode, 204, family.body);
-        const [credited] = (
-          await db.query(
-            `SELECT (SELECT sum(active_ms)::int FROM amp_active_days WHERE learner_id=$1) AS ms,
-               (SELECT sum(opened)::int FROM amp_help_days WHERE learner_id=$1) AS opened`,
-            [classed],
-          )
-        ).rows;
-        assert.deepEqual(credited, { ms: 19_000, opened: 3 });
+        // The parent's own sign-in is the parent: the same heartbeat sent on
+        // it with a child chosen (a parent reading the child's Pathways, a
+        // lesson, a film) is answered and credits no child anything. An old
+        // client that still sends it can't write a child's record.
+        const record = async (learner: string) =>
+          (
+            await db.query(
+              `SELECT (SELECT sum(active_ms)::int FROM amp_active_days WHERE learner_id=$1) AS ms,
+                 (SELECT sum(opened)::int FROM amp_help_days WHERE learner_id=$1) AS opened,
+                 (SELECT count(*)::int FROM amp_help_events WHERE learner_id=$1) AS events,
+                 (SELECT count(*)::int FROM amp_learner_activity WHERE learner_id=$1) AS clocks`,
+              [learner],
+            )
+          ).rows[0];
+        // Three opened and the printed lesson; no account clock was started.
+        assert.deepEqual(await record(child), {
+          ms: 19_000,
+          opened: 4,
+          events: 4,
+          clocks: 0,
+        });
+        for (const learner of [classed, child]) {
+          const before = await record(learner);
+          const browsing = await post(
+            `/api/v1/learners/${learner}/activity`,
+            parent,
+            beat,
+          );
+          assert.equal(browsing.statusCode, 204, browsing.body);
+          assert.deepEqual(await record(learner), before, learner);
+        }
+        assert.deepEqual(await record(classed), {
+          ms: null,
+          opened: null,
+          events: 0,
+          clocks: 0,
+        });
       },
     );
 
@@ -384,21 +416,39 @@ test(
           .statusCode,
         401,
       );
-      // Its clock caps it as a student's is: straight after, only the slack.
-      const credited = async () =>
+      // An adult's sign-in credits the adult's own learner, never a child:
+      // the child's is answered and nothing is written.
+      const credited = async (learner: string) =>
         Number(
           (
             await db.query(
               "SELECT COALESCE(sum(active_ms),0) AS ms FROM amp_active_days WHERE learner_id=$1",
-              [child],
+              [learner],
             )
           ).rows[0].ms,
         );
-      const before = await credited();
-      await post(path, parent, {
+      const before = await credited(child);
+      const browsing = await post(path, parent, {
         deltas: [{ surface: "practice", activeMs: 90_000 }],
       });
-      const gained = (await credited()) - before;
+      assert.equal(browsing.statusCode, 204, browsing.body);
+      assert.equal((await credited(child)) - before, 0);
+      const own = randomUUID();
+      await db.query(
+        "INSERT INTO amp_learners(id,account_id,name,adult,timezone) VALUES($1,$2,'Fixture',true,'America/New_York')",
+        [own, parent],
+      );
+      const mine = await post(`/api/v1/learners/${own}/activity`, parent, {
+        deltas: [{ surface: "practice", activeMs: 90_000 }],
+      });
+      assert.equal(mine.statusCode, 204, mine.body);
+      // Its first heartbeat starts its clock a full heartbeat back.
+      assert.equal(await credited(own), 90_000);
+      // Its clock caps it as a student's is: straight after, only the slack.
+      await post(`/api/v1/learners/${own}/activity`, parent, {
+        deltas: [{ surface: "practice", activeMs: 90_000 }],
+      });
+      const gained = (await credited(own)) - 90_000;
       assert.ok(gained > 0 && gained <= 6_000, String(gained));
       // Shape is enforced.
       assert.equal(
