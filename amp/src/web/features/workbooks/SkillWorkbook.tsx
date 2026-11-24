@@ -9,9 +9,13 @@ import { changeWorkbookDay, workbookDayKey } from "./draft-store";
 import { canMakeWorkbook, defaultWorkbookChoices, localDate } from "./model";
 import { childWorkbookPaths, learnerWorkbookPaths } from "./paths";
 
-/** How long a workbook opened from a skill starts at: the shortest. One
- * skill's problems fill it; the maker's Length changes it. */
+/** How a workbook opened from a skill starts: the shortest length, and the
+ * skill's problems alone, so its first page is the worksheet itself (its
+ * title, the skill's name and the first problems). The maker's Length and
+ * Today's idea change either. (A lesson card takes a page of its own, so
+ * with Today's idea the first page holds only the title.) */
 const HELD_MINUTES = 30;
+const HELD_LESSON = false;
 
 /**
  * "Workbook", beside Practice in a skill's layer: a printable workbook held
@@ -92,7 +96,11 @@ export function SkillWorkbook({
           draft: crypto.randomUUID(),
           number: undefined,
           minutes: HELD_MINUTES,
-          choices: { ...defaultWorkbookChoices, skills: [skill] },
+          choices: {
+            ...defaultWorkbookChoices,
+            lesson: HELD_LESSON,
+            skills: [skill],
+          },
         })
       }
     >

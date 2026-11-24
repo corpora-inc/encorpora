@@ -471,6 +471,7 @@ function WorkbookOptions({
             <span className={styles.heldNames}>{held.join(", ")}</span>
             <Button
               variant="quiet"
+              align="start"
               disabled={choosing}
               onClick={() => {
                 const { skills: _held, ...mixed } = choices;

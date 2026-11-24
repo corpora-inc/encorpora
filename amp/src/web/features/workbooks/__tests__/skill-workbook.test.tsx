@@ -145,8 +145,10 @@ test("on a child's skill it is that child's, and opens today's maker held to the
   expect(useWorkbookDrafts.getState().days[day]).toBeUndefined();
   fireEvent.click(link);
   const draft = useWorkbookDrafts.getState().days[day]!;
+  // The skill's problems alone, the shortest length: a worksheet.
   expect(draft.choices).toEqual({
     ...defaultWorkbookChoices,
+    lesson: false,
     skills: ["angles"],
   });
   expect(draft.minutes).toBe(30);
