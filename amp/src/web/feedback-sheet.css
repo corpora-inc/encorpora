@@ -227,11 +227,15 @@
   /* Top-aligned, so an answer taller than the head starts at its first line. */
   align-items: flex-start;
   flex: 0 1 auto;
-  min-height: 4.5em;
+  /* It reaches 4px up and left, as the body reaches into the sheet's
+     padding: the result mark sits in this scroller's top left corner, and
+     the ring Colorful draws around the disc was cut flat on both sides. */
+  min-height: calc(4.5em + 4px);
+  margin: -4px 0 0 -4px;
   overflow-y: auto;
   overscroll-behavior: contain;
   /* Like the steps: a cut last line fades, so it reads as more below. */
-  padding-bottom: var(--space-2);
+  padding: 4px 0 var(--space-2) 4px;
   mask-image: linear-gradient(
     to bottom,
     var(--color-on-surface) calc(100% - var(--space-2)),
@@ -357,6 +361,22 @@
   margin-block: 0;
   padding-block: 0;
   mask-image: none;
+}
+/* The body has the room for the mark's ring; the head needs none of its own. */
+.feedback-body .feedback-head:has(.solution-answer[data-long]) {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* ── Details (beside an editor): head and steps scroll as one ──────────── */
+/* Where it scrolls (the side-by-side sheet beside a work or figure editor,
+   a landscape line plot), it reaches 6px into the sheet's padding above and
+   at each side, as the body does. Hugging its content, it cut the result
+   mark's ring (Colorful draws one around the disc) flat at its top and left
+   edges, and the focus outline of anything at its edge with it. */
+.feedback-details {
+  margin: -6px -6px 0;
+  padding: 6px 6px 0;
 }
 
 /* ── Progress: a mastery moment (AnswerFeedback styles its own block) ────── */
@@ -667,6 +687,12 @@
     flex-direction: row;
     text-align: left;
     margin-block: 0;
+  }
+  /* A long answer's head keeps its reach for the mark's ring (above). */
+  .practice-surface:has(> .editor-dock)
+    > .feedback
+    .feedback-head:has(.solution-answer[data-long]) {
+    margin-top: -4px;
   }
   .practice-surface:has(> .editor-dock) > .feedback .feedback-title {
     align-items: flex-start;
