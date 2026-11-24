@@ -26,7 +26,7 @@ import { applyRouteHead, mapTitleAhead, routeHead } from "./route-head";
 import { Providers } from "./providers";
 import { router } from "./router";
 import "./styles";
-import { preloadMathFonts } from "./preload-math-fonts";
+import { startMathFonts } from "./preload-math-fonts";
 import { changeSession } from "../lib/session-generation";
 import { authConfigOptions, queryClient, sessionOptions } from "../lib/query";
 import { fetchAuthConfig } from "../auth-config";
@@ -55,8 +55,7 @@ function start() {
     for (const activity of activities)
       activity.navigate(router.state.location.pathname);
     trackGooglePage();
-    if (screenOf(router.state.location.pathname) !== "pitch")
-      preloadMathFonts();
+    if (screenOf(router.state.location.pathname) !== "pitch") startMathFonts();
   });
 }
 

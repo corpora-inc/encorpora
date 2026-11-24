@@ -17,6 +17,7 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 import { lazyRouteComponent } from "../lib/lazy-route-component";
+import { mathFontsBeforePaint } from "./preload-math-fonts";
 import { z } from "zod";
 import { useSessionOrNull } from "../lib/session";
 import { signedInHint } from "../lib/session-hint";
@@ -1729,6 +1730,9 @@ const fallback = createRoute({
     const student = signedIn?.token?.startsWith("st_") ? signedIn : null;
     await Promise.all([
       legacy.preload?.(),
+      // A problem's formulas, and the controls sized by them, are their
+      // final size in the frame they first paint: their fonts come first.
+      mathFontsBeforePaint(),
       // A school student's practice bar holds the raised hand while a
       // session runs: its code and whether one runs arrive with the screen,
       // so the bar never gains a button after paint. Nobody else asks.

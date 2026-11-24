@@ -25,6 +25,17 @@ import { secureChromium } from "../browser-security.mjs";
  *   Escape, and the sheet's ✕, close to Settings.
  * - The family's "This week": a day after today has no tip on hover, no
  *   focus stop; a day already past keeps its tip.
+ *
+ * Then, once per engine at 390 and 1280, in Calm and Colorful
+ * (`--math-arrivals N` repeats each, 1 by default):
+ *
+ * - A child's first problem whose answer control is sized by typeset math
+ *   (the decimal "Written method" picker, as wide as its widest equation):
+ *   Family → Practice with that problem as the tab's open one, and no
+ *   control moves after it paints. A math font that finishes loading after
+ *   the problem painted widened the picker by 13 px; this fixture's browser
+ *   reuses nothing it fetched earlier, so a font not ready before the paint
+ *   always shows here.
  */
 import { mkdir } from "node:fs/promises";
 import {
@@ -49,6 +60,10 @@ const themes = (argument("themes") ?? "light,dark").split(",") as (
 )[];
 const shots = argument("shots");
 if (shots) await mkdir(shots, { recursive: true });
+const mathArrivals = Number(argument("math-arrivals") ?? 1);
+/** A problem type whose answer control is as wide as its widest math. */
+const MATH_SIZED = "decimal-model-written-method";
+const MATH_CONTROL = ".multi-part-blank[aria-label^='Written method']";
 
 const fixture = await startShellFixture({
   webPort: Number(process.env.AMP_SMOOTH_WEB_PORT ?? 4970),
@@ -484,6 +499,128 @@ try {
           await context.close();
         }
       }
+
+    // 5. A child's first problem with a control sized by its math.
+    {
+      const learner = fixture.starter.learnerId;
+      /** The child's open problem becomes the math-sized one: its id, and
+       * the child's own sign-in from the handed-over tab (for their look). */
+      const holdProblem = async () => {
+        const setup = await open(browser, "starter", 1280, "light", "setup");
+        await familyToday(setup.page);
+        await setup.page
+          .locator(`[data-practice-here="${learner}"]`)
+          .first()
+          .click();
+        await setup.page.locator(".problem-stage").waitFor();
+        await setup.page.evaluate((path) => {
+          history.pushState({}, "", path);
+          dispatchEvent(new PopStateEvent("popstate"));
+        }, `/practice/${learner}/types/${MATH_SIZED}`);
+        await setup.page.locator(MATH_CONTROL).waitFor();
+        const problem = await setup.page
+          .locator(".problem-content")
+          .getAttribute("data-problem-id");
+        const token = await setup.page.evaluate(
+          () =>
+            (
+              JSON.parse(sessionStorage.getItem("amp.student") ?? "{}") as {
+                token?: string;
+              }
+            ).token ?? "",
+        );
+        await setup.context.close();
+        check(
+          problem && token,
+          `${engine}: the math-sized problem could not be set up`,
+        );
+        return { problem: problem ?? "", token };
+      };
+      const practiceState = `${origin}/api/v1/learners/${learner}/practice-state`;
+      const childHeaders = {
+        Origin: origin,
+        authorization: `Bearer ${(await holdProblem()).token}`,
+        "content-type": "application/json",
+      };
+      for (const look of ["calm", "bold"] as const) {
+        const state = (await (
+          await fetch(practiceState, { headers: childHeaders })
+        ).json()) as { revision: number };
+        const saved = await fetch(practiceState, {
+          method: "POST",
+          headers: childHeaders,
+          body: JSON.stringify({
+            kind: "look",
+            look,
+            requestId: crypto.randomUUID(),
+            revision: state.revision,
+          }),
+        });
+        check(saved.ok, `${engine}: the child's look ${look}: ${saved.status}`);
+        // A changed setting draws anew: the open problem is held after it.
+        const { problem } = await holdProblem();
+        for (const width of [390, 1280])
+          for (let arrival = 1; arrival <= mathArrivals; arrival++) {
+            const where = `${engine} ${width} ${look === "bold" ? "Colorful" : "Calm"} math-sized first problem #${arrival}`;
+            const { context, page, errors } = await open(
+              browser,
+              "starter",
+              width,
+              "light",
+              engine,
+            );
+            // This tab's open problem, as a restored tab has it.
+            await context.addInitScript(
+              ([key, id]) => {
+                try {
+                  sessionStorage.setItem(key!, id!);
+                } catch (error) {
+                  console.warn(
+                    "No session storage for the open problem",
+                    error,
+                  );
+                }
+              },
+              [`amp.open-problem.${learner}`, problem],
+            );
+            await familyToday(page);
+            await page.waitForTimeout(600);
+            await page
+              .locator(`[data-practice-here="${learner}"]`)
+              .first()
+              .click();
+            await page.waitForURL((url) =>
+              url.pathname.startsWith("/practice/"),
+            );
+            await page.locator(".problem-stage").waitFor();
+            await page.waitForTimeout(1500);
+            check(
+              (await page.locator(MATH_CONTROL).count()) === 1,
+              `${where}: the first problem was not the math-sized one`,
+            );
+            check(
+              (await page.evaluate(
+                () => document.documentElement.dataset.look ?? "calm",
+              )) === look,
+              `${where}: the look on screen is not ${look}`,
+            );
+            const moves = await shifted(page);
+            check(
+              moves.length === 0,
+              `${where}: controls moved after the problem painted: ${moves.join("; ")}`,
+            );
+            await shot(
+              page,
+              `math-sized-${width}-${look === "bold" ? "colorful" : "calm"}`,
+            );
+            check(
+              errors.length === 0,
+              `${where}: page errors: ${errors.join("; ")}`,
+            );
+            await context.close();
+          }
+      }
+    }
     await browser.close();
   }
 } finally {
@@ -494,6 +631,6 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(
-  `PASS: Family → Practice keeps one still bar (one commit, no fade, only the problem's tools; home from the menu on a problem, from the family icon off it, once and in place); Billing → Pay keeps one scrim and one sheet; no detail on days ahead (${engines.join(", ")} × ${widths.join(", ")} × ${themes.join(", ")})`,
+  `PASS: Family → Practice keeps one still bar (one commit, no fade, only the problem's tools; home from the menu on a problem, from the family icon off it, once and in place); Billing → Pay keeps one scrim and one sheet; no detail on days ahead (${engines.join(", ")} × ${widths.join(", ")} × ${themes.join(", ")}); a child's first problem with a math-sized control holds still (390, 1280 × Calm, Colorful × ${mathArrivals})`,
 );
 process.exit(0);
