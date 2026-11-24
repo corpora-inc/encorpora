@@ -246,6 +246,11 @@ test("CP-2 r4 N2: a rate limit keeps the link to try again; a refusal lets it go
 });
 
 test("CP-2 r4 N3: “Use another account” keeps its invitation through that sign-out, and only that one", async () => {
+  // The invited address has an account: the other account is one to sign in.
+  vi.mocked(school.lookupInvite).mockResolvedValue({
+    ...invite,
+    hasAccount: true,
+  } as never);
   signIn(parent, "wrong@example.test");
   hold("/school/invite");
   await mount(InviteScreen, "/school/invite");
@@ -297,9 +302,11 @@ test("CP-2 r4 N3: an approval's “Use another account” returns to the approva
   );
 });
 
-// S1: one way forward on the signed-out invitation, whoever it is for. Whether
-// the address has an account is never told, so there is one "Continue".
-test.each([
+// S1: one way forward on the signed-out invitation, whoever it is for and
+// whether or not its address has an account. The open invitation says which
+// (`hasAccount`), so the one "Continue" opens the screen that will work:
+// creating an account, or signing in.
+const invitees = [
   [
     "a family's second parent",
     { ...invite, inviterName: "Pat" },
@@ -315,23 +322,71 @@ test.each([
     { ...invite, secondParent: undefined, role: "admin", setup: true },
     /you’re its admin\. Continue to set it up\./,
   ],
-])(
-  "S1: %s sees one Continue and no account question",
-  async (_, view, copy) => {
-    vi.mocked(school.lookupInvite).mockResolvedValue(view as never);
+] as const;
+const accounts = [
+  ["with no account", false, "/sign-up"],
+  ["with an account", true, "/sign-in"],
+  // An answer that didn't come (an older server): creating is the screen
+  // that takes a new person, and it offers the way to sign in.
+  ["whose account isn't known", undefined, "/sign-up"],
+] as const;
+test.each(
+  invitees.flatMap(([who, view, copy]) =>
+    accounts.map(([account, hasAccount, opens]) => ({
+      who,
+      view,
+      copy,
+      account,
+      hasAccount,
+      opens,
+    })),
+  ),
+)(
+  "S1: $who $account sees one Continue, which opens $opens",
+  async ({ view, copy, hasAccount, opens }) => {
+    vi.mocked(school.lookupInvite).mockResolvedValue({
+      ...view,
+      ...(hasAccount === undefined ? {} : { hasAccount }),
+    } as never);
     hold("/school/invite");
     await mount(InviteScreen, "/school/invite");
     expect(document.body.textContent).toMatch(copy);
-    expect(screen.getAllByRole("link", { name: "Continue" })).toHaveLength(1);
+    expect(screen.getAllByRole("link")).toHaveLength(1);
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
     expect(screen.queryByText("Create an account")).toBeNull();
     expect(screen.queryByText("I already have one")).toBeNull();
-    // The invited address starts the sign-in.
+    // The invited address starts the screen it opens.
     const { useAuthDraft } = await import("../../auth/draft");
     expect(useAuthDraft.getState().email).toBe("parent@example.test");
-    // It leaves to the sign-in, never to a sign-up that answers differently.
-    expect(
-      screen.getByRole("link", { name: "Continue" }).getAttribute("href"),
-    ).toContain("/sign-in");
+    // It opens the screen this address needs, and comes back here.
+    const href = screen
+      .getByRole("link", { name: "Continue" })
+      .getAttribute("href");
+    expect(href).toBe(`${opens}?return=school-invite`);
+  },
+);
+
+test.each([
+  ["with no account", false, "/sign-up?return=school-invite"],
+  ["with an account", true, "/sign-in?return=school-invite"],
+] as const)(
+  "S1: “Use another account” for an invited address %s opens the screen that address needs",
+  async (_, hasAccount, opens) => {
+    vi.mocked(school.lookupInvite).mockResolvedValue({
+      ...invite,
+      hasAccount,
+    } as never);
+    signIn(parent, "wrong@example.test");
+    hold("/school/invite");
+    await mount(InviteScreen, "/school/invite");
+    await act(async () => {
+      fireEvent.click(
+        screen.getByRole("button", { name: "Use another account" }),
+      );
+      await flushUpdates();
+    });
+    expect(h.signedOutTo).toEqual([opens]);
+    expect(rememberedInvite()).toBe(TOKEN);
   },
 );
 

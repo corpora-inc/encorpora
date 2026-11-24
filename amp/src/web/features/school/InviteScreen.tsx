@@ -81,8 +81,8 @@ export function InviteScreen() {
   useEffect(() => {
     if (known) setName((typed) => typed || known);
   }, [known]);
-  // The address it was sent to starts the sign-in form. The link itself is
-  // carried only when its holder leaves to sign in (`carry`).
+  // The address it was sent to starts the form its holder is sent to. The
+  // link itself is carried only when they leave to authenticate (`carry`).
   useEffect(() => {
     if (!session && invite.data?.email)
       useAuthDraft.getState().setEmail(invite.data.email);
@@ -137,6 +137,13 @@ export function InviteScreen() {
     }
   };
   const view = invite.data;
+  // Where its holder goes to authenticate. An open invitation says whether
+  // the address it was sent to has an account (`InviteView.hasAccount`,
+  // answered to this link's token only), so they land on the screen that
+  // will work: signing in, or creating an account. Not known (an older
+  // server): creating, which takes a new person and offers the way to sign
+  // in.
+  const entry = view?.hasAccount ? "/sign-in" : "/sign-up";
   const email = me?.signedIn ? me.account.email : null;
   // A family's second parent joins only as the address it was sent to. The
   // family is named as the family, and its parent by their own name.
@@ -157,10 +164,11 @@ export function InviteScreen() {
     !parsed?.proof;
   const useAnother = async () => {
     // This link, and only this one, survives the sign-out; the other
-    // sign-in comes straight back to it (lib/link-carry.ts).
+    // account's screen (`entry`) comes straight back to it
+    // (lib/link-carry.ts).
     rememberInvite(value, { switching: true });
     try {
-      await signOut("/sign-in?return=school-invite");
+      await signOut(`${entry}?return=school-invite`);
     } catch (failure) {
       console.error("Signing out didn’t finish", failure);
       setError("Signing out didn’t finish. Try again in a moment.");
@@ -357,13 +365,13 @@ export function InviteScreen() {
                 ? "AMP for Schools is ready for your school, and you’re its admin. Continue to set it up."
                 : `You’ve been invited as ${roleWord(view.role)}. Continue to accept.`}
           </p>
-          {/* One way forward. Whether this address has an account is never
-              told to the holder of a link (sign-up answers the same either
-              way, `SignInScreen`), so the one button opens the sign-in, which
-              signs in or creates, with the address already filled in. */}
+          {/* One way forward, and it never asks "do I have an account?":
+              the one button opens the screen this address needs (`entry`),
+              creating an account or signing in, with the address already
+              filled in. */}
           <div className={styles.inviteActions}>
             <Link
-              {...signInLink({ return: "school-invite" })}
+              {...signInLink({ return: "school-invite" }, entry)}
               className={buttonClass("primary")}
               onClick={carry}
             >
