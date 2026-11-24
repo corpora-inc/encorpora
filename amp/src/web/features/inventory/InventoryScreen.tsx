@@ -430,20 +430,6 @@ export function InventoryScreen() {
               );
             })
           )}
-          <div className={styles.footer}>
-            <details className={styles.explainer}>
-              <summary>How XP works</summary>
-              <p>
-                Each correct answer without help earns 1 XP and fills a
-                twentieth of the skill’s bar. Both stay.
-              </p>
-              <p>
-                Strong skills go back to {child ? "Earned" : "Building"} when
-                they’re due for review. Grade labels place a skill in the
-                curriculum, not the learner.
-              </p>
-            </details>
-          </div>
         </>
       )}
       {/* A skill opens over the list, the learner's own work on it with it:
