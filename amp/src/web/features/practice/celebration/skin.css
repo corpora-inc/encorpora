@@ -207,7 +207,11 @@
   }
 }
 
-/* A student's topic line (under the bar, below 640 px): the points chip
+/* The chip's room is the problem's, not the look's (`data-chip-room`,
+   ../chip-room.ts): it is settled as a problem arrives and kept until the
+   next, so a look that changes under an open problem (an adult's "Allow
+   Colorful", from another device) never wraps or unwraps a skill's name.
+   A student's topic line (under the bar, below 640 px): the points chip
    sits at its end (celebration/stage.ts), which keeps the room for it on
    every problem. The chip is 92 px on a phone and 104 px from 420 px.
    Beside the chip a skill's name often takes two lines where Calm gives it
@@ -216,7 +220,7 @@
    room is never taken out of the problem's: the stage under it is as tall
    as Calm's. */
 @media (max-width: 639px) {
-  :root[data-look="bold"]:has([data-app-bar][data-space="student"])
+  :root[data-chip-room]:has([data-app-bar][data-space="student"])
     .practice-surface
     > .practice-topic {
     padding-block: 0;
@@ -224,7 +228,7 @@
   }
 }
 @media (max-width: 419px) {
-  :root[data-look="bold"]:has([data-app-bar][data-space="student"])
+  :root[data-chip-room]:has([data-app-bar][data-space="student"])
     .practice-surface
     > .practice-topic {
     padding-inline-end: 100px;
@@ -236,7 +240,7 @@
    left the chip nowhere but over the problem. 104 px and a 12 px gap each
    side (celebration/stage.ts `need`). */
 @media (min-width: 640px) {
-  :root[data-look="bold"]
+  :root[data-chip-room]
     [data-app-bar]
     .workspace-toolbar[data-in-frame]
     .workspace-topic {
@@ -247,7 +251,7 @@
 /* A phone's bar with no room for the points chip: the chip takes the
    wordmark's place beside the wave (celebration/stage.ts). The logo stays
    the menu's button, its size unchanged. */
-:root[data-look="bold"][data-points-chip="logo"]
+:root[data-look="bold"][data-chip-room][data-points-chip="logo"]
   [data-navigation-trigger]
   span {
   visibility: hidden;

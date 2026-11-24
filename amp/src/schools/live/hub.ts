@@ -386,9 +386,19 @@ export class LiveHub {
       const signalled = new Map<string, Set<string>>();
       /** Classes whose events name a session the hub doesn't hold. */
       const otherSession = new Set<string>();
+      /** Per class, whose settings changed: everyone's, or these students'. */
+      const settings = new Map<string, Set<string> | "all">();
       for (const event of fresh) {
         const state = this.classes.get(event.classId);
-        if (event.kind === "signal") {
+        if (event.kind === "settings") {
+          const whose = settings.get(event.classId);
+          if (!event.personId) settings.set(event.classId, "all");
+          else if (whose !== "all")
+            settings.set(
+              event.classId,
+              (whose ?? new Set<string>()).add(event.personId),
+            );
+        } else if (event.kind === "signal") {
           if (!event.personId) continue;
           const people = signalled.get(event.classId) ?? new Set<string>();
           signalled.set(event.classId, people.add(event.personId));
@@ -423,10 +433,19 @@ export class LiveHub {
         }
         const moved = !sameSession(before, state.session);
         const people = signalled.get(classId);
+        const changed = settings.get(classId);
         for (const subscriber of state.students) {
           if (subscriber.fresh || people?.has(subscriber.personId))
             signalReads.add(subscriber);
-          if (subscriber.fresh || moved) students.add(subscriber);
+          // Their settings changed: the whole state again, which is what a
+          // student's screen reads its settings on (useStudentLive.ts).
+          if (
+            subscriber.fresh ||
+            moved ||
+            changed === "all" ||
+            changed?.has(subscriber.personId)
+          )
+            students.add(subscriber);
         }
       }
       // One read per student (two tabs share it), as L4's own route reads.

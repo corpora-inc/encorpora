@@ -11,6 +11,19 @@
  *   (which remembers Colorful) never paints Colorful, not for one frame; the
  *   menu has no Look and no Color, and nothing in it overflows; the server
  *   refuses Colorful. On again: the Colorful they chose is back.
+ * - A screen already open, the switch flipped on another device: the
+ *   student's practice turns Calm, and Colorful again, within a few seconds
+ *   with the child doing nothing and nothing on the screen moving (390 and
+ *   1280), for a class's switch, a school's and a parent's (a family's child
+ *   on their own phone). A tab whose network holds the stream follows no
+ *   later than its next problem.
+ * - Their menu after the switch went off, watched frame by frame from the
+ *   press: no Look or Color row in any frame and nothing in the sheet
+ *   moving, both once the screen has followed and when the menu is opened
+ *   the moment the switch is flipped (before anything told the screen); the
+ *   other way, the rows are there from the first frame.
+ * - The switch flipped while an answer's feedback is being read: the sheet
+ *   keeps its shape, and the next problem arrives in the new look.
  *
  * Screenshots go to `--out` (default artifacts/allow-colorful).
  *
@@ -30,6 +43,7 @@ import {
   personaEmail,
 } from "../src/web/features/dev/persona-list";
 import { startPersonaStack } from "./persona-stack";
+import { practicePath } from "../src/web/features/spaces/identity";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -57,6 +71,8 @@ const check = (ok: unknown, message: string, detail?: unknown) => {
  * layout shift (a click's own included: nothing may move at all). */
 const OBSERVER = `(() => {
   const w = window;
+  // tsx names the functions it passes to the page.
+  w.__name = (fn) => fn;
   w.__looks = [];
   w.__shift = 0;
   const tick = () => {
@@ -481,7 +497,497 @@ try {
     );
     await context.close();
   }
+
+  // ---- a screen already open follows the switch -----------------------
+  /** Where everything on an open practice screen is. */
+  const practiceBoxes = (page: Page) =>
+    page
+      .locator(
+        ":is(.practice-topic, .practice-topic span, .question, .problem-content, .answer-dock, .answer-dock button, .answer-dock input, [data-app-bar] button, [data-app-bar] a)",
+      )
+      .evaluateAll((nodes) =>
+        nodes
+          .filter((node) => (node as HTMLElement).offsetParent !== null)
+          .map((node) => {
+            const box = node.getBoundingClientRect();
+            return [
+              `${node.tagName.toLowerCase()}.${String(node.className).split(" ")[0]}`,
+              (node.getAttribute("aria-label") ?? node.textContent ?? "")
+                .trim()
+                .slice(0, 18),
+              ...[box.x, box.y, box.width, box.height].map(
+                (value) => Math.round(value * 10) / 10,
+              ),
+            ].join(" ");
+          }),
+      );
+  const lookNow = (page: Page) =>
+    page.evaluate(
+      () => document.documentElement.getAttribute("data-look") ?? "calm",
+    );
+  /** Someone else flips the switch; the open screen must wear `want` within
+   * `withinMs` with the child doing nothing, and nothing on it may move. */
+  async function follows(
+    page: Page,
+    tag: string,
+    want: "calm" | "bold",
+    flipIt: () => Promise<void>,
+    withinMs = 5_000,
+  ) {
+    await settle(page, 900);
+    await resetShift(page);
+    const before = await practiceBoxes(page);
+    const started = Date.now();
+    await flipIt();
+    const arrived = await page
+      .waitForFunction(
+        (look) =>
+          (document.documentElement.getAttribute("data-look") ?? "calm") ===
+          look,
+        want,
+        { timeout: withinMs },
+      )
+      .then(
+        () => true,
+        () => false,
+      );
+    const took = Date.now() - started;
+    check(
+      arrived,
+      `${tag}: the open screen turns ${want === "bold" ? "Colorful" : "Calm"} by itself within ${withinMs / 1000} s`,
+      { look: await lookNow(page), waitedMs: took },
+    );
+    if (!arrived) return;
+    console.log(
+      `  ${tag}: ${want === "bold" ? "Colorful" : "Calm"} after ${took} ms`,
+    );
+    // The hue's arrival and the chip's own placement have run.
+    await settle(page, 1200);
+    const after = await practiceBoxes(page);
+    const moved = [
+      ...before
+        .filter((box) => !after.includes(box))
+        .map((box) => `was ${box}`),
+      ...after
+        .filter((box) => !before.includes(box))
+        .map((box) => `now ${box}`),
+    ].slice(0, 8);
+    check(
+      moved.length === 0,
+      `${tag}: nothing moves when the look turns ${want === "bold" ? "Colorful" : "Calm"}`,
+      moved,
+    );
+    const shift = await shiftOf(page);
+    check(
+      shift === 0,
+      `${tag}: layout shift turning ${want === "bold" ? "Colorful" : "Calm"}`,
+      shift,
+    );
+  }
+  /** From now, every frame the menu's sheet is on the page: whether the
+   * Look rows are in it, the look the page wears behind it, and where each
+   * of its rows is within the sheet (the sheet slides in; its rows may not
+   * move inside it). Also whether the Look rows were ever in the document
+   * at all, painted or not. */
+  const watchMenu = (page: Page) =>
+    page.evaluate(() => {
+      const w = window as unknown as {
+        __menu: {
+          frames: {
+            look: boolean;
+            page: string;
+            rows: Record<string, string>;
+          }[];
+          ever: boolean;
+          stop: boolean;
+        };
+      };
+      const state = (w.__menu = {
+        frames: [] as (typeof w.__menu)["frames"],
+        ever: !!document.querySelector("[data-look-setting]"),
+        stop: false,
+      });
+      new MutationObserver(() => {
+        if (!state.stop && document.querySelector("[data-look-setting]"))
+          state.ever = true;
+      }).observe(document.body, { childList: true, subtree: true });
+      const tick = () => {
+        if (state.stop) return;
+        const sheet = document.querySelector("[data-navigation-sheet]");
+        if (sheet) {
+          const at = sheet.getBoundingClientRect();
+          const rows: Record<string, string> = {};
+          for (const node of sheet.querySelectorAll(
+            "a, button, legend, [role=switch], [role=radio], [role=slider]",
+          )) {
+            if ((node as HTMLElement).offsetParent === null) continue;
+            const box = node.getBoundingClientRect();
+            const name = `${node.tagName.toLowerCase()} ${(
+              node.getAttribute("aria-label") ??
+              node.textContent ??
+              ""
+            )
+              .trim()
+              .slice(0, 24)}`;
+            let key = name;
+            for (let n = 2; key in rows; n++) key = `${name} #${n}`;
+            rows[key] = [box.x - at.x, box.y - at.y, box.width, box.height]
+              .map((value) => Math.round(value * 10) / 10)
+              .join(" ");
+          }
+          state.frames.push({
+            look: !!sheet.querySelector("[data-look-setting]"),
+            page: document.documentElement.getAttribute("data-look") ?? "calm",
+            rows,
+          });
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  /** Opens the menu and reads what `watchMenu` saw of it, then closes it. */
+  async function menuFrames(page: Page, tag: string, rows: "none" | "all") {
+    await page.locator("[data-navigation-trigger]").first().click();
+    await page.locator("[data-navigation-sheet]").waitFor();
+    await settle(page, 900);
+    const seen = await page.evaluate(() => {
+      const w = window as unknown as {
+        __menu: {
+          frames: {
+            look: boolean;
+            page: string;
+            rows: Record<string, string>;
+          }[];
+          ever: boolean;
+          stop: boolean;
+        };
+      };
+      w.__menu.stop = true;
+      return { frames: w.__menu.frames, ever: w.__menu.ever };
+    });
+    check(seen.frames.length > 5, `${tag}: the menu was watched as it opened`, {
+      frames: seen.frames.length,
+    });
+    const withLook = seen.frames.filter((frame) => frame.look).length;
+    if (rows === "none")
+      check(
+        withLook === 0 && !seen.ever,
+        `${tag}: the menu never has the Look or Color rows, in any frame`,
+        { framesWithLook: withLook, of: seen.frames.length, ever: seen.ever },
+      );
+    else
+      check(
+        withLook === seen.frames.length,
+        `${tag}: the menu has the Look and Color rows from its first frame`,
+        { framesWithLook: withLook, of: seen.frames.length },
+      );
+    check(
+      seen.frames.every(
+        (frame) => frame.page === (rows === "none" ? "calm" : "bold"),
+      ),
+      `${tag}: the page behind the menu is ${rows === "none" ? "Calm" : "Colorful"} from the menu's first frame`,
+      [...new Set(seen.frames.map((frame) => frame.page))],
+    );
+    // Nothing in the sheet moves, comes or goes once it is on the page.
+    const first = seen.frames[0]?.rows ?? {};
+    const moved = new Set<string>();
+    for (const frame of seen.frames) {
+      for (const [key, at] of Object.entries(frame.rows))
+        if (first[key] !== at)
+          moved.add(`${key}: ${first[key] ?? "absent"} -> ${at}`);
+      for (const key of Object.keys(first))
+        if (!(key in frame.rows)) moved.add(`${key}: gone`);
+    }
+    check(
+      moved.size === 0,
+      `${tag}: nothing in the menu moves, comes or goes as it opens`,
+      [...moved].slice(0, 6),
+    );
+    await page.keyboard.press("Escape");
+    await page
+      .locator("[data-navigation-sheet]")
+      .waitFor({ state: "detached" });
+    await settle(page, 300);
+  }
+  const wears = (page: Page, look: "calm" | "bold", timeout = 5_000) =>
+    page.waitForFunction(
+      (want) =>
+        (document.documentElement.getAttribute("data-look") ?? "calm") === want,
+      look,
+      { timeout },
+    );
+  /** The open screen wears `look` within five seconds, by itself; said,
+   * and the journey goes on, where it doesn't. */
+  const followed = async (page: Page, look: "calm" | "bold", tag: string) =>
+    check(
+      await wears(page, look).then(
+        () => true,
+        () => false,
+      ),
+      `${tag}: the open screen is ${look === "bold" ? "Colorful" : "Calm"} by itself before its menu is opened`,
+    );
+  const studentTab = async (
+    width: number,
+    who: { accountId: string; token: string },
+    prepare?: (context: BrowserContext) => Promise<unknown>,
+  ) => {
+    const context = await browser.newContext({
+      viewport: { width, height: width < 600 ? 844 : 900 },
+    });
+    await context.addInitScript(OBSERVER);
+    await context.addInitScript(
+      `if (!sessionStorage.getItem("amp.student")) sessionStorage.setItem("amp.student", ${JSON.stringify(JSON.stringify(who))});`,
+    );
+    await prepare?.(context);
+    const page = await context.newPage();
+    await page.goto(`${origin}/practice`);
+    await page.locator(".problem-stage .question").waitFor();
+    return { context, page };
+  };
+
+  // A class's student, their teacher's and their school's switch.
+  for (const width of [390, 1280]) {
+    await write(orgPath, true);
+    await write(classPath, true);
+    assert.equal((await choose("bold")).status(), 200);
+    const { context, page } = await studentTab(width, grant);
+    await page
+      .locator(':root[data-look="bold"]')
+      .waitFor({ state: "attached" });
+    // A skill whose name is long enough to wrap beside the points chip on
+    // a phone, and to be shortened in the bar: the chip's room must not
+    // come and go with the look under it.
+    await page.goto(
+      `${origin}${practicePath(me.learners[0]!.id, { template: "mark-unit-squares" })}`,
+    );
+    await page.locator(".problem-stage .question").waitFor();
+    await page
+      .locator(':root[data-look="bold"]')
+      .waitFor({ state: "attached" });
+    for (const [source, path] of [
+      ["the class", classPath],
+      ["the school", orgPath],
+    ] as const) {
+      const tag = `open screen ${width}, ${source}`;
+      await follows(page, tag, "calm", () => write(path, false));
+      await follows(page, tag, "bold", () => write(path, true));
+    }
+
+    // Their menu, after the switch went off. It must never paint the Look
+    // and Color rows it is about to take away: not once the screen has
+    // followed, and not when it is opened the moment the switch is flipped,
+    // before anything could have told this screen.
+    {
+      const tag = `menu ${width}`;
+      await write(classPath, false);
+      await followed(page, "calm", tag);
+      await watchMenu(page);
+      await menuFrames(page, `${tag}, off and the screen followed`, "none");
+      await write(classPath, true);
+      await followed(page, "bold", tag);
+      await settle(page, 2_500);
+      await watchMenu(page);
+      await write(classPath, false);
+      await menuFrames(page, `${tag}, opened as the switch goes off`, "none");
+      await settle(page, 2_500);
+      await watchMenu(page);
+      await write(classPath, true);
+      await menuFrames(page, `${tag}, opened as the switch goes on`, "all");
+      await followed(page, "bold", tag);
+    }
+
+    // An answer's feedback is on screen when the switch is flipped: the
+    // sheet being read keeps its shape; the next problem arrives in the
+    // new look, in its first frame.
+    {
+      const tag = `feedback on screen ${width}`;
+      for (const want of ["calm", "bold"] as const) {
+        const now = want === "calm" ? "bold" : "calm";
+        const word = want === "bold" ? "Colorful" : "Calm";
+        await page
+          .getByRole("button", { name: "Skip this problem and see its answer" })
+          .click();
+        await page.locator(".feedback").waitFor();
+        await settle(page, 1_200);
+        await resetShift(page);
+        const before = await boxes(page, ".feedback");
+        await write(classPath, want === "bold");
+        await settle(page, 3_000);
+        check(
+          (await lookNow(page)) === now,
+          `${tag}: turning ${word} waits while the feedback is read`,
+          await lookNow(page),
+        );
+        check(
+          JSON.stringify(await boxes(page, ".feedback")) ===
+            JSON.stringify(before),
+          `${tag}: the feedback keeps its shape as the switch turns ${word}`,
+        );
+        const shift = await shiftOf(page);
+        check(shift === 0, `${tag}: layout shift, switch to ${word}`, shift);
+        const shown = await page
+          .locator(".problem-content")
+          .getAttribute("data-problem-id");
+        await page.evaluate(() => {
+          (window as unknown as { __looks: string[] }).__looks = [];
+        });
+        await page.locator(".next-action").click();
+        await page.waitForFunction(
+          (id) =>
+            document
+              .querySelector(".problem-content")
+              ?.getAttribute("data-problem-id") !== id,
+          shown,
+        );
+        const arrived = await wears(page, want, 1_500).then(
+          () => true,
+          () => false,
+        );
+        check(
+          arrived,
+          `${tag}: the next problem arrives ${word}`,
+          await lookNow(page),
+        );
+        await settle(page, 600);
+      }
+    }
+    await context.close();
+  }
+
+  // A tab nothing feeds (its network holds the stream): no later than the
+  // next problem.
+  {
+    const tag = "open screen 390, no stream";
+    await write(classPath, true);
+    assert.equal((await choose("bold")).status(), 200);
+    const { context, page } = await studentTab(390, grant, (made) =>
+      made.route("**/api/v1/school/student/live/stream", (route) =>
+        route.abort(),
+      ),
+    );
+    await page
+      .locator(':root[data-look="bold"]')
+      .waitFor({ state: "attached" });
+    const nextProblem = async () => {
+      const shown = await page
+        .locator(".problem-content")
+        .getAttribute("data-problem-id");
+      await page
+        .getByRole("button", { name: "Skip this problem and see its answer" })
+        .click();
+      await page.locator(".feedback").waitFor();
+      await page.locator(".next-action").click();
+      await page.waitForFunction(
+        (id) =>
+          document
+            .querySelector(".problem-content")
+            ?.getAttribute("data-problem-id") !== id,
+        shown,
+      );
+    };
+    for (const want of ["calm", "bold"] as const) {
+      await write(classPath, want === "bold");
+      await nextProblem();
+      const arrived = await page
+        .waitForFunction(
+          (look) =>
+            (document.documentElement.getAttribute("data-look") ?? "calm") ===
+            look,
+          want,
+          { timeout: 4_000 },
+        )
+        .then(
+          () => true,
+          () => false,
+        );
+      check(
+        arrived,
+        `${tag}: ${want === "bold" ? "Colorful" : "Calm"} no later than the next problem`,
+        await lookNow(page),
+      );
+    }
+    await context.close();
+  }
   await lead.close();
+
+  // A family's child on their own phone, the parent's switch on another.
+  for (const width of [390, 1280]) {
+    const tag = `open screen ${width}, a parent`;
+    const home = await signedIn(browser, "family", 1280, "light");
+    const parent = await bearer(home);
+    const me = (await (
+      await home.request.get(`${origin}/api/v1/me`, { headers: parent })
+    ).json()) as {
+      family?: { learners: { id: string; name: string; adult?: boolean }[] };
+    };
+    const kid = me.family?.learners.find((l) => !l.adult && l.name);
+    assert.ok(kid, "the family has a named child");
+    const kidState = `${origin}/api/v1/learners/${kid.id}/practice-state`;
+    const send = async (body: object) => {
+      const now = (await (
+        await home.request.get(kidState, { headers: parent })
+      ).json()) as { revision: number };
+      const sent = await home.request.post(kidState, {
+        headers: parent,
+        data: {
+          ...body,
+          revision: now.revision,
+          requestId: crypto.randomUUID(),
+        },
+      });
+      assert.ok(sent.ok(), `${JSON.stringify(body)}: ${sent.status()}`);
+    };
+    await send({ kind: "allowColorful", allowed: true });
+    await send({ kind: "look", look: "bold" });
+    // The family's link, as the parent's home shows it.
+    const front = await home.newPage();
+    await front.goto(`${origin}/`);
+    const link = front.locator("[data-join-link] span").first();
+    await link.waitFor();
+    const address = `http://${(await link.innerText()).trim().replace(/^https?:\/\//, "")}`;
+    await front.close();
+    const phone = await browser.newContext({
+      viewport: { width, height: width < 600 ? 844 : 900 },
+    });
+    await phone.addInitScript(OBSERVER);
+    const page = await phone.newPage();
+    await page.goto(address);
+    await page.getByText("Tap your name").waitFor();
+    await page
+      .getByRole("link", { name: new RegExp(kid.name) })
+      .or(page.getByRole("button", { name: new RegExp(kid.name) }))
+      .first()
+      .click();
+    await page
+      .getByText(/Pick 3 pictures|Pick your 3 pictures/)
+      .first()
+      .waitFor();
+    for (const picture of ["fox", "boat", "kite"])
+      await page
+        .locator("button[aria-pressed]")
+        .and(page.getByRole("button", { name: new RegExp(picture, "i") }))
+        .click();
+    const mine = page.getByRole("button", { name: "These are mine" });
+    if (
+      await mine.waitFor({ timeout: 1_500 }).then(
+        () => true,
+        () => false,
+      )
+    )
+      await mine.click();
+    await page.locator(".problem-stage .question").waitFor();
+    await page
+      .locator(':root[data-look="bold"]')
+      .waitFor({ state: "attached" });
+    await follows(page, tag, "calm", () =>
+      send({ kind: "allowColorful", allowed: false }),
+    );
+    await follows(page, tag, "bold", () =>
+      send({ kind: "allowColorful", allowed: true }),
+    );
+    await phone.close();
+    await home.close();
+  }
 
   // ---- a parent's child -----------------------------------------------
   for (const width of [390, 1280])
@@ -544,7 +1050,7 @@ try {
     );
   } else
     console.log(
-      `Allow Colorful: the switch at a class, a school and a child (390 and 1280, light and dark) moves nothing; off above is off below; a student under off never paints Colorful and has no Look in the menu (320, 390, 1280); their choice comes back. Screenshots in ${OUT}`,
+      `Allow Colorful: the switch at a class, a school and a child (390 and 1280, light and dark) moves nothing; off above is off below; a student under off never paints Colorful and has no Look in the menu (320, 390, 1280); their choice comes back; a screen already open follows the switch by itself (a class's, a school's, a parent's) with nothing moving, and a tab with no stream by its next problem; a menu opened the moment the switch goes off never paints the Look rows; feedback being read keeps its shape. Screenshots in ${OUT}`,
     );
 } catch (error) {
   failed = true;

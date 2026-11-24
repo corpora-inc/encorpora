@@ -31,7 +31,10 @@ import { recordPrint } from "../schools/help-events.js";
 import { learnerClassLooks } from "../schools/learner-look.js";
 import type { ClassLook, ShownLook } from "../learning/look.js";
 import { recordLearnerActivity } from "../schools/evidence.js";
-import { noteLearnerEvent } from "../schools/live/events.js";
+import {
+  noteLearnerEvent,
+  noteLearnerSettings,
+} from "../schools/live/events.js";
 import {
   recordCheckin,
   type CheckinKind,
@@ -802,6 +805,10 @@ export class PgTransaction implements LearnerTransaction {
       [this.learnerId, JSON.stringify(result)],
     );
     this.settingsCache = Promise.resolve(result);
+    // A grown-up's "Allow Colorful" reaches the child's open screen: the
+    // stream it holds says its settings changed (schools/live/events.ts).
+    if (change.kind === "allowColorful")
+      await noteLearnerSettings(this.db, this.learnerId);
   }
   constructor(
     private db: PoolClient,
