@@ -64,6 +64,9 @@ const webPort = Number(process.env.AMP_WEB_PORT ?? 4396),
 /** A student's practice, at its own address (`/practice/<learner>`). */
 const PRACTICE = /\/practice(\/[^/?#]+)?$/;
 const TEACHER = "development-household";
+/** What a class's student reads once five wrong tries have paused their
+ * sign-in (features/school/join/PicturesScreen.tsx). */
+const LOCKED = "Ask your teacher to reset your pictures.";
 const MINE = ["Fox", "Boat", "Kite"];
 const WRONG = ["Owl", "Frog", "Sun"];
 const NAMES = [
@@ -313,7 +316,9 @@ async function sweep(
     await settled(page);
     await geometry(page, `${label} join`);
     await shoot(page, engine, "join", width, theme);
-    const input = page.getByLabel("Code", { exact: true });
+    // The field is named "Code" whatever it holds: the drawn tiles are not
+    // part of its name.
+    const input = page.getByRole("textbox", { name: "Code", exact: true });
     const layout = "h1, label, button";
     const before = await boxes(page, layout);
     await input.fill("zzz-zzz");
@@ -459,7 +464,8 @@ async function sweep(
     const body = await page.locator("main").innerText();
     check(`${label} no tries left`, !/\d+ (tries|more|left)/i.test(body), body);
     await pick(page, WRONG);
-    await heading(page, "Ask your teacher").waitFor();
+    // The fifth wrong try pauses this student: the title says who can help.
+    await heading(page, LOCKED).waitFor();
     await settled(page);
     sameBoxes(`${label} locked`, start, await boxes(page, stable));
     check(
@@ -493,6 +499,8 @@ async function sweep(
     await page.unroute("**/api/v1/school/join/picture");
     await tap(page, "Try again");
     await page.waitForURL(PRACTICE);
+    // Practice has settled at the student's own address before leaving it.
+    await firstProblem(page);
     await page.evaluate(() => sessionStorage.clear());
 
     // An expired card says what to do.
@@ -510,7 +518,7 @@ async function sweep(
       [paused.id],
     );
     await page.goto(`${origin}/join/${paused.joinCode}`);
-    await heading(page, /This class is paused/).waitFor();
+    await heading(page, /Sign-in is paused for a few minutes/).waitFor();
     await settled(page);
     await geometry(page, `${label} paused class`);
     await shoot(page, engine, "class-paused", width, theme);
@@ -569,7 +577,11 @@ async function sweep(
 
     // The roster.
     await page.goto(origin + classUrl(big.id, "roster"));
-    await heading(page, "Roster").waitFor();
+    // The class's Students tab is the roster; the tab names it.
+    await page
+      .locator('[aria-current="page"]', { hasText: "Students" })
+      .first()
+      .waitFor();
     // The roster's way to the projected board (Start class is a session).
     await page.getByRole("link", { name: "Sign-in board" }).waitFor();
     await settled(page);
@@ -630,9 +642,14 @@ async function device(
   page.on("request", (request) => requests.push(request.url()));
   return { context, page, requests };
 }
+/** Nothing is collected from a student, and their sign-in never writes to
+ * account sign-in. Every first screen reads whether the device has an
+ * account session (`get-session`, since the session is asked for alongside
+ * the sign-in configuration); that read is the one account request a
+ * student's screen makes. */
 function noCollection(label: string, requests: string[]) {
   const collected = requests.filter((request) =>
-    /\/api\/v1\/(events|engagement)|googletagmanager\.com|google-analytics\.com|\/api\/auth\//.test(
+    /\/api\/v1\/(events|engagement)|googletagmanager\.com|google-analytics\.com|\/api\/auth\/(?!get-session(?:$|\?))/.test(
       request,
     ),
   );
@@ -789,7 +806,7 @@ async function journeys(browser: Browser, engine: string) {
       );
     }
     await pick(locked.page, WRONG);
-    await heading(locked.page, "Ask your teacher").waitFor();
+    await heading(locked.page, LOCKED).waitFor();
     const teacher = await open({ width: 1280 });
     await teacher.page.goto(origin + classUrl(cohort.id, "roster"));
     await teacher.page.getByText("Locked for now").waitFor();
@@ -853,13 +870,18 @@ async function journeys(browser: Browser, engine: string) {
         name: `Class code ${[...rotated.joinCode].join(" ")}`,
       })
       .waitFor({ timeout: 8000 });
-    // The board's cross closes it to the class.
+    // The board's cross closes it to the class's Today. Opened by its own
+    // address, as here, Today takes the board's place in history: there is
+    // no entry left that Back would reopen the board from (lib/return-to.ts).
+    const entries = await teacherBoard.page.evaluate(() => history.length);
     await teacherBoard.page
       .getByRole("button", { name: "Close the board" })
       .click();
     await teacherBoard.page.waitForURL("**/today");
-    await teacherBoard.page.goBack();
-    await teacherBoard.page.waitForURL("**/start");
+    check(
+      `${engine} the closed board leaves no entry behind`,
+      (await teacherBoard.page.evaluate(() => history.length)) === entries,
+    );
 
     // Personal devices stay signed in across tabs.
     const own = await makeClass("Own Devices");

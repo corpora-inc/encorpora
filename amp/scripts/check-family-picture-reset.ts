@@ -97,7 +97,7 @@ try {
   }
   await child
     .getByRole("heading", {
-      name: "Ask your parent or teacher to reset your sign-in pictures.",
+      name: "Ask your parent to reset your pictures.",
       exact: true,
     })
     .waitFor();

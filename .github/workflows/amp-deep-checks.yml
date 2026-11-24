@@ -93,7 +93,9 @@ jobs:
     # minutes of checks: family-a 28 without the classroom check (24);
     # family-b1 40 to 45; family-b3 32 to 43; tab identity 7 to 16; child
     # practice 28. Hence family-b4 (classroom, tab identity) and family-b5
-    # (child practice, the skill index).
+    # (child practice, the skill index, and a student's sign-in: code,
+    # pictures, lockout and reset, cards and the board, in Chromium; about 4
+    # minutes on a laptop. Both engines: `npm run test:school-sign-in-ui`).
     timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'
