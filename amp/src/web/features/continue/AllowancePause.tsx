@@ -3,11 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
 import { meOptions, queryClient } from "../../lib/query";
 import { useSessionOrNull } from "../../lib/session";
+import { takeDeviceBack } from "../../lib/family-practice-history";
+import { handedHome, handedStudentDevice } from "../../lib/student-device";
+import { addressedIdentity } from "../spaces/identity";
 import { payLearnerFor } from "../pay/paths";
 import { learnerOrigin, payOver } from "../pay/address";
 import { TalkToUs } from "../schools/TalkToUs";
 import { Button, buttonClass } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
+import { useErrorToast } from "../../ui/useErrorToast";
 import { rememberContinuation } from "./memory";
 import { RecapLine } from "./Recap";
 import styles from "./Continue.module.css";
@@ -15,6 +19,19 @@ import styles from "./Continue.module.css";
 /** Who is looking at a learner whose free allowance ended. `profile`: an
  * adult practicing as one of their practice profiles. */
 export type PauseViewer = "parent" | "adult" | "profile" | "student" | "staff";
+
+/** The child's page in their family, when this tab is a parent's device
+ * handed to their child ("Practice", or the child's practice opened by its
+ * address): the grown-up is the one holding it, so the pause offers them
+ * what it offers on their own sign-in. Null on a child's own device, and on
+ * one handed over from a class. */
+export function handedChildPage(learnerId: string): string | null {
+  if (!handedStudentDevice()) return null;
+  const family = /^\/family\/([^/?#]+)$/.exec(handedHome())?.[1];
+  return family
+    ? `/family/${family}/kids/${encodeURIComponent(learnerId)}`
+    : null;
+}
 
 /** A parent or a child is the family's pause; a teacher is the class. */
 const pauseFor = {
@@ -31,13 +48,15 @@ export function pauseWords(
   kind: "problems" | "workbooks",
   viewer: PauseViewer,
   name: string,
+  /** A parent's device handed to this child: the parent's words. */
+  handed = false,
 ) {
   if (kind === "workbooks")
     return {
       fact: "The five free workbooks are used.",
       detail: "Past workbooks and their results stay here.",
     };
-  if (viewer === "student")
+  if (viewer === "student" && !handed)
     return {
       fact: "You’ve finished the free problems.",
       detail: "Your grown-up can continue AMP.",
@@ -56,7 +75,10 @@ export function pauseWords(
  * the screen they were using. It names the learner and the fact, then gives
  * the one action that works for whoever is looking: a parent or an adult
  * continues with AMP for that learner and comes back here; a class's teacher
- * talks to us; a student is told who can continue.
+ * talks to us; a student on their own device is told who can continue. On a
+ * parent's device handed to their child, the parent is offered what their
+ * own sign-in offers, and the tap takes the device back to them
+ * (`handedChildPage`).
  */
 export function AllowancePause({
   kind,
@@ -76,7 +98,15 @@ export function AllowancePause({
   const here = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
-  const words = pauseWords(kind, viewer, learner?.name ?? "");
+  // A parent's device in their child's hands: the offer the parent's own
+  // sign-in shows, which takes the device back to them as it opens.
+  const childPage =
+    viewer === "student" && kind === "problems" && learner
+      ? handedChildPage(learner.id)
+      : null;
+  const [returning, setReturning] = useState(false);
+  const errors = useErrorToast();
+  const words = pauseWords(kind, viewer, learner?.name ?? "", !!childPage);
   const headingId = `pause-${kind}-${learner?.id ?? viewer}`;
   const Heading = compact ? "h2" : "h1";
   const continued = useRef(false);
@@ -136,16 +166,26 @@ export function AllowancePause({
                 track("continue_click");
               }
               // A practice profile's plan is its family's (paths.ts).
-              const me = queryClient.getQueryData(
-                meOptions(session).queryKey,
-              );
+              const me = queryClient.getQueryData(meOptions(session).queryKey);
               const payer =
                 (me?.signedIn && payLearnerFor(me, learner.id)?.id) ||
                 learner.id;
+              // A child's practice is the child's own sign-in, so paying for
+              // one returns to the child's page, the parent's own screen:
+              // their name is offered there, and Practice is one tap away.
+              const origin =
+                me?.signedIn && viewer === "parent"
+                  ? learnerOrigin(me, payer)
+                  : null;
               rememberContinuation({
                 accountId: session.accountId,
                 learnerId: payer,
-                returnTo: here,
+                returnTo:
+                  origin &&
+                  here.startsWith("/practice/") &&
+                  addressedIdentity(here)?.id === learner.id
+                    ? origin
+                    : here,
               });
               // Paying opens over the learner's own place (features/pay).
               void navigate({
@@ -158,6 +198,47 @@ export function AllowancePause({
             Continue with AMP
           </Button>
         )}
+      {childPage && learner && (
+        <Button
+          variant="primary"
+          className={styles.action}
+          data-continue-with-amp={learner.id}
+          aria-busy={returning || undefined}
+          onClick={() => {
+            if (returning) return;
+            setReturning(true);
+            // The device goes back to the parent (a family hand-over ends,
+            // as its way home ends it), and paying opens over the child's
+            // page on the parent's own sign-in.
+            void takeDeviceBack()
+              .then((parent) => {
+                if (!continued.current) {
+                  continued.current = true;
+                  track("continue_click");
+                }
+                if (parent && !parent.accountId.startsWith("school:"))
+                  rememberContinuation({
+                    accountId: parent.accountId,
+                    learnerId: learner.id,
+                    returnTo: childPage,
+                  });
+                return navigate({
+                  to: payOver(childPage, learner.id) as never,
+                });
+              })
+              .catch((failure: unknown) => {
+                setReturning(false);
+                errors.report(failure, {
+                  doing: "open Continue with AMP",
+                  fallback: "That didn’t open. Try again.",
+                });
+              });
+          }}
+        >
+          Continue with AMP
+        </Button>
+      )}
+      {errors.toast}
       {viewer === "staff" && (
         <TalkToUsButton variant="primary" className={styles.action} />
       )}

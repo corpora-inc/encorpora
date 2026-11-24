@@ -127,6 +127,19 @@ async function addressedChild(
   return family && entry.success ? entry.data : null;
 }
 
+/**
+ * The parent takes back the device they handed to their child, with no
+ * reload: what the way home does on its way (below), for a control that
+ * opens one of the parent's own screens itself ("Continue with AMP" at the
+ * free problems' end). Returns the parent's sign-in, or null if it ended.
+ */
+export async function takeDeviceBack() {
+  clearStudentDevice();
+  const parent = await accessSession();
+  notifyDeviceSessionChanged(parent, { handoff: true });
+  return parent;
+}
+
 async function reconcile(
   location: { pathname: string; state: unknown },
   signal: AbortSignal,

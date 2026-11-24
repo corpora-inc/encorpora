@@ -688,9 +688,18 @@ async function parentJourney(
   await shot(device, 1, "moon-joined", width, theme);
   last.page = page;
 
-  // Fox's 100th problem, practiced with the parent: the pause, in place.
+  // Fox's 100th problem, on the parent's device: practice opened by its
+  // address is handed to Fox (a child's practice is the child's own
+  // sign-in), and the pause, in place, still offers the grown-up holding
+  // the device the way to continue.
   await page.goto(`${origin}/practice`);
   await practicing(page);
+  check(
+    `${label} practice by its address is the child's own sign-in`,
+    await page.evaluate(
+      () => sessionStorage.getItem("amp.student.handed") === "1",
+    ),
+  );
   await freeUsed(fox.id, 99);
   await skipOne(page);
   await pauseSays(
@@ -725,8 +734,14 @@ async function parentJourney(
 
   // Paying opens over the child's own place (features/pay; its walk is
   // scripts/walk-pay-flow.ts): "Choose your plan", for this child, by card.
+  // The one tap also takes the device back to the parent: paying is on the
+  // parent's own sign-in.
   await page.getByRole("button", { name: "Continue with AMP" }).click();
   await page.waitForURL(new RegExp(`/kids/${fox.id}/pay$`));
+  check(
+    `${label} paying is on the parent's sign-in`,
+    await page.evaluate(() => !sessionStorage.getItem("amp.student")),
+  );
   const pay = page.getByRole("dialog");
   await pay.getByRole("heading", { name: "Choose your plan" }).waitFor();
   await pay.getByText(fox.name).first().waitFor();
@@ -737,10 +752,10 @@ async function parentJourney(
     .getByRole("button", { name: /Continue to Stripe|Resume checkout/ })
     .click();
   await payInCheckout(page, 1, width, theme);
-  // Done puts them back where paying started: practicing, with the name
-  // offered once.
+  // Done puts them on the child's page, the parent's own screen, with the
+  // name offered once and Practice one tap away.
   await paidAndDone(page);
-  await practicing(page);
+  await page.waitForURL(new RegExp(`/kids/${fox.id}$`));
   const naming = page.getByRole("dialog", { name: `Add ${fox.name}’s name` });
   await naming.waitFor();
   await measured(page, `${label} naming`);
@@ -768,6 +783,9 @@ async function parentJourney(
       )
     ).rowCount,
   );
+  // Practice, handed to the child again, goes on past 100.
+  await page.locator(`[data-practice-here="${fox.id}"]`).first().click();
+  await practicing(page);
   await skipOne(page);
   await page.locator("[data-problem-id]").first().waitFor();
   check(
