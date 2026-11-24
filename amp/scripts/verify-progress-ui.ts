@@ -43,6 +43,8 @@ async function returnToHistory(page: Page) {
   );
   await page.locator(".progress-workspace").waitFor();
 }
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4400);
 /** A child's detailed progress is their own session's screen: the parent
  * hands the device to that child (and takes it back from the one before). */
 let practicing: string | null = null;
@@ -50,7 +52,7 @@ async function progressOf(page: Page, id: string) {
   if (practicing) await returnToParent(page);
   await practiceHere(page, id);
   practicing = id;
-  await page.goto("http://127.0.0.1:4400/progress");
+  await page.goto(`http://127.0.0.1:${WEB_PORT}/progress`);
 }
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL required");
@@ -68,15 +70,16 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4401 });
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-progress-proof",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-progress-proof",
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4400,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4401" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -94,7 +97,7 @@ try {
   page.on("request", (request) => {
     if (new URL(request.url()).pathname === "/api/v1/me") accountReads++;
   });
-  await page.goto("http://127.0.0.1:4400/overview");
+  await page.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
   for (const size of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
