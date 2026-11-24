@@ -80,8 +80,7 @@ export function AreaRows({
   overall,
   numbers,
   label,
-  levelHead = "Working at",
-  checkedHead = "Checked below",
+  checkedHead = "Earlier grades",
   action,
   caption,
 }: {
@@ -91,7 +90,6 @@ export function AreaRows({
   numbers: boolean;
   /** The list's name for a screen reader. */
   label: string;
-  levelHead?: string;
   checkedHead?: string;
   action?: (row: AreaRow) => ReactNode;
   caption?: ReactNode;
@@ -109,13 +107,18 @@ export function AreaRows({
       data-checking={checking || undefined}
       data-area-rows=""
     >
-      <div className={styles.head} aria-hidden="true">
-        <span className={styles.levelHead}>
-          {levelHead}
-          {numbers && <LevelAxis scale={scale} />}
-        </span>
-        {checking && <span className={styles.checkedHead}>{checkedHead}</span>}
-      </div>
+      {/* The head names only what the rows cannot: the scale's grades and
+          the second bar. The level's own mark is in the key. */}
+      {(numbers || checking) && (
+        <div className={styles.head} aria-hidden="true">
+          <span className={styles.levelHead}>
+            {numbers && <LevelAxis scale={scale} />}
+          </span>
+          {checking && (
+            <span className={styles.checkedHead}>{checkedHead}</span>
+          )}
+        </div>
+      )}
       <ul className={styles.rows} aria-label={label}>
         {areas.map((row) => (
           <li
@@ -198,9 +201,7 @@ function CheckedBar({
               key={standing}
               className={STANDING_FILL}
               data-standing={standing}
-              style={
-                { "--share": checked[standing] / total } as CSSProperties
-              }
+              style={{ "--share": checked[standing] / total } as CSSProperties}
             />
           ),
         )}

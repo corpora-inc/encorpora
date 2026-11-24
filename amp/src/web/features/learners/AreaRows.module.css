@@ -37,16 +37,22 @@
 .areas:not([data-checking]) .head {
   grid-template-areas: ". level";
 }
+.head {
+  align-items: end;
+}
 .levelHead {
   grid-area: level;
-  display: grid;
-  gap: 2px;
   min-width: 0;
 }
+/* One line, in the grade axis's own line box (LevelRange.module.css
+   `.axisLabel`: 13 px on 20), so the two heads share a baseline. */
 .checkedHead {
   grid-area: checked;
-  align-self: end;
   min-width: 0;
+  color: var(--color-subtle-text);
+  font-size: 13px;
+  line-height: 20px;
+  white-space: nowrap;
 }
 .rows {
   margin: 0;
@@ -139,8 +145,10 @@
   }
   .areas:not([data-checking]) .head,
   .areas:not([data-checking]) .row {
-    grid-template-columns:
-      minmax(8rem, 10.5rem) minmax(0, 1fr) var(--area-action, 9rem);
+    grid-template-columns: minmax(8rem, 10.5rem) minmax(0, 1fr) var(
+        --area-action,
+        9rem
+      );
     grid-template-areas: "title level action";
   }
   .head {
