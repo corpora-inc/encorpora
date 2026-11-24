@@ -13,9 +13,13 @@ import { secureChromium } from "../browser-security.mjs";
  * - Family → a child's Practice (with a slow network, so the problem's wait
  *   shows): the bar is the very same element throughout, never fades or
  *   dims, and changes in one commit (the practice space) plus its tools
- *   slot; the family icon arrives once and never leaves; no control moves.
- *   The icon is named "Family", is a 44 px target, holds the same box on a
- *   reload, and leads home to the family's Today.
+ *   slot; no control moves. A problem's bar holds only the problem's tools
+ *   (founder, 2026-11-23): no family icon ever arrives in it, on the way in
+ *   or on a reload, and the way home is the menu's "Back to family", once.
+ * - Off the problem (the child's Progress, from the menu) the family icon
+ *   is at the bar's end as before: one, named "Family", a 44 px target, the
+ *   same box on a reload, and it leads home to the family's Today in this
+ *   tab with no reload.
  * - Settings → Billing → Pay (overlay to overlay over the same screen): the
  *   scrim and the sheet are the very same elements, with no opacity dip;
  *   Escape, and the sheet's ✕, close to Settings.
@@ -113,14 +117,11 @@ const watchBar = () => {
     for (let at: Element | null = bar; at; at = at.parentElement)
       opacity *= Number(getComputedStyle(at).opacity);
     state.minOpacity = Math.min(state.minOpacity, opacity);
-    const home = bar.querySelector("[data-handed-home]");
+    // The logo holds its place on the way in.
     const logo = bar.querySelector("[data-navigation-trigger]");
-    if (home && logo) {
-      const a = home.getBoundingClientRect();
-      const b = logo.getBoundingClientRect();
-      const box = [a.x, a.y, a.width, a.height, b.x, b.y]
-        .map(Math.round)
-        .join(",");
+    if (logo) {
+      const a = logo.getBoundingClientRect();
+      const box = [a.x, a.y, a.width, a.height].map(Math.round).join(",");
       if (state.boxes.at(-1) !== box) state.boxes.push(box);
     }
     requestAnimationFrame(tick);
@@ -217,7 +218,8 @@ try {
       for (const theme of themes) {
         const where = `${engine} ${width} ${theme}`;
 
-        // 1, 2. Family → a child's Practice, and the family icon home.
+        // 1, 2. Family → a child's Practice; the way home, from the menu
+        // on a problem and from the bar's family icon off it.
         {
           const { context, page, errors } = await open(
             browser,
@@ -261,19 +263,61 @@ try {
             `${where}: the bar changed in ${bar.commits.length} commits (frames ${bar.commits.join(", ")}), not one`,
           );
           check(
-            bar.iconAdded === 1 && bar.iconRemoved === 0,
-            `${where}: the family icon arrived ${bar.iconAdded}× and left ${bar.iconRemoved}×`,
+            bar.iconAdded === 0 && bar.iconRemoved === 0,
+            `${where}: a family icon arrived in the practice bar ${bar.iconAdded}× and left ${bar.iconRemoved}×`,
           );
           check(
             bar.boxes.length === 1,
-            `${where}: the family icon or the logo moved: ${bar.boxes.join(" → ")}`,
+            `${where}: the logo moved: ${bar.boxes.join(" → ")}`,
           );
           const moves = await shifted(page);
           check(
             moves.length === 0,
             `${where}: controls moved into practice: ${moves.join("; ")}`,
           );
+          const home = page.locator("header[data-app-bar] [data-handed-home]");
+          await shot(page, `practice-${width}-${theme}`);
+          // The same bar on a reload, from its first paint.
+          await page.reload();
+          await page.locator("header[data-app-bar]").waitFor();
+          const early = await home.count();
+          await page.locator(".problem-stage").waitFor();
+          await page.waitForTimeout(500);
+          check(
+            early === 0 && (await home.count()) === 0,
+            `${where}: a reloaded practice bar holds the family icon`,
+          );
+          // On a problem the way home is the menu's, once, a full target.
+          await page.locator("header [data-navigation-trigger]").click();
+          const menu = page.getByRole("dialog");
+          const back = menu.getByRole("button", {
+            name: "Back to family",
+            exact: true,
+          });
+          await back.waitFor();
+          check(
+            (await back.count()) === 1,
+            `${where}: the menu's Back to family shows ${await back.count()}×`,
+          );
+          const backBox = await back.boundingBox();
+          check(
+            backBox && backBox.height >= 44,
+            `${where}: the menu's Back to family is ${backBox?.height} px tall`,
+          );
+          await shot(page, `practice-menu-${width}-${theme}`);
+          // Off the problem, the child's Progress: the family icon is the
+          // bar's, once, and holds its place.
+          await menu
+            .getByRole("link", { name: "Progress", exact: true })
+            .click();
+          await page.waitForURL((url) => url.pathname === "/overview");
           const icon = page.getByRole("link", { name: "Family", exact: true });
+          await icon.waitFor();
+          await page.waitForTimeout(500);
+          check(
+            (await home.count()) === 1,
+            `${where}: the family icon shows ${await home.count()}× off the problem`,
+          );
           const box = await icon.boundingBox();
           check(
             box && box.width >= 44 && box.height >= 44,
@@ -283,13 +327,12 @@ try {
             (await icon.textContent())?.trim() === "",
             `${where}: the family icon carries text`,
           );
-          await shot(page, `practice-${width}-${theme}`);
+          await shot(page, `progress-${width}-${theme}`);
           // The same place on a reload, from its first paint.
           await page.reload();
           await page.locator("[data-handed-home]").waitFor();
           const first = await icon.boundingBox();
-          await page.locator(".problem-stage").waitFor();
-          await page.waitForTimeout(500);
+          await page.waitForTimeout(1500);
           const settled = await icon.boundingBox();
           check(
             JSON.stringify(first) === JSON.stringify(box) &&
@@ -451,6 +494,6 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(
-  `PASS: Family → Practice keeps one still bar (one commit, no fade, the family icon once, in place); Billing → Pay keeps one scrim and one sheet; no detail on days ahead (${engines.join(", ")} × ${widths.join(", ")} × ${themes.join(", ")})`,
+  `PASS: Family → Practice keeps one still bar (one commit, no fade, only the problem's tools; home from the menu on a problem, from the family icon off it, once and in place); Billing → Pay keeps one scrim and one sheet; no detail on days ahead (${engines.join(", ")} × ${widths.join(", ")} × ${themes.join(", ")})`,
 );
 process.exit(0);

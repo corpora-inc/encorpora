@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useRouter } from "@tanstack/react-router";
 import {
   Component,
+  Fragment,
   lazy,
   Suspense,
   useEffect,
@@ -185,6 +186,12 @@ function ShellBar({
     }
   }, [pending, opening, placesLoading, setDrawerOpen]);
   const practice = space.bar === "practice";
+  // A school session names itself, with its way out, at the end of every
+  // bar but a problem's: that bar holds only the problem's tools, and the
+  // name and Sign out are the menu's first and last rows, one tap away.
+  const sessionMark = practice ? null : (
+    <SessionMark named={space.label ?? null} />
+  );
   const demo =
     (space.space === "classroom" || space.space === "school") && space.org.demo;
   const tabs =
@@ -272,10 +279,7 @@ function ShellBar({
               );
             case "sign-out":
               return (
-                <SessionMark
-                  key={action}
-                  named={space.label && !practice ? space.label : null}
-                />
+                sessionMark && <Fragment key={action}>{sessionMark}</Fragment>
               );
             case "profile-back":
               return <ProfileBackAction key={action} />;
@@ -283,10 +287,7 @@ function ShellBar({
               return <FamilyReturn key={action} />;
           }
         })}
-        {/* A school session names itself on every screen (SessionMark). */}
-        {!space.actions.includes("sign-out") && (
-          <SessionMark named={space.label && !practice ? space.label : null} />
-        )}
+        {!space.actions.includes("sign-out") && sessionMark}
       </div>
     </header>
   );

@@ -153,6 +153,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* The screen's own actions, as rows under the destinations; nothing there,
+   no room taken. */
+.actions:empty {
+  display: none;
+}
 /* Each settings row draws its own rule above it. */
 .settings {
   margin-top: var(--space-2);

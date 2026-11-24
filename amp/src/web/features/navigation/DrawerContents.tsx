@@ -93,6 +93,7 @@ export default function DrawerContents({
   const navigate = useNavigate();
   const location = useLocation();
   const setDrawerSettings = useShellSlots((state) => state.setDrawerSettings);
+  const setDrawerActions = useShellSlots((state) => state.setDrawerActions);
   // Outside the app frame (sign-in cards, a student's standings), the
   // drawer reads the space of the address itself.
   const address = useLocationMatch();
@@ -287,6 +288,13 @@ export default function DrawerContents({
           !space?.destinations.length &&
           nav("/start", "Get started", "learn")}
       </nav>
+      {/* What the screen can do that is not a place to go portals here
+          (practice's raised hand while no session runs). */}
+      <div
+        ref={setDrawerActions}
+        className={styles.actions}
+        data-drawer-actions
+      />
       {family && (
         // The screen's own settings (practice adjustments) portal here.
         <div ref={setDrawerSettings} data-drawer-settings />

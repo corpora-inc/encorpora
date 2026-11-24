@@ -91,8 +91,13 @@ export function useForgotPicture(code: string, personId: string) {
     queryFn: async () => {
       const { state } = await readForgotPicture({ code, personId });
       if (state === "reset")
+        // The class list alone. This read's own key sits under the list's:
+        // a prefix match would invalidate this read from inside itself,
+        // which cancels and restarts it and the list's refetch with it, and
+        // the two then ask the server again as fast as it answers.
         await queryClient.invalidateQueries({
           queryKey: joinRosterOptions(code).queryKey,
+          exact: true,
         });
       // Withdrawn or timed out on the server: back to picking.
       if (state === "none") useForgotStore.getState().clear(key);

@@ -7,6 +7,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { qk } from "../../../../lib/keys";
 import { queryClient } from "../../../../lib/query";
 
 const CODE = "ABCD23";
@@ -28,7 +29,8 @@ vi.mock("@tanstack/react-router", () => ({
 vi.mock("../api", async (original) => ({
   ...(await original<typeof import("../api")>()),
   joinRosterOptions: (code: string) => ({
-    queryKey: ["join-roster", code],
+    // The list's real key (api.ts): the request's own read sits under it.
+    queryKey: qk.account(null, "school", "join", code),
     queryFn: () => lookup(),
     staleTime: 30_000,
     retry: false,
@@ -120,6 +122,33 @@ test("waiting polls, and a reset moves on to choosing new pictures", async () =>
     ),
   ).toBeTruthy();
   expect(useForgotStore.getState().asked).toEqual({});
+}, 15_000);
+
+test("a reset asks the server once more, not as fast as it answers", async () => {
+  mount();
+  fireEvent.click(await forgotButton());
+  await screen.findByText("Your teacher has been asked.");
+  await waitFor(() => expect(read).toHaveBeenCalled());
+  // The class list answers a little slower than the request's own read, as
+  // any two requests may.
+  lookup.mockImplementation(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 40));
+    return {
+      class: { name: "Room", kind },
+      students: [{ id: PERSON, name: "Ada", picturesSet: false }],
+    };
+  });
+  read.mockReset().mockResolvedValue({ state: "reset" });
+  lookup.mockClear();
+  expect(
+    await screen.findByText(
+      "Pick 3 pictures you’ll remember",
+      {},
+      { timeout: FORGOT_POLL_MS * 2 },
+    ),
+  ).toBeTruthy();
+  expect(read.mock.calls.length).toBeLessThanOrEqual(2);
+  expect(lookup.mock.calls.length).toBeLessThanOrEqual(2);
 }, 15_000);
 
 test("backing out returns to picking", async () => {

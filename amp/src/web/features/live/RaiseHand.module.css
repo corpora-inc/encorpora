@@ -1,11 +1,16 @@
 /* The footprint is always one 44 px square: raising or lowering the hand
-   changes colour only. The note hangs under it and takes no room. */
+   changes colour only, and with no session running the square is kept with
+   nothing drawn. The note takes no room: it stands in the topic's place. */
 .slot {
-  position: relative;
   display: inline-flex;
   flex: none;
   width: 44px;
   height: 44px;
+}
+/* The slot comes before the calculator in the practice bar. A problem that
+   arrived while a session ran has it after, at the bar's end. */
+.slot[data-at-end] {
+  order: 1;
 }
 .hand {
   display: grid;
@@ -21,7 +26,9 @@
   color: var(--color-muted-text);
   cursor: pointer;
 }
-.hand svg {
+.hand svg,
+.held svg,
+.row svg {
   width: 22px;
   height: 22px;
   fill: none;
@@ -29,6 +36,13 @@
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.held {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  visibility: hidden;
 }
 .hand:hover {
   background: var(--color-secondary);
@@ -46,21 +60,42 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+/* "Your teacher saw it.": for a few seconds it stands where the topic is,
+   and the topic's words step aside for it, so it never lies over the
+   problem, an answer control, the calculator or Colorful's points, and
+   nothing moves. On a phone the topic has its own line under the bar
+   (theme.css `.practice-topic`: 4 px under the bar, 40 px tall, at the
+   problem's left edge); the bar itself is the note's frame there. From
+   640 px the topic leads the bar's tools, and the tools' row is its frame. */
 .saw {
   position: absolute;
-  top: calc(100% + 58px);
-  right: 0;
+  top: calc(100% + 4px + 20px);
+  left: max(var(--space-4), env(safe-area-inset-left, 0px));
   z-index: 5;
+  transform: translateY(-50%);
   padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-panel);
   background: var(--color-surface-raised);
   color: var(--color-on-surface-raised);
-  box-shadow: 0 6px 20px var(--color-shadow);
+  box-shadow: 0 1px 3px var(--color-shadow);
   font-size: 15px;
   font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
   pointer-events: none;
+}
+@media (min-width: 640px) {
+  :global(.workspace-toolbar.workspace-toolbar[data-in-frame]):has(> .slot) {
+    position: relative;
+  }
+  .saw {
+    top: 50%;
+    left: 0;
+  }
+}
+:global(:root):has(.saw) :global(.workspace-topic) {
+  visibility: hidden;
 }
 @media (prefers-reduced-motion: no-preference) {
   .saw {
@@ -71,4 +106,71 @@
   from {
     opacity: 0;
   }
+}
+
+/* The menu's row while no session runs: a row among the menu's own, the
+   hand filling when it is up and saying so at the row's end. One height,
+   whatever it says. */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--target-size);
+  margin: 0;
+  padding: var(--space-3) var(--space-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: start;
+  cursor: pointer;
+}
+.row svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+}
+@media (hover: hover) {
+  .row:hover:not(:disabled) {
+    background: var(--color-surface-raised-hover);
+    filter: none;
+  }
+}
+.row:active:not(:disabled) {
+  transform: none;
+}
+.row:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.row[aria-pressed="true"] svg {
+  color: var(--color-primary);
+  fill: currentColor;
+  fill-opacity: 0.22;
+}
+.rowLabel {
+  flex: none;
+}
+.rowState {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* A session started while the menu was open: the row keeps its place,
+   unseen and untouchable, so the rows under it stay where they are. */
+.row[data-away] {
+  visibility: hidden;
 }
