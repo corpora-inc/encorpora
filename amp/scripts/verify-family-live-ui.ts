@@ -1,6 +1,6 @@
 /**
- * A family's Today as the live cockpit (round 2026-11-20, L8), against a
- * running, seeded preview and the family simulator (live-family-sim.ts):
+ * A family's Today as the live cockpit (round 2026-11-20, L8), with the
+ * family simulator (live-family-sim.ts) answering as the children:
  *
  * 1. Cold loads (a fresh browser, no cache, CPU 4x, a slow network, 390 px)
  *    of Today at rest, Today with a session running and a session's report:
@@ -34,10 +34,21 @@
  *    name keeps its place under the pointer, its highlight whole on every
  *    side. Nothing scrolls sideways.
  *
+ * By itself (as CI runs it, `npm run test:family-live-ui`) it starts its own
+ * stack on a fresh schema of AMP_TEST_DATABASE_URL (scripts/persona-stack.ts)
+ * with the three families it needs, so the one-child family's free problems
+ * are never used up by an earlier run:
+ *
+ *   AMP_TEST_DATABASE_URL=postgres://…/amp_test \
+ *     npx tsx scripts/verify-family-live-ui.ts [--port 4882] [--out <dir>]
+ *
+ * Or against a running, seeded preview and its database:
+ *
  *   AMP_SIM_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/<db> \
  *     npx tsx scripts/verify-family-live-ui.ts \
- *       --origin http://127.0.0.1:4810 --api http://127.0.0.1:4811 \
- *       [--shots <dir>] [--updates 40] [--widths 390,1280] [--skip-cold]
+ *       --origin http://127.0.0.1:4810 --api http://127.0.0.1:4811
+ *
+ * Either way: [--shots <dir>] [--updates 40] [--widths 390,1280] [--skip-cold]
  */
 import assert from "node:assert/strict";
 import { spawn, type ChildProcess } from "node:child_process";
@@ -48,6 +59,7 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
+import { startPersonaStack } from "./persona-stack";
 
 const chromium = secureChromium(rawChromium);
 const arg = (name: string) => {
@@ -55,13 +67,24 @@ const arg = (name: string) => {
   return at >= 0 ? process.argv[at + 1] : undefined;
 };
 const flag = (name: string) => process.argv.includes(`--${name}`);
-const origin = arg("origin");
-const api = arg("api") ?? origin;
 const shots = arg("shots");
 const UPDATES = Number(arg("updates") ?? 40);
-const database = process.env.AMP_SIM_DATABASE_URL;
-if (!origin || !database)
-  throw new Error("--origin and AMP_SIM_DATABASE_URL are required");
+/** The least the one-child family must show in its minute: a fresh seed
+ * gives about 20 (a child answering every 2 to 4 seconds). */
+const ONE_CHILD_UPDATES = 5;
+if (arg("origin") && !process.env.AMP_SIM_DATABASE_URL)
+  throw new Error("With --origin, AMP_SIM_DATABASE_URL is required");
+const stack = arg("origin")
+  ? null
+  : await startPersonaStack({
+      webPort: Number(arg("port") ?? 4882),
+      personas: ["family", "parent-day1", "second-parent"],
+      name: "family_live",
+      out: arg("out") ?? "artifacts/family-live",
+    });
+const origin = arg("origin") ?? stack!.origin;
+const api = arg("api") ?? stack?.api ?? origin;
+const database = stack?.database ?? process.env.AMP_SIM_DATABASE_URL!;
 const WIDTHS = (arg("widths") ?? "320,390,768,1280").split(",").map(Number);
 const height = (width: number) =>
   width >= 1024 ? 800 : width >= 768 ? 1024 : 844;
@@ -82,7 +105,7 @@ type Person = {
 async function signIn(slug: string) {
   const response = await fetch(`${origin}/api/auth/sign-in/email`, {
     method: "POST",
-    headers: { Origin: origin!, "Content-Type": "application/json" },
+    headers: { Origin: origin, "Content-Type": "application/json" },
     body: JSON.stringify({
       email: personaEmail(slug),
       password: PERSONA_PASSPHRASE,
@@ -108,7 +131,7 @@ async function call(
     method,
     headers: {
       Authorization: `Bearer ${token}`,
-      Origin: origin!,
+      Origin: origin,
       ...(body ? { "Content-Type": "application/json" } : {}),
     },
     body: body ? JSON.stringify(body) : undefined,
@@ -162,7 +185,7 @@ async function opensHint(who: Person) {
     method: "POST",
     headers: {
       Authorization: `Bearer ${grant.token}`,
-      Origin: origin!,
+      Origin: origin,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -244,7 +267,7 @@ async function stateOf(browser: Browser, slug: string) {
   const response = await context.request.post(
     `${origin}/api/auth/sign-in/email`,
     {
-      headers: { Origin: origin! },
+      headers: { Origin: origin },
       data: { email: personaEmail(slug), password: PERSONA_PASSPHRASE },
     },
   );
@@ -753,9 +776,10 @@ async function liveRun(
   let before = await boxes(page);
   let texts = await rowTexts(page);
   let updates = 0;
-  // The one-child family (a free allowance of 100 problems) may run out
-  // after many runs on one scratch database: it is held to stillness for
-  // as long as it answers, not to a count.
+  // The one-child family practices on the free allowance (100 problems,
+  // about 20 a run), so it is held to a minute of answers, not to the
+  // whole count. A minute with next to no answer proves nothing: on a
+  // database many runs old the allowance is spent, and the run fails.
   const deadline = Date.now() + (tag === "one" ? 60_000 : 5 * 60_000);
   while (updates < UPDATES && Date.now() < deadline) {
     await page.waitForTimeout(400);
@@ -767,8 +791,12 @@ async function liveRun(
     compareBoxes(`${tag} ${width}px after ${updates} updates`, before, after);
     before = after;
   }
-  if (updates < UPDATES && tag !== "one")
-    fail(`${tag} ${width}px: only ${updates} row updates arrived`);
+  if (tag === "one" ? updates < ONE_CHILD_UPDATES : updates < UPDATES)
+    fail(
+      tag === "one"
+        ? `${tag} ${width}px: only ${updates} row updates arrived (needs ${ONE_CHILD_UPDATES}): nothing was held still. The child's free problems may be used up; run on a fresh seed`
+        : `${tag} ${width}px: only ${updates} row updates arrived`,
+    );
   const raised = await page
     .locator("[data-live-strip] button")
     .filter({ hasText: "Got it" })
@@ -1217,9 +1245,8 @@ async function endedAndStills(
 }
 
 // ---- run -----------------------------------------------------------------
-if (shots) await mkdir(shots, { recursive: true });
-const browser = await chromium.launch();
-try {
+/** What the run proved, in a sentence. */
+async function run(browser: Browser) {
   const three = await person("family");
   const one = await person("parent-day1");
   const [threeState, oneState, secondState] = await Promise.all([
@@ -1232,14 +1259,12 @@ try {
   if (flag("blocks-only")) {
     for (const width of WIDTHS)
       await childBlocks(browser, threeState, three, width);
-    assert.deepEqual(failures, [], failures.join("\n"));
-    console.log("Each child's block holds one line, and its sheet opens.");
-    process.exit(0);
+    return "Each child's block holds one line, and its sheet opens.";
   }
   if (flag("stills-only")) {
     await endedAndStills(browser, threeState, three, "family");
     await rest(three);
-    process.exit(0);
+    return `Stills in ${shots}.`;
   }
   const paths: string[] = [];
   if (!flag("skip-cold")) {
@@ -1288,11 +1313,23 @@ try {
   }
   await endedAndStills(browser, threeState, three, "family");
   await rest(three);
+  return "A family's live session holds still, loads in one frame, shows help on a phone and reports within the window.";
+}
+
+if (shots) await mkdir(shots, { recursive: true });
+const browser = await chromium.launch();
+let failed = false;
+try {
+  const proved = await run(browser);
+  assert.deepEqual(failures, [], failures.join("\n"));
+  console.log(proved);
+} catch (error) {
+  failed = true;
+  console.error(error);
 } finally {
   stopSim();
   await browser.close();
+  // The check's own stack: its servers stop and its schema goes.
+  await stack?.stop();
 }
-assert.deepEqual(failures, [], failures.join("\n"));
-console.log(
-  "A family's live session holds still, loads in one frame, shows help on a phone and reports within the window.",
-);
+process.exit(failed ? 1 : 0);
