@@ -27,8 +27,10 @@ import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
 import {
   handedReturnName,
+  handedReturnPath,
   handedStudentDevice,
 } from "../../lib/student-device";
+import { closesBack, closeTo } from "../../lib/return-to";
 
 type Icon =
   | "child"
@@ -356,6 +358,7 @@ export default function DrawerContents({
  * identity is shown above navigation, and named in this action's tooltip;
  * a school-signed-in adult's is shown just above it. */
 export function DrawerFooter({ close }: { close: () => void }) {
+  const router = useRouter();
   const view = useLearningView({ records: false });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -415,6 +418,21 @@ export function DrawerFooter({ close }: { close: () => void }) {
             clearInitialConsentChallenge();
             clearOwnedPurchaseReturn();
             clearPurchaseReturn();
+            // A handed device going back to the very screen it was handed
+            // from, the entry before this one: Back to it, as the browser's
+            // Back does. The parent is where they were on that screen (its
+            // scroll, what was open), never at its top after a fresh load
+            // (QA 2026-11-23), and the move hands the device back on its
+            // way (lib/family-practice-history.ts). From anywhere else,
+            // the sign-out below opens the screen afresh.
+            if (student && handedStudentDevice()) {
+              const from = handedReturnPath();
+              if (closesBack(router.history.location, from, from)) {
+                close();
+                closeTo(router, from, from);
+                return;
+              }
+            }
             setBusy(true);
             setError("");
             void import("../../auth")
