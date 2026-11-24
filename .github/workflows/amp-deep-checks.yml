@@ -84,10 +84,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
-    # Each lane's checks take about 25 to 35 minutes after the browser
-    # install; ui-1 and family-b are split so none nears the limit on a slow
-    # runner.
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "family-b4", "family-b5", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+    # A lane is one matrix entry of this job, so it reports through the same
+    # aggregate (`report`) as every other; never a status of its own. Each
+    # lane's checks are planned at 45 minutes or less after setup (the
+    # browser install takes 1 to 19 minutes on a hosted runner), so none is
+    # expected past about 55 or near the limit. Measured 2026-11-23, in
+    # minutes of checks: family-a 28 without the classroom check (24);
+    # family-b1 40 to 45; family-b3 32 to 43; tab identity 7 to 16; child
+    # practice 28. Hence family-b4 (classroom, tab identity) and family-b5
+    # (child practice, the skill index).
     timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'
@@ -181,6 +187,10 @@ jobs:
         run: npm run test:family-ui:b2
       - if: matrix.lane == 'family-b3'
         run: npm run test:family-ui:b3
+      - if: matrix.lane == 'family-b4'
+        run: npm run test:family-ui:b4
+      - if: matrix.lane == 'family-b5'
+        run: npm run test:family-ui:b5
       # No flash (amp/AGENTS.md): every route each person can reach, cold, on
       # a slow phone. One lane per person and width: a person's routes take
       # about 15 minutes at one width on a slow runner, so no lane nears a
