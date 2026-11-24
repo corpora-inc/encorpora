@@ -3,7 +3,7 @@ import { useLayoutEffect, useState, type RefObject } from "react";
 /** The roster's three forms, by the width it is given (not the window's):
  * rows of 64 px under 680 px, rows of 56 px under 960 px, then the grid.
  *
- * A tablet's row ends in 328 px of figures (percent over the last five,
+ * A tablet's row ends in 340 px of figures (percent over the last five,
  * the four help counts, last active). Under 680 px that leaves the name
  * and the skill too little to read (a family's list is two thirds of a
  * 1024 px window: 619 px), so a narrower roster takes a phone's row, whose

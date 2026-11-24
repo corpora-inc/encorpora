@@ -92,7 +92,9 @@
 }
 .colAgo {
   flex: none;
-  width: 68px;
+  /* Its heading ("Last active") and a gap before it: the headings of two
+     columns never touch. */
+  width: 80px;
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   text-align: end;
