@@ -329,9 +329,10 @@ test(
               [learner],
             )
           ).rows[0];
+        // Three opened and the printed lesson; no account clock was started.
         assert.deepEqual(await record(child), {
           ms: 19_000,
-          opened: 3,
+          opened: 4,
           events: 4,
           clocks: 0,
         });
