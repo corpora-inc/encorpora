@@ -494,17 +494,20 @@
   /* Figures: paper, ink, grid and axis of the hue; their three marks at the hue,
      +150° and +60°, so two or three roles in one figure stay apart. A problem
      that names its figure colors ("teal", "rust", "gold") keeps Calm's
-     (`data-figure-colors="named"`, below). */
+     (`data-figure-colors="named"`, below). The marks are also the ink of a
+     lesson film's colored equations, written on the page itself: each is
+     dark enough to read there as text (4.5:1) at every hue. At 0.52 and
+     0.54 they were marks only: 4.15, 3.71 and 3.92 at their worst hues. */
   --color-figure-paper: oklch(0.99 0.012 var(--look-hue));
   --color-figure-ink: oklch(0.3 0.08 var(--look-hue));
   --color-figure-grid: oklch(0.86 0.035 var(--look-hue));
   --color-figure-axis: oklch(0.55 0.07 var(--look-hue));
-  --color-figure-accent: oklch(0.52 0.15 var(--look-hue));
+  --color-figure-accent: oklch(0.49 0.15 var(--look-hue));
   --color-figure-accent-fill: oklch(0.9 0.07 var(--look-hue));
   --color-figure-accent-fill-strong: oklch(0.86 0.08 var(--look-hue));
-  --color-figure-warm: oklch(0.52 0.15 calc(var(--look-hue) + 150deg));
+  --color-figure-warm: oklch(0.46 0.15 calc(var(--look-hue) + 150deg));
   --color-figure-warm-fill: oklch(0.9 0.07 calc(var(--look-hue) + 150deg));
-  --color-figure-gold: oklch(0.54 0.14 calc(var(--look-hue) + 60deg));
+  --color-figure-gold: oklch(0.5 0.14 calc(var(--look-hue) + 60deg));
   --color-figure-gold-fill: oklch(0.9 0.07 calc(var(--look-hue) + 60deg));
   --color-figure-gold-fill-strong: oklch(
     0.86 0.08 calc(var(--look-hue) + 60deg)

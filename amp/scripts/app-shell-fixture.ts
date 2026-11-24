@@ -265,6 +265,8 @@ export async function startShellFixture({
   return {
     origin,
     pool,
+    /** For a check that says its learner's look (lib/fixture-look.ts). */
+    repository,
     paid: { ...paidParent, jordan, avery },
     starter: { ...starter, learnerId: starterLearner },
     practisedSkill: practised[3]!,

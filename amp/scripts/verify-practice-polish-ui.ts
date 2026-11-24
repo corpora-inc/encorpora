@@ -148,7 +148,10 @@ await mkdir(out, { recursive: true });
 const root = new URL("../", import.meta.url).pathname;
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  cacheDir: "node_modules/.vite-practice-polish",
+  // Its own cache, or the one a worktree names (vite.config.ts): a worktree
+  // that shares another's node_modules cannot share a Vite cache with it.
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR || "node_modules/.vite-practice-polish",
   plugins: [
     {
       name: "practice-polish-fixture-auth",
@@ -201,7 +204,9 @@ const frontier = {
 
 const seedCycles: Record<string, number[]> = {
   "solve-justify-linear": [2, 9, 10],
-  "multidigit-decimal-sum": [10, 2, 20],
+  // The widest first, where the stage's fit is measured: a sum that
+  // reaches the tens has four digits and the point.
+  "multidigit-decimal-sum": [2, 10, 20],
 };
 
 /** One synthetic learning API per context. `grade` decides the next result. */
@@ -259,8 +264,8 @@ async function mockApi(context: BrowserContext, templateId: string) {
         state.templateId,
         (problemIndex === 0 ? firstSeeds[state.templateId] : undefined) ??
           // Every problem of the case is the surface under test: fill-ins
-          // with given lines beside typed ones; column methods with
-          // borrowing marks, then a carry into the tens, then no marks.
+          // with given lines beside typed ones; column methods with a
+          // carry into the tens, then borrowing marks, then no marks.
           (seedCycles[state.templateId]
             ? `polish-${state.templateId}-${seedCycles[state.templateId]![problemIndex % 3]}`
             : undefined) ??
@@ -655,7 +660,8 @@ async function runCase(
     if (
       label === "choice-table" ||
       label === "choice-radical" ||
-      label === "parts-slots"
+      label === "parts-slots" ||
+      label === "work-columns"
     ) {
       // Match the hosted Chromium gutter on overlay-scrollbar hosts. WebKit
       // does not reserve custom scrollbar space until overflow, so use its
@@ -685,6 +691,22 @@ async function runCase(
               `Classic scrollbar gutters were not reserved: ${reserved}`,
             );
         }
+      }
+      if (label === "work-columns") {
+        // The widest sum, as the hosted sweep drew it (7.84 + 6.74 there):
+        // at 320 px, between the gutters, it ran 16 px past the stage.
+        const id = await page
+          .locator(".problem-content")
+          .getAttribute("data-problem-id");
+        assert.equal(
+          (
+            api.problems.get(id ?? "")?.public.response as {
+              diagram?: { answer: unknown[] };
+            }
+          ).diagram?.answer.length,
+          5,
+          "Render the sum that reaches the tens: four digits and the point",
+        );
       }
       await assertProblemReachable(page, `${label} ${width}×${height}`);
     }
