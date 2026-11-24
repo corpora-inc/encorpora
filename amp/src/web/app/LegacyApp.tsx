@@ -154,6 +154,7 @@ import {
 } from "../features/lessons/LessonPrint";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
+import { logAhead } from "../lib/ahead";
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -1253,7 +1254,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     const navigation = ++navigationEpoch.current;
     // Asked ahead and failed: ask again now (loadBatch shows a failure).
     const data = await ready.batch.catch((error: unknown) => {
-      console.warn("The next problems did not arrive ahead", error);
+      logAhead("The next problems did not arrive ahead", error);
       return null;
     });
     if (navigation !== navigationEpoch.current || learnerNow() !== learner.id)
@@ -1289,7 +1290,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       if (practiceAnswers.current < 100_000) practiceAnswers.current += 1;
       upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
       upcoming.current.batch.catch((error: unknown) =>
-        console.warn("The next problems did not load ahead", error),
+        logAhead("The next problems did not load ahead", error),
       );
       answered(learner.id);
       void refreshProgress().catch((error) =>
@@ -1332,7 +1333,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
     upcoming.current.batch.catch((error: unknown) =>
-      console.warn("The next problems did not load ahead", error),
+      logAhead("The next problems did not load ahead", error),
     );
     answered(learner.id);
     void refreshProgress().catch((error) =>

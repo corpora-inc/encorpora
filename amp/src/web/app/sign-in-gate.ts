@@ -9,6 +9,7 @@ import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { studentPracticeHref } from "../features/profiles/practice-mode";
 import { RETURN_LIMIT } from "../features/spaces/returns";
+import { logAhead } from "../lib/ahead";
 
 /*
  * The sign-in gate (amp/AGENTS.md, "Frontend architecture"): the one place a
@@ -95,7 +96,7 @@ export async function knowStudentFirst() {
   await queryClient
     .ensureQueryData(meOptions(student))
     .catch((error: unknown) =>
-      console.warn(
+      logAhead(
         "A student's account didn't load ahead; their screen loads it",
         error,
       ),

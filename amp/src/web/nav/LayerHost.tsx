@@ -32,6 +32,7 @@ import {
   CurriculumPractice,
   type OpenedFor,
 } from "../features/practice/CurriculumPractice";
+import { logAhead } from "../lib/ahead";
 
 /**
  * The layers open over a page (nav/layer-store.ts), the page under them
@@ -96,7 +97,7 @@ export function LayerHost({
   useEffect(() => {
     if (open)
       void lessonChunk().catch((error: unknown) =>
-        console.warn("The lesson layer's code did not preload", error),
+        logAhead("The lesson layer's code did not preload", error),
       );
   }, [open]);
   return (

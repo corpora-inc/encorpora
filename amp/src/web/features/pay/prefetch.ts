@@ -4,6 +4,7 @@ import { enrollmentOptions, offerOptions } from "../billing";
 import { fundingOffersOptions, purchaseStatusOptions } from "./api";
 import { checkoutKind } from "./CardPanel";
 import { liveLearner } from "./paths";
+import { logAhead } from "../../lib/ahead";
 
 /**
  * What the choosing screen shows, asked for before it renders (its route's
@@ -27,5 +28,5 @@ export async function prefetchPay(session: AuthSession, learnerId: string) {
     );
   for (const result of await Promise.allSettled(asks))
     if (result.status === "rejected")
-      console.warn("A pay screen's data didn't load ahead", result.reason);
+      logAhead("A pay screen's data didn't load ahead", result.reason);
 }

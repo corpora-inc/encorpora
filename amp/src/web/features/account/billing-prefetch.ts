@@ -3,6 +3,7 @@ import { meOptions, queryClient } from "../../lib/query";
 import { fundingRecordsOptions } from "../funding/records";
 import { invoiceHistoryOptions } from "../funding/FundingInvoices";
 import { receiptsOptions } from "./Receipts";
+import { logAhead } from "../../lib/ahead";
 
 /**
  * Billing's plans, invoices and receipts, asked for before it renders (its
@@ -21,5 +22,5 @@ export async function prefetchBilling(session: AuthSession) {
     asks.push(queryClient.ensureQueryData(invoiceHistoryOptions(session)));
   for (const result of await Promise.allSettled(asks))
     if (result.status === "rejected")
-      console.warn("Billing's data didn't load ahead", result.reason);
+      logAhead("Billing's data didn't load ahead", result.reason);
 }
