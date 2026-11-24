@@ -47,13 +47,71 @@ specify extensions; they are not claims about implemented storage or inference.
 
 ## Practice recovery and confirmation
 
-A child's birth year supplies the initial estimate. An adult chooses where
-to begin (counting through precalculus), because age says little about an
-adult's level. Either is a guess, not a limit. Independent responses update a
-pooled estimate and strand estimates; answers marked as helped do not raise or
-lower independent ability. Earned practice and skill history are separate
-from those estimates. The menu’s **Working together** setting marks help
-without adding a step to each answer.
+A start is either a grade or a guess.
+
+- **A grade.** A child with a birth year starts in the grade that year gives.
+  A roster grade is kept as a birth year, so a rostered student starts the
+  same way.
+- **A guess.** An adult chooses where to begin (counting through
+  precalculus). A learner with no age and no grade starts at grade 2. A
+  family's band and a practice profile are guesses too.
+
+Independent responses update a pooled estimate and strand estimates; answers
+marked as helped do not raise or lower independent ability. Earned practice
+and skill history are separate from those estimates. The menu’s **Working
+together** setting marks help without adding a step to each answer.
+
+### From a grade: the start counts, and practice climbs by coverage
+
+These are the rules for a learner who starts from their grade
+(`startFromGrade`). In a parent's words:
+
+1. **We start from your child's grade and trust it.** Children of one grade
+   mostly work within a grade or two of it. So a few right answers at the
+   grade move the level a little, not a lot. Eight right answers in a row at
+   grade 3 read as grade 4.5, where they used to read as grade 5.6.
+2. **First the child's own grade.** New problems stay at the grade, with a
+   stretch problem from the next grade, until the grade is covered.
+3. **A grade is covered** when the child has earned twelve of its skills, or
+   harder ones, in at least three of the five areas. Earned means answered
+   right without help, the same mark the family sees.
+4. **Then one grade at a time.** Practice may reach one grade past the highest
+   covered grade, and a stretch problem one grade past that.
+5. **Missing still moves a child down as fast as it did.** Coverage only holds
+   practice back from going up. Nothing waits on it going down.
+6. **The level an adult sees is the estimate itself.** The dashboard, the
+   class report and the trend all read the same number and range. Nothing is
+   slowed for display.
+
+How strongly the grade counts is the estimate's starting width
+(`FrontierPolicy.prior.gradeSd`). It is the spread of achievement within one
+grade from public norms (`docs/engine/norms-prior.md`), for kindergarten
+through grade 5: 0.78, 0.89, 1.11, 1.22, 1.78 and 2.11 grades. From grade 6
+the norms' spread is at least as wide as a guessed start's 2.5 grades, so
+those grades keep 2.5. A narrower start there found a seventh-grader three
+grades behind later, and the norms give no reason to accept that.
+
+Coverage is `learning/coverage.ts`, read by the planner from per-skill
+evidence (`PracticePolicy.coverage`: twelve skills, three areas, a step of one
+grade, a stretch of one grade). A grade with fewer than three areas needs
+only the areas it has. Coverage is a second ceiling: the planner takes the
+lower of it and the evidence ceiling below, so it never offers anything the
+rules below would refuse. It does not apply to a skill someone chose or to
+SAT practice. An area set easier keeps its own lower ceiling.
+
+What this costs a child who is far ahead, in simulation
+(`npx tsx scripts/simulate-placement-pace.ts`): a learner four grades above
+their grade is working within a grade of their level after about 25 to 40
+problems, one or two sittings, where the earlier climb took about 5 to 15.
+Every one of those problems is a skill of the grades between, earned and on
+the record. A learner with a long record is asked what they would have been
+asked before.
+
+### From a guess: the faster climb
+
+A guessed start is not a limit, and a wrong one costs a few problems. The
+rest of this section is the evidence ceiling. It is the whole rule for a
+guessed start, and the upper bound for a start from a grade.
 
 **Climbing, then placed.** A new learner is *climbing* until recent
 independent work misses twice at or above their level (`placedAfterMisses`).
@@ -93,13 +151,23 @@ planner, estimator and grader (`tests/climb-simulation.fixture.ts`): adults
 whose start is wrong in either direction, and children whose birth year is
 right, too high or too low. It reports how many problems it takes for the
 work and the estimate to reach the learner's level. `tests/adaptive-climb.test.ts`
-holds two of those cases to fifteen problems.
+holds two of those cases to fifteen problems: an adult climbing from a
+guessed start, and a seventh-grader coming down from their grade.
+
+`npx tsx scripts/simulate-placement-pace.ts` runs the first sixty answers of
+learners who start from their grade (`tests/placement-pace.fixture.ts`): at
+their grade, two below, two and four above, right about everything, and
+careless, from kindergarten, grade 3, grade 6 and Algebra 1. `--engine before`
+runs the engine as it was before coverage, on the same learners, and
+`--trace` prints a learner answer by answer. `tests/placement-pace.sim.ts`
+holds the results in `npm run test:placement-sim`.
 
 **Skip** reveals an answer without creating an attempt or changing ability.
 **Try easier**, available after skipping, gives that strand a lower starting
 estimate. Other strands retain their estimates. **Reset practice level** starts
 all difficulty estimates from birth year. Neither action deletes attempts, XP,
-or skill evidence, and neither renews the free-practice allowance.
+or skill evidence, and neither renews the free-practice allowance. Coverage
+reads skill evidence, so a reset does not make a child cover a grade again.
 
 Changes are account-authorized and serialized per learner. Request receipts
 make retries idempotent; revisions reject conflicting changes from another tab.
