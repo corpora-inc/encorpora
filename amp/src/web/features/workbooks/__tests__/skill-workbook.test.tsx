@@ -8,16 +8,19 @@ import {
 } from "@tanstack/react-router";
 import { afterEach, expect, test, vi } from "vitest";
 import { skillCatalogOptions } from "../../../lib/learning-view";
+import { layerScope, useLayerStore } from "../../../nav/layer-store";
 import { familyOptions } from "../../family/api";
 import type { OpenedFor } from "../../practice/CurriculumPractice";
 import { useWorkbookDrafts, workbookDayKey } from "../draft-store";
 import { choicesLabel, defaultWorkbookChoices, localDate } from "../model";
 import { SkillWorkbook } from "../SkillWorkbook";
+import { warmWorkbookLayer } from "../WorkbookLayerSlot";
 
 /*
  * "Workbook" in a skill's layer: for the learner the layer is about, only
  * where their own workbooks would make one, and it opens today's maker held
- * to the skill. Every name here is made up.
+ * to the skill, as a layer over the screen the skill is open on. Every name
+ * here is made up.
  */
 const FAMILY = "4f1b61ea-bb9a-4e91-a1f6-8d9163354046";
 const WREN = "06d07ec5-426f-427a-af88-7c202a88dc0c";
@@ -59,8 +62,12 @@ vi.mock("../../../lib/learning-view", async (original) => ({
     learner: view.learner,
   }),
 }));
+// The maker's code and reads, asked for ahead: not this test's.
+vi.mock("../WorkbookLayerSlot", () => ({ warmWorkbookLayer: vi.fn() }));
 afterEach(() => {
   cleanup();
+  vi.mocked(warmWorkbookLayer).mockClear();
+  useLayerStore.setState({ stacks: {}, motion: null });
   view.learners = [];
   view.own = null;
   view.ownPractice = false;
@@ -126,10 +133,16 @@ async function offered(at: string, skill = "angles", opened?: OpenedFor) {
     </QueryClientProvider>,
   );
   await screen.findByTestId("drawn");
+  where.router = router;
   return document.querySelector<HTMLAnchorElement>("a[data-skill-workbook]");
 }
+/** The router of the screen last drawn. */
+const where = {} as { router: { state: { location: { href: string } } } };
 const today = localDate();
 const inventory = `/family/${FAMILY}/kids/${WREN}/inventory`;
+/** The link that opens a learner's maker over the screen at `path`. */
+const over = (path: string, learner: string) =>
+  `${path}?open=${encodeURIComponent(`workbook:${learner}.${today}`)}`;
 
 test("on a child's skill it is that child's, and opens today's maker held to the skill", async () => {
   view.learners = family([WREN, paid], [THEO, paid]);
@@ -137,13 +150,25 @@ test("on a child's skill it is that child's, and opens today's maker held to the
   expect(link.textContent).toBe("Workbook");
   expect(link.getAttribute("aria-label")).toBe("Workbook for Wren");
   expect(link.getAttribute("data-workbook-for")).toBe(WREN);
-  expect(link.getAttribute("href")).toBe(
-    `/family/${FAMILY}/kids/${WREN}/workbooks/${today}`,
+  // A new tab opens the same screen with the maker over it.
+  expect(link.getAttribute("href")).toBe(over(inventory, WREN));
+  // The maker's code and the day's reads are asked for while it shows.
+  expect(warmWorkbookLayer).toHaveBeenCalledExactlyOnceWith(
+    expect.anything(),
+    session,
+    WREN,
+    today,
   );
   // Nothing is chosen until it is followed.
   const day = workbookDayKey(session.accountId, WREN, today);
   expect(useWorkbookDrafts.getState().days[day]).toBeUndefined();
   fireEvent.click(link);
+  // The maker is a layer over this screen: the screen behind stays, at its
+  // own address.
+  expect(where.router.state.location.href).toBe(inventory);
+  expect(
+    useLayerStore.getState().stacks[layerScope(inventory, session.accountId)],
+  ).toEqual([{ kind: "workbook", id: `${WREN}.${today}` }]);
   const draft = useWorkbookDrafts.getState().days[day]!;
   // The skill's problems alone, the shortest length: a worksheet.
   expect(draft.choices).toEqual({
@@ -162,9 +187,7 @@ test("a layer opened for one child over a screen of several is that child's", as
     learner: THEO,
   }))!;
   expect(link.getAttribute("data-workbook-for")).toBe(THEO);
-  expect(link.getAttribute("href")).toBe(
-    `/family/${FAMILY}/kids/${THEO}/workbooks/${today}`,
-  );
+  expect(link.getAttribute("href")).toBe(over(`/family/${FAMILY}`, THEO));
 });
 
 test("only where the maker would make one: never a control that leads to a refusal", async () => {
@@ -214,13 +237,13 @@ test("where a family's screen names no child, and in own practice, it is the adu
   const link = (await offered(`/family/${FAMILY}`))!;
   expect(link.getAttribute("data-workbook-for")).toBe("self");
   expect(link.getAttribute("aria-label")).toBeNull();
-  expect(link.getAttribute("href")).toBe(`/learners/${OWN}/workbooks/${today}`);
+  expect(link.getAttribute("href")).toBe(over(`/family/${FAMILY}`, OWN));
   cleanup();
   // Their own Inventory.
   view.ownPractice = true;
   view.learner = { id: OWN };
   expect((await offered("/inventory"))!.getAttribute("href")).toBe(
-    `/learners/${OWN}/workbooks/${today}`,
+    over("/inventory", OWN),
   );
   cleanup();
   // Practicing as a profile: a profile has no workbooks.
