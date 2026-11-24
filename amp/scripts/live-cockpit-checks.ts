@@ -88,6 +88,9 @@ export const skillNames = (page: Page): Promise<SkillNames> =>
  * A cut name's tap: the whole name opens over the page, nothing under it
  * moves (`boxes` reads what must hold still), and Escape closes it. Returns
  * false when no name is cut at this width.
+ *
+ * Under live data a student moves on to another skill at any moment and
+ * the name tapped is replaced: the tap is then tried on another.
  */
 export async function cutNameOpens(
   page: Page,
@@ -95,24 +98,42 @@ export async function cutNameOpens(
   failures: string[],
   where: string,
 ) {
-  const button = page
-    .locator("[data-live-roster] [data-fit-text][data-cut] button")
-    .first();
-  if ((await button.count()) === 0) return false;
-  const title = await button.getAttribute("aria-label");
+  const cut = page.locator(
+    "[data-live-roster] [data-fit-text][data-cut] button",
+  );
+  if ((await cut.count()) === 0) return false;
   const url = page.url();
-  await button.scrollIntoViewIfNeeded();
-  const settled = JSON.stringify(await boxes());
-  await button.click();
   const open = page.locator("[data-fit-open]");
-  await open.waitFor({ timeout: 5_000 });
-  if ((await open.textContent()) !== title)
-    failures.push(`${where}: the tap showed "${await open.textContent()}"`);
-  if (page.url() !== url)
-    failures.push(`${where}: a skill's tap left the page for ${page.url()}`);
-  if (JSON.stringify(await boxes()) !== settled)
-    failures.push(`${where}: showing a whole name moved the page`);
-  await page.keyboard.press("Escape");
-  await open.waitFor({ state: "detached", timeout: 5_000 });
-  return true;
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const button = cut.nth(attempt % Math.max(1, await cut.count()));
+    try {
+      const title = await button.getAttribute("aria-label", { timeout: 1500 });
+      await button.scrollIntoViewIfNeeded({ timeout: 1500 });
+      const settled = JSON.stringify(await boxes());
+      await button.click({ timeout: 1500 });
+      await open.waitFor({ timeout: 1500 });
+      const shown = await open.textContent({ timeout: 1500 });
+      const after = JSON.stringify(await boxes());
+      // The name was replaced under the tap: another.
+      if (shown !== title) {
+        await page.keyboard.press("Escape");
+        continue;
+      }
+      if (page.url() !== url)
+        failures.push(
+          `${where}: a skill's tap left the page for ${page.url()}`,
+        );
+      if (after !== settled)
+        failures.push(`${where}: showing a whole name moved the page`);
+      await page.keyboard.press("Escape");
+      await open.waitFor({ state: "detached", timeout: 5_000 });
+      return true;
+    } catch {
+      // Replaced before or during the tap (a new skill): another.
+      await page.keyboard.press("Escape").catch(() => undefined);
+    }
+  }
+  if ((await cut.count()) === 0) return false;
+  failures.push(`${where}: a cut name's tap never showed the whole name`);
+  return false;
 }

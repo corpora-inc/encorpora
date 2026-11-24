@@ -99,8 +99,8 @@ a.nameLine:focus-visible::after {
 /* One line: a status in words, then the skill in the room that is left
    (it never grows past its line), the level and the time after it. */
 .detail {
-  --fit-touch-top: -3px;
-  --fit-touch-height: 30px;
+  --fit-touch-top: -1px;
+  --fit-touch-height: 28px;
   --fit-touch-shift: 0;
   display: flex;
   min-width: 0;
