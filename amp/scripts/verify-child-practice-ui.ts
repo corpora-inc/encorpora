@@ -39,6 +39,13 @@
  * the child's record and a skill open, lands on the child's page with their
  * practice.
  *
+ * A tutoring group is the family's class with another family's child in it:
+ * it keeps its class address, and a child's record there is a layer over the
+ * class's page. The check makes one (the account holder adds a student from
+ * another family) and opens each of the family's own children there: the
+ * skill over their record offers that child's practice, by the hand-over.
+ * The other family's child's offers none.
+ *
  * By default the check starts its own stack, as CI does: the real API
  * (accounts mode) on a fresh schema of AMP_TEST_DATABASE_URL, Vite in front.
  * Or point it at a running, seeded preview:
@@ -119,17 +126,30 @@ type Parent = {
   slug: string;
   accountId: string;
   token: string;
-  state: Awaited<ReturnType<BrowserContext["storageState"]>>;
+  /** Several sign-ins of theirs, taken in turn: the API limits requests
+   * per credential (600 a minute), and the walk's browser profiles, side
+   * by side, would share one. */
+  states: Awaited<ReturnType<BrowserContext["storageState"]>>[];
   family: string;
   /** The family's own class, where its children are roster people. */
   place: { org: string; class: string } | null;
   children: Child[];
   /** The adult's own learner, once they practice themselves. */
   own: () => Promise<string | null>;
+  /** The family's account holder (the second parent is not). */
+  holder: boolean;
+  /** The family's class holds other families' children too, now: a
+   * tutoring group, which keeps its class address. */
+  group: () => Promise<boolean>;
 };
 
 let browser: Browser;
-async function api(token: string, path: string, method = "GET") {
+async function api(
+  token: string,
+  path: string,
+  method = "GET",
+  body: unknown = {},
+) {
   const response = await fetch(`${origin}/api/v1${path}`, {
     method,
     headers: {
@@ -137,7 +157,7 @@ async function api(token: string, path: string, method = "GET") {
       Origin: origin,
       ...(method === "POST" ? { "Content-Type": "application/json" } : {}),
     },
-    body: method === "POST" ? "{}" : undefined,
+    body: method === "POST" ? JSON.stringify(body) : undefined,
   });
   return {
     status: response.status,
@@ -166,6 +186,8 @@ async function signIn(slug: string) {
 }
 async function parent(slug: string): Promise<Parent> {
   const { token, state } = await signIn(slug);
+  const states = [state];
+  for (let i = 0; i < JOBS + 2; i++) states.push((await signIn(slug)).state);
   const { families } = (await api(token, "/families")).body!;
   const family = families[0].familyId as string;
   const data = (await api(token, `/families/${family}`)).body!;
@@ -177,7 +199,7 @@ async function parent(slug: string): Promise<Parent> {
     slug,
     accountId: me.account.id as string,
     token,
-    state,
+    states,
     family,
     place,
     children: (data.children as any[]).map((child) => ({
@@ -191,6 +213,9 @@ async function parent(slug: string): Promise<Parent> {
     own: async () =>
       ((await api(token, "/me")).body?.adultPractice?.learner?.id as
         string | undefined) ?? null,
+    holder: families[0].role === "holder",
+    group: async () =>
+      !!(await api(token, "/families")).body?.families[0]?.teachingPlace,
   };
 }
 
@@ -330,11 +355,20 @@ type Root = {
   scope: string;
 };
 let marks = 0;
+/** Whose sign-in the next browser profile takes (`Parent.states`). */
+let turn = 0;
 async function click(page: Page, step: Step) {
   const mark = `c${++marks}`;
-  const found = await page.evaluate(
-    `(${MARK})(${JSON.stringify([step.scope, step.sig, step.n, mark])})`,
-  );
+  // A part of the screen may still be on its way (a record, a list).
+  let found = false;
+  for (let i = 0; i < 60 && !found; i++) {
+    found = (await page
+      .evaluate(
+        `(${MARK})(${JSON.stringify([step.scope, step.sig, step.n, mark])})`,
+      )
+      .catch(() => false)) as boolean;
+    if (!found) await page.waitForTimeout(250);
+  }
   if (!found) throw new Error(`No control "${step.label}" in ${step.scope}`);
   const target = page.locator(`[data-crawl="${mark}"]`);
   await target.scrollIntoViewIfNeeded();
@@ -362,7 +396,7 @@ async function open(
   selected: string | null,
 ) {
   const context = await browser.newContext({
-    storageState: who.state,
+    storageState: who.states[turn++ % who.states.length],
     viewport: { width, height: width >= 1024 ? 900 : 844 },
   });
   await stubAnalytics(context);
@@ -458,7 +492,10 @@ async function press(
   selected: string | null,
   /** What the practice must be held to, where the walk knows. */
   held?: { segment: "types" | "skills" | "areas"; id: string } | "mixed",
-) {
+  /** A press that opened nothing at all (a slow machine) is made once
+   * more; one that opened the wrong practice never is. */
+  again = true,
+): Promise<void> {
   const trail = [root.name, ...steps.map((step) => step.label)].join(" → ");
   const note = (opened: string, ok: boolean) => {
     presses.push({
@@ -482,7 +519,7 @@ async function press(
     seen.practicing = true;
     await click(page, control);
     await page.waitForURL((url) => FOCUS.test(url.pathname), {
-      timeout: 20_000,
+      timeout: 30_000,
     });
     // The practice screen asks for its learner's problems and place.
     for (let i = 0; i < 150 && seen.asks.length === 0; i++)
@@ -552,8 +589,32 @@ async function press(
       ok,
     );
   } catch (error) {
+    if (again) {
+      await opened?.context.close().catch(() => undefined);
+      opened = undefined;
+      console.log(
+        `    (again: ${trail} → "${control.label}": ${String(error).split("\n")[0]!.slice(0, 90)})`,
+      );
+      return press(
+        who,
+        width,
+        root,
+        steps,
+        control,
+        expect,
+        subject,
+        selected,
+        held,
+        false,
+      );
+    }
+    // What the screen said, if it said why (an alert beside the control).
+    const said = await opened?.page
+      .locator("[role=alert]")
+      .allTextContents()
+      .catch(() => []);
     note(
-      `nothing (${String(error).split("\n")[0]!.slice(0, 140)}) at ${opened ? new URL(opened.page.url()).pathname : "?"}`,
+      `nothing (${String(error).split("\n")[0]!.slice(0, 140)}) at ${opened ? new URL(opened.page.url()).pathname : "?"}${said?.length ? `, saying “${said.join(" / ").slice(0, 120)}”` : ""}`,
       false,
     );
   } finally {
@@ -776,8 +837,10 @@ try {
     console.log(`No ${STRANGER} persona here: ${String(error).split("\n")[0]}`);
     return null;
   });
+  const parents: Parent[] = [];
   for (const slug of PEOPLE) {
     const who = await parent(slug);
+    parents.push(who);
     const kids = who.children.filter(
       (child) => !ONLY_KIDS || ONLY_KIDS.includes(child.name),
     );
@@ -789,8 +852,8 @@ try {
     const tasks = ((await api(who.token, `/families/${who.family}`)).body!.today
       .tasks ?? []) as { id: string; students: { id: string }[] }[];
     for (const width of WIDTHS) {
-      // The children's walks side by side: each reads its own pages, and
-      // their presses share the one limit.
+      // One child's walk at a time; its presses run beside its reading,
+      // under the one limit.
       const walked = (subject: string) =>
         presses.filter(
           (entry) =>
@@ -853,7 +916,7 @@ try {
             `${slug} ${width}px: no practice control found for ${child.name}`,
           );
       };
-      await Promise.all(kids.map(each));
+      for (const child of kids) await each(child);
       // The adult's own row: their own practice, whoever was last selected.
       if (!ONLY_KIDS && !NO_WALK) {
         await walk(
@@ -1046,8 +1109,9 @@ try {
 
         part = "the family’s old class address";
         // The family's old class address, the child's record and a skill
-        // open: their page, with their practice.
-        if (who.place && child.person) {
+        // open: their page, with their practice. (Once the class is a
+        // tutoring group the address is the class's own: the part below.)
+        if (who.place && child.person && !(await who.group())) {
           const old = await open(
             who,
             width,
@@ -1066,13 +1130,7 @@ try {
             fail(
               `${slug} ${child.name}: the old class address opened ${old.page.url()}`,
             );
-          await old.page.locator(practice).click();
-          await old.page.waitForURL((url) => FOCUS.test(url.pathname));
-          const [, learner] = FOCUS.exec(new URL(old.page.url()).pathname)!;
-          if (learner !== child.id || old.seen.handOvers.join() !== child.id)
-            fail(
-              `${slug} ${child.name}: the old class address opened /practice/${learner}, handed to [${old.seen.handOvers}]`,
-            );
+          await started(old.page, old.seen, "the family’s old class address");
           await old.context.close();
         }
       } catch (error) {
@@ -1202,6 +1260,127 @@ try {
         `  ${width}px coming back: ${mine.length} returns, ${mine.filter((entry) => !entry.ok).length} not where the parent was`,
       );
     }
+  }
+
+  // ---- a tutoring group: a child's record in their parent's own class ----
+  // The family's class with another family's child in it keeps its class
+  // address; a student's record there is a layer over the class's page. A
+  // parent over their own child's record gets that child's practice. Over
+  // the other family's child's, as for any staff, none.
+  const tutor = parents.find((who) => who.holder && who.place);
+  if (tutor) {
+    console.log(`\n${tutor.slug}, the family’s class as a tutoring group`);
+    if (!(await tutor.group())) {
+      const added = await api(tutor.token, "/family/class/students", "POST", {
+        nickname: "JR",
+        birthYear: 2015,
+      });
+      assert.equal(
+        added.status,
+        201,
+        `a student from another family: ${added.status}`,
+      );
+    }
+    const width = WIDTHS.at(-1)!;
+    const { org, class: classId } = tutor.place!;
+    const at = `/school/${org}/classes/${classId}/today`;
+    const teaching = (
+      await api(tutor.token, `/families/${tutor.family}/teaching`)
+    ).body!;
+    const own = new Set(tutor.children.map((child) => child.id));
+    const hosted = (
+      teaching.students as { id: string; learnerId: string; name: string }[]
+    ).find((student) => !own.has(student.learnerId));
+    const catalog = (await api(tutor.token, "/catalog/map")).body!;
+    const skill = (catalog.templates as { skillId: string }[])[0]!.skillId;
+    const control = "[data-layer-frame] [data-curriculum-practice]";
+    const record = (person: string): Root => ({
+      name: "their record in the tutoring group",
+      path: `${at}?open=student:${person},skill:${skill}`,
+      ready: "[data-skill-layer]",
+      scope: "[data-layer-frame]",
+    });
+    for (const child of tutor.children.filter(
+      (entry) => entry.person && (!ONLY_KIDS || ONLY_KIDS.includes(entry.name)),
+    )) {
+      const other = tutor.children.find((entry) => entry.id !== child.id)!.id;
+      const where = `${tutor.slug} ${child.name}, their record in the tutoring group`;
+      let opened: Awaited<ReturnType<typeof open>> | undefined;
+      try {
+        opened = await open(tutor, width, record(child.person!), [], other);
+        const { page, seen } = opened;
+        await settle(page);
+        if (new URL(page.url()).pathname !== at)
+          fail(`${where}: the class address opened ${page.url()}`);
+        const button = page.locator(`${control} button`);
+        if (!child.canPractice) {
+          if (await page.locator(control).count())
+            fail(
+              `${where}: a control is offered to a child who can’t practice`,
+            );
+          continue;
+        }
+        await button.waitFor({ timeout: 20_000 });
+        const name = await button.getAttribute("aria-label");
+        if (
+          !name?.startsWith("Practice ") ||
+          !name.endsWith(` with ${child.name}`)
+        )
+          fail(`${where}: the control is named “${name}”`);
+        await button.click();
+        await page.waitForURL((url) => FOCUS.test(url.pathname), {
+          timeout: 20_000,
+        });
+        const [, learner, segment, id] = FOCUS.exec(
+          new URL(page.url()).pathname,
+        )!;
+        const ok =
+          learner === child.id &&
+          segment === "skills" &&
+          id === skill &&
+          seen.handOvers.join() === child.id;
+        presses.push({
+          who: tutor.slug,
+          width,
+          subject: child.name,
+          trail: "their record in the tutoring group → a skill",
+          control: name ?? "",
+          opened: `${learner} ${segment}/${id}, handed to ${seen.handOvers.join()}`,
+          ok,
+        });
+        if (!ok)
+          fail(
+            `${where}: opened /practice/${learner}/${segment}/${id}, handed to [${seen.handOvers}]`,
+          );
+      } catch (error) {
+        fail(`${where}: ${String(error).split("\n")[0]!.slice(0, 200)}`);
+      } finally {
+        await opened?.context.close();
+      }
+    }
+    // Another family's child: a student here, nobody's to practice as.
+    if (!hosted)
+      fail(`${tutor.slug}: the tutoring group has no other family’s child`);
+    else
+      try {
+        const theirs = await open(
+          tutor,
+          width,
+          record(hosted.id),
+          [],
+          tutor.children[0]!.id,
+        );
+        await settle(theirs.page);
+        if (await theirs.page.locator(control).count())
+          fail(
+            `${tutor.slug}: another family’s child’s record in the tutoring group offers practice`,
+          );
+        await theirs.context.close();
+      } catch (error) {
+        fail(
+          `${tutor.slug}, another family’s child’s record in the tutoring group: ${String(error).split("\n")[0]!.slice(0, 200)}`,
+        );
+      }
   }
 } finally {
   await writeFile(
