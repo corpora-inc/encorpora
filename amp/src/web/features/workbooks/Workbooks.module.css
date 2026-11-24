@@ -359,6 +359,19 @@ h3.optionsTitle {
   color: var(--color-muted-text);
   font-size: var(--text-label);
 }
+/* A workbook held to skills: their names, and the way back to mixed. */
+.held {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+}
+.heldNames {
+  min-width: 0;
+  font-weight: 600;
+  line-height: 1.35;
+}
 .choiceLine {
   margin: var(--space-1) 0 0;
   color: var(--color-muted-text);

@@ -15,6 +15,7 @@ import { Fragment, useState, type ReactNode } from "react";
 import { qk } from "../../lib/keys";
 import { meOptions } from "../../lib/query";
 import { useSession } from "../../lib/session";
+import { skillCatalogOptions } from "../../lib/learning-view";
 import { Button, buttonClass } from "../../ui/Button";
 import { Chips } from "../../ui/Chips";
 import { Segmented } from "../../ui/Segmented";
@@ -151,6 +152,12 @@ function Today({ learner, date }: DayProps) {
   const paper = draft.paper ?? defaultPaper();
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
   const areas = useQuery(workbookAreasOptions(session, learner.id));
+  // A workbook held to skills (opened from a skill: SkillWorkbook.tsx)
+  // names them in its options; their titles are the curriculum's.
+  const catalog = useQuery({
+    ...skillCatalogOptions,
+    enabled: !!draft.choices?.skills?.length,
+  });
   const [draftId] = useState(() => crypto.randomUUID());
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
@@ -301,6 +308,13 @@ function Today({ learner, date }: DayProps) {
       paper={paper}
       choices={choices}
       areas={areas.data?.areas}
+      held={(choices.skills ?? []).map(
+        (id) =>
+          (issued ?? workbook.data)?.skills?.find((skill) => skill.id === id)
+            ?.title ??
+          catalog.data?.skills.find((skill) => skill.id === id)?.title ??
+          "",
+      )}
       set={set}
       roll={roll}
     />
@@ -402,6 +416,7 @@ function WorkbookOptions({
   paper,
   choices,
   areas,
+  held,
   set,
   roll,
 }: {
@@ -412,6 +427,10 @@ function WorkbookOptions({
   paper: WorkbookPaper;
   choices: WorkbookChoicesInput;
   areas: readonly { id: string; label: string }[] | undefined;
+  /** The titles of the skills the workbook is held to; none for an
+   * ordinary one. Held, its problems are those skills' alone: level and
+   * areas say nothing about it, and one press makes it mixed again. */
+  held: readonly string[];
   set: (change: { minutes?: WorkbookMinutes; paper?: WorkbookPaper }) => void;
   roll: (next: WorkbookChoicesInput) => void;
 }) {
@@ -446,21 +465,40 @@ function WorkbookOptions({
           ]}
         />
       </OptionGroup>
-      <OptionGroup label="Level">
-        <Segmented<WorkbookChoicesInput["lean"]>
-          compact
-          dense
-          label="Level"
-          value={choices.lean}
-          disabled={choosing}
-          onChange={(lean) => roll({ ...choices, lean })}
-          options={[
-            { value: "easier", label: "Easier" },
-            { value: "level", label: "At level" },
-            { value: "stretch", label: "Harder" },
-          ]}
-        />
-      </OptionGroup>
+      {held.length > 0 && (
+        <OptionGroup label={held.length === 1 ? "Skill" : "Skills"}>
+          <div className={styles.held} data-held-skills="">
+            <span className={styles.heldNames}>{held.join(", ")}</span>
+            <Button
+              variant="quiet"
+              disabled={choosing}
+              onClick={() => {
+                const { skills: _held, ...mixed } = choices;
+                roll(mixed);
+              }}
+            >
+              Make it mixed
+            </Button>
+          </div>
+        </OptionGroup>
+      )}
+      {held.length === 0 && (
+        <OptionGroup label="Level">
+          <Segmented<WorkbookChoicesInput["lean"]>
+            compact
+            dense
+            label="Level"
+            value={choices.lean}
+            disabled={choosing}
+            onChange={(lean) => roll({ ...choices, lean })}
+            options={[
+              { value: "easier", label: "Easier" },
+              { value: "level", label: "At level" },
+              { value: "stretch", label: "Harder" },
+            ]}
+          />
+        </OptionGroup>
+      )}
       <OptionGroup label="Today’s idea">
         <Segmented<"lesson" | "problems">
           compact
@@ -475,24 +513,26 @@ function WorkbookOptions({
           ]}
         />
       </OptionGroup>
-      <OptionGroup label="Areas">
-        <Chips<string>
-          label="Areas"
-          disabled={choosing}
-          value={choices.areas.length ? choices.areas : ["mixed"]}
-          onChange={(next) => {
-            const picked = next.filter((v) => v !== "mixed");
-            const mixed =
-              !picked.length ||
-              (next.includes("mixed") && choices.areas.length > 0);
-            roll({ ...choices, areas: mixed ? [] : picked });
-          }}
-          options={[
-            { value: "mixed", label: "Mixed (recommended)" },
-            ...(areas ?? []).map((a) => ({ value: a.id, label: a.label })),
-          ]}
-        />
-      </OptionGroup>
+      {held.length === 0 && (
+        <OptionGroup label="Areas">
+          <Chips<string>
+            label="Areas"
+            disabled={choosing}
+            value={choices.areas.length ? choices.areas : ["mixed"]}
+            onChange={(next) => {
+              const picked = next.filter((v) => v !== "mixed");
+              const mixed =
+                !picked.length ||
+                (next.includes("mixed") && choices.areas.length > 0);
+              roll({ ...choices, areas: mixed ? [] : picked });
+            }}
+            options={[
+              { value: "mixed", label: "Mixed (recommended)" },
+              ...(areas ?? []).map((a) => ({ value: a.id, label: a.label })),
+            ]}
+          />
+        </OptionGroup>
+      )}
     </div>
   );
 }
@@ -569,7 +609,8 @@ function Contents({
               included
             </p>
             <p className={styles.choiceLine}>
-              {choicesLabel(workbook.choices, areaName) || "Mixed, at level"}
+              {choicesLabel(workbook.choices, areaName, workbook.skills) ||
+                "Mixed, at level"}
             </p>
           </div>
           <ol className={styles.sections}>

@@ -24,6 +24,9 @@ export const catalogSchema = z.object({
       area: z.enum(areaIds as [AreaId, ...AreaId[]]).optional(),
       /** The engine's calibrated difficulty: orders a grade's skills. */
       difficulty: z.number().optional(),
+      /** A workbook can be held to it: it has a problem type that prints.
+       * Absent from a server that makes no such workbook. */
+      printable: z.boolean().optional(),
       prerequisites: z.array(z.string()),
       connections: z
         .array(

@@ -98,7 +98,11 @@ export function WorkbookList({
         <ul className={styles.list} aria-label="Workbooks">
           {query.data.workbooks.map((workbook) => {
             const date = dateParts(workbook.date);
-            const choices = choicesLabel(workbook.choices, areaName);
+            const choices = choicesLabel(
+              workbook.choices,
+              areaName,
+              workbook.skills,
+            );
             // Every result entered: the results are there to read.
             const entered =
               workbook.entered !== undefined &&

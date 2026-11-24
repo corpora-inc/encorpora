@@ -1,6 +1,10 @@
 import { isEarned } from "../../../learning/earned";
 import { childAddress, practiceParams } from "../spaces/identity";
-import { PracticeLabel } from "../practice/CurriculumPractice";
+import {
+  CurriculumPractice,
+  PracticeLabel,
+} from "../practice/CurriculumPractice";
+import { SkillWorkbook } from "../workbooks/SkillWorkbook";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
@@ -436,11 +440,17 @@ export function InventoryScreen() {
       <LayerHost
         learner={view.learner?.id}
         skillActions={(skill) =>
-          view.canPractice &&
-          !view.viewOnly &&
-          !child &&
-          catalog.data?.templates.some((type) => type.skillId === skill) ? (
-            <div className={layers.actions}>
+          child ? (
+            // A family's child: their practice (the hand-over) and, beside
+            // it, a workbook held to the skill, each only where it works.
+            <div className={layers.actions} data-skill-actions="">
+              <CurriculumPractice filter={{ skill }} />
+              <SkillWorkbook skill={skill} />
+            </div>
+          ) : view.canPractice &&
+            !view.viewOnly &&
+            catalog.data?.templates.some((type) => type.skillId === skill) ? (
+            <div className={layers.actions} data-skill-actions="">
               <Link
                 className={buttonClass("primary")}
                 to="/$"
@@ -453,6 +463,7 @@ export function InventoryScreen() {
               >
                 <PracticeLabel />
               </Link>
+              <SkillWorkbook skill={skill} />
             </div>
           ) : null
         }
