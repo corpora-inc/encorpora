@@ -7,7 +7,7 @@
 .flush {
   padding-inline: 0;
 }
-/* Always a line tall, so a lock appearing or clearing moves nothing. */
+/* Always a line tall. */
 .head {
   display: flex;
   align-items: baseline;
@@ -18,49 +18,4 @@
   font-size: var(--text-label);
   font-weight: 600;
   line-height: 1.35;
-}
-.why {
-  color: var(--color-muted-text);
-  font-size: var(--text-small);
-  font-weight: 400;
-}
-/* A grown-up's row holds the lock, a 44 px target, whether or not it shows. */
-.tall {
-  min-height: var(--target-size);
-  align-items: center;
-}
-.lock {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: var(--target-size);
-  padding: 0 var(--space-3);
-  border: 1px solid transparent;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-muted-text);
-  font: inherit;
-  font-size: var(--text-small);
-  font-weight: 650;
-  cursor: pointer;
-}
-.lock[aria-pressed="true"] {
-  border-color: var(--color-primary);
-  background: var(--color-selected-tint);
-  color: var(--color-on-surface);
-}
-.lock:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.lock:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-.lock svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
 }

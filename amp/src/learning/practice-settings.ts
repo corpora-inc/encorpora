@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { lookSchema } from "./look";
+import { colorfulAllowed, lookSchema } from "./look";
 
 export const practiceSettingsSchema = z.object({
   revision: z.number().int().nonnegative(),
@@ -9,11 +9,16 @@ export const practiceSettingsSchema = z.object({
   /** A grown-up's choice for the child: grade levels on the screens they
    * see as themselves. Off, their levels and Pathways name no grade. */
   gradeLevelShown: z.boolean().default(true),
-  /** How practice looks for this learner (their own or a grown-up's
-   * choice). Null follows the class, then Calm (`resolveLook`). */
+  /** How practice looks for this learner: their own choice. Null: they
+   * have not chosen, and start where their age does (`resolveLook`). Kept
+   * while Colorful is off, and theirs again when it is allowed. */
   look: lookSchema.nullable().default(null),
-  /** A grown-up holds `look` for the child: the child's own sessions can't
-   * change it (a parent's can). Needs a look to hold; locking sets one. */
+  /** A grown-up's switch for the child, "Allow Colorful". Off: the child is
+   * in Calm and has no Look choice. Read it with `allowsColorful`. */
+  colorfulAllowed: z.boolean().default(true),
+  /** Before the switch: a grown-up's lock on `look`. Only read, and only
+   * as "off" where it held Calm (`allowsColorful`); every change of the
+   * switch clears it, so the switch is then the one record. */
   lookAdultLock: z.boolean().default(false),
   /** In Colorful, the one hue (0 to 359 degrees) the learner chose to keep.
    * Null: the color moves on with every problem. Theirs alone: no lock
@@ -30,6 +35,16 @@ export const practiceSettingsSchema = z.object({
     .default({}),
 });
 export type PracticeSettings = z.infer<typeof practiceSettingsSchema>;
+/** Whether the learner's grown-up allows Colorful: the switch, or (stored
+ * before it) anything but a lock on Calm (`colorfulAllowed`, learning/look). */
+export const allowsColorful = (
+  settings: Pick<
+    PracticeSettings,
+    "look" | "colorfulAllowed" | "lookAdultLock"
+  >,
+): boolean =>
+  settings.colorfulAllowed &&
+  colorfulAllowed(settings.look, settings.lookAdultLock);
 export const defaultPracticeSettings = (): PracticeSettings => ({
   revision: 0,
   epoch: 0,
@@ -37,6 +52,7 @@ export const defaultPracticeSettings = (): PracticeSettings => ({
   focusSkillId: null,
   gradeLevelShown: true,
   look: null,
+  colorfulAllowed: true,
   lookAdultLock: false,
   lookHue: null,
   strandStarts: {},
@@ -73,7 +89,11 @@ export const practiceChangeSchema = z.discriminatedUnion("kind", [
     })
     .strict(),
   z
-    .object({ ...identity, kind: z.literal("lookLock"), locked: z.boolean() })
+    .object({
+      ...identity,
+      kind: z.literal("allowColorful"),
+      allowed: z.boolean(),
+    })
     .strict(),
   z
     .object({
@@ -92,14 +112,15 @@ export const practiceChangeSchema = z.discriminatedUnion("kind", [
 ]);
 export type PracticeChange = z.infer<typeof practiceChangeSchema>;
 
-/** What `/practice-state` answers: the stored settings, and the look that
- * applies to this learner now and whether a class locked it, and their
+/** What `/practice-state` answers: the stored settings, the look that
+ * applies to this learner now, whether Colorful is off for them
+ * (`lookLocked`: then they are in Calm and have no Look choice), and their
  * points (`learning/points.ts`) so practice shows the total on first paint.
  * Points may be absent (an older server); a screen then shows none. */
 export const practiceStateSchema = practiceSettingsSchema.extend({
   effectiveLook: lookSchema,
   lookLocked: z.boolean(),
-  /** Who holds it: the class (or school), or a grown-up. */
+  /** Who turned Colorful off: the class (or its school), or a grown-up. */
   lookLockedBy: z.enum(["class", "adult"]).nullable().default(null),
   points: z.number().int().nonnegative().optional(),
 });

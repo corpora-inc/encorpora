@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useId, useState } from "react";
 import type { Look } from "../../../learning/look";
 import { AppError } from "../../lib/AppError";
-import { LockMark } from "../school/classroom/SettingMeta";
 import { HuePicker } from "../../ui/HuePicker";
 import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
@@ -31,22 +30,19 @@ function hueOnScreen(): number | null {
 }
 
 /**
- * How practice looks for one learner: Calm or Colorful. Shown the same in a
- * child's settings and in the learner's own drawer. Locked by a class, it
- * is disabled and says so in the label row, which is always there, so
- * nothing moves when it loads or changes.
+ * How practice looks for one learner, in their own menu: Calm or Colorful,
+ * and in Colorful the color they keep. It is theirs to choose. Where an
+ * adult has Colorful off (a class, a school, a parent: "Allow Colorful"),
+ * the learner is in Calm and none of this is in their menu at all: not
+ * disabled, not explained, absent. Their choice is kept for when it is
+ * allowed again.
  */
 export function LookSetting({
   scope,
   flush = false,
-  adult = false,
 }: {
   /** No side inset, for a list whose rows already have none. */
   flush?: boolean;
-  /** A grown-up's view of the child (their settings): may change a look a
-   * parent locked, and holds or frees it with the lock. The child's own
-   * menu is not this. */
-  adult?: boolean;
   scope: PracticeScope;
 }) {
   const state = useQuery(practiceSettingsOptions(scope));
@@ -58,24 +54,6 @@ export function LookSetting({
       console.error("The look setting didn’t load", state.error);
   }, [state.isError, state.error]);
   const data = state.data;
-  const by = data?.lookLockedBy ?? null;
-  // A class's lock holds for everyone; a parent's holds for the child.
-  const locked = by === "class" || (by === "adult" && !adult);
-  const lock = async (on: boolean) => {
-    setBusy(true);
-    try {
-      await adjust.change({ kind: "lookLock", locked: on });
-    } catch (failure) {
-      console.error("The look lock didn’t save", failure);
-      setError(
-        failure instanceof AppError && failure.message
-          ? failure.message
-          : "That change didn’t save. Try again.",
-      );
-    } finally {
-      setBusy(false);
-    }
-  };
   /** Shows a hue on the page behind the menu at once, with no turn. */
   const preview = (hue: number) => {
     const root = document.documentElement;
@@ -118,33 +96,15 @@ export function LookSetting({
       setBusy(false);
     }
   };
+  // Colorful is off for this learner: no Look, no color.
+  if (data?.lookLocked) return null;
   return (
     <div
       className={`${styles.look} ${flush ? styles.flush : ""}`}
       data-look-setting=""
     >
-      <div className={`${styles.head} ${adult ? styles.tall : ""}`}>
+      <div className={styles.head}>
         <span>Look</span>
-        {adult && by !== "class" ? (
-          <button
-            type="button"
-            className={styles.lock}
-            aria-pressed={by === "adult"}
-            disabled={!data || busy}
-            onClick={() => void lock(by !== "adult")}
-          >
-            <LockMark open={by !== "adult"} />
-            Lock
-          </button>
-        ) : (
-          <span className={styles.why}>
-            {by === "class"
-              ? "Set by the class"
-              : by === "adult"
-                ? "Set by a parent"
-                : ""}
-          </span>
-        )}
       </div>
       <Segmented
         label="Look"
@@ -152,30 +112,25 @@ export function LookSetting({
         value={data?.effectiveLook ?? null}
         compact
         dense
-        disabled={!data || locked || busy}
+        disabled={!data || busy}
         onChange={(next) => {
           if (next !== data?.effectiveLook) void choose(next);
         }}
       />
-      {/* The learner's own menu only: the color is theirs, whoever chose the
-          look. Always there, so choosing a look moves nothing; in Calm it
-          has nothing to choose. */}
-      {!adult && (
-        <>
-          <div className={styles.head}>
-            <span id={colorLabel}>Color</span>
-          </div>
-          <HuePicker
-            labelledBy={colorLabel}
-            wheelLabel="A new color every problem"
-            value={kept}
-            resting={hueOnScreen() ?? 0}
-            disabled={!colorful || busy}
-            onPreview={preview}
-            onChoose={(hue) => void keep(hue)}
-          />
-        </>
-      )}
+      {/* Always there, so choosing a look moves nothing; in Calm it has
+          nothing to choose. */}
+      <div className={styles.head}>
+        <span id={colorLabel}>Color</span>
+      </div>
+      <HuePicker
+        labelledBy={colorLabel}
+        wheelLabel="A new color every problem"
+        value={kept}
+        resting={hueOnScreen() ?? 0}
+        disabled={!colorful || busy}
+        onPreview={preview}
+        onChoose={(hue) => void keep(hue)}
+      />
       <Toast message={error} onDismiss={() => setError("")} />
     </div>
   );

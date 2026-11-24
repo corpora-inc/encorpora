@@ -4,6 +4,7 @@ import { GOLDEN_ANGLE, paintHue } from "../../practice/celebration/hue";
 import { stage } from "../../practice/celebration/stage";
 import type { Moment } from "../../practice/celebration/tier";
 import type { PracticeFixtureId } from "../fixtures";
+import { Switch } from "../../../ui/Switch";
 import { Section } from "../Gallery";
 import { PracticeSpecimen } from "./practice";
 import styles from "./colorful.module.css";
@@ -159,9 +160,27 @@ export function ColorfulSection() {
         "features/practice/celebration/",
         "features/practice/points.ts",
       ]}
-      note="The look a learner may choose for practice: one world from one hue, turned with every problem. Each state is shown at four hues, side by side (swipe on a phone); each moment replays every few seconds. Calm is the section above, unchanged."
+      note="The look a learner may choose for practice: one world from one hue, turned with every problem. Each state is shown at four hues, side by side (swipe on a phone); each moment replays every few seconds. Calm is the section above, unchanged. An adult's side is one switch, Allow Colorful, on unless they turn it off; off, the learner is in Calm and their menu has no Look."
     >
       <div className={styles.rows}>
+        <section className={styles.row} aria-label="Allow Colorful">
+          <h3>Allow Colorful: a parent’s, a class’s, a school’s</h3>
+          <div className={styles.switches}>
+            <Switch label="Allow Colorful" checked onChange={() => {}} />
+            <Switch
+              label="Allow Colorful"
+              checked={false}
+              onChange={() => {}}
+            />
+            <Switch
+              label="Allow Colorful"
+              checked={false}
+              disabled
+              detail="Set by Cedar Hill School"
+              onChange={() => {}}
+            />
+          </div>
+        </section>
         <section className={styles.row} aria-label="The hue turning">
           <h3>A new world every problem</h3>
           <div className={styles.strip}>
