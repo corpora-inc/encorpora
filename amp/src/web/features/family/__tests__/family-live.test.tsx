@@ -102,7 +102,6 @@ const row = (
   lastAnswerAt: null,
   lastHelpAt: null,
   lastSeenAt: null,
-  seenToday: false,
   ...patch,
 });
 const SESSION = "33333333-3333-4333-8333-333333333333";
@@ -126,7 +125,8 @@ const hand: LiveSignal = {
   createdAt: iso(-30_000),
 };
 const kids = [
-  // On the parent's device, answering.
+  // In practice on the parent's sign-in, answering: no sign-in of his own,
+  // so never "seen" (the server reads only a child's own).
   row(1, "Pip", {
     problems: 4,
     correct: 3,
@@ -138,14 +138,11 @@ const kids = [
     skill: { id: "s1", title: "Adding fractions", strand: "Number" },
     firstSeenAt: iso(-200_000),
     lastAnswerAt: iso(-10_000),
-    lastSeenAt: iso(-10_000),
-    seenToday: true,
   }),
   // Own device: signed in, no answers yet.
   row(2, "Wren", {
     firstSeenAt: iso(-90_000),
     lastSeenAt: iso(-20_000),
-    seenToday: true,
   }),
   // Not started.
   row(3, "Theo"),
@@ -155,7 +152,7 @@ const snapshot = (patch: Partial<LiveSnapshot> = {}): LiveSnapshot => ({
   session: running,
   rules: LIVE_RULES,
   rows: kids,
-  totals: liveTotals(kids),
+  totals: liveTotals(kids, { now: NOW, startedAt: running.startedAt }),
   signals: [],
   can: { manage: true },
   ...patch,

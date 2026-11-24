@@ -8,6 +8,7 @@ import {
   clearStudentDevice,
   isStudentDevice,
   rememberStudentSession,
+  settleTab,
   studentSession,
   studentSignInEnded,
   STUDENT_IDLE_MS,
@@ -53,9 +54,120 @@ test("anything else in that slot is not a student sign-in", () => {
     JSON.stringify({ accountId: "amp|parent", token: student.token }),
     JSON.stringify({ accountId: student.accountId, token: "parent-token" }),
   ]) {
+    // Each a page load of its own: a tab looks once (below).
+    sessionStorage.clear();
     localStorage.setItem("amp.student", saved);
     expect(studentSession()).toBeNull();
   }
+});
+
+// One tab, one person. Local storage is every tab's at once, so "another
+// tab signs in" is a write to it that this tab never made.
+const sibling = {
+  accountId: "school:9d2b4e10-aaaa-4bbb-8ccc-ddddeeeeffff",
+  token: `st_${"b".repeat(43)}`,
+};
+const parent = { accountId: "amp|parent" };
+const anotherTabSignsIn = (session: typeof student) =>
+  localStorage.setItem("amp.student", JSON.stringify(session));
+/** The same tab, loaded again: its session storage stays, its page is new. */
+const reload = () =>
+  vi.stubGlobal("performance", {
+    now: () => Date.now(),
+    timeOrigin: performance.timeOrigin + 1,
+  });
+
+test("an adult's tab never becomes the child another tab signs in, reloaded or not", () => {
+  expect(studentSession()).toBeNull();
+  settleTab(parent);
+  anotherTabSignsIn(student);
+  expect(studentSession()).toBeNull();
+  expect(isStudentDevice()).toBe(false);
+  reload();
+  expect(studentSession()).toBeNull();
+  // The browser still remembers the child, for the tab they open next.
+  expect(localStorage.getItem("amp.student")).toBeTruthy();
+});
+
+test("a new tab starts as the child this browser remembers, and stays them", () => {
+  anotherTabSignsIn(student);
+  expect(studentSession()).toEqual(student);
+  anotherTabSignsIn(sibling);
+  expect(studentSession()).toEqual(student);
+  reload();
+  expect(studentSession()).toEqual(student);
+});
+
+test("a tab that found nobody stays nobody until it loads again", () => {
+  expect(studentSession()).toBeNull();
+  anotherTabSignsIn(student);
+  expect(studentSession()).toBeNull();
+  reload();
+  expect(studentSession()).toEqual(student);
+});
+
+test("the tab a child signed in on stays theirs when a sibling signs in on another", () => {
+  rememberStudentSession(student, "personal");
+  anotherTabSignsIn(sibling);
+  expect(studentSession()).toEqual(student);
+  reload();
+  expect(studentSession()).toEqual(student);
+});
+
+test("a hand-over in the parent's tab is that tab's alone, and hands back to the parent", () => {
+  settleTab(parent);
+  anotherTabSignsIn(student);
+  rememberStudentSession(sibling, "shared", true);
+  expect(studentSession()).toEqual(sibling);
+  // The child on the other tab is still remembered.
+  expect(JSON.parse(localStorage.getItem("amp.student")!)).toEqual(student);
+  clearStudentDevice();
+  expect(studentSession()).toBeNull();
+  reload();
+  expect(studentSession()).toBeNull();
+  expect(JSON.parse(localStorage.getItem("amp.student")!)).toEqual(student);
+});
+
+test("signing out ends this tab's sign-in, and the browser's only when it is the same one", () => {
+  rememberStudentSession(student, "personal");
+  clearStudentDevice();
+  expect(studentSession()).toBeNull();
+  expect(localStorage.getItem("amp.student")).toBeNull();
+
+  rememberStudentSession(student, "personal");
+  anotherTabSignsIn(sibling);
+  clearStudentDevice();
+  // Signed out here, never the sibling instead; the sibling stays signed in.
+  expect(studentSession()).toBeNull();
+  reload();
+  expect(studentSession()).toBeNull();
+  expect(JSON.parse(localStorage.getItem("amp.student")!)).toEqual(sibling);
+});
+
+test("a new sign-in in a tab that is nobody yet replaces the one the browser remembers", () => {
+  anotherTabSignsIn(student);
+  rememberStudentSession(sibling, "shared");
+  expect(studentSession()).toEqual(sibling);
+  expect(localStorage.getItem("amp.student")).toBeNull();
+});
+
+test("a sign-in made in an adult's tab makes it the child's", () => {
+  settleTab(parent);
+  rememberStudentSession(student, "personal");
+  expect(studentSession()).toEqual(student);
+  // In their own tab the student still wins over the parent's session.
+  settleTab(parent);
+  expect(studentSession()).toEqual(student);
+  reload();
+  expect(studentSession()).toEqual(student);
+});
+
+test("a student's session settles nothing: only an adult's makes a tab an adult's", () => {
+  settleTab(null);
+  settleTab(student);
+  anotherTabSignsIn(student);
+  reload();
+  expect(studentSession()).toEqual(student);
 });
 
 test("the sign-in screens count as a student device before any token exists", () => {

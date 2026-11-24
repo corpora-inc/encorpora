@@ -1,11 +1,32 @@
 import { forgetEveryLink } from "../features/links/forget";
-/** A school student's sign-in on this device. Shared devices keep it in session
- * storage, so it ends with the tab; personal devices in local storage. It wins
- * over any parent session until the student signs out.
+/** A school student's sign-in, and whose this tab is.
+ *
+ * One tab is one person. Session storage is a tab's own; local storage is
+ * the whole browser's, every tab's at once. So:
+ *
+ * - A shared device's sign-in, and a parent's hand-over, live in session
+ *   storage (`amp.student`): this tab's, ended with it.
+ * - A personal device's sign-in also goes to local storage, so the browser
+ *   still knows the child the next time it is opened. Local storage only
+ *   says who a tab that is nobody yet STARTS as. The tab that signed in,
+ *   and a tab that started as that child, keep their own copy in session
+ *   storage (`amp.tab`) and read that from then on.
+ * - A tab an adult's session loaded in, and a tab a sign-in ended in, hold
+ *   no student (`amp.tab`), whatever the browser remembers.
+ *
+ * Another tab's sign-in therefore never changes who this tab is; only what
+ * happens in this tab does (a sign-in, a sign-out, a hand-over), across a
+ * reload too. In its own tab a student's sign-in still wins over a parent's
+ * session until the student signs out.
  *
  * A synchronous check on purpose: analytics and engagement consult it before
  * they start. This module imports nothing that could start them. */
 const studentKey = "amp.student";
+/** Which student sign-in is this tab's: `{ student }` (a personal one, made
+ * or found here), `{ student: null }` (none: an adult's tab, or signed out
+ * here), or `{ student: null, load }` (none was remembered when this page
+ * loaded; the next load looks again). */
+const tabKey = "amp.tab";
 /** When a shared device was last used, so a reload doesn't restart the clock. */
 const activeKey = "amp.student.active";
 /** A parent handed this device to their child ("Let Maya practice here"), so
@@ -20,24 +41,80 @@ export const STUDENT_IDLE_MS = 30 * 60_000;
 
 export type StudentSession = { accountId: string; token: string };
 
+function parsed(saved: unknown): StudentSession | null {
+  if (saved === null || typeof saved !== "object") return null;
+  const { accountId, token } = saved as Record<string, unknown>;
+  return typeof accountId === "string" &&
+    accountId.startsWith("school:") &&
+    typeof token === "string" &&
+    token.startsWith("st_")
+    ? { accountId, token }
+    : null;
+}
 function read(store: () => Storage): StudentSession | null {
   try {
-    const saved: unknown = JSON.parse(store().getItem(studentKey) ?? "null");
-    if (saved === null || typeof saved !== "object") return null;
-    const { accountId, token } = saved as Record<string, unknown>;
-    return typeof accountId === "string" &&
-      accountId.startsWith("school:") &&
-      typeof token === "string" &&
-      token.startsWith("st_")
-      ? { accountId, token }
-      : null;
+    return parsed(JSON.parse(store().getItem(studentKey) ?? "null"));
   } catch (error) {
     console.warn("Student sign-in on this device wasn’t read", error);
     return null;
   }
 }
+/** This page load: a reload is another. */
+const pageLoad = () => globalThis.performance?.timeOrigin ?? 0;
+type TabStudent = {
+  student: StudentSession | null;
+  /** Decided for this page load only. */
+  untilReload: boolean;
+};
+/** Which student sign-in is this tab's, once decided: undefined in a tab
+ * that is nobody yet (a new tab, or one that found no sign-in on an earlier
+ * load). */
+function tabStudent(): TabStudent | undefined {
+  try {
+    const saved: unknown = JSON.parse(sessionStorage.getItem(tabKey) ?? "null");
+    if (saved === null || typeof saved !== "object" || !("student" in saved))
+      return undefined;
+    const { student, load } = saved as Record<string, unknown>;
+    if (load !== undefined)
+      return load === pageLoad()
+        ? { student: null, untilReload: true }
+        : undefined;
+    return { student: parsed(student), untilReload: false };
+  } catch (error) {
+    console.warn("Whose tab this is wasn’t read", error);
+    return undefined;
+  }
+}
+function keepTabStudent(student: StudentSession | null, untilReload = false) {
+  try {
+    sessionStorage.setItem(
+      tabKey,
+      JSON.stringify(untilReload ? { student, load: pageLoad() } : { student }),
+    );
+  } catch (error) {
+    console.warn("Whose tab this is wasn’t kept", error);
+  }
+}
+/** This tab's student sign-in. A tab that is nobody yet takes the one this
+ * browser remembers, once, as the page loads: after that, another tab's
+ * sign-in changes nothing here. */
 export function studentSession(): StudentSession | null {
-  return read(() => sessionStorage) ?? read(() => localStorage);
+  const shared = read(() => sessionStorage);
+  if (shared) return shared;
+  const mine = tabStudent();
+  if (mine) return mine.student;
+  const remembered = read(() => localStorage);
+  keepTabStudent(remembered, !remembered);
+  return remembered;
+}
+/** The session this tab resolved to (the session check, or a sign-in made
+ * here). An adult's makes the tab theirs: it never becomes the child this
+ * browser remembers, now or after a reload. A student's sign-in held here
+ * still wins, as it does in the check itself (auth.ts `accessSession`). */
+export function settleTab(session: { accountId: string } | null) {
+  if (!session || session.accountId.startsWith("school:")) return;
+  if (read(() => sessionStorage) || tabStudent()?.student) return;
+  keepTabStudent(null);
 }
 /** Signed in as a student, or on the screens a student signs in from, whose
  * URLs can carry a card's secret and which a parent has no reason to open. A
@@ -57,9 +134,14 @@ export function rememberStudentSession(
   returnName?: string,
 ) {
   clearStudentDevice();
-  const store = mode === "shared" ? sessionStorage : localStorage;
-  store.setItem(studentKey, JSON.stringify(session));
-  if (mode === "shared") store.setItem(activeKey, String(Date.now()));
+  if (mode === "shared") {
+    sessionStorage.setItem(studentKey, JSON.stringify(session));
+    sessionStorage.setItem(activeKey, String(Date.now()));
+  } else {
+    // The browser remembers it for its next tab; this tab keeps its own.
+    localStorage.setItem(studentKey, JSON.stringify(session));
+    keepTabStudent(session);
+  }
   if (handed) sessionStorage.setItem(handedKey, "1");
   if (handed && returnTo) sessionStorage.setItem(returnKey, returnTo);
   if (handed && returnName) sessionStorage.setItem(returnNameKey, returnName);
@@ -101,21 +183,35 @@ export function handedHome(): string {
   const family = /^\/family\/([^/?#]+)/.exec(path);
   return family ? `/family/${family[1]}` : path;
 }
+/** Ends the student sign-in this tab holds; the tab holds none until one is
+ * made in it. The browser forgets the sign-in it remembers when that is this
+ * tab's, or when this tab is nobody yet (a new tab stands for the browser).
+ * A child signed in on another tab stays remembered: a parent's hand-over
+ * here, or a sibling signing out here, never signs them out. */
 export function clearStudentDevice() {
   // A parent's or teacher's held link never stays beside a child's session.
   forgetEveryLink();
+  const shared = read(() => sessionStorage);
+  const mine = tabStudent();
+  const remembered = read(() => localStorage);
+  const forget =
+    !mine ||
+    mine.untilReload ||
+    !remembered ||
+    [shared, mine.student].some((held) => held?.token === remembered.token);
   for (const [store, keys] of [
     [
       () => sessionStorage,
       [studentKey, activeKey, handedKey, returnKey, returnNameKey],
     ],
-    [() => localStorage, [studentKey]],
+    [() => localStorage, forget ? [studentKey] : []],
   ] as const)
     try {
       for (const key of keys) store().removeItem(key);
     } catch (error) {
       console.warn("Student sign-in not cleared", error);
     }
+  keepTabStudent(null);
 }
 /** Parent-only routes also answer a student 401, so only `/me` can say that the
  * sign-in itself has ended. */

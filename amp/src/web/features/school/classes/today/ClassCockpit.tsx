@@ -31,6 +31,7 @@ import { useServerNow } from "../../../live/clock";
 import { CockpitFrame } from "../../../live/CockpitFrame";
 import {
   answeringNow,
+  hereNow,
   LiveRoster,
   liveStatuses,
   type StudentLink,
@@ -348,6 +349,7 @@ export function ClassCockpit({
         totals={
           <Totals
             totals={shown.totals}
+            hereNow={hereNow(statuses)}
             answeringNow={still ? 0 : answeringNow(statuses)}
           />
         }
