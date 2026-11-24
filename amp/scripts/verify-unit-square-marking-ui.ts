@@ -14,6 +14,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { generateProblem, type GeneratedProblem } from "../src/math/engine";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { publicationHtml } from "../src/content/publications";
@@ -52,13 +53,16 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4563 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4562);
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
-    port: 4562,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4563" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -177,11 +181,16 @@ async function numberedSquares(page: Page) {
       range.selectNodeContents(mark);
       const text = range.getBoundingClientRect();
       const cell = node.getBoundingClientRect();
+      // As painted: a Colorful role computes to oklch(), not rgb().
+      const pen = Object.assign(document.createElement("canvas"), {
+        width: 1,
+        height: 1,
+      }).getContext("2d", { willReadFrequently: true })!;
       const luminance = (color: string) => {
-        const channels = color
-          .match(/[\d.]+/g)!
-          .slice(0, 3)
-          .map(Number);
+        pen.clearRect(0, 0, 1, 1);
+        pen.fillStyle = color;
+        pen.fillRect(0, 0, 1, 1);
+        const channels = [...pen.getImageData(0, 0, 1, 1).data].slice(0, 3);
         return channels.reduce((total, channel, i) => {
           const value = channel / 255;
           const linear =
@@ -259,7 +268,9 @@ async function visibleCells(page: Page) {
 }
 
 try {
-  for (const theme of ["light", "dark"] as const) {
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes()) {
     for (const [width, height] of [
       [568, 320],
       [320, 740],
@@ -268,9 +279,10 @@ try {
       [768, 1024],
       [1280, 900],
     ]) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width: width!, height: height! },
-        colorScheme: theme,
+        colorScheme: scheme,
         // A phone draws overlay scrollbars. Without isMobile, Linux Chromium
         // in CI gives a 320 px stage two 15 px scrollbar gutters no phone has.
         hasTouch: width! < 400,
@@ -281,8 +293,9 @@ try {
       const page = await context.newPage();
       page.setDefaultTimeout(30000);
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto("http://127.0.0.1:4562/overview");
+      await page.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const base of fixtures) {
         const size = height! < 740 ? `${width}x${height}` : width;
         const tag = `${base.public.templateId}-${size}-${theme}`;
@@ -549,7 +562,7 @@ try {
               authorization: reply.request().headers().authorization!,
             };
             const report = await page.request.post(
-              `http://127.0.0.1:4562/api/v1/learners/${learner.id}/problem-flags`,
+              `http://127.0.0.1:${WEB_PORT}/api/v1/learners/${learner.id}/problem-flags`,
               {
                 headers,
                 data: {
