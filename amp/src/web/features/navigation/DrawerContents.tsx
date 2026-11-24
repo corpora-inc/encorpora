@@ -24,6 +24,7 @@ import {
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
+import { goHandedHome } from "../../lib/handed-home";
 import {
   handedReturnName,
   handedStudentDevice,
@@ -361,6 +362,7 @@ export default function DrawerContents({
  * a school-signed-in adult's is shown just above it. */
 export function DrawerFooter({ close }: { close: () => void }) {
   const view = useLearningView({ records: false });
+  const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const session = view.session.data;
@@ -416,6 +418,15 @@ export function DrawerFooter({ close }: { close: () => void }) {
           disabled={busy}
           aria-busy={busy || undefined}
           onClick={() => {
+            // A handed device: the same way home as the bar's family mark
+            // (lib/handed-home.ts). Back to the screen it was handed over
+            // from, where the parent left it; never a sign-out and a fresh
+            // load that lands at that screen's top.
+            if (student && handedStudentDevice()) {
+              close();
+              goHandedHome(router);
+              return;
+            }
             clearInitialConsentChallenge();
             clearOwnedPurchaseReturn();
             clearPurchaseReturn();
