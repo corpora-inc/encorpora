@@ -4,7 +4,7 @@ import type { SessionList as Sessions } from "../../../../schools/live/contracts
 import { Button } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { sessionsOptions } from "../../live/api";
-import { percentText } from "../../live/format";
+import { percentText, sessionLength } from "../../live/format";
 import { standing } from "../../../lib/AppError";
 import { currentSession } from "../api";
 import { classYearOptions } from "../org/org-api";
@@ -24,15 +24,6 @@ const when = (at: string) =>
     hour: "numeric",
     minute: "2-digit",
   });
-const minutes = (row: Row) =>
-  Math.max(
-    0,
-    Math.round(
-      (Date.parse(row.endedAt ?? row.endsAt) - Date.parse(row.startedAt)) /
-        60_000,
-    ),
-  );
-
 /**
  * A class's live sessions, newest first, each a row (when, how long, who
  * was there, problems, percent correct) opening its report; a running one
@@ -106,9 +97,11 @@ export function SessionList({
     {
       id: "length",
       header: "Length",
-      width: 88,
+      // Its longest words (the shortest session) on one line.
+      width: 128,
       align: "end",
-      cell: (row) => (row.endedAt === null ? "—" : `${minutes(row)} min`),
+      cell: (row) =>
+        row.endedAt === null ? "—" : sessionLength(row.startedAt, row.endedAt),
     },
     {
       id: "here",

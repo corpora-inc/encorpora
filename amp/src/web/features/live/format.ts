@@ -65,6 +65,29 @@ export function clockText(ms: number) {
     : `${minutes}:${ss}`;
 }
 
+/** A session's length in whole minutes, from its start to when it ended
+ * (an instant, or ms): rounded, never negative. */
+export function sessionMinutes(startedAt: string, endedAt: string | number) {
+  const end = typeof endedAt === "number" ? endedAt : Date.parse(endedAt);
+  return Math.max(0, Math.round((end - Date.parse(startedAt)) / 60_000));
+}
+
+/**
+ * A session's length in words, the same wherever one is named (the bar a
+ * session ends on, a class's Sessions list, a family's past sessions, the
+ * report's own line): "under a minute", never "0 min"; then "1 min", "25
+ * min". `long` spells the unit out for a sentence: "1 minute", "25 minutes".
+ */
+export function sessionLength(
+  startedAt: string,
+  endedAt: string | number,
+  form: "short" | "long" = "short",
+) {
+  const minutes = sessionMinutes(startedAt, endedAt);
+  if (minutes < 1) return "under a minute";
+  return form === "short" ? `${minutes} min` : counted(minutes, "minute");
+}
+
 /** Help opened, all kinds together. */
 export const helpCount = (row: {
   hints: number;

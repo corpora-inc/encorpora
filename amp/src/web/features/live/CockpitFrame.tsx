@@ -13,8 +13,8 @@ import styles from "./CockpitFrame.module.css";
  * band, the strip runs under them, and the roster fills the rest of the
  * frame's fixed height and scrolls inside it. Fourteen rows show on a
  * laptop; thirty-five scroll inside the same frame, and nothing above them
- * moves. (The brief's 2fr/1fr rail can't hold the grid's twelve columns at
- * 1280 px: they need about 1,100 px.)
+ * moves. (The brief's 2fr/1fr rail can't hold the grid: its columns need
+ * the frame's whole 960 px, and the skill's name takes what is spare.)
  */
 export function CockpitFrame({
   control,

@@ -144,11 +144,30 @@
 .statusWord[data-status="working"] {
   font-weight: 500;
 }
+/* Rows as tall as their skills: every cell starts at the row's top, on a
+   line as tall as the status mark, so a one-line row is the 44 px it was
+   and a long one keeps its figures beside the name. */
+.grid :global(table tbody th),
+.grid :global(table tbody td) {
+  padding-block: 11px;
+  line-height: 22px;
+  vertical-align: top;
+}
+/* The four help counts, a little closer than a live row's. */
+.grid :global([data-column="help"] [role="img"]) {
+  grid-template-columns: repeat(4, 34px);
+}
+/* Each skill's whole name; the list wraps in its column. */
 .skills {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding-block: 2px;
+  font-size: var(--text-table-small);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+/* No skills: a dash on screen, no line on paper. */
+.noSkills {
+  color: var(--color-muted-text);
 }
 .skillLink {
   color: inherit;
@@ -346,14 +365,73 @@
   .grid :global(th) {
     position: static !important;
   }
-  /* Each student's skills are listed under "Skills in this session":
-     on paper the column gives its room to the figures. */
-  .grid :global([data-column="skills"]) {
-    visibility: hidden;
-    padding: 0 !important;
-    overflow: hidden !important;
+  /* The table lies flat as rows of one shared grid, so a student's
+     figures keep their columns across the sheet and their skills run the
+     sheet's width on the line under them, every name whole. */
+  .grid :global(table) {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+    font-size: 11px;
   }
-  .grid :global(colgroup col:nth-child(8)) {
-    width: 0 !important;
+  .grid :global(colgroup) {
+    display: none;
+  }
+  .grid :global(thead),
+  .grid :global(tbody) {
+    display: block;
+  }
+  .grid :global(tr) {
+    display: grid;
+    grid-template-columns: repeat(35, minmax(0, 1fr));
+    align-items: start;
+    break-inside: avoid;
+    border-top: 1px solid var(--color-print-rule);
+  }
+  .grid :global(thead tr) {
+    align-items: end;
+    border-top: 0;
+  }
+  .grid :global(th),
+  .grid :global(td) {
+    display: block;
+    height: auto !important;
+    min-width: 0;
+    padding: 3px 4px !important;
+    color: var(--color-print-ink);
+    line-height: 16px;
+    grid-column: span 3;
+  }
+  .grid :global(thead th *) {
+    min-height: 0;
+  }
+  .grid :global([data-column="student"]),
+  .grid :global([data-column="help"]) {
+    grid-column: span 6;
+  }
+  .grid :global([data-column="status"]),
+  .grid :global([data-column="answered"]) {
+    grid-column: span 4;
+  }
+  .grid :global([data-column="help"] [role="img"]) {
+    grid-template-columns: repeat(4, 30px);
+  }
+  .grid :global([data-column="help"] [role="img"] *) {
+    font-size: 11px;
+  }
+  .grid :global(thead [data-column="skills"]),
+  .grid :global(tbody [data-column="skills"]):has(.noSkills) {
+    display: none;
+  }
+  /* Under the name, past the mark. */
+  .grid :global(tbody [data-column="skills"]) {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    padding: 0 4px 4px 34px !important;
+  }
+  .skills {
+    padding: 0;
+    font-size: 9.5px;
+    line-height: 1.35;
   }
 }
