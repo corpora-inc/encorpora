@@ -149,7 +149,7 @@ test("marks, words and the last five answers are named for a screen reader", () 
           lastAnswerAt: iso(55_000),
           recent: [wrong, wrong, wrong],
         }),
-        row("Bea", { firstSeenAt: null, lastSeenAt: null, seenToday: false }),
+        row("Bea", { firstSeenAt: null, lastSeenAt: null }),
       ]}
       sort={DEFAULT_LIVE_SORT}
     />,

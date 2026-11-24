@@ -11,10 +11,14 @@ import styles from "./LiveTotals.module.css";
  */
 export function LiveTotals({
   totals,
+  hereNow,
   answeringNow,
   label = "This session",
 }: {
   totals: Totals;
+  /** Students here now (`hereNow`): judged on this screen's clock, as each
+   * row's status is, so the tile and the rows never disagree. */
+  hereNow: number;
   /** Students answering in the last two minutes (`answeringNow`). */
   answeringNow: number;
   /** Names the tiles for assistive technology. */
@@ -25,9 +29,9 @@ export function LiveTotals({
     {
       key: "here",
       label: "Here",
-      value: totals.present,
+      value: hereNow,
       of: totals.students,
-      words: `${totals.present} of ${totals.students} here`,
+      words: `${hereNow} of ${totals.students} here`,
     },
     {
       key: "answering",

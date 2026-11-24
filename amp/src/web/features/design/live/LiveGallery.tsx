@@ -3,7 +3,12 @@ import type { LiveSignal } from "../../../../schools/live/contracts";
 import { liveTotals } from "../../../../schools/live/status";
 import { Button } from "../../../ui/Button";
 import { CockpitFrame } from "../../live/CockpitFrame";
-import { answeringNow, LiveRoster, liveStatuses } from "../../live/LiveRoster";
+import {
+  answeringNow,
+  hereNow,
+  LiveRoster,
+  liveStatuses,
+} from "../../live/LiveRoster";
 import { LiveTotals } from "../../live/LiveTotals";
 import { RecentAnswers } from "../../live/RecentAnswers";
 import type { StudentLink } from "../../live/RosterRow";
@@ -96,7 +101,11 @@ function Cockpit({
       control={control}
       totals={
         <LiveTotals
-          totals={liveTotals(state.rows)}
+          totals={liveTotals(state.rows, {
+            now: state.now,
+            startedAt: live.startedAt,
+          })}
+          hereNow={hereNow(statuses)}
           answeringNow={answeringNow(statuses)}
         />
       }

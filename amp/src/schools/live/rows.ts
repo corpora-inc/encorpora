@@ -16,10 +16,16 @@ type Database = Pick<PoolClient, "query">;
 /* The live read. Every number is computed on read from the evidence that
    already exists, inside one session's window: answers from `amp_attempts`
    (over `amp_attempts_recent_idx`), help from `amp_help_events` (over
-   `amp_help_events_learner_idx`), presence from student sessions, a parent's
-   device clock and the session's presence events. The snapshot, the stream
-   hub and Stop all read through `readLiveRows`, so the cockpit, the stream and
-   the stored report can't disagree. */
+   `amp_help_events_learner_idx`), presence from the session's presence
+   events, raised hands and the student's own sign-in. The snapshot, the
+   stream hub and Stop all read through `readLiveRows`, so the cockpit, the
+   stream and the stored report can't disagree.
+
+   Only what is the student's own counts. A family's child is also a learner
+   on a parent's account, and that account's heartbeat names whichever child
+   the parent has chosen: a parent reading the child's Pathways is not the
+   child. So the account's clock (`amp_learner_activity`) is never read here,
+   and help counts only where it was the child's (`OWN_HELP`). */
 
 export type LiveWindow = {
   classId: string;
@@ -46,6 +52,13 @@ const iso = (value: Date | string | null) =>
  * paper mark. */
 const IN_WINDOW = `x.learner_id=r.learner_id AND x.created_at>=$2::timestamptz AND x.created_at<$3::timestamptz
   AND x.outcome->>'evidenceSource' IS DISTINCT FROM 'paper'`;
+/** SQL: help event `h` of roster member `r` was their own: opened in
+ * practice, or sent on their own student sign-in (every heartbeat of one
+ * moves its `last_seen_at` past the help it carries). What else a learner's
+ * record holds was opened on a parent's sign-in with this child chosen, from
+ * a lesson, Pathways or a progress page. */
+const OWN_HELP = `(h.source='practice' OR EXISTS (SELECT 1 FROM amp_student_sessions hs
+  WHERE hs.person_id=r.person_id AND hs.created_at<=h."at" AND hs.last_seen_at>=h."at"))`;
 const CORRECT = "COALESCE((x.outcome->>'correct')::boolean,false)";
 const ASSISTED = "COALESCE((x.outcome->>'assisted')::boolean,false)";
 
@@ -53,8 +66,7 @@ const ASSISTED = "COALESCE((x.outcome->>'assisted')::boolean,false)";
  * subset reads the same names. A function: `STUDENT_LABEL` is read at call
  * time, never while modules are still loading. */
 const ROSTER = () => `roster AS (
-  SELECT p.id AS person_id,p.learner_id,${STUDENT_LABEL} AS name,
-    (date_trunc('day',now() AT TIME ZONE o.timezone) AT TIME ZONE o.timezone) AS midnight
+  SELECT p.id AS person_id,p.learner_id,${STUDENT_LABEL} AS name
   FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
   JOIN amp_enrollments e ON e.class_id=c.id
   JOIN amp_people p ON p.id=e.person_id
@@ -84,8 +96,7 @@ export async function readLiveRows(
        h.hints,h.lessons,h.examples,h.videos,
        a.first_answer,a.last_answer,h.first_help,h.last_help,
        recent.outcomes,recent.skill_id,a.skills,
-       seen.last_seen,COALESCE(seen.last_seen>=r.midnight,false) AS seen_today,
-       pres.first_presence
+       seen.last_seen,pres.first_presence
      FROM roster r
      CROSS JOIN LATERAL (
        SELECT count(*)::int AS problems,
@@ -118,15 +129,28 @@ export async function readLiveRows(
          max(h."at") FILTER (WHERE h.kind<>'print') AS last_help
        FROM amp_help_events h
        WHERE h.learner_id=r.learner_id AND h."at">=$2::timestamptz AND h."at"<$3::timestamptz
+         AND ${OWN_HELP}
      ) h
+     -- Their own sign-in, last seen before the window's end: a session judged
+     -- after it ended doesn't count who arrived later. Nor does a sighting
+     -- from before an open "I forgot my picture": they are at the sign-in
+     -- screen, signed out of the device it was on.
      CROSS JOIN LATERAL (
-       SELECT GREATEST(
-         (SELECT max(s.last_seen_at) FROM amp_student_sessions s WHERE s.person_id=r.person_id AND s.revoked_at IS NULL),
-         (SELECT g.seen_at FROM amp_learner_activity g WHERE g.learner_id=r.learner_id)) AS last_seen
+       SELECT max(s.last_seen_at) AS last_seen FROM amp_student_sessions s
+       WHERE s.person_id=r.person_id AND s.revoked_at IS NULL AND s.last_seen_at<$3::timestamptz
+         AND NOT EXISTS (SELECT 1 FROM amp_class_signals f
+           WHERE f.class_id=$1 AND f.person_id=r.person_id AND f.kind='forgot_picture'
+             AND f.resolved_at IS NULL AND f.created_at>s.last_seen_at)
      ) seen
+     -- Showed up in the session: signed in, or first active on their own sign-in (the presence
+     -- events), or raised a hand. "I forgot my picture" is not signed in.
      CROSS JOIN LATERAL (
-       SELECT min(v.created_at) AS first_presence FROM amp_class_events v
-       WHERE v.session_id=$5 AND v.person_id=r.person_id AND v.kind='presence'
+       SELECT LEAST(
+         (SELECT min(v.created_at) FROM amp_class_events v
+           WHERE v.session_id=$5 AND v.person_id=r.person_id AND v.kind='presence'),
+         (SELECT min(g.created_at) FROM amp_class_signals g
+           WHERE g.class_id=$1 AND g.person_id=r.person_id AND g.kind='hand'
+             AND g.created_at>=$2::timestamptz AND g.created_at<$3::timestamptz)) AS first_presence
      ) pres
      WHERE $4::uuid[] IS NULL OR r.person_id=ANY($4::uuid[])
      ORDER BY lower(r.name),r.person_id`,
@@ -181,7 +205,6 @@ export async function readLiveRows(
       lastAnswerAt: iso(row.last_answer),
       lastHelpAt: iso(row.last_help),
       lastSeenAt: iso(row.last_seen),
-      seenToday: row.seen_today,
     };
   });
 }
