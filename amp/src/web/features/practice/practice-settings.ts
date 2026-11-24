@@ -99,5 +99,33 @@ export function usePracticeAdjustment(scope: PracticeScope) {
     mounted.current &&
     current.current.identity === scope.identity &&
     current.current.learnerId === scope.learnerId;
-  return { scope, change, isCurrent };
+  /**
+   * Practice held to the skill it was just opened for (or to none): the
+   * newest choice by what it is, so it is made over whatever else was saved
+   * meanwhile. Something saved for this learner between this screen's read
+   * and its write (another device opening their practice, their look
+   * changing: the server's 409) is read and the hold sent again, a few
+   * times, instead of leaving a practice screen with no problem.
+   */
+  async function hold(skillId: string | null) {
+    for (let attempt = 1; ; attempt++)
+      try {
+        return await change({ kind: "focus", skillId });
+      } catch (error) {
+        if (
+          attempt >= HOLD_ATTEMPTS ||
+          !isCurrent() ||
+          !(error instanceof AppError) ||
+          error.status !== 409
+        )
+          throw error;
+        console.warn(
+          "Practice changed elsewhere as this screen opened; holding it again",
+          { attempt, skillId },
+        );
+      }
+  }
+  return { scope, change, hold, isCurrent };
 }
+/** How many times a hold is sent before its conflict is shown. */
+const HOLD_ATTEMPTS = 4;

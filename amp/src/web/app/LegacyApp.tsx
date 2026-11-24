@@ -1178,7 +1178,9 @@ function LegacyScreen({ owner }: { owner: string | null }) {
           ? focusSkill
           : catalog?.templates.find((t) => t.id === templateId)?.skillId;
       if (skillId !== undefined) {
-        const saved = await adjustments.change({ kind: "focus", skillId });
+        // What was just opened is the newest choice: held over anything
+        // saved for this learner meanwhile (practice-settings.ts `hold`).
+        const saved = await adjustments.hold(skillId);
         if (!saved || !current()) return;
       }
     }
