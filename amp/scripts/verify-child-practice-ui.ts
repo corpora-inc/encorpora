@@ -28,10 +28,24 @@
  *
  * and presses every practice control it finds on the way. For each press it
  * reads the practice that opened: its address (whose, and held to what), the
- * hand-over it asked for, and the practice screen's own learner (whose
- * problems it asks for, with whose session). Before each child's walk the
+ * hand-over it asked for, the practice screen's own learner (whose
+ * problems it asks for, with whose session) and the problem it is served: a
+ * control offered for a child gives that child a problem, and held to a
+ * skill or a type the problem is one of it. Before each child's walk the
  * device's selected learner is set to ANOTHER child, the state the slip
  * needed.
+ *
+ * The skills of a "not asked yet" sheet depend on what the seed's history
+ * happened to ask, so no walk picks among them by their place in the list:
+ * each skill belongs to one walk of the run by its own id (`shareOf`), and
+ * at the end every skill a sheet listed has been pressed. The walk's
+ * profiles read side by side; a press, from its click to its problem, is
+ * one at a time for a learner, whose practice is held to one skill wherever
+ * it was opened.
+ *
+ * Two devices that open one child's practice in the same moment, each for a
+ * skill of its own, each show a problem (the second to save its skill is
+ * no longer refused).
  *
  * Then, for each child: a skill open over Today survives a reload still
  * theirs; its shared link opens theirs in a fresh browser and leaves no
@@ -66,12 +80,14 @@
  * last problems) and returns by the menu's "Back to family" or by Back (a
  * problem's bar holds only the problem's tools, so no family mark is on it).
  * Today is where they left it, the block at the same place on screen, at
- * each width.
+ * each width: on arrival, two seconds later, and, where the sheet practice
+ * was started from is open again, behind that sheet and once it is closed.
  *
  * Every wait says what it waited for and what the screen showed instead.
  * `TZ=UTC` puts the API, the seed and the browser in the zone CI runs in.
  *
- * The table of every press and return goes to <out>/presses.json.
+ * The table of every press, every return and the two devices at once goes
+ * to <out>/presses.json.
  */
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -468,7 +484,7 @@ async function open(
       `(${SELECT})(${JSON.stringify([who.accountId, selected])})`,
     );
   const page = await context.newPage();
-  const seen: Seen = { handOvers: [], asks: [], practicing: false };
+  const seen: Seen = { handOvers: [], asks: [], served: [], practicing: false };
   page.on("request", (request) => {
     const url = new URL(request.url());
     const hand = /^\/api\/v1\/family\/learners\/([^/]+)\/practice-here$/.exec(
@@ -484,6 +500,27 @@ async function open(
         what: ask[2]!,
         write: request.method() !== "GET",
         authorization: request.headers().authorization ?? "",
+      });
+  });
+  // What it was served: the problem, or the server's refusal.
+  page.on("response", (response) => {
+    const url = new URL(response.url());
+    if (
+      !seen.practicing ||
+      !/^\/api\/v1\/learners\/[^/]+\/batches$/.test(url.pathname)
+    )
+      return;
+    void response
+      .json()
+      .catch(() => null)
+      .then((body: any) => {
+        const problem = body?.problems?.[0];
+        seen.served.push({
+          status: response.status(),
+          skill: problem?.skillId ?? null,
+          type: problem?.templateId ?? null,
+          said: typeof body?.error === "string" ? body.error : "",
+        });
       });
   });
   await page.goto(`${origin}${root.path}`, { waitUntil: "load" });
@@ -508,6 +545,14 @@ type Seen = {
     write: boolean;
     authorization: string;
   }[];
+  /** Each answer to a request for problems: the problem served (its skill
+   * and type), or the refusal. */
+  served: {
+    status: number;
+    skill: string | null;
+    type: string | null;
+    said: string;
+  }[];
   practicing: boolean;
 };
 
@@ -528,10 +573,19 @@ type Press = {
 };
 const presses: Press[] = [];
 /** Each return from a child's practice: where Today was, and came back. */
+/** Each of two devices that opened one child's practice in the same moment:
+ * what it was served. */
+const together: { where: string; served: string; ok: boolean }[] = [];
+type Place = { y: number; top: number | null };
 const returns: {
   where: string;
-  before: { y: number; top: number | null };
-  after: { y: number; top: number | null };
+  before: Place;
+  after: Place;
+  /** A moment later: nothing that arrives after the return moves the page. */
+  later: Place;
+  /** A sheet that was open when practice started is open again: where the
+   * page is behind it once it is closed. */
+  sheetClosed?: Place;
   ok: boolean;
 }[] = [];
 /** Whose session a request was made with: a child's own (a student account
@@ -551,6 +605,41 @@ async function sessionOf(authorization: string) {
   return sessions.get(authorization)!;
 }
 const FOCUS = /^\/practice\/([^/]+)(?:\/(types|skills|areas)\/([^/]+))?\/?$/;
+
+/** One press for a learner at a time, from its click to its problem. A
+ * learner's practice is held to one skill wherever it was opened, so of two
+ * devices pressing in the same moment each could be served the other's
+ * skill: the walk's profiles, side by side, would be that by accident. (Two
+ * devices at once is its own part, below.) Reading the way to a control
+ * stays side by side. */
+const turns = new Map<string, Promise<unknown>>();
+function oneAtATime<T>(learner: string, job: () => Promise<T>): Promise<T> {
+  const mine = (turns.get(learner) ?? Promise.resolve()).then(job);
+  turns.set(
+    learner,
+    mine.catch(() => undefined),
+  );
+  return mine;
+}
+/** The first problem a press was served, else the server's last answer. */
+const servedTo = (seen: Seen) =>
+  seen.served.find((entry) => entry.status === 200 && entry.skill) ??
+  seen.served.at(-1);
+/** Waits, as long as a person would, for the problem a press asked for. */
+async function problemFor(page: Page, seen: Seen) {
+  for (
+    let i = 0;
+    i < 200 && !seen.served.some((entry) => entry.status === 200);
+    i++
+  )
+    await page.waitForTimeout(100);
+}
+const servedWords = (got: Seen["served"][number] | undefined) =>
+  got?.status === 200 && got.skill
+    ? `served a problem of ${got.skill}${got.type ? ` (${got.type})` : ""}`
+    : got
+      ? `served no problem (the server answered ${got.status}${got.said ? `: ${got.said.slice(0, 80)}` : ""})`
+      : "served no problem in 20 s";
 
 /** Presses the practice control at the end of `steps` and reads what
  * opened. */
@@ -589,21 +678,28 @@ async function press(
   try {
     opened = await open(who, width, root, steps, selected);
     const { page, seen } = opened;
-    seen.practicing = true;
-    await click(page, control);
-    await need(page, "practice to open", () =>
-      page.waitForURL((url) => FOCUS.test(url.pathname), {
-        timeout: 30_000,
-      }),
-    );
     // The practice screen asks for its learner's problems: that request,
     // and nothing sent before it, says whose practice this is. (Before the
     // screen mounts, the route reads the learner's look with the session
     // the press was made in: a parent's read of their own child's setting.)
     const problems = () => seen.asks.find((entry) => entry.what === "batches");
-    for (let i = 0; i < 200 && !problems(); i++) await page.waitForTimeout(100);
-    // And whatever else it asks as it opens.
-    await page.waitForTimeout(700);
+    await oneAtATime(
+      expect.kind === "child" ? expect.child.id : `self:${who.slug}`,
+      async () => {
+        seen.practicing = true;
+        await click(page, control);
+        await need(page, "practice to open", () =>
+          page.waitForURL((url) => FOCUS.test(url.pathname), {
+            timeout: 30_000,
+          }),
+        );
+        // The problem it is served: a practice screen with none is a dead
+        // end, whoever's it is.
+        await problemFor(page, seen);
+        // And whatever else it asks as it opens.
+        await page.waitForTimeout(700);
+      },
+    );
     const [, learner, segment, id] = FOCUS.exec(new URL(page.url()).pathname)!;
     // Every request is for one learner; the problems are asked with one
     // session; and nothing is written with any other.
@@ -616,6 +712,8 @@ async function press(
         }
       : undefined;
     const session = ask ? await sessionOf(ask.authorization) : null;
+    const got = servedTo(seen);
+    const fed = got?.status === 200 && !!got.skill;
     const strays = seen.asks.filter(
       (entry) => entry.write && entry.authorization !== ask?.authorization,
     );
@@ -636,6 +734,7 @@ async function press(
       ask
         ? `asking problems for ${name(ask.learner)} with ${session?.student ? `${name(session.learner)}’s own session` : "the adult’s session"}`
         : `no problems asked (it asked: ${seen.asks.map((entry) => entry.what).join(", ") || "nothing"})`,
+      ...(ask ? [servedWords(got)] : []),
       ...(strays.length
         ? [
             `and writing ${strays.map((entry) => entry.what).join(", ")} with another session`,
@@ -652,7 +751,9 @@ async function press(
         ask?.learner === child &&
         !!session?.student &&
         session.learner === child &&
-        strays.length === 0;
+        strays.length === 0 &&
+        // A control offered for a child gives that child a problem.
+        fed;
     } else {
       ok =
         !!own &&
@@ -660,19 +761,28 @@ async function press(
         seen.handOvers.length === 0 &&
         ask?.learner === own &&
         session?.student === false &&
-        strays.length === 0;
+        strays.length === 0 &&
+        // Their own problem, or the pause once their free problems are used.
+        (fed || got?.status === 402);
     }
     if (ok && held)
       ok =
         held === "mixed"
           ? !segment
           : segment === held.segment &&
-            decodeURIComponent(id ?? "") === held.id;
+            decodeURIComponent(id ?? "") === held.id &&
+            // Held to a skill or a type, the problem served is one of it.
+            (held.segment === "skills"
+              ? !fed || got!.skill === held.id
+              : held.segment === "types"
+                ? !fed || got!.type === held.id
+                : true);
     note(
       said +
         (held && held !== "mixed"
           ? `; expected ${held.segment}/${held.id}`
-          : ""),
+          : "") +
+        (ok ? "" : `; the screen showed ${await screenOf(page)}`),
       ok,
     );
   } catch (error) {
@@ -769,6 +879,20 @@ const sample = <T>(items: T[], kind: (item: T) => string, depth: number) => {
         : [...group.slice(0, take - 1), group.at(-1)!],
   );
 };
+/** The run's walks of one child's area: each parent at each width. */
+const SHARES = PEOPLE.length * WIDTHS.length;
+/** Which of those walks presses a skill of a "not asked yet" sheet, by the
+ * skill's own id: every skill a sheet lists is pressed in one walk of the
+ * run, whichever skills the seed's history left unasked and in whatever
+ * order, on top of the sample every walk presses. */
+const shareOf = (skill: string) =>
+  [...skill].reduce((sum, c) => (sum * 31 + c.charCodeAt(0)) >>> 0, 7) % SHARES;
+/** The skills each child's "not asked yet" sheets listed, and those of them
+ * pressed. */
+const notAsked = new Map<
+  string,
+  { listed: Set<string>; pressed: Set<string> }
+>();
 let nodes = 0;
 
 async function walk(
@@ -844,15 +968,36 @@ async function walk(
           // The adult's own row is the adult's walk.
           (expect.kind === "self" || !/as yourself/i.test(control.name)),
       );
-      // In a long list of one control (a sheet's skills), a few of them.
-      for (const control of depth === 0 && !sheet
-        ? practice
-        : sample(
-            practice,
-            (entry) => entry.data.replace(/=[^ ]*/g, "") + entry.section,
-            0,
-          )) {
-        const skill = /data-practice-skill=([^ ]+)/.exec(control.data)?.[1];
+      const skillOf = (control: Control) =>
+        /data-practice-skill=([^ ]+)/.exec(control.data)?.[1];
+      // In a long list of one control (a sheet's skills), a few of them,
+      // and this walk's share of a sheet's skills not asked yet.
+      const few =
+        depth === 0 && !sheet
+          ? practice
+          : sample(
+              practice,
+              (entry) => entry.data.replace(/=[^ ]*/g, "") + entry.section,
+              0,
+            );
+      const share =
+        PEOPLE.indexOf(who.slug) * WIDTHS.length + WIDTHS.indexOf(width);
+      const unasked = sheet
+        ? practice.filter((control) => skillOf(control))
+        : [];
+      const covered =
+        notAsked.get(subject) ??
+        notAsked
+          .set(subject, { listed: new Set(), pressed: new Set() })
+          .get(subject)!;
+      for (const control of unasked) covered.listed.add(skillOf(control)!);
+      for (const control of practice.filter(
+        (entry) =>
+          few.includes(entry) ||
+          (unasked.includes(entry) && shareOf(skillOf(entry)!) === share),
+      )) {
+        const skill = skillOf(control);
+        if (skill && unasked.includes(control)) covered.pressed.add(skill);
         const held = skill
           ? ({ segment: "skills", id: skill } as const)
           : scope === "[data-layer-frame]"
@@ -1482,16 +1627,38 @@ try {
             );
             await settle(page);
             await page.waitForTimeout(400);
+            // The page itself: its scroll and the block's place on screen,
+            // whatever is open over it (the sheet practice was started
+            // from is open again; the page behind it is what is read).
             const after = await place(page);
-            const ok =
+            // And two seconds on, when everything the return asked for is in.
+            await page.waitForTimeout(2_000);
+            const later = await place(page);
+            // The sheet closed: the page the parent is left on.
+            const over = page.locator("[role=dialog]");
+            let sheetClosed: Place | undefined;
+            if (await over.count()) {
+              await page.keyboard.press("Escape");
+              await need(page, "the reopened sheet to close", () =>
+                over.first().waitFor({ state: "detached", timeout: 10_000 }),
+              );
+              await settle(page);
+              await page.waitForTimeout(400);
+              sheetClosed = await place(page);
+            }
+            const same = (now: Place) =>
               before.top !== null &&
-              after.top !== null &&
-              Math.abs(after.y - before.y) <= 2 &&
-              Math.abs(after.top - before.top) <= 2;
-            returns.push({ where, before, after, ok });
+              now.top !== null &&
+              Math.abs(now.y - before.y) <= 2 &&
+              Math.abs(now.top - before.top) <= 2;
+            const ok =
+              same(after) && same(later) && (!sheetClosed || same(sheetClosed));
+            returns.push({ where, before, after, later, sheetClosed, ok });
+            const spot = (now: Place) =>
+              `at ${now.y}px with their block at ${now.top}px`;
             if (!ok)
               fail(
-                `${where}: Today was at ${before.y}px with their block at ${before.top}px; it came back at ${after.y}px with their block at ${after.top}px`,
+                `${where}: Today was ${spot(before)}; it came back ${spot(after)}; two seconds later it was ${spot(later)}${sheetClosed ? `; with the reopened sheet closed, ${spot(sheetClosed)}` : ""}`,
               );
             // A phone's Today is long: the walk really was down the page.
             if (width < 600 && before.y < 200)
@@ -1509,7 +1676,108 @@ try {
         `  ${width}px coming back: ${mine.length} returns, ${mine.filter((entry) => !entry.ok).length} not where the parent was`,
       );
     }
+
+    // ---- two devices at once ----------------------------------------------
+    // Two devices open one child's practice in the same moment, each for a
+    // skill of its own (two parents, a parent and a tablet). Each shows a
+    // problem. A learner's practice has one saved setting, and each screen
+    // reads it, then writes its skill: the write that came second was
+    // refused, and its screen was left with no problem and "Couldn’t save
+    // the learner change" (QA 2026-11-24). The walk's profiles pressed side
+    // by side were that by accident; here it is on purpose.
+    {
+      const width = WIDTHS[0]!;
+      const child = kids.find((entry) => entry.canPractice);
+      const catalog = (await api(who.token, "/catalog/map")).body!;
+      // Two skills of the catalog, whatever the seed's history asked.
+      const pair = [
+        ...new Set(
+          (catalog.templates as { skillId: string }[]).map(
+            (type) => type.skillId,
+          ),
+        ),
+      ].slice(0, 2);
+      const control = "[data-layer-frame] [data-curriculum-practice] button";
+      for (let round = 1; child && pair.length === 2 && round <= 3; round++) {
+        const where = `${slug} ${width}px, ${child.name}, two devices at once (${round})`;
+        const other = who.children.find((kid) => kid.id !== child.id)!.id;
+        const devices: Awaited<ReturnType<typeof open>>[] = [];
+        try {
+          for (const skill of pair) {
+            const device = await open(
+              who,
+              width,
+              {
+                name: `${skill} over Today`,
+                path: `${today}?open=skill:${skill}&for=${child.id}`,
+                ready: "[data-skill-layer]",
+                scope: "[data-layer-frame]",
+              },
+              [],
+              other,
+            );
+            devices.push(device);
+            await need(device.page, `${skill}’s Practice control`, () =>
+              device.page.locator(control).waitFor({ timeout: 30_000 }),
+            );
+            await settle(device.page);
+          }
+          await oneAtATime(child.id, async () => {
+            for (const device of devices) device.seen.practicing = true;
+            await Promise.all(
+              devices.map(({ page }) => page.locator(control).click()),
+            );
+            await Promise.all(
+              devices.map(({ page }) =>
+                need(page, `${child.name}’s practice to open`, () =>
+                  page.waitForURL((url) => FOCUS.test(url.pathname), {
+                    timeout: 30_000,
+                  }),
+                ),
+              ),
+            );
+            await Promise.all(
+              devices.map(({ page, seen }) => problemFor(page, seen)),
+            );
+          });
+          for (const [nth, { page, seen }] of devices.entries()) {
+            const got = servedTo(seen);
+            const ok = got?.status === 200 && !!got.skill;
+            const mine = `${where}, the device that opened ${pair[nth]}`;
+            together.push({ where: mine, served: servedWords(got), ok });
+            if (!ok)
+              fail(
+                `${mine}: ${servedWords(got)}; it asked ${seen.asks.map((entry) => entry.what).join(", ") || "nothing"}; the screen showed ${await screenOf(page)}`,
+              );
+          }
+        } catch (error) {
+          fail(`${where}: ${told(error)}`);
+        } finally {
+          for (const device of devices) await device.context.close();
+        }
+      }
+      const mine = together.filter((entry) =>
+        entry.where.startsWith(`${slug} `),
+      );
+      console.log(
+        `  ${width}px two devices at once: ${mine.length} opened, ${mine.filter((entry) => !entry.ok).length} with no problem`,
+      );
+    }
   }
+
+  // Every skill a child's "not asked yet" sheets listed was pressed in some
+  // walk of the run.
+  if (!NO_WALK)
+    for (const [child, { listed, pressed }] of notAsked) {
+      const missed = [...listed].filter((skill) => !pressed.has(skill));
+      console.log(
+        `${child}: ${listed.size} skills not asked yet listed, ${listed.size - missed.length} pressed`,
+      );
+      if (missed.length)
+        fail(
+          `${child}: skills not asked yet that no walk pressed: ${missed.join(", ")}`,
+        );
+    }
 
   // ---- a tutoring group: a child's record in their parent's own class ----
   // The family's class with another family's child in it keeps its class
@@ -1640,14 +1908,14 @@ try {
 } finally {
   await writeFile(
     `${OUT}/presses.json`,
-    JSON.stringify({ presses, returns }, null, 1),
+    JSON.stringify({ presses, returns, together }, null, 1),
   );
   await browser.close();
   await stack?.stop();
 }
 const wrong = presses.filter((entry) => !entry.ok);
 console.log(
-  `\n${presses.length} practice controls pressed; ${wrong.length} opened someone else’s practice or none. ${returns.length} returns; ${returns.filter((entry) => !entry.ok).length} not where the parent was. ${nodes} screens, layers and sheets read.`,
+  `\n${presses.length} practice controls pressed; ${wrong.length} opened someone else’s practice or none. ${returns.length} returns; ${returns.filter((entry) => !entry.ok).length} not where the parent was. ${together.length} opened by two devices at once; ${together.filter((entry) => !entry.ok).length} with no problem. ${nodes} screens, layers and sheets read.`,
 );
 if (failures.length) {
   console.error(`\n${failures.length} failed:`);
