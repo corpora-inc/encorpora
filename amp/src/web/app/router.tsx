@@ -1894,6 +1894,13 @@ export const router = createRouter({
   defaultErrorComponent: RouterError,
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
+  // Back and Forward show a screen where the reader left it (amp/AGENTS.md,
+  // premium rule 6: nothing appears missing after going away and coming
+  // back): a parent returning from a child's practice is at the same place
+  // on Today, not its top (QA 2026-11-23). A new screen still starts at its
+  // top; a move that keeps the page (`resetScroll: false`, a sheet, an
+  // overlay) keeps its place as before.
+  scrollRestoration: true,
 });
 // The learner a resolved address names is the account's current learner:
 // the router writes it, once per navigation (learner-store.ts).

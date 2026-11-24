@@ -1,34 +1,50 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import type { LiveSignal } from "../../../schools/live/contracts";
 import { Button } from "../../ui/Button";
+import { FitText } from "../../ui/FitText";
 import { Sheet } from "../../ui/Sheet";
 import { agoText, agoWords } from "./format";
 import { observeWidth } from "./layout";
 import { SIGNAL_WORDS, SignalGlyph } from "./SignalGlyph";
 import styles from "./SignalStrip.module.css";
 
-/** A request's width in the strip, and the room the label and the "+N"
- * button take. */
+/** A request's widest in the strip, the gap between two, and the room the
+ * label and the "+N" button take. */
 const CHIP = 264;
 const GAP = 8;
 const MORE = 64;
 const LABEL = 120;
 /** Below this width the label gives its room to the requests. */
 const ROOMY = 560;
+/** A request's narrowest: its mark, a first name and its button. A phone,
+ * with no label, holds two side by side at this; a wider strip keeps more
+ * of a long name. */
+const NARROW = { phone: 168, roomy: 216 };
 
 /**
  * How many requests show side by side, and how wide each is, in `width`
- * px: as many whole requests as fit, oldest first, and a "+N" button for
- * the rest. A phone shows one, as wide as the strip allows.
+ * px: as many whole requests as fit in the strip's one line, oldest first,
+ * and only then a "+N" button for the rest.
+ *
+ * A request's width comes from the strip's width alone, never from how
+ * many are open: the strip's width split evenly among as many as fit at
+ * their narrowest, up to 264 px each. So a request that arrives lands
+ * beside the others, and none of them is resized or moved.
  */
 export function stripFit(width: number, count: number) {
-  const room = width - (width >= ROOMY ? LABEL : 0);
-  const fits = (n: number) => n * CHIP + (n - 1) * GAP;
-  if (count === 0) return { shown: 0, chip: CHIP };
-  if (fits(count) <= room) return { shown: count, chip: CHIP };
-  const shown = Math.max(1, Math.floor((room - MORE) / (CHIP + GAP)));
+  const roomy = width >= ROOMY;
+  const room = width - (roomy ? LABEL : 0);
+  const narrow = roomy ? NARROW.roomy : NARROW.phone;
+  const slots = Math.max(1, Math.floor((room + GAP) / (narrow + GAP)));
   const chip =
-    shown === 1 ? Math.min(CHIP, Math.max(0, room - MORE - GAP)) : CHIP;
+    slots === 1
+      ? // One at a time: always clear of the "+N" button's place.
+        Math.min(CHIP, Math.max(0, room - MORE))
+      : Math.min(CHIP, Math.floor((room - (slots - 1) * GAP) / slots));
+  const fits = Math.max(1, Math.floor((room + GAP) / (chip + GAP)));
+  if (count <= fits) return { shown: count, chip };
+  // More than fit: the "+N" button takes its place at the end.
+  const shown = Math.max(1, Math.floor((room - MORE + GAP) / (chip + GAP)));
   return { shown: Math.min(shown, count), chip };
 }
 
@@ -69,7 +85,17 @@ function Request({
     >
       <SignalGlyph kind={signal.kind} />
       <span className={styles.who}>
-        <span className={styles.name}>{signal.name}</span>
+        {inSheet ? (
+          <span className={styles.name}>{signal.name}</span>
+        ) : (
+          // Two requests share a phone's strip: a name that doesn't fit
+          // its half shows its first words, whole, the rest a tap away.
+          <FitText
+            text={signal.name}
+            label="Name"
+            className={styles.chipName}
+          />
+        )}
         <span className={styles.what}>
           {inSheet ? `${words.what} · ` : ""}
           <span aria-label={agoWords(signal.createdAt, now)}>
@@ -100,9 +126,9 @@ function Request({
  * nothing under it ever moves; with nothing open it says so quietly.
  *
  * Many requests don't scroll sideways, where a mouse can't reach them and
- * a teacher can't see how many wait: as many as fit show, oldest first,
- * and a "+N" button opens all of them in a sheet. The count is always in
- * view.
+ * a teacher can't see how many wait: as many as fit show, oldest first
+ * (two on a phone), and only then a "+N" button opens all of them in a
+ * sheet. The count is always in view.
  */
 export function SignalStrip({
   signals,

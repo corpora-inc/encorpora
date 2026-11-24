@@ -17,6 +17,18 @@ const SLUG = /^[a-z0-9][a-z0-9-]{0,119}$/;
 /** An answer's id: a uuid, or a stored attempt's hex digest. */
 const ATTEMPT = /^[0-9a-f][0-9a-f-]{7,99}$/i;
 
+/**
+ * The address key naming the learner a layer was opened for
+ * (`?open=skill:<id>&for=<learner>`): a parent opens a skill from one
+ * child's block on a screen that shows several children, and the practice
+ * the layer offers is that child's. An id only; whoever reads it checks it
+ * against the family's own children (features/practice/CurriculumPractice).
+ */
+export const FOR_KEY = "for";
+/** A learner's id, as a layer's `for` holds it. */
+export const isLearnerId = (value: unknown): value is string =>
+  typeof value === "string" && UUID.test(value);
+
 /** Each kind: how its id reads, and what it is called. */
 export const ENTITIES = {
   /** A student's record, in their class or school. */
@@ -48,15 +60,30 @@ export const ENTITIES = {
     keys: ["skill"],
   },
   /** A skill of the curriculum. */
-  skill: { id: (id: string) => SLUG.test(id), noun: "skill" },
+  skill: {
+    id: (id: string) => SLUG.test(id),
+    noun: "skill",
+    /** Whose it was opened for (a child's block on a family's Today): the
+     * practice it offers is theirs. It goes with the layer. */
+    keys: [FOR_KEY],
+  },
   /** A problem type's short lesson. */
-  lesson: { id: (id: string) => SLUG.test(id), noun: "lesson" },
+  lesson: {
+    id: (id: string) => SLUG.test(id),
+    noun: "lesson",
+    keys: [FOR_KEY],
+  },
   /** One area of a learner's level (a strand, or `overall`): its skills on
    * the grade scale, over the page whose level it is. */
-  area: { id: (id: string) => SLUG.test(id), noun: "area" },
+  area: { id: (id: string) => SLUG.test(id), noun: "area", keys: [FOR_KEY] },
 } as const;
 
 export type EntityKind = keyof typeof ENTITIES;
+
+/** Whether a kind's layer reads an address key beside its id. */
+export const readsKey = (kind: EntityKind, key: string) =>
+  "keys" in ENTITIES[kind] &&
+  (ENTITIES[kind] as { keys: readonly string[] }).keys.includes(key);
 
 /** The address keys a stack's layers read, beyond `open`, that leave with
  * the last layer that reads them. */

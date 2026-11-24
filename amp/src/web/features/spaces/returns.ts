@@ -1,5 +1,11 @@
 import { returnTarget, VIEW_KEYS } from "../../lib/return-to";
-import { OPEN_KEY, readStack, writeStack } from "../../nav/entities";
+import {
+  FOR_KEY,
+  isLearnerId,
+  OPEN_KEY,
+  readStack,
+  writeStack,
+} from "../../nav/entities";
 import { spaceOfPath } from "./space";
 
 /**
@@ -23,6 +29,8 @@ export const RETURN_LIMIT = 2048;
 const KEPT = new Set<string>([
   ...VIEW_KEYS,
   OPEN_KEY,
+  // Whose a layer was opened for goes with its stack (nav/entities.ts).
+  FOR_KEY,
   "skill",
   "learner",
   "profile",
@@ -90,6 +98,10 @@ export function appReturn(
     if (key === OPEN_KEY) {
       const stack = writeStack(readStack(raw));
       if (stack) kept.set(key, stack);
+      continue;
+    }
+    if (key === FOR_KEY) {
+      if (isLearnerId(raw)) kept.set(key, raw);
       continue;
     }
     if (raw.length <= 200) kept.set(key, raw);

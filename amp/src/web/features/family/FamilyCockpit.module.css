@@ -1,0 +1,40 @@
+/* Help a child opened, at the end of their name's line on a phone
+   (FamilyCockpit.tsx `HelpMarks`). Four places of one fixed width, held
+   whether or not anything shows in them: a mark arrives in its own place
+   and nothing beside it moves. */
+.helpMarks {
+  display: grid;
+  grid-template-columns: repeat(4, 16px);
+  align-items: center;
+  height: 18px;
+  font-variant-numeric: var(--numeric);
+}
+.helpMark {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 18px;
+}
+.helpInk {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  color: var(--color-on-surface);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  line-height: 18px;
+}
+/* The narrowest phones keep the name its room: the mark alone. From an
+   ordinary phone, each mark has its count beside it (two digits fit). */
+.helpCount {
+  display: none;
+}
+@media (min-width: 375px) {
+  .helpMarks {
+    grid-template-columns: repeat(4, 32px);
+  }
+  .helpCount {
+    display: inline;
+  }
+}

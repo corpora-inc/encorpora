@@ -13,7 +13,10 @@
  *    entry without input, and the control, the totals and each tile, the
  *    requests strip and every student's row hold their boxes. Starting
  *    never moves the control or anything above it. Stop asks first, then
- *    opens that session's report.
+ *    opens that session's report. All the while every skill's name is
+ *    whole or cut after a whole word (never inside one, never a hover
+ *    title), a cut name's tap shows all of it, and from 390 px two open
+ *    requests both show in the strip, with no "+1".
  * 3. At 1280 px: the roster scrolled and sorted, a student opened as the
  *    student layer and closed, and the roster's scroll, the page's and the
  *    sort are exactly as they were.
@@ -24,8 +27,9 @@
  *   AMP_SIM_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/<db> \
  *     npx tsx scripts/verify-live-cockpit-screen-ui.ts \
  *       --origin http://127.0.0.1:4830 --api http://127.0.0.1:4831
- *       [--shots <dir>]   every state at 390 and 1280 light and dark, and
- *                         live and the report at 320 and 768
+ *       [--shots <dir>]   every state at 390 and 1280 light and dark, live
+ *                         and the report at 320 and 768, and the report on
+ *                         paper (report-print.pdf, report-print.png)
  *       [--video <dir>]   a recording of the 390 and 1280 runs
  *       [--updates 200] [--skip-ended] [--stills-only]
  *
@@ -34,7 +38,7 @@
  */
 import assert from "node:assert/strict";
 import { spawn, type ChildProcess } from "node:child_process";
-import { mkdir, rename } from "node:fs/promises";
+import { mkdir, rename, writeFile } from "node:fs/promises";
 import {
   chromium as rawChromium,
   type Browser,
@@ -42,6 +46,7 @@ import {
   type Page,
 } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
+import { cutNameOpens, skillNames } from "./live-cockpit-checks";
 import {
   PERSONA_PASSPHRASE,
   personaEmail,
@@ -457,9 +462,22 @@ async function liveRun(
   let before = await boxes(page);
   let texts = await rowTexts(page);
   let updates = 0;
+  let rounds = 0;
+  const named = { read: 0, whole: 0, cut: 0, clipped: 0 };
+  const names = async () => {
+    const result = await skillNames(page);
+    named.read += result.total;
+    named.whole += result.whole;
+    named.cut += result.cut;
+    named.clipped += result.clipped;
+    for (const failure of result.failures.slice(0, 5))
+      fail(`${width}px: ${failure}`);
+  };
   const deadline = Date.now() + 8 * 60_000;
   while (updates < UPDATES && Date.now() < deadline) {
     await page.waitForTimeout(400);
+    // The names change as students move on: read as they do.
+    if (rounds++ % 15 === 0) await names();
     const next = await rowTexts(page);
     for (const [id, text] of Object.entries(next))
       if (texts[id] !== undefined && texts[id] !== text) updates++;
@@ -470,6 +488,32 @@ async function liveRun(
   }
   if (updates < UPDATES)
     fail(`${width}px: only ${updates} row updates arrived`);
+  await names();
+  if (named.read === 0) fail(`${width}px: no skill was named`);
+  if (width >= 390 && named.clipped > 0)
+    fail(`${width}px: ${named.clipped} name(s) cut inside a word`);
+  // Two open requests both show from 390 px, and only a third brings "+N".
+  const open = (
+    (await call(token, "GET", `/school/classes/${classId}/live`)) as {
+      signals: unknown[];
+    }
+  ).signals.length;
+  const strip = await page.evaluate(() => {
+    const strip = document.querySelector("[data-live-strip]");
+    return {
+      shown: strip?.querySelectorAll("[data-signal]").length ?? 0,
+      more: [...(strip?.querySelectorAll("button") ?? [])].some((button) =>
+        /^\+\d+$/.test(button.textContent ?? ""),
+      ),
+    };
+  });
+  console.log(
+    `${width}px: ${named.read} skill names read, ${named.whole} whole, ${named.cut} cut after a whole word, ${named.clipped} with a first word wider than the line; ${open} request(s) open, ${strip.shown} shown${strip.more ? ' and "+N"' : ""}`,
+  );
+  if (width >= 390 && open === 2 && (strip.shown !== 2 || strip.more))
+    fail(`${width}px: 2 requests open, ${strip.shown} shown`);
+  if (strip.more !== strip.shown < open)
+    fail(`${width}px: ${open} open, ${strip.shown} shown, "+N" ${strip.more}`);
   // Requests: answer whatever is open (a hand, a forgotten picture).
   for (const name of ["Got it", "Reset"]) {
     const button = page
@@ -486,6 +530,8 @@ async function liveRun(
   console.log(`${width}px: ${updates} row updates, CLS ${cls.toFixed(4)}`);
   if (cls > 0) fail(`${width}px: layout shift ${cls.toFixed(4)} while live`);
   await shot(page, `live-${width}`);
+  // A cut name's tap shows all of it over the page, and nothing moves.
+  await cutNameOpens(page, () => boxes(page), failures, `${width}px`);
   if (width === 1280) await layerKeepsCockpit(page);
   // Stop asks first, then opens the report.
   await page.getByRole("button", { name: "Stop" }).click();
@@ -498,12 +544,84 @@ async function liveRun(
     fail(`${width}px: Stop landed on ${page.url()}`);
   await page.waitForTimeout(800);
   await shot(page, `report-${width}`);
+  await reportSkills(page, `${width}px`);
   const report = new URL(page.url()).pathname;
   const file = await page.video()?.path();
   await context.close();
   if (file && video)
     await rename(file, `${video}/start-to-report-${width}.webm`);
   return report;
+}
+
+/** The report's "Every student": each student's skills are named whole
+ * beside them (wrapping inside the row, never cut, never a hover title),
+ * on screen and on paper. */
+async function reportSkills(page: Page, where: string) {
+  const read = () =>
+    page.evaluate(() => {
+      const lists = [
+        ...document.querySelectorAll<HTMLElement>("[data-report-skills]"),
+      ];
+      const problems: string[] = [];
+      for (const list of lists) {
+        const cell = list.closest("td, dd") ?? list;
+        const frame = cell.getBoundingClientRect();
+        const style = getComputedStyle(list);
+        const cellStyle = getComputedStyle(cell);
+        if (frame.width === 0 || frame.height === 0)
+          problems.push("a skills cell has no box");
+        if (
+          style.visibility !== "visible" ||
+          cellStyle.visibility !== "visible"
+        )
+          problems.push("a skills cell is hidden");
+        if (style.whiteSpace === "nowrap" || style.textOverflow === "ellipsis")
+          problems.push("a skills cell cuts its names");
+        for (const link of list.querySelectorAll("a"))
+          for (const rect of link.getClientRects())
+            if (
+              rect.right > frame.right + 0.5 ||
+              rect.left < frame.left - 0.5 ||
+              rect.bottom > frame.bottom + 0.5
+            ) {
+              problems.push(`"${link.textContent}" runs past its cell`);
+              break;
+            }
+      }
+      const hover = document.querySelectorAll(
+        "[data-session-report] [data-report-skills][title], [data-session-report] [data-report-skills] [title]",
+      ).length;
+      if (hover) problems.push(`${hover} hover title(s) on skills`);
+      return {
+        lists: lists.length,
+        names: lists.reduce(
+          (sum, list) => sum + list.querySelectorAll("a").length,
+          0,
+        ),
+        problems: [...new Set(problems)],
+        sideways:
+          document.documentElement.scrollWidth -
+          document.documentElement.clientWidth,
+      };
+    });
+  const screen = await read();
+  for (const problem of screen.problems) fail(`${where} report: ${problem}`);
+  if (screen.lists === 0)
+    fail(`${where} report: no student's skills are named`);
+  if (screen.sideways > 0)
+    fail(`${where} report: the page scrolls sideways by ${screen.sideways}px`);
+  await page.emulateMedia({ media: "print" });
+  const paper = await read();
+  for (const problem of paper.problems)
+    fail(`${where} report on paper: ${problem}`);
+  if (paper.lists !== screen.lists || paper.names !== screen.names)
+    fail(
+      `${where} report on paper: ${paper.names} skills beside ${paper.lists} students (on screen ${screen.names} beside ${screen.lists})`,
+    );
+  await page.emulateMedia({ media: "screen" });
+  console.log(
+    `${where}: the report names ${screen.names} skills whole beside ${screen.lists} students, on screen and on paper`,
+  );
 }
 
 // ---- 3. a student layer leaves the cockpit as it was ------------------------
@@ -625,6 +743,23 @@ async function stills(
       await page.screenshot({ path: `${shots}/sessions-${suffix}.png` });
       await context.close();
     }
+  // The report on paper: the sheet itself (Letter), and the same layout as
+  // a picture at the sheet's width.
+  {
+    const { context, page } = await openToday(browser, state, report, 1280, {
+      ready: "[data-session-report]",
+    });
+    await page.waitForTimeout(800);
+    await page.emulateMedia({ media: "print" });
+    await writeFile(
+      `${shots}/report-print.pdf`,
+      await page.pdf({ format: "Letter", printBackground: true }),
+    );
+    await page.setViewportSize({ width: 816, height: 1056 });
+    await page.waitForTimeout(400);
+    await shot(page, "report-print");
+    await context.close();
+  }
   // Resting and busy, dark; just started, every width already.
   await rest(token, classId);
   for (const width of [390, 1280]) {

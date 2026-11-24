@@ -33,6 +33,27 @@ import { familyCockpit, loadFamilyCockpit } from "../cockpit-chunk";
  * shift, one frame on a cold load) are measured in a real browser by
  * scripts/verify-family-live-ui.ts. */
 
+// The first test holds the cockpit's code back until it has looked, and
+// counts how often `use` is asked.
+const chunk = vi.hoisted(() => {
+  let open = () => {};
+  const gate = new Promise<void>((resolve) => {
+    open = resolve;
+  });
+  return { held: false, gate, open, asked: 0 };
+});
+vi.mock("react", async (original) => {
+  const react = await original<typeof import("react")>();
+  const use: typeof react.use = (usable) => {
+    chunk.asked++;
+    return react.use(usable);
+  };
+  return { ...react, use };
+});
+vi.mock("../FamilyCockpit", async (original) => {
+  if (chunk.held) await chunk.gate;
+  return original<typeof import("../FamilyCockpit")>();
+});
 vi.mock("../../live/useLiveClass", async () => {
   const { useQuery } = await import("@tanstack/react-query");
   return {
@@ -134,12 +155,14 @@ const kids = [
   // Not started.
   row(3, "Theo"),
 ];
+const totalsOf = (rows: readonly LiveRow[]) =>
+  liveTotals(rows, { now: NOW, startedAt: running.startedAt });
 const snapshot = (patch: Partial<LiveSnapshot> = {}): LiveSnapshot => ({
   serverNow: new Date(NOW).toISOString(),
   session: running,
   rules: LIVE_RULES,
   rows: kids,
-  totals: liveTotals(kids, { now: NOW, startedAt: running.startedAt }),
+  totals: totalsOf(kids),
   signals: [],
   can: { manage: true },
   ...patch,
@@ -223,10 +246,54 @@ async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
 /** The words a family never reads on its own screens. */
 const FOREIGN = /\bstudents?\b|\bclass(?:es|room)?\b|\bteachers?\b/i;
 
+// First in the file: the cockpit's code is not in yet.
+test("a session started elsewhere while Today is open: the cockpit's code arrives late, and React has nothing to say", async () => {
+  const said = vi.spyOn(console, "error");
+  chunk.held = true;
+  let waiting = 0;
+  try {
+    await mount(snapshot({ session: null, rows: [] }));
+    expect(document.querySelector('[data-family-live="rest"]')).toBeTruthy();
+    // At rest, none of the roster's code.
+    expect(familyCockpit()).toBeNull();
+    // The other parent starts it: the stream brings the session here, and
+    // the cockpit's place is held while its code is on the way.
+    await act(async () => {
+      queryClient.setQueryData(liveKey(auth, place), snapshot());
+    });
+    await waitFor(() =>
+      expect(
+        document.querySelector('[data-family-live="cockpit"]'),
+      ).toBeTruthy(),
+    );
+    expect(familyCockpit()).toBeNull();
+    expect(document.querySelector("[data-cockpit]")).toBeNull();
+    // It waited by asking `use`.
+    waiting = chunk.asked;
+    expect(waiting).toBeGreaterThan(0);
+  } finally {
+    await act(async () => {
+      chunk.open();
+    });
+  }
+  await waitFor(() =>
+    expect(document.querySelector('[data-cockpit="live"]')).toBeTruthy(),
+  );
+  expect(familyCockpit()).not.toBeNull();
+  expect(document.querySelectorAll("[data-live-row]").length).toBe(3);
+  // React's rule: a component that waited with `use` asks it again in the
+  // render that finishes. The cockpit did, with its code in.
+  expect(chunk.asked).toBeGreaterThan(waiting);
+  // What breaking the rule brings, when the page's other redraws fall a
+  // certain way between the two renders (so it was seen once in UAT, not
+  // every time): "This library called use() to suspend in a previous
+  // render but did not call use() when it finished".
+  expect(said.mock.calls.map((call) => String(call[0]))).toEqual([]);
+});
+
 test("at rest: one quiet Start practice, and none of the roster's code", async () => {
   await mount(snapshot({ session: null, rows: [] }));
   expect(document.querySelector('[data-family-live="rest"]')).toBeTruthy();
-  expect(familyCockpit()).toBeNull();
   expect(document.querySelector("[data-live-roster]")).toBeNull();
   expect(document.querySelector("[data-live-totals]")).toBeNull();
   fireEvent.click(screen.getByRole("button", { name: "Start practice" }));
@@ -278,6 +345,65 @@ test("levels follow each child's own setting, in grade words", async () => {
   const wren = document.querySelector(`[data-live-row="${person(2)}"]`)!;
   expect(wren.textContent).not.toContain("Gr");
   expect(wren.textContent).not.toMatch(/\d\.\d/);
+});
+
+test("on a phone a child's row says they opened help, each kind in a place of its own", async () => {
+  Object.defineProperty(window, "innerWidth", {
+    configurable: true,
+    value: 390,
+  });
+  const helped = [{ ...kids[0]!, hints: 2, lessons: 1 }, kids[1]!, kids[2]!];
+  await mount(snapshot({ rows: helped, totals: totalsOf(helped) }));
+  await waitFor(() =>
+    expect(document.querySelector('[data-layout="phone"]')).toBeTruthy(),
+  );
+  const marks = (n: number) =>
+    document.querySelector(`[data-live-row="${person(n)}"] [data-help-marks]`)!;
+  // Every child's row holds the four places, used or not: a hint's at the
+  // row's end, beside the figures.
+  for (const n of [1, 2, 3])
+    expect(
+      [...marks(n).querySelectorAll("[data-help]")].map((place) =>
+        place.getAttribute("data-help"),
+      ),
+    ).toEqual(["videos", "examples", "lessons", "hints"]);
+  const opened = (n: number) =>
+    [...marks(n).querySelectorAll("[data-opened]")].map(
+      (place) => `${place.getAttribute("data-help")} ${place.textContent}`,
+    );
+  expect(opened(1)).toEqual(["lessons 1", "hints 2"]);
+  expect(marks(1).getAttribute("aria-label")).toBe(
+    "Help opened: 2 hints, 1 lesson",
+  );
+  expect(opened(2)).toEqual([]);
+  expect(marks(2).getAttribute("aria-hidden")).toBe("true");
+  // A hint opened on the child's own device arrives in its place.
+  const next = [helped[0]!, { ...helped[1]!, hints: 1 }, helped[2]!];
+  await act(async () => {
+    queryClient.setQueryData(
+      liveKey(auth, place),
+      snapshot({ rows: next, totals: totalsOf(next) }),
+    );
+  });
+  await waitFor(() => expect(opened(2)).toEqual(["hints 1"]));
+  expect(marks(2).getAttribute("aria-label")).toBe("Help opened: 1 hint");
+  expect(document.body.textContent).not.toMatch(FOREIGN);
+});
+
+test("with room for the Help column, a row has no marks beside the name", async () => {
+  const helped = [{ ...kids[0]!, hints: 2 }, kids[1]!, kids[2]!];
+  await mount(snapshot({ rows: helped, totals: totalsOf(helped) }));
+  await waitFor(() =>
+    expect(document.querySelector('[data-layout="tablet"]')).toBeTruthy(),
+  );
+  expect(document.querySelector("[data-help-marks]")).toBeNull();
+  expect(
+    document
+      .querySelector(
+        `[data-live-row="${person(1)}"] [role="img"][aria-label^="Help:"]`,
+      )
+      ?.getAttribute("aria-label"),
+  ).toBe("Help: 2 hints, 0 lessons, 0 explanations, 0 videos");
 });
 
 test("a raised hand: Got it for a parent who may answer; without, it shows", async () => {

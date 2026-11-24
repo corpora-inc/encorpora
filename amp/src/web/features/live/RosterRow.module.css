@@ -10,6 +10,12 @@
 .row[data-density="tablet"] {
   height: 56px;
 }
+/* The row is its own layer: the link's reach sits behind what it shows. */
+.row {
+  position: relative;
+  isolation: isolate;
+}
+/* Nothing here is positioned: the reach below is placed against the row. */
 .body {
   display: flex;
   align-items: center;
@@ -17,21 +23,35 @@
   box-sizing: border-box;
   height: 100%;
   min-width: 0;
-  /* The hover tint reaches past the text into the gutter, never the edge. */
-  margin-inline: calc(-1 * var(--space-2));
-  padding-inline: var(--space-2);
-  border-radius: var(--radius-small);
+  /* What the row shows lets a tap through to the reach behind it. */
+  pointer-events: none;
+}
+/* The link is the name; its reach is the row. The tint and the focus ring
+   are the reach's own: a gutter past the text, never to the edge. */
+a.nameLine {
   color: inherit;
   text-decoration: none;
-}
-a.body {
   cursor: pointer;
+  pointer-events: auto;
 }
-a.body:hover {
-  background: var(--color-surface-hover);
+a.nameLine::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  inset-inline: calc(-1 * var(--space-2));
+  border-radius: var(--radius-small);
+}
+a.nameLine:hover {
   text-decoration: none;
 }
-a.body:focus-visible {
+a.nameLine:hover::after {
+  background: var(--color-surface-hover);
+}
+a.nameLine:focus-visible {
+  outline: none;
+}
+a.nameLine:focus-visible::after {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
@@ -70,15 +90,34 @@ a.body:focus-visible {
 .badge:empty {
   display: none;
 }
+/* The name line's end (RosterRow's `aside`): at the far edge, whatever the
+   name and its badge do. */
+.aside {
+  display: flex;
+  flex: none;
+  align-items: center;
+  margin-inline-start: auto;
+}
+/* A cut skill is its own thing to tap (ui/FitText), beside the link and
+   never inside it. Its touch area is the line and the room under it: the
+   name above stays the student's. */
+.detail button {
+  pointer-events: auto;
+}
+/* One line: a status in words, then the skill in the room that is left
+   (it never grows past its line), the level and the time after it. */
 .detail {
+  --fit-touch-top: -1px;
+  --fit-touch-height: 28px;
+  --fit-touch-shift: 0;
+  display: flex;
   min-width: 0;
-  overflow: hidden;
+  height: 1.3em;
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   font-variant-numeric: var(--numeric);
   line-height: 1.3;
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .facts {
   display: flex;

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSession } from "../../lib/session";
 import { Button } from "../../ui/Button";
 import { sessionsOptions } from "../live/api";
-import { percentText } from "../live/format";
+import { percentText, sessionLength } from "../live/format";
 import { familyHref } from "./FamilyFrame";
 import styles from "./FamilyLive.module.css";
 
@@ -55,13 +55,9 @@ export function PastSessions({
       </h2>
       <ul className={styles.sessions}>
         {ended.slice(0, shown).map((row) => {
-          const minutes = Math.max(
-            0,
-            Math.round(
-              (Date.parse(row.endedAt ?? row.endsAt) -
-                Date.parse(row.startedAt)) /
-                60_000,
-            ),
+          const length = sessionLength(
+            row.startedAt,
+            row.endedAt ?? row.endsAt,
           );
           return (
             <li key={row.id}>
@@ -75,7 +71,7 @@ export function PastSessions({
                   {when(row.startedAt)}
                 </span>
                 <span className={styles.sessionFacts}>
-                  {minutes < 1 ? "under a minute" : `${minutes} min`}
+                  {length}
                   {row.totals && (
                     <>
                       {" · "}

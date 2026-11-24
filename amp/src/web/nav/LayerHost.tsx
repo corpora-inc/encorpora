@@ -21,13 +21,16 @@ import { WorkReplaySlot } from "../features/school/classes/WorkReplaySlot";
 import { skillCatalogOptions } from "../lib/learning-view";
 import { ENTITIES, staffOnly, workParts, type Entity } from "./entities";
 import { useLayers } from "./links";
-import { MOTION_MS, useLayerStore } from "./layer-store";
+import { MOTION_MS, useLayerStore, type Layer as Opened } from "./layer-store";
 import { LayerFrame, type Moving } from "../ui/LayerFrame";
 import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
 import { strandNames } from "../BirthYearPrompt";
-import { CurriculumPractice } from "../features/practice/CurriculumPractice";
+import {
+  CurriculumPractice,
+  type OpenedFor,
+} from "../features/practice/CurriculumPractice";
 
 /**
  * The layers open over a page (nav/layer-store.ts), the page under them
@@ -159,6 +162,30 @@ export function LayerHost({
 const replays = (entity: Entity) =>
   entity.kind === "work" || entity.kind === "own-work";
 
+/**
+ * Whose a layer is, for the practice it offers, from the stack itself: the
+ * learner it was opened for (a child's block on a family's Today; what
+ * opens over that layer carries them too), else the roster person whose
+ * record or answer it sits over. Nothing: the page's own subject, if it
+ * names one
+ * (features/practice/CurriculumPractice.tsx). Never the learner last
+ * selected on this device.
+ */
+export function openedFor(
+  entity: Opened,
+  below: readonly Opened[],
+): OpenedFor | undefined {
+  if (entity.for) return { learner: entity.for };
+  // The nearest record or answer under it.
+  const under = below
+    .filter((layer) => layer.kind === "work" || layer.kind === "student")
+    .at(-1);
+  if (!under) return undefined;
+  return {
+    person: under.kind === "work" ? workParts(under.id).student : under.id,
+  };
+}
+
 /** A layer's name in the trail: its title, or its kind while that loads. */
 function LayerTitle({ entity }: { entity: Entity }) {
   const title = useLayerTitle(entity);
@@ -176,8 +203,8 @@ function Layer({
   skillActions,
   area,
 }: {
-  entity: Entity;
-  below: Entity[];
+  entity: Opened;
+  below: Opened[];
   org?: string;
   learner?: string;
   /** The whole overlay away (a lesson's failure, closed). */
@@ -193,6 +220,8 @@ function Layer({
   // Every layer here is the frame's panel (its Sheet or Dialog draws into
   // it): open while it is the top.
   const underAnswer = false;
+  // Whose practice this layer offers, where the stack says.
+  const opened = openedFor(entity, below);
   switch (entity.kind) {
     case "student":
       return (
@@ -220,7 +249,7 @@ function Layer({
           back={back}
         >
           {skillActions?.(entity.id) ?? (
-            <CurriculumPractice filter={{ skill: entity.id }} />
+            <CurriculumPractice filter={{ skill: entity.id }} opened={opened} />
           )}
         </SkillLayer>
       );
@@ -261,7 +290,10 @@ function Layer({
               aboveLayers
               actions={(skill) =>
                 lessonActions?.(entity.id, skill) ?? (
-                  <CurriculumPractice filter={{ skill, template: entity.id }} />
+                  <CurriculumPractice
+                    filter={{ skill, template: entity.id }}
+                    opened={opened}
+                  />
                 )
               }
             />
@@ -286,6 +318,7 @@ function Layer({
         <AreaLayer
           area={entity.id}
           source={area}
+          opened={opened}
           open={!underAnswer}
           onClose={close}
           back={back}

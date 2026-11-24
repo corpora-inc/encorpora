@@ -8,19 +8,30 @@ import type { FamilyCockpitProps } from "./FamilyCockpit";
  * snapshot, so the first paint has the cockpit in place) or when a parent
  * first touches Start (so it is there by the time the session is).
  */
-let loaded: ComponentType<FamilyCockpitProps> | null = null;
-let pending: Promise<void> | null = null;
+type Cockpit = ComponentType<FamilyCockpitProps>;
+/** The chunk's promise, marked settled the way React's `use` reads one
+ * (`status`, `value`): asked for after the chunk is in, it answers in the
+ * same render, with no wait and no fallback frame. */
+type Chunk = Promise<Cockpit> & { status?: "fulfilled"; value?: Cockpit };
 
-export function loadFamilyCockpit(): Promise<void> {
-  pending ??= import("./FamilyCockpit").then((module) => {
+let loaded: Cockpit | null = null;
+let pending: Chunk | null = null;
+
+export function loadFamilyCockpit(): Promise<Cockpit> {
+  if (pending) return pending;
+  const chunk: Chunk = import("./FamilyCockpit").then((module) => {
     loaded = module.FamilyCockpit;
+    chunk.status = "fulfilled";
+    chunk.value = loaded;
+    return loaded;
   });
+  pending = chunk;
   // A failed load is tried again on the next ask.
-  pending.catch((failure: unknown) => {
+  chunk.catch((failure: unknown) => {
     console.error("The family’s live view didn’t load", failure);
-    pending = null;
+    if (pending === chunk) pending = null;
   });
-  return pending;
+  return chunk;
 }
 
 /** The cockpit's component once its chunk is in; null before. */

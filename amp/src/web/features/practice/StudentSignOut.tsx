@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { signOut } from "../../auth";
+import { closesBack, closeTo } from "../../lib/return-to";
 import { useAccountOnHand } from "../../lib/session";
 import {
   handedHome,
@@ -45,16 +46,36 @@ export function StudentSignOut({ inBar = false }: { inBar?: boolean }) {
  * there hands the device back to the parent on the way
  * (lib/family-practice-history.ts), with no reload, and the icon holds the
  * bar's action slot from the first paint, so nothing moves.
+ *
+ * Handed over from that very screen a moment ago (the entry before this
+ * one), the press goes Back to it, as the browser's Back does: the parent
+ * is where they were on it, at the same scroll position, never at its top
+ * (QA 2026-11-23). From anywhere else it is the link it says it is.
  */
 function HandedHome({ inBar }: { inBar: boolean }) {
   const label = handedReturnName() ?? "Family";
   // The screen itself, by its path: what was open over it (a layer) is
   // the layer store's (nav/layer-store.ts), never carried in an address.
   const home = new URL(handedHome(), "https://amp.invalid").pathname;
+  const router = useRouter();
   return (
     <Link
       to="/$"
       params={{ _splat: home.slice(1) }}
+      onClick={(event) => {
+        if (
+          event.defaultPrevented ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0 ||
+          !closesBack(router.history.location, home, home)
+        )
+          return;
+        event.preventDefault();
+        closeTo(router, home, home);
+      }}
       // Hovering must never load the parent's screen with the child's
       // sign-in; the press itself hands the device back.
       preload={false}

@@ -4,7 +4,10 @@ import type { ComponentProps, MouseEvent, ReactNode } from "react";
 import { closeTo } from "../lib/return-to";
 import {
   closeDepth,
+  FOR_KEY,
+  isLearnerId,
   OPEN_KEY,
+  readsKey,
   readStack,
   writeStack,
   type Entity,
@@ -15,6 +18,7 @@ import {
   pathwaysSkill,
   pushed,
   stackOf,
+  swapped,
   useLayerStore,
   type Layer,
 } from "./layer-store";
@@ -26,18 +30,27 @@ const skillKey = (raw: unknown) =>
   typeof raw === "string" && /^[\w.:-]{1,100}$/.test(raw) ? raw : undefined;
 const replays = (layer: Entity) =>
   layer.kind === "work" || layer.kind === "own-work";
+/** A layer that says whose it was opened for (`?for=`). */
+const namesLearner = (layer: Entity) => readsKey(layer.kind, FOR_KEY);
 
 /**
  * The layers a link from before the layer store names (`?open=`, with an
- * answer's `?skill=`), or none. Read once: the router moves them into the
- * store and drops them from the address (`settleLegacyLayers`).
+ * answer's `?skill=` and the learner a skill, a lesson or an area was opened
+ * for, `?for=`), or none. Read once: the router moves them into the store
+ * and drops them from the address (`settleLegacyLayers`).
  */
 export function legacyLayers(search: Search): Layer[] {
   const stack: Layer[] = readStack(search[OPEN_KEY]);
   const skill = skillKey(search.skill);
   const top = stack.at(-1);
   if (top && skill && replays(top)) stack[stack.length - 1] = { ...top, skill };
-  return stack;
+  // One learner for the stack: what opens over a child's layer is theirs.
+  const learner = search[FOR_KEY];
+  return isLearnerId(learner)
+    ? stack.map((layer) =>
+        namesLearner(layer) ? { ...layer, for: learner } : layer,
+      )
+    : stack;
 }
 
 /**
@@ -52,11 +65,13 @@ export function shareableHref(
 ) {
   const params = new URLSearchParams(searchStr);
   params.delete(OPEN_KEY);
+  params.delete(FOR_KEY);
   const top = stack.at(-1);
   if (top && replays(top)) params.delete("skill");
   const open = writeStack(stack);
   if (open) params.set(OPEN_KEY, open);
   if (top?.skill && replays(top)) params.set("skill", top.skill);
+  if (top?.for && namesLearner(top)) params.set(FOR_KEY, top.for);
   const query = params.toString();
   return `${pathname}${query ? `?${query}` : ""}`;
 }
@@ -82,6 +97,8 @@ export function settleLegacyLayers(
   const params = new URLSearchParams(location.searchStr);
   params.delete(OPEN_KEY);
   if (stack.some(replays)) params.delete("skill");
+  // Whose the layers are goes into the store with them: no trace is left.
+  params.delete(FOR_KEY);
   const query = params.toString();
   return {
     scope: layerScope(location.pathname, accountId),
@@ -195,7 +212,7 @@ export function useLayers() {
       apply(stack.slice(0, closeDepth(stack, stack.length - 1)), -1),
     closeLayer: (index: number) =>
       apply(stack.slice(0, closeDepth(stack, index)), -1),
-    replaceTop: (layer: Layer) => apply([...stack.slice(0, -1), layer], 1),
+    replaceTop: (layer: Layer) => apply(swapped(stack, layer), 1),
   };
 }
 
@@ -218,18 +235,24 @@ export function EntityLink({
   entity: Entity | Entity[];
   /** Swap the top layer instead of opening over it (Previous, Next). */
   replace?: boolean;
-  /** What the layer reads beside its id (an answer's `skill` for Previous
-   * and Next). */
-  with?: { skill?: string };
+  /** What the layer reads beside its id: an answer's `skill` for Previous
+   * and Next; `for`, the learner a skill, a lesson or an area is opened for
+   * (a child's block on a screen that shows several children). */
+  with?: { skill?: string; for?: string };
   children: ReactNode;
 } & Omit<ComponentProps<"a">, "href" | "ref">) {
   const layers = useLayers();
   const list: Layer[] = [entity].flat();
   if (extra?.skill)
     list[list.length - 1] = { ...list.at(-1)!, skill: extra.skill };
+  const learner = extra?.for;
+  if (learner)
+    list.forEach((layer, index) => {
+      if (namesLearner(layer)) list[index] = { ...layer, for: learner };
+    });
   const next =
     replace && list.length === 1
-      ? [...layers.stack.slice(0, -1), list[0]!]
+      ? swapped(layers.stack, list[0]!)
       : list.reduce(pushed, layers.stack);
   return (
     <a

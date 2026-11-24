@@ -26,6 +26,7 @@ import {
   makeScript,
   random,
   randomChange,
+  withSignals,
   SESSION_MS,
   session,
   stateAt,
@@ -139,7 +140,12 @@ declare global {
   interface Window {
     /** The zero-shift check's hook (scripts/verify-live-cockpit-ui.ts):
      * one random change per call, as a stream would bring it. */
-    ampLiveFixture?: { change: (seed: number) => void; ready: true };
+    ampLiveFixture?: {
+      change: (seed: number) => void;
+      /** Exactly this many open requests. */
+      signals: (count: number) => void;
+      ready: true;
+    };
   }
 }
 
@@ -155,6 +161,7 @@ export function LiveStateSpecimen({ id }: { id: LiveStateId }) {
           ...current,
           ...randomChange(current, random(seed)),
         })),
+      signals: (count) => setState((current) => withSignals(current, count)),
     };
     return () => {
       delete window.ampLiveFixture;

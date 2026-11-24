@@ -36,6 +36,10 @@ export type TodayStudent = {
   /** Spaced review over the last few weeks. */
   review: number;
   reviewIndependent: number;
+  /** Skills gained this week, by the rule of the screen that reads it: a
+   * class's as its grade counts them (shown twice on their own, above the
+   * reach), a family's as earned (`learning/earned.ts`: right once without
+   * help), which is what its week's "skills earned" sums. */
   objectivesThisWeek: number;
 };
 export type TodayInput = {
@@ -159,6 +163,12 @@ function readyForMore(
 }
 
 const capital = (text: string) => text[0]!.toUpperCase() + text.slice(1);
+/** A family's count of skills, in the word its Today defines once (the
+ * key's "Earned: right once without help") and its week sums: "1 skill
+ * earned", "10 skills earned". A family's count is the earned count, never
+ * a grade's "shown twice on their own" (`skillsShownWords`). */
+export const skillsEarnedWords = (count: number) =>
+  `${count.toLocaleString("en-US")} ${count === 1 ? "skill" : "skills"} earned`;
 /** A family's day, as a parent reads it: everyone worked, or each child who
  * did, by name. */
 function familyDay(
@@ -192,7 +202,7 @@ function familyDay(
           ? `${student.first} practiced ${minutesWords(student.todayMinutes)} today`
           : `${student.first} practiced today`,
       detail: student.objectivesThisWeek
-        ? `${skillsShownWords(student.objectivesThisWeek)} this week.`
+        ? `${skillsEarnedWords(student.objectivesThisWeek)} this week.`
         : `${capital(minutesWords(student.weekMinutes))} so far this week.`,
       students: people([student]),
       action: {
