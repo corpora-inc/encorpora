@@ -176,7 +176,10 @@ const OBSERVER = `(() => {
   try {
     new PerformanceObserver((list) => {
       for (const e of list.getEntries())
-        if (!e.hadRecentInput) w.__shifts.push({ t: Math.round(e.startTime - t0), v: e.value });
+        if (!e.hadRecentInput) w.__shifts.push({ t: Math.round(e.startTime - t0), v: e.value, what: (e.sources || []).map((s) => {
+          const n = s.node && s.node.nodeType === 1 ? s.node : s.node && s.node.parentElement;
+          return n ? n.tagName.toLowerCase() + (typeof n.className === "string" && n.className ? "." + n.className.trim().split(/\\s+/).slice(0, 2).join(".") : "") : "?";
+        }) });
     }).observe({ type: "layout-shift", buffered: true });
   } catch {}
 })();`;

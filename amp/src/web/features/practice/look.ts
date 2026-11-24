@@ -27,8 +27,13 @@ export const usePrefersReducedMotion = () =>
   );
 
 /** Colorful's dress: its hue code and stylesheet, fetched only when a
- * learner's look is Colorful (a Calm learner never downloads them). */
-const loadDress = () => import("./celebration/dress");
+ * learner's look is Colorful (a Calm learner never downloads them). Once in
+ * hand it goes on in the commit that needs it, before that commit paints:
+ * the router fetches it ahead for a Colorful learner (look-first.ts). */
+type Dress = typeof import("./celebration/dress");
+let dress: Dress | null = null;
+export const loadDress = () =>
+  import("./celebration/dress").then((module) => (dress = module));
 const LOOK_ATTRIBUTE = { attributes: true, attributeFilter: ["data-look"] };
 /** The look on screen now (what `<html>` paints), live: the one thing a
  * celebration asks before it plays, so nothing plays in Calm. */
@@ -76,7 +81,11 @@ export function useLook(scope: PracticeScope, enabled = true) {
   }, [enabled, learner]);
   const keptNow = useRef(kept);
   keptNow.current = kept;
-  useEffect(() => {
+  // In the commit, before it paints: with the answer and the dress read
+  // ahead (look-first.ts), a learner's first frame is already their look.
+  // Neither in hand yet (a screen opened without the router), the dress
+  // goes on when it arrives, as before.
+  useLayoutEffect(() => {
     if (look === "calm" && learner) {
       // The server's answer: Calm. Nothing remembered may say otherwise.
       rememberLook(learner, null);
@@ -85,13 +94,15 @@ export function useLook(scope: PracticeScope, enabled = true) {
     if (look !== "bold") return;
     let release: (() => void) | undefined;
     let gone = false;
-    loadDress().then(
-      (dress) => {
-        if (gone) return;
-        release = dress.holdBold(learner, keptNow.current);
-      },
-      (error: unknown) => console.warn("Colorful's dress didn’t load", error),
-    );
+    if (dress) release = dress.holdBold(learner, keptNow.current);
+    else
+      loadDress().then(
+        (loaded) => {
+          if (gone) return;
+          release = loaded.holdBold(learner, keptNow.current);
+        },
+        (error: unknown) => console.warn("Colorful's dress didn’t load", error),
+      );
     return () => {
       gone = true;
       release?.();
@@ -103,7 +114,7 @@ export function useLook(scope: PracticeScope, enabled = true) {
   useEffect(() => {
     if (look !== "bold" || kept === null || !learner) return;
     loadDress().then(
-      (dress) => dress.keepHue(learner, kept),
+      (loaded) => loaded.keepHue(learner, kept),
       (error: unknown) => console.warn("Colorful's dress didn’t load", error),
     );
   }, [look, kept, learner]);

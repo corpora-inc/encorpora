@@ -38,6 +38,11 @@ import {
 } from "../school/classes/ProgressRecord";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { areaSourceOf } from "../../nav/AreaLayer";
+import layers from "../../nav/layers.module.css";
+import { showByGrade } from "../inventory/inventory-view";
+import { bandLabel, bands } from "../pathways/model";
+import { learnerWhere } from "../../lib/learner-where";
+import { childPath } from "../spaces/identity";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet, SignInPictures } from "./Devices";
 import { ChildConsentPanel, ChildDeletePanel } from "../privacy/ChildPanels";
@@ -115,7 +120,21 @@ export function ChildScreen() {
       title={child?.name}
       description={child?.birthYear ? `Born ${child.birthYear}` : undefined}
       loading={!!child?.capabilities.readProgress && progress.isPending}
-      area={record ? areaSourceOf(record) : undefined}
+      area={
+        record
+          ? {
+              ...areaSourceOf(record),
+              // Under their whole level: every skill of their own grade.
+              overallMore: child && (
+                <ChildSkillsByGrade
+                  family={family}
+                  child={child}
+                  level={record.level?.overall}
+                />
+              ),
+            }
+          : undefined
+      }
     >
       {data && child && (
         <div className={styles.page} data-child-page={child.id}>
@@ -243,6 +262,59 @@ export function ChildScreen() {
       )}
       <Toast message={error} onDismiss={clearError} />
     </FamilyFrame>
+  );
+}
+
+/** In a child's Overall: the way to every skill of their own grade, with
+ * where they stand on each (their Inventory, by grade). The grade is the
+ * best guess the page itself names (lib/learner-where.ts), and the link
+ * opens on that very grade. */
+function ChildSkillsByGrade({
+  family,
+  child,
+  level,
+}: {
+  family: string;
+  child: FamilyChild;
+  level: Parameters<typeof learnerWhere>[0];
+}) {
+  const where = learnerWhere(level);
+  const band = where
+    ? bands[Math.min(bands.length - 1, Math.max(0, where.best))]
+    : undefined;
+  if (!band) return null;
+  const path = childPath(family, child.id, "inventory");
+  return (
+    <section data-skills-by-grade={child.id}>
+      <h3 className={layers.heading}>By grade</h3>
+      <ul className={layers.rows}>
+        <li>
+          <Link
+            to="/$"
+            params={{ _splat: path.slice(1) }}
+            className={layers.row}
+            data-grade={band}
+            // The address names the screen; its view opens on this grade.
+            onClick={() => showByGrade(path, band)}
+          >
+            <span>All {bandLabel(band)} skills</span>
+            <span className={layers.rowAction}>
+              <svg
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                aria-hidden="true"
+              >
+                <path d="M6 3.5 10.5 8 6 12.5" />
+              </svg>
+            </span>
+          </Link>
+        </li>
+      </ul>
+    </section>
   );
 }
 
