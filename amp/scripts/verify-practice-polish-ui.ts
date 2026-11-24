@@ -1,13 +1,20 @@
 import { practiceStateFixture } from "./lib/practice-state-fixture";
+import {
+  assertLookOnScreen,
+  lookThemes,
+  type LookTheme,
+} from "./lib/fixture-look";
+import type { Look } from "../src/learning/look";
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Practice polish verification and audit: drives the real practice app (Vite dev server,
  * synthetic learning API) through every response kind. Each case starts a
  * topic, opens the hint and the lesson, answers wrong, answers right, then
- * skips, in chromium and webkit, light and dark, at phone, tablet and desktop
- * sizes. It records horizontal overflow, layout shift, small targets,
- * truncation, mid-word wraps, tiny text, covered controls, figure fit, axe
- * contrast and keyboard focus, and writes a screenshot of every state.
+ * skips, in chromium and webkit, in Colorful and in Calm light and dark, at
+ * phone, tablet and desktop sizes. It records horizontal overflow, layout
+ * shift, small targets, truncation, mid-word wraps, tiny text, covered
+ * controls, a result mark cut by its scroller, figure fit, axe contrast and
+ * keyboard focus, and writes a screenshot of every state.
  *
  * By default it verifies a representative matrix and fails on any finding,
  * any layout shift on a problem state, any axe violation or invisible focus.
@@ -15,6 +22,7 @@ import { secureChromium } from "../browser-security.mjs";
  * reports (amp/docs/reviews/practice-polish/README.md). Narrow either with
  *   AUDIT_BROWSERS=chromium,webkit AUDIT_CASES=number,choice
  *   AUDIT_SIZES=320x568,390x844 AUDIT_THEMES=light AUDIT_OUT=artifacts/...
+ *   AMP_UI_LOOKS=bold (Colorful only) or calm
  *
  * Synthetic data only: no database, no account, no network beyond loopback.
  */
@@ -141,6 +149,11 @@ const sizes =
 const themes = (list(process.env.AUDIT_THEMES) ?? ["light", "dark"]) as (
   "light" | "dark"
 )[];
+/** Every pass of a case: Colorful once (one scheme under a device's light
+ * and dark), then Calm in each theme (lib/fixture-look.ts; `AMP_UI_LOOKS`
+ * narrows a run to one look). */
+const passes = lookThemes(themes);
+const calmPasses = passes.filter((pass) => pass.look === "calm");
 const out = process.env.AUDIT_OUT ?? "artifacts/practice-polish";
 const workers = Number(process.env.AUDIT_WORKERS ?? 4);
 await mkdir(out, { recursive: true });
@@ -210,14 +223,19 @@ const seedCycles: Record<string, number[]> = {
 };
 
 /** One synthetic learning API per context. `grade` decides the next result. */
-async function mockApi(context: BrowserContext, templateId: string) {
+async function mockApi(
+  context: BrowserContext,
+  templateId: string,
+  look: Look,
+) {
   const state = {
     templateId,
     grade: false,
     problems: new Map<string, GeneratedProblem>(),
     count: 0,
   };
-  let practice = defaultPracticeSettings();
+  // The learner's own choice of look, as the server would answer it.
+  let practice = { ...defaultPracticeSettings(), look };
   await context.route("**/api/**", async (route) => {
     const path = new URL(route.request().url()).pathname;
     const body = route.request().postDataJSON() ?? {};
@@ -570,7 +588,7 @@ async function runCase(
   browserName: string,
   [label, templateId]: readonly [string, string],
   [width, height]: [number, number],
-  theme: "light" | "dark",
+  { look, theme, name: tone }: LookTheme,
   mode: "account",
 ) {
   const phone = width < 600;
@@ -592,12 +610,12 @@ async function runCase(
     },
     { theme },
   );
-  const api = await mockApi(context, templateId);
+  const api = await mockApi(context, templateId, look);
   const page = await context.newPage();
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.setDefaultTimeout(10_000);
-  const dir = `${out}/${browserName}/${width}x${height}-${theme}`;
+  const dir = `${out}/${browserName}/${width}x${height}-${tone}`;
   await mkdir(dir, { recursive: true });
   const record = async (
     state: string,
@@ -623,7 +641,7 @@ async function runCase(
       template: templateId,
       width,
       height,
-      theme,
+      theme: tone,
       mode,
       state,
       cls: browserName === "chromium" ? shifts.cls : null,
@@ -643,6 +661,8 @@ async function runCase(
       .waitFor({ timeout: 60_000 });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(400);
+    // The pass measures the look it says it does.
+    await assertLookOnScreen(page, look, `${label} ${width}×${height}`);
     if (label === "choice-randomization") {
       const id = await page
         .locator(".problem-content")
@@ -916,7 +936,7 @@ async function runCase(
     // The keypad's room: opening it moves nothing, each entry it walks to
     // is shown above it, and closing it leaves a fitting problem unscrolled.
     if (label.startsWith("work") && phone)
-      await assertKeypadRoom(page, `${label} ${width}×${height} ${theme}`, dir);
+      await assertKeypadRoom(page, `${label} ${width}×${height} ${tone}`, dir);
     // Wrong
     before = await anchors(page);
     await fill(page, label);
@@ -1008,7 +1028,7 @@ async function runCase(
       template: templateId,
       width,
       height,
-      theme,
+      theme: tone,
       mode,
       state: "error",
       cls: null,
@@ -1026,7 +1046,7 @@ async function runCase(
       template: templateId,
       width,
       height,
-      theme,
+      theme: tone,
       mode,
       state: "page-errors",
       cls: null,
@@ -1319,7 +1339,37 @@ async function probeSelfTest(browser: Browser) {
   );
   await page.evaluate(shim);
   const tall = await probe(page);
+  // A result mark's ring: a 3 px spread shadow at a scroller's very edge is
+  // cut on two sides; with room inside the scroller it is whole. An inset
+  // ring is inside the mark and can't be cut.
+  const markIn = (room: number, shadow: string) =>
+    page.setContent(`<main class="practice-workspace"><div class="feedback" style="padding:16px">
+      <div style="overflow:auto;height:120px;margin:-${room}px;padding:${room}px">
+        <span class="result-mark" style="display:block;width:38px;height:38px;border-radius:50%;box-shadow:${shadow}">✕</span>
+      </div></div></main>`);
+  await markIn(0, "0 0 0 3px oklch(0.6 0.2 40), 0 4px 0 3px rgb(0, 0, 0)");
+  await page.evaluate(shim);
+  const cutMark = await probe(page);
+  await markIn(8, "0 0 0 3px oklch(0.6 0.2 40), 0 4px 0 3px rgb(0, 0, 0)");
+  await page.evaluate(shim);
+  const roomyMark = await probe(page);
+  await markIn(0, "inset 0 0 0 3px oklch(0.6 0.2 40)");
+  await page.evaluate(shim);
+  const insetMark = await probe(page);
   await page.close();
+  const clippedMark = (f: Finding[]) =>
+    f.filter((x) => x.kind === "clipped-mark").map((x) => x.detail);
+  if (
+    clippedMark(cutMark).join() !==
+    "the mark's ring is cut by 3.0px at the left, 3.0px at the top"
+  )
+    throw new Error(
+      `Probe misreads a ring cut at a scroller's edge: ${clippedMark(cutMark)}`,
+    );
+  if (clippedMark(roomyMark).length || clippedMark(insetMark).length)
+    throw new Error(
+      `Probe flags a ring drawn whole: ${[...clippedMark(roomyMark), ...clippedMark(insetMark)]}`,
+    );
   const needless = (f: Finding[]) =>
     f.some((x) => x.kind === "needless-scroll");
   if (!needless(reserved) || !needless(minHeight))
@@ -1388,9 +1438,9 @@ try {
     await probeSelfTest(browser);
     const jobs: (() => Promise<void>)[] = [];
     for (const size of sizes)
-      for (const theme of themes)
+      for (const pass of passes)
         for (const c of cases)
-          jobs.push(() => runCase(browser, name, c, size, theme, "account"));
+          jobs.push(() => runCase(browser, name, c, size, pass, "account"));
     // Long questions and answer rows must fit the narrow landscape column.
     // Explicit viewport filters already describe their own requested coverage.
     const landscapeCases = cases.filter(
@@ -1401,9 +1451,9 @@ try {
       !sizes.some(([w, h]) => w === 1024 && h === 768)
     )
       for (const studyCase of landscapeCases)
-        for (const theme of themes)
+        for (const pass of calmPasses)
           jobs.push(() =>
-            runCase(browser, name, studyCase, [1024, 768], theme, "account"),
+            runCase(browser, name, studyCase, [1024, 768], pass, "account"),
           );
     // The phone where a fitting worked diagram once scrolled (a Galaxy in
     // Chrome, 384×688 CSS px): the problem fits, so the stage must not scroll.
@@ -1411,9 +1461,9 @@ try {
       for (const phoneCase of cases.filter(
         ([label]) => label === "work-diagram",
       ))
-        for (const theme of themes)
+        for (const pass of calmPasses)
           jobs.push(() =>
-            runCase(browser, name, phoneCase, [384, 688], theme, "account"),
+            runCase(browser, name, phoneCase, [384, 688], pass, "account"),
           );
     // A 360 px phone, where the five-piece tray once wrapped to two rows
     // and the problem needed a scroll.
@@ -1421,9 +1471,9 @@ try {
       for (const phoneCase of cases.filter(
         ([label]) => label === "shape-composer",
       ))
-        for (const theme of themes)
+        for (const pass of calmPasses)
           jobs.push(() =>
-            runCase(browser, name, phoneCase, [360, 740], theme, "account"),
+            runCase(browser, name, phoneCase, [360, 740], pass, "account"),
           );
     let next = 0;
     await Promise.all(
@@ -1490,6 +1540,6 @@ if (!full) {
     process.exitCode = 1;
   } else
     console.log(
-      `Practice polish: ${rows.length} states across ${cases.length} response surfaces, ${sizes.length} sizes, ${themes.length} themes and ${browsers.join("+")} passed: no overflow, no shift, 44 px targets, one-line actions, unclipped feedback, visible review, no raw TeX, axe clean; screenshots in ${out}`,
+      `Practice polish: ${rows.length} states across ${cases.length} response surfaces, ${sizes.length} sizes, ${passes.map((pass) => pass.name).join("/")} and ${browsers.join("+")} passed: no overflow, no shift, 44 px targets, one-line actions, unclipped feedback, visible review, no raw TeX, axe clean; screenshots in ${out}`,
     );
 }
