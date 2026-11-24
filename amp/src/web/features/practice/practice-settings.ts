@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { queryOptions } from "@tanstack/react-query";
+import { isCancelledError, queryOptions } from "@tanstack/react-query";
 import {
   practiceStateSchema,
   type PracticeChange,
@@ -31,6 +31,23 @@ export const practiceSettingsOptions = (scope: PracticeScope) =>
     staleTime: 0,
   });
 
+/**
+ * The settings a change is made on. A read that a newer one replaced while
+ * this waited on it (a settings event's read, a credited answer stopping it:
+ * Query's `CancelledError`) says nothing went wrong, so it is read again
+ * instead of ending the change with no problem on the screen.
+ */
+async function readForWrite(scope: PracticeScope) {
+  for (let attempt = 1; ; attempt++)
+    try {
+      return await queryClient.fetchQuery(practiceSettingsOptions(scope));
+    } catch (error) {
+      if (attempt >= READ_ATTEMPTS || !isCancelledError(error)) throw error;
+    }
+}
+/** How many times a replaced read is read again before it is shown. */
+const READ_ATTEMPTS = 4;
+
 /** Preserve the mutation identity when delivery fails. No account or learner
  * can receive another scope's late response or pending retry. */
 export function usePracticeAdjustment(scope: PracticeScope) {
@@ -56,9 +73,7 @@ export function usePracticeAdjustment(scope: PracticeScope) {
     const key = JSON.stringify(intent);
     let saved = pending.current;
     if (saved?.identity !== identity || saved.intent !== key) {
-      const settings = await queryClient.fetchQuery(
-        practiceSettingsOptions(scope),
-      );
+      const settings = await readForWrite(scope);
       if (!active()) return null;
       saved = {
         identity,

@@ -2,7 +2,10 @@ import { cleanup, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { AppError } from "../../../lib/AppError";
 import { queryClient } from "../../../lib/query";
-import { usePracticeAdjustment } from "../practice-settings";
+import {
+  practiceSettingsOptions,
+  usePracticeAdjustment,
+} from "../practice-settings";
 
 /** A learner's practice setting on the server: one revision, one hold. */
 const server = vi.hoisted(() => ({
@@ -89,6 +92,17 @@ test("another device's change saved between this screen's read and its write: th
   expect(server.writes.map((write) => write.revision)).toEqual([3, 4]);
   expect(server.writes[0]!.requestId).not.toBe(server.writes[1]!.requestId);
   expect(console.warn).toHaveBeenCalledTimes(1);
+});
+
+test("a read that a newer one replaced (a settings event, a credited answer) is read again, never shown as a failure", async () => {
+  const { queryKey } = practiceSettingsOptions(scope);
+  const held = adjustment().hold("compound-probability");
+  // The hold's read is on its way; a credited answer stops it (points.ts),
+  // as a settings event's own read would.
+  await queryClient.cancelQueries({ queryKey, exact: true });
+  const saved = await held;
+  expect(saved?.focusSkillId).toBe("compound-probability");
+  expect(server.writes).toHaveLength(1);
 });
 
 test("a menu's own change is still refused over a newer one", async () => {
