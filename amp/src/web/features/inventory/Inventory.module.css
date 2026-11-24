@@ -293,7 +293,8 @@
 .skill[data-strength="Strong"] .meter i {
   opacity: 1;
 }
-.skill[data-strength="Not tried"] .meter {
+.skill[data-strength="Not tried"] .meter,
+.skill[data-strength="Not asked yet"] .meter {
   background: var(--color-surface-sunken);
 }
 .strength {
@@ -305,7 +306,9 @@
   font-weight: 600;
 }
 .skill[data-strength="Not tried"] .strength strong,
-.skill[data-strength="Getting started"] .strength strong {
+.skill[data-strength="Getting started"] .strength strong,
+.skill[data-strength="Not asked yet"] .strength strong,
+.skill[data-strength="Tried"] .strength strong {
   color: var(--color-muted-text);
   font-weight: 500;
 }

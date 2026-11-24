@@ -22,8 +22,10 @@ import {
   inventoryMode,
   viewedBand,
   type InventoryMode,
+  standingOf,
 } from "./grade-index";
 import { Segmented } from "../../ui/Segmented";
+import { STANDING } from "../learners/SkillKey";
 import {
   bandLabel,
   bands,
@@ -81,7 +83,13 @@ const readFilter = (value: unknown): Filter | null =>
       : null;
 const plural = (n: number, one: string, many = `${one}s`) =>
   `${n.toLocaleString()} ${n === 1 ? one : many}`;
-function strength(e?: Evidence) {
+/** How a row says where its skill stands. A learner's own Inventory keeps
+ * its own words. A grown-up reading a family's child's (`child`) reads the
+ * dashboard's four, Strong, Earned, Tried or Not asked yet, by the one rule
+ * the by-grade rows and the skill's layer use (grade-index.ts
+ * `standingOf`): a row never opens a layer that says something else. */
+function strength(e: Evidence | undefined, child: boolean) {
+  if (child) return STANDING[standingOf(e)].term;
   return !e?.attempts
     ? "Not tried"
     : e.status === "review-ready"
@@ -369,6 +377,7 @@ export function InventoryScreen() {
                         skill={skill}
                         evidence={evidence.get(skill.id)}
                         grade={shown}
+                        child={child}
                         result
                       />
                     ))}
@@ -413,6 +422,7 @@ export function InventoryScreen() {
                         skill={skill}
                         evidence={evidence.get(skill.id)}
                         grade={shown}
+                        child={child}
                       />
                     ))}
                   </ul>
@@ -428,8 +438,9 @@ export function InventoryScreen() {
                 twentieth of the skill’s bar. Both stay.
               </p>
               <p>
-                Strong skills go back to Building when they’re due for review.
-                Grade labels place a skill in the curriculum, not the learner.
+                Strong skills go back to {child ? "Earned" : "Building"} when
+                they’re due for review. Grade labels place a skill in the
+                curriculum, not the learner.
               </p>
             </details>
           </div>
@@ -487,21 +498,26 @@ function SkillRow({
   skill,
   evidence,
   grade,
+  child,
   result = false,
 }: {
   skill: MapSkill;
   evidence?: Evidence;
   grade: boolean;
+  /** A grown-up reading a family's child's: the key's four words. */
+  child: boolean;
   /** A search result: the arrow keys move between results. */
   result?: boolean;
 }) {
   const score = illumination(evidence);
   const attempts = evidence?.attempts ?? 0;
-  const status = strength(evidence);
+  const status = strength(evidence, child);
   return (
     <li
       className={styles.skill}
       data-strength={status}
+      data-standing={child ? standingOf(evidence) : undefined}
+      data-skill={skill.id}
       style={
         {
           "--skill-hue": `var(--color-strand-${skill.strand}, var(--color-primary))`,
@@ -528,7 +544,7 @@ function SkillRow({
         <i style={{ width: `${score * 10}%` }} />
       </div>
       <div className={styles.strength}>
-        <strong>{status}</strong>
+        <strong data-standing-word={child ? "" : undefined}>{status}</strong>
         {attempts > 0 && <small>{plural(attempts, "attempt")}</small>}
       </div>
     </li>
