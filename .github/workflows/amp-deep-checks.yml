@@ -99,10 +99,12 @@ jobs:
     #
     # family-b6 and family-b7 are a live session's checks, each on its own
     # stack (amp/scripts/persona-stack.ts). Most of their time is the pace of
-    # the simulated children, not the machine. Measured on a laptop
-    # 2026-11-24, in minutes: family-b6 a family's live session (19) and an
-    # adult's time (2); family-b7 a class's live cockpit (13), the cockpit
-    # on fixtures (1) and a student's requests (6).
+    # the simulated children, not the machine: family-b6 took 21 minutes
+    # on a laptop and 21 on a runner (2026-11-24). On the laptop, in
+    # minutes: family-b6 a family's live session (19) and an adult's time
+    # (2); family-b7 a class's live cockpit (13), a student's and a family
+    # child's requests (8), and the cockpit and a stopped session's report
+    # on fixtures (1 between them).
     #
     # Not in a lane yet: Colorful's moments (`npm run test:celebration-ui`,
     # for family-b6). It fails on a product fault: a student's practice
