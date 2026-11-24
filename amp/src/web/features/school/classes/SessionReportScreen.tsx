@@ -513,7 +513,7 @@ function columns(
       // don't need.
       id: "skills",
       header: "Skills",
-      width: 200,
+      width: 182,
       grow: true,
       firstSort: "descending",
       compare: (a, b) => a.skills.length - b.skills.length,
@@ -528,7 +528,8 @@ function columns(
           {
             id: "level",
             header: "Level",
-            width: 56,
+            // Its widest word ("Precalc") and the cell's inset.
+            width: 74,
             align: "end",
             firstSort: "descending",
             compare: (a, b) => (a.level ?? -1) - (b.level ?? -1),
