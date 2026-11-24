@@ -477,10 +477,12 @@ async function open(
     if (hand && request.method() === "POST") seen.handOvers.push(hand[1]!);
     // Whatever the practice screen reads or asks for its learner: their
     // problems, their place in practice, their level.
-    const ask = /^\/api\/v1\/learners\/([^/]+)\//.exec(url.pathname);
+    const ask = /^\/api\/v1\/learners\/([^/]+)\/([^/?]+)/.exec(url.pathname);
     if (ask && seen.practicing)
       seen.asks.push({
         learner: ask[1]!,
+        what: ask[2]!,
+        write: request.method() !== "GET",
         authorization: request.headers().authorization ?? "",
       });
   });
@@ -498,7 +500,14 @@ async function open(
 type Seen = {
   handOvers: string[];
   /** The practice screen's own requests for a learner, once it is pressed. */
-  asks: { learner: string; authorization: string }[];
+  asks: {
+    learner: string;
+    /** `batches` asks for problems; `practice-state`, `frontier`… read. */
+    what: string;
+    /** Anything but a read: it could put work on a record. */
+    write: boolean;
+    authorization: string;
+  }[];
   practicing: boolean;
 };
 
@@ -587,24 +596,29 @@ async function press(
         timeout: 30_000,
       }),
     );
-    // The practice screen asks for its learner's problems and place.
-    for (let i = 0; i < 150 && seen.asks.length === 0; i++)
-      await page.waitForTimeout(100);
+    // The practice screen asks for its learner's problems: that request,
+    // and nothing sent before it, says whose practice this is. (Before the
+    // screen mounts, the route reads the learner's look with the session
+    // the press was made in: a parent's read of their own child's setting.)
+    const problems = () => seen.asks.find((entry) => entry.what === "batches");
+    for (let i = 0; i < 200 && !problems(); i++) await page.waitForTimeout(100);
     // And whatever else it asks as it opens.
     await page.waitForTimeout(700);
     const [, learner, segment, id] = FOCUS.exec(new URL(page.url()).pathname)!;
-    // Every one of them is for one learner, with one session.
+    // Every request is for one learner; the problems are asked with one
+    // session; and nothing is written with any other.
     const asked = [...new Set(seen.asks.map((entry) => entry.learner))];
-    const ask =
-      asked.length === 1
-        ? seen.asks.at(-1)
-        : asked.length
-          ? {
-              learner: asked.join("+"),
-              authorization: seen.asks.at(-1)!.authorization,
-            }
-          : undefined;
+    const batch = problems();
+    const ask = batch
+      ? {
+          ...batch,
+          learner: asked.length === 1 ? batch.learner : asked.join("+"),
+        }
+      : undefined;
     const session = ask ? await sessionOf(ask.authorization) : null;
+    const strays = seen.asks.filter(
+      (entry) => entry.write && entry.authorization !== ask?.authorization,
+    );
     const names = new Map(who.children.map((child) => [child.id, child.name]));
     const own = await who.own();
     const name = (learnerId: string | undefined) =>
@@ -621,7 +635,12 @@ async function press(
         : "no hand-over",
       ask
         ? `asking problems for ${name(ask.learner)} with ${session?.student ? `${name(session.learner)}’s own session` : "the adult’s session"}`
-        : "no problems asked",
+        : `no problems asked (it asked: ${seen.asks.map((entry) => entry.what).join(", ") || "nothing"})`,
+      ...(strays.length
+        ? [
+            `and writing ${strays.map((entry) => entry.what).join(", ")} with another session`,
+          ]
+        : []),
     ].join("; ");
     let ok: boolean;
     if (expect.kind === "child") {
@@ -632,14 +651,16 @@ async function press(
         seen.handOvers[0] === child &&
         ask?.learner === child &&
         !!session?.student &&
-        session.learner === child;
+        session.learner === child &&
+        strays.length === 0;
     } else {
       ok =
         !!own &&
         learner === own &&
         seen.handOvers.length === 0 &&
         ask?.learner === own &&
-        session?.student === false;
+        session?.student === false &&
+        strays.length === 0;
     }
     if (ok && held)
       ok =
@@ -1302,7 +1323,12 @@ try {
               timeout: 30_000,
             }),
           );
-          for (let i = 0; i < 150 && seen.asks.length === 0; i++)
+          // Until it asks for problems (press, above).
+          for (
+            let i = 0;
+            i < 200 && !seen.asks.some((entry) => entry.what === "batches");
+            i++
+          )
             await page.waitForTimeout(100);
           const [, learner, segment, id] = FOCUS.exec(
             new URL(page.url()).pathname,
