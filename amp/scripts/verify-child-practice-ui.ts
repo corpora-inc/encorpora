@@ -62,9 +62,14 @@
  *     [--own all] [--per 3] [--jobs 4] [--out artifacts/child-practice]
  *
  * Last, coming back: a parent scrolled down to a child's block starts that
- * child's practice (their row, a skill not asked yet, a skill behind their last
- * their block) and returns by the bar's family mark or by Back. Today is
- * where they left it, the block at the same place on screen, at each width.
+ * child's practice (their row, a skill not asked yet, a skill behind their
+ * last problems) and returns by the menu's "Back to family" or by Back (a
+ * problem's bar holds only the problem's tools, so no family mark is on it).
+ * Today is where they left it, the block at the same place on screen, at
+ * each width.
+ *
+ * Every wait says what it waited for and what the screen showed instead.
+ * `TZ=UTC` puts the API, the seed and the browser in the zone CI runs in.
  *
  * The table of every press and return goes to <out>/presses.json.
  */
@@ -353,6 +358,53 @@ async function settle(page: Page) {
   }
 }
 
+/** What the screen shows, for a failure's report: its address, what is open
+ * over it, anything it says went wrong, and its first words. Plain source:
+ * it runs in the page. */
+const SCREEN = `() => {
+  const words = (element) => (element?.innerText ?? "").replace(/\\s+/g, " ").trim();
+  const open = [...document.querySelectorAll("[role=dialog]")]
+    .map((dialog) => dialog.getAttribute("aria-label") || words(dialog.querySelector("h1, h2, h3")) || "a dialog")
+    .filter(Boolean);
+  const alerts = [...document.querySelectorAll("[role=alert]")].map(words).filter(Boolean);
+  // The words on top: the open sheet's or dialog's, else the page's.
+  const main = [...document.querySelectorAll("[role=dialog]")].at(-1) ??
+    document.querySelector("main") ?? document.body;
+  return [
+    location.pathname.replace(/[0-9a-f]{8}-[0-9a-f-]{27}/g, "…"),
+    document.querySelector("[data-layer-frame]")?.getAttribute("data-layers")
+      ? "layers " + document.querySelector("[data-layer-frame]").getAttribute("data-layers") : "",
+    open.length ? "open: " + open.join(" / ") : "",
+    alerts.length ? "alert: " + alerts.join(" / ") : "",
+    "“" + words(main).slice(0, 140) + "”",
+  ].filter(Boolean).join("; ");
+}`;
+const screenOf = (page: Page) =>
+  page
+    .evaluate(`(${SCREEN})()`)
+    .catch(
+      (error: unknown) => `nothing readable (${String(error).split("\n")[0]})`,
+    );
+/** Waits for what a step needs. When it never comes, the failure says what
+ * was awaited and what the screen showed instead. */
+async function need(page: Page, what: string, wait: () => Promise<unknown>) {
+  try {
+    await wait();
+  } catch (error) {
+    const why = String(error)
+      .split("\n")[0]!
+      .replace(/^(\w+Error: )?\w+\.\w+: /, "");
+    throw new Error(
+      `waited for ${what} (${why.slice(0, 60)}); the screen showed ${await screenOf(page)}`,
+    );
+  }
+}
+/** A failure in one line, whole enough to act on. */
+const told = (error: unknown) =>
+  String(error instanceof Error ? error.message : error)
+    .split("\n")[0]!
+    .slice(0, 420);
+
 type Step = { scope: string; sig: string; n: number; label: string };
 type Root = {
   name: string;
@@ -405,6 +457,9 @@ async function open(
   const context = await browser.newContext({
     storageState: who.states[turn++ % who.states.length],
     viewport: { width, height: width >= 1024 ? 900 : 844 },
+    // The browser in the zone the check runs in (`TZ=UTC`, as CI is), so a
+    // run at home sees the dates a hosted one does.
+    ...(process.env.TZ ? { timezoneId: process.env.TZ } : {}),
   });
   await stubAnalytics(context);
   await context.addInitScript("window.__name = (f) => f;");
@@ -422,15 +477,19 @@ async function open(
     if (hand && request.method() === "POST") seen.handOvers.push(hand[1]!);
     // Whatever the practice screen reads or asks for its learner: their
     // problems, their place in practice, their level.
-    const ask = /^\/api\/v1\/learners\/([^/]+)\//.exec(url.pathname);
+    const ask = /^\/api\/v1\/learners\/([^/]+)\/([^/?]+)/.exec(url.pathname);
     if (ask && seen.practicing)
       seen.asks.push({
         learner: ask[1]!,
+        what: ask[2]!,
+        write: request.method() !== "GET",
         authorization: request.headers().authorization ?? "",
       });
   });
   await page.goto(`${origin}${root.path}`, { waitUntil: "load" });
-  await page.locator(root.ready).first().waitFor({ timeout: 30_000 });
+  await need(page, `${root.name} to show (${root.ready})`, () =>
+    page.locator(root.ready).first().waitFor({ timeout: 30_000 }),
+  );
   await settle(page);
   for (const step of steps) {
     await click(page, step);
@@ -441,7 +500,14 @@ async function open(
 type Seen = {
   handOvers: string[];
   /** The practice screen's own requests for a learner, once it is pressed. */
-  asks: { learner: string; authorization: string }[];
+  asks: {
+    learner: string;
+    /** `batches` asks for problems; `practice-state`, `frontier`… read. */
+    what: string;
+    /** Anything but a read: it could put work on a record. */
+    write: boolean;
+    authorization: string;
+  }[];
   practicing: boolean;
 };
 
@@ -525,27 +591,34 @@ async function press(
     const { page, seen } = opened;
     seen.practicing = true;
     await click(page, control);
-    await page.waitForURL((url) => FOCUS.test(url.pathname), {
-      timeout: 30_000,
-    });
-    // The practice screen asks for its learner's problems and place.
-    for (let i = 0; i < 150 && seen.asks.length === 0; i++)
-      await page.waitForTimeout(100);
+    await need(page, "practice to open", () =>
+      page.waitForURL((url) => FOCUS.test(url.pathname), {
+        timeout: 30_000,
+      }),
+    );
+    // The practice screen asks for its learner's problems: that request,
+    // and nothing sent before it, says whose practice this is. (Before the
+    // screen mounts, the route reads the learner's look with the session
+    // the press was made in: a parent's read of their own child's setting.)
+    const problems = () => seen.asks.find((entry) => entry.what === "batches");
+    for (let i = 0; i < 200 && !problems(); i++) await page.waitForTimeout(100);
     // And whatever else it asks as it opens.
     await page.waitForTimeout(700);
     const [, learner, segment, id] = FOCUS.exec(new URL(page.url()).pathname)!;
-    // Every one of them is for one learner, with one session.
+    // Every request is for one learner; the problems are asked with one
+    // session; and nothing is written with any other.
     const asked = [...new Set(seen.asks.map((entry) => entry.learner))];
-    const ask =
-      asked.length === 1
-        ? seen.asks.at(-1)
-        : asked.length
-          ? {
-              learner: asked.join("+"),
-              authorization: seen.asks.at(-1)!.authorization,
-            }
-          : undefined;
+    const batch = problems();
+    const ask = batch
+      ? {
+          ...batch,
+          learner: asked.length === 1 ? batch.learner : asked.join("+"),
+        }
+      : undefined;
     const session = ask ? await sessionOf(ask.authorization) : null;
+    const strays = seen.asks.filter(
+      (entry) => entry.write && entry.authorization !== ask?.authorization,
+    );
     const names = new Map(who.children.map((child) => [child.id, child.name]));
     const own = await who.own();
     const name = (learnerId: string | undefined) =>
@@ -562,7 +635,12 @@ async function press(
         : "no hand-over",
       ask
         ? `asking problems for ${name(ask.learner)} with ${session?.student ? `${name(session.learner)}’s own session` : "the adult’s session"}`
-        : "no problems asked",
+        : `no problems asked (it asked: ${seen.asks.map((entry) => entry.what).join(", ") || "nothing"})`,
+      ...(strays.length
+        ? [
+            `and writing ${strays.map((entry) => entry.what).join(", ")} with another session`,
+          ]
+        : []),
     ].join("; ");
     let ok: boolean;
     if (expect.kind === "child") {
@@ -573,14 +651,16 @@ async function press(
         seen.handOvers[0] === child &&
         ask?.learner === child &&
         !!session?.student &&
-        session.learner === child;
+        session.learner === child &&
+        strays.length === 0;
     } else {
       ok =
         !!own &&
         learner === own &&
         seen.handOvers.length === 0 &&
         ask?.learner === own &&
-        session?.student === false;
+        session?.student === false &&
+        strays.length === 0;
     }
     if (ok && held)
       ok =
@@ -621,7 +701,7 @@ async function press(
       .allTextContents()
       .catch(() => []);
     note(
-      `nothing (${String(error).split("\n")[0]!.slice(0, 140)}) at ${opened ? new URL(opened.page.url()).pathname : "?"}${said?.length ? `, saying “${said.join(" / ").slice(0, 120)}”` : ""}`,
+      `nothing (${told(error).slice(0, 200)}); the screen showed ${opened ? await screenOf(opened.page) : "nothing"}${said?.length ? `, saying “${said.join(" / ").slice(0, 120)}”` : ""}`,
       false,
     );
   } finally {
@@ -984,7 +1064,11 @@ try {
         const link = first.page
           .locator(`[data-focus-sheet="${child.id}"] a[data-entity=skill]`)
           .first();
-        await link.waitFor({ timeout: 20_000 });
+        await need(
+          first.page,
+          `the sheet of the skills behind ${child.name}’s last problems`,
+          () => link.waitFor({ timeout: 20_000 }),
+        );
         await settle(first.page);
         const href = (await link.getAttribute("href"))!;
         const skill = /open=skill(?:%3A|:)([a-z0-9-]+)/.exec(href)?.[1];
@@ -1001,9 +1085,11 @@ try {
               `${slug} ${child.name}, ${where}: the control is named “${name}”, not “${label}”`,
             );
           await page.locator(practice).click();
-          await page.waitForURL((url) => FOCUS.test(url.pathname), {
-            timeout: 20_000,
-          });
+          await need(page, `${child.name}’s practice to open`, () =>
+            page.waitForURL((url) => FOCUS.test(url.pathname), {
+              timeout: 30_000,
+            }),
+          );
           const [, learner, segment, id] = FOCUS.exec(
             new URL(page.url()).pathname,
           )!;
@@ -1029,9 +1115,15 @@ try {
         // A reload with the layer open: still theirs.
         part = "a reload with the layer open";
         await link.click();
-        await first.page.locator(practice).waitFor();
+        await need(first.page, "the skill’s Practice control", () =>
+          first.page.locator(practice).waitFor({ timeout: 30_000 }),
+        );
         await first.page.reload({ waitUntil: "load" });
-        await first.page.locator(practice).waitFor({ timeout: 30_000 });
+        await need(
+          first.page,
+          "the skill’s Practice control again after a reload",
+          () => first.page.locator(practice).waitFor({ timeout: 30_000 }),
+        );
         await settle(first.page);
         await started(
           first.page,
@@ -1050,7 +1142,11 @@ try {
           [],
           other,
         );
-        await shared.page.locator(practice).waitFor({ timeout: 30_000 });
+        await need(
+          shared.page,
+          "the shared link’s skill with its Practice control",
+          () => shared.page.locator(practice).waitFor({ timeout: 30_000 }),
+        );
         await settle(shared.page);
         const settled = new URL(shared.page.url());
         if (settled.pathname !== today || settled.search)
@@ -1059,9 +1155,11 @@ try {
           );
         // Closed and opened again from ANOTHER child's block: that child's.
         await shared.page.keyboard.press("Escape");
-        await shared.page
-          .locator("[data-layer-frame]")
-          .waitFor({ state: "detached" });
+        await need(shared.page, "the layer to close on Escape", () =>
+          shared.page
+            .locator("[data-layer-frame]")
+            .waitFor({ state: "detached" }),
+        );
         if (new URL(shared.page.url()).search)
           fail(`${slug} ${child.name}: closing left ${shared.page.url()}`);
         const stored = await shared.page.evaluate(
@@ -1079,7 +1177,11 @@ try {
           [],
           other,
         );
-        await again.page.locator(practice).waitFor({ timeout: 30_000 });
+        await need(
+          again.page,
+          "the shared link’s skill with its Practice control",
+          () => again.page.locator(practice).waitFor({ timeout: 30_000 }),
+        );
         await settle(again.page);
         await started(again.page, again.seen, "a skill’s shared link");
         await again.context.close();
@@ -1148,7 +1250,11 @@ try {
             [],
             other,
           );
-          await old.page.locator(practice).waitFor({ timeout: 30_000 });
+          await need(
+            old.page,
+            `${child.name}’s page with the skill and its Practice control`,
+            () => old.page.locator(practice).waitFor({ timeout: 30_000 }),
+          );
           await settle(old.page);
           if (new URL(old.page.url()).pathname !== `${today}/kids/${child.id}`)
             fail(
@@ -1159,7 +1265,7 @@ try {
         }
       } catch (error) {
         fail(
-          `${slug} ${child.name}, a layer keeps whose it is (${part}): ${String(error).split("\n")[0]!.slice(0, 200)}`,
+          `${slug} ${child.name}, a layer keeps whose it is (${part}): ${told(error)}`,
         );
       }
     }
@@ -1201,7 +1307,9 @@ try {
               `${where}: a control is offered to an adult who can’t practice`,
             );
         } else {
-          await control.waitFor({ timeout: 20_000 });
+          await need(page, "the adult’s own Practice control", () =>
+            control.waitFor({ timeout: 20_000 }),
+          );
           if ((await control.getAttribute("data-practice-for")) !== "self")
             fail(`${where}: the control isn’t the adult’s own`);
           seen.practicing = true;
@@ -1210,10 +1318,17 @@ try {
               "[data-layer-frame] a[data-curriculum-practice], [data-layer-frame] [data-curriculum-practice] button",
             )
             .click();
-          await page.waitForURL((url) => FOCUS.test(url.pathname), {
-            timeout: 30_000,
-          });
-          for (let i = 0; i < 150 && seen.asks.length === 0; i++)
+          await need(page, "the adult’s own practice to open", () =>
+            page.waitForURL((url) => FOCUS.test(url.pathname), {
+              timeout: 30_000,
+            }),
+          );
+          // Until it asks for problems (press, above).
+          for (
+            let i = 0;
+            i < 200 && !seen.asks.some((entry) => entry.what === "batches");
+            i++
+          )
             await page.waitForTimeout(100);
           const [, learner, segment, id] = FOCUS.exec(
             new URL(page.url()).pathname,
@@ -1242,7 +1357,7 @@ try {
             );
         }
       } catch (error) {
-        fail(`${where}: ${String(error).split("\n")[0]!.slice(0, 200)}`);
+        fail(`${where}: ${told(error)}`);
       } finally {
         await unnamed?.context.close();
       }
@@ -1251,7 +1366,7 @@ try {
     // ---- coming back is where the parent was ------------------------------
     // A parent scrolls down to a child's block, starts their practice (their
     // row, a skill not asked yet, a skill behind their last problems), and
-    // comes back by the bar's family mark or by Back: Today is where they
+    // comes back by the menu's "Back to family" or by Back: Today is where they
     // left it, the child's block at the same place on screen, never at the
     // top of the page (QA 2026-11-23).
     for (const width of WIDTHS) {
@@ -1300,7 +1415,7 @@ try {
           };
         }, block);
       for (const way of ways)
-        for (const back of ["the family mark", "Back"] as const) {
+        for (const back of ["the menu’s Back to family", "Back"] as const) {
           const where = `${slug} ${width}px, ${child.name}, ${way.name}, back by ${back}`;
           const at = await open(
             who,
@@ -1331,18 +1446,40 @@ try {
             await settle(page);
             const before = await place(page);
             await way.start(page);
-            await page.waitForURL((url) => FOCUS.test(url.pathname), {
-              timeout: 20_000,
-            });
-            const mark = page.locator("[data-handed-home]").first();
-            await mark.waitFor({ timeout: 20_000 });
-            await page.waitForLoadState("networkidle").catch(() => undefined);
+            await need(page, `${child.name}’s practice to open`, () =>
+              page.waitForURL((url) => FOCUS.test(url.pathname), {
+                timeout: 30_000,
+              }),
+            );
+            const practiced = FOCUS.exec(new URL(page.url()).pathname)![1];
+            if (practiced !== child.id)
+              fail(`${where}: it opened /practice/${practiced}, not theirs`);
+            // On a problem the bar holds only the problem's tools: the way
+            // home is the menu's "Back to family", and the browser's Back.
+            const menu = page.locator("header [data-navigation-trigger]");
+            await need(page, "the practice screen’s menu button", () =>
+              menu.first().waitFor({ timeout: 30_000 }),
+            );
+            await settle(page);
             if (back === "Back") await page.goBack();
-            else await mark.click();
-            await page.waitForURL((url) => url.pathname === today, {
-              timeout: 20_000,
-            });
-            await page.locator(block).waitFor({ timeout: 30_000 });
+            else {
+              await menu.first().click();
+              const home = page
+                .getByRole("dialog")
+                .getByRole("button", { name: "Back to family", exact: true });
+              await need(page, "“Back to family” in the menu", () =>
+                home.waitFor({ timeout: 20_000 }),
+              );
+              await home.click();
+            }
+            await need(page, "the family’s Today to show again", () =>
+              page.waitForURL((url) => url.pathname === today, {
+                timeout: 30_000,
+              }),
+            );
+            await need(page, `${child.name}’s block on Today`, () =>
+              page.locator(block).waitFor({ timeout: 30_000 }),
+            );
             await settle(page);
             await page.waitForTimeout(400);
             const after = await place(page);
@@ -1360,7 +1497,7 @@ try {
             if (width < 600 && before.y < 200)
               fail(`${where}: the check never scrolled (${before.y}px)`);
           } catch (error) {
-            fail(`${where}: ${String(error).split("\n")[0]!.slice(0, 160)}`);
+            fail(`${where}: ${told(error)}`);
           } finally {
             await at.context.close();
           }
@@ -1432,7 +1569,11 @@ try {
             );
           continue;
         }
-        await button.waitFor({ timeout: 20_000 });
+        await need(
+          page,
+          `${child.name}’s Practice control over their record`,
+          () => button.waitFor({ timeout: 20_000 }),
+        );
         const name = await button.getAttribute("aria-label");
         if (
           !name?.startsWith("Practice ") ||
@@ -1440,9 +1581,11 @@ try {
         )
           fail(`${where}: the control is named “${name}”`);
         await button.click();
-        await page.waitForURL((url) => FOCUS.test(url.pathname), {
-          timeout: 20_000,
-        });
+        await need(page, `${child.name}’s practice to open`, () =>
+          page.waitForURL((url) => FOCUS.test(url.pathname), {
+            timeout: 30_000,
+          }),
+        );
         const [, learner, segment, id] = FOCUS.exec(
           new URL(page.url()).pathname,
         )!;
@@ -1465,7 +1608,7 @@ try {
             `${where}: opened /practice/${learner}/${segment}/${id}, handed to [${seen.handOvers}]`,
           );
       } catch (error) {
-        fail(`${where}: ${String(error).split("\n")[0]!.slice(0, 200)}`);
+        fail(`${where}: ${told(error)}`);
       } finally {
         await opened?.context.close();
       }
@@ -1490,7 +1633,7 @@ try {
         await theirs.context.close();
       } catch (error) {
         fail(
-          `${tutor.slug}, another family’s child’s record in the tutoring group: ${String(error).split("\n")[0]!.slice(0, 200)}`,
+          `${tutor.slug}, another family’s child’s record in the tutoring group: ${told(error)}`,
         );
       }
   }
