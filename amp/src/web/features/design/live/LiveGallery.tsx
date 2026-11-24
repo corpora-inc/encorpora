@@ -20,6 +20,7 @@ import { StatusMark } from "../../live/StatusMark";
 import { STATUS_ORDER, STATUS_WORDS } from "../../live/status-words";
 import { clockText } from "../../live/format";
 import { Section, Specimen, SpecimenFrame } from "../Gallery";
+import { ClassReportSpecimen, FamilyReportSpecimen } from "./ReportSpecimens";
 import {
   fixtureState,
   makeClass,
@@ -287,6 +288,8 @@ export const liveSpecimens = {
   "live-busy": () => <LiveStateSpecimen id="busy" />,
   "live-edges": () => <LiveStateSpecimen id="edges" />,
   "live-class-35": () => <LiveStateSpecimen id="class-35" />,
+  "report-class": () => <ClassReportSpecimen />,
+  "report-family": () => <FamilyReportSpecimen />,
 };
 
 export const liveContents = {
