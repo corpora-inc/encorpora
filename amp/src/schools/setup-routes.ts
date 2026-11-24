@@ -172,7 +172,10 @@ export const canList = ({
   schoolActions.filter((action) => can(actor, action, target));
 
 /** Public, because the person may not have an account yet: holding the token
- * is the permission, and it answers only the school's name and the role. */
+ * is the permission. It answers the school's name, the role, the address the
+ * invitation went to and, while the invitation is open, whether that one
+ * address has an account (`lookupInvite`). It takes no address: nobody
+ * without an open invitation's token learns whether an address has one. */
 export function registerInvitePreview(
   scope: FastifyInstance,
   repository: SchoolRepository,

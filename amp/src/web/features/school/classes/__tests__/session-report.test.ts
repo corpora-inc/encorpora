@@ -3,7 +3,7 @@ import type {
   LiveSnapshot,
   ReportRow,
 } from "../../../../../schools/live/contracts";
-import { LIVE_RULES } from "../../../../../schools/live/status";
+import { LIVE_RULES, reportStatus } from "../../../../../schools/live/status";
 import { endedBetween } from "../../../live/api";
 import {
   CLASS_REPORT_WORDS,
@@ -83,6 +83,76 @@ test("follow up first: each student once, in the first group that fits", () => {
     ["Used help on most answers", ["Dee"], ["4 of 6 with help"]],
   ]);
   expect(followUp([rows[4]!])).toEqual([]);
+});
+
+test("didn’t sign in and signed in, no answers: told apart by the session alone", () => {
+  // A second session of the day, 2:00 to 2:15. What each student's own
+  // sign-in and work say, judged as the server judges a report.
+  const startedAt = "2026-11-30T14:00:00.000Z";
+  const at = { now: Date.parse("2026-11-30T14:15:00.000Z"), startedAt };
+  const facts = {
+    problems: 0,
+    hints: 0,
+    lessons: 0,
+    examples: 0,
+    videos: 0,
+    recent: [],
+    firstSeenAt: null,
+    lastAnswerAt: null,
+    lastHelpAt: null,
+    lastSeenAt: null,
+  };
+  const judged = [
+    // Practiced in the morning's session; never in this one.
+    row("Elin", {
+      firstSeenAt: null,
+      status: reportStatus(
+        { ...facts, lastSeenAt: "2026-11-30T09:30:00.000Z" },
+        at,
+      ),
+    }),
+    // On AMP five minutes before Start; nothing after.
+    row("Finn", {
+      firstSeenAt: null,
+      status: reportStatus(
+        { ...facts, lastSeenAt: "2026-11-30T13:55:00.000Z" },
+        at,
+      ),
+    }),
+    // Signed in at 2:11 and answered nothing.
+    row("Jory", {
+      firstSeenAt: "2026-11-30T14:11:00.000Z",
+      status: reportStatus(
+        { ...facts, firstSeenAt: "2026-11-30T14:11:00.000Z" },
+        at,
+      ),
+    }),
+    // Signed in before Start; her open tab was seen during the session.
+    row("Kay", {
+      firstSeenAt: null,
+      status: reportStatus(
+        { ...facts, lastSeenAt: "2026-11-30T14:06:00.000Z" },
+        at,
+      ),
+    }),
+  ];
+  expect(judged.map((member) => member.status)).toEqual([
+    "not_signed_in",
+    "not_signed_in",
+    "idle",
+    "idle",
+  ]);
+  const groups = followUp(judged);
+  expect(
+    groups.map((group) => [
+      group.id,
+      group.members.map((member) => member.name),
+      group.members.map((member) => group.fact(member, CLASS_REPORT_WORDS)),
+    ]),
+  ).toEqual([
+    ["not-signed-in", ["Elin", "Finn"], ["", ""]],
+    ["no-answers", ["Jory", "Kay"], [expect.stringMatching(/^Signed in /), ""]],
+  ]);
 });
 
 test("skills: most students first, and who ended on one needing help", () => {

@@ -18,7 +18,11 @@ import {
   type SessionReport,
 } from "../src/schools/live/contracts.js";
 import { readLiveRows } from "../src/schools/live/rows.js";
-import { liveStatus } from "../src/schools/live/status.js";
+import {
+  LIVE_RULES,
+  liveStatus,
+  liveTotals,
+} from "../src/schools/live/status.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
@@ -99,7 +103,7 @@ test(
     })) as { id: string };
     await schoolAdmin(schools, "issue-license", {
       orgId: org.id,
-      seats: 10,
+      seats: 30,
       endsAt: new Date(Date.now() + 200 * 86_400_000).toISOString(),
     });
     const classA = (await schools.createClass(org.id, { name: "Period 2" }))
@@ -309,7 +313,7 @@ test(
         );
         assert.equal(session.endsAt, session.plannedEndAt);
         assert.equal(session.endedAt, null);
-        assert.equal(session.rulesVersion, 1);
+        assert.equal(session.rulesVersion, LIVE_RULES.version);
         const [{ id: wren }] = await rows(
           "SELECT p.id FROM amp_people p WHERE p.account_id=$1",
           teacher,
@@ -475,7 +479,7 @@ test(
         ]);
         assert.equal(row.skill?.id, last.skillId);
         assert.ok(row.skill?.title);
-        assert.equal(row.seenToday, true);
+        assert.ok(row.lastSeenAt, "his own sign-in was seen");
         assert.ok(row.firstSeenAt && row.firstAnswerAt && row.lastHelpAt);
         assert.ok(row.firstSeenAt <= row.firstAnswerAt);
 
@@ -485,7 +489,8 @@ test(
         assert.equal(anaRow.hints, 0, "her hint came before Start");
 
         const calRow = rowOf(snapshot, cal.personId);
-        assert.equal(calRow.seenToday, false);
+        assert.equal(calRow.lastSeenAt, null);
+        assert.equal(calRow.firstSeenAt, null);
         assert.equal(calRow.problems, 0);
         assert.equal(
           liveStatus(calRow, {
@@ -734,7 +739,318 @@ test(
     );
 
     await t.test(
-      "a family: its parents run the class's session; a child answers on a parent's account",
+      "who is here: something of theirs in the session, or seen in the last ten minutes",
+      async () => {
+        const classC = (await schools.createClass(org.id, { name: "Period 5" }))
+          .id as string;
+        await schools.addStaff({
+          orgId: org.id,
+          role: "teacher",
+          givenName: "Wren",
+          accountId: teacher,
+          classId: classC,
+        });
+        const join = (givenName: string) =>
+          schools.provisionStudent(org.id, {
+            givenName,
+            gradeLevel: 2,
+            classId: classC,
+          });
+        const dee = await join("Dee");
+        const eli = await join("Eli");
+        const fay = await join("Fay");
+        const gus = await join("Gus");
+        const hal = await join("Hal");
+        const ivy = await join("Ivy");
+        /** When a student's own device was last seen. */
+        const seenAgo = (person: { personId: string }, ago: string) =>
+          db.query(
+            "UPDATE amp_student_sessions SET last_seen_at=now()-$2::interval WHERE person_id=$1",
+            [person.personId, ago],
+          );
+        const status = (snapshot: LiveSnapshot, person: { personId: string }) =>
+          liveStatus(rowOf(snapshot, person.personId), {
+            now: Date.parse(snapshot.serverNow),
+            startedAt: snapshot.session!.startedAt,
+          });
+        const present = (snapshot: LiveSnapshot) => ({
+          students: snapshot.totals.students,
+          present: snapshot.totals.present,
+        });
+
+        // Dee practiced this morning, on her own sign-in.
+        await (await device(dee)).answer(true);
+        await db.query(
+          "UPDATE amp_attempts SET created_at=now()-interval '3 hours' WHERE learner_id=$1",
+          [dee.learnerId],
+        );
+        await seenAgo(dee, "3 hours");
+        await device(eli);
+        await seenAgo(eli, "9 minutes");
+        await device(fay);
+        await seenAgo(fay, "11 minutes");
+        const gusDevice = await device(gus);
+        await seenAgo(gus, "3 hours");
+        const halDevice = await device(hal);
+        await seenAgo(hal, "20 minutes");
+
+        const session = await start(classC);
+        let snapshot = await live(classC);
+        assert.equal(
+          status(snapshot, dee),
+          "not_signed_in",
+          "practiced three hours ago, nothing since Start",
+        );
+        assert.equal(
+          status(snapshot, eli),
+          "idle",
+          "seen 9 minutes ago: here, and never working before anything of his",
+        );
+        assert.equal(
+          status(snapshot, fay),
+          "not_signed_in",
+          "seen 11 minutes ago, nothing since Start",
+        );
+        assert.equal(status(snapshot, gus), "not_signed_in");
+        assert.equal(status(snapshot, hal), "not_signed_in");
+        assert.equal(status(snapshot, ivy), "not_signed_in");
+        assert.deepEqual(present(snapshot), { students: 6, present: 1 });
+
+        // Gus answers; Hal raises a hand. Each is theirs, in the session.
+        await gusDevice.answer(true);
+        // On his own sign-in, a lesson opened from the Lessons tab is his too.
+        await gusDevice.beat({
+          deltas: [{ surface: "lesson", activeMs: 3_000 }],
+          events: [
+            {
+              kind: "lesson",
+              source: "lessons",
+              ref: "add-within-20",
+              ageMs: 0,
+            },
+          ],
+        });
+        const raised = await ok(
+          post("/api/v1/school/student/signals", halDevice.token, {
+            kind: "hand",
+          }),
+        );
+        assert.equal(raised.signals.length, 1);
+        // The request touched Hal's sign-in; the hand alone must count.
+        await seenAgo(hal, "20 minutes");
+        snapshot = await live(classC);
+        assert.equal(status(snapshot, gus), "working");
+        assert.equal(rowOf(snapshot, gus.personId).lessons, 1);
+        assert.equal(status(snapshot, hal), "working", "a raised hand");
+        assert.ok(rowOf(snapshot, hal.personId).firstSeenAt);
+        assert.deepEqual(present(snapshot), { students: 6, present: 3 });
+
+        // Half an hour of silence. Whoever did something in the session is
+        // still here (Quiet); Eli, only seen before it, no longer is.
+        const people = [dee, eli, fay, gus, hal].map(
+          (person) => person.personId,
+        );
+        for (const sql of [
+          "UPDATE amp_class_sessions SET started_at=started_at-interval '30 minutes' WHERE id=$1",
+          "UPDATE amp_class_events SET created_at=created_at-interval '30 minutes' WHERE session_id=$1",
+        ])
+          await db.query(sql, [session.id]);
+        await db.query(
+          "UPDATE amp_class_signals SET created_at=created_at-interval '30 minutes' WHERE class_id=$1",
+          [classC],
+        );
+        await db.query(
+          "UPDATE amp_attempts SET created_at=created_at-interval '30 minutes' WHERE learner_id=$1",
+          [gus.learnerId],
+        );
+        await db.query(
+          `UPDATE amp_help_events SET "at"="at"-interval '30 minutes' WHERE learner_id=$1`,
+          [gus.learnerId],
+        );
+        await db.query(
+          `UPDATE amp_student_sessions SET last_seen_at=last_seen_at-interval '30 minutes',
+             created_at=created_at-interval '30 minutes' WHERE person_id=ANY($1::uuid[])`,
+          [people],
+        );
+        snapshot = await live(classC);
+        assert.equal(status(snapshot, gus), "idle", "answered, then silent");
+        assert.equal(status(snapshot, hal), "idle");
+        assert.equal(status(snapshot, eli), "not_signed_in");
+        assert.deepEqual(present(snapshot), { students: 6, present: 2 });
+
+        // The report is judged by the same rule, at the moment it stopped.
+        const stopped = await stop(classC, session.id);
+        assert.deepEqual(
+          stopped.rows.map((row) => [row.name, row.status]),
+          [
+            ["Dee", "not_signed_in"],
+            ["Eli", "not_signed_in"],
+            ["Fay", "not_signed_in"],
+            ["Gus", "idle"],
+            ["Hal", "idle"],
+            ["Ivy", "not_signed_in"],
+          ],
+        );
+        assert.equal(stopped.totals.present, 2);
+        assert.equal(stopped.totals.lessons, 1);
+
+        // A session nobody stopped is judged at its end, whenever it is
+        // closed: Ivy, who signed in after it, was not in it.
+        const planned = await start(classC, { minutes: 10 });
+        await db.query(
+          `UPDATE amp_class_sessions SET started_at=now()-interval '30 minutes',
+             planned_end_at=now()-interval '20 minutes' WHERE id=$1`,
+          [planned.id],
+        );
+        await device(ivy);
+        assert.equal((await live(classC)).session, null);
+        const closed = sessionReportResponse.parse(
+          await ok(get(`${sessionPath(classC)}/${planned.id}`, teacher)),
+        );
+        assert.equal(closed.session.endReason, "planned_end");
+        assert.deepEqual(
+          closed.rows.map((row) => row.status),
+          Array(6).fill("not_signed_in"),
+        );
+        assert.equal(closed.totals.present, 0);
+      },
+    );
+
+    await t.test(
+      "signed in means in the session: the word, Active and the report's groups",
+      async () => {
+        const classD = (await schools.createClass(org.id, { name: "Period 6" }))
+          .id as string;
+        await schools.addStaff({
+          orgId: org.id,
+          role: "teacher",
+          givenName: "Wren",
+          accountId: teacher,
+          classId: classD,
+        });
+        const join = (givenName: string) =>
+          schools.provisionStudent(org.id, {
+            givenName,
+            gradeLevel: 2,
+            classId: classD,
+          });
+        const jo = await join("Jo");
+        const kit = await join("Kit");
+        const lou = await join("Lou");
+        const mo = await join("Mo");
+        const seenAgo = (person: { personId: string }, ago: string) =>
+          db.query(
+            `UPDATE amp_student_sessions SET last_seen_at=now()-$2::interval,
+               created_at=LEAST(created_at,now()-$2::interval) WHERE person_id=$1`,
+            [person.personId, ago],
+          );
+        const read = async () => {
+          const snapshot = await live(classD);
+          const at = {
+            now: Date.parse(snapshot.serverNow),
+            startedAt: snapshot.session!.startedAt,
+          };
+          const statuses = Object.fromEntries(
+            snapshot.rows.map((row) => [row.name, liveStatus(row, at)]),
+          );
+          return {
+            snapshot,
+            statuses,
+            here: snapshot.totals.present,
+            // The cockpit's Active tile: working, on a roll or needing help.
+            active: Object.values(statuses).filter((status) =>
+              ["working", "flying", "struggling"].includes(status),
+            ).length,
+          };
+        };
+        // Jo practiced that morning. Kit was on AMP five minutes ago. Lou
+        // signed in six minutes ago and her tab is still open. Mo signed in
+        // two minutes ago, on a device she has since left.
+        await (await device(jo)).answer(true);
+        await db.query(
+          "UPDATE amp_attempts SET created_at=now()-interval '3 hours' WHERE learner_id=$1",
+          [jo.learnerId],
+        );
+        await seenAgo(jo, "3 hours");
+        await device(kit);
+        await seenAgo(kit, "5 minutes");
+        const louDevice = await device(lou);
+        await seenAgo(lou, "6 minutes");
+        await device(mo);
+        await seenAgo(mo, "2 minutes");
+
+        const session = await start(classD);
+        let now = await read();
+        // From the first second: nobody is Working or Active before
+        // something of theirs happens in the session.
+        assert.deepEqual(now.statuses, {
+          Jo: "not_signed_in",
+          Kit: "idle",
+          Lou: "idle",
+          Mo: "idle",
+        });
+        assert.deepEqual([now.here, now.active], [3, 0]);
+
+        // Mo asks for her pictures from the sign-in screen: not signed in,
+        // whatever her last device said two minutes ago.
+        const forgot = randomUUID();
+        await db.query(
+          "INSERT INTO amp_class_signals(id,class_id,person_id,kind) VALUES($1,$2,$3,'forgot_picture')",
+          [forgot, classD, mo.personId],
+        );
+        // Lou's open tab asks the server something: her sign-in, seen in
+        // the session.
+        await ok(get("/api/v1/school/student/signals", louDevice.token));
+        now = await read();
+        assert.deepEqual(now.statuses, {
+          Jo: "not_signed_in",
+          Kit: "idle",
+          Lou: "working",
+          Mo: "not_signed_in",
+        });
+        assert.deepEqual([now.here, now.active], [2, 1]);
+        assert.deepEqual(
+          now.snapshot.signals.map((signal) => [signal.name, signal.kind]),
+          [["Mo", "forgot_picture"]],
+        );
+        assert.equal(rowOf(now.snapshot, lou.personId).firstSeenAt, null);
+        // The totals a screen computes agree with the server's.
+        assert.deepEqual(
+          liveTotals(now.snapshot.rows, {
+            now: Date.parse(now.snapshot.serverNow),
+            startedAt: now.snapshot.session!.startedAt,
+          }),
+          now.snapshot.totals,
+        );
+
+        // Stopped two minutes in. Kit is still within ten minutes of his
+        // last sighting, so the live screen had him here; the report goes
+        // by the session's window alone.
+        const report = await stop(classD, session.id);
+        assert.deepEqual(
+          report.rows.map((row) => [row.name, row.status, row.firstSeenAt]),
+          [
+            ["Jo", "not_signed_in", null],
+            ["Kit", "not_signed_in", null],
+            ["Lou", "working", null],
+            ["Mo", "not_signed_in", null],
+          ],
+        );
+        assert.equal(report.totals.present, 1);
+
+        // Mo signs in: her request is withdrawn and she is in the next
+        // session from that moment.
+        const next = await start(classD);
+        await device(mo);
+        now = await read();
+        assert.equal(now.statuses.Mo, "working");
+        assert.deepEqual(now.snapshot.signals, []);
+        await stop(classD, next.id);
+      },
+    );
+
+    await t.test(
+      "a family: its parents run the class's session; a parent's own device is not the child",
       async () => {
         const parent = await user("Marisol Fixture");
         await db.query(
@@ -753,10 +1069,52 @@ test(
           "SELECT id FROM amp_people WHERE learner_id=$1",
           maya.id,
         );
+        const nico = await ok(
+          post("/api/v1/learners", parent, { name: "Nico", birthYear: 2017 }),
+          201,
+        );
+        const [nicoPerson] = await rows(
+          "SELECT id FROM amp_people WHERE learner_id=$1",
+          nico.id,
+        );
         const familyClass = family.class_id as string;
         const view = await live(familyClass, parent);
         assert.deepEqual(view.can, { manage: true });
+        // That morning Maya was handed the parent's device and practiced.
+        const morning = await ok(
+          post(`/api/v1/family/learners/${maya.id}/practice-here`, parent),
+          201,
+        );
+        await (
+          await device(
+            { personId: mayaPerson.id, learnerId: maya.id },
+            morning.token,
+          )
+        ).answer(true);
+        await db.query(
+          "UPDATE amp_attempts SET created_at=now()-interval '3 hours' WHERE learner_id=$1",
+          [maya.id],
+        );
+        await db.query(
+          `UPDATE amp_student_sessions SET created_at=now()-interval '3 hours',
+             last_seen_at=now()-interval '3 hours' WHERE person_id=$1`,
+          [mayaPerson.id],
+        );
         const session = await start(familyClass, {}, parent);
+        // Start, before any child opens anything: nobody is here or active.
+        const atStart = await live(familyClass, parent);
+        assert.deepEqual(
+          atStart.rows.map((row) =>
+            liveStatus(row, {
+              now: Date.parse(atStart.serverNow),
+              startedAt: atStart.session!.startedAt,
+            }),
+          ),
+          ["not_signed_in", "not_signed_in"],
+        );
+        assert.equal(atStart.totals.present, 0);
+        const morningSeen = rowOf(atStart, mayaPerson.id).lastSeenAt;
+        assert.ok(morningSeen);
         const [holder] = await rows(
           "SELECT id FROM amp_people WHERE account_id=$1 AND tenant_id=$2",
           parent,
@@ -764,29 +1122,140 @@ test(
         );
         assert.equal(session.startedBy, holder.id);
 
-        // On the parent's device: no student session, events keyed by learner.
+        const status = (snapshot: LiveSnapshot, personId: string) =>
+          liveStatus(rowOf(snapshot, personId), {
+            now: Date.parse(snapshot.serverNow),
+            startedAt: snapshot.session!.startedAt,
+          });
+        const familyEvents = async () =>
+          (await events(familyClass)).map((e) => [e.person_id, e.kind]);
+
+        // The parent, with Nico chosen, reads his Pathways and plays a video
+        // there: the parent's own time on the parent's own sign-in. None of
+        // it is Nico's presence, his help or when he was last active.
+        await ok(
+          post(`/api/v1/learners/${nico.id}/activity`, parent, {
+            deltas: [
+              { surface: "map", activeMs: 20_000 },
+              { surface: "video", activeMs: 5_000 },
+            ],
+            events: [
+              {
+                kind: "video",
+                source: "pathways",
+                ref: "add-within-20",
+                ageMs: 0,
+              },
+            ],
+          }),
+          204,
+        );
+        assert.deepEqual(await familyEvents(), [[null, "session"]]);
+        let snapshot = await live(familyClass, parent);
+        const nicoRow = rowOf(snapshot, nicoPerson.id);
+        assert.equal(nicoRow.name, "Nico");
+        assert.equal(
+          status(snapshot, nicoPerson.id),
+          "not_signed_in",
+          "a parent's heartbeat with a child chosen is not the child",
+        );
+        assert.deepEqual(
+          {
+            firstSeenAt: nicoRow.firstSeenAt,
+            lastSeenAt: nicoRow.lastSeenAt,
+            lastHelpAt: nicoRow.lastHelpAt,
+            lastAnswerAt: nicoRow.lastAnswerAt,
+            videos: nicoRow.videos,
+          },
+          {
+            firstSeenAt: null,
+            lastSeenAt: null,
+            lastHelpAt: null,
+            lastAnswerAt: null,
+            videos: 0,
+          },
+          "and he has no last-active",
+        );
+        assert.equal(snapshot.totals.present, 0);
+
+        // On the parent's sign-in, time is never the child: not the parent
+        // reading Maya's Pathways, nor practice open as her with nothing
+        // done. Her answer and the hint she opens in practice are hers. No
+        // student session, events keyed by learner.
         const mayaOnParent = await device(
           { personId: mayaPerson.id, learnerId: maya.id },
           parent,
         );
-        await mayaOnParent.answer(true);
+        const served = await ok(
+          post(`/api/v1/learners/${maya.id}/batches`, parent, {
+            templateId: "add-within-20",
+            count: 1,
+            figureCapabilities: ["scenes-v1"],
+          }),
+        );
         await mayaOnParent.beat(
-          { deltas: [{ surface: "practice", activeMs: 5_000 }] },
+          {
+            deltas: [
+              { surface: "map", activeMs: 5_000 },
+              {
+                surface: "practice",
+                problemId: served.problems[0].id,
+                activeMs: 5_000,
+              },
+            ],
+          },
           `/api/v1/learners/${maya.id}/activity`,
         );
-        assert.deepEqual(
-          (await events(familyClass)).map((e) => [e.person_id, e.kind]),
-          [
-            [null, "session"],
-            [mayaPerson.id, "answer"],
-            [mayaPerson.id, "presence"],
-          ],
+        assert.deepEqual(await familyEvents(), [[null, "session"]]);
+        snapshot = await live(familyClass, parent);
+        assert.equal(status(snapshot, mayaPerson.id), "not_signed_in");
+        assert.equal(snapshot.totals.present, 0);
+        await mayaOnParent.answer(true);
+        await mayaOnParent.beat(
+          {
+            deltas: [{ surface: "hint", activeMs: 2_000 }],
+            events: [helpEvent("hint")],
+          },
+          `/api/v1/learners/${maya.id}/activity`,
         );
-        const snapshot = await live(familyClass, parent);
+        assert.deepEqual((await familyEvents()).slice(1), [
+          [mayaPerson.id, "answer"],
+          [mayaPerson.id, "help"],
+        ]);
+        snapshot = await live(familyClass, parent);
         const row = rowOf(snapshot, mayaPerson.id);
         assert.equal(row.name, "Maya");
         assert.equal(row.problems, 1);
-        assert.equal(row.seenToday, true, "a parent's device counts as here");
+        assert.equal(row.hints, 1);
+        assert.ok(row.lastHelpAt);
+        assert.equal(
+          row.lastSeenAt,
+          morningSeen,
+          "the parent's sign-in isn't hers: her own was last seen that morning",
+        );
+        assert.equal(snapshot.totals.present, 1);
+
+        // "Practice" on the family's Today hands the device to Nico: his own
+        // sign-in, and his answer.
+        const grant = await ok(
+          post(`/api/v1/family/learners/${nico.id}/practice-here`, parent),
+          201,
+        );
+        const nicoDevice = await device(
+          { personId: nicoPerson.id, learnerId: nico.id },
+          grant.token,
+        );
+        await nicoDevice.answer(true);
+        assert.deepEqual((await familyEvents()).slice(3), [
+          [nicoPerson.id, "presence"],
+          [nicoPerson.id, "answer"],
+        ]);
+        snapshot = await live(familyClass, parent);
+        assert.equal(status(snapshot, nicoPerson.id), "working");
+        const handed = rowOf(snapshot, nicoPerson.id);
+        assert.equal(handed.problems, 1);
+        assert.ok(handed.lastAnswerAt && handed.lastSeenAt);
+        assert.equal(snapshot.totals.present, 2);
 
         // The second parent is a teacher of the family's class: the same
         // family action set reaches her.
@@ -822,17 +1291,24 @@ test(
         assert.equal(stopped.session.endedBy, rowanPerson.id);
         assert.deepEqual(
           stopped.rows.map((r) => [r.name, r.problems, r.status]),
-          [["Maya", 1, "working"]],
+          [
+            ["Maya", 1, "working"],
+            ["Nico", 1, "working"],
+          ],
         );
+        assert.equal(stopped.totals.present, 2);
 
         // The family's export carries the child's session rows...
         const lines: { type: string; data: Record<string, unknown> }[] = [];
         for await (const line of families.export(parent))
           lines.push(JSON.parse(line));
         const exported = lines.filter((l) => l.type === "class-session");
-        assert.equal(exported.length, 1);
-        assert.equal(exported[0]!.data.learnerId, maya.id);
-        assert.equal(exported[0]!.data.problems, 1);
+        assert.deepEqual(
+          exported
+            .map((line) => [line.data.learnerId, line.data.problems])
+            .sort(),
+          [maya.id, nico.id].sort().map((id) => [id, 1]),
+        );
 
         // ...and deleting her learning takes them; the report stays readable.
         await families.deleteLearning(parent, maya.id);
@@ -846,8 +1322,11 @@ test(
         const after = sessionReportResponse.parse(
           await ok(get(`${sessionPath(familyClass)}/${session.id}`, parent)),
         );
-        assert.deepEqual(after.rows, []);
-        assert.equal(after.totals.problems, 0);
+        assert.deepEqual(
+          after.rows.map((r) => r.name),
+          ["Nico"],
+        );
+        assert.equal(after.totals.problems, 1);
       },
     );
 
