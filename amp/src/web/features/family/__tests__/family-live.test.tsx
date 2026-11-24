@@ -345,6 +345,65 @@ test("levels follow each child's own setting, in grade words", async () => {
   expect(wren.textContent).not.toMatch(/\d\.\d/);
 });
 
+test("on a phone a child's row says they opened help, each kind in a place of its own", async () => {
+  Object.defineProperty(window, "innerWidth", {
+    configurable: true,
+    value: 390,
+  });
+  const helped = [{ ...kids[0]!, hints: 2, lessons: 1 }, kids[1]!, kids[2]!];
+  await mount(snapshot({ rows: helped, totals: liveTotals(helped) }));
+  await waitFor(() =>
+    expect(document.querySelector('[data-layout="phone"]')).toBeTruthy(),
+  );
+  const marks = (n: number) =>
+    document.querySelector(`[data-live-row="${person(n)}"] [data-help-marks]`)!;
+  // Every child's row holds the four places, used or not: a hint's at the
+  // row's end, beside the figures.
+  for (const n of [1, 2, 3])
+    expect(
+      [...marks(n).querySelectorAll("[data-help]")].map((place) =>
+        place.getAttribute("data-help"),
+      ),
+    ).toEqual(["videos", "examples", "lessons", "hints"]);
+  const opened = (n: number) =>
+    [...marks(n).querySelectorAll("[data-opened]")].map(
+      (place) => `${place.getAttribute("data-help")} ${place.textContent}`,
+    );
+  expect(opened(1)).toEqual(["lessons 1", "hints 2"]);
+  expect(marks(1).getAttribute("aria-label")).toBe(
+    "Help opened: 2 hints, 1 lesson",
+  );
+  expect(opened(2)).toEqual([]);
+  expect(marks(2).getAttribute("aria-hidden")).toBe("true");
+  // A hint opened on the child's own device arrives in its place.
+  const next = [helped[0]!, { ...helped[1]!, hints: 1 }, helped[2]!];
+  await act(async () => {
+    queryClient.setQueryData(
+      liveKey(auth, place),
+      snapshot({ rows: next, totals: liveTotals(next) }),
+    );
+  });
+  await waitFor(() => expect(opened(2)).toEqual(["hints 1"]));
+  expect(marks(2).getAttribute("aria-label")).toBe("Help opened: 1 hint");
+  expect(document.body.textContent).not.toMatch(FOREIGN);
+});
+
+test("with room for the Help column, a row has no marks beside the name", async () => {
+  const helped = [{ ...kids[0]!, hints: 2 }, kids[1]!, kids[2]!];
+  await mount(snapshot({ rows: helped, totals: liveTotals(helped) }));
+  await waitFor(() =>
+    expect(document.querySelector('[data-layout="tablet"]')).toBeTruthy(),
+  );
+  expect(document.querySelector("[data-help-marks]")).toBeNull();
+  expect(
+    document
+      .querySelector(
+        `[data-live-row="${person(1)}"] [role="img"][aria-label^="Help:"]`,
+      )
+      ?.getAttribute("aria-label"),
+  ).toBe("Help: 2 hints, 0 lessons, 0 explanations, 0 videos");
+});
+
 test("a raised hand: Got it for a parent who may answer; without, it shows", async () => {
   await mount(snapshot({ signals: [hand] }));
   try {

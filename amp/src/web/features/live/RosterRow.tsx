@@ -25,6 +25,7 @@ export function RosterRow({
   mark,
   detail,
   badge,
+  aside,
   facts,
   density,
   link,
@@ -37,6 +38,10 @@ export function RosterRow({
   detail: ReactNode;
   /** Beside the name, in a fixed slot: an open request. */
   badge?: ReactNode;
+  /** At the end of the name's line, in a fixed width of its own: a screen's
+   * small marks (a family's "help opened" on a phone). The name stops
+   * before it, so what shows there moves nothing. */
+  aside?: ReactNode;
   /** The end of the row: fixed-width figures. */
   facts: ReactNode;
   density: "phone" | "tablet";
@@ -50,6 +55,7 @@ export function RosterRow({
         <span className={styles.nameLine}>
           <span className={styles.name}>{name}</span>
           <span className={styles.badge}>{badge}</span>
+          {aside ? <span className={styles.aside}>{aside}</span> : null}
         </span>
         <span className={styles.detail}>{detail}</span>
       </span>

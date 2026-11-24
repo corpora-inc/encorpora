@@ -70,6 +70,14 @@ a.body:focus-visible {
 .badge:empty {
   display: none;
 }
+/* The name line's end (RosterRow's `aside`): at the far edge, whatever the
+   name and its badge do. */
+.aside {
+  display: flex;
+  flex: none;
+  align-items: center;
+  margin-inline-start: auto;
+}
 .detail {
   min-width: 0;
   overflow: hidden;
