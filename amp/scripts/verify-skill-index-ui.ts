@@ -17,6 +17,14 @@
  * - a problem type opens its lesson; a skill opens its layer, and Practice
  *   there starts THAT child's practice held to the skill (the hand-over),
  *   with Back returning to the index;
+ * - beside Practice, "Workbook": one tap opens the workbook maker with a
+ *   workbook already composed from that skill alone, for that child, the
+ *   skill named on it; Download there saves it; every problem of the saved
+ *   workbook is that skill's and its first page names the skill (read from
+ *   the workbook itself); it is listed with the child's workbooks; and
+ *   closing the maker comes back to the same skill, the list where it was;
+ * - an adult's own skill offers their own workbook, exactly when their own
+ *   workbooks would make one;
  * - at every width, every link and button of the index is a 44 px target
  *   (each one measured, wherever it is on the page), and the shared probe
  *   the app-shell check runs (scripts/app-shell-probe.ts) finds no small
@@ -30,7 +38,8 @@
  *     [--widths 390,768,1024,1280] [--out artifacts/skill-index] [--shots]
  */
 import assert from "node:assert/strict";
-import { mkdir } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import { mkdir, readFile } from "node:fs/promises";
 import { chromium as rawChromium, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { stubAnalytics } from "./analytics-stub";
@@ -77,7 +86,7 @@ const stack = argument("origin")
   ? null
   : await startPersonaStack({
       webPort: Number(argument("port") ?? 4962),
-      personas: ["family"],
+      personas: ["family", "adult-3wk"],
       name: "skill_index",
       out: OUT,
     });
@@ -110,6 +119,25 @@ try {
     return answer.json();
   };
   const family = (await api("/families")).families[0].familyId as string;
+  /** The device's calendar date, as the app names today's workbook. */
+  const today = () => {
+    const now = new Date();
+    const two = (n: number) => String(n).padStart(2, "0");
+    return `${now.getFullYear()}-${two(now.getMonth() + 1)}-${two(now.getDate())}`;
+  };
+  /** Text out of the printed document's markup. */
+  const plain = (markup: string) =>
+    markup
+      .replaceAll("&amp;", "&")
+      .replaceAll("&#x27;", "'")
+      .replaceAll("&#39;", "'")
+      .replaceAll("&quot;", '"');
+  type Made = {
+    id: string;
+    code: string;
+    problems: number;
+    skills?: { id: string; title: string }[];
+  };
   const child = (
     (await api(`/families/${family}`)).children as {
       id: string;
@@ -134,6 +162,14 @@ try {
   const expected = skillsOf(own);
   assert.ok(expected.length >= 10, `${own} has its skills`);
   const inventory = `/family/${family}/kids/${child.id}/inventory`;
+  /** The child's workbooks of today that are held to this one skill. */
+  const heldToday = async (skill: string) =>
+    (
+      (await api(`/learners/${child.id}/workbooks?date=${today()}`))
+        .workbooks as Made[]
+    ).filter(
+      (entry) => entry.skills?.length === 1 && entry.skills[0]!.id === skill,
+    );
   console.log(
     `${CHILD}'s own grade: ${own} (${expected.length} skills, ${expected.reduce((sum, row) => sum + row.types.length, 0)} problem types), at ${origin}`,
   );
@@ -520,11 +556,181 @@ try {
       new RegExp(`with ${CHILD}$`),
       at("Practice names the child"),
     );
-    if (SHOTS) {
-      // (The layer has slid in.)
-      await page.waitForTimeout(700);
-      await page.screenshot({ path: `${OUT}/skill-${width}-light.png` });
+    // ---- Workbook, beside Practice: held to this skill, for this child ----
+    const workbook = page.locator(
+      `[data-layer-panel] a[data-skill-workbook="${pick.skill.id}"]`,
+    );
+    await workbook.waitFor({ timeout: 15_000 });
+    assert.equal(
+      await workbook.getAttribute("data-workbook-for"),
+      child.id,
+      at("the workbook is this child's"),
+    );
+    assert.equal((await workbook.innerText()).trim(), "Workbook");
+    // (The layer has slid in.)
+    await page.waitForTimeout(700);
+    {
+      const [made, started] = [
+        (await workbook.boundingBox())!,
+        (await practice.boundingBox())!,
+      ];
+      assert.ok(
+        made.height >= 43.5 && made.width >= 43.5,
+        at(`Workbook is a 44 px target: ${made.width}×${made.height}`),
+      );
+      assert.ok(
+        Math.abs(made.y - started.y) < 2 && made.x > started.x,
+        at("Workbook sits beside Practice"),
+      );
+      assert.deepEqual(
+        (await probe(page)).smallTargets,
+        [],
+        at("the skill: targets under 44 px"),
+      );
     }
+    if (SHOTS)
+      await page.screenshot({ path: `${OUT}/skill-${width}-light.png` });
+    // Where the list is, to come back to.
+    const place = () =>
+      page.evaluate(
+        (id) => [
+          Math.round(scrollY),
+          Math.round(
+            document
+              .querySelector(`li[data-skill="${id}"]`)!
+              .getBoundingClientRect().y,
+          ),
+        ],
+        pick.skill.id,
+      );
+    const left = await place();
+    await workbook.click();
+    await page.waitForURL(
+      (url) =>
+        url.pathname ===
+        `/family/${family}/kids/${child.id}/workbooks/${today()}`,
+    );
+    // The maker, with the workbook already composed from this skill alone.
+    const paper = page.locator("[data-workbook-contents]");
+    await paper.getByRole("heading", { name: /^Workbook No\./ }).waitFor();
+    assert.ok(
+      (await paper.innerText()).includes(pick.skill.title),
+      at("the maker's workbook names the skill"),
+    );
+    assert.ok(
+      (await page.locator("[data-held-skills]").innerText()).includes(
+        pick.skill.title,
+      ),
+      at("the maker's options name the skill"),
+    );
+    // Held, level and areas say nothing: they are not offered.
+    assert.equal(
+      await page
+        .locator(
+          '[role=radiogroup][aria-label="Level"], [role=group][aria-label="Areas"]',
+        )
+        .count(),
+      0,
+      at("no Level or Areas for a held workbook"),
+    );
+    assert.equal(
+      await page.locator('[role=radiogroup][aria-label="Length"]').count(),
+      1,
+      at("the maker keeps its Length"),
+    );
+    await fits("the maker");
+    assert.deepEqual(
+      (await probe(page)).smallTargets,
+      [],
+      at("the maker: targets under 44 px"),
+    );
+    if (SHOTS)
+      await page.screenshot({ path: `${OUT}/maker-${width}-light.png` });
+    // Download saves it, as any workbook.
+    const before = await heldToday(pick.skill.id);
+    const downloading = page.waitForEvent("download", { timeout: 60_000 });
+    await page.getByRole("button", { name: "Download workbook" }).click();
+    const file = await downloading;
+    const kind = file.suggestedFilename().endsWith(".pdf") ? "pdf" : "html";
+    const saved = `${OUT}/skill-workbook-${width}.${kind}`;
+    await file.saveAs(saved);
+    const after = await heldToday(pick.skill.id);
+    assert.equal(after.length, before.length + 1, at("one workbook was made"));
+    const made = after.find(
+      (entry) => !before.some((old) => old.id === entry.id),
+    )!;
+    assert.deepEqual(
+      made.skills,
+      [{ id: pick.skill.id, title: pick.skill.title }],
+      at("the workbook is held to the skill"),
+    );
+    // Its problems, read from the workbook itself: every one this skill's.
+    const problems = (
+      await api(`/learners/${child.id}/workbooks/${made.id}/results`)
+    ).rows as { skillId: string }[];
+    assert.equal(problems.length, made.problems);
+    assert.ok(problems.length >= 3, at(`${problems.length} problems`));
+    assert.deepEqual(
+      [...new Set(problems.map((row) => row.skillId))],
+      [pick.skill.id],
+      at("every problem is the skill's"),
+    );
+    // Its first page names the skill: the printed document's masthead, and
+    // the saved file's own first page where it is a PDF this machine reads.
+    const firstPage = await (
+      await fetch(
+        `${origin}/api/v1/learners/${child.id}/workbooks/${made.id}/document`,
+        { headers: { Authorization: `Bearer ${token}`, Origin: origin } },
+      )
+    ).text();
+    assert.equal(
+      plain(
+        /<p class="wb-mast-skills"[^>]*>([^<]*)<\/p>/.exec(firstPage)?.[1] ??
+          "",
+      ),
+      pick.skill.title,
+      at("the first page names the skill"),
+    );
+    if (kind === "pdf") {
+      assert.equal(
+        (await readFile(saved)).subarray(0, 5).toString(),
+        "%PDF-",
+        at("the download is a PDF"),
+      );
+      const text = spawnSync("pdftotext", ["-l", "1", saved, "-"], {
+        encoding: "utf8",
+      });
+      if (text.status === 0)
+        assert.ok(
+          text.stdout.replace(/\s+/g, " ").includes(pick.skill.title),
+          at("the PDF's first page names the skill"),
+        );
+      else console.log(`  (${width}: no pdftotext here; the PDF was not read)`);
+    }
+    // The maker now shows the saved workbook, by its code.
+    await paper.getByText(made.code, { exact: true }).waitFor();
+    // Closing comes back to the skill, the list where it was.
+    await page.keyboard.press("Escape");
+    await page.waitForURL((url) => url.pathname === inventory);
+    await layer.waitFor();
+    await workbook.waitFor();
+    await page.waitForTimeout(400);
+    assert.deepEqual(await place(), left, at("the list is where it was"));
+    // It is listed with the child's workbooks.
+    await page.goto(`${origin}/family/${family}/kids/${child.id}`);
+    const listed = page
+      .locator("[data-child-workbooks] li")
+      .filter({ hasText: made.code });
+    await listed.waitFor({ timeout: 30_000 });
+    assert.ok(
+      (await listed.innerText()).includes(pick.skill.title),
+      at("the list names the skill"),
+    );
+    await fits("the child's workbooks");
+    await page.goBack();
+    await page.waitForURL((url) => url.pathname === inventory);
+    await layer.waitFor({ timeout: 30_000 });
+    await practice.waitFor();
     phase = "hand-over";
     const handed = page.waitForRequest(
       (request) =>
@@ -557,6 +763,85 @@ try {
     for (const entry of refused) console.log(`  note (${width}): ${entry}`);
     await context.close();
     console.log(`  ok ${width}`);
+  }
+
+  // ---- an adult's own skill: their own workbook, when theirs would make one --
+  {
+    const context = await browser.newContext({
+      viewport: { width: 1280, height: 900 },
+    });
+    await stubAnalytics(context);
+    const entered = await context.request.post(
+      `${origin}/api/auth/sign-in/email`,
+      {
+        headers: { Origin: origin },
+        data: {
+          email: personaEmail("adult-3wk"),
+          password: PERSONA_PASSPHRASE,
+        },
+      },
+    );
+    assert.ok(entered.ok(), `the adult signs in: ${entered.status()}`);
+    const adult = (
+      await (await context.request.get(`${origin}/api/auth/get-session`)).json()
+    ).session.token as string;
+    const me = await (
+      await fetch(`${origin}/api/v1/me`, {
+        headers: { Authorization: `Bearer ${adult}`, Origin: origin },
+      })
+    ).json();
+    const self = me.adultPractice.learner.id as string;
+    const mine = (
+      me.family.learners as {
+        id: string;
+        learningAllowed?: boolean;
+        canPractice?: boolean;
+        hasAccess?: boolean;
+        freeAllowance?: { workbooks: { available: number } };
+      }[]
+    ).find((entry) => entry.id === self)!;
+    // The maker's own rule (features/workbooks/model.ts `canMakeWorkbook`).
+    const makes =
+      (mine.learningAllowed ?? !!mine.canPractice) &&
+      ((mine.hasAccess ?? (!mine.freeAllowance && !!mine.canPractice)) ||
+        (mine.freeAllowance?.workbooks.available ?? 0) > 0);
+    const page = await context.newPage();
+    await page.goto(`${origin}/inventory`);
+    const row = page.locator("li[data-strength] a").first();
+    await row.waitFor({ timeout: 30_000 });
+    await row.click();
+    const panel = page.locator("[data-layer-panel] [data-skill-layer]");
+    await panel.waitFor();
+    const skill = (await panel.getAttribute("data-skill-layer"))!;
+    const theirs = page.locator("[data-layer-panel] a[data-skill-workbook]");
+    await page.locator("[data-layer-panel] [data-skill-actions]").waitFor();
+    await page.waitForTimeout(700);
+    assert.equal(
+      await theirs.count(),
+      makes ? 1 : 0,
+      `an adult's own Workbook is offered exactly when theirs would make one (${makes})`,
+    );
+    if (makes) {
+      assert.equal(await theirs.getAttribute("data-workbook-for"), "self");
+      await theirs.click();
+      await page.waitForURL(
+        (url) => url.pathname === `/learners/${self}/workbooks/${today()}`,
+      );
+      const title = catalog.skills.find((entry) => entry.id === skill)!.title;
+      const paper = page.locator("[data-workbook-contents]");
+      await paper.getByRole("heading", { name: /^Workbook No\./ }).waitFor();
+      assert.ok(
+        (await paper.innerText()).includes(title),
+        "the adult's own maker names the skill",
+      );
+      if (SHOTS)
+        await page.screenshot({ path: `${OUT}/maker-own-1280-light.png` });
+      await page.keyboard.press("Escape");
+      await page.waitForURL((url) => url.pathname === "/inventory");
+      await panel.waitFor();
+    }
+    await context.close();
+    console.log(`  ok an adult's own (${makes ? "offered" : "not offered"})`);
   }
 
   // ---- dark, for the eye -----------------------------------------------------
