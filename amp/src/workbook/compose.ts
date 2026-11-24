@@ -32,7 +32,16 @@ export interface WorkbookChoices {
   lean: WorkbookLean;
   /** False: problems only, without "Today's idea". */
   lesson: boolean;
+  /** The workbook's scope, sorted: every problem comes from one of these
+   * skills and nothing else is printed (one skill's own worksheet, or a
+   * few skills together). Absent: the whole curriculum, as the areas and
+   * the level say. */
+  skills?: string[];
 }
+/** The most skills one workbook is held to. */
+export const WORKBOOK_SKILLS_MAX = 12;
+/** The most practice problems a workbook held to skills prints. */
+export const SKILL_PRACTICE_MAX = 40;
 export const defaultChoices: WorkbookChoices = {
   areas: [],
   lean: "level",
@@ -184,12 +193,30 @@ export function composeWorkbook(options: {
   if (!Number.isInteger(number) || number < 1 || number > 999)
     throw new Error("Invalid workbook number");
   const now = options.now ?? Date.now();
-  const choices: WorkbookChoices = {
-    areas: [...new Set(options.choices?.areas ?? [])].sort(),
-    lean: options.choices?.lean ?? "level",
-    lesson: options.choices?.lesson ?? true,
-  };
-  if (!WORKBOOK_LEANS.includes(choices.lean))
+  // A workbook held to skills: the ones asked for that have a problem type
+  // that prints. Its problems are theirs alone, so areas and the level's
+  // lean say nothing about it, and the stored choices leave them at rest.
+  const asked = [...new Set(options.choices?.skills ?? [])].sort();
+  const scope = asked.filter((id) =>
+    options.templates.some((t) => t.skillId === id && printable(t)),
+  );
+  if (asked.length && !scope.length)
+    throw new Error("No printable templates for these skills");
+  if (scope.length > WORKBOOK_SKILLS_MAX)
+    throw new Error("Too many skills for one workbook");
+  const choices: WorkbookChoices = scope.length
+    ? {
+        areas: [],
+        lean: "level",
+        lesson: options.choices?.lesson ?? true,
+        skills: scope,
+      }
+    : {
+        areas: [...new Set(options.choices?.areas ?? [])].sort(),
+        lean: options.choices?.lean ?? "level",
+        lesson: options.choices?.lesson ?? true,
+      };
+  if (!WORKBOOK_LEANS.includes(options.choices?.lean ?? "level"))
     throw new Error("Invalid workbook lean");
   const shift = leanShift[choices.lean];
   const budget = {
@@ -204,17 +231,23 @@ export function composeWorkbook(options: {
         (t) => t.skillId === options.focusSkill && printable(t),
       )
     : [];
-  const focusSkill = focusable.length ? options.focusSkill : undefined;
-  const seed = `workbook:${options.learnerKey}:${options.seedDate ?? options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}${focusSkill ? `:${focusSkill}` : ""}`;
+  // (A workbook held to skills has no other focus.)
+  const focusSkill =
+    focusable.length && !scope.length ? options.focusSkill : undefined;
+  // (A scope adds its own part, so every older workbook keeps its seed.)
+  const seed = `workbook:${options.learnerKey}:${options.seedDate ?? options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}${focusSkill ? `:${focusSkill}` : ""}${scope.length ? `:skills=${scope.join("+")}` : ""}`;
   const nodes = new Map(options.skills.map((s) => [s.id, s]));
   const strandOf = (t: TemplateMetadata) =>
     nodes.get(t.skillId)?.strand ?? t.skillId;
   const areas = new Set(choices.areas);
+  const scoped = new Set(scope);
   const pool = options.templates.filter(
     (t) =>
       printable(t) &&
       nodes.has(t.skillId) &&
-      (!areas.size || areas.has(strandOf(t))),
+      (scoped.size
+        ? scoped.has(t.skillId)
+        : !areas.size || areas.has(strandOf(t))),
   );
   if (!pool.length) throw new Error("No printable templates");
   const focusTemplates = pool.filter((t) => t.skillId === focusSkill);
@@ -254,18 +287,14 @@ export function composeWorkbook(options: {
   const serial = new Map<SectionKind, number>();
   const printed = new Set<string>();
 
-  const item = (t: TemplateMetadata, kind: SectionKind): WorkbookItem => {
-    const index = serial.get(kind) ?? 0;
-    serial.set(kind, index + 1);
-    // A template with few variants can repeat a problem; draw again.
-    let itemSeed = `${seed}:${kind}:${index}`;
-    let problem = generateProblem(t.id, itemSeed);
-    for (let retry = 1; retry < 8; retry++) {
-      const key = `${problem.public.prompt}\u0000${problem.answer}`;
-      if (!printed.has(key)) break;
-      itemSeed = `${seed}:${kind}:${index}:${retry}`;
-      problem = generateProblem(t.id, itemSeed);
-    }
+  /** A drawn problem as the workbook's item, counted as printed. */
+  const taken = (
+    t: TemplateMetadata,
+    kind: SectionKind,
+    itemSeed: string,
+    problem: GeneratedProblem,
+  ): WorkbookItem => {
+    serial.set(kind, (serial.get(kind) ?? 0) + 1);
     printed.add(`${problem.public.prompt}\u0000${problem.answer}`);
     const grade = gradeOf.get(t.id)!;
     usedTemplates.add(t.id);
@@ -291,6 +320,39 @@ export function composeWorkbook(options: {
             ? "answer"
             : "standard",
     };
+  };
+  const item = (t: TemplateMetadata, kind: SectionKind): WorkbookItem => {
+    const index = serial.get(kind) ?? 0;
+    // A template with few variants can repeat a problem; draw again.
+    let itemSeed = `${seed}:${kind}:${index}`;
+    let problem = generateProblem(t.id, itemSeed);
+    for (let retry = 1; retry < 8; retry++) {
+      const key = `${problem.public.prompt}\u0000${problem.answer}`;
+      if (!printed.has(key)) break;
+      itemSeed = `${seed}:${kind}:${index}:${retry}`;
+      problem = generateProblem(t.id, itemSeed);
+    }
+    return taken(t, kind, itemSeed, problem);
+  };
+  /** A problem of this type the workbook hasn't printed, that fits the
+   * minutes left: null when the type has no new problem (a type with few
+   * variants), or its problem runs longer. A workbook held to skills never
+   * prints a problem twice to fill its time. */
+  const fresh = (
+    t: TemplateMetadata,
+    kind: SectionKind,
+    left: number,
+  ): WorkbookItem | null => {
+    const index = serial.get(kind) ?? 0;
+    for (let retry = 0; retry < 8; retry++) {
+      const itemSeed = `${seed}:${kind}:${index}${retry ? `:${retry}` : ""}`;
+      const problem = generateProblem(t.id, itemSeed);
+      if (printed.has(`${problem.public.prompt}\u0000${problem.answer}`))
+        continue;
+      if (minutesFor(problem, gradeOf.get(t.id)!, kind) > left) return null;
+      return taken(t, kind, itemSeed, problem);
+    }
+    return null;
   };
   /** The minutes `item` would give this template next, without taking it. */
   const estimate = (t: TemplateMetadata, kind: SectionKind) =>
@@ -402,14 +464,28 @@ export function composeWorkbook(options: {
         rank(a.id) - rank(b.id)
       );
     });
+  // Held to skills, today's idea is one of theirs: a skill not yet secure
+  // first, then a lesson no recent workbook taught, in this workbook's order.
+  const scopedFocus = () =>
+    pool
+      .filter((t) => lessonOf.has(t.id))
+      .sort(
+        (a, b) =>
+          Number(strong(a.skillId)) - Number(strong(b.skillId)) ||
+          (printedLesson.get(lessonOf.get(a.id)!.id) ?? 0) -
+            (printedLesson.get(lessonOf.get(b.id)!.id) ?? 0) ||
+          rank(a.id) - rank(b.id),
+      )[0];
   const focus = !choices.lesson
     ? undefined
-    : (focusTemplates
-        .filter((t) => lessonOf.has(t.id))
-        .sort((a, b) => rank(a.id) - rank(b.id))[0] ??
-      lessonCandidates(-0.6, 0.4)[0] ??
-      lessonCandidates(-1.5, 1)[0] ??
-      lessonCandidates(-13, 13)[0]);
+    : scope.length
+      ? scopedFocus()
+      : (focusTemplates
+          .filter((t) => lessonOf.has(t.id))
+          .sort((a, b) => rank(a.id) - rank(b.id))[0] ??
+        lessonCandidates(-0.6, 0.4)[0] ??
+        lessonCandidates(-1.5, 1)[0] ??
+        lessonCandidates(-13, 13)[0]);
   const lessonSection: WorkbookSection | null = focus
     ? (() => {
         const lesson = lessonOf.get(focus.id)!;
@@ -429,6 +505,79 @@ export function composeWorkbook(options: {
         return { kind: "lesson", lessonId: lesson.id, items };
       })()
     : null;
+
+  // Held to skills: after today's idea, practice on those skills alone
+  // fills the time, the skills taking turns and each skill's problem types
+  // in turn (the ones a recent workbook printed last). No warm-up, review or
+  // challenge from anywhere else. It stops early when the skills have no
+  // new problem left.
+  if (scope.length) {
+    const types = scope.map((id) => {
+      const all = pool.filter((t) => t.skillId === id);
+      const assessed = all.filter((t) => templateRole(t.id) === "assessment");
+      return (assessed.length ? assessed : all).sort(
+        (a, b) => staleness(a) - staleness(b) || rank(a.id) - rank(b.id),
+      );
+    });
+    let left =
+      minutes -
+      (lessonSection
+        ? lessonSection.items.reduce((sum, i) => sum + i.minutes, 0) +
+          LESSON_READING_MINUTES
+        : 0);
+    const practice: WorkbookItem[] = [];
+    const turn = types.map(() => 0);
+    const spent = new Set<string>();
+    let progressed = true;
+    while (progressed && left >= 1 && practice.length < SKILL_PRACTICE_MAX) {
+      progressed = false;
+      for (const [at, list] of types.entries()) {
+        if (left < 1 || practice.length >= SKILL_PRACTICE_MAX) break;
+        for (let tries = 0; tries < list.length; tries++) {
+          const t = list[turn[at]! % list.length]!;
+          turn[at]!++;
+          if (spent.has(t.id)) continue;
+          const next = fresh(t, "practice", left);
+          if (!next) {
+            spent.add(t.id);
+            continue;
+          }
+          practice.push(next);
+          left -= next.minutes;
+          progressed = true;
+          break;
+        }
+      }
+    }
+    // Guided problems alone can outrun a short workbook of long problems.
+    if (lessonSection)
+      while (
+        lessonSection.items.length > 1 &&
+        lessonSection.items.reduce((sum, i) => sum + i.minutes, 0) +
+          LESSON_READING_MINUTES +
+          practice.reduce((sum, i) => sum + i.minutes, 0) >
+          minutes
+      )
+        lessonSection.items.pop();
+    const held: WorkbookSection[] = [
+      ...(lessonSection ? [lessonSection] : []),
+      { kind: "practice" as const, items: practice },
+    ];
+    return {
+      version: WORKBOOK_VERSION,
+      date: options.date,
+      number,
+      minutes,
+      // Print scale follows the skills' own grade (large type for early
+      // grades), whatever the learner's level.
+      level: Math.round(
+        practice.reduce((sum, i) => sum + i.grade, 0) /
+          Math.max(1, practice.length),
+      ),
+      sections: held.filter((s) => s.items.length),
+      choices,
+    };
+  }
 
   // Warm-up: quick work the learner is close to securing or has secured,
   // then material comfortably below the strand frontier.

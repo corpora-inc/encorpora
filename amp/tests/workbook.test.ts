@@ -17,7 +17,9 @@ import {
   CHALLENGE_WINDOW,
   composeWorkbook,
   printable,
+  SKILL_PRACTICE_MAX,
   specChoices,
+  WORKBOOK_SKILLS_MAX,
   WORKBOOK_VERSION,
   workbookCode,
   workbookMinutes,
@@ -33,6 +35,8 @@ import {
   workbookHtml,
 } from "../src/workbook/render";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
+import { workbookChoicesSchema } from "../src/workbook/contracts";
+import { printableSkills } from "../src/workbook/routes";
 
 const now = Date.parse("2026-10-31T13:00:00Z");
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;
@@ -732,4 +736,197 @@ test("choices change the workbook deterministically and are stored in the spec",
   };
   assert.ok(meanGrade(easier) <= meanGrade(same));
   assert.ok(meanGrade(easier) < meanGrade(stretch));
+});
+
+const problemKeys = (spec: WorkbookSpec) =>
+  workbookProblems(spec).map((p) => `${p.public.prompt}\u0000${p.answer}`);
+
+test("a workbook held to one skill prints that skill alone, and fills its time", () => {
+  const skill = "angle-measure";
+  const choices = { skills: [skill] };
+  const held = compose("third-grade", { minutes: 30, choices });
+  assert.deepEqual(compose("third-grade", { minutes: 30, choices }), held);
+  // What was used is what is stored: no areas, no lean.
+  assert.deepEqual(held.choices, {
+    areas: [],
+    lean: "level",
+    lesson: true,
+    skills: [skill],
+  });
+  assert.deepEqual(specChoices(held).skills, [skill]);
+  assert.ok(items(held).length >= 6, `${items(held).length} problems`);
+  for (const item of items(held)) assert.equal(item.skillId, skill);
+  // Today's idea (its lesson), then practice: nothing from anywhere else.
+  assert.deepEqual(
+    held.sections.map((s) => s.kind),
+    ["lesson", "practice"],
+  );
+  const lesson = lessons.find((l) => l.id === held.sections[0]!.lessonId)!;
+  assert.ok(
+    lesson.templateIds.some(
+      (id) => templates.find((t) => t.id === id)?.skillId === skill,
+    ),
+  );
+  const total = workbookMinutes(held);
+  assert.ok(total <= 30 && total >= 22, `${total} minutes`);
+  // Never the same problem twice to fill the time.
+  assert.equal(new Set(problemKeys(held)).size, items(held).length);
+  // Problems only: practice alone.
+  const problems = compose("third-grade", {
+    minutes: 30,
+    choices: { skills: [skill], lesson: false },
+  });
+  assert.deepEqual(
+    problems.sections.map((s) => s.kind),
+    ["practice"],
+  );
+  // A longer workbook is more of the same skill; another roll is new.
+  const longer = compose("third-grade", { minutes: 60, choices });
+  assert.ok(items(longer).length > items(held).length);
+  assert.ok(items(longer).length <= SKILL_PRACTICE_MAX + 3);
+  assert.notEqual(
+    workbookCode(compose("third-grade", { minutes: 30, number: 2, choices })),
+    workbookCode(held),
+  );
+  // The scope is the workbook's whole pool: areas and lean change nothing.
+  assert.deepEqual(
+    compose("third-grade", {
+      minutes: 30,
+      choices: { skills: [skill], areas: ["fractions"], lean: "stretch" },
+    }),
+    held,
+  );
+  // And it is not the unscoped workbook.
+  assert.notEqual(
+    workbookCode(held),
+    workbookCode(compose("third-grade", { minutes: 30 })),
+  );
+});
+
+test("a workbook held to a skill names it on its first page", () => {
+  const html = (spec: WorkbookSpec) =>
+    workbookHtml(spec, { lessons, skillTitle, learnerName: "Wren" });
+  const held = html(
+    compose("third-grade", {
+      minutes: 30,
+      choices: { skills: ["angle-measure"] },
+    }),
+  );
+  const line = /<p class="wb-mast-skills"[^>]*>([^<]*)<\/p>/.exec(held);
+  assert.equal(line?.[1], "Measuring angles");
+  // In the masthead, between the title and the date.
+  const at = (name: string) => held.indexOf(`class="${name}"`);
+  assert.ok(at("wb-name-text") > 0);
+  assert.ok(at("wb-name-text") < at("wb-mast-skills"));
+  assert.ok(at("wb-mast-skills") < at("wb-mast-date"));
+  const several = html(
+    compose("third-grade", {
+      choices: { skills: ["whole-division", "angle-measure"] },
+    }),
+  );
+  assert.match(
+    several,
+    /wb-mast-skills"[^>]*>Measuring angles · Dividing by a one-digit number</,
+  );
+  // An ordinary workbook's first page is as it was.
+  assert.ok(!html(compose("third-grade")).includes('class="wb-mast-skills"'));
+});
+
+test("a workbook held to a few skills shares its practice among them", () => {
+  const scope = ["fraction-equivalence", "angle-measure", "whole-division"];
+  const held = compose("third-grade", { choices: { skills: scope } });
+  assert.deepEqual(held.choices?.skills, [...scope].sort());
+  for (const item of items(held))
+    assert.ok(scope.includes(item.skillId), item.skillId);
+  const practice = held.sections.find((s) => s.kind === "practice")!.items;
+  const count = (skill: string) =>
+    practice.filter((item) => item.skillId === skill).length;
+  for (const skill of scope) assert.ok(count(skill) >= 2, skill);
+  const counts = scope.map(count);
+  // Turns: no skill gets more than one problem over another, unless a
+  // skill ran out of time for its (longer) problems.
+  assert.ok(Math.max(...counts) - Math.min(...counts) <= 3, `${counts}`);
+  assert.ok(workbookMinutes(held) <= 45);
+  assert.equal(new Set(problemKeys(held)).size, items(held).length);
+  // One lesson, of one of the skills.
+  const lesson = held.sections.filter((s) => s.kind === "lesson");
+  assert.equal(lesson.length, 1);
+  assert.ok(scope.includes(lesson[0]!.items[0]!.skillId));
+  // The order the skills were asked in changes nothing.
+  assert.deepEqual(
+    compose("third-grade", { choices: { skills: [...scope].reverse() } }),
+    held,
+  );
+});
+
+test("a scope keeps only skills that print, and refuses when none does", () => {
+  const unprintable = skills.find((skill) => !printableSkills.has(skill.id))!;
+  const held = compose("third-grade", {
+    choices: { skills: ["angle-measure", "no-such-skill", unprintable.id] },
+  });
+  assert.deepEqual(held.choices?.skills, ["angle-measure"]);
+  assert.throws(
+    () => compose("third-grade", { choices: { skills: ["no-such-skill"] } }),
+    /No printable templates for these skills/,
+  );
+  assert.throws(
+    () => compose("third-grade", { choices: { skills: [unprintable.id] } }),
+    /No printable templates for these skills/,
+  );
+  const many = [...printableSkills].slice(0, WORKBOOK_SKILLS_MAX + 1);
+  assert.throws(
+    () => compose("third-grade", { choices: { skills: many } }),
+    /Too many skills/,
+  );
+  // The request's own limit is the composer's.
+  assert.ok(
+    workbookChoicesSchema.safeParse({
+      areas: [],
+      lean: "level",
+      lesson: true,
+      skills: many.slice(0, WORKBOOK_SKILLS_MAX),
+    }).success,
+  );
+  for (const skills of [many, [], ["Not A Skill"]])
+    assert.ok(
+      !workbookChoicesSchema.safeParse({
+        areas: [],
+        lean: "level",
+        lesson: true,
+        skills,
+      }).success,
+      JSON.stringify(skills),
+    );
+  // Without a scope the request reads as it always did.
+  assert.deepEqual(
+    workbookChoicesSchema.parse({ areas: [], lean: "level", lesson: true }),
+    { areas: [], lean: "level", lesson: true },
+  );
+});
+
+test("every skill that prints makes its own workbook, for a learner far from it", () => {
+  // A kindergartner's record and an Algebra 2 student's: the scope decides
+  // the problems, never the learner's level.
+  const thin: string[] = [];
+  for (const [index, skill] of [...printableSkills].entries()) {
+    const held = compose(index % 2 ? "new-kindergartner" : "algebra-two", {
+      minutes: 30,
+      choices: { skills: [skill] },
+    });
+    for (const item of items(held)) assert.equal(item.skillId, skill);
+    assert.ok(workbookMinutes(held) <= 30, skill);
+    assert.equal(new Set(problemKeys(held)).size, items(held).length, skill);
+    const practice = held.sections.find((s) => s.kind === "practice");
+    assert.ok(practice && practice.items.length >= 1, `${skill}: no practice`);
+    // (Long proofs: three problems fill half an hour.)
+    if (items(held).length < 3) thin.push(`${skill} (${items(held).length})`);
+    // Early skills print in the early scale, whoever they are for.
+    const grade = templateGrade(
+      templates.find((t) => t.id === items(held)[0]!.templateId)!,
+      new Map(skills.map((s) => [s.id, s])),
+    );
+    assert.ok(Math.abs(held.level - grade) <= 1.5, `${skill}: ${held.level}`);
+  }
+  assert.deepEqual(thin, [], "skills whose workbook has under 3 problems");
+  assert.equal(printableSkills.size, skills.length - 1);
 });

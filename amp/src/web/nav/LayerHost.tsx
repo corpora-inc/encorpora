@@ -25,6 +25,7 @@ import { MOTION_MS, useLayerStore, type Layer as Opened } from "./layer-store";
 import { LayerFrame, type Moving } from "../ui/LayerFrame";
 import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
+import { SkillWorkbook } from "../features/workbooks/SkillWorkbook";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
 import { strandNames } from "../BirthYearPrompt";
 import {
@@ -249,7 +250,15 @@ function Layer({
           back={back}
         >
           {skillActions?.(entity.id) ?? (
-            <CurriculumPractice filter={{ skill: entity.id }} opened={opened} />
+            // Practice on the skill, and a workbook held to it, for whoever
+            // the layer is about.
+            <>
+              <CurriculumPractice
+                filter={{ skill: entity.id }}
+                opened={opened}
+              />
+              <SkillWorkbook skill={entity.id} opened={opened} />
+            </>
           )}
         </SkillLayer>
       );

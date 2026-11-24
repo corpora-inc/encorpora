@@ -100,7 +100,13 @@ export function teachingOrder(
  * evidence's `review-ready`, Earned `isEarned`, Tried any answer, else not
  * asked yet.
  */
-export function standingOf(evidence: Evidence | undefined): SkillStanding {
+export function standingOf(
+  evidence:
+    | (Pick<Evidence, "attempts" | "independentCorrect"> & {
+        status: string | null;
+      })
+    | undefined,
+): SkillStanding {
   if (!evidence || !(evidence.attempts > 0)) return "notAsked";
   if (evidence.status === "review-ready") return "strong";
   return isEarned(evidence) ? "earned" : "tried";

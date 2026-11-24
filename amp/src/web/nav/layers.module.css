@@ -110,6 +110,18 @@
   align-items: center;
   gap: var(--space-3);
 }
+/* Where a child stands on the skill, in the key's words: its swatch, the
+   word, then what the word means, quieter. */
+.standing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+}
+.standing small {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
 /* A quiet line of context under the actions. */
 .note {
   margin: 0;

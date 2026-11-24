@@ -47,6 +47,15 @@ export const workbookChoicesSchema = z
     lean: z.enum(workbookLeans),
     /** False: problems only, without "Today's idea". */
     lesson: z.boolean(),
+    /** Skills the workbook is held to: every problem is one of theirs.
+     * Absent: the whole curriculum (compose.ts `WorkbookChoices.skills`). */
+    skills: z
+      .array(z.string().regex(/^[a-z0-9][a-z0-9-]{0,119}$/))
+      .min(1)
+      // compose.ts `WORKBOOK_SKILLS_MAX` (not imported: this file is the
+      // web app's too, and the composer is the server's).
+      .max(12)
+      .optional(),
   })
   .strict();
 export type WorkbookChoicesInput = z.infer<typeof workbookChoicesSchema>;
@@ -107,6 +116,9 @@ export const workbookSummarySchema = z.object({
     lesson: true,
   }),
   problems: z.number().int(),
+  /** The skills it is held to (`choices.skills`), named for the screens:
+   * each one's title, in the catalog's order. */
+  skills: z.array(z.object({ id: z.string(), title: z.string() })).optional(),
   /** In the history list: how many of its problems have results entered
    * from the printout (all of them: nothing left to enter). */
   entered: z.number().int().optional(),

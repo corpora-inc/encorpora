@@ -699,6 +699,8 @@ export function workbookHtml(
   // so stored workbooks of every version print the same way.
   const firstName = options.learnerName?.trim().split(/\s+/)[0] ?? "";
   const title = firstName ? `Workbook for ${firstName}` : "Workbook";
+  // The skills it is held to (compose.ts `WorkbookChoices.skills`), by name.
+  const held = (spec.choices?.skills ?? []).map(options.skillTitle);
   const numbered: {
     n: number;
     kind: SectionKind;
@@ -759,6 +761,12 @@ export function workbookHtml(
       <div className="wb-mast-main">
         <div className="wb-name">
           <h1 className="wb-name-text">{title}</h1>
+          {/* A workbook held to skills says which, on its first page. */}
+          {held.length > 0 && (
+            <p className="wb-mast-skills" data-held-skills="">
+              {held.join(" · ")}
+            </p>
+          )}
           <p className="wb-mast-date">{dateLabel(spec.date)}</p>
           {!firstName && (
             <p className="wb-name-write">
@@ -1169,6 +1177,7 @@ body{margin:0}
 .wb-mark{width:0.42in;height:0.3in;fill:none;stroke:currentColor;stroke-width:34;stroke-linecap:round}
 .wb-brand-name{font-size:19pt;line-height:1;font-weight:700}
 .wb .wb-mast-date{margin:0;font-size:calc(var(--body) * 1.05);color:var(--muted)}
+.wb .wb-mast-skills{margin:1px 0 2px;font-size:calc(var(--body) * 1.15);font-weight:700;line-height:1.25}
 .wb-mast-main{display:flex;justify-content:space-between;align-items:flex-end;gap:0.3in;padding:0.14in 0 0.12in}
 .wb-name{margin:0;display:flex;flex-direction:column;gap:3px;flex:1 1 auto;min-width:0}
 .wb .wb-name-write{margin:8px 0 0;display:flex;align-items:baseline;gap:10px}

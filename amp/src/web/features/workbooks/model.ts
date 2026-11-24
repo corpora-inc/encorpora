@@ -73,14 +73,19 @@ export const leanNames = {
   level: "At level",
   stretch: "Harder",
 } as const;
-/** A short line for a workbook's choices; empty for the defaults. */
+/** A short line for a workbook's choices; empty for the defaults. A
+ * workbook held to skills (`held`, its summary's `skills`) names them:
+ * areas and level say nothing about it. */
 export function choicesLabel(
   choices: WorkbookChoicesInput,
   areaName: (id: string) => string,
+  held: readonly { title: string }[] = [],
 ): string {
   return [
-    choices.areas.map(areaName).join(", "),
-    choices.lean === "level" ? "" : leanNames[choices.lean],
+    held.length
+      ? held.map((skill) => skill.title).join(", ")
+      : choices.areas.map(areaName).join(", "),
+    held.length || choices.lean === "level" ? "" : leanNames[choices.lean],
     choices.lesson ? "" : "Problems only",
   ]
     .filter(Boolean)
