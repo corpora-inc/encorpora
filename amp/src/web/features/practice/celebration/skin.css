@@ -31,7 +31,6 @@
   border-radius: 16px;
   font-weight: 800;
   box-shadow: inset 0 -5px 0 var(--color-primary-edge);
-  transition: transform 90ms ease-out;
 }
 :root[data-look="bold"]
   .practice-workspace
@@ -46,7 +45,21 @@
   border-radius: 12px;
   box-shadow: inset 0 -4px 0 var(--color-key-edge);
   font-weight: 700;
-  transition: transform 70ms ease-out;
+}
+/* A press travels; with reduced motion it lands at once. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"]
+    .practice-workspace
+    :is(.next-action, form button[type="submit"]):not(:disabled) {
+    transition: transform 90ms ease-out;
+  }
+  :root[data-look="bold"] .math-keypad button {
+    transition: transform 70ms ease-out;
+  }
+  :root[data-look="bold"] .answer-dock .choice-option,
+  :root[data-look="bold"] .figure-choice-card {
+    transition: transform 80ms ease-out;
+  }
 }
 :root[data-look="bold"] .math-keypad button:hover {
   background: var(--color-secondary);
@@ -60,7 +73,6 @@
 :root[data-look="bold"] .figure-choice-card {
   border-color: var(--color-key-edge);
   box-shadow: inset 0 -4px 0 var(--color-key-edge);
-  transition: transform 80ms ease-out;
 }
 :root[data-look="bold"] .answer-dock .choice-option:active,
 :root[data-look="bold"] .figure-choice-card:active {
