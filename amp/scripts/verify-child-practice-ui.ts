@@ -15,7 +15,9 @@
  * For each of the family's children and for the adult's own row, at each
  * width, the check walks:
  *
- * - the child's block on Today, every link and opener in it;
+ * - the child's block on Today, every link and opener in it: their line of
+ *   last problems (the sheet of the skills behind them, each skill and its
+ *   lesson), the skills not asked yet, their skills by grade, their name;
  * - each "For today" entry that names that one child;
  * - the child's page, every link and opener on it, and their Pathways and
  *   Inventory under it;
@@ -60,7 +62,7 @@
  *     [--own all] [--per 3] [--jobs 4] [--out artifacts/child-practice]
  *
  * Last, coming back: a parent scrolled down to a child's block starts that
- * child's practice (their row, a skill not asked yet, a skill opened from
+ * child's practice (their row, a skill not asked yet, a skill behind their last
  * their block) and returns by the bar's family mark or by Back. Today is
  * where they left it, the block at the same place on screen, at each width.
  *
@@ -280,6 +282,7 @@ const CONTROLS = `(scope) => {
           /^\\/practice(\\/|$)/.test(href ?? "") ||
           /^(practice\\b|try (a|this|one)\\b|start practicing|let .+ practice)/i.test(said.trim())),
         opener:
+          element.hasAttribute("data-focus-line") ||
           element.hasAttribute("data-not-asked") ||
           element.hasAttribute("data-own-devices"),
       });
@@ -733,8 +736,16 @@ async function walk(
       }
     };
     /** Reads the node the page is at (`steps` from the root): queues its
-     * presses, then goes into what its links open. */
-    const node = async (steps: Step[], scope: string, depth: number) => {
+     * presses, then goes into what its links open. A sheet opened from the
+     * child's own area (the skills behind their last problems, the skills
+     * not asked yet) is still that area: its links are the area's own, not
+     * a level deeper. */
+    const node = async (
+      steps: Step[],
+      scope: string,
+      depth: number,
+      sheet = false,
+    ) => {
       nodes++;
       const here = await shown(page);
       const controls = (await page.evaluate(
@@ -754,7 +765,7 @@ async function walk(
           (expect.kind === "self" || !/as yourself/i.test(control.name)),
       );
       // In a long list of one control (a sheet's skills), a few of them.
-      for (const control of depth === 0
+      for (const control of depth === 0 && !sheet
         ? practice
         : sample(
             practice,
@@ -792,7 +803,7 @@ async function walk(
           (control.entity ||
             control.opener ||
             // Every link of the child's own area; deeper, layers only.
-            (depth === 0 && control.href?.startsWith("/"))),
+            (depth === 0 && !sheet && control.href?.startsWith("/"))),
       );
       for (const way of sample(
         ways,
@@ -824,7 +835,8 @@ async function walk(
           continue;
         }
         const inner = scopeOf(now, here);
-        if (inner) await node(next, inner, depth + 1);
+        const opened = !!way.opener && inner === "[role=dialog]";
+        if (inner) await node(next, inner, opened ? depth : depth + 1, opened);
       }
     };
     await node([], root.scope, 0);
@@ -947,7 +959,7 @@ try {
     const width = WIDTHS.at(-1)!;
     for (const child of kids.filter((entry) => entry.canPractice)) {
       // Which part is under way, for a failure's report.
-      let part = "a skill from their block";
+      let part = "a skill behind their last problems";
       try {
         const other = who.children.find((entry) => entry.id !== child.id)!.id;
         const block = `[data-family-kids] > li[data-child="${child.id}"]`;
@@ -958,14 +970,22 @@ try {
           scope: block,
         };
         const first = await open(who, width, root, [], other);
-        const link = first.page
-          .locator(`${block} a[data-entity=skill]`)
-          .first();
-        if (!(await link.count())) {
-          console.log(`  ${child.name} has no skill in their block yet`);
+        // Their line of last problems opens the sheet of the skills behind
+        // them; a child with no answer yet has no line.
+        const line = first.page.locator(`${block} [data-focus-line]`);
+        if (!(await line.count())) {
+          console.log(
+            `  ${child.name} has no last problems in their block yet`,
+          );
           await first.context.close();
           continue;
         }
+        await line.click();
+        const link = first.page
+          .locator(`[data-focus-sheet="${child.id}"] a[data-entity=skill]`)
+          .first();
+        await link.waitFor({ timeout: 20_000 });
+        await settle(first.page);
         const href = (await link.getAttribute("href"))!;
         const skill = /open=skill(?:%3A|:)([a-z0-9-]+)/.exec(href)?.[1];
         assert.ok(skill, `a skill link names its skill: ${href}`);
@@ -1016,7 +1036,7 @@ try {
         await started(
           first.page,
           first.seen,
-          "a skill from their block, reloaded",
+          "a skill behind their last problems, reloaded",
         );
         await first.context.close();
 
@@ -1230,7 +1250,7 @@ try {
 
     // ---- coming back is where the parent was ------------------------------
     // A parent scrolls down to a child's block, starts their practice (their
-    // row, a skill not asked yet, a skill opened from their block), and
+    // row, a skill not asked yet, a skill behind their last problems), and
     // comes back by the bar's family mark or by Back: Today is where they
     // left it, the child's block at the same place on screen, never at the
     // top of the page (QA 2026-11-23).
@@ -1258,10 +1278,14 @@ try {
           },
         },
         {
-          name: "a skill opened from their block",
-          anchor: `${block} a[data-entity=skill]`,
+          name: "a skill behind their last problems",
+          anchor: `${block} [data-focus-line]`,
           start: async (page: Page) => {
-            await page.locator(`${block} a[data-entity=skill]`).first().click();
+            await page.locator(`${block} [data-focus-line]`).click();
+            await page
+              .locator(`[data-focus-sheet="${child.id}"] a[data-entity=skill]`)
+              .first()
+              .click();
             await page.locator(layer).click();
           },
         },
