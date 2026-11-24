@@ -147,12 +147,14 @@ const kids = [
   // Not started.
   row(3, "Theo"),
 ];
+const totalsOf = (rows: readonly LiveRow[]) =>
+  liveTotals(rows, { now: NOW, startedAt: running.startedAt });
 const snapshot = (patch: Partial<LiveSnapshot> = {}): LiveSnapshot => ({
   serverNow: new Date(NOW).toISOString(),
   session: running,
   rules: LIVE_RULES,
   rows: kids,
-  totals: liveTotals(kids, { now: NOW, startedAt: running.startedAt }),
+  totals: totalsOf(kids),
   signals: [],
   can: { manage: true },
   ...patch,
@@ -348,7 +350,7 @@ test("on a phone a child's row says they opened help, each kind in a place of it
     value: 390,
   });
   const helped = [{ ...kids[0]!, hints: 2, lessons: 1 }, kids[1]!, kids[2]!];
-  await mount(snapshot({ rows: helped, totals: liveTotals(helped) }));
+  await mount(snapshot({ rows: helped, totals: totalsOf(helped) }));
   await waitFor(() =>
     expect(document.querySelector('[data-layout="phone"]')).toBeTruthy(),
   );
@@ -377,7 +379,7 @@ test("on a phone a child's row says they opened help, each kind in a place of it
   await act(async () => {
     queryClient.setQueryData(
       liveKey(auth, place),
-      snapshot({ rows: next, totals: liveTotals(next) }),
+      snapshot({ rows: next, totals: totalsOf(next) }),
     );
   });
   await waitFor(() => expect(opened(2)).toEqual(["hints 1"]));
@@ -387,7 +389,7 @@ test("on a phone a child's row says they opened help, each kind in a place of it
 
 test("with room for the Help column, a row has no marks beside the name", async () => {
   const helped = [{ ...kids[0]!, hints: 2 }, kids[1]!, kids[2]!];
-  await mount(snapshot({ rows: helped, totals: liveTotals(helped) }));
+  await mount(snapshot({ rows: helped, totals: totalsOf(helped) }));
   await waitFor(() =>
     expect(document.querySelector('[data-layout="tablet"]')).toBeTruthy(),
   );
