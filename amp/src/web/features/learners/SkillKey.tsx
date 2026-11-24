@@ -1,3 +1,4 @@
+import { Key, keyStyles } from "../../ui/Key";
 import styles from "./SkillKey.module.css";
 
 /** Where a skill stands, the words every screen uses for it. One rule each:
@@ -36,8 +37,9 @@ export function StandingSwatch({ standing }: { standing: SkillStanding }) {
 
 /**
  * The key to the skill bars, always on screen beside them (never a tooltip
- * or a paragraph): each standing's swatch, its name and what it means.
- * `level` adds the likely-level bar's own mark first.
+ * or a paragraph): each standing's swatch, its name and what it means, in
+ * the shared key (`ui/Key`). `level` adds the likely-level bar's own mark
+ * first.
  */
 export function SkillKey({
   standings = STANDINGS,
@@ -50,22 +52,26 @@ export function SkillKey({
   label?: string;
 }) {
   return (
-    <ul className={styles.key} aria-label={label} data-skill-key="">
-      {level && (
-        <li>
-          <span className={styles.levelMark} aria-hidden="true">
-            <span />
-          </span>
-          <span className={styles.term}>{level}</span>
-        </li>
-      )}
-      {standings.map((standing) => (
-        <li key={standing}>
-          <StandingSwatch standing={standing} />
-          <span className={styles.term}>{STANDING[standing].term}</span>
-          <span className={styles.meaning}>{STANDING[standing].meaning}</span>
-        </li>
-      ))}
-    </ul>
+    <Key
+      label={label}
+      stack
+      data-skill-key=""
+      lead={
+        level && (
+          <li>
+            <span className={styles.levelMark} aria-hidden="true">
+              <span />
+            </span>
+            <span className={keyStyles.term}>{level}</span>
+          </li>
+        )
+      }
+      items={standings.map((standing) => ({
+        id: standing,
+        mark: <StandingSwatch standing={standing} />,
+        term: STANDING[standing].term,
+        meaning: STANDING[standing].meaning,
+      }))}
+    />
   );
 }
