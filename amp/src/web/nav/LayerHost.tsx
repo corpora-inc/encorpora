@@ -166,7 +166,8 @@ const replays = (entity: Entity) =>
  * Whose a layer is, for the practice it offers, from the stack itself: the
  * learner it was opened for (a child's block on a family's Today; what
  * opens over that layer carries them too), else the roster person whose
- * answer it sits over. Nothing: the page's own subject, if it names one
+ * record or answer it sits over. Nothing: the page's own subject, if it
+ * names one
  * (features/practice/CurriculumPractice.tsx). Never the learner last
  * selected on this device.
  */
@@ -175,8 +176,14 @@ export function openedFor(
   below: readonly Opened[],
 ): OpenedFor | undefined {
   if (entity.for) return { learner: entity.for };
-  const answer = below.filter((layer) => layer.kind === "work").at(-1);
-  return answer ? { person: workParts(answer.id).student } : undefined;
+  // The nearest record or answer under it.
+  const under = below
+    .filter((layer) => layer.kind === "work" || layer.kind === "student")
+    .at(-1);
+  if (!under) return undefined;
+  return {
+    person: under.kind === "work" ? workParts(under.id).student : under.id,
+  };
 }
 
 /** A layer's name in the trail: its title, or its kind while that loads. */

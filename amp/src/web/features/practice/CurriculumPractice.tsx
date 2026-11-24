@@ -1,5 +1,6 @@
 import {
   addressedIdentity,
+  classOf,
   familyOf,
   practiceParams,
 } from "../spaces/identity";
@@ -9,7 +10,7 @@ import { strandNames } from "../../BirthYearPrompt";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
-import { familyOptions } from "../family/api";
+import { familyOptions, familyPlacesOptions } from "../family/api";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import type { PracticeFilter } from "./curriculum-filter";
 
@@ -24,8 +25,8 @@ export function PracticeLabel() {
 /**
  * Whose curriculum a control sits in, where the address alone doesn't say:
  * the learner its layer was opened for (a child's block on a family's
- * Today, `?for=`, nav/entities.ts), or the roster person whose answer it
- * was opened over.
+ * Today, `?for=`, nav/entities.ts), or the roster person whose record or
+ * answer it was opened over.
  */
 export type OpenedFor = { learner?: string; person?: string };
 
@@ -82,8 +83,13 @@ function useFocusTitle(filter: PracticeFilter, enabled: boolean) {
  * the page's own child. It starts as that child's own Practice button does
  * (the hand-over: their session, their record), held to this filter. Where
  * a family's screen names no child, it is the adult's own. A learner's own
- * session starts directly. In a school or class nobody answers as a
- * student.
+ * session starts directly.
+ *
+ * In a school or class nobody answers as a student, with one exception: a
+ * parent in their own family's class (a tutoring group, which keeps its
+ * class address) over their own child's record or answer starts that
+ * child's practice, as on the family's screens. Never for another family's
+ * child, and never for staff who are not that child's parent.
  */
 export function CurriculumPractice({
   filter,
@@ -110,13 +116,19 @@ export function CurriculumPractice({
         filter={filter}
       />
     ) : null;
-  // A class record is not permission to answer as one of its students.
-  if (
-    location.pathname.startsWith("/school/") ||
-    !view.canPractice ||
-    view.viewOnly
-  )
-    return null;
+  // A class record is not permission to answer as one of its students:
+  // only their own parent's, in the family's own class.
+  if (location.pathname.startsWith("/school/")) {
+    const classId = classOf(location.pathname);
+    return classId && opened?.person && view.session.data ? (
+      <ClassChildPractice
+        classId={classId}
+        person={opened.person}
+        filter={filter}
+      />
+    ) : null;
+  }
+  if (!view.canPractice || view.viewOnly) return null;
   // Practice held to this area, skill or type, at its own address.
   if (!view.learner) return null;
   return (
@@ -129,6 +141,34 @@ export function CurriculumPractice({
       <PracticeLabel />
     </Link>
   );
+}
+
+/** Over a student's record or answer in a class: their practice, when the
+ * class is this account's own family's (as its parent, never as a
+ * co-teacher) and the student is one of that family's own children. */
+function ClassChildPractice({
+  classId,
+  person,
+  filter,
+}: {
+  classId: string;
+  person: string;
+  filter: PracticeFilter;
+}) {
+  const session = useSession();
+  const places = useQuery(familyPlacesOptions(session)).data;
+  const family = places?.families.find(
+    (entry) => entry.classId === classId && entry.role !== "co-teacher",
+  )?.familyId;
+  return family ? (
+    <FamilyPractice
+      family={family}
+      named={{ person }}
+      detailed
+      own={undefined}
+      filter={filter}
+    />
+  ) : null;
 }
 
 function FamilyPractice({

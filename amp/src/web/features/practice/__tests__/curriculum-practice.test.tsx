@@ -11,7 +11,7 @@ import { skillCatalogOptions } from "../../../lib/learning-view";
 import { sessionOptions } from "../../../lib/query";
 import { LayerHost, openedFor } from "../../../nav/LayerHost";
 import { useLayerStore } from "../../../nav/layer-store";
-import { familyOptions } from "../../family/api";
+import { familyOptions, familyPlacesOptions } from "../../family/api";
 import {
   CurriculumPractice,
   practiceChild,
@@ -69,6 +69,7 @@ vi.mock("../../school/classes/today/use-hand-over", () => ({
 }));
 afterEach(() => {
   cleanup();
+  places.families = [];
   view.own = null;
   handOver.mockReset();
   useLayerStore.setState({ stacks: {}, motion: null });
@@ -95,10 +96,17 @@ const catalog = {
   ],
 };
 
+/** The families this account is a parent of: none for a teacher. */
+const places = { families: [] as unknown[] };
+const CLASS = "f7b97235-d2d4-4d92-bb6b-6f338768a76a";
 function renderAt(at: string, page: () => React.ReactNode) {
   const client = new QueryClient({
     defaultOptions: { queries: { retry: false, staleTime: Infinity } },
   });
+  client.setQueryData(familyPlacesOptions(session).queryKey, {
+    families: places.families,
+    next: null,
+  } as never);
   client.setQueryData(sessionOptions.queryKey, session);
   client.setQueryData(skillCatalogOptions.queryKey, catalog as never);
   client.setQueryData(
@@ -168,6 +176,14 @@ test("a layer says whose it is: the learner it was opened for, else the answer u
   expect(
     openedFor({ kind: "lesson", id: "angle-type", for: PIP }, [answer]),
   ).toEqual({ learner: PIP });
+  // A record under it names its person, as an answer does; the nearest.
+  const record = { kind: "student" as const, id: person(PIP) };
+  expect(openedFor({ kind: "skill", id: "angles" }, [record])).toEqual({
+    person: person(PIP),
+  });
+  expect(
+    openedFor({ kind: "lesson", id: "angle-type" }, [record, answer]),
+  ).toEqual({ person: person(WREN) });
   expect(openedFor({ kind: "skill", id: "angles" }, [])).toBeUndefined();
   expect(
     openedFor({ kind: "skill", id: "angles" }, [
@@ -289,8 +305,57 @@ test("a family's screen that names no child offers the adult's own practice, or 
 });
 
 test("in a class nobody answers as a student, whoever the layer names", async () => {
-  renderAt("/school/o/classes/c/today", drawn(control({ learner: WREN })));
+  // A teacher: no family of their own here.
+  for (const opened of [
+    { learner: WREN },
+    { person: person(WREN) },
+    undefined,
+  ]) {
+    renderAt(`/school/o/classes/${CLASS}/today`, drawn(control(opened)));
+    expect(await offered()).toBeNull();
+    cleanup();
+  }
+  // A co-teacher of a family's class is staff there, not a parent.
+  places.families = [{ familyId: FAMILY, classId: CLASS, role: "co-teacher" }];
+  renderAt(
+    `/school/o/classes/${CLASS}/today`,
+    drawn(control({ person: person(WREN) })),
+  );
   expect(await offered()).toBeNull();
+  expect(handOver).not.toHaveBeenCalled();
+});
+
+test("in their family's own class, over their own child's record, a parent starts that child's practice", async () => {
+  places.families = [{ familyId: FAMILY, classId: CLASS, role: "holder" }];
+  const at = `/school/o/classes/${CLASS}/today`;
+  renderAt(at, drawn(control({ person: person(WREN) })));
+  const button = (await offered())!;
+  expect(button.getAttribute("aria-label")).toBe(
+    "Practice Measuring angles with Wren",
+  );
+  fireEvent.click(button);
+  expect(handOver.mock.calls[0]!.slice(0, 2)).toEqual([
+    WREN,
+    { skill: "angles" },
+  ]);
+  cleanup();
+  // Another family's child in the same class, a learner named by an edited
+  // address, the class's own skill, and any other class: nothing.
+  for (const [path, opened] of [
+    [at, { person: person(STRANGER) }],
+    [at, { learner: WREN }],
+    [at, undefined],
+    ["/school/o/classes/another-class/today", { person: person(WREN) }],
+    ["/school/o/students", { person: person(WREN) }],
+  ] as const) {
+    renderAt(path, drawn(control(opened)));
+    expect(await offered()).toBeNull();
+    cleanup();
+  }
+  // A child who can't practice here has no control in the class either.
+  renderAt(at, drawn(control({ person: person(THEO) })));
+  expect(await offered()).toBeNull();
+  expect(handOver).toHaveBeenCalledTimes(1);
 });
 
 test("own practice starts directly, at the learner's own address", async () => {
