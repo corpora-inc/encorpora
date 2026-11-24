@@ -626,16 +626,23 @@ async function reportRows(page: Page, where: string) {
       }
       const printed = [
         ...every.querySelectorAll<HTMLElement>("[data-report-open]"),
-      ].map((cell) =>
-        [...cell.children]
-          .filter(
-            (part) =>
-              getComputedStyle(part).display !== "none" &&
-              !part.matches("[data-fit-list]"),
-          )
-          .map((part) => part.textContent ?? "")
-          .join(""),
-      );
+      ]
+        // Rows that name skills, in the lists' own order.
+        .filter(
+          (cell) =>
+            cell.getClientRects().length > 0 &&
+            cell.querySelector("[data-fit-list]") !== null,
+        )
+        .map((cell) =>
+          [...cell.children]
+            .filter(
+              (part) =>
+                getComputedStyle(part).display !== "none" &&
+                !part.matches("[data-fit-list]"),
+            )
+            .map((part) => part.textContent ?? "")
+            .join(""),
+        );
       const hover = every.querySelectorAll("[title]").length;
       if (hover) problems.push(`${hover} hover title(s)`);
       return {
@@ -704,19 +711,23 @@ async function reportRows(page: Page, where: string) {
   const after = await read();
   if (after.heights.join() !== screen.heights.join())
     fail(`${where} report: the rows changed height after the sheet`);
-  // On paper every name prints.
+  // On paper every name prints: each row's whole list in place of the
+  // fitted one (a list of n names has at least n - 1 commas; a name may
+  // have its own).
   await page.emulateMedia({ media: "print" });
   const paper = await read();
-  const names = paper.printed.reduce(
-    (sum, text) => sum + (text.trim() ? text.split(", ").length : 0),
-    0,
-  );
+  const short = paper.printed.filter(
+    (text, index) =>
+      (text.trim() ? text.split(", ").length : 0) < (screen.totals[index] ?? 0),
+  ).length;
   const total = screen.totals.reduce((sum, count) => sum + count, 0);
-  if (names < total)
-    fail(`${where} report on paper: ${names} of ${total} skills print`);
+  if (paper.printed.length !== screen.totals.length || short > 0)
+    fail(
+      `${where} report on paper: ${short} of ${screen.totals.length} rows print fewer names than they have`,
+    );
   await page.emulateMedia({ media: "screen" });
   console.log(
-    `${where}: the report's ${screen.rows} rows are ${screen.heights.join("/")} px; the most skills in one is ${screen.most}; a row's sheet lists all ${expected} of its skills; ${names} of ${total} names print; the key is there`,
+    `${where}: the report's ${screen.rows} rows are ${screen.heights.join("/")} px; the most skills in one is ${screen.most}; a row's sheet lists all ${expected} of its skills; on paper each row's whole list prints (${total} skills); the key is there`,
   );
 }
 

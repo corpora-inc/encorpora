@@ -637,6 +637,10 @@
   .helpKey {
     color: var(--color-print-ink);
   }
+  /* The list's sort is a control: not on paper. */
+  .grid :global([aria-haspopup="menu"]) {
+    display: none;
+  }
   /* A row printed from a narrower screen: as tall as its skills. */
   .rowCard {
     grid-template-rows: none;
