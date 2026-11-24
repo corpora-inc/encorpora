@@ -5,7 +5,11 @@ import type {
   LiveSignal,
   LiveStatus,
 } from "../../../schools/live/contracts";
-import { LIVE_RULES, liveStatus } from "../../../schools/live/status";
+import {
+  isAnswering,
+  LIVE_RULES,
+  liveStatus,
+} from "../../../schools/live/status";
 import {
   DataGrid,
   type DataGridColumn,
@@ -50,13 +54,14 @@ export function liveStatuses(
   return new Map(rows.map((row) => [row.personId, liveStatus(row, at, rules)]));
 }
 
-/** How many are answering now: anyone working, on a roll or needing help
- * (an answer or help in the last two minutes). */
-export const answeringNow = (statuses: ReadonlyMap<string, LiveStatus>) =>
-  [...statuses.values()].filter(
-    (status) =>
-      status === "working" || status === "flying" || status === "struggling",
-  ).length;
+/** How many are answering now: an answer or help of theirs in the last two
+ * minutes (`isAnswering`). Being here with nothing done yet is not: a
+ * student who just signed in, before Start or after, isn't counted. */
+export const answeringNow = (
+  rows: readonly LiveRow[],
+  at: { now: number; startedAt: string },
+  rules: LiveRules = LIVE_RULES,
+) => rows.filter((row) => isAnswering(row, at, rules)).length;
 
 /** How many are here now: everyone but "not signed in". It turns with the
  * clock, as the statuses do (seen in the last ten minutes). */

@@ -12,7 +12,7 @@ import type {
    with time). Imports types only, so the web can import it. First match wins. */
 
 export const LIVE_RULES: LiveRules = {
-  version: 2,
+  version: 3,
   hereMs: 600_000,
   idleMs: 120_000,
   wrongRun: 3,
@@ -52,10 +52,9 @@ const ms = (now: number | Date) =>
 /**
  * In the session: something of theirs happened inside its window. An answer
  * or help, a sign-in, a first heartbeat from their own sign-in or a raised hand
- * (`firstSeenAt`), or their own sign-in seen since it started. This is what
- * "signed in" and "started" mean for a session, and all a stored report
- * goes by. An adult's device never counts (`rows.ts` reads only what is the
- * student's own).
+ * (`firstSeenAt`), or their own sign-in seen since it started. Once in it,
+ * they are here until it ends. An adult's device never counts (`rows.ts`
+ * reads only what is the student's own).
  */
 export function inSession(row: StatusFacts, startedAt: string): boolean {
   if (activeInSession(row) || row.firstSeenAt !== null) return true;
@@ -80,10 +79,11 @@ export function isHere(
 
 /**
  * 1. `not_signed_in`: not here (`isHere`).
- * 2. `idle`: no answer and no help for `idleMs`, counted from the later of the
- *    session's start and when they were first seen in it; or here with
- *    nothing of theirs in the session yet (seen just before it), which is
- *    never "working".
+ * 2. `idle`: no answer and no help for `idleMs`, counted from the later of
+ *    their last activity in the session and the session's start. The clock
+ *    never starts before the session: whoever is here at Start, signed in
+ *    just before it or just after, has the same `idleMs` before reading
+ *    quiet.
  * 3. `struggling`: the last `wrongRun` answers all wrong, or at most
  *    `struggleMaxCorrect` right of the last `recent`.
  * 4. `flying`: the last `recent` answers all right with no help.
@@ -96,7 +96,6 @@ export function liveStatus(
 ): LiveStatus {
   const now = ms(at.now);
   if (!isHere(row, at, rules)) return "not_signed_in";
-  if (!inSession(row, at.startedAt)) return "idle";
   const since = latest(
     Date.parse(at.startedAt),
     time(row.firstSeenAt),
@@ -122,17 +121,33 @@ export function liveStatus(
 }
 
 /**
- * A student's status in a stored report, judged when the session ended, by
- * the session's window alone: whoever did nothing in it didn't sign in,
- * however lately they were seen before it. A report never says "signed in"
- * for a sign-in the session didn't see.
+ * Answering now: an answer or help of theirs in the session within the last
+ * `idleMs`. Being here is not answering: a student who just signed in, or
+ * signed in before Start, reads "working" for their first `idleMs` and
+ * counts as active only once they do something.
+ */
+export function isAnswering(
+  row: StatusFacts,
+  at: At,
+  rules: LiveRules = LIVE_RULES,
+): boolean {
+  const last = latest(time(row.lastAnswerAt), time(row.lastHelpAt));
+  return ms(at.now) - last < rules.idleMs;
+}
+
+/**
+ * A student's status in a stored report: their row as it stood when the
+ * session ended, by the same rule the cockpit read it with at that moment.
+ * The report and the cockpit tell one story. Whoever's row read anything
+ * but "not signed in" at the end is never listed as not having signed in:
+ * a student signed in before Start, here and with no answer, is "signed
+ * in, no answers".
  */
 export const reportStatus = (
   row: StatusFacts,
   at: At,
   rules: LiveRules = LIVE_RULES,
-): LiveStatus =>
-  inSession(row, at.startedAt) ? liveStatus(row, at, rules) : "not_signed_in";
+): LiveStatus => liveStatus(row, at, rules);
 
 const zero = (): LiveTotals => ({
   students: 0,

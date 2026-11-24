@@ -19,6 +19,7 @@ import {
 } from "../src/schools/live/contracts.js";
 import { readLiveRows } from "../src/schools/live/rows.js";
 import {
+  isAnswering,
   LIVE_RULES,
   liveStatus,
   liveTotals,
@@ -803,8 +804,8 @@ test(
         );
         assert.equal(
           status(snapshot, eli),
-          "idle",
-          "seen 9 minutes ago: here, and never working before anything of his",
+          "working",
+          "seen 9 minutes ago: here, with the session's own two minutes before quiet",
         );
         assert.equal(
           status(snapshot, fay),
@@ -938,6 +939,7 @@ test(
         const kit = await join("Kit");
         const lou = await join("Lou");
         const mo = await join("Mo");
+        const ned = await join("Ned");
         const seenAgo = (person: { personId: string }, ago: string) =>
           db.query(
             `UPDATE amp_student_sessions SET last_seen_at=now()-$2::interval,
@@ -957,15 +959,28 @@ test(
             snapshot,
             statuses,
             here: snapshot.totals.present,
-            // The cockpit's Active tile: working, on a roll or needing help.
-            active: Object.values(statuses).filter((status) =>
-              ["working", "flying", "struggling"].includes(status),
-            ).length,
+            // The cockpit's Active tile: answering now.
+            active: snapshot.rows.filter((row) => isAnswering(row, at)).length,
           };
         };
+        /** The wall board's own read: who it lights as here. */
+        const board = async () =>
+          (
+            (await ok(
+              get(`/api/v1/school/classes/${classD}/presence`, teacher),
+            )) as { students: { name: string; here: boolean }[] }
+          ).students
+            .filter((student) => student.here)
+            .map((student) => student.name)
+            .sort();
+        const hereOf = (statuses: Record<string, string>) =>
+          Object.keys(statuses)
+            .filter((name) => statuses[name] !== "not_signed_in")
+            .sort();
         // Jo practiced that morning. Kit was on AMP five minutes ago. Lou
         // signed in six minutes ago and her tab is still open. Mo signed in
-        // two minutes ago, on a device she has since left.
+        // two minutes ago, on a device she has since left. Ned was last
+        // seen eleven minutes ago.
         await (await device(jo)).answer(true);
         await db.query(
           "UPDATE amp_attempts SET created_at=now()-interval '3 hours' WHERE learner_id=$1",
@@ -978,18 +993,27 @@ test(
         await seenAgo(lou, "6 minutes");
         await device(mo);
         await seenAgo(mo, "2 minutes");
+        await device(ned);
+        await seenAgo(ned, "11 minutes");
+        // Before Start the wall board goes by the cockpit's rule with no
+        // session to be in: seen in the last ten minutes, not "seen today".
+        assert.deepEqual(await board(), ["Kit", "Lou", "Mo"]);
 
         const session = await start(classD);
         let now = await read();
-        // From the first second: nobody is Working or Active before
-        // something of theirs happens in the session.
+        // From the first second everyone here at Start reads the same, as
+        // a student who signs in a moment later would: the quiet clock
+        // starts with the session. Nobody is Active before they do
+        // something in it.
         assert.deepEqual(now.statuses, {
           Jo: "not_signed_in",
-          Kit: "idle",
-          Lou: "idle",
-          Mo: "idle",
+          Kit: "working",
+          Lou: "working",
+          Mo: "working",
+          Ned: "not_signed_in",
         });
         assert.deepEqual([now.here, now.active], [3, 0]);
+        assert.deepEqual(await board(), hereOf(now.statuses));
 
         // Mo asks for her pictures from the sign-in screen: not signed in,
         // whatever her last device said two minutes ago.
@@ -1004,11 +1028,14 @@ test(
         now = await read();
         assert.deepEqual(now.statuses, {
           Jo: "not_signed_in",
-          Kit: "idle",
+          Kit: "working",
           Lou: "working",
           Mo: "not_signed_in",
+          Ned: "not_signed_in",
         });
-        assert.deepEqual([now.here, now.active], [2, 1]);
+        assert.deepEqual([now.here, now.active], [2, 0]);
+        // The board and the cockpit light the same students.
+        assert.deepEqual(await board(), ["Kit", "Lou"]);
         assert.deepEqual(
           now.snapshot.signals.map((signal) => [signal.name, signal.kind]),
           [["Mo", "forgot_picture"]],
@@ -1023,20 +1050,45 @@ test(
           now.snapshot.totals,
         );
 
-        // Stopped two minutes in. Kit is still within ten minutes of his
-        // last sighting, so the live screen had him here; the report goes
-        // by the session's window alone.
+        // Three minutes in. Lou answers; Kit, signed in before Start, has
+        // done nothing: Quiet, after the same two minutes as anyone.
+        await louDevice.answer(true);
+        await db.query(
+          "UPDATE amp_class_sessions SET started_at=started_at-interval '3 minutes' WHERE id=$1",
+          [session.id],
+        );
+        now = await read();
+        assert.deepEqual(now.statuses, {
+          Jo: "not_signed_in",
+          Kit: "idle",
+          Lou: "working",
+          Mo: "not_signed_in",
+          Ned: "not_signed_in",
+        });
+        assert.deepEqual([now.here, now.active], [2, 1]);
+        // Stopped. The report is each row as the cockpit showed it at that
+        // moment: Kit, here without an answer, read Quiet, so he is "signed
+        // in, no answers", never "didn't sign in". Its Here is the
+        // cockpit's Here.
         const report = await stop(classD, session.id);
         assert.deepEqual(
-          report.rows.map((row) => [row.name, row.status, row.firstSeenAt]),
+          report.rows.map((row) => [row.name, row.status, row.problems]),
           [
-            ["Jo", "not_signed_in", null],
-            ["Kit", "not_signed_in", null],
-            ["Lou", "working", null],
-            ["Mo", "not_signed_in", null],
+            ["Jo", "not_signed_in", 0],
+            ["Kit", "idle", 0],
+            ["Lou", "working", 1],
+            ["Mo", "not_signed_in", 0],
+            ["Ned", "not_signed_in", 0],
           ],
         );
-        assert.equal(report.totals.present, 1);
+        assert.deepEqual(
+          report.rows.map((row) => [row.name, row.status]),
+          Object.entries(now.statuses),
+        );
+        assert.equal(report.totals.present, now.here);
+        assert.equal(report.session.rulesVersion, LIVE_RULES.version);
+        // With nothing running the board is back to the last ten minutes.
+        assert.deepEqual(await board(), ["Kit", "Lou"]);
 
         // Mo signs in: her request is withdrawn and she is in the next
         // session from that moment.

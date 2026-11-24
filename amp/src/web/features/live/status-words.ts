@@ -20,7 +20,7 @@ export const STATUS_WORDS: Record<LiveStatus, StatusWords> = {
   },
   idle: {
     word: "Quiet",
-    means: "No answer or help for 2 minutes, or none yet",
+    means: "No answer or help for 2 minutes",
   },
   struggling: {
     word: "Needs help",

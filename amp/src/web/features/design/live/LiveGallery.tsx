@@ -107,7 +107,10 @@ function Cockpit({
             startedAt: live.startedAt,
           })}
           hereNow={hereNow(statuses)}
-          answeringNow={answeringNow(statuses)}
+          answeringNow={answeringNow(state.rows, {
+            now: state.now,
+            startedAt: live.startedAt,
+          })}
         />
       }
       strip={

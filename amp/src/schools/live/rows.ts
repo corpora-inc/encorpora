@@ -65,6 +65,63 @@ const ROSTER = () => `roster AS (
   WHERE c.id=$1 AND ${studentInClassSql("e", "p", "c", "o")}
 )`;
 
+/** SQL: roster member `r`'s own sign-in, last seen before `end` (a session
+ * judged after it ended doesn't count who arrived later), as `seen.last_seen`.
+ * A sighting from before an open "I forgot my picture" is not one: they are
+ * at the sign-in screen, signed out of the device it was on. Class `$1`. */
+const SEEN = (end: string) => `CROSS JOIN LATERAL (
+       SELECT max(s.last_seen_at) AS last_seen FROM amp_student_sessions s
+       WHERE s.person_id=r.person_id AND s.revoked_at IS NULL AND s.last_seen_at<${end}
+         AND NOT EXISTS (SELECT 1 FROM amp_class_signals f
+           WHERE f.class_id=$1 AND f.person_id=r.person_id AND f.kind='forgot_picture'
+             AND f.resolved_at IS NULL AND f.created_at>s.last_seen_at)
+     ) seen`;
+
+/** What `isHere` reads from a row when no session runs: nothing in a
+ * session, and the student's own sign-in as last seen. */
+export type SeenRow = Pick<
+  LiveRow,
+  | "personId"
+  | "problems"
+  | "hints"
+  | "lessons"
+  | "examples"
+  | "videos"
+  | "recent"
+  | "firstSeenAt"
+  | "lastAnswerAt"
+  | "lastHelpAt"
+  | "lastSeenAt"
+>;
+
+/** Each student on the class's roster today with their own sign-in as last
+ * seen, the same sighting the live read takes, for a class with no session
+ * running (`here.ts`). One statement. */
+export async function readSeen(
+  db: Database,
+  classId: string,
+): Promise<SeenRow[]> {
+  const { rows } = await db.query(
+    `WITH ${ROSTER()}
+     SELECT r.person_id AS "personId",seen.last_seen FROM roster r
+     ${SEEN("'infinity'::timestamptz")}`,
+    [classId],
+  );
+  return rows.map((row) => ({
+    personId: row.personId,
+    problems: 0,
+    hints: 0,
+    lessons: 0,
+    examples: 0,
+    videos: 0,
+    recent: [],
+    firstSeenAt: null,
+    lastAnswerAt: null,
+    lastHelpAt: null,
+    lastSeenAt: iso(row.last_seen),
+  }));
+}
+
 /**
  * Each student on the class's roster today, or only `personIds`, with their
  * work inside the window. Students who never answered read zero. Sorted by
@@ -122,17 +179,7 @@ export async function readLiveRows(
        FROM amp_help_events h
        WHERE h.learner_id=r.learner_id AND h."at">=$2::timestamptz AND h."at"<$3::timestamptz
      ) h
-     -- Their own sign-in, last seen before the window's end: a session judged
-     -- after it ended doesn't count who arrived later. Nor does a sighting
-     -- from before an open "I forgot my picture": they are at the sign-in
-     -- screen, signed out of the device it was on.
-     CROSS JOIN LATERAL (
-       SELECT max(s.last_seen_at) AS last_seen FROM amp_student_sessions s
-       WHERE s.person_id=r.person_id AND s.revoked_at IS NULL AND s.last_seen_at<$3::timestamptz
-         AND NOT EXISTS (SELECT 1 FROM amp_class_signals f
-           WHERE f.class_id=$1 AND f.person_id=r.person_id AND f.kind='forgot_picture'
-             AND f.resolved_at IS NULL AND f.created_at>s.last_seen_at)
-     ) seen
+     ${SEEN("$3::timestamptz")}
      -- Showed up in the session: signed in, or first active on their own sign-in (the presence
      -- events), or raised a hand. "I forgot my picture" is not signed in.
      CROSS JOIN LATERAL (

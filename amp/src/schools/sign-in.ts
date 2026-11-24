@@ -31,6 +31,7 @@ import { recordEvent } from "./events.js";
 import { activeToday, studentInClassSql } from "./principal.js";
 import { generateJoinCode, type SchoolRepository } from "./repository.js";
 import { studentDeviceMode } from "./settings.js";
+import { readHere } from "./live/here.js";
 import { resolvePersonSignals } from "./live/signals.js";
 
 /** Five wrong tries pause one student, briefly: a child who forgot asks the
@@ -432,14 +433,15 @@ export class SchoolSignIn {
     if (!found) throw new SchoolError(404, "not_found");
   }
 
-  /** Who's here: a session seen since midnight at the school. A device that
-   * stayed signed in counts once it's been used today. */
+  /** Who's here, for the wall board: the cockpit's own rule (`readHere`,
+   * live/here.ts). In the class's running session, or their own sign-in
+   * seen in the last ten minutes; never "seen today". The board and the
+   * cockpit light the same students. */
   async presence(classId: string, canManage = false): Promise<Presence> {
     const found = await this.classInfo(classId);
+    const here = await readHere(this.pool, classId);
     const { rows } = await this.pool.query(
-      `SELECT p.id,${STUDENT_LABEL} AS name,
-         EXISTS(SELECT 1 FROM amp_student_sessions s WHERE s.person_id=p.id AND s.revoked_at IS NULL
-           AND s.last_seen_at>=(date_trunc('day',now() AT TIME ZONE o.timezone) AT TIME ZONE o.timezone)) AS here
+      `SELECT p.id,${STUDENT_LABEL} AS name
        FROM ${STUDENTS_OF_CLASS}
        WHERE c.id=$1 AND ${IN_CLASS} ORDER BY lower(${STUDENT_NAME}),p.id LIMIT ${ROSTER_LIMIT}`,
       [classId],
@@ -454,7 +456,7 @@ export class SchoolSignIn {
         practice: found.practice,
       },
       canManage,
-      students: rows,
+      students: rows.map((row) => ({ ...row, here: here.has(row.id) })),
     };
   }
 

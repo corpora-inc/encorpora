@@ -15,7 +15,7 @@ import type {
 } from "../../../../schools/live/contracts";
 import { reportStatus, reportTotals } from "../../../../schools/live/status";
 import { queryClient, sessionOptions } from "../../../lib/query";
-import { Report } from "../../school/classes/SessionReportScreen";
+import { followUp, Report } from "../../school/classes/SessionReportScreen";
 import { ChildReportRow, FAMILY_REPORT_WORDS } from "../FamilyReport";
 import { PastSessions } from "../PastSessions";
 import { sessionsOptions } from "../../live/api";
@@ -304,4 +304,29 @@ test("past sessions: nothing before the first has ended; then a line each, openi
   );
   expect(links[0]!.textContent).toMatch(/11 min · 8 problems · 75%/);
   expect(document.body.textContent).not.toMatch(FOREIGN);
+});
+
+test("a child signed in before Start practice and here at the end, with no answers: started, never “didn’t start”", () => {
+  // Wren's own device was seen a minute before the session and she answered
+  // nothing; it stopped four minutes in, her row reading Quiet.
+  const status = reportStatus(
+    {
+      problems: 0,
+      hints: 0,
+      lessons: 0,
+      examples: 0,
+      videos: 0,
+      recent: [],
+      firstSeenAt: null,
+      lastAnswerAt: null,
+      lastHelpAt: null,
+      lastSeenAt: iso(-60_000),
+    },
+    { now: Date.parse(iso(4 * 60_000)), startedAt: iso(0) },
+  );
+  expect(status).toBe("idle");
+  const groups = followUp([row(2, "Wren", { status })]);
+  expect(groups.map((group) => group.id)).toEqual(["no-answers"]);
+  // The group's name in a family's words.
+  expect(FAMILY_REPORT_WORDS.noAnswers).toBe("Started, no answers");
 });

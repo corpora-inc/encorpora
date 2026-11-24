@@ -9,6 +9,7 @@ import {
 } from "../src/schools/live/contracts";
 import {
   inSession,
+  isAnswering,
   isHere,
   LIVE_RULES,
   liveStatus,
@@ -88,16 +89,46 @@ const cases: {
     expect: "not_signed_in",
   },
   {
-    name: "seen 9 minutes ago, nothing in the session: here, and quiet",
+    name: "seen 9 minutes ago, nothing in the session: here, with the session's own two minutes",
     row: facts({ lastSeenAt: at(-510) }),
     now: 30,
+    expect: "working",
+  },
+  {
+    name: "signed in a second before Start: the same 120 s as anyone here at Start",
+    row: facts({ lastSeenAt: at(-1) }),
+    now: 1,
+    expect: "working",
+  },
+  {
+    name: "signed in a second before Start, 119 s in",
+    row: facts({ lastSeenAt: at(-1) }),
+    now: 119,
+    expect: "working",
+  },
+  {
+    name: "signed in a second before Start, 120 s in with nothing done: quiet",
+    row: facts({ lastSeenAt: at(-1) }),
+    now: 120,
     expect: "idle",
   },
   {
-    name: "seen a second before the start: here, never working before anything of theirs",
-    row: facts({ lastSeenAt: at(-1) }),
-    now: 1,
+    name: "signed in five minutes before Start: the quiet clock starts at Start, not at their sign-in",
+    row: facts({ lastSeenAt: at(-300) }),
+    now: 5,
+    expect: "working",
+  },
+  {
+    name: "signed in five minutes before Start, 120 s in: quiet",
+    row: facts({ lastSeenAt: at(-300) }),
+    now: 120,
     expect: "idle",
+  },
+  {
+    name: "signed in a second after Start reads the same in its first seconds",
+    row: facts({ ...UNSEEN, firstSeenAt: at(1), lastSeenAt: at(1) }),
+    now: 5,
+    expect: "working",
   },
   {
     name: "seen 11 minutes ago, nothing in the session",
@@ -109,7 +140,7 @@ const cases: {
     name: "seen 9 minutes 59 seconds ago: here",
     row: facts({ lastSeenAt: at(-599) }),
     now: 0,
-    expect: "idle",
+    expect: "working",
   },
   {
     name: "seen exactly 10 minutes ago: no longer here",
@@ -359,7 +390,7 @@ test("live status: accepts a Date and a rules object", () => {
   const before = facts({ lastSeenAt: at(-1) });
   assert.equal(
     liveStatus(before, { now: START + 60_000, startedAt: at(0) }),
-    "idle",
+    "working",
   );
   assert.equal(
     liveStatus(
@@ -372,7 +403,7 @@ test("live status: accepts a Date and a rules object", () => {
 });
 
 test("live status: here is the first rule, and the rest keep their order", () => {
-  assert.equal(LIVE_RULES.version, 2);
+  assert.equal(LIVE_RULES.version, 3);
   assert.equal(LIVE_RULES.hereMs, 600_000);
   assert.equal(LIVE_RULES.idleMs, 120_000);
   const hour = { now: START + 3_600_000, startedAt: at(0) };
@@ -393,6 +424,76 @@ test("live status: here is the first rule, and the rest keep their order", () =>
   );
 });
 
+test("the quiet clock starts no earlier than the session: everyone here at Start gets the same 120 s", () => {
+  const before = facts({ lastSeenAt: at(-45) });
+  const after = facts({ ...UNSEEN, firstSeenAt: at(2), lastSeenAt: at(2) });
+  for (const seconds of [3, 60, 119]) {
+    const when = { now: START + seconds * 1000, startedAt: at(0) };
+    assert.equal(liveStatus(before, when), "working", `before, ${seconds} s`);
+    assert.equal(
+      liveStatus(before, when),
+      liveStatus(after, when),
+      `signed in just before and just after Start read the same at ${seconds} s`,
+    );
+  }
+  // Counted from the later of their last activity and the start.
+  assert.equal(
+    liveStatus(before, { now: START + 120_000, startedAt: at(0) }),
+    "idle",
+  );
+  assert.equal(
+    liveStatus(after, { now: START + 121_000, startedAt: at(0) }),
+    "working",
+  );
+  assert.equal(
+    liveStatus(after, { now: START + 122_000, startedAt: at(0) }),
+    "idle",
+  );
+  // An answer restarts it, as ever.
+  const answering = facts({ lastSeenAt: at(-45), ...answered([R], 100) });
+  assert.equal(
+    liveStatus(answering, { now: START + 219_000, startedAt: at(0) }),
+    "working",
+  );
+  assert.equal(
+    liveStatus(answering, { now: START + 220_000, startedAt: at(0) }),
+    "idle",
+  );
+});
+
+test("answering now: an answer or help in the last two minutes, never only being here", () => {
+  const when = (seconds: number) => ({
+    now: START + seconds * 1000,
+    startedAt: at(0),
+  });
+  const cases: [string, StatusFacts, number, boolean][] = [
+    [
+      "here since before Start, nothing done",
+      facts({ lastSeenAt: at(-45) }),
+      5,
+      false,
+    ],
+    [
+      "just signed in, nothing done",
+      facts({ ...UNSEEN, firstSeenAt: at(2) }),
+      5,
+      false,
+    ],
+    ["answered 20 s ago", facts(answered([R], 20)), 40, true],
+    ["answered 119 s ago", facts(answered([R], 20)), 139, true],
+    ["answered 120 s ago", facts(answered([R], 20)), 140, false],
+    [
+      "opened a hint 10 s ago",
+      facts({ ...UNSEEN, hints: 1, lastHelpAt: at(30) }),
+      40,
+      true,
+    ],
+    ["not here at all", facts(UNSEEN), 40, false],
+  ];
+  for (const [name, row, seconds, expect] of cases)
+    assert.equal(isAnswering(row, when(seconds)), expect, name);
+});
+
 test("in the session: something of theirs inside its window", () => {
   const cases: [string, StatusFacts, boolean][] = [
     ["nothing of their own", facts(UNSEEN), false],
@@ -408,69 +509,79 @@ test("in the session: something of theirs inside its window", () => {
     assert.equal(inSession(row, at(0)), expect, name);
 });
 
-test("a report goes by the session's window alone", () => {
+test("a report is the row as it stood when the session ended", () => {
+  // The cockpit and the stored report tell one story: a report freezes each
+  // row's status at the end, by the same rule the live row was read with.
   const cases: {
     name: string;
     row: StatusFacts;
     /** When it stopped, seconds after the start. */
     stop: number;
-    live: LiveStatus;
-    report: LiveStatus;
+    expect: LiveStatus;
   }[] = [
+    {
+      name: 'signed in a minute before Start, never answered, stopped at 5 minutes: here and quiet, not "didn\'t sign in"',
+      row: facts({ lastSeenAt: at(-60) }),
+      stop: 300,
+      expect: "idle",
+    },
     {
       name: "active 5 minutes before Start, nothing after, stopped at 2 minutes",
       row: facts({ lastSeenAt: at(-300) }),
       stop: 120,
-      live: "idle",
-      report: "not_signed_in",
+      expect: "idle",
     },
     {
-      name: "signed in a second before Start, nothing after, stopped at 30 s",
-      row: facts({ lastSeenAt: at(-1) }),
-      stop: 30,
-      live: "idle",
-      report: "not_signed_in",
+      name: "seen 9 minutes before Start and never again, stopped at 45 minutes: the row read not signed in by then",
+      row: facts({ lastSeenAt: at(-540) }),
+      stop: 2700,
+      expect: "not_signed_in",
     },
     {
       name: "practiced that morning, never in the session",
       row: facts({ lastSeenAt: at(-3 * 3600) }),
       stop: 900,
-      live: "not_signed_in",
-      report: "not_signed_in",
+      expect: "not_signed_in",
+    },
+    {
+      name: "never seen",
+      row: facts(UNSEEN),
+      stop: 900,
+      expect: "not_signed_in",
     },
     {
       name: "their sign-in seen in the session, no answers",
       row: facts({ lastSeenAt: at(400) }),
-      stop: 900,
-      live: "idle",
-      report: "idle",
+      stop: 2700,
+      expect: "idle",
     },
     {
       name: "signed in during the session, no answers, stopped a minute later",
       row: facts({ ...UNSEEN, firstSeenAt: at(840) }),
       stop: 900,
-      live: "working",
-      report: "working",
+      expect: "working",
     },
     {
       name: "answered, then silent",
       row: facts({ ...UNSEEN, ...answered([R, R], 60) }),
       stop: 900,
-      live: "idle",
-      report: "idle",
+      expect: "idle",
     },
     {
       name: "three wrong just before it stopped",
       row: facts({ ...UNSEEN, ...answered([W, W, W], 890) }),
       stop: 900,
-      live: "struggling",
-      report: "struggling",
+      expect: "struggling",
     },
   ];
-  for (const { name, row, stop, live, report } of cases) {
+  for (const { name, row, stop, expect } of cases) {
     const when = { now: START + stop * 1000, startedAt: at(0) };
-    assert.equal(liveStatus(row, when), live, `${name}: live`);
-    assert.equal(reportStatus(row, when), report, `${name}: report`);
+    assert.equal(reportStatus(row, when), expect, name);
+    assert.equal(
+      reportStatus(row, when),
+      liveStatus(row, when),
+      `${name}: the report and the row agree`,
+    );
   }
 });
 
@@ -583,16 +694,19 @@ test("live totals: who is here follows the same rule as the status, on the clock
     liveTotals(rows, when(59), { ...LIVE_RULES, hereMs: 60_000 }).present,
     3,
   );
-  // A report counts who was in the session, whatever the clock said live.
-  const stopped = when(59);
-  assert.equal(
-    reportTotals(
-      rows.map((r) => ({
-        ...r,
-        skills: [],
-        status: reportStatus(r, stopped),
-      })),
-    ).present,
-    3,
-  );
+  // A report counts who the cockpit counted when it stopped.
+  for (const seconds of [59, 60, 1800]) {
+    const stopped = when(seconds);
+    assert.equal(
+      reportTotals(
+        rows.map((r) => ({
+          ...r,
+          skills: [],
+          status: reportStatus(r, stopped),
+        })),
+      ).present,
+      liveTotals(rows, stopped).present,
+      `stopped at ${seconds} s`,
+    );
+  }
 });

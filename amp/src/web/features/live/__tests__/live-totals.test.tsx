@@ -53,17 +53,18 @@ test("Here turns with the clock: seen before the session, then nothing in it", (
   const here = (ms: number) =>
     hereNow(liveStatuses(rows, { now: START + ms, startedAt: iso(0) }));
   expect(here(4 * 60_000)).toBe(2);
-  // Here by a sighting before the session is never "answering now".
-  expect(
-    answeringNow(
-      liveStatuses(rows, { now: START + 60_000, startedAt: iso(0) }),
-    ),
-  ).toBe(1);
-  expect(
-    liveStatuses(rows, { now: START + 1000, startedAt: iso(0) }).get(
+  // Here by a sighting before the session is never "answering now"; he
+  // has the session's own two minutes before his row reads quiet.
+  expect(answeringNow(rows, { now: START + 60_000, startedAt: iso(0) })).toBe(
+    1,
+  );
+  const dov = (ms: number) =>
+    liveStatuses(rows, { now: START + ms, startedAt: iso(0) }).get(
       rows[1]!.personId,
-    ),
-  ).toBe("idle");
+    );
+  expect(dov(1000)).toBe("working");
+  expect(dov(119_000)).toBe("working");
+  expect(dov(120_000)).toBe("idle");
   expect(here(5 * 60_000)).toBe(1);
   expect(
     liveTotals(rows, { now: START + 4 * 60_000, startedAt: iso(0) }).present,

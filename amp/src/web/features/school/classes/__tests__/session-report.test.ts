@@ -85,7 +85,7 @@ test("follow up first: each student once, in the first group that fits", () => {
   expect(followUp([rows[4]!])).toEqual([]);
 });
 
-test("didn’t sign in and signed in, no answers: told apart by the session alone", () => {
+test("didn’t sign in and signed in, no answers: told apart as the cockpit showed them at the end", () => {
   // A second session of the day, 2:00 to 2:15. What each student's own
   // sign-in and work say, judged as the server judges a report.
   const startedAt = "2026-11-30T14:00:00.000Z";
@@ -111,7 +111,8 @@ test("didn’t sign in and signed in, no answers: told apart by the session alon
         at,
       ),
     }),
-    // On AMP five minutes before Start; nothing after.
+    // On AMP five minutes before Start; nothing after. By 2:15 his row
+    // had long read "Not signed in".
     row("Finn", {
       firstSeenAt: null,
       status: reportStatus(
@@ -153,6 +154,34 @@ test("didn’t sign in and signed in, no answers: told apart by the session alon
     ["not-signed-in", ["Elin", "Finn"], ["", ""]],
     ["no-answers", ["Jory", "Kay"], [expect.stringMatching(/^Signed in /), ""]],
   ]);
+});
+
+test("signed in before Start, here at the end, no answers: signed in, never “didn’t sign in”", () => {
+  // A short session, 2:00 to 2:05. He signed in at 1:58 and answered
+  // nothing: his row read Quiet when it stopped, and the report says so.
+  const at = {
+    now: Date.parse("2026-11-30T14:05:00.000Z"),
+    startedAt: "2026-11-30T14:00:00.000Z",
+  };
+  const status = reportStatus(
+    {
+      problems: 0,
+      hints: 0,
+      lessons: 0,
+      examples: 0,
+      videos: 0,
+      recent: [],
+      firstSeenAt: null,
+      lastAnswerAt: null,
+      lastHelpAt: null,
+      lastSeenAt: "2026-11-30T13:58:00.000Z",
+    },
+    at,
+  );
+  expect(status).toBe("idle");
+  const groups = followUp([row("Jory", { firstSeenAt: null, status })]);
+  expect(groups.map((group) => group.id)).toEqual(["no-answers"]);
+  expect(groups[0]!.members.map((member) => member.name)).toEqual(["Jory"]);
 });
 
 test("skills: most students first, and who ended on one needing help", () => {

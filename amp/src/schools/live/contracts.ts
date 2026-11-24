@@ -110,10 +110,11 @@ export type StartSessionBody = z.input<typeof startSessionBody>;
  * stored report names the version it was judged by. */
 export const liveRulesResource = z.object({
   version: z.number().int().positive(),
-  /** Seen on their own device within this long before now: here on a live
-   * screen, even with nothing in the session yet (never in a report). */
+  /** Seen on their own device within this long before now: here, even with
+   * nothing in the session yet. */
   hereMs: z.number().int().positive(),
-  /** No answer and no help opened for this long: idle. */
+  /** No answer and no help opened for this long, counted no earlier than
+   * the session's start: idle. */
   idleMs: z.number().int().positive(),
   /** The last this-many answers all wrong: struggling. */
   wrongRun: z.number().int().positive(),
@@ -202,7 +203,7 @@ export type LiveRow = z.infer<typeof liveRowResource>;
 
 /** The class at a glance. `present`: students not "not signed in". Live, as
  * of when it was computed (a screen counts its own, on its clock: `isHere`);
- * in a report, who was in the session (`reportStatus`). */
+ * in a report, who the cockpit counted here when the session ended. */
 export const liveTotalsResource = z.object({
   students: z.number().int().nonnegative(),
   present: z.number().int().nonnegative(),
@@ -253,8 +254,8 @@ export const reportRowResource = z.object({
   firstSeenAt: instant.nullable(),
   firstAnswerAt: instant.nullable(),
   lastAnswerAt: instant.nullable(),
-  /** Their status when the session ended, by the session's window alone:
-   * `not_signed_in` unless something of theirs happened in it. */
+  /** Their status when the session ended: the row as the cockpit showed it
+   * at that moment, by the same rule (`reportStatus`). */
   status: z.enum(liveStatuses),
 });
 export type ReportRow = z.infer<typeof reportRowResource>;

@@ -350,7 +350,14 @@ export function ClassCockpit({
           <Totals
             totals={shown.totals}
             hereNow={hereNow(statuses)}
-            answeringNow={still ? 0 : answeringNow(statuses)}
+            answeringNow={
+              still
+                ? 0
+                : answeringNow(shown.rows, {
+                    now,
+                    startedAt: shown.session.startedAt,
+                  })
+            }
           />
         }
         strip={strip}

@@ -45,6 +45,7 @@ import {
   type BrowserContext,
   type Page,
 } from "playwright";
+import pg from "pg";
 import { secureChromium } from "../browser-security.mjs";
 import { cutNameOpens, skillNames } from "./live-cockpit-checks";
 import {
@@ -152,6 +153,149 @@ async function rest(token: string, classId: string) {
       `/school/classes/${classId}/sessions/${live.session.id}/stop`,
       {},
     );
+}
+
+/** The simulator's student who never signs in today was last seen on a
+ * sign-in of her own eleven minutes ago: earlier today, and past the ten
+ * minutes "here" reaches back. The cockpit, the report and the wall board
+ * must all leave her out. */
+const SEEN_EARLIER = "Nell";
+async function seenEarlierToday(classId: string) {
+  const pool = new pg.Pool({ connectionString: database, max: 1 });
+  try {
+    const person = (
+      await pool.query(
+        `SELECT p.id FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+         WHERE e.class_id=$1 AND e.role='student' AND p.deleted_at IS NULL AND p.given_name=$2`,
+        [classId, SEEN_EARLIER],
+      )
+    ).rows[0] as { id: string } | undefined;
+    assert.ok(person, `${SEEN_EARLIER} is in the simulated class`);
+    const moved = await pool.query(
+      `UPDATE amp_student_sessions SET last_seen_at=now()-interval '11 minutes',
+         revoked_at=NULL,expires_at=now()+interval '12 hours' WHERE person_id=$1`,
+      [person.id],
+    );
+    if (!moved.rowCount)
+      await pool.query(
+        `INSERT INTO amp_student_sessions(id,token_hash,person_id,mode,expires_at,last_seen_at)
+         VALUES(gen_random_uuid(),encode(sha256(convert_to(gen_random_uuid()::text,'UTF8')),'hex'),
+           $1,'shared',now()+interval '12 hours',now()-interval '11 minutes')`,
+        [person.id],
+      );
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Each student's status as the cockpit shows it now, by person. */
+const rowStatuses = (page: Page) =>
+  page.evaluate(() => {
+    const out: Record<string, { status: string; text: string }> = {};
+    for (const cell of document.querySelectorAll<HTMLElement>(
+      "[data-live-row]",
+    )) {
+      const row = (cell.closest("tr") ?? cell) as HTMLElement;
+      out[cell.dataset.liveRow!] = {
+        status:
+          row.querySelector("svg[data-status]")?.getAttribute("data-status") ??
+          "",
+        text: row.innerText,
+      };
+    }
+    return out;
+  });
+
+/** The names the report lists under each "Follow up first" group. */
+const reportGroups = (page: Page) =>
+  page.evaluate(() => {
+    const out: Record<string, string[]> = {};
+    for (const group of document.querySelectorAll<HTMLElement>("[data-group]"))
+      out[group.dataset.group!] = [
+        ...group.querySelectorAll<HTMLElement>("ul > li"),
+      ]
+        .map((item) => (item.firstElementChild?.textContent ?? "").trim())
+        .sort();
+    return out;
+  });
+
+/**
+ * The report tells the story the cockpit told when it stopped: whoever's
+ * row read anything but "Not signed in" is never under "Didn't sign in"
+ * (a student signed in before Start who answered nothing is "Signed in, no
+ * answers"), and whoever's row read "Not signed in" is.
+ */
+function reportAgrees(
+  where: string,
+  rows: Record<string, { status: string; text: string }>,
+  names: Record<string, string>,
+  groups: Record<string, string[]>,
+) {
+  const shown = Object.entries(rows).map(([id, row]) => ({
+    name: names[id] ?? id,
+    ...row,
+  }));
+  const didnt = groups["not-signed-in"] ?? [];
+  const quiet = groups["no-answers"] ?? [];
+  const here = shown.filter((row) => row.status !== "not_signed_in");
+  const wrong = here.filter((row) => didnt.includes(row.name));
+  if (wrong.length)
+    fail(
+      `${where}: the report lists under "Didn't sign in" students whose row read ${wrong.map((row) => `${row.name}: ${row.status}`).join(", ")} at Stop`,
+    );
+  const missing = shown.filter(
+    (row) => row.status === "not_signed_in" && !didnt.includes(row.name),
+  );
+  if (missing.length)
+    fail(
+      `${where}: not signed in at Stop, but not under "Didn't sign in": ${missing.map((row) => row.name).join(", ")}`,
+    );
+  const unanswered = here.filter((row) => /No answers yet/.test(row.text));
+  const unfiled = unanswered.filter((row) => !quiet.includes(row.name));
+  if (unfiled.length)
+    fail(
+      `${where}: here with no answers at Stop, but not under "Signed in, no answers": ${unfiled.map((row) => row.name).join(", ")}`,
+    );
+  console.log(
+    `${where}: at Stop ${here.length} here (${unanswered.map((row) => row.name).join(", ") || "nobody"} with no answers), ${shown.length - here.length} not signed in; the report: didn't sign in [${didnt.join(", ")}], signed in, no answers [${quiet.join(", ")}]`,
+  );
+}
+
+/** The wall board counts who is here as the cockpit does, at the same
+ * moment: the same students, by the same rule. */
+async function boardAgrees(page: Page, today: string, where: string) {
+  const board = await page.context().newPage();
+  try {
+    await board.goto(`${origin}${today.replace(/\/today$/, "/start")}`, {
+      waitUntil: "domcontentloaded",
+    });
+    const count = board.getByText(/^\d+ of \d+ here$/);
+    await count.waitFor({ timeout: 20_000 });
+    let last = { board: "", cockpit: "" };
+    // Each polls on its own clock: a few seconds to read the same moment.
+    for (let attempt = 0; attempt < 8; attempt++) {
+      last = {
+        board: ((await count.textContent()) ?? "").trim(),
+        cockpit:
+          (await page
+            .locator('[data-tile="here"] dd')
+            .first()
+            .getAttribute("aria-label")) ?? "",
+      };
+      if (last.board === last.cockpit) break;
+      await page.waitForTimeout(1500);
+    }
+    console.log(
+      `${where}: the board reads "${last.board}", the cockpit "${last.cockpit}"`,
+    );
+    if (last.board !== last.cockpit)
+      fail(
+        `${where}: the wall board reads "${last.board}" while the cockpit reads "${last.cockpit}"`,
+      );
+    await shot(board, `board-${where.replace(/\D/g, "")}`);
+  } finally {
+    await board.close();
+  }
 }
 
 // ---- pages ---------------------------------------------------------------
@@ -533,8 +677,19 @@ async function liveRun(
   // A cut name's tap shows all of it over the page, and nothing moves.
   await cutNameOpens(page, () => boxes(page), failures, `${width}px`);
   if (width === 1280) await layerKeepsCockpit(page);
+  // The wall board and the cockpit count the same students here.
+  if (width === 1280) await boardAgrees(page, today, `${width}px`);
+  const whoIs = Object.fromEntries(
+    (
+      (await call(token, "GET", `/school/classes/${classId}/live`)) as {
+        rows: { personId: string; name: string }[];
+      }
+    ).rows.map((row) => [row.personId, row.name]),
+  );
   // Stop asks first, then opens the report.
   await page.getByRole("button", { name: "Stop" }).click();
+  // The rows as they stand at the moment of Stop.
+  const atStop = await rowStatuses(page);
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "Stop session" })
@@ -543,6 +698,7 @@ async function liveRun(
   if (!/\/sessions\/[0-9a-f-]+$/.test(new URL(page.url()).pathname))
     fail(`${width}px: Stop landed on ${page.url()}`);
   await page.waitForTimeout(800);
+  reportAgrees(`${width}px`, atStop, whoIs, await reportGroups(page));
   await shot(page, `report-${width}`);
   await reportSkills(page, `${width}px`);
   const report = new URL(page.url()).pathname;
@@ -801,6 +957,7 @@ try {
   const classId = today.split("/")[4]!;
   const state = await teacherState(browser);
   await rest(token, classId);
+  await seenEarlierToday(classId);
   if (flag("stills-only")) {
     // The newest stopped session's report, for the stills alone.
     const list = (await call(
