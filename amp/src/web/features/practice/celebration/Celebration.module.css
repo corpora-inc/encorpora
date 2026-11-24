@@ -70,7 +70,9 @@
   /* Layout only: its ring and sparks draw outside it. */
   contain: layout style;
 }
-.chip[data-shown] {
+/* Only where the problem on screen kept its room (../chip-room.ts): a look
+   that turned Colorful under an open problem brings the chip with the next. */
+:global(:root[data-chip-room]) .chip[data-shown] {
   opacity: 1;
 }
 /* A phone's chip: compact, one size whatever its number. */

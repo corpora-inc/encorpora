@@ -9,6 +9,10 @@ import { schoolAdmin } from "../scripts/school-admin.js";
 import { practiceResponse } from "../scripts/ui-practice-answer.js";
 import { liveSnapshotResponse } from "../src/schools/live/contracts.js";
 import {
+  noteLearnerSettings,
+  noteScopeSettings,
+} from "../src/schools/live/events.js";
+import {
   DEFAULT_STREAM_TIMING,
   streamLifetimeMs,
 } from "../src/schools/live/sse.js";
@@ -577,6 +581,73 @@ test(
       );
       [ivyWatch, jonWatch, staff].forEach((w) => w.close());
     });
+
+    await t.test(
+      "a change of settings reaches the students' open screens: the class's to all of them, a child's own to that child, a teacher's view to none",
+      async (t) => {
+        const e = await instance();
+        const ivyWatch = stream(e.base, studentPath, ivyToken);
+        const jonWatch = stream(e.base, studentPath, jonToken);
+        const staff = stream(e.base, staffPath, teacher);
+        t.after(() => [ivyWatch, jonWatch, staff].forEach((w) => w.close()));
+        for (const watch of [ivyWatch, jonWatch, staff])
+          await watch.next((f) => f.event === "snapshot", 5_000, true);
+        const seen = () =>
+          [ivyWatch, jonWatch, staff].map(
+            (watch) => watch.frames.filter((f) => f.event !== "ping").length,
+          );
+        const before = seen();
+        // The teacher turns "Allow Colorful" off, on the other process.
+        const sent = Date.now();
+        await ok(
+          a.app,
+          "POST",
+          `/api/v1/school/classes/${classId}/experience`,
+          teacher,
+          { values: { look: "calm" }, locks: { look: true } },
+        );
+        // Each student hears it at once: the whole state again, on which
+        // their screen reads its settings (web: useStudentLive).
+        await Promise.all([
+          ivyWatch.next((f) => f.event === "snapshot", 3_000),
+          jonWatch.next((f) => f.event === "snapshot", 3_000),
+        ]);
+        assert.ok(Date.now() - sent < 3_000);
+        assert.deepEqual(
+          await rows(
+            "SELECT kind,person_id FROM amp_class_events WHERE class_id=$1 AND kind='settings'",
+            classId,
+          ),
+          [{ kind: "settings", person_id: null }],
+        );
+        // A grown-up's switch for one child: that child's screen only.
+        const jonAt = jonWatch.frames.length;
+        await noteLearnerSettings(db, ivy.learnerId);
+        await ivyWatch.next((f) => f.event === "snapshot", 3_000);
+        await new Promise((resolve) => setTimeout(resolve, 1_500));
+        assert.equal(
+          jonWatch.frames.slice(jonAt).filter((f) => f.event === "snapshot")
+            .length,
+          0,
+          "another child's switch is not Jon's news",
+        );
+        // A school's or district's switch: every class under it.
+        await noteScopeSettings(db, { kind: "org", orgId: org.id });
+        await Promise.all([
+          ivyWatch.next((f) => f.event === "snapshot", 3_000),
+          jonWatch.next((f) => f.event === "snapshot", 3_000),
+        ]);
+        // Nothing on the teacher's live view changes with a setting.
+        assert.equal(seen()[2], before[2]);
+        await ok(
+          a.app,
+          "POST",
+          `/api/v1/school/classes/${classId}/experience`,
+          teacher,
+          { values: { look: null }, locks: { look: false } },
+        );
+      },
+    );
 
     await t.test("over the cap: 503; shutdown ends every stream", async () => {
       const c = await instance({ maxSubscribers: 1 });

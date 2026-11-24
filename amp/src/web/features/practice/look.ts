@@ -7,6 +7,8 @@ import {
 } from "react";
 import { shownLook, type Look, type ShownLook } from "../../../learning/look";
 import { mediaMatches, onMediaChange } from "../../lib/media-query";
+import { settleChipRoom } from "./chip-room";
+import { holdLook, lookReleases, lookWaits, onLookRelease } from "./look-feed";
 import {
   canShowColorful,
   clearAhead,
@@ -68,8 +70,18 @@ export function useLook(scope: PracticeScope, enabled = true) {
     enabled: enabled && !!learner,
   });
   const chosen = enabled ? (state.data?.effectiveLook ?? null) : null;
-  const look: Look | null =
+  const answered: Look | null =
     chosen === "bold" && !canShowColorful() ? "calm" : chosen;
+  /** The look this screen last put on for this learner: its first is its
+   * own arrival; a different one later is a change made somewhere else. */
+  const known = useRef<{ learner: string; look: Look } | null>(null);
+  // A change made somewhere else while an answer's feedback is on screen
+  // waits for the next problem (look-feed.ts), which renders this again.
+  useSyncExternalStore(onLookRelease, lookReleases, lookReleases);
+  const worn = known.current?.learner === learner ? known.current.look : null;
+  const waits = !!answered && !!worn && worn !== answered && lookWaits();
+  if (waits) holdLook();
+  const look: Look | null = waits ? worn : answered;
   /** The one color they keep in Colorful; null moves on with each problem. */
   const kept = look === "bold" ? (state.data?.lookHue ?? null) : null;
   const reduced = usePrefersReducedMotion();
@@ -81,6 +93,8 @@ export function useLook(scope: PracticeScope, enabled = true) {
   }, [enabled, learner]);
   const keptNow = useRef(kept);
   keptNow.current = kept;
+  /** The look on screen is one that waited for the next problem. */
+  const waited = useRef(false);
   // In the commit, before it paints: with the answer and the dress read
   // ahead (look-first.ts), a learner's first frame is already their look.
   // Neither in hand yet (a screen opened without the router), the dress
@@ -91,15 +105,26 @@ export function useLook(scope: PracticeScope, enabled = true) {
       rememberLook(learner, null);
       clearAhead();
     }
+    // The chip's room is settled with the look where the look comes with
+    // the screen or with a problem (chip-room.ts); a look that changes
+    // under an open problem leaves the room as that problem has it.
+    const fresh = known.current?.learner !== learner || waited.current;
+    waited.current = false;
+    if (look && learner) known.current = { learner, look };
+    if (look === "calm" && fresh) settleChipRoom();
     if (look !== "bold") return;
     let release: (() => void) | undefined;
     let gone = false;
-    if (dress) release = dress.holdBold(learner, keptNow.current);
+    const wear = (on: Dress) => {
+      release = on.holdBold(learner, keptNow.current);
+      if (fresh) settleChipRoom();
+    };
+    if (dress) wear(dress);
     else
       loadDress().then(
         (loaded) => {
           if (gone) return;
-          release = loaded.holdBold(learner, keptNow.current);
+          wear(loaded);
         },
         (error: unknown) => console.warn("Colorful's dress didn’t load", error),
       );
@@ -108,6 +133,11 @@ export function useLook(scope: PracticeScope, enabled = true) {
       release?.();
     };
   }, [look, learner]);
+  // After the look's own effect, which reads it: a look that waited comes
+  // with a problem.
+  useLayoutEffect(() => {
+    waited.current = waits;
+  }, [waits]);
   // A color kept (or changed) while the dress is on goes on the page at
   // once, on every screen that wears it. Letting it go changes nothing
   // until the next problem brings its own.

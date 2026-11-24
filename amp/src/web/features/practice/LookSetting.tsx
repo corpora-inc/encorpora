@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { Look } from "../../../learning/look";
 import { AppError } from "../../lib/AppError";
 import { HuePicker } from "../../ui/HuePicker";
@@ -36,6 +36,14 @@ function hueOnScreen(): number | null {
  * the learner is in Calm and none of this is in their menu at all: not
  * disabled, not explained, absent. Their choice is kept for when it is
  * allowed again.
+ *
+ * A menu reads this before it opens (look-known.ts), and the rows are
+ * settled once for an opening, from what is known as it opens: there only
+ * if the learner is known to have the choice. A switch flipped while the
+ * menu is open, or an answer slower than the menu waits for, never takes
+ * rows away or adds them under a finger; rows that turned out not to be
+ * the learner's to use rest until the menu closes, and rows that were not
+ * known in time are there the next time it opens.
  */
 export function LookSetting({
   scope,
@@ -96,8 +104,12 @@ export function LookSetting({
       setBusy(false);
     }
   };
-  // Colorful is off for this learner: no Look, no color.
-  if (data?.lookLocked) return null;
+  // Colorful is off for this learner (or nothing is known of it): no Look,
+  // no color. Settled as the menu opens, for as long as it is open.
+  const opened = useRef<boolean | null>(null);
+  if (opened.current === null) opened.current = !!data && !data.lookLocked;
+  if (!opened.current) return null;
+  const off = !!data?.lookLocked;
   return (
     <div
       className={`${styles.look} ${flush ? styles.flush : ""}`}
@@ -112,7 +124,7 @@ export function LookSetting({
         value={data?.effectiveLook ?? null}
         compact
         dense
-        disabled={!data || busy}
+        disabled={busy || off}
         onChange={(next) => {
           if (next !== data?.effectiveLook) void choose(next);
         }}
@@ -127,7 +139,7 @@ export function LookSetting({
         wheelLabel="A new color every problem"
         value={kept}
         resting={hueOnScreen() ?? 0}
-        disabled={!colorful || busy}
+        disabled={!colorful || busy || off}
         onPreview={preview}
         onChoose={(hue) => void keep(hue)}
       />

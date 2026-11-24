@@ -72,6 +72,49 @@ export const liveHeartbeatCte = (param: number) => `live_noted AS (
        WHERE v.session_id=s.id AND v.person_id=p.id AND v.kind='presence'))
 )`;
 
+/**
+ * What students may see changed for a class, a school or a district (its
+ * Student experience: "Allow Colorful"): one `settings` row for every class
+ * at or under it, with or without a session, so each student's open screen
+ * reads its settings again (hub.ts). A district is one statement.
+ */
+export async function noteScopeSettings(
+  db: Database,
+  target: { kind: "class"; classId: string } | { kind: "org"; orgId: string },
+): Promise<void> {
+  if (target.kind === "class")
+    await db.query(
+      "INSERT INTO amp_class_events(class_id,session_id,person_id,kind) VALUES($1,NULL,NULL,'settings')",
+      [target.classId],
+    );
+  else
+    await db.query(
+      `INSERT INTO amp_class_events(class_id,session_id,person_id,kind)
+       SELECT c.id,NULL,NULL,'settings' FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+       WHERE c.archived_at IS NULL AND $1::uuid=ANY(o.path)`,
+      [target.orgId],
+    );
+}
+
+/** A grown-up changed what one child may see (their own "Allow Colorful"):
+ * a `settings` row naming the child in each class they are a student of
+ * today, so only their own screen reads its settings again. A child in no
+ * class has no stream to hear it on, and writes nothing. */
+export async function noteLearnerSettings(
+  db: Database,
+  learnerId: string,
+): Promise<void> {
+  await db.query(
+    `INSERT INTO amp_class_events(class_id,session_id,person_id,kind)
+     SELECT c.id,NULL,p.id,'settings' FROM amp_people p
+     JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+     JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+     JOIN amp_orgs o ON o.id=c.org_id AND ${activeToday("e", "o")}
+     WHERE p.learner_id=$1 AND p.deleted_at IS NULL`,
+    [learnerId],
+  );
+}
+
 /** An event about a class: a session started or stopped (`session`), or a
  * signal raised or resolved (`signal`, work package L4), which is written
  * with or without a session. */
@@ -145,6 +188,9 @@ export function classChanges(
   for (const event of events) {
     if (seen.has(event.id)) continue;
     seen.add(event.id);
+    // Settings are the students' own screens' business (hub.ts): nothing
+    // on a teacher's live view changes with them.
+    if (event.kind === "settings") continue;
     const change = byClass.get(event.classId) ?? {
       people: new Set<string>(),
       session: false,

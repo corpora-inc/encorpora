@@ -84,6 +84,9 @@ export function ColorfulSpecimen({
   useLayoutEffect(() => {
     const root = document.documentElement;
     root.setAttribute("data-look", "bold");
+    // The problem shown arrived in Colorful: its chip has its room
+    // (features/practice/chip-room.ts).
+    root.setAttribute("data-chip-room", "");
     paintHue(hue);
     const shown = stage();
     shown.retain();
@@ -91,6 +94,7 @@ export function ColorfulSpecimen({
     return () => {
       shown.release();
       root.removeAttribute("data-look");
+      root.removeAttribute("data-chip-room");
     };
   }, [state, hue]);
   useEffect(() => {

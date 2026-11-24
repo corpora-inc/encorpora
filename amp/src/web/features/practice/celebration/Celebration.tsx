@@ -1,4 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, type RefObject } from "react";
+import { settleChipRoom } from "../chip-room";
+import { lookAgain, problemTurned } from "../look-feed";
 import { readyLazy } from "../../../lib/ready-lazy";
 import { useLookOnScreen } from "../look";
 import { usePoints, usePracticeScope } from "../points";
@@ -49,6 +51,21 @@ export function Celebration(props: Props) {
   useEffect(() => {
     if (look === "bold") void preloadColorful();
   }, [look]);
+  // Each new problem: a look changed somewhere else is on this screen no
+  // later than now, where no stream brings it sooner (look-feed.ts).
+  const problemId = props.problem.id;
+  const identity = scope?.identity;
+  const learnerId = scope?.learnerId;
+  useEffect(() => {
+    if (identity && learnerId) lookAgain({ identity, learnerId }, problemId);
+  }, [problemId, identity, learnerId]);
+  // The chip's room is this problem's: kept from the look it arrives in, in
+  // the commit that shows it (chip-room.ts). A look that waited for this
+  // problem goes on in the same commit (look-feed.ts).
+  useLayoutEffect(() => {
+    settleChipRoom();
+    problemTurned();
+  }, [problemId]);
   return (
     <>
       {/* First: siblings' layout effects run in order, so the answer is

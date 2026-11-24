@@ -91,6 +91,9 @@ export const classEventKinds = [
   "presence",
   "session",
   "signal",
+  /** What the class's students may see changed (the look): their open
+   * screens read their settings again. With a person, that student's only. */
+  "settings",
 ] as const;
 export type ClassEventKind = (typeof classEventKinds)[number];
 

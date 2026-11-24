@@ -17,6 +17,7 @@ import {
 import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
+import { noteScopeSettings } from "./live/events.js";
 import { activeToday } from "./principal.js";
 import type { SchoolRepository } from "./repository.js";
 import {
@@ -293,6 +294,15 @@ export async function writeExperience(
         },
       });
       clearStandingsCache();
+      // "Allow Colorful" reaches the screens already open: every student
+      // at or under this scope reads their settings again (live/events.ts).
+      if (touched.includes("look"))
+        await noteScopeSettings(
+          client,
+          target.kind === "class"
+            ? { kind: "class", classId: target.classId }
+            : { kind: "org", orgId: target.orgId },
+        );
     }
     return experienceView(client, actor, target);
   });

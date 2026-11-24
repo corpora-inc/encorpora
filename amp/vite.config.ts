@@ -72,6 +72,45 @@ const devFixtures: Plugin = {
   },
 };
 
+/** The site's raster icons (`/favicon.ico`, the touch icon, the manifest's):
+ * the build generates them into `dist` from `public/favicon.svg`
+ * (scripts/build-site-icons.ts), and `index.html` names them on every page.
+ * The development server serves the same bytes from the same code, so a
+ * preview's pages don't ask for an icon that isn't there (a 404, and an
+ * error in every console a check or a recording reads). */
+const devSiteIcons: Plugin = {
+  name: "amp-dev-site-icons",
+  apply: "serve",
+  configureServer(server) {
+    let built: Promise<Map<string, Buffer>> | undefined;
+    server.middlewares.use((request, response, next) => {
+      const name = (request.url ?? "").split("?")[0]!.slice(1);
+      if (!/^(?:favicon\.ico|[a-z0-9-]*icon[a-z0-9-]*\.png)$/.test(name))
+        return next();
+      built ??= import("./scripts/site-icons.ts").then(
+        ({ siteIcons }) =>
+          new Map(
+            siteIcons(
+              readFileSync(
+                fileURLToPath(new URL("public/favicon.svg", import.meta.url)),
+                "utf8",
+              ),
+            ),
+          ),
+      );
+      built.then((icons) => {
+        const bytes = icons.get(name);
+        if (!bytes) return next();
+        response.setHeader(
+          "Content-Type",
+          name.endsWith(".ico") ? "image/x-icon" : "image/png",
+        );
+        response.end(bytes);
+      }, next);
+    });
+  },
+};
+
 /** The design preview's prices (scripts/preview-billing.mjs), only on a dev
  * server started with AMP_PREVIEW_PRICES=1. */
 const previewPrices: Plugin = {
@@ -210,6 +249,7 @@ export default defineConfig({
   plugins: [
     serverOnlyCrypto,
     devFixtures,
+    devSiteIcons,
     previewPrices,
     devNewUserPlugin,
     sceneArtFiles,

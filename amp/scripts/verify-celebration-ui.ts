@@ -221,12 +221,32 @@ async function run(look: "calm" | "bold") {
       }),
     });
   });
+  // Every answer is turned right for the page. The server graded it itself
+  // (most are wrong: every answer here is the same number), so its count of
+  // points falls behind the page's by the answers this run turned. Practice
+  // reads practice-state again with every new problem (look-feed.ts), and
+  // the server's count is told there as the run made it, like the skill's
+  // record below: the page's total never steps back under a sheet.
+  let turned = 0;
   await page.route("**/attempts", async (route) => {
+    const response = await route.fetch();
+    const body = await response.json();
+    if (!(body.correct && !body.assisted)) turned++;
+    await route.fulfill({
+      response,
+      json: { ...body, correct: true, assisted: false },
+    });
+  });
+  await page.route("**/practice-state", async (route) => {
+    if (route.request().method() !== "GET") return route.fallback();
     const response = await route.fetch();
     const body = await response.json();
     await route.fulfill({
       response,
-      json: { ...body, correct: true, assisted: false },
+      json:
+        typeof body.points === "number"
+          ? { ...body, points: body.points + turned }
+          : body,
     });
   });
   // The skill's record as the run would make it: Earned on the first answer,

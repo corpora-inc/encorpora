@@ -13,6 +13,7 @@ import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
 import type { SpaceDescriptor } from "../spaces/resolve";
+import { menuLearner } from "./menu-learner";
 import { useLocationMatch, useSpace } from "../spaces/useSpace";
 import { useSettingsHref } from "../spaces/settings-hub";
 import { childPath } from "../spaces/identity";
@@ -187,14 +188,9 @@ export default function DrawerContents({
   // A learner's settings, only where there is a learner whose they are.
   // This device's answer feedback is one quiet section at the foot, the
   // same switches for everyone (practice/FeedbackPreferences.tsx).
-  const learning = kind === "me" || kind === "student";
+  // The learner whose menu this is, when the space names one.
+  const { learning, learnerId: spaceLearner } = menuLearner(space);
   const family = kind === "family";
-  // The learner whose menu this is, when the space names one; the look
-  // setting falls back to the learner on screen.
-  const spaceLearner =
-    space?.space === "student" || space?.space === "me"
-      ? (space.learner?.id ?? null)
-      : null;
   return (
     <>
       {(view.error || view.identityError) && (

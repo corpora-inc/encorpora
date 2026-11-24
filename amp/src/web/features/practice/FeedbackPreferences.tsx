@@ -1,8 +1,6 @@
-import { useCurrentLearner } from "../../learner-store";
-import { useAddressedIdentity } from "../spaces/useAddressed";
-import { useSessionOrNull } from "../../lib/session";
 import { Switch } from "../../ui/Switch";
 import { LookSetting } from "./LookSetting";
+import { useMenuLook } from "./look-known";
 import {
   prepareFeedbackSound,
   useFeedbackPreferences,
@@ -11,20 +9,8 @@ import settings from "./DrawerSettings.module.css";
 
 /** The look for one learner, when the menu has one whose it is. */
 function LearnerLook({ named }: { named: string | null }) {
-  const session = useSessionOrNull();
-  const addressed = useAddressedIdentity();
-  const current = useCurrentLearner();
-  const learnerId = named ?? addressed?.id ?? current;
-  if (!session || !learnerId) return null;
-  return (
-    <LookSetting
-      scope={{
-        identity: session.accountId,
-        learnerId,
-        token: session.token,
-      }}
-    />
-  );
+  const scope = useMenuLook(true, named);
+  return scope ? <LookSetting scope={scope} /> : null;
 }
 
 /**

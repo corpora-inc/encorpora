@@ -13,8 +13,8 @@ import { applyStudentMessage, studentLiveOptions } from "./api";
  * it changes when a session starts or stops, or an adult answers a request. */
 const STUDENT_POLL_MS = 5_000;
 /** While a network holds the stream, the student's practice settings are
- * read again this often: as often as a stream's own lifetime brings a
- * snapshot (85 to 95 s). */
+ * also read again this often, for the screens that show them outside a
+ * problem; practice reads them with each new problem either way. */
 const SETTINGS_WHILE_POLLING_MS = 90_000;
 
 /**
@@ -27,14 +27,15 @@ const SETTINGS_WHILE_POLLING_MS = 90_000;
  * Only a school student's session (`st_…`) has one: a child practicing on a
  * parent's device has no student stream (v1), and this stays empty there.
  *
- * It is also how a class's settings reach a student who is already
- * practicing (the look their teacher chose and locked): each whole state
- * the stream sends (on connect, so at least every 95 s, and when a session
- * starts or stops or their own request changes) marks their practice
- * settings stale, and the screens that show them read them again. Nothing
- * is asked of the server per problem. The stream doesn't yet say when a
- * class's settings change, so the look arrives within a stream's lifetime,
- * not at once.
+ * It is also how a change of settings reaches a student who is already
+ * practicing ("Allow Colorful" turned off by a teacher, a school or a
+ * parent): the server sends the whole state again when their settings
+ * change (a `settings` row in the live outbox), as it does on connect and
+ * when a session starts or stops or their own request changes, and each
+ * whole state marks their practice settings stale, so the screens that show
+ * them read them again: about a second after the switch. Practice also
+ * reads them with each new problem, so a change is never later than that
+ * whatever the stream did (features/practice/look-feed.ts).
  */
 export function useStudentLive() {
   const signedIn = useSessionOrNull();
