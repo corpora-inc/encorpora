@@ -320,17 +320,19 @@
   font-variant-numeric: var(--numeric);
 }
 
-/* By grade (GradeIndex.tsx): a flat index. Each skill is one row of one
-   height, its name opening the skill and its standing in a column of one
-   width; under it, its problem types, quieter, in columns. Rows part by a
-   hairline. */
+/* By grade (GradeIndex.tsx): a flat index on one 44 px rhythm. Each skill
+   is one row, its name opening the skill and its standing in a column of
+   one width; under it, its problem types, quieter, across in columns, each
+   one a whole 44 px cell to tap (premium rule 4: no target under 44 px, at
+   any width). Skills part by a hairline with little air, so the rows, not
+   the gaps, carry the page. */
 .index {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .indexSkill {
-  padding: 0 0 var(--space-2);
+  padding: var(--space-1) 0;
   border-bottom: 1px solid var(--color-border);
 }
 .indexRow {
@@ -338,7 +340,7 @@
   grid-template-columns: minmax(0, 1fr) 9.5rem;
   align-items: center;
   gap: var(--space-4);
-  min-height: 48px;
+  min-height: 44px;
 }
 .indexName {
   display: flex;
@@ -367,10 +369,11 @@
   color: var(--color-muted-text);
   font-weight: 500;
 }
-/* Read across, then down: as many columns as fit. */
+/* Read across, then down: three across from 768 px (a long name takes a
+   second line in its cell), one column on a phone. */
 .types {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: var(--space-5);
   list-style: none;
   margin: 0;
@@ -379,7 +382,7 @@
 .type {
   display: flex;
   align-items: center;
-  min-height: 32px;
+  min-height: 44px;
   margin-inline: calc(-1 * var(--space-2));
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-small);

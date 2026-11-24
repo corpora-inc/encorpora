@@ -17,19 +17,24 @@
  * - a problem type opens its lesson; a skill opens its layer, and Practice
  *   there starts THAT child's practice held to the skill (the hand-over),
  *   with Back returning to the index;
- * - no sideways overflow, no cut word, 44 px targets, no console error.
+ * - at every width, every link and button of the index is a 44 px target
+ *   (each one measured, wherever it is on the page), and the shared probe
+ *   the app-shell check runs (scripts/app-shell-probe.ts) finds no small
+ *   target, no overlapping controls and no word broken across lines;
+ * - no sideways overflow, no cut word, no console error.
  *
  * By default it starts its own stack, as CI does (AMP_TEST_DATABASE_URL);
  * or point it at a running, seeded preview:
  *
  *   npx tsx scripts/verify-skill-index-ui.ts --origin http://127.0.0.1:4780
- *     [--widths 390,1280] [--out artifacts/skill-index] [--shots]
+ *     [--widths 390,768,1024,1280] [--out artifacts/skill-index] [--shots]
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { stubAnalytics } from "./analytics-stub";
+import { probe } from "./app-shell-probe";
 import { startPersonaStack } from "./persona-stack";
 import {
   PERSONA_PASSPHRASE,
@@ -62,7 +67,9 @@ const argument = (name: string) => {
   return at > 0 ? process.argv[at + 1] : undefined;
 };
 const OUT = argument("out") ?? "artifacts/skill-index";
-const WIDTHS = (argument("widths") ?? "390,1280").split(",").map(Number);
+const WIDTHS = (argument("widths") ?? "390,768,1024,1280")
+  .split(",")
+  .map(Number);
 const SHOTS = process.argv.includes("--shots");
 const CHILD = argument("child") ?? "Wren";
 await mkdir(OUT, { recursive: true });
@@ -170,6 +177,44 @@ try {
         0,
         at(`${what}: no sideways overflow`),
       );
+    /** Every link and button of the index, measured where it lies (the
+     * whole page, not only what is on view): none under 44 px either way.
+     * Then the shared probe on the screen as it stands. */
+    const targets = async (what: string) => {
+      assert.deepEqual(
+        await page
+          .locator(
+            "[data-grade-index] a, [data-grade-index] button, [role=radio]",
+          )
+          .evaluateAll((items) =>
+            items
+              .map((item) => ({
+                item,
+                box: item.getBoundingClientRect(),
+              }))
+              .filter(({ box }) => box.width > 0 && box.height > 0)
+              .filter(({ box }) => box.height < 43.5 || box.width < 43.5)
+              .map(
+                ({ item, box }) =>
+                  `"${(item.getAttribute("aria-label") ?? item.textContent ?? "").trim().slice(0, 40)}" ${Math.round(box.width)}×${Math.round(box.height)}`,
+              ),
+          ),
+        [],
+        at(`${what}: targets under 44 px`),
+      );
+      const found = await probe(page);
+      assert.deepEqual(
+        found.smallTargets,
+        [],
+        at(`${what}: targets under 44 px (the shared probe)`),
+      );
+      assert.deepEqual(found.overlaps, [], at(`${what}: overlapping controls`));
+      assert.deepEqual(
+        found.midWordWraps,
+        [],
+        at(`${what}: a word broken across lines`),
+      );
+    };
     const slice = (name: "By grade" | "By area") =>
       page.getByRole("radio", { name, exact: true });
     const rows = () =>
@@ -282,6 +327,7 @@ try {
           44,
         at("a problem type is a 44 px target"),
       );
+      await targets("an open fold");
       if (SHOTS)
         await page.screenshot({ path: `${OUT}/grade-${width}-open.png` });
       await fold.click();
@@ -309,19 +355,9 @@ try {
       [],
       at("no cut word"),
     );
-    assert.deepEqual(
-      await page
-        .locator(
-          "[data-grade-row] button, [role=radio], [data-grade-index] li[data-skill] > div a",
-        )
-        .evaluateAll((items) =>
-          items
-            .map((item) => item.getBoundingClientRect())
-            .filter((box) => box.height < 44 || box.width < 44)
-            .map((box) => `${box.width}x${box.height}`),
-        ),
-      [],
-      at("grades, the switch and skills are 44 px targets"),
+    await targets("the grade");
+    console.log(
+      `  page height (${width}): ${await page.evaluate(() => document.documentElement.scrollHeight)} px`,
     );
     // The chosen grade is on view in its row, however narrow the screen.
     assert.ok(
@@ -398,6 +434,7 @@ try {
       at("nothing above the index moved"),
     );
     await fits("another grade");
+    await targets("another grade");
     // A refresh keeps the grade.
     await page.reload();
     await showsGrade(other, "after a refresh");
