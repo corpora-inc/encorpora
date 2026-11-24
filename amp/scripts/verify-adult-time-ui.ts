@@ -10,6 +10,13 @@
  *    and on the family's dashboard.
  * 2. The parent taps Practice (the hand-over): the tab is the child's. The
  *    child opens a hint and answers, and the same figures change.
+ * 3. A child's practice opened by its address on the adult's sign-in (a
+ *    bookmark, a typed address, an older link) is handed over before the
+ *    first problem is asked for: the tab is the child's (its sign-in, the
+ *    bar's way home, the menu), every problem and answer goes on the
+ *    child's own sign-in, an answer and a hint are credited with their
+ *    time, a reload keeps it, and the way back gives the parent's tab
+ *    back. Back into the address hands over again.
  *
  *   AMP_SIM_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/<db> \
  *     npx tsx scripts/verify-adult-time-ui.ts --origin http://127.0.0.1:4810
@@ -29,7 +36,7 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
-import { practiceHere } from "./ui-controls";
+import { openMenu, practiceHere, returnToParent } from "./ui-controls";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
 
 const chromium = secureChromium(rawChromium);
@@ -251,21 +258,24 @@ try {
   sent.length = 0;
   screen = `${child.name}’s practice, handed over`;
   /** At the device without touching a control: a key every second. */
-  const attend = async (seconds: number) => {
+  const attend = async (on: Page, seconds: number) => {
     for (let second = 0; second < seconds; second++) {
-      await page.keyboard.press("Shift");
-      await page.waitForTimeout(1000);
+      await on.keyboard.press("Shift");
+      await on.waitForTimeout(1000);
     }
   };
+  /** An answer, then the next problem and its hint, as a child at it. */
+  const answerAndHint = async (on: Page) => {
+    await attend(on, 2);
+    await answerOne(on, true);
+    await on.locator(".next-action").click();
+    await on.locator(".next-action").waitFor({ state: "hidden" });
+    await on.locator(".problem-stage .question").waitFor();
+    await on.getByRole("button", { name: "Hint", exact: true }).click();
+    await attend(on, 4);
+  };
   await practiceHere(page, child.id);
-  await attend(2);
-  await answerOne(page, true);
-  // The next problem, and its hint.
-  await page.locator(".next-action").click();
-  await page.locator(".next-action").waitFor({ state: "hidden" });
-  await page.locator(".problem-stage .question").waitFor();
-  await page.getByRole("button", { name: "Hint", exact: true }).click();
-  await attend(4);
+  await answerAndHint(page);
   if (shots) await page.screenshot({ path: `${shots}/handed-hint.png` });
   // The tab going to the background sends what it counted.
   await page.goto("about:blank");
@@ -292,11 +302,100 @@ try {
     fail(`no help recorded for ${child.name} after opening a hint`);
   if (!(handed.helpOpened > after.helpOpened))
     fail(`the help rollup didn't move for ${child.name}`);
+
+  // ---- 3. the child's practice by its address, on the adult's sign-in -----
+  // A new tab: the adult's sign-in and nothing else (one tab is one person).
+  const tab = await context.newPage();
+  trackPracticeProblems(tab);
+  /** Whose sign-in each learning request of this tab went on. */
+  const asked: { what: string; student: boolean }[] = [];
+  tab.on("request", (request) => {
+    const url = new URL(request.url());
+    const what = /\/(batches|attempts|activity)$/.exec(url.pathname)?.[1];
+    if (request.method() !== "POST" || !what) return;
+    asked.push({
+      what,
+      student: (request.headers().authorization ?? "").startsWith("Bearer st_"),
+    });
+  });
+  const whose = (on: Page) =>
+    on.evaluate(() => ({
+      student: !!sessionStorage.getItem("amp.student"),
+      handed: sessionStorage.getItem("amp.student.handed") === "1",
+      home: sessionStorage.getItem("amp.student.return"),
+    }));
+  const childs = { student: true, handed: true, home: `/family/${family}` };
+  /** The tab is the child's: its sign-in, the bar's way home, the menu. */
+  async function isTheChilds(how: string) {
+    await tab.locator(".problem-stage .question").waitFor();
+    const now = await whose(tab);
+    if (JSON.stringify(now) !== JSON.stringify(childs))
+      fail(
+        `${how}: the tab is not ${child.name}'s: ${JSON.stringify(now)}, want ${JSON.stringify(childs)}`,
+      );
+    if (!(await tab.locator("[data-handed-home]").first().isVisible()))
+      fail(`${how}: the bar has no way home to the family`);
+    const drawer = await openMenu(tab);
+    if (
+      !(await drawer
+        .getByRole("button", { name: "Back to family", exact: true })
+        .isVisible())
+    )
+      fail(`${how}: the menu has no "Back to family"`);
+    await tab.keyboard.press("Escape");
+    await drawer.waitFor({ state: "detached" });
+    console.log(
+      `  ${how}: ${new URL(tab.url()).pathname} is ${child.name}'s tab`,
+    );
+  }
+  const address = `/practice/${child.id}`;
+  await tab.goto(`${origin}${address}`, { waitUntil: "domcontentloaded" });
+  await isTheChilds("opened by its address");
+  if (shots) await tab.screenshot({ path: `${shots}/address-practice.png` });
+  await answerAndHint(tab);
+  await tab.reload({ waitUntil: "domcontentloaded" });
+  await isTheChilds("after a reload");
+  // The way back: the parent's tab again, on the family's Today.
+  await returnToParent(tab);
+  await tab.waitForTimeout(2500);
+  const back = await whose(tab);
+  if (back.student || back.handed)
+    fail(`back to family left the child's sign-in: ${JSON.stringify(back)}`);
+  if (new URL(tab.url()).pathname !== `/family/${family}`)
+    fail(`back to family opened ${new URL(tab.url()).pathname}`);
+  const addressed = await recordOf(child);
+  console.log(
+    `${child.name}, after practice opened by its address: ${JSON.stringify(addressed)}`,
+  );
+  const onAdult = asked.filter((request) => !request.student);
+  if (onAdult.length)
+    fail(
+      `opened by its address, ${onAdult.length} request(s) went on the adult's sign-in: ${[...new Set(onAdult.map((request) => request.what))].join(", ")}`,
+    );
+  for (const what of ["batches", "attempts", "activity"])
+    if (!asked.some((request) => request.what === what && request.student))
+      fail(`opened by its address: no ${what} request on the child's sign-in`);
+  if (!(addressed.activeMs > handed.activeMs))
+    fail(`no active time for ${child.name} after practice by its address`);
+  if (addressed.problems !== handed.problems + 1)
+    fail(
+      `${child.name}'s problems by address: ${handed.problems} → ${addressed.problems}`,
+    );
+  if (!(addressed.helpEvents > handed.helpEvents))
+    fail(`no help recorded for ${child.name} after a hint by its address`);
+  // Back into the address: handed over again, and a reload keeps it.
+  await tab.goBack({ waitUntil: "domcontentloaded" });
+  await isTheChilds("Back into the address");
+  await tab.reload({ waitUntil: "domcontentloaded" });
+  await isTheChilds("reloaded again");
+  await returnToParent(tab);
+  if ((await whose(tab)).student)
+    fail("the second return left the child's sign-in in the tab");
 } finally {
   await browser.close();
   await pool.end();
 }
 assert.deepEqual(failures, [], failures.join("\n"));
 console.log(
-  "An adult's sign-in adds nothing to a child's record; a handed device does.",
+  "An adult's sign-in adds nothing to a child's record; a handed device does, and a child's practice by its address is the child's.",
 );

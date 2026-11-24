@@ -2,6 +2,11 @@ import { z } from "zod";
 import { studentGrantResource } from "../../schools/contracts";
 import { accessSession, notifyDeviceSessionChanged } from "../auth";
 import { isLearningPath } from "../features/profiles/practice-mode";
+import {
+  addressedIdentity,
+  namesLearnerByPath,
+} from "../features/spaces/identity";
+import { childFamily } from "../features/spaces/learner-urls";
 import { request } from "./api";
 import { AppError } from "./AppError";
 import { meOptions, queryClient, sessionOptions } from "./query";
@@ -81,15 +86,62 @@ export function restoreFamilyPractice(location: {
   transition = { key, controller, promise };
   return promise;
 }
+/** What the server says when this adult may not hand the device to this
+ * child now (no access yet, or not a child of a family of theirs). */
+const REFUSED = new Set(["learner_cannot_practice", "learner_not_found"]);
+
+/**
+ * A child's practice named by its address alone, in a tab that is an
+ * adult's: `/practice/<child>` typed, bookmarked, on a home screen, in an
+ * older link, a plain link in the app, or a first run's last step. A
+ * child's practice is always the child's own sign-in, so the address is
+ * enough to hand the device over, as "Practice" does; the way back is the
+ * child's family. Null for anyone else's practice (the adult's own, a
+ * practice profile, a learner this account doesn't read: their screens are
+ * unchanged).
+ */
+async function addressedChild(
+  pathname: string,
+): Promise<FamilyPracticeEntry | null> {
+  if (!namesLearnerByPath(pathname) || !pathname.startsWith("/practice/"))
+    return null;
+  const learnerId = addressedIdentity(pathname)?.id;
+  if (!learnerId) return null;
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session || session.accountId.startsWith("school:")) return null;
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch((error: unknown) => {
+      console.warn(
+        "AMP couldn’t read the account for a child’s practice",
+        error,
+      );
+      return null;
+    });
+  if (!me?.signedIn) return null;
+  const family = childFamily(me, learnerId);
+  const entry = marker.safeParse({
+    learnerId,
+    returnTo: `/family/${family}`,
+  });
+  return family && entry.success ? entry.data : null;
+}
+
 async function reconcile(
   location: { pathname: string; state: unknown },
   signal: AbortSignal,
 ) {
-  const wanted = isLearningPath(location.pathname)
+  const marked = isLearningPath(location.pathname)
     ? familyPracticeEntry(location.state)
     : null;
   const student = studentSession();
   const handed = handedStudentDevice();
+  // No hand-over recorded and nobody's sign-in in this tab but the adult's:
+  // the address may still name a child of theirs.
+  const named =
+    !marked && !student ? await addressedChild(location.pathname) : null;
+  signal.throwIfAborted();
+  const wanted = marked ?? named;
   if (wanted && student) {
     const me = await queryClient.ensureQueryData(meOptions(student));
     signal.throwIfAborted();
@@ -116,8 +168,10 @@ async function reconcile(
   const parent = await accessSession();
   signal.throwIfAborted();
   // The parent takes back the device they handed over (or a return that was
-  // interrupted finishes): a family handoff.
-  notifyDeviceSessionChanged(parent, { handoff: true });
+  // interrupted finishes): a family handoff. A tab that was the adult's all
+  // along (an address alone) has nothing to take back.
+  if (marked || leaving || interruptedReturn)
+    notifyDeviceSessionChanged(parent, { handoff: true });
   if (!wanted) return;
   if (!parent || parent.accountId.startsWith("school:"))
     throw new AppError(
@@ -129,7 +183,22 @@ async function reconcile(
     `/family/learners/${wanted.learnerId}/practice-here`,
     studentGrantResource,
     { token: parent.token, body: {}, signal },
-  );
+  ).catch((failure: unknown) => {
+    // An address this adult may not hand over (the child has no access
+    // yet): the screen opens on the adult's sign-in and says so, as it
+    // always did. Never a dead end.
+    if (
+      named &&
+      failure instanceof AppError &&
+      failure.code &&
+      REFUSED.has(failure.code)
+    ) {
+      console.warn("This child’s practice wasn’t handed over", failure.code);
+      return null;
+    }
+    throw failure;
+  });
+  if (!grant) return;
   signal.throwIfAborted();
   const session = { accountId: grant.accountId, token: grant.token };
   rememberStudentSession(session, grant.mode, true, wanted.returnTo);
