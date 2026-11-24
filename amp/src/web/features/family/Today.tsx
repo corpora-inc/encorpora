@@ -36,6 +36,7 @@ import {
   FamilyHero,
   FamilyWeekSummary,
   GetIn,
+  FocusSheet,
   NotAskedSheet,
 } from "./Dashboard";
 import dash from "./Dashboard.module.css";
@@ -617,6 +618,7 @@ export function FamilyTodayScreen() {
         starting={starting}
         onPractice={(learner, filter) => void handOver(learner, filter)}
       />
+      <FocusSheet dashboard={board} children={children} />
     </>
   );
   return (
