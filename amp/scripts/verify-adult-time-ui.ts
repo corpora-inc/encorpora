@@ -1,6 +1,6 @@
 /**
  * An adult's own sign-in never adds time or help to a child's record
- * (round 2026-11-20), against a running, seeded preview:
+ * (round 2026-11-20):
  *
  * 1. The family persona, with a child chosen, opens what a parent opens: the
  *    app's own address (`/`), the child's page, the child's Pathways, a
@@ -12,17 +12,26 @@
  *    child opens a hint and answers, and the same figures change.
  * 3. A child's practice opened by its address on the adult's sign-in (a
  *    bookmark, a typed address, an older link) is handed over before the
- *    first problem is asked for: the tab is the child's (its sign-in, the
- *    bar's way home, the menu), every problem and answer goes on the
- *    child's own sign-in, an answer and a hint are credited with their
- *    time, a reload keeps it, and the way back gives the parent's tab
- *    back. Back into the address hands over again.
+ *    first problem is asked for: the tab is the child's (its sign-in, and
+ *    the way home in the menu, once: a problem's bar holds only the
+ *    problem's tools), every problem and answer goes on the child's own
+ *    sign-in, an answer and a hint are credited with their time, a reload
+ *    keeps it, and the way back gives the parent's tab back. Back into
+ *    the address hands over again.
+ *
+ * By itself (as CI runs it, `npm run test:adult-time-ui`) it starts its own
+ * stack on a fresh schema of AMP_TEST_DATABASE_URL (scripts/persona-stack.ts):
+ *
+ *   AMP_TEST_DATABASE_URL=postgres://…/amp_test \
+ *     npx tsx scripts/verify-adult-time-ui.ts [--port 4894] [--out <dir>]
+ *
+ * Or against a running, seeded preview and its database:
  *
  *   AMP_SIM_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/<db> \
  *     npx tsx scripts/verify-adult-time-ui.ts --origin http://127.0.0.1:4810
- *       [--persona family] [--shots <dir>]
  *
- * Loopback-only; never the shared /amp database.
+ * Either way: [--persona family] [--shots <dir>]. Loopback-only; never the
+ * shared /amp database.
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -36,6 +45,7 @@ import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
+import { startPersonaStack } from "./persona-stack";
 import { openMenu, practiceHere, returnToParent } from "./ui-controls";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
 
@@ -44,13 +54,24 @@ const arg = (name: string) => {
   const at = process.argv.indexOf(`--${name}`);
   return at >= 0 ? process.argv[at + 1] : undefined;
 };
-const origin = arg("origin");
-const database = process.env.AMP_SIM_DATABASE_URL;
-if (!origin || !database)
-  throw new Error("--origin and AMP_SIM_DATABASE_URL are required");
-if (!/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(origin))
-  throw new Error("Loopback only");
 const slug = arg("persona") ?? "family";
+if (arg("origin") && !process.env.AMP_SIM_DATABASE_URL)
+  throw new Error("With --origin, AMP_SIM_DATABASE_URL is required");
+if (
+  arg("origin") &&
+  !/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(arg("origin")!)
+)
+  throw new Error("Loopback only");
+const stack = arg("origin")
+  ? null
+  : await startPersonaStack({
+      webPort: Number(arg("port") ?? 4894),
+      personas: [slug],
+      name: "adult_time",
+      out: arg("out") ?? "artifacts/adult-time",
+    });
+const origin = arg("origin") ?? stack!.origin;
+const database = stack?.database ?? process.env.AMP_SIM_DATABASE_URL!;
 const shots = arg("shots");
 const failures: string[] = [];
 const fail = (message: string) => {
@@ -79,7 +100,7 @@ const token = (
 ).session.token;
 async function call(path: string) {
   const response = await fetch(`${origin}/api/v1${path}`, {
-    headers: { Authorization: `Bearer ${token}`, Origin: origin! },
+    headers: { Authorization: `Bearer ${token}`, Origin: origin },
   });
   assert.ok(response.ok, `GET ${path}: ${response.status}`);
   return response.json() as Promise<Record<string, any>>;
@@ -135,6 +156,7 @@ const skill = templates.find((type) =>
 
 if (shots) await mkdir(shots, { recursive: true });
 const browser = await chromium.launch();
+let failed = false;
 try {
   const context = await browser.newContext({
     viewport: { width: 1280, height: 800 },
@@ -325,7 +347,7 @@ try {
       home: sessionStorage.getItem("amp.student.return"),
     }));
   const childs = { student: true, handed: true, home: `/family/${family}` };
-  /** The tab is the child's: its sign-in, the bar's way home, the menu. */
+  /** The tab is the child's: its sign-in, and the menu's way home. */
   async function isTheChilds(how: string) {
     const failed = failures.length;
     await tab.locator(".problem-stage .question").waitFor();
@@ -334,15 +356,27 @@ try {
       fail(
         `${how}: the tab is not ${child.name}'s: ${JSON.stringify(now)}, want ${JSON.stringify(childs)}`,
       );
-    if (!(await tab.locator("[data-handed-home]").first().isVisible()))
-      fail(`${how}: the bar has no way home to the family`);
+    // A problem's bar holds only the problem's tools: the way home is the
+    // menu's, once (app/__tests__/practice-bar.test.tsx).
+    const inBar = await tab
+      .locator("header[data-app-bar] [data-handed-home]")
+      .count();
+    if (inBar)
+      fail(`${how}: the problem's bar holds a way home; it is the menu's`);
     const drawer = await openMenu(tab);
-    if (
-      !(await drawer
-        .getByRole("button", { name: "Back to family", exact: true })
-        .isVisible())
-    )
-      fail(`${how}: the menu has no "Back to family"`);
+    const home = drawer.getByRole("button", {
+      name: "Back to family",
+      exact: true,
+    });
+    if ((await home.count()) !== 1 || !(await home.isVisible()))
+      fail(
+        `${how}: the menu has ${await home.count()} "Back to family", not one in view`,
+      );
+    if (shots && how === "opened by its address")
+      await tab.screenshot({
+        path: `${shots}/address-menu.png`,
+        animations: "disabled",
+      });
     await tab.keyboard.press("Escape");
     await drawer.waitFor({ state: "detached" });
     if (failures.length === failed)
@@ -393,11 +427,17 @@ try {
   await returnToParent(tab);
   if ((await whose(tab)).student)
     fail("the second return left the child's sign-in in the tab");
+  assert.deepEqual(failures, [], failures.join("\n"));
+  console.log(
+    "An adult's sign-in adds nothing to a child's record; a handed device does, and a child's practice by its address is the child's.",
+  );
+} catch (error) {
+  failed = true;
+  console.error(error);
 } finally {
   await browser.close();
   await pool.end();
+  // The check's own stack: its servers stop and its schema goes.
+  await stack?.stop();
 }
-assert.deepEqual(failures, [], failures.join("\n"));
-console.log(
-  "An adult's sign-in adds nothing to a child's record; a handed device does, and a child's practice by its address is the child's.",
-);
+process.exit(failed ? 1 : 0);
