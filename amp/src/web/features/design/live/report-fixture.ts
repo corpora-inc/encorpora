@@ -95,7 +95,16 @@ function reportRows(count: number): ReportRow[] {
         videos: index === 2 ? 1 : 0,
         skills,
         skill: skills.at(-1) ?? null,
-        level: status === "not_signed_in" ? null : student.level,
+        // Two levels whose words are the widest: "Precalc", and "Alg 1",
+        // which must not break at its space.
+        level:
+          status === "not_signed_in"
+            ? null
+            : index === 0
+              ? 12.2
+              : index === 10
+                ? 9.1
+                : student.level,
         firstSeenAt:
           status === "not_signed_in" ? null : at(20_000 + index * 4_000),
         firstAnswerAt: answered ? at(60_000 + index * 5_000) : null,

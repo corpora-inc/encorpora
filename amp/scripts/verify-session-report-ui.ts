@@ -142,6 +142,22 @@ const read = (page: Page) =>
             (list ?? cell).scrollWidth > (list ?? cell).clientWidth + 1,
         };
       });
+    // A figure is one line: a level of two words ("Alg 1") or a time
+    // range never breaks in two inside its cell.
+    const broken = [
+      ...every.querySelectorAll<HTMLElement>(
+        'td[data-column="level"], td[data-column="answered"], td[data-column="status"]',
+      ),
+    ]
+      .filter((cell) => {
+        const range = document.createRange();
+        range.selectNodeContents(cell);
+        const tops = new Set(
+          [...range.getClientRects()].map((rect) => Math.round(rect.top)),
+        );
+        return tops.size > 1;
+      })
+      .map((cell) => cell.textContent ?? "");
     const key = report.querySelector<HTMLElement>("[data-help-key]");
     return {
       rows: rows.map(box),
@@ -156,6 +172,15 @@ const read = (page: Page) =>
         );
       }),
       skills,
+      broken,
+      levels: [
+        ...new Set(
+          [...report.querySelectorAll("*")]
+            .filter((node) => node.children.length === 0)
+            .map((node) => node.textContent ?? "")
+            .filter((text) => /Alg 1|Precalc/.test(text)),
+        ),
+      ].length,
       icons: every.querySelectorAll('[role="img"][aria-label^="Help"]').length,
       unnamedIcons: [
         ...every.querySelectorAll("svg:not([aria-hidden]):not([aria-label])"),
@@ -273,6 +298,12 @@ try {
           fail(`${where}: a skill's name is cut: ${cell.shown.join(" | ")}`);
       }
       if (seen.hover) fail(`${where}: ${seen.hover} hover title(s) on skills`);
+      if (seen.broken.length)
+        fail(`${where}: a figure breaks in two: ${seen.broken.join(" | ")}`);
+      if (specimen.id === "report-class" && seen.levels < 2)
+        fail(
+          `${where}: the fixture's widest levels ("Alg 1", "Precalc") don't show`,
+        );
 
       // ---- the key -----------------------------------------------------
       if (!seen.key || !seen.key.visible)
