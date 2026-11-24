@@ -14,6 +14,7 @@ import {
   createRouter,
   RouterProvider,
 } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type {
   LiveRow,
@@ -33,6 +34,18 @@ import { familyCockpit, loadFamilyCockpit } from "../cockpit-chunk";
  * shift, one frame on a cold load) are measured in a real browser by
  * scripts/verify-family-live-ui.ts. */
 
+// The first test holds the cockpit's code back until it has looked.
+const chunk = vi.hoisted(() => {
+  let open = () => {};
+  const gate = new Promise<void>((resolve) => {
+    open = resolve;
+  });
+  return { held: false, gate, open };
+});
+vi.mock("../FamilyCockpit", async (original) => {
+  if (chunk.held) await chunk.gate;
+  return original<typeof import("../FamilyCockpit")>();
+});
 vi.mock("../../live/useLiveClass", async () => {
   const { useQuery } = await import("@tanstack/react-query");
   return {
@@ -191,6 +204,16 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
+/** Something else on the page, with a redraw of its own. */
+let redraw = () => {};
+function Beside() {
+  const [, setCount] = useState(0);
+  useEffect(() => {
+    redraw = () => setCount((count) => count + 1);
+  }, []);
+  return <p>Beside</p>;
+}
+
 async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
   // The route's loader brings the cockpit's chunk with a running session.
   if (data.session || data.signals.length > 0) await loadFamilyCockpit();
@@ -204,7 +227,7 @@ async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
     component: () => (
       <main>
         <FamilyLive {...given} />
-        <p>Beside</p>
+        <Beside />
       </main>
     ),
   });
@@ -226,10 +249,49 @@ async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
 /** The words a family never reads on its own screens. */
 const FOREIGN = /\bstudents?\b|\bclass(?:es|room)?\b|\bteachers?\b/i;
 
+// First in the file: the cockpit's code is not in yet.
+test("a session started elsewhere while Today is open: the cockpit's code arrives late, and React has nothing to say", async () => {
+  const said = vi.spyOn(console, "error");
+  chunk.held = true;
+  try {
+    await mount(snapshot({ session: null, rows: [] }));
+    expect(document.querySelector('[data-family-live="rest"]')).toBeTruthy();
+    // At rest, none of the roster's code.
+    expect(familyCockpit()).toBeNull();
+    // The other parent starts it: the stream brings the session here, and
+    // the cockpit's place is held while its code is on the way.
+    await act(async () => {
+      queryClient.setQueryData(liveKey(auth, place), snapshot());
+    });
+    await waitFor(() =>
+      expect(
+        document.querySelector('[data-family-live="cockpit"]'),
+      ).toBeTruthy(),
+    );
+    expect(familyCockpit()).toBeNull();
+    expect(document.querySelector("[data-cockpit]")).toBeNull();
+    // Meanwhile something else on the page redraws (a clock, a menu).
+    await act(async () => {
+      redraw();
+    });
+  } finally {
+    await act(async () => {
+      chunk.open();
+    });
+  }
+  await waitFor(() =>
+    expect(document.querySelector('[data-cockpit="live"]')).toBeTruthy(),
+  );
+  expect(familyCockpit()).not.toBeNull();
+  expect(document.querySelectorAll("[data-live-row]").length).toBe(3);
+  // "This library called use() to suspend in a previous render but did not
+  // call use() when it finished": the hook is asked on every render.
+  expect(said.mock.calls.map((call) => String(call[0]))).toEqual([]);
+});
+
 test("at rest: one quiet Start practice, and none of the roster's code", async () => {
   await mount(snapshot({ session: null, rows: [] }));
   expect(document.querySelector('[data-family-live="rest"]')).toBeTruthy();
-  expect(familyCockpit()).toBeNull();
   expect(document.querySelector("[data-live-roster]")).toBeNull();
   expect(document.querySelector("[data-live-totals]")).toBeNull();
   fireEvent.click(screen.getByRole("button", { name: "Start practice" }));
