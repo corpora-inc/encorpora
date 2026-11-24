@@ -24,6 +24,8 @@
  *   other way, the rows are there from the first frame.
  * - The switch flipped while an answer's feedback is being read: the sheet
  *   keeps its shape, and the next problem arrives in the new look.
+ * - A real right answer on the student's practice: no request comes back
+ *   404 and nothing fails to load, and every icon the page names is served.
  *
  * Screenshots go to `--out` (default artifacts/allow-colorful).
  *
@@ -43,6 +45,7 @@ import {
   personaEmail,
 } from "../src/web/features/dev/persona-list";
 import { startPersonaStack } from "./persona-stack";
+import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
 import { practicePath } from "../src/web/features/spaces/identity";
 
 const chromium = secureChromium(rawChromium);
@@ -744,6 +747,61 @@ try {
     await page.locator(".problem-stage .question").waitFor();
     return { context, page };
   };
+
+  // A right answer on a student's practice asks for nothing that isn't
+  // there: a 404 is a route that is missing or misnamed, or a question the
+  // page should not ask, and an error in every console a check reads.
+  {
+    await write(orgPath, true);
+    await write(classPath, true);
+    assert.equal((await choose("bold")).status(), 200);
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    await context.addInitScript(OBSERVER);
+    await context.addInitScript(
+      `if (!sessionStorage.getItem("amp.student")) sessionStorage.setItem("amp.student", ${JSON.stringify(JSON.stringify(grant))});`,
+    );
+    const page = await context.newPage();
+    const notFound: string[] = [];
+    page.on("response", (response) => {
+      if (response.status() === 404)
+        notFound.push(
+          `${response.request().method()} ${new URL(response.url()).pathname}`,
+        );
+    });
+    page.on("console", (message) => {
+      if (
+        message.type() === "error" &&
+        /Failed to load resource/.test(message.text())
+      )
+        notFound.push(`${message.text()} (${message.location().url})`);
+    });
+    trackPracticeProblems(page);
+    await page.goto(`${origin}/practice`);
+    await page.locator(".problem-stage .question").waitFor();
+    await answerOne(page, true);
+    // The moment, the skill's record and what the sheet links to.
+    await settle(page, 3_000);
+    // The icons every page names: the browser asks for the favicon by
+    // itself and late, so each is asked for here too.
+    for (const href of await page
+      .locator('link[rel~="icon"], link[rel="apple-touch-icon"]')
+      .evaluateAll((links) =>
+        links.map((link) => (link as HTMLLinkElement).href),
+      )) {
+      const got = await page.request.get(href);
+      check(got.status() === 200, `a page's icon is there: ${href}`, {
+        status: got.status(),
+      });
+    }
+    check(
+      notFound.length === 0,
+      "a right answer on a student's practice: no request comes back not found",
+      notFound,
+    );
+    await context.close();
+  }
 
   // A class's student, their teacher's and their school's switch.
   for (const width of [390, 1280]) {
