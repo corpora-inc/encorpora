@@ -570,16 +570,16 @@ try {
     // (The layer has slid in.)
     await page.waitForTimeout(700);
     {
-      const [made, started] = [
+      const [beside, started] = [
         (await workbook.boundingBox())!,
         (await practice.boundingBox())!,
       ];
       assert.ok(
-        made.height >= 43.5 && made.width >= 43.5,
-        at(`Workbook is a 44 px target: ${made.width}×${made.height}`),
+        beside.height >= 43.5 && beside.width >= 43.5,
+        at(`Workbook is a 44 px target: ${beside.width}×${beside.height}`),
       );
       assert.ok(
-        Math.abs(made.y - started.y) < 2 && made.x > started.x,
+        Math.abs(beside.y - started.y) < 2 && beside.x > started.x,
         at("Workbook sits beside Practice"),
       );
       assert.deepEqual(
@@ -647,17 +647,21 @@ try {
     if (SHOTS)
       await page.screenshot({ path: `${OUT}/maker-${width}-light.png` });
     // Download saves it, as any workbook.
-    const before = await heldToday(pick.skill.id);
+    const heldBefore = await heldToday(pick.skill.id);
     const downloading = page.waitForEvent("download", { timeout: 60_000 });
     await page.getByRole("button", { name: "Download workbook" }).click();
     const file = await downloading;
     const kind = file.suggestedFilename().endsWith(".pdf") ? "pdf" : "html";
     const saved = `${OUT}/skill-workbook-${width}.${kind}`;
     await file.saveAs(saved);
-    const after = await heldToday(pick.skill.id);
-    assert.equal(after.length, before.length + 1, at("one workbook was made"));
-    const made = after.find(
-      (entry) => !before.some((old) => old.id === entry.id),
+    const heldAfter = await heldToday(pick.skill.id);
+    assert.equal(
+      heldAfter.length,
+      heldBefore.length + 1,
+      at("one workbook was made"),
+    );
+    const made = heldAfter.find(
+      (entry) => !heldBefore.some((old) => old.id === entry.id),
     )!;
     assert.deepEqual(
       made.skills,
@@ -718,12 +722,12 @@ try {
     assert.deepEqual(await place(), left, at("the list is where it was"));
     // It is listed with the child's workbooks.
     await page.goto(`${origin}/family/${family}/kids/${child.id}`);
-    const listed = page
+    const inList = page
       .locator("[data-child-workbooks] li")
       .filter({ hasText: made.code });
-    await listed.waitFor({ timeout: 30_000 });
+    await inList.waitFor({ timeout: 30_000 });
     assert.ok(
-      (await listed.innerText()).includes(pick.skill.title),
+      (await inList.innerText()).includes(pick.skill.title),
       at("the list names the skill"),
     );
     await fits("the child's workbooks");
