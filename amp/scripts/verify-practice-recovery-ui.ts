@@ -17,11 +17,12 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
  * A child's practice opened on the parent's sign-in is handed to the child
  * (a child's practice is always the child's own sign-in): its menu has
  * Working together, which saves on the child's record, and no Reset
- * practice level (the parent resets it in the child's settings:
- * verify-parent-level-reset-ui.ts); Try easier follows a skip.
+ * practice level; Try easier follows a skip.
  *
- * An adult's own practice keeps Reset practice level in its menu: its
- * confirmation, and a failed reset that retries in place.
+ * The level is reset by the parent in the child's settings
+ * (verify-parent-level-reset-ui.ts, with the failed save that retries in
+ * place) and by an adult in their own practice's menu
+ * (verify-adult-practice-ui.ts).
  *
  * Optional `--port` (the API takes the next port). */
 const argument = (name: string) => {
@@ -74,18 +75,6 @@ async function geometry(page: Page) {
     "no horizontal overflow",
   );
 }
-// The account's own practice: one learner, reset once in every case.
-const started = await app.inject({
-  method: "POST",
-  url: "/api/v1/me/practice",
-  headers: { authorization: "Bearer amp-local-development" },
-  payload: { start: "algebra-1", timezone: "America/Chicago" },
-});
-assert.ok(
-  started.statusCode === 201 || started.statusCode === 200,
-  `own practice starts: ${started.statusCode} ${started.body}`,
-);
-const own = started.json().learnerId as string;
 const stateOf = async (learnerId: string) =>
   (
     await app.inject({
@@ -192,74 +181,6 @@ try {
           assert.equal(childState.epoch, 0, "nothing reset the child's level");
           await context.close();
 
-          // The adult's own practice: the menu resets the level.
-          const adult = await browser.newContext({
-            viewport: { width, height: width === 320 ? 568 : 844 },
-            colorScheme,
-          });
-          await seedLearner(adult, "development-household", own);
-          const mine = await adult.newPage();
-          mine.on("pageerror", (e) => errors.push(`${label}: ${e.message}`));
-          let failSave = false;
-          await mine.route("**/practice-state", async (route) => {
-            if (failSave && route.request().method() === "POST") {
-              failSave = false;
-              await route.fulfill({
-                status: 503,
-                json: { message: "Practice could not be saved. Try again." },
-              });
-            } else await route.continue();
-          });
-          const before = (await stateOf(own)).epoch as number;
-          await mine.goto(`${origin}/practice/${own}`);
-          await mine.locator(".question").waitFor();
-          assert.equal(
-            await mine.evaluate(() => sessionStorage.getItem("amp.student")),
-            null,
-            "an adult's own practice stays on their own sign-in",
-          );
-          await mine.getByRole("button", { name: "Open AMP menu" }).click();
-          const reset = mine.getByRole("button", {
-            name: "Reset practice level",
-            exact: true,
-          });
-          await reset.click();
-          const dialog = mine.getByRole("dialog", {
-            name: "Reset practice level?",
-          });
-          await dialog.waitFor();
-          await geometry(mine);
-          await mine.screenshot({
-            path: `${shots}/${label}-reset.png`,
-            fullPage: true,
-          });
-          await dialog
-            .getByRole("button", { name: "Cancel", exact: true })
-            .click();
-          await dialog.waitFor({ state: "hidden" });
-          assert.equal(
-            (await stateOf(own)).epoch,
-            before,
-            "Cancel resets nothing",
-          );
-          await reset.click();
-          failSave = true;
-          await mine
-            .getByRole("button", { name: "Reset level", exact: true })
-            .click();
-          await dialog.getByRole("alert").waitFor();
-          await geometry(mine);
-          await dialog
-            .getByRole("button", { name: "Reset level", exact: true })
-            .click();
-          await dialog.waitFor({ state: "hidden" });
-          assert.equal(await mine.getByRole("dialog").count(), 0);
-          await mine.reload();
-          await mine.locator(".question").waitFor();
-          const state = await stateOf(own);
-          assert.equal(state.epoch, before + 1, "retry reset once");
-          assert.deepEqual(state.strandStarts, {});
-          await adult.close();
           console.log(label + " passed");
         }
     } finally {
