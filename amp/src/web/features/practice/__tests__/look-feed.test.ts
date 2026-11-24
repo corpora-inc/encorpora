@@ -5,9 +5,11 @@ import {
   holdLook,
   lookAgain,
   lookReleases,
+  lookIsFed,
   lookWaits,
   onLookRelease,
   problemTurned,
+  setLookFed,
 } from "../look-feed";
 
 const scope = (learnerId: string) => ({ identity: "account-1", learnerId });
@@ -23,29 +25,40 @@ beforeEach(() => {
   );
 });
 afterEach(() => {
+  setLookFed(false);
   vi.restoreAllMocks();
   document.body.replaceChildren();
 });
 
-test("practice reads the look again with each new problem, never with the first or the same one", () => {
-  lookAgain(scope("pip"), "p1");
-  // The first problem: the screen has just read its settings.
-  expect(invalidated).toEqual([]);
-  // The same problem again (its workspace mounted anew): nothing.
-  lookAgain(scope("pip"), "p1");
-  expect(invalidated).toEqual([]);
-  lookAgain(scope("pip"), "p2");
+test("a tab nothing feeds reads the look again with each answer, once", () => {
+  lookAgain(scope("pip"), "answer-1");
   expect(invalidated).toEqual([key("pip")]);
-  lookAgain(scope("pip"), "p3");
+  // The same answer again (its workspace mounted anew, a return from a
+  // book): nothing.
+  lookAgain(scope("pip"), "answer-1");
+  expect(invalidated).toEqual([key("pip")]);
+  lookAgain(scope("pip"), "answer-2");
   expect(invalidated).toEqual([key("pip"), key("pip")]);
-  // Another learner in the same tab has their own first problem.
-  lookAgain(scope("wren"), "w1");
-  expect(invalidated).toHaveLength(2);
+  // Another learner in the same tab has their own answers.
+  lookAgain(scope("wren"), "answer-2");
+  expect(invalidated).toEqual([key("pip"), key("pip"), key("wren")]);
+});
+
+test("a tab the student stream feeds asks nothing per answer, and asks again once the stream stops streaming", () => {
+  setLookFed(true);
+  expect(lookIsFed()).toBe(true);
+  lookAgain(scope("theo"), "answer-1");
+  lookAgain(scope("theo"), "answer-2");
+  expect(invalidated).toEqual([]);
+  // The network holds the stream now (it polls): practice carries it.
+  setLookFed(false);
+  lookAgain(scope("theo"), "answer-3");
+  expect(invalidated).toEqual([key("theo")]);
 });
 
 test("no learner, nothing to read", () => {
-  lookAgain(scope(""), "p1");
-  lookAgain(scope(""), "p2");
+  lookAgain(scope(""), "answer-1");
+  lookAgain(scope(""), "answer-2");
   expect(invalidated).toEqual([]);
 });
 

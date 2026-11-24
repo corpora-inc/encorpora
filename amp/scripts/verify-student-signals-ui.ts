@@ -57,7 +57,9 @@ const stack = process.env.VERIFY_DATABASE_URL
   ? null
   : await startPersonaStack({
       webPort: port > 0 ? Number(process.argv[port + 1]) : 4890,
-      personas: ["teacher-class"],
+      // The class's teacher, and the family whose child raises a hand in a
+      // family session.
+      personas: ["teacher-class", "family"],
       name: "student_signals",
       out: shots,
     });

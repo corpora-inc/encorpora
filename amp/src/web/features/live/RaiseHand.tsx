@@ -41,9 +41,13 @@ const icon = (
  * adult answering clears it by itself and a note appears for a few
  * seconds ("Your teacher saw it."; in a family, "Your parent saw it."), in
  * a fixed place that takes no room and no focus. State is the
- * student stream's (`useStudentLive`), so a refresh or a second device shows
- * the same hand. Nothing here counts or judges how often a child asks. Not a
- * school student (a parent's device): no button.
+ * student stream's (`useStudentLive` reads it; practice holds the stream
+ * above its problems), so a refresh or a second device shows the same hand,
+ * and a new problem's hand asks the server nothing. Nothing here counts or
+ * judges how often a child asks. Every student sign-in has it: a class's
+ * student, a family's child on their own device, and a child on a device
+ * their parent handed them (the parent answers that hand). An adult's
+ * sign-in (a parent's or teacher's own practice): no button.
  */
 export function RaiseHand({ problem }: { problem?: string }) {
   const session = useSessionOrNull();

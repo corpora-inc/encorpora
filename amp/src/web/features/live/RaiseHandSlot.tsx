@@ -1,4 +1,5 @@
-import type { QueryClient } from "@tanstack/react-query";
+import { useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 import type { AuthSession } from "../../auth";
 import { readyLazy } from "../../lib/ready-lazy";
 import { useSessionOrNull } from "../../lib/session";
@@ -11,6 +12,10 @@ const hand = readyLazy<{ problem?: string }>(
   async () => (await import("./RaiseHand")).RaiseHand,
   "The raised hand",
 );
+
+/** The student stream's code (useStudentLive.ts), a student's practice's
+ * only, the same way. */
+const streamCode = () => import("./useStudentLive");
 
 /** How long practice waits to learn whether a session runs. */
 const LIVE_WAIT_MS = 1_500;
@@ -31,6 +36,9 @@ export function preloadStudentHand(client: QueryClient, session: AuthSession) {
     );
   return Promise.all([
     hand.preload(),
+    streamCode().catch((error: unknown) =>
+      console.warn("The student's stream will load with practice", error),
+    ),
     Promise.race([
       live,
       new Promise<void>((resolve) => setTimeout(resolve, LIVE_WAIT_MS)),
@@ -46,4 +54,33 @@ export function StudentHand({ problem }: { problem?: string }) {
   return session?.token.startsWith("st_") ? (
     <RaiseHandCode problem={problem} />
   ) : null;
+}
+
+/**
+ * A student's one stream, for as long as practice is on screen (`on`).
+ * Practice holds this once, above the workspace it mounts anew for each
+ * problem (app/LegacyApp.tsx), so a new problem opens no stream and asks
+ * the server nothing: the hand reads what this keeps. Leaving practice
+ * closes it. A student sign-in only.
+ */
+export function useStudentStream(on: boolean) {
+  const signedIn = useSessionOrNull();
+  const session = on && signedIn?.token.startsWith("st_") ? signedIn : null;
+  const client = useQueryClient();
+  useEffect(() => {
+    if (!session) return;
+    let close: (() => void) | undefined;
+    let gone = false;
+    streamCode().then(
+      ({ holdStudentStream }) => {
+        if (!gone) close = holdStudentStream(client, session);
+      },
+      (error: unknown) =>
+        console.warn("The student's stream didn’t open", error),
+    );
+    return () => {
+      gone = true;
+      close?.();
+    };
+  }, [client, session]);
 }
