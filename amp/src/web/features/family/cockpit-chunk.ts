@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { FamilyCockpitProps } from "./FamilyCockpit";
+import { logAhead } from "../../lib/ahead";
 
 /*
  * The family's live cockpit is its own chunk (the roster, the totals, the
@@ -41,6 +42,6 @@ export const familyCockpit = () => loaded;
  * logged, and asked again when the cockpit is needed. */
 export function warmFamilyCockpit() {
   loadFamilyCockpit().catch((failure: unknown) =>
-    console.error("The family’s live view didn’t load ahead", failure),
+    logAhead("The family’s live view didn’t load ahead", failure, "error"),
   );
 }

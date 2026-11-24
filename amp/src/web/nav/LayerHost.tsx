@@ -19,25 +19,34 @@ import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
 import { WorkReplaySlot } from "../features/school/classes/WorkReplaySlot";
 import { skillCatalogOptions } from "../lib/learning-view";
-import { ENTITIES, staffOnly, workParts, type Entity } from "./entities";
+import {
+  ENTITIES,
+  staffOnly,
+  workbookDayParts,
+  workParts,
+  type Entity,
+} from "./entities";
 import { useLayers } from "./links";
 import { MOTION_MS, useLayerStore, type Layer as Opened } from "./layer-store";
 import { LayerFrame, type Moving } from "../ui/LayerFrame";
 import { LayerBackProvider } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { SkillWorkbook } from "../features/workbooks/SkillWorkbook";
+import { WorkbookLayerSlot } from "../features/workbooks/WorkbookLayerSlot";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
 import { strandNames } from "../BirthYearPrompt";
 import {
   CurriculumPractice,
   type OpenedFor,
 } from "../features/practice/CurriculumPractice";
+import { logAhead } from "../lib/ahead";
 
 /**
  * The layers open over a page (nav/layer-store.ts), the page under them
  * still mounted: ONE overlay with ONE scrim (ui/LayerFrame.tsx), its panel
- * the top layer, its trail the way back up. ✕ and the scrim put the whole
- * overlay away; Escape and the trail go up a level. Layers are no steps in
+ * the top layer, its trail the way back up. ✕ and Escape put the top layer
+ * down, to the one behind it (at the first level, the page); the trail goes
+ * further up; the scrim puts the whole overlay away. Layers are no steps in
  * history: Back and Forward go between screens, and a screen shows again
  * with its layers as they were, settled, never replaying their motion.
  *
@@ -96,7 +105,7 @@ export function LayerHost({
   useEffect(() => {
     if (open)
       void lessonChunk().catch((error: unknown) =>
-        console.warn("The lesson layer's code did not preload", error),
+        logAhead("The lesson layer's code did not preload", error),
       );
   }, [open]);
   return (
@@ -148,7 +157,7 @@ export function LayerHost({
               below={shown.slice(0, shown.indexOf(top))}
               org={org}
               learner={learner}
-              close={layers.closeAll}
+              close={layers.close}
               lessonActions={lessonActions}
               skillActions={skillActions}
               area={area}
@@ -208,7 +217,7 @@ function Layer({
   below: Opened[];
   org?: string;
   learner?: string;
-  /** The whole overlay away (a lesson's failure, closed). */
+  /** This layer down, to the one behind it (a lesson's failure, closed). */
   close: () => void;
   lessonActions?: (lesson: string, skill?: string) => ReactNode;
   skillActions?: (skill: string) => ReactNode;
@@ -334,6 +343,10 @@ function Layer({
         />
       ) : null;
     }
+    // The workbook maker, for the learner and the day it names: opened from
+    // a skill's layer, over the screen that skill was opened on.
+    case "workbook":
+      return <WorkbookLayerSlot {...workbookDayParts(entity.id)} />;
     // An answer's replay is a base of its own, drawn beside the frame.
     case "own-work":
     case "work":

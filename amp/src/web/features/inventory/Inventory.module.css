@@ -494,15 +494,7 @@
     padding: 0;
   }
   .page[data-inventory-mode="grade"]
-    :is(
-      .heading,
-      .summary,
-      .viewSwitch,
-      .filters,
-      .gradeRow,
-      .footer,
-      .typesToggle
-    ) {
+    :is(.heading, .summary, .viewSwitch, .filters, .gradeRow, .typesToggle) {
     display: none;
   }
   .printHead {
@@ -573,34 +565,6 @@
     width: 8px;
     height: 8px;
   }
-}
-
-.footer {
-  display: grid;
-  gap: var(--space-2);
-  max-width: 62ch;
-  margin-top: var(--space-6);
-}
-.explainer {
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  line-height: 1.6;
-}
-.explainer summary {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  cursor: pointer;
-}
-.explainer summary::before {
-  content: "+";
-  margin-right: var(--space-2);
-}
-.explainer[open] summary::before {
-  content: "−";
-}
-.explainer p {
-  margin: 0 0 var(--space-3);
 }
 
 @media (max-width: 650px) {

@@ -20,6 +20,7 @@ import { OPEN_KEY, readStack } from "../nav/entities";
 import { layerScope, useLayerStore } from "../nav/layer-store";
 import { payOverlays } from "./pay-routes";
 import { accountOverlays } from "./account-overlays";
+import { logAhead } from "../lib/ahead";
 
 /*
  * A family's own screens (docs/architecture/spaces.md, P2): `/family/<family>`
@@ -35,7 +36,7 @@ import { accountOverlays } from "./account-overlays";
 const orNull =
   (what: string) =>
   (error: unknown): null => {
-    console.warn(`${what} didn’t load ahead`, error);
+    logAhead(`${what} didn’t load ahead`, error);
     return null;
   };
 
@@ -207,7 +208,7 @@ export function familyRoutes(root: AnyRoute) {
         if (!stack.some((layer) => layer.kind === "lesson"))
           return void (await ready);
         void ready.catch((error: unknown) =>
-          console.error("The map did not preload", error),
+          logAhead("The map did not preload", error, "error"),
         );
       },
       component: lazyRouteComponent(load as never, name as never),

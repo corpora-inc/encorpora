@@ -156,7 +156,6 @@ export function ChildDashboard({
         overall={board.level}
         numbers={numbers}
         label={`${child.name}’s math areas`}
-        checkedHead="Checked, two grades below"
         action={action}
         caption={`Levels from ${plural(board.level.answered, "answer")}. AMP started from ${child.name}’s birth year.`}
       />

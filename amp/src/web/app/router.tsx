@@ -127,13 +127,14 @@ import {
   studentPracticeHref,
   isLearningPath,
 } from "../features/profiles/practice-mode";
+import { logAhead } from "../lib/ahead";
 // The served-address list is only read by the missing-screen fallback. It
 // loads beside the entry, not in it (scripts/check-bundle-budget.ts), and
 // starts loading at once so the fallback never waits for it. A failed load
 // is tried again when the fallback needs it.
 const documentRoutes = import("./document-routes");
 documentRoutes.catch((error: unknown) =>
-  console.warn("The served-address list didn’t load ahead", error),
+  logAhead("The served-address list didn’t load ahead", error),
 );
 function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
@@ -233,7 +234,7 @@ const root = createRootRoute({
     const session = await queryClient
       .ensureQueryData(sessionOptions)
       .catch((error: unknown) =>
-        console.warn("The session didn’t load ahead", error),
+        logAhead("The session didn’t load ahead", error),
       );
     const known =
       !!session &&
@@ -478,7 +479,7 @@ const home = createRoute({
         await Promise.all([
           launcher.preload?.(),
           preloadLauncher(session).catch((error) =>
-            console.warn("Your places didn’t load ahead", error),
+            logAhead("Your places didn’t load ahead", error),
           ),
         ]);
     } else {
@@ -613,7 +614,7 @@ const accountReady = createRoute({
     const me = await queryClient
       .ensureQueryData(meOptions(session))
       .catch((error: unknown) =>
-        console.warn("The new account didn’t load ahead", error),
+        logAhead("The new account didn’t load ahead", error),
       );
     const account =
       me?.signedIn && me.account.id === session.accountId ? me : null;
@@ -681,7 +682,7 @@ async function beforeStarter({
     ? await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 })
     : await queryClient
         .ensureQueryData(meOptions(session))
-        .catch((error) => console.warn("The account didn’t load ahead", error));
+        .catch((error) => logAhead("The account didn’t load ahead", error));
   const target = routeFor(me?.signedIn ? me : null, location);
   // An established account's old trial link: straight to its place.
   if (target?.to === "/") await toOwnPlace(me?.signedIn ? me : undefined);
@@ -692,7 +693,7 @@ async function beforeStarter({
     const { orgsOptions } = await import("../features/school/api");
     await queryClient
       .ensureQueryData(orgsOptions(session))
-      .catch((error) => console.warn("Schools didn’t load ahead", error));
+      .catch((error) => logAhead("Schools didn’t load ahead", error));
   }
 }
 const starter = lazyRouteComponent(
@@ -797,7 +798,7 @@ async function framedScreen() {
   await queryClient
     .ensureQueryData(sessionOptions)
     .catch((error: unknown) =>
-      console.warn("The session didn’t load ahead", error),
+      logAhead("The session didn’t load ahead", error),
     );
 }
 const inventory = createRoute({
@@ -851,7 +852,7 @@ const pathways = createRoute({
     if (!stack.some((layer) => layer.kind === "lesson"))
       return preloadLearning(at);
     void preloadLearning(at).catch((error: unknown) =>
-      console.error("The map did not preload", error),
+      logAhead("The map did not preload", error, "error"),
     );
   },
   component: lazyRouteComponent(
@@ -946,7 +947,7 @@ const accountHub = createRoute({
 });
 /** The form shows its own retry when the offers didn't load ahead. */
 const invoiceOffersFailed = (error: unknown) =>
-  console.warn("The invoice offers didn’t load ahead", error);
+  logAhead("The invoice offers didn’t load ahead", error);
 const invoiceForm = lazyRouteComponent(
   () => import("../features/funding/InvoiceForm"),
   "InvoiceForm",
@@ -1031,7 +1032,7 @@ const joinPictures = createRoute({
     const roster = await queryClient
       .ensureQueryData(joinRosterOptions(code))
       .catch((error: unknown) =>
-        console.warn("The class's names didn’t load ahead", error),
+        logAhead("The class's names didn’t load ahead", error),
       );
     if (roster && !roster.students.some((entry) => entry.id === params.person))
       elsewhere(`/join/${encodeURIComponent(formatJoinCode(code))}`);
@@ -1093,7 +1094,7 @@ const schoolClassToday = createRoute({
     const me = await queryClient
       .ensureQueryData(meOptions(session))
       .catch((error: unknown) =>
-        console.warn("The account didn’t load ahead", error),
+        logAhead("The account didn’t load ahead", error),
       );
     await Promise.all([
       me?.signedIn &&
@@ -1214,7 +1215,7 @@ const schoolClassSettings = createRoute({
             last.nextOffset,
         } as never)
         .catch((error: unknown) =>
-          console.warn("The class's students didn’t load ahead", error),
+          logAhead("The class's students didn’t load ahead", error),
         ),
     ]);
   },
@@ -1414,7 +1415,7 @@ const standings = createRoute({
     const boards = await queryClient
       .ensureQueryData(standingsBoardsOptions(session ?? null))
       .catch((error: unknown) =>
-        console.warn("Standings didn’t load ahead", error),
+        logAhead("Standings didn’t load ahead", error),
       );
     if (boards && !boards.boards.length) elsewhere(studentPracticeHref());
   },
@@ -1427,7 +1428,7 @@ const standings = createRoute({
     const session = await queryClient.ensureQueryData(sessionOptions);
     await queryClient
       .ensureQueryData(standingsBoardsOptions(session ?? null))
-      .catch((error) => console.warn("Standings didn’t load ahead", error));
+      .catch((error) => logAhead("Standings didn’t load ahead", error));
   },
   component: lazyRouteComponent(
     () => import("../features/school/classroom/StandingsScreen"),
@@ -1490,7 +1491,7 @@ const ownTime = createRoute({
     const { ownPracticeOptions } = await import("../features/me/api");
     await queryClient
       .ensureQueryData(ownPracticeOptions(session))
-      .catch((error) => console.warn("Your time didn’t load ahead", error));
+      .catch((error) => logAhead("Your time didn’t load ahead", error));
   },
   component: lazyRouteComponent(ownScreens, "OwnTimeScreen"),
 });
@@ -1567,7 +1568,7 @@ async function loadOwnPractice(session: AuthSession, learnerId: string) {
           ? queryClient.ensureQueryData(levelTrendOptions(session, learnerId))
           : undefined,
       ),
-  ]).catch((error) => console.warn("Your progress didn’t load ahead", error));
+  ]).catch((error) => logAhead("Your progress didn’t load ahead", error));
 }
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");
@@ -2168,7 +2169,7 @@ onSignedOut(() => {
   const target = signInTarget(router.state.location);
   void router
     .preloadRoute(target)
-    .catch((error: unknown) => console.warn("Sign-in didn’t load ahead", error))
+    .catch((error: unknown) => logAhead("Sign-in didn’t load ahead", error))
     .then(() => router.navigate({ ...target, replace: true }))
     .finally(clear);
   return true;

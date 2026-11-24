@@ -654,6 +654,82 @@ try {
       new RegExp(`with ${CHILD}$`),
       at("Practice names the child"),
     );
+    // ---- a layer over a layer closes to the layer behind it ----------------
+    // The frame's layers, oldest first ("" with none open).
+    const layersOpen = async () =>
+      (await page.locator("[data-layer-frame]").count())
+        ? ((await page
+            .locator("[data-layer-frame]")
+            .getAttribute("data-layers")) ?? "")
+        : "";
+    const settled = async (layers: string, what: string) => {
+      await page
+        .locator(`[data-layer-frame][data-layers="${layers}"]`)
+        .waitFor()
+        .catch(async () =>
+          assert.fail(
+            at(
+              `${what}: the layers are "${await layersOpen()}", not "${layers}"`,
+            ),
+          ),
+        );
+      // (A panel has slid in or out.)
+      await page.waitForTimeout(500);
+    };
+    const alone = `skill:${pick.skill.id}`;
+    {
+      // One of the skill's problem types: its Lesson, over the skill.
+      const lesson = page
+        .locator('[data-layer-panel] a[data-entity="lesson"]')
+        .first();
+      await lesson.waitFor();
+      const type = new URLSearchParams(
+        (await lesson.getAttribute("href"))!.split("?")[1],
+      )
+        .get("open")!
+        .split(",")
+        .at(-1)!;
+      const both = `${alone},${type}`;
+      const cross = page.locator("[data-layer-panel] [data-layer-close]");
+      // ✕: the lesson down, the skill behind it again, the list behind that.
+      await lesson.click();
+      await settled(both, "a skill's lesson opens over the skill");
+      await fits("a lesson over a skill");
+      await cross.click();
+      await settled(alone, "✕ on the lesson comes back to the skill");
+      await layer.waitFor();
+      // Escape: the same one step.
+      await lesson.click();
+      await settled(both, "the lesson again");
+      await page.keyboard.press("Escape");
+      await settled(alone, "Escape on the lesson comes back to the skill");
+      // The browser's Back is between screens, never through layers: it
+      // leaves this screen for the one before, and coming back shows both
+      // layers as they were (docs/design/ia.md, "Navigation").
+      await lesson.click();
+      await settled(both, "the lesson once more");
+      await page.goBack();
+      await page.waitForURL((url) => url.pathname !== inventory);
+      await page.goForward();
+      await page.waitForURL((url) => url.pathname === inventory);
+      await settled(both, "Back and Forward keep the layers as they were");
+      // The scrim is the page: a press there puts the whole overlay away.
+      // (Where the sheet leaves some of it to press: a phone's covers it.)
+      const scrim = page.locator("[data-layer-scrim]");
+      const sheet = (await page.locator("[data-layer-frame]").boundingBox())!;
+      if (sheet.x >= 48) {
+        await scrim.click({ position: { x: 12, y: 12 } });
+        await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
+        assert.equal(new URL(page.url()).pathname, inventory);
+        await openSkill(pick.skill.id);
+      } else {
+        await cross.click();
+        await settled(alone, "✕ on the lesson, after Back and Forward");
+      }
+      await layer.waitFor();
+      await practice.waitFor();
+    }
+
     // ---- Workbook, beside Practice: held to this skill, for this child ----
     const workbook = page.locator(
       `[data-layer-panel] a[data-skill-workbook="${pick.skill.id}"]`,
@@ -703,11 +779,42 @@ try {
       );
     const left = await place();
     await workbook.click();
-    await page.waitForURL(
-      (url) =>
-        url.pathname ===
-        `/family/${family}/kids/${child.id}/workbooks/${today()}`,
-    );
+    // The maker is a layer over the skill: the screen behind stays the list
+    // the skill was opened on, at its own address, where it was.
+    const making = `${alone},workbook:${child.id}.${today()}`;
+    await settled(making, "the maker opens over the skill");
+    const behind = async (what: string) => {
+      assert.equal(
+        new URL(page.url()).pathname,
+        inventory,
+        at(`${what}: the address is the list's`),
+      );
+      assert.equal(
+        await page.locator(`main [data-grade-index="${own}"]`).count(),
+        1,
+        at(`${what}: the list is the screen behind`),
+      );
+      assert.equal(
+        await page.locator("main [data-child-workbooks]").count(),
+        0,
+        at(`${what}: the child's page is not`),
+      );
+      assert.deepEqual(
+        await place(),
+        left,
+        at(`${what}: the list is in place`),
+      );
+    };
+    await behind("the maker open");
+    if (SHOTS)
+      await page.screenshot({ path: `${OUT}/maker-over-list-${width}.png` });
+    // ✕ puts the maker down, to the skill it was opened from; Escape too.
+    await page.locator("[data-layer-panel] [data-layer-close]").click();
+    await settled(alone, "✕ on the maker comes back to the skill");
+    await behind("the maker closed");
+    // (Opened again, it is held to the skill again.)
+    await workbook.click();
+    await settled(making, "the maker again");
     // The maker, with the workbook already composed from this skill alone.
     const paper = page.locator("[data-workbook-contents]");
     await paper.getByRole("heading", { name: /^Workbook No\./ }).waitFor();
@@ -813,11 +920,10 @@ try {
     await paper.getByText(made.code, { exact: true }).waitFor();
     // Closing comes back to the skill, the list where it was.
     await page.keyboard.press("Escape");
-    await page.waitForURL((url) => url.pathname === inventory);
+    await settled(alone, "Escape on the maker comes back to the skill");
     await layer.waitFor();
     await workbook.waitFor();
-    await page.waitForTimeout(400);
-    assert.deepEqual(await place(), left, at("the list is where it was"));
+    await behind("after the workbook is saved");
     // It is listed with the child's workbooks.
     await page.goto(`${origin}/family/${family}/kids/${child.id}`);
     const inList = page
@@ -959,9 +1065,13 @@ try {
     if (makes) {
       assert.equal(await theirs.getAttribute("data-workbook-for"), "self");
       await theirs.click();
-      await page.waitForURL(
-        (url) => url.pathname === `/learners/${self}/workbooks/${today()}`,
-      );
+      // Over their own skill, on their own Inventory.
+      await page
+        .locator(
+          `[data-layer-frame][data-layers="skill:${skill},workbook:${self}.${today()}"]`,
+        )
+        .waitFor();
+      assert.equal(new URL(page.url()).pathname, "/inventory");
       const title = catalog.skills.find((entry) => entry.id === skill)!.title;
       const paper = page.locator("[data-workbook-contents]");
       await paper.getByRole("heading", { name: /^Workbook No\./ }).waitFor();
@@ -973,7 +1083,9 @@ try {
       if (SHOTS)
         await page.screenshot({ path: `${OUT}/maker-own-1280-light.png` });
       await page.keyboard.press("Escape");
-      await page.waitForURL((url) => url.pathname === "/inventory");
+      await page
+        .locator(`[data-layer-frame][data-layers="skill:${skill}"]`)
+        .waitFor();
       await panel.waitFor();
     }
     await calm("the adult's own skill layer");

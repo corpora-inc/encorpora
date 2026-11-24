@@ -31,6 +31,7 @@ import {
   handedStudentDevice,
 } from "../../lib/student-device";
 import { closesBack, closeTo } from "../../lib/return-to";
+import { logAhead } from "../../lib/ahead";
 
 type Icon =
   | "child"
@@ -115,7 +116,12 @@ export default function DrawerContents({
     for (const link of navRef.current?.querySelectorAll("a[href]") ?? []) {
       const href = link.getAttribute("href")!;
       void router.preloadRoute({ href } as never).catch((error: unknown) => {
-        console.error("A drawer item's screen did not preload", href, error);
+        logAhead(
+          "A drawer item's screen did not preload",
+          error,
+          "error",
+          href,
+        );
       });
     }
   }, [router]);
