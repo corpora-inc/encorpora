@@ -112,29 +112,44 @@ test(
     await t.test(
       "a video's play and its end ride on the heartbeat",
       async () => {
-        const beat = await post(`/api/v1/learners/${child}/activity`, parent, {
-          deltas: [{ surface: "video", activeMs: 20_000 }],
-          events: [
-            {
-              kind: "video",
-              source: "lessons",
-              ref: "add-within-20",
-              ageMs: 0,
-            },
-            {
-              kind: "video_play",
-              source: "lessons",
-              ref: "add-within-20",
-              ageMs: 0,
-            },
-            {
-              kind: "video_complete",
-              source: "lessons",
-              ref: "add-within-20",
-              ageMs: 0,
-            },
-          ],
-        });
+        // On the child's own sign-in (the parent's device, handed over): an
+        // adult's sign-in never writes a child's time or help.
+        const handed = await post(
+          `/api/v1/family/learners/${child}/practice-here`,
+          parent,
+        );
+        assert.equal(handed.statusCode, 201, handed.body);
+        await db.query(
+          "UPDATE amp_student_sessions SET last_seen_at=now()-interval '60 seconds' WHERE person_id=$1",
+          [childPerson],
+        );
+        const beat = await post(
+          "/api/v1/school/student/activity",
+          handed.json().token,
+          {
+            deltas: [{ surface: "video", activeMs: 20_000 }],
+            events: [
+              {
+                kind: "video",
+                source: "lessons",
+                ref: "add-within-20",
+                ageMs: 0,
+              },
+              {
+                kind: "video_play",
+                source: "lessons",
+                ref: "add-within-20",
+                ageMs: 0,
+              },
+              {
+                kind: "video_complete",
+                source: "lessons",
+                ref: "add-within-20",
+                ageMs: 0,
+              },
+            ],
+          },
+        );
         assert.equal(beat.statusCode, 204, beat.body);
         const days = (
           await db.query(

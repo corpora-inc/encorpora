@@ -21,11 +21,10 @@ type Database = Pick<PoolClient, "query">;
    stream hub and Stop all read through `readLiveRows`, so the cockpit, the
    stream and the stored report can't disagree.
 
-   Only what is the student's own counts. A family's child is also a learner
-   on a parent's account, and that account's heartbeat names whichever child
-   the parent has chosen: a parent reading the child's Pathways is not the
-   child. So the account's clock (`amp_learner_activity`) is never read here,
-   and help counts only where it was the child's (`OWN_HELP`). */
+   Only what is the student's own counts. An adult's sign-in is the adult:
+   it writes no child's time or help (`recordLearnerActivity`), and the
+   account's clock (`amp_learner_activity`) is never read here. "Last seen"
+   is the student's own sign-in, which a hand-over also is. */
 
 export type LiveWindow = {
   classId: string;
@@ -52,13 +51,6 @@ const iso = (value: Date | string | null) =>
  * paper mark. */
 const IN_WINDOW = `x.learner_id=r.learner_id AND x.created_at>=$2::timestamptz AND x.created_at<$3::timestamptz
   AND x.outcome->>'evidenceSource' IS DISTINCT FROM 'paper'`;
-/** SQL: help event `h` of roster member `r` was their own: opened in
- * practice, or sent on their own student sign-in (every heartbeat of one
- * moves its `last_seen_at` past the help it carries). What else a learner's
- * record holds was opened on a parent's sign-in with this child chosen, from
- * a lesson, Pathways or a progress page. */
-const OWN_HELP = `(h.source='practice' OR EXISTS (SELECT 1 FROM amp_student_sessions hs
-  WHERE hs.person_id=r.person_id AND hs.created_at<=h."at" AND hs.last_seen_at>=h."at"))`;
 const CORRECT = "COALESCE((x.outcome->>'correct')::boolean,false)";
 const ASSISTED = "COALESCE((x.outcome->>'assisted')::boolean,false)";
 
@@ -129,7 +121,6 @@ export async function readLiveRows(
          max(h."at") FILTER (WHERE h.kind<>'print') AS last_help
        FROM amp_help_events h
        WHERE h.learner_id=r.learner_id AND h."at">=$2::timestamptz AND h."at"<$3::timestamptz
-         AND ${OWN_HELP}
      ) h
      -- Their own sign-in, last seen before the window's end: a session judged
      -- after it ended doesn't count who arrived later. Nor does a sighting
