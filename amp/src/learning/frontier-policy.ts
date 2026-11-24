@@ -43,6 +43,14 @@ export const frontierPolicySchema = z
       .object({
         overallSd: z.number().finite().min(0.1).max(10),
         strandSd: z.number().finite().min(0.1).max(10),
+        /** The width when the start is the grade a birth year or a roster
+         * gives (`startFromGrade`), not a guess: one entry per grade from K,
+         * never wider than `overallSd`. A grade past the list, or no list,
+         * keeps `overallSd`. */
+        gradeSd: z
+          .array(z.number().finite().min(0.1).max(10))
+          .max(13)
+          .optional(),
       })
       .strict(),
     response,
@@ -171,8 +179,10 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
 
 /** Working grade, not mastery or a norm-referenced percentile. Overall evidence
  * accumulates steadily; strand estimates can react faster to local gaps.
- * A surprising miss does not make the next overall answer count extra. */
-export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+ * A surprising miss does not make the next overall answer count extra.
+ * The policy before a grade start counted for more (2026-11-24), kept for
+ * paired comparisons (`scripts/simulate-placement-pace.ts`). */
+export const EVIDENCE_CLIMB_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
   version: "grade-frontier-v4-evidence-anchored-climb",
   // The start is a guess: the ceiling stands on what the learner has shown
@@ -210,5 +220,26 @@ export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
     rareMissVariance: 0.36,
     retentionPerAnswer: 0.7,
     maxVariance: 1,
+  },
+});
+
+/** How wide a learner's level lies around the grade their birth year or
+ * roster gives, before any answer, K through grade 5: the spread of
+ * mathematics achievement within one grade, in grade-years, from public norms
+ * (docs/engine/norms-prior.md, `schools/norms-prior.ts`), divided by 0.9 for a
+ * student of no particular school. From grade 6 the norms' spread is as wide
+ * as a guessed start's `overallSd` or wider, so those grades keep it. A
+ * narrower start there was tried (`scripts/simulate-placement-pace.ts`): at
+ * two grades wide a seventh-grader three grades behind was found later, and
+ * the norms give no reason to accept that. A guessed start (an adult's, or
+ * no age and no grade) keeps `overallSd`. */
+export const GRADE_START_SD = [0.78, 0.89, 1.11, 1.22, 1.78, 2.11] as const;
+
+export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+  ...EVIDENCE_CLIMB_FRONTIER_POLICY,
+  version: "grade-frontier-v5-grade-start",
+  prior: {
+    ...EVIDENCE_CLIMB_FRONTIER_POLICY.prior,
+    gradeSd: [...GRADE_START_SD],
   },
 });

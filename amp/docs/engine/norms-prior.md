@@ -40,18 +40,25 @@ AMP measures position in grades of its own curriculum: level − rostered grade.
 
 ## Where AMP uses it
 
-Display only (`src/schools/norms-prior.ts`):
+In the estimator, for kindergarten through grade 5 (`GRADE_START_SD` in
+`src/learning/frontier-policy.ts`): a learner who starts from their grade (a
+birth year, or a roster grade kept as one) starts this wide, divided by 0.9
+for a student of no particular school. From grade 6 the table is as wide as
+the flat 2.5 or wider, and those grades keep 2.5. `tests/frontier-grade-start.test.ts`
+holds the two tables together.
+
+For display (`src/schools/norms-prior.ts`):
 
 - **A rostered student with no stored level at all.** Their curve is N(age-expected grade − rostered grade, sd(grade)). Until practice opens there is nothing else to draw.
 - **The dashed "typical national spread"** on every standing curve. This is the mixture of N(0, sd(gᵢ)) over the group's students. A group's own curve can be read against it.
 
-A student whose practice has opened is drawn from the stored starting level and the estimator's stored sd (2.5).
+A student whose practice has opened is drawn from the stored starting level and the estimator's stored sd.
 
 ## What we would change in the estimator (after calibration lands)
 
-1. **Make the overall prior sd depend on grade.** Use this table, scaled by 1/0.9 for a school-independent student, instead of a flat 2.5.
-   - Today K–4 starts too wide: 2.5 against a true 0.7–1.6. Placement wastes answers ruling out grades no one in that grade works at.
-   - Grades 8+ start about right or slightly narrow.
+1. **Done for K–5 (2026-11-24): the overall prior sd depends on grade.** It is this table, scaled by 1/0.9 for a school-independent student, instead of a flat 2.5.
+   - K–4 started too wide: 2.5 against a true 0.7–1.6. A few right answers at the grade read as a grade or two ahead.
+   - Grades 6+ keep 2.5. The table is wider there, and a narrower start was tried and found a student three grades behind later (`docs/pathway-selection.md`).
 2. **Centre the prior on the time of year.** Expected position runs from g − 0.5 in the fall to g + 0.5 in the spring (the grade model already assumes this, `grade-policy.ts`). The overview's "within their grade" band could follow it too.
 3. **Set the drift from growth spread.** Between answers the posterior widens by a variance of 0.02 a day (`frontier-policy.ts`, capped at 30 days). For a learner who practises daily that adds up to 7.3 grade² a year, an sd of about 2.7 grades. The between-student spread of a year's growth here is 0.4–1.0 of a year. Once per-answer sds are calibrated, the drift should come down toward the norms.
 4. **Check coverage against these spreads.** A school whose placed students show a much narrower sd than the "typical" curve is either a tracked class or an over-confident estimator. The second is the calibration worker's check (coverage of μ ± 2σ on synthetic learners).
