@@ -54,21 +54,38 @@ export async function notePersonEvent(
   );
 }
 
+/** Whose sign-in a heartbeat came on. `student`: the learner's own, so all of
+ * it is theirs. `account`: an adult's, with this learner chosen. Time on an
+ * adult's sign-in is never a child's presence, whatever screen it was on (a
+ * parent reading the child's Pathways, or looking at practice as them): only
+ * what is done in practice, an answer (`noteLearnerEvent`) or help opened
+ * there, is the child's. */
+export type HeartbeatSender = "student" | "account";
+
 /** A CTE for a heartbeat statement whose `live` CTE names the learner
- * (`learner_id`) and when they were last credited (`previous`): `help` when
- * the heartbeat carries help events (`$<param>`, the `helpEventsCte` rows),
- * and `presence` on the first heartbeat after a session started, so a
- * student who signed in before Start, or a child on a parent's device, shows
- * up without answering. */
-export const liveHeartbeatCte = (param: number) => `live_noted AS (
+ * (`learner_id`): `help` when the heartbeat carries help of theirs
+ * (`$<param>`, the `helpEventsCte` rows), and `presence` on the first
+ * heartbeat in a session from their own sign-in, so a student who signed in
+ * before Start shows up without answering. */
+export const liveHeartbeatCte = (param: number, sender: HeartbeatSender) => {
+  const [help, theirs] =
+    sender === "student"
+      ? [`jsonb_array_length($${param}::jsonb)>0`, "true"]
+      : [
+          `EXISTS (SELECT 1 FROM jsonb_array_elements($${param}::jsonb) e WHERE e->>'source'='practice')`,
+          "false",
+        ];
+  return `live_noted AS (
   INSERT INTO amp_class_events(class_id,session_id,person_id,kind)
   SELECT s.class_id,s.id,p.id,k.kind FROM live
   JOIN amp_people p ON p.learner_id=live.learner_id AND p.deleted_at IS NULL
   ${OPEN_SESSIONS_OF("p")}
   CROSS JOIN (VALUES ('help'),('presence')) AS k(kind)
-  WHERE (k.kind='help' AND jsonb_array_length($${param}::jsonb)>0)
-     OR (k.kind='presence' AND (live.previous IS NULL OR live.previous<s.started_at))
+  WHERE (k.kind='help' AND ${help})
+     OR (k.kind='presence' AND ${theirs} AND NOT EXISTS (SELECT 1 FROM amp_class_events v
+       WHERE v.session_id=s.id AND v.person_id=p.id AND v.kind='presence'))
 )`;
+};
 
 /** An event about a class: a session started or stopped (`session`), or a
  * signal raised or resolved (`signal`, work package L4), which is written
@@ -151,8 +168,8 @@ export function classChanges(
     byClass.set(event.classId, change);
     if (event.kind === "session") change.session = true;
     else if (event.kind === "signal") change.signals = true;
-    if (event.personId && event.kind !== "signal")
-      change.people.add(event.personId);
+    // A signal too: a raised hand is the student showing up (`rows.ts`).
+    if (event.personId) change.people.add(event.personId);
   }
   return [...byClass].map(([classId, change]) => ({
     classId,

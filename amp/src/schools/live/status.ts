@@ -8,11 +8,12 @@ import type {
 
 /* A student's live status, from the facts in their row. Pure and shared: the
    server judges the report with it when a session stops, and the web re-derives
-   `idle` on its own clock between updates. Imports types only, so the web can
-   import it. First match wins. */
+   it on its own clock between updates (who is here and who is idle both turn
+   with time). Imports types only, so the web can import it. First match wins. */
 
 export const LIVE_RULES: LiveRules = {
-  version: 1,
+  version: 2,
+  hereMs: 600_000,
   idleMs: 120_000,
   wrongRun: 3,
   recent: 5,
@@ -31,7 +32,7 @@ export type StatusFacts = Pick<
   | "firstSeenAt"
   | "lastAnswerAt"
   | "lastHelpAt"
-  | "seenToday"
+  | "lastSeenAt"
 >;
 
 const time = (iso: string | null) => (iso === null ? null : Date.parse(iso));
@@ -44,10 +45,45 @@ export const activeInSession = (row: StatusFacts) =>
   row.hints + row.lessons + row.examples + row.videos > 0 ||
   row.lastHelpAt !== null;
 
+type At = { now: number | Date; startedAt: string };
+const ms = (now: number | Date) =>
+  typeof now === "number" ? now : now.getTime();
+
 /**
- * 1. `not_signed_in`: not seen today, and nothing in the session.
+ * In the session: something of theirs happened inside its window. An answer
+ * or help, a sign-in, a first heartbeat from their own sign-in or a raised hand
+ * (`firstSeenAt`), or their own sign-in seen since it started. This is what
+ * "signed in" and "started" mean for a session, and all a stored report
+ * goes by. An adult's device never counts (`rows.ts` reads only what is the
+ * student's own).
+ */
+export function inSession(row: StatusFacts, startedAt: string): boolean {
+  if (activeInSession(row) || row.firstSeenAt !== null) return true;
+  const seen = time(row.lastSeenAt);
+  return seen !== null && seen >= Date.parse(startedAt);
+}
+
+/**
+ * Here, on a live screen: in the session, or their own sign-in was seen in
+ * the `hereMs` before `now` (a class that signed in just before Start is in
+ * the room). Practice earlier in the day is not here.
+ */
+export function isHere(
+  row: StatusFacts,
+  at: At,
+  rules: LiveRules = LIVE_RULES,
+): boolean {
+  if (inSession(row, at.startedAt)) return true;
+  const seen = time(row.lastSeenAt);
+  return seen !== null && ms(at.now) - seen < rules.hereMs;
+}
+
+/**
+ * 1. `not_signed_in`: not here (`isHere`).
  * 2. `idle`: no answer and no help for `idleMs`, counted from the later of the
- *    session's start and when they were first seen in it.
+ *    session's start and when they were first seen in it; or here with
+ *    nothing of theirs in the session yet (seen just before it), which is
+ *    never "working".
  * 3. `struggling`: the last `wrongRun` answers all wrong, or at most
  *    `struggleMaxCorrect` right of the last `recent`.
  * 4. `flying`: the last `recent` answers all right with no help.
@@ -55,12 +91,12 @@ export const activeInSession = (row: StatusFacts) =>
  */
 export function liveStatus(
   row: StatusFacts,
-  at: { now: number | Date; startedAt: string },
+  at: At,
   rules: LiveRules = LIVE_RULES,
 ): LiveStatus {
-  const now = typeof at.now === "number" ? at.now : at.now.getTime();
-  if (!row.seenToday && !activeInSession(row) && row.firstSeenAt === null)
-    return "not_signed_in";
+  const now = ms(at.now);
+  if (!isHere(row, at, rules)) return "not_signed_in";
+  if (!inSession(row, at.startedAt)) return "idle";
   const since = latest(
     Date.parse(at.startedAt),
     time(row.firstSeenAt),
@@ -84,6 +120,19 @@ export function liveStatus(
     return "flying";
   return "working";
 }
+
+/**
+ * A student's status in a stored report, judged when the session ended, by
+ * the session's window alone: whoever did nothing in it didn't sign in,
+ * however lately they were seen before it. A report never says "signed in"
+ * for a sign-in the session didn't see.
+ */
+export const reportStatus = (
+  row: StatusFacts,
+  at: At,
+  rules: LiveRules = LIVE_RULES,
+): LiveStatus =>
+  inSession(row, at.startedAt) ? liveStatus(row, at, rules) : "not_signed_in";
 
 const zero = (): LiveTotals => ({
   students: 0,
@@ -120,16 +169,15 @@ const add = (
   return totals;
 };
 
-/** The class's totals over live rows. Present: anyone not "not signed in",
- * which doesn't depend on the clock. */
-export const liveTotals = (rows: readonly LiveRow[]): LiveTotals =>
+/** The class's totals over live rows at `at.now`. Present: anyone not "not
+ * signed in" (`isHere`), so it turns with the clock as that status does. */
+export const liveTotals = (
+  rows: readonly LiveRow[],
+  at: At,
+  rules: LiveRules = LIVE_RULES,
+): LiveTotals =>
   rows.reduce(
-    (totals, row) =>
-      add(
-        totals,
-        row,
-        row.seenToday || activeInSession(row) || row.firstSeenAt !== null,
-      ),
+    (totals, row) => add(totals, row, isHere(row, at, rules)),
     zero(),
   );
 

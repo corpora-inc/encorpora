@@ -225,7 +225,8 @@ export function applyLiveMessage(
       console.error("AMP: live rows weren’t readable", parsed.error);
       return held;
     }
-    if (!held || held.session?.id !== parsed.data.sessionId) return held;
+    const session = held?.session;
+    if (!held || session?.id !== parsed.data.sessionId) return held;
     const changed = new Map(parsed.data.rows.map((row) => [row.personId, row]));
     const rows = held.rows.map((row) => {
       const next = changed.get(row.personId);
@@ -246,7 +247,10 @@ export function applyLiveMessage(
       ...held,
       serverNow: parsed.data.serverNow,
       rows,
-      totals: liveTotals(rows),
+      totals: liveTotals(rows, {
+        now: Date.parse(parsed.data.serverNow),
+        startedAt: session.startedAt,
+      }),
     };
   }
   if (event === STREAM_EVENTS.signals) {

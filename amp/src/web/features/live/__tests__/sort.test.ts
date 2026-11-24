@@ -25,7 +25,6 @@ const calla = row("Calla", {
 const dev = row("Dev", {
   firstSeenAt: null,
   lastSeenAt: null,
-  seenToday: false,
 });
 const finn = row("Finn", {
   problems: 2,

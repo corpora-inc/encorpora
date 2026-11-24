@@ -686,8 +686,10 @@ console.log(`  personas: ${[...mix].map(([k, n]) => `${n} ${k}`).join(", ")}`);
 console.log(`  teacher token for curl: ${teacher.token}\n`);
 
 // Forgetful students chose their pictures on an earlier day: the teacher
-// clears any from a last run (the real Reset), and they choose them again,
-// before Start, so it shows no presence.
+// clears any from a last run (the real Reset), they choose them again before
+// Start, and the teacher signs them out (the real "sign out everywhere"), as
+// an earlier day's sign-in would be. So they show no presence: a sign-in
+// seen in the ten minutes before now would read as here.
 for (const room of classes)
   for (const student of room.students)
     if (student.persona.forgetsPicture) {
@@ -697,6 +699,11 @@ for (const room of classes)
         { token: teacher.token, body: {} },
       );
       await signIn(room.code, student);
+      await call(
+        "POST",
+        `/api/v1/school/classes/${room.classId}/students/${student.personId}/revoke-sessions`,
+        { token: teacher.token, body: {} },
+      );
     }
 
 const sessions: { classId: string; id: string }[] = [];

@@ -499,7 +499,14 @@ export async function setStaffClasses(
 
 /** What a link's holder sees before signing in: which school, which role, and
  * who it was sent to, so they can use that address. The token is the
- * credential; the route takes it in the body, which the request log skips. */
+ * credential; the route takes it in the body, which the request log skips.
+ *
+ * While the invitation is open it also says whether that address has an
+ * account (`hasAccount`), so the screen's one Continue opens signing in or
+ * creating an account, whichever will work, and nobody is sent to a form
+ * that refuses them. The answer is about the invited address only (the
+ * lookup takes no address), matched as sign-in matches it, and is left out
+ * of an invitation that is used, expired or ended. */
 export async function lookupInvite(
   repo: SchoolRepository,
   raw: unknown,
@@ -508,6 +515,7 @@ export async function lookupInvite(
   const row = (
     await repo.pool.query(
       `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role,o.setup_pending,
+         EXISTS(SELECT 1 FROM amp_auth_users u WHERE u.email=lower(btrim(p.email))) AS has_account,
          (SELECT ${adultNameSql("sender")} FROM amp_school_events ev JOIN amp_people sender ON sender.id=ev.actor_person_id WHERE ev.target_id=p.id::text AND ev.action='staff.invited' ORDER BY ev.at DESC LIMIT 1) AS inviter_name,
          (SELECT k.name FROM amp_families f JOIN amp_classes k ON k.id=f.class_id
            WHERE f.second_parent=p.id) AS family_class,
@@ -522,19 +530,23 @@ export async function lookupInvite(
     )
   ).rows[0];
   if (!row) return null;
+  const status = row.revoked_at
+    ? row.account_id
+      ? "used"
+      : "ended"
+    : new Date(row.expires_at) <= new Date()
+      ? "expired"
+      : "open";
   return {
-    status: row.revoked_at
-      ? row.account_id
-        ? "used"
-        : "ended"
-      : new Date(row.expires_at) <= new Date()
-        ? "expired"
-        : "open",
+    status,
     orgName: row.name,
     inviterName: row.inviter_name ?? null,
     role: row.role,
     email: row.email,
     setup: row.role === "admin" && row.setup_pending === true,
+    ...(status === "open" && row.email
+      ? { hasAccount: row.has_account === true }
+      : {}),
     ...(row.family_class
       ? {
           secondParent: {

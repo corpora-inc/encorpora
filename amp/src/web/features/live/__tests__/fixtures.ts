@@ -32,7 +32,6 @@ export function row(name: string, patch: Partial<LiveRow> = {}): LiveRow {
     lastAnswerAt: null,
     lastHelpAt: null,
     lastSeenAt: iso(0),
-    seenToday: true,
     ...patch,
   };
 }

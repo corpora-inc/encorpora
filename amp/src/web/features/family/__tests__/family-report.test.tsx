@@ -13,7 +13,7 @@ import type {
   ReportRow,
   SessionReport,
 } from "../../../../schools/live/contracts";
-import { reportTotals } from "../../../../schools/live/status";
+import { reportStatus, reportTotals } from "../../../../schools/live/status";
 import { queryClient, sessionOptions } from "../../../lib/query";
 import { Report } from "../../school/classes/SessionReportScreen";
 import { FAMILY_REPORT_WORDS } from "../FamilyReport";
@@ -73,7 +73,25 @@ const rows = [
     firstSeenAt: iso(5000),
     status: "idle",
   }),
-  row(3, "Theo", {}),
+  // Theo answered a problem that morning, on his own sign-in, and never
+  // opened AMP during the session: judged as the server judges a report.
+  row(3, "Theo", {
+    status: reportStatus(
+      {
+        problems: 0,
+        hints: 0,
+        lessons: 0,
+        examples: 0,
+        videos: 0,
+        recent: [],
+        firstSeenAt: null,
+        lastAnswerAt: null,
+        lastHelpAt: null,
+        lastSeenAt: iso(-3 * 3_600_000),
+      },
+      { now: Date.parse(iso(11 * 60_000)), startedAt: iso(0) },
+    ),
+  }),
 ];
 const report: SessionReport = {
   session: {
