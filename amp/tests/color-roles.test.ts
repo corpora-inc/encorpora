@@ -127,6 +127,19 @@ function check(theme: Theme, colorful?: Colorful) {
     need(`figure-${mark}`, "figure-paper", UI);
   need("figure-accent", "figure-accent-fill", UI);
   need("figure-warm", "figure-warm-fill", UI);
+  // A lesson film writes its colored equations on the page itself, in the
+  // figure's marks and three more inks (film/stage.ts `mathInks`): text.
+  // A problem's named marks are Calm's, for the figure that names them.
+  if (!colorful?.named)
+    for (const ink of [
+      "figure-accent",
+      "figure-warm",
+      "figure-gold",
+      "info-accent",
+      "strand-operations",
+      "muted-text",
+    ])
+      need(ink, "surface", TEXT);
   // A meter's fill reads on the page and on a card.
   need("meter", "surface", UI);
   need("meter", "surface-raised", UI);
