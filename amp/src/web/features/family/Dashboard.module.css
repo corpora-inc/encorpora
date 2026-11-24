@@ -114,15 +114,25 @@
   color: var(--color-muted-text);
   font-size: var(--text-table);
 }
-.skill {
+/* A skill in the sheet of a child's last problems: the row is the link. */
+.sheetSkill {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  align-self: stretch;
+  min-width: 0;
+  padding-block: var(--space-2);
   color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--color-border-strong);
-  text-underline-offset: 3px;
+  font-size: var(--text-table);
+  line-height: 1.35;
+  text-decoration: none;
 }
-.skill:hover {
+.sheetSkill:hover {
   color: var(--color-primary);
-  text-decoration-color: currentColor;
+}
+.sheetSkill:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
 }
 
 /* An area's skills not asked yet: a quiet link to the sheet. */

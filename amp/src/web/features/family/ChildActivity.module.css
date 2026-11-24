@@ -15,6 +15,11 @@
 .figure {
   margin: 0;
 }
+/* Scrolled to by its address (#child-time, a one-child family's "See the
+   time report"): the page's own space under the bar. */
+.head h2 {
+  scroll-margin-top: var(--page-top);
+}
 .head > :last-child {
   min-width: 160px;
 }

@@ -147,6 +147,20 @@ const CHILD = new RegExp(
   "i",
 );
 
+const FAMILY = new RegExp(`^/family/(${UUID})(?:/|$)`, "i");
+/** The family whose screen an address is (`/family/<family>/…`: Today, a
+ * child's page, Settings), or null. */
+export const familyOf = (pathname: string) =>
+  FAMILY.exec(pathname)?.[1]?.toLowerCase() ?? null;
+
+const CLASS = /^\/school\/[^/]+\/classes\/([^/]+)(?:\/|$)/;
+/** The class whose screen an address is (`/school/<org>/classes/<class>/…`,
+ * a family's own class too), or null. */
+export const classOf = (pathname: string) => {
+  const found = CLASS.exec(pathname)?.[1];
+  return found ? decodeURIComponent(found).toLowerCase() : null;
+};
+
 /** The canonical address of a family's child's screen. */
 export const childPath = (
   family: string,

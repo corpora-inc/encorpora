@@ -27,6 +27,9 @@ export type DataGridColumn<Row> = {
   headerDetail?: ReactNode;
   /** The smallest this column may be, in px; spare room is shared out. */
   width: number;
+  /** This column takes the spare room, and the others keep their widths
+   * (a name beside figures: the figures need no more than they have). */
+  grow?: boolean;
   align?: "start" | "end";
   compare?: (a: Row, b: Row) => number;
   /** The first direction a click sorts in. */
@@ -412,6 +415,10 @@ function Table<Row>({
 
   const totalWidth = columns.reduce((sum, column) => sum + column.width, 0);
   const scrolls = totalWidth > available;
+  // A fixed table shares spare room among columns with no width of their
+  // own: with a growing column, only it has none (the table's minimum
+  // width still holds it to its own).
+  const grows = columns.some((column) => column.grow);
   return (
     <div
       ref={scroller}
@@ -440,7 +447,12 @@ function Table<Row>({
       >
         <colgroup>
           {columns.map((column) => (
-            <col key={column.id} style={{ width: column.width }} />
+            <col
+              key={column.id}
+              style={{
+                width: grows && column.grow ? undefined : column.width,
+              }}
+            />
           ))}
         </colgroup>
         <thead>

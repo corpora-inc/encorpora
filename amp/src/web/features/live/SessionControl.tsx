@@ -4,7 +4,7 @@ import { Button } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { Segmented } from "../../ui/Segmented";
 import { Stepper } from "../../ui/Stepper";
-import { clockText } from "./format";
+import { clockText, sessionLength } from "./format";
 import styles from "./SessionControl.module.css";
 
 /** A session's planned lengths, in minutes; `null` is no set length. */
@@ -106,17 +106,13 @@ function Ended({
   endedAt,
   actions,
 }: NonNullable<SessionControlProps["ended"]>) {
-  const minutes = Math.max(
-    0,
-    Math.round((endedAt - Date.parse(startedAt)) / 60_000),
-  );
   return (
     <>
       <span className={styles.ended}>Ended</span>
       <span className={styles.endedWhen}>
         <span className={styles.endedTime}>{timeOfDay(endedAt)}</span>
         <span className={styles.detail}>
-          {minutes < 1 ? "under a minute" : `${minutes} min`}
+          {sessionLength(startedAt, endedAt)}
         </span>
       </span>
       <span className={styles.endedActions}>{actions}</span>

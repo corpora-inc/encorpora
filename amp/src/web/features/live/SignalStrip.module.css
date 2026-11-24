@@ -84,6 +84,12 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+/* A request's name in the strip: whole words (ui/FitText). */
+.chipName {
+  --fit-line: 1.25;
+  font-size: var(--text-table);
+  font-weight: 650;
+}
 .what {
   overflow: hidden;
   font-size: var(--text-table-small);

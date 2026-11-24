@@ -1,10 +1,18 @@
-import { childAddress, practiceParams } from "../spaces/identity";
+import {
+  addressedIdentity,
+  classOf,
+  familyOf,
+  practiceParams,
+} from "../spaces/identity";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useLocation } from "@tanstack/react-router";
-import { useLearningView } from "../../lib/learning-view";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { strandNames } from "../../BirthYearPrompt";
+import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useSession } from "../../lib/session";
 import { Button, buttonClass } from "../../ui/Button";
-import { familyOptions } from "../family/api";
+import { familyOptions, familyPlacesOptions } from "../family/api";
+import { useStartOwnPractice } from "../me/api";
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import type { PracticeFilter } from "./curriculum-filter";
 
@@ -16,22 +24,118 @@ export function PracticeLabel() {
   );
 }
 
-/** A learner's own session starts directly. A parent browsing a child's
- * curriculum starts that child directly, keeping their record distinct. */
-export function CurriculumPractice({ filter }: { filter: PracticeFilter }) {
+/**
+ * Whose curriculum a control sits in, where the address alone doesn't say:
+ * the learner its layer was opened for (a child's block on a family's
+ * Today, `?for=`, nav/entities.ts), or the roster person whose record or
+ * answer it was opened over.
+ */
+export type OpenedFor = { learner?: string; person?: string };
+
+type Named = OpenedFor & {
+  /** The child the page's own address names (`/family/<f>/kids/<child>`). */
+  addressed?: string;
+};
+type OwnChild = {
+  id: string;
+  classes: readonly { personId: string }[];
+};
+
+/**
+ * The family's child a practice control on a family's screen starts, from
+ * what names them, nearest first: the answer it was opened over, the
+ * learner its layer was opened for, the page's own child. Null when the one
+ * named isn't the family's own child (an id from an edited address): no
+ * control. Undefined when nobody is named: nobody's child, so the adult's
+ * own practice. Never the learner last selected on this device. Pure.
+ */
+export function practiceChild<Child extends OwnChild>(
+  children: readonly Child[],
+  named: Named,
+): Child | null | undefined {
+  if (named.person)
+    return (
+      children.find((child) =>
+        child.classes.some((entry) => entry.personId === named.person),
+      ) ?? null
+    );
+  const id = named.learner ?? named.addressed;
+  if (!id) return undefined;
+  return children.find((child) => child.id === id) ?? null;
+}
+
+/** What the control practices, for its name: the problem type, the skill
+ * or the area's title. Nothing for mixed practice, or while titles load. */
+function useFocusTitle(filter: PracticeFilter, enabled: boolean) {
+  const catalog = useQuery({ ...skillCatalogOptions, enabled });
+  if (filter.template)
+    return catalog.data?.templates.find((type) => type.id === filter.template)
+      ?.title;
+  if (filter.skill)
+    return catalog.data?.skills.find((skill) => skill.id === filter.skill)
+      ?.title;
+  return filter.strand ? strandNames[filter.strand] : undefined;
+}
+
+/**
+ * Practice from the curriculum: an area, a skill or a problem type.
+ *
+ * On a family's screen it is for the child the control is about: the one
+ * its layer was opened for or whose answer it sits over (`opened`), else
+ * the page's own child. It starts as that child's own Practice button does
+ * (the hand-over: their session, their record), held to this filter. Where
+ * a family's screen names no child, it is the adult's own, as their row on
+ * Today offers it: the press takes the adult as the learner, starting their
+ * own practice if they haven't yet. A learner's own session starts
+ * directly.
+ *
+ * In a school or class nobody answers as a student, with one exception: a
+ * parent in their own family's class (a tutoring group, which keeps its
+ * class address) over their own child's record or answer starts that
+ * child's practice, as on the family's screens. Never for another family's
+ * child, and never for staff who are not that child's parent.
+ */
+export function CurriculumPractice({
+  filter,
+  opened,
+}: {
+  filter: PracticeFilter;
+  opened?: OpenedFor;
+}) {
   const location = useLocation();
-  const child = childAddress(location.pathname);
+  const family = familyOf(location.pathname);
   const view = useLearningView({ records: false });
-  if (child && view.session.data)
-    return <FamilyPractice child={child} filter={filter} />;
-  // A class record is not permission to answer as one of its students.
-  if (
-    child ||
-    location.pathname.startsWith("/school/") ||
-    !view.canPractice ||
-    view.viewOnly
-  )
-    return null;
+  if (family)
+    return view.session.data ? (
+      <FamilyPractice
+        family={family}
+        named={{
+          ...opened,
+          addressed: addressedIdentity(location.pathname)?.id,
+        }}
+        // A layer opened for one child on a screen of several names its
+        // skill, and takes the place of the link that was there.
+        detailed={!!opened?.learner}
+        own={{
+          learner: view.account?.adultPractice?.learner?.id,
+          eligible: view.account?.adultPractice?.eligible === true,
+        }}
+        filter={filter}
+      />
+    ) : null;
+  // A class record is not permission to answer as one of its students:
+  // only their own parent's, in the family's own class.
+  if (location.pathname.startsWith("/school/")) {
+    const classId = classOf(location.pathname);
+    return classId && opened?.person && view.session.data ? (
+      <ClassChildPractice
+        classId={classId}
+        person={opened.person}
+        filter={filter}
+      />
+    ) : null;
+  }
+  if (!view.canPractice || view.viewOnly) return null;
   // Practice held to this area, skill or type, at its own address.
   if (!view.learner) return null;
   return (
@@ -46,30 +150,152 @@ export function CurriculumPractice({ filter }: { filter: PracticeFilter }) {
   );
 }
 
-function FamilyPractice({
-  child,
+/** Over a student's record or answer in a class: their practice, when the
+ * class is this account's own family's (as its parent, never as a
+ * co-teacher) and the student is one of that family's own children. */
+function ClassChildPractice({
+  classId,
+  person,
   filter,
 }: {
-  child: NonNullable<ReturnType<typeof childAddress>>;
+  classId: string;
+  person: string;
+  filter: PracticeFilter;
+}) {
+  const session = useSession();
+  const places = useQuery(familyPlacesOptions(session)).data;
+  const family = places?.families.find(
+    (entry) => entry.classId === classId && entry.role !== "co-teacher",
+  )?.familyId;
+  return family ? (
+    <FamilyPractice
+      family={family}
+      named={{ person }}
+      detailed
+      own={NOBODY}
+      filter={filter}
+    />
+  ) : null;
+}
+
+/** The adult's own practice: their learner once they practice themselves,
+ * and whether they may start. */
+type Own = { learner: string | undefined; eligible: boolean };
+const NOBODY: Own = { learner: undefined, eligible: false };
+
+/**
+ * Nobody's child: the adult's own practice, as their row on Today offers
+ * it. Straight in once they practice themselves; before that the press
+ * starts their own practice and goes there (the founder, 2026-11-23: "the
+ * practice click just selects the adult as the learner"). An adult who
+ * can't practice themselves is offered nothing.
+ */
+function OwnPractice({
+  own,
+  filter,
+  focus,
+}: {
+  own: Own;
+  filter: PracticeFilter;
+  /** What it practices, for its name. */
+  focus: string | undefined;
+}) {
+  const session = useSession();
+  const navigate = useNavigate();
+  const start = useStartOwnPractice(session);
+  const [error, setError] = useState("");
+  const name = focus ? `Practice ${focus} as yourself` : undefined;
+  if (own.learner)
+    return (
+      <Link
+        to="/$"
+        params={practiceParams(own.learner, filter)}
+        className={buttonClass("primary")}
+        aria-label={name}
+        data-curriculum-practice
+        data-practice-for="self"
+      >
+        <PracticeLabel />
+      </Link>
+    );
+  if (!own.eligible) return null;
+  return (
+    <div
+      data-curriculum-practice
+      data-practice-for="self"
+      // The control fills the sheet's column, as the link does.
+      style={{ display: "grid" }}
+    >
+      <Button
+        variant="primary"
+        aria-label={name ?? "Practice as yourself"}
+        aria-busy={start.isPending || undefined}
+        onClick={() => {
+          if (start.isPending) return;
+          setError("");
+          void start
+            .mutateAsync(undefined)
+            .then((learner) =>
+              navigate({ to: "/$", params: practiceParams(learner, filter) }),
+            )
+            .catch((failure: unknown) => {
+              console.error("Own practice didn’t start", failure);
+              setError("Practice didn’t start. Try again.");
+            });
+        }}
+      >
+        <PracticeLabel />
+      </Button>
+      {error && <p role="alert">{error}</p>}
+    </div>
+  );
+}
+
+function FamilyPractice({
+  family,
+  named,
+  detailed,
+  own,
+  filter,
+}: {
+  family: string;
+  named: Named;
+  detailed: boolean;
+  own: Own;
   filter: PracticeFilter;
 }) {
   const session = useSession();
   const location = useLocation();
-  const family = useQuery(familyOptions(session, child.family));
+  const data = useQuery(familyOptions(session, family)).data;
   const { handOver, starting, error } = useHandOver(session);
-  const learner = family.data?.children.find(
-    (entry) => entry.id === child.learner,
-  );
-  if (!learner?.capabilities.practiceHere || !learner.access.canPractice)
+  const focus = useFocusTitle(filter, detailed);
+  // Only this family's own children, whatever the address names.
+  const children = data?.familyId === family ? data.children : [];
+  const child = practiceChild(children, named);
+  // Nobody's child: the adult's own practice, as their row on Today.
+  if (child === undefined)
+    return <OwnPractice own={own} filter={filter} focus={focus} />;
+  // The same permissions as the child's own row: never a button that fails.
+  if (!child?.capabilities.practiceHere || !child.access.canPractice)
     return null;
   return (
-    <div data-curriculum-practice>
+    <div
+      data-curriculum-practice
+      data-practice-for={child.id}
+      // In a layer over a screen of several children the control fills the
+      // sheet's column, as the link it took the place of did.
+      style={detailed ? { display: "grid" } : undefined}
+    >
       <Button
         variant="primary"
-        aria-label={`Practice with ${learner.name}`}
+        aria-label={
+          detailed && focus
+            ? `Practice ${focus} with ${child.name}`
+            : `Practice with ${child.name}`
+        }
         aria-busy={!!starting || undefined}
         onClick={() => {
-          if (!starting) void handOver(learner.id, filter, location.href);
+          if (!starting) void handOver(child.id, filter, location.href);
         }}
       >
         <PracticeLabel />

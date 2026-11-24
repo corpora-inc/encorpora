@@ -59,7 +59,22 @@ stdin, keeping addresses and bodies out of shell history:
 ```sh
 npm run acquisition:pipeline -- report > /private/pipeline.json
 npm run acquisition:pipeline -- apply < /private/command.json
+npm run acquisition:pipeline -- apply-batch < /private/commands.json
 ```
+
+In a production pod, run the bundled command on plain node, never through
+`npm run` or tsx. A pod serves close to its memory limit and a process started
+in it shares that limit; compiling TypeScript there has killed the API.
+
+```sh
+node src/acquisition/cli.mjs apply-batch < /private/commands.json
+```
+
+`apply-batch` takes a JSON array of commands and applies them in order in one
+process, each in its own transaction. A failed command is reported by its
+position and the rest still run; the exit status is 1 if any failed. Because
+every command is idempotent, send the same batch again after fixing the cause.
+Use it for a mailing: one `import-sent` per recipient.
 
 Commands are validated by `pipelineCommandSchema` in
 `src/acquisition/pipeline.ts`. Each mutation requires `email` and a stable

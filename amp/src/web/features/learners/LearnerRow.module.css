@@ -21,7 +21,14 @@
   display: flex;
   align-items: center;
   min-width: 0;
+  /* A long name is cut at the column's end, and only there: a name link's
+     highlight and focus ring step out before the name and above and below
+     it, and show whole (the room before it is given back as margin, so the
+     name starts on the row's edge). */
+  margin-inline-start: calc(-1 * var(--space-3));
+  padding-inline-start: var(--space-3);
   overflow: hidden;
+  overflow: clip visible;
   font-weight: 600;
   white-space: nowrap;
 }

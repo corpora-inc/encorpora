@@ -5,8 +5,11 @@
   gap: var(--space-3);
   min-width: 0;
 }
+/* Scrolled to by its address (a family's "See the time report"), the
+   heading rests the page's own space under the bar, never flush to it. */
 .heading {
   margin: 0;
+  scroll-margin-top: var(--page-top);
 }
 .facts {
   display: flex;

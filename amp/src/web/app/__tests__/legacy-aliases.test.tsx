@@ -853,7 +853,9 @@ test("an older inventory link's view lands in its view store, keyed by the scree
     useInventoryViewStore.getState().views[
       layerScope("/inventory", SESSION.accountId)
     ],
-  ).toEqual({ topic: "fractions", collection: "all", area: "geometry" });
+    // An older link says nothing of how the list is sliced: the screen's own
+    // default stays (inventory-view.ts `view`, `grade`).
+  ).toMatchObject({ topic: "fractions", collection: "all", area: "geometry" });
 });
 
 test("signed out, /try keeps the free trial as why the tab signs up", async () => {

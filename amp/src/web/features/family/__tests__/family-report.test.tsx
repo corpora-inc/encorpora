@@ -16,7 +16,7 @@ import type {
 import { reportStatus, reportTotals } from "../../../../schools/live/status";
 import { queryClient, sessionOptions } from "../../../lib/query";
 import { Report } from "../../school/classes/SessionReportScreen";
-import { FAMILY_REPORT_WORDS } from "../FamilyReport";
+import { ChildReportRow, FAMILY_REPORT_WORDS } from "../FamilyReport";
 import { PastSessions } from "../PastSessions";
 import { sessionsOptions } from "../../live/api";
 
@@ -214,6 +214,66 @@ test("levels: grade words for a child whose setting is on, a blank for the rest"
   // None on: no Level column at all.
   expect(screen.queryByText("Level")).toBeNull();
   expect(document.body.textContent).not.toContain("Gr 4");
+});
+
+test("on a phone each child is a row of their own: every fact under the table's own name, every skill whole", async () => {
+  const long = {
+    id: "s2",
+    title: "Equations for addition and subtraction stories",
+    strand: "Operations",
+  };
+  const helped = rows.map((entry, index) =>
+    index === 0 ? { ...entry, skills: [skill, long], hints: 2 } : entry,
+  );
+  await mount(
+    <Report
+      report={{ ...report, rows: helped, totals: reportTotals(helped) }}
+      className={undefined}
+      kit={{
+        ...kit((id) => id === person(1)),
+        card: (entry, columns) => (
+          <ChildReportRow row={entry} columns={columns} />
+        ),
+      }}
+    />,
+  );
+  // (The test's page has no width: the grid is in its phone form.)
+  const child = (n: number) =>
+    document.querySelector<HTMLElement>(`[data-report-child="${person(n)}"]`)!;
+  expect(document.querySelectorAll("[data-report-child]").length).toBe(3);
+  const facts = (n: number) =>
+    Object.fromEntries(
+      [...child(n).querySelectorAll("dl > div")].map((fact) => [
+        fact.querySelector("dt")!.textContent,
+        fact.querySelector("dd")!.textContent,
+      ]),
+    );
+  const pip = facts(1);
+  expect(pip.Problems).toBe("8");
+  expect(pip.Correct).toBe("75%");
+  expect(pip["On their own"]).toBe("5");
+  expect(pip["Right with help"]).toBe("1");
+  expect(pip.Level).toBe("Gr 4");
+  expect(Object.keys(pip)).toContain("Help opened");
+  expect(
+    child(1).querySelector('[aria-label^="Help:"]')?.getAttribute("aria-label"),
+  ).toBe("Help: 2 hints, 0 lessons, 0 explanations, 0 videos");
+  // The name opens the child's page; how they ended is said beside it.
+  expect(
+    child(1).querySelector("a[data-child-link]")?.getAttribute("href"),
+  ).toBe(`/family/${family}/kids/${learner(1)}`);
+  expect(child(1).textContent).toContain("At the endWorking");
+  expect(child(3).textContent).toContain("At the endNot started");
+  // Every skill by its whole name, each a link, in a line that wraps.
+  const skills = child(1).querySelector("[data-report-child-skills]")!;
+  expect(skills.textContent).toBe(
+    "Skills Adding fractions, Equations for addition and subtraction stories",
+  );
+  expect(skills.querySelectorAll("a").length).toBe(2);
+  // No skills, no line; a level kept off, no Level.
+  expect(child(2).querySelector("[data-report-child-skills]")).toBeNull();
+  expect(Object.keys(facts(2))).not.toContain("Level");
+  expect(document.body.textContent).not.toMatch(FOREIGN);
 });
 
 test("past sessions: nothing before the first has ended; then a line each, opening its report", async () => {

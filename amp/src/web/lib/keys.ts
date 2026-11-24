@@ -102,6 +102,10 @@ export const qk = {
    * "guest") (features/practice/practice-settings.ts). */
   practiceSettings: (identity: string, learner: string) =>
     ["practice-settings", identity, learner] as const,
+  /** Every practice settings one identity has read: what a change made
+   * for them elsewhere (their class's look) invalidates. */
+  practiceSettingsOf: (identity: string) =>
+    ["practice-settings", identity] as const,
   /** What one answer changed, under its practice's scope (an account and
    * learner, never a credential) (features/practice/AnswerFeedback.tsx). */
   answerFeedback: (scope: readonly string[], outcome: string) =>
