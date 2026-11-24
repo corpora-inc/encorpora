@@ -1,12 +1,9 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { signOut } from "../../auth";
-import {
-  goHandedHome,
-  handedHomeIsBack,
-  handedHomePath,
-} from "../../lib/handed-home";
+import { closesBack, closeTo } from "../../lib/return-to";
 import { useAccountOnHand } from "../../lib/session";
 import {
+  handedHome,
   handedReturnName,
   handedStudentDevice,
 } from "../../lib/student-device";
@@ -57,9 +54,9 @@ export function StudentSignOut({ inBar = false }: { inBar?: boolean }) {
  */
 function HandedHome({ inBar }: { inBar: boolean }) {
   const label = handedReturnName() ?? "Family";
-  // The screen itself, by its path (lib/handed-home.ts): the menu's "Back
-  // to family" goes the same way (`goHandedHome`).
-  const home = handedHomePath();
+  // The screen itself, by its path: what was open over it (a layer) is
+  // the layer store's (nav/layer-store.ts), never carried in an address.
+  const home = new URL(handedHome(), "https://amp.invalid").pathname;
   const router = useRouter();
   return (
     <Link
@@ -73,11 +70,11 @@ function HandedHome({ inBar }: { inBar: boolean }) {
           event.shiftKey ||
           event.altKey ||
           event.button !== 0 ||
-          !handedHomeIsBack(router)
+          !closesBack(router.history.location, home, home)
         )
           return;
         event.preventDefault();
-        goHandedHome(router);
+        closeTo(router, home, home);
       }}
       // Hovering must never load the parent's screen with the child's
       // sign-in; the press itself hands the device back.

@@ -63,11 +63,8 @@
  *
  * Last, coming back: a parent scrolled down to a child's block starts that
  * child's practice (their row, a skill not asked yet, a skill behind their last
- * their block) and returns by Back or by the menu's "Back to family" (a
- * problem's bar holds no way home of its own). Today is where they left it,
- * the block at the same place on screen, at each width. And a child's
- * practice opened by its address alone returns, by the menu, to the child's
- * family.
+ * their block) and returns by the bar's family mark or by Back. Today is
+ * where they left it, the block at the same place on screen, at each width.
  *
  * The table of every press and return goes to <out>/presses.json.
  */
@@ -1254,7 +1251,7 @@ try {
     // ---- coming back is where the parent was ------------------------------
     // A parent scrolls down to a child's block, starts their practice (their
     // row, a skill not asked yet, a skill behind their last problems), and
-    // comes back by Back or by the menu's "Back to family": Today is where they
+    // comes back by the bar's family mark or by Back: Today is where they
     // left it, the child's block at the same place on screen, never at the
     // top of the page (QA 2026-11-23).
     for (const width of WIDTHS) {
@@ -1303,9 +1300,7 @@ try {
           };
         }, block);
       for (const way of ways)
-        // A problem's bar holds only the problem's tools: from practice the
-        // way home is the menu's "Back to family", or the browser's Back.
-        for (const back of ["Back", "the menu’s Back to family"] as const) {
+        for (const back of ["the family mark", "Back"] as const) {
           const where = `${slug} ${width}px, ${child.name}, ${way.name}, back by ${back}`;
           const at = await open(
             who,
@@ -1339,13 +1334,11 @@ try {
             await page.waitForURL((url) => FOCUS.test(url.pathname), {
               timeout: 20_000,
             });
-            await page.locator(".problem-stage").waitFor({ timeout: 30_000 });
+            const mark = page.locator("[data-handed-home]").first();
+            await mark.waitFor({ timeout: 20_000 });
             await page.waitForLoadState("networkidle").catch(() => undefined);
             if (back === "Back") await page.goBack();
-            else {
-              await page.getByRole("button", { name: "Open AMP menu" }).click();
-              await page.getByRole("button", { name: /^Back to / }).click();
-            }
+            else await mark.click();
             await page.waitForURL((url) => url.pathname === today, {
               timeout: 20_000,
             });
@@ -1372,44 +1365,6 @@ try {
             await at.context.close();
           }
         }
-      // A child's practice opened by its address alone (typed, a bookmark,
-      // a plain link): the device is handed over by the address
-      // (lib/family-practice-history.ts), and the menu's way back is still
-      // the child's family.
-      {
-        const where = `${slug} ${width}px, ${child.name}, practice by its address, back by the menu’s Back to family`;
-        const at = await open(
-          who,
-          width,
-          {
-            name: "their practice",
-            path: `/practice/${child.id}`,
-            ready: ".problem-stage",
-            scope: "body",
-          },
-          [],
-          other,
-        );
-        try {
-          const { page } = at;
-          await page.waitForLoadState("networkidle").catch(() => undefined);
-          await page.getByRole("button", { name: "Open AMP menu" }).click();
-          await page.getByRole("button", { name: /^Back to / }).click();
-          await page.waitForURL((url) => url.pathname === today, {
-            timeout: 20_000,
-          });
-          await page.locator(block).waitFor({ timeout: 30_000 });
-          await settle(page);
-          const after = await place(page);
-          const ok = after.path === today && after.top !== null;
-          returns.push({ where, before: { y: 0, top: null }, after, ok });
-          if (!ok) fail(`${where}: came back to ${after.path}`);
-        } catch (error) {
-          fail(`${where}: ${String(error).split("\n")[0]!.slice(0, 160)}`);
-        } finally {
-          await at.context.close();
-        }
-      }
       const mine = returns.filter((entry) =>
         entry.where.startsWith(`${slug} ${width}px`),
       );
