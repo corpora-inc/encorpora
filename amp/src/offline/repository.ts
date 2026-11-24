@@ -218,6 +218,7 @@ export class OfflineRepository {
           // SAT practice adapts inside its mapped pool, including its floor.
           // General offline practice retains its strict learner ceiling.
           strictCeiling: !satMathFocus,
+          chosen: satMathFocus,
           learnerKey: learner,
         }),
       );

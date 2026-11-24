@@ -60,6 +60,18 @@ export const practicePolicySchema = z
         probeUncertainty: 1,
         workingReach: 0.5,
       }),
+    /** Climbing from a grade start by coverage (learning/coverage.ts).
+     * Absent, as in policies saved before it, it is off. */
+    coverage: z
+      .object({
+        enabled: z.boolean(),
+        skills: z.number().int().min(1).max(100),
+        areas: z.number().int().min(1).max(5),
+        step: grades,
+        probeRise: grades,
+      })
+      .strict()
+      .default({ enabled: false, skills: 12, areas: 3, step: 1, probeRise: 1 }),
     support: z
       .object({
         reserveSlot: z.boolean(),
@@ -190,9 +202,9 @@ export function assertPracticePolicy(policy: PracticePolicy): void {
     throw new Error("Use createPracticePolicy to validate practice parameters");
 }
 
-/** Current editorial behavior, expressed as an explicit reproducible parameter
- * set. Changing hypotheses requires a new object, not a global mutation. */
-export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
+/** The policy before a grade start climbed by coverage (2026-11-24), kept for
+ * paired comparisons (`scripts/simulate-placement-pace.ts`). */
+const fastClimbParameters = {
   schemaVersion: 1,
   version: "pathways-budget-v4-fast-climb",
   challenge: {
@@ -263,6 +275,19 @@ export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
     skills: { ...skillEmphasis },
     families: { ...familyEmphasis },
   },
+  coverage: { enabled: false, skills: 12, areas: 3, step: 1, probeRise: 1 },
+} satisfies PracticeParameters;
+export const FAST_CLIMB_PRACTICE_POLICY =
+  createPracticePolicy(fastClimbParameters);
+
+/** Current editorial behavior, expressed as an explicit reproducible parameter
+ * set. Changing hypotheses requires a new object, not a global mutation.
+ * A learner who starts from their grade (a birth year or a roster) climbs by
+ * coverage: `coverage` below, learning/coverage.ts. */
+export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
+  ...fastClimbParameters,
+  version: "pathways-budget-v5-grade-coverage",
+  coverage: { enabled: true, skills: 12, areas: 3, step: 1, probeRise: 1 },
 } satisfies PracticeParameters);
 
 /** A serializable mutable copy for deriving another experiment. */

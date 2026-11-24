@@ -743,6 +743,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
             count,
             seed: randomUUID(),
             learnerKey: learnerId,
+            // A skill someone chose, or SAT practice, is not held to the
+            // grades the learner has covered.
+            chosen: focusedPool.length > 0 || sat !== null,
             // Only the full mix holds back today's printed templates; a
             // chosen focus or a recovery pool is small enough that holding
             // back could push practice off level.
