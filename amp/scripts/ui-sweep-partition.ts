@@ -56,10 +56,16 @@ export function uiSweepPartition(
   return { shardIndex, shardCount, selectedIds, skip: skip === "1" };
 }
 
+/** The looks every template is checked in (src/learning/look.ts): a
+ * partition's evidence says it covered both. */
+export const UI_SWEEP_LOOKS = ["bold", "calm"] as const;
+
 export function uiSweepManifest(
   inventoryIds: readonly string[],
   partition: ReturnType<typeof uiSweepPartition>,
   completedIds: readonly string[],
+  /** The looks the whole partition completed in. */
+  looks: readonly string[],
 ) {
   assert.ok(!partition.skip, "A skipped sweep cannot emit completion evidence");
   assert.deepEqual(
@@ -67,8 +73,14 @@ export function uiSweepManifest(
     partition.selectedIds,
     "UI sweep did not complete its exact partition",
   );
+  assert.deepEqual(
+    [...looks].sort(),
+    [...UI_SWEEP_LOOKS],
+    "UI sweep did not complete its partition in both looks",
+  );
   return {
-    version: 1,
+    version: 2,
+    looks: [...UI_SWEEP_LOOKS],
     shardIndex: partition.shardIndex,
     shardCount: partition.shardCount,
     inventoryIds,

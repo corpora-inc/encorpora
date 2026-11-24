@@ -8,6 +8,23 @@
  */
 
 /* ── Things to press: a hard lower edge that goes down on a tap ──────── */
+/* A pressed control goes down a few pixels, and the strip it left stays its
+   own (`::before`, in the pressed control's own box: a transform makes it
+   the containing block). Without it a press on a control's top edge let go
+   over whatever was behind, and the click went there: the tap was lost. */
+:root[data-look="bold"]
+  :is(
+    .practice-workspace
+      :is(.next-action, form button[type="submit"]):not(:disabled),
+    .math-keypad button,
+    .answer-dock .choice-option,
+    .figure-choice-card
+  ):active::before {
+  content: "";
+  position: absolute;
+  inset: -3px 0 auto;
+  height: 3px;
+}
 :root[data-look="bold"]
   .practice-workspace
   :is(.next-action, form button[type="submit"]):not(:disabled) {
@@ -173,27 +190,36 @@
   font-size: 20px;
 }
 
-/* ── A new problem arrives: up from below, past its place, and settles ─ */
+/* ── A new problem arrives: in its place, as the world turns to its hue ─ */
+/* Opacity only, and only while it runs. The problem is in its place from
+   its first frame: nothing a child reads or presses moves under them, and
+   nothing that measures the problem as it mounts (the workspace, a drag's
+   boxes) reads a place it is only passing through. A transform here moved
+   every box in the problem for 220 ms. */
 @media (prefers-reduced-motion: no-preference) {
   :root[data-look="bold"] .practice-workspace .problem-content {
-    animation: colorful-problem-in 220ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+    animation: colorful-problem-in 220ms ease-out backwards;
   }
 }
-/* Translate only: the workspace measures the problem's box as it mounts. */
 @keyframes colorful-problem-in {
   from {
     opacity: 0;
-    transform: translateY(36px);
   }
 }
 
 /* A student's topic line (under the bar, below 640 px): the points chip
    sits at its end (celebration/stage.ts), which keeps the room for it on
-   every problem. The chip is 92 px on a phone and 104 px from 420 px. */
+   every problem. The chip is 92 px on a phone and 104 px from 420 px.
+   Beside the chip a skill's name often takes two lines where Calm gives it
+   one. The line keeps its 40 px for both (two lines of 14 px at 1.4 are
+   39.2 px; its own 4 px above and below would make that 47), so the chip's
+   room is never taken out of the problem's: the stage under it is as tall
+   as Calm's. */
 @media (max-width: 639px) {
   :root[data-look="bold"]:has([data-app-bar][data-space="student"])
     .practice-surface
     > .practice-topic {
+    padding-block: 0;
     padding-inline-end: 112px;
   }
 }

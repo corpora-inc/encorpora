@@ -22,6 +22,7 @@ import {
 } from "../src/math/multi-part-choice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
@@ -32,7 +33,9 @@ const shots =
   process.env.AMP_EVIDENCE_DIR ??
   new URL("../artifacts/multi-part-choice-ui/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
-const origin = "http://127.0.0.1:4480";
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4480);
+const origin = `http://127.0.0.1:${WEB_PORT}`;
 await migrate(database);
 const repository = new PostgresRepository(database, {
   development: true,
@@ -53,14 +56,15 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4481 });
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4480,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4481" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -236,7 +240,9 @@ const shown = (page: Page, i: number) =>
 
 let checked = 0;
 try {
-  for (const theme of ["light", "dark"] as const)
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes())
     for (const [width, height] of [
       [320, 568],
       [390, 844],
@@ -244,9 +250,10 @@ try {
       [1280, 800],
     ] as const) {
       const touch = width <= 390;
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width, height },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: touch,
         reducedMotion: width === 768 ? "reduce" : "no-preference",
       });
@@ -261,6 +268,7 @@ try {
       });
       await page.goto(`${origin}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const family of families) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);
