@@ -100,24 +100,24 @@ jobs:
     #
     # family-b6 and family-b7 are a live session's checks, each on its own
     # stack (amp/scripts/persona-stack.ts). Most of their time is the pace of
-    # the simulated children, not the machine. Measured on a laptop
-    # 2026-11-24, in minutes: family-b6 a family's live session (19) and an
-    # adult's time (2); family-b7 a class's live cockpit (13), the cockpit
-    # on fixtures (1) and a student's requests (6). family-b6 ends with the
-    # skill index and a student's sign-in (code, pictures, lockout and reset,
-    # cards and the board, in Chromium; about 4 minutes on a laptop. Both
-    # engines: `npm run test:school-sign-in-ui`), which were family-b5's.
+    # the simulated children, not the machine: family-b6 took 21 minutes
+    # on a laptop and 21 on a runner (2026-11-24). On the laptop, in
+    # minutes: family-b6 a family's live session (19) and an adult's time
+    # (2); family-b7 a class's live cockpit (13), a student's and a family
+    # child's requests (8), and the cockpit and a stopped session's report
+    # on fixtures (1 between them). family-b6 ends with the skill index and
+    # a student's sign-in (code, pictures, lockout and reset, cards and the
+    # board, in Chromium; about 4 minutes on a laptop. Both engines:
+    # `npm run test:school-sign-in-ui`), which were family-b5's.
     #
     # Not in a lane yet: Colorful's moments (`npm run test:celebration-ui`,
-    # for family-b6). It fails on a product fault: a student's practice
-    # opens a new live stream with every problem (the raised hand mounts
-    # with the problem), and each stream's first message reads the
-    # learner's practice-state again. The check grades its answers right on
-    # the way back, so that read puts the points back to the server's count
-    # and the tenth point never comes. With real right answers the moment
-    # plays. Add it to test:family-ui:b6 when practice asks nothing per
-    # problem again, after measuring its 50 ms long-task budget (at 6x CPU)
-    # on a runner: one task ran 51 ms on a laptop busy with another check.
+    # for family-b6). Its moments all play again, the tenth point too, now
+    # that a student's practice holds one live stream (it opened one with
+    # every problem, and each one's first message put the points back to
+    # the server's count). What keeps it out is its timing budget: no task
+    # over 50 ms at 6x CPU while only the animations run. On a laptop busy
+    # with other checks one ran 51 ms and, another time, 58. Measure it on
+    # a runner before adding it to test:family-ui:b6.
     timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'

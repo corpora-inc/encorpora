@@ -24,8 +24,8 @@
  */
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, type Page } from "playwright";
-import { createServer, type ViteDevServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
+import { startFixtureServer } from "./fixture-server";
 
 const chromium = secureChromium(rawChromium);
 const arg = (name: string) => {
@@ -41,17 +41,14 @@ const SPECIMENS = [
 ] as const;
 const HELP = ["Hints", "Lessons", "Explanations", "Videos"];
 
-let vite: ViteDevServer | undefined;
+let vite: Awaited<ReturnType<typeof startFixtureServer>> | undefined;
 let origin = arg("--origin");
 if (!origin) {
-  const port = Number(arg("--port") ?? 4863);
-  vite = await createServer({
-    configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-    server: { host: "127.0.0.1", port, strictPort: true },
-    logLevel: "warn",
+  vite = await startFixtureServer({
+    port: Number(arg("--port") ?? 4863),
+    name: "session-report",
   });
-  await vite.listen();
-  origin = `http://127.0.0.1:${port}`;
+  origin = vite.origin;
 }
 const shots = arg("--shots");
 if (shots) await mkdir(shots, { recursive: true });

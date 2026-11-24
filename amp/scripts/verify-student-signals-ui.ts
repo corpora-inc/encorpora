@@ -28,12 +28,14 @@
  *
  * By itself (as CI runs it, `npm run test:student-signals-ui`) it starts its
  * own stack on a fresh schema of AMP_TEST_DATABASE_URL
- * (scripts/persona-stack.ts) and has the simulator make the class:
+ * (scripts/persona-stack.ts) with the two people it signs in as, the class's
+ * teacher and the family's parent, and has the simulator make the class:
  *
  *     AMP_TEST_DATABASE_URL=postgres://…/amp_test \
  *     npx tsx scripts/verify-student-signals-ui.ts [--port 4890]
  *
- * Or against a running preview where the simulator has made the class once:
+ * Or against a running, seeded preview (scripts/design-preview.sh seeds both
+ * people) where the simulator has made the class once:
  *
  *     VERIFY_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/amp_scratch_l4b \
  *     VERIFY_API=http://127.0.0.1:4871 VERIFY_WEB=http://127.0.0.1:4870 \

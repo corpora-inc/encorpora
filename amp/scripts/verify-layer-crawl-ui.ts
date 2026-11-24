@@ -727,7 +727,16 @@ try {
         if (!ok) continue;
         if (!reachedRoutes.has(route.path))
           reachedRoutes.set(route.path, person);
-        if (screen && ours && !MISSING.test(body) && !ONBOARDING.test(body))
+        // The design gallery shows components out of their places (a class
+        // map's names, with no layers to open them in): reached as a
+        // route, never crawled as a place.
+        if (
+          screen &&
+          ours &&
+          !path.startsWith("/design") &&
+          !MISSING.test(body) &&
+          !ONBOARDING.test(body)
+        )
           pages.push({ type: ours, path });
       }
     };

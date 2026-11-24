@@ -23,6 +23,7 @@ export type Finding = {
     | "full-screen-hint"
     | "system-keyboard"
     | "skip-miss-mark"
+    | "clipped-mark"
     | "feedback-gap"
     | "motion-under-reduce"
     | "tinted-answer"
@@ -171,8 +172,7 @@ export async function probe(page: Page): Promise<Finding[]> {
             [-21, 0],
             [21, 0],
           ].map(
-            ([dx, dy]) =>
-              [Math.round(cx + dx!), Math.round(cy + dy!)] as const,
+            ([dx, dy]) => [Math.round(cx + dx!), Math.round(cy + dy!)] as const,
           );
           // Nor may the area cover any part of another control's visible
           // box: the word sits above its neighbours (z-index), so it would
@@ -190,7 +190,9 @@ export async function probe(page: Page): Promise<Finding[]> {
               continue;
             if (
               getComputedStyle(other).display.startsWith("inline") &&
-              other.parentElement?.closest("p, li, h1, h2, h3, legend, label, dd")
+              other.parentElement?.closest(
+                "p, li, h1, h2, h3, legend, label, dd",
+              )
             )
               continue;
             const o = other.getBoundingClientRect();
@@ -463,6 +465,82 @@ export async function probe(page: Page): Promise<Finding[]> {
             text: text(e),
             detail: "a skipped part is marked as a miss",
           });
+    // A result mark is drawn whole: its ring (a spread shadow) and outline
+    // lie inside everything that clips it. A mark the learner has scrolled
+    // partly away is the scroller at work; a mark shown whole whose ring is
+    // cut flat by the scroller's edge is the defect.
+    for (const mark of document.querySelectorAll(".feedback .result-mark")) {
+      if (!visible(mark)) continue;
+      const style = getComputedStyle(mark);
+      const box = mark.getBoundingClientRect();
+      // How far the mark paints past its box: [left, top, right, bottom].
+      const past = [0, 0, 0, 0];
+      if (style.outlineStyle !== "none") {
+        const outline =
+          parseFloat(style.outlineWidth) +
+          Math.max(0, parseFloat(style.outlineOffset) || 0);
+        for (let side = 0; side < 4; side++) past[side] = outline;
+      }
+      // Layers split at the commas outside a color's parentheses.
+      for (const layer of style.boxShadow.split(/,(?![^(]*\))/)) {
+        if (layer.trim() === "none" || /\binset\b/.test(layer)) continue;
+        const [x = 0, y = 0, blur = 0, spread = 0] = (
+          layer.replace(/[a-z-]+\([^)]*\)/gi, "").match(/-?[\d.]+px/g) ?? []
+        ).map(parseFloat);
+        const reach = blur + spread;
+        past[0] = Math.max(past[0]!, reach - x);
+        past[1] = Math.max(past[1]!, reach - y);
+        past[2] = Math.max(past[2]!, reach + x);
+        past[3] = Math.max(past[3]!, reach + y);
+      }
+      for (let p = mark.parentElement; p; p = p.parentElement) {
+        const ps = getComputedStyle(p);
+        const scrolls =
+          ps.overflowX !== "visible" || ps.overflowY !== "visible";
+        const masks =
+          ps.maskImage !== "none" ||
+          ps.clipPath !== "none" ||
+          /paint|strict|content/.test(ps.contain);
+        if (!scrolls && !masks) continue;
+        const r = p.getBoundingClientRect();
+        // A scroller clips at its padding edge; a mask at its border edge.
+        const clip = scrolls
+          ? [
+              r.left + p.clientLeft,
+              r.top + p.clientTop,
+              r.left + p.clientLeft + p.clientWidth,
+              r.top + p.clientTop + p.clientHeight,
+            ]
+          : [r.left, r.top, r.right, r.bottom];
+        const whole =
+          box.left >= clip[0]! - 0.5 &&
+          box.top >= clip[1]! - 0.5 &&
+          box.right <= clip[2]! + 0.5 &&
+          box.bottom <= clip[3]! + 0.5;
+        const cut = [
+          clip[0]! - (box.left - past[0]!),
+          clip[1]! - (box.top - past[1]!),
+          box.right + past[2]! - clip[2]!,
+          box.bottom + past[3]! - clip[3]!,
+        ];
+        if (whole && cut.some((by) => by > 0.5))
+          found.push({
+            kind: "clipped-mark",
+            selector: name(p),
+            text: text(sheet ?? mark).slice(0, 30),
+            detail: `the mark's ring is cut by ${[
+              "left",
+              "top",
+              "right",
+              "bottom",
+            ]
+              .flatMap((side, k) =>
+                cut[k]! > 0.5 ? [`${cut[k]!.toFixed(1)}px at the ${side}`] : [],
+              )
+              .join(", ")}`,
+          });
+      }
+    }
     // The sheet is as tall as what it says: no empty band inside it.
     if (sheet && !dialog) {
       const parts = [...sheet.children].filter(
