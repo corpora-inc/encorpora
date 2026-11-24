@@ -103,10 +103,7 @@ const SKIP: Record<string, string> = {
  * Keyed `person route`. Remove a line when its screen is fixed; the check
  * fails on a listed one that no longer offends, so this list only shrinks.
  */
-const KNOWN: Record<string, string> = {
-  "second-parent /practice":
-    "bare /practice hops to the shared child's practice, then on to the family (2 hops before the first paint); the second hop's source is not yet found (2026-11-20, round F1)",
-};
+const KNOWN: Record<string, string> = {};
 
 /**
  * Every change of the screen's identity, from the document's first frame:
