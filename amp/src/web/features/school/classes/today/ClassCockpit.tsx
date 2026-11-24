@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import type {
+  LiveRow,
   LiveSignal,
   LiveSnapshot,
   LiveStatus,
@@ -65,6 +66,8 @@ export type CockpitWords = {
 export type ShortList = {
   /** Whether this person's level is shown (their "Show grade level"). */
   levelShown: (personId: string) => boolean;
+  /** At the end of a name's line on a phone (LiveRoster's `phoneAside`). */
+  phoneAside?: (row: LiveRow) => ReactNode;
 };
 
 /** What this adult may do here, from the class's `can`. */
@@ -367,6 +370,7 @@ export function ClassCockpit({
             short={!!short}
             statusWords={words.statusWords}
             levelShown={short?.levelShown}
+            phoneAside={short?.phoneAside}
           />
         }
       />

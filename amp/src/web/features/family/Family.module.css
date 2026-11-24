@@ -56,17 +56,18 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  /* 44 px to touch, whatever the name's length. */
-  min-height: 44px;
   box-sizing: border-box;
   justify-self: start;
   min-width: 0;
   max-width: 100%;
-  /* The hover fill keeps a label's room on each side; the text stays on
-     the column's edge. */
-  margin-inline: calc(-1 * var(--space-2));
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-small);
+  /* The highlight keeps the same room on every side of the name. Its box
+     steps out of the name's place by that room, so the name sits exactly
+     where it would with none and nothing moves on hover; above and below,
+     margin makes up the rest of the 44 px the row gives a name. */
+  margin: calc((44px - 1.25em - 2 * var(--space-2)) / 2)
+    calc(-1 * var(--space-2));
+  padding: var(--space-2);
+  border-radius: var(--radius-control);
   color: var(--color-on-surface);
   font-size: var(--text-heading-3);
   font-weight: 650;
@@ -74,7 +75,16 @@
   overflow-wrap: anywhere;
   text-decoration: none;
 }
-.kidName:hover {
+/* 44 px to touch, whatever the highlight's height. */
+a.kidName::after,
+button.kidName::after {
+  content: "";
+  position: absolute;
+  inset: calc((1.25em + 2 * var(--space-2) - 44px) / 2) 0;
+}
+/* Only a name that opens something answers the pointer ("You" is words). */
+a.kidName:hover,
+button.kidName:hover {
   background: var(--color-surface-hover);
 }
 .kidName:focus-visible {

@@ -155,6 +155,10 @@ export type LiveRosterProps = {
   /** Levels per row, where one screen shows some and not others (a child
    * whose grade level is switched off): wins over `showGradeNumbers`. */
   levelShown?: (personId: string) => boolean;
+  /** A phone's row has no Help column: what a screen puts at the end of the
+   * name's line in its place, in a fixed width of its own (a family's help
+   * marks). Not drawn on a tablet or a desktop. */
+  phoneAside?: (row: LiveRow) => ReactNode;
 };
 
 /**
@@ -381,6 +385,7 @@ function List(view: RosterView) {
                 />
               }
               badge={<Requests signals={bySignal.get(row.personId)} />}
+              aside={!tablet && view.phoneAside?.(row)}
               detail={detailLine(row, status, view)}
               facts={
                 tablet ? (

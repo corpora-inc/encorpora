@@ -8,7 +8,7 @@ import { LevelBar } from "../../ui/level-range";
 import { QrCode } from "../../ui/QrCode";
 import { Sheet } from "../../ui/Sheet";
 import { AreaRows, gradeSpan, type AreaRow } from "../learners/AreaRows";
-import { FocusMix } from "../learners/FocusMix";
+import { FocusLine, FocusSkills } from "../learners/FocusMix";
 import { WeekDots } from "../learners/WeekSummary";
 import { WeekSummary } from "../learners/WeekSummary";
 import { lastPracticed, percentRight } from "../learners/week-words";
@@ -93,12 +93,19 @@ export function ChildWeekFacts({
 /** The address of the sheet listing one area's skills not asked yet. */
 const notAskedSheet = (learner: string, area: string) =>
   `not-asked:${learner}:${area}`;
+/** The address of the sheet listing the skills behind a child's last
+ * problems. */
+const focusSheet = (learner: string) => `focus:${learner}`;
+/** What a child's line counts: "Last 20 problems". */
+const focusLabel = (answered: number) =>
+  answered === 1 ? "Last problem" : `Last ${answered} problems`;
 
 /**
  * What AMP is working on with a child and where they are, under their row:
- * the reasons behind their last problems, then the five areas with what
- * was checked below each and a way to the skills not asked yet. Before the
- * first answer, one line instead.
+ * one line counting their last problems by the reason each was chosen (the
+ * skills behind them open over Today, `FocusSheet`), then the five areas
+ * with what was checked below each and a way to the skills not asked yet.
+ * Before the first answer, one line instead.
  */
 export function ChildDashboard({
   child,
@@ -137,25 +144,12 @@ export function ChildDashboard({
   };
   return (
     <div className={styles.child}>
-      <FocusMix
+      <FocusLine
         answered={board.focus.answered}
         mix={board.focus.mix}
-        label={
-          board.focus.answered === 1
-            ? "Last problem"
-            : `Last ${board.focus.answered} problems`
-        }
-        skill={(skill) => (
-          <EntityLink
-            entity={{ kind: "skill", id: skill.id }}
-            // This child's block: the skill, and what opens over it, offers
-            // their practice, whoever was last selected on this device.
-            with={{ for: child.id }}
-            className={styles.skill}
-          >
-            {skill.title}
-          </EntityLink>
-        )}
+        label={focusLabel(board.focus.answered)}
+        openLabel={`${child.name}’s ${focusLabel(board.focus.answered).toLowerCase()}`}
+        onOpen={() => sheets.show(focusSheet(child.id))}
       />
       <AreaRows
         areas={board.areas}
@@ -193,6 +187,61 @@ function SkillsByGrade({ child }: { child: FamilyChild }) {
         <path d="m4.5 2.5 3.5 3.5-3.5 3.5" />
       </svg>
     </Link>
+  );
+}
+
+/**
+ * The skills behind a child's last problems, by the reason AMP chose each:
+ * every skill, each opening as it does anywhere on Today. Opened from the
+ * child's line over Today; the sheet lives in the history entry
+ * (nav/sheet.ts), so Back, ✕ and Escape close it to Today.
+ */
+export function FocusSheet({
+  dashboard,
+  children,
+}: {
+  dashboard: FamilyDashboard | undefined;
+  children: readonly FamilyChild[];
+}) {
+  const sheets = useSheetNav();
+  const open = useRouterState({
+    select: (state) => sheetOf(state.location.state),
+  });
+  const [kind, learner] = (open ?? "").split(":");
+  const child = children.find((entry) => entry.id === learner);
+  const board = dashboard?.children.find((entry) => entry.id === learner);
+  const focus = board?.focus;
+  const shown = kind === "focus" && !!child && !!focus?.answered;
+  const name = focusSheet(learner ?? "");
+  return (
+    <Sheet
+      open={shown}
+      onOpenChange={(next) => (next ? sheets.show(name) : sheets.close(name))}
+      title={
+        child && focus
+          ? `${child.name}’s ${focusLabel(focus.answered).toLowerCase()}`
+          : "Last problems"
+      }
+    >
+      {child && focus && (
+        <div data-focus-sheet={child.id}>
+          <FocusSkills
+            mix={focus.mix}
+            skill={(skill) => (
+              <EntityLink
+                entity={{ kind: "skill", id: skill.id }}
+                // This child's sheet: the skill, and what opens over it,
+                // offers their practice, whoever was last selected here.
+                with={{ for: child.id }}
+                className={styles.sheetSkill}
+              >
+                {skill.title}
+              </EntityLink>
+            )}
+          />
+        </div>
+      )}
+    </Sheet>
   );
 }
 

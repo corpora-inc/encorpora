@@ -8,11 +8,7 @@ import { liveEndedKey, useStartSession } from "../live/api";
 import { SessionControl } from "../live/SessionControl";
 import { useLiveClass } from "../live/useLiveClass";
 import { useLiveLength } from "../school/classes/today/live-sort";
-import {
-  familyCockpit,
-  loadFamilyCockpit,
-  warmFamilyCockpit,
-} from "./cockpit-chunk";
+import { loadFamilyCockpit, warmFamilyCockpit } from "./cockpit-chunk";
 import type { FamilyCockpitProps } from "./FamilyCockpit";
 import styles from "./FamilyLive.module.css";
 
@@ -61,13 +57,14 @@ export function FamilyLive(props: FamilyCockpitProps) {
 }
 
 /** The cockpit, once its chunk is in (the route's loader asks for it when a
- * session runs, so this is usually immediate). */
+ * session runs, so this is usually immediate). `use` is asked on every
+ * render, the chunk in or not: a component that waited with `use` and then
+ * finished without it is an error to React ("called use() to suspend in a
+ * previous render but did not call use() when it finished"), which a
+ * session started from another browser brought out. With the chunk in, its
+ * promise answers at once (cockpit-chunk.ts). */
 function Cockpit(props: FamilyCockpitProps) {
-  const Loaded = familyCockpit();
-  if (!Loaded) {
-    use(loadFamilyCockpit());
-    return null;
-  }
+  const Loaded = use(loadFamilyCockpit());
   return <Loaded {...props} />;
 }
 

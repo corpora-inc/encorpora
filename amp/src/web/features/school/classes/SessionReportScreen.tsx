@@ -100,6 +100,13 @@ export type ReportKit = {
   /** Whether a person's level is shown (a family's per-child setting);
    * every one by default. */
   levelShown?: (personId: string) => boolean;
+  /** One person's row on a phone, laid out by the screen from the table's
+   * own columns (a family's: FamilyReport.tsx). Without it, the grid's
+   * stacked row. */
+  card?: (
+    row: ReportRow,
+    columns: readonly DataGridColumn<ReportRow>[],
+  ) => ReactNode;
 };
 const KitContext = createContext<ReportKit>({
   words: CLASS_REPORT_WORDS,
@@ -454,6 +461,8 @@ export function Report({
     column: "status",
     direction: "ascending" as const,
   };
+  const everyColumns = columns(kit, rows);
+  const { card } = kit;
   return (
     <KitContext.Provider value={kit}>
       <article className={styles.page} data-session-report={session.id}>
@@ -528,7 +537,8 @@ export function Report({
           <h2 id="every-student">{words.every}</h2>
           <DataGrid
             label={words.everyLabel}
-            columns={columns(kit, rows)}
+            columns={everyColumns}
+            card={card && ((row) => card(row, everyColumns))}
             rows={rows}
             rowKey={(row) => row.personId}
             sort={sort}
