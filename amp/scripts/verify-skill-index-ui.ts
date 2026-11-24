@@ -138,11 +138,27 @@ try {
     });
     await stubAnalytics(context);
     const page = await context.newPage();
+    // What went wrong, and when: on the index and its layers, or while the
+    // device changes hands (the child's session starting, the parent's
+    // coming back), which is the hand-over's own ground.
+    let phase: "index" | "hand-over" = "index";
     const errors: string[] = [];
+    const refused: string[] = [];
     page.on("console", (message) => {
-      if (message.type() === "error") errors.push(message.text());
+      // A refused request is read from its response, with its address.
+      if (
+        message.type() === "error" &&
+        !message.text().startsWith("Failed to load resource")
+      )
+        errors.push(`${message.text()} [${phase}]`);
     });
-    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("pageerror", (error) => errors.push(`${error.message} [${phase}]`));
+    page.on("response", (answer) => {
+      if (answer.status() >= 400)
+        refused.push(
+          `${answer.status()} ${answer.request().method()} ${new URL(answer.url()).pathname} [${phase}]`,
+        );
+    });
     const at = (what: string) => `${what} (${width})`;
     const fits = async (what: string) =>
       assert.equal(
@@ -472,6 +488,7 @@ try {
       await page.waitForTimeout(700);
       await page.screenshot({ path: `${OUT}/skill-${width}-light.png` });
     }
+    phase = "hand-over";
     const handed = page.waitForRequest(
       (request) =>
         request.method() === "POST" &&
@@ -493,6 +510,14 @@ try {
       .waitFor({ timeout: 30_000 });
 
     assert.deepEqual(errors, [], at("no console error"));
+    assert.deepEqual(
+      refused.filter((entry) => entry.endsWith("[index]")),
+      [],
+      at("no request refused on the index"),
+    );
+    // Said, not failed here: the hand-over's own check is
+    // scripts/verify-child-practice-ui.ts.
+    for (const entry of refused) console.log(`  note (${width}): ${entry}`);
     await context.close();
     console.log(`  ok ${width}`);
   }
