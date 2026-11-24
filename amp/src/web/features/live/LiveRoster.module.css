@@ -24,6 +24,18 @@
   flex: 0 1 560px;
   min-width: 0;
 }
+/* The key to the help drawings (HelpKey), over the column that shows
+   them: one line with room, two on the narrowest phone, always there. */
+.helpKey {
+  flex: none;
+  justify-content: flex-end;
+  min-height: 24px;
+  margin-bottom: var(--space-1);
+  color: var(--color-muted-text);
+}
+.roster[data-layout="phone"] .helpKey {
+  justify-content: flex-start;
+}
 .head {
   display: flex;
   align-items: flex-end;

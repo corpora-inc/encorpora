@@ -205,3 +205,37 @@ test("on a tablet: a segmented sort", () => {
     version: 1,
   });
 });
+
+test("the key to the help drawings shows wherever a row shows them, and only there", () => {
+  const key = () => screen.queryByRole("list", { name: "Help opened" });
+  const terms = () =>
+    [...(key()?.querySelectorAll("li") ?? [])].map((item) => item.textContent);
+  const at = (width: number) =>
+    Object.defineProperty(window, "innerWidth", {
+      configurable: true,
+      value: width,
+    });
+  // A desktop's grid and a tablet's rows have a Help column.
+  for (const width of [1280, 768]) {
+    at(width);
+    render(<Roster rows={make()} sort={DEFAULT_LIVE_SORT} />);
+    expect(terms()).toEqual(["Hints", "Lessons", "Explanations", "Videos"]);
+    // The words are the key's; the drawings are hidden from a screen reader.
+    expect(key()!.querySelectorAll("svg[aria-hidden=true]")).toHaveLength(4);
+    cleanup();
+  }
+  // A phone's rows show no help drawings, so there is nothing to key…
+  at(390);
+  render(<Roster rows={make()} sort={DEFAULT_LIVE_SORT} />);
+  expect(key()).toBeNull();
+  cleanup();
+  // …unless the screen puts them at the end of the name's line.
+  render(
+    <Roster
+      rows={make()}
+      sort={DEFAULT_LIVE_SORT}
+      phoneAside={() => <span data-marks="" />}
+    />,
+  );
+  expect(terms()).toEqual(["Hints", "Lessons", "Explanations", "Videos"]);
+});
