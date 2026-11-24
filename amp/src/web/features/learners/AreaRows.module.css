@@ -44,12 +44,15 @@
   grid-area: level;
   min-width: 0;
 }
-/* One line, on the grades' own baseline. */
+/* One line, in the grade axis's own line box (LevelRange.module.css
+   `.axisLabel`: 13 px on 20), so the two heads share a baseline. */
 .checkedHead {
   grid-area: checked;
   min-width: 0;
+  color: var(--color-subtle-text);
+  font-size: 13px;
+  line-height: 20px;
   white-space: nowrap;
-  line-height: 1;
 }
 .rows {
   margin: 0;
