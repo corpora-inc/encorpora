@@ -50,6 +50,7 @@ export const frontierPolicySchema = z
         gradeSd: z
           .array(z.number().finite().min(0.1).max(10))
           .max(13)
+          .readonly()
           .optional(),
       })
       .strict(),
