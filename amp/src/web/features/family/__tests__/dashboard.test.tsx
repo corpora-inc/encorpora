@@ -166,11 +166,9 @@ test("a quiet week says when they last practiced; a new child, not started", () 
 });
 
 /** A family's Today, as far as a child's block and its sheet need it. */
+const auth = { accountId: "amp|parent", token: "synthetic" };
 async function onToday(body: React.ReactNode) {
-  queryClient.setQueryData(sessionOptions.queryKey, {
-    accountId: "amp|parent",
-    token: "synthetic",
-  });
+  queryClient.setQueryData(sessionOptions.queryKey, auth);
   const root = createRootRoute();
   const leaf = createRoute({
     getParentRoute: () => root,

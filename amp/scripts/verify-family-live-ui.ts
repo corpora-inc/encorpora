@@ -1091,7 +1091,7 @@ async function childBlocks(
     past: [...element.querySelectorAll<HTMLElement>("*")].filter(
       (part) => part.getBoundingClientRect().right > window.innerWidth,
     ).length,
-    more: /and \d+ more/.test(element.innerText),
+    more: /and \d+ more/.test((element as HTMLElement).innerText),
   }));
   const expected = (mixes.get(first.child) ?? []).flatMap((entry) =>
     entry.skills.map((skill) => skill.title),
