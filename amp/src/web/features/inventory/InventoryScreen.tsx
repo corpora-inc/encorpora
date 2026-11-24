@@ -12,6 +12,14 @@ import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
 import { useInventoryView } from "./inventory-view";
+import { GradeIndex } from "./GradeIndex";
+import {
+  gradeIndex,
+  inventoryMode,
+  viewedBand,
+  type InventoryMode,
+} from "./grade-index";
+import { Segmented } from "../../ui/Segmented";
 import {
   bandLabel,
   bands,
@@ -40,7 +48,14 @@ import {
    strong it is lately. The founder's reference for a dense screen: one flat
    list across the page's width, filters whose counts follow the search and
    the math area, and nothing that sits empty. A learner who hasn't answered
-   yet sees the whole curriculum they'll fill. */
+   yet sees the whole curriculum they'll fill.
+
+   Two ways to slice it, one switch. "By area" is that collection. "By
+   grade" is one grade as a flat index (GradeIndex.tsx): every skill of the
+   grade in teaching order under the five areas, where the learner stands
+   on each, and each skill's problem types. A grown-up reading a child's
+   opens by grade, on the child's own grade; a learner's own opens by area.
+   The choice is part of the view (inventory-view.ts). */
 
 type Filter = "tried" | "earned" | "strong" | "all";
 const filters: { id: Filter; label: string }[] = [
@@ -96,6 +111,12 @@ export function InventoryScreen() {
   const query = useDeferredValue(field.text.trim());
   // The math area, as Pathways names it (`?area=geometry`).
   const area = areaParam(inventoryView.area) ?? "";
+  // By grade or by area. Grade names show to grown-ups, and to a learner
+  // whose own screens show them: without them there is no view by grade.
+  const mode: InventoryMode = shown
+    ? inventoryMode(inventoryView.view, child)
+    : "area";
+  const band = viewedBand(inventoryView.grade, view.frontier);
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
@@ -148,8 +169,23 @@ export function InventoryScreen() {
   // Before the first answer the collection is the whole curriculum.
   const filter =
     readFilter(inventoryView.collection) ?? (triedAnything ? "tried" : "all");
-  const update = (values: { collection?: string; area?: string }) =>
-    inventoryView.set({ topic: field.carry(), ...values });
+  const update = (values: {
+    collection?: string;
+    area?: string;
+    view?: InventoryMode;
+    grade?: string;
+  }) => inventoryView.set({ topic: field.carry(), ...values });
+  // By grade: the grade's index, one area of it when one is chosen, and
+  // only the skills a search found.
+  const sections =
+    mode === "grade" && catalog.data
+      ? gradeIndex(
+          catalog.data,
+          band,
+          area || null,
+          needle ? new Set(matching.map((skill) => skill.id)) : undefined,
+        )
+      : [];
   const earnedInArea = inArea.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
@@ -186,6 +222,7 @@ export function InventoryScreen() {
     !child &&
     !triedAnything &&
     !inventoryView.collection &&
+    !inventoryView.view &&
     !query &&
     !area;
   if (hero)
@@ -200,7 +237,7 @@ export function InventoryScreen() {
       </main>
     );
   return (
-    <main className={styles.page}>
+    <main className={styles.page} data-inventory-mode={mode}>
       {/* The app frame's bar holds the logo, the Progress tabs and the way to
           practice; whose record this is shows in the drawer. */}
       <div className={styles.heading}>
@@ -248,6 +285,21 @@ export function InventoryScreen() {
               <Stat value={xp} label="XP" />
             </section>
           ) : null}
+          {shown && (
+            <div className={styles.viewSwitch}>
+              <Segmented<InventoryMode>
+                compact
+                dense
+                label="View"
+                value={mode}
+                onChange={(view) => update({ view })}
+                options={[
+                  { value: "grade", label: "By grade" },
+                  { value: "area", label: "By area" },
+                ]}
+              />
+            </div>
+          )}
           <div className={styles.filters}>
             <SiteSearchField
               field={field}
@@ -263,7 +315,7 @@ export function InventoryScreen() {
               onChange={(next) => update({ area: next || "" })}
             />
           </div>
-          {triedAnything && (
+          {mode === "area" && triedAnything && (
             <div
               className={styles.filterRow}
               role="group"
@@ -282,7 +334,18 @@ export function InventoryScreen() {
               ))}
             </div>
           )}
-          {needle ? (
+          {mode === "grade" ? (
+            <GradeIndex
+              band={band}
+              onBand={(grade) => update({ grade })}
+              sections={sections}
+              evidence={evidence}
+              searching={!!needle}
+              // Another person's (a child's) is named on paper; a learner's
+              // own names nobody.
+              who={child ? view.learner?.name : undefined}
+            />
+          ) : needle ? (
             <div
               className={styles.found}
               ref={keys.list}

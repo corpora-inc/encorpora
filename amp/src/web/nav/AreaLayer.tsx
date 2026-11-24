@@ -43,6 +43,9 @@ export type AreaSource = {
   objectives: ProgressRecord["objectives"];
   /** How the overall estimate moved; only where the page has it. */
   path?: readonly PathPoint[] | null;
+  /** What the page offers under the whole level (a child's skills by
+   * grade), drawn after its areas. */
+  overallMore?: ReactNode;
 };
 
 /** A record's level as an area layer reads it, in the record's own order. */
@@ -213,6 +216,7 @@ function OverallDetail({
           </ul>
         </section>
       )}
+      {source.overallMore}
       <SkillGroup
         title="Earned"
         empty={null}
