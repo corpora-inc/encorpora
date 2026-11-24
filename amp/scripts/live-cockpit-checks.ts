@@ -44,19 +44,28 @@ export const skillNames = (page: Page): Promise<SkillNames> =>
       }
       const shown = words.textContent ?? "";
       const kept = shown.replace(/…$/, "");
-      if (shown === title) whole++;
-      else if (name.dataset.fitWords === "0") {
+      if (name.dataset.fitWords === "0") {
         // The first word and its ellipsis are wider than the line: the one
-        // cut inside a word there is no way round. It must be true, and
-        // tappable.
-        const first = words.firstElementChild;
+        // cut inside a word there is no way round. It must be true (the
+        // word really runs past the button that clips it), and tappable.
         clipped++;
-        if (!first || first.scrollWidth <= first.clientWidth)
-          failures.push(`"${shown}" of "${title}": cut though a word fits`);
         if (words.tagName !== "BUTTON")
           failures.push(`"${shown}": cut, with nothing to tap for the rest`);
+        else if (words.scrollWidth <= words.clientWidth)
+          failures.push(
+            `"${shown}" of "${title}": cut though a word fits (${words.scrollWidth} in ${words.clientWidth} px)`,
+          );
+        const frame = box.getBoundingClientRect();
+        const button = words.getBoundingClientRect();
+        if (
+          button.right > frame.right + 0.5 ||
+          button.bottom > frame.bottom + 0.5
+        )
+          failures.push(`"${shown}" runs past its box`);
         continue;
-      } else if (
+      }
+      if (shown === title) whole++;
+      else if (
         shown.endsWith("…") &&
         title.startsWith(kept) &&
         (kept === "" || title[kept.length] === " ")

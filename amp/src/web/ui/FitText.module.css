@@ -63,9 +63,13 @@
 .more:active:not(:disabled) {
   transform: none;
 }
-/* A first word wider than the box: as much of it as fits. */
-.clipped {
+/* A first word wider than the box: as much of it as fits. The button is
+   the box's width and no more, so its own clip ends the word. */
+.more.clipped {
   display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

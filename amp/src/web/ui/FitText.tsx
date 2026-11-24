@@ -164,7 +164,10 @@ export function FitText({
           <button
             ref={trigger}
             type="button"
-            className={styles.more}
+            // Not even the first word fits with its ellipsis: it shows as
+            // far as it goes, the one cut inside a word there is no way
+            // round. The button's own clip ends it, on an ellipsis.
+            className={`${styles.more} ${count === 0 ? styles.clipped : ""}`}
             aria-label={text}
             aria-expanded={shown}
             aria-controls={shown ? id : undefined}
@@ -174,14 +177,7 @@ export function FitText({
               setOpen((was) => !was);
             }}
           >
-            {/* Not even the first word fits with its ellipsis: it shows as
-                far as it goes, the one cut inside a word there is no way
-                round. The box's own clip ends it, on its ellipsis. */}
-            {count === 0 ? (
-              <span className={styles.clipped}>{leadingWords(text, 1)}</span>
-            ) : (
-              leadingWords(text, count)
-            )}
+            {leadingWords(text, Math.max(1, count))}
           </button>
         ) : (
           <span>{text}</span>
