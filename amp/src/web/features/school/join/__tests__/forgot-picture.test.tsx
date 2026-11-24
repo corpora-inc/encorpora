@@ -19,6 +19,7 @@ const read = vi.fn();
 const withdraw = vi.fn();
 const lookup = vi.fn();
 const finish = vi.fn();
+const signIn = vi.fn();
 
 vi.mock("@tanstack/react-router", () => ({
   useParams: () => ({ code: CODE, person: PERSON }),
@@ -39,7 +40,7 @@ vi.mock("../api", async (original) => ({
   askForgotPicture: (input: unknown) => ask(input),
   readForgotPicture: (input: unknown) => read(input),
   withdrawForgotPicture: (input: unknown) => withdraw(input),
-  signInWithPictures: vi.fn(),
+  signInWithPictures: (input: unknown) => signIn(input),
   useFinishSignIn: () => finish,
   finishingSignIn: () => false,
 }));
@@ -58,6 +59,7 @@ beforeEach(() => {
   ask.mockReset().mockResolvedValue({ state: "waiting" });
   withdraw.mockReset().mockResolvedValue({ state: "none" });
   read.mockReset().mockResolvedValue({ state: "waiting" });
+  signIn.mockReset();
   lookup.mockReset().mockImplementation(async () => ({
     class: { name: "Room", kind },
     ...roster,
@@ -195,3 +197,39 @@ test("the server saying none returns to picking", async () => {
   mount();
   expect(await screen.findByText("Pick your 3 pictures")).toBeTruthy();
 });
+
+// A pause's title fits the two lines the title keeps on the narrowest phone
+// (the sign-in check measures that nothing moves), and names the adult of
+// the place, as the request does.
+test.each([
+  ["class", "student_locked", "Ask your teacher to reset your pictures."],
+  ["family", "student_locked", "Ask your parent to reset your pictures."],
+  ["class", "class_locked", "Sign-in is paused. Ask your teacher."],
+  ["family", "class_locked", "Sign-in is paused. Ask your parent."],
+] as const)(
+  "a %s's %s pause reads in the place's words",
+  async (place, code, title) => {
+    kind = place;
+    signIn.mockRejectedValue(
+      Object.assign(new Error("as the route says it, for any place"), {
+        code,
+        retryAfter: 60,
+      }),
+    );
+    mount();
+    await forgotButton();
+    for (const name of ["Fox", "Moon", "Turtle"])
+      fireEvent.click(screen.getByRole("button", { name }));
+    const heading = await screen.findByRole("heading", {
+      level: 1,
+      name: title,
+    });
+    expect(heading.hasAttribute("data-stopped")).toBe(true);
+    expect(title.length).toBeLessThanOrEqual(40);
+    // The pictures rest while it is paused.
+    expect(
+      (screen.getByRole("button", { name: "Fox" }) as HTMLButtonElement)
+        .disabled,
+    ).toBe(true);
+  },
+);

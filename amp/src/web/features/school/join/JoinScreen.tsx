@@ -134,10 +134,15 @@ export function JoinScreen() {
             data-hidden={scanning || undefined}
           >
             <span className={styles.srOnly}>Code</span>
+            {/* The tiles draw what the field holds. The field is named
+                "Code" and says its own value: the drawn letters are not
+                part of its name, which would otherwise change as a child
+                types ("Code Z Z Z Z Z Z"). */}
             <span
               key={shake}
               className={styles.shaker}
               data-shake={shake > 0 || undefined}
+              aria-hidden="true"
             >
               <CodeTiles
                 code={code}

@@ -264,6 +264,8 @@
   gap: var(--space-3);
   width: 100%;
   text-align: center;
+  /* The title sizes itself to this column (below). */
+  container-type: inline-size;
 }
 .who {
   --avatar-size: 44px;
@@ -274,9 +276,14 @@
   font-size: 22px;
   font-weight: 650;
 }
+/* Two lines' room, and every title fits it: beside the pictures the column
+   can be narrow (a squarer window), so the size follows the column as well
+   as the window. The longest, a pause's "Ask your teacher to reset your
+   pictures.", then takes two lines there as it does on a phone, and a
+   pause moves nothing. */
 .pictures .title {
   min-height: 2.24em;
-  font-size: clamp(26px, 7vw, 44px);
+  font-size: min(clamp(26px, 7vw, 44px), 9.4cqw);
   display: grid;
   place-items: center;
 }
@@ -360,6 +367,22 @@
   }
   .pad {
     --chrome-block: calc(338px + 9.5dvh);
+  }
+}
+/* The shortest phone (320×568). The pad can't get narrower than four 44 px
+   pictures, so the room the "Forgot your pictures?" row took comes from the
+   gaps and the slots: the screen still fits, and a pick in the last row
+   can't scroll the stepper off the top (#26). */
+@media (max-width: 719.98px) and (max-height: 600px) {
+  .pictures,
+  .prompt {
+    gap: var(--space-1);
+  }
+  .slots {
+    --slot: min(21vw, 92px, 8dvh);
+  }
+  .pad {
+    max-width: max(200px, calc(100dvh - var(--chrome-block)));
   }
 }
 .grid {

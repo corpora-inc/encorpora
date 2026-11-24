@@ -46,6 +46,8 @@ export function PicturesScreen() {
   });
   const student = roster.data?.students.find((s) => s.id === params.person);
   const firstTime = student ? !student.picturesSet : false;
+  // The adult of this place, in its own word.
+  const adult = roster.data?.class.kind === "family" ? "parent" : "teacher";
   const [picks, setPicks] = useState<SchoolPicture[]>([]);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
@@ -125,7 +127,14 @@ export function PicturesScreen() {
         setShake((count) => count + 1);
         setPicks([]);
         setStop({
-          message: failure.message,
+          // The title keeps two lines' room, and these fit it on the
+          // narrowest phone, so a pause moves nothing (the route's own
+          // sentence, written for any place, ran to a third line and
+          // pushed the pictures down).
+          message:
+            failure.code === "student_locked"
+              ? `Ask your ${adult} to reset your pictures.`
+              : `Sign-in is paused. Ask your ${adult}.`,
           until: Date.now() + (failure.retryAfter ?? 60) * 1000,
         });
         return;
@@ -173,7 +182,6 @@ export function PicturesScreen() {
       />
     );
   const confirming = firstTime && picks.length === PICKS && !busy && !stop;
-  const adult = roster.data.class.kind === "family" ? "parent" : "teacher";
   const waiting = forgot.waiting && !firstTime;
   const title = waiting
     ? `Your ${adult} has been asked.`
