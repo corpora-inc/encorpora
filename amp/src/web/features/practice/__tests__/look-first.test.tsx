@@ -97,3 +97,22 @@ test("a read that fails holds nothing up: the screen opens and reads it itself",
   warned.mockRestore();
   await expect(lookFirst(null)).resolves.toBeUndefined();
 });
+
+test("a later move inside the app waits for nothing: the look in hand returns in the same task", async () => {
+  await lookFirst(scope("pip"));
+  expect(server.reads).toEqual(["pip"]);
+  // Closing a book puts the focus back on the next frame: the screen has
+  // to be there by then, so this may not cost a task (a chunk import does).
+  let landed = false;
+  void lookFirst(scope("pip")).then(() => {
+    landed = true;
+  });
+  await Promise.resolve();
+  expect(landed).toBe(true);
+  expect(server.reads).toEqual(["pip"]);
+});
+
+test("two screens asking at once share one read", async () => {
+  await Promise.all([lookFirst(scope("pip")), lookFirst(scope("pip"))]);
+  expect(server.reads).toEqual(["pip"]);
+});
