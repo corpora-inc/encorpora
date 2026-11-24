@@ -1,3 +1,4 @@
+import { Key } from "../../ui/Key";
 import { Changed } from "./Changed";
 import { counted } from "./format";
 import styles from "./HelpCounts.module.css";
@@ -64,5 +65,26 @@ export function HelpCounts({ help }: { help: Help }) {
         </span>
       ))}
     </span>
+  );
+}
+
+/**
+ * The key to the four help drawings, on screen wherever a row shows them
+ * (the live roster, a session's report): each drawing and its word, the
+ * column's own. Static: it is there from the first paint, at one size.
+ */
+export function HelpKey({ className }: { className?: string }) {
+  return (
+    <Key
+      label="Help opened"
+      dense
+      className={className}
+      data-help-key=""
+      items={HELP_KINDS.map((kind) => ({
+        id: kind.key,
+        mark: <HelpGlyph kind={kind.key} />,
+        term: kind.header,
+      }))}
+    />
   );
 }

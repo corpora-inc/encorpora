@@ -14,7 +14,8 @@
  * whole word with the rest a tap away (never inside a word, never a hover
  * title), a cut name's tap shows all of it and moves nothing, and the
  * requests strip holds its box with none, one, two and five requests open
- * (two fit a 390 px phone without a "+N").
+ * (two fit a 390 px phone without a "+N"). The key to the help drawings
+ * is on screen wherever a row shows them, and holds as still as the rows.
  *
  *   npx tsx scripts/verify-live-cockpit-ui.ts [--origin http://127.0.0.1:4860]
  *     [--shots-only]    skip the check (only with --shots)
@@ -71,6 +72,7 @@ async function measure(page: Page): Promise<Boxes> {
       put(`tile:${tile.dataset.tile}`, tile);
     put("control", document.querySelector("[data-live-control]"));
     put("roster", document.querySelector("[data-live-roster]"));
+    put("key", document.querySelector("[data-live-roster] [data-help-key]"));
     return out;
   });
 }
@@ -140,6 +142,30 @@ try {
         failures.push(`${width}px ${when}: ${failure}`);
       return result;
     };
+    // The key to the help drawings is there with the rows that show them
+    // (a tablet's and a desktop's; a class's phone rows show none), and is
+    // one of the boxes that hold still.
+    const help = await page.evaluate(() => ({
+      shown: document.querySelectorAll(
+        '[data-live-roster] [role="img"][aria-label^="Help"]',
+      ).length,
+      key: [
+        ...document.querySelectorAll("[data-live-roster] [data-help-key] li"),
+      ].map((item) => item.textContent ?? ""),
+    }));
+    if (help.shown > 0)
+      assert.deepEqual(
+        help.key,
+        ["Hints", "Lessons", "Explanations", "Videos"],
+        `${width}px: the key to the help drawings`,
+      );
+    else
+      assert.deepEqual(
+        help.key,
+        [],
+        `${width}px: no key where no row shows help`,
+      );
+    assert.equal(!!before.key, help.shown > 0, `${width}px: the key's box`);
     const atFirst = await names("at first");
     assert.ok(atFirst.total > 0, `${width}px: skills are named`);
     for (let change = 1; change <= CHANGES; change++) {

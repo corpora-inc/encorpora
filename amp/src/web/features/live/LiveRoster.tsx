@@ -26,7 +26,7 @@ import {
   levelText,
   percentText,
 } from "./format";
-import { HelpCounts, helpWords } from "./HelpCounts";
+import { HelpCounts, HelpKey, helpWords } from "./HelpCounts";
 import { useLiveLayout, type LiveLayout } from "./layout";
 import { RecentAnswers, recentWords } from "./RecentAnswers";
 import { RosterRow, type StudentLink } from "./RosterRow";
@@ -163,7 +163,8 @@ export type LiveRosterProps = {
   levelShown?: (personId: string) => boolean;
   /** A phone's row has no Help column: what a screen puts at the end of the
    * name's line in its place, in a fixed width of its own (a family's help
-   * marks). Not drawn on a tablet or a desktop. */
+   * marks). Not drawn on a tablet or a desktop. It stands in for the Help
+   * column, so the key to the help drawings shows above the rows with it. */
   phoneAside?: (row: LiveRow) => ReactNode;
 };
 
@@ -368,6 +369,9 @@ function List(view: RosterView) {
           <SortControl {...view} />
         </div>
       )}
+      {/* The key to the help drawings, wherever a row shows them: there
+          from the first paint, so it never pushes a row down. */}
+      {(tablet || view.phoneAside) && <HelpKey className={styles.helpKey} />}
       <div className={styles.head} aria-hidden="true">
         <span className={styles.headName}>{view.nameHeader}</span>
         <span className={styles.headFacts}>
@@ -655,30 +659,33 @@ function Grid(view: RosterView) {
     direction: sort.direction,
   };
   return (
-    <div ref={root} className={styles.gridBox}>
-      <DataGrid
-        label={view.label}
-        columns={columns}
-        rows={ordered}
-        rowKey={(row) => row.personId}
-        sort={gridSort}
-        onSortChange={(next) => {
-          const key = KEY_OF[next.column] ?? "name";
-          onSortChange(nextSort(sort, key));
-        }}
-        onRowActivate={
-          view.link
-            ? (row) =>
-                root.current
-                  ?.querySelector<HTMLElement>(
-                    `[data-live-row="${row.personId}"] a, [data-live-row="${row.personId}"] button`,
-                  )
-                  ?.click()
-            : undefined
-        }
-        cardsBelow={0}
-        rowHeight={44}
-      />
-    </div>
+    <>
+      <HelpKey className={styles.helpKey} />
+      <div ref={root} className={styles.gridBox}>
+        <DataGrid
+          label={view.label}
+          columns={columns}
+          rows={ordered}
+          rowKey={(row) => row.personId}
+          sort={gridSort}
+          onSortChange={(next) => {
+            const key = KEY_OF[next.column] ?? "name";
+            onSortChange(nextSort(sort, key));
+          }}
+          onRowActivate={
+            view.link
+              ? (row) =>
+                  root.current
+                    ?.querySelector<HTMLElement>(
+                      `[data-live-row="${row.personId}"] a, [data-live-row="${row.personId}"] button`,
+                    )
+                    ?.click()
+              : undefined
+          }
+          cardsBelow={0}
+          rowHeight={44}
+        />
+      </div>
+    </>
   );
 }

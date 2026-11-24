@@ -16,7 +16,11 @@
  *    opens that session's report. All the while every skill's name is
  *    whole or cut after a whole word (never inside one, never a hover
  *    title), a cut name's tap shows all of it, and from 390 px two open
- *    requests both show in the strip, with no "+1".
+ *    requests both show in the strip, with no "+1". The help drawings'
+ *    key is on screen with the rows that show them and holds as still.
+ *    The report's "Every student" rows are all one height, name the first
+ *    skills that fit and how many more, open the student's sheet with all
+ *    of them, and print every name.
  * 3. At 1280 px: the roster scrolled and sorted, a student opened as the
  *    student layer and closed, and the roster's scroll, the page's and the
  *    sort are exactly as they were.
@@ -399,6 +403,7 @@ const boxes = (page: Page) =>
     put("totals", document.querySelector("[data-live-totals]"));
     put("strip", document.querySelector("[data-live-strip]"));
     put("roster", document.querySelector("[data-live-roster]"));
+    put("key", document.querySelector("[data-live-roster] [data-help-key]"));
     for (const tile of document.querySelectorAll<HTMLElement>("[data-tile]"))
       put(`tile:${tile.dataset.tile}`, tile);
     // Rows: the grid's (inside its own scroll: measured against it) or the
@@ -606,6 +611,29 @@ async function liveRun(
       );
   }
   await shot(page, `started-${width}`);
+  // The help drawings have their key wherever a row shows them (a tablet's
+  // and a desktop's rows; a class's phone rows show none), from the moment
+  // the roster does: it is one of the boxes that must hold still below.
+  const helpShown = await page.evaluate(
+    () =>
+      document.querySelectorAll(
+        '[data-live-roster] [role="img"][aria-label^="Help"]',
+      ).length,
+  );
+  const keyTerms = await page.evaluate(() =>
+    [...document.querySelectorAll("[data-live-roster] [data-help-key] li")].map(
+      (item) => item.textContent ?? "",
+    ),
+  );
+  if (
+    helpShown > 0 &&
+    keyTerms.join(",") !== "Hints,Lessons,Explanations,Videos"
+  )
+    fail(
+      `${width}px: ${helpShown} rows show help drawings and the key says ${JSON.stringify(keyTerms)}`,
+    );
+  if (helpShown === 0 && keyTerms.length > 0)
+    fail(`${width}px: a key to help drawings no row shows`);
   // From here on, nothing moves until Stop.
   const from = await now(page);
   let before = await boxes(page);
@@ -710,7 +738,7 @@ async function liveRun(
   await page.waitForTimeout(800);
   reportAgrees(`${width}px`, atStop, whoIs, await reportGroups(page));
   await shot(page, `report-${width}`);
-  await reportSkills(page, `${width}px`);
+  await reportRows(page, `${width}px`);
   const report = new URL(page.url()).pathname;
   const file = await page.video()?.path();
   await context.close();
@@ -719,52 +747,92 @@ async function liveRun(
   return report;
 }
 
-/** The report's "Every student": each student's skills are named whole
- * beside them (wrapping inside the row, never cut, never a hover title),
- * on screen and on paper. */
-async function reportSkills(page: Page, where: string) {
+/** The report's "Every student" scans: every row is one height whatever
+ * the student did; its Skills cell names the first skills that fit, whole,
+ * then how many more (never cut, never a hover title); the help drawings
+ * have their key; a row opens that student's sheet with every skill; and on
+ * paper every skill's name prints beside its student. */
+async function reportRows(page: Page, where: string) {
   const read = () =>
     page.evaluate(() => {
+      const report = document.querySelector("[data-session-report]")!;
+      const every = report.querySelector('[aria-labelledby="every-student"]')!;
+      const rows = [
+        ...every.querySelectorAll<HTMLElement>(
+          "tbody tr[role=row], ul[aria-label]:not([data-key]) > li",
+        ),
+      ].filter((row) => row.getClientRects().length > 0);
       const lists = [
-        ...document.querySelectorAll<HTMLElement>("[data-report-skills]"),
-      ];
+        ...every.querySelectorAll<HTMLElement>("[data-fit-list]"),
+      ].filter((list) => list.getClientRects().length > 0);
       const problems: string[] = [];
       for (const list of lists) {
-        const cell = list.closest("td, dd") ?? list;
-        const frame = cell.getBoundingClientRect();
-        const style = getComputedStyle(list);
-        const cellStyle = getComputedStyle(cell);
-        if (frame.width === 0 || frame.height === 0)
-          problems.push("a skills cell has no box");
-        if (
-          style.visibility !== "visible" ||
-          cellStyle.visibility !== "visible"
-        )
-          problems.push("a skills cell is hidden");
-        if (style.whiteSpace === "nowrap" || style.textOverflow === "ellipsis")
-          problems.push("a skills cell cuts its names");
-        for (const link of list.querySelectorAll("a"))
-          for (const rect of link.getClientRects())
+        const frame = list.getBoundingClientRect();
+        const shown = [...list.querySelectorAll("[data-fit-item]")];
+        const more = list.querySelector("[data-fit-more]")?.textContent ?? "";
+        const hidden = Number(list.dataset.fitTotal) - shown.length;
+        if (hidden > 0 && shown.length > 0 && more.trim() !== `+${hidden} more`)
+          problems.push(
+            `${shown.length} of ${list.dataset.fitTotal} shown, then "${more}"`,
+          );
+        if (/…/.test(list.textContent ?? ""))
+          problems.push(`a skill's name is cut: ${list.textContent}`);
+        for (const part of [
+          ...shown,
+          ...list.querySelectorAll("[data-fit-more]"),
+        ])
+          for (const rect of part.getClientRects())
             if (
               rect.right > frame.right + 0.5 ||
-              rect.left < frame.left - 0.5 ||
               rect.bottom > frame.bottom + 0.5
             ) {
-              problems.push(`"${link.textContent}" runs past its cell`);
+              problems.push(`"${part.textContent}" runs past its cell`);
               break;
             }
       }
-      const hover = document.querySelectorAll(
-        "[data-session-report] [data-report-skills][title], [data-session-report] [data-report-skills] [title]",
-      ).length;
-      if (hover) problems.push(`${hover} hover title(s) on skills`);
+      const printed = [
+        ...every.querySelectorAll<HTMLElement>("[data-report-open]"),
+      ]
+        // Rows that name skills, in the lists' own order.
+        .filter(
+          (cell) =>
+            cell.getClientRects().length > 0 &&
+            cell.querySelector("[data-fit-list]") !== null,
+        )
+        .map((cell) =>
+          [...cell.children]
+            .filter(
+              (part) =>
+                getComputedStyle(part).display !== "none" &&
+                !part.matches("[data-fit-list]"),
+            )
+            .map((part) => part.textContent ?? "")
+            .join(""),
+        );
+      const hover = every.querySelectorAll("[title]").length;
+      if (hover) problems.push(`${hover} hover title(s)`);
       return {
+        heights: [
+          ...new Set(
+            rows.map(
+              (row) => Math.round(row.getBoundingClientRect().height * 10) / 10,
+            ),
+          ),
+        ],
+        rows: rows.length,
         lists: lists.length,
-        names: lists.reduce(
-          (sum, list) => sum + list.querySelectorAll("a").length,
+        most: Math.max(
           0,
+          ...lists.map((list) => Number(list.dataset.fitTotal)),
         ),
+        totals: lists.map((list) => Number(list.dataset.fitTotal)),
+        printed,
+        key: [
+          ...(report.querySelector("[data-help-key]")?.querySelectorAll("li") ??
+            []),
+        ].map((item) => item.textContent ?? ""),
         problems: [...new Set(problems)],
+        tableScrolls: every.querySelector("[data-scrolls]") !== null,
         sideways:
           document.documentElement.scrollWidth -
           document.documentElement.clientWidth,
@@ -772,21 +840,60 @@ async function reportSkills(page: Page, where: string) {
     });
   const screen = await read();
   for (const problem of screen.problems) fail(`${where} report: ${problem}`);
+  if (screen.heights.length !== 1)
+    fail(
+      `${where} report: rows are ${Math.min(...screen.heights)} to ${Math.max(...screen.heights)} px tall (one height wanted)`,
+    );
   if (screen.lists === 0)
     fail(`${where} report: no student's skills are named`);
+  if (screen.key.join(",") !== "Hints,Lessons,Explanations,Videos")
+    fail(
+      `${where} report: the help drawings' key says ${JSON.stringify(screen.key)}`,
+    );
   if (screen.sideways > 0)
     fail(`${where} report: the page scrolls sideways by ${screen.sideways}px`);
+  if (screen.tableScrolls)
+    fail(`${where} report: the table scrolls sideways inside the page`);
+  // A row opens that student's sheet, with every skill of theirs.
+  const row = page
+    .locator('[aria-labelledby="every-student"]')
+    .locator("tbody tr[role=row], ul[aria-label]:not([data-key]) > li")
+    .filter({ has: page.locator("[data-fit-list]") })
+    .first();
+  const expected = Number(
+    await row.locator("[data-fit-list]").getAttribute("data-fit-total"),
+  );
+  const url = page.url();
+  await row.locator("[data-report-open]").click();
+  const sheet = page.getByRole("dialog");
+  await sheet.waitFor({ timeout: 5_000 });
+  const listed = await sheet.locator("[data-report-student-skills] li").count();
+  if (listed !== expected)
+    fail(`${where} report: the sheet lists ${listed} of ${expected} skills`);
+  if (page.url() !== url)
+    fail(`${where} report: the sheet changed the address`);
+  await page.goBack();
+  await sheet.waitFor({ state: "detached", timeout: 5_000 });
+  const after = await read();
+  if (after.heights.join() !== screen.heights.join())
+    fail(`${where} report: the rows changed height after the sheet`);
+  // On paper every name prints: each row's whole list in place of the
+  // fitted one (a list of n names has at least n - 1 commas; a name may
+  // have its own).
   await page.emulateMedia({ media: "print" });
   const paper = await read();
-  for (const problem of paper.problems)
-    fail(`${where} report on paper: ${problem}`);
-  if (paper.lists !== screen.lists || paper.names !== screen.names)
+  const short = paper.printed.filter(
+    (text, index) =>
+      (text.trim() ? text.split(", ").length : 0) < (screen.totals[index] ?? 0),
+  ).length;
+  const total = screen.totals.reduce((sum, count) => sum + count, 0);
+  if (paper.printed.length !== screen.totals.length || short > 0)
     fail(
-      `${where} report on paper: ${paper.names} skills beside ${paper.lists} students (on screen ${screen.names} beside ${screen.lists})`,
+      `${where} report on paper: ${short} of ${screen.totals.length} rows print fewer names than they have`,
     );
   await page.emulateMedia({ media: "screen" });
   console.log(
-    `${where}: the report names ${screen.names} skills whole beside ${screen.lists} students, on screen and on paper`,
+    `${where}: the report's ${screen.rows} rows are ${screen.heights.join("/")} px; the most skills in one is ${screen.most}; a row's sheet lists all ${expected} of its skills; on paper each row's whole list prints (${total} skills); the key is there`,
   );
 }
 

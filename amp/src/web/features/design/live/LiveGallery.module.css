@@ -9,6 +9,9 @@
   padding: var(--space-5) var(--page-gutter) 0;
   background: var(--color-surface);
   color: var(--color-on-surface);
+  /* As the app's own frame sets it (ui/PageFrame): words never break
+     inside themselves. */
+  overflow-wrap: normal;
 }
 .heading {
   display: grid;

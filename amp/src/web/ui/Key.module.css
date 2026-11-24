@@ -1,0 +1,42 @@
+/* The key to a screen's marks (Key.tsx): one wrapping line of mark, name
+   and meaning. No box: it is the page's own small print. */
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-table-small);
+  line-height: 1.4;
+}
+.key[data-dense] {
+  column-gap: var(--space-4);
+}
+.key[data-dense] li {
+  gap: 6px;
+}
+.key li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 24px;
+}
+.mark {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+}
+.term {
+  font-weight: 600;
+}
+.meaning {
+  color: var(--color-muted-text);
+}
+/* Long meanings: one to a line on a phone. */
+@media (max-width: 599px) {
+  .key[data-stack] {
+    display: grid;
+    gap: 0;
+  }
+}

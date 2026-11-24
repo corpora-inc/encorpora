@@ -1,28 +1,6 @@
-/* The key to the skill bars (SkillKey). `.fill` is a standing's fill,
-   defined once here for the key's swatches and the bars' parts. */
-.key {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1) var(--space-5);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--text-table-small);
-  line-height: 1.4;
-}
-.key li {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: 24px;
-}
-.term {
-  font-weight: 600;
-}
-.meaning {
-  color: var(--color-muted-text);
-}
-
+/* The skill bars' marks for their key (SkillKey, in `ui/Key`). `.fill` is a
+   standing's fill, defined once here for the key's swatches and the bars'
+   parts. */
 .swatch {
   flex: none;
   width: 14px;
@@ -34,7 +12,11 @@
   background: var(--color-primary);
 }
 .fill[data-standing="earned"] {
-  background: color-mix(in srgb, var(--color-primary) 45%, var(--color-surface));
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 45%,
+    var(--color-surface)
+  );
 }
 /* Tried: a hatch, so it never reads as a paler Earned in either theme. */
 .fill[data-standing="tried"] {
@@ -70,11 +52,4 @@
   border-radius: 50%;
   background: var(--color-primary);
   transform: translate(-50%, -50%);
-}
-
-@media (max-width: 599px) {
-  .key {
-    display: grid;
-    gap: 0;
-  }
 }
