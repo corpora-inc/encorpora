@@ -21,13 +21,28 @@ export function leadingWords(text: string, count: number) {
  */
 export function fitWords(text: string, fits: (candidate: string) => boolean) {
   const total = text.split(" ").length;
-  if (fits(text)) return total;
+  return fitItems(total, (count) =>
+    fits(count === total ? text : leadingWords(text, count)),
+  );
+}
+
+/**
+ * How many of `total` items fit, where `fits` says whether the first
+ * `count` do (with whatever stands for the rest). All of them when they
+ * fit; otherwise the most that do; 0 when not even the first does.
+ *
+ * Below `total`, `fits` must only get harder as items are added, as any
+ * box's does; all of them is asked first, because what stands for the rest
+ * can be longer than the last item itself.
+ */
+export function fitItems(total: number, fits: (count: number) => boolean) {
+  if (fits(total)) return total;
   let low = 0;
   let high = total - 1;
   while (low < high) {
     const middle = Math.ceil((low + high) / 2);
-    if (fits(leadingWords(text, middle))) low = middle;
+    if (fits(middle)) low = middle;
     else high = middle - 1;
   }
-  return low;
+  return Math.max(0, low);
 }
