@@ -327,6 +327,7 @@ try {
   const childs = { student: true, handed: true, home: `/family/${family}` };
   /** The tab is the child's: its sign-in, the bar's way home, the menu. */
   async function isTheChilds(how: string) {
+    const failed = failures.length;
     await tab.locator(".problem-stage .question").waitFor();
     const now = await whose(tab);
     if (JSON.stringify(now) !== JSON.stringify(childs))
@@ -344,9 +345,10 @@ try {
       fail(`${how}: the menu has no "Back to family"`);
     await tab.keyboard.press("Escape");
     await drawer.waitFor({ state: "detached" });
-    console.log(
-      `  ${how}: ${new URL(tab.url()).pathname} is ${child.name}'s tab`,
-    );
+    if (failures.length === failed)
+      console.log(
+        `  ${how}: ${new URL(tab.url()).pathname} is ${child.name}'s tab`,
+      );
   }
   const address = `/practice/${child.id}`;
   await tab.goto(`${origin}${address}`, { waitUntil: "domcontentloaded" });
