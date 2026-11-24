@@ -309,7 +309,7 @@
 }
 .work .work-diagram .work-slot[data-role="column"] input.work-input,
 .work .work-diagram .work-slot[data-role="mark"] input.work-input {
-  width: var(--target-size);
+  width: var(--work-digit);
   padding-inline: 0;
   font-size: 22px;
 }
@@ -355,6 +355,18 @@
   }
   .work-area-side[data-axis="down"] {
     padding-right: var(--space-1);
+  }
+}
+/* The same 320 px stage and a column method whose sum reaches the tens
+   (7.84 + 6.74 = 14.58): the sign, four digits and the point at full size
+   are 274 px across with the diagram's own padding, 16 more than the stage
+   between its scrollbar gutters, and the last digit could only be reached
+   by scrolling sideways. Each digit keeps the 44 px target and the sign's
+   column gives 4 px: 254. */
+@container (max-width: 279px) {
+  .work-diagram[data-kind="columns"] {
+    --work-sign: 20px;
+    --work-digit: var(--target-min);
   }
 }
 @container (min-width: 480px) {
