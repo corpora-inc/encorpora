@@ -280,8 +280,8 @@ def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
     # A live session's checks (a family's, a class's, a student's requests,
     # an adult's time) each stay in a lane: out of every lane, two went stale
     # with nobody told. Colorful's moments (test:celebration-ui) join
-    # family-b6 once a student's practice stops reading its practice-state
-    # on every problem; see the lanes' note in amp-deep-checks.yml.
+    # family-b6 once its timing budget is measured on a runner; see the
+    # lanes' note in amp-deep-checks.yml.
     for name in ('family-live', 'adult-time', 'live-cockpit-screen', 'live-cockpit',
                  'student-signals', 'session-report'):
         assert family_b.count(f'tsx scripts/verify-{name}-ui.ts') == 1, name

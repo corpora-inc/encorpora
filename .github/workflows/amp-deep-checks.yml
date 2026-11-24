@@ -107,15 +107,13 @@ jobs:
     # on fixtures (1 between them).
     #
     # Not in a lane yet: Colorful's moments (`npm run test:celebration-ui`,
-    # for family-b6). It fails on a product fault: a student's practice
-    # opens a new live stream with every problem (the raised hand mounts
-    # with the problem), and each stream's first message reads the
-    # learner's practice-state again. The check grades its answers right on
-    # the way back, so that read puts the points back to the server's count
-    # and the tenth point never comes. With real right answers the moment
-    # plays. Add it to test:family-ui:b6 when practice asks nothing per
-    # problem again, after measuring its 50 ms long-task budget (at 6x CPU)
-    # on a runner: one task ran 51 ms on a laptop busy with another check.
+    # for family-b6). Its moments all play again, the tenth point too, now
+    # that a student's practice holds one live stream (it opened one with
+    # every problem, and each one's first message put the points back to
+    # the server's count). What keeps it out is its timing budget: no task
+    # over 50 ms at 6x CPU while only the animations run. On a laptop busy
+    # with other checks one ran 51 ms and, another time, 58. Measure it on
+    # a runner before adding it to test:family-ui:b6.
     timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'
