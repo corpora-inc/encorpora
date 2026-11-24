@@ -21,6 +21,7 @@ import { equalAddendsLesson } from "../src/content/equal-addends-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillEqualAddends } from "./ui-equal-addends";
@@ -29,7 +30,10 @@ const database = process.env.AMP_TEST_DATABASE_URL;
 assert.ok(database, "AMP_TEST_DATABASE_URL required");
 assertTestDatabaseTarget(database);
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium";
-const port = engine === "webkit" ? 4596 : 4586,
+// Its ports and Vite cache may be moved (a worktree's own range).
+const port = Number(
+    process.env.AMP_UI_WEB_PORT ?? (engine === "webkit" ? 4596 : 4586),
+  ),
   baseUrl = `http://127.0.0.1:${port}`;
 const smoke = process.argv.includes("--smoke");
 const shots =
@@ -63,6 +67,7 @@ await registerFamilyRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
     port,
@@ -369,9 +374,11 @@ async function promptVisible(page: Page) {
   );
 }
 try {
-  for (const theme of smoke
-    ? (["light"] as const)
-    : (["light", "dark"] as const))
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes(
+    smoke ? ["light"] : ["light", "dark"],
+  ))
     for (const [width, height] of smoke
       ? [[390, 844]]
       : [
@@ -382,9 +389,10 @@ try {
           [320, 568],
           [844, 390],
         ]) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width: width!, height: height! },
-        colorScheme: theme,
+        colorScheme: scheme,
         reducedMotion: "reduce",
         hasTouch: width! < 400,
       });
@@ -394,6 +402,7 @@ try {
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${baseUrl}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const variant of [
         ...equalAddendsVariants,
         ...(width === 320

@@ -22,6 +22,7 @@ import { pegBoardLesson } from "../src/content/peg-board-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
@@ -30,7 +31,10 @@ assert.ok(database, "AMP_TEST_DATABASE_URL required");
 assertTestDatabaseTarget(database);
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium",
   smoke = process.argv.includes("--smoke");
-const port = engine === "webkit" ? 4596 : 4584,
+// Its ports and Vite cache may be moved (a worktree's own range).
+const port = Number(
+    process.env.AMP_UI_WEB_PORT ?? (engine === "webkit" ? 4596 : 4584),
+  ),
   baseUrl = `http://127.0.0.1:${port}`;
 const shots =
   process.env.AMP_EVIDENCE_DIR ??
@@ -63,6 +67,7 @@ await registerFamilyRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
     port,
@@ -153,13 +158,16 @@ async function connect(page: Page, edge: Stick, keyboard = false) {
   }
 }
 try {
-  for (const theme of smoke
-    ? (["light"] as const)
-    : (["light", "dark"] as const))
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes(
+    smoke ? ["light"] : ["light", "dark"],
+  ))
     for (const width of smoke ? [390] : [320, 390, 768, 1280]) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width, height: width === 768 ? 1024 : 900 },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: width < 400,
         reducedMotion: "reduce",
       });
@@ -169,6 +177,7 @@ try {
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${baseUrl}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const variant of smoke
         ? ["square", "copy", "draw", "finish"]
         : [...fixtures.keys()])

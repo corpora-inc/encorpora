@@ -26,7 +26,8 @@ export type Hop = { t: number; from: string; to: string; how: string };
 export type Load = {
   ids: Id[];
   hops: Hop[];
-  shifts: { t: number; v: number }[];
+  /** `what`: the elements that moved, when the browser names them. */
+  shifts: { t: number; v: number; what?: string[] }[];
   /** Production serves this address as its own prerendered document, with
    * its own title from the first byte (`prerenderedInProduction`), and the
    * server under test served the bare `index.html` in its place. */
@@ -120,10 +121,14 @@ export function judge({
     );
   // Layout shift once the destination itself first painted.
   const arrived = painted.find(own)?.t ?? final.t;
-  const cls = shifts
-    .filter((shift) => shift.t >= arrived - 1)
-    .reduce((sum, shift) => sum + shift.v, 0);
-  if (cls > 0.001) problems.push(`layout shift ${cls.toFixed(3)}`);
+  const moved = shifts.filter((shift) => shift.t >= arrived - 1);
+  const cls = moved.reduce((sum, shift) => sum + shift.v, 0);
+  if (cls > 0.001) {
+    const what = [...new Set(moved.flatMap((shift) => shift.what ?? []))];
+    problems.push(
+      `layout shift ${cls.toFixed(3)}${what.length ? ` (${what.slice(0, 4).join(", ")})` : ""}`,
+    );
+  }
   const trail = [
     ...(ids.some(neutral) ? ["wave"] : []),
     ...steps.map(label),

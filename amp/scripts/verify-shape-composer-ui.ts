@@ -19,6 +19,7 @@ import { shapeComposerLesson } from "../src/content/shape-composer-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillShapeStage } from "./ui-shape-composer";
@@ -57,11 +58,14 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
+// Its port and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4586);
 const apiOrigin = await app.listen({ host: "127.0.0.1", port: 0 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
-    port: 4586,
+    port: WEB_PORT,
     strictPort: true,
     proxy: { "/api": { target: apiOrigin } },
   },
@@ -190,9 +194,11 @@ async function visibleLayout(page: Page, resolved = false) {
     assert.ok(value, `${key}: ${JSON.stringify(layout)}`);
 }
 try {
-  for (const theme of smoke
-    ? (["light"] as const)
-    : (["light", "dark"] as const))
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes(
+    smoke ? ["light"] : ["light", "dark"],
+  ))
     for (const [width, height] of smoke
       ? [[390, 844]]
       : [
@@ -201,9 +207,10 @@ try {
           [768, 1024],
           [1280, 900],
         ]) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width: width!, height: height! },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: width! < 400,
         // A phone is a mobile browser: overlay scrollbars, no gutter (the
         // Linux runner's desktop Chromium reserves classic ones).
@@ -214,8 +221,9 @@ try {
       const page = await context.newPage();
       page.setDefaultTimeout(30000);
       page.on("pageerror", (e) => errors.push(e.message));
-      await page.goto("http://127.0.0.1:4586/overview");
+      await page.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const [tag, base] of fixtures)
         for (const correct of [true, false]) {
           const p = structuredClone(base);
@@ -518,7 +526,7 @@ try {
           await visibleLayout(page, true);
           if (correct && width === 390 && theme === "light") {
             const report = await page.request.post(
-              `http://127.0.0.1:4586/api/v1/learners/${learner.id}/problem-flags`,
+              `http://127.0.0.1:${WEB_PORT}/api/v1/learners/${learner.id}/problem-flags`,
               {
                 headers,
                 data: {
@@ -536,7 +544,7 @@ try {
             );
             assert.equal(saved.rows[0].response_kind, "shape-composer");
             const legacy = await page.request.post(
-              `http://127.0.0.1:4586/api/v1/learners/${learner.id}/batches`,
+              `http://127.0.0.1:${WEB_PORT}/api/v1/learners/${learner.id}/batches`,
               {
                 headers,
                 data: {

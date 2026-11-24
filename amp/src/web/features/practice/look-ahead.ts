@@ -5,7 +5,9 @@
  * Colorful and the hue of their latest world, and a learner's screens put
  * that on `<html>` in the commit that first paints them. The answer from the
  * server then keeps it (celebration/dress.ts takes it over) or takes it off.
- * A learner new to this device has nothing remembered: they see Calm once.
+ * A learner new to this device has nothing remembered; the router reads
+ * their look before the first screen instead (`lookFirst`, below), so this
+ * memory now only covers a screen opened without it.
  * Small on purpose: this is all of Colorful the app's first code carries.
  */
 const KEY = "amp.look-ahead";
@@ -96,4 +98,21 @@ export function clearAhead() {
   root.removeAttribute(LOOK);
   root.removeAttribute(ARRIVING);
   root.style.removeProperty("--look-hue");
+}
+
+/**
+ * The learner's look, read before their first screen paints (the root's
+ * `beforeLoad`, app/router.tsx). The work is look-first.ts, its own chunk;
+ * a failed read is logged and the screen reads it as it always did.
+ */
+export async function lookFirst(
+  scope: { identity: string; learnerId: string; token?: string } | null,
+) {
+  if (!scope?.learnerId) return;
+  try {
+    const { lookBeforePaint } = await import("./look-first");
+    await lookBeforePaint(scope);
+  } catch (error) {
+    console.warn("The look didn’t load ahead; the screen reads it", error);
+  }
 }

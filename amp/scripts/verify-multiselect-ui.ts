@@ -18,6 +18,7 @@ import {
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { assertOpaqueFeedback } from "./feedback-opacity-proof";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { openTopicLesson } from "./ui-practice";
 
@@ -28,7 +29,10 @@ const templateId = "quadrilateral-hierarchy-multiselect";
 const graphTemplateId = "slope-triangle-statements";
 // Optional `--port` for the web server; the API takes the next port.
 const portAt = process.argv.indexOf("--port");
-const webPort = portAt >= 0 ? Number(process.argv[portAt + 1]) : 4420;
+const webPort =
+  portAt >= 0
+    ? Number(process.argv[portAt + 1])
+    : Number(process.env.AMP_UI_WEB_PORT ?? 4420);
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
 await migrate(database);
@@ -64,6 +68,7 @@ await registerFamilyRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
@@ -99,16 +104,19 @@ async function openAnswers(page: Page, count: number) {
 }
 
 try {
-  for (const theme of ["light", "dark"] as const)
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes())
     for (const [width, height] of [
       [320, 568],
       [390, 844],
       [768, 1024],
       [1280, 800],
     ]) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width, height },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: width <= 390,
       });
       const page = await context.newPage();
@@ -116,6 +124,7 @@ try {
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`${origin}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       if (width === 320 && theme === "light")
         await page.route(
           `**/api/v1/learners/${learner.id}/batches`,
