@@ -287,8 +287,11 @@ test('no session, the menu still open: the answer shows in the menu, where "Your
     );
   });
   const row = inMenu()!;
-  expect(row.getAttribute("aria-pressed")).toBe("false");
+  await waitFor(() => expect(row.getAttribute("aria-pressed")).toBe("false"), {
+    timeout: 4_000,
+  });
   // In the row's own place for its state: the row is the same row.
+  expect(inMenu()).toBe(row);
   expect(row.textContent).toBe("Raise handYour teacher saw it.");
   const said = screen.getAllByRole("status");
   expect(said).toHaveLength(1);
