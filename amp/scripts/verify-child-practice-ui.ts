@@ -39,6 +39,10 @@
  * the child's record and a skill open, lands on the child's page with their
  * practice.
  *
+ * A skill opened over Today for nobody (a link with no child in it) is the
+ * adult's own: the press takes the adult as the learner, starting their own
+ * practice if they haven't yet, and hands the device to nobody.
+ *
  * A tutoring group is the family's class with another family's child in it:
  * it keeps its class address, and a child's record there is a layer over the
  * class's page. The check makes one (the account holder adds a student from
@@ -1137,6 +1141,90 @@ try {
         fail(
           `${slug} ${child.name}, a layer keeps whose it is (${part}): ${String(error).split("\n")[0]!.slice(0, 200)}`,
         );
+      }
+    }
+
+    // ---- a layer that names no child is the adult's own -------------------
+    // A skill opened over Today for nobody (a link with no child in it):
+    // its practice takes the adult as the learner, starting their own
+    // practice if they haven't yet; never the child last selected, and
+    // nobody is handed the device. An adult who can't practice themselves
+    // is offered nothing.
+    {
+      const where = `${slug}, a skill over Today that names no child`;
+      let unnamed: Awaited<ReturnType<typeof open>> | undefined;
+      try {
+        const adult = (await api(who.token, "/me")).body!.adultPractice as
+          { eligible?: boolean; learner?: { id: string } | null } | undefined;
+        const catalog = (await api(who.token, "/catalog/map")).body!;
+        const skill = (catalog.templates as { skillId: string }[])[0]!.skillId;
+        unnamed = await open(
+          who,
+          width,
+          {
+            name: "a skill over Today that names no child",
+            path: `${today}?open=skill:${skill}`,
+            ready: "[data-skill-layer]",
+            scope: "[data-layer-frame]",
+          },
+          [],
+          who.children[0]!.id,
+        );
+        const { page, seen } = unnamed;
+        await settle(page);
+        const control = page.locator(
+          "[data-layer-frame] [data-curriculum-practice]",
+        );
+        if (!adult?.learner && !adult?.eligible) {
+          if (await control.count())
+            fail(
+              `${where}: a control is offered to an adult who can’t practice`,
+            );
+        } else {
+          await control.waitFor({ timeout: 20_000 });
+          if ((await control.getAttribute("data-practice-for")) !== "self")
+            fail(`${where}: the control isn’t the adult’s own`);
+          seen.practicing = true;
+          await page
+            .locator(
+              "[data-layer-frame] a[data-curriculum-practice], [data-layer-frame] [data-curriculum-practice] button",
+            )
+            .click();
+          await page.waitForURL((url) => FOCUS.test(url.pathname), {
+            timeout: 30_000,
+          });
+          for (let i = 0; i < 150 && seen.asks.length === 0; i++)
+            await page.waitForTimeout(100);
+          const [, learner, segment, id] = FOCUS.exec(
+            new URL(page.url()).pathname,
+          )!;
+          const own = await who.own();
+          const asked = [...new Set(seen.asks.map((entry) => entry.learner))];
+          const ok =
+            !!own &&
+            learner === own &&
+            segment === "skills" &&
+            id === skill &&
+            seen.handOvers.length === 0 &&
+            asked.join() === own;
+          presses.push({
+            who: slug,
+            width,
+            subject: "the adult",
+            trail: "a skill over Today that names no child",
+            control: "Practice",
+            opened: `${learner === own ? "the adult" : learner} ${segment}/${id}, handed to [${seen.handOvers}], asking for [${asked.map((entry) => (entry === own ? "the adult" : entry))}]`,
+            ok,
+          });
+          if (!ok)
+            fail(
+              `${where}: opened /practice/${learner}/${segment}/${id} (the adult is ${own}), handed to [${seen.handOvers}], asking for [${asked}]`,
+            );
+        }
+      } catch (error) {
+        fail(`${where}: ${String(error).split("\n")[0]!.slice(0, 200)}`);
+      } finally {
+        await unnamed?.context.close();
       }
     }
 

@@ -1,5 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import {
   createMemoryHistory,
   createRootRoute,
@@ -50,13 +56,24 @@ const projection = {
 };
 
 /** The learner this device last selected is Pip, throughout. */
-const view = vi.hoisted(() => ({ own: null as string | null }));
+const view = vi.hoisted(() => ({
+  own: null as string | null,
+  /** May the adult start practicing themselves? */
+  eligible: false,
+}));
+const startOwn = vi.hoisted(() => vi.fn());
+vi.mock("../../me/api", () => ({
+  useStartOwnPractice: () => ({ mutateAsync: startOwn, isPending: false }),
+}));
 vi.mock("../../../lib/learning-view", async (original) => ({
   ...(await original<typeof import("../../../lib/learning-view")>()),
   useLearningView: () => ({
     session: { data: { accountId: "parent-1", token: "synthetic" } },
     account: {
-      adultPractice: { learner: view.own ? { id: view.own } : null },
+      adultPractice: {
+        learner: view.own ? { id: view.own } : null,
+        eligible: view.eligible,
+      },
     },
     canPractice: true,
     viewOnly: false,
@@ -71,6 +88,8 @@ afterEach(() => {
   cleanup();
   places.families = [];
   view.own = null;
+  view.eligible = false;
+  startOwn.mockReset();
   handOver.mockReset();
   useLayerStore.setState({ stacks: {}, motion: null });
 });
@@ -291,9 +310,34 @@ test("a child's own page, and every screen under it, practices with that child",
 });
 
 test("a family's screen that names no child offers the adult's own practice, or none", async () => {
-  // Pip is the learner selected on this device: never theirs by that.
+  // Pip is the learner selected on this device: never theirs by that. An
+  // adult who can't practice themselves is offered nothing.
   renderAt(today, drawn(control()));
   expect(await offered()).toBeNull();
+  cleanup();
+  // One who may, and hasn't yet: the press starts their own practice and
+  // goes there, held to the skill. Nobody is handed the device.
+  view.eligible = true;
+  startOwn.mockResolvedValue(OWN);
+  const router = renderAt(today, drawn(control()));
+  const start = (await offered())!;
+  expect(start.tagName).toBe("BUTTON");
+  expect(start.getAttribute("aria-label")).toBe(
+    "Practice Measuring angles as yourself",
+  );
+  expect(
+    start
+      .closest("[data-curriculum-practice]")
+      ?.getAttribute("data-practice-for"),
+  ).toBe("self");
+  fireEvent.click(start);
+  expect(startOwn).toHaveBeenCalledTimes(1);
+  await waitFor(() =>
+    expect(router.state.location.pathname).toBe(
+      `/practice/${OWN}/skills/angles`,
+    ),
+  );
+  expect(handOver).not.toHaveBeenCalled();
   cleanup();
   view.own = OWN;
   renderAt(today, drawn(control()));
