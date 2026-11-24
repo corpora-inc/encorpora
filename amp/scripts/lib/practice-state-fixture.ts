@@ -1,5 +1,6 @@
 import { resolveLook } from "../../src/learning/look";
 import {
+  allowsColorful,
   defaultPracticeSettings,
   type PracticeSettings,
   type PracticeState,
@@ -18,7 +19,7 @@ export function practiceStateFixture(
 ): PracticeState {
   const { look, locked, lockedBy } = resolveLook({
     own: settings.look,
-    ownLocked: settings.lookAdultLock,
+    ownOff: !allowsColorful(settings),
     classes: [],
   });
   return {
