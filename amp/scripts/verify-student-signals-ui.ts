@@ -7,6 +7,11 @@
  *     to choosing new pictures by itself;
  *   - student B raises a hand in practice: it shows in the snapshot; the
  *     teacher acknowledges; B's button clears and "Your teacher saw it." shows.
+ * And in a family (the `family` persona): a child on their own device raises
+ * a hand, the parent taps Got it, and the note says "Your parent saw it.".
+ * With no session the hand is the menu's row: answered while the menu is
+ * still open, the answer shows in the row, where "Your hand is up" was (a
+ * class's student and a family's child).
  * Nothing on either screen may move through any step (at 390 and 1280, light
  * and dark).
  *
@@ -655,6 +660,42 @@ try {
           ),
           `${tag}: the hand raised from the menu reached the teacher`,
         );
+        // ---- the teacher answers while the menu is still open ------------
+        // The answer shows where the student is looking: in the menu's row,
+        // where "Your hand is up" was, and nothing in the menu moves.
+        const upInMenu = (await live()).signals.find(
+          (x) => x.personId === B.id && x.kind === "hand",
+        )!;
+        await teacher(
+          "POST",
+          `/api/v1/school/classes/${room.id}/signals/${upInMenu.id}/resolve`,
+          {},
+        );
+        await pressed("[data-raise-hand='menu']", "false");
+        const answered = menu.locator(
+          "[data-raise-hand='menu'] [data-hand-note]",
+        );
+        await answered
+          .waitFor({ timeout: 4_000 })
+          .catch(() =>
+            assert.fail(
+              `${tag}: the teacher saw the hand and the open menu says nothing`,
+            ),
+          );
+        assert.equal(
+          (await answered.innerText()).trim(),
+          "Your teacher saw it.",
+          `${tag}: the menu's answer`,
+        );
+        same(`${tag} menu hand seen`, menuDown, await boxes(page, menuParts));
+        await page.screenshot({ path: `${shots}/menu-3-seen-${tag}.png` });
+        // It goes by itself, and the row is as it was.
+        await answered.waitFor({ state: "detached", timeout: 10_000 });
+        same(`${tag} menu answer gone`, menuDown, await boxes(page, menuParts));
+        // Raise again, then lower.
+        await row.click();
+        await pressed("[data-raise-hand='menu']", "true");
+        await page.waitForTimeout(1200);
         await row.click();
         await pressed("[data-raise-hand='menu']", "false");
         await page.waitForTimeout(1200);
@@ -839,6 +880,177 @@ try {
     // The student is left on mixed practice, as they were found.
     await savePractice(B.id, { kind: "focus", skillId: null });
     checks++;
+  }
+
+  // ---- a family: the adult who saw the hand is a parent --------------------
+  // A family's child on a device of their own (the family's code, their
+  // pictures) raises a hand in a family session; the parent taps Got it.
+  // The note names the place's own adult, as the pictures screen does
+  // ("Ask your parent…"): "Your parent saw it.", never "teacher".
+  {
+    const parentSignIn = await fetch(`${web}/api/auth/sign-in/email`, {
+      method: "POST",
+      headers: { Origin: web, "content-type": "application/json" },
+      body: JSON.stringify({
+        email: "family@personas.amp.test",
+        password: PERSONA_PASSPHRASE,
+      }),
+    });
+    assert.ok(parentSignIn.ok, `parent sign-in ${parentSignIn.status}`);
+    const parentCookie = parentSignIn.headers
+      .getSetCookie()
+      .map((line) => line.split(";")[0])
+      .join("; ");
+    const parentToken = (
+      (await (
+        await fetch(`${web}/api/auth/get-session`, {
+          headers: { cookie: parentCookie },
+        })
+      ).json()) as { session: { token: string } }
+    ).session.token;
+    const parent = async <T>(method: string, path: string, body?: unknown) => {
+      const response = await fetch(`${api}${path}`, {
+        method,
+        headers: {
+          Origin: web,
+          authorization: `Bearer ${parentToken}`,
+          ...(body === undefined ? {} : { "content-type": "application/json" }),
+        },
+        body: body === undefined ? undefined : JSON.stringify(body),
+      });
+      const text = await response.text();
+      assert.ok(response.ok, `${method} ${path} ${response.status} ${text}`);
+      return (text ? JSON.parse(text) : null) as T;
+    };
+    const { families } = await parent<{ families: { familyId: string }[] }>(
+      "GET",
+      "/api/v1/families",
+    );
+    const home = await parent<{
+      children: {
+        name: string;
+        classes: { id: string; personId: string }[];
+      }[];
+    }>("GET", `/api/v1/families/${families[0]!.familyId}`);
+    const kid = home.children.find((child) => child.classes.length > 0);
+    assert.ok(kid, "the family persona has a child in its class");
+    const { id: familyClass, personId: kidId } = kid.classes[0]!;
+    const familyPath = `/api/v1/school/classes/${familyClass}`;
+    const familyCode = (
+      await pool.query("SELECT join_code FROM amp_classes WHERE id=$1", [
+        familyClass,
+      ])
+    ).rows[0].join_code as string;
+    const familyLive = () => parent<Snapshot>("GET", `${familyPath}/live`);
+    const stopFamily = async () => {
+      const running = (await familyLive()).session;
+      if (running)
+        await parent("POST", `${familyPath}/sessions/${running.id}/stop`, {});
+    };
+    await stopFamily();
+    await parent("POST", `${familyPath}/students/${kidId}/reset-pictures`, {});
+    const set = await fetch(`${api}/api/v1/school/join/picture`, {
+      method: "POST",
+      headers: { Origin: web, "content-type": "application/json" },
+      body: JSON.stringify({
+        code: familyCode,
+        personId: kidId,
+        pictures: mine,
+        set: true,
+      }),
+    });
+    assert.ok(set.ok, `the child's pictures ${set.status}`);
+    await parent("POST", `${familyPath}/sessions`, {});
+    for (const width of [390, 1280]) {
+      const tag = `family-${width}`;
+      const context = await browser.newContext({
+        viewport: { width, height: width === 390 ? 844 : 800 },
+      });
+      const page = await context.newPage();
+      page.on("console", (message) => {
+        if (message.type() === "error")
+          issues.push(`${tag} console: ${message.text()}`);
+      });
+      await page.goto(`${web}/join/${familyCode}/${kidId}`);
+      await pictureButtons(page).first().waitFor();
+      await pick(page);
+      const hand = page.getByRole("button", { name: "Raise hand" });
+      await hand.waitFor({ timeout: 30_000 });
+      await page.waitForTimeout(800);
+      await hand.click();
+      await page.waitForFunction(
+        () =>
+          document
+            .querySelector("button[aria-label='Raise hand']")
+            ?.getAttribute("aria-pressed") === "true",
+      );
+      await page.waitForTimeout(1500);
+      const raised = (await familyLive()).signals.find(
+        (s) => s.personId === kidId && s.kind === "hand",
+      );
+      assert.ok(raised, `${tag}: the hand is in the family's live snapshot`);
+      // The parent taps Got it.
+      await parent("POST", `${familyPath}/signals/${raised.id}/resolve`, {});
+      const note = page.locator("[data-hand-note]");
+      await note.waitFor({ timeout: 12_000 });
+      assert.equal(
+        (await note.innerText()).trim(),
+        "Your parent saw it.",
+        `${tag}: the note names the family's adult`,
+      );
+      await noteClear(page, `${tag} hand acknowledged`);
+      await page.screenshot({ path: `${shots}/hand-family-seen-${tag}.png` });
+      await note.waitFor({ state: "detached", timeout: 10_000 });
+      // No session: the hand is the menu's row. Raised there and answered
+      // while the menu is still open, the answer shows in the row.
+      await stopFamily();
+      await page
+        .locator("button[aria-label='Raise hand']")
+        .waitFor({ state: "detached", timeout: 15_000 });
+      await page
+        .locator("header[data-app-bar] [data-navigation-trigger]")
+        .click();
+      const familyMenu = page.getByRole("dialog");
+      const familyRow = familyMenu.getByRole("button", { name: "Raise hand" });
+      await familyRow.waitFor();
+      await page.waitForTimeout(500);
+      await familyRow.click();
+      await page.waitForFunction(
+        () =>
+          document
+            .querySelector("[data-raise-hand='menu']")
+            ?.getAttribute("aria-pressed") === "true",
+      );
+      await page.waitForTimeout(1200);
+      const atRest = (await familyLive()).signals.find(
+        (s) => s.personId === kidId && s.kind === "hand",
+      );
+      assert.ok(atRest, `${tag}: the hand raised from the menu reached home`);
+      await parent("POST", `${familyPath}/signals/${atRest.id}/resolve`, {});
+      const inRow = familyMenu.locator(
+        "[data-raise-hand='menu'] [data-hand-note]",
+      );
+      await inRow
+        .waitFor({ timeout: 4_000 })
+        .catch(() =>
+          assert.fail(
+            `${tag}: the parent saw the hand and the open menu says nothing`,
+          ),
+        );
+      assert.equal(
+        (await inRow.innerText()).trim(),
+        "Your parent saw it.",
+        `${tag}: the menu's answer names the family's adult`,
+      );
+      await page.screenshot({
+        path: `${shots}/hand-family-menu-seen-${tag}.png`,
+      });
+      await context.close();
+      checks++;
+      // The next width starts in a session again.
+      if (width === 390) await parent("POST", `${familyPath}/sessions`, {});
+    }
+    await stopFamily();
   }
 } finally {
   await browser.close();

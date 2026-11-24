@@ -47,7 +47,12 @@ import {
 } from "playwright";
 import pg from "pg";
 import { secureChromium } from "../browser-security.mjs";
-import { cutNameOpens, skillNames } from "./live-cockpit-checks";
+import {
+  cutNameOpens,
+  skillNames,
+  stopTrail,
+  watchStop,
+} from "./live-cockpit-checks";
 import {
   PERSONA_PASSPHRASE,
   personaEmail,
@@ -686,15 +691,20 @@ async function liveRun(
       }
     ).rows.map((row) => [row.personId, row.name]),
   );
-  // Stop asks first, then opens the report.
+  // Stop asks first, then opens the report: one move, never the cockpit
+  // at rest or its "ended" bar for a frame on the way.
   await page.getByRole("button", { name: "Stop" }).click();
   // The rows as they stand at the moment of Stop.
   const atStop = await rowStatuses(page);
+  await watchStop(page);
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "Stop session" })
     .click();
   await page.waitForSelector("[data-session-report]", { timeout: 20_000 });
+  const stopped = await stopTrail(page);
+  console.log(`${width}px: Stop: ${stopped.trail}`);
+  for (const problem of stopped.problems) fail(`${width}px: ${problem}`);
   if (!/\/sessions\/[0-9a-f-]+$/.test(new URL(page.url()).pathname))
     fail(`${width}px: Stop landed on ${page.url()}`);
   await page.waitForTimeout(800);

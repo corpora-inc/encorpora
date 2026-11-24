@@ -81,6 +81,8 @@ type StudentSubscriber = {
   kind: "student";
   personId: string;
   classIds: readonly string[];
+  /** Which of them are a family's own (the adult there is a parent). */
+  familyClassIds: readonly string[];
   sink: EventSink;
   fresh: boolean;
   /** Their requests as last read. */
@@ -181,13 +183,18 @@ export class LiveHub {
   attachStudent(
     request: FastifyRequest,
     reply: FastifyReply,
-    input: { personId: string; classIds: readonly string[] },
+    input: {
+      personId: string;
+      classIds: readonly string[];
+      familyClassIds?: readonly string[];
+    },
   ): boolean {
     if (!this.hasRoom()) return false;
     const subscriber = {
       kind: "student",
       personId: input.personId,
       classIds: [...input.classIds],
+      familyClassIds: [...(input.familyClassIds ?? [])],
       fresh: true,
       signals: [],
     } as unknown as StudentSubscriber;
@@ -201,6 +208,7 @@ export class LiveHub {
         serverNow: new Date().toISOString(),
         sessions: [],
         signals: [],
+        familyClasses: [],
       } satisfies StudentLive);
     this.add(subscriber, input.classIds);
     return true;
@@ -464,6 +472,7 @@ export class LiveHub {
             return session ? [toStudentSession(session)] : [];
           }),
           signals: subscriber.signals,
+          familyClasses: [...subscriber.familyClassIds],
         } satisfies StudentLive);
       }
     } finally {

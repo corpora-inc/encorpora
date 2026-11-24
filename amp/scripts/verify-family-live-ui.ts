@@ -27,6 +27,10 @@
  * 6. A session started from another browser while Today is open at rest
  *    (the cockpit's code not loaded yet): the cockpit arrives with no
  *    console error and no page error.
+ * 8. Stop is one move: from "Stop session" to the report, sampled frame by
+ *    frame, the live session holds and then the report shows. Never Today
+ *    at rest or the "ended" bar on the way, and the children's list never
+ *    jumps.
  * 7. Each child's block: "Last 20 problems" is one line of one height for
  *    every child whatever their counts (one line of text from 768 px), with
  *    no skill named on the page; it opens a sheet over Today listing every
@@ -44,6 +48,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, type Browser, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
+import { stopTrail, watchStop } from "./live-cockpit-checks";
 import {
   PERSONA_PASSPHRASE,
   personaEmail,
@@ -393,6 +398,15 @@ function listen(page: Page) {
   });
   page.on("pageerror", (error) => said.push(error.message.slice(0, 240)));
   return said;
+}
+
+// ---- 8. Stop is one move: the session, then its report -------------------
+/** Between "Stop session" and the report nothing else shows
+ * (live-cockpit-checks.ts `stopTrail`). */
+async function stopWasOneMove(page: Page, where: string) {
+  const { trail, problems } = await stopTrail(page);
+  console.log(`${where}: Stop: ${trail}`);
+  for (const problem of problems) fail(`${where}: ${problem}`);
 }
 
 // ---- 5. the report, past sessions, the time report, help on a phone ------
@@ -798,11 +812,13 @@ async function liveRun(
   // A child's row opens the child's page; back to Today and on.
   if (width === WIDTHS.at(-1)) await childLink(page, who);
   await page.getByRole("button", { name: "Stop" }).click();
+  await watchStop(page);
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "Stop session" })
     .click();
   await page.waitForSelector("[data-session-report]", { timeout: 20_000 });
+  await stopWasOneMove(page, `${tag} ${width}px`);
   const path = new URL(page.url()).pathname;
   if (!new RegExp(`^/family/${who.family}/sessions/[0-9a-f-]+$`).test(path))
     fail(`${tag} ${width}px: Stop landed on ${page.url()}`);
@@ -1229,6 +1245,14 @@ try {
   ]);
   await rest(three);
   await rest(one);
+  if (flag("stop-only")) {
+    for (const width of WIDTHS)
+      await liveRun(browser, threeState, three, "family", width, "three");
+    await rest(three);
+    assert.deepEqual(failures, [], failures.join("\n"));
+    console.log("Stop is one move at every width.");
+    process.exit(0);
+  }
   if (flag("blocks-only")) {
     for (const width of WIDTHS)
       await childBlocks(browser, threeState, three, width);

@@ -545,6 +545,9 @@ test(
       );
       assert.deepEqual(polled.signals, seen.signals);
       assert.deepEqual(polled.sessions, seen.sessions);
+      // A school's class is nobody's family: the adult there is a teacher.
+      assert.deepEqual(polled.familyClasses, []);
+      assert.deepEqual(seen.familyClasses, []);
       // Stop: every stream hears it.
       await ok(
         a.app,

@@ -18,7 +18,7 @@ import { studentLiveKey } from "../api";
 vi.mock("../../../lib/live-stream", () => ({
   openLiveStream: () => ({ close: vi.fn(), mode: "connecting" }),
 }));
-const { RaiseHand, SAW_IT_MS } = await import("../RaiseHand");
+const { RaiseHand, SAW_IT_MS, adultOf } = await import("../RaiseHand");
 
 const CLASS = "22222222-2222-4222-8222-222222222222";
 const PERSON = "00000000-0000-4000-8000-000000000001";
@@ -169,6 +169,25 @@ test("up: shown from the stream, tap lowers", async () => {
   );
 });
 
+test("in a family the adult who saw it is a parent; in a class, a teacher", () => {
+  const acked = signal({
+    resolvedAt: new Date(NOW - 1_000).toISOString(),
+    resolution: "acknowledged",
+  });
+  answer = [acked];
+  // The server names the student's classes that are a family's own.
+  mount("st_abc", { ...live([acked]), familyClasses: [CLASS] });
+  expect(screen.getByRole("status").textContent).toBe("Your parent saw it.");
+  expect(document.body.textContent).not.toMatch(/teacher/i);
+  // Their own class, or one their family isn't: the teacher.
+  expect(adultOf(CLASS, [CLASS])).toBe("parent");
+  expect(adultOf(CLASS, [])).toBe("teacher");
+  expect(adultOf(CLASS, ["another-class"])).toBe("teacher");
+  // An older server says nothing of it: a class, as before.
+  expect(adultOf(CLASS, undefined)).toBe("teacher");
+  expect(adultOf(undefined, [CLASS])).toBe("teacher");
+});
+
 test("acknowledged: the press clears and a note shows, then goes by itself", async () => {
   const acked = signal({
     resolvedAt: new Date(NOW - 1_000).toISOString(),
@@ -245,6 +264,56 @@ test("no session: the bar keeps the hand's place with no button, and the menu ha
   );
   // Still nothing in the bar: one entry.
   expect(inBar()).toBeNull();
+});
+
+test('no session, the menu still open: the answer shows in the menu, where "Your hand is up" was', async () => {
+  const up = signal();
+  resting = true;
+  answer = [up];
+  mount("st_abc", live([up], true));
+  openMenu();
+  expect(inMenu()!.textContent).toBe("Raise handYour hand is up");
+  expect(screen.queryByRole("status")).toBeNull();
+  // The adult taps Got it; the child hasn't closed the menu.
+  const acked = signal({
+    resolvedAt: new Date(NOW - 500).toISOString(),
+    resolution: "acknowledged",
+  });
+  answer = [acked];
+  act(() => {
+    client.setQueryData(
+      studentLiveKey({ accountId: "acct", token: "st_abc" }),
+      live([acked], true),
+    );
+  });
+  const row = inMenu()!;
+  await waitFor(() => expect(row.getAttribute("aria-pressed")).toBe("false"), {
+    timeout: 4_000,
+  });
+  // In the row's own place for its state: the row is the same row.
+  expect(inMenu()).toBe(row);
+  expect(row.textContent).toBe("Raise handYour teacher saw it.");
+  const said = screen.getAllByRole("status");
+  expect(said).toHaveLength(1);
+  expect(row.contains(said[0]!)).toBe(true);
+  expect(said[0]!.getAttribute("data-hand-note")).toBe("menu");
+  // It goes by itself, as the bar's does.
+  await waitFor(() => expect(inMenu()!.textContent).toBe("Raise hand"), {
+    timeout: SAW_IT_MS + 1_000,
+  });
+  expect(screen.queryByRole("status")).toBeNull();
+}, 10_000);
+
+test("no session, the menu open, in a family: the menu's answer names the parent", () => {
+  const acked = signal({
+    resolvedAt: new Date(NOW - 500).toISOString(),
+    resolution: "acknowledged",
+  });
+  resting = true;
+  answer = [acked];
+  mount("st_abc", { ...live([acked], true), familyClasses: [CLASS] });
+  openMenu();
+  expect(inMenu()!.textContent).toBe("Raise handYour parent saw it.");
 });
 
 test("no session: a hand the teacher saw says so from the bar's place", () => {

@@ -77,5 +77,9 @@ export const studentLiveResponse = z.object({
   serverNow: z.iso.datetime(),
   sessions: z.array(studentSessionResource),
   signals: z.array(studentSignalResource),
+  /** Which of the student's classes are a family's own, where the adult is
+   * a parent: the same fact a sign-in screen reads from the join roster's
+   * `class.kind`. Absent from an older server: none. */
+  familyClasses: z.array(z.uuid()).optional(),
 });
 export type StudentLive = z.infer<typeof studentLiveResponse>;

@@ -12,6 +12,7 @@ import {
   resolveSignalResponse,
   forgotPictureResponse,
 } from "../src/schools/live/contracts.js";
+import { studentLiveResponse } from "../src/schools/live/stream-contracts.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
@@ -663,6 +664,18 @@ test(
           ).signal.resolution,
           "acknowledged",
         );
+        // The child's screen learns whose class it is: a family's own, so
+        // the adult who saw the hand is a parent ("Your parent saw it.").
+        const childLive = studentLiveResponse.parse(
+          await ok(get("/api/v1/school/student/live", await token(personId))),
+        );
+        assert.deepEqual(childLive.familyClasses, [family.class_id]);
+        assert.equal(childLive.signals[0]?.classId, family.class_id);
+        // A school's student: none of their classes is a family's.
+        const benLive = studentLiveResponse.parse(
+          await ok(get("/api/v1/school/student/live", benToken)),
+        );
+        assert.deepEqual(benLive.familyClasses, []);
       },
     );
 
