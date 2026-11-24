@@ -283,7 +283,7 @@ def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
     # family-b6 once a student's practice stops reading its practice-state
     # on every problem; see the lanes' note in amp-deep-checks.yml.
     for name in ('family-live', 'adult-time', 'live-cockpit-screen', 'live-cockpit',
-                 'student-signals'):
+                 'student-signals', 'session-report'):
         assert family_b.count(f'tsx scripts/verify-{name}-ui.ts') == 1, name
     assert len(set(full)) == len(full)
     assert not set(first) & set(second)
