@@ -104,11 +104,10 @@ test("no checked column when nothing lies below the level", () => {
       overall={level(0.5)}
       numbers={false}
       label="areas"
-      checkedHead="Checked below"
     />,
   );
   expect(document.querySelector("[data-checking]")).toBeNull();
-  expect(screen.queryByText("Checked below")).toBeNull();
+  expect(screen.queryByText("Earlier grades")).toBeNull();
 });
 
 test("grade spans in short words", () => {

@@ -205,11 +205,11 @@ export function layerActions(scope: string) {
   return {
     open: (layers: Layer | Layer[]) =>
       set([layers].flat().reduce(pushed, get()), 1),
-    /** One layer down (Escape, a replay's own close). */
+    /** One layer down (✕, Escape, a replay's own way up). */
     close: () => set(get().slice(0, -1), -1),
     /** Keeps only the first `depth` layers (a trail's crumb). */
     closeToDepth: (depth: number) => set(get().slice(0, depth), -1),
-    /** The whole overlay away (its ✕ or scrim), back to the page, except
+    /** The whole overlay away (its scrim), back to the page, except
      * that an answer's replay is a base of its own (entities closeDepth). */
     closeAll: () => {
       const stack = get();

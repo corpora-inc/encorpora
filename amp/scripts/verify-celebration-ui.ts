@@ -20,6 +20,7 @@ import { secureChromium } from "../browser-security.mjs";
  */
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
+import { cpus, loadavg } from "node:os";
 import { chromium as rawChromium, type Page } from "playwright";
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
@@ -224,9 +225,10 @@ async function run(look: "calm" | "bold") {
   // Every answer is turned right for the page. The server graded it itself
   // (most are wrong: every answer here is the same number), so its count of
   // points falls behind the page's by the answers this run turned. Practice
-  // reads practice-state again with every new problem (look-feed.ts), and
-  // the server's count is told there as the run made it, like the skill's
-  // record below: the page's total never steps back under a sheet.
+  // reads practice-state again with each answer here (this learner has no
+  // student stream to feed the tab: look-feed.ts), and the server's count is
+  // told there as the run made it, like the skill's record below: the
+  // page's total never steps back under a sheet.
   let turned = 0;
   await page.route("**/attempts", async (route) => {
     const response = await route.fetch();
@@ -239,13 +241,16 @@ async function run(look: "calm" | "bold") {
   });
   await page.route("**/practice-state", async (route) => {
     if (route.request().method() !== "GET") return route.fallback();
+    // As the server counts: what stood when the read was asked for, not
+    // what a later answer added while it was on its way back.
+    const counted = turned;
     const response = await route.fetch();
     const body = await response.json();
     await route.fulfill({
       response,
       json:
         typeof body.points === "number"
-          ? { ...body, points: body.points + turned }
+          ? { ...body, points: body.points + counted }
           : body,
     });
   });
@@ -432,6 +437,20 @@ async function colorful() {
   ])
     assert.ok(bold.played.has(moment), `${moment} played`);
   console.log("Moments seen:", [...bold.played].sort().join(", "));
+  // The evidence the budget is set from: every long task the browser
+  // reported in those windows (it reports tasks of 50 ms and more), and how
+  // busy the machine was.
+  const within = (windows: [number, number][]) =>
+    bold.probe.longTasks
+      .filter((task) =>
+        windows.some(([from, to]) => task.start >= from && task.start < to),
+      )
+      .map((task) => Math.round(task.duration));
+  console.log(
+    `Long tasks reported (ms at ${THROTTLE}x CPU): while only the animations ran ${JSON.stringify(within(bold.windows))}, while a world turned ${JSON.stringify(within(bold.hueWindows))}; machine load ${loadavg()
+      .map((load) => load.toFixed(1))
+      .join(" ")} on ${cpus().length} cores`,
+  );
   const inTails = bold.probe.longTasks.filter((task) =>
     bold.windows.some(
       ([from, to]) =>

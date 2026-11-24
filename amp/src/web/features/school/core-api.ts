@@ -15,6 +15,7 @@ import {
   queryClient,
   sessionOptions,
 } from "../../lib/query";
+import { logAhead } from "../../lib/ahead";
 
 /* The little of the school's API the app shell reads on every screen (the
    spaces resolver, the route table): an account's schools, one school, its
@@ -151,7 +152,7 @@ export const preload = (options: { queryKey: readonly unknown[] }) =>
     // In the entry bundle: it logs itself, never through lib/report-error
     // (a chunk of its own; docs/architecture/frontend-patterns.md).
     .catch((error) => {
-      console.warn("School data didn’t load ahead", error);
+      logAhead("School data didn’t load ahead", error);
       return undefined;
     });
 

@@ -24,8 +24,12 @@
  *   other way, the rows are there from the first frame.
  * - The switch flipped while an answer's feedback is being read: the sheet
  *   keeps its shape, and the next problem arrives in the new look.
- * - A real right answer on the student's practice: no request comes back
- *   404 and nothing fails to load, and every icon the page names is served.
+ * - Five problems answered right on the student's practice: one stream for
+ *   all of them (a new one only after one ended), and with it held no
+ *   request for the student's live state or their practice settings per
+ *   problem; no request comes back 404 and nothing fails to load, and
+ *   every icon the page names is served. A tab with no stream reads the
+ *   practice settings once per problem, with its answer.
  *
  * Screenshots go to `--out` (default artifacts/allow-colorful).
  *
@@ -38,6 +42,7 @@ import {
   type Browser,
   type BrowserContext,
   type Page,
+  type Request,
 } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import {
@@ -748,9 +753,35 @@ try {
     return { context, page };
   };
 
-  // A right answer on a student's practice asks for nothing that isn't
-  // there: a 404 is a route that is missing or misnamed, or a question the
-  // page should not ask, and an error in every console a check reads.
+  /** What a page asks the server for, counted: the student's stream (and
+   * how many of them ended), their live state, their practice settings. */
+  const counted = (page: Page) => {
+    const asked = { streams: 0, streamsEnded: 0, live: 0, settings: 0 };
+    const stream = (url: string) =>
+      new URL(url).pathname.endsWith("/school/student/live/stream");
+    page.on("request", (request) => {
+      if (request.method() !== "GET") return;
+      const path = new URL(request.url()).pathname;
+      if (stream(request.url())) asked.streams++;
+      else if (path.endsWith("/school/student/live")) asked.live++;
+      else if (path.endsWith("/practice-state")) asked.settings++;
+    });
+    const over = (request: Request) => {
+      if (stream(request.url())) asked.streamsEnded++;
+    };
+    page.on("requestfinished", over);
+    page.on("requestfailed", over);
+    return asked;
+  };
+
+  // A student's practice across five problems answered right. One stream
+  // for all of them: a new problem opens none, and asks for neither the
+  // student's live state nor their practice settings (the stream carries
+  // both). A stream the server ended (each lives 85 to 95 s) is followed
+  // by one more, whose first state reads the settings once. And nothing it
+  // asks for is missing: a 404 is a route that is missing or misnamed, or
+  // a question the page should not ask, and an error in every console a
+  // check reads.
   {
     await write(orgPath, true);
     await write(classPath, true);
@@ -778,11 +809,52 @@ try {
         notFound.push(`${message.text()} (${message.location().url})`);
     });
     trackPracticeProblems(page);
+    const asked = counted(page);
     await page.goto(`${origin}/practice`);
     await page.locator(".problem-stage .question").waitFor();
-    await answerOne(page, true);
-    // The moment, the skill's record and what the sheet links to.
-    await settle(page, 3_000);
+    // The stream is open and its first state has been read.
+    await settle(page, 2_500);
+    const opened = { ...asked };
+    check(
+      opened.streams === 1 + opened.streamsEnded,
+      "a student's practice opens one stream",
+      opened,
+    );
+    for (let problem = 1; problem <= 5; problem++) {
+      await answerOne(page, true);
+      // The moment, the skill's record and what the sheet links to.
+      await settle(page, problem === 1 ? 3_000 : 900);
+      if (problem < 5) {
+        await page.locator(".next-action").click();
+        await page.locator(".next-action").waitFor({ state: "hidden" });
+        await page.locator(".problem-stage .question").waitFor();
+      }
+    }
+    await settle(page, 1_500);
+    const across = {
+      streams: asked.streams - opened.streams,
+      streamsEnded: asked.streamsEnded - opened.streamsEnded,
+      live: asked.live - opened.live,
+      settings: asked.settings - opened.settings,
+    };
+    console.log(
+      `  a student's practice, five problems with its stream held: ${JSON.stringify(across)} (opening it: ${JSON.stringify(opened)})`,
+    );
+    check(
+      across.streams === across.streamsEnded,
+      "five problems, one stream: a new one only after one ended",
+      across,
+    );
+    check(
+      across.live === 0,
+      "five problems with the stream held: the student's live state is not asked for",
+      across,
+    );
+    check(
+      across.settings === across.streams,
+      "five problems with the stream held: practice settings are read only on a new stream's first state",
+      across,
+    );
     // The icons every page names: the browser asks for the favicon by
     // itself and late, so each is asked for here too.
     for (const href of await page
@@ -797,7 +869,7 @@ try {
     }
     check(
       notFound.length === 0,
-      "a right answer on a student's practice: no request comes back not found",
+      "right answers on a student's practice: no request comes back not found",
       notFound,
     );
     await context.close();
@@ -923,6 +995,7 @@ try {
         route.abort(),
       ),
     );
+    const asked = counted(page);
     await page
       .locator(':root[data-look="bold"]')
       .waitFor({ state: "attached" });
@@ -945,6 +1018,8 @@ try {
     };
     for (const want of ["calm", "bold"] as const) {
       await write(classPath, want === "bold");
+      await settle(page, 600);
+      const before = asked.settings;
       await nextProblem();
       const arrived = await page
         .waitForFunction(
@@ -962,6 +1037,14 @@ try {
         arrived,
         `${tag}: ${want === "bold" ? "Colorful" : "Calm"} no later than the next problem`,
         await lookNow(page),
+      );
+      await settle(page, 600);
+      // What that bound costs where nothing feeds the tab: one read of the
+      // practice settings, with the answer.
+      check(
+        asked.settings - before === 1,
+        `${tag}: a problem costs one read of the practice settings`,
+        { reads: asked.settings - before },
       );
     }
     await context.close();

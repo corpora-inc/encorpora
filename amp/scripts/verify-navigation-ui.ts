@@ -692,7 +692,8 @@ try {
     url.pathname.endsWith("/kids/avery/inventory"),
   );
   await byArea();
-  await page.getByText("Not tried", { exact: true }).first().waitFor();
+  // (A parent reads a child's rows in the dashboard's four words.)
+  await page.getByText("Not asked yet", { exact: true }).first().waitFor();
   assert.equal(
     await page.locator('[data-strength="Strong"]').count(),
     0,

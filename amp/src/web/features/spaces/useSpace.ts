@@ -24,6 +24,7 @@ import {
   type SpaceSession,
 } from "./resolve";
 import type { RouteSpace } from "./space";
+import { logAhead } from "../../lib/ahead";
 
 type MatchLike = {
   pathname: string;
@@ -128,7 +129,7 @@ async function lookAhead(
     const me = await queryClient
       .ensureQueryData(meOptions(session))
       .catch((error: unknown) => {
-        console.warn("A student's look waits for their account", error);
+        logAhead("A student's look waits for their account", error);
         return undefined;
       });
     learnerId = me?.signedIn ? me.learners[0]?.id : undefined;
@@ -159,7 +160,7 @@ export async function loadSpaceFrame(
   if (!session || !hasAccountContext(pathname)) return;
   const ahead = (options: { queryKey: readonly unknown[] }) =>
     queryClient.ensureQueryData(options as never).catch((error: unknown) => {
-      console.warn("The screen's place didn’t load ahead", error);
+      logAhead("The screen's place didn’t load ahead", error);
     });
   const student = session.accountId.startsWith("school:");
   const frame = student

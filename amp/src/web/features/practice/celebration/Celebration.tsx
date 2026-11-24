@@ -51,14 +51,18 @@ export function Celebration(props: Props) {
   useEffect(() => {
     if (look === "bold") void preloadColorful();
   }, [look]);
-  // Each new problem: a look changed somewhere else is on this screen no
-  // later than now, where no stream brings it sooner (look-feed.ts).
+  // Each answer, once it is counted (the Counter below, in the commit that
+  // shows it): where no stream feeds this tab, a look changed somewhere
+  // else is read now and is on the next problem's first frame
+  // (look-feed.ts).
   const problemId = props.problem.id;
+  const answerId = props.outcome?.id;
   const identity = scope?.identity;
   const learnerId = scope?.learnerId;
   useEffect(() => {
-    if (identity && learnerId) lookAgain({ identity, learnerId }, problemId);
-  }, [problemId, identity, learnerId]);
+    if (identity && learnerId && answerId)
+      lookAgain({ identity, learnerId }, answerId);
+  }, [answerId, identity, learnerId]);
   // The chip's room is this problem's: kept from the look it arrives in, in
   // the commit that shows it (chip-room.ts). A look that waited for this
   // problem goes on in the same commit (look-feed.ts).

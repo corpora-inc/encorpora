@@ -14,8 +14,9 @@
  * - on paper the grade is a checklist: no controls, every problem type;
  * - "All Grade N skills" in Overall on the child's page opens the same view
  *   on that grade;
- * - a skill's layer states where the child stands in its row's own word
- *   (one row of each standing the grade has): never a second word for it;
+ * - a skill's layer states where the child stands in its row's own word,
+ *   by grade and by area alike (one row of each standing there is): never
+ *   a second word for it;
  * - a problem type opens its lesson; a skill opens its layer, and Practice
  *   there starts THAT child's practice held to the skill (the hand-over),
  *   with Back returning to the index;
@@ -37,7 +38,7 @@
  * or point it at a running, seeded preview:
  *
  *   npx tsx scripts/verify-skill-index-ui.ts --origin http://127.0.0.1:4780
- *     [--widths 390,768,1024,1280] [--out artifacts/skill-index] [--shots]
+ *     [--widths 320,390,768,1024,1280] [--out artifacts/skill-index] [--shots]
  */
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -78,7 +79,7 @@ const argument = (name: string) => {
   return at > 0 ? process.argv[at + 1] : undefined;
 };
 const OUT = argument("out") ?? "artifacts/skill-index";
-const WIDTHS = (argument("widths") ?? "390,768,1024,1280")
+const WIDTHS = (argument("widths") ?? "320,390,768,1024,1280")
   .split(",")
   .map(Number);
 const SHOTS = process.argv.includes("--shots");
@@ -478,9 +479,51 @@ try {
     await page.reload();
     await showsGrade(other, "after a refresh");
 
-    // ---- by area is Inventory as it was; by grade comes back --------------
-    const switchBox = async () =>
-      (await page.getByRole("radiogroup", { name: "View" }).boundingBox())!;
+    /** Opens a skill from its row (by grade or by area). Its layer states
+     * where the child stands in the row's own word (the key's four), and no
+     * other status. */
+    const openSkill = async (id: string, list = "[data-grade-index]") => {
+      const item = page.locator(`${list} li[data-skill="${id}"]`);
+      const said = {
+        standing: await item.getAttribute("data-standing"),
+        word: (await item.locator("[data-standing-word]").innerText()).trim(),
+      };
+      // (Its name is its first link; a by-grade row's problem types follow.)
+      await item.locator("a").first().click();
+      const panel = page.locator("[data-layer-panel]");
+      await panel.locator(`[data-skill-layer="${id}"]`).waitFor();
+      const status = panel.locator("[data-skill-standing]");
+      await status.waitFor();
+      assert.deepEqual(
+        {
+          standing: await status.getAttribute("data-skill-standing"),
+          word: (
+            await status.locator("[data-standing-word]").innerText()
+          ).trim(),
+        },
+        said,
+        at(`${id}: the layer's standing is its row's`),
+      );
+      assert.equal(
+        await panel
+          .getByText(/^(Building|Not practiced yet|Getting started|Not tried)$/)
+          .count(),
+        0,
+        at(`${id}: the layer has no second word for it`),
+      );
+    };
+    const closeLayer = async () => {
+      await page.keyboard.press("Escape");
+      await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
+    };
+    // ---- by area is the collection; by grade comes back -------------------
+    // (Where it is on the page, not on the screen: a shorter list may leave
+    // the page scrolled less.)
+    const switchBox = () =>
+      page.getByRole("radiogroup", { name: "View" }).evaluate((group) => {
+        const box = group.getBoundingClientRect();
+        return [box.x, box.y + scrollY, box.width, box.height].map(Math.round);
+      });
     const held = await switchBox();
     await slice("By area").click();
     await page.getByRole("group", { name: "Skills to show" }).waitFor();
@@ -495,6 +538,49 @@ try {
     );
     assert.deepEqual(await switchBox(), held, at("the switch holds its place"));
     await fits("by area");
+    // By area, a parent reads the same four words, and a row's layer says
+    // the row's: one row of each standing the whole collection has.
+    await page
+      .getByRole("group", { name: "Skills to show" })
+      .getByRole("button", { name: /^All/ })
+      .click();
+    const collection = "main:not([data-inventory-mode=grade])";
+    await page.locator(`${collection} li[data-skill]`).first().waitFor();
+    assert.deepEqual(
+      await page
+        .locator(`${collection} li[data-skill]`)
+        .evaluateAll((items) => [
+          ...new Set(
+            items.map(
+              (item) =>
+                item.querySelector("[data-standing-word]")?.textContent ?? "",
+            ),
+          ),
+        ])
+        .then((words) =>
+          words.filter((word) => !Object.values(WORDS).includes(word as never)),
+        ),
+      [],
+      at("by area speaks only the key's four words"),
+    );
+    for (const standing of Object.keys(WORDS)) {
+      const row = page
+        .locator(`${collection} li[data-skill][data-standing="${standing}"]`)
+        .first();
+      if (!(await row.count())) continue;
+      const id = (await row.getAttribute("data-skill"))!;
+      assert.equal(
+        await row.getAttribute("data-standing"),
+        standingOf(evidence.get(id)),
+        at(`by area, ${id}: the record's standing`),
+      );
+      await openSkill(id, collection);
+      await closeLayer();
+    }
+    await page
+      .getByRole("group", { name: "Skills to show" })
+      .getByRole("button", { name: /^Tried/ })
+      .click();
     await slice("By grade").click();
     await showsGrade(other, "by grade again");
     assert.deepEqual(await switchBox(), held, at("the switch holds its place"));
@@ -542,44 +628,12 @@ try {
     await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
 
     // ---- a row and its layer say one thing -------------------------------
-    /** Opens a skill from its row. Its layer states where the child stands
-     * in the row's own word (the key's four), and no other status. */
-    const openSkill = async (id: string) => {
-      const item = page.locator(`[data-grade-index] li[data-skill="${id}"]`);
-      const said = {
-        standing: await item.getAttribute("data-standing"),
-        word: (await item.locator("[data-standing-word]").innerText()).trim(),
-      };
-      await item.locator(":scope > div a").click();
-      const panel = page.locator("[data-layer-panel]");
-      await panel.locator(`[data-skill-layer="${id}"]`).waitFor();
-      const status = panel.locator("[data-skill-standing]");
-      await status.waitFor();
-      assert.deepEqual(
-        {
-          standing: await status.getAttribute("data-skill-standing"),
-          word: (
-            await status.locator("[data-standing-word]").innerText()
-          ).trim(),
-        },
-        said,
-        at(`${id}: the layer's standing is its row's`),
-      );
-      assert.equal(
-        await panel
-          .getByText(/^(Building|Not practiced yet|Getting started)$/)
-          .count(),
-        0,
-        at(`${id}: the layer has no second word for it`),
-      );
-    };
     // One row of each standing the grade has.
     for (const standing of ["strong", "earned", "tried", "notAsked"]) {
       const one = shown.find((entry) => entry.standing === standing);
       if (!one) continue;
       await openSkill(one.id);
-      await page.keyboard.press("Escape");
-      await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
+      await closeLayer();
     }
 
     // ---- a skill opens its layer; Practice there is this child's -----------
@@ -600,6 +654,82 @@ try {
       new RegExp(`with ${CHILD}$`),
       at("Practice names the child"),
     );
+    // ---- a layer over a layer closes to the layer behind it ----------------
+    // The frame's layers, oldest first ("" with none open).
+    const layersOpen = async () =>
+      (await page.locator("[data-layer-frame]").count())
+        ? ((await page
+            .locator("[data-layer-frame]")
+            .getAttribute("data-layers")) ?? "")
+        : "";
+    const settled = async (layers: string, what: string) => {
+      await page
+        .locator(`[data-layer-frame][data-layers="${layers}"]`)
+        .waitFor()
+        .catch(async () =>
+          assert.fail(
+            at(
+              `${what}: the layers are "${await layersOpen()}", not "${layers}"`,
+            ),
+          ),
+        );
+      // (A panel has slid in or out.)
+      await page.waitForTimeout(500);
+    };
+    const alone = `skill:${pick.skill.id}`;
+    {
+      // One of the skill's problem types: its Lesson, over the skill.
+      const lesson = page
+        .locator('[data-layer-panel] a[data-entity="lesson"]')
+        .first();
+      await lesson.waitFor();
+      const type = new URLSearchParams(
+        (await lesson.getAttribute("href"))!.split("?")[1],
+      )
+        .get("open")!
+        .split(",")
+        .at(-1)!;
+      const both = `${alone},${type}`;
+      const cross = page.locator("[data-layer-panel] [data-layer-close]");
+      // ✕: the lesson down, the skill behind it again, the list behind that.
+      await lesson.click();
+      await settled(both, "a skill's lesson opens over the skill");
+      await fits("a lesson over a skill");
+      await cross.click();
+      await settled(alone, "✕ on the lesson comes back to the skill");
+      await layer.waitFor();
+      // Escape: the same one step.
+      await lesson.click();
+      await settled(both, "the lesson again");
+      await page.keyboard.press("Escape");
+      await settled(alone, "Escape on the lesson comes back to the skill");
+      // The browser's Back is between screens, never through layers: it
+      // leaves this screen for the one before, and coming back shows both
+      // layers as they were (docs/design/ia.md, "Navigation").
+      await lesson.click();
+      await settled(both, "the lesson once more");
+      await page.goBack();
+      await page.waitForURL((url) => url.pathname !== inventory);
+      await page.goForward();
+      await page.waitForURL((url) => url.pathname === inventory);
+      await settled(both, "Back and Forward keep the layers as they were");
+      // The scrim is the page: a press there puts the whole overlay away.
+      // (Where the sheet leaves some of it to press: a phone's covers it.)
+      const scrim = page.locator("[data-layer-scrim]");
+      const sheet = (await page.locator("[data-layer-frame]").boundingBox())!;
+      if (sheet.x >= 48) {
+        await scrim.click({ position: { x: 12, y: 12 } });
+        await page.locator("[data-layer-frame]").waitFor({ state: "detached" });
+        assert.equal(new URL(page.url()).pathname, inventory);
+        await openSkill(pick.skill.id);
+      } else {
+        await cross.click();
+        await settled(alone, "✕ on the lesson, after Back and Forward");
+      }
+      await layer.waitFor();
+      await practice.waitFor();
+    }
+
     // ---- Workbook, beside Practice: held to this skill, for this child ----
     const workbook = page.locator(
       `[data-layer-panel] a[data-skill-workbook="${pick.skill.id}"]`,
@@ -649,11 +779,42 @@ try {
       );
     const left = await place();
     await workbook.click();
-    await page.waitForURL(
-      (url) =>
-        url.pathname ===
-        `/family/${family}/kids/${child.id}/workbooks/${today()}`,
-    );
+    // The maker is a layer over the skill: the screen behind stays the list
+    // the skill was opened on, at its own address, where it was.
+    const making = `${alone},workbook:${child.id}.${today()}`;
+    await settled(making, "the maker opens over the skill");
+    const behind = async (what: string) => {
+      assert.equal(
+        new URL(page.url()).pathname,
+        inventory,
+        at(`${what}: the address is the list's`),
+      );
+      assert.equal(
+        await page.locator(`main [data-grade-index="${own}"]`).count(),
+        1,
+        at(`${what}: the list is the screen behind`),
+      );
+      assert.equal(
+        await page.locator("main [data-child-workbooks]").count(),
+        0,
+        at(`${what}: the child's page is not`),
+      );
+      assert.deepEqual(
+        await place(),
+        left,
+        at(`${what}: the list is in place`),
+      );
+    };
+    await behind("the maker open");
+    if (SHOTS)
+      await page.screenshot({ path: `${OUT}/maker-over-list-${width}.png` });
+    // ✕ puts the maker down, to the skill it was opened from; Escape too.
+    await page.locator("[data-layer-panel] [data-layer-close]").click();
+    await settled(alone, "✕ on the maker comes back to the skill");
+    await behind("the maker closed");
+    // (Opened again, it is held to the skill again.)
+    await workbook.click();
+    await settled(making, "the maker again");
     // The maker, with the workbook already composed from this skill alone.
     const paper = page.locator("[data-workbook-contents]");
     await paper.getByRole("heading", { name: /^Workbook No\./ }).waitFor();
@@ -759,11 +920,10 @@ try {
     await paper.getByText(made.code, { exact: true }).waitFor();
     // Closing comes back to the skill, the list where it was.
     await page.keyboard.press("Escape");
-    await page.waitForURL((url) => url.pathname === inventory);
+    await settled(alone, "Escape on the maker comes back to the skill");
     await layer.waitFor();
     await workbook.waitFor();
-    await page.waitForTimeout(400);
-    assert.deepEqual(await place(), left, at("the list is where it was"));
+    await behind("after the workbook is saved");
     // It is listed with the child's workbooks.
     await page.goto(`${origin}/family/${family}/kids/${child.id}`);
     const inList = page
@@ -853,6 +1013,39 @@ try {
       (mine.learningAllowed ?? !!mine.canPractice) &&
       ((mine.hasAccess ?? (!mine.freeAllowance && !!mine.canPractice)) ||
         (mine.freeAllowance?.workbooks.available ?? 0) > 0);
+    // Their look set to Colorful, to see what these screens wear. A look is
+    // a learner's practice's (and a student's own screens'): an adult's
+    // Inventory, a skill's layer and the workbook maker stay Calm.
+    const look = async (to: "bold" | null) => {
+      const headers = {
+        Authorization: `Bearer ${adult}`,
+        Origin: origin,
+        "Content-Type": "application/json",
+      };
+      const at = `${origin}/api/v1/learners/${self}/practice-state`;
+      const now = await (await fetch(at, { headers })).json();
+      const set = await fetch(at, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          requestId: crypto.randomUUID(),
+          revision: now.revision,
+          kind: "look",
+          look: to,
+        }),
+      });
+      assert.ok(set.ok, `the adult's look is set to ${to}: ${set.status}`);
+      return (await set.json()).effectiveLook as string;
+    };
+    const worn = await look("bold");
+    const calm = async (where: string) =>
+      assert.equal(
+        await page.evaluate(() =>
+          document.documentElement.getAttribute("data-look"),
+        ),
+        null,
+        `${where} wears no look (the adult's is ${worn})`,
+      );
     const page = await context.newPage();
     await page.goto(`${origin}/inventory`);
     const row = page.locator("li[data-strength] a").first();
@@ -872,9 +1065,13 @@ try {
     if (makes) {
       assert.equal(await theirs.getAttribute("data-workbook-for"), "self");
       await theirs.click();
-      await page.waitForURL(
-        (url) => url.pathname === `/learners/${self}/workbooks/${today()}`,
-      );
+      // Over their own skill, on their own Inventory.
+      await page
+        .locator(
+          `[data-layer-frame][data-layers="skill:${skill},workbook:${self}.${today()}"]`,
+        )
+        .waitFor();
+      assert.equal(new URL(page.url()).pathname, "/inventory");
       const title = catalog.skills.find((entry) => entry.id === skill)!.title;
       const paper = page.locator("[data-workbook-contents]");
       await paper.getByRole("heading", { name: /^Workbook No\./ }).waitFor();
@@ -882,34 +1079,71 @@ try {
         (await paper.innerText()).includes(title),
         "the adult's own maker names the skill",
       );
+      await calm("the adult's own maker");
       if (SHOTS)
         await page.screenshot({ path: `${OUT}/maker-own-1280-light.png` });
       await page.keyboard.press("Escape");
-      await page.waitForURL((url) => url.pathname === "/inventory");
+      await page
+        .locator(`[data-layer-frame][data-layers="skill:${skill}"]`)
+        .waitFor();
       await panel.waitFor();
     }
+    await calm("the adult's own skill layer");
+    if (SHOTS)
+      await page.screenshot({ path: `${OUT}/skill-own-1280-light.png` });
+    // As it was.
+    await look(null);
     await context.close();
     console.log(`  ok an adult's own (${makes ? "offered" : "not offered"})`);
   }
 
-  // ---- dark, for the eye -----------------------------------------------------
-  if (SHOTS) {
-    const context = await browser.newContext({
-      storageState: state,
-      viewport: { width: 1280, height: 900 },
-      colorScheme: "dark",
-    });
-    await stubAnalytics(context);
-    const page = await context.newPage();
-    await page.goto(`${origin}/family/${family}`);
-    await page.locator(`a[data-skills-by-grade="${child.id}"]`).click();
-    await page.locator(`li[data-skill="${expected[0]!.skill.id}"]`).waitFor();
-    await page.screenshot({
-      path: `${OUT}/grade-1280-dark.png`,
-      fullPage: true,
-    });
-    await context.close();
-  }
+  // ---- dark, for the eye: the grade, a skill with its Workbook, the maker --
+  if (SHOTS)
+    for (const width of [390, 1280]) {
+      const context = await browser.newContext({
+        storageState: state,
+        viewport: { width, height: width < 600 ? 844 : 900 },
+        colorScheme: "dark",
+      });
+      await stubAnalytics(context);
+      const page = await context.newPage();
+      await page.goto(`${origin}/family/${family}`);
+      await page.locator(`a[data-skills-by-grade="${child.id}"]`).click();
+      const first = expected[0]!.skill.id;
+      await page.locator(`li[data-skill="${first}"]`).waitFor();
+      await page.screenshot({
+        path: `${OUT}/grade-${width}-dark.png`,
+        fullPage: true,
+      });
+      await page.locator(`li[data-skill="${first}"] a`).first().click();
+      const made = page.locator(
+        `[data-layer-panel] a[data-skill-workbook="${first}"]`,
+      );
+      await made.waitFor();
+      await page.waitForTimeout(700);
+      const found = await probe(page);
+      assert.deepEqual(
+        [...found.smallTargets, ...found.overlaps, ...found.midWordWraps],
+        [],
+        `the skill, dark (${width})`,
+      );
+      await page.screenshot({ path: `${OUT}/skill-${width}-dark.png` });
+      await made.click();
+      await page
+        .locator("[data-workbook-contents]")
+        .getByRole("heading", { name: /^Workbook No\./ })
+        .waitFor();
+      await page.waitForTimeout(700);
+      const maker = await probe(page);
+      assert.deepEqual(
+        [...maker.smallTargets, ...maker.overlaps, ...maker.midWordWraps],
+        [],
+        `the maker, dark (${width})`,
+      );
+      assert.equal(maker.overflow, 0, `the maker, dark (${width}): overflow`);
+      await page.screenshot({ path: `${OUT}/maker-${width}-dark.png` });
+      await context.close();
+    }
   console.log(
     `Inventory by grade: Today and Overall open ${CHILD}'s own grade (${shortBand(own)}), whole and in order, with its problem types; a skill starts ${CHILD}'s practice; passed at ${WIDTHS.join(", ")}.`,
   );
