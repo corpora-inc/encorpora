@@ -21,7 +21,8 @@ export const useLayerBack = () => useContext(LayerBack);
  * outside the frame again (`LayerPanelReset`).
  */
 export type LayerPanelFrame = {
-  /** The whole overlay away, back to the page (its ✕). */
+  /** This layer down, one step (its ✕): to the layer behind it, or, at
+   * the first level, the page. */
   close: () => void;
   /** The way back up (the layers under this one), the first line of the
    * panel's heading; none at the first level. */
@@ -48,8 +49,8 @@ export function CloseControl({ label = "Close" }: { label?: string }) {
       <path d="m6 6 12 12M18 6 6 18" />
     </svg>
   );
-  // A layer's panel in the layer frame: the whole overlay away, back to
-  // the page (its trail steps up a level, Escape one level).
+  // A layer's panel in the layer frame: this layer down, as Escape (its
+  // trail steps further up; the scrim puts the whole overlay away).
   if (panel)
     return (
       <button

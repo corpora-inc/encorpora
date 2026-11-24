@@ -23,6 +23,7 @@ import {
   practiceSettingsOptions,
   type PracticeScope,
 } from "./practice-settings";
+import { logAhead } from "../../lib/ahead";
 
 export async function lookBeforePaint(scope: PracticeScope) {
   const [state] = await Promise.all([
@@ -37,7 +38,5 @@ export async function lookBeforePaint(scope: PracticeScope) {
   // unhandled rejection (the screen fetches it again when it needs it).
   void import("./celebration/Celebration")
     .then((module) => module.preloadColorful())
-    .catch((error: unknown) =>
-      console.warn("Colorful didn’t load ahead", error),
-    );
+    .catch((error: unknown) => logAhead("Colorful didn’t load ahead", error));
 }

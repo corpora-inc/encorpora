@@ -53,6 +53,7 @@ import bar from "../ui/AppBar.module.css";
 import styles from "./AppShell.module.css";
 import { secondParentChild } from "../features/second-parent/api";
 import { LookHost } from "../features/practice/LookHost";
+import { logAhead } from "../lib/ahead";
 
 const loadDrawer = () => import("../features/navigation/ShellDrawer");
 const ShellDrawer = lazy(loadDrawer);
@@ -64,7 +65,7 @@ const preloadScreens = () =>
     import("./LegacyApp"),
     import("../features/pathways/PathwaysScreen"),
     import("../features/inventory/InventoryScreen"),
-  ]).catch((error) => console.warn("Screens did not load ahead", error));
+  ]).catch((error) => logAhead("Screens did not load ahead", error));
 
 /**
  * The one frame around every signed-in app screen, mounted once at the root:

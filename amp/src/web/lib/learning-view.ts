@@ -31,6 +31,7 @@ import {
   secondParentChild,
   secondParentChildren,
 } from "../features/second-parent/api";
+import { logAhead } from "./ahead";
 
 /** The curriculum as the map reads it: skills and problem types, without
  * the lessons' text (1.17 MB compressed in the full `/catalog`). An API from
@@ -163,7 +164,7 @@ export function chooseLearner(
  * and shows it in place. */
 const quiet = <T>(promise: Promise<T>, what: string) =>
   promise.catch((error: unknown) => {
-    console.error(`${what} did not preload`, error);
+    logAhead(`${what} did not preload`, error, "error");
     return undefined;
   });
 
@@ -206,7 +207,7 @@ export async function preloadOverviewLevel(location?: {
     await queryClient
       .ensureQueryData(learnerFrontierOptions(session, learner.id))
       .catch((error: unknown) =>
-        console.error("The level did not preload", error),
+        logAhead("The level did not preload", error, "error"),
       );
 }
 

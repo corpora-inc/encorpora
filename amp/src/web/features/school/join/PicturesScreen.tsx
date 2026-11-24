@@ -24,6 +24,7 @@ import { JoinFrame } from "./JoinFrame";
 import { useForgotPicture } from "./forgot";
 import { Picture, pictureNames } from "./pictures";
 import styles from "./Join.module.css";
+import { logAhead } from "../../../lib/ahead";
 
 const PICKS = 3;
 type Stop = { message: string; until: number | null };
@@ -59,7 +60,7 @@ export function PicturesScreen() {
   useEffect(() => {
     void router
       .preloadRoute({ to: "/$", params: { _splat: "practice" } })
-      .catch((error) => console.warn("Practice did not preload", error));
+      .catch((error) => logAhead("Practice did not preload", error));
   }, [router]);
   // A stop ends by itself at the time the server gave.
   useEffect(() => {

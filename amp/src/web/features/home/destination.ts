@@ -13,6 +13,7 @@ import {
   type PlaceEntry,
   type PlaceGroup,
 } from "../spaces/places";
+import { logAhead } from "../../lib/ahead";
 
 /** Where a signed-in person goes from `/`: each a final address. */
 export type Launch = {
@@ -160,10 +161,7 @@ export async function onlyPlace(session: AuthSession): Promise<string | null> {
   const me = await queryClient
     .fetchQuery({ ...meOptions(session), staleTime: 0 })
     .catch((error: unknown) => {
-      console.warn(
-        "Your account didn’t load ahead; opening the launcher",
-        error,
-      );
+      logAhead("Your account didn’t load ahead; opening the launcher", error);
       return null;
     });
   if (!me?.signedIn || me.next === "start") return null;

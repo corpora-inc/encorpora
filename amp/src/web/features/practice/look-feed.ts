@@ -3,18 +3,19 @@
  *
  * An adult turns "Allow Colorful" off because the color is distracting a
  * child right now, from their own phone or the teacher's desk. The child's
- * practice must follow without the child doing anything, in seconds, and
- * never later than their next problem:
+ * practice must follow without the child doing anything:
  *
- * - Seconds: a signed-in student holds the student stream (features/live),
- *   and the server says on it when their settings change (a `settings` row
- *   in the live outbox: schools/live/events.ts). The stream's hook reads
- *   the practice settings again on every whole state it gets: about a
- *   second after the switch.
- * - The next problem, whatever the stream did: every practice screen reads
- *   them again as each new problem arrives (`lookAgain`). That is also the
- *   whole path for a tab with no stream (a child on a parent's device, an
- *   adult's own practice).
+ * - A student's practice holds one student stream for as long as it is on
+ *   screen (features/live/useStudentLive.ts), and the server says on it when
+ *   their settings change (a `settings` row in the live outbox:
+ *   schools/live/events.ts). The stream's owner reads the practice settings
+ *   again on every whole state it gets: about a second after the switch.
+ *   While that stream streams, the tab is fed: practice asks the server
+ *   nothing more per problem.
+ * - A tab nothing feeds (an adult's own practice, a parent practicing on
+ *   their own sign-in, a student whose network holds the stream so it
+ *   polls) reads them again with each answer (`lookAgain`), so the next
+ *   problem arrives in the look as it stands: never later than that.
  * - Their menu reads them before it opens (look-known.ts), and the one
  *   cache reads them again when the tab is looked at again.
  *
@@ -24,34 +25,52 @@
  * moves nothing (the chip's room is the problem's: chip-room.ts). One that
  * arrives while an answer's feedback is on screen waits for the next
  * problem: the two looks size that sheet differently, and it must not
- * change shape under a child who is reading it.
+ * change shape under a child who is reading it. That is where an unfed
+ * tab's read lands, so its next problem's first frame is the new look.
  */
 import { qk } from "../../lib/keys";
 import { queryClient } from "../../lib/query-client";
 
-/** The problem each learner's practice last showed in this tab (practice
- * mounts its workspace anew for each problem, so this outlives it). */
-const shown = new Map<string, string>();
+/** Whether the student stream is streaming in this tab. */
+let fed = false;
+/** The student stream's owner says whether it feeds this tab. */
+export function setLookFed(on: boolean) {
+  fed = on;
+}
+export const lookIsFed = () => fed;
 
-/** A problem is on screen. When it is a new one (never the first: the
- * screen has just read them), the learner's practice settings are read
- * again, and the screens that show them follow. */
+/** The answer each learner's practice last read with, in this tab (practice
+ * mounts its workspace anew for each problem and on a return from a book,
+ * so this outlives it). */
+const read = new Map<string, string>();
+
+/**
+ * An answer has just been graded (or a problem skipped) and counted. Where
+ * nothing feeds this tab, the learner's practice settings are read again,
+ * once per answer, and the screens that show them follow.
+ *
+ * With the answer and not with the next problem: the answer is in the
+ * server's count of points by now, so the read brings the total the page
+ * already shows, and it is back long before the next answer is sent. A read
+ * that started as a problem arrived could cross a quick answer on its way
+ * and land with a point the page was about to count itself.
+ */
 export function lookAgain(
   scope: { identity: string; learnerId: string },
-  problemId: string,
+  answerId: string,
 ) {
   if (!scope.learnerId) return;
   const key = `${scope.identity}:${scope.learnerId}`;
-  const before = shown.get(key);
-  shown.set(key, problemId);
-  if (before === undefined || before === problemId) return;
+  if (read.get(key) === answerId) return;
+  read.set(key, answerId);
+  if (fed) return;
   queryClient
     .invalidateQueries({
       queryKey: qk.practiceSettings(scope.identity, scope.learnerId),
       exact: true,
     })
     .catch((error: unknown) =>
-      console.warn("The look wasn’t read again with the problem", error),
+      console.warn("The look wasn’t read again with the answer", error),
     );
 }
 

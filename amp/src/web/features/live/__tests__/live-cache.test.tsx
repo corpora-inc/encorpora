@@ -14,7 +14,9 @@ import { qk } from "../../../lib/keys";
 import { sessionOptions } from "../../../lib/query";
 import { applyLiveMessage, liveKey, studentLiveKey } from "../api";
 import { useLiveClass } from "../useLiveClass";
-import { useStudentLive } from "../useStudentLive";
+import { lookIsFed } from "../../practice/look-feed";
+import { useStudentStream } from "../RaiseHandSlot";
+import { holdStudentStream, useStudentLive } from "../useStudentLive";
 
 const opened: (LiveStreamOptions & { close: ReturnType<typeof vi.fn> })[] = [];
 vi.mock("../../../lib/live-stream", () => ({
@@ -220,6 +222,9 @@ test("useStudentLive: a student's own state; nothing for an adult", async () => 
   });
   const hook = renderHook(() => useStudentLive(), { wrapper: wrap(client) });
   expect(hook.result.current.inSession).toBe(false);
+  // Reading opens nothing: the screen holds the stream.
+  expect(opened).toHaveLength(0);
+  const close = holdStudentStream(client, student);
   expect(opened.map((o) => o.path)).toEqual(["/school/student/live/stream"]);
   act(() =>
     opened[0]!.onEvent("snapshot", {
@@ -240,19 +245,81 @@ test("useStudentLive: a student's own state; nothing for an adult", async () => 
   );
   await waitFor(() => expect(hook.result.current.inSession).toBe(true));
   expect(hook.result.current.signals[0]!.resolution).toBe("acknowledged");
+  // The reader going (a new problem's hand) closes nothing.
   hook.unmount();
+  expect(opened[0]!.close).toHaveBeenCalledTimes(0);
+  close();
   expect(opened[0]!.close).toHaveBeenCalledTimes(1);
 
   const adults = queries();
   const parent: AuthSession = { accountId: "amp|parent", token: "t-2" };
   adults.setQueryData(sessionOptions.queryKey, parent);
-  const adult = renderHook(() => useStudentLive(), { wrapper: wrap(adults) });
+  const adult = renderHook(
+    () => {
+      useStudentStream(true);
+      return useStudentLive();
+    },
+    { wrapper: wrap(adults) },
+  );
+  await act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  });
   expect(opened).toHaveLength(1);
   expect(adult.result.current.sessions).toEqual([]);
   adult.unmount();
 });
 
-test("useStudentLive: each whole state from the stream marks the student's practice settings stale, so a class's look reaches an open practice", async () => {
+test("practice holds one student stream above its problems: a new problem's hand opens none and asks nothing; leaving practice closes it", async () => {
+  const client = queries();
+  const student = { accountId: "school:abc", token: "st_token" };
+  client.setQueryData(sessionOptions.queryKey, student);
+  client.setQueryData(studentLiveKey(student), {
+    serverNow: NOW,
+    sessions: [],
+    signals: [],
+  });
+  const asked = vi.fn(async () =>
+    Response.json({ serverNow: NOW, sessions: [], signals: [] }),
+  );
+  vi.stubGlobal("fetch", asked);
+  // The practice screen, and the hand of the problem on it.
+  const screen = renderHook(({ on }) => useStudentStream(on), {
+    wrapper: wrap(client),
+    initialProps: { on: true },
+  });
+  await waitFor(() => expect(opened).toHaveLength(1));
+  for (let problem = 1; problem <= 5; problem++) {
+    const hand = renderHook(() => useStudentLive(), { wrapper: wrap(client) });
+    expect(hand.result.current.inSession).toBe(false);
+    hand.unmount();
+  }
+  await act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  });
+  expect(opened).toHaveLength(1);
+  expect(opened[0]!.close).toHaveBeenCalledTimes(0);
+  expect(asked).toHaveBeenCalledTimes(0);
+  // While it streams, the tab is fed: practice asks nothing per problem
+  // (features/practice/look-feed.ts). A network that holds it: not fed.
+  expect(lookIsFed()).toBe(false);
+  act(() => opened[0]!.onMode?.("streaming"));
+  expect(lookIsFed()).toBe(true);
+  act(() => opened[0]!.onMode?.("polling"));
+  expect(lookIsFed()).toBe(false);
+  act(() => opened[0]!.onMode?.("streaming"));
+  // Practice is left (another tab of the app): closed, and no longer fed.
+  screen.rerender({ on: false });
+  expect(opened[0]!.close).toHaveBeenCalledTimes(1);
+  expect(lookIsFed()).toBe(false);
+  // Back on practice: one more.
+  screen.rerender({ on: true });
+  await waitFor(() => expect(opened).toHaveLength(2));
+  screen.unmount();
+  expect(opened[1]!.close).toHaveBeenCalledTimes(1);
+  vi.unstubAllGlobals();
+});
+
+test("the student stream: each whole state marks the student's practice settings stale, so a class's look reaches an open practice", async () => {
   const client = queries();
   const student = { accountId: "school:abc", token: "st_token" };
   client.setQueryData(sessionOptions.queryKey, student);
@@ -277,7 +344,7 @@ test("useStudentLive: each whole state from the stream marks the student's pract
   await waitFor(() => expect(other.result.current.data).toBeTruthy());
   expect(read).toHaveBeenCalledTimes(2);
 
-  const hook = renderHook(() => useStudentLive(), { wrapper: wrap(client) });
+  const close = holdStudentStream(client, student);
   // The teacher chooses Colorful and locks it; nothing tells the student's
   // screen until the stream's next whole state.
   look = "bold";
@@ -321,7 +388,7 @@ test("useStudentLive: each whole state from the stream marks the student's pract
     expect(own.result.current.data).toEqual({ effectiveLook: "calm" }),
   );
   expect(read).toHaveBeenCalledTimes(4);
-  hook.unmount();
+  close();
   own.unmount();
   other.unmount();
   vi.unstubAllGlobals();

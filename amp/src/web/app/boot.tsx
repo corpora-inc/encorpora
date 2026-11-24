@@ -33,6 +33,7 @@ import { fetchAuthConfig } from "../auth-config";
 import type { PitchPlace } from "../features/pitch/nav";
 import { startDocumentRuntime } from "./document-runtime";
 import { finishingSignIn } from "../features/school/join/finishing";
+import { logAhead } from "../lib/ahead";
 
 let started = false;
 /** The app's services, once per document. */
@@ -147,14 +148,14 @@ export async function prepareFromPitch(places: PitchPlace[]): Promise<void> {
   }
   // Sign-in's own screen loads its methods again when this read fails.
   const config = await fetchAuthConfig().catch((error: unknown) =>
-    console.warn("Sign-in methods didn’t load ahead", error),
+    logAhead("Sign-in methods didn’t load ahead", error),
   );
   if (config) queryClient.setQueryData(authConfigOptions.queryKey, config);
   await Promise.all(
     places.map((place) =>
       router
         .preloadRoute(place as never)
-        .catch((error: unknown) => console.warn("Preload failed", error)),
+        .catch((error: unknown) => logAhead("Preload failed", error)),
     ),
   );
 }
