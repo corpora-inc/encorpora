@@ -1,6 +1,7 @@
 import { secureChromium } from "../browser-security.mjs";
 import { verifyLandscapeSmokeChecks } from "./verify-ui-viewports";
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
+import { assertLookOnScreen, checkLook, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { segments, spokenMath } from "../src/web/MathText";
 import { openTopicLesson } from "./ui-practice";
@@ -29,6 +30,11 @@ const learner = await repository.create(
   "Interpretation explorer",
   2016,
 );
+// One pass, in one look, said outright (scripts/lib/fixture-look.ts):
+// Colorful, where a child this age starts. verify-ui.ts checks every
+// template's fit in both looks.
+const look = checkLook("bold");
+await wearLook(repository, "development-household", learner.id, look);
 const app = buildApp({
   repository,
   authenticate: developmentAuth(),
@@ -39,14 +45,17 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4391 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4390);
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4390,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4391" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -75,8 +84,9 @@ try {
   });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("http://127.0.0.1:4390/overview");
+  await page.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
   await practiceHere(page, learner.id);
+  await assertLookOnScreen(page, look);
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },

@@ -190,6 +190,25 @@ async function run(look: "calm" | "bold") {
         });
     }).observe({ type: "layout-shift", buffered: true });
   });
+  // Every moment the stage starts, as it starts (stage.ts sets `data-run`
+  // on its part). The record's moments (Earned, Strong) start a frame or
+  // more after the strength shows, from an effect and the stage's own next
+  // frame; a look at the page at that instant can come before them.
+  await page.addInitScript(() => {
+    const started: string[] = [];
+    (window as unknown as { __moments: string[] }).__moments = started;
+    new MutationObserver((records) => {
+      for (const record of records) {
+        const node = record.target as HTMLElement;
+        if (node.dataset?.run && node.dataset.part)
+          started.push(`${node.dataset.part}:${node.dataset.kind}`);
+      }
+    }).observe(document, {
+      attributes: true,
+      attributeFilter: ["data-run"],
+      subtree: true,
+    });
+  });
   await chooseLook(page, look);
   // Typed problems only, so every answer is the same gesture.
   await page.route("**/batches", async (route) => {
@@ -321,6 +340,10 @@ async function run(look: "calm" | "bold") {
   const probe = await page.evaluate(
     () => (window as unknown as { __probe: Probe }).__probe,
   );
+  for (const moment of await page.evaluate(
+    () => (window as unknown as { __moments: string[] }).__moments,
+  ))
+    played.add(moment);
   if (look === "bold")
     await page.screenshot({ path: `${out}colorful-after-20.png` });
   else if (calmProblem && calmFeedback) {
@@ -332,15 +355,19 @@ async function run(look: "calm" | "bold") {
 }
 
 let failed = false;
-// `--calm`: the Calm half only; `--sweep`: the leftover-color sweep only.
+// `--calm`: the Calm half only; `--sweep`: the leftover-color sweep only;
+// `--hold`: only "a problem holds still and no press is lost".
 const calmOnly = process.argv.includes("--calm");
 const sweepOnly = process.argv.includes("--sweep");
+const holdOnly = process.argv.includes("--hold");
 try {
-  if (!sweepOnly) {
+  if (!sweepOnly && !holdOnly) {
     if (!calmOnly) await colorful();
     await calmRun();
   }
-  if (!calmOnly) await leftoverSweep();
+  if (!sweepOnly)
+    for (const look of ["calm", "bold"] as const) await holds(look);
+  if (!calmOnly && !holdOnly) await leftoverSweep();
   console.log("verify-celebration-ui: passed");
 } catch (error) {
   failed = true;
@@ -367,6 +394,24 @@ async function colorful() {
     slowest < LONG_TASK,
     `the celebration's own work stays under a long task (${slowest} ms)`,
   );
+  // What the page did comes before how fast: on a machine busy with other
+  // work a frame can run a few ms over the long-task budget below, and that
+  // must not hide whether anything moved or a moment went missing.
+  const shift = bold.probe.shifts.reduce((sum, entry) => sum + entry.value, 0);
+  console.log(`Layout shift in Colorful: ${shift}`, bold.probe.shifts);
+  assert.equal(shift, 0, "Colorful moves nothing");
+  for (const moment of [
+    "burst:right",
+    "flyer:right",
+    "chip:tick",
+    "chipSparks:streak-3",
+    "chipSparks:streak-5",
+    "chipSparks:points-10",
+    "stamp:earned",
+    "confetti:strong",
+  ])
+    assert.ok(bold.played.has(moment), `${moment} played`);
+  console.log("Moments seen:", [...bold.played].sort().join(", "));
   const inTails = bold.probe.longTasks.filter((task) =>
     bold.windows.some(
       ([from, to]) =>
@@ -389,21 +434,216 @@ async function colorful() {
     inTurns,
   );
   assert.equal(inTurns.length, 0, "turning the world is no long task");
-  const shift = bold.probe.shifts.reduce((sum, entry) => sum + entry.value, 0);
-  console.log(`Layout shift in Colorful: ${shift}`, bold.probe.shifts);
-  assert.equal(shift, 0, "Colorful moves nothing");
-  for (const moment of [
-    "burst:right",
-    "flyer:right",
-    "chip:tick",
-    "chipSparks:streak-3",
-    "chipSparks:streak-5",
-    "chipSparks:points-10",
-    "stamp:earned",
-    "confetti:strong",
-  ])
-    assert.ok(bold.played.has(moment), `${moment} played`);
-  console.log("Moments seen:", [...bold.played].sort().join(", "));
+}
+
+/**
+ * A problem holds still and no press is lost, in each look.
+ *
+ * A new problem is in its place from its first frame: its question never
+ * moves while it arrives (Colorful once slid the whole problem up 36 px
+ * over 220 ms, and every box in it read differently from one frame to the
+ * next). And a press on the top edge of anything a child presses is a press
+ * on it: Colorful's pressed controls go down a few pixels, and a mouse or
+ * trackpad press on the strip they left used to let go over whatever was
+ * behind, so the click went there and the tap was lost.
+ */
+async function holds(look: "calm" | "bold") {
+  const browser = await chromium.launch();
+  const name = look === "bold" ? "Colorful" : "Calm";
+  let presses = 0;
+  let arrivals = 0;
+  for (const viewport of [
+    { width: 390, height: 844 },
+    { width: 1280, height: 800 },
+  ]) {
+    const context = await browser.newContext({ viewport });
+    const page = await context.newPage();
+    page.setDefaultTimeout(30_000);
+    page.on("pageerror", (error) =>
+      console.error("page error:", error.message),
+    );
+    await page.addInitScript("window.__name = (fn) => fn");
+    // From the document's first frame: where each problem's question is, on
+    // each of the first frames it is on screen.
+    await page.addInitScript(() => {
+      const seen: Record<string, number[]> = {};
+      (window as unknown as { __arrivals: typeof seen }).__arrivals = seen;
+      const tick = () => {
+        const content = document.querySelector<HTMLElement>(
+          ".problem-stage .problem-content",
+        );
+        const id = content?.dataset.problemId;
+        const question = content?.querySelector(".question");
+        const stage = content?.closest(".problem-stage");
+        if (id && question && stage) {
+          const frames = (seen[id] ??= []);
+          if (frames.length < 40)
+            frames.push(
+              Math.round(
+                (question.getBoundingClientRect().top + stage.scrollTop) * 100,
+              ) / 100,
+            );
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+    // While `__held` is on, a click is recorded and goes no further, so a
+    // press can be tried on every control without answering anything.
+    await page.addInitScript(() => {
+      const w = window as unknown as { __held: boolean; __clicks: Element[] };
+      w.__held = false;
+      w.__clicks = [];
+      document.addEventListener(
+        "click",
+        (event) => {
+          if (!w.__held) return;
+          w.__clicks.push(event.target as Element);
+          event.preventDefault();
+          event.stopPropagation();
+        },
+        true,
+      );
+    });
+    await chooseLook(page, look);
+    await page.route("**/attempts", async (route) => {
+      const response = await route.fetch();
+      const body = await response.json();
+      await route.fulfill({
+        response,
+        json: { ...body, correct: true, assisted: false },
+      });
+    });
+    await openHome(page, origin);
+    await practiceHere(page, learner.id);
+    /** Each problem this document has shown, with where its question was on
+     * its first frames: read before the document is left. */
+    const watched: [string, number[]][] = [];
+    const collect = async () =>
+      watched.push(
+        ...Object.entries(
+          await page.evaluate(
+            () =>
+              (window as unknown as { __arrivals: Record<string, number[]> })
+                .__arrivals,
+          ),
+        ),
+      );
+    /** Presses each control on its top edge with a mouse; the click must
+     * land on that control. */
+    const pressEdges = async (selector: string, what: string) => {
+      const controls = page.locator(selector);
+      const count = await controls.count();
+      for (let i = 0; i < count; i++) {
+        const control = controls.nth(i);
+        if (!(await control.isVisible()) || !(await control.isEnabled()))
+          continue;
+        await control.scrollIntoViewIfNeeded();
+        const box = (await control.boundingBox())!;
+        for (const down of [1, 2.5]) {
+          await page.evaluate(() => {
+            const w = window as unknown as {
+              __held: boolean;
+              __clicks: Element[];
+            };
+            w.__held = true;
+            w.__clicks = [];
+          });
+          await page.mouse.move(box.x + box.width / 2, box.y + down);
+          await page.mouse.down();
+          await page.waitForTimeout(120);
+          await page.mouse.up();
+          const landed = await control.evaluate((node) => {
+            const w = window as unknown as {
+              __held: boolean;
+              __clicks: Element[];
+            };
+            w.__held = false;
+            const [target] = w.__clicks;
+            return target
+              ? node.contains(target)
+                ? ""
+                : `${target.tagName.toLowerCase()}.${String(target.className).split(" ")[0]}`
+              : "nothing";
+          });
+          assert.equal(
+            landed,
+            "",
+            `${name} ${viewport.width}: a press ${down}px below the top edge of ${what} ${i + 1} is a press on it (the click went to ${landed})`,
+          );
+          presses++;
+          await page.mouse.move(2, viewport.height / 2);
+        }
+      }
+      return count;
+    };
+    for (const [template, selector, what] of [
+      ["mean-data", ".math-keypad button", "a keypad key"],
+      ["reciprocal-division-choice", ".answer-dock .choice-option", "a choice"],
+      ["which-is-a-unit-square", ".figure-choice-card", "a figure card"],
+    ] as const) {
+      await page.goto(origin + practicePath(learner.id, { template }));
+      await page.locator(".problem-content").waitFor();
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.getAttribute("data-look") ?? "calm",
+        ),
+        look,
+        `${name}: practice wears it`,
+      );
+      // The entrance is over and the dock has followed the viewport.
+      await page.waitForTimeout(500);
+      const pressed = await pressEdges(selector, what);
+      // A phone shows the keypad; a wide screen may leave it to the keys.
+      if (template !== "mean-data" || viewport.width < 640)
+        assert.ok(pressed > 0, `${name} ${viewport.width}: ${what} is there`);
+      await collect();
+    }
+    // Check, then Next: the two a child presses on every problem.
+    await page.goto(
+      origin + practicePath(learner.id, { template: "mean-data" }),
+    );
+    await page.locator("#answer").waitFor();
+    for (let i = 0; i < 2; i++) {
+      await page.locator("#answer").fill("1");
+      await page.waitForTimeout(300);
+      assert.ok(
+        await pressEdges('form button[type="submit"]', "Check"),
+        "Check is there",
+      );
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      await page.locator(".feedback.correct").waitFor();
+      // The sheet has risen into place.
+      await page.waitForTimeout(900);
+      assert.ok(await pressEdges(".next-action", "Next"), "Next is there");
+      await page.getByRole("button", { name: /^Next/ }).click();
+      await page.locator(".feedback").waitFor({ state: "detached" });
+      await page.locator("#answer").waitFor();
+      await page.waitForTimeout(700);
+    }
+    await collect();
+    let here = 0;
+    for (const [id, frames] of watched) {
+      // A problem left as soon as it showed was not watched arriving.
+      if (frames.length < 8) continue;
+      assert.deepEqual(
+        [...new Set(frames)],
+        [frames[0]],
+        `${name} ${viewport.width}: problem ${id}'s question is in its place from its first frame (it was at ${[...new Set(frames)].join(", ")})`,
+      );
+      here++;
+    }
+    assert.ok(
+      here >= 5,
+      `${name} ${viewport.width}: problems were watched arriving (${here})`,
+    );
+    arrivals += here;
+    await context.close();
+  }
+  await browser.close();
+  console.log(
+    `${name}: ${arrivals} problems arrived in place; ${presses} presses on a control's top edge all landed on it`,
+  );
 }
 
 async function calmRun() {

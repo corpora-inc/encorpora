@@ -34,6 +34,7 @@ import { twoColumnProofCases } from "../src/math/two-column-proof-practice";
 import { showWorkCases } from "../src/math/show-work-word-problem-practice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import {
@@ -49,7 +50,9 @@ const shots =
   process.env.AMP_EVIDENCE_DIR ??
   new URL("../artifacts/structured-work-ui/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
-const origin = "http://127.0.0.1:4490";
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4490);
+const origin = `http://127.0.0.1:${WEB_PORT}`;
 await migrate(database);
 const repository = new PostgresRepository(database, {
   development: true,
@@ -88,14 +91,15 @@ await registerConsentRoutes(app, {
     true,
   ),
 });
-await app.listen({ host: "127.0.0.1", port: 4491 });
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4490,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4491" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -391,7 +395,9 @@ try {
   // AMP_SW_ONLY (family ids) and AMP_SW_WIDTHS narrow a local rerun.
   const only = process.env.AMP_SW_ONLY?.split(",");
   const widths = process.env.AMP_SW_WIDTHS?.split(",").map(Number);
-  for (const theme of ["light", "dark"] as const)
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes())
     for (const [width, height] of (
       [
         [320, 568],
@@ -402,9 +408,10 @@ try {
       ] as const
     ).filter(([w]) => !widths || widths.includes(w))) {
       const touch = width <= 1024;
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width, height },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: touch,
         isMobile: width <= 390,
         reducedMotion: width === 768 ? "reduce" : "no-preference",
@@ -435,6 +442,7 @@ try {
       });
       await page.goto(`${origin}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const run of runs.filter((x) => !only || only.includes(x.family))) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${run.family}-${width}-${theme}`;
         const problem = run.problem(`${theme}:${width}`);

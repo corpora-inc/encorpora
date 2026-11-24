@@ -1,7 +1,11 @@
-"""Require completed, disjoint browser partitions covering the whole inventory."""
+"""Require completed, disjoint browser partitions covering the whole inventory,
+each checked in both looks (Calm and Colorful, "bold" in code)."""
 import argparse
 import json
 from pathlib import Path
+
+
+LOOKS = ['bold', 'calm']
 
 
 def verify(directory, shard_count):
@@ -15,7 +19,9 @@ def verify(directory, shard_count):
     for path in paths:
         value = json.loads(path.read_text())
         index = value.get('shardIndex')
-        if (value.get('version') != 1 or type(index) is not int
+        if value.get('looks') != LOOKS:
+            raise ValueError(f'{path.name}: partition was not checked in both looks')
+        if (value.get('version') != 2 or type(index) is not int
                 or not 0 <= index < shard_count
                 or value.get('shardCount') != shard_count or index in indices):
             raise ValueError(f'{path.name}: invalid or duplicate shard identity')
@@ -46,4 +52,4 @@ if __name__ == '__main__':
     parser.add_argument('--shards', type=int, required=True)
     args = parser.parse_args()
     count = verify(args.directory, args.shards)
-    print(f'Browser sweep verified: {count} templates, {args.shards} disjoint completed partitions')
+    print(f'Browser sweep verified: {count} templates, {args.shards} disjoint completed partitions, each in Calm and Colorful')

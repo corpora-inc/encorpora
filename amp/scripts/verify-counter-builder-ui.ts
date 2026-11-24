@@ -21,6 +21,7 @@ import { counterBuilderLesson } from "../src/content/counter-builder-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { fillCounterBuilder } from "./ui-counter-builder";
@@ -29,7 +30,10 @@ const database = process.env.AMP_TEST_DATABASE_URL;
 assert.ok(database, "AMP_TEST_DATABASE_URL required");
 assertTestDatabaseTarget(database);
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium";
-const port = engine === "webkit" ? 4576 : 4566;
+// Its ports and Vite cache may be moved (a worktree's own range).
+const port = Number(
+  process.env.AMP_UI_WEB_PORT ?? (engine === "webkit" ? 4576 : 4566),
+);
 const baseUrl = `http://127.0.0.1:${port}`;
 const smoke = process.argv.includes("--smoke");
 const shots =
@@ -63,6 +67,7 @@ await registerFamilyRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
     port,
@@ -196,9 +201,11 @@ async function reachable(page: Page, selector: string) {
 }
 
 try {
-  for (const theme of smoke
-    ? (["light"] as const)
-    : (["light", "dark"] as const))
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes(
+    smoke ? ["light"] : ["light", "dark"],
+  ))
     for (const [width, height] of smoke
       ? [[390, 900]]
       : process.argv.includes("--compact")
@@ -214,9 +221,10 @@ try {
             [320, 568],
             [844, 390],
           ]) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width, height },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: width < 400,
         reducedMotion: "reduce",
       });
@@ -226,6 +234,7 @@ try {
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`${baseUrl}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       const compact = height < 600;
       for (const variant of smoke
         ? ["build-join", "build-frame", "story-take"]

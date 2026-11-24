@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { assertLookOnScreen, checkLook, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -41,6 +42,11 @@ await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
 const learner = await repository.create(account, "Browser verification", 2016);
+// One pass, in one look, said outright (scripts/lib/fixture-look.ts):
+// Colorful, where a child this age starts. verify-ui.ts checks every
+// template's fit in both looks.
+const look = checkLook("bold");
+await wearLook(repository, account, learner.id, look);
 const learnerIds = [learner.id];
 const app = buildApp({
   repository,
@@ -52,15 +58,18 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4435 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4434);
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4434,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4435" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -198,7 +207,7 @@ try {
       ...(browserName === "chromium" ? { isMobile: true } : {}),
     });
     await paceApi(phone);
-    await phone.goto("http://127.0.0.1:4434/overview");
+    await phone.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
     await practiceHere(phone, learner.id);
     let shown: PublicProblem | undefined;
     await phone.route("**/batches", async (route) => {
@@ -284,7 +293,7 @@ try {
   {
     const wide = await browser.newPage({ hasTouch: true });
     await paceApi(wide);
-    await wide.goto("http://127.0.0.1:4434/overview");
+    await wide.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
     await practiceHere(wide, learner.id);
     let shown: PublicProblem | undefined;
     await wide.route("**/batches", async (route) => {
@@ -320,8 +329,9 @@ try {
   }
   const page = await browser.newPage({ hasTouch: true });
   await paceApi(page);
-  await page.goto("http://127.0.0.1:4434/overview");
+  await page.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
   await practiceHere(page, learner.id);
+  await assertLookOnScreen(page, look);
   const fixtures: {
     name: string;
     problem: PublicProblem;

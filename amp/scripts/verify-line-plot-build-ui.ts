@@ -20,6 +20,7 @@ import {
 } from "../src/math/line-plot-build";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { publicationHtml } from "../src/content/publications";
@@ -59,13 +60,16 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4553 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4552);
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
-    port: 4552,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4553" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -219,7 +223,9 @@ async function cursor(page: Page, mode: "pointer" | "keyboard" | "hidden") {
   if (mode === "keyboard") assert.ok(mark.focus, "Keyboard focus is visible");
 }
 try {
-  for (const theme of ["light", "dark"] as const)
+  // Colorful, then Calm in light and dark (scripts/lib/fixture-look.ts);
+  // `theme` names the pass in tags.
+  for (const { look, theme: scheme, name: theme } of lookThemes())
     for (const [width, height] of edges
       ? ([
           [320, 568],
@@ -233,9 +239,10 @@ try {
           [768, 1024],
           [1280, 900],
         ] as const)) {
+      await wearLook(repository, "development-household", learner.id, look);
       const context = await browser.newContext({
         viewport: { width, height },
-        colorScheme: theme,
+        colorScheme: scheme,
         hasTouch: width < 400,
         reducedMotion: "reduce",
       });
@@ -243,8 +250,9 @@ try {
       const page = await context.newPage();
       page.setDefaultTimeout(30000);
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto("http://127.0.0.1:4552/overview");
+      await page.goto(`http://127.0.0.1:${WEB_PORT}/overview`);
       await practiceHere(page, learner.id);
+      await assertLookOnScreen(page, look, theme);
       for (const family of families) {
         const base = fixtures.get(family)!;
         const r = base.public.response as LinePlotBuildResponse;
@@ -502,7 +510,7 @@ try {
             });
             assert.equal(invalid.status(), 400);
             const report = await page.request.post(
-              `http://127.0.0.1:4552/api/v1/learners/${learner.id}/problem-flags`,
+              `http://127.0.0.1:${WEB_PORT}/api/v1/learners/${learner.id}/problem-flags`,
               {
                 headers,
                 data: {
