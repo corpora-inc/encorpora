@@ -95,7 +95,7 @@ const read = (page: Page) =>
     // A row: the table's, or the list's on a narrower screen.
     const rows = [
       ...every.querySelectorAll<HTMLElement>(
-        "tbody tr[role=row], ul[aria-label] > li",
+        "tbody tr[role=row], ul[aria-label]:not([data-key]) > li",
       ),
     ].filter((row) => row.getClientRects().length > 0);
     const box = (element: Element) => {
@@ -251,7 +251,19 @@ try {
         const hidden = cell.total - cell.shown.length;
         if (cell.overflows || !cell.inside)
           fail(`${where}: "${cell.shown.join(", ")}" runs past its box`);
-        if (hidden > 0 && cell.more !== `+${hidden} more`)
+        // (With no room for even the first name, the count alone.)
+        if (
+          cell.shown.length === 0 &&
+          !cell.more.startsWith(String(cell.total))
+        )
+          fail(
+            `${where}: no skill named, and "${cell.more}" for ${cell.total}`,
+          );
+        if (
+          hidden > 0 &&
+          cell.shown.length > 0 &&
+          cell.more !== `+${hidden} more`
+        )
           fail(
             `${where}: ${cell.shown.length} of ${cell.total} shown, then "${cell.more}"`,
           );
@@ -295,7 +307,7 @@ try {
       const url = page.url();
       const row = page
         .locator('[aria-labelledby="every-student"]')
-        .locator("tbody tr[role=row], ul[aria-label] > li")
+        .locator("tbody tr[role=row], ul[aria-label]:not([data-key]) > li")
         .first();
       const open = row.locator("[data-report-open]").first();
       // The row's own place to tap: past the name, which opens the student.

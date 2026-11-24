@@ -397,8 +397,9 @@ function listen(page: Page) {
 
 // ---- 5. the report, past sessions, the time report, help on a phone ------
 /** "Every child" on the report: at every width the page never scrolls
- * sideways; on a phone each child's row holds its facts and every skill's
- * whole name inside the row. */
+ * sideways; under the table's width each child's row is one height and
+ * holds everything it shows inside it (the first skills' whole names, then
+ * how many more: the row's sheet has the rest). */
 async function reportFits(page: Page, where: string) {
   await noSideways(page, `${where} report`);
   const problems = await page.evaluate(() => {
@@ -407,9 +408,22 @@ async function reportFits(page: Page, where: string) {
       "[data-session-report] [data-grid-mode]",
     );
     if (!grid) return ["no “Every child” list"];
+    // Every child's row is one height, the table's or the list's, and the
+    // help drawings have their key.
+    const heights = new Set(
+      [
+        ...grid.querySelectorAll<HTMLElement>(
+          "tbody tr[role=row], [data-report-card]",
+        ),
+      ].map((row) => Math.round(row.getBoundingClientRect().height)),
+    );
+    if (heights.size > 1)
+      out.push(`rows of ${[...heights].join(" and ")} px (one height wanted)`);
+    if (!document.querySelector("[data-session-report] [data-help-key]"))
+      out.push("no key to the help drawings");
     if (grid.getAttribute("data-grid-mode") !== "cards") return out;
     const children = [
-      ...document.querySelectorAll<HTMLElement>("[data-report-child]"),
+      ...document.querySelectorAll<HTMLElement>("[data-report-card]"),
     ];
     if (children.length === 0) out.push("no child's row on a phone");
     for (const child of children) {
@@ -426,6 +440,8 @@ async function reportFits(page: Page, where: string) {
           );
         else if (
           part.children.length === 0 &&
+          // The measuring copies of a fitted list are not on screen.
+          !part.closest("[aria-hidden=true]") &&
           part.scrollWidth > part.clientWidth + 1 &&
           getComputedStyle(part).overflow !== "visible"
         )

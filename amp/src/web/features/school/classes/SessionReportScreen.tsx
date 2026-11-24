@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useRef, type ReactNode } from "react";
 import type {
   LiveStatus,
   ReportRow,
@@ -12,7 +12,9 @@ import { EntityLink } from "../../../nav/links";
 import { buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
+import { FitList } from "../../../ui/FitList";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
+import { Sheet } from "../../../ui/Sheet";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { sessionReportOptions } from "../../live/api";
 import {
@@ -21,20 +23,35 @@ import {
   percentText,
   sessionLength,
 } from "../../live/format";
-import { HelpCounts, helpWords } from "../../live/HelpCounts";
+import { HelpCounts, HelpKey, helpWords } from "../../live/HelpCounts";
 import { StatusMark } from "../../live/StatusMark";
 import { STATUS_ORDER, STATUS_WORDS } from "../../live/status-words";
 import { classesOptions, currentSession } from "../api";
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
-import { LoadFailed, parseSort, useClassView } from "./teacher-shared";
+import {
+  LoadFailed,
+  parseSort,
+  useClassView,
+  useKeyedSheet,
+} from "./teacher-shared";
 import styles from "./SessionReport.module.css";
 
 /* A stopped session's report (#2465), for the adult after class and for
    the paper they hand on: when, who was there and what they did, who to
    follow up with first, every student, then the skills worked on. Only
    what the stored report holds: totals and skills per student, never the
-   live view's last five answers. Prints on a sheet or two with Cmd+P. */
+   live view's last five answers. Prints on a sheet or two with Cmd+P.
+
+   "Every student" is for scanning: every row is one height at every width,
+   whatever the student did. A row names the first skills they met that fit
+   its line, then how many more, and opens that student's sheet with all
+   of them. On paper every name prints. */
+
+/** From this width "Every student" is the table (its ten columns' own
+ * widths, so it never scrolls sideways); under it, rows of two or three
+ * lines. */
+const TABLE_FROM = 1100;
 
 const clock = (at: string | number) =>
   new Date(at).toLocaleTimeString("en-US", {
@@ -103,13 +120,6 @@ export type ReportKit = {
   /** Whether a person's level is shown (a family's per-child setting);
    * every one by default. */
   levelShown?: (personId: string) => boolean;
-  /** One person's row on a phone, laid out by the screen from the table's
-   * own columns (a family's: FamilyReport.tsx). Without it, the grid's
-   * stacked row. */
-  card?: (
-    row: ReportRow,
-    columns: readonly DataGridColumn<ReportRow>[],
-  ) => ReactNode;
 };
 const KitContext = createContext<ReportKit>({
   words: CLASS_REPORT_WORDS,
@@ -220,6 +230,195 @@ const Student = ({
   return link({ personId: row.personId, name: row.name, className, children });
 };
 
+/** Opens a student's sheet over the report: the report's, for its rows. */
+const OpenContext = createContext<(personId: string) => void>(() => undefined);
+
+/**
+ * A student's skills in their row, and the row's own control: the first
+ * skills they met that fit its line or two, each name whole, then how many
+ * more. It opens the student's sheet, where every one is. A row is the
+ * same height whatever is here. On paper every name prints.
+ */
+function RowSkills({ row, lines }: { row: ReportRow; lines: 1 | 2 }) {
+  const open = useContext(OpenContext);
+  const titles = row.skills.map((skill) => skill.title);
+  return (
+    <button
+      type="button"
+      className={styles.open}
+      data-report-open=""
+      aria-label={`${row.name}: this session`}
+      onClick={() => open(row.personId)}
+    >
+      {titles.length === 0 ? (
+        <span className={styles.noSkills}>—</span>
+      ) : (
+        <>
+          <FitList
+            items={titles}
+            lines={lines}
+            all={(count) => plural(count, "skill")}
+            className={styles.skills}
+            data-report-skills=""
+          />
+          <span className={styles.printSkills}>{titles.join(", ")}</span>
+        </>
+      )}
+    </button>
+  );
+}
+
+/**
+ * One student under the table's width: the name and how they ended, percent
+ * of problems, level and the help they opened, then their skills on one
+ * line. Two
+ * lines on a tablet, three on a phone, always; the whole row opens their
+ * sheet, and the name opens the student, as everywhere.
+ */
+function RowCard({ row }: { row: ReportRow }) {
+  const { words, levelShown } = useContext(KitContext);
+  const level =
+    row.level !== null && (levelShown?.(row.personId) ?? true)
+      ? levelText(row.level)
+      : null;
+  return (
+    <div className={styles.rowCard} data-report-card={row.personId}>
+      <div className={styles.rowTop}>
+        <Student row={row} className={`${styles.student} ${styles.rowWho}`}>
+          <StatusMark status={row.status} decorative />
+          <span className={styles.name}>{row.name}</span>
+        </Student>
+        <span
+          className={`${styles.statusWord} ${styles.rowStatus}`}
+          data-status={row.status}
+        >
+          {words.statusWords?.[row.status] ?? STATUS_WORDS[row.status].word}
+        </span>
+      </div>
+      <div className={styles.rowFigures}>
+        {/* One line: the level drops out whole where a phone has no room
+            for it beside the percent (the sheet has it). */}
+        <span className={styles.rowScore}>
+          <span
+            className={styles.rowFigure}
+            aria-label={
+              row.problems > 0
+                ? `${percentText(row.correct, row.problems)} correct of ${plural(row.problems, "problem")}`
+                : "No problems"
+            }
+          >
+            {row.problems > 0 ? (
+              <>
+                <strong>{percentText(row.correct, row.problems)}</strong>
+                <span className={styles.rowOf}> of {row.problems}</span>
+              </>
+            ) : (
+              <span className={styles.rowOf}>—</span>
+            )}
+          </span>
+          {level && (
+            <span className={`${styles.rowFigure} ${styles.rowOf}`}>
+              {" · "}
+              {level}
+            </span>
+          )}
+        </span>
+        <span className={styles.rowHelp}>
+          <HelpCounts help={row} />
+        </span>
+      </div>
+      <div className={styles.rowSkills}>
+        <RowSkills row={row} lines={1} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * One student's part of the session, in a sheet over the report (in
+ * history state: Back, the cross and Escape close it alike): every figure
+ * the table has, under the table's own names, and every skill they met,
+ * each opening the skill.
+ */
+function StudentSheet({
+  rows,
+  columns,
+  id,
+  onClose,
+  when,
+}: {
+  rows: readonly ReportRow[];
+  columns: readonly DataGridColumn<ReportRow>[];
+  id: string | undefined;
+  onClose: () => void;
+  /** The session, as the report's title says it. */
+  when: string;
+}) {
+  const row = rows.find((entry) => entry.personId === id);
+  // What it showed stays while it closes.
+  const last = useRef(row);
+  if (row) last.current = row;
+  const shown = row ?? last.current;
+  const column = (name: string) => columns.find((entry) => entry.id === name);
+  const facts = columns.filter(
+    (entry) => !["student", "skills", "help"].includes(entry.id),
+  );
+  return (
+    <Sheet
+      open={!!row}
+      onOpenChange={(next) => {
+        if (!next) onClose();
+      }}
+      title={shown?.name ?? ""}
+      description={when}
+    >
+      {shown && (
+        <div className={styles.sheet} data-report-student={shown.personId}>
+          <dl className={styles.sheetFacts}>
+            {facts.map((entry) => {
+              const value = entry.cell(shown);
+              // A level this person's setting keeps off.
+              if (value === null) return null;
+              return (
+                <div key={entry.id}>
+                  <dt>{entry.header}</dt>
+                  <dd aria-label={entry.cellLabel?.(shown)}>{value}</dd>
+                </div>
+              );
+            })}
+            <div data-wide="">
+              <dt>{column("help")?.header}</dt>
+              <dd>{helpWords(shown)}</dd>
+            </div>
+          </dl>
+          <h3 className={styles.sheetHeading}>
+            {column("skills")?.header}
+            <span className={styles.count}>{shown.skills.length}</span>
+          </h3>
+          {shown.skills.length > 0 && (
+            <ul
+              className={styles.sheetSkills}
+              data-report-student-skills=""
+              data-total={shown.skills.length}
+            >
+              {shown.skills.map((skill) => (
+                <li key={skill.id}>
+                  <EntityLink
+                    entity={{ kind: "skill", id: skill.id }}
+                    className={styles.skillLink}
+                  >
+                    {skill.title}
+                  </EntityLink>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </Sheet>
+  );
+}
+
 const statusRank = (status: LiveStatus) => STATUS_ORDER.indexOf(status);
 const byName = (a: ReportRow, b: ReportRow) =>
   a.name.localeCompare(b.name, "en", { sensitivity: "base" });
@@ -290,7 +489,7 @@ function columns(
     {
       id: "helped",
       header: "Right with help",
-      width: 96,
+      width: 92,
       align: "end",
       firstSort: "descending",
       compare: (a, b) => rightWithHelp(a) - rightWithHelp(b),
@@ -299,42 +498,26 @@ function columns(
     {
       id: "help",
       header: "Help opened",
-      // Its four counts (136 px here) and the cell's inset: the skills
+      // Its four counts (152 px here) and the cell's inset: the skills
       // start clear of them.
-      width: 156,
+      width: 168,
       firstSort: "descending",
       compare: (a, b) => helpCount(a) - helpCount(b),
       cell: (row) => <HelpCounts help={row} />,
       cellLabel: (row) => helpWords(row),
     },
     {
-      // Every skill's whole name, wrapping inside the row: the report is a
-      // frozen page, not a live table, so a row may be as tall as its list.
-      // The column takes the room the figures don't need.
+      // The first skills they met that fit the row's two lines, each name
+      // whole, then how many more. The row stays one height; it opens all
+      // of them (StudentSheet). The column takes the room the figures
+      // don't need.
       id: "skills",
       header: "Skills",
       width: 200,
       grow: true,
       firstSort: "descending",
       compare: (a, b) => a.skills.length - b.skills.length,
-      cell: (row) =>
-        row.skills.length === 0 ? (
-          <span className={styles.noSkills}>—</span>
-        ) : (
-          <span className={styles.skills} data-report-skills="">
-            {row.skills.map((skill, index) => (
-              <span key={skill.id}>
-                {index > 0 && ", "}
-                <EntityLink
-                  entity={{ kind: "skill", id: skill.id }}
-                  className={styles.skillLink}
-                >
-                  {skill.title}
-                </EntityLink>
-              </span>
-            ))}
-          </span>
-        ),
+      cell: (row) => <RowSkills row={row} lines={2} />,
       cellLabel: (row) =>
         row.skills.length
           ? row.skills.map((skill) => skill.title).join(", ")
@@ -359,7 +542,7 @@ function columns(
     {
       id: "answered",
       header: "Answering",
-      width: 104,
+      width: 96,
       align: "end",
       compare: (a, b) =>
         Date.parse(a.firstAnswerAt ?? "9999") -
@@ -470,166 +653,187 @@ export function Report({
     direction: "ascending" as const,
   };
   const everyColumns = columns(kit, rows);
-  const { card } = kit;
+  const student = useKeyedSheet("session-student");
+  const title = `Session on ${day(session.startedAt)}`;
   return (
     <KitContext.Provider value={kit}>
-      <article className={styles.page} data-session-report={session.id}>
-        {/* A div, not a header: the app's print sheet drops headers. */}
-        <div className={styles.head}>
-          {className && <p className={styles.printOnly}>{className}</p>}
-          <ScreenTitle>{`Session on ${day(session.startedAt)}`}</ScreenTitle>
-          <p className={styles.when}>
-            {clock(session.startedAt)} to {clock(endedAt)} ·{" "}
-            {sessionLength(session.startedAt, endedAt, "long")}
-            {session.endReason ? ` · ${ENDED[session.endReason]}` : ""}
-          </p>
-        </div>
+      <OpenContext.Provider value={student.show}>
+        <article className={styles.page} data-session-report={session.id}>
+          {/* A div, not a header: the app's print sheet drops headers. */}
+          <div className={styles.head}>
+            {className && <p className={styles.printOnly}>{className}</p>}
+            <ScreenTitle>{title}</ScreenTitle>
+            <p className={styles.when}>
+              {clock(session.startedAt)} to {clock(endedAt)} ·{" "}
+              {sessionLength(session.startedAt, endedAt, "long")}
+              {session.endReason ? ` · ${ENDED[session.endReason]}` : ""}
+            </p>
+          </div>
 
-        <StatRow label="The session">
-          <StatTile
-            label="Here"
-            value={
-              <>
-                {totals.present}
-                <span className={styles.of}> of {totals.students}</span>
-              </>
-            }
-          />
-          <StatTile label="Problems" value={totals.problems} />
-          <StatTile
-            label="Correct"
-            value={percentText(totals.correct, totals.problems)}
-          />
-          <StatTile label="On their own" value={totals.independent} />
-          <StatTile label="Help opened" value={help} />
-        </StatRow>
+          <StatRow label="The session">
+            <StatTile
+              label="Here"
+              value={
+                <>
+                  {totals.present}
+                  <span className={styles.of}> of {totals.students}</span>
+                </>
+              }
+            />
+            <StatTile label="Problems" value={totals.problems} />
+            <StatTile
+              label="Correct"
+              value={percentText(totals.correct, totals.problems)}
+            />
+            <StatTile label="On their own" value={totals.independent} />
+            <StatTile label="Help opened" value={help} />
+          </StatRow>
 
-        {groups.length > 0 && (
-          <section className={styles.section} aria-labelledby="follow-up">
-            <h2 id="follow-up">Follow up first</h2>
-            <ul className={styles.groups}>
-              {groups.map((group) => (
-                <li
-                  key={group.id}
-                  className={styles.group}
-                  data-group={group.id}
-                >
-                  <h3>
-                    {group.id === "not-signed-in"
-                      ? words.notSignedIn
-                      : group.id === "no-answers"
-                        ? words.noAnswers
-                        : group.title}
-                    <span className={styles.count}>{group.members.length}</span>
-                  </h3>
-                  <ul className={styles.people}>
-                    {group.members.map((row) => {
-                      const fact = group.fact(row, words);
+          {groups.length > 0 && (
+            <section className={styles.section} aria-labelledby="follow-up">
+              <h2 id="follow-up">Follow up first</h2>
+              <ul className={styles.groups}>
+                {groups.map((group) => (
+                  <li
+                    key={group.id}
+                    className={styles.group}
+                    data-group={group.id}
+                  >
+                    <h3>
+                      {group.id === "not-signed-in"
+                        ? words.notSignedIn
+                        : group.id === "no-answers"
+                          ? words.noAnswers
+                          : group.title}
+                      <span className={styles.count}>
+                        {group.members.length}
+                      </span>
+                    </h3>
+                    <ul className={styles.people}>
+                      {group.members.map((row) => {
+                        const fact = group.fact(row, words);
+                        return (
+                          <li key={row.personId}>
+                            <Student row={row} className={styles.person}>
+                              {row.name}
+                            </Student>
+                            {fact && (
+                              <span className={styles.fact}>{fact}</span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <section className={styles.section} aria-labelledby="every-student">
+            {/* The heading and the key to the help drawings its rows show:
+              one line with room, two without; there from the first paint. */}
+            <div className={styles.everyHead}>
+              <h2 id="every-student">{words.every}</h2>
+              <HelpKey className={styles.helpKey} />
+            </div>
+            <DataGrid
+              label={words.everyLabel}
+              columns={everyColumns}
+              cardsBelow={TABLE_FROM}
+              card={(row) => <RowCard row={row} />}
+              onRowActivate={(row) => student.show(row.personId)}
+              rows={rows}
+              rowKey={(row) => row.personId}
+              sort={sort}
+              onSortChange={(next) =>
+                set({ sort: `${next.column}:${next.direction}` })
+              }
+              cardLayout="list"
+              cardsSort={rows.length > 6}
+              className={styles.grid}
+            />
+          </section>
+
+          {skills.length > 0 && (
+            <section className={styles.section} aria-labelledby="skills">
+              <h2 id="skills">Skills in this session</h2>
+              {shared.length > 0 && (
+                <ul className={styles.skillList}>
+                  {shared.map((entry) => (
+                    <li key={entry.skill.id} className={styles.skillRow}>
+                      <EntityLink
+                        entity={{ kind: "skill", id: entry.skill.id }}
+                        className={styles.skillTitle}
+                      >
+                        {entry.skill.title}
+                      </EntityLink>
+                      <span className={styles.skillCount}>
+                        {words.people(entry.students.length)}
+                        {entry.endedNeedingHelp > 0 && (
+                          <span className={styles.skillHelp}>
+                            {" "}
+                            · {entry.endedNeedingHelp} needed help on it at the
+                            end
+                          </span>
+                        )}
+                      </span>
+                      <span className={styles.skillWho}>
+                        {entry.students.map((row, index) => (
+                          <span key={row.personId}>
+                            {index > 0 && ", "}
+                            <Student row={row} className={styles.person}>
+                              {row.name}
+                            </Student>
+                          </span>
+                        ))}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {/* A skill one student worked on: one line each, in columns, so
+              a long session still prints on a sheet or two. */}
+              {single.length > 0 && (
+                <div className={styles.singles}>
+                  <h3>{words.oneEach(shared.length > 0)}</h3>
+                  <ul className={styles.singleList}>
+                    {single.map((entry) => {
+                      const row = entry.students[0]!;
                       return (
-                        <li key={row.personId}>
-                          <Student row={row} className={styles.person}>
-                            {row.name}
-                          </Student>
-                          {fact && <span className={styles.fact}>{fact}</span>}
+                        <li key={entry.skill.id}>
+                          <EntityLink
+                            entity={{ kind: "skill", id: entry.skill.id }}
+                            className={styles.skillLink}
+                          >
+                            {entry.skill.title}
+                          </EntityLink>
+                          <span className={styles.singleWho}>
+                            {" "}
+                            ·{" "}
+                            <Student row={row} className={styles.person}>
+                              {row.name}
+                            </Student>
+                            {entry.endedNeedingHelp > 0 &&
+                              " · needed help at the end"}
+                          </span>
                         </li>
                       );
                     })}
                   </ul>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        <section className={styles.section} aria-labelledby="every-student">
-          <h2 id="every-student">{words.every}</h2>
-          <DataGrid
-            label={words.everyLabel}
-            columns={everyColumns}
-            card={card && ((row) => card(row, everyColumns))}
-            rows={rows}
-            rowKey={(row) => row.personId}
-            sort={sort}
-            onSortChange={(next) =>
-              set({ sort: `${next.column}:${next.direction}` })
-            }
-            cardLayout="list"
-            cardsSort={rows.length > 6}
-            className={styles.grid}
-          />
-        </section>
-
-        {skills.length > 0 && (
-          <section className={styles.section} aria-labelledby="skills">
-            <h2 id="skills">Skills in this session</h2>
-            {shared.length > 0 && (
-              <ul className={styles.skillList}>
-                {shared.map((entry) => (
-                  <li key={entry.skill.id} className={styles.skillRow}>
-                    <EntityLink
-                      entity={{ kind: "skill", id: entry.skill.id }}
-                      className={styles.skillTitle}
-                    >
-                      {entry.skill.title}
-                    </EntityLink>
-                    <span className={styles.skillCount}>
-                      {words.people(entry.students.length)}
-                      {entry.endedNeedingHelp > 0 && (
-                        <span className={styles.skillHelp}>
-                          {" "}
-                          · {entry.endedNeedingHelp} needed help on it at the
-                          end
-                        </span>
-                      )}
-                    </span>
-                    <span className={styles.skillWho}>
-                      {entry.students.map((row, index) => (
-                        <span key={row.personId}>
-                          {index > 0 && ", "}
-                          <Student row={row} className={styles.person}>
-                            {row.name}
-                          </Student>
-                        </span>
-                      ))}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {/* A skill one student worked on: one line each, in columns, so
-              a long session still prints on a sheet or two. */}
-            {single.length > 0 && (
-              <div className={styles.singles}>
-                <h3>{words.oneEach(shared.length > 0)}</h3>
-                <ul className={styles.singleList}>
-                  {single.map((entry) => {
-                    const row = entry.students[0]!;
-                    return (
-                      <li key={entry.skill.id}>
-                        <EntityLink
-                          entity={{ kind: "skill", id: entry.skill.id }}
-                          className={styles.skillLink}
-                        >
-                          {entry.skill.title}
-                        </EntityLink>
-                        <span className={styles.singleWho}>
-                          {" "}
-                          ·{" "}
-                          <Student row={row} className={styles.person}>
-                            {row.name}
-                          </Student>
-                          {entry.endedNeedingHelp > 0 &&
-                            " · needed help at the end"}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            )}
-          </section>
-        )}
-      </article>
+                </div>
+              )}
+            </section>
+          )}
+        </article>
+        <StudentSheet
+          rows={rows}
+          columns={everyColumns}
+          id={student.id}
+          onClose={student.close}
+          when={title}
+        />
+      </OpenContext.Provider>
     </KitContext.Provider>
   );
 }

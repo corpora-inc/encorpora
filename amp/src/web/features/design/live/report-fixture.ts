@@ -91,7 +91,7 @@ function reportRows(count: number): ReportRow[] {
         assisted: Math.min(assisted, problems),
         hints: answered ? (index * 2) % 5 : 0,
         lessons: status === "struggling" ? 3 : 0,
-        examples: status === "struggling" ? 12 : index % 2,
+        examples: status === "struggling" ? 12 : answered ? index % 2 : 0,
         videos: index === 2 ? 1 : 0,
         skills,
         skill: skills.at(-1) ?? null,

@@ -16,7 +16,7 @@ import type {
 import { reportStatus, reportTotals } from "../../../../schools/live/status";
 import { queryClient, sessionOptions } from "../../../lib/query";
 import { Report } from "../../school/classes/SessionReportScreen";
-import { ChildReportRow, FAMILY_REPORT_WORDS } from "../FamilyReport";
+import { FAMILY_REPORT_WORDS } from "../FamilyReport";
 import { PastSessions } from "../PastSessions";
 import { sessionsOptions } from "../../live/api";
 
@@ -216,7 +216,7 @@ test("levels: grade words for a child whose setting is on, a blank for the rest"
   expect(document.body.textContent).not.toContain("Gr 4");
 });
 
-test("on a phone each child is a row of their own: every fact under the table's own name, every skill whole", async () => {
+test("under the table's width each child is a row of one shape: how they ended, the figures to scan, the first skills, and their sheet with the rest", async () => {
   const long = {
     id: "s2",
     title: "Equations for addition and subtraction stories",
@@ -229,51 +229,71 @@ test("on a phone each child is a row of their own: every fact under the table's 
     <Report
       report={{ ...report, rows: helped, totals: reportTotals(helped) }}
       className={undefined}
-      kit={{
-        ...kit((id) => id === person(1)),
-        card: (entry, columns) => (
-          <ChildReportRow row={entry} columns={columns} />
-        ),
-      }}
+      kit={kit((id) => id === person(1))}
     />,
   );
-  // (The test's page has no width: the grid is in its phone form.)
+  // (The test's page has no width: the grid is in its narrow form.)
   const child = (n: number) =>
-    document.querySelector<HTMLElement>(`[data-report-child="${person(n)}"]`)!;
-  expect(document.querySelectorAll("[data-report-child]").length).toBe(3);
-  const facts = (n: number) =>
-    Object.fromEntries(
-      [...child(n).querySelectorAll("dl > div")].map((fact) => [
-        fact.querySelector("dt")!.textContent,
-        fact.querySelector("dd")!.textContent,
-      ]),
-    );
-  const pip = facts(1);
-  expect(pip.Problems).toBe("8");
-  expect(pip.Correct).toBe("75%");
-  expect(pip["On their own"]).toBe("5");
-  expect(pip["Right with help"]).toBe("1");
-  expect(pip.Level).toBe("Gr 4");
-  expect(Object.keys(pip)).toContain("Help opened");
-  expect(
-    child(1).querySelector('[aria-label^="Help:"]')?.getAttribute("aria-label"),
-  ).toBe("Help: 2 hints, 0 lessons, 0 explanations, 0 videos");
+    document.querySelector<HTMLElement>(`[data-report-card="${person(n)}"]`)!;
+  expect(document.querySelectorAll("[data-report-card]").length).toBe(3);
+  // Every row has the same parts, whatever the child did.
+  for (const n of [1, 2, 3]) expect(child(n).children.length).toBe(3);
   // The name opens the child's page; how they ended is said beside it.
   expect(
     child(1).querySelector("a[data-child-link]")?.getAttribute("href"),
   ).toBe(`/family/${family}/kids/${learner(1)}`);
-  expect(child(1).textContent).toContain("At the endWorking");
-  expect(child(3).textContent).toContain("At the endNot started");
-  // Every skill by its whole name, each a link, in a line that wraps.
-  const skills = child(1).querySelector("[data-report-child-skills]")!;
-  expect(skills.textContent).toBe(
-    "Skills Adding fractions, Equations for addition and subtraction stories",
+  expect(child(1).textContent).toContain("Working");
+  expect(child(3).textContent).toContain("Not started");
+  // Percent of problems, the level where the child's setting shows it.
+  expect(child(1).textContent).toContain("75% of 8 · Gr 4");
+  expect(child(2).textContent).not.toContain("Gr 4");
+  expect(
+    child(1).querySelector('[aria-label^="Help:"]')?.getAttribute("aria-label"),
+  ).toBe("Help: 2 hints, 0 lessons, 0 explanations, 0 videos");
+  // The skills, whole names (a page that lays nothing out shows them all).
+  expect(
+    [...child(1).querySelectorAll("[data-fit-item]")].map(
+      (item) => item.textContent,
+    ),
+  ).toEqual(["Adding fractions", long.title]);
+  expect(child(2).querySelector("[data-fit-list]")).toBeNull();
+  // The row's control opens that child's sheet: every figure under the
+  // table's own name, and every skill a link.
+  expect(screen.queryByRole("dialog")).toBeNull();
+  await act(async () => {
+    child(1).querySelector<HTMLElement>("[data-report-open]")!.click();
+  });
+  const sheet = await screen.findByRole("dialog", { name: "Pip" });
+  const facts = Object.fromEntries(
+    [...sheet.querySelectorAll("dl > div")].map((fact) => [
+      fact.querySelector("dt")!.textContent,
+      fact.querySelector("dd")!.textContent,
+    ]),
   );
-  expect(skills.querySelectorAll("a").length).toBe(2);
-  // No skills, no line; a level kept off, no Level.
-  expect(child(2).querySelector("[data-report-child-skills]")).toBeNull();
-  expect(Object.keys(facts(2))).not.toContain("Level");
+  expect(facts["At the end"]).toBe("Working");
+  expect(facts.Problems).toBe("8");
+  expect(facts.Correct).toBe("75%");
+  expect(facts["On their own"]).toBe("5");
+  expect(facts["Right with help"]).toBe("1");
+  expect(facts.Level).toBe("Gr 4");
+  expect(facts["Help opened"]).toBe(
+    "2 hints, 0 lessons, 0 explanations, 0 videos",
+  );
+  const listed = sheet.querySelector("[data-report-student-skills]")!;
+  expect(
+    [...listed.querySelectorAll("li a")].map((a) => a.textContent),
+  ).toEqual(["Adding fractions", long.title]);
   expect(document.body.textContent).not.toMatch(FOREIGN);
+});
+
+test("the key to the help drawings is beside “Every child”, in the column's own words", async () => {
+  await mount(
+    <Report report={report} className={undefined} kit={kit(() => false)} />,
+  );
+  const key = screen.getByRole("list", { name: "Help opened" });
+  expect(
+    [...key.querySelectorAll("li")].map((item) => item.textContent),
+  ).toEqual(["Hints", "Lessons", "Explanations", "Videos"]);
 });
 
 test("past sessions: nothing before the first has ended; then a line each, opening its report", async () => {
