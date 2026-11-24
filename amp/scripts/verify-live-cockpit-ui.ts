@@ -24,6 +24,8 @@
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { chromium as rawChromium, type Page } from "playwright";
 import { createServer, type ViteDevServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
@@ -45,7 +47,19 @@ if (!origin) {
   const port = Number(arg("--port") ?? 4862);
   vite = await createServer({
     configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-    server: { host: "127.0.0.1", port, strictPort: true },
+    // Its own dependency cache, outside node_modules: another Vite on a
+    // shared checkout never rewrites what this one serves.
+    cacheDir:
+      process.env.AMP_VITE_CACHE_DIR ?? join(tmpdir(), "amp-vite-live-cockpit"),
+    server: {
+      host: "127.0.0.1",
+      port,
+      strictPort: true,
+      // Fixtures only: the page's own background calls (the session,
+      // events) go to a port nothing serves, never to an API that happens
+      // to be running on the default one.
+      proxy: { "/api": `http://127.0.0.1:${port + 1}` },
+    },
     logLevel: "warn",
   });
   await vite.listen();

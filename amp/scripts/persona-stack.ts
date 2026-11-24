@@ -58,6 +58,17 @@ export async function startPersonaStack({
     // Its own process group, so stopping it stops npx's children too.
     detached: true,
   });
+  // Whatever ends the check, the API ends with it: it is its own process
+  // group, and would outlive a check that threw before it could stop it.
+  const reap = () => {
+    if (!api.pid || api.exitCode !== null) return;
+    try {
+      process.kill(-api.pid, "SIGTERM");
+    } catch (error) {
+      console.error(`The API (${api.pid}) could not be stopped:`, error);
+    }
+  };
+  process.once("exit", reap);
   for (let i = 0; ; i++) {
     const up = await fetch(`http://127.0.0.1:${apiPort}/api/v1/auth-config`)
       .then((response) => response.ok)
@@ -96,8 +107,13 @@ export async function startPersonaStack({
   if (code !== 0) throw new Error(`Seeding ${personas} failed (${code})`);
   return {
     origin,
+    /** The API itself, for a check's simulator and its direct calls. */
+    api: `http://127.0.0.1:${apiPort}`,
+    /** This run's schema: what a simulator reads and a check counts in. */
+    database: scoped.href,
     async stop() {
       await vite.close();
+      process.off("exit", reap);
       if (api.pid && api.exitCode === null) process.kill(-api.pid, "SIGTERM");
       await log.close();
       await admin.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);

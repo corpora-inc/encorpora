@@ -1,6 +1,6 @@
 /**
  * A class's Today as the live cockpit (#2465, round 2026-11-20 L7 + L5),
- * against a simulated class of 14 on a running, seeded preview:
+ * with a simulated class of 14:
  *
  * 1. Cold loads (a fresh browser, no cache, CPU 4x, a slow network, 390 px)
  *    of Today at rest, Today with a session running, and a session's report:
@@ -28,9 +28,20 @@
  *    ends on screen by itself: the page shows it ended, with its report one
  *    tap away, and nothing moves.
  *
+ * By itself (as CI runs it, `npm run test:live-cockpit-screen-ui`) it
+ * starts its own stack on a fresh schema of AMP_TEST_DATABASE_URL
+ * (scripts/persona-stack.ts) with the teacher it needs:
+ *
+ *   AMP_TEST_DATABASE_URL=postgres://…/amp_test \
+ *     npx tsx scripts/verify-live-cockpit-screen-ui.ts [--port 4886] [--out <dir>]
+ *
+ * Or against a running, seeded preview and its database:
+ *
  *   AMP_SIM_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/<db> \
  *     npx tsx scripts/verify-live-cockpit-screen-ui.ts \
  *       --origin http://127.0.0.1:4830 --api http://127.0.0.1:4831
+ *
+ * Either way:
  *       [--shots <dir>]   every state at 390 and 1280 light and dark, live
  *                         and the report at 320 and 768, and the report on
  *                         paper (report-print.pdf, report-print.png)
@@ -57,6 +68,7 @@ import {
   stopTrail,
   watchStop,
 } from "./live-cockpit-checks";
+import { startPersonaStack } from "./persona-stack";
 import {
   PERSONA_PASSPHRASE,
   personaEmail,
@@ -68,14 +80,22 @@ const arg = (name: string) => {
   return at >= 0 ? process.argv[at + 1] : undefined;
 };
 const flag = (name: string) => process.argv.includes(`--${name}`);
-const origin = arg("origin");
-const api = arg("api") ?? origin;
 const shots = arg("shots");
 const video = arg("video");
 const UPDATES = Number(arg("updates") ?? 200);
-const database = process.env.AMP_SIM_DATABASE_URL;
-if (!origin || !database)
-  throw new Error("--origin and AMP_SIM_DATABASE_URL are required");
+if (arg("origin") && !process.env.AMP_SIM_DATABASE_URL)
+  throw new Error("With --origin, AMP_SIM_DATABASE_URL is required");
+const stack = arg("origin")
+  ? null
+  : await startPersonaStack({
+      webPort: Number(arg("port") ?? 4886),
+      personas: ["teacher-class"],
+      name: "live_cockpit_screen",
+      out: arg("out") ?? "artifacts/live-cockpit-screen",
+    });
+const origin = arg("origin") ?? stack!.origin;
+const api = arg("api") ?? stack?.api ?? origin;
+const database = stack?.database ?? process.env.AMP_SIM_DATABASE_URL!;
 const WIDTHS = [320, 390, 768, 1280] as const;
 const height = (width: number) =>
   width >= 1024 ? 800 : width >= 768 ? 1024 : 844;
@@ -313,7 +333,7 @@ async function teacherState(browser: Browser) {
   const response = await context.request.post(
     `${origin}/api/auth/sign-in/email`,
     {
-      headers: { Origin: origin! },
+      headers: { Origin: origin },
       data: {
         email: personaEmail("teacher-class"),
         password: PERSONA_PASSPHRASE,
@@ -1066,10 +1086,8 @@ async function stills(
 }
 
 // ---- run -----------------------------------------------------------------
-if (shots) await mkdir(shots, { recursive: true });
-if (video) await mkdir(video, { recursive: true });
-const browser = await chromium.launch();
-try {
+/** What the run proved, in a sentence. */
+async function run(browser: Browser) {
   const { today, token } = await simulate(30);
   const classId = today.split("/")[4]!;
   const state = await teacherState(browser);
@@ -1094,7 +1112,7 @@ try {
       token,
       classId,
     );
-    process.exit(0);
+    return `Stills in ${shots}.`;
   }
   await coldLoad(browser, state, today, "Today at rest");
   let report = "";
@@ -1110,11 +1128,24 @@ try {
     await endsOnItsOwn(browser, state, today, token, classId);
   await stills(browser, state, today, report, token, classId);
   await rest(token, classId);
+  return "The live cockpit screen holds still, loads in one frame and reports.";
+}
+
+if (shots) await mkdir(shots, { recursive: true });
+if (video) await mkdir(video, { recursive: true });
+const browser = await chromium.launch();
+let failed = false;
+try {
+  const proved = await run(browser);
+  assert.deepEqual(failures, [], failures.join("\n"));
+  console.log(proved);
+} catch (error) {
+  failed = true;
+  console.error(error);
 } finally {
   await browser.close();
   if (sim?.pid && sim.exitCode === null) process.kill(-sim.pid, "SIGTERM");
+  // The check's own stack: its servers stop and its schema goes.
+  await stack?.stop();
 }
-assert.deepEqual(failures, [], failures.join("\n"));
-console.log(
-  "The live cockpit screen holds still, loads in one frame and reports.",
-);
+process.exit(failed ? 1 : 0);
