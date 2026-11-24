@@ -198,12 +198,13 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "family-b4", "family-b5", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
     for command, lane in [('npm run test:ui:1a', 'ui-1a'), ('npm run test:ui:1b', 'ui-1b'),
                           ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
                           ('npm run test:family-ui:a', 'family-a'), ('npm run test:family-ui:b1', 'family-b1'),
                           ('npm run test:family-ui:b2', 'family-b2'), ('npm run test:family-ui:b3', 'family-b3'),
+                          ('npm run test:family-ui:b4', 'family-b4'), ('npm run test:family-ui:b5', 'family-b5'),
                           ('node scripts/run-ci-tests.mjs browser', 'selected')]:
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
     no_flash = next(step for step in browser['steps'] if 'test:no-flash-ui' in step.get('run', ''))
@@ -272,7 +273,7 @@ def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
     # The family chain runs as two lanes that together are the whole chain.
     family_a, family_b = expand('test:family-ui:a'), expand('test:family-ui:b')
     assert family_a and family_b and family_a + family_b == expand('test:family-ui')
-    family_parts = [expand(f'test:family-ui:b{n}') for n in (1, 2, 3)]
+    family_parts = [expand(f'test:family-ui:b{n}') for n in (1, 2, 3, 4, 5)]
     assert all(family_parts) and sum(family_parts, []) == family_b
     assert not set(family_a) & set(family_b)
     assert len(set(full)) == len(full)
