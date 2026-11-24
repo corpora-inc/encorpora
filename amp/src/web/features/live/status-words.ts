@@ -16,11 +16,11 @@ export type StatusWords = {
 export const STATUS_WORDS: Record<LiveStatus, StatusWords> = {
   not_signed_in: {
     word: "Not signed in",
-    means: "Hasn't signed in today",
+    means: "Not seen in this session",
   },
   idle: {
     word: "Quiet",
-    means: "No answer or help for 2 minutes",
+    means: "No answer or help for 2 minutes, or none yet",
   },
   struggling: {
     word: "Needs help",
