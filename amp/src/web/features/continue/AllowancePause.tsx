@@ -3,9 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
 import { meOptions, queryClient } from "../../lib/query";
 import { useSessionOrNull } from "../../lib/session";
-import { takeDeviceBack } from "../../lib/family-practice-history";
-import { handedHome, handedStudentDevice } from "../../lib/student-device";
-import { addressedIdentity } from "../spaces/identity";
 import { payLearnerFor } from "../pay/paths";
 import { learnerOrigin, payOver } from "../pay/address";
 import { TalkToUs } from "../schools/TalkToUs";
@@ -20,19 +17,14 @@ import styles from "./Continue.module.css";
  * adult practicing as one of their practice profiles. */
 export type PauseViewer = "parent" | "adult" | "profile" | "student" | "staff";
 
-/** The child's page in their family, when this tab is a parent's device
- * handed to their child ("Practice", or the child's practice opened by its
- * address): the grown-up is the one holding it, so the pause offers them
- * what it offers on their own sign-in. Null on a child's own device, and on
- * one handed over from a class. */
-export function handedChildPage(learnerId: string): string | null {
-  if (!handedStudentDevice()) return null;
-  const family = /^\/family\/([^/?#]+)$/.exec(handedHome())?.[1];
-  return family
-    ? `/family/${family}/kids/${encodeURIComponent(learnerId)}`
-    : null;
-}
-
+/** A parent's device handed to their child ("Practice", or the child's
+ * practice opened by its address), as the practice screen that shows the
+ * pause knows it: the child's page in their family, and how the parent
+ * takes the device back (their sign-in, or null if it ended). */
+export type HandedPause = {
+  childPage: string;
+  takeBack: () => Promise<{ accountId: string } | null>;
+};
 /** A parent or a child is the family's pause; a teacher is the class. */
 const pauseFor = {
   parent: "family",
@@ -78,13 +70,15 @@ export function pauseWords(
  * talks to us; a student on their own device is told who can continue. On a
  * parent's device handed to their child, the parent is offered what their
  * own sign-in offers, and the tap takes the device back to them
- * (`handedChildPage`).
+ * (`handed`).
  */
 export function AllowancePause({
   kind,
   viewer,
   learner,
   compact = false,
+  handed,
+  returnTo,
 }: {
   kind: "problems" | "workbooks";
   viewer: PauseViewer;
@@ -92,6 +86,11 @@ export function AllowancePause({
   learner?: { id: string; name: string };
   /** Inside a screen with its own heading, rather than in place of it. */
   compact?: boolean;
+  /** This child's sign-in is on their parent's device. */
+  handed?: HandedPause;
+  /** Where paying returns, when it isn't this screen: a child's practice is
+   * the child's own sign-in, so a parent returns to the child's page. */
+  returnTo?: string;
 }) {
   const navigate = useNavigate();
   const session = useSessionOrNull();
@@ -100,13 +99,11 @@ export function AllowancePause({
   });
   // A parent's device in their child's hands: the offer the parent's own
   // sign-in shows, which takes the device back to them as it opens.
-  const childPage =
-    viewer === "student" && kind === "problems" && learner
-      ? handedChildPage(learner.id)
-      : null;
+  const back =
+    viewer === "student" && kind === "problems" && learner ? handed : undefined;
   const [returning, setReturning] = useState(false);
   const errors = useErrorToast();
-  const words = pauseWords(kind, viewer, learner?.name ?? "", !!childPage);
+  const words = pauseWords(kind, viewer, learner?.name ?? "", !!back);
   const headingId = `pause-${kind}-${learner?.id ?? viewer}`;
   const Heading = compact ? "h2" : "h1";
   const continued = useRef(false);
@@ -170,22 +167,10 @@ export function AllowancePause({
               const payer =
                 (me?.signedIn && payLearnerFor(me, learner.id)?.id) ||
                 learner.id;
-              // A child's practice is the child's own sign-in, so paying for
-              // one returns to the child's page, the parent's own screen:
-              // their name is offered there, and Practice is one tap away.
-              const origin =
-                me?.signedIn && viewer === "parent"
-                  ? learnerOrigin(me, payer)
-                  : null;
               rememberContinuation({
                 accountId: session.accountId,
                 learnerId: payer,
-                returnTo:
-                  origin &&
-                  here.startsWith("/practice/") &&
-                  addressedIdentity(here)?.id === learner.id
-                    ? origin
-                    : here,
+                returnTo: returnTo ?? here,
               });
               // Paying opens over the learner's own place (features/pay).
               void navigate({
@@ -198,7 +183,7 @@ export function AllowancePause({
             Continue with AMP
           </Button>
         )}
-      {childPage && learner && (
+      {back && learner && (
         <Button
           variant="primary"
           className={styles.action}
@@ -210,7 +195,8 @@ export function AllowancePause({
             // The device goes back to the parent (a family hand-over ends,
             // as its way home ends it), and paying opens over the child's
             // page on the parent's own sign-in.
-            void takeDeviceBack()
+            void back
+              .takeBack()
               .then((parent) => {
                 if (!continued.current) {
                   continued.current = true;
@@ -220,10 +206,10 @@ export function AllowancePause({
                   rememberContinuation({
                     accountId: parent.accountId,
                     learnerId: learner.id,
-                    returnTo: childPage,
+                    returnTo: back.childPage,
                   });
                 return navigate({
-                  to: payOver(childPage, learner.id) as never,
+                  to: payOver(back.childPage, learner.id) as never,
                 });
               })
               .catch((failure: unknown) => {

@@ -183,6 +183,17 @@ export function handedHome(): string {
   const family = /^\/family\/([^/?#]+)/.exec(path);
   return family ? `/family/${family[1]}` : path;
 }
+/** The child's page in their family, when this tab is a parent's device
+ * handed to their child ("Practice", or the child's practice opened by its
+ * address): where the grown-up holding it goes to continue AMP. Null on a
+ * child's own device, and on one handed over in a class. */
+export function handedChildPage(learnerId: string): string | null {
+  if (!handedStudentDevice()) return null;
+  const family = /^\/family\/([^/?#]+)$/.exec(handedHome())?.[1];
+  return family
+    ? `/family/${family}/kids/${encodeURIComponent(learnerId)}`
+    : null;
+}
 /** Ends the student sign-in this tab holds; the tab holds none until one is
  * made in it. The browser forgets the sign-in it remembers when that is this
  * tab's, or when this tab is nobody yet (a new tab stands for the browser).

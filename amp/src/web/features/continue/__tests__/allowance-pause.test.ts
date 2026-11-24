@@ -1,9 +1,10 @@
 import { afterEach, describe, expect, it } from "vitest";
 import {
   clearStudentDevice,
+  handedChildPage,
   rememberStudentSession,
 } from "../../../lib/student-device";
-import { handedChildPage, pauseWords } from "../AllowancePause";
+import { pauseWords } from "../AllowancePause";
 
 const child = { accountId: "school:family", token: "st_child" };
 afterEach(() => {

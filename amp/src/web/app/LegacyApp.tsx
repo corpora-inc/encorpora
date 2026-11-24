@@ -139,7 +139,13 @@ import { Home, type FrontierMap } from "../Home";
 import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
-import { AllowancePause } from "../features/continue/AllowancePause";
+import {
+  AllowancePause,
+  type HandedPause,
+} from "../features/continue/AllowancePause";
+import { learnerOrigin } from "../features/pay/address";
+import { takeDeviceBack } from "../lib/family-practice-history";
+import { handedChildPage } from "../lib/student-device";
 import { StudentWaiting } from "../features/practice/StudentWaiting";
 import {
   LessonDownloadMenu,
@@ -264,6 +270,16 @@ function practiceLearner(
     learners.find((entry) => entry.adult && !entry.simulation) ??
     null
   );
+}
+
+/** The pause's offer on a parent's device handed to their child: the
+ * child's page, and the device taken back on the way to it. */
+function handedPause(
+  student: boolean,
+  learnerId: string,
+): HandedPause | undefined {
+  const childPage = student ? handedChildPage(learnerId) : null;
+  return childPage ? { childPage, takeBack: takeDeviceBack } : undefined;
 }
 export function LegacyApp() {
   // Its route made sure of the session first (app/router.tsx appScreen); a
@@ -1895,6 +1911,15 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             kind="problems"
             viewer={pauseViewer}
             learner={{ id: learner.id, name: learner.name }}
+            // On a parent's device the grown-up holding it continues AMP
+            // from here; a child's practice is the child's own sign-in, so
+            // a parent who pays returns to the child's page.
+            handed={handedPause(student, learner.id)}
+            returnTo={
+              pauseViewer === "parent" && account?.signedIn
+                ? learnerOrigin(account, learner.id)
+                : undefined
+            }
           />
         ) : problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
