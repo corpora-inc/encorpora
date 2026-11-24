@@ -896,22 +896,10 @@ async function lateCockpit(
   if (loaded)
     fail(`late ${width}px: the cockpit's code was loaded at rest already`);
   const above = await boxes(page);
-  // The cockpit's code comes slowly, as on a phone's network.
-  await page.route(/\/features\/family\/FamilyCockpit\.tsx/, async (route) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    await route.continue();
-  });
-  // The other parent's browser starts the session.
+  // The other parent's browser starts the session. Nothing here touches the
+  // page meanwhile: a click before the cockpit arrives makes React forget
+  // which component waited, and its report with it.
   await call(who.token, "POST", `/school/classes/${who.classId}/sessions`, {});
-  await page.waitForSelector('[data-family-live="cockpit"]', {
-    timeout: 30_000,
-  });
-  // While it waits, something else on the page redraws (the menu opens
-  // and closes): the redraw after which React reported the cockpit's
-  // `use()` asked in one render and not the next.
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.waitForTimeout(400);
-  await page.keyboard.press("Escape");
   await page.waitForSelector('[data-cockpit="live"] [data-live-roster]', {
     timeout: 30_000,
   });

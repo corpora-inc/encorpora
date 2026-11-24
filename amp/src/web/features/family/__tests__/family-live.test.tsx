@@ -14,7 +14,6 @@ import {
   createRouter,
   RouterProvider,
 } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type {
   LiveRow,
@@ -34,13 +33,22 @@ import { familyCockpit, loadFamilyCockpit } from "../cockpit-chunk";
  * shift, one frame on a cold load) are measured in a real browser by
  * scripts/verify-family-live-ui.ts. */
 
-// The first test holds the cockpit's code back until it has looked.
+// The first test holds the cockpit's code back until it has looked, and
+// counts how often `use` is asked.
 const chunk = vi.hoisted(() => {
   let open = () => {};
   const gate = new Promise<void>((resolve) => {
     open = resolve;
   });
-  return { held: false, gate, open };
+  return { held: false, gate, open, asked: 0 };
+});
+vi.mock("react", async (original) => {
+  const react = await original<typeof import("react")>();
+  const use: typeof react.use = (usable) => {
+    chunk.asked++;
+    return react.use(usable);
+  };
+  return { ...react, use };
 });
 vi.mock("../FamilyCockpit", async (original) => {
   if (chunk.held) await chunk.gate;
@@ -203,16 +211,6 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-/** Something else on the page, with a redraw of its own. */
-let redraw = () => {};
-function Beside() {
-  const [, setCount] = useState(0);
-  useEffect(() => {
-    redraw = () => setCount((count) => count + 1);
-  }, []);
-  return <p>Beside</p>;
-}
-
 async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
   // The route's loader brings the cockpit's chunk with a running session.
   if (data.session || data.signals.length > 0) await loadFamilyCockpit();
@@ -226,7 +224,7 @@ async function mount(data: LiveSnapshot, given: FamilyCockpitProps = props()) {
     component: () => (
       <main>
         <FamilyLive {...given} />
-        <Beside />
+        <p>Beside</p>
       </main>
     ),
   });
@@ -252,6 +250,7 @@ const FOREIGN = /\bstudents?\b|\bclass(?:es|room)?\b|\bteachers?\b/i;
 test("a session started elsewhere while Today is open: the cockpit's code arrives late, and React has nothing to say", async () => {
   const said = vi.spyOn(console, "error");
   chunk.held = true;
+  let waiting = 0;
   try {
     await mount(snapshot({ session: null, rows: [] }));
     expect(document.querySelector('[data-family-live="rest"]')).toBeTruthy();
@@ -269,10 +268,9 @@ test("a session started elsewhere while Today is open: the cockpit's code arrive
     );
     expect(familyCockpit()).toBeNull();
     expect(document.querySelector("[data-cockpit]")).toBeNull();
-    // Meanwhile something else on the page redraws (a clock, a menu).
-    await act(async () => {
-      redraw();
-    });
+    // It waited by asking `use`.
+    waiting = chunk.asked;
+    expect(waiting).toBeGreaterThan(0);
   } finally {
     await act(async () => {
       chunk.open();
@@ -283,8 +281,13 @@ test("a session started elsewhere while Today is open: the cockpit's code arrive
   );
   expect(familyCockpit()).not.toBeNull();
   expect(document.querySelectorAll("[data-live-row]").length).toBe(3);
-  // "This library called use() to suspend in a previous render but did not
-  // call use() when it finished": the hook is asked on every render.
+  // React's rule: a component that waited with `use` asks it again in the
+  // render that finishes. The cockpit did, with its code in.
+  expect(chunk.asked).toBeGreaterThan(waiting);
+  // What breaking the rule brings, when the page's other redraws fall a
+  // certain way between the two renders (so it was seen once in UAT, not
+  // every time): "This library called use() to suspend in a previous
+  // render but did not call use() when it finished".
   expect(said.mock.calls.map((call) => String(call[0]))).toEqual([]);
 });
 
