@@ -11,6 +11,7 @@ import {
 import { registerCleverConnection } from "../src/schools/clever/connection.js";
 import { lmsConnectEnabled } from "../src/schools/clever/lms-config.js";
 import { lmsPassFailed, runLmsPasses } from "./clever-lms.js";
+import { runRequestAlertPass } from "../src/schools/request-alerts.js";
 import {
   safeSyncError,
   syncCleverConnection,
@@ -87,18 +88,37 @@ export async function cleverSyncCommand(
       }
     }
     if (results.some((result) => "error" in result)) process.exitCode = 1;
+    const scheduled =
+      (!rest[0] || rest[0] === "all") && (!rest[1] || rest[1] === "auto");
     // The scheduled pass also returns LMS grades, after rosters are current,
     // once LMS Connect is enabled for the app.
-    if (
-      (!rest[0] || rest[0] === "all") &&
-      (!rest[1] || rest[1] === "auto") &&
-      lmsConnectEnabled(env)
-    ) {
-      const lms = await runLmsPasses(pool, env);
-      if (lmsPassFailed(lms)) process.exitCode = 1;
-      return [...results, { lms }];
-    }
-    return results;
+    const lms =
+      scheduled && lmsConnectEnabled(env)
+        ? await runLmsPasses(pool, env)
+        : null;
+    if (lms && lmsPassFailed(lms)) process.exitCode = 1;
+    // And tells the operator about schools waiting for an invitation
+    // (docs/clever-anyschool.md). A failed alert never stops a sync.
+    let alerts:
+      | Awaited<ReturnType<typeof runRequestAlertPass>>
+      | { error: string }
+      | null = null;
+    if (scheduled)
+      try {
+        alerts = await runRequestAlertPass(pool, env);
+        if ("failed" in alerts && alerts.failed) process.exitCode = 1;
+      } catch (error) {
+        console.error("[schools] operator alert pass failed", {
+          message: (error as Error).message,
+        });
+        alerts = { error: "alert_pass_failed" };
+        process.exitCode = 1;
+      }
+    return [
+      ...results,
+      ...(lms ? [{ lms }] : []),
+      ...(alerts && !("due" in alerts && !alerts.due) ? [{ alerts }] : []),
+    ];
   } finally {
     await pool.end();
   }

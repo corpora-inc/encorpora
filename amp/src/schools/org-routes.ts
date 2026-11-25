@@ -20,6 +20,7 @@ import {
 } from "./org-contracts.js";
 import { readOverview, readSchools } from "./org-reads.js";
 import { requestAnySchool } from "./clever/anyschool.js";
+import { alertReRequest } from "./request-alerts.js";
 import { readPractice } from "./practice-views.js";
 import { eraseBatch, readPrivacy, schoolExport } from "./privacy.js";
 import { rolloverOptions, runRollover } from "./rollover.js";
@@ -319,7 +320,7 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
 
   // Clever AnySchool: the school asks; an operator sends Clever's invitation
   // to the setup email (docs/clever-anyschool.md). The request is the record;
-  // the mail only tells the operator to look.
+  // the operator's alerts (request-alerts.ts) only tell them to look.
   define({
     method: "POST",
     url: `${ORG}/integrations/anyschool`,
@@ -345,30 +346,10 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
         },
         request.body,
       );
-      if (services.mail && asked.created) {
-        const { name } = (
-          await pool.query("SELECT name FROM amp_orgs WHERE id=$1", [
-            target.orgId,
-          ])
-        ).rows[0];
-        await services
-          .mail(
-            SEAT_REQUEST_MAILBOX,
-            integrationRequest({
-              name,
-              label: "Clever AnySchool",
-              orgId: target.orgId,
-              requester: null,
-              origin: services.origin,
-            }),
-          )
-          .catch((error) =>
-            console.error("[schools] AnySchool request mail not sent", {
-              requestId: asked.id,
-              message: (error as Error).message,
-            }),
-          );
-      }
+      // A new request alerts the operator from the Clever worker's next
+      // pass; asking again while it waits adds one more alert.
+      if (!asked.created && asked.status === "requested")
+        await alertReRequest(pool, asked.id);
       return readIntegrations(pool, target.orgId, services);
     },
   });

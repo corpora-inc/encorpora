@@ -11,7 +11,7 @@ Two things differ from a Secure Sync district:
 
 | Step | Who | Where | Record in AMP |
 | --- | --- | --- | --- |
-| 1. Ask | School administrator | AMP: the school's **Integrations** page, **Clever AnySchool**, **Set this up with us** | Request `requested`, with the setup email and the signed agreement |
+| 1. Ask | School administrator | AMP: the school's **Integrations** page, **Clever AnySchool**, **Set this up with us** | Request `requested`, with the setup email and the signed agreement. The operator gets an email within a minute |
 | 2. Invite | Operator | Clever dashboard, then `anyschool-invite` | Request `invited`, with the Clever district ID |
 | 3. Set up | The person at the setup email | Clever's hosted setup | None; Clever syncs the data and issues AMP a district token |
 | 4. Connect | Operator | `anyschool-connect` | District org, agreement, requester as district administrator, staged connection |
@@ -20,11 +20,31 @@ Two things differ from a Secure Sync district:
 
 A school that already uses Clever does not need this. Its district administrator connects at `/school/connect`.
 
+## Response target
+
+Clever has no API that creates an AnySchool district, so a person sends every invitation. The target is set from the moment the school asks:
+
+- **Target (SLO): invite within 24 hours.**
+- **Limit (SLA): invite within 72 hours at most.**
+
+AMP emails the operator about each request while it is `requested`. The Clever worker (`amp-clever-sync`, every minute) sends the emails, never the request handler, and a failed email never fails the school's request.
+
+| When | Email |
+| --- | --- |
+| The school asks | "Clever AnySchool request: invite *school* by *target*", with the institution, method, setup email, requester, whether the agreement is signed, the request ID and the next step |
+| The school asks again before the invitation | "*school* asked again", with the current details. Repeats while one waits add nothing |
+| 24 hours, still `requested` | One reminder: the target has passed |
+| 72 hours, still `requested` | One more, marked overdue |
+
+Each goes at most once per request (`amp_school_request_alerts`). Recording the invitation (`anyschool-invite`, or `connection-request-status` for a Clever request) stops the rest. A request first seen past 72 hours gets only the overdue email. A failed send is logged (`[schools] operator alert not sent`), fails that worker run, and is retried with backoff up to eight times.
+
+The emails go to `AMP_OPERATOR_EMAIL`, or skylar@corpora.inc when it is unset. They use the account mail settings (`AMP_MAIL_RESEND_API_KEY`, `AMP_MAIL_FROM`, `AMP_ACCOUNTS_URL`, `AMP_ACCOUNTS_SECRET`) from the worker's Secret. Without them the alerts wait and the worker logs `[schools] operator alert pass failed`.
+
 ## Operator steps
 
 Commands run as `npm run school:admin -- <command> <private-input.json>`, in the API image with the production database (see [schools](schools.md)). `anyschool-connect` and `school-queue` also need the worker's `AMP_CLEVER_ENVIRONMENT`, `AMP_CLEVER_CLIENT_ID`, `AMP_CLEVER_CLIENT_SECRET` and `AMP_CLEVER_API_VERSION`. `AMP_ACCOUNTS_URL` makes the printed adoption link a full URL. Output is private: it includes the setup email.
 
-1. **Find the request.** Run `school-queue` with `{}`. Under `connections`, an AnySchool request has `method: "anyschool"`, `status: "requested"`, `signed: true`, its `id`, `institution_name` and `contact_email`. The contact email is the setup email. A row with `signed: false` came from the older contact form: nobody accepted the agreement, and `anyschool-invite` refuses it. Ask the school's administrator to use the Integrations page.
+1. **Find the request.** The alert email names it. Or run `school-queue` with `{}`. Under `connections`, an AnySchool request has `method: "anyschool"`, `status: "requested"`, `signed: true`, its `id`, `institution_name` and `contact_email`. The contact email is the setup email. A row with `signed: false` came from the older contact form: nobody accepted the agreement, and `anyschool-invite` refuses it. Ask the school's administrator to use the Integrations page.
 2. **Invite in Clever.**
    1. In the Clever App Dashboard, go to **Home > Invite Districts > Add an AnySchool District**. The partner article calls the button **Connect to an AnySchool district**.
    2. Enter the request's `institution_name`, then select **Create new district**.
@@ -106,7 +126,8 @@ AnySchool data uses the same adapter and validation as Secure Sync. These differ
 Automated, against a disposable PostgreSQL schema (`AMP_TEST_DATABASE_URL`):
 
 - `npx tsx --test tests/clever-anyschool.integration.ts` covers the whole path. A school leader asks, and asking again before the invitation corrects the email. The operator invites, then connect is refused without a token and for a non-AnySchool district. Connect makes the district, its agreement, the requester's administrator role and a staged connection. The worker stages without creating anyone. Import is refused while the Clever school is unmatched. A teacher's solo pilot adopts with matched school, teacher, learner and class. Import keeps the pilot's learner and class IDs and creates three CSV-only learners. Grades, `DOB`, missing email, staff and an idle teacher are mapped. There is one year calendar, no courses, and the queue counts launched, staged and awaiting schools.
-- `tests/schools-org.integration.ts` covers the request route. A viewer gets 404. A school inside a district gets 409. The agreement is required. The request is stored and mailed once.
+- `tests/schools-org.integration.ts` covers the request route. A viewer gets 404. A school inside a district gets 409. The agreement is required. The request is stored; the handler mails no one, and the worker's pass alerts the operator once, and once more when the school asks again.
+- `tests/school-request-alerts.integration.ts` covers the operator's alerts: one per request with every detail and the next step, no duplicates across passes or concurrent passes, one more on a repeat request, one reminder at 24 hours and one overdue at 72, none once invited, retry after a failed send, and the contact form's unsigned and Clever requests.
 - `src/web/features/school/org/__tests__/anyschool.test.tsx` covers the Integrations row: each status line, the request form and its body, the viewer view, and **Move classes in**.
 
 Manual, with a Clever development app that has AnySchool enabled. These need a real invitation:
