@@ -125,7 +125,7 @@ function ModalSheet({
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className={styles.overlay} />
+        <Dialog.Overlay className={styles.overlay} data-sheet-scrim="" />
         <Dialog.Content
           ref={content}
           className={`${styles.sheet} ${tall ? styles.tall : ""}`}

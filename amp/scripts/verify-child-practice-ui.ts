@@ -1275,6 +1275,20 @@ try {
         await need(first.page, "the skill’s Practice control", () =>
           first.page.locator(practice).waitFor({ timeout: 30_000 }),
         );
+        // One backdrop, however deep: the skill's layer over the sheet adds
+        // no second scrim, so the page behind gets no darker.
+        const scrims = await first.page.evaluate(() =>
+          [
+            ...document.querySelectorAll(
+              "[data-sheet-scrim], [data-layer-scrim], [data-route-scrim]",
+            ),
+          ].map((scrim) => getComputedStyle(scrim).backgroundColor),
+        );
+        const dimming = scrims.filter((color) => color !== "rgba(0, 0, 0, 0)");
+        if (scrims.length !== 2 || dimming.length !== 1)
+          fail(
+            `${slug} ${child.name}, ${width}: a skill over the sheet of last problems dims the page ${dimming.length} times (scrims: ${scrims.join(" | ")})`,
+          );
         await first.page.reload({ waitUntil: "load" });
         await need(
           first.page,

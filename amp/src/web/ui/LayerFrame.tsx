@@ -91,6 +91,7 @@ export function LayerFrame({
         <Dialog.Overlay
           className={`${sheet.overlay} ${still} ${above ? styles.above : ""}`}
           data-layer-scrim=""
+          data-above={above || undefined}
         />
         <Dialog.Content
           ref={content}
