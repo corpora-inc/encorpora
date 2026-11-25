@@ -195,8 +195,8 @@ export function lmsErrorCode(status: number, message: string): LmsErrorCode {
   // Classroom"; Schoology 500 "… Assignment mapping not found …", which is
   // not an outage and must not be retried as one.
   if (
-    text.includes("could not find assignment") ||
-    text.includes("assignment mapping not found")
+    (status === 404 && text.includes("could not find assignment")) ||
+    (status >= 500 && text.includes("assignment mapping not found"))
   )
     return "lms_assignment_missing";
   if (text.includes("unsupported_operation") || text.includes("unpublished"))
