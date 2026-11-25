@@ -12,6 +12,7 @@ import {
   DEFAULT_FRONTIER_POLICY,
   EVIDENCE_CLIMB_FRONTIER_POLICY,
   GRADE_START_SD,
+  GRADE_START_SD_CAP,
 } from "../src/learning/frontier-policy";
 import { withinGradeSd } from "../src/schools/norms-prior";
 import {
@@ -67,11 +68,13 @@ test("a grade start is as wide as its grade's spread, a guessed start as wide as
     [2, true, 1.11],
     [3, true, 1.22],
     [4, true, 1.78],
-    [5, true, 2.11],
-    // From grade 6 a grade start is as wide as a guess.
-    [6, true, wide],
-    [9, true, wide],
-    [12, true, wide],
+    // From grade 5 the norms are wider than two grades, and two is the cap.
+    [5, true, 2],
+    [6, true, 2],
+    [9, true, 2],
+    [12, true, 2],
+    // Past the scale: a guess's width.
+    [13, true, wide],
     // A start between grades takes the nearer grade's; below K, K's.
     [2.6, true, 1.22],
     [-1, true, 0.78],
@@ -91,16 +94,25 @@ test("a grade start is as wide as its grade's spread, a guessed start as wide as
     assert.equal(startWidth(EVIDENCE_CLIMB_FRONTIER_POLICY, start, true), wide);
 });
 
-test("the widths are the norms' within-grade spread for a student of no particular school", () => {
+test("the widths are the norms' within-grade spread for a student of no particular school, capped at two grades", () => {
+  assert.equal(GRADE_START_SD_CAP, 2);
+  assert.equal(GRADE_START_SD.length, 13);
   GRADE_START_SD.forEach((sd, grade) =>
-    assert.equal(sd, Math.round((withinGradeSd(grade) / 0.9) * 100) / 100),
-  );
-  // Past the list the norms are wider than a guessed start, which is kept.
-  for (let grade = GRADE_START_SD.length; grade <= 12; grade++)
-    assert.ok(
-      withinGradeSd(grade) / 0.9 > DEFAULT_FRONTIER_POLICY.prior.overallSd,
+    assert.equal(
+      sd,
+      Math.min(
+        GRADE_START_SD_CAP,
+        Math.round((withinGradeSd(grade) / 0.9) * 100) / 100,
+      ),
       `grade ${grade}`,
-    );
+    ),
+  );
+  // The cap binds from grade 5, and is narrower than a guessed start.
+  assert.deepEqual(
+    GRADE_START_SD.map((sd) => sd === GRADE_START_SD_CAP),
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((grade) => grade >= 5),
+  );
+  assert.ok(GRADE_START_SD_CAP < DEFAULT_FRONTIER_POLICY.prior.overallSd);
 });
 
 test("right answers at the grade move a grade start less than a guessed start", () => {
@@ -116,10 +128,15 @@ test("right answers at the grade move a grade start less than a guessed start", 
       [4.17, 5.33],
       [4.47, 5.64],
     ],
-    5: [
-      [6.24, 6.54],
-      [6.99, 7.32],
-      [7.3, 7.63],
+    6: [
+      [7.16, 7.51],
+      [7.89, 8.29],
+      [8.2, 8.6],
+    ],
+    9: [
+      [10.02, 10.17],
+      [10.72, 10.9],
+      [11, 11.17],
     ],
   };
   for (const [start, rows] of Object.entries(expected)) {
@@ -149,19 +166,6 @@ test("right answers at the grade move a grade start less than a guessed start", 
   );
 });
 
-test("from grade 6 a grade start estimates exactly as a guessed start", () => {
-  const mixed = [
-    [6, true],
-    [7, true],
-    [7, false],
-    [5, true],
-    [8, false],
-    [6, true],
-  ] as const;
-  for (const start of [6, 7, 9, 12])
-    assert.deepEqual(level(start, mixed, true), level(start, mixed, false));
-});
-
 test("a learner who misses still comes down to where they are", () => {
   // Misses at the grade and below it, then a right answer two grades down.
   const falling = (start: number) =>
@@ -178,8 +182,9 @@ test("a learner who misses still comes down to where they are", () => {
     2: [0.19, -0.2],
     3: [1.05, 0.54],
     4: [1.68, 1.43],
-    5: [2.52, 2.38],
-    6: [3.36, 3.36],
+    5: [2.56, 2.38],
+    6: [3.56, 3.36],
+    9: [6.56, 6.35],
   };
   for (const [start, levels] of Object.entries(expected)) {
     const grade = level(Number(start), falling(Number(start)), true).level;

@@ -224,17 +224,30 @@ export const EVIDENCE_CLIMB_FRONTIER_POLICY = createFrontierPolicy({
   },
 });
 
+/** The widest a grade start is taken to be, in grades. From grade 5 the
+ * norms' spread is wider than this. But a learner who starts from their grade
+ * is asked nothing harder than a stretch from the next grade until the grade
+ * is covered (learning/coverage.ts), so nothing they answer bounds the level
+ * from above, and a wide start lets it run ahead of the problems: after ten
+ * right answers at grades 6 and 7 a sixth-grader read grade 8.8.
+ *
+ * Chosen in `scripts/simulate-placement-pace.ts` over learners from four
+ * grades behind to four ahead, weighted as the norms spread them: at two
+ * grades the level shown is closer than at 2.5 after 5, 10, 20 and 40
+ * answers, and a learner three grades behind reads a fifth of a grade higher
+ * after three to five answers and the same after ten. At 1.75 that learner
+ * came within a grade three answers later, so the start is no narrower. */
+export const GRADE_START_SD_CAP = 2;
 /** How wide a learner's level lies around the grade their birth year or
- * roster gives, before any answer, K through grade 5: the spread of
+ * roster gives, before any answer, K through Precalculus: the spread of
  * mathematics achievement within one grade, in grade-years, from public norms
  * (docs/engine/norms-prior.md, `schools/norms-prior.ts`), divided by 0.9 for a
- * student of no particular school. From grade 6 the norms' spread is as wide
- * as a guessed start's `overallSd` or wider, so those grades keep it. A
- * narrower start there was tried (`scripts/simulate-placement-pace.ts`): at
- * two grades wide a seventh-grader three grades behind was found later, and
- * the norms give no reason to accept that. A guessed start (an adult's, or
- * no age and no grade) keeps `overallSd`. */
-export const GRADE_START_SD = [0.78, 0.89, 1.11, 1.22, 1.78, 2.11] as const;
+ * student of no particular school, and never wider than
+ * `GRADE_START_SD_CAP`. A guessed start (an adult's, or no age and no grade)
+ * keeps `overallSd`. */
+export const GRADE_START_SD = [
+  0.78, 0.89, 1.11, 1.22, 1.78, 2, 2, 2, 2, 2, 2, 2, 2,
+] as const;
 
 export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
   ...EVIDENCE_CLIMB_FRONTIER_POLICY,
