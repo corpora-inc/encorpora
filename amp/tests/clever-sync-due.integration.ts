@@ -87,6 +87,7 @@ test(
         assert.deepEqual(await cleverWorkDue(pool, "sandbox", false), {
           sync: false,
           lms: false,
+          alerts: false,
         });
         assert.deepEqual(await run(), { output: [], loaded: false });
         // Clever credentials are not even read on the idle path.
@@ -161,6 +162,7 @@ test(
           assert.deepEqual(await cleverWorkDue(pool, "sandbox", true), {
             sync: false,
             lms: true,
+            alerts: false,
           });
           assert.equal(
             (await run(undefined, { AMP_CLEVER_LMS_CONNECT: "enabled" }))
@@ -178,6 +180,47 @@ test(
             /Clever connection not found/,
           );
           assert.equal(loads > 0, true);
+        },
+      );
+      await t.test(
+        "a school waiting for an invitation runs only the alert pass",
+        async () => {
+          await set(
+            id,
+            "status='active',sync_paused=false,sync_requested_at=NULL,last_sync_at=now(),events_unavailable_at=NULL",
+          );
+          await pool.query(
+            `INSERT INTO amp_school_connection_requests(id,account_id,institution_name,contact_email,method)
+             VALUES($1,'amp|fixture','Cedar Academy','office@cedar.example','anyschool')`,
+            [randomUUID()],
+          );
+          assert.equal(
+            (await cleverWorkDue(pool, "sandbox", false)).alerts,
+            true,
+          );
+          // No mail settings here: the pass fails loudly, the sync code stays
+          // unloaded, and the job exits 1.
+          const errors: unknown[][] = [];
+          const original = console.error;
+          console.error = (...args: unknown[]) => void errors.push(args);
+          try {
+            assert.deepEqual(await run(), {
+              output: [{ alerts: { error: "alert_pass_failed" } }],
+              loaded: false,
+            });
+          } finally {
+            console.error = original;
+            assert.equal(process.exitCode, 1);
+            process.exitCode = 0;
+          }
+          assert.match(String(errors[0]![0]), /operator alert pass failed/);
+          await pool.query(
+            "UPDATE amp_school_connection_requests SET status='closed'",
+          );
+          assert.equal(
+            (await cleverWorkDue(pool, "sandbox", false)).alerts,
+            false,
+          );
         },
       );
       await t.test("the real sync code loads when work is due", async () => {

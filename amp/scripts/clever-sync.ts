@@ -63,16 +63,32 @@ export async function cleverSyncCommand(
       );
     const scheduled =
       (!rest[0] || rest[0] === "all") && (!rest[1] || rest[1] === "auto");
-    // Nothing due: no sync, and no LMS pass. Any AMP_CLEVER_LMS_CONNECT value
-    // counts as configured here, so a bad one still fails where it always has.
-    if (scheduled) {
-      const due = await cleverWorkDue(
-        pool,
-        environment,
-        !!env.AMP_CLEVER_LMS_CONNECT,
-      );
-      if (!due.sync && !due.lms) return [];
-    }
+    // One query says what the scheduled pass has to do. Any
+    // AMP_CLEVER_LMS_CONNECT value counts as configured here, so a bad one
+    // still fails where it always has.
+    const due = scheduled
+      ? await cleverWorkDue(pool, environment, !!env.AMP_CLEVER_LMS_CONNECT)
+      : null;
+    // First, so a long district sync never delays it: tell the operator about
+    // schools waiting for an invitation (docs/clever-anyschool.md). A failed
+    // alert never stops a sync.
+    let alerts: Record<string, unknown> | null = null;
+    if (due?.alerts)
+      try {
+        const { runRequestAlertPass } =
+          await import("../src/schools/request-alerts.js");
+        alerts = await runRequestAlertPass(pool, env);
+        if ("failed" in alerts && alerts.failed) process.exitCode = 1;
+      } catch (error) {
+        console.error("[schools] operator alert pass failed", {
+          message: (error as Error).message,
+        });
+        alerts = { error: "alert_pass_failed" };
+        process.exitCode = 1;
+      }
+    const tail = alerts && alerts.due !== false ? [{ alerts }] : [];
+    // Nothing else due: no sync code loaded, no Clever call, no LMS pass.
+    if (due && !due.sync && !due.lms) return tail;
     const {
       CleverClient,
       cleverApiVersion,
@@ -117,9 +133,9 @@ export async function cleverSyncCommand(
     if (scheduled && lmsConnectEnabled(env)) {
       const lms = await runLmsPasses(pool, env);
       if (lmsPassFailed(lms)) process.exitCode = 1;
-      return [...results, { lms }];
+      return [...results, { lms }, ...tail];
     }
-    return results;
+    return [...results, ...tail];
   } finally {
     await pool.end();
   }

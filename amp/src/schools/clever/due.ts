@@ -1,4 +1,5 @@
 import type { Pool } from "pg";
+import { ALERTS_DUE_SQL } from "../request-alert-due.js";
 
 /**
  * When a Clever connection is due a sync pass: active, not paused (or a
@@ -16,25 +17,27 @@ export const connectionDue = (c: string) =>
 
 /**
  * The scheduled pass's idle check, in one query: does any connection in this
- * environment need a sync pass, or (with LMS Connect configured) an LMS pass?
+ * environment need a sync pass, or (with LMS Connect configured) an LMS pass,
+ * and does the operator have a school request alert to record or send?
  * The LMS pass visits every active connection each minute
  * (`lmsCandidates`), so any active connection is LMS work. This module
- * imports nothing but types, so the job answers "nothing due" without loading
- * the sync code at all.
+ * and the SQL it reads import nothing but types, so the job answers "nothing
+ * due" without loading the sync or mail code at all.
  */
 export async function cleverWorkDue(
   db: Pick<Pool, "query">,
   environment: "sandbox" | "production",
   lms: boolean,
-): Promise<{ sync: boolean; lms: boolean }> {
+): Promise<{ sync: boolean; lms: boolean; alerts: boolean }> {
   const row = (
     await db.query(
       `SELECT EXISTS (SELECT 1 FROM amp_clever_connections c
            WHERE c.environment=$1 AND ${connectionDue("c")}) AS sync,
          $2::boolean AND EXISTS (SELECT 1 FROM amp_clever_connections c
-           WHERE c.environment=$1 AND c.status='active') AS lms`,
+           WHERE c.environment=$1 AND c.status='active') AS lms,
+         ${ALERTS_DUE_SQL} AS alerts`,
       [environment, lms],
     )
   ).rows[0];
-  return { sync: row.sync, lms: row.lms };
+  return { sync: row.sync, lms: row.lms, alerts: row.alerts };
 }

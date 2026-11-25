@@ -18,6 +18,7 @@ import { safeSyncError } from "./clever/sync.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import { plainName, timezone, SchoolError } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
+import { alertReRequest } from "./request-alerts.js";
 
 import { can, loadActor } from "./authz.js";
 
@@ -354,13 +355,14 @@ export async function registerCleverOnboarding(
           )
             throw new SchoolError(404, "not_found");
         }
+        const id = randomUUID();
         const result = (
           await pool.query(
             `INSERT INTO amp_school_connection_requests(id,account_id,org_id,institution_name,contact_email,method)
         VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(account_id,method,lower(contact_email)) WHERE status IN ('requested','invited') AND signer_name IS NULL
         DO UPDATE SET updated_at=amp_school_connection_requests.updated_at RETURNING id,status`,
             [
-              randomUUID(),
+              id,
               accountId,
               input.orgId ?? null,
               input.institutionName,
@@ -369,6 +371,10 @@ export async function registerCleverOnboarding(
             ],
           )
         ).rows[0];
+        // A new request alerts the operator from the Clever worker's next
+        // pass (request-alerts.ts); asking again while it waits adds one.
+        if (result.id !== id && result.status === "requested")
+          await alertReRequest(pool, result.id);
         return reply.code(202).send({
           ...result,
           next: "provider_invitation",

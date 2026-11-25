@@ -109,6 +109,8 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_school_starts: "account",
   amp_school_purchase_requests: "account",
   amp_school_connection_requests: "account",
+  // The operator's alerts about a request go with it, by cascade.
+  amp_school_request_alerts: "account",
   amp_school_connection_tasks: "place",
   amp_school_adoptions: "account",
   amp_courses: "place",

@@ -10,6 +10,7 @@ import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { ERASE_BATCH } from "../src/schools/privacy.js";
 import { weeklyTargetsFor } from "../src/schools/term-grades.js";
 import { readOverview } from "../src/schools/org-reads.js";
+import { deliverRequestAlerts } from "../src/schools/request-alerts.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
@@ -897,16 +898,38 @@ test(
             requested.json().anyschool.setupEmail,
             "office@cedar.example",
           );
-          assert.match(
-            mailed.at(-1)!.subject,
-            /Clever AnySchool for Cedar Academy/,
-          );
+          // The request handler sends nothing: the operator's alert goes
+          // from the Clever worker's pass (request-alerts.ts).
           const sent = mailed.length;
+          const alerted: { to: string; subject: string; text: string }[] = [];
+          const pass = () =>
+            deliverRequestAlerts(
+              db,
+              async (to, email) => {
+                alerted.push({ to, ...email });
+              },
+              { to: "operator@corpora.example", origin: "https://amp.example" },
+            );
+          await pass();
+          assert.equal(alerted.length, 1);
+          assert.match(
+            alerted[0]!.subject,
+            /Clever AnySchool request: invite Cedar Academy by/,
+          );
+          assert.match(
+            alerted[0]!.text,
+            /Setup contact: office@cedar\.example/,
+          );
+          assert.match(alerted[0]!.text, /Agreement: signed by Ruth Adeyemi/);
           await post(`/orgs/${cedar.id}/integrations/anyschool`, HEAD, {
             ...anyschool,
             setupEmail: "head@cedar.example",
           });
-          assert.equal(mailed.length, sent, "a correction mails no one");
+          assert.equal(mailed.length, sent, "the handler mails no one");
+          await pass();
+          assert.equal(alerted.length, 2, "asking again alerts once more");
+          assert.match(alerted[1]!.subject, /Cedar Academy asked again/);
+          assert.match(alerted[1]!.text, /Setup contact: head@cedar\.example/);
         },
       );
 
