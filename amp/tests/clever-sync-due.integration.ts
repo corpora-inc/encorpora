@@ -223,6 +223,27 @@ test(
           );
         },
       );
+      await t.test(
+        "a failing idle check runs the full pass, as before",
+        async () => {
+          await pool.query(
+            "ALTER TABLE amp_school_request_alerts RENAME TO amp_school_request_alerts_away",
+          );
+          const original = console.error;
+          const errors: unknown[][] = [];
+          console.error = (...args: unknown[]) => void errors.push(args);
+          try {
+            assert.equal((await run()).loaded, true);
+          } finally {
+            console.error = original;
+            process.exitCode = 0;
+            await pool.query(
+              "ALTER TABLE amp_school_request_alerts_away RENAME TO amp_school_request_alerts",
+            );
+          }
+          assert.match(String(errors[0]![0]), /idle check failed/);
+        },
+      );
       await t.test("the real sync code loads when work is due", async () => {
         await assert.rejects(
           cleverSyncCommand(["sync", randomUUID(), "auto"], {

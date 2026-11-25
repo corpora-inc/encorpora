@@ -66,8 +66,19 @@ export async function cleverSyncCommand(
     // One query says what the scheduled pass has to do. Any
     // AMP_CLEVER_LMS_CONNECT value counts as configured here, so a bad one
     // still fails where it always has.
+    // If the check itself fails (say, a table not yet migrated), run the full
+    // pass as before: a broken check never stops a district's sync.
     const due = scheduled
-      ? await cleverWorkDue(pool, environment, !!env.AMP_CLEVER_LMS_CONNECT)
+      ? await cleverWorkDue(
+          pool,
+          environment,
+          !!env.AMP_CLEVER_LMS_CONNECT,
+        ).catch((error) => {
+          console.error("[clever] idle check failed; running the full pass", {
+            message: (error as Error).message,
+          });
+          return { sync: true, lms: true, alerts: true };
+        })
       : null;
     // First, so a long district sync never delays it: tell the operator about
     // schools waiting for an invitation (docs/clever-anyschool.md). A failed
@@ -147,7 +158,10 @@ if (
   try {
     console.log(JSON.stringify(await cleverSyncCommand(process.argv.slice(2))));
   } catch (error) {
-    const { safeSyncError } = await import("../src/schools/clever/sync.js");
+    const { safeSyncError } =
+      await import("../src/schools/clever/sync.js").catch(() => ({
+        safeSyncError: () => "clever_sync_failed",
+      }));
     console.error(safeSyncError(error));
     process.exitCode = 1;
   }
