@@ -43,6 +43,15 @@ export const frontierPolicySchema = z
       .object({
         overallSd: z.number().finite().min(0.1).max(10),
         strandSd: z.number().finite().min(0.1).max(10),
+        /** The width when the start is the grade a birth year or a roster
+         * gives (`startFromGrade`), not a guess: one entry per grade from K,
+         * never wider than `overallSd`. A grade past the list, or no list,
+         * keeps `overallSd`. */
+        gradeSd: z
+          .array(z.number().finite().min(0.1).max(10))
+          .max(13)
+          .readonly()
+          .optional(),
       })
       .strict(),
     response,
@@ -171,8 +180,10 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
 
 /** Working grade, not mastery or a norm-referenced percentile. Overall evidence
  * accumulates steadily; strand estimates can react faster to local gaps.
- * A surprising miss does not make the next overall answer count extra. */
-export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+ * A surprising miss does not make the next overall answer count extra.
+ * The policy before a grade start counted for more (2026-11-24), kept for
+ * paired comparisons (`scripts/simulate-placement-pace.ts`). */
+export const EVIDENCE_CLIMB_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
   version: "grade-frontier-v4-evidence-anchored-climb",
   // The start is a guess: the ceiling stands on what the learner has shown
@@ -210,5 +221,39 @@ export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
     rareMissVariance: 0.36,
     retentionPerAnswer: 0.7,
     maxVariance: 1,
+  },
+});
+
+/** The widest a grade start is taken to be, in grades. From grade 5 the
+ * norms' spread is wider than this. But a learner who starts from their grade
+ * is asked nothing harder than a stretch from the next grade until the grade
+ * is covered (learning/coverage.ts), so nothing they answer bounds the level
+ * from above, and a wide start lets it run ahead of the problems: after ten
+ * right answers at grades 6 and 7 a sixth-grader read grade 8.8.
+ *
+ * Chosen in `scripts/simulate-placement-pace.ts` over learners from four
+ * grades behind to four ahead, weighted as the norms spread them: at two
+ * grades the level shown is closer than at 2.5 after 5, 10, 20 and 40
+ * answers, and a learner three grades behind reads a fifth of a grade higher
+ * after three to five answers and the same after ten. At 1.75 that learner
+ * came within a grade three answers later, so the start is no narrower. */
+export const GRADE_START_SD_CAP = 2;
+/** How wide a learner's level lies around the grade their birth year or
+ * roster gives, before any answer, K through Precalculus: the spread of
+ * mathematics achievement within one grade, in grade-years, from public norms
+ * (docs/engine/norms-prior.md, `schools/norms-prior.ts`), divided by 0.9 for a
+ * student of no particular school, and never wider than
+ * `GRADE_START_SD_CAP`. A guessed start (an adult's, or no age and no grade)
+ * keeps `overallSd`. */
+export const GRADE_START_SD = [
+  0.78, 0.89, 1.11, 1.22, 1.78, 2, 2, 2, 2, 2, 2, 2, 2,
+] as const;
+
+export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
+  ...EVIDENCE_CLIMB_FRONTIER_POLICY,
+  version: "grade-frontier-v5-grade-start",
+  prior: {
+    ...EVIDENCE_CLIMB_FRONTIER_POLICY.prior,
+    gradeSd: [...GRADE_START_SD],
   },
 });

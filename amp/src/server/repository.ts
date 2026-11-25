@@ -39,6 +39,7 @@ import type { StudentSkillResponse } from "../schools/teacher-contracts.js";
 import {
   estimateFrontier,
   initialLevel,
+  startFromGrade,
   startingSd,
   overallTrend,
   type Estimate,
@@ -80,10 +81,12 @@ function frontierFrom(
   observations: readonly FrontierObservation[],
   now: number,
   startSd?: number,
+  gradeStart?: boolean,
 ): Frontier {
   return estimateFrontier({
     start,
     startSd,
+    gradeStart,
     observations,
     now,
     ...frontierCatalog,
@@ -904,6 +907,7 @@ export class PgTransaction implements LearnerTransaction {
       epoch: settings.epoch,
       start: await this.startingLevel(now),
       startSd: await this.startingSd(),
+      gradeStart: await this.gradeStart(),
       strandStarts: settings.strandStarts,
     };
     const row = await this.db.query(
@@ -944,9 +948,15 @@ export class PgTransaction implements LearnerTransaction {
   }
   /** The level as it was after a learner's first `answers` answers. */
   private async frontierAtAnswer(now: number, answers: number) {
-    const { start, startSd, observations, settings } =
+    const { start, startSd, gradeStart, observations, settings } =
       await this.frontierInputs(now, answers);
-    const frontier = frontierFrom(start, observations, now, startSd);
+    const frontier = frontierFrom(
+      start,
+      observations,
+      now,
+      startSd,
+      gradeStart,
+    );
     for (const [strand, reset] of Object.entries(settings.strandStarts))
       applyStrandRestart(
         frontier,
@@ -973,6 +983,13 @@ export class PgTransaction implements LearnerTransaction {
       adult: learner?.adult === true,
       simulation: learner?.simulation === true,
       band: learner?.starting_band as Parameters<typeof startingSd>[0]["band"],
+    });
+  }
+  /** Whether the start is the learner's grade, not a guess (`startFromGrade`). */
+  private async gradeStart() {
+    const learner = await this.learner();
+    return startFromGrade({
+      birthYear: learner?.birth_year as number | null | undefined,
     });
   }
   private async startingLevel(now: number) {
@@ -1053,6 +1070,7 @@ export class PgTransaction implements LearnerTransaction {
       settings,
       start: await this.startingLevel(now),
       startSd: await this.startingSd(),
+      gradeStart: await this.gradeStart(),
       observations: history.rows as (FrontierObservation & {
         practiceRevision: number;
       })[],
@@ -1060,9 +1078,10 @@ export class PgTransaction implements LearnerTransaction {
   }
   async frontierTrend(points?: number): Promise<TrendPoint[]> {
     const now = Date.now();
-    const { start, startSd, observations } = await this.frontierInputs(now);
+    const { start, startSd, gradeStart, observations } =
+      await this.frontierInputs(now);
     return overallTrend(
-      { start, startSd, observations, now, ...frontierCatalog },
+      { start, startSd, gradeStart, observations, now, ...frontierCatalog },
       trendCounts(observations.length, trendStep(observations.length, points)),
     ).map((point) => {
       const { level, sd, low, high } = reportEstimate({

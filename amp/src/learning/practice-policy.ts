@@ -9,6 +9,13 @@ import {
   familyEmphasis,
 } from "../curriculum/selection.js";
 
+/** The share of a grade's skills that covers it (learning/coverage.ts): two
+ * thirds, so a learner practices and masters most of a grade before much is
+ * asked beyond it (founder, 2026-11-24). 12 of kindergarten's 17 skills, 18
+ * of grade 3's 27, 22 of Algebra 1's 32, 26 of Geometry's 39. Half and a
+ * third were measured beside it in `scripts/simulate-placement-pace.ts`. */
+export const COVERAGE_SHARE = 2 / 3;
+
 // Bounds below protect computation/configuration. They are not learning targets.
 const points = z.number().finite().min(0).max(10000);
 const grades = z.number().finite().min(0).max(20);
@@ -59,6 +66,24 @@ export const practicePolicySchema = z
         probeRise: 2,
         probeUncertainty: 1,
         workingReach: 0.5,
+      }),
+    /** Climbing from a grade start by coverage (learning/coverage.ts).
+     * Absent, as in policies saved before it, it is off. */
+    coverage: z
+      .object({
+        enabled: z.boolean(),
+        share: z.number().finite().min(0).max(1),
+        areas: z.number().int().min(1).max(5),
+        step: grades,
+        probeRise: grades,
+      })
+      .strict()
+      .default({
+        enabled: false,
+        share: COVERAGE_SHARE,
+        areas: 3,
+        step: 1,
+        probeRise: 1,
       }),
     support: z
       .object({
@@ -190,9 +215,9 @@ export function assertPracticePolicy(policy: PracticePolicy): void {
     throw new Error("Use createPracticePolicy to validate practice parameters");
 }
 
-/** Current editorial behavior, expressed as an explicit reproducible parameter
- * set. Changing hypotheses requires a new object, not a global mutation. */
-export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
+/** The policy before a grade start climbed by coverage (2026-11-24), kept for
+ * paired comparisons (`scripts/simulate-placement-pace.ts`). */
+const fastClimbParameters = {
   schemaVersion: 1,
   version: "pathways-budget-v4-fast-climb",
   challenge: {
@@ -262,6 +287,31 @@ export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
     objectives: objectiveExposureWeights(0.5),
     skills: { ...skillEmphasis },
     families: { ...familyEmphasis },
+  },
+  coverage: {
+    enabled: false,
+    share: COVERAGE_SHARE,
+    areas: 3,
+    step: 1,
+    probeRise: 1,
+  },
+} satisfies PracticeParameters;
+export const FAST_CLIMB_PRACTICE_POLICY =
+  createPracticePolicy(fastClimbParameters);
+
+/** Current editorial behavior, expressed as an explicit reproducible parameter
+ * set. Changing hypotheses requires a new object, not a global mutation.
+ * A learner who starts from their grade (a birth year or a roster) climbs by
+ * coverage: `coverage` below, learning/coverage.ts. */
+export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
+  ...fastClimbParameters,
+  version: "pathways-budget-v5-grade-coverage",
+  coverage: {
+    enabled: true,
+    share: COVERAGE_SHARE,
+    areas: 3,
+    step: 1,
+    probeRise: 1,
   },
 } satisfies PracticeParameters);
 

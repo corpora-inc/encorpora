@@ -29,6 +29,11 @@ import {
   type OpenerSlots,
 } from "../learning/placement";
 import type { PracticeSkip } from "../learning/skip";
+import {
+  coverageArea,
+  gradeCoverage,
+  type Coverage,
+} from "../learning/coverage";
 
 export type PracticeReason =
   "review" | "revisit" | "prerequisite" | "frontier" | "explore";
@@ -134,6 +139,13 @@ export function planMixedPractice(options: {
   /** Templates printed in today's workbooks (workbook/results.ts): held
    * back so the app does not repeat the paper, unless nothing else is left. */
   reservedTemplateIds?: ReadonlySet<string>;
+  /** The pool is someone's own choice (a skill held, a course of study such
+   * as SAT practice): coverage of the grade does not hold it back. */
+  chosen?: boolean;
+  /** Everything this client can be sent, when `templates` is a narrower pool
+   * (one area after a skip): coverage sets its bar by what can be asked.
+   * Absent, `templates`. */
+  catalog?: readonly TemplateMetadata[];
 }): PracticeChoice[] {
   const { skills, evidence, seed } = options;
   const reserved = options.reservedTemplateIds;
@@ -187,6 +199,23 @@ export function planMixedPractice(options: {
       Math.max(strandCeiling.get(strand) ?? grade, grade),
     );
   }
+  // A learner who starts from their grade climbs by coverage: practice stays
+  // at the grade until its skills are broadly earned, then reaches one grade
+  // further at a time (learning/coverage.ts). It only lowers the ceiling the
+  // answers allow. A guessed start keeps the faster climb.
+  const coverage = options.chosen
+    ? null
+    : workingCoverage({
+        frontier,
+        skills,
+        askable: new Set(
+          (options.catalog ?? options.templates).map(
+            (template) => template.skillId,
+          ),
+        ),
+        evidence,
+        policy,
+      });
   let purpose: "working" | "foundation" | "probe" = "working";
   // An area with no answers of its own starts from the learner's foundation
   // (`Frontier.confirmation`), the start before anything is shown.
@@ -205,6 +234,7 @@ export function planMixedPractice(options: {
       const working = Math.min(
         level,
         confirmed?.level ?? frontier.unconfirmedCeiling ?? frontier.expected,
+        coverage?.ceiling ?? Infinity,
       );
       // A probe reaches past the ceiling toward the estimate. While still
       // climbing it asks where the learner may be, at the upper edge of the
@@ -219,7 +249,15 @@ export function planMixedPractice(options: {
                       policy.challenge.probeUncertainty * estimate.sd,
                   )
                 : level,
-              working + policy.challenge.probeRise,
+              // Under coverage a stretch never reaches further than it
+              // would without.
+              working +
+                (coverage
+                  ? Math.min(
+                      policy.coverage.probeRise,
+                      policy.challenge.probeRise,
+                    )
+                  : policy.challenge.probeRise),
             )
           : purpose === "foundation" && !confirmed?.foundationConfirmed
             ? Math.min(working, foundationOf(strand))
@@ -608,6 +646,41 @@ export function planMixedPractice(options: {
     });
   }
   return chosen;
+}
+
+/** The coverage ceiling for a learner who starts from their grade
+ * (`Frontier.gradeStart`), from the same per-skill evidence the planner
+ * reads; null for a guessed start or a policy without coverage. */
+export function workingCoverage(options: {
+  frontier: Frontier;
+  /** The whole catalog, whatever pool is being planned from. */
+  skills: readonly Pick<SkillNode, "id" | "strand" | "gradeBand">[];
+  /** The skills this learner's client can be sent; absent, all of them. */
+  askable?: ReadonlySet<string>;
+  evidence: readonly { skillId: string; independentCorrect?: number }[];
+  policy?: PracticePolicy;
+}): Coverage | null {
+  const policy = options.policy ?? DEFAULT_PRACTICE_POLICY;
+  const { frontier } = options;
+  if (
+    !policy.coverage.enabled ||
+    !frontier.gradeStart ||
+    !frontier.confirmation
+  )
+    return null;
+  return gradeCoverage({
+    start: frontier.expected,
+    skills: options.skills
+      .filter((skill) => skill.gradeBand !== undefined)
+      .map((skill) => ({
+        id: skill.id,
+        grade: gradeNumber[skill.gradeBand!],
+        area: coverageArea(skill),
+      })),
+    askable: options.askable,
+    evidence: options.evidence,
+    rules: policy.coverage,
+  });
 }
 
 export function templateGrade(

@@ -47,13 +47,124 @@ specify extensions; they are not claims about implemented storage or inference.
 
 ## Practice recovery and confirmation
 
-A child's birth year supplies the initial estimate. An adult chooses where
-to begin (counting through precalculus), because age says little about an
-adult's level. Either is a guess, not a limit. Independent responses update a
-pooled estimate and strand estimates; answers marked as helped do not raise or
-lower independent ability. Earned practice and skill history are separate
-from those estimates. The menu’s **Working together** setting marks help
-without adding a step to each answer.
+A start is either a grade or a guess.
+
+- **A grade.** A child with a birth year starts in the grade that year gives.
+  A roster grade is kept as a birth year, so a rostered student starts the
+  same way.
+- **A guess.** An adult chooses where to begin (counting through
+  precalculus). A learner with no age and no grade starts at grade 2. A
+  family's band and a practice profile are guesses too.
+
+Independent responses update a pooled estimate and strand estimates; answers
+marked as helped do not raise or lower independent ability. Earned practice
+and skill history are separate from those estimates. The menu’s **Working
+together** setting marks help without adding a step to each answer.
+
+### From a grade: the start counts, and practice climbs by coverage
+
+These are the rules for a learner who starts from their grade
+(`startFromGrade`). In a parent's words:
+
+1. **We start from your child's grade and trust it.** Children of one grade
+   mostly work within a grade or two of it. So a few right answers at the
+   grade move the level a little, not a lot. Eight right answers in a row at
+   grade 3 read as grade 4.5, where they used to read as grade 5.6.
+2. **First the child's own grade.** New problems stay at the grade, with a
+   stretch problem from the next grade, until the grade is covered.
+3. **A grade is covered** when the child has earned two thirds of its skills, or as
+   many harder ones, in at least three of the five areas. Earned means
+   answered right without help, the same mark the family sees.
+4. **Then one grade at a time.** Practice may reach one grade past the highest
+   covered grade, and a stretch problem one grade past that.
+5. **Missing still moves a child down.** Coverage only holds practice back
+   from going up. Nothing waits on it going down.
+6. **The level an adult sees is the estimate itself.** The dashboard, the
+   class report and the trend all read the same number and range. Nothing is
+   slowed for display.
+
+**What a child sees.** A new third-grader who answers everything right used
+to meet a grade 9 problem eighth and a Precalculus problem twenty-eighth, and
+read grade 9 after ten answers. Now the first forty-one problems are from
+grades 2 to 4, mostly grade 3 and grade 4 in turn. Grade 5 and grade 6 follow.
+Of the first fifty, twenty are grade 3 and nineteen grade 4. The level reads
+4.8 after ten answers, 5.3 after twenty and 6.4 after fifty.
+
+**How strongly the grade counts** is the estimate's starting width
+(`FrontierPolicy.prior.gradeSd`). It is the spread of achievement within one
+grade from public norms (`docs/engine/norms-prior.md`): 0.78, 0.89, 1.11,
+1.22 and 1.78 grades for kindergarten through grade 4, and never wider than
+two grades (`GRADE_START_SD_CAP`), which holds from grade 5. A guessed start
+keeps 2.5. The norms are wider than two grades from grade 5. But nothing
+harder than a stretch is asked until a grade is covered, so nothing a learner
+answers bounds the level from above, and at 2.5 it ran ahead of the problems:
+a sixth-grader read grade 8.8 after ten right answers at grades 6 and 7.
+Weighted as the norms spread a grade, the level shown is closer at two
+grades than at 2.5 after 5, 10, 20 and 40 answers. A learner three grades
+behind reads a fifth of a grade higher after three to five answers and the
+same after ten; at 1.75 that learner came within a grade three answers later,
+so the start is no narrower.
+
+**Coverage** is `learning/coverage.ts`, read by the planner from per-skill
+evidence (`PracticePolicy.coverage`: a share of two thirds, three areas, a step
+of one grade, a stretch of one grade).
+
+- The bar scales with the grade. Kindergarten has 17 skills, so 12 cover it;
+  grade 3 has 27, so 18; Algebra 1 has 32, so 22; Geometry has 39, so 26.
+  Two thirds, so a child practices and masters most of a grade before much is
+  asked beyond it (`COVERAGE_SHARE`). A third and a half were measured beside
+  it: at a third a child right about everything is past their grade in 16
+  problems.
+- Harder skills count on their own, never added to the grade's. A stretch
+  problem therefore does not make the grade cheaper. They are how a learner
+  who already works above a grade is not sent back to it.
+- A grade with fewer than three areas needs only the areas it has (Geometry:
+  two).
+- The bar is set by what the learner's app can be sent. An older app that
+  cannot draw part of the catalog is held to two thirds of what it can show, and a
+  grade it can show nothing of is passed over. What counts toward the bar is
+  everything earned, wherever it was earned.
+- Coverage is a second ceiling: the planner takes the lower of it and the
+  evidence ceiling below, so it never offers anything the rules below would
+  refuse.
+- It does not apply to a skill someone chose or to SAT practice. An area set
+  easier keeps its own lower ceiling.
+
+**What it costs a child who is ahead**, in simulation
+(`npx tsx scripts/simulate-placement-pace.ts`), counting a sitting as about
+25 problems:
+
+- Two grades ahead: the level reads within a grade after 2 to 19 answers and
+  the problems are near their level after 16 to 38. One or two sittings.
+- Four grades ahead: the level reads within a grade after 25 to 51 answers
+  and the problems are near their level after 60 to 84. Three sittings, four
+  or five on a slow run (the slowest of twelve: 76 to 114 problems). The
+  earlier climb took 3 to 21 problems.
+- High-school courses are the slow ones. Two thirds of Algebra 1 is 22
+  skills: a ninth-grader who is really in Geometry meets it as a stretch from
+  the fifth problem and as regular work after about 65. Two thirds of
+  Geometry is 26 more: a ninth-grader who is really in Algebra 2 meets it as
+  regular work after about 140.
+- A child at their grade stays there, with a stretch one problem in four,
+  for about 40 problems in kindergarten and 80 to 100 in grades 3 and 6
+  (three or four sittings).
+
+Every problem on the way is a skill of the grades between, earned and on the
+record. A learner with a long record is asked what they would have been
+asked before.
+
+**What moves when this ships.** A stored level is rebuilt from the learner's
+answers the first time it is read (0.07 ms an answer). With a hundred or
+more answers on record no level moves by more than a few hundredths of a
+grade, and with fifty by more than a quarter. With fewer, mostly in
+kindergarten through grade 3, a level that a short run of right answers had
+carried up comes back toward the grade.
+
+### From a guess: the faster climb
+
+A guessed start is not a limit, and a wrong one costs a few problems. The
+rest of this section is the evidence ceiling. It is the whole rule for a
+guessed start, and the upper bound for a start from a grade.
 
 **Climbing, then placed.** A new learner is *climbing* until recent
 independent work misses twice at or above their level (`placedAfterMisses`).
@@ -93,13 +204,23 @@ planner, estimator and grader (`tests/climb-simulation.fixture.ts`): adults
 whose start is wrong in either direction, and children whose birth year is
 right, too high or too low. It reports how many problems it takes for the
 work and the estimate to reach the learner's level. `tests/adaptive-climb.test.ts`
-holds two of those cases to fifteen problems.
+holds two of those cases to fifteen problems: an adult climbing from a
+guessed start, and a seventh-grader coming down from their grade.
+
+`npx tsx scripts/simulate-placement-pace.ts` runs the first sixty answers of
+learners who start from their grade (`tests/placement-pace.fixture.ts`): at
+their grade, two below, two and four above, right about everything, and
+careless, from kindergarten, grade 3, grade 6 and Algebra 1. `--engine before`
+runs the engine as it was before coverage, on the same learners, and
+`--trace` prints a learner answer by answer. `tests/placement-pace.sim.ts`
+holds the results in `npm run test:placement-sim`.
 
 **Skip** reveals an answer without creating an attempt or changing ability.
 **Try easier**, available after skipping, gives that strand a lower starting
 estimate. Other strands retain their estimates. **Reset practice level** starts
 all difficulty estimates from birth year. Neither action deletes attempts, XP,
-or skill evidence, and neither renews the free-practice allowance.
+or skill evidence, and neither renews the free-practice allowance. Coverage
+reads skill evidence, so a reset does not make a child cover a grade again.
 
 Changes are account-authorized and serialized per learner. Request receipts
 make retries idempotent; revisions reject conflicting changes from another tab.
