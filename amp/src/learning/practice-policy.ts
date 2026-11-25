@@ -65,13 +65,21 @@ export const practicePolicySchema = z
     coverage: z
       .object({
         enabled: z.boolean(),
+        share: z.number().finite().min(0).max(1),
         skills: z.number().int().min(1).max(100),
         areas: z.number().int().min(1).max(5),
         step: grades,
         probeRise: grades,
       })
       .strict()
-      .default({ enabled: false, skills: 12, areas: 3, step: 1, probeRise: 1 }),
+      .default({
+        enabled: false,
+        share: 0.5,
+        skills: 8,
+        areas: 3,
+        step: 1,
+        probeRise: 1,
+      }),
     support: z
       .object({
         reserveSlot: z.boolean(),
@@ -275,7 +283,14 @@ const fastClimbParameters = {
     skills: { ...skillEmphasis },
     families: { ...familyEmphasis },
   },
-  coverage: { enabled: false, skills: 12, areas: 3, step: 1, probeRise: 1 },
+  coverage: {
+    enabled: false,
+    share: 0.5,
+    skills: 8,
+    areas: 3,
+    step: 1,
+    probeRise: 1,
+  },
 } satisfies PracticeParameters;
 export const FAST_CLIMB_PRACTICE_POLICY =
   createPracticePolicy(fastClimbParameters);
@@ -287,7 +302,19 @@ export const FAST_CLIMB_PRACTICE_POLICY =
 export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
   ...fastClimbParameters,
   version: "pathways-budget-v5-grade-coverage",
-  coverage: { enabled: true, skills: 12, areas: 3, step: 1, probeRise: 1 },
+  // Half a grade's skills cover it, chosen in
+  // `scripts/simulate-placement-pace.ts`: a learner who is right about
+  // everything has earned their grade and the next after about thirty
+  // problems, and one four grades ahead works near their level after about
+  // fifty.
+  coverage: {
+    enabled: true,
+    share: 0.5,
+    skills: 8,
+    areas: 3,
+    step: 1,
+    probeRise: 1,
+  },
 } satisfies PracticeParameters);
 
 /** A serializable mutable copy for deriving another experiment. */

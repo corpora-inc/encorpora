@@ -6,17 +6,23 @@ import { isEarned } from "./earned.js";
  * year or an assigned grade: by what they have covered, one grade at a time.
  *
  * A grade is covered when the learner has earned (`learning/earned.ts`: a
- * right answer without help) `skills` different skills of that grade or a
- * harder one, in at least `areas` of the five areas (fewer where the grade
- * itself has fewer). Practice may reach `step` grades past the highest grade
- * covered, and stays at the starting grade until that grade is covered.
+ * right answer without help) `share` of its skills, or as many harder skills,
+ * in at least `areas` of the five areas (fewer where the grade itself has
+ * fewer). The bar scales with the grade: half of kindergarten's 17 skills is
+ * 9, half of Geometry's 39 is 20. Harder skills count on their own, never
+ * added to the grade's, so a stretch problem does not make the grade cheaper;
+ * they are how a learner who already works above a grade is not sent back to
+ * it. Practice may reach `step` grades past the highest covered grade, and
+ * stays at the starting grade until that grade is covered.
  *
  * This reads the same per-skill standing a family sees (Earned, Tried, Not
  * asked yet). It is a scheduling rule, not a mastery claim, and it only ever
  * lowers the ceiling the estimator's evidence allows.
  */
 export type CoverageRules = {
-  /** Different skills earned at a grade or above that cover the grade. */
+  /** The share of a grade's own skills that covers it. */
+  share: number;
+  /** Never fewer skills than this, however short a grade's list. */
   skills: number;
   /** Areas those skills must span, or every area the grade has if fewer. */
   areas: number;
@@ -39,6 +45,12 @@ export type Coverage = {
 export const coverageArea = (skill: { id: string; strand: string }): string =>
   strandAreas[skill.strand] ?? crossCuttingAreas[skill.id] ?? skill.strand;
 
+/** How many skills cover a grade with `size` skills of its own. */
+export const coverageNeed = (
+  size: number,
+  rules: Pick<CoverageRules, "share" | "skills">,
+) => Math.max(rules.skills, Math.ceil(rules.share * size));
+
 export function gradeCoverage(options: {
   /** Where practice starts: the grade the birth year or roster gives. */
   start: number;
@@ -56,17 +68,35 @@ export function gradeCoverage(options: {
   const top = Math.max(first, ...skills.map((skill) => skill.grade));
   let covered: number | null = null;
   for (let grade = top; grade >= first && covered === null; grade--) {
+    // The grade's own list, and what is earned of it and above it.
+    const areas = new Set<string>();
     const own = new Set<string>();
-    const shown = new Set<string>();
-    let count = 0;
+    const harder = new Set<string>();
+    let size = 0;
+    let ownCount = 0;
+    let harderCount = 0;
     for (const skill of skills) {
-      if (skill.grade === grade) own.add(skill.area);
-      if (skill.grade < grade || !earned.has(skill.id)) continue;
-      count += 1;
-      shown.add(skill.area);
+      if (skill.grade < grade) continue;
+      const has = earned.has(skill.id);
+      if (skill.grade > grade) {
+        if (!has) continue;
+        harderCount += 1;
+        harder.add(skill.area);
+        continue;
+      }
+      size += 1;
+      areas.add(skill.area);
+      if (!has) continue;
+      ownCount += 1;
+      own.add(skill.area);
     }
-    if (!own.size) continue;
-    if (count >= rules.skills && shown.size >= Math.min(rules.areas, own.size))
+    if (!size) continue;
+    const need = coverageNeed(size, rules);
+    const broad = Math.min(rules.areas, areas.size);
+    if (
+      (ownCount >= need && own.size >= broad) ||
+      (harderCount >= need && harder.size >= broad)
+    )
       covered = grade;
   }
   return {
