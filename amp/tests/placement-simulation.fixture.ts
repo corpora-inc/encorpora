@@ -19,7 +19,7 @@ const october = Date.parse("2026-10-19T12:00:00Z");
 // Synthetic learners use their own response family, not the estimator's:
 // a probit curve with per-family difficulty noise. On a choice item a learner
 // who does not know the answer picks one of the k options at random.
-function normalCdf(x: number): number {
+export function normalCdf(x: number): number {
   const t = 1 / (1 + 0.2316419 * Math.abs(x));
   const density = Math.exp((-x * x) / 2) / Math.sqrt(2 * Math.PI);
   const tail =
@@ -31,7 +31,7 @@ function normalCdf(x: number): number {
           t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
   return x >= 0 ? 1 - tail : tail;
 }
-function hash(text: string): number {
+export function hash(text: string): number {
   let value = 2166136261;
   for (const char of text)
     value = Math.imul(value ^ char.charCodeAt(0), 16777619);

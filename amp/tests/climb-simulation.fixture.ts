@@ -1,6 +1,7 @@
 import { skills } from "../src/curriculum/catalog";
 import {
   initialLevel,
+  startFromGrade,
   strandEstimate,
   type Frontier,
 } from "../src/learning/frontier";
@@ -105,7 +106,14 @@ export function simulateClimb(
     band: learner.band,
     now: CLIMB_EPOCH,
   });
-  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  // A birth year makes the start the learner's grade; without one it is a
+  // guess (`startFromGrade`), as the repository decides it.
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start,
+    gradeStart: startFromGrade({ birthYear: learner.birthYear }),
+    strandStarts: {},
+  });
   const attempts: Outcome[] = [];
   const steps: ClimbStep[] = [];
   const key = `climb:${options.seed}`;

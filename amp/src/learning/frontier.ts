@@ -91,6 +91,9 @@ export type Frontier = {
    * learner stops succeeding (`placedAfterMisses`). Practice probes more and
    * holds back foundation checks until it has. */
   climbing?: boolean;
+  /** The start is the grade a birth year or roster gives (`startFromGrade`),
+   * so practice climbs by what the learner has covered (learning/coverage.ts). */
+  gradeStart?: boolean;
 };
 
 /** The grade a learner is typically working in now: born 2016 → grade 4.
@@ -137,6 +140,20 @@ export function startingSd(options: {
   const adultBand =
     !!options.band && (adultStarts as readonly string[]).includes(options.band);
   return options.adult || adultBand ? ADULT_START_SD : undefined;
+}
+
+/** Whether a learner's start is the grade they are in, not a guess: they have
+ * a birth year (a roster grade is kept as one, `birthYearForGrade`). The grade
+ * then counts for more before the first answers
+ * (`FrontierPolicy.prior.gradeSd`) and practice climbs from it by coverage
+ * (learning/coverage.ts). Every other start stays a guess, where a wrong one
+ * costs a few problems: an adult's chosen start, a family's band, a learner
+ * with no age and no grade, and a practice profile, which is set to levels of
+ * its own in each area. */
+export function startFromGrade(options: {
+  birthYear?: number | null;
+}): boolean {
+  return options.birthYear != null;
 }
 
 /** Where an account holder's own practice begins from the birth year they
@@ -459,6 +476,8 @@ export type FrontierStrandState =
  * than by how many answers it has seen. */
 export type FrontierState = {
   start: number;
+  /** `startFromGrade`: the start is a grade, not a guess. */
+  gradeStart?: boolean;
   observed: number;
   lastAt: number | null;
   overall: FrontierFold;
@@ -476,19 +495,37 @@ const emptyConfirmation = (): FrontierConfirmationState => ({
   buckets: [],
 });
 
+/** The prior's width for a start: the policy's for a grade (`gradeStart`),
+ * its wider one for a guess. */
+export function startWidth(
+  policy: FrontierPolicy,
+  start: number,
+  gradeStart: boolean,
+) {
+  const { overallSd, gradeSd } = policy.prior;
+  if (!gradeStart || !gradeSd) return overallSd;
+  return Math.min(
+    overallSd,
+    gradeSd[Math.max(0, Math.round(start))] ?? overallSd,
+  );
+}
 /** `startSd` widens the reported level's prior where the start says little
- * (`startingSd`); selection's adaptive estimate keeps the policy's. */
+ * (`startingSd`); selection's adaptive estimate keeps the policy's.
+ * `gradeStart` says the start is a grade, not a guess (`startFromGrade`). */
 export function createFrontierState(
   start: number,
   policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
-  startSd: number = policy.prior.overallSd,
+  startSd?: number,
+  gradeStart = false,
 ): FrontierState {
+  const width = startWidth(policy, start, gradeStart);
   return {
     start,
+    ...(gradeStart ? { gradeStart } : {}),
     observed: 0,
     lastAt: null,
-    overall: startFold(prior(start, startSd)),
-    adaptive: startFold(prior(start, policy.prior.overallSd)),
+    overall: startFold(prior(start, startSd ?? width)),
+    adaptive: startFold(prior(start, width)),
     strands: {},
     confirmation: {},
     pooled: emptyConfirmation(),
@@ -762,6 +799,7 @@ export function readFrontierState(
       adaptive,
       strands,
       strandPriorSd: policy.prior.strandSd,
+      ...(state.gradeStart ? { gradeStart: true } : {}),
     };
   const c = policy.confirmation;
   const shown = demonstrated(state.pooled, policy);
@@ -798,6 +836,7 @@ export function readFrontierState(
     unconfirmedCeiling: Math.max(floor, (shown ?? -Infinity) + rise),
     foundationLevel: foundation,
     climbing,
+    ...(state.gradeStart ? { gradeStart: true } : {}),
   };
 }
 
@@ -809,6 +848,8 @@ export function estimateFrontier(
     start: number;
     /** The reported level's prior width (`createFrontierState`). */
     startSd?: number;
+    /** The start is a grade, not a guess (`startFromGrade`). */
+    gradeStart?: boolean;
     observations: readonly FrontierObservation[];
     now?: number;
     /** Validated, immutable parameters for reproducible estimator comparisons. */
@@ -817,7 +858,12 @@ export function estimateFrontier(
 ): Frontier {
   const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
   assertFrontierPolicy(policy);
-  const state = createFrontierState(options.start, policy, options.startSd);
+  const state = createFrontierState(
+    options.start,
+    policy,
+    options.startSd,
+    options.gradeStart,
+  );
   for (const observation of options.observations)
     advanceFrontierState(state, observation, options, policy);
   return readFrontierState(state, options.now ?? state.lastAt ?? 0, policy);
@@ -829,6 +875,7 @@ export function overallTrend(
   options: FrontierCatalog & {
     start: number;
     startSd?: number;
+    gradeStart?: boolean;
     observations: readonly FrontierObservation[];
     now: number;
   },
@@ -837,7 +884,11 @@ export function overallTrend(
 ) {
   const model = responseModel(policy.response);
   const fold = startFold(
-    prior(options.start, options.startSd ?? policy.prior.overallSd),
+    prior(
+      options.start,
+      options.startSd ??
+        startWidth(policy, options.start, options.gradeStart === true),
+    ),
   );
   const read = new Map<number, Estimate>();
   const wanted = new Set(counts);
