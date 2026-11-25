@@ -235,14 +235,72 @@ test(
       },
     );
 
-    await t.test("with course placement off: a guess at grade 2", async () => {
-      await learning.pool.query(
-        "UPDATE amp_course_placement SET enabled=false",
-      );
-      const start = await frontierOf(await student(fourth.id));
-      await learning.pool.query("UPDATE amp_course_placement SET enabled=true");
-      assert.equal(start.expected, 2);
-      assert.equal(start.gradeStart, undefined);
-    });
+    await t.test(
+      "a grade 2 class that becomes a grade 3 class: the start of 2 is a guess again",
+      async () => {
+        const room = await schools.createClass(org.id, {
+          name: "Grade 2 Math B",
+          courseBands: ["2"],
+        });
+        const child = await student(room.id);
+        await practice(child, 6);
+        const before = await frontierOf(child);
+        assert.equal(before.gradeStart, true);
+        await learning.pool.query(
+          "UPDATE amp_classes SET course_bands=ARRAY['3'] WHERE id=$1",
+          [room.id],
+        );
+        // 2 is also where a student with no course starts, so nothing kept on
+        // the student says this 2 came from a course. The answers are read
+        // again from a guess: once, with the same result as a full replay.
+        const after = await frontierOf(child);
+        assert.equal(after.expected, 2);
+        assert.equal(after.gradeStart, undefined);
+        const now = Date.now();
+        const both = await learning.transaction(
+          child.account,
+          child.learnerId,
+          async (tx) => ({
+            stored: await tx.frontier(now),
+            replayed: await (tx as PgTransaction).frontier(now, 1_000_000),
+          }),
+        );
+        assert.deepEqual(both.stored, both.replayed);
+        assert.equal(both.stored.gradeStart, undefined);
+        // And practice goes on.
+        await practice(child, 2);
+      },
+    );
+
+    await t.test(
+      "with course placement off: a guess at grade 2, before and after the first answer",
+      async () => {
+        const second = await schools.createClass(org.id, {
+          name: "Grade 2 Math C",
+          courseBands: ["2"],
+        });
+        await learning.pool.query(
+          "UPDATE amp_course_placement SET enabled=false",
+        );
+        try {
+          for (const klass of [fourth.id, second.id]) {
+            const child = await student(klass);
+            const start = await frontierOf(child);
+            assert.equal(start.expected, 2);
+            assert.equal(start.gradeStart, undefined);
+            // The first answer keeps a start of 2 on the student. In a grade 2
+            // class that must not read as the class's course.
+            await practice(child, 1);
+            const after = await frontierOf(child);
+            assert.equal(after.expected, 2);
+            assert.equal(after.gradeStart, undefined);
+          }
+        } finally {
+          await learning.pool.query(
+            "UPDATE amp_course_placement SET enabled=true",
+          );
+        }
+      },
+    );
   },
 );

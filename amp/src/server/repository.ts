@@ -1028,7 +1028,8 @@ export class PgTransaction implements LearnerTransaction {
     });
   }
   /** The levels of the courses of the learner's classes today, in the order
-   * a start is taken from them: read once a request. */
+   * a start is taken from them; none while course placement is off. Read
+   * once a request. */
   private classCourseLevels?: Promise<number[]>;
   private classCourses() {
     return (this.classCourseLevels ??= this.db
@@ -1040,6 +1041,7 @@ export class PgTransaction implements LearnerTransaction {
          WHERE p.learner_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
            AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'
              AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
+           AND (SELECT enabled FROM amp_course_placement WHERE singleton)
          ORDER BY e.begin_on,c.id`,
         [this.learnerId],
       )

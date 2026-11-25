@@ -55,7 +55,9 @@ A start is either a grade or a guess.
   of their class's course: a teacher who makes a "Grade 4" class has said
   what grade its students are in. That start is kept on the student. It
   stays a grade start if the class's course changes later, and a later course
-  is not taken up.
+  is not taken up. Grade 2 is the one exception, because grade 2 is also
+  where a student with no course starts: a start of 2 is a grade start only
+  while one of the student's classes is a grade 2 class.
 - **A guess.** An adult chooses where to begin (counting through
   precalculus). A learner with no age, no grade and no class course starts at
   grade 2. A family's band and a practice profile are guesses too.
