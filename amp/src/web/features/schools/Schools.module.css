@@ -56,6 +56,12 @@
   line-height: 1.5;
   text-wrap: pretty;
 }
+.heroText {
+  display: grid;
+  gap: var(--space-5);
+  align-content: start;
+  min-width: 0;
+}
 .heroActions {
   display: grid;
   gap: var(--space-3);
@@ -71,6 +77,10 @@
   min-height: 56px;
   white-space: nowrap;
   font-size: var(--text-body);
+}
+/* A deployment without Clever keeps the slot, so nothing moves. */
+.held {
+  visibility: hidden;
 }
 .main .note {
   color: var(--color-muted-text);

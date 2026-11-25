@@ -6,6 +6,7 @@ import { cleverEnabled } from "../school/clever/enabled";
 import type { ReactNode } from "react";
 import { buttonClass } from "../../ui/Button";
 import { SCOPE_CSV, SCOPE_PDF } from "./api";
+import { CleverCertified } from "./CleverCertified";
 import { CurriculumRibbon } from "./CurriculumRibbon";
 import { ProductShot } from "./ProductShot";
 import { PublicFrame } from "./PublicFrame";
@@ -16,9 +17,41 @@ import styles from "./Schools.module.css";
 
 const count = (value: number) => value.toLocaleString("en-US");
 
+/** The Clever action, in its place from the first paint so nothing below
+ * the actions moves when the sign-in methods arrive (they are never awaited:
+ * the page paints whatever the API does). Until they answer it is the real
+ * link: `/school/connect` reads the methods itself and, without Clever,
+ * opens class setup, so it never leads nowhere. Once they say Clever is off,
+ * or can't be read, the slot stays, empty, so the layout never changes after
+ * the first paint. */
+function CleverAction({ clever }: { clever: boolean | undefined }) {
+  if (clever === false)
+    return (
+      <span
+        className={buttonClass("secondary", `${styles.action} ${styles.held}`)}
+        aria-hidden="true"
+      >
+        Use Clever
+      </span>
+    );
+  return (
+    <Link
+      to="/school/connect"
+      className={buttonClass("secondary", styles.action)}
+    >
+      Use Clever
+    </Link>
+  );
+}
+
 function Actions({ className = "" }: { className?: string }) {
   const session = useSessionOrNull();
-  const clever = cleverEnabled(useQuery(authConfigOptions).data);
+  const { data: config, isError } = useQuery(authConfigOptions);
+  // Unknown until the sign-in methods answer: laid out as Clever on, as it is
+  // in production, and nothing changes look or place after the first paint.
+  // Methods that couldn't be read hold the slot empty: `/school/connect`
+  // would only fail to read them again.
+  const clever = config ? cleverEnabled(config) : isError ? false : undefined;
   return (
     <div className={`${styles.actions} ${className}`}>
       {/* A new teacher creates the account first; a signed-in one goes
@@ -38,25 +71,18 @@ function Actions({ className = "" }: { className?: string }) {
           Start with your class
         </Link>
       )}
-      {clever && (
-        <Link
-          to="/school/connect"
-          className={buttonClass("secondary", styles.action)}
-        >
-          Use Clever
-        </Link>
-      )}
+      <CleverAction clever={clever} />
       {session ? (
         <Link
           to={"/school/start/school" as never}
-          className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
+          className={buttonClass("quiet", styles.action)}
         >
           Set up your school
         </Link>
       ) : (
         <Link
           {...signInLink("/school/start/school", "/sign-up")}
-          className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
+          className={buttonClass("quiet", styles.action)}
         >
           Set up your school
         </Link>
@@ -93,11 +119,16 @@ export function SchoolsScreen() {
             precalculus.
           </h1>
           <div className={styles.heroBody}>
-            <p className={styles.lede}>
-              Every student works at their own level in every area of math, with
-              unlimited problems and unlimited personalized workbooks. Teachers
-              see who needs them today, and they decide every grade.
-            </p>
+            {/* The badge sits with the lede, above the actions on a phone and
+                beside them from 960 px: whatever the actions do, it stays put. */}
+            <div className={styles.heroText}>
+              <p className={styles.lede}>
+                Every student works at their own level in every area of math,
+                with unlimited problems and unlimited personalized workbooks.
+                Teachers see who needs them today, and they decide every grade.
+              </p>
+              <CleverCertified />
+            </div>
             <div className={styles.heroActions}>
               <Actions />
               <p className={styles.note}>

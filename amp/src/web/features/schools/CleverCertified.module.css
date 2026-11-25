@@ -1,0 +1,22 @@
+/* Clever's badge: the mark at its own ratio, never scaled by its container. */
+.badge {
+  display: block;
+  flex: none;
+  max-width: none;
+}
+
+/* The badge beside one line of text, centred on it. */
+.certified {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+/* A hyphenated word never breaks at its hyphen. */
+.whole {
+  white-space: nowrap;
+}
