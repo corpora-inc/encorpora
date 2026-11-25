@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import { queryOptions } from "@tanstack/react-query";
+import { isCancelledError, queryOptions } from "@tanstack/react-query";
 import {
-  practiceSettingsSchema,
+  practiceStateSchema,
   type PracticeChange,
 } from "../../../learning/practice-settings";
 import { request } from "../../lib/api";
@@ -25,11 +25,28 @@ export const practiceSettingsOptions = (scope: PracticeScope) =>
     queryFn: ({ signal }) =>
       request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,
-        practiceSettingsSchema,
+        practiceStateSchema,
         { token: scope.token, signal },
       ),
     staleTime: 0,
   });
+
+/**
+ * The settings a change is made on. A read that a newer one replaced while
+ * this waited on it (a settings event's read, a credited answer stopping it:
+ * Query's `CancelledError`) says nothing went wrong, so it is read again
+ * instead of ending the change with no problem on the screen.
+ */
+async function readForWrite(scope: PracticeScope) {
+  for (let attempt = 1; ; attempt++)
+    try {
+      return await queryClient.fetchQuery(practiceSettingsOptions(scope));
+    } catch (error) {
+      if (attempt >= READ_ATTEMPTS || !isCancelledError(error)) throw error;
+    }
+}
+/** How many times a replaced read is read again before it is shown. */
+const READ_ATTEMPTS = 4;
 
 /** Preserve the mutation identity when delivery fails. No account or learner
  * can receive another scope's late response or pending retry. */
@@ -56,9 +73,7 @@ export function usePracticeAdjustment(scope: PracticeScope) {
     const key = JSON.stringify(intent);
     let saved = pending.current;
     if (saved?.identity !== identity || saved.intent !== key) {
-      const settings = await queryClient.fetchQuery(
-        practiceSettingsOptions(scope),
-      );
+      const settings = await readForWrite(scope);
       if (!active()) return null;
       saved = {
         identity,
@@ -74,7 +89,7 @@ export function usePracticeAdjustment(scope: PracticeScope) {
     try {
       const result = await request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,
-        practiceSettingsSchema,
+        practiceStateSchema,
         { token: scope.token, body: saved.change },
       );
       if (!active()) return null;
@@ -99,5 +114,33 @@ export function usePracticeAdjustment(scope: PracticeScope) {
     mounted.current &&
     current.current.identity === scope.identity &&
     current.current.learnerId === scope.learnerId;
-  return { scope, change, isCurrent };
+  /**
+   * Practice held to the skill it was just opened for (or to none): the
+   * newest choice by what it is, so it is made over whatever else was saved
+   * meanwhile. Something saved for this learner between this screen's read
+   * and its write (another device opening their practice, their look
+   * changing: the server's 409) is read and the hold sent again, a few
+   * times, instead of leaving a practice screen with no problem.
+   */
+  async function hold(skillId: string | null) {
+    for (let attempt = 1; ; attempt++)
+      try {
+        return await change({ kind: "focus", skillId });
+      } catch (error) {
+        if (
+          attempt >= HOLD_ATTEMPTS ||
+          !isCurrent() ||
+          !(error instanceof AppError) ||
+          error.status !== 409
+        )
+          throw error;
+        console.warn(
+          "Practice changed elsewhere as this screen opened; holding it again",
+          { attempt, skillId },
+        );
+      }
+  }
+  return { scope, change, hold, isCurrent };
 }
+/** How many times a hold is sent before its conflict is shown. */
+const HOLD_ATTEMPTS = 4;

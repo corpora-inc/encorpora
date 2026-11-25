@@ -1,0 +1,739 @@
+/*
+ * Colorful's moments (stage.ts draws the nodes once; these keyframes move
+ * them). Transform and opacity only, in one fixed layer that takes no taps,
+ * so nothing here can move the page or delay an answer. Each group rests
+ * hidden; `data-run` ("a" or "b", alternating so a restart is a new
+ * animation) plays it, and every one is gone when it ends: while a child
+ * works, only the points chip is here. `--win` (1 to 2) grows with a run of
+ * right answers. Reduced motion keeps the colors and drops every animation:
+ * stage.ts shows a plain change of state instead.
+ */
+.stage {
+  --win: 1;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+.stage * {
+  pointer-events: none;
+}
+/* Only in Colorful: Calm never shows a piece of this, whatever runs. */
+:global(:root:not([data-look="bold"])) .stage {
+  display: none;
+}
+.burst,
+.flash,
+.flyer,
+.confetti,
+.badge,
+.combo,
+.stamp,
+.chipSparks {
+  visibility: hidden;
+}
+:is(.burst, .flash, .flyer, .confetti, .badge, .combo, .stamp, .chipSparks):is(
+  [data-run],
+  [data-still]
+) {
+  visibility: visible;
+}
+
+/* ── The points chip (gold, always) ──────────────────────────────────── */
+.chip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 104px;
+  height: 36px;
+  padding: 0 14px 0 9px;
+  border-radius: 999px;
+  background: var(--color-points);
+  color: var(--color-on-points);
+  box-shadow:
+    inset 0 -3px 0 var(--color-points-edge),
+    0 4px 14px var(--color-shadow);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: var(--numeric);
+  letter-spacing: -0.01em;
+  transform: translate(var(--chip-left, -200px), var(--chip-top, -200px));
+  transform-origin: 50% 60%;
+  opacity: 0;
+  /* Layout only: its ring and sparks draw outside it. */
+  contain: layout style;
+}
+/* Only where the problem on screen kept its room (../chip-room.ts): a look
+   that turned Colorful under an open problem brings the chip with the next. */
+:global(:root[data-chip-room]) .chip[data-shown] {
+  opacity: 1;
+}
+/* A phone's chip: compact, one size whatever its number. */
+@media (max-width: 419px) {
+  .chip {
+    width: 92px;
+    padding: 0 10px 0 7px;
+    gap: 4px;
+    font-size: 16px;
+  }
+  .chipStar {
+    width: 19px;
+    height: 19px;
+  }
+}
+.chipStar {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  fill: var(--color-on-points);
+  transform: rotate(-8deg);
+}
+/* The number sits in a fixed box: tabular figures, so a new digit never
+   moves the star or the chip. Two copies roll past each other. */
+.count {
+  position: relative;
+  flex: 1;
+  height: 22px;
+  overflow: hidden;
+  text-align: center;
+}
+.from,
+.to {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.from:empty {
+  display: none;
+}
+.chip[data-lit] {
+  box-shadow:
+    inset 0 -3px 0 var(--color-points-edge),
+    0 0 0 3px var(--color-primary);
+}
+
+/* A point lands: the old number rises out, the new one rises in, and the
+   chip takes the hit: squashed, stretched, settled. Its own moments hit
+   harder. */
+.chip[data-run] .from {
+  animation: count-out 260ms var(--ease-standard) var(--land) both;
+}
+.chip[data-run] .to {
+  animation: count-in 320ms cubic-bezier(0.2, 1.5, 0.4, 1) var(--land) both;
+}
+.chip[data-run="a"] {
+  animation: chip-hit-a 520ms linear var(--land);
+}
+.chip[data-run="b"] {
+  animation: chip-hit-b 520ms linear var(--land);
+}
+.chip[data-run][data-kind^="streak-5"],
+.chip[data-run][data-kind^="streak-10"],
+.chip[data-run][data-kind^="points"] {
+  --pop: 1.18;
+  animation-duration: 640ms;
+}
+@keyframes count-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+}
+@keyframes count-in {
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes chip-hit-a {
+  0%,
+  100% {
+    transform: translate(var(--chip-left), var(--chip-top)) scale(1);
+  }
+  15% {
+    transform: translate(var(--chip-left), var(--chip-top))
+      scale(calc(1.24 * var(--pop, 1)), calc(0.78 / var(--pop, 1)));
+  }
+  40% {
+    transform: translate(var(--chip-left), var(--chip-top))
+      scale(calc(0.9 / var(--pop, 1)), calc(1.16 * var(--pop, 1)));
+  }
+  65% {
+    transform: translate(var(--chip-left), var(--chip-top)) scale(1.05, 0.96);
+  }
+  82% {
+    transform: translate(var(--chip-left), var(--chip-top)) scale(0.98, 1.02);
+  }
+}
+@keyframes chip-hit-b {
+  0%,
+  100% {
+    transform: translate(var(--chip-left), var(--chip-top)) scale(1);
+  }
+  15% {
+    transform: translate(var(--chip-left), var(--chip-top))
+      scale(calc(1.24 * var(--pop, 1)), calc(0.78 / var(--pop, 1)));
+  }
+  40% {
+    transform: translate(var(--chip-left), var(--chip-top))
+      scale(calc(0.9 / var(--pop, 1)), calc(1.16 * var(--pop, 1)));
+  }
+  65% {
+    transform: translate(var(--chip-left), var(--chip-top)) scale(1.05, 0.96);
+  }
+  82% {
+    transform: translate(var(--chip-left), var(--chip-top)) scale(0.98, 1.02);
+  }
+}
+
+/* Around the chip: a ring for every streak moment, sparks from five on. */
+.chipSparks {
+  position: absolute;
+  inset: 0;
+}
+.ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  border: 3px solid var(--color-primary);
+  opacity: 0;
+}
+.chipSparks[data-run] .ring {
+  animation: ring 700ms ease-out var(--after) both;
+}
+.chipSparks[data-kind="streak-10"] .ring,
+.chipSparks[data-kind="points-10"] .ring {
+  border-color: var(--color-celebrate-1);
+  animation-duration: 900ms;
+}
+.chipSpark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px;
+  border-radius: 50%;
+  background: var(--hue);
+  opacity: 0;
+}
+.chipSparks[data-kind="streak-5"] .chipSpark,
+.chipSparks[data-kind="streak-10"] .chipSpark,
+.chipSparks[data-kind="points-10"] .chipSpark {
+  animation: chip-spark 760ms cubic-bezier(0.15, 0.7, 0.3, 1) var(--after) both;
+}
+.chipSparks[data-kind="streak-10"] .chipSpark,
+.chipSparks[data-kind="points-10"] .chipSpark {
+  --far: 96px;
+  width: 10px;
+  height: 10px;
+  margin: -5px;
+  animation-duration: 980ms;
+}
+@keyframes ring {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.7, 2.4);
+  }
+}
+@keyframes chip-spark {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--angle)) translateX(30px) scale(0.4);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(var(--far, 70px)) scale(1);
+  }
+}
+
+/* ── A run's counter, under the chip ─────────────────────────────────── */
+.combo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 30px;
+  padding: 0 12px 0 8px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: inset 0 -3px 0 var(--color-primary-edge);
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: var(--numeric);
+  transform: translate(
+    calc(var(--chip-left, -200px) + 22px),
+    calc(var(--chip-top, -200px) + 44px)
+  );
+}
+.combo[data-level="2"] {
+  font-size: 20px;
+  height: 34px;
+}
+.combo[data-level="3"] {
+  font-size: 24px;
+  height: 40px;
+  background: var(--color-celebrate-1);
+  color: var(--color-on-surface);
+  box-shadow: none;
+}
+.comboBolt {
+  width: 18px;
+  height: 18px;
+  fill: var(--color-points);
+}
+.combo[data-run] {
+  animation: combo 1300ms cubic-bezier(0.2, 1.5, 0.4, 1) 500ms both;
+}
+@keyframes combo {
+  0% {
+    opacity: 0;
+    transform: translate(
+        calc(var(--chip-left) + 22px),
+        calc(var(--chip-top) + 44px)
+      )
+      scale(0.3) rotate(-14deg);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(
+        calc(var(--chip-left) + 22px),
+        calc(var(--chip-top) + 44px)
+      )
+      scale(1.2) rotate(4deg);
+  }
+  30%,
+  80% {
+    opacity: 1;
+    transform: translate(
+        calc(var(--chip-left) + 22px),
+        calc(var(--chip-top) + 44px)
+      )
+      scale(1) rotate(-3deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+        calc(var(--chip-left) + 22px),
+        calc(var(--chip-top) + 32px)
+      )
+      scale(0.9) rotate(-3deg);
+  }
+}
+
+/* ── The win's pulse: the world's color, from the mark, once ──────────── */
+.flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 60%),
+    var(--color-celebrate-1),
+    var(--color-primary) 45%,
+    transparent 85%
+  );
+  opacity: 0;
+}
+.flash[data-run] {
+  animation: flash 480ms ease-out both;
+}
+.flash[data-kind="strong"] {
+  animation-duration: 960ms;
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  22% {
+    opacity: calc(0.16 + 0.1 * (var(--win) - 1));
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── The burst from the result mark ─────────────────────────────────── */
+.burst {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: translate(var(--x), var(--y));
+}
+.spark {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 28px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--hue);
+  transform-origin: 0 50%;
+  opacity: 0;
+}
+.spark[data-shape="dot"] {
+  width: 12px;
+  height: 12px;
+  top: -6px;
+  border-radius: 50%;
+}
+.spark[data-shape="star"] {
+  width: 16px;
+  height: 16px;
+  top: -8px;
+  border-radius: 0;
+  mask: var(--star-mask) center / contain no-repeat;
+}
+.burst[data-run] .spark {
+  animation: spark 860ms cubic-bezier(0.1, 0.75, 0.3, 1) var(--delay) both;
+}
+@keyframes spark {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--angle)) translateX(20px) scale(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(var(--angle))
+      translateX(calc(var(--reach) * 0.62 * var(--win))) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(calc(var(--reach) * var(--win)))
+      scale(0.2);
+  }
+}
+.halo,
+.halo2 {
+  position: absolute;
+  top: -34px;
+  left: -34px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 4px solid var(--color-correct);
+  opacity: 0;
+}
+.halo2 {
+  border-color: var(--color-primary);
+  border-width: 3px;
+}
+.burst[data-run] .halo {
+  animation: halo 620ms ease-out both;
+}
+.burst[data-run] .halo2 {
+  animation: halo 760ms ease-out 110ms both;
+}
+@keyframes halo {
+  from {
+    opacity: 0.9;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 0;
+    transform: scale(calc(2.4 * var(--win)));
+  }
+}
+
+/* ── "+1", in an arc to the chip, with a trail ───────────────────────── */
+/* Each lane travels across at an even pace while its inner layer rises and
+   falls, so the path curves; the trail's lanes follow a beat behind. */
+.flyer {
+  position: absolute;
+  inset: 0;
+}
+.flyerLane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  --lag: calc(var(--trail) * 34ms);
+  opacity: calc(1 - var(--trail) * 0.24);
+}
+.flyer[data-run="a"] .flyerLane {
+  animation: fly-x-a 560ms cubic-bezier(0.45, 0, 0.6, 1) var(--lag) both;
+}
+.flyer[data-run="b"] .flyerLane {
+  animation: fly-x-b 560ms cubic-bezier(0.45, 0, 0.6, 1) var(--lag) both;
+}
+.flyer[data-run="a"] .flyerY {
+  animation: fly-y-a 560ms cubic-bezier(0.3, -0.6, 0.6, 1) var(--lag) both;
+}
+.flyer[data-run="b"] .flyerY {
+  animation: fly-y-b 560ms cubic-bezier(0.3, -0.6, 0.6, 1) var(--lag) both;
+}
+.flyerPill {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-points);
+  color: var(--color-on-points);
+  box-shadow: inset 0 -2px 0 var(--color-points-edge);
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+}
+.flyerLane:not(:last-child) .flyerPill {
+  color: transparent;
+  scale: calc(1 - var(--trail) * 0.14);
+}
+.flyer[data-run] .flyerPill {
+  animation: fly-shrink 560ms ease-in var(--lag) both;
+}
+@keyframes fly-x-a {
+  from {
+    transform: translateX(var(--from-x));
+  }
+  to {
+    transform: translateX(var(--to-x));
+  }
+}
+@keyframes fly-x-b {
+  from {
+    transform: translateX(var(--from-x));
+  }
+  to {
+    transform: translateX(var(--to-x));
+  }
+}
+@keyframes fly-y-a {
+  from {
+    transform: translateY(var(--from-y));
+  }
+  to {
+    transform: translateY(var(--to-y));
+  }
+}
+@keyframes fly-y-b {
+  from {
+    transform: translateY(var(--from-y));
+  }
+  to {
+    transform: translateY(var(--to-y));
+  }
+}
+@keyframes fly-shrink {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.35);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+}
+
+/* ── Strong: confetti cannons from both bottom corners ───────────────── */
+.confetti {
+  position: absolute;
+  inset: 0;
+}
+.piece {
+  position: absolute;
+  top: 100%;
+  width: 10px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--hue);
+  opacity: 0;
+}
+.piece[data-side="left"] {
+  left: 0;
+}
+.piece[data-side="right"] {
+  right: 0;
+}
+.piece[data-shape="dot"] {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.piece[data-shape="square"] {
+  width: 12px;
+  height: 12px;
+}
+.piece[data-shape="star"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 0;
+  mask: var(--star-mask) center / contain no-repeat;
+}
+.confetti[data-run] .piece {
+  animation: cannon var(--fly) linear var(--delay) both;
+}
+/* Out of the corner fast, slowing to the top of its arc, then falling. */
+@keyframes cannon {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+    animation-timing-function: cubic-bezier(0.15, 0.7, 0.4, 1);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.7), calc(var(--rise) * -1))
+      rotate(calc(var(--spin) * 0.5));
+    animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.6);
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), 12vh) rotate(var(--spin));
+  }
+}
+
+/* Strong's badge: a big star that slams in, the word across it. */
+.badge {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 220px;
+  height: 220px;
+  margin: -110px 0 0 -110px;
+}
+.badgeStar {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  fill: var(--color-points);
+  stroke: var(--color-points-edge);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 8px 0 var(--color-points-edge));
+}
+.badgeWord {
+  position: relative;
+  z-index: 1;
+  grid-area: 1 / 1;
+  margin-top: 18px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: inset 0 -4px 0 var(--color-primary-edge);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+.badge[data-run] {
+  animation: badge 2000ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+@keyframes badge {
+  0% {
+    opacity: 0;
+    transform: scale(2.6) rotate(-30deg);
+  }
+  16% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-6deg);
+  }
+  24%,
+  80% {
+    opacity: 1;
+    transform: scale(1) rotate(-6deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15) rotate(-6deg) translateY(-30px);
+  }
+}
+
+/* ── The stamp: a skill earned ───────────────────────────────────────── */
+.stamp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px 10px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--color-on-points);
+  background: var(--color-points);
+  color: var(--color-on-points);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 6px 18px var(--color-shadow);
+  transform: translate(var(--x), var(--y)) translate(-50%, -50%);
+}
+.stampStar {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-primary);
+}
+.stamp[data-run] {
+  animation: stamp 1500ms cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(2.2)
+      rotate(-18deg);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(1)
+      rotate(-8deg);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(1)
+      rotate(-8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(0.9)
+      rotate(-8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage *,
+  .stage {
+    animation: none !important;
+  }
+  .burst,
+  .flash,
+  .flyer,
+  .confetti {
+    display: none;
+  }
+}

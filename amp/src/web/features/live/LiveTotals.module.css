@@ -1,0 +1,67 @@
+/* The session's totals (LiveTotals.tsx): equal fixed tiles, no cards. A
+   hairline between tiles; the figure first, its label under it. */
+.frame {
+  container: live-totals / inline-size;
+  min-width: 0;
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  height: 60px;
+  margin: 0;
+  font-variant-numeric: var(--numeric);
+}
+.tile {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding-inline: var(--space-3);
+  box-shadow: inset 1px 0 0 var(--color-border);
+}
+.tile:first-child {
+  padding-inline-start: 0;
+  box-shadow: none;
+}
+.tile[data-tile="help"] {
+  display: none;
+}
+.label {
+  overflow: hidden;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.value {
+  margin: 0;
+  overflow: hidden;
+  font-size: var(--text-figure);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.of {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-weight: 500;
+}
+@container live-totals (min-width: 520px) {
+  .tiles {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .tile[data-tile="help"] {
+    display: flex;
+  }
+}
+@media (max-width: 359.98px) {
+  .tile {
+    padding-inline: var(--space-2);
+  }
+  .value {
+    font-size: 19px;
+  }
+}

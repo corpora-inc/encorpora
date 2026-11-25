@@ -84,10 +84,40 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
-    # Each lane's checks take about 25 to 35 minutes after the browser
-    # install; ui-1 and family-b are split so none nears the limit on a slow
-    # runner.
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "family-b4", "family-b5", "family-b6", "family-b7", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+    # A lane is one matrix entry of this job, so it reports through the same
+    # aggregate (`report`) as every other; never a status of its own. Each
+    # lane's checks are planned at 45 minutes or less after setup (the
+    # browser install takes 1 to 19 minutes on a hosted runner), so none is
+    # expected past about 55 or near the limit. Measured 2026-11-23, in
+    # minutes of checks: family-a 28 without the classroom check (24);
+    # family-b1 40 to 45; family-b3 32 to 43; tab identity 7 to 16; child
+    # practice 28. Hence family-b4 (classroom, tab identity) and family-b5
+    # (child practice). Child practice has a lane to itself since 2026-11-24:
+    # it presses every skill a child's "not asked yet" sheets list and one
+    # press at a time for a learner, 23 minutes on a laptop where it was 18
+    # (32 here then, so about 41 now).
+    #
+    # family-b6 and family-b7 are a live session's checks, each on its own
+    # stack (amp/scripts/persona-stack.ts). Most of their time is the pace of
+    # the simulated children, not the machine: family-b6 took 21 minutes
+    # on a laptop and 21 on a runner (2026-11-24). On the laptop, in
+    # minutes: family-b6 a family's live session (19) and an adult's time
+    # (2); family-b7 a class's live cockpit (13), a student's and a family
+    # child's requests (8), and the cockpit and a stopped session's report
+    # on fixtures (1 between them). family-b6 ends with the skill index and
+    # a student's sign-in (code, pictures, lockout and reset, cards and the
+    # board, in Chromium; about 4 minutes on a laptop. Both engines:
+    # `npm run test:school-sign-in-ui`), which were family-b5's.
+    #
+    # Not in a lane yet: Colorful's moments (`npm run test:celebration-ui`,
+    # for family-b6). Its moments all play again, the tenth point too, now
+    # that a student's practice holds one live stream (it opened one with
+    # every problem, and each one's first message put the points back to
+    # the server's count). What keeps it out is its timing budget: no task
+    # over 50 ms at 6x CPU while only the animations run. On a laptop busy
+    # with other checks one ran 51 ms and, another time, 58. Measure it on
+    # a runner before adding it to test:family-ui:b6.
     timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'
@@ -181,6 +211,42 @@ jobs:
         run: npm run test:family-ui:b2
       - if: matrix.lane == 'family-b3'
         run: npm run test:family-ui:b3
+      - if: matrix.lane == 'family-b4'
+        run: npm run test:family-ui:b4
+      - if: matrix.lane == 'family-b5'
+        run: npm run test:family-ui:b5
+      - if: matrix.lane == 'family-b6'
+        run: npm run test:family-ui:b6
+      - if: matrix.lane == 'family-b7'
+        run: npm run test:family-ui:b7
+      # No flash (amp/AGENTS.md): every route each person can reach, cold, on
+      # a slow phone. One lane per person and width: a person's routes take
+      # about 15 minutes at one width on a slow runner, so no lane nears a
+      # third of the job's limit (the cheap people share a lane).
+      - if: startsWith(matrix.lane, 'no-flash-')
+        env:
+          AMP_NO_FLASH_LANE: ${{ matrix.lane }}
+        run: |
+          lane="${AMP_NO_FLASH_LANE#no-flash-}"
+          case "$lane" in
+            family-*) people=family ;;
+            second-parent-*) people=second-parent ;;
+            adult-*) people=adult-3wk ;;
+            tutor-*) people=tutor ;;
+            teacher-*) people=teacher-class ;;
+            school-*) people=school ;;
+            student-*) people=student,signed-out ;;
+            *) echo "Unknown no-flash lane $AMP_NO_FLASH_LANE" >&2; exit 1 ;;
+          esac
+          npm run test:no-flash-ui -- --people "$people" --widths "${lane##*-}"
+      - name: Preserve the no-flash table
+        if: always() && startsWith(matrix.lane, 'no-flash-')
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-no-flash-${{ matrix.lane }}-${{ github.run_attempt }}
+          path: amp/artifacts/no-flash/
+          if-no-files-found: ignore
+          retention-days: 7
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
       - if: startsWith(matrix.lane, 'contrast-')
         env:

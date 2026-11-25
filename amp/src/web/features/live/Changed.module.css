@@ -1,0 +1,33 @@
+/* A value that just changed (Changed.tsx). The tint sits in a halo outside
+   the figure (padding taken back by margin), so the box never grows. */
+.changed {
+  display: inline-block;
+  margin-inline: -4px;
+  padding-inline: 4px;
+  border-radius: 6px;
+}
+.changed[data-changed="flash"] {
+  animation: flash 1400ms var(--ease-standard);
+}
+.changed[data-changed="pop"] {
+  animation: pop 360ms var(--ease-standard);
+}
+@keyframes flash {
+  from {
+    background: color-mix(in srgb, var(--color-primary) 26%, transparent);
+  }
+  to {
+    background: transparent;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0.2;
+    transform: scale(0.55);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .changed[data-changed] {
+    animation: none;
+  }
+}

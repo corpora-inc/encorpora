@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "@tanstack/react-router";
 import { forSession, useSessionOrNull } from "../lib/session";
 import { useState, type ReactNode } from "react";
 import { learnerSkillOptions, skillCatalogOptions } from "../lib/learning-view";
@@ -17,6 +18,9 @@ import {
   type Neighbor,
 } from "../features/pathways/neighbors";
 import { useCurriculumDetails } from "../features/curriculum/CurriculumDetails";
+import { standingOf } from "../features/inventory/grade-index";
+import { STANDING, StandingSwatch } from "../features/learners/SkillKey";
+import { childAddress } from "../features/spaces/identity";
 import { Meter } from "../ui/Meter";
 import { LayerWait } from "./LayerWait";
 import { Sheet } from "../ui/Sheet";
@@ -268,7 +272,9 @@ function ConnectionGroup({
   );
 }
 
-/** How a learner's own skill reads, in the map's words. */
+/** How a learner's own skill reads on their own screens, in the map's
+ * words. (A grown-up reading a child's reads the key's four instead:
+ * `LearnerOnSkill`.) */
 const OWN_STATUS = (evidence: Counts) =>
   evidence.status === "review-ready"
     ? "Strong"
@@ -276,9 +282,17 @@ const OWN_STATUS = (evidence: Counts) =>
       ? "Building"
       : "Not practiced yet";
 
-/** A learner on this skill, in their own practice: how far it has lit on
- * the map, where it stands, then their latest answers on it. No replay: an
- * answer opens only for staff. */
+/** A learner on this skill: how far it has lit on the map, where it
+ * stands, then their latest answers on it. No replay: an answer opens only
+ * for staff.
+ *
+ * Where it stands is said two ways, by who reads it. A grown-up reading a
+ * family's child's record (their Inventory or Pathways) reads the
+ * dashboard's four words, Strong, Earned, Tried or Not asked yet, with the
+ * key's swatch and meaning: the one rule the list behind the layer uses
+ * (features/inventory/grade-index.ts `standingOf`), from the same stored
+ * evidence, so a row and its layer never say two things. A learner's own
+ * screens keep their own words (Strong, Building, Not practiced yet). */
 function LearnerOnSkill({
   learner,
   skill,
@@ -286,6 +300,10 @@ function LearnerOnSkill({
   learner: string;
   skill: string;
 }) {
+  // A grown-up reading a family's child's record, by its address.
+  const reading = !!childAddress(
+    useLocation({ select: (location) => location.pathname }),
+  );
   const session = useSessionOrNull();
   const found = useQuery(
     forSession(session, (signedIn) =>
@@ -299,6 +317,7 @@ function LearnerOnSkill({
       <LayerWait part />
     );
   const { evidence, work: answers } = found.data;
+  const standing = standingOf(evidence);
   return (
     <section data-skill-learner={learner}>
       <dl className={styles.facts}>
@@ -317,7 +336,15 @@ function LearnerOnSkill({
         )}
         <div>
           <dt>Status</dt>
-          <dd>{OWN_STATUS(evidence)}</dd>
+          {reading ? (
+            <dd className={styles.standing} data-skill-standing={standing}>
+              <StandingSwatch standing={standing} />
+              <span data-standing-word="">{STANDING[standing].term}</span>
+              <small>{STANDING[standing].meaning}</small>
+            </dd>
+          ) : (
+            <dd>{OWN_STATUS(evidence)}</dd>
+          )}
         </div>
         {evidence.attempts > 0 && (
           <div>

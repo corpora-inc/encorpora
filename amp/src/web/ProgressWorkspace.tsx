@@ -16,6 +16,12 @@ import type { Lesson } from "../content/lessons";
 import type { BookSummary } from "../books/catalog";
 import "./progress-workspace.css";
 import { Wave } from "./ui/Loading";
+import {
+  cardsThatFit,
+  guardRows,
+  noneDropped,
+  type Dropped,
+} from "./progress-page-size";
 
 export type ProgressView = {
   filter: "practiced" | "review" | "explore";
@@ -147,9 +153,6 @@ export function ProgressWorkspace({
   const infoTrigger = useRef<HTMLButtonElement>(null);
   const list = useRef<HTMLDivElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
-  const [capacity, setCapacity] = useState(2);
-  // The stage size the page was last sized for.
-  const sized = useRef<string | null>(null);
   const [largeText, setLargeText] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const returnSkill = useRef<string | null>(null);
@@ -163,67 +166,6 @@ export function ProgressWorkspace({
     measure();
     return () => observer.disconnect();
   }, []);
-  useLayoutEffect(() => {
-    const target = list.current;
-    if (!target) return;
-    // The size this stage was last sized for, when it mounts again.
-    const before = sized.current;
-    let resized = false;
-    const measure = () => {
-      const font = Number.parseFloat(getComputedStyle(target).fontSize) || 16;
-      const grid = target.querySelector(".progress-cards");
-      const columns = grid
-        ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
-        : 1;
-      // Rows come from the card height the stylesheet declares for this
-      // layout, never from the cards on screen: the page size then depends
-      // only on the screen, so a page keeps its cards when a parent opens
-      // one and comes back. The overflow guard below still drops a row if a
-      // long title makes a page's cards taller.
-      const card =
-        Number.parseFloat(
-          getComputedStyle(target).getPropertyValue("--progress-card-estimate"),
-        ) || 9.5 * font;
-      const gap = grid
-        ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
-        : 12;
-      // The stage back at the size the page was sized for (an idea's detail
-      // closed): the page keeps its size, with any row the guard below
-      // dropped, so it never shows one row longer for a frame. Any other
-      // size, or a resize since, sizes it again.
-      const size = `${target.clientWidth}x${target.clientHeight}x${columns}x${largeText}`;
-      if (!resized && size === before) return;
-      resized = true;
-      sized.current = size;
-      // As many rows as the stage holds: a tall screen's page never leaves
-      // a card-sized gap under its cards.
-      setCapacity(
-        largeText
-          ? 1
-          : Math.max(
-              1,
-              Math.floor((target.clientHeight + gap) / (card + gap)),
-            ) * columns,
-      );
-    };
-    const observer = new ResizeObserver(measure);
-    observer.observe(target);
-    measure();
-    return () => observer.disconnect();
-  }, [view.skillId, !!snapshot, largeText]);
-  // The estimate above cannot know how card text wraps; if a page still
-  // overflows, show one row fewer so cards never scroll inside the stage.
-  useLayoutEffect(() => {
-    const stage = list.current;
-    if (!stage || capacity <= 1) return;
-    if (stage.scrollHeight > stage.clientHeight + 2) {
-      const grid = stage.querySelector(".progress-cards");
-      const columns = grid
-        ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
-        : 1;
-      setCapacity(Math.max(1, capacity - columns));
-    }
-  });
   const entries = (snapshot?.skills ?? []).flatMap((evidence) => {
     const definition = skills.find((skill) => skill.id === evidence.skillId);
     return definition ? [{ evidence, definition }] : [];
@@ -260,8 +202,91 @@ export function ProgressWorkspace({
         );
       return title(a.definition).localeCompare(title(b.definition));
     });
+  // The page size: what the stage holds by the stylesheet's estimate, less
+  // any row the guard below dropped for this view (progress-page-size.ts).
+  const [stage, setStage] = useState({ size: "", fit: 2, columns: 1 });
+  const listing = `${stage.size}|${view.filter}|${view.strand}`;
+  const [dropped, setDropped] = useState<Dropped & { listing: string }>({
+    ...noneDropped,
+    listing,
+  });
+  const rows = dropped.listing === listing ? dropped.rows : 0;
+  const capacity = Math.max(stage.columns, stage.fit - rows * stage.columns);
   const pages = Math.max(1, Math.ceil(filtered.length / capacity)),
     page = Math.min(view.page, pages - 1);
+  const selected = entries.find(
+    ({ definition }) => definition.id === view.skillId,
+  );
+  // The stage is on screen while no idea's detail is open.
+  const staged = !selected;
+  useLayoutEffect(() => {
+    const target = list.current;
+    if (!target) return;
+    const measure = () => {
+      const style = getComputedStyle(target);
+      const font = Number.parseFloat(style.fontSize) || 16;
+      // Columns, card height and gap come from the stylesheet for this
+      // layout, never from the cards on screen (progress-page-size.ts): the
+      // page size then depends only on the screen, whatever has arrived.
+      const columns = largeText
+        ? 1
+        : Number.parseInt(style.getPropertyValue("--progress-columns")) || 1;
+      const card =
+        Number.parseFloat(style.getPropertyValue("--progress-card-estimate")) ||
+        9.5 * font;
+      const gap =
+        Number.parseFloat(style.getPropertyValue("--progress-card-gap")) || 0;
+      const size = `${target.clientWidth}x${target.clientHeight}x${columns}x${largeText}`;
+      const fit = cardsThatFit({
+        height: target.clientHeight,
+        card,
+        gap,
+        columns,
+        largeText,
+      });
+      setStage((old) =>
+        old.size === size && old.fit === fit ? old : { size, fit, columns },
+      );
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(target);
+    measure();
+    return () => observer.disconnect();
+  }, [staged, largeText]);
+  // The estimate cannot know how card text wraps: if a page's cards still
+  // overflow, show one row fewer so cards never scroll inside the stage; if
+  // that page's cards later fit in less (they became shorter, or other ideas
+  // fill it), try the full page again. Runs after every render, and when the
+  // cards change size, always before the browser paints a page.
+  const check = () => {
+    const target = list.current;
+    const grid = target?.querySelector<HTMLElement>(".progress-cards");
+    if (!target || !grid) return;
+    const current = dropped.listing === listing ? dropped : noneDropped;
+    const next = guardRows(current, {
+      overflows: target.scrollHeight > target.clientHeight + 2,
+      canDrop: capacity > stage.columns,
+      page,
+      ids: [...grid.querySelectorAll<HTMLElement>("[data-progress-skill]")]
+        .map((card) => card.dataset.progressSkill)
+        .join(" "),
+      height: grid.getBoundingClientRect().height,
+    });
+    if (next !== current) setDropped({ ...next, listing });
+  };
+  const guard = useRef(check);
+  useLayoutEffect(() => {
+    guard.current = check;
+    check();
+  });
+  const showingCards = staged && !!snapshot && filtered.length > 0;
+  useLayoutEffect(() => {
+    const grid = list.current?.querySelector(".progress-cards");
+    if (!grid) return;
+    const observer = new ResizeObserver(() => guard.current());
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, [showingCards]);
   useLayoutEffect(() => {
     if (view.skillId) {
       heading.current?.focus({ preventScroll: true });
@@ -287,9 +312,6 @@ export function ProgressWorkspace({
     });
     return () => cancelAnimationFrame(frame);
   }, [view.skillId, capacity, page, filtered.length]);
-  const selected = entries.find(
-    ({ definition }) => definition.id === view.skillId,
-  );
   const template = selected
     ? templates.find((t) => t.skillId === selected.definition.id)
     : undefined;

@@ -9,6 +9,7 @@ import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { studentPracticeHref } from "../features/profiles/practice-mode";
 import { RETURN_LIMIT } from "../features/spaces/returns";
+import { logAhead } from "../lib/ahead";
 
 /*
  * The sign-in gate (amp/AGENTS.md, "Frontend architecture"): the one place a
@@ -95,7 +96,7 @@ export async function knowStudentFirst() {
   await queryClient
     .ensureQueryData(meOptions(student))
     .catch((error: unknown) =>
-      console.warn(
+      logAhead(
         "A student's account didn't load ahead; their screen loads it",
         error,
       ),
@@ -161,6 +162,25 @@ export function elsewhere(
   throw typeof target === "string"
     ? redirect({ href: target, replace: true })
     : redirect({ ...target, replace: true } as never);
+}
+
+/** `elsewhere`, for a target that may itself be an old address (a family
+ * org's school home, say): straight to where that address opens now
+ * (app/legacy-aliases.ts), never a second hop from it. */
+export async function elsewhereOnce(target: string): Promise<never> {
+  const { aliasTarget } = await import("./legacy-aliases");
+  const next = (
+    await aliasTarget({ pathname: target, search: {}, searchStr: "" })
+  )?.target;
+  if (!next) return elsewhere(target);
+  if (typeof next === "string") return elsewhere(next);
+  if ("href" in next) return elsewhere(next.href);
+  return elsewhere({
+    to: next.to,
+    search: next.search,
+    hash: next.hash,
+    state: next.state,
+  });
 }
 
 /**

@@ -15,7 +15,7 @@ import {
   OtherFamilyRow,
 } from "../school/classes/OtherFamilies";
 import { minutesFigure } from "../../../schools/practice-rules";
-import { lastPracticed } from "../school/classes/today/ChildRow";
+import { lastPracticed } from "../learners/week-words";
 import rowStyles from "../school/classes/Family.module.css";
 import people from "../school/classes/people/People.module.css";
 import type { ApprovalRowResource } from "../../../family/approval-contracts";

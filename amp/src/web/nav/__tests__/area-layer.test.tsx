@@ -170,6 +170,50 @@ test("a level's row opens its area over the page, never a step in history; ✕ c
   expect(router.state.location.search).toEqual({});
 });
 
+test("a layer over a layer: ✕ and Escape put down that one, to the layer behind; the scrim puts the whole overlay away", async () => {
+  renderPage(() => (
+    <>
+      <RecordLevels record={record} empty="" openAreas />
+      <LayerHost area={areaSourceOf(record)} />
+    </>
+  ));
+  const open = async () => {
+    // (From the page, or with the area already open.)
+    if (!screen.queryByRole("dialog"))
+      fireEvent.click(
+        await screen.findByRole("link", { name: /^Geometry: best guess/ }),
+      );
+    const area = await screen.findByRole("dialog", { name: "Geometry" });
+    fireEvent.click(
+      area.querySelector<HTMLElement>("[data-area-skill=area-of-triangles]")!,
+    );
+    await screen.findByRole("dialog", { name: "area of triangles" });
+  };
+  const stack = () =>
+    document.querySelector("[data-layer-frame]")?.getAttribute("data-layers") ??
+    "";
+  await open();
+  expect(stack()).toBe("area:geometry,skill:area-of-triangles");
+  // ✕: the skill down, the area behind it again.
+  fireEvent.click(document.querySelector("[data-layer-close]")!);
+  await screen.findByRole("dialog", { name: "Geometry" });
+  expect(stack()).toBe("area:geometry");
+  // Escape: the same one step.
+  await open();
+  fireEvent.keyDown(document.querySelector("[data-layer-frame]")!, {
+    key: "Escape",
+  });
+  await screen.findByRole("dialog", { name: "Geometry" });
+  expect(stack()).toBe("area:geometry");
+  // The scrim is the page: the whole overlay away.
+  await open();
+  const scrim = document.querySelector("[data-layer-scrim]")!;
+  fireEvent.pointerDown(scrim, { button: 0 });
+  fireEvent.click(scrim, { button: 0 });
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  expect(useLayerStore.getState().stacks).toEqual({});
+});
+
 test("an area offers practice across the area, not only its nearest skill", async () => {
   practice.allowed = true;
   const source = areaSourceOf(record);

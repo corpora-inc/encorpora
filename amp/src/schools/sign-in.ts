@@ -31,6 +31,8 @@ import { recordEvent } from "./events.js";
 import { activeToday, studentInClassSql } from "./principal.js";
 import { generateJoinCode, type SchoolRepository } from "./repository.js";
 import { studentDeviceMode } from "./settings.js";
+import { readHere } from "./live/here.js";
+import { resolvePersonSignals } from "./live/signals.js";
 
 /** Five wrong tries pause one student, briefly: a child who forgot asks the
  * teacher, and a guesser gets almost nowhere. */
@@ -189,22 +191,32 @@ export class SchoolSignIn {
     };
   }
 
-  async picture(input: {
-    code: string;
-    personId: string;
-    pictures: SchoolPicture[];
-    set?: boolean;
-  }): Promise<StudentGrant> {
+  /** Shared code and roster check for pictures and forgotten-picture requests.
+   * The picture attempt keeps its timing work and failed-attempt accounting. */
+  async pictureStudent(
+    input: { code: string; personId: string },
+    pictures?: SchoolPicture[],
+  ): Promise<LiveClass> {
     const found = await this.prepareClass(input.code);
     const student = await this.pool.query(
       `SELECT p.id FROM ${STUDENTS_OF_CLASS} WHERE c.id=$1 AND p.id=$2 AND ${IN_CLASS}`,
       [found.id, input.personId],
     );
     if (!student.rowCount) {
-      await burn(input.pictures);
+      if (pictures) await burn(pictures);
       await this.classFailure(found);
       throw new SchoolError(422, "wrong_pictures");
     }
+    return found;
+  }
+
+  async picture(input: {
+    code: string;
+    personId: string;
+    pictures: SchoolPicture[];
+    set?: boolean;
+  }): Promise<StudentGrant> {
+    const found = await this.pictureStudent(input, input.pictures);
     let credential = await this.activePictures(input.personId);
     if (!credential) {
       if (!input.set) {
@@ -421,14 +433,15 @@ export class SchoolSignIn {
     if (!found) throw new SchoolError(404, "not_found");
   }
 
-  /** Who's here: a session seen since midnight at the school. A device that
-   * stayed signed in counts once it's been used today. */
+  /** Who's here, for the wall board: the cockpit's own rule (`readHere`,
+   * live/here.ts). In the class's running session, or their own sign-in
+   * seen in the last ten minutes; never "seen today". The board and the
+   * cockpit light the same students. */
   async presence(classId: string, canManage = false): Promise<Presence> {
     const found = await this.classInfo(classId);
+    const here = await readHere(this.pool, classId);
     const { rows } = await this.pool.query(
-      `SELECT p.id,${STUDENT_LABEL} AS name,
-         EXISTS(SELECT 1 FROM amp_student_sessions s WHERE s.person_id=p.id AND s.revoked_at IS NULL
-           AND s.last_seen_at>=(date_trunc('day',now() AT TIME ZONE o.timezone) AT TIME ZONE o.timezone)) AS here
+      `SELECT p.id,${STUDENT_LABEL} AS name
        FROM ${STUDENTS_OF_CLASS}
        WHERE c.id=$1 AND ${IN_CLASS} ORDER BY lower(${STUDENT_NAME}),p.id LIMIT ${ROSTER_LIMIT}`,
       [classId],
@@ -443,7 +456,7 @@ export class SchoolSignIn {
         practice: found.practice,
       },
       canManage,
-      students: rows,
+      students: rows.map((row) => ({ ...row, here: here.has(row.id) })),
     };
   }
 
@@ -538,6 +551,13 @@ export class SchoolSignIn {
         targetId: personId,
         detail: { before: { picturesSet: !!reset.rowCount } },
       });
+      await resolvePersonSignals(
+        client,
+        personId,
+        "forgot_picture",
+        "reset",
+        actorPersonId,
+      );
       return { reset: !!reset.rowCount };
     });
   }

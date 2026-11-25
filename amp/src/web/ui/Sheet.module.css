@@ -5,6 +5,15 @@
   background: var(--color-scrim);
   animation: fade 160ms ease-out;
 }
+/* One scrim, however deep: a layer frame (ui/LayerFrame) opened over a
+   page's own sheet draws none of its own. That sheet's scrim already dims
+   the page, and the frame's panel sits in the sheet's place at its size or
+   larger, so nothing outside the panel is left undimmed. Not over an
+   answer's replay, a screen of its own that the frame's scrim must dim. */
+body:has(> [data-sheet-scrim]) > .overlay[data-layer-scrim]:not([data-above]) {
+  background: transparent;
+  animation: none;
+}
 .sheet {
   --avatar-ring: var(--color-surface-raised);
   --target-size: 44px;

@@ -1,0 +1,77 @@
+/* The live cockpit's gallery documents: a page as a screen lays it out,
+   with its title, at the page's gutters. */
+.page {
+  --live-page-top: 100px;
+  box-sizing: border-box;
+  max-width: calc(var(--page-wide) + 2 * var(--page-gutter));
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: var(--space-5) var(--page-gutter) 0;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  /* As the app's own frame sets it (ui/PageFrame): words never break
+     inside themselves. */
+  overflow-wrap: normal;
+}
+.heading {
+  display: grid;
+  gap: 2px;
+  height: 64px;
+  margin-bottom: var(--space-3);
+}
+.heading h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-title-min);
+  font-weight: 500;
+  line-height: 1.15;
+}
+.heading p {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.player {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  min-height: 48px;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+.playerTitle {
+  margin-inline-end: auto;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-weight: 600;
+}
+.playerClock {
+  min-width: 9ch;
+  font-variant-numeric: var(--numeric);
+  text-align: end;
+}
+.page[data-play] {
+  --live-page-top: 96px;
+}
+.key {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.key li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.key strong {
+  display: block;
+}
+.means {
+  display: block;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}

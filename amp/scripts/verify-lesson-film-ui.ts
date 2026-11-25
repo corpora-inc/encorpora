@@ -6,6 +6,8 @@ import { chromium as rawChromium, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { startShellFixture } from "./app-shell-fixture";
 import { FILM_CAPABILITY, lessonFilms } from "../src/content/lesson-films";
+import { assertLookOnScreen, lookThemes, wearLook } from "./lib/fixture-look";
+import type { Look } from "../src/learning/look";
 
 const argument = (key: string) => {
   const i = process.argv.indexOf(`--${key}`);
@@ -27,8 +29,19 @@ async function ready(page: Page) {
     return button && !button.disabled;
   });
 }
-async function playAndSeek(page: Page) {
+/** The look the family's children wear, said by the check
+ * (lib/fixture-look.ts). Left unsaid it follows each child's grade, Colorful
+ * through grade 5, so the film a handed-over child opens was measured in
+ * whichever look their birth year gave that month. */
+async function wear(look: Look) {
+  for (const learner of [fixture.paid.jordan, fixture.paid.avery])
+    await wearLook(fixture.repository, fixture.paid.account, learner.id, look);
+}
+/** `look`: the one on screen for this opening. A parent's own screens are
+ * Calm; a child's practice, handed over, wears the child's. */
+async function playAndSeek(page: Page, look: Look) {
   await ready(page);
+  await assertLookOnScreen(page, look, "lesson film");
   const before = await geometry(page);
   await page.getByRole("button", { name: "Play", exact: true }).click();
   await page.waitForFunction(
@@ -50,11 +63,25 @@ async function playAndSeek(page: Page) {
   );
   assert.ok(await page.locator("#film .film-shot").count());
   const contrast = await page.evaluate(() => {
+    // A computed color is whatever notation its token was written in:
+    // rgb() in Calm, oklch() in Colorful. Reading the first three numbers
+    // of the string as red, green and blue made every Colorful color
+    // nearly black, and any two of them a contrast of 1.0001. Each color
+    // is painted and read back as sRGB instead.
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 1;
+    const pen = canvas.getContext("2d", { willReadFrequently: true })!;
     const luminance = (color: string) => {
-      const rgb = color
-        .match(/[\d.]+/g)!
-        .slice(0, 3)
-        .map(Number)
+      pen.clearRect(0, 0, 1, 1);
+      // A color the canvas can't read leaves the pen as it was: told apart.
+      pen.fillStyle = "#010203";
+      pen.fillStyle = color;
+      if (pen.fillStyle === "#010203")
+        throw new Error(`Not a color the canvas reads: ${color}`);
+      pen.fillRect(0, 0, 1, 1);
+      const [red, green, blue, alpha] = pen.getImageData(0, 0, 1, 1).data;
+      if (alpha !== 255) throw new Error(`Not an opaque color: ${color}`);
+      const rgb = [red!, green!, blue!]
         .map((n) => n / 255)
         .map((n) => (n <= 0.04045 ? n / 12.92 : ((n + 0.055) / 1.055) ** 2.4));
       return rgb[0]! * 0.2126 + rgb[1]! * 0.7152 + rgb[2]! * 0.0722;
@@ -64,23 +91,27 @@ async function playAndSeek(page: Page) {
         y = luminance(b);
       return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
     };
-    const ink = document.querySelector(
-      '.katex [style*="--color-figure-accent"]',
-    );
+    // Every colored ink of the equation on screen (film/stage.ts
+    // `mathInks`); the least readable one is the equation's contrast.
+    const ground = getComputedStyle(
+      document.querySelector(".live")!,
+    ).backgroundColor;
+    const inks = [
+      ...document.querySelectorAll('.katex [style*="--color-"]'),
+    ].map((ink) => ratio(getComputedStyle(ink).color, ground));
     const toggle = document.querySelector(".live-toggle")!;
     return {
-      equation: ink
-        ? ratio(
-            getComputedStyle(ink).color,
-            getComputedStyle(document.querySelector(".live")!).backgroundColor,
-          )
-        : 0,
+      accent: !!document.querySelector(
+        '.katex [style*="--color-figure-accent"]',
+      ),
+      equation: Math.min(...inks),
       control: ratio(
         getComputedStyle(toggle, "::before").backgroundColor,
         getComputedStyle(toggle).backgroundColor,
       ),
     };
   });
+  assert.ok(contrast.accent, "The equation on screen has colored ink");
   assert.ok(
     contrast.equation >= 4.5,
     `Colored equation contrast: ${contrast.equation}`,
@@ -108,7 +139,11 @@ async function playAndSeek(page: Page) {
   );
 }
 try {
-  for (const theme of ["light", "dark"] as const)
+  // Colorful once (one scheme under a device's light and dark), at the two
+  // widths that walk the whole journey; then Calm in light and in dark at
+  // every width, as this check always ran.
+  for (const { look, theme, name } of lookThemes()) {
+    await wear(look);
     for (const viewport of [
       { width: 320, height: 640 },
       { width: 390, height: 844 },
@@ -116,8 +151,9 @@ try {
       { width: 1280, height: 800 },
     ].filter(
       (viewport) =>
-        !argument("widths") ||
-        argument("widths")!.split(",").includes(String(viewport.width)),
+        (look === "calm" || [390, 1280].includes(viewport.width)) &&
+        (!argument("widths") ||
+          argument("widths")!.split(",").includes(String(viewport.width))),
     )) {
       const context = await fixture.context(browser, "paid", {
         viewport,
@@ -163,7 +199,8 @@ try {
         loadingBar,
         "Loading must not move controls",
       );
-      await playAndSeek(page);
+      // The parent's own screen: Calm, whatever their children wear.
+      await playAndSeek(page, "calm");
       assert.equal(
         await page.evaluate(
           () => document.documentElement.scrollWidth > innerWidth,
@@ -228,12 +265,16 @@ try {
           .getByRole("dialog")
           .getByRole("link", { name: /Watch lesson/ })
           .click();
-        await playAndSeek(page);
+        await playAndSeek(page, look);
         assert.equal(
           await page.locator("dialog:modal").count(),
           0,
           "A lesson sheet cannot trap focus behind the film",
         );
+        // The child's film, in the child's look.
+        await page.screenshot({
+          path: `${shots}/film-child-${viewport.width}-${name}.png`,
+        });
         // Closing the film returns to the problem it opened over.
         await page
           .getByRole("link", { name: "Close film", exact: true })
@@ -268,19 +309,30 @@ try {
         );
         await page.goto(`${fixture.origin}/lessons/browser-film-only/watch`);
         await ready(page);
-        await playAndSeek(page);
+        await playAndSeek(page, look);
       }
-      assert.deepEqual(
-        errors,
-        [],
-        `Browser errors: ${viewport.width} ${theme}`,
-      );
+      assert.deepEqual(errors, [], `Browser errors: ${viewport.width} ${name}`);
       await context.close();
       console.log(
-        `PASS ${viewport.width}px ${theme}: playback, seeking, return, stable geometry`,
+        `PASS ${viewport.width}px ${name}: playback, seeking, return, stable geometry`,
       );
     }
+  }
 } finally {
-  await browser.close();
-  await fixture.close();
+  // Teardown is bounded. On the CI runner one of these closes never settled
+  // after every case had passed, and the lane ran to its 75-minute limit
+  // with the later checks unrun.
+  const closed = (async () => {
+    await browser.close();
+    await fixture.close();
+    return true;
+  })();
+  const waited = new Promise<false>((resolve) =>
+    setTimeout(() => resolve(false), 30_000).unref(),
+  );
+  if (!(await Promise.race([closed, waited])))
+    console.warn("Lesson film check: teardown did not finish in 30 s; exiting");
 }
+// Every case passed (a failure above has already thrown): leave now, whatever
+// handle a close left open.
+process.exit(0);

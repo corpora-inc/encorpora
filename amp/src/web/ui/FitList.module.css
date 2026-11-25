@@ -1,0 +1,6 @@
+/* How many names a fitted list leaves out (FitList.tsx): one piece, never
+   broken across lines, a little heavier than the names before it. */
+.more {
+  font-weight: 600;
+  white-space: nowrap;
+}

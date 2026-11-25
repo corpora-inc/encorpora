@@ -127,7 +127,8 @@ await registerAnalyticsRoutes(api, { pool: db, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-teacher-in-class",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-teacher-in-class",
   server: {
     host: "127.0.0.1",
     port: webPort,

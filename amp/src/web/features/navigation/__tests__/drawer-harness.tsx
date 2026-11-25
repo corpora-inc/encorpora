@@ -57,6 +57,22 @@ vi.mock("../../spaces/useSpace", () => ({
   useLocationMatch: () => ({ pathname: harness.pathname.value }),
   useSpace: () => null,
 }));
+// The learner's look setting reads the server; practice/__tests__/look.test.tsx
+// covers it.
+vi.mock("../../practice/LookSetting", () => ({
+  LookSetting: () => <div data-testid="look-setting" />,
+}));
+vi.mock("../../../lib/session", async (actual) => ({
+  ...(await actual<typeof import("../../../lib/session")>()),
+  useSessionOrNull: () => null,
+}));
+vi.mock("../../spaces/useAddressed", () => ({
+  useAddressedIdentity: () => null,
+}));
+vi.mock("../../../learner-store", async (actual) => ({
+  ...(await actual<typeof import("../../../learner-store")>()),
+  useCurrentLearner: () => null,
+}));
 vi.mock("../PlaceSwitcher", () => ({
   usePlaces: () => ({
     groups: harness.groups.value,

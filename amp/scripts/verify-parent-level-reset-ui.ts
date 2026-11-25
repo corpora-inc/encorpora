@@ -8,7 +8,8 @@
  *      the child's page and its Settings: "Practice level", "Now: …",
  *      "resets to Grade …", and Reset.
  *   2. Reset opens one confirmation with the level now, where it starts
- *      again, and that XP and skill history stay. Reset level resets it.
+ *      again, and that XP and skill history stay. A save that fails says
+ *      so there and retries in place; Reset level resets it, once.
  *   3. Without a reload, the row says "Not measured yet", the child's
  *      estimates wait for new answers, and Pathways marks no "Where you
  *      are": every view reads the one refreshed store.
@@ -325,10 +326,47 @@ async function journey(
   await resetRecord(page);
   await measured(page, `${label} confirmation`);
   await shot(page, "confirm", width, theme, true);
+  // A save that fails says so in the confirmation, which stays open; the
+  // same button tries again, and the level is reset once.
+  const epochOf = async () =>
+    (
+      await db.query<{ epoch: number }>(
+        "SELECT (state->>'epoch')::int AS epoch FROM amp_practice_settings WHERE learner_id=$1",
+        [maya],
+      )
+    ).rows[0]?.epoch ?? 0;
+  const epoch = await epochOf();
+  let failSave = true;
+  const saves = "**/api/v1/learners/*/practice-state";
+  await page.route(saves, async (route) => {
+    if (failSave && route.request().method() === "POST") {
+      failSave = false;
+      await route.fulfill({
+        status: 503,
+        json: { message: "Practice could not be saved. Try again." },
+      });
+    } else await route.continue();
+  });
+  await dialog
+    .getByRole("button", { name: "Reset level", exact: true })
+    .click();
+  await dialog.getByRole("alert").waitFor();
+  check(
+    `${label} a failed save resets nothing and says so`,
+    (await epochOf()) === epoch &&
+      (await dialog.getByRole("alert").innerText()).includes("Try again"),
+    await dialog.getByRole("alert").innerText(),
+  );
   await dialog
     .getByRole("button", { name: "Reset level", exact: true })
     .click();
   await dialog.waitFor({ state: "detached" });
+  await page.unroute(saves);
+  check(
+    `${label} the retry resets the level once`,
+    (await epochOf()) === epoch + 1,
+    await epochOf(),
+  );
 
   // 3. Every view reads the refreshed store, without a reload.
   await row

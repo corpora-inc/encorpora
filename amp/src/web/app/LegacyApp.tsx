@@ -11,7 +11,10 @@ import {
   usePracticeAdjustment,
   type PracticeIntent,
 } from "../features/practice/practice-settings";
+import type { ShownLook } from "../../learning/look";
+import { useLook } from "../features/practice/look";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
+import { useStudentStream } from "../features/live/RaiseHandSlot";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
 import { learnerFrontierOptions } from "../lib/learning-view";
 import { forSession, useSessionOrNull } from "../lib/session";
@@ -95,6 +98,7 @@ import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
 import { AnswerFeedback } from "../features/practice/AnswerFeedback";
+import { Celebration } from "../features/practice/celebration/Celebration";
 import { ProblemGrade } from "../features/practice/ProblemGrade";
 import { PracticeWorkspace, usePracticeViewport } from "../PracticeWorkspace";
 import {
@@ -136,7 +140,13 @@ import { Home, type FrontierMap } from "../Home";
 import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
-import { AllowancePause } from "../features/continue/AllowancePause";
+import {
+  AllowancePause,
+  type HandedPause,
+} from "../features/continue/AllowancePause";
+import { learnerOrigin } from "../features/pay/address";
+import { takeDeviceBack } from "../lib/family-practice-history";
+import { handedChildPage } from "../lib/student-device";
 import { StudentWaiting } from "../features/practice/StudentWaiting";
 import {
   LessonDownloadMenu,
@@ -145,6 +155,7 @@ import {
 } from "../features/lessons/LessonPrint";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
+import { logAhead } from "../lib/ahead";
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -261,6 +272,16 @@ function practiceLearner(
     learners.find((entry) => entry.adult && !entry.simulation) ??
     null
   );
+}
+
+/** The pause's offer on a parent's device handed to their child: the
+ * child's page, and the device taken back on the way to it. */
+function handedPause(
+  student: boolean,
+  learnerId: string,
+): HandedPause | undefined {
+  const childPage = student ? handedChildPage(learnerId) : null;
+  return childPage ? { childPage, takeBack: takeDeviceBack } : undefined;
 }
 export function LegacyApp() {
   // Its route made sure of the session first (app/router.tsx appScreen); a
@@ -511,13 +532,22 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     upcoming.current = null;
     navigationEpoch.current++;
   }, [filterKey]);
-  // Loaded with the first practice problem (and only then), so a focused
-  // skill's "Mixed practice" action is already known when that problem's
-  // feedback opens.
+  // One read of the learner's practice-state per practice: the look needs it
+  // before the first problem paints, and a focused skill's "Mixed practice"
+  // action is then already known when that problem's feedback opens. Both
+  // readers share one condition: a reader enabled later finds the read
+  // stale (staleTime 0) and asks the server again.
+  const readsPractice = !!learner && !nativeRuntime && tab === "practice";
   const practiceSettings = useQuery({
     ...practiceSettingsOptions(adjustments.scope),
-    enabled: !!learner && !nativeRuntime && tab === "practice" && !!problem,
+    enabled: readsPractice,
   });
+  // The look for this learner's practice (`data-look` on <html> while here).
+  const practiceLook = useLook(adjustments.scope, readsPractice);
+  // A student's one stream, for as long as practice is on screen: here,
+  // above the workspace that mounts anew for each problem, so a new problem
+  // opens no stream (features/live/RaiseHandSlot.tsx).
+  useStudentStream(readsPractice);
   const [books, setBooks] = useState<BookSummary[]>([]);
   const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
@@ -644,6 +674,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       response: string;
       hintViewed?: boolean;
       help?: ("hint" | "lesson" | "video" | "example")[];
+      look?: ShownLook;
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
@@ -1153,7 +1184,9 @@ function LegacyScreen({ owner }: { owner: string | null }) {
           ? focusSkill
           : catalog?.templates.find((t) => t.id === templateId)?.skillId;
       if (skillId !== undefined) {
-        const saved = await adjustments.change({ kind: "focus", skillId });
+        // What was just opened is the newest choice: held over anything
+        // saved for this learner meanwhile (practice-settings.ts `hold`).
+        const saved = await adjustments.hold(skillId);
         if (!saved || !current()) return;
       }
     }
@@ -1228,7 +1261,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     const navigation = ++navigationEpoch.current;
     // Asked ahead and failed: ask again now (loadBatch shows a failure).
     const data = await ready.batch.catch((error: unknown) => {
-      console.warn("The next problems did not arrive ahead", error);
+      logAhead("The next problems did not arrive ahead", error);
       return null;
     });
     if (navigation !== navigationEpoch.current || learnerNow() !== learner.id)
@@ -1246,6 +1279,8 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       response,
       ...(problem.hintSupport && hint ? { hintViewed: true } : {}),
       ...(help.length ? { help } : {}),
+      // The look actually shown, once known (older servers ignore it).
+      ...(practiceLook.shown ? { look: practiceLook.shown } : {}),
     };
     setPending(attempt);
     try {
@@ -1262,7 +1297,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
       if (practiceAnswers.current < 100_000) practiceAnswers.current += 1;
       upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
       upcoming.current.batch.catch((error: unknown) =>
-        console.warn("The next problems did not load ahead", error),
+        logAhead("The next problems did not load ahead", error),
       );
       answered(learner.id);
       void refreshProgress().catch((error) =>
@@ -1305,7 +1340,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
     upcoming.current.batch.catch((error: unknown) =>
-      console.warn("The next problems did not load ahead", error),
+      logAhead("The next problems did not load ahead", error),
     );
     answered(learner.id);
     void refreshProgress().catch((error) =>
@@ -1884,6 +1919,15 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             kind="problems"
             viewer={pauseViewer}
             learner={{ id: learner.id, name: learner.name }}
+            // On a parent's device the grown-up holding it continues AMP
+            // from here; a child's practice is the child's own sign-in, so
+            // a parent who pays returns to the child's page.
+            handed={handedPause(student, learner.id)}
+            returnTo={
+              pauseViewer === "parent" && account?.signedIn
+                ? learnerOrigin(account, learner.id)
+                : undefined
+            }
           />
         ) : problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
@@ -1972,6 +2016,7 @@ function LegacyScreen({ owner }: { owner: string | null }) {
             response={response}
             setResponse={setResponse}
             outcome={outcome}
+            celebration={<Celebration outcome={outcome} problem={problem} />}
             answerFeedback={
               outcome &&
               catalog &&

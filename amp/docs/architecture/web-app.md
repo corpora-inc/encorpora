@@ -62,11 +62,11 @@ amp/src/web/
 One frame wraps every signed-in app screen. It is mounted once at the router's root, so its bar and drawer never remount between screens (#2062).
 
 - **The logo** (the wave and "AMP") sits in the same top-left spot on every framed screen and size. It is always the button that opens and closes the one drawer, which opens with the same logo in the same spot as its close control.
-- **The bar:** the logo, the group's tabs (`ui/Tabs.tsx`, one style for every group; one row, scrolling on a phone, a second row below 640 px), and one action at the right edge. Practice is the same bar with its topic and tools beside the logo and no tabs.
+- **The bar:** the logo, the group's tabs (`ui/Tabs.tsx`, one style for every group; one row, scrolling on a phone, a second row below 640 px), and one action at the right edge. Practice is the same bar with its topic and tools beside the logo and no tabs: only the problem's tools, never a name or Sign out, which are the drawer's there.
 - **Groups** (`features/navigation/shell-frame.ts`): Progress is Overview (`/overview`, `/me` for an adult's own practice, `/try/map` for the free assessment), Pathways and Inventory. Account is Profile & sign-in, Family, Billing and Privacy (`/family/{security,learners,access,privacy}`). Lessons and the older progress list get the bar with the logo alone. The pitch, sign-in, `/start`, `/try` practice, joining a class and school screens keep frames of their own; school and class screens are the next to move.
 - **The drawer:** where you are (place and learner) at the top, one link per group, the screen's own settings, and who is signed in with Sign out at its foot. It reads only data the screen already loaded.
 - **The frame follows the screen that is rendered**, not the URL being loaded, so a route that redirects never flashes a bar. Screens on the frame know the session before they paint.
-- **A screen's own controls** reach the frame through `lib/shell-slots.ts`: practice portals its topic and calculator into the bar and its adjustments into the drawer.
+- **A screen's own controls** reach the frame through `lib/shell-slots.ts`: practice portals its topic and calculator into the bar, its adjustments into the drawer, and a student's raised hand into the drawer's rows while no session runs (`features/live/RaiseHand.tsx`; while one runs the hand is in the bar).
 - **Holding still** is a browser check: `scripts/verify-app-shell-stability.ts` fails on a moved logo or tab, a remounted bar, layout shift, a resource requested twice while a screen loads, or text that changes without input.
 
 ## The account state is one server resource

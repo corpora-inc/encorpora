@@ -3,6 +3,7 @@ import type { Actor, SchoolTarget } from "./authz.js";
 import { can } from "./authz.js";
 import {
   classExperienceWriteSchema,
+  classLockable,
   experienceKeys,
   leaveOffSchema,
   orgExperienceWriteSchema,
@@ -16,11 +17,13 @@ import {
 import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
+import { noteScopeSettings } from "./live/events.js";
 import { activeToday } from "./principal.js";
 import type { SchoolRepository } from "./repository.js";
 import {
   assertSettingsWritable,
   resolveSettings,
+  storedLook,
   SettingLockedError,
   standingsScopes,
   type SchoolSettings,
@@ -119,6 +122,11 @@ export async function experienceView(
     },
     canEdit: edit,
     canLock: edit && target.kind === "org",
+    lockable: !edit
+      ? []
+      : target.kind === "org"
+        ? [...experienceKeys]
+        : [...classLockable],
     // A family's or tutor's class has only its own board: there is no
     // school or district around it.
     standingsOptions: standingsScopes.filter((scope) =>
@@ -131,6 +139,7 @@ export async function experienceView(
       standings: setting("standings"),
       measure: setting("measure"),
       deviceMode: setting("deviceMode"),
+      look: setting("look"),
     },
     ...(students ? { students } : {}),
     ...(own ? { teacherLine: { shown: own.shown } } : {}),
@@ -216,9 +225,9 @@ export async function writeExperience(
   const input =
     target.kind === "org"
       ? orgExperienceWriteSchema.parse(raw)
-      : { ...classExperienceWriteSchema.parse(raw), locks: undefined };
+      : classExperienceWriteSchema.parse(raw);
   const values = input.values ?? {};
-  const locks = input.locks ?? {};
+  const locks: Partial<Record<ExperienceKey, boolean>> = input.locks ?? {};
   const touched = experienceKeys.filter(
     (key) => values[key] !== undefined || locks[key] !== undefined,
   );
@@ -246,6 +255,23 @@ export async function writeExperience(
       if (locks[key] === true) nextLocked.add(key);
       if (locks[key] === false) nextLocked.delete(key);
     }
+    // The look is "Allow Colorful": a scope keeps Calm, held (off), or
+    // nothing. A hold sent with Colorful is dropped, and choosing Colorful
+    // over a held Calm frees it in the same write (settings.ts `storedLook`).
+    if (touched.includes("look")) {
+      const look = storedLook(
+        nextValues.look,
+        nextLocked.has("look"),
+        resolveSettings(above).look.value,
+      );
+      if (look.held) {
+        nextValues.look = look.value;
+        nextLocked.add("look");
+      } else {
+        delete nextValues.look;
+        nextLocked.delete("look");
+      }
+    }
     const pick = (from: Record<string, unknown>) =>
       Object.fromEntries(touched.map((key) => [key, from[key] ?? null]));
     const lockedKeys = [...nextLocked].sort();
@@ -268,6 +294,15 @@ export async function writeExperience(
         },
       });
       clearStandingsCache();
+      // "Allow Colorful" reaches the screens already open: every student
+      // at or under this scope reads their settings again (live/events.ts).
+      if (touched.includes("look"))
+        await noteScopeSettings(
+          client,
+          target.kind === "class"
+            ? { kind: "class", classId: target.classId }
+            : { kind: "org", orgId: target.orgId },
+        );
     }
     return experienceView(client, actor, target);
   });

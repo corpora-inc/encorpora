@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
+import { defineConfig, searchForWorkspaceRoot } from "vite";
 import type { Plugin } from "vite";
 import react from "@vitejs/plugin-react";
-import { readFileSync } from "node:fs";
+import { readFileSync, realpathSync } from "node:fs";
 import { extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -68,6 +68,45 @@ const devFixtures: Plugin = {
         return;
       }
       response.end(bytes);
+    });
+  },
+};
+
+/** The site's raster icons (`/favicon.ico`, the touch icon, the manifest's):
+ * the build generates them into `dist` from `public/favicon.svg`
+ * (scripts/build-site-icons.ts), and `index.html` names them on every page.
+ * The development server serves the same bytes from the same code, so a
+ * preview's pages don't ask for an icon that isn't there (a 404, and an
+ * error in every console a check or a recording reads). */
+const devSiteIcons: Plugin = {
+  name: "amp-dev-site-icons",
+  apply: "serve",
+  configureServer(server) {
+    let built: Promise<Map<string, Buffer>> | undefined;
+    server.middlewares.use((request, response, next) => {
+      const name = (request.url ?? "").split("?")[0]!.slice(1);
+      if (!/^(?:favicon\.ico|[a-z0-9-]*icon[a-z0-9-]*\.png)$/.test(name))
+        return next();
+      built ??= import("./scripts/site-icons.ts").then(
+        ({ siteIcons }) =>
+          new Map(
+            siteIcons(
+              readFileSync(
+                fileURLToPath(new URL("public/favicon.svg", import.meta.url)),
+                "utf8",
+              ),
+            ),
+          ),
+      );
+      built.then((icons) => {
+        const bytes = icons.get(name);
+        if (!bytes) return next();
+        response.setHeader(
+          "Content-Type",
+          name.endsWith(".ico") ? "image/x-icon" : "image/png",
+        );
+        response.end(bytes);
+      }, next);
     });
   },
 };
@@ -185,6 +224,23 @@ const noRegexLookbehind: Plugin = {
   },
 };
 
+/** Where this checkout's packages really are. A worktree may link its
+ * `node_modules` to another checkout's install (a round's workers share
+ * one), and the dev server names a file there by its real path, outside
+ * this checkout: KaTeX's less common fonts (Size1, AMS), which only its
+ * stylesheet asks for, then answer 403 and math falls back to another
+ * face. Allowed by name, they load. A build never reads this. */
+const installedPackages = (() => {
+  try {
+    return [
+      realpathSync(fileURLToPath(new URL("node_modules", import.meta.url))),
+    ];
+  } catch {
+    // No install here (a tool reading the config): nothing more to allow.
+    return [];
+  }
+})();
+
 export default defineConfig({
   // A long-running server can keep its prebundled dependencies to itself.
   // Two dev servers sharing one cache rewrite each other's chunks, and pages
@@ -193,6 +249,7 @@ export default defineConfig({
   plugins: [
     serverOnlyCrypto,
     devFixtures,
+    devSiteIcons,
     previewPrices,
     devNewUserPlugin,
     sceneArtFiles,
@@ -230,6 +287,12 @@ export default defineConfig({
     // past the system's watch limit (ENOSPC), ending whole lanes.
     ...(process.env.CI ? { watch: null } : {}),
     port: Number(process.env.AMP_WEB_PORT ?? 4310),
+    fs: {
+      allow: [
+        searchForWorkspaceRoot(fileURLToPath(new URL(".", import.meta.url))),
+        ...installedPackages,
+      ],
+    },
     proxy: {
       "/api": `http://127.0.0.1:${process.env.AMP_API_PORT ?? 4311}`,
     },

@@ -10,13 +10,21 @@ import { isStudentDevice, studentSession } from "./student-device";
 import { HelpQueue, onHelp } from "./help-events";
 import type { HelpEvent } from "../../schools/help-contracts";
 
-/** Active time for a learner's own record, the same for every learner: a
- * school or family-class student's session sends to the school's activity
- * route, and an account sends for whichever of its learners is chosen (a
- * child, its adult, a practice profile). Not analytics: it is the learner's
- * record, so it ignores DNT and GPC, and it carries no identifiers beyond the
- * sign-in and the learner. Time counts only while the page is visible and the
- * learner has touched it within the last minute. */
+/** Active time for a learner's own record, credited to whoever the tab is
+ * (lib/student-device.ts: one tab is one person):
+ *
+ * - A student's tab, a child's own sign-in or a device a parent handed over
+ *   ("Practice"), sends the child's time to the school's activity route.
+ * - An adult's tab sends only the adult's own: their own practice, or a
+ *   practice profile of theirs, when that is the learner chosen. It never
+ *   sends for a child, whatever is on screen: a parent reading a child's
+ *   page, Pathways, a lesson or a film with that child chosen is not the
+ *   child. The server holds the same line (`recordLearnerActivity`).
+ *
+ * Not analytics: it is the learner's record, so it ignores DNT and GPC, and
+ * it carries no identifiers beyond the sign-in and the learner. Time counts
+ * only while the page is visible and the learner has touched it within the
+ * last minute. */
 type Surface =
   | "practice"
   | "lesson"
@@ -40,6 +48,9 @@ type Activity = {
 };
 const idle: Activity = { navigate: () => {}, flush: () => {}, stop() {} };
 const SEND_EVERY_MS = 30_000;
+/** Help reaches the server this soon after it is opened, not at the next
+ * heartbeat: a teacher's live screen shows it as it happens. */
+export const HELP_SEND_AFTER_MS = 1_500;
 const MAX_DELTAS = 10;
 
 export function surfaceOf(path: string): Surface {
@@ -97,10 +108,11 @@ export function startStudentActivity(): Activity {
   });
 }
 
-/** Where an account's time goes: the learner it has chosen (or `pick`
- * picks), when that is one it practices as (its children, its adult, its
- * practice profiles). A student session's time is the session's, never the
- * account's. */
+/** Where an adult's tab sends time: the learner it has chosen (or `pick`
+ * picks), when that learner is the adult's own, their adult practice or a
+ * practice profile of theirs. A child of the account is never one: a child's
+ * time is sent only by a tab that is the child's. A student session's time
+ * is the session's, never the account's. */
 function chosenLearner(
   pick: (accountId: string) => string | null = currentLearner,
 ): Destination {
@@ -112,9 +124,8 @@ function chosenLearner(
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
   const learnerId = pick(session.accountId);
   if (!me?.signedIn || !learnerId) return null;
-  // One it practices as (`practiceLearners`), by id alone.
-  return me.learners.some((learner) => learner.id === learnerId) ||
-    me.adultPractice?.learner?.id === learnerId ||
+  // The adult's own, by id alone; `me.learners` are its children.
+  return me.adultPractice?.learner?.id === learnerId ||
     !!me.practiceProfiles?.some((profile) => profile.id === learnerId)
     ? {
         url: `/api/v1/learners/${encodeURIComponent(learnerId)}/activity`,
@@ -123,12 +134,12 @@ function chosenLearner(
     : null;
 }
 
-/** A learner's time on an account: practice, lessons, help and the map,
- * while that learner is the one chosen. The family's screens, a school's and
- * a record are not practice. Choosing another learner first sends the time
- * so far to the one it was counted for. The native app sends its answers
- * through its own session, which has no activity route yet, so its time is
- * not counted. */
+/** An adult's own time on their account: practice, lessons, help and the
+ * map, while their own learner (or a practice profile) is the one chosen.
+ * The family's screens, a school's and a record are not practice. Choosing
+ * another learner first sends the time so far to the one it was counted
+ * for. The native app sends its answers through its own session, which has
+ * no activity route yet, so its time is not counted. */
 export function startLearnerActivity(): Activity {
   if (isStudentDevice() || nativeRuntime) return idle;
   const activity = startActivity(
@@ -182,7 +193,23 @@ export function startActivity(
   };
   const queue: Delta[] = [];
   const help = new HelpQueue();
-  const unsubscribe = onHelp((note, at) => help.push(note, at));
+  /** The early send for help, when one is waiting. */
+  let helpTimer: ReturnType<typeof setTimeout> | undefined;
+  /** Help sends within `HELP_SEND_AFTER_MS` of the first note since the last
+   * send, so several opens go in one request. It is the heartbeat itself
+   * (`send`): the deltas counted so far ride with it and the server's clock
+   * moves with them, so a learner's credit is the same whenever it is sent. */
+  function sendHelpSoon() {
+    if (helpTimer !== undefined || stopped) return;
+    helpTimer = setTimeout(() => {
+      helpTimer = undefined;
+      void send(false);
+    }, HELP_SEND_AFTER_MS);
+  }
+  const unsubscribe = onHelp((note, at) => {
+    help.push(note, at);
+    sendHelpSoon();
+  });
   const visible = () =>
     document.visibilityState === "visible" && document.hasFocus();
   let clock = new EngagementClock(performance.now(), visible());
@@ -225,6 +252,11 @@ export function startActivity(
       }
       return;
     }
+    // Anything sent now answers the early send that was waiting.
+    if (helpTimer !== undefined) {
+      clearTimeout(helpTimer);
+      helpTimer = undefined;
+    }
     const takenAt = performance.now();
     const batches: { deltas: Delta[]; events: HelpEvent[] }[] = [];
     do
@@ -233,6 +265,8 @@ export function startActivity(
         events: help.take(takenAt),
       });
     while (flushing && (queue.length || help.size));
+    // More help than one request carries goes in the next early send.
+    if (!flushing && help.size) sendHelpSoon();
     for (const { deltas, events } of batches)
       try {
         const response = await requestFetch(target.url, {
@@ -317,6 +351,7 @@ export function startActivity(
       running.delete(watcher);
       unsubscribe();
       clearInterval(timer);
+      if (helpTimer !== undefined) clearTimeout(helpTimer);
       for (const e of interactions) window.removeEventListener(e, interact);
       window.removeEventListener("focus", interact);
       window.removeEventListener("blur", leave);

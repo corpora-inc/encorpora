@@ -69,9 +69,22 @@ test("CP-2 r2 H2: the content guard keeps out a refused or failed place", () => 
   ).toBe("failed");
   expect(blockedBy(ready)).toBeNull();
   expect(blockedBy(loading)).toBeNull();
-  const foreign = resolveSpace(
-    { pathname: "/pathways", search: { learner: "stranger" } },
-    { kind: "adult", me: null, learnerId: "pip" },
-  );
-  expect(blockedBy(foreign)).toBe("unavailable");
+  const foreign = (me: unknown) =>
+    resolveSpace(
+      { pathname: "/pathways", search: { learner: "stranger" } },
+      { kind: "adult", me: me as null, learnerId: "pip" },
+    );
+  // Before the account answers, whose learner this is isn't known: the
+  // screen waits, never "not available" to its own parent (2026-11-20).
+  expect(blockedBy(foreign(null))).toBeNull();
+  expect(
+    blockedBy(
+      foreign({
+        signedIn: true,
+        account: { id: "a", kind: "adult" },
+        learners: [],
+        family: { learners: [] },
+      }),
+    ),
+  ).toBe("unavailable");
 });

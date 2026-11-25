@@ -3,6 +3,9 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { standing } from "../../../../lib/AppError";
 import { Button, buttonClass } from "../../../../ui/Button";
+import { formatJoinCode } from "../../../../../schools/contracts";
+import { CopyButton } from "../../parts";
+import { joinLink } from "../../join/JoinWays";
 import { currentSession } from "../../api";
 import { orgPath } from "../../paths";
 import {
@@ -31,7 +34,14 @@ const WIDEST = "WWWWWW";
  * copy of the code row on the widest code holds the height; each state sits
  * over it in the same two rows (one row wider up), so no transition moves
  * anything below and no state leaves an empty band. */
-export function PracticeSlot(props: CodeProps) {
+export function PracticeSlot({
+  live = false,
+  ...props
+}: CodeProps & {
+  /** The cockpit shows a session: on a phone the code takes one short row
+   * (the roster needs the room). Wider screens are unchanged. */
+  live?: boolean;
+}) {
   const { place } = props;
   const access = useClassAccess(place);
   const session = currentSession();
@@ -95,7 +105,12 @@ export function PracticeSlot(props: CodeProps) {
     shown = <Placeholder />;
   } else if (code && !access.closed) {
     state = "open";
-    shown = <SignInCode {...props} code={code} />;
+    shown = (
+      <>
+        <SignInCode {...props} code={code} />
+        {live && <LiveCode place={place} code={code} board={props.board} />}
+      </>
+    );
   } else if (read === null || access.unavailable) {
     // Refused, or where practice stands couldn't be read.
     state = "unavailable";
@@ -179,11 +194,56 @@ export function PracticeSlot(props: CodeProps) {
     shown = <Line title="Couldn’t check practice" action={tryAgain} />;
   }
   return (
-    <div className={styles.codeSlot} data-code-slot={state}>
+    <div
+      className={styles.codeSlot}
+      data-code-slot={state}
+      data-live-slot={
+        live && (state === "open" || state === "checking") ? state : undefined
+      }
+    >
       <div className={styles.codeSlotHold} aria-hidden="true" inert>
         <SignInCode {...props} code={WIDEST} />
       </div>
       <div className={styles.codeSlotShown}>{shown}</div>
+    </div>
+  );
+}
+
+/** The code in one short row, for a phone while a session runs: the code,
+ * Copy link and, where the bar doesn't offer it, Full screen. Shown in the
+ * place of the code's two rows (Today.module.css); wider screens never see
+ * it. */
+function LiveCode({
+  place,
+  code,
+  board,
+}: {
+  place: { org: string; class: string };
+  code: string;
+  board: boolean;
+}) {
+  return (
+    <div className={styles.liveCode} data-live-code="">
+      <span className={styles.liveCodeLabel}>Code</span>
+      <strong className={styles.liveCodeValue}>{formatJoinCode(code)}</strong>
+      <CopyButton
+        text={joinLink(code)}
+        label="Copy link"
+        copied="Link copied"
+        className={styles.liveCopy}
+      />
+      {board && (
+        <Link
+          to="/school/$org/classes/$class/start"
+          params={place}
+          className={styles.liveBoard}
+          aria-label="Full screen"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+          </svg>
+        </Link>
+      )}
     </div>
   );
 }

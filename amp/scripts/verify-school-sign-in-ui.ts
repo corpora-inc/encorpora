@@ -57,10 +57,16 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/school-sign-in";
 const ARTIFACTS = "artifacts/school-sign-in";
-const webPort = 4396,
-  apiPort = 4397,
+// `AMP_WEB_PORT` (the API takes the next one) keeps parallel local runs apart.
+const webPort = Number(process.env.AMP_WEB_PORT ?? 4396),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
+/** A student's practice, at its own address (`/practice/<learner>`). */
+const PRACTICE = /\/practice(\/[^/?#]+)?$/;
 const TEACHER = "development-household";
+/** What a class's student reads once five wrong tries have paused their
+ * sign-in (features/school/join/PicturesScreen.tsx). */
+const LOCKED = "Ask your teacher to reset your pictures.";
 const MINE = ["Fox", "Boat", "Kite"];
 const WRONG = ["Owl", "Frog", "Sun"];
 const NAMES = [
@@ -113,7 +119,8 @@ await registerAnalyticsRoutes(api, { pool: db, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-sign-in",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-sign-in",
   server: {
     host: "127.0.0.1",
     port: webPort,
@@ -309,7 +316,9 @@ async function sweep(
     await settled(page);
     await geometry(page, `${label} join`);
     await shoot(page, engine, "join", width, theme);
-    const input = page.getByLabel("Code", { exact: true });
+    // The field is named "Code" whatever it holds: the drawn tiles are not
+    // part of its name.
+    const input = page.getByRole("textbox", { name: "Code", exact: true });
     const layout = "h1, label, button";
     const before = await boxes(page, layout);
     await input.fill("zzz-zzz");
@@ -382,7 +391,7 @@ async function sweep(
     await heading(page, /Pick 3 pictures/).waitFor();
     await pick(page, MINE);
     await tap(page, "These are mine");
-    await page.waitForURL("**/practice");
+    await page.waitForURL(PRACTICE);
     await firstProblem(page);
     await settled(page);
     await shoot(page, engine, "practice", width, theme);
@@ -402,7 +411,25 @@ async function sweep(
       practice.smallTargets.length === 0,
       practice.smallTargets,
     );
-    await page.getByRole("button", { name: "Sign out" }).waitFor();
+    // A problem's bar holds only the problem's tools: Sign out is the
+    // menu's, one tap away, under the student's name.
+    check(
+      `${label} practice bar has no Sign out`,
+      (await page
+        .locator("header[data-app-bar]")
+        .getByRole("button", { name: /^Sign out/ })
+        .count()) === 0,
+    );
+    await page.locator("header [data-navigation-trigger]").click();
+    const menu = page.getByRole("dialog");
+    await menu.getByRole("button", { name: /^Sign out/ }).waitFor();
+    await menu.getByText("Signed in as", { exact: true }).waitFor();
+    check(
+      `${label} one Sign out on practice`,
+      (await page.getByRole("button", { name: /^Sign out/ }).count()) === 1,
+    );
+    await page.keyboard.press("Escape");
+    await menu.waitFor({ state: "detached" });
 
     // Back from practice goes to the class, whichever way it came.
     await page.goBack();
@@ -437,7 +464,8 @@ async function sweep(
     const body = await page.locator("main").innerText();
     check(`${label} no tries left`, !/\d+ (tries|more|left)/i.test(body), body);
     await pick(page, WRONG);
-    await heading(page, "Ask your teacher").waitFor();
+    // The fifth wrong try pauses this student: the title says who can help.
+    await heading(page, LOCKED).waitFor();
     await settled(page);
     sameBoxes(`${label} locked`, start, await boxes(page, stable));
     check(
@@ -470,7 +498,9 @@ async function sweep(
     await shoot(page, engine, "pictures-offline", width, theme);
     await page.unroute("**/api/v1/school/join/picture");
     await tap(page, "Try again");
-    await page.waitForURL("**/practice");
+    await page.waitForURL(PRACTICE);
+    // Practice has settled at the student's own address before leaving it.
+    await firstProblem(page);
     await page.evaluate(() => sessionStorage.clear());
 
     // An expired card says what to do.
@@ -488,7 +518,7 @@ async function sweep(
       [paused.id],
     );
     await page.goto(`${origin}/join/${paused.joinCode}`);
-    await heading(page, /This class is paused/).waitFor();
+    await heading(page, /Sign-in is paused for a few minutes/).waitFor();
     await settled(page);
     await geometry(page, `${label} paused class`);
     await shoot(page, engine, "class-paused", width, theme);
@@ -547,8 +577,13 @@ async function sweep(
 
     // The roster.
     await page.goto(origin + classUrl(big.id, "roster"));
-    await heading(page, "Roster").waitFor();
-    await page.getByRole("link", { name: "Start class" }).waitFor();
+    // The class's Students tab is the roster; the tab names it.
+    await page
+      .locator('[aria-current="page"]', { hasText: "Students" })
+      .first()
+      .waitFor();
+    // The roster's way to the projected board (Start class is a session).
+    await page.getByRole("link", { name: "Sign-in board" }).waitFor();
     await settled(page);
     await geometry(page, `${label} roster`);
     await shoot(page, engine, "roster", width, theme);
@@ -607,9 +642,14 @@ async function device(
   page.on("request", (request) => requests.push(request.url()));
   return { context, page, requests };
 }
+/** Nothing is collected from a student, and their sign-in never writes to
+ * account sign-in. Every first screen reads whether the device has an
+ * account session (`get-session`, since the session is asked for alongside
+ * the sign-in configuration); that read is the one account request a
+ * student's screen makes. */
 function noCollection(label: string, requests: string[]) {
   const collected = requests.filter((request) =>
-    /\/api\/v1\/(events|engagement)|googletagmanager\.com|google-analytics\.com|\/api\/auth\//.test(
+    /\/api\/v1\/(events|engagement)|googletagmanager\.com|google-analytics\.com|\/api\/auth\/(?!get-session(?:$|\?))/.test(
       request,
     ),
   );
@@ -650,7 +690,7 @@ async function journeys(browser: Browser, engine: string) {
     await heading(first.page, /Pick 3 pictures/).waitFor();
     await pick(first.page, MINE);
     await tap(first.page, "These are mine");
-    await first.page.waitForURL("**/practice");
+    await first.page.waitForURL(PRACTICE);
     await firstProblem(first.page);
     check(
       `${engine} shared uses session storage`,
@@ -676,8 +716,12 @@ async function journeys(browser: Browser, engine: string) {
     const { cls } = await shellRecord(teacherBoard.page);
     check(`${engine} board CLS`, cls <= 0.01, cls);
 
-    // One tap signs out, back to /join, leaving nothing behind.
-    await first.page.getByRole("button", { name: "Sign out" }).click();
+    // The menu's Sign out, back to /join, leaving nothing behind.
+    await first.page.locator("header [data-navigation-trigger]").click();
+    await first.page
+      .getByRole("dialog")
+      .getByRole("button", { name: /^Sign out/ })
+      .click();
     await first.page.waitForURL("**/join");
     check(
       `${engine} signed out`,
@@ -691,7 +735,7 @@ async function journeys(browser: Browser, engine: string) {
     await heading(back.page, "Pick your 3 pictures").waitFor();
     const at = Date.now();
     await pick(back.page, MINE);
-    await back.page.waitForURL("**/practice");
+    await back.page.waitForURL(PRACTICE);
     await firstProblem(back.page);
     if (engine === "chromium")
       console.log(`Returning student to a problem: ${Date.now() - at} ms`);
@@ -704,7 +748,7 @@ async function journeys(browser: Browser, engine: string) {
     const token: string = issued.cards[0].token;
     const card = await open();
     await card.page.goto(`${origin}/c#${token}`);
-    await card.page.waitForURL("**/practice");
+    await card.page.waitForURL(PRACTICE);
     await firstProblem(card.page);
     check(
       `${engine} card leaves no trace in the address`,
@@ -730,10 +774,12 @@ async function journeys(browser: Browser, engine: string) {
       !card.page.url().includes(token),
       card.page.url(),
     );
-    // Reloading /c with no token goes to /join.
+    // Reloading /c with no token says so in place (CardScreen.tsx), with
+    // the way to type a code.
     const reloaded = await open();
     await reloaded.page.goto(`${origin}/c`);
-    await reloaded.page.waitForURL("**/join");
+    await heading(reloaded.page, /This card link was already used/).waitFor();
+    await reloaded.page.getByRole("link", { name: "Type a code" }).waitFor();
     await reloaded.context.close();
     // Printing again makes the old card stop working.
     await staff("POST", `classes/${cohort.id}/cards`, {
@@ -760,7 +806,7 @@ async function journeys(browser: Browser, engine: string) {
       );
     }
     await pick(locked.page, WRONG);
-    await heading(locked.page, "Ask your teacher").waitFor();
+    await heading(locked.page, LOCKED).waitFor();
     const teacher = await open({ width: 1280 });
     await teacher.page.goto(origin + classUrl(cohort.id, "roster"));
     await teacher.page.getByText("Locked for now").waitFor();
@@ -776,7 +822,7 @@ async function journeys(browser: Browser, engine: string) {
     await heading(locked.page, /Pick 3 pictures/).waitFor({ timeout: 12_000 });
     await pick(locked.page, ["Moon", "Tree", "Fish"]);
     await tap(locked.page, "These are mine");
-    await locked.page.waitForURL("**/practice");
+    await locked.page.waitForURL(PRACTICE);
     await firstProblem(locked.page);
 
     // Sign out everywhere ends that device on its next step.
@@ -824,13 +870,18 @@ async function journeys(browser: Browser, engine: string) {
         name: `Class code ${[...rotated.joinCode].join(" ")}`,
       })
       .waitFor({ timeout: 8000 });
-    // The board's cross closes it to the class.
+    // The board's cross closes it to the class's Today. Opened by its own
+    // address, as here, Today takes the board's place in history: there is
+    // no entry left that Back would reopen the board from (lib/return-to.ts).
+    const entries = await teacherBoard.page.evaluate(() => history.length);
     await teacherBoard.page
       .getByRole("button", { name: "Close the board" })
       .click();
     await teacherBoard.page.waitForURL("**/today");
-    await teacherBoard.page.goBack();
-    await teacherBoard.page.waitForURL("**/start");
+    check(
+      `${engine} the closed board leaves no entry behind`,
+      (await teacherBoard.page.evaluate(() => history.length)) === entries,
+    );
 
     // Personal devices stay signed in across tabs.
     const own = await makeClass("Own Devices");
@@ -843,7 +894,7 @@ async function journeys(browser: Browser, engine: string) {
     await personal.page.goto(`${origin}/join/${own.joinCode}/${kit.personId}`);
     await pick(personal.page, MINE);
     await tap(personal.page, "These are mine");
-    await personal.page.waitForURL("**/practice");
+    await personal.page.waitForURL(PRACTICE);
     check(
       `${engine} personal uses local storage`,
       await personal.page.evaluate(
@@ -875,7 +926,7 @@ async function journeys(browser: Browser, engine: string) {
     await idle.page.goto(
       `${origin}/c#${(await staff("POST", `classes/${cohort.id}/cards`, { personIds: [jo.personId] })).cards[0].token}`,
     );
-    await idle.page.waitForURL("**/practice");
+    await idle.page.waitForURL(PRACTICE);
     // Left alone 31 minutes ago. The tab's own timer notices, on real time.
     await idle.page.evaluate(() =>
       sessionStorage.setItem(
@@ -943,7 +994,7 @@ async function journeys(browser: Browser, engine: string) {
         await route.continue();
       });
       await tap(scan.page, "Scan your card");
-      await scan.page.waitForURL("**/practice", { timeout: 25_000 });
+      await scan.page.waitForURL(PRACTICE, { timeout: 25_000 });
       await firstProblem(scan.page);
       const { cls: scanShift } = await shellRecord(scan.page);
       check("scan CLS", scanShift <= 0.01, scanShift);

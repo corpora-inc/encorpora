@@ -156,7 +156,11 @@ test.each(["invite", "approval"] as const)(
     await mount(Screen, path);
     expect(carried()).toBeNull();
     expect(localStorage.length).toBe(0);
-    fireEvent.click(screen.getByRole("link", { name: "I already have one" }));
+    fireEvent.click(
+      screen.getByRole("link", {
+        name: kind === "invite" ? "Continue" : "I already have one",
+      }),
+    );
     expect(carried()).toBe(TOKEN);
   },
 );
@@ -165,7 +169,7 @@ test("CP-2 r4 N2: a carried invitation lasts as long as the page's hold", async 
   const now = Date.now();
   hold("/school/invite");
   await mount(InviteScreen, "/school/invite");
-  fireEvent.click(screen.getByRole("link", { name: "Create an account" }));
+  fireEvent.click(screen.getByRole("link", { name: "Continue" }));
   expect(continuationUrl({ return: "school-invite" })).toBe(
     `/school/invite#${TOKEN}`,
   );
@@ -242,6 +246,11 @@ test("CP-2 r4 N2: a rate limit keeps the link to try again; a refusal lets it go
 });
 
 test("CP-2 r4 N3: “Use another account” keeps its invitation through that sign-out, and only that one", async () => {
+  // The invited address has an account: the other account is one to sign in.
+  vi.mocked(school.lookupInvite).mockResolvedValue({
+    ...invite,
+    hasAccount: true,
+  } as never);
   signIn(parent, "wrong@example.test");
   hold("/school/invite");
   await mount(InviteScreen, "/school/invite");
@@ -291,4 +300,122 @@ test("CP-2 r4 N3: an approval's “Use another account” returns to the approva
   expect(continuationUrl({ return: "family-approval" })).toBe(
     `/family/approve#${TOKEN}`,
   );
+});
+
+// S1: one way forward on the signed-out invitation, whoever it is for and
+// whether or not its address has an account. The open invitation says which
+// (`hasAccount`), so the one "Continue" opens the screen that will work:
+// creating an account, or signing in.
+const invitees = [
+  [
+    "a family's second parent",
+    { ...invite, inviterName: "Pat" },
+    /Pat invited you as the second parent\. Continue with parent@example\.test to accept/,
+  ],
+  [
+    "a co-teacher",
+    { ...invite, secondParent: undefined, setup: false },
+    /invited as a teacher\. Continue to accept\./,
+  ],
+  [
+    "a school's admin",
+    { ...invite, secondParent: undefined, role: "admin", setup: true },
+    /you’re its admin\. Continue to set it up\./,
+  ],
+] as const;
+const accounts = [
+  ["with no account", false, "/sign-up"],
+  ["with an account", true, "/sign-in"],
+  // An answer that didn't come (an older server): creating is the screen
+  // that takes a new person, and it offers the way to sign in.
+  ["whose account isn't known", undefined, "/sign-up"],
+] as const;
+test.each(
+  invitees.flatMap(([who, view, copy]) =>
+    accounts.map(([account, hasAccount, opens]) => ({
+      who,
+      view,
+      copy,
+      account,
+      hasAccount,
+      opens,
+    })),
+  ),
+)(
+  "S1: $who $account sees one Continue, which opens $opens",
+  async ({ view, copy, hasAccount, opens }) => {
+    vi.mocked(school.lookupInvite).mockResolvedValue({
+      ...view,
+      ...(hasAccount === undefined ? {} : { hasAccount }),
+    } as never);
+    hold("/school/invite");
+    await mount(InviteScreen, "/school/invite");
+    expect(document.body.textContent).toMatch(copy);
+    expect(screen.getAllByRole("link")).toHaveLength(1);
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    expect(screen.queryByText("Create an account")).toBeNull();
+    expect(screen.queryByText("I already have one")).toBeNull();
+    // The invited address starts the screen it opens.
+    const { useAuthDraft } = await import("../../auth/draft");
+    expect(useAuthDraft.getState().email).toBe("parent@example.test");
+    // It opens the screen this address needs, and comes back here.
+    const href = screen
+      .getByRole("link", { name: "Continue" })
+      .getAttribute("href");
+    expect(href).toBe(`${opens}?return=school-invite`);
+  },
+);
+
+test.each([
+  ["with no account", false, "/sign-up?return=school-invite"],
+  ["with an account", true, "/sign-in?return=school-invite"],
+] as const)(
+  "S1: “Use another account” for an invited address %s opens the screen that address needs",
+  async (_, hasAccount, opens) => {
+    vi.mocked(school.lookupInvite).mockResolvedValue({
+      ...invite,
+      hasAccount,
+    } as never);
+    signIn(parent, "wrong@example.test");
+    hold("/school/invite");
+    await mount(InviteScreen, "/school/invite");
+    await act(async () => {
+      fireEvent.click(
+        screen.getByRole("button", { name: "Use another account" }),
+      );
+      await flushUpdates();
+    });
+    expect(h.signedOutTo).toEqual([opens]);
+    expect(rememberedInvite()).toBe(TOKEN);
+  },
+);
+
+test("S1: while the invitation loads there is no action to press", async () => {
+  vi.mocked(school.lookupInvite).mockReturnValue(new Promise(() => {}));
+  hold("/school/invite");
+  await mount(InviteScreen, "/school/invite");
+  expect(screen.queryByRole("link", { name: "Continue" })).toBeNull();
+  expect(document.querySelector("[aria-busy='true']")).not.toBeNull();
+  // No "for Schools" before the invitation says what it is for: the brand
+  // would swap to plain AMP for a family once it arrived.
+  expect(document.body.textContent).toMatch(/AMP/);
+  expect(document.body.textContent).not.toMatch(/for Schools/);
+});
+
+test('S1: a sign-in sent here by "Use another account" starts with the invited address', async () => {
+  const { useAuthDraft } = await import("../../auth/draft");
+  const { useInvitedEmail } = await import("../../school/invited-email");
+  const Probe = () => {
+    useInvitedEmail(true);
+    return null;
+  };
+  useAuthDraft.getState().setEmail("");
+  rememberInvite(TOKEN, { switching: true });
+  await mount(Probe, "/sign-in");
+  expect(useAuthDraft.getState().email).toBe("parent@example.test");
+  // What the person already typed stays.
+  cleanup();
+  useAuthDraft.getState().setEmail("typed@example.test");
+  await mount(Probe, "/sign-in");
+  expect(useAuthDraft.getState().email).toBe("typed@example.test");
 });

@@ -89,6 +89,13 @@ button.preset[aria-pressed="true"]:disabled {
     align-items: start;
   }
 }
+/* A setting that is one switch ("Allow Colorful"): the designed switch is
+   the whole row, its label where the other rows' titles start. */
+.switchRow > button {
+  grid-column: 1 / -1;
+  width: calc(100% + 2 * var(--space-2));
+  margin-inline: calc(-1 * var(--space-2));
+}
 .rowText h2 {
   font-family: inherit;
   font-size: var(--text-dense);

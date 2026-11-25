@@ -9,6 +9,8 @@ import "../share-entry";
 // (home-entry.tsx) imports it first itself.
 import "../consent-entry";
 import "../capability-entry";
+// Knows from the first moment when the page is being left (live reads).
+import "../lib/page-leave";
 import { errorDetails } from "../../analytics/error-details";
 import {
   screenOf,
@@ -20,16 +22,18 @@ import { ChunkRecoveryNotice } from "../ui/ChunkRecoveryNotice";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./RouterView";
+import { applyRouteHead, mapTitleAhead, routeHead } from "./route-head";
 import { Providers } from "./providers";
 import { router } from "./router";
 import "./styles";
-import { preloadMathFonts } from "./preload-math-fonts";
+import { startMathFonts } from "./preload-math-fonts";
 import { changeSession } from "../lib/session-generation";
 import { authConfigOptions, queryClient, sessionOptions } from "../lib/query";
 import { fetchAuthConfig } from "../auth-config";
 import type { PitchPlace } from "../features/pitch/nav";
 import { startDocumentRuntime } from "./document-runtime";
 import { finishingSignIn } from "../features/school/join/finishing";
+import { logAhead } from "../lib/ahead";
 
 let started = false;
 /** The app's services, once per document. */
@@ -52,8 +56,7 @@ function start() {
     for (const activity of activities)
       activity.navigate(router.state.location.pathname);
     trackGooglePage();
-    if (screenOf(router.state.location.pathname) !== "pitch")
-      preloadMathFonts();
+    if (screenOf(router.state.location.pathname) !== "pitch") startMathFonts();
   });
 }
 
@@ -103,7 +106,28 @@ function render() {
 }
 
 /** The app, on every document but the signed-out pitch's. */
+/** The title of the address the first screen loads, before it paints:
+ * `index.html` carries the pitch's, and only `/` may still become the pitch.
+ * Written again, the same, once the route resolves (RouterView). */
+function headAhead(pathname: string, search: string) {
+  if (pathname === "/") return;
+  const map = mapTitleAhead(pathname);
+  if (map) {
+    document.title = map;
+    return;
+  }
+  const head = routeHead(`${pathname}${search}`, "app");
+  if (head) applyRouteHead(document, head);
+}
+
 export function bootApp() {
+  headAhead(location.pathname, location.search);
+  // A hop on the way to the first screen (an old address, the sign-in gate)
+  // names the screen it lands on, before that screen paints.
+  const stop = router.subscribe("onBeforeLoad", ({ toLocation }) => {
+    if (router.state.resolvedLocation) return stop();
+    headAhead(toLocation.pathname, toLocation.searchStr);
+  });
   start();
   render();
 }
@@ -124,14 +148,14 @@ export async function prepareFromPitch(places: PitchPlace[]): Promise<void> {
   }
   // Sign-in's own screen loads its methods again when this read fails.
   const config = await fetchAuthConfig().catch((error: unknown) =>
-    console.warn("Sign-in methods didn’t load ahead", error),
+    logAhead("Sign-in methods didn’t load ahead", error),
   );
   if (config) queryClient.setQueryData(authConfigOptions.queryKey, config);
   await Promise.all(
     places.map((place) =>
       router
         .preloadRoute(place as never)
-        .catch((error: unknown) => console.warn("Preload failed", error)),
+        .catch((error: unknown) => logAhead("Preload failed", error)),
     ),
   );
 }

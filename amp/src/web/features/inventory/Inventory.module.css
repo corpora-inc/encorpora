@@ -161,6 +161,28 @@
   outline: 2px solid var(--color-focus-ring);
   outline-offset: -2px;
 }
+/* By grade or by area: one small switch above the filters, the same place
+   in both. */
+.viewSwitch {
+  width: min(100%, 17rem);
+  margin: 0 0 var(--space-4);
+}
+/* The grades: the same segmented row, each grade its own short name. As
+   wide as the column, it scrolls inside it when thirteen don't fit. */
+.gradeRow {
+  display: flex;
+}
+.gradeRow button {
+  flex: 1 0 auto;
+  justify-content: center;
+  min-width: 44px;
+  padding: 0 var(--space-3);
+}
+/* What Strong, Earned, Tried and Not asked yet mean, once, above the index
+   (features/learners/SkillKey). */
+.key {
+  margin: calc(-1 * var(--space-2)) 0 var(--space-5);
+}
 .filterRow button span {
   min-width: 3ch;
   color: var(--color-subtle-text);
@@ -271,7 +293,8 @@
 .skill[data-strength="Strong"] .meter i {
   opacity: 1;
 }
-.skill[data-strength="Not tried"] .meter {
+.skill[data-strength="Not tried"] .meter,
+.skill[data-strength="Not asked yet"] .meter {
   background: var(--color-surface-sunken);
 }
 .strength {
@@ -283,7 +306,9 @@
   font-weight: 600;
 }
 .skill[data-strength="Not tried"] .strength strong,
-.skill[data-strength="Getting started"] .strength strong {
+.skill[data-strength="Getting started"] .strength strong,
+.skill[data-strength="Not asked yet"] .strength strong,
+.skill[data-strength="Tried"] .strength strong {
   color: var(--color-muted-text);
   font-weight: 500;
 }
@@ -298,32 +323,248 @@
   font-variant-numeric: var(--numeric);
 }
 
-.footer {
+/* By grade (GradeIndex.tsx): a flat index on one 44 px rhythm. Each skill
+   is one row, its name opening the skill and its standing in a column of
+   one width; under it, its problem types, quieter, across in columns, each
+   one a whole 44 px cell to tap (premium rule 4: no target under 44 px, at
+   any width). Skills part by a hairline with little air, so the rows, not
+   the gaps, carry the page. */
+.index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.indexSkill {
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.indexRow {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) 9.5rem;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 44px;
+}
+.indexName {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  min-height: 44px;
+  margin-inline: calc(-1 * var(--space-2));
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-small);
+  color: inherit;
+  font-size: var(--text-dense);
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.standing {
+  display: inline-flex;
+  align-items: center;
   gap: var(--space-2);
-  max-width: 62ch;
-  margin-top: var(--space-6);
-}
-.explainer {
-  color: var(--color-muted-text);
   font-size: var(--text-label);
-  line-height: 1.6;
+  font-weight: 600;
+  white-space: nowrap;
 }
-.explainer summary {
+.indexSkill[data-standing="notAsked"] .standing,
+.indexSkill[data-standing="tried"] .standing {
+  color: var(--color-muted-text);
+  font-weight: 500;
+}
+/* Read across, then down: three across from 768 px (a long name takes a
+   second line in its cell), one column on a phone. */
+.types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.type {
   display: flex;
   align-items: center;
   min-height: 44px;
-  cursor: pointer;
+  margin-inline: calc(-1 * var(--space-2));
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-small);
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.35;
+  text-decoration: none;
 }
-.explainer summary::before {
-  content: "+";
-  margin-right: var(--space-2);
+@media (hover: hover) {
+  .indexName:hover,
+  .type:hover {
+    background: var(--color-surface-hover);
+  }
+  .type:hover {
+    color: var(--color-on-surface);
+  }
 }
-.explainer[open] summary::before {
-  content: "−";
+.indexName:focus-visible,
+.type:focus-visible,
+.typesToggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
 }
-.explainer p {
-  margin: 0 0 var(--space-3);
+/* A phone's fold over a skill's problem types; nothing from 768 px. */
+.typesToggle {
+  display: none;
+}
+/* On paper only. */
+.printHead {
+  display: none;
+}
+@media (max-width: 767px) {
+  /* The name on its own line; under it the standing and, at the end, the
+     fold over its problem types. */
+  .indexSkill {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-3);
+    padding: var(--space-1) 0 0;
+  }
+  .indexRow {
+    display: contents;
+  }
+  .indexName {
+    grid-column: 1 / -1;
+    align-self: auto;
+  }
+  .indexSkill .standing {
+    min-height: 44px;
+  }
+  .typesToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-self: end;
+    gap: var(--space-2);
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-primary);
+    font: inherit;
+    font-size: var(--text-label);
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .typesToggle svg {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+  .typesToggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+  .types {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: var(--space-2);
+  }
+  .types:not([data-open]) {
+    display: none;
+  }
+  .type {
+    min-height: 44px;
+  }
+}
+
+/* One grade on paper: a checklist. The sheet's heading, the key, then
+   every skill and problem type with a box to tick; no controls. */
+@media print {
+  :global(body:has([data-grade-index])) {
+    background: var(--color-print-paper);
+    color: var(--color-print-ink);
+  }
+  :global(body:has([data-grade-index]) [data-app-bar]),
+  :global(body:has([data-grade-index]) [data-app-frame] > header),
+  :global(body:has([data-grade-index]) footer) {
+    display: none !important;
+  }
+  .page[data-inventory-mode="grade"] {
+    width: 100%;
+    padding: 0;
+  }
+  .page[data-inventory-mode="grade"]
+    :is(.heading, .summary, .viewSwitch, .filters, .gradeRow, .typesToggle) {
+    display: none;
+  }
+  .printHead {
+    display: block;
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--text-heading-2);
+  }
+  .key {
+    margin: 0 0 var(--space-4);
+  }
+  .key *,
+  .standing * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  [data-grade-index] .group {
+    margin-bottom: var(--space-4);
+  }
+  [data-grade-index] .groupHeading {
+    break-after: avoid;
+  }
+  .indexSkill {
+    display: block;
+    padding: 0 0 var(--space-1);
+    break-inside: avoid;
+  }
+  .indexRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 9.5rem;
+    min-height: 0;
+    padding-top: var(--space-1);
+  }
+  .indexSkill .standing {
+    min-height: 0;
+  }
+  .indexName {
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .types,
+  .types:not([data-open]) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 0 0 var(--space-5);
+  }
+  .type {
+    min-height: 0;
+    margin: 0;
+    padding: 1px 0;
+    color: var(--color-print-ink);
+    font-size: var(--text-small);
+  }
+  /* The boxes to tick. */
+  .indexName::before,
+  .type::before {
+    content: "";
+    flex: none;
+    box-sizing: border-box;
+    width: 11px;
+    height: 11px;
+    margin-inline-end: var(--space-2);
+    border: 1px solid currentColor;
+    border-radius: 2px;
+  }
+  .type::before {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 @media (max-width: 650px) {

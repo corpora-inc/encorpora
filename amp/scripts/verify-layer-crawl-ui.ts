@@ -15,8 +15,9 @@
  *
  * Then, on each page of a place they hold (their school's and class's pages,
  * or the pages of their own practice), every kind of entity link it shows:
- * open one, then one inside it (two layers), then pop with Escape, Back,
- * Forward, a refresh and Escape again. After every step: the place's prefix
+ * open one, then one of each kind inside it (two layers), then pop with
+ * Escape, Back, Forward, a refresh and Escape again. After every step: the
+ * place's prefix
  * never changes, the page under the layers is the same page with the same
  * view (its search and scroll), and no first-run screen ever shows. A layer
  * over another names, in its header, the one X returns to. Every registered
@@ -46,6 +47,7 @@ import {
 import { ENTITY_KINDS, OPEN_KEY } from "../src/web/nav/entities";
 import { storedLayers } from "./layer-probe";
 import { startPersonaStack } from "./persona-stack";
+import { fill, trim, type Route } from "./route-addresses";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -128,6 +130,8 @@ const UNREACHABLE: Record<string, string> = {
   "/learners/$learnerId/workbooks/$workbookId/results":
     "a printed workbook's marked results",
   "/school/$org/classes/$class/workbooks/$date": "a printed workbook's day",
+  "/school/$org/classes/$class/sessions/$session":
+    "a live session's report; the seeded classes have run none (verify-live-cockpit-screen-ui opens one)",
 };
 /** Screens that only forward an old address to where it lives now: they
  * are reached as an address is, inside the same place. */
@@ -147,8 +151,6 @@ const view = (page: Page): View => {
   const url = new URL(page.url());
   return { path: url.pathname, search: url.searchParams };
 };
-const trim = (path: string) =>
-  path.length > 1 ? path.replace(/\/+$/, "") : path;
 /** The screen's layers (nav/layer-store.ts): never in its address. */
 const layers = (page: Page) => storedLayers(page);
 /** The page's own view: its search without the layers and what they read. */
@@ -263,46 +265,10 @@ async function land(page: Page, path: string) {
   return trim(view(page).path);
 }
 
-type Route = { path: string; page: boolean };
 /** The person's place: where `/` opens them, and its class. */
 type Context = { org?: string; classId?: string; family: boolean };
 /** A concrete page of a place, to crawl: its kind and prefix. */
 type PlacePage = { type: "class" | "school" | "practice"; path: string };
-
-const paramPattern = (path: string) =>
-  new RegExp(
-    `^${trim(path)
-      .replace(/[()*+.?[\\\]^{|}]/g, "\\$&")
-      .replace(/\/\$$/, "/(.+)")
-      .replace(/\$[A-Za-z]+/g, "([^/]+)")}$`,
-  );
-
-/** The route's address with what is known filled in, or null. */
-function fill(
-  route: Route,
-  known: Record<string, string>,
-  seen: Iterable<string>,
-) {
-  const path = trim(route.path);
-  if (SPLATS[route.path] !== undefined) {
-    const filled = path
-      .replace(/\$org/, known.org ?? "$org")
-      .replace(/\$class/, known.class ?? "$class")
-      .replace(/\/\$$/, `/${SPLATS[route.path]}`);
-    return filled.includes("$") ? null : filled;
-  }
-  const filled = path.replace(/\$([A-Za-z]+)/g, (whole, name: string) =>
-    name in known ? known[name]! : whole,
-  );
-  if (!filled.includes("$")) return filled;
-  // An id only the person's own screens know: an address they link to.
-  const pattern = paramPattern(filled);
-  for (const href of seen) {
-    const at = href.split("?")[0]!;
-    if (pattern.test(at)) return at;
-  }
-  return null;
-}
 
 /** Which place a reached page belongs to, for this person, if any. */
 function placeOf(path: string, context: Context): PlacePage["type"] | null {
@@ -385,23 +351,43 @@ async function crawl(page: Page, place: PlacePage, person: string) {
         (href): [string, string] => [tab, href],
       ),
     );
-    const inner = top(page)
-      .locator("a[data-entity]:not([data-entity-step]):visible")
-      .first();
-    if (await inner.count()) {
-      const innerKind = (await inner.getAttribute("data-entity"))!;
+    // One of each kind the layer links to (a skill's lesson, and its
+    // workbook where one is offered): each opens over it, and Escape puts
+    // that one down.
+    const innerKinds = [
+      ...new Set(
+        await top(page)
+          .locator("a[data-entity]:not([data-entity-step]):visible")
+          .evaluateAll((links) =>
+            links.map((link) => link.getAttribute("data-entity")!),
+          ),
+      ),
+    ];
+    for (const innerKind of innerKinds) {
+      const inner = top(page)
+        .locator(
+          `a[data-entity="${innerKind}"]:not([data-entity-step]):visible`,
+        )
+        .first();
       reached.add(innerKind);
       reachedIn.add(`${place.type}:${innerKind}`);
       await inner.click();
-      await check(page, prefix, base, opened + 1, `${where}: nested`);
+      await check(
+        page,
+        prefix,
+        base,
+        opened + 1,
+        `${where}: nested ${innerKind}`,
+      );
       await shown(page);
-      await hint(page, `${where}: nested`);
+      await hint(page, `${where}: nested ${innerKind}`);
       if (shot < 6)
         await page.screenshot({
           path: `${OUT}/${String(++shot).padStart(2, "0")}-1280-${person}-${kind}-nested.png`,
         });
       await page.keyboard.press("Escape");
       await check(page, prefix, base, opened, `${where}: Escape`);
+      await shown(page);
     }
     // Layers are no steps in history: the page under them never moved,
     // scrolled where it was. Closing pops them a layer at a time; a refresh
@@ -719,7 +705,7 @@ try {
     const reach = async () => {
       for (const route of table!) {
         if (route.path in UNREACHABLE || tried.has(route.path)) continue;
-        const path = fill(route, known, seen);
+        const path = fill(route, known, seen, SPLATS);
         if (!path) continue;
         const ours = placeOf(path, place);
         if (!ours && reachedRoutes.has(route.path)) continue;
@@ -741,7 +727,16 @@ try {
         if (!ok) continue;
         if (!reachedRoutes.has(route.path))
           reachedRoutes.set(route.path, person);
-        if (screen && ours && !MISSING.test(body) && !ONBOARDING.test(body))
+        // The design gallery shows components out of their places (a class
+        // map's names, with no layers to open them in): reached as a
+        // route, never crawled as a place.
+        if (
+          screen &&
+          ours &&
+          !path.startsWith("/design") &&
+          !MISSING.test(body) &&
+          !ONBOARDING.test(body)
+        )
           pages.push({ type: ours, path });
       }
     };

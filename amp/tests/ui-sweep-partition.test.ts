@@ -7,6 +7,7 @@ import {
 } from "../scripts/ui-sweep-partition";
 
 const inventory = templates.map((template) => template.id);
+const BOTH = ["calm", "bold"];
 test("eight UI lanes cover the complete live inventory exactly once", () => {
   const completed: string[] = [];
   for (let index = 0; index < 8; index++) {
@@ -18,9 +19,13 @@ test("eight UI lanes cover the complete live inventory exactly once", () => {
       partition.selectedIds,
       inventory.filter((_, i) => i % 8 === index),
     );
-    const manifest = uiSweepManifest(inventory, partition, [
-      ...partition.selectedIds,
-    ]);
+    const manifest = uiSweepManifest(
+      inventory,
+      partition,
+      [...partition.selectedIds],
+      ["calm", "bold"],
+    );
+    assert.deepEqual(manifest.looks, ["bold", "calm"]);
     assert.equal(manifest.shardIndex, index);
     assert.equal(manifest.shardCount, 8);
     assert.deepEqual(manifest.inventoryIds, inventory);
@@ -36,7 +41,7 @@ test("default UI sweep is complete and broad lane skip is explicit", () => {
     AMP_UI_SKIP_TEMPLATE_SWEEP: "1",
   });
   assert.deepEqual(skipped.selectedIds, []);
-  assert.throws(() => uiSweepManifest(inventory, skipped, []));
+  assert.throws(() => uiSweepManifest(inventory, skipped, [], BOTH));
 });
 test("invalid partitions and incomplete evidence fail closed", () => {
   for (const env of [
@@ -59,12 +64,20 @@ test("invalid partitions and incomplete evidence fail closed", () => {
   assert.throws(() => uiSweepPartition(["duplicate", "duplicate"], {}));
   const partition = uiSweepPartition(inventory, {});
   assert.throws(() =>
-    uiSweepManifest(inventory, partition, inventory.slice(1)),
+    uiSweepManifest(inventory, partition, inventory.slice(1), BOTH),
   );
   assert.throws(() =>
-    uiSweepManifest(inventory, partition, [...inventory, inventory[0]!]),
+    uiSweepManifest(inventory, partition, [...inventory, inventory[0]!], BOTH),
   );
   assert.throws(() =>
-    uiSweepManifest(inventory, partition, [...inventory].reverse()),
+    uiSweepManifest(inventory, partition, [...inventory].reverse(), BOTH),
+  );
+  // A partition checked in one look only is no evidence for the other.
+  for (const looks of [["calm"], ["bold"], [], ["calm", "calm"]])
+    assert.throws(() =>
+      uiSweepManifest(inventory, partition, inventory, looks),
+    );
+  assert.doesNotThrow(() =>
+    uiSweepManifest(inventory, partition, inventory, BOTH),
   );
 });

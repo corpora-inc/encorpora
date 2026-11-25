@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import {
@@ -273,7 +274,7 @@ async function fixture(
           practice.set(learnerId, state);
         }
       }
-      return route.fulfill({ json: state });
+      return route.fulfill({ json: practiceStateFixture(state) });
     }
     if (/\/catalog(?:\/map)?$/.test(pathname))
       return route.fulfill({
@@ -749,7 +750,7 @@ async function verifyLessonRecovery() {
       fullPage: true,
     });
     // Escape goes up one level, to the skill under it, focus back on its
-    // row (the cross closes the whole overlay).
+    // row (as the cross does).
     await page.keyboard.press("Escape");
     await lessonOpen(page).waitFor({ state: "detached" });
     await skillLayer(page).waitFor();
@@ -1546,8 +1547,9 @@ try {
         "lesson restores keyboard focus",
       );
       if (width === 1280 && theme === "light") {
-        // The trail's first step is the skill, too; the cross closes the
-        // whole overlay, back to the map.
+        // The trail's first step is the skill, too; the cross puts the
+        // lesson down, to the skill behind it; the scrim puts the whole
+        // overlay away, back to the map.
         await lessonRow(page).click();
         await lessonOpen(page).waitFor();
         await page.locator('[data-layer-crumb="1"]').click();
@@ -1555,6 +1557,13 @@ try {
         await lessonRow(page).click();
         await lessonOpen(page).waitFor();
         await lesson.locator("[data-layer-close]").click();
+        await lessonOpen(page).waitFor({ state: "detached" });
+        await skillLayer(page).waitFor();
+        await lessonRow(page).click();
+        await lessonOpen(page).waitFor();
+        await page
+          .locator("[data-layer-scrim]")
+          .click({ position: { x: 12, y: 12 } });
         await skillLayer(page).waitFor({ state: "detached" });
         // A person's own open: the skill again, for the rest of the walk.
         await page

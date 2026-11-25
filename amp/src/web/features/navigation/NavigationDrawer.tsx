@@ -8,6 +8,9 @@ import {
 } from "react";
 import { NavigationSheet } from "../../ui/NavigationSheet";
 import { nativeRuntime } from "../../native-runtime";
+import { useLookKnown, useMenuLook } from "../practice/look-known";
+import { useLocationMatch, useSpace } from "../spaces/useSpace";
+import { menuLearner } from "./menu-learner";
 const contents = () => import("./DrawerContents");
 const DrawerContents = lazy(contents);
 const DrawerFooter = lazy(() =>
@@ -18,7 +21,8 @@ const DrawerFooter = lazy(() =>
  * The drawer for frames outside the app frame (sign-in and first-run cards,
  * a student's standings): its own wave-mark
  * trigger, the same contents as the app frame's drawer. The trigger stays
- * light; the contents load when it opens.
+ * light; the contents load when it opens. A learner's own menu comes in
+ * once their look has been read for this opening (practice/look-known.ts).
  */
 export function NavigationDrawer({
   triggerRef,
@@ -28,11 +32,16 @@ export function NavigationDrawer({
   practiceControls?: (close: () => void) => ReactNode;
 } = {}) {
   const [open, setOpen] = useState(false);
+  const whose = menuLearner(useSpace(useLocationMatch()));
+  const shown = useLookKnown(
+    open,
+    useMenuLook(whose.learning, whose.learnerId),
+  );
   if (nativeRuntime) return null;
   const close = () => setOpen(false);
   return (
     <NavigationSheet
-      open={open}
+      open={shown}
       onOpenChange={setOpen}
       triggerRef={triggerRef}
       footer={

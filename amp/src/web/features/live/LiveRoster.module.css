@@ -1,0 +1,261 @@
+/* The live roster (LiveRoster.tsx): rows on a phone and a tablet, the grid
+   on a desktop. Every figure sits in a column of fixed width, in tabular
+   figures, so numbers change in place and nothing beside them moves. */
+.roster {
+  container: live-roster / inline-size;
+  min-width: 0;
+  font-variant-numeric: var(--numeric);
+}
+.roster[data-layout="desktop"] {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Phone and tablet: the sort, a quiet line naming the columns, the rows. */
+.bar {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: var(--space-2);
+}
+.segmented {
+  flex: 0 1 560px;
+  min-width: 0;
+}
+/* The key to the help drawings (HelpKey), over the column that shows
+   them: one line with room, two on the narrowest phone, always there. */
+.helpKey {
+  flex: none;
+  justify-content: flex-end;
+  min-height: 24px;
+  margin-bottom: var(--space-1);
+  color: var(--color-muted-text);
+}
+.roster[data-layout="phone"] .helpKey {
+  justify-content: flex-start;
+}
+.head {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  height: 28px;
+  padding-bottom: var(--space-1);
+  box-shadow: inset 0 -1px 0 var(--color-border-strong);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+}
+.headName {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Past the mark, over the names. */
+  padding-inline-start: calc(28px + var(--space-3));
+}
+.headFacts {
+  display: flex;
+  flex: none;
+}
+/* End-aligned over end-aligned figures: the chevron's room sits before
+   the word, so the word's end lines up with the numbers'. */
+.head .headLabel {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  /* Reversed, so the start is the right. */
+  justify-content: flex-start;
+  gap: 2px;
+  white-space: nowrap;
+}
+.headLabel[data-sorted] {
+  color: var(--color-on-surface);
+}
+.chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  visibility: hidden;
+}
+.headLabel[data-sorted] .chevron {
+  visibility: visible;
+}
+.headLabel[data-sorted="ascending"] .chevron {
+  rotate: 180deg;
+}
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Fixed columns at a row's end. */
+.colHelp {
+  display: flex;
+  flex: none;
+  justify-content: flex-end;
+  /* Its four counts (160 px), clear of the percent before them. */
+  width: 176px;
+}
+.colAgo {
+  flex: none;
+  /* Its heading ("Last active") and a gap before it: the headings of two
+     columns never touch. */
+  width: 80px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  text-align: end;
+}
+.head .colAgo {
+  color: inherit;
+  font-size: inherit;
+}
+/* A row's end on a phone, and its first block on a tablet: percent of
+   problems over the last five answers. */
+.colPhone {
+  display: grid;
+  flex: none;
+  justify-items: end;
+  gap: 6px;
+  width: 84px;
+}
+.head .colPhone {
+  display: inline-flex;
+}
+.score {
+  /* The column's full width, its figures at the end: a figure that grows a
+     digit never moves the box. */
+  justify-self: stretch;
+  text-align: end;
+  font-size: var(--text-table);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.score strong {
+  font-weight: 650;
+}
+.of {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.requests {
+  display: inline-flex;
+  flex: none;
+  gap: 2px;
+}
+
+/* The status in words, in its mark's ink. */
+.statusWord {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.statusWord[data-status="struggling"] {
+  color: var(--color-danger-accent);
+}
+.statusWord[data-status="idle"] {
+  color: var(--color-warning-accent);
+}
+.statusWord[data-status="flying"] {
+  color: var(--color-success-accent);
+}
+.statusWord[data-status="not_signed_in"] {
+  color: var(--color-muted-text);
+  font-weight: 500;
+}
+.statusWord[data-status="working"] {
+  color: var(--color-on-surface);
+  font-weight: 500;
+}
+
+/* Desktop: the grid scrolls in its own box under its sticky header, so the
+   strip and totals above it never move. */
+/* Tighter cell insets than a gradebook's, so the columns fit a 960 px
+   frame with whole header words. */
+.gridBox [data-grid-mode] {
+  --grid-inline: var(--space-2);
+}
+.gridBox {
+  /* Its own scroll: the header sticks to this box's top, not under the app
+     bar as a page's tables do (a school frame sets that for its pages). */
+  --grid-sticky-top: 0px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.gridStudent {
+  display: block;
+  min-width: 0;
+}
+.gridLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: none;
+}
+a.gridLink:hover {
+  text-decoration: none;
+}
+a.gridLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+  border-radius: var(--radius-small);
+}
+.gridName {
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* The grid's skill: up to two lines in the row's 44 px. */
+.skill {
+  --fit-line: 1.25;
+}
+
+/* The line under a name (RosterRow's detail): a status never shrinks; the
+   skill has the rest and fits itself to it. */
+.detailLine {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.detailLine > .statusWord {
+  flex: none;
+}
+.dot {
+  color: var(--color-muted-text);
+  font-weight: 400;
+  white-space: pre;
+}
+.detailSkill {
+  flex: 1 1 0;
+}
+/* No skill yet: short facts on the one line; one with no room drops out
+   whole, never cut. */
+.detailRest {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 1.3em;
+  overflow: hidden;
+  white-space: normal;
+}
+.detailFact {
+  display: inline-block;
+  white-space: nowrap;
+}
+.detailFact + .detailFact::before {
+  content: "·";
+  margin-inline: 0.3em;
+}
+.zero {
+  color: var(--color-subtle-text);
+}

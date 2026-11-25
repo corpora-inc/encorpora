@@ -4,6 +4,7 @@
  * Uses only synthetic fixtures, loopback HTTP, and an in-memory repository.
  * The manifest records source/date, dimensions, routes, and content hashes.
  */
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import assert from "node:assert/strict";
 import { createHash, randomUUID } from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -258,8 +259,7 @@ async function fixture(
         trial: { free: 100, placement: 10 },
       });
     if (path.endsWith("/books")) return json({ books: [] });
-    if (path.endsWith("/practice-state"))
-      return json(defaultPracticeSettings());
+    if (path.endsWith("/practice-state")) return json(practiceStateFixture());
     if (path.endsWith("/frontier"))
       return json({
         expected: 6,

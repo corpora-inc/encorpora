@@ -4,6 +4,7 @@ import { lessons } from "../src/content/lessons";
 import { templates } from "../src/math/engine";
 import { handOver, type startShellFixture } from "./app-shell-fixture";
 import { settle } from "./app-shell-probe";
+import { contrastOf } from "./lib/css-color";
 import { choose, navigateApp } from "./ui-controls";
 
 type Box = { x: number; y: number; width: number; height: number } | null;
@@ -22,27 +23,6 @@ const boxOf = async (page: Page, selector: string) => {
   const found = page.locator(selector).first();
   return (await found.count()) ? found.boundingBox() : null;
 };
-const channel = (v: number) => {
-  const c = v / 255;
-  return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-};
-const contrastRatio = (a: string, b: string) => {
-  const parse = (css: string) =>
-    css
-      .match(/[\d.]+/g)
-      ?.slice(0, 3)
-      .map(Number);
-  const left = parse(a),
-    right = parse(b);
-  if (!left || !right || left.length < 3 || right.length < 3) return 0;
-  const lum = (rgb: number[]) =>
-    0.2126 * channel(rgb[0]!) +
-    0.7152 * channel(rgb[1]!) +
-    0.0722 * channel(rgb[2]!);
-  const x = lum(left),
-    y = lum(right);
-  return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
-};
 /** Area picker stays put, the selected segment is distinct, and the summary
  * does not leave one word on its last line. */
 export async function assertProgressPolish(page: Page, tag: string) {
@@ -54,7 +34,10 @@ export async function assertProgressPolish(page: Page, tag: string) {
       fill: button ? getComputedStyle(button).backgroundColor : "",
     };
   });
-  const ratio = contrastRatio(selected.track, selected.fill);
+  // As painted: Colorful's roles are oklch(), not rgb() (lib/css-color.ts).
+  const ratio = selected.fill
+    ? await contrastOf(page, selected.track, selected.fill)
+    : 0;
   if (selected.fill === "" || selected.track === selected.fill || ratio < 1.5)
     problems.push(
       `selected segment ${selected.fill} on ${selected.track} is ${ratio.toFixed(2)}:1`,
@@ -76,6 +59,15 @@ export async function assertProgressPolish(page: Page, tag: string) {
   await page.getByRole("dialog", { name: "Math area" }).waitFor({
     state: "hidden",
   });
+  // The picker names the choice a render after its sheet closes. Read it
+  // once it has left the name before it: on a busy machine the read came
+  // first and reported “Data” as never replaced.
+  await picker
+    .locator("span")
+    .first()
+    .filter({ hasNotText: /^Data$/ })
+    .waitFor({ timeout: 5_000 })
+    .catch(() => undefined);
   const longest = await picker
     .locator("span")
     .first()

@@ -11,6 +11,7 @@ import {
   type FamilyProjection,
   type FamilyTeaching,
 } from "../../../family/projection-contracts";
+import type { FamilyDashboard } from "../../../family/dashboard-contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
 import { qk } from "../../lib/keys";
@@ -25,15 +26,19 @@ import { invalidateAccount, queryClient } from "../../lib/query";
  * answer for another account is never read.
  */
 
+export type { FamilyDashboard };
 export type { FamilyChildProgress, FamilyPlaces, FamilyProjection };
 export type FamilyChild = FamilyProjection["children"][number];
+export type DashboardChild = FamilyDashboard["children"][number];
+export type DashboardArea = DashboardChild["areas"][number];
+export type { FocusKey } from "../../../family/dashboard-contracts";
 export type FamilyPlace = FamilyPlaces["families"][number];
 
-const key = (session: AuthSession, ...rest: unknown[]) =>
+export const key = (session: AuthSession, ...rest: unknown[]) =>
   qk.account(session.accountId, "families", ...rest);
 
 /** A student's session never reads a parent's family. */
-const adult = (session: AuthSession | null | undefined) =>
+export const adult = (session: AuthSession | null | undefined) =>
   !!session?.accountId && !session.accountId.startsWith("school:");
 
 /** Every family this account belongs to as a parent or co-teacher, first

@@ -20,6 +20,7 @@ import { panelChoice } from "../src/math/figure-panels";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
+import { assertLookOnScreen, checkLook, wearLook } from "./lib/fixture-look";
 import { practiceHere } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
@@ -45,6 +46,11 @@ const learner = await repository.create(
   "Response controls",
   2016,
 );
+// One pass, in one look, said outright (scripts/lib/fixture-look.ts):
+// Colorful, where a child this age starts. verify-ui.ts checks every
+// template's fit in both looks.
+const look = checkLook("bold");
+await wearLook(repository, "development-household", learner.id, look);
 const app = buildApp({
   repository,
   authenticate: developmentAuth(),
@@ -60,7 +66,8 @@ await app.listen({
   port: Number(process.env.PRACTICE_ANSWER_API_PORT ?? 4955),
 });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-practice-answer",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-practice-answer",
   server: {
     watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
@@ -111,6 +118,7 @@ try {
   );
   // The parent hands the device to the child, whose practice is their own.
   await practiceHere(page, learner.id);
+  await assertLookOnScreen(page, look);
   // Keep exiting menus mounted long enough to exercise the overlap reliably.
   await page.addStyleTag({
     content: ".multi-part-menu { animation-duration: 800ms; }",

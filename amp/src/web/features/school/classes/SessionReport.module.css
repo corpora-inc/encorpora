@@ -1,0 +1,663 @@
+/* A session's report (SessionReportScreen.tsx): a title and its line, the
+   session's figures, who to follow up with, every student, the skills.
+   Sections by space and a heading, rows by a hairline, no cards. */
+.page {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .page {
+    gap: var(--space-7);
+  }
+}
+.head {
+  display: grid;
+  gap: var(--space-1);
+}
+.when {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.of {
+  color: var(--color-muted-text);
+  font-size: 0.7em;
+  font-weight: 500;
+}
+.printOnly {
+  display: none;
+}
+
+.section {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.section h2 {
+  margin: 0;
+}
+
+/* Follow up first: one column of groups on a phone, two from a tablet. */
+.groups {
+  display: grid;
+  gap: var(--space-5) var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.group {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.group h3 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.count {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.people {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.people li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 44px;
+  border-top: 1px solid var(--color-border);
+}
+.person {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.person:hover {
+  color: var(--color-primary);
+}
+.fact {
+  flex: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+
+/* At the foot of Time, a section apart. */
+.listSection {
+  margin-top: var(--space-7);
+}
+.more {
+  justify-self: start;
+}
+
+/* Every student. */
+.student {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  max-width: 100%;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* The live roster's colors for the same words. */
+.statusWord {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.statusWord[data-status="struggling"] {
+  color: var(--color-danger-accent);
+}
+.statusWord[data-status="idle"] {
+  color: var(--color-warning-accent);
+}
+.statusWord[data-status="flying"] {
+  color: var(--color-success-accent);
+}
+.statusWord[data-status="not_signed_in"] {
+  color: var(--color-muted-text);
+  font-weight: 500;
+}
+.statusWord[data-status="working"] {
+  font-weight: 500;
+}
+/* "Every student": its heading and the key to the help drawings its rows
+   show, on one line with room and two without. */
+.everyHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-5);
+  min-width: 0;
+}
+.everyHead h2 {
+  margin: 0;
+}
+.helpKey {
+  color: var(--color-muted-text);
+}
+/* The four help counts, a little closer than a live row's: two digits
+   still fit each, clear of the next drawing. */
+.grid :global([data-column="help"] [role="img"]) {
+  grid-template-columns: repeat(4, 38px);
+}
+.rowHelp :global([role="img"]) {
+  grid-template-columns: repeat(4, 36px);
+}
+
+/* A level ("Alg 1") and a time range never break in two: a row is one
+   line of figures. */
+.grid :global(td[data-column="level"]),
+.grid :global(td[data-column="answered"]) {
+  white-space: nowrap;
+}
+
+/* A row's skills and its control (RowSkills): the page's own text, no
+   chrome; in the table it fills its cell. */
+.open {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.open:hover:not(:disabled) {
+  filter: none;
+}
+.open:active:not(:disabled) {
+  transform: none;
+}
+.open:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* The first skills that fit, each name whole, then how many more. */
+.skills {
+  font-size: var(--text-table-small);
+}
+/* Every name, for paper only. */
+.printSkills {
+  display: none;
+}
+
+/* One student under the table's width (RowCard). Three lines on a phone:
+   name and how they ended; percent and help; skills. Two from 600 px: the
+   figures join the name's line. Every line is one fixed height, so every
+   row is, whatever the student did. */
+.grid {
+  container: report-grid / inline-size;
+}
+.rowCard {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 24px 20px 18px;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  min-width: 0;
+  font-variant-numeric: var(--numeric);
+}
+/* The whole row opens the student's sheet: the control's reach is the row
+   and its padding. The name stays the student's own link, over it. */
+.rowCard .open::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--space-3)) 0;
+}
+.rowTop,
+.rowFigures {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.rowWho {
+  position: relative;
+  z-index: 1;
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 24px;
+}
+.rowStatus {
+  flex: none;
+  font-size: var(--text-table);
+}
+/* Percent of problems, then the level: one line, and what has no room on
+   it drops out whole, never cut. */
+.rowScore {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 20px;
+  overflow: hidden;
+  font-size: var(--text-table);
+  line-height: 20px;
+}
+.rowFigure {
+  display: inline-block;
+  white-space: pre;
+}
+.rowScore strong {
+  font-weight: 650;
+}
+.rowOf {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.rowHelp {
+  display: flex;
+  flex: none;
+  justify-content: flex-end;
+}
+.rowSkills {
+  min-width: 0;
+  color: var(--color-muted-text);
+}
+@container report-grid (min-width: 600px) {
+  .rowCard {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 24px 18px;
+  }
+  .rowSkills {
+    grid-column: 1 / -1;
+  }
+  /* How they ended starts at one place down the list, whatever the name. */
+  .rowStatus {
+    width: 104px;
+  }
+  .rowScore {
+    flex: none;
+    width: 156px;
+    text-align: end;
+  }
+}
+
+/* A student's sheet (StudentSheet): the table's figures under its own
+   names, two to a line, then every skill. */
+.sheet {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.sheetFacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-5);
+  margin: 0;
+}
+.sheetFacts > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+  min-height: 36px;
+  border-top: 1px solid var(--color-border);
+}
+.sheetFacts > div[data-wide] {
+  grid-column: 1 / -1;
+}
+.sheetFacts dt {
+  flex: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  white-space: nowrap;
+}
+.sheetFacts dd {
+  margin: 0;
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+  text-align: end;
+}
+.sheetHeading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.sheetSkills {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sheetSkills li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border-top: 1px solid var(--color-border);
+}
+.sheetSkills a {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-height: 44px;
+}
+/* No skills: a dash on screen, no line on paper. */
+.noSkills {
+  color: var(--color-muted-text);
+}
+.skillLink {
+  color: inherit;
+  text-decoration: none;
+}
+.skillLink:hover {
+  color: var(--color-primary);
+}
+
+/* The skills, most worked on first. */
+.skillList {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skillRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+@media (min-width: 768px) {
+  .skillRow {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-areas:
+      "title count"
+      "who who";
+    column-gap: var(--space-5);
+  }
+  .skillTitle {
+    grid-area: title;
+  }
+  .skillCount {
+    grid-area: count;
+    text-align: end;
+  }
+  .skillWho {
+    grid-area: who;
+  }
+}
+.skillTitle {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skillTitle:hover {
+  color: var(--color-primary);
+}
+.skillCount {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.skillHelp {
+  color: var(--color-on-surface);
+}
+.skillWho {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.skillWho .person {
+  font-weight: 500;
+}
+
+/* Skills one student worked on: short lines in columns. */
+.singles {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.singles h3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+.singleList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 1;
+  column-gap: var(--space-6);
+  font-size: var(--text-table-small);
+}
+@media (min-width: 768px) {
+  .singleList {
+    columns: 2;
+  }
+}
+@media (min-width: 1100px) {
+  .singleList {
+    columns: 3;
+  }
+}
+.singleList li {
+  break-inside: avoid;
+  padding-block: var(--space-1);
+}
+.singleWho {
+  color: var(--color-muted-text);
+}
+.singleWho .person {
+  font-weight: 500;
+}
+
+/* On paper (Cmd+P): white, black ink, the class named, every skill in
+   full, sections kept whole where they fit. The grid's own scroll and
+   sticky parts lie flat. */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  .page {
+    gap: 18px;
+    color: var(--color-print-ink);
+    background: var(--color-print-paper);
+    font-size: 11px;
+  }
+  .printOnly {
+    display: block;
+    margin: 0;
+    color: var(--color-print-ink);
+    font-weight: 600;
+  }
+  .when,
+  .count,
+  .fact,
+  .skillCount,
+  .skillWho,
+  .statusWord,
+  .of {
+    color: var(--color-print-ink);
+  }
+  .people li,
+  .skillRow {
+    min-height: 0;
+    padding-block: 3px;
+    border-top-color: var(--color-print-rule);
+  }
+  .group,
+  .skillRow {
+    break-inside: avoid;
+  }
+  .groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .singleList {
+    columns: 3;
+    font-size: 9px;
+  }
+  .singleWho {
+    color: var(--color-print-ink);
+  }
+  .skillList {
+    display: block;
+    columns: 2;
+    column-gap: 24px;
+  }
+  .skillRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title count"
+      "who who";
+    gap: 0 8px;
+  }
+  .skillTitle {
+    grid-area: title;
+  }
+  .skillCount {
+    grid-area: count;
+  }
+  .skillWho {
+    grid-area: who;
+  }
+  :global(html:has([data-session-report])),
+  :global(html:has([data-session-report]) body),
+  :global(html:has([data-session-report]) [data-app-frame]) {
+    background: var(--color-print-paper);
+  }
+  .grid :global(*) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  /* The grid lies flat: no scroll box, no sticky header. */
+  .grid,
+  .grid > :global(*),
+  .grid > :global(*) > :global(*) {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  .grid :global(th) {
+    position: static !important;
+  }
+  /* The table lies flat as rows of one shared grid, so a student's
+     figures keep their columns across the sheet and their skills run the
+     sheet's width on the line under them, every name whole. */
+  .grid :global(table) {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+    font-size: 11px;
+  }
+  .grid :global(colgroup) {
+    display: none;
+  }
+  .grid :global(thead),
+  .grid :global(tbody) {
+    display: block;
+  }
+  .grid :global(tr) {
+    display: grid;
+    grid-template-columns: repeat(35, minmax(0, 1fr));
+    align-items: start;
+    break-inside: avoid;
+    border-top: 1px solid var(--color-print-rule);
+  }
+  .grid :global(thead tr) {
+    align-items: end;
+    border-top: 0;
+  }
+  .grid :global(th),
+  .grid :global(td) {
+    display: block;
+    height: auto !important;
+    min-width: 0;
+    padding: 3px 4px !important;
+    color: var(--color-print-ink);
+    line-height: 16px;
+    grid-column: span 3;
+  }
+  .grid :global(thead th *) {
+    min-height: 0;
+  }
+  .grid :global([data-column="student"]),
+  .grid :global([data-column="help"]) {
+    grid-column: span 6;
+  }
+  .grid :global([data-column="status"]),
+  .grid :global([data-column="answered"]) {
+    grid-column: span 4;
+  }
+  .grid :global([data-column="help"] [role="img"]) {
+    grid-template-columns: repeat(4, 30px);
+  }
+  .grid :global([data-column="help"] [role="img"] *) {
+    font-size: 11px;
+  }
+  .grid :global(thead [data-column="skills"]),
+  .grid :global(tbody [data-column="skills"]):has(.noSkills) {
+    display: none;
+  }
+  /* Under the name, past the mark. */
+  .grid :global(tbody [data-column="skills"]) {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    padding: 0 4px 4px 34px !important;
+  }
+  /* On paper every skill's name prints, not the first that fit. */
+  .skills {
+    display: none;
+  }
+  .printSkills {
+    display: block;
+    font-size: 9.5px;
+    line-height: 1.35;
+  }
+  .helpKey {
+    color: var(--color-print-ink);
+  }
+  /* The list's sort is a control: not on paper. */
+  .grid :global([aria-haspopup="menu"]) {
+    display: none;
+  }
+  /* A row printed from a narrower screen: as tall as its skills. */
+  .rowCard {
+    grid-template-rows: none;
+    break-inside: avoid;
+  }
+  .rowScore {
+    height: auto;
+    overflow: visible;
+  }
+  .rowSkills {
+    color: var(--color-print-ink);
+  }
+}

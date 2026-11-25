@@ -102,7 +102,8 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-free-allowance",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-free-allowance",
   server: {
     host: "127.0.0.1",
     port: webPort,

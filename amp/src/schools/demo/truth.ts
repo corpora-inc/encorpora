@@ -281,6 +281,19 @@ export function doseTruth(options: {
   };
 }
 
+/** A persona's one sitting on `day`: every answer they have, in the minutes
+ * they work on a day. */
+function oneSitting(day: string, persona: Persona): Sitting {
+  const problems = Math.max(1, Math.round(persona.answers));
+  return {
+    day,
+    week: 0,
+    progress: 1,
+    problems,
+    msEach: Math.max(15_000, Math.round((persona.minutes * 60_000) / problems)),
+  };
+}
+
 /** A family or adult fixture: their persona's level and volume, the same
  * growth rule as a class, and real sittings. */
 export function personaTruth(options: {
@@ -305,24 +318,37 @@ export function personaTruth(options: {
           Date.parse(`${options.today}T12:00:00Z`) -
             options.persona.joined * DAY,
         );
-  const planned = sittingsFor({
-    name: options.name,
-    grade: options.grade,
-    doseMinutes: Math.max(20, dose),
-    multiplier: 0.85 + 0.3 * hash(`${options.name} pace`),
-    weekdays: weekdays.length ? weekdays : [1, 3],
-    termStart: options.termStart,
-    today: options.today,
-    weekShape: options.weekShape,
-    workToday: options.workToday,
-    joined: joinedOn,
-    lastActive: options.persona.lastActive,
-    problems: clamp(
-      4,
-      Math.round(options.persona.answers / 24) || PROBLEMS_PER_SITTING,
-      12,
-    ),
-  });
+  // A first day: joined and last worked on the same day. One sitting that
+  // day, whatever the weekday, holding what the persona says of it: all
+  // their answers, in their minutes. (Planned as a term, the week's whole
+  // dose landed on that one sitting at four problems: a day 1 of 4 answers
+  // in 52 minutes, for a persona of 14 in 12.)
+  const firstDay =
+    options.persona.joined !== undefined &&
+    options.persona.joined === options.persona.lastActive &&
+    joinedOn !== undefined &&
+    joinedOn >= options.termStart &&
+    (options.persona.joined > 0 || options.workToday);
+  const planned = firstDay
+    ? [oneSitting(joinedOn, options.persona)]
+    : sittingsFor({
+        name: options.name,
+        grade: options.grade,
+        doseMinutes: Math.max(20, dose),
+        multiplier: 0.85 + 0.3 * hash(`${options.name} pace`),
+        weekdays: weekdays.length ? weekdays : [1, 3],
+        termStart: options.termStart,
+        today: options.today,
+        weekShape: options.weekShape,
+        workToday: options.workToday,
+        joined: joinedOn,
+        lastActive: options.persona.lastActive,
+        problems: clamp(
+          4,
+          Math.round(options.persona.answers / 24) || PROBLEMS_PER_SITTING,
+          12,
+        ),
+      });
   const weeks = enrolledWeeks(options.termStart, options.today, joinedOn);
   const minutes =
     planned.reduce(

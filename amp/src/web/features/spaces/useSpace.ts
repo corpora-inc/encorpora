@@ -5,7 +5,8 @@ import { useCurrentLearner } from "../../learner-store";
 import { AppError, refused, standing } from "../../lib/AppError";
 import { isConfirmed } from "../../lib/session-generation";
 import { hasAccountContext } from "../../lib/account-page";
-import { meOptions } from "../../lib/query";
+import { meOptions, queryClient } from "../../lib/query";
+import type { AuthSession } from "../../auth";
 import { useSessionOrNull } from "../../lib/session";
 import {
   classesOptions,
@@ -14,6 +15,7 @@ import {
   pilotOptions,
 } from "../school/core-api";
 import { familyOptions, familyPlacesOptions } from "../family/api";
+import { lookFirst } from "../practice/look-ahead";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -22,6 +24,7 @@ import {
   type SpaceSession,
 } from "./resolve";
 import type { RouteSpace } from "./space";
+import { logAhead } from "../../lib/ahead";
 
 type MatchLike = {
   pathname: string;
@@ -111,6 +114,90 @@ const failedLookup = (query: Answer<unknown>) =>
   query.data === undefined &&
   !refused(query.error) &&
   !replaced(query.error);
+
+/** A learner's own screen (a signed-in student's, any of them; anyone's
+ * practice, `/practice/<learner>`) paints in their look from its first
+ * frame: the look is read with the place (features/practice/look-ahead.ts
+ * `lookFirst`). A student's learner comes with their account. */
+async function lookAhead(
+  session: AuthSession,
+  student: boolean,
+  pathname: string,
+) {
+  let learnerId = /^\/practice\/([^/]+)/.exec(pathname)?.[1];
+  if (student) {
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch((error: unknown) => {
+        logAhead("A student's look waits for their account", error);
+        return undefined;
+      });
+    learnerId = me?.signedIn ? me.learners[0]?.id : undefined;
+  } else if (learnerId) learnerId = decodeURIComponent(learnerId);
+  if (!learnerId) return;
+  await lookFirst({
+    identity: session.accountId,
+    learnerId,
+    token: session.token,
+  });
+}
+
+/**
+ * Everything `useSpace` reads for a screen at `pathname`, in the one cache,
+ * before the screen renders: the account and the place the address names
+ * (its family, or its school, classes and year). The router awaits it for
+ * every signed-in screen (app/router.tsx, the root's `beforeLoad`), so the
+ * frame's first paint is already the place's, whole: never another place's
+ * bar, a bar without its tabs, or "isn't available" for an account still
+ * loading. A cached answer costs nothing, so a warm move paints at once. A
+ * failed read is logged; the frame says it (`failed`).
+ */
+export async function loadSpaceFrame(
+  session: AuthSession | null,
+  pathname: string,
+  search: Record<string, unknown> = {},
+) {
+  if (!session || !hasAccountContext(pathname)) return;
+  const ahead = (options: { queryKey: readonly unknown[] }) =>
+    queryClient.ensureQueryData(options as never).catch((error: unknown) => {
+      logAhead("The screen's place didn’t load ahead", error);
+    });
+  const student = session.accountId.startsWith("school:");
+  const frame = student
+    ? null
+    : shellFrame(
+        pathname,
+        typeof search.class === "string" ? search.class : undefined,
+      );
+  const orgId =
+    frame?.kind === "class" || frame?.kind === "school" ? frame.org : "";
+  const classId = frame?.kind === "class" ? frame.classId : "";
+  const familyId = frame?.kind === "family" ? frame.family : "";
+  await Promise.all([
+    ahead(meOptions(session)),
+    lookAhead(session, student, pathname),
+    classId ? ahead(familyPlacesOptions(session)) : null,
+    familyId ? ahead(familyOptions(session, familyId)) : null,
+    classId ? ahead(classYearOptions(session, classId)) : null,
+    orgId ? ahead(orgOptions(session, orgId)) : null,
+    orgId ? ahead(classesOptions(session, orgId)) : null,
+  ]);
+  if (!classId) return;
+  // Only an older server's year lacks the practice state the bar reads
+  // (`useSpace`'s pilot read, on the same terms).
+  const org = queryClient.getQueryData(orgOptions(session, orgId).queryKey);
+  const year = queryClient.getQueryData(
+    classYearOptions(session, classId).queryKey,
+  );
+  if (
+    org?.kind === "school" &&
+    org.demo !== true &&
+    year &&
+    year.practice === undefined &&
+    (!!org.teaches?.includes(classId) || !!org.can?.includes("pilot.read"))
+  )
+    await ahead(pilotOptions(session, classId));
+}
 
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const session = useSessionOrNull();

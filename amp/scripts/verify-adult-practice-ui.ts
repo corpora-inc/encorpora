@@ -98,7 +98,8 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-adult-practice",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-adult-practice",
   server: {
     host: "127.0.0.1",
     port: webPort,
@@ -467,6 +468,21 @@ async function teacherStarts(
     !/See plans|Manage learners|Add learner/.test(drawerText),
     drawerText,
   );
+  // Their own practice's menu resets their level: its one confirmation,
+  // said to them. (A child's own menu has none: the parent resets it in
+  // the child's settings.)
+  await drawer
+    .getByRole("button", { name: "Reset practice level", exact: true })
+    .click();
+  const reset = page.getByRole("dialog", { name: "Reset practice level?" });
+  await reset.waitFor();
+  check(
+    `${label} the menu's reset says what stays, to them`,
+    (await reset.innerText()).includes("Your XP and skill history stay."),
+    await reset.innerText(),
+  );
+  await reset.getByRole("button", { name: "Cancel", exact: true }).click();
+  await reset.waitFor({ state: "hidden" });
   await page.keyboard.press("Escape");
 
   // Their own record is home.

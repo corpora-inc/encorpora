@@ -1,0 +1,277 @@
+/*
+ * Colorful's dress, beyond its role colors (ui/tokens.css turns every role
+ * with the problem's hue). The stage stays as empty as Calm's: no scenery,
+ * no frame around the problem. The color is in the controls and the moments:
+ * buttons, keys and choices you can press, a right answer that lands, a new
+ * problem that arrives. All of it is keyed on `:root[data-look="bold"]`, so
+ * Calm is exactly as it was, and none of it changes a size.
+ */
+
+/* ── Things to press: a hard lower edge that goes down on a tap ──────── */
+/* A pressed control goes down a few pixels, and the strip it left stays its
+   own (`::before`, in the pressed control's own box: a transform makes it
+   the containing block). Without it a press on a control's top edge let go
+   over whatever was behind, and the click went there: the tap was lost. */
+:root[data-look="bold"]
+  :is(
+    .practice-workspace
+      :is(.next-action, form button[type="submit"]):not(:disabled),
+    .math-keypad button,
+    .answer-dock .choice-option,
+    .figure-choice-card
+  ):active::before {
+  content: "";
+  position: absolute;
+  inset: -3px 0 auto;
+  height: 3px;
+}
+:root[data-look="bold"]
+  .practice-workspace
+  :is(.next-action, form button[type="submit"]):not(:disabled) {
+  border-radius: 16px;
+  font-weight: 800;
+  box-shadow: inset 0 -5px 0 var(--color-primary-edge);
+}
+:root[data-look="bold"]
+  .practice-workspace
+  :is(.next-action, form button[type="submit"]):not(:disabled):active {
+  box-shadow: inset 0 -2px 0 var(--color-primary-edge);
+  transform: translateY(3px);
+}
+:root[data-look="bold"] .math-keypad button {
+  background: var(--color-key);
+  color: var(--color-on-key);
+  border: 1px solid var(--color-key-edge);
+  border-radius: 12px;
+  box-shadow: inset 0 -4px 0 var(--color-key-edge);
+  font-weight: 700;
+}
+/* A press travels; with reduced motion it lands at once. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"]
+    .practice-workspace
+    :is(.next-action, form button[type="submit"]):not(:disabled) {
+    transition: transform 90ms ease-out;
+  }
+  :root[data-look="bold"] .math-keypad button {
+    transition: transform 70ms ease-out;
+  }
+  :root[data-look="bold"] .answer-dock .choice-option,
+  :root[data-look="bold"] .figure-choice-card {
+    transition: transform 80ms ease-out;
+  }
+}
+:root[data-look="bold"] .math-keypad button:hover {
+  background: var(--color-secondary);
+}
+:root[data-look="bold"] .math-keypad button:active {
+  background: var(--color-secondary);
+  box-shadow: inset 0 -1px 0 var(--color-key-edge);
+  transform: translateY(3px);
+}
+:root[data-look="bold"] .answer-dock .choice-option,
+:root[data-look="bold"] .figure-choice-card {
+  border-color: var(--color-key-edge);
+  box-shadow: inset 0 -4px 0 var(--color-key-edge);
+}
+:root[data-look="bold"] .answer-dock .choice-option:active,
+:root[data-look="bold"] .figure-choice-card:active {
+  transform: translateY(2px);
+}
+:root[data-look="bold"] .answer-dock .choice-option.selected,
+:root[data-look="bold"] .figure-choice-card[data-selected] {
+  border-color: var(--color-primary);
+  box-shadow:
+    inset 0 0 0 2px var(--color-primary),
+    inset 0 -5px 0 var(--color-primary);
+}
+/* A choice's letters each wear a neighbor of the hue: a tint behind the
+   letter, never behind the math. The chosen one takes the accent. */
+:root[data-look="bold"] .choice-option:not(.selected) .choice-letter {
+  background: color-mix(in srgb, var(--hue) 30%, var(--color-surface));
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 1) {
+  --hue: var(--color-celebrate-1);
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 2) {
+  --hue: var(--color-celebrate-2);
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 3) {
+  --hue: var(--color-celebrate-4);
+}
+:root[data-look="bold"] .choice-option:nth-of-type(4n + 4) {
+  --hue: var(--color-celebrate-5);
+}
+
+/* ── A right answer lands ────────────────────────────────────────────── */
+/* The sheet is the world's bright color; the mark is always a green check
+   in a white disc, and it slams in. */
+:root[data-look="bold"] .feedback.correct {
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 -10px 40px var(--color-shadow);
+}
+:root[data-look="bold"] .feedback.correct .result-mark {
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
+  background: var(--color-mark-disc);
+  color: var(--color-correct);
+  box-shadow:
+    0 0 0 3px var(--color-correct),
+    0 4px 0 3px var(--color-primary-edge);
+  font-size: 28px;
+  font-weight: 900;
+}
+:root[data-look="bold"] .feedback.correct .result-mark::after {
+  border-color: var(--color-correct);
+}
+:root[data-look="bold"] .feedback.correct .feedback-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+:root[data-look="bold"] .feedback.correct .feedback-title small {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+/* The wave is Calm's; the moment is Colorful's own. */
+:root[data-look="bold"] .feedback-wave {
+  display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"] .feedback.correct .result-mark {
+    animation: colorful-slam 560ms cubic-bezier(0.2, 1.6, 0.35, 1) both;
+  }
+  /* Next, after a win, glows on and off: the way on is plain. A ring of
+     its own, so the button itself never moves under a finger. */
+  :root[data-look="bold"] .feedback.correct .next-action:not(:disabled) {
+    position: relative;
+  }
+  :root[data-look="bold"] .feedback.correct .next-action:not(:disabled)::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 20px;
+    border: 3px solid var(--color-primary);
+    pointer-events: none;
+    opacity: 0;
+    animation: colorful-breathe 1.6s ease-out 900ms infinite;
+  }
+}
+@keyframes colorful-slam {
+  0% {
+    transform: scale(2.4) rotate(-25deg);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(0.85) rotate(6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.08) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+@keyframes colorful-breathe {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06, 1.25);
+  }
+}
+
+/* ── Not yet: kind, warm, still ──────────────────────────────────────── */
+:root[data-look="bold"] .feedback.incorrect {
+  background: var(--color-danger);
+  border: 2px solid
+    color-mix(in srgb, var(--color-danger-accent) 45%, var(--color-danger));
+}
+:root[data-look="bold"] .feedback.incorrect .result-mark {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  background: var(--color-mark-disc);
+  color: var(--color-danger-accent);
+  box-shadow: 0 0 0 3px var(--color-danger-accent);
+  font-size: 20px;
+}
+
+/* ── A new problem arrives: in its place, as the world turns to its hue ─ */
+/* Opacity only, and only while it runs. The problem is in its place from
+   its first frame: nothing a child reads or presses moves under them, and
+   nothing that measures the problem as it mounts (the workspace, a drag's
+   boxes) reads a place it is only passing through. A transform here moved
+   every box in the problem for 220 ms. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-look="bold"] .practice-workspace .problem-content {
+    animation: colorful-problem-in 220ms ease-out backwards;
+  }
+}
+@keyframes colorful-problem-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* The chip's room is the problem's, not the look's (`data-chip-room`,
+   ../chip-room.ts): it is settled as a problem arrives and kept until the
+   next, so a look that changes under an open problem (an adult's "Allow
+   Colorful", from another device) never wraps or unwraps a skill's name.
+   A student's topic line (under the bar, below 640 px): the points chip
+   sits at its end (celebration/stage.ts), which keeps the room for it on
+   every problem. The chip is 92 px on a phone and 104 px from 420 px.
+   Beside the chip a skill's name often takes two lines where Calm gives it
+   one. The line keeps its 40 px for both (two lines of 14 px at 1.4 are
+   39.2 px; its own 4 px above and below would make that 47), so the chip's
+   room is never taken out of the problem's: the stage under it is as tall
+   as Calm's. */
+@media (max-width: 639px) {
+  :root[data-chip-room]:has([data-app-bar][data-space="student"])
+    .practice-surface
+    > .practice-topic {
+    padding-block: 0;
+    padding-inline-end: 112px;
+  }
+}
+@media (max-width: 419px) {
+  :root[data-chip-room]:has([data-app-bar][data-space="student"])
+    .practice-surface
+    > .practice-topic {
+    padding-inline-end: 100px;
+  }
+}
+/* The topic in the bar (from 640 px): it keeps the chip's room at its own
+   end, whatever the bar holds beside it (a name, sign-out, tools shown or
+   kept hidden), and shortens its own text first. Without it a full bar
+   left the chip nowhere but over the problem. 104 px and a 12 px gap each
+   side (celebration/stage.ts `need`). */
+@media (min-width: 640px) {
+  :root[data-chip-room]
+    [data-app-bar]
+    .workspace-toolbar[data-in-frame]
+    .workspace-topic {
+    padding-inline-end: 128px;
+  }
+}
+
+/* A phone's bar with no room for the points chip: the chip takes the
+   wordmark's place beside the wave (celebration/stage.ts). The logo stays
+   the menu's button, its size unchanged. */
+:root[data-look="bold"][data-chip-room][data-points-chip="logo"]
+  [data-navigation-trigger]
+  span {
+  visibility: hidden;
+}
+
+/* The page itself: the boot page's own colors (index.html) give way to the
+   world's, as Calm's tokens do through `:root`. */
+:root[data-look="bold"] body {
+  color: var(--color-on-surface);
+  background: var(--color-surface);
+}

@@ -27,15 +27,19 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4351 });
+// Its ports and Vite cache may be moved (a worktree's own range).
+const WEB_PORT = Number(process.env.AMP_UI_WEB_PORT ?? 4350);
+const ORIGIN = `http://127.0.0.1:${WEB_PORT}`;
+await app.listen({ host: "127.0.0.1", port: WEB_PORT + 1 });
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
+  cacheDir: process.env.AMP_VITE_CACHE_DIR,
   server: {
     host: "127.0.0.1",
-    port: 4350,
+    port: WEB_PORT,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4351" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${WEB_PORT + 1}` } },
   },
 });
 await vite.listen();
@@ -45,9 +49,9 @@ try {
     const page = await browser.newPage({ hasTouch: true });
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    await page.goto("http://127.0.0.1:4350/overview");
+    await page.goto(`${ORIGIN}/overview`);
     await chooseLearner(page, learner.id);
-    await page.goto("http://127.0.0.1:4350/profile/birth-year");
+    await page.goto(`${ORIGIN}/profile/birth-year`);
     await page.getByRole("heading", { name: /^What year was/ }).waitFor();
     let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
     const familyBatchRelease = new Promise<void>((resolve) => {
@@ -56,21 +60,36 @@ try {
     const familyBatchWaiting = new Promise<void>((resolve) => {
       familyBatchHeld = resolve;
     });
+    // Settles once the held answer has been handed to the page, or dropped
+    // because the page had already let the request go.
+    let batchSettled!: () => void;
+    const familyBatchSettled = new Promise<void>((resolve) => {
+      batchSettled = resolve;
+    });
     await page.route("**/batches", async (route) => {
       const result = await route.fetch();
       familyBatchHeld();
       await familyBatchRelease;
-      await route.fulfill({ response: result });
+      await route.fulfill({ response: result }).catch(() => undefined);
+      batchSettled();
     });
     await page.getByRole("option", { name: "2016", exact: true }).click();
     // The birth year saved, the child's own page shows (their Overview).
     await page.waitForURL((url) =>
       url.pathname.endsWith(`/kids/${learner.id}`),
     );
-    // Practice on this device has its own address; the family's drawer
-    // offers only its places, so the parent opens it there.
-    await page.goto("http://127.0.0.1:4350/practice");
+    // A child's practice is the child's own sign-in: "Practice" on their
+    // page hands this device to the child, in this document, and the
+    // problems are asked for as them. That request is held here.
+    const childsPage = new URL(page.url()).pathname;
+    await page.locator(`[data-practice-here="${learner.id}"]`).click();
+    await page.waitForURL((url) => url.pathname.startsWith("/practice"));
     await familyBatchWaiting;
+    // The parent takes the device back from the child's menu: Back to the
+    // screen it was handed from, still this document, the request still out.
+    const childs = await openMenu(page);
+    await childs.getByRole("button", { name: "Back to family" }).click();
+    await page.waitForURL((url) => url.pathname === childsPage);
     // A family parent's account settings are the family's Settings; its
     // Privacy row opens Privacy over it, from the drawer, in this document.
     const drawer = await openMenu(page);
@@ -128,20 +147,23 @@ try {
       await page.locator("[data-consent-withdraw-confirm]").click();
     } else await page.locator("[data-delete-learning]").click();
     await (await saved).finished();
-    const releasedBatch = page.waitForResponse((response) =>
-      response.url().endsWith("/batches"),
-    );
+    // The held problems arrive now, late, or were let go with the child's
+    // sign-in when the device was taken back: either way they are over.
     releaseFamilyBatch();
-    await (await releasedBatch).finished();
-    // Keep the revoked workspace alive while the delayed response arrives.
+    await familyBatchSettled;
+    // Time for the page to take it in, if it still wanted it.
+    await page.waitForTimeout(500);
+    // The same document from here on: what the late answer could have put
+    // back would be on it.
     await page.evaluate(() => {
       (
         window as Window & { __privacyRaceDocument?: boolean }
       ).__privacyRaceDocument = true;
     });
+    // Back the way they came: Settings, then the child's page.
     for (const back of [
       (path: string) => path === settings,
-      (path: string) => path.startsWith("/practice"),
+      (path: string) => path === childsPage,
     ]) {
       await page.goBack();
       await page.waitForURL((url) => back(url.pathname));

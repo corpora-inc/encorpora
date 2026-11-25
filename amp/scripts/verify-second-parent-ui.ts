@@ -6,14 +6,27 @@
  *      family (`/family/<family>`), then its People and adds a second
  *      parent: an email, Send. The row waits, masked, with Copy link, Send
  *      again and Remove, and the action to invite is gone.
- *   2. Another account opens the mailed link and is told, on one calm screen,
- *      which address the invitation is for, with Use another account.
- *   3. The invited parent opens the link in a second browser, creates an
- *      account with that address and joins as a parent: the family's Today
- *      with "Practice with Maya", and nothing that is the holder's.
+ *   2. The mailed link, signed out, names the family and the address and
+ *      has one way forward, Continue, which opens the screen that address
+ *      needs with the address filled in: creating an account when it has
+ *      none, signing in when it has one. Another account made from there
+ *      is told, on one calm screen, which address the invitation is for,
+ *      with Use another account, which again opens the screen the invited
+ *      address needs.
+ *   3. The invited parent, new to AMP, opens the link in a second browser
+ *      and continues: she lands on creating an account, types a password,
+ *      and joins as a parent: the family's Today with "Practice with
+ *      Maya", and nothing that is the holder's. No screen on the way
+ *      refuses her.
  *   4. From Today she reads Maya's page, Pathways and Inventory, then
  *      through the place switcher starts her own practice.
  *   5. The holder sees her joined on People: the action to invite is gone.
+ *
+ * Before that journey, the invitation's default path for each of the two
+ * people it can reach (`invitee`): someone new lands on creating an account,
+ * someone with an account lands on signing in, each with the address filled
+ * in, and a password and the form's one button take each into the family.
+ * The invitation screen is held to zero layout shift.
  *
  * Consent and the child's access are written straight in the database, as a
  * verified purchase writes them. Chromium at 390 and 1280 in light and dark,
@@ -59,7 +72,7 @@ const argument = (name: string) => {
 const webPort = Number(argument("--port") ?? 4540);
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
-const committed = "docs/reviews/second-parent";
+const committed = process.env.AMP_UI_REVIEW ?? "docs/reviews/second-parent";
 const scratch = "artifacts/second-parent";
 await mkdir(committed, { recursive: true });
 await mkdir(scratch, { recursive: true });
@@ -156,6 +169,124 @@ async function createAccount(page: Page, email: string) {
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
 }
+/** Whether the sign-in's address field holds `email` within 5 s. */
+async function filledWith(page: Page, email: string) {
+  const field = page.getByLabel("Email");
+  await field.waitFor();
+  for (let waited = 0; waited < 5_000; waited += 100) {
+    if ((await field.inputValue()) === email) return true;
+    await page.waitForTimeout(100);
+  }
+  return false;
+}
+/** An error, as every screen here shows one (ui/Toast.tsx). Radix also
+ * announces it in a hidden copy, so it is found by its own mark. */
+const refusal = (page: Page) => page.locator("[data-app-toast]");
+const refusalSaid = async (page: Page) =>
+  (
+    await refusal(page)
+      .allInnerTexts()
+      .catch(() => [])
+  )
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+/** No screen on an invitee's way has refused her. */
+async function unrefused(page: Page, label: string) {
+  check(
+    `${label}: no error toast`,
+    (await refusal(page).count()) === 0,
+    await refusalSaid(page),
+  );
+}
+/** The invitation's one way forward: Continue opens the screen the invited
+ * address needs (`needs`: creating an account when it has none, signing in
+ * when it has one), with the address filled in. */
+async function continueFromInvitation(
+  page: Page,
+  invited: string,
+  needs: "/sign-up" | "/sign-in",
+  label: string,
+) {
+  await page.getByRole("link", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/sign-(in|up)/);
+  check(`${label}: Continue opens ${needs}`, path(page) === needs, path(page));
+  check(
+    `${label}: the invited address is filled in`,
+    await filledWith(page, invited),
+    await page.getByLabel("Email").inputValue(),
+  );
+}
+/** The obvious action on the screen Continue opened, as the invited person
+ * takes it: the address is already there, so a password and the form's one
+ * button. It must lead back to the invitation, never to a refusal. */
+async function takeTheFormsAction(page: Page, label: string) {
+  const creating = path(page) === "/sign-up";
+  const password = page.getByLabel("Password", { exact: true });
+  if (creating) {
+    // The default on a device with passkeys; a password is the second
+    // choice, on the same screen.
+    const fallback = page.getByRole("button", {
+      name: "Use a password instead",
+    });
+    await Promise.race([
+      fallback.waitFor({ timeout: 20_000 }),
+      password.waitFor({ timeout: 20_000 }),
+    ]);
+    if (await fallback.isVisible()) await fallback.click();
+  }
+  await password.fill(PASSWORD);
+  await page
+    .getByRole("button", {
+      name: creating ? "Create account" : "Sign in",
+      exact: true,
+    })
+    .click();
+  const outcome = await Promise.race([
+    page.waitForURL(/\/school\/invite/).then(
+      () => "back at the invitation" as const,
+      () => "stuck" as const,
+    ),
+    refusal(page)
+      .first()
+      .waitFor()
+      .then(
+        () => "refused" as const,
+        () => "stuck" as const,
+      ),
+  ]);
+  if (outcome === "back at the invitation") return;
+  const said = await refusalSaid(page);
+  check(
+    `${label}: ${creating ? "Create account" : "Sign in"} succeeds`,
+    false,
+    {
+      outcome,
+      at: path(page),
+      said,
+    },
+  );
+  throw new Error(
+    `${label}: the invitation's default path ended ${outcome} at ${path(page)}: ${said}`,
+  );
+}
+/** An account made without its screens: for people who exist before the
+ * journey this check walks. */
+async function accountBy(context: BrowserContext, email: string) {
+  const made = await context.request.post(`${origin}/api/auth/sign-up/email`, {
+    headers: { Origin: origin },
+    data: { name: "", email, password: PASSWORD },
+  });
+  if (!made.ok()) throw new Error(`No account for ${email}: ${made.status()}`);
+  const session = await (
+    await context.request.get(`${origin}/api/auth/get-session`)
+  ).json();
+  const account = `amp|${session.user.id as string}`;
+  await db.query('UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1', [
+    account.slice(4),
+  ]);
+  return account;
+}
 async function accountOf(page: Page) {
   const session = await (
     await page.context().request.get(`${origin}/api/auth/get-session`)
@@ -195,7 +326,7 @@ async function shot(
 }
 /** Nothing spills, every target is big enough, nothing overlaps or breaks
  * mid-word, nothing moved. */
-async function measured(page: Page, label: string) {
+async function measured(page: Page, label: string, still = false) {
   await settle(page, 300);
   const geometry = await probe(page);
   check(`${label} overflow`, geometry.overflow === 0, geometry.overflow);
@@ -216,6 +347,14 @@ async function measured(page: Page, label: string) {
     () => (window as unknown as { __shiftSources?: string[] }).__shiftSources,
   );
   check(`${label} CLS`, cls <= 0.01, { cls, shifts, sources });
+  // A screen held to zero: nothing the browser scored, nothing that moved
+  // between frames, from its first paint to here.
+  if (still)
+    check(`${label} never moved`, cls === 0 && shifts.length === 0, {
+      cls,
+      shifts,
+      sources,
+    });
 }
 async function newContext(
   browser: Browser,
@@ -392,11 +531,23 @@ async function journey(
   last.page = other;
   await other.goto(link);
   await heading(other, joinFamily);
-  await other.getByText(`sign in with ${rowanEmail} to accept`).waitFor();
-  await measured(other, `${label} link signed out`);
+  await other
+    .getByText(`Continue with ${rowanEmail} to accept`, { exact: false })
+    .waitFor();
+  check(
+    `${label} the signed-out link has one way forward, Continue`,
+    (await other
+      .getByRole("link", { name: "Continue", exact: true })
+      .count()) === 1 &&
+      (await other
+        .getByRole("link", { name: /Create an account|already have/i })
+        .count()) === 0 &&
+      (await other.getByRole("button", { name: /Join/ }).count()) === 0,
+  );
+  await measured(other, `${label} link signed out`, true);
   await shot(other, "link-signed-out", width, theme, engine);
-  await other.getByRole("link", { name: "Create an account" }).click();
-  await other.waitForURL(/\/sign-up/);
+  // The invited address has no account: Continue opens creating one.
+  await continueFromInvitation(other, rowanEmail, "/sign-up", label);
   await createAccount(other, `sky-${tag}@example.test`);
   await other.waitForURL(/\/school\/invite/);
   await heading(other, "This invitation is for another address");
@@ -410,7 +561,20 @@ async function journey(
   await measured(other, `${label} wrong account`);
   await shot(other, "wrong-account", width, theme, engine);
   await another.click();
-  await other.waitForURL(/\/sign-in/);
+  await other.waitForURL(/\/sign-(in|up)/);
+  // The invited address still has no account, so the other account is one
+  // to create. It starts with the invited address again (looked up from
+  // the carried link, so it arrives a moment after the field).
+  check(
+    `${label} Use another account opens creating one`,
+    path(other) === "/sign-up",
+    path(other),
+  );
+  check(
+    `${label} Use another account starts with ${rowanEmail}`,
+    await filledWith(other, rowanEmail),
+    await other.getByLabel("Email").inputValue(),
+  );
   await otherContext.close();
 
   // 3. The invited parent, in her own browser.
@@ -418,13 +582,13 @@ async function journey(
   const rowan = await rowanContext.newPage();
   rowan.setDefaultTimeout(30_000);
   last.page = rowan;
+  const newcomer = `${label} new person`;
   await rowan.goto(link);
   await heading(rowan, joinFamily);
-  await rowan.getByRole("link", { name: "Create an account" }).click();
-  await rowan.waitForURL(/\/sign-up/);
-  await createAccount(rowan, rowanEmail);
-  await rowan.waitForURL(/\/school\/invite/);
+  await continueFromInvitation(rowan, rowanEmail, "/sign-up", newcomer);
+  await takeTheFormsAction(rowan, newcomer);
   await heading(rowan, joinFamily);
+  await unrefused(rowan, newcomer);
   const rowanAccount = await accountOf(rowan);
   await rowan
     .getByLabel("Your name, as your children will see it")
@@ -439,6 +603,7 @@ async function journey(
     rowan.url(),
   );
   await todayTitle(rowan);
+  await unrefused(rowan, newcomer);
   const handOver = rowan.getByRole("button", {
     name: "Practice with Maya",
   });
@@ -580,6 +745,103 @@ async function journey(
   void rowanAccount;
 }
 
+/** The invitation's default path, for each of the two people it can reach:
+ * someone new to AMP (Continue opens creating an account) and someone who
+ * already has one (Continue opens signing in). Either way her address is
+ * filled in, a password and the form's one button carry on, and she joins:
+ * no screen refuses her and nothing asks which of the two she is. The
+ * family and its invitation are made without their screens (`journey`
+ * walks those). */
+async function invitee(
+  browser: Browser,
+  engine: string,
+  width: number,
+  theme: "light" | "dark",
+  who: "new" | "existing",
+) {
+  const label = `${engine} ${width} ${theme} ${who} person`;
+  const slug = `${who}-person`;
+  const tag = randomUUID().slice(0, 8);
+  const email = `quinn-${tag}@example.test`;
+  let known: string | null = null;
+  if (who === "existing") {
+    const before = await newContext(browser, width, theme);
+    known = await accountBy(before, email);
+    await before.close();
+  }
+  const hostContext = await newContext(browser, width, theme);
+  const hostAccount = await accountBy(hostContext, `hazel-${tag}@example.test`);
+  await named(hostAccount, "Hazel Fixture");
+  await family(hostAccount);
+  const invited = await hostContext.request.post(
+    `${origin}/api/v1/family/second-parent`,
+    { headers: { Origin: origin }, data: { email } },
+  );
+  check(`${label} invited`, invited.ok(), await invited.text());
+  const host = await hostContext.newPage();
+  host.setDefaultTimeout(30_000);
+  last.page = host;
+  await openHome(host, origin);
+  await host.waitForURL(FAMILY_TODAY);
+  const hostUrl = host.url();
+  await hostContext.close();
+  const mailed = mail.find((sent) => sent.to === email);
+  check(`${label} the invitation was mailed`, !!mailed, mail);
+  if (!mailed) return;
+
+  const context = await newContext(browser, width, theme);
+  const quinn = await context.newPage();
+  quinn.setDefaultTimeout(30_000);
+  last.page = quinn;
+  await quinn.goto(mailed.url);
+  await heading(quinn, /^Join Hazel/);
+  check(
+    `${label} one way forward, Continue`,
+    (await quinn
+      .getByRole("link", { name: "Continue", exact: true })
+      .count()) === 1 &&
+      (await quinn
+        .getByRole("link", { name: /Create an account|already have/i })
+        .count()) === 0,
+  );
+  await measured(quinn, `${label} invitation`, true);
+  await shot(quinn, `${slug}-1-invitation`, width, theme, engine);
+  await continueFromInvitation(
+    quinn,
+    email,
+    who === "new" ? "/sign-up" : "/sign-in",
+    label,
+  );
+  await measured(quinn, `${label} ${who === "new" ? "create" : "sign in"}`);
+  await shot(quinn, `${slug}-2-account`, width, theme, engine);
+  await takeTheFormsAction(quinn, label);
+  await heading(quinn, /^Join Hazel/);
+  await unrefused(quinn, label);
+  if (known)
+    check(
+      `${label} she is signed in as the invited account`,
+      (await accountOf(quinn)) === known,
+    );
+  await quinn
+    .getByLabel("Your name, as your children will see it")
+    .fill("Quinn Fixture");
+  await measured(quinn, `${label} join`);
+  await shot(quinn, `${slug}-3-join`, width, theme, engine);
+  await quinn.getByRole("button", { name: "Join as a parent" }).click();
+  await quinn.waitForURL(FAMILY_TODAY);
+  check(
+    `${label} she lands on the family's Today`,
+    quinn.url() === hostUrl,
+    quinn.url(),
+  );
+  await todayTitle(quinn);
+  await quinn.getByRole("button", { name: "Practice with Maya" }).waitFor();
+  await unrefused(quinn, label);
+  await measured(quinn, `${label} today`);
+  await shot(quinn, `${slug}-4-today`, width, theme, engine);
+  await context.close();
+}
+
 try {
   const browser = await chromium.launch();
   if (!process.argv.includes("--no-chromium"))
@@ -588,11 +850,16 @@ try {
       .map(Number))
       for (const theme of (argument("--themes") ?? "light,dark").split(",") as (
         "light" | "dark"
-      )[])
+      )[]) {
+        for (const who of ["new", "existing"] as const)
+          await invitee(browser, "chromium", width, theme, who);
         await journey(browser, "chromium", width, theme);
+      }
   await browser.close();
   if (!process.argv.includes("--no-webkit")) {
     const safari = await webkit.launch();
+    for (const who of ["new", "existing"] as const)
+      await invitee(safari, "webkit", 390, "light", who);
     await journey(safari, "webkit", 390, "light");
     await safari.close();
   }

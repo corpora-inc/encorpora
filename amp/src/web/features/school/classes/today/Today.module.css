@@ -8,7 +8,8 @@
 }
 
 /* The title (a class's name over the date, or a family's date), with the
-   class code beside it from 720 px. */
+   class code beside it from 960 px: the code's row (Copy link, Full screen,
+   the QR) and the name both whole, never the name broken a word a line. */
 .head {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -26,7 +27,7 @@
 .heldLine {
   visibility: hidden;
 }
-@container (min-width: 720px) {
+@container (min-width: 960px) {
   .head {
     grid-template-columns: minmax(0, 1fr) auto;
   }
@@ -122,7 +123,7 @@
 .inlineLink:hover {
   background: var(--color-surface-hover);
 }
-@container (min-width: 720px) {
+@container (min-width: 960px) {
   .head .signIn {
     justify-items: end;
     text-align: end;
@@ -540,5 +541,115 @@
   }
   .slotPlaceholder span {
     width: 100%;
+  }
+}
+
+/* While a session runs, a phone's code is one short row (LiveCode), in the
+   place of the code's two rows and the slot's hidden height-holder: the
+   Live bar, the totals and the first rows reach the first screen. From 560
+   px the header is as it is at rest. */
+.liveCode {
+  display: none;
+}
+@media (max-width: 559px) {
+  .codeSlot[data-live-slot] .codeSlotHold,
+  .codeSlot[data-live-slot="open"] .codeSlotShown > :not(.liveCode) {
+    display: none;
+  }
+  .codeSlot[data-live-slot] .liveCode {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--target-size);
+  }
+  .liveCodeLabel {
+    color: var(--color-muted-text);
+    font-size: var(--text-table);
+    font-weight: 600;
+  }
+  .liveCodeValue {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .liveCode .liveCopy {
+    flex: none;
+    min-height: var(--target-size);
+    padding-inline: var(--space-3);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--color-primary);
+    font: inherit;
+    font-size: var(--text-label);
+    font-weight: 650;
+  }
+  .liveBoard {
+    display: inline-grid;
+    flex: none;
+    place-items: center;
+    width: var(--target-size);
+    height: var(--target-size);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-control);
+    color: var(--color-primary);
+  }
+  .liveBoard svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+/* The same phone, live: the pilot's held line and the gaps give the roster
+   their room, so the Live bar, the totals, the requests and four students
+   reach the first screen (390 x 844). */
+@media (max-width: 559px) {
+  .today[data-live] {
+    gap: var(--space-3);
+  }
+  .today[data-live] .head {
+    gap: var(--space-1);
+  }
+  /* Always, note or none: one arriving late would push the roster down. */
+  .today[data-live] .title p[data-pilot-left] {
+    display: none;
+  }
+}
+
+/* While the code is still being read, the same one short row, quiet. */
+@media (max-width: 559px) {
+  .codeSlot[data-live-slot] .slotPlaceholder {
+    display: flex;
+    align-items: center;
+    height: var(--target-size);
+    min-height: 0;
+  }
+  .codeSlot[data-live-slot] .slotPlaceholder span {
+    display: none;
+  }
+  .codeSlot[data-live-slot] .slotPlaceholder span:first-child {
+    display: block;
+    width: 60%;
+    height: 20px;
+  }
+}
+
+/* Both the quiet read and the code: exactly one target high, so the code
+   arriving moves nothing. */
+@media (max-width: 559px) {
+  .codeSlot[data-live-slot] .liveCode,
+  .codeSlot[data-live-slot] .slotPlaceholder {
+    box-sizing: border-box;
+    height: var(--target-size);
+    min-height: 0;
   }
 }

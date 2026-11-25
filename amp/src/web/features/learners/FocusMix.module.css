@@ -1,0 +1,148 @@
+/* What AMP is working on, as one line (FocusLine): what is counted, the
+   four reasons each with its count, and the way to the skills behind them.
+   One control of a fixed height, whatever the counts: 80 px on a phone (the
+   label, then the reasons two to a line), 60 px with room for the four on
+   one line, 44 px with room for the label beside them. It answers to its
+   own width, not the window's. */
+.focus {
+  container: focus-line / inline-size;
+  min-width: 0;
+}
+/* The fill and the focus ring keep the same room on every side of the
+   words; the control steps out of their place by that room, so its words
+   start on the block's edge. */
+.line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 12px;
+  grid-template-areas:
+    "label chevron"
+    "reasons chevron";
+  grid-template-rows: 18px 42px;
+  align-content: center;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  box-sizing: border-box;
+  width: calc(100% + 2 * var(--space-2));
+  height: 80px;
+  margin: 0 calc(-1 * var(--space-2));
+  padding: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.line:hover {
+  background: var(--color-surface-hover);
+}
+.line:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.label {
+  grid-area: label;
+  min-width: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.reasons {
+  grid-area: reasons;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px var(--space-3);
+  min-width: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  line-height: 20px;
+}
+.reason {
+  min-width: 0;
+  white-space: nowrap;
+}
+/* Every count has room for two figures, so a reason sits in the same place
+   on every learner's line and the counts line up down a list. */
+.reason strong {
+  display: inline-block;
+  min-width: 2ch;
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+/* A zero is there to read, quietly. */
+.reason[data-zero] strong {
+  color: var(--color-subtle-text);
+}
+.chevron {
+  grid-area: chevron;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: var(--color-muted-text);
+  stroke-width: 2;
+}
+@container focus-line (min-width: 480px) {
+  .line {
+    grid-template-rows: 18px 20px;
+    height: 60px;
+  }
+  .reasons {
+    grid-template-columns: repeat(4, max-content);
+    column-gap: var(--space-4);
+  }
+}
+@container focus-line (min-width: 700px) {
+  .line {
+    grid-template-columns: max-content minmax(0, 1fr) 12px;
+    grid-template-areas: "label reasons chevron";
+    grid-template-rows: 28px;
+    column-gap: var(--space-4);
+    height: 44px;
+  }
+  .reasons {
+    column-gap: var(--space-3);
+    font-size: var(--text-table);
+  }
+}
+
+/* The skills behind them (FocusSkills), in the sheet: each reason a
+   heading with its count, then a row for every skill. */
+.detail {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+.group {
+  display: grid;
+  min-width: 0;
+}
+.groupTitle {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-1);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.groupCount {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.skills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skills li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border-top: 1px solid var(--color-border);
+}

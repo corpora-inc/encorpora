@@ -1,4 +1,5 @@
 import type { AuthSession } from "../auth";
+import type { OrgResource } from "../../schools/contracts";
 import {
   classesOptions,
   orgOptions,
@@ -13,7 +14,12 @@ import {
 } from "../features/school/paths";
 import { meOptions, queryClient } from "../lib/query";
 import { OPEN_KEY } from "../nav/entities";
-import { admit, elsewhere, requireSignedIn } from "./sign-in-gate";
+import {
+  admit,
+  elsewhere,
+  elsewhereOnce,
+  requireSignedIn,
+} from "./sign-in-gate";
 
 /* What the school's routes decide before a screen paints: who may open it,
    where an old or a family's address opens instead, and what loads with it.
@@ -125,12 +131,32 @@ export async function frameData(session: AuthSession, orgId: string) {
   ]);
 }
 
+/** Where an org opens for this person, decided once: its setup until it
+ * is finished; a teacher's, or a lone teacher's one-class school, its
+ * classes (one class, its Today, never a list of one); else the overview. */
+async function orgLanding(session: AuthSession, org: OrgResource) {
+  if (org.setupPending) return orgHome(org).to;
+  const classes = await queryClient
+    .ensureQueryData(classesOptions(session, org.id))
+    .catch(logged("The school's classes", []));
+  if (
+    !org.can?.includes("overview.read") ||
+    (org.solo === true && classes.length <= 1)
+  )
+    return classes.length === 1
+      ? `/school/${org.id}/classes/${classes[0]!.id}/today`
+      : `/school/${org.id}/classes`;
+  return `/school/${org.id}`;
+}
+
 /** `/school`: one school opens it; more choose; none offers setup in place. */
 export const chooser = async ({ location }: { location: Location }) => {
   const session = await staffSession(location);
   const orgs = await queryClient.fetchQuery(orgsOptions(session));
-  // None yet: the chooser offers class setup in place (no hop).
-  if (orgs.length === 1) elsewhere(orgHome(orgs[0]!).to);
+  // None yet: the chooser offers class setup in place (no hop). One: where
+  // it opens, in this one hop (a family's org as the family).
+  if (orgs.length === 1)
+    await elsewhereOnce(await orgLanding(session, orgs[0]!));
 };
 
 /** `/school/<org>/setup[/<step>[/names]]`: guided setup, one step an
@@ -157,7 +183,9 @@ export const setupStep = async ({
       org.id === orgId && (!org.setupPending || org.roles.includes("admin")),
   );
   if (!requested) elsewhere("/start/school");
-  if (!requested.setupPending) elsewhere(orgHome(requested).to);
+  // Setup finished: where the school opens, in this one hop.
+  if (!requested.setupPending)
+    await elsewhereOnce(await orgLanding(session, requested));
   const [state] = await Promise.all([
     api().then((m) =>
       queryClient.fetchQuery(m.setupOptions(session, requested.id)),
@@ -202,20 +230,8 @@ export const orgIndex = async ({
     .fetchQuery(orgOptions(session, orgId))
     .catch(logged("The school", null));
   if (!org) elsewhere("/school");
-  if (org.setupPending) elsewhere(orgHome(org).to);
-  const classes = await queryClient
-    .ensureQueryData(classesOptions(session, orgId))
-    .catch(logged("The school's classes", []));
-  if (
-    !org.can?.includes("overview.read") ||
-    (org.solo === true && classes.length <= 1)
-  )
-    // One class opens on its Today, never on a list of one.
-    elsewhere(
-      classes.length === 1
-        ? `/school/${orgId}/classes/${classes[0]!.id}/today`
-        : `/school/${orgId}/classes`,
-    );
+  const landing = await orgLanding(session, org);
+  if (landing !== `/school/${orgId}`) elsewhere(landing);
   return { session };
 };
 export const orgIndexData = async ({

@@ -1,6 +1,10 @@
 import { isEarned } from "../../../learning/earned";
 import { childAddress, practiceParams } from "../spaces/identity";
-import { PracticeLabel } from "../practice/CurriculumPractice";
+import {
+  CurriculumPractice,
+  PracticeLabel,
+} from "../practice/CurriculumPractice";
+import { SkillWorkbook } from "../workbooks/SkillWorkbook";
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
@@ -12,6 +16,16 @@ import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
 import { useInventoryView } from "./inventory-view";
+import { GradeIndex } from "./GradeIndex";
+import {
+  gradeIndex,
+  inventoryMode,
+  viewedBand,
+  type InventoryMode,
+  standingOf,
+} from "./grade-index";
+import { Segmented } from "../../ui/Segmented";
+import { STANDING } from "../learners/SkillKey";
 import {
   bandLabel,
   bands,
@@ -40,7 +54,14 @@ import {
    strong it is lately. The founder's reference for a dense screen: one flat
    list across the page's width, filters whose counts follow the search and
    the math area, and nothing that sits empty. A learner who hasn't answered
-   yet sees the whole curriculum they'll fill. */
+   yet sees the whole curriculum they'll fill.
+
+   Two ways to slice it, one switch. "By area" is that collection. "By
+   grade" is one grade as a flat index (GradeIndex.tsx): every skill of the
+   grade in teaching order under the five areas, where the learner stands
+   on each, and each skill's problem types. A grown-up reading a child's
+   opens by grade, on the child's own grade; a learner's own opens by area.
+   The choice is part of the view (inventory-view.ts). */
 
 type Filter = "tried" | "earned" | "strong" | "all";
 const filters: { id: Filter; label: string }[] = [
@@ -62,7 +83,13 @@ const readFilter = (value: unknown): Filter | null =>
       : null;
 const plural = (n: number, one: string, many = `${one}s`) =>
   `${n.toLocaleString()} ${n === 1 ? one : many}`;
-function strength(e?: Evidence) {
+/** How a row says where its skill stands. A learner's own Inventory keeps
+ * its own words. A grown-up reading a family's child's (`child`) reads the
+ * dashboard's four, Strong, Earned, Tried or Not asked yet, by the one rule
+ * the by-grade rows and the skill's layer use (grade-index.ts
+ * `standingOf`): a row never opens a layer that says something else. */
+function strength(e: Evidence | undefined, child: boolean) {
+  if (child) return STANDING[standingOf(e)].term;
   return !e?.attempts
     ? "Not tried"
     : e.status === "review-ready"
@@ -96,6 +123,12 @@ export function InventoryScreen() {
   const query = useDeferredValue(field.text.trim());
   // The math area, as Pathways names it (`?area=geometry`).
   const area = areaParam(inventoryView.area) ?? "";
+  // By grade or by area. Grade names show to grown-ups, and to a learner
+  // whose own screens show them: without them there is no view by grade.
+  const mode: InventoryMode = shown
+    ? inventoryMode(inventoryView.view, child)
+    : "area";
+  const band = viewedBand(inventoryView.grade, view.frontier);
   const evidence = useMemo(
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
@@ -148,8 +181,23 @@ export function InventoryScreen() {
   // Before the first answer the collection is the whole curriculum.
   const filter =
     readFilter(inventoryView.collection) ?? (triedAnything ? "tried" : "all");
-  const update = (values: { collection?: string; area?: string }) =>
-    inventoryView.set({ topic: field.carry(), ...values });
+  const update = (values: {
+    collection?: string;
+    area?: string;
+    view?: InventoryMode;
+    grade?: string;
+  }) => inventoryView.set({ topic: field.carry(), ...values });
+  // By grade: the grade's index, one area of it when one is chosen, and
+  // only the skills a search found.
+  const sections =
+    mode === "grade" && catalog.data
+      ? gradeIndex(
+          catalog.data,
+          band,
+          area || null,
+          needle ? new Set(matching.map((skill) => skill.id)) : undefined,
+        )
+      : [];
   const earnedInArea = inArea.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
@@ -186,6 +234,7 @@ export function InventoryScreen() {
     !child &&
     !triedAnything &&
     !inventoryView.collection &&
+    !inventoryView.view &&
     !query &&
     !area;
   if (hero)
@@ -200,7 +249,7 @@ export function InventoryScreen() {
       </main>
     );
   return (
-    <main className={styles.page}>
+    <main className={styles.page} data-inventory-mode={mode}>
       {/* The app frame's bar holds the logo, the Progress tabs and the way to
           practice; whose record this is shows in the drawer. */}
       <div className={styles.heading}>
@@ -248,6 +297,21 @@ export function InventoryScreen() {
               <Stat value={xp} label="XP" />
             </section>
           ) : null}
+          {shown && (
+            <div className={styles.viewSwitch}>
+              <Segmented<InventoryMode>
+                compact
+                dense
+                label="View"
+                value={mode}
+                onChange={(view) => update({ view })}
+                options={[
+                  { value: "grade", label: "By grade" },
+                  { value: "area", label: "By area" },
+                ]}
+              />
+            </div>
+          )}
           <div className={styles.filters}>
             <SiteSearchField
               field={field}
@@ -263,7 +327,7 @@ export function InventoryScreen() {
               onChange={(next) => update({ area: next || "" })}
             />
           </div>
-          {triedAnything && (
+          {mode === "area" && triedAnything && (
             <div
               className={styles.filterRow}
               role="group"
@@ -282,7 +346,18 @@ export function InventoryScreen() {
               ))}
             </div>
           )}
-          {needle ? (
+          {mode === "grade" ? (
+            <GradeIndex
+              band={band}
+              onBand={(grade) => update({ grade })}
+              sections={sections}
+              evidence={evidence}
+              searching={!!needle}
+              // Another person's (a child's) is named on paper; a learner's
+              // own names nobody.
+              who={child ? view.learner?.name : undefined}
+            />
+          ) : needle ? (
             <div
               className={styles.found}
               ref={keys.list}
@@ -302,6 +377,7 @@ export function InventoryScreen() {
                         skill={skill}
                         evidence={evidence.get(skill.id)}
                         grade={shown}
+                        child={child}
                         result
                       />
                     ))}
@@ -346,6 +422,7 @@ export function InventoryScreen() {
                         skill={skill}
                         evidence={evidence.get(skill.id)}
                         grade={shown}
+                        child={child}
                       />
                     ))}
                   </ul>
@@ -353,19 +430,6 @@ export function InventoryScreen() {
               );
             })
           )}
-          <div className={styles.footer}>
-            <details className={styles.explainer}>
-              <summary>How XP works</summary>
-              <p>
-                Each correct answer without help earns 1 XP and fills a
-                twentieth of the skill’s bar. Both stay.
-              </p>
-              <p>
-                Strong skills go back to Building when they’re due for review.
-                Grade labels place a skill in the curriculum, not the learner.
-              </p>
-            </details>
-          </div>
         </>
       )}
       {/* A skill opens over the list, the learner's own work on it with it:
@@ -373,11 +437,17 @@ export function InventoryScreen() {
       <LayerHost
         learner={view.learner?.id}
         skillActions={(skill) =>
-          view.canPractice &&
-          !view.viewOnly &&
-          !child &&
-          catalog.data?.templates.some((type) => type.skillId === skill) ? (
-            <div className={layers.actions}>
+          child ? (
+            // A family's child: their practice (the hand-over) and, beside
+            // it, a workbook held to the skill, each only where it works.
+            <div className={layers.actions} data-skill-actions="">
+              <CurriculumPractice filter={{ skill }} />
+              <SkillWorkbook skill={skill} />
+            </div>
+          ) : view.canPractice &&
+            !view.viewOnly &&
+            catalog.data?.templates.some((type) => type.skillId === skill) ? (
+            <div className={layers.actions} data-skill-actions="">
               <Link
                 className={buttonClass("primary")}
                 to="/$"
@@ -390,6 +460,7 @@ export function InventoryScreen() {
               >
                 <PracticeLabel />
               </Link>
+              <SkillWorkbook skill={skill} />
             </div>
           ) : null
         }
@@ -413,21 +484,26 @@ function SkillRow({
   skill,
   evidence,
   grade,
+  child,
   result = false,
 }: {
   skill: MapSkill;
   evidence?: Evidence;
   grade: boolean;
+  /** A grown-up reading a family's child's: the key's four words. */
+  child: boolean;
   /** A search result: the arrow keys move between results. */
   result?: boolean;
 }) {
   const score = illumination(evidence);
   const attempts = evidence?.attempts ?? 0;
-  const status = strength(evidence);
+  const status = strength(evidence, child);
   return (
     <li
       className={styles.skill}
       data-strength={status}
+      data-standing={child ? standingOf(evidence) : undefined}
+      data-skill={skill.id}
       style={
         {
           "--skill-hue": `var(--color-strand-${skill.strand}, var(--color-primary))`,
@@ -454,7 +530,7 @@ function SkillRow({
         <i style={{ width: `${score * 10}%` }} />
       </div>
       <div className={styles.strength}>
-        <strong>{status}</strong>
+        <strong data-standing-word={child ? "" : undefined}>{status}</strong>
         {attempts > 0 && <small>{plural(attempts, "attempt")}</small>}
       </div>
     </li>

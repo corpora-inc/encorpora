@@ -1,3 +1,4 @@
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import { seedLearnerScript } from "./lib/learner-seed";
 import { secureChromium } from "../browser-security.mjs";
 import { settleArrival } from "./ui-settle";
@@ -16,7 +17,6 @@ import {
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
-import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import {
   assertProblemReachable,
   assertPhoneLandscapeSmoke,
@@ -175,7 +175,7 @@ try {
           });
     if (path.endsWith("/frontier")) return route.fulfill({ json: frontier });
     if (path.endsWith("/practice-state"))
-      return route.fulfill({ json: defaultPracticeSettings() });
+      return route.fulfill({ json: practiceStateFixture() });
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/batches"))
       return route.fulfill({
@@ -229,6 +229,15 @@ try {
       .getByRole("link", { name, exact: true })
       .filter({ visible: true })
       .first();
+  /** A parent's view of a child's Inventory opens by grade; these checks
+   * read its other slice, by area (the collection, its filters and bars).
+   * Chosen once, it is kept for the child's inventory (its view store). */
+  async function byArea() {
+    const slice = page.getByRole("radio", { name: "By area", exact: true });
+    await slice.waitFor();
+    if ((await slice.getAttribute("aria-checked")) !== "true")
+      await slice.click();
+  }
   /** From the open drawer to the family's Today: its link, else its
    * address. */
   async function toFamily() {
@@ -522,6 +531,7 @@ try {
       await page
         .getByRole("heading", { name: "Inventory", exact: true })
         .waitFor();
+      await byArea();
       await page.locator('[data-strength="Strong"]').first().waitFor();
       assert.match(new URL(page.url()).pathname, /\/kids\/jordan\/inventory$/);
       await fits(`inventory ${theme} ${width}`);
@@ -647,6 +657,7 @@ try {
       fullPage: true,
     });
     await recordLink("Inventory").click();
+    await byArea();
     await page.locator('[data-strength="Strong"]').first().waitFor();
     assert.match(new URL(page.url()).pathname, /\/kids\/jordan\/inventory$/);
   }
@@ -680,7 +691,9 @@ try {
   await page.waitForURL((url) =>
     url.pathname.endsWith("/kids/avery/inventory"),
   );
-  await page.getByText("Not tried", { exact: true }).first().waitFor();
+  await byArea();
+  // (A parent reads a child's rows in the dashboard's four words.)
+  await page.getByText("Not asked yet", { exact: true }).first().waitFor();
   assert.equal(
     await page.locator('[data-strength="Strong"]').count(),
     0,
@@ -693,6 +706,7 @@ try {
   await page.keyboard.press("Enter");
   await page.locator('[data-child-page="jordan"]').waitFor();
   await recordLink("Inventory").click();
+  await byArea();
   await page.locator('[data-strength="Strong"]').first().waitFor();
   // A family of four, with long names: every child is a row of its own,
   // a 44px target whose name stays inside it.

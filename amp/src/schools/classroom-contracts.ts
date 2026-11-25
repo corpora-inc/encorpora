@@ -13,6 +13,7 @@ import {
   type SchoolSettings,
 } from "./settings.js";
 import type { ExperiencePreset } from "./setup-contracts.js";
+import { looks } from "../learning/look.js";
 import { freeAllowanceSchema } from "../learning/free-allowance.js";
 
 /** The API shapes of a class's student experience, standings and workbook
@@ -24,11 +25,12 @@ export const experienceKeys = [
   "standings",
   "measure",
   "deviceMode",
+  "look",
 ] as const;
 export type ExperienceKey = (typeof experienceKeys)[number];
 /** A starting point decides what students see. Device mode is about the
- * devices, so it stays as it is. */
-export type PresetKey = Exclude<ExperienceKey, "deviceMode">;
+ * devices, and look is a taste, so both stay as they are. */
+export type PresetKey = Exclude<ExperienceKey, "deviceMode" | "look">;
 export type ExperienceValues = Pick<SchoolSettings, PresetKey>;
 
 /** What each starting point sets. */
@@ -64,6 +66,9 @@ export const experienceResource = z.object({
   canEdit: z.boolean(),
   /** Whether a lock here means anything: an admin, at an org. */
   canLock: z.boolean(),
+  /** The settings this person may lock for the people below: an admin's
+   * at an org, anything; a class's teacher, only the look. */
+  lockable: z.array(z.enum(experienceKeys)),
   /** The boards that exist here: a school on its own has no district. */
   standingsOptions: z.array(z.enum(standingsScopes)),
   settings: z.object({
@@ -71,6 +76,7 @@ export const experienceResource = z.object({
     standings: experienceSetting(z.enum(standingsScopes)),
     measure: experienceSetting(z.enum(standingsMeasures)),
     deviceMode: experienceSetting(z.enum(deviceModes)),
+    look: experienceSetting(z.enum(looks)),
   }),
   /** A class's roster, with who the teacher left off standings. */
   students: z
@@ -88,9 +94,14 @@ const writableValues = z.strictObject({
   standings: z.enum(standingsScopes).nullable().optional(),
   measure: z.enum(standingsMeasures).nullable().optional(),
   deviceMode: z.enum(deviceModes).nullable().optional(),
+  look: z.enum(looks).nullable().optional(),
 });
+/** What a class may lock for its own students. Every other setting is a
+ * school's to lock, so a class that sends one is refused. */
+export const classLockable: readonly ExperienceKey[] = ["look"];
 export const classExperienceWriteSchema = z.strictObject({
-  values: writableValues,
+  values: writableValues.optional(),
+  locks: z.strictObject({ look: z.boolean().optional() }).optional(),
 });
 export const orgExperienceWriteSchema = z.strictObject({
   values: writableValues.optional(),
@@ -100,6 +111,7 @@ export const orgExperienceWriteSchema = z.strictObject({
       standings: z.boolean().optional(),
       measure: z.boolean().optional(),
       deviceMode: z.boolean().optional(),
+      look: z.boolean().optional(),
     })
     .optional(),
 });

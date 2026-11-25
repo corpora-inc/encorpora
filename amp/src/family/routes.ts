@@ -9,7 +9,9 @@ import {
   familyChildTimeSchema,
   familyTeachingSchema,
 } from "./projection-contracts.js";
+import { familyDashboardSchema } from "./dashboard-contracts.js";
 import {
+  familyDashboard,
   familyProjection,
   familyChildProgress,
   familyChildTime,
@@ -183,6 +185,13 @@ export async function registerFamilyRoutes(
           options.development,
           options.billingConfig,
         ),
+      );
+    });
+    scope.get("/api/v1/families/:family/dashboard", async (request) => {
+      const account = await options.authenticate(request);
+      const { family } = familyParams.parse(request.params);
+      return familyDashboardSchema.parse(
+        await familyDashboard(options.pool, account, family),
       );
     });
     scope.get("/api/v1/families/:family/teaching", async (request) => {

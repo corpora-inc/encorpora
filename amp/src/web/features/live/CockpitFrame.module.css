@@ -1,0 +1,83 @@
+/* The live session's frame (CockpitFrame.tsx). */
+.container {
+  container: live-frame / inline-size;
+  min-width: 0;
+}
+.frame {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+/* Opaque, so rows pass under the bar and the strip, never through them. */
+.control,
+.strip {
+  position: sticky;
+  z-index: 3;
+  background: var(--color-surface);
+}
+.control {
+  top: var(--live-sticky-top);
+}
+.strip {
+  top: calc(var(--live-sticky-top) + 56px);
+  margin-bottom: var(--space-3);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+.totals {
+  margin-block: var(--space-2) var(--space-3);
+}
+.frame[data-resting] .control {
+  position: static;
+}
+
+@container live-frame (min-width: 960px) {
+  .frame {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
+    column-gap: var(--space-6);
+    height: var(--live-frame-height, calc(100dvh - var(--live-sticky-top)));
+    min-height: 480px;
+  }
+  .frame[data-resting] {
+    height: auto;
+    min-height: 0;
+  }
+  .frame[data-resting] .control {
+    grid-column: 1 / -1;
+  }
+  .control,
+  .strip {
+    position: static;
+  }
+  .control {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .totals {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin: 0;
+  }
+  .strip {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-block: var(--space-2) var(--space-3);
+  }
+  .roster {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    min-height: 0;
+  }
+}
+
+/* A short roster: wide, the bar and the totals share a band, then the rows
+   at their own height. */
+@container live-frame (min-width: 960px) {
+  .frame[data-flow] {
+    grid-template-rows: auto auto auto;
+    height: auto;
+    min-height: 0;
+  }
+}

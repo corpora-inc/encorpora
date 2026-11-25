@@ -23,8 +23,9 @@ const STILL: Moving = { direction: 0 };
  * one below back, and the trail at the top names the way down (Linear
  * systems › Systems modeling › Geometric design), each step a way back up.
  *
- * - ✕ and the scrim put the whole overlay away, back to the page.
- * - Escape goes up one level, or closes at the first.
+ * - ✕ and Escape put the top layer down: the layer behind it shows again,
+ *   or, at the first level, the page.
+ * - The scrim is the page: a press there puts the whole overlay away.
  * - Only a person's own open or close moves anything (`moving`): a stack
  *   restored (Back from practice, a refresh, a remount for another identity)
  *   is drawn settled, in its place, at once.
@@ -46,7 +47,9 @@ export function LayerFrame({
   layers?: string;
   /** Back up to the layer at this depth (1 is the first). */
   onCrumb: (depth: number) => void;
+  /** The whole overlay away (the scrim). */
   onClose: () => void;
+  /** The top layer down, one step (✕ and Escape). */
   onStepBack: () => void;
   /** Whether a person just opened (1) or closed (-1) a layer, else 0, and
    * going up, the layer just closed (`kind:id`). Read once, when the frame
@@ -71,7 +74,7 @@ export function LayerFrame({
   // heading names (never a second time here). None at the first level.
   const ancestors = crumbs.slice(0, -1);
   const frame: LayerPanelFrame = {
-    close: onClose,
+    close: onStepBack,
     trail: ancestors.length ? (
       <Trail crumbs={ancestors} onCrumb={onCrumb} />
     ) : undefined,
@@ -88,6 +91,7 @@ export function LayerFrame({
         <Dialog.Overlay
           className={`${sheet.overlay} ${still} ${above ? styles.above : ""}`}
           data-layer-scrim=""
+          data-above={above || undefined}
         />
         <Dialog.Content
           ref={content}

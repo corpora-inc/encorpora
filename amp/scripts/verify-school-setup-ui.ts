@@ -117,7 +117,8 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-setup",
+  // Its own dependency cache; a shared node_modules names one outside it.
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-setup",
   server: {
     // Other work edits the source while a check runs: no live reloads mid-check.
     hmr: false,
@@ -234,6 +235,18 @@ const ledgerRows = (page: Page) =>
 /** What a failed run was looking at. */
 const last: { page: Page | null } = { page: null };
 
+/** The invitation's one way forward (InviteScreen): "Continue" opens the
+ * screen the invited address needs. Nobody here has an account yet, so it
+ * opens creating one, with nothing to choose on the way. */
+async function continueToSignUp(page: Page) {
+  await page.getByRole("link", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/sign-(in|up)/);
+  assert.equal(
+    new URL(page.url()).pathname,
+    "/sign-up",
+    "an invited address with no account opens creating one",
+  );
+}
 async function signUp(page: Page, email: string) {
   // The default on a device with passkeys; a password is the second choice.
   const fallback = page.getByRole("button", {
@@ -303,8 +316,7 @@ async function journey(
   await page.goto(issued.setupUrl);
   await heading(page, "Set up Alder Street School");
   await shot(page, "invite-setup-signed-out", width, theme);
-  await page.getByRole("link", { name: "Create an account" }).click();
-  await page.waitForURL(/\/sign-up/);
+  await continueToSignUp(page);
   await page.getByText("Your invitation continues").waitFor();
   await shot(page, "sign-up-school", width, theme);
   await signUp(page, email);
@@ -628,8 +640,7 @@ async function journey(
     teacher.url(),
   );
   await shot(teacher, "invite-signed-out", width, theme);
-  await teacher.getByRole("link", { name: "Create an account" }).click();
-  await teacher.waitForURL(/\/sign-up/);
+  await continueToSignUp(teacher);
   check(
     `${label} the token isn't carried in the URL`,
     !teacher.url().includes(invitation.url.split("#")[1]!.slice(0, 20)),
@@ -692,8 +703,7 @@ async function loneTeacher(
   const issued = await issue("Ms. Vega’s Class", email);
   await page.goto(issued.setupUrl);
   await heading(page, "Set up Ms. Vega’s Class");
-  await page.getByRole("link", { name: "Create an account" }).click();
-  await page.waitForURL(/\/sign-up/);
+  await continueToSignUp(page);
   await signUp(page, email);
   await heading(page, "Set up Ms. Vega’s Class");
   await page.getByLabel(/Your name/).fill("Ines Vega");
@@ -724,7 +734,10 @@ async function loneTeacher(
   await page.getByRole("button", { name: "Add 3 students" }).click();
   // A new class opens on Today, with the next step that works.
   await page.waitForURL(/\/classes\/[0-9a-f-]{36}\/today$/);
-  await page.getByRole("link", { name: "Start class" }).first().waitFor();
+  // Today's own session control: Start class starts a live session (#2465).
+  await page
+    .getByRole("button", { name: "Start class", exact: true })
+    .waitFor();
   await pause(page);
   await shot(page, "class-landing", width, theme);
   // Adding one more, from the class's settings.

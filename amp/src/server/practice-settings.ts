@@ -2,7 +2,15 @@ import { isDeepStrictEqual } from "node:util";
 import { skills } from "../curriculum/catalog";
 import { historicalTemplates } from "../math/historical-templates";
 import { templates } from "../math/engine";
-import type { PracticeChange } from "../learning/practice-settings";
+import { allowsColorful } from "../learning/practice-settings";
+import type {
+  PracticeChange,
+  PracticeSettings,
+  PracticeState,
+} from "../learning/practice-settings";
+import { resolveLook, startingLook } from "../learning/look";
+import { completedGrade } from "../learning/starting-point";
+import { pointsOf } from "../learning/points";
 import { strandEstimate, targetGrade } from "../learning/frontier";
 import {
   ApiError,
@@ -10,6 +18,38 @@ import {
   type PracticeChangeSource,
 } from "./repository";
 import { templateGrade } from "./mixed-practice";
+
+/** The look that applies now, whether it is locked and by whom. */
+async function lookOf(tx: LearnerTransaction, settings: PracticeSettings) {
+  // Their grade by age, as everywhere (K is 0); an adult has none.
+  const birthYear = (await tx.isAdult()) ? null : await tx.birthYear();
+  return resolveLook({
+    own: settings.look,
+    ownOff: !allowsColorful(settings),
+    classes: await tx.classLooks(),
+    starting: startingLook(
+      birthYear === null ? null : Math.max(0, completedGrade(birthYear) + 1),
+    ),
+  });
+}
+
+/** The settings with the look that applies now, whether a class locked it,
+ * and the learner's points. */
+export async function practiceState(
+  tx: LearnerTransaction,
+  settings: PracticeSettings,
+): Promise<PracticeState> {
+  // One transaction, one connection: one query after the other.
+  const { look, locked, lockedBy } = await lookOf(tx, settings);
+  const evidence = await tx.skillEvidence();
+  return {
+    ...settings,
+    effectiveLook: look,
+    lookLocked: locked,
+    lookLockedBy: lockedBy,
+    points: pointsOf(evidence),
+  };
+}
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
 
@@ -106,6 +146,33 @@ export async function changePractice(
   } else if (change.kind === "gradeLevel") {
     // Display only: practice, levels and evidence are unchanged.
     next.gradeLevelShown = change.shown;
+  } else if (change.kind === "lookHue") {
+    // Display only. The color a learner keeps in Colorful, or (null) lets
+    // move on with every problem: theirs, whoever holds the look itself.
+    next.lookHue = change.hue;
+  } else if (change.kind === "look") {
+    // Display only, like the grade level, and the learner's own: Calm or
+    // Colorful, or (null) where their age starts. Colorful can't be chosen
+    // while an adult has it off, by a class above or for this child; the
+    // choice they had is kept for when it is allowed again.
+    if (change.look === "bold") {
+      const { lockedBy } = await lookOf(tx, previous);
+      if (lockedBy === "class")
+        throw new ApiError(409, "Your class turned Colorful off.");
+      if (lockedBy === "adult")
+        throw new ApiError(409, "A parent turned Colorful off.");
+    }
+    next.look = change.look;
+  } else if (change.kind === "allowColorful") {
+    // A grown-up's switch for the child (the route refuses a student's
+    // session). A class above that has it off holds it for everyone.
+    const now = await lookOf(tx, previous);
+    if (now.lockedBy === "class")
+      throw new ApiError(409, "The class turned Colorful off.");
+    next.colorfulAllowed = change.allowed;
+    // The lock that came before the switch is spent: the switch is the
+    // one record from here on.
+    next.lookAdultLock = false;
   } else {
     if (change.skillId && !templates.some((t) => t.skillId === change.skillId))
       throw new ApiError(400, "This skill has no practice problems.");

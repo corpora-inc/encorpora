@@ -13,6 +13,7 @@ import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaces } from "./PlaceSwitcher";
 import type { SpaceDescriptor } from "../spaces/resolve";
+import { menuLearner } from "./menu-learner";
 import { useLocationMatch, useSpace } from "../spaces/useSpace";
 import { useSettingsHref } from "../spaces/settings-hub";
 import { childPath } from "../spaces/identity";
@@ -26,8 +27,11 @@ import styles from "./Navigation.module.css";
 import { ProfilePlace } from "../profiles/ProfileBar";
 import {
   handedReturnName,
+  handedReturnPath,
   handedStudentDevice,
 } from "../../lib/student-device";
+import { closesBack, closeTo } from "../../lib/return-to";
+import { logAhead } from "../../lib/ahead";
 
 type Icon =
   | "child"
@@ -93,6 +97,7 @@ export default function DrawerContents({
   const navigate = useNavigate();
   const location = useLocation();
   const setDrawerSettings = useShellSlots((state) => state.setDrawerSettings);
+  const setDrawerActions = useShellSlots((state) => state.setDrawerActions);
   // Outside the app frame (sign-in cards, a student's standings), the
   // drawer reads the space of the address itself.
   const address = useLocationMatch();
@@ -111,7 +116,12 @@ export default function DrawerContents({
     for (const link of navRef.current?.querySelectorAll("a[href]") ?? []) {
       const href = link.getAttribute("href")!;
       void router.preloadRoute({ href } as never).catch((error: unknown) => {
-        console.error("A drawer item's screen did not preload", href, error);
+        logAhead(
+          "A drawer item's screen did not preload",
+          error,
+          "error",
+          href,
+        );
       });
     }
   }, [router]);
@@ -184,7 +194,8 @@ export default function DrawerContents({
   // A learner's settings, only where there is a learner whose they are.
   // This device's answer feedback is one quiet section at the foot, the
   // same switches for everyone (practice/FeedbackPreferences.tsx).
-  const learning = kind === "me" || kind === "student";
+  // The learner whose menu this is, when the space names one.
+  const { learning, learnerId: spaceLearner } = menuLearner(space);
   const family = kind === "family";
   return (
     <>
@@ -281,6 +292,13 @@ export default function DrawerContents({
           !space?.destinations.length &&
           nav("/start", "Get started", "learn")}
       </nav>
+      {/* What the screen can do that is not a place to go portals here
+          (practice's raised hand while no session runs). */}
+      <div
+        ref={setDrawerActions}
+        className={styles.actions}
+        data-drawer-actions
+      />
       {family && (
         // The screen's own settings (practice adjustments) portal here.
         <div ref={setDrawerSettings} data-drawer-settings />
@@ -336,7 +354,7 @@ export default function DrawerContents({
         {!learning && !family && (
           <div ref={setDrawerSettings} data-drawer-settings />
         )}
-        <FeedbackPreferences />
+        <FeedbackPreferences learning={learning} learnerId={spaceLearner} />
       </div>
     </>
   );
@@ -346,6 +364,7 @@ export default function DrawerContents({
  * identity is shown above navigation, and named in this action's tooltip;
  * a school-signed-in adult's is shown just above it. */
 export function DrawerFooter({ close }: { close: () => void }) {
+  const router = useRouter();
   const view = useLearningView({ records: false });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -405,6 +424,21 @@ export function DrawerFooter({ close }: { close: () => void }) {
             clearInitialConsentChallenge();
             clearOwnedPurchaseReturn();
             clearPurchaseReturn();
+            // A handed device going back to the very screen it was handed
+            // from, the entry before this one: Back to it, as the browser's
+            // Back does. The parent is where they were on that screen (its
+            // scroll, what was open), never at its top after a fresh load
+            // (QA 2026-11-23), and the move hands the device back on its
+            // way (lib/family-practice-history.ts). From anywhere else,
+            // the sign-out below opens the screen afresh.
+            if (student && handedStudentDevice()) {
+              const from = handedReturnPath();
+              if (closesBack(router.history.location, from, from)) {
+                close();
+                closeTo(router, from, from);
+                return;
+              }
+            }
             setBusy(true);
             setError("");
             void import("../../auth")

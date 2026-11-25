@@ -20,6 +20,7 @@ import { OPEN_KEY, readStack } from "../nav/entities";
 import { layerScope, useLayerStore } from "../nav/layer-store";
 import { payOverlays } from "./pay-routes";
 import { accountOverlays } from "./account-overlays";
+import { logAhead } from "../lib/ahead";
 
 /*
  * A family's own screens (docs/architecture/spaces.md, P2): `/family/<family>`
@@ -35,7 +36,7 @@ import { accountOverlays } from "./account-overlays";
 const orNull =
   (what: string) =>
   (error: unknown): null => {
-    console.warn(`${what} didn’t load ahead`, error);
+    logAhead(`${what} didn’t load ahead`, error);
     return null;
   };
 
@@ -207,7 +208,7 @@ export function familyRoutes(root: AnyRoute) {
         if (!stack.some((layer) => layer.kind === "lesson"))
           return void (await ready);
         void ready.catch((error: unknown) =>
-          console.error("The map did not preload", error),
+          logAhead("The map did not preload", error, "error"),
         );
       },
       component: lazyRouteComponent(load as never, name as never),
@@ -279,7 +280,29 @@ export function familyRoutes(root: AnyRoute) {
   const today = createRoute({
     getParentRoute: () => family,
     id: "today",
+    // The dashboard (each child's week, areas and focus) paints with the
+    // children, never after them.
+    loader: async ({ context, params }) => {
+      const { session } = context as unknown as { session: AuthSession };
+      const id = (params as { family: string }).family;
+      await (await import("./family-live-loaders")).todayLoader(session, id);
+    },
     component: lazyRouteComponent(payHosts, "TodayPayHost"),
+  });
+  /** A stopped session's stored report, under Today (a family has no Time
+   * tab). Its read comes with it, with the dashboard's per-child settings;
+   * a session still running answers 409, which the screen shows as the way
+   * back to the live view. Its own chunk: the report's code is never part
+   * of Today's. */
+  const sessionReport = createRoute({
+    getParentRoute: () => family,
+    path: "sessions/$session",
+    loader: async (input) =>
+      (await import("./family-live-loaders")).reportLoader(input),
+    component: lazyRouteComponent(
+      () => import("../features/family/FamilyReport"),
+      "FamilyReportScreen",
+    ),
   });
   return [
     landing,
@@ -289,6 +312,7 @@ export function familyRoutes(root: AnyRoute) {
       // Today, with the pay overlay its "Continue with AMP" opens over it
       // (`pay/<learner>`, features/pay): Today stays mounted behind.
       today.addChildren([...payOverlays(today, "pay/$learner")]),
+      sessionReport,
       childPage.addChildren([...payOverlays(childPage, "pay")]),
       // A child's workbook day and results: overlays over their page, at
       // their own addresses, closing (✕) back to it. Over the page, never a
@@ -304,7 +328,14 @@ export function familyRoutes(root: AnyRoute) {
         getParentRoute: () => family,
         path: "kids/$learner/workbooks/$workbookId/results",
         staticData: { overList: true },
-        loader: childLoader,
+        // The page under it, and the results themselves: the sheet opens
+        // whole, its title the workbook's own.
+        loader: async (input) =>
+          (await import("./family-workbook-results")).resultsLoader(
+            input,
+            childLoader,
+            orNull("The family"),
+          ),
         component: screen("ChildScreen"),
       }),
       childScreen(

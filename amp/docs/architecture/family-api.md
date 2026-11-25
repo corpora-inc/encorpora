@@ -252,6 +252,96 @@ remain available under the Teaching scope. `readGrades`, `editGrades` and
 A second-parent invitation requires a local class, an empty second-parent slot
 and no currently hosted children.
 
+## Family dashboard
+
+`GET /api/v1/families/:family/dashboard` has no body. It answers the holder or
+the family's active second parent with one block per own child (the same
+learner IDs, in the same order, as the projection's `children`). Co-teachers
+receive `403 family_parent_only`; unrelated accounts `404 family_not_found`.
+Hosted children the family does not own never appear. It is a separate read
+from the projection, which every family screen and mutation refetches. Its
+query count is fixed for any number of children (authorization, the owned
+children, the calendar, then one read each for the week's totals, its days,
+the stored levels, the recent selections, the skill evidence and, for a
+reader who manages devices, the class code).
+
+```ts
+type FamilyDashboard = {
+  familyId: string;
+  today: string;                          // the family's date, YYYY-MM-DD
+  week: { from: string; to: string };     // Monday through today
+  join: { code: string; path: string } | null; // "ABC-234", "/join/ABC-234"
+  children: Array<{
+    id: string;                           // learner ID
+    name: string;
+    gradeLevelShown: boolean;             // the parent's switch; unset is on
+    week: {
+      days: number; minutes: number; problems: number;
+      correct: number; independent: number; lastPracticed: string | null;
+    };
+    daily: Array<{ day: string; minutes: number; problems: number }>;
+    level: Level | null;                  // overall; null before an answer
+    areas: Array<{                        // always the five, in order
+      area: "number" | "algebra" | "geometry" | "measurement" | "data";
+      title: string;
+      level: Level | null;                // null before an answer in the area
+      checked: {
+        from: number; to: number;         // inclusive whole grades
+        skills: number;
+        strong: number; earned: number; tried: number; notAsked: number;
+        nearestNotAsked: Array<{ id: string; title: string }>;
+      } | null;
+    }>;
+    focus: {
+      answered: number;                   // of the last 20 answers
+      mix: Array<{
+        key: "catching-up" | "reviewing" | "checking-earlier"
+           | "new-ground" | "chosen";
+        count: number;
+        skills: Array<{ id: string; title: string }>;
+      }>;
+    };
+  }>;
+};
+type Level = { level: number; low: number; high: number; answered: number };
+```
+
+Levels are numbers on the grade axis (K = 0 … Precalculus = 12): the best
+guess and the likely range (`levelRange`). Strings never name a grade; a screen
+shows grade numbers only when that child's `gradeLevelShown` is on.
+
+- **Week.** `totals()` over Monday through today, the same rollups as Today:
+  active days, minutes to a tenth, problems, right answers and right answers
+  without help. `lastPracticed` is the latest day with any activity, before
+  this week too. `daily` holds every day of the week so far, zeros included,
+  from one `perDay()` read.
+- **Areas.** The stored level's strands folded into the five areas
+  (`curriculum/areas.ts` `strandAreas`): the answered-weighted mean of the
+  level and of each end of the range over the area's strands with answers.
+  Modeling and reasoning are not areas and add nothing here.
+- **Checked below the level.** The skills with problems (`practiceCatalog`)
+  of the area's two whole grades just below its level (the area's own, else
+  the overall), a grade being below once the level rounds past it. Each skill
+  is in one bucket: `strong` (stored status `review-ready`, the
+  `progress.ts` rule: 4 of the last 5 right without help, the last one too),
+  else `earned` (right once without help, `learning/earned.ts`), else
+  `tried`, else `notAsked`. `nearestNotAsked` names up to ten not-asked
+  skills, the higher grade first. Null with no level or no grade below it.
+- **Focus.** The stored selection of each child's last 20 answered problems
+  (`amp_attempts` newest first by `evidence_sequence`, each joined to its
+  instance). `chosen`: a chosen problem type or a practice focus;
+  `catching-up`: `prerequisite`, `revisit`; `reviewing`: `review`;
+  `checking-earlier`: `frontier` or `explore` planned as a foundation check;
+  `new-ground`: other `frontier`, `explore`. An answer with no stored reason
+  (paper marks) counts in `answered` and in no key. Keys appear in this order
+  when they have answers; their skills most often first.
+- **Join.** The family class's code while its children can practice, for a
+  reader with `signin.manage` on that class (as Settings › Devices shows it).
+  Null without a class, without that permission or while practice is closed.
+
+A child's actions, access and tasks stay on the projection: the screen reads
+both, by learner ID.
+
 ## Invitations and printed reports
 
 Second-parent invitation lookup retains `role: "teacher"` and

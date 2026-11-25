@@ -35,8 +35,29 @@ const budget = {
    * and the comparisons (`/versus/{-$slug}`: one route for the hub and
    * every page, its loader line, the path pattern the head and GA share,
    * and four chunk names, about 0.26 KB; their screens, words and head
-   * writers load with the route). Together: 292.2 KB. */
-  entryJs: 293 * KB,
+   * writers load with the route). Together: 292.2 KB.
+   * Live sessions add 1.3 KB that must run first, after everything that
+   * could wait was moved out (Colorful, the raised hand, the cockpit, the
+   * reports and every live loader load with their screens): the class and
+   * family session routes, the slot for the bar's session action (it paints
+   * with the bar, so nothing moves), and the slots for a student's look
+   * and hand. The look this device remembers for a learner, put on before
+   * their first paint so a Colorful learner never sees Calm first
+   * (features/practice/look-ahead.ts), adds 0.5 KB. Whether the page is
+   * being left (lib/page-leave.ts), known from the app's start so a live
+   * screen that mounts late starts no request the browser will refuse,
+   * adds 0.5 KB. Together, measured: 294.8 KB.
+   * 2026-11-24: measured 296.5 KB. The 1.7 KB since is what must be known
+   * before any screen: who this tab is (lib/student-device.ts: a child's
+   * sign-in in another tab never changes it), a handed device's way back
+   * to the screen and scroll the parent left, on every route
+   * (lib/family-practice-history.ts), a learner's look asked for before
+   * their first screen (features/practice/look-ahead.ts `lookFirst`; the
+   * read itself is its own chunk), a layer
+   * over a layer with one ✕ each (nav/layer-store.ts, nav/entities.ts),
+   * and the math faces asked for before a problem paints
+   * (app/preload-math-fonts.ts). */
+  entryJs: 297 * KB,
   /** The pitch's light entry: React, the pitch and its measurement, no app
    * (2026-11-15: 152 KB). */
   pitchJs: 160 * KB,

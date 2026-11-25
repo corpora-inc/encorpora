@@ -8,21 +8,20 @@ import type { TodayResponse } from "../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { meOptions } from "../../../lib/query";
-import { secondParentOptions } from "../../second-parent/api";
 import { currentSession, orgOptions } from "../api";
 import { classYearOptions } from "../org/org-api";
-import { useDemoOrg } from "../demo/DemoPlace";
 import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { ClassMap, MapKey } from "./ClassMap";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { mapOptions, todayOptions } from "./teacher-api";
 import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
+import { ClassCockpit, type CockpitWords } from "./today/ClassCockpit";
 import { FamilyNotice } from "./today/FamilyNotice";
-import { FamilyToday } from "./today/FamilyToday";
 import { Feed } from "./today/Feed";
 import { PracticeSlot } from "./today/PracticeSlot";
 import { todoEntries, useChecks } from "./today/todo-entries";
+import { useCockpitShown } from "./today/use-cockpit-shown";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import { pilotLeft } from "../pilots/presentation";
@@ -34,18 +33,28 @@ import {
   useClassAccess,
 } from "../pilots/ClassAccess";
 
+const COCKPIT_WORDS: CockpitWords = {
+  start: "Start class",
+  nameHeader: "Student",
+  roster: "Students in this session",
+};
+
 /** A class's Today (the /schools product shot): a feed of what to do and
  * why, then the week in a line. No map: Map is its own tab. */
 function ClassToday({
   data,
   place,
   headed,
+  cockpit,
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
   /** The header's practice slot says where practice stands (PracticeSlot):
    * starting, waiting, ended and "couldn't check" live there, not here. */
   headed: boolean;
+  /** The session control is on the page above: it is how class starts, so
+   * the feed doesn't say "Start class" again. */
+  cockpit: boolean;
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
   const { start: canStart } = useSchoolNavigation({
@@ -92,6 +101,7 @@ function ClassToday({
     todos: data.todos.filter(
       (todo) =>
         (adds || todo.id !== "add-students") &&
+        !(cockpit && todo.id === "start-class") &&
         ((canStart && !closed) ||
           (todo.id !== "start-class" &&
             !("tab" in todo.action && todo.action.tab === "start"))),
@@ -157,11 +167,9 @@ function ClassToday({
   );
 }
 
-/** Today for one class, about today (docs/design/ia.md). A class's: its name
- * and the date, the class code, the feed, the week. A family's: the date
- * (never the parent's own name), the code, each child on a line, the same
- * feed in a parent's words, the week. Who else teaches or belongs lives on
- * People. */
+/** Today for one class, about today (docs/design/ia.md): its name and the
+ * date, the class code, the feed, the week. A family's own Today is
+ * features/family/Today.tsx. Who else teaches or belongs lives on People. */
 export function TodayScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/today" });
   const session = useStaffSession();
@@ -173,42 +181,45 @@ export function TodayScreen() {
   // A family-kind class reached at its class address is a tutoring group: a
   // parent's own family class opens at /family, so this is the classroom
   // composition, the whole group, in a classroom's words.
-  const family = false;
   const today = useQuery(todayOptions(session, place));
-  // The class code, for a student's own device: with Today, never after it.
+  // The class's sign-in standing, for the header's practice slot.
   const presence = useQuery(presenceOptions(session, place));
-  const code = presence.data?.class.joinCode;
   const me = useQuery(meOptions(account)).data;
   const signedIn = me?.signedIn ? me : undefined;
   const holder = signedIn?.familyClass?.classId === place.class;
-  const secondParent = useQuery({
-    ...secondParentOptions(account),
-    enabled: holder,
-  });
   const data = today.data;
-  const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
-  const pilotNote = family ? null : pilotLeft(access.view);
+  const pilotNote = pilotLeft(access.view);
   // The header's practice slot (PracticeSlot): the Start action, the code,
   // Request seats, one height in every state, so practice opening during
   // this visit moves nothing (CP-3 r6).
-  const signInRead = (
+  const can = new Set(
     standing(
       useQuery({
         ...classYearOptions(account, place.class),
         refetchOnMount: false,
       }),
-    )?.can ?? []
-  ).includes("signin.read");
-  const headed = !family && !!data && data.students.length > 0 && signInRead;
-  const loading =
-    access.pending ||
-    org.isPending ||
-    today.isPending ||
-    // A class's code has its own place (PracticeSlot), loading or failing
-    // there without holding the page: only a family's Today waits for it.
-    (family && presence.isPending) ||
-    (holder && secondParent.isPending);
+    )?.can ?? [],
+  );
+  const signInRead = can.has("signin.read");
+  const headed = !!data && data.students.length > 0 && signInRead;
+  // The live session (#2465): where students can practice (or a demo), for
+  // anyone who may watch one. A session already running always shows.
+  const { start: canStart } = useSchoolNavigation({
+    kind: "class",
+    org: place.org,
+    classId: place.class,
+    active: "today",
+    leaf: "today",
+    board: false,
+  });
+  const cockpit = headed && can.has("session.read");
+  // While the cockpit shows a session, a phone's header gives its code one
+  // short row so the roster starts on the first screen.
+  const live = useCockpitShown(place, cockpit);
+  // A class's code has its own place (PracticeSlot), loading or failing
+  // there without holding the page.
+  const loading = access.pending || org.isPending || today.isPending;
   return (
     <ClassFrame
       org={place.org}
@@ -220,28 +231,24 @@ export function TodayScreen() {
       {!data ? (
         <LoadFailed what="Today" onRetry={() => void today.refetch()} />
       ) : (
-        <div className={todayStyles.today}>
+        <div className={todayStyles.today} data-live={live || undefined}>
           <header className={todayStyles.head}>
-            {/* The title is the day for a family and the class's name for
-                a class: never a greeting or the viewer's own name. */}
-            {family ? (
-              <h1 data-today-title="">{fullDay(data.today)}</h1>
-            ) : (
-              <div className={todayStyles.title}>
-                <h1 data-today-title="">{data.class.name}</h1>
-                <p>{fullDay(data.today)}</p>
-                {/* Days left in the pilot or its grace. Its line is always
-                    held, so a pilot starting, its grace or the paywall
-                    never moves the header (premium rule 1). */}
-                <p
-                  data-pilot-left=""
-                  aria-hidden={pilotNote ? undefined : true}
-                  className={pilotNote ? undefined : todayStyles.heldLine}
-                >
-                  {pilotNote ?? "\u00a0"}
-                </p>
-              </div>
-            )}
+            {/* The title is the class's name: never a greeting or the
+                viewer's own name. */}
+            <div className={todayStyles.title}>
+              <h1 data-today-title="">{data.class.name}</h1>
+              <p>{fullDay(data.today)}</p>
+              {/* Days left in the pilot or its grace. Its line is always
+                  held, so a pilot starting, its grace or the paywall never
+                  moves the header (premium rule 1). */}
+              <p
+                data-pilot-left=""
+                aria-hidden={pilotNote ? undefined : true}
+                className={pilotNote ? undefined : todayStyles.heldLine}
+              >
+                {pilotNote ?? "\u00a0"}
+              </p>
+            </div>
             {/* The code waits for a roster, and for practice. A family's
                 children mostly practice on the parent's device: their code
                 is an option under the children, not the page's lead. */}
@@ -249,30 +256,37 @@ export function TodayScreen() {
               <PracticeSlot
                 place={place}
                 words={spaceWords("classroom")}
-                // The bar's Start class opens the board, except in a demo
-                // (its bar leads to the real class).
-                board={demo}
+                // The board, projected, is opened from the code: the bar's
+                // Start class starts the session (#2465).
+                board
                 manage={presence.data?.canManage ?? false}
                 locked={!!presence.data?.class.joinLockedUntil}
+                live={live}
               />
             )}
           </header>
           {signedIn && holder && <FamilyNotice me={signedIn} />}
-          {family ? (
-            <FamilyToday
-              data={data}
+          {cockpit && (
+            <ClassCockpit
               place={place}
-              code={code ?? null}
-
-              me={signedIn}
-              secondParent={holder ? secondParent.data : undefined}
+              available={canStart}
+              words={COCKPIT_WORDS}
+              can={{
+                resolve: can.has("signal.resolve"),
+                resetPictures: can.has("signin.manage"),
+              }}
+              // Staff see levels, as on the map and in grades; the class's
+              // "levels" setting is what its students see.
+              showGradeNumbers
             />
-          ) : (
-            <>
-              <ClassToday data={data} place={place} headed={headed} />
-              <AccessSheets place={place} />
-            </>
           )}
+          <ClassToday
+            data={data}
+            place={place}
+            headed={headed}
+            cockpit={cockpit && canStart}
+          />
+          <AccessSheets place={place} />
         </div>
       )}
     </ClassFrame>
@@ -291,18 +305,9 @@ export function MapScreen() {
   // A family-kind class reached at its class address is a tutoring group: a
   // parent's own family class opens at /family, so this is the classroom
   // composition, the whole group, in a classroom's words.
-  const family = false;
   const words = spaceWords("classroom");
-  // The class's code board, where students join; offered as the map's one
-  // step only where the bar would offer it (a current class).
-  const { start } = useSchoolNavigation({
-    kind: "class",
-    org: place.org,
-    classId: place.class,
-    active: "map",
-    leaf: "map",
-    board: false,
-  });
+  // Start class is the bar's (a live session, #2465): the map has none of
+  // its own.
   return (
     <ClassFrame
       org={place.org}
@@ -315,13 +320,13 @@ export function MapScreen() {
         <LoadFailed what="The class map" onRetry={() => void map.refetch()} />
       ) : map.data.students.length === 0 ? (
         <div className={styles.page}>
-          <ScreenTitle>{family ? "Map" : "Class map"}</ScreenTitle>
+          <ScreenTitle>Class map</ScreenTitle>
           <EmptyMap org={place.org} classId={place.class} />
         </div>
       ) : (
         <div>
           <div className={styles.mapHead}>
-            <ScreenTitle>{family ? "Map" : "Class map"}</ScreenTitle>
+            <ScreenTitle>Class map</ScreenTitle>
             <MapKey data={map.data} words={words} />
           </div>
           <ClassMap
@@ -330,17 +335,6 @@ export function MapScreen() {
             crossCutting
             // Ranges in grade words, as everywhere else ("Gr 7–Geom").
             plain
-            action={
-              start ? (
-                <Link
-                  to="/$"
-                  params={{ _splat: classUrl(place.org, place.class, "start") }}
-                  className={buttonClass("primary")}
-                >
-                  Start class
-                </Link>
-              ) : undefined
-            }
           />
         </div>
       )}

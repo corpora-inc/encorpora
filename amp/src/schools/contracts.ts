@@ -70,6 +70,11 @@ export const schoolActions = [
   "workbooks.read",
   "workbooks.write",
   "share.manage",
+  // Live class sessions (src/schools/live): the cockpit and its reports, and
+  // starting and stopping a session.
+  "session.read",
+  "session.manage",
+  "signal.resolve",
 ] as const;
 export type OrgKind = (typeof orgKinds)[number];
 export type OrgRole = (typeof orgRoles)[number];

@@ -14,7 +14,7 @@ class BrowserSweepCoverage(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         inventory = [f'template-{index}' for index in range(19)]
-        self.manifests = [dict(version=1, shardIndex=index, shardCount=8,
+        self.manifests = [dict(version=2, looks=['bold', 'calm'], shardIndex=index, shardCount=8,
                                inventoryIds=inventory[:], completedIds=inventory[index::8])
                           for index in range(8)]
 
@@ -31,7 +31,8 @@ class BrowserSweepCoverage(unittest.TestCase):
     def test_missing_overlap_partial_or_changed_inventory_fails(self):
         for mutation in ('missing', 'duplicate-index', 'overlap', 'partial', 'extra',
                          'wrong-order', 'wrong-count', 'wrong-version', 'different-inventory',
-                         'duplicate-inventory', 'empty-inventory', 'boolean-index'):
+                         'duplicate-inventory', 'empty-inventory', 'boolean-index',
+                         'one-look', 'no-looks', 'old-version'):
             with self.subTest(mutation=mutation):
                 values = copy.deepcopy(self.manifests)
                 first = values[0]
@@ -42,11 +43,14 @@ class BrowserSweepCoverage(unittest.TestCase):
                 elif mutation == 'extra': first['completedIds'].append('unknown')
                 elif mutation == 'wrong-order': first['completedIds'].reverse()
                 elif mutation == 'wrong-count': first['shardCount'] = 7
-                elif mutation == 'wrong-version': first['version'] = 2
+                elif mutation == 'wrong-version': first['version'] = 3
                 elif mutation == 'different-inventory': first['inventoryIds'].reverse()
                 elif mutation == 'duplicate-inventory': first['inventoryIds'].append('template-0')
                 elif mutation == 'empty-inventory': first['inventoryIds'] = []
                 elif mutation == 'boolean-index': first['shardIndex'] = False
+                elif mutation == 'one-look': first['looks'] = ['calm']
+                elif mutation == 'no-looks': del first['looks']
+                elif mutation == 'old-version': first['version'] = 1
                 self.write(values)
                 with self.assertRaises(ValueError): verify(self.root, 8)
 

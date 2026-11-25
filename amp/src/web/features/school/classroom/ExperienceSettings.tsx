@@ -17,6 +17,7 @@ import {
 import { Button } from "../../../ui/Button";
 import { Chips } from "../../../ui/Chips";
 import { Segmented } from "../../../ui/Segmented";
+import { Switch } from "../../../ui/Switch";
 import { Toast } from "../../../ui/Toast";
 import type { AuthSession } from "../../../auth";
 import {
@@ -126,14 +127,50 @@ const deviceRow: Row<"deviceMode"> = {
   ],
   describe: { shared: DEVICE_LINE, personal: DEVICE_LINE },
 };
-const rowOf: { [K in ExperienceKey]: Row<K> } = {
+/** The settings that are a choice between values, each a row. The look is
+ * not one: it is one switch, "Allow Colorful" (`AllowColorful`, below). */
+type ChoiceKey = Exclude<ExperienceKey, "look">;
+const rowOf: { [K in ChoiceKey]: Row<K> } = {
   levels: levelsRow,
   standings: standingsRow,
   measure: measureRow,
   deviceMode: deviceRow,
 };
 
-function SettingRow<K extends ExperienceKey>({
+/**
+ * Whether the students here may practice in Colorful: one switch, on unless
+ * an adult turns it off. On, each student has the Look choice in their own
+ * menu and starts where they chose, else by their age. Off, they are in Calm
+ * and their menu has no Look at all. Off at a place above shows here as off
+ * and says who set it; it can't be turned on below. One line whatever it's
+ * set to, so flipping it moves nothing.
+ */
+function AllowColorful({
+  experience,
+  onChange,
+}: {
+  experience: Experience;
+  onChange: (allowed: boolean) => void;
+}) {
+  const { lockedBy } = experience.settings.look;
+  const above = !!lockedBy && lockedBy.id !== experience.scope.id;
+  return (
+    <section
+      className={`${styles.row} ${styles.switchRow}`}
+      data-setting="look"
+    >
+      <Switch
+        label="Allow Colorful"
+        checked={!lockedBy}
+        disabled={!experience.canEdit || above}
+        detail={above ? `Set by ${lockedBy.name}` : undefined}
+        onChange={onChange}
+      />
+    </section>
+  );
+}
+
+function SettingRow<K extends ChoiceKey>({
   row,
   experience,
   disabled,
@@ -164,11 +201,12 @@ function SettingRow<K extends ExperienceKey>({
       option.value === value,
   );
   const describe = row.describe as Record<string, string>;
+  const said = note ?? describe[value];
   return (
     <section className={styles.row} aria-labelledby={`setting-${row.key}`}>
       <div className={styles.rowText}>
         <h2 id={`setting-${row.key}`}>{row.title}</h2>
-        <p>{note ?? describe[value]}</p>
+        {said && <p>{said}</p>}
       </div>
       <div className={styles.rowControl}>
         <Segmented
@@ -205,7 +243,7 @@ function SettingRow<K extends ExperienceKey>({
         {/* The lock on a line of its own, always there for whoever can
             lock: beside "Use …" it would not fit the action column, and a
             label that wraps or a row that grows moves the controls. */}
-        {experience.canLock && !lockedAbove && (
+        {experience.lockable.includes(row.key) && !lockedAbove && (
           <div className={styles.lockRow}>
             <Button
               variant="quiet"
@@ -215,9 +253,11 @@ function SettingRow<K extends ExperienceKey>({
               onClick={() => onLock(!lockedHere)}
             >
               <LockMark open={!lockedHere} />
-              {lockedHere
-                ? "Locked for everyone below"
-                : "Lock for everyone below"}
+              {/* A class has only its students below it. */}
+              {lockedHere ? "Locked" : "Lock"} for{" "}
+              {experience.scope.kind === "class"
+                ? "students"
+                : "everyone below"}
             </Button>
           </div>
         )}
@@ -267,6 +307,7 @@ export function ExperienceSettings({
     lockedKeys.find(
       (key) =>
         key !== "deviceMode" &&
+        key !== "look" &&
         settings[key].value !== experienceValues[preset][key],
     );
   const choose = (preset: ExperiencePreset) => {
@@ -280,12 +321,12 @@ export function ExperienceSettings({
     });
   };
   const levelsShown = settings.levels.value === "shown";
-  const row = (key: ExperienceKey) => {
-    const dependsOn = (rowOf[key] as Row<ExperienceKey>).dependsOn;
+  const row = (key: ChoiceKey) => {
+    const dependsOn = (rowOf[key] as Row<ChoiceKey>).dependsOn;
     const setting = (
       <SettingRow
         key={key}
-        row={rowOf[key] as Row<ExperienceKey>}
+        row={rowOf[key] as Row<ChoiceKey>}
         experience={experience}
         disabled={false}
         {...(key === "measure" &&
@@ -394,6 +435,18 @@ export function ExperienceSettings({
         {row("standings")}
         {row("measure")}
         {teacherRow}
+        <AllowColorful
+          experience={experience}
+          onChange={(allowed) =>
+            // Off is Calm, held, for everyone below; on keeps nothing here
+            // (schools/settings.ts `storedLook`).
+            send(
+              allowed
+                ? { values: { look: null }, locks: { look: false } }
+                : { values: { look: "calm" }, locks: { look: true } },
+            )
+          }
+        />
         {row("deviceMode")}
       </div>
       {experience.students && (

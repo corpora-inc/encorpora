@@ -12,6 +12,7 @@
  * narrow (9:16, the phone’s own layout), light and dark. The workbook page is
  * paper in both themes. Run again after a practice screen changes.
  */
+import { practiceStateFixture } from "./lib/practice-state-fixture";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
@@ -25,7 +26,6 @@ import { secureChromium } from "../browser-security.mjs";
 import { skills } from "../src/curriculum/catalog";
 import { lessons } from "../src/content/lessons";
 import { retentionNotice } from "../src/family/contracts";
-import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import type { GeneratedProblem } from "../src/math/contracts";
 import { generateProblemFor, templates } from "../src/math/engine";
 import { responseForClient } from "../src/math/multi-part-choice";
@@ -215,8 +215,7 @@ async function practice(slide: PracticeCapture, shape: Shape, theme: string) {
         overall: { level: 5, sd: 0.7, answered: 42, independent: 30 },
         strands: {},
       });
-    if (path.endsWith("/practice-state"))
-      return json(defaultPracticeSettings());
+    if (path.endsWith("/practice-state")) return json(practiceStateFixture());
     if (path.endsWith("/batches")) {
       const next = queue.shift() ?? slide.problem;
       const problem = generateProblemFor(

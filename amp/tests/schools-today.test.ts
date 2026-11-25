@@ -9,6 +9,7 @@ import {
   dayOfWeek,
   inSentence,
   joinNames,
+  skillsEarnedWords,
   todayTodos,
   weekStart,
   type RecentOutcome,
@@ -188,6 +189,41 @@ test("a family's Today speaks of children and never asks to start a class", () =
   );
   assert.equal(stuck?.action.label, "Open the lesson");
   assert.equal(stuck?.groupSheet?.label, "Print a sheet");
+});
+
+test("a family's line says earned, the word its key defines and its week sums", () => {
+  // A family's count is skills earned (right once without help: the
+  // server reads it with learning/earned.ts `EARNED_AFTER`), so its words
+  // are the key's and the week's, never a grade's "shown twice".
+  assert.equal(skillsEarnedWords(1), "1 skill earned");
+  assert.equal(skillsEarnedWords(10), "10 skills earned");
+  const worked = (first: string, objectivesThisWeek: number) =>
+    student(first, { todayMinutes: 12, todayProblems: 14, objectivesThisWeek });
+  const home = todayTodos(
+    input({ family: true, students: [worked("Ada", 10), student("Ben")] }),
+  );
+  const line = home.find((todo) => todo.id === "worked:ada");
+  assert.equal(line?.detail, "10 skills earned this week.");
+  const one = todayTodos(
+    input({ family: true, students: [worked("Ada", 1), student("Ben")] }),
+  ).find((todo) => todo.id === "worked:ada");
+  assert.equal(one?.detail, "1 skill earned this week.");
+  // No family line borrows a grade's rule, whoever worked.
+  for (const todo of [
+    ...home,
+    ...todayTodos(
+      input({ family: true, students: [worked("Ada", 3), worked("Ben", 2)] }),
+    ),
+  ])
+    assert.doesNotMatch(
+      `${todo.title} ${todo.detail}`,
+      /shown (once|twice|\d+ times)/,
+    );
+  // A class's wording and count are its grade's, unchanged.
+  const room = todayTodos(
+    input({ students: [worked("Ada", 4), worked("Ben", 2), student("Cy")] }),
+  ).find((todo) => todo.id === "going-well");
+  assert.equal(room?.title, "6 skills shown twice on their own this week");
 });
 
 test("a shared gap can also go on paper, for those students and that skill", () => {

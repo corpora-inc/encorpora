@@ -2,7 +2,8 @@
  * The entity registry and the layer stack (docs/design/ia.md, "Navigation").
  *
  * Every detail a person can dip into from anywhere (a student, one of their
- * answers, a skill, a problem type's lesson, an area of a level) is an entity: a kind and an id.
+ * answers, a skill, a problem type's lesson, an area of a level, a learner's
+ * workbook for a day) is an entity: a kind and an id.
  * Opening one never leaves the page: it becomes a layer over it, carried in
  * the page's own address as `?open=student:<id>,work:<id>.<attempt>`. The
  * page under it stays mounted with its scroll, sort and filters; X, Escape
@@ -16,6 +17,20 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const SLUG = /^[a-z0-9][a-z0-9-]{0,119}$/;
 /** An answer's id: a uuid, or a stored attempt's hex digest. */
 const ATTEMPT = /^[0-9a-f][0-9a-f-]{7,99}$/i;
+/** A day, as a workbook's address names it. */
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * The address key naming the learner a layer was opened for
+ * (`?open=skill:<id>&for=<learner>`): a parent opens a skill from one
+ * child's block on a screen that shows several children, and the practice
+ * the layer offers is that child's. An id only; whoever reads it checks it
+ * against the family's own children (features/practice/CurriculumPractice).
+ */
+export const FOR_KEY = "for";
+/** A learner's id, as a layer's `for` holds it. */
+export const isLearnerId = (value: unknown): value is string =>
+  typeof value === "string" && UUID.test(value);
 
 /** Each kind: how its id reads, and what it is called. */
 export const ENTITIES = {
@@ -48,15 +63,43 @@ export const ENTITIES = {
     keys: ["skill"],
   },
   /** A skill of the curriculum. */
-  skill: { id: (id: string) => SLUG.test(id), noun: "skill" },
+  skill: {
+    id: (id: string) => SLUG.test(id),
+    noun: "skill",
+    /** Whose it was opened for (a child's block on a family's Today): the
+     * practice it offers is theirs. It goes with the layer. */
+    keys: [FOR_KEY],
+  },
   /** A problem type's short lesson. */
-  lesson: { id: (id: string) => SLUG.test(id), noun: "lesson" },
+  lesson: {
+    id: (id: string) => SLUG.test(id),
+    noun: "lesson",
+    keys: [FOR_KEY],
+  },
   /** One area of a learner's level (a strand, or `overall`): its skills on
    * the grade scale, over the page whose level it is. */
-  area: { id: (id: string) => SLUG.test(id), noun: "area" },
+  area: { id: (id: string) => SLUG.test(id), noun: "area", keys: [FOR_KEY] },
+  /** A learner's workbook for a day, in the workbook maker:
+   * `<learner>.<date>`. Opened from a skill's layer, over the screen the
+   * skill was opened on (features/workbooks/SkillWorkbook.tsx). Its layer
+   * opens only for one of the reader's own learners (WorkbookLayer.tsx). */
+  workbook: {
+    id: (id: string) => {
+      const [learner, date, extra] = id.split(".");
+      return (
+        extra === undefined && UUID.test(learner ?? "") && DAY.test(date ?? "")
+      );
+    },
+    noun: "workbook",
+  },
 } as const;
 
 export type EntityKind = keyof typeof ENTITIES;
+
+/** Whether a kind's layer reads an address key beside its id. */
+export const readsKey = (kind: EntityKind, key: string) =>
+  "keys" in ENTITIES[kind] &&
+  (ENTITIES[kind] as { keys: readonly string[] }).keys.includes(key);
 
 /** The address keys a stack's layers read, beyond `open`, that leave with
  * the last layer that reads them. */
@@ -98,6 +141,16 @@ export const ownWork = (attempt: string): Entity => ({
   kind: "own-work",
   id: attempt,
 });
+/** A learner's workbook for a day. */
+export const workbookDay = (learner: string, date: string): Entity => ({
+  kind: "workbook",
+  id: `${learner}.${date}`,
+});
+/** The learner and day of a workbook's entity. */
+export function workbookDayParts(id: string) {
+  const [learner = "", date = ""] = id.split(".");
+  return { learner, date };
+}
 /** The student and attempt of an answer's entity. */
 export function workParts(id: string) {
   const [student = "", attempt = ""] = id.split(".");
@@ -143,8 +196,8 @@ export function pushLayer(raw: unknown, entity: Entity) {
 /** The stack without its top layer. */
 export const popLayer = (raw: unknown) =>
   writeStack(readStack(raw).slice(0, -1));
-/** Where closing a layer returns (Close, the scrim, Escape): the whole stack
- * goes away, back to the page it was opened over, except that an answer
+/** Where putting the whole overlay away returns (the scrim; an answer's
+ * own close): back to the page it was opened over, except that an answer
  * replay is a base of its own. A layer above a replay (its lesson) closes
  * back to the replay; the replay closes back to the page. The depth of the
  * stack to keep: 0 for the page. */

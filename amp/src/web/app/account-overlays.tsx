@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-router";
 import { queryClient, sessionOptions } from "../lib/query";
 import { payOverlays } from "./pay-routes";
+import { logAhead } from "../lib/ahead";
 
 /*
  * The account overlays over a settings hub (the IA v2 spec, §2.2): family
@@ -71,7 +72,7 @@ export function accountOverlays<Host extends AnyRoute>(host: Host) {
         await queryClient
           .ensureQueryData(deletionPreviewOptions(current))
           .catch((error: unknown) =>
-            console.warn("What the account holds didn’t load ahead", error),
+            logAhead("What the account holds didn’t load ahead", error),
           );
       },
     ),

@@ -163,6 +163,18 @@ function rosterCsv() {
   return `${lines.join("\r\n")}\r\n`;
 }
 
+/** The invitation's one way forward (InviteScreen): "Continue" opens the
+ * screen the invited address needs. Nobody here has an account yet, so it
+ * opens creating one, with nothing to choose on the way. */
+async function continueToSignUp(page: Page) {
+  await page.getByRole("link", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/sign-(in|up)/);
+  assert.equal(
+    new URL(page.url()).pathname,
+    "/sign-up",
+    "an invited address with no account opens creating one",
+  );
+}
 async function signUp(page: Page, email: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
@@ -291,8 +303,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     assert.equal(setupMail?.to, headEmail, "The setup link was mailed");
     await head.goto(school.setupUrl);
     await heading(head, `Set up ${schoolName}`);
-    await head.getByRole("link", { name: "Create an account" }).click();
-    await head.waitForURL(/\/sign-up/);
+    await continueToSignUp(head);
     await signUp(head, headEmail);
     await heading(head, `Set up ${schoolName}`);
     await head.getByLabel(/Your name/).fill("Ruth Adeyemi");
@@ -365,8 +376,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     teacher.setDefaultTimeout(30_000);
     await teacher.goto(invitation.url);
     await heading(teacher, `Join ${schoolName}`);
-    await teacher.getByRole("link", { name: "Create an account" }).click();
-    await teacher.waitForURL(/\/sign-up/);
+    await continueToSignUp(teacher);
     await signUp(teacher, teacherEmail);
     await heading(teacher, `Join ${schoolName}`);
     await teacher.getByLabel(/Your name/).fill("Grace Okafor");
@@ -442,15 +452,17 @@ async function journey(browser: Browser, engine: string, width: number) {
     // Today before anyone works this week.
     await teacher.goto(`${klass}/today`);
     await todayTitle(teacher);
-    const working = async () =>
-      Number(
-        (
-          await teacher
-            .getByText(/^\d+ of 24$/)
-            .first()
-            .textContent()
-        )?.split(" ")[0],
-      );
+    // The week's facts show only once someone has worked this week: on the
+    // first day of a week the seeded term has nothing in it yet, and the
+    // count is 0 with no line to read.
+    const working = async (wait = 5_000) => {
+      const count = teacher.getByText(/^\d+ of 24$/).first();
+      const shown = await count
+        .waitFor({ state: "visible", timeout: wait })
+        .then(() => true)
+        .catch(() => false);
+      return shown ? Number((await count.textContent())?.split(" ")[0]) : 0;
+    };
     const before = await working();
 
     // 3. One student by pictures, one by card, on phones.
@@ -512,7 +524,8 @@ async function journey(browser: Browser, engine: string, width: number) {
     last = teacher;
     await teacher.reload();
     await todayTitle(teacher);
-    const after = await working();
+    // Two students have worked now: the line is there.
+    const after = await working(30_000);
     check(`${label} Today counts both students`, after === before + 2, {
       before,
       after,
