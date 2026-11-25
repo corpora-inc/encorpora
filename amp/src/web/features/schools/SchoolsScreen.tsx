@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLoaderData } from "@tanstack/react-router";
+import { knownAuthConfig } from "../../auth-config";
 import { authConfigOptions } from "../../lib/query";
 import { useSessionOrNull } from "../../lib/session";
 import type { ReactNode } from "react";
@@ -19,9 +20,12 @@ const count = (value: number) => value.toLocaleString("en-US");
 
 function Actions({ className = "" }: { className?: string }) {
   const session = useSessionOrNull();
-  // Laid out with Clever from the first paint (the methods are never
-  // awaited), so on the usual path nothing moves when they answer.
-  const clever = offersClever(useQuery(authConfigOptions).data);
+  // Never awaited. The boot's session check has usually read the methods
+  // already, so the first paint knows them; if not, it is laid out with
+  // Clever, as production is, and on that path nothing moves.
+  const clever = offersClever(
+    useQuery(authConfigOptions).data ?? knownAuthConfig(),
+  );
   return (
     <div className={`${styles.actions} ${className}`}>
       {/* A new teacher creates the account first; a signed-in one goes

@@ -346,3 +346,20 @@ test("without a configured signup page the request links AMP's schools page", as
     screen.queryByRole("link", { name: "District admin? Add AMP in Clever" }),
   ).toBeNull();
 });
+
+test("a configuration that couldn't be read leaves the page whole, and a late answer moves nothing", async () => {
+  // No configuration in the cache: the route's read failed. The screen asks
+  // nothing again, so it paints its final layout at once.
+  at("/clever/add-amp", "/clever/$reason", CleverProblemScreen);
+  await screen.findByRole("heading", { name: NOT_IN_CLEVER });
+  const message = () =>
+    document.querySelector("[data-district-message]")?.textContent;
+  const first = message();
+  expect(first).toContain(`${location.origin}/schools`);
+  expect(screen.getByRole("link", { name: "Start a free pilot" })).toBeTruthy();
+  // An answer that arrives later, with a signup page, changes nothing here.
+  clever({ cleverDistrictSignupUrl: "https://schools.clever.com/x" });
+  await new Promise((done) => setTimeout(done, 20));
+  expect(message()).toBe(first);
+  expect(screen.queryByRole("link", { name: "Add AMP in Clever" })).toBeNull();
+});

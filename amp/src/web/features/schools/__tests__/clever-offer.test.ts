@@ -10,5 +10,6 @@ test("/schools offers Clever until the server says it is off", () => {
   );
   // Only a deployment that answers without Clever goes without it.
   expect(offersClever({ mode: "accounts" } as AuthConfig)).toBe(false);
-  expect(offersClever({ mode: "development" } as AuthConfig)).toBe(false);
+  for (const mode of ["development", "oidc", "native"] as const)
+    expect(offersClever({ mode })).toBe(false);
 });

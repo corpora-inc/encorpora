@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   CLEVER_SIGN_IN_CAUSES,
   type CleverSignInCause,
@@ -128,11 +128,18 @@ export function CleverProblemScreen() {
  * pilot now and forwards the request; a district admin, who most likely
  * started on `/school/connect` (`add-amp`), adds AMP in Clever first. */
 function NotInClever({ cause }: { cause: "not-added" | "add-amp" }) {
-  const config = useQuery(authConfigOptions);
+  // What the route's loader read (router.tsx), and only that: this screen
+  // never asks again, so a read that failed or arrives later can't change
+  // its actions or the message after the first paint. Without the
+  // deployment's Clever page, the request links to `/schools`.
+  // A snapshot taken once, on purpose (never synced): a live query would
+  // re-render with a later answer.
+  const client = useQueryClient();
+  const [config] = useState(() =>
+    client.getQueryData(authConfigOptions.queryKey),
+  );
   const signupUrl =
-    config.data?.mode === "accounts"
-      ? config.data.cleverDistrictSignupUrl
-      : undefined;
+    config?.mode === "accounts" ? config.cleverDistrictSignupUrl : undefined;
   // With no Clever page to add AMP on, the admin's step is the request too.
   const admin = cause === "add-amp" && !!signupUrl;
   const problem = cleverProblems[admin ? "add-amp" : "not-added"];
@@ -167,17 +174,14 @@ function NotInClever({ cause }: { cause: "not-added" | "add-amp" }) {
             pilot
           )}
         </Actions>
-        {/* The route loads the configuration first (router.tsx), so the
-            message and its link are written once and never change in
-            place. */}
-        {!config.isPending && (
-          <DistrictRequest
-            step="add"
-            signupUrl={signupUrl}
-            heading={admin ? "Not a district admin? Send them this" : undefined}
-            adminLink={!admin}
-          />
-        )}
+        {/* Written once from the first paint's configuration: the message
+            and its link never change in place. */}
+        <DistrictRequest
+          step="add"
+          signupUrl={signupUrl}
+          heading={admin ? "Not a district admin? Send them this" : undefined}
+          adminLink={!admin}
+        />
         <Aside>
           <p>Student? Ask your teacher.</p>
         </Aside>
