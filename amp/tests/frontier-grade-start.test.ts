@@ -218,7 +218,7 @@ test("a long record reads the same from a grade start as from a guess", () => {
   assert.ok(gap(150) <= 0.05);
 });
 
-test("the trend an adult sees is the same estimate, answer by answer", () => {
+test("the trend chart reads the same estimate, answer by answer", () => {
   const record = Array.from(
     { length: 12 },
     (_, i) => [3 + (i % 2), i % 5 !== 0] as const,
@@ -249,6 +249,39 @@ test("the trend an adult sees is the same estimate, answer by answer", () => {
   });
   // Before any answer the level is the grade itself.
   assert.equal(trend[0]!.level, 3);
+});
+
+test("a guessed start estimates exactly as before, at every grade", () => {
+  const histories = [
+    [],
+    Array.from({ length: 4 }, () => [3, true] as const),
+    [
+      [3, true],
+      [4, true],
+      [4, false],
+      [2, true],
+      [5, false],
+      [3, true],
+      [6, true],
+      [1, false],
+    ] as const,
+  ];
+  for (const start of [0, 2, 3, 5, 7, 9, 12])
+    for (const list of histories) {
+      const observations = answers(
+        list.map(([grade, right]) => [grade + start - 3, right] as const),
+      );
+      // A child with no birth year, and no start width of their own.
+      const now = estimateFrontier({ start, observations, ...catalog });
+      const before = estimateFrontier({
+        start,
+        observations,
+        policy: EVIDENCE_CLIMB_FRONTIER_POLICY,
+        ...catalog,
+      });
+      assert.deepEqual(now, before, `start ${start}, ${list.length} answers`);
+      assert.equal(now.gradeStart, undefined);
+    }
 });
 
 test("an adult's wide reported start is kept, whatever the start is called", () => {

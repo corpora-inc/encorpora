@@ -142,6 +142,10 @@ export function planMixedPractice(options: {
   /** The pool is someone's own choice (a skill held, a course of study such
    * as SAT practice): coverage of the grade does not hold it back. */
   chosen?: boolean;
+  /** Everything this client can be sent, when `templates` is a narrower pool
+   * (one area after a skip): coverage sets its bar by what can be asked.
+   * Absent, `templates`. */
+  catalog?: readonly TemplateMetadata[];
 }): PracticeChoice[] {
   const { skills, evidence, seed } = options;
   const reserved = options.reservedTemplateIds;
@@ -201,7 +205,17 @@ export function planMixedPractice(options: {
   // answers allow. A guessed start keeps the faster climb.
   const coverage = options.chosen
     ? null
-    : workingCoverage({ frontier, skills, evidence, policy });
+    : workingCoverage({
+        frontier,
+        skills,
+        askable: new Set(
+          (options.catalog ?? options.templates).map(
+            (template) => template.skillId,
+          ),
+        ),
+        evidence,
+        policy,
+      });
   let purpose: "working" | "foundation" | "probe" = "working";
   // An area with no answers of its own starts from the learner's foundation
   // (`Frontier.confirmation`), the start before anything is shown.
@@ -235,9 +249,14 @@ export function planMixedPractice(options: {
                       policy.challenge.probeUncertainty * estimate.sd,
                   )
                 : level,
+              // Under coverage a stretch never reaches further than it
+              // would without.
               working +
                 (coverage
-                  ? policy.coverage.probeRise
+                  ? Math.min(
+                      policy.coverage.probeRise,
+                      policy.challenge.probeRise,
+                    )
                   : policy.challenge.probeRise),
             )
           : purpose === "foundation" && !confirmed?.foundationConfirmed
@@ -636,6 +655,8 @@ export function workingCoverage(options: {
   frontier: Frontier;
   /** The whole catalog, whatever pool is being planned from. */
   skills: readonly Pick<SkillNode, "id" | "strand" | "gradeBand">[];
+  /** The skills this learner's client can be sent; absent, all of them. */
+  askable?: ReadonlySet<string>;
   evidence: readonly { skillId: string; independentCorrect?: number }[];
   policy?: PracticePolicy;
 }): Coverage | null {
@@ -656,6 +677,7 @@ export function workingCoverage(options: {
         grade: gradeNumber[skill.gradeBand!],
         area: coverageArea(skill),
       })),
+    askable: options.askable,
     evidence: options.evidence,
     rules: policy.coverage,
   });

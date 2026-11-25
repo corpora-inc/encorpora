@@ -10,6 +10,11 @@ import {
 } from "../src/learning/coverage";
 import { gradeNumber } from "../src/learning/frontier";
 import { DEFAULT_PRACTICE_POLICY } from "../src/learning/practice-policy";
+import {
+  clientCanDraw,
+  figureCapabilities,
+  responseCapabilities,
+} from "../src/math/contracts";
 import { templates } from "../src/math/engine";
 
 /* The rule a parent is told: a grade is covered when the child has earned
@@ -18,7 +23,6 @@ import { templates } from "../src/math/engine";
 
 const rules: CoverageRules = {
   share: 0.5,
-  skills: 2,
   areas: 3,
   step: 1,
   probeRise: 1,
@@ -164,30 +168,110 @@ test("coverage counts from the starting grade: the grades below it never raise t
   assert.deepEqual(cover(all, 7), { covered: null, ceiling: 7 });
 });
 
-test("the bar is a share of the grade's own list, never below the floor", () => {
-  const cases: [size: number, share: number, floor: number, need: number][] = [
-    [17, 0.5, 8, 9],
-    [27, 0.5, 8, 14],
-    [39, 0.5, 8, 20],
-    [18, 0.5, 8, 9],
-    [10, 0.5, 8, 8],
-    [4, 0.5, 8, 8],
-    [27, 1 / 3, 8, 9],
-    [27, 2 / 3, 8, 18],
-    [27, 0, 12, 12],
+test("the bar is a share of the grade's own list", () => {
+  const cases: [size: number, share: number, need: number][] = [
+    [17, 0.5, 9],
+    [27, 0.5, 14],
+    [39, 0.5, 20],
+    [18, 0.5, 9],
+    [9, 0.5, 5],
+    [1, 0.5, 1],
+    [27, 1 / 3, 9],
+    [27, 2 / 3, 18],
+    // Never nothing: one skill at least.
+    [27, 0, 1],
   ];
-  for (const [size, share, floor, need] of cases)
-    assert.equal(
-      coverageNeed(size, { share, skills: floor }),
-      need,
-      `${size} skills at ${share}, floor ${floor}`,
-    );
+  for (const [size, share, need] of cases)
+    assert.equal(coverageNeed(size, share), need, `${size} skills at ${share}`);
   const evidence = earned("g3-0", "g3-1", "g3-2", "g3-5");
   assert.equal(cover(evidence, 3, { step: 2 }).ceiling, 5);
   assert.equal(cover(evidence, 3, { share: 0.75 }).covered, null);
-  assert.equal(cover(evidence, 3, { skills: 5 }).covered, null);
   assert.equal(cover(evidence, 3, { areas: 4 }).covered, null);
   assert.equal(cover(evidence, 3, { areas: 1 }).covered, 3);
+});
+
+test("the bar is set by what the learner can be asked", () => {
+  const only = (...ids: string[]) => new Set(ids);
+  const ask = (
+    evidence: { skillId: string; independentCorrect?: number }[],
+    askable: ReadonlySet<string>,
+    start = 3,
+  ) => gradeCoverage({ start, skills: catalog, askable, evidence, rules });
+  // A client that can show four of grade 3's eight skills, in two areas:
+  // half of four is two, and two areas are all there are.
+  const narrow = only(
+    "g3-0",
+    "g3-5",
+    "g3-1",
+    "g3-6",
+    ...catalog.filter((skill) => skill.grade !== 3).map((skill) => skill.id),
+  );
+  assert.deepEqual(ask(earned("g3-0"), narrow), { covered: null, ceiling: 3 });
+  assert.deepEqual(ask(earned("g3-0", "g3-1"), narrow), {
+    covered: 3,
+    ceiling: 4,
+  });
+  // The same two skills do not cover the grade for a client that shows all
+  // of it.
+  assert.equal(cover(earned("g3-0", "g3-1")).covered, null);
+  // What was earned on another client still counts.
+  assert.deepEqual(ask(earned("g3-2", "g3-3"), narrow), {
+    covered: 3,
+    ceiling: 4,
+  });
+  // A grade the client can show nothing of is passed over: it cannot be
+  // covered, and it does not hold the learner.
+  const without4 = only(
+    ...catalog.filter((skill) => skill.grade !== 4).map((skill) => skill.id),
+  );
+  assert.deepEqual(ask([], without4, 4), { covered: null, ceiling: 5 });
+  assert.deepEqual(ask(earned("g3-0", "g3-1", "g3-2", "g3-5"), without4), {
+    covered: 3,
+    ceiling: 5,
+  });
+  // Nothing above to pass on to: the ceiling stays.
+  const upTo5 = only(
+    ...catalog.filter((skill) => skill.grade <= 5).map((skill) => skill.id),
+  );
+  assert.deepEqual(ask(earned("g5-0", "g5-1", "g5-2", "g5-3"), upTo5, 5), {
+    covered: 5,
+    ceiling: 6,
+  });
+  // Nothing askable at all: the start.
+  assert.deepEqual(ask([], only()), { covered: null, ceiling: 3 });
+});
+
+test("a skill with no grade is left out, and never switches coverage off", () => {
+  const odd = [
+    ...catalog,
+    { id: "no-grade", grade: Number.NaN, area: "number" },
+    {
+      id: "undefined-grade",
+      grade: undefined as unknown as number,
+      area: "data",
+    },
+  ];
+  assert.deepEqual(
+    gradeCoverage({
+      start: 3,
+      skills: odd,
+      evidence: earned("g3-0", "g3-1", "g3-2", "g3-5", "no-grade"),
+      rules,
+    }),
+    { covered: 3, ceiling: 4 },
+  );
+  // An empty catalog, and a start past the catalog: the start.
+  assert.deepEqual(
+    gradeCoverage({ start: 3, skills: [], evidence: [], rules }),
+    { covered: null, ceiling: 3 },
+  );
+  assert.deepEqual(cover([], 20), { covered: null, ceiling: 20 });
+  // A start between grades covers from the next whole grade.
+  assert.deepEqual(cover(earned("g3-0", "g3-1", "g3-2", "g3-5"), 2.6), {
+    covered: 3,
+    ceiling: 4,
+  });
+  assert.deepEqual(cover([], 2.6), { covered: null, ceiling: 2.6 });
 });
 
 test("a skill's area is its strand's, its reviewed one, or the strand itself", () => {
@@ -213,14 +297,7 @@ test("the bar for each grade of the catalog: half its skills", () => {
   const { coverage } = DEFAULT_PRACTICE_POLICY;
   assert.deepEqual(
     { ...coverage },
-    {
-      enabled: true,
-      share: 0.5,
-      skills: 8,
-      areas: 3,
-      step: 1,
-      probeRise: 1,
-    },
+    { enabled: true, share: 0.5, areas: 3, step: 1, probeRise: 1 },
   );
   // [skills the grade has, skills that cover it, areas they must span].
   const expected: [size: number, need: number, areas: number][] = [
@@ -241,7 +318,11 @@ test("the bar for each grade of the catalog: half its skills", () => {
   expected.forEach(([size, need, broad], grade) => {
     const own = real.filter((skill) => skill.grade === grade);
     assert.equal(own.length, size, `grade ${grade} size`);
-    assert.equal(coverageNeed(own.length, coverage), need, `grade ${grade}`);
+    assert.equal(
+      coverageNeed(own.length, coverage.share),
+      need,
+      `grade ${grade}`,
+    );
     assert.equal(
       Math.min(coverage.areas, new Set(own.map((skill) => skill.area)).size),
       broad,
@@ -250,49 +331,72 @@ test("the bar for each grade of the catalog: half its skills", () => {
   });
 });
 
-test("no grade of the catalog can hold a learner: each is covered by half of its own skills", () => {
+test("no grade can hold a learner, on a client that draws everything or nothing: each is covered by half of what can be asked", () => {
   const { coverage } = DEFAULT_PRACTICE_POLICY;
-  for (let grade = 0; grade <= 12; grade++) {
-    const own = real.filter((skill) => skill.grade === grade);
-    const need = coverageNeed(own.length, coverage);
-    assert.ok(need <= own.length, `grade ${grade}: ${need} of ${own.length}`);
-    // The half that is hardest to make broad: one area at a time, largest
-    // first. Even that half spans the areas the grade asks for, once the
-    // learner has also met one skill from each smaller area, which the mix
-    // of areas in practice provides.
-    const byArea = new Map<string, typeof own>();
-    for (const skill of own)
-      byArea.set(skill.area, [...(byArea.get(skill.area) ?? []), skill]);
-    const broad = Math.min(coverage.areas, byArea.size);
-    const lists = [...byArea.values()].sort((a, b) => a.length - b.length);
-    // One skill from each of the smallest areas, the rest from anywhere.
-    const picked = lists.slice(0, broad).map((list) => list[0]!);
-    for (const skill of own)
-      if (picked.length < need && !picked.includes(skill)) picked.push(skill);
-    assert.equal(picked.length, need, `grade ${grade}`);
-    const done = gradeCoverage({
-      start: grade,
-      skills: real,
-      evidence: picked.map((skill) => ({
-        skillId: skill.id,
-        independentCorrect: 1,
-      })),
-      rules: coverage,
-    });
-    assert.equal(done.covered, grade, `grade ${grade} is covered by its half`);
-    assert.equal(done.ceiling, grade + 1);
-    // One skill short is not enough.
-    assert.equal(
-      gradeCoverage({
-        start: grade,
-        skills: real,
-        evidence: picked
-          .slice(0, -1)
-          .map((skill) => ({ skillId: skill.id, independentCorrect: 1 })),
-        rules: coverage,
-      }).covered,
-      null,
-      `grade ${grade}: one short`,
+  const clients = {
+    "draws everything": {
+      responseCapabilities: [...responseCapabilities],
+      figureCapabilities: [...figureCapabilities],
+    },
+    "declares nothing": { responseCapabilities: [], figureCapabilities: [] },
+  };
+  for (const [name, client] of Object.entries(clients)) {
+    const askable = new Set(
+      templates
+        .filter((template) => clientCanDraw(template, client))
+        .map((template) => template.skillId),
     );
+    let ceiling = 0;
+    for (let grade = 0; grade <= 12; grade++) {
+      const own = real.filter(
+        (skill) => skill.grade === grade && askable.has(skill.id),
+      );
+      const cover = (picked: readonly (typeof own)[number][]) =>
+        gradeCoverage({
+          start: grade,
+          skills: real,
+          askable,
+          evidence: picked.map((skill) => ({
+            skillId: skill.id,
+            independentCorrect: 1,
+          })),
+          rules: coverage,
+        });
+      if (!own.length) {
+        // Nothing to ask: the grade is passed over while more lies above.
+        assert.ok(
+          cover([]).ceiling > grade || grade === 12,
+          `${name} ${grade}`,
+        );
+        continue;
+      }
+      ceiling = grade;
+      const byArea = new Map<string, typeof own>();
+      for (const skill of own)
+        byArea.set(skill.area, [...(byArea.get(skill.area) ?? []), skill]);
+      const broad = Math.min(coverage.areas, byArea.size);
+      const need = Math.max(broad, coverageNeed(own.length, coverage.share));
+      assert.ok(
+        need <= own.length,
+        `${name} ${grade}: ${need} of ${own.length}`,
+      );
+      // One skill from each of the smallest areas, the rest from anywhere:
+      // the mix of areas in practice provides the first, any work the rest.
+      const lists = [...byArea.values()].sort((a, b) => a.length - b.length);
+      const picked = lists.slice(0, broad).map((list) => list[0]!);
+      for (const skill of own)
+        if (picked.length < need && !picked.includes(skill)) picked.push(skill);
+      assert.equal(picked.length, need, `${name} ${grade}`);
+      const done = cover(picked);
+      assert.equal(done.covered, grade, `${name}: grade ${grade} is covered`);
+      assert.ok(done.ceiling > grade, `${name}: grade ${grade} ceiling`);
+      // One skill short is not enough.
+      assert.equal(
+        cover(picked.slice(0, -1)).covered,
+        null,
+        `${name} ${grade}: one short`,
+      );
+    }
+    assert.equal(ceiling, 12, `${name}: something to ask at the top`);
   }
 });

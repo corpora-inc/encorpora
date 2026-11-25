@@ -115,6 +115,10 @@ of one grade, a stretch of one grade).
   who already works above a grade is not sent back to it.
 - A grade with fewer than three areas needs only the areas it has (Geometry:
   two).
+- The bar is set by what the learner's app can be sent. An older app that
+  cannot draw part of the catalog is held to half of what it can show, and a
+  grade it can show nothing of is passed over. What counts toward the bar is
+  everything earned, wherever it was earned.
 - Coverage is a second ceiling: the planner takes the lower of it and the
   evidence ceiling below, so it never offers anything the rules below would
   refuse.

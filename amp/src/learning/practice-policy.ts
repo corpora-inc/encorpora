@@ -66,7 +66,6 @@ export const practicePolicySchema = z
       .object({
         enabled: z.boolean(),
         share: z.number().finite().min(0).max(1),
-        skills: z.number().int().min(1).max(100),
         areas: z.number().int().min(1).max(5),
         step: grades,
         probeRise: grades,
@@ -75,7 +74,6 @@ export const practicePolicySchema = z
       .default({
         enabled: false,
         share: 0.5,
-        skills: 8,
         areas: 3,
         step: 1,
         probeRise: 1,
@@ -286,7 +284,6 @@ const fastClimbParameters = {
   coverage: {
     enabled: false,
     share: 0.5,
-    skills: 8,
     areas: 3,
     step: 1,
     probeRise: 1,
@@ -310,7 +307,6 @@ export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
   coverage: {
     enabled: true,
     share: 0.5,
-    skills: 8,
     areas: 3,
     step: 1,
     probeRise: 1,

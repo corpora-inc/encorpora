@@ -746,6 +746,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
             // A skill someone chose, or SAT practice, is not held to the
             // grades the learner has covered.
             chosen: focusedPool.length > 0 || sat !== null,
+            // Coverage sets its bar by what this client can be sent, not by
+            // a narrower pool (one area after a skip).
+            catalog: supported,
             // Only the full mix holds back today's printed templates; a
             // chosen focus or a recovery pool is small enough that holding
             // back could push practice off level.

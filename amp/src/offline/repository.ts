@@ -219,6 +219,7 @@ export class OfflineRepository {
           // General offline practice retains its strict learner ceiling.
           strictCeiling: !satMathFocus,
           chosen: satMathFocus,
+          catalog: available,
           learnerKey: learner,
         }),
       );

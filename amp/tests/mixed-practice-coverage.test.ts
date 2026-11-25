@@ -102,6 +102,7 @@ function offered(options: {
   policy?: typeof DEFAULT_PRACTICE_POLICY;
   chosen?: boolean;
   pool?: typeof templates;
+  catalog?: typeof templates;
   seeds?: number;
 }) {
   return Array.from({ length: options.seeds ?? 40 }, (_, seed) => {
@@ -117,6 +118,7 @@ function offered(options: {
       now: epoch + options.attempts.length * 40_000,
       learnerKey: "learner",
       chosen: options.chosen,
+      catalog: options.catalog,
     });
     return {
       id: choice!.template.id,
@@ -284,19 +286,31 @@ test("a policy saved before coverage existed leaves it off", () => {
 });
 
 test("a skill someone chose is not held to the grades covered", () => {
-  // A grade 5 skill for a new third grader.
-  const skill = skills.find(
-    (candidate) =>
-      gradeNumber[candidate.gradeBand] === 5 &&
-      templates.filter((t) => t.skillId === candidate.id).length >= 3,
-  )!;
+  // A grade 4 skill for a new third grader, with easier and harder problem
+  // types, all within reach of where the answers alone would let them work.
+  const skill = skills.find((candidate) => {
+    const grades = templates
+      .filter((t) => t.skillId === candidate.id)
+      .map((t) => gradeOf(t.id));
+    return (
+      gradeNumber[candidate.gradeBand] === 4 &&
+      Math.min(...grades) === 4 &&
+      Math.max(...grades) > 4 &&
+      Math.max(...grades) <= 4.5
+    );
+  })!;
   const pool = templates.filter((t) => t.skillId === skill.id);
   const attempts = familiesOf(3, 4).map((id, i) => outcome(id, i));
   const frontier = frontierOf(3, attempts, true);
+  // The server names the whole catalog beside a narrower pool.
   const ids = (options: Partial<Parameters<typeof offered>[0]>) =>
-    offered({ frontier, attempts, pool, ...options }).map(
-      (choice) => choice.id,
-    );
+    offered({
+      frontier,
+      attempts,
+      pool,
+      catalog: templates,
+      ...options,
+    }).map((choice) => choice.id);
   // Chosen: what the planner offered before coverage, on the same level.
   assert.deepEqual(
     ids({ chosen: true }),
@@ -304,6 +318,53 @@ test("a skill someone chose is not held to the grades covered", () => {
   );
   // Every problem still comes from the chosen skill either way.
   assert.ok(ids({}).every((id) => pool.some((t) => t.id === id)));
+  // Not chosen, the same pool is held to grade 3: nothing of the skill is in
+  // reach, so only its easiest problem type is offered. Chosen, the harder
+  // types come too.
+  const easiest = Math.min(...pool.map((t) => gradeOf(t.id)));
+  assert.ok(ids({}).every((id) => gradeOf(id) === easiest));
+  assert.ok(ids({ chosen: true }).some((id) => gradeOf(id) > easiest));
+});
+
+test("one area's pool is planned under the whole catalog's bar", () => {
+  // Three grade 3 fraction skills, right: half of the six a fractions-only
+  // pool holds, a ninth of grade 3.
+  const fractions = (grade: number) =>
+    skills.filter(
+      (skill) =>
+        skill.strand === "fractions" &&
+        gradeNumber[skill.gradeBand] === grade &&
+        templates.some((t) => t.skillId === skill.id),
+    );
+  assert.equal(fractions(3).length, 6);
+  const attempts = fractions(3)
+    .slice(0, 3)
+    .map((skill, i) =>
+      outcome(templates.find((t) => t.skillId === skill.id)!.id, i),
+    );
+  const frontier = frontierOf(3, attempts, true);
+  const evidence = projectSkillEvidence(attempts);
+  const pool = templates.filter(
+    (t) => nodes.get(t.skillId)?.strand === "fractions",
+  );
+  const ceiling = (asked: typeof templates) =>
+    workingCoverage({
+      frontier,
+      skills,
+      askable: new Set(asked.map((t) => t.skillId)),
+      evidence,
+    })!.ceiling;
+  // By the pool alone the grade would count as covered.
+  assert.equal(ceiling(pool), 4);
+  assert.equal(ceiling(templates), 3);
+  // The planner is told the catalog, and holds the pool to grade 3 and a
+  // stretch.
+  const held = offered({ frontier, attempts, pool, catalog: templates });
+  assert.ok(top(held) <= 4.5, `with the catalog: ${top(held)}`);
+  assert.ok(
+    held.every((choice) => choice.purpose === "probe" || choice.grade <= 4),
+    "working problems within a grade of 3",
+  );
 });
 
 test("an area set easier keeps its own lower ceiling", () => {

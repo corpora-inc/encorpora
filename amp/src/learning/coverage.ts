@@ -15,6 +15,11 @@ import { isEarned } from "./earned.js";
  * it. Practice may reach `step` grades past the highest covered grade, and
  * stays at the starting grade until that grade is covered.
  *
+ * The bar is set by the skills this learner can be asked (`askable`): a
+ * client that cannot draw part of the catalog is held to half of what it can
+ * show, and a grade it can show nothing of is passed over. What counts toward
+ * the bar is everything earned, wherever it was earned.
+ *
  * This reads the same per-skill standing a family sees (Earned, Tried, Not
  * asked yet). It is a scheduling rule, not a mastery claim, and it only ever
  * lowers the ceiling the estimator's evidence allows.
@@ -22,8 +27,6 @@ import { isEarned } from "./earned.js";
 export type CoverageRules = {
   /** The share of a grade's own skills that covers it. */
   share: number;
-  /** Never fewer skills than this, however short a grade's list. */
-  skills: number;
   /** Areas those skills must span, or every area the grade has if fewer. */
   areas: number;
   /** Grades past the highest covered grade that practice may reach. */
@@ -45,30 +48,34 @@ export type Coverage = {
 export const coverageArea = (skill: { id: string; strand: string }): string =>
   strandAreas[skill.strand] ?? crossCuttingAreas[skill.id] ?? skill.strand;
 
-/** How many skills cover a grade with `size` skills of its own. */
-export const coverageNeed = (
-  size: number,
-  rules: Pick<CoverageRules, "share" | "skills">,
-) => Math.max(rules.skills, Math.ceil(rules.share * size));
+/** How many skills cover a grade with `size` skills that can be asked. */
+export const coverageNeed = (size: number, share: number) =>
+  Math.max(1, Math.ceil(share * size));
 
 export function gradeCoverage(options: {
   /** Where practice starts: the grade the birth year or roster gives. */
   start: number;
-  /** The catalog's skills that can be asked. */
+  /** The catalog's skills. */
   skills: readonly CoverageSkill[];
+  /** The skills this learner can be asked; absent, all of them. */
+  askable?: ReadonlySet<string>;
   /** The learner's per-skill evidence. */
   evidence: readonly { skillId: string; independentCorrect?: number }[];
   rules: CoverageRules;
 }): Coverage {
-  const { start, skills, rules } = options;
+  const { start, rules, askable } = options;
+  // A skill without a grade has no place on the scale.
+  const skills = options.skills.filter((skill) => Number.isFinite(skill.grade));
   const earned = new Set(
     options.evidence.filter(isEarned).map((entry) => entry.skillId),
   );
+  const asked = (skill: CoverageSkill) => !askable || askable.has(skill.id);
   const first = Math.ceil(start);
   const top = Math.max(first, ...skills.map((skill) => skill.grade));
   let covered: number | null = null;
   for (let grade = top; grade >= first && covered === null; grade--) {
-    // The grade's own list, and what is earned of it and above it.
+    // The grade's own list as this learner can be asked it, and what is
+    // earned of the grade and above it.
     const areas = new Set<string>();
     const own = new Set<string>();
     const harder = new Set<string>();
@@ -84,14 +91,16 @@ export function gradeCoverage(options: {
         harder.add(skill.area);
         continue;
       }
-      size += 1;
-      areas.add(skill.area);
+      if (asked(skill)) {
+        size += 1;
+        areas.add(skill.area);
+      }
       if (!has) continue;
       ownCount += 1;
       own.add(skill.area);
     }
     if (!size) continue;
-    const need = coverageNeed(size, rules);
+    const need = coverageNeed(size, rules.share);
     const broad = Math.min(rules.areas, areas.size);
     if (
       (ownCount >= need && own.size >= broad) ||
@@ -99,8 +108,12 @@ export function gradeCoverage(options: {
     )
       covered = grade;
   }
-  return {
-    covered,
-    ceiling: covered === null ? start : covered + rules.step,
-  };
+  // A grade with nothing to ask is passed over, while there is more above it.
+  const empty = (grade: number) =>
+    !skills.some((skill) => skill.grade === Math.round(grade) && asked(skill));
+  const more = (grade: number) =>
+    skills.some((skill) => skill.grade > Math.round(grade) && asked(skill));
+  let ceiling = covered === null ? start : covered + rules.step;
+  while (empty(ceiling) && more(ceiling)) ceiling += 1;
+  return { covered, ceiling };
 }
