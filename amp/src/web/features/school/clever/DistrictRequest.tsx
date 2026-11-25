@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Button, buttonClass } from "../../../ui/Button";
 import styles from "./DistrictRequest.module.css";
 
@@ -23,16 +23,47 @@ export function districtMessage(step: DistrictStep, link: string) {
   ].join("\n\n");
 }
 
+/** The message as shown: its link may break after any slash, never inside
+ * a word on a phone. The text (and so what is copied) is unchanged. */
+function Breakable({ message, link }: { message: string; link: string }) {
+  const [before, ...after] = message.split(link);
+  return (
+    <>
+      {before}
+      {after.length > 0 &&
+        after.map((rest, index) => (
+          <Fragment key={index}>
+            {/* After each path slash, not inside "https://". */}
+            {link.split(/(?<=[^/:]\/)/).map((part, at) => (
+              <Fragment key={at}>
+                {at > 0 && <wbr />}
+                {part}
+              </Fragment>
+            ))}
+            {rest}
+          </Fragment>
+        ))}
+    </>
+  );
+}
+
 /** A district's yes is never what a teacher waits on: the ready-to-forward
  * request, sent from their own mail (no recipient filled in) or copied, and
  * the promise that the pilot's work moves over. Shown beside the pilot. */
 export function DistrictRequest({
   step,
   signupUrl,
+  heading,
+  adminLink = true,
 }: {
   step: DistrictStep;
   /** Clever's page where a district adds AMP (AMP_CLEVER_DISTRICT_SIGNUP_URL). */
   signupUrl?: string;
+  /** Who this is for, when the page is first the admin's. */
+  heading?: string;
+  /** The admin's own link under the request; off where it is the page's
+   * first action already. */
+  adminLink?: boolean;
 }) {
   const link =
     step === "add"
@@ -56,12 +87,13 @@ export function DistrictRequest({
   return (
     <section className={styles.request} aria-labelledby={headingId}>
       <h2 id={headingId} className={styles.heading}>
-        {step === "add"
-          ? "Ask your district to add AMP"
-          : "Send this to your district admin"}
+        {heading ??
+          (step === "add"
+            ? "Ask your district to add AMP"
+            : "Send this to your district admin")}
       </h2>
       <p ref={text} className={styles.message} data-district-message="">
-        {message}
+        <Breakable message={message} link={link} />
       </p>
       <div className={styles.actions}>
         <a
@@ -103,7 +135,7 @@ export function DistrictRequest({
       <p className={styles.note}>
         Your pilot classes move into the district roster later. No work is lost.
       </p>
-      {step === "add" && signupUrl && (
+      {step === "add" && signupUrl && adminLink && (
         <a
           href={signupUrl}
           rel="noreferrer"

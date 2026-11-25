@@ -288,6 +288,22 @@ test(
       await unshared("/api/v1/school/sso/clever/start?as=student"),
       "/clever/not-connected",
     );
+    // Started from district setup (`/school/connect`): the district admin's
+    // screen, adding AMP in Clever first.
+    assert.equal(
+      await unshared("/api/v1/school/sso/clever/start?as=admin"),
+      "/clever/add-amp",
+    );
+    // Anything else names nobody: the adult's screen, never a cookie of it.
+    const odd = await app.inject({
+      method: "GET",
+      url: "/api/v1/school/sso/clever/start?as=district_admin",
+    });
+    assert.ok(!String(odd.headers["set-cookie"]).includes("amp.clever-as="));
+    assert.equal(
+      await unshared("/api/v1/school/sso/clever/start?as=district_admin"),
+      "/clever/not-added",
+    );
     // An adult whose Clever never named them (no cookie at all) is an adult.
     assert.equal(
       (

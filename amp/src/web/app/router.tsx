@@ -1004,6 +1004,9 @@ const cleverProblem = createRoute({
   getParentRoute: () => root,
   path: "/clever/$reason",
   staticData: { space: "public" },
+  // Its actions depend on the deployment's Clever page: the screen renders
+  // complete, never an action that arrives late and moves the page.
+  loader: loadAuthConfig,
   component: lazyRouteComponent(
     () => import("../features/school/clever/CleverProblemScreen"),
     "CleverProblemScreen",

@@ -3,6 +3,7 @@ import { ContactAddress } from "../../support/ContactAddress";
 import { Link, useLocation, useSearch } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
+import { cleverStartUrl } from "../../../../schools/clever-sign-in-causes";
 import { AppError } from "../../../lib/AppError";
 import { qk } from "../../../lib/keys";
 import { authConfigOptions } from "../../../lib/query";
@@ -38,7 +39,9 @@ import {
 import styles from "../PlainPage.module.css";
 import { Form } from "../../../ui/Form";
 
-const startUrl = "/api/v1/school/sso/clever/start";
+// Started here, Clever's "not for you" answer opens the district admin's
+// screen: adding AMP in Clever first.
+const startUrl = cleverStartUrl("admin");
 const time = new Intl.DateTimeFormat(undefined, { timeStyle: "short" });
 const dayTime = new Intl.DateTimeFormat(undefined, {
   month: "short",
@@ -107,6 +110,9 @@ export function ConnectionScreen() {
   useLoggedError(status.error?.message ?? "");
   const loading = proof.isPending || (!!credential && status.isPending);
   const enabled = data?.enabled ?? cleverEnabled(config);
+  const signupUrl =
+    data?.districtSignupUrl ??
+    (config?.mode === "accounts" ? config.cleverDistrictSignupUrl : undefined);
   const identity = data?.identity,
     connection = data?.connection;
   const admin = identity?.roles.includes("district_admin") ?? false;
@@ -306,13 +312,15 @@ export function ConnectionScreen() {
             </p>
           )}
           <Aside>
-            {!session && data?.districtSignupUrl && (
+            {/* Before any Clever sign-in there is no status yet: the
+                deployment's configuration has the link. */}
+            {!session && signupUrl && (
               <a
-                href={data.districtSignupUrl}
+                href={signupUrl}
                 rel="noreferrer"
                 className={buttonClass("quiet", "", "start")}
               >
-                District admin? Set up in Clever
+                District admin? Add AMP in Clever
               </a>
             )}
             <Link

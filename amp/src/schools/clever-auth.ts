@@ -7,8 +7,10 @@ import type { StudentGrant } from "./contracts.js";
 import { startTeacherPilots } from "./pilots.js";
 import { ensureCleverDistrictPilot } from "./institution-pilot.js";
 import {
+  CLEVER_STARTS,
   cleverProblemPath,
   type CleverSignInCause,
+  type CleverStart,
 } from "./clever-sign-in-causes.js";
 import { SchoolRepository } from "./repository.js";
 import {
@@ -58,9 +60,12 @@ export type CleverAuthOptions = {
 };
 const ROOT = "/api/v1/school/sso/clever";
 const FLOW_COOKIE = "amp.clever-flow";
-/** Who started the sign-in: `student` from the student entry. Only picks
- * which screen an unauthorized-user answer opens; it authorizes nothing. */
+/** Where the sign-in started: `student` from the student entry, `admin`
+ * from district setup. Only picks which screen an unauthorized-user answer
+ * opens; it authorizes nothing. */
 const AUDIENCE_COOKIE = "amp.clever-as";
+const isStart = (value: unknown): value is CleverStart =>
+  (CLEVER_STARTS as readonly unknown[]).includes(value);
 const OPAQUE = /^[\w-]{43}$/;
 const id = z.string().min(1).max(128);
 /** Display only: never an identity key, never matched against anything. */
@@ -283,9 +288,9 @@ export async function registerCleverAuthRoutes(
       redirect_uri: `${config.origin}${ROOT}/callback`,
       response_type: "code",
       state,
-      // Someone whose district hasn't added AMP, or hasn't shared them with
-      // it, comes back with error=unauthorized-user instead of stopping on a
-      // Clever error page. A teacher can then start a pilot.
+      // Someone AMP isn't in Clever for comes back with
+      // error=unauthorized-user instead of stopping on a Clever error page.
+      // A teacher can then start a pilot, an admin add AMP in Clever.
       return_unshared: "true",
     }).toString();
     return url.href;
@@ -296,9 +301,8 @@ export async function registerCleverAuthRoutes(
   app.get(`${ROOT}/start`, async (request, reply) => {
     reply.header("cache-control", "no-store");
     const authorize = await start(reply);
-    const student =
-      (request.query as { as?: unknown } | undefined)?.as === "student";
-    if (student) cookie(reply, AUDIENCE_COOKIE, "student", secure, 600, ROOT);
+    const as = (request.query as { as?: unknown } | undefined)?.as;
+    if (isStart(as)) cookie(reply, AUDIENCE_COOKIE, as, secure, 600, ROOT);
     else if (requestCookie(request, AUDIENCE_COOKIE))
       cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
     return reply.redirect(authorize);
@@ -349,9 +353,10 @@ export async function registerCleverAuthRoutes(
         "Clever sign-in failed",
       );
       // Clever names no role with unauthorized-user: whoever started from
-      // the student entry is a student; anyone else sees the teacher's way
-      // in, which also tells a student to ask their teacher.
-      const student = requestCookie(request, AUDIENCE_COOKIE) === "student";
+      // the student entry is a student, and from district setup most likely
+      // the admin who adds AMP in Clever; anyone else sees the teacher's way
+      // in. Every adult screen also tells a student to ask their teacher.
+      const as = requestCookie(request, AUDIENCE_COOKIE);
       // An error answer ends this attempt; Clever's button starts afresh.
       cookie(reply, AUDIENCE_COOKIE, "", secure, 0, ROOT);
       cookie(reply, FLOW_COOKIE, "", secure, 0, ROOT);
@@ -359,9 +364,11 @@ export async function registerCleverAuthRoutes(
         error === "access_denied"
           ? "canceled"
           : error === "unauthorized-user"
-            ? student
+            ? as === "student"
               ? "not-connected"
-              : "not-added"
+              : as === "admin"
+                ? "add-amp"
+                : "not-added"
             : "failed";
       return reply.redirect(cleverProblemPath(cause));
     }

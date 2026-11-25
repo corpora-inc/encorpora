@@ -10,7 +10,10 @@ import artwork from "./log-in-with-clever.svg";
  * AMP answers with the student's screen. */
 export function CleverLogInButton({ student = false }: { student?: boolean }) {
   return (
-    <a href={cleverStartUrl(student)} className={styles.button}>
+    <a
+      href={cleverStartUrl(student ? "student" : undefined)}
+      className={styles.button}
+    >
       {/* The artwork's own size, so the button never moves as it loads. */}
       <img src={artwork} alt="Log in with Clever" width={267} height={50} />
     </a>

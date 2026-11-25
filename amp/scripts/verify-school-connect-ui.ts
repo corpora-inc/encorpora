@@ -201,6 +201,20 @@ try {
   await page
     .getByRole("link", { name: "Continue with Clever", exact: true })
     .waitFor();
+  // Started here, Clever's "not for you" answer is the district admin's
+  // screen; and before any sign-in the admin's way to add AMP is here too.
+  assert.equal(
+    await page
+      .getByRole("link", { name: "Continue with Clever", exact: true })
+      .getAttribute("href"),
+    "/api/v1/school/sso/clever/start?as=admin",
+  );
+  assert.equal(
+    await page
+      .getByRole("link", { name: "District admin? Add AMP in Clever" })
+      .getAttribute("href"),
+    "https://schools.clever.com/signup/fixture",
+  );
   await capture("guest");
   state = {
     ...freshState(),
@@ -544,14 +558,21 @@ try {
     .waitFor();
   await page.getByText("Ask your teacher.", { exact: true }).waitFor();
   assert.equal(await page.getByLabel(/password/i).count(), 0);
+  // No Clever button that can only fail: the teacher's class code can work.
+  assert.equal(await cleverLink().count(), 0);
+  await page.getByRole("link", { name: "Type a class code" }).waitFor();
   await capture("clever-not-connected");
+  await page.goto(`${origin}/clever/guardian`);
+  await page.getByRole("link", { name: "Sign in", exact: true }).waitFor();
+  assert.equal(await cleverLink().count(), 0);
+  await capture("clever-guardian");
   await page.goto(`${origin}/clever/failed`);
   await page.getByText("support@corpora.inc", { exact: true }).waitFor();
   // A teacher or school leader whose district hasn't added AMP in Clever is
   // never blocked: the pilot first, then the request to forward.
   await page.goto(`${origin}/clever/not-added`);
   await page
-    .getByRole("heading", { name: "Your district hasn’t added AMP yet" })
+    .getByRole("heading", { name: "AMP isn’t in your Clever account yet" })
     .waitFor();
   assert.equal(
     await page
@@ -591,9 +612,24 @@ try {
   await page.reload();
   await ask.waitFor();
   await capture("clever-not-added");
+  // Started from district setup: adding AMP in Clever first, the pilot
+  // beside it, and the request for anyone who isn't the admin.
+  await page.goto(`${origin}/clever/add-amp`);
+  const add = page.getByRole("link", {
+    name: "Add AMP in Clever",
+    exact: true,
+  });
+  assert.equal(
+    await add.getAttribute("href"),
+    "https://schools.clever.com/signup/fixture",
+  );
+  await page
+    .getByRole("region", { name: "Not a district admin? Send them this" })
+    .waitFor();
+  await capture("clever-add-amp");
   // Students and staff always have a way in from sign-in, not only after a
   // failure, and a student signed out on a shared computer from /join.
-  for (const path of ["/sign-in", "/join", "/clever/not-connected"]) {
+  for (const path of ["/sign-in", "/join", "/clever/not-on-roster"]) {
     await page.goto(`${origin}${path}`);
     await cleverLink().waitFor();
     // The student entry's sign-in says so: a district that hasn't added
