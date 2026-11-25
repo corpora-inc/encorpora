@@ -76,34 +76,13 @@ export function mathFontsBeforePaint(wait = MATH_FONT_WAIT_MS): Promise<void> {
   ]).finally(() => clearTimeout(timer));
 }
 
-/** Runs once the first screen has loaded and the browser has a moment. */
-function afterFirstScreen(run: () => void) {
-  const idle = () => {
-    if (typeof requestIdleCallback === "function")
-      requestIdleCallback(() => run(), { timeout: 2_000 });
-    else setTimeout(run, 200);
-  };
-  if (document.readyState === "complete") idle();
-  else addEventListener("load", idle, { once: true });
-}
-
-let started = false;
 /** Start the files and the faces. `/` may be the pitch, which shows no math
  * (its document leaves these out, scripts/build-home-document.ts): boot.tsx
  * starts them once `/` resolves to the app; every other address starts them
- * now.
- *
- * The three common files start at once, as they always did. Every face a
- * formula might use (two dozen files) waits until the first screen has
- * loaded: most first screens show no math (sign-in, sign-up, a parent's
- * Today), and their own code, styles and font must not queue behind files
- * they never draw with. A screen with math asks for the faces itself, at
- * once, before it paints (router.tsx, `mathFontsBeforePaint`). */
+ * now. */
 export function startMathFonts() {
   preloadMathFonts();
-  if (started) return;
-  started = true;
-  afterFirstScreen(() => void mathFontsReady());
+  void mathFontsReady();
 }
 if (typeof location !== "undefined" && location.pathname !== "/")
   startMathFonts();
