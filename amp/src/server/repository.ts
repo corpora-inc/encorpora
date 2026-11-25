@@ -45,6 +45,7 @@ import type { StudentSkillResponse } from "../schools/teacher-contracts.js";
 import {
   estimateFrontier,
   initialLevel,
+  NO_COURSE_START,
   startFromGrade,
   startingSd,
   overallTrend,
@@ -925,7 +926,7 @@ export class PgTransaction implements LearnerTransaction {
       epoch: settings.epoch,
       start: await this.startingLevel(now),
       startSd: await this.startingSd(),
-      gradeStart: await this.gradeStart(),
+      gradeStart: await this.gradeStart(now),
       strandStarts: settings.strandStarts,
     };
     const row = await this.db.query(
@@ -1003,12 +1004,53 @@ export class PgTransaction implements LearnerTransaction {
       band: learner?.starting_band as Parameters<typeof startingSd>[0]["band"],
     });
   }
-  /** Whether the start is the learner's grade, not a guess (`startFromGrade`). */
-  private async gradeStart() {
+  /** Whether the start is the learner's grade, not a guess (`startFromGrade`):
+   * a birth year, or a start that came from the course of their class. */
+  private async gradeStart(now: number) {
     const learner = await this.learner();
+    const birthYear = learner?.birth_year as number | null | undefined;
+    if (birthYear != null) return startFromGrade({ birthYear });
+    // The start is settled first: a course start is kept on the learner.
+    await this.startingLevel(now);
+    if (
+      !learner ||
+      learner.starting_band ||
+      learner.adult ||
+      learner.starting_course_level == null
+    )
+      return false;
+    const courseStart = Number(learner.starting_course_level);
     return startFromGrade({
-      birthYear: learner?.birth_year as number | null | undefined,
+      courseStart,
+      // Only the one ambiguous level needs the classes read.
+      classCourses:
+        courseStart === NO_COURSE_START ? await this.classCourses() : [],
     });
+  }
+  /** The levels of the courses of the learner's classes today, in the order
+   * a start is taken from them; none while course placement is off. Read
+   * once a request. */
+  private classCourseLevels?: Promise<number[]>;
+  private classCourses() {
+    return (this.classCourseLevels ??= this.db
+      .query<{ course_bands: string[] }>(
+        `SELECT c.course_bands FROM amp_people p
+         JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+         JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+         JOIN amp_orgs o ON o.id=c.org_id
+         WHERE p.learner_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+           AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'
+             AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
+           AND (SELECT enabled FROM amp_course_placement WHERE singleton)
+         ORDER BY e.begin_on,c.id`,
+        [this.learnerId],
+      )
+      .then((classes) =>
+        classes.rows.flatMap((row) => {
+          const course = courseBand(row.course_bands);
+          return course ? [course.level] : [];
+        }),
+      ));
   }
   private async startingLevel(now: number) {
     const learner = await this.learner();
@@ -1043,22 +1085,9 @@ export class PgTransaction implements LearnerTransaction {
         )
       ).rows[0]?.enabled;
       if (!enabled) return 2;
-      const classes = await this.db.query<{ course_bands: string[] }>(
-        `SELECT c.course_bands FROM amp_people p
-         JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
-         JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
-         JOIN amp_orgs o ON o.id=c.org_id
-         WHERE p.learner_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
-           AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'
-             AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
-         ORDER BY e.begin_on,c.id`,
-        [this.learnerId],
-      );
-      const course = classes.rows
-        .map((row) => courseBand(row.course_bands))
-        .find(Boolean);
+      const [course] = await this.classCourses();
       {
-        const level = course?.level ?? 2;
+        const level = course ?? 2;
         await this.db.query(
           "UPDATE amp_learners SET starting_course_level=$2 WHERE id=$1",
           [this.learnerId, level],
@@ -1088,7 +1117,7 @@ export class PgTransaction implements LearnerTransaction {
       settings,
       start: await this.startingLevel(now),
       startSd: await this.startingSd(),
-      gradeStart: await this.gradeStart(),
+      gradeStart: await this.gradeStart(now),
       observations: history.rows as (FrontierObservation & {
         practiceRevision: number;
       })[],

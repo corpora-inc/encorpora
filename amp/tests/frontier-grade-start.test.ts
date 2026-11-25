@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   createFrontierState,
   estimateFrontier,
+  NO_COURSE_START,
   overallTrend,
   startFromGrade,
   startWidth,
@@ -52,10 +53,30 @@ const level = (
     ...catalog,
   }).overall;
 
-test("only a birth year makes the start a grade", () => {
-  assert.equal(startFromGrade({ birthYear: 2017 }), true);
-  assert.equal(startFromGrade({ birthYear: null }), false);
-  assert.equal(startFromGrade({}), false);
+test("a birth year, or a start kept from the class's course, makes the start a grade", () => {
+  assert.equal(NO_COURSE_START, 2);
+  const cases: [Parameters<typeof startFromGrade>[0], boolean, string][] = [
+    [{ birthYear: 2017 }, true, "a birth year"],
+    [{ birthYear: null }, false, "no birth year, nothing else"],
+    [{}, false, "nothing known"],
+    [{ courseStart: null, classCourses: [4] }, false, "no start was kept"],
+    [{ courseStart: 4, classCourses: [4] }, true, "a grade 4 class"],
+    [{ courseStart: 9 }, true, "an Algebra 1 class"],
+    [{ courseStart: 0 }, true, "a kindergarten class"],
+    // A kept start other than 2 can only have come from a course, and stays
+    // a grade start whatever the class's course becomes.
+    [{ courseStart: 4, classCourses: [5] }, true, "the course changed since"],
+    [{ courseStart: 4, classCourses: [] }, true, "the class lost its course"],
+    // 2 is also what a learner with no course is given.
+    [{ courseStart: 2, classCourses: [] }, false, "2 and no class course"],
+    [{ courseStart: 2 }, false, "2 and no class"],
+    [{ courseStart: 2, classCourses: [4] }, false, "2 kept before a course"],
+    [{ courseStart: 2, classCourses: [2] }, true, "a grade 2 class"],
+    [{ courseStart: 2, classCourses: [5, 2] }, true, "one of two classes"],
+    [{ birthYear: 2017, courseStart: null }, true, "a birth year wins"],
+  ];
+  for (const [options, expected, name] of cases)
+    assert.equal(startFromGrade(options), expected, name);
 });
 
 test("a grade start is as wide as its grade's spread, a guessed start as wide as before", () => {

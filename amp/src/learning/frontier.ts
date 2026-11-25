@@ -142,18 +142,41 @@ export function startingSd(options: {
   return options.adult || adultBand ? ADULT_START_SD : undefined;
 }
 
-/** Whether a learner's start is the grade they are in, not a guess: they have
- * a birth year (a roster grade is kept as one, `birthYearForGrade`). The grade
- * then counts for more before the first answers
+/** Where a rostered learner with no age, no grade and no class course
+ * starts: a guess. It is also the only level a kept course start
+ * (`amp_learners.starting_course_level`) can hold without a course. */
+export const NO_COURSE_START = 2;
+
+/** Whether a learner's start is the grade they are in, not a guess. It is
+ * when they have a birth year (a roster grade is kept as one,
+ * `birthYearForGrade`), or when their start came from the course of their
+ * class: a teacher who makes a "Grade 4" class has said what grade its
+ * students are in. The grade then counts for more before the first answers
  * (`FrontierPolicy.prior.gradeSd`) and practice climbs from it by coverage
- * (learning/coverage.ts). Every other start stays a guess, where a wrong one
- * costs a few problems: an adult's chosen start, a family's band, a learner
- * with no age and no grade, and a practice profile, which is set to levels of
- * its own in each area. */
+ * (learning/coverage.ts).
+ *
+ * A kept course start other than `NO_COURSE_START` can only have come from a
+ * course, and stays a grade start whatever the class's course becomes. One
+ * that equals it may be a grade 2 class or no course at all, so it is a grade
+ * start only while one of the learner's classes is a grade 2 class.
+ *
+ * Every other start stays a guess, where a wrong one costs a few problems: an
+ * adult's chosen start, a family's band, a learner with no age, no grade and
+ * no class course, and a practice profile, which is set to levels of its own
+ * in each area. */
 export function startFromGrade(options: {
   birthYear?: number | null;
+  /** The start kept from the class's course, if one was kept. */
+  courseStart?: number | null;
+  /** The levels of the courses of the learner's classes today. */
+  classCourses?: readonly number[];
 }): boolean {
-  return options.birthYear != null;
+  if (options.birthYear != null) return true;
+  if (options.courseStart == null) return false;
+  return (
+    options.courseStart !== NO_COURSE_START ||
+    (options.classCourses ?? []).includes(NO_COURSE_START)
+  );
 }
 
 /** Where an account holder's own practice begins from the birth year they
