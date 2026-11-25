@@ -9,6 +9,13 @@ import {
   familyEmphasis,
 } from "../curriculum/selection.js";
 
+/** The share of a grade's skills that covers it (learning/coverage.ts): two
+ * thirds, so a learner practices and masters most of a grade before much is
+ * asked beyond it (founder, 2026-11-24). 12 of kindergarten's 17 skills, 18
+ * of grade 3's 27, 22 of Algebra 1's 32, 26 of Geometry's 39. Half and a
+ * third were measured beside it in `scripts/simulate-placement-pace.ts`. */
+export const COVERAGE_SHARE = 2 / 3;
+
 // Bounds below protect computation/configuration. They are not learning targets.
 const points = z.number().finite().min(0).max(10000);
 const grades = z.number().finite().min(0).max(20);
@@ -73,7 +80,7 @@ export const practicePolicySchema = z
       .strict()
       .default({
         enabled: false,
-        share: 0.5,
+        share: COVERAGE_SHARE,
         areas: 3,
         step: 1,
         probeRise: 1,
@@ -283,7 +290,7 @@ const fastClimbParameters = {
   },
   coverage: {
     enabled: false,
-    share: 0.5,
+    share: COVERAGE_SHARE,
     areas: 3,
     step: 1,
     probeRise: 1,
@@ -299,14 +306,9 @@ export const FAST_CLIMB_PRACTICE_POLICY =
 export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
   ...fastClimbParameters,
   version: "pathways-budget-v5-grade-coverage",
-  // Half a grade's skills cover it, chosen in
-  // `scripts/simulate-placement-pace.ts`: a learner who is right about
-  // everything has earned their grade and the next after about thirty
-  // problems, and one four grades ahead works near their level after about
-  // fifty.
   coverage: {
     enabled: true,
-    share: 0.5,
+    share: COVERAGE_SHARE,
     areas: 3,
     step: 1,
     probeRise: 1,

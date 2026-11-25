@@ -72,7 +72,7 @@ These are the rules for a learner who starts from their grade
    grade 3 read as grade 4.5, where they used to read as grade 5.6.
 2. **First the child's own grade.** New problems stay at the grade, with a
    stretch problem from the next grade, until the grade is covered.
-3. **A grade is covered** when the child has earned half of its skills, or as
+3. **A grade is covered** when the child has earned two thirds of its skills, or as
    many harder ones, in at least three of the five areas. Earned means
    answered right without help, the same mark the family sees.
 4. **Then one grade at a time.** Practice may reach one grade past the highest
@@ -85,9 +85,10 @@ These are the rules for a learner who starts from their grade
 
 **What a child sees.** A new third-grader who answers everything right used
 to meet a grade 9 problem eighth and a Precalculus problem twenty-eighth, and
-read grade 9 after ten answers. Now the first thirty problems are from grades 2 to 4, mostly
-grade 3 and grade 4 in turn, the next seventeen are grade 5 and grade 6, and
-the level reads 4.8 after ten answers, 5.3 after twenty and 7.1 after fifty.
+read grade 9 after ten answers. Now the first forty-one problems are from
+grades 2 to 4, mostly grade 3 and grade 4 in turn. Grade 5 and grade 6 follow.
+Of the first fifty, twenty are grade 3 and nineteen grade 4. The level reads
+4.8 after ten answers, 5.3 after twenty and 6.4 after fifty.
 
 **How strongly the grade counts** is the estimate's starting width
 (`FrontierPolicy.prior.gradeSd`). It is the spread of achievement within one
@@ -105,18 +106,22 @@ same after ten; at 1.75 that learner came within a grade three answers later,
 so the start is no narrower.
 
 **Coverage** is `learning/coverage.ts`, read by the planner from per-skill
-evidence (`PracticePolicy.coverage`: a share of one half, three areas, a step
+evidence (`PracticePolicy.coverage`: a share of two thirds, three areas, a step
 of one grade, a stretch of one grade).
 
-- The bar scales with the grade. Kindergarten has 17 skills, so 9 cover it;
-  grade 3 has 27, so 14; Geometry has 39, so 20.
+- The bar scales with the grade. Kindergarten has 17 skills, so 12 cover it;
+  grade 3 has 27, so 18; Algebra 1 has 32, so 22; Geometry has 39, so 26.
+  Two thirds, so a child practices and masters most of a grade before much is
+  asked beyond it (`COVERAGE_SHARE`). A third and a half were measured beside
+  it: at a third a child right about everything is past their grade in 16
+  problems.
 - Harder skills count on their own, never added to the grade's. A stretch
   problem therefore does not make the grade cheaper. They are how a learner
   who already works above a grade is not sent back to it.
 - A grade with fewer than three areas needs only the areas it has (Geometry:
   two).
 - The bar is set by what the learner's app can be sent. An older app that
-  cannot draw part of the catalog is held to half of what it can show, and a
+  cannot draw part of the catalog is held to two thirds of what it can show, and a
   grade it can show nothing of is passed over. What counts toward the bar is
   everything earned, wherever it was earned.
 - Coverage is a second ceiling: the planner takes the lower of it and the
@@ -129,11 +134,20 @@ of one grade, a stretch of one grade).
 (`npx tsx scripts/simulate-placement-pace.ts`), counting a sitting as about
 25 problems:
 
-- Two grades ahead: the level reads within a grade after 2 to 8 answers and
-  the problems are near their level after 8 to 26. The first sitting.
-- Four grades ahead: the problems are near their level after 34 to 56 and
-  the level reads within a grade after about 33 to 40. Two sittings, three
-  on a slow run. The earlier climb took 3 to 21 problems.
+- Two grades ahead: the level reads within a grade after 2 to 19 answers and
+  the problems are near their level after 16 to 38. One or two sittings.
+- Four grades ahead: the level reads within a grade after 25 to 51 answers
+  and the problems are near their level after 60 to 84. Three sittings, four
+  or five on a slow run (the slowest of twelve: 76 to 114 problems). The
+  earlier climb took 3 to 21 problems.
+- High-school courses are the slow ones. Two thirds of Algebra 1 is 22
+  skills: a ninth-grader who is really in Geometry meets it as a stretch from
+  the fifth problem and as regular work after about 65. Two thirds of
+  Geometry is 26 more: a ninth-grader who is really in Algebra 2 meets it as
+  regular work after about 140.
+- A child at their grade stays there, with a stretch one problem in four,
+  for about 40 problems in kindergarten and 80 to 100 in grades 3 and 6
+  (three or four sittings).
 
 Every problem on the way is a skill of the grades between, earned and on the
 record. A learner with a long record is asked what they would have been

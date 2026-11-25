@@ -81,8 +81,8 @@ test(
       );
       assert.equal(frontier.expected, 3);
       assert.equal(frontier.gradeStart, true);
-      // Sixteen problems: the grade, and a stretch from the next. Half of
-      // grade 3's skills are not earned in sixteen answers.
+      // Sixteen problems: the grade, and a stretch from the next. Two thirds
+      // of grade 3's skills are not earned in sixteen answers.
       assert.ok(Math.max(...grades) <= 4.5, `sixteen: ${grades.join(" ")}`);
       assert.ok(
         grades.filter((grade) => grade >= 2.5 && grade < 3.5).length >= 6,

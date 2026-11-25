@@ -18,8 +18,10 @@ import {
 import { templates } from "../src/math/engine";
 
 /* The rule a parent is told: a grade is covered when the child has earned
-   half of its skills, or as many harder ones, in at least three areas, and
-   practice reaches one grade past the highest covered grade. */
+   two thirds of its skills, or as many harder ones, in at least three areas,
+   and practice reaches one grade past the highest covered grade. The first
+   tests work the mechanism on a small catalog with a share of one half; the
+   last three hold the shipped share against the real catalog. */
 
 const rules: CoverageRules = {
   share: 0.5,
@@ -59,7 +61,7 @@ const cover = (
     rules: { ...rules, ...own },
   });
 
-test("a grade is covered by half its skills, or as many harder ones, in enough areas", () => {
+test("a grade is covered by its share of skills (here one half), or as many harder ones, in enough areas", () => {
   const cases: {
     name: string;
     evidence: { skillId: string; independentCorrect?: number }[];
@@ -178,6 +180,12 @@ test("the bar is a share of the grade's own list", () => {
     [1, 0.5, 1],
     [27, 1 / 3, 9],
     [27, 2 / 3, 18],
+    // Thirds of a list that divides by three come out whole.
+    [18, 2 / 3, 12],
+    [36, 2 / 3, 24],
+    [39, 2 / 3, 26],
+    [17, 2 / 3, 12],
+    [32, 2 / 3, 22],
     // Never nothing: one skill at least.
     [27, 0, 1],
   ];
@@ -293,27 +301,27 @@ const real = skills
     area: coverageArea(skill),
   }));
 
-test("the bar for each grade of the catalog: half its skills", () => {
+test("the bar for each grade of the catalog: two thirds of its skills", () => {
   const { coverage } = DEFAULT_PRACTICE_POLICY;
   assert.deepEqual(
     { ...coverage },
-    { enabled: true, share: 0.5, areas: 3, step: 1, probeRise: 1 },
+    { enabled: true, share: 2 / 3, areas: 3, step: 1, probeRise: 1 },
   );
   // [skills the grade has, skills that cover it, areas they must span].
   const expected: [size: number, need: number, areas: number][] = [
-    [17, 9, 3], // K
-    [18, 9, 3],
-    [22, 11, 3],
-    [27, 14, 3],
-    [23, 12, 3],
-    [18, 9, 3],
-    [27, 14, 3],
-    [22, 11, 3],
-    [20, 10, 3],
-    [32, 16, 3], // Algebra 1
-    [39, 20, 2], // Geometry: geometry, and data and probability
-    [36, 18, 3], // Algebra 2
-    [35, 18, 3], // Precalculus
+    [17, 12, 3], // K
+    [18, 12, 3],
+    [22, 15, 3],
+    [27, 18, 3],
+    [23, 16, 3],
+    [18, 12, 3],
+    [27, 18, 3],
+    [22, 15, 3],
+    [20, 14, 3],
+    [32, 22, 3], // Algebra 1
+    [39, 26, 2], // Geometry: geometry, and data and probability
+    [36, 24, 3], // Algebra 2
+    [35, 24, 3], // Precalculus
   ];
   expected.forEach(([size, need, broad], grade) => {
     const own = real.filter((skill) => skill.grade === grade);
@@ -331,7 +339,7 @@ test("the bar for each grade of the catalog: half its skills", () => {
   });
 });
 
-test("no grade can hold a learner, on a client that draws everything or nothing: each is covered by half of what can be asked", () => {
+test("no grade can hold a learner, on a client that draws everything or nothing: each is covered by two thirds of what can be asked", () => {
   const { coverage } = DEFAULT_PRACTICE_POLICY;
   const clients = {
     "draws everything": {

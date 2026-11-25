@@ -8,16 +8,16 @@ import { isEarned } from "./earned.js";
  * A grade is covered when the learner has earned (`learning/earned.ts`: a
  * right answer without help) `share` of its skills, or as many harder skills,
  * in at least `areas` of the five areas (fewer where the grade itself has
- * fewer). The bar scales with the grade: half of kindergarten's 17 skills is
- * 9, half of Geometry's 39 is 20. Harder skills count on their own, never
+ * fewer). The bar scales with the grade: at two thirds, 12 of kindergarten's
+ * 17 skills and 26 of Geometry's 39. Harder skills count on their own, never
  * added to the grade's, so a stretch problem does not make the grade cheaper;
  * they are how a learner who already works above a grade is not sent back to
  * it. Practice may reach `step` grades past the highest covered grade, and
  * stays at the starting grade until that grade is covered.
  *
  * The bar is set by the skills this learner can be asked (`askable`): a
- * client that cannot draw part of the catalog is held to half of what it can
- * show, and a grade it can show nothing of is passed over. What counts toward
+ * client that cannot draw part of the catalog is held to the same share of
+ * what it can show, and a grade it can show nothing of is passed over. What counts toward
  * the bar is everything earned, wherever it was earned.
  *
  * This reads the same per-skill standing a family sees (Earned, Tried, Not

@@ -161,7 +161,7 @@ test("a new third grader who gets the first four right is next offered grade 3, 
 test("the ceiling is the starting grade until it is covered, then one grade past the highest covered grade", () => {
   const answered = (ids: readonly string[]) =>
     ids.map((id, i) => outcome(id, i));
-  // Grade 3 has 27 skills, so 14 cover it; grade 4 has 23, so 12.
+  // Grade 3 has 27 skills, so 18 cover it; grade 4 has 23, so 16.
   const cases: {
     name: string;
     attempts: Outcome[];
@@ -170,44 +170,44 @@ test("the ceiling is the starting grade until it is covered, then one grade past
   }[] = [
     { name: "no answers", attempts: [], covered: null, ceiling: 3 },
     {
-      name: "thirteen grade 3 skills",
-      attempts: answered(familiesOf(3, 13)),
+      name: "seventeen grade 3 skills",
+      attempts: answered(familiesOf(3, 17)),
       covered: null,
       ceiling: 3,
     },
     {
-      name: "fourteen grade 3 skills across the areas",
-      attempts: answered(familiesOf(3, 14)),
+      name: "eighteen grade 3 skills across the areas",
+      attempts: answered(familiesOf(3, 18)),
       covered: 3,
       ceiling: 4,
     },
     {
-      name: "fourteen grade 3 skills, all in number",
-      attempts: answered(familiesOf(3, 14, ["number"])),
+      name: "eighteen grade 3 skills in number and algebra alone",
+      attempts: answered(familiesOf(3, 18, ["number", "algebra"])),
       covered: null,
       ceiling: 3,
     },
     {
-      name: "seven of grade 3 and seven of grade 4: neither half",
-      attempts: answered([...familiesOf(3, 7), ...familiesOf(4, 7)]),
+      name: "nine of grade 3 and nine of grade 4: neither two thirds",
+      attempts: answered([...familiesOf(3, 9), ...familiesOf(4, 9)]),
       covered: null,
       ceiling: 3,
     },
     {
-      name: "fourteen of grade 4 alone: grade 4, and grade 3 by harder skills",
-      attempts: answered(familiesOf(4, 14)),
+      name: "eighteen of grade 4 alone: grade 4, and grade 3 by harder skills",
+      attempts: answered(familiesOf(4, 18)),
       covered: 4,
       ceiling: 5,
     },
     {
-      name: "fourteen of grade 3, then twelve of grade 4",
-      attempts: answered([...familiesOf(3, 14), ...familiesOf(4, 12)]),
+      name: "eighteen of grade 3, then sixteen of grade 4",
+      attempts: answered([...familiesOf(3, 18), ...familiesOf(4, 16)]),
       covered: 4,
       ceiling: 5,
     },
     {
-      name: "fourteen of grade 3, all answered wrong",
-      attempts: familiesOf(3, 14).map((id, i) => outcome(id, i, false)),
+      name: "eighteen of grade 3, all answered wrong",
+      attempts: familiesOf(3, 18).map((id, i) => outcome(id, i, false)),
       covered: null,
       ceiling: 3,
     },
@@ -327,8 +327,8 @@ test("a skill someone chose is not held to the grades covered", () => {
 });
 
 test("one area's pool is planned under the whole catalog's bar", () => {
-  // Three grade 3 fraction skills, right: half of the six a fractions-only
-  // pool holds, a ninth of grade 3.
+  // Four grade 3 fraction skills, right: two thirds of the six a
+  // fractions-only pool holds, a seventh of grade 3.
   const fractions = (grade: number) =>
     skills.filter(
       (skill) =>
@@ -338,7 +338,7 @@ test("one area's pool is planned under the whole catalog's bar", () => {
     );
   assert.equal(fractions(3).length, 6);
   const attempts = fractions(3)
-    .slice(0, 3)
+    .slice(0, 4)
     .map((skill, i) =>
       outcome(templates.find((t) => t.skillId === skill.id)!.id, i),
     );
@@ -368,7 +368,7 @@ test("one area's pool is planned under the whole catalog's bar", () => {
 });
 
 test("an area set easier keeps its own lower ceiling", () => {
-  const attempts = [...familiesOf(5, 9), ...familiesOf(6, 14)].map((id, i) =>
+  const attempts = [...familiesOf(5, 12), ...familiesOf(6, 18)].map((id, i) =>
     outcome(id, i),
   );
   const state = newLearnerFrontier({

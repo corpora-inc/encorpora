@@ -63,12 +63,12 @@ test("a learner who is right about everything climbs a grade at a time, not to h
     assert.ok(top(after, 10) <= expected + 1.5, `first 10: ${top(after, 10)}`);
     // The first twenty: no further than two grades and a half ahead.
     assert.ok(top(after, 20) <= expected + 2.5, `first 20: ${top(after, 20)}`);
-    // Forty right answers earn the grade and the next (a third, from
-    // kindergarten, where a grade is 17 skills), and a stretch past them:
-    // never eight grades.
-    assert.ok(top(after, 40) <= expected + 4.5, `first 40: ${top(after, 40)}`);
+    // Forty right answers earn two thirds of the grade (and of the next,
+    // from kindergarten, where a grade is 17 skills), and a stretch past
+    // them. Never eight grades.
+    assert.ok(top(after, 40) <= expected + 3.5, `first 40: ${top(after, 40)}`);
     assert.ok(
-      shown(after, 40) <= expected + 4.5,
+      shown(after, 40) <= expected + 3.5,
       `level at 40: ${shown(after, 40)}`,
     );
     // Before, the same learner was past that within twenty.
@@ -80,10 +80,10 @@ test("a learner who is right about everything climbs a grade at a time, not to h
   }
 });
 
-test("a learner four grades ahead is working within a grade of their level inside three sittings", (t) => {
+test("a learner four grades ahead is working within a grade of their level inside four sittings", (t) => {
   for (const expected of [0, 3, 6]) {
     const who = learner("four above", expected);
-    const after = runs(who, paceEngines.after, 100);
+    const after = runs(who, paceEngines.after, 130);
     // Most of ten problems in a row within a grade of the level,
     const reached = after.map((run) => answersToWork(run) ?? Infinity);
     // and the first problem within a grade of it.
@@ -93,11 +93,12 @@ test("a learner four grades ahead is working within a grade of their level insid
     t.diagnostic(
       `from grade ${expected}: working near the level from problem ${median(reached)} (median), ${Math.max(...reached)} (slowest); first problem within a grade of it ${median(first)} (median), ${Math.max(...first)} (slowest)`,
     );
-    // A sitting is about 25 problems.
-    assert.ok(median(reached) <= 60, `median ${median(reached)}`);
-    assert.ok(Math.max(...reached) <= 75, `slowest ${Math.max(...reached)}`);
+    // A sitting is about 25 problems. Two thirds of each grade between is
+    // earned on the way: about three sittings, four from grade 6.
+    assert.ok(median(reached) <= 90, `median ${median(reached)}`);
+    assert.ok(Math.max(...reached) <= 120, `slowest ${Math.max(...reached)}`);
     assert.ok(
-      first.every((at) => at > 0 && at <= 60),
+      first.every((at) => at > 0 && at <= 85),
       `first within a grade: ${first.join(" ")}`,
     );
     // None of it by a leap: the first ten stay within a stretch of the grade.
@@ -110,18 +111,19 @@ test("a learner four grades ahead is working within a grade of their level insid
   }
 });
 
-test("a learner two grades ahead reads within a grade of their level in the first sitting", (t) => {
+test("a learner two grades ahead reads within a grade of their level in two sittings, and works there", (t) => {
   for (const expected of [0, 3, 6]) {
     const who = learner("two above", expected);
-    const after = runs(who, paceEngines.after, 60);
+    const after = runs(who, paceEngines.after, 90);
     const read = after.map((run) => answersToShow(run) ?? Infinity);
     const reached = after.map((run) => answersToWork(run) ?? Infinity);
     t.diagnostic(
       `from grade ${expected}: level within a grade from answer ${median(read)} (median), ${Math.max(...read)} (slowest); working near the level from problem ${median(reached)} (median), ${Math.max(...reached)} (slowest)`,
     );
     assert.ok(median(read) <= 25, `median ${median(read)}`);
-    assert.ok(Math.max(...read) <= 40, `slowest ${Math.max(...read)}`);
-    assert.ok(median(reached) <= 35, `work, median ${median(reached)}`);
+    assert.ok(Math.max(...read) <= 50, `slowest ${Math.max(...read)}`);
+    assert.ok(median(reached) <= 50, `work, median ${median(reached)}`);
+    assert.ok(Math.max(...reached) <= 80, `work, slowest`);
   }
 });
 
