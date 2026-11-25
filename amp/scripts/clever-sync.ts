@@ -1,28 +1,29 @@
-import {
-  cleverSyncCandidates,
-  runDueCleverSync,
-} from "../src/schools/clever/worker.js";
 import { pathToFileURL } from "node:url";
 import { createDatabasePool } from "../src/server/database.js";
-import {
-  CleverClient,
-  cleverApiVersion,
-} from "../src/schools/clever/client.js";
-import { registerCleverConnection } from "../src/schools/clever/connection.js";
-import { lmsConnectEnabled } from "../src/schools/clever/lms-config.js";
-import { lmsPassFailed, runLmsPasses } from "./clever-lms.js";
-import { runRequestAlertPass } from "../src/schools/request-alerts.js";
-import {
-  safeSyncError,
-  syncCleverConnection,
-  type SyncMode,
-} from "../src/schools/clever/sync.js";
+import { cleverWorkDue } from "../src/schools/clever/due.js";
+import type { SyncMode } from "../src/schools/clever/sync.js";
+
+/** The sync, Clever client and LMS code: about a thousand modules (the
+ * roster import reaches the curriculum). Loaded only when there is work, so
+ * the every-minute job with nothing due is one query. */
+const heavy = async () => {
+  const [worker, client, connection, lmsConfig, lms, sync] = await Promise.all([
+    import("../src/schools/clever/worker.js"),
+    import("../src/schools/clever/client.js"),
+    import("../src/schools/clever/connection.js"),
+    import("../src/schools/clever/lms-config.js"),
+    import("./clever-lms.js"),
+    import("../src/schools/clever/sync.js"),
+  ]);
+  return { ...worker, ...client, ...connection, ...lmsConfig, ...lms, ...sync };
+};
 
 /** Runs one bounded pass; a scheduler may invoke this daily and on demand.
  * Secrets are environment-only. Outputs contain counts and internal IDs only. */
 export async function cleverSyncCommand(
   args: string[],
   env: NodeJS.ProcessEnv = process.env,
+  load: typeof heavy = heavy,
 ) {
   const [command, ...rest] = args;
   if (!env.AMP_DATABASE_URL) throw new Error("AMP_DATABASE_URL is required");
@@ -44,6 +45,7 @@ export async function cleverSyncCommand(
         throw new Error(
           "Usage: clever-sync.ts bind DISTRICT_ID TENANT_ID [events|no-events]",
         );
+      const { registerCleverConnection } = await load();
       return await registerCleverConnection(pool, {
         environment,
         districtId,
@@ -61,15 +63,31 @@ export async function cleverSyncCommand(
       );
     const scheduled =
       (!rest[0] || rest[0] === "all") && (!rest[1] || rest[1] === "auto");
+    // One query says what the scheduled pass has to do. Any
+    // AMP_CLEVER_LMS_CONNECT value counts as configured here, so a bad one
+    // still fails where it always has.
+    // If the check itself fails (say, a table not yet migrated), run the full
+    // pass as before: a broken check never stops a district's sync.
+    const due = scheduled
+      ? await cleverWorkDue(
+          pool,
+          environment,
+          !!env.AMP_CLEVER_LMS_CONNECT,
+        ).catch((error) => {
+          console.error("[clever] idle check failed; running the full pass", {
+            message: (error as Error).message,
+          });
+          return { sync: true, lms: true, alerts: true };
+        })
+      : null;
     // First, so a long district sync never delays it: tell the operator about
     // schools waiting for an invitation (docs/clever-anyschool.md). A failed
     // alert never stops a sync.
-    let alerts:
-      | Awaited<ReturnType<typeof runRequestAlertPass>>
-      | { error: string }
-      | null = null;
-    if (scheduled)
+    let alerts: Record<string, unknown> | null = null;
+    if (due?.alerts)
       try {
+        const { runRequestAlertPass } =
+          await import("../src/schools/request-alerts.js");
         alerts = await runRequestAlertPass(pool, env);
         if ("failed" in alerts && alerts.failed) process.exitCode = 1;
       } catch (error) {
@@ -79,6 +97,20 @@ export async function cleverSyncCommand(
         alerts = { error: "alert_pass_failed" };
         process.exitCode = 1;
       }
+    const tail = alerts && alerts.due !== false ? [{ alerts }] : [];
+    // Nothing else due: no sync code loaded, no Clever call, no LMS pass.
+    if (due && !due.sync && !due.lms) return tail;
+    const {
+      CleverClient,
+      cleverApiVersion,
+      cleverSyncCandidates,
+      lmsConnectEnabled,
+      lmsPassFailed,
+      runDueCleverSync,
+      runLmsPasses,
+      safeSyncError,
+      syncCleverConnection,
+    } = await load();
     const client = new CleverClient({
       clientId: env.AMP_CLEVER_CLIENT_ID ?? "",
       clientSecret: env.AMP_CLEVER_CLIENT_SECRET ?? "",
@@ -109,16 +141,12 @@ export async function cleverSyncCommand(
     if (results.some((result) => "error" in result)) process.exitCode = 1;
     // The scheduled pass also returns LMS grades, after rosters are current,
     // once LMS Connect is enabled for the app.
-    const lms =
-      scheduled && lmsConnectEnabled(env)
-        ? await runLmsPasses(pool, env)
-        : null;
-    if (lms && lmsPassFailed(lms)) process.exitCode = 1;
-    return [
-      ...results,
-      ...(lms ? [{ lms }] : []),
-      ...(alerts && !("due" in alerts && !alerts.due) ? [{ alerts }] : []),
-    ];
+    if (scheduled && lmsConnectEnabled(env)) {
+      const lms = await runLmsPasses(pool, env);
+      if (lmsPassFailed(lms)) process.exitCode = 1;
+      return [...results, { lms }, ...tail];
+    }
+    return [...results, ...tail];
   } finally {
     await pool.end();
   }
@@ -130,6 +158,10 @@ if (
   try {
     console.log(JSON.stringify(await cleverSyncCommand(process.argv.slice(2))));
   } catch (error) {
+    const { safeSyncError } =
+      await import("../src/schools/clever/sync.js").catch(() => ({
+        safeSyncError: () => "clever_sync_failed",
+      }));
     console.error(safeSyncError(error));
     process.exitCode = 1;
   }
