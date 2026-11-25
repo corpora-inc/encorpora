@@ -167,7 +167,26 @@ test(
     assert.ok(s, "the catalog has skills above grade 5");
     const templateOf = (skillId: string) =>
       templates.find((template) => template.skillId === skillId)!.id;
-    const start = Date.now() - 60 * 60_000;
+    // The answers of the last hour, all on today's school day: in the hour
+    // after the school's midnight (New York, tests/helpers/school-day.ts) an
+    // hour ago is yesterday there, and the week counted two days, not one
+    // (the merge queue, 2026-11-25 05:03 UTC). They start no earlier than
+    // that midnight, evenly spaced up to now.
+    const clock = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "America/New_York",
+      hourCycle: "h23",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    })
+      .format(new Date())
+      .split(":")
+      .map(Number);
+    const sinceMidnight =
+      (clock[0]! * 3600 + clock[1]! * 60 + clock[2]!) * 1000;
+    const span = Math.min(60 * 60_000, sinceMidnight);
+    const start = Date.now() - span;
+    const step = Math.max(1, Math.min(1000, Math.floor(span / 64)));
     let tick = 0;
     const answer = async (
       learnerId: string,
@@ -176,7 +195,7 @@ test(
       selection: object | null,
     ) => {
       const id = randomUUID();
-      const at = new Date(start + tick++ * 1000).toISOString();
+      const at = new Date(start + tick++ * step).toISOString();
       await db.query(
         "INSERT INTO amp_instances(id,learner_id,content) VALUES($1,$2,$3)",
         [
