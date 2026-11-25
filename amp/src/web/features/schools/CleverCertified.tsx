@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { authConfigOptions } from "../../lib/query";
 import { cleverEnabled } from "../school/clever/enabled";
-import badge from "./clever-certified-partner.png";
-import badge2x from "./clever-certified-partner-2x.png";
+import badge from "./clever-certified-partner.webp";
+import badge2x from "./clever-certified-partner-2x.webp";
 import styles from "./CleverCertified.module.css";
 
 /** Clever's Certified Partner badge (V1), from Clever's media kit
  * (clever.com/about/media-kit), cut from its tile and otherwise unaltered:
- * Clever's brand terms allow no redrawing or recoloring. One file pair, 11:12;
+ * Clever's brand terms allow no redrawing or recoloring. Lossless WebP (the
+ * same pixels as the cut PNG): this repository keeps PNGs in LFS, which the
+ * web image's build does not pull. One file pair, 11:12;
  * each size below keeps that ratio, and the width and height attributes hold
  * its box before the file arrives. Shown only while Clever is enabled, like
  * every other Clever entry point. */

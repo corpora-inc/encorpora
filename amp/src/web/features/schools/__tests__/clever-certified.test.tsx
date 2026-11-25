@@ -21,21 +21,25 @@ function withConfig(config: AuthConfig, children: ReactNode) {
 const cleverOn = { mode: "accounts", clever: true } as AuthConfig;
 const cleverOff = { mode: "accounts" } as AuthConfig;
 
-/** A PNG's own pixel size, from its header. */
-function pngSize(name: string) {
+/** A lossless WebP's own pixel size, from its VP8L header. Read as bytes:
+ * a PNG here would be a Git LFS pointer in the web image's build. */
+function webpSize(name: string) {
   // A path, not `new URL(…, import.meta.url)`: Vite would turn that into an
   // import of every file in the folder.
   const here = dirname(fileURLToPath(import.meta.url));
   const file = readFileSync(join(here, "..", name));
-  return { width: file.readUInt32BE(16), height: file.readUInt32BE(20) };
+  expect(file.toString("ascii", 0, 4)).toBe("RIFF");
+  expect(file.toString("ascii", 8, 16)).toBe("WEBPVP8L");
+  const bits = file.readUInt32LE(21);
+  return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 };
 }
 
 test("the badge files are Clever's shield at one 11:12 ratio, 1x and 2x", () => {
-  expect(pngSize("clever-certified-partner.png")).toEqual({
+  expect(webpSize("clever-certified-partner.webp")).toEqual({
     width: 88,
     height: 96,
   });
-  expect(pngSize("clever-certified-partner-2x.png")).toEqual({
+  expect(webpSize("clever-certified-partner-2x.webp")).toEqual({
     width: 176,
     height: 192,
   });
