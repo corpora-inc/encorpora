@@ -126,9 +126,10 @@ export function CleverProblemScreen() {
  * pilot now and forwards the request; a district admin, who most likely
  * started on `/school/connect` (`add-amp`), adds AMP in Clever first. */
 function NotInClever({ cause }: { cause: "not-added" | "add-amp" }) {
-  // What the route's loader read (router.tsx), and only that: the loader's
-  // answer stays put for this visit, so a read that failed or arrives later
-  // can't change the actions or the message after the first paint. Without
+  // What the route's loader read (router.tsx), and only that: it changes
+  // only when the route reloads (a sign-in elsewhere, Try again), so a read
+  // that failed or arrives later can't change the actions or the message
+  // on its own after the first paint. Without
   // the deployment's Clever page (or its configuration), the request links
   // to `/schools`.
   const config = useLoaderData({ from: "/clever/$reason" });
