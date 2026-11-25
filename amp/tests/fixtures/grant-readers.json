@@ -425,6 +425,11 @@
     "reason": "Seat allocation and reconciliation insert or revoke exact school-seat grant identities; their SELECT subqueries address seat/roster ownership."
   },
   {
+    "path": "src/schools/request-alerts.ts",
+    "hash": "cbe6a010a2ca73528e6110df66fc3270f444fdc3978018316505cda8d79c8964",
+    "reason": "Operator alert derivation imports ALERTS_TO_DERIVE_SQL from request-alert-due.ts, so the guard cannot resolve it and fails closed; it reads only amp_school_connection_requests and amp_school_request_alerts, never adult access."
+  },
+  {
     "path": "src/schools/rollover.ts",
     "hash": "5d413abfbd847c1537525478b2c7efce77dd3cd7efce30117fbbb6e945f22ece",
     "reason": "Dynamic FROM substitutes the fixed current-classes fragment and academic-session join; no learning-grant relation."
