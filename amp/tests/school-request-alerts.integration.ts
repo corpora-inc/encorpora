@@ -51,11 +51,19 @@ test(
         [userId],
       );
       const sent: { to: string; email: Email }[] = [];
+      const keys: string[] = [];
       let failing = false;
-      const send = async (to: string, email: Email) => {
+      const send = async (
+        to: string,
+        email: Email,
+        options?: { idempotencyKey: string },
+      ) => {
         if (failing) throw new Error("provider down");
         sent.push({ to, email });
+        keys.push(options!.idempotencyKey);
       };
+      let ids: string[] = [];
+      const alertIds = () => ids;
       const pass = () =>
         deliverRequestAlerts(pool, send, {
           to: "operator@corpora.example",
@@ -102,6 +110,12 @@ test(
           assert.equal(await requestAlertsDue(pool), true);
           const result = await pass();
           assert.equal(result.sent, 1);
+          ids = (
+            await pool.query(
+              "SELECT id FROM amp_school_request_alerts WHERE request_id=$1",
+              [cedar],
+            )
+          ).rows.map((row) => row.id);
           const { to, email } = sent[0]!;
           assert.equal(to, "operator@corpora.example");
           assert.match(
@@ -121,6 +135,7 @@ test(
             "Limit: 72 hours",
           ])
             assert.ok(email.text.includes(expected), expected);
+          assert.equal(keys[0], `amp-school-request-alert:${alertIds()[0]}`);
           assert.ok(email.html.startsWith("<!doctype html>"));
           assert.ok(email.html.includes("Cedar Academy"));
           // Another pass, and two at once, send nothing more.
@@ -271,7 +286,10 @@ test(
       await t.test(
         "the older contact form's request says it is unsigned and what to do",
         async () => {
-          await request({ name: "Form School", signed: false });
+          await request({
+            name: "Form School https://evil.example/x",
+            signed: false,
+          });
           await request({
             name: "Clever District",
             signed: false,
@@ -287,6 +305,9 @@ test(
             ),
           );
           assert.ok(form.email.text.includes("anyschool-invite refuses it"));
+          // What the school typed is text, never a link.
+          assert.ok(form.email.text.includes("Form School evil.example/x"));
+          assert.ok(!form.email.html.includes('evil.example/x"'));
           const clever = sent.find((s) =>
             s.email.subject.startsWith(
               "Clever request: invite Clever District",
@@ -306,9 +327,12 @@ test(
           await assert.rejects(
             runRequestAlertPass(pool, {
               AMP_ACCOUNTS_URL: "https://amp.example",
-              AMP_ACCOUNTS_SECRET: "x".repeat(32),
             }),
             /AMP_MAIL_RESEND_API_KEY/,
+          );
+          await assert.rejects(
+            runRequestAlertPass(pool, {}, send),
+            /AMP_ACCOUNTS_URL/,
           );
           assert.equal(await requestAlertsDue(pool), true);
           const before = sent.length;
@@ -316,7 +340,6 @@ test(
             pool,
             {
               AMP_ACCOUNTS_URL: "https://amp.example",
-              AMP_ACCOUNTS_SECRET: "x".repeat(32),
               AMP_OPERATOR_EMAIL: "ops@corpora.example",
             },
             send,

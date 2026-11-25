@@ -104,6 +104,10 @@ export interface RequestAlertInput {
   createdAt: Date;
 }
 
+/** What a school typed: shown as text, never as a link in the operator's
+ * mail (the layout links any http(s) URL). */
+const asText = (value: string) => value.replace(/\bhttps?:\/\//gi, "");
+
 const utc = (at: Date) =>
   `${at.toISOString().slice(0, 16).replace("T", " ")} UTC`;
 const plus = (at: Date, hours: number) =>
@@ -119,7 +123,7 @@ export function requestAlertEmail(
   const product = anyschool ? "Clever AnySchool" : "Clever";
   const target = plus(input.createdAt, INVITE_TARGET_HOURS);
   const limit = plus(input.createdAt, INVITE_LIMIT_HOURS);
-  const name = input.institutionName;
+  const name = asText(input.institutionName);
   const subject = {
     requested: `${product} request: invite ${name} by ${utc(target)}`,
     rerequested: `${name} asked again for ${product}`,
@@ -137,7 +141,7 @@ export function requestAlertEmail(
       ? anyschool
         ? "Agreement: not signed (the older contact form)"
         : "Agreement: not signed here; a district accepts it when it connects"
-      : `Agreement: signed by ${input.signerName}, version ${input.agreementVersion ?? "unknown"}${
+      : `Agreement: signed by ${asText(input.signerName)}, version ${input.agreementVersion ?? "unknown"}${
           input.agreementVersion === AGREEMENT_VERSION ? "" : " (out of date)"
         }`;
   const record = JSON.stringify({
@@ -201,7 +205,13 @@ export function requestAlertEmail(
   });
 }
 
-export type AlertSend = (to: string, email: Email) => Promise<void>;
+/** A provider send. `idempotencyKey` is the alert's own: a retry after a
+ * timeout, or after a crash between send and record, is delivered once. */
+export type AlertSend = (
+  to: string,
+  email: Email,
+  options: { idempotencyKey: string },
+) => Promise<void>;
 
 const SEND_TIMEOUT_MS = 20_000;
 const MAX_ATTEMPTS = 8;
@@ -238,7 +248,9 @@ export async function deliverRequestAlerts(
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
       await Promise.race([
-        send(options.to, email),
+        send(options.to, email, {
+          idempotencyKey: `amp-school-request-alert:${claimed.id}`,
+        }),
         new Promise((_, reject) => {
           timer = setTimeout(
             () => reject(new Error("send timed out")),
@@ -349,9 +361,10 @@ async function claim(pool: Pool) {
 
 /**
  * The Clever worker's alert pass (scripts/clever-sync.ts). Sends through the
- * account mail path (Resend, `AMP_MAIL_*`) from the AMP origin
- * (`AMP_ACCOUNTS_URL`). Without mail settings it sends nothing and leaves
- * every alert waiting, so none is marked sent that was not.
+ * account mail path (Resend: `AMP_MAIL_RESEND_API_KEY`, `AMP_MAIL_FROM`) with
+ * the AMP origin (`AMP_ACCOUNTS_URL`) for the mark and links. Without them it
+ * sends nothing and leaves every alert waiting, so none is marked sent that
+ * was not.
  */
 export async function runRequestAlertPass(
   pool: Pool,
@@ -360,19 +373,24 @@ export async function runRequestAlertPass(
 ) {
   if (!(await requestAlertsDue(pool))) return { due: false as const };
   const to = operatorEmail(env);
-  // Loaded only when an alert is due: the idle pass stays cheap.
-  const { accountsConfiguration, accountEmailSender } =
-    await import("../server/accounts.js");
-  const config = accountsConfiguration(env);
-  if (!send && !config.mail)
+  const origin = env.AMP_ACCOUNTS_URL ?? "";
+  if (!URL.canParse(origin) || new URL(origin).origin !== origin)
+    throw new Error("Operator alerts need AMP_ACCOUNTS_URL, the AMP origin");
+  const apiKey = env.AMP_MAIL_RESEND_API_KEY,
+    from = env.AMP_MAIL_FROM;
+  if (!send && !(apiKey && from))
     throw new Error(
       "Operator alerts need AMP_MAIL_RESEND_API_KEY and AMP_MAIL_FROM",
     );
+  // Loaded only when an alert is due: the idle pass stays cheap.
+  const transport =
+    send ??
+    (await import("../server/accounts.js")).accountEmailSender({
+      mail: { apiKey: apiKey!, from: from! },
+      production: true,
+    });
   return {
     due: true as const,
-    ...(await deliverRequestAlerts(pool, send ?? accountEmailSender(config), {
-      to,
-      origin: config.baseURL,
-    })),
+    ...(await deliverRequestAlerts(pool, transport, { to, origin })),
   };
 }

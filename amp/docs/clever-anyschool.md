@@ -27,7 +27,7 @@ Clever has no API that creates an AnySchool district, so a person sends every in
 - **Target (SLO): invite within 24 hours.**
 - **Limit (SLA): invite within 72 hours at most.**
 
-AMP emails the operator about each request while it is `requested`. The Clever worker (`amp-clever-sync`, every minute) sends the emails, never the request handler, and a failed email never fails the school's request.
+AMP emails the operator about each request while it is `requested`. The Clever worker (`amp-clever-sync`, every minute) sends the emails at the start of its pass, never the request handler, and a failed email never fails the school's request.
 
 | When | Email |
 | --- | --- |
@@ -38,7 +38,7 @@ AMP emails the operator about each request while it is `requested`. The Clever w
 
 Each goes at most once per request (`amp_school_request_alerts`). Recording the invitation (`anyschool-invite`, or `connection-request-status` for a Clever request) stops the rest. A request first seen past 72 hours gets only the overdue email. A failed send is logged (`[schools] operator alert not sent`), fails that worker run, and is retried with backoff up to eight times.
 
-The emails go to `AMP_OPERATOR_EMAIL`, or skylar@corpora.inc when it is unset. They use the account mail settings (`AMP_MAIL_RESEND_API_KEY`, `AMP_MAIL_FROM`, `AMP_ACCOUNTS_URL`, `AMP_ACCOUNTS_SECRET`) from the worker's Secret. Without them the alerts wait and the worker logs `[schools] operator alert pass failed`.
+The emails go to `AMP_OPERATOR_EMAIL`, or skylar@corpora.inc when it is unset. They use the account mail settings (`AMP_MAIL_RESEND_API_KEY`, `AMP_MAIL_FROM`) and the AMP origin (`AMP_ACCOUNTS_URL`) from the worker's Secret. Without them the alerts wait and the worker logs `[schools] operator alert pass failed`. Each send carries the alert's own idempotency key, so a retry after a timeout is delivered once.
 
 ## Operator steps
 
