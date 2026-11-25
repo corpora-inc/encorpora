@@ -500,7 +500,7 @@ test(
       await pass(schoology, now);
       assert.equal(schoology.state.lastAssignment.term_id, TERM);
       assert.deepEqual(schoology.state.lastAssignment.attachments, [
-        { type: "text", text: `${ORIGIN}/`, title: "Open AMP" },
+        { type: "link", url: `${ORIGIN}/`, title: "Open AMP" },
       ]);
       // A student who never launched AMP from Schoology can't be graded yet.
       schoology.state.failUser = {

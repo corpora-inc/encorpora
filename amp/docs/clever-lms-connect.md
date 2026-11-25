@@ -40,7 +40,7 @@ API handlers only write AMP's rows. Every Clever call is made by the scheduled C
 
 | | Canvas | Google Classroom | Schoology |
 | --- | --- | --- | --- |
-| Assignment | `submission_types: ["link"]`, `max_attempts: 1`; no `term_id` | Link attachment on create only; no `submission_types`, `max_attempts` or `term_id` | `term_id` from the section's Clever term is required; a `text` attachment holds the AMP link; every update resends it |
+| Assignment | `submission_types: ["link"]`, `max_attempts: 1`; no `term_id` | Link attachment on create only; no `submission_types`, `max_attempts` or `term_id` | `term_id` from the section's Clever term is required; a `link` attachment holds the AMP link; every update resends it, since an update without it deletes it |
 | Grade | `grade_points`, with `state: "submitted"` for SpeedGrader | `submitted` with the grade before the due date, then `returned` | `grade_points` only; Schoology marks it returned |
 | Work that no longer counts | Left for the teacher | `reclaimed`, if AMP turned it in | Left for the teacher |
 | Blocked when | The assignment is unpublished (draft) | The assignment isn't `open` | The student never launched AMP from Schoology |
@@ -87,7 +87,7 @@ Tests: `tests/clever-lms.test.ts` and `tests/clever-lms-probe.test.ts` run again
 
 ## Limits
 
-- **Not live-tested.** Clever has not yet enabled LMS Connect for AMP's development app; its v3.1 LMS endpoints answer 401/403. Everything above is tested against Clever's documented responses. Run the probe with `--write --submission` against a sandbox district for each LMS before certification.
+- **Live sandbox status (2026-11-25).** Schoology passes the probe end to end: create, read, update, list submissions, grade, delete. Google Classroom creates, reads, updates, lists, writes a grade and deletes, but refuses to turn work in, return it or reclaim it (404 "failed to turn in student submission"; a return answers 400 "has not been turned in"). The grade in the same request is still written, so the work stays `created` with AMP's points and the pass reports a failure; this is open with Clever. The Canvas demo district shares no schools, sections or users with the app yet. An assignment Clever no longer has answers 404 "Could not find assignment" (Classroom) or 500 "Assignment mapping not found" (Schoology); both read as deleted.
 - **One-way.** AMP doesn't import teacher edits made in the LMS. A teacher's regrade there is overwritten only when AMP's own grade for that student changes.
 - **Schoology grading category.** A grade can return success yet not appear in Schoology until the teacher sets the assignment's Category in Schoology. Clever gives no signal for this.
 - **LTI 1.3.** Students reach AMP through the assignment link and Clever sign-in. AMP doesn't route an LMS LTI launch to a course. Schoology still needs each student to launch AMP from Schoology once before their grade can be written.

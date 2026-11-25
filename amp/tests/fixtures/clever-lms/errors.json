@@ -18,5 +18,7 @@
   { "status": 400, "body": "{\"message\":\"UNSUPPORTED_OPERATION: Canvas does not allow updating submissions on unpublished (draft) assignments.\"}", "code": "lms_assignment_unpublished" },
   { "status": 400, "body": "{\"message\":\"FIELD_IGNORED: start_date\"}", "code": "lms_field_ignored" },
   { "status": 400, "body": "{\"message\":\"Schoology does not support submission type of link\"}", "code": "lms_attachment_unsupported" },
-  { "status": 500, "body": "{\"message\":\"Error updating submission\"}", "code": "lms_submission_update_failed" }
+  { "status": 500, "body": "{\"message\":\"Error updating submission\"}", "code": "lms_submission_update_failed" },
+  { "status": 404, "body": "{\"message\":\"Could not find assignment 00000000-0000-4000-8000-000000000000 in Google Classroom\"}", "code": "lms_assignment_missing" },
+  { "status": 500, "body": "{\"message\":\"Failed to get LMS assignment mapping from Clever assignment: Assignment mapping not found for district 000000000000000000000001, LMS 000000000000000000000002, and assignment 00000000-0000-4000-8000-000000000000\"}", "code": "lms_assignment_missing" }
 ]

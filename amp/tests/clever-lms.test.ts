@@ -366,7 +366,7 @@ test("assignment bodies follow each LMS's documented fields", () => {
   const schoology = assignmentCreateBody("schoology", draft(), now);
   assert.equal(schoology.term_id, "6532b9a1f1c2b30059b3bbf0");
   assert.deepEqual(schoology.attachments, [
-    { type: "text", text: "https://amp.example/", title: "Open AMP" },
+    { type: "link", url: "https://amp.example/", title: "Open AMP" },
   ]);
   for (const field of ["max_attempts", "submission_types", "start_date"])
     assert.equal(field in schoology, false, field);

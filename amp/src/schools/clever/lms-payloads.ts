@@ -20,10 +20,13 @@ import {
  *   `created` only when a `state` is sent. `returned` and `reclaimed` are
  *   reachable only from `submitted`; nothing returns to `created`. Submissions
  *   can be listed and written only while the assignment is `open`.
- * - Schoology requires the Clever `term_id`, writes only `text` attachments
- *   (no `url`), treats an update's `attachments` as the full set (omitting it
- *   deletes them), ignores `max_attempts`, and sets submission state itself:
- *   a grade makes it `returned`; `reclaimed` does not exist there.
+ * - Schoology requires the Clever `term_id`, treats an update's `attachments`
+ *   as the full set (omitting it deletes them), refuses the `link` submission
+ *   type, and sets submission state itself: a grade makes it `returned`;
+ *   `reclaimed` does not exist there. Clever's reference says Schoology
+ *   attachments are `text` only, but the live sandbox (2026-11-25) keeps a
+ *   `link` attachment on create and update, while a `text` one is folded
+ *   into the description as "Attachments:<url>". AMP sends the link.
  */
 export type AssignmentBody = {
   title: string;
@@ -35,10 +38,7 @@ export type AssignmentBody = {
   submission_types?: "link"[];
   max_attempts?: number;
   term_id?: string;
-  attachments?: (
-    | { type: "link"; url: string; title: string }
-    | { type: "text"; text: string; title: string }
-  )[];
+  attachments?: { type: "link"; url: string; title: string }[];
 };
 export type SubmissionBody = {
   state?: SubmissionState;
@@ -77,12 +77,9 @@ function base(draft: AssignmentDraft, now: Date, update = false) {
   };
 }
 function attachments(
-  lms: LmsType,
   draft: AssignmentDraft,
 ): NonNullable<AssignmentBody["attachments"]> {
-  return lms === "schoology"
-    ? [{ type: "text", text: draft.link, title: LINK_TITLE }]
-    : [{ type: "link", url: draft.link, title: LINK_TITLE }];
+  return [{ type: "link", url: draft.link, title: LINK_TITLE }];
 }
 function schoologyTerm(draft: AssignmentDraft) {
   if (!draft.termId) throw new LmsError("lms_term_required");
@@ -98,7 +95,7 @@ export function assignmentCreateBody(
     ...(base(draft, now) as ReturnType<typeof base> & { due_date: string }),
     grading_type: "points",
     assignee_mode: "all",
-    attachments: attachments(lms, draft),
+    attachments: attachments(draft),
   };
   if (lms === "canvas") {
     body.submission_types = ["link"];
@@ -118,7 +115,7 @@ export function assignmentUpdateBody(
   if (lms === "schoology") {
     body.term_id = schoologyTerm(draft);
     // Omitting attachments on a Schoology update deletes them.
-    body.attachments = attachments(lms, draft);
+    body.attachments = attachments(draft);
   }
   return body;
 }

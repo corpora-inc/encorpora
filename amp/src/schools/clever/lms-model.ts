@@ -190,6 +190,15 @@ export function lmsErrorCode(status: number, message: string): LmsErrorCode {
   if (status === 403) return "lms_forbidden";
   if (status === 405) return "lms_method_not_allowed";
   if (status === 429) return "lms_rate_limited";
+  // An assignment Clever no longer has, as the live sandbox answers it
+  // (2026-11-25): Google Classroom 404 "Could not find assignment … in Google
+  // Classroom"; Schoology 500 "… Assignment mapping not found …", which is
+  // not an outage and must not be retried as one.
+  if (
+    (status === 404 && text.includes("could not find assignment")) ||
+    (status >= 500 && text.includes("assignment mapping not found"))
+  )
+    return "lms_assignment_missing";
   if (text.includes("unsupported_operation") || text.includes("unpublished"))
     return "lms_assignment_unpublished";
   if (text.includes("field_ignored")) return "lms_field_ignored";
