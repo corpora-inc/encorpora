@@ -78,6 +78,10 @@
   white-space: nowrap;
   font-size: var(--text-body);
 }
+/* A deployment without Clever keeps the slot, so nothing moves. */
+.held {
+  visibility: hidden;
+}
 .main .note {
   color: var(--color-muted-text);
   font-size: var(--text-label);
