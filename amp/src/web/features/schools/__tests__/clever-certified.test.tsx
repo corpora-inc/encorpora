@@ -44,7 +44,7 @@ test("/schools shows the badge, its box reserved, and one factual line, with no 
   expect(width * 12).toBe(height * 11);
   expect(badge.getAttribute("srcset")).toMatch(/ 2x$/);
   expect(badge.closest("p")?.textContent).toBe(
-    "Certified Clever partner: rostering and sign-in through Clever.",
+    "Rostering and sign-in through Clever.",
   );
 });
 

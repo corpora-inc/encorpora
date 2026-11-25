@@ -35,8 +35,10 @@ export function CleverCertified({ className = "" }: { className?: string }) {
     <p className={`${styles.certified} ${className}`}>
       <CleverBadge size="hero" />
       <span>
-        Certified Clever partner: rostering and{" "}
-        <span className={styles.whole}>sign-in</span> through Clever.
+        {/* The badge says "Certified Partner"; Clever's media kit keeps
+            "Clever" a name, never an adjective. */}
+        Rostering and <span className={styles.whole}>sign-in</span> through
+        Clever.
       </span>
     </p>
   );
