@@ -72,40 +72,75 @@ These are the rules for a learner who starts from their grade
    grade 3 read as grade 4.5, where they used to read as grade 5.6.
 2. **First the child's own grade.** New problems stay at the grade, with a
    stretch problem from the next grade, until the grade is covered.
-3. **A grade is covered** when the child has earned twelve of its skills, or
-   harder ones, in at least three of the five areas. Earned means answered
-   right without help, the same mark the family sees.
+3. **A grade is covered** when the child has earned half of its skills, or as
+   many harder ones, in at least three of the five areas. Earned means
+   answered right without help, the same mark the family sees.
 4. **Then one grade at a time.** Practice may reach one grade past the highest
    covered grade, and a stretch problem one grade past that.
-5. **Missing still moves a child down as fast as it did.** Coverage only holds
-   practice back from going up. Nothing waits on it going down.
+5. **Missing still moves a child down.** Coverage only holds practice back
+   from going up. Nothing waits on it going down.
 6. **The level an adult sees is the estimate itself.** The dashboard, the
    class report and the trend all read the same number and range. Nothing is
    slowed for display.
 
-How strongly the grade counts is the estimate's starting width
+**What a child sees.** A new third-grader who answers everything right used
+to meet a grade 9 problem eighth and a Precalculus problem twenty-eighth, and
+read grade 9 after ten answers. Now the first thirty problems are from grades 2 to 4, mostly
+grade 3 and grade 4 in turn, the next seventeen are grade 5 and grade 6, and
+the level reads 4.8 after ten answers, 5.3 after twenty and 7.1 after fifty.
+
+**How strongly the grade counts** is the estimate's starting width
 (`FrontierPolicy.prior.gradeSd`). It is the spread of achievement within one
-grade from public norms (`docs/engine/norms-prior.md`), for kindergarten
-through grade 5: 0.78, 0.89, 1.11, 1.22, 1.78 and 2.11 grades. From grade 6
-the norms' spread is at least as wide as a guessed start's 2.5 grades, so
-those grades keep 2.5. A narrower start there found a seventh-grader three
-grades behind later, and the norms give no reason to accept that.
+grade from public norms (`docs/engine/norms-prior.md`): 0.78, 0.89, 1.11,
+1.22 and 1.78 grades for kindergarten through grade 4, and never wider than
+two grades (`GRADE_START_SD_CAP`), which holds from grade 5. A guessed start
+keeps 2.5. The norms are wider than two grades from grade 5. But nothing
+harder than a stretch is asked until a grade is covered, so nothing a learner
+answers bounds the level from above, and at 2.5 it ran ahead of the problems:
+a sixth-grader read grade 8.8 after ten right answers at grades 6 and 7.
+Weighted as the norms spread a grade, the level shown is closer at two
+grades than at 2.5 after 5, 10, 20 and 40 answers. A learner three grades
+behind reads a fifth of a grade higher after three to five answers and the
+same after ten; at 1.75 that learner came within a grade three answers later,
+so the start is no narrower.
 
-Coverage is `learning/coverage.ts`, read by the planner from per-skill
-evidence (`PracticePolicy.coverage`: twelve skills, three areas, a step of one
-grade, a stretch of one grade). A grade with fewer than three areas needs
-only the areas it has. Coverage is a second ceiling: the planner takes the
-lower of it and the evidence ceiling below, so it never offers anything the
-rules below would refuse. It does not apply to a skill someone chose or to
-SAT practice. An area set easier keeps its own lower ceiling.
+**Coverage** is `learning/coverage.ts`, read by the planner from per-skill
+evidence (`PracticePolicy.coverage`: a share of one half, three areas, a step
+of one grade, a stretch of one grade).
 
-What this costs a child who is far ahead, in simulation
-(`npx tsx scripts/simulate-placement-pace.ts`): a learner four grades above
-their grade is working within a grade of their level after about 25 to 40
-problems, one or two sittings, where the earlier climb took about 5 to 15.
-Every one of those problems is a skill of the grades between, earned and on
-the record. A learner with a long record is asked what they would have been
+- The bar scales with the grade. Kindergarten has 17 skills, so 9 cover it;
+  grade 3 has 27, so 14; Geometry has 39, so 20.
+- Harder skills count on their own, never added to the grade's. A stretch
+  problem therefore does not make the grade cheaper. They are how a learner
+  who already works above a grade is not sent back to it.
+- A grade with fewer than three areas needs only the areas it has (Geometry:
+  two).
+- Coverage is a second ceiling: the planner takes the lower of it and the
+  evidence ceiling below, so it never offers anything the rules below would
+  refuse.
+- It does not apply to a skill someone chose or to SAT practice. An area set
+  easier keeps its own lower ceiling.
+
+**What it costs a child who is ahead**, in simulation
+(`npx tsx scripts/simulate-placement-pace.ts`), counting a sitting as about
+25 problems:
+
+- Two grades ahead: the level reads within a grade after 2 to 8 answers and
+  the problems are near their level after 8 to 26. The first sitting.
+- Four grades ahead: the problems are near their level after 34 to 56 and
+  the level reads within a grade after about 33 to 40. Two sittings, three
+  on a slow run. The earlier climb took 3 to 21 problems.
+
+Every problem on the way is a skill of the grades between, earned and on the
+record. A learner with a long record is asked what they would have been
 asked before.
+
+**What moves when this ships.** A stored level is rebuilt from the learner's
+answers the first time it is read (0.07 ms an answer). With a hundred or
+more answers on record no level moves by more than a few hundredths of a
+grade, and with fifty by more than a quarter. With fewer, mostly in
+kindergarten through grade 3, a level that a short run of right answers had
+carried up comes back toward the grade.
 
 ### From a guess: the faster climb
 
