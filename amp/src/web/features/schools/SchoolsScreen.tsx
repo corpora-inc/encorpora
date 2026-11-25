@@ -19,11 +19,11 @@ const count = (value: number) => value.toLocaleString("en-US");
 
 /** The Clever action, in its place from the first paint so nothing below
  * the actions moves when the sign-in methods arrive (they are never awaited:
- * the page paints whatever the API does). Until they answer, or if they
- * fail, it is the real link: `/school/connect` reads the methods itself and,
- * without Clever, opens class setup, so it never leads nowhere. A deployment
- * that turns out to have no Clever keeps the slot, empty, so the layout
- * never changes after the first paint. */
+ * the page paints whatever the API does). Until they answer it is the real
+ * link: `/school/connect` reads the methods itself and, without Clever,
+ * opens class setup, so it never leads nowhere. Once they say Clever is off,
+ * or can't be read, the slot stays, empty, so the layout never changes after
+ * the first paint. */
 function CleverAction({ clever }: { clever: boolean | undefined }) {
   if (clever === false)
     return (
@@ -46,10 +46,12 @@ function CleverAction({ clever }: { clever: boolean | undefined }) {
 
 function Actions({ className = "" }: { className?: string }) {
   const session = useSessionOrNull();
-  const config = useQuery(authConfigOptions).data;
+  const { data: config, isError } = useQuery(authConfigOptions);
   // Unknown until the sign-in methods answer: laid out as Clever on, as it is
   // in production, and nothing changes look or place after the first paint.
-  const clever = config ? cleverEnabled(config) : undefined;
+  // Methods that couldn't be read hold the slot empty: `/school/connect`
+  // would only fail to read them again.
+  const clever = config ? cleverEnabled(config) : isError ? false : undefined;
   return (
     <div className={`${styles.actions} ${className}`}>
       {/* A new teacher creates the account first; a signed-in one goes

@@ -118,7 +118,17 @@ const capture = (name: string) => captureOn(page, name);
 try {
   // A school teacher can arrive without Clever and create a real verified account.
   await page.goto(`${origin}/schools`);
-  assert.equal(await page.getByRole("link", { name: /Clever/ }).count(), 0);
+  // The page paints before the sign-in methods answer, with the Clever action
+  // as a link in its place; once they say Clever is off, no link names it.
+  await page.getByRole("heading", { level: 1 }).waitFor({ state: "visible" });
+  await page.waitForFunction(
+    () =>
+      ![...document.querySelectorAll("a")].some((a) =>
+        /Clever/.test(a.textContent ?? ""),
+      ),
+    null,
+    { timeout: 10_000 },
+  );
   await page
     .getByRole("link", { name: "Start with your class", exact: true })
     .first()
