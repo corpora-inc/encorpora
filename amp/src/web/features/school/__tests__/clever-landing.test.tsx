@@ -27,6 +27,7 @@ import {
 import { orgsOptions } from "../api";
 import { ChooserScreen } from "../ChooserScreen";
 import { CleverProblemScreen } from "../clever/CleverProblemScreen";
+import { districtMessage } from "../clever/DistrictRequest";
 
 /*
  * Where a Clever sign-in can leave someone with nothing to open: staff with
@@ -49,6 +50,7 @@ function at(path: string, pattern: string, component: RouteComponent) {
       createRoute({ getParentRoute: () => root, path: pattern, component }),
       createRoute({ getParentRoute: () => root, path: "/sign-in" }),
       createRoute({ getParentRoute: () => root, path: "/school/start" }),
+      createRoute({ getParentRoute: () => root, path: "/join" }),
     ]),
     history: createMemoryHistory({ initialEntries: [path] }),
   });
@@ -103,27 +105,55 @@ test("a student whose school hasn't set up AMP is told to ask their teacher", as
     }),
   ).toBeTruthy();
   expect(screen.getByText("Ask your teacher.")).toBeTruthy();
-  // Trying again stays the student's sign-in.
+  // Clever can't let them in until the district acts, so no Clever button
+  // that can only fail: their teacher's class code can.
+  expect(screen.queryByRole("link", { name: "Log in with Clever" })).toBeNull();
   expect(
     screen
-      .getByRole("link", { name: "Log in with Clever" })
+      .getByRole("link", { name: "Type a class code" })
       .getAttribute("href"),
-  ).toBe("/api/v1/school/sso/clever/start?as=student");
+  ).toBe("/join");
   // A child's screen: no adult sign-in form, no support address.
   expect(screen.queryByLabelText(/password/i)).toBeNull();
   expect(screen.queryByText("support@corpora.inc")).toBeNull();
 });
 
 test("each student cause asks for their teacher", async () => {
-  for (const [cause, title] of [
-    ["not-on-roster", "AMP can’t find your class yet."],
-    ["disconnected", "Your school’s AMP is paused."],
+  for (const [cause, title, next] of [
+    // A roster sync can add them in minutes: trying Clever again can work,
+    // and it stays the student's sign-in.
+    ["not-on-roster", "AMP can’t find your class yet.", "Log in with Clever"],
+    ["disconnected", "Your school’s AMP is paused.", "Type a class code"],
   ]) {
     at(`/clever/${cause}`, "/clever/$reason", CleverProblemScreen);
     expect(await screen.findByRole("heading", { name: title })).toBeTruthy();
     expect(screen.getByText("Ask your teacher.")).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole("link")
+        .map((link) => link.textContent || link.querySelector("img")?.alt),
+    ).toEqual([next]);
+    if (next === "Log in with Clever")
+      expect(
+        screen.getByRole("link", { name: next }).getAttribute("href"),
+      ).toBe("/api/v1/school/sso/clever/start?as=student");
     cleanup();
   }
+});
+
+test("a parent who used Clever by mistake is sent to their own sign-in", async () => {
+  at("/clever/guardian", "/clever/$reason", CleverProblemScreen);
+  expect(
+    await screen.findByRole("heading", {
+      name: "Clever sign-in is for students and school staff.",
+    }),
+  ).toBeTruthy();
+  // Never Clever again: it can't let a family in.
+  expect(screen.queryByRole("link", { name: "Log in with Clever" })).toBeNull();
+  expect(
+    screen.getByRole("link", { name: "Sign in" }).getAttribute("href"),
+  ).toBe("/sign-in");
+  expect(screen.getByText("support@corpora.inc")).toBeTruthy();
 });
 
 test("a provider failure tries again and names the way to reach us", async () => {
@@ -166,16 +196,19 @@ test("every cause the server sends has its own words", async () => {
   }
 });
 
+const NOT_IN_CLEVER = "AMP isn’t in your Clever account yet";
+
 test("a teacher whose district hasn't added AMP starts a pilot now and forwards the request", async () => {
   clever({ cleverDistrictSignupUrl: SIGNUP });
   at("/clever/not-added", "/clever/$reason", CleverProblemScreen);
   expect(
-    await screen.findByRole("heading", {
-      level: 1,
-      name: "Your district hasn’t added AMP yet",
-    }),
+    await screen.findByRole("heading", { level: 1, name: NOT_IN_CLEVER }),
   ).toBeTruthy();
-  expect(screen.getByText("No approval needed.")).toBeTruthy();
+  expect(
+    screen.getByText(
+      "Your class can start today. Your district can add AMP later.",
+    ),
+  ).toBeTruthy();
   // Never blocked: the pilot is the first thing to do.
   expect(
     screen
@@ -187,6 +220,12 @@ test("a teacher whose district hasn't added AMP starts a pilot now and forwards 
   });
   const message = request.querySelector("[data-district-message]")!;
   expect(message.textContent).toContain(SIGNUP);
+  // Shown with a break after each path slash, never inside "https://",
+  // and read (and copied) exactly as written.
+  expect(message.querySelectorAll("wbr")).toHaveLength(
+    new URL(SIGNUP).pathname.split("/").length - 1,
+  );
+  expect(message.textContent).toBe(districtMessage("add", SIGNUP));
   // Their own mail, to whoever they choose: no recipient filled in.
   const mail = within(request)
     .getByRole("link", { name: "Email it" })
@@ -207,6 +246,55 @@ test("a teacher whose district hasn't added AMP starts a pilot now and forwards 
   // The school pages' footer names the way to reach us, once.
   expect(screen.getAllByText("support@corpora.inc")).toHaveLength(1);
   expect(screen.queryByLabelText(/password/i)).toBeNull();
+});
+
+test("a sign-in started from district setup leads with adding AMP in Clever", async () => {
+  clever({ cleverDistrictSignupUrl: SIGNUP });
+  at("/clever/add-amp", "/clever/$reason", CleverProblemScreen);
+  expect(
+    await screen.findByRole("heading", { level: 1, name: NOT_IN_CLEVER }),
+  ).toBeTruthy();
+  expect(
+    screen.getByText(
+      "A district admin adds AMP in Clever, then signs in again to connect.",
+    ),
+  ).toBeTruthy();
+  // The admin's step first, then the teacher's: both work today.
+  const actions = [
+    ...screen.getByRole("link", { name: "Add AMP in Clever" }).parentElement!
+      .children,
+  ].map((link) => [link.textContent, link.getAttribute("href")]);
+  expect(actions).toEqual([
+    ["Add AMP in Clever", SIGNUP],
+    ["Teacher? Start a free pilot", "/school/start"],
+  ]);
+  // Not the admin: the same request, ready to forward, without repeating
+  // the link above.
+  const request = screen.getByRole("region", {
+    name: "Not a district admin? Send them this",
+  });
+  expect(
+    request.querySelector("[data-district-message]")!.textContent,
+  ).toContain(SIGNUP);
+  expect(
+    within(request).queryByRole("link", {
+      name: "District admin? Add AMP in Clever",
+    }),
+  ).toBeNull();
+  expect(screen.getByText("Student? Ask your teacher.")).toBeTruthy();
+});
+
+test("without a Clever page to add AMP on, district setup's answer is the teacher's", async () => {
+  clever();
+  at("/clever/add-amp", "/clever/$reason", CleverProblemScreen);
+  await screen.findByRole("heading", { level: 1, name: NOT_IN_CLEVER });
+  expect(screen.queryByRole("link", { name: "Add AMP in Clever" })).toBeNull();
+  expect(
+    screen.getByRole("link", { name: "Start a free pilot" }).className,
+  ).toMatch(/primary/);
+  expect(
+    screen.getByRole("region", { name: "Ask your district to add AMP" }),
+  ).toBeTruthy();
 });
 
 test("the request copies as written, and says so in place", async () => {
@@ -250,9 +338,7 @@ test("a refused clipboard leaves the message selected, and says so", async () =>
 test("without a configured signup page the request links AMP's schools page", async () => {
   clever();
   at("/clever/not-added", "/clever/$reason", CleverProblemScreen);
-  await screen.findByRole("heading", {
-    name: "Your district hasn’t added AMP yet",
-  });
+  await screen.findByRole("heading", { name: NOT_IN_CLEVER });
   expect(
     document.querySelector("[data-district-message]")!.textContent,
   ).toContain(`${location.origin}/schools`);
