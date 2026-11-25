@@ -1,6 +1,7 @@
 import type { Pool } from "pg";
 import type { CleverClient } from "./client.js";
 import { syncCleverConnection } from "./sync.js";
+import { connectionDue } from "./due.js";
 import { SchoolRepository } from "../repository.js";
 
 type Client = Pick<
@@ -46,10 +47,8 @@ export async function runDueCleverSync(pool: Pool, id: string, client: Client) {
     if (!locked) return;
     const due = (
       await db.query(
-        `SELECT tenant_id,sync_paused,clock_timestamp()::text AS started_at FROM amp_clever_connections
-      WHERE id=$1 AND status='active' AND (NOT sync_paused OR sync_requested_at IS NOT NULL) AND (next_attempt_at IS NULL OR next_attempt_at<=now()) AND (sync_requested_at IS NOT NULL OR last_sync_at IS NULL
-       OR last_sync_at<now()-CASE WHEN events_enabled AND events_unavailable_at IS NULL
-         THEN interval '5 minutes' ELSE interval '1 day' END)`,
+        `SELECT c.tenant_id,c.sync_paused,clock_timestamp()::text AS started_at FROM amp_clever_connections c
+      WHERE c.id=$1 AND ${connectionDue("c")}`,
         [id],
       )
     ).rows[0];
