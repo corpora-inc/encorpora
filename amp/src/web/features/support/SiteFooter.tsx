@@ -79,14 +79,17 @@ const socials = [
 ] as const;
 
 /** The public pages' footer: the support address and the page's own links
- * on the left, AMP's other places on the right. Each frame places it on its
- * own content width and draws the rule above it. */
+ * on the left, AMP's other places on the right, and below them an optional
+ * `mark` (the school pages' Clever badge). Each frame places it on its own
+ * content width and draws the rule above it. */
 export function SiteFooter({
   className = "",
   children,
+  mark,
 }: {
   className?: string;
   children: ReactNode;
+  mark?: ReactNode;
 }) {
   return (
     <footer className={`${styles.footer} ${className}`}>
@@ -113,6 +116,7 @@ export function SiteFooter({
           ))}
         </ul>
       </div>
+      {mark && <div className={styles.footerMark}>{mark}</div>}
     </footer>
   );
 }

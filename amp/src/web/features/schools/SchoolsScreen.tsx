@@ -6,6 +6,7 @@ import { cleverEnabled } from "../school/clever/enabled";
 import type { ReactNode } from "react";
 import { buttonClass } from "../../ui/Button";
 import { SCOPE_CSV, SCOPE_PDF } from "./api";
+import { CleverCertified } from "./CleverCertified";
 import { CurriculumRibbon } from "./CurriculumRibbon";
 import { ProductShot } from "./ProductShot";
 import { PublicFrame } from "./PublicFrame";
@@ -103,6 +104,7 @@ export function SchoolsScreen() {
               <p className={styles.note}>
                 30 days of free practice for your class.
               </p>
+              <CleverCertified />
             </div>
           </div>
           {summary && (
