@@ -47,7 +47,14 @@ function at(path: string, pattern: string, component: RouteComponent) {
   const root = createRootRoute({ component: Outlet });
   const router = createRouter({
     routeTree: root.addChildren([
-      createRoute({ getParentRoute: () => root, path: pattern, component }),
+      createRoute({
+        getParentRoute: () => root,
+        path: pattern,
+        // As router.tsx's loadAuthConfig: what the cache holds, or null.
+        loader: () =>
+          queryClient.getQueryData(authConfigOptions.queryKey) ?? null,
+        component,
+      }),
       createRoute({ getParentRoute: () => root, path: "/sign-in" }),
       createRoute({ getParentRoute: () => root, path: "/school/start" }),
       createRoute({ getParentRoute: () => root, path: "/join" }),

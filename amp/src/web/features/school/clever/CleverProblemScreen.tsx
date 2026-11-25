@@ -1,11 +1,9 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { Link, useLoaderData, useParams } from "@tanstack/react-router";
+import { useEffect } from "react";
 import {
   CLEVER_SIGN_IN_CAUSES,
   type CleverSignInCause,
 } from "../../../../schools/clever-sign-in-causes";
-import { authConfigOptions } from "../../../lib/query";
 import { buttonClass } from "../../../ui/Button";
 import { ContactAddress } from "../../support/ContactAddress";
 import { PublicFrame } from "../../schools/PublicFrame";
@@ -128,16 +126,12 @@ export function CleverProblemScreen() {
  * pilot now and forwards the request; a district admin, who most likely
  * started on `/school/connect` (`add-amp`), adds AMP in Clever first. */
 function NotInClever({ cause }: { cause: "not-added" | "add-amp" }) {
-  // What the route's loader read (router.tsx), and only that: this screen
-  // never asks again, so a read that failed or arrives later can't change
-  // its actions or the message after the first paint. Without the
-  // deployment's Clever page, the request links to `/schools`.
-  // A snapshot taken once, on purpose (never synced): a live query would
-  // re-render with a later answer.
-  const client = useQueryClient();
-  const [config] = useState(() =>
-    client.getQueryData(authConfigOptions.queryKey),
-  );
+  // What the route's loader read (router.tsx), and only that: the loader's
+  // answer stays put for this visit, so a read that failed or arrives later
+  // can't change the actions or the message after the first paint. Without
+  // the deployment's Clever page (or its configuration), the request links
+  // to `/schools`.
+  const config = useLoaderData({ from: "/clever/$reason" });
   const signupUrl =
     config?.mode === "accounts" ? config.cleverDistrictSignupUrl : undefined;
   // With no Clever page to add AMP on, the admin's step is the request too.
