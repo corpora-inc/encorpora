@@ -11,6 +11,7 @@ import {
 import { registerCleverConnection } from "../src/schools/clever/connection.js";
 import { lmsConnectEnabled } from "../src/schools/clever/lms-config.js";
 import { lmsPassFailed, runLmsPasses } from "./clever-lms.js";
+import { runRequestAlertPass } from "../src/schools/request-alerts.js";
 import {
   safeSyncError,
   syncCleverConnection,
@@ -58,6 +59,26 @@ export async function cleverSyncCommand(
       throw new Error(
         "Usage: clever-sync.ts sync [CONNECTION_ID|all] [auto|full|events]",
       );
+    const scheduled =
+      (!rest[0] || rest[0] === "all") && (!rest[1] || rest[1] === "auto");
+    // First, so a long district sync never delays it: tell the operator about
+    // schools waiting for an invitation (docs/clever-anyschool.md). A failed
+    // alert never stops a sync.
+    let alerts:
+      | Awaited<ReturnType<typeof runRequestAlertPass>>
+      | { error: string }
+      | null = null;
+    if (scheduled)
+      try {
+        alerts = await runRequestAlertPass(pool, env);
+        if ("failed" in alerts && alerts.failed) process.exitCode = 1;
+      } catch (error) {
+        console.error("[schools] operator alert pass failed", {
+          message: (error as Error).message,
+        });
+        alerts = { error: "alert_pass_failed" };
+        process.exitCode = 1;
+      }
     const client = new CleverClient({
       clientId: env.AMP_CLEVER_CLIENT_ID ?? "",
       clientSecret: env.AMP_CLEVER_CLIENT_SECRET ?? "",
@@ -75,8 +96,7 @@ export async function cleverSyncCommand(
       try {
         results.push({
           connectionId: row.id,
-          ...((!rest[0] || rest[0] === "all") &&
-          (!rest[1] || rest[1] === "auto")
+          ...(scheduled
             ? await runDueCleverSync(pool, row.id, client)
             : await syncCleverConnection(pool, row.id, client, {
                 mode: rest[1] as SyncMode | undefined,
@@ -89,16 +109,16 @@ export async function cleverSyncCommand(
     if (results.some((result) => "error" in result)) process.exitCode = 1;
     // The scheduled pass also returns LMS grades, after rosters are current,
     // once LMS Connect is enabled for the app.
-    if (
-      (!rest[0] || rest[0] === "all") &&
-      (!rest[1] || rest[1] === "auto") &&
-      lmsConnectEnabled(env)
-    ) {
-      const lms = await runLmsPasses(pool, env);
-      if (lmsPassFailed(lms)) process.exitCode = 1;
-      return [...results, { lms }];
-    }
-    return results;
+    const lms =
+      scheduled && lmsConnectEnabled(env)
+        ? await runLmsPasses(pool, env)
+        : null;
+    if (lms && lmsPassFailed(lms)) process.exitCode = 1;
+    return [
+      ...results,
+      ...(lms ? [{ lms }] : []),
+      ...(alerts && !("due" in alerts && !alerts.due) ? [{ alerts }] : []),
+    ];
   } finally {
     await pool.end();
   }

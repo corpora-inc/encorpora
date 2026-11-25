@@ -246,16 +246,26 @@ export function accountEmailSender(
   config: Pick<AccountsConfig, "mail" | "production">,
 ) {
   const mailer = config.mail && new Resend(config.mail.apiKey);
-  return async function sendEmail(to: string, email: Email) {
+  /** `idempotencyKey`: Resend sends a retry with the same key once (24 h). */
+  return async function sendEmail(
+    to: string,
+    email: Email,
+    options: { idempotencyKey?: string } = {},
+  ) {
     const { subject, html, text } = deliverable(email);
     if (mailer) {
-      const { error } = await mailer.emails.send({
-        from: config.mail!.from,
-        to,
-        subject,
-        html,
-        text,
-      });
+      const { error } = await mailer.emails.send(
+        {
+          from: config.mail!.from,
+          to,
+          subject,
+          html,
+          text,
+        },
+        options.idempotencyKey
+          ? { idempotencyKey: options.idempotencyKey }
+          : undefined,
+      );
       if (error) throw new Error(`Email not sent: ${error.message}`);
     } else if (!config.production) {
       // Development: the subject and the links, the main action last.

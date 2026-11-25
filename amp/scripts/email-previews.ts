@@ -19,6 +19,8 @@ import { approvalRequest } from "../src/family/approvals.js";
 import { setupInvitation } from "../src/schools/onboarding.js";
 import { seatRequest, staffInvitation } from "../src/schools/setup-routes.js";
 import { integrationRequest } from "../src/schools/org-routes.js";
+import { requestAlertEmail } from "../src/schools/request-alerts.js";
+import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { schoolInquiry } from "../src/schools/share-routes.js";
 import { pilotSignupNotice } from "../src/research/pilot-routes.js";
 import { followupMail, type MailConfig } from "../src/parent-followup/mail.js";
@@ -247,6 +249,41 @@ export function emailPreviews(): EmailPreview[] {
           origin,
         }),
       ),
+    },
+    ...(["requested", "rerequested", "reminder", "overdue"] as const).map(
+      (kind) => ({
+        id: `school-request-alert-${kind}`,
+        title: `AnySchool request alert, ${kind} (to the operator)`,
+        email: requestAlertEmail(origin, {
+          kind,
+          requestId: "00000000-0000-4000-8000-000000000001",
+          method: "anyschool",
+          institutionName: "Example Academy",
+          setupEmail: "office@example.com",
+          requesterEmail: "head@example.com",
+          signerName: "Alex Example",
+          agreementVersion: AGREEMENT_VERSION,
+          orgId: "org-example",
+          createdAt: new Date("2026-11-25T15:00:00Z"),
+        }),
+      }),
+    ),
+    {
+      id: "school-request-alert-contact-form",
+      title:
+        "Clever request alert from the older contact form (to the operator)",
+      email: requestAlertEmail(origin, {
+        kind: "requested",
+        requestId: "00000000-0000-4000-8000-000000000002",
+        method: "clever",
+        institutionName: "Example District",
+        setupEmail: "it@example.com",
+        requesterEmail: null,
+        signerName: null,
+        agreementVersion: null,
+        orgId: null,
+        createdAt: new Date("2026-11-25T15:00:00Z"),
+      }),
     },
     {
       id: "school-inquiry",
