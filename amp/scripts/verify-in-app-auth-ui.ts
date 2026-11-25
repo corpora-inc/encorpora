@@ -246,7 +246,11 @@ try {
                 assert.equal(
                   await page.evaluate(() => (window as any).__shifts),
                   0,
-                  "arrival has zero layout shift",
+                  // What moved, from where to where, for a failure a run
+                  // on another machine does not repeat.
+                  `${tag} ${entry}: arrival has zero layout shift: ${JSON.stringify(
+                    await page.evaluate(() => (window as any).__shiftDetails),
+                  )}`,
                 );
                 // The support address: a plain email link, its text the
                 // address itself, a full target.
@@ -320,7 +324,15 @@ try {
                 );
                 const box = (await hint.boundingBox())!;
                 const viewport = page.viewportSize()!;
-                assert.ok(box.height >= 44, "hint is a 44px target");
+                assert.ok(
+                  box.height >= 44,
+                  `${tag} ${entry}: hint is a 44px target: ${JSON.stringify(box)}, ${await hint.evaluate(
+                    (node) => {
+                      const style = getComputedStyle(node);
+                      return `class ${node.className}, min-height ${style.minHeight}, display ${style.display}, ${document.styleSheets.length} stylesheets`;
+                    },
+                  )}`,
+                );
                 assert.ok(
                   box.x + box.width <= viewport.width && box.x >= 0,
                   "hint fits the width",

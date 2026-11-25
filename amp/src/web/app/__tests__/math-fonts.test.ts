@@ -107,3 +107,31 @@ test("fonts already in: the screen paints at once", async () => {
   await vi.advanceTimersByTimeAsync(0);
   expect(painted).toBe(true);
 });
+
+test("at the app's start the faces wait for the first screen to load, so a screen with no math never queues behind them", async () => {
+  vi.useFakeTimers();
+  faces = [face("KaTeX_Main"), face("KaTeX_AMS")];
+  const state = vi.spyOn(document, "readyState", "get");
+  state.mockReturnValue("loading");
+  const fonts = await fresh();
+  fonts.startMathFonts();
+  fonts.startMathFonts();
+  await vi.advanceTimersByTimeAsync(5_000);
+  expect(faces[0]!.load).not.toHaveBeenCalled();
+  state.mockReturnValue("complete");
+  window.dispatchEvent(new Event("load"));
+  await vi.advanceTimersByTimeAsync(2_500);
+  expect(faces[0]!.load).toHaveBeenCalledTimes(1);
+  expect(faces[1]!.load).toHaveBeenCalledTimes(1);
+});
+
+test("a screen with math asks for the faces at once, whatever the app's start is waiting for", async () => {
+  vi.useFakeTimers();
+  faces = [face("KaTeX_Main")];
+  vi.spyOn(document, "readyState", "get").mockReturnValue("loading");
+  const fonts = await fresh();
+  fonts.startMathFonts();
+  void fonts.mathFontsBeforePaint();
+  await vi.advanceTimersByTimeAsync(0);
+  expect(faces[0]!.load).toHaveBeenCalledTimes(1);
+});
