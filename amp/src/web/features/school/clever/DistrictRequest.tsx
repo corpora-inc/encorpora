@@ -34,12 +34,16 @@ function Breakable({ message, link }: { message: string; link: string }) {
         after.map((rest, index) => (
           <Fragment key={index}>
             {/* After each path slash, not inside "https://". */}
-            {link.split(/(?<=[^/:]\/)/).map((part, at) => (
-              <Fragment key={at}>
-                {at > 0 && <wbr />}
-                {part}
-              </Fragment>
-            ))}
+            {/* No regex lookbehind: Safari before 16.4 rejects it. */}
+            {link
+              .replace(/([^/:]\/)/g, "$1\n")
+              .split("\n")
+              .map((part, at) => (
+                <Fragment key={at}>
+                  {at > 0 && <wbr />}
+                  {part}
+                </Fragment>
+              ))}
             {rest}
           </Fragment>
         ))}

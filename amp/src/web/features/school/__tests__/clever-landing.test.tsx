@@ -27,6 +27,7 @@ import {
 import { orgsOptions } from "../api";
 import { ChooserScreen } from "../ChooserScreen";
 import { CleverProblemScreen } from "../clever/CleverProblemScreen";
+import { districtMessage } from "../clever/DistrictRequest";
 
 /*
  * Where a Clever sign-in can leave someone with nothing to open: staff with
@@ -219,6 +220,12 @@ test("a teacher whose district hasn't added AMP starts a pilot now and forwards 
   });
   const message = request.querySelector("[data-district-message]")!;
   expect(message.textContent).toContain(SIGNUP);
+  // Shown with a break after each path slash, never inside "https://",
+  // and read (and copied) exactly as written.
+  expect(message.querySelectorAll("wbr")).toHaveLength(
+    new URL(SIGNUP).pathname.split("/").length - 1,
+  );
+  expect(message.textContent).toBe(districtMessage("add", SIGNUP));
   // Their own mail, to whoever they choose: no recipient filled in.
   const mail = within(request)
     .getByRole("link", { name: "Email it" })
