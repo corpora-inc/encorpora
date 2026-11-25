@@ -51,10 +51,14 @@ A start is either a grade or a guess.
 
 - **A grade.** A child with a birth year starts in the grade that year gives.
   A roster grade is kept as a birth year, so a rostered student starts the
-  same way.
+  same way. A rostered student with no grade of their own starts in the grade
+  of their class's course: a teacher who makes a "Grade 4" class has said
+  what grade its students are in. That start is kept on the student. It
+  stays a grade start if the class's course changes later, and a later course
+  is not taken up.
 - **A guess.** An adult chooses where to begin (counting through
-  precalculus). A learner with no age and no grade starts at grade 2. A
-  family's band and a practice profile are guesses too.
+  precalculus). A learner with no age, no grade and no class course starts at
+  grade 2. A family's band and a practice profile are guesses too.
 
 Independent responses update a pooled estimate and strand estimates; answers
 marked as helped do not raise or lower independent ability. Earned practice
@@ -145,6 +149,11 @@ of one grade, a stretch of one grade).
   the fifth problem and as regular work after about 65. Two thirds of
   Geometry is 26 more: a ninth-grader who is really in Algebra 2 meets it as
   regular work after about 140.
+- A class's course counts as much as a birth year, and it says less about
+  each child. A child three or four grades below their class's grade comes
+  down one or two problems later than from a guess: about half a grade
+  higher after five answers, a quarter after ten, and within a quarter after
+  twenty (grade 4 class, child at kindergarten level).
 - A child at their grade stays there, with a stretch one problem in four,
   for about 40 problems in kindergarten and 80 to 100 in grades 3 and 6
   (three or four sittings).

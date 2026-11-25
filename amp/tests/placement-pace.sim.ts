@@ -154,11 +154,16 @@ test("a learner at their grade meets more of it, and their level reads about as 
 });
 
 test("a learner behind their grade is found as fast as before", (t) => {
+  // The last two are a child far below their class's grade: a grade 4 class
+  // (a class's course is a grade start too), the child at grade 1 and at
+  // kindergarten level.
   for (const [expected, level] of [
     [3, 1],
     [5, 3],
     [6, 4],
     [9, 7],
+    [4, 1],
+    [4, 0],
   ] as const) {
     const who: PaceLearner = {
       type: "two below",
