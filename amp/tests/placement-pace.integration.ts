@@ -18,7 +18,7 @@ const gradeOf = (templateId: string) =>
   );
 
 test(
-  "through the API, a new third grader who is right about everything stays at grades 3 and 4 for the first problems",
+  "through the API, a new third grader who is right about everything stays at grades 3 and 4 for the first sixteen problems",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -81,13 +81,13 @@ test(
       );
       assert.equal(frontier.expected, 3);
       assert.equal(frontier.gradeStart, true);
-      // Ten problems: the grade, and a stretch from the next.
+      // Sixteen problems: the grade, and a stretch from the next. Half of
+      // grade 3's skills are not earned in sixteen answers.
+      assert.ok(Math.max(...grades) <= 4.5, `sixteen: ${grades.join(" ")}`);
       assert.ok(
-        Math.max(...grades.slice(0, 10)) <= 4.5,
-        `first ten: ${grades.slice(0, 10).join(" ")}`,
+        grades.filter((grade) => grade >= 2.5 && grade < 3.5).length >= 6,
+        `grade 3 problems: ${grades.join(" ")}`,
       );
-      // Sixteen: at most the next grade and a stretch from the one after.
-      assert.ok(Math.max(...grades) <= 5.5, `sixteen: ${grades.join(" ")}`);
       // Sixteen right answers in a row read a grade or two ahead, not high
       // school (the engine before read about grade 10 here).
       assert.ok(frontier.overall.level < 6, `level ${frontier.overall.level}`);

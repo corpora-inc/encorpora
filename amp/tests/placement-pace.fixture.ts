@@ -91,14 +91,17 @@ export const paceTypes = [
   "two above",
   "four above",
   "always right",
+  "everything right",
   "careless at grade",
 ] as const;
 export type PaceType = (typeof paceTypes)[number];
 export const paceExpected = [0, 3, 6, 9] as const;
 
-/** The learners of the pace study: six kinds at each of four expected grades.
- * Two below kindergarten is below the catalog (−1, the estimator's floor);
- * four above Algebra 1 is past the catalog (13). */
+/** The learners of the pace study: seven kinds at each of four expected
+ * grades. Two below kindergarten is below the catalog (−1, the estimator's
+ * floor); four above Algebra 1 is past the catalog (13). "Always right" is
+ * right 97 times in 100, as the class simulator's strongest students are;
+ * "everything right" never misses. */
 export function paceLearners(): PaceLearner[] {
   const careful: PaceModel = { kind: "probit", slip: 0.03 };
   return paceExpected.flatMap((expected) => [
@@ -121,6 +124,12 @@ export function paceLearners(): PaceLearner[] {
       expected,
       level: 13,
       model: { kind: "flat", right: 0.97 },
+    },
+    {
+      type: "everything right",
+      expected,
+      level: 13,
+      model: { kind: "flat", right: 1 },
     },
     {
       type: "careless at grade",

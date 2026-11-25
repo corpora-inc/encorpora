@@ -4,7 +4,7 @@
 
      npx tsx scripts/simulate-placement-pace.ts [--engine before] [--seeds 20] [--count 60]
      npx tsx scripts/simulate-placement-pace.ts --trace [--count 60]
-     npx tsx scripts/simulate-placement-pace.ts --trace --type "always right" --expected 3
+     npx tsx scripts/simulate-placement-pace.ts --trace --type "everything right,two above" --expected 3,6 --count 100
 
    Synthetic regression scenarios, not evidence about real learners. */
 import {
@@ -48,10 +48,13 @@ const show = (value: number) =>
 const gradeWord = (grade: number) =>
   grade === 0 ? "K" : grade === 9 ? "9 (Alg 1)" : String(grade);
 
+// `--type` and `--expected` take one value or several, separated by commas.
+const types = onlyType?.split(",");
+const grades = onlyExpected?.split(",").map(Number);
 const learners = paceLearners().filter(
   (learner) =>
-    (!onlyType || learner.type === onlyType) &&
-    (!onlyExpected || learner.expected === Number(onlyExpected)),
+    (!types || types.includes(learner.type)) &&
+    (!grades || grades.includes(learner.expected)),
 );
 
 function trace(run: PaceRun) {
