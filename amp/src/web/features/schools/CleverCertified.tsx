@@ -1,6 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import { authConfigOptions } from "../../lib/query";
-import { cleverEnabled } from "../school/clever/enabled";
 import badge from "./clever-certified-partner.webp";
 import badge2x from "./clever-certified-partner-2x.webp";
 import styles from "./CleverCertified.module.css";
@@ -9,10 +6,11 @@ import styles from "./CleverCertified.module.css";
  * (clever.com/about/media-kit), cut from its tile and otherwise unaltered:
  * Clever's brand terms allow no redrawing or recoloring. Lossless WebP (the
  * same pixels as the cut PNG): this repository keeps PNGs in LFS, which the
- * web image's build does not pull. One file pair, 11:12;
- * each size below keeps that ratio, and the width and height attributes hold
- * its box before the file arrives. Shown only while Clever is enabled, like
- * every other Clever entry point. */
+ * web image's build does not pull. One file pair, 11:12; each size below
+ * keeps that ratio, and the width and height attributes hold its box before
+ * the file arrives. The certification is a fact about AMP, not a deployment
+ * setting, so it shows without asking the server anything: the page paints
+ * whole whatever the API does. */
 const sizes = {
   hero: { width: 77, height: 84 },
   footer: { width: 55, height: 60 },
@@ -31,10 +29,8 @@ export function CleverBadge({ size }: { size: keyof typeof sizes }) {
   );
 }
 
-/** The badge and one factual line, beside `/schools`' Clever action. */
+/** The badge and one factual line, in `/schools`' opening. */
 export function CleverCertified({ className = "" }: { className?: string }) {
-  const clever = cleverEnabled(useQuery(authConfigOptions).data);
-  if (!clever) return null;
   return (
     <p className={`${styles.certified} ${className}`}>
       <CleverBadge size="hero" />
@@ -44,10 +40,4 @@ export function CleverCertified({ className = "" }: { className?: string }) {
       </span>
     </p>
   );
-}
-
-/** The footer's quiet copy of the badge, on every school page. */
-export function CleverFooterBadge() {
-  const clever = cleverEnabled(useQuery(authConfigOptions).data);
-  return clever ? <CleverBadge size="footer" /> : null;
 }

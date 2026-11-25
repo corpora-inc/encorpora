@@ -94,17 +94,21 @@ export function SchoolsScreen() {
             precalculus.
           </h1>
           <div className={styles.heroBody}>
-            <p className={styles.lede}>
-              Every student works at their own level in every area of math, with
-              unlimited problems and unlimited personalized workbooks. Teachers
-              see who needs them today, and they decide every grade.
-            </p>
+            {/* The badge sits with the lede, above the actions on a phone and
+                beside them from 960 px: whatever the actions do, it stays put. */}
+            <div className={styles.heroText}>
+              <p className={styles.lede}>
+                Every student works at their own level in every area of math,
+                with unlimited problems and unlimited personalized workbooks.
+                Teachers see who needs them today, and they decide every grade.
+              </p>
+              <CleverCertified />
+            </div>
             <div className={styles.heroActions}>
               <Actions />
               <p className={styles.note}>
                 30 days of free practice for your class.
               </p>
-              <CleverCertified />
             </div>
           </div>
           {summary && (

@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { WaveMark } from "../../ui/NavigationSheet";
 import { buttonClass } from "../../ui/Button";
-import { CleverFooterBadge } from "./CleverCertified";
+import { CleverBadge } from "./CleverCertified";
 import { SiteFooter } from "../support/SiteFooter";
 import { signInLink } from "./sign-in-link";
 import styles from "./PublicFrame.module.css";
@@ -55,7 +55,10 @@ export function PublicFrame({
         </div>
       </header>
       {children}
-      <SiteFooter className={styles.footer} mark={<CleverFooterBadge />}>
+      <SiteFooter
+        className={styles.footer}
+        mark={<CleverBadge size="footer" />}
+      >
         <Link to="/schools/scope-and-sequence">Scope and sequence</Link>
         <Link to="/schools/trust">Student data</Link>
         <Link to="/research">Research</Link>

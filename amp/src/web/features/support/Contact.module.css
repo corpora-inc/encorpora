@@ -108,14 +108,10 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
-/* A trust mark below the row, on the content edge. A mark that renders
-   nothing takes no room. */
+/* A trust mark below the row, on the content edge. */
 .footerMark {
   display: flex;
   margin-top: var(--space-3);
-}
-.footerMark:empty {
-  display: none;
 }
 @container (min-width: 640px) {
   .footerRow {

@@ -1004,8 +1004,6 @@ const cleverProblem = createRoute({
   getParentRoute: () => root,
   path: "/clever/$reason",
   staticData: { space: "public" },
-  // The district's link and the footer's Clever badge are in the first paint.
-  loader: async () => void (await loadAuthConfig()),
   component: lazyRouteComponent(
     () => import("../features/school/clever/CleverProblemScreen"),
     "CleverProblemScreen",
@@ -1350,8 +1348,6 @@ const schoolsContinue = createRoute({
   beforeLoad: () => {
     prepareBuyerHandoff();
   },
-  // Its footer's Clever badge is in the first paint.
-  loader: async () => void (await loadAuthConfig()),
   component: lazyRouteComponent(
     () => import("../features/school/pilots/BuyerHandoffScreen"),
     "BuyerHandoffScreen",
@@ -1577,16 +1573,12 @@ async function loadOwnPractice(session: AuthSession, learnerId: string) {
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");
 const notInTheApp = () => admit({ web: true });
-/** Each school page's own data, with the sign-in methods: whether Clever is
- * on decides its action and badge, so the first paint has them. */
-const withSignInMethods = async <T,>(page: Promise<T>) =>
-  (await Promise.all([page, loadAuthConfig()]))[0];
 const schoolsHome = createRoute({
   getParentRoute: () => root,
   path: "/schools",
   staticData: { space: "public" },
   beforeLoad: notInTheApp,
-  loader: () => withSignInMethods(loadCurriculum()),
+  loader: loadCurriculum,
   component: lazyRouteComponent(schoolsPublic, "SchoolsScreen"),
 });
 const schoolsScope = createRoute({
@@ -1594,7 +1586,7 @@ const schoolsScope = createRoute({
   path: "/schools/scope-and-sequence",
   staticData: { space: "public" },
   beforeLoad: notInTheApp,
-  loader: () => withSignInMethods(loadScope()),
+  loader: loadScope,
   component: lazyRouteComponent(schoolsPublic, "ScopeScreen"),
 });
 const schoolsTrust = createRoute({
@@ -1602,7 +1594,6 @@ const schoolsTrust = createRoute({
   path: "/schools/trust",
   staticData: { space: "public" },
   beforeLoad: notInTheApp,
-  loader: async () => void (await loadAuthConfig()),
   component: lazyRouteComponent(schoolsPublic, "TrustScreen"),
 });
 /** The research behind AMP, with its report: public, for parents and schools. */

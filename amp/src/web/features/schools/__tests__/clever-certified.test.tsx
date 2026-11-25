@@ -1,25 +1,11 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen } from "@testing-library/react";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { ReactNode } from "react";
 import { afterEach, expect, test } from "vitest";
-import type { AuthConfig } from "../../../auth";
-import { qk } from "../../../lib/keys";
-import { CleverCertified, CleverFooterBadge } from "../CleverCertified";
+import { CleverBadge, CleverCertified } from "../CleverCertified";
 
 afterEach(cleanup);
-
-function withConfig(config: AuthConfig, children: ReactNode) {
-  const client = new QueryClient();
-  client.setQueryData(qk.authConfig(), config);
-  return render(
-    <QueryClientProvider client={client}>{children}</QueryClientProvider>,
-  );
-}
-const cleverOn = { mode: "accounts", clever: true } as AuthConfig;
-const cleverOff = { mode: "accounts" } as AuthConfig;
 
 /** A lossless WebP's own pixel size, from its VP8L header. Read as bytes:
  * a PNG here would be a Git LFS pointer in the web image's build. */
@@ -33,6 +19,10 @@ function webpSize(name: string) {
   const bits = file.readUInt32LE(21);
   return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 };
 }
+const box = (badge: HTMLElement) => ({
+  width: Number(badge.getAttribute("width")),
+  height: Number(badge.getAttribute("height")),
+});
 
 test("the badge files are Clever's shield at one 11:12 ratio, 1x and 2x", () => {
   expect(webpSize("clever-certified-partner.webp")).toEqual({
@@ -45,12 +35,12 @@ test("the badge files are Clever's shield at one 11:12 ratio, 1x and 2x", () => 
   });
 });
 
-test("with Clever on, /schools shows the badge, its box reserved, and one factual line", () => {
-  withConfig(cleverOn, <CleverCertified />);
+test("/schools shows the badge, its box reserved, and one factual line, with no server answer needed", () => {
+  // No QueryClientProvider: the badge asks the server nothing, so the page
+  // paints it whatever the API does.
+  render(<CleverCertified />);
   const badge = screen.getByRole("img", { name: "Clever Certified Partner" });
-  // The box is held before the file arrives, at the file's own ratio.
-  const width = Number(badge.getAttribute("width"));
-  const height = Number(badge.getAttribute("height"));
+  const { width, height } = box(badge);
   expect(width * 12).toBe(height * 11);
   expect(badge.getAttribute("srcset")).toMatch(/ 2x$/);
   expect(badge.closest("p")?.textContent).toBe(
@@ -59,21 +49,10 @@ test("with Clever on, /schools shows the badge, its box reserved, and one factua
 });
 
 test("the footer's badge is the same mark, smaller, at the same ratio", () => {
-  withConfig(cleverOn, <CleverFooterBadge />);
-  const badge = screen.getByRole("img", { name: "Clever Certified Partner" });
-  const width = Number(badge.getAttribute("width"));
-  const height = Number(badge.getAttribute("height"));
+  render(<CleverBadge size="footer" />);
+  const { width, height } = box(
+    screen.getByRole("img", { name: "Clever Certified Partner" }),
+  );
   expect(width * 12).toBe(height * 11);
   expect(height).toBeLessThan(84);
-});
-
-test("with Clever off there is no trace of it", () => {
-  const { container } = withConfig(
-    cleverOff,
-    <>
-      <CleverCertified />
-      <CleverFooterBadge />
-    </>,
-  );
-  expect(container.innerHTML).toBe("");
 });
