@@ -110,7 +110,7 @@ import { payAddresses } from "./pay-routes";
 import { appReturn } from "../features/spaces/returns";
 import { loadSpaceFrame } from "../features/spaces/useSpace";
 import { applyRouteHead, routeHead } from "./route-head";
-import { loadCurriculum, loadScope } from "../features/schools/api";
+import { loadScope, loadSchoolsHome } from "../features/schools/api";
 import { designAllowed } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import { externalSignInFrom } from "./external-sign-in";
@@ -1581,7 +1581,7 @@ const schoolsHome = createRoute({
   path: "/schools",
   staticData: { space: "public" },
   beforeLoad: notInTheApp,
-  loader: loadCurriculum,
+  loader: loadSchoolsHome,
   component: lazyRouteComponent(schoolsPublic, "SchoolsScreen"),
 });
 const schoolsScope = createRoute({

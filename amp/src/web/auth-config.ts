@@ -16,6 +16,10 @@ export type AuthConfig =
   | { mode: "oidc" | "development" | "native" };
 
 let config: Promise<AuthConfig> | null = null;
+let known: AuthConfig | undefined;
+/** The API's answer once it has arrived, read without waiting: a screen that
+ * paints after the boot's session check (which reads it) knows it at once. */
+export const knownAuthConfig = () => known;
 /** The API's answer, asked once per page and shared by the light home entry
  * (`home-entry.tsx`) and the app (`auth.ts`), so the home document's preload
  * of it is used once. A failed lookup is not remembered: the next call asks
@@ -25,7 +29,11 @@ export function fetchAuthConfig(): Promise<AuthConfig> {
     const response = await fetch("/api/v1/auth-config", {
       signal: AbortSignal.timeout(10000),
     });
-    if (response.ok) return response.json() as Promise<AuthConfig>;
+    if (response.ok) {
+      const answer = (await response.json()) as AuthConfig;
+      known = answer;
+      return answer;
+    }
     throw new Error(`auth-config ${response.status}`);
   }));
   asked.catch((error: unknown) => {
