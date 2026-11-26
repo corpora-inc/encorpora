@@ -1,3 +1,4 @@
+import { fetchAuthConfig } from "../../auth-config";
 import { requestFetch } from "../../lib/request-transport";
 import {
   curriculumSummaryResource,
@@ -24,6 +25,16 @@ export async function loadCurriculum(): Promise<CurriculumSummary | null> {
     console.error("The curriculum counts didn’t load", error);
     return null;
   }
+}
+/** `/schools`' loader: the counts, and the sign-in methods asked for beside
+ * them (never awaited) so the first paint usually knows whether to offer
+ * Clever. It adds no wait: the page paints when the counts arrive, whatever
+ * the methods do (`clever-offer.ts`). */
+export async function loadSchoolsHome(): Promise<CurriculumSummary | null> {
+  // Asked early and nothing more: fetchAuthConfig handles and logs its own
+  // failure, and whoever shows the methods asks again.
+  void fetchAuthConfig();
+  return loadCurriculum();
 }
 export async function loadScope(): Promise<ScopeAndSequence | null> {
   try {
