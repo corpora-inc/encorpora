@@ -244,7 +244,9 @@ test("a teacher whose district hasn't added AMP starts a pilot now and forwards 
   ).toBeTruthy();
   expect(screen.getByText("Student? Ask your teacher.")).toBeTruthy();
   // The school pages' footer names the way to reach us, once.
-  expect(screen.getAllByText("support@corpora.inc")).toHaveLength(1);
+  expect(
+    screen.getAllByRole("link", { name: "Email support@corpora.inc" }),
+  ).toHaveLength(1);
   expect(screen.queryByLabelText(/password/i)).toBeNull();
 });
 

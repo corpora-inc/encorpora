@@ -597,3 +597,91 @@
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* For teachers and schools, after the offer: the words, the Clever badge and
+   the way to /schools; one real screen beside them from 960 px, under them
+   on narrower screens. */
+.schools {
+  grid-template-columns: minmax(0, 1fr);
+}
+.schoolsText {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.schoolsLede,
+.contact p {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--color-muted-text);
+  text-wrap: pretty;
+}
+.clever {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  font-size: var(--text-label);
+  line-height: 1.45;
+  color: var(--color-muted-text);
+  text-wrap: pretty;
+}
+.schoolsAction {
+  justify-self: start;
+  min-height: var(--target-size);
+}
+.schoolsShot {
+  display: block;
+  align-self: start;
+  min-width: 0;
+  overflow: hidden;
+  /* The top of a taller capture: more rows wherever there is room. */
+  aspect-ratio: 1960 / 1300;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  box-shadow: var(--shadow-overlay);
+}
+.schoolsShot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+/* On a phone the words carry it; /schools has the screens. */
+@media (max-width: 719.98px) {
+  .schoolsShot {
+    display: none;
+  }
+}
+@media (min-width: 960px) {
+  .schools {
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+    column-gap: var(--pitch-gutter);
+  }
+  /* Beside the words the screen runs as tall as they do, so both columns
+     end together: the image adds no height of its own, and its last rows
+     fade out rather than stopping mid-row. */
+  .schoolsShot {
+    position: relative;
+    align-self: stretch;
+    aspect-ratio: auto;
+  }
+  .schoolsShot img {
+    position: absolute;
+    inset: 0 0 auto;
+    /* Always the column's width; only rows below the fold are cut. */
+    height: auto;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 72px), transparent);
+  }
+}
+.contact {
+  justify-items: start;
+}
+/* One column beside the screen: two would wrap every line three times. */
+.schools .checklist {
+  grid-template-columns: minmax(0, 1fr);
+}
