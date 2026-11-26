@@ -3,8 +3,9 @@ import { acquisitionToken } from "../advertising/acquisition.js";
 import { signupUserAgent } from "../advertising/provider-signups.js";
 import { advertisingOptOut } from "../advertising/permission-contracts.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
-import type { Pool } from "pg";
+import type { Pool, PoolClient } from "pg";
 import {
+  accountNotice,
   explicitNewsletterNotice,
   signupIntentSchema,
   type SignupIntent,
@@ -39,6 +40,24 @@ export async function createSignupIntent(
   );
   return token;
 }
+/** Every account has one follow-up row, whatever path made it: the teacher
+ * from /schools, an invited adult and a provider sign-in that skipped the
+ * pitch record no intent. Without the row the account has no unsubscribe
+ * token, so owned email can't reach it, and no acquisition contact (the
+ * 0072 trigger makes one for a new account). No outbox rows: the trial
+ * sequence belongs to the intent path. A no-op once the row exists. */
+export async function ensureAccountFollowup(
+  db: Pool | PoolClient,
+  userId: string,
+) {
+  await db.query(
+    `INSERT INTO amp_parent_followups(user_id,email,newsletter,notice_version,unsubscribe_token,new_account)
+    SELECT id,email,true,$2,$3,true FROM amp_auth_users
+    WHERE id=$1 AND NOT EXISTS(SELECT 1 FROM amp_parent_followups WHERE user_id=$1)
+    ON CONFLICT(user_id) DO NOTHING`,
+    [userId, accountNotice, randomBytes(32).toString("hex")],
+  );
+}
 /** Called by successful account/session creation, never from a client email. */
 export async function completeSignup(
   pool: Pool,
@@ -47,7 +66,7 @@ export async function completeSignup(
   headers: Record<string, unknown> = {},
 ) {
   const token = intentToken(cookie);
-  if (!token) return;
+  if (!token) return ensureAccountFollowup(pool, userId);
   const db = await pool.connect();
   try {
     await db.query("BEGIN");
@@ -61,6 +80,7 @@ export async function completeSignup(
       )
     ).rows[0];
     if (!pending) {
+      await ensureAccountFollowup(db, userId);
       await db.query("COMMIT");
       return;
     }
@@ -76,7 +96,16 @@ export async function completeSignup(
     const inserted = await db.query(
       `INSERT INTO amp_parent_followups(user_id,email,program,campaign,newsletter,notice_version,unsubscribe_token,acquisition_journey_id,new_account,entry_label)
       SELECT id,email,$2,$3,$4,$5,$6,$7,("createdAt">=$8::timestamptz-$10::interval),$9 FROM amp_auth_users WHERE id=$1
-      ON CONFLICT(user_id) DO NOTHING RETURNING user_id`,
+      ON CONFLICT(user_id) DO UPDATE SET program=excluded.program,campaign=excluded.campaign,
+        newsletter=excluded.newsletter AND amp_parent_followups.unsubscribed_at IS NULL,
+        notice_version=excluded.notice_version,acquisition_journey_id=excluded.acquisition_journey_id,
+        entry_label=excluded.entry_label
+      -- The row an account got without an intent (a late intent, or a teacher
+      -- who later signs in through a campaign): the first intent fills in its
+      -- attribution, once. An intent that finds the account already made
+      -- (fresh false) is a sign-in, never a signup conversion.
+      WHERE amp_parent_followups.notice_version=$11
+      RETURNING user_id,(SELECT "createdAt">=$8::timestamptz-$10::interval FROM amp_auth_users WHERE id=$1) AS fresh`,
       [
         userId,
         intent.program ?? null,
@@ -90,14 +119,16 @@ export async function completeSignup(
         // A late intent (recorded after the account it is for) still marks
         // an account made in the last half hour as new.
         intent.late ? "30 minutes" : "0",
+        accountNotice,
       ],
     );
     if (inserted.rowCount) {
+      const fresh = inserted.rows[0].fresh === true;
       await db.query(
         "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
         [pending.acquisition_journey_id, `amp|${userId}`],
       );
-      if (intent.analytics && !advertisingOptOut(headers))
+      if (fresh && intent.analytics && !advertisingOptOut(headers))
         await db.query(
           `INSERT INTO amp_ga_signup_exports(user_id,client_id,session_id,captured_at)
            SELECT user_id,$2,$3,$4 FROM amp_parent_followups
@@ -110,7 +141,7 @@ export async function completeSignup(
           ],
         );
       const agent = signupUserAgent.safeParse(headers["user-agent"]);
-      if (!advertisingOptOut(headers) && agent.success)
+      if (fresh && !advertisingOptOut(headers) && agent.success)
         await db.query(
           `INSERT INTO amp_signup_browser_contexts(user_id,evidence_id,user_agent)
           SELECT p.user_id,c.id,$2 FROM amp_parent_followups p
