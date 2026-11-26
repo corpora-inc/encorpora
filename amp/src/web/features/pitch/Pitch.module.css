@@ -675,7 +675,7 @@
     inset: 0 0 auto;
     /* Always the column's width; only rows below the fold are cut. */
     height: auto;
-    mask-image: linear-gradient(to bottom, #000 calc(100% - 72px), transparent);
+    mask-image: linear-gradient(to bottom, var(--color-on-surface) calc(100% - 72px), transparent);
   }
 }
 .contact {
