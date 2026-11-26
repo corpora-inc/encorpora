@@ -1,11 +1,33 @@
 import type { ReactNode } from "react";
-import { ContactAddress } from "./ContactAddress";
+import { SUPPORT_EMAIL } from "./support-email";
 import styles from "./Contact.module.css";
 
 const icon = (paths: ReactNode) => (
   <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
     {paths}
   </svg>
+);
+const mailIcon = icon(
+  <>
+    <rect
+      x="3"
+      y="5"
+      width="18"
+      height="14"
+      rx="2.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="m4 7 8 6 8-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </>,
 );
 /** Where AMP is, besides here. One color each, so the row reads as one line. */
 const socials = [
@@ -78,8 +100,8 @@ const socials = [
   },
 ] as const;
 
-/** The public pages' footer: the support address and the page's own links
- * on the left, AMP's other places on the right, and below them an optional
+/** The public pages' footer: the page's own links on the left; support (a
+ * mail icon) and AMP's other places on the right, and below them an optional
  * `mark` (the school pages' Clever badge). Each frame places it on its own
  * content width and draws the rule above it. */
 export function SiteFooter({
@@ -95,12 +117,23 @@ export function SiteFooter({
     <footer className={`${styles.footer} ${className}`}>
       <div className={styles.footerRow}>
         <div className={styles.footerText}>
-          <ContactAddress className={styles.footerAddress} />
           <nav className={styles.footerLinks} aria-label="More">
             {children}
           </nav>
         </div>
         <ul className={styles.socials} aria-label="AMP elsewhere">
+          {/* Support, first in the row: one icon, so a page that shows
+              another address (the homepage's "Get in touch") never shows
+              two side by side. Its address is the link's name and title. */}
+          <li>
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              aria-label={`Email ${SUPPORT_EMAIL}`}
+              title={SUPPORT_EMAIL}
+            >
+              {mailIcon}
+            </a>
+          </li>
           {socials.map((social) => (
             <li key={social.name}>
               <a

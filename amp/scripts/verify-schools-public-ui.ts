@@ -534,10 +534,10 @@ async function journeys(browser: Browser, engine: string) {
         sentMail[0]!.text.includes("Students: 1200"),
       sentMail,
     );
-    // The address is a plain email link, its text the address itself.
+    // Support is a mail icon in the footer's row, named by its address.
     const mail = visitor.page
       .locator("footer")
-      .getByRole("link", { name: "support@corpora.inc", exact: true });
+      .getByRole("link", { name: "Email support@corpora.inc", exact: true });
     check(
       `${label} footer email link`,
       (await mail.getAttribute("href")) === "mailto:support@corpora.inc" &&
@@ -547,7 +547,7 @@ async function journeys(browser: Browser, engine: string) {
     const socials = visitor.page.getByRole("list", { name: "AMP elsewhere" });
     check(
       `${label} footer socials`,
-      (await socials.getByRole("link").count()) === 5,
+      (await socials.getByRole("link").count()) === 6,
     );
 
     // On to the curriculum, by the link a school would follow.

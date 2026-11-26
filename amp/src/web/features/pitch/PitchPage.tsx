@@ -22,6 +22,11 @@ import { authStep } from "../../app/auth-links";
 import { usePitchAttention } from "./usePitchAttention";
 import { pitchVideo } from "./video";
 import { Showcase } from "./Showcase";
+import { CleverBadge } from "../schools/CleverCertified";
+import schoolLearnerDark from "./school-learner-dark.webp";
+import schoolLearnerLight from "./school-learner-light.webp";
+import { ContactAddress } from "../support/ContactAddress";
+import { TEAM_EMAIL } from "../support/support-email";
 import styles from "./Pitch.module.css";
 
 /** Data the pitch renders with, loaded before it mounts so it paints once,
@@ -68,11 +73,7 @@ export function PitchPage() {
       : "every cent";
   // Try it free: the first screen's one action, and again beside Buy.
   const tryFree = (variant: "primary" | "secondary") => (
-    <TryFreeButton
-      variant={variant}
-      className={styles.tryButton}
-      go={nav.go}
-    />
+    <TryFreeButton variant={variant} className={styles.tryButton} go={nav.go} />
   );
   const freeNote = <FreeNote className={styles.note} />;
   // The free trial, under Buy: the other way in, never left alone.
@@ -165,7 +166,10 @@ export function PitchPage() {
             </li>
           </ul>
           <p className={styles.researchLink}>
-            <PitchLink place={{ to: "/research" }} className={styles.inlineLink}>
+            <PitchLink
+              place={{ to: "/research" }}
+              className={styles.inlineLink}
+            >
               The research behind AMP
             </PitchLink>
           </p>
@@ -182,9 +186,11 @@ export function PitchPage() {
           <h2 id="pitch-year">Everything you need for math education</h2>
           <ul className={styles.checklist}>
             <li>Unlimited adaptive practice, counting through precalculus</li>
+            <li>Every K–12 Common Core skill, and more</li>
             <li>
               A hint, a lesson and a step‑by‑step explanation for every problem
             </li>
+            <li>A growing library of lesson videos</li>
             <li>Unlimited printable workbooks, made for each learner</li>
             <li>Progress you can see on phone, tablet and computer</li>
           </ul>
@@ -197,13 +203,13 @@ export function PitchPage() {
           <section
             ref={purchase}
             className={`${styles.details} ${styles.price}`}
-            // Nothing for sale here (no prices, no program): no "Price".
+            // Nothing for sale here (no prices, no program): no "Buy now".
             {...(offered === "free"
               ? { "aria-label": "Get started" }
               : { "aria-labelledby": "pitch-price" })}
             data-actions={offered}
           >
-            {offered !== "free" && <h2 id="pitch-price">Price</h2>}
+            {offered !== "free" && <h2 id="pitch-price">Buy now</h2>}
             {data.failed ? (
               <div className={styles.priceError} role="alert">
                 <p>Prices didn’t load. Check your connection and try again.</p>
@@ -260,6 +266,74 @@ export function PitchPage() {
             </div>
           )}
         </div>
+        <section
+          className={`${styles.details} ${styles.schools}`}
+          aria-labelledby="pitch-schools"
+          data-pitch-schools=""
+        >
+          <div className={styles.schoolsText}>
+            <h2 id="pitch-schools">
+              Are you a teacher or school administrator?
+            </h2>
+            <p className={styles.schoolsLede}>
+              AMP runs classes, schools and whole districts.
+            </p>
+            <ul className={styles.checklist}>
+              <li>Live class sessions, every student at their own level</li>
+              <li>Who needs you today, and which students share a gap</li>
+              <li>Suggested grades, with the evidence behind each one</li>
+              <li>Active time and progress by student, day and skill</li>
+              <li>
+                School and district overviews, from one class to every school
+              </li>
+              <li>Get started today with a free 30-day pilot</li>
+            </ul>
+            <p className={styles.clever}>
+              <CleverBadge size="footer" />
+              <span>
+                Clever Certified Partner. Classes roster and students sign in
+                through Clever. Something else at your school? We’ll connect it.
+              </span>
+            </p>
+            <PitchLink
+              place={{ to: "/schools" }}
+              className={buttonClass("secondary", styles.schoolsAction)}
+            >
+              AMP for schools
+            </PitchLink>
+          </div>
+          {/* One student's progress page, as their teacher and family see it:
+              a likely grade range in every area of math. Phones skip it (the
+              CSS); /schools has every screen. */}
+          <picture className={styles.schoolsShot}>
+            <source
+              media="(prefers-color-scheme: dark)"
+              srcSet={schoolLearnerDark}
+              width={980}
+              height={1250}
+            />
+            <img
+              src={schoolLearnerLight}
+              alt="A student's progress page: a likely grade range and best estimate in every area of math, from numbers and fractions to algebra, geometry and data, against their grade."
+              width={980}
+              height={1250}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </section>
+        <section
+          className={`${styles.details} ${styles.contact}`}
+          aria-labelledby="pitch-contact"
+          data-pitch-contact=""
+        >
+          <h2 id="pitch-contact">Get in touch</h2>
+          <p>
+            Questions, ideas, suggestions, or something not working? Write to
+            us. We love hearing from the AMP community.
+          </p>
+          <ContactAddress address={TEAM_EMAIL} />
+        </section>
       </main>
       <SiteFooter className={styles.footer}>
         <PitchLink place={{ to: "/schools" }}>For schools</PitchLink>
