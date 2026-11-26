@@ -143,7 +143,7 @@ test(
 );
 
 test(
-  "a spent or missing intent still leaves a row; a late intent fills in the just-made account's row once, never an old one's, never past an unsubscribe",
+  "a spent or missing intent still leaves a row; the first intent fills it in once, never past an unsubscribe, and only a just-made account counts as a signup",
   options,
   async () => {
     const db = await scopedDatabase("account_followup_late");
@@ -216,19 +216,44 @@ test(
         "the intent path queues its sequence as before (suppressed for a founder-managed contact)",
       );
 
-      // An old account's row is never rewritten by a later sign-in's intent.
+      // A teacher who signed up days ago and now signs in through a campaign:
+      // the campaign is recorded (funding requests read it), once, but the
+      // sign-in is never exported as a signup.
       await user("old", "2 days");
       await completeSignup(pool, null, "old");
+      const oldToken = (await row(pool, "old")).unsubscribe_token;
       const oldIntent = await createSignupIntent(pool, {
         program: "az-esa",
         newsletter: true,
         notice: signupNotice,
-        late: true,
+        analytics: { clientId: "1234.5678", sessionId: 1700000000 },
       });
       await completeSignup(pool, `amp.parent-signup=${oldIntent}`, "old");
       const old = await row(pool, "old");
-      assert.equal(old.program, null);
-      assert.equal(old.notice_version, accountNotice);
+      assert.equal(old.program, "az-esa");
+      assert.equal(old.notice_version, signupNotice);
+      assert.equal(old.unsubscribe_token, oldToken);
+      assert.equal(old.rows, 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS n FROM amp_ga_signup_exports WHERE user_id='old'",
+          )
+        ).rows[0].n,
+        0,
+        "an old account's sign-in is not a signup conversion",
+      );
+      const laterIntent = await createSignupIntent(pool, {
+        program: "nh-efa",
+        newsletter: true,
+        notice: signupNotice,
+      });
+      await completeSignup(pool, `amp.parent-signup=${laterIntent}`, "old");
+      assert.equal(
+        (await row(pool, "old")).program,
+        "az-esa",
+        "only the first intent fills the row in",
+      );
 
       // An unsubscribe before the late intent lands stays an unsubscribe.
       await user("stopped");

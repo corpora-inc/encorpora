@@ -100,10 +100,12 @@ export async function completeSignup(
         newsletter=excluded.newsletter AND amp_parent_followups.unsubscribed_at IS NULL,
         notice_version=excluded.notice_version,acquisition_journey_id=excluded.acquisition_journey_id,
         entry_label=excluded.entry_label
-      -- The row an account got before its intent landed (a late intent):
-      -- the intent fills it in, once, and only for the account it made.
-      WHERE amp_parent_followups.notice_version=$11 AND excluded.new_account
-      RETURNING user_id`,
+      -- The row an account got without an intent (a late intent, or a teacher
+      -- who later signs in through a campaign): the first intent fills in its
+      -- attribution, once. An intent that finds the account already made
+      -- (fresh false) is a sign-in, never a signup conversion.
+      WHERE amp_parent_followups.notice_version=$11
+      RETURNING user_id,(SELECT "createdAt">=$8::timestamptz-$10::interval FROM amp_auth_users WHERE id=$1) AS fresh`,
       [
         userId,
         intent.program ?? null,
@@ -121,11 +123,12 @@ export async function completeSignup(
       ],
     );
     if (inserted.rowCount) {
+      const fresh = inserted.rows[0].fresh === true;
       await db.query(
         "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
         [pending.acquisition_journey_id, `amp|${userId}`],
       );
-      if (intent.analytics && !advertisingOptOut(headers))
+      if (fresh && intent.analytics && !advertisingOptOut(headers))
         await db.query(
           `INSERT INTO amp_ga_signup_exports(user_id,client_id,session_id,captured_at)
            SELECT user_id,$2,$3,$4 FROM amp_parent_followups
@@ -138,7 +141,7 @@ export async function completeSignup(
           ],
         );
       const agent = signupUserAgent.safeParse(headers["user-agent"]);
-      if (!advertisingOptOut(headers) && agent.success)
+      if (fresh && !advertisingOptOut(headers) && agent.success)
         await db.query(
           `INSERT INTO amp_signup_browser_contexts(user_id,evidence_id,user_agent)
           SELECT p.user_id,c.id,$2 FROM amp_parent_followups p

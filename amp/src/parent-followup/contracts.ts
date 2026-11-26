@@ -20,7 +20,7 @@ export const signupNotice = "free-parent-account-v2";
  * account has, opted in like a parent who left the default: US commercial
  * email is opt-out (CAN-SPAM, 15 U.S.C. 7704(a)(3)-(5)), so the duty is the
  * unsubscribe link and postal address in each message, not a prior consent.
- * A later intent for the just-made account fills in its attribution
+ * The account's first intent later fills in its attribution
  * (repository.ts `completeSignup`). */
 export const accountNotice = "account-default-v1";
 export const signupEntrySchema = z.enum([
