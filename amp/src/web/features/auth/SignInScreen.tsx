@@ -806,8 +806,8 @@ export function SignInScreen() {
         {freeEntry && showProviders && !pitchCopy && (
           <div className={styles.pitch} data-free-parent-signup>
             <p>
-              Each learner starts with 100 free problems and five free
-              workbooks. No card needed.
+              Free assessment, adaptive practice, and personalized,
+              one-of-a-kind workbooks. {"No\u00a0credit\u00a0card\u00a0needed."}
             </p>
             {program && (
               <p className={styles.funding}>
