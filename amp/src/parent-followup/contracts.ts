@@ -15,6 +15,14 @@ export function isPitchEntry(value: unknown): value is PitchEntry {
 /** v1 offered an unchecked newsletter box; v2 opts new parents in with a one-line notice. */
 export const explicitNewsletterNotice = "free-parent-account-v1";
 export const signupNotice = "free-parent-account-v2";
+/** An account made without a parent sign-up intent (a teacher from /schools,
+ * an invited adult, a sign-in that skipped the pitch). It gets the row every
+ * account has, opted in like a parent who left the default: US commercial
+ * email is opt-out (CAN-SPAM, 15 U.S.C. 7704(a)(3)-(5)), so the duty is the
+ * unsubscribe link and postal address in each message, not a prior consent.
+ * A later intent for the just-made account fills in its attribution
+ * (repository.ts `completeSignup`). */
+export const accountNotice = "account-default-v1";
 export const signupEntrySchema = z.enum([
   "openai-math-path",
   "openai-math-plans",
