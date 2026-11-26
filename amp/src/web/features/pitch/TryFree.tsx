@@ -1,5 +1,3 @@
-import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
 import { track } from "../../lib/analytics";
 import { Button } from "../../ui/Button";
 import type { PitchPlace } from "./nav";
@@ -37,8 +35,8 @@ export function TryFreeButton({
 export function FreeNote({ className }: { className?: string }) {
   return (
     <p className={className}>
-      No credit card. {FREE_ONLINE_PROBLEMS} free problems and{" "}
-      {TRIAL_WORKBOOKS_MAX} workbooks.
+      Free assessment, adaptive practice, and personalized, one-of-a-kind
+      workbooks. {"No\u00a0credit\u00a0card\u00a0needed."}
     </p>
   );
 }
