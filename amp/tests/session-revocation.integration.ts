@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { main as revokeCommand } from "../scripts/revoke-sessions.js";
@@ -478,7 +479,7 @@ test(
       });
 
       await t.test(
-        "session tokens: a stored hash still signs in; the hash itself never does",
+        "session tokens: stored as their hash; the hash itself opens nothing",
         async () => {
           const signIn = await app.inject({
             method: "POST",
@@ -488,16 +489,18 @@ test(
           });
           const signed = signIn.headers["set-auth-token"] as string;
           const raw = signed.split(".")[0]!;
-          const stored = await db.query(
-            'SELECT id,token FROM amp_auth_sessions WHERE "userId"=$1',
-            [cal.user],
+          const stored = async () =>
+            (
+              await db.query(
+                'SELECT id,token FROM amp_auth_sessions WHERE "userId"=$1',
+                [cal.user],
+              )
+            ).rows;
+          assert.deepEqual(
+            (await stored()).map((row) => row.token),
+            [hashSessionToken(raw)],
+            "only the hash is written",
           );
-          assert.equal(stored.rows[0].token, raw, "written as issued today");
-          // The next release writes the hash; a row stored that way is found.
-          await db.query("UPDATE amp_auth_sessions SET token=$1 WHERE id=$2", [
-            hashSessionToken(raw),
-            stored.rows[0].id,
-          ]);
           assert.equal(await status(signed), 200);
           assert.equal(await status(raw), 200);
           // The web app reads its bearer from the session: still the token.
@@ -507,6 +510,37 @@ test(
             headers: { authorization: `Bearer ${raw}` },
           });
           assert.equal(session.json().session.token, raw);
+          // A row an older pod wrote as issued: found, then stored as its hash.
+          const id = (await stored())[0]!.id;
+          await db.query("UPDATE amp_auth_sessions SET token=$1 WHERE id=$2", [
+            raw,
+            id,
+          ]);
+          assert.equal(await status(signed), 200);
+          assert.deepEqual(
+            (await stored()).map((row) => row.token),
+            [hashSessionToken(raw)],
+          );
+          // The migration hashes rows stored before this release in place,
+          // and the browser holding the token stays signed in.
+          await db.query("UPDATE amp_auth_sessions SET token=$1 WHERE id=$2", [
+            raw,
+            id,
+          ]);
+          await db.query(
+            await readFile(
+              new URL(
+                "../migrations/0158-hash-session-tokens.sql",
+                import.meta.url,
+              ),
+              "utf8",
+            ),
+          );
+          assert.deepEqual(
+            (await stored()).map((row) => row.token),
+            [hashSessionToken(raw)],
+          );
+          assert.equal(await status(signed), 200);
           // A copy of the database holds only the hash, which opens nothing.
           assert.equal(await status(hashSessionToken(raw)), 401);
           // The endpoints that would hand out or act on stored tokens are off.
