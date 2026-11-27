@@ -1,0 +1,7120 @@
+{
+ "id": "prism-volume-edges--sp",
+ "title": "Volume of a rectangular prism",
+ "skill": "prism-volume",
+ "teaches": [
+  "prism-missing-edge",
+  "composite-prism-volume",
+  "prism-volume-select",
+  "mcas-prism-range-select"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1.4,
+     -1.6,
+     11,
+     8.4
+    ],
+    "points": {
+     "tile03p0": [
+      1.6500000000000001,
+      1.26
+     ],
+     "tile03p1": [
+      2.6500000000000004,
+      1.26
+     ],
+     "tile03p2": [
+      3.2,
+      1.68
+     ],
+     "tile03p3": [
+      2.2,
+      1.68
+     ],
+     "tile13p0": [
+      2.6500000000000004,
+      1.26
+     ],
+     "tile13p1": [
+      3.6500000000000004,
+      1.26
+     ],
+     "tile13p2": [
+      4.2,
+      1.68
+     ],
+     "tile13p3": [
+      3.2,
+      1.68
+     ],
+     "tile23p0": [
+      3.6500000000000004,
+      1.26
+     ],
+     "tile23p1": [
+      4.65,
+      1.26
+     ],
+     "tile23p2": [
+      5.2,
+      1.68
+     ],
+     "tile23p3": [
+      4.2,
+      1.68
+     ],
+     "tile33p0": [
+      4.65,
+      1.26
+     ],
+     "tile33p1": [
+      5.65,
+      1.26
+     ],
+     "tile33p2": [
+      6.2,
+      1.68
+     ],
+     "tile33p3": [
+      5.2,
+      1.68
+     ],
+     "tile43p0": [
+      5.65,
+      1.26
+     ],
+     "tile43p1": [
+      6.65,
+      1.26
+     ],
+     "tile43p2": [
+      7.2,
+      1.68
+     ],
+     "tile43p3": [
+      6.2,
+      1.68
+     ],
+     "tile53p0": [
+      6.65,
+      1.26
+     ],
+     "tile53p1": [
+      7.65,
+      1.26
+     ],
+     "tile53p2": [
+      8.2,
+      1.68
+     ],
+     "tile53p3": [
+      7.2,
+      1.68
+     ],
+     "tile63p0": [
+      7.65,
+      1.26
+     ],
+     "tile63p1": [
+      8.65,
+      1.26
+     ],
+     "tile63p2": [
+      9.2,
+      1.68
+     ],
+     "tile63p3": [
+      8.2,
+      1.68
+     ],
+     "tile02p0": [
+      1.1,
+      0.84
+     ],
+     "tile02p1": [
+      2.1,
+      0.84
+     ],
+     "tile02p2": [
+      2.6500000000000004,
+      1.26
+     ],
+     "tile02p3": [
+      1.6500000000000001,
+      1.26
+     ],
+     "tile12p0": [
+      2.1,
+      0.84
+     ],
+     "tile12p1": [
+      3.1,
+      0.84
+     ],
+     "tile12p2": [
+      3.6500000000000004,
+      1.26
+     ],
+     "tile12p3": [
+      2.6500000000000004,
+      1.26
+     ],
+     "tile22p0": [
+      3.1,
+      0.84
+     ],
+     "tile22p1": [
+      4.1,
+      0.84
+     ],
+     "tile22p2": [
+      4.65,
+      1.26
+     ],
+     "tile22p3": [
+      3.6500000000000004,
+      1.26
+     ],
+     "tile32p0": [
+      4.1,
+      0.84
+     ],
+     "tile32p1": [
+      5.1,
+      0.84
+     ],
+     "tile32p2": [
+      5.65,
+      1.26
+     ],
+     "tile32p3": [
+      4.65,
+      1.26
+     ],
+     "tile42p0": [
+      5.1,
+      0.84
+     ],
+     "tile42p1": [
+      6.1,
+      0.84
+     ],
+     "tile42p2": [
+      6.65,
+      1.26
+     ],
+     "tile42p3": [
+      5.65,
+      1.26
+     ],
+     "tile52p0": [
+      6.1,
+      0.84
+     ],
+     "tile52p1": [
+      7.1,
+      0.84
+     ],
+     "tile52p2": [
+      7.65,
+      1.26
+     ],
+     "tile52p3": [
+      6.65,
+      1.26
+     ],
+     "tile62p0": [
+      7.1,
+      0.84
+     ],
+     "tile62p1": [
+      8.1,
+      0.84
+     ],
+     "tile62p2": [
+      8.65,
+      1.26
+     ],
+     "tile62p3": [
+      7.65,
+      1.26
+     ],
+     "tile01p0": [
+      0.55,
+      0.42
+     ],
+     "tile01p1": [
+      1.55,
+      0.42
+     ],
+     "tile01p2": [
+      2.1,
+      0.84
+     ],
+     "tile01p3": [
+      1.1,
+      0.84
+     ],
+     "tile11p0": [
+      1.55,
+      0.42
+     ],
+     "tile11p1": [
+      2.55,
+      0.42
+     ],
+     "tile11p2": [
+      3.1,
+      0.84
+     ],
+     "tile11p3": [
+      2.1,
+      0.84
+     ],
+     "tile21p0": [
+      2.55,
+      0.42
+     ],
+     "tile21p1": [
+      3.55,
+      0.42
+     ],
+     "tile21p2": [
+      4.1,
+      0.84
+     ],
+     "tile21p3": [
+      3.1,
+      0.84
+     ],
+     "tile31p0": [
+      3.55,
+      0.42
+     ],
+     "tile31p1": [
+      4.55,
+      0.42
+     ],
+     "tile31p2": [
+      5.1,
+      0.84
+     ],
+     "tile31p3": [
+      4.1,
+      0.84
+     ],
+     "tile41p0": [
+      4.55,
+      0.42
+     ],
+     "tile41p1": [
+      5.55,
+      0.42
+     ],
+     "tile41p2": [
+      6.1,
+      0.84
+     ],
+     "tile41p3": [
+      5.1,
+      0.84
+     ],
+     "tile51p0": [
+      5.55,
+      0.42
+     ],
+     "tile51p1": [
+      6.55,
+      0.42
+     ],
+     "tile51p2": [
+      7.1,
+      0.84
+     ],
+     "tile51p3": [
+      6.1,
+      0.84
+     ],
+     "tile61p0": [
+      6.55,
+      0.42
+     ],
+     "tile61p1": [
+      7.55,
+      0.42
+     ],
+     "tile61p2": [
+      8.1,
+      0.84
+     ],
+     "tile61p3": [
+      7.1,
+      0.84
+     ],
+     "tile00p0": [
+      0,
+      0
+     ],
+     "tile00p1": [
+      1,
+      0
+     ],
+     "tile00p2": [
+      1.55,
+      0.42
+     ],
+     "tile00p3": [
+      0.55,
+      0.42
+     ],
+     "tile10p0": [
+      1,
+      0
+     ],
+     "tile10p1": [
+      2,
+      0
+     ],
+     "tile10p2": [
+      2.55,
+      0.42
+     ],
+     "tile10p3": [
+      1.55,
+      0.42
+     ],
+     "tile20p0": [
+      2,
+      0
+     ],
+     "tile20p1": [
+      3,
+      0
+     ],
+     "tile20p2": [
+      3.55,
+      0.42
+     ],
+     "tile20p3": [
+      2.55,
+      0.42
+     ],
+     "tile30p0": [
+      3,
+      0
+     ],
+     "tile30p1": [
+      4,
+      0
+     ],
+     "tile30p2": [
+      4.55,
+      0.42
+     ],
+     "tile30p3": [
+      3.55,
+      0.42
+     ],
+     "tile40p0": [
+      4,
+      0
+     ],
+     "tile40p1": [
+      5,
+      0
+     ],
+     "tile40p2": [
+      5.55,
+      0.42
+     ],
+     "tile40p3": [
+      4.55,
+      0.42
+     ],
+     "tile50p0": [
+      5,
+      0
+     ],
+     "tile50p1": [
+      6,
+      0
+     ],
+     "tile50p2": [
+      6.55,
+      0.42
+     ],
+     "tile50p3": [
+      5.55,
+      0.42
+     ],
+     "tile60p0": [
+      6,
+      0
+     ],
+     "tile60p1": [
+      7,
+      0
+     ],
+     "tile60p2": [
+      7.55,
+      0.42
+     ],
+     "tile60p3": [
+      6.55,
+      0.42
+     ],
+     "layer0Topp0": [
+      0,
+      1
+     ],
+     "layer0Topp1": [
+      7,
+      1
+     ],
+     "layer0Topp2": [
+      9.2,
+      2.6799999999999997
+     ],
+     "layer0Topp3": [
+      2.2,
+      2.6799999999999997
+     ],
+     "layer0Sidep0": [
+      7,
+      0
+     ],
+     "layer0Sidep1": [
+      9.2,
+      1.68
+     ],
+     "layer0Sidep2": [
+      9.2,
+      2.6799999999999997
+     ],
+     "layer0Sidep3": [
+      7,
+      1
+     ],
+     "layer0Frontp0": [
+      0,
+      0
+     ],
+     "layer0Frontp1": [
+      7,
+      0
+     ],
+     "layer0Frontp2": [
+      7,
+      1
+     ],
+     "layer0Frontp3": [
+      0,
+      1
+     ],
+     "layer0tx1a": [
+      1,
+      1
+     ],
+     "layer0tx1b": [
+      3.2,
+      2.6799999999999997
+     ],
+     "layer0fx1a": [
+      1,
+      0
+     ],
+     "layer0fx1b": [
+      1,
+      1
+     ],
+     "layer0tx2a": [
+      2,
+      1
+     ],
+     "layer0tx2b": [
+      4.2,
+      2.6799999999999997
+     ],
+     "layer0fx2a": [
+      2,
+      0
+     ],
+     "layer0fx2b": [
+      2,
+      1
+     ],
+     "layer0tx3a": [
+      3,
+      1
+     ],
+     "layer0tx3b": [
+      5.2,
+      2.6799999999999997
+     ],
+     "layer0fx3a": [
+      3,
+      0
+     ],
+     "layer0fx3b": [
+      3,
+      1
+     ],
+     "layer0tx4a": [
+      4,
+      1
+     ],
+     "layer0tx4b": [
+      6.2,
+      2.6799999999999997
+     ],
+     "layer0fx4a": [
+      4,
+      0
+     ],
+     "layer0fx4b": [
+      4,
+      1
+     ],
+     "layer0tx5a": [
+      5,
+      1
+     ],
+     "layer0tx5b": [
+      7.2,
+      2.6799999999999997
+     ],
+     "layer0fx5a": [
+      5,
+      0
+     ],
+     "layer0fx5b": [
+      5,
+      1
+     ],
+     "layer0tx6a": [
+      6,
+      1
+     ],
+     "layer0tx6b": [
+      8.2,
+      2.6799999999999997
+     ],
+     "layer0fx6a": [
+      6,
+      0
+     ],
+     "layer0fx6b": [
+      6,
+      1
+     ],
+     "layer0td1a": [
+      0.55,
+      1.42
+     ],
+     "layer0td1b": [
+      7.55,
+      1.42
+     ],
+     "layer0sd1a": [
+      7.55,
+      0.42
+     ],
+     "layer0sd1b": [
+      7.55,
+      1.42
+     ],
+     "layer0td2a": [
+      1.1,
+      1.8399999999999999
+     ],
+     "layer0td2b": [
+      8.1,
+      1.8399999999999999
+     ],
+     "layer0sd2a": [
+      8.1,
+      0.84
+     ],
+     "layer0sd2b": [
+      8.1,
+      1.8399999999999999
+     ],
+     "layer0td3a": [
+      1.6500000000000001,
+      2.26
+     ],
+     "layer0td3b": [
+      8.65,
+      2.26
+     ],
+     "layer0sd3a": [
+      8.65,
+      1.26
+     ],
+     "layer0sd3b": [
+      8.65,
+      2.26
+     ],
+     "layer1Topp0": [
+      0,
+      2
+     ],
+     "layer1Topp1": [
+      7,
+      2
+     ],
+     "layer1Topp2": [
+      9.2,
+      3.6799999999999997
+     ],
+     "layer1Topp3": [
+      2.2,
+      3.6799999999999997
+     ],
+     "layer1Sidep0": [
+      7,
+      1
+     ],
+     "layer1Sidep1": [
+      9.2,
+      2.6799999999999997
+     ],
+     "layer1Sidep2": [
+      9.2,
+      3.6799999999999997
+     ],
+     "layer1Sidep3": [
+      7,
+      2
+     ],
+     "layer1Frontp0": [
+      0,
+      1
+     ],
+     "layer1Frontp1": [
+      7,
+      1
+     ],
+     "layer1Frontp2": [
+      7,
+      2
+     ],
+     "layer1Frontp3": [
+      0,
+      2
+     ],
+     "layer2Topp0": [
+      0,
+      3
+     ],
+     "layer2Topp1": [
+      7,
+      3
+     ],
+     "layer2Topp2": [
+      9.2,
+      4.68
+     ],
+     "layer2Topp3": [
+      2.2,
+      4.68
+     ],
+     "layer2Sidep0": [
+      7,
+      2
+     ],
+     "layer2Sidep1": [
+      9.2,
+      3.6799999999999997
+     ],
+     "layer2Sidep2": [
+      9.2,
+      4.68
+     ],
+     "layer2Sidep3": [
+      7,
+      3
+     ],
+     "layer2Frontp0": [
+      0,
+      2
+     ],
+     "layer2Frontp1": [
+      7,
+      2
+     ],
+     "layer2Frontp2": [
+      7,
+      3
+     ],
+     "layer2Frontp3": [
+      0,
+      3
+     ],
+     "layer3Topp0": [
+      0,
+      4
+     ],
+     "layer3Topp1": [
+      7,
+      4
+     ],
+     "layer3Topp2": [
+      9.2,
+      5.68
+     ],
+     "layer3Topp3": [
+      2.2,
+      5.68
+     ],
+     "layer3Sidep0": [
+      7,
+      3
+     ],
+     "layer3Sidep1": [
+      9.2,
+      4.68
+     ],
+     "layer3Sidep2": [
+      9.2,
+      5.68
+     ],
+     "layer3Sidep3": [
+      7,
+      4
+     ],
+     "layer3Frontp0": [
+      0,
+      3
+     ],
+     "layer3Frontp1": [
+      7,
+      3
+     ],
+     "layer3Frontp2": [
+      7,
+      4
+     ],
+     "layer3Frontp3": [
+      0,
+      4
+     ],
+     "layer4Topp0": [
+      0,
+      5
+     ],
+     "layer4Topp1": [
+      7,
+      5
+     ],
+     "layer4Topp2": [
+      9.2,
+      6.68
+     ],
+     "layer4Topp3": [
+      2.2,
+      6.68
+     ],
+     "layer4Sidep0": [
+      7,
+      4
+     ],
+     "layer4Sidep1": [
+      9.2,
+      5.68
+     ],
+     "layer4Sidep2": [
+      9.2,
+      6.68
+     ],
+     "layer4Sidep3": [
+      7,
+      5
+     ],
+     "layer4Frontp0": [
+      0,
+      4
+     ],
+     "layer4Frontp1": [
+      7,
+      4
+     ],
+     "layer4Frontp2": [
+      7,
+      5
+     ],
+     "layer4Frontp3": [
+      0,
+      5
+     ],
+     "layer5Topp0": [
+      0,
+      6
+     ],
+     "layer5Topp1": [
+      7,
+      6
+     ],
+     "layer5Topp2": [
+      9.2,
+      7.68
+     ],
+     "layer5Topp3": [
+      2.2,
+      7.68
+     ],
+     "layer5Sidep0": [
+      7,
+      5
+     ],
+     "layer5Sidep1": [
+      9.2,
+      6.68
+     ],
+     "layer5Sidep2": [
+      9.2,
+      7.68
+     ],
+     "layer5Sidep3": [
+      7,
+      6
+     ],
+     "layer5Frontp0": [
+      0,
+      5
+     ],
+     "layer5Frontp1": [
+      7,
+      5
+     ],
+     "layer5Frontp2": [
+      7,
+      6
+     ],
+     "layer5Frontp3": [
+      0,
+      6
+     ],
+     "tank0a": [
+      0,
+      0
+     ],
+     "tank0b": [
+      7,
+      0
+     ],
+     "tank1a": [
+      7,
+      0
+     ],
+     "tank1b": [
+      9.2,
+      1.68
+     ],
+     "tank2a": [
+      9.2,
+      1.68
+     ],
+     "tank2b": [
+      2.2,
+      1.68
+     ],
+     "tank3a": [
+      2.2,
+      1.68
+     ],
+     "tank3b": [
+      0,
+      0
+     ],
+     "tank4a": [
+      0,
+      6
+     ],
+     "tank4b": [
+      7,
+      6
+     ],
+     "tank5a": [
+      7,
+      6
+     ],
+     "tank5b": [
+      9.2,
+      7.68
+     ],
+     "tank6a": [
+      9.2,
+      7.68
+     ],
+     "tank6b": [
+      2.2,
+      7.68
+     ],
+     "tank7a": [
+      2.2,
+      7.68
+     ],
+     "tank7b": [
+      0,
+      6
+     ],
+     "tank8a": [
+      0,
+      0
+     ],
+     "tank8b": [
+      0,
+      6
+     ],
+     "tank9a": [
+      7,
+      0
+     ],
+     "tank9b": [
+      7,
+      6
+     ],
+     "tank10a": [
+      9.2,
+      1.68
+     ],
+     "tank10b": [
+      9.2,
+      7.68
+     ],
+     "tank11a": [
+      2.2,
+      1.68
+     ],
+     "tank11b": [
+      2.2,
+      7.68
+     ],
+     "lengtha": [
+      0,
+      0
+     ],
+     "lengthb": [
+      7,
+      0
+     ],
+     "deptha": [
+      7,
+      0
+     ],
+     "depthb": [
+      9.2,
+      1.68
+     ],
+     "heighta": [
+      0,
+      0
+     ],
+     "heightb": [
+      0,
+      6
+     ],
+     "unittop0": [
+      0,
+      1
+     ],
+     "unittop1": [
+      1,
+      1
+     ],
+     "unittop2": [
+      1.55,
+      1.42
+     ],
+     "unittop3": [
+      0.55,
+      1.42
+     ],
+     "unitside0": [
+      1,
+      0
+     ],
+     "unitside1": [
+      1.55,
+      0.42
+     ],
+     "unitside2": [
+      1.55,
+      1.42
+     ],
+     "unitside3": [
+      1,
+      1
+     ],
+     "unitfront0": [
+      0,
+      0
+     ],
+     "unitfront1": [
+      1,
+      0
+     ],
+     "unitfront2": [
+      1,
+      1
+     ],
+     "unitfront3": [
+      0,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "tile03",
+      "poly": [
+       "tile03p0",
+       "tile03p1",
+       "tile03p2",
+       "tile03p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile13",
+      "poly": [
+       "tile13p0",
+       "tile13p1",
+       "tile13p2",
+       "tile13p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile23",
+      "poly": [
+       "tile23p0",
+       "tile23p1",
+       "tile23p2",
+       "tile23p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile33",
+      "poly": [
+       "tile33p0",
+       "tile33p1",
+       "tile33p2",
+       "tile33p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile43",
+      "poly": [
+       "tile43p0",
+       "tile43p1",
+       "tile43p2",
+       "tile43p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile53",
+      "poly": [
+       "tile53p0",
+       "tile53p1",
+       "tile53p2",
+       "tile53p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile63",
+      "poly": [
+       "tile63p0",
+       "tile63p1",
+       "tile63p2",
+       "tile63p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile02",
+      "poly": [
+       "tile02p0",
+       "tile02p1",
+       "tile02p2",
+       "tile02p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile12",
+      "poly": [
+       "tile12p0",
+       "tile12p1",
+       "tile12p2",
+       "tile12p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile22",
+      "poly": [
+       "tile22p0",
+       "tile22p1",
+       "tile22p2",
+       "tile22p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile32",
+      "poly": [
+       "tile32p0",
+       "tile32p1",
+       "tile32p2",
+       "tile32p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile42",
+      "poly": [
+       "tile42p0",
+       "tile42p1",
+       "tile42p2",
+       "tile42p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile52",
+      "poly": [
+       "tile52p0",
+       "tile52p1",
+       "tile52p2",
+       "tile52p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile62",
+      "poly": [
+       "tile62p0",
+       "tile62p1",
+       "tile62p2",
+       "tile62p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile01",
+      "poly": [
+       "tile01p0",
+       "tile01p1",
+       "tile01p2",
+       "tile01p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile11",
+      "poly": [
+       "tile11p0",
+       "tile11p1",
+       "tile11p2",
+       "tile11p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile21",
+      "poly": [
+       "tile21p0",
+       "tile21p1",
+       "tile21p2",
+       "tile21p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile31",
+      "poly": [
+       "tile31p0",
+       "tile31p1",
+       "tile31p2",
+       "tile31p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile41",
+      "poly": [
+       "tile41p0",
+       "tile41p1",
+       "tile41p2",
+       "tile41p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile51",
+      "poly": [
+       "tile51p0",
+       "tile51p1",
+       "tile51p2",
+       "tile51p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile61",
+      "poly": [
+       "tile61p0",
+       "tile61p1",
+       "tile61p2",
+       "tile61p3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile00",
+      "poly": [
+       "tile00p0",
+       "tile00p1",
+       "tile00p2",
+       "tile00p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile10",
+      "poly": [
+       "tile10p0",
+       "tile10p1",
+       "tile10p2",
+       "tile10p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile20",
+      "poly": [
+       "tile20p0",
+       "tile20p1",
+       "tile20p2",
+       "tile20p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile30",
+      "poly": [
+       "tile30p0",
+       "tile30p1",
+       "tile30p2",
+       "tile30p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile40",
+      "poly": [
+       "tile40p0",
+       "tile40p1",
+       "tile40p2",
+       "tile40p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile50",
+      "poly": [
+       "tile50p0",
+       "tile50p1",
+       "tile50p2",
+       "tile50p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "tile60",
+      "poly": [
+       "tile60p0",
+       "tile60p1",
+       "tile60p2",
+       "tile60p3"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tiles"
+     },
+     {
+      "id": "layer0Top",
+      "poly": [
+       "layer0Topp0",
+       "layer0Topp1",
+       "layer0Topp2",
+       "layer0Topp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0Side",
+      "poly": [
+       "layer0Sidep0",
+       "layer0Sidep1",
+       "layer0Sidep2",
+       "layer0Sidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0Front",
+      "poly": [
+       "layer0Frontp0",
+       "layer0Frontp1",
+       "layer0Frontp2",
+       "layer0Frontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0tx1",
+      "seg": [
+       "layer0tx1a",
+       "layer0tx1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0fx1",
+      "seg": [
+       "layer0fx1a",
+       "layer0fx1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0tx2",
+      "seg": [
+       "layer0tx2a",
+       "layer0tx2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0fx2",
+      "seg": [
+       "layer0fx2a",
+       "layer0fx2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0tx3",
+      "seg": [
+       "layer0tx3a",
+       "layer0tx3b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0fx3",
+      "seg": [
+       "layer0fx3a",
+       "layer0fx3b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0tx4",
+      "seg": [
+       "layer0tx4a",
+       "layer0tx4b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0fx4",
+      "seg": [
+       "layer0fx4a",
+       "layer0fx4b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0tx5",
+      "seg": [
+       "layer0tx5a",
+       "layer0tx5b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0fx5",
+      "seg": [
+       "layer0fx5a",
+       "layer0fx5b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0tx6",
+      "seg": [
+       "layer0tx6a",
+       "layer0tx6b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0fx6",
+      "seg": [
+       "layer0fx6a",
+       "layer0fx6b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0td1",
+      "seg": [
+       "layer0td1a",
+       "layer0td1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0sd1",
+      "seg": [
+       "layer0sd1a",
+       "layer0sd1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0td2",
+      "seg": [
+       "layer0td2a",
+       "layer0td2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0sd2",
+      "seg": [
+       "layer0sd2a",
+       "layer0sd2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0td3",
+      "seg": [
+       "layer0td3a",
+       "layer0td3b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer0sd3",
+      "seg": [
+       "layer0sd3a",
+       "layer0sd3b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "layer0"
+     },
+     {
+      "id": "layer1Top",
+      "poly": [
+       "layer1Topp0",
+       "layer1Topp1",
+       "layer1Topp2",
+       "layer1Topp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer1"
+     },
+     {
+      "id": "layer1Side",
+      "poly": [
+       "layer1Sidep0",
+       "layer1Sidep1",
+       "layer1Sidep2",
+       "layer1Sidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer1"
+     },
+     {
+      "id": "layer1Front",
+      "poly": [
+       "layer1Frontp0",
+       "layer1Frontp1",
+       "layer1Frontp2",
+       "layer1Frontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer1"
+     },
+     {
+      "id": "layer2Top",
+      "poly": [
+       "layer2Topp0",
+       "layer2Topp1",
+       "layer2Topp2",
+       "layer2Topp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer2"
+     },
+     {
+      "id": "layer2Side",
+      "poly": [
+       "layer2Sidep0",
+       "layer2Sidep1",
+       "layer2Sidep2",
+       "layer2Sidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer2"
+     },
+     {
+      "id": "layer2Front",
+      "poly": [
+       "layer2Frontp0",
+       "layer2Frontp1",
+       "layer2Frontp2",
+       "layer2Frontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer2"
+     },
+     {
+      "id": "layer3Top",
+      "poly": [
+       "layer3Topp0",
+       "layer3Topp1",
+       "layer3Topp2",
+       "layer3Topp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer3"
+     },
+     {
+      "id": "layer3Side",
+      "poly": [
+       "layer3Sidep0",
+       "layer3Sidep1",
+       "layer3Sidep2",
+       "layer3Sidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer3"
+     },
+     {
+      "id": "layer3Front",
+      "poly": [
+       "layer3Frontp0",
+       "layer3Frontp1",
+       "layer3Frontp2",
+       "layer3Frontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer3"
+     },
+     {
+      "id": "layer4Top",
+      "poly": [
+       "layer4Topp0",
+       "layer4Topp1",
+       "layer4Topp2",
+       "layer4Topp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer4"
+     },
+     {
+      "id": "layer4Side",
+      "poly": [
+       "layer4Sidep0",
+       "layer4Sidep1",
+       "layer4Sidep2",
+       "layer4Sidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer4"
+     },
+     {
+      "id": "layer4Front",
+      "poly": [
+       "layer4Frontp0",
+       "layer4Frontp1",
+       "layer4Frontp2",
+       "layer4Frontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "layer4"
+     },
+     {
+      "id": "layer5Top",
+      "poly": [
+       "layer5Topp0",
+       "layer5Topp1",
+       "layer5Topp2",
+       "layer5Topp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer5"
+     },
+     {
+      "id": "layer5Side",
+      "poly": [
+       "layer5Sidep0",
+       "layer5Sidep1",
+       "layer5Sidep2",
+       "layer5Sidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer5"
+     },
+     {
+      "id": "layer5Front",
+      "poly": [
+       "layer5Frontp0",
+       "layer5Frontp1",
+       "layer5Frontp2",
+       "layer5Frontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "layer5"
+     },
+     {
+      "id": "tank0",
+      "seg": [
+       "tank0a",
+       "tank0b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank1",
+      "seg": [
+       "tank1a",
+       "tank1b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank2",
+      "seg": [
+       "tank2a",
+       "tank2b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "tank3",
+      "seg": [
+       "tank3a",
+       "tank3b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "tank4",
+      "seg": [
+       "tank4a",
+       "tank4b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank5",
+      "seg": [
+       "tank5a",
+       "tank5b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank6",
+      "seg": [
+       "tank6a",
+       "tank6b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank7",
+      "seg": [
+       "tank7a",
+       "tank7b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank8",
+      "seg": [
+       "tank8a",
+       "tank8b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank9",
+      "seg": [
+       "tank9a",
+       "tank9b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank10",
+      "seg": [
+       "tank10a",
+       "tank10b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": false
+     },
+     {
+      "id": "tank11",
+      "seg": [
+       "tank11a",
+       "tank11b"
+      ],
+      "ink": "ink",
+      "w": 1.7,
+      "group": "tank",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "length",
+      "dim": [
+       "lengtha",
+       "lengthb"
+      ],
+      "tex": "7\\text{ cm}",
+      "side": "s",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "depth",
+      "dim": [
+       "deptha",
+       "depthb"
+      ],
+      "tex": "4\\text{ cm}",
+      "side": "se",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "height",
+      "dim": [
+       "heighta",
+       "heightb"
+      ],
+      "tex": "6\\text{ cm}",
+      "side": "w",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "unittop",
+      "poly": [
+       "unittop0",
+       "unittop1",
+       "unittop2",
+       "unittop3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "unit",
+      "w": 1.6
+     },
+     {
+      "id": "unitside",
+      "poly": [
+       "unitside0",
+       "unitside1",
+       "unitside2",
+       "unitside3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "unit",
+      "w": 1.6
+     },
+     {
+      "id": "unitfront",
+      "poly": [
+       "unitfront0",
+       "unitfront1",
+       "unitfront2",
+       "unitfront3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "unit",
+      "w": 1.6
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This model fish tank is a rectangular prism: a box shape. Its inside measures seven centimeters long, four wide, and six high.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How much space inside?"
+      },
+      {
+       "do": "highlight",
+       "target": "length",
+       "at": "seven",
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "depth",
+       "at": "four",
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "height",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Where did the cubes go? How can we find its volume?",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "Volume counts the unit cubes that fill the space, without gaps or overlaps. Each cube here has one-centimeter edges.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "unit",
+       "at": "unit"
+      },
+      {
+       "do": "highlight",
+       "target": "unit",
+       "at": "cube"
+      },
+      {
+       "do": "text",
+       "text": "Unit cube: $1\\text{ cm}$ per edge.",
+       "at": "one-centimeter"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with the base, the bottom face. Seven squares along, and four rows. Twenty-eight square centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "unit",
+       "at": "base"
+      },
+      {
+       "do": "show",
+       "target": "tiles",
+       "at": "base"
+      },
+      {
+       "do": "write",
+       "tex": "7\\times4=28\\text{ cm}^2",
+       "at": "Twenty-eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Give each square a cube one centimeter high. The same base holds twenty-eight cubes in one layer.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "tiles",
+       "at": "cube"
+      },
+      {
+       "do": "show",
+       "target": "layer0",
+       "at": "cube"
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ layer}:\\ 28\\text{ cubes}",
+       "at": "layer"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The tank is six centimeters high, so we need six of those layers. One, two, three, four, five, six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "height",
+       "at": "six",
+       "until": "One"
+      },
+      {
+       "do": "show",
+       "target": "layer1",
+       "at": "two",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "layer2",
+       "at": "three",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "layer3",
+       "at": "four",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "layer4",
+       "at": "five",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "layer5",
+       "at": "six",
+       "nth": 3,
+       "dur": 0.12
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "layer0Top",
+        "layer0Side",
+        "layer0Front"
+       ],
+       "at": "One",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "layer1Top",
+        "layer1Side",
+        "layer1Front"
+       ],
+       "at": "two",
+       "until": "three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "layer2Top",
+        "layer2Side",
+        "layer2Front"
+       ],
+       "at": "three",
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "layer3Top",
+        "layer3Side",
+        "layer3Front"
+       ],
+       "at": "four",
+       "until": "five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "layer4Top",
+        "layer4Side",
+        "layer4Front"
+       ],
+       "at": "five",
+       "until": "six",
+       "untilNth": 3
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "layer5Top",
+        "layer5Side",
+        "layer5Front"
+       ],
+       "at": "six",
+       "nth": 3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty-eight cubes in every layer, times six layers. One hundred sixty-eight cubic centimeters.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One layer × number of layers"
+      },
+      {
+       "do": "write",
+       "tex": "28\\times6=168",
+       "at": "times"
+      },
+      {
+       "do": "answer",
+       "tex": "168\\text{ cm}^3",
+       "at": "cubic"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So multiplying two edges finds one layer. The third edge tells how many layers!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "layer5",
+       "at": "layer",
+       "until": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "height",
+       "at": "third"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Adding the edge lengths only measures lengths. To count all the cubes, multiply.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "layer0",
+        "layer1",
+        "layer2",
+        "layer3",
+        "layer4",
+        "layer5"
+       ],
+       "at": "Adding"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Volume of a rectangular prism"
+      },
+      {
+       "do": "write",
+       "tex": "V=\\ell\\times w\\times h",
+       "at": "multiply"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here, the letters mean volume, length, width, and height. We can also call the base area capital *B*. Volume is base area times height.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "$\\begin{array}{ll}V:\\text{volume}&\\ell:\\text{length}\\\\w:\\text{width}&h:\\text{height}\\end{array}$"
+      },
+      {
+       "do": "write",
+       "tex": "B=\\ell\\times w",
+       "at": "base"
+      },
+      {
+       "do": "write",
+       "tex": "V=B\\times h",
+       "at": "Volume",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1.6,
+     13.5,
+     9
+    ],
+    "points": {
+     "wholeTopTallp0": [
+      0,
+      6
+     ],
+     "wholeTopTallp1": [
+      3,
+      6
+     ],
+     "wholeTopTallp2": [
+      4.65,
+      7.26
+     ],
+     "wholeTopTallp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "wholeRiserp0": [
+      3,
+      2
+     ],
+     "wholeRiserp1": [
+      4.65,
+      3.26
+     ],
+     "wholeRiserp2": [
+      4.65,
+      7.26
+     ],
+     "wholeRiserp3": [
+      3,
+      6
+     ],
+     "wholeTopLowp0": [
+      3,
+      2
+     ],
+     "wholeTopLowp1": [
+      8,
+      2
+     ],
+     "wholeTopLowp2": [
+      9.65,
+      3.26
+     ],
+     "wholeTopLowp3": [
+      4.65,
+      3.26
+     ],
+     "wholeEndp0": [
+      8,
+      0
+     ],
+     "wholeEndp1": [
+      9.65,
+      1.26
+     ],
+     "wholeEndp2": [
+      9.65,
+      3.26
+     ],
+     "wholeEndp3": [
+      8,
+      2
+     ],
+     "wholeFrontp0": [
+      0,
+      0
+     ],
+     "wholeFrontp1": [
+      8,
+      0
+     ],
+     "wholeFrontp2": [
+      8,
+      2
+     ],
+     "wholeFrontp3": [
+      3,
+      2
+     ],
+     "wholeFrontp4": [
+      3,
+      6
+     ],
+     "wholeFrontp5": [
+      0,
+      6
+     ],
+     "totalLengtha": [
+      0,
+      0
+     ],
+     "totalLengthb": [
+      8,
+      0
+     ],
+     "tallHeighta": [
+      0,
+      0
+     ],
+     "tallHeightb": [
+      0,
+      6
+     ],
+     "lowHeighta": [
+      9.65,
+      1.26
+     ],
+     "lowHeightb": [
+      9.65,
+      3.26
+     ],
+     "topLengtha": [
+      1.65,
+      7.26
+     ],
+     "topLengthb": [
+      4.65,
+      7.26
+     ],
+     "commonDeptha": [
+      8,
+      0
+     ],
+     "commonDepthb": [
+      9.65,
+      1.26
+     ],
+     "tallTopp0": [
+      0,
+      6
+     ],
+     "tallTopp1": [
+      3,
+      6
+     ],
+     "tallTopp2": [
+      4.65,
+      7.26
+     ],
+     "tallTopp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "tallSidep0": [
+      3,
+      0
+     ],
+     "tallSidep1": [
+      4.65,
+      1.26
+     ],
+     "tallSidep2": [
+      4.65,
+      7.26
+     ],
+     "tallSidep3": [
+      3,
+      6
+     ],
+     "tallFrontp0": [
+      0,
+      0
+     ],
+     "tallFrontp1": [
+      3,
+      0
+     ],
+     "tallFrontp2": [
+      3,
+      6
+     ],
+     "tallFrontp3": [
+      0,
+      6
+     ],
+     "lowTopp0": [
+      3,
+      2
+     ],
+     "lowTopp1": [
+      8,
+      2
+     ],
+     "lowTopp2": [
+      9.65,
+      3.26
+     ],
+     "lowTopp3": [
+      4.65,
+      3.26
+     ],
+     "lowSidep0": [
+      8,
+      0
+     ],
+     "lowSidep1": [
+      9.65,
+      1.26
+     ],
+     "lowSidep2": [
+      9.65,
+      3.26
+     ],
+     "lowSidep3": [
+      8,
+      2
+     ],
+     "lowFrontp0": [
+      3,
+      0
+     ],
+     "lowFrontp1": [
+      8,
+      0
+     ],
+     "lowFrontp2": [
+      8,
+      2
+     ],
+     "lowFrontp3": [
+      3,
+      2
+     ],
+     "bladep0": [
+      3,
+      0
+     ],
+     "bladep1": [
+      4.65,
+      1.26
+     ],
+     "bladep2": [
+      4.65,
+      3.26
+     ],
+     "bladep3": [
+      3,
+      2
+     ],
+     "cuta": [
+      3,
+      2
+     ],
+     "cutb": [
+      3,
+      0
+     ],
+     "lowLengtha": [
+      5.2,
+      0
+     ],
+     "lowLengthb": [
+      10.2,
+      0
+     ],
+     "tallLengtha": [
+      0,
+      0
+     ],
+     "tallLengthb": [
+      3,
+      0
+     ],
+     "tallVolp": [
+      1.5,
+      3.2
+     ],
+     "lowVolp": [
+      7.7,
+      1
+     ],
+     "emptytop0": [
+      3,
+      6
+     ],
+     "emptytop1": [
+      8,
+      6
+     ],
+     "emptytop2": [
+      9.65,
+      7.26
+     ],
+     "emptytop3": [
+      4.65,
+      7.26
+     ],
+     "emptyside0": [
+      8,
+      2
+     ],
+     "emptyside1": [
+      9.65,
+      3.26
+     ],
+     "emptyside2": [
+      9.65,
+      7.26
+     ],
+     "emptyside3": [
+      8,
+      6
+     ],
+     "emptyfront0": [
+      3,
+      2
+     ],
+     "emptyfront1": [
+      8,
+      2
+     ],
+     "emptyfront2": [
+      8,
+      6
+     ],
+     "emptyfront3": [
+      3,
+      6
+     ],
+     "tallDeptha": [
+      0,
+      6
+     ],
+     "tallDepthb": [
+      1.65,
+      7.26
+     ]
+    },
+    "parts": [
+     {
+      "id": "wholeTopTall",
+      "poly": [
+       "wholeTopTallp0",
+       "wholeTopTallp1",
+       "wholeTopTallp2",
+       "wholeTopTallp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeRiser",
+      "poly": [
+       "wholeRiserp0",
+       "wholeRiserp1",
+       "wholeRiserp2",
+       "wholeRiserp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeTopLow",
+      "poly": [
+       "wholeTopLowp0",
+       "wholeTopLowp1",
+       "wholeTopLowp2",
+       "wholeTopLowp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeEnd",
+      "poly": [
+       "wholeEndp0",
+       "wholeEndp1",
+       "wholeEndp2",
+       "wholeEndp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeFront",
+      "poly": [
+       "wholeFrontp0",
+       "wholeFrontp1",
+       "wholeFrontp2",
+       "wholeFrontp3",
+       "wholeFrontp4",
+       "wholeFrontp5"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "tallTop",
+      "poly": [
+       "tallTopp0",
+       "tallTopp1",
+       "tallTopp2",
+       "tallTopp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tall"
+     },
+     {
+      "id": "tallSide",
+      "poly": [
+       "tallSidep0",
+       "tallSidep1",
+       "tallSidep2",
+       "tallSidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tall"
+     },
+     {
+      "id": "tallFront",
+      "poly": [
+       "tallFrontp0",
+       "tallFrontp1",
+       "tallFrontp2",
+       "tallFrontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tall"
+     },
+     {
+      "id": "lowTop",
+      "poly": [
+       "lowTopp0",
+       "lowTopp1",
+       "lowTopp2",
+       "lowTopp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "low"
+     },
+     {
+      "id": "lowSide",
+      "poly": [
+       "lowSidep0",
+       "lowSidep1",
+       "lowSidep2",
+       "lowSidep3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "low"
+     },
+     {
+      "id": "lowFront",
+      "poly": [
+       "lowFrontp0",
+       "lowFrontp1",
+       "lowFrontp2",
+       "lowFrontp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "low"
+     },
+     {
+      "id": "blade",
+      "poly": [
+       "bladep0",
+       "bladep1",
+       "bladep2",
+       "bladep3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.6,
+      "sheer": true
+     },
+     {
+      "id": "cut",
+      "seg": [
+       "cuta",
+       "cutb"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "tallVol",
+      "label": "54",
+      "at": "tallVolp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "lowVol",
+      "label": "30",
+      "at": "lowVolp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true,
+      "flies": true
+     },
+     {
+      "id": "emptytop",
+      "poly": [
+       "emptytop0",
+       "emptytop1",
+       "emptytop2",
+       "emptytop3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "empty",
+      "w": 1.6,
+      "sheer": true
+     },
+     {
+      "id": "emptyside",
+      "poly": [
+       "emptyside0",
+       "emptyside1",
+       "emptyside2",
+       "emptyside3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "empty",
+      "w": 1.6,
+      "sheer": true
+     },
+     {
+      "id": "emptyfront",
+      "poly": [
+       "emptyfront0",
+       "emptyfront1",
+       "emptyfront2",
+       "emptyfront3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "group": "empty",
+      "w": 1.6,
+      "sheer": true
+     },
+     {
+      "id": "totalLength",
+      "dim": [
+       "totalLengtha",
+       "totalLengthb"
+      ],
+      "tex": "8\\text{ cm}",
+      "side": "s",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "tallHeight",
+      "dim": [
+       "tallHeighta",
+       "tallHeightb"
+      ],
+      "tex": "6\\text{ cm}",
+      "side": "w",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "lowHeight",
+      "dim": [
+       "lowHeighta",
+       "lowHeightb"
+      ],
+      "tex": "2\\text{ cm}",
+      "side": "e",
+      "ink": "ink",
+      "start": true,
+      "group": "low"
+     },
+     {
+      "id": "topLength",
+      "dim": [
+       "topLengtha",
+       "topLengthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "n",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "commonDepth",
+      "dim": [
+       "commonDeptha",
+       "commonDepthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "se",
+      "ink": "ink",
+      "start": true,
+      "group": "low"
+     },
+     {
+      "id": "lowLength",
+      "dim": [
+       "lowLengtha",
+       "lowLengthb"
+      ],
+      "tex": "5\\text{ cm}",
+      "side": "s",
+      "ink": "ink"
+     },
+     {
+      "id": "tallLength",
+      "dim": [
+       "tallLengtha",
+       "tallLengthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "s",
+      "ink": "ink",
+      "group": "tall"
+     },
+     {
+      "id": "tallDepth",
+      "dim": [
+       "tallDeptha",
+       "tallDepthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "nw",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What about this step-shaped solid? It is eight centimeters long and three deep. The tall end is six high; the low end is two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One solid, two boxes"
+      },
+      {
+       "do": "highlight",
+       "target": "totalLength",
+       "at": "eight",
+       "until": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "commonDepth",
+       "at": "three",
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "tallHeight",
+       "at": "six",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "lowHeight",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Eight times three times six?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "empty",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That would fill the empty space above the low end, too. Instead, cut straight down at the step.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "empty",
+       "at": "empty",
+       "until": "Instead"
+      },
+      {
+       "do": "hide",
+       "target": "empty",
+       "at": "Instead"
+      },
+      {
+       "do": "draw",
+       "target": "cut",
+       "at": "cut"
+      },
+      {
+       "do": "show",
+       "target": "blade",
+       "at": "cut"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Separate the two boxes. Both are three centimeters deep. Each needs its own length and height.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "whole",
+        "blade",
+        "cut"
+       ],
+       "at": "Separate"
+      },
+      {
+       "do": "show",
+       "target": [
+        "tall",
+        "low"
+       ],
+       "at": "Separate"
+      },
+      {
+       "do": "slide",
+       "target": "low",
+       "by": [
+        2.2,
+        0
+       ],
+       "at": "Separate"
+      },
+      {
+       "do": "hide",
+       "target": "totalLength",
+       "at": "Separate"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "commonDepth",
+        "tallDepth"
+       ],
+       "at": "three",
+       "until": "Each"
+      },
+      {
+       "do": "show",
+       "target": "tallDepth",
+       "at": "Separate"
+      },
+      {
+       "do": "hide",
+       "target": "topLength",
+       "at": "Separate"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The tall box is three by three by six. Its volume is fifty-four cubic centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "tallTop",
+        "tallSide",
+        "tallFront"
+       ],
+       "at": "tall"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times3\\times6=54",
+       "at": "fifty-four"
+      },
+      {
+       "do": "show",
+       "target": "tallVol",
+       "at": "fifty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The low box is only five long: eight minus three. Its height is two, not six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "lowLength",
+       "at": "five",
+       "dur": 0.12
+      },
+      {
+       "do": "write",
+       "tex": "8-3=5",
+       "at": "minus"
+      },
+      {
+       "do": "highlight",
+       "target": "lowLength",
+       "at": "five",
+       "until": "Its"
+      },
+      {
+       "do": "highlight",
+       "target": "lowHeight",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five times three times two gives thirty cubic centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5\\times3\\times2=30",
+       "at": "thirty"
+      },
+      {
+       "do": "show",
+       "target": "lowVol",
+       "at": "thirty"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lowTop",
+        "lowSide",
+        "lowFront"
+       ],
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fit them back. Nothing is missing, and nothing is counted twice. Add their volumes: fifty-four plus thirty is eighty-four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "slide",
+       "target": "low",
+       "by": [
+        -2.2,
+        0
+       ],
+       "at": "back",
+       "dur": 0.18
+      },
+      {
+       "do": "hide",
+       "target": [
+        "lowLength",
+        "tallLength"
+       ],
+       "at": "back"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "tallFront",
+        "lowFront"
+       ],
+       "at": "Nothing",
+       "until": "Add"
+      },
+      {
+       "do": "answer",
+       "tex": "54+30=84\\text{ cm}^3",
+       "at": "eighty-four"
+      },
+      {
+       "do": "slide",
+       "target": "lowVol",
+       "by": [
+        -2.2,
+        0
+       ],
+       "at": "back",
+       "dur": 0.18
+      },
+      {
+       "do": "clear",
+       "at": "Add"
+      },
+      {
+       "do": "header",
+       "text": "Volumes add",
+       "at": "Add"
+      },
+      {
+       "do": "hide",
+       "target": "tallDepth",
+       "at": "back"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1.6,
+     12,
+     9
+    ],
+    "points": {
+     "wholeTopTallp0": [
+      0,
+      6
+     ],
+     "wholeTopTallp1": [
+      3,
+      6
+     ],
+     "wholeTopTallp2": [
+      4.65,
+      7.26
+     ],
+     "wholeTopTallp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "wholeRiserp0": [
+      3,
+      2
+     ],
+     "wholeRiserp1": [
+      4.65,
+      3.26
+     ],
+     "wholeRiserp2": [
+      4.65,
+      7.26
+     ],
+     "wholeRiserp3": [
+      3,
+      6
+     ],
+     "wholeTopLowp0": [
+      3,
+      2
+     ],
+     "wholeTopLowp1": [
+      8,
+      2
+     ],
+     "wholeTopLowp2": [
+      9.65,
+      3.26
+     ],
+     "wholeTopLowp3": [
+      4.65,
+      3.26
+     ],
+     "wholeEndp0": [
+      8,
+      0
+     ],
+     "wholeEndp1": [
+      9.65,
+      1.26
+     ],
+     "wholeEndp2": [
+      9.65,
+      3.26
+     ],
+     "wholeEndp3": [
+      8,
+      2
+     ],
+     "wholeFrontp0": [
+      0,
+      0
+     ],
+     "wholeFrontp1": [
+      8,
+      0
+     ],
+     "wholeFrontp2": [
+      8,
+      2
+     ],
+     "wholeFrontp3": [
+      3,
+      2
+     ],
+     "wholeFrontp4": [
+      3,
+      6
+     ],
+     "wholeFrontp5": [
+      0,
+      6
+     ],
+     "totalLengtha": [
+      0,
+      0
+     ],
+     "totalLengthb": [
+      8,
+      0
+     ],
+     "tallHeighta": [
+      0,
+      0
+     ],
+     "tallHeightb": [
+      0,
+      6
+     ],
+     "lowHeighta": [
+      9.65,
+      1.26
+     ],
+     "lowHeightb": [
+      9.65,
+      3.26
+     ],
+     "topLengtha": [
+      1.65,
+      7.26
+     ],
+     "topLengthb": [
+      4.65,
+      7.26
+     ],
+     "commonDeptha": [
+      8,
+      0
+     ],
+     "commonDepthb": [
+      9.65,
+      1.26
+     ],
+     "bottomTopp0": [
+      0,
+      2
+     ],
+     "bottomTopp1": [
+      8,
+      2
+     ],
+     "bottomTopp2": [
+      9.65,
+      3.26
+     ],
+     "bottomTopp3": [
+      1.6500000000000001,
+      3.26
+     ],
+     "bottomSidep0": [
+      8,
+      0
+     ],
+     "bottomSidep1": [
+      9.65,
+      1.26
+     ],
+     "bottomSidep2": [
+      9.65,
+      3.26
+     ],
+     "bottomSidep3": [
+      8,
+      2
+     ],
+     "bottomFrontp0": [
+      0,
+      0
+     ],
+     "bottomFrontp1": [
+      8,
+      0
+     ],
+     "bottomFrontp2": [
+      8,
+      2
+     ],
+     "bottomFrontp3": [
+      0,
+      2
+     ],
+     "topTopp0": [
+      0,
+      6
+     ],
+     "topTopp1": [
+      3,
+      6
+     ],
+     "topTopp2": [
+      4.65,
+      7.26
+     ],
+     "topTopp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "topSidep0": [
+      3,
+      2
+     ],
+     "topSidep1": [
+      4.65,
+      3.26
+     ],
+     "topSidep2": [
+      4.65,
+      7.26
+     ],
+     "topSidep3": [
+      3,
+      6
+     ],
+     "topFrontp0": [
+      0,
+      2
+     ],
+     "topFrontp1": [
+      3,
+      2
+     ],
+     "topFrontp2": [
+      3,
+      6
+     ],
+     "topFrontp3": [
+      0,
+      6
+     ],
+     "bladep0": [
+      0,
+      2
+     ],
+     "bladep1": [
+      3,
+      2
+     ],
+     "bladep2": [
+      4.65,
+      3.26
+     ],
+     "bladep3": [
+      1.6500000000000001,
+      3.26
+     ],
+     "cuta": [
+      0,
+      2
+     ],
+     "cutb": [
+      3,
+      2
+     ],
+     "upperHeighta": [
+      0,
+      4.0
+     ],
+     "upperHeightb": [
+      0,
+      8.0
+     ],
+     "topVolp": [
+      1.5,
+      6.0
+     ],
+     "bottomVolp": [
+      4,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "wholeTopTall",
+      "poly": [
+       "wholeTopTallp0",
+       "wholeTopTallp1",
+       "wholeTopTallp2",
+       "wholeTopTallp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeRiser",
+      "poly": [
+       "wholeRiserp0",
+       "wholeRiserp1",
+       "wholeRiserp2",
+       "wholeRiserp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeTopLow",
+      "poly": [
+       "wholeTopLowp0",
+       "wholeTopLowp1",
+       "wholeTopLowp2",
+       "wholeTopLowp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeEnd",
+      "poly": [
+       "wholeEndp0",
+       "wholeEndp1",
+       "wholeEndp2",
+       "wholeEndp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeFront",
+      "poly": [
+       "wholeFrontp0",
+       "wholeFrontp1",
+       "wholeFrontp2",
+       "wholeFrontp3",
+       "wholeFrontp4",
+       "wholeFrontp5"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "bottomTop",
+      "poly": [
+       "bottomTopp0",
+       "bottomTopp1",
+       "bottomTopp2",
+       "bottomTopp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "bottom"
+     },
+     {
+      "id": "bottomSide",
+      "poly": [
+       "bottomSidep0",
+       "bottomSidep1",
+       "bottomSidep2",
+       "bottomSidep3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "bottom"
+     },
+     {
+      "id": "bottomFront",
+      "poly": [
+       "bottomFrontp0",
+       "bottomFrontp1",
+       "bottomFrontp2",
+       "bottomFrontp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "bottom"
+     },
+     {
+      "id": "topTop",
+      "poly": [
+       "topTopp0",
+       "topTopp1",
+       "topTopp2",
+       "topTopp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "top"
+     },
+     {
+      "id": "topSide",
+      "poly": [
+       "topSidep0",
+       "topSidep1",
+       "topSidep2",
+       "topSidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "top"
+     },
+     {
+      "id": "topFront",
+      "poly": [
+       "topFrontp0",
+       "topFrontp1",
+       "topFrontp2",
+       "topFrontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "top"
+     },
+     {
+      "id": "blade",
+      "poly": [
+       "bladep0",
+       "bladep1",
+       "bladep2",
+       "bladep3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.6,
+      "sheer": true
+     },
+     {
+      "id": "cut",
+      "seg": [
+       "cuta",
+       "cutb"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "topVol",
+      "label": "36",
+      "at": "topVolp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "halo": true,
+      "flies": true
+     },
+     {
+      "id": "bottomVol",
+      "label": "48",
+      "at": "bottomVolp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "totalLength",
+      "dim": [
+       "totalLengtha",
+       "totalLengthb"
+      ],
+      "tex": "8\\text{ cm}",
+      "side": "s",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "tallHeight",
+      "dim": [
+       "tallHeighta",
+       "tallHeightb"
+      ],
+      "tex": "6\\text{ cm}",
+      "side": "w",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "lowHeight",
+      "dim": [
+       "lowHeighta",
+       "lowHeightb"
+      ],
+      "tex": "2\\text{ cm}",
+      "side": "e",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "topLength",
+      "dim": [
+       "topLengtha",
+       "topLengthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "n",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "commonDepth",
+      "dim": [
+       "commonDeptha",
+       "commonDepthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "se",
+      "ink": "ink",
+      "start": true,
+      "group": "givens"
+     },
+     {
+      "id": "upperHeight",
+      "dim": [
+       "upperHeighta",
+       "upperHeightb"
+      ],
+      "tex": "4\\text{ cm}",
+      "side": "w",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "Could we cut across instead?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A different cut"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Cut level with the low part, then lift the top box.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "cut",
+       "at": "Cut"
+      },
+      {
+       "do": "show",
+       "target": "blade",
+       "at": "level"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole",
+        "cut",
+        "blade"
+       ],
+       "at": "lift"
+      },
+      {
+       "do": "show",
+       "target": [
+        "bottom",
+        "top"
+       ],
+       "at": "lift"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "tallHeight",
+        "topLength"
+       ],
+       "at": "lift"
+      },
+      {
+       "do": "slide",
+       "target": "top",
+       "by": [
+        0,
+        2
+       ],
+       "at": "lift"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The bottom slab uses the full length: eight times three times two. Forty-eight cubic centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "bottomTop",
+        "bottomSide",
+        "bottomFront"
+       ],
+       "at": "bottom"
+      },
+      {
+       "do": "write",
+       "tex": "8\\times3\\times2=48",
+       "at": "Forty-eight"
+      },
+      {
+       "do": "show",
+       "target": "bottomVol",
+       "at": "Forty-eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The top box is only four high. Six minus the bottom two leaves four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "upperHeight",
+       "at": "four",
+       "dur": 0.12
+      },
+      {
+       "do": "highlight",
+       "target": "upperHeight",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "6-2=4",
+       "at": "minus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three times three times four is thirty-six. Add forty-eight and thirty-six: eighty-four cubic centimeters again.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "topTop",
+        "topSide",
+        "topFront"
+       ],
+       "at": "Three",
+       "until": "Add"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times3\\times4=36",
+       "at": "thirty-six"
+      },
+      {
+       "do": "show",
+       "target": "topVol",
+       "at": "thirty-six"
+      },
+      {
+       "do": "answer",
+       "tex": "48+36=84\\text{ cm}^3",
+       "at": "again"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Different pieces, but the same amount of space!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "slide",
+       "target": "top",
+       "by": [
+        0,
+        -2
+       ],
+       "at": "same"
+      },
+      {
+       "do": "hide",
+       "target": "upperHeight",
+       "at": "same"
+      },
+      {
+       "do": "slide",
+       "target": "topVol",
+       "by": [
+        0,
+        -2
+       ],
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Either cut counts every part once. The solid never changed.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Two cuts. Same volume."
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{cc}54+30&48+36\\\\=84&=84\\end{array}",
+       "at": "Either"
+      },
+      {
+       "do": "text",
+       "text": "Every part counted once.",
+       "at": "once"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.4,
+     -1.3,
+     7.3,
+     7.2
+    ],
+    "points": {
+     "mLayer0Topp0": [
+      0,
+      1
+     ],
+     "mLayer0Topp1": [
+      3,
+      1
+     ],
+     "mLayer0Topp2": [
+      5.2,
+      2.6799999999999997
+     ],
+     "mLayer0Topp3": [
+      2.2,
+      2.6799999999999997
+     ],
+     "mLayer0Sidep0": [
+      3,
+      0
+     ],
+     "mLayer0Sidep1": [
+      5.2,
+      1.68
+     ],
+     "mLayer0Sidep2": [
+      5.2,
+      2.6799999999999997
+     ],
+     "mLayer0Sidep3": [
+      3,
+      1
+     ],
+     "mLayer0Frontp0": [
+      0,
+      0
+     ],
+     "mLayer0Frontp1": [
+      3,
+      0
+     ],
+     "mLayer0Frontp2": [
+      3,
+      1
+     ],
+     "mLayer0Frontp3": [
+      0,
+      1
+     ],
+     "mLayer0tx1a": [
+      1,
+      1
+     ],
+     "mLayer0tx1b": [
+      3.2,
+      2.6799999999999997
+     ],
+     "mLayer0fx1a": [
+      1,
+      0
+     ],
+     "mLayer0fx1b": [
+      1,
+      1
+     ],
+     "mLayer0tx2a": [
+      2,
+      1
+     ],
+     "mLayer0tx2b": [
+      4.2,
+      2.6799999999999997
+     ],
+     "mLayer0fx2a": [
+      2,
+      0
+     ],
+     "mLayer0fx2b": [
+      2,
+      1
+     ],
+     "mLayer0td1a": [
+      0.55,
+      1.42
+     ],
+     "mLayer0td1b": [
+      3.55,
+      1.42
+     ],
+     "mLayer0sd1a": [
+      3.55,
+      0.42
+     ],
+     "mLayer0sd1b": [
+      3.55,
+      1.42
+     ],
+     "mLayer0td2a": [
+      1.1,
+      1.8399999999999999
+     ],
+     "mLayer0td2b": [
+      4.1,
+      1.8399999999999999
+     ],
+     "mLayer0sd2a": [
+      4.1,
+      0.84
+     ],
+     "mLayer0sd2b": [
+      4.1,
+      1.8399999999999999
+     ],
+     "mLayer0td3a": [
+      1.6500000000000001,
+      2.26
+     ],
+     "mLayer0td3b": [
+      4.65,
+      2.26
+     ],
+     "mLayer0sd3a": [
+      4.65,
+      1.26
+     ],
+     "mLayer0sd3b": [
+      4.65,
+      2.26
+     ],
+     "mLayer1Topp0": [
+      0,
+      2
+     ],
+     "mLayer1Topp1": [
+      3,
+      2
+     ],
+     "mLayer1Topp2": [
+      5.2,
+      3.6799999999999997
+     ],
+     "mLayer1Topp3": [
+      2.2,
+      3.6799999999999997
+     ],
+     "mLayer1Sidep0": [
+      3,
+      1
+     ],
+     "mLayer1Sidep1": [
+      5.2,
+      2.6799999999999997
+     ],
+     "mLayer1Sidep2": [
+      5.2,
+      3.6799999999999997
+     ],
+     "mLayer1Sidep3": [
+      3,
+      2
+     ],
+     "mLayer1Frontp0": [
+      0,
+      1
+     ],
+     "mLayer1Frontp1": [
+      3,
+      1
+     ],
+     "mLayer1Frontp2": [
+      3,
+      2
+     ],
+     "mLayer1Frontp3": [
+      0,
+      2
+     ],
+     "mLayer2Topp0": [
+      0,
+      3
+     ],
+     "mLayer2Topp1": [
+      3,
+      3
+     ],
+     "mLayer2Topp2": [
+      5.2,
+      4.68
+     ],
+     "mLayer2Topp3": [
+      2.2,
+      4.68
+     ],
+     "mLayer2Sidep0": [
+      3,
+      2
+     ],
+     "mLayer2Sidep1": [
+      5.2,
+      3.6799999999999997
+     ],
+     "mLayer2Sidep2": [
+      5.2,
+      4.68
+     ],
+     "mLayer2Sidep3": [
+      3,
+      3
+     ],
+     "mLayer2Frontp0": [
+      0,
+      2
+     ],
+     "mLayer2Frontp1": [
+      3,
+      2
+     ],
+     "mLayer2Frontp2": [
+      3,
+      3
+     ],
+     "mLayer2Frontp3": [
+      0,
+      3
+     ],
+     "mLayer3Topp0": [
+      0,
+      4
+     ],
+     "mLayer3Topp1": [
+      3,
+      4
+     ],
+     "mLayer3Topp2": [
+      5.2,
+      5.68
+     ],
+     "mLayer3Topp3": [
+      2.2,
+      5.68
+     ],
+     "mLayer3Sidep0": [
+      3,
+      3
+     ],
+     "mLayer3Sidep1": [
+      5.2,
+      4.68
+     ],
+     "mLayer3Sidep2": [
+      5.2,
+      5.68
+     ],
+     "mLayer3Sidep3": [
+      3,
+      4
+     ],
+     "mLayer3Frontp0": [
+      0,
+      3
+     ],
+     "mLayer3Frontp1": [
+      3,
+      3
+     ],
+     "mLayer3Frontp2": [
+      3,
+      4
+     ],
+     "mLayer3Frontp3": [
+      0,
+      4
+     ],
+     "mLayer4Topp0": [
+      0,
+      5
+     ],
+     "mLayer4Topp1": [
+      3,
+      5
+     ],
+     "mLayer4Topp2": [
+      5.2,
+      6.68
+     ],
+     "mLayer4Topp3": [
+      2.2,
+      6.68
+     ],
+     "mLayer4Sidep0": [
+      3,
+      4
+     ],
+     "mLayer4Sidep1": [
+      5.2,
+      5.68
+     ],
+     "mLayer4Sidep2": [
+      5.2,
+      6.68
+     ],
+     "mLayer4Sidep3": [
+      3,
+      5
+     ],
+     "mLayer4Frontp0": [
+      0,
+      4
+     ],
+     "mLayer4Frontp1": [
+      3,
+      4
+     ],
+     "mLayer4Frontp2": [
+      3,
+      5
+     ],
+     "mLayer4Frontp3": [
+      0,
+      5
+     ],
+     "outlineTopp0": [
+      0,
+      5
+     ],
+     "outlineTopp1": [
+      3,
+      5
+     ],
+     "outlineTopp2": [
+      5.2,
+      6.68
+     ],
+     "outlineTopp3": [
+      2.2,
+      6.68
+     ],
+     "outlineSidep0": [
+      3,
+      0
+     ],
+     "outlineSidep1": [
+      5.2,
+      1.68
+     ],
+     "outlineSidep2": [
+      5.2,
+      6.68
+     ],
+     "outlineSidep3": [
+      3,
+      5
+     ],
+     "outlineFrontp0": [
+      0,
+      0
+     ],
+     "outlineFrontp1": [
+      3,
+      0
+     ],
+     "outlineFrontp2": [
+      3,
+      5
+     ],
+     "outlineFrontp3": [
+      0,
+      5
+     ],
+     "mLa": [
+      0,
+      0
+     ],
+     "mLb": [
+      3,
+      0
+     ],
+     "mDa": [
+      3,
+      0
+     ],
+     "mDb": [
+      5.2,
+      1.68
+     ],
+     "mHa": [
+      0,
+      0
+     ],
+     "mHb": [
+      0,
+      5
+     ],
+     "knownHa": [
+      0,
+      0
+     ],
+     "knownHb": [
+      0,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "mLayer0Top",
+      "poly": [
+       "mLayer0Topp0",
+       "mLayer0Topp1",
+       "mLayer0Topp2",
+       "mLayer0Topp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0Side",
+      "poly": [
+       "mLayer0Sidep0",
+       "mLayer0Sidep1",
+       "mLayer0Sidep2",
+       "mLayer0Sidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0Front",
+      "poly": [
+       "mLayer0Frontp0",
+       "mLayer0Frontp1",
+       "mLayer0Frontp2",
+       "mLayer0Frontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0tx1",
+      "seg": [
+       "mLayer0tx1a",
+       "mLayer0tx1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0fx1",
+      "seg": [
+       "mLayer0fx1a",
+       "mLayer0fx1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0tx2",
+      "seg": [
+       "mLayer0tx2a",
+       "mLayer0tx2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0fx2",
+      "seg": [
+       "mLayer0fx2a",
+       "mLayer0fx2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0td1",
+      "seg": [
+       "mLayer0td1a",
+       "mLayer0td1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0sd1",
+      "seg": [
+       "mLayer0sd1a",
+       "mLayer0sd1b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0td2",
+      "seg": [
+       "mLayer0td2a",
+       "mLayer0td2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0sd2",
+      "seg": [
+       "mLayer0sd2a",
+       "mLayer0sd2b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0td3",
+      "seg": [
+       "mLayer0td3a",
+       "mLayer0td3b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer0sd3",
+      "seg": [
+       "mLayer0sd3a",
+       "mLayer0sd3b"
+      ],
+      "ink": "blue",
+      "w": 1.7,
+      "group": "mLayer0"
+     },
+     {
+      "id": "mLayer1Top",
+      "poly": [
+       "mLayer1Topp0",
+       "mLayer1Topp1",
+       "mLayer1Topp2",
+       "mLayer1Topp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "mLayer1"
+     },
+     {
+      "id": "mLayer1Side",
+      "poly": [
+       "mLayer1Sidep0",
+       "mLayer1Sidep1",
+       "mLayer1Sidep2",
+       "mLayer1Sidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "mLayer1"
+     },
+     {
+      "id": "mLayer1Front",
+      "poly": [
+       "mLayer1Frontp0",
+       "mLayer1Frontp1",
+       "mLayer1Frontp2",
+       "mLayer1Frontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "mLayer1"
+     },
+     {
+      "id": "mLayer2Top",
+      "poly": [
+       "mLayer2Topp0",
+       "mLayer2Topp1",
+       "mLayer2Topp2",
+       "mLayer2Topp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer2"
+     },
+     {
+      "id": "mLayer2Side",
+      "poly": [
+       "mLayer2Sidep0",
+       "mLayer2Sidep1",
+       "mLayer2Sidep2",
+       "mLayer2Sidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer2"
+     },
+     {
+      "id": "mLayer2Front",
+      "poly": [
+       "mLayer2Frontp0",
+       "mLayer2Frontp1",
+       "mLayer2Frontp2",
+       "mLayer2Frontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer2"
+     },
+     {
+      "id": "mLayer3Top",
+      "poly": [
+       "mLayer3Topp0",
+       "mLayer3Topp1",
+       "mLayer3Topp2",
+       "mLayer3Topp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "mLayer3"
+     },
+     {
+      "id": "mLayer3Side",
+      "poly": [
+       "mLayer3Sidep0",
+       "mLayer3Sidep1",
+       "mLayer3Sidep2",
+       "mLayer3Sidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "mLayer3"
+     },
+     {
+      "id": "mLayer3Front",
+      "poly": [
+       "mLayer3Frontp0",
+       "mLayer3Frontp1",
+       "mLayer3Frontp2",
+       "mLayer3Frontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "mLayer3"
+     },
+     {
+      "id": "mLayer4Top",
+      "poly": [
+       "mLayer4Topp0",
+       "mLayer4Topp1",
+       "mLayer4Topp2",
+       "mLayer4Topp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer4"
+     },
+     {
+      "id": "mLayer4Side",
+      "poly": [
+       "mLayer4Sidep0",
+       "mLayer4Sidep1",
+       "mLayer4Sidep2",
+       "mLayer4Sidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer4"
+     },
+     {
+      "id": "mLayer4Front",
+      "poly": [
+       "mLayer4Frontp0",
+       "mLayer4Frontp1",
+       "mLayer4Frontp2",
+       "mLayer4Frontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "mLayer4"
+     },
+     {
+      "id": "outlineTop",
+      "poly": [
+       "outlineTopp0",
+       "outlineTopp1",
+       "outlineTopp2",
+       "outlineTopp3"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.6,
+      "group": "outline",
+      "start": true
+     },
+     {
+      "id": "outlineSide",
+      "poly": [
+       "outlineSidep0",
+       "outlineSidep1",
+       "outlineSidep2",
+       "outlineSidep3"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.6,
+      "group": "outline",
+      "start": true
+     },
+     {
+      "id": "outlineFront",
+      "poly": [
+       "outlineFrontp0",
+       "outlineFrontp1",
+       "outlineFrontp2",
+       "outlineFrontp3"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.6,
+      "group": "outline",
+      "start": true
+     },
+     {
+      "id": "mL",
+      "dim": [
+       "mLa",
+       "mLb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "s",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "mD",
+      "dim": [
+       "mDa",
+       "mDb"
+      ],
+      "tex": "4\\text{ cm}",
+      "side": "se",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "mH",
+      "dim": [
+       "mHa",
+       "mHb"
+      ],
+      "tex": "?\\text{ cm}",
+      "side": "w",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "knownH",
+      "dim": [
+       "knownHa",
+       "knownHb"
+      ],
+      "tex": "5\\text{ cm}",
+      "side": "w",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This box holds sixty cubic centimeters. Its base is three by four. How tall is it?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find the missing height"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times4\\times ?=60"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One layer holds twelve cubes.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "mLayer0",
+       "at": "layer"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times4=12",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "How many groups of twelve make sixty? Divide sixty by twelve. Five layers.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "60\\div12=5",
+       "at": "Divide"
+      },
+      {
+       "do": "show",
+       "target": "mLayer1",
+       "at": "Five",
+       "dur": 0.2
+      },
+      {
+       "do": "show",
+       "target": "mLayer2",
+       "at": "Five",
+       "dur": 0.2
+      },
+      {
+       "do": "show",
+       "target": "mLayer3",
+       "at": "Five",
+       "dur": 0.2
+      },
+      {
+       "do": "show",
+       "target": "mLayer4",
+       "at": "Five",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each layer is one centimeter high, so the height is five centimeters. Check: three times four times five is sixty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "mH",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "knownH",
+       "at": "five"
+      },
+      {
+       "do": "answer",
+       "tex": "5\\text{ cm}",
+       "at": "centimeters"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times4\\times5=60",
+       "at": "Check"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide by both known edges multiplied together. The same method works whichever edge is missing.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Undo the two known factors"
+      },
+      {
+       "do": "write",
+       "tex": "60\\div(3\\times4)=5"
+      },
+      {
+       "do": "text",
+       "text": "Missing edge = volume ÷ product of known edges."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -2.25,
+     16,
+     13.5
+    ],
+    "points": {
+     "ATopp0": [
+      0,
+      9
+     ],
+     "ATopp1": [
+      2,
+      9
+     ],
+     "ATopp2": [
+      6.95,
+      12.78
+     ],
+     "ATopp3": [
+      4.95,
+      12.78
+     ],
+     "ASidep0": [
+      2,
+      8
+     ],
+     "ASidep1": [
+      6.95,
+      11.78
+     ],
+     "ASidep2": [
+      6.95,
+      12.78
+     ],
+     "ASidep3": [
+      2,
+      9
+     ],
+     "AFrontp0": [
+      0,
+      8
+     ],
+     "AFrontp1": [
+      2,
+      8
+     ],
+     "AFrontp2": [
+      2,
+      9
+     ],
+     "AFrontp3": [
+      0,
+      9
+     ],
+     "ANamep": [
+      2.5,
+      12.8
+     ],
+     "ADimsp": [
+      3.4,
+      6.8999999999999995
+     ],
+     "AResultp": [
+      3.4,
+      6.0
+     ],
+     "BTopp0": [
+      9,
+      10
+     ],
+     "BTopp1": [
+      12,
+      10
+     ],
+     "BTopp2": [
+      13.65,
+      11.26
+     ],
+     "BTopp3": [
+      10.65,
+      11.26
+     ],
+     "BSidep0": [
+      12,
+      8
+     ],
+     "BSidep1": [
+      13.65,
+      9.26
+     ],
+     "BSidep2": [
+      13.65,
+      11.26
+     ],
+     "BSidep3": [
+      12,
+      10
+     ],
+     "BFrontp0": [
+      9,
+      8
+     ],
+     "BFrontp1": [
+      12,
+      8
+     ],
+     "BFrontp2": [
+      12,
+      10
+     ],
+     "BFrontp3": [
+      9,
+      10
+     ],
+     "BNamep": [
+      11.5,
+      12.8
+     ],
+     "BDimsp": [
+      11.5,
+      6.8999999999999995
+     ],
+     "BResultp": [
+      11.5,
+      6.0
+     ],
+     "CTopp0": [
+      0,
+      3.35
+     ],
+     "CTopp1": [
+      6,
+      3.35
+     ],
+     "CTopp2": [
+      6.55,
+      3.77
+     ],
+     "CTopp3": [
+      0.55,
+      3.77
+     ],
+     "CSidep0": [
+      6,
+      0.35
+     ],
+     "CSidep1": [
+      6.55,
+      0.77
+     ],
+     "CSidep2": [
+      6.55,
+      3.77
+     ],
+     "CSidep3": [
+      6,
+      3.35
+     ],
+     "CFrontp0": [
+      0,
+      0.35
+     ],
+     "CFrontp1": [
+      6,
+      0.35
+     ],
+     "CFrontp2": [
+      6,
+      3.35
+     ],
+     "CFrontp3": [
+      0,
+      3.35
+     ],
+     "CNamep": [
+      2.5,
+      5.15
+     ],
+     "CDimsp": [
+      3.4,
+      -0.75
+     ],
+     "CResultp": [
+      3.4,
+      -1.65
+     ],
+     "DTopp0": [
+      9,
+      3.35
+     ],
+     "DTopp1": [
+      12,
+      3.35
+     ],
+     "DTopp2": [
+      13.65,
+      4.61
+     ],
+     "DTopp3": [
+      10.65,
+      4.61
+     ],
+     "DSidep0": [
+      12,
+      0.35
+     ],
+     "DSidep1": [
+      13.65,
+      1.61
+     ],
+     "DSidep2": [
+      13.65,
+      4.61
+     ],
+     "DSidep3": [
+      12,
+      3.35
+     ],
+     "DFrontp0": [
+      9,
+      0.35
+     ],
+     "DFrontp1": [
+      12,
+      0.35
+     ],
+     "DFrontp2": [
+      12,
+      3.35
+     ],
+     "DFrontp3": [
+      9,
+      3.35
+     ],
+     "DNamep": [
+      11.5,
+      5.15
+     ],
+     "DDimsp": [
+      11.5,
+      -0.75
+     ],
+     "DResultp": [
+      11.5,
+      -1.65
+     ]
+    },
+    "parts": [
+     {
+      "id": "ATop",
+      "poly": [
+       "ATopp0",
+       "ATopp1",
+       "ATopp2",
+       "ATopp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "A",
+      "start": true
+     },
+     {
+      "id": "ASide",
+      "poly": [
+       "ASidep0",
+       "ASidep1",
+       "ASidep2",
+       "ASidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "A",
+      "start": true
+     },
+     {
+      "id": "AFront",
+      "poly": [
+       "AFrontp0",
+       "AFrontp1",
+       "AFrontp2",
+       "AFrontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "A",
+      "start": true
+     },
+     {
+      "id": "ADims",
+      "label": "A:\\ 2\\times9\\times1",
+      "at": "ADimsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true,
+      "halo": true
+     },
+     {
+      "id": "AResult",
+      "label": "18\\text{ cm}^3",
+      "at": "AResultp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "BTop",
+      "poly": [
+       "BTopp0",
+       "BTopp1",
+       "BTopp2",
+       "BTopp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "B",
+      "start": true
+     },
+     {
+      "id": "BSide",
+      "poly": [
+       "BSidep0",
+       "BSidep1",
+       "BSidep2",
+       "BSidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "B",
+      "start": true
+     },
+     {
+      "id": "BFront",
+      "poly": [
+       "BFrontp0",
+       "BFrontp1",
+       "BFrontp2",
+       "BFrontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "B",
+      "start": true
+     },
+     {
+      "id": "BDims",
+      "label": "B:\\ 3\\times3\\times2",
+      "at": "BDimsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true,
+      "halo": true
+     },
+     {
+      "id": "BResult",
+      "label": "18\\text{ cm}^3",
+      "at": "BResultp",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "CTop",
+      "poly": [
+       "CTopp0",
+       "CTopp1",
+       "CTopp2",
+       "CTopp3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.6,
+      "group": "C",
+      "start": true
+     },
+     {
+      "id": "CSide",
+      "poly": [
+       "CSidep0",
+       "CSidep1",
+       "CSidep2",
+       "CSidep3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.6,
+      "group": "C",
+      "start": true
+     },
+     {
+      "id": "CFront",
+      "poly": [
+       "CFrontp0",
+       "CFrontp1",
+       "CFrontp2",
+       "CFrontp3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.6,
+      "group": "C",
+      "start": true
+     },
+     {
+      "id": "CDims",
+      "label": "C:\\ 6\\times1\\times3",
+      "at": "CDimsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true,
+      "halo": true
+     },
+     {
+      "id": "CResult",
+      "label": "18\\text{ cm}^3",
+      "at": "CResultp",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "halo": true
+     },
+     {
+      "id": "DTop",
+      "poly": [
+       "DTopp0",
+       "DTopp1",
+       "DTopp2",
+       "DTopp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "D",
+      "start": true
+     },
+     {
+      "id": "DSide",
+      "poly": [
+       "DSidep0",
+       "DSidep1",
+       "DSidep2",
+       "DSidep3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "D",
+      "start": true
+     },
+     {
+      "id": "DFront",
+      "poly": [
+       "DFrontp0",
+       "DFrontp1",
+       "DFrontp2",
+       "DFrontp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "D",
+      "start": true
+     },
+     {
+      "id": "DDims",
+      "label": "D:\\ 3\\times3\\times3",
+      "at": "DDimsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true,
+      "halo": true
+     },
+     {
+      "id": "DResult",
+      "label": "27\\text{ cm}^3",
+      "at": "DResultp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which three boxes hold eighteen cubic centimeters? Each caption gives three edge lengths in centimeters. Pause and multiply.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Choose three: 18 cubic centimeters"
+      },
+      {
+       "do": "text",
+       "text": "Edge lengths are in centimeters."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ADims",
+        "BDims",
+        "CDims",
+        "DDims"
+       ],
+       "at": "caption",
+       "until": "Pause"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "*A*: two times nine times one is eighteen. *B*: three times three times two is eighteen.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "AResult",
+       "at": "eighteen"
+      },
+      {
+       "do": "show",
+       "target": "BResult",
+       "at": "eighteen",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "A",
+       "at": "A",
+       "until": "B"
+      },
+      {
+       "do": "highlight",
+       "target": "B",
+       "at": "B"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "*C*: six times one times three is eighteen. *D*: three times three times three is twenty-seven.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "CResult",
+       "at": "eighteen"
+      },
+      {
+       "do": "show",
+       "target": "DResult",
+       "at": "twenty-seven"
+      },
+      {
+       "do": "highlight",
+       "target": "C",
+       "at": "C",
+       "until": "D"
+      },
+      {
+       "do": "highlight",
+       "target": "D",
+       "at": "D"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So *A*, *B*, and *C* hold the same volume, even though they look different.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "A,\\ B,\\ C"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "AResult",
+        "BResult",
+        "CResult"
+       ],
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply all three edges. You can change the multiplication order: six times one times three equals six times three times one.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Any order; all three factors"
+      },
+      {
+       "do": "highlight",
+       "target": "CDims",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times1\\times3",
+       "at": "six"
+      },
+      {
+       "do": "write",
+       "tex": "=6\\times3\\times1=18",
+       "at": "equals"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.2,
+     -1.5,
+     12.6,
+     5.8
+    ],
+    "points": {
+     "planterATopp0": [
+      0,
+      3
+     ],
+     "planterATopp1": [
+      4,
+      3
+     ],
+     "planterATopp2": [
+      5.1,
+      3.84
+     ],
+     "planterATopp3": [
+      1.1,
+      3.84
+     ],
+     "planterASidep0": [
+      4,
+      0
+     ],
+     "planterASidep1": [
+      5.1,
+      0.84
+     ],
+     "planterASidep2": [
+      5.1,
+      3.84
+     ],
+     "planterASidep3": [
+      4,
+      3
+     ],
+     "planterAFrontp0": [
+      0,
+      0
+     ],
+     "planterAFrontp1": [
+      4,
+      0
+     ],
+     "planterAFrontp2": [
+      4,
+      3
+     ],
+     "planterAFrontp3": [
+      0,
+      3
+     ],
+     "paLa": [
+      0,
+      0
+     ],
+     "paLb": [
+      4,
+      0
+     ],
+     "paDa": [
+      4,
+      0
+     ],
+     "paDb": [
+      5.1,
+      0.84
+     ],
+     "paHa": [
+      0,
+      0
+     ],
+     "paHb": [
+      0,
+      3
+     ],
+     "planterBTopp0": [
+      7,
+      2
+     ],
+     "planterBTopp1": [
+      9,
+      2
+     ],
+     "planterBTopp2": [
+      10.1,
+      2.84
+     ],
+     "planterBTopp3": [
+      8.1,
+      2.84
+     ],
+     "planterBSidep0": [
+      9,
+      0
+     ],
+     "planterBSidep1": [
+      10.1,
+      0.84
+     ],
+     "planterBSidep2": [
+      10.1,
+      2.84
+     ],
+     "planterBSidep3": [
+      9,
+      2
+     ],
+     "planterBFrontp0": [
+      7,
+      0
+     ],
+     "planterBFrontp1": [
+      9,
+      0
+     ],
+     "planterBFrontp2": [
+      9,
+      2
+     ],
+     "planterBFrontp3": [
+      7,
+      2
+     ],
+     "pbLa": [
+      7,
+      0
+     ],
+     "pbLb": [
+      9,
+      0
+     ],
+     "pbDa": [
+      9,
+      0
+     ],
+     "pbDb": [
+      10.1,
+      0.84
+     ],
+     "pbHa": [
+      10.1,
+      0.84
+     ],
+     "pbHb": [
+      10.1,
+      2.84
+     ],
+     "soilAp": [
+      2,
+      1.5
+     ],
+     "soilBp": [
+      8,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "planterATop",
+      "poly": [
+       "planterATopp0",
+       "planterATopp1",
+       "planterATopp2",
+       "planterATopp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "planterA",
+      "start": true
+     },
+     {
+      "id": "planterASide",
+      "poly": [
+       "planterASidep0",
+       "planterASidep1",
+       "planterASidep2",
+       "planterASidep3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "planterA",
+      "start": true
+     },
+     {
+      "id": "planterAFront",
+      "poly": [
+       "planterAFrontp0",
+       "planterAFrontp1",
+       "planterAFrontp2",
+       "planterAFrontp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "planterA",
+      "start": true
+     },
+     {
+      "id": "paL",
+      "dim": [
+       "paLa",
+       "paLb"
+      ],
+      "tex": "4\\text{ ft}",
+      "side": "s",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "paD",
+      "dim": [
+       "paDa",
+       "paDb"
+      ],
+      "tex": "2\\text{ ft}",
+      "side": "se",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "paH",
+      "dim": [
+       "paHa",
+       "paHb"
+      ],
+      "tex": "3\\text{ ft}",
+      "side": "w",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "planterBTop",
+      "poly": [
+       "planterBTopp0",
+       "planterBTopp1",
+       "planterBTopp2",
+       "planterBTopp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "planterB",
+      "start": true
+     },
+     {
+      "id": "planterBSide",
+      "poly": [
+       "planterBSidep0",
+       "planterBSidep1",
+       "planterBSidep2",
+       "planterBSidep3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "planterB",
+      "start": true
+     },
+     {
+      "id": "planterBFront",
+      "poly": [
+       "planterBFrontp0",
+       "planterBFrontp1",
+       "planterBFrontp2",
+       "planterBFrontp3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1.6,
+      "group": "planterB",
+      "start": true
+     },
+     {
+      "id": "pbL",
+      "dim": [
+       "pbLa",
+       "pbLb"
+      ],
+      "tex": "2\\text{ ft}",
+      "side": "s",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "pbD",
+      "dim": [
+       "pbDa",
+       "pbDb"
+      ],
+      "tex": "2\\text{ ft}",
+      "side": "se",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "pbH",
+      "dim": [
+       "pbHa",
+       "pbHb"
+      ],
+      "tex": "2\\text{ ft}",
+      "side": "e",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "soilA",
+      "label": "24",
+      "at": "soilAp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true
+     },
+     {
+      "id": "soilB",
+      "label": "8",
+      "at": "soilBp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two planters need soil filled to the top. These are their inside measurements, in feet.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How much soil?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The first needs four times two times three: twenty-four cubic feet.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "planterA",
+       "at": "first"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times2\\times3=24\\text{ ft}^3",
+       "at": "twenty-four"
+      },
+      {
+       "do": "show",
+       "target": "soilA",
+       "at": "twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The second needs two times two times two: eight cubic feet.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "planterB",
+       "at": "second"
+      },
+      {
+       "do": "write",
+       "tex": "2\\times2\\times2=8\\text{ ft}^3",
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "soilB",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Add the two volumes. Thirty-two cubic feet of soil fills both.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "24+8=32\\text{ ft}^3",
+       "at": "Thirty-two"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -1,
+     11.5,
+     8
+    ],
+    "points": {
+     "tableAt": [
+      0,
+      7
+     ]
+    },
+    "parts": [
+     {
+      "id": "choices",
+      "table": true,
+      "at": "tableAt",
+      "head": [
+       "Edges (cm)",
+       "Volume"
+      ],
+      "rows": [
+       {
+        "label": "A",
+        "cells": [
+         "$4\\times2\\times3$",
+         "$24$"
+        ]
+       },
+       {
+        "label": "B",
+        "cells": [
+         "$2\\times2\\times2$",
+         "$8$"
+        ]
+       },
+       {
+        "label": "C",
+        "cells": [
+         "$3\\times3\\times3$",
+         "$27$"
+        ]
+       }
+      ],
+      "cell": [
+       4.1,
+       1.7
+      ],
+      "labelW": 1.7,
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Choose two boxes whose combined volume is greater than thirty and less than thirty-five cubic centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Choose a pair by its total"
+      },
+      {
+       "do": "write",
+       "tex": "30<\\text{total}<35",
+       "at": "greater"
+      },
+      {
+       "do": "text",
+       "text": "Volumes in cubic centimeters.",
+       "at": "cubic"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "First multiply each box's three edges. The volumes here are twenty-four, eight, and twenty-seven.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "choices.row.1",
+       "at": "twenty-four",
+       "until": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": "choices.row.2",
+       "at": "eight",
+       "until": "twenty-seven"
+      },
+      {
+       "do": "highlight",
+       "target": "choices.row.3",
+       "at": "twenty-seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Test pairs. *A* and *C* make fifty-one: too much. *B* and *C* make thirty-five, exactly the upper bound. We need less than thirty-five.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "30<\\text{total}<35"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "choices.row.1",
+        "choices.row.3"
+       ],
+       "at": "A",
+       "until": "B"
+      },
+      {
+       "do": "write",
+       "tex": "24+27=51",
+       "note": "\\text{A and C}",
+       "at": "fifty-one"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "choices.row.2",
+        "choices.row.3"
+       ],
+       "at": "B",
+       "until": "We"
+      },
+      {
+       "do": "write",
+       "tex": "8+27=35",
+       "note": "\\text{B and C}",
+       "at": "thirty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "*A* and *B* make thirty-two. That is greater than thirty and less than thirty-five. Choose both.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "24+8=32",
+       "at": "thirty-two"
+      },
+      {
+       "do": "write",
+       "tex": "30<32<35",
+       "at": "greater"
+      },
+      {
+       "do": "answer",
+       "tex": "A\\text{ and }B",
+       "at": "both"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "choices.row.1",
+        "choices.row.2"
+       ],
+       "at": "Choose"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "choices.row.1",
+        "choices.row.2"
+       ],
+       "at": "A",
+       "until": "That"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Neither box alone has to be in the range. Their total does!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Compare the sum with both bounds.",
+       "at": "total"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "For an exact total, multiply, add a pair, then check for equality.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "An exact total"
+      },
+      {
+       "do": "write",
+       "tex": "24+8=32",
+       "at": "add"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.8,
+     -1.6,
+     12,
+     9
+    ],
+    "points": {
+     "wholeTopTallp0": [
+      0,
+      6
+     ],
+     "wholeTopTallp1": [
+      3,
+      6
+     ],
+     "wholeTopTallp2": [
+      4.65,
+      7.26
+     ],
+     "wholeTopTallp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "wholeRiserp0": [
+      3,
+      2
+     ],
+     "wholeRiserp1": [
+      4.65,
+      3.26
+     ],
+     "wholeRiserp2": [
+      4.65,
+      7.26
+     ],
+     "wholeRiserp3": [
+      3,
+      6
+     ],
+     "wholeTopLowp0": [
+      3,
+      2
+     ],
+     "wholeTopLowp1": [
+      8,
+      2
+     ],
+     "wholeTopLowp2": [
+      9.65,
+      3.26
+     ],
+     "wholeTopLowp3": [
+      4.65,
+      3.26
+     ],
+     "wholeEndp0": [
+      8,
+      0
+     ],
+     "wholeEndp1": [
+      9.65,
+      1.26
+     ],
+     "wholeEndp2": [
+      9.65,
+      3.26
+     ],
+     "wholeEndp3": [
+      8,
+      2
+     ],
+     "wholeFrontp0": [
+      0,
+      0
+     ],
+     "wholeFrontp1": [
+      8,
+      0
+     ],
+     "wholeFrontp2": [
+      8,
+      2
+     ],
+     "wholeFrontp3": [
+      3,
+      2
+     ],
+     "wholeFrontp4": [
+      3,
+      6
+     ],
+     "wholeFrontp5": [
+      0,
+      6
+     ],
+     "totalLengtha": [
+      0,
+      0
+     ],
+     "totalLengthb": [
+      8,
+      0
+     ],
+     "tallHeighta": [
+      0,
+      0
+     ],
+     "tallHeightb": [
+      0,
+      6
+     ],
+     "lowHeighta": [
+      9.65,
+      1.26
+     ],
+     "lowHeightb": [
+      9.65,
+      3.26
+     ],
+     "topLengtha": [
+      0,
+      6
+     ],
+     "topLengthb": [
+      3,
+      6
+     ],
+     "commonDeptha": [
+      8,
+      2
+     ],
+     "commonDepthb": [
+      9.65,
+      3.26
+     ],
+     "tallTopp0": [
+      0,
+      6
+     ],
+     "tallTopp1": [
+      3,
+      6
+     ],
+     "tallTopp2": [
+      4.65,
+      7.26
+     ],
+     "tallTopp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "tallSidep0": [
+      3,
+      0
+     ],
+     "tallSidep1": [
+      4.65,
+      1.26
+     ],
+     "tallSidep2": [
+      4.65,
+      7.26
+     ],
+     "tallSidep3": [
+      3,
+      6
+     ],
+     "tallFrontp0": [
+      0,
+      0
+     ],
+     "tallFrontp1": [
+      3,
+      0
+     ],
+     "tallFrontp2": [
+      3,
+      6
+     ],
+     "tallFrontp3": [
+      0,
+      6
+     ],
+     "lowTopp0": [
+      3,
+      2
+     ],
+     "lowTopp1": [
+      8,
+      2
+     ],
+     "lowTopp2": [
+      9.65,
+      3.26
+     ],
+     "lowTopp3": [
+      4.65,
+      3.26
+     ],
+     "lowSidep0": [
+      8,
+      0
+     ],
+     "lowSidep1": [
+      9.65,
+      1.26
+     ],
+     "lowSidep2": [
+      9.65,
+      3.26
+     ],
+     "lowSidep3": [
+      8,
+      2
+     ],
+     "lowFrontp0": [
+      3,
+      0
+     ],
+     "lowFrontp1": [
+      8,
+      0
+     ],
+     "lowFrontp2": [
+      8,
+      2
+     ],
+     "lowFrontp3": [
+      3,
+      2
+     ],
+     "bladep0": [
+      3,
+      0
+     ],
+     "bladep1": [
+      4.65,
+      1.26
+     ],
+     "bladep2": [
+      4.65,
+      3.26
+     ],
+     "bladep3": [
+      3,
+      2
+     ],
+     "cuta": [
+      3,
+      2
+     ],
+     "cutb": [
+      3,
+      0
+     ],
+     "lowLengtha": [
+      3,
+      0
+     ],
+     "lowLengthb": [
+      8,
+      0
+     ],
+     "tallLengtha": [
+      0,
+      0
+     ],
+     "tallLengthb": [
+      3,
+      0
+     ],
+     "tallVolp": [
+      1.5,
+      3.2
+     ],
+     "lowVolp": [
+      5.5,
+      1
+     ],
+     "bottomTopp0": [
+      0,
+      2
+     ],
+     "bottomTopp1": [
+      8,
+      2
+     ],
+     "bottomTopp2": [
+      9.65,
+      3.26
+     ],
+     "bottomTopp3": [
+      1.6500000000000001,
+      3.26
+     ],
+     "bottomSidep0": [
+      8,
+      0
+     ],
+     "bottomSidep1": [
+      9.65,
+      1.26
+     ],
+     "bottomSidep2": [
+      9.65,
+      3.26
+     ],
+     "bottomSidep3": [
+      8,
+      2
+     ],
+     "bottomFrontp0": [
+      0,
+      0
+     ],
+     "bottomFrontp1": [
+      8,
+      0
+     ],
+     "bottomFrontp2": [
+      8,
+      2
+     ],
+     "bottomFrontp3": [
+      0,
+      2
+     ],
+     "topTopp0": [
+      0,
+      6
+     ],
+     "topTopp1": [
+      3,
+      6
+     ],
+     "topTopp2": [
+      4.65,
+      7.26
+     ],
+     "topTopp3": [
+      1.6500000000000001,
+      7.26
+     ],
+     "topSidep0": [
+      3,
+      2
+     ],
+     "topSidep1": [
+      4.65,
+      3.26
+     ],
+     "topSidep2": [
+      4.65,
+      7.26
+     ],
+     "topSidep3": [
+      3,
+      6
+     ],
+     "topFrontp0": [
+      0,
+      2
+     ],
+     "topFrontp1": [
+      3,
+      2
+     ],
+     "topFrontp2": [
+      3,
+      6
+     ],
+     "topFrontp3": [
+      0,
+      6
+     ],
+     "crossCuta": [
+      0,
+      2
+     ],
+     "crossCutb": [
+      3,
+      2
+     ],
+     "endTopp": [
+      1.5,
+      4
+     ],
+     "endBottomp": [
+      4,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "wholeTopTall",
+      "poly": [
+       "wholeTopTallp0",
+       "wholeTopTallp1",
+       "wholeTopTallp2",
+       "wholeTopTallp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeRiser",
+      "poly": [
+       "wholeRiserp0",
+       "wholeRiserp1",
+       "wholeRiserp2",
+       "wholeRiserp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeTopLow",
+      "poly": [
+       "wholeTopLowp0",
+       "wholeTopLowp1",
+       "wholeTopLowp2",
+       "wholeTopLowp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeEnd",
+      "poly": [
+       "wholeEndp0",
+       "wholeEndp1",
+       "wholeEndp2",
+       "wholeEndp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "wholeFront",
+      "poly": [
+       "wholeFrontp0",
+       "wholeFrontp1",
+       "wholeFrontp2",
+       "wholeFrontp3",
+       "wholeFrontp4",
+       "wholeFrontp5"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "whole",
+      "start": true
+     },
+     {
+      "id": "totalLength",
+      "dim": [
+       "totalLengtha",
+       "totalLengthb"
+      ],
+      "tex": "8\\text{ cm}",
+      "side": "s",
+      "ink": "ink",
+      "start": false,
+      "group": "givens"
+     },
+     {
+      "id": "tallHeight",
+      "dim": [
+       "tallHeighta",
+       "tallHeightb"
+      ],
+      "tex": "6\\text{ cm}",
+      "side": "w",
+      "ink": "ink",
+      "start": false,
+      "group": "givens"
+     },
+     {
+      "id": "lowHeight",
+      "dim": [
+       "lowHeighta",
+       "lowHeightb"
+      ],
+      "tex": "2\\text{ cm}",
+      "side": "e",
+      "ink": "ink",
+      "start": false,
+      "group": "givens"
+     },
+     {
+      "id": "topLength",
+      "dim": [
+       "topLengtha",
+       "topLengthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "n",
+      "ink": "ink",
+      "start": false,
+      "group": "givens"
+     },
+     {
+      "id": "commonDepth",
+      "dim": [
+       "commonDeptha",
+       "commonDepthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "ne",
+      "ink": "ink",
+      "start": false,
+      "group": "givens"
+     },
+     {
+      "id": "tallTop",
+      "poly": [
+       "tallTopp0",
+       "tallTopp1",
+       "tallTopp2",
+       "tallTopp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tall"
+     },
+     {
+      "id": "tallSide",
+      "poly": [
+       "tallSidep0",
+       "tallSidep1",
+       "tallSidep2",
+       "tallSidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tall"
+     },
+     {
+      "id": "tallFront",
+      "poly": [
+       "tallFrontp0",
+       "tallFrontp1",
+       "tallFrontp2",
+       "tallFrontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "tall"
+     },
+     {
+      "id": "lowTop",
+      "poly": [
+       "lowTopp0",
+       "lowTopp1",
+       "lowTopp2",
+       "lowTopp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "low"
+     },
+     {
+      "id": "lowSide",
+      "poly": [
+       "lowSidep0",
+       "lowSidep1",
+       "lowSidep2",
+       "lowSidep3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "low"
+     },
+     {
+      "id": "lowFront",
+      "poly": [
+       "lowFrontp0",
+       "lowFrontp1",
+       "lowFrontp2",
+       "lowFrontp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "low"
+     },
+     {
+      "id": "blade",
+      "poly": [
+       "bladep0",
+       "bladep1",
+       "bladep2",
+       "bladep3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.6,
+      "sheer": true
+     },
+     {
+      "id": "cut",
+      "seg": [
+       "cuta",
+       "cutb"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "lowLength",
+      "dim": [
+       "lowLengtha",
+       "lowLengthb"
+      ],
+      "tex": "5\\text{ cm}",
+      "side": "s",
+      "ink": "ink"
+     },
+     {
+      "id": "tallLength",
+      "dim": [
+       "tallLengtha",
+       "tallLengthb"
+      ],
+      "tex": "3\\text{ cm}",
+      "side": "s",
+      "ink": "ink"
+     },
+     {
+      "id": "tallVol",
+      "label": "54",
+      "at": "tallVolp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "group": "tall",
+      "halo": true
+     },
+     {
+      "id": "lowVol",
+      "label": "30",
+      "at": "lowVolp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "group": "low",
+      "halo": true
+     },
+     {
+      "id": "bottomTop",
+      "poly": [
+       "bottomTopp0",
+       "bottomTopp1",
+       "bottomTopp2",
+       "bottomTopp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "bottom"
+     },
+     {
+      "id": "bottomSide",
+      "poly": [
+       "bottomSidep0",
+       "bottomSidep1",
+       "bottomSidep2",
+       "bottomSidep3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "bottom"
+     },
+     {
+      "id": "bottomFront",
+      "poly": [
+       "bottomFrontp0",
+       "bottomFrontp1",
+       "bottomFrontp2",
+       "bottomFrontp3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.6,
+      "group": "bottom"
+     },
+     {
+      "id": "topTop",
+      "poly": [
+       "topTopp0",
+       "topTopp1",
+       "topTopp2",
+       "topTopp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "top"
+     },
+     {
+      "id": "topSide",
+      "poly": [
+       "topSidep0",
+       "topSidep1",
+       "topSidep2",
+       "topSidep3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "top"
+     },
+     {
+      "id": "topFront",
+      "poly": [
+       "topFrontp0",
+       "topFrontp1",
+       "topFrontp2",
+       "topFrontp3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.6,
+      "group": "top"
+     },
+     {
+      "id": "crossCut",
+      "seg": [
+       "crossCuta",
+       "crossCutb"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "endTop",
+      "label": "36",
+      "at": "endTopp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "endBottom",
+      "label": "48",
+      "at": "endBottomp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One solid. A tall box and a low box.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Count all the space once"
+      },
+      {
+       "do": "hide",
+       "target": "whole"
+      },
+      {
+       "do": "show",
+       "target": [
+        "tall",
+        "low"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": "cut",
+       "at": "tall"
+      },
+      {
+       "do": "write",
+       "tex": "54+30=84",
+       "at": "low"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or a bottom slab and a top box. The same eighty-four cubic centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "tall",
+        "low",
+        "cut"
+       ],
+       "at": "Or"
+      },
+      {
+       "do": "show",
+       "target": [
+        "bottom",
+        "top"
+       ],
+       "at": "Or"
+      },
+      {
+       "do": "draw",
+       "target": "crossCut",
+       "at": "slab"
+      },
+      {
+       "do": "write",
+       "tex": "48+36=84",
+       "at": "same"
+      },
+      {
+       "do": "show",
+       "target": [
+        "endTop",
+        "endBottom"
+       ],
+       "at": "box"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Base area times height. And when a solid is made of boxes, find each box's volume and add.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "V=B\\times h",
+       "at": "height"
+      },
+      {
+       "do": "text",
+       "text": "Find each box's volume. Add.",
+       "at": "add"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

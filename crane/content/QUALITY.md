@@ -3,6 +3,13 @@
 Short record of what each generation pass looked like on review, what changed,
 and the verification rates. Newest first.
 
+## 2026-11-27 lessons and glossary (full run)
+
+- Lessons: Opus, prompt v1, all 18 topics, 136 lessons, 715 quotes exact, 4 repaired (typography). 135 pass. 1 fails: it quotes the 1910.180(j) heading as "overhead electric lines", but the source says "overhead lines". It stays in the file marked fail; `verify.py` now skips rows their writer failed. 52 diagram slots, all valid ids.
+- Read the wind lesson in full. The physics is right (wind pressure about 0.00256 V² psf, so about 1 psf at 20 mph and 4 at 40) and labeled as physics. The rule duty is quoted (1926.1417(n) competent person). It ends with self-checks.
+- Glossary: Sonnet, 349 terms. 241 are rule-defined, each with a verbatim quote, all pass; 108 are field terms marked practice.
+- Cost in the run ledger: lessons $7.14 / 255k output tokens (Opus), glossary $0.62 / 52k (Sonnet).
+
 ## 2026-11-27 questions v3 resume, table rows, oversized definitions
 
 - 48 skills were generated with prompt v3 before the run stopped (rules, roles, site, powerlines, part of signals). Six had bad input. The 1926.1401 definitions node (21k chars) is larger than the 20k prompt budget, so `ground()` returned only the truncation marker: rules.definitions, roles.competent-vs-qualified and site.fall-zone got no rule text (one came back as a "NOT FOR USE" placeholder); powerlines.dedicated-spotter and roles.ad-director lost the definitions they cite. ops.multi-drum cited only Appendix A, which is figures with no text. Fix: an oversized node is split into definitions, placed after the other sections, terms that appear in that text first; `skill_text()` fails on a skill with no rule text; ops.multi-drum cites the main/auxiliary hoist rules. Those six regenerate on the next run; their old outputs do not ship.
