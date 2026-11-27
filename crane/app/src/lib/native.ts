@@ -46,7 +46,12 @@ export const speech = {
   },
 };
 
-/** Voice input: on-device only. Available when the STT plugin reports a ready model. */
+/**
+ * Voice input: on-device only (whisper.cpp in tauri-plugin-stt). Available
+ * when the plugin reports a usable model; the caller owns the session id.
+ * Payloads match the plugin's `StartSessionArgs` / `StopSessionArgs`
+ * (camelCase, wrapped in `args`); native.test.ts pins them to the plugin source.
+ */
 export const voice = {
   async available(): Promise<boolean> {
     const invoke = tauriInvoke();
@@ -61,13 +66,16 @@ export const voice = {
   async start(lang: string): Promise<string> {
     const invoke = tauriInvoke();
     if (!invoke) throw new Error("Voice input needs the app");
-    const r = (await invoke("plugin:stt|start_session", { language: lang })) as { sessionId: string };
-    return r.sessionId;
+    const ready = (await invoke("plugin:stt|prepare", { args: {} })) as { ready: boolean; message?: string | null };
+    if (!ready.ready) throw new Error(ready.message ?? "Voice input is not ready on this device");
+    const sessionId = crypto.randomUUID();
+    await invoke("plugin:stt|start_session", { args: { sessionId, language: lang, expectedText: "" } });
+    return sessionId;
   },
   async stop(sessionId: string): Promise<string> {
     const invoke = tauriInvoke();
     if (!invoke) throw new Error("Voice input needs the app");
-    const r = (await invoke("plugin:stt|stop_session", { sessionId })) as { text: string };
+    const r = (await invoke("plugin:stt|stop_session", { args: { sessionId } })) as { text: string };
     return r.text.trim();
   },
 };

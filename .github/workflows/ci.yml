@@ -174,7 +174,7 @@ jobs:
           # by path, so each consumer filter includes what it compiles. Every
           # job below skips its steps cleanly until its directory exists.
           set_output crane_app '^(crane/(app|content)/|harvest/practice/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
-          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|\.github/workflows/ci\.yml$)'
+          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|\.github/workflows/ci\.yml$)'
           set_output harvest_core '^(harvest/core/|\.github/workflows/ci\.yml$)'
           set_output harvest_pipeline '^(harvest/pipeline/|\.github/workflows/ci\.yml$)'
           set_output harvest_practice '^(harvest/practice/|\.github/workflows/ci\.yml$)'
@@ -1975,6 +1975,15 @@ jobs:
       - if: steps.tree.outputs.present == 'true'
         working-directory: crane/app/src-tauri
         run: cargo check --locked --lib --target aarch64-apple-ios
+      # ADR-0011: [patch] is honoured only from this app's own root manifest. If it
+      # silently stops applying, Android loses the vectorised llama.cpp kernels
+      # and everything still compiles, so assert the fork is what resolved.
+      - name: llama-cpp-sys-2 resolves to the vendored fork
+        if: steps.tree.outputs.present == 'true'
+        working-directory: crane/app/src-tauri
+        run: |
+          cargo metadata --locked --format-version 1 \
+            | jq -e '[.packages[] | select(.name=="llama-cpp-sys-2") | .manifest_path | test("corpan-app/src-tauri/vendor/llama-cpp-sys-2/")] | length == 1 and all'
 
   harvest-core:
     name: harvest-core
