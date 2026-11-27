@@ -465,7 +465,7 @@ pub fn extract_zip(archive: &Path, dest: &Path, limits: ArchiveLimits) -> Result
 }
 
 /// Returns `Some` when the offered version is already current (a no-op).
-fn refuse_downgrade(root: &Path, offered: &Manifest) -> Result<Option<Installed>> {
+pub(crate) fn refuse_downgrade(root: &Path, offered: &Manifest) -> Result<Option<Installed>> {
     if let Some(installed) = current_version(root, &offered.pack_id)? {
         match compare_versions(&offered.version, &installed) {
             Ordering::Greater => {}

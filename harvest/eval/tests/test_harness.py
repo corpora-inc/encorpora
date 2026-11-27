@@ -20,7 +20,7 @@ HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE.parent))
 
 from harvest_eval import metrics  # noqa: E402
-from harvest_eval.backends import HarvestBackend, split_claims  # noqa: E402
+from harvest_eval.backends import HarvestBackend, OpenAIBackend, split_claims  # noqa: E402
 from harvest_eval.cli import main  # noqa: E402
 from harvest_eval.corpus import Corpus  # noqa: E402
 from harvest_eval.sections import Normalizer, base, cites_in_text, match  # noqa: E402
@@ -159,6 +159,11 @@ class CorpusTests(unittest.TestCase):
             self.assertFalse(c.quote_ok("29cfr9999.10(a)", "inspected weekly"))
             self.assertEqual(c.sections_for_ref("fact", "f1"), ["29cfr9999.10(b)"])
             self.assertEqual(c.chunk_kind("cf1"), "fact")
+            # The runner parses responses in worker threads: lookups must work there too.
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=3) as ex:
+                got = list(ex.map(lambda _: (c.sections_for_ref("fact", "f1"), c.chunk_kind("cf1")), range(6)))
+            self.assertEqual(got, [(["29cfr9999.10(b)"], "fact")] * 6)
             hb = HarvestBackend({"name": "h", "pack": str(db)}, c, Normalizer())
             r = hb.parse({"mode": "composed", "body": [
                 {"t": "text", "text": "Inspect ladders every shift. A competent person does it."},
@@ -208,6 +213,83 @@ class _OpenAIStub(http.server.BaseHTTPRequestHandler):
 
     def log_message(self, *a):
         pass
+
+
+class _ThinkingStub(http.server.BaseHTTPRequestHandler):
+    """A reasoning model that spends the whole budget thinking: empty content."""
+
+    def do_POST(self):  # noqa: N802
+        self.rfile.read(int(self.headers["Content-Length"]))
+        body = json.dumps({"choices": [{"finish_reason": "length",
+                                        "message": {"content": "", "reasoning_content": "Let me think"}}]}).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, *a):
+        pass
+
+
+class HeadingLabels(unittest.TestCase):
+    def test_section_labels_are_not_claims(self):
+        hb = HarvestBackend({"name": "h", "pack": "p"}, None, Normalizer())
+        r = hb.parse({"mode": "composed", "body": [
+            {"t": "text", "text": "§9999.10(a) Inspections"},
+            {"t": "quote", "section_id": "29cfr9999.10(a)", "text": "Inspect before each shift."},
+            {"t": "text", "text": "§9999.10 inspect every 30 days"},
+            {"t": "text", "text": "Table M1 to §9999.37 Table M1"},
+            {"t": "text", "text": "The competent person inspects the crane before each shift."}]}, None)
+        self.assertEqual(r.claims, ["§9999.10 inspect every 30 days",
+                                    "The competent person inspects the crane before each shift."])
+
+
+class CitedText(unittest.TestCase):
+    def test_long_cited_section_shows_the_paragraph_a_claim_rests_on(self):
+        from harvest_eval.runner import cited_text
+        c = Corpus()
+        filler = "General words about cranes and the equipment on site. " * 800   # > FULL_LIMIT
+        c._add("29cfr9999.1", None, filler + " (z) The hook must have a latch.")
+        c._add("29cfr9999.1(a)", "29cfr9999.1", filler)
+        c._add("29cfr9999.1(z)", "29cfr9999.1", "The hook must have a latch.")
+        claims = ["The hook needs a latch."]
+        t = cited_text(c, ["29cfr9999.1"], claims=claims)
+        self.assertIn("[29cfr9999.1(z)] The hook must have a latch.", t)
+        self.assertLessEqual(len(t), 40000)
+        self.assertNotIn("[29cfr9999.1(a)]", t)
+
+    def test_long_unlabelled_section_is_windowed(self):
+        from harvest_eval.runner import cited_text
+        c = Corpus()
+        defs = " ".join(f"Term {i} means a thing number {i} on the site." for i in range(1000))
+        c._add("29cfr9999.1401", None, defs + " Rated capacity means the maximum working load.")
+        t = cited_text(c, ["29cfr9999.1401"], claims=["Rated capacity is the maximum working load."])
+        self.assertIn("Rated capacity means the maximum working load.", t)
+        self.assertLessEqual(len(t), 40000)
+
+    def test_short_cited_text_is_unchanged(self):
+        from harvest_eval.runner import cited_text
+        c = Corpus()
+        c._add("29cfr9999.2", None, "Inspect before each shift.")
+        self.assertEqual(cited_text(c, ["29cfr9999.2"], claims=["Inspect each shift."]),
+                         cited_text(c, ["29cfr9999.2"]))
+        self.assertEqual(cited_text(c, ["29cfr9999.2"]), "[29cfr9999.2] Inspect before each shift.")
+
+
+class EmptyAnswer(unittest.TestCase):
+    def test_empty_content_is_an_error_not_an_answer(self):
+        srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), _ThinkingStub)
+        threading.Thread(target=srv.serve_forever, daemon=True).start()
+        try:
+            b = OpenAIBackend({"name": "t", "endpoint": f"http://127.0.0.1:{srv.server_port}/v1", "model": "m"},
+                              Normalizer())
+            r = b.ask({"question": "how far from a 50 kV line?"})
+        finally:
+            srv.shutdown()
+        self.assertFalse(r.ok)
+        self.assertIn("finish_reason=length", r.error)
+        self.assertIn("12 chars of reasoning_content", r.error)
 
 
 class EndToEnd(unittest.TestCase):

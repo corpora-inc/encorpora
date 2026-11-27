@@ -1,0 +1,56 @@
+# Model-on run, 2026-11-27: the harvest core loop (expand -> retrieve -> select -> compose ->
+# strict check) with on-device-class models, over the pack built from main 8a62f3fd6 (sections
+# plus the first frontier facts, terms, explanations and applicability rows). harvest runs on the
+# lab machine through ../2026-11-27-baseline/lab/harvest-remote.sh; each model is llama-server on
+# the same machine (../2026-11-27-baseline/lab/serve.sh, plus --reasoning-budget 0). Paths are
+# relative to this file.
+set: ../../heldout-v1.jsonl
+reference_sections: ../../sources/sections-2026-11-24.jsonl
+
+match:
+  aliases:                         # the pipeline's appendix and table spelling -> the set's
+    - {pattern: "^29cfr1926\\.cc\\.app", replace: "29cfr1926-subpartCC-app"}
+    - {pattern: "-table-", replace: "-table"}
+
+backends:
+  - {name: harvest-model-off, kind: harvest, binary: harvest, pack: pack, llm: "off", role: operator}
+  - name: harvest-gemma4-e4b
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: http://127.0.0.1:18101/v1       # on the lab machine, next to harvest
+    role: operator
+    extra_args: [--llm-model, gemma-4-E4B_q4_0-it.gguf]
+    jobs: 3
+    timeout_s: 600
+  - name: harvest-granite42-3b
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: http://127.0.0.1:18102/v1
+    role: operator
+    extra_args: [--llm-model, granite-4.2-3b-Q4_K_M.gguf]
+    jobs: 3
+    timeout_s: 600
+  - name: harvest-gpt-oss-20b
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: http://127.0.0.1:18103/v1
+    role: operator
+    extra_args: [--llm-model, gpt-oss-20b-MXFP4.gguf]
+    jobs: 3
+    timeout_s: 600
+
+compare:
+  - [harvest-model-off, harvest-gemma4-e4b]
+  - [harvest-model-off, harvest-granite42-3b]
+  - [harvest-model-off, harvest-gpt-oss-20b]
+
+judge:
+  model: opus
+  agreement_model: sonnet
+  agreement_sample: 0.15
+  cache: ../2026-11-27-baseline/.judge-cache   # shared: identical answers are never re-judged
+  per_call: 6
+  jobs: 3

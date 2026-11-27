@@ -1,0 +1,205 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "lowering a guy down a 6 ft drill shaft on a bosun chair can we send two guys at once to save time and does somebody gotta be at the top of the hole",
+    "style": "voice",
+    "category": "personnel-lifts",
+    "gold_answer": "No. With a boatswain's chair, only one person may be hoisted at a time. A signal person must be stationed at the shaft opening, and the employee must wear a full body harness attached independently of the crane/derrick.",
+    "section_ids": [
+     "29cfr1926.1431(o)(3)(vii)",
+     "29cfr1926.1431(o)(3)(ii)",
+     "29cfr1926.1431(o)(3)(iv)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(o)(3)(vii)",
+     "text": "No more than one person must be hoisted at a time."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "rigging the man basket off a crane with rotation resistant hoist rope. what safety factor do the slings need, do the eyes need thimbles, and can we use that bridle to pick materials the rest of the week?",
+    "style": "multi-part",
+    "category": "personnel-lifts",
+    "gold_answer": "When rotation resistant rope is used, the slings must support at least 10 times the maximum intended load (other rigging hardware and hooks need at least 5 times). Eyes in wire rope slings must have thimbles. The platform bridles and rigging may be used only for hoisting personnel and their tools and materials, never for anything else.",
+    "section_ids": [
+     "29cfr1926.1431(g)(3)",
+     "29cfr1926.1431(g)(4)",
+     "29cfr1926.1431(g)(5)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(g)(3)",
+     "text": "Where rotation resistant rope is used, the slings must be capable of supporting without failure at least ten times the maximum intended load."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our basket has its own controls in it. Can the operator step out of the cab while the guy in the basket runs it himself?",
+    "style": "scenario",
+    "category": "personnel-lifts",
+    "gold_answer": "No. While a platform with controls is occupied, the equipment operator must be at a set of equipment controls that include the boom and swing functions, on site and in view of the equipment. The occupant using the platform controls must be a qualified person for using them, and the platform operating manual must be in the platform or on the equipment.",
+    "section_ids": [
+     "29cfr1926.1431(k)(7)(i)",
+     "29cfr1926.1431(k)(7)(ii)",
+     "29cfr1926.1431(k)(7)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(k)(7)(ii)",
+     "text": "The equipment operator must be at a set of equipment controls that include boom and swing functions of the equipment, and must be on site and in view of the equipment."
+    },
+    "equipment": "personnel-platform",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "2 hammerheads goin up on the same site, how close can they be? can one jib swing over the other",
+    "style": "typo",
+    "category": "tower-cranes",
+    "gold_answer": "When more than one fixed-jib (hammerhead) tower crane is on a jobsite, they must be placed so no crane can contact the structure of another crane. Cranes are allowed to pass over one another.",
+    "section_ids": [
+     "29cfr1926.1435(b)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(b)(6)",
+     "text": "the cranes must be located such that no crane can come in contact with the structure of another crane."
+    },
+    "equipment": "tower-crane",
+    "variant": "hammerhead",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "LMI on the tower crane is fried. what do we have to do to keep picking and how long till it has to be fixed",
+    "style": "slang",
+    "category": "tower-cranes",
+    "gold_answer": "The load moment limiting device is a Category I aid. As a temporary measure, use a radius indicating device (or measure the radius if the crane has none) and determine the load weight from an industry-recognized source or calculation, giving that to the operator before the lift. The repair is due within 7 calendar days, or within 7 calendar days of receiving parts if the parts were documented as ordered within 7 days.",
+    "section_ids": [
+     "29cfr1926.1435(e)(5)",
+     "29cfr1926.1435(e)(5)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(e)(5)(v)",
+     "text": "A radius indicating device must be used (if the tower crane is not equipped with a radius indicating device, the radius must be measured to ensure the load is within the rated capacity of the crane)."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Manufacturer may specify more protective alternative measures that must be followed."
+   },
+   {
+    "question": "What rules apply when a worker is handling rope on the winch head of a derrick?",
+    "style": "formal",
+    "category": "derricks",
+    "gold_answer": "Ropes may not be handled on a winch head unless the operator knows about it. While the winch head is in use, the operator must be within reach of the power unit control lever.",
+    "section_ids": [
+     "29cfr1926.1436(k)(1)",
+     "29cfr1926.1436(k)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(k)(2)",
+     "text": "While a winch head is being used, the operator must be within reach of the power unit control lever."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "old guy derrick no boom angle indicator on it is that a problem",
+    "style": "vague",
+    "category": "derricks",
+    "gold_answer": "A boom angle indicator isn't required on a derrick. Without a working one, though, you need one of two things: caution and stop marks on the boom hoist cable matching the maximum and minimum allowable boom angles, visible to the operator or to a spotter in direct communication with the operator; or an electronic or other device that warns the operator in time or automatically stops the boom from going past those angles.",
+    "section_ids": [
+     "29cfr1926.1436(f)(2)",
+     "29cfr1926.1436(f)(2)(i)",
+     "29cfr1926.1436(f)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(f)(2)(i)",
+     "text": "The stop marks must correspond to maximum and minimum allowable boom angles."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For a crane permanently mounted on a barge and built for marine use, what wind speed do the load charts have to account for, and what is the minimum freeboard needed for stability at rated capacity plus 25 percent?",
+    "style": "formal",
+    "category": "floating-cranes",
+    "gold_answer": "The load charts must account for a wind speed of at least 40 mph. Per Table M2, at rated capacity plus 25% the equipment must be stable in a 60 mph wind with at least 1 ft of freeboard (2 ft at rated capacity and at high boom with no load).",
+    "section_ids": [
+     "29cfr1926.1437(m)(1)(ii)",
+     "29cfr1926.1437(m)(3)",
+     "29cfr1926.1437-tableM2"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437-tableM2",
+     "text": "Rated capacity plus 25% | 60 | 1"
+    },
+    "equipment": "floating-crane",
+    "variant": "permanently attached marine crane",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "on the barge theres no room to rope off the swing radius of the crane like we do on land. how are we supposed to mark it off",
+    "style": "voice",
+    "category": "floating-cranes",
+    "gold_answer": "On a barge the employer can do either of two things: put up and maintain control lines, warning lines, railings or similar barriers at the hazard-area boundaries; or mark the hazard areas clearly with warning signs (e.g., \"Danger—Swing/Crush Zone\") plus high-visibility markings on the equipment. With the signs-and-markings option, every employee must be trained on what the markings mean.",
+    "section_ids": [
+     "29cfr1926.1437(c)(2)(i)",
+     "29cfr1926.1437(c)(2)(ii)"
+    ],
+    "key_quote": null,
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For our little crane rated under 2000 lbs, does the operator need certified, and what inspection schedule do we follow — the usual shift/monthly/annual?",
+    "style": "multi-part",
+    "category": "sideboom-pile-small",
+    "gold_answer": "Equipment rated 2,000 lbs or less has no certification requirement. The employer only has to train each operator on safe operation of that type of equipment before they run it. Inspections follow the manufacturer's procedures, not the general shift/monthly/annual schedule.",
+    "section_ids": [
+     "29cfr1926.1441(e)",
+     "29cfr1926.1441(h)",
+     "29cfr1926.1441(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1441(h)",
+     "text": "The employer must ensure that equipment is inspected in accordance with manufacturer procedures."
+    },
+    "equipment": "small-capacity-equipment",
+    "variant": "2,000 lbs or less",
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Answer relies on 1926.1427 and 1926.1412 shift/monthly/annual not being listed in 1441(a); only 1412(c) post-assembly applies."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.4796038,
+ "duration_ms": 41844,
+ "batch": "V05",
+ "prompt_chars": 122528
+}

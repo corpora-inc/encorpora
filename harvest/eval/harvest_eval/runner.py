@@ -7,6 +7,7 @@ import hashlib
 import json
 import platform
 import random
+import re
 import subprocess
 import sys
 import threading
@@ -238,7 +239,12 @@ def collect(backend, items: list[dict], path: Path, fingerprint: str, jobs: int)
             for line in fh:
                 d = json.loads(line)
                 if d["response"]["ok"] and d.get("config") == fingerprint:
-                    done[d["id"]] = Response.from_json(d["response"])
+                    r = Response.from_json(d["response"])
+                    if isinstance(backend, HarvestBackend) and isinstance(r.raw, dict):
+                        # Re-derive claims, cites and retrieved sections from the CLI's own output,
+                        # so a resumed run is scored by the current parser.
+                        r = backend.parse(r.raw, r.wall_ms)
+                    done[d["id"]] = r
     todo = [it for it in items if it["id"] not in done]
     lock = threading.Lock()
     with path.open("a") as f, ThreadPoolExecutor(max_workers=max(1, jobs)) as ex:
@@ -258,18 +264,88 @@ def collect(backend, items: list[dict], path: Path, fingerprint: str, jobs: int)
     return done
 
 
-def cited_text(corpus: Corpus | None, cites: list[str], limit: int = 16000) -> str:
+FULL_LIMIT = 40000
+_WORD = re.compile(r"[a-z0-9]+(?:[.,][0-9]+)*")
+_STOP = frozenset("the and for with that this these those from not any each when than then which who what "
+                  "are was were has have had its into onto upon such may must shall will would can".split())
+
+
+def _terms(text: str) -> set[str]:
+    return {w for w in _WORD.findall(text.lower()) if w[0].isdigit() or (len(w) > 2 and w not in _STOP)}
+
+
+_SENT = re.compile(r"(?<=[.;])\s+")
+
+
+def _windows(text: str, size: int = 1500) -> list[str]:
+    """A paragraph as-is, or, when it is long (a definitions section with no
+    labelled children), consecutive runs of whole sentences of about `size`."""
+    if len(text) <= size:
+        return [text]
+    out, cur = [], ""
+    for sent in _SENT.split(text):
+        if cur and len(cur) + len(sent) + 1 > size:
+            out.append(cur)
+            cur = ""
+        cur = f"{cur} {sent}".strip()
+    if cur:
+        out.append(cur)
+    return out
+
+
+def cited_text(corpus: Corpus | None, cites: list[str], limit: int = FULL_LIMIT,
+               claims: list[str] | None = None) -> str:
+    """The text of the cited sections, for the support judge.
+
+    The judge sees all of it when it fits in `limit` characters (a whole
+    definitions section such as §1926.1401 is about 21,000; §1910.179 whole is
+    about 45,000). Past that, cutting
+    the text off would hide the paragraph a claim rests on, so the judge sees
+    the cited paragraphs that cover the claims' words instead: greedy cover over
+    the cited sections, their descendants and sentence windows of long
+    paragraphs, smallest first on ties, in document order, within `limit`.
+    Without claims the text is cut at `limit`."""
     if corpus is None:
         return ""
-    parts, size = [], 0
-    for c in cites:
-        if c in corpus.text:
-            t = corpus.subtree(c, limit=6000)
-            parts.append(t)
-            size += len(t)
-            if size > limit:
-                break
-    return "\n".join(parts)[:limit]
+    cited = [c for c in dict.fromkeys(cites) if c in corpus.text]
+    full = "\n".join(corpus.subtree(c, limit=10 ** 9) for c in cited)
+    if len(full) <= limit or not claims:
+        return full[:limit]
+
+    units: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for c in cited:
+        stack = [c]
+        while stack:
+            s = stack.pop(0)
+            if s not in seen and corpus.text.get(s):
+                seen.add(s)
+                units.extend((s, w) for w in _windows(corpus.text[s]))
+            stack[0:0] = corpus.children.get(s, [])
+    order = {u: i for i, u in enumerate(units)}
+    terms = {u: _terms(u[1]) for u in units}
+    want = _terms(" ".join(claims))
+    picked: list[tuple[str, str]] = []
+    size = 0
+    while want:
+        best = None
+        for s, t in units:
+            line = f"[{s}] {t}"
+            if (s, t) in picked or size + len(line) + 1 > limit:
+                continue
+            gain = len(want & terms[(s, t)])
+            if gain and (best is None or (gain, -len(t)) > (best[0], -len(best[2]))):
+                best = (gain, s, t)
+        if best is None:
+            break
+        _, s, t = best
+        picked.append((s, t))
+        size += len(s) + len(t) + 4
+        want -= terms[(s, t)]
+    picked.sort(key=lambda u: order[u])
+    note = ("(Excerpts: the cited sections are longer than this window; these are the cited paragraphs "
+            "that contain the claims' words.)")
+    return "\n".join([note] + [f"[{s}] {t}" for s, t in picked])[:limit]
 
 
 def judge_all(judge: Judge, items, responses, corpus, is_harvest: bool):
@@ -303,7 +379,7 @@ def judge_all(judge: Judge, items, responses, corpus, is_harvest: bool):
         if not r.claims:
             supports[it["id"]] = {"claims": []}
             continue
-        payloads.append({"claims": r.claims, "cited_text": cited_text(corpus, r.citations)})
+        payloads.append({"claims": r.claims, "cited_text": cited_text(corpus, r.citations, claims=r.claims)})
         sids.append(it["id"])
     for i, s in zip(sids, judge.support(payloads)):
         if s:

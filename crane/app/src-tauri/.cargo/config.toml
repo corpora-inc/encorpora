@@ -1,0 +1,12 @@
+# Pin the LINKER to Apple's clang for macOS desktop builds.
+#
+# The Android NDK's clang can sit early on a developer's $PATH, and rustc's
+# default Apple link driver is a bare `cc` lookup that would resolve to it; the
+# NDK clang segfaults linking a macOS binary. ADR-0011 records that these pins
+# must survive any templating of this file. No machine-specific paths here.
+
+[target.x86_64-apple-darwin]
+linker = "/usr/bin/cc"
+
+[target.aarch64-apple-darwin]
+linker = "/usr/bin/cc"

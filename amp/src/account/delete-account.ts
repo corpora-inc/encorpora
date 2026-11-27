@@ -206,6 +206,8 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_provider_oauth_flows: "account",
   amp_purchase_consents: "consent-evidence",
   amp_research_pilot_interest: "account",
+  // Study enrolment (migration 0156) goes with the learner, by cascade.
+  amp_research_participants: "learner",
   amp_school_events: "place",
   amp_school_licenses: "place",
   amp_scope_settings: "place",

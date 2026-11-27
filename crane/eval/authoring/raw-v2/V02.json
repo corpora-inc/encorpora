@@ -1,0 +1,205 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "drivin the crane empty past the service drop thats only 480 volts, how close can i get and do i still need a spoter for that",
+    "style": "typo",
+    "category": "power-lines",
+    "gold_answer": "Under Table T, a line up to 0.75 kV (480 V is 0.48 kV) needs at least 4 ft of clearance while traveling with no load. If any part of the equipment will get closer than 20 ft to the line while traveling, a dedicated spotter in continuous contact with the driver/operator is still required.",
+    "section_ids": [
+     "29cfr1926.1411-tableT",
+     "29cfr1926.1411(b)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411-tableT",
+     "text": "up to 0.75 | 4"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We need to move the crane, no load, under a 345 kV line. Is the travel clearance the same 20 ft we'd use on Table A for operating at that voltage?",
+    "style": "formal",
+    "category": "power-lines",
+    "gold_answer": "No. Table T requires 10 ft for over 50 to 345 kV while traveling with no load. Table A requires 20 ft for over 200 to 350 kV during operations.",
+    "section_ids": [
+     "29cfr1926.1411-tableT",
+     "29cfr1926.1408-tableA"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411-tableT",
+     "text": "over 50 to 345 | 10"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "the laborer they gave me as a dedicated spotter for the lines, does he need any kind of training or can anybody just stand there and watch",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "Dedicated spotters must be trained so they can do the job effectively, including training on the applicable requirements of 1926.1408. The training has to be given in accordance with 1926.1430(g).",
+    "section_ids": [
+     "29cfr1926.1408(g)(2)",
+     "29cfr1926.1408(g)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(g)(2)",
+     "text": "must be trained to enable them to effectively perform their task, including training on the applicable requirements of this section"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our boom truck came from the factory with a proximity alarm. If we use it as our measure near the lines, can we set it up our own way or are there rules on how it gets used?",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "If a manufacturer-designed safety device, operational aid, or power-line contact prevention device is used to comply with 1926.1408, it must meet the manufacturer's procedures for use and conditions of use. The alarm also has to be set to give the operator enough warning to prevent encroachment.",
+    "section_ids": [
+     "29cfr1926.1408(h)",
+     "29cfr1926.1408(b)(4)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(h)",
+     "text": "must meet the manufacturer's procedures for use and conditions of use"
+    },
+    "equipment": "boom-truck",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Erecting a tower crane with lines within 20 ft of where the jib goes. Two things: who has to be at the planning meeting, and are there any rules on the tag lines we use during erection?",
+    "style": "multi-part",
+    "category": "power-lines",
+    "gold_answer": "The planning meeting must include the A/D director, the operator, the assembly/disassembly crew, and any other workers who will be in the assembly/disassembly area. In it they review where the lines are and the steps that will prevent encroachment. Any tag lines used must be nonconductive.",
+    "section_ids": [
+     "29cfr1926.1407(b)(1)",
+     "29cfr1926.1407(b)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1407(b)(2)",
+     "text": "If tag lines are used, they must be nonconductive."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "if we go with a spotter as the extra measure while we're tearing down the crane by the lines what does the spotter need to have and where does he stand",
+    "style": "voice",
+    "category": "power-lines",
+    "gold_answer": "During assembly/disassembly the dedicated spotter must be in continuous contact with the operator and have a visual aid for identifying the minimum clearance distance, such as a painted ground line, stanchions, or line-of-sight landmarks. The spotter must be positioned to effectively gauge clearance, use communication equipment where necessary, and give the operator timely information.",
+    "section_ids": [
+     "29cfr1926.1407(b)(3)(i)",
+     "29cfr1926.1407(b)(3)(i)(A)",
+     "29cfr1926.1407(b)(3)(i)(B)",
+     "29cfr1926.1407(b)(3)(i)(D)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1407(b)(3)(i)(A)",
+     "text": "Be equipped with a visual aid to assist in identifying the minimum clearance distance."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For a job breaching Table A, does the procedure have to be written down, and who's actually in charge of running it?",
+    "style": "vague",
+    "category": "power-lines",
+    "gold_answer": "The procedures must be documented and immediately available on-site. The utility owner/operator (or RPE) and all employers involved must identify one person to direct implementation, and that person must have authority to stop work at any time to ensure safety.",
+    "section_ids": [
+     "29cfr1926.1410(e)",
+     "29cfr1926.1410(h)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(h)",
+     "text": "must have the authority to stop work at any time to ensure safety."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "power co killed and grounded the line last week for another contractor. super says its still dead so we're good to swing over there today. right?",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "No. All power lines must be treated as energized unless the utility owner/operator confirms that the line has been and continues to be deenergized and visibly grounded at the worksite. A superintendent's word or last week's outage doesn't count.",
+    "section_ids": [
+     "29cfr1926.1408(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(e)",
+     "text": "has been and continues to be deenergized and visibly grounded at the worksite"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "rough terrain crane bouncing across a rutted site no load under lines, boom bobs up and down. what does the reg say about that besides keeping the table T distance",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "The boom/mast and its support system must be lowered enough to meet the travel requirements. The employer must also consider how speed and terrain affect equipment movement, including boom/mast movement, so that those effects don't cause a breach of the Table T clearances.",
+    "section_ids": [
+     "29cfr1926.1411(b)(1)",
+     "29cfr1926.1411(b)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411(b)(3)",
+     "text": "The effects of speed and terrain on equipment movement (including movement of the boom/mast) are considered"
+    },
+    "equipment": "rough-terrain-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "working inside table A on the crawler next week who puts the cover up on the lines does the rigging gotta be anything special and can the extra guys hang around to watch",
+    "style": "voice",
+    "category": "power-lines",
+    "gold_answer": "The utility owner/operator must install insulating line hose or cover-up unless none is available for the voltage involved. Rigging must be nonconductive if it may be within the Table A distance. Only personnel essential to the operation are allowed in the area of the crane and load.",
+    "section_ids": [
+     "29cfr1926.1410(d)(12)",
+     "29cfr1926.1410(d)(5)",
+     "29cfr1926.1410(d)(10)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(d)(12)",
+     "text": "Insulating line hose or cover-up must be installed by the utility owner/operator except where such devices are unavailable for the line voltages involved."
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.213368,
+ "duration_ms": 44528,
+ "batch": "V02",
+ "prompt_chars": 32093
+}

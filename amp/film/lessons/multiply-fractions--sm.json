@@ -1,0 +1,997 @@
+{
+  "id": "multiply-fractions--sm",
+  "title": "Multiplying fractions",
+  "skill": "fraction-multiplication",
+  "teaches": ["fraction-of-quantity", "scaling-direction-choice", "mcas-product-factor-size"],
+  "cast": { "teacher": {}, "learner": {} },
+  "shots": [
+    {
+      "figure": {
+        "view": [-1, -1, 9, 6.6],
+        "points": { "G0": [0, 5.4] },
+        "parts": [
+          { "id": "g", "grid": [4, 3], "at": "G0", "size": [2, 1.8], "ink": "muted", "start": true },
+          { "id": "cA", "counters": "g", "n": 4, "from": 1, "ink": "accent" },
+          { "id": "cB", "counters": "g", "n": 4, "from": 5, "ink": "gold" },
+          { "id": "cC", "counters": "g", "n": 4, "from": 9, "ink": "blue" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Let's start with something you already know. Here is one group of four.",
+          "pause": 0.2,
+          "do": [
+            { "do": "header", "text": "Times means “of”" },
+            { "do": "show", "target": "cA", "at": "Let's" },
+            { "do": "write", "tex": "1\\text{ group of }4=4", "at": "group" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A second group of four. And a third.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "cB", "at": "second" },
+            { "do": "write", "tex": "2\\text{ groups of }4=8", "at": "second" },
+            { "do": "show", "target": "cC", "at": "third" },
+            { "do": "write", "tex": "3\\text{ groups of }4=12", "at": "third" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three groups of four. Champ, how many counters in all?",
+          "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": ["cA", "cB", "cC"], "at": "Three", "until": "Champ" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Twelve! Three times four.",
+          "pause": 0.2,
+          "do": [
+            { "do": "write", "tex": "3\\times4=12", "at": "Twelve" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three groups of four, and three times four. Same thing. Times means of.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": ["cA", "cB", "cC"], "at": "Three", "until": "and" },
+            { "do": "highlight", "target": ["cA", "cB", "cC"], "at": "Times", "nth": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1, -2.6, 13, 3.6],
+        "points": { "G0": [0, 2], "D1": [6, -0.4], "D2": [6, 2.4], "L1": [3, -1.5], "L2": [9, -1.5] },
+        "parts": [
+          { "id": "g", "grid": [6, 1], "at": "G0", "size": [2, 2], "ink": "muted", "start": true },
+          { "id": "cn", "counters": "g", "n": 6, "ink": "accent", "start": true },
+          { "id": "split", "seg": ["D1", "D2"], "ink": "ink", "w": 3 },
+          { "id": "n3a", "label": "3", "at": "L1", "dir": "c", "size": "xl", "ink": "accent" },
+          { "id": "n3b", "label": "3", "at": "L2", "dir": "c", "size": "xl", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now one with a fraction. What is half of six?",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is half of 6?" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Split six into two equal groups. Three in each. Half of six is three!",
+          "pause": 0.2,
+          "do": [
+            { "do": "draw", "target": "split", "at": "Split" },
+            { "do": "show", "target": "n3a", "at": "Three" },
+            { "do": "show", "target": "n3b", "at": "each" },
+            { "do": "write", "tex": "\\tfrac12\\text{ of }6=3", "at": "Half" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Half of six is half times six. Times means of, even when the number in front is a fraction.",
+          "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "\\tfrac12\\times6=3", "fresh": true, "at": "Half" },
+            { "do": "highlight", "target": "cn", "at": "six", "until": "is" },
+            { "do": "highlight", "target": "split", "at": "fraction" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So what could a fraction of a fraction mean? Two thirds of three fourths? Let's build it.",
+          "pause": 0.6,
+          "do": [
+            { "do": "text", "text": "A fraction of a fraction?", "at": "fraction" },
+            { "do": "write", "tex": "\\cg{\\tfrac{2}{3}}\\text{ of }\\ca{\\tfrac{3}{4}}", "fresh": true, "at": "Two" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-4, -3.4, 14.6, 14.8],
+        "points": {
+          "X0Y0": [0, 0], "X3Y0": [3, 0], "X6Y0": [6, 0], "X9Y0": [9, 0], "X12Y0": [12, 0],
+          "X0Y4": [0, 4], "X9Y4": [9, 4], "X12Y4": [12, 4],
+          "X0Y8": [0, 8], "X12Y8": [12, 8],
+          "X0Y12": [0, 12], "X3Y12": [3, 12], "X6Y12": [6, 12], "X9Y12": [9, 12], "X12Y12": [12, 12],
+          "k1": [1.5, 10], "k2": [4.5, 10], "k3": [7.5, 10],
+          "k4": [1.5, 6], "k5": [4.5, 6], "k6": [7.5, 6],
+          "k7": [1.5, 2], "k8": [4.5, 2], "k9": [7.5, 2], "k10": [10.5, 2],
+          "k11": [10.5, 10], "k12": [10.5, 6],
+          "PQ": [4.5, -2.8], "PB": [-2.3, 8],
+          "DT0": [0, 12.8], "DT9": [9, 12.8], "DL4": [-0.8, 4], "DL12": [-0.8, 12],
+          "DB0": [0, -0.8], "DB12": [12, -0.8], "DR0": [12.8, 0], "DR12": [12.8, 12]
+        },
+        "parts": [
+          { "id": "sq", "poly": ["X0Y0", "X12Y0", "X12Y12", "X0Y12"], "fill": "paper", "ink": "ink", "w": 3 },
+          { "id": "q34", "poly": ["X0Y0", "X9Y0", "X9Y12", "X0Y12"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "band", "poly": ["X0Y4", "X12Y4", "X12Y12", "X0Y12"], "fill": "gold-fill", "ink": "gold", "w": 2, "sheer": true },
+          { "id": "ovFill", "poly": ["X0Y4", "X9Y4", "X9Y12", "X0Y12"], "fill": "gold-fill", "sheer": true, "ink": "gold", "w": 1 },
+          { "id": "v1", "seg": ["X3Y0", "X3Y12"], "ink": "ink", "w": 3 },
+          { "id": "v2", "seg": ["X6Y0", "X6Y12"], "ink": "ink", "w": 3 },
+          { "id": "v3", "seg": ["X9Y0", "X9Y12"], "ink": "ink", "w": 3 },
+          { "id": "h1", "seg": ["X0Y4", "X12Y4"], "ink": "ink", "w": 3 },
+          { "id": "h2", "seg": ["X0Y8", "X12Y8"], "ink": "ink", "w": 3 },
+          { "id": "ov", "poly": ["X0Y4", "X9Y4", "X9Y12", "X0Y12"], "fill": "none", "ink": "ink", "w": 5 },
+          { "id": "sqRing", "poly": ["X0Y0", "X12Y0", "X12Y12", "X0Y12"], "fill": "none", "ink": "ink", "w": 8 },
+          { "id": "qRing", "poly": ["X0Y0", "X9Y0", "X9Y12", "X0Y12"], "fill": "none", "ink": "accent", "w": 8 },
+          { "id": "ovRing", "poly": ["X0Y4", "X9Y4", "X9Y12", "X0Y12"], "fill": "none", "ink": "warm", "w": 8 },
+          { "id": "lq34", "label": "\\tfrac{3}{4}", "at": "PQ", "dir": "c", "size": "xl", "ink": "accent" },
+          { "id": "lq23", "label": "\\tfrac{2}{3}", "at": "PB", "dir": "c", "size": "xl", "ink": "gold" },
+          { "id": "n1", "label": "1", "at": "k1", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n2", "label": "2", "at": "k2", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n3", "label": "3", "at": "k3", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n4", "label": "4", "at": "k4", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n5", "label": "5", "at": "k5", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n6", "label": "6", "at": "k6", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n7", "label": "7", "at": "k7", "dir": "c", "size": "l", "ink": "muted", "halo": true },
+          { "id": "n8", "label": "8", "at": "k8", "dir": "c", "size": "l", "ink": "muted", "halo": true },
+          { "id": "n9", "label": "9", "at": "k9", "dir": "c", "size": "l", "ink": "muted", "halo": true },
+          { "id": "n10", "label": "10", "at": "k10", "dir": "c", "size": "l", "ink": "muted", "halo": true },
+          { "id": "n11", "label": "11", "at": "k11", "dir": "c", "size": "l", "ink": "muted", "halo": true },
+          { "id": "n12", "label": "12", "at": "k12", "dir": "c", "size": "l", "ink": "muted", "halo": true },
+          { "id": "dTop", "dim": ["DT0", "DT9"], "side": "n", "tex": "3", "ink": "accent" },
+          { "id": "dLeft", "dim": ["DL4", "DL12"], "side": "w", "tex": "2", "ink": "gold" },
+          { "id": "dBot", "dim": ["DB0", "DB12"], "side": "s", "tex": "4", "ink": "accent" },
+          { "id": "dRight", "dim": ["DR0", "DR12"], "side": "e", "tex": "3", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is two thirds times three fourths?",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is $\\frac{2}{3}\\times\\frac{3}{4}$?" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Easy! Multiply the tops, multiply the bottoms. Two times three is six. Three times four is twelve. Six twelfths. See?",
+          "pause": 0.2,
+          "do": [
+            { "do": "write", "tex": "\\frac{2\\times3}{3\\times4}", "id": "rule", "at": "tops" },
+            { "do": "clear", "at": "six" },
+            { "do": "write", "tex": "2\\times3=6", "fresh": true, "at": "six" },
+            { "do": "write", "tex": "3\\times4=12", "fresh": true, "at": "twelve" },
+            { "do": "write", "tex": "\\frac{6}{12}", "fresh": true, "at": "twelfths" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is right. But why does it work?",
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Let's see it, inside a square.",
+          "pause": 0.3,
+          "do": [
+            { "do": "draw", "target": "sq", "at": "see" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Times means of. We want two thirds of three fourths. So take three fourths of the square first.",
+          "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "\\cg{\\tfrac{2}{3}}\\text{ of }\\ca{\\tfrac{3}{4}}", "fresh": true, "at": "two" },
+            { "do": "show", "target": "sqRing", "at": "square" },
+            { "do": "hide", "target": "sqRing", "at": "first" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Cut the square into four equal columns. Fourths.",
+          "pause": 0.2,
+          "do": [
+            { "do": "draw", "target": "v1", "at": "Cut" },
+            { "do": "draw", "target": "v2", "at": "four" },
+            { "do": "draw", "target": "v3", "at": "columns" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Shade three of the four. That is three fourths.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "q34", "at": "Shade" },
+            { "do": "show", "target": "lq34", "at": "fourths" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now the other fraction, two thirds. Cut the whole square across into three equal rows.",
+          "pause": 0.2,
+          "do": [
+            { "do": "show", "target": "lq23", "at": "thirds" },
+            { "do": "draw", "target": "h1", "at": "Cut" },
+            { "do": "draw", "target": "h2", "at": "three" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Color the top two rows gold. The gold band lies across every column.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": ["h1", "h2"], "at": "Color", "until": "gold" },
+            { "do": "show", "target": "band", "at": "gold" },
+            { "do": "highlight", "target": ["v1", "v2", "v3"], "at": "column" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Whoa! The colors mix where the gold crosses the teal!",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": ["ovFill", "ov"], "at": "mix" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That mixed patch is two thirds of the three fourths. Two thirds of three fourths. That is our answer.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "ovRing", "at": "mixed" },
+            { "do": "hide", "target": "ovRing", "at": "two" },
+            { "do": "show", "target": "qRing", "at": "three" },
+            { "do": "hide", "target": "qRing", "at": "Two", "nth": 2 },
+            { "do": "show", "target": "ovRing", "at": "answer" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How many little pieces make the patch? Count them. One, two, three, four, five, six.",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": "ovRing" },
+            { "do": "show", "target": "n1", "at": "One" },
+            { "do": "show", "target": "n2", "at": "two" },
+            { "do": "show", "target": "n3", "at": "three" },
+            { "do": "show", "target": "n4", "at": "four" },
+            { "do": "show", "target": "n5", "at": "five" },
+            { "do": "show", "target": "n6", "at": "six" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six pieces. Now count every piece in the whole square. Seven, eight, nine, ten, eleven, twelve.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "n7", "at": "Seven" },
+            { "do": "show", "target": "n8", "at": "eight" },
+            { "do": "show", "target": "n9", "at": "nine" },
+            { "do": "show", "target": "n10", "at": "ten" },
+            { "do": "show", "target": "n11", "at": "eleven" },
+            { "do": "show", "target": "n12", "at": "twelve" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six pieces out of twelve. Six twelfths. The picture agrees with Champ.",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "write", "tex": "\\frac{2}{3}\\times\\frac{3}{4}=\\frac{6}{12}", "fresh": true, "at": "Six" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now look at where the six comes from. The patch is three columns wide, and two rows tall. Two rows of three.",
+          "pause": 0.4,
+          "do": [
+            { "do": "hide", "target": ["n1", "n2", "n3", "n4", "n5", "n6", "n7", "n8", "n9", "n10", "n11", "n12", "lq34", "lq23"], "at": "Now" },
+            { "do": "show", "target": "dTop", "at": "three" },
+            { "do": "show", "target": "dLeft", "at": "two" },
+            { "do": "write", "tex": "\\cg{2}\\times\\ca{3}=6", "note": "\\text{pieces taken}", "fresh": true, "at": "three", "nth": 2 }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two times three. The tops, multiplied. They count the pieces we took.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": ["dTop", "dLeft"], "at": "tops" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And the whole square? Four columns, each cut into three pieces. Three times four is twelve.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "dBot", "at": "Four" },
+            { "do": "show", "target": "dRight", "at": "three" },
+            { "do": "write", "tex": "\\cg{3}\\times\\ca{4}=12", "note": "\\text{pieces in all}", "fresh": true, "at": "Three", "nth": 2 }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The bottoms, multiplied. They count all the pieces.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": ["dBot", "dRight"], "at": "bottoms" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So two thirds times three fourths is two times three, over three times four.",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "write", "tex": "\\frac{\\cg{2}}{\\cg{3}}\\times\\frac{\\ca{3}}{\\ca{4}}", "fresh": true, "at": "So" },
+            { "do": "write", "tex": "=\\frac{\\cg{2}\\times\\ca{3}}{\\cg{3}\\times\\ca{4}}", "fresh": true, "at": "two", "nth": 2 },
+            { "do": "highlight", "target": ["dTop", "dLeft"], "at": "two", "nth": 2, "until": "over" },
+            { "do": "highlight", "target": ["dBot", "dRight"], "at": "three", "nth": 3 }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So the top counts the pieces we took, and the bottom counts all the pieces. It is not a trick. It is the picture!",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "ovRing", "at": "top" },
+            { "do": "hide", "target": "ovRing", "at": "bottom" },
+            { "do": "show", "target": "sqRing", "at": "bottom" },
+            { "do": "hide", "target": "sqRing", "at": "not" },
+            { "do": "write", "tex": "=\\frac{6}{12}", "fresh": true, "at": "picture" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Exactly. And six out of twelve is one half. Two thirds of three fourths is one half of the whole square.",
+          "pause": 0.6,
+          "do": [
+            { "do": "clear" },
+            { "do": "show", "target": "ovRing", "at": "half" },
+            { "do": "write", "tex": "\\frac{6}{12}=\\frac{1}{2}", "fresh": true, "at": "six" },
+            { "do": "answer", "tex": "\\frac{1}{2}", "at": "whole" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.8, -0.8, 9.9, 12.5],
+        "points": {
+          "G1": [2.4, 6.6],
+          "G2": [2.4, 8.3],
+          "G3": [2.4, 10.0],
+          "G4": [2.4, 11.7],
+          "B1": [0, 1.2],
+          "B2": [0, 2.75],
+          "B3": [0, 4.3],
+          "pA1a": [2.5, 5.5],
+          "pA1b": [4.7, 5.5],
+          "pA1c": [4.7, 6.5],
+          "pA1d": [2.5, 6.5],
+          "pA2a": [4.9, 5.5],
+          "pA2b": [7.1, 5.5],
+          "pA2c": [7.1, 6.5],
+          "pA2d": [4.9, 6.5],
+          "pB1a": [2.5, 7.2],
+          "pB1b": [4.7, 7.2],
+          "pB1c": [4.7, 8.2],
+          "pB1d": [2.5, 8.2],
+          "pB2a": [4.9, 7.2],
+          "pB2b": [7.1, 7.2],
+          "pB2c": [7.1, 8.2],
+          "pB2d": [4.9, 8.2],
+          "pC1a": [2.5, 8.9],
+          "pC1b": [4.7, 8.9],
+          "pC1c": [4.7, 9.9],
+          "pC1d": [2.5, 9.9],
+          "pC2a": [4.9, 8.9],
+          "pC2b": [7.1, 8.9],
+          "pC2c": [7.1, 9.9],
+          "pC2d": [4.9, 9.9],
+          "pD1a": [2.5, 10.6],
+          "pD1b": [4.7, 10.6],
+          "pD1c": [4.7, 11.6],
+          "pD1d": [2.5, 11.6],
+          "pD2a": [4.9, 10.6],
+          "pD2b": [7.1, 10.6],
+          "pD2c": [7.1, 11.6],
+          "pD2d": [4.9, 11.6],
+          "LW1": [1.0, 6.0],
+          "LW2": [1.0, 7.7],
+          "LW3": [1.0, 9.4],
+          "LW4": [1.0, 11.1],
+          "LR1": [8.7, 0.6],
+          "LR2": [8.7, 2.15],
+          "LR3": [8.7, 3.7]
+        },
+        "parts": [
+          { "id": "g1", "grid": [2, 1], "at": "G1", "size": [2.4, 1.2], "ink": "muted", "start": true },
+          { "id": "g2", "grid": [2, 1], "at": "G2", "size": [2.4, 1.2], "ink": "muted", "start": true },
+          { "id": "g3", "grid": [2, 1], "at": "G3", "size": [2.4, 1.2], "ink": "muted", "start": true },
+          { "id": "g4", "grid": [2, 1], "at": "G4", "size": [2.4, 1.2], "ink": "muted", "start": true },
+          { "id": "d1", "grid": [3, 1], "at": "B1", "size": [2.4, 1.2], "ink": "ink" },
+          { "id": "d2", "grid": [3, 1], "at": "B2", "size": [2.4, 1.2], "ink": "ink" },
+          { "id": "d3", "grid": [3, 1], "at": "B3", "size": [2.4, 1.2], "ink": "ink" },
+          { "id": "pA1", "poly": ["pA1a", "pA1b", "pA1c", "pA1d"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "pA2", "poly": ["pA2a", "pA2b", "pA2c", "pA2d"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "pB1", "poly": ["pB1a", "pB1b", "pB1c", "pB1d"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "pB2", "poly": ["pB2a", "pB2b", "pB2c", "pB2d"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "pC1", "poly": ["pC1a", "pC1b", "pC1c", "pC1d"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "pC2", "poly": ["pC2a", "pC2b", "pC2c", "pC2d"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "pD1", "poly": ["pD1a", "pD1b", "pD1c", "pD1d"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "pD2", "poly": ["pD2a", "pD2b", "pD2c", "pD2d"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "w1", "label": "\\tfrac{2}{3}", "at": "LW1", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "w2", "label": "\\tfrac{2}{3}", "at": "LW2", "dir": "c", "size": "l", "ink": "gold" },
+          { "id": "w3", "label": "\\tfrac{2}{3}", "at": "LW3", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "w4", "label": "\\tfrac{2}{3}", "at": "LW4", "dir": "c", "size": "l", "ink": "gold" },
+          { "id": "r1", "label": "1", "at": "LR1", "dir": "c", "size": "l", "ink": "ink" },
+          { "id": "r2", "label": "1", "at": "LR2", "dir": "c", "size": "l", "ink": "ink" },
+          { "id": "r3", "label": "\\tfrac{2}{3}", "at": "LR3", "dir": "c", "size": "l", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now a whole number times a fraction. Four times two thirds.",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is $4\\times\\frac{2}{3}$?" },
+            { "do": "show", "target": "w1", "at": "two" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four groups of two thirds. Here is one group. Another. Another. And a fourth.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": ["pA1", "pA2"], "at": "one" },
+            { "do": "show", "target": ["pB1", "pB2", "w2"], "at": "Another" },
+            { "do": "show", "target": ["pC1", "pC2", "w3"], "at": "Another", "nth": 2 },
+            { "do": "show", "target": ["pD1", "pD2", "w4"], "at": "fourth" },
+            { "do": "highlight", "target": ["g1", "g2", "g3", "g4"], "at": "Four", "until": "Here" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each piece is a third of a whole. So let's pour them into whole bars, three thirds to a bar.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": ["d1", "d2", "d3"], "at": "pour" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One third, two thirds, three thirds. That fills a whole bar.",
+          "pause": 0.3,
+          "do": [
+            { "do": "slide", "target": "pA1", "by": [-2.4, -5.4], "at": "One", "dur": 0.5 },
+            { "do": "slide", "target": "pA2", "by": [-2.4, -5.4], "at": "two", "dur": 0.5 },
+            { "do": "slide", "target": "pB2", "by": [0, -7.1], "at": "three", "dur": 0.5 },
+            { "do": "show", "target": "r1", "at": "whole" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four thirds, five thirds, six thirds. Another whole bar.",
+          "pause": 0.3,
+          "do": [
+            { "do": "slide", "target": "pB1", "by": [-2.4, -5.55], "at": "Four", "dur": 0.5 },
+            { "do": "slide", "target": "pC1", "by": [0, -7.25], "at": "five", "dur": 0.5 },
+            { "do": "slide", "target": "pC2", "by": [0, -7.25], "at": "six", "dur": 0.5 },
+            { "do": "show", "target": "r2", "at": "Another" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven thirds, eight thirds. The last two pieces fill only two thirds of the third bar.",
+          "pause": 0.3,
+          "do": [
+            { "do": "slide", "target": "pD1", "by": [-2.4, -7.4], "at": "Seven", "dur": 0.5 },
+            { "do": "slide", "target": "pD2", "by": [-2.4, -7.4], "at": "eight", "dur": 0.5 },
+            { "do": "show", "target": "r3", "at": "last" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight thirds in all. That is two wholes, and two thirds.",
+          "pause": 0.4,
+          "do": [
+            { "do": "write", "tex": "4\\times\\frac{2}{3}=\\frac{8}{3}", "at": "Eight" },
+            { "do": "write", "tex": "\\frac{8}{3}=2\\hspace{0.1em}\\tfrac{2}{3}", "fresh": true, "at": "wholes" },
+            { "do": "answer", "tex": "2\\tfrac{2}{3}", "at": "two", "nth": 2 }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four times two is eight, and the pieces are still thirds!",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": ["pA1", "pA2", "pB1", "pB2", "pC1", "pC2", "pD1", "pD2"], "at": "eight" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. Write four as four over one. Same rule: tops times tops, bottoms times bottoms.",
+          "pause": 0.5,
+          "do": [
+            { "do": "clear" },
+            { "do": "write", "tex": "\\frac{4}{1}\\times\\frac{2}{3}=\\frac{4\\times2}{1\\times3}=\\frac{8}{3}", "fresh": true, "at": "Write" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1, -3.6, 17, 5.6],
+        "points": {
+          "B0": [0, 3], "U0": [0, -0.2], "U1": [9.6, -0.2],
+          "e1": [1.6, 1.5], "e2": [4.8, 1.5], "e3": [8, 1.5], "e4": [11.2, 1.5], "e5": [14.4, 1.5]
+        },
+        "parts": [
+          { "id": "bar", "bar": "B0", "w": 16, "h": 3, "whole": 20, "title": "\\text{20 stickers}", "start": true },
+          { "id": "f1", "label": "4", "at": "e1", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "f2", "label": "4", "at": "e2", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "f3", "label": "4", "at": "e3", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "f4", "label": "4", "at": "e4", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "f5", "label": "4", "at": "e5", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "d12", "dim": ["U0", "U1"], "side": "s", "tex": "3\\times4=12", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A fraction can take a share of a whole group. Three fifths of twenty stickers.",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is $\\frac{3}{5}$ of 20 stickers?" },
+            { "do": "highlight", "target": "bar", "at": "twenty" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The whole bar is twenty stickers. Cut it into five equal parts. Fifths.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "bar", "at": "whole", "until": "Cut" },
+            { "do": "partition", "target": "bar", "into": 5, "at": "Cut" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twenty shared into five equal parts. Each part gets four.",
+          "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "20\\div5=4", "at": "Twenty" },
+            { "do": "show", "target": ["f1", "f2", "f3", "f4", "f5"], "at": "four" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three fifths means three of those parts. Four, eight, twelve!",
+          "pause": 0.3,
+          "do": [
+            { "do": "shade", "target": "bar", "to": 0.6, "at": "three" },
+            { "do": "write", "tex": "3\\times4=12", "fresh": true, "at": "Four" },
+            { "do": "highlight", "target": "f1", "at": "Four", "until": "eight" },
+            { "do": "highlight", "target": "f2", "at": "eight", "until": "twelve" },
+            { "do": "highlight", "target": "f3", "at": "twelve" },
+            { "do": "show", "target": "d12", "at": "twelve" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twelve stickers. Three fifths of twenty is three fifths times twenty.",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "write", "tex": "\\frac{3}{5}\\times\\frac{20}{1}=\\frac{60}{5}=12", "fresh": true, "at": "Twelve" },
+            { "do": "answer", "tex": "12\\text{ stickers}", "at": "stickers" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-4, -2.8, 12.8, 8.8],
+        "points": {
+          "O0": [0, 5], "O1": [9, 5], "O2": [9, 7], "O3": [0, 7],
+          "S0": [0, 0], "E1": [9, 0], "E2": [9, 2], "S3": [0, 2],
+          "Z9": [6.75, 0], "Z12": [9, 0], "Z15": [11.25, 0],
+          "G3b": [2.25, -0.25], "G3t": [2.25, 7.2], "G6b": [4.5, -0.25], "G6t": [4.5, 7.2],
+          "G9b": [6.75, -0.25], "G9t": [6.75, 7.2], "G12b": [9, -0.25], "G12t": [9, 7.2],
+          "F": [-2.2, 1]
+        },
+        "parts": [
+          { "id": "orig", "poly": ["O0", "O1", "O2", "O3"], "fill": "blue-fill", "ink": "blue", "w": 3, "start": true },
+          { "id": "res", "poly": ["S0", "E1", "E2", "S3"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "g3", "seg": ["G3b", "G3t"], "ink": "muted", "w": 1.5, "dash": true, "start": true },
+          { "id": "g6", "seg": ["G6b", "G6t"], "ink": "muted", "w": 1.5, "dash": true, "start": true },
+          { "id": "g9", "seg": ["G9b", "G9t"], "ink": "muted", "w": 1.5, "dash": true, "start": true },
+          { "id": "g12", "seg": ["G12b", "G12t"], "ink": "ink", "w": 2, "dash": true, "start": true },
+          { "id": "dO", "dim": ["O3", "O2"], "side": "n", "tex": "6", "ink": "blue", "start": true },
+          { "id": "d9", "dim": ["S0", "Z9"], "side": "s", "tex": "4\\tfrac{1}{2}", "ink": "accent" },
+          { "id": "d12", "dim": ["S0", "Z12"], "side": "s", "tex": "6", "ink": "accent" },
+          { "id": "d15", "dim": ["S0", "Z15"], "side": "s", "tex": "7\\tfrac{1}{2}", "ink": "accent" },
+          { "id": "f34", "label": "\\times\\tfrac{3}{4}", "at": "F", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "f1", "label": "\\times1", "at": "F", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "f54", "label": "\\times\\tfrac{5}{4}", "at": "F", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "oRing", "poly": ["O0", "O1", "O2", "O3"], "fill": "none", "ink": "warm", "w": 7 },
+          { "id": "rRing", "poly": ["S0", "E1", "E2", "S3"], "fill": "none", "ink": "warm", "w": 7 }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Multiplying has a second secret. It can shrink a number, or stretch it. Here is a bar, six units long.",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Resize a bar of length 6." },
+            { "do": "show", "target": "res", "at": "bar" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The dashed lines cut it into fourths. Under it, a copy that we will resize.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": ["g3", "g6", "g9", "g12"], "at": "dashed" },
+            { "do": "show", "target": "d12", "at": "copy" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "First, multiply by three fourths. Champ, before it moves: will the bar get shorter, stay the same, or get longer?",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "f34", "at": "three" },
+            { "do": "show", "target": "rRing", "at": "bar" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Shorter! Three fourths is less than one whole, so I keep only part of the six.",
+          "pause": 0.4,
+          "do": [
+            { "do": "hide", "target": "rRing" },
+            { "do": "highlight", "target": "f34", "at": "Shorter" },
+            { "do": "highlight", "target": ["g9", "g12"], "at": "less", "until": "keep" },
+            { "do": "show", "target": "oRing", "at": "six" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Let's see. Keep three of the four fourths.",
+          "pause": 0.1,
+          "do": [
+            { "do": "hide", "target": "oRing" },
+            { "do": "hide", "target": "d12", "at": "Let's" },
+            { "do": "move", "points": { "E1": [6.75, 0], "E2": [6.75, 2] }, "at": "Keep", "dur": 1.6 },
+            { "do": "show", "target": "d9", "at": "three" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six times three fourths is four and a half. Shorter, just as Champ said.",
+          "pause": 0.4,
+          "do": [
+            { "do": "write", "tex": "6\\times\\tfrac{3}{4}=4\\hspace{0.1em}\\tfrac{1}{2}", "at": "Six" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Next, multiply by one. What happens, Champ?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear", "at": "Next" },
+            { "do": "hide", "target": ["f34"], "at": "Next" },
+            { "do": "show", "target": "f1", "at": "one" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Nothing! One times a number is that same number.",
+          "pause": 0.2,
+          "do": [
+            { "do": "hide", "target": "d9", "at": "Nothing" },
+            { "do": "move", "points": { "E1": [9, 0], "E2": [9, 2] }, "at": "Nothing", "dur": 1.2 },
+            { "do": "show", "target": "d12", "at": "same" },
+            { "do": "write", "tex": "6\\times1=6", "at": "One" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Last, five fourths. That is more than one whole. Which way, Champ?",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": "f1", "at": "Last" },
+            { "do": "show", "target": "f54", "at": "five" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Longer! Five fourths is a whole, plus one more fourth.",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": "d12", "at": "Longer" },
+            { "do": "move", "points": { "E1": [11.25, 0], "E2": [11.25, 2] }, "at": "Longer", "dur": 1.6 },
+            { "do": "show", "target": "d15", "at": "whole" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six times five fourths is seven and a half. It grew past the dashed line.",
+          "pause": 0.4,
+          "do": [
+            { "do": "write", "tex": "6\\times\\tfrac{5}{4}=7\\hspace{0.1em}\\tfrac{1}{2}", "fresh": true, "at": "Six" },
+            { "do": "highlight", "target": "g12", "at": "dashed" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So: multiply by less than one, and it shrinks. Multiply by more than one, and it grows.",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "text", "text": "Less than 1: smaller.", "at": "less" },
+            { "do": "text", "text": "More than 1: bigger.", "at": "more" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Whole numbers fooled us. Multiplying by two, three, four always grows. But a fraction less than one can shrink.",
+          "pause": 0.4,
+          "do": [
+            { "do": "text", "text": "Whole numbers: always bigger.", "tone": "muted", "at": "Whole" },
+            { "do": "text", "text": "A fraction below 1 can shrink.", "at": "fraction" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So you can tell without multiplying. Is five fourths times nine more, or less, than nine?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Without multiplying: is $\\frac{5}{4}\\times9$ more or less than 9?" },
+            { "do": "text", "text": "Compare the factor to 1.", "at": "without" },
+            { "do": "text", "text": "More than 9, or less?", "at": "more" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "More! Five fourths is bigger than one.",
+          "pause": 0.2,
+          "do": [
+            { "do": "text", "text": "$\\frac{5}{4}>1$, so more than 9", "at": "bigger" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And two thirds times nine?",
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Less than nine, because two thirds is under one.",
+          "pause": 0.5,
+          "do": [
+            { "do": "text", "text": "$\\frac{2}{3}<1$, so less than 9", "at": "under" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.2, -4.2, 13.4, 9.6],
+        "points": {
+          "K0": [0, 5], "K1": [3, 5], "K2": [6, 5], "K3": [9, 5],
+          "T0": [0, 7], "T1": [3, 7], "T2": [6, 7], "T3": [9, 7],
+          "M0": [0, 0], "M2": [6, 0], "M2t": [6, 2], "M0t": [0, 2],
+          "Mc": [3, 0], "Mct": [3, 2],
+          "b0": [0, 0], "b1": [3, 0], "b2": [3, 2], "b3": [0, 2],
+          "LC": [11.4, 6], "LB": [1.5, -1.5], "LA": [3, 8.5], "LH": [3, -3.65]
+        },
+        "parts": [
+          { "id": "cup", "poly": ["K0", "K3", "T3", "T0"], "fill": "paper", "ink": "ink", "w": 3, "start": true },
+          { "id": "c1", "seg": ["K1", "T1"], "ink": "ink", "w": 2, "start": true },
+          { "id": "c2", "seg": ["K2", "T2"], "ink": "ink", "w": 2, "start": true },
+          { "id": "A", "poly": ["K0", "K2", "T2", "T0"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "lA", "label": "\\tfrac{2}{3}", "at": "LA", "dir": "c", "size": "xl", "ink": "accent" },
+          { "id": "batch2", "poly": ["M0", "M2", "M2t", "M0t"], "fill": "paper", "ink": "muted", "w": 2 },
+          { "id": "cm", "seg": ["Mc", "Mct"], "ink": "muted", "w": 2 },
+          { "id": "B", "poly": ["b0", "b1", "b2", "b3"], "fill": "gold-fill", "ink": "gold", "w": 2 },
+          { "id": "lB", "label": "\\tfrac{1}{3}", "at": "LB", "dir": "c", "size": "xl", "ink": "gold" },
+          { "id": "lH", "label": "\\text{half of a batch}", "at": "LH", "dir": "c", "size": "m", "ink": "muted" },
+          { "id": "lC", "label": "\\text{1 cup}", "at": "LC", "dir": "c", "size": "l", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A real problem. A recipe uses two thirds of a cup of flour. How much flour for one and a half batches?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "A batch uses $\\frac{2}{3}$ cup of flour. How much for $1\\frac{1}{2}$ batches?" },
+            { "do": "highlight", "target": "cup", "at": "cup", "until": "of", "untilNth": 2 },
+            { "do": "highlight", "target": "cup", "at": "much" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Here is a measuring cup, cut in thirds. One batch fills two of the thirds.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "A", "at": "batch" },
+            { "do": "show", "target": "lA", "at": "two" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The half batch is half of a batch of two thirds. Cut a batch in two equal halves. Half is one third.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": ["batch2", "cm"], "at": "Cut" },
+            { "do": "show", "target": ["B", "lB", "lH"], "at": "Half", "nth": 2 }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Pour the half batch into the cup.",
+          "pause": 0.2,
+          "do": [
+            { "do": "hide", "target": ["lB", "lH"], "at": "Pour" },
+            { "do": "slide", "target": "B", "by": [6, 5], "at": "Pour", "dur": 1.6 }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Two thirds and one third fill the whole cup! One cup.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "lC", "at": "One", "nth": 2 },
+            { "do": "highlight", "target": ["A", "B"], "at": "whole" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now with numbers. One and a half is three halves. Then multiply the tops, and the bottoms.",
+          "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "1\\hspace{0.1em}\\tfrac{1}{2}\\times\\frac{2}{3}=\\frac{3}{2}\\times\\frac{2}{3}", "fresh": true, "at": "One" },
+            { "do": "write", "tex": "=\\frac{3\\times2}{2\\times3}=\\frac{6}{6}=1", "fresh": true, "at": "multiply" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One cup of flour. The picture and the numbers agree. And it is more than two thirds, because one and a half batches is more than one batch.",
+          "pause": 0.6,
+          "do": [
+            { "do": "answer", "tex": "1\\text{ cup}", "at": "One" },
+            { "do": "highlight", "target": ["A", "B"], "at": "picture", "until": "And" },
+            { "do": "text", "text": "More than $\\frac{2}{3}$, since $1\\frac{1}{2}>1$", "at": "more" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-3, -3.2, 14.6, 14.8],
+        "points": {
+          "X0Y0": [0, 0], "X3Y0": [3, 0], "X6Y0": [6, 0], "X9Y0": [9, 0], "X12Y0": [12, 0],
+          "X0Y4": [0, 4], "X9Y4": [9, 4], "X12Y4": [12, 4],
+          "X0Y8": [0, 8], "X12Y8": [12, 8],
+          "X0Y12": [0, 12], "X3Y12": [3, 12], "X6Y12": [6, 12], "X9Y12": [9, 12], "X12Y12": [12, 12],
+          "k1": [1.5, 10], "k2": [4.5, 10], "k3": [7.5, 10],
+          "k4": [1.5, 6], "k5": [4.5, 6], "k6": [7.5, 6],
+          "DT0": [0, 12.8], "DT9": [9, 12.8], "DL4": [-0.8, 4], "DL12": [-0.8, 12],
+          "DB0": [0, -0.8], "DB12": [12, -0.8], "DR0": [12.8, 0], "DR12": [12.8, 12]
+        },
+        "parts": [
+          { "id": "sq", "poly": ["X0Y0", "X12Y0", "X12Y12", "X0Y12"], "fill": "paper", "ink": "ink", "w": 3, "start": true },
+          { "id": "q34", "poly": ["X0Y0", "X9Y0", "X9Y12", "X0Y12"], "fill": "accent-fill", "ink": "accent", "w": 2, "start": true },
+          { "id": "band", "poly": ["X0Y4", "X12Y4", "X12Y12", "X0Y12"], "fill": "gold-fill", "ink": "gold", "w": 2, "sheer": true, "start": true },
+          { "id": "ovFill", "poly": ["X0Y4", "X9Y4", "X9Y12", "X0Y12"], "fill": "gold-fill", "sheer": true, "ink": "gold", "w": 1, "start": true },
+          { "id": "v1", "seg": ["X3Y0", "X3Y12"], "ink": "ink", "w": 3, "start": true },
+          { "id": "v2", "seg": ["X6Y0", "X6Y12"], "ink": "ink", "w": 3, "start": true },
+          { "id": "v3", "seg": ["X9Y0", "X9Y12"], "ink": "ink", "w": 3, "start": true },
+          { "id": "h1", "seg": ["X0Y4", "X12Y4"], "ink": "ink", "w": 3, "start": true },
+          { "id": "h2", "seg": ["X0Y8", "X12Y8"], "ink": "ink", "w": 3, "start": true },
+          { "id": "ov", "poly": ["X0Y4", "X9Y4", "X9Y12", "X0Y12"], "fill": "none", "ink": "ink", "w": 5, "start": true },
+          { "id": "qRing", "poly": ["X0Y0", "X9Y0", "X9Y12", "X0Y12"], "fill": "none", "ink": "accent", "w": 8 },
+          { "id": "bandRing", "poly": ["X0Y4", "X12Y4", "X12Y12", "X0Y12"], "fill": "none", "ink": "gold", "w": 8 },
+          { "id": "ovRing", "poly": ["X0Y4", "X9Y4", "X9Y12", "X0Y12"], "fill": "none", "ink": "warm", "w": 8 },
+          { "id": "n1", "label": "1", "at": "k1", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n2", "label": "2", "at": "k2", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n3", "label": "3", "at": "k3", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n4", "label": "4", "at": "k4", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n5", "label": "5", "at": "k5", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "n6", "label": "6", "at": "k6", "dir": "c", "size": "l", "ink": "ink", "halo": true },
+          { "id": "dTop", "dim": ["DT0", "DT9"], "side": "n", "tex": "3", "ink": "accent", "start": true },
+          { "id": "dLeft", "dim": ["DL4", "DL12"], "side": "w", "tex": "2", "ink": "gold", "start": true },
+          { "id": "dBot", "dim": ["DB0", "DB12"], "side": "s", "tex": "4", "ink": "accent", "start": true },
+          { "id": "dRight", "dim": ["DR0", "DR12"], "side": "e", "tex": "3", "ink": "gold", "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here is our square one more time. Three fourths in teal. Two thirds of it in gold. And where they meet, six pieces out of twelve.",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "show", "target": "qRing", "at": "teal" },
+            { "do": "hide", "target": "qRing", "at": "Two" },
+            { "do": "show", "target": "bandRing", "at": "gold" },
+            { "do": "hide", "target": "bandRing", "at": "And" },
+            { "do": "write", "tex": "\\cg{\\frac{2}{3}}\\times\\ca{\\frac{3}{4}}", "fresh": true, "at": "teal" },
+            { "do": "show", "target": "ovRing", "at": "meet" },
+            { "do": "show", "target": ["n1", "n2", "n3", "n4", "n5", "n6"], "at": "six" },
+            { "do": "write", "tex": "=\\frac{6}{12}=\\frac{1}{2}", "fresh": true, "at": "twelve" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Tops times tops counts the pieces we took. Bottoms times bottoms counts every piece.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": ["dTop", "dLeft"], "at": "Tops", "until": "Bottoms" },
+            { "do": "highlight", "target": ["dBot", "dRight"], "at": "Bottoms" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is the whole idea. Times means of. Multiply the tops for the pieces you took, and the bottoms for all the pieces.",
+          "pause": 0.3,
+          "do": [
+            { "do": "text", "text": "Times means “of”.", "at": "Times" },
+            { "do": "text", "text": "Tops: the pieces you took.", "at": "tops" },
+            { "do": "text", "text": "Bottoms: all the pieces.", "at": "bottoms" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And remember: multiply by less than one, and it shrinks. Multiply by more than one, and it grows.",
+          "pause": 1.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "text", "text": "Less than 1 shrinks.", "at": "less" },
+            { "do": "text", "text": "More than 1 grows.", "at": "more" }
+          ]
+        }
+      ]
+    }
+  ]
+}

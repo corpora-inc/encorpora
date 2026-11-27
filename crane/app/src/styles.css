@@ -1,0 +1,228 @@
+@import "tailwindcss";
+@import "@fontsource/barlow/latin-400.css";
+@import "@fontsource/barlow/latin-500.css";
+@import "@fontsource/barlow/latin-600.css";
+@import "@fontsource/barlow-semi-condensed/latin-600.css";
+@import "@fontsource/barlow-semi-condensed/latin-700.css";
+
+/*
+ * Tokens. Light is for sunlight: white surfaces, deep steel ink, contrast
+ * above 12:1 for body text. Amber is the crane-paint accent and marks the
+ * law itself (quotes and citation plates); red and green are reserved for
+ * findings and passes.
+ */
+:root {
+  --page: #e9edef;
+  --surface: #ffffff;
+  --surface-2: #f3f6f7;
+  --line: #c9d1d6;
+  --line-strong: #8d9aa3;
+  --ink: #0c1b26;
+  --ink-2: #3d4d59;
+  --ink-3: #5d6b75;
+  --amber: #f2a900;
+  --amber-ink: #1a1200;
+  --amber-wash: #fff4d6;
+  --focus: #0a62c9;
+  --pass: #17703f;
+  --pass-wash: #e3f3e9;
+  --fail: #b3122b;
+  --fail-wash: #fde8eb;
+  --overlay: rgba(12, 27, 38, 0.92);
+  --overlay-ink: #ffffff;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #091218;
+    --surface: #111d26;
+    --surface-2: #172631;
+    --line: #2a3b47;
+    --line-strong: #4f6473;
+    --ink: #eef3f6;
+    --ink-2: #b8c5ce;
+    --ink-3: #93a3ae;
+    --amber: #ffbf1f;
+    --amber-ink: #1a1200;
+    --amber-wash: #2b2410;
+    --focus: #6cb2ff;
+    --pass: #5fd08f;
+    --pass-wash: #10291c;
+    --fail: #ff6f80;
+    --fail-wash: #34141a;
+    --overlay: rgba(238, 243, 246, 0.95);
+    --overlay-ink: #0c1b26;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #091218;
+  --surface: #111d26;
+  --surface-2: #172631;
+  --line: #2a3b47;
+  --line-strong: #4f6473;
+  --ink: #eef3f6;
+  --ink-2: #b8c5ce;
+  --ink-3: #93a3ae;
+  --amber: #ffbf1f;
+  --amber-ink: #1a1200;
+  --amber-wash: #2b2410;
+  --focus: #6cb2ff;
+  --pass: #5fd08f;
+  --pass-wash: #10291c;
+  --fail: #ff6f80;
+  --fail-wash: #34141a;
+  --overlay: rgba(238, 243, 246, 0.95);
+  --overlay-ink: #0c1b26;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-amber: var(--amber);
+  --color-amber-ink: var(--amber-ink);
+  --color-amber-wash: var(--amber-wash);
+  --color-focus: var(--focus);
+  --color-pass: var(--pass);
+  --color-pass-wash: var(--pass-wash);
+  --color-fail: var(--fail);
+  --color-fail-wash: var(--fail-wash);
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Semi Condensed", "Barlow", ui-sans-serif, system-ui, sans-serif;
+  /* Type scale: 15 meta, 17 small, 19 body, 23 h3, 29 h2, 37 display. */
+  --text-meta: 0.9375rem;
+  --text-meta--line-height: 1.35;
+  --text-small: 1.0625rem;
+  --text-small--line-height: 1.45;
+  --text-body: 1.1875rem;
+  --text-body--line-height: 1.5;
+  --text-h3: 1.4375rem;
+  --text-h3--line-height: 1.25;
+  --text-h2: 1.8125rem;
+  --text-h2--line-height: 1.15;
+  --text-display: 2.3125rem;
+  --text-display--line-height: 1.08;
+  --radius-plate: 6px;
+  --radius-control: 12px;
+  --radius-panel: 16px;
+  --spacing-tap: 3.25rem; /* 52 px: gloved thumbs */
+}
+
+/* Base rules sit in the base layer so utilities (text-surface, font-display, margins) override them. */
+@layer base {
+  html {
+    background: var(--page);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #root {
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0;
+    hyphens: none;
+    word-break: normal;
+  }
+  button,
+  input,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* The law, set apart: verbatim quotes and citation plates. */
+  .quote {
+    border-left: 5px solid var(--amber);
+    background: var(--amber-wash);
+    border-radius: 0 var(--radius-control) var(--radius-control) 0;
+    padding: 12px 16px;
+  }
+  .plate {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: var(--radius-plate);
+    background: var(--amber);
+    color: var(--amber-ink);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-small);
+    font-variant-numeric: tabular-nums;
+    /* Section citations stay on one line; a long appendix name wraps at spaces. */
+    max-width: 100%;
+    text-align: left;
+    line-height: 1.2;
+    padding-block: 6px;
+    border: 0;
+    cursor: pointer;
+  }
+  .plate svg {
+    flex-shrink: 0;
+  }
+  .plate:active {
+    transform: translateY(1px);
+  }
+  .diagram svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .diagram .dg-label {
+    fill: var(--ink-2);
+    font: 500 14px var(--font-sans);
+  }
+  .diagram .dg-value {
+    fill: var(--ink);
+    font: 600 14px var(--font-display);
+  }
+  .diagram .dg-bar {
+    fill: var(--amber);
+  }
+  .target-flash {
+    background: var(--amber-wash);
+    box-shadow: inset 4px 0 0 var(--amber);
+  }
+}

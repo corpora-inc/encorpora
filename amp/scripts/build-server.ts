@@ -1,5 +1,6 @@
 /** Bundles the API, its workbook worker and the acquisition pipeline command
- * (`src/acquisition/cli.ts`) as production runs them. Guessing
+ * (`src/acquisition/cli.ts`) and the research export command
+ * (`src/research/export-cli.ts`) as production runs them. Guessing
  * chances are computed here, once per image, so no pod pays for them while a
  * learner waits. Both come from the same source, so they cannot disagree.
  * The demo's simulation is not bundled: its terms ship precomputed
@@ -17,6 +18,8 @@ export const serverBuildOptions = (
     "src/workbook/compute-worker.ts",
     // The operator's pipeline command, so a pod runs it without compiling.
     "src/acquisition/cli.ts",
+    // The research export Job's command (docs/research-export.md).
+    "src/research/export-cli.ts",
   ],
   bundle: true,
   platform: "node",

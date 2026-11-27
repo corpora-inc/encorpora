@@ -4113,6 +4113,29 @@
     ],
     "skill": "fraction-model"
   },
+  "fraction-of-quantity": {
+    "id": "multiply-fractions--sm",
+    "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+    "title": "Multiplying fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+    "duration": 455.75997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "tapn1QwocNXk3viVSowa"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+        "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+        "duration": 455.75997732426305
+      }
+    ],
+    "skill": "fraction-multiplication"
+  },
   "fraction-unit-count": {
     "id": "unit-piece-size--su",
     "version": "03097d38f5bc0a3b59f6027ed21fc53d78cf0bd52be315af1041f8140813b01f",
@@ -5595,6 +5618,29 @@
     ],
     "skill": "factors-multiples"
   },
+  "mcas-product-factor-size": {
+    "id": "multiply-fractions--sm",
+    "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+    "title": "Multiplying fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+    "duration": 455.75997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "tapn1QwocNXk3viVSowa"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+        "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+        "duration": 455.75997732426305
+      }
+    ],
+    "skill": "fraction-multiplication"
+  },
   "mcas-rational-irrational-select": {
     "id": "repeating-decimal-to-fraction--sr",
     "version": "94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18",
@@ -6251,6 +6297,29 @@
       }
     ],
     "skill": "multiplication-facts"
+  },
+  "multiply-fractions": {
+    "id": "multiply-fractions--sm",
+    "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+    "title": "Multiplying fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+    "duration": 455.75997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "tapn1QwocNXk3viVSowa"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+        "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+        "duration": 455.75997732426305
+      }
+    ],
+    "skill": "fraction-multiplication"
   },
   "multiply-two-digit": {
     "id": "area-model-product--sa",
@@ -9158,6 +9227,29 @@
     ],
     "skill": "scaled-graphs"
   },
+  "scaling-direction-choice": {
+    "id": "multiply-fractions--sm",
+    "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+    "title": "Multiplying fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+    "duration": 455.75997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "tapn1QwocNXk3viVSowa"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+        "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+        "duration": 455.75997732426305
+      }
+    ],
+    "skill": "fraction-multiplication"
+  },
   "scatter-association-choice": {
     "id": "scatter-association-choice--ss",
     "version": "f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f",
@@ -9312,6 +9404,29 @@
       }
     ],
     "skill": "division-meaning"
+  },
+  "share-remainder-fractions": {
+    "id": "multiply-fractions--sm",
+    "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+    "title": "Multiplying fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+    "duration": 455.75997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "tapn1QwocNXk3viVSowa"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-fractions--sm/34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac/audio.m4a",
+        "version": "34bf0bab28964dca7b0d536510a2d69bef8278e1277ea21043118b54de65d2ac",
+        "duration": 455.75997732426305
+      }
+    ],
+    "skill": "fraction-multiplication"
   },
   "share-remainder-percent": {
     "id": "percent-amounts-blanks",

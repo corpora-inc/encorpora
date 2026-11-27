@@ -32,8 +32,18 @@ One SQLite database, `<pack_id>-<version>.sqlite`, plus `manifest.json`:
   "signature": { "alg": "ed25519", "key_id": "…", "sig": "<base64 over canonical manifest without signature>" } }
 ```
 
-The core refuses a pack whose signature or file hash fails. Delta packs carry
-`"base_version"` and a list of row upserts/deletes per table.
+The core refuses a pack whose signature or file hash fails.
+
+A delta pack turns the installed version into the next one byte for byte. Its
+signed `manifest.json` carries `"base_version"`, `"base_sha256"` (the base
+database file it patches) and lists two files:
+`<target database path>.bsdiff` (a BSDIFF40 patch from the base SQLite file to
+the target's) and `target.manifest.json` (the target's own signed full
+manifest, unchanged). The core patches the installed base and then accepts
+the result only as that full pack: signature, every file hash, no downgrade.
+Other files must be unchanged from the base. `harvest delta` writes one from
+two full pack directories (signed with `HARVEST_SIGNING_KEY`, the bake's
+key, when set). Without the base installed, the host installs the full pack.
 
 ## Schema v1
 
@@ -177,25 +187,134 @@ claim segment that has no supporting quote or cite in the same paragraph.
 ```
 harvest verify  <pack-dir>                      # signature + hashes + schema
 harvest search  <pack> "<query>" [--k 10] [--json]
-harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <endpoint|off>] [--json]
+harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <endpoint|off>] [--audit <records-db>] [--json]
 harvest audit   <records-db> [--json]
+harvest outbox  <records-db> [--to <dir>] [--json]
+harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters [--id ID] [--role R]
 ```
 
 `ask --json` prints:
 
 ```json
-{ "mode": "baked|composed|declined",
+{ "mode": "baked|composed|declined|clarify",   // clarify: model on only; body = one question
   "answer_id": "…|null",
   "body": [ /* answer segments */ ],
   "citations": ["29cfr1926.1408(a)(2)"],
   "retrieved": [{ "chunk_id": "…", "ref_id": "…", "lexical": 0.0, "dense": 0.0, "score": 0.0 }],
   "check": { "quotes_ok": true, "cites_ok": true, "dropped": 0 },
   "nearest": ["…"],            // when declined
-  "pack_version": "…", "model": "…|null", "elapsed_ms": 0 }
+  "pack_version": "…", "model": "…|null", "elapsed_ms": 0,
+  "support": { "score": 0.0, "threshold": 0.5, "window": 0.25, "max_sections": 3, "depth": 12,
+               "concepts": ["…"], "cache_similarity": 0.0, "cache_threshold": 0.75,
+               "top_dense": 0.0, "min_dense": null,
+               "candidates": [{ "section_id": "…", "rank": 1, "retrieval": 0.0,
+                                "coverage": 0.0, "covered": ["…"] }] } }
 ```
+
+`support` is the deterministic answer gate's view of the question, in every
+mode, so a threshold can be tuned offline: candidates are the sections of
+the first `depth` retrieved chunks (`retrieved` lists the first `k` of them),
+in retrieval order; a candidate is composed when `coverage >=
+threshold` and `coverage >= score - window`, the first `max_sections` of them;
+none means decline; with `min_dense` set (the dense gate, in force only when
+dense retrieval ran), the engine also declines when `top_dense < min_dense`,
+with the model on as well, and `threshold` is the gate's coverage bar.
+The cache answers first when `cache_similarity >= cache_threshold`.
+
+A pack states its calibrated dense gate in `pack_meta`:
+`gate_dense_support_threshold` and `gate_dense_min` (both numbers as text;
+they belong to the pack's embedder, whose cosine scale they assume). Without
+them, or without dense vectors, the coverage-only threshold (0.5) applies.
 
 The Tauri app calls the same functions in-process; the CLI exists so evaluation
 measures exactly the code the app runs.
+
+## Records and uploads
+
+The device keeps one records database (`records.db`, never inside a pack):
+procedure runs and step results, the audit log, and an outbox. Every outbox
+item goes up as:
+
+```json
+{ "item_id": "run-…", "kind": "run|deficiency|deficiency_cleared|miss",
+  "created_at": "…Z",
+  "payload": "<the payload's JSON, as a string>",
+  "payload_sha256": "<hex SHA-256 of the payload string's UTF-8 bytes>" }
+```
+
+- `run`: a finished or abandoned run as a run report (below). It is the
+  authoritative record of the run.
+- `deficiency`: early notice, queued the moment a `pass_fail` step fails
+  (run, step, its `section_ids`, the record). A correction before upload
+  withdraws it; a correction after upload queues `deficiency_cleared`
+  (`run_id`, `step`, the new record). The latest item for a step wins.
+- `miss`: a declined question (`question`, `nearest`, pack version), for the
+  next bake.
+
+A run is recorded against the procedure's steps as they were when it began;
+a pack update that changes those steps refuses further results for that run.
+
+On the device, people's entries in `records.db` (step values, notes, photo
+references, outbox payloads, audit entries) are encrypted at rest with a key
+from the platform keystore; uploads leave the device in the clear over the
+transport's own encryption (TLS, or the folder the operator chose).
+
+The receiver stores items idempotently by `item_id` and answers each with
+`{ "item_id", "payload_sha256", "server_id", "received_at" }`. An item is done
+only when its receipt echoes its hash; anything else stays queued.
+
+### Run report (`harvest-run/1`)
+
+One format for the queued `run` upload and for the app's export of a run
+(`Records::report`):
+
+```json
+{ "format": "harvest-run/1", "pack_id": "…", "pack_version": "…",
+  "run_id": "run-…", "proc_id": "…", "title": "…|null", "role": "operator",
+  "equip_id": "…|null", "asset": "…|null", "status": "open|complete|abandoned", "steps_known": true,
+  "started_at": "…Z", "finished_at": "…Z|null",
+  "steps": [{ "ord": 1, "text": "…|null", "section_ids": ["…"], "check_kind": "pass_fail|value|note|photo|null",
+              "outcome": "pass|fail|na|value|note|photo|null", "value": null, "note": null,
+              "photos": [{ "path": "…", "sha256": "…" }], "structured": null,
+              "deficiency": false, "recorded_at": "…Z|null" }] }
+```
+
+Every step of the procedure is listed, recorded or not (`outcome: null`).
+`text`, `section_ids`, `check_kind` and `title` come from the pack; when the
+procedure changed since the run began, `steps_known` is false and only the
+recorded steps are listed, without them.
+
+## Content read API
+
+The app renders only what the core reads from a pack it verified on open; it
+never opens the SQLite file. The core (`harvest_core::content`, and
+`harvest show <pack> <what>` for the same JSON) returns:
+
+| Call | Rows |
+|---|---|
+| `info()` | pack id, version, schema, `built_at`, `corpus_id`, sources, row counts |
+| `sources()`, `sections()`, `section(id)`, `children(id)`, `section_lineage(id)`, `xrefs_from(id)`, `xrefs_to(id)` | the corpus |
+| `explanation(section, level, lang)` | plain-language explanation |
+| `topics()`, `skills()`, `lessons()`, `lesson(id)` | the course; lesson bodies checked |
+| `terms()`, `diagrams()`, `diagram(id)` | glossary and figures (`svg` is rendered as an image, never as inline markup) |
+| `questions()`, `questions_for_skill(id)`, `question(id)` | the bank; JSON columns parsed, an `mc` answer outside its choices is a pack error |
+| `procedures()`, `procedure(id)`, `proc_steps(id)` | Do |
+| `answers()`, `answer_for(id, role)` | the answer cache; the role's variant (same `question`, `level` = role) when there is one; body checked |
+| `equipment()` | variants |
+| `exams()`, `prereqs()`, `starters(role)` | app data from `pack_meta` |
+
+Generated rows (term, lesson, diagram, question, answer, procedure, proc_step)
+are returned only when their `provenance.verdict` is `pass`; a procedure
+appears only when it and every one of its steps passed. A term's quote that
+is not verbatim is dropped; a lesson the checker empties is left out; a
+question whose answer does not fit its kind is a pack error. Answer-segment
+bodies go through the structural checker, so a quote that is not verbatim is
+dropped, with the paragraph it supported.
+
+App data lives in optional `pack_meta` keys, JSON as text:
+`exam_blueprints` (array of exam blueprints, as `crane/content/exams.json`),
+`skill_prereqs` (`{skill_id: [skill_id]}`), `starter_answers`
+(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped).
 
 ## Bake hit rate
 

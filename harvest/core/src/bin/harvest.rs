@@ -13,8 +13,17 @@ use std::time::Instant;
 
 const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
-  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing] [--pubkey KEY] [--json]
-  harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off] [--embedder auto|none|hashing] [--pubkey KEY] [--json]
+  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY] [--json]
+  harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
+                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--audit <records-db> [--records-key FILE]]
+                  [--support-threshold X (coverage-only gate)] [--dense-gate COVERAGE:MIN_DENSE|off] [--pubkey KEY] [--json]
+  harvest audit   <records-db> [--records-key FILE] [--json]
+  harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # queue status; --to flushes it into a folder
+  harvest install <root> <pack-or-delta-dir> [--pubkey KEY] [--json]   # full or delta, verified, atomic
+  harvest delta   <base-dir> <target-dir> <out-dir> [--pubkey KEY] [--json]
+                  # signs with $HARVEST_SIGNING_KEY (base64 ed25519 seed) when set, else writes it unsigned
+  harvest show    <pack-dir> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters
+                  [--id ID] [--role operator] [--pubkey KEY]   # verified content as JSON (what the app reads)
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -89,9 +98,14 @@ fn main() -> ExitCode {
     let json_out = args.has("json");
     let result = match cmd.as_str() {
         "verify" => verify(&args),
+        "install" => install(&args),
+        "delta" => delta(&args),
         "search" => search(&args),
         "ask" => ask(&args),
+        "audit" => audit(&args),
+        "outbox" => outbox(&args),
         "fixture" => fixture(&args),
+        "show" => show(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -104,6 +118,7 @@ fn main() -> ExitCode {
             eprintln!("harvest: {m}\n{USAGE}");
             ExitCode::from(2)
         }
+        Err(CliError::Exit(code)) => ExitCode::from(code),
         Err(CliError::Engine(e)) => {
             if json_out {
                 println!("{}", json!({"ok": false, "error": e.to_string()}));
@@ -117,6 +132,8 @@ fn main() -> ExitCode {
 enum CliError {
     Usage(String),
     Engine(Error),
+    /// Already reported on stdout/stderr; exit with this code.
+    Exit(u8),
 }
 
 impl From<Error> for CliError {
@@ -189,8 +206,47 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
                 _ => Ok(None),
             }
         }
+        path if path.ends_with(".gguf") => gguf_embedder(path, pack),
+        url if url.starts_with("http://") || url.starts_with("https://") => {
+            // The id must name the weights the server loaded: hash the file
+            // when it is here, or take its declared SHA-256.
+            let sha = match (args.get("embedder-gguf"), args.get("embedder-sha256")) {
+                (Some(_), Some(_)) => {
+                    return Err(CliError::Usage(
+                        "give --embedder-gguf or --embedder-sha256, not both".into(),
+                    ));
+                }
+                (Some(path), None) => harvest_core::packs::sha256_file(Path::new(path))?,
+                (None, Some(sha)) => sha.to_string(),
+                (None, None) => {
+                    return Err(CliError::Usage(
+                        "--embedder <url> needs --embedder-gguf FILE or --embedder-sha256 HEX (the GGUF the server loaded)".into(),
+                    ));
+                }
+            };
+            let e = harvest_core::embed::ServerEmbedder::for_pack(
+                url,
+                pack,
+                &sha,
+                std::time::Duration::from_secs(60),
+            )?;
+            Ok(Some(Arc::new(e)))
+        }
         other => Err(CliError::Usage(format!("unknown embedder {other:?}"))),
     }
+}
+
+#[cfg(feature = "llama")]
+fn gguf_embedder(path: &str, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliError> {
+    let e = harvest_core::llama::LlamaEmbedder::for_pack(Path::new(path), pack)?;
+    Ok(Some(Arc::new(e)))
+}
+
+#[cfg(not(feature = "llama"))]
+fn gguf_embedder(_: &str, _: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliError> {
+    Err(CliError::Usage(
+        "a .gguf embedder needs a build with `--features llama`".into(),
+    ))
 }
 
 fn verify(args: &Args) -> Result<(), CliError> {
@@ -238,7 +294,15 @@ fn query_arg(args: &Args) -> Result<String, CliError> {
 }
 
 fn search(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["pubkey", "json", "k", "equip", "embedder"])?;
+    args.reject_unknown(&[
+        "pubkey",
+        "json",
+        "k",
+        "equip",
+        "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
+    ])?;
     let dir = pack_dir(args)?;
     let query = query_arg(args)?;
     let pack = Arc::new(Pack::open(&dir, &keys(args)?)?);
@@ -287,28 +351,96 @@ fn search(args: &Args) -> Result<(), CliError> {
 }
 
 fn ask(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["pubkey", "json", "role", "equip", "llm", "embedder"])?;
+    args.reject_unknown(&[
+        "pubkey",
+        "json",
+        "role",
+        "equip",
+        "llm",
+        "llm-model",
+        "llm-timeout",
+        "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
+        "audit",
+        "records-key",
+        "support-threshold",
+        "dense-gate",
+    ])?;
     let dir = pack_dir(args)?;
     let question = query_arg(args)?;
-    match args.get("llm").unwrap_or("off") {
-        "off" => {}
-        other => {
-            return Err(CliError::Usage(format!(
-                "--llm {other}: this build answers with the model off only"
-            )));
-        }
-    }
     let pack = Arc::new(Pack::open(&dir, &keys(args)?)?);
     let mut engine = Engine::new(pack.clone());
     if let Some(e) = embedder(args, &pack)? {
         engine = engine.with_embedder(e);
     }
-    let opts = AskOptions {
+    match args.get("llm").unwrap_or("off") {
+        "off" => {}
+        url if url.starts_with("http://") || url.starts_with("https://") => {
+            let secs: u64 = match args.get("llm-timeout") {
+                Some(t) => t
+                    .parse()
+                    .map_err(|_| CliError::Usage("--llm-timeout must be seconds".into()))?,
+                None => 120,
+            };
+            // An unreachable model is not a failed question: answer with the
+            // model off and say why.
+            match harvest_core::llm::OpenAiCompatible::new(
+                url,
+                args.get("llm-model"),
+                std::time::Duration::from_secs(secs),
+            ) {
+                Ok(llm) => engine = engine.with_llm(Arc::new(llm)),
+                Err(e) => eprintln!("harvest: model off: {e}"),
+            }
+        }
+        other => {
+            return Err(CliError::Usage(format!(
+                "--llm {other}: expected off or an http(s)://…/v1 endpoint"
+            )));
+        }
+    }
+    let mut opts = AskOptions {
         role: Role::parse(args.get("role").unwrap_or("operator"))?,
         equip: args.get("equip").map(str::to_string),
-        ..AskOptions::default()
+        ..AskOptions::for_pack(&pack)
     };
-    let resp = engine.ask(&question, &opts)?;
+    if let Some(t) = args.get("support-threshold") {
+        opts.support_threshold = t
+            .parse()
+            .map_err(|_| CliError::Usage("--support-threshold must be a number".into()))?;
+    }
+    match args.get("dense-gate") {
+        None => {}
+        Some("off") => opts.dense_gate = None,
+        Some(spec) => {
+            let parsed = spec
+                .split_once(':')
+                .and_then(|(c, d)| Some((c.parse::<f64>().ok()?, d.parse::<f64>().ok()?)));
+            let Some((support_threshold, min_dense)) = parsed else {
+                return Err(CliError::Usage(
+                    "--dense-gate is COVERAGE:MIN_DENSE (e.g. 0.2:0.77) or off".into(),
+                ));
+            };
+            opts.dense_gate = Some(harvest_core::answer::DenseGate {
+                support_threshold,
+                min_dense,
+            });
+        }
+    }
+    let (resp, trace) = engine.ask_traced(&question, &opts)?;
+    if let Some(e) = &trace.model_error {
+        eprintln!("harvest: model path not used: {e}");
+    }
+    if let Some(db) = args.get("audit") {
+        // The device record store: audit row always; a decline is also a
+        // miss queued for the next bake.
+        let records = harvest_core::records::Records::open_with_key(
+            Path::new(db),
+            records_key(args)?.as_ref(),
+        )?;
+        records.record_answer(&pack, &question, &resp, &trace)?;
+    }
     if args.has("json") {
         println!("{}", serde_json::to_string(&resp).map_err(Error::from)?);
         return Ok(());
@@ -343,11 +475,272 @@ fn ask(args: &Args) -> Result<(), CliError> {
     Ok(())
 }
 
+fn audit(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["json", "records-key"])?;
+    let db = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <records-db>".into()))?;
+    if !Path::new(db).is_file() {
+        return Err(CliError::Engine(Error::Invalid(format!(
+            "{db}: no such file"
+        ))));
+    }
+    let conn =
+        rusqlite::Connection::open_with_flags(db, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)
+            .map_err(Error::from)?;
+    let key = records_key(args)?.map(|k| harvest_core::crypt::RecordKey::from_bytes(&k));
+    // Without a key the links still verify (entries count as sealed).
+    if key.is_some() {
+        harvest_core::records::check_key(&conn, key.as_ref())?;
+    }
+    let report = harvest_core::audit::verify_chain_with(&conn, key.as_ref())?;
+    if args.has("json") {
+        println!("{}", serde_json::to_string(&report).map_err(Error::from)?);
+    } else {
+        println!(
+            "{} {} entries{}",
+            if report.ok { "ok" } else { "BROKEN" },
+            report.entries,
+            report
+                .first_bad
+                .map(|s| format!(", first bad entry {s}"))
+                .unwrap_or_default()
+        );
+        for (mode, n) in &report.modes {
+            println!("  {mode}: {n}");
+        }
+        if let Some(r) = report.bake_hit_rate {
+            println!("  bake hit rate: {:.1}%", r * 100.0);
+        }
+    }
+    if report.ok {
+        Ok(())
+    } else {
+        eprintln!(
+            "harvest: audit chain broken at entry {}",
+            report.first_bad.unwrap_or(0)
+        );
+        Err(CliError::Exit(1))
+    }
+}
+
+fn outbox(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["json", "to", "records-key"])?;
+    let db = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <records-db>".into()))?;
+    if !Path::new(db).is_file() {
+        return Err(CliError::Engine(Error::Invalid(format!(
+            "{db}: no such file"
+        ))));
+    }
+    let records =
+        harvest_core::records::Records::open_with_key(Path::new(db), records_key(args)?.as_ref())?;
+    let flushed = match args.get("to") {
+        Some(dir) => {
+            Some(records.flush(&harvest_core::sync::DirTransport::new(Path::new(dir)), 100)?)
+        }
+        None => None,
+    };
+    let status = records.outbox_status()?;
+    if args.has("json") {
+        println!(
+            "{}",
+            json!({"ok": flushed.as_ref().is_none_or(|f| f.error.is_none()), "flush": flushed, "status": status})
+        );
+    } else {
+        if let Some(f) = &flushed {
+            println!(
+                "sent {} acked {} rejected {}",
+                f.sent, f.acked, f.rejected_receipts
+            );
+        }
+        println!(
+            "pending {} acked {} failing {}",
+            status.pending, status.acked, status.failing
+        );
+        for (kind, n) in &status.pending_by_kind {
+            println!("  {kind}: {n}");
+        }
+    }
+    match flushed.and_then(|f| f.error) {
+        Some(e) => {
+            eprintln!("harvest: outbox flush failed: {e}");
+            Err(CliError::Exit(1))
+        }
+        None => Ok(()),
+    }
+}
+
+/// `--records-key FILE`: the records key as 64 hex characters (or 32 raw
+/// bytes). The app reads it from the platform keystore instead.
+fn records_key(args: &Args) -> Result<Option<[u8; 32]>, CliError> {
+    let Some(path) = args.get("records-key") else {
+        return Ok(None);
+    };
+    let raw =
+        std::fs::read(path).map_err(|e| CliError::Usage(format!("--records-key {path}: {e}")))?;
+    let text = String::from_utf8_lossy(&raw);
+    let hex = text.trim();
+    let mut key = [0u8; 32];
+    if hex.len() == 64 && hex.bytes().all(|b| b.is_ascii_hexdigit()) {
+        for (i, k) in key.iter_mut().enumerate() {
+            *k = u8::from_str_radix(&hex[2 * i..2 * i + 2], 16).expect("checked hex");
+        }
+    } else if raw.len() == 32 {
+        key.copy_from_slice(&raw);
+    } else {
+        return Err(CliError::Usage(
+            "--records-key: the file must hold 64 hex characters or 32 bytes".into(),
+        ));
+    }
+    Ok(Some(key))
+}
+
+fn install(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["pubkey", "json"])?;
+    let [root, src] = args.positional.as_slice() else {
+        return Err(CliError::Usage(
+            "usage: harvest install <root> <pack-or-delta-dir>".into(),
+        ));
+    };
+    let keys = keys(args)?;
+    let src = Path::new(src);
+    let manifest = harvest_core::packs::read_manifest(src, &keys)?;
+    let done = if manifest.is_delta() {
+        harvest_core::delta::install_delta(Path::new(root), src, &keys)?
+    } else {
+        harvest_core::packs::install_dir(Path::new(root), src, &keys)?
+    };
+    if args.has("json") {
+        println!(
+            "{}",
+            json!({"ok": true, "pack_id": done.pack_id, "version": done.version,
+                   "previous": done.previous, "changed": done.changed, "delta": manifest.is_delta()})
+        );
+    } else {
+        println!(
+            "{} {} {}",
+            done.pack_id,
+            done.version,
+            if done.changed {
+                "installed"
+            } else {
+                "already current"
+            }
+        );
+    }
+    Ok(())
+}
+
+fn delta(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["pubkey", "json"])?;
+    let [base, target, out] = args.positional.as_slice() else {
+        return Err(CliError::Usage(
+            "usage: harvest delta <base-dir> <target-dir> <out-dir>".into(),
+        ));
+    };
+    let signer = match std::env::var("HARVEST_SIGNING_KEY") {
+        Err(std::env::VarError::NotPresent) => None,
+        Err(std::env::VarError::NotUnicode(_)) => {
+            return Err(CliError::Usage("HARVEST_SIGNING_KEY is not base64".into()));
+        }
+        Ok(b64) => {
+            use base64::Engine as _;
+            let raw = base64::engine::general_purpose::STANDARD
+                .decode(b64.trim())
+                .map_err(|_| CliError::Usage("HARVEST_SIGNING_KEY is not base64".into()))?;
+            let seed: [u8; 32] = raw.try_into().map_err(|_| {
+                CliError::Usage("HARVEST_SIGNING_KEY must be a 32-byte ed25519 seed".into())
+            })?;
+            Some(ed25519_dalek::SigningKey::from_bytes(&seed))
+        }
+    };
+    let m = harvest_core::delta::make_delta(
+        Path::new(base),
+        Path::new(target),
+        Path::new(out),
+        &keys(args)?,
+        signer.as_ref(),
+    )?;
+    let bytes: u64 = m.files.iter().map(|f| f.bytes).sum();
+    if args.has("json") {
+        println!(
+            "{}",
+            json!({"ok": true, "pack_id": m.pack_id, "base_version": m.base_version,
+                   "version": m.version, "bytes": bytes, "signed": signer.is_some()})
+        );
+    } else {
+        println!(
+            "{} {} -> {}: {bytes} bytes{}",
+            m.pack_id,
+            m.base_version.as_deref().unwrap_or(""),
+            m.version,
+            if signer.is_some() {
+                ", signed"
+            } else {
+                ", unsigned (sign manifest.json)"
+            }
+        );
+    }
+    Ok(())
+}
+
 fn citation(pack: &Pack, section_id: &str) -> Result<String, CliError> {
     Ok(pack
         .section(section_id)?
         .map(|s| s.citation)
         .unwrap_or_else(|| section_id.to_string()))
+}
+
+fn show(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["pubkey", "json", "id", "role"])?;
+    let dir = pack_dir(args)?;
+    let what = args
+        .positional
+        .get(1)
+        .ok_or_else(|| CliError::Usage("missing what to show".into()))?;
+    let pack = Pack::open(&dir, &keys(args)?)?;
+    let role = Role::parse(args.get("role").unwrap_or("operator"))?;
+    let id = args.get("id");
+    let need_id = || id.ok_or_else(|| CliError::Usage(format!("{what} needs --id")));
+    let to = |v: Result<serde_json::Value, serde_json::Error>| {
+        v.map_err(|e| CliError::Engine(Error::from(e)))
+    };
+    let out = match (what.as_str(), id) {
+        ("info", _) => to(serde_json::to_value(pack.info()?))?,
+        ("sections", None) => to(serde_json::to_value(pack.sections()?))?,
+        ("sections", Some(i)) => to(serde_json::to_value(pack.section(i)?))?,
+        ("children", _) => to(serde_json::to_value(pack.children(need_id()?)?))?,
+        ("topics", _) => to(serde_json::to_value(pack.topics()?))?,
+        ("skills", _) => to(serde_json::to_value(pack.skills()?))?,
+        ("lessons", None) => to(serde_json::to_value(pack.lessons()?))?,
+        ("lessons", Some(i)) => to(serde_json::to_value(pack.lesson(i)?))?,
+        ("terms", _) => to(serde_json::to_value(pack.terms()?))?,
+        ("diagrams", None) => to(serde_json::to_value(pack.diagrams()?))?,
+        ("diagrams", Some(i)) => to(serde_json::to_value(pack.diagram(i)?))?,
+        ("questions", None) => to(serde_json::to_value(pack.questions()?))?,
+        ("questions", Some(i)) => to(serde_json::to_value(pack.question(i)?))?,
+        ("procedures", None) => to(serde_json::to_value(pack.procedures()?))?,
+        ("procedures", Some(i)) => to(serde_json::to_value(
+            pack.procedures()?
+                .into_iter()
+                .find(|p| p.procedure.proc_id == i),
+        ))?,
+        ("answers", None) => to(serde_json::to_value(pack.answers()?))?,
+        ("answers", Some(i)) => to(serde_json::to_value(
+            pack.answer_for(i, role)?
+                .map(|(a, check)| json!({"answer": a, "check": check})),
+        ))?,
+        ("exams", _) => pack.exams()?,
+        ("prereqs", _) => to(serde_json::to_value(pack.prereqs()?))?,
+        ("starters", _) => to(serde_json::to_value(pack.starters(role)?))?,
+        (other, _) => return Err(CliError::Usage(format!("cannot show {other:?}"))),
+    };
+    println!("{}", serde_json::to_string(&out).map_err(Error::from)?);
+    Ok(())
 }
 
 fn fixture(args: &Args) -> Result<(), CliError> {

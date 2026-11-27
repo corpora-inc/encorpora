@@ -1,0 +1,8 @@
+# The crane-native CI job installs exactly this toolchain with the iOS target.
+# Without this file cargo uses the runner's default stable, which has no
+# aarch64-apple-ios standard library.
+[toolchain]
+channel = "1.97.1"
+profile = "minimal"
+components = ["rustfmt", "clippy"]
+targets = ["aarch64-apple-ios", "aarch64-linux-android"]

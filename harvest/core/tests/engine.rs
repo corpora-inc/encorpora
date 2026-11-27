@@ -392,3 +392,147 @@ fn latency_on_the_fixture() {
     println!("fixture latency: search {search_us:.0} us, ask {ask_us:.0} us (mean of {n})");
     assert!(ask_us < 50_000.0);
 }
+
+/// Replays the gate from `support` alone, as the evaluation does offline.
+fn replay(s: &harvest_core::answer::Support, threshold: f64) -> Vec<String> {
+    s.candidates
+        .iter()
+        .filter(|c| c.coverage >= threshold && c.coverage >= s.score - s.window)
+        .take(s.max_sections)
+        .map(|c| c.section_id.clone())
+        .collect()
+}
+
+#[test]
+fn support_replays_the_gate_offline() {
+    let b = common::pack();
+    let e = common::engine(&b);
+    for q in [
+        "who inspects the machine each shift",
+        "inspection of the moon rocket",
+        "best pizza recipe",
+        "dedicated spotter energized line",
+    ] {
+        let r = e.ask(q, &AskOptions::default()).unwrap();
+        let s = &r.support;
+        assert_eq!(s.threshold, 0.5);
+        assert!(!s.concepts.is_empty(), "{q}");
+        assert!(
+            s.candidates.windows(2).all(|w| w[0].rank < w[1].rank),
+            "{q}"
+        );
+        for c in &s.candidates {
+            assert!((c.coverage - c.covered.len() as f64 / s.concepts.len() as f64).abs() < 1e-9);
+        }
+        let best = s.candidates.iter().map(|c| c.coverage).fold(0.0, f64::max);
+        assert_eq!(best, s.score);
+        let chosen = replay(s, s.threshold);
+        match r.mode {
+            Mode::Declined => assert!(chosen.is_empty(), "{q}"),
+            Mode::Composed => {
+                assert!(!chosen.is_empty(), "{q}");
+                assert!(
+                    chosen.iter().all(|id| r.citations.contains(id)),
+                    "{q}: {chosen:?} vs {:?}",
+                    r.citations
+                );
+            }
+            Mode::Baked => assert!(s.cache_similarity >= s.cache_threshold),
+            Mode::Clarify => unreachable!(),
+        }
+        // A lower threshold, replayed, matches the engine run at it.
+        let low = AskOptions {
+            support_threshold: 0.25,
+            cache_threshold: 2.0,
+            ..AskOptions::default()
+        };
+        let r2 = e.ask(q, &low).unwrap();
+        assert_eq!(
+            r2.mode == Mode::Declined,
+            replay(&r2.support, 0.25).is_empty(),
+            "{q}"
+        );
+    }
+}
+
+#[test]
+fn the_dense_gate_applies_only_when_dense_ran() {
+    let b = common::pack();
+    let q = "who inspects the machine each shift";
+    let strict = AskOptions {
+        dense_gate: Some(harvest_core::answer::DenseGate {
+            support_threshold: 0.1,
+            min_dense: 0.99,
+        }),
+        cache_threshold: 2.0,
+        ..AskOptions::default()
+    };
+    // Dense ran, and nothing reaches the floor: declined, and the support
+    // object says why.
+    let r = common::engine(&b).ask(q, &strict).unwrap();
+    assert_eq!(r.mode, Mode::Declined);
+    assert_eq!(r.support.min_dense, Some(0.99));
+    assert!(r.support.top_dense > 0.0 && r.support.top_dense < 0.99);
+    assert_eq!(r.support.threshold, 0.1);
+    // A floor it reaches, with a low coverage bar: answered.
+    let loose = AskOptions {
+        dense_gate: Some(harvest_core::answer::DenseGate {
+            support_threshold: 0.1,
+            min_dense: 0.0,
+        }),
+        ..strict.clone()
+    };
+    assert_eq!(
+        common::engine(&b).ask(q, &loose).unwrap().mode,
+        Mode::Composed
+    );
+    // No embedder: the dense gate is not in force; coverage-only 0.5 applies.
+    let lexical = Engine::new(b.pack.clone()).ask(q, &strict).unwrap();
+    assert_eq!(lexical.support.min_dense, None);
+    assert_eq!(lexical.support.threshold, 0.5);
+    assert_eq!(lexical.mode, Mode::Composed);
+}
+
+#[test]
+fn a_pack_states_its_dense_gate() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("p");
+    harvest_core::fixture::build_with(&dir, "2026.1.1-1", |c| {
+        c.execute_batch(
+            "INSERT INTO pack_meta VALUES ('gate_dense_support_threshold', '0.2');
+             INSERT INTO pack_meta VALUES ('gate_dense_min', '0.77');",
+        )?;
+        Ok(())
+    })
+    .unwrap();
+    let pack = harvest_core::Pack::open(&dir, &[harvest_core::fixture::trusted_key()]).unwrap();
+    assert_eq!(
+        AskOptions::for_pack(&pack).dense_gate,
+        Some(harvest_core::answer::DenseGate {
+            support_threshold: 0.2,
+            min_dense: 0.77
+        })
+    );
+    assert_eq!(AskOptions::for_pack(&common::pack().pack).dense_gate, None);
+}
+
+#[test]
+fn below_the_dense_floor_the_model_is_not_asked() {
+    let b = common::pack();
+    let llm = Arc::new(harvest_core::llm::ScriptedLlm::new(Vec::<String>::new()));
+    let opts = AskOptions {
+        dense_gate: Some(harvest_core::answer::DenseGate {
+            support_threshold: 0.1,
+            min_dense: 0.99,
+        }),
+        cache_threshold: 2.0,
+        ..AskOptions::default()
+    };
+    let r = common::engine(&b)
+        .with_llm(llm.clone())
+        .ask("who inspects the machine each shift", &opts)
+        .unwrap();
+    assert_eq!(r.mode, Mode::Declined);
+    assert!(llm.asked().is_empty());
+    assert_eq!(r.support.depth, 12);
+}
