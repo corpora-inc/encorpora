@@ -30,9 +30,11 @@ type AnyAdapter = DBAdapter<BetterAuthOptions>;
  *   matches: a stored row cannot be replayed as a token.
  * - a row found that way comes back carrying the token that was presented, as
  *   Better Auth expects (it sets the cookie and returns it to the client).
- * - with `hashOnWrite`, a new session is stored as its hash. Off for the first
- *   release, so every API pod already reads hashes before any pod writes one
- *   (a pod mid-rollout would otherwise sign out whoever it served).
+ * - with `hashOnWrite`, a new session is stored as its hash, and a row still
+ *   stored as issued is rehashed when it is next used. The release before
+ *   (0157) only read hashes, so every API pod could already read them before
+ *   any pod wrote one (a pod mid-rollout would otherwise sign out whoever it
+ *   served).
  *
  * Lookups by anything else (a user's session list) return the stored hash. AMP
  * turns off the endpoints that would hand those to a client or act on them
@@ -83,6 +85,28 @@ export function sessionTokenAdapter(
       if (typeof token !== "string" || !presented.has(token)) return row;
       return { ...(row as Row), token: presented.get(token) } as T;
     };
+    /** A row an older pod stored as issued, found by its token: stored as
+     * the hash from now on. A failure is logged; the next lookup retries. */
+    const upgrade = async (target: AnyAdapter, model: string, row: unknown) => {
+      if (!options.hashOnWrite || model !== "session") return;
+      const found = row as Row | null;
+      if (
+        !found ||
+        typeof found.id !== "string" ||
+        typeof found.token !== "string" ||
+        found.token.startsWith(SESSION_HASH_PREFIX)
+      )
+        return;
+      try {
+        await target.update({
+          model: "session",
+          where: [{ field: "id", value: found.id }],
+          update: { token: hashSessionToken(found.token) },
+        });
+      } catch (error) {
+        console.error("[accounts] session token not rehashed", error);
+      }
+    };
     const storable = (model: string, data: Row): Row =>
       model === "session" && typeof data.token === "string"
         ? options.hashOnWrite && !data.token.startsWith(SESSION_HASH_PREFIX)
@@ -100,10 +124,9 @@ export function sessionTokenAdapter(
       },
       async findOne(input) {
         const { where, presented } = lookup(input.model, input.where);
-        return restore(
-          await adapter.findOne({ ...input, where: where! }),
-          presented,
-        );
+        const row = await adapter.findOne({ ...input, where: where! });
+        await upgrade(adapter, input.model, row);
+        return restore(row, presented);
       },
       async findMany(input) {
         const { where, presented } = lookup(input.model, input.where);
