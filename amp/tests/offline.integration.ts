@@ -36,6 +36,8 @@ async function fixture(practicePolicy?: PracticePolicy) {
   await admin.query(`CREATE SCHEMA ${schema}`);
   const scoped = new URL(url);
   scoped.searchParams.set("options", `-c search_path=${schema}`);
+  // Lock-wait probes below look only at this file's own sessions.
+  scoped.searchParams.set("application_name", schema);
   await migrate(scoped.href);
   const repo = new PostgresRepository(scoped.href);
   const keys = await generateKeyPair("EdDSA", { extractable: true });
@@ -462,7 +464,9 @@ test(
       for (let i = 0; i < 100; i++) {
         waiting = !!(
           await blocker.query(
-            "SELECT 1 FROM pg_locks WHERE locktype='advisory' AND NOT granted",
+            `SELECT 1 FROM pg_locks JOIN pg_stat_activity USING (pid)
+             WHERE locktype='advisory' AND NOT granted
+               AND application_name=current_setting('application_name')`,
           )
         ).rowCount;
         if (waiting) break;
