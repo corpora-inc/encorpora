@@ -61,9 +61,9 @@ class Index:
         i = ct.find(cq)
         if i >= 0:
             return text[i:i + len(cq)]
-        # whitespace-insensitive; '§1926' matches '§ 1926'; a quote may join table cells
-        # with a space where the source row has ' | '
-        pat = re.escape(cq).replace(r"\ ", r"(?:\s*\|)?\s*").replace("§", r"§\s*")
+        # any run of whitespace for a space ('§1926' also matches '§ 1926'); a quote may
+        # join table cells with a space where the source row has ' | '
+        pat = re.escape(cq).replace(r"\ ", r"\s+(?:\|\s+)?").replace("§", r"§\s*")
         m = re.search(pat, ct)
         if m:
             return text[m.start():m.end()]

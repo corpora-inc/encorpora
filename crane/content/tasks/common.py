@@ -81,7 +81,8 @@ def ground(section_ids: list[str], cap: int = 24000) -> tuple[str, list[str]]:
     is split into definitions (or sentences), one line each under the same id,
     and placed after the other sections in the remaining budget, definitions
     whose term appears in the other text first. Every line stays a verbatim span of its
-    node, so quotes copied from it verify.
+    node. Table rows are shown space-joined (`own`); a quote copied from a row
+    verifies after repair() maps it onto the ` | ` row in `text`.
     Returns (text, ids_included)."""
     S = index().s
     seen, lines, ids, big = set(), [], [], []
@@ -284,7 +285,7 @@ def repair_quotes(obj) -> tuple[int, int, list[str]]:
             if k.split("(")[0] != base:
                 continue
             r = ix.repair(k, q) if n["own"] else None
-            if r and r in n["own"] and (best is None or k.count("(") > best[0].count("(")):
+            if r and r in n.get("own_cells", n["own"]) and (best is None or k.count("(") > best[0].count("(")):
                 best = (k, r)
         if best:
             d["section_id"], d[key] = best

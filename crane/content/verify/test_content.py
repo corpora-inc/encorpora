@@ -128,6 +128,16 @@ class Grounding(unittest.TestCase):
         self.assertFalse(self.ix.has_quote("29cfr1926.1408", "up to 50 10"))
         self.assertEqual(self.ix.repair("29cfr1926.1408", "up to 50 10"), "up to 50 | 10")
         self.assertEqual(self.ix.repair("29cfr1926.1411", "over .75 to 50 6"), "over .75 to 50 | 6")
+        self.assertIsNone(self.ix.repair("29cfr1926.1408", "over 50 to 200 20"))  # never pairs the wrong cell
+        self.assertIsNone(self.ix.repair("29cfr1926.1408", "up to 5 0 | 10"))  # never joins split digits
+        self.assertTrue(self.ix.has_quote("29cfr1926.1437", "permanent attachment: | | Any rated capacity | 10 | 10"))
+        self.assertTrue(self.ix.has_quote("29cfr1910.184", "1⁄4 | 13⁄64"))
+
+    def test_table_quote_cited_to_a_paragraph_is_repointed_to_its_section(self):
+        row = {"section_id": "29cfr1926.1408(a)(1)", "quote": "up to 50 10"}
+        ok, rep, errs = self.common.repair_quotes(row)
+        self.assertEqual(errs, [])
+        self.assertEqual(row, {"section_id": "29cfr1926.1408", "quote": "up to 50 | 10"})
 
 
 if __name__ == "__main__":

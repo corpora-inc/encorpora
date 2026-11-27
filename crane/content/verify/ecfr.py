@@ -11,9 +11,12 @@ CONTRACT section_id scheme ('29cfr1926.1408(a)(2)'). Tables and appendices:
 Usage:
     python ecfr.py [--date YYYY-MM-DD] [--out sections.json]
 
-A table is its caption, then one row per line with cells joined by " | ",
-the same rendering as the pipeline's stage (harvest/pipeline parsers/ecfr.py),
-so a quote that verifies here also verifies at bake time. A node's `own` keeps
+A table is its caption, then one row per line with cells joined by " | "
+(empty cells kept, fraction slash kept), the same rendering as the pipeline's
+stage (harvest/pipeline parsers/ecfr.py), so a quote from one paragraph or one
+table row that verifies here also verifies at bake time. The stage also keeps
+paragraph markers and "Note:" labels, so a quote that crosses one of those
+verifies only here. A node's `own` keeps
 the older space-joined rendering, which the generation prompts were built from
 (changing it would re-key every cached output); `own_cells` holds the rows
 when they differ, and `text` is built from it.
@@ -80,9 +83,10 @@ def norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
-def strip_tags(s: str) -> str:
+def strip_tags(s: str, fractions: bool = True) -> str:
     s = re.sub(r"<br\s*/?>", " ", s)
-    s = re.sub(r"<sup>(\d+)</sup>\s*⁄\s*<sub>(\d+)</sub>", r"\1/\2", s)  # fractions
+    if fractions:  # prompt rendering; the exact (stage) rendering keeps the fraction slash
+        s = re.sub(r"<sup>(\d+)</sup>\s*⁄\s*<sub>(\d+)</sub>", r"\1/\2", s)
     s = re.sub(r"<[^>]+>", "", s)
     return html.unescape(s)
 
@@ -237,10 +241,11 @@ def parse_div8(xml: str, base: str, source_id: str, b: Builder):
         if kind == "table":
             cap = re.search(r'<P class="title">(.*?)</P>', raw, re.S)
             caption = [norm(strip_tags(cap.group(1)))] if cap else []
-            rows = [[norm(strip_tags(c)) for c in re.findall(r"<T[HD][^>]*>(.*?)</T[HD]>", tr, re.S)]
+            # a self-closing <TD .../> is an empty cell, as in the pipeline's stage
+            rows = [re.findall(r"<T[HD](?:\s[^>]*?)?(?:/>|>(.*?)</T[HD]>)", tr, re.S)
                     for tr in re.findall(r"<TR[^>]*>(.*?)</TR>", raw, re.S)]
-            text = " ".join(caption + [c for r in rows for c in r])
-            cells = "\n".join(caption + [" | ".join(r) for r in rows if r])
+            text = " ".join(caption + [norm(strip_tags(c)) for r in rows for c in r])
+            cells = "\n".join(caption + [" | ".join(norm(strip_tags(c, fractions=False)) for c in r) for r in rows if r])
             # tables belong to the section, not the last paragraph
             b.add(base, None, "x", "", None, text, cells)
             continue
