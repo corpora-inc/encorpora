@@ -153,21 +153,40 @@ pub struct ChainReport {
     pub modes: BTreeMap<String, u64>,
     /// `baked / (all answers)`; `None` with no entries.
     pub bake_hit_rate: Option<f64>,
+    /// The hash of the newest entry. The chain detects edits but cannot see
+    /// its own newest rows removed: a host that needs that anchors
+    /// `(entries, head_hash)` outside the database (an upload, a signature).
+    pub head_hash: Option<String>,
 }
 
-/// Recompute every link.
+fn has_table(conn: &Connection) -> Result<bool> {
+    Ok(conn
+        .query_row(
+            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'audit'",
+            [],
+            |_| Ok(()),
+        )
+        .optional()?
+        .is_some())
+}
+
+/// Recompute every link. Reads only: a database with no audit table is an
+/// empty, valid log.
 pub fn verify_chain(conn: &Connection) -> Result<ChainReport> {
-    init(conn)?;
-    let mut stmt = conn.prepare("SELECT seq, entry, prev_hash, hash FROM audit ORDER BY seq")?;
-    let mut rows = stmt.query([])?;
-    let mut prev = GENESIS.to_string();
     let mut report = ChainReport {
         ok: true,
         entries: 0,
         first_bad: None,
         modes: BTreeMap::new(),
         bake_hit_rate: None,
+        head_hash: None,
     };
+    if !has_table(conn)? {
+        return Ok(report);
+    }
+    let mut stmt = conn.prepare("SELECT seq, entry, prev_hash, hash FROM audit ORDER BY seq")?;
+    let mut rows = stmt.query([])?;
+    let mut prev = GENESIS.to_string();
     while let Some(r) = rows.next()? {
         let seq: i64 = r.get(0)?;
         let entry: String = r.get(1)?;
@@ -191,6 +210,7 @@ pub fn verify_chain(conn: &Connection) -> Result<ChainReport> {
         prev = hash;
     }
     if report.entries > 0 {
+        report.head_hash = Some(prev);
         let baked = *report.modes.get("baked").unwrap_or(&0) as f64;
         report.bake_hit_rate = Some(baked / report.entries as f64);
     }
@@ -199,7 +219,9 @@ pub fn verify_chain(conn: &Connection) -> Result<ChainReport> {
 
 /// Entries, oldest first (for review export).
 pub fn entries(conn: &Connection) -> Result<Vec<(i64, AuditEntry)>> {
-    init(conn)?;
+    if !has_table(conn)? {
+        return Ok(Vec::new());
+    }
     let mut stmt = conn.prepare("SELECT seq, entry FROM audit ORDER BY seq")?;
     let rows = stmt
         .query_map([], |r| Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?)))?

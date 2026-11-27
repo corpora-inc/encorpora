@@ -334,12 +334,16 @@ fn ask(args: &Args) -> Result<(), CliError> {
                     .map_err(|_| CliError::Usage("--llm-timeout must be seconds".into()))?,
                 None => 120,
             };
-            let llm = harvest_core::llm::OpenAiCompatible::new(
+            // An unreachable model is not a failed question: answer with the
+            // model off and say why.
+            match harvest_core::llm::OpenAiCompatible::new(
                 url,
                 args.get("llm-model"),
                 std::time::Duration::from_secs(secs),
-            )?;
-            engine = engine.with_llm(Arc::new(llm));
+            ) {
+                Ok(llm) => engine = engine.with_llm(Arc::new(llm)),
+                Err(e) => eprintln!("harvest: model off: {e}"),
+            }
         }
         other => {
             return Err(CliError::Usage(format!(
@@ -407,7 +411,9 @@ fn audit(args: &Args) -> Result<(), CliError> {
             "{db}: no such file"
         ))));
     }
-    let conn = rusqlite::Connection::open(db).map_err(Error::from)?;
+    let conn =
+        rusqlite::Connection::open_with_flags(db, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)
+            .map_err(Error::from)?;
     let report = harvest_core::audit::verify_chain(&conn)?;
     if args.has("json") {
         println!("{}", serde_json::to_string(&report).map_err(Error::from)?);

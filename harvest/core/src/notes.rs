@@ -3,8 +3,9 @@
 //! The vocabulary comes from the pack (`pack_meta.note_vocab`, JSON
 //! `{"components":[{"name":…,"aliases":[…]}],"conditions":[…],"actions":[…]}`)
 //! merged over a small built-in list of generic conditions and actions. With a
-//! model, the model extracts the fields; each value must be a vocabulary name
-//! or words that occur in the note, otherwise the keyword result stands.
+//! model, the model extracts the fields; each value must be a vocabulary term
+//! the note mentions or words that occur in the note, otherwise the keyword
+//! result stands. A negated mention ("no cracks") does not count.
 
 use crate::error::{Error, Result};
 use crate::llm::{Llm, LlmRequest, complete_json};
@@ -65,10 +66,7 @@ impl NoteVocab {
                         "dead",
                     ],
                 ),
-                t(
-                    "ok",
-                    &["good", "serviceable", "no issues", "fine", "passed"],
-                ),
+                t("ok", &["good", "serviceable", "no issues", "passed"]),
             ],
             actions: vec![
                 t(
@@ -85,7 +83,7 @@ impl NoteVocab {
                 t("repair", &["fix", "weld", "patch"]),
                 t("tighten", &["torque", "retighten"]),
                 t("lubricate", &["grease", "oil", "lube"]),
-                t("adjust", &["readjust", "set", "realign"]),
+                t("adjust", &["readjust", "realign"]),
                 t(
                     "monitor",
                     &["watch", "recheck", "keep an eye", "re-inspect"],
@@ -132,6 +130,27 @@ fn stem_line(text: &str) -> String {
     format!(" {} ", stems.join(" "))
 }
 
+/// True when the word just before byte `pos` of a stem line negates it.
+fn negated_before(joined: &str, pos: usize) -> bool {
+    joined[..pos]
+        .split_whitespace()
+        .next_back()
+        .is_some_and(|w| matches!(w, "no" | "not" | "never" | "without" | "nor"))
+}
+
+/// True when a non-negated spelling of `term` occurs in the stem line.
+fn mentioned(term: &VocabTerm, joined: &str) -> bool {
+    std::iter::once(&term.name)
+        .chain(term.aliases.iter())
+        .map(|sp| stem_line(sp))
+        .filter(|st| !st.trim().is_empty())
+        .any(|st| {
+            joined
+                .match_indices(&st)
+                .any(|(i, _)| !negated_before(joined, i))
+        })
+}
+
 /// The vocabulary term whose name or alias appears earliest-longest in `text`.
 fn find(terms: &[VocabTerm], joined: &str) -> Option<String> {
     let mut best: Option<(usize, usize, &str)> = None; // (pos, -len) ordering
@@ -141,11 +160,17 @@ fn find(terms: &[VocabTerm], joined: &str) -> Option<String> {
             if st.trim().is_empty() {
                 continue;
             }
-            if let Some(pos) = joined.find(&st) {
-                let cand = (pos, usize::MAX - st.len(), term.name.as_str());
-                if best.is_none_or(|b| (cand.0, cand.1) < (b.0, b.1)) {
-                    best = Some(cand);
-                }
+            // The first occurrence that is not negated ("no cracks").
+            let Some(pos) = joined
+                .match_indices(&st)
+                .map(|(i, _)| i)
+                .find(|&i| !negated_before(joined, i))
+            else {
+                continue;
+            };
+            let cand = (pos, usize::MAX - st.len(), term.name.as_str());
+            if best.is_none_or(|b| (cand.0, cand.1) < (b.0, b.1)) {
+                best = Some(cand);
             }
         }
     }
@@ -172,15 +197,15 @@ struct ModelNote {
     action: Option<String>,
 }
 
-/// A model value is grounded when it is a vocabulary name or its words occur
-/// in the note.
+/// A model value is grounded when it is a vocabulary term the note mentions
+/// (by name or alias, not negated), or words that occur in the note.
 fn grounded(value: &str, terms: &[VocabTerm], joined: &str) -> Option<String> {
     let v = value.trim();
     if v.is_empty() {
         return None;
     }
     if let Some(term) = terms.iter().find(|t| t.name.eq_ignore_ascii_case(v)) {
-        return Some(term.name.clone());
+        return mentioned(term, joined).then(|| term.name.clone());
     }
     let st = stem_line(v);
     (!st.trim().is_empty() && joined.contains(&st)).then(|| v.to_string())

@@ -68,7 +68,11 @@ let n = notes::structure_note(note_text, &notes::NoteVocab::from_pack(&pack)?, S
 The engine asks a model only for small jobs with a JSON schema, and checks
 every answer. The app implements `Llm` over its llama.cpp runtime, turning
 `LlmRequest.schema` into a grammar. The CLI's `OpenAiCompatible` sends it as
-`response_format: json_schema` to any OpenAI-compatible server.
+`response_format: json_schema` to any OpenAI-compatible server, with
+`chat_template_kwargs.enable_thinking = false` so a reasoning model answers
+instead of spending its budget thinking. `HARVEST_LLM_LOG=<file.jsonl>` appends
+every request and response for review. An unreachable server means the model is
+off for that question, never a failed question.
 
 ```rust
 pub trait Llm: Send + Sync {
@@ -81,14 +85,18 @@ pub trait Llm: Send + Sync {
 
 1. **Answer cache** first. A hit is `baked` and the model is not called.
 2. **Expand** (`expansion` schema): up to four queries; `ambiguous` + `clarify`
-   only when one more fact is needed. That returns `mode: "clarify"`, with the
-   question as one text segment and `nearest` sections.
+   only when one more fact is needed. The engine returns `mode: "clarify"`
+   (the question as one text segment, plus `nearest` sections) only when the
+   pack holds something relevant but no section answers the question as asked,
+   and only for one short question with no number and no negation. Answerable
+   questions get their answer; off-topic ones are declined.
 3. **Retrieve** the question plus its expansions (RRF over every list).
 4. **Select** (`selection`, only when more than `max_sections + 1` sections qualify).
 5. **Compose** (`answer_segments`) from those passages only. Limits are marked
    `must_quote_verbatim`.
-6. **Check** in strict mode. If nothing supported survives, or the model errs,
-   the deterministic answer is returned and `trace.model_error` says why.
+6. **Check** in strict mode. The model's body is kept only with a verbatim
+   quote, or a surviving sentence and its cite. Otherwise, or if the model
+   errs, the deterministic answer is returned and `trace.model_error` says why.
 
 | Module | What it does |
 |---|---|
@@ -98,10 +106,10 @@ pub trait Llm: Send + Sync {
 | `embed` | `Embedder` trait; `HashingEmbedder` (deterministic, weight-free; for tests and as a floor); int8 quantization as packs store it. |
 | `retrieval` | BM25 over `chunk_fts` + cosine over int8 `chunk_vec`, reciprocal-rank fusion, equipment filter/boost, `Reranker` hook. |
 | `answer` | Model-off answer engine: answer cache → `baked`; best sections verbatim → `composed`; weak support → `declined` with nearest sections. |
-| `check` | Support checker: verbatim quotes, existing cites, unsupported claims dropped by paragraph; strict mode adds content-overlap and verbatim-number rules. |
+| `check` | Support checker: verbatim quotes, existing cites, unsupported claims dropped by paragraph; strict mode (model text) also drops a sentence with any number no source states, with under 75% of its content words in the sources (100% under three words), or whose negation differs from the source sentence it restates; stated limits become the fact's verbatim quote. |
 | `compose` | Prompts and schemas for expand, select and compose. |
 | `llm` | `Llm` trait, `OpenAiCompatible` (CLI feature), `ScriptedLlm` for tests. |
-| `audit` | Append-only, hash-chained `audit` table (triggers refuse UPDATE/DELETE); `verify_chain` recomputes every link and reports the bake hit rate. |
+| `audit` | Append-only, hash-chained `audit` table (triggers refuse UPDATE/DELETE); `verify_chain` (read-only) recomputes every link and reports modes, the bake hit rate and `head_hash`; anchor `(entries, head_hash)` outside the database to detect truncation. |
 | `grade` | Rubric grading: keyword rules with the model off. With it on, the model judges and must quote the learner's own words as evidence. |
 | `notes` | Field note → `{component, condition, action}`. Keywords with the model off; model output kept only when grounded in the vocabulary or the note. |
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |

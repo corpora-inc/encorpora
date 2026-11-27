@@ -94,6 +94,30 @@ fn phrase_in(phrase: &str, answer: &BTreeSet<String>) -> bool {
     !stems.is_empty() && stems.iter().all(|s| answer.contains(s))
 }
 
+/// Model evidence counts only when it is the learner's own words and says
+/// something: three content words, or one that the criterion or its
+/// keywords use. "the" or "I don't know" never meets a point.
+fn evidence_ok(evidence: &str, folded_answer: &str, point: &RubricPoint) -> bool {
+    let e = normalize::fold(evidence);
+    if e.trim().is_empty() || !folded_answer.contains(e.trim()) {
+        return false;
+    }
+    let stems = normalize::content_stems(&e);
+    if stems.len() >= 3 {
+        return true;
+    }
+    let mut criterion = normalize::stem_set(&point.text);
+    for k in &point.keywords {
+        match k {
+            Keyword::Phrase(p) => criterion.extend(normalize::stem_set(p)),
+            Keyword::AnyOf(alts) => alts
+                .iter()
+                .for_each(|p| criterion.extend(normalize::stem_set(p))),
+        }
+    }
+    stems.iter().any(|s| criterion.contains(s))
+}
+
 fn keyword_met(point: &RubricPoint, answer: &BTreeSet<String>) -> bool {
     !point.keywords.is_empty()
         && point.keywords.iter().all(|k| match k {
@@ -184,10 +208,7 @@ pub fn grade(answer: &str, rubric: &Rubric, llm: Option<&dyn Llm>) -> Result<Gra
                     by: "model".into(),
                 }
             }
-            Some(j)
-                if !j.evidence.trim().is_empty()
-                    && folded_answer.contains(&normalize::fold(&j.evidence)) =>
-            {
+            Some(j) if evidence_ok(&j.evidence, &folded_answer, p) => {
                 any_model = true;
                 PointResult {
                     id: p.id.clone(),

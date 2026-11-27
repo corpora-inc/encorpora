@@ -8,6 +8,8 @@
 use crate::error::{Error, Result};
 use serde::de::DeserializeOwned;
 use serde_json::Value;
+#[cfg(feature = "cli")]
+use std::path::Path;
 
 /// One constrained completion.
 #[derive(Debug, Clone)]
@@ -99,6 +101,10 @@ impl Llm for OpenAiCompatible {
                 "type": "json_schema",
                 "json_schema": {"name": req.schema.0, "schema": req.schema.1, "strict": true},
             },
+            // Reasoning models (Granite 4.2, Qwen-style templates) otherwise
+            // spend the whole budget thinking and return empty content.
+            // llama.cpp and vLLM read this; other servers ignore it.
+            "chat_template_kwargs": {"enable_thinking": false},
         });
         let v: Value = self
             .agent
@@ -108,10 +114,39 @@ impl Llm for OpenAiCompatible {
             .body_mut()
             .read_json()
             .map_err(|e| Error::Llm(format!("chat/completions: {e}")))?;
-        v["choices"][0]["message"]["content"]
-            .as_str()
-            .map(str::to_string)
-            .ok_or_else(|| Error::Llm("response has no message content".into()))
+        if let Some(path) = std::env::var_os("HARVEST_LLM_LOG") {
+            log_exchange(Path::new(&path), &body, &v);
+        }
+        let choice = &v["choices"][0];
+        match choice["message"]["content"].as_str() {
+            Some(c) if !c.trim().is_empty() => Ok(c.to_string()),
+            _ => Err(Error::Llm(format!(
+                "empty content (finish_reason {}{})",
+                choice["finish_reason"].as_str().unwrap_or("none"),
+                if choice["message"]["reasoning_content"].is_string() {
+                    "; the model reasoned instead of answering"
+                } else {
+                    ""
+                }
+            ))),
+        }
+    }
+}
+
+/// Append one request/response pair as a JSON line (`HARVEST_LLM_LOG`), for
+/// reviewing what a model actually wrote. A failed write is reported, never
+/// fatal.
+#[cfg(feature = "cli")]
+fn log_exchange(path: &Path, request: &Value, response: &Value) {
+    use std::io::Write;
+    let line = serde_json::json!({"request": request, "response": response}).to_string();
+    let res = std::fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(path)
+        .and_then(|mut f| writeln!(f, "{line}"));
+    if let Err(e) = res {
+        eprintln!("harvest: HARVEST_LLM_LOG {}: {e}", path.display());
     }
 }
 

@@ -159,8 +159,10 @@ pub fn compose(
              sentences. Rules: every statement is followed by a quote or cite segment of the passage \
              that supports it; a quote copies the passage text exactly, character for character; any \
              limit, distance, capacity, interval or other number is given as a quote, never \
-             paraphrased (the must_quote_verbatim strings are ready to quote); never add facts the \
-             passages do not state; if the passages do not answer the question, return no segments."
+             paraphrased (the must_quote_verbatim strings are ready to quote); do not count things \
+             (\"there are three\"); never add facts the passages do not state; keep every \
+             \"not\", \"no\" and \"must\" exactly as the passage has it; if the passages do not \
+             answer the question, return no segments."
         ),
         user: json!({"question": question, "context": context, "passages": offered}).to_string(),
         schema: ("answer_segments".into(), segment_schema()),

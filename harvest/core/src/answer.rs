@@ -343,12 +343,29 @@ impl Engine {
             model: Some(llm.id()),
             elapsed_ms: 0,
         };
+        // The long tail: the model may use sections with partial lexical
+        // support; the strict checker decides what survives.
+        let supported = self.supported_sections(norm, &hits, opts)?;
+        // Clarify only when the pack holds something relevant but nothing
+        // answers the question as asked (an answerable or off-topic question
+        // gets its answer or its decline), and only with one short question
+        // that states no number and no negation: the checker has no source
+        // to hold a question to.
+        let answerable = supported
+            .iter()
+            .any(|(_, cov)| *cov >= opts.support_threshold);
+        let relevant = supported
+            .iter()
+            .any(|(_, cov)| *cov >= opts.support_threshold / 2.0);
         if expansion.ambiguous
-            && let Some(q) = expansion.clarify.as_deref()
+            && relevant
+            && !answerable
+            && let Some(q) = expansion.clarify.as_deref().map(str::trim)
+            && is_plain_question(q)
         {
             return Ok(Some(base(
                 Mode::Clarify,
-                vec![Segment::text(q.trim())],
+                vec![Segment::text(q)],
                 Check {
                     quotes_ok: true,
                     cites_ok: true,
@@ -357,10 +374,7 @@ impl Engine {
                 nearest_sections(&hits, opts.nearest),
             )));
         }
-        // The long tail: the model may use sections with partial lexical
-        // support; the strict checker decides what survives.
-        let candidates: Vec<String> = self
-            .supported_sections(norm, &hits, opts)?
+        let candidates: Vec<String> = supported
             .into_iter()
             .filter(|(_, cov)| *cov >= opts.support_threshold / 2.0)
             .map(|(id, _)| id)
@@ -383,10 +397,12 @@ impl Engine {
         let passages = compose::passages(&self.pack, &chosen, 1500)?;
         let body = compose::compose(llm, question, opts.role.as_str(), &context, &passages)?;
         let (body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
-        if !body
-            .iter()
-            .any(|s| matches!(s, Segment::Quote { .. } | Segment::Cite { .. }))
-        {
+        // Bare citations are not an answer: keep the model's body only with
+        // a verbatim quote, or a surviving sentence and its cite.
+        let has_quote = body.iter().any(|s| matches!(s, Segment::Quote { .. }));
+        let has_text = body.iter().any(|s| matches!(s, Segment::Text { .. }));
+        let has_cite = body.iter().any(|s| matches!(s, Segment::Cite { .. }));
+        if !(has_quote || (has_text && has_cite)) {
             trace.model_error = Some(format!(
                 "model answer had no supported segment ({} dropped)",
                 check.dropped
@@ -662,4 +678,17 @@ pub fn nearest_sections(hits: &[Hit], n: usize) -> Vec<String> {
         }
     }
     out
+}
+
+/// A clarifying question the app may show as written: one short question,
+/// no digits or number words, no negation.
+fn is_plain_question(q: &str) -> bool {
+    let n = q.chars().count();
+    (8..=160).contains(&n)
+        && q.ends_with('?')
+        && q.matches('?').count() == 1
+        && !normalize::tokens(q)
+            .iter()
+            .any(|t| t.chars().next().is_some_and(|c| c.is_ascii_digit()))
+        && !check::negated(q)
 }

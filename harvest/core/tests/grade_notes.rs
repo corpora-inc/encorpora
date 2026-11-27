@@ -177,3 +177,39 @@ fn malformed_pack_vocab_is_an_error() {
     let err = NoteVocab::from_pack(&pack).unwrap_err().to_string();
     assert!(err.contains("note_vocab"), "{err}");
 }
+
+#[test]
+fn notes_respect_negation_and_reject_unmentioned_terms() {
+    let v = vocab();
+    assert_eq!(
+        structure_keywords("no cracks, no leaks", &v).condition,
+        None
+    );
+    assert_eq!(
+        structure_keywords("fine cracks in hook", &v)
+            .condition
+            .as_deref(),
+        Some("cracked")
+    );
+    // The model may not swap a mentioned defect for a term the note never says.
+    let llm = ScriptedLlm::new([json!({
+        "component": null, "condition": "ok", "action": "monitor"
+    })
+    .to_string()]);
+    let n = structure_note("hook throat cracked, tag out", &v, Some(&llm)).unwrap();
+    assert_eq!(n.condition.as_deref(), Some("cracked"));
+    assert_eq!(n.action.as_deref(), Some("remove from service"));
+}
+
+#[test]
+fn trivial_model_evidence_does_not_meet_a_point() {
+    let llm = ScriptedLlm::new([json!({"points": [
+        {"id": "hazard", "met": true, "evidence": "the"},
+        {"id": "distance", "met": true, "evidence": "the answer"},
+        {"id": "spotter", "met": true, "evidence": "I don't know"}
+    ]})
+    .to_string()]);
+    let g = grade("I don't know the answer", &rubric(), Some(&llm)).unwrap();
+    assert!(!g.passed);
+    assert_eq!(g.score, 0.0);
+}
