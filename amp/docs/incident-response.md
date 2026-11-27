@@ -60,18 +60,51 @@ gh workflow run deploy-corpora-amp.yml -R free2z/tuzi -f environment=prod
 
 The deploy needs the workflow enabled and the deployer identity working; re-enable them first if you turned them off. If the deploy goes red it rolls back to the previous release, and with it the previous Secret: fix and deploy again. Delete `$E/env` once the deploy is green. Check with `gcloud secrets versions list corpora-amp-prod-env --project=$PROJECT --limit=3` and `curl -s https://amp.corpora.inc/api/v1/health`.
 
+### End sessions
+
+`npm run sessions:revoke` ends AMP sessions in bulk ([#2555](https://github.com/corpora-inc/encorpora/issues/2555)): `--account 'amp|<user id>'`, `--org <org id>` (the org and every org under it) or `--all`. Account sessions and unused password-reset links are deleted. Student and provider (Clever) sessions are marked revoked, as **Sign out everywhere** does. Each holder's next request gets 401, and an open live-class stream closes within 95 seconds and cannot reopen. An adult in an org is an account: `--org` signs them out everywhere, not only there. `--account` on a parent also ends their children's student sessions. Nobody is blocked: everyone signs in again as usual.
+
+It runs as a one-off Job from the current `api` image, with the configuration the daily privacy job already has. It never runs inside a serving pod. Run it before scaling `amp-sql-proxy` down, since it needs the database. `--dry-run` counts the same rows in a read-only transaction and changes nothing. The output is one JSON line of counts. Every real run also writes one row to `amp_operator_events`, and for `--org` one line in that school's activity history.
+
+```sh
+revoke() {  # revoke --dry-run --all | revoke --org <org id> | revoke --account 'amp|<user id>'
+  job=amp-revoke-sessions-$(date -u +%Y%m%d%H%M%S)
+  kubectl -n $NS create job "$job" --from=cronjob/amp-privacy-retention --dry-run=client -o json |
+    jq --argjson args "$(printf '%s\n' "$@" | jq -R . | jq -cs .)" \
+      '.spec.template.spec.containers[0].command = ["node_modules/.bin/tsx", "scripts/revoke-sessions.ts"] + $args' |
+    kubectl -n $NS create -f - &&
+    kubectl -n $NS wait --for=condition=complete --timeout=10m "job/$job" &&
+    kubectl -n $NS logs "job/$job" | tail -1 | tee -a "$E/revoke-sessions.log"
+}
+revoke --dry-run --all   # counts only
+revoke --all
+```
+
+A rerun is safe: it ends what is left, which may be nothing.
+
+### Rotate `AMP_ACCOUNTS_SECRET`
+
+The secret is versioned (Better Auth `secrets`). The current one signs cookies and links and encrypts new authenticator secrets and backup codes, tagged with its version. Retired versions only decrypt what they encrypted, so a parent's authenticator keeps working across a rotation. In the env file (rotate as above):
+
+1. Append the current secret to `AMP_ACCOUNTS_PREVIOUS_SECRETS` under its version: `1:<current value>` the first time (the version is `AMP_ACCOUNTS_SECRET_VERSION`, default `1`). Entries are comma-separated.
+2. Set `AMP_ACCOUNTS_SECRET` to a new value (`openssl rand -hex 32`) and `AMP_ACCOUNTS_SECRET_VERSION` to the next number.
+3. Deploy. Cookies signed with the old secret stop working, so every browser signs in again.
+
+Keep a retired version while authenticators enrolled under it remain. With version 2 current, `SELECT count(*) FROM amp_auth_two_factors WHERE secret NOT LIKE '$ba$2$%'` counts those enrolled before it. Values stored before versioning carry no tag; version 1 decrypts them. When the database leaked together with the secret, the authenticator secrets are exposed as well: ask the parents who have one to set it up again in Security.
+
 | Exposed | Contain |
 | --- | --- |
-| Database URL (`amp_prod` password) | Treat the database as read (section 5). <br>1. `gcloud sql users set-password amp_prod --instance=tenants --project=$PROJECT --prompt-for-password`. Also add a version to `corpora-amp-prod-db-password`. <br>2. Put the new password in `AMP_DATABASE_URL` and rotate as above. AMP fails new connections from the password change until the new pods are ready. <br>3. A password change does not end sessions already open. From a new pod, end the older ones (the tabletop ran its `count(*)` form): `SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE usename = current_user AND pid <> pg_backend_pid() AND backend_start < '<rotation time>';` <br>4. A copy of the database holds live account sessions and reset tokens: `amp_auth_sessions.token` and `reset-password:` verifications are stored as issued, and a raw session token works as a bearer token. End them all from a new pod, in one transaction (the tabletop ran the `count(*)` form): `DELETE FROM amp_auth_sessions; DELETE FROM amp_auth_verifications WHERE identifier LIKE 'reset-password:%';` Every adult signs in again. Student and provider sessions, cards and pictures are stored hashed and need nothing. <br>5. Provider tokens in `amp_auth_accounts` are stored as issued too. Refreshing one needs AMP's client secret, which is not in the database, and access tokens expire within about an hour. If the env file leaked as well, rotate the provider client secrets. |
+| Database URL (`amp_prod` password) | Treat the database as read (section 5). <br>1. `gcloud sql users set-password amp_prod --instance=tenants --project=$PROJECT --prompt-for-password`. Also add a version to `corpora-amp-prod-db-password`. <br>2. Put the new password in `AMP_DATABASE_URL` and rotate as above. AMP fails new connections from the password change until the new pods are ready. <br>3. A password change does not end sessions already open. From a new pod, end the older ones (the tabletop ran its `count(*)` form): `SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE usename = current_user AND pid <> pg_backend_pid() AND backend_start < '<rotation time>';` <br>4. A copy of the database holds live account sessions: `amp_auth_sessions.token` is stored as issued and works as a bearer token. End them all with `revoke --all` ([End sessions](#end-sessions); the tabletop counted these rows). Every adult signs in again. Password-reset links are stored hashed since #2555; `--all` deletes unused ones too. Student and provider sessions, cards and pictures are stored hashed and need nothing. <br>5. Provider access, refresh and ID tokens are no longer stored (`amp_auth_accounts`, migration 0157): AMP uses a provider only to sign in. If the env file leaked as well, rotate the provider client secrets. |
 | Provider secret: Stripe, Resend, Google, Microsoft, GitHub, Apple, Clever | Revoke or roll it at the provider first, then rotate as above. |
-| `AMP_ACCOUNTS_SECRET` | Rotate as above. Every account is signed out. Links and flows it signs stop working: invitations, approvals, adoption and buyer links (unless `AMP_LINK_SECRET` is set, then rotate that too), and school sign-ins in progress. Authenticator secrets and backup codes are encrypted with it, so until [#2555](https://github.com/corpora-inc/encorpora/issues/2555) lands a parent with an authenticator cannot use password sign-in until it is cleared (none had one on 2026-11-27). |
+| `AMP_ACCOUNTS_SECRET` | Rotate it to a new version ([Rotate `AMP_ACCOUNTS_SECRET`](#rotate-amp_accounts_secret)). Every account is signed out; authenticators keep working. Links and flows it signs stop working: invitations, approvals, adoption and buyer links (unless `AMP_LINK_SECRET` is set, then rotate that too), and school sign-ins in progress. |
 | `AMP_CONSENT_SECRET_BASE64` | Parent addresses waiting for consent mail are encrypted with it, including the confirmatory notice email-plus consent owes (16 CFR 312.5(b)(2)(vi)). Rotate only when nothing is queued: `SELECT stage, count(*) FROM amp_consent_outbox WHERE accepted_at IS NULL AND rejected_at IS NULL AND stopped_at IS NULL GROUP BY 1` returns no rows. Otherwise let the worker send the queue first, or record the parents it could not reach. |
 | `AMP_RENDER_TOKEN` | Rotate as above. See "Rotate the token" in the tenant README in free2z/tuzi. |
 | Runtime identity `corpora-amp-prod` | It has no user-managed keys; it authenticates through Workload Identity. Check: `gcloud iam service-accounts keys list --iam-account=corpora-amp-prod@$PROJECT.iam.gserviceaccount.com --managed-by=user --project=$PROJECT`. If a key appears: `gcloud iam service-accounts keys disable <key id> --iam-account=…`. To cut the identity itself: `gcloud iam service-accounts disable corpora-amp-prod@$PROJECT.iam.gserviceaccount.com --project=$PROJECT`. This takes AMP's database away. Undo with `enable`. |
 | Deployer `corpora-amp-deployer` (GitHub OIDC) | Stop deploys with `gh workflow disable deploy-corpora-amp.yml -R free2z/tuzi`, then `gcloud iam service-accounts disable corpora-amp-deployer@$PROJECT.iam.gserviceaccount.com --project=$PROJECT`. |
-| One parent, teacher or admin account | The owner resets the password (**Reset your password** on the sign-in screen), which revokes all of that account's sessions. Then, in Security, the owner removes every passkey and linked login they do not recognise; a reset leaves those in place. Ending an admin's or teacher's role in the school stops their access on the next request. |
+| One parent, teacher or admin account | `revoke --account 'amp\|<user id>'` ends its sessions, school sign-ins and reset links now, and a parent's children's student sessions. The owner then resets the password (**Reset your password** on the sign-in screen), which also revokes all of that account's sessions. In Security, the owner removes every passkey and linked login they do not recognise; a reset leaves those in place. Ending an admin's or teacher's role in the school stops their access on the next request. |
+| One school or district | `revoke --org <org id>`: the sessions of everyone with a current role or enrollment there or in any school under it. |
 | One student's card or session | On the class roster the teacher uses **Print a new card** (the old card stops working) **and** **Sign out everywhere** (ends sessions the card already opened); **Reset pictures** for picture sign-in. In a family: **Download a new card** and **Sign out everywhere** in Devices. |
-| All sessions at once | There is no operator command yet ([#2555](https://github.com/corpora-inc/encorpora/issues/2555)). Adult sessions: the `DELETE` in row 1, step 4. Student and provider sessions: take AMP offline. |
+| All sessions at once | `revoke --all`. AMP stays online; to stop new sign-ins as well, take AMP offline after it. |
 
 ### Take AMP offline
 
@@ -202,7 +235,7 @@ SELECT 'school', o.name, a.signer_name, coalesce(u.email, p.email), a.ended_at
 
 **Which states.** AMP stores no home address. A family's state comes from its funding program (`amp_parent_followups.program`: `ar-efa`, `az-esa`, `nh-efa`), the billing address Stripe holds for paying customers, or the school's location.
 
-**What kind of data.** AMP holds names, optional display names, emails, grade levels, school identifiers, class enrollments, answers and the skill evidence derived from them, hashed passwords, hashed student card and picture secrets, passkey public keys, account session tokens and provider tokens as issued, and Stripe customer references. Cards stay with Stripe. AMP holds no Social Security, driver's license, financial account, health or biometric data. Write down which fields were exposed, and whether any credential that works was among them. The state statutes in section 6 turn on that.
+**What kind of data.** AMP holds names, optional display names, emails, grade levels, school identifiers, class enrollments, answers and the skill evidence derived from them, hashed passwords, hashed student card and picture secrets, hashed password-reset links, passkey public keys, account session tokens as issued, and Stripe customer references. It keeps no provider access or refresh tokens. Cards stay with Stripe. AMP holds no Social Security, driver's license, financial account, health or biometric data. Write down which fields were exposed, and whether any credential that works was among them. The state statutes in section 6 turn on that.
 
 ## 6. Notify
 

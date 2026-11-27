@@ -327,6 +327,18 @@ test(
             (await accountRows("new.parent@example.com")).rowCount,
             1,
           );
+          // The provider answered with an access and an ID token, at sign-up
+          // and again at sign-in; AMP stores neither (#2555).
+          assert.deepEqual(
+            (
+              await repo.pool.query(
+                `SELECT a."accessToken", a."refreshToken", a."idToken" FROM amp_auth_accounts a
+                  JOIN amp_auth_users u ON u.id = a."userId" WHERE u.email = $1`,
+                ["new.parent@example.com"],
+              )
+            ).rows,
+            [{ accessToken: null, refreshToken: null, idToken: null }],
+          );
         },
       );
 

@@ -175,6 +175,9 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_meta_purchase_contexts: "account",
   amp_meta_purchase_queue: "account",
   amp_migrations: "none",
+  // The operator's record of sessions ended in an incident (migration 0157):
+  // scope, an opaque account or org id and counts.
+  amp_operator_events: "journal",
   amp_offline_attempts: "learner",
   amp_offline_instances: "learner",
   amp_offline_packs: "learner",
