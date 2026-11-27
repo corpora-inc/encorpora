@@ -1,0 +1,4746 @@
+{
+ "id": "decimal-multiplication--sd",
+ "title": "Adding, subtracting, multiplying and dividing decimals",
+ "skill": "decimal-arithmetic",
+ "teaches": [
+  "decimal-addition",
+  "decimal-area-model",
+  "decimal-model-written-method",
+  "price-count-chain"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "wholea": [
+      0,
+      0
+     ],
+     "wholeb": [
+      10,
+      0
+     ],
+     "wholec": [
+      10,
+      10
+     ],
+     "wholed": [
+      0,
+      10
+     ],
+     "banda": [
+      0,
+      0
+     ],
+     "bandb": [
+      6,
+      0
+     ],
+     "bandc": [
+      6,
+      10
+     ],
+     "bandd": [
+      0,
+      10
+     ],
+     "row0a": [
+      0,
+      0
+     ],
+     "row0b": [
+      6,
+      0
+     ],
+     "row0c": [
+      6,
+      1
+     ],
+     "row0d": [
+      0,
+      1
+     ],
+     "row1a": [
+      0,
+      1
+     ],
+     "row1b": [
+      6,
+      1
+     ],
+     "row1c": [
+      6,
+      2
+     ],
+     "row1d": [
+      0,
+      2
+     ],
+     "row2a": [
+      0,
+      2
+     ],
+     "row2b": [
+      6,
+      2
+     ],
+     "row2c": [
+      6,
+      3
+     ],
+     "row2d": [
+      0,
+      3
+     ],
+     "row3a": [
+      0,
+      3
+     ],
+     "row3b": [
+      6,
+      3
+     ],
+     "row3c": [
+      6,
+      4
+     ],
+     "row3d": [
+      0,
+      4
+     ],
+     "v1a": [
+      1,
+      0
+     ],
+     "v1b": [
+      1,
+      10
+     ],
+     "h1a": [
+      0,
+      1
+     ],
+     "h1b": [
+      10,
+      1
+     ],
+     "v2a": [
+      2,
+      0
+     ],
+     "v2b": [
+      2,
+      10
+     ],
+     "h2a": [
+      0,
+      2
+     ],
+     "h2b": [
+      10,
+      2
+     ],
+     "v3a": [
+      3,
+      0
+     ],
+     "v3b": [
+      3,
+      10
+     ],
+     "h3a": [
+      0,
+      3
+     ],
+     "h3b": [
+      10,
+      3
+     ],
+     "v4a": [
+      4,
+      0
+     ],
+     "v4b": [
+      4,
+      10
+     ],
+     "h4a": [
+      0,
+      4
+     ],
+     "h4b": [
+      10,
+      4
+     ],
+     "v5a": [
+      5,
+      0
+     ],
+     "v5b": [
+      5,
+      10
+     ],
+     "h5a": [
+      0,
+      5
+     ],
+     "h5b": [
+      10,
+      5
+     ],
+     "v6a": [
+      6,
+      0
+     ],
+     "v6b": [
+      6,
+      10
+     ],
+     "h6a": [
+      0,
+      6
+     ],
+     "h6b": [
+      10,
+      6
+     ],
+     "v7a": [
+      7,
+      0
+     ],
+     "v7b": [
+      7,
+      10
+     ],
+     "h7a": [
+      0,
+      7
+     ],
+     "h7b": [
+      10,
+      7
+     ],
+     "v8a": [
+      8,
+      0
+     ],
+     "v8b": [
+      8,
+      10
+     ],
+     "h8a": [
+      0,
+      8
+     ],
+     "h8b": [
+      10,
+      8
+     ],
+     "v9a": [
+      9,
+      0
+     ],
+     "v9b": [
+      9,
+      10
+     ],
+     "h9a": [
+      0,
+      9
+     ],
+     "h9b": [
+      10,
+      9
+     ],
+     "la": [
+      5,
+      3
+     ],
+     "lb": [
+      6,
+      3
+     ],
+     "lc": [
+      6,
+      4
+     ],
+     "ld": [
+      5,
+      4
+     ],
+     "holea": [
+      5,
+      3
+     ],
+     "holeb": [
+      6,
+      3
+     ],
+     "holec": [
+      6,
+      4
+     ],
+     "holed": [
+      5,
+      4
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "poly": [
+       "wholea",
+       "wholeb",
+       "wholec",
+       "wholed"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "banda",
+       "bandb",
+       "bandc",
+       "bandd"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "row0",
+      "poly": [
+       "row0a",
+       "row0b",
+       "row0c",
+       "row0d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "overlap"
+     },
+     {
+      "id": "row1",
+      "poly": [
+       "row1a",
+       "row1b",
+       "row1c",
+       "row1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "overlap"
+     },
+     {
+      "id": "row2",
+      "poly": [
+       "row2a",
+       "row2b",
+       "row2c",
+       "row2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "overlap"
+     },
+     {
+      "id": "row3",
+      "poly": [
+       "row3a",
+       "row3b",
+       "row3c",
+       "row3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "overlap"
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "v1a",
+       "v1b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h1",
+      "seg": [
+       "h1a",
+       "h1b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "v2a",
+       "v2b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h2",
+      "seg": [
+       "h2a",
+       "h2b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "v3a",
+       "v3b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h3",
+      "seg": [
+       "h3a",
+       "h3b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v4",
+      "seg": [
+       "v4a",
+       "v4b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h4",
+      "seg": [
+       "h4a",
+       "h4b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v5",
+      "seg": [
+       "v5a",
+       "v5b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h5",
+      "seg": [
+       "h5a",
+       "h5b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v6",
+      "seg": [
+       "v6a",
+       "v6b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h6",
+      "seg": [
+       "h6a",
+       "h6b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v7",
+      "seg": [
+       "v7a",
+       "v7b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h7",
+      "seg": [
+       "h7a",
+       "h7b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v8",
+      "seg": [
+       "v8a",
+       "v8b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h8",
+      "seg": [
+       "h8a",
+       "h8b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v9",
+      "seg": [
+       "v9a",
+       "v9b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h9",
+      "seg": [
+       "h9a",
+       "h9b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "unitw",
+      "dim": [
+       "wholea",
+       "wholeb"
+      ],
+      "tex": "1",
+      "side": "s",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "unith",
+      "dim": [
+       "wholeb",
+       "wholec"
+      ],
+      "tex": "1",
+      "side": "e",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "six",
+      "dim": [
+       "bandd",
+       "bandc"
+      ],
+      "tex": "0.6",
+      "side": "n",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "four",
+      "dim": [
+       "row0a",
+       "row3d"
+      ],
+      "tex": "0.4",
+      "side": "w",
+      "start": false,
+      "ink": "gold"
+     },
+     {
+      "id": "hole",
+      "poly": [
+       "holea",
+       "holeb",
+       "holec",
+       "holed"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "solid": false,
+      "w": 1
+     },
+     {
+      "id": "lift",
+      "poly": [
+       "la",
+       "lb",
+       "lc",
+       "ld"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "solid": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What is zero point four times zero point six, Champ?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "header",
+       "text": "A part of a part"
+      },
+      {
+       "do": "problem",
+       "text": "$0.4\\times0.6= ?$"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four times six is twenty-four. So, two point four?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\times6=24",
+       "fresh": true,
+       "at": "twenty-four"
+      },
+      {
+       "do": "write",
+       "tex": "2.4\\;?",
+       "id": "guess",
+       "fresh": true,
+       "at": "So"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both numbers are less than one. Could a part of a part cover more than two whole squares?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      },
+      {
+       "do": "strike",
+       "target": "guess",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "one",
+       "until": "Could"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This square has sides of one unit. Its area is one square unit. We will call that one whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "unitw",
+        "unith"
+       ],
+       "at": "sides",
+       "until": "area"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "area"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the width into ten equal parts. Each column is one tenth of the whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "columns",
+       "at": "ten"
+      },
+      {
+       "do": "write",
+       "tex": "1\\div10=0.1",
+       "fresh": true,
+       "at": "tenth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the height into ten equal parts too. Ten rows of ten make one hundred little squares.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "rows",
+       "at": "ten"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10\\times10=100",
+       "fresh": true,
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each little square is one hundredth of the whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "1\\div100=0.01",
+       "at": "hundredth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "First, shade six tenths of the whole square. Six columns, the full height.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "band",
+       "at": "shade"
+      },
+      {
+       "do": "show",
+       "target": "six",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "0.6",
+       "fresh": true,
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiplying by four tenths means taking four tenths of this blue area. Keep its width, and take only four of its ten rows.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "0.4\\times0.6",
+       "at": "Multiplying"
+      },
+      {
+       "do": "highlight",
+       "target": "band",
+       "at": "blue",
+       "until": "Keep"
+      },
+      {
+       "do": "show",
+       "target": "four",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One row. Two rows. Three rows. Four rows.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "row0",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "row1",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "row2",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "row3",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four rows of six little squares. Twenty-four squares, and every square is a hundredth.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "overlap",
+       "at": "Four",
+       "until": "every"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times6=24",
+       "fresh": true,
+       "at": "Twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twenty-four hundredths! Zero point two four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "0.4\\times0.6=0.24",
+       "at": "Zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Taking four tenths of six tenths makes less than six tenths. Multiplication by a number between zero and one makes a positive amount smaller.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0.24<0.6",
+       "fresh": true,
+       "at": "less"
+      },
+      {
+       "do": "hide",
+       "target": "band",
+       "at": "smaller"
+      },
+      {
+       "do": "highlight",
+       "target": "overlap",
+       "at": "between",
+       "until": "smaller"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Lift out one of those hundredths. Let's look closely at its two sides.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "lift",
+       "at": "Lift"
+      },
+      {
+       "do": "show",
+       "target": "hole",
+       "at": "out",
+       "dur": 0.1
+      },
+      {
+       "do": "slide",
+       "target": "lift",
+       "by": [
+        3,
+        4
+       ],
+       "at": "out"
+      },
+      {
+       "do": "highlight",
+       "target": "lift",
+       "at": "sides"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "tilea": [
+      1,
+      1
+     ],
+     "tileb": [
+      5,
+      1
+     ],
+     "tilec": [
+      5,
+      5
+     ],
+     "tiled": [
+      1,
+      5
+     ],
+     "areap": [
+      3,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "tile",
+      "poly": [
+       "tilea",
+       "tileb",
+       "tilec",
+       "tiled"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "solid": true
+     },
+     {
+      "id": "width",
+      "dim": [
+       "tilea",
+       "tileb"
+      ],
+      "tex": "0.1",
+      "side": "s",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "height",
+      "dim": [
+       "tilea",
+       "tiled"
+      ],
+      "tex": "0.1",
+      "side": "w",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "area",
+      "label": "0.01",
+      "at": "areap",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Look closely at just one little square. Its width is one tenth, and its height is one tenth.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "What is one little square worth?"
+      },
+      {
+       "do": "highlight",
+       "target": "width",
+       "at": "width",
+       "until": "height"
+      },
+      {
+       "do": "highlight",
+       "target": "height",
+       "at": "height"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One tenth of one tenth is one hundredth. That is why the product counts hundredths.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "area",
+       "at": "hundredth"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac1{10}\\times\\frac1{10}=\\frac1{100}",
+       "at": "hundredth"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four times six counts the pieces. Tenths times tenths names their size.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "24\\text{ hundredths}=0.24",
+       "at": "counts"
+      },
+      {
+       "do": "highlight",
+       "target": "area",
+       "at": "names"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Count the pieces, then name their size.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "tile",
+       "at": "size"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "biga": [
+      0,
+      0
+     ],
+     "bigb": [
+      5,
+      0
+     ],
+     "bigc": [
+      5,
+      6
+     ],
+     "bigd": [
+      0,
+      6
+     ],
+     "righta": [
+      5,
+      0
+     ],
+     "rightb": [
+      5.7,
+      0
+     ],
+     "rightc": [
+      5.7,
+      6
+     ],
+     "rightd": [
+      5,
+      6
+     ],
+     "topa": [
+      0,
+      6
+     ],
+     "topb": [
+      5,
+      6
+     ],
+     "topc": [
+      5,
+      6.6
+     ],
+     "topd": [
+      0,
+      6.6
+     ],
+     "cornera": [
+      5,
+      6
+     ],
+     "cornerb": [
+      5.7,
+      6
+     ],
+     "cornerc": [
+      5.7,
+      6.6
+     ],
+     "cornerd": [
+      5,
+      6.6
+     ],
+     "thirtyp": [
+      2.5,
+      3
+     ],
+     "rpp": [
+      5.35,
+      3
+     ],
+     "tpp": [
+      2.5,
+      6.3
+     ],
+     "cpp": [
+      5.35,
+      6.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "outer",
+      "poly": [
+       "biga",
+       "rightb",
+       "cornerc",
+       "topd"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "big",
+      "poly": [
+       "biga",
+       "bigb",
+       "bigc",
+       "bigd"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "right",
+      "poly": [
+       "righta",
+       "rightb",
+       "rightc",
+       "rightd"
+      ],
+      "fill": "violet-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "top",
+      "poly": [
+       "topa",
+       "topb",
+       "topc",
+       "topd"
+      ],
+      "fill": "warm-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "corner",
+      "poly": [
+       "cornera",
+       "cornerb",
+       "cornerc",
+       "cornerd"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "mw",
+      "dim": [
+       "biga",
+       "rightb"
+      ],
+      "tex": "5.7",
+      "side": "s",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "mh",
+      "dim": [
+       "biga",
+       "topd"
+      ],
+      "tex": "6.6",
+      "side": "w",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "thirty",
+      "label": "30",
+      "at": "thirtyp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "rp",
+      "label": "4.2",
+      "at": "rpp",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "tp",
+      "label": "3",
+      "at": "tpp",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "cp",
+      "label": "0.42",
+      "at": "cpp",
+      "dir": "c",
+      "size": "s",
+      "ink": "gold",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Bigger numbers use the same idea. Six point six times five point seven. Estimate first: about seven times six, or forty-two.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Count first. Name the unit."
+      },
+      {
+       "do": "problem",
+       "text": "$6.6\\times5.7$"
+      },
+      {
+       "do": "write",
+       "tex": "7\\times6=42",
+       "at": "Estimate",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The six by five part already has area thirty. The extra strips make the total a little larger.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "right",
+        "top",
+        "corner"
+       ],
+       "at": "extra"
+      },
+      {
+       "do": "highlight",
+       "target": "big",
+       "at": "thirty",
+       "until": "extra"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six point six is sixty-six tenths. Five point seven is fifty-seven tenths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "6.6=66\\text{ tenths}",
+       "at": "sixty-six",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "5.7=57\\text{ tenths}",
+       "at": "fifty-seven",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply the counts. Sixty-six times fifty is three thousand three hundred. Sixty-six times seven is four hundred sixty-two.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "66\\times50=3{,}300",
+       "at": "fifty",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "66\\times7=462",
+       "at": "seven",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add the two parts: three thousand seven hundred sixty-two. Since tenths times tenths make hundredths, that is thirty-seven point six two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "66\\times57=3{,}762",
+       "at": "Add"
+      },
+      {
+       "do": "answer",
+       "tex": "6.6\\times5.7=37.62",
+       "at": "thirty-seven"
+      },
+      {
+       "do": "highlight",
+       "target": "mw",
+       "at": "tenths",
+       "until": "times"
+      },
+      {
+       "do": "highlight",
+       "target": "mh",
+       "at": "tenths",
+       "nth": 2,
+       "until": "hundredths"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Close to forty-two, and more than thirty. The size makes sense.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "big",
+       "at": "thirty",
+       "until": "The"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The shortcut counts decimal places: digits after each point. One plus one gives two places in the product, because we divided by ten twice.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{66\\times57}{10\\times10}=\\frac{3{,}762}{100}",
+       "at": "because",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{3{,}762}{100}=37.62",
+       "at": "twice"
+      },
+      {
+       "do": "text",
+       "text": "1 decimal place + 1 decimal place = 2",
+       "at": "One"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Keep placeholder zeros when needed: two tenths times five tenths is ten hundredths. Zero point one zero is the same as zero point one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A zero can hold a place"
+      },
+      {
+       "do": "write",
+       "tex": "0.2\\times0.5=0.10",
+       "at": "two",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "0.10=0.1",
+       "at": "same"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "ph0p": [
+      2,
+      6
+     ],
+     "ph1p": [
+      4,
+      6
+     ],
+     "ph2p": [
+      6,
+      6
+     ],
+     "col0a": [
+      1,
+      0.7
+     ],
+     "col0b": [
+      1,
+      6.6
+     ],
+     "col1a": [
+      3,
+      0.7
+     ],
+     "col1b": [
+      3,
+      6.6
+     ],
+     "col2a": [
+      5,
+      0.7
+     ],
+     "col2b": [
+      5,
+      6.6
+     ],
+     "col3a": [
+      7,
+      0.7
+     ],
+     "col3b": [
+      7,
+      6.6
+     ],
+     "aonep": [
+      4,
+      4.8
+     ],
+     "apointp": [
+      4.7,
+      4.8
+     ],
+     "atenthp": [
+      6,
+      4.8
+     ],
+     "zerop": [
+      6,
+      4.8
+     ],
+     "bonep": [
+      2,
+      3.2
+     ],
+     "bpointp": [
+      2.7,
+      3.2
+     ],
+     "btenthp": [
+      4,
+      3.2
+     ],
+     "bhundredthp": [
+      6,
+      3.2
+     ],
+     "rulea": [
+      1,
+      2.4
+     ],
+     "ruleb": [
+      7,
+      2.4
+     ],
+     "ronep": [
+      2,
+      1.5
+     ],
+     "rpointp": [
+      2.7,
+      1.5
+     ],
+     "rtenthp": [
+      4,
+      1.5
+     ],
+     "rhundredthp": [
+      6,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "ph0",
+      "label": "1",
+      "at": "ph0p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph1",
+      "label": "0.1",
+      "at": "ph1p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ph2",
+      "label": "0.01",
+      "at": "ph2p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0a",
+       "col0b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "w": 1
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1a",
+       "col1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "w": 1
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2a",
+       "col2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "w": 1
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3a",
+       "col3b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "w": 1
+     },
+     {
+      "id": "aone",
+      "label": "2",
+      "at": "aonep",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true,
+      "group": "first",
+      "flies": true
+     },
+     {
+      "id": "apoint",
+      "label": ".",
+      "at": "apointp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true,
+      "group": "first",
+      "flies": true,
+      "halo": true
+     },
+     {
+      "id": "atenth",
+      "label": "5",
+      "at": "atenthp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true,
+      "group": "first",
+      "flies": true
+     },
+     {
+      "id": "zero",
+      "label": "0",
+      "at": "zerop",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "bone",
+      "label": "1",
+      "at": "bonep",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "bpoint",
+      "label": ".",
+      "at": "bpointp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true,
+      "halo": true
+     },
+     {
+      "id": "btenth",
+      "label": "2",
+      "at": "btenthp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "bhundredth",
+      "label": "5",
+      "at": "bhundredthp",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "rule",
+      "seg": [
+       "rulea",
+       "ruleb"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "rone",
+      "label": "3",
+      "at": "ronep",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "rpoint",
+      "label": ".",
+      "at": "rpointp",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false,
+      "halo": true
+     },
+     {
+      "id": "rtenth",
+      "label": "7",
+      "at": "rtenthp",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "rhundredth",
+      "label": "5",
+      "at": "rhundredthp",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For addition, ask a different question: which pieces can combine? Try two point five plus one point two five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Add like units"
+      },
+      {
+       "do": "problem",
+       "text": "$2.5+1.25$",
+       "at": "Try"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "If I line up the last digits, I get one point five zero.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "1.50\\;?",
+       "fresh": true,
+       "id": "badadd",
+       "at": "get"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That arrangement puts five tenths over five hundredths. They are different-sized pieces. And the total cannot be less than two point five.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "atenth",
+        "bhundredth"
+       ],
+       "at": "different-sized",
+       "until": "And"
+      },
+      {
+       "do": "strike",
+       "target": "badadd",
+       "at": "cannot"
+      },
+      {
+       "do": "highlight",
+       "target": "atenth",
+       "at": "five",
+       "until": "over"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide two point five left until the decimal points line up. Ones over ones. Tenths over tenths.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "slide",
+       "target": "first",
+       "by": [
+        -2,
+        0
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "aone",
+        "bone"
+       ],
+       "at": "Ones",
+       "until": "Tenths"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "atenth",
+        "btenth"
+       ],
+       "at": "Tenths"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We can write a zero in the hundredths place. Two point five zero is exactly two point five.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "show",
+       "target": "zero",
+       "at": "zero"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "2.5=2.50",
+       "fresh": true,
+       "at": "exactly"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero plus five gives five hundredths. Five plus two gives seven tenths. Two plus one gives three ones.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "rhundredth",
+       "at": "hundredths"
+      },
+      {
+       "do": "show",
+       "target": "rtenth",
+       "at": "tenths"
+      },
+      {
+       "do": "show",
+       "target": [
+        "rone",
+        "rpoint"
+       ],
+       "at": "ones"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three point seven five. Lining up the points keeps the units together.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "2.50+1.25=3.75",
+       "at": "Three"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "pv",
+      "blocks": [
+       "tenths",
+       "hundredths"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "tenths": 5,
+         "hundredths": 11
+        },
+        "inks": {
+         "tenths": "blue",
+         "hundredths": "gold"
+        }
+       }
+      ],
+      "counts": true,
+      "lines": "all",
+      "squares": "stacks",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Add nine point one two and four point four nine. We may need to trade.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Ten hundredths become one tenth"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&&&\\phantom{1}&\\\\&9&.&1&2\\\\+&4&.&4&9\\\\\\hline &&&&\\end{array}",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "pv.n.tenths",
+        "pv.n.hundredths"
+       ],
+       "at": "trade"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here are their decimal parts together: five tenths, and eleven hundredths. Two hundredths plus nine hundredths is eleven hundredths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "pv.n.hundredths",
+       "at": "eleven"
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.tenths",
+       "at": "five",
+       "until": "eleven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Trade ten of those hundredths for one tenth. Leave one hundredth behind.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "join",
+       "target": "pv.n.hundredths",
+       "at": "Trade"
+      },
+      {
+       "do": "clear",
+       "at": "Leave",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&&&1&\\\\&9&.&1&2\\\\+&4&.&4&9\\\\\\hline &&.&&1\\end{array}",
+       "fresh": true,
+       "at": "Leave",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The carried one means one tenth. Add it to one tenth and four tenths: six tenths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "pv.n.tenths",
+       "at": "six"
+      },
+      {
+       "do": "clear",
+       "at": "six",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&&&1&\\\\&9&.&1&2\\\\+&4&.&4&9\\\\\\hline &&.&6&1\\end{array}",
+       "fresh": true,
+       "at": "six",
+       "dur": 0.2
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.tenths.6",
+       "at": "carried",
+       "until": "Add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine ones plus four ones makes thirteen ones. Write three ones and carry one ten.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear",
+       "at": "three",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&&&\\phantom{1}&\\\\&9&.&1&2\\\\+&4&.&4&9\\\\\\hline 1&3&.&6&1\\end{array}",
+       "fresh": true,
+       "at": "three",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One ten. The sum is thirteen point six one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "13.61",
+       "at": "sum"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {},
+    "parts": [
+     {
+      "id": "pv",
+      "blocks": [
+       "ones",
+       "tenths",
+       "hundredths"
+      ],
+      "rows": [
+       {
+        "id": "n",
+        "pieces": {
+         "ones": 5,
+         "tenths": 0,
+         "hundredths": 0
+        },
+        "ink": "blue"
+       }
+      ],
+      "point": false,
+      "counts": false,
+      "digits": false,
+      "lines": "all",
+      "squares": "stacks",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Five minus one point three seven. Write five as five point zero zero.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Trade without changing the amount"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&5&.&0&0\\\\-&1&.&3&7\\\\\\hline &&&&\\end{array}",
+       "fresh": true,
+       "at": "Write"
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.ones",
+       "at": "Five",
+       "until": "Write"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We need hundredths to take away, but we have only whole squares. Trade one whole for ten tenths.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "split",
+       "target": "pv.n.ones",
+       "at": "Trade"
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.ones",
+       "at": "We",
+       "until": "Trade"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then trade one of those tenths for ten hundredths.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "split",
+       "target": "pv.n.tenths",
+       "at": "trade"
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.hundredths",
+       "at": "hundredths"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four wholes, nine tenths, ten hundredths. The pieces changed, but the amount is still five.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "pv.n.ones",
+       "at": "Four",
+       "until": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.tenths",
+       "at": "nine",
+       "until": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "pv.n.hundredths",
+       "at": "ten",
+       "until": "The"
+      },
+      {
+       "do": "clear",
+       "at": "Four",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&\\overset{4}{\\cancel{5}}&.&\\overset{9}{\\cancel{0}}&\\overset{10}{\\cancel{0}}\\\\-&1&.&3&7\\\\\\hline &&&&\\end{array}",
+       "fresh": true,
+       "at": "Four",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten hundredths minus seven leaves three hundredths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "pv.n.hundredths.4",
+        "pv.n.hundredths.5",
+        "pv.n.hundredths.6",
+        "pv.n.hundredths.7",
+        "pv.n.hundredths.8",
+        "pv.n.hundredths.9",
+        "pv.n.hundredths.10",
+        "pv.n.tenths.10"
+       ],
+       "at": "minus"
+      },
+      {
+       "do": "clear",
+       "at": "three",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&\\overset{4}{\\cancel{5}}&.&\\overset{9}{\\cancel{0}}&\\overset{10}{\\cancel{0}}\\\\-&1&.&3&7\\\\\\hline &&.&&3\\end{array}",
+       "fresh": true,
+       "at": "three",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine tenths minus three leaves six tenths. Four ones minus one leaves three ones.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "pv.n.tenths.7",
+        "pv.n.tenths.8",
+        "pv.n.tenths.9",
+        "pv.n.ones.5"
+       ],
+       "at": "minus"
+      },
+      {
+       "do": "hide",
+       "target": "pv.n.ones.4",
+       "at": "minus",
+       "nth": 2
+      },
+      {
+       "do": "clear",
+       "at": "three",
+       "nth": 2,
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{rrcrr}&\\overset{4}{\\cancel{5}}&.&\\overset{9}{\\cancel{0}}&\\overset{10}{\\cancel{0}}\\\\-&1&.&3&7\\\\\\hline &3&.&6&3\\end{array}",
+       "fresh": true,
+       "at": "three",
+       "nth": 2,
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three point six three. I can add back one point three seven to check that I get five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear",
+       "at": "check",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "3.63+1.37=5.00",
+       "fresh": true,
+       "at": "check",
+       "dur": 0.2
+      },
+      {
+       "do": "answer",
+       "tex": "5-1.37=3.63",
+       "at": "five"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "recta": [
+      0,
+      2
+     ],
+     "rectb": [
+      10,
+      2
+     ],
+     "rectc": [
+      10,
+      2.6
+     ],
+     "rectd": [
+      0,
+      2.6
+     ],
+     "cut1a": [
+      2,
+      2
+     ],
+     "cut1b": [
+      2,
+      2.6
+     ],
+     "cut2a": [
+      4,
+      2
+     ],
+     "cut2b": [
+      4,
+      2.6
+     ],
+     "cut3a": [
+      6,
+      2
+     ],
+     "cut3b": [
+      6,
+      2.6
+     ],
+     "cut4a": [
+      8,
+      2
+     ],
+     "cut4b": [
+      8,
+      2.6
+     ],
+     "row1a": [
+      0,
+      2.2
+     ],
+     "row1b": [
+      10,
+      2.2
+     ],
+     "row2a": [
+      0,
+      2.4
+     ],
+     "row2b": [
+      10,
+      2.4
+     ],
+     "areap": [
+      5,
+      4.4
+     ],
+     "sharea": [
+      0,
+      2
+     ],
+     "shareb": [
+      2,
+      2
+     ],
+     "sharec": [
+      2,
+      2.6
+     ],
+     "shared": [
+      0,
+      2.6
+     ],
+     "sharelabelp": [
+      1,
+      0.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "recta",
+       "rectb",
+       "rectc",
+       "rectd"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "share",
+      "poly": [
+       "sharea",
+       "shareb",
+       "sharec",
+       "shared"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "cut1a",
+       "cut1b"
+      ],
+      "ink": "ink",
+      "start": false,
+      "group": "cuts"
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "cut2a",
+       "cut2b"
+      ],
+      "ink": "ink",
+      "start": false,
+      "group": "cuts"
+     },
+     {
+      "id": "cut3",
+      "seg": [
+       "cut3a",
+       "cut3b"
+      ],
+      "ink": "ink",
+      "start": false,
+      "group": "cuts"
+     },
+     {
+      "id": "cut4",
+      "seg": [
+       "cut4a",
+       "cut4b"
+      ],
+      "ink": "ink",
+      "start": false,
+      "group": "cuts"
+     },
+     {
+      "id": "row1",
+      "seg": [
+       "row1a",
+       "row1b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows"
+     },
+     {
+      "id": "row2",
+      "seg": [
+       "row2a",
+       "row2b"
+      ],
+      "ink": "muted",
+      "start": false,
+      "group": "rows"
+     },
+     {
+      "id": "width",
+      "dim": [
+       "recta",
+       "rectb"
+      ],
+      "tex": "5",
+      "side": "s",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "heightq",
+      "dim": [
+       "rectb",
+       "rectc"
+      ],
+      "tex": "?",
+      "side": "e",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "height",
+      "dim": [
+       "rectb",
+       "rectc"
+      ],
+      "tex": "0.3",
+      "side": "e",
+      "start": false,
+      "ink": "ink"
+     },
+     {
+      "id": "area",
+      "label": "\\text{Area }1.5",
+      "at": "areap",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "sharelabel",
+      "label": "3\\text{ tenths}",
+      "at": "sharelabelp",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Division can find a missing side. This rectangle has area one point five square units and width five units. What is its height?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Share the area"
+      },
+      {
+       "do": "problem",
+       "text": "$1.5\\div5= ?$"
+      },
+      {
+       "do": "highlight",
+       "target": "heightq",
+       "at": "height"
+      },
+      {
+       "do": "highlight",
+       "target": "area",
+       "at": "area",
+       "until": "width"
+      },
+      {
+       "do": "highlight",
+       "target": "width",
+       "at": "width",
+       "until": "height"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Split it into five columns, each one unit wide. Share the area equally among them.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "cuts",
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "rect",
+       "at": "Share"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point five is fifteen tenths. Fifteen tenths shared among five columns gives three tenths in each.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "rows",
+       "at": "tenths"
+      },
+      {
+       "do": "write",
+       "tex": "15\\div5=3",
+       "at": "gives",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "share",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "sharelabel",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each column is one unit wide. So its area of three tenths means its height is three tenths too.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "heightq",
+       "at": "height"
+      },
+      {
+       "do": "show",
+       "target": "height",
+       "at": "height"
+      },
+      {
+       "do": "answer",
+       "tex": "1.5\\div5=0.3",
+       "at": "too"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Check with multiplication. Five times zero point three equals one point five.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5\\times0.3=1.5",
+       "at": "Five",
+       "fresh": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For hundredths, share hundredths. One point seven five divided by seven means sharing one hundred seventy-five hundredths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Share hundredths"
+      },
+      {
+       "do": "problem",
+       "text": "$1.75\\div7$"
+      },
+      {
+       "do": "write",
+       "tex": "1.75=175\\text{ hundredths}",
+       "at": "sharing",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred seventy-five divided by seven is twenty-five. Twenty-five hundredths is zero point two five.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "175\\div7=25",
+       "at": "twenty-five",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "1.75\\div7=0.25",
+       "at": "Zero"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "wholea": [
+      0,
+      0
+     ],
+     "wholeb": [
+      10,
+      0
+     ],
+     "wholec": [
+      10,
+      10
+     ],
+     "wholed": [
+      0,
+      10
+     ],
+     "banda": [
+      0,
+      0
+     ],
+     "bandb": [
+      6,
+      0
+     ],
+     "bandc": [
+      6,
+      10
+     ],
+     "bandd": [
+      0,
+      10
+     ],
+     "row0a": [
+      0,
+      0
+     ],
+     "row0b": [
+      6,
+      0
+     ],
+     "row0c": [
+      6,
+      1
+     ],
+     "row0d": [
+      0,
+      1
+     ],
+     "row1a": [
+      0,
+      1
+     ],
+     "row1b": [
+      6,
+      1
+     ],
+     "row1c": [
+      6,
+      2
+     ],
+     "row1d": [
+      0,
+      2
+     ],
+     "row2a": [
+      0,
+      2
+     ],
+     "row2b": [
+      6,
+      2
+     ],
+     "row2c": [
+      6,
+      3
+     ],
+     "row2d": [
+      0,
+      3
+     ],
+     "row3a": [
+      0,
+      3
+     ],
+     "row3b": [
+      6,
+      3
+     ],
+     "row3c": [
+      6,
+      4
+     ],
+     "row3d": [
+      0,
+      4
+     ],
+     "v1a": [
+      1,
+      0
+     ],
+     "v1b": [
+      1,
+      10
+     ],
+     "h1a": [
+      0,
+      1
+     ],
+     "h1b": [
+      10,
+      1
+     ],
+     "v2a": [
+      2,
+      0
+     ],
+     "v2b": [
+      2,
+      10
+     ],
+     "h2a": [
+      0,
+      2
+     ],
+     "h2b": [
+      10,
+      2
+     ],
+     "v3a": [
+      3,
+      0
+     ],
+     "v3b": [
+      3,
+      10
+     ],
+     "h3a": [
+      0,
+      3
+     ],
+     "h3b": [
+      10,
+      3
+     ],
+     "v4a": [
+      4,
+      0
+     ],
+     "v4b": [
+      4,
+      10
+     ],
+     "h4a": [
+      0,
+      4
+     ],
+     "h4b": [
+      10,
+      4
+     ],
+     "v5a": [
+      5,
+      0
+     ],
+     "v5b": [
+      5,
+      10
+     ],
+     "h5a": [
+      0,
+      5
+     ],
+     "h5b": [
+      10,
+      5
+     ],
+     "v6a": [
+      6,
+      0
+     ],
+     "v6b": [
+      6,
+      10
+     ],
+     "h6a": [
+      0,
+      6
+     ],
+     "h6b": [
+      10,
+      6
+     ],
+     "v7a": [
+      7,
+      0
+     ],
+     "v7b": [
+      7,
+      10
+     ],
+     "h7a": [
+      0,
+      7
+     ],
+     "h7b": [
+      10,
+      7
+     ],
+     "v8a": [
+      8,
+      0
+     ],
+     "v8b": [
+      8,
+      10
+     ],
+     "h8a": [
+      0,
+      8
+     ],
+     "h8b": [
+      10,
+      8
+     ],
+     "v9a": [
+      9,
+      0
+     ],
+     "v9b": [
+      9,
+      10
+     ],
+     "h9a": [
+      0,
+      9
+     ],
+     "h9b": [
+      10,
+      9
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "poly": [
+       "wholea",
+       "wholeb",
+       "wholec",
+       "wholed"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "banda",
+       "bandb",
+       "bandc",
+       "bandd"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "row0",
+      "poly": [
+       "row0a",
+       "row0b",
+       "row0c",
+       "row0d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "row1",
+      "poly": [
+       "row1a",
+       "row1b",
+       "row1c",
+       "row1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "row2",
+      "poly": [
+       "row2a",
+       "row2b",
+       "row2c",
+       "row2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "row3",
+      "poly": [
+       "row3a",
+       "row3b",
+       "row3c",
+       "row3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "v1a",
+       "v1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h1",
+      "seg": [
+       "h1a",
+       "h1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "v2a",
+       "v2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h2",
+      "seg": [
+       "h2a",
+       "h2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "v3a",
+       "v3b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h3",
+      "seg": [
+       "h3a",
+       "h3b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v4",
+      "seg": [
+       "v4a",
+       "v4b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h4",
+      "seg": [
+       "h4a",
+       "h4b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v5",
+      "seg": [
+       "v5a",
+       "v5b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h5",
+      "seg": [
+       "h5a",
+       "h5b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v6",
+      "seg": [
+       "v6a",
+       "v6b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h6",
+      "seg": [
+       "h6a",
+       "h6b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v7",
+      "seg": [
+       "v7a",
+       "v7b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h7",
+      "seg": [
+       "h7a",
+       "h7b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v8",
+      "seg": [
+       "v8a",
+       "v8b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h8",
+      "seg": [
+       "h8a",
+       "h8b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v9",
+      "seg": [
+       "v9a",
+       "v9b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h9",
+      "seg": [
+       "h9a",
+       "h9b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "unitw",
+      "dim": [
+       "wholea",
+       "wholeb"
+      ],
+      "tex": "1",
+      "side": "s",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "unith",
+      "dim": [
+       "wholeb",
+       "wholec"
+      ],
+      "tex": "1",
+      "side": "e",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "dw",
+      "dim": [
+       "bandd",
+       "bandc"
+      ],
+      "tex": "0.6",
+      "side": "n",
+      "start": true,
+      "ink": "blue"
+     },
+     {
+      "id": "dq",
+      "dim": [
+       "row0a",
+       "row3d"
+      ],
+      "tex": "?",
+      "side": "w",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "dh",
+      "dim": [
+       "row0a",
+       "row3d"
+      ],
+      "tex": "0.4",
+      "side": "w",
+      "start": false,
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What if the divisor is a decimal? Return to our twenty-four hundredths. The width is six tenths. What height makes this area?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Division undoes multiplication"
+      },
+      {
+       "do": "problem",
+       "text": "$0.24\\div0.6= ?$"
+      },
+      {
+       "do": "highlight",
+       "target": "dq",
+       "at": "height"
+      },
+      {
+       "do": "highlight",
+       "target": "overlap",
+       "at": "twenty-four",
+       "until": "width"
+      },
+      {
+       "do": "highlight",
+       "target": "dw",
+       "at": "width",
+       "until": "height"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "There are six little squares across. Twenty-four squares divided into rows of six makes four rows. Each row is one tenth tall.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "24\\div6=4",
+       "at": "four",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "row0",
+       "at": "Each"
+      },
+      {
+       "do": "highlight",
+       "target": "row0",
+       "at": "six",
+       "until": "Twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four tenths! So zero point two four divided by zero point six is zero point four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "dq",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "dh",
+       "at": "Four"
+      },
+      {
+       "do": "answer",
+       "tex": "0.24\\div0.6=0.4",
+       "at": "four",
+       "nth": 3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check the missing side: six tenths times four tenths gives twenty-four hundredths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "0.6\\times0.4=0.24",
+       "at": "six",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Choose the equation and its reason together. Division finds a missing side. Multiplication combines side lengths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Match the equation AND its reason."
+      },
+      {
+       "do": "highlight",
+       "target": "dh",
+       "at": "Division",
+       "until": "Multiplication"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "dh",
+        "dw"
+       ],
+       "at": "Multiplication"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A written shortcut uses equal scaling. Multiply both numbers in a division by ten, and the answer stays the same.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Scale both numbers equally"
+      },
+      {
+       "do": "write",
+       "tex": "0.24\\div0.6",
+       "fresh": true,
+       "at": "written"
+      },
+      {
+       "do": "write",
+       "tex": "=2.4\\div6=0.4",
+       "at": "ten"
+      },
+      {
+       "do": "text",
+       "text": "Scale both numbers by the same amount.",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten times as much, in groups ten times as large, gives the same number of groups.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "text",
+       "text": "10 times the amount",
+       "at": "much"
+      },
+      {
+       "do": "text",
+       "text": "10 times the size of each group",
+       "at": "large"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try one point seven four divided by eight point seven. Multiply both by ten.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "1.74\\div8.7",
+       "fresh": true,
+       "at": "Try"
+      },
+      {
+       "do": "text",
+       "text": "Multiply BOTH numbers by 10.",
+       "at": "Multiply"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That gives seventeen point four divided by eighty-seven.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "17.4\\div87",
+       "at": "seventeen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eighty-seven times two is one hundred seventy-four, so eighty-seven times two tenths is seventeen point four. The answer is zero point two.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "87\\times0.2=17.4",
+       "at": "so",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "1.74\\div8.7=0.2",
+       "at": "answer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "ticket0a": [
+      0,
+      5
+     ],
+     "ticket0b": [
+      3.625,
+      5
+     ],
+     "ticket0c": [
+      3.625,
+      6.5
+     ],
+     "ticket0d": [
+      0,
+      6.5
+     ],
+     "drink0a": [
+      3.625,
+      5
+     ],
+     "drink0b": [
+      4.5,
+      5
+     ],
+     "drink0c": [
+      4.5,
+      6.5
+     ],
+     "drink0d": [
+      3.625,
+      6.5
+     ],
+     "price0p": [
+      2.25,
+      4.5
+     ],
+     "ticket1a": [
+      5,
+      5
+     ],
+     "ticket1b": [
+      8.625,
+      5
+     ],
+     "ticket1c": [
+      8.625,
+      6.5
+     ],
+     "ticket1d": [
+      5,
+      6.5
+     ],
+     "drink1a": [
+      8.625,
+      5
+     ],
+     "drink1b": [
+      9.5,
+      5
+     ],
+     "drink1c": [
+      9.5,
+      6.5
+     ],
+     "drink1d": [
+      8.625,
+      6.5
+     ],
+     "price1p": [
+      7.25,
+      4.5
+     ],
+     "ticket2a": [
+      0,
+      2
+     ],
+     "ticket2b": [
+      3.625,
+      2
+     ],
+     "ticket2c": [
+      3.625,
+      3.5
+     ],
+     "ticket2d": [
+      0,
+      3.5
+     ],
+     "drink2a": [
+      3.625,
+      2
+     ],
+     "drink2b": [
+      4.5,
+      2
+     ],
+     "drink2c": [
+      4.5,
+      3.5
+     ],
+     "drink2d": [
+      3.625,
+      3.5
+     ],
+     "price2p": [
+      2.25,
+      1.5
+     ],
+     "ticket3a": [
+      5,
+      2
+     ],
+     "ticket3b": [
+      8.625,
+      2
+     ],
+     "ticket3c": [
+      8.625,
+      3.5
+     ],
+     "ticket3d": [
+      5,
+      3.5
+     ],
+     "drink3a": [
+      8.625,
+      2
+     ],
+     "drink3b": [
+      9.5,
+      2
+     ],
+     "drink3c": [
+      9.5,
+      3.5
+     ],
+     "drink3d": [
+      8.625,
+      3.5
+     ],
+     "price3p": [
+      7.25,
+      1.5
+     ],
+     "tpricep": [
+      2,
+      8
+     ],
+     "dpricep": [
+      7,
+      8
+     ]
+    },
+    "parts": [
+     {
+      "id": "ticket0",
+      "poly": [
+       "ticket0a",
+       "ticket0b",
+       "ticket0c",
+       "ticket0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "pair0"
+     },
+     {
+      "id": "drink0",
+      "poly": [
+       "drink0a",
+       "drink0b",
+       "drink0c",
+       "drink0d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "pair0"
+     },
+     {
+      "id": "price0",
+      "label": "9.00",
+      "at": "price0p",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "ticket1",
+      "poly": [
+       "ticket1a",
+       "ticket1b",
+       "ticket1c",
+       "ticket1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "pair1"
+     },
+     {
+      "id": "drink1",
+      "poly": [
+       "drink1a",
+       "drink1b",
+       "drink1c",
+       "drink1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "pair1"
+     },
+     {
+      "id": "price1",
+      "label": "9.00",
+      "at": "price1p",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "ticket2",
+      "poly": [
+       "ticket2a",
+       "ticket2b",
+       "ticket2c",
+       "ticket2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "pair2"
+     },
+     {
+      "id": "drink2",
+      "poly": [
+       "drink2a",
+       "drink2b",
+       "drink2c",
+       "drink2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "pair2"
+     },
+     {
+      "id": "price2",
+      "label": "9.00",
+      "at": "price2p",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "ticket3",
+      "poly": [
+       "ticket3a",
+       "ticket3b",
+       "ticket3c",
+       "ticket3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "pair3"
+     },
+     {
+      "id": "drink3",
+      "poly": [
+       "drink3a",
+       "drink3b",
+       "drink3c",
+       "drink3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": false,
+      "group": "pair3"
+     },
+     {
+      "id": "price3",
+      "label": "9.00",
+      "at": "price3p",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "tprice",
+      "label": "\\text{Ticket }7.25",
+      "at": "tpricep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "dprice",
+      "label": "\\text{Drink }1.75",
+      "at": "dpricep",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Four friends each buy a ticket for seven dollars twenty-five cents and a drink for one dollar seventy-five cents. What do all four pay?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One pair for each friend"
+      },
+      {
+       "do": "problem",
+       "text": "4 friends. Each buys a ticket and a drink."
+      },
+      {
+       "do": "show",
+       "target": "tprice",
+       "at": "twenty-five"
+      },
+      {
+       "do": "show",
+       "target": "dprice",
+       "at": "seventy-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cents are hundredths of a dollar. Seventy-five cents joins twenty-five cents to make another dollar. One friend pays nine dollars.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "7.25+1.75=9.00",
+       "at": "another",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "price0",
+       "at": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": "dprice",
+       "at": "Seventy-five",
+       "until": "joins"
+      },
+      {
+       "do": "highlight",
+       "target": "tprice",
+       "at": "twenty-five",
+       "until": "make"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Copy the whole pair for each friend. Two pairs. Three pairs. Four pairs.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "pair1",
+        "price1"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pair2",
+        "price2"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "pair3",
+        "price3"
+       ],
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four times nine is thirty-six dollars.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\times9.00=36.00",
+       "at": "thirty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or count all the tickets first. Four times seven point two five is twenty-nine dollars. Four drinks cost seven dollars. Add them: thirty-six.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ticket0",
+        "ticket1",
+        "ticket2",
+        "ticket3"
+       ],
+       "at": "tickets",
+       "until": "Four",
+       "untilNth": 2
+      },
+      {
+       "do": "write",
+       "tex": "4\\times7.25=29.00",
+       "at": "twenty-nine",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "drink0",
+        "drink1",
+        "drink2",
+        "drink3"
+       ],
+       "at": "drinks",
+       "until": "Add"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times1.75=7.00",
+       "at": "seven",
+       "fresh": true,
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "29.00+7.00=36.00",
+       "at": "Add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Adding each pair, then multiplying, gives the same total as multiplying each price, then adding.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4(7.25+1.75)",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "=4\\times7.25+4\\times1.75",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But suppose only two friends buy drinks. Then there are four tickets and just two drinks.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Different counts"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "drink2",
+        "drink3",
+        "price0",
+        "price1",
+        "price2",
+        "price3"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "problem",
+       "text": "4 tickets, 2 drinks. What is the total?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ticket0",
+        "ticket1",
+        "ticket2",
+        "ticket3"
+       ],
+       "at": "four",
+       "until": "just"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Use each item's own count. Four tickets cost twenty-nine dollars. Two drinks cost three dollars fifty cents. The total is thirty-two dollars fifty cents.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\times7.25=29.00",
+       "at": "tickets",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "2\\times1.75=3.50",
+       "at": "drinks",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "29.00+3.50=32.50",
+       "at": "total"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "wholea": [
+      0,
+      0
+     ],
+     "wholeb": [
+      10,
+      0
+     ],
+     "wholec": [
+      10,
+      10
+     ],
+     "wholed": [
+      0,
+      10
+     ],
+     "banda": [
+      0,
+      0
+     ],
+     "bandb": [
+      6,
+      0
+     ],
+     "bandc": [
+      6,
+      10
+     ],
+     "bandd": [
+      0,
+      10
+     ],
+     "row0a": [
+      0,
+      0
+     ],
+     "row0b": [
+      6,
+      0
+     ],
+     "row0c": [
+      6,
+      1
+     ],
+     "row0d": [
+      0,
+      1
+     ],
+     "row1a": [
+      0,
+      1
+     ],
+     "row1b": [
+      6,
+      1
+     ],
+     "row1c": [
+      6,
+      2
+     ],
+     "row1d": [
+      0,
+      2
+     ],
+     "row2a": [
+      0,
+      2
+     ],
+     "row2b": [
+      6,
+      2
+     ],
+     "row2c": [
+      6,
+      3
+     ],
+     "row2d": [
+      0,
+      3
+     ],
+     "row3a": [
+      0,
+      3
+     ],
+     "row3b": [
+      6,
+      3
+     ],
+     "row3c": [
+      6,
+      4
+     ],
+     "row3d": [
+      0,
+      4
+     ],
+     "v1a": [
+      1,
+      0
+     ],
+     "v1b": [
+      1,
+      10
+     ],
+     "h1a": [
+      0,
+      1
+     ],
+     "h1b": [
+      10,
+      1
+     ],
+     "v2a": [
+      2,
+      0
+     ],
+     "v2b": [
+      2,
+      10
+     ],
+     "h2a": [
+      0,
+      2
+     ],
+     "h2b": [
+      10,
+      2
+     ],
+     "v3a": [
+      3,
+      0
+     ],
+     "v3b": [
+      3,
+      10
+     ],
+     "h3a": [
+      0,
+      3
+     ],
+     "h3b": [
+      10,
+      3
+     ],
+     "v4a": [
+      4,
+      0
+     ],
+     "v4b": [
+      4,
+      10
+     ],
+     "h4a": [
+      0,
+      4
+     ],
+     "h4b": [
+      10,
+      4
+     ],
+     "v5a": [
+      5,
+      0
+     ],
+     "v5b": [
+      5,
+      10
+     ],
+     "h5a": [
+      0,
+      5
+     ],
+     "h5b": [
+      10,
+      5
+     ],
+     "v6a": [
+      6,
+      0
+     ],
+     "v6b": [
+      6,
+      10
+     ],
+     "h6a": [
+      0,
+      6
+     ],
+     "h6b": [
+      10,
+      6
+     ],
+     "v7a": [
+      7,
+      0
+     ],
+     "v7b": [
+      7,
+      10
+     ],
+     "h7a": [
+      0,
+      7
+     ],
+     "h7b": [
+      10,
+      7
+     ],
+     "v8a": [
+      8,
+      0
+     ],
+     "v8b": [
+      8,
+      10
+     ],
+     "h8a": [
+      0,
+      8
+     ],
+     "h8b": [
+      10,
+      8
+     ],
+     "v9a": [
+      9,
+      0
+     ],
+     "v9b": [
+      9,
+      10
+     ],
+     "h9a": [
+      0,
+      9
+     ],
+     "h9b": [
+      10,
+      9
+     ],
+     "cella": [
+      5,
+      3
+     ],
+     "cellb": [
+      6,
+      3
+     ],
+     "cellc": [
+      6,
+      4
+     ],
+     "celld": [
+      5,
+      4
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "poly": [
+       "wholea",
+       "wholeb",
+       "wholec",
+       "wholed"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "banda",
+       "bandb",
+       "bandc",
+       "bandd"
+      ],
+      "fill": "blue-fill",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "row0",
+      "poly": [
+       "row0a",
+       "row0b",
+       "row0c",
+       "row0d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "row1",
+      "poly": [
+       "row1a",
+       "row1b",
+       "row1c",
+       "row1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "row2",
+      "poly": [
+       "row2a",
+       "row2b",
+       "row2c",
+       "row2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "row3",
+      "poly": [
+       "row3a",
+       "row3b",
+       "row3c",
+       "row3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "muted",
+      "start": true,
+      "group": "overlap"
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "v1a",
+       "v1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h1",
+      "seg": [
+       "h1a",
+       "h1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "v2a",
+       "v2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h2",
+      "seg": [
+       "h2a",
+       "h2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "v3a",
+       "v3b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h3",
+      "seg": [
+       "h3a",
+       "h3b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v4",
+      "seg": [
+       "v4a",
+       "v4b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h4",
+      "seg": [
+       "h4a",
+       "h4b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v5",
+      "seg": [
+       "v5a",
+       "v5b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h5",
+      "seg": [
+       "h5a",
+       "h5b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v6",
+      "seg": [
+       "v6a",
+       "v6b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h6",
+      "seg": [
+       "h6a",
+       "h6b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v7",
+      "seg": [
+       "v7a",
+       "v7b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h7",
+      "seg": [
+       "h7a",
+       "h7b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v8",
+      "seg": [
+       "v8a",
+       "v8b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h8",
+      "seg": [
+       "h8a",
+       "h8b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "v9",
+      "seg": [
+       "v9a",
+       "v9b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "columns",
+      "w": 1
+     },
+     {
+      "id": "h9",
+      "seg": [
+       "h9a",
+       "h9b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "group": "rows",
+      "w": 1
+     },
+     {
+      "id": "unitw",
+      "dim": [
+       "wholea",
+       "wholeb"
+      ],
+      "tex": "1",
+      "side": "s",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "unith",
+      "dim": [
+       "wholeb",
+       "wholec"
+      ],
+      "tex": "1",
+      "side": "e",
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "six",
+      "dim": [
+       "bandd",
+       "bandc"
+      ],
+      "tex": "0.6",
+      "side": "n",
+      "start": true,
+      "ink": "blue"
+     },
+     {
+      "id": "four",
+      "dim": [
+       "row0a",
+       "row3d"
+      ],
+      "tex": "0.4",
+      "side": "w",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "cell",
+      "poly": [
+       "cella",
+       "cellb",
+       "cellc",
+       "celld"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "solid": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "Back to our little rectangle. Four rows of six, counting hundredths. Twenty-four hundredths.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Know what each digit counts"
+      },
+      {
+       "do": "answer",
+       "tex": "0.4\\times0.6=0.24"
+      },
+      {
+       "do": "highlight",
+       "target": "overlap",
+       "at": "Twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add and subtract like with like. Divide by sharing units, or finding a missing side.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "text",
+       "text": "Add/subtract matching places.",
+       "at": "Add"
+      },
+      {
+       "do": "text",
+       "text": "Divide: find the missing side.",
+       "at": "Divide"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A tenth of a tenth is a hundredth. Estimate first, so the decimal point lands where the size makes sense.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "show",
+       "target": "cell",
+       "at": "hundredth",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "target": "cell",
+       "at": "hundredth",
+       "until": "Estimate"
+      },
+      {
+       "do": "text",
+       "text": "Estimate. Calculate. Check.",
+       "at": "Estimate"
+      },
+      {
+       "do": "hide",
+       "target": "cell",
+       "at": "Estimate",
+       "dur": 0.1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

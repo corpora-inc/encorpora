@@ -1,0 +1,6721 @@
+{
+ "id": "subtract-multidigit--ss",
+ "title": "Adding and subtracting large numbers",
+ "skill": "whole-add-subtract",
+ "teaches": [
+  "add-multidigit"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -0.5,
+     16.2,
+     8.6
+    ],
+    "points": {
+     "head0P": [
+      2,
+      8
+     ],
+     "unit0P": [
+      2,
+      7.4
+     ],
+     "n0v5P": [
+      2,
+      0.6
+     ],
+     "c0k0P": [
+      1.52,
+      6.25
+     ],
+     "c0k1P": [
+      2.48,
+      6.25
+     ],
+     "c0k2P": [
+      1.52,
+      5.53
+     ],
+     "c0k3P": [
+      2.48,
+      5.53
+     ],
+     "c0k4P": [
+      1.52,
+      4.8100000000000005
+     ],
+     "head1P": [
+      6,
+      8
+     ],
+     "unit1P": [
+      6,
+      7.4
+     ],
+     "n1v7P": [
+      6,
+      0.6
+     ],
+     "c1k0P": [
+      5.52,
+      6.25
+     ],
+     "c1k1P": [
+      6.48,
+      6.25
+     ],
+     "c1k2P": [
+      5.52,
+      5.53
+     ],
+     "c1k3P": [
+      6.48,
+      5.53
+     ],
+     "c1k4P": [
+      5.52,
+      4.8100000000000005
+     ],
+     "c1k5P": [
+      6.48,
+      4.8100000000000005
+     ],
+     "c1k6P": [
+      5.52,
+      4.09
+     ],
+     "head2P": [
+      10,
+      8
+     ],
+     "unit2P": [
+      10,
+      7.4
+     ],
+     "n2v7P": [
+      10,
+      0.6
+     ],
+     "c2k0P": [
+      9.52,
+      6.25
+     ],
+     "c2k1P": [
+      10.48,
+      6.25
+     ],
+     "c2k2P": [
+      9.52,
+      5.53
+     ],
+     "c2k3P": [
+      10.48,
+      5.53
+     ],
+     "c2k4P": [
+      9.52,
+      4.8100000000000005
+     ],
+     "c2k5P": [
+      10.48,
+      4.8100000000000005
+     ],
+     "c2k6P": [
+      9.52,
+      4.09
+     ],
+     "head3P": [
+      14,
+      8
+     ],
+     "unit3P": [
+      14,
+      7.4
+     ],
+     "n3v8P": [
+      14,
+      0.6
+     ],
+     "c3k0P": [
+      13.52,
+      6.25
+     ],
+     "c3k1P": [
+      14.48,
+      6.25
+     ],
+     "c3k2P": [
+      13.52,
+      5.53
+     ],
+     "c3k3P": [
+      14.48,
+      5.53
+     ],
+     "c3k4P": [
+      13.52,
+      4.8100000000000005
+     ],
+     "c3k5P": [
+      14.48,
+      4.8100000000000005
+     ],
+     "c3k6P": [
+      13.52,
+      4.09
+     ],
+     "c3k7P": [
+      14.48,
+      4.09
+     ],
+     "vt1": [
+      4,
+      8.35
+     ],
+     "vb1": [
+      4,
+      -0.1
+     ],
+     "vt2": [
+      8,
+      8.35
+     ],
+     "vb2": [
+      8,
+      -0.1
+     ],
+     "vt3": [
+      12,
+      8.35
+     ],
+     "vb3": [
+      12,
+      -0.1
+     ],
+     "c0k5P": [
+      2.48,
+      4.8100000000000005
+     ],
+     "n0v6P": [
+      2,
+      0.6
+     ],
+     "c1k7P": [
+      6.48,
+      4.09
+     ],
+     "c1k8P": [
+      5.52,
+      3.37
+     ],
+     "c1k9P": [
+      6.48,
+      3.37
+     ],
+     "c1k10P": [
+      5.52,
+      2.6500000000000004
+     ],
+     "c1k11P": [
+      6.48,
+      2.6500000000000004
+     ],
+     "c1k12P": [
+      5.52,
+      1.9299999999999997
+     ],
+     "n1v13P": [
+      6,
+      0.6
+     ],
+     "c2k7P": [
+      10.48,
+      4.09
+     ],
+     "c2k8P": [
+      9.52,
+      3.37
+     ],
+     "n2v9P": [
+      10,
+      0.6
+     ],
+     "c3k8P": [
+      13.52,
+      3.37
+     ],
+     "c3k9P": [
+      14.48,
+      3.37
+     ],
+     "c3k10P": [
+      13.52,
+      2.6500000000000004
+     ],
+     "n3v11P": [
+      14,
+      0.6
+     ],
+     "c2k9P": [
+      10.48,
+      3.37
+     ],
+     "n3v1P": [
+      14,
+      0.6
+     ],
+     "n2v10P": [
+      10,
+      0.6
+     ],
+     "c1k13P": [
+      6.48,
+      1.9299999999999997
+     ],
+     "n2v0P": [
+      10,
+      0.6
+     ],
+     "n1v14P": [
+      6,
+      0.6
+     ],
+     "c0k6P": [
+      1.52,
+      4.09
+     ],
+     "n1v4P": [
+      6,
+      0.6
+     ],
+     "n0v7P": [
+      2,
+      0.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "head0",
+      "label": "\\text{thousands}",
+      "at": "head0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1{,}000",
+      "at": "unit0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "n0v5",
+      "label": "5",
+      "at": "n0v5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "c0k0",
+      "circle": "c0k0P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k1",
+      "circle": "c0k1P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k2",
+      "circle": "c0k2P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k3",
+      "circle": "c0k3P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k4",
+      "circle": "c0k4P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "head1",
+      "label": "\\text{hundreds}",
+      "at": "head1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "100",
+      "at": "unit1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "n1v7",
+      "label": "7",
+      "at": "n1v7P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "c1k0",
+      "circle": "c1k0P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c1k1",
+      "circle": "c1k1P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c1k2",
+      "circle": "c1k2P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c1k3",
+      "circle": "c1k3P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c1k4",
+      "circle": "c1k4P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c1k5",
+      "circle": "c1k5P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c1k6",
+      "circle": "c1k6P",
+      "r": 0.23,
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "head2",
+      "label": "\\text{tens}",
+      "at": "head2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "label": "10",
+      "at": "unit2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "n2v7",
+      "label": "7",
+      "at": "n2v7P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "c2k0",
+      "circle": "c2k0P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2k1",
+      "circle": "c2k1P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2k2",
+      "circle": "c2k2P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2k3",
+      "circle": "c2k3P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2k4",
+      "circle": "c2k4P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2k5",
+      "circle": "c2k5P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2k6",
+      "circle": "c2k6P",
+      "r": 0.23,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "head3",
+      "label": "\\text{ones}",
+      "at": "head3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit3",
+      "label": "1",
+      "at": "unit3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "n3v8",
+      "label": "8",
+      "at": "n3v8P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "c3k0",
+      "circle": "c3k0P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k1",
+      "circle": "c3k1P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k2",
+      "circle": "c3k2P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k3",
+      "circle": "c3k3P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k4",
+      "circle": "c3k4P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k5",
+      "circle": "c3k5P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k6",
+      "circle": "c3k6P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k7",
+      "circle": "c3k7P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "vt1",
+       "vb1"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "vt2",
+       "vb2"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "vt3",
+       "vb3"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "c0k5",
+      "circle": "c0k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n0v6",
+      "label": "6",
+      "at": "n0v6P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "c1k7",
+      "circle": "c1k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k8",
+      "circle": "c1k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k9",
+      "circle": "c1k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k10",
+      "circle": "c1k10P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k11",
+      "circle": "c1k11P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k12",
+      "circle": "c1k12P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n1v13",
+      "label": "13",
+      "at": "n1v13P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     },
+     {
+      "id": "c2k7",
+      "circle": "c2k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k8",
+      "circle": "c2k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n2v9",
+      "label": "9",
+      "at": "n2v9P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "c3k8",
+      "circle": "c3k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k9",
+      "circle": "c3k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k10",
+      "circle": "c3k10P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n3v11",
+      "label": "11",
+      "at": "n3v11P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "c2k9",
+      "circle": "c2k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n3v1",
+      "label": "1",
+      "at": "n3v1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "n2v10",
+      "label": "10",
+      "at": "n2v10P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "c1k13",
+      "circle": "c1k13P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n2v0",
+      "label": "0",
+      "at": "n2v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "n1v14",
+      "label": "14",
+      "at": "n1v14P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     },
+     {
+      "id": "c0k6",
+      "circle": "c0k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n1v4",
+      "label": "4",
+      "at": "n1v4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     },
+     {
+      "id": "n0v7",
+      "label": "7",
+      "at": "n0v7P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let's add these two numbers, starting at the ones.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Ten here becomes one next door"
+      },
+      {
+       "do": "stack",
+       "id": "add",
+       "rows": [
+        "5778",
+        "1623"
+       ],
+       "op": "+",
+       "headers": false
+      },
+      {
+       "do": "highlight",
+       "target": "n3v8",
+       "at": "ones"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each counter is worth the number above its column: a thousand, a hundred, ten, or one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "unit0",
+       "at": "thousand",
+       "until": "hundred"
+      },
+      {
+       "do": "highlight",
+       "target": "unit1",
+       "at": "hundred",
+       "until": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "unit2",
+       "at": "ten",
+       "until": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "unit3",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put both numbers together, matching their places. Start at the ones; each trade can change the column to its left.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "show",
+       "target": "c0k5",
+       "at": "together"
+      },
+      {
+       "do": "hide",
+       "target": "n0v5",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "n0v6",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c1k7",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c1k8",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c1k9",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c1k10",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c1k11",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c1k12",
+       "at": "together"
+      },
+      {
+       "do": "hide",
+       "target": "n1v7",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "n1v13",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c2k7",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c2k8",
+       "at": "together"
+      },
+      {
+       "do": "hide",
+       "target": "n2v7",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "n2v9",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c3k8",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c3k9",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "c3k10",
+       "at": "together"
+      },
+      {
+       "do": "hide",
+       "target": "n3v8",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "n3v11",
+       "at": "together"
+      },
+      {
+       "do": "highlight",
+       "target": "n3v11",
+       "at": "ones",
+       "until": "trade"
+      },
+      {
+       "do": "highlight",
+       "target": "head2",
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight plus three is eleven ones. Trade ten ones for one ten. One one stays.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c3k0",
+        "c3k1",
+        "c3k2",
+        "c3k3",
+        "c3k4",
+        "c3k5",
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9"
+       ],
+       "at": "Trade",
+       "until": "for"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c3k0P": [
+         10.48,
+         3.37
+        ],
+        "c3k1P": [
+         10.48,
+         3.37
+        ],
+        "c3k2P": [
+         10.48,
+         3.37
+        ],
+        "c3k3P": [
+         10.48,
+         3.37
+        ],
+        "c3k4P": [
+         10.48,
+         3.37
+        ],
+        "c3k5P": [
+         10.48,
+         3.37
+        ],
+        "c3k6P": [
+         10.48,
+         3.37
+        ],
+        "c3k7P": [
+         10.48,
+         3.37
+        ],
+        "c3k8P": [
+         10.48,
+         3.37
+        ],
+        "c3k9P": [
+         10.48,
+         3.37
+        ]
+       },
+       "at": "for",
+       "dur": 0.55
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c3k0",
+        "c3k1",
+        "c3k2",
+        "c3k3",
+        "c3k4",
+        "c3k5",
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9"
+       ],
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "c2k9",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "hide",
+       "target": "n3v11",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "n3v1",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "hide",
+       "target": "n2v9",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "n2v10",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "column",
+       "of": "add",
+       "at": "Eight",
+       "write": "stays"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c3k10P": [
+         13.52,
+         6.25
+        ]
+       },
+       "at": "stays"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven tens, plus two tens, plus our carried ten: ten tens. Trade them for one hundred. Zero tens stay.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c2k0",
+        "c2k1",
+        "c2k2",
+        "c2k3",
+        "c2k4",
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "Trade",
+       "until": "them"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c2k0P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k1P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k2P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k3P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k4P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k5P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k6P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k7P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k8P": [
+         6.48,
+         1.9299999999999997
+        ],
+        "c2k9P": [
+         6.48,
+         1.9299999999999997
+        ]
+       },
+       "at": "them",
+       "dur": 0.55
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c2k0",
+        "c2k1",
+        "c2k2",
+        "c2k3",
+        "c2k4",
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "Zero"
+      },
+      {
+       "do": "show",
+       "target": "c1k13",
+       "at": "Zero"
+      },
+      {
+       "do": "hide",
+       "target": "n2v10",
+       "at": "Zero"
+      },
+      {
+       "do": "show",
+       "target": "n2v0",
+       "at": "Zero"
+      },
+      {
+       "do": "hide",
+       "target": "n1v13",
+       "at": "Zero"
+      },
+      {
+       "do": "show",
+       "target": "n1v14",
+       "at": "Zero"
+      },
+      {
+       "do": "column",
+       "of": "add",
+       "at": "Seven",
+       "write": "Zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven hundreds, plus six, plus the carried one: fourteen hundreds. Trade ten for one thousand. Four hundreds stay.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1k0",
+        "c1k1",
+        "c1k2",
+        "c1k3",
+        "c1k4",
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8",
+        "c1k9"
+       ],
+       "at": "Trade",
+       "until": "for"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c1k0P": [
+         1.52,
+         4.09
+        ],
+        "c1k1P": [
+         1.52,
+         4.09
+        ],
+        "c1k2P": [
+         1.52,
+         4.09
+        ],
+        "c1k3P": [
+         1.52,
+         4.09
+        ],
+        "c1k4P": [
+         1.52,
+         4.09
+        ],
+        "c1k5P": [
+         1.52,
+         4.09
+        ],
+        "c1k6P": [
+         1.52,
+         4.09
+        ],
+        "c1k7P": [
+         1.52,
+         4.09
+        ],
+        "c1k8P": [
+         1.52,
+         4.09
+        ],
+        "c1k9P": [
+         1.52,
+         4.09
+        ]
+       },
+       "at": "for",
+       "dur": 0.55
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c1k0",
+        "c1k1",
+        "c1k2",
+        "c1k3",
+        "c1k4",
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8",
+        "c1k9"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "c0k6",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "n1v14",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "n1v4",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "n0v6",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "n0v7",
+       "at": "Four"
+      },
+      {
+       "do": "column",
+       "of": "add",
+       "at": "Seven",
+       "write": "Four"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c1k10P": [
+         5.52,
+         6.25
+        ],
+        "c1k11P": [
+         6.48,
+         6.25
+        ],
+        "c1k12P": [
+         5.52,
+         5.53
+        ],
+        "c1k13P": [
+         6.48,
+         5.53
+        ]
+       },
+       "at": "stay"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five thousands, plus one, plus the carried one: seven thousands.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "column",
+       "of": "add",
+       "at": "Five",
+       "write": "seven"
+      },
+      {
+       "do": "highlight",
+       "target": "n0v7",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven thousand, four hundred one. The same trade happened three times!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "7{,}401"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We call that regrouping: changing the groups without changing the amount.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Regroup",
+       "meaning": "Trade equal amounts between places."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -1,
+     16.2,
+     8.6
+    ],
+    "points": {
+     "head0P": [
+      2,
+      8
+     ],
+     "unit0P": [
+      2,
+      7.4
+     ],
+     "n0v5P": [
+      2,
+      -0.4
+     ],
+     "c0k0P": [
+      1.52,
+      6.25
+     ],
+     "c0k1P": [
+      2.48,
+      6.25
+     ],
+     "c0k2P": [
+      1.52,
+      5.6000000000000005
+     ],
+     "c0k3P": [
+      2.48,
+      5.6000000000000005
+     ],
+     "c0k4P": [
+      1.52,
+      4.95
+     ],
+     "head1P": [
+      6,
+      8
+     ],
+     "unit1P": [
+      6,
+      7.4
+     ],
+     "n1v0P": [
+      6,
+      -0.4
+     ],
+     "head2P": [
+      10,
+      8
+     ],
+     "unit2P": [
+      10,
+      7.4
+     ],
+     "n2v0P": [
+      10,
+      -0.4
+     ],
+     "head3P": [
+      14,
+      8
+     ],
+     "unit3P": [
+      14,
+      7.4
+     ],
+     "n3v3P": [
+      14,
+      -0.4
+     ],
+     "c3k0P": [
+      13.52,
+      6.25
+     ],
+     "c3k1P": [
+      14.48,
+      6.25
+     ],
+     "c3k2P": [
+      13.52,
+      5.6000000000000005
+     ],
+     "vt1": [
+      4,
+      8.35
+     ],
+     "vb1": [
+      4,
+      -0.1
+     ],
+     "vt2": [
+      8,
+      8.35
+     ],
+     "vb2": [
+      8,
+      -0.1
+     ],
+     "vt3": [
+      12,
+      8.35
+     ],
+     "vb3": [
+      12,
+      -0.1
+     ],
+     "c1k0P": [
+      1.52,
+      4.95
+     ],
+     "c1k1P": [
+      1.52,
+      4.95
+     ],
+     "c1k2P": [
+      1.52,
+      4.95
+     ],
+     "c1k3P": [
+      1.52,
+      4.95
+     ],
+     "c1k4P": [
+      1.52,
+      4.95
+     ],
+     "c1k5P": [
+      1.52,
+      4.95
+     ],
+     "c1k6P": [
+      1.52,
+      4.95
+     ],
+     "c1k7P": [
+      1.52,
+      4.95
+     ],
+     "c1k8P": [
+      1.52,
+      4.95
+     ],
+     "c1k9P": [
+      1.52,
+      4.95
+     ],
+     "n0v4P": [
+      2,
+      1.1
+     ],
+     "sl0": [
+      1.65,
+      -0.7
+     ],
+     "sr0": [
+      2.35,
+      -0.1
+     ],
+     "n1v10P": [
+      6,
+      1.28
+     ],
+     "sl1": [
+      5.65,
+      -0.7
+     ],
+     "sr1": [
+      6.35,
+      -0.1
+     ],
+     "c2k0P": [
+      6.48,
+      3.65
+     ],
+     "c2k1P": [
+      6.48,
+      3.65
+     ],
+     "c2k2P": [
+      6.48,
+      3.65
+     ],
+     "c2k3P": [
+      6.48,
+      3.65
+     ],
+     "c2k4P": [
+      6.48,
+      3.65
+     ],
+     "c2k5P": [
+      6.48,
+      3.65
+     ],
+     "c2k6P": [
+      6.48,
+      3.65
+     ],
+     "c2k7P": [
+      6.48,
+      3.65
+     ],
+     "c2k8P": [
+      6.48,
+      3.65
+     ],
+     "c2k9P": [
+      6.48,
+      3.65
+     ],
+     "n1v9P": [
+      6,
+      1.1
+     ],
+     "n2v10P": [
+      10,
+      1.28
+     ],
+     "sl2": [
+      9.65,
+      -0.7
+     ],
+     "sr2": [
+      10.35,
+      -0.1
+     ],
+     "c3k3P": [
+      10.48,
+      3.65
+     ],
+     "c3k4P": [
+      10.48,
+      3.65
+     ],
+     "c3k5P": [
+      10.48,
+      3.65
+     ],
+     "c3k6P": [
+      10.48,
+      3.65
+     ],
+     "c3k7P": [
+      10.48,
+      3.65
+     ],
+     "c3k8P": [
+      10.48,
+      3.65
+     ],
+     "c3k9P": [
+      10.48,
+      3.65
+     ],
+     "c3k10P": [
+      10.48,
+      3.65
+     ],
+     "c3k11P": [
+      10.48,
+      3.65
+     ],
+     "c3k12P": [
+      10.48,
+      3.65
+     ],
+     "n2v9P": [
+      10,
+      1.1
+     ],
+     "n3v13P": [
+      14,
+      1.1
+     ],
+     "sl3": [
+      13.65,
+      -0.7
+     ],
+     "sr3": [
+      14.35,
+      -0.1
+     ],
+     "answerCount3P": [
+      14,
+      -0.4
+     ],
+     "answerCount2P": [
+      10,
+      -0.4
+     ],
+     "answerCount1P": [
+      6,
+      -0.4
+     ],
+     "answerCount0P": [
+      2,
+      -0.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "head0",
+      "label": "\\text{thousands}",
+      "at": "head0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1{,}000",
+      "at": "unit0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "n0v5",
+      "label": "5",
+      "at": "n0v5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "c0k0",
+      "circle": "c0k0P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k1",
+      "circle": "c0k1P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k2",
+      "circle": "c0k2P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k3",
+      "circle": "c0k3P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k4",
+      "circle": "c0k4P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "head1",
+      "label": "\\text{hundreds}",
+      "at": "head1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "100",
+      "at": "unit1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "n1v0",
+      "label": "0",
+      "at": "n1v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "head2",
+      "label": "\\text{tens}",
+      "at": "head2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "label": "10",
+      "at": "unit2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "n2v0",
+      "label": "0",
+      "at": "n2v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "head3",
+      "label": "\\text{ones}",
+      "at": "head3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit3",
+      "label": "1",
+      "at": "unit3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "n3v3",
+      "label": "3",
+      "at": "n3v3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "c3k0",
+      "circle": "c3k0P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k1",
+      "circle": "c3k1P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k2",
+      "circle": "c3k2P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "vt1",
+       "vb1"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "vt2",
+       "vb2"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "vt3",
+       "vb3"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "c1k0",
+      "circle": "c1k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k1",
+      "circle": "c1k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k2",
+      "circle": "c1k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k3",
+      "circle": "c1k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k4",
+      "circle": "c1k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k5",
+      "circle": "c1k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k6",
+      "circle": "c1k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k7",
+      "circle": "c1k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k8",
+      "circle": "c1k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k9",
+      "circle": "c1k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n0v4",
+      "label": "4",
+      "at": "n0v4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "slash0",
+      "seg": [
+       "sl0",
+       "sr0"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "n1v10",
+      "label": "10",
+      "at": "n1v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "slash1",
+      "seg": [
+       "sl1",
+       "sr1"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "c2k0",
+      "circle": "c2k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k1",
+      "circle": "c2k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k2",
+      "circle": "c2k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k3",
+      "circle": "c2k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k4",
+      "circle": "c2k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k5",
+      "circle": "c2k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k6",
+      "circle": "c2k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k7",
+      "circle": "c2k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k8",
+      "circle": "c2k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k9",
+      "circle": "c2k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n1v9",
+      "label": "9",
+      "at": "n1v9P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "n2v10",
+      "label": "10",
+      "at": "n2v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "slash2",
+      "seg": [
+       "sl2",
+       "sr2"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "c3k3",
+      "circle": "c3k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k4",
+      "circle": "c3k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k5",
+      "circle": "c3k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k6",
+      "circle": "c3k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k7",
+      "circle": "c3k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k8",
+      "circle": "c3k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k9",
+      "circle": "c3k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k10",
+      "circle": "c3k10P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k11",
+      "circle": "c3k11P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k12",
+      "circle": "c3k12P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n2v9",
+      "label": "9",
+      "at": "n2v9P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "n3v13",
+      "label": "13",
+      "at": "n3v13P",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "slash3",
+      "seg": [
+       "sl3",
+       "sr3"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "answerCount3",
+      "label": "6",
+      "at": "answerCount3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "answerCount2",
+      "label": "5",
+      "at": "answerCount2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "answerCount1",
+      "label": "6",
+      "at": "answerCount1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     },
+     {
+      "id": "answerCount0",
+      "label": "3",
+      "at": "answerCount0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let's subtract. This time, we trade in the other direction.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Open one into ten"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{array}{r}5{,}003\\\\-1{,}347\\\\\\hline\\end{array}",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "head3",
+       "at": "direction"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three ones. Can I take seven minus three instead?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n3v3",
+       "at": "Three",
+       "until": "Can"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keep the order. Trade for more ones.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "n0v5",
+        "n1v0",
+        "n2v0",
+        "n3v3"
+       ],
+       "at": "Keep",
+       "until": "Trade"
+      },
+      {
+       "do": "highlight",
+       "target": "n3v3",
+       "at": "Trade"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The tens and hundreds are empty. Go left to a place that has something to trade.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n2v0",
+       "at": "tens",
+       "until": "hundreds"
+      },
+      {
+       "do": "highlight",
+       "target": "n1v0",
+       "at": "hundreds",
+       "until": "left"
+      },
+      {
+       "do": "highlight",
+       "target": "c0k4",
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Open one thousand into ten hundreds. Four thousands stay.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c0k4",
+       "at": "one",
+       "until": "hundreds"
+      },
+      {
+       "do": "hide",
+       "target": "c0k4",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c1k0",
+        "c1k1",
+        "c1k2",
+        "c1k3",
+        "c1k4",
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8",
+        "c1k9"
+       ],
+       "at": "hundreds"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c1k0P": [
+         5.52,
+         6.25
+        ],
+        "c1k1P": [
+         6.48,
+         6.25
+        ],
+        "c1k2P": [
+         5.52,
+         5.6000000000000005
+        ],
+        "c1k3P": [
+         6.48,
+         5.6000000000000005
+        ],
+        "c1k4P": [
+         5.52,
+         4.95
+        ],
+        "c1k5P": [
+         6.48,
+         4.95
+        ],
+        "c1k6P": [
+         5.52,
+         4.3
+        ],
+        "c1k7P": [
+         6.48,
+         4.3
+        ],
+        "c1k8P": [
+         5.52,
+         3.65
+        ],
+        "c1k9P": [
+         6.48,
+         3.65
+        ]
+       },
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "slash0",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "n0v4",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "slash1",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "n1v10",
+       "at": "hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keep nine hundreds. Open the tenth hundred into ten tens.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c1k9",
+       "at": "tenth",
+       "until": "tens"
+      },
+      {
+       "do": "hide",
+       "target": "c1k9",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c2k0",
+        "c2k1",
+        "c2k2",
+        "c2k3",
+        "c2k4",
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "tens"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c2k0P": [
+         9.52,
+         6.25
+        ],
+        "c2k1P": [
+         10.48,
+         6.25
+        ],
+        "c2k2P": [
+         9.52,
+         5.6000000000000005
+        ],
+        "c2k3P": [
+         10.48,
+         5.6000000000000005
+        ],
+        "c2k4P": [
+         9.52,
+         4.95
+        ],
+        "c2k5P": [
+         10.48,
+         4.95
+        ],
+        "c2k6P": [
+         9.52,
+         4.3
+        ],
+        "c2k7P": [
+         10.48,
+         4.3
+        ],
+        "c2k8P": [
+         9.52,
+         3.65
+        ],
+        "c2k9P": [
+         10.48,
+         3.65
+        ]
+       },
+       "at": "tens"
+      },
+      {
+       "do": "hide",
+       "target": "n1v10",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "n1v9",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "slash2",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "n2v10",
+       "at": "tens"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keep nine tens. Open the tenth ten into ten ones. Together with our three, that makes thirteen ones.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c2k9",
+       "at": "tenth",
+       "until": "ones"
+      },
+      {
+       "do": "hide",
+       "target": "c2k9",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c3k3",
+        "c3k4",
+        "c3k5",
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9",
+        "c3k10",
+        "c3k11",
+        "c3k12"
+       ],
+       "at": "ones"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c3k3P": [
+         14.48,
+         5.6000000000000005
+        ],
+        "c3k4P": [
+         13.52,
+         4.95
+        ],
+        "c3k5P": [
+         14.48,
+         4.95
+        ],
+        "c3k6P": [
+         13.52,
+         4.3
+        ],
+        "c3k7P": [
+         14.48,
+         4.3
+        ],
+        "c3k8P": [
+         13.52,
+         3.65
+        ],
+        "c3k9P": [
+         14.48,
+         3.65
+        ],
+        "c3k10P": [
+         13.52,
+         3
+        ],
+        "c3k11P": [
+         14.48,
+         3
+        ],
+        "c3k12P": [
+         13.52,
+         2.3499999999999996
+        ]
+       },
+       "at": "ones"
+      },
+      {
+       "do": "hide",
+       "target": "n2v10",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "n2v9",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "slash3",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "n3v13",
+       "at": "ones"
+      },
+      {
+       "do": "highlight",
+       "target": "n3v13",
+       "at": "thirteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Each middle column received ten, then gave one onward. That is why nine stayed!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "n1v9",
+        "n2v9"
+       ],
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the value: four thousand, nine hundred, ninety, and thirteen. Still five thousand three.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{aligned}4{,}000+900+90+13\\\\=5{,}003\\end{aligned}",
+       "fresh": true,
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "n0v4",
+       "at": "four",
+       "until": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": "n1v9",
+       "at": "nine",
+       "until": "ninety"
+      },
+      {
+       "do": "highlight",
+       "target": "n2v9",
+       "at": "ninety",
+       "until": "thirteen"
+      },
+      {
+       "do": "highlight",
+       "target": "n3v13",
+       "at": "thirteen",
+       "until": "Still"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Only the groups changed. Now take away seven ones from thirteen. Six remain.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "stack",
+       "id": "sub",
+       "rows": [
+        "5003",
+        "1347"
+       ],
+       "op": "-"
+      },
+      {
+       "do": "column",
+       "of": "sub",
+       "at": "Now",
+       "write": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9",
+        "c3k10",
+        "c3k11",
+        "c3k12"
+       ],
+       "at": "seven",
+       "until": "Six"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9",
+        "c3k10",
+        "c3k11",
+        "c3k12"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n3v13",
+        "n3v3",
+        "slash3"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": "answerCount3",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine tens minus four tens leaves five tens.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8"
+       ],
+       "at": "four",
+       "until": "five"
+      },
+      {
+       "do": "column",
+       "of": "sub",
+       "at": "Nine",
+       "write": "five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n2v9",
+        "n2v0",
+        "slash2"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "answerCount2",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine hundreds minus three hundreds leaves six hundreds.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1k6",
+        "c1k7",
+        "c1k8"
+       ],
+       "at": "three",
+       "until": "six"
+      },
+      {
+       "do": "column",
+       "of": "sub",
+       "at": "Nine",
+       "write": "six"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c1k6",
+        "c1k7",
+        "c1k8"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n1v9",
+        "n1v0",
+        "slash1"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "answerCount1",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four thousands minus one thousand leaves three thousands.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c0k3",
+       "at": "one",
+       "until": "three"
+      },
+      {
+       "do": "column",
+       "of": "sub",
+       "at": "Four",
+       "write": "three"
+      },
+      {
+       "do": "hide",
+       "target": "c0k3",
+       "at": "three"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n0v4",
+        "n0v5",
+        "slash0"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "answerCount0",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three thousand, six hundred fifty-six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "3{,}656"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Add back what we took away to check our subtraction.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Add back to check"
+      },
+      {
+       "do": "stack",
+       "id": "check",
+       "rows": [
+        "3656",
+        "1347"
+       ],
+       "op": "+",
+       "headers": false
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six plus seven is thirteen. Write three; carry one ten.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "check",
+       "at": "Six",
+       "write": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five plus four plus one is ten. Zero tens; carry one hundred.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "check",
+       "at": "Five",
+       "write": "Zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six plus three plus one is ten. Zero hundreds; carry one thousand.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "check",
+       "at": "Six",
+       "write": "Zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three plus one plus one is five. Five thousand three, exactly where we started.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "column",
+       "of": "check",
+       "at": "Three",
+       "write": "five"
+      },
+      {
+       "do": "clear",
+       "at": "exactly"
+      },
+      {
+       "do": "answer",
+       "tex": "5{,}003",
+       "at": "exactly"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Six places. Watch the same trades ripple through a larger addition.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The same step in six places"
+      },
+      {
+       "do": "write",
+       "tex": "248{,}516+173{,}929",
+       "fresh": true,
+       "at": "Watch"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ones: six plus nine is fifteen. Write five, carry one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "6+9=15",
+       "fresh": true,
+       "at": "Ones"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top5",
+        "bottom5"
+       ],
+       "at": "Ones",
+       "until": "five"
+      },
+      {
+       "do": "show",
+       "target": "result5",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "carry4",
+       "at": "carry"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tens: one plus two plus one is four.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "1+2+1=4",
+       "fresh": true,
+       "at": "Tens"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top4",
+        "bottom4",
+        "carry4"
+       ],
+       "at": "Tens",
+       "until": "four"
+      },
+      {
+       "do": "show",
+       "target": "result4",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Hundreds: five plus nine is fourteen. Write four, carry one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "5+9=14",
+       "fresh": true,
+       "at": "Hundreds"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top3",
+        "bottom3"
+       ],
+       "at": "Hundreds",
+       "until": "four"
+      },
+      {
+       "do": "show",
+       "target": "result3",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "carry2",
+       "at": "carry"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Thousands: eight plus three plus one is twelve. Write two, carry one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "8+3+1=12",
+       "fresh": true,
+       "at": "Thousands"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top2",
+        "bottom2",
+        "carry2"
+       ],
+       "at": "Thousands",
+       "until": "two"
+      },
+      {
+       "do": "show",
+       "target": "result2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "carry1",
+       "at": "carry"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten thousands: four plus seven plus one is twelve. Write two, carry one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4+7+1=12",
+       "fresh": true,
+       "at": "Ten"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top1",
+        "bottom1",
+        "carry1"
+       ],
+       "at": "Ten",
+       "until": "two"
+      },
+      {
+       "do": "show",
+       "target": "result1",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "carry0",
+       "at": "carry"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Hundred thousands: two plus one plus one is four.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "2+1+1=4",
+       "fresh": true,
+       "at": "Hundred"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top0",
+        "bottom0",
+        "carry0"
+       ],
+       "at": "Hundred",
+       "until": "four"
+      },
+      {
+       "do": "show",
+       "target": "result0",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four hundred twenty-two thousand, four hundred forty-five.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "422{,}445"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A carry beyond the left edge starts a new place.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "9{,}000+1{,}000=10{,}000",
+       "fresh": true,
+       "at": "carry"
+      }
+     ]
+    }
+   ],
+   "figure": {
+    "view": [
+     -0.4,
+     -0.1,
+     12.500000000000002,
+     7
+    ],
+    "points": {
+     "top0P": [
+      2,
+      4.5
+     ],
+     "bottom0P": [
+      2,
+      3
+     ],
+     "result0P": [
+      2,
+      0.9
+     ],
+     "carry0P": [
+      2,
+      5.85
+     ],
+     "top1P": [
+      3.85,
+      4.5
+     ],
+     "bottom1P": [
+      3.85,
+      3
+     ],
+     "result1P": [
+      3.85,
+      0.9
+     ],
+     "carry1P": [
+      3.85,
+      5.85
+     ],
+     "top2P": [
+      5.7,
+      4.5
+     ],
+     "bottom2P": [
+      5.7,
+      3
+     ],
+     "result2P": [
+      5.7,
+      0.9
+     ],
+     "carry2P": [
+      5.7,
+      5.85
+     ],
+     "top3P": [
+      7.550000000000001,
+      4.5
+     ],
+     "bottom3P": [
+      7.550000000000001,
+      3
+     ],
+     "result3P": [
+      7.550000000000001,
+      0.9
+     ],
+     "top4P": [
+      9.4,
+      4.5
+     ],
+     "bottom4P": [
+      9.4,
+      3
+     ],
+     "result4P": [
+      9.4,
+      0.9
+     ],
+     "carry4P": [
+      9.4,
+      5.85
+     ],
+     "top5P": [
+      11.25,
+      4.5
+     ],
+     "bottom5P": [
+      11.25,
+      3
+     ],
+     "result5P": [
+      11.25,
+      0.9
+     ],
+     "plusP": [
+      0.35,
+      3
+     ],
+     "ruleL": [
+      -0.05,
+      1.8
+     ],
+     "ruleR": [
+      11.9,
+      1.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "top0",
+      "label": "2",
+      "at": "top0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom0",
+      "label": "1",
+      "at": "bottom0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result0",
+      "label": "4",
+      "at": "result0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "carry0",
+      "label": "1",
+      "at": "carry0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "top1",
+      "label": "4",
+      "at": "top1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom1",
+      "label": "7",
+      "at": "bottom1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result1",
+      "label": "2",
+      "at": "result1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "carry1",
+      "label": "1",
+      "at": "carry1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "top2",
+      "label": "8",
+      "at": "top2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom2",
+      "label": "3",
+      "at": "bottom2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result2",
+      "label": "2",
+      "at": "result2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "carry2",
+      "label": "1",
+      "at": "carry2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "top3",
+      "label": "5",
+      "at": "top3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom3",
+      "label": "9",
+      "at": "bottom3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result3",
+      "label": "4",
+      "at": "result3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "top4",
+      "label": "1",
+      "at": "top4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom4",
+      "label": "2",
+      "at": "bottom4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result4",
+      "label": "4",
+      "at": "result4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "carry4",
+      "label": "1",
+      "at": "carry4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "top5",
+      "label": "6",
+      "at": "top5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom5",
+      "label": "9",
+      "at": "bottom5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result5",
+      "label": "5",
+      "at": "result5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "plus",
+      "label": "+",
+      "at": "plusP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "rule",
+      "seg": [
+       "ruleL",
+       "ruleR"
+      ],
+      "w": 2,
+      "ink": "ink",
+      "start": true
+     }
+    ]
+   }
+  },
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     -0.8,
+     10.8,
+     6.3
+    ],
+    "points": {
+     "h0P": [
+      1,
+      5.6
+     ],
+     "h1P": [
+      3,
+      5.6
+     ],
+     "h2P": [
+      5,
+      5.6
+     ],
+     "h3P": [
+      7,
+      5.6
+     ],
+     "h4P": [
+      9,
+      5.6
+     ],
+     "a0P": [
+      1,
+      4
+     ],
+     "a1P": [
+      3,
+      4
+     ],
+     "a2P": [
+      5,
+      4
+     ],
+     "a3P": [
+      7,
+      4
+     ],
+     "a4P": [
+      9,
+      4
+     ],
+     "b0P": [
+      1,
+      2
+     ],
+     "b1P": [
+      3,
+      2
+     ],
+     "b2P": [
+      5,
+      2
+     ],
+     "xa": [
+      0.3,
+      1.3
+     ],
+     "xb": [
+      5.7,
+      2.7
+     ],
+     "xc": [
+      0.3,
+      2.7
+     ],
+     "xd": [
+      5.7,
+      1.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10{,}000",
+      "at": "h0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1{,}000",
+      "at": "h1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "100",
+      "at": "h2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "10",
+      "at": "h3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "1",
+      "at": "h4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "a0",
+      "label": "3",
+      "at": "a0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "a1",
+      "label": "0",
+      "at": "a1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "a2",
+      "label": "4",
+      "at": "a2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "a3",
+      "label": "1",
+      "at": "a3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "a4",
+      "label": "5",
+      "at": "a4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "b0",
+      "label": "8",
+      "at": "b0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "b1",
+      "label": "6",
+      "at": "b1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "b2",
+      "label": "2",
+      "at": "b2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "crossA",
+      "seg": [
+       "xa",
+       "xb"
+      ],
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "crossB",
+      "seg": [
+       "xc",
+       "xd"
+      ],
+      "ink": "warm",
+      "w": 3
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Add a shorter number: eight hundred sixty-two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Match places from the ones"
+      },
+      {
+       "do": "problem",
+       "text": "$30{,}415+862$"
+      },
+      {
+       "do": "highlight",
+       "target": "b0",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "If I line up the left edges, my eight lands under ten thousands. But it means eight hundreds!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "b0",
+       "at": "eight",
+       "until": "But"
+      },
+      {
+       "do": "show",
+       "target": [
+        "crossA",
+        "crossB"
+       ],
+       "at": "But"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide the whole number right. Two ones under five ones; six tens under one ten; eight hundreds under four hundreds.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "crossA",
+        "crossB"
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "move",
+       "points": {
+        "b0P": [
+         5,
+         2
+        ],
+        "b1P": [
+         7,
+         2
+        ],
+        "b2P": [
+         9,
+         2
+        ]
+       },
+       "at": "Slide",
+       "dur": 0.6
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "a4",
+        "b2"
+       ],
+       "at": "Two",
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "a3",
+        "b1"
+       ],
+       "at": "six",
+       "until": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "a2",
+        "b0"
+       ],
+       "at": "eight"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now add. Five plus two is seven.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Add matching places"
+      },
+      {
+       "do": "write",
+       "tex": "5+2=7",
+       "fresh": true,
+       "at": "Five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top4",
+        "bottom4"
+       ],
+       "at": "Five",
+       "until": "seven"
+      },
+      {
+       "do": "show",
+       "target": "result4",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One plus six is seven.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "1+6=7",
+       "fresh": true,
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top3",
+        "bottom3"
+       ],
+       "at": "One",
+       "until": "seven"
+      },
+      {
+       "do": "show",
+       "target": "result3",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four plus eight is twelve hundreds. Write two and carry one thousand.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4+8=12",
+       "fresh": true,
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top2",
+        "bottom2"
+       ],
+       "at": "Four",
+       "until": "two"
+      },
+      {
+       "do": "show",
+       "target": "result2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "carry1",
+       "at": "carry"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero plus the carried one is one thousand.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0+1=1",
+       "fresh": true,
+       "at": "Zero"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top1",
+        "carry1"
+       ],
+       "at": "Zero",
+       "until": "one",
+       "untilNth": 2
+      },
+      {
+       "do": "show",
+       "target": "result1",
+       "at": "one",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three ten thousands stay.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "3+0=3",
+       "fresh": true,
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "top0"
+       ],
+       "at": "Three",
+       "until": "stay"
+      },
+      {
+       "do": "show",
+       "target": "result0",
+       "at": "stay"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Thirty-one thousand, two hundred seventy-seven. Match the places, whatever the lengths.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "31{,}277"
+      }
+     ]
+    }
+   ],
+   "figure": {
+    "view": [
+     -0.4,
+     -0.1,
+     10.65,
+     7
+    ],
+    "points": {
+     "top0P": [
+      2,
+      4.5
+     ],
+     "result0P": [
+      2,
+      0.9
+     ],
+     "top1P": [
+      3.85,
+      4.5
+     ],
+     "result1P": [
+      3.85,
+      0.9
+     ],
+     "carry1P": [
+      3.85,
+      5.85
+     ],
+     "top2P": [
+      5.7,
+      4.5
+     ],
+     "bottom2P": [
+      5.7,
+      3
+     ],
+     "result2P": [
+      5.7,
+      0.9
+     ],
+     "top3P": [
+      7.550000000000001,
+      4.5
+     ],
+     "bottom3P": [
+      7.550000000000001,
+      3
+     ],
+     "result3P": [
+      7.550000000000001,
+      0.9
+     ],
+     "top4P": [
+      9.4,
+      4.5
+     ],
+     "bottom4P": [
+      9.4,
+      3
+     ],
+     "result4P": [
+      9.4,
+      0.9
+     ],
+     "plusP": [
+      0.35,
+      3
+     ],
+     "ruleL": [
+      -0.05,
+      1.8
+     ],
+     "ruleR": [
+      10.05,
+      1.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "top0",
+      "label": "3",
+      "at": "top0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result0",
+      "label": "3",
+      "at": "result0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "top1",
+      "label": "0",
+      "at": "top1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result1",
+      "label": "1",
+      "at": "result1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "carry1",
+      "label": "1",
+      "at": "carry1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "top2",
+      "label": "4",
+      "at": "top2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom2",
+      "label": "8",
+      "at": "bottom2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result2",
+      "label": "2",
+      "at": "result2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "top3",
+      "label": "1",
+      "at": "top3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom3",
+      "label": "6",
+      "at": "bottom3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result3",
+      "label": "7",
+      "at": "result3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "top4",
+      "label": "5",
+      "at": "top4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "bottom4",
+      "label": "2",
+      "at": "bottom4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "result4",
+      "label": "7",
+      "at": "result4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "plus",
+      "label": "+",
+      "at": "plusP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "rule",
+      "seg": [
+       "ruleL",
+       "ruleR"
+      ],
+      "w": 2,
+      "ink": "ink",
+      "start": true
+     }
+    ]
+   }
+  },
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -1,
+     16.2,
+     8.6
+    ],
+    "points": {
+     "head0P": [
+      2,
+      8
+     ],
+     "unit0P": [
+      2,
+      7.4
+     ],
+     "n0v6P": [
+      2,
+      -0.4
+     ],
+     "c0k0P": [
+      1.52,
+      6.25
+     ],
+     "c0k1P": [
+      2.48,
+      6.25
+     ],
+     "c0k2P": [
+      1.52,
+      5.6000000000000005
+     ],
+     "c0k3P": [
+      2.48,
+      5.6000000000000005
+     ],
+     "c0k4P": [
+      1.52,
+      4.95
+     ],
+     "c0k5P": [
+      2.48,
+      4.95
+     ],
+     "head1P": [
+      6,
+      8
+     ],
+     "unit1P": [
+      6,
+      7.4
+     ],
+     "n1v0P": [
+      6,
+      -0.4
+     ],
+     "head2P": [
+      10,
+      8
+     ],
+     "unit2P": [
+      10,
+      7.4
+     ],
+     "n2v0P": [
+      10,
+      -0.4
+     ],
+     "head3P": [
+      14,
+      8
+     ],
+     "unit3P": [
+      14,
+      7.4
+     ],
+     "n3v4P": [
+      14,
+      -0.4
+     ],
+     "c3k0P": [
+      13.52,
+      6.25
+     ],
+     "c3k1P": [
+      14.48,
+      6.25
+     ],
+     "c3k2P": [
+      13.52,
+      5.6000000000000005
+     ],
+     "c3k3P": [
+      14.48,
+      5.6000000000000005
+     ],
+     "vt1": [
+      4,
+      8.35
+     ],
+     "vb1": [
+      4,
+      -0.1
+     ],
+     "vt2": [
+      8,
+      8.35
+     ],
+     "vb2": [
+      8,
+      -0.1
+     ],
+     "vt3": [
+      12,
+      8.35
+     ],
+     "vb3": [
+      12,
+      -0.1
+     ],
+     "c1k0P": [
+      2.48,
+      4.95
+     ],
+     "c1k1P": [
+      2.48,
+      4.95
+     ],
+     "c1k2P": [
+      2.48,
+      4.95
+     ],
+     "c1k3P": [
+      2.48,
+      4.95
+     ],
+     "c1k4P": [
+      2.48,
+      4.95
+     ],
+     "c1k5P": [
+      2.48,
+      4.95
+     ],
+     "c1k6P": [
+      2.48,
+      4.95
+     ],
+     "c1k7P": [
+      2.48,
+      4.95
+     ],
+     "c1k8P": [
+      2.48,
+      4.95
+     ],
+     "c1k9P": [
+      2.48,
+      4.95
+     ],
+     "n0v5P": [
+      2,
+      1.1
+     ],
+     "sl0": [
+      1.65,
+      -0.7
+     ],
+     "sr0": [
+      2.35,
+      -0.1
+     ],
+     "n1v10P": [
+      6,
+      1.28
+     ],
+     "sl1": [
+      5.65,
+      -0.7
+     ],
+     "sr1": [
+      6.35,
+      -0.1
+     ],
+     "c2k0P": [
+      6.48,
+      3.65
+     ],
+     "c2k1P": [
+      6.48,
+      3.65
+     ],
+     "c2k2P": [
+      6.48,
+      3.65
+     ],
+     "c2k3P": [
+      6.48,
+      3.65
+     ],
+     "c2k4P": [
+      6.48,
+      3.65
+     ],
+     "c2k5P": [
+      6.48,
+      3.65
+     ],
+     "c2k6P": [
+      6.48,
+      3.65
+     ],
+     "c2k7P": [
+      6.48,
+      3.65
+     ],
+     "c2k8P": [
+      6.48,
+      3.65
+     ],
+     "c2k9P": [
+      6.48,
+      3.65
+     ],
+     "n1v9P": [
+      6,
+      1.1
+     ],
+     "n2v10P": [
+      10,
+      1.28
+     ],
+     "sl2": [
+      9.65,
+      -0.7
+     ],
+     "sr2": [
+      10.35,
+      -0.1
+     ],
+     "answerCount3P": [
+      14,
+      -0.4
+     ],
+     "answerCount2P": [
+      10,
+      -0.4
+     ],
+     "answerCount1P": [
+      6,
+      -0.4
+     ],
+     "answerCount0P": [
+      2,
+      -0.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "head0",
+      "label": "\\text{thousands}",
+      "at": "head0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1{,}000",
+      "at": "unit0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "n0v6",
+      "label": "6",
+      "at": "n0v6P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "c0k0",
+      "circle": "c0k0P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k1",
+      "circle": "c0k1P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k2",
+      "circle": "c0k2P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k3",
+      "circle": "c0k3P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k4",
+      "circle": "c0k4P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0k5",
+      "circle": "c0k5P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "head1",
+      "label": "\\text{hundreds}",
+      "at": "head1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "100",
+      "at": "unit1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "n1v0",
+      "label": "0",
+      "at": "n1v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "head2",
+      "label": "\\text{tens}",
+      "at": "head2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "label": "10",
+      "at": "unit2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "n2v0",
+      "label": "0",
+      "at": "n2v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "head3",
+      "label": "\\text{ones}",
+      "at": "head3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit3",
+      "label": "1",
+      "at": "unit3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "n3v4",
+      "label": "4",
+      "at": "n3v4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "c3k0",
+      "circle": "c3k0P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k1",
+      "circle": "c3k1P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k2",
+      "circle": "c3k2P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3k3",
+      "circle": "c3k3P",
+      "r": 0.23,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "vt1",
+       "vb1"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "vt2",
+       "vb2"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "vt3",
+       "vb3"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "c1k0",
+      "circle": "c1k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k1",
+      "circle": "c1k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k2",
+      "circle": "c1k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k3",
+      "circle": "c1k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k4",
+      "circle": "c1k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k5",
+      "circle": "c1k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k6",
+      "circle": "c1k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k7",
+      "circle": "c1k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k8",
+      "circle": "c1k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k9",
+      "circle": "c1k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n0v5",
+      "label": "5",
+      "at": "n0v5P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "slash0",
+      "seg": [
+       "sl0",
+       "sr0"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "n1v10",
+      "label": "10",
+      "at": "n1v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "slash1",
+      "seg": [
+       "sl1",
+       "sr1"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "c2k0",
+      "circle": "c2k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k1",
+      "circle": "c2k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k2",
+      "circle": "c2k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k3",
+      "circle": "c2k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k4",
+      "circle": "c2k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k5",
+      "circle": "c2k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k6",
+      "circle": "c2k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k7",
+      "circle": "c2k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k8",
+      "circle": "c2k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k9",
+      "circle": "c2k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n1v9",
+      "label": "9",
+      "at": "n1v9P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "n2v10",
+      "label": "10",
+      "at": "n2v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "slash2",
+      "seg": [
+       "sl2",
+       "sr2"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "answerCount3",
+      "label": "1",
+      "at": "answerCount3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent"
+     },
+     {
+      "id": "answerCount2",
+      "label": "7",
+      "at": "answerCount2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "answerCount1",
+      "label": "5",
+      "at": "answerCount1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     },
+     {
+      "id": "answerCount0",
+      "label": "2",
+      "at": "answerCount0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Your turn. Where should the trades stop in this subtraction?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Where does the trade stop?"
+      },
+      {
+       "do": "stack",
+       "id": "try",
+       "rows": [
+        "6004",
+        "3433"
+       ],
+       "op": "-",
+       "headers": false
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The ones are ready: four minus three is one.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c3k1",
+        "c3k2",
+        "c3k3"
+       ],
+       "at": "three",
+       "until": "one"
+      },
+      {
+       "do": "column",
+       "of": "try",
+       "at": "four",
+       "write": "one"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c3k1",
+        "c3k2",
+        "c3k3"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n3v4"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "answerCount3",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The tens need help. I go past the empty hundreds to the thousands.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n2v0",
+       "at": "tens",
+       "until": "hundreds"
+      },
+      {
+       "do": "highlight",
+       "target": "n1v0",
+       "at": "hundreds",
+       "until": "thousands"
+      },
+      {
+       "do": "highlight",
+       "target": "c0k5",
+       "at": "thousands"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One thousand opens into ten hundreds. Five thousands stay.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c0k5",
+       "at": "One",
+       "until": "hundreds"
+      },
+      {
+       "do": "hide",
+       "target": "c0k5",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c1k0",
+        "c1k1",
+        "c1k2",
+        "c1k3",
+        "c1k4",
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8",
+        "c1k9"
+       ],
+       "at": "hundreds"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c1k0P": [
+         5.52,
+         6.25
+        ],
+        "c1k1P": [
+         6.48,
+         6.25
+        ],
+        "c1k2P": [
+         5.52,
+         5.6000000000000005
+        ],
+        "c1k3P": [
+         6.48,
+         5.6000000000000005
+        ],
+        "c1k4P": [
+         5.52,
+         4.95
+        ],
+        "c1k5P": [
+         6.48,
+         4.95
+        ],
+        "c1k6P": [
+         5.52,
+         4.3
+        ],
+        "c1k7P": [
+         6.48,
+         4.3
+        ],
+        "c1k8P": [
+         5.52,
+         3.65
+        ],
+        "c1k9P": [
+         6.48,
+         3.65
+        ]
+       },
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "slash0",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "n0v5",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "slash1",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "n1v10",
+       "at": "hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One hundred opens into ten tens. Nine hundreds stay.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c1k9",
+       "at": "One",
+       "until": "tens"
+      },
+      {
+       "do": "hide",
+       "target": "c1k9",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c2k0",
+        "c2k1",
+        "c2k2",
+        "c2k3",
+        "c2k4",
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "tens"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c2k0P": [
+         9.52,
+         6.25
+        ],
+        "c2k1P": [
+         10.48,
+         6.25
+        ],
+        "c2k2P": [
+         9.52,
+         5.6000000000000005
+        ],
+        "c2k3P": [
+         10.48,
+         5.6000000000000005
+        ],
+        "c2k4P": [
+         9.52,
+         4.95
+        ],
+        "c2k5P": [
+         10.48,
+         4.95
+        ],
+        "c2k6P": [
+         9.52,
+         4.3
+        ],
+        "c2k7P": [
+         10.48,
+         4.3
+        ],
+        "c2k8P": [
+         9.52,
+         3.65
+        ],
+        "c2k9P": [
+         10.48,
+         3.65
+        ]
+       },
+       "at": "tens"
+      },
+      {
+       "do": "hide",
+       "target": "n1v10",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "n1v9",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "slash2",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "n2v10",
+       "at": "tens"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Stop at the tens. They keep all ten because the ones did not need a trade.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n2v10",
+       "at": "ten",
+       "until": "because"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ten tens minus three tens is seven tens.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "three",
+       "until": "seven"
+      },
+      {
+       "do": "column",
+       "of": "try",
+       "at": "Ten",
+       "write": "seven"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n2v10",
+        "n2v0",
+        "slash2"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "answerCount2",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Nine hundreds minus four hundreds is five hundreds.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8"
+       ],
+       "at": "four",
+       "until": "five"
+      },
+      {
+       "do": "column",
+       "of": "try",
+       "at": "Nine",
+       "write": "five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n1v9",
+        "n1v0",
+        "slash1"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "answerCount1",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Five thousands minus three thousands is two thousands. My answer is two thousand, five hundred seventy-one.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c0k2",
+        "c0k3",
+        "c0k4"
+       ],
+       "at": "three",
+       "until": "two"
+      },
+      {
+       "do": "column",
+       "of": "try",
+       "at": "Five",
+       "write": "two"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "c0k2",
+        "c0k3",
+        "c0k4"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "clear",
+       "at": "answer"
+      },
+      {
+       "do": "answer",
+       "tex": "2{,}571",
+       "at": "answer"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "n0v5",
+        "n0v6",
+        "slash0"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "answerCount0",
+       "at": "two"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -1,
+     16.2,
+     8.6
+    ],
+    "points": {
+     "head0P": [
+      2,
+      8
+     ],
+     "unit0P": [
+      2,
+      7.4
+     ],
+     "n0v1P": [
+      2,
+      -0.4
+     ],
+     "c0k0P": [
+      1.52,
+      6.25
+     ],
+     "head1P": [
+      6,
+      8
+     ],
+     "unit1P": [
+      6,
+      7.4
+     ],
+     "n1v0P": [
+      6,
+      -0.4
+     ],
+     "head2P": [
+      10,
+      8
+     ],
+     "unit2P": [
+      10,
+      7.4
+     ],
+     "n2v0P": [
+      10,
+      -0.4
+     ],
+     "head3P": [
+      14,
+      8
+     ],
+     "unit3P": [
+      14,
+      7.4
+     ],
+     "n3v0P": [
+      14,
+      -0.4
+     ],
+     "vt1": [
+      4,
+      8.35
+     ],
+     "vb1": [
+      4,
+      -0.1
+     ],
+     "vt2": [
+      8,
+      8.35
+     ],
+     "vb2": [
+      8,
+      -0.1
+     ],
+     "vt3": [
+      12,
+      8.35
+     ],
+     "vb3": [
+      12,
+      -0.1
+     ],
+     "c1k0P": [
+      1.52,
+      6.25
+     ],
+     "c1k1P": [
+      1.52,
+      6.25
+     ],
+     "c1k2P": [
+      1.52,
+      6.25
+     ],
+     "c1k3P": [
+      1.52,
+      6.25
+     ],
+     "c1k4P": [
+      1.52,
+      6.25
+     ],
+     "c1k5P": [
+      1.52,
+      6.25
+     ],
+     "c1k6P": [
+      1.52,
+      6.25
+     ],
+     "c1k7P": [
+      1.52,
+      6.25
+     ],
+     "c1k8P": [
+      1.52,
+      6.25
+     ],
+     "c1k9P": [
+      1.52,
+      6.25
+     ],
+     "n0v0P": [
+      2,
+      1.1
+     ],
+     "sl0": [
+      1.65,
+      -0.7
+     ],
+     "sr0": [
+      2.35,
+      -0.1
+     ],
+     "n1v10P": [
+      6,
+      1.28
+     ],
+     "sl1": [
+      5.65,
+      -0.7
+     ],
+     "sr1": [
+      6.35,
+      -0.1
+     ],
+     "c2k0P": [
+      6.48,
+      3.65
+     ],
+     "c2k1P": [
+      6.48,
+      3.65
+     ],
+     "c2k2P": [
+      6.48,
+      3.65
+     ],
+     "c2k3P": [
+      6.48,
+      3.65
+     ],
+     "c2k4P": [
+      6.48,
+      3.65
+     ],
+     "c2k5P": [
+      6.48,
+      3.65
+     ],
+     "c2k6P": [
+      6.48,
+      3.65
+     ],
+     "c2k7P": [
+      6.48,
+      3.65
+     ],
+     "c2k8P": [
+      6.48,
+      3.65
+     ],
+     "c2k9P": [
+      6.48,
+      3.65
+     ],
+     "n1v9P": [
+      6,
+      1.1
+     ],
+     "n2v10P": [
+      10,
+      1.28
+     ],
+     "sl2": [
+      9.65,
+      -0.7
+     ],
+     "sr2": [
+      10.35,
+      -0.1
+     ],
+     "c3k0P": [
+      10.48,
+      3.65
+     ],
+     "c3k1P": [
+      10.48,
+      3.65
+     ],
+     "c3k2P": [
+      10.48,
+      3.65
+     ],
+     "c3k3P": [
+      10.48,
+      3.65
+     ],
+     "c3k4P": [
+      10.48,
+      3.65
+     ],
+     "c3k5P": [
+      10.48,
+      3.65
+     ],
+     "c3k6P": [
+      10.48,
+      3.65
+     ],
+     "c3k7P": [
+      10.48,
+      3.65
+     ],
+     "c3k8P": [
+      10.48,
+      3.65
+     ],
+     "c3k9P": [
+      10.48,
+      3.65
+     ],
+     "n2v9P": [
+      10,
+      1.1
+     ],
+     "n3v10P": [
+      14,
+      1.28
+     ],
+     "sl3": [
+      13.65,
+      -0.7
+     ],
+     "sr3": [
+      14.35,
+      -0.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "head0",
+      "label": "\\text{thousands}",
+      "at": "head0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1{,}000",
+      "at": "unit0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "n0v1",
+      "label": "1",
+      "at": "n0v1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "c0k0",
+      "circle": "c0k0P",
+      "r": 0.23,
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "head1",
+      "label": "\\text{hundreds}",
+      "at": "head1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "100",
+      "at": "unit1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "n1v0",
+      "label": "0",
+      "at": "n1v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "head2",
+      "label": "\\text{tens}",
+      "at": "head2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "label": "10",
+      "at": "unit2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "n2v0",
+      "label": "0",
+      "at": "n2v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "head3",
+      "label": "\\text{ones}",
+      "at": "head3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "unit3",
+      "label": "1",
+      "at": "unit3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "n3v0",
+      "label": "0",
+      "at": "n3v0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "v1",
+      "seg": [
+       "vt1",
+       "vb1"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v2",
+      "seg": [
+       "vt2",
+       "vb2"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "v3",
+      "seg": [
+       "vt3",
+       "vb3"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "c1k0",
+      "circle": "c1k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k1",
+      "circle": "c1k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k2",
+      "circle": "c1k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k3",
+      "circle": "c1k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k4",
+      "circle": "c1k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k5",
+      "circle": "c1k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k6",
+      "circle": "c1k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k7",
+      "circle": "c1k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k8",
+      "circle": "c1k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c1k9",
+      "circle": "c1k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n0v0",
+      "label": "0",
+      "at": "n0v0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     },
+     {
+      "id": "slash0",
+      "seg": [
+       "sl0",
+       "sr0"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "n1v10",
+      "label": "10",
+      "at": "n1v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "slash1",
+      "seg": [
+       "sl1",
+       "sr1"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "c2k0",
+      "circle": "c2k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k1",
+      "circle": "c2k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k2",
+      "circle": "c2k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k3",
+      "circle": "c2k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k4",
+      "circle": "c2k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k5",
+      "circle": "c2k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k6",
+      "circle": "c2k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k7",
+      "circle": "c2k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k8",
+      "circle": "c2k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c2k9",
+      "circle": "c2k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n1v9",
+      "label": "9",
+      "at": "n1v9P",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "n2v10",
+      "label": "10",
+      "at": "n2v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "slash2",
+      "seg": [
+       "sl2",
+       "sr2"
+      ],
+      "ink": "warm",
+      "w": 2
+     },
+     {
+      "id": "c3k0",
+      "circle": "c3k0P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k1",
+      "circle": "c3k1P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k2",
+      "circle": "c3k2P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k3",
+      "circle": "c3k3P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k4",
+      "circle": "c3k4P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k5",
+      "circle": "c3k5P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k6",
+      "circle": "c3k6P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k7",
+      "circle": "c3k7P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k8",
+      "circle": "c3k8P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "c3k9",
+      "circle": "c3k9P",
+      "r": 0.23,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "n2v9",
+      "label": "9",
+      "at": "n2v9P",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     },
+     {
+      "id": "n3v10",
+      "label": "10",
+      "at": "n3v10P",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent"
+     },
+     {
+      "id": "slash3",
+      "seg": [
+       "sl3",
+       "sr3"
+      ],
+      "ink": "warm",
+      "w": 2
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One thousand can open into ten hundreds.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Equal value, different groups"
+      },
+      {
+       "do": "hide",
+       "target": "c0k0",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c1k0",
+        "c1k1",
+        "c1k2",
+        "c1k3",
+        "c1k4",
+        "c1k5",
+        "c1k6",
+        "c1k7",
+        "c1k8",
+        "c1k9"
+       ],
+       "at": "hundreds"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c1k0P": [
+         5.52,
+         6.25
+        ],
+        "c1k1P": [
+         6.48,
+         6.25
+        ],
+        "c1k2P": [
+         5.52,
+         5.6000000000000005
+        ],
+        "c1k3P": [
+         6.48,
+         5.6000000000000005
+        ],
+        "c1k4P": [
+         5.52,
+         4.95
+        ],
+        "c1k5P": [
+         6.48,
+         4.95
+        ],
+        "c1k6P": [
+         5.52,
+         4.3
+        ],
+        "c1k7P": [
+         6.48,
+         4.3
+        ],
+        "c1k8P": [
+         5.52,
+         3.65
+        ],
+        "c1k9P": [
+         6.48,
+         3.65
+        ]
+       },
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "slash0",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "n0v0",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "slash1",
+       "at": "hundreds"
+      },
+      {
+       "do": "show",
+       "target": "n1v10",
+       "at": "hundreds"
+      },
+      {
+       "do": "write",
+       "tex": "1{,}000=10\\times100",
+       "fresh": true,
+       "at": "hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One of those hundreds can open into ten tens.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "c1k9",
+       "at": "One",
+       "until": "tens"
+      },
+      {
+       "do": "hide",
+       "target": "c1k9",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c2k0",
+        "c2k1",
+        "c2k2",
+        "c2k3",
+        "c2k4",
+        "c2k5",
+        "c2k6",
+        "c2k7",
+        "c2k8",
+        "c2k9"
+       ],
+       "at": "tens"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c2k0P": [
+         9.52,
+         6.25
+        ],
+        "c2k1P": [
+         10.48,
+         6.25
+        ],
+        "c2k2P": [
+         9.52,
+         5.6000000000000005
+        ],
+        "c2k3P": [
+         10.48,
+         5.6000000000000005
+        ],
+        "c2k4P": [
+         9.52,
+         4.95
+        ],
+        "c2k5P": [
+         10.48,
+         4.95
+        ],
+        "c2k6P": [
+         9.52,
+         4.3
+        ],
+        "c2k7P": [
+         10.48,
+         4.3
+        ],
+        "c2k8P": [
+         9.52,
+         3.65
+        ],
+        "c2k9P": [
+         10.48,
+         3.65
+        ]
+       },
+       "at": "tens"
+      },
+      {
+       "do": "hide",
+       "target": "n1v10",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "n1v9",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "slash2",
+       "at": "tens"
+      },
+      {
+       "do": "show",
+       "target": "n2v10",
+       "at": "tens"
+      },
+      {
+       "do": "write",
+       "tex": "1{,}000=900+10\\times10",
+       "fresh": true,
+       "at": "tens"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One of those tens can open into ten ones.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "c2k9",
+       "at": "One",
+       "until": "ones"
+      },
+      {
+       "do": "hide",
+       "target": "c2k9",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": [
+        "c3k0",
+        "c3k1",
+        "c3k2",
+        "c3k3",
+        "c3k4",
+        "c3k5",
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9"
+       ],
+       "at": "ones"
+      },
+      {
+       "do": "move",
+       "points": {
+        "c3k0P": [
+         13.52,
+         6.25
+        ],
+        "c3k1P": [
+         14.48,
+         6.25
+        ],
+        "c3k2P": [
+         13.52,
+         5.6000000000000005
+        ],
+        "c3k3P": [
+         14.48,
+         5.6000000000000005
+        ],
+        "c3k4P": [
+         13.52,
+         4.95
+        ],
+        "c3k5P": [
+         14.48,
+         4.95
+        ],
+        "c3k6P": [
+         13.52,
+         4.3
+        ],
+        "c3k7P": [
+         14.48,
+         4.3
+        ],
+        "c3k8P": [
+         13.52,
+         3.65
+        ],
+        "c3k9P": [
+         14.48,
+         3.65
+        ]
+       },
+       "at": "ones"
+      },
+      {
+       "do": "hide",
+       "target": "n2v10",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "n2v9",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "slash3",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "n3v10",
+       "at": "ones"
+      },
+      {
+       "do": "write",
+       "tex": "1{,}000=900+90+10",
+       "fresh": true,
+       "at": "ones"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten here is one there, in every column.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c3k0",
+        "c3k1",
+        "c3k2",
+        "c3k3",
+        "c3k4",
+        "c3k5",
+        "c3k6",
+        "c3k7",
+        "c3k8",
+        "c3k9"
+       ],
+       "at": "Ten",
+       "until": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "c2k0",
+       "at": "one",
+       "until": "every"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
