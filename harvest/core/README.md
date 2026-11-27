@@ -47,11 +47,48 @@ let pack = Arc::new(Pack::open_with(&dir, &keys, harvest_core::Verify::InstallSt
 let engine = Engine::new(pack.clone());                 // lexical only
 // .with_embedder(Arc::new(my_embedder))                // dense half, if ids match
 // .with_reranker(Arc::new(my_reranker))                // optional hook
+// .with_llm(Arc::new(my_llm_bridge))                   // model on (see below)
 
 let hits = engine.retriever().search("query", &SearchOptions { k: 10, ..Default::default() })?;
 let answer = engine.ask("question", &AskOptions { role: Role::Trainee, equip: Some("id".into()), ..Default::default() })?;
 // `answer` serializes to exactly the `ask --json` object in CONTRACT.
+
+// Audit: one hash-chained row per query in the device's records database.
+let (answer, trace) = engine.ask_traced("question", &opts)?;
+audit::append(&records_conn, &audit::AuditEntry::from_answer(pack.pack_id(), "question", &answer, &trace))?;
+let report = audit::verify_chain(&records_conn)?;   // ok, first_bad, modes, bake_hit_rate
+
+// Free-text grading and field notes (model optional).
+let g = grade::grade(learner_text, &grade::Rubric::parse(&question.answer)?, Some(llm))?;
+let n = notes::structure_note(note_text, &notes::NoteVocab::from_pack(&pack)?, Some(llm))?;
 ```
+
+### The model
+
+The engine asks a model only for small jobs with a JSON schema, and checks
+every answer. The app implements `Llm` over its llama.cpp runtime, turning
+`LlmRequest.schema` into a grammar. The CLI's `OpenAiCompatible` sends it as
+`response_format: json_schema` to any OpenAI-compatible server.
+
+```rust
+pub trait Llm: Send + Sync {
+    fn id(&self) -> String;                                  // exact model id, audited
+    fn complete(&self, req: &LlmRequest) -> Result<String>;  // JSON matching req.schema
+}
+```
+
+`ask` with a model runs this loop:
+
+1. **Answer cache** first. A hit is `baked` and the model is not called.
+2. **Expand** (`expansion` schema): up to four queries; `ambiguous` + `clarify`
+   only when one more fact is needed. That returns `mode: "clarify"`, with the
+   question as one text segment and `nearest` sections.
+3. **Retrieve** the question plus its expansions (RRF over every list).
+4. **Select** (`selection`, only when more than `max_sections + 1` sections qualify).
+5. **Compose** (`answer_segments`) from those passages only. Limits are marked
+   `must_quote_verbatim`.
+6. **Check** in strict mode. If nothing supported survives, or the model errs,
+   the deterministic answer is returned and `trace.model_error` says why.
 
 | Module | What it does |
 |---|---|
@@ -62,9 +99,24 @@ let answer = engine.ask("question", &AskOptions { role: Role::Trainee, equip: So
 | `retrieval` | BM25 over `chunk_fts` + cosine over int8 `chunk_vec`, reciprocal-rank fusion, equipment filter/boost, `Reranker` hook. |
 | `answer` | Model-off answer engine: answer cache → `baked`; best sections verbatim → `composed`; weak support → `declined` with nearest sections. |
 | `check` | Support checker: verbatim quotes, existing cites, unsupported claims dropped by paragraph; strict mode adds content-overlap and verbatim-number rules. |
+| `compose` | Prompts and schemas for expand, select and compose. |
+| `llm` | `Llm` trait, `OpenAiCompatible` (CLI feature), `ScriptedLlm` for tests. |
+| `audit` | Append-only, hash-chained `audit` table (triggers refuse UPDATE/DELETE); `verify_chain` recomputes every link and reports the bake hit rate. |
+| `grade` | Rubric grading: keyword rules with the model off. With it on, the model judges and must quote the learner's own words as evidence. |
+| `notes` | Field note → `{component, condition, action}`. Keywords with the model off; model output kept only when grounded in the vocabulary or the note. |
+| `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |
 
 ### Embedder ids
+
+`LlamaEmbedder::for_pack(gguf, &pack)` builds the id the pipeline writes,
+`<model_name>@<first 16 hex of the GGUF's SHA-256>[/mrl<dim>]`, and applies
+`embed_query_template`. A different file gets a different id, and the dense
+half is refused. The pinned llama.cpp loads BERT-family GGUFs (nomic-embed
+v1.5 tested). It does **not** load EmbeddingGemma 2 (`gemma-embedding2` is
+newer than the pin), so using that model means bumping the pin together with
+`tauri-plugin-corpan-llm`. On Linux, bindgen may need
+`BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/gcc/<triple>/<ver>/include`.
 
 Dense retrieval runs only when `Embedder::id()` equals `pack_meta.embedder_id`
 and `Embedder::dim()` equals `pack_meta.embed_dim`. On any mismatch it is
@@ -94,6 +146,8 @@ These fill gaps CONTRACT leaves open. The pipeline writes packs this way.
 - **Synonyms (optional table).** `CREATE TABLE synonym (phrase TEXT NOT NULL,
   canonical TEXT NOT NULL, lang TEXT NOT NULL)`: when a query contains
   `phrase`, `canonical` is searched too and satisfies the phrase's words.
+- **Rubrics** (`question.answer` for `free_text`): `{"points":[{"id","text","keywords":[phrase | [alternatives…]],"weight"}],"pass":0.7}`.
+- **Note vocabulary** (optional `pack_meta.note_vocab`): `{"components":[{"name","aliases"}],"conditions":[…],"actions":[…]}`, merged over built-in generic conditions and actions.
 - **Answer cache.** Put the canonical question among the aliases. A hit needs
   alias similarity ≥ `AskOptions::cache_threshold` (default 0.75; Dice over
   content stems, halved when the numbers differ). The evaluation lane
@@ -104,7 +158,9 @@ These fill gaps CONTRACT leaves open. The pipeline writes packs this way.
 ```
 harvest verify  <pack-dir> [--pubkey KEY] [--json]
 harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--json]
-harvest ask     <pack-dir> "<question>" [--role operator] [--equip ID] [--llm off] [--json]
+harvest ask     <pack-dir> "<question>" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
+                [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db>] [--json]
+harvest audit   <records-db> [--json]      # verify the chain; modes and bake hit rate
 harvest fixture <dir>
 ```
 

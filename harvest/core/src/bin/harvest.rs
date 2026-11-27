@@ -14,7 +14,9 @@ use std::time::Instant;
 const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
   harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing] [--pubkey KEY] [--json]
-  harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off] [--embedder auto|none|hashing] [--pubkey KEY] [--json]
+  harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
+                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db>] [--pubkey KEY] [--json]
+  harvest audit   <records-db> [--json]
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -91,6 +93,7 @@ fn main() -> ExitCode {
         "verify" => verify(&args),
         "search" => search(&args),
         "ask" => ask(&args),
+        "audit" => audit(&args),
         "fixture" => fixture(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
@@ -104,6 +107,7 @@ fn main() -> ExitCode {
             eprintln!("harvest: {m}\n{USAGE}");
             ExitCode::from(2)
         }
+        Err(CliError::Exit(code)) => ExitCode::from(code),
         Err(CliError::Engine(e)) => {
             if json_out {
                 println!("{}", json!({"ok": false, "error": e.to_string()}));
@@ -117,6 +121,8 @@ fn main() -> ExitCode {
 enum CliError {
     Usage(String),
     Engine(Error),
+    /// Already reported on stdout/stderr; exit with this code.
+    Exit(u8),
 }
 
 impl From<Error> for CliError {
@@ -189,8 +195,22 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
                 _ => Ok(None),
             }
         }
+        path if path.ends_with(".gguf") => gguf_embedder(path, pack),
         other => Err(CliError::Usage(format!("unknown embedder {other:?}"))),
     }
+}
+
+#[cfg(feature = "llama")]
+fn gguf_embedder(path: &str, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliError> {
+    let e = harvest_core::llama::LlamaEmbedder::for_pack(Path::new(path), pack)?;
+    Ok(Some(Arc::new(e)))
+}
+
+#[cfg(not(feature = "llama"))]
+fn gguf_embedder(_: &str, _: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliError> {
+    Err(CliError::Usage(
+        "a .gguf embedder needs a build with `--features llama`".into(),
+    ))
 }
 
 fn verify(args: &Args) -> Result<(), CliError> {
@@ -287,28 +307,61 @@ fn search(args: &Args) -> Result<(), CliError> {
 }
 
 fn ask(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["pubkey", "json", "role", "equip", "llm", "embedder"])?;
+    args.reject_unknown(&[
+        "pubkey",
+        "json",
+        "role",
+        "equip",
+        "llm",
+        "llm-model",
+        "llm-timeout",
+        "embedder",
+        "audit",
+    ])?;
     let dir = pack_dir(args)?;
     let question = query_arg(args)?;
-    match args.get("llm").unwrap_or("off") {
-        "off" => {}
-        other => {
-            return Err(CliError::Usage(format!(
-                "--llm {other}: this build answers with the model off only"
-            )));
-        }
-    }
     let pack = Arc::new(Pack::open(&dir, &keys(args)?)?);
     let mut engine = Engine::new(pack.clone());
     if let Some(e) = embedder(args, &pack)? {
         engine = engine.with_embedder(e);
+    }
+    match args.get("llm").unwrap_or("off") {
+        "off" => {}
+        url if url.starts_with("http://") || url.starts_with("https://") => {
+            let secs: u64 = match args.get("llm-timeout") {
+                Some(t) => t
+                    .parse()
+                    .map_err(|_| CliError::Usage("--llm-timeout must be seconds".into()))?,
+                None => 120,
+            };
+            let llm = harvest_core::llm::OpenAiCompatible::new(
+                url,
+                args.get("llm-model"),
+                std::time::Duration::from_secs(secs),
+            )?;
+            engine = engine.with_llm(Arc::new(llm));
+        }
+        other => {
+            return Err(CliError::Usage(format!(
+                "--llm {other}: expected off or an http(s)://…/v1 endpoint"
+            )));
+        }
     }
     let opts = AskOptions {
         role: Role::parse(args.get("role").unwrap_or("operator"))?,
         equip: args.get("equip").map(str::to_string),
         ..AskOptions::default()
     };
-    let resp = engine.ask(&question, &opts)?;
+    let (resp, trace) = engine.ask_traced(&question, &opts)?;
+    if let Some(e) = &trace.model_error {
+        eprintln!("harvest: model path not used: {e}");
+    }
+    if let Some(db) = args.get("audit") {
+        let conn = rusqlite::Connection::open(db).map_err(Error::from)?;
+        let entry =
+            harvest_core::audit::AuditEntry::from_answer(pack.pack_id(), &question, &resp, &trace);
+        harvest_core::audit::append(&conn, &entry)?;
+    }
     if args.has("json") {
         println!("{}", serde_json::to_string(&resp).map_err(Error::from)?);
         return Ok(());
@@ -341,6 +394,49 @@ fn ask(args: &Args) -> Result<(), CliError> {
     }
     println!("({} ms, pack {})", resp.elapsed_ms, resp.pack_version);
     Ok(())
+}
+
+fn audit(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["json"])?;
+    let db = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <records-db>".into()))?;
+    if !Path::new(db).is_file() {
+        return Err(CliError::Engine(Error::Invalid(format!(
+            "{db}: no such file"
+        ))));
+    }
+    let conn = rusqlite::Connection::open(db).map_err(Error::from)?;
+    let report = harvest_core::audit::verify_chain(&conn)?;
+    if args.has("json") {
+        println!("{}", serde_json::to_string(&report).map_err(Error::from)?);
+    } else {
+        println!(
+            "{} {} entries{}",
+            if report.ok { "ok" } else { "BROKEN" },
+            report.entries,
+            report
+                .first_bad
+                .map(|s| format!(", first bad entry {s}"))
+                .unwrap_or_default()
+        );
+        for (mode, n) in &report.modes {
+            println!("  {mode}: {n}");
+        }
+        if let Some(r) = report.bake_hit_rate {
+            println!("  bake hit rate: {:.1}%", r * 100.0);
+        }
+    }
+    if report.ok {
+        Ok(())
+    } else {
+        eprintln!(
+            "harvest: audit chain broken at entry {}",
+            report.first_bad.unwrap_or(0)
+        );
+        Err(CliError::Exit(1))
+    }
 }
 
 fn citation(pack: &Pack, section_id: &str) -> Result<String, CliError> {

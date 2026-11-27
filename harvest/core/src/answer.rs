@@ -4,8 +4,10 @@
 //! (`composed`), or a decline with the nearest sections (`declined`).
 
 use crate::check::{self, Check, CheckOptions};
+use crate::compose;
 use crate::embed::Embedder;
 use crate::error::{Error, Result};
+use crate::llm::Llm;
 use crate::normalize::{self, Concept, Normalized, normalize_ws};
 use crate::pack::{CachedAnswer, Pack};
 use crate::retrieval::{Hit, Reranker, Retriever, SearchOptions};
@@ -53,6 +55,10 @@ pub enum Mode {
     Baked,
     Composed,
     Declined,
+    /// The model judged the question truly ambiguous; `body` holds one
+    /// clarifying question (a text segment) and `nearest` the sections it
+    /// might be about.
+    Clarify,
 }
 
 /// Ask options.
@@ -138,6 +144,8 @@ pub struct AskTrace {
     pub cache_similarity: f64,
     /// Best section coverage of the question's concepts.
     pub support: f64,
+    /// Why the model path was not used, when a model was configured.
+    pub model_error: Option<String>,
 }
 
 /// The engine over one pack. `Send + Sync`: share it behind an `Arc`.
@@ -145,6 +153,7 @@ pub struct Engine {
     pub pack: Arc<Pack>,
     pub embedder: Option<Arc<dyn Embedder>>,
     pub reranker: Option<Arc<dyn Reranker>>,
+    pub llm: Option<Arc<dyn Llm>>,
 }
 
 impl Engine {
@@ -153,7 +162,14 @@ impl Engine {
             pack,
             embedder: None,
             reranker: None,
+            llm: None,
         }
+    }
+
+    /// Turn the model on: expansion, clarification, selection, composition.
+    pub fn with_llm(mut self, llm: Arc<dyn Llm>) -> Self {
+        self.llm = Some(llm);
+        self
     }
 
     pub fn with_embedder(mut self, e: Arc<dyn Embedder>) -> Self {
@@ -174,7 +190,7 @@ impl Engine {
         }
     }
 
-    /// Answer `question` with the model off.
+    /// Answer `question` (with the model when one is configured).
     pub fn ask(&self, question: &str, opts: &AskOptions) -> Result<AskResponse> {
         self.ask_traced(question, opts).map(|(r, _)| r)
     }
@@ -219,6 +235,19 @@ impl Engine {
                     },
                     trace,
                 ));
+            }
+        }
+
+        // Model on: expand, select, compose, strict check. Any failure falls
+        // back to the deterministic path and is recorded in the trace.
+        if let Some(llm) = self.llm.clone() {
+            match self.ask_model(llm.as_ref(), question, &norm, opts, &mut trace) {
+                Ok(Some(mut resp)) => {
+                    resp.elapsed_ms = started.elapsed().as_millis() as u64;
+                    return Ok((resp, trace));
+                }
+                Ok(None) => {}
+                Err(e) => trace.model_error = Some(e.to_string()),
             }
         }
 
@@ -273,6 +302,113 @@ impl Engine {
             },
             trace,
         ))
+    }
+
+    /// The model path. `Ok(None)`: nothing the model wrote survived the
+    /// checker, or nothing relevant was retrieved; use the deterministic path.
+    fn ask_model(
+        &self,
+        llm: &dyn Llm,
+        question: &str,
+        norm: &Normalized,
+        opts: &AskOptions,
+        trace: &mut AskTrace,
+    ) -> Result<Option<AskResponse>> {
+        let context = self.context_line(opts);
+        let expansion = compose::expand(llm, question, &context)?;
+        for q in &expansion.queries {
+            if !trace.expansions.contains(q) {
+                trace.expansions.push(q.clone());
+            }
+        }
+        let search = SearchOptions {
+            k: opts.k.max(20),
+            equip: opts.equip.clone(),
+            ..SearchOptions::default()
+        };
+        let hits = self
+            .retriever()
+            .search_many(question, &expansion.queries, &search)?
+            .hits;
+        let retrieved: Vec<Retrieved> = hits.iter().take(opts.k).map(Retrieved::from).collect();
+        let base = |mode, body: Vec<Segment>, check, nearest| AskResponse {
+            mode,
+            answer_id: None,
+            citations: segments::citations(&body),
+            body,
+            retrieved: retrieved.clone(),
+            check,
+            nearest,
+            pack_version: self.pack.version().to_string(),
+            model: Some(llm.id()),
+            elapsed_ms: 0,
+        };
+        if expansion.ambiguous
+            && let Some(q) = expansion.clarify.as_deref()
+        {
+            return Ok(Some(base(
+                Mode::Clarify,
+                vec![Segment::text(q.trim())],
+                Check {
+                    quotes_ok: true,
+                    cites_ok: true,
+                    dropped: 0,
+                },
+                nearest_sections(&hits, opts.nearest),
+            )));
+        }
+        // The long tail: the model may use sections with partial lexical
+        // support; the strict checker decides what survives.
+        let candidates: Vec<String> = self
+            .supported_sections(norm, &hits, opts)?
+            .into_iter()
+            .filter(|(_, cov)| *cov >= opts.support_threshold / 2.0)
+            .map(|(id, _)| id)
+            .take(8)
+            .collect();
+        if candidates.is_empty() {
+            return Ok(None);
+        }
+        let chosen = if candidates.len() > opts.max_sections + 1 {
+            let offered = compose::passages(&self.pack, &candidates, 500)?;
+            let picked = compose::select(llm, question, &offered, opts.max_sections + 1)?;
+            if picked.is_empty() {
+                candidates
+            } else {
+                picked
+            }
+        } else {
+            candidates
+        };
+        let passages = compose::passages(&self.pack, &chosen, 1500)?;
+        let body = compose::compose(llm, question, opts.role.as_str(), &context, &passages)?;
+        let (body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
+        if !body
+            .iter()
+            .any(|s| matches!(s, Segment::Quote { .. } | Segment::Cite { .. }))
+        {
+            trace.model_error = Some(format!(
+                "model answer had no supported segment ({} dropped)",
+                check.dropped
+            ));
+            return Ok(None);
+        }
+        Ok(Some(base(Mode::Composed, body, check, Vec::new())))
+    }
+
+    /// One line of context for the model: role and equipment.
+    fn context_line(&self, opts: &AskOptions) -> String {
+        let equip = opts.equip.as_deref().and_then(|id| {
+            self.pack
+                .equipment()
+                .iter()
+                .find(|e| e.equip_id == id)
+                .map(|e| e.name.clone())
+        });
+        match equip {
+            Some(name) => format!("The user is a {} working with: {name}.", opts.role.as_str()),
+            None => format!("The user is a {}.", opts.role.as_str()),
+        }
     }
 
     /// The best answer-cache row for the question, and the best similarity

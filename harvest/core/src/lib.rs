@@ -5,11 +5,18 @@
 //! corpus-agnostic.
 
 pub mod answer;
+pub mod audit;
 pub mod canon;
 pub mod check;
+pub mod compose;
 pub mod embed;
 pub mod error;
+pub mod grade;
+#[cfg(feature = "llama")]
+pub mod llama;
+pub mod llm;
 pub mod normalize;
+pub mod notes;
 pub mod pack;
 pub mod packs;
 pub mod retrieval;
@@ -22,6 +29,7 @@ pub use answer::{AskOptions, AskResponse, Engine, Mode, Role};
 pub use check::{Check, CheckOptions};
 pub use embed::{Embedder, HashingEmbedder};
 pub use error::{Error, Result};
+pub use llm::{Llm, LlmRequest};
 pub use pack::{Pack, Verify};
 pub use packs::TrustedKey;
 pub use retrieval::{Hit, Reranker, Retriever, SearchOptions, SearchResult};

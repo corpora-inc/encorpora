@@ -193,7 +193,7 @@ fn strict_paragraph(
     let source_stems = normalize::stem_set(&source_text);
     let source_numbers: BTreeSet<String> = normalize::tokens(&source_text)
         .into_iter()
-        .filter(|t| t.chars().next().is_some_and(|c| c.is_ascii_digit()))
+        .filter(|t| is_number(t))
         .collect();
     let quoted: String = supports
         .iter()
@@ -208,10 +208,7 @@ fn strict_paragraph(
     let mut inserted = Vec::new();
     for t in texts {
         let Segment::Text { text } = t else { continue };
-        let numbers: Vec<String> = normalize::tokens(text)
-            .into_iter()
-            .filter(|t| t.chars().next().is_some_and(|c| c.is_ascii_digit()))
-            .collect();
+        let numbers = value_numbers(text);
         if numbers.iter().any(|n| !source_numbers.contains(n)) {
             report.dropped += 1; // a number no source states
             continue;
@@ -239,7 +236,10 @@ fn strict_paragraph(
             }
             continue;
         }
-        let stems = normalize::content_stems(text);
+        let stems: Vec<String> = normalize::content_stems(text)
+            .into_iter()
+            .filter(|s| !is_number(s) && !DISCOURSE.contains(&s.as_str()))
+            .collect();
         if stems.len() >= 3 {
             let hit = stems.iter().filter(|s| source_stems.contains(*s)).count();
             if (hit as f64) / (stems.len() as f64) < opts.min_overlap {
@@ -262,4 +262,42 @@ fn strict_paragraph(
         }
     }
     Ok(())
+}
+
+/// Stems of framing words a teaching sentence uses without making a claim
+/// ("There are three things to know"); ignored by the overlap rule.
+const DISCOURSE: &[&str] = &[
+    "also", "first", "follow", "import", "key", "main", "matter", "mean", "note", "point",
+    "rememb", "rule", "second", "simpl", "short", "step", "term", "thing", "third", "word",
+];
+
+fn is_number(t: &str) -> bool {
+    t.chars().next().is_some_and(|c| c.is_ascii_digit())
+}
+
+/// Words after a small number that make it a value, not a count: intervals
+/// and multiples the unit table does not canonicalize.
+const VALUE_WORDS: &[&str] = &[
+    "second", "seconds", "day", "days", "week", "weeks", "month", "months", "year", "years",
+    "shift", "shifts", "time", "times", "x", "wrap", "wraps", "turn", "turns", "clip", "clips",
+    "part", "parts", "to", "of", "out",
+];
+
+/// Numbers in `text` that state a value: with a unit or interval word after
+/// them, with a decimal point, or 10 and over. Small bare counts ("three
+/// clearances") are framing, not values.
+fn value_numbers(text: &str) -> Vec<String> {
+    let toks = normalize::tokens(text);
+    toks.iter()
+        .enumerate()
+        .filter(|(_, t)| is_number(t))
+        .filter(|(i, t)| {
+            t.contains('.')
+                || t.parse::<u64>().map_or(true, |n| n >= 10)
+                || toks
+                    .get(i + 1)
+                    .is_some_and(|u| normalize::is_unit(u) || VALUE_WORDS.contains(&u.as_str()))
+        })
+        .map(|(_, t)| t.clone())
+        .collect()
 }
