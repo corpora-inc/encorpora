@@ -1,0 +1,15 @@
+{
+  "name": "@corpora/crane-content-tools",
+  "private": true,
+  "type": "module",
+  "description": "Crane content tools: fictional load charts and deterministic practice-problem generators.",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test \"loadcharts/**/*.test.ts\"",
+    "tsc": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.7",
+    "typescript": "~6.0.3"
+  }
+}

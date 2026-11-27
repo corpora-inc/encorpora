@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/corpora-inc/encorpora/crane/content/tools/loadcharts/schema.json",
+  "title": "Fictional crane load chart",
+  "description": "An original, fictional load chart for training and exam-style practice. Capacities in pounds, lengths in feet, angles in degrees. Capacity grids are indexed [radius row][boom length column]; null means no load may be handled there.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "class", "title", "fictional", "summary", "units", "boom", "counterweight", "rules", "geometry", "configurations", "rangeDiagram", "jib", "deductions", "linePull", "notes"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z]+-[0-9]+$" },
+    "class": { "enum": ["hydraulic-truck-crane", "rough-terrain-crane", "lattice-crawler-crane", "boom-truck", "articulating-crane"] },
+    "title": { "type": "string", "pattern": "\\(fictional\\)$" },
+    "fictional": { "const": true },
+    "summary": { "type": "string", "minLength": 1 },
+    "units": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["weight", "length", "angle", "statement"],
+      "properties": {
+        "weight": { "const": "lb" },
+        "length": { "const": "ft" },
+        "angle": { "const": "deg" },
+        "statement": { "type": "string", "pattern": "capacities in pounds" }
+      }
+    },
+    "boom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "minLengthFt", "maxLengthFt", "sections"],
+      "properties": {
+        "type": { "enum": ["telescopic", "lattice", "articulating"] },
+        "minLengthFt": { "type": "number", "minimum": 1 },
+        "maxLengthFt": { "type": "number", "minimum": 1 },
+        "sections": { "type": ["integer", "null"], "minimum": 1 }
+      }
+    },
+    "boomConfigurations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["lengthFt", "label"],
+        "properties": {
+          "lengthFt": { "type": "number", "minimum": 1 },
+          "label": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "counterweight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["weightLb", "description"],
+      "properties": {
+        "weightLb": { "type": "integer", "minimum": 0 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["betweenRadii", "betweenBoomLengths", "jibBetweenKeys"],
+      "properties": {
+        "betweenRadii": { "const": "next-longer" },
+        "betweenBoomLengths": { "enum": ["next-longer", "lower-of-adjacent"] },
+        "jibBetweenKeys": { "enum": ["next-lower-angle", "next-longer-radius"] }
+      }
+    },
+    "geometry": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["pivotOffsetFt", "pivotHeightFt", "minLoadedBoomAngleDeg", "maxLoadedBoomAngleDeg"],
+      "properties": {
+        "pivotOffsetFt": { "type": "number" },
+        "pivotHeightFt": { "type": "number", "minimum": 0 },
+        "minLoadedBoomAngleDeg": { "type": "number", "minimum": 0 },
+        "maxLoadedBoomAngleDeg": { "type": "number", "minimum": 1 }
+      }
+    },
+    "configurations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/configuration" }
+    },
+    "rangeDiagram": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["boomLengthsFt", "radiiFt", "angleDeg", "tipHeightFt"],
+      "properties": {
+        "boomLengthsFt": { "$ref": "#/$defs/axis" },
+        "radiiFt": { "$ref": "#/$defs/axis" },
+        "angleDeg": { "$ref": "#/$defs/grid" },
+        "tipHeightFt": { "$ref": "#/$defs/grid" }
+      }
+    },
+    "jib": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["description", "lengthsFt", "offsetsDeg", "tables", "notes"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "lengthsFt": { "$ref": "#/$defs/axis" },
+        "offsetsDeg": { "type": "array", "minItems": 1, "items": { "type": "number", "minimum": 0 } },
+        "tables": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mainBoomLengthFt", "jibLengthFt", "offsetDeg", "basis", "keys", "capacitiesLb"],
+            "properties": {
+              "mainBoomLengthFt": { "type": "number", "minimum": 1 },
+              "jibLengthFt": { "type": "number", "minimum": 1 },
+              "offsetDeg": { "type": "number", "minimum": 0 },
+              "basis": { "enum": ["boom-angle", "radius"] },
+              "keys": { "type": "array", "minItems": 1, "items": { "type": "number" } },
+              "capacitiesLb": { "type": "array", "minItems": 1, "items": { "type": ["integer", "null"], "minimum": 0 } }
+            }
+          }
+        },
+        "notes": { "$ref": "#/$defs/notes" }
+      }
+    },
+    "deductions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "item", "weightLb"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "kind": { "enum": ["hook-block", "headache-ball", "jib-stowed", "jib-erected", "aux-head", "attachment"] },
+          "item": { "type": "string", "minLength": 1 },
+          "weightLb": { "type": "integer", "minimum": 0 },
+          "maxParts": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "linePull": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["rope", "maxPermissibleLinePullLb", "maxParts", "rows"],
+      "properties": {
+        "rope": { "type": "string", "minLength": 1 },
+        "maxPermissibleLinePullLb": { "type": "integer", "minimum": 1 },
+        "maxParts": { "type": "integer", "minimum": 1 },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["parts", "maxLoadLb"],
+            "properties": {
+              "parts": { "type": "integer", "minimum": 1 },
+              "maxLoadLb": { "type": "integer", "minimum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "notes": { "$ref": "#/$defs/notes" }
+  },
+  "$defs": {
+    "axis": { "type": "array", "minItems": 1, "items": { "type": "number", "minimum": 0 } },
+    "grid": { "type": "array", "minItems": 1, "items": { "type": "array", "minItems": 1, "items": { "type": ["number", "null"] } } },
+    "notes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "support", "workArea", "stabilityPercent", "counterweightLb", "boomLengthsFt", "radiiFt", "capacitiesLb", "structural"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "support": { "enum": ["outriggers-full", "outriggers-mid", "on-rubber-stationary", "on-rubber-creep", "tracks-extended", "tracks-retracted", "stabilizers-full", "stabilizers-mid"] },
+        "workArea": { "enum": ["360", "over-front", "over-rear"] },
+        "stabilityPercent": { "enum": [75, 85] },
+        "counterweightLb": { "type": "integer", "minimum": 0 },
+        "travel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maxSpeedMph", "boomPosition"],
+          "properties": {
+            "maxSpeedMph": { "type": "number", "minimum": 0 },
+            "boomPosition": { "type": "string", "minLength": 1 }
+          }
+        },
+        "boomLengthsFt": { "$ref": "#/$defs/axis" },
+        "radiiFt": { "$ref": "#/$defs/axis" },
+        "capacitiesLb": { "type": "array", "minItems": 1, "items": { "type": "array", "minItems": 1, "items": { "type": ["integer", "null"], "minimum": 0 } } },
+        "structural": { "type": "array", "minItems": 1, "items": { "type": "array", "minItems": 1, "items": { "type": "boolean" } } },
+        "noLoadMinAngle": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["boomLengthFt", "angleDeg"],
+            "properties": {
+              "boomLengthFt": { "type": "number", "minimum": 0 },
+              "angleDeg": { "type": "number", "minimum": 0 }
+            }
+          }
+        },
+        "notes": { "$ref": "#/$defs/notes" }
+      }
+    }
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "$schema": "../schema.json",
+  "id": "ht-50",
+  "class": "hydraulic-truck-crane",
+  "title": "Class HT-50 hydraulic truck crane (fictional)",
+  "fictional": true,
+  "summary": "Telescopic boom truck crane with a swing cab: 38 to 110 ft five-section boom, 100,000 lb maximum rating, 33 ft and 56 ft swing-away extension.",
+  "units": {
+    "weight": "lb",
+    "length": "ft",
+    "angle": "deg",
+    "statement": "All capacities in pounds. Lengths and radii in feet."
+  },
+  "boom": {
+    "type": "telescopic",
+    "minLengthFt": 38,
+    "maxLengthFt": 110,
+    "sections": 5
+  },
+  "counterweight": {
+    "weightLb": 12000,
+    "description": "Fixed 12,000 lb counterweight. All ratings require it installed."
+  },
+  "rules": {
+    "betweenRadii": "next-longer",
+    "betweenBoomLengths": "next-longer",
+    "jibBetweenKeys": "next-lower-angle"
+  },
+  "geometry": {
+    "pivotOffsetFt": -4,
+    "pivotHeightFt": 8,
+    "minLoadedBoomAngleDeg": 0,
+    "maxLoadedBoomAngleDeg": 78
+  },
+  "configurations": [
+    {
+      "id": "outriggers-full-360",
+      "label": "On outriggers fully extended (24 ft spread), 360°",
+      "support": "outriggers-full",
+      "workArea": "360",
+      "stabilityPercent": 85,
+      "counterweightLb": 12000,
+      "boomLengthsFt": [38, 50, 62, 74, 86, 98, 110],
+      "radiiFt": [10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100],
+      "capacitiesLb": [
+        [100000, 78100, 64300, null, null, null, null],
+        [88800, 69400, 57200, 48700, null, null, null],
+        [76100, 59500, 49000, 41800, 36500, null, null],
+        [58800, 48000, 39600, 33700, 29500, 26200, 23600],
+        [45400, 40300, 33200, 28300, 24700, 22000, 19800],
+        [37000, 34200, 28600, 24300, 21300, 18900, 17000],
+        [null, 28900, 25100, 21400, 18700, 16600, 14900],
+        [null, 25000, 22300, 19000, 16600, 14800, 13300],
+        [null, 22000, 20100, 17200, 15000, 13300, 12000],
+        [null, null, 18000, 15600, 13600, 12100, 10900],
+        [null, null, null, 13300, 11600, 10300, 9300],
+        [null, null, null, null, 10000, 8900, 8000],
+        [null, null, null, null, 8900, 7900, 7100],
+        [null, null, null, null, null, 7100, 6300],
+        [null, null, null, null, null, null, 5600]
+      ],
+      "structural": [
+        [true, true, true, false, false, false, false],
+        [true, true, true, true, false, false, false],
+        [true, true, true, true, true, false, false],
+        [false, true, true, true, true, true, true],
+        [false, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true],
+        [false, false, true, true, true, true, true],
+        [false, false, true, true, true, true, true],
+        [false, false, true, true, true, true, true],
+        [false, false, false, true, true, true, true],
+        [false, false, false, true, true, true, true],
+        [false, false, false, false, true, true, true],
+        [false, false, false, false, true, true, false],
+        [false, false, false, false, false, true, false],
+        [false, false, false, false, false, false, false]
+      ]
+    },
+    {
+      "id": "outriggers-mid-360",
+      "label": "On outriggers mid-extended (16 ft spread), 360°",
+      "support": "outriggers-mid",
+      "workArea": "360",
+      "stabilityPercent": 85,
+      "counterweightLb": 12000,
+      "boomLengthsFt": [38, 50, 62, 74, 86, 98, 110],
+      "radiiFt": [10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100],
+      "capacitiesLb": [
+        [80000, 74000, 64300, null, null, null, null],
+        [64000, 59200, 54400, 48700, null, null, null],
+        [49200, 45500, 41800, 38100, 34400, null, null],
+        [35500, 32800, 30200, 27500, 24800, 22200, 19500],
+        [27800, 25700, 23600, 21500, 19400, 17300, 15300],
+        [22800, 21100, 19400, 17700, 16000, 14200, 12500],
+        [null, 17900, 16400, 15000, 13500, 12100, 10600],
+        [null, 15500, 14300, 13000, 11700, 10500, 9200],
+        [null, 13700, 12600, 11500, 10400, 9300, 8100],
+        [null, null, 11300, 10300, 9300, 8300, 7300],
+        [null, null, null, 8500, 7700, 6800, 6000],
+        [null, null, null, null, 6500, 5800, 5100],
+        [null, null, null, null, 5700, 5100, 4500],
+        [null, null, null, null, null, 4500, 4000],
+        [null, null, null, null, null, null, 3500]
+      ],
+      "structural": [
+        [false, false, true, false, false, false, false],
+        [false, false, false, true, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false]
+      ]
+    },
+    {
+      "id": "rubber-rear-stationary",
+      "label": "On rubber, stationary, over the rear only",
+      "support": "on-rubber-stationary",
+      "workArea": "over-rear",
+      "stabilityPercent": 75,
+      "counterweightLb": 12000,
+      "boomLengthsFt": [38, 50, 62, 74, 86, 98, 110],
+      "radiiFt": [10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100],
+      "capacitiesLb": [
+        [33300, 30500, 27700, null, null, null, null],
+        [27200, 25000, 22700, 20400, null, null, null],
+        [21400, 19600, 17800, 16000, null, null, null],
+        [15700, 14400, 13100, 11800, null, null, null],
+        [12500, 11400, 10400, 9300, null, null, null],
+        [10300, 9400, 8600, 7700, null, null, null],
+        [null, 8000, 7300, 6600, null, null, null],
+        [null, 7000, 6400, 5700, null, null, null],
+        [null, 6200, 5600, 5100, null, null, null],
+        [null, null, 5100, 4500, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null]
+      ],
+      "structural": [
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false]
+      ],
+      "noLoadMinAngle": [
+        {
+          "boomLengthFt": 62,
+          "angleDeg": 20
+        },
+        {
+          "boomLengthFt": 74,
+          "angleDeg": 30
+        }
+      ],
+      "notes": ["On-rubber ratings apply over the rear only, within 5° either side of the carrier centerline, with the swing lock engaged. No load over the side or front on rubber.", "Tires inflated to the pressure on the cab placard. Do not travel with a load on this crane."]
+    }
+  ],
+  "rangeDiagram": {
+    "boomLengthsFt": [38, 50, 62, 74, 86, 98, 110],
+    "radiiFt": [10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100],
+    "angleDeg": [
+      [68, 74, 77, null, null, null, null],
+      [65, 71, 75, 78, null, null, null],
+      [60, 68, 72, 75, 77, null, null],
+      [51, 61, 67, 71, 74, 76, 77],
+      [40, 55, 62, 67, 70, 73, 75],
+      [27, 47, 57, 63, 67, 70, 72],
+      [null, 39, 51, 58, 63, 67, 69],
+      [null, 28, 45, 54, 59, 63, 66],
+      [null, 11, 38, 49, 55, 60, 64],
+      [null, null, 29, 43, 51, 57, 61],
+      [null, null, null, 30, 42, 49, 54],
+      [null, null, null, null, 31, 41, 48],
+      [null, null, null, null, 12, 31, 40],
+      [null, null, null, null, null, 16, 31],
+      [null, null, null, null, null, null, 19]
+    ],
+    "tipHeightFt": [
+      [43, 56, 68, null, null, null, null],
+      [42, 55, 68, 80, null, null, null],
+      [41, 54, 67, 80, 92, null, null],
+      [37, 52, 65, 78, 91, 103, 115],
+      [33, 49, 63, 76, 89, 102, 114],
+      [25, 45, 60, 74, 87, 100, 113],
+      [null, 39, 56, 71, 85, 98, 111],
+      [null, 32, 52, 67, 82, 96, 109],
+      [null, 18, 46, 63, 79, 93, 106],
+      [null, null, 38, 59, 75, 90, 104],
+      [null, null, null, 45, 65, 82, 97],
+      [null, null, null, null, 52, 72, 89],
+      [null, null, null, null, 26, 58, 79],
+      [null, null, null, null, null, 36, 65],
+      [null, null, null, null, null, null, 44]
+    ]
+  },
+  "jib": {
+    "description": "Bi-fold swing-away extension, 33 ft base section or 56 ft with the fly section. Ratings are for the main boom fully extended to 110 ft.",
+    "lengthsFt": [33, 56],
+    "offsetsDeg": [0, 15, 30],
+    "tables": [
+      {
+        "mainBoomLengthFt": 110,
+        "jibLengthFt": 33,
+        "offsetDeg": 0,
+        "basis": "boom-angle",
+        "keys": [78, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25],
+        "capacitiesLb": [8000, 7600, 7000, 6500, 5900, 5400, 4900, 4400, 3900, 3500, 3000, 2600]
+      },
+      {
+        "mainBoomLengthFt": 110,
+        "jibLengthFt": 33,
+        "offsetDeg": 15,
+        "basis": "boom-angle",
+        "keys": [78, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25],
+        "capacitiesLb": [7000, 6700, 6200, 5700, 5200, 4800, 4300, 3900, 3400, 3000, 2700, 2300]
+      },
+      {
+        "mainBoomLengthFt": 110,
+        "jibLengthFt": 33,
+        "offsetDeg": 30,
+        "basis": "boom-angle",
+        "keys": [78, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25],
+        "capacitiesLb": [6000, 5800, 5300, 4900, 4500, 4100, 3700, 3300, 3000, 2600, 2300, 2000]
+      },
+      {
+        "mainBoomLengthFt": 110,
+        "jibLengthFt": 56,
+        "offsetDeg": 0,
+        "basis": "boom-angle",
+        "keys": [78, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25],
+        "capacitiesLb": [5000, 4700, 4400, 4000, 3700, 3400, 3000, 2700, 2400, 2100, null, null]
+      },
+      {
+        "mainBoomLengthFt": 110,
+        "jibLengthFt": 56,
+        "offsetDeg": 15,
+        "basis": "boom-angle",
+        "keys": [78, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25],
+        "capacitiesLb": [4400, 4200, 3800, 3500, 3200, 3000, 2700, 2400, 2100, 1900, null, null]
+      },
+      {
+        "mainBoomLengthFt": 110,
+        "jibLengthFt": 56,
+        "offsetDeg": 30,
+        "basis": "boom-angle",
+        "keys": [78, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25],
+        "capacitiesLb": [3800, 3600, 3300, 3100, 2800, 2500, 2300, 2100, 1850, 1650, null, null]
+      }
+    ],
+    "notes": ["Extension ratings are by loaded main boom angle. For an angle between two listed angles, use the rating at the next lower listed angle.", "Extension ratings apply only with the main boom fully extended to 110 ft. Do not lift with the extension on a partly extended boom.", "When lifting from the extension, deduct the headache ball on the extension line, and the main hook block if it stays reeved on the main boom."]
+  },
+  "deductions": [
+    {
+      "id": "block-60t",
+      "kind": "hook-block",
+      "item": "60-ton, 5-sheave hook block",
+      "weightLb": 1100,
+      "maxParts": 10
+    },
+    {
+      "id": "block-30t",
+      "kind": "hook-block",
+      "item": "30-ton, 2-sheave hook block",
+      "weightLb": 550,
+      "maxParts": 4
+    },
+    {
+      "id": "ball-7t",
+      "kind": "headache-ball",
+      "item": "7.5-ton headache ball",
+      "weightLb": 350,
+      "maxParts": 1
+    },
+    {
+      "id": "jib-stowed",
+      "kind": "jib-stowed",
+      "item": "33/56 ft extension stowed on the boom",
+      "weightLb": 2400
+    },
+    {
+      "id": "jib-erected",
+      "kind": "jib-erected",
+      "item": "Extension erected but lifting from the main boom",
+      "weightLb": 5600
+    },
+    {
+      "id": "aux-head",
+      "kind": "aux-head",
+      "item": "Auxiliary boom head (single sheave), if installed",
+      "weightLb": 200
+    }
+  ],
+  "linePull": {
+    "rope": "Main hoist rope, rotation resistant (fictional rating)",
+    "maxPermissibleLinePullLb": 10000,
+    "maxParts": 10,
+    "rows": [
+      {
+        "parts": 1,
+        "maxLoadLb": 10000
+      },
+      {
+        "parts": 2,
+        "maxLoadLb": 20000
+      },
+      {
+        "parts": 3,
+        "maxLoadLb": 30000
+      },
+      {
+        "parts": 4,
+        "maxLoadLb": 40000
+      },
+      {
+        "parts": 5,
+        "maxLoadLb": 50000
+      },
+      {
+        "parts": 6,
+        "maxLoadLb": 60000
+      },
+      {
+        "parts": 7,
+        "maxLoadLb": 70000
+      },
+      {
+        "parts": 8,
+        "maxLoadLb": 80000
+      },
+      {
+        "parts": 9,
+        "maxLoadLb": 90000
+      },
+      {
+        "parts": 10,
+        "maxLoadLb": 100000
+      }
+    ]
+  },
+  "notes": ["This chart is fictional. It is written for training and exam-style practice only and must never be used to plan or make a lift. Always use the chart supplied with the crane, matched to its serial number.", "Capacities are in pounds. Lengths and radii are in feet. Boom angles are loaded boom angles in degrees above horizontal.", "Operating radius is the horizontal distance from the axis of rotation to the center of the hoist line or load block with the load applied.", "Capacities are gross. The weight of all load-handling devices (hook blocks, headache balls, slings, shackles, spreader bars, and other rigging) is part of the load and must be deducted from the gross capacity to get the net load that may be lifted.", "Capacities in shaded (structural) cells are limited by the strength of the crane, not by tipping. Do not use tipping as a warning: the crane can fail structurally before it shows any sign of tipping.", "For a radius between two listed radii, use the capacity at the next longer listed radius. Do not interpolate.", "Do not lift beyond the longest listed radius, inside the shortest listed radius, at a boom length outside the listed lengths, or where no capacity is shown. A blank cell means no load may be handled there.", "Capacities assume a freely suspended load, the crane level within 1 percent, and a firm, uniform supporting surface. Reduce capacities for wind, side loading, swing speed, and dynamic loading.", "Stability-limited capacities on outriggers do not exceed 85 percent of tipping. On rubber they do not exceed 75 percent of tipping.", "For a boom length between two listed lengths, use the capacity of the next longer listed boom.", "Outrigger ratings require all outriggers set to the same extension and the tires clear of the ground.", "When the extension is stowed on the boom, deduct its effective weight from every main boom capacity.", "Minimum loaded boom angle for each on-rubber boom length is listed with that configuration. Below it the crane can tip with no load on the hook."]
+}
