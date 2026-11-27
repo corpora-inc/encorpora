@@ -8,6 +8,8 @@ REMOTE_BIN="${HARVEST_REMOTE_BIN:?}"
 args=()
 for a in "$@"; do
   if [[ $a == "$LOCAL_PREFIX"* ]]; then a="$REMOTE_PREFIX${a#"$LOCAL_PREFIX"}"; fi
+  # "@lab/…" names a file on the lab machine (e.g. the embedder GGUF), so configs stay machine-neutral.
+  if [[ $a == @lab/* ]]; then a="${HARVEST_REMOTE_LAB:?set HARVEST_REMOTE_LAB for @lab/ paths}/${a#@lab/}"; fi
   args+=("$a")
 done
 exec ssh -o ControlMaster=auto -o ControlPath="$HOME/.ssh/cm-crane-eval-%r@%h" -o ControlPersist=900 \

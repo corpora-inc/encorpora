@@ -1,0 +1,96 @@
+{
+ "batches": {
+  "V01": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.246716
+  },
+  "V02": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.213368
+  },
+  "V03": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.29924799999999996
+  },
+  "V04": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.3144638
+  },
+  "V05": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.4796038
+  },
+  "V06": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.5252612
+  },
+  "VD1": {
+   "items": 14,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.14604799999999998
+  }
+ },
+ "dropped": [],
+ "repaired": [],
+ "quote_dropped": [],
+ "dedupe": [
+  {
+   "dropped": "V01-06",
+   "kept": "avoid:crane-v1-0005",
+   "q": "on a tower crane when do you call the horizontal part a jib and when do you call it a boom"
+  }
+ ],
+ "review": [
+  {
+   "src": "V03-06",
+   "verdict": "corrected",
+   "why": "Correct under the regulation, though the excerpt omits the (a)(4)(ii) lead-in and the replacement option (B). The correction answers the yes/no question directly."
+  },
+  {
+   "src": "V03-09",
+   "verdict": "corrected",
+   "why": "Both marking the cable and using a spotter are required, and the Category I timing is right. The correction adds that the parts order must be documented."
+  },
+  {
+   "src": "V04-02",
+   "verdict": "corrected",
+   "why": "The phone rule is right, but the signal-guy follow-up should include the §1926.1421 conditions for electronic signals, especially hands-free reception. Those sections aren't in the quoted text but are in Subpart CC."
+  },
+  {
+   "src": "V04-06",
+   "verdict": "corrected",
+   "why": "The anchorage strength and the belt allowance for restraint are right. The extra claim about belts in fall arrest follows §1926.1423(d) literally but clashes with the body-belt ban in the incorporated §1926.502(d), and the question doesn't need it."
+  },
+  {
+   "src": "V04-08",
+   "verdict": "corrected",
+   "why": "All three outcomes are right, but the limits apply to any operator-in-training, so the qualifier 'who isn't certified' wrongly suggests a certified trainee is exempt."
+  },
+  {
+   "src": "V05-10",
+   "verdict": "corrected",
+   "why": "Saying the shift/monthly/annual schedule doesn't apply is too broad. 1441(a) keeps 1412(c) post-assembly inspection and 1413-1414 wire rope rules, and 1413 has its own shift, monthly and annual rope inspections. The correction fixes this."
+  }
+ ],
+ "final": 73
+}

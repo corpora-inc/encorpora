@@ -47,6 +47,8 @@ def main() -> None:
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--log", type=Path, required=True)
     ap.add_argument("--authored-at", default="2026-11-27")
+    ap.add_argument("--id-prefix", default="crane-v1")
+    ap.add_argument("--avoid", type=Path, help="an existing set: drop near-duplicates of its questions too")
     a = ap.parse_args()
 
     secs = {json.loads(l)["section_id"]: json.loads(l) for l in a.sections.open()}
@@ -168,10 +170,12 @@ def main() -> None:
         items = [it for it in items if not it.get("_drop")]
 
     kept = []
+    prior = [{"_src": f"avoid:{x['id']}", "question": x["question"], "section_ids": x.get("section_ids") or []}
+             for x in map(json.loads, a.avoid.open())] if a.avoid else []
     for it in items:
         t = tokens(it["question"])
         dup = None
-        for k in kept:
+        for k in prior + kept:
             u = tokens(k["question"])
             j = len(t & u) / len(t | u) if t and u else 0.0
             same_gold = bool(it["section_ids"]) and set(it["section_ids"]) == set(k["section_ids"])
@@ -187,7 +191,7 @@ def main() -> None:
     with a.out.open("w") as f:
         for i, it in enumerate(kept, 1):
             src = it.pop("_src")
-            row = {"id": f"crane-v1-{i:04d}", **it,
+            row = {"id": f"{a.id_prefix}-{i:04d}", **it,
                    "provenance": {"author": "claude-opus-5-5", "batch": src, "authored_at": a.authored_at}}
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
     log["final"] = len(kept)

@@ -16,10 +16,12 @@ python3 -m venv .venv && .venv/bin/pip install pyyaml
 | Path | What |
 |---|---|
 | `heldout-v1.jsonl` | 342 items, one JSON object per line. |
+| `heldout-v2.jsonl` | 73 fresh items (59 answerable, 14 must-decline), written after the core lane tuned its dense gate on v1; same process and checks. See `results/2026-11-27-dense-gate/README.md`. |
+| `authoring/raw-v2/`, `authoring/review-v2.json`, `authoring/verify-log-v2.json` | v2's authored batches, independent check and verification log. |
 | `sources/registry.json` | Source editions: eCFR URL, "up to date as of" date, SHA-256 of the fetched bytes. |
 | `sources/sections-2026-11-24.jsonl` | The source split into citation-path sections (own text only). Gold ids and quotes are verified against it. |
 | `tools/ecfr_sections.py` | Fetches the eCFR XML and splits it into sections. |
-| `tools/author.py` | Authoring prompts and batches (Opus). Raw outputs in `authoring/raw/`. |
+| `tools/author.py` | Authoring prompts and batches (Opus). Raw outputs in `authoring/raw/`; `--set v2 --avoid heldout-v1.jsonl` writes the v2 batches. |
 | `tools/review.py` | Independent check of every item by a second model (Sonnet). Verdicts in `authoring/review-v1.json`. |
 | `tools/build_set.py` | Deterministic verification, review application, dedupe, ids. |
 | `tools/overrides.json` | Every edit made after the independent check, each with its reason. |
@@ -109,7 +111,7 @@ the pipeline's prompts or caches.
 | Dropped by the eval lane | 1 must-decline item naming a source that may join the corpus |
 | Items in v1 | **342**: 291 answerable, 51 must-decline |
 
-Rebuild the set from the committed outputs (byte-identical):
+Rebuild the set from the committed outputs (byte-identical; v2 adds `--raw crane/eval/authoring/raw-v2 --review crane/eval/authoring/review-v2.json --avoid crane/eval/heldout-v1.jsonl --id-prefix crane-v2`):
 
 ```sh
 python3 crane/eval/tools/build_set.py --sections crane/eval/sources/sections-2026-11-24.jsonl \

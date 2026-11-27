@@ -153,6 +153,32 @@ DECLINE_BATCHES = [
     ("D02", "decline-legal: 7, decline-non-crane: 9, decline-other-jurisdiction: 7, decline-other: 3"),
 ]
 
+# Set v2 ("fresh"): a small second held-out set written after the core lane tuned its dense gate on
+# v1, so that gate can be scored on items it never saw. Same authoring rules; each batch also sees
+# the v1 questions on its sections and must not repeat them.
+V2_BATCHES = [
+    ("V01", ["29cfr1926.1400", "29cfr1926.1401", "29cfr1926.1402", "29cfr1926.1403", "29cfr1926.1404",
+             "29cfr1926.1405", "29cfr1926.1406"], 10, "scope, definitions, ground conditions, assembly/disassembly"),
+    ("V02", ["29cfr1926.1407", "29cfr1926.1408", "29cfr1926.1409", "29cfr1926.1410", "29cfr1926.1411"], 10,
+     "power lines: assembly, operation, Table A, closer-than-Table-A work, travel, Table T"),
+    ("V03", ["29cfr1926.1412", "29cfr1926.1413", "29cfr1926.1414", "29cfr1926.1415", "29cfr1926.1416"], 10,
+     "inspections, wire rope, safety devices and operational aids"),
+    ("V04", ["29cfr1926.1417", "29cfr1926.1418", "29cfr1926.1419", "29cfr1926.1420", "29cfr1926.1421",
+             "29cfr1926.1422", "29cfr1926.1423", "29cfr1926.1424", "29cfr1926.1425", "29cfr1926.1426",
+             "29cfr1926.1427", "29cfr1926.1428", "29cfr1926.1429", "29cfr1926.1430"], 10,
+     "operation, signals, fall protection, work area control, operator and signal person qualification, training"),
+    ("V05", ["29cfr1926.1431", "29cfr1926.1432", "29cfr1926.1433", "29cfr1926.1434", "29cfr1926.1435",
+             "29cfr1926.1436", "29cfr1926.1437", "29cfr1926.1438", "29cfr1926.1439", "29cfr1926.1440",
+             "29cfr1926.1441", "29cfr1926.1442"], 10,
+     "personnel hoisting, multiple-crane lifts, design, tower cranes, derricks, floating cranes, overhead cranes in construction, pile drivers, sidebooms, small equipment"),
+    ("V06", ["29cfr1910.179", "29cfr1910.180", "29cfr1910.184"], 10,
+     "general industry: overhead and gantry cranes; crawler, locomotive and truck cranes; slings"),
+]
+V2_DECLINE_BATCHES = [
+    ("VD1", "decline-manufacturer: 3, decline-specific-load-chart: 2, decline-asme: 2, decline-legal: 2, "
+            "decline-non-crane: 2, decline-other-jurisdiction: 2, decline-other: 1"),
+]
+
 
 def load_sections(path: Path) -> list[dict]:
     return [json.loads(l) for l in path.open()]
@@ -196,19 +222,34 @@ def main() -> None:
     ap.add_argument("--only", nargs="*")
     ap.add_argument("--jobs", type=int, default=3)
     ap.add_argument("--model", default="opus")
+    ap.add_argument("--set", choices=["v1", "v2"], default="v1")
+    ap.add_argument("--avoid", type=Path, help="v2: an existing set (JSON lines) whose questions must not be repeated")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
     rows = load_sections(a.sections)
     jobs = []
-    for batch_id, prefixes, n, focus in BATCHES:
+    batches, decline_batches = (BATCHES, DECLINE_BATCHES) if a.set == "v1" else (V2_BATCHES, V2_DECLINE_BATCHES)
+    avoid = [json.loads(l) for l in a.avoid.open()] if a.avoid else []
+
+    def avoid_block(prefixes: list[str] | None) -> str:
+        qs = [it["question"] for it in avoid
+              if prefixes is None and it.get("must_decline")
+              or prefixes is not None and any(in_prefix(s, prefixes) for s in it.get("section_ids") or [])]
+        if not qs:
+            return ""
+        return ("\nEXISTING QUESTIONS ON THIS MATERIAL: do not repeat or paraphrase any of them; ask about "
+                "other facts, conditions or situations.\n" + "\n".join(f"- {q}" for q in qs) + "\n")
+
+    for batch_id, prefixes, n, focus in batches:
         sel = [r for r in rows if in_prefix(r["section_id"], prefixes)]
         prompt = (f"Write {n} test items about: {focus}.\nUse a different asking style for most items "
-                  f"and at least 3 equipment-specific items where the text allows.\n\nREGULATION TEXT\n"
-                  f"{render(sel)}\n")
+                  f"and at least 3 equipment-specific items where the text allows.\n{avoid_block(prefixes)}"
+                  f"\nREGULATION TEXT\n{render(sel)}\n")
         jobs.append((batch_id, SYSTEM, SCHEMA, prompt))
     toc = "\n".join(f"[{r['section_id']}] {r['heading']}" for r in rows if r["depth"] == 0)
-    for batch_id, counts in DECLINE_BATCHES:
-        prompt = f"Write these must-decline items: {counts}.\n\nTABLE OF CONTENTS OF THE SOURCES\n{toc}\n"
+    for batch_id, counts in decline_batches:
+        prompt = (f"Write these must-decline items: {counts}.\n{avoid_block(None)}"
+                  f"\nTABLE OF CONTENTS OF THE SOURCES\n{toc}\n")
         jobs.append((batch_id, DECLINE_SYSTEM, DECLINE_SCHEMA, prompt))
     jobs = [j for j in jobs if (not a.only or j[0] in a.only) and not (a.out / f"{j[0]}.json").exists()]
 

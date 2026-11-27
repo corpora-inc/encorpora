@@ -1,0 +1,668 @@
+{
+ "V02-01": {
+  "key": "V02-01",
+  "verdict": "keep",
+  "why": "Table T gives 4 ft for up to 0.75 kV, and 1411(b)(4) requires a dedicated spotter if any part will get closer than 20 ft.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-02": {
+  "key": "V02-02",
+  "verdict": "keep",
+  "why": "345 kV falls in Table T's over 50 to 345 band (10 ft) and Table A's over 200 to 350 band (20 ft).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-03": {
+  "key": "V02-03",
+  "verdict": "keep",
+  "why": "This matches 1408(g)(2) and (g)(3) directly.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-04": {
+  "key": "V02-04",
+  "verdict": "keep",
+  "why": "1408(h) covers manufacturer procedures and conditions of use, and (b)(4)(i) covers the alarm setting when the alarm is the chosen measure.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-05": {
+  "key": "V02-05",
+  "verdict": "keep",
+  "why": "The attendees and nonconductive tag lines match 1407(b)(1)-(2). These apply under the energized-line options, which the question's lines within 20 ft reasonably implies.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-06": {
+  "key": "V02-06",
+  "verdict": "keep",
+  "why": "The continuous contact, visual aid, positioning, communication and timely-information duties all match 1407(b)(3)(i).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-07": {
+  "key": "V02-07",
+  "verdict": "keep",
+  "why": "This matches 1410(e) and (h): documented, immediately available on-site, and one identified director with stop-work authority.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-08": {
+  "key": "V02-08",
+  "verdict": "keep",
+  "why": "1408(e) requires utility confirmation that the line has been and continues to be deenergized and visibly grounded at the worksite.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-09": {
+  "key": "V02-09",
+  "verdict": "keep",
+  "why": "1411(b)(1) and (b)(3) address boom lowering and the effects of speed and terrain, including boom movement.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V02-10": {
+  "key": "V02-10",
+  "verdict": "keep",
+  "why": "All three parts match 1410(d)(12), (d)(5) and (d)(10), including the exception for unavailable cover-up.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-01": {
+  "key": "V01-01",
+  "verdict": "keep",
+  "why": "Matches 1404(q)(3): floats, when used, must be attached. The text doesn't require pinning specifically.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-02": {
+  "key": "V01-02",
+  "verdict": "keep",
+  "why": "1404(k) says the weight of each component must be readily available.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-03": {
+  "key": "V01-03",
+  "verdict": "keep",
+  "why": "The RPE written approval, the modification alternative and the post-assembly inspection all match 1404(m). The inspector's qualification is left to the cross-referenced 1412(c), which isn't quoted.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-04": {
+  "key": "V01-04",
+  "verdict": "keep",
+  "why": "Accurately restates 1404(h)(6)(i)-(ii), including the Appendix B example.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-05": {
+  "key": "V01-05",
+  "verdict": "keep",
+  "why": "1400(c)(17)(iii)(C) removes the delivery exclusion for structural steel, including bundled or unbundled decking.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-06": {
+  "key": "V01-06",
+  "verdict": "keep",
+  "why": "Matches the 1401 definition of 'Boom (tower cranes)'.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-07": {
+  "key": "V01-07",
+  "verdict": "keep",
+  "why": "1404(h)(11) covers backward stability before swing or travel, and (h)(9) covers counterweight movement. The A/D director duty comes from the 1404(h) lead-in, which isn't quoted.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-08": {
+  "key": "V01-08",
+  "verdict": "keep",
+  "why": "Both exclusions are explicit in 1400(c)(12) and (c)(3), and pulling a car from a ditch fits clearing wrecks.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-09": {
+  "key": "V01-09",
+  "verdict": "keep",
+  "why": "Matches 1400(f): establish, effectively communicate and enforce work rules.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V01-10": {
+  "key": "V01-10",
+  "verdict": "keep",
+  "why": "Matches 1404(h)(8). The A/D director's duty to address it comes from the 1404(h) lead-in, which isn't quoted.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-01": {
+  "key": "V03-01",
+  "verdict": "keep",
+  "why": "1413(d) bans lubricants of a type that hinder inspection, and the gold applies this to a coating that hides the rope's condition.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-02": {
+  "key": "V03-02",
+  "verdict": "keep",
+  "why": "Matches 1414(h): seizings go on each side of the cut, with length and number set by the rope manufacturer's instructions.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-03": {
+  "key": "V03-03",
+  "verdict": "keep",
+  "why": "The date thresholds are applied correctly, and the stated general hoisting use means the lattice boom use exceptions don't apply.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-04": {
+  "key": "V03-04",
+  "verdict": "keep",
+  "why": "The temporary measures, the Category II 30-day limit and the parts-ordering exception all match the text.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-05": {
+  "key": "V03-05",
+  "verdict": "keep",
+  "why": "1415(a)(4) and (b) require the lock, require taking the equipment out of service if it fails, and bar alternative measures.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-06": {
+  "key": "V03-06",
+  "verdict": "keep",
+  "why": "Correct under the regulation, though the excerpt omits the (a)(4)(ii) lead-in and the replacement option (B). The correction answers the yes/no question directly.",
+  "corrected_answer": "This is a Category II deficiency, so the rope can't be used until the employer complies with the manufacturer's established removal criterion (or a different one the manufacturer approved in writing for that specific rope), replaces the rope, or, if the damage is localized, cuts out the damaged section (no splicing, at least two wraps left on the drum at the lowest position). So you may keep running it if the manufacturer's criterion for this exact rope applies and the rope is within it.",
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-07": {
+  "key": "V03-07",
+  "verdict": "keep",
+  "why": "A broken strand is Category III, and the replace-or-sever options and the choice to tag out the equipment or just that hoist match the text.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-08": {
+  "key": "V03-08",
+  "verdict": "keep",
+  "why": "5,000 lb is below the over-6,000 lb threshold. The separate articulating-crane rule only covers machines built after Nov 8, 2011, so a 2008 machine isn't covered either way.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-09": {
+  "key": "V03-09",
+  "verdict": "keep",
+  "why": "Both marking the cable and using a spotter are required, and the Category I timing is right. The correction adds that the parts order must be documented.",
+  "corrected_answer": "Do both: mark the cable where the operator can easily see it, at a point that gives enough time to stop the hoist, and use a spotter when extending the boom. A2B is a Category I aid and must be repaired within 7 calendar days, or, if the employer documents that parts were ordered within 7 calendar days of the failure, within 7 calendar days of receiving them.",
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V03-10": {
+  "key": "V03-10",
+  "verdict": "keep",
+  "why": "The scope and particular-attention areas match 1413(c)(2)(ii). The qualified-person detail is correct under the regulation but isn't in the excerpt, and the (a)(3) critical review items are referenced without being listed.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-01": {
+  "key": "V05-01",
+  "verdict": "keep",
+  "why": "The one-person limit, the signal person at the shaft opening and independent fall protection are all in the quoted text. '6 ft' falls within drill-shaft scope.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-02": {
+  "key": "V05-02",
+  "verdict": "keep",
+  "why": "The 10x sling factor, 5x for hardware and hooks, thimbled eyes and personnel-only use of the bridle all match 1431(g)(3)-(5).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-03": {
+  "key": "V05-03",
+  "verdict": "keep",
+  "why": "1431(k)(7) requires the operator to be at controls with boom and swing functions, on site and in view of the equipment. Stepping away from the controls isn't allowed.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-04": {
+  "key": "V05-04",
+  "verdict": "keep",
+  "why": "This matches 1435(b)(6): no crane may be able to contact another crane's structure, and passing over is permitted.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-05": {
+  "key": "V05-05",
+  "verdict": "keep",
+  "why": "The Category I status, temporary measures for the load moment device and 7-day repair rule with its parts-order exception match 1435(e)(5).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-06": {
+  "key": "V05-06",
+  "verdict": "keep",
+  "why": "This restates both winch head rules in 1436(k) accurately.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-07": {
+  "key": "V05-07",
+  "verdict": "keep",
+  "why": "This matches 1436(f)(2): no indicator is required, but one of the two listed alternatives must be in place.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-08": {
+  "key": "V05-08",
+  "verdict": "keep",
+  "why": "The 40 mph load chart minimum and the Table M2 values of 60 mph and 1 ft at 125% of rated capacity match the text.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-09": {
+  "key": "V05-09",
+  "verdict": "keep",
+  "why": "Both options in 1437(c)(2), including the training that goes with the signs-and-markings option, are stated correctly.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V05-10": {
+  "key": "V05-10",
+  "verdict": "keep",
+  "why": "Saying the shift/monthly/annual schedule doesn't apply is too broad. 1441(a) keeps 1412(c) post-assembly inspection and 1413-1414 wire rope rules, and 1413 has its own shift, monthly and annual rope inspections. The correction fixes this.",
+  "corrected_answer": "No operator certification is required for equipment rated 2,000 lbs or less, but the employer must train each operator on safe operation of that type of equipment before they run it. Equipment inspections follow the manufacturer's procedures rather than the general equipment inspection schedule. However, the post-assembly inspection in 1926.1412(c) and the wire rope requirements in 1926.1413-1414, including 1413's shift, monthly and annual wire rope inspections, still apply.",
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-01": {
+  "key": "V04-01",
+  "verdict": "keep",
+  "why": "Matches the two-full-wraps rule in §1926.1417(t) for both load and boom.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-02": {
+  "key": "V04-02",
+  "verdict": "keep",
+  "why": "The phone rule is right, but the signal-guy follow-up should include the §1926.1421 conditions for electronic signals, especially hands-free reception. Those sections aren't in the quoted text but are in Subpart CC.",
+  "corrected_answer": "No. While actually operating, you can't do anything that diverts your attention, including using a cell phone, except for signal communications. If a phone is used for signals, the electronic-signal rules in §1926.1421 also apply: the device must be tested on site before operations begin, signals must go through a dedicated channel (subject to that section's exceptions), and your reception must be hands-free.",
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-03": {
+  "key": "V04-03",
+  "verdict": "keep",
+  "why": "The exemption from §1926.1427 and the training duty under §1926.1430(c) are both directly supported.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-04": {
+  "key": "V04-04",
+  "verdict": "keep",
+  "why": "Both prohibitions match §1926.1417(aa)(1). The tower-crane carve-out agrees with the regulation's structure, although the quoted text doesn't show it.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-05": {
+  "key": "V04-05",
+  "verdict": "keep",
+  "why": "A refinery or tank farm independently bars a live boom, and the pre-1984 allowance applies only when no prohibited circumstance exists.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-06": {
+  "key": "V04-06",
+  "verdict": "keep",
+  "why": "The anchorage strength and the belt allowance for restraint are right. The extra claim about belts in fall arrest follows §1926.1423(d) literally but clashes with the body-belt ban in the incorporated §1926.502(d), and the question doesn't need it.",
+  "corrected_answer": "A fall restraint system must be anchored to a part of the equipment that can withstand twice the maximum load an employee could put on it under reasonably anticipated conditions of use. Under §1926.1423(d), either body belts or body harnesses may be used in a fall restraint system.",
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-07": {
+  "key": "V04-07",
+  "verdict": "keep",
+  "why": "Matches §1926.1424(b), including the fallback to the employers when there is no controlling entity.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-08": {
+  "key": "V04-08",
+  "verdict": "keep",
+  "why": "All three outcomes are right, but the limits apply to any operator-in-training, so the qualifier 'who isn't certified' wrongly suggests a certified trainee is exempt.",
+  "corrected_answer": "An operator-in-training can't hoist personnel or operate in multiple-equipment lifts, and a sign-off doesn't change that. Multiple-lift rigging is also prohibited unless the operator's trainer determines that the trainee's skills are sufficient for this high-skill work.",
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-09": {
+  "key": "V04-09",
+  "verdict": "keep",
+  "why": "The military qualification applies only to federal DoD or Armed Forces employees, not private contractors, and isn't portable.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V04-10": {
+  "key": "V04-10",
+  "verdict": "keep",
+  "why": "Matches §1926.1427(d)(2) on both the most-similar-type rule and what the certificate must state.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-01": {
+  "key": "V06-01",
+  "verdict": "keep",
+  "why": "Matches 1910.179(e)(2)(i)(a)-(b): 3 ft/s/s at 20% speed and energy capacity for at least 40%. The bolt-shear mounting point is extra but accurate.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-02": {
+  "key": "V06-02",
+  "verdict": "keep",
+  "why": "Matches (e)(3)(ii) on adjacent-end bumpers and (e)(3)(i) on 4.7 ft/s/s at one-third of rated load speed.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-03": {
+  "key": "V06-03",
+  "verdict": "keep",
+  "why": "The 20% parts-of-line limit and manufacturer's recommendation match (h)(2)(i). The replacement rope rule is accurately stated.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-04": {
+  "key": "V06-04",
+  "verdict": "keep",
+  "why": "Faithful to 1910.180(i)(6): confirm cars aren't being moved on the adjacent track and establish flag protection.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-05": {
+  "key": "V06-05",
+  "verdict": "keep",
+  "why": "All three points are directly supported by 1910.180(i)(4)(i)-(ii) and (i)(5)(i).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-06": {
+  "key": "V06-06",
+  "verdict": "keep",
+  "why": "Matches 1910.180(h)(3)(ix) on when outriggers are required, float attachment and the three wood blocking criteria.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-07": {
+  "key": "V06-07",
+  "verdict": "keep",
+  "why": "The minimum lengths for each sling type match 1910.184(f)(2)(i)-(iii).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-08": {
+  "key": "V06-08",
+  "verdict": "keep",
+  "why": "Matches (h)(3)(iii): no flush trimming, 6 diameters (4.5 in) for 3/4 in rope, and taper with two more tucks if the tail interferes.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-09": {
+  "key": "V06-09",
+  "verdict": "keep",
+  "why": "All four handle-related removal criteria in (g)(9)(iv)-(vii) are stated correctly.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "V06-10": {
+  "key": "V06-10",
+  "verdict": "keep",
+  "why": "The 180°F limit for nylon and polyester and 200°F for polypropylene match 1910.184(i)(7).",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-11": {
+  "key": "VD1-11",
+  "verdict": "keep",
+  "why": "Neither the silica PEL nor the respirator rules are in Subpart CC or 1910.179, .180 or .184. They fall under 1926.1153 and 1910.134.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-12": {
+  "key": "VD1-12",
+  "verdict": "keep",
+  "why": "The federal sources don't set Washington's L&I certification or accredited-inspector rules. 1926.1427 (including its government-licensing provisions) and 1926.1412 give only the federal baseline.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-13": {
+  "key": "VD1-13",
+  "verdict": "keep",
+  "why": "The sources give no EM 385-1-1 critical-lift threshold or plan contents. The 75% trigger in 1926.1417(o)(3) is for verifying load weight, and 1926.1432 covers multiple-crane lift plans, so neither answers this.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-14": {
+  "key": "VD1-14",
+  "verdict": "keep",
+  "why": "The regulations give no rental prices or brand recommendations. 1926.1402 only addresses ground conditions and supporting materials such as mats.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-01": {
+  "key": "VD1-01",
+  "verdict": "keep",
+  "why": "The Terex RCL override key procedure is manufacturer manual content; the sources give no model-specific procedure.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-02": {
+  "key": "VD1-02",
+  "verdict": "keep",
+  "why": "The sources give no Manitex turntable bearing grease type or greasing interval.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-03": {
+  "key": "VD1-03",
+  "verdict": "keep",
+  "why": "The sources have no CM Lodestar brake air gap value or adjustment procedure, only general brake, inspection and maintenance rules.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-04": {
+  "key": "VD1-04",
+  "verdict": "keep",
+  "why": "The rated capacity needs the Link-Belt load chart, which is not in the sources.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-05": {
+  "key": "VD1-05",
+  "verdict": "keep",
+  "why": "Capacity for the Fassi F545 jib setup comes only from its load chart; the roof truss text in 1926.1400(c)(17) concerns scope, not capacity.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-06": {
+  "key": "VD1-06",
+  "verdict": "keep",
+  "why": "No B30.20 spreader beam proof-test percentage appears; the sling, personnel platform and crane load-test figures don't answer it.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-07": {
+  "key": "VD1-07",
+  "verdict": "keep",
+  "why": "1926.1436(e) incorporates parts of B30.7 by reference, including installation, but the sources don't reproduce any fleet angle value for base-mounted drum winches.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-08": {
+  "key": "VD1-08",
+  "verdict": "keep",
+  "why": "Interpreting a contract indemnity clause and allocating liability is a legal question the sources don't address.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-09": {
+  "key": "VD1-09",
+  "verdict": "keep",
+  "why": "Warrant rights during an inspection and whether to call a lawyer are not addressed in Subpart CC or the listed 1910 sections.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "VD1-10": {
+  "key": "VD1-10",
+  "verdict": "keep",
+  "why": "CDL classes and endorsements are DOT and state licensing rules; 1926.1427 covers only crane operator certification and related qualification.",
+  "corrected_answer": null,
+  "model": [
+   "claude-sonnet-5-5"
+  ]
+ }
+}
