@@ -108,7 +108,9 @@ class Judge:
         return json.loads(f.read_text()) if f.exists() else None
 
     def _put(self, h: str, v: dict) -> None:
-        (self.cache_dir / f"{h}.json").write_text(json.dumps(v, ensure_ascii=False))
+        tmp = self.cache_dir / f".{h}.{os.getpid()}.{threading.get_ident()}.tmp"
+        tmp.write_text(json.dumps(v, ensure_ascii=False))
+        os.replace(tmp, self.cache_dir / f"{h}.json")  # atomic: a crash never leaves half an entry
 
     def _run(self, task: str, model: str, payloads: list[dict], render, system: str, schema: dict,
              list_key: str) -> list[dict | None]:

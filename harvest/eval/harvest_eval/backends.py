@@ -162,21 +162,24 @@ class OpenAIBackend(_TextBaseline):
         self.endpoint = cfg["endpoint"].rstrip("/")
         self.model = cfg["model"]
         self.max_tokens = cfg.get("max_tokens", 800)
-        self.api_key = os.environ.get(cfg.get("api_key_env", "OPENAI_API_KEY"), "none")
+        # Send a key only when the config names its variable: never leak a default key to a lab endpoint.
+        self.api_key = os.environ.get(cfg["api_key_env"]) if cfg.get("api_key_env") else None
         self.extra_body = cfg.get("extra_body", {})
 
     def ask(self, item: dict) -> Response:
         body = {"model": self.model, "temperature": 0, "max_tokens": self.max_tokens,
                 "messages": [{"role": "system", "content": self.system},
                              {"role": "user", "content": item["question"]}], **self.extra_body}
+        headers = {"Content-Type": "application/json"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
         req = urllib.request.Request(f"{self.endpoint}/chat/completions", data=json.dumps(body).encode(),
-                                     headers={"Content-Type": "application/json",
-                                              "Authorization": f"Bearer {self.api_key}"})
+                                     headers=headers)
         t0 = time.perf_counter()
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as r:
                 out = json.loads(r.read())
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError, ValueError) as e:
             return Response(ok=False, error=f"{type(e).__name__}: {e}")
         wall = (time.perf_counter() - t0) * 1000
         try:

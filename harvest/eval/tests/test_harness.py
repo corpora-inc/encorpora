@@ -172,6 +172,27 @@ class CorpusTests(unittest.TestCase):
             self.assertEqual(len(r.claims), 2)
 
 
+class AliasTests(unittest.TestCase):
+    def test_aliased_pack_ids_still_resolve(self):
+        """A pack that spells ids differently: quotes, citations and cited text
+        must be looked up in the set's spelling, after the aliases."""
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "s.jsonl"
+            p.write_text(json.dumps({"section_id": "29cfr9999-appendix-C", "parent_id": None, "text": ""}) + "\n"
+                         + json.dumps({"section_id": "29cfr9999-appendix-C(a)", "parent_id": "29cfr9999-appendix-C",
+                                       "text": "Know the load chart."}) + "\n")
+            n = Normalizer([(r"-appendix-([A-Z])", r"-app\1")])
+            c = Corpus.from_jsonl(p, n)
+            hb = HarvestBackend({"name": "h", "pack": d}, c, n)
+            r = hb.parse({"mode": "composed", "body": [
+                {"t": "quote", "section_id": "29cfr9999-appendix-C(a)", "text": "Know the load chart."}],
+                "citations": [], "retrieved": [{"chunk_id": "x", "ref_id": "29cfr9999-appendix-C(a)"}]}, 1.0)
+            self.assertEqual(r.citations, ["29cfr9999-appC(a)"])
+            self.assertEqual(r.retrieved, ["29cfr9999-appC(a)"])
+            self.assertTrue(c.quote_ok(r.quotes[0]["section_id"], r.quotes[0]["text"]))
+            self.assertIn("Know the load chart.", c.subtree("29cfr9999-appC"))
+
+
 class _OpenAIStub(http.server.BaseHTTPRequestHandler):
     def do_POST(self):  # noqa: N802
         n = int(self.headers["Content-Length"])
@@ -263,6 +284,19 @@ class EndToEnd(unittest.TestCase):
         self.assertEqual(main(["run", "--config", str(self.d / "bad.json"), "--out", str(out), "--no-judge"]), 0)
         res = json.loads((out / "results.json").read_text())
         self.assertEqual(res["backends"]["pack"]["errors"], 4)
+        self.assertEqual(res["backends"]["pack"]["decline"]["fn"], 1)  # an error on a must-decline item is a miss
+
+    def test_resume_ignores_answers_from_another_config(self):
+        out = self.d / "out-r"
+        self.assertEqual(main(["run", "--config", str(self.d / "eval.json"), "--out", str(out), "--no-judge",
+                               "--backends", "pack"]), 0)
+        cfg = json.loads((self.d / "eval.json").read_text())
+        cfg["backends"][0]["llm"] = "http://other"
+        (self.d / "eval2.json").write_text(json.dumps(cfg))
+        self.assertEqual(main(["run", "--config", str(self.d / "eval2.json"), "--out", str(out), "--no-judge",
+                               "--backends", "pack"]), 0)
+        lines = (out / "responses" / "pack.jsonl").read_text().splitlines()
+        self.assertEqual(len(lines), 8)  # every item asked again under the new config
 
 
 if __name__ == "__main__":

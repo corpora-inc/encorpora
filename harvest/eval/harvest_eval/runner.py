@@ -97,17 +97,17 @@ def run(args) -> int:
 
     normalize = Normalizer([(a["pattern"], a["replace"]) for a in (cfg.get("match") or {}).get("aliases", [])])
     ref_path = resolve(base, cfg.get("reference_sections"))
-    ref_corpus = Corpus.from_jsonl(ref_path) if ref_path and ref_path.exists() else None
+    ref_corpus = Corpus.from_jsonl(ref_path, normalize) if ref_path and ref_path.exists() else None
 
     backends_cfg = list(cfg.get("backends") or [])
     if args.pack:
         found = False
         for b in backends_cfg:
             if b["kind"] == "harvest":
-                b["pack"] = args.pack
+                b["pack"] = str(Path(args.pack).resolve())
                 found = True
         if not found:
-            backends_cfg.insert(0, {"name": "harvest", "kind": "harvest", "pack": args.pack})
+            backends_cfg.insert(0, {"name": "harvest", "kind": "harvest", "pack": str(Path(args.pack).resolve())})
     if args.binary:
         for b in backends_cfg:
             if b["kind"] == "harvest":
@@ -140,6 +140,7 @@ def run(args) -> int:
         "backends": {},
     }
     results = {"meta": meta, "backends": {}, "comparisons": {}}
+    incomplete: list[str] = []
     all_rows: dict[str, list[dict]] = {}
 
     for bcfg in backends_cfg:
@@ -149,7 +150,7 @@ def run(args) -> int:
             pack = resolve(base, str(bcfg["pack"]))
             bcfg["pack"] = str(pack)
             try:
-                corpus = Corpus.from_pack(pack)
+                corpus = Corpus.from_pack(pack, normalize)
             except Exception as e:  # noqa: BLE001 - a stub run may have no pack db
                 print(f"[{name}] pack not readable as sqlite ({e}); using reference sections", file=sys.stderr)
                 corpus = ref_corpus
@@ -164,7 +165,10 @@ def run(args) -> int:
             bmeta["system_prompt_sha256"] = hashlib.sha256(
                 (bcfg.get("system_prompt") or "").encode()).hexdigest() if bcfg.get("system_prompt") else "default"
         backend = make_backend(bcfg, corpus, normalize)
-        responses = collect(backend, items, out / "responses" / f"{name}.jsonl",
+        fingerprint = hashlib.sha256(json.dumps(
+            {**bcfg, "pack_sha256": bmeta.get("pack_sha256")}, sort_keys=True, default=str).encode()).hexdigest()
+        bmeta["config_sha256"] = fingerprint
+        responses = collect(backend, items, out / "responses" / f"{name}.jsonl", fingerprint,
                             jobs=bcfg.get("jobs", 1 if bcfg["kind"] == "harvest" else 3))
         is_h = isinstance(backend, HarvestBackend)
         versions = {r.pack_version for r in responses.values() if r.pack_version}
@@ -182,8 +186,14 @@ def run(args) -> int:
         all_rows[name] = rows
         agg = metrics.aggregate(rows, is_h)
         if judge:
+            missing = [it["id"] for it in items if it["id"] not in grades]
+            agg["grades_missing"] = missing
+            if missing:
+                incomplete.append(f"{name}: {len(missing)} items have no correctness grade")
             agg["judge_agreement"] = agreement_check(judge, jcfg, items, responses, grades, is_h)
         results["backends"][name] = agg
+        if corpus is not None and corpus is not ref_corpus:
+            corpus.close()
         print(f"[{name}] done: {summary_line(agg)}", file=sys.stderr, flush=True)
 
     names = list(all_rows)
@@ -196,11 +206,15 @@ def run(args) -> int:
         meta["judge"]["cost_usd"] = round(judge.cost_usd, 4)
         meta["judge"]["models_seen"] = sorted(judge.models)
     meta["finished_at"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    meta["incomplete"] = incomplete
 
     (out / "results.json").write_text(json.dumps(results, indent=1, ensure_ascii=False))
     write_csv(out / "items.csv", items, all_rows, out / "responses")
     write_report(out / "report.md", results, items, all_rows)
     print(f"wrote {out/'report.md'}, {out/'results.json'}, {out/'items.csv'}", file=sys.stderr)
+    if incomplete:
+        print("INCOMPLETE: " + "; ".join(incomplete) + " (re-run to fill from the cache)", file=sys.stderr)
+        return 3
     return 0
 
 
@@ -214,22 +228,28 @@ def summary_line(agg: dict) -> str:
     return " ".join(parts)
 
 
-def collect(backend, items: list[dict], path: Path, jobs: int) -> dict[str, Response]:
-    """Ask every item once; resume from an existing responses file."""
+def collect(backend, items: list[dict], path: Path, fingerprint: str, jobs: int) -> dict[str, Response]:
+    """Ask every item once; resume from an existing responses file, but only
+    from lines written under the same backend config (pack hash, binary, llm,
+    model, prompt)."""
     done: dict[str, Response] = {}
     if path.exists():
         with path.open() as fh:
             for line in fh:
                 d = json.loads(line)
-                if d["response"]["ok"]:
+                if d["response"]["ok"] and d.get("config") == fingerprint:
                     done[d["id"]] = Response.from_json(d["response"])
     todo = [it for it in items if it["id"] not in done]
     lock = threading.Lock()
     with path.open("a") as f, ThreadPoolExecutor(max_workers=max(1, jobs)) as ex:
         def one(it):
-            r = backend.ask(it)
+            try:
+                r = backend.ask(it)
+            except Exception as e:  # noqa: BLE001 - record it; one bad item must not end the run
+                r = Response(ok=False, error=f"{type(e).__name__}: {e}")
             with lock:
-                f.write(json.dumps({"id": it["id"], "response": r.to_json()}, ensure_ascii=False) + "\n")
+                f.write(json.dumps({"id": it["id"], "config": fingerprint, "response": r.to_json()},
+                                   ensure_ascii=False) + "\n")
                 f.flush()
                 done[it["id"]] = r
                 if not r.ok:

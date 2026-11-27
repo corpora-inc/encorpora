@@ -17,7 +17,11 @@ def norm(s: str) -> str:
 
 
 class Corpus:
-    def __init__(self) -> None:
+    """Section ids are stored through ``normalize`` (the run's aliases), so every
+    lookup uses the same spelling as the set and the normalized answer ids."""
+
+    def __init__(self, normalize=None) -> None:
+        self.norm = normalize or (lambda s: s)
         self.text: dict[str, str] = {}
         self.parent: dict[str, str | None] = {}
         self.children: dict[str, list[str]] = {}
@@ -26,8 +30,8 @@ class Corpus:
 
     # -- loading ---------------------------------------------------------
     @classmethod
-    def from_pack(cls, pack: Path) -> "Corpus":
-        c = cls()
+    def from_pack(cls, pack: Path, normalize=None) -> "Corpus":
+        c = cls(normalize)
         db = pack
         if pack.is_dir():
             dbs = sorted(pack.glob("*.sqlite"))
@@ -46,8 +50,8 @@ class Corpus:
         return c
 
     @classmethod
-    def from_jsonl(cls, path: Path) -> "Corpus":
-        c = cls()
+    def from_jsonl(cls, path: Path, normalize=None) -> "Corpus":
+        c = cls(normalize)
         with path.open() as f:
             for line in f:
                 r = json.loads(line)
@@ -60,6 +64,8 @@ class Corpus:
             self._db = None
 
     def _add(self, sid: str, parent: str | None, text: str) -> None:
+        sid = self.norm(sid)
+        parent = self.norm(parent) if parent else None
         self.text[sid] = norm(text)
         self.parent[sid] = parent
         if parent:
@@ -98,8 +104,8 @@ class Corpus:
 
     def sections_for_ref(self, ref_kind: str | None, ref_id: str) -> list[str]:
         """Sections a retrieved chunk stands for, in the order the pack lists them."""
-        if ref_id in self.text:
-            return [ref_id]
+        if self.norm(ref_id) in self.text:
+            return [self.norm(ref_id)]
         if self._db is None:
             return [ref_id]  # no pack: assume the ref is a section id
         con = self._db

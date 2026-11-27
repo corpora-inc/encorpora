@@ -47,6 +47,7 @@ def write_report(path: Path, results: dict, items: list[dict], all_rows: dict[st
         L.append(f"| {label} | " + " | ".join(fn(results["backends"][n]) for n in names) + " |")
 
     row("Items / errors", lambda a: f"{a['n']} / {a['errors']}")
+    row("Answerable graded / expected", lambda a: f"{a['correctness']['graded']} / {a['correctness']['expected']}")
     row("Fully correct (answerable)", lambda a: f(a["correctness"]["fully_correct"]) + ci(a["correctness"].get("fully_correct_ci95")))
     row("Mean score /1 (answerable)", lambda a: f(a["correctness"]["mean_score"]))
     row("Must-decline handled", lambda a: f(a["correctness"]["must_decline_handled"]))

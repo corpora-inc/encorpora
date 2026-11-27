@@ -103,21 +103,23 @@ def aggregate(rows: list[dict], is_harvest: bool) -> dict:
     out: dict = {"n": len(rows), "errors": sum(1 for r in rows if not r["ok"])}
     ans = [r for r in rows if not r["must_decline"]]
     dec = [r for r in rows if r["must_decline"]]
+    ret_rows = [r for r in ans if "r@1.lineage" in r]  # answerable items that have gold sections
     out["n_answerable"], out["n_must_decline"] = len(ans), len(dec)
 
     if is_harvest:
         ret = {}
         for level in LEVELS:
             for k in KS:
-                ps = [r.get(f"p@{k}.{level}", 0.0) for r in ans]
-                rs = [r.get(f"r@{k}.{level}", 0.0) for r in ans]
+                ps = [r.get(f"p@{k}.{level}", 0.0) for r in ret_rows]
+                rs = [r.get(f"r@{k}.{level}", 0.0) for r in ret_rows]
                 ret[f"{level}"] = ret.get(level, {})
                 ret[level][f"p@{k}"] = ratio(sum(ps), len(ps))
                 ret[level][f"r@{k}"] = ratio(sum(rs), len(rs))
-            ranks = [r.get(f"rank.{level}") for r in ans]
+            ranks = [r.get(f"rank.{level}") for r in ret_rows]
             ret[level]["mrr@10"] = ratio(sum(1 / x for x in ranks if x and x <= 10), len(ranks))
         out["retrieval"] = ret
-        out["retrieval_r@5_ci95"] = bootstrap_ci([r.get("r@5.lineage", 0.0) for r in ans])
+        out["retrieval_n"] = len(ret_rows)
+        out["retrieval_r@5_ci95"] = bootstrap_ci([r.get("r@5.lineage", 0.0) for r in ret_rows])
 
     answered = [r for r in rows if r["ok"] and r["declined"] is False]
     ans_answered = [r for r in answered if not r["must_decline"]]
@@ -138,14 +140,14 @@ def aggregate(rows: list[dict], is_harvest: bool) -> dict:
     out["quote_verbatim_rate"] = ratio(out["quotes"]["verbatim_ok"], nq)
 
     tp = sum(1 for r in dec if r["declined"])
-    fn = sum(1 for r in dec if r["declined"] is False)
+    fn = sum(1 for r in dec if r["declined"] is not True)  # an error on a must-decline item is a miss
     fp = sum(1 for r in ans if r["declined"])
     out["decline"] = {"tp": tp, "fp": fp, "fn": fn, "precision": ratio(tp, tp + fp), "recall": ratio(tp, tp + fn),
                       "false_decline_rate": ratio(fp, len(ans))}
 
     graded = [r for r in ans if r["score"] is not None]
     out["correctness"] = {
-        "graded": len(graded),
+        "graded": len(graded), "expected": len(ans),
         "mean_score": ratio(sum(r["score"] for r in graded) / 2, len(graded)),
         "fully_correct": ratio(sum(1 for r in graded if r["score"] == 2), len(graded)),
         "at_least_partly": ratio(sum(1 for r in graded if r["score"] >= 1), len(graded)),
