@@ -29,6 +29,7 @@ interval in parentheses.
 | v1 retrieval R@5, lineage | 0.630 | 0.750 | 0.760 |
 | **v2 fully correct (59)** | 18.6% (10.2–28.8) | **37.3%** (25.4–49.2) | **40.7%** (28.8–54.2) |
 | v2 must-decline declined (14) | 100% | 92.9% | 92.9% |
+| v2 must-decline handled (judge score 2) | 100% | 100% | 100% |
 | v2 answerable declined | 42.4% | 20.3% | 20.3% |
 | v2 unsupported-claim rate | 1.8% | 0.0% | 0.0% |
 | v2 retrieval R@5, lineage | 0.588 | 0.761 | 0.761 |
@@ -52,8 +53,8 @@ Item by item on answerable items (exact two-sided sign tests):
 ## Findings
 
 1. **The bake hit rate is 0.9% on v1 and 0% on v2, and the cache is right on
-   one of its three hits.** All three v1 hits score exactly at the 0.75
-   threshold. crane-v1-0048 (how long the utility has to give the voltage) is
+   one of its three hits.** The two wrong hits score exactly 0.75, the
+   threshold; the right one scores 0.83. crane-v1-0048 (how long the utility has to give the voltage) is
    correct. crane-v1-0097 (does a barge crane need a level indicator: no, it is
    exempt) got the shift-inspection answer on when to check level.
    crane-v1-0129 (the order of voice-signal parts, and whether a substitute
@@ -67,9 +68,10 @@ Item by item on answerable items (exact two-sided sign tests):
    Of the 14 v1 items newly fully correct, 13 are composed answers (10 of them
    with a baked-answer or procedure chunk in the top 5 retrieved) and one is the
    correct cache hit.
-3. **Dense + gate is now clearly better than lexical on the fresh set:** v2 24
-   items better and 0 worse, fully correct 11 gained and 0 lost (p = 0.001). The
-   dense-gate run on the previous pack could not show this (7 / 1, p = 0.07).
+3. **Dense + gate's fully-correct gain on the fresh set is now significant:**
+   v2 24 items better and 0 worse, fully correct 11 gained and 0 lost
+   (p = 0.001). On the previous pack the per-item score gain was already clear
+   (18 / 1) but the fully-correct gain was not (7 / 1, p = 0.07).
    Must-decline declines hold at 13 of 14 on v2 and 38 of 51 on v1.
 4. **gpt-oss now adds a little.** On v1 it is 46.7% against 43.6% (11 better, 2
    worse, p = 0.022). Its text survives the check in 40 of 342 answers (22 on
@@ -89,7 +91,7 @@ Item by item on answerable items (exact two-sided sign tests):
 | Pack contents | 2,258 sections, 287 terms, 2,467 facts, 137 explanations, 165 applicability rows, 1,004 questions, 87 answers with 673 alias rows (586 aliases plus each answer's canonical question), 10 procedures, 5,582 chunks with int8 EmbeddingGemma 2 vectors |
 | Import verdicts (pipeline) | questions 1,002 pass / 2 fail; answers 87 / 0; procedures 10 / 0 |
 | Servers | `../2026-11-27-dense-gate/lab/serve_pair.sh`: EmbeddingGemma 2 Q8_0 and gpt-oss 20B MXFP4 under llama-server (llama.cpp v1.1.0 CUDA), one guarded GPU job on the lab machine (NVIDIA DGX Spark) |
-| Claude usage | Judging $6.60 (v1: lexical 2.71, dense 2.66, gpt-oss 0.24; v2: 0.48, 0.44, 0.07), from the per-run results before the combined pass. Every answer identical to an earlier run came from the judge cache |
+| Claude usage | Judging $6.60 (v1: lexical 2.71, dense 2.66, gpt-oss 0.24; v2: 0.48, 0.44, 0.07), from the per-run results before the combined pass (the committed `results.json` files show 0 because the combined pass read the cache). Every answer identical to an earlier run came from the judge cache |
 
 ## Limits
 
