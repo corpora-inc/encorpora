@@ -2,7 +2,10 @@ import { useMemo, useState } from "react";
 import { useParams } from "react-router";
 import { engine } from "../engine/index.ts";
 import { lessonPath, readerPath, termPath, topicPath } from "../routes.ts";
+import { excerpt } from "../engine/text.ts";
+import { topicSections } from "../engine/topics.ts";
 import { ButtonLink, List, Page, Row } from "../ui/kit.tsx";
+import { AskBox } from "./Ask.tsx";
 import { Quote, Segments, CitePlate } from "../ui/law.tsx";
 import { useT } from "../ui/useT.ts";
 import { NotFound } from "./NotFound.tsx";
@@ -29,6 +32,8 @@ export function TopicScreen() {
   const { id = "" } = useParams();
   const t = useT();
   const e = engine();
+  // Before any early return: hooks run in the same order on every render.
+  const rules = useMemo(() => topicSections(e, id), [e, id]);
   const topic = e.topics.find((x) => x.topic_id === id);
   if (!topic) return <NotFound />;
   const lessons = e.lessons.filter((l) => l.topic_id === id).sort((a, b) => a.ord - b.ord);
@@ -43,6 +48,18 @@ export function TopicScreen() {
           ))}
         </List>
       )}
+      {rules.length > 0 && (
+        <List label={t("learn.topicRules")}>
+          {rules.map((s) => (
+            <Row key={s.section_id} to={readerPath(s.section_id)} title={s.heading ? `${s.citation} ${s.heading}` : s.citation} meta={s.heading ? undefined : excerpt(s.text)} />
+          ))}
+        </List>
+      )}
+      {lessons.length === 0 && rules.length === 0 && (
+        <List label={t("learn.topicRules")}>
+          <Row to="/learn/rules" title={t("learn.rules")} meta={t("learn.rules.meta")} />
+        </List>
+      )}
       {skills.length > 0 && (
         <div className="flex flex-col gap-3">
           <h2 className="text-h3">{t("learn.skills")}</h2>
@@ -54,6 +71,11 @@ export function TopicScreen() {
           <ButtonLink to={`/practice/topic/${encodeURIComponent(id)}`} variant="primary" className="self-start">
             {t("learn.practiceTopic")}
           </ButtonLink>
+        </div>
+      )}
+      {lessons.length === 0 && (
+        <div className="mt-2 border-t border-line pt-5">
+          <AskBox />
         </div>
       )}
     </Page>
