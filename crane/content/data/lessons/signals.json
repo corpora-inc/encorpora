@@ -1,0 +1,551 @@
+[
+ {
+  "lesson_id": "l.signals.01",
+  "topic_id": "signals",
+  "ord": 1,
+  "title": "When a signal person must be provided",
+  "skills": [
+   "signals.when-required"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **signal person** directs the operator when the operator cannot safely judge the lift alone. The rules name three situations where one must be provided. If any one applies, the lift needs a signal person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(a)(1)",
+    "text": "The point of operation, meaning the load travel or the area near or at load placement, is not in full view of the operator."
+   },
+   {
+    "t": "text",
+    "text": "The **point of operation** covers the whole load path and the landing area, not just the hook. If the load swings behind a building, drops below a slab edge, or lands where the cab cannot see, a signal person is required, even if the operator could see the pick."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(a)(2)",
+    "text": "When the equipment is traveling, the view in the direction of travel is obstructed."
+   },
+   {
+    "t": "text",
+    "text": "This covers travel, not just hoisting. A crane moving on a jobsite with its view ahead blocked by the boom, the load, stockpiles or structures needs a signal person guiding the travel."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(a)(3)",
+    "text": "Due to site specific safety concerns, either the operator or the person handling the load determines that it is necessary."
+   },
+   {
+    "t": "text",
+    "text": "Either the operator or the person handling the load can make this call by themselves. Neither one needs the other's agreement. Common reasons in the field are tight clearances, nearby workers, congested areas, or a load that is hard to control. Those examples are practice. The rule only says the operator or load handler decides it is necessary."
+   },
+   {
+    "t": "text",
+    "text": "Practice on site:\n- Walk the load path before the lift and check what the operator can see from the seat.\n- If any part of the path or the landing is hidden, assign a signal person before you start.\n- When in doubt, ask for one. The rule backs whoever asks."
+   },
+   {
+    "t": "check",
+    "question": "The operator can see the pick point but not the landing area on the far side of a wall. Is a signal person required?",
+    "answer": "Yes. The landing area is part of the point of operation, and it is not in full view."
+   },
+   {
+    "t": "check",
+    "question": "Who may decide that site conditions call for a signal person?",
+    "answer": "Either the operator or the person handling the load."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "4636d76ed14181e913e5",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "0d04ba8c49f9bf4350931ed04633a9c0ca845224c43cafa74f6c0a652b8ef4d8",
+   "output_sha256": "54debaa09ea7b095961af3f9c8a2b3870bc054bba562e343b1483d8f90f375a8",
+   "created_at": "2026-11-27T22:23:49+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.signals.02",
+  "topic_id": "signals",
+  "ord": 2,
+  "title": "Signal types, the Standard Method hand signals, and the chart",
+  "skills": [
+   "signals.types",
+   "signals.hand-signals"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "There are four allowed types of signal. Pick the type and the way you transmit it to suit the site."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(b)",
+    "text": "Types of signals. Signals to operators must be by hand, voice, audible, or new signals."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(e)",
+    "text": "The signals used (hand, voice, audible, or new), and means of transmitting the signals to the operator (such as direct line of sight, video, radio, etc.), must be appropriate for the site conditions."
+   },
+   {
+    "t": "text",
+    "text": "Hand signals only work with a clear line of sight. If the signal person must stand where the operator cannot see them, switch to radio voice signals or use video."
+   },
+   {
+    "t": "text",
+    "text": "**Standard Method** hand signals are the ones in Appendix A. They are required whenever hand signals are used."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(c)(1)",
+    "text": "When using hand signals, the Standard Method must be used (see appendix A of this subpart)."
+   },
+   {
+    "t": "text",
+    "text": "Study each signal on the chart: the arm position, the hand shape, and the motion. Learn Stop and Emergency Stop first, because anyone may need to give them. Give every signal clearly, at full arm's length, and stay where the operator can see you."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "hand-signals"
+   },
+   {
+    "t": "text",
+    "text": "**Non-standard hand signals** are allowed only in two cases: the Standard Method is infeasible, or it does not cover the operation or attachment. Even then, the signals must be agreed on before the work starts."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(c)(2)",
+    "text": "When using non-standard hand signals, the signal person, operator, and lift director (where there is one) must contact each other prior to the operation and agree on the non-standard hand signals that will be used."
+   },
+   {
+    "t": "text",
+    "text": "**New signals** are any signals other than hand, voice or audible signals. The employer must show they communicate at least as well as voice, audible or Standard Method hand signals, or that they comply with a national consensus standard that does."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(d)"
+   },
+   {
+    "t": "text",
+    "text": "Every direction is given from the operator's point of view. \"Left\" means the operator's left, not the signal person's left."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(k)",
+    "text": "All directions given to the operator by the signal person must be given from the operator's direction perspective."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1422",
+    "text": "Hand signal charts must be either posted on the equipment or conspicuously posted in the vicinity of the hoisting operations."
+   },
+   {
+    "t": "check",
+    "question": "When may non-standard hand signals be used?",
+    "answer": "Only when the Standard Method is infeasible or does not cover the operation or attachment, and only after the signal person, operator and lift director (if there is one) agree on them beforehand."
+   },
+   {
+    "t": "check",
+    "question": "Where must the hand signal chart be?",
+    "answer": "Posted on the equipment, or conspicuously posted near the hoisting operations."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "4636d76ed14181e913e5",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "0d04ba8c49f9bf4350931ed04633a9c0ca845224c43cafa74f6c0a652b8ef4d8",
+   "output_sha256": "54debaa09ea7b095961af3f9c8a2b3870bc054bba562e343b1483d8f90f375a8",
+   "created_at": "2026-11-27T22:23:49+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.signals.03",
+  "topic_id": "signals",
+  "ord": 3,
+  "title": "Radio and voice signals: testing, dedicated channel, three elements",
+  "skills": [
+   "signals.radio",
+   "signals.voice"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Radios, telephones and other electronic devices carry voice signals when there is no line of sight. Test the device on site before the work starts."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1420(a)",
+    "text": "The device(s) used to transmit signals must be tested on site before beginning operations to ensure that the signal transmission is effective, clear, and reliable."
+   },
+   {
+    "t": "text",
+    "text": "Practice: run the radio check from the positions you will actually use, including behind structures and at the landing point, because steel and concrete can block the signal."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1420(b)",
+    "text": "Signal transmission must be through a dedicated channel, except:"
+   },
+   {
+    "t": "text",
+    "text": "A **dedicated channel** carries lift signals only, with no other jobsite traffic. There are two exceptions. Several cranes and signal persons may share one dedicated channel to coordinate their work. A shared channel is also allowed when a crane on or next to railroad tracks must coordinate with trains or other equipment on those tracks."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1420(b)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1420(b)(2)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1420(c)",
+    "text": "The operator's reception of signals must be by a hands-free system."
+   },
+   {
+    "t": "text",
+    "text": "The operator needs both hands on the controls, so a handheld radio for receiving is not acceptable."
+   },
+   {
+    "t": "text",
+    "text": "Before operations start, the operator, the signal person and the lift director (if there is one) must agree on the voice signals. They must meet again if a worker is added or substituted, if there is confusion, or if a signal changes. They must all be able to communicate effectively in the language used."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1421(a)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1421(c)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1421(b)",
+    "text": "Each voice signal must contain the following three elements, given in the following order: function (such as hoist, boom, etc.), direction; distance and/or speed; function, stop command."
+   },
+   {
+    "t": "text",
+    "text": "Worked example: \"Hoist, up. Twenty feet, ten, five, two, one. Hoist, stop.\" This gives the function and direction first, then the distance counting down, then the function and the stop command. Another example: \"Swing, left, slow... swing, stop.\" Remember that left means the operator's left."
+   },
+   {
+    "t": "check",
+    "question": "Put these in the required order: distance/speed; function, stop command; function, direction.",
+    "answer": "Function, direction; then distance and/or speed; then function, stop command."
+   },
+   {
+    "t": "check",
+    "question": "Can the operator receive radio signals on a handheld unit?",
+    "answer": "No. Reception must be hands-free."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "4636d76ed14181e913e5",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "0d04ba8c49f9bf4350931ed04633a9c0ca845224c43cafa74f6c0a652b8ef4d8",
+   "output_sha256": "54debaa09ea7b095961af3f9c8a2b3870bc054bba562e343b1483d8f90f375a8",
+   "created_at": "2026-11-27T22:23:49+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.signals.04",
+  "topic_id": "signals",
+  "ord": 4,
+  "title": "One signaler at a time, stop from anyone, and interrupted signals",
+  "skills": [
+   "signals.one-signaler",
+   "signals.interruption"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Two people signaling the same crane at once can give conflicting commands. So only one person signals at a time."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(h)",
+    "text": "Only one person may give signals to a crane/derrick at a time, except in circumstances covered by paragraph (j) of this section."
+   },
+   {
+    "t": "text",
+    "text": "The exception is the **stop signal**. Anyone on site who sees a safety problem must give it, and the operator must obey it no matter who gives it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(j)",
+    "text": "Anyone who becomes aware of a safety problem must alert the operator or signal person by giving the stop or emergency stop signal."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(y)",
+    "text": "The operator must obey a stop (or emergency stop) signal, irrespective of who gives it."
+   },
+   {
+    "t": "text",
+    "text": "Communication can be lost when a radio drops out, a battery dies, or the signal person steps out of view. When that happens, the operator stops."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(f)",
+    "text": "If that ability is interrupted at any time, the operator must safely stop operations requiring signals until it is reestablished and a proper signal is given and understood."
+   },
+   {
+    "t": "text",
+    "text": "\"Safely stop\" means bringing the motion to a controlled halt. Practice: do not jerk the controls with the load in the air. Do not resume until contact is back and you receive a new proper signal that you understand. A signal you half heard does not count."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(g)",
+    "text": "If the operator becomes aware of a safety problem and needs to communicate with the signal person, the operator must safely stop operations."
+   },
+   {
+    "t": "text",
+    "text": "After a stop for a safety problem, operations resume only when the operator and the signal person agree the problem is resolved."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(g)"
+   },
+   {
+    "t": "check",
+    "question": "A laborer who is not the signal person gives the stop signal. What does the operator do?",
+    "answer": "The operator stops. A stop signal must be obeyed no matter who gives it."
+   },
+   {
+    "t": "check",
+    "question": "The radio goes silent during a swing. What must the operator do?",
+    "answer": "Safely stop, and stay stopped until communication is restored and a proper signal is given and understood."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "4636d76ed14181e913e5",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "0d04ba8c49f9bf4350931ed04633a9c0ca845224c43cafa74f6c0a652b8ef4d8",
+   "output_sha256": "54debaa09ea7b095961af3f9c8a2b3870bc054bba562e343b1483d8f90f375a8",
+   "created_at": "2026-11-27T22:23:49+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.signals.05",
+  "topic_id": "signals",
+  "ord": 5,
+  "title": "Signaling multiple cranes, and the horn",
+  "skills": [
+   "signals.multiple-cranes",
+   "signals.horn"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "When one signal person, or one shared channel, serves more than one crane, every operator must know which signals are meant for them."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1419(m)(1)",
+    "text": "for each signal, prior to giving the function/direction, the signal person must identify the crane/derrick the signal is for, or"
+   },
+   {
+    "t": "text",
+    "text": "The other option is an equally effective method of identifying which crane each signal is for."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(m)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Worked example on a shared dedicated channel: \"Crane Two, hoist, up, ten feet, five, two, one, hoist, stop.\" The crane ID comes first, then the three voice elements in order. Practice: assign short, distinct crane names before work begins, and confirm them in the radio check. An operator who hears a signal without an ID should not move."
+   },
+   {
+    "t": "text",
+    "text": "The **horn** lets the operator warn people nearby, for example before swinging or traveling. That example is practice. The rules require the horn to be present and working."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(7)(i)",
+    "text": "The equipment must have a horn that is either built into the equipment or is on the equipment and immediately available to the operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(7)(ii)",
+    "text": "If a built-in horn is not working properly, it must be tagged-out or removed. If a removable horn is not working properly, it must be removed."
+   },
+   {
+    "t": "text",
+    "text": "Check the horn during your pre-shift walkaround. A faulty horn is tagged out or removed. It is not left in place to give a false sense of a working warning device."
+   },
+   {
+    "t": "check",
+    "question": "A signal person directs two cranes. What must come before the function and direction in each signal?",
+    "answer": "The ID of the crane the signal is for, or another equally effective identification method."
+   },
+   {
+    "t": "check",
+    "question": "A removable horn fails. What is required?",
+    "answer": "It must be removed."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "4636d76ed14181e913e5",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "0d04ba8c49f9bf4350931ed04633a9c0ca845224c43cafa74f6c0a652b8ef4d8",
+   "output_sha256": "54debaa09ea7b095961af3f9c8a2b3870bc054bba562e343b1483d8f90f375a8",
+   "created_at": "2026-11-27T22:23:49+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.signals.06",
+  "topic_id": "signals",
+  "ord": 6,
+  "title": "Common signaling mistakes",
+  "skills": [
+   "signals.one-signaler",
+   "signals.voice",
+   "signals.radio",
+   "signals.hand-signals",
+   "signals.when-required"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "These are the errors that cause most signal-related incidents. Each one is paired with the rule it breaks."
+   },
+   {
+    "t": "text",
+    "text": "- **Directions from the wrong side.** The signal person says \"left\" from their own position, facing the cab. All directions are from the operator's perspective."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(k)"
+   },
+   {
+    "t": "text",
+    "text": "- **Several people signaling.** The foreman, the rigger and the signal person all wave at once. Only one person signals; anyone else may only give stop."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(h)"
+   },
+   {
+    "t": "text",
+    "text": "- **Voice signals out of order or with no stop.** \"Ten feet, up, hoist\" is out of order. A signal with no closing \"hoist, stop\" leaves the motion open-ended."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1421(b)"
+   },
+   {
+    "t": "text",
+    "text": "- **Shared, noisy channel.** Lift signals run on the general jobsite channel. Use a dedicated channel unless an exception applies."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1420(b)"
+   },
+   {
+    "t": "text",
+    "text": "- **No radio test.** The crew assumes the radios work and finds the dead spot mid-lift. Test on site before operations."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1420(a)"
+   },
+   {
+    "t": "text",
+    "text": "- **Continuing through a dropout.** The operator keeps booming down \"because the last signal was down.\" Stop until communication is restored and a proper signal is given."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(f)"
+   },
+   {
+    "t": "text",
+    "text": "- **Improvised hand signals.** Making up a signal mid-lift is not allowed. Use the Standard Method, or agree on non-standard signals beforehand when the rule permits them."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "- **Skipping the signal person.** The operator \"knows the spot\" but cannot see the landing. If the point of operation is not in full view, a signal person is required."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1419(a)(1)"
+   },
+   {
+    "t": "text",
+    "text": "- **A replacement who never joined the voice-signal meeting.** When a worker is added or substituted, the crew must agree on the voice signals again."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1421(a)"
+   },
+   {
+    "t": "check",
+    "question": "A new signal person takes over after lunch. Does the voice-signal agreement need to be revisited?",
+    "answer": "Yes. Substituting a worker triggers a new agreement on voice signals."
+   },
+   {
+    "t": "check",
+    "question": "The signal person, facing the cab, says \"swing right\" meaning their own right. What is wrong?",
+    "answer": "Directions must be given from the operator's perspective."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "4636d76ed14181e913e5",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "0d04ba8c49f9bf4350931ed04633a9c0ca845224c43cafa74f6c0a652b8ef4d8",
+   "output_sha256": "54debaa09ea7b095961af3f9c8a2b3870bc054bba562e343b1483d8f90f375a8",
+   "created_at": "2026-11-27T22:23:49+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

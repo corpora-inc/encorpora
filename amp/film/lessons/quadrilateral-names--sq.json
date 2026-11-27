@@ -1,0 +1,4570 @@
+{
+ "id": "quadrilateral-names--sq",
+ "title": "Categories of shapes",
+ "skill": "shape-hierarchy",
+ "teaches": [
+  "hierarchy-statement",
+  "inherited-property",
+  "quadrilateral-hierarchy-multiselect",
+  "classify-triangle-by-sides"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0.3,
+     -0.7,
+     5.7,
+     4.7
+    ],
+    "points": {
+     "A": [
+      1,
+      0
+     ],
+     "B": [
+      5,
+      0
+     ],
+     "C": [
+      5,
+      4
+     ],
+     "D": [
+      1,
+      4
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Champ, what shape is this?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Categories of shapes"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "A square.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "body",
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Could it also be a rectangle?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "problem",
+       "text": "Could it also be a rectangle?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "No. A rectangle is long.",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's test that idea using the rules for each name.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Which rules does it meet?",
+       "at": "rules"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.7,
+     7.6,
+     4.8
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      6,
+      0.4
+     ],
+     "C": [
+      5,
+      3.8
+     ],
+     "D": [
+      1,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "pairFocus0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 8
+     },
+     {
+      "id": "pairFocus1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 8
+     },
+     {
+      "id": "pairFocus2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 8
+     },
+     {
+      "id": "pairFocus3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 8
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Start with a closed, flat shape made of four straight sides. That's a quadrilateral.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Keep every name that fits"
+      },
+      {
+       "do": "text",
+       "text": "Quadrilateral",
+       "at": "quadrilateral"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "four",
+       "until": "That's"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Opposite sides do not share a corner. Watch the blue pair, then the purple pair.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "pairFocus0",
+        "pairFocus2"
+       ],
+       "at": "blue",
+       "dur": 0.12
+      },
+      {
+       "do": "hide",
+       "target": [
+        "pairFocus0",
+        "pairFocus2"
+       ],
+       "at": "then",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": [
+        "pairFocus1",
+        "pairFocus3"
+       ],
+       "at": "purple",
+       "dur": 0.12
+      },
+      {
+       "do": "hide",
+       "target": [
+        "pairFocus1",
+        "pairFocus3"
+       ],
+       "at": "pair",
+       "nth": 2,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Swing the sides until both opposite pairs are parallel.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         0,
+         0
+        ],
+        "B": [
+         6,
+         0
+        ],
+        "C": [
+         7,
+         4
+        ],
+        "D": [
+         1,
+         4
+        ]
+       },
+       "at": "Swing",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "parallel",
+       "at": "parallel"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Parallel lines stay the same distance apart and never meet, even if extended.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "parallel0",
+        "parallel2"
+       ],
+       "at": "Parallel",
+       "until": "never"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "parallel1",
+        "parallel3"
+       ],
+       "at": "never"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A quadrilateral with two pairs of parallel opposite sides is a parallelogram. Add that name. Keep quadrilateral.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Parallelogram",
+       "at": "parallelogram"
+      },
+      {
+       "do": "highlight",
+       "target": "parallel",
+       "at": "two",
+       "until": "Add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Straighten the corners. A right angle is a square corner. Four right angles make this a rectangle.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         0,
+         0
+        ],
+        "B": [
+         6,
+         0
+        ],
+        "C": [
+         6,
+         4
+        ],
+        "D": [
+         0,
+         4
+        ]
+       },
+       "at": "Straighten",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "right0",
+       "at": "right"
+      },
+      {
+       "do": "text",
+       "text": "Rectangle",
+       "at": "rectangle"
+      },
+      {
+       "do": "show",
+       "target": [
+        "right1",
+        "right2",
+        "right3"
+       ],
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Does it stop being a parallelogram?",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "No. Both pairs of opposite sides are still parallel.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "parallel",
+       "at": "Both"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Shorten the two long sides until all four sides have equal length. The corners stay square.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         1,
+         0
+        ],
+        "B": [
+         5,
+         0
+        ],
+        "C": [
+         5,
+         4
+        ],
+        "D": [
+         1,
+         4
+        ]
+       },
+       "at": "Shorten",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "equal"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four equal sides make it a rhombus. Matching tick marks mean equal lengths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Rhombus",
+       "at": "rhombus"
+      },
+      {
+       "do": "highlight",
+       "target": "equal",
+       "at": "Matching"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four equal sides and four right angles together make a square.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "equal",
+       "at": "equal",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "corners",
+       "at": "right",
+       "until": "together"
+      },
+      {
+       "do": "text",
+       "text": "Square",
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Five names for one shape! It kept every earlier rule.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "body",
+        "parallel",
+        "corners",
+        "equal",
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "Five"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -0.3,
+     12.4,
+     12
+    ],
+    "points": {
+     "quadrilateralsa": [
+      0,
+      0
+     ],
+     "quadrilateralsb": [
+      12,
+      0
+     ],
+     "quadrilateralsc": [
+      12,
+      11.8
+     ],
+     "quadrilateralsd": [
+      0,
+      11.8
+     ],
+     "parallelogramsa": [
+      0.5,
+      0.5
+     ],
+     "parallelogramsb": [
+      11.5,
+      0.5
+     ],
+     "parallelogramsc": [
+      11.5,
+      10.4
+     ],
+     "parallelogramsd": [
+      0.5,
+      10.4
+     ],
+     "rectanglesa": [
+      1.1,
+      4.4
+     ],
+     "rectanglesb": [
+      10.9,
+      4.4
+     ],
+     "rectanglesc": [
+      10.9,
+      9
+     ],
+     "rectanglesd": [
+      1.1,
+      9
+     ],
+     "rhombusesa": [
+      1.1,
+      1.1
+     ],
+     "rhombusesb": [
+      10.9,
+      1.1
+     ],
+     "rhombusesc": [
+      10.9,
+      6.1
+     ],
+     "rhombusesd": [
+      1.1,
+      6.1
+     ],
+     "squaresa": [
+      1.1,
+      4.4
+     ],
+     "squaresb": [
+      10.9,
+      4.4
+     ],
+     "squaresc": [
+      10.9,
+      6.1
+     ],
+     "squaresd": [
+      1.1,
+      6.1
+     ],
+     "qnamep": [
+      6,
+      11.15
+     ],
+     "pnamep": [
+      6,
+      9.7
+     ],
+     "rnamep": [
+      6,
+      8.3
+     ],
+     "hnamep": [
+      6,
+      1.8
+     ],
+     "snamep": [
+      8.2,
+      5.25
+     ],
+     "sq0": [
+      3.2,
+      4.65
+     ],
+     "sq1": [
+      4.4,
+      4.65
+     ],
+     "sq2": [
+      4.4,
+      5.85
+     ],
+     "sq3": [
+      3.2,
+      5.85
+     ],
+     "long0": [
+      4.4,
+      6.8
+     ],
+     "long1": [
+      7.6,
+      6.8
+     ],
+     "long2": [
+      7.6,
+      7.6
+     ],
+     "long3": [
+      4.4,
+      7.6
+     ],
+     "diamond0": [
+      4.8,
+      2.6
+     ],
+     "diamond1": [
+      6.3,
+      2.6
+     ],
+     "diamond2": [
+      7.2,
+      3.8
+     ],
+     "diamond3": [
+      5.7,
+      3.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "quadrilaterals",
+      "poly": [
+       "quadrilateralsa",
+       "quadrilateralsb",
+       "quadrilateralsc",
+       "quadrilateralsd"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "sheer": true,
+      "start": false
+     },
+     {
+      "id": "parallelograms",
+      "poly": [
+       "parallelogramsa",
+       "parallelogramsb",
+       "parallelogramsc",
+       "parallelogramsd"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "sheer": true,
+      "start": false
+     },
+     {
+      "id": "rectangles",
+      "poly": [
+       "rectanglesa",
+       "rectanglesb",
+       "rectanglesc",
+       "rectanglesd"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "sheer": true,
+      "start": false
+     },
+     {
+      "id": "rhombuses",
+      "poly": [
+       "rhombusesa",
+       "rhombusesb",
+       "rhombusesc",
+       "rhombusesd"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "sheer": true,
+      "start": false
+     },
+     {
+      "id": "squares",
+      "poly": [
+       "squaresa",
+       "squaresb",
+       "squaresc",
+       "squaresd"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "sheer": true,
+      "start": false
+     },
+     {
+      "id": "qname",
+      "label": "\\text{Quadrilaterals}",
+      "at": "qnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": false
+     },
+     {
+      "id": "pname",
+      "label": "\\text{Parallelograms}",
+      "at": "pnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "start": false
+     },
+     {
+      "id": "rname",
+      "label": "\\text{Rectangles}",
+      "at": "rnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": false
+     },
+     {
+      "id": "hname",
+      "label": "\\text{Rhombuses}",
+      "at": "hnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": false
+     },
+     {
+      "id": "sname",
+      "label": "\\text{Squares}",
+      "at": "snamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "start": false
+     },
+     {
+      "id": "sq",
+      "poly": [
+       "sq0",
+       "sq1",
+       "sq2",
+       "sq3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "long",
+      "poly": [
+       "long0",
+       "long1",
+       "long2",
+       "long3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "diamond",
+      "poly": [
+       "diamond0",
+       "diamond1",
+       "diamond2",
+       "diamond3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 3,
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Think of each category as a room with an entry rule. Here is the quadrilateral room.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Rooms inside rooms"
+      },
+      {
+       "do": "show",
+       "target": [
+        "quadrilaterals",
+        "qname"
+       ],
+       "at": "quadrilateral"
+      },
+      {
+       "do": "text",
+       "text": "A category is a group.",
+       "at": "category"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The parallelogram room fits inside it. Every parallelogram has four sides.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "parallelograms",
+        "pname"
+       ],
+       "at": "parallelogram"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Inside that, rectangles need four right angles. Rhombuses need four equal sides.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "rectangles",
+        "rname"
+       ],
+       "at": "rectangles"
+      },
+      {
+       "do": "show",
+       "target": [
+        "rhombuses",
+        "hname"
+       ],
+       "at": "Rhombuses"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "These rooms overlap. Shapes meeting both rules are squares. The overlap is the entire square room.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "squares",
+        "sname"
+       ],
+       "at": "overlap"
+      },
+      {
+       "do": "highlight",
+       "target": "sq",
+       "at": "squares",
+       "until": "The"
+      },
+      {
+       "do": "text",
+       "text": "Squares belong to both groups.",
+       "at": "both"
+      },
+      {
+       "do": "highlight",
+       "target": "squares",
+       "at": "overlap",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Squares are a subcategory of rectangles: a smaller group entirely inside a larger group.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Check the direction"
+      },
+      {
+       "do": "term",
+       "word": "Subcategory",
+       "meaning": "A group inside another group.",
+       "at": "subcategory"
+      },
+      {
+       "do": "highlight",
+       "target": "squares",
+       "at": "smaller",
+       "until": "larger"
+      },
+      {
+       "do": "highlight",
+       "target": "rectangles",
+       "at": "larger"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So every square is a rectangle. It already has all four right angles.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Every square is a rectangle.",
+       "at": "every"
+      },
+      {
+       "do": "highlight",
+       "target": "sq",
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Is every rectangle a square? Look at this long rectangle.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "long",
+       "at": "long"
+      },
+      {
+       "do": "problem",
+       "text": "Is every rectangle a square?",
+       "at": "every"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It has four right angles, but its sides aren't all equal. It belongs here, outside the square room.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "long",
+       "at": "four"
+      },
+      {
+       "do": "text",
+       "text": "This rectangle is not a square.",
+       "at": "outside"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One example that breaks a claim is a counterexample. This one proves that not every rectangle is a square.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Counterexample",
+       "meaning": "One example that makes a claim false.",
+       "at": "counterexample"
+      },
+      {
+       "do": "highlight",
+       "target": "long",
+       "at": "This"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.7,
+     7.6,
+     4.8
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      6,
+      0
+     ],
+     "C": [
+      7,
+      3
+     ],
+     "D": [
+      1,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A property is a fact about a shape. Every parallelogram has opposite sides of equal length.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Properties pass inward"
+      },
+      {
+       "do": "show",
+       "target": [
+        "parallel",
+        "opposite"
+       ],
+       "at": "opposite"
+      },
+      {
+       "do": "text",
+       "text": "Parallelograms have equal opposite sides.",
+       "at": "Every"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Watch those matching ticks as we make a rectangle. The opposite lengths stay equal.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         0,
+         0
+        ],
+        "B": [
+         6,
+         0
+        ],
+        "C": [
+         6,
+         3
+        ],
+        "D": [
+         0,
+         3
+        ]
+       },
+       "at": "make",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "opposite",
+       "at": "equal"
+      },
+      {
+       "do": "text",
+       "text": "Rectangles inherit that property.",
+       "at": "rectangle"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A rhombus belongs to the parallelogram group too. Its opposite sides are equal, with all four equal.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "corners",
+       "at": "rhombus"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         0,
+         0
+        ],
+        "B": [
+         4,
+         0
+        ],
+        "C": [
+         6,
+         3.4641016151377544
+        ],
+        "D": [
+         2,
+         3.4641016151377544
+        ]
+       },
+       "at": "rhombus",
+       "dur": 1.8
+      },
+      {
+       "do": "text",
+       "text": "Rhombuses inherit it too.",
+       "at": "too"
+      },
+      {
+       "do": "hide",
+       "target": "opposite",
+       "at": "all"
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "all"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And a square belongs to both groups. It inherits the equal opposite sides as well.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         1,
+         0
+        ],
+        "B": [
+         5,
+         0
+        ],
+        "C": [
+         5,
+         4
+        ],
+        "D": [
+         1,
+         4
+        ]
+       },
+       "at": "square",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "inherits"
+      },
+      {
+       "do": "text",
+       "text": "Squares inherit it too.",
+       "at": "inherits"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try another. Every rectangle has four right angles. Squares are rectangles. What must every square have?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Use the containing group"
+      },
+      {
+       "do": "text",
+       "text": "Rectangles have 4 right angles.",
+       "at": "rectangle"
+      },
+      {
+       "do": "text",
+       "text": "Squares are rectangles.",
+       "at": "Squares"
+      },
+      {
+       "do": "highlight",
+       "target": "corners",
+       "at": "angles",
+       "until": "Squares"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four right angles. And because squares are rhombuses, four equal sides too.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\text{ right angles}",
+       "at": "Four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -1,
+     8,
+     6
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      6,
+      0
+     ],
+     "C": [
+      6,
+      3
+     ],
+     "D": [
+      0,
+      3
+     ],
+     "mid": [
+      3,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners",
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners",
+      "start": true
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "width",
+      "dim": [
+       "A",
+       "B"
+      ],
+      "side": "s",
+      "tex": "6\\text{ cm}",
+      "start": true
+     },
+     {
+      "id": "height",
+      "dim": [
+       "B",
+       "C"
+      ],
+      "side": "e",
+      "tex": "3\\text{ cm}",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "List every name for this marked shape. It has four right angles, and sides of six and three centimeters.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Every name"
+      },
+      {
+       "do": "problem",
+       "text": "List every name for this marked shape."
+      },
+      {
+       "do": "highlight",
+       "target": "corners",
+       "at": "angles",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "width",
+       "at": "six",
+       "untilNth": 2,
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": "height",
+       "at": "three",
+       "until": "centimeters"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Rectangle, parallelogram, quadrilateral.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Rectangle",
+       "at": "Rectangle"
+      },
+      {
+       "do": "text",
+       "text": "Parallelogram",
+       "at": "parallelogram"
+      },
+      {
+       "do": "text",
+       "text": "Quadrilateral",
+       "at": "quadrilateral"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Four right angles, two pairs of parallel sides, and four sides. All three names fit.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "corners",
+       "at": "right",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "parallel",
+       "at": "parallel",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "four",
+       "nth": 2,
+       "until": "All"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six and three are unequal, so rhombus and square do not fit. Give every name whose rule is met.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "width",
+        "height"
+       ],
+       "at": "unequal",
+       "until": "Give"
+      },
+      {
+       "do": "text",
+       "text": "Unequal neighboring sides:",
+       "at": "unequal"
+      },
+      {
+       "do": "text",
+       "text": "No rhombus. No square.",
+       "at": "rhombus"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.7,
+     7.6,
+     4.8
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "C": [
+      6,
+      3.4641016151377544
+     ],
+     "D": [
+      2,
+      3.4641016151377544
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Always, sometimes, or never? A rhombus has four equal sides.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Always, sometimes, never"
+      },
+      {
+       "do": "show",
+       "target": "equal"
+      },
+      {
+       "do": "problem",
+       "text": "A rhombus has 4 equal sides."
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Always. That's its rule.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{Always}"
+      },
+      {
+       "do": "highlight",
+       "target": "equal"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But equal sides don't force right angles. This rhombus is a counterexample.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "body",
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "counterexample"
+      },
+      {
+       "do": "text",
+       "text": "Equal sides do not force square corners.",
+       "at": "force"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A rectangle is a rhombus. Always, sometimes, or never?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "equal"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         0,
+         0
+        ],
+        "B": [
+         6,
+         0
+        ],
+        "C": [
+         6,
+         4
+        ],
+        "D": [
+         0,
+         4
+        ]
+       },
+       "at": "rectangle",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "Always"
+      },
+      {
+       "do": "problem",
+       "text": "A rectangle is a rhombus."
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Sometimes. When all four sides are equal, it's both. It's a square.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         1,
+         0
+        ],
+        "B": [
+         5,
+         0
+        ],
+        "C": [
+         5,
+         4
+        ],
+        "D": [
+         1,
+         4
+        ]
+       },
+       "at": "When",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "equal"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Sometimes: a square}",
+       "at": "square"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.7,
+     7.6,
+     4.8
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      6,
+      0
+     ],
+     "C": [
+      4.5,
+      3
+     ],
+     "D": [
+      1.5,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel"
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal"
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For trapezoids, check the definition. Here we'll use a quadrilateral with exactly one pair of parallel sides.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Trapezoid: exactly one pair"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "parallel0",
+        "parallel2"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "text",
+       "text": "1 pair of parallel sides",
+       "at": "trapezoids"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Is this trapezoid a parallelogram?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "problem",
+       "text": "Is this trapezoid a parallelogram?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Never with that rule. A parallelogram needs two pairs.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{Never}",
+       "at": "Never"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Some books use at least one pair instead. Always read the definition your question uses.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Definitions decide membership.",
+       "at": "Some"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.7,
+     7.6,
+     4.8
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "C": {
+      "on": "hingeB",
+      "deg": 60
+     },
+     "D": {
+      "on": "hingeA",
+      "deg": 60
+     }
+    },
+    "parts": [
+     {
+      "id": "hingeA",
+      "circle": "A",
+      "r": 4,
+      "ink": "muted"
+     },
+     {
+      "id": "hingeB",
+      "circle": "B",
+      "r": 4,
+      "ink": "muted"
+     },
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "side0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal",
+      "start": true
+     },
+     {
+      "id": "opposite0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal",
+      "start": true
+     },
+     {
+      "id": "opposite1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "arrows": 1,
+      "ink": "blue",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal",
+      "start": true
+     },
+     {
+      "id": "opposite2",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "opposite"
+     },
+     {
+      "id": "side3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "parallel3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "arrows": 2,
+      "ink": "violet",
+      "w": 2,
+      "group": "parallel",
+      "start": true
+     },
+     {
+      "id": "right3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 1,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "equal",
+      "start": true
+     },
+     {
+      "id": "opposite3",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ticks": 2,
+      "tickAt": [
+       0.65
+      ],
+      "ink": "violet",
+      "w": 2,
+      "group": "opposite"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "When a question asks for several true statements, test each one separately. Every rhombus is a parallelogram.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Choose every true statement"
+      },
+      {
+       "do": "text",
+       "text": "Test each statement separately.",
+       "at": "test"
+      },
+      {
+       "do": "text",
+       "text": "Every rhombus is a parallelogram.",
+       "at": "Every"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "body",
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "test",
+       "until": "Every"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "True. Both opposite pairs are parallel.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "parallel",
+       "at": "parallel"
+      },
+      {
+       "do": "text",
+       "text": "True: 2 parallel pairs.",
+       "at": "True"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every rhombus has four right angles.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Every rhombus has 4 right angles."
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "False. This rhombus doesn't.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "body",
+        "side0",
+        "side1",
+        "side2",
+        "side3"
+       ],
+       "at": "This"
+      },
+      {
+       "do": "text",
+       "text": "False: this shape is a counterexample.",
+       "at": "False"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every rhombus with four right angles is a square.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Every rhombus with 4 right angles is a square."
+      },
+      {
+       "do": "glide",
+       "point": "C",
+       "deg": 90,
+       "at": "Every",
+       "dur": 1.8
+      },
+      {
+       "do": "glide",
+       "point": "D",
+       "deg": 90,
+       "at": "Every",
+       "dur": 1.8
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "True. Equal sides plus right angles. Keep every true statement, even when several describe the same shape.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{True}",
+       "at": "True"
+      },
+      {
+       "do": "text",
+       "text": "Check every statement on its own.",
+       "at": "every"
+      },
+      {
+       "do": "highlight",
+       "target": "equal",
+       "at": "Equal",
+       "until": "plus"
+      },
+      {
+       "do": "highlight",
+       "target": "corners",
+       "at": "right",
+       "until": "Keep"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.7,
+     -1.4,
+     7.7,
+     6.1
+    ],
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      6,
+      0
+     ],
+     "C": [
+      2.25,
+      3.307189138830738
+     ]
+    },
+    "parts": [
+     {
+      "id": "tri",
+      "poly": [
+       "A",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "base",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "basetick",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ticks": 1,
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "left",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "lefttick",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ticks": 1,
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "right",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "righttick",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ticks": 1,
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "b6",
+      "label": "6\\text{ cm}",
+      "at": "base",
+      "dir": "s",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "l4",
+      "label": "4\\text{ cm}",
+      "at": "left",
+      "dir": "w",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "r5",
+      "label": "5\\text{ cm}",
+      "at": "right",
+      "dir": "e",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "l5",
+      "label": "5\\text{ cm}",
+      "at": "left",
+      "dir": "w",
+      "size": "m",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "l6",
+      "label": "6\\text{ cm}",
+      "at": "left",
+      "dir": "w",
+      "size": "m",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "r6",
+      "label": "6\\text{ cm}",
+      "at": "right",
+      "dir": "e",
+      "size": "m",
+      "ink": "ink",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Triangles sort by rules too. Compare the three side lengths: four, five, six centimeters.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Sort triangles by side lengths"
+      },
+      {
+       "do": "highlight",
+       "target": "left",
+       "at": "four",
+       "until": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "right",
+       "at": "five",
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "base",
+       "at": "six",
+       "until": "centimeters"
+      },
+      {
+       "do": "text",
+       "text": "Compare the 3 side lengths.",
+       "at": "Compare"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "No two are equal. This is scalene.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "term",
+       "word": "Scalene",
+       "meaning": "No two sides equal.",
+       "at": "scalene"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Change the four to five. Five, five, six. Exactly two equal sides: isosceles.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "C": [
+         3,
+         4
+        ]
+       },
+       "at": "Change",
+       "dur": 1.2
+      },
+      {
+       "do": "hide",
+       "target": "l4",
+       "at": "Change"
+      },
+      {
+       "do": "show",
+       "target": "l5",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": [
+        "lefttick",
+        "righttick"
+       ],
+       "at": "equal"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Isosceles",
+       "meaning": "Exactly two equal sides here.",
+       "at": "isosceles"
+      },
+      {
+       "do": "text",
+       "text": "5 cm, 5 cm, 6 cm",
+       "at": "Five",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "left",
+       "at": "Five",
+       "nth": 2,
+       "untilNth": 3,
+       "until": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "right",
+       "at": "five",
+       "nth": 3,
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "base",
+       "at": "six",
+       "until": "Exactly"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The matching ticks identify equal sides, even when no lengths are written.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lefttick",
+        "righttick"
+       ],
+       "at": "matching"
+      },
+      {
+       "do": "text",
+       "text": "Matching ticks mean equal lengths.",
+       "at": "ticks"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "l5",
+        "r5",
+        "b6"
+       ],
+       "at": "no"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now six, six, six centimeters. What name fits?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "C": [
+         3,
+         5.196152422706632
+        ]
+       },
+       "at": "Now",
+       "dur": 0.35
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "6 cm, 6 cm, 6 cm"
+      },
+      {
+       "do": "show",
+       "target": [
+        "l6",
+        "r6",
+        "b6"
+       ],
+       "at": "six",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "basetick",
+       "at": "six",
+       "nth": 3,
+       "dur": 0.12
+      },
+      {
+       "do": "highlight",
+       "target": "lefttick",
+       "at": "six",
+       "untilNth": 2,
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "righttick",
+       "at": "six",
+       "nth": 2,
+       "untilNth": 3,
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "basetick",
+       "at": "six",
+       "nth": 3,
+       "until": "centimeters"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Equilateral. All three sides are equal.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "term",
+       "word": "Equilateral",
+       "meaning": "All three sides equal.",
+       "at": "Equilateral"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "basetick",
+        "lefttick",
+        "righttick"
+       ],
+       "at": "equal"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here, isosceles means exactly two equal sides. Three equal sides means equilateral. Use the lengths or matching marks to decide.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Exactly 2: isosceles",
+       "at": "two"
+      },
+      {
+       "do": "text",
+       "text": "All 3: equilateral",
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "l6",
+        "r6",
+        "b6"
+       ],
+       "at": "lengths",
+       "until": "or"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lefttick",
+        "righttick",
+        "basetick"
+       ],
+       "at": "marks"
+      },
+      {
+       "do": "text",
+       "text": "Use lengths and marks.",
+       "at": "Use"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -0.3,
+     12.4,
+     12
+    ],
+    "points": {
+     "quadrilateralsa": [
+      0,
+      0
+     ],
+     "quadrilateralsb": [
+      12,
+      0
+     ],
+     "quadrilateralsc": [
+      12,
+      11.8
+     ],
+     "quadrilateralsd": [
+      0,
+      11.8
+     ],
+     "parallelogramsa": [
+      0.5,
+      0.5
+     ],
+     "parallelogramsb": [
+      11.5,
+      0.5
+     ],
+     "parallelogramsc": [
+      11.5,
+      10.4
+     ],
+     "parallelogramsd": [
+      0.5,
+      10.4
+     ],
+     "rectanglesa": [
+      1.1,
+      4.4
+     ],
+     "rectanglesb": [
+      10.9,
+      4.4
+     ],
+     "rectanglesc": [
+      10.9,
+      9
+     ],
+     "rectanglesd": [
+      1.1,
+      9
+     ],
+     "rhombusesa": [
+      1.1,
+      1.1
+     ],
+     "rhombusesb": [
+      10.9,
+      1.1
+     ],
+     "rhombusesc": [
+      10.9,
+      6.1
+     ],
+     "rhombusesd": [
+      1.1,
+      6.1
+     ],
+     "squaresa": [
+      1.1,
+      4.4
+     ],
+     "squaresb": [
+      10.9,
+      4.4
+     ],
+     "squaresc": [
+      10.9,
+      6.1
+     ],
+     "squaresd": [
+      1.1,
+      6.1
+     ],
+     "qnamep": [
+      6,
+      11.15
+     ],
+     "pnamep": [
+      6,
+      9.7
+     ],
+     "rnamep": [
+      6,
+      8.3
+     ],
+     "hnamep": [
+      6,
+      1.8
+     ],
+     "snamep": [
+      8.2,
+      5.25
+     ],
+     "sq0": [
+      3.2,
+      4.65
+     ],
+     "sq1": [
+      4.4,
+      4.65
+     ],
+     "sq2": [
+      4.4,
+      5.85
+     ],
+     "sq3": [
+      3.2,
+      5.85
+     ],
+     "long0": [
+      4.4,
+      6.8
+     ],
+     "long1": [
+      7.6,
+      6.8
+     ],
+     "long2": [
+      7.6,
+      7.6
+     ],
+     "long3": [
+      4.4,
+      7.6
+     ],
+     "diamond0": [
+      4.8,
+      2.6
+     ],
+     "diamond1": [
+      6.3,
+      2.6
+     ],
+     "diamond2": [
+      7.2,
+      3.8
+     ],
+     "diamond3": [
+      5.7,
+      3.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "quadrilaterals",
+      "poly": [
+       "quadrilateralsa",
+       "quadrilateralsb",
+       "quadrilateralsc",
+       "quadrilateralsd"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 2,
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "parallelograms",
+      "poly": [
+       "parallelogramsa",
+       "parallelogramsb",
+       "parallelogramsc",
+       "parallelogramsd"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "rectangles",
+      "poly": [
+       "rectanglesa",
+       "rectanglesb",
+       "rectanglesc",
+       "rectanglesd"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "rhombuses",
+      "poly": [
+       "rhombusesa",
+       "rhombusesb",
+       "rhombusesc",
+       "rhombusesd"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2,
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "squares",
+      "poly": [
+       "squaresa",
+       "squaresb",
+       "squaresc",
+       "squaresd"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "qname",
+      "label": "\\text{Quadrilaterals}",
+      "at": "qnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "pname",
+      "label": "\\text{Parallelograms}",
+      "at": "pnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "rname",
+      "label": "\\text{Rectangles}",
+      "at": "rnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "hname",
+      "label": "\\text{Rhombuses}",
+      "at": "hnamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "sname",
+      "label": "\\text{Squares}",
+      "at": "snamep",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "sq",
+      "poly": [
+       "sq0",
+       "sq1",
+       "sq2",
+       "sq3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "long",
+      "poly": [
+       "long0",
+       "long1",
+       "long2",
+       "long3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "diamond",
+      "poly": [
+       "diamond0",
+       "diamond1",
+       "diamond2",
+       "diamond3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 3,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back to our square. Which names does it wear?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One square. Five names."
+      },
+      {
+       "do": "highlight",
+       "target": "sq",
+       "at": "square",
+       "until": "Which"
+      },
+      {
+       "do": "text",
+       "text": "Which names does it wear?",
+       "at": "Which"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Square. Rectangle. Rhombus. Parallelogram. Quadrilateral.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Square",
+       "at": "Square"
+      },
+      {
+       "do": "highlight",
+       "target": "squares",
+       "at": "Square",
+       "until": "Rectangle"
+      },
+      {
+       "do": "text",
+       "text": "Rectangle",
+       "at": "Rectangle"
+      },
+      {
+       "do": "highlight",
+       "target": "rectangles",
+       "at": "Rectangle",
+       "until": "Rhombus"
+      },
+      {
+       "do": "text",
+       "text": "Rhombus",
+       "at": "Rhombus"
+      },
+      {
+       "do": "highlight",
+       "target": "rhombuses",
+       "at": "Rhombus",
+       "until": "Parallelogram"
+      },
+      {
+       "do": "text",
+       "text": "Parallelogram",
+       "at": "Parallelogram"
+      },
+      {
+       "do": "highlight",
+       "target": "parallelograms",
+       "at": "Parallelogram",
+       "until": "Quadrilateral"
+      },
+      {
+       "do": "text",
+       "text": "Quadrilateral",
+       "at": "Quadrilateral"
+      },
+      {
+       "do": "highlight",
+       "target": "quadrilaterals",
+       "at": "Quadrilateral"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A shape belongs to every room around it, and takes every property of those rooms with it.",
+     "pause": 1.8,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "sq",
+       "at": "shape"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

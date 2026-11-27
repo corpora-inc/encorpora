@@ -102,9 +102,30 @@ class ReleasePolicyTests(unittest.TestCase):
             validate_review(plan, receipt, current, self.now)
 
     def test_grade_is_not_an_audience_classification(self):
-        plan = {'policyVersion': POLICY_VERSION, 'contentType': 'explanation', 'audience': {'classification': 'fifth-grade', 'rationale': 'Grade level'}, 'aiDisclosure': {'required': False, 'rationale': 'Diagram'}, 'pinnedComment': 'https://amp.corpora.inc', 'relatedVideoIds': []}
+        plan = {'policyVersion': POLICY_VERSION, 'contentType': 'explanation', 'audience': {'classification': 'fifth-grade', 'rationale': 'Grade level'}, 'aiDisclosure': {'required': False, 'rationale': 'Diagram'}, 'pinnedComment': 'Which step first?', 'relatedVideoIds': []}
         with self.assertRaisesRegex(ValueError, 'audience rationale'):
             validate_plan(plan)
+
+    def good_plan(self, **extra):
+        return {'policyVersion': POLICY_VERSION, 'contentType': 'explanation', 'audience': {'classification': 'general', 'rationale': 'Parents'}, 'aiDisclosure': {'required': False, 'rationale': 'Diagram'}, 'pinnedComment': 'Which step would you check first?', 'relatedVideoIds': [], **extra}
+
+    def test_short_pinned_comment_rejects_any_url(self):
+        for comment in ('Try it free: https://amp.corpora.inc', 'Try it at amp.corpora.inc', 'see www.example.org'):
+            with self.assertRaisesRegex(ValueError, 'no URL'):
+                validate_plan(self.good_plan(format='short', pinnedComment=comment))
+            with self.assertRaisesRegex(ValueError, 'no URL'):
+                validate_plan(self.good_plan(pinnedComment=comment))  # unmarked defaults to short
+
+    def test_short_topical_question_is_accepted_and_long_may_link(self):
+        validate_plan(self.good_plan())
+        validate_plan(self.good_plan(format='long', pinnedComment='Try it free: https://amp.corpora.inc'))
+        validate_plan(self.good_plan(format='long'))
+
+    def test_empty_comment_and_unknown_format_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'pinned comment'):
+            validate_plan(self.good_plan(pinnedComment=' '))
+        with self.assertRaisesRegex(ValueError, 'format'):
+            validate_plan(self.good_plan(format='reel'))
 
 
 if __name__ == '__main__':

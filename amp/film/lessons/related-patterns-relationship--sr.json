@@ -1,0 +1,3706 @@
+{
+ "id": "related-patterns-relationship--sr",
+ "title": "Two patterns on one graph",
+ "skill": "related-patterns",
+ "teaches": [
+  "pattern-pair-relationship",
+  "staar-table-rule-choice",
+  "table-rule-sentence",
+  "additive-multiplicative-select"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3,
+     -4,
+     26,
+     17
+    ],
+    "points": {
+     "A": [
+      0,
+      12
+     ],
+     "B": [
+      0,
+      6
+     ],
+     "ae": [
+      24,
+      12
+     ],
+     "be": [
+      24,
+      6
+     ],
+     "an": [
+      -1,
+      12
+     ],
+     "bn": [
+      -1,
+      6
+     ],
+     "t": [
+      0,
+      3
+     ],
+     "aStart": [
+      0,
+      12
+     ],
+     "bStart": [
+      0,
+      6
+     ],
+     "aterm0": [
+      2,
+      2
+     ],
+     "bterm0": [
+      2,
+      -1.3
+     ],
+     "aterm1": [
+      6.8,
+      2
+     ],
+     "bterm1": [
+      6.8,
+      -1.3
+     ],
+     "aterm2": [
+      11.6,
+      2
+     ],
+     "bterm2": [
+      11.6,
+      -1.3
+     ],
+     "aterm3": [
+      16.4,
+      2
+     ],
+     "bterm3": [
+      16.4,
+      -1.3
+     ],
+     "aterm4": [
+      21.2,
+      2
+     ],
+     "bterm4": [
+      21.2,
+      -1.3
+     ],
+     "ta": [
+      -1,
+      2
+     ],
+     "tb": [
+      -1,
+      -1.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "laneA",
+      "seg": [
+       "aStart",
+       "ae"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "laneB",
+      "seg": [
+       "bStart",
+       "be"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "walkerA",
+      "dot": "A",
+      "ink": "blue",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "walkerB",
+      "dot": "B",
+      "ink": "warm",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "valueA",
+      "label": "@x",
+      "at": "A",
+      "of": "A",
+      "dir": "n",
+      "ink": "blue",
+      "size": "l",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "valueB",
+      "label": "@x",
+      "at": "B",
+      "of": "B",
+      "dir": "n",
+      "ink": "warm",
+      "size": "l",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "nameA",
+      "label": "A",
+      "at": "an",
+      "ink": "blue",
+      "start": true,
+      "size": "l",
+      "dir": "c"
+     },
+     {
+      "id": "nameB",
+      "label": "B",
+      "at": "bn",
+      "ink": "warm",
+      "start": true,
+      "size": "l",
+      "dir": "c"
+     },
+     {
+      "id": "trailA",
+      "seg": [
+       "aStart",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "trailB",
+      "seg": [
+       "bStart",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "aterm0",
+      "label": "0",
+      "at": "aterm0",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "group": "pair0"
+     },
+     {
+      "id": "bterm0",
+      "label": "0",
+      "at": "bterm0",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "pair0"
+     },
+     {
+      "id": "aterm1",
+      "label": "3",
+      "at": "aterm1",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "group": "pair1"
+     },
+     {
+      "id": "bterm1",
+      "label": "6",
+      "at": "bterm1",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "pair1"
+     },
+     {
+      "id": "aterm2",
+      "label": "6",
+      "at": "aterm2",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "group": "pair2"
+     },
+     {
+      "id": "bterm2",
+      "label": "12",
+      "at": "bterm2",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "pair2"
+     },
+     {
+      "id": "aterm3",
+      "label": "9",
+      "at": "aterm3",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "group": "pair3"
+     },
+     {
+      "id": "bterm3",
+      "label": "18",
+      "at": "bterm3",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "pair3"
+     },
+     {
+      "id": "aterm4",
+      "label": "12",
+      "at": "aterm4",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "group": "pair4"
+     },
+     {
+      "id": "bterm4",
+      "label": "24",
+      "at": "bterm4",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "pair4"
+     },
+     {
+      "id": "ta",
+      "label": "A",
+      "at": "ta",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tb",
+      "label": "B",
+      "at": "tb",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two patterns walk together. Both start at zero. On each jump, pattern *A* adds three, and pattern *B* adds six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "What stays the same?"
+      },
+      {
+       "do": "text",
+       "text": "$A$: start at 0, add 3."
+      },
+      {
+       "do": "text",
+       "text": "$B$: start at 0, add 6.",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "pair0",
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One jump. Three and six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         3,
+         12
+        ],
+        "B": [
+         6,
+         6
+        ]
+       },
+       "at": "jump"
+      },
+      {
+       "do": "show",
+       "target": "pair1",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "*B* is three ahead!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "6-3=3",
+       "at": "three",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Jump again. Six and twelve.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         6,
+         12
+        ],
+        "B": [
+         12,
+         6
+        ]
+       },
+       "at": "again"
+      },
+      {
+       "do": "show",
+       "target": "pair2",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Now six ahead. The gap changed.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "12-6=6",
+       "at": "six",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Another jump. Nine and eighteen. And another: twelve and twenty-four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         9,
+         12
+        ],
+        "B": [
+         18,
+         6
+        ]
+       },
+       "at": "Another"
+      },
+      {
+       "do": "show",
+       "target": "pair3",
+       "at": "eighteen"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         12,
+         12
+        ],
+        "B": [
+         24,
+         6
+        ]
+       },
+       "at": "And"
+      },
+      {
+       "do": "show",
+       "target": "pair4",
+       "at": "twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Nine ahead, then twelve ahead. So it isn't always the same amount more. What does stay the same?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "18-9=9",
+       "at": "Nine",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "24-12=12",
+       "at": "twelve",
+       "fresh": true
+      },
+      {
+       "do": "text",
+       "text": "What stays the same?",
+       "at": "What"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -3,
+     20,
+     12
+    ],
+    "points": {
+     "al": [
+      1.5,
+      10.5
+     ],
+     "bl": [
+      3,
+      3
+     ],
+     "A0": [
+      0,
+      7
+     ],
+     "A1": [
+      3,
+      7
+     ],
+     "B0": [
+      0,
+      -1
+     ],
+     "B1": [
+      6,
+      -1
+     ],
+     "a0p": [
+      0,
+      9
+     ],
+     "a0q": [
+      3,
+      9
+     ],
+     "a0r": [
+      3,
+      7.4
+     ],
+     "a0s": [
+      0,
+      7.4
+     ],
+     "b00p": [
+      0,
+      1
+     ],
+     "b00q": [
+      3,
+      1
+     ],
+     "b00r": [
+      3,
+      -0.6000000000000001
+     ],
+     "b00s": [
+      0,
+      -0.6000000000000001
+     ],
+     "b01p": [
+      3,
+      1
+     ],
+     "b01q": [
+      6,
+      1
+     ],
+     "b01r": [
+      6,
+      -0.6000000000000001
+     ],
+     "b01s": [
+      3,
+      -0.6000000000000001
+     ],
+     "a1p": [
+      3,
+      9
+     ],
+     "a1q": [
+      6,
+      9
+     ],
+     "a1r": [
+      6,
+      7.4
+     ],
+     "a1s": [
+      3,
+      7.4
+     ],
+     "b10p": [
+      6,
+      1
+     ],
+     "b10q": [
+      9,
+      1
+     ],
+     "b10r": [
+      9,
+      -0.6000000000000001
+     ],
+     "b10s": [
+      6,
+      -0.6000000000000001
+     ],
+     "b11p": [
+      9,
+      1
+     ],
+     "b11q": [
+      12,
+      1
+     ],
+     "b11r": [
+      12,
+      -0.6000000000000001
+     ],
+     "b11s": [
+      9,
+      -0.6000000000000001
+     ],
+     "a2p": [
+      6,
+      9
+     ],
+     "a2q": [
+      9,
+      9
+     ],
+     "a2r": [
+      9,
+      7.4
+     ],
+     "a2s": [
+      6,
+      7.4
+     ],
+     "b20p": [
+      12,
+      1
+     ],
+     "b20q": [
+      15,
+      1
+     ],
+     "b20r": [
+      15,
+      -0.6000000000000001
+     ],
+     "b20s": [
+      12,
+      -0.6000000000000001
+     ],
+     "b21p": [
+      15,
+      1
+     ],
+     "b21q": [
+      18,
+      1
+     ],
+     "b21r": [
+      18,
+      -0.6000000000000001
+     ],
+     "b21s": [
+      15,
+      -0.6000000000000001
+     ],
+     "copyOnep": [
+      0,
+      9
+     ],
+     "copyOneq": [
+      3,
+      9
+     ],
+     "copyOner": [
+      3,
+      7.4
+     ],
+     "copyOnes": [
+      0,
+      7.4
+     ],
+     "copyTwop": [
+      0,
+      9
+     ],
+     "copyTwoq": [
+      3,
+      9
+     ],
+     "copyTwor": [
+      3,
+      7.4
+     ],
+     "copyTwos": [
+      0,
+      7.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "al",
+      "label": "A",
+      "at": "al",
+      "ink": "blue",
+      "start": true,
+      "size": "l",
+      "dir": "c"
+     },
+     {
+      "id": "bl",
+      "label": "B",
+      "at": "bl",
+      "ink": "warm",
+      "start": true,
+      "size": "l",
+      "dir": "c"
+     },
+     {
+      "id": "a0",
+      "poly": [
+       "a0p",
+       "a0q",
+       "a0r",
+       "a0s"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "b00",
+      "poly": [
+       "b00p",
+       "b00q",
+       "b00r",
+       "b00s"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "b01",
+      "poly": [
+       "b01p",
+       "b01q",
+       "b01r",
+       "b01s"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "a1",
+      "poly": [
+       "a1p",
+       "a1q",
+       "a1r",
+       "a1s"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "b10",
+      "poly": [
+       "b10p",
+       "b10q",
+       "b10r",
+       "b10s"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "b11",
+      "poly": [
+       "b11p",
+       "b11q",
+       "b11r",
+       "b11s"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "a2",
+      "poly": [
+       "a2p",
+       "a2q",
+       "a2r",
+       "a2s"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "b20",
+      "poly": [
+       "b20p",
+       "b20q",
+       "b20r",
+       "b20s"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "b21",
+      "poly": [
+       "b21p",
+       "b21q",
+       "b21r",
+       "b21s"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "copyOne",
+      "poly": [
+       "copyOnep",
+       "copyOneq",
+       "copyOner",
+       "copyOnes"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "copyTwo",
+      "poly": [
+       "copyTwop",
+       "copyTwoq",
+       "copyTwor",
+       "copyTwos"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "solid": true,
+      "start": false
+     },
+     {
+      "id": "Adim",
+      "dim": [
+       "A0",
+       "A1"
+      ],
+      "side": "s",
+      "tex": "3",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "Bdim",
+      "dim": [
+       "B0",
+       "B1"
+      ],
+      "side": "s",
+      "tex": "6",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Look closely at one jump. *A* travels three. Two copies of that length make *B*'s six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Two copies, every jump"
+      },
+      {
+       "do": "write",
+       "tex": "6=2\\times3",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "copyOne",
+       "at": "Two"
+      },
+      {
+       "do": "slide",
+       "target": "copyOne",
+       "by": [
+        0,
+        -8
+       ],
+       "at": "copies"
+      },
+      {
+       "do": "show",
+       "target": "copyTwo",
+       "at": "length"
+      },
+      {
+       "do": "slide",
+       "target": "copyTwo",
+       "by": [
+        3,
+        -8
+       ],
+       "at": "make"
+      },
+      {
+       "do": "show",
+       "target": "Bdim",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "On the second jump, *A* adds one piece. *B* adds two of those pieces again.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "a1",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b10",
+        "b11"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A1": [
+         6,
+         7
+        ],
+        "B1": [
+         12,
+         -1
+        ]
+       },
+       "at": "again"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "Adim",
+        "Bdim"
+       ],
+       "at": "second"
+      },
+      {
+       "do": "write",
+       "tex": "12=2\\times6",
+       "at": "again",
+       "fresh": true
+      },
+      {
+       "do": "move",
+       "points": {
+        "al": [
+         3,
+         10.5
+        ]
+       },
+       "at": "one"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bl": [
+         6,
+         3
+        ]
+       },
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And the third jump: one more piece for *A*, two more for *B*.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "a2",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b20",
+        "b21"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "18=2\\times9",
+       "at": "two",
+       "fresh": true
+      },
+      {
+       "do": "move",
+       "points": {
+        "al": [
+         4.5,
+         10.5
+        ]
+       },
+       "at": "one"
+      },
+      {
+       "do": "move",
+       "points": {
+        "bl": [
+         9,
+         3
+        ]
+       },
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Every piece upstairs has two downstairs. So the whole distance is twice as much!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a0",
+        "a1",
+        "a2"
+       ],
+       "at": "upstairs",
+       "until": "downstairs"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "copyOne",
+        "copyTwo",
+        "b10",
+        "b11",
+        "b20",
+        "b21"
+       ],
+       "at": "downstairs",
+       "until": "So"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. They start at zero and take the same number of jumps. Doubling every jump doubles the total, however far they go.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Same zero start."
+      },
+      {
+       "do": "text",
+       "text": "Same number of jumps.",
+       "at": "same"
+      },
+      {
+       "do": "answer",
+       "tex": "B=2\\times A",
+       "at": "total"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "a0",
+        "a1",
+        "a2",
+        "copyOne",
+        "copyTwo",
+        "b10",
+        "b11",
+        "b20",
+        "b21"
+       ],
+       "at": "Doubling",
+       "until": "however"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -1,
+     12,
+     12
+    ],
+    "points": {
+     "t": [
+      0,
+      11
+     ]
+    },
+    "parts": [
+     {
+      "id": "t",
+      "table": true,
+      "at": "t",
+      "corner": "Term",
+      "head": [
+       "$A$",
+       "$B$"
+      ],
+      "rows": [
+       {
+        "label": "1st",
+        "cells": [
+         "0",
+         "0"
+        ]
+       },
+       {
+        "label": "2nd",
+        "cells": [
+         "3",
+         "6"
+        ]
+       },
+       {
+        "label": "3rd",
+        "cells": [
+         "6",
+         "12"
+        ]
+       },
+       {
+        "label": "4th",
+        "cells": [
+         "9",
+         "18"
+        ]
+       },
+       {
+        "label": "5th",
+        "cells": [
+         "12",
+         "24"
+        ]
+       }
+      ],
+      "cell": [
+       3.6,
+       1.8
+      ],
+      "labelW": 3,
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Each number in a pattern is a term. Corresponding terms occupy the same place in the two lists.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Match the terms"
+      },
+      {
+       "do": "term",
+       "word": "Corresponding terms",
+       "meaning": "Numbers in the same position."
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.2",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The starting values are the first terms. So the fourth terms come after three jumps: nine and eighteen.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.1",
+       "at": "first",
+       "until": "fourth"
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.4",
+       "at": "fourth"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{4th pair}=(9,18)",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "An ordered pair writes *A* first, then *B*. The fourth pair is nine, eighteen. Four tells us the position, not either value.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "(A,B)=(9,18)",
+       "at": "ordered"
+      },
+      {
+       "do": "text",
+       "text": "4th means the position in the list.",
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t.cell.4.1",
+        "t.cell.4.2"
+       ],
+       "at": "nine",
+       "until": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": "t.cell.4.0",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "If *A* eventually reaches eighteen, must I count all the jumps?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which $B$ term matches $A=18$?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Use the relationship: twice eighteen is thirty-six. It works beyond the rows we have written.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "B=2\\times18=36",
+       "at": "twice"
+      },
+      {
+       "do": "answer",
+       "tex": "(18,36)",
+       "at": "thirty-six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2,
+     -7,
+     15,
+     28
+    ],
+    "stretch": true,
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "cursor": [
+      0,
+      0
+     ],
+     "h": [
+      3,
+      0
+     ],
+     "v": [
+      3,
+      6
+     ],
+     "xp": [
+      6,
+      -5.2
+     ],
+     "yp": [
+      2,
+      27
+     ],
+     "p0": [
+      0,
+      0
+     ],
+     "p1": [
+      3,
+      6
+     ],
+     "p2": [
+      6,
+      12
+     ],
+     "p3": [
+      9,
+      18
+     ],
+     "p4": [
+      12,
+      24
+     ]
+    },
+    "parts": [
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 3,
+      "every": 3,
+      "ystep": 6,
+      "yevery": 6,
+      "xrange": [
+       0,
+       12
+      ],
+      "yrange": [
+       0,
+       24
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "xl",
+      "label": "x=A",
+      "at": "xp",
+      "ink": "blue",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "yl",
+      "label": "y=B",
+      "at": "yp",
+      "ink": "warm",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "cursorDot",
+      "dot": "cursor",
+      "ink": "gold",
+      "r": 14
+     },
+     {
+      "id": "across",
+      "vector": [
+       "O",
+       "h"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "up",
+      "vector": [
+       "h",
+       "v"
+      ],
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "line",
+      "plot": "2*x",
+      "from": 0,
+      "to": 12,
+      "ink": "accent",
+      "w": 7
+     },
+     {
+      "id": "d0",
+      "dot": "p0",
+      "ink": "accent",
+      "r": 11
+     },
+     {
+      "id": "d1",
+      "dot": "p1",
+      "ink": "accent",
+      "r": 11
+     },
+     {
+      "id": "d2",
+      "dot": "p2",
+      "ink": "accent",
+      "r": 11
+     },
+     {
+      "id": "d3",
+      "dot": "p3",
+      "ink": "accent",
+      "r": 11
+     },
+     {
+      "id": "d4",
+      "dot": "p4",
+      "ink": "accent",
+      "r": 11
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let *x* be the value from *A*, and *y* the matching value from *B*. Plot each pair as one point.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One pair, one point"
+      },
+      {
+       "do": "write",
+       "tex": "(x,y)=(A,B)"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero, zero is the origin, where the axes meet.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "d0",
+       "at": "origin"
+      },
+      {
+       "do": "write",
+       "tex": "(0,0)",
+       "at": "Zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "For three, six: start at the origin, go three across, then six up.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "(3,6)"
+      },
+      {
+       "do": "show",
+       "target": "cursorDot",
+       "at": "start"
+      },
+      {
+       "do": "draw",
+       "target": "across",
+       "at": "across"
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         3,
+         0
+        ]
+       },
+       "at": "across"
+      },
+      {
+       "do": "draw",
+       "target": "up",
+       "at": "up"
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         3,
+         6
+        ]
+       },
+       "at": "up"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That dot combines both values. Its horizontal coordinate is three, not the number of jumps.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "d1"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "cursorDot",
+        "across",
+        "up"
+       ]
+      },
+      {
+       "do": "text",
+       "text": "Across: value of $A$.",
+       "at": "horizontal"
+      },
+      {
+       "do": "text",
+       "text": "Up: value of $B$.",
+       "at": "horizontal"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six, twelve. Nine, eighteen. Twelve, twenty-four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "(6,12)",
+       "at": "Six",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "d3",
+       "at": "Nine"
+      },
+      {
+       "do": "write",
+       "tex": "(9,18)",
+       "at": "Nine",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": "d4",
+       "at": "Twelve",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "(12,24)",
+       "at": "Twelve",
+       "nth": 2,
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "They line up!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "draw",
+       "target": "line",
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The line shows the rule: *y* equals two times *x*. Our pattern visits these dots; the line helps us see their relationship.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "y=2x",
+       "at": "equals"
+      },
+      {
+       "do": "text",
+       "text": "$2x$ means $2\\times x$.",
+       "at": "times"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2,
+     -7,
+     15,
+     28
+    ],
+    "stretch": true,
+    "points": {
+     "xp": [
+      6,
+      -5.2
+     ],
+     "yp": [
+      2,
+      27
+     ],
+     "p0": [
+      0,
+      0
+     ],
+     "p1": [
+      2,
+      6
+     ],
+     "p2": [
+      4,
+      12
+     ],
+     "p3": [
+      6,
+      18
+     ]
+    },
+    "parts": [
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 2,
+      "every": 4,
+      "ystep": 6,
+      "yevery": 6,
+      "xrange": [
+       0,
+       12
+      ],
+      "yrange": [
+       0,
+       24
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "xl",
+      "label": "x=A",
+      "at": "xp",
+      "ink": "blue",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "yl",
+      "label": "y=B",
+      "at": "yp",
+      "ink": "warm",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "old",
+      "plot": "2*x",
+      "from": 0,
+      "to": 12,
+      "ink": "muted",
+      "start": true,
+      "w": 3
+     },
+     {
+      "id": "triple",
+      "plot": "3*x",
+      "from": 0,
+      "to": 8,
+      "ink": "violet",
+      "w": 7
+     },
+     {
+      "id": "d0",
+      "dot": "p0",
+      "ink": "violet",
+      "r": 11
+     },
+     {
+      "id": "d1",
+      "dot": "p1",
+      "ink": "violet",
+      "r": 11
+     },
+     {
+      "id": "d2",
+      "dot": "p2",
+      "ink": "violet",
+      "r": 11
+     },
+     {
+      "id": "d3",
+      "dot": "p3",
+      "ink": "violet",
+      "r": 11
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Change *A*'s jump to two. Keep *B*'s jump at six, and both starts at zero. How many twos fit in six?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Change the jump"
+      },
+      {
+       "do": "text",
+       "text": "$A$: start 0, add 2."
+      },
+      {
+       "do": "text",
+       "text": "$B$: start 0, add 6.",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three. So *B* is three times *A*.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "6\\div2=3",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The pairs are zero, zero; two, six; four, twelve; and six, eighteen.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "d0",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "d3",
+       "at": "six",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "(0,0)",
+       "at": "zero",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "(2,6)",
+       "at": "two",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "(4,12)",
+       "at": "four",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "(6,18)",
+       "at": "six",
+       "fresh": true,
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "On the same axes, this line is steeper than the twice-as-much line. Both pass through zero, zero.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": "triple",
+       "at": "line"
+      },
+      {
+       "do": "highlight",
+       "target": "d0",
+       "at": "zero"
+      },
+      {
+       "do": "answer",
+       "tex": "y=3x",
+       "at": "steeper"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This is a multiplicative relationship: multiply each *x* by the same number. To check, use pairs where *x* is not zero. Divide *y* by *x*. The quotient, the answer to division, is always three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Multiplicative: same multiplier"
+      },
+      {
+       "do": "hide",
+       "target": "old"
+      },
+      {
+       "do": "write",
+       "tex": "6\\div2=3",
+       "at": "divide",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "12\\div4=3",
+       "at": "quotient",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "18\\div6=3",
+       "at": "always",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "triple",
+       "at": "multiply",
+       "until": "check"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d1",
+        "d2",
+        "d3"
+       ],
+       "at": "pairs",
+       "until": "quotient"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Don't divide by zero. Check the starting pair by multiplying: three times zero is zero.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0=3\\times0",
+       "at": "multiplying"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -3,
+     21,
+     12
+    ],
+    "points": {
+     "A": [
+      1,
+      7
+     ],
+     "B": [
+      7,
+      3
+     ],
+     "a0": [
+      0,
+      7
+     ],
+     "ae": [
+      20,
+      7
+     ],
+     "b0": [
+      0,
+      3
+     ],
+     "be": [
+      20,
+      3
+     ],
+     "ga": [
+      1,
+      0
+     ],
+     "gb": [
+      7,
+      0
+     ],
+     "na": [
+      0,
+      10
+     ],
+     "nb": [
+      13,
+      10
+     ],
+     "t": [
+      0,
+      -1
+     ]
+    },
+    "parts": [
+     {
+      "id": "laneA",
+      "seg": [
+       "a0",
+       "ae"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "laneB",
+      "seg": [
+       "b0",
+       "be"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "Amark",
+      "dot": "A",
+      "ink": "blue",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "Bmark",
+      "dot": "B",
+      "ink": "warm",
+      "r": 9,
+      "start": true
+     },
+     {
+      "id": "Al",
+      "label": "A=@x",
+      "at": "A",
+      "of": "A",
+      "dir": "n",
+      "ink": "blue",
+      "size": "l",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "Bl",
+      "label": "B=@x",
+      "at": "B",
+      "of": "B",
+      "dir": "n",
+      "ink": "warm",
+      "size": "l",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "guideA",
+      "seg": [
+       "A",
+       "ga"
+      ],
+      "ink": "blue",
+      "dash": true,
+      "start": true
+     },
+     {
+      "id": "guideB",
+      "seg": [
+       "B",
+       "gb"
+      ],
+      "ink": "warm",
+      "dash": true,
+      "start": true
+     },
+     {
+      "id": "gap",
+      "dim": [
+       "ga",
+       "gb"
+      ],
+      "side": "s",
+      "tex": "6",
+      "ink": "gold",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try different starts: *A* at one, *B* at seven. This time, both add four. *B* begins six ahead.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Same jump, different starts"
+      },
+      {
+       "do": "text",
+       "text": "$A$: start 1, add 4."
+      },
+      {
+       "do": "text",
+       "text": "$B$: start 7, add 4.",
+       "at": "seven"
+      },
+      {
+       "do": "write",
+       "tex": "7-1=6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "They move together: five and eleven.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         5,
+         7
+        ],
+        "B": [
+         11,
+         3
+        ],
+        "ga": [
+         5,
+         0
+        ],
+        "gb": [
+         11,
+         0
+        ]
+       },
+       "at": "move"
+      },
+      {
+       "do": "write",
+       "tex": "11-5=6",
+       "at": "eleven",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine and fifteen. Thirteen and nineteen. The gap travels with them, without stretching.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         9,
+         7
+        ],
+        "B": [
+         15,
+         3
+        ],
+        "ga": [
+         9,
+         0
+        ],
+        "gb": [
+         15,
+         0
+        ]
+       },
+       "at": "Nine"
+      },
+      {
+       "do": "write",
+       "tex": "15-9=6",
+       "at": "fifteen",
+       "fresh": true
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         13,
+         7
+        ],
+        "B": [
+         19,
+         3
+        ],
+        "ga": [
+         13,
+         0
+        ],
+        "gb": [
+         19,
+         0
+        ]
+       },
+       "at": "Thirteen"
+      },
+      {
+       "do": "write",
+       "tex": "19-13=6",
+       "at": "nineteen",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Neither can catch up. They add the same amount, so *B* stays six ahead.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "gap",
+       "at": "six"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "B=A+6",
+       "at": "stays"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is an additive relationship. Subtract matching values: the difference stays six. Using *x* and *y*, we write *y* equals *x* plus six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Additive: the same difference.",
+       "at": "additive"
+      },
+      {
+       "do": "write",
+       "tex": "y=x+6",
+       "at": "write"
+      },
+      {
+       "do": "highlight",
+       "target": "gap",
+       "at": "difference",
+       "until": "Using"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2,
+     -7,
+     16,
+     24
+    ],
+    "stretch": true,
+    "points": {
+     "xp": [
+      6,
+      -5.2
+     ],
+     "yp": [
+      2,
+      23
+     ],
+     "zero": [
+      0,
+      0
+     ],
+     "intercept": [
+      0,
+      6
+     ],
+     "p0": [
+      1,
+      1
+     ],
+     "p1": [
+      5,
+      5
+     ],
+     "p2": [
+      9,
+      9
+     ],
+     "p3": [
+      13,
+      13
+     ],
+     "lo": [
+      9,
+      9
+     ],
+     "hi": [
+      9,
+      15
+     ],
+     "riseCaption": [
+      10.8,
+      14
+     ],
+     "interceptCaption": [
+      2.2,
+      5.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 5,
+      "ystep": 1,
+      "yevery": 5,
+      "xrange": [
+       0,
+       15
+      ],
+      "yrange": [
+       0,
+       20
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "xl",
+      "label": "x=A",
+      "at": "xp",
+      "ink": "blue",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "yl",
+      "label": "y=B",
+      "at": "yp",
+      "ink": "warm",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "equal",
+      "plot": "x",
+      "from": 0,
+      "to": 14,
+      "ink": "muted",
+      "start": true,
+      "w": 3
+     },
+     {
+      "id": "plus",
+      "plot": "x+6",
+      "from": 0,
+      "to": 14,
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "rise",
+      "vector": [
+       "lo",
+       "hi"
+      ],
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "interceptDot",
+      "dot": "intercept",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "interceptLabel",
+      "label": "(0,6)",
+      "at": "interceptCaption",
+      "dir": "c",
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "riseLabel",
+      "label": "+6",
+      "at": "riseCaption",
+      "dir": "c",
+      "ink": "gold",
+      "size": "m"
+     },
+     {
+      "id": "d0",
+      "dot": "p0",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dot": "p1",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "d2",
+      "dot": "p2",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "d3",
+      "dot": "p3",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is the line where both values are equal: *y* equals *x*. To make *y* six more, lift every point six units.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Six above the equal-values line"
+      },
+      {
+       "do": "write",
+       "tex": "y=x"
+      },
+      {
+       "do": "move",
+       "points": {
+        "p0": [
+         1,
+         7
+        ],
+        "p1": [
+         5,
+         11
+        ],
+        "p2": [
+         9,
+         15
+        ],
+        "p3": [
+         13,
+         19
+        ]
+       },
+       "at": "lift"
+      },
+      {
+       "do": "draw",
+       "target": "rise",
+       "at": "six",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "riseLabel",
+       "at": "six",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One, seven. Five, eleven. Nine, fifteen. Thirteen, nineteen. Our matching pairs line up here.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "d0",
+       "at": "One",
+       "until": "Five"
+      },
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "Five",
+       "until": "Nine"
+      },
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "Nine",
+       "until": "Thirteen"
+      },
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "Thirteen",
+       "until": "Our"
+      },
+      {
+       "do": "draw",
+       "target": "plus",
+       "at": "line"
+      },
+      {
+       "do": "answer",
+       "tex": "y=x+6",
+       "at": "here"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "If we extend this rule to *x* equals zero, *y* is six. This line misses the origin. It sits six above the equal-values line.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "interceptDot",
+        "interceptLabel"
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "write",
+       "tex": "0+6=6",
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "rise",
+        "riseLabel"
+       ],
+       "at": "above"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -1,
+     10,
+     12
+    ],
+    "points": {
+     "t": [
+      0,
+      11
+     ]
+    },
+    "parts": [
+     {
+      "id": "t",
+      "table": true,
+      "at": "t",
+      "corner": "$x$",
+      "head": [
+       "$y$"
+      ],
+      "rows": [
+       {
+        "label": "3",
+        "cells": [
+         "27"
+        ]
+       },
+       {
+        "label": "5",
+        "cells": [
+         "45"
+        ]
+       },
+       {
+        "label": "7",
+        "cells": [
+         "63"
+        ]
+       },
+       {
+        "label": "9",
+        "cells": [
+         "81"
+        ]
+       }
+      ],
+      "cell": [
+       4,
+       2
+      ],
+      "labelW": 4,
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A table gives us matching values without telling us the rule. The input is *x*. The output is *y*. What one operation turns each input into its output?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find the rule across each pair"
+      },
+      {
+       "do": "text",
+       "text": "Input $x$ → output $y$."
+      },
+      {
+       "do": "highlight",
+       "target": "t.col.0",
+       "at": "input",
+       "until": "output"
+      },
+      {
+       "do": "highlight",
+       "target": "t.col.1",
+       "at": "output",
+       "until": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three plus twenty-four is twenty-seven. Is it add twenty-four?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.1"
+      },
+      {
+       "do": "write",
+       "tex": "3+24=27",
+       "at": "plus"
+      },
+      {
+       "do": "write",
+       "tex": "y=x+24",
+       "id": "guessAdd",
+       "at": "Is"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Test the next pair. Five plus twenty-four is twenty-nine, but the table says forty-five. That rule fails.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.2",
+       "at": "next"
+      },
+      {
+       "do": "write",
+       "tex": "5+24=29\\ne45",
+       "at": "Five"
+      },
+      {
+       "do": "strike",
+       "target": "guessAdd",
+       "at": "fails"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try multiplication. Twenty-seven divided by three is nine. Maybe every output is nine times its input.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "27\\div3=9",
+       "at": "divided"
+      },
+      {
+       "do": "write",
+       "tex": "y=9x",
+       "at": "Maybe"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine times three is twenty-seven. Nine times five is forty-five.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.1",
+       "at": "Nine",
+       "until": "Nine",
+       "untilNth": 2
+      },
+      {
+       "do": "write",
+       "tex": "9\\times3=27",
+       "at": "three",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.2",
+       "at": "Nine",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "9\\times5=45",
+       "at": "five",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine times seven is sixty-three. Nine times nine is eighty-one. Every pair fits.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.3",
+       "at": "Nine",
+       "until": "Nine",
+       "untilNth": 2
+      },
+      {
+       "do": "write",
+       "tex": "9\\times7=63",
+       "at": "seven",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.4",
+       "at": "Nine",
+       "nth": 2,
+       "until": "Every"
+      },
+      {
+       "do": "write",
+       "tex": "9\\times9=81",
+       "at": "eighty-one",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the relationship is multiplicative, with multiplier nine. Each output is its input multiplied by nine.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "y=9x",
+       "at": "multiplicative"
+      },
+      {
+       "do": "text",
+       "text": "Multiplicative. Rule number: 9.",
+       "at": "nine"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -1,
+     14,
+     13
+    ],
+    "points": {
+     "t1": [
+      0,
+      10
+     ],
+     "t2": [
+      0,
+      3.5
+     ],
+     "n1": [
+      6,
+      12
+     ],
+     "n2": [
+      6,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "n1",
+      "label": "\\text{Table 1}",
+      "at": "n1",
+      "ink": "ink",
+      "start": true,
+      "size": "l",
+      "dir": "c"
+     },
+     {
+      "id": "n2",
+      "label": "\\text{Table 2}",
+      "at": "n2",
+      "ink": "ink",
+      "start": true,
+      "size": "l",
+      "dir": "c"
+     },
+     {
+      "id": "t1",
+      "table": true,
+      "at": "t1",
+      "corner": "$x$",
+      "head": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "rows": [
+       {
+        "label": "$y$",
+        "cells": [
+         "5",
+         "6",
+         "8",
+         "8"
+        ]
+       }
+      ],
+      "cell": [
+       2.6,
+       1.8
+      ],
+      "labelW": 2,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "table": true,
+      "at": "t2",
+      "corner": "$x$",
+      "head": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "rows": [
+       {
+        "label": "$y$",
+        "cells": [
+         "5",
+         "6",
+         "7",
+         "8"
+        ]
+       }
+      ],
+      "cell": [
+       2.6,
+       1.8
+      ],
+      "labelW": 2,
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Sometimes the rule is given, and you choose the table. Which table follows *y* equals *x* plus four?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Every pair must fit"
+      },
+      {
+       "do": "problem",
+       "text": "Which table follows $y=x+4$?",
+       "at": "Which"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Table one starts well: one plus four is five; two plus four is six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t1.col.1",
+       "at": "one",
+       "nth": 2,
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "t1.col.2",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "1+4=5",
+       "at": "one",
+       "fresh": true,
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "2+4=6",
+       "at": "two",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But three plus four should be seven. This table says eight. One wrong pair rules out the whole table.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "y=x+4"
+      },
+      {
+       "do": "highlight",
+       "target": "t1.col.3",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "3+4=7\\ne8",
+       "at": "seven"
+      },
+      {
+       "do": "text",
+       "text": "Table 1 fails.",
+       "at": "wrong"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Table two gives five, six, seven, eight. All four outputs are four more than their inputs. Choose table two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.1",
+       "at": "five",
+       "until": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.2",
+       "at": "six",
+       "until": "seven"
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.3",
+       "at": "seven",
+       "until": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.4",
+       "at": "eight",
+       "until": "All"
+      },
+      {
+       "do": "write",
+       "tex": "1+4=5,\\quad2+4=6",
+       "at": "All",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "3+4=7,\\quad4+4=8",
+       "at": "outputs",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Table 2}",
+       "at": "Choose"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t2.col.1",
+        "t2.col.2",
+        "t2.col.3",
+        "t2.col.4"
+       ],
+       "at": "All",
+       "until": "Choose"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -1,
+     13,
+     12
+    ],
+    "points": {
+     "t1": [
+      0,
+      10
+     ],
+     "t2": [
+      0,
+      4
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1",
+      "table": true,
+      "at": "t1",
+      "corner": "$x$",
+      "head": [
+       "7",
+       "9",
+       "11"
+      ],
+      "rows": [
+       {
+        "label": "$y$",
+        "cells": [
+         "3",
+         "5",
+         "7"
+        ]
+       }
+      ],
+      "cell": [
+       3,
+       2
+      ],
+      "labelW": 2,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "table": true,
+      "at": "t2",
+      "corner": "$x$",
+      "head": [
+       "6",
+       "12",
+       "18"
+      ],
+      "rows": [
+       {
+        "label": "$y$",
+        "cells": [
+         "2",
+         "4",
+         "6"
+        ]
+       }
+      ],
+      "cell": [
+       3,
+       2
+      ],
+      "labelW": 2,
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The words can also say decreased by or divided by. In the top table, subtract four from each input: three, five, seven.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Read the operation words"
+      },
+      {
+       "do": "highlight",
+       "target": "t1",
+       "at": "top",
+       "until": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "t1.col.1",
+       "at": "three",
+       "until": "five"
+      },
+      {
+       "do": "write",
+       "tex": "7-4=3",
+       "at": "three",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "t1.col.2",
+       "at": "five",
+       "until": "seven"
+      },
+      {
+       "do": "write",
+       "tex": "9-4=5",
+       "at": "five",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "t1.col.3",
+       "at": "seven"
+      },
+      {
+       "do": "write",
+       "tex": "11-4=7",
+       "at": "seven",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each output is its input decreased by four. Subtracting the same amount is additive too.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "y=x-4",
+       "at": "decreased"
+      },
+      {
+       "do": "text",
+       "text": "Decreased by 4: subtract 4.",
+       "at": "four"
+      },
+      {
+       "do": "text",
+       "text": "Additive",
+       "at": "additive"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "In the bottom table, divide each input by three: two, four, six. Each output is its input divided by three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "t2",
+       "at": "bottom",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.1",
+       "at": "two",
+       "until": "four"
+      },
+      {
+       "do": "write",
+       "tex": "6\\div3=2",
+       "at": "two",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.2",
+       "at": "four",
+       "until": "six"
+      },
+      {
+       "do": "write",
+       "tex": "12\\div3=4",
+       "at": "four",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "t2.col.3",
+       "at": "six",
+       "until": "Each",
+       "untilNth": 2
+      },
+      {
+       "do": "write",
+       "tex": "18\\div3=6",
+       "at": "six",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Dividing by three is multiplying by one third. This relationship is multiplicative.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "y=x\\div3=\\tfrac13 x",
+       "at": "third"
+      },
+      {
+       "do": "text",
+       "text": "Divided by 3: multiplicative.",
+       "at": "multiplicative"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Test this statement using the rule: when *x* is three, *y* is nine.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "y=3x"
+      },
+      {
+       "do": "text",
+       "text": "When $x=3$, is $y=9$?",
+       "at": "when"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three times three is nine. That statement is true.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "y=3\\times3=9",
+       "at": "nine"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{True}",
+       "at": "true"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What about: *y* is always three more than *x*?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Is $y$ always 3 more than $x$?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "No. Three more than three is six, but the rule gave nine.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "3+3=6\\ne9",
+       "at": "six"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{False}",
+       "at": "but"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "For *y* equals *x* plus two, test the statement: when *x* is four, *y* is six. Replace *x* with four, then add two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "y=x+2"
+      },
+      {
+       "do": "text",
+       "text": "When $x=4$, is $y=6$?",
+       "at": "test"
+      },
+      {
+       "do": "write",
+       "tex": "y=4+2=6",
+       "at": "Replace"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{True}",
+       "at": "add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "If a question asks for two true statements, select the two that passed. Test each claim with its own rule.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Select the 2 true statements"
+      },
+      {
+       "do": "text",
+       "text": "$y=3x$: if $x=3$, then $y=9$.",
+       "at": "two"
+      },
+      {
+       "do": "text",
+       "text": "$y=x+2$: if $x=4$, then $y=6$.",
+       "at": "two",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2,
+     -7,
+     16,
+     26
+    ],
+    "stretch": true,
+    "points": {
+     "xp": [
+      6,
+      -5.2
+     ],
+     "yp": [
+      2,
+      25
+     ],
+     "origin": [
+      0,
+      0
+     ],
+     "intercept": [
+      0,
+      6
+     ],
+     "lp": [
+      4.5,
+      22.5
+     ],
+     "la": [
+      11.5,
+      12
+     ],
+     "p1": [
+      2,
+      6
+     ],
+     "p2": [
+      4,
+      12
+     ],
+     "p3": [
+      6,
+      18
+     ],
+     "q0": [
+      1,
+      7
+     ],
+     "q1": [
+      5,
+      11
+     ],
+     "q2": [
+      9,
+      15
+     ],
+     "q3": [
+      13,
+      19
+     ]
+    },
+    "parts": [
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 2,
+      "every": 4,
+      "ystep": 4,
+      "yevery": 4,
+      "xrange": [
+       0,
+       14
+      ],
+      "yrange": [
+       0,
+       24
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "xl",
+      "label": "x",
+      "at": "xp",
+      "ink": "blue",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "yl",
+      "label": "y",
+      "at": "yp",
+      "ink": "warm",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "triple",
+      "plot": "3*x",
+      "from": 0,
+      "to": 8,
+      "ink": "violet",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "plus",
+      "plot": "x+6",
+      "from": 0,
+      "to": 14,
+      "ink": "warm",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "tripleName",
+      "label": "y=3x",
+      "at": "lp",
+      "ink": "violet",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "plusName",
+      "label": "y=x+6",
+      "at": "la",
+      "ink": "warm",
+      "start": true,
+      "size": "m",
+      "dir": "c"
+     },
+     {
+      "id": "o",
+      "dot": "origin",
+      "ink": "violet",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "i",
+      "dot": "intercept",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "pdot1",
+      "dot": "p1",
+      "ink": "violet",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "pdot2",
+      "dot": "p2",
+      "ink": "violet",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "pdot3",
+      "dot": "p3",
+      "ink": "violet",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "qdot0",
+      "dot": "q0",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "qdot1",
+      "dot": "q1",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "qdot2",
+      "dot": "q2",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     },
+     {
+      "id": "qdot3",
+      "dot": "q3",
+      "ink": "warm",
+      "r": 11,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two relationships, two shapes. The purple line keeps the same multiplier. The orange line keeps the same difference.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "What stays the same?"
+      },
+      {
+       "do": "highlight",
+       "target": "triple",
+       "at": "multiplier",
+       "until": "orange"
+      },
+      {
+       "do": "text",
+       "text": "Multiplicative: same multiplier.",
+       "at": "multiplier"
+      },
+      {
+       "do": "highlight",
+       "target": "plus",
+       "at": "difference"
+      },
+      {
+       "do": "text",
+       "text": "Additive: same difference.",
+       "at": "difference"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I match the terms in the same position, then use their values for the pair.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "(x,y)=(A,B)",
+       "at": "pair"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Match the terms. Pair them. Look for what stays the same: the same times, or the same more.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "triple",
+       "at": "times",
+       "until": "or"
+      },
+      {
+       "do": "highlight",
+       "target": "plus",
+       "at": "more"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

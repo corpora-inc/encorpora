@@ -64,6 +64,81 @@ An assignment's link opens AMP at its origin, where the student signs in with Cl
 
 A 429 waits for Clever's reset. A read, update or delete retries an outage after 1, 2 and 4 seconds. A create is never retried after an unclear failure, because a second one would make a duplicate column nobody could find. Raw provider messages are never stored or logged. A pass stops at 600 requests, half of Clever's per-token limit, and the next pass continues.
 
+## Clever's guidance (Partner Engineering, 2026-11-26)
+
+Clever's partner engineers answered AMP's LMS Connect questions on 2026-11-26. These are their rules, stated as facts about the API. Where AMP's code differs, the difference is listed after them.
+
+### Google Classroom: turn in, return, reclaim
+
+This is how Classroom works everywhere, not only in the demo district. Submission state changes need the district's Google Classroom Rostering Integration (GCRI).
+
+- Update a submission with `PATCH /v3.1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}`.
+- The teacher must accept the provisioned class in Google Classroom before any submission in that section can be updated.
+- The assignment must be `open`.
+- A submission leaves `created` only when a `state` is sent, or when an `attachments` array is sent (which moves it to `submitted`).
+- `returned` and `reclaimed` are valid only from `submitted`.
+- `returned` can be set without a grade.
+- After `submitted`, `returned` or `reclaimed`, a submission never goes back to `created`.
+- Sequence: send `state: "submitted"` first. Send `returned` or `reclaimed` in a later request.
+- The live 404 "failed to turn in student submission. ensure first that the section is active" and 400 "student submission has not been turned in" are not in Clever's error catalog. Clever reads them as "class not accepted / section not ready" and "submission not turned in yet".
+
+### Grades
+
+- Classroom is points-only through LMS Connect. Send the score as `grade_points`. `grade` and `grade_comment` are not supported on Classroom submissions.
+- Classroom itself has a teacher-only draft grade and a grade students see. Clever's `grade_points` is the grade value for the submission. Turning in, returning and reclaiming are separate state updates.
+- Sending `grade_points: null` is not a supported way to clear a grade. Clever will advise on a specific clear or ungrade use case if asked.
+
+### LTI 1.3
+
+- Clever supports launches from the LMS into the app only (Canvas or Schoology to AMP). There is no launch from the app back into the LMS.
+- A launch is OpenID Connect and carries a signed ID token (JWT) with the user's identity, role and the course or section it came from. The app validates the token and routes the user from that context.
+- Clever's docs: the app needs a working Clever SSO integration first; a launch from a mapped course goes straight to that course's view in the app, and an unmapped one goes to a setup or matching flow. Course-level launch is not LTI Deep Linking.
+- Clever adds the app as an LTI 1.3 app in the Canvas and Schoology sandboxes once it has confirmed the direction and the landing behavior. Google Classroom has no LTI 1.3 SSO.
+
+### Test logins
+
+Clever's team issues demo teacher and student logins for each LMS sandbox. It needs the section name and teacher name the app tests with.
+
+### Scopes
+
+LMS Connect uses the same district-app bearer token as rostering, on API v3.1. A token that lists only the roster `read:*` scopes is expected.
+
+### Creates that time out
+
+- There is no list-assignments endpoint and no idempotency key.
+- Store the assignment ID from the create response at once. It is the only way to read or update the assignment later.
+- A retry after a timeout can create a duplicate column.
+- Use a 15 to 60 second timeout on create and update calls.
+- If a create times out and no ID came back, email integrations@clever.com rather than retrying.
+
+### Schoology `term_id`
+
+Clever's provider-differences, testing and API reference pages say `term_id` (the Clever term ID) is required on Schoology assignment writes. The reference's create table doesn't mark it required, which is why the sandbox accepted a create without it. Send it for Schoology anyway. Canvas doesn't use it.
+
+### Where AMP stands
+
+| Rule | AMP today |
+| --- | --- |
+| Classroom state order | Matches. A `created` or `reclaimed` submission gets `submitted` (with the grade) first; `returned` follows in a separate PATCH (`planSubmission` in `src/schools/clever/lms-payloads.ts`). `returned` and `reclaimed` are sent only from `submitted`. A state change is never repeated after an outage. |
+| Assignment must be `open` | Matches. Submissions are read and written only while it is `open`; otherwise `lms_assignment_not_open`. |
+| Teacher must accept the class | **Gap.** The 404 maps to the generic `lms_not_found`, so the teacher sees "not sent yet" with backoff, not "accept the class in Google Classroom". |
+| `grade_points` only | Matches. AMP never sends `grade` or `grade_comment`. |
+| No null clear | Matches. AMP never sends `grade_points: null`. Classroom work AMP turned in that no longer counts is reclaimed. Other LMSs show `lms_reclaim_unsupported` to the teacher. |
+| Reclaim and the old grade | **Open.** Whether a reclaim leaves the old `grade_points` in place is unconfirmed. |
+| LTI 1.3 | **Not built.** AMP accepts no LTI launch and reads no course context. Today, Clever sign-in lands a teacher on `/school` and a student on their practice. |
+| Store the create ID at once | Matches. |
+| Timeouts | Matches. 30 s on reads, 60 s on writes (`LmsClient`). |
+| No retry of an unclear create | Matches. It becomes `lms_create_outcome_unknown` and waits. **Gap:** the teacher's message says "Check the LMS, then publish again or delete" and names no way to recover the ID through Clever. |
+| Schoology `term_id` | Matches. Always sent on create and update; a section without a Clever term stops at `lms_term_required`. Never sent for Canvas or Classroom. |
+| Same token, `read:*` scopes | Matches. |
+
+### Follow-ups
+
+1. Map Classroom's "ensure first that the section is active" 404 to its own code, shown to the teacher as "Accept this class in Google Classroom", with a slower retry.
+2. Build the LTI 1.3 launch: validate Clever's ID token, map its course or section to the AMP class, and land a teacher on that class's Today (`/school/<org>/classes/<class>/today`) and a student on their practice. An unmapped course lands a teacher on their classes. Clever still has to say where the launch arrives (the existing Clever redirect URI or a separate launch URL) and which claim carries the section.
+3. Give an unconfirmed create an operator path: ask integrations@clever.com for the ID, then attach it to the AMP assignment, instead of a second publish when the column already exists in the LMS.
+4. Ask Clever whether a Classroom reclaim keeps the old `grade_points`, and what an ungrade should do.
+
 ## Configuration
 
 | Variable | Where | Value |
@@ -87,8 +162,8 @@ Tests: `tests/clever-lms.test.ts` and `tests/clever-lms-probe.test.ts` run again
 
 ## Limits
 
-- **Live sandbox status (2026-11-25).** Schoology passes the probe end to end: create, read, update, list submissions, grade, delete. Google Classroom creates, reads, updates, lists, writes a grade and deletes, but refuses to turn work in, return it or reclaim it (404 "failed to turn in student submission"; a return answers 400 "has not been turned in"). The grade in the same request is still written, so the work stays `created` with AMP's points and the pass reports a failure; this is open with Clever. The Canvas demo district shares no schools, sections or users with the app yet. An assignment Clever no longer has answers 404 "Could not find assignment" (Classroom) or 500 "Assignment mapping not found" (Schoology); both read as deleted.
+- **Live sandbox status (2026-11-25, Canvas 2026-11-27).** Schoology passes the probe end to end: create, read, update, list submissions, grade, delete. Google Classroom creates, reads, updates, lists, writes a grade and deletes, but refuses to turn work in, return it or reclaim it (404 "failed to turn in student submission"; a return answers 400 "has not been turned in"). The grade in the same request is still written, so the work stays `created` with AMP's points and the pass reports a failure. Clever says this is the class not yet accepted by its teacher in Google Classroom (see [Clever's guidance](#google-classroom-turn-in-return-reclaim)); it needs a teacher login to verify. The Canvas demo district now shares 26 schools with the development app, and Clever reports 3 of its sections synced in Canvas; the probe has not run there yet. An assignment Clever no longer has answers 404 "Could not find assignment" (Classroom) or 500 "Assignment mapping not found" (Schoology); both read as deleted.
 - **One-way.** AMP doesn't import teacher edits made in the LMS. A teacher's regrade there is overwritten only when AMP's own grade for that student changes.
 - **Schoology grading category.** A grade can return success yet not appear in Schoology until the teacher sets the assignment's Category in Schoology. Clever gives no signal for this.
-- **LTI 1.3.** Students reach AMP through the assignment link and Clever sign-in. AMP doesn't route an LMS LTI launch to a course. Schoology still needs each student to launch AMP from Schoology once before their grade can be written.
+- **LTI 1.3.** Students reach AMP through the assignment link and Clever sign-in. AMP doesn't accept an LTI launch yet ([follow-up 2](#follow-ups)). Schoology still needs each student to launch AMP from Schoology once before their grade can be written.
 - **No silent recovery.** An unanswered create waits for the teacher. A district that refuses access waits for Clever. Neither is guessed around.

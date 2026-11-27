@@ -1,0 +1,844 @@
+[
+ {
+  "lesson_id": "l.powerlines.01",
+  "topic_id": "powerlines",
+  "ord": 1,
+  "title": "The work zone and the 20-foot check",
+  "skills": [
+   "powerlines.work-zone",
+   "powerlines.twenty-foot-check"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Most crane electrocutions happen when the boom, load line or load touches an overhead line or gets close enough for current to arc. The power line rules start with two steps before any operation: define the **work zone**, then decide whether anything could get within 20 feet of a line."
+   },
+   {
+    "t": "text",
+    "text": "There are two ways to define the work zone. You can mark boundaries and forbid operating past them:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(a)(1)(i)",
+    "text": "Demarcating boundaries (such as with flags, or a device such as a range limit device or range control warning device) and prohibiting the operator from operating the equipment past those boundaries, or"
+   },
+   {
+    "t": "text",
+    "text": "Or you can take the whole circle the crane can reach:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(a)(1)(ii)",
+    "text": "Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working radius."
+   },
+   {
+    "t": "text",
+    "text": "In the plan view, look at the full circle around the crane's center of rotation. Without demarcated boundaries, that whole circle is the work zone."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "swing-radius-clearance"
+   },
+   {
+    "t": "text",
+    "text": "Next comes the **20-foot check**. It covers every part: boom, jib, hook block, load line, rigging and load, with the crane operated out to its maximum working radius in the work zone."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(a)(2)",
+    "text": "Determine if any part of the equipment, load line or load (including rigging and lifting accessories), if operated up to the equipment's maximum working radius in the work zone, could get closer than 20 feet to a power line."
+   },
+   {
+    "t": "text",
+    "text": "If the answer is yes, you must use one of three options: deenergize and ground, keep 20 feet, or keep the Table A distance. The next lesson covers them."
+   },
+   {
+    "t": "text",
+    "text": "Worked practice example: the crane's maximum working radius is 100 ft and a line runs 110 ft from the center of rotation. The boom tip can reach within 10 ft of the line in plan view, so the answer is yes. If you instead flag a boundary at 60 ft and prohibit operating past it, the closest reach is 50 ft from the line. Then you only have to check height, load swing and line sag inside that boundary."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Checking only the boom tip and forgetting the load line, rigging and a swinging load.\n- Measuring from the line at one point when the line sags lower between poles (physics: sag increases in heat and under heavy electrical load).\n- Drawing a boundary on paper but never telling the operator not to cross it."
+   },
+   {
+    "t": "text",
+    "text": "**Encroachment** is the term for breaching a required clearance:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Encroachment is where any part of the crane, load line or load (including rigging and lifting accessories) breaches a minimum clearance distance that this subpart requires to be maintained from a power line."
+   },
+   {
+    "t": "check",
+    "question": "No boundaries are marked. What is the work zone?",
+    "answer": "The area 360 degrees around the equipment, out to its maximum working radius."
+   },
+   {
+    "t": "check",
+    "question": "Does the 20-foot check include the rigging and the load?",
+    "answer": "Yes. It includes every part of the equipment, the load line and the load, including rigging and lifting accessories."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.02",
+  "topic_id": "powerlines",
+  "ord": 2,
+  "title": "Three options: deenergize, 20 feet, or Table A",
+  "skills": [
+   "powerlines.options",
+   "powerlines.voltage-and-energized"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "If any part could get within 20 feet of a line, you must choose one of three options. Each one has a different cost and a different level of protection."
+   },
+   {
+    "t": "text",
+    "text": "**Option (1): deenergize and ground.** The utility removes the hazard. This is the most protective option, but it depends on the utility's schedule."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(a)(2)(i)",
+    "text": "Confirm from the utility owner/operator that the power line has been deenergized and visibly grounded at the worksite."
+   },
+   {
+    "t": "text",
+    "text": "**Option (2): 20-foot clearance.** You don't need the voltage, but you must use the encroachment measures to hold 20 feet."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(a)(2)(ii)",
+    "text": "Ensure that no part of the equipment, load line, or load (including rigging and lifting accessories), gets closer than 20 feet to the power line by implementing the measures specified in paragraph (b) of this section."
+   },
+   {
+    "t": "text",
+    "text": "**Option (3): Table A clearance.** You get the voltage and keep the Table A distance, which can be smaller than 20 feet for lower voltages."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(a)(2)(iii)(A)",
+    "text": "Determine the line's voltage and the minimum approach distance permitted under Table A (see § 1926.1408)."
+   },
+   {
+    "t": "text",
+    "text": "If anything could get closer than the Table A distance, the same encroachment measures apply."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(a)(2)(iii)(B)"
+   },
+   {
+    "t": "text",
+    "text": "Get the voltage from the utility, not from a guess based on pole height or insulator count. The utility has a deadline:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(c)",
+    "text": "Where Option (3) of this section is used, the utility owner/operator of the power lines must provide the requested voltage information within two working days of the employer's request."
+   },
+   {
+    "t": "text",
+    "text": "Until the utility confirms it, every line is live. A line that looks dead, is on a de-energized circuit map, or was dead yesterday is still treated as energized."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(e)",
+    "text": "The employer must assume that all power lines are energized unless the utility owner/operator confirms that the power line has been and continues to be deenergized and visibly grounded at the worksite."
+   },
+   {
+    "t": "text",
+    "text": "Choosing in practice:\n- Choose Option (1) when the work must go under or very near the line and the utility can schedule an outage.\n- Choose Option (2) when the voltage is unknown or the job starts before the utility answers.\n- Choose Option (3) when you have the voltage and the extra room from a smaller Table A distance matters."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: accepting \"it's off\" from someone other than the utility, and taking a line as grounded without visible grounds at the worksite."
+   },
+   {
+    "t": "check",
+    "question": "You asked the utility for the voltage this morning. How long do they have to answer?",
+    "answer": "Two working days from your request."
+   },
+   {
+    "t": "check",
+    "question": "Which option works when the voltage is unknown?",
+    "answer": "Option (2), the 20-foot clearance with encroachment measures (or Option (1), deenergize and ground)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.03",
+  "topic_id": "powerlines",
+  "ord": 3,
+  "title": "Table A: clearance by voltage, and lines over 350 kV",
+  "skills": [
+   "powerlines.table-a",
+   "powerlines.over-350kv"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Table A** gives the minimum clearance in feet for each nominal AC voltage range. Find the range the line falls in and read the distance."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408",
+    "text": "up to 50 | 10 over 50 to 200 | 15 over 200 to 350 | 20 over 350 to 500 | 25 over 500 to 750 | 35 over 750 to 1,000 | 45"
+   },
+   {
+    "t": "text",
+    "text": "Read the table this way:\n- Up to 50 kV: 10 ft\n- Over 50 to 200 kV: 15 ft\n- Over 200 to 350 kV: 20 ft\n- Over 350 to 500 kV: 25 ft\n- Over 500 to 750 kV: 35 ft\n- Over 750 to 1,000 kV: 45 ft\n- Over 1,000 kV: set by the utility or a qualified registered professional engineer"
+   },
+   {
+    "t": "text",
+    "text": "The top value of each range belongs to that range:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408",
+    "text": "Note: The value that follows “to” is up to and includes that value."
+   },
+   {
+    "t": "text",
+    "text": "Worked examples:\n- 13.8 kV is up to 50, so 10 ft.\n- 50 kV exactly is still up to 50, so 10 ft.\n- 69 kV is over 50 to 200, so 15 ft.\n- 200 kV exactly is 15 ft. 230 kV is 20 ft.\n- 345 kV is over 200 to 350, so 20 ft.\n- 500 kV is over 350 to 500, so 25 ft."
+   },
+   {
+    "t": "text",
+    "text": "In the side view, compare the 20-ft zone with the smaller Table A distance for a lower voltage."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "power-line-table-a-zones"
+   },
+   {
+    "t": "text",
+    "text": "**Over 350 kV.** The same rules apply, with one change for lines up to 1,000 kV: every 20-foot distance becomes 50 feet. That applies to both the 20-foot check and Option (2)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1409(a)",
+    "text": "For power lines at or below 1000 kV, wherever the distance “20 feet” is specified, the distance “50 feet” must be substituted; and"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1409(b)",
+    "text": "For power lines over 1000 kV, the minimum clearance distance must be established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution."
+   },
+   {
+    "t": "text",
+    "text": "Example: for a 500 kV line, check whether anything could get within 50 ft. If so, hold 50 ft (Option 2) or 25 ft from Table A (Option 3) with encroachment measures."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: reading the next range up or down at a boundary value, using a voltage nobody confirmed, and using 20 ft as the trigger for a line over 350 kV."
+   },
+   {
+    "t": "check",
+    "question": "What is the Table A clearance for a 115 kV line?",
+    "answer": "15 ft (over 50 to 200 kV)."
+   },
+   {
+    "t": "check",
+    "question": "For a 600 kV line, what replaces the 20-foot trigger distance?",
+    "answer": "50 feet."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.04",
+  "topic_id": "powerlines",
+  "ord": 4,
+  "title": "Encroachment prevention measures and the dedicated spotter",
+  "skills": [
+   "powerlines.encroachment-measures",
+   "powerlines.dedicated-spotter"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Options (2) and (3) only work if you actively prevent encroachment. Every listed requirement applies; none of them is optional."
+   },
+   {
+    "t": "text",
+    "text": "**1. Planning meeting.**"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(b)(1)",
+    "text": "Conduct a planning meeting with the operator and the other workers who will be in the area of the equipment or load to review the location of the power line(s), and the steps that will be implemented to prevent encroachment/electrocution."
+   },
+   {
+    "t": "text",
+    "text": "**2. Nonconductive tag lines.**"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(b)(2)",
+    "text": "If tag lines are used, they must be non-conductive."
+   },
+   {
+    "t": "text",
+    "text": "**3. Elevated warning line.** Put up an elevated warning line, barricade or line of signs with flags or high-visibility markings, in the operator's view. Place it at 20 ft for Option (2) or at the Table A distance for Option (3)."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(b)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(b)(3)",
+    "text": "If the operator is unable to see the elevated warning line, a dedicated spotter must be used as described in § 1926.1408(b)(4)(ii) in addition to implementing one of the measures described in §§ 1926.1408(b)(4)(i), (iii), (iv) and (v)."
+   },
+   {
+    "t": "text",
+    "text": "**4. At least one more measure:**\n- a proximity alarm set to give sufficient warning\n- a dedicated spotter\n- a device that warns the operator when to stop, such as a range control warning device\n- a device that automatically limits range of movement\n- an insulating link/device between the end of the load line (or below) and the load"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(b)(4)"
+   },
+   {
+    "t": "text",
+    "text": "Devices used for this must follow the manufacturer's procedures for use and conditions of use."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(h)"
+   },
+   {
+    "t": "text",
+    "text": "**Dedicated spotter.** The spotter must meet the signal person qualification requirements and has one job only:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "his/her sole responsibility is to watch the separation between the power line and the equipment, load line and load (including rigging and lifting accessories), and ensure through communication with the operator that the applicable minimum approach distance is not breached."
+   },
+   {
+    "t": "text",
+    "text": "The spotter must stay in continuous contact with the operator and:\n- have a visual aid, such as a painted ground line, stanchions, or line-of-sight landmarks\n- be positioned to effectively gauge the clearance\n- use direct communication equipment where necessary"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(b)(4)(ii)(D)",
+    "text": "Give timely information to the operator so that the required clearance distance can be maintained."
+   },
+   {
+    "t": "text",
+    "text": "Field practice: stand to the side, roughly in line with the wire, so you can see the gap. From the crane or directly under the line, distance to the wire is hard to judge."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: making the signal person also act as spotter (\"sole responsibility\" rules this out), setting an alarm so late that the boom coasts past the line, and using a wet or dirty rope as a \"nonconductive\" tag line."
+   },
+   {
+    "t": "check",
+    "question": "The operator can't see the warning line. What is required?",
+    "answer": "A dedicated spotter plus one of the other listed measures."
+   },
+   {
+    "t": "check",
+    "question": "Can the spotter also rig the next load?",
+    "answer": "No. Watching the clearance is the spotter's sole responsibility."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.05",
+  "topic_id": "powerlines",
+  "ord": 5,
+  "title": "Assembly, disassembly, and operating below power lines",
+  "skills": [
+   "powerlines.assembly",
+   "powerlines.below-lines"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Assembly and disassembly have their own power line rule. Booms are laid out, pinned and raised in ways that differ from normal operation, so the check looks at the direction and area of the work."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1407(a)",
+    "text": "Before assembling or disassembling equipment, the employer must determine if any part of the equipment, load line, or load (including rigging and lifting accessories) could get, in the direction or area of assembly/disassembly, closer than 20 feet to a power line during the assembly/disassembly process."
+   },
+   {
+    "t": "text",
+    "text": "If it could, use the same three options as in operations. The encroachment measures differ in two ways:\n- The planning meeting includes the **A/D director** and the assembly crew.\n- You must pick at least one measure from a list: dedicated spotter, proximity alarm, range control warning device, range limiting device, or an elevated warning line with flags in view of the operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1407(b)(3)",
+    "text": "The measure selected from this list must be effective in preventing encroachment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1407(b)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Two prohibitions apply during assembly unless the utility has deenergized the line and visibly grounded it at the worksite: no assembly below a line, and no assembly inside the Table A distance."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1407(c)",
+    "text": "No part of a crane/derrick, load line, or load (including rigging and lifting accessories), whether partially or fully assembled, is allowed below a power line unless the employer has confirmed that the utility owner/operator has deenergized and (at the worksite) visibly grounded the power line."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1407(d)"
+   },
+   {
+    "t": "text",
+    "text": "Warning signs:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1407(g)",
+    "text": "There must be at least one electrocution hazard warning conspicuously posted in the cab so that it is in view of the operator and (except for overhead gantry and tower cranes) at least two on the outside of the equipment."
+   },
+   {
+    "t": "text",
+    "text": "**Operating below lines.** During operations, nothing may be below a line unless it has been deenergized and visibly grounded. The exceptions are: subpart V work, the vertical-boom test, or infeasibility handled under the closer-than-Table-A rules."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(d)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(d)(2)(iii)",
+    "text": "For equipment with articulating or extensible booms: The uppermost part of the equipment, with the boom in the fully extended position, at true vertical, would be more than 20 feet below the plane of the power line or more than the Table A of this section minimum clearance distance below the plane of the power line."
+   },
+   {
+    "t": "text",
+    "text": "For non-extensible booms, do the same test with the boom at true vertical."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(d)(2)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Worked example: a 69 kV line (Table A: 15 ft) has its lowest plane at 60 ft. A telescopic crane fully extended at vertical tops out at 42 ft, which is 18 ft below the plane. That is more than the 15-ft Table A distance, so the exception can apply. If the crane topped out at 48 ft (12 ft below), it would not."
+   },
+   {
+    "t": "check",
+    "question": "May you pin boom sections on the ground directly under an energized line?",
+    "answer": "No. Not until the utility deenergizes the line and visibly grounds it at the worksite."
+   },
+   {
+    "t": "check",
+    "question": "How many electrocution warnings are required on a mobile crane?",
+    "answer": "At least one in the cab in the operator's view and at least two on the outside."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.06",
+  "topic_id": "powerlines",
+  "ord": 6,
+  "title": "Working closer than Table A: every condition required",
+  "skills": [
+   "powerlines.closer-than-table-a"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Breaking the Table A distance to an energized line is prohibited by default. It is allowed only when every condition below is met."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410",
+    "text": "Equipment operations in which any part of the equipment, load line, or load (including rigging and lifting accessories) is closer than the minimum approach distance under Table A of § 1926.1408 to an energized power line is prohibited, except where the employer demonstrates that all of the following requirements are met:"
+   },
+   {
+    "t": "text",
+    "text": "**Infeasibility first.**"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(a)",
+    "text": "The employer determines that it is infeasible to do the work without breaching the minimum approach distance under Table A of § 1926.1408."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(b)",
+    "text": "The employer determines that, after consultation with the utility owner/operator, it is infeasible to deenergize and ground the power line or relocate the power line."
+   },
+   {
+    "t": "text",
+    "text": "**A new clearance.** The utility or a qualified registered professional engineer sets the distance for site conditions. Factors include atmospheric conductivity, stopping time, wind, line sway and lighting."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1410(c)(1)"
+   },
+   {
+    "t": "text",
+    "text": "**A planning meeting with the utility (or engineer)** sets procedures. At a minimum they include:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(d)(1)",
+    "text": "If the power line is equipped with a device that automatically reenergizes the circuit in the event of a power line contact, before the work begins, the automatic reclosing feature of the circuit interrupting device must be made inoperative if the design of the device permits."
+   },
+   {
+    "t": "text",
+    "text": "- a dedicated spotter in continuous contact with the operator\n- an elevated warning line or barricade, not attached to the crane, in the operator's view\n- an insulating link/device between the end of the load line (or below) and the load\n- nonconductive rigging if it may be within the Table A distance\n- a range limiting device, if equipped, set to the new clearance\n- nonconductive tag lines\n- a perimeter barricade\n- no one but the operator touching the load line above the insulating link\n- only essential personnel near the crane and load\n- the equipment properly grounded\n- line hose or cover-up installed by the utility, unless unavailable for the voltage"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1410(d)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(d)(8)",
+    "text": "Barricades forming a perimeter at least 10 feet away from the equipment to prevent unauthorized personnel from entering the work area."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(d)(9)",
+    "text": "Operators remotely operating the equipment from the ground must use either wireless controls that isolate the operator from the equipment or insulating mats that insulate the operator from the ground."
+   },
+   {
+    "t": "text",
+    "text": "**Documentation, briefing, one person in charge.**"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(e)",
+    "text": "The procedures developed to comply with paragraph (d) of this section are documented and immediately available on-site."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1410(h)",
+    "text": "The person identified in accordance with this paragraph must direct the implementation of the procedures and must have the authority to stop work at any time to ensure safety."
+   },
+   {
+    "t": "text",
+    "text": "If the procedures fail or prove inadequate, stop safely. Then either write new procedures or have the line deenergized and grounded, or relocated."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1410(j)"
+   },
+   {
+    "t": "check",
+    "question": "Is \"deenergizing would be inconvenient\" enough to work inside Table A?",
+    "answer": "No. Deenergizing or relocating must be infeasible after consulting the utility."
+   },
+   {
+    "t": "check",
+    "question": "What must be done about automatic reclosing?",
+    "answer": "Make it inoperative before work begins, if the device's design permits."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.07",
+  "topic_id": "powerlines",
+  "ord": 7,
+  "title": "Table T: traveling under or near lines with no load",
+  "skills": [
+   "powerlines.travel"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Traveling across a site with no load has its own clearance table, **Table T**. Traveling with a load does not use Table T:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(a)",
+    "text": "Equipment traveling on a construction site with a load is governed by § 1926.1408, § 1926.1409 or § 1926.1410, whichever is appropriate, and § 1926.1417(u)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411",
+    "text": "up to 0.75 | 4 over .75 to 50 | 6 over 50 to 345 | 10 over 345 to 750 | 16 Over 750 to 1,000 | 20"
+   },
+   {
+    "t": "text",
+    "text": "Read the table this way:\n- Up to 0.75 kV: 4 ft\n- Over 0.75 to 50 kV: 6 ft\n- Over 50 to 345 kV: 10 ft\n- Over 345 to 750 kV: 16 ft\n- Over 750 to 1,000 kV: 20 ft\n- Over 1,000 kV: set by the utility or a qualified registered professional engineer"
+   },
+   {
+    "t": "text",
+    "text": "Note that the Table T ranges break at different values than Table A. For example, 345 kV is 10 ft in Table T but 20 ft in Table A. Worked examples: 13.8 kV is 6 ft, 69 kV is 10 ft, and 500 kV is 16 ft."
+   },
+   {
+    "t": "text",
+    "text": "The employer must ensure:\n- the boom/mast and its support system are lowered enough to keep the clearance\n- the Table T clearances are maintained\n- speed and terrain effects are considered"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(3)",
+    "text": "The effects of speed and terrain on equipment movement (including movement of the boom/mast) are considered so that those effects do not cause the minimum clearance distances specified in Table T of this section to be breached."
+   },
+   {
+    "t": "text",
+    "text": "Physics: a bump or rut tilts the machine, and the boom tip moves much farther than the wheels. On a 100-ft boom, a 1-degree tilt moves the tip about 2 ft sideways."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(4)",
+    "text": "If any part of the equipment while traveling will get closer than 20 feet to the power line, the employer must ensure that a dedicated spotter who is in continuous contact with the driver/operator is used."
+   },
+   {
+    "t": "text",
+    "text": "The travel spotter must be positioned to gauge the clearance, use direct communication where necessary, and give timely information."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1411(b)(4)"
+   },
+   {
+    "t": "text",
+    "text": "At night or in poor visibility, also:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(5)(i)",
+    "text": "The power lines are illuminated or another means of identifying the location of the lines is used."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(5)(ii)",
+    "text": "A safe path of travel is identified and used."
+   },
+   {
+    "t": "check",
+    "question": "A crane with no load drives under a 13.8 kV line. What is the minimum clearance?",
+    "answer": "6 ft (over 0.75 to 50 kV, Table T)."
+   },
+   {
+    "t": "check",
+    "question": "When is a spotter required while traveling?",
+    "answer": "When any part of the equipment will get closer than 20 feet to the line."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.powerlines.08",
+  "topic_id": "powerlines",
+  "ord": 8,
+  "title": "Contact response, device limits, towers, and required training",
+  "skills": [
+   "powerlines.contact-emergency",
+   "powerlines.protective-limits",
+   "powerlines.towers",
+   "powerlines.general-industry",
+   "powerlines.training"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The rules set what operators and crew must be trained on for an electrical contact. The core points are the danger of touching the equipment and the ground at the same time, staying in the cab, the safest way out, and step potential."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(1)(i)(A)",
+    "text": "Information regarding the danger of electrocution from the operator simultaneously touching the equipment and the ground."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(1)(i)(B)",
+    "text": "The importance to the operator's safety of remaining inside the cab except where there is an imminent danger of fire, explosion, or other emergency that necessitates leaving the cab."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(1)(i)(D)",
+    "text": "The danger of the potentially energized zone around the equipment (step potential)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(1)(i)(E)",
+    "text": "The need for crew in the area to avoid approaching or touching the equipment and the load."
+   },
+   {
+    "t": "text",
+    "text": "Field practice on contact (taught as practice, not rule text):\n- Stay in the cab and touch nothing outside it.\n- Shout to everyone to stay back.\n- Have someone call the utility.\n- If it can be done safely, reverse the motion to break contact.\n- If fire forces you out, jump clear without touching the machine and the ground at the same time. Land with feet together and shuffle or hop away with feet together.\n- Never go back to the machine until the utility says the line is dead.\nPhysics: the ground voltage drops off with distance from the contact point, so a long stride can put lethal voltage between your feet."
+   },
+   {
+    "t": "text",
+    "text": "**Device limits.** Training must cover what protective devices cannot do."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(1)(iv)",
+    "text": "The limitations of an insulating link/device, proximity alarm, and range control (and similar) device, if used."
+   },
+   {
+    "t": "text",
+    "text": "Practice: an insulating link protects only what is below it, so the boom and the load line above it can still become energized. A range device watches the boom tip, not a swinging load."
+   },
+   {
+    "t": "text",
+    "text": "Training must also cover: safe clearance distances, that lines are presumed energized, grounding procedures and the limits of grounding, and that lines are presumed uninsulated."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(1)(iii)",
+    "text": "Power lines are presumed to be uninsulated unless the utility owner/operator or a registered engineer who is a qualified person with respect to electrical power transmission and distribution confirms that a line is insulated."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(g)(2)",
+    "text": "Employees working as dedicated spotters must be trained to enable them to effectively perform their task, including training on the applicable requirements of this section."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(a)"
+   },
+   {
+    "t": "text",
+    "text": "**Transmitter towers.** A transmitter can induce a charge in the boom or the load. Either deenergize the transmitter, or ground the equipment and use nonconductive tag lines."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1408(f)"
+   },
+   {
+    "t": "text",
+    "text": "**General industry.** For general industry cranes, the overhead crawler, locomotive and truck crane rule sends you to a separate electrical rule for work near overhead lines."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(j)",
+    "text": "Operations near overhead electric lines. For operations near overhead electric lines, see § 1910.333(c)(3)."
+   },
+   {
+    "t": "check",
+    "question": "The boom contacts a line and there is no fire. What does the operator do?",
+    "answer": "Stays in the cab, keeps everyone away, and waits for the utility to confirm the line is deenergized."
+   },
+   {
+    "t": "check",
+    "question": "Is a line with a coated look presumed insulated?",
+    "answer": "No. It is presumed uninsulated until the utility or a qualified registered engineer confirms otherwise."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "331bed28bf0f0c1a5b57",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "511fe48fccef6402df4ae40af3f075735552a8bc131340b3ea531a9a14a91770",
+   "output_sha256": "7e0c2cd31ab7ef26cfa0aecea07a8924847fcaeabb5cd14e57fba640822c3029",
+   "created_at": "2026-11-27T22:22:19+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "fail",
+   "notes": "quote not in 29cfr1910.180(j): Operations near overhead electric lines. For operations near overhead electric lines, see § 1910.333"
+  }
+ }
+]

@@ -1,0 +1,1072 @@
+[
+ {
+  "lesson_id": "l.operations.01",
+  "topic_id": "operations",
+  "ord": 1,
+  "title": "Manufacturer procedures, cab documents and approved attachments",
+  "skills": [
+   "ops.manufacturer-procedures",
+   "ops.attachments"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The manufacturer's procedures set the limits for every crane function: load charts, operating speeds, setup, attachments and shutdown. They are the first rule of operation. If you can't find what the manual says about a task, don't guess. Find out before you run the crane."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(a)",
+    "text": "The employer must comply with all manufacturer procedures applicable to the operational functions of equipment, including its use with attachments."
+   },
+   {
+    "t": "text",
+    "text": "When the manufacturer's procedures are **unavailable**, the employer must write them. A qualified person develops the procedures for the operating controls. Procedures that affect capacity need an engineer's signature."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(b)(2)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(b)(3)",
+    "text": "Procedures related to the capacity of the equipment must be developed and signed by a registered professional engineer familiar with the equipment."
+   },
+   {
+    "t": "text",
+    "text": "The **cab documents** must stay with the crane. Before you lift, check that the load chart in the cab matches the crane's configuration: boom, jib, counterweight and outrigger setting."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(c)(1)",
+    "text": "The procedures applicable to the operation of the equipment, including rated capacities (load charts), recommended operating speeds, special hazard warnings, instructions, and operator's manual, must be readily available in the cab at all times for use by the operator."
+   },
+   {
+    "t": "text",
+    "text": "**Attachments** count as part of the crane. That includes anything the crane carries or suspends:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(b)",
+    "text": "Such attachments, whether crane-attached or suspended include, but are not limited to: Hooks, magnets, grapples, clamshell buckets, orange peel buckets, concrete buckets, drag lines, personnel platforms, augers or drills and pile driving equipment."
+   },
+   {
+    "t": "text",
+    "text": "Use an attachment only the way the manufacturer's procedures allow. A homemade attachment, an added jib or a field modification that affects capacity or safe operation is prohibited unless it goes through an approval route."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)",
+    "text": "Modifications or additions which affect the capacity or safe operation of the equipment are prohibited except where the requirements of paragraphs (a)(1), (a)(2), (a)(3), (a)(4), or (a)(5) of this section are met."
+   },
+   {
+    "t": "text",
+    "text": "The normal route is written approval from the manufacturer. The load charts, manuals and decals are then updated, and the original safety factor must not be reduced."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)(1)(i)",
+    "text": "The manufacturer approves the modifications/additions in writing."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1434(a)(1)(iii)"
+   },
+   {
+    "t": "text",
+    "text": "If the manufacturer reviews a proposal, rejects it and explains why in writing, the modification is prohibited."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1434(b)"
+   },
+   {
+    "t": "check",
+    "question": "The manufacturer's procedures for a crane are unavailable. Who must develop the procedures related to its capacity?",
+    "answer": "A registered professional engineer familiar with the equipment, who also signs them."
+   },
+   {
+    "t": "check",
+    "question": "Can a welder add a lifting lug to the boom tip if the shop thinks it is strong enough?",
+    "answer": "No. A modification that affects capacity or safe operation needs approval, normally the manufacturer's in writing."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.02",
+  "topic_id": "operations",
+  "ord": 2,
+  "title": "Attention, operational aids, repair reports, tag-out and pre-start checks",
+  "skills": [
+   "ops.attention",
+   "ops.not-a-substitute",
+   "ops.repairs-needed",
+   "ops.tag-out",
+   "ops.pre-start"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "While you are running the crane, give it your full attention. Phones are banned at the controls. The only exception is a phone used for signal communication."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(d)",
+    "text": "The operator must not engage in any practice or activity that diverts his/her attention while actually engaged in operating the equipment, such as the use of cellular phones (other than when used for signal communications)."
+   },
+   {
+    "t": "text",
+    "text": "**Operational aids** include load moment indicators, anti-two-block devices and boom angle indicators. They back you up. They don't replace your judgment. An aid can be miscalibrated, set to the wrong configuration or bypassed. If the reading doesn't match what you see, stop and find out why."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(k)",
+    "text": "Safety devices and operational aids must not be used as a substitute for the exercise of professional judgment by the operator."
+   },
+   {
+    "t": "text",
+    "text": "Look at how the block approaches the boom tip. Don't let the anti-two-block device be the only thing that stops the hoist."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "two-blocking"
+   },
+   {
+    "t": "text",
+    "text": "When the crane needs **adjustments or repairs**, report them in writing and pass them on to the next shift:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(j)(1)",
+    "text": "The operator must, in writing, promptly inform the person designated by the employer to receive such information and, where there are successive shifts, to the next operator; and"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(j)(2)",
+    "text": "The employer must notify all affected employees, at the beginning of each shift, of the necessary adjustments or repairs and all alternative measures."
+   },
+   {
+    "t": "text",
+    "text": "**Tag-out** marks a crane, or one of its functions, as not to be used. If the whole crane is out of service, the tag goes in the cab. If only a function is out of service, the tag goes in a conspicuous position."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(f)(1)",
+    "text": "Where the employer has taken the equipment out of service, a tag must be placed in the cab stating that the equipment is out of service and is not to be used."
+   },
+   {
+    "t": "text",
+    "text": "If you find a do-not-operate tag:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(f)(2)(i)",
+    "text": "the operator must not activate the switch or start the equipment until the sign has been removed by a person authorized to remove it, or until the operator has verified that:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(f)(2)(i)(A)",
+    "text": "No one is servicing, working on, or otherwise in a dangerous position on the machine."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(f)(2)(i)(B)",
+    "text": "The equipment has been repaired and is working properly."
+   },
+   {
+    "t": "text",
+    "text": "The same rule applies to a tag on any other switch or control."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(f)(2)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Before every start:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(g)",
+    "text": "Before starting the engine, the operator must verify that all controls are in the proper starting position and that all personnel are in the clear."
+   },
+   {
+    "t": "text",
+    "text": "In practice, this means:\n- Put every lever in neutral and set the brakes and locks.\n- Walk around or look around the machine.\n- Sound the horn before you crank the engine."
+   },
+   {
+    "t": "check",
+    "question": "A tag on the swing control says do not operate, and nobody authorized is around to remove it. What must you verify before using swing?",
+    "answer": "That no one is working on the machine or in a dangerous position, and that the function has been repaired and works properly."
+   },
+   {
+    "t": "check",
+    "question": "The LMI reads 60% but the load looks heavy and the outriggers are settling. What do you do?",
+    "answer": "Stop and investigate. The aid does not replace your judgment."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.03",
+  "topic_id": "operations",
+  "ord": 3,
+  "title": "Leaving the controls, stop signals, control failures and shutdown",
+  "skills": [
+   "ops.unattended",
+   "ops.emergencies",
+   "ops.shutdown"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **suspended load** needs an operator at the controls. The construction rule allows only a narrow exception, and every one of its conditions must be met."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(e)(1)",
+    "text": "The operator must not leave the controls while the load is suspended, except where all of the following are met:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(e)(1)(i)",
+    "text": "The operator remains adjacent to the equipment and is not engaged in any other duties."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(e)(1)(ii)",
+    "text": "The load is to be held suspended for a period of time exceeding normal lifting operations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(e)(1)(iii)",
+    "text": "The competent person determines that it is safe to do so and implements measures necessary to restrain the boom hoist and telescoping, load, swing, and outrigger or stabilizer functions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(e)(1)(iv)",
+    "text": "Barricades or caution lines, and notices, are erected to prevent all employees from entering the fall zone."
+   },
+   {
+    "t": "text",
+    "text": "Light working gear, such as slings or a spreader bar whose weight is negligible for the crane as positioned, is exempt from this rule. The exemption doesn't apply if the gear hangs over an entrance or exit."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(e)(2)"
+   },
+   {
+    "t": "text",
+    "text": "General industry is stricter. It has no exception."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(4)(i)",
+    "text": "The operator shall not be permitted to leave his position at the controls while the load is suspended."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(4)(iii)",
+    "text": "If the load must remain suspended for any considerable length of time, the operator shall hold the drum from rotating in the lowering direction by activating the positive controllable means of the operator's station."
+   },
+   {
+    "t": "text",
+    "text": "**Stop signals** override everything else. You must also have the authority to refuse a lift."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(y)",
+    "text": "The operator must obey a stop (or emergency stop) signal, irrespective of who gives it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1418",
+    "text": "Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to handle loads until a qualified person has determined that safety has been assured."
+   },
+   {
+    "t": "text",
+    "text": "If an electronic load chart fails, stop operating immediately or follow the safe shut-down procedure until the ratings are available again."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Brakes must be adjusted to the manufacturer's procedures so the crane doesn't move unless you command it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(x)",
+    "text": "The brakes must be adjusted in accordance with manufacturer procedures to prevent unintended movement."
+   },
+   {
+    "t": "text",
+    "text": "If a control sticks or a function moves when you didn't command it, use this field practice:\n- Return the controls to neutral and use the emergency stop.\n- Warn the crew.\n- If the crane can still land the load safely, land it.\n- Don't troubleshoot while the load is hanging over people.\n- Report the problem in writing and tag the crane out."
+   },
+   {
+    "t": "text",
+    "text": "Before a storm, the competent person decides whether to apply the manufacturer's securing recommendations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(h)",
+    "text": "When a local storm warning has been issued, the competent person must determine whether it is necessary to implement manufacturer recommendations for securing the equipment."
+   },
+   {
+    "t": "text",
+    "text": "**Shutdown** follows the operator's manual. Typical practice:\n- Land the load.\n- Lattice boom: lower the boom to a rest or to the angle the manual recommends, then engage the boom hoist pawl and drum locks.\n- Telescopic boom: retract and lower the boom, and stow it if the manual says to.\n- Secure the hook block so it can't swing.\n- Set the swing brake or house lock and the parking brake.\n- Put the controls in neutral, stop the engine, take the key and lock the cab."
+   },
+   {
+    "t": "check",
+    "question": "An ironworker, not the signal person, gives an emergency stop. Do you obey?",
+    "answer": "Yes. You obey a stop signal no matter who gives it."
+   },
+   {
+    "t": "check",
+    "question": "Under the construction rule, may you step away from a suspended load to help rig the next pick?",
+    "answer": "No. You must stay next to the crane with no other duties, and every other condition must also be met."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.04",
+  "topic_id": "operations",
+  "ord": 4,
+  "title": "Rated capacity and verifying the load weight",
+  "skills": [
+   "ops.rated-capacity",
+   "ops.general-industry-load"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Rated capacity** is the load-chart value for the crane's configuration and radius. You never exceed it, and nobody can require you to."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(1)",
+    "text": "The equipment must not be operated in excess of its rated capacity."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(2)",
+    "text": "The operator must not be required to operate the equipment in a manner that would violate paragraph (o)(1) of this section."
+   },
+   {
+    "t": "text",
+    "text": "You verify the load weight with at least one of two methods. The first is a known or calculated weight:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(i)",
+    "text": "The weight of the load must be determined from a source recognized by the industry (such as the load's manufacturer), or by a calculation method recognized by the industry (such as calculating a steel beam from measured dimensions and a known per foot weight), or by other equally reliable means."
+   },
+   {
+    "t": "text",
+    "text": "Calculation example: a 40 ft beam at 50 lb/ft weighs 40 × 50 = 2,000 lb."
+   },
+   {
+    "t": "text",
+    "text": "The second method weighs the load with the crane's own device, using the **75 percent** test:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(ii)",
+    "text": "The operator must begin hoisting the load to determine, using a load weighing device, load moment indicator, rated capacity indicator, or rated capacity limiter, if it exceeds 75 percent of the maximum rated capacity at the longest radius that will be used during the lift operation."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(ii)",
+    "text": "If it does, the operator must not proceed with the lift until he/she verifies the weight of the load in accordance with paragraph (o)(3)(i) of this section."
+   },
+   {
+    "t": "text",
+    "text": "Worked example: the longest radius in the lift is 60 ft, and the chart gives 20,000 lb there. 75% of that is 15,000 lb. If the device reads 12,000 lb, you may continue. If it reads 16,000 lb, stop and get the weight from a recognized source or a calculation."
+   },
+   {
+    "t": "text",
+    "text": "Chart values are usually **gross** capacity. In practice, subtract everything hanging below the boom tip that the chart doesn't already include: the hook block, the slings and spreader bars, and any stowed jib if the chart notes say so. Example: 20,000 lb gross − 800 lb block − 200 lb rigging = 19,000 lb net for the load."
+   },
+   {
+    "t": "text",
+    "text": "In this chart cell, look at the next-longer-radius rule, the structural and stability regions, and the gross-to-net deduction."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "General industry (29 CFR 1910.180) adds an accuracy requirement for structurally limited lifts. These are the chart cells where the boom or other parts fail before the crane tips."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(1)(i)",
+    "text": "No crane shall be loaded beyond the rated load, except for test purposes as provided in paragraph (e) of this section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(1)(ii)",
+    "text": "When loads which are limited by structural competence rather than by stability are to be handled, it shall be ascertained that the weight of the load has been determined within plus or minus 10 percent before it is lifted."
+   },
+   {
+    "t": "text",
+    "text": "Wind, ice and snow reduce what the crane can safely do. The competent person adjusts for them."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(n)",
+    "text": "The competent person must adjust the equipment and/or operations to address the effect of wind, ice, and snow on equipment stability and rated capacity."
+   },
+   {
+    "t": "check",
+    "question": "The chart gives 8,000 lb at the longest radius. Above what LMI reading must you stop and verify the weight another way?",
+    "answer": "6,000 lb, which is 75% of 8,000."
+   },
+   {
+    "t": "check",
+    "question": "How much does a 30 ft beam at 100 lb/ft weigh?",
+    "answer": "3,000 lb."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.05",
+  "topic_id": "operations",
+  "ord": 5,
+  "title": "Radius, boom deflection, counterweight and backward stability",
+  "skills": [
+   "ops.radius-verification",
+   "ops.boom-deflection",
+   "ops.counterweight",
+   "ops.backward-stability"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Radius** is the horizontal distance from the center of rotation to the center of the hook or load. Capacity depends on it. The same boom lowered to a smaller angle reaches a longer radius, so its capacity drops."
+   },
+   {
+    "t": "text",
+    "text": "In this diagram, compare the hook radius at the two boom angles."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(1)",
+    "text": "The equipment must have a boom angle or radius indicator readable from the operator's station."
+   },
+   {
+    "t": "text",
+    "text": "If the indicator fails, the temporary alternative is to measure."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)(1)"
+   },
+   {
+    "t": "text",
+    "text": "In practice, tape the distance from the center pin to the hook line, or measure the boom angle with an inclinometer. Then read the chart at that radius. If the measurement falls between two chart radii, use the next-longer one."
+   },
+   {
+    "t": "text",
+    "text": "**Boom deflection** is physics. Under load, a boom bends and a telescopic boom sags. The tip moves out, and the radius grows once the load leaves the ground. Example: a radius set at 48 ft with no load can become 50 ft after the load is lifted. That moves you to a lower chart value. Check the radius with the load a few inches off the ground, and plan using the loaded radius."
+   },
+   {
+    "t": "text",
+    "text": "Lattice cranes have a general industry requirement for work at a fixed radius:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(xvii)",
+    "text": "When a crane is to be operated at a fixed radius, the boom-hoist pawl or other positive locking device shall be engaged."
+   },
+   {
+    "t": "text",
+    "text": "**Counterweight** must match the chart you are using. Too little counterweight risks tipping forward. Too much risks tipping backward."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(aa)(1)(i)",
+    "text": "Equipment must not be operated without the counterweight or ballast in place as specified by the manufacturer."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(aa)(1)(ii)",
+    "text": "The maximum counterweight or ballast specified by the manufacturer for the equipment must not be exceeded."
+   },
+   {
+    "t": "text",
+    "text": "**Backward stability** is the crane's resistance to tipping over the counterweight. The crane is least stable this way with the boom high and no load, or right after a load suddenly releases. A sling failure or a load breaking free makes the boom whip back. **Boom stops** keep a lattice boom from going over backward. The rules list them as a required safety device for booms other than derricks and hydraulic booms."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1415(a)(2)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(xv)",
+    "text": "A crane with or without load shall not be traveled with the boom so high that it may bounce back over the cab."
+   },
+   {
+    "t": "check",
+    "question": "You set up at 48 ft. After the pick, the measured radius is 51 ft. Which chart radius applies?",
+    "answer": "The next-longer chart radius at or beyond 51 ft. Plan using the loaded radius."
+   },
+   {
+    "t": "check",
+    "question": "Can you add extra counterweight to gain capacity?",
+    "answer": "No. You must not exceed the manufacturer's maximum counterweight."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.06",
+  "topic_id": "operations",
+  "ord": 6,
+  "title": "Controlling the load: brake test, shock loading, swing and side loads",
+  "skills": [
+   "ops.brake-test",
+   "ops.dynamic-loading",
+   "ops.swing-speed",
+   "ops.side-loading",
+   "ops.obstructions"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "On heavy picks, check the hoist brake before the load goes anywhere:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(s)",
+    "text": "The operator must test the brakes each time a load that is 90% or more of the maximum line pull is handled by lifting the load a few inches and applying the brakes."
+   },
+   {
+    "t": "text",
+    "text": "**Line pull** is the tension in the single rope at the drum. In practice, estimate it by dividing the load by the number of parts of line, ignoring sheave friction. Example: the maximum line pull is 10,000 lb and you have 4 parts of line. A 36,000 lb load puts 9,000 lb in the line, which is 90%, so you test the brake. General industry requires the same test for any load approaching the rated load."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(h)(3)(viii)"
+   },
+   {
+    "t": "text",
+    "text": "**Shock loading** is any sudden change in speed. It adds force on top of the load's weight. Examples are snatching a slack sling tight, dropping a load and catching it, or stopping a lowering load hard. Physics: the shorter the stop, the larger the force. The force can be several times the static weight, enough to overload the crane even when the chart says the lift is fine."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(11)",
+    "text": "Shock loading is prohibited."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(iii)(a)",
+    "text": "There is no sudden acceleration or deceleration of the moving load."
+   },
+   {
+    "t": "text",
+    "text": "Take the slack out slowly. Center the hook over the load before you lift so the load doesn't swing as it comes off the ground."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(ii)(c)",
+    "text": "The hook shall be brought over the load in such a manner as to prevent swinging."
+   },
+   {
+    "t": "text",
+    "text": "**Swing speed**: a load swung too fast flies outward. That increases the radius and side-loads the boom. Start and stop the swing gently."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(v)",
+    "text": "Rotational speed of the equipment must be such that the load does not swing out beyond the radius at which it can be controlled."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(w)",
+    "text": "A tag or restraint line must be used if necessary to prevent rotation of the load that would be hazardous."
+   },
+   {
+    "t": "text",
+    "text": "**Side loading** means a sideways force on the boom. Booms are built to carry load straight down from the tip. Dragging a load sideways can buckle the boom or tip the crane, and the chart doesn't account for it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(q)",
+    "text": "The equipment must not be used to drag or pull loads sideways."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(iv)",
+    "text": "Side loading of booms shall be limited to freely suspended loads."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(p)",
+    "text": "The boom or other parts of the equipment must not contact any obstruction."
+   },
+   {
+    "t": "check",
+    "question": "The maximum line pull is 8,000 lb with 2 parts of line. Does a 15,000 lb load require a brake test?",
+    "answer": "Yes. 7,500 lb per line is more than 90% of 8,000 lb, which is 7,200 lb."
+   },
+   {
+    "t": "check",
+    "question": "May you boom down to pull a load out from under a beam?",
+    "answer": "No. You must not drag loads sideways, and the boom must not side-load except under a freely suspended load."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.07",
+  "topic_id": "operations",
+  "ord": 7,
+  "title": "Traveling with a load, over-the-front lifts, slack rope and drum wraps",
+  "skills": [
+   "ops.travel-with-load",
+   "ops.over-front",
+   "ops.slack-rope"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Pick-and-carry** (traveling with a load) is allowed only when the manufacturer allows it and a competent person controls it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(u)(1)",
+    "text": "Traveling with a load is prohibited if the practice is prohibited by the manufacturer."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(u)(2)(i)",
+    "text": "A competent person supervises the operation, determines if it is necessary to reduce rated capacity, and makes determinations regarding load position, boom location, ground support, travel route, overhead obstructions, and speed of movement necessary to ensure safety."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(u)(2)(iii)",
+    "text": "For equipment with tires, tire pressure specified by the manufacturer is maintained."
+   },
+   {
+    "t": "text",
+    "text": "Those determinations must actually be carried out."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(u)(2)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Practice: use the on-rubber chart, keep the load low, and tag it. Travel slowly on firm, level ground. A pothole or slope swings the load and changes the radius."
+   },
+   {
+    "t": "text",
+    "text": "General industry rules for traveling:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(xiii)(a)",
+    "text": "The boom shall be carried in line with the direction of motion."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(xiii)(c)",
+    "text": "The empty hook shall be lashed or otherwise restrained so that it cannot swing freely."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(h)(3)(v)",
+    "text": "No hoisting, lowering, swinging, or traveling shall be done while anyone is on the load or hook."
+   },
+   {
+    "t": "text",
+    "text": "**Over the front**: on many wheel-mounted cranes, the front has less support than the sides or rear. That comes from the layout of the outriggers and axles. The chart may reduce or prohibit lifting there."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(r)",
+    "text": "On wheel-mounted equipment, no loads must be lifted over the front area, except as permitted by the manufacturer."
+   },
+   {
+    "t": "text",
+    "text": "**Slack rope** can jump a sheave or pile loosely on the drum. If lifted that way, the rope crushes or comes off its seat. Before you lift, make sure the rope is seated as you take up the slack."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(m)",
+    "text": "If the competent person determines that there is a slack rope condition requiring re-spooling of the rope, it must be verified (before starting to lift) that the rope is seated on the drum and in the sheaves as the slack is removed."
+   },
+   {
+    "t": "text",
+    "text": "**Drum wraps** keep the rope anchored. The anchor alone isn't designed to hold the load. On deep lowers, such as into a shaft or off a high deck, check the remaining wraps."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(t)",
+    "text": "Neither the load nor the boom must be lowered below the point where less than two full wraps of rope remain on their respective drums."
+   },
+   {
+    "t": "check",
+    "question": "The manual permits pick-and-carry. Who decides the travel route and speed?",
+    "answer": "A competent person, and their determinations must be carried out."
+   },
+   {
+    "t": "check",
+    "question": "What is the minimum rope left on the drum when lowering?",
+    "answer": "Two full wraps."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.08",
+  "topic_id": "operations",
+  "ord": 8,
+  "title": "Free fall, multi-drum hoisting and duty-cycle work",
+  "skills": [
+   "ops.free-fall",
+   "ops.multi-drum",
+   "ops.duty-cycle"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **live boom** is designed to free fall. The rules ban it in each of the following cases:\n- an employee is in the fall zone of the boom or load\n- an employee is being hoisted\n- the load or boom is over a power line or its Table A zone, or that zone is within the vertical travel of the boom or load\n- the load is over a shaft with employees in it\n- the load is over a cofferdam with employees in the fall zone\n- lifting is taking place in a refinery or tank farm"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1426(a)(1)",
+    "text": "The use of equipment in which the boom is designed to free fall (live boom) is prohibited in each of the following circumstances:"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1426(a)(1)(iv)"
+   },
+   {
+    "t": "text",
+    "text": "Even when none of those cases apply, a live boom is allowed only on older equipment or on floating cranes:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1426(a)(2)(i)",
+    "text": "The equipment was manufactured prior to October 31, 1984; or"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1426(a)(2)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Where a live boom is banned, the boom hoist needs a secondary device that holds the boom if the primary system fails. Telescopic booms need a holding device so they can't retract when hydraulics fail."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1426(b)(3)",
+    "text": "Neither clutches nor hydraulic motors must be considered brake or locking devices for purposes of this subpart."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1426(c)"
+   },
+   {
+    "t": "text",
+    "text": "**Load line free fall** is banned in these cases: an employee is directly under the load, an employee is being hoisted, the load is over a power line zone, the load is over a shaft, or the load is over an occupied cofferdam fall zone. For a shaft, the load-line ban applies even when nobody is in the shaft."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1426(d)",
+    "text": "In each of the following circumstances, controlled load lowering is required and free fall of the load line hoist is prohibited:"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1426(d)(4)"
+   },
+   {
+    "t": "text",
+    "text": "**Multi-drum** cranes have a main hoist and an auxiliary hoist, called the whip line."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(a)(47)",
+    "text": "The whipline (auxiliary hoist) is a separate hoist rope system of lighter load capacity and higher speed than provided by the main hoist."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(5)",
+    "text": "each hoist shall have its rated load marked on it or its load block"
+   },
+   {
+    "t": "text",
+    "text": "Practice:\n- Each line is limited by its own rating, its parts of line and the chart for the jib or tip it reeves over.\n- When lifting on the whip line, deduct the weight of the main block hanging at the tip. When lifting on the main hoist, deduct the weight of the whip line's ball.\n- Lock the idle drum.\n- Keep the idle hook clear of the boom tip. Running one line can two-block the other."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(11)(i)",
+    "text": "No lifts must be made on any other of the equipment's load lines while personnel are being hoisted, except in pile driving operations."
+   },
+   {
+    "t": "text",
+    "text": "**Duty-cycle** work repeats the same motion over and over, as with a clamshell, dragline, magnet or concrete bucket. Manufacturers usually publish separate duty-cycle ratings that are lower than the lifting chart. Follow them under the manufacturer-procedures rule. For the brake test, repetitive work at 90% line pull needs only one test:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(s)",
+    "text": "In duty cycle and repetitive lifts where each lift is 90% or more of the maximum line pull, this requirement applies to the first lift but not to successive lifts."
+   },
+   {
+    "t": "check",
+    "question": "No one is in the shaft. May you free-fall the load line over it?",
+    "answer": "No. Load line free fall over a shaft is always banned."
+   },
+   {
+    "t": "check",
+    "question": "May you make a lift on the whip line while workers ride a platform on the main hoist?",
+    "answer": "No, except in pile driving operations."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.operations.09",
+  "topic_id": "operations",
+  "ord": 9,
+  "title": "Cranes on barges and lifting loads out of water",
+  "skills": [
+   "ops.barge",
+   "ops.lifting-from-water"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Floating cranes** and land cranes set on barges have added rules. A barge rolls and pitches, which tilts the boom sideways (list) and fore-and-aft (trim). That adds side load and increases the radius. These rules don't apply to a jacked barge that is fully supported on its jacks."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1437(a)",
+    "text": "The requirements of this section do not apply when using jacked barges when the jacks are deployed to the river, lake, or sea bed and the barge is fully supported by the jacks."
+   },
+   {
+    "t": "text",
+    "text": "Required extra devices are a list and trim device at the operator's station and a positive house lock. A wind speed and direction indicator is also required if the competent person decides wind is a factor."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1437(e)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1437(e)(3)"
+   },
+   {
+    "t": "text",
+    "text": "A **land crane on a barge** must have its land chart reduced. The reduction is done by the manufacturer or a qualified person with expertise in both crane capacity and vessel stability."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1437(n)(1)(i)",
+    "text": "Account for increased loading from list, trim, wave action, and wind."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1437(n)(3)(i)",
+    "text": "the maximum allowable list and the maximum allowable trim does not exceed the least of the following: 5 degrees, the amount specified by the crane/derrick manufacturer, or, when, an amount is not so specified, the amount specified by the qualified person."
+   },
+   {
+    "t": "text",
+    "text": "The barge's deck must stay above water and its entire bottom must stay submerged. The crane must be secured so it can't shift. The four allowed methods are physical attachment, corralling, rails, or a centerline cable system."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1437(n)(4)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1437(n)(5)"
+   },
+   {
+    "t": "text",
+    "text": "**Floating cranes** (built for permanent marine attachment) use the manufacturer's water charts. Under Table M1, the maximum list and trim are 5 degrees each for 25 tons or less and 7 degrees each for over 25 tons. Derricks are allowed 10 degrees each."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1437"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1437(m)(1)(ii)",
+    "text": "The employer must ensure that load charts take into consideration a minimum wind speed of 40 miles per hour."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1437(j)(2)",
+    "text": "The operator must remain at the controls of the crane/derrick at all times."
+   },
+   {
+    "t": "text",
+    "text": "That rule applies when working with a diver. A crane used to put a diver in the water can't be used for anything else until the diver is back on board."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1437(j)(1)"
+   },
+   {
+    "t": "text",
+    "text": "**Buoyancy** is physics. A submerged load is pushed up by the weight of the water it displaces, which is about 62 lb per cubic foot in fresh water and about 64 in seawater. Example: a 10,000 lb hollow tank displaces 50 cubic feet. Underwater it reads about 10,000 − 3,100 = 6,900 lb. As it breaks the surface, the line load jumps to the full 10,000 lb, plus the weight of any water trapped inside. Mud suction can add more until the load breaks free."
+   },
+   {
+    "t": "text",
+    "text": "Practice:\n- Plan with the full weight in air plus any water trapped inside, verified by a recognized source or a calculation.\n- Don't rely on the underwater reading.\n- Break mud suction slowly.\n- Let the load drain at the surface before you raise it further."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(o)(3)(i)"
+   },
+   {
+    "t": "check",
+    "question": "The manufacturer allows 7 degrees of list for a land crane on a barge. What is the most you may use?",
+    "answer": "5 degrees, because the limit is the least of 5 degrees, the manufacturer's amount, or the qualified person's amount."
+   },
+   {
+    "t": "check",
+    "question": "Underwater, a load reads 6,000 lb. Is that the load you plan for?",
+    "answer": "No. Plan for its full weight in air plus any trapped water."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "aa15f8548b245929d47e",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "61927e70bd2f8d45ff44f58c827c7e8357b94369c6b7f74ca2c53410d435019c",
+   "output_sha256": "94ef3e2e9093280e5782d2f8425dd08c62d2c12f559ef41a7280f91320a70fdc",
+   "created_at": "2026-11-27T22:28:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

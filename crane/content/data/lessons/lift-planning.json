@@ -1,0 +1,605 @@
+[
+ {
+  "lesson_id": "l.lift-planning.01",
+  "topic_id": "lift-planning",
+  "ord": 1,
+  "title": "Lift planning basics: weight, capacity, radius and ground",
+  "skills": [
+   "lift-planning.basics"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **lift plan** answers four questions before the load leaves the ground: what does it weigh, how far out will it go, what can the crane hold there, and will the ground carry the crane? Every lift needs these answers. A routine lift may need them only in the operator's head. A harder lift needs them on paper."
+   },
+   {
+    "t": "text",
+    "text": "The basic limit is rated capacity. No one may push the operator past it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(1)",
+    "text": "The equipment must not be operated in excess of its rated capacity."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(2)",
+    "text": "The operator must not be required to operate the equipment in a manner that would violate paragraph (o)(1) of this section."
+   },
+   {
+    "t": "text",
+    "text": "**Load weight** has to be known from a reliable source, such as the manufacturer's data or a calculation from measured dimensions. If the operator asks for that information, it must be given to them before the lift."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(i)",
+    "text": "The weight of the load must be determined from a source recognized by the industry (such as the load's manufacturer), or by a calculation method recognized by the industry (such as calculating a steel beam from measured dimensions and a known per foot weight), or by other equally reliable means."
+   },
+   {
+    "t": "text",
+    "text": "The other allowed method is to start the hoist and read a load indicator. If the load is over 75 percent of the maximum rated capacity at the longest radius of the lift, stop and get the weight from a reliable source."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(ii)",
+    "text": "If it does, the operator must not proceed with the lift until he/she verifies the weight of the load in accordance with paragraph (o)(3)(i) of this section."
+   },
+   {
+    "t": "text",
+    "text": "Worked practice example: the load is 15,000 lb, the hook block 600 lb and the rigging 400 lb, so the total is 16,000 lb. The longest radius in the lift is 37 ft. The chart has 35 ft and 40 ft columns, so read the 40 ft column. It shows 20,000 lb, and 16,000 lb is under that. Always read the next-longer radius and add every item hanging below the boom tip."
+   },
+   {
+    "t": "text",
+    "text": "Look at the cell, the structural and stability regions, and the step from gross to net capacity."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "**Ground support** comes next. The ground must hold the crane and keep it level to the manufacturer's specification."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(b)",
+    "text": "The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent so that, in conjunction (if necessary) with the use of supporting materials, the equipment manufacturer's specifications for adequate support and degree of level of the equipment are met."
+   },
+   {
+    "t": "text",
+    "text": "Physics: bearing pressure = force ÷ area. A 40,000 lb outrigger load on a 2 ft × 2 ft float (4 sq ft) puts 10,000 lb/sq ft on the ground. On a stiff 4 ft × 5 ft mat (20 sq ft), the same load is 2,000 lb/sq ft."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "check",
+    "question": "The radius is 42 ft, and the chart lists 40 ft and 45 ft. Which column do you use?",
+    "answer": "The 45 ft column, the next-longer radius."
+   },
+   {
+    "t": "check",
+    "question": "A 30,000 lb outrigger load sits on a 3 ft × 5 ft mat. What is the bearing pressure?",
+    "answer": "30,000 ÷ 15 = 2,000 lb/sq ft."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.lift-planning.02",
+  "topic_id": "lift-planning",
+  "ord": 2,
+  "title": "Recognizing a critical lift (industry practice, not a federal definition)",
+  "skills": [
+   "lift-planning.critical"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The federal crane rules do not define \"critical lift.\" The term comes from industry practice and from employer and site procedures. Those procedures decide when a lift needs a **written critical-lift plan**, who prepares it, and who signs it. Follow your employer's definition. The rules on capacity, load weight and ground still apply to every lift."
+   },
+   {
+    "t": "text",
+    "text": "In practice, a lift is usually treated as critical when any of these apply:"
+   },
+   {
+    "t": "text",
+    "text": "- The gross load is a large share of chart capacity. Your procedure sets the exact percentage.\n- More than one crane supports the load. Federal rules require a plan for this anyway.\n- Personnel are hoisted.\n- The work is near power lines, or the load passes over occupied areas, live process piping or public roads.\n- The weight or center of gravity is uncertain, or the load is flexible, fragile, long or high in value.\n- The rigging is unusual: spreader beams, equalizers, load turning, or tilt-up and tilt-down.\n- The crane travels with the load (pick-and-carry), the operator cannot see the load (blind pick), or the lift is in high wind.\n- The ground is poor, or the crane sits near excavations, slopes or underground utilities."
+   },
+   {
+    "t": "text",
+    "text": "An uncertain **center of gravity** is a real hazard. The rules recognize this for assembly and disassembly work, and the same reasoning applies to any lift."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(6)(ii)",
+    "text": "Where there is insufficient information to accurately identify the center of gravity, measures designed to prevent unintended dangerous movement resulting from an inaccurate identification of the center of gravity must be used."
+   },
+   {
+    "t": "text",
+    "text": "A typical written critical-lift plan (practice) contains:"
+   },
+   {
+    "t": "text",
+    "text": "- Load weight and its source, rigging weight, and gross load\n- Crane configuration, radius at pick and set, chart capacity and percent of capacity\n- Rigging sketch with sling angles and the rated capacity of every component\n- Ground and mat calculation, plus a site sketch showing the swing area and hazards\n- Wind limit, communication method, and the names and roles of the crew\n- Stop criteria and sign-offs"
+   },
+   {
+    "t": "text",
+    "text": "Look at how tension in each sling leg grows as the sling angle drops. A flat sling angle is a common reason a lift becomes critical."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "sling-angle-tension"
+   },
+   {
+    "t": "check",
+    "question": "Does the federal crane standard define a critical lift?",
+    "answer": "No. The definition comes from industry practice and employer procedures."
+   },
+   {
+    "t": "check",
+    "question": "Name three conditions that usually make a lift critical.",
+    "answer": "Any three of these: multiple cranes, personnel hoisting, a high percent of capacity, power lines nearby, an unknown center of gravity, lifting over occupied areas."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.lift-planning.03",
+  "topic_id": "lift-planning",
+  "ord": 3,
+  "title": "Multiple-crane lifts: who plans and what the plan must cover",
+  "skills": [
+   "lift-planning.multi-crane-plan"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **multiple-crane lift** is any operation in which more than one crane or derrick supports the load. The federal rule requires a plan before it starts. Weight is not a factor: a light beam on two cranes still needs a plan."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1432(a)",
+    "text": "Before beginning a crane/derrick operation in which more than one crane/derrick will be supporting the load, the operation must be planned."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1432(a)(1)",
+    "text": "The plan must be developed by a qualified person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1432(a)(2)",
+    "text": "The plan must be designed to ensure that the requirements of this subpart are met."
+   },
+   {
+    "t": "text",
+    "text": "The qualified person decides whether engineering help is needed. If they decide it is, the employer must provide it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1432(a)(3)",
+    "text": "Where the qualified person determines that engineering expertise is needed for the planning, the employer must ensure that it is provided."
+   },
+   {
+    "t": "text",
+    "text": "Each crane in the lift is held to its own rated capacity. When one crane assists another during assembly or disassembly, the loads on the assist crane at each phase must be verified before work starts."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(4)",
+    "text": "When using an assist crane, the loads that will be imposed on the assist crane at each phase of assembly/disassembly must be verified in accordance with § 1926.1417(o)(3) before assembly/disassembly begins."
+   },
+   {
+    "t": "text",
+    "text": "What a good multiple-crane plan covers (practice):"
+   },
+   {
+    "t": "text",
+    "text": "- The load share for each crane at every stage (pick, any rotation or upending, travel, set). The share changes as the load moves.\n- The radius for each crane at every stage, with chart capacity read at the next-longer radius\n- Each crane's gross load, including its hook block and its share of the rigging\n- The rigging layout and attachment points, with lift points sized for the worst-case share\n- Ground bearing for each crane\n- Swing and boom clearance between the cranes and to nearby structures\n- Wind limit, signal method, who directs the lift, and stop criteria\n- The sequence of motions, written step by step"
+   },
+   {
+    "t": "text",
+    "text": "Plan each crane's position so that its hoist line stays plumb over its pick point. The plan should not rely on one crane dragging the load sideways."
+   },
+   {
+    "t": "check",
+    "question": "Who must develop a multiple-crane lift plan?",
+    "answer": "A qualified person."
+   },
+   {
+    "t": "check",
+    "question": "Who decides whether engineering expertise is needed, and who must then provide it?",
+    "answer": "The qualified person decides, and the employer must provide it."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.lift-planning.04",
+  "topic_id": "lift-planning",
+  "ord": 4,
+  "title": "Load share for two cranes on a beam",
+  "skills": [
+   "lift-planning.load-sharing"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "When two cranes lift one beam, each crane carries part of the weight. The split depends on where the **center of gravity (CG)** sits between the two pick points. This is statics (physics), not a rule. Each crane's share must still stay within that crane's rated capacity."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(o)(1)"
+   },
+   {
+    "t": "text",
+    "text": "The method: take moments about one pick point. Each crane's share equals the load times the distance from the CG to the other pick point, divided by the span between the pick points."
+   },
+   {
+    "t": "text",
+    "text": "- Share at A = W × (distance from CG to B) ÷ span\n- Share at B = W × (distance from CG to A) ÷ span\n- Check: A + B = W"
+   },
+   {
+    "t": "text",
+    "text": "Worked example: a 10,000 lb beam has pick points 20 ft apart. The CG is 8 ft from pick point A, so it is 12 ft from B."
+   },
+   {
+    "t": "text",
+    "text": "- Crane A: 10,000 × 12 ÷ 20 = 6,000 lb\n- Crane B: 10,000 × 8 ÷ 20 = 4,000 lb\n- Check: 6,000 + 4,000 = 10,000 lb"
+   },
+   {
+    "t": "text",
+    "text": "The crane closer to the CG carries more. Next, add each crane's own deductions. If crane A has a 500 lb block and 300 lb of rigging, its gross load is 6,800 lb. Compare that with crane A's chart at its longest radius in the lift, using the next-longer radius column. Do the same for crane B."
+   },
+   {
+    "t": "text",
+    "text": "Things that change the share during the lift (physics):"
+   },
+   {
+    "t": "text",
+    "text": "- **Tilt.** When the pick points are above the CG and the beam tilts, the share moves toward the lower end. Keep the load level.\n- **Hoist lines out of plumb.** An angled line adds side load and changes the vertical share.\n- **Uneven hoisting speed.** One crane leading shifts weight to the other.\n- **Wrong CG.** If the CG is a guess, plan as though each crane could carry more than its calculated share."
+   },
+   {
+    "t": "text",
+    "text": "Look at the chart's gross-to-net steps and apply them to each crane separately."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "check",
+    "question": "An 8,000 lb beam has pick points 20 ft apart, with the CG 5 ft from A. What is each crane's share?",
+    "answer": "A = 8,000 × 15 ÷ 20 = 6,000 lb; B = 8,000 × 5 ÷ 20 = 2,000 lb."
+   },
+   {
+    "t": "check",
+    "question": "The beam tilts with end B low, and the pick points are above the CG. Which crane gains load?",
+    "answer": "Crane B, the crane at the lower end."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.lift-planning.05",
+  "topic_id": "lift-planning",
+  "ord": 5,
+  "title": "Running a multiple-crane lift: the lift director and the crew meeting",
+  "skills": [
+   "lift-planning.multi-crane-implement"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A written plan protects no one unless one person runs the lift and the whole crew knows the plan. The federal rule names that person the **lift director**."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1432(b)(1)",
+    "text": "The multiple-crane/derrick lift must be directed by a person who meets the criteria for both a competent person and a qualified person, or by a competent person who is assisted by one or more qualified persons (lift director)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1432(b)(2)",
+    "text": "The lift director must review the plan in a meeting with all workers who will be involved with the operation."
+   },
+   {
+    "t": "text",
+    "text": "The rule says \"all workers.\" That includes the operators, the signal persons, the riggers and anyone handling tag lines. In practice, the meeting covers:"
+   },
+   {
+    "t": "text",
+    "text": "- Load weight, each crane's share, and each crane's percent of capacity\n- The motion sequence and who moves when\n- The signal method: who gives signals to which crane, radio channels, and what to do if the radio fails\n- Each person's position, and the areas no one may enter\n- Stop criteria: wind over the plan limit, the load tilting or swinging, a crane's indicator nearing its limit, lost communication\n- Who may give a stop signal (anyone)"
+   },
+   {
+    "t": "text",
+    "text": "Field practice during the lift:"
+   },
+   {
+    "t": "text",
+    "text": "- Check crane setup, levels, mats and rigging against the plan before the pick.\n- Lift a few inches, stop, and check that the load is level and the indicator readings match the planned shares.\n- Move one motion at a time, slowly. Avoid swinging, booming and hoisting at the same moment unless the plan calls for it.\n- Keep hoist lines plumb and the load level. Watch both cranes' indicators.\n- If anything differs from the plan, stop, land the load if it is safe to do so, and replan. Do not improvise around the plan.\n- Watch the weather. Wind and weather are hazards the rules name for assembly and disassembly, and they matter just as much in a multiple-crane lift."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(12)"
+   },
+   {
+    "t": "check",
+    "question": "Who must attend the lift director's plan review meeting?",
+    "answer": "All workers who will be involved with the operation."
+   },
+   {
+    "t": "check",
+    "question": "Can a competent person who is not a qualified person direct a multiple-crane lift?",
+    "answer": "Only if one or more qualified persons assist them."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.lift-planning.06",
+  "topic_id": "lift-planning",
+  "ord": 6,
+  "title": "Tilt-up and tilt-down: staying out from under the load",
+  "skills": [
+   "lift-planning.tilt-up"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "In a **tilt-up** or **tilt-down**, a panel or long member is rotated between flat and upright. The load can slip, kick or fall over its edge. The **fall zone** is the area where the load or the boom could land if something fails."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(e)(1)",
+    "text": "No employee must be directly under the load."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(e)(2)",
+    "text": "Only employees essential to the operation are permitted in the fall zone (but not directly under the load)."
+   },
+   {
+    "t": "text",
+    "text": "A worker counts as essential only when doing one of three tasks, and only when the employer can show the task cannot be done from outside the fall zone:"
+   },
+   {
+    "t": "text",
+    "text": "- Physically guiding the load\n- Closely monitoring the load's movement and giving instructions about it\n- Detaching the load from, or first attaching it to, another component or structure, such as making the initial connection or installing bracing"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1425(e)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Free fall is restricted as well."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(e)(2)",
+    "text": "Boom free fall is prohibited when an employee is in the fall zone of the boom or load, and load line free fall is prohibited when an employee is directly under the load; see § 1926.1426."
+   },
+   {
+    "t": "text",
+    "text": "Site practice:"
+   },
+   {
+    "t": "text",
+    "text": "- Before rotation starts, mark the fall zone. Use at least the panel's height plus a margin on the side it could fall toward.\n- Name the essential workers in the pre-lift meeting. Everyone else stays outside the barricade.\n- Essential workers stand at the sides of the panel, never on the side it would fall toward.\n- Use tag lines so guiding can be done from farther away.\n- Plan where the bracing goes so the connector can reach it without stepping under the panel."
+   },
+   {
+    "t": "text",
+    "text": "Look at how the barricade marks the swing and work zone. Mark the fall zone the same way."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "swing-radius-clearance"
+   },
+   {
+    "t": "check",
+    "question": "May an essential worker stand directly under a panel being tilted up?",
+    "answer": "No. No employee may be directly under the load."
+   },
+   {
+    "t": "check",
+    "question": "Name the three tasks that can make a worker essential in the fall zone.",
+    "answer": "Physically guiding the load, closely monitoring it and giving instructions, and attaching or detaching it."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.lift-planning.07",
+  "topic_id": "lift-planning",
+  "ord": 7,
+  "title": "Common lift-planning mistakes and how to catch them",
+  "skills": [
+   "lift-planning.basics",
+   "lift-planning.critical",
+   "lift-planning.multi-crane-implement",
+   "lift-planning.load-sharing"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Most lift-planning failures come from a short list of errors. Check the plan and the setup against this list."
+   },
+   {
+    "t": "text",
+    "text": "**Weight errors**"
+   },
+   {
+    "t": "text",
+    "text": "- Using a guessed or stencil weight that leaves out contents, attachments, mud or ice\n- Forgetting the hook block, the spreader beam, the slings and the shackles\n- Starting the lift on the indicator method, getting a reading over 75 percent at the longest radius, and continuing anyway"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(o)(3)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Radius errors**"
+   },
+   {
+    "t": "text",
+    "text": "- Reading the chart at the pick radius when the set radius is longer\n- Interpolating between chart columns instead of using the next-longer radius\n- Ignoring boom deflection, which lengthens the radius under load (physics)"
+   },
+   {
+    "t": "text",
+    "text": "Look at how lowering the boom lengthens the radius."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "text",
+    "text": "**Ground errors**"
+   },
+   {
+    "t": "text",
+    "text": "- Setting up over fill, trenches or buried utilities\n- Using mats that are too small or too soft to spread the load"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1402(b)"
+   },
+   {
+    "t": "text",
+    "text": "**Multiple-crane errors**"
+   },
+   {
+    "t": "text",
+    "text": "- No written plan because the load is light. A plan is required whenever more than one crane supports the load.\n- No single lift director, or a crew that skipped the plan review meeting\n- Computing load shares for the level load only, then tilting or upending it\n- One crane hoisting faster than the other, which shifts the load share"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1432(a)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1432(b)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Judgment errors**"
+   },
+   {
+    "t": "text",
+    "text": "- Treating a lift as routine when it meets the employer's critical-lift criteria (practice)\n- Claiming that a federal \"critical lift\" definition applies. None exists in the federal crane rules.\n- Changing the crane position, the rigging or the radius on site without replanning"
+   },
+   {
+    "t": "check",
+    "question": "The pick is at 30 ft and the set is at 45 ft. Which radius limits the capacity?",
+    "answer": "The 45 ft set radius, the longest in the lift."
+   },
+   {
+    "t": "check",
+    "question": "Two cranes lift a 2,000 lb beam. Is a plan required?",
+    "answer": "Yes. Any lift where more than one crane supports the load must be planned."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "66aaac4348220ef92e05",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8f5471fc672729bfd8715c6683b39b7cb79601c37163b57ecd2029dc0fb1ff0e",
+   "output_sha256": "547dd57a79f776136cf3312051c451f3228232887bc969d5a92c197a52d769a4",
+   "created_at": "2026-11-27T22:29:37+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

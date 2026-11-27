@@ -14,7 +14,7 @@ NOW = timestamp("2026-11-03T17:00:00Z")
 
 def plan(synthetic=False):
     return {"policyVersion": POLICY_VERSION, "contentType": "ad", "audience": {"classification": "general", "rationale": "parents"},
-            "aiDisclosure": {"required": synthetic, "rationale": "recorded"}, "pinnedComment": "Try Adaptive Math Pathways free: https://amp.corpora.inc",
+            "aiDisclosure": {"required": synthetic, "rationale": "recorded"}, "format": "short", "pinnedComment": "Which step would you check first?",
             "relatedVideoIds": []}
 
 
@@ -177,6 +177,15 @@ class ClerkTests(unittest.TestCase):
         api = FakeYouTube(self.state / "q.json", [uploaded_video("e1")])
         self.add("e-1", "e1", lane="explanation")
         self.assertIn("link does not load", self.run_tick(api)["e-1"]["phase"])
+
+    def test_url_free_comment_still_checks_the_description_link(self):
+        self.fetch = lambda url: 404
+        api = FakeYouTube(self.state / "q.json", [uploaded_video("e1")])
+        self.add("e-1", "e1", lane="explanation")
+        self.assertIn("amp.corpora.inc", self.run_tick(api)["e-1"]["phase"])
+
+    def test_landing_ok_passes_when_there_is_no_url(self):
+        self.assertEqual(clerk.landing_ok("Which step first?", lambda url: 500), (True, None))
 
 
 if __name__ == "__main__":

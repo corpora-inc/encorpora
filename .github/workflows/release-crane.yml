@@ -17,9 +17,9 @@ name: Release · Crane mobile (TestFlight + Play internal)
 #     unsigned AAB with no secrets at all, so the build can be proven before
 #     any credential or store record exists.
 #
-# Status as of the change that added this file: NEVER EXECUTED, in either mode.
-# Rust does not build on the machine this was written on, so no step below has
-# been run against this app. See crane/app/RELEASE_SETUP.md.
+# Status: `unsigned` mode passed on main (2026-11-27, both platforms). The
+# signed path has never run: its store records and secrets are founder actions.
+# See crane/app/RELEASE_SETUP.md.
 #
 # This workflow is not a required status check and must never become one: it
 # runs only on a `crane-v*` tag or a manual dispatch, never on a pull request.
@@ -175,6 +175,23 @@ jobs:
             echo "| signed + store upload | \`$SIGNED\` |"
             echo "| Rust | \`$RUST_TOOLCHAIN\` |"
           } >> "$GITHUB_STEP_SUMMARY"
+
+      # Every pack a signed release bundles must be signed with the production
+      # key the app trusts (crane/app/src-tauri/keys/pack-production.pub); a
+      # release app refuses any other pack. Prove the secret is that key before
+      # an hour of builds. Unsigned proof runs skip it: they ship nothing and
+      # build-pack.sh signs their test pack with an ephemeral key.
+      - name: Pack signing key matches the app
+        if: steps.decide.outputs.signed == 'true'
+        env:
+          HARVEST_SIGNING_KEY: ${{ secrets.CRANE_PACK_SIGNING_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "$HARVEST_SIGNING_KEY" ]; then
+            echo "::error::missing secret CRANE_PACK_SIGNING_KEY (see crane/app/RELEASE_SETUP.md, 'Pack signing key')"
+            exit 1
+          fi
+          "$APP_DIR/scripts/check-pack-key.sh" secret
 
   # ---- iOS -> TestFlight internal -----------------------------------------
   ios:

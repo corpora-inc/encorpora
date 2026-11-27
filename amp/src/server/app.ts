@@ -73,7 +73,16 @@ import { publicationFile, unpublishedLessonIds } from "./publications";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
 import { brand } from "../brand";
-import { FLAG_RATE_LIMIT, problemFlagSchema } from "../feedback/problem-flags";
+import {
+  FLAG_RATE_LIMIT,
+  noteAllowed,
+  problemFlagSchema,
+} from "../feedback/problem-flags";
+import { filmFlagSchema } from "../feedback/film-flags";
+import {
+  recordFilmFlag,
+  type FilmReporter,
+} from "../feedback/record-film-flag";
 import {
   canonicalSelection,
   normalizeSelection,
@@ -1349,6 +1358,89 @@ function routes(app: FastifyInstance, options: AppOptions) {
             school: isSchoolAccount(account),
             apiCommit: build.commit,
           }),
+      );
+      return reply.code(201).send(saved);
+    },
+  );
+  /** Who is reporting a film, from the credential alone. A learner's own
+   * session (a school or family student's token) is that learner, and
+   * `noteAllowed` decides their note (COPPA, 16 CFR 312.2, as for "Report a
+   * problem"); a trial is reasons only; an adult's own sign-in is the adult,
+   * whatever learner their screens show (lib/student-activity.ts: an adult's
+   * tab is never the child); a visitor who is not signed in is reasons
+   * only. */
+  async function filmReporter(
+    request: Parameters<Authenticator>[0],
+  ): Promise<FilmReporter> {
+    const nobody: FilmReporter = {
+      viewer: "signed-out",
+      learnerId: null,
+      accountId: null,
+      noteAllowed: false,
+    };
+    const account = await learningAccount(request).catch((error: unknown) => {
+      // No sign-in at all, or only a cookie that no longer signs anyone in:
+      // a visitor. A presented token that fails is still a failure.
+      if (
+        !request.headers.authorization &&
+        (error as { statusCode?: unknown } | null)?.statusCode === 401
+      )
+        return null;
+      throw error;
+    });
+    if (account === null) return nobody;
+    const learnerId = boundLearners.get(request);
+    if (learnerId) {
+      // Linked to the learner only where their learning is permitted, as
+      // every learner route requires (`parent`); otherwise a report about
+      // the film alone.
+      if (
+        !options.development &&
+        !(await options.repository.hasConsent(account, learnerId))
+      )
+        return { ...nobody, viewer: "learner" };
+      return {
+        viewer: "learner",
+        learnerId,
+        accountId: null,
+        noteAllowed: await options.repository.transaction(
+          account,
+          learnerId,
+          async (tx) =>
+            noteAllowed({
+              trial: false,
+              schoolRestricted:
+                isSchoolAccount(account) && (await tx.namePending()),
+              birthYear: await tx.birthYear(),
+            }),
+        ),
+      };
+    }
+    if (isTrialAccount(account)) {
+      const [learner] = await options.repository.list(account);
+      return { ...nobody, viewer: "trial", learnerId: learner?.id ?? null };
+    }
+    return {
+      viewer: "adult",
+      learnerId: null,
+      accountId: account,
+      noteAllowed: true,
+    };
+  }
+  /** "Report this film" at a moment of a lesson film. First-party only.
+   * Anyone watching may send one: the same limit as "Report a problem". */
+  app.post(
+    "/api/v1/film-flags",
+    { config: { rateLimit: { max: FLAG_RATE_LIMIT, timeWindow: "1 hour" } } },
+    async (request, reply) => {
+      const input = filmFlagSchema.parse(request.body);
+      const save = options.repository.saveFilmFlag?.bind(options.repository);
+      if (!save) throw new ApiError(404, "Not found");
+      const saved = await recordFilmFlag(
+        save,
+        input,
+        await filmReporter(request),
+        build.commit,
       );
       return reply.code(201).send(saved);
     },

@@ -25,9 +25,11 @@ permissions:
   pages: write
   id-token: write
 
+# A running production deploy always finishes. A newer push still replaces
+# any older pending deploy, so the latest main is what ends up live.
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 env:
   NODE_OPTIONS: --use-openssl-ca

@@ -52,6 +52,8 @@ async function fixture(
   const admin = new Pool({ connectionString: url, max: 1 });
   const scoped = new URL(url);
   scoped.searchParams.set("options", `-c search_path=${schema}`);
+  // Lock-wait probes below look only at this file's own sessions.
+  scoped.searchParams.set("application_name", schema);
   const pool = new Pool({ connectionString: scoped.href, max: 8 });
   try {
     await admin.query(`CREATE SCHEMA ${schema}`);
@@ -860,7 +862,7 @@ test(
         let waiting = false;
         for (let i = 0; i < 100; i++) {
           const row = await pool.query(
-            "SELECT 1 FROM pg_stat_activity WHERE datname=current_database() AND wait_event_type='Lock' AND query LIKE '%FOR UPDATE OF j%' LIMIT 1",
+            "SELECT 1 FROM pg_stat_activity WHERE application_name=current_setting('application_name') AND wait_event_type='Lock' AND query LIKE '%FOR UPDATE OF j%' LIMIT 1",
           );
           if (row.rowCount) {
             waiting = true;
