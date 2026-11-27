@@ -272,12 +272,13 @@ steps:
       does not set sling-angle values.
   check_kind: value
   section_ids:
-  - 29cfr1910.184(c)(4)
+  - 29cfr1926.251(a)(2)(ii)
   deficiency:
     guidance: A rigging component is loaded beyond its rated load at the planned angle.
     action: Change the rigging or the sling angle before the lift.
-    section_id: 29cfr1910.184(c)(4)
-    quote: Slings shall not be loaded in excess of their rated capacities.
+    section_id: 29cfr1926.251(a)(2)(ii)
+    quote: Not be loaded in excess of its recommended safe working load as prescribed on the identification markings
+      by the manufacturer
   practice_only: true
   value_unit: lb
 - ord: 14
@@ -714,4 +715,5 @@ prov:
   created_at: '2026-11-27T06:50:24+00:00'
   verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
   verdict: pass
-  notes: null
+  notes: deficiency citations for steps 11, 13 from tasks/procedures/citations.yaml (hand-added; the model output
+    left them null)

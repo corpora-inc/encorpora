@@ -7,9 +7,10 @@ critical-lift-plan:
     section_id: 29cfr1926.1417(o)(1)
     quote: The equipment must not be operated in excess of its rated capacity.
   13:
-    # general-industry sling rule; the construction sling rule (1926.251) is not in this corpus
-    section_id: 29cfr1910.184(c)(4)
-    quote: Slings shall not be loaded in excess of their rated capacities.
+    # the construction rigging rule (1910.184 is its general-industry counterpart)
+    section_id: 29cfr1926.251(a)(2)(ii)
+    quote: Not be loaded in excess of its recommended safe working load as prescribed on the identification
+      markings by the manufacturer
 ground-conditions:
   9: &ground-firm
     section_id: 29cfr1926.1402(b)

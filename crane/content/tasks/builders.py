@@ -73,11 +73,13 @@ def procedures_write(task, items):
             continue
         out = json.loads(json.dumps(rec["output"]))
         b = it["meta"]
+        patched = []
         for n, s in enumerate(out["steps"], 1):
             fix = citations.get(b["proc_id"], {}).get(n)
             d = s.get("deficiency")
             if fix and d and not (d.get("section_id") and d.get("quote")):
                 d.update(section_id=fix["section_id"], quote=fix["quote"])
+                patched.append(n)
                 if fix["section_id"] not in s["section_ids"]:
                     s["section_ids"] = [*s["section_ids"], fix["section_id"]]
         ok, rep, errs = repair_quotes(out)
@@ -94,7 +96,10 @@ def procedures_write(task, items):
         verdict = "pass" if not errs else "fail"
         doc = {"proc_id": b["proc_id"], "title": out["title"], "kind": b["kind"], "summary": out["summary"],
                "roles": out["roles"], "lang": "en", "section_ids": b["section_ids"], "steps": steps,
-               "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)}
+               "prov": provenance(rec, VERIFIER, verdict, "; ".join(
+                   errs + ([f"deficiency citations for steps {', '.join(map(str, patched))} from "
+                            "tasks/procedures/citations.yaml (hand-added; the model output left them null)"]
+                           if patched else [])) or None)}
         _dump_yaml(CONTENT / "procedures" / f"{b['proc_id']}.yaml", doc)
         stats["procedures"] += 1
         stats["steps"] += len(steps)
@@ -368,7 +373,10 @@ def lessons_write(task, items):
                 stats["failures"].append({f"{topic_id}#{n}": errs})
             lessons.append({"lesson_id": f"l.{topic_id}.{n:02d}", "topic_id": topic_id, "ord": n, "title": les["title"],
                             "skills": les["skills"], "body": les["body"], "lang": "en",
-                            "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+                            "prov": provenance(rec, VERIFIER, verdict, "; ".join(
+                   errs + ([f"deficiency citations for steps {', '.join(map(str, patched))} from "
+                            "tasks/procedures/citations.yaml (hand-added; the model output left them null)"]
+                           if patched else [])) or None)})
         p = CONTENT / "data" / "lessons" / f"{topic_id}.json"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(lessons, ensure_ascii=False, indent=1) + "\n")
@@ -425,7 +433,10 @@ def glossary_write(task, items):
             terms[k] = {"term_id": "t." + re.sub(r"[^a-z0-9]+", "-", t["term"].lower()).strip("-") + ("" if t["basis"] == "rule" or k not in terms else ".p"),
                         "term": t["term"], "definition": t["definition"], "aliases": t["aliases"], "basis": t["basis"],
                         "section_id": t["section_id"], "quote": t["quote"], "lang": "en",
-                        "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)}
+                        "prov": provenance(rec, VERIFIER, verdict, "; ".join(
+                   errs + ([f"deficiency citations for steps {', '.join(map(str, patched))} from "
+                            "tasks/procedures/citations.yaml (hand-added; the model output left them null)"]
+                           if patched else [])) or None)}
     rows = sorted(terms.values(), key=lambda r: r["term"].lower())
     for r in rows:
         stats["terms"] += 1

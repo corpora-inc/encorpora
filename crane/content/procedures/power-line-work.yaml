@@ -734,4 +734,5 @@ prov:
   created_at: '2026-11-27T06:50:31+00:00'
   verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
   verdict: pass
-  notes: null
+  notes: deficiency citations for steps 10 from tasks/procedures/citations.yaml (hand-added; the model output left
+    them null)

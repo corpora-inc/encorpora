@@ -108,7 +108,8 @@ pub fn parse_numeric_key(answer: &str) -> Option<(f64, f64)> {
 /// A plain decimal with optional thousands commas (`1,200.5`), nothing else.
 fn plain_number(text: &str) -> Option<f64> {
     let t = text.trim();
-    let (sign, digits) = match t.strip_prefix(['-', '+']) {
+    // An optional minus; a leading plus is refused, as harvest/practice refuses it.
+    let (sign, digits) = match t.strip_prefix('-') {
         Some(rest) => (&t[..1], rest),
         None => ("", t),
     };

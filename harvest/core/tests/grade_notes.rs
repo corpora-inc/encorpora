@@ -246,7 +246,7 @@ fn numeric_keys_match_the_practice_grammar() {
     assert_eq!(parse_numeric_key("-3.5"), Some((-3.5, 0.0)));
     assert_eq!(parse_numeric_key(".5"), Some((0.5, 0.0)));
     for bad in [
-        "", "abc", "25 ft", "1,20", "25±-1", "1e3", "NaN", "inf", ".",
+        "", "abc", "25 ft", "1,20", "25±-1", "1e3", "NaN", "inf", ".", "+5", "２５",
     ] {
         assert_eq!(parse_numeric_key(bad), None, "{bad:?}");
     }

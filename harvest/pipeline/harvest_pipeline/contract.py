@@ -17,8 +17,9 @@ RUBRIC_KEYS = {"points", "pass", "sample_answer", "misconceptions"}
 POINT_KEYS = {"id", "point", "any"}
 
 # "25", "25±0.5", "25 +/- 0.5", "1,200" (harvest/practice parseNumericKey, core parse_numeric_key)
-_NUM = r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d*)(?:\.\d*)?"
-_NUMERIC_KEY = re.compile(rf"^\s*({_NUM})\s*(?:(?:±|\+/-|\+-)\s*({_NUM}))?\s*$")
+# ASCII digits only, an optional leading minus (a leading plus is refused, as practice does)
+_NUM = r"-?(?:\d{1,3}(?:,\d{3})+|\d*)(?:\.\d*)?"
+_NUMERIC_KEY = re.compile(rf"^\s*({_NUM})\s*(?:(?:±|\+/-|\+-)\s*({_NUM}))?\s*$", re.ASCII)
 
 
 def _is_number(s: str) -> bool:
@@ -33,8 +34,27 @@ def numeric_key_ok(answer) -> bool:
     return tol is None or (_is_number(tol) and not tol.startswith("-"))
 
 
+def _text_list(v) -> bool:
+    return isinstance(v, list) and all(isinstance(x, str) for x in v)
+
+
+def _index(v) -> int | None:
+    """An mc key: a non-negative int, or its ASCII digits as text (what the core parses as usize)."""
+    if isinstance(v, int) and not isinstance(v, bool):
+        return v if v >= 0 else None
+    if isinstance(v, str) and re.fullmatch(r"\s*\d+\s*", v, re.ASCII):
+        return int(v)
+    return None
+
+
 def rubric_problems(rubric) -> list[str]:
-    """The free-text rubric (CONTRACT "Free-text rubric")."""
+    """The free-text rubric (CONTRACT "Free-text rubric"). A JSON string is read as its JSON."""
+    if isinstance(rubric, str):
+        import json
+        try:
+            rubric = json.loads(rubric)
+        except json.JSONDecodeError:
+            return ["rubric is text that is not JSON"]
     if not isinstance(rubric, dict):
         return [f"rubric is a {type(rubric).__name__}, not an object"]
     out = [f"rubric has unknown key {k!r}" for k in sorted(set(rubric) - RUBRIC_KEYS)]
@@ -50,19 +70,20 @@ def rubric_problems(rubric) -> list[str]:
         pid = p.get("id")
         if not isinstance(pid, str) or not pid.strip() or pid in seen:
             out.append(f"rubric point id {pid!r} is empty or repeated")
-        seen.add(pid)
+        else:
+            seen.add(pid)
         if not isinstance(p.get("point"), str) or not p["point"].strip():
             out.append(f"rubric point {pid!r} has no point text")
         alts = p.get("any")
         if not isinstance(alts, list) or not all(isinstance(a, str) for a in alts) or not any(a.strip() for a in alts):
             out.append(f"rubric point {pid!r} needs at least one phrase in any")
-    need = rubric.get("pass")
-    if need is not None and (isinstance(need, bool) or not isinstance(need, int) or not 1 <= need <= len(points)):
+    need = rubric.get("pass")  # absent means all; null is refused (practice's parseRubric throws on it)
+    if "pass" in rubric and (isinstance(need, bool) or not isinstance(need, int) or not 1 <= need <= len(points)):
         out.append(f"rubric pass {need!r} is not a whole number from 1 to {len(points)}")
     if rubric.get("sample_answer") is not None and not isinstance(rubric["sample_answer"], str):
         out.append("rubric sample_answer is not text")
-    mis = rubric.get("misconceptions")
-    if mis is not None and not (isinstance(mis, list) and all(isinstance(m, str) for m in mis)):
+    # absent is fine; null is not (the core reads it as a list)
+    if "misconceptions" in rubric and not _text_list(rubric["misconceptions"]):
         out.append("rubric misconceptions is not a list of text")
     return out
 
@@ -72,17 +93,24 @@ def question_problems(q: dict) -> list[str]:
     if kind not in KINDS:
         return [f"unknown kind {kind!r}"]
     out = []
+    for key in ("q_id", "skill_id", "stem"):
+        if not isinstance(q.get(key), str) or not q[key].strip():
+            out.append(f"question has no {key}")
+    if not _text_list(q.get("section_ids")):
+        out.append("section_ids is not a list of section ids")
     choices = q.get("choices") or []
     rationales = q.get("rationales") or []
+    for key, v in (("choices", choices), ("rationales", rationales)):
+        if not _text_list(v):
+            out.append(f"{key} is not a list of text")
     if kind == "mc":
         if not isinstance(choices, list) or len(choices) < 2:
             out.append("mc needs at least two choices")
-        try:
-            i = int(str(q.get("answer")).strip())
-            if not 0 <= i < len(choices):
-                out.append(f"mc answer {i} out of {len(choices)} choices")
-        except ValueError:
+        i = _index(q.get("answer"))
+        if i is None:
             out.append(f"mc answer {q.get('answer')!r} is not an index")
+        elif i >= len(choices):
+            out.append(f"mc answer {i} out of {len(choices)} choices")
         if rationales and len(rationales) != len(choices):
             out.append(f"{len(rationales)} rationales for {len(choices)} choices")
     elif kind == "numeric":
@@ -114,10 +142,17 @@ def deficiency_problems(d) -> list[str]:
 
 def procedure_problems(p: dict) -> list[str]:
     steps = p.get("steps") or []
+    if not isinstance(p.get("proc_id"), str) or not p["proc_id"].strip():
+        return ["procedure has no proc_id"]
     if not steps:
         return ["procedure has no steps"]
     out = []
+    ords = [s.get("ord", k) for k, s in enumerate(steps, 1)]
+    if len(set(ords)) != len(ords):
+        out.append("procedure has repeated step ord")
     for k, s in enumerate(steps, 1):
+        if not _text_list(s.get("section_ids", [])):
+            out.append(f"step {k}: section_ids is not a list of section ids")
         if s.get("check_kind") not in CHECK_KINDS:
             out.append(f"step {k}: unknown check_kind {s.get('check_kind')!r}")
         detail = s.get("detail")
@@ -133,7 +168,12 @@ def row_problems(table: str, row: dict) -> list[str]:
     if table == "procedure":
         return procedure_problems(row)
     if table == "diagram":
-        return [] if isinstance(row.get("svg"), str) and "<svg" in row["svg"] else ["diagram has no SVG markup"]
+        out = [] if isinstance(row.get("svg"), str) and "<svg" in row["svg"] else ["diagram has no SVG markup"]
+        if not isinstance(row.get("diagram_id"), str) or not row["diagram_id"].strip():
+            out.append("diagram has no diagram_id")
+        if not _text_list(row.get("section_ids")):
+            out.append("section_ids is not a list of section ids")
+        return out
     return []
 
 

@@ -26,12 +26,24 @@ class ShowError(Exception):
     pass
 
 
-def _table_counts(pack: Path) -> dict[str, int]:
-    """Rows per table, counted in the database itself (the core's info reports only some tables)."""
+def _db(pack: Path):
     import sqlite3
     m = json.loads((pack / "manifest.json").read_text())
     db = next(f["path"] for f in m["files"] if f["path"].endswith(".sqlite"))
-    con = sqlite3.connect(f"file:{pack / db}?mode=ro", uri=True)
+    return sqlite3.connect(f"file:{pack / db}?mode=ro", uri=True)
+
+
+def _step_counts(pack: Path) -> dict[str, int]:
+    con = _db(pack)
+    try:
+        return dict(con.execute("SELECT proc_id, count(*) FROM proc_step GROUP BY proc_id").fetchall())
+    finally:
+        con.close()
+
+
+def _table_counts(pack: Path) -> dict[str, int]:
+    """Rows per table, counted in the database itself (the core's info reports only some tables)."""
+    con = _db(pack)
     try:
         return {t: con.execute(f"SELECT count(*) FROM {t}").fetchone()[0]
                 for t in (*EXACT.values(), "lesson")}
@@ -77,9 +89,11 @@ def showcheck(pack: Path, binary: str, pubkey: str, app_data: bool = False) -> t
         for row in out.get(what) or []:
             if show(what, "--id", row[key]) is None:
                 break  # one failure per table is enough to read
+    steps_in_pack = _step_counts(pack)
     for p in out.get("procedures") or []:
-        if not p.get("steps"):
-            problems.append(f"procedure {p.get('proc_id')}: no steps")
+        if len(p.get("steps") or []) != steps_in_pack.get(p.get("proc_id"), 0) or not p.get("steps"):
+            problems.append(f"procedure {p.get('proc_id')}: {len(p.get('steps') or [])} steps read, "
+                            f"the pack holds {steps_in_pack.get(p.get('proc_id'), 0)}")
         if show("procedures", "--id", p["proc_id"]) is None:
             break
     out["answer_bodies"] = {}

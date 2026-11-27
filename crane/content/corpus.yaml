@@ -25,6 +25,15 @@ sources:
     parser: ecfr
     parser_options: {title: 29, part: "1926"}
     fetch: {kind: ecfr, title: 29, query: {part: "1926", subpart: CC}}
+  - id: ecfr-29-1926-251
+    title: 29 CFR 1926.251, Rigging equipment for material handling
+    publisher: Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)
+    url: https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1926/subpart-H/section-1926.251
+    license: public-domain-us-gov
+    parser: ecfr
+    parser_options: {title: 29, part: "1926"}
+    # the construction sling rule; pinned to the edition the other sources were fetched at
+    fetch: {kind: ecfr, title: 29, date: "2026-11-24", query: {part: "1926", section: "1926.251"}}
   - id: ecfr-29-1910-179
     title: 29 CFR 1910.179, Overhead and gantry cranes
     publisher: Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)

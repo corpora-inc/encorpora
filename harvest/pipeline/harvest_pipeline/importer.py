@@ -214,7 +214,15 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                         try:
                             stage.insert("proc_step", _row(stage, "proc_step", s, prov_id))
                         except sqlite3.Error as e:
+                            # a procedure ships whole or not at all (the core hides one with a bad step)
                             rep.problems.append(f"{path.name}#{n} step {k}: {e}")
+                            if verdict != "fail":
+                                stage.add_provenance({**dict(stage.conn.execute(
+                                    "SELECT * FROM provenance WHERE prov_id=?", (prov_id,)).fetchone()),
+                                    "verdict": "fail"})
+                                rep.verdicts[verdict] -= 1
+                                rep.verdicts["fail"] += 1
+                                verdict = "fail"
         stage.commit()
         reports.append(rep)
     return reports
