@@ -9,7 +9,7 @@ use crate::embed::Embedder;
 use crate::error::{Error, Result};
 use crate::llm::Llm;
 use crate::normalize::{self, Concept, Normalized, normalize_ws};
-use crate::pack::{CachedAnswer, Pack};
+use crate::pack::{CachedAnswer, Pack, Section};
 use crate::retrieval::{Hit, Reranker, Retriever, SearchOptions};
 use crate::segments::{self, Segment};
 use rusqlite::params;
@@ -71,6 +71,12 @@ pub struct AskOptions {
     pub k: usize,
     /// Minimum alias similarity (0..1) for an answer-cache hit.
     pub cache_threshold: f64,
+    /// Below this similarity a hit must be confirmed as the same question
+    /// before it is served: the embedder's cosine between the question and
+    /// the alias must reach `cache_intent_min`. Without an embedder such a
+    /// hit is not served and the question goes to retrieval.
+    pub cache_confirm: f64,
+    pub cache_intent_min: f64,
     /// Minimum share of the question's content words a section must cover to
     /// support an answer; below it, decline.
     pub support_threshold: f64,
@@ -104,6 +110,8 @@ impl Default for AskOptions {
             lang: "en".into(),
             k: 10,
             cache_threshold: 0.75,
+            cache_confirm: 0.85,
+            cache_intent_min: 0.9,
             support_threshold: 0.5,
             max_sections: 3,
             max_quote_chars: 600,
@@ -122,7 +130,7 @@ impl AskOptions {
                 .and_then(|v| v.parse::<f64>().ok())
                 .filter(|v| v.is_finite())
         };
-        Self {
+        let mut o = Self {
             dense_gate: match (num("gate_dense_support_threshold"), num("gate_dense_min")) {
                 (Some(support_threshold), Some(min_dense)) => Some(DenseGate {
                     support_threshold,
@@ -131,7 +139,14 @@ impl AskOptions {
                 _ => None,
             },
             ..Self::default()
+        };
+        if let Some(v) = num("cache_confirm_similarity") {
+            o.cache_confirm = v;
         }
+        if let Some(v) = num("cache_intent_min") {
+            o.cache_intent_min = v;
+        }
+        o
     }
 }
 
@@ -219,6 +234,10 @@ pub struct AskResponse {
     /// The deterministic gate's view of the question (all modes).
     #[serde(default)]
     pub support: Support,
+    /// The deterministic tool that answered first, if any
+    /// (`range_table:<section_id>`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tool: Option<String>,
 }
 
 /// What the engine considered, for the audit log.
@@ -308,7 +327,7 @@ impl Engine {
         trace.support = candidates.iter().map(|c| c.coverage).fold(0.0, f64::max);
 
         // Answer cache.
-        let (cached, similarity) = self.cache_lookup(&norm, opts)?;
+        let (cached, similarity) = self.cache_lookup_for(question, &norm, opts)?;
         trace.cache_similarity = similarity;
         let support = Support {
             score: trace.support,
@@ -339,6 +358,7 @@ impl Engine {
                         model: None,
                         elapsed_ms: started.elapsed().as_millis() as u64,
                         support: support.clone(),
+                        tool: None,
                     },
                     trace,
                 ));
@@ -392,12 +412,22 @@ impl Engine {
                     model: None,
                     elapsed_ms: started.elapsed().as_millis() as u64,
                     support,
+                    tool: None,
                 },
                 trace,
             ));
         }
         let mut body = Vec::new();
+        // A number in a table's unit is looked up in the table, first.
+        let tool = self.table_answer(question, &candidates)?;
+        let tool_section = tool.as_ref().map(|(id, _)| id.clone());
+        if let Some((_, segs)) = tool {
+            body.extend(segs);
+        }
         for c in chosen {
+            if Some(&c.section_id) == tool_section.as_ref() {
+                continue;
+            }
             body.extend(self.compose_section(&c.section_id, &norm, opts)?);
         }
         let (body, check) = check::check(&self.pack, &body, CheckOptions::STRUCTURAL)?;
@@ -414,9 +444,101 @@ impl Engine {
                 model: None,
                 elapsed_ms: started.elapsed().as_millis() as u64,
                 support,
+                tool: tool_section.map(|id| format!("range_table:{id}")),
             },
             trace,
         ))
+    }
+
+    /// The range-table answer for a question that states a number in a
+    /// retrieved table's unit: the best-supported such table (coverage, then
+    /// rank), one lead per value.
+    fn table_answer(
+        &self,
+        question: &str,
+        candidates: &[SupportCandidate],
+    ) -> Result<Option<(String, Vec<Segment>)>> {
+        // Table sections among the candidates that hold a number the
+        // question states in their unit.
+        let mut tables = Vec::new();
+        for c in candidates {
+            let Some(sec) = self.pack.section(&c.section_id)? else {
+                continue;
+            };
+            if sec.kind != "table" {
+                continue;
+            }
+            let Some(table) = crate::tools::RangeTable::parse(&sec) else {
+                continue;
+            };
+            let mut values = table.values_in(question);
+            values.dedup();
+            if !values.is_empty() {
+                tables.push((c, sec, table, values));
+            }
+        }
+        // Between tables for the same quantity (operating vs traveling, say),
+        // a table whose heading qualifies it with words the question does not
+        // use is the wrong table: rank by those missing qualifiers, then by
+        // support and rank.
+        let q_stems = normalize::stem_set(question);
+        let heading_stems =
+            |sec: &Section| normalize::stem_set(sec.heading.as_deref().unwrap_or(""));
+        let all: Vec<BTreeSet<String>> = tables.iter().map(|t| heading_stems(&t.1)).collect();
+        // Distinctive heading words: in this table's heading, not in every
+        // other's (operating vs "while traveling with no load", say).
+        let distinct = |i: usize| -> (i64, i64) {
+            let d: Vec<&String> = all[i]
+                .iter()
+                .filter(|s| {
+                    all.iter()
+                        .enumerate()
+                        .any(|(j, o)| j != i && !o.contains(*s))
+                })
+                .collect();
+            let hit = d.iter().filter(|s| q_stems.contains(**s)).count() as i64;
+            (hit, d.len() as i64 - hit)
+        };
+        // With an embedder, the heading closest in meaning to the question
+        // wins ("drive under it with no load" is traveling); without one, the
+        // most distinctive heading words used, then the fewest unused.
+        let mut closeness = vec![0.0f32; tables.len()];
+        if tables.len() > 1
+            && let Some(e) = &self.embedder
+        {
+            let q = e.embed_query(question)?;
+            for (i, t) in tables.iter().enumerate() {
+                let h = e.embed_query(t.1.heading.as_deref().unwrap_or(&t.1.citation))?;
+                closeness[i] = q.iter().zip(&h).map(|(x, y)| x * y).sum();
+            }
+        }
+        let mut order: Vec<usize> = (0..tables.len()).collect();
+        order.sort_by(|&a, &b| {
+            closeness[b]
+                .total_cmp(&closeness[a])
+                .then(distinct(b).0.cmp(&distinct(a).0))
+                .then(distinct(a).1.cmp(&distinct(b).1))
+                .then(tables[b].0.coverage.total_cmp(&tables[a].0.coverage))
+                .then(tables[a].0.rank.cmp(&tables[b].0.rank))
+        });
+        for i in order {
+            let (c, sec, table, values) = &tables[i];
+            let caption = sec.heading.clone().unwrap_or_else(|| sec.citation.clone());
+            let mut segs: Vec<Segment> = Vec::new();
+            for &v in values {
+                if let Some(a) = table.answer(v, &caption) {
+                    for s in a {
+                        if !segs.contains(&s) {
+                            segs.push(s);
+                        }
+                    }
+                }
+            }
+            if !segs.is_empty() {
+                return Ok(Some((c.section_id.clone(), segs)));
+            }
+        }
+        Ok(None)
     }
 
     /// The model path. `Ok(None)`: nothing the model wrote survived the
@@ -458,6 +580,7 @@ impl Engine {
             model: Some(llm.id()),
             elapsed_ms: 0,
             support: Support::default(),
+            tool: None,
         };
         // The long tail: the model may use sections with partial lexical
         // support; the strict checker decides what survives.
@@ -551,6 +674,18 @@ impl Engine {
         norm: &Normalized,
         opts: &AskOptions,
     ) -> Result<(Option<CachedAnswer>, f64)> {
+        self.cache_lookup_for(&norm.text, norm, opts)
+    }
+
+    /// [`Engine::cache_lookup`] with the question as asked, for the intent
+    /// check of near-threshold hits.
+    pub fn cache_lookup_for(
+        &self,
+        question: &str,
+        norm: &Normalized,
+        opts: &AskOptions,
+    ) -> Result<(Option<CachedAnswer>, f64)> {
+        let mut question_vec: Option<Vec<f32>> = None;
         let Some(m) = normalize::fts_query(
             std::iter::once(norm.text.as_str()).chain(norm.expansions.iter().map(String::as_str)),
         ) else {
@@ -574,6 +709,21 @@ impl Engine {
             best_sim = best_sim.max(sim);
             if sim < opts.cache_threshold {
                 continue;
+            }
+            // Near the threshold the words may overlap while the question
+            // differs: confirm it is the same question, or leave it to
+            // retrieval.
+            if sim < opts.cache_confirm {
+                let Some(e) = &self.embedder else { continue };
+                if question_vec.is_none() {
+                    question_vec = Some(e.embed_query(question)?);
+                }
+                let q = question_vec.as_deref().unwrap_or_default();
+                let a = e.embed_query(&alias)?;
+                let cos: f32 = q.iter().zip(&a).map(|(x, y)| x * y).sum();
+                if f64::from(cos) < opts.cache_intent_min {
+                    continue;
+                }
             }
             let Some(answer) = self.pack.answer(&answer_id)? else {
                 continue;
@@ -698,16 +848,35 @@ impl Engine {
         let Some(sec) = self.pack.section(section_id)? else {
             return Ok(Vec::new());
         };
-        let mut out = Vec::new();
-        out.push(Segment::text(match &sec.heading {
-            Some(h) => format!("{} {}", sec.citation, h),
-            None => sec.citation.clone(),
-        }));
-        if let Some(e) = self
+        // Answer first: the most relevant verified plain-language line (a
+        // baked fact's statement, or a sentence of the role's explanation)
+        // leads, then the rule's own words. No section header: the cite
+        // names the section.
+        let explanation = self
             .pack
-            .explanation(section_id, opts.role.as_str(), &opts.lang)?
-        {
-            out.push(Segment::text(e));
+            .explanation(section_id, opts.role.as_str(), &opts.lang)?;
+        let mut leads: Vec<(f64, u8, String)> = Vec::new();
+        for f in self.pack.facts_for_section(section_id)? {
+            let cov = coverage(
+                &norm.concepts,
+                &normalize::stem_set(&format!("{} {}", f.statement, f.quote)),
+            );
+            leads.push((cov, 1, f.statement));
+        }
+        if let Some(e) = &explanation {
+            for sentence in e.split_inclusive(". ") {
+                let cov = coverage(&norm.concepts, &normalize::stem_set(sentence));
+                leads.push((cov, 0, sentence.trim().to_string()));
+            }
+        }
+        let lead = leads
+            .into_iter()
+            .filter(|l| l.0 >= MIN_LEAD_COVERAGE)
+            .max_by(|a, b| a.0.total_cmp(&b.0).then(a.1.cmp(&b.1)));
+        let mut out = Vec::new();
+        let lead_from_explanation = lead.as_ref().is_some_and(|l| l.1 == 0);
+        if let Some((_, _, text)) = &lead {
+            out.push(Segment::text(text.clone()));
         }
         let passage = best_passage(&sec.text, &norm.concepts, opts.max_quote_chars);
         out.push(Segment::quote(section_id, passage.clone()));
@@ -725,10 +894,19 @@ impl Engine {
                 out.push(Segment::quote(section_id, f.quote.clone()));
             }
         }
+        // The explanation teaches after the rule, unless it already led.
+        if let (Some(e), false) = (explanation, lead_from_explanation) {
+            out.push(Segment::cite(section_id));
+            out.push(Segment::text(e));
+        }
         out.push(Segment::cite(section_id));
         Ok(out)
     }
 }
+
+/// Least share of the question a lead line must cover to open an answer;
+/// below it the answer opens with the rule's own words.
+const MIN_LEAD_COVERAGE: f64 = 0.3;
 
 /// Share of `concepts` satisfied by `doc`.
 pub fn coverage(concepts: &[Concept], doc: &BTreeSet<String>) -> f64 {

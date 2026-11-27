@@ -120,6 +120,11 @@ const UNITS: &[(&[&str], &str, bool)] = &[
     (&["min", "mins", "minute", "minutes"], "minutes", true),
 ];
 
+/// True for a canonical unit spelling (`feet`, `kv`, …).
+pub fn is_unit(w: &str) -> bool {
+    UNITS.iter().any(|(_, canon, _)| *canon == w)
+}
+
 fn unit_for(w: &str, after_number: bool) -> Option<&'static str> {
     UNITS.iter().find_map(|(spellings, canon, needs_number)| {
         (spellings.contains(&w) && (after_number || !needs_number)).then_some(*canon)
