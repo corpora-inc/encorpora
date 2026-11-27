@@ -10,11 +10,12 @@ Everything `.github/workflows/release-crane.yml` needs before it can ship
 
 | | |
 |---|---|
-| The workflow, `unsigned` mode | **never executed**. No step has run against this app; Rust does not build on the machine the workflow was written on. Run it first (see [Prove the build](#prove-the-build-before-any-secret-exists)). |
+| The workflow, `unsigned` mode | **passed** on `main` (2026-11-27): it built and inspected an unsigned iOS archive and an unsigned AAB, both kept as workflow artifacts. Re-run it after any native change (see [Prove the build](#prove-the-build-before-any-secret-exists)). |
 | The workflow, signed | **never executed**. Nothing from `Import signing certificate` / `Sign the AAB` onward has run, including both uploads and both verifications. |
 | App Store Connect app record | **does not exist** (founder, browser only) |
 | Play app record | **does not exist** (founder, browser only) |
-| The four new secrets | **do not exist** |
+| The four new store secrets | **do not exist** |
+| Pack signing key `CRANE_PACK_SIGNING_KEY` | **set** (2026-11-27, key id `f0f24f3af5458247`); see [Pack signing key](#pack-signing-key) |
 | Product name | **placeholder** (`Crane Companion`), see [below](#product-name) |
 
 Until each secret exists, a signed run fails in its first steps and names every
@@ -131,6 +132,12 @@ is enough for the PKCS12 keystore the command below produces, whose key password
 is the store password. If a keystore ever has a different key password, add a
 secret and wire it as `-keypass:env` in the same change.
 
+### Set: the pack signing key
+
+| Secret | What it is | Note |
+|---|---|---|
+| `CRANE_PACK_SIGNING_KEY` | the production ed25519 pack signing key: base64 of the 32-byte seed, the format `harvest_pipeline/sign.py` reads from `HARVEST_SIGNING_KEY` | Set. Its public half is compiled into the app. See [Pack signing key](#pack-signing-key). |
+
 ### Repository variable
 
 | Variable | Default | Meaning |
@@ -157,6 +164,61 @@ certificate into a throwaway keychain.
 
 Team ID `F9AV5HKF6N`, the bundle id and the profile name are not secrets; they
 are in every shipped artifact.
+
+## Pack signing key
+
+Every crane knowledge pack is an ed25519-signed manifest plus the files it
+hashes (harvest/CONTRACT.md). The app opens a pack only if a key compiled into
+it verifies the signature. This follows Corpán's pack-signing plan
+(`corpan/corpan-app/src/contentPacks/PRODUCTION_SETUP.md`, "Signing keys"): the
+private key is kept in the CI secret store, and the public key is baked into the app.
+
+| What | Where |
+|---|---|
+| Private half (seed) | GitHub Actions secret **`CRANE_PACK_SIGNING_KEY`**, plus the founder's copy at **`~/.corpora-signing/crane-pack-signing.key`** (mode 600, never in any repository). |
+| Public half, production | `crane/app/src-tauri/keys/pack-production.pub`, compiled in by `src-tauri/src/pack_keys.rs`. Key id `f0f24f3af5458247` (first 16 hex of SHA-256 over the raw public key). |
+| Public half, lab | `crane/app/src-tauri/keys/pack-lab.pub`, the evaluation lab's key. **Trusted in debug and test builds only**; a release build never accepts a lab-signed pack (`pack_keys::release_trusted`, unit-tested in both profiles). |
+
+How a signed release uses it:
+
+- The gate job's step **Pack signing key matches the app** fails the run before any
+  build unless the secret derives the production public key
+  (`crane/app/scripts/check-pack-key.sh secret`; the script prints no key material).
+- The pack build (`crane/content/build-pack.sh`, pipeline lane) reads the secret as
+  `HARVEST_SIGNING_KEY` with `CRANE_PACK_REQUIRE_KEY=1`. Its `pack.pub` must pass
+  `crane/app/scripts/check-pack-key.sh pub <OUT_DIR>/pack.pub` before the pack is bundled.
+- Unsigned proof runs skip both: they ship nothing, and `build-pack.sh` signs
+  their test pack with an ephemeral key.
+
+### Rotation
+
+Rotate on suspected exposure, when someone who held the seed leaves, or
+yearly. **A new key needs a new app release**: installed apps trust only the
+key compiled into them, so ship the new key before signing anything with it.
+
+1. Generate the new seed outside the repository, without printing it, and keep
+   the old one until step 6:
+   ```sh
+   umask 077
+   python3 -m venv /tmp/keyenv && /tmp/keyenv/bin/pip -q install cryptography
+   /tmp/keyenv/bin/python -c 'import base64,os;from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey as K;from cryptography.hazmat.primitives import serialization as s;k=K.generate();p="~/.corpora-signing/crane-pack-signing-NEW.key";fd=os.open(os.path.expanduser(p),os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600);os.write(fd,base64.b64encode(k.private_bytes(s.Encoding.Raw,s.PrivateFormat.Raw,s.NoEncryption()))+b"\n");print(base64.b64encode(k.public_key().public_bytes(s.Encoding.Raw,s.PublicFormat.Raw)).decode())'
+   ```
+   It prints only the new public key.
+2. Open a PR that puts the new public key in `keys/pack-production.pub`. If packs
+   signed with the old key must keep opening on updated apps during the
+   change-over, also add the old public key to the trusted list in
+   `pack_keys.rs` for one release, with a removal date.
+3. Replace the secret from the file, never by pasting:
+   `gh secret set CRANE_PACK_SIGNING_KEY --repo corpora-inc/encorpora < ~/.corpora-signing/crane-pack-signing-NEW.key`.
+   Merge the PR in step 2 at the same time: the release gate refuses a run
+   whose secret and compiled key disagree.
+4. Release the app (tag `crane-v<version>`). The gate proves the new secret matches;
+   the release bundles a pack signed with it.
+5. Update the key id in this file's Status table and in the table above.
+6. Once no supported app version needs the old key, remove it from
+   `pack_keys.rs` (if it was added in step 2), and move the old seed file out of
+   `~/.corpora-signing/` into the founder's offline archive. On compromise, skip
+   the overlap in step 2 entirely and release as soon as possible.
 
 ## What the workflow does
 

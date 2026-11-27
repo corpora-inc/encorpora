@@ -176,6 +176,23 @@ jobs:
             echo "| Rust | \`$RUST_TOOLCHAIN\` |"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # Every pack a signed release bundles must be signed with the production
+      # key the app trusts (crane/app/src-tauri/keys/pack-production.pub); a
+      # release app refuses any other pack. Prove the secret is that key before
+      # an hour of builds. Unsigned proof runs skip it: they ship nothing and
+      # build-pack.sh signs their test pack with an ephemeral key.
+      - name: Pack signing key matches the app
+        if: steps.decide.outputs.signed == 'true'
+        env:
+          HARVEST_SIGNING_KEY: ${{ secrets.CRANE_PACK_SIGNING_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "$HARVEST_SIGNING_KEY" ]; then
+            echo "::error::missing secret CRANE_PACK_SIGNING_KEY (see crane/app/RELEASE_SETUP.md, 'Pack signing key')"
+            exit 1
+          fi
+          "$APP_DIR/scripts/check-pack-key.sh" secret
+
   # ---- iOS -> TestFlight internal -----------------------------------------
   ios:
     name: iOS · build + TestFlight
