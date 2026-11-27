@@ -298,7 +298,8 @@ def cited_text(corpus: Corpus | None, cites: list[str], limit: int = FULL_LIMIT,
     """The text of the cited sections, for the support judge.
 
     The judge sees all of it when it fits in `limit` characters (a whole
-    definitions section such as §1926.1401 is about 21,000). Past that, cutting
+    definitions section such as §1926.1401 is about 21,000; §1910.179 whole is
+    about 45,000). Past that, cutting
     the text off would hide the paragraph a claim rests on, so the judge sees
     the cited paragraphs that cover the claims' words instead: greedy cover over
     the cited sections, their descendants and sentence windows of long

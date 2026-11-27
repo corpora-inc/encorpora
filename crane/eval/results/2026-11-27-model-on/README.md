@@ -54,10 +54,11 @@ Fully correct is the share of the 291 answerable items the judge scored 2.
 
 Against the same set, for reference (`../2026-11-27-baseline/`): the model-off
 engine over the section-only pack was 19.2% fully correct, and Sonnet alone,
-with no retrieval, 80.1% with 25.3% of its claims unsupported. Item by item, the
-model-on systems differ little from the model-off engine on this pack: Gemma
-32–32 (sign test p = 1.0), Granite 24–17 (p = 0.35), gpt-oss 23–8 (p = 0.01;
-fully-correct disagreements 15–8, McNemar p = 0.21).
+with no retrieval, 80.1% with 25.3% of its claims unsupported. Item by item against
+the model-off engine on this pack: Gemma 32–32 (sign test p = 1.0), Granite
+24–17 (p = 0.35), gpt-oss 23–8 (p = 0.011, still below 0.05 after a
+three-comparison correction; on fully-correct disagreements 15–8, McNemar
+p = 0.21).
 
 ## Findings
 
@@ -67,12 +68,12 @@ fully-correct disagreements 15–8, McNemar p = 0.21).
    price is decline discipline: must-decline items declined fall from 92% to
    75%. 13 of them now get a composed answer, 9 of those with a baked
    explanation in it.
-2. **The model loop adds little on top so far: 31–32% with a model against 28%
-   without.** No model beats the model-off engine on this pack by more than
-   chance on the full score (gpt-oss comes closest, 23–8 on items, p = 0.01; 15–8
-   on fully-correct disagreements, p = 0.21). The model's text survives the
-   strict check in 23–57% of answers; the rest fall back to the deterministic
-   answer.
+2. **The model loop adds a little on top so far: 30–32% with a model against
+   28% without.** gpt-oss is better than the model-off engine on the per-item
+   score (23 items better, 8 worse, p = 0.011) but not significantly on fully
+   correct (15–8, p = 0.21). Gemma and Granite are not distinguishable from it.
+   The model's text survives the strict check in 23–57% of answers; the rest
+   fall back to the deterministic answer.
 3. **Grounding holds with the model on.** Every quote is verbatim and every
    citation exists in all four systems. 4% of claims are unsupported by the
    cited text, against 25% for Sonnet alone. With Gemma, 5% of answers carry an
@@ -80,25 +81,29 @@ fully-correct disagreements 15–8, McNemar p = 0.21).
    come from a few baked explanations that compress the rule (the §1926.1401
    definitions overview, the §1926.1437 floating-crane summary), and the
    model-off engine, which has no model text, carries them too (11.7% of its
-   answers).
-4. **Clarifying questions cost the most.** Gemma asks a clarifying question on
-   73 answerable items (25%), and every one scores 0. Of the answers it does
-   compose, 47% are fully correct. gpt-oss asks on 34 (12%). The set is written
-   the way people ask on a job site, and each item has a definite answer in the
-   rules; the clarify gate fires on phrasing such as "how close can i get the
-   boom to a 138kv line".
+   answers). Part of that count was judged on excerpts (cited text over 40,000
+   characters), so treat the per-claim attribution as indicative.
+4. **Clarifying questions mostly replace declines.** Gemma asks a clarifying
+   question on 73 answerable items (25%), and each scores 0. The engine offers
+   one only when something is relevant but no section answers, and the
+   model-off engine declined 56 of those 73 (it fully answered 3). So Gemma's
+   low 9% false-decline rate is largely clarifies in place of declines, not
+   more answers. gpt-oss asks on 34 (model-off declined 31 of them). Of the
+   answers Gemma does compose, 47% are fully correct.
 5. **Reasoning models need the reasoning switched off at the server.** The
    core sends `chat_template_kwargs.enable_thinking = false`, but with a JSON
    schema in `response_format`, Gemma 4 E4B and gpt-oss 20B on llama.cpp v1.1.0
    still opened their reasoning channel and spent the whole budget there (the
-   core's expand step allows 200 tokens). Every model call then fell back. The
+   core's expand step allows 200 tokens), and the model call fell back to the
+   deterministic answer. The
    runs here used `llama-server --reasoning-budget 0`. Without it, the model
    loop silently does nothing.
 6. **Gemma declines least; the model-off engine declines best.** With Gemma,
    only 9% of answerable items are declined, but only 41% of must-decline items
    are. Of the 51 must-decline items, Gemma composes an answer to 19
-   and asks a clarifying question on 11. Query expansion lifts R@5 only
-   slightly (0.637 → 0.641).
+   and asks a clarifying question on 11. Query expansion shows no measurable
+   effect on retrieval: R@5 is 0.634–0.641 with a model against 0.637 without,
+   all inside each other's intervals.
 7. **Next measurements that would move the number.** The answer cache (bake
    hit rate is 0%: no answer rows yet), the dense half of retrieval (needs a
    query-side EmbeddingGemma 2 in the CLI), passing equipment now that
@@ -110,14 +115,14 @@ fully-correct disagreements 15–8, McNemar p = 0.21).
 | | |
 |---|---|
 | Set | `heldout-v1.jsonl` (same bytes as the baseline) |
-| Code | `main` at `8a62f3fd6` (#2543), exported with `git archive`; `harvest` CLI built with `cargo build --release` on the lab machine; harness as in this change |
+| Code | `main` at `8a62f3fd6` (#2543), exported with `git archive`; `harvest` CLI built with `cargo build --release` on the lab machine; harness as in this change (`results.json` records the harness commit as `main` at the time of the run, `e1086068e`; the code that scored it is this change's `harvest/eval`) |
 | Pack | `crane-us` 2026.11.27-1, sqlite sha256 `ab8ab619f3dfdee4…`, manifest sha256 `f461f0804c7bfa21…`, signed with a throwaway lab key made for this run (not a release key) |
 | Pack contents | 4 sources, 2,258 sections, 565 cross-references, 33 equipment rows, 18 topics, 213 skills, 287 terms, 2,467 facts, 137 explanations, 165 applicability rows, 3,061 provenance rows, 5,139 chunks with int8 EmbeddingGemma 2 vectors; 0 answers, questions, lessons, procedures |
 | Bake verdicts (pipeline) | terms 287 pass / 7 fail / 2 review; facts 2,467 / 85 / 9; explanations 137 / 4 / 0; applicability 170 / 1 / 0 |
 | Lab machine | NVIDIA DGX Spark (GB10, 128 GB unified memory, Linux aarch64); llama.cpp v1.1.0 CUDA build, `-ngl 99 -fa on`, 3 slots of 4,096 tokens, `--reasoning-budget 0` |
 | Model files | as in the baseline |
 | Harness and judge host | Mac (Apple silicon); Claude Code headless; Opus judge, Sonnet re-grade on a 15% sample |
-| Claude usage | Opus judge + Sonnet re-grade $36.22 recorded across the runs and the re-judges after the fixes (one combined pass run on a stale tree during a rebase was discarded; its cost was not recorded); dollar figures are what headless Claude reports per call |
+| Claude usage | Opus judge + Sonnet re-grade $36.22: first judging $18.63 (model off 8.66, Gemma 3.82, Granite 1.82, gpt-oss 4.33), re-judging support after the two window fixes $7.83 and $9.76. One more combined pass, run on a stale tree during a rebase, was discarded and its cost not recorded. Dollar figures are what headless Claude reports per call |
 
 ## Latency
 
@@ -141,8 +146,11 @@ numbers, not device numbers.
   once; llama.cpp batching can make outputs differ slightly from a single-request
   run.
 - The judge is a model; agreement with the Sonnet re-grade is in the table. When
-  a cited section is too long to show whole (over 40,000 characters), the
-  support judge sees excerpts (see *Harness fixes*).
+  the cited text is over 40,000 characters, the support judge sees excerpts (see
+  *Harness fixes*). Whole-section cites reach that: §1910.179 is about 45,000
+  characters. An answer that cites a section and one of its own paragraphs
+  counts that paragraph twice toward the window, so excerpts start somewhat
+  earlier than they need to.
 
 ## Reproduce
 

@@ -110,7 +110,7 @@ McNemar p = 6e-10). Full tables: `report.md`.
 | llama.cpp | v1.1.0 (`17152752261`), CUDA build, `-ngl 99 -fa on`, 3 slots of 4,096 tokens (`lab/serve.sh`) |
 | Model files | Gemma 4 E4B: `google/gemma-4-E4B-it-qat-q4_0-gguf`; Granite 4.2 3B: `ibm-granite/granite-4.2-3b-GGUF` Q4_K_M; gpt-oss 20B: `ggml-org/gpt-oss-20b-GGUF` MXFP4 |
 | Harness and judge host | Mac (Apple silicon), Python 3.14; Claude Code headless |
-| Claude usage | Sonnet answers $5.55; Opus judge + Sonnet re-grade $38.30 (model-off 2.50, Sonnet 18.68, Gemma 3.23, Granite 7.14, gpt-oss 6.75), plus $1.72 on the discarded Granite run and $30.33 re-judging support after the fixes below; dollar figures are what headless Claude reports per call |
+| Claude usage | Sonnet answers $5.55; Opus judge + Sonnet re-grade $38.30 (model-off 2.50, Sonnet 18.68, Gemma 3.23, Granite 7.14, gpt-oss 6.75), plus $1.72 on the discarded Granite run and $30.33 re-judging support after the fixes below (12.76 + 0.21 with excerpts above 6,000 characters, 5.04 + 12.32 with the 40,000-character window); dollar figures are what headless Claude reports per call |
 
 ## Latency
 
@@ -193,7 +193,8 @@ the saved responses after the machine cooled.
 6,000 characters (16,000 in all). Baselines cite whole sections (§1926.1408,
 §1926.1401), so for 240 of 341 Sonnet answers the paragraph a claim rested on
 could be cut off. The judge now sees the full cited text up to 40,000
-characters (§1926.1401, the longest section, is about 21,000). Beyond that it
+characters (§1926.1401 is about 21,000; §1910.179, the longest whole section,
+about 45,000). Beyond that it
 sees the cited paragraphs, and sentence windows of long paragraphs, that
 contain the claims' words. Every support verdict in this directory comes from
 the fixed harness. Sonnet's unsupported-claim rate moved from 28.7% to 25.3%.
