@@ -190,6 +190,7 @@ harvest search  <pack> "<query>" [--k 10] [--json]
 harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <endpoint|off>] [--audit <records-db>] [--json]
 harvest audit   <records-db> [--json]
 harvest outbox  <records-db> [--to <dir>] [--json]
+harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters [--id ID] [--role R]
 ```
 
 `ask --json` prints:
@@ -241,9 +242,8 @@ item goes up as:
   "payload_sha256": "<hex SHA-256 of the payload string's UTF-8 bytes>" }
 ```
 
-- `run`: a finished or abandoned run with its steps (`run_id`, `pack_id`,
-  `pack_version`, `proc_id`, `equip_id`, `asset`, `role`, `status`, `steps`).
-  It is the authoritative record of the run.
+- `run`: a finished or abandoned run as a run report (below). It is the
+  authoritative record of the run.
 - `deficiency`: early notice, queued the moment a `pass_fail` step fails
   (run, step, its `section_ids`, the record). A correction before upload
   withdraws it; a correction after upload queues `deficiency_cleared`
@@ -262,6 +262,59 @@ transport's own encryption (TLS, or the folder the operator chose).
 The receiver stores items idempotently by `item_id` and answers each with
 `{ "item_id", "payload_sha256", "server_id", "received_at" }`. An item is done
 only when its receipt echoes its hash; anything else stays queued.
+
+### Run report (`harvest-run/1`)
+
+One format for the queued `run` upload and for the app's export of a run
+(`Records::report`):
+
+```json
+{ "format": "harvest-run/1", "pack_id": "…", "pack_version": "…",
+  "run_id": "run-…", "proc_id": "…", "title": "…|null", "role": "operator",
+  "equip_id": "…|null", "asset": "…|null", "status": "open|complete|abandoned", "steps_known": true,
+  "started_at": "…Z", "finished_at": "…Z|null",
+  "steps": [{ "ord": 1, "text": "…|null", "section_ids": ["…"], "check_kind": "pass_fail|value|note|photo|null",
+              "outcome": "pass|fail|na|value|note|photo|null", "value": null, "note": null,
+              "photos": [{ "path": "…", "sha256": "…" }], "structured": null,
+              "deficiency": false, "recorded_at": "…Z|null" }] }
+```
+
+Every step of the procedure is listed, recorded or not (`outcome: null`).
+`text`, `section_ids`, `check_kind` and `title` come from the pack; when the
+procedure changed since the run began, `steps_known` is false and only the
+recorded steps are listed, without them.
+
+## Content read API
+
+The app renders only what the core reads from a pack it verified on open; it
+never opens the SQLite file. The core (`harvest_core::content`, and
+`harvest show <pack> <what>` for the same JSON) returns:
+
+| Call | Rows |
+|---|---|
+| `info()` | pack id, version, schema, `built_at`, `corpus_id`, sources, row counts |
+| `sources()`, `sections()`, `section(id)`, `children(id)`, `section_lineage(id)`, `xrefs_from(id)`, `xrefs_to(id)` | the corpus |
+| `explanation(section, level, lang)` | plain-language explanation |
+| `topics()`, `skills()`, `lessons()`, `lesson(id)` | the course; lesson bodies checked |
+| `terms()`, `diagrams()`, `diagram(id)` | glossary and figures (`svg` is rendered as an image, never as inline markup) |
+| `questions()`, `questions_for_skill(id)`, `question(id)` | the bank; JSON columns parsed, an `mc` answer outside its choices is a pack error |
+| `procedures()`, `procedure(id)`, `proc_steps(id)` | Do |
+| `answers()`, `answer_for(id, role)` | the answer cache; the role's variant (same `question`, `level` = role) when there is one; body checked |
+| `equipment()` | variants |
+| `exams()`, `prereqs()`, `starters(role)` | app data from `pack_meta` |
+
+Generated rows (term, lesson, diagram, question, answer, procedure, proc_step)
+are returned only when their `provenance.verdict` is `pass`; a procedure
+appears only when it and every one of its steps passed. A term's quote that
+is not verbatim is dropped; a lesson the checker empties is left out; a
+question whose answer does not fit its kind is a pack error. Answer-segment
+bodies go through the structural checker, so a quote that is not verbatim is
+dropped, with the paragraph it supported.
+
+App data lives in optional `pack_meta` keys, JSON as text:
+`exam_blueprints` (array of exam blueprints, as `crane/content/exams.json`),
+`skill_prereqs` (`{skill_id: [skill_id]}`), `starter_answers`
+(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped).
 
 ## Bake hit rate
 

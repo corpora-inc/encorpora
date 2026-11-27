@@ -9,6 +9,7 @@ pub mod audit;
 pub mod canon;
 pub mod check;
 pub mod compose;
+pub mod content;
 pub mod crypt;
 pub mod delta;
 pub mod embed;

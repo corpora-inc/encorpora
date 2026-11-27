@@ -207,10 +207,10 @@ fn guidance_with_a_bad_quote_is_shown_without_it() {
     let out = rec.record_step(&pack, &run.run_id, 4, shot).unwrap();
     assert!(out.guidance.is_none());
     // Abandoning still queues what was recorded.
-    let gone = rec.abandon_run(&run.run_id).unwrap();
+    let gone = rec.abandon_run(&pack, &run.run_id).unwrap();
     assert_eq!(gone.status, "abandoned");
     assert_eq!(sync::status(rec.conn()).unwrap().pending_by_kind["run"], 1);
-    assert!(rec.abandon_run(&run.run_id).is_err());
+    assert!(rec.abandon_run(&pack, &run.run_id).is_err());
 }
 
 #[test]
