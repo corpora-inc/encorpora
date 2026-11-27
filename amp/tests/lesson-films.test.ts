@@ -26,7 +26,10 @@ import {
   publishArgs,
   publishFilms,
   recordFollowUp,
+  recordReview,
   releases,
+  reviewRelease,
+  reviewReleasesSchema,
   screenplayFromExport,
 } from "../film/publication";
 import { scriptSchema } from "../film/schema";
@@ -684,6 +687,61 @@ test("publish arguments: check, publish, or record a follow-up", () => {
   assert.throws(() => publishArgs(["--check", "--follow-up", "film", "--note", "Applied"]), /publishes nothing/);
   assert.throws(() => publishArgs(["--publish"]));
   assert.throws(() => publishArgs(["film"]));
+});
+/** A film the founder has not graded: its review releases the edition reviewed, and he samples it later. */
+const reviewedAt = "2026-11-11T06:10:00.000Z";
+const reviewedE2 = { added: E2, at: reviewedAt, by: "review" as const, note: "Ship: standards taught, frames clean" };
+test("a review releases the current edition of a film the founder has not graded", () => {
+  assert.deepEqual(releases({}, exportedE2, {}, { film: reviewedE2 }), {
+    released: { film: { via: "review", added: E2, at: reviewedAt } },
+    ignored: [],
+  });
+  assert.deepEqual(committedApprovalIds({}, exportedE2, new Set(["amp/film/lessons/film.json"]), {}, { film: reviewedE2 }), {
+    ids: ["film"], pending: [],
+  });
+  // Media is checked against the review: an export changed after it is a new edition.
+  const release = releases({}, exportedE2, {}, { film: reviewedE2 }).released.film!;
+  assert.doesNotThrow(() => assertReviewedFiles(release, [Date.parse(reviewedAt) - 1]));
+  assert.throws(() => assertReviewedFiles(release, [Date.parse(reviewedAt) + 1]), /Media changed/);
+  // "unreviewed" is the founder clearing his grade, not a grade.
+  assert.equal(reviewRelease("film", { grade: "unreviewed" }, E2, reviewedE2).release?.via, "review");
+});
+test("a review never outranks the founder, and releases only the edition it read", () => {
+  // His grade of any edition decides: approval, rejection, and the follow-up to an approval.
+  const rejected = { grade: "rejected", added: E1, at: graded };
+  for (const grade of [founderApproval, rejected, { grade: "rejected", added: E2, at: directed }]) {
+    const { released, ignored } = releases({ film: grade }, exportedE2, {}, { film: reviewedE2 });
+    assert.deepEqual(released, {});
+    assert.match(ignored[0]!, /his grade decides, not the review/);
+  }
+  assert.deepEqual(releases({ film: { grade: "approved", added: E2, at: directed } }, exportedE2, {}, { film: reviewedE2 }), {
+    released: { film: { via: "founder", added: E2, at: directed } }, ignored: [],
+  });
+  assert.deepEqual(releases({ film: founderApproval }, exportedE2, { film: followUp }, { film: reviewedE2 }).released.film, {
+    via: "follow-up", added: E2, at: directed,
+  });
+  assert.match(reviewRelease("film", undefined, E2, { ...reviewedE2, added: E1 }).reason!, /not the current export/);
+  assert.match(reviewRelease("film", undefined, undefined, reviewedE2).reason!, /no current review export/);
+  assert.match(reviewRelease("film", undefined, E2, { ...reviewedE2, at: E1 }).reason!, /predates the edition/);
+  assert.throws(() => reviewReleasesSchema.parse({ film: { ...reviewedE2, by: "founder" } }));
+  assert.throws(() => reviewReleasesSchema.parse({ film: { ...reviewedE2, note: "" } }));
+});
+test("recording a review writes the current edition, and refuses a graded film", () => {
+  const before = { other: { ...reviewedE2, added: E1 } };
+  const after = recordReview(before, "film", undefined, exportedE2, "  Ship: standards taught, frames clean ", reviewedAt);
+  assert.deepEqual(after, { ...before, film: reviewedE2 });
+  assert.deepEqual(before, { other: { ...reviewedE2, added: E1 } });
+  assert.ok(reviewReleasesSchema.parse(after));
+  // A new export is a new edition: recording again replaces the entry.
+  assert.deepEqual(recordReview({ film: { ...reviewedE2, added: E1 } }, "film", undefined, exportedE2, reviewedE2.note, reviewedAt), { film: reviewedE2 });
+  assert.throws(() => recordReview({}, "film", founderApproval, exportedE2, "Ship", reviewedAt), /his grade decides/);
+  assert.throws(() => recordReview({}, "film", undefined, [], "Ship", reviewedAt), /no current review export/);
+  assert.throws(() => recordReview({}, "film", undefined, exportedE2, " ", reviewedAt), /Say what the review found/);
+  assert.throws(() => recordReview({}, "../film", undefined, exportedE2, "Ship", reviewedAt), /Invalid film ID/);
+  assert.deepEqual(publishArgs(["--review", "film", "--note", "Ship"]), { check: false, review: "film", note: "Ship" });
+  assert.throws(() => publishArgs(["--review", "film"]), /Say what the review found/);
+  assert.throws(() => publishArgs(["--review", "film", "--follow-up", "film", "--note", "x"]), /one at a time/);
+  assert.throws(() => publishArgs(["--check", "--review", "film", "--note", "Ship"]), /publishes nothing/);
 });
 test("search lists a film once, however many problem types link it", () => {
   const film = { id: "count-objects", title: "Count objects" };

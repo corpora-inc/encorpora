@@ -1,0 +1,4609 @@
+{
+ "id": "classify-quadrilateral--sq",
+ "title": "One shape, several names",
+ "skill": "quadrilateral-categories",
+ "teaches": [
+  "find-quadrilateral"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3.1,
+     -3.1,
+     3.1,
+     3.1
+    ],
+    "points": {
+     "A": [
+      -2,
+      -2
+     ],
+     "B": [
+      2,
+      -2
+     ],
+     "C": [
+      2,
+      2
+     ],
+     "D": [
+      -2,
+      2
+     ],
+     "O": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What shape is this?",
+     "do": [
+      {
+       "do": "text",
+       "text": "Name the shape."
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "A square!",
+     "do": [],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's turn it.",
+     "do": [
+      {
+       "do": "turn",
+       "target": "shape",
+       "about": "O",
+       "deg": 45,
+       "at": "turn",
+       "dur": 0.7
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Now it's a diamond!",
+     "do": [],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Did turning change any side or corner? It is the same square. We name shapes by their sides and corners.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "r0",
+        "r1",
+        "r2",
+        "r3",
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "same"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Same sides. Same corners.",
+       "at": "same"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4,
+     4.5,
+     3.6
+    ],
+    "points": {
+     "A": [
+      -3,
+      -2
+     ],
+     "B": [
+      3,
+      -1.5
+     ],
+     "C": [
+      2.2,
+      1.4
+     ],
+     "D": [
+      -2,
+      2
+     ],
+     "O": [
+      0,
+      0
+     ],
+     "G0": [
+      -3,
+      -2
+     ],
+     "G1": [
+      -2.35,
+      -2
+     ],
+     "G2": [
+      -2.35,
+      -1.35
+     ],
+     "G3": [
+      -3,
+      -1.35
+     ],
+     "qnamep": [
+      0,
+      -3.2
+     ],
+     "rnamep": [
+      0,
+      -3.2
+     ],
+     "snamep": [
+      0,
+      -3.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "gauge",
+      "poly": [
+       "G0",
+       "G1",
+       "G2",
+       "G3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "qname",
+      "label": "\\text{quadrilateral}",
+      "at": "qnamep",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": false
+     },
+     {
+      "id": "rname",
+      "label": "\\text{rectangle}",
+      "at": "rnamep",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": false
+     },
+     {
+      "id": "sname",
+      "label": "\\text{square}",
+      "at": "snamep",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Start with four straight rods. One, two, three, four. Their ends join to make a closed shape: a quadrilateral.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "s0",
+       "at": "One",
+       "until": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "two",
+       "until": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "three",
+       "until": "four",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "s3",
+       "at": "four",
+       "until": "Their",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "qname",
+       "at": "quadrilateral"
+      },
+      {
+       "do": "text",
+       "text": "Closed • 4 straight sides",
+       "at": "closed"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "This one has no square corners, and all four sides have different lengths.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Check corners. Check lengths.",
+       "at": "corners"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "A square corner fits the corner of a little square, like the corner of a page. This corner does not fit.",
+     "do": [
+      {
+       "do": "show",
+       "target": "gauge",
+       "at": "little"
+      },
+      {
+       "do": "highlight",
+       "target": "gauge",
+       "at": "does"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "Watch the rods move until the corner fits exactly.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -3,
+         -2
+        ],
+        "B": [
+         3,
+         -2
+        ],
+        "C": [
+         3,
+         2
+        ],
+        "D": [
+         -3,
+         2
+        ]
+       },
+       "at": "move"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check all four corners. One, two, three, four. Four square corners make this quadrilateral a rectangle.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "gauge",
+       "at": "Check"
+      },
+      {
+       "do": "show",
+       "target": "r0",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "r1",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "r2",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "r3",
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "hide",
+       "target": "qname",
+       "at": "rectangle"
+      },
+      {
+       "do": "show",
+       "target": "rname",
+       "at": "rectangle"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Rectangle: 4 square corners.",
+       "at": "rectangle"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "The little corner marks mean right angles. That is another name for square corners.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "marks"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now shorten the long rods until every side has the same length.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -2,
+         -2
+        ],
+        "B": [
+         2,
+         -2
+        ],
+        "C": [
+         2,
+         2
+        ],
+        "D": [
+         -2,
+         2
+        ]
+       },
+       "at": "shorten"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Matching tick marks tell us the sides are equal. All four match. A quadrilateral with four equal sides is a rhombus.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "Matching"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "All",
+       "until": "A"
+      },
+      {
+       "do": "text",
+       "text": "Rhombus: 4 equal sides.",
+       "at": "rhombus"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "But it kept all four square corners!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "kept"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. It passes both tests. Four equal sides and four square corners make a square.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "equal",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "corners",
+       "until": "make"
+      },
+      {
+       "do": "hide",
+       "target": "rname",
+       "at": "square",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "sname",
+       "at": "square",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Both tests: square.",
+       "at": "Both"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4,
+     4.5,
+     3.6
+    ],
+    "points": {
+     "A": [
+      -2,
+      -2
+     ],
+     "B": [
+      2,
+      -2
+     ],
+     "C": {
+      "on": "hingeB",
+      "deg": 90
+     },
+     "D": {
+      "on": "hingeA",
+      "deg": 90
+     },
+     "O": [
+      0,
+      0
+     ],
+     "G0": [
+      -3,
+      -2
+     ],
+     "G1": [
+      -2.35,
+      -2
+     ],
+     "G2": [
+      -2.35,
+      -1.35
+     ],
+     "G3": [
+      -3,
+      -1.35
+     ],
+     "snamep": [
+      0,
+      -3.2
+     ],
+     "hnamep": [
+      0,
+      -3.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "hingeA",
+      "circle": "A",
+      "r": 4
+     },
+     {
+      "id": "hingeB",
+      "circle": "B",
+      "r": 4
+     },
+     {
+      "id": "gauge",
+      "poly": [
+       "G0",
+       "G1",
+       "G2",
+       "G3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "sname",
+      "label": "\\text{square}",
+      "at": "snamep",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "hname",
+      "label": "\\text{rhombus}",
+      "at": "hnamep",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Keep every rod the same length, but let the corners lean.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Same lengths. Changing corners."
+      },
+      {
+       "do": "hide",
+       "target": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "lean"
+      },
+      {
+       "do": "glide",
+       "point": "C",
+       "deg": 60,
+       "at": "lean",
+       "dur": 0.7
+      },
+      {
+       "do": "glide",
+       "point": "D",
+       "deg": 60,
+       "at": "lean",
+       "dur": 0.7
+      },
+      {
+       "do": "hide",
+       "target": "sname",
+       "at": "lean"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -3,
+         -2
+        ],
+        "B": [
+         1,
+         -2
+        ]
+       },
+       "at": "lean",
+       "dur": 0.7
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "The little square no longer fits. The right angles are gone.",
+     "do": [
+      {
+       "do": "show",
+       "target": "gauge",
+       "at": "square"
+      },
+      {
+       "do": "highlight",
+       "target": "gauge",
+       "at": "fits",
+       "until": "The",
+       "untilNth": 2
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "The ticks still match. So it is a rhombus, but not a square.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "match",
+       "until": "So"
+      },
+      {
+       "do": "show",
+       "target": "hname",
+       "at": "rhombus"
+      },
+      {
+       "do": "text",
+       "text": "Rhombus: 4 equal sides.",
+       "at": "rhombus"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Exactly. Equal lengths alone do not make square corners.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "gauge",
+       "at": "Equal"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "example": true
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a practice question. Choose the most exact name.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which is the most exact name?",
+       "choices": [
+        "quadrilateral",
+        "square",
+        "rhombus",
+        "rectangle"
+       ]
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four straight sides: quadrilateral. Four right angles: rectangle. Four equal sides: rhombus.",
+     "do": [
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.piece.0",
+         "until": "Four",
+         "untilNth": 2
+        }
+       ],
+       "at": "straight"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.right.0",
+         "until": "Four",
+         "untilNth": 3
+        },
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.right.1",
+         "until": "Four",
+         "untilNth": 3
+        },
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.right.2",
+         "until": "Four",
+         "untilNth": 3
+        },
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.right.3",
+         "until": "Four",
+         "untilNth": 3
+        }
+       ],
+       "at": "right"
+      },
+      {
+       "do": "scene",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.tick.0.0",
+         "until": "rhombus"
+        },
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.tick.1.0",
+         "until": "rhombus"
+        },
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.tick.2.0",
+         "until": "rhombus"
+        },
+        {
+         "do": "highlight",
+         "target": "shapes.item.0.marks.0.tick.3.0",
+         "until": "rhombus"
+        }
+       ],
+       "at": "equal"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "Square tells us both things at once, I see.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{square}",
+       "at": "Square"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "All four names fit. Square is the most exact of these names.",
+     "do": [
+      {
+       "do": "text",
+       "text": "All four names fit.",
+       "at": "fit"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4,
+     4.5,
+     3.6
+    ],
+    "points": {
+     "A": [
+      -3,
+      -1.5
+     ],
+     "B": [
+      1,
+      -1.5
+     ],
+     "C": [
+      3,
+      1.5
+     ],
+     "D": [
+      -1,
+      1.5
+     ],
+     "O": [
+      0,
+      0
+     ],
+     "G0": [
+      -3,
+      -1.5
+     ],
+     "G1": [
+      -2.35,
+      -1.5
+     ],
+     "G2": [
+      -2.35,
+      -0.85
+     ],
+     "G3": [
+      -3,
+      -0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "gauge",
+      "poly": [
+       "G0",
+       "G1",
+       "G2",
+       "G3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Does this long, slanted shape count as a rectangle?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Rectangle?"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "No. Its corners do not fit the square.",
+     "do": [
+      {
+       "do": "show",
+       "target": "gauge",
+       "at": "square"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Its ticks match in two pairs. A rhombus needs all four sides equal. Neither test passes.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "two",
+       "until": "A"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "all",
+       "until": "Neither"
+      },
+      {
+       "do": "text",
+       "text": "Neither rectangle nor rhombus.",
+       "at": "Neither"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.65,
+     -2.85,
+     2.65,
+     2.55
+    ],
+    "points": {
+     "A": [
+      -2.2,
+      -2
+     ],
+     "B": [
+      2.2,
+      -2
+     ],
+     "C": [
+      2.2,
+      2
+     ],
+     "D": [
+      -2.2,
+      2
+     ],
+     "O": [
+      0,
+      0
+     ],
+     "E": [
+      -2.2,
+      2
+     ],
+     "F": [
+      2.2,
+      2
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "copy",
+      "seg": [
+       "E",
+       "F"
+      ],
+      "ink": "warm",
+      "w": 5
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This rectangle looks almost square. Compare a long side with a short side.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Almost equal is not equal."
+      },
+      {
+       "do": "show",
+       "target": "copy",
+       "at": "long"
+      },
+      {
+       "do": "turn",
+       "target": "copy",
+       "about": "E",
+       "deg": -90,
+       "at": "short",
+       "dur": 0.6
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "The long side sticks out! Almost equal is not equal. It is a rectangle, but not a square.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "copy",
+       "at": "sticks",
+       "until": "Almost"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{rectangle}",
+       "at": "rectangle"
+      }
+     ],
+     "pause": 0.05
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.2,
+     -3,
+     2.2,
+     2.6
+    ],
+    "points": {
+     "A": [
+      0,
+      -2.6
+     ],
+     "B": [
+      1.7,
+      0.4
+     ],
+     "C": [
+      0,
+      2.2
+     ],
+     "D": [
+      -1.7,
+      0.4
+     ],
+     "O": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A kite also has two pairs of equal sides. These match, and these match. But all four do not match.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t3"
+       ],
+       "at": "These",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t1",
+        "t2"
+       ],
+       "at": "these",
+       "until": "But",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Two pairs ≠ four equal sides.",
+       "at": "But"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "This kite has no square corners either. It is a quadrilateral outside all three special groups.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Not a rectangle, rhombus, or square.",
+       "at": "outside"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4,
+     4.5,
+     3.6
+    ],
+    "points": {
+     "A": [
+      -3,
+      -1.6
+     ],
+     "B": [
+      3,
+      -1.6
+     ],
+     "C": [
+      1.4,
+      1.6
+     ],
+     "D": [
+      -0.8,
+      1.6
+     ],
+     "O": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": false,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": false
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Can you draw another quadrilateral outside those groups? Draw a short top, two sloping sides, and a longer bottom. Close it up.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Draw one outside the three groups."
+      },
+      {
+       "do": "draw",
+       "target": "s2",
+       "at": "top"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "s1",
+        "s3"
+       ],
+       "at": "sloping"
+      },
+      {
+       "do": "draw",
+       "target": "s0",
+       "at": "bottom"
+      },
+      {
+       "do": "show",
+       "target": "body",
+       "at": "Close"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "A trapezoid. Four straight sides, no square corners, and the sides are not all equal.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{quadrilateral}",
+       "at": "Four"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -3,
+     4.5,
+     3
+    ],
+    "points": {
+     "A": [
+      -3.8,
+      -1
+     ],
+     "B": [
+      -0.8,
+      -1
+     ],
+     "C": [
+      -0.5,
+      0.6
+     ],
+     "D": [
+      -2.3,
+      2
+     ],
+     "E": [
+      -4,
+      0.5
+     ],
+     "F": [
+      1,
+      -0.8
+     ],
+     "G": [
+      3.5,
+      -0.8
+     ],
+     "H": [
+      3.5,
+      1.8
+     ],
+     "I": [
+      1,
+      1.8
+     ],
+     "J": [
+      0.3,
+      0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "five",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D",
+       "E"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "u",
+      "seg": [
+       "F",
+       "G"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "v",
+      "seg": [
+       "G",
+       "H"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "w",
+      "seg": [
+       "H",
+       "I"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "bend",
+      "curve": [
+       "I",
+       "J",
+       "F"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "These are not quadrilaterals. This one has five sides. This one has a curved edge. We need exactly four straight sides, joined closed.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Closed • exactly 4 straight sides"
+      },
+      {
+       "do": "highlight",
+       "target": "five",
+       "at": "five",
+       "until": "This",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "bend",
+       "at": "curved",
+       "until": "We"
+      }
+     ],
+     "pause": 0.25
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -5.8,
+     -5.2,
+     5.8,
+     5.6
+    ],
+    "points": {
+     "aA": [
+      -4.8,
+      1.5
+     ],
+     "aB": [
+      -1.2,
+      1.5
+     ],
+     "aC": [
+      -1.8,
+      3.6
+     ],
+     "aD": [
+      -3.7,
+      3.6
+     ],
+     "alabelp": [
+      -3,
+      4.6
+     ],
+     "bA": [
+      1.1,
+      1.5
+     ],
+     "bB": [
+      4.9,
+      1.5
+     ],
+     "bC": [
+      4.9,
+      3.6
+     ],
+     "bD": [
+      1.1,
+      3.6
+     ],
+     "blabelp": [
+      3,
+      4.6
+     ],
+     "cA": [
+      -5,
+      -3.5
+     ],
+     "cB": [
+      -2.5,
+      -3.5
+     ],
+     "cC": [
+      -1,
+      -1.5
+     ],
+     "cD": [
+      -3.5,
+      -1.5
+     ],
+     "clabelp": [
+      -3,
+      0.15
+     ],
+     "dA": [
+      1.3,
+      -2.5
+     ],
+     "dB": [
+      3,
+      -4.2
+     ],
+     "dC": [
+      4.7,
+      -2.5
+     ],
+     "dD": [
+      3,
+      -0.8
+     ],
+     "dlabelp": [
+      3,
+      0.15
+     ]
+    },
+    "parts": [
+     {
+      "id": "abody",
+      "poly": [
+       "aA",
+       "aB",
+       "aC",
+       "aD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "a"
+     },
+     {
+      "id": "as0",
+      "seg": [
+       "aA",
+       "aB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at0",
+      "seg": [
+       "aA",
+       "aB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar0",
+      "angle": [
+       "aD",
+       "aA",
+       "aB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "as1",
+      "seg": [
+       "aB",
+       "aC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at1",
+      "seg": [
+       "aB",
+       "aC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar1",
+      "angle": [
+       "aA",
+       "aB",
+       "aC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "as2",
+      "seg": [
+       "aC",
+       "aD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at2",
+      "seg": [
+       "aC",
+       "aD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar2",
+      "angle": [
+       "aB",
+       "aC",
+       "aD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "as3",
+      "seg": [
+       "aD",
+       "aA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at3",
+      "seg": [
+       "aD",
+       "aA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar3",
+      "angle": [
+       "aC",
+       "aD",
+       "aA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "alabel",
+      "label": "\\text{A}",
+      "at": "alabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "bbody",
+      "poly": [
+       "bA",
+       "bB",
+       "bC",
+       "bD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "b"
+     },
+     {
+      "id": "bs0",
+      "seg": [
+       "bA",
+       "bB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt0",
+      "seg": [
+       "bA",
+       "bB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br0",
+      "angle": [
+       "bD",
+       "bA",
+       "bB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bs1",
+      "seg": [
+       "bB",
+       "bC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt1",
+      "seg": [
+       "bB",
+       "bC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br1",
+      "angle": [
+       "bA",
+       "bB",
+       "bC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bs2",
+      "seg": [
+       "bC",
+       "bD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt2",
+      "seg": [
+       "bC",
+       "bD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br2",
+      "angle": [
+       "bB",
+       "bC",
+       "bD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bs3",
+      "seg": [
+       "bD",
+       "bA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt3",
+      "seg": [
+       "bD",
+       "bA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br3",
+      "angle": [
+       "bC",
+       "bD",
+       "bA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "blabel",
+      "label": "\\text{B}",
+      "at": "blabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "cbody",
+      "poly": [
+       "cA",
+       "cB",
+       "cC",
+       "cD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "c"
+     },
+     {
+      "id": "cs0",
+      "seg": [
+       "cA",
+       "cB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct0",
+      "seg": [
+       "cA",
+       "cB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr0",
+      "angle": [
+       "cD",
+       "cA",
+       "cB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "cs1",
+      "seg": [
+       "cB",
+       "cC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct1",
+      "seg": [
+       "cB",
+       "cC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr1",
+      "angle": [
+       "cA",
+       "cB",
+       "cC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "cs2",
+      "seg": [
+       "cC",
+       "cD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct2",
+      "seg": [
+       "cC",
+       "cD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr2",
+      "angle": [
+       "cB",
+       "cC",
+       "cD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "cs3",
+      "seg": [
+       "cD",
+       "cA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct3",
+      "seg": [
+       "cD",
+       "cA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr3",
+      "angle": [
+       "cC",
+       "cD",
+       "cA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "clabel",
+      "label": "\\text{C}",
+      "at": "clabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "dbody",
+      "poly": [
+       "dA",
+       "dB",
+       "dC",
+       "dD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "d"
+     },
+     {
+      "id": "ds0",
+      "seg": [
+       "dA",
+       "dB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt0",
+      "seg": [
+       "dA",
+       "dB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr0",
+      "angle": [
+       "dD",
+       "dA",
+       "dB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "ds1",
+      "seg": [
+       "dB",
+       "dC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt1",
+      "seg": [
+       "dB",
+       "dC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr1",
+      "angle": [
+       "dA",
+       "dB",
+       "dC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "ds2",
+      "seg": [
+       "dC",
+       "dD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt2",
+      "seg": [
+       "dC",
+       "dD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr2",
+      "angle": [
+       "dB",
+       "dC",
+       "dD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "ds3",
+      "seg": [
+       "dD",
+       "dA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt3",
+      "seg": [
+       "dD",
+       "dA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr3",
+      "angle": [
+       "dC",
+       "dD",
+       "dA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dlabel",
+      "label": "\\text{D}",
+      "at": "dlabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Find the rectangles. Check every shape for four square corners.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Find every rectangle."
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "*B* has them. And *D* does too, even though it is a square standing on a corner.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "bs0",
+        "bt0",
+        "br0",
+        "bs1",
+        "bt1",
+        "br1",
+        "bs2",
+        "bt2",
+        "br2",
+        "bs3",
+        "bt3",
+        "br3"
+       ],
+       "at": "B",
+       "until": "And"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ds0",
+        "dt0",
+        "dr0",
+        "ds1",
+        "dt1",
+        "dr1",
+        "ds2",
+        "dt2",
+        "dr2",
+        "ds3",
+        "dt3",
+        "dr3"
+       ],
+       "at": "D",
+       "until": "even"
+      },
+      {
+       "do": "answer",
+       "tex": "B\\text{ and }D",
+       "at": "too"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Find the rhombuses: four equal sides.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Find every rhombus."
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "*C* and *D*. And only *D* passes both tests, so its most exact name is square.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "cs0",
+        "ct0",
+        "cs1",
+        "ct1",
+        "cs2",
+        "ct2",
+        "cs3",
+        "ct3"
+       ],
+       "at": "C",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ds0",
+        "dt0",
+        "dr0",
+        "ds1",
+        "dt1",
+        "dr1",
+        "ds2",
+        "dt2",
+        "dr2",
+        "ds3",
+        "dt3",
+        "dr3"
+       ],
+       "at": "D",
+       "until": "And",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ds0",
+        "dt0",
+        "dr0",
+        "ds1",
+        "dt1",
+        "dr1",
+        "ds2",
+        "dt2",
+        "dr2",
+        "ds3",
+        "dt3",
+        "dr3"
+       ],
+       "at": "D",
+       "nth": 2,
+       "until": "so"
+      },
+      {
+       "do": "answer",
+       "tex": "C\\text{ and }D",
+       "at": "And",
+       "nth": 2
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which belongs to none of those three groups?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Neither rectangle, rhombus, nor square?"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "*A*. But it is still a quadrilateral!",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "as0",
+        "as1",
+        "as2",
+        "as3"
+       ],
+       "at": "A"
+      },
+      {
+       "do": "answer",
+       "tex": "A",
+       "at": "A"
+      }
+     ],
+     "pause": 0.05
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.1,
+     -3.1,
+     3.1,
+     3.1
+    ],
+    "points": {
+     "A": [
+      -2,
+      -2
+     ],
+     "B": [
+      2,
+      -2
+     ],
+     "C": [
+      2,
+      2
+     ],
+     "D": [
+      -2,
+      2
+     ],
+     "O": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "body",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "shape"
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "shape",
+      "start": true
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "shape",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Turn a square, or make the whole shape smaller. Its four sides stay equal, and its four corners stay square.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Turning and resizing keep the name."
+      },
+      {
+       "do": "turn",
+       "target": "shape",
+       "about": "O",
+       "deg": 45,
+       "at": "Turn"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -1,
+         -1
+        ],
+        "B": [
+         1,
+         -1
+        ],
+        "C": [
+         1,
+         1
+        ],
+        "D": [
+         -1,
+         1
+        ]
+       },
+       "at": "smaller"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "equal",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+       ],
+       "at": "corners"
+      }
+     ],
+     "pause": 0.05
+    },
+    {
+     "speaker": "learner",
+     "say": "So it keeps all its names.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{square}",
+       "at": "names"
+      }
+     ],
+     "pause": 0.05
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -5.8,
+     -5.2,
+     5.8,
+     5.6
+    ],
+    "points": {
+     "aA": [
+      -4.8,
+      1.5
+     ],
+     "aB": [
+      -1.2,
+      1.5
+     ],
+     "aC": [
+      -1.8,
+      3.6
+     ],
+     "aD": [
+      -3.7,
+      3.6
+     ],
+     "alabelp": [
+      -3,
+      4.6
+     ],
+     "bA": [
+      1.1,
+      1.5
+     ],
+     "bB": [
+      4.9,
+      1.5
+     ],
+     "bC": [
+      4.9,
+      3.6
+     ],
+     "bD": [
+      1.1,
+      3.6
+     ],
+     "blabelp": [
+      3,
+      4.6
+     ],
+     "cA": [
+      -5,
+      -3.5
+     ],
+     "cB": [
+      -2.5,
+      -3.5
+     ],
+     "cC": [
+      -1,
+      -1.5
+     ],
+     "cD": [
+      -3.5,
+      -1.5
+     ],
+     "clabelp": [
+      -3,
+      0.15
+     ],
+     "dA": [
+      1.3,
+      -2.5
+     ],
+     "dB": [
+      3,
+      -4.2
+     ],
+     "dC": [
+      4.7,
+      -2.5
+     ],
+     "dD": [
+      3,
+      -0.8
+     ],
+     "dlabelp": [
+      3,
+      0.15
+     ]
+    },
+    "parts": [
+     {
+      "id": "abody",
+      "poly": [
+       "aA",
+       "aB",
+       "aC",
+       "aD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "a"
+     },
+     {
+      "id": "as0",
+      "seg": [
+       "aA",
+       "aB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at0",
+      "seg": [
+       "aA",
+       "aB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar0",
+      "angle": [
+       "aD",
+       "aA",
+       "aB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "as1",
+      "seg": [
+       "aB",
+       "aC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at1",
+      "seg": [
+       "aB",
+       "aC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar1",
+      "angle": [
+       "aA",
+       "aB",
+       "aC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "as2",
+      "seg": [
+       "aC",
+       "aD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at2",
+      "seg": [
+       "aC",
+       "aD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar2",
+      "angle": [
+       "aB",
+       "aC",
+       "aD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "as3",
+      "seg": [
+       "aD",
+       "aA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "a",
+      "start": true
+     },
+     {
+      "id": "at3",
+      "seg": [
+       "aD",
+       "aA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "ar3",
+      "angle": [
+       "aC",
+       "aD",
+       "aA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "a",
+      "start": false
+     },
+     {
+      "id": "alabel",
+      "label": "\\text{A}",
+      "at": "alabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": false
+     },
+     {
+      "id": "bbody",
+      "poly": [
+       "bA",
+       "bB",
+       "bC",
+       "bD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "b"
+     },
+     {
+      "id": "bs0",
+      "seg": [
+       "bA",
+       "bB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt0",
+      "seg": [
+       "bA",
+       "bB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br0",
+      "angle": [
+       "bD",
+       "bA",
+       "bB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bs1",
+      "seg": [
+       "bB",
+       "bC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt1",
+      "seg": [
+       "bB",
+       "bC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br1",
+      "angle": [
+       "bA",
+       "bB",
+       "bC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bs2",
+      "seg": [
+       "bC",
+       "bD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt2",
+      "seg": [
+       "bC",
+       "bD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 2,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br2",
+      "angle": [
+       "bB",
+       "bC",
+       "bD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bs3",
+      "seg": [
+       "bD",
+       "bA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "bt3",
+      "seg": [
+       "bD",
+       "bA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "br3",
+      "angle": [
+       "bC",
+       "bD",
+       "bA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "b",
+      "start": true
+     },
+     {
+      "id": "blabel",
+      "label": "\\text{B}",
+      "at": "blabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": false
+     },
+     {
+      "id": "cbody",
+      "poly": [
+       "cA",
+       "cB",
+       "cC",
+       "cD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "c"
+     },
+     {
+      "id": "cs0",
+      "seg": [
+       "cA",
+       "cB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct0",
+      "seg": [
+       "cA",
+       "cB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr0",
+      "angle": [
+       "cD",
+       "cA",
+       "cB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "cs1",
+      "seg": [
+       "cB",
+       "cC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct1",
+      "seg": [
+       "cB",
+       "cC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr1",
+      "angle": [
+       "cA",
+       "cB",
+       "cC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "cs2",
+      "seg": [
+       "cC",
+       "cD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct2",
+      "seg": [
+       "cC",
+       "cD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr2",
+      "angle": [
+       "cB",
+       "cC",
+       "cD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "cs3",
+      "seg": [
+       "cD",
+       "cA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "ct3",
+      "seg": [
+       "cD",
+       "cA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "c",
+      "start": true
+     },
+     {
+      "id": "cr3",
+      "angle": [
+       "cC",
+       "cD",
+       "cA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "c",
+      "start": false
+     },
+     {
+      "id": "clabel",
+      "label": "\\text{C}",
+      "at": "clabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": false
+     },
+     {
+      "id": "dbody",
+      "poly": [
+       "dA",
+       "dB",
+       "dC",
+       "dD"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true,
+      "group": "d"
+     },
+     {
+      "id": "ds0",
+      "seg": [
+       "dA",
+       "dB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt0",
+      "seg": [
+       "dA",
+       "dB"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr0",
+      "angle": [
+       "dD",
+       "dA",
+       "dB"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "ds1",
+      "seg": [
+       "dB",
+       "dC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt1",
+      "seg": [
+       "dB",
+       "dC"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr1",
+      "angle": [
+       "dA",
+       "dB",
+       "dC"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "ds2",
+      "seg": [
+       "dC",
+       "dD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt2",
+      "seg": [
+       "dC",
+       "dD"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr2",
+      "angle": [
+       "dB",
+       "dC",
+       "dD"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "ds3",
+      "seg": [
+       "dD",
+       "dA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dt3",
+      "seg": [
+       "dD",
+       "dA"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "ticks": 1,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dr3",
+      "angle": [
+       "dC",
+       "dD",
+       "dA"
+      ],
+      "right": true,
+      "ink": "gold",
+      "r": 52,
+      "group": "d",
+      "start": true
+     },
+     {
+      "id": "dlabel",
+      "label": "\\text{D}",
+      "at": "dlabelp",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "All four are quadrilaterals. A rectangle has square corners. A rhombus has equal sides. A square has both.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "All are quadrilaterals."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "bs0",
+        "bt0",
+        "br0",
+        "bs1",
+        "bt1",
+        "br1",
+        "bs2",
+        "bt2",
+        "br2",
+        "bs3",
+        "bt3",
+        "br3"
+       ],
+       "at": "rectangle",
+       "until": "rhombus"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "cs0",
+        "ct0",
+        "cs1",
+        "ct1",
+        "cs2",
+        "ct2",
+        "cs3",
+        "ct3"
+       ],
+       "at": "rhombus",
+       "until": "square",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ds0",
+        "dt0",
+        "dr0",
+        "ds1",
+        "dt1",
+        "dr1",
+        "ds2",
+        "dt2",
+        "dr2",
+        "ds3",
+        "dt3",
+        "dr3"
+       ],
+       "at": "square",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Rectangle: 4 square corners.",
+       "at": "rectangle"
+      },
+      {
+       "do": "text",
+       "text": "Rhombus: 4 equal sides.",
+       "at": "rhombus"
+      },
+      {
+       "do": "text",
+       "text": "Square: both.",
+       "at": "square",
+       "nth": 2
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the sides, check the corners, check the lengths; then name it.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "as0",
+        "as1",
+        "as2",
+        "as3",
+        "bs0",
+        "bt0",
+        "br0",
+        "bs1",
+        "bt1",
+        "br1",
+        "bs2",
+        "bt2",
+        "br2",
+        "bs3",
+        "bt3",
+        "br3",
+        "cs0",
+        "ct0",
+        "cs1",
+        "ct1",
+        "cs2",
+        "ct2",
+        "cs3",
+        "ct3",
+        "ds0",
+        "dt0",
+        "dr0",
+        "ds1",
+        "dt1",
+        "dr1",
+        "ds2",
+        "dt2",
+        "dr2",
+        "ds3",
+        "dt3",
+        "dr3"
+       ],
+       "at": "name"
+      }
+     ],
+     "pause": 1
+    }
+   ]
+  }
+ ]
+}
