@@ -43,7 +43,7 @@ export function sessionTokenAdapter(
   inner: AnyAdapter,
   options: { hashOnWrite: boolean },
 ): AnyAdapter {
-  const wrap = (adapter: AnyAdapter): AnyAdapter => {
+  const wrap = (adapter: AnyAdapter, inTransaction = false): AnyAdapter => {
     const lookup = (model: string, where: Where[] | undefined) => {
       const presented = new Map<string, string>();
       if (model !== "session" || !where) return { where, presented };
@@ -88,7 +88,8 @@ export function sessionTokenAdapter(
     /** A row an older pod stored as issued, found by its token: stored as
      * the hash from now on. A failure is logged; the next lookup retries. */
     const upgrade = async (target: AnyAdapter, model: string, row: unknown) => {
-      if (!options.hashOnWrite || model !== "session") return;
+      // Not inside a transaction: a failed write there would abort it.
+      if (!options.hashOnWrite || inTransaction || model !== "session") return;
       const found = row as Row | null;
       if (
         !found ||
@@ -182,7 +183,7 @@ export function sessionTokenAdapter(
       ...(adapter.transaction && {
         transaction: (callback: Parameters<AnyAdapter["transaction"]>[0]) =>
           adapter.transaction((trx) =>
-            callback(wrap(trx as AnyAdapter) as never),
+            callback(wrap(trx as AnyAdapter, true) as never),
           ),
       }),
     } as AnyAdapter;
