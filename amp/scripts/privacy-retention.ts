@@ -14,7 +14,10 @@ import { createDatabasePool } from "../src/server/database.js";
 import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 import { purgeExpiredTrials } from "../src/server/trials.js";
 import { purgeFunnelEvents } from "../src/analytics/retention.js";
-import { purgeProblemFlags } from "../src/feedback/retention.js";
+import {
+  purgeFilmFlags,
+  purgeProblemFlags,
+} from "../src/feedback/retention.js";
 import { purgeIdleDemos } from "../src/schools/demo/remove.js";
 import {
   purgeClassEvents,
@@ -47,6 +50,7 @@ try {
       ...(await purgeTrialRecords(pool)),
       ...(await purgeFunnelEvents(pool)),
       ...(await purgeProblemFlags(pool)),
+      ...(await purgeFilmFlags(pool)),
       ...(await purgeHelpEvents(pool)),
       ...(await purgeClassEvents(pool)),
       expiredFamilyApprovals: await purgeFamilyApprovals(pool),

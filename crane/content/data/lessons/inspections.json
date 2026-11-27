@@ -1,0 +1,853 @@
+[
+ {
+  "lesson_id": "l.inspections.01",
+  "topic_id": "inspections",
+  "ord": 1,
+  "title": "Inspection types, intervals and who performs each",
+  "skills": [
+   "inspections.shift",
+   "inspections.monthly",
+   "inspections.annual",
+   "inspections.idle"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Crane inspections come in layers, and each layer catches a different kind of failure. The shift inspection catches what you can see today. The monthly inspection repeats it and creates a record. The annual/comprehensive inspection goes inside the machine. Event-based inspections cover anything that changes the crane: assembly, modification, repair, severe service and long idle periods."
+   },
+   {
+    "t": "text",
+    "text": "Inspection, interval and inspector:\n- Shift: competent person, every shift the equipment is used.\n- Monthly: same scope as the shift inspection, documented, record kept 3 months.\n- Annual/comprehensive: qualified person, at least every 12 months, disassembly as needed, record kept 12 months.\n- Post-assembly: qualified person, before use.\n- Modified, or repaired/adjusted: qualified person, before initial use, with functional testing.\n- Severe service: stop using the equipment, and a qualified person inspects.\n- Idle 3 months or more: qualified person, monthly-scope inspection before initial use."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)",
+    "text": "A competent person must begin a visual inspection prior to each shift the equipment will be used, which must be completed before or during that shift."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(e)(1)",
+    "text": "Each month the equipment is in service it must be inspected in accordance with paragraph (d) of this section (each shift)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(f)(2)",
+    "text": "In addition, at least every 12 months, the equipment must be inspected by a qualified person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(h)",
+    "text": "Equipment that has been idle for 3 months or more must be inspected by a qualified person in accordance with the requirements of paragraph (e) (Monthly) of this section before initial use."
+   },
+   {
+    "t": "text",
+    "text": "The **competent person** owns the shift inspection. The **qualified person** owns every inspection that judges structure, configuration, modifications, repairs or severe-service damage. Know which level your site has assigned you before you sign anything."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(a)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(b)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(c)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(g)"
+   },
+   {
+    "t": "text",
+    "text": "The federal list is only the minimum. If the manufacturer's inspection procedure for safety-related parts covers more, or runs more often, you must follow the manufacturer's procedure."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(j)"
+   },
+   {
+    "t": "check",
+    "question": "A crawler crane has sat in the yard for 4 months. What must happen before its first lift?",
+    "answer": "A qualified person inspects it to the monthly-inspection requirements before initial use."
+   },
+   {
+    "t": "check",
+    "question": "The manufacturer requires a weekly check of a part that the federal rules only cover monthly. Which schedule applies?",
+    "answer": "The manufacturer's, because it is more frequent and relates to safe operation."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.02",
+  "topic_id": "inspections",
+  "ord": 2,
+  "title": "Shift inspection: the 14 required items",
+  "skills": [
+   "inspections.shift"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The shift inspection is a **visual inspection for apparent deficiencies**, done by a competent person. You start it before the shift and may finish it during the shift. It does not require taking the crane apart, but something you see or feel can make that necessary."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)",
+    "text": "The inspection must consist of observation for apparent deficiencies."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)",
+    "text": "Taking apart equipment components and booming down is not required as part of this inspection unless the results of the visual inspection or trial operation indicate that further investigation necessitating taking apart equipment components or booming down is needed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)",
+    "text": "Determinations made in conducting the inspection must be reassessed in light of observations made during operation."
+   },
+   {
+    "t": "text",
+    "text": "The minimum items:\n- Controls: maladjustment that interferes with proper operation.\n- Control and drive mechanisms: excessive wear; contamination by lubricant, water or foreign matter.\n- Air, hydraulic and other pressurized lines: deterioration or leaks, especially lines that flex.\n- Hydraulic fluid level.\n- Hooks and latches.\n- Wire rope reeving: matches the manufacturer's specifications.\n- Wire rope, per the wire rope shift inspection.\n- Electrical apparatus: malfunction, deterioration, dirt, moisture.\n- Tires, when in use: inflation and condition.\n- Ground conditions: support, settling under outriggers, standing water.\n- Level, within the manufacturer's tolerances.\n- Cab windows: cracks or breaks that hamper the view.\n- Rails, rail stops, rail clamps and supporting surfaces, for rail-traveling equipment.\n- Safety devices and operational aids: working properly."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(d)(1)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)(xi)",
+    "text": "The equipment for level position within the tolerances specified by the equipment manufacturer's recommendations, both before each shift and after each move and setup."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)(x)",
+    "text": "Ground conditions around the equipment for proper support, including ground settling under and around outriggers/stabilizers and supporting foundations, ground water accumulation, or similar conditions."
+   },
+   {
+    "t": "text",
+    "text": "Look at how much load spreads into the ground under each float and mat. Settling or soft ground under a float is a shift-inspection item."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "text",
+    "text": "Practice: walk the same route every time so nothing gets skipped. Start with the ground and outriggers, then the carrier and tires, the upper and lines, the cab, the boom, rope and hook, and finish with a no-load trial of every function and safety device. During the trial, test the anti-two-block device by watching it stop the hook-up and boom-down motions."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "two-blocking"
+   },
+   {
+    "t": "check",
+    "question": "The crane was level at 7 a.m. and was moved and set up again at noon. Must level be checked again?",
+    "answer": "Yes. Level is checked before each shift and after each move and setup."
+   },
+   {
+    "t": "check",
+    "question": "You hear a new grinding noise from the swing drive an hour into the shift. What does the rule require?",
+    "answer": "Reassess the morning's findings in light of what you observe during operation, and investigate further if needed."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.03",
+  "topic_id": "inspections",
+  "ord": 3,
+  "title": "Inspecting hooks and latches",
+  "skills": [
+   "inspections.hooks",
+   "inspections.shift",
+   "inspections.general-industry"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The hook carries the whole load at a single point. A hook that is opening or twisting has been overloaded or side-loaded, and the deformation shows you the damage. The shift inspection covers hooks and latches."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(1)(v)",
+    "text": "Hooks and latches for deformation, cracks, excessive wear, or damage such as from chemicals or heat."
+   },
+   {
+    "t": "text",
+    "text": "What to look for:\n- **Throat opening**: wider than when the hook was new.\n- Twist: the tip has moved out of the plane of the hook body.\n- Cracks, especially in the throat and at the shank.\n- Wear in the saddle (the bowl where the sling sits).\n- Heat discoloration, weld spatter, chemical pitting.\n- Latch: present, closes the throat, springs back.\n- Markings: rated capacity and weight are legible."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(4)(iii)",
+    "text": "The latch must close the throat opening and be designed to retain slings or other lifting devices/accessories in the hook when the rigging apparatus is slack."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(3)",
+    "text": "Hook and ball assemblies and load blocks must be marked with their rated capacity and weight."
+   },
+   {
+    "t": "text",
+    "text": "You may use a hook without a working latch only when a qualified person has decided that hoisting without the latch is safer, and the load routes are pre-planned to keep workers out of the fall zone."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(d)(4)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "The general-industry rules give numeric hook limits. The construction shift-inspection rule does not; for construction cranes, use the hook manufacturer's criteria."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(3)(v)",
+    "text": "For hooks with cracks or having more than 15 percent in excess of normal throat opening or more than 10° twist from the plane of the unbent hook."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(5)(vi)",
+    "text": "Hooks that have been opened more than 15 percent of the normal throat opening measured at the narrowest point or twisted more than 10 degrees from the plane of the unbent hook."
+   },
+   {
+    "t": "text",
+    "text": "Worked example (arithmetic): a new hook measures 2 in at the narrowest point of the throat. 15% of 2 in is 0.3 in, so a reading over 2.3 in exceeds the limit. Practice: record the new throat opening, or punch two gauge marks and record the distance between them, so you have a baseline to measure against. Check twist by sighting the tip against the shank. Never heat, weld or bend a hook back into shape; take it out of service."
+   },
+   {
+    "t": "check",
+    "question": "A hook's throat measured 4 in when new and now measures 4.8 in. Is it within the 15% limit?",
+    "answer": "No. 15% of 4 in is 0.6 in, so the limit is 4.6 in."
+   },
+   {
+    "t": "check",
+    "question": "Can a rigger tie back a latch because it gets in the way?",
+    "answer": "Only if a qualified person has decided it is safer without the latch and load routes keep workers out of the fall zone."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.04",
+  "topic_id": "inspections",
+  "ord": 4,
+  "title": "Wire rope at shift inspection: Categories I, II and III",
+  "skills": [
+   "inspections.shift",
+   "inspections.deficiencies"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Wire rope inspection is part of every shift inspection. The competent person looks at the running and standing ropes likely to be used that shift. You do not have to open the rope or boom down."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(1)",
+    "text": "Untwisting (opening) of wire rope or booming down is not required as part of this inspection."
+   },
+   {
+    "t": "text",
+    "text": "**Category I** is distortion and damage: kinking, crushing, unstranding, birdcaging, core failure or core protrusion, significant corrosion, electric arc or heat damage, and bad or improperly applied end connections. The competent person decides whether it is a safety hazard. If it is, the rope cannot be used."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(2)(i)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(4)(i)"
+   },
+   {
+    "t": "text",
+    "text": "**Category II** covers broken wires and diameter loss. There is no judgment call: the rope cannot be used until the manufacturer's removal criterion is met, the rope is replaced, or the damaged section is cut off."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(A)(1)",
+    "text": "In running wire ropes: Six randomly distributed broken wires in one rope lay or three broken wires in one strand in one rope lay, where a rope lay is the length along the rope in which one strand makes a complete revolution around the rope."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(A)(2)",
+    "text": "In rotation resistant ropes: Two randomly distributed broken wires in six rope diameters or four randomly distributed broken wires in 30 rope diameters."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(B)",
+    "text": "A diameter reduction of more than 5% from nominal diameter."
+   },
+   {
+    "t": "text",
+    "text": "Worked examples (arithmetic): for a 1 in rope, 5% is 0.05 in, so a reading under 0.95 in is a Category II deficiency. For a 3/4 in rotation-resistant rope, six diameters is 4.5 in and 30 diameters is 22.5 in. Two broken wires within any 4.5 in length means the rope cannot be used."
+   },
+   {
+    "t": "text",
+    "text": "**Category III** means the rope cannot be used until it is replaced or the damaged section is cut off: core failure in rotation-resistant rope, prior power line contact, or a broken strand."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(iii)(B)",
+    "text": "Prior electrical contact with a power line."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(4)(iii)(B)",
+    "text": "Repair of wire rope that contacted an energized power line is also prohibited."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(4)(i)(B)",
+    "text": "Joining lengths of wire rope by splicing is prohibited."
+   },
+   {
+    "t": "text",
+    "text": "If you shorten a rope, the drum must still hold two wraps with the load or boom in its lowest position. A rope removed from service means the crane or that hoist gets tagged out."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(4)(iv)"
+   },
+   {
+    "t": "text",
+    "text": "Give particular attention to: rotation-resistant rope, boom and luffing hoist rope at reverse bends, drum flange, crossover and pickup points, rope at or near terminal ends, and rope on saddles or equalizer sheaves. Physics: rope bent around a small diameter wears and breaks wires fastest, so look hardest where it bends."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(3)"
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "d-over-d"
+   },
+   {
+    "t": "text",
+    "text": "Do not use rope lubricants of a type that hides the wires from inspection."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(d)"
+   },
+   {
+    "t": "check",
+    "question": "A running rope has three broken wires in one strand within one lay. Can it stay in use while you decide?",
+    "answer": "No. That is Category II; the rope cannot be used until it is replaced, cut back, or meets the manufacturer's criterion."
+   },
+   {
+    "t": "check",
+    "question": "The hoist rope touched an energized line, but only at one spot. Can you cut out that section?",
+    "answer": "No. A rope that contacted an energized power line must be replaced; repairing it is prohibited."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.05",
+  "topic_id": "inspections",
+  "ord": 5,
+  "title": "Deficiencies, tag-out and staying safe while inspecting",
+  "skills": [
+   "inspections.deficiencies",
+   "inspections.personnel-safety"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Finding a deficiency forces a decision on the spot: is it a **safety hazard**? If it is, the crane comes out of service until the deficiency is corrected. At the shift and monthly level, the competent person makes this call."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(2)",
+    "text": "If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service until it has been corrected."
+   },
+   {
+    "t": "text",
+    "text": "Safety devices and operational aids are handled differently. If one is deficient, take the action required by the safety-device and operational-aid sections before you use the crane."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(d)(3)",
+    "text": "If any deficiency in paragraph (d)(1)(xiv) of this section (safety devices/operational aids) is identified, the action specified in §§ 1926.1415 and 1926.1416 must be taken prior to using the equipment."
+   },
+   {
+    "t": "text",
+    "text": "At the annual level, the qualified person has a third choice: not yet a hazard, but monitor it in the monthly inspections."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(f)(4)"
+   },
+   {
+    "t": "text",
+    "text": "How to judge (practice): ask whether the defect could cause loss of load, loss of control, structural failure, or loss of a protective function before the next inspection. Examples:\n- A hose weeping at a fitting on the boom-lift circuit: hazard, out of service.\n- A cracked cab window that blocks the view of the boom tip: hazard.\n- A small chip outside the operator's line of sight: record it and watch it."
+   },
+   {
+    "t": "text",
+    "text": "Taking a crane out of service means a **tag**: in the cab if the whole crane is out, or at the control if only one function is out."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(f)(1)",
+    "text": "Where the employer has taken the equipment out of service, a tag must be placed in the cab stating that the equipment is out of service and is not to be used."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(f)(2)(i)"
+   },
+   {
+    "t": "text",
+    "text": "Inspecting on the machine puts you at height and near stored energy. Above 6 ft, fall protection applies when you move point to point on non-lattice booms, on lattice booms that are not horizontal, and on horizontal lattice booms with a fall distance of 15 ft or more. It also applies at any work station on the equipment, except at or near the draw-works while the equipment is running, in the cab, or on the deck."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)",
+    "text": "For non-assembly/disassembly work, the employer must provide and ensure the use of fall protection equipment for employees who are on a walking/working surface with an unprotected side or edge more than 6 feet above a lower level as follows:"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(e)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Practice for hands-on inspection: shut the engine down, remove the key, and tag the controls. Land or block the load and boom, relieve hydraulic pressure, and stay out of the counterweight swing path during function tests."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "swing-radius-clearance"
+   },
+   {
+    "t": "check",
+    "question": "The load moment indicator reads wrong at the shift inspection. Can you lift while you sort it out?",
+    "answer": "No. The action required by the safety-device and operational-aid sections must be taken before the crane is used."
+   },
+   {
+    "t": "check",
+    "question": "There is a do-not-operate tag on the starting control. When may the operator start the crane?",
+    "answer": "When an authorized person removes the tag, or after the operator verifies no one is in danger on the machine and it has been repaired and works properly."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.06",
+  "topic_id": "inspections",
+  "ord": 6,
+  "title": "Monthly and annual/comprehensive inspections and their records",
+  "skills": [
+   "inspections.monthly",
+   "inspections.annual",
+   "inspections.documentation"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **monthly inspection** has the same scope as the shift inspection, with two additions: it is documented, and it includes any items the annual inspector flagged for monitoring. The crane stays out of use until the monthly inspection shows no corrective action is needed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(e)(2)",
+    "text": "Equipment must not be used until an inspection under this paragraph demonstrates that no corrective action under paragraphs (d)(2) and (3) of this section is required."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(b)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Monthly record contents:\n- Items checked and results.\n- Name and signature of the inspector, and the date."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(e)(3)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(e)(3)(ii)",
+    "text": "This document must be retained for a minimum of three months."
+   },
+   {
+    "t": "text",
+    "text": "The **annual/comprehensive inspection** is done by a qualified person at least every 12 months. It includes the shift items plus a deep inspection, with parts taken apart where needed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(f)(2)",
+    "text": "Disassembly is required, as necessary, to complete the inspection."
+   },
+   {
+    "t": "text",
+    "text": "Annual items:\n- Structure, boom and jib: deformed, cracked or corroded members; loose or failed fasteners; cracked welds.\n- Sheaves and drums; pins, bearings, shafts, gears, rollers, locking devices.\n- Brake and clutch linings, pawls, ratchets.\n- Safety devices and aids, including significant inaccuracies.\n- Power plant safety problems, such as exhaust leaks and emergency shutdown.\n- Chains and sprockets; travel steering, brakes, locks; tires.\n- Hoses, fittings, pumps, motors, valves (including relief pressure), cylinders (drift, rods, seals).\n- Outrigger floats, slider pads, wiring.\n- Labels and decals, operator seat, steps, ladders, handrails, guards."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(f)(2)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(f)(3)",
+    "text": "This inspection must include functional testing to determine that the equipment as configured in the inspection is functioning properly."
+   },
+   {
+    "t": "text",
+    "text": "The annual wire rope inspection covers the surface of the entire length of every rope, including sections hidden during shift and monthly checks. If the setup or site makes that impossible, do it as soon as it becomes feasible: within an additional 6 months for running ropes, and at disassembly for standing ropes."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(c)(2)(ii)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(c)(2)(iii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(f)(6)",
+    "text": "If the qualified person determines that, though not presently a safety hazard, the deficiency needs to be monitored, the employer must ensure that the deficiency is checked in the monthly inspections."
+   },
+   {
+    "t": "text",
+    "text": "The annual record has the same contents as the monthly record, but you keep it at least 12 months. Every record must be available to everyone who inspects the crane during its retention period, so that the next inspector can see what was flagged."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(f)(7)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(k)",
+    "text": "All documents produced under this section must be available, during the applicable document retention period, to all persons who conduct inspections under this section."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: a monthly form with no signature or no list of items; a monitored crack that never makes it onto the monthly form; records locked in an office the field inspector cannot reach."
+   },
+   {
+    "t": "check",
+    "question": "How long must the monthly and annual records be kept?",
+    "answer": "Monthly: at least three months. Annual: at least 12 months."
+   },
+   {
+    "t": "check",
+    "question": "The annual inspector notes slight sheave groove wear to monitor. Where must it be checked next?",
+    "answer": "In the monthly inspections."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.07",
+  "topic_id": "inspections",
+  "ord": 7,
+  "title": "Post-assembly, modified, repaired, severe-service and idle equipment",
+  "skills": [
+   "inspections.modified-repaired",
+   "inspections.severe-service",
+   "inspections.idle",
+   "inspections.testing"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Any event that changes the crane, or may have damaged it, triggers an inspection by a qualified person before the crane works again. The crane cannot be used until that inspection is passed."
+   },
+   {
+    "t": "text",
+    "text": "**Post-assembly**: the qualified person confirms the crane is configured to the manufacturer's criteria. If there are no manufacturer criteria, the qualified person decides whether a registered professional engineer (RPE) must write them."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(c)(1)",
+    "text": "Upon completion of assembly, the equipment must be inspected by a qualified person to assure that it is configured in accordance with manufacturer equipment criteria."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(c)(3)"
+   },
+   {
+    "t": "text",
+    "text": "**Modifications or additions** affecting safe operation or capacity: safety devices, control system, power plant, brakes, load-bearing structure, load hook, operating mechanisms. The inspection checks the work against the modification approval and includes functional testing."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(a)(1)(ii)",
+    "text": "The inspection must include functional testing of the equipment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(a)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Repairs or adjustments** to the same kinds of parts: the qualified person checks the work against manufacturer criteria. Where those are unavailable, the qualified person writes criteria or decides that an RPE must. The functional test covers the repaired parts and anything the repair could affect."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(b)(1)(iii)",
+    "text": "The inspection must include functional testing of the repaired/adjusted parts and other components that may be affected by the repair/adjustment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(b)(4)"
+   },
+   {
+    "t": "text",
+    "text": "**Severe service**: stop using the crane first. Triggers include possible overload, shock loading and long exposure to corrosive air. The qualified person inspects for structural damage, decides which annual-inspection items to check, and handles any deficiencies as in the annual inspection."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(g)",
+    "text": "Severe service. Where the severity of use/conditions is such that there is a reasonable probability of damage or excessive wear (such as loading that may have exceeded rated capacity, shock loading that may have exceeded rated capacity, prolonged exposure to a corrosive atmosphere), the employer must stop using the equipment and a qualified person must:"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(g)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Field triggers (practice): the load dropped and was caught by the brake, the load swung into a structure, the load indicator showed overload, the crane tipped onto a float, or the crane spent months near a coastal or chemical plant."
+   },
+   {
+    "t": "text",
+    "text": "**Idle 3 months or more**: a qualified person performs a monthly-scope inspection before initial use. Rope and hoses can deteriorate even when the crane is not running."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(h)"
+   },
+   {
+    "t": "check",
+    "question": "A mechanic replaced a boom-hoist brake band. Who must inspect it before use, and what must the inspection include?",
+    "answer": "A qualified person, including functional testing of the brake and the components it may affect."
+   },
+   {
+    "t": "check",
+    "question": "A rigging failure shock-loaded the boom, but nothing looks bent. Can work continue?",
+    "answer": "No. Stop using the crane until a qualified person inspects it for structural damage."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.inspections.08",
+  "topic_id": "inspections",
+  "ord": 8,
+  "title": "General industry: frequent vs periodic inspection, idle cranes and load tests",
+  "skills": [
+   "inspections.general-industry",
+   "inspections.testing",
+   "inspections.idle"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Cranes used in general industry, such as plant overhead cranes and mobile cranes working outside construction, fall under general-industry rules. These rules sort regular inspection by interval: **frequent** and **periodic**. Both types apply to new and altered cranes after an initial inspection before first use."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(2)(i)",
+    "text": "Frequent inspection: Daily to monthly intervals."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(2)(ii)",
+    "text": "Periodic inspection: 1- to 12-month intervals, or as specifically recommended by the manufacturer."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(d)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Frequent items: controls, safety devices, air and hydraulic leaks, hooks, reeving, electrical apparatus. Controls and leaks are checked daily. Periodic inspection is a complete inspection that adds structure, bolts, sheaves, drums, pins, brakes, indicators over their full range, power plant, chains and tires."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(d)(3)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(d)(4)"
+   },
+   {
+    "t": "text",
+    "text": "Records: certification records are made monthly for critical items such as brakes, hooks and ropes. For overhead cranes, hooks and hoist chains get a monthly certification record."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(6)",
+    "text": "This certification record shall be kept readily available."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(j)(2)(iii)"
+   },
+   {
+    "t": "text",
+    "text": "Idle cranes in general industry:\n- Idle 1 month or more but less than 6 months: frequent-inspection items before service.\n- Idle 6 months (mobile) or over 6 months (overhead): complete inspection before service.\n- Standby cranes: at least semiannually.\nCompare construction, where 3 months idle triggers a qualified-person monthly-scope inspection."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(d)(5)(i)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(j)(4)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(5)(iii)",
+    "text": "Standby cranes shall be inspected at least semiannually in accordance with requirements of paragraph (d)(3) of this section and paragraph (g)(2)(ii) of this section."
+   },
+   {
+    "t": "text",
+    "text": "**Load testing** limits depend on crane type. The construction rules given here require functional testing after modification, repair and annual inspection, and design-stage prototype testing by the manufacturer. They do not set a field load-test percentage. The general-industry rules do."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(e)(2)(ii)",
+    "text": "Test loads shall not exceed 110 percent of the rated load at any selected working radius."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(k)(2)",
+    "text": "Test loads shall not be more than 125 percent of the rated load unless otherwise recommended by the manufacturer."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(c)"
+   },
+   {
+    "t": "text",
+    "text": "Worked example (arithmetic): a mobile crane rated 10,000 lb at the test radius may be tested with no more than 11,000 lb. An overhead crane rated 10,000 lb, absent other manufacturer advice, may be tested with no more than 12,500 lb. Written reports must show the test procedure and confirm that repairs or alterations are adequate."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(e)(2)(i)"
+   },
+   {
+    "t": "check",
+    "question": "An overhead crane has been idle for 2 months. What inspection is required before service?",
+    "answer": "An inspection of the frequent-inspection items (plus the rope inspection the rule references)."
+   },
+   {
+    "t": "check",
+    "question": "What is the maximum test load for a mobile crane rated 20,000 lb at the selected radius under the general-industry rule?",
+    "answer": "22,000 lb, which is 110 percent."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "848f84047f2dd4e710dc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a37d51378c9cf2b5e2f982f1a89b6241f65ee6301d5fb1fc182e4900a250b97",
+   "output_sha256": "66064088a3fb2574b09574f89115271f75134ae72b35b8586359f3a468ce5881",
+   "created_at": "2026-11-27T22:27:40+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

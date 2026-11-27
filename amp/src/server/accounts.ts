@@ -543,9 +543,8 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       secrets,
       ...(legacySecret && { secret: legacySecret }),
     }))(accountSecrets(config)),
-    // Session tokens: looked up by hash or as issued; still written as
-    // issued in this release (src/server/session-tokens.ts).
-    database: accountsDatabase(pool, { hashOnWrite: false }),
+    // Session tokens are stored as their hash (src/server/session-tokens.ts).
+    database: accountsDatabase(pool, { hashOnWrite: true }),
     trustedOrigins: [
       ...config.trustedOrigins,
       ...(config.apple ? ["https://appleid.apple.com"] : []),

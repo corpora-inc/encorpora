@@ -1,0 +1,7419 @@
+{
+ "id": "unit-fraction-share--su",
+ "title": "Dividing with unit fractions",
+ "skill": "unit-fraction-division",
+ "teaches": [
+  "whole-unit-groups",
+  "unit-fraction-division-slots"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "chocp": [
+      1.6,
+      5.7
+     ],
+     "bara": [
+      0,
+      4.8
+     ],
+     "barb": [
+      3.2,
+      4.8
+     ],
+     "barc": [
+      3.2,
+      2.6999999999999997
+     ],
+     "bard": [
+      0,
+      2.6999999999999997
+     ],
+     "halfa": [
+      0,
+      4.8
+     ],
+     "halfb": [
+      3.2,
+      4.8
+     ],
+     "halfc": [
+      3.2,
+      3.75
+     ],
+     "halfd": [
+      0,
+      3.75
+     ],
+     "mida": [
+      0,
+      3.75
+     ],
+     "midb": [
+      3.2,
+      3.75
+     ],
+     "chCut1a": [
+      1.0666666666666667,
+      4.8
+     ],
+     "chCut1b": [
+      1.0666666666666667,
+      2.7
+     ],
+     "chCut2a": [
+      2.1333333333333333,
+      4.8
+     ],
+     "chCut2b": [
+      2.1333333333333333,
+      2.7
+     ],
+     "chAmountp": [
+      1.6,
+      1.7
+     ],
+     "chQp": [
+      1.6,
+      0.4
+     ],
+     "chEqp": [
+      1.6,
+      -0.85
+     ],
+     "raisinsp": [
+      6.15,
+      5.7
+     ],
+     "cup0a": [
+      4.5,
+      4.8
+     ],
+     "cup0b": [
+      6,
+      4.8
+     ],
+     "cup0c": [
+      6,
+      2.6999999999999997
+     ],
+     "cup0d": [
+      4.5,
+      2.6999999999999997
+     ],
+     "cup1a": [
+      6.3,
+      4.8
+     ],
+     "cup1b": [
+      7.8,
+      4.8
+     ],
+     "cup1c": [
+      7.8,
+      2.6999999999999997
+     ],
+     "cup1d": [
+      6.3,
+      2.6999999999999997
+     ],
+     "raAmountp": [
+      6.15,
+      1.7
+     ],
+     "raQp": [
+      6.15,
+      0.4
+     ],
+     "raEqp": [
+      6.15,
+      -0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "choc",
+      "label": "\\text{Chocolate}",
+      "at": "chocp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "bar",
+      "poly": [
+       "bara",
+       "barb",
+       "barc",
+       "bard"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "half",
+      "poly": [
+       "halfa",
+       "halfb",
+       "halfc",
+       "halfd"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "mid",
+      "seg": [
+       "mida",
+       "midb"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "chCut1",
+      "seg": [
+       "chCut1a",
+       "chCut1b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "chCut2",
+      "seg": [
+       "chCut2a",
+       "chCut2b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "chAmount",
+      "label": "\\frac12\\text{ lb}",
+      "at": "chAmountp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "chQ",
+      "label": "\\text{3 friends}",
+      "at": "chQp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "chEq",
+      "label": "\\frac12\\div3=\\,?",
+      "at": "chEqp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "raisins",
+      "label": "\\text{Raisins}",
+      "at": "raisinsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cup0",
+      "poly": [
+       "cup0a",
+       "cup0b",
+       "cup0c",
+       "cup0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cup1",
+      "poly": [
+       "cup1a",
+       "cup1b",
+       "cup1c",
+       "cup1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "raAmount",
+      "label": "2\\text{ cups}",
+      "at": "raAmountp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "raQ",
+      "label": "\\frac13\\text{-cup servings}",
+      "at": "raQp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "raEq",
+      "label": "2\\div\\frac13=\\,?",
+      "at": "raEqp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three friends share half a pound of chocolate. How much does each friend get?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Two questions for division"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "half",
+        "chEq"
+       ],
+       "at": "half",
+       "until": "How"
+      },
+      {
+       "do": "text",
+       "text": "How much per friend?",
+       "at": "How"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A cook has two cups of raisins. Each serving is one third of a cup. How many servings?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "cup0",
+        "cup1",
+        "raEq"
+       ],
+       "at": "two",
+       "until": "Each"
+      },
+      {
+       "do": "highlight",
+       "target": "raQ",
+       "at": "third",
+       "until": "How"
+      },
+      {
+       "do": "text",
+       "text": "How many servings?",
+       "at": "How"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Both answers should be small, because we're dividing.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "chEq",
+        "raEq"
+       ],
+       "at": "dividing"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's see. One answer measures a share. The other counts servings.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "chEq",
+       "at": "share",
+       "until": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "raEq",
+       "at": "counts"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "outlinea": [
+      0,
+      4.8
+     ],
+     "outlineb": [
+      6,
+      4.8
+     ],
+     "outlinec": [
+      6,
+      1.7999999999999998
+     ],
+     "outlined": [
+      0,
+      1.7999999999999998
+     ],
+     "amounta": [
+      0,
+      4.8
+     ],
+     "amountb": [
+      6,
+      4.8
+     ],
+     "amountc": [
+      6,
+      3.3
+     ],
+     "amountd": [
+      0,
+      3.3
+     ],
+     "major1a": [
+      0,
+      3.3
+     ],
+     "major1b": [
+      6,
+      3.3
+     ],
+     "cut1a": [
+      2,
+      4.8
+     ],
+     "cut1b": [
+      2,
+      3.3
+     ],
+     "ghost1a": [
+      2,
+      3.3
+     ],
+     "ghost1b": [
+      2,
+      1.8
+     ],
+     "cut2a": [
+      4,
+      4.8
+     ],
+     "cut2b": [
+      4,
+      3.3
+     ],
+     "ghost2a": [
+      4,
+      3.3
+     ],
+     "ghost2b": [
+      4,
+      1.8
+     ],
+     "piece0a": [
+      0,
+      4.8
+     ],
+     "piece0b": [
+      2,
+      4.8
+     ],
+     "piece0c": [
+      2,
+      3.3
+     ],
+     "piece0d": [
+      0,
+      3.3
+     ],
+     "piece1a": [
+      2,
+      4.8
+     ],
+     "piece1b": [
+      4,
+      4.8
+     ],
+     "piece1c": [
+      4,
+      3.3
+     ],
+     "piece1d": [
+      2,
+      3.3
+     ],
+     "piece2a": [
+      4,
+      4.8
+     ],
+     "piece2b": [
+      6,
+      4.8
+     ],
+     "piece2c": [
+      6,
+      3.3
+     ],
+     "piece2d": [
+      4,
+      3.3
+     ],
+     "wholep": [
+      3,
+      7.3
+     ],
+     "givenp": [
+      3,
+      0.85
+     ],
+     "onep": [
+      1,
+      4.05
+     ],
+     "equalp": [
+      3,
+      0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "outline",
+      "poly": [
+       "outlinea",
+       "outlineb",
+       "outlinec",
+       "outlined"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "amount",
+      "poly": [
+       "amounta",
+       "amountb",
+       "amountc",
+       "amountd"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "major1",
+      "seg": [
+       "major1a",
+       "major1b"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "cut1a",
+       "cut1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost1",
+      "seg": [
+       "ghost1a",
+       "ghost1b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "cut2a",
+       "cut2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost2",
+      "seg": [
+       "ghost2a",
+       "ghost2b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "piece0",
+      "poly": [
+       "piece0a",
+       "piece0b",
+       "piece0c",
+       "piece0d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "group": "p0"
+     },
+     {
+      "id": "piece1",
+      "poly": [
+       "piece1a",
+       "piece1b",
+       "piece1c",
+       "piece1d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "group": "p1"
+     },
+     {
+      "id": "piece2",
+      "poly": [
+       "piece2a",
+       "piece2b",
+       "piece2c",
+       "piece2d"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "group": "p2"
+     },
+     {
+      "id": "whole",
+      "label": "\\text{Whole: }1\\text{ lb}",
+      "at": "wholep",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "given",
+      "label": "\\frac{1}{2}\\text{ lb}",
+      "at": "givenp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "one",
+      "label": "\\frac{1}{6}",
+      "at": "onep",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "group": "p0"
+     },
+     {
+      "id": "equal",
+      "label": "6\\text{ equal pieces in 1 lb}",
+      "at": "equalp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This outline is a whole one-pound chocolate bar. We have just half of it.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How big is each share?"
+      },
+      {
+       "do": "problem",
+       "text": "Half a pound shared by 3 friends."
+      },
+      {
+       "do": "highlight",
+       "target": "outline",
+       "at": "whole",
+       "until": "We"
+      },
+      {
+       "do": "highlight",
+       "target": "amount",
+       "at": "half"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut our half into three equal pieces.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "given"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut1",
+        "cut2"
+       ]
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Is each piece one third of a pound?",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "One third of our half. To name it in pounds, compare it with the whole bar.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "amount",
+       "at": "half",
+       "until": "To"
+      },
+      {
+       "do": "highlight",
+       "target": "outline",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Imagine the same cuts in the missing half. Three here, three there. Six equal pieces would fill one pound.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "ghost1",
+        "ghost2"
+       ],
+       "at": "same"
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "2\\times3=6",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So each friend gets one sixth of a pound.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "amount",
+        "cut1",
+        "cut2"
+       ],
+       "at": "gets"
+      },
+      {
+       "do": "show",
+       "target": [
+        "piece0",
+        "piece1",
+        "piece2"
+       ],
+       "at": "gets"
+      },
+      {
+       "do": "slide",
+       "target": "p0",
+       "by": [
+        -0.18,
+        1.8
+       ],
+       "at": "gets"
+      },
+      {
+       "do": "slide",
+       "target": "p1",
+       "by": [
+        0,
+        1.8
+       ],
+       "at": "gets"
+      },
+      {
+       "do": "slide",
+       "target": "p2",
+       "by": [
+        0.18,
+        1.8
+       ],
+       "at": "gets"
+      },
+      {
+       "do": "show",
+       "target": "one",
+       "at": "sixth"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac12\\div3=\\frac16\\text{ lb each}",
+       "at": "sixth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three small shares put together give back our half pound.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "slide",
+       "target": "p0",
+       "by": [
+        0.18,
+        -1.8
+       ],
+       "at": "together"
+      },
+      {
+       "do": "slide",
+       "target": "p1",
+       "by": [
+        0,
+        -1.8
+       ],
+       "at": "together"
+      },
+      {
+       "do": "slide",
+       "target": "p2",
+       "by": [
+        -0.18,
+        -1.8
+       ],
+       "at": "together"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times\\frac16=\\frac12",
+       "at": "together"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "whole0a": [
+      0,
+      2.8
+     ],
+     "whole0b": [
+      6,
+      2.8
+     ],
+     "whole0c": [
+      6,
+      1.9499999999999997
+     ],
+     "whole0d": [
+      0,
+      1.9499999999999997
+     ],
+     "unit0p": [
+      7.1,
+      2.375
+     ],
+     "tile0x0a": [
+      0,
+      2.8
+     ],
+     "tile0x0b": [
+      2,
+      2.8
+     ],
+     "tile0x0c": [
+      2,
+      1.9499999999999997
+     ],
+     "tile0x0d": [
+      0,
+      1.9499999999999997
+     ],
+     "tile0x1a": [
+      2,
+      2.8
+     ],
+     "tile0x1b": [
+      4,
+      2.8
+     ],
+     "tile0x1c": [
+      4,
+      1.9499999999999997
+     ],
+     "tile0x1d": [
+      2,
+      1.9499999999999997
+     ],
+     "cut0x1a": [
+      2,
+      2.8
+     ],
+     "cut0x1b": [
+      2,
+      1.9499999999999997
+     ],
+     "tile0x2a": [
+      4,
+      2.8
+     ],
+     "tile0x2b": [
+      6,
+      2.8
+     ],
+     "tile0x2c": [
+      6,
+      1.9499999999999997
+     ],
+     "tile0x2d": [
+      4,
+      1.9499999999999997
+     ],
+     "cut0x2a": [
+      4,
+      2.8
+     ],
+     "cut0x2b": [
+      4,
+      1.9499999999999997
+     ],
+     "count0p": [
+      7.1,
+      2.375
+     ],
+     "whole1a": [
+      0,
+      1.4
+     ],
+     "whole1b": [
+      6,
+      1.4
+     ],
+     "whole1c": [
+      6,
+      0.5499999999999999
+     ],
+     "whole1d": [
+      0,
+      0.5499999999999999
+     ],
+     "unit1p": [
+      7.1,
+      0.9749999999999999
+     ],
+     "tile1x0a": [
+      0,
+      1.4
+     ],
+     "tile1x0b": [
+      2,
+      1.4
+     ],
+     "tile1x0c": [
+      2,
+      0.5499999999999999
+     ],
+     "tile1x0d": [
+      0,
+      0.5499999999999999
+     ],
+     "tile1x1a": [
+      2,
+      1.4
+     ],
+     "tile1x1b": [
+      4,
+      1.4
+     ],
+     "tile1x1c": [
+      4,
+      0.5499999999999999
+     ],
+     "tile1x1d": [
+      2,
+      0.5499999999999999
+     ],
+     "cut1x1a": [
+      2,
+      1.4
+     ],
+     "cut1x1b": [
+      2,
+      0.5499999999999999
+     ],
+     "tile1x2a": [
+      4,
+      1.4
+     ],
+     "tile1x2b": [
+      6,
+      1.4
+     ],
+     "tile1x2c": [
+      6,
+      0.5499999999999999
+     ],
+     "tile1x2d": [
+      4,
+      0.5499999999999999
+     ],
+     "cut1x2a": [
+      4,
+      1.4
+     ],
+     "cut1x2b": [
+      4,
+      0.5499999999999999
+     ],
+     "count1p": [
+      7.1,
+      0.9749999999999999
+     ],
+     "sizep": [
+      3,
+      -0.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole0",
+      "poly": [
+       "whole0a",
+       "whole0b",
+       "whole0c",
+       "whole0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1\\text{ cup}",
+      "at": "unit0p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile0x0",
+      "poly": [
+       "tile0x0a",
+       "tile0x0b",
+       "tile0x0c",
+       "tile0x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "tile0x1",
+      "poly": [
+       "tile0x1a",
+       "tile0x1b",
+       "tile0x1c",
+       "tile0x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x1",
+      "seg": [
+       "cut0x1a",
+       "cut0x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x2",
+      "poly": [
+       "tile0x2a",
+       "tile0x2b",
+       "tile0x2c",
+       "tile0x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x2",
+      "seg": [
+       "cut0x2a",
+       "cut0x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count0",
+      "label": "3",
+      "at": "count0p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole1",
+      "poly": [
+       "whole1a",
+       "whole1b",
+       "whole1c",
+       "whole1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "1\\text{ cup}",
+      "at": "unit1p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile1x0",
+      "poly": [
+       "tile1x0a",
+       "tile1x0b",
+       "tile1x0c",
+       "tile1x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "tile1x1",
+      "poly": [
+       "tile1x1a",
+       "tile1x1b",
+       "tile1x1c",
+       "tile1x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x1",
+      "seg": [
+       "cut1x1a",
+       "cut1x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x2",
+      "poly": [
+       "tile1x2a",
+       "tile1x2b",
+       "tile1x2c",
+       "tile1x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x2",
+      "seg": [
+       "cut1x2a",
+       "cut1x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count1",
+      "label": "6",
+      "at": "count1p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "size",
+      "label": "\\text{Each serving: }\\frac{1}{3}\\text{ cup}",
+      "at": "sizep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For the raisins, each strip represents one cup. There are two cups altogether.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How many servings fit?"
+      },
+      {
+       "do": "problem",
+       "text": "2 cups of raisins. Third-cup servings."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "whole0",
+        "whole1"
+       ],
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One serving is a third of a cup. Three equal servings fit in one cup.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "size",
+       "at": "third"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut0x1",
+        "cut0x2"
+       ],
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And three fit in the other cup.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "cut1x1",
+        "cut1x2"
+       ],
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the servings. Three. Six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "whole0",
+        "cut0x1",
+        "cut0x2"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "row0",
+       "at": "Three"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x0",
+       "by": [
+        -0.22,
+        0
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x1",
+       "by": [
+        0.0,
+        0
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x2",
+       "by": [
+        0.22,
+        0
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": "unit0",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "count0",
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole1",
+        "cut1x1",
+        "cut1x2"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": "row1",
+       "at": "Six"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x0",
+       "by": [
+        -0.22,
+        0
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x1",
+       "by": [
+        0.0,
+        0
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x2",
+       "by": [
+        0.22,
+        0
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "hide",
+       "target": "unit1",
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": "count1",
+       "at": "Six"
+      },
+      {
+       "do": "hide",
+       "target": "count0",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six servings! The number is bigger than two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "2\\div\\frac13=6",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. We still have two cups of raisins. Six counts the smaller servings.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "row0",
+        "row1"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "text",
+       "text": "2 cups = 6 third-cup servings",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check: six servings of one third cup make two cups.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times\\frac13=2",
+       "at": "six"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x0",
+       "by": [
+        0.22,
+        0
+       ],
+       "at": "make"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x1",
+       "by": [
+        -0.0,
+        0
+       ],
+       "at": "make"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x2",
+       "by": [
+        -0.22,
+        0
+       ],
+       "at": "make"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x0",
+       "by": [
+        0.22,
+        0
+       ],
+       "at": "make"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x1",
+       "by": [
+        -0.0,
+        0
+       ],
+       "at": "make"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x2",
+       "by": [
+        -0.22,
+        0
+       ],
+       "at": "make"
+      },
+      {
+       "do": "hide",
+       "target": "count1",
+       "at": "make"
+      },
+      {
+       "do": "show",
+       "target": [
+        "unit0",
+        "unit1"
+       ],
+       "at": "make"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "chocp": [
+      1.6,
+      5.7
+     ],
+     "bara": [
+      0,
+      4.8
+     ],
+     "barb": [
+      3.2,
+      4.8
+     ],
+     "barc": [
+      3.2,
+      2.6999999999999997
+     ],
+     "bard": [
+      0,
+      2.6999999999999997
+     ],
+     "halfa": [
+      0,
+      4.8
+     ],
+     "halfb": [
+      3.2,
+      4.8
+     ],
+     "halfc": [
+      3.2,
+      3.75
+     ],
+     "halfd": [
+      0,
+      3.75
+     ],
+     "mida": [
+      0,
+      3.75
+     ],
+     "midb": [
+      3.2,
+      3.75
+     ],
+     "chCut1a": [
+      1.0666666666666667,
+      4.8
+     ],
+     "chCut1b": [
+      1.0666666666666667,
+      2.7
+     ],
+     "chCut2a": [
+      2.1333333333333333,
+      4.8
+     ],
+     "chCut2b": [
+      2.1333333333333333,
+      2.7
+     ],
+     "chAmountp": [
+      1.6,
+      1.7
+     ],
+     "chQp": [
+      1.6,
+      0.4
+     ],
+     "chEqp": [
+      1.6,
+      -0.85
+     ],
+     "raisinsp": [
+      6.15,
+      5.7
+     ],
+     "cup0a": [
+      4.5,
+      4.8
+     ],
+     "cup0b": [
+      6,
+      4.8
+     ],
+     "cup0c": [
+      6,
+      2.6999999999999997
+     ],
+     "cup0d": [
+      4.5,
+      2.6999999999999997
+     ],
+     "cupCut0x1a": [
+      4.5,
+      4.1
+     ],
+     "cupCut0x1b": [
+      6,
+      4.1
+     ],
+     "cupCut0x2a": [
+      4.5,
+      3.4
+     ],
+     "cupCut0x2b": [
+      6,
+      3.4
+     ],
+     "cup1a": [
+      6.3,
+      4.8
+     ],
+     "cup1b": [
+      7.8,
+      4.8
+     ],
+     "cup1c": [
+      7.8,
+      2.6999999999999997
+     ],
+     "cup1d": [
+      6.3,
+      2.6999999999999997
+     ],
+     "cupCut1x1a": [
+      6.3,
+      4.1
+     ],
+     "cupCut1x1b": [
+      7.8,
+      4.1
+     ],
+     "cupCut1x2a": [
+      6.3,
+      3.4
+     ],
+     "cupCut1x2b": [
+      7.8,
+      3.4
+     ],
+     "raAmountp": [
+      6.15,
+      1.7
+     ],
+     "raQp": [
+      6.15,
+      0.4
+     ],
+     "raEqp": [
+      6.15,
+      -0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "choc",
+      "label": "\\text{Chocolate}",
+      "at": "chocp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "bar",
+      "poly": [
+       "bara",
+       "barb",
+       "barc",
+       "bard"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "half",
+      "poly": [
+       "halfa",
+       "halfb",
+       "halfc",
+       "halfd"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "mid",
+      "seg": [
+       "mida",
+       "midb"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "chCut1",
+      "seg": [
+       "chCut1a",
+       "chCut1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "chCut2",
+      "seg": [
+       "chCut2a",
+       "chCut2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "chAmount",
+      "label": "\\frac12\\text{ lb}",
+      "at": "chAmountp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "chQ",
+      "label": "\\text{How big?}",
+      "at": "chQp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "chEq",
+      "label": "\\frac12\\div3=\\frac16",
+      "at": "chEqp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "raisins",
+      "label": "\\text{Raisins}",
+      "at": "raisinsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cup0",
+      "poly": [
+       "cup0a",
+       "cup0b",
+       "cup0c",
+       "cup0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut0x1",
+      "seg": [
+       "cupCut0x1a",
+       "cupCut0x1b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut0x2",
+      "seg": [
+       "cupCut0x2a",
+       "cupCut0x2b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cup1",
+      "poly": [
+       "cup1a",
+       "cup1b",
+       "cup1c",
+       "cup1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut1x1",
+      "seg": [
+       "cupCut1x1a",
+       "cupCut1x1b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut1x2",
+      "seg": [
+       "cupCut1x2a",
+       "cupCut1x2b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "raAmount",
+      "label": "2\\text{ cups}",
+      "at": "raAmountp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "raQ",
+      "label": "\\text{How many?}",
+      "at": "raQp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "raEq",
+      "label": "2\\div\\frac13=6",
+      "at": "raEqp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Same division sign, two questions. How big is each share? How many servings fit?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "What does the answer measure?"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "half",
+        "chQ"
+       ],
+       "at": "big",
+       "until": "How",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "cup0",
+        "cup1",
+        "raQ"
+       ],
+       "at": "many"
+      },
+      {
+       "do": "text",
+       "text": "Size of a share, or number of shares?",
+       "at": "questions"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "A sixth of a pound is a size. Six servings is a count.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Sharing → size of one share",
+       "at": "size"
+      },
+      {
+       "do": "text",
+       "text": "Counting → number of shares",
+       "at": "count"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Halves and thirds are unit fractions: one of the equal parts that make a whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "term",
+       "word": "Unit fraction",
+       "meaning": "One equal part of a whole; 1 on top.",
+       "at": "unit"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "outlinea": [
+      0,
+      4.8
+     ],
+     "outlineb": [
+      6,
+      4.8
+     ],
+     "outlinec": [
+      6,
+      1.7999999999999998
+     ],
+     "outlined": [
+      0,
+      1.7999999999999998
+     ],
+     "amounta": [
+      0,
+      4.8
+     ],
+     "amountb": [
+      6,
+      4.8
+     ],
+     "amountc": [
+      6,
+      3.8
+     ],
+     "amountd": [
+      0,
+      3.8
+     ],
+     "major1a": [
+      0,
+      3.8
+     ],
+     "major1b": [
+      6,
+      3.8
+     ],
+     "major2a": [
+      0,
+      2.8
+     ],
+     "major2b": [
+      6,
+      2.8
+     ],
+     "cut1a": [
+      1.5,
+      4.8
+     ],
+     "cut1b": [
+      1.5,
+      3.8
+     ],
+     "ghost1a": [
+      1.5,
+      3.8
+     ],
+     "ghost1b": [
+      1.5,
+      1.8
+     ],
+     "cut2a": [
+      3,
+      4.8
+     ],
+     "cut2b": [
+      3,
+      3.8
+     ],
+     "ghost2a": [
+      3,
+      3.8
+     ],
+     "ghost2b": [
+      3,
+      1.8
+     ],
+     "cut3a": [
+      4.5,
+      4.8
+     ],
+     "cut3b": [
+      4.5,
+      3.8
+     ],
+     "ghost3a": [
+      4.5,
+      3.8
+     ],
+     "ghost3b": [
+      4.5,
+      1.8
+     ],
+     "piece0a": [
+      0,
+      4.8
+     ],
+     "piece0b": [
+      1.5,
+      4.8
+     ],
+     "piece0c": [
+      1.5,
+      3.8
+     ],
+     "piece0d": [
+      0,
+      3.8
+     ],
+     "piece1a": [
+      1.5,
+      4.8
+     ],
+     "piece1b": [
+      3,
+      4.8
+     ],
+     "piece1c": [
+      3,
+      3.8
+     ],
+     "piece1d": [
+      1.5,
+      3.8
+     ],
+     "piece2a": [
+      3,
+      4.8
+     ],
+     "piece2b": [
+      4.5,
+      4.8
+     ],
+     "piece2c": [
+      4.5,
+      3.8
+     ],
+     "piece2d": [
+      3,
+      3.8
+     ],
+     "piece3a": [
+      4.5,
+      4.8
+     ],
+     "piece3b": [
+      6,
+      4.8
+     ],
+     "piece3c": [
+      6,
+      3.8
+     ],
+     "piece3d": [
+      4.5,
+      3.8
+     ],
+     "wholep": [
+      3,
+      7.3
+     ],
+     "givenp": [
+      3,
+      0.85
+     ],
+     "onep": [
+      0.75,
+      4.3
+     ],
+     "equalp": [
+      3,
+      0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "outline",
+      "poly": [
+       "outlinea",
+       "outlineb",
+       "outlinec",
+       "outlined"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "amount",
+      "poly": [
+       "amounta",
+       "amountb",
+       "amountc",
+       "amountd"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "major1",
+      "seg": [
+       "major1a",
+       "major1b"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "major2",
+      "seg": [
+       "major2a",
+       "major2b"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "cut1a",
+       "cut1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost1",
+      "seg": [
+       "ghost1a",
+       "ghost1b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "cut2a",
+       "cut2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost2",
+      "seg": [
+       "ghost2a",
+       "ghost2b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "cut3",
+      "seg": [
+       "cut3a",
+       "cut3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost3",
+      "seg": [
+       "ghost3a",
+       "ghost3b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "piece0",
+      "poly": [
+       "piece0a",
+       "piece0b",
+       "piece0c",
+       "piece0d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p0"
+     },
+     {
+      "id": "piece1",
+      "poly": [
+       "piece1a",
+       "piece1b",
+       "piece1c",
+       "piece1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p1"
+     },
+     {
+      "id": "piece2",
+      "poly": [
+       "piece2a",
+       "piece2b",
+       "piece2c",
+       "piece2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p2"
+     },
+     {
+      "id": "piece3",
+      "poly": [
+       "piece3a",
+       "piece3b",
+       "piece3c",
+       "piece3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p3"
+     },
+     {
+      "id": "whole",
+      "label": "\\text{Whole: }1\\text{ liter}",
+      "at": "wholep",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "given",
+      "label": "\\frac{1}{3}\\text{ liter}",
+      "at": "givenp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "one",
+      "label": "\\frac{1}{12}",
+      "at": "onep",
+      "dir": "c",
+      "size": "s",
+      "ink": "ink",
+      "group": "p0"
+     },
+     {
+      "id": "equal",
+      "label": "12\\text{ equal pieces in 1 liter}",
+      "at": "equalp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Share one third of a liter equally among four people. What goes in each equation box?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Amount ÷ people = each share"
+      },
+      {
+       "do": "write",
+       "tex": "\\square\\div\\square=\\square",
+       "at": "box"
+      },
+      {
+       "do": "highlight",
+       "target": "amount",
+       "at": "third",
+       "until": "among"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One third is the amount. Four is the number of people.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac13\\div4=\\square",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut the third into four equal shares. Imagine doing that to all three thirds.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "given"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut1",
+        "cut2",
+        "cut3"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": [
+        "ghost1",
+        "ghost2",
+        "ghost3"
+       ],
+       "at": "Imagine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three rows of four: twelve equal pieces in a liter. Each person gets one twelfth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "twelve"
+      },
+      {
+       "do": "write",
+       "tex": "3\\times4=12",
+       "at": "twelve"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "amount",
+        "cut1",
+        "cut2",
+        "cut3"
+       ],
+       "at": "Each"
+      },
+      {
+       "do": "show",
+       "target": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+       ],
+       "at": "Each"
+      },
+      {
+       "do": "slide",
+       "target": "p0",
+       "by": [
+        -0.27,
+        1.3
+       ],
+       "at": "Each"
+      },
+      {
+       "do": "slide",
+       "target": "p1",
+       "by": [
+        -0.09,
+        1.3
+       ],
+       "at": "Each"
+      },
+      {
+       "do": "slide",
+       "target": "p2",
+       "by": [
+        0.09,
+        1.3
+       ],
+       "at": "Each"
+      },
+      {
+       "do": "slide",
+       "target": "p3",
+       "by": [
+        0.27,
+        1.3
+       ],
+       "at": "Each"
+      },
+      {
+       "do": "show",
+       "target": "one",
+       "at": "twelfth"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac13\\div4=\\frac1{12}",
+       "at": "twelfth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve names how many pieces fill the whole liter. Our answer is the size of just one.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "equal",
+       "at": "Twelve",
+       "until": "Our"
+      },
+      {
+       "do": "highlight",
+       "target": "piece0",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The answer to division is called the quotient. Check it by multiplying by the number we divided by.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Quotient",
+       "meaning": "The answer to a division."
+      },
+      {
+       "do": "write",
+       "tex": "\\frac1{12}\\times4=\\square",
+       "at": "multiplying"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four twelfths join back into one third. The check product is our starting amount.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "slide",
+       "target": "p0",
+       "by": [
+        0.27,
+        -1.3
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "p1",
+       "by": [
+        0.09,
+        -1.3
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "p2",
+       "by": [
+        -0.09,
+        -1.3
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "p3",
+       "by": [
+        -0.27,
+        -1.3
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times\\frac1{12}=\\frac4{12}=\\frac13",
+       "at": "Four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "whole0a": [
+      0,
+      5.6
+     ],
+     "whole0b": [
+      6,
+      5.6
+     ],
+     "whole0c": [
+      6,
+      4.75
+     ],
+     "whole0d": [
+      0,
+      4.75
+     ],
+     "unit0p": [
+      7.1,
+      5.175
+     ],
+     "tile0x0a": [
+      0,
+      5.6
+     ],
+     "tile0x0b": [
+      1.2,
+      5.6
+     ],
+     "tile0x0c": [
+      1.2,
+      4.75
+     ],
+     "tile0x0d": [
+      0,
+      4.75
+     ],
+     "tile0x1a": [
+      1.2,
+      5.6
+     ],
+     "tile0x1b": [
+      2.4,
+      5.6
+     ],
+     "tile0x1c": [
+      2.4,
+      4.75
+     ],
+     "tile0x1d": [
+      1.2,
+      4.75
+     ],
+     "cut0x1a": [
+      1.2,
+      5.6
+     ],
+     "cut0x1b": [
+      1.2,
+      4.75
+     ],
+     "tile0x2a": [
+      2.4,
+      5.6
+     ],
+     "tile0x2b": [
+      3.5999999999999996,
+      5.6
+     ],
+     "tile0x2c": [
+      3.5999999999999996,
+      4.75
+     ],
+     "tile0x2d": [
+      2.4,
+      4.75
+     ],
+     "cut0x2a": [
+      2.4,
+      5.6
+     ],
+     "cut0x2b": [
+      2.4,
+      4.75
+     ],
+     "tile0x3a": [
+      3.5999999999999996,
+      5.6
+     ],
+     "tile0x3b": [
+      4.8,
+      5.6
+     ],
+     "tile0x3c": [
+      4.8,
+      4.75
+     ],
+     "tile0x3d": [
+      3.5999999999999996,
+      4.75
+     ],
+     "cut0x3a": [
+      3.5999999999999996,
+      5.6
+     ],
+     "cut0x3b": [
+      3.5999999999999996,
+      4.75
+     ],
+     "tile0x4a": [
+      4.8,
+      5.6
+     ],
+     "tile0x4b": [
+      6,
+      5.6
+     ],
+     "tile0x4c": [
+      6,
+      4.75
+     ],
+     "tile0x4d": [
+      4.8,
+      4.75
+     ],
+     "cut0x4a": [
+      4.8,
+      5.6
+     ],
+     "cut0x4b": [
+      4.8,
+      4.75
+     ],
+     "count0p": [
+      7.1,
+      5.175
+     ],
+     "whole1a": [
+      0,
+      4.199999999999999
+     ],
+     "whole1b": [
+      6,
+      4.199999999999999
+     ],
+     "whole1c": [
+      6,
+      3.349999999999999
+     ],
+     "whole1d": [
+      0,
+      3.349999999999999
+     ],
+     "unit1p": [
+      7.1,
+      3.7749999999999995
+     ],
+     "tile1x0a": [
+      0,
+      4.199999999999999
+     ],
+     "tile1x0b": [
+      1.2,
+      4.199999999999999
+     ],
+     "tile1x0c": [
+      1.2,
+      3.349999999999999
+     ],
+     "tile1x0d": [
+      0,
+      3.349999999999999
+     ],
+     "tile1x1a": [
+      1.2,
+      4.199999999999999
+     ],
+     "tile1x1b": [
+      2.4,
+      4.199999999999999
+     ],
+     "tile1x1c": [
+      2.4,
+      3.349999999999999
+     ],
+     "tile1x1d": [
+      1.2,
+      3.349999999999999
+     ],
+     "cut1x1a": [
+      1.2,
+      4.199999999999999
+     ],
+     "cut1x1b": [
+      1.2,
+      3.349999999999999
+     ],
+     "tile1x2a": [
+      2.4,
+      4.199999999999999
+     ],
+     "tile1x2b": [
+      3.5999999999999996,
+      4.199999999999999
+     ],
+     "tile1x2c": [
+      3.5999999999999996,
+      3.349999999999999
+     ],
+     "tile1x2d": [
+      2.4,
+      3.349999999999999
+     ],
+     "cut1x2a": [
+      2.4,
+      4.199999999999999
+     ],
+     "cut1x2b": [
+      2.4,
+      3.349999999999999
+     ],
+     "tile1x3a": [
+      3.5999999999999996,
+      4.199999999999999
+     ],
+     "tile1x3b": [
+      4.8,
+      4.199999999999999
+     ],
+     "tile1x3c": [
+      4.8,
+      3.349999999999999
+     ],
+     "tile1x3d": [
+      3.5999999999999996,
+      3.349999999999999
+     ],
+     "cut1x3a": [
+      3.5999999999999996,
+      4.199999999999999
+     ],
+     "cut1x3b": [
+      3.5999999999999996,
+      3.349999999999999
+     ],
+     "tile1x4a": [
+      4.8,
+      4.199999999999999
+     ],
+     "tile1x4b": [
+      6,
+      4.199999999999999
+     ],
+     "tile1x4c": [
+      6,
+      3.349999999999999
+     ],
+     "tile1x4d": [
+      4.8,
+      3.349999999999999
+     ],
+     "cut1x4a": [
+      4.8,
+      4.199999999999999
+     ],
+     "cut1x4b": [
+      4.8,
+      3.349999999999999
+     ],
+     "count1p": [
+      7.1,
+      3.7749999999999995
+     ],
+     "whole2a": [
+      0,
+      2.8
+     ],
+     "whole2b": [
+      6,
+      2.8
+     ],
+     "whole2c": [
+      6,
+      1.9499999999999997
+     ],
+     "whole2d": [
+      0,
+      1.9499999999999997
+     ],
+     "unit2p": [
+      7.1,
+      2.375
+     ],
+     "tile2x0a": [
+      0,
+      2.8
+     ],
+     "tile2x0b": [
+      1.2,
+      2.8
+     ],
+     "tile2x0c": [
+      1.2,
+      1.9499999999999997
+     ],
+     "tile2x0d": [
+      0,
+      1.9499999999999997
+     ],
+     "tile2x1a": [
+      1.2,
+      2.8
+     ],
+     "tile2x1b": [
+      2.4,
+      2.8
+     ],
+     "tile2x1c": [
+      2.4,
+      1.9499999999999997
+     ],
+     "tile2x1d": [
+      1.2,
+      1.9499999999999997
+     ],
+     "cut2x1a": [
+      1.2,
+      2.8
+     ],
+     "cut2x1b": [
+      1.2,
+      1.9499999999999997
+     ],
+     "tile2x2a": [
+      2.4,
+      2.8
+     ],
+     "tile2x2b": [
+      3.5999999999999996,
+      2.8
+     ],
+     "tile2x2c": [
+      3.5999999999999996,
+      1.9499999999999997
+     ],
+     "tile2x2d": [
+      2.4,
+      1.9499999999999997
+     ],
+     "cut2x2a": [
+      2.4,
+      2.8
+     ],
+     "cut2x2b": [
+      2.4,
+      1.9499999999999997
+     ],
+     "tile2x3a": [
+      3.5999999999999996,
+      2.8
+     ],
+     "tile2x3b": [
+      4.8,
+      2.8
+     ],
+     "tile2x3c": [
+      4.8,
+      1.9499999999999997
+     ],
+     "tile2x3d": [
+      3.5999999999999996,
+      1.9499999999999997
+     ],
+     "cut2x3a": [
+      3.5999999999999996,
+      2.8
+     ],
+     "cut2x3b": [
+      3.5999999999999996,
+      1.9499999999999997
+     ],
+     "tile2x4a": [
+      4.8,
+      2.8
+     ],
+     "tile2x4b": [
+      6,
+      2.8
+     ],
+     "tile2x4c": [
+      6,
+      1.9499999999999997
+     ],
+     "tile2x4d": [
+      4.8,
+      1.9499999999999997
+     ],
+     "cut2x4a": [
+      4.8,
+      2.8
+     ],
+     "cut2x4b": [
+      4.8,
+      1.9499999999999997
+     ],
+     "count2p": [
+      7.1,
+      2.375
+     ],
+     "whole3a": [
+      0,
+      1.4000000000000004
+     ],
+     "whole3b": [
+      6,
+      1.4000000000000004
+     ],
+     "whole3c": [
+      6,
+      0.5500000000000004
+     ],
+     "whole3d": [
+      0,
+      0.5500000000000004
+     ],
+     "unit3p": [
+      7.1,
+      0.9750000000000003
+     ],
+     "tile3x0a": [
+      0,
+      1.4000000000000004
+     ],
+     "tile3x0b": [
+      1.2,
+      1.4000000000000004
+     ],
+     "tile3x0c": [
+      1.2,
+      0.5500000000000004
+     ],
+     "tile3x0d": [
+      0,
+      0.5500000000000004
+     ],
+     "tile3x1a": [
+      1.2,
+      1.4000000000000004
+     ],
+     "tile3x1b": [
+      2.4,
+      1.4000000000000004
+     ],
+     "tile3x1c": [
+      2.4,
+      0.5500000000000004
+     ],
+     "tile3x1d": [
+      1.2,
+      0.5500000000000004
+     ],
+     "cut3x1a": [
+      1.2,
+      1.4000000000000004
+     ],
+     "cut3x1b": [
+      1.2,
+      0.5500000000000004
+     ],
+     "tile3x2a": [
+      2.4,
+      1.4000000000000004
+     ],
+     "tile3x2b": [
+      3.5999999999999996,
+      1.4000000000000004
+     ],
+     "tile3x2c": [
+      3.5999999999999996,
+      0.5500000000000004
+     ],
+     "tile3x2d": [
+      2.4,
+      0.5500000000000004
+     ],
+     "cut3x2a": [
+      2.4,
+      1.4000000000000004
+     ],
+     "cut3x2b": [
+      2.4,
+      0.5500000000000004
+     ],
+     "tile3x3a": [
+      3.5999999999999996,
+      1.4000000000000004
+     ],
+     "tile3x3b": [
+      4.8,
+      1.4000000000000004
+     ],
+     "tile3x3c": [
+      4.8,
+      0.5500000000000004
+     ],
+     "tile3x3d": [
+      3.5999999999999996,
+      0.5500000000000004
+     ],
+     "cut3x3a": [
+      3.5999999999999996,
+      1.4000000000000004
+     ],
+     "cut3x3b": [
+      3.5999999999999996,
+      0.5500000000000004
+     ],
+     "tile3x4a": [
+      4.8,
+      1.4000000000000004
+     ],
+     "tile3x4b": [
+      6,
+      1.4000000000000004
+     ],
+     "tile3x4c": [
+      6,
+      0.5500000000000004
+     ],
+     "tile3x4d": [
+      4.8,
+      0.5500000000000004
+     ],
+     "cut3x4a": [
+      4.8,
+      1.4000000000000004
+     ],
+     "cut3x4b": [
+      4.8,
+      0.5500000000000004
+     ],
+     "count3p": [
+      7.1,
+      0.9750000000000003
+     ],
+     "sizep": [
+      3,
+      -0.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole0",
+      "poly": [
+       "whole0a",
+       "whole0b",
+       "whole0c",
+       "whole0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1\\text{ liter}",
+      "at": "unit0p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile0x0",
+      "poly": [
+       "tile0x0a",
+       "tile0x0b",
+       "tile0x0c",
+       "tile0x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "tile0x1",
+      "poly": [
+       "tile0x1a",
+       "tile0x1b",
+       "tile0x1c",
+       "tile0x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x1",
+      "seg": [
+       "cut0x1a",
+       "cut0x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x2",
+      "poly": [
+       "tile0x2a",
+       "tile0x2b",
+       "tile0x2c",
+       "tile0x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x2",
+      "seg": [
+       "cut0x2a",
+       "cut0x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x3",
+      "poly": [
+       "tile0x3a",
+       "tile0x3b",
+       "tile0x3c",
+       "tile0x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x3",
+      "seg": [
+       "cut0x3a",
+       "cut0x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x4",
+      "poly": [
+       "tile0x4a",
+       "tile0x4b",
+       "tile0x4c",
+       "tile0x4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x4",
+      "seg": [
+       "cut0x4a",
+       "cut0x4b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count0",
+      "label": "5",
+      "at": "count0p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole1",
+      "poly": [
+       "whole1a",
+       "whole1b",
+       "whole1c",
+       "whole1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "1\\text{ liter}",
+      "at": "unit1p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile1x0",
+      "poly": [
+       "tile1x0a",
+       "tile1x0b",
+       "tile1x0c",
+       "tile1x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "tile1x1",
+      "poly": [
+       "tile1x1a",
+       "tile1x1b",
+       "tile1x1c",
+       "tile1x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x1",
+      "seg": [
+       "cut1x1a",
+       "cut1x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x2",
+      "poly": [
+       "tile1x2a",
+       "tile1x2b",
+       "tile1x2c",
+       "tile1x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x2",
+      "seg": [
+       "cut1x2a",
+       "cut1x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x3",
+      "poly": [
+       "tile1x3a",
+       "tile1x3b",
+       "tile1x3c",
+       "tile1x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x3",
+      "seg": [
+       "cut1x3a",
+       "cut1x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x4",
+      "poly": [
+       "tile1x4a",
+       "tile1x4b",
+       "tile1x4c",
+       "tile1x4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x4",
+      "seg": [
+       "cut1x4a",
+       "cut1x4b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count1",
+      "label": "10",
+      "at": "count1p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole2",
+      "poly": [
+       "whole2a",
+       "whole2b",
+       "whole2c",
+       "whole2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "label": "1\\text{ liter}",
+      "at": "unit2p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile2x0",
+      "poly": [
+       "tile2x0a",
+       "tile2x0b",
+       "tile2x0c",
+       "tile2x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "tile2x1",
+      "poly": [
+       "tile2x1a",
+       "tile2x1b",
+       "tile2x1c",
+       "tile2x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x1",
+      "seg": [
+       "cut2x1a",
+       "cut2x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile2x2",
+      "poly": [
+       "tile2x2a",
+       "tile2x2b",
+       "tile2x2c",
+       "tile2x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x2",
+      "seg": [
+       "cut2x2a",
+       "cut2x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile2x3",
+      "poly": [
+       "tile2x3a",
+       "tile2x3b",
+       "tile2x3c",
+       "tile2x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x3",
+      "seg": [
+       "cut2x3a",
+       "cut2x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile2x4",
+      "poly": [
+       "tile2x4a",
+       "tile2x4b",
+       "tile2x4c",
+       "tile2x4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x4",
+      "seg": [
+       "cut2x4a",
+       "cut2x4b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count2",
+      "label": "15",
+      "at": "count2p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole3",
+      "poly": [
+       "whole3a",
+       "whole3b",
+       "whole3c",
+       "whole3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit3",
+      "label": "1\\text{ liter}",
+      "at": "unit3p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile3x0",
+      "poly": [
+       "tile3x0a",
+       "tile3x0b",
+       "tile3x0c",
+       "tile3x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row3"
+     },
+     {
+      "id": "tile3x1",
+      "poly": [
+       "tile3x1a",
+       "tile3x1b",
+       "tile3x1c",
+       "tile3x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row3"
+     },
+     {
+      "id": "cut3x1",
+      "seg": [
+       "cut3x1a",
+       "cut3x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile3x2",
+      "poly": [
+       "tile3x2a",
+       "tile3x2b",
+       "tile3x2c",
+       "tile3x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row3"
+     },
+     {
+      "id": "cut3x2",
+      "seg": [
+       "cut3x2a",
+       "cut3x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile3x3",
+      "poly": [
+       "tile3x3a",
+       "tile3x3b",
+       "tile3x3c",
+       "tile3x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row3"
+     },
+     {
+      "id": "cut3x3",
+      "seg": [
+       "cut3x3a",
+       "cut3x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile3x4",
+      "poly": [
+       "tile3x4a",
+       "tile3x4b",
+       "tile3x4c",
+       "tile3x4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row3"
+     },
+     {
+      "id": "cut3x4",
+      "seg": [
+       "cut3x4a",
+       "cut3x4b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count3",
+      "label": "20",
+      "at": "count3p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "size",
+      "label": "\\text{Each container: }\\frac{1}{5}\\text{ liter}",
+      "at": "sizep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Four liters fill containers that each hold one fifth of a liter. How many containers?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Amount ÷ size = number"
+      },
+      {
+       "do": "problem",
+       "text": "4 liters. Fifth-liter containers."
+      },
+      {
+       "do": "write",
+       "tex": "4\\div\\frac15=\\square"
+      },
+      {
+       "do": "highlight",
+       "target": "size",
+       "at": "fifth",
+       "until": "How"
+      },
+      {
+       "do": "show",
+       "target": "size",
+       "at": "fifth"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each liter fills five containers.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "cut0x1",
+        "cut0x2",
+        "cut0x3",
+        "cut0x4"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut1x1",
+        "cut1x2",
+        "cut1x3",
+        "cut1x4"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut2x1",
+        "cut2x2",
+        "cut2x3",
+        "cut2x4"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut3x1",
+        "cut3x2",
+        "cut3x3",
+        "cut3x4"
+       ],
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five. Ten. Fifteen. Twenty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "whole0",
+        "cut0x1",
+        "cut0x2",
+        "cut0x3",
+        "cut0x4"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "row0",
+       "at": "Five"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x0",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x1",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x2",
+       "by": [
+        0.0,
+        0
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x3",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x4",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": "unit0",
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "count0",
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole1",
+        "cut1x1",
+        "cut1x2",
+        "cut1x3",
+        "cut1x4"
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "show",
+       "target": "row1",
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x0",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x1",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x2",
+       "by": [
+        0.0,
+        0
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x3",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x4",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Ten"
+      },
+      {
+       "do": "hide",
+       "target": "unit1",
+       "at": "Ten"
+      },
+      {
+       "do": "show",
+       "target": "count1",
+       "at": "Ten"
+      },
+      {
+       "do": "hide",
+       "target": "count0",
+       "at": "Ten"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole2",
+        "cut2x1",
+        "cut2x2",
+        "cut2x3",
+        "cut2x4"
+       ],
+       "at": "Fifteen"
+      },
+      {
+       "do": "show",
+       "target": "row2",
+       "at": "Fifteen"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x0",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Fifteen"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x1",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Fifteen"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x2",
+       "by": [
+        0.0,
+        0
+       ],
+       "at": "Fifteen"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x3",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Fifteen"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x4",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Fifteen"
+      },
+      {
+       "do": "hide",
+       "target": "unit2",
+       "at": "Fifteen"
+      },
+      {
+       "do": "show",
+       "target": "count2",
+       "at": "Fifteen"
+      },
+      {
+       "do": "hide",
+       "target": "count1",
+       "at": "Fifteen"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole3",
+        "cut3x1",
+        "cut3x2",
+        "cut3x3",
+        "cut3x4"
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "show",
+       "target": "row3",
+       "at": "Twenty"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x0",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x1",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x2",
+       "by": [
+        0.0,
+        0
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x3",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x4",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Twenty"
+      },
+      {
+       "do": "hide",
+       "target": "unit3",
+       "at": "Twenty"
+      },
+      {
+       "do": "show",
+       "target": "count3",
+       "at": "Twenty"
+      },
+      {
+       "do": "hide",
+       "target": "count2",
+       "at": "Twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four groups of five. Twenty containers.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times5=20",
+       "at": "Four"
+      },
+      {
+       "do": "answer",
+       "tex": "4\\div\\frac15=20",
+       "at": "Twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To check, multiply twenty by the size of each container. What amount should we get back?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "20\\times\\frac15=\\square",
+       "at": "multiply"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four liters.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "20\\times\\frac15=4",
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x0",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x1",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x2",
+       "by": [
+        -0.0,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x3",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x4",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x0",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x1",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x2",
+       "by": [
+        -0.0,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x3",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x4",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x0",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x1",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x2",
+       "by": [
+        -0.0,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x3",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x4",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x0",
+       "by": [
+        0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x1",
+       "by": [
+        0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x2",
+       "by": [
+        -0.0,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x3",
+       "by": [
+        -0.12,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile3x4",
+       "by": [
+        -0.24,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "count3",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "unit0",
+        "unit1",
+        "unit2",
+        "unit3"
+       ],
+       "at": "Four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "outlinea": [
+      0,
+      4.8
+     ],
+     "outlineb": [
+      6,
+      4.8
+     ],
+     "outlinec": [
+      6,
+      1.7999999999999998
+     ],
+     "outlined": [
+      0,
+      1.7999999999999998
+     ],
+     "amounta": [
+      0,
+      4.8
+     ],
+     "amountb": [
+      6,
+      4.8
+     ],
+     "amountc": [
+      6,
+      3.3
+     ],
+     "amountd": [
+      0,
+      3.3
+     ],
+     "major1a": [
+      0,
+      3.3
+     ],
+     "major1b": [
+      6,
+      3.3
+     ],
+     "cut1a": [
+      1.5,
+      4.8
+     ],
+     "cut1b": [
+      1.5,
+      3.3
+     ],
+     "ghost1a": [
+      1.5,
+      3.3
+     ],
+     "ghost1b": [
+      1.5,
+      1.8
+     ],
+     "cut2a": [
+      3,
+      4.8
+     ],
+     "cut2b": [
+      3,
+      3.3
+     ],
+     "ghost2a": [
+      3,
+      3.3
+     ],
+     "ghost2b": [
+      3,
+      1.8
+     ],
+     "cut3a": [
+      4.5,
+      4.8
+     ],
+     "cut3b": [
+      4.5,
+      3.3
+     ],
+     "ghost3a": [
+      4.5,
+      3.3
+     ],
+     "ghost3b": [
+      4.5,
+      1.8
+     ],
+     "piece0a": [
+      0,
+      4.8
+     ],
+     "piece0b": [
+      1.5,
+      4.8
+     ],
+     "piece0c": [
+      1.5,
+      3.3
+     ],
+     "piece0d": [
+      0,
+      3.3
+     ],
+     "piece1a": [
+      1.5,
+      4.8
+     ],
+     "piece1b": [
+      3,
+      4.8
+     ],
+     "piece1c": [
+      3,
+      3.3
+     ],
+     "piece1d": [
+      1.5,
+      3.3
+     ],
+     "piece2a": [
+      3,
+      4.8
+     ],
+     "piece2b": [
+      4.5,
+      4.8
+     ],
+     "piece2c": [
+      4.5,
+      3.3
+     ],
+     "piece2d": [
+      3,
+      3.3
+     ],
+     "piece3a": [
+      4.5,
+      4.8
+     ],
+     "piece3b": [
+      6,
+      4.8
+     ],
+     "piece3c": [
+      6,
+      3.3
+     ],
+     "piece3d": [
+      4.5,
+      3.3
+     ],
+     "wholep": [
+      3,
+      6.1
+     ],
+     "givenp": [
+      3,
+      0.85
+     ],
+     "onep": [
+      0.75,
+      4.05
+     ],
+     "equalp": [
+      3,
+      0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "outline",
+      "poly": [
+       "outlinea",
+       "outlineb",
+       "outlinec",
+       "outlined"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "amount",
+      "poly": [
+       "amounta",
+       "amountb",
+       "amountc",
+       "amountd"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "major1",
+      "seg": [
+       "major1a",
+       "major1b"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "cut1a",
+       "cut1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost1",
+      "seg": [
+       "ghost1a",
+       "ghost1b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "cut2",
+      "seg": [
+       "cut2a",
+       "cut2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost2",
+      "seg": [
+       "ghost2a",
+       "ghost2b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "cut3",
+      "seg": [
+       "cut3a",
+       "cut3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "ghost3",
+      "seg": [
+       "ghost3a",
+       "ghost3b"
+      ],
+      "ink": "muted",
+      "dash": true
+     },
+     {
+      "id": "piece0",
+      "poly": [
+       "piece0a",
+       "piece0b",
+       "piece0c",
+       "piece0d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p0"
+     },
+     {
+      "id": "piece1",
+      "poly": [
+       "piece1a",
+       "piece1b",
+       "piece1c",
+       "piece1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p1"
+     },
+     {
+      "id": "piece2",
+      "poly": [
+       "piece2a",
+       "piece2b",
+       "piece2c",
+       "piece2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p2"
+     },
+     {
+      "id": "piece3",
+      "poly": [
+       "piece3a",
+       "piece3b",
+       "piece3c",
+       "piece3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "group": "p3"
+     },
+     {
+      "id": "whole",
+      "label": "\\text{Whole: }1\\text{ liter}",
+      "at": "wholep",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "given",
+      "label": "\\frac{1}{2}\\text{ liter}",
+      "at": "givenp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "one",
+      "label": "\\frac{1}{8}",
+      "at": "onep",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "group": "p0"
+     },
+     {
+      "id": "equal",
+      "label": "8\\text{ equal pieces in 1 liter}",
+      "at": "equalp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try half a liter shared equally among four people. Picture each half cut into four.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find the size"
+      },
+      {
+       "do": "problem",
+       "text": "Half a liter shared by 4 people."
+      },
+      {
+       "do": "hide",
+       "target": "given"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut1",
+        "cut2",
+        "cut3"
+       ],
+       "at": "cut"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "ghost1",
+        "ghost2",
+        "ghost3"
+       ],
+       "at": "cut"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Eight equal pieces in one liter. One eighth of a liter each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": "one",
+       "at": "eighth"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac12\\div4=\\frac18\\text{ liter each}",
+       "at": "eighth"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "whole0a": [
+      0,
+      4.199999999999999
+     ],
+     "whole0b": [
+      6,
+      4.199999999999999
+     ],
+     "whole0c": [
+      6,
+      3.349999999999999
+     ],
+     "whole0d": [
+      0,
+      3.349999999999999
+     ],
+     "unit0p": [
+      7.1,
+      3.7749999999999995
+     ],
+     "tile0x0a": [
+      0,
+      4.199999999999999
+     ],
+     "tile0x0b": [
+      1.5,
+      4.199999999999999
+     ],
+     "tile0x0c": [
+      1.5,
+      3.349999999999999
+     ],
+     "tile0x0d": [
+      0,
+      3.349999999999999
+     ],
+     "tile0x1a": [
+      1.5,
+      4.199999999999999
+     ],
+     "tile0x1b": [
+      3,
+      4.199999999999999
+     ],
+     "tile0x1c": [
+      3,
+      3.349999999999999
+     ],
+     "tile0x1d": [
+      1.5,
+      3.349999999999999
+     ],
+     "cut0x1a": [
+      1.5,
+      4.199999999999999
+     ],
+     "cut0x1b": [
+      1.5,
+      3.349999999999999
+     ],
+     "tile0x2a": [
+      3,
+      4.199999999999999
+     ],
+     "tile0x2b": [
+      4.5,
+      4.199999999999999
+     ],
+     "tile0x2c": [
+      4.5,
+      3.349999999999999
+     ],
+     "tile0x2d": [
+      3,
+      3.349999999999999
+     ],
+     "cut0x2a": [
+      3,
+      4.199999999999999
+     ],
+     "cut0x2b": [
+      3,
+      3.349999999999999
+     ],
+     "tile0x3a": [
+      4.5,
+      4.199999999999999
+     ],
+     "tile0x3b": [
+      6,
+      4.199999999999999
+     ],
+     "tile0x3c": [
+      6,
+      3.349999999999999
+     ],
+     "tile0x3d": [
+      4.5,
+      3.349999999999999
+     ],
+     "cut0x3a": [
+      4.5,
+      4.199999999999999
+     ],
+     "cut0x3b": [
+      4.5,
+      3.349999999999999
+     ],
+     "count0p": [
+      7.1,
+      3.7749999999999995
+     ],
+     "whole1a": [
+      0,
+      2.7999999999999994
+     ],
+     "whole1b": [
+      6,
+      2.7999999999999994
+     ],
+     "whole1c": [
+      6,
+      1.9499999999999993
+     ],
+     "whole1d": [
+      0,
+      1.9499999999999993
+     ],
+     "unit1p": [
+      7.1,
+      2.3749999999999996
+     ],
+     "tile1x0a": [
+      0,
+      2.7999999999999994
+     ],
+     "tile1x0b": [
+      1.5,
+      2.7999999999999994
+     ],
+     "tile1x0c": [
+      1.5,
+      1.9499999999999993
+     ],
+     "tile1x0d": [
+      0,
+      1.9499999999999993
+     ],
+     "tile1x1a": [
+      1.5,
+      2.7999999999999994
+     ],
+     "tile1x1b": [
+      3,
+      2.7999999999999994
+     ],
+     "tile1x1c": [
+      3,
+      1.9499999999999993
+     ],
+     "tile1x1d": [
+      1.5,
+      1.9499999999999993
+     ],
+     "cut1x1a": [
+      1.5,
+      2.7999999999999994
+     ],
+     "cut1x1b": [
+      1.5,
+      1.9499999999999993
+     ],
+     "tile1x2a": [
+      3,
+      2.7999999999999994
+     ],
+     "tile1x2b": [
+      4.5,
+      2.7999999999999994
+     ],
+     "tile1x2c": [
+      4.5,
+      1.9499999999999993
+     ],
+     "tile1x2d": [
+      3,
+      1.9499999999999993
+     ],
+     "cut1x2a": [
+      3,
+      2.7999999999999994
+     ],
+     "cut1x2b": [
+      3,
+      1.9499999999999993
+     ],
+     "tile1x3a": [
+      4.5,
+      2.7999999999999994
+     ],
+     "tile1x3b": [
+      6,
+      2.7999999999999994
+     ],
+     "tile1x3c": [
+      6,
+      1.9499999999999993
+     ],
+     "tile1x3d": [
+      4.5,
+      1.9499999999999993
+     ],
+     "cut1x3a": [
+      4.5,
+      2.7999999999999994
+     ],
+     "cut1x3b": [
+      4.5,
+      1.9499999999999993
+     ],
+     "count1p": [
+      7.1,
+      2.3749999999999996
+     ],
+     "whole2a": [
+      0,
+      1.3999999999999995
+     ],
+     "whole2b": [
+      6,
+      1.3999999999999995
+     ],
+     "whole2c": [
+      6,
+      0.5499999999999995
+     ],
+     "whole2d": [
+      0,
+      0.5499999999999995
+     ],
+     "unit2p": [
+      7.1,
+      0.9749999999999994
+     ],
+     "tile2x0a": [
+      0,
+      1.3999999999999995
+     ],
+     "tile2x0b": [
+      1.5,
+      1.3999999999999995
+     ],
+     "tile2x0c": [
+      1.5,
+      0.5499999999999995
+     ],
+     "tile2x0d": [
+      0,
+      0.5499999999999995
+     ],
+     "tile2x1a": [
+      1.5,
+      1.3999999999999995
+     ],
+     "tile2x1b": [
+      3,
+      1.3999999999999995
+     ],
+     "tile2x1c": [
+      3,
+      0.5499999999999995
+     ],
+     "tile2x1d": [
+      1.5,
+      0.5499999999999995
+     ],
+     "cut2x1a": [
+      1.5,
+      1.3999999999999995
+     ],
+     "cut2x1b": [
+      1.5,
+      0.5499999999999995
+     ],
+     "tile2x2a": [
+      3,
+      1.3999999999999995
+     ],
+     "tile2x2b": [
+      4.5,
+      1.3999999999999995
+     ],
+     "tile2x2c": [
+      4.5,
+      0.5499999999999995
+     ],
+     "tile2x2d": [
+      3,
+      0.5499999999999995
+     ],
+     "cut2x2a": [
+      3,
+      1.3999999999999995
+     ],
+     "cut2x2b": [
+      3,
+      0.5499999999999995
+     ],
+     "tile2x3a": [
+      4.5,
+      1.3999999999999995
+     ],
+     "tile2x3b": [
+      6,
+      1.3999999999999995
+     ],
+     "tile2x3c": [
+      6,
+      0.5499999999999995
+     ],
+     "tile2x3d": [
+      4.5,
+      0.5499999999999995
+     ],
+     "cut2x3a": [
+      4.5,
+      1.3999999999999995
+     ],
+     "cut2x3b": [
+      4.5,
+      0.5499999999999995
+     ],
+     "count2p": [
+      7.1,
+      0.9749999999999994
+     ],
+     "sizep": [
+      3,
+      -0.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole0",
+      "poly": [
+       "whole0a",
+       "whole0b",
+       "whole0c",
+       "whole0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1\\text{ liter}",
+      "at": "unit0p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile0x0",
+      "poly": [
+       "tile0x0a",
+       "tile0x0b",
+       "tile0x0c",
+       "tile0x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "tile0x1",
+      "poly": [
+       "tile0x1a",
+       "tile0x1b",
+       "tile0x1c",
+       "tile0x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x1",
+      "seg": [
+       "cut0x1a",
+       "cut0x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x2",
+      "poly": [
+       "tile0x2a",
+       "tile0x2b",
+       "tile0x2c",
+       "tile0x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x2",
+      "seg": [
+       "cut0x2a",
+       "cut0x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x3",
+      "poly": [
+       "tile0x3a",
+       "tile0x3b",
+       "tile0x3c",
+       "tile0x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x3",
+      "seg": [
+       "cut0x3a",
+       "cut0x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count0",
+      "label": "4",
+      "at": "count0p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole1",
+      "poly": [
+       "whole1a",
+       "whole1b",
+       "whole1c",
+       "whole1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "1\\text{ liter}",
+      "at": "unit1p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile1x0",
+      "poly": [
+       "tile1x0a",
+       "tile1x0b",
+       "tile1x0c",
+       "tile1x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "tile1x1",
+      "poly": [
+       "tile1x1a",
+       "tile1x1b",
+       "tile1x1c",
+       "tile1x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x1",
+      "seg": [
+       "cut1x1a",
+       "cut1x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x2",
+      "poly": [
+       "tile1x2a",
+       "tile1x2b",
+       "tile1x2c",
+       "tile1x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x2",
+      "seg": [
+       "cut1x2a",
+       "cut1x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x3",
+      "poly": [
+       "tile1x3a",
+       "tile1x3b",
+       "tile1x3c",
+       "tile1x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x3",
+      "seg": [
+       "cut1x3a",
+       "cut1x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count1",
+      "label": "8",
+      "at": "count1p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole2",
+      "poly": [
+       "whole2a",
+       "whole2b",
+       "whole2c",
+       "whole2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit2",
+      "label": "1\\text{ liter}",
+      "at": "unit2p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile2x0",
+      "poly": [
+       "tile2x0a",
+       "tile2x0b",
+       "tile2x0c",
+       "tile2x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "tile2x1",
+      "poly": [
+       "tile2x1a",
+       "tile2x1b",
+       "tile2x1c",
+       "tile2x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x1",
+      "seg": [
+       "cut2x1a",
+       "cut2x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile2x2",
+      "poly": [
+       "tile2x2a",
+       "tile2x2b",
+       "tile2x2c",
+       "tile2x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x2",
+      "seg": [
+       "cut2x2a",
+       "cut2x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile2x3",
+      "poly": [
+       "tile2x3a",
+       "tile2x3b",
+       "tile2x3c",
+       "tile2x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row2"
+     },
+     {
+      "id": "cut2x3",
+      "seg": [
+       "cut2x3a",
+       "cut2x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count2",
+      "label": "12",
+      "at": "count2p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "size",
+      "label": "\\text{Each cup: }\\frac{1}{4}\\text{ liter}",
+      "at": "sizep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three liters, poured into quarter-liter cups. How many cups?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find the count"
+      },
+      {
+       "do": "problem",
+       "text": "3 liters. Quarter-liter cups."
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut0x1",
+        "cut0x2",
+        "cut0x3"
+       ],
+       "at": "quarter-liter"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut1x1",
+        "cut1x2",
+        "cut1x3"
+       ],
+       "at": "quarter-liter"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut2x1",
+        "cut2x2",
+        "cut2x3"
+       ],
+       "at": "quarter-liter"
+      },
+      {
+       "do": "show",
+       "target": "size",
+       "at": "quarter-liter"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four cups per liter. Three times four is twelve cups.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "whole0",
+        "cut0x1",
+        "cut0x2",
+        "cut0x3"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "row0",
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x0",
+       "by": [
+        -0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x1",
+       "by": [
+        -0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x2",
+       "by": [
+        0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x3",
+       "by": [
+        0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "unit0",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole1",
+        "cut1x1",
+        "cut1x2",
+        "cut1x3"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "row1",
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x0",
+       "by": [
+        -0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x1",
+       "by": [
+        -0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x2",
+       "by": [
+        0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x3",
+       "by": [
+        0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "unit1",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole2",
+        "cut2x1",
+        "cut2x2",
+        "cut2x3"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "row2",
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x0",
+       "by": [
+        -0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x1",
+       "by": [
+        -0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x2",
+       "by": [
+        0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile2x3",
+       "by": [
+        0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "unit2",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "count2",
+       "at": "twelve"
+      },
+      {
+       "do": "answer",
+       "tex": "3\\div\\frac14=12\\text{ cups}",
+       "at": "twelve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "tracka": [
+      0,
+      2
+     ],
+     "trackb": [
+      8,
+      2
+     ],
+     "tick0a": [
+      0,
+      1.82
+     ],
+     "tick0b": [
+      0,
+      2.18
+     ],
+     "mile0p": [
+      0,
+      1.25
+     ],
+     "tick1a": [
+      1,
+      1.82
+     ],
+     "tick1b": [
+      1,
+      2.18
+     ],
+     "tick2a": [
+      2,
+      1.82
+     ],
+     "tick2b": [
+      2,
+      2.18
+     ],
+     "mile2p": [
+      2,
+      1.25
+     ],
+     "tick3a": [
+      3,
+      1.82
+     ],
+     "tick3b": [
+      3,
+      2.18
+     ],
+     "tick4a": [
+      4,
+      1.82
+     ],
+     "tick4b": [
+      4,
+      2.18
+     ],
+     "mile4p": [
+      4,
+      1.25
+     ],
+     "tick5a": [
+      5,
+      1.82
+     ],
+     "tick5b": [
+      5,
+      2.18
+     ],
+     "tick6a": [
+      6,
+      1.82
+     ],
+     "tick6b": [
+      6,
+      2.18
+     ],
+     "mile6p": [
+      6,
+      1.25
+     ],
+     "tick7a": [
+      7,
+      1.82
+     ],
+     "tick7b": [
+      7,
+      2.18
+     ],
+     "tick8a": [
+      8,
+      1.82
+     ],
+     "tick8b": [
+      8,
+      2.18
+     ],
+     "mile8p": [
+      8,
+      1.25
+     ],
+     "la0": [
+      0,
+      2.5
+     ],
+     "lb0": [
+      1,
+      2.5
+     ],
+     "la1": [
+      1,
+      2.5
+     ],
+     "lb1": [
+      2,
+      2.5
+     ],
+     "la2": [
+      2,
+      2.5
+     ],
+     "lb2": [
+      3,
+      2.5
+     ],
+     "la3": [
+      3,
+      2.5
+     ],
+     "lb3": [
+      4,
+      2.5
+     ],
+     "la4": [
+      4,
+      2.5
+     ],
+     "lb4": [
+      5,
+      2.5
+     ],
+     "la5": [
+      5,
+      2.5
+     ],
+     "lb5": [
+      6,
+      2.5
+     ],
+     "la6": [
+      6,
+      2.5
+     ],
+     "lb6": [
+      7,
+      2.5
+     ],
+     "la7": [
+      7,
+      2.5
+     ],
+     "lb7": [
+      8,
+      2.5
+     ],
+     "unitp": [
+      4,
+      0.5
+     ],
+     "lapSizep": [
+      4,
+      3.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "track",
+      "seg": [
+       "tracka",
+       "trackb"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "tick0a",
+       "tick0b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "mile0",
+      "label": "0",
+      "at": "mile0p",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "tick1a",
+       "tick1b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "tick2a",
+       "tick2b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "mile2",
+      "label": "1",
+      "at": "mile2p",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "tick3a",
+       "tick3b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tick4",
+      "seg": [
+       "tick4a",
+       "tick4b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "mile4",
+      "label": "2",
+      "at": "mile4p",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "tick5",
+      "seg": [
+       "tick5a",
+       "tick5b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tick6",
+      "seg": [
+       "tick6a",
+       "tick6b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "mile6",
+      "label": "3",
+      "at": "mile6p",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "tick7",
+      "seg": [
+       "tick7a",
+       "tick7b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tick8",
+      "seg": [
+       "tick8a",
+       "tick8b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "mile8",
+      "label": "4",
+      "at": "mile8p",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "lap0",
+      "vector": [
+       "la0",
+       "lb0"
+      ],
+      "ink": "blue"
+     },
+     {
+      "id": "lap1",
+      "vector": [
+       "la1",
+       "lb1"
+      ],
+      "ink": "warm"
+     },
+     {
+      "id": "lap2",
+      "vector": [
+       "la2",
+       "lb2"
+      ],
+      "ink": "blue"
+     },
+     {
+      "id": "lap3",
+      "vector": [
+       "la3",
+       "lb3"
+      ],
+      "ink": "warm"
+     },
+     {
+      "id": "lap4",
+      "vector": [
+       "la4",
+       "lb4"
+      ],
+      "ink": "blue"
+     },
+     {
+      "id": "lap5",
+      "vector": [
+       "la5",
+       "lb5"
+      ],
+      "ink": "warm"
+     },
+     {
+      "id": "lap6",
+      "vector": [
+       "la6",
+       "lb6"
+      ],
+      "ink": "blue"
+     },
+     {
+      "id": "lap7",
+      "vector": [
+       "la7",
+       "lb7"
+      ],
+      "ink": "warm"
+     },
+     {
+      "id": "unit",
+      "label": "\\text{Miles}",
+      "at": "unitp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "lapSize",
+      "label": "\\text{One lap}=\\frac12\\text{ mile}",
+      "at": "lapSizep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A trail is four miles long. One track lap is half a mile. How many laps cover the same distance?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Distance ÷ lap length = laps"
+      },
+      {
+       "do": "write",
+       "tex": "\\square\\div\\square=\\square"
+      },
+      {
+       "do": "highlight",
+       "target": "lapSize",
+       "at": "half",
+       "until": "How"
+      },
+      {
+       "do": "highlight",
+       "target": "track",
+       "at": "distance"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with four miles. Divide by half a mile per lap.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\div\\frac12=\\square",
+       "at": "Divide"
+      },
+      {
+       "do": "show",
+       "target": [
+        "lap0",
+        "lap1"
+       ],
+       "at": "half"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two laps per mile. Four miles take eight laps.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "lap2",
+        "lap3",
+        "lap4",
+        "lap5",
+        "lap6",
+        "lap7"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "answer",
+       "tex": "4\\div\\frac12=8\\text{ laps}",
+       "at": "eight"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "outlinea": [
+      0,
+      3.7
+     ],
+     "outlineb": [
+      8,
+      3.7
+     ],
+     "outlinec": [
+      8,
+      2.3000000000000003
+     ],
+     "outlined": [
+      0,
+      2.3000000000000003
+     ],
+     "amounta": [
+      0,
+      3.7
+     ],
+     "amountb": [
+      2,
+      3.7
+     ],
+     "amountc": [
+      2,
+      2.3000000000000003
+     ],
+     "amountd": [
+      0,
+      2.3000000000000003
+     ],
+     "major1a": [
+      2,
+      3.7
+     ],
+     "major1b": [
+      2,
+      2.3
+     ],
+     "major2a": [
+      4,
+      3.7
+     ],
+     "major2b": [
+      4,
+      2.3
+     ],
+     "major3a": [
+      6,
+      3.7
+     ],
+     "major3b": [
+      6,
+      2.3
+     ],
+     "cut1a": [
+      1,
+      3.7
+     ],
+     "cut1b": [
+      1,
+      2.3
+     ],
+     "reference0a": [
+      3,
+      3.7
+     ],
+     "reference0b": [
+      3,
+      2.3
+     ],
+     "reference1a": [
+      5,
+      3.7
+     ],
+     "reference1b": [
+      5,
+      2.3
+     ],
+     "reference2a": [
+      7,
+      3.7
+     ],
+     "reference2b": [
+      7,
+      2.3
+     ],
+     "piece0a": [
+      0,
+      3.7
+     ],
+     "piece0b": [
+      1,
+      3.7
+     ],
+     "piece0c": [
+      1,
+      2.3000000000000003
+     ],
+     "piece0d": [
+      0,
+      2.3000000000000003
+     ],
+     "piece1a": [
+      1,
+      3.7
+     ],
+     "piece1b": [
+      2,
+      3.7
+     ],
+     "piece1c": [
+      2,
+      2.3000000000000003
+     ],
+     "piece1d": [
+      1,
+      2.3000000000000003
+     ],
+     "wholep": [
+      4,
+      4.75
+     ],
+     "givenp": [
+      1,
+      1.2
+     ],
+     "onep": [
+      0.5,
+      3
+     ],
+     "equalp": [
+      4,
+      0.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "outline",
+      "poly": [
+       "outlinea",
+       "outlineb",
+       "outlinec",
+       "outlined"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "amount",
+      "poly": [
+       "amounta",
+       "amountb",
+       "amountc",
+       "amountd"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "major1",
+      "seg": [
+       "major1a",
+       "major1b"
+      ],
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "major2",
+      "seg": [
+       "major2a",
+       "major2b"
+      ],
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "major3",
+      "seg": [
+       "major3a",
+       "major3b"
+      ],
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "cut1",
+      "seg": [
+       "cut1a",
+       "cut1b"
+      ],
+      "ink": "violet"
+     },
+     {
+      "id": "reference0",
+      "seg": [
+       "reference0a",
+       "reference0b"
+      ],
+      "ink": "violet",
+      "group": "ghost1",
+      "dash": true
+     },
+     {
+      "id": "reference1",
+      "seg": [
+       "reference1a",
+       "reference1b"
+      ],
+      "ink": "violet",
+      "group": "ghost1",
+      "dash": true
+     },
+     {
+      "id": "reference2",
+      "seg": [
+       "reference2a",
+       "reference2b"
+      ],
+      "ink": "violet",
+      "group": "ghost1",
+      "dash": true
+     },
+     {
+      "id": "piece0",
+      "poly": [
+       "piece0a",
+       "piece0b",
+       "piece0c",
+       "piece0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "group": "p0"
+     },
+     {
+      "id": "piece1",
+      "poly": [
+       "piece1a",
+       "piece1b",
+       "piece1c",
+       "piece1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "group": "p1"
+     },
+     {
+      "id": "whole",
+      "label": "1\\text{ yard}",
+      "at": "wholep",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "given",
+      "label": "\\frac14\\text{ yard}",
+      "at": "givenp",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "one",
+      "label": "\\frac18",
+      "at": "onep",
+      "dir": "c",
+      "size": "s",
+      "ink": "violet"
+     },
+     {
+      "id": "equal",
+      "label": "8\\text{ equal lengths in 1 yard}",
+      "at": "equalp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which question is this? A quarter yard of ribbon is cut into two equal lengths for bows.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Choose the question"
+      },
+      {
+       "do": "problem",
+       "text": "A quarter yard for 2 bows."
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Sharing. We know there are two bows. We need the length for each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "How big is each share?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Split the quarter in two. Eight equal lengths would make a yard.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "given"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "cut1"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": "ghost1",
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One eighth yard per bow.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "one"
+      },
+      {
+       "do": "answer",
+       "tex": "\\frac14\\div2=\\frac18\\text{ yard each}"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "whole0a": [
+      0,
+      2.8
+     ],
+     "whole0b": [
+      6,
+      2.8
+     ],
+     "whole0c": [
+      6,
+      1.9499999999999997
+     ],
+     "whole0d": [
+      0,
+      1.9499999999999997
+     ],
+     "unit0p": [
+      7.1,
+      2.375
+     ],
+     "tile0x0a": [
+      0,
+      2.8
+     ],
+     "tile0x0b": [
+      1.5,
+      2.8
+     ],
+     "tile0x0c": [
+      1.5,
+      1.9499999999999997
+     ],
+     "tile0x0d": [
+      0,
+      1.9499999999999997
+     ],
+     "tile0x1a": [
+      1.5,
+      2.8
+     ],
+     "tile0x1b": [
+      3,
+      2.8
+     ],
+     "tile0x1c": [
+      3,
+      1.9499999999999997
+     ],
+     "tile0x1d": [
+      1.5,
+      1.9499999999999997
+     ],
+     "cut0x1a": [
+      1.5,
+      2.8
+     ],
+     "cut0x1b": [
+      1.5,
+      1.9499999999999997
+     ],
+     "tile0x2a": [
+      3,
+      2.8
+     ],
+     "tile0x2b": [
+      4.5,
+      2.8
+     ],
+     "tile0x2c": [
+      4.5,
+      1.9499999999999997
+     ],
+     "tile0x2d": [
+      3,
+      1.9499999999999997
+     ],
+     "cut0x2a": [
+      3,
+      2.8
+     ],
+     "cut0x2b": [
+      3,
+      1.9499999999999997
+     ],
+     "tile0x3a": [
+      4.5,
+      2.8
+     ],
+     "tile0x3b": [
+      6,
+      2.8
+     ],
+     "tile0x3c": [
+      6,
+      1.9499999999999997
+     ],
+     "tile0x3d": [
+      4.5,
+      1.9499999999999997
+     ],
+     "cut0x3a": [
+      4.5,
+      2.8
+     ],
+     "cut0x3b": [
+      4.5,
+      1.9499999999999997
+     ],
+     "count0p": [
+      7.1,
+      2.375
+     ],
+     "whole1a": [
+      0,
+      1.4
+     ],
+     "whole1b": [
+      6,
+      1.4
+     ],
+     "whole1c": [
+      6,
+      0.5499999999999999
+     ],
+     "whole1d": [
+      0,
+      0.5499999999999999
+     ],
+     "unit1p": [
+      7.1,
+      0.9749999999999999
+     ],
+     "tile1x0a": [
+      0,
+      1.4
+     ],
+     "tile1x0b": [
+      1.5,
+      1.4
+     ],
+     "tile1x0c": [
+      1.5,
+      0.5499999999999999
+     ],
+     "tile1x0d": [
+      0,
+      0.5499999999999999
+     ],
+     "tile1x1a": [
+      1.5,
+      1.4
+     ],
+     "tile1x1b": [
+      3,
+      1.4
+     ],
+     "tile1x1c": [
+      3,
+      0.5499999999999999
+     ],
+     "tile1x1d": [
+      1.5,
+      0.5499999999999999
+     ],
+     "cut1x1a": [
+      1.5,
+      1.4
+     ],
+     "cut1x1b": [
+      1.5,
+      0.5499999999999999
+     ],
+     "tile1x2a": [
+      3,
+      1.4
+     ],
+     "tile1x2b": [
+      4.5,
+      1.4
+     ],
+     "tile1x2c": [
+      4.5,
+      0.5499999999999999
+     ],
+     "tile1x2d": [
+      3,
+      0.5499999999999999
+     ],
+     "cut1x2a": [
+      3,
+      1.4
+     ],
+     "cut1x2b": [
+      3,
+      0.5499999999999999
+     ],
+     "tile1x3a": [
+      4.5,
+      1.4
+     ],
+     "tile1x3b": [
+      6,
+      1.4
+     ],
+     "tile1x3c": [
+      6,
+      0.5499999999999999
+     ],
+     "tile1x3d": [
+      4.5,
+      0.5499999999999999
+     ],
+     "cut1x3a": [
+      4.5,
+      1.4
+     ],
+     "cut1x3b": [
+      4.5,
+      0.5499999999999999
+     ],
+     "count1p": [
+      7.1,
+      0.9749999999999999
+     ],
+     "sizep": [
+      3,
+      -0.45
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole0",
+      "poly": [
+       "whole0a",
+       "whole0b",
+       "whole0c",
+       "whole0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit0",
+      "label": "1\\text{ yard}",
+      "at": "unit0p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile0x0",
+      "poly": [
+       "tile0x0a",
+       "tile0x0b",
+       "tile0x0c",
+       "tile0x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "tile0x1",
+      "poly": [
+       "tile0x1a",
+       "tile0x1b",
+       "tile0x1c",
+       "tile0x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x1",
+      "seg": [
+       "cut0x1a",
+       "cut0x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x2",
+      "poly": [
+       "tile0x2a",
+       "tile0x2b",
+       "tile0x2c",
+       "tile0x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x2",
+      "seg": [
+       "cut0x2a",
+       "cut0x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile0x3",
+      "poly": [
+       "tile0x3a",
+       "tile0x3b",
+       "tile0x3c",
+       "tile0x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row0"
+     },
+     {
+      "id": "cut0x3",
+      "seg": [
+       "cut0x3a",
+       "cut0x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count0",
+      "label": "4",
+      "at": "count0p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "whole1",
+      "poly": [
+       "whole1a",
+       "whole1b",
+       "whole1c",
+       "whole1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "unit1",
+      "label": "1\\text{ yard}",
+      "at": "unit1p",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tile1x0",
+      "poly": [
+       "tile1x0a",
+       "tile1x0b",
+       "tile1x0c",
+       "tile1x0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "tile1x1",
+      "poly": [
+       "tile1x1a",
+       "tile1x1b",
+       "tile1x1c",
+       "tile1x1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x1",
+      "seg": [
+       "cut1x1a",
+       "cut1x1b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x2",
+      "poly": [
+       "tile1x2a",
+       "tile1x2b",
+       "tile1x2c",
+       "tile1x2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x2",
+      "seg": [
+       "cut1x2a",
+       "cut1x2b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "tile1x3",
+      "poly": [
+       "tile1x3a",
+       "tile1x3b",
+       "tile1x3c",
+       "tile1x3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "group": "row1"
+     },
+     {
+      "id": "cut1x3",
+      "seg": [
+       "cut1x3a",
+       "cut1x3b"
+      ],
+      "ink": "muted"
+     },
+     {
+      "id": "count1",
+      "label": "8",
+      "at": "count1p",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "size",
+      "label": "\\text{Each bow: }\\frac{1}{4}\\text{ yard}",
+      "at": "sizep",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "And this? Two yards of ribbon. Each bow needs a quarter yard.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Choose the question"
+      },
+      {
+       "do": "problem",
+       "text": "2 yards. Quarter-yard bows."
+      },
+      {
+       "do": "show",
+       "target": "size",
+       "at": "quarter"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Counting. We know the length for each bow. How many fit?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "How many fit?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four in each yard. Eight bows.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole0",
+        "cut0x1",
+        "cut0x2",
+        "cut0x3"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "row0",
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x0",
+       "by": [
+        -0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x1",
+       "by": [
+        -0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x2",
+       "by": [
+        0.06,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "tile0x3",
+       "by": [
+        0.18,
+        0
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "unit0",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "count0",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole1",
+        "cut1x1",
+        "cut1x2",
+        "cut1x3"
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": "row1",
+       "at": "Eight"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x0",
+       "by": [
+        -0.18,
+        0
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x1",
+       "by": [
+        -0.06,
+        0
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x2",
+       "by": [
+        0.06,
+        0
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "slide",
+       "target": "tile1x3",
+       "by": [
+        0.18,
+        0
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "hide",
+       "target": "unit1",
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": "count1",
+       "at": "Eight"
+      },
+      {
+       "do": "hide",
+       "target": "count0",
+       "at": "Eight"
+      },
+      {
+       "do": "answer",
+       "tex": "2\\div\\frac14=8\\text{ bows}",
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One eighth yard, or eight bows. The story tells me what the answer means.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Name the unit of your answer."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "chocp": [
+      1.6,
+      5.7
+     ],
+     "bara": [
+      0,
+      4.8
+     ],
+     "barb": [
+      3.2,
+      4.8
+     ],
+     "barc": [
+      3.2,
+      2.6999999999999997
+     ],
+     "bard": [
+      0,
+      2.6999999999999997
+     ],
+     "halfa": [
+      0,
+      4.8
+     ],
+     "halfb": [
+      3.2,
+      4.8
+     ],
+     "halfc": [
+      3.2,
+      3.75
+     ],
+     "halfd": [
+      0,
+      3.75
+     ],
+     "mida": [
+      0,
+      3.75
+     ],
+     "midb": [
+      3.2,
+      3.75
+     ],
+     "chCut1a": [
+      1.0666666666666667,
+      4.8
+     ],
+     "chCut1b": [
+      1.0666666666666667,
+      2.7
+     ],
+     "chCut2a": [
+      2.1333333333333333,
+      4.8
+     ],
+     "chCut2b": [
+      2.1333333333333333,
+      2.7
+     ],
+     "chAmountp": [
+      1.6,
+      1.7
+     ],
+     "chQp": [
+      1.6,
+      0.4
+     ],
+     "chEqp": [
+      1.6,
+      -0.85
+     ],
+     "raisinsp": [
+      6.15,
+      5.7
+     ],
+     "cup0a": [
+      4.5,
+      4.8
+     ],
+     "cup0b": [
+      6,
+      4.8
+     ],
+     "cup0c": [
+      6,
+      2.6999999999999997
+     ],
+     "cup0d": [
+      4.5,
+      2.6999999999999997
+     ],
+     "cupCut0x1a": [
+      4.5,
+      4.1
+     ],
+     "cupCut0x1b": [
+      6,
+      4.1
+     ],
+     "cupCut0x2a": [
+      4.5,
+      3.4
+     ],
+     "cupCut0x2b": [
+      6,
+      3.4
+     ],
+     "cup1a": [
+      6.3,
+      4.8
+     ],
+     "cup1b": [
+      7.8,
+      4.8
+     ],
+     "cup1c": [
+      7.8,
+      2.6999999999999997
+     ],
+     "cup1d": [
+      6.3,
+      2.6999999999999997
+     ],
+     "cupCut1x1a": [
+      6.3,
+      4.1
+     ],
+     "cupCut1x1b": [
+      7.8,
+      4.1
+     ],
+     "cupCut1x2a": [
+      6.3,
+      3.4
+     ],
+     "cupCut1x2b": [
+      7.8,
+      3.4
+     ],
+     "raAmountp": [
+      6.15,
+      1.7
+     ],
+     "raQp": [
+      6.15,
+      0.4
+     ],
+     "raEqp": [
+      6.15,
+      -0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "choc",
+      "label": "\\text{Chocolate}",
+      "at": "chocp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "bar",
+      "poly": [
+       "bara",
+       "barb",
+       "barc",
+       "bard"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "half",
+      "poly": [
+       "halfa",
+       "halfb",
+       "halfc",
+       "halfd"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "mid",
+      "seg": [
+       "mida",
+       "midb"
+      ],
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "chCut1",
+      "seg": [
+       "chCut1a",
+       "chCut1b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "chCut2",
+      "seg": [
+       "chCut2a",
+       "chCut2b"
+      ],
+      "ink": "muted",
+      "start": true,
+      "dash": true
+     },
+     {
+      "id": "chAmount",
+      "label": "\\frac12\\text{ lb}",
+      "at": "chAmountp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "chQ",
+      "label": "\\text{How big?}",
+      "at": "chQp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "chEq",
+      "label": "\\frac12\\div3=\\frac16",
+      "at": "chEqp",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "raisins",
+      "label": "\\text{Raisins}",
+      "at": "raisinsp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cup0",
+      "poly": [
+       "cup0a",
+       "cup0b",
+       "cup0c",
+       "cup0d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut0x1",
+      "seg": [
+       "cupCut0x1a",
+       "cupCut0x1b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut0x2",
+      "seg": [
+       "cupCut0x2a",
+       "cupCut0x2b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cup1",
+      "poly": [
+       "cup1a",
+       "cup1b",
+       "cup1c",
+       "cup1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut1x1",
+      "seg": [
+       "cupCut1x1a",
+       "cupCut1x1b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "cupCut1x2",
+      "seg": [
+       "cupCut1x2a",
+       "cupCut1x2b"
+      ],
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "raAmount",
+      "label": "2\\text{ cups}",
+      "at": "raAmountp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "raQ",
+      "label": "\\text{How many?}",
+      "at": "raQp",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "raEq",
+      "label": "2\\div\\frac13=6",
+      "at": "raEqp",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Division asks how big each share is, or how many shares fit.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Two questions. One check."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "half",
+        "chQ"
+       ],
+       "at": "big",
+       "until": "or"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "cup0",
+        "cup1",
+        "raQ"
+       ],
+       "at": "many"
+      },
+      {
+       "do": "text",
+       "text": "What does the answer measure?",
+       "at": "asks"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply the answer by what you divided by. You should recover the starting amount.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac16\\times3=\\frac12",
+       "at": "Multiply"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times\\frac13=2",
+       "at": "recover"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Share a piece among several people, and the pieces get smaller. Count pieces smaller than one whole, and the number gets bigger. Multiply to check.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "half",
+        "chEq"
+       ],
+       "at": "smaller",
+       "until": "Count"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "cup0",
+        "cup1",
+        "raEq"
+       ],
+       "at": "bigger",
+       "until": "Multiply"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

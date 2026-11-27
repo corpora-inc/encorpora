@@ -1,0 +1,707 @@
+[
+ {
+  "lesson_id": "l.site.01",
+  "topic_id": "site",
+  "ord": 1,
+  "title": "Ground conditions: firm, drained, graded, and who must provide them",
+  "skills": [
+   "site.ground-conditions",
+   "site.hazards-below-surface",
+   "site.controlling-entity-ground"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A crane is only as stable as the ground under it. **Ground conditions** means more than how hard the surface feels. It covers slope, compaction and firmness."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(a)(1)",
+    "text": "“Ground conditions” means the ability of the ground to support the equipment (including slope, compaction, and firmness)."
+   },
+   {
+    "t": "text",
+    "text": "The rule sets a standard the ground must meet before the crane is assembled or used. The measure is the manufacturer's specifications for support and for level, met with mats or blocking if needed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(b)",
+    "text": "The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent so that, in conjunction (if necessary) with the use of supporting materials, the equipment manufacturer's specifications for adequate support and degree of level of the equipment are met."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(b)",
+    "text": "The requirement for the ground to be drained does not apply to marshes/wetlands."
+   },
+   {
+    "t": "text",
+    "text": "**Who provides the ground.** The controlling entity is the prime contractor, general contractor, construction manager or other party with overall responsibility for the project. It must make sure the ground preparation gets done."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(c)(1)",
+    "text": "Ensure that ground preparations necessary to meet the requirements in paragraph (b) of this section are provided."
+   },
+   {
+    "t": "text",
+    "text": "The controlling entity must also tell the crane user and the operator about hidden hazards it knows of. That includes hazards shown in drawings or soil reports it holds, whether those papers are on site or off site."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(c)(2)",
+    "text": "Inform the user of the equipment and the operator of the location of hazards beneath the equipment set-up area (such as voids, tanks, utilities) if those hazards are identified in documents (such as site drawings, as-built drawings, and soil analyses) that are in the possession of the controlling entity (whether at the site or off-site) or the hazards are otherwise known to that controlling entity."
+   },
+   {
+    "t": "text",
+    "text": "If the project has no controlling entity, the employer with authority to make or arrange ground preparation carries this duty. If the operator or the A/D director finds the ground inadequate, that person's employer must discuss the needed preparation with the controlling entity."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1402(d)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(e)",
+    "text": "If the A/D director or the operator determines that ground conditions do not meet the requirements in paragraph (b) of this section, that person's employer must have a discussion with the controlling entity regarding the ground preparations that are needed"
+   },
+   {
+    "t": "text",
+    "text": "**Judging the ground on site (practice).** Walk the setup area before the crane arrives. Watch for these warning signs:\n- fresh or uncompacted fill, backfilled trenches, and the edges of excavations or retaining walls\n- standing water, soft spots, ruts, or recent heavy rain\n- frozen ground that may thaw during the job\n- manholes, vaults, septic tanks, buried pipes and utility trenches\n- slope steeper than the manufacturer allows for leveling\nAsk the controlling entity for drawings and soil information. If you cannot confirm what is under a float, do not set on it."
+   },
+   {
+    "t": "check",
+    "question": "The general contractor holds an as-built drawing showing a buried tank under your planned outrigger position. What must it do?",
+    "answer": "Tell the crane user and the operator where the tank is, even if the drawing is kept off site."
+   },
+   {
+    "t": "check",
+    "question": "Who must ensure ground preparation on a project with no controlling entity?",
+    "answer": "The employer that has authority at the site to make or arrange the ground preparations."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.site.02",
+  "topic_id": "site",
+  "ord": 2,
+  "title": "Mats, cribbing and outrigger ground bearing pressure",
+  "skills": [
+   "site.supporting-materials",
+   "site.ground-bearing"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Supporting materials** spread a concentrated crane load over more ground. The rule lists what counts as supporting material."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1402(a)(2)",
+    "text": "“Supporting materials” means blocking, mats, cribbing, marsh buggies (in marshes/wetlands), or similar supporting materials or devices."
+   },
+   {
+    "t": "text",
+    "text": "Blocking and cribbing mean the same thing in the definitions: wood or other material that carries load down to the ground. It is typically placed under outrigger and stabilizer floats."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1401"
+   },
+   {
+    "t": "text",
+    "text": "Blocking goes only under the float, or under the outer bearing surface of the beam if the outrigger has no jack. Never put it under the beam at mid-span."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(5)(ii)",
+    "text": "Be placed only under the outrigger or stabilizer float/pad of the jack or, where the outrigger or stabilizer is designed without a jack, under the outer bearing surface of the extended outrigger or stabilizer beam."
+   },
+   {
+    "t": "text",
+    "text": "**Ground bearing pressure (physics).** Pressure equals force divided by area. An outrigger's reaction is the load it pushes into the ground. That load is highest when the boom swings over that outrigger with a heavy load at long radius. Compare the pressure you calculate with what the ground can carry. That allowable value comes from soil information or a qualified person, not from guesswork."
+   },
+   {
+    "t": "text",
+    "text": "The diagram shows the float, the mat under it, and the same force spread over a larger area."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "text",
+    "text": "**Worked example (round numbers).** The maximum outrigger reaction is 72,000 lb.\n- Float only, 2 ft x 2 ft = 4 sq ft: 72,000 / 4 = 18,000 lb per sq ft.\n- On a 6 ft x 6 ft mat = 36 sq ft: 72,000 / 36 = 2,000 lb per sq ft.\nThe mat cuts the pressure to one ninth. Double the mat side to 12 ft and the area goes up four times (144 sq ft), giving 500 lb per sq ft."
+   },
+   {
+    "t": "text",
+    "text": "**Mat practice.** The arithmetic only works if the mat is stiff enough to spread the load across its full area. A thin or cracked mat bends, and the load stays concentrated under the float. In practice:\n- Center the float on the mat.\n- Set mats on graded, compacted ground with full contact and no voids.\n- Use sound, undamaged material.\n- Include the mat's own weight when the margin is tight."
+   },
+   {
+    "t": "check",
+    "question": "An outrigger reaction of 40,000 lb sits on a 4 ft x 5 ft mat. What is the ground bearing pressure?",
+    "answer": "40,000 / 20 sq ft = 2,000 lb per sq ft."
+   },
+   {
+    "t": "check",
+    "question": "Where may outrigger blocking be placed?",
+    "answer": "Only under the float or pad of the jack, or under the outer bearing surface of the beam if there is no jack."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.site.03",
+  "topic_id": "site",
+  "ord": 3,
+  "title": "Outriggers, stabilizers, position sensors and leveling",
+  "skills": [
+   "site.outriggers",
+   "site.outrigger-sensors",
+   "site.leveling"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "These rules apply when the load and radius require outriggers or stabilizers, and also any time they are used. They must be fully extended, or set as the load chart specifies if the manufacturer's procedures allow partial extension."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(1)",
+    "text": "The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed as specified in the load chart."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(2)",
+    "text": "The outriggers must be set to remove the equipment weight from the wheels, except for locomotive cranes"
+   },
+   {
+    "t": "text",
+    "text": "The wheel-lift rule covers outriggers, not stabilizers. Floats must be attached, not loose under the jack."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(3)",
+    "text": "When outrigger floats are used, they must be attached to the outriggers."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(4)",
+    "text": "Each outrigger or stabilizer must be visible to the operator or to a signal person during extension and setting."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(5)",
+    "text": "Hydraulic outrigger jacks and hydraulic stabilizer jacks must have an integral holding device/check valve."
+   },
+   {
+    "t": "text",
+    "text": "Locomotive cranes follow the manufacturer's procedures for outriggers, truck wedges or screws."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(q)(6)"
+   },
+   {
+    "t": "text",
+    "text": "**Position sensor.** Cranes with outriggers or stabilizers need a sensor or monitor for beam extension. While it is out of service, the operator must check the positions by hand before starting the operation."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(5)(i)",
+    "text": "The operator must verify that the position of the outriggers or stabilizers is correct (in accordance with manufacturer procedures) before beginning operations requiring outrigger or stabilizer deployment."
+   },
+   {
+    "t": "text",
+    "text": "**Leveling.** The crane must have a level indicator. One that is not working must be tagged out or removed. This requirement does not apply to portal cranes, derricks, or floating equipment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(1)(i)",
+    "text": "The equipment must have a crane level indicator that is either built into the equipment or is available on the equipment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1415(a)(1)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Why level matters (physics).** Load charts assume the crane is level within the manufacturer's tolerance. On an out-of-level crane, the hook drifts outward when the boom points downhill. That raises the radius and the overturning moment beyond what the chart allows. Out of level also side-loads the boom, which the chart does not cover. A small tilt at the base becomes a large radius error on a long boom."
+   },
+   {
+    "t": "text",
+    "text": "**Setup sequence (practice):**\n1. Extend the beams to the chart position.\n2. Lower the jacks onto attached floats on mats while watching each one.\n3. Raise until the tires are clear.\n4. Level to the indicator.\n5. Recheck level and the mats after the first lifts and after rain."
+   },
+   {
+    "t": "check",
+    "question": "The outrigger position sensor has failed. Can you lift?",
+    "answer": "Only under the temporary measure: you verify that the outrigger positions are correct per the manufacturer before beginning operations."
+   },
+   {
+    "t": "check",
+    "question": "Why does an out-of-level crane lose capacity when swinging downhill?",
+    "answer": "The hook drifts outward, so the radius and the overturning moment exceed what the chart assumes."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.site.04",
+  "topic_id": "site",
+  "ord": 4,
+  "title": "Swing radius barricades, access hazards and overlapping cranes",
+  "skills": [
+   "site.swing-radius",
+   "site.access-hazards",
+   "site.multiple-cranes-area"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The rotating superstructure, and especially the counterweight, can strike a worker or crush them against the carrier, a wall or another object. These rules apply wherever workers can reach an area with a reasonably foreseeable struck-by or pinch/crush risk."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1424(a)(1)"
+   },
+   {
+    "t": "text",
+    "text": "The employer must train authorized personnel to recognize these areas. It must also mark the areas with physical barriers."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1424(a)(2)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1424(a)(2)(ii)",
+    "text": "Erect and maintain control lines, warning lines, railings or similar barriers to mark the boundaries of the hazard areas."
+   },
+   {
+    "t": "text",
+    "text": "If barriers are feasible neither on the ground nor on the equipment, the employer must use warning signs plus high-visibility markings on the crane. Employees must then be trained on what the markings mean."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, the barricade sits outside the counterweight's swing path, all the way around the crane."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "swing-radius-clearance"
+   },
+   {
+    "t": "text",
+    "text": "**Placing the barricade (practice).**\n- Measure the tail swing at the counterweight's farthest point and set the line beyond it.\n- Include any pinch gap of less than body width between the counterweight and a wall, truck or stockpile. If a gap like that exists, close it off or move the object.\n- Keep the line up for the whole job, and reset it if the crane is repositioned."
+   },
+   {
+    "t": "text",
+    "text": "**Entering the zone.** A worker going to a spot the operator cannot see must make sure the operator knows first."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1424(a)(3)(i)",
+    "text": "Before an employee goes to a location in the hazard area that is out of view of the operator, the employee (or someone instructed by the employee) must ensure that the operator is informed that he/she is going to that location."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1424(a)(3)(ii)",
+    "text": "the operator must not rotate the superstructure until the operator is informed in accordance with a pre-arranged system of communication that the employee is in a safe position."
+   },
+   {
+    "t": "text",
+    "text": "**Access hazards.** Workers must also be trained to stay clear of holes and crush/pinch points around the equipment. Examples are open outrigger beams, tracks, jacks, and gaps near the carrier."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1430(e)",
+    "text": "The employer must train each employee who works with the equipment to keep clear of holes, and crush/pinch points and the hazards addressed in § 1926.1424 (Work area control)."
+   },
+   {
+    "t": "text",
+    "text": "**Overlapping cranes.** When any part of one crane is within another crane's working radius, a coordination system is required."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1424(b)",
+    "text": "Where any part of a crane/derrick is within the working radius of another crane/derrick, the controlling entity must institute a system to coordinate operations."
+   },
+   {
+    "t": "text",
+    "text": "If there is no controlling entity, the employer or employers operating the cranes must set up the system. In practice it covers who has priority, swing limits, communication between operators, and who stops whom."
+   },
+   {
+    "t": "check",
+    "question": "A rigger needs to walk behind the counterweight, out of the operator's view. What comes first?",
+    "answer": "The rigger, or someone they instruct, makes sure the operator is told before going there."
+   },
+   {
+    "t": "check",
+    "question": "Two tower cranes' radii overlap on a project with a general contractor. Who must set up coordination?",
+    "answer": "The controlling entity."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.site.05",
+  "topic_id": "site",
+  "ord": 5,
+  "title": "The fall zone, hooking rules and keeping clear of the load",
+  "skills": [
+   "site.fall-zone",
+   "site.keeping-clear"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **fall zone** is larger than the area directly under the load. It includes anywhere a load or part of a load could reasonably land if something fails."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Fall zone means the area (including but not limited to the area directly beneath the load) in which it is reasonably foreseeable that partially or completely suspended materials could fall in the event of an accident."
+   },
+   {
+    "t": "text",
+    "text": "**Sizing it (practice).** Allow for swing, for a load that tips or slides from its rigging, and for pieces that scatter or bounce. The zone is wider for tall, light, loose or long loads and in wind. Lay out routes that keep loads away from people."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(a)",
+    "text": "Where available, hoisting routes that minimize the exposure of employees to hoisted loads must be used, to the extent consistent with public safety."
+   },
+   {
+    "t": "text",
+    "text": "**Who may be inside.** While the operator is not moving a suspended load, nobody may be in the fall zone except:\n- workers hooking, unhooking or guiding a load\n- workers making the initial attachment to a component or structure\n- workers operating a concrete hopper or bucket"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1425(b)"
+   },
+   {
+    "t": "text",
+    "text": "**Hooking rules.** Workers hooking, unhooking, guiding or making an initial connection inside the fall zone are allowed there only if all three of the following conditions are met."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(c)(1)",
+    "text": "The materials being hoisted must be rigged to prevent unintentional displacement."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(c)(2)",
+    "text": "Hooks with self-closing latches or their equivalent must be used. Exception: “J” hooks are permitted to be used for setting wooden trusses."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(c)(3)",
+    "text": "The materials must be rigged by a qualified rigger."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(d)",
+    "text": "Only employees needed to receive a load are permitted to be within the fall zone when a load is being landed."
+   },
+   {
+    "t": "text",
+    "text": "**Tilt-up and tilt-down.** No one may be directly under the load. Only essential workers may be in the fall zone. A worker is essential only if the employer can show the task cannot be done from outside the zone. The tasks are guiding the load, closely monitoring and directing its movement, or attaching or detaching it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(e)(1)",
+    "text": "No employee must be directly under the load."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1425(e)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Taglines let a worker guide a load from outside the fall zone (practice)."
+   },
+   {
+    "t": "check",
+    "question": "A connector waits under a beam to make the initial connection. Which three conditions must be met?",
+    "answer": "The load is rigged to prevent unintentional displacement, latched hooks (or equivalent) are used, and a qualified rigger did the rigging."
+   },
+   {
+    "t": "check",
+    "question": "Is the fall zone only the area directly beneath the load?",
+    "answer": "No. It is any area where suspended materials could reasonably fall in an accident."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.site.06",
+  "topic_id": "site",
+  "ord": 6,
+  "title": "Traveling the crane with no load",
+  "skills": [
+   "site.travel-without-load",
+   "site.access-hazards"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Traveling on site with no load falls under the power line travel section. Traveling with a load falls under other sections."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1411(a)"
+   },
+   {
+    "t": "text",
+    "text": "**Before moving,** lower the boom or mast and its support system enough to keep the travel clearances."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(1)",
+    "text": "The boom/mast and boom/mast support system are lowered sufficiently to meet the requirements of this paragraph."
+   },
+   {
+    "t": "text",
+    "text": "**Table T minimum clearance while traveling, by nominal AC voltage:**\n- up to 0.75 kV: 4 ft\n- over 0.75 to 50 kV: 6 ft\n- over 50 to 345 kV: 10 ft\n- over 345 to 750 kV: 16 ft\n- over 750 to 1,000 kV: 20 ft\n- over 1,000 kV: as set by the utility owner/operator or a registered professional engineer who is a qualified person in power transmission and distribution"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1411"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(3)",
+    "text": "The effects of speed and terrain on equipment movement (including movement of the boom/mast) are considered so that those effects do not cause the minimum clearance distances specified in Table T of this section to be breached."
+   },
+   {
+    "t": "text",
+    "text": "Bumps, ruts and slopes make the boom bounce and sway. Go slowly over rough ground under lines."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1411(b)(4)",
+    "text": "If any part of the equipment while traveling will get closer than 20 feet to the power line, the employer must ensure that a dedicated spotter who is in continuous contact with the driver/operator is used."
+   },
+   {
+    "t": "text",
+    "text": "The spotter must:\n- stand where they can judge the clearance\n- use equipment to talk directly with the operator where needed\n- give timely information"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1411(b)(4)"
+   },
+   {
+    "t": "text",
+    "text": "At night or in poor visibility, the lines must be lit or otherwise identified, and a safe travel path must be identified and used."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1411(b)(5)"
+   },
+   {
+    "t": "text",
+    "text": "**Ground along the route (practice).** Travel puts the crane's full weight on its tires or tracks, often near trenches, fill, curbs and buried utilities. Walk the route first. Keep clear of excavation edges and covers, and do not travel across slopes steeper than the manufacturer allows. Keep people clear of the wheels and tracks."
+   },
+   {
+    "t": "check",
+    "question": "You will travel past a 69 kV line. What is the minimum travel clearance?",
+    "answer": "10 ft (over 50 to 345 kV)."
+   },
+   {
+    "t": "check",
+    "question": "When is a dedicated spotter required during no-load travel?",
+    "answer": "When any part of the equipment will get closer than 20 ft to the power line."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.site.07",
+  "topic_id": "site",
+  "ord": 7,
+  "title": "Common set-up mistakes and how to catch them",
+  "skills": [
+   "site.ground-conditions",
+   "site.supporting-materials",
+   "site.outriggers",
+   "site.leveling",
+   "site.swing-radius",
+   "site.fall-zone"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Each mistake below is paired with the rule or practice that catches it."
+   },
+   {
+    "t": "text",
+    "text": "**Setting up before asking what is underground.** Operators set floats over vaults, septic tanks and backfilled trenches. Ask the controlling entity for what it knows. The duty to disclose covers documents it holds and hazards it otherwise knows about."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1402(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Trusting a hard surface.** A thin slab or crust can sit over soft or saturated soil. Firm, drained and graded must hold for the actual setup spot, with mats if needed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1402(b)"
+   },
+   {
+    "t": "text",
+    "text": "**Undersized or bridging mats (practice).** A mat that is too small or too flexible, or that bridges a soft spot, does not cut the pressure. Rework the force-over-area figure for the worst-case outrigger reaction, not the average one."
+   },
+   {
+    "t": "text",
+    "text": "**Blocking under the beam.** Blocking under the beam instead of under the float puts the load where the outrigger is not designed to carry it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(5)(ii)",
+    "text": "Be placed only under the outrigger or stabilizer float/pad of the jack or, where the outrigger or stabilizer is designed without a jack, under the outer bearing surface of the extended outrigger or stabilizer beam."
+   },
+   {
+    "t": "text",
+    "text": "**Short-jacking.** Beams at mid-extension while the chart in use is the full-extension chart. Tires still touching the ground. Both overstate capacity. Match the beam position to the chart, and lift the tires clear."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(q)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(q)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Leveling once and never again (practice).** Mats settle and ground softens. Recheck the level indicator during the shift, after rain, and after the heaviest lift."
+   },
+   {
+    "t": "text",
+    "text": "**Barricade inside the tail swing, or missing on one side.** The barrier must mark the whole hazard area, and it must be maintained, not set once."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1424(a)(2)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Bystanders under the load.** Only workers performing the listed tasks may be in the fall zone. Only those needed to receive a load may be there while it is landed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1425(d)"
+   },
+   {
+    "t": "check",
+    "question": "The tires still bear weight after setting outriggers. Is that acceptable?",
+    "answer": "No. Outriggers must remove the equipment weight from the wheels (locomotive cranes excepted)."
+   },
+   {
+    "t": "check",
+    "question": "Which outrigger reaction should drive mat sizing?",
+    "answer": "The worst-case reaction for the planned lifts, not the average."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "a9bd90ebf2b4513adc02",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "048e36403483a1deef4cc7b3af02113b6f092491c6d1f64214b55b10640658ae",
+   "output_sha256": "557c5f855b7e71ba14935b8b147fcb143b573e3157d07ab70368f6f6fa7ac027",
+   "created_at": "2026-11-27T22:21:46+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

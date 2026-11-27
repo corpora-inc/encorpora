@@ -1,4 +1,5 @@
 """Shared release decisions. Pure functions: no credentials or network writes."""
+import re
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -14,6 +15,18 @@ CHECKS = {
     "likesVisible", "notifySubscribers", "captions", "thumbnail", "playlist",
     "landingPage", "copyrightChecks", "aiDisclosure", "endScreenOrRelatedVideo",
 }
+# YouTube makes no URL clickable in Shorts comments or descriptions
+# (https://support.google.com/youtube/answer/13748639), so a Short's pinned
+# comment carries none: it is a short topical line, usually one question.
+URL = re.compile(r"https?://|www\.|\b[a-z0-9-]+\.(?:com|inc|org|net|io|co|us|app|ly)\b", re.I)
+
+
+def video_format(plan):
+    """"short" (vertical, up to 3 minutes) or "long". Unmarked plans are Shorts, the safe default."""
+    value = plan.get("format", "short")
+    if value not in {"short", "long"}:
+        raise ValueError('Plan format must be "short" or "long"')
+    return value
 
 
 def timestamp(value):
@@ -43,8 +56,11 @@ def validate_plan(plan):
     disclosure = plan.get("aiDisclosure", {})
     if type(disclosure.get("required")) is not bool or not disclosure.get("rationale", "").strip():
         raise ValueError("Record the actual AI-disclosure decision and rationale")
-    if "https://amp.corpora.inc" not in plan.get("pinnedComment", ""):
-        raise ValueError("Prepare the AMP pinned CTA before upload")
+    comment = plan.get("pinnedComment", "")
+    if not comment.strip():
+        raise ValueError("Prepare the pinned comment before upload")
+    if video_format(plan) == "short" and URL.search(comment):
+        raise ValueError("A Short's pinned comment has no URL (not clickable); make it a topical question")
     if type(plan.get("relatedVideoIds")) is not list:
         raise ValueError("Record related editions, or an empty list for a new concept")
 

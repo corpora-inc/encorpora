@@ -1,0 +1,394 @@
+[
+ {
+  "lesson_id": "l.weather.01",
+  "topic_id": "weather",
+  "ord": 1,
+  "title": "Wind on the boom and load: sail area, speed and radius",
+  "skills": [
+   "weather.wind-effects"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Wind pushes on everything it hits: the boom, the jib, the counterweight and the load. The flat area facing the wind is the **sail area**. A large, light load such as a wall panel, a formwork gang or a roof truss can catch far more wind than its weight would suggest."
+   },
+   {
+    "t": "text",
+    "text": "Physics: wind force grows with the **square of wind speed**. Double the speed and the force is four times as large. A common approximation for wind pressure is about 1 lb per square foot at 20 mph and about 4 lb per square foot at 40 mph."
+   },
+   {
+    "t": "text",
+    "text": "Worked example (physics, round numbers):\n- Panel 10 ft x 20 ft = 200 sq ft facing the wind.\n- At 20 mph: 200 sq ft x 1 psf = about 200 lb of side push.\n- At 40 mph: 200 sq ft x 4 psf = about 800 lb of side push.\n- Shape and gusts can push the real figure higher."
+   },
+   {
+    "t": "text",
+    "text": "Wind hurts the lift in three ways:\n- It pushes the load downwind of the boom tip, which **increases the radius** and reduces capacity.\n- Wind on the back of the boom or from the side puts side load on a boom that is built to carry load in its own plane.\n- A gust can swing the load into people, the structure or the boom, and the rebound is a shock load."
+   },
+   {
+    "t": "text",
+    "text": "Look at how the radius grows when the hook moves out from the center of rotation; a load blown downwind has the same effect as lowering the boom."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "text",
+    "text": "Practice: wind is usually stronger at boom-tip height than at ground level, and gusts are what upset a load. Judge the lift by the wind at the tip and by the gusts, not by how it feels on the ground. The rule puts the duty to address wind on the competent person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(n)",
+    "text": "The competent person must adjust the equipment and/or operations to address the effect of wind, ice, and snow on equipment stability and rated capacity."
+   },
+   {
+    "t": "check",
+    "question": "Wind speed rises from 15 mph to 30 mph. Roughly how much does the wind force on the load change?",
+    "answer": "About four times larger, because force grows with the square of speed."
+   },
+   {
+    "t": "check",
+    "question": "Why does a load blown downwind reduce capacity?",
+    "answer": "It moves the load farther from the center of rotation, which increases the radius."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "2a5135af582f238c51ca",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8039c61afb2d566227a9c90f0d471bee95440dc721871a83ad4581ded760f3ff",
+   "output_sha256": "7987432bb2fbce0374c61514446ae9924cf9d71a9ef91ba7575699315ab50ee7",
+   "created_at": "2026-11-27T22:26:27+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.weather.02",
+  "topic_id": "weather",
+  "ord": 2,
+  "title": "Wind indicators and the manufacturer's wind limits",
+  "skills": [
+   "weather.wind-indicator"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The wind limit for a crane comes from its manufacturer, not from a general number. Manuals may state a maximum wind speed for operating, a lower limit for some configurations or long booms, reduced capacities above a given speed, and a limit on load sail area. Wind limits are part of the manufacturer procedures the employer must follow."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(a)",
+    "text": "The employer must comply with all manufacturer procedures applicable to the operational functions of equipment, including its use with attachments."
+   },
+   {
+    "t": "text",
+    "text": "A **wind indicator** (anemometer) is the tool that tells you where you stand against that limit. Practice for reading it:\n- Use the sensor at or near the boom tip when the crane has one; that is the height the limit usually refers to.\n- Watch the **gust** reading as well as the average. A limit stated as a gust limit is broken by one gust.\n- Check the units. Many manuals give meters per second. 1 m/s is about 2.2 mph, so 10 m/s is about 22 mph and 20 m/s is about 45 mph.\n- Confirm the sensor works and the cup or vane turns freely before the shift."
+   },
+   {
+    "t": "text",
+    "text": "Practice when the crane has no indicator: use a handheld meter at the highest safe point, or local forecast and site station data, and add a margin because ground readings run low. Signs at the tip, such as the load line drifting or the load turning, also tell you the wind is stronger than it feels below."
+   },
+   {
+    "t": "text",
+    "text": "Practice: decide stop points before the lift. Write down the manual's limit, the planned load's sail area and the speed at which work pauses, so nobody has to argue about it with a load in the air."
+   },
+   {
+    "t": "check",
+    "question": "The manual gives a limit of 9 m/s. About what is that in mph?",
+    "answer": "About 20 mph (9 x 2.2)."
+   },
+   {
+    "t": "check",
+    "question": "The average reading is under the limit but gusts go over it. Can you lift?",
+    "answer": "Not if the limit is a gust limit; one gust over it means you are past the limit."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "2a5135af582f238c51ca",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8039c61afb2d566227a9c90f0d471bee95440dc721871a83ad4581ded760f3ff",
+   "output_sha256": "7987432bb2fbce0374c61514446ae9924cf9d71a9ef91ba7575699315ab50ee7",
+   "created_at": "2026-11-27T22:26:27+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.weather.03",
+  "topic_id": "weather",
+  "ord": 3,
+  "title": "Competent person: adjusting or stopping for wind, ice and snow",
+  "skills": [
+   "weather.competent-person"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Wind, ice and snow change what the crane can safely do. The rule does not give a wind speed or ice thickness. It requires the **competent person** to judge the conditions and change the equipment, the operation, or both."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(n)",
+    "text": "The competent person must adjust the equipment and/or operations to address the effect of wind, ice, and snow on equipment stability and rated capacity."
+   },
+   {
+    "t": "text",
+    "text": "Practice, what each condition does:\n- **Wind**: side load on the boom, increased radius, load swing (see the previous lessons).\n- **Ice**: added weight on the boom, jib, rigging and load that the load chart does not count, plus more sail area. Ice on the load is part of the load weight.\n- **Snow**: weight on the boom and load, hidden hazards on the ground, and slick steps, mats and walkways.\n- **Thaw and rain**: softened ground under outriggers and mats."
+   },
+   {
+    "t": "text",
+    "text": "Look at how ground bearing pressure is force divided by area; ground softened by thaw or rain carries less, so mats may need to be larger."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "text",
+    "text": "Practice, adjustments the competent person can make:\n- Reduce the load, or deduct the estimated weight of ice.\n- Shorten the radius or the boom length, or follow the manual's reduced wind chart.\n- Use tag lines to control swing; choose a less windy time.\n- Remove ice and snow from the boom, load and walkways before lifting.\n- Check the ground and mats again after thaw or rain.\n- Stop the work and land the load when the conditions are past what the crane and plan allow."
+   },
+   {
+    "t": "text",
+    "text": "Practice for barge-mounted cranes: wave action makes the barge list and roll, which tips the boom sideways and swings the load. Treat waves like wind: adjust or stop, and follow the manufacturer's limits for list and trim."
+   },
+   {
+    "t": "check",
+    "question": "The rigging and load are coated with ice. What has changed?",
+    "answer": "The load weighs more and has more sail area; account for the ice weight or remove it before lifting."
+   },
+   {
+    "t": "check",
+    "question": "Does the rule set a wind speed at which the competent person must stop?",
+    "answer": "No; it requires the competent person to adjust or stop based on the effect on stability and rated capacity, using the manufacturer's limits."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "2a5135af582f238c51ca",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8039c61afb2d566227a9c90f0d471bee95440dc721871a83ad4581ded760f3ff",
+   "output_sha256": "7987432bb2fbce0374c61514446ae9924cf9d71a9ef91ba7575699315ab50ee7",
+   "created_at": "2026-11-27T22:26:27+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.weather.04",
+  "topic_id": "weather",
+  "ord": 4,
+  "title": "Storm warnings: securing the crane per the manufacturer",
+  "skills": [
+   "weather.storm-warning"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **local storm warning** triggers a specific duty. The competent person must decide whether the manufacturer's securing procedures are needed. The decision must be made when the warning is issued, not when the storm arrives."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(h)",
+    "text": "When a local storm warning has been issued, the competent person must determine whether it is necessary to implement manufacturer recommendations for securing the equipment."
+   },
+   {
+    "t": "text",
+    "text": "The securing steps come from the manual, and the employer must follow manufacturer procedures."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(a)"
+   },
+   {
+    "t": "text",
+    "text": "Practice, typical steps found in manuals (follow your own manual):\n- Land the load; do not leave a load hanging.\n- Lower the boom to the stated position, or lay it down on blocking if the manual requires it at the forecast wind.\n- Retract or remove the jib, or pin it in the stowed position.\n- Secure the hook block so it cannot swing into the boom or structure.\n- Set swing brakes and locks, or set free swing (weathervaning) where the manual calls for it, so the boom can turn with the wind.\n- Leave outriggers set on firm support and check for drainage that can wash out mats.\n- Shut down, lock the cab and remove the key."
+   },
+   {
+    "t": "text",
+    "text": "Practice: laying down a long boom takes time and space. The plan for a storm warning should be ready before the job starts: where the boom goes, how long it takes and who decides. Waiting until gusts are already strong makes lowering the boom a hazard of its own."
+   },
+   {
+    "t": "check",
+    "question": "A local storm warning is issued in the morning for that afternoon. What must happen?",
+    "answer": "The competent person must decide right away whether to carry out the manufacturer's securing recommendations."
+   },
+   {
+    "t": "check",
+    "question": "Where do the securing steps come from?",
+    "answer": "From the manufacturer's procedures for that crane."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "2a5135af582f238c51ca",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8039c61afb2d566227a9c90f0d471bee95440dc721871a83ad4581ded760f3ff",
+   "output_sha256": "7987432bb2fbce0374c61514446ae9924cf9d71a9ef91ba7575699315ab50ee7",
+   "created_at": "2026-11-27T22:26:27+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.weather.05",
+  "topic_id": "weather",
+  "ord": 5,
+  "title": "Lightning, cold and heat",
+  "skills": [
+   "weather.lightning-temperature"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The rules given here do not set lightning or temperature limits. Everything in this lesson is practice, except that the manufacturer's procedures, including any temperature limits, must be followed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(a)"
+   },
+   {
+    "t": "text",
+    "text": "**Lightning**: a crane is often the tallest metal object on site, and a strike can travel down the boom, the load line and the load. Practice:\n- Stop lifting when you hear thunder or see lightning, and land the load.\n- Riggers and signal persons move away from the crane, the load and the load line. Nobody touches the hook or tag lines.\n- Follow the site lightning plan and the manual on whether the operator stays in the cab or leaves it.\n- A common practice is to wait 30 minutes after the last thunder before restarting.\n- If the crane may have been struck, do not use it until it is inspected (see the severe-service lesson)."
+   },
+   {
+    "t": "text",
+    "text": "**Cold**: steel gets less tough at low temperatures, so a shock load can crack a part that would hold in warm weather. Practice:\n- Check the manual for a minimum operating temperature and cold-weather capacity limits.\n- Warm up the hydraulic oil and engine as the manual describes before working the controls.\n- Avoid shock loading: lift, swing and stop smoothly.\n- Watch for frozen brakes, frozen wire rope and ice on wind indicators."
+   },
+   {
+    "t": "text",
+    "text": "**Heat**: practice:\n- Watch hydraulic oil and engine temperature; slow down or pause if they climb.\n- Hot asphalt and soft ground can let outriggers and mats sink.\n- Heat and sun tire the operator and crew; schedule breaks and water."
+   },
+   {
+    "t": "check",
+    "question": "Thunder is heard during a lift. What do the riggers do?",
+    "answer": "Land the load, then move away from the crane, load and load line, and do not touch tag lines or hook."
+   },
+   {
+    "t": "check",
+    "question": "Why avoid shock loading in extreme cold?",
+    "answer": "Cold steel is less tough and can crack under sudden loads."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "2a5135af582f238c51ca",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8039c61afb2d566227a9c90f0d471bee95440dc721871a83ad4581ded760f3ff",
+   "output_sha256": "7987432bb2fbce0374c61514446ae9924cf9d71a9ef91ba7575699315ab50ee7",
+   "created_at": "2026-11-27T22:26:27+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.weather.06",
+  "topic_id": "weather",
+  "ord": 6,
+  "title": "Severe service after weather events, and common mistakes",
+  "skills": [
+   "weather.severe-service"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Weather can damage a crane. When there is a reasonable chance of damage or excessive wear, the rule requires **severe-service** action: stop using the equipment and have a qualified person inspect it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(g)",
+    "text": "the employer must stop using the equipment and a qualified person must:"
+   },
+   {
+    "t": "text",
+    "text": "The rule's own examples include overload, shock loading and corrosion."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(g)",
+    "text": "prolonged exposure to a corrosive atmosphere"
+   },
+   {
+    "t": "text",
+    "text": "Practice, weather events that can count as severe service:\n- A gust swings the load into the structure or snatches it; this is shock loading.\n- Ice on the load put it over capacity.\n- Wind side-loaded the boom past what was planned, or the crane was caught in a storm without being secured.\n- Long work in salt spray near the coast or on a barge; this is a corrosive atmosphere.\n- A suspected lightning strike."
+   },
+   {
+    "t": "text",
+    "text": "What the qualified person does:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(g)(1)",
+    "text": "Inspect the equipment for structural damage to determine if the equipment can continue to be used safely."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(g)(2)",
+    "text": "In light of the use/conditions determine whether any items/conditions listed in paragraph (f) of this section need to be inspected; if so, the qualified person must inspect those items/conditions."
+   },
+   {
+    "t": "text",
+    "text": "If a deficiency is found, the employer follows the deficiency requirements of the periodic inspection rule."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(g)(3)"
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Judging wind at ground level instead of at the boom tip.\n- Watching average wind and ignoring gusts.\n- Mixing up m/s and mph.\n- Forgetting ice weight on the load and rigging.\n- Lifting large, light panels in wind because they are under the chart weight.\n- Waiting for the storm to arrive before deciding on securing.\n- Restarting after a gust strike or lightning without a severe-service inspection."
+   },
+   {
+    "t": "check",
+    "question": "A gust slams a hanging load into the building. Can work continue after the load is landed?",
+    "answer": "No; stop using the crane until a qualified person inspects it for damage."
+   },
+   {
+    "t": "check",
+    "question": "Which rule example of severe service fits months of work in salt spray?",
+    "answer": "Prolonged exposure to a corrosive atmosphere."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "2a5135af582f238c51ca",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8039c61afb2d566227a9c90f0d471bee95440dc721871a83ad4581ded760f3ff",
+   "output_sha256": "7987432bb2fbce0374c61514446ae9924cf9d71a9ef91ba7575699315ab50ee7",
+   "created_at": "2026-11-27T22:26:27+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

@@ -1,0 +1,760 @@
+[
+ {
+  "lesson_id": "l.other-equipment.01",
+  "topic_id": "other-equipment",
+  "ord": 1,
+  "title": "Overhead and gantry cranes: types, scope and fixed requirements",
+  "skills": [
+   "other.overhead-general"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "In general industry, 1910.179 covers every crane that has a **bridge** and a **trolley** on a runway. The bridge travels along the runway. The trolley travels across the bridge and carries the hoist."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(a)(8)",
+    "text": "Overhead crane means a crane with a movable bridge carrying a movable or fixed hoisting mechanism and traveling on an overhead fixed runway structure."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(a)(6)",
+    "text": "Gantry crane means a crane similar to an overhead crane except that the bridge for carrying the trolley or trolleys is rigidly supported on two or more legs running on fixed rails or other runway."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(1)",
+    "text": "This section applies to overhead and gantry cranes, including semigantry, cantilever gantry, wall cranes, storage bridge cranes, and others having the same fundamental characteristics."
+   },
+   {
+    "t": "text",
+    "text": "The section also sorts cranes by where they are controlled from:\n- Cab-operated: the cab is on the bridge or trolley.\n- Floor-operated: a pendant or nonconductive rope, run from the floor.\n- Pulpit-operated: a fixed station not attached to the crane.\n- Remote-operated: any other method, such as radio."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(a)(11)"
+   },
+   {
+    "t": "text",
+    "text": "Only **designated** personnel may run the crane. Designated means the employer selected the person as qualified for the duty. **Appointed** means the employer assigned the person specific responsibilities."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(8)",
+    "text": "Only designated personnel shall be permitted to operate a crane covered by this section."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(a)(35)"
+   },
+   {
+    "t": "text",
+    "text": "Fixed requirements to check on any overhead crane:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(5)",
+    "text": "The rated load of the crane shall be plainly marked on each side of the crane"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(6)(i)",
+    "text": "Minimum clearance of 3 inches overhead and 2 inches laterally shall be provided and maintained between crane and obstructions"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(c)(2)",
+    "text": "Access to the car and/or bridge walkway shall be by a conveniently placed fixed ladder, stairs, or platform requiring no step over any gap exceeding 12 inches (30 cm)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(d)(1)(ii)",
+    "text": "Where footwalks are located in no case shall less than 48 inches of headroom be provided."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(d)(2)(i)",
+    "text": "Footwalks shall be of rigid construction and designed to sustain a distributed load of at least 50 pounds per square foot."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(c)(3)",
+    "text": "Carbon tetrachloride extinguishers shall not be used."
+   },
+   {
+    "t": "text",
+    "text": "Outdoor storage bridges need **automatic rail clamps** and a wind alarm set to a predetermined wind speed. A crane may be **rerated**, but only after an engineer or the manufacturer checks the crane and its supporting structure, followed by a load test and new markings."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(4)",
+    "text": "Outdoor storage bridges shall be provided with automatic rail clamps."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(3)",
+    "text": "Cranes may be modified and rerated provided such modifications and the supporting structure are checked thoroughly for the new rated load by a qualified engineer or the equipment manufacturer."
+   },
+   {
+    "t": "check",
+    "question": "What minimum clearance must be kept between an overhead crane and obstructions?",
+    "answer": "3 inches overhead and 2 inches laterally."
+   },
+   {
+    "t": "check",
+    "question": "A shop wants to raise its crane's rating. Who must check the crane and its supporting structure first?",
+    "answer": "A qualified engineer or the equipment manufacturer. Then the crane is tested and the new rated load is marked."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "043e86b32662574e02a3",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "3d5ef14fc0889a3790f230e51e083d5ec0b714cc7dcf93618b45e533b89da409",
+   "output_sha256": "52e45f7bea5d23be1f4a6c6d6f5a975e4d5cbcc9e1b857afa3dc1ae853dc93df",
+   "created_at": "2026-11-27T22:33:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.other-equipment.02",
+  "topic_id": "other-equipment",
+  "ord": 2,
+  "title": "Overhead crane brakes, stops, limit switches and controls",
+  "skills": [
+   "other.overhead-general"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every hoist must hold its load when power is lost. That job belongs to the **holding brake**, which sets itself automatically."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(f)(1)(i)",
+    "text": "Each independent hoisting unit of a crane shall be equipped with at least one self-setting brake, hereafter referred to as a holding brake, applied directly to the motor shaft or some part of the gear train."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(f)(2)(iii)",
+    "text": "Holding brakes on hoists shall be applied automatically when power is removed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(f)(2)(i)(a)",
+    "text": "125 percent when used with a control braking means other than mechanical."
+   },
+   {
+    "t": "text",
+    "text": "Hot metal cranes with power control braking need at least two holding brakes. Bridge and trolley brakes are sized by a simple rule. Example: a bridge rated at 100 ft/min at full load must stop within 10 ft."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(f)(2)(vi)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(f)(4)(vii)",
+    "text": "Brakes for stopping the motion of the trolley or bridge shall be of sufficient size to stop the trolley or bridge within a distance in feet equal to 10 percent of full load speed in feet per minute when traveling at full speed with full load."
+   },
+   {
+    "t": "text",
+    "text": "**Stops** and bumpers keep the trolley and bridge from running off the end of their travel. Rail sweeps clear objects from in front of the bridge truck wheels."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(e)(1)(iii)",
+    "text": "A stop engaging the tread of the wheel shall be of a height at least equal to the radius of the wheel."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(e)(4)"
+   },
+   {
+    "t": "text",
+    "text": "The **upper limit switch** stops the block before it hits the trolley, just as an anti-two-block device does on a boom crane. In the diagram, look at the contact point the device is there to prevent."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "two-blocking"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(g)(5)(iv)",
+    "text": "The hoisting motion of all electric traveling cranes shall be provided with an overtravel limit switch in the hoisting direction."
+   },
+   {
+    "t": "text",
+    "text": "Controls must stop motion when you let go or when the signal is lost:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(g)(3)(vii)",
+    "text": "Pushbuttons in pendant stations shall return to the “off” position when pressure is released by the crane operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(g)(3)(ix)",
+    "text": "Remote-operated cranes shall function so that if the control signal for any crane motion becomes ineffective the crane motion shall stop."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(g)(5)(i)",
+    "text": "The power supply to the runway conductors shall be controlled by a switch or circuit breaker located on a fixed structure, accessible from the floor, and arranged to be locked in the open position."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(i)",
+    "text": "Except for floor-operated cranes a gong or other effective warning signal shall be provided for each crane equipped with a power traveling mechanism."
+   },
+   {
+    "t": "text",
+    "text": "Rope rules: each part of rope may carry no more than 20 percent of the rope's breaking strength. Example: 20,000 lb on 4 parts is 5,000 lb per part, so the rope must have a nominal breaking strength of at least 25,000 lb."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(h)(2)(i)",
+    "text": "The rated load divided by the number of parts of rope shall not exceed 20 percent of the nominal breaking strength of the rope."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(h)(2)(iii)(a)",
+    "text": "No less than two wraps of rope shall remain on the drum when the hook is in its extreme low position."
+   },
+   {
+    "t": "check",
+    "question": "A trolley is rated at 50 ft/min at full load. Within what distance must its brake stop it?",
+    "answer": "5 ft, which is 10 percent of 50."
+   },
+   {
+    "t": "check",
+    "question": "What happens when you release a pendant pushbutton?",
+    "answer": "It must return to off, and the motion stops."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "043e86b32662574e02a3",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "3d5ef14fc0889a3790f230e51e083d5ec0b714cc7dcf93618b45e533b89da409",
+   "output_sha256": "52e45f7bea5d23be1f4a6c6d6f5a975e4d5cbcc9e1b857afa3dc1ae853dc93df",
+   "created_at": "2026-11-27T22:33:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.other-equipment.03",
+  "topic_id": "other-equipment",
+  "ord": 3,
+  "title": "Overhead crane inspections: frequent, periodic and idle cranes",
+  "skills": [
+   "other.overhead-inspection"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "New and altered cranes are inspected before first use. Cranes in regular service then get two levels of inspection. **Frequent** inspections cover wear items. **Periodic** inspections are complete inspections."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(1)(i)",
+    "text": "Prior to initial use all new and altered cranes shall be inspected to insure compliance with the provisions of this section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(1)(ii)(a)",
+    "text": "Frequent inspection—Daily to monthly intervals."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(1)(ii)(b)",
+    "text": "Periodic inspection—1 to 12-month intervals."
+   },
+   {
+    "t": "text",
+    "text": "Daily frequent-inspection items:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(2)(i)",
+    "text": "All functional operating mechanisms for maladjustment interfering with proper operation. Daily."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(2)(ii)",
+    "text": "Deterioration or leakage in lines, tanks, valves, drain pumps, and other parts of air or hydraulic systems. Daily."
+   },
+   {
+    "t": "text",
+    "text": "**Hooks** and **hoist chains** get a visual check every day. Once a month they get a recorded inspection showing the date, the inspector's signature and the item's identifier. Practice example: a hook with a normal throat of 2 in is out of service once the throat goes past 2.3 in (15 percent more)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(2)(iii)",
+    "text": "For hooks with cracks or having more than 15 percent in excess of normal throat opening or more than 10° twist from the plane of the unbent hook refer to paragraph (l)(3)(iii)(a) of this section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(l)(3)(iii)(a)",
+    "text": "Crane hooks showing defects described in paragraph (j)(2)(iii) of this section shall be discarded."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(j)(2)(iv)"
+   },
+   {
+    "t": "text",
+    "text": "A periodic inspection includes all the frequent items plus:\n- deformed, cracked or corroded members\n- loose bolts or rivets\n- cracked or worn sheaves and drums\n- worn pins, bearings, shafts and gears\n- brake wear\n- load and wind indicators over their full range\n- power plants\n- chain sprockets\n- controller contactors, limit switches and pushbutton stations"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(j)(3)"
+   },
+   {
+    "t": "text",
+    "text": "**Idle cranes** need inspection before going back into service:\n- Idle 1 to 6 months: frequent inspection plus rope inspection.\n- Idle over 6 months: complete inspection plus rope inspection.\n- Standby cranes: at least semiannually."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(j)(4)(i)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(j)(4)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(j)(4)(iii)",
+    "text": "Standby cranes shall be inspected at least semi-annually"
+   },
+   {
+    "t": "text",
+    "text": "At the start of every shift, the operator tries each hoist's upper limit switch with no load on the hook. Inch the block into the limit slowly. If the switch fails, report it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(4)(i)",
+    "text": "If the switch does not operate properly, the appointed person shall be immediately notified."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(l)(3)(i)",
+    "text": "Any unsafe conditions disclosed by the inspection requirements of paragraph (j) of this section shall be corrected before operation of the crane is resumed."
+   },
+   {
+    "t": "check",
+    "question": "A crane has been idle for 8 months. What inspection does it need before use?",
+    "answer": "A complete inspection (frequent and periodic items) plus the rope inspection."
+   },
+   {
+    "t": "check",
+    "question": "What must the monthly hook record include?",
+    "answer": "The date, the inspector's signature, and the hook's serial number or other identifier."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "043e86b32662574e02a3",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "3d5ef14fc0889a3790f230e51e083d5ec0b714cc7dcf93618b45e533b89da409",
+   "output_sha256": "52e45f7bea5d23be1f4a6c6d6f5a975e4d5cbcc9e1b857afa3dc1ae853dc93df",
+   "created_at": "2026-11-27T22:33:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.other-equipment.04",
+  "topic_id": "other-equipment",
+  "ord": 4,
+  "title": "Overhead crane rope inspection, load testing and repair lockout",
+  "skills": [
+   "other.overhead-inspection",
+   "other.overhead-general"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Running ropes get a **monthly certified inspection**. Any rope on a crane that has been idle a month or more is inspected before use, and an appointed person must approve it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(m)(1)",
+    "text": "A thorough inspection of all ropes shall be made at least once a month"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(m)(2)",
+    "text": "All rope which has been idle for a period of a month or more due to shutdown or storage of a crane on which it is installed shall be given a thorough inspection before it is used."
+   },
+   {
+    "t": "text",
+    "text": "Conditions that indicate strength loss:\n- diameter below nominal (lost core support, corrosion, wear)\n- broken outside wires, especially when concentrated\n- worn outside wires\n- corroded or broken wires at end connections\n- damaged or improperly applied end connections\n- severe kinking, crushing, cutting or unstranding"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(m)(1)(vi)"
+   },
+   {
+    "t": "text",
+    "text": "Rope sharply bent over a small sheave wears faster. That is physics, not a rule in this section. In the diagram, look at how bend diameter compares with rope diameter."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "d-over-d"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(h)(2)(v)",
+    "text": "Rope clips attached with U-bolts shall have the U-bolts on the dead or short end of the rope."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(h)(2)(v)",
+    "text": "When a newly installed rope has been in operation for an hour, all nuts on the clip bolts shall be retightened."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(h)(2)(viii)",
+    "text": "Replacement rope shall be the same size, grade, and construction as the original rope furnished by the crane manufacturer, unless otherwise recommended by a wire rope manufacturer due to actual working condition requirements."
+   },
+   {
+    "t": "text",
+    "text": "**Testing**: new and altered cranes get function tests (hoist, trolley, bridge, limit switches) and a rated load test. Example: a 10-ton crane is test-loaded to no more than 12.5 tons unless the manufacturer recommends otherwise."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(k)(2)",
+    "text": "Test loads shall not be more than 125 percent of the rated load unless otherwise recommended by the manufacturer."
+   },
+   {
+    "t": "text",
+    "text": "**Before repairs**: move the crane where it interferes least, put all controllers at off, lock the main or emergency switch open, post out-of-order signs on the crane and at the floor or hook, and block other cranes on the same runway."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(l)(2)(i)(c)",
+    "text": "The main or emergency switch shall be open and locked in the open position."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(l)(2)(i)(e)",
+    "text": "Where other cranes are in operation on the same runway, rail stops or other suitable means shall be provided to prevent interference with the idle crane."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(l)(2)(ii)",
+    "text": "After adjustments and repairs have been made the crane shall not be operated until all guards have been reinstalled, safety devices reactivated and maintenance equipment removed."
+   },
+   {
+    "t": "check",
+    "question": "A 5-ton crane is being load-tested and the manufacturer gives no other figure. What is the maximum test load?",
+    "answer": "6.25 tons (125 percent)."
+   },
+   {
+    "t": "check",
+    "question": "On which end of the rope do the U-bolts of rope clips go?",
+    "answer": "The dead or short end."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "043e86b32662574e02a3",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "3d5ef14fc0889a3790f230e51e083d5ec0b714cc7dcf93618b45e533b89da409",
+   "output_sha256": "52e45f7bea5d23be1f4a6c6d6f5a975e4d5cbcc9e1b857afa3dc1ae853dc93df",
+   "created_at": "2026-11-27T22:33:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.other-equipment.05",
+  "topic_id": "other-equipment",
+  "ord": 5,
+  "title": "Handling the load with an overhead crane",
+  "skills": [
+   "other.overhead-operation"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Load means everything hanging on the hook. Never exceed the rated load except during a test."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(a)(45)",
+    "text": "Load means the total superimposed weight on the load block or hook."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(1)",
+    "text": "The crane shall not be loaded beyond its rated load except for test purposes as provided in paragraph (k) of this section."
+   },
+   {
+    "t": "text",
+    "text": "**Attach** with slings or approved devices. Never wrap the hoist rope or chain around the load."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(2)(i)",
+    "text": "The hoist chain or hoist rope shall be free from kinks or twists and shall not be wrapped around the load."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, compare how the sling bears on the load in each hitch."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "hitches"
+   },
+   {
+    "t": "text",
+    "text": "Practice, not a rule in this section: sling leg tension rises as the angle from horizontal drops. With 2 legs at 30 degrees, each leg carries the full load weight. Example: 2,000 lb load, 2,000 lb per leg. In the diagram, read the tension at each angle."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "sling-angle-tension"
+   },
+   {
+    "t": "text",
+    "text": "**Before and during the lift**:\n- Center the hook over the load so it does not swing.\n- Check that the hoist rope is not kinked and that multiple parts are not twisted.\n- Lift a few inches, then check balance and rigging.\n- Start and stop smoothly, and keep the load clear of obstructions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(i)",
+    "text": "The load shall be well secured and properly balanced in the sling or lifting device before it is lifted more than a few inches."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(vii)",
+    "text": "The operator shall test the brakes each time a load approaching the rated load is handled."
+   },
+   {
+    "t": "text",
+    "text": "Prohibitions and duties:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(iv)",
+    "text": "Cranes shall not be used for side pulls except when specifically authorized by a responsible person who has determined that the stability of the crane is not thereby endangered and that various parts of the crane will not be overstressed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(v)",
+    "text": "While any employee is on the load or hook, there shall be no hoisting, lowering, or traveling."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(vi)",
+    "text": "The employer shall require that the operator avoid carrying loads over people."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(x)",
+    "text": "The employer shall insure that the operator does not leave his position at the controls while the load is suspended."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(xi)",
+    "text": "When starting the bridge and when the load or hook approaches near or over personnel, the warning signal shall be sounded."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(3)(viii)",
+    "text": "The load shall not be lowered below the point where less than two full wraps of rope remain on the hoisting drum."
+   },
+   {
+    "t": "text",
+    "text": "When two or more cranes share a lift, one qualified, responsible person is in charge. That person plans the lift and instructs everyone on positioning, rigging and movements."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(n)(3)(ix)"
+   },
+   {
+    "t": "text",
+    "text": "**Common mistakes**: stopping the hook routinely on the upper limit switch, dragging loads sideways, and walking a load over coworkers."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(n)(4)(ii)",
+    "text": "The hoist limit switch which controls the upper limit of travel of the load block shall never be used as an operating control."
+   },
+   {
+    "t": "check",
+    "question": "When must the operator test the brakes, and how?",
+    "answer": "Each time a load approaching the rated load is handled: raise it a few inches and apply the brakes."
+   },
+   {
+    "t": "check",
+    "question": "Can a worker ride the hook while the bridge travels?",
+    "answer": "No. There is no hoisting, lowering or traveling while anyone is on the load or hook."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "043e86b32662574e02a3",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "3d5ef14fc0889a3790f230e51e083d5ec0b714cc7dcf93618b45e533b89da409",
+   "output_sha256": "52e45f7bea5d23be1f4a6c6d6f5a975e4d5cbcc9e1b857afa3dc1ae853dc93df",
+   "created_at": "2026-11-27T22:33:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.other-equipment.06",
+  "topic_id": "other-equipment",
+  "ord": 6,
+  "title": "1910.180: crawler, locomotive and truck cranes in general industry",
+  "skills": [
+   "other.mobile-general-industry"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "1910.180 covers rope-and-drum mobile cranes used for lifting in general industry. These cranes have a rotating superstructure that hoists and swings loads at various radii."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(b)(1)",
+    "text": "This section applies to crawler cranes, locomotive cranes, wheel mounted cranes of both truck and self-propelled wheel type, and any variations thereof which retain the same fundamental characteristics."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(b)(1)",
+    "text": "Cranes designed for railway and automobile wreck clearances are excepted."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(b)(1)",
+    "text": "The requirements of this section are applicable only to machines when used as lifting cranes."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(b)(3)",
+    "text": "Only designated personnel shall be permitted to operate a crane covered by this section."
+   },
+   {
+    "t": "text",
+    "text": "Where stability governs, ratings are a percentage of the **tipping load** with the boom in the least stable direction. Examples:\n- Crawler without outriggers, tipping load 20,000 lb: rating no more than 15,000 lb (75 percent).\n- Truck crane, tipping load 20,000 lb: rating no more than 17,000 lb (85 percent)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180",
+    "text": "Crawler, without outriggers | 75 Crawler, using outriggers fully extended | 85"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180",
+    "text": "Truck and wheel mounted without outriggers or using outriggers fully extended | 85"
+   },
+   {
+    "t": "text",
+    "text": "The rating includes the **rigging**. Subtract the weight of the block, hook and slings from the chart value to get what you can actually lift. In the diagram, follow the gross-to-net step and the next-longer radius rule."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(1)(ii)(e)",
+    "text": "The weight of all auxiliary handling devices such as hoist blocks, hooks, and slings shall be considered a part of the load rating."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "Lowering the boom lengthens the radius and reduces capacity. That is geometry, not a rule. In the diagram, compare the two radii."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "text",
+    "text": "The user must also account for conditions the chart does not cover: swinging loads, wind, ground, tires, boom length and speed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(c)(1)(iv)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(2)",
+    "text": "A substantial and durable rating chart with clearly legible letters and figures shall be provided with each crane and securely fixed to the crane cab in a location easily visible to the operator while seated at his control station."
+   },
+   {
+    "t": "text",
+    "text": "**Inspection** follows the same frequent and periodic pattern as overhead cranes. The periodic interval can also follow the manufacturer's recommendation. Check control mechanisms daily for maladjustment, and check all safety devices for malfunction."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(2)(ii)",
+    "text": "Periodic inspection: 1- to 12-month intervals, or as specifically recommended by the manufacturer."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(d)(3)(i)",
+    "text": "All control mechanisms for maladjustment interfering with proper operation: Daily."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.180(d)(3)(iii)"
+   },
+   {
+    "t": "check",
+    "question": "A chart shows 10,000 lb. The block and slings weigh 500 lb. What load can you hang?",
+    "answer": "9,500 lb, because the block and slings count as part of the rating."
+   },
+   {
+    "t": "check",
+    "question": "What is the maximum rating for a crawler crane without outriggers, as a percent of the tipping load?",
+    "answer": "75 percent."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "043e86b32662574e02a3",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "3d5ef14fc0889a3790f230e51e083d5ec0b714cc7dcf93618b45e533b89da409",
+   "output_sha256": "52e45f7bea5d23be1f4a6c6d6f5a975e4d5cbcc9e1b857afa3dc1ae853dc93df",
+   "created_at": "2026-11-27T22:33:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

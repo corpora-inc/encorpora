@@ -550,6 +550,9 @@ export class FamilyRepository {
     const flags = !!(
       await client.query("SELECT to_regclass('amp_problem_flags') AS relation")
     ).rows[0]?.relation;
+    const filmFlags = !!(
+      await client.query("SELECT to_regclass('amp_film_flags') AS relation")
+    ).rows[0]?.relation;
     const workbooks = !!(
       await client.query("SELECT to_regclass('amp_workbooks') AS relation")
     ).rows[0]?.relation;
@@ -691,6 +694,11 @@ export class FamilyRepository {
       if (flags)
         await client.query(
           "UPDATE amp_problem_flags SET learner_id=NULL,note=NULL WHERE learner_id=$1",
+          [row.id],
+        );
+      if (filmFlags)
+        await client.query(
+          "UPDATE amp_film_flags SET learner_id=NULL,note=NULL WHERE learner_id=$1",
           [row.id],
         );
       if (preserve) {
@@ -1103,6 +1111,14 @@ export class FamilyRepository {
         datasets.push([
           "problem-report",
           "SELECT to_jsonb(f) AS value FROM amp_problem_flags f JOIN amp_learners l ON l.id=f.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY f.created_at,f.id",
+        ]);
+      if (
+        (await client.query("SELECT to_regclass('amp_film_flags') AS relation"))
+          .rows[0]?.relation
+      )
+        datasets.push([
+          "film-report",
+          "SELECT to_jsonb(f) AS value FROM amp_film_flags f WHERE f.account_id=$1 OR f.learner_id IN (SELECT l.id FROM amp_learners l WHERE l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY f.created_at,f.id",
         ]);
       if (
         (

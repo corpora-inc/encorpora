@@ -23,6 +23,8 @@
 //! plugins (desktop, Android) or the iOS share sheet from Rust only.
 
 mod export;
+/// Pack signing keys compiled into the app (production; lab in dev builds only).
+pub mod pack_keys;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {

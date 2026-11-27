@@ -131,3 +131,18 @@ follow-up never releases a rejected film.
 Approvals without a screenplay committed in Git HEAD are reported and skipped.
 Commit those screenplays and rerun the command to include them. Uncommitted
 changes to an existing screenplay or mismatched reviewed media stop publication.
+
+## Viewer reports ("Report this film")
+
+The learner route's player has a flag beside ✕. Anyone watching can press
+it: the film pauses and a sheet takes reasons (and, for an adult or a learner
+13 or older, a note) for that moment. The server stores the film id, the
+edition played, the problem type and problem, the moment, the layout and the
+viewer kind in `amp_film_flags`. To read them, newest first, as JSON:
+
+```sh
+AMP_DATABASE_URL=... npm run report:film-flags -- --film multiply-fractions--sm --days 30
+```
+
+Leave out `--film` for every film. `--notes` adds the notes in an
+interactive terminal only. No learner or account identifier is printed.
