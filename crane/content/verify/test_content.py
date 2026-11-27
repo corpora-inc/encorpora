@@ -140,5 +140,123 @@ class Grounding(unittest.TestCase):
         self.assertEqual(row, {"section_id": "29cfr1926.1408", "quote": "up to 50 | 10"})
 
 
+class Writers(unittest.TestCase):
+    """Deterministic checks the writers apply to generated rows (no model, no network)."""
+
+    @classmethod
+    def setUpClass(cls):
+        sys.path.insert(0, str(CONTENT / "tasks"))
+        import builders
+
+        cls.b = builders
+
+    def test_intent_similarity_matches_the_engine(self):
+        try:
+            import intent
+        except ImportError:
+            self.skipTest("snowballstemmer not installed")
+        # scores the engine reported for crane-v1-0048 (right hit), -0097 and -0129 (wrong hits at 0.75)
+        q = "how long does the power company have to give us the voltage if we want to go by the table"
+        self.assertAlmostEqual(intent.similarity(q, "How long does the power company have to give the voltage?"), 0.8333, places=3)
+        self.assertAlmostEqual(intent.similarity("Does a crane sitting on a barge need a crane level indicator?",
+                                                 "how out of level can a crane be"), 0.75, places=3)
+        self.assertAlmostEqual(intent.similarity(
+            "For voice signals over the radio, what's the right order to say things? And if we swap in a new signal guy "
+            "after lunch, do we have to go over the voice signals again?",
+            "as the signal guy who do I need to go over voice calls with"), 0.75, places=3)
+        self.assertAlmostEqual(intent.similarity("clearance for 50 kv", "clearance for 200 kv"), 0.5 * 2 * 2 / 6)  # numbers differ
+
+    def test_intent_check_drops_colliding_aliases_and_duplicate_questions(self):
+        try:
+            import intent  # noqa: F401
+        except ImportError:
+            self.skipTest("snowballstemmer not installed")
+
+        def row(aid, sk, q, aliases):
+            return {"answer_id": aid, "skill_id": sk, "question": q, "aliases": aliases, "prov": {"verdict": "pass", "notes": None}}
+
+        rows = [row("a1", "devices.level", "Does a barge crane need a crane level indicator?", ["barge crane level indicator required", "level indicator on a barge", "do floating cranes need a level gauge", "barge rig exempt from the level indicator?"]),
+                row("a2", "inspections.shift", "Which items go on the walkaround each shift?", ["how out of level can a crane be", "shift walkaround items", "what do I look at every shift", "daily walkaround list"]),
+                row("a3", "devices.level", "Does a crane on a barge need a crane level indicator?", ["x", "y", "z"])]
+        stats = {"pass": 3, "fail": 0, "fail_reasons": {}}
+        self.b._neighbour_stems = lambda: []
+        self.b.intent_check(rows, stats)
+        self.assertEqual(rows[2]["prov"]["verdict"], "fail")  # same intent as a1
+        self.assertIn("duplicate intent of a1", rows[2]["prov"]["notes"])
+        self.assertEqual(rows[0]["prov"]["verdict"], "pass")
+        self.assertNotIn("how out of level can a crane be", rows[1]["aliases"])  # the barge question's neighbour
+        self.assertEqual(rows[1]["prov"]["verdict"], "pass")
+        self.assertNotIn("do floating cranes need a level gauge", rows[0]["aliases"])
+
+    def test_direct_answer_first(self):
+        f = self.b.direct_answer_first
+        self.assertEqual(f("Does a barge crane need a level indicator?", [{"t": "text", "text": "No. It is exempt."}]), [])
+        self.assertEqual(f("Do I deduct the block?", [{"t": "text", "text": "Practice: yes. Deduct it."}]), [])
+        self.assertTrue(f("Does a barge crane need a level indicator?", [{"t": "text", "text": "The rule exempts it."}]))
+        self.assertTrue(f("Is it required?", [{"t": "quote", "section_id": "x", "text": "y"}]))
+        self.assertEqual(f("How far from a 50 kV line?", [{"t": "text", "text": "10 feet."}]), [])
+        self.assertTrue(f("How far from a 50 kV line?", [{"t": "text", "text": "It depends on the table."}]))
+        self.assertEqual(f("Can you show a worked example?", [{"t": "text", "text": "Here is one."}]), [])
+
+    def test_key_stands_out(self):
+        self.assertTrue(self.b.key_stands_out(["short", "tiny", "a much longer and more qualified correct answer", "small"], 2))
+        self.assertFalse(self.b.key_stands_out(["about this long", "roughly as long", "same length here", "near the same"], 0))
+
+
+class Budget(unittest.TestCase):
+    """The runner's run budget and version fallback (no model calls)."""
+
+    def setUp(self):
+        import importlib
+        import tempfile
+
+        self.tmp = tempfile.TemporaryDirectory()
+        os.environ["HARVEST_CACHE"] = self.tmp.name
+        os.environ["HARVEST_USAGE_UNKNOWN_OK"] = "1"
+        sys.path.insert(0, str(CONTENT / "tasks"))
+        import common
+
+        self.c = importlib.reload(common)
+
+    def tearDown(self):
+        import importlib
+
+        os.environ.pop("HARVEST_CACHE")
+        os.environ.pop("HARVEST_USAGE_UNKNOWN_OK")
+        importlib.reload(self.c)
+        self.tmp.cleanup()
+
+    def test_guard_stops_before_the_cap(self):
+        self.c.BUDGET_USD, self.c.BUDGET_OUTPUT_TOKENS = 1.25, 10_000
+        for _ in range(3):
+            self.c.record_spend("t", "i", {"model": "claude-opus", "cost_usd": 0.3, "usage": {"output_tokens": 1000}})
+        self.c.USAGE_CEILING = 101
+        self.c.guard("opus", 1)  # 0.9 + 1 x 0.3 fits under 1.25
+        with self.assertRaises(self.c.UsageCeiling):
+            self.c.guard("opus", 2)
+        self.c.guard("codex:x", 5)  # Codex costs no dollars; 3000 + 5 x 1000 tokens fit
+        self.c.record_spend("t", "i", {"model": "codex:x", "cost_usd": None, "usage": {"output_tokens": 9000, "reasoning_output_tokens": 500}})
+        s = self.c.spent()
+        self.assertEqual((s["calls"], s["output_tokens"]), (4, 12500))
+        self.assertEqual(s["by_model"]["codex:x"]["output_tokens"], 9500)
+        with self.assertRaises(self.c.UsageCeiling):
+            self.c.guard("codex:x", 1)  # 12500 + 9500 > 10000
+
+    def test_cached_falls_back_to_an_accepted_older_version(self):
+        d = Path(self.tmp.name) / "td"
+        d.mkdir()
+        (d / "task.yaml").write_text("task_id: tq\nprompt_version: 4\naccept_versions: [3]\nmodel: sonnet\n")
+        (d / "system.md").write_text("s")
+        (d / "schema.json").write_text("{}")
+        task = self.c.Task(d)
+        item = {"input_id": "k", "prompt": "p"}
+        self.assertIsNone(task.cached(item))
+        task.cache.mkdir(parents=True)
+        (task.cache / "k--old.json").write_text(json.dumps({"input_id": "k", "input_sha256": self.c.sha("p"), "prompt_version": "3", "output": 1}))
+        (task.cache / "k--older.json").write_text(json.dumps({"input_id": "k", "input_sha256": self.c.sha("p"), "prompt_version": "2", "output": 2}))
+        (task.cache / "k--other.json").write_text(json.dumps({"input_id": "k", "input_sha256": self.c.sha("q"), "prompt_version": "3", "output": 3}))
+        self.assertEqual(task.cached(item)["output"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
