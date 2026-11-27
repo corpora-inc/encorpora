@@ -56,6 +56,11 @@ class Response:
 
 
 SENT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9(\"'“])")
+# A composed answer labels each quoted section with a text segment such as
+# "§1926.1437(m)(1) Load charts": a heading, not a claim to check.
+HEADING_RE = re.compile(r"^§\s?[\w.\-]+(?:\([^()\s]+\))*(?:\s+(?!.*\b(?:must|shall|may|is|are|required)\b)[^0-9.!?;:\n]{0,80})?$",
+                        re.IGNORECASE)
+TABLE_LABEL_RE = re.compile(r"^Table [\w.\-]+ to §\s?[\w.\-]+(?:\s+Table [\w.\-]+)?$")
 
 
 def split_claims(text: str) -> list[str]:
@@ -117,7 +122,9 @@ class HarvestBackend:
             t = seg.get("t")
             if t == "text":
                 texts.append(seg.get("text", ""))
-                claims.extend(split_claims(seg.get("text", "")))
+                label = seg.get("text", "").strip()
+                if not (HEADING_RE.match(label) or TABLE_LABEL_RE.match(label)):
+                    claims.extend(split_claims(seg.get("text", "")))
             elif t == "quote":
                 quotes.append({"section_id": n(seg.get("section_id", "")), "text": seg.get("text", "")})
                 texts.append(f"“{seg.get('text', '')}”")

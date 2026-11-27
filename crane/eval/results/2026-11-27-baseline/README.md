@@ -37,8 +37,8 @@ parentheses.
 | Must-decline items declined | 92.2% | 98.0% | 100% | 92.2% | 78.4% |
 | Must-decline items handled (judge score 2) | 92.2% | 96.1% | 96.1% | 76.5% | 76.5% |
 | Answerable items declined | 57.4% | 2.4% | 73.9% | 51.5% | 8.6% |
-| Unsupported-claim rate | **0.0%** | 28.7% | 99.7% | 99.5% | 99.7% |
-| Answers with any unsupported claim | **0.0%** | 85.6% | 100% | 100% | 100% |
+| Unsupported-claim rate | **0.0%** | 30.8% | 99.5% | 98.6% | 99.8% |
+| Answers with any unsupported claim | **0.0%** | 87.4% | 100% | 100% | 100% |
 | Citations on the gold section's lineage | 49.8% | 31.5% | 0.0% | 2.7% | 0.6% |
 | Citations that exist in the corpus | **100%** | 96.1% | 84.0% | 89.6% | 55.7% |
 | Quotes verbatim | **100%** (307/307) | no quotes | no quotes | no quotes | no quotes |
@@ -74,8 +74,8 @@ McNemar p = 6e-10). Full tables: `report.md`.
    applicability rows), and the CLI searches it lexically.
 4. **Sonnet alone knows the rules well but cannot show its work.** It is fully
    correct on 80% of answerable items and declines must-decline items as well as
-   the engine does. But 29% of its claims are not supported by the sections it
-   cites, 86% of its answers carry at least one such claim, only 31% of its
+   the engine does. But 31% of its claims are not supported by the sections it
+   cites, 87% of its answers carry at least one such claim, only 31% of its
    citations sit on the gold section's lineage, and 4% cite paragraphs that do
    not exist. It answers from memory, and its citations are often approximate.
 5. **On-device-class models alone are not usable for this.** Gemma 4 E4B is
@@ -110,7 +110,7 @@ McNemar p = 6e-10). Full tables: `report.md`.
 | llama.cpp | v1.1.0 (`17152752261`), CUDA build, `-ngl 99 -fa on`, 3 slots of 4,096 tokens (`lab/serve.sh`) |
 | Model files | Gemma 4 E4B: `google/gemma-4-E4B-it-qat-q4_0-gguf`; Granite 4.2 3B: `ibm-granite/granite-4.2-3b-GGUF` Q4_K_M; gpt-oss 20B: `ggml-org/gpt-oss-20b-GGUF` MXFP4 |
 | Harness and judge host | Mac (Apple silicon), Python 3.14; Claude Code headless |
-| Claude usage | Sonnet answers $5.55; Opus judge + Sonnet re-grade $38.30 (model-off 2.50, Sonnet 18.68, Gemma 3.23, Granite 7.14, gpt-oss 6.75), plus $1.72 on the discarded Granite run; dollar figures are what headless Claude reports per call |
+| Claude usage | Sonnet answers $5.55; Opus judge + Sonnet re-grade $38.30 (model-off 2.50, Sonnet 18.68, Gemma 3.23, Granite 7.14, gpt-oss 6.75), plus $1.72 on the discarded Granite run and $12.97 re-judging support after the fixes below; dollar figures are what headless Claude reports per call |
 
 ## Latency
 
@@ -139,6 +139,12 @@ separate measurement.
   tables as `-table-A`; the set uses `29cfr1926-subpartCC-appC` and `-tableA`.
   `config.yaml` maps them (`match.aliases`). With the aliases, all 505 gold ids
   exist in the pack.
+- When a cited section is too long to show whole, the support judge sees
+  excerpts. A paragraph that shares no words with a claim (an exception
+  elsewhere in the section, say) is left out, which can make the judge slightly
+  lenient. For the engine, "citation precision (supports a claim)" counts only
+  text claims. Its answers are mostly verbatim quotes, which are checked
+  deterministically, so that row (6%) says little about them.
 - The judge is a model. Agreement with the second judge is reported per backend
   (exact agreement 0.93–0.97, Cohen's κ 0.85–0.92).
 - No credentialed crane expert has reviewed the set yet (see `../../README.md`).
@@ -172,7 +178,7 @@ python3 ../../crane/eval/tools/decline_analysis.py ../../crane/eval/results/2026
 Responses resume from `responses/` and judge calls from the judge cache, so a
 re-run pays only for what changed.
 
-## Harness fix in this change
+## Harness fixes in this change
 
 The first Granite run returned an empty `content` on every item: Granite 4.2
 thinks by default and spent the whole 800-token budget in `reasoning_content`.
@@ -182,3 +188,17 @@ and a test covers it. The Granite run in this directory is the re-run with
 thinking off; the invalid run is not included. During the re-run the shared job
 guard stopped the Granite server once at its 95 °C limit; the run resumed from
 the saved responses after the machine cooled.
+
+**The support judge saw truncated text.** It got each cited section cut at
+6,000 characters (16,000 in all). Baselines cite whole sections (§1926.1408,
+§1926.1401), so for 240 of 341 Sonnet answers the paragraph a claim rested on
+could be cut off. When the cited text does not fit, the judge now sees the cited
+paragraphs that contain the claims' words (a greedy cover over the cited
+sections and their descendants, within the same 16,000 characters). When it
+fits, the judge input is unchanged. Every support verdict in this directory comes
+from the fixed harness. Sonnet's unsupported-claim rate moved from 28.7% to 30.8%.
+
+**Section labels were counted as claims.** A composed answer labels each quote
+with a text segment such as "§1926.1437(m)(1) Load charts". These are now
+headings, not claims. Resumed harvest responses are re-parsed from the CLI's raw
+output, so a parser fix reaches stored runs. Tests cover both fixes.

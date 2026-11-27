@@ -227,6 +227,42 @@ class _ThinkingStub(http.server.BaseHTTPRequestHandler):
         pass
 
 
+class HeadingLabels(unittest.TestCase):
+    def test_section_labels_are_not_claims(self):
+        hb = HarvestBackend({"name": "h", "pack": "p"}, None, Normalizer())
+        r = hb.parse({"mode": "composed", "body": [
+            {"t": "text", "text": "§9999.10(a) Inspections"},
+            {"t": "quote", "section_id": "29cfr9999.10(a)", "text": "Inspect before each shift."},
+            {"t": "text", "text": "§9999.10 inspect every 30 days"},
+            {"t": "text", "text": "Table M1 to §9999.37 Table M1"},
+            {"t": "text", "text": "The competent person inspects the crane before each shift."}]}, None)
+        self.assertEqual(r.claims, ["§9999.10 inspect every 30 days",
+                                    "The competent person inspects the crane before each shift."])
+
+
+class CitedText(unittest.TestCase):
+    def test_long_cited_section_shows_the_paragraph_a_claim_rests_on(self):
+        from harvest_eval.runner import cited_text
+        c = Corpus()
+        filler = "General words about cranes and the equipment on site. " * 200   # > PER_CITE
+        c._add("29cfr9999.1", None, filler + " (z) The hook must have a latch.")
+        c._add("29cfr9999.1(a)", "29cfr9999.1", filler)
+        c._add("29cfr9999.1(z)", "29cfr9999.1", "The hook must have a latch.")
+        claims = ["The hook needs a latch."]
+        t = cited_text(c, ["29cfr9999.1"], claims=claims)
+        self.assertIn("[29cfr9999.1(z)] The hook must have a latch.", t)
+        self.assertLessEqual(len(t), 16000)
+        self.assertNotIn("[29cfr9999.1(a)]", t)
+
+    def test_short_cited_text_is_unchanged(self):
+        from harvest_eval.runner import cited_text
+        c = Corpus()
+        c._add("29cfr9999.2", None, "Inspect before each shift.")
+        self.assertEqual(cited_text(c, ["29cfr9999.2"], claims=["Inspect each shift."]),
+                         cited_text(c, ["29cfr9999.2"]))
+        self.assertEqual(cited_text(c, ["29cfr9999.2"]), "[29cfr9999.2] Inspect before each shift.")
+
+
 class EmptyAnswer(unittest.TestCase):
     def test_empty_content_is_an_error_not_an_answer(self):
         srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), _ThinkingStub)
