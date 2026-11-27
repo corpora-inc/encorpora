@@ -158,10 +158,18 @@ def rubric_matches(rubric: dict, answer: str) -> int:
 
 # ================================================================ questions
 
+def skill_text(s) -> str:
+    """Grounding text for one skill; fails loudly when no rule text reaches the prompt."""
+    text, ids = ground(s["section_ids"], cap=20000)
+    if not ids:
+        raise ValueError(f"{s['skill_id']}: no rule text for {s['section_ids']} (figure-only or oversized)")
+    return text
+
+
 def questions_inputs():
     items = []
     for s in skills():
-        text, _ = ground(s["section_ids"], cap=20000)
+        text = skill_text(s)
         n = "8-12" if s["kind"] in ("knowledge", "judgment", "procedure") else "4-8"
         prompt = (skill_header(s) + f"Write {n} facts for this skill (fewer only if the text truly supports fewer).\n\n"
                   f"Rule text:\n{text}\n")
@@ -245,7 +253,7 @@ def questions_write(task, items):
 def answers_inputs():
     items = []
     for s in skills():
-        text, _ = ground(s["section_ids"], cap=20000)
+        text = skill_text(s)
         prompt = skill_header(s) + f"\nRule text:\n{text}\n"
         items.append({"input_id": s["skill_id"], "prompt": prompt, "meta": {"skill_id": s["skill_id"], "topic_id": s["topic_id"]}})
     return items

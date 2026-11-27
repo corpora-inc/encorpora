@@ -1,0 +1,722 @@
+proc_id: sling-inspection
+title: Rigging and Sling Inspection
+kind: inspection
+summary: This procedure covers the daily pre-use inspection of slings and their fastenings and attachments, the
+  removal criteria for each sling type, and the safe rigging practices to confirm before a lift under 29 CFR 1910.184.
+  A competent person designated by the employer must do it each day before a sling is used, and slings must be inspected
+  again during use where service conditions warrant.
+roles:
+- rigger
+- operator
+- competent_person
+- inspector
+lang: en
+section_ids:
+- 29cfr1910.184
+steps:
+- ord: 1
+  phase: Before you start
+  text: Record the competent person designated by the employer to inspect slings today.
+  detail:
+    trainee: Only a person the employer has designated as competent may do the daily sling inspection. Write down
+      who that person is before any sling is checked.
+    operator: Confirm the inspector's name and designation before the first lift of the day. No designated competent
+      person means no sling inspection and no lift.
+    inspector: Verify that a competent person designated by the employer does the daily inspection before use, per
+      1910.184(d).
+  check_kind: note
+  section_ids:
+  - 29cfr1910.184(d)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 2
+  phase: Before you start
+  text: Gather every sling, fastening and attachment planned for today's lifts.
+  detail:
+    trainee: The daily inspection covers the sling plus every hook, shackle, link and fitting used with it. Lay
+      everything out where you can see the full length in good light.
+    operator: Pull each sling and its hardware for inspection before use. Anything not inspected today does not
+      go on the hook.
+    inspector: Confirm that the inspection covered the sling and all fastenings and attachments each day before
+      use, per 1910.184(d).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(d)
+  deficiency:
+    guidance: A sling or attachment has not been inspected today.
+    action: Do not use it until a competent person inspects it.
+    section_id: 29cfr1910.184(d)
+    quote: Each day before being used, the sling and all fastenings and attachments shall be inspected for damage
+      or defects by a competent person designated by the employer.
+  practice_only: false
+  value_unit: null
+- ord: 3
+  phase: Identification
+  text: Confirm each sling has a permanently affixed, legible identification marking for its type.
+  detail:
+    trainee: 'Every sling needs a readable tag or marking. Good means the tag is attached and readable and shows
+      the required items: chain (size, grade, rated capacity, reach); wire rope (safe working load by hitch, angle,
+      number of legs); metal mesh (vertical, basket and choker capacities); fiber rope (capacity by hitch and angle,
+      fiber type, legs); web (capacity by hitch and web material).'
+    operator: If the tag is missing, unreadable, or missing a required item, do not use the sling.
+    inspector: Verify the marking content for each sling type per 1910.184(c)(14), (e)(1), (f)(1), (g)(1), (h)(1)
+      and (i)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(c)(14)
+  - 29cfr1910.184(e)(1)
+  - 29cfr1910.184(f)(1)
+  - 29cfr1910.184(g)(1)
+  - 29cfr1910.184(h)(1)
+  - 29cfr1910.184(i)(1)
+  deficiency:
+    guidance: The sling cannot be identified or rated.
+    action: Remove it from service. Do not use it until a proper marking is in place.
+    section_id: 29cfr1910.184(c)(14)
+    quote: Employers must not use slings without affixed and legible identification markings.
+  practice_only: false
+  value_unit: null
+- ord: 4
+  phase: Identification
+  text: Record the rated capacity for the hitch you will use, as shown on the tag.
+  detail:
+    trainee: Rated capacity depends on the hitch and the sling angle. Read the figure for the exact hitch you plan
+      to use.
+    operator: Write down the tag capacity for the planned hitch and angle. You will compare it to the load weight
+      before the lift.
+    inspector: Record the manufacturer's marked safe working load. A sling must not be loaded beyond it, per 1910.184(c)(13).
+  check_kind: note
+  section_ids:
+  - 29cfr1910.184(c)(13)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 5
+  phase: Records and repairs
+  text: Verify proof test certificates for new, repaired or welded slings and attachments as required.
+  detail:
+    trainee: 'Some slings must be proof tested by the manufacturer or an equivalent entity before use: new, repaired
+      or reconditioned alloy chain; welded wire rope end attachments (twice rated capacity); new and repaired metal
+      mesh (at least 1 1/2 times rated capacity); and repaired web slings (twice rated capacity). The certificate
+      must be on file.'
+    operator: No certificate on file for a sling that needs one means do not use it.
+    inspector: Examine the retained certificates per 1910.184(e)(4), (f)(4)(ii), (g)(5) and (i)(8)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(e)(4)
+  - 29cfr1910.184(f)(4)(ii)
+  - 29cfr1910.184(g)(5)
+  - 29cfr1910.184(i)(8)(ii)
+  deficiency:
+    guidance: There is no proof test record for a sling or attachment that requires one.
+    action: Hold it out of service until a proof test certificate is produced.
+    section_id: 29cfr1910.184(f)(4)(ii)
+    quote: All welded end attachments shall not be used unless proof tested by the manufacturer or equivalent entity
+      at twice their rated capacity prior to initial use.
+  practice_only: false
+  value_unit: null
+- ord: 6
+  phase: Records and repairs
+  text: Confirm each alloy chain sling's thorough periodic inspection is within 12 months.
+  detail:
+    trainee: Chain slings also need a thorough periodic inspection, separate from the daily check. The record shows
+      the most recent month it was done.
+    operator: Check the record. If the last thorough inspection was more than 12 months ago, do not use the sling.
+    inspector: Verify the record of the most recent inspection month. The interval is set by use, service severity,
+      nature of lifts and experience, and is never longer than 12 months, per 1910.184(e)(3)(i)-(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(e)(3)(i)
+  - 29cfr1910.184(e)(3)(ii)
+  deficiency:
+    guidance: The chain sling is overdue for its thorough inspection, or there is no record.
+    action: Remove it from use until a competent person completes and records a thorough inspection.
+    section_id: 29cfr1910.184(e)(3)(i)
+    quote: Such inspections shall in no event be at intervals greater than once every 12 months.
+  practice_only: false
+  value_unit: null
+- ord: 7
+  phase: Records and repairs
+  text: Reject slings with makeshift, temporary or prohibited repairs.
+  detail:
+    trainee: Look for field fixes, such as bolts or rods used as links, mechanical coupling links or low carbon
+      links joining broken chain, or temporary web repairs. Repaired fiber rope slings are never allowed. Repaired
+      metal mesh must be marked or recorded with the date, nature of repair and who did it.
+    operator: Any homemade or temporary repair means the sling is out of service. For repaired mesh, check for the
+      repair tag or record.
+    inspector: Verify repairs against 1910.184(e)(2)(ii), (e)(7)(i)-(ii), (g)(8)(i)-(ii), (h)(6) and (i)(8)(i),
+      (iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(e)(2)(ii)
+  - 29cfr1910.184(e)(7)(i)
+  - 29cfr1910.184(e)(7)(ii)
+  - 29cfr1910.184(g)(8)(i)
+  - 29cfr1910.184(g)(8)(ii)
+  - 29cfr1910.184(h)(6)
+  - 29cfr1910.184(i)(8)(i)
+  - 29cfr1910.184(i)(8)(iii)
+  deficiency:
+    guidance: The sling has an improper repair, so its strength is unknown.
+    action: Remove it from service. Send it to the manufacturer or an equivalent entity, or destroy it if repair
+      is prohibited.
+    section_id: 29cfr1910.184(i)(8)(iii)
+    quote: Slings, including webbing and fittings, which have been repaired in a temporary manner shall not be used.
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Alloy steel chain
+  text: Measure the most worn link and compare it to the Table N-184-1 minimum.
+  detail:
+    trainee: Chain wears thin where links rub together. Measure the thinnest spot and compare it to the table. For
+      example, 1/2-inch chain must not be below 25/64 inch.
+    operator: If the reading at any point of a link is less than the table minimum for that chain size, the chain
+      is out of service.
+    inspector: Record the measured size against Table N-184-1, per 1910.184(e)(8).
+  check_kind: value
+  value_unit: in
+  section_ids:
+  - 29cfr1910.184(e)(8)
+  - 29cfr1910.184
+  deficiency:
+    guidance: The link has worn below the allowable size.
+    action: Remove the chain from service immediately and tag it.
+    section_id: 29cfr1910.184(e)(8)
+    quote: If the chain size at any point of the link is less than that stated in Table N-184-1, the employer must
+      remove the chain from service.
+  practice_only: false
+- ord: 9
+  phase: Alloy steel chain
+  text: Measure chain reach and check for stretch, defective welds and deformation.
+  detail:
+    trainee: Stretched chain is longer than the reach on its tag, and the links may look narrowed or stuck together.
+      Check the welds and look for bent or twisted links.
+    operator: Compare the measured reach to the tagged reach. Any increase in length, defective weld or deformation
+      removes the sling from service.
+    inspector: Document wear, welds, deformation and increase in length, per 1910.184(e)(3)(iii).
+  check_kind: value
+  value_unit: in
+  section_ids:
+  - 29cfr1910.184(e)(3)(iii)
+  deficiency:
+    guidance: The chain has stretched or is deformed or badly welded.
+    action: Remove it from service immediately.
+    section_id: 29cfr1910.184(e)(3)(iii)
+    quote: Where such defects or deterioration are present, the sling shall be immediately removed from service.
+  practice_only: false
+- ord: 10
+  phase: Alloy steel chain
+  text: Inspect master links, coupling links and attachments for cracks, deformation and adequate rating.
+  detail:
+    trainee: Every link and fitting in the chain sling must be free of cracks and bends. Hooks, rings and links
+      must be rated at least as high as the chain.
+    operator: Reject any cracked or deformed component. If an attachment is rated lower than the chain, limit the
+      sling to the rating of its weakest component.
+    inspector: Verify component condition and rating per 1910.184(e)(9)(i) and (e)(2)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(e)(9)(i)
+  - 29cfr1910.184(e)(2)(i)
+  deficiency:
+    guidance: A component is cracked or deformed.
+    action: Remove the sling from service.
+    section_id: 29cfr1910.184(e)(9)(i)
+    quote: Alloy steel chain slings with cracked or deformed master links, coupling links or other components shall
+      be removed from service.
+  practice_only: false
+  value_unit: null
+- ord: 11
+  phase: Alloy steel chain
+  text: Confirm the chain sling has not been heated above 1000 °F.
+  detail:
+    trainee: Heat ruins the strength of alloy chain. Look for heat discoloration and ask where the sling has been
+      used.
+    operator: If the chain was heated above 1000 °F, remove it permanently. For service above 600 °F, reduce the
+      working load limit per the manufacturer's recommendations.
+    inspector: Verify heat exposure history and any required derating, per 1910.184(e)(6).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(e)(6)
+  deficiency:
+    guidance: The chain has been overheated.
+    action: Permanently remove it from service.
+    section_id: 29cfr1910.184(e)(6)
+    quote: Employers must permanently remove an alloy steel-chain slings from service if it is heated above 1000
+      degrees F.
+  practice_only: false
+  value_unit: null
+- ord: 12
+  phase: Hooks
+  text: Measure hook throat opening increase and check for cracks or twist.
+  detail:
+    trainee: An overloaded hook opens up. Compare the throat at its narrowest point to the hook's normal opening.
+      Also look for cracks, and sight along the hook for twist.
+    operator: Remove the sling if the throat has opened more than 15 percent, the hook is twisted more than 10 degrees
+      from its plane, or (on chain slings) the hook is cracked.
+    inspector: Record the percent opening and twist, per 1910.184(e)(9)(ii) and (f)(5)(vi). Keeping a recorded original
+      throat dimension is practice.
+  check_kind: value
+  value_unit: percent
+  section_ids:
+  - 29cfr1910.184(e)(9)(ii)
+  - 29cfr1910.184(f)(5)(vi)
+  deficiency:
+    guidance: The hook has been overloaded or damaged.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(e)(9)(ii)
+    quote: Slings shall be removed from service if hooks are cracked, have been opened more than 15 percent of the
+      normal throat opening measured at the narrowest point or twisted more than 10 degrees from the plane of the
+      unbent hook.
+  practice_only: false
+- ord: 13
+  phase: Wire rope
+  text: Count broken wires in the worst rope lay.
+  detail:
+    trainee: A rope lay is the length of rope in which one strand makes a full turn around the rope. Run a rag along
+      the rope to find broken wires, then count them within one lay.
+    operator: Remove the sling at 10 randomly distributed broken wires in one lay, or 5 broken wires in one strand
+      in one lay.
+    inspector: Record the worst count, per 1910.184(f)(5)(i).
+  check_kind: value
+  value_unit: broken wires
+  section_ids:
+  - 29cfr1910.184(f)(5)(i)
+  deficiency:
+    guidance: The broken wire count has reached the removal limit.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(f)(5)
+    quote: 'Wire rope slings shall be immediately removed from service if any of the following conditions are present:'
+  practice_only: false
+- ord: 14
+  phase: Wire rope
+  text: Check outside wires for wear or scraping of one-third their original diameter.
+  detail:
+    trainee: Worn outside wires look flat and shiny. Compare a worn wire to an unworn one.
+    operator: If wear or scraping has removed one-third of an outside wire's original diameter, the sling is out.
+    inspector: Document the wear location and extent, per 1910.184(f)(5)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(f)(5)(ii)
+  deficiency:
+    guidance: The rope is excessively worn.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(f)(5)
+    quote: 'Wire rope slings shall be immediately removed from service if any of the following conditions are present:'
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Wire rope
+  text: Check for kinks, crushing, bird caging or other distortion of the rope.
+  detail:
+    trainee: Good rope is round and the strands lie evenly. Kinks, flat spots and strands opened like a cage are
+      damage.
+    operator: Any distortion of the rope structure means the sling is removed.
+    inspector: Document distortion, per 1910.184(f)(5)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(f)(5)(iii)
+  deficiency:
+    guidance: The rope structure is damaged.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(f)(5)
+    quote: 'Wire rope slings shall be immediately removed from service if any of the following conditions are present:'
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Wire rope
+  text: Check for heat damage and corrosion of rope and end attachments.
+  detail:
+    trainee: Look for heat discoloration, weld spatter, and rust or pitting. A fiber core rope exposed to more than
+      200 °F is finished.
+    operator: Remove the sling for any evidence of heat damage or corrosion. Remove fiber core rope permanently
+      after exposure above 200 °F. Non-fiber core rope used above 400 °F or below minus 60 °F follows the manufacturer's
+      recommendations.
+    inspector: Verify condition and temperature exposure, per 1910.184(f)(5)(iv), (f)(5)(vii) and (f)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(f)(5)(iv)
+  - 29cfr1910.184(f)(5)(vii)
+  - 29cfr1910.184(f)(3)
+  deficiency:
+    guidance: The rope or its fittings are heat damaged or corroded.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(f)(3)
+    quote: Fiber core wire rope slings of all grades shall be permanently removed from service if they are exposed
+      to temperatures in excess of 200 °F.
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Wire rope
+  text: Inspect end attachments for cracks, deformation or wear.
+  detail:
+    trainee: Check eyes, sleeves, thimbles and fittings. They should be intact, with no cracks or bends and no worn
+      grooves.
+    operator: A cracked, deformed or worn end attachment means the sling is removed.
+    inspector: Document the condition of each end attachment, per 1910.184(f)(5)(v).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(f)(5)(v)
+  deficiency:
+    guidance: An end attachment is compromised.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(f)(5)
+    quote: 'Wire rope slings shall be immediately removed from service if any of the following conditions are present:'
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Wire rope
+  text: Verify minimum clear rope length between splices, sleeves or end fittings.
+  detail:
+    trainee: Splices and fittings that sit too close together weaken the sling. Each sling type has a minimum clear
+      length.
+    operator: Cable laid, 6 × 19 and 6 × 37 slings need 10 times the component rope diameter. Braided slings need
+      40 times. Grommets and endless slings need a circumference of 96 times their body diameter.
+    inspector: Measure against 1910.184(f)(2)(i)-(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(f)(2)(i)
+  - 29cfr1910.184(f)(2)(ii)
+  - 29cfr1910.184(f)(2)(iii)
+  deficiency:
+    guidance: The sling is not built to the minimum length requirement.
+    action: Do not use the sling. Remove it from service.
+    section_id: 29cfr1910.184(f)(2)(i)
+    quote: Cable laid and 6 × 19 and 6 × 37 slings shall have a minimum clear length of wire rope 10 times the component
+      rope diameter between splices, sleeves or end fittings.
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Metal mesh
+  text: Check mesh fabric for broken edge welds, wire loss and stiffness.
+  detail:
+    trainee: The mesh should flex freely and the edge joints should be intact. Worn or corroded wire gets thinner.
+    operator: Remove the sling for a broken weld or brazed joint along the edge, a 25 percent reduction in wire
+      diameter from abrasion or 15 percent from corrosion, or loss of flexibility from distortion.
+    inspector: Document the fabric condition, per 1910.184(g)(9)(i)-(iii). Confirm no coatings that diminish rated
+      capacity, per (g)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(g)(9)(i)
+  - 29cfr1910.184(g)(9)(ii)
+  - 29cfr1910.184(g)(9)(iii)
+  - 29cfr1910.184(g)(4)
+  deficiency:
+    guidance: The mesh fabric meets a removal condition.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(g)(9)
+    quote: 'Metal mesh slings shall be immediately removed from service if any of the following conditions are present:'
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Metal mesh
+  text: Measure mesh handles for slot, eye and section distortion.
+  detail:
+    trainee: Handles bend when overloaded. Compare the slot depth, eye width and metal thickness to their original
+      dimensions, and check the handle lies flat in its plane.
+    operator: Remove the sling if the female slot depth has increased more than 10 percent, the eye width has decreased
+      more than 10 percent, there is a 15 percent loss of cross section at the eye, or either handle is out of plane.
+    inspector: Document handle measurements, per 1910.184(g)(9)(iv)-(vii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(g)(9)(iv)
+  - 29cfr1910.184(g)(9)(v)
+  - 29cfr1910.184(g)(9)(vi)
+  - 29cfr1910.184(g)(9)(vii)
+  deficiency:
+    guidance: A handle is distorted or worn beyond the limit.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(g)(9)
+    quote: 'Metal mesh slings shall be immediately removed from service if any of the following conditions are present:'
+  practice_only: false
+  value_unit: null
+- ord: 21
+  phase: Fiber rope
+  text: Inspect fiber rope for wear, powdered fiber, cut fibers, uneven strands, rot and distorted hardware.
+  detail:
+    trainee: Open the strands slightly and look inside. Powder between the strands means internal wear. Good rope
+      has even, round strands and normal color.
+    operator: 'Remove the sling for any of these: abnormal wear, powdered fiber, broken or cut fibers, variation
+      in strand size or roundness, discoloration or rotting, or distorted hardware.'
+    inspector: Document each condition found, per 1910.184(h)(5)(i)-(vi).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(h)(5)(i)
+  - 29cfr1910.184(h)(5)(ii)
+  - 29cfr1910.184(h)(5)(iii)
+  - 29cfr1910.184(h)(5)(iv)
+  - 29cfr1910.184(h)(5)(v)
+  - 29cfr1910.184(h)(5)(vi)
+  deficiency:
+    guidance: The rope meets a removal condition.
+    action: Remove the sling from service immediately. Repair is not permitted.
+    section_id: 29cfr1910.184(h)(5)
+    quote: 'Natural and synthetic fiber rope slings shall be immediately removed from service if any of the following
+      conditions are present:'
+  practice_only: false
+  value_unit: null
+- ord: 22
+  phase: Fiber rope
+  text: Check splices, tails, clear length and end attachments on fiber rope slings.
+  detail:
+    trainee: Proper splices have enough tucks and tails that are not cut flush. Knots and clamps not made for fiber
+      rope are not splices. End fittings must be smooth.
+    operator: Manila eye splices need 3 or more full tucks; synthetic eye splices need 4 or more. Tails must project
+      6 rope diameters (under 1 inch) or 6 inches (1 inch and larger). Clear length between eye splices must be
+      10 rope diameters. The included angle at the eye splice must not exceed 60 degrees. There must be no sharp
+      fittings.
+    inspector: Verify against 1910.184(h)(3)(i)-(vii) and (h)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(h)(3)(i)
+  - 29cfr1910.184(h)(3)(ii)
+  - 29cfr1910.184(h)(3)(iii)
+  - 29cfr1910.184(h)(3)(iv)
+  - 29cfr1910.184(h)(3)(v)
+  - 29cfr1910.184(h)(3)(vi)
+  - 29cfr1910.184(h)(3)(vii)
+  - 29cfr1910.184(h)(4)
+  deficiency:
+    guidance: The splice or end attachment does not meet minimum requirements.
+    action: Do not use the sling. Remove it from service.
+    section_id: 29cfr1910.184(h)(4)
+    quote: Fiber rope slings shall not be used if end attachments in contact with the rope have sharp edges or projections.
+  practice_only: false
+  value_unit: null
+- ord: 23
+  phase: Synthetic web
+  text: Inspect web slings for burns, melting, cuts, stitch damage, split selvage and distorted fittings.
+  detail:
+    trainee: Run the whole web through your hands. Good webbing has uniform width and thickness, intact edges and
+      stitching, and fittings with no sharp edges.
+    operator: Remove the sling for acid or caustic burns, melting or charring, snags, punctures, tears or cuts,
+      broken or worn stitches, or distorted fittings. Also reject split selvage edges or sharp fittings.
+    inspector: Document the findings, per 1910.184(i)(9)(i)-(v), (i)(2) and (i)(3)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(i)(9)(i)
+  - 29cfr1910.184(i)(9)(ii)
+  - 29cfr1910.184(i)(9)(iii)
+  - 29cfr1910.184(i)(9)(iv)
+  - 29cfr1910.184(i)(9)(v)
+  - 29cfr1910.184(i)(2)
+  - 29cfr1910.184(i)(3)(ii)
+  deficiency:
+    guidance: The web sling meets a removal condition.
+    action: Remove the sling from service immediately.
+    section_id: 29cfr1910.184(i)(9)
+    quote: 'Synthetic web slings shall be immediately removed from service if any of the following conditions are
+      present:'
+  practice_only: false
+  value_unit: null
+- ord: 24
+  phase: Service conditions
+  text: Confirm sling material suits the job's temperature and chemical exposure.
+  detail:
+    trainee: Heat and chemicals weaken slings. Nylon web must not be used around acids or phenolics. Polyester,
+      polypropylene and aluminum-fitted web must not be used around caustics.
+    operator: 'Polyester and nylon web: 180 °F max. Polypropylene web: 200 °F max. Fiber rope: minus 20 °F to 180
+      °F, and wet frozen rope follows the manufacturer. Plain metal mesh: minus 20 °F to 550 °F. PVC or neoprene
+      mesh: 0 to 200 °F.'
+    inspector: Verify job conditions against 1910.184(i)(6), (i)(7), (h)(2) and (g)(7).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(i)(6)(i)
+  - 29cfr1910.184(i)(6)(ii)
+  - 29cfr1910.184(i)(6)(iii)
+  - 29cfr1910.184(i)(7)
+  - 29cfr1910.184(h)(2)
+  - 29cfr1910.184(g)(7)
+  deficiency:
+    guidance: The sling material is not suitable for the job conditions.
+    action: Select a suitable sling, or follow the manufacturer's recommendations where the rule allows.
+    section_id: 29cfr1910.184(i)(7)
+    quote: Synthetic web slings of polyester and nylon shall not be used at temperatures in excess of 180 °F.
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: Removal from service
+  text: Immediately tag and remove every damaged or defective sling from the work area.
+  detail:
+    trainee: A failed sling must leave the job right away so nobody grabs it by mistake.
+    operator: Tag it, segregate it, and tell the supervisor. Do not set it back with the good gear.
+    inspector: Verify immediate removal of damaged or defective slings, per 1910.184(d) and (c)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(d)
+  - 29cfr1910.184(c)(1)
+  deficiency:
+    guidance: A defective sling is still available for use.
+    action: Remove it from service now.
+    section_id: 29cfr1910.184(d)
+    quote: Damaged or defective slings shall be immediately removed from service.
+  practice_only: false
+  value_unit: null
+- ord: 26
+  phase: Removal from service
+  text: Photograph each defect and the out-of-service tag.
+  detail:
+    trainee: A photo shows what was wrong and supports the removal decision.
+    operator: Take one close-up of the defect and one of the tag, and include the sling ID in the frame.
+    inspector: Attach the photos to the inspection record. This is good practice; the rule does not require photos.
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 27
+  phase: Before the lift
+  text: Confirm load weight does not exceed the sling's rated capacity for the hitch and angle.
+  detail:
+    trainee: Sling angle increases leg tension, which is basic physics. Use the tag capacity for the actual hitch
+      and angle.
+    operator: Compare the load weight to the tag capacity, and to the weakest component's rating. If it is over,
+      change the rigging.
+    inspector: Verify the load does not exceed rated capacity, per 1910.184(c)(4), (c)(13) and (e)(2)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(c)(4)
+  - 29cfr1910.184(c)(13)
+  - 29cfr1910.184(e)(2)(i)
+  deficiency:
+    guidance: The sling would be overloaded.
+    action: Stop. Re-rig with a higher capacity sling or hitch before lifting.
+    section_id: 29cfr1910.184(c)(4)
+    quote: Slings shall not be loaded in excess of their rated capacities.
+  practice_only: false
+  value_unit: null
+- ord: 28
+  phase: Before the lift
+  text: Confirm slings are not shortened with knots, bolts or makeshift devices, and legs are not kinked.
+  detail:
+    trainee: Knots and twisted legs cut sling strength. Use the correct length sling instead.
+    operator: Look along each leg. If it is knotted, bolted or kinked, re-rig.
+    inspector: Verify compliance with 1910.184(c)(2) and (c)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(c)(2)
+  - 29cfr1910.184(c)(3)
+  deficiency:
+    guidance: The sling is improperly shortened or kinked.
+    action: Stop and re-rig correctly before lifting.
+    section_id: 29cfr1910.184(c)(2)
+    quote: Slings shall not be shortened with knots or bolts or other makeshift devices.
+  practice_only: false
+  value_unit: null
+- ord: 29
+  phase: Before the lift
+  text: Attach slings securely, pad sharp edges, and balance basket hitches.
+  detail:
+    trainee: The sling must grip the load, sharp corners need softeners, and basket loads must be centered so they
+      don't slide. Keep your hands out from between the sling and the load while it tightens.
+    operator: Check the attachment, the padding at every edge and the balance. Keep hands clear while taking up
+      slack.
+    inspector: Verify compliance with 1910.184(c)(5), (c)(6), (c)(7) and (c)(10).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(c)(5)
+  - 29cfr1910.184(c)(6)
+  - 29cfr1910.184(c)(7)
+  - 29cfr1910.184(c)(10)
+  deficiency:
+    guidance: The rigging is insecure, unprotected or unbalanced.
+    action: Stop and correct the rigging before the lift.
+    section_id: 29cfr1910.184(c)(6)
+    quote: Slings shall be securely attached to their loads.
+  practice_only: false
+  value_unit: null
+- ord: 30
+  phase: Before the lift
+  text: Clear all people from the load and confirm the load path is free of obstructions.
+  detail:
+    trainee: No one stands under or near a load about to be lifted or already in the air. The load must not hit
+      anything.
+    operator: Check the area and the path. If anyone is in the zone, or the path is blocked, hold the lift.
+    inspector: Verify compliance with 1910.184(c)(8) and (c)(9).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(c)(8)
+  - 29cfr1910.184(c)(9)
+  deficiency:
+    guidance: People or obstructions are in the hazard zone.
+    action: Hold the lift until the area is clear.
+    section_id: 29cfr1910.184(c)(9)
+    quote: All employees shall be kept clear of loads about to be lifted and of suspended loads.
+  practice_only: false
+  value_unit: null
+- ord: 31
+  phase: During and after the lift
+  text: Lift smoothly with no shock loading; never pull a sling from under a resting load.
+  detail:
+    trainee: Jerking the load multiplies the force on the sling. Dragging a sling out from under a load damages
+      it.
+    operator: Take up slack slowly. Land the load on dunnage so the sling can be removed freely.
+    inspector: Verify compliance with 1910.184(c)(11) and (c)(12).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(c)(11)
+  - 29cfr1910.184(c)(12)
+  deficiency:
+    guidance: The sling may be overstressed or damaged.
+    action: Stop. Have the competent person re-inspect the sling before further use.
+    section_id: 29cfr1910.184(c)(11)
+    quote: Shock loading is prohibited.
+  practice_only: false
+  value_unit: null
+- ord: 32
+  phase: During and after the lift
+  text: Re-inspect slings during use when service conditions warrant.
+  detail:
+    trainee: Severe or changing conditions, such as heat, sharp edges or heavy repeated lifts, call for checks during
+      the shift, not just at the start.
+    operator: If conditions are harsh or the sling may have been damaged, stop and re-inspect.
+    inspector: Verify that additional inspections are done where warranted, per 1910.184(d).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.184(d)
+  deficiency:
+    guidance: Service conditions call for a re-check that was not done.
+    action: Stop using the sling until it is re-inspected.
+    section_id: 29cfr1910.184(d)
+    quote: Additional inspections shall be performed during sling use, where service conditions warrant.
+  practice_only: false
+  value_unit: null
+- ord: 33
+  phase: Records
+  text: Record the month of each alloy chain sling's thorough inspection, where one was performed.
+  detail:
+    trainee: The employer must keep a record of the most recent month each chain sling was thoroughly inspected.
+    operator: Enter the sling ID and inspection month in the record.
+    inspector: Confirm the record is kept and available for examination, per 1910.184(e)(3)(ii).
+  check_kind: note
+  section_ids:
+  - 29cfr1910.184(e)(3)(ii)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 34
+  phase: Records
+  text: Log today's daily inspection results for each sling.
+  detail:
+    trainee: A written log shows which slings passed and which were removed.
+    operator: Record the sling ID, result and inspector name.
+    inspector: Keeping a written daily log is good practice; 1910.184(d) requires the inspection but not a daily
+      record.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+prov:
+  prov_id: d5453bff60a173a7c2dc
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 5b8f009670cc703d80eac8e4b17dbd639f95d8aae5f33ba8718cc0dd57dcb737
+  output_sha256: ff8cbeba45d25b19db577d6775f38a3eb1bec4738b58e6cdbf23075cd7142f00
+  created_at: '2026-11-27T06:53:28+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

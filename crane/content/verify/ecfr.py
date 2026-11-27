@@ -4,12 +4,19 @@ This is the content lane's own index, used to verify every quote and
 section_id in crane/content before the pipeline bakes it. It follows the
 CONTRACT section_id scheme ('29cfr1926.1408(a)(2)'). Tables and appendices:
 
-    29cfr1926.1408          section (text = every paragraph and table cell, in order)
+    29cfr1926.1408          section (text = every paragraph and table row, in order)
     29cfr1926.1408(a)(2)    paragraph (own text, marker stripped)
     29cfr1926.cc.appA       Appendix A to Subpart CC (B, C likewise)
 
 Usage:
     python ecfr.py [--date YYYY-MM-DD] [--out sections.json]
+
+A table is its caption, then one row per line with cells joined by " | ",
+the same rendering as the pipeline's stage (harvest/pipeline parsers/ecfr.py),
+so a quote that verifies here also verifies at bake time. A node's `own` keeps
+the older space-joined rendering, which the generation prompts were built from
+(changing it would re-key every cached output); `own_cells` holds the rows
+when they differ, and `text` is built from it.
 
 The fetch is cached under $HARVEST_CACHE (default ~/.cache/crane-content).
 Standard library only.
@@ -129,13 +136,15 @@ class Builder:
         self.order: list[str] = []
         self.stack: list[tuple[int, str, int]] = []  # (level, token, ordinal)
 
-    def add(self, sid, parent, kind, citation, heading, text):
-        if sid in self.nodes:
-            self.nodes[sid]["own"] = norm(self.nodes[sid]["own"] + " " + text)
-            return
-        self.nodes[sid] = {"section_id": sid, "parent_id": parent, "kind": kind, "citation": citation,
-                           "heading": heading, "own": norm(text), "source_id": self.source_id}
-        self.order.append(sid)
+    def add(self, sid, parent, kind, citation, heading, text, cells=None):
+        n = self.nodes.get(sid)
+        if n is None:
+            n = self.nodes[sid] = {"section_id": sid, "parent_id": parent, "kind": kind, "citation": citation,
+                                   "heading": heading, "own": "", "source_id": self.source_id}
+            self.order.append(sid)
+        if cells is not None or "own_cells" in n:
+            n["own_cells"] = norm(n.get("own_cells", n["own"]) + " " + (cells if cells is not None else text))
+        n["own"] = norm(n["own"] + " " + text)
 
     def path(self):
         return self.base + "".join(f"({t})" for _, t, _ in self.stack)
@@ -227,9 +236,13 @@ def parse_div8(xml: str, base: str, source_id: str, b: Builder):
     for idx, (kind, raw) in enumerate(plist):
         if kind == "table":
             cap = re.search(r'<P class="title">(.*?)</P>', raw, re.S)
-            cells = [norm(strip_tags(c)) for c in re.findall(r"<T[HD][^>]*>(.*?)</T[HD]>", raw, re.S)]
-            text = " ".join(([norm(strip_tags(cap.group(1)))] if cap else []) + cells)
-            b.add(base, None, "x", "", None, text)  # tables belong to the section, not the last paragraph
+            caption = [norm(strip_tags(cap.group(1)))] if cap else []
+            rows = [[norm(strip_tags(c)) for c in re.findall(r"<T[HD][^>]*>(.*?)</T[HD]>", tr, re.S)]
+                    for tr in re.findall(r"<TR[^>]*>(.*?)</TR>", raw, re.S)]
+            text = " ".join(caption + [c for r in rows for c in r])
+            cells = "\n".join(caption + [" | ".join(r) for r in rows if r])
+            # tables belong to the section, not the last paragraph
+            b.add(base, None, "x", "", None, text, cells)
             continue
         if kind == "hed":
             continue
@@ -304,7 +317,8 @@ def build(date: str | None = None) -> dict:
             n["parent_id"] = re.sub(r"\([^()]*\)$", "", sid)
 
     def full(sid):
-        parts = [nodes[sid]["own"]] + [full(c) for c in children.get(sid, [])]
+        n = nodes[sid]
+        parts = [n.get("own_cells", n["own"])] + [full(c) for c in children.get(sid, [])]
         return norm(" ".join(x for x in parts if x))
 
     for sid in order:

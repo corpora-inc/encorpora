@@ -1,0 +1,876 @@
+proc_id: assembly-disassembly
+title: Crane Assembly and Disassembly
+kind: operation
+summary: This checklist takes the A/D director, crew, rigger and qualified person through assembling or disassembling
+  a crane or its attachments, including procedure selection, hazard control, power lines, pin removal and the post-assembly
+  inspection. Use it every time equipment or attachments are assembled or disassembled, including when you take
+  a boom or jib apart to change its length.
+roles:
+- ad_director
+- operator
+- rigger
+- competent_person
+- qualified_person
+lang: en
+section_ids:
+- 29cfr1926.1403
+- 29cfr1926.1404
+- 29cfr1926.1405
+- 29cfr1926.1406
+- 29cfr1926.1407
+- 29cfr1926.1412(c)
+- 29cfr1926.1423(f)
+steps:
+- ord: 1
+  phase: Before you start
+  text: 'Choose the A/D procedures: manufacturer or employer. Comply with all manufacturer prohibitions either way.'
+  detail:
+    trainee: The crew works from one written set of assembly/disassembly steps, either the manufacturer's or the
+      employer's. Manufacturer prohibitions apply even when you use employer procedures. Good means everyone knows
+      which procedure is in use and has it on site.
+    operator: Confirm which procedure governs this job and that it covers this model and configuration. If the manufacturer
+      prohibits a step, nobody does it, whatever the employer procedure says.
+    inspector: Record which procedure was used and confirm manufacturer prohibitions were followed, per § 1926.1403(a)/(b).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1403
+  - 29cfr1926.1403(a)
+  - 29cfr1926.1403(b)
+  deficiency:
+    guidance: No procedure has been chosen, or the planned work breaks a manufacturer prohibition.
+    action: Do not start. Choose a valid procedure and remove every step the manufacturer prohibits.
+    section_id: 29cfr1926.1403
+    quote: the employer must comply with all applicable manufacturer prohibitions
+  practice_only: false
+  value_unit: null
+- ord: 2
+  phase: Before you start
+  text: If using employer procedures, confirm a qualified person developed them and they meet § 1926.1406.
+  detail:
+    trainee: Employer procedures are allowed only if a qualified person wrote them and they prevent dangerous movement
+      and collapse, keep every part supported and stable, and keep workers out of harm's way.
+    operator: Check that the procedure names the qualified person who developed it and covers support, stability
+      and where workers stand.
+    inspector: Verify the employer can show the procedures meet § 1926.1406(a)(1)-(3) and were developed by a qualified
+      person (§ 1926.1406(b)).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1403(b)
+  - 29cfr1926.1406(a)
+  - 29cfr1926.1406(a)(1)
+  - 29cfr1926.1406(a)(2)
+  - 29cfr1926.1406(a)(3)
+  - 29cfr1926.1406(b)
+  deficiency:
+    guidance: The employer procedures cannot be shown to meet the requirements.
+    action: Stop. Use the manufacturer procedures, or have a qualified person develop compliant procedures first.
+    section_id: 29cfr1926.1406(b)
+    quote: Employer procedures must be developed by a qualified person.
+  practice_only: false
+  value_unit: null
+- ord: 3
+  phase: Before you start
+  text: If synthetic slings will be used in A/D rigging, use the manufacturer procedures.
+  detail:
+    trainee: Employer procedures are not allowed when synthetic slings are part of the A/D rigging. In that case
+      the manufacturer's procedure must be followed.
+    operator: Ask the rigger whether any synthetic slings will be used. If yes, confirm the manufacturer A/D procedure
+      is the one in use.
+    inspector: Verify the manufacturer procedures were followed whenever synthetic slings were used, per § 1926.1403(b).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1403(b)
+  deficiency:
+    guidance: Synthetic slings are planned under employer procedures.
+    action: Switch to the manufacturer procedures or use a different sling type.
+    section_id: 29cfr1926.1403(b)
+    quote: The employer must follow manufacturer procedures when an employer uses synthetic slings during assembly
+      or disassembly rigging.
+  practice_only: false
+  value_unit: null
+- ord: 4
+  phase: Before you start
+  text: Confirm and record who the A/D director is and that they qualify.
+  detail:
+    trainee: The A/D director runs the job. They must be both a competent person and a qualified person, or a competent
+      person assisted by one or more qualified persons. A one-person job needs someone who is both.
+    operator: Know who the A/D director is and take direction from them. If one person is doing the whole job, that
+      person must be both competent and qualified.
+    inspector: Record the A/D director (and any assisting qualified persons) and verify the § 1926.1404(a)(1)/(a)(2)
+      criteria are met.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(a)(1)
+  - 29cfr1926.1404(a)(2)
+  deficiency:
+    guidance: Nobody directing the job meets the criteria.
+    action: Do not start until a qualifying A/D director is assigned.
+    section_id: 29cfr1926.1404(a)(1)
+    quote: Assembly/disassembly must be directed by a person who meets the criteria for both a competent person
+      and a qualified person
+  practice_only: false
+  value_unit: null
+- ord: 5
+  phase: Before you start
+  text: 'A/D director: understand the procedures and review them immediately before starting.'
+  detail:
+    trainee: The A/D director must understand the procedures. They must also go over them right before work starts,
+      unless they already understand them and have used them on the same type and configuration of equipment.
+    operator: Confirm the review happened today, or that the A/D director has applied these procedures to this same
+      type and configuration, accessories included.
+    inspector: Verify the A/D director understands the procedures and reviewed them, or meets the same-type-and-configuration
+      exception, per § 1926.1404(b)-(c).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(b)
+  - 29cfr1926.1404(c)
+  deficiency:
+    guidance: The A/D director has not reviewed the procedures and does not meet the exception.
+    action: Hold the start until the A/D director reviews the procedures.
+    section_id: 29cfr1926.1404(c)
+    quote: The A/D director must review the applicable assembly/disassembly procedures immediately prior to the
+      commencement of assembly/disassembly
+  practice_only: false
+  value_unit: null
+- ord: 6
+  phase: Before you start
+  text: Confirm the weight of each component is readily available on site.
+  detail:
+    trainee: You need each part's weight to plan lifts and stay within capacity. Good means a list or markings on
+      site that the crew can check.
+    operator: Have each component's weight in hand before rigging or lifting it.
+    inspector: Verify component weights were readily available, per § 1926.1404(k).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(k)
+  deficiency:
+    guidance: Component weights are unknown.
+    action: Do not lift that component until its weight is available.
+    section_id: 29cfr1926.1404(k)
+    quote: The weight of each of the components must be readily available.
+  practice_only: false
+  value_unit: null
+- ord: 7
+  phase: Before you start
+  text: Verify the planned components and configuration follow manufacturer specifications, written RPE approval,
+    or approved modifications.
+  detail:
+    trainee: Parts and setups that affect capacity or safe operation must match the manufacturer's instructions
+      and limits. If those don't exist, a registered professional engineer must approve them in writing, or they
+      must be approved modifications.
+    operator: Compare the planned boom, jib, counterweight and accessory setup with the manufacturer configuration,
+      the written RPE approval, or the approved modification.
+    inspector: Verify the configuration source per § 1926.1404(m)(1)(i) or (ii); where there's an RPE approval,
+      check it is in writing.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(m)(1)
+  - 29cfr1926.1404(m)(1)(i)
+  - 29cfr1926.1404(m)(1)(ii)
+  deficiency:
+    guidance: The configuration is not backed by manufacturer data, written RPE approval, or an approved modification.
+    action: Do not assemble that configuration until it is approved.
+    section_id: 29cfr1926.1404(m)(1)(i)
+    quote: Where these are unavailable, a registered professional engineer familiar with the type of equipment involved
+      must approve, in writing, the selection and configuration of components
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Before you start
+  text: Identify the maximum boom that may be supported only by cantilevering, and its source.
+  detail:
+    trainee: Only so much boom can stick out unsupported. The limit comes from the manufacturer, or, if the manufacturer
+      doesn't give one, from a registered professional engineer in writing.
+    operator: Know the cantilever limit and never go past it during assembly or disassembly.
+    inspector: Verify the limit is documented (manufacturer, or written RPE determination) and was not exceeded,
+      per § 1926.1404(j).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(j)
+  deficiency:
+    guidance: No cantilever limit is known, or the plan exceeds it.
+    action: Stop. Get the manufacturer limit or a written RPE determination, and change the plan so it stays within
+      the limit.
+    section_id: 29cfr1926.1404(j)
+    quote: Manufacturer limitations on the maximum amount of boom supported only by cantilevering must not be exceeded.
+  practice_only: false
+  value_unit: null
+- ord: 9
+  phase: Power lines
+  text: Determine whether any part, load line or load could get within 20 feet of a power line.
+  detail:
+    trainee: Look in the direction and area where you'll assemble or disassemble. Treat every power line as live
+      unless the utility confirms it is deenergized and visibly grounded.
+    operator: If anything, rigging included, could come within 20 feet of a line, Option 1, 2 or 3 must be in place
+      before work starts.
+    inspector: Verify the 20-foot determination was made before A/D began and that lines were presumed energized,
+      per § 1926.1407(a) and (f).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1407(a)
+  - 29cfr1926.1407(f)
+  deficiency:
+    guidance: Something could come within 20 feet of a line and no option has been put in place.
+    action: Do not start until Option 1, 2 or 3 is in place.
+    section_id: 29cfr1926.1407(a)
+    quote: If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section
+  practice_only: false
+  value_unit: null
+- ord: 10
+  phase: Power lines
+  text: 'Record the option used: deenergize and ground, 20-foot clearance, or Table A with line voltage.'
+  detail:
+    trainee: Write down how power lines are being handled. Option 1 needs the utility's confirmation that the line
+      is deenergized and visibly grounded. Option 3 needs the line voltage and its Table A distance.
+    operator: Record the option, the utility confirmation or the voltage, and the clearance distance you must keep.
+    inspector: Record the option, the utility confirmation, or the voltage and Table A distance (§ 1926.1407(a)(1)-(3)).
+      The utility must provide voltage within two working days of the request (§ 1926.1407(e)).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1407(a)(1)
+  - 29cfr1926.1407(a)(2)
+  - 29cfr1926.1407(a)(3)(i)
+  - 29cfr1926.1407(a)(3)(ii)
+  - 29cfr1926.1407(e)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 11
+  phase: Power lines
+  text: Confirm no part will be below a line or inside Table A distance unless deenergized and grounded.
+  detail:
+    trainee: No assembly or disassembly under a power line, and nothing closer than the Table A distance, unless
+      the utility has deenergized the line and visibly grounded it at the worksite. This applies to partly built
+      cranes too.
+    operator: Check the layout area and the boom's path. Nothing may go under the line or inside the Table A distance
+      without the utility's confirmation.
+    inspector: Verify compliance with § 1926.1407(c) and (d), including the utility's confirmation where it applies.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1407(c)
+  - 29cfr1926.1407(d)
+  deficiency:
+    guidance: The plan puts equipment below a line or inside the Table A distance without deenergizing and grounding.
+    action: Stop. Move the work area, or get the utility's confirmation that the line is deenergized and visibly
+      grounded.
+    section_id: 29cfr1926.1407(c)
+    quote: No part of a crane/derrick, load line, or load (including rigging and lifting accessories), whether partially
+      or fully assembled, is allowed below a power line unless the employer has confirmed that the utility owner/operator
+      has deenergized and (at the worksite) visibly grounded the power line.
+  practice_only: false
+  value_unit: null
+- ord: 12
+  phase: Power lines
+  text: 'Under Option 2 or 3: hold the planning meeting and use only nonconductive tag lines.'
+  detail:
+    trainee: Everyone in the A/D area meets to go over where the lines are and how encroachment will be prevented.
+      Any tag lines must not conduct electricity.
+    operator: Attend the meeting with the A/D director, the crew and the other workers in the area. Reject any conductive
+      tag lines.
+    inspector: Verify the meeting was held with the required attendees and that tag lines were nonconductive, per
+      § 1926.1407(b)(1)-(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1407(b)
+  - 29cfr1926.1407(b)(1)
+  - 29cfr1926.1407(b)(2)
+  deficiency:
+    guidance: No planning meeting was held, or tag lines are conductive.
+    action: Hold the meeting and replace the tag lines before starting.
+    section_id: 29cfr1926.1407(b)(1)
+    quote: Conduct a planning meeting with the Assembly/Disassembly director (A/D director), operator, assembly/disassembly
+      crew and the other workers who will be in the assembly/disassembly area
+  practice_only: false
+  value_unit: null
+- ord: 13
+  phase: Power lines
+  text: 'Under Option 2 or 3: put at least one effective additional encroachment measure in place.'
+  detail:
+    trainee: 'Pick at least one: a dedicated spotter, a proximity alarm, a range control warning device, a device
+      that limits range of movement, or an elevated warning line or barricade with flags. It must actually prevent
+      encroachment.'
+    operator: A dedicated spotter must be in continuous contact with you, have a visual aid, be positioned to judge
+      clearance, and give timely warnings. Any device must be set to warn you in time or to stop movement.
+    inspector: Verify which measure was used and that it met § 1926.1407(b)(3)(i)-(v), including the spotter's duties
+      in (b)(3)(i)(A)-(D).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1407(b)(3)
+  - 29cfr1926.1407(b)(3)(i)
+  - 29cfr1926.1407(b)(3)(i)(A)
+  - 29cfr1926.1407(b)(3)(i)(B)
+  - 29cfr1926.1407(b)(3)(i)(C)
+  - 29cfr1926.1407(b)(3)(i)(D)
+  - 29cfr1926.1407(b)(3)(ii)
+  - 29cfr1926.1407(b)(3)(iii)
+  - 29cfr1926.1407(b)(3)(iv)
+  - 29cfr1926.1407(b)(3)(v)
+  deficiency:
+    guidance: No additional measure is in place, or the one chosen won't prevent encroachment.
+    action: Do not move equipment near the line until an effective measure is in place.
+    section_id: 29cfr1926.1407(b)(3)
+    quote: The measure selected from this list must be effective in preventing encroachment.
+  practice_only: false
+  value_unit: null
+- ord: 14
+  phase: Power lines
+  text: 'Check electrocution warnings: one in the cab in view, two outside the equipment.'
+  detail:
+    trainee: Warning signs remind everyone about the power line hazard. You need one in the cab where the operator
+      can see it and at least two outside the machine. Overhead gantry and tower cranes don't need the outside ones.
+    operator: Check that the cab sign is visible from the seat and that both outside signs are present and readable.
+    inspector: Verify the postings required by § 1926.1407(g).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1407(g)
+  deficiency:
+    guidance: Warnings are missing or can't be seen.
+    action: Post the warnings before operating.
+    section_id: 29cfr1926.1407(g)
+    quote: There must be at least one electrocution hazard warning conspicuously posted in the cab so that it is
+      in view of the operator
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Site and hazard review
+  text: Confirm site and ground conditions will support the equipment throughout A/D.
+  detail:
+    trainee: The ground must hold the crane and its parts at every stage. Watch for soft spots, fill, voids, slopes
+      and recent rain.
+    operator: Walk the footprint, including outrigger and crawler areas and the boom laydown area. Report anything
+      that looks weak.
+    inspector: Verify the A/D director addressed site and ground conditions per § 1926.1404(h)(1); ground condition
+      requirements are in § 1926.1402.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)
+  - 29cfr1926.1404(h)(1)
+  deficiency:
+    guidance: The ground may not support the equipment.
+    action: Do not set up until the ground is made adequate.
+    section_id: 29cfr1926.1404(h)(1)
+    quote: Site and ground conditions must be adequate for safe assembly/disassembly operations and to support the
+      equipment during assembly/disassembly
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Site and hazard review
+  text: Check blocking size, amount, condition and stacking, and place it to protect the boom.
+  detail:
+    trainee: Blocking must be big enough, sound, and stacked so it won't shift. Under lattice booms, put it where
+      it protects the structure and keeps parts from moving or collapsing.
+    operator: Reject cracked or rotten blocking. Place it at structural support points the procedure allows, not
+      under lacing.
+    inspector: Verify blocking met § 1926.1404(h)(2) and placement met (h)(3)(i)-(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(2)
+  - 29cfr1926.1404(h)(3)
+  - 29cfr1926.1404(h)(3)(i)
+  - 29cfr1926.1404(h)(3)(ii)
+  deficiency:
+    guidance: Blocking is inadequate or in the wrong place.
+    action: Replace or reposition the blocking before loading it.
+    section_id: 29cfr1926.1404(h)(2)
+    quote: The size, amount, condition and method of stacking the blocking must be sufficient to sustain the loads
+      and maintain stability.
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Site and hazard review
+  text: If using an assist crane, verify its load at each phase before A/D begins.
+  detail:
+    trainee: The assist crane's load changes as parts are added or removed. Check it against the assist crane's
+      capacity for every phase before you start.
+    operator: 'Assist crane operator: confirm the load and radius at each phase are within your chart.'
+    inspector: Verify assist crane loads were verified in accordance with § 1926.1417(o)(3) before A/D began, per
+      § 1926.1404(h)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(4)
+  deficiency:
+    guidance: Assist crane loads were not verified.
+    action: Do not begin until the loads for every phase are verified.
+    section_id: 29cfr1926.1404(h)(4)
+    quote: the loads that will be imposed on the assist crane at each phase of assembly/disassembly must be verified
+      in accordance with § 1926.1417(o)(3) before assembly/disassembly begins.
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Site and hazard review
+  text: Confirm rated capacities of equipment, components, rigging and lifting lugs will not be exceeded.
+  detail:
+    trainee: 'At every phase, compare each load with the rating of what carries it: the crane, the rigging, the
+      lifting lugs and accessories.'
+    operator: Compare component weights with the chart and the rigging and lug ratings. If it doesn't fit, it doesn't
+      get lifted.
+    inspector: Verify rated capacity limits were not exceeded at any phase, per § 1926.1404(g).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(g)
+  deficiency:
+    guidance: A load would exceed a rated capacity.
+    action: Do not lift. Change the method, rigging or equipment.
+    section_id: 29cfr1926.1404(g)
+    quote: rated capacity limits for loads imposed on the equipment, equipment components (including rigging), lifting
+      lugs and equipment accessories, must not be exceeded
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Site and hazard review
+  text: Verify boom and jib pick points are suitable, and identify center of gravity where needed.
+  detail:
+    trainee: Rig boom and jib sections only at points that won't damage them. Find the center of gravity when your
+      stability method depends on it. If you can't find it accurately, use extra measures so the load can't move
+      unexpectedly.
+    operator: Use the designated pick points. If the center of gravity is uncertain, use measures such as added
+      restraint or support before lifting or unpinning.
+    inspector: Verify pick points met § 1926.1404(h)(5) and that center of gravity was handled per (h)(6)(i)-(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(5)
+  - 29cfr1926.1404(h)(6)(i)
+  - 29cfr1926.1404(h)(6)(ii)
+  deficiency:
+    guidance: Pick points could damage the structure, or the center of gravity is uncertain and nothing guards against
+      movement.
+    action: Re-rig at suitable points or add measures against unintended movement before proceeding.
+    section_id: 29cfr1926.1404(h)(6)(ii)
+    quote: measures designed to prevent unintended dangerous movement resulting from an inaccurate identification
+      of the center of gravity must be used.
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Site and hazard review
+  text: Address counterweight support, counterweight hoisting, and backward stability before swinging, traveling
+    or changing components.
+  detail:
+    trainee: A poorly supported or hoisted counterweight can move and strike people. Without the boom installed,
+      the crane can tip backward when you swing, travel, or add or remove parts.
+    operator: Follow the procedure's sequence for counterweights. Check backward stability before every swing or
+      travel and every time a component goes on or off.
+    inspector: Verify the A/D director addressed § 1926.1404(h)(9) and (h)(11).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)
+  - 29cfr1926.1404(h)(9)
+  - 29cfr1926.1404(h)(11)
+  deficiency:
+    guidance: Counterweight or backward stability hazards haven't been addressed.
+    action: Stop until the A/D director addresses them.
+    section_id: 29cfr1926.1404(h)
+    quote: The A/D director supervising the assembly/disassembly operation must address the hazards associated with
+      the operation
+  practice_only: false
+  value_unit: null
+- ord: 21
+  phase: Site and hazard review
+  text: Read and record the current wind speed; check the forecast weather.
+  detail:
+    trainee: Wind and weather affect long boom sections and partly assembled cranes. The A/D director must account
+      for them.
+    operator: Record the wind speed and compare it with the manufacturer's or procedure's limits. Stop if conditions
+      are getting worse.
+    inspector: Record the wind and weather and verify the A/D director addressed them per § 1926.1404(h)(12).
+  check_kind: value
+  value_unit: mph
+  section_ids:
+  - 29cfr1926.1404(h)(12)
+  deficiency:
+    guidance: Wind or weather is beyond what the procedure or equipment allows.
+    action: Suspend A/D and secure the components until conditions allow.
+    section_id: 29cfr1926.1404(h)
+    quote: The A/D director supervising the assembly/disassembly operation must address the hazards associated with
+      the operation
+  practice_only: false
+- ord: 22
+  phase: Crew briefing
+  text: Brief each crew member on their tasks, the hazards, and the positions to avoid.
+  detail:
+    trainee: Before work starts, you must know your job, what can hurt you doing it, and where not to stand. Brief
+      again whenever someone changes tasks or a new person joins.
+    operator: Make sure the briefing covers pinch points, swing radius, areas under the boom, and areas around counterweights.
+    inspector: Verify the A/D director ensured understanding per § 1926.1404(d)(1)(i)-(iii) and repeated it for
+      task changes and new personnel per (d)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(d)(1)
+  - 29cfr1926.1404(d)(1)(i)
+  - 29cfr1926.1404(d)(1)(ii)
+  - 29cfr1926.1404(d)(1)(iii)
+  - 29cfr1926.1404(d)(2)
+  deficiency:
+    guidance: A crew member doesn't understand their task, its hazards, or the positions to avoid.
+    action: Hold that person out of the work until they are briefed.
+    section_id: 29cfr1926.1404(d)(2)
+    quote: before a crew member takes on a different task, or when adding new personnel during the operations
+  practice_only: false
+  value_unit: null
+- ord: 23
+  phase: Crew briefing
+  text: Set the pre-arranged communication system for crew going out of the operator's view.
+  detail:
+    trainee: Before you go anywhere the operator can't see you and could hurt you by moving the machine, tell the
+      operator. You will use an agreed signal to say you're clear.
+    operator: Agree on how crew will report going in and coming out of hazard spots, for example radio call or horn
+      signal.
+    inspector: Verify a pre-arranged communication system existed and was used, per § 1926.1404(e)(1)-(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(e)(1)
+  - 29cfr1926.1404(e)(2)
+  deficiency:
+    guidance: No agreed system for out-of-view crew.
+    action: Set one up before any crew member goes out of view.
+    section_id: 29cfr1926.1404(e)(1)
+    quote: the crew member must inform the operator that he/she is going to that location.
+  practice_only: false
+  value_unit: null
+- ord: 24
+  phase: Crew briefing
+  text: Provide fall protection for work on unprotected edges more than 15 feet above a lower level.
+  detail:
+    trainee: Working on the boom or a high structure with an open edge more than 15 feet up requires fall protection.
+      The exceptions are at or near the draw-works when the equipment is running, in the cab, or on the deck.
+    operator: Make sure fall protection equipment and anchorage are available and used before anyone climbs.
+    inspector: Verify fall protection was provided and used, per § 1926.1423(f).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1423(f)
+  deficiency:
+    guidance: Workers exposed to more than 15 feet without fall protection.
+    action: Bring them down. Provide fall protection before resuming.
+    section_id: 29cfr1926.1423(f)
+    quote: the employer must provide and ensure the use of fall protection equipment for employees who are on a
+      walking/working surface with an unprotected side or edge more than 15 feet above a lower level
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: Rigging and outriggers
+  text: Confirm a qualified rigger does all A/D rigging; record their name.
+  detail:
+    trainee: Only a qualified rigger rigs boom sections, counterweights and other components during A/D.
+    operator: Do not lift anything rigged by someone who isn't the qualified rigger.
+    inspector: Verify rigging was done by a qualified rigger, per § 1926.1404(r)(1), in addition to § 1926.251.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(r)
+  - 29cfr1926.1404(r)(1)
+  deficiency:
+    guidance: Rigging was done by someone who isn't a qualified rigger.
+    action: Do not lift. Have a qualified rigger redo or check the rigging.
+    section_id: 29cfr1926.1404(r)(1)
+    quote: The rigging work is done by a qualified rigger.
+  practice_only: false
+  value_unit: null
+- ord: 26
+  phase: Rigging and outriggers
+  text: Protect synthetic slings from edges and compression; follow the sling manufacturer's instructions.
+  detail:
+    trainee: Sharp edges, distortion or crushing cut a synthetic sling's strength. Use softeners or protectors,
+      and follow the sling maker's instructions and limits.
+    operator: Check every sling contact point for edge protection and check the sling tags before you lift.
+    inspector: Verify § 1926.1404(r)(2)-(r)(3). Wire rope sling protection is in § 1926.251(c)(9).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(r)(2)
+  - 29cfr1926.1404(r)(3)
+  deficiency:
+    guidance: A synthetic sling is unprotected, or it is being used outside the sling manufacturer's limits.
+    action: Stop the lift. Add protection or re-rig before lifting.
+    section_id: 29cfr1926.1404(r)(2)
+    quote: 'Synthetic slings are protected from: Abrasive, sharp or acute edges, and configurations that could cause
+      a reduction of the sling''s rated capacity'
+  practice_only: false
+  value_unit: null
+- ord: 27
+  phase: Rigging and outriggers
+  text: Set outriggers or stabilizers per the load chart, with weight off wheels and floats attached.
+  detail:
+    trainee: Outriggers go fully out, or to a load chart position if the manufacturer allows it. Outriggers must
+      lift the crane's weight off the tires (this doesn't apply to stabilizers). Floats must be attached.
+    operator: Someone must be able to see each outrigger while it extends and sets. Blocking goes only under the
+      float/pad, or under the outer beam end if there's no jack. Locomotive cranes follow the manufacturer's procedures,
+      including truck wedges or screws.
+    inspector: Verify § 1926.1404(q)(1)-(q)(6), including that blocking meets (h)(2)-(h)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)
+  - 29cfr1926.1404(q)(1)
+  - 29cfr1926.1404(q)(2)
+  - 29cfr1926.1404(q)(3)
+  - 29cfr1926.1404(q)(4)
+  - 29cfr1926.1404(q)(5)(i)
+  - 29cfr1926.1404(q)(5)(ii)
+  - 29cfr1926.1404(q)(6)
+  deficiency:
+    guidance: Outriggers aren't set as the chart and rules require.
+    action: Reset them correctly before handling any load.
+    section_id: 29cfr1926.1404(q)(1)
+    quote: The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed
+      as specified in the load chart.
+  practice_only: false
+  value_unit: null
+- ord: 28
+  phase: Assembly/disassembly work
+  text: 'Operator: do not move until out-of-view crew report safe by the agreed signal.'
+  detail:
+    trainee: If the operator knows you went somewhere hazardous and out of view, the machine stays still until you
+      signal that you're in a safe position.
+    operator: No boom, swing, travel or hoist movement until you get the agreed safe signal from that crew member.
+    inspector: Verify the operator followed § 1926.1404(e)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(e)(2)
+  deficiency:
+    guidance: Equipment moved before the safe signal.
+    action: Stop all movement, account for the crew, and re-brief.
+    section_id: 29cfr1926.1404(e)(2)
+    quote: the operator must not move any part of the equipment (or load) until the operator is informed in accordance
+      with a pre-arranged system of communication that the crew member is in a safe position.
+  practice_only: false
+  value_unit: null
+- ord: 29
+  phase: Assembly/disassembly work
+  text: Test the boom hoist brake before relying on it to hold the boom.
+  detail:
+    trainee: Each time the brake is all that keeps the boom from moving, test it first. If it doesn't hold, use
+      a pawl, a back-up brake, blocking or an assist crane.
+    operator: Do the brake test every time before you rely on it. If the boom creeps, set the pawl or another backup
+      before anyone works on the boom.
+    inspector: Verify the brake tests and backups per § 1926.1404(h)(10).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(10)
+  deficiency:
+    guidance: The brake isn't enough to prevent boom movement.
+    action: Use a pawl, locking or back-up device, blocking or an assist crane before continuing.
+    section_id: 29cfr1926.1404(h)(10)
+    quote: If it is not sufficient, a boom hoist pawl, other locking device/back-up braking device, or another method
+      of preventing dangerous movement of the boom (such as blocking or using an assist crane) from a boom hoist
+      brake failure must be used.
+  practice_only: false
+  value_unit: null
+- ord: 30
+  phase: Assembly/disassembly work
+  text: Rig or support boom sections and suspension systems so they stay stable when pins come out.
+  detail:
+    trainee: Before a pin comes out, the parts it holds must be supported or rigged so nothing drops or swings.
+      That includes boom sections, gantry A-frames and jib struts.
+    operator: Confirm the supports, blocking or rigging are in place and loaded before you give the go-ahead to
+      drive pins.
+    inspector: Verify § 1926.1404(h)(7).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(7)
+  deficiency:
+    guidance: Components aren't supported for pin removal.
+    action: Stop pin removal and support the components.
+    section_id: 29cfr1926.1404(h)(7)
+    quote: must be rigged or supported to maintain stability upon the removal of the pins.
+  practice_only: false
+  value_unit: null
+- ord: 31
+  phase: Assembly/disassembly work
+  text: Keep everyone out from under the boom, jib or components while pins are removed.
+  detail:
+    trainee: Work pins from outside or beside the boom, never underneath. The only exception is when site constraints
+      force someone under, and then the A/D director must set procedures that cut the risk and the time spent there.
+    operator: Look before every pin is driven. If anyone is under the boom without approved exception procedures,
+      stop.
+    inspector: Verify § 1926.1404(f)(1). If the exception was used, verify the site constraint was shown and the
+      (f)(2) procedures were in place.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(f)(1)
+  - 29cfr1926.1404(f)(2)
+  deficiency:
+    guidance: A worker is under the boom during pin removal without exception procedures.
+    action: Stop pin removal and clear the area.
+    section_id: 29cfr1926.1404(f)(1)
+    quote: When pins (or similar devices) are being removed, employees must not be under the boom, jib, or other
+      components
+  practice_only: false
+  value_unit: null
+- ord: 32
+  phase: Assembly/disassembly work
+  text: Keep suspension ropes and pendants from catching on connection pins, cotter pins or keepers.
+  detail:
+    trainee: A pendant caught on a pin can load parts unexpectedly or pull pins. Watch the ropes as the boom moves.
+    operator: Move the boom slowly while a crew member watches the pendants and pins.
+    inspector: Verify § 1926.1404(h)(8).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(8)
+  deficiency:
+    guidance: A rope or pendant is snagging.
+    action: Stop movement and free the rope before continuing.
+    section_id: 29cfr1926.1404(h)(8)
+    quote: Suspension ropes and pendants must not be allowed to catch on the boom or jib connection pins or cotter
+      pins (including keepers and locking pins).
+  practice_only: false
+  value_unit: null
+- ord: 33
+  phase: Assembly/disassembly work
+  text: Remove reusable shipping pins, straps and links; stow them so they can't fall.
+  detail:
+    trainee: Shipping hardware comes off, and the loose pieces get stowed so they can't drop on someone later.
+    operator: Account for every shipping pin and strap and check where each one is stored.
+    inspector: Verify § 1926.1404(o).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(o)
+  deficiency:
+    guidance: Shipping items are still installed or loose up on the equipment.
+    action: Remove and stow them before operation.
+    section_id: 29cfr1926.1404(o)
+    quote: Once they are removed they must either be stowed or otherwise stored so that they do not present a falling
+      object hazard.
+  practice_only: false
+  value_unit: null
+- ord: 34
+  phase: Assembly/disassembly work
+  text: If the crane will drive piles, confirm no jib is attached.
+  detail:
+    trainee: Equipment used for pile driving must not have a jib on during pile driving.
+    operator: For pile-driving configurations, assemble without the jib.
+    inspector: Verify § 1926.1404(p).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(p)
+  deficiency:
+    guidance: A jib is attached for pile driving.
+    action: Remove the jib before pile driving.
+    section_id: 29cfr1926.1404(p)
+    quote: Equipment used for pile driving must not have a jib attached during pile driving operations.
+  practice_only: false
+  value_unit: null
+- ord: 35
+  phase: Boom and jib dismantling
+  text: Do not remove pendant pins, or pins between pendant points and body, while pendants are in tension.
+  detail:
+    trainee: A tensioned pendant holds the boom up. Pulling these pins even partway can drop the boom. Take the
+      tension off first.
+    operator: Lower the boom onto supports until the pendants are slack, and confirm they're slack before any of
+      these pins are touched.
+    inspector: Verify § 1926.1405(a)-(b), which applies under both manufacturer and employer procedures.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1405
+  - 29cfr1926.1405(a)
+  - 29cfr1926.1405(b)
+  deficiency:
+    guidance: Pins are being removed while the pendants are in tension.
+    action: Stop immediately. Clear the area and relieve pendant tension.
+    section_id: 29cfr1926.1405(a)
+    quote: None of the pins in the pendants are to be removed (partly or completely) when the pendants are in tension.
+  practice_only: false
+  value_unit: null
+- ord: 36
+  phase: Boom and jib dismantling
+  text: Don't pull inner section pins while the boom rests on its tip; fully support cantilevered sections first.
+  detail:
+    trainee: If the boom is held up by its top section resting on the ground, the pins between the tip and the crane
+      carry load. In the cantilevered part ahead of the pendant points, top pins stay in until that section is fully
+      supported.
+    operator: Check how the boom is supported before each pin. Support the cantilevered section fully, then remove
+      its top pins.
+    inspector: Verify § 1926.1405(c)-(d).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1405(c)
+  - 29cfr1926.1405(d)
+  deficiency:
+    guidance: Pins are being removed under the prohibited support conditions.
+    action: Stop pin removal and support the boom correctly.
+    section_id: 29cfr1926.1405(d)
+    quote: None of the top pins on boom sections located on the cantilevered portion of the boom being removed (the
+      portion being removed ahead of the pendant attachment points) are to be removed (partly or completely) until
+      the cantilevered section to be removed is fully supported.
+  practice_only: false
+  value_unit: null
+- ord: 37
+  phase: Post-assembly
+  text: Qualified person inspects the assembled crane against manufacturer equipment criteria.
+  detail:
+    trainee: Once assembly is complete, a qualified person checks that the crane is set up exactly as the manufacturer's
+      criteria require.
+    operator: Do not operate until the qualified person signs off on the configuration.
+    inspector: Verify a qualified person's inspection per § 1926.1412(c)(1) and § 1926.1404(m)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(m)(2)
+  - 29cfr1926.1412(c)(1)
+  deficiency:
+    guidance: The configuration doesn't match the criteria, or no inspection was done.
+    action: Tag the crane out of service and correct the configuration.
+    section_id: 29cfr1926.1412(c)(1)
+    quote: Upon completion of assembly, the equipment must be inspected by a qualified person to assure that it
+      is configured in accordance with manufacturer equipment criteria.
+  practice_only: false
+  value_unit: null
+- ord: 38
+  phase: Post-assembly
+  text: If manufacturer criteria are unavailable, confirm criteria from the qualified person or an RPE.
+  detail:
+    trainee: Without manufacturer criteria, the qualified person decides whether a registered professional engineer
+      must write the criteria. Then the crane is checked against them.
+    operator: Ask which criteria the inspection used and who developed them.
+    inspector: Verify the RPE-need determination and the criteria source, per § 1926.1412(c)(2)(i)-(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(c)(2)
+  - 29cfr1926.1412(c)(2)(i)
+  - 29cfr1926.1412(c)(2)(ii)
+  deficiency:
+    guidance: No valid criteria exist for the configuration.
+    action: Do not use the crane until criteria are developed and met.
+    section_id: 29cfr1926.1412(c)(2)(i)
+    quote: If an RPE is needed, the employer must ensure that they are developed by an RPE.
+  practice_only: false
+  value_unit: null
+- ord: 39
+  phase: Post-assembly
+  text: Release the crane for use only after the inspection shows correct configuration.
+  detail:
+    trainee: The crane may not lift anything until the post-assembly inspection passes.
+    operator: Confirm the inspection passed before your first lift.
+    inspector: Verify no use happened before a passing inspection, per § 1926.1412(c)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(c)(3)
+  deficiency:
+    guidance: The crane was used, or is about to be used, before passing inspection.
+    action: Stop use and tag out until the inspection passes.
+    section_id: 29cfr1926.1412(c)(3)
+    quote: Equipment must not be used until an inspection under this paragraph demonstrates that the equipment is
+      configured in accordance with the applicable criteria.
+  practice_only: false
+  value_unit: null
+- ord: 40
+  phase: Records
+  text: Photograph the final configuration and record the inspector, date and configuration.
+  detail:
+    trainee: 'Good practice: a photo and a short record show how the crane was configured when it was released.
+      The rule text doesn''t require this.'
+    operator: Keep the record with the job file.
+    inspector: 'Good practice: photograph the boom, jib, counterweight and outrigger setup and note who released
+      the crane.'
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+prov:
+  prov_id: 1ea00ac6b107f478f24c
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: e91411f2fc26517c6ea3ad99f65a0cdfe4d0164db380154466baad8af74c0911
+  output_sha256: df981bc4e488e4ed0862a4cf40a6a8801b19e1344c23b9276162e77d1a4ce179
+  created_at: '2026-11-27T06:48:13+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

@@ -1,0 +1,715 @@
+proc_id: critical-lift-plan
+title: Critical Lift Plan and Multiple-Crane Lifts
+kind: planning
+summary: 'This procedure plans a high-consequence lift: load weight, capacity, rigging, ground, power lines, swing
+  and fall zones, signals, roles, weather and contingencies, and it covers every planning, direction and meeting
+  requirement for lifts where more than one crane supports the load. The federal rules given here do not define
+  a "critical lift," so the critical-lift criteria come from employer or site policy, while the multiple-crane plan
+  is required whenever more than one crane or derrick will support the load.'
+roles:
+- lift_director
+- operator
+- rigger
+- qualified_person
+- competent_person
+lang: en
+section_ids:
+- 29cfr1926.1432
+- 29cfr1926.1417(o)
+- 29cfr1926.1402(b)
+- 29cfr1926.1404(h)(6)
+- 29cfr1926.1408(a)
+- 29cfr1926.1419(a)
+- 29cfr1926.1424(a)
+- 29cfr1926.1425
+steps:
+- ord: 1
+  phase: Scope
+  text: Record why this lift is being planned as a critical lift under site or employer criteria.
+  detail:
+    trainee: The federal rules here do not define a critical lift. Your employer or site sets the criteria, such
+      as a high percent of capacity, a lift over occupied areas, or a lift near power lines. Write down which criteria
+      apply.
+    operator: Note which site criteria triggered the critical-lift plan so everyone knows why the extra controls
+      are in place.
+    inspector: Record the employer criteria used. This is a company practice step; the given federal text contains
+      no critical-lift definition.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 2
+  phase: Scope
+  text: Record whether more than one crane or derrick will support the load.
+  detail:
+    trainee: If two or more cranes hold the load at the same time, extra federal planning rules apply. Write down
+      how many cranes will support it and which ones.
+    operator: If more than one crane will support the load at any point, the multiple-crane plan, the lift director
+      and the meeting requirements in this procedure are mandatory.
+    inspector: Document the number of cranes and their identification. Section 1926.1432(a) requires planning before
+      any operation where more than one crane/derrick supports the load.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1432(a)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 3
+  phase: Plan development
+  text: Confirm a qualified person developed the multiple-crane lift plan.
+  detail:
+    trainee: A multiple-crane plan has to be written by someone who has the knowledge, training or experience to
+      solve problems with this kind of lift. Check that a qualified person's name is on the plan.
+    operator: Before any multiple-crane lift, check that the plan exists and that a qualified person wrote it. If
+      not, do not start.
+    inspector: Verify the plan exists before work starts and record the qualified person who developed it, per 1926.1432(a)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1432(a)
+  - 29cfr1926.1432(a)(1)
+  deficiency:
+    guidance: No plan, or a plan written by someone who is not a qualified person, does not meet the multiple-crane
+      planning requirement.
+    action: Stop. Do not begin the multiple-crane operation until a qualified person develops the plan.
+    section_id: 29cfr1926.1432(a)(1)
+    quote: The plan must be developed by a qualified person.
+  practice_only: false
+  value_unit: null
+- ord: 4
+  phase: Plan development
+  text: Check that the plan addresses every crane requirement that applies to this lift.
+  detail:
+    trainee: 'The plan has to show how each crane rule is met: capacity, ground, power lines, swing zone, fall zone
+      and signals. The rest of this checklist works through those items.'
+    operator: Confirm the plan covers each crane's capacity, ground support, power line clearance, barricades and
+      signaling before you accept it.
+    inspector: Verify the plan is designed to ensure the subpart requirements are met, per 1926.1432(a)(2). Note
+      any gaps.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1432(a)(2)
+  deficiency:
+    guidance: A plan that leaves out an applicable requirement does not meet the planning rule.
+    action: Return the plan to the qualified person to correct it before the lift.
+    section_id: 29cfr1926.1432(a)(2)
+    quote: The plan must be designed to ensure that the requirements of this subpart are met.
+  practice_only: false
+  value_unit: null
+- ord: 5
+  phase: Plan development
+  text: Confirm engineering expertise is provided where the qualified person says it is needed.
+  detail:
+    trainee: Some lifts need an engineer, for example to work out load sharing between cranes or a custom lifting
+      device. If the qualified person asks for engineering help, the employer has to provide it.
+    operator: Ask whether the qualified person called for engineering input. If they did, confirm the engineer's
+      work is in the plan.
+    inspector: Record whether engineering expertise was determined necessary and, if so, verify it was provided
+      and included, per 1926.1432(a)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1432(a)(3)
+  deficiency:
+    guidance: The qualified person decided engineering expertise was needed, but it has not been provided.
+    action: Hold the lift until the employer provides the engineering input and it is added to the plan.
+    section_id: 29cfr1926.1432(a)(3)
+    quote: Where the qualified person determines that engineering expertise is needed for the planning, the employer
+      must ensure that it is provided.
+  practice_only: false
+  value_unit: null
+- ord: 6
+  phase: Load and capacity
+  text: Determine and record the load weight from a recognized source or calculation.
+  detail:
+    trainee: 'Get the weight from the manufacturer''s data, shipping papers, or a recognized calculation, such as
+      a steel beam''s length times its known weight per foot. Include everything below the hook: rigging, spreaders
+      and the hook block if the load chart requires it.'
+    operator: Use a recognized source or calculation, or other equally reliable means. Do not use guesses. Add the
+      rigging weight according to the load chart notes.
+    inspector: Record the weight, how it was found and the source document, per 1926.1417(o)(3)(i).
+  check_kind: value
+  section_ids:
+  - 29cfr1926.1417(o)(3)
+  - 29cfr1926.1417(o)(3)(i)
+  deficiency:
+    guidance: Without a reliable weight, you cannot confirm the load is within rated capacity during planning.
+    action: Do not finalize the plan until the weight comes from a recognized source, a recognized calculation or
+      equally reliable means.
+    section_id: 29cfr1926.1417(o)(3)(i)
+    quote: The weight of the load must be determined from a source recognized by the industry (such as the load's
+      manufacturer)
+  practice_only: false
+  value_unit: lb
+- ord: 7
+  phase: Load and capacity
+  text: Give the operator the load weight information before the lift when the operator asks.
+  detail:
+    trainee: The operator is entitled to see the weight and where it came from before lifting. Hand over the paperwork
+      or calculation.
+    operator: Ask for the weight source if you have not seen it. You must receive it before the lift.
+    inspector: Verify the weight information was given to the operator before the lift when requested, per 1926.1417(o)(3)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(o)(3)(i)
+  deficiency:
+    guidance: The operator asked for the load weight information and did not get it.
+    action: Do not lift until the operator has the weight information.
+    section_id: 29cfr1926.1417(o)(3)(i)
+    quote: In addition, when requested by the operator, this information must be provided to the operator prior
+      to the lift
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Load and capacity
+  text: Identify the load's center of gravity, or plan measures where it cannot be identified accurately.
+  detail:
+    trainee: The center of gravity (CG) is the balance point of the load. Rig over the CG so the load hangs level
+      and does not swing or tip. If the CG is unknown, plan a way to stop dangerous movement, such as a trial lift
+      a few inches off the ground with adjustable rigging.
+    operator: Mark the CG on the load or drawing. If it is uncertain, plan the measures that prevent unintended
+      movement before full lift-off. On multiple-crane lifts, the CG location also sets how much load each crane
+      carries.
+    inspector: Verify the CG was identified where the stability method needs it, or that measures against inaccurate
+      CG identification are in the plan, per 1926.1404(h)(6).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(h)(6)(i)
+  - 29cfr1926.1404(h)(6)(ii)
+  deficiency:
+    guidance: Either the CG is unknown with no controls planned, or the stability method depends on a CG that has
+      not been identified.
+    action: Identify the CG, or add measures that prevent unintended dangerous movement, before the lift.
+    section_id: 29cfr1926.1404(h)(6)(ii)
+    quote: measures designed to prevent unintended dangerous movement resulting from an inaccurate identification
+      of the center of gravity must be used.
+  practice_only: false
+  value_unit: null
+- ord: 9
+  phase: Load and capacity
+  text: Record each crane's configuration and the longest radius used during the lift.
+  detail:
+    trainee: Rated capacity depends on boom length, counterweight, outrigger setting, the parts of line and the
+      radius. Write down each crane's setup and the farthest radius the load will reach from pick to set.
+    operator: For each crane, record boom and jib length, counterweight, outrigger or crawler setting, parts of
+      line and the longest radius. Use these to pick the correct chart.
+    inspector: Document the configuration and maximum radius each crane's capacity is based on. These set the rated
+      capacity limit in 1926.1417(o)(1).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1417(o)(1)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 10
+  phase: Load and capacity
+  text: Read and record each crane's rated chart capacity for the planned configuration and longest radius.
+  detail:
+    trainee: Use the crane's own load chart for the exact setup. The load each crane carries has to stay within
+      that number for the whole lift.
+    operator: Read the chart capacity at the longest radius and the worst-case boom angle or swing area. Compare
+      it with the gross load each crane will carry. If the load exceeds capacity, do not lift.
+    inspector: Record chart capacity for each crane and verify the planned load does not exceed it, per 1926.1417(o)(1).
+  check_kind: value
+  section_ids:
+  - 29cfr1926.1417(o)(1)
+  deficiency:
+    guidance: The planned load is more than the rated capacity for the configuration and radius.
+    action: Do not lift. Change the crane, configuration, radius or load and replan.
+    section_id: 29cfr1926.1417(o)(1)
+    quote: The equipment must not be operated in excess of its rated capacity.
+  practice_only: false
+  value_unit: lb
+- ord: 11
+  phase: Load and capacity
+  text: Calculate each crane's load share and percent of rated capacity.
+  detail:
+    trainee: Percent of capacity is the load the crane carries divided by its chart capacity, times 100. On a multiple-crane
+      lift, the load share comes from where the CG sits between the pick points. It changes if the load tilts or
+      one crane moves out of step.
+    operator: Work out each crane's share using the distances from the CG to the pick points. Allow for load shifting
+      during the lift and apply the site's planning limit. The rule limit is never more than 100 percent of rated
+      capacity.
+    inspector: Record the load share and percent of capacity for each crane. The share calculation and any planning
+      margin are practice. Exceeding rated capacity violates 1926.1417(o)(1).
+  check_kind: value
+  section_ids: []
+  deficiency:
+    guidance: A crane's share is over rated capacity or over the site planning limit.
+    action: Replan the configuration, radius, pick points or crane selection before the lift.
+    section_id: null
+    quote: null
+  practice_only: true
+  value_unit: '%'
+- ord: 12
+  phase: Load and capacity
+  text: Confirm no one is directing the operator to exceed rated capacity.
+  detail:
+    trainee: No supervisor, schedule or plan can require the operator to lift more than the crane is rated for.
+      The operator can refuse.
+    operator: If the plan or any instruction would put you over rated capacity, refuse and report it.
+    inspector: Verify the plan and instructions do not require operation beyond rated capacity, per 1926.1417(o)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(o)(2)
+  deficiency:
+    guidance: The operator is being required to operate over rated capacity.
+    action: Stop the lift and correct the plan or instruction.
+    section_id: 29cfr1926.1417(o)(2)
+    quote: The operator must not be required to operate the equipment in a manner that would violate paragraph (o)(1)
+      of this section.
+  practice_only: false
+  value_unit: null
+- ord: 13
+  phase: Rigging
+  text: Calculate sling tension at the planned sling angle and confirm each rigging component's rated load.
+  detail:
+    trainee: As slings flatten out, the tension in each leg goes up. This is physics. Check that each sling, shackle
+      and spreader is rated for the actual tension, not just the load weight.
+    operator: Use the sling angle from horizontal to work out leg tension and compare it with each component's rated
+      load. Replace or re-rig anything under-rated.
+    inspector: Record the rigging list, angles and calculated tensions. This is rigging practice; the given text
+      does not set sling-angle values.
+  check_kind: value
+  section_ids: []
+  deficiency:
+    guidance: A rigging component is loaded beyond its rated load at the planned angle.
+    action: Change the rigging or the sling angle before the lift.
+    section_id: null
+    quote: null
+  practice_only: true
+  value_unit: lb
+- ord: 14
+  phase: Rigging
+  text: Plan rigging that prevents unintended displacement and uses self-closing latched hooks.
+  detail:
+    trainee: If workers will be in the fall zone hooking, guiding or connecting, the load has to be rigged so nothing
+      can slip out. The hooks need self-closing latches or an equivalent. J hooks are allowed only for setting wooden
+      trusses.
+    operator: Confirm the rigging secures every piece of the load and that the hooks have working self-closing latches
+      or an equivalent.
+    inspector: Verify the rigging method and hook type, per 1926.1425(c)(1) and (c)(2), wherever workers will be
+      in the fall zone.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1425(c)
+  - 29cfr1926.1425(c)(1)
+  - 29cfr1926.1425(c)(2)
+  deficiency:
+    guidance: Workers will be in the fall zone, but the load is not secured against displacement or the hooks are
+      not latched.
+    action: Re-rig and fit latched hooks, or keep workers out of the fall zone.
+    section_id: 29cfr1926.1425(c)(1)
+    quote: The materials being hoisted must be rigged to prevent unintentional displacement.
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Rigging
+  text: Assign a qualified rigger to rig the load.
+  detail:
+    trainee: When people will be near the load to hook, guide or connect it, a qualified rigger must do the rigging.
+      Write the rigger's name in the plan.
+    operator: Confirm who is rigging and that the person is a qualified rigger before you take the load.
+    inspector: Record the rigger's name and verify the person is qualified, per 1926.1425(c)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1425(c)(3)
+  deficiency:
+    guidance: Workers will be in the fall zone, and the rigger is not a qualified rigger.
+    action: Assign a qualified rigger before the lift.
+    section_id: 29cfr1926.1425(c)(3)
+    quote: The materials must be rigged by a qualified rigger.
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Site
+  text: Confirm the ground at each crane position is firm, drained and graded to meet the manufacturer's support
+    and level specs.
+  detail:
+    trainee: The ground under each crane has to hold the crane and load without sinking, using mats or cribbing
+      if needed. Look for soft spots, water, fill, trenches and buried utilities.
+    operator: Check each setup location and the support materials against the manufacturer's support and level specs.
+      Working out outrigger or crawler bearing pressure against ground capacity is engineering practice.
+    inspector: Verify the ground condition and support materials at each crane position, per 1926.1402(b). The drainage
+      requirement does not apply to marshes/wetlands.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(b)
+  deficiency:
+    guidance: The ground or support cannot meet the manufacturer's specs for support and level.
+    action: Do not set up or use the crane until the ground is corrected or support materials are added.
+    section_id: 29cfr1926.1402(b)
+    quote: The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to
+      a sufficient extent
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Site
+  text: Identify the work zone for each crane by marked boundaries or the full 360-degree maximum working radius.
+  detail:
+    trainee: The work zone is the area where the crane might operate. Either mark its edges (flags, or a range limit
+      or range control warning device) and keep the crane inside them, or treat the whole circle around the crane
+      out to its maximum working radius as the work zone.
+    operator: Know which method is used. If boundaries are marked, do not operate past them.
+    inspector: Record the work zone method for each crane before operations begin, per 1926.1408(a)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)
+  - 29cfr1926.1408(a)(1)
+  - 29cfr1926.1408(a)(1)(i)
+  - 29cfr1926.1408(a)(1)(ii)
+  deficiency:
+    guidance: No work zone has been identified, so the power line assessment cannot be done.
+    action: Identify the work zone before beginning equipment operations.
+    section_id: 29cfr1926.1408(a)(1)(ii)
+    quote: Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working
+      radius.
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Site
+  text: Determine whether any crane, load line or load could come within 20 feet of a power line.
+  detail:
+    trainee: Assume each crane swings out to its maximum working radius inside the work zone. If any part, including
+      the rigging, could get within 20 feet of a power line, one of three protection options must be used.
+    operator: Survey overhead and nearby lines for each crane. If any part could come within 20 feet, stop and confirm
+      which option is in effect before operating.
+    inspector: Record the power line assessment for each crane, per 1926.1408(a)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)(2)
+  deficiency:
+    guidance: Equipment could get within 20 feet of a power line, and no protection option has been selected.
+    action: Do not begin operations until Option (1), (2) or (3) is selected and carried out.
+    section_id: 29cfr1926.1408(a)(2)
+    quote: 'If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section,
+      as follows:'
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Site
+  text: Record the power line option used, the line voltage and the utility confirmation or required minimum approach
+    distance.
+  detail:
+    trainee: 'Option 1: the utility de-energizes the line and grounds it where you can see it. Option 2: keep everything
+      at least 20 feet away. Option 3: find the voltage and use the Table A minimum approach distance. Write down
+      which option is used and the supporting facts.'
+    operator: For Option 1, get the utility's confirmation. For Option 3, get the voltage and the Table A distance
+      from the standard. Know the limit before you swing.
+    inspector: Document the option, the utility confirmation or voltage, and the Table A distance taken from the
+      standard, per 1926.1408(a)(2)(i)-(iii).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1408(a)(2)(i)
+  - 29cfr1926.1408(a)(2)(ii)
+  - 29cfr1926.1408(a)(2)(iii)(A)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Site
+  text: Confirm the paragraph (b) clearance measures are in the plan for Option 2 or Option 3.
+  detail:
+    trainee: If the line stays energized, the plan has to include the clearance measures that 1926.1408(b) requires,
+      so no part of the crane, load line or load gets closer than the allowed distance.
+    operator: Confirm the paragraph (b) measures are set up before operating near the line.
+    inspector: Verify the paragraph (b) measures are planned for Option 2, or for Option 3 when the minimum approach
+      distance could be breached, per 1926.1408(a)(2)(ii) and (iii)(B).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)(2)(ii)
+  - 29cfr1926.1408(a)(2)(iii)(B)
+  deficiency:
+    guidance: Required clearance measures for an energized line are missing.
+    action: Do not operate until the paragraph (b) measures are in place.
+    section_id: 29cfr1926.1408(a)(2)(ii)
+    quote: Ensure that no part of the equipment, load line, or load (including rigging and lifting accessories),
+      gets closer than 20 feet to the power line by implementing the measures specified in paragraph (b) of this
+      section.
+  practice_only: false
+  value_unit: null
+- ord: 21
+  phase: Swing and fall zone
+  text: Plan barriers marking each crane's swing and crush hazard areas.
+  detail:
+    trainee: The rotating upper part of a crane can strike or pinch people. Put up control lines, warning lines,
+      railings or similar barriers around these areas. Signs and high-visibility markings are allowed only when
+      barriers are not feasible on the ground or on the crane.
+    operator: Walk the counterweight swing path and look for pinch points against structures or the other crane.
+      Confirm the barriers are up and maintained.
+    inspector: Verify the barriers, or the documented infeasibility and the signs and markings, per 1926.1424(a)(2)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(1)
+  - 29cfr1926.1424(a)(2)(ii)
+  deficiency:
+    guidance: Swing or crush hazard areas are not marked.
+    action: Erect barriers, or signs and markings where barriers are not feasible, before operating.
+    section_id: 29cfr1926.1424(a)(2)(ii)
+    quote: Erect and maintain control lines, warning lines, railings or similar barriers to mark the boundaries
+      of the hazard areas.
+  practice_only: false
+  value_unit: null
+- ord: 22
+  phase: Swing and fall zone
+  text: Confirm workers on or near the cranes are trained to recognize swing and crush hazard areas.
+  detail:
+    trainee: Everyone assigned to work on or near the cranes has to know where the struck-by and pinch areas are
+      and what the markings mean.
+    operator: Confirm the crew assigned to work near your crane has had this training.
+    inspector: Verify training for authorized personnel, per 1926.1424(a)(2)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(2)(i)
+  deficiency:
+    guidance: Workers assigned near the crane have not been trained on swing and crush hazards.
+    action: Train them before they work on or near the equipment.
+    section_id: 29cfr1926.1424(a)(2)(i)
+    quote: Train each employee assigned to work on or near the equipment (“authorized personnel”) in how to recognize
+      struck-by and pinch/crush hazard areas posed by the rotating superstructure.
+  practice_only: false
+  value_unit: null
+- ord: 23
+  phase: Swing and fall zone
+  text: Set the pre-arranged system for entering hazard areas the operator cannot see.
+  detail:
+    trainee: Before anyone goes into a swing hazard area the operator cannot see, the operator must be told. The
+      operator does not swing until told the person is in a safe position.
+    operator: Agree on the method (radio call, signal) for both 'going in' and 'safe position.' Do not rotate until
+      you get the 'safe position' call.
+    inspector: Document the communication system, per 1926.1424(a)(3)(i) and (ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(3)(i)
+  - 29cfr1926.1424(a)(3)(ii)
+  deficiency:
+    guidance: There is no agreed way to tell the operator when someone enters or clears a hazard area out of view.
+    action: Set up and brief the communication system before operating.
+    section_id: 29cfr1926.1424(a)(3)(ii)
+    quote: the operator must not rotate the superstructure until the operator is informed in accordance with a pre-arranged
+      system of communication that the employee is in a safe position.
+  practice_only: false
+  value_unit: null
+- ord: 24
+  phase: Swing and fall zone
+  text: Choose a hoisting route that keeps loads away from workers where one is available.
+  detail:
+    trainee: Plan the load's path so it does not pass over people when another route is possible, as long as that
+      route is consistent with public safety.
+    operator: Review the planned path from pick to set and change it if a route with less exposure is available.
+    inspector: Verify the planned route minimizes exposure where available, per 1926.1425(a).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1425(a)
+  deficiency:
+    guidance: A route with less exposure is available but the plan does not use it.
+    action: Revise the hoisting route before the lift.
+    section_id: 29cfr1926.1425(a)
+    quote: Where available, hoisting routes that minimize the exposure of employees to hoisted loads must be used,
+      to the extent consistent with public safety.
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: Swing and fall zone
+  text: Define who may be in the fall zone during hooking, guiding, connecting and landing.
+  detail:
+    trainee: Only workers hooking, unhooking or guiding the load, making the initial attachment, or running a concrete
+      bucket or hopper may be in the fall zone. When the load is landing, only the workers needed to receive it
+      may be there.
+    operator: Know who is allowed in the fall zone. Stop if anyone else enters.
+    inspector: Verify the fall zone controls and the names of permitted workers, per 1926.1425(b) and (d).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1425(b)
+  - 29cfr1926.1425(b)(1)
+  - 29cfr1926.1425(b)(2)
+  - 29cfr1926.1425(b)(3)
+  - 29cfr1926.1425(d)
+  deficiency:
+    guidance: The plan allows workers into the fall zone who are not permitted there.
+    action: Restrict the fall zone to permitted workers before the lift.
+    section_id: 29cfr1926.1425(d)
+    quote: Only employees needed to receive a load are permitted to be within the fall zone when a load is being
+      landed.
+  practice_only: false
+  value_unit: null
+- ord: 26
+  phase: Swing and fall zone
+  text: For tilt-up or tilt-down, keep everyone from directly under the load and limit the fall zone to essential
+    workers.
+  detail:
+    trainee: No one goes directly under a tilting load. Only workers who cannot do their task from outside the fall
+      zone may be in it. Mark N/A if there is no tilt.
+    operator: Do not tilt while anyone is under the load. No boom free fall with anyone in the fall zone, and no
+      load line free fall with anyone directly under the load.
+    inspector: Verify essential-worker justification and the no-free-fall controls, per 1926.1425(e).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1425(e)
+  - 29cfr1926.1425(e)(1)
+  - 29cfr1926.1425(e)(2)
+  deficiency:
+    guidance: Someone is directly under the tilting load, or non-essential workers are in the fall zone.
+    action: Clear the area before tilting.
+    section_id: 29cfr1926.1425(e)(1)
+    quote: No employee must be directly under the load.
+  practice_only: false
+  value_unit: null
+- ord: 27
+  phase: Signals and people
+  text: Determine whether a signal person is required and assign one for each crane that needs it.
+  detail:
+    trainee: A signal person is needed if the operator cannot fully see the load path or placement area, if the
+      view is blocked while the crane travels, or if the operator or load handler decides one is needed.
+    operator: Check your view of the full load path and the placement area. Ask for a signal person whenever you
+      judge it necessary.
+    inspector: Record the signal person assignments and the reasons, per 1926.1419(a).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(a)
+  - 29cfr1926.1419(a)(1)
+  - 29cfr1926.1419(a)(2)
+  - 29cfr1926.1419(a)(3)
+  deficiency:
+    guidance: A condition requiring a signal person exists, but none is assigned.
+    action: Assign a signal person before operating.
+    section_id: 29cfr1926.1419(a)
+    quote: 'A signal person must be provided in each of the following situations:'
+  practice_only: false
+  value_unit: null
+- ord: 28
+  phase: Signals and people
+  text: Confirm the multiple-crane lift director meets competent and qualified person criteria, or is assisted.
+  detail:
+    trainee: The person in charge of a multiple-crane lift must be both a competent person and a qualified person,
+      or a competent person who is helped by one or more qualified persons.
+    operator: Know who the lift director is and take direction only from that person or the assigned signal person.
+    inspector: Record the lift director and any assisting qualified persons, and verify their criteria, per 1926.1432(b)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1432(b)(1)
+  deficiency:
+    guidance: The lift director does not meet the required criteria.
+    action: Assign a qualified lift director, or add qualified person assistance, before the lift.
+    section_id: 29cfr1926.1432(b)(1)
+    quote: The multiple-crane/derrick lift must be directed by a person who meets the criteria for both a competent
+      person and a qualified person, or by a competent person who is assisted by one or more qualified persons (lift
+      director).
+  practice_only: false
+  value_unit: null
+- ord: 29
+  phase: Signals and people
+  text: 'Record names and roles: operators, riggers, signal persons, tag line handlers and spotters.'
+  detail:
+    trainee: A clear roster means everyone knows their job and who gives signals.
+    operator: Confirm you know who signals you, and who has the authority to stop the lift.
+    inspector: Record the roster in the plan. This is a documentation practice.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 30
+  phase: Signals and people
+  text: Record the weather limits and stop criteria for the lift.
+  detail:
+    trainee: Wind, lightning, low visibility and ice can make a lift unsafe. Write down the stop limits, taken from
+      the crane manufacturer's data and site policy.
+    operator: Know each crane's wind limit for this configuration and the load's wind area. Stop when a limit is
+      reached.
+    inspector: Record the weather limits and their source. This is practice; the given text sets no weather values.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 31
+  phase: Signals and people
+  text: 'Record the contingencies: stop-work authority, lost communication, crane fault and load-hung-up response.'
+  detail:
+    trainee: Decide ahead of time what everyone does if something goes wrong, such as lost radio contact or a crane
+      that stops working with the load in the air.
+    operator: Know the all-stop signal and what to do if radio contact with the lift director or the other crane
+      is lost.
+    inspector: Record the contingency actions in the plan. This is practice.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 32
+  phase: Pre-lift meeting
+  text: Lift director reviews the plan in a meeting with every worker involved.
+  detail:
+    trainee: Before a multiple-crane lift, everyone who will take part meets with the lift director to go over the
+      plan, their roles, the signals and the hazards.
+    operator: Attend the meeting and raise any capacity, visibility or communication concerns before the lift.
+    inspector: Verify the meeting took place with all involved workers, per 1926.1432(b)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1432(b)(2)
+  deficiency:
+    guidance: The plan was not reviewed with all involved workers.
+    action: Hold the meeting with everyone involved before starting.
+    section_id: 29cfr1926.1432(b)(2)
+    quote: The lift director must review the plan in a meeting with all workers who will be involved with the operation.
+  practice_only: false
+  value_unit: null
+- ord: 33
+  phase: Pre-lift meeting
+  text: Record the meeting attendees and the time.
+  detail:
+    trainee: An attendance list shows who was briefed.
+    operator: Sign the attendance list.
+    inspector: Keep the attendance list with the plan. Written records are practice.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 34
+  phase: At the lift
+  text: If weight was not verified from a source, hoist and check for over 75 percent of capacity.
+  detail:
+    trainee: If the weight was not confirmed from a recognized source, the operator starts the hoist and reads a
+      load weighing device or capacity indicator. Over 75 percent of maximum rated capacity at the longest radius
+      means stop and verify the weight from a source.
+    operator: Read the device as the load comes off the ground. If the reading is over 75 percent of maximum rated
+      capacity at the longest radius, set the load down and verify the weight per (o)(3)(i).
+    inspector: Record the method used and the reading, per 1926.1417(o)(3)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(o)(3)(ii)
+  deficiency:
+    guidance: The load is over 75 percent of maximum rated capacity at the longest radius, and its weight has not
+      been verified.
+    action: Do not proceed. Verify the weight from a recognized source or calculation.
+    section_id: 29cfr1926.1417(o)(3)(ii)
+    quote: If it does, the operator must not proceed with the lift until he/she verifies the weight of the load
+      in accordance with paragraph (o)(3)(i) of this section.
+  practice_only: false
+  value_unit: null
+- ord: 35
+  phase: Records
+  text: 'Sign off the plan: lift director, qualified person, operators and rigger.'
+  detail:
+    trainee: Signatures show that each key person reviewed and accepted the plan.
+    operator: Sign only after you agree with the capacity, setup and signals.
+    inspector: File the signed plan. Sign-off is practice.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+prov:
+  prov_id: 5a626855ebb34022aaa0
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 0ce0b18a42eb1ec467635ce464f694511deaad89d91a5f5a4bd5b8bf861ace4f
+  output_sha256: e710c4c0e71dedd833f01a52c89e51862f4149c1cfbffc92bccb50e56a06f2cf
+  created_at: '2026-11-27T06:50:24+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

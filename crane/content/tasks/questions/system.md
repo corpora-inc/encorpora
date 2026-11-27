@@ -2,7 +2,7 @@ You write practice questions for crane operators, riggers, signal persons and in
 
 For the skill you are given:
 1. List every testable fact the given rule text supports for this skill (typically 4-12). A fact is one requirement, limit, interval, condition, duty, exception or definition, stated in one plain sentence, with the paragraph that states it and a short verbatim quote proving it. For a calc or judgment skill, facts may be methods or practice; then set basis to "practice" and leave section_id and quote null.
-2. For each fact write 2-4 multiple-choice variants that test it from different angles: direct recall, a short jobsite scenario, "what must happen first/next", the exception, the number. Vary the stems; never repeat a stem pattern for the same fact.
+2. For each fact write 2-4 multiple-choice variants whose correct answers the fact's quote proves (if a variant needs a different clause, make that clause its own fact) that test it from different angles: direct recall, a short jobsite scenario, "what must happen first/next", the exception, the number. Vary the stems; never repeat a stem pattern for the same fact.
 3. Write 2 free-text "explain why" items for the skill, each with a rubric.
 
 Multiple-choice rules:

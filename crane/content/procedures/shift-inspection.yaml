@@ -1,0 +1,766 @@
+proc_id: shift-inspection
+title: Shift Inspection (Pre-Shift, Frequent)
+kind: inspection
+summary: A competent person visually checks the crane, its wire ropes, and its safety devices and operational aids
+  for apparent deficiencies, and decides right away whether any deficiency is a safety hazard. The inspection must
+  begin before each shift the equipment will be used and be finished before or during that shift, and findings must
+  be reassessed as the crane operates.
+roles:
+- operator
+- competent_person
+- inspector
+lang: en
+section_ids:
+- 29cfr1926.1412(d)
+- 29cfr1926.1413(a)
+- 29cfr1926.1415
+- 29cfr1926.1416(b)
+- 29cfr1926.1416(c)
+- 29cfr1926.1417(g)
+- 29cfr1926.1412(j)
+- 29cfr1926.1412(k)
+steps:
+- ord: 1
+  phase: Before you start
+  text: Confirm a competent person will begin the visual inspection before the shift starts.
+  detail:
+    trainee: The shift inspection is a look-and-observe check for obvious problems, done by someone the employer
+      designates as competent. It must begin before the crane works this shift and be finished before or during
+      the shift.
+    operator: 'No competent person assigned, or inspection not started before the shift: do not operate.'
+    inspector: Verify a competent person began the inspection before the shift and finished it before or during
+      the shift, per 1926.1412(d)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)
+  deficiency:
+    guidance: No valid shift inspection has been started for this shift.
+    action: Hold operations until a competent person begins the inspection.
+    section_id: 29cfr1926.1412(d)(1)
+    quote: A competent person must begin a visual inspection prior to each shift the equipment will be used, which
+      must be completed before or during that shift.
+  practice_only: false
+  value_unit: null
+- ord: 2
+  phase: Before you start
+  text: Record the competent person's name, the date, the shift, and the equipment ID.
+  detail:
+    trainee: Write down who is doing the inspection and which crane it covers so the record can be traced later.
+    operator: Enter the name, date, shift, and unit number or serial number before you begin the checks.
+    inspector: Confirm the record identifies the inspector and the unit. This rule text does not require a written
+      shift record; recording one is good practice.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 3
+  phase: Before you start
+  text: Check the manufacturer's inspection procedures for items stricter or more frequent than this checklist.
+  detail:
+    trainee: The manufacturer may require more checks, or more frequent checks, than the federal minimum. Those
+      added checks must be done too.
+    operator: Pull the manual's daily or shift checks for safety devices, controls, brakes, hook, and load-bearing
+      parts, and add any extra items to this inspection.
+    inspector: Verify that manufacturer procedures that are more comprehensive or more frequent are being followed,
+      per 1926.1412(j).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(j)
+  deficiency:
+    guidance: The manufacturer's stricter inspection items were not identified or not done.
+    action: Add the manufacturer's items and complete them before use.
+    section_id: 29cfr1926.1412(j)
+    quote: that is more comprehensive or has a more frequent schedule of inspection than the requirements of this
+      section must be followed.
+  practice_only: false
+  value_unit: null
+- ord: 4
+  phase: Before you start
+  text: Confirm prior inspection documents are available to the person inspecting.
+  detail:
+    trainee: Earlier inspection records show what was already found and what was repaired. Whoever inspects needs
+      to be able to see them.
+    operator: Find the crane's inspection records, either in the cab or from the site office, and check for open
+      items.
+    inspector: Verify that documents produced under 1926.1412 are available to all persons who conduct inspections,
+      during the retention period, per 1926.1412(k).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(k)
+  deficiency:
+    guidance: Inspection records are not available to the inspector.
+    action: Get the records from the employer before you sign off the inspection.
+    section_id: 29cfr1926.1412(k)
+    quote: All documents produced under this section must be available, during the applicable document retention
+      period, to all persons who conduct inspections under this section.
+  practice_only: false
+  value_unit: null
+- ord: 5
+  phase: Walkaround
+  text: Check the ground under and around outriggers, stabilizers, and foundations for settling or standing water.
+  detail:
+    trainee: The crane is only as stable as the ground under it. Look for sinking pads, cracks, soft spots, or water
+      pooling near supports. Good means firm and dry, with no movement since setup.
+    operator: Any settling under pads or mats, washout, or water accumulation means the competent person decides
+      whether it is a hazard before the crane lifts.
+    inspector: Document the ground condition at each support, per 1926.1412(d)(1)(x). This item does not cover tracks
+      of the general railroad system regulated under 49 CFR part 213.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(x)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: The ground support may not hold the crane and its loads.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 6
+  phase: Walkaround
+  text: Read the crane level and compare it to the manufacturer's tolerance.
+  detail:
+    trainee: A crane that is out of level loses capacity and can side-load the boom. Check level before each shift
+      and again after every move and setup.
+    operator: Record the level reading. If it is outside the manufacturer's tolerance, re-level before operating.
+    inspector: Verify level was checked before the shift and after each move and setup, within the manufacturer's
+      tolerances, per 1926.1412(d)(1)(xi).
+  check_kind: value
+  value_unit: degrees
+  section_ids:
+  - 29cfr1926.1412(d)(1)(xi)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: The crane is outside the manufacturer's level tolerance.
+    action: Re-level the crane. If it cannot be corrected, competent person decides whether it is a hazard and takes
+      the crane out of service if so.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+- ord: 7
+  phase: Walkaround
+  text: Check tires, if in use, for proper inflation and condition.
+  detail:
+    trainee: Low or damaged tires change how the crane sits and can fail under load. Good means inflated to spec,
+      with no cuts, bulges, or exposed cords.
+    operator: Compare the tire pressures against the manufacturer's spec and look for cuts, bulges, and cord damage.
+      Mark N/A if the crane is on outriggers with tires off the ground and not in use.
+    inspector: Document tire inflation and condition, per 1926.1412(d)(1)(ix).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(ix)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: A tire is under-inflated or damaged.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Walkaround
+  text: On rail-traveling equipment, check rails, rail stops, rail clamps, and supporting surfaces.
+  detail:
+    trainee: Rail cranes depend on sound rails, stops at the ends, and clamps to hold them in place. Look for loose,
+      cracked, or missing parts.
+    operator: Check that the stops are secure, the clamps work, and the rails and their supports are sound. Mark
+      N/A if the crane does not travel on rails.
+    inspector: Document the rail condition, per 1926.1412(d)(1)(xiii). This item does not cover tracks of the general
+      railroad system regulated under 49 CFR part 213.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(xiii)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: A rail, stop, clamp, or support is defective.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 9
+  phase: Walkaround
+  text: Check air, hydraulic, and other pressurized lines for deterioration or leaks, especially lines that flex.
+  detail:
+    trainee: Hoses that bend during operation wear fastest. Look for wet spots, drips, cracking, chafing, or bulges.
+      Never feel for a leak with your hand.
+    operator: Focus on the boom, outrigger, and swivel hoses. Any active leak, or cover damage that exposes reinforcement,
+      goes to the competent person for a decision.
+    inspector: Document the condition of pressurized lines, especially flexing lines, per 1926.1412(d)(1)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(iii)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: A pressurized line is leaking or deteriorated.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 10
+  phase: Walkaround
+  text: Check the hydraulic fluid level.
+  detail:
+    trainee: Low fluid can cause erratic or failed functions. Good means the level is within the marks on the sight
+      glass or dipstick, under the conditions the manufacturer specifies.
+    operator: Read the level with the cylinders positioned as the manual specifies. Low fluid means find the cause
+      and top it off before operating.
+    inspector: Document the hydraulic fluid level, per 1926.1412(d)(1)(iv).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(iv)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: The hydraulic fluid level is not correct.
+    action: Correct the level. If a leak or other hazard is found, take the crane out of service until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 11
+  phase: Walkaround
+  text: Check control and drive mechanisms for excessive wear and for contamination by lubricant, water, or debris.
+  detail:
+    trainee: Worn or dirty drive parts and brakes can slip or bind. Look at drums, gears, clutches, and brakes for
+      wear, oil soaking, water, or debris.
+    operator: Oil or grease on brake or clutch surfaces, or obvious wear, goes to the competent person for a decision
+      before operating.
+    inspector: Document the condition of control and drive mechanisms, per 1926.1412(d)(1)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(ii)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: A control or drive mechanism is excessively worn or contaminated.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 12
+  phase: Walkaround
+  text: Check electrical apparatus for malfunction, excessive deterioration, dirt, or moisture.
+  detail:
+    trainee: Look at wiring, connectors, switches, and panels for damage, corrosion, dirt buildup, or water. Good
+      means clean, dry, and intact.
+    operator: Damaged insulation, wet panels, or any component that is not working goes to the competent person.
+    inspector: Document the condition of electrical apparatus, per 1926.1412(d)(1)(viii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(viii)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: Electrical apparatus is malfunctioning, deteriorated, dirty, or wet.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 13
+  phase: Walkaround
+  text: Check hooks and latches for deformation, cracks, excessive wear, or chemical or heat damage.
+  detail:
+    trainee: A damaged hook or latch can drop the load. Look for an opened throat, twist, cracks, gouges, discoloration,
+      and a latch that does not close.
+    operator: A bent, cracked, or heat-damaged hook, or a latch that does not close, goes to the competent person.
+      Check the manufacturer's limits for throat opening and wear.
+    inspector: Document hook and latch condition, per 1926.1412(d)(1)(v).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(v)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: A hook or latch is deformed, cracked, worn, or damaged.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 14
+  phase: Walkaround
+  text: Check that the wire rope reeving matches the manufacturer's specifications.
+  detail:
+    trainee: Reeving is the path the rope takes over the sheaves. Wrong reeving changes the line pull and capacity.
+      Good means it matches the manufacturer's diagram for the parts of line in use.
+    operator: Compare the parts of line and the sheave path against the reeving diagram and load chart. Look for
+      rope jumped off a sheave.
+    inspector: Verify reeving complies with the manufacturer's specifications, per 1926.1412(d)(1)(vi).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(vi)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: The reeving does not match the manufacturer's specifications.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until the reeving is corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Walkaround
+  text: Check cab windows for significant cracks, breaks, or defects that hamper the operator's view.
+  detail:
+    trainee: The operator has to see the load, the signal person, and any hazards. Look for cracks or damage in
+      the line of sight.
+    operator: A crack or break that blocks your view of the work area goes to the competent person before operating.
+    inspector: Document cab window condition, per 1926.1412(d)(1)(xii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(xii)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: Window damage hampers the operator's view.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Wire rope
+  text: Identify the running and standing ropes likely to be used this shift and inspect them visually.
+  detail:
+    trainee: Every rope likely to be used this shift gets a visual check, including standing ropes and pendants.
+      You do not need to untwist the rope or boom down.
+    operator: List the hoist, boom hoist, and pendant ropes in use, then look along their exposed length for the
+      deficiencies in the next steps.
+    inspector: Verify the competent person observed all running and standing ropes likely in use during the shift,
+      per 1926.1413(a)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(1)
+  - 29cfr1926.1412(d)(1)(vii)
+  deficiency:
+    guidance: Not all ropes likely to be in use were inspected.
+    action: Complete the rope inspection before those ropes are used.
+    section_id: 29cfr1926.1413(a)(1)
+    quote: The inspection must consist of observation of wire ropes (running and standing) that are likely to be
+      in use during the shift for apparent deficiencies, including those listed in paragraph (a)(2) of this section.
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Wire rope
+  text: Give particular attention to the critical review areas of each rope.
+  detail:
+    trainee: 'Damage tends to start in certain places: rotation resistant rope, boom and luffing hoist rope at reverse
+      bends, drum flange, crossover and pickup points, near terminal ends, and where rope sits on saddles, equalizer
+      sheaves, or other sheaves with limited travel.'
+    operator: Look closely at each of these areas on every rope in use. Mark any that do not apply.
+    inspector: Verify particular attention was given to each item in 1926.1413(a)(3)(i) through (v).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(3)
+  - 29cfr1926.1413(a)(3)(i)
+  - 29cfr1926.1413(a)(3)(ii)
+  - 29cfr1926.1413(a)(3)(iii)
+  - 29cfr1926.1413(a)(3)(iv)
+  - 29cfr1926.1413(a)(3)(v)
+  deficiency:
+    guidance: The critical review areas were not examined.
+    action: Examine these areas before the rope is used.
+    section_id: 29cfr1926.1413(a)(3)
+    quote: 'The competent person must give particular attention to all of the following:'
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Wire rope
+  text: 'Check for Category I deficiencies: distortion, corrosion, arc or heat damage, or faulty end connections.'
+  detail:
+    trainee: Category I covers significant kinking, crushing, unstranding, birdcaging, signs of core failure or
+      core protrusion, significant corrosion, electric arc damage (from a source other than power lines) or heat
+      damage, and end connections that are improperly applied or are corroded, cracked, bent, or worn.
+    operator: If you find any of these, the competent person decides right away whether it is a safety hazard. If
+      it is, do not use that rope until it is replaced or a localized problem is cut out.
+    inspector: Document any Category I finding and the competent person's immediate determination, per 1926.1413(a)(2)(i)
+      and (a)(4)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(i)
+  - 29cfr1926.1413(a)(2)(i)(A)
+  - 29cfr1926.1413(a)(2)(i)(B)
+  - 29cfr1926.1413(a)(2)(i)(C)
+  - 29cfr1926.1413(a)(2)(i)(D)
+  - 29cfr1926.1413(a)(2)(i)(E)
+  - 29cfr1926.1413(a)(4)(i)
+  - 29cfr1926.1413(a)(4)(i)(A)
+  - 29cfr1926.1413(a)(4)(i)(B)
+  deficiency:
+    guidance: A Category I deficiency was found. The competent person must decide immediately whether it is a safety
+      hazard.
+    action: If it is a hazard, prohibit use of that rope and tag out the crane or hoist until the rope is replaced
+      or the localized damage is severed out. No splicing.
+    section_id: 29cfr1926.1413(a)(4)(i)
+    quote: 'If the deficiency is determined to constitute a safety hazard, operations involving use of the wire
+      rope in question must be prohibited until:'
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Wire rope
+  text: Check for Category II broken wires against the limit for each rope type.
+  detail:
+    trainee: 'A rope lay is the length in which one strand makes a full turn around the rope. Limits: running rope,
+      six random broken wires in one lay or three in one strand in one lay. Rotation resistant rope, two random
+      in six rope diameters or four random in 30 rope diameters. Pendants or standing rope, more than two in one
+      lay beyond end connections or more than one in a lay at an end connection.'
+    operator: If the count reaches a limit, stop using that rope. It stays out of use until the rope manufacturer's
+      removal criterion is met, the rope is replaced, or a localized problem is cut out.
+    inspector: Document the broken wire count, location, and rope type, per 1926.1413(a)(2)(ii)(A)(1) through (3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(ii)(A)
+  - 29cfr1926.1413(a)(2)(ii)(A)(1)
+  - 29cfr1926.1413(a)(2)(ii)(A)(2)
+  - 29cfr1926.1413(a)(2)(ii)(A)(3)
+  - 29cfr1926.1413(a)(4)(ii)
+  - 29cfr1926.1413(a)(4)(ii)(A)
+  - 29cfr1926.1413(a)(4)(ii)(B)
+  - 29cfr1926.1413(a)(4)(ii)(C)
+  deficiency:
+    guidance: The broken wire count meets a Category II limit.
+    action: Prohibit use of that rope and tag out the crane or hoist until the manufacturer's criterion is met,
+      the rope is replaced, or the localized damage is severed out.
+    section_id: 29cfr1926.1413(a)(4)(ii)
+    quote: 'If a deficiency in Category II (see paragraph (a)(2)(ii) of this section) is identified, operations
+      involving use of the wire rope in question must be prohibited until:'
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Wire rope
+  text: Where diameter loss is suspected, measure the rope and compare it to nominal diameter.
+  detail:
+    trainee: A thinning rope can mean internal wear or core failure. A reduction of more than 5% from nominal diameter
+      is a Category II deficiency. Measuring with calipers across the strand crowns is field practice.
+    operator: Record the measured diameter. If it is more than 5% below nominal, stop using that rope.
+    inspector: Document the nominal and measured diameter and the percent reduction, per 1926.1413(a)(2)(ii)(B).
+  check_kind: value
+  value_unit: inches
+  section_ids:
+  - 29cfr1926.1413(a)(2)(ii)(B)
+  - 29cfr1926.1413(a)(4)(ii)
+  deficiency:
+    guidance: The diameter is reduced more than 5% from nominal, a Category II deficiency.
+    action: Prohibit use of that rope and tag out the crane or hoist until the manufacturer's criterion is met,
+      the rope is replaced, or the localized damage is severed out.
+    section_id: 29cfr1926.1413(a)(4)(ii)
+    quote: 'If a deficiency in Category II (see paragraph (a)(2)(ii) of this section) is identified, operations
+      involving use of the wire rope in question must be prohibited until:'
+  practice_only: false
+- ord: 21
+  phase: Wire rope
+  text: 'Check for Category III deficiencies: core failure in rotation resistant rope, power line contact, or a
+    broken strand.'
+  detail:
+    trainee: These are the most serious rope findings. A rope that has contacted an energized power line can never
+      be repaired. It must be replaced.
+    operator: If you find any of these, stop using that rope now. It must be replaced, or a localized problem (not
+      power line contact) cut out.
+    inspector: Document any Category III finding and confirm the rope was removed from use, per 1926.1413(a)(2)(iii)
+      and (a)(4)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(iii)
+  - 29cfr1926.1413(a)(2)(iii)(A)
+  - 29cfr1926.1413(a)(2)(iii)(B)
+  - 29cfr1926.1413(a)(2)(iii)(C)
+  - 29cfr1926.1413(a)(4)(iii)
+  - 29cfr1926.1413(a)(4)(iii)(A)
+  - 29cfr1926.1413(a)(4)(iii)(B)
+  deficiency:
+    guidance: A Category III deficiency was found.
+    action: Prohibit use of that rope and tag out the crane or hoist. Replace the rope, or sever out a localized
+      defect. Never repair a rope that contacted a power line.
+    section_id: 29cfr1926.1413(a)(4)(iii)
+    quote: 'If a deficiency in Category III is identified, operations involving use of the wire rope in question
+      must be prohibited until:'
+  practice_only: false
+  value_unit: null
+- ord: 22
+  phase: Wire rope
+  text: Tag out the crane or affected hoist for any rope removed from service.
+  detail:
+    trainee: A tag keeps anyone from using a rope that has been pulled from service until it is repaired or replaced.
+    operator: Tag out the whole crane or the hoist with that rope, under 1926.1417(f)(1). Leave the tag until the
+      rope is repaired or replaced.
+    inspector: Verify the tag-out is in place and matches the rope removed, per 1926.1413(a)(4)(iv).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(4)(iv)
+  deficiency:
+    guidance: A rope removed from service is not tagged out.
+    action: Tag out the crane or hoist before anyone operates it.
+    section_id: 29cfr1926.1413(a)(4)(iv)
+    quote: either the equipment (as a whole) or the hoist with that wire rope must be tagged-out, in accordance
+      with § 1926.1417(f)(1), until the wire rope is repaired or replaced.
+  practice_only: false
+  value_unit: null
+- ord: 23
+  phase: Wire rope
+  text: If a rope was shortened, confirm two drum wraps remain at the lowest load or boom position.
+  detail:
+    trainee: Cutting out a damaged section makes the rope shorter. The drum must still hold two wraps when the hook
+      or boom is at its lowest point, so the rope cannot pull off the drum. Splicing ropes together is not allowed.
+    operator: Lower the hook or boom to its lowest working position and count the wraps left on the drum. Mark N/A
+      if no rope was shortened.
+    inspector: Verify two wraps remain at the lowest position and that no splices are present, per 1926.1413(a)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(4)(i)(B)
+  - 29cfr1926.1413(a)(4)(ii)(C)
+  - 29cfr1926.1413(a)(4)(iii)(B)
+  deficiency:
+    guidance: Fewer than two wraps remain on the drum, or the rope was spliced.
+    action: Do not use the rope. Replace it with one long enough to leave two wraps.
+    section_id: 29cfr1926.1413(a)(4)(i)(B)
+    quote: the employer must ensure that the drum will still have two wraps of wire when the load and/or boom is
+      in its lowest position.
+  practice_only: false
+  value_unit: null
+- ord: 24
+  phase: Function checks
+  text: Before starting the engine, verify all controls are in starting position and everyone is clear.
+  detail:
+    trainee: A control left engaged can move the crane the moment the engine starts. Check that every control is
+      in neutral or its start position and no one is near the crane.
+    operator: Put all controls in their starting positions and look around the crane before you crank the engine.
+    inspector: Verify the operator checks controls and personnel clearance before starting, per 1926.1417(g).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(g)
+  deficiency:
+    guidance: Controls are not in starting position, or people are not clear.
+    action: Do not start. Fix the control positions and clear the area first.
+    section_id: 29cfr1926.1417(g)
+    quote: Before starting the engine, the operator must verify that all controls are in the proper starting position
+      and that all personnel are in the clear.
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: Function checks
+  text: Run each control through a trial operation to check for maladjustment.
+  detail:
+    trainee: Controls should respond smoothly, return to neutral, and not stick or drift.
+    operator: With no load, cycle hoist, swing, boom, and telescope (if equipped). Sticking, drift, delayed response,
+      or failure to return to neutral goes to the competent person.
+    inspector: Document control mechanism adjustment, per 1926.1412(d)(1)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(i)
+  - 29cfr1926.1412(d)(2)
+  deficiency:
+    guidance: A control is out of adjustment and interferes with proper operation.
+    action: Competent person decides immediately whether it is a hazard. If it is, take the crane out of service
+      until corrected.
+    section_id: 29cfr1926.1412(d)(2)
+    quote: If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service
+      until it has been corrected.
+  practice_only: false
+  value_unit: null
+- ord: 26
+  phase: Function checks
+  text: Test the crane level indicator and the horn.
+  detail:
+    trainee: Both are required safety devices. The level indicator must read correctly, and the horn must sound
+      and be within the operator's reach.
+    operator: 'A built-in device that fails must be tagged out or removed. A removable one that fails must be removed.
+      The crane does not operate until the device works. Level indicator exceptions: portal cranes, derricks, and
+      floating or barge-mounted equipment.'
+    inspector: Verify the level indicator and horn work, per 1926.1415(a)(1), (a)(7), and (b).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(xiv)
+  - 29cfr1926.1415(a)(1)
+  - 29cfr1926.1415(a)(1)(i)
+  - 29cfr1926.1415(a)(1)(ii)
+  - 29cfr1926.1415(a)(1)(iii)
+  - 29cfr1926.1415(a)(7)
+  - 29cfr1926.1415(a)(7)(i)
+  - 29cfr1926.1415(a)(7)(ii)
+  - 29cfr1926.1415(b)
+  - 29cfr1926.1412(d)(3)
+  deficiency:
+    guidance: The level indicator or horn is not working properly.
+    action: Tag out or remove the device. Take the crane out of service until the device works. Alternative measures
+      are not allowed.
+    section_id: 29cfr1926.1415(b)
+    quote: Operations must not begin unless all of the devices listed in this section are in proper working order.
+  practice_only: false
+  value_unit: null
+- ord: 27
+  phase: Function checks
+  text: Check boom stops, jib stops, foot pedal brake locks, outrigger check valves, and rail clamps and stops.
+  detail:
+    trainee: These devices keep the boom from going over backward, hold the brakes, keep outriggers from retracting,
+      and keep rail cranes from rolling. Each one that applies to this crane must be present and working.
+    operator: 'Boom stops: not required on derricks or hydraulic booms. Jib stops: only if a jib is attached, not
+      on derricks. Pedal brake locks hold. Outrigger and stabilizer jacks hold without creeping. Rail clamps and
+      stops: rail equipment, except portal cranes.'
+    inspector: Verify each applicable device is in proper working order, per 1926.1415(a)(2) through (a)(6) and
+      (b).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(xiv)
+  - 29cfr1926.1415(a)(2)
+  - 29cfr1926.1415(a)(3)
+  - 29cfr1926.1415(a)(4)
+  - 29cfr1926.1415(a)(5)
+  - 29cfr1926.1415(a)(6)
+  - 29cfr1926.1415(b)
+  - 29cfr1926.1412(d)(3)
+  deficiency:
+    guidance: A required safety device is missing or not working.
+    action: Take the crane out of service. Do not operate until the device works. Alternative measures are not permitted.
+    section_id: 29cfr1926.1415(b)
+    quote: If any of the devices listed in this section are not in proper working order, the equipment must be taken
+      out of service and operations must not resume until the device is again working properly.
+  practice_only: false
+  value_unit: null
+- ord: 28
+  phase: Function checks
+  text: Check that the listed operational aids work properly.
+  detail:
+    trainee: Operational aids are the warning and limiting systems listed in 1926.1416, which is not reproduced
+      in full here. They must work before operations begin, unless an aid is under repair and the specified temporary
+      alternative measures are in use.
+    operator: Test each listed aid by the manufacturer's method. If one fails, do not begin until it is repaired
+      or the specified temporary alternative measures are in place, within the allowed repair period. Follow any
+      stricter manufacturer measures.
+    inspector: Verify the aids work, or that temporary alternative measures and repair timing comply, per 1926.1416(b)
+      and 1926.1412(d)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)(xiv)
+  - 29cfr1926.1412(d)(3)
+  - 29cfr1926.1416(b)
+  deficiency:
+    guidance: A listed operational aid is not working properly.
+    action: Do not begin operations until the aid is repaired or the specified temporary alternative measures are
+      in use.
+    section_id: 29cfr1926.1416(b)
+    quote: Operations must not begin unless the listed operational aids are in proper working order, except where
+      an operational aid is being repaired the employer uses the specified temporary alternative measures.
+  practice_only: false
+  value_unit: null
+- ord: 29
+  phase: Determinations
+  text: For each deficiency found, record the competent person's immediate hazard determination.
+  detail:
+    trainee: Not every deficiency stops the crane, but the competent person must decide right away whether each
+      one is a safety hazard. If it is, the crane comes out of service until it is fixed.
+    operator: List each deficiency, the decision (hazard or not), and the action taken.
+    inspector: Verify a determination was made immediately for each deficiency in items (d)(1)(i) through (xiii),
+      and that hazards led to removal from service, per 1926.1412(d)(2).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1412(d)(2)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 30
+  phase: Determinations
+  text: Photograph each deficiency and any tag-out applied.
+  detail:
+    trainee: Photos show what was found and where, which helps whoever does the repair and later inspections.
+    operator: Take a close-up and a wide shot that shows the location of each deficiency, plus a photo of each tag.
+    inspector: Attach the photos to the inspection record. This is good practice, not a requirement of the given
+      text.
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 31
+  phase: During the shift
+  text: Investigate further, including disassembly or booming down, if the visual inspection or trial operation
+    calls for it.
+  detail:
+    trainee: Normally this is a visual check only. If something you see or feel during trial operation needs a closer
+      look, taking parts apart or booming down becomes necessary.
+    operator: Do not operate past an unresolved finding that needs closer examination.
+    inspector: Verify that findings needing further investigation were followed up, per 1926.1412(d)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)
+  deficiency:
+    guidance: A finding needs further investigation that has not been done.
+    action: Stop and investigate, including disassembly or booming down as needed, before continuing.
+    section_id: 29cfr1926.1412(d)(1)
+    quote: Taking apart equipment components and booming down is not required as part of this inspection unless
+      the results of the visual inspection or trial operation indicate that further investigation necessitating
+      taking apart equipment components or booming down is needed.
+  practice_only: false
+  value_unit: null
+- ord: 32
+  phase: During the shift
+  text: Reassess inspection findings based on what you observe during operation.
+  detail:
+    trainee: Problems can show up under load that you could not see at rest. The inspection decisions must be updated
+      as the shift goes on.
+    operator: New noises, leaks, drift, settling, or rope changes go to the competent person for a new determination.
+    inspector: Verify that determinations were reassessed in light of observations made during operation, per 1926.1412(d)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(d)(1)
+  deficiency:
+    guidance: Something observed during operation changes an earlier determination.
+    action: Competent person reassesses. If it is a hazard, take the crane out of service until corrected.
+    section_id: 29cfr1926.1412(d)(1)
+    quote: Determinations made in conducting the inspection must be reassessed in light of observations made during
+      operation.
+  practice_only: false
+  value_unit: null
+- ord: 33
+  phase: During the shift
+  text: If a safety device or operational aid fails during operations, safely stop.
+  detail:
+    trainee: A device that quits mid-shift is treated just like one that failed the morning check. Bring the load
+      down safely and stop.
+    operator: 'Safety device failure: stop and stay down until it works. No alternatives. Operational aid failure:
+      stop until the temporary alternative measures are in place or the aid works again.'
+    inspector: Verify the response to any mid-shift device failure, per 1926.1415(b) and 1926.1416(c).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1415(b)
+  - 29cfr1926.1416(c)
+  deficiency:
+    guidance: A safety device or operational aid stopped working during operations.
+    action: Safely stop operations. Do not resume until the device works or, for an operational aid, the temporary
+      alternative measures are implemented.
+    section_id: 29cfr1926.1416(c)
+    quote: If a listed operational aid stops working properly during operations, the operator must safely stop operations
+      until the temporary alternative measures are implemented or the device is again working properly.
+  practice_only: false
+  value_unit: null
+prov:
+  prov_id: 6ab8173437142385d991
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: a8d1f7427ba96edc489a0eb2130e04bc829e63c808b2c4f4ad4788ec310f1a3b
+  output_sha256: 3b520e4fff1ac4e4fa1764c8ab92e815d521d10eb723b2188c8bdd21a01eaf9f
+  created_at: '2026-11-27T06:45:12+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

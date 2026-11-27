@@ -1,0 +1,583 @@
+proc_id: ground-conditions
+title: Ground Conditions and Set-Up
+kind: operation
+summary: This procedure checks that the ground can support the crane, that the controlling entity has prepared the
+  ground and disclosed hazards below the set-up area, and that the outriggers or stabilizers, level and swing-radius
+  barriers are set correctly. Use it every time equipment is assembled or set up for use on a new location.
+roles:
+- operator
+- competent_person
+- ad_director
+lang: en
+section_ids:
+- 29cfr1926.1402
+- 29cfr1926.1404(q)
+- 29cfr1926.1415(a)(1)
+- 29cfr1926.1415(a)(5)
+- 29cfr1926.1424(a)
+- 29cfr1926.1416(e)(5)
+steps:
+- ord: 1
+  phase: Before you start
+  text: Record the crane type and whether it will work on FRA-regulated railroad track.
+  detail:
+    trainee: The ground-conditions rule does not cover rail cranes working on general-system railroad track that
+      meets FRA rules. All other set-ups need the full ground checks below.
+    operator: If the crane is a rail crane on general-system track that meets FRA requirements, record the exemption.
+      Otherwise, do every ground step.
+    inspector: Document the equipment type and the basis for any exemption claimed under 1926.1402(f).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1402(f)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 2
+  phase: Before you start
+  text: Identify the controlling entity, or the employer that arranges ground preparation if there is none.
+  detail:
+    trainee: Someone on the project is responsible for preparing the ground. Usually that is the controlling entity.
+      If there is no controlling entity, it is the employer with authority to make or arrange ground preparations.
+    operator: Record the organization that is responsible for ground preparation and the contact for this set-up.
+    inspector: Verify and record which party holds the ground-preparation duty under 1926.1402(c)(1) or (d).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1402(c)(1)
+  - 29cfr1926.1402(d)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 3
+  phase: Before you start
+  text: 'Get the controlling entity''s disclosure of hazards under the set-up area: voids, tanks, utilities.'
+  detail:
+    trainee: Buried voids, tanks and utilities can collapse under an outrigger. The controlling entity must tell
+      you about any hazard it knows of, or that is shown in site drawings, as-built drawings or soil reports it
+      holds. Good means you have a clear answer for the exact spot where the crane will set up.
+    operator: Before you position the crane, confirm that you have been told where any known voids, tanks or utilities
+      are under the set-up area. If you have no information, ask for it before you set up.
+    inspector: Verify that the user and the operator were informed of hazards known to the controlling entity or
+      shown in documents it holds, on-site or off-site.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(c)(2)
+  deficiency:
+    guidance: Hazards below the set-up area have not been disclosed, so the ground's capacity is unknown.
+    action: Do not set up. Request the hazard information from the controlling entity, then relocate or plan around
+      the disclosed hazards.
+    section_id: 29cfr1926.1402(c)(2)
+    quote: Inform the user of the equipment and the operator of the location of hazards beneath the equipment set-up
+      area (such as voids, tanks, utilities)
+  practice_only: false
+  value_unit: null
+- ord: 4
+  phase: Before you start
+  text: Record the disclosed hazards and the drawing or soil report reference.
+  detail:
+    trainee: Write down what is under the ground and where the information came from, so the next person can check
+      it.
+    operator: Note each hazard's location relative to the outrigger positions, along with the document name and
+      revision.
+    inspector: Record the source documents (site drawings, as-built drawings, soil analyses) and the hazards identified.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1402(c)(2)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 5
+  phase: Before you start
+  text: Confirm the responsible party has provided the needed ground preparation.
+  detail:
+    trainee: The controlling entity, or the responsible employer if there is no controlling entity, must make sure
+      the ground is prepared well enough for the crane. Good means the area is prepared before the crane arrives.
+    operator: Check that the grading, fill, compaction or drainage work that was planned for the pad is complete.
+    inspector: Verify that the ground preparation was provided as required by 1926.1402(c)(1), or by (d) where there
+      is no controlling entity.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(c)(1)
+  - 29cfr1926.1402(d)
+  deficiency:
+    guidance: The ground preparation required to meet 1926.1402(b) has not been provided.
+    action: Do not set up. Notify the responsible party and have the preparation completed.
+    section_id: 29cfr1926.1402(c)(1)
+    quote: Ensure that ground preparations necessary to meet the requirements in paragraph (b) of this section are
+      provided.
+  practice_only: false
+  value_unit: null
+- ord: 6
+  phase: Ground assessment
+  text: Check that the ground is firm and compacted where the crane and outriggers will bear.
+  detail:
+    trainee: Ground conditions means the ground's ability to hold the crane, including slope, compaction and firmness.
+      Good ground does not rut, pump or soften under the tires or test loads.
+    operator: Look for soft spots, fresh fill, backfilled trenches and recent excavation at each outrigger location.
+      If any of these are present, stop.
+    inspector: Verify that the ground is firm enough to meet the manufacturer's support specifications, with supporting
+      materials if needed.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(a)(1)
+  - 29cfr1926.1402(b)
+  deficiency:
+    guidance: The ground is not firm enough to support the equipment.
+    action: Do not assemble or use the crane. Go to the inadequate-ground step.
+    section_id: 29cfr1926.1402(b)
+    quote: The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to
+      a sufficient extent
+  practice_only: false
+  value_unit: null
+- ord: 7
+  phase: Ground assessment
+  text: Check that the set-up area is drained, with no standing water or saturated soil.
+  detail:
+    trainee: Water weakens soil. The area must be drained, except in marshes or wetlands, where the drainage requirement
+      does not apply.
+    operator: Look for ponding, saturated soil and runoff paths toward the outrigger locations. Record if the site
+      is a marsh or wetland.
+    inspector: Verify that the area is drained, or document that the site is a marsh or wetland.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(b)
+  deficiency:
+    guidance: The ground is not drained, so its bearing capacity is reduced.
+    action: Do not assemble or use the crane until the area is drained (unless it is a marsh or wetland).
+    section_id: 29cfr1926.1402(b)
+    quote: The requirement for the ground to be drained does not apply to marshes/wetlands.
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Ground assessment
+  text: Check that the grade allows the crane to be leveled within the manufacturer's specification.
+  detail:
+    trainee: The ground must be graded enough that the crane can be made level as the manufacturer requires, with
+      blocking or mats if needed.
+    operator: Compare the slope with the outrigger jack stroke and the manufacturer's level tolerance. If the crane
+      cannot be leveled, the site needs grading.
+    inspector: Verify that the grade lets the manufacturer's degree-of-level specification be met.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(b)
+  deficiency:
+    guidance: The grade prevents the crane from meeting the manufacturer's level specification.
+    action: Do not assemble or use the crane. Have the area graded.
+    section_id: 29cfr1926.1402(b)
+    quote: the equipment manufacturer's specifications for adequate support and degree of level of the equipment
+      are met.
+  practice_only: false
+  value_unit: null
+- ord: 9
+  phase: Ground assessment
+  text: Estimate bearing pressure under each outrigger pad and compare it with allowable ground bearing.
+  detail:
+    trainee: This is practice, not a rule requirement. Pressure equals the outrigger load divided by the pad or
+      mat area in contact with the ground. A bigger mat spreads the load and lowers the pressure.
+    operator: 'Practice: take the maximum outrigger reaction from the manufacturer''s data, divide it by the effective
+      mat area, and compare the result with the allowable bearing from the soil information. If pressure is higher
+      than allowable, use larger mats.'
+    inspector: 'Practice: record the calculated pressure and the allowable bearing value used, with their sources.'
+  check_kind: value
+  section_ids: []
+  deficiency:
+    guidance: The estimated pressure is higher than the allowable ground bearing.
+    action: Increase the mat or cribbing area, or relocate, before setting up.
+    section_id: null
+    quote: null
+  practice_only: true
+  value_unit: psf
+- ord: 10
+  phase: Ground assessment
+  text: 'Select and stage supporting materials: blocking, mats, cribbing or marsh buggies as needed.'
+  detail:
+    trainee: Supporting materials spread the crane's load so the ground and the crane meet the manufacturer's support
+      specifications. They must be in sound condition and sized for the load.
+    operator: Have enough mats or cribbing on hand for every outrigger before you set up. Reject material that is
+      cracked, rotted or undersized.
+    inspector: Verify that the supporting materials used, combined with the ground, meet the manufacturer's support
+      specifications.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(a)(2)
+  - 29cfr1926.1402(b)
+  deficiency:
+    guidance: The supporting materials are missing or not adequate to meet the support specifications.
+    action: Do not set up until suitable supporting materials are in place.
+    section_id: 29cfr1926.1402(b)
+    quote: in conjunction (if necessary) with the use of supporting materials, the equipment manufacturer's specifications
+      for adequate support and degree of level of the equipment are met.
+  practice_only: false
+  value_unit: null
+- ord: 11
+  phase: Ground assessment
+  text: If the ground is inadequate, have your employer discuss the needed preparation with the controlling entity.
+  detail:
+    trainee: If the operator or the A/D director finds that the ground does not meet the requirement, that person's
+      employer must discuss with the controlling entity what preparation is needed. Do not set up on ground that
+      does not meet the requirement.
+    operator: Stop and report to your employer. Set up only after the agreed preparation and supporting materials
+      make the ground meet the requirement.
+    inspector: Verify that the discussion took place and record its outcome, including the preparation agreed and
+      when it was completed.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1402(e)
+  deficiency:
+    guidance: The ground was found inadequate and the required discussion has not taken place.
+    action: Do not set up. Notify your employer, who must take it up with the controlling entity.
+    section_id: 29cfr1926.1402(e)
+    quote: that person's employer must have a discussion with the controlling entity regarding the ground preparations
+      that are needed
+  practice_only: false
+  value_unit: null
+- ord: 12
+  phase: Set-up
+  text: Confirm a crane level indicator is on the equipment and working.
+  detail:
+    trainee: The crane must have a level indicator, either built in or carried on the crane. A broken indicator
+      cannot be used to level the crane. This does not apply to portal cranes, derricks, or floating cranes and
+      cranes on barges.
+    operator: Check the indicator against a known level reference. A faulty built-in indicator must be tagged out
+      or removed. A faulty removable indicator must be removed.
+    inspector: Verify that an indicator is present and functional, or document the applicable exemption.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1415(a)(1)(i)
+  - 29cfr1926.1415(a)(1)(ii)
+  - 29cfr1926.1415(a)(1)(iii)
+  deficiency:
+    guidance: The level indicator is missing or not working properly.
+    action: Tag out or remove a faulty built-in indicator. Remove a faulty removable indicator. Provide a working
+      indicator before use.
+    section_id: 29cfr1926.1415(a)(1)(ii)
+    quote: If a built-in crane level indicator is not working properly, it must be tagged-out or removed.
+  practice_only: false
+  value_unit: null
+- ord: 13
+  phase: Set-up
+  text: Check hydraulic outrigger or stabilizer jacks for an integral holding device or check valve.
+  detail:
+    trainee: The holding valve keeps a jack from retracting if hydraulic pressure is lost. A jack that drifts down
+      means the valve may not be holding.
+    operator: Confirm that each hydraulic jack has its holding device or check valve and that no jack creeps under
+      load.
+    inspector: Verify that every hydraulic outrigger or stabilizer jack has an integral holding device or check
+      valve.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1415(a)(5)
+  deficiency:
+    guidance: A jack lacks a holding device or check valve, or the device is not holding.
+    action: Do not use the outriggers. Tag out and repair before use.
+    section_id: 29cfr1926.1415(a)(5)
+    quote: Hydraulic outrigger jacks and hydraulic stabilizer jacks must have an integral holding device/check valve.
+  practice_only: false
+  value_unit: null
+- ord: 14
+  phase: Set-up
+  text: Make sure each outrigger is visible to the operator or a signal person during extension and setting.
+  detail:
+    trainee: Someone must be able to see each outrigger as it moves, so it does not hit people or objects and lands
+      on its mat.
+    operator: If you cannot see an outrigger from the cab, post a signal person for that outrigger before you extend
+      it.
+    inspector: Verify that each outrigger or stabilizer was visible to the operator or a signal person during extension
+      and setting.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)(4)
+  deficiency:
+    guidance: An outrigger was extended or set without being visible to the operator or a signal person.
+    action: Stop. Post a signal person, then extend and set again.
+    section_id: 29cfr1926.1404(q)(4)
+    quote: Each outrigger or stabilizer must be visible to the operator or to a signal person during extension and
+      setting.
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Set-up
+  text: Attach outrigger or stabilizer floats to their beams before lowering.
+  detail:
+    trainee: Floats, also called pads, must be attached to the outrigger or stabilizer so they cannot slide out
+      from under the jack.
+    operator: Check that each float's pin or retainer is engaged.
+    inspector: Verify that each float in use is attached to its outrigger or stabilizer.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)(3)
+  deficiency:
+    guidance: A float is in use but not attached.
+    action: Raise the jack, attach the float, and reset.
+    section_id: 29cfr1926.1404(q)(3)
+    quote: When outrigger floats are used, they must be attached to the outriggers.
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Set-up
+  text: Place blocking or mats only under the float, pad or outer beam bearing surface.
+  detail:
+    trainee: Blocking goes under the float or pad of the jack. On a beam built without a jack, it goes under the
+      outer bearing surface of the extended beam. Blocking must also meet the blocking requirements in 1926.1404(h)(2)
+      and (h)(3). Good means the float is centered on solid, flat blocking.
+    operator: Center each float on its mat or cribbing. Do not place blocking anywhere else under the beam.
+    inspector: Verify the blocking's placement and that it meets 1926.1404(h)(2) and (h)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)(5)(i)
+  - 29cfr1926.1404(q)(5)(ii)
+  deficiency:
+    guidance: Blocking is placed incorrectly or does not meet the blocking requirements.
+    action: Raise the jack and reposition or replace the blocking before use.
+    section_id: 29cfr1926.1404(q)(5)(ii)
+    quote: Be placed only under the outrigger or stabilizer float/pad of the jack or, where the outrigger or stabilizer
+      is designed without a jack, under the outer bearing surface of the extended outrigger or stabilizer beam.
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Set-up
+  text: Fully extend the outriggers or stabilizers, or deploy them as the load chart specifies.
+  detail:
+    trainee: Use full extension unless the manufacturer allows a partial position. A partial position must match
+      the load chart you will be using.
+    operator: Match the beam position to the load chart for the planned load and radius. If any beam is short of
+      the charted position, correct it.
+    inspector: Verify that the beam extension matches full extension or the load-chart configuration that the manufacturer's
+      procedures permit.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)
+  - 29cfr1926.1404(q)(1)
+  deficiency:
+    guidance: The outriggers or stabilizers are not deployed as the load chart requires.
+    action: Do not lift. Extend or deploy the beams to the charted position.
+    section_id: 29cfr1926.1404(q)(1)
+    quote: The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed
+      as specified in the load chart.
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Set-up
+  text: Verify outrigger position on the position sensor or monitor, or by manual check.
+  detail:
+    trainee: Equipment manufactured after November 8, 2011 with outriggers or stabilizers needs a beam-extension
+      sensor or monitor. If the sensor is not working, the operator must check the beam positions by hand.
+    operator: Read the monitor for each beam. If it is not working, verify each beam's position by the manufacturer's
+      procedure before starting outrigger operations.
+    inspector: Verify that the sensor or monitor works, or that the temporary alternative verification was done.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1416(e)(5)(i)
+  deficiency:
+    guidance: The beam position has not been confirmed by the sensor or by the operator.
+    action: Do not begin operations until the operator verifies each beam position per manufacturer procedures.
+    section_id: 29cfr1926.1416(e)(5)(i)
+    quote: The operator must verify that the position of the outriggers or stabilizers is correct (in accordance
+      with manufacturer procedures) before beginning operations requiring outrigger or stabilizer deployment.
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Set-up
+  text: Set the outriggers so the crane's weight is off the wheels.
+  detail:
+    trainee: With the outriggers set, the tires should carry none of the crane's weight. Stabilizers are not held
+      to this requirement, and locomotive cranes follow separate rules.
+    operator: Check that every tire is clear of the ground or unloaded, as the manufacturer specifies.
+    inspector: Verify that the crane's weight is removed from the wheels (not required for stabilizers or locomotive
+      cranes).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)(2)
+  deficiency:
+    guidance: The wheels are still carrying the crane's weight.
+    action: Do not lift. Reset the outriggers to take the weight off the wheels.
+    section_id: 29cfr1926.1404(q)(2)
+    quote: The outriggers must be set to remove the equipment weight from the wheels, except for locomotive cranes
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Set-up
+  text: For locomotive cranes, follow the manufacturer's procedures for outriggers, stabilizers, truck wedges or
+    screws.
+  detail:
+    trainee: Locomotive cranes have their own set-up rules. Use the manufacturer's procedure whether or not you
+      are using outriggers.
+    operator: Mark this step pass if the crane is not a locomotive crane. If it is, follow the manufacturer's outrigger
+      procedure, or its truck wedge or screw procedure when lifting without outriggers.
+    inspector: Verify that the manufacturer's procedures were followed for the locomotive crane configuration in
+      use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1404(q)(6)
+  deficiency:
+    guidance: The locomotive crane set-up does not follow the manufacturer's procedures.
+    action: Do not lift. Set up again per the manufacturer's procedures.
+    section_id: 29cfr1926.1404(q)(6)
+    quote: For locomotive cranes, when using outriggers or stabilizers to handle loads, the manufacturer's procedures
+      must be followed.
+  practice_only: false
+  value_unit: null
+- ord: 21
+  phase: Set-up
+  text: Level the crane and record the level indicator reading.
+  detail:
+    trainee: The crane must be level within the manufacturer's specification. Even a small tilt reduces capacity
+      and changes how the load swings.
+    operator: Read the level indicator after the outriggers are set. If the reading is outside the manufacturer's
+      tolerance, re-level before lifting.
+    inspector: Record the reading and compare it with the manufacturer's degree-of-level specification.
+  check_kind: value
+  section_ids:
+  - 29cfr1926.1402(b)
+  - 29cfr1926.1415(a)(1)(i)
+  deficiency:
+    guidance: The crane is outside the manufacturer's level specification.
+    action: Do not use the crane. Re-level, or correct the ground or blocking.
+    section_id: 29cfr1926.1402(b)
+    quote: the equipment manufacturer's specifications for adequate support and degree of level of the equipment
+      are met.
+  practice_only: false
+  value_unit: degrees
+- ord: 22
+  phase: Set-up
+  text: If the hoist drum is not visible from the cab, confirm a drum rotation indicator or marked drum.
+  detail:
+    trainee: Equipment manufactured after November 8, 2011 needs a drum rotation indicator if the operator cannot
+      see the hoist drum. If the indicator is not working, the drum must be marked, with mirrors or cameras added
+      if needed to see the mark.
+    operator: Check that the indicator works. If it does not, check that the drum is marked and that you can see
+      the mark from the cab.
+    inspector: Verify that the indicator works, or that the temporary alternative measures are in place.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1416(e)(5)(ii)
+  deficiency:
+    guidance: There is no working drum rotation indicator and no temporary alternative in place.
+    action: Mark the drum, and add mirrors or cameras if needed, before operating.
+    section_id: 29cfr1926.1416(e)(5)(ii)
+    quote: Mark the drum to indicate the rotation of the drum.
+  practice_only: false
+  value_unit: null
+- ord: 23
+  phase: Swing radius
+  text: Identify accessible areas where the rotating superstructure could strike or pinch a worker.
+  detail:
+    trainee: Look all around the back of the crane, the counterweight path and nearby walls or equipment. Any space
+      where a person could be hit, or crushed against something, is a hazard area.
+    operator: Swing slowly or walk the tail-swing path to find every struck-by and pinch/crush point.
+    inspector: Document the identified hazard areas around the rotating superstructure.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(1)(i)
+  - 29cfr1926.1424(a)(1)(ii)
+  deficiency:
+    guidance: The swing hazard areas have not been identified.
+    action: Do not operate until the hazard areas are identified and marked.
+    section_id: 29cfr1926.1424(a)(1)(ii)
+    quote: Pinching/crushing an employee against another part of the equipment or another object.
+  practice_only: false
+  value_unit: null
+- ord: 24
+  phase: Swing radius
+  text: Confirm that workers on or near the crane are trained to recognize swing hazard areas.
+  detail:
+    trainee: Everyone assigned to work on or near the crane must know how to recognize the struck-by and pinch/crush
+      zones.
+    operator: Confirm that the crew near the crane has been trained before you start work.
+    inspector: Verify the training of authorized personnel.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(2)(i)
+  deficiency:
+    guidance: Personnel near the crane are not trained in swing hazards.
+    action: Keep untrained workers out of the area until they are trained.
+    section_id: 29cfr1926.1424(a)(2)(i)
+    quote: in how to recognize struck-by and pinch/crush hazard areas posed by the rotating superstructure.
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: Swing radius
+  text: Erect control lines, warning lines, railings or barriers around the swing hazard area.
+  detail:
+    trainee: Barriers mark the boundary so people stay out of the swing zone. If barriers truly cannot be put on
+      the ground or on the crane, use warning signs and high-visibility markings on the crane instead, and train
+      workers on what they mean.
+    operator: Walk the barricade line and confirm that it covers the full tail-swing path. Maintain it for as long
+      as the crane is set up.
+    inspector: Verify that the barriers are in place and maintained. If the exception is used, verify the documented
+      infeasibility, the signs, the markings and the training.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(2)(ii)
+  deficiency:
+    guidance: The swing hazard area is not marked by barriers, or by the permitted alternative.
+    action: Do not swing until barriers are erected or the alternative markings are in place.
+    section_id: 29cfr1926.1424(a)(2)(ii)
+    quote: Erect and maintain control lines, warning lines, railings or similar barriers to mark the boundaries
+      of the hazard areas.
+  practice_only: false
+  value_unit: null
+- ord: 26
+  phase: Swing radius
+  text: Agree on the communication system for anyone entering the hazard area out of the operator's view.
+  detail:
+    trainee: Before going into a part of the swing zone the operator cannot see, you or someone you ask must tell
+      the operator. The operator will not swing until told, by the agreed method, that you are in a safe position.
+    operator: Set the pre-arranged method, such as radio, horn or hand signal, with the crew. Do not rotate until
+      you get the all-clear.
+    inspector: Verify that a pre-arranged communication system exists and that the crew knows it.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1424(a)(3)(i)
+  - 29cfr1926.1424(a)(3)(ii)
+  deficiency:
+    guidance: There is no agreed system for confirming a worker is clear of the swing zone.
+    action: Set up a pre-arranged communication system before operating. Do not rotate while a worker's position
+      is unconfirmed.
+    section_id: 29cfr1926.1424(a)(3)(ii)
+    quote: the operator must not rotate the superstructure until the operator is informed in accordance with a pre-arranged
+      system of communication that the employee is in a safe position.
+  practice_only: false
+  value_unit: null
+- ord: 27
+  phase: Records
+  text: Photograph each outrigger float on its blocking and the swing-radius barricades.
+  detail:
+    trainee: Photos show how the crane was set up in case questions come up later. This is good practice, not a
+      rule requirement.
+    operator: 'Practice: take one photo per outrigger and one or more of the barricade line.'
+    inspector: 'Practice: attach the photos to the set-up record.'
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 28
+  phase: Records
+  text: Recheck level and blocking after the first lift and after rain.
+  detail:
+    trainee: Ground can settle under load or soften when wet. This recheck is good practice, not a rule requirement.
+    operator: 'Practice: re-read the level indicator and look for mat settlement after the first lift and after
+      any rain.'
+    inspector: 'Practice: record the recheck results.'
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: The crane has settled out of level, or the blocking has shifted.
+    action: Stop lifting and re-level. Reassess the ground before continuing.
+    section_id: null
+    quote: null
+  practice_only: true
+  value_unit: null
+prov:
+  prov_id: 0f8e55beed27e5c2d2e0
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 652faaa49545b0477f2543507a25eb17579f6f7158d4e54322feedbffda59c86
+  output_sha256: 8fbb0bf31e319e3181ea48880cf369b8d978e5a863115ba847b055eaf6f80914
+  created_at: '2026-11-27T06:49:58+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

@@ -94,5 +94,41 @@ class Blueprint(unittest.TestCase):
         self.assertEqual(bad[:20], [])
 
 
+@unittest.skipUnless(index_available(), "no eCFR index")
+class Grounding(unittest.TestCase):
+    """The prompts' rule text: present for every skill, and verbatim line by line."""
+
+    @classmethod
+    def setUpClass(cls):
+        sys.path.insert(0, str(CONTENT / "tasks"))
+        import builders
+        import common
+
+        cls.builders, cls.common = builders, common
+        cls.ix = common.index()
+
+    def test_every_skill_gets_rule_text(self):
+        for s in self.builders.skills():
+            text = self.builders.skill_text(s)
+            self.assertIn("[29cfr", text, s["skill_id"])
+
+    def test_oversized_definitions_are_split_verbatim_and_ranked(self):
+        sk = {s["skill_id"]: s for s in self.builders.skills()}
+        text, ids = self.common.ground(sk["site.fall-zone"]["section_ids"], cap=20000)
+        self.assertIn("29cfr1926.1425", ids)  # the paragraphs are not crowded out by the definitions
+        self.assertIn("29cfr1926.1401", ids)
+        defs = [ln.split("] ", 1)[1] for ln in text.splitlines() if ln.startswith("[29cfr1926.1401]")]
+        self.assertTrue(any(d.startswith("Fall zone means") for d in defs))
+        for d in defs:
+            d = d.split(") ", 1)[1] if d.startswith("(§") else d
+            self.assertTrue(self.ix.has_quote("29cfr1926.1401", d), d[:80])
+
+    def test_table_rows_use_cell_separators(self):
+        self.assertTrue(self.ix.has_quote("29cfr1926.1408", "up to 50 | 10"))
+        self.assertFalse(self.ix.has_quote("29cfr1926.1408", "up to 50 10"))
+        self.assertEqual(self.ix.repair("29cfr1926.1408", "up to 50 10"), "up to 50 | 10")
+        self.assertEqual(self.ix.repair("29cfr1926.1411", "over .75 to 50 6"), "over .75 to 50 | 6")
+
+
 if __name__ == "__main__":
     unittest.main()
