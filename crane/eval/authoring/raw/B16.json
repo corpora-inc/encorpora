@@ -1,0 +1,260 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how plumb does the tower gotta be if the manufacturer doesnt give a tolerance",
+    "style": "voice",
+    "category": "tower-cranes",
+    "gold_answer": "The tower must be erected plumb to the manufacturer's tolerance, and a qualified person must verify it. If the manufacturer gives no tolerance, the tower must be plumb to at least 1:500, which is about 1 inch in 40 feet.",
+    "section_ids": [
+     "29cfr1926.1435(b)(5)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(b)(5)",
+     "text": "the crane tower must be plumb to a tolerance of at least 1:500 (approximately 1 inch in 40 feet)"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Anti two-block quit on our tower crane mid shift. Can we keep picking, and how long do we have to get it fixed?",
+    "style": "slang",
+    "category": "tower-cranes",
+    "gold_answer": "The operator must safely stop until a temporary measure is in place. The measure is either marking the hoist cable where the operator can see it, at a point that leaves time to stop before two-blocking, or using a spotter in direct communication with the operator. As a Category I aid, it must be repaired within 7 calendar days. If parts are documented as ordered within 7 days, the deadline is 7 calendar days after the parts arrive.",
+    "section_ids": [
+     "29cfr1926.1435(e)(4)",
+     "29cfr1926.1435(e)(5)",
+     "29cfr1926.1435(e)(5)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(e)(5)",
+     "text": "must be repaired no later than 7 calendar days after the deficiency occurs"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Wind gauge on the tower crane is dead. 1) where's it supposed to be mounted, 2) what do we use meanwhile, 3) how many days to fix it?",
+    "style": "multi-part",
+    "category": "tower-cranes",
+    "gold_answer": "On tower cranes the wind speed indicator must be mounted above the upper rotating structure. On self-erectors it goes at or above jib level. In the meantime you can use wind speed from a working indicator on another tower crane on the same site, or have a qualified person estimate it. As a Category II aid, it must be repaired within 30 calendar days. If parts were documented as ordered within 7 days but arrive too late, the repair is due 7 days after receipt.",
+    "section_ids": [
+     "29cfr1926.1435(e)(6)",
+     "29cfr1926.1435(e)(6)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(e)(6)",
+     "text": "must be repaired no later than 30 calendar days after the deficiency occurs"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "trolly limit switch not working on the hammerhead, whats the work around",
+    "style": "typo",
+    "category": "operational-aids",
+    "gold_answer": "There are two temporary options. Option A: mark the trolley rope where the operator can see it, at a point that leaves enough time to stop before the end stops. Option B: use a spotter in direct communication with the operator whenever work is within 10 feet of the outer or inner trolley end stops.",
+    "section_ids": [
+     "29cfr1926.1435(e)(5)(i)",
+     "29cfr1926.1435(e)(5)(i)(A)",
+     "29cfr1926.1435(e)(5)(i)(B)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(e)(5)(i)(B)",
+     "text": "A spotter who is in direct communication with the operator must be used when operations are conducted within 10 feet of the outer or inner trolley end stops."
+    },
+    "equipment": "tower-crane",
+    "variant": "hammerhead",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "If the trolley brake on a tower crane stops working, can we use a spotter or some other workaround and keep running?",
+    "style": "scenario",
+    "category": "safety-devices",
+    "gold_answer": "No. The trolley brake is a required safety device. The operator must safely stop, the crane must be taken out of service, and work can't resume until the brake works properly again. Alternative measures are not permitted.",
+    "section_ids": [
+     "29cfr1926.1435(d)(2)(vii)(C)",
+     "29cfr1926.1435(d)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(d)(3)",
+     "text": "Alternative measures are not permitted to be used."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What are the load test requirements following the erection of a tower crane, and whose procedure governs the test?",
+    "style": "formal",
+    "category": "inspections",
+    "gold_answer": "A load test must be done after each erection, using certified weights or weights scaled on a certified scale with a current calibration certificate. Follow the manufacturer's instructions when they exist. Otherwise, use written load test procedures developed by a registered professional engineer familiar with that type of equipment.",
+    "section_ids": [
+     "29cfr1926.1435(f)(3)(i)",
+     "29cfr1926.1435(f)(3)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(f)(3)(i)",
+     "text": "A load test using certified weights, or scaled weights using a certified scale with a current certificate of calibration, must be conducted after each erection."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our tower crane is tied into the building. On the monthly, which bolts and tie-in stuff do we check, and what's added at the annual?",
+    "style": "scenario",
+    "category": "inspections",
+    "gold_answer": "Because the crane is tied in, the monthly covers mast and structural bolts above the upper-most brace support, checked for loose or dislodged condition. It also covers the upper-most tie-in, braces, floor supports and floor wedges, checked for loose or dislodged parts. The annual adds a check of all turntable and tower bolts for proper condition and torque.",
+    "section_ids": [
+     "29cfr1926.1435(f)(4)(i)",
+     "29cfr1926.1435(f)(4)(ii)",
+     "29cfr1926.1435(f)(5)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(f)(5)",
+     "text": "all turntable and tower bolts must be inspected for proper condition and torque"
+    },
+    "equipment": "tower-crane",
+    "variant": "tied-in",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how many guy lines does a guy derrick need",
+    "style": "vague",
+    "category": "derricks",
+    "gold_answer": "At least 6, equally spaced. A qualified person or the derrick manufacturer can approve a different arrangement, but only if they revise the rated capacity to make up for it.",
+    "section_ids": [
+     "29cfr1926.1436(c)(2)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(c)(2)(i)",
+     "text": "The minimum number of guys must be 6, with equal spacing"
+    },
+    "equipment": "derrick",
+    "variant": "guy derrick",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We just reinstalled a stiffleg derrick. What test load do we use before first use, what if our biggest pick is heavier than that, and what paperwork do we keep and for how long?",
+    "style": "multi-part",
+    "category": "derricks",
+    "gold_answer": "A competent person must load test it at 100% to 110% of rated capacity, unless the manufacturer or a qualified person recommends otherwise. The test load can never be less than the maximum anticipated load. The test record must show the date, the results and the tester's name. Keep it until the derrick is re-tested or dismantled, whichever comes first.",
+    "section_ids": [
+     "29cfr1926.1436(g)(3)",
+     "29cfr1926.1436(g)(3)(i)",
+     "29cfr1926.1436(g)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(g)(3)(i)",
+     "text": "Test loads must be at least 100% and no more than 110% of the rated capacity"
+    },
+    "equipment": "derrick",
+    "variant": "stiffleg derrick",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "does the guy running the derrick need a crane operator card",
+    "style": "vague",
+    "category": "derricks",
+    "gold_answer": "No. The operator qualification and certification rule (1926.1427) does not apply to derricks. The employer must still train each derrick operator on safe operation of the equipment they will run.",
+    "section_ids": [
+     "29cfr1926.1436(q)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(q)",
+     "text": "Section 1926.1427 of this subpart (Operator qualification and certification) does not apply."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "derrick gonna sit idle about six weeks what do we do with the boom",
+    "style": "voice",
+    "category": "derricks",
+    "gold_answer": "If it will be out of service 30 days or more, secure the boom one of these ways: lay it down; sling the load block to a stationary member as nearly under the head as possible; on a guy derrick, raise it vertical and secure it to the mast; or on a stiffleg derrick, secure it against the stiffleg.",
+    "section_ids": [
+     "29cfr1926.1436(m)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(m)(2)",
+     "text": "When taken out of service for 30 days or more, the boom must be secured by one of the following methods:"
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "new base mounted hoist for the derick, what % do we load test it to and do we have to if the manufaturer already did",
+    "style": "typo",
+    "category": "derricks",
+    "gold_answer": "New hoists must be load tested to at least 110% and no more than 125% of rated capacity, unless the manufacturer recommends otherwise. If the manufacturer already did that testing, the requirement is met.",
+    "section_ids": [
+     "29cfr1926.1436(e)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(e)(2)(ii)",
+     "text": "new hoists are load tested to a minimum of 110% of rated capacity, but not more than 125% of rated capacity"
+    },
+    "equipment": "derrick",
+    "variant": "base-mounted drum hoist",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What extra stuff gets checked on a derrick beyond the normal crane inspections, daily and yearly?",
+    "style": "slang",
+    "category": "inspections",
+    "gold_answer": "Daily: check the guys for proper tension. Annually: check the gudgeon pin for cracks, wear and distortion, and check the foundation supports for continued ability to carry the imposed loads.",
+    "section_ids": [
+     "29cfr1926.1436(p)(1)",
+     "29cfr1926.1436(p)(2)(i)",
+     "29cfr1926.1436(p)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1436(p)(1)",
+     "text": "Daily: Guys for proper tension."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.2233158,
+ "duration_ms": 44946,
+ "batch": "B16",
+ "prompt_chars": 34813
+}

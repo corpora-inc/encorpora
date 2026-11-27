@@ -1,0 +1,52 @@
+# harvest/eval config for the crane pack. Paths are relative to this file.
+#   cd harvest/eval && .venv/bin/python -m harvest_eval run \
+#     --config ../../crane/eval/eval.yaml --pack <pack> --binary <harvest> --out <dir>
+set: heldout-v1.jsonl
+reference_sections: sources/sections-2026-11-24.jsonl
+
+match:
+  aliases: []   # add {pattern, replace} pairs if a pack spells appendix or table ids differently
+
+backends:
+  - name: harvest
+    kind: harvest
+    binary: harvest
+    pack: ../../dist/crane-us       # overridden by --pack
+    llm: "off"                      # composed answers without a model; set an endpoint to test one
+    role: operator
+
+  # (a) on-device-class open model with no retrieval, served from an OpenAI-compatible endpoint.
+  - name: open-weight-alone
+    kind: openai
+    endpoint: http://spark-lan:8080/v1
+    model: served-model-id          # set to the id the server reports at /v1/models
+    max_tokens: 800
+    timeout_s: 300
+    system_prompt: &baseline >-
+      You are a safety assistant for US crane operators, riggers, signal persons and inspectors.
+      Answer from the US OSHA crane regulations: 29 CFR 1926 Subpart CC (cranes and derricks in
+      construction, with appendices) and 29 CFR 1910.179, 1910.180 and 1910.184. Answer concisely
+      and exactly, with the numbers and conditions that apply, and cite the section and paragraph
+      you rely on, like §1926.1408(a)(2). If the question is outside these regulations or needs
+      information you do not have, such as a manufacturer's procedure, a specific crane's load
+      chart, another standard's text or legal advice, say that you cannot answer it from these
+      regulations instead of guessing.
+
+  # (b) frontier model alone, no retrieval, no tools.
+  - name: frontier-alone
+    kind: claude
+    model: sonnet
+    timeout_s: 300
+    system_prompt: *baseline
+
+compare:
+  - [harvest, open-weight-alone]
+  - [harvest, frontier-alone]
+
+judge:
+  model: opus
+  agreement_model: sonnet
+  agreement_sample: 0.15
+  cache: .judge-cache
+  per_call: 6
+  jobs: 3

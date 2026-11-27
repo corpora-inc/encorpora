@@ -1,0 +1,237 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how much boom can we hang out cantilevered when we're pinning in sections? the manual for this old lattice crane is long gone",
+    "style": "slang",
+    "category": "assembly-disassembly",
+    "gold_answer": "You cannot go past the manufacturer's limit on how much boom can be supported only by cantilevering. If the manufacturer's limits aren't available, a registered professional engineer familiar with that type of equipment must set the limit in writing, and that limit cannot be exceeded.",
+    "section_ids": [
+     "29cfr1926.1404(j)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(j)",
+     "text": "Manufacturer limitations on the maximum amount of boom supported only by cantilevering must not be exceeded."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "if we dont use the manufactuer's assembly procedure and write our own, who has to write it and what does it have to cover",
+    "style": "typo",
+    "category": "assembly-disassembly",
+    "gold_answer": "Employer procedures must be developed by a qualified person. They must prevent unintended dangerous movement and collapse of any part of the equipment, provide adequate support and stability of all parts, and position employees so their exposure to unintended movement or collapse is minimized.",
+    "section_ids": [
+     "29cfr1926.1406(a)",
+     "29cfr1926.1406(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1406(b)",
+     "text": "Employer procedures must be developed by a qualified person."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "what do we do with the shipping pins and straps after we pull them can we just leave them sitting on the boom",
+    "style": "voice",
+    "category": "assembly-disassembly",
+    "gold_answer": "Reusable shipping pins, straps, links and similar items must be removed. Once removed they must be stowed or stored so they are not a falling object hazard, so leaving them loose on the boom is not acceptable.",
+    "section_ids": [
+     "29cfr1926.1404(o)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(o)",
+     "text": "Once they are removed they must either be stowed or otherwise stored so that they do not present a falling object hazard."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Can we leave the jib on the crane while it's driving piles, or does it have to come off?",
+    "style": "formal",
+    "category": "assembly-disassembly",
+    "gold_answer": "It has to come off. Equipment used for pile driving must not have a jib attached during pile driving operations.",
+    "section_ids": [
+     "29cfr1926.1404(p)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(p)",
+     "text": "Equipment used for pile driving must not have a jib attached during pile driving operations."
+    },
+    "equipment": "pile-driver",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "tight site, can only get the outriggers out about halfway on one side. ok to make the pick like that?",
+    "style": "scenario",
+    "category": "assembly-disassembly",
+    "gold_answer": "Only if the manufacturer's procedures allow it. Outriggers must be fully extended, or, if the manufacturer's procedures permit, deployed as specified in the load chart (for example, using the chart for that partial extension).",
+    "section_ids": [
+     "29cfr1926.1404(q)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(q)(1)",
+     "text": "The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed as specified in the load chart."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "on a locomotive crane do the outriggers have to lift it off the wheels like a truck crane? and what if we pick without the outriggers at all",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "No. The rule that outriggers must take the weight off the wheels does not apply to locomotive cranes; when using outriggers or stabilizers to handle loads, you follow the manufacturer's procedures. When lifting without outriggers or stabilizers, you must meet the manufacturer's procedures for truck wedges or screws.",
+    "section_ids": [
+     "29cfr1926.1404(q)(2)",
+     "29cfr1926.1404(q)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(q)(6)",
+     "text": "When lifting loads without using outriggers or stabilizers, the manufacturer's procedures must be met regarding truck wedges or screws."
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "stabilizers vs outriggers.. do stabilizers have to take the tires off the ground too? and does somebody have to watch them go down",
+    "style": "vague",
+    "category": "assembly-disassembly",
+    "gold_answer": "No. The requirement to set outriggers so the equipment weight comes off the wheels does not apply to stabilizers. Each outrigger or stabilizer must be visible to the operator or a signal person while it is extended and set.",
+    "section_ids": [
+     "29cfr1926.1404(q)(2)",
+     "29cfr1926.1404(q)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(q)(2)",
+     "text": "This provision does not apply to stabilizers."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "where exactly r we supposed to put the cribbing under the outriggers, can it go under the beam itself",
+    "style": "typo",
+    "category": "assembly-disassembly",
+    "gold_answer": "Blocking goes only under the outrigger or stabilizer float/pad of the jack. If the outrigger or stabilizer has no jack, it goes under the outer bearing surface of the extended beam. The blocking must also meet the requirements of 1926.1404(h)(2) and (h)(3). Also, if floats are used, they must be attached to the outriggers or stabilizers.",
+    "section_ids": [
+     "29cfr1926.1404(q)(5)(i)",
+     "29cfr1926.1404(q)(5)(ii)",
+     "29cfr1926.1404(q)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(q)(5)(ii)",
+     "text": "Be placed only under the outrigger or stabilizer float/pad of the jack"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're taking a boom section out to shorten the stick. The pendants are still tight. Can my guys start knocking out pendant pins or the pins on sections between the pendant attachment and the crane body?",
+    "style": "scenario",
+    "category": "assembly-disassembly",
+    "gold_answer": "No. Pendant pins can't be removed, even partly, while the pendants are in tension. Top or bottom pins on boom sections between the pendant attachment points and the crane body also can't be removed, even partly, while the pendants are in tension.",
+    "section_ids": [
+     "29cfr1926.1405(a)",
+     "29cfr1926.1405(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1405(a)",
+     "text": "None of the pins in the pendants are to be removed (partly or completely) when the pendants are in tension."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "derrick boom is laid down with the tip section sitting on cribbing. can we pull the pins on the middle sections now",
+    "style": "voice",
+    "category": "assembly-disassembly",
+    "gold_answer": "No. While the boom is held up by the uppermost section resting on the ground or another support, none of the top or bottom pins on sections between the uppermost section and the crane/derrick body may be removed, even partly.",
+    "section_ids": [
+     "29cfr1926.1405(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1405(c)",
+     "text": "when the boom is being supported by the uppermost boom section resting on the ground (or other support)"
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "taking off the cantilevered piece out past the pendant points, when can we pull the top pins on it",
+    "style": "slang",
+    "category": "assembly-disassembly",
+    "gold_answer": "Top pins on boom sections in the cantilevered portion being removed (ahead of the pendant attachment points) can't be removed, even partly, until that cantilevered section is fully supported.",
+    "section_ids": [
+     "29cfr1926.1405(d)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1405(d)",
+     "text": "are to be removed (partly or completely) until the cantilevered section to be removed is fully supported."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "During assembly, who's allowed to do the rigging, and what special rules apply if we're using synthetic slings instead of wire rope?",
+    "style": "multi-part",
+    "category": "rigging-slings",
+    "gold_answer": "A qualified rigger must do the rigging used for assembly/disassembly. Synthetic slings must be protected from abrasive, sharp or acute edges and from configurations that reduce rated capacity (such as distortion or localized compression), and the sling manufacturer's instructions, limitations, specifications and recommendations must be followed. Protection for wire rope slings is covered in 1926.251(c)(9).",
+    "section_ids": [
+     "29cfr1926.1404(r)(1)",
+     "29cfr1926.1404(r)(2)",
+     "29cfr1926.1404(r)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(r)(1)",
+     "text": "The rigging work is done by a qualified rigger."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1291398,
+ "duration_ms": 41641,
+ "batch": "B03",
+ "prompt_chars": 10056
+}

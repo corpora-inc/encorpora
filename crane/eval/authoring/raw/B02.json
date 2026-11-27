@@ -1,0 +1,270 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "what does the ground gotta be like before we can set up the crane, is there a rule or just eyeball it",
+    "style": "voice",
+    "category": "ground-conditions",
+    "gold_answer": "You can't assemble or use the equipment unless the ground is firm, drained and graded well enough that the manufacturer's specs for support and level are met, using supporting materials like mats, blocking or cribbing if needed.",
+    "section_ids": [
+     "29cfr1926.1402(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(b)",
+     "text": "The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're setting up in a wetland on marsh buggies. The ground's soaked and there's no way to drain it. Does that automatically stop us?",
+    "style": "scenario",
+    "category": "ground-conditions",
+    "gold_answer": "No. The requirement that the ground be drained doesn't apply in marshes/wetlands. The ground still has to be firm and graded enough, with supporting materials such as marsh buggies, to meet the manufacturer's specs for support and level.",
+    "section_ids": [
+     "29cfr1926.1402(b)",
+     "29cfr1926.1402(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(b)",
+     "text": "The requirement for the ground to be drained does not apply to marshes/wetlands."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "GC has the as-builts showing an old septic tank and a gas line right where we wanna put the outriggers. Do they have to tell us, or is that on us to find?",
+    "style": "slang",
+    "category": "ground-conditions",
+    "gold_answer": "The controlling entity has to tell the equipment user and the operator where hazards under the set-up area are (voids, tanks, utilities) if those hazards show up in documents it has, on site or off site, such as site drawings, as-builts or soil analyses, or if it otherwise knows about them.",
+    "section_ids": [
+     "29cfr1926.1402(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(c)(2)",
+     "text": "Inform the user of the equipment and the operator of the location of hazards beneath the equipment set-up area (such as voids, tanks, utilities)"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "who has to do the ground prep if theres no GC or controling entity on the job",
+    "style": "typo",
+    "category": "ground-conditions",
+    "gold_answer": "If there's no controlling entity, the employer that has authority at the site to make or arrange the needed ground preparations must make sure they're provided.",
+    "section_ids": [
+     "29cfr1926.1402(d)",
+     "29cfr1926.1402(c)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(d)",
+     "text": "the employer that has authority at the site to make or arrange for ground preparations needed to meet paragraph (b) of this section"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "operator walks the setup area and says the dirt is too soft for the crane what's supposed to happen next",
+    "style": "voice",
+    "category": "ground-conditions",
+    "gold_answer": "If the operator (or the A/D director) decides the ground conditions aren't adequate, that person's employer has to talk with the controlling entity about the ground preparations needed so the requirements can be met, using suitable supporting materials if necessary.",
+    "section_ids": [
+     "29cfr1926.1402(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(e)",
+     "text": "that person's employer must have a discussion with the controlling entity regarding the ground preparations that are needed"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Does the ground-conditions section in Subpart CC apply to a locomotive crane working on railroad track?",
+    "style": "formal",
+    "category": "ground-conditions",
+    "gold_answer": "Not when it's a crane designed for railroad tracks, used on tracks that are part of the general railroad system of transportation regulated by the FRA under 49 CFR part 213, and those tracks meet the applicable FRA requirements. On any other track, the ground-conditions section still applies.",
+    "section_ids": [
+     "29cfr1926.1402(f)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(f)",
+     "text": "This section does not apply to cranes designed for use on railroad tracks when used on railroad tracks that are part of the general railroad system of transportation"
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether a particular track (for example plant or industrial spur track) counts as part of the general railroad system takes interpretation."
+   },
+   {
+    "question": "can we use our own company assembly procedure instead of the manufacturers? and does it matter if were rigging with synthetic slings",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "Yes, you can use employer procedures, but only if the employer can show they meet § 1926.1406, and you still have to follow every applicable manufacturer prohibition. If you use synthetic slings for A/D rigging, you must follow the manufacturer's procedures.",
+    "section_ids": [
+     "29cfr1926.1403",
+     "29cfr1926.1403(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1403(b)",
+     "text": "The employer must follow manufacturer procedures when an employer uses synthetic slings during assembly or disassembly rigging."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "If it's just me putting the jib on by myself, do I need any special qualification?",
+    "style": "vague",
+    "category": "assembly-disassembly",
+    "gold_answer": "Yes. When only one person does the assembly/disassembly, that person has to meet the criteria for both a competent person and a qualified person, and is treated as the A/D director.",
+    "section_ids": [
+     "29cfr1926.1404(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(a)(2)",
+     "text": "Where the assembly/disassembly is being performed by only one person, that person must meet the criteria for both a competent person and a qualified person."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "A/D director's done this same boom setup a hundred times. Does he still have to go through the procedures right before we start?",
+    "style": "slang",
+    "category": "assembly-disassembly",
+    "gold_answer": "Normally the A/D director has to review the procedures immediately before A/D starts. That review isn't required if the director understands the procedures and has already applied them to the same type and configuration of equipment, including any accessories.",
+    "section_ids": [
+     "29cfr1926.1404(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(c)",
+     "text": "unless the A/D director understands the procedures and has applied them to the same type and configuration of equipment (including accessories, if any)"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Halfway through teardown we get a new guy, and one of my hands switches from pinning to tag lines. What do I need to go over with them, and do I have to do it again for the guy switching jobs?",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "Yes, both. The A/D director must make sure each crew member understands their tasks, the hazards of those tasks, and the hazardous positions or locations to avoid. This applies before A/D starts, before a crew member takes on a different task, and when new personnel are added during the operation.",
+    "section_ids": [
+     "29cfr1926.1404(d)(1)",
+     "29cfr1926.1404(d)(2)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "crew guy needs to climb under the counterweight where i cant see him during assembly what do we both have to do",
+    "style": "voice",
+    "category": "assembly-disassembly",
+    "gold_answer": "Before he goes to an out-of-view spot in, on, under or near the equipment or load where he could be hurt, he has to tell the operator. Once you know he's there, you can't move any part of the equipment or load until you're told, through a pre-arranged communication system, that he's in a safe position.",
+    "section_ids": [
+     "29cfr1926.1404(e)(1)",
+     "29cfr1926.1404(e)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(e)(2)",
+     "text": "the operator must not move any part of the equipment (or load) until the operator is informed in accordance with a pre-arranged system of communication that the crew member is in a safe position"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Tight site, and the only way to knock the boom pins out on this lattice crawler is to stand under the boom. Is that ever allowed?",
+    "style": "scenario",
+    "category": "assembly-disassembly",
+    "gold_answer": "Normally no one may be under the boom, jib or other components while pins are being removed. The exception applies only if the employer shows that site constraints require it. Then the A/D director must put procedures in place that minimize the risk of unintended dangerous movement and minimize how long and how much people are exposed under the boom.",
+    "section_ids": [
+     "29cfr1926.1404(f)(1)",
+     "29cfr1926.1404(f)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(f)(2)",
+     "text": "the A/D director must implement procedures that minimize the risk of unintended dangerous movement and minimize the duration and extent of exposure under the boom"
+    },
+    "equipment": "crawler-crane",
+    "variant": "lattice boom",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether site constraints really 'require' someone under the boom, and whether the procedures are adequate, are judgment calls."
+   },
+   {
+    "question": "During lattice boom assembly we're gonna hold the boom up with the boom hoist brake while guys work on it. Anything we have to do first, and what if the brake won't hold?",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "Every time you're going to rely on the boom hoist brake to stop boom movement, you have to test it first to see if it's enough. If it isn't, use a boom hoist pawl, another locking or back-up braking device, or some other way to prevent dangerous boom movement, such as blocking or an assist crane.",
+    "section_ids": [
+     "29cfr1926.1404(h)(10)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(h)(10)",
+     "text": "the brake must be tested prior to such reliance to determine if it is sufficient to prevent boom movement"
+    },
+    "equipment": "crawler-crane",
+    "variant": "lattice boom",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Setting lattice boom sections on cribbing during assembly with an assist crane. What are the rules on the blocking, and do the assist crane's loads need checking first?",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "The blocking's size, amount, condition and stacking method must be enough to carry the loads and keep things stable. It must also be placed so it protects the equipment's structural integrity and prevents dangerous movement and collapse. The loads on the assist crane at each phase must be verified under § 1926.1417(o)(3) before assembly starts.",
+    "section_ids": [
+     "29cfr1926.1404(h)(2)",
+     "29cfr1926.1404(h)(3)",
+     "29cfr1926.1404(h)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(h)(4)",
+     "text": "the loads that will be imposed on the assist crane at each phase of assembly/disassembly must be verified in accordance with § 1926.1417(o)(3) before assembly/disassembly begins"
+    },
+    "equipment": "crawler-crane",
+    "variant": "lattice boom",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1370678,
+ "duration_ms": 42524,
+ "batch": "B02",
+ "prompt_chars": 10056
+}

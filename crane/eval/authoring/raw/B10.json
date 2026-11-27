@@ -1,0 +1,239 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "I can see the hook fine from the cab but once the load swings behind the building I lose it where it sets down. Do I gotta have a signal guy for that or can I just go slow?",
+    "style": "slang",
+    "category": "signals",
+    "gold_answer": "Yes. You must have a signal person whenever the point of operation (the load travel or the area near or at load placement) is not in full view of the operator. Going slow doesn't replace that.",
+    "section_ids": [
+     "29cfr1926.1419(a)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(a)(1)",
+     "text": "The point of operation, meaning the load travel or the area near or at load placement, is not in full view of the operator."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "walking the crawler across the laydown yard and the counterweight blocks my view going backwards do i need a spotter signal person for travel or only for picks",
+    "style": "voice",
+    "category": "signals",
+    "gold_answer": "A signal person is required when the equipment is traveling and the view in the direction of travel is obstructed. This covers travel too, not just lifting.",
+    "section_ids": [
+     "29cfr1926.1419(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(a)(2)",
+     "text": "When the equipment is traveling, the view in the direction of travel is obstructed."
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two questions on radios. Can we just run the crane signals on the same channel the electricians and the GC use? And do we have to check the radios out before starting, or is it fine as long as they worked yesterday?",
+    "style": "multi-part",
+    "category": "signals",
+    "gold_answer": "No. Signals have to go over a dedicated channel. The only exceptions are cranes/signal persons sharing a channel to coordinate crane operations, and crane work on or next to railroad tracks. The devices also have to be tested on site before operations begin to make sure transmission is effective, clear, and reliable.",
+    "section_ids": [
+     "29cfr1926.1420(a)",
+     "29cfr1926.1420(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1420(a)",
+     "text": "The device(s) used to transmit signals must be tested on site before beginning operations to ensure that the signal transmission is effective, clear, and reliable."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're running a locomotive crane on the rail spur and the operator has to coordinate with train moves on the next track over. Does the signal radio still need its own dedicated channel, or can it be on the railroad channel?",
+    "style": "scenario",
+    "category": "signals",
+    "gold_answer": "There's an exception to the dedicated-channel rule when a crane works on or next to railroad tracks and the operator's actions have to be coordinated with other equipment or trains on the same or adjacent tracks. So a shared channel is allowed in that case.",
+    "section_ids": [
+     "29cfr1926.1420(b)",
+     "29cfr1926.1420(b)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1420(b)(2)",
+     "text": "Where a crane is being operated on or adjacent to railroad tracks, and the actions of the crane operator need to be coordinated with the movement of other equipment or trains on the same or adjacent tracks."
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "The text doesn't say how far the shared-channel allowance goes, for example whether it can be the railroad's own operations channel."
+   },
+   {
+    "question": "is it ok if the operater just holds the walkie in his hand and keys it while he runs the levers",
+    "style": "typo",
+    "category": "signals",
+    "gold_answer": "No. The operator has to receive signals through a hands-free system.",
+    "section_ids": [
+     "29cfr1926.1420(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1420(c)",
+     "text": "The operator's reception of signals must be by a hands-free system."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For voice signals over the radio, what's the right order to say things? And if we swap in a new signal guy after lunch, do we have to go over the voice signals again?",
+    "style": "multi-part",
+    "category": "signals",
+    "gold_answer": "Every voice signal gives the function (hoist, boom, etc.), then the direction, then distance and/or speed, then the function and stop command. The operator, signal person, and lift director (if there is one) only have to meet again if a worker is added or substituted, there's confusion, or a signal is changed. A new signal person counts as a substitution, so yes, you go over them again.",
+    "section_ids": [
+     "29cfr1926.1421(a)",
+     "29cfr1926.1421(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1421(b)",
+     "text": "function (such as hoist, boom, etc.), direction; distance and/or speed; function, stop command."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "radio cut out mid pick and I got nothing but static what am I supposed to do keep going on the last call or what",
+    "style": "voice",
+    "category": "signals",
+    "gold_answer": "If signal communication is interrupted, the operator must safely stop the operations that need signals. Don't resume until communication is back and a proper signal has been given and understood. Don't keep going on the last signal.",
+    "section_ids": [
+     "29cfr1926.1419(f)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(f)",
+     "text": "the operator must safely stop operations requiring signals until it is reestablished and a proper signal is given and understood."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We've got two tower cranes with overlapping swing and one signal person talking to both on a single shared channel. Is that legal, and how does she keep the operators from both reacting to the same call?",
+    "style": "scenario",
+    "category": "signals",
+    "gold_answer": "Yes. Multiple cranes and one or more signal persons may share a dedicated channel to coordinate operations. When a signal person talks to more than one crane, she must name the crane before giving each function/direction, or use an equally effective way of identifying which crane the signal is for.",
+    "section_ids": [
+     "29cfr1926.1420(b)(1)",
+     "29cfr1926.1419(m)(1)",
+     "29cfr1926.1419(m)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(m)(1)",
+     "text": "for each signal, prior to giving the function/direction, the signal person must identify the crane/derrick the signal is for"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Under what circumstances may non-standard hand signals be used in lieu of the Standard Method, and what must occur before they are used?",
+    "style": "formal",
+    "category": "signals",
+    "gold_answer": "Non-standard hand signals are allowed only when the Standard Method is infeasible, or when an operation or attachment isn't covered by the Standard Method. Before the operation, the signal person, operator, and lift director (if there is one) must contact each other and agree on the non-standard signals.",
+    "section_ids": [
+     "29cfr1926.1419(c)(1)",
+     "29cfr1926.1419(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(c)(2)",
+     "text": "the signal person, operator, and lift director (where there is one) must contact each other prior to the operation and agree on the non-standard hand signals that will be used."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "so like who's allowed to signal me? only one guy? what if some laborer sees a problem, and when the signal guy says swing left is that his left or mine",
+    "style": "vague",
+    "category": "signals",
+    "gold_answer": "Only one person may give signals to a crane at a time. The exception is that anyone who becomes aware of a safety problem must give the stop or emergency stop signal. All directions from the signal person must be given from the operator's direction perspective, so 'left' means your left.",
+    "section_ids": [
+     "29cfr1926.1419(h)",
+     "29cfr1926.1419(j)",
+     "29cfr1926.1419(k)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(k)",
+     "text": "All directions given to the operator by the signal person must be given from the operator's direction perspective."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "where does the hand signal chart have to be for a guy derrick job, on the derrick itself?",
+    "style": "slang",
+    "category": "signals",
+    "gold_answer": "The hand signal chart has to be posted either on the equipment or conspicuously in the vicinity of the hoisting operations. It doesn't have to be on the derrick itself.",
+    "section_ids": [
+     "29cfr1926.1422"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1422",
+     "text": "Hand signal charts must be either posted on the equipment or conspicuously posted in the vicinity of the hoisting operations."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our company wants to use a light-panel/tablet system instead of hand or voice signals. What does the employer have to show to be allowed to do that, and does the transmission method have to fit the site?",
+    "style": "multi-part",
+    "category": "signals",
+    "gold_answer": "New signals (other than hand, voice, or audible) are allowed only if the employer shows they give at least equally effective communication as voice, audible, or Standard Method hand signals, or that they follow a national consensus standard that does. The signals and how they're sent (line of sight, video, radio, etc.) must also be appropriate for the site conditions.",
+    "section_ids": [
+     "29cfr1926.1419(d)(1)",
+     "29cfr1926.1419(d)(2)",
+     "29cfr1926.1419(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1419(d)(1)",
+     "text": "The new signals provide at least equally effective communication as voice, audible, or Standard Method hand signals"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The text doesn't say what counts as 'demonstrating' equal effectiveness for a specific system."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1196718,
+ "duration_ms": 42865,
+ "batch": "B10",
+ "prompt_chars": 5902
+}

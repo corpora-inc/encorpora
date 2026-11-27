@@ -1,0 +1,346 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "doing a man basket pick and gusts are hitting about 25 up at the platform. can we still fly the guys or is it shut down automatically",
+    "style": "slang",
+    "category": "wind-weather",
+    "gold_answer": "It doesn't shut down automatically. When wind (sustained or gusts) goes over 20 mph at the personnel platform, a qualified person has to decide whether it's unsafe to lift personnel. If it is unsafe, the lift must not start, or must be stopped if it's already underway.",
+    "section_ids": [
+     "29cfr1926.1431(k)(8)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(k)(8)(i)",
+     "text": "When wind speed (sustained or gusts) exceeds 20 mph at the personnel platform, a qualified person must determine if, in light of the wind conditions, it is not safe to lift personnel."
+    },
+    "equipment": "personnel-platform",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "local storm warning just came across the radio do we have to tie down the crane or what",
+    "style": "voice",
+    "category": "wind-weather",
+    "gold_answer": "Once a local storm warning is issued, the competent person must decide whether the manufacturer's recommendations for securing the equipment need to be put in place.",
+    "section_ids": [
+     "29cfr1926.1417(h)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(h)",
+     "text": "the competent person must determine whether it is necessary to implement manufacturer recommendations for securing the equipment"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "got ice cakd on the boom and snow overnite, does that chnage what i can pick or is the chart the chart",
+    "style": "typo",
+    "category": "wind-weather",
+    "gold_answer": "You can't just go by the chart as printed. The competent person must adjust the equipment and/or operations to account for the effect of wind, ice and snow on the crane's stability and rated capacity.",
+    "section_ids": [
+     "29cfr1926.1417(n)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(n)",
+     "text": "The competent person must adjust the equipment and/or operations to address the effect of wind, ice, and snow on equipment stability and rated capacity."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Anemometer on our tower crane quit. How long do we have to fix it, what do we do for wind readings until then, and where is it supposed to be mounted anyway?",
+    "style": "multi-part",
+    "category": "wind-weather",
+    "gold_answer": "The wind speed indicator is a Category II aid, so it must be repaired within 30 calendar days. If parts were ordered within 7 days and arrive too late for the 30-day deadline, the repair is due within 7 days of receiving them. Until then, use the reading from a working indicator on another tower crane on the same site, or have a qualified person estimate the wind speed. On a tower crane it is mounted above the upper rotating structure; on a self-erecting crane, at or above jib level.",
+    "section_ids": [
+     "29cfr1926.1435(e)(6)",
+     "29cfr1926.1435(e)(6)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1435(e)(6)(v)",
+     "text": "Use of wind speed information from a properly functioning indicating device on another tower crane on the same site, or a qualified person estimates the wind speed."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "crane on a barge, do we actually need a wind gauge out there",
+    "style": "vague",
+    "category": "wind-weather",
+    "gold_answer": "Only if wind matters. A competent person must decide whether wind is a factor that needs to be considered. If it is, a wind speed and direction indicator must be used.",
+    "section_ids": [
+     "29cfr1926.1437(e)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(e)(3)",
+     "text": "if wind needs to be considered, a wind speed and direction indicator must be used."
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What wind-related protective equipment is required on an outdoor storage bridge under the general industry overhead and gantry crane standard?",
+    "style": "formal",
+    "category": "wind-weather",
+    "gold_answer": "Outdoor storage bridges must have automatic rail clamps and a wind-indicating device that gives the bridge operator a visible or audible alarm at a preset wind velocity. If the clamps act on the rail heads, any beads or weld flash on the rail heads must be ground off.",
+    "section_ids": [
+     "29cfr1910.179(b)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(b)(4)",
+     "text": "A wind-indicating device shall be provided which will give a visible or audible alarm to the bridge operator at a predetermined wind velocity."
+    },
+    "equipment": "gantry-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "tandem pick with two cranes next week, who's gotta write up the plan",
+    "style": "slang",
+    "category": "multiple-crane-lifts",
+    "gold_answer": "Any lift where more than one crane or derrick supports the load must be planned before it starts. A qualified person must develop the plan, and it must be designed to ensure the Subpart CC requirements are met.",
+    "section_ids": [
+     "29cfr1926.1432(a)",
+     "29cfr1926.1432(a)(1)",
+     "29cfr1926.1432(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1432(a)(1)",
+     "text": "The plan must be developed by a qualified person."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "does a dual crane lift always need an engineer to sign off on it",
+    "style": "vague",
+    "category": "multiple-crane-lifts",
+    "gold_answer": "Not automatically. The plan is developed by a qualified person. Only if that qualified person decides engineering expertise is needed must the employer provide it.",
+    "section_ids": [
+     "29cfr1926.1432(a)(1)",
+     "29cfr1926.1432(a)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1432(a)(3)",
+     "text": "Where the qualified person determines that engineering expertise is needed for the planning, the employer must ensure that it is provided."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our super is a competent person but not a qualified person. Can he still be the one directing a two-crane lift?",
+    "style": "scenario",
+    "category": "multiple-crane-lifts",
+    "gold_answer": "Yes, but only if one or more qualified persons assist him. Otherwise the lift must be directed by someone who meets the criteria for both a competent person and a qualified person.",
+    "section_ids": [
+     "29cfr1926.1432(b)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1432(b)(1)",
+     "text": "directed by a person who meets the criteria for both a competent person and a qualified person, or by a competent person who is assisted by one or more qualified persons"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "do we got to have a meeting before the multi crane lift and who all has to be in it",
+    "style": "voice",
+    "category": "multiple-crane-lifts",
+    "gold_answer": "Yes. The lift director must go over the plan in a meeting with every worker who will be involved in the operation.",
+    "section_ids": [
+     "29cfr1926.1432(b)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1432(b)(2)",
+     "text": "The lift director must review the plan in a meeting with all workers who will be involved with the operation."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "wheres the load chart and operators manual supposed to be kept, can it stay in the office trailer",
+    "style": "voice",
+    "category": "load-charts",
+    "gold_answer": "No. The load charts (rated capacities), recommended operating speeds, special hazard warnings, instructions and operator's manual must be readily available in the cab at all times for the operator to use.",
+    "section_ids": [
+     "29cfr1926.1417(c)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(c)(1)",
+     "text": "must be readily available in the cab at all times for use by the operator."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our crane only has the load chart on the screen, no paper copy. Mid-lift the display goes black. What am I supposed to do?",
+    "style": "scenario",
+    "category": "load-charts",
+    "gold_answer": "If a failure makes the electronic rated capacities inaccessible, the operator must immediately stop operations or follow safe shut-down procedures. Work stays stopped until the rated capacities are available again, in electronic or other form.",
+    "section_ids": [
+     "29cfr1926.1417(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(c)(2)",
+     "text": "the operator must immediately cease operations or follow safe shut-down procedures until the rated capacities (in electronic or other form) are available"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "nobody knows what this thing weighs, no paperwork. can i just start picking it and see what the LMI says? whats the cutoff",
+    "style": "slang",
+    "category": "load-charts",
+    "gold_answer": "Yes. You can start hoisting and use a load weighing device, LMI, RCI or RCL to check whether the load exceeds 75% of the maximum rated capacity at the longest radius used in the lift. If it does, you can't continue until the weight is verified from an industry-recognized source or calculation, or other equally reliable means. If the operator asks for that weight information, it must be provided before the lift.",
+    "section_ids": [
+     "29cfr1926.1417(o)(3)(i)",
+     "29cfr1926.1417(o)(3)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(o)(3)(ii)",
+     "text": "if it exceeds 75 percent of the maximum rated capacity at the longest radius that will be used during the lift operation"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "does the chart in the cab have to show diffrent capacities for outriggers out vs not, and does it gotta tell me the weakest direction",
+    "style": "typo",
+    "category": "load-charts",
+    "gold_answer": "Yes to both. The cab rating information must include alternate ratings for use and non-use of option equipment that affects capacity, such as outriggers, stabilizers and extra counterweights. It must also include cautions or warnings on limitations, including the least stable direction.",
+    "section_ids": [
+     "29cfr1926.1433(d)(1)(i)(B)",
+     "29cfr1926.1433(d)(1)(viii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1433(d)(1)(i)(B)",
+     "text": "Alternate ratings for use and nonuse of option equipment which affects rated capacities, such as outriggers, stabilizers, and extra counterweights."
+    },
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "for load ratings on a loco crane what counts as tipping, how level does the track have to be, and do the hook and slings count toward the load",
+    "style": "multi-part",
+    "category": "load-charts",
+    "gold_answer": "Tipping, with or without outriggers, is when half of the wheels farthest from the load leave the rail. The track must be level within 1 percent grade. Hoist blocks, hooks, slings and other auxiliary handling devices are counted as part of the load rating.",
+    "section_ids": [
+     "29cfr1910.180(c)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(c)(1)(ii)",
+     "text": "Tipping with or without the use of outriggers occurs when half of the wheels farthest from the load leave the rail."
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "setting up on marsh buggies out in a wetland, ground's soaked. does it have to be drained first like a normal site",
+    "style": "scenario",
+    "category": "ground-conditions",
+    "gold_answer": "No. The drainage requirement does not apply to marshes and wetlands. The ground must still be firm and graded enough that, with supporting materials such as marsh buggies if needed, the manufacturer's specifications for support and level are met.",
+    "section_ids": [
+     "29cfr1926.1402(b)",
+     "29cfr1926.1402(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(b)",
+     "text": "The requirement for the ground to be drained does not apply to marshes/wetlands."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "if the GC has as-builts showing an old tank under where we're setting outriggers but they're back at the main office, do they still have to tell us",
+    "style": "slang",
+    "category": "ground-conditions",
+    "gold_answer": "Yes. The controlling entity must tell the equipment user and the operator where hazards beneath the set-up area are, such as voids, tanks and utilities. This applies if the hazards appear in documents the controlling entity has, whether at the site or off-site, or are otherwise known to it.",
+    "section_ids": [
+     "29cfr1926.1402(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(c)(2)",
+     "text": "if those hazards are identified in documents (such as site drawings, as-built drawings, and soil analyses) that are in the possession of the controlling entity (whether at the site or off-site)"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "I'm the operator and I think the pad is too soft to set up on. What happens next, who has to fix the ground, and what if there's no controlling entity on this job?",
+    "style": "multi-part",
+    "category": "ground-conditions",
+    "gold_answer": "If the operator or A/D director finds the ground doesn't meet the requirements, that person's employer must discuss the needed ground preparations with the controlling entity. The controlling entity must ensure those preparations are provided. If there's no controlling entity, the employer with authority at the site to make or arrange ground preparations must provide them.",
+    "section_ids": [
+     "29cfr1926.1402(e)",
+     "29cfr1926.1402(c)(1)",
+     "29cfr1926.1402(d)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1402(e)",
+     "text": "that person's employer must have a discussion with the controlling entity regarding the ground preparations that are needed"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.2335718,
+ "duration_ms": 68578,
+ "batch": "B22",
+ "prompt_chars": 20307
+}

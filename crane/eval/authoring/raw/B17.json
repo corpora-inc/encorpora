@@ -1,0 +1,261 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "we got a 30 ton crane bolted permanent on a barge, its built for marine use not a derrick. how much list can we run before we're out of bounds",
+    "style": "voice",
+    "category": "floating-cranes",
+    "gold_answer": "For equipment built for marine use by permanent attachment (not a derrick) and rated over 25 tons, the maximum allowable list is 7 degrees and the maximum allowable trim is 7 degrees. At 25 tons or less the limit is 5 degrees each.",
+    "section_ids": [
+     "29cfr1926.1437(m)(2)",
+     "29cfr1926.1437-tableM1"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437-tableM1",
+     "text": "25 tons or less | 5 | 5 ; Over 25 tons | 7 | 7"
+    },
+    "equipment": "floating-crane",
+    "variant": "permanently attached marine crane, over 25 tons",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Putting our crawler on a deck barge for a bridge job. Manufacturer says it can take 3 degrees out of level. Whats the max list/trim allowed on the barge?",
+    "style": "scenario",
+    "category": "floating-cranes",
+    "gold_answer": "For a land crane on a barge, the barge's maximum allowable list and trim can't exceed the smallest of 5 degrees, the crane manufacturer's figure, or the qualified person's figure if the manufacturer gives none. Here that means 3 degrees. The limit must also keep all deck surfaces above water and the whole bottom submerged.",
+    "section_ids": [
+     "29cfr1926.1437(n)(3)(i)",
+     "29cfr1926.1437(n)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(n)(3)(i)",
+     "text": "does not exceed the least of the following: 5 degrees, the amount specified by the crane/derrick manufacturer"
+    },
+    "equipment": "crawler-crane",
+    "variant": "land crane on barge",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two divers going down off the barge using the crane to lower them. Can we use the crane for other picks while they're down there? And does the operator gotta stay in the seat the whole time?",
+    "style": "multi-part",
+    "category": "floating-cranes",
+    "gold_answer": "No. A crane used to get divers into and out of the water can't be used for anything else until all the divers are back on board. Yes, the operator has to stay at the controls at all times. Signals between the operator and the tender need either a clear line of sight or electronic transmission.",
+    "section_ids": [
+     "29cfr1926.1437(j)(1)",
+     "29cfr1926.1437(j)(2)",
+     "29cfr1926.1437(j)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(j)(1)",
+     "text": "When used for more than one diver, it must not be used for any other purpose until all divers are back on board."
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "do i need an anti two block on the floatin crane if were just setting sheet pile no people on the hook",
+    "style": "typo",
+    "category": "floating-cranes",
+    "gold_answer": "On floating cranes/derricks and land cranes on barges, an anti two-block device is required only when hoisting personnel or hoisting over an occupied cofferdam or shaft. Setting sheet pile with nobody on the hook and no occupied cofferdam or shaft below doesn't require one under this section.",
+    "section_ids": [
+     "29cfr1926.1437(f)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(f)(1)",
+     "text": "An anti two-block device is required only when hoisting personnel or hoisting over an occupied cofferdam or shaft."
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Who is permitted to perform the four-year internal inspection of a crane barge, and how long must that inspection record be retained?",
+    "style": "formal",
+    "category": "floating-cranes",
+    "gold_answer": "A marine engineer, marine architect, licensed surveyor, or other qualified person with expertise in vessels/flotation devices must survey the internal portion. The documentation must be kept for at least 4 years and made available to everyone who does inspections.",
+    "section_ids": [
+     "29cfr1926.1437(h)(5)(i)",
+     "29cfr1926.1437(h)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(h)(6)",
+     "text": "except that the documentation for that inspection must be retained for a minimum of 4 years"
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "our barge is a jack up legs are down on the river bottom holding the whole thing up do the barge crane rules still apply",
+    "style": "voice",
+    "category": "floating-cranes",
+    "gold_answer": "No. The floating crane/barge section (1926.1437) doesn't apply to jacked barges when the jacks are deployed to the river, lake, or sea bed and the barge is fully supported by the jacks.",
+    "section_ids": [
+     "29cfr1926.1437(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(a)",
+     "text": "do not apply when using jacked barges when the jacks are deployed to the river, lake, or sea bed and the barge is fully supported by the jacks"
+    },
+    "equipment": "floating-crane",
+    "variant": "jacked barge",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we're doing construction work inside a plant and using the building's bridge crane. do we follow the construction crane rules or what?",
+    "style": "vague",
+    "category": "overhead-gantry",
+    "gold_answer": "An overhead or gantry crane permanently installed in a facility and used in construction is covered by 29 CFR 1910.179, except 1910.179(b)(1). The Subpart CC requirements don't apply to it.",
+    "section_ids": [
+     "29cfr1926.1438(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1438(a)",
+     "text": "The requirements of § 1910.179, except for § 1910.179(b)(1), and not the requirements of this subpart CC, apply"
+    },
+    "equipment": "overhead-crane",
+    "variant": "permanently installed",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Got a launching gantry for setting bridge girders, built in 2015, moves on its own wheels, not permanent. Which rules cover it, and does 1910.179(b)(2) apply?",
+    "style": "scenario",
+    "category": "overhead-gantry",
+    "gold_answer": "Non-permanent gantries like this fall under listed Subpart CC sections (1926.1400–1414, 1417–1425, 1426(d), 1427–1434, 1437, 1439, 1441), listed portions of 1910.179, and specified ASME B30.2-2005 sections because it was built on or after Sept 19, 2001. 1910.179(b)(2) applies only to equipment made before Sept 19, 2001, so it doesn't apply here.",
+    "section_ids": [
+     "29cfr1926.1438(b)(1)",
+     "29cfr1926.1438(b)(2)(i)",
+     "29cfr1926.1438(b)(2)(ii)(C)",
+     "29cfr1926.1438(b)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1438(b)(2)(ii)(C)",
+     "text": "but only where the equipment identified in paragraph (b)(1) of this section (§ 1926.1438) was manufactured before September 19, 2001."
+    },
+    "equipment": "gantry-crane",
+    "variant": "launching gantry, not permanently installed",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Answer combines several cross-referenced lists from Subpart CC, 1910.179 and ASME B30.2; confirm completeness."
+   },
+   {
+    "question": "does a dedicated pile driver need anti two blok and a load weighing devise? ours is a 2009 rig",
+    "style": "typo",
+    "category": "sideboom-pile-small",
+    "gold_answer": "The anti two-block device requirement (1926.1416(d)(3)) doesn't apply to dedicated pile drivers. The load weighing device requirement (1926.1416(e)(4)) applies only to dedicated pile drivers manufactured after November 8, 2011, so a 2009 rig doesn't need one.",
+    "section_ids": [
+     "29cfr1926.1439(b)",
+     "29cfr1926.1439(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1439(c)",
+     "text": "applies only to dedicated pile drivers manufactured after November 8, 2011."
+    },
+    "equipment": "pile-driver",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "pipeline crew here, do our sideboom cat operators need the NCCCO cert like crane guys, and is the old live boom sideboom still legal",
+    "style": "slang",
+    "category": "sideboom-pile-small",
+    "gold_answer": "Sideboom cranes are exempt from 1926.1427 (operator qualification and certification). Operators instead fall under the ASME B30.14-2004 14-3.1.2(a) qualification provisions that are incorporated. A live boom (free-fall) sideboom is allowed only if it was manufactured before November 8, 2010.",
+    "section_ids": [
+     "29cfr1926.1440(a)",
+     "29cfr1926.1440(b)",
+     "29cfr1926.1440(c)(10)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1440(b)",
+     "text": "Sideboom cranes in which the boom is designed to free fall (live boom) are permitted only if manufactured prior to November 8, 2010."
+    },
+    "equipment": "sideboom",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Operator qualification content comes from an incorporated ASME B30.14 provision not reproduced in the text."
+   },
+   {
+    "question": "Can I put a guy in a basket on our little 1 ton capacity hoist to get him up to the roof",
+    "style": "slang",
+    "category": "sideboom-pile-small",
+    "gold_answer": "No. Equipment with a rated hoisting/lifting capacity of 2,000 pounds or less must not be used to hoist personnel.",
+    "section_ids": [
+     "29cfr1926.1441(j)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1441(j)",
+     "text": "The employer must ensure that equipment covered by this section is not used to hoist personnel."
+    },
+    "equipment": "small-capacity-equipment",
+    "variant": "rated 2,000 lbs or less",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "small 2000 lb rated crane bought new last year doesnt have an anti two block switch is that ok",
+    "style": "voice",
+    "category": "sideboom-pile-small",
+    "gold_answer": "Equipment rated 2,000 lbs or less and made more than one year after November 8, 2010 needs one of two things. Either it has an anti two-block device meeting 1926.1416(d)(3), or it's designed so a two-block causes no damage or load failure, for example a power unit that stalls. Without a switch, it's acceptable only if the design meets that second option.",
+    "section_ids": [
+     "29cfr1926.1441(d)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1441(d)(2)",
+     "text": "manufactured more than one year after November 8, 2010 have either an anti two-block device that meets the requirements of § 1926.1416(d)(3)"
+    },
+    "equipment": "small-capacity-equipment",
+    "variant": "rated 2,000 lbs or less",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We want to run a small rough terrain crane around on the deck of the derrick barge without chaining it down or corralling it. Is that allowed, what do we need, and what happens if the seas pick up past the plan limits?",
+    "style": "multi-part",
+    "category": "floating-cranes",
+    "gold_answer": "Yes, for a mobile auxiliary crane on a floating crane's deck, if a marine engineer or a registered PE familiar with floating crane design writes and signs a plan. The plan must keep the section's requirements met, set the deck areas and limits for positioning, travel and operation (with those areas marked on deck), and state the required dynamic/environmental conditions. If those conditions are exceeded, the crane must be physically attached or corralled under Option 1, 2 or 4.",
+    "section_ids": [
+     "29cfr1926.1437(n)(6)(i)",
+     "29cfr1926.1437(n)(6)(iii)",
+     "29cfr1926.1437(n)(6)(iv)",
+     "29cfr1926.1437(n)(6)(vi)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1437(n)(6)(i)",
+     "text": "A marine engineer or registered professional engineer familiar with floating crane/derrick design develops and signs a written plan for the use of the mobile auxiliary crane."
+    },
+    "equipment": "rough-terrain-crane",
+    "variant": "mobile auxiliary crane on deck of floating crane",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Exception chain; note that Option 3 (rails) is not listed as a fallback when conditions are exceeded."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.23852379999999998,
+ "duration_ms": 52012,
+ "batch": "B17",
+ "prompt_chars": 33354
+}

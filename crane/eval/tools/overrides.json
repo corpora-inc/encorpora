@@ -1,0 +1,104 @@
+{
+ "_doc": "Edits made by the eval lane after reading the independent check (review.py). Applied by build_set.py after review verdicts. Each entry says why.",
+ "B01-05": {
+  "clear_review_flag": true,
+  "note": "Checker's context was truncated at 'Climbing'; the Tower crane definition in 29cfr1926.1401 supports the gold and the key quote verifies."
+ },
+ "B01-08": {
+  "clear_review_flag": true,
+  "note": "Same truncation; the Controlling entity definition supports the gold and the key quote verifies."
+ },
+ "B01-12": {
+  "clear_review_flag": true,
+  "note": "Same truncation; Floating cranes/derricks, Land crane/derrick and Employer-made equipment definitions support the gold."
+ },
+ "B06-03": {
+  "question": "crane been sitting in the yard since june its october now, its going back out on a construction job. do we need to do anything special before we fire it up and use it",
+  "clear_review_flag": true,
+  "note": "Question did not say construction or general industry; 1910.180(d)(5) has a different idle-crane rule. Added the construction context."
+ },
+ "B20-03": {
+  "question": "hook on our plant's truck crane looks kinda opened up and a lil twisted, at what point is it junk?",
+  "gold_answer": "Under the frequent inspection items for crawler, locomotive and truck cranes, a hook is deficient if it has cracks, a throat opening more than 15 percent over normal, or more than 10° of twist from the plane of the unbent hook. Such a hook is a deficiency to be found in inspection and corrected before the crane is used.",
+  "expert_review": {
+   "needed": true,
+   "why": "1910.180(d)(3)(v) lists the limits as inspection items but does not itself say 'discard'; whether such a hook is junk is field practice."
+  },
+  "note": "Added general-industry context (plant) and stopped the gold from overstating what the paragraph says."
+ },
+ "B20-04": {
+  "question": "Our truck crane at the plant (general industry, not construction) sat in the yard about 3 months with the ropes still reeved. What inspections do we have to do before we put it back to work, and does anybody have to sign off on the rope?",
+  "clear_review_flag": true,
+  "note": "Added the general-industry context; 1926.1412(h) differs for construction."
+ },
+ "B20-07": {
+  "question": "can we rerate our plant's truck crane higher than the original chart",
+  "clear_review_flag": true,
+  "note": "Added general-industry context; 1926.1434 has other approval routes for construction."
+ },
+ "B20-12": {
+  "question": "we dropped the counterweight off our plant's truck crane to move it around the yard, can we still make a few small picks w/o it",
+  "clear_review_flag": true,
+  "note": "Added general-industry context; Subpart CC has no light-load exception."
+ },
+ "B20-14": {
+  "question": "For a crawler, locomotive or truck crane in general industry, what are the requirements for the monthly running rope inspection, including who may perform it and what must be documented?",
+  "clear_review_flag": true,
+  "note": "Named the standard; checker's corrected answer applied."
+ },
+ "B21-09": {
+  "question": "can a fiber rope sling get fixed and reused",
+  "clear_review_flag": true,
+  "note": "'Rope sling' was ambiguous between wire and fiber rope; the gold is about fiber rope."
+ },
+ "B17-11": {
+  "question": "Can I put a guy in a basket on our little 1 ton capacity boom truck to get him up to the roof",
+  "clear_review_flag": true,
+  "note": "'Hoist' left it unclear whether the equipment is covered by 1926.1441; made it a crane."
+ },
+ "B12-13": {
+  "section_ids": [
+   "29cfr1926.1428(c)",
+   "29cfr1926.1428(a)(3)"
+  ],
+  "clear_review_flag": true,
+  "note": "Gold answer covers (c)(1)-(c)(5); gold sections were only (c)(1) and (c)(5)."
+ },
+ "B08-01": {
+  "gold_answer": "Hand signals do not replace the horn, and a crane with a non-working required horn cannot be operated (safety devices allow no alternative measures). But the horn may be one that is on the equipment and immediately available to the operator, not only a built-in one, so a working horn kept on the crane can satisfy the requirement; the broken built-in horn must be tagged out or removed.",
+  "section_ids": [
+   "29cfr1926.1415(a)(7)",
+   "29cfr1926.1415(b)"
+  ],
+  "expert_review": {
+   "needed": true,
+   "why": "Whether a handheld air horn kept in the cab is 'on the equipment and immediately available to the operator' is an interpretation."
+  },
+  "note": "Original gold said no, which (a)(7)(i) contradicts."
+ },
+ "B05-12": {
+  "expert_review": {
+   "needed": true,
+   "why": "Depends on the task: digger derricks doing pole work are excluded from Subpart CC entirely (1926.1400(c)(4)); other Subpart V work falls under 1410 with these exceptions."
+  },
+  "section_ids": [
+   "29cfr1926.1410(d)(3)",
+   "29cfr1926.1410(d)(4)(ii)",
+   "29cfr1926.1410(c)(2)",
+   "29cfr1926.1400(c)(4)"
+  ],
+  "note": "Checker's corrected answer applied; added the scope exclusion."
+ },
+ "B15-07": {
+  "section_ids": [
+   "29cfr1926.1433(d)(4)(i)",
+   "29cfr1926.1433(d)(4)(ii)",
+   "29cfr1926.1425(c)(2)"
+  ],
+  "note": "Checker's corrected answer applied; it adds the 1425(c)(2) self-closing-latch rule for workers in the fall zone."
+ },
+ "D02-22": {
+  "drop": true,
+  "note": "Names a source that may join the corpus later, which would make the must-decline gold wrong."
+ }
+}

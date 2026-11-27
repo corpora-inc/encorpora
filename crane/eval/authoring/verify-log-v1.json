@@ -1,0 +1,457 @@
+{
+ "batches": {
+  "B01": {
+   "items": 14,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1975598
+  },
+  "B02": {
+   "items": 14,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1370678
+  },
+  "B03": {
+   "items": 12,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1291398
+  },
+  "B04": {
+   "items": 16,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.207964
+  },
+  "B05": {
+   "items": 12,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.13731179999999998
+  },
+  "B06": {
+   "items": 14,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1876918
+  },
+  "B07": {
+   "items": 13,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1651958
+  },
+  "B08": {
+   "items": 13,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1484158
+  },
+  "B09": {
+   "items": 15,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.16028779999999998
+  },
+  "B10": {
+   "items": 12,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1196718
+  },
+  "B11": {
+   "items": 13,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.19470780000000001
+  },
+  "B12": {
+   "items": 14,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1906078
+  },
+  "B13": {
+   "items": 10,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1314958
+  },
+  "B14": {
+   "items": 15,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.22700779999999998
+  },
+  "B15": {
+   "items": 11,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1722398
+  },
+  "B16": {
+   "items": 13,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.2233158
+  },
+  "B17": {
+   "items": 13,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.23852379999999998
+  },
+  "B18": {
+   "items": 13,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.20525179999999998
+  },
+  "B19": {
+   "items": 14,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1628278
+  },
+  "B20": {
+   "items": 15,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.1993958
+  },
+  "B21": {
+   "items": 15,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.20473180000000002
+  },
+  "B22": {
+   "items": 18,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.2335718
+  },
+  "D01": {
+   "items": 26,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.17521600000000004
+  },
+  "D02": {
+   "items": 26,
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "cost_usd": 0.14934419999999998
+  }
+ },
+ "dropped": [],
+ "repaired": [],
+ "quote_dropped": [],
+ "dedupe": [
+  {
+   "dropped": "B22-01",
+   "kept": "B14-09",
+   "q": "doing a man basket pick and gusts are hitting about 25 up at the platform. can we still fly the guys or is it shut down automatically"
+  },
+  {
+   "dropped": "B22-02",
+   "kept": "B09-07",
+   "q": "local storm warning just came across the radio do we have to tie down the crane or what"
+  },
+  {
+   "dropped": "B22-03",
+   "kept": "B09-08",
+   "q": "got ice cakd on the boom and snow overnite, does that chnage what i can pick or is the chart the chart"
+  },
+  {
+   "dropped": "B22-04",
+   "kept": "B16-03",
+   "q": "Anemometer on our tower crane quit. How long do we have to fix it, what do we do for wind readings until then, and where is it supposed to be mounted anyway?"
+  },
+  {
+   "dropped": "B22-12",
+   "kept": "B09-05",
+   "q": "Our crane only has the load chart on the screen, no paper copy. Mid-lift the display goes black. What am I supposed to do?"
+  },
+  {
+   "dropped": "B22-15",
+   "kept": "B20-02",
+   "q": "for load ratings on a loco crane what counts as tipping, how level does the track have to be, and do the hook and slings count toward the load"
+  },
+  {
+   "dropped": "B22-16",
+   "kept": "B02-02",
+   "q": "setting up on marsh buggies out in a wetland, ground's soaked. does it have to be drained first like a normal site"
+  },
+  {
+   "dropped": "B22-17",
+   "kept": "B02-03",
+   "q": "if the GC has as-builts showing an old tank under where we're setting outriggers but they're back at the main office, do they still have to tell us"
+  }
+ ],
+ "review": [
+  {
+   "src": "B01-05",
+   "verdict": "flag",
+   "why": "From knowledge of 1926.1401, the Tower crane definition supports the gold, but the supplied text cuts off at 'Climbing' and never reaches it. Re-attach that definition and recheck."
+  },
+  {
+   "src": "B01-06",
+   "verdict": "corrected",
+   "why": "The gold leaves out the exclusion for other Subpart V work and implies all qualifying pole work must meet Subpart V. The text requires that only for work subject to Subpart V."
+  },
+  {
+   "src": "B01-08",
+   "verdict": "flag",
+   "why": "The gold matches the 1926.1401 definition as I know it, but the supplied text cuts off before 'Controlling entity'. Re-attach that definition and recheck."
+  },
+  {
+   "src": "B01-12",
+   "verdict": "flag",
+   "why": "The gold matches the 1926.1401 definitions as I know them, but the supplied text cuts off at 'Climbing' and omits the floating crane, land crane and employer-made equipment definitions. Re-attach them and confirm the tool can retrieve them."
+  },
+  {
+   "src": "B04-05",
+   "verdict": "corrected",
+   "why": "The gold implies tag lines are mandatory, but 1407(b)(2) only requires them to be nonconductive if used. The planning meeting and tag line rules are also not in the supplied text."
+  },
+  {
+   "src": "B04-16",
+   "verdict": "corrected",
+   "why": "The gold implies nonconductive tag lines are required even if the transmitter is deenergized. In 1408(f), they are part of the alternative to deenergizing, so a small fix is needed."
+  },
+  {
+   "src": "B05-12",
+   "verdict": "corrected",
+   "why": "The cited exemptions are correct, but 1926.1400(c)(4), not in the given text, excludes digger derricks from Subpart CC for electric or telecom pole work and handling associated pole materials. Whether 1410 applies at all therefore depends on the task, which the question doesn't state."
+  },
+  {
+   "src": "B06-03",
+   "verdict": "flag",
+   "why": "Correct under 1926.1412(h), but the question doesn't say it's construction work. 1910.180(d) has its own idle-crane rule (inspection after 1 month or more, under 6 months, plus rope checks), which an expert should weigh."
+  },
+  {
+   "src": "B06-06",
+   "verdict": "corrected",
+   "why": "The core matches 1412(g), but the summary of (f)(4)-(6) leaves out the immediate determination and the temporary-measures exception. It also implies every non-hazard deficiency must be monitored."
+  },
+  {
+   "src": "B07-01",
+   "verdict": "corrected",
+   "why": "The counts are right, but 'can't be used until the removal criterion is met' garbles (a)(4)(ii), which requires complying with that criterion, replacing the rope or severing a localized defect."
+  },
+  {
+   "src": "B07-03",
+   "verdict": "corrected",
+   "why": "The limits are correct, but the closing line needs the qualifier that both broken wires are within one rope lay at the end connection."
+  },
+  {
+   "src": "B07-04",
+   "verdict": "corrected",
+   "why": "The 5% threshold is right, but 'can't be used until the removal criterion is met' misstates (a)(4)(ii)."
+  },
+  {
+   "src": "B07-07",
+   "verdict": "corrected",
+   "why": "The Category I process is right, but 'Unlike Category II and III, removal is not automatic' is wrong or unsupported: Category II also allows following the manufacturer's criterion, and no Category III text is given."
+  },
+  {
+   "src": "B08-01",
+   "verdict": "flag",
+   "why": "The text's 'removable horn' wording shows non-built-in horns are contemplated. From memory, not the supplied text, (a)(7)(i) allows a horn that isn't built in if it's on the equipment and immediately available to the operator, so a flat 'No' may be wrong about the air horn. An expert should check (a)(7)(i)."
+  },
+  {
+   "src": "B08-01",
+   "verdict": "corrected",
+   "why": "The text's 'removable horn' wording shows non-built-in horns are contemplated. From memory, not the supplied text, (a)(7)(i) allows a horn that isn't built in if it's on the equipment and immediately available to the operator, so a flat 'No' may be wrong about the air horn. An expert should check (a)(7)(i)."
+  },
+  {
+   "src": "B08-04",
+   "verdict": "corrected",
+   "why": "The Category II deadline and alternative measure are right. The question says the part was ordered but not that the order was documented, which the exception requires, so the gold shouldn't assume it."
+  },
+  {
+   "src": "B08-08",
+   "verdict": "corrected",
+   "why": "The core answer is right, but it leaves out the limits on continued picking: the 30-day Category II repair deadline and any stricter manufacturer measures."
+  },
+  {
+   "src": "B08-09",
+   "verdict": "corrected",
+   "why": "The three options are correct, but 'keep running' also depends on the Category I repair deadline in 1416(d). That deadline isn't in the supplied excerpt."
+  },
+  {
+   "src": "B11-01",
+   "verdict": "corrected",
+   "why": "The gold states a blanket 6 ft trigger and leaves out the point-to-point rules for walking out on the boom, including the 15 ft threshold for horizontal lattice booms. The correction fixes this."
+  },
+  {
+   "src": "B12-09",
+   "verdict": "corrected",
+   "why": "The 3-year audit-record retention claim isn't in the given text and wasn't asked, so it's removed. The rest is supported."
+  },
+  {
+   "src": "B12-10",
+   "verdict": "corrected",
+   "why": "The core answer is correct but leaves out the different documentation content for operators assessed under (f)(2), which the text includes."
+  },
+  {
+   "src": "B12-13",
+   "verdict": "flag",
+   "why": "The answer matches 1428(c) as I know it, but the excerpt omits (c)(2)-(4). Competence in applying the signals, crane dynamics and knowledge of §§1419-1422 and 1428 aren't supported by the given text, so check that the source includes them."
+  },
+  {
+   "src": "B14-05",
+   "verdict": "corrected",
+   "why": "The core answer matches 1431(d)(5), but the last sentence about anti two-block and controlled load lowering isn't supported by the given text and should be removed."
+  },
+  {
+   "src": "B14-10",
+   "verdict": "corrected",
+   "why": "The 'No' follows from (n), but the text doesn't support saying GC work isn't subpart V. The exception depends on the work being done, not the type of employer."
+  },
+  {
+   "src": "B15-07",
+   "verdict": "flag",
+   "why": "The gold answer omits 1926.1425(c)(2): workers hooking, unhooking or guiding in the fall zone must use self-closing latches or their equivalent (J-hook exception for wood trusses). This limits the 1433(d)(4)(ii) exception in the unhooking scenario asked about."
+  },
+  {
+   "src": "B15-07",
+   "verdict": "corrected",
+   "why": "The gold answer omits 1926.1425(c)(2): workers hooking, unhooking or guiding in the fall zone must use self-closing latches or their equivalent (J-hook exception for wood trusses). This limits the 1433(d)(4)(ii) exception in the unhooking scenario asked about."
+  },
+  {
+   "src": "B17-11",
+   "verdict": "flag",
+   "why": "1441(j) bans hoisting personnel only on equipment covered by that section. 'Little 1 ton hoist' doesn't show it is Subpart CC equipment rather than another kind of hoist outside 1441, so an expert should check the ambiguity."
+  },
+  {
+   "src": "B20-03",
+   "verdict": "flag",
+   "why": "The thresholds match, but the cited fragment never says to discard the hook, which is what was asked, and the gold only says it is \"flagged\". The crane type is also unstated: 1910.179 expressly requires discarding such hooks on overhead cranes, and 1926 Subpart CC treats hook deformation differently."
+  },
+  {
+   "src": "B20-04",
+   "verdict": "flag",
+   "why": "The gold is accurate under 1910.180(d)(5)(i) and (g)(2)(ii), but the question doesn't say general industry. In construction, 1926.1412(h) requires a qualified person to do a monthly-type inspection of equipment idle 3 months or more, so an expert should check which rule applies."
+  },
+  {
+   "src": "B20-07",
+   "verdict": "flag",
+   "why": "The gold matches 1910.180(e)(2), but the question doesn't say which standard applies. For construction, 1926.1434 allows capacity-affecting modifications through other approval routes, including a registered professional engineer in some cases, so \"only manufacturer or final assembler\" may not hold."
+  },
+  {
+   "src": "B20-14",
+   "verdict": "flag",
+   "why": "The question names no crane type or standard, and 1910.179(m) and 1926.1413 also cover monthly rope inspections with different details (from my knowledge). Gold also omits the required evaluation of deterioration as a safety hazard."
+  },
+  {
+   "src": "B20-14",
+   "verdict": "corrected",
+   "why": "The question names no crane type or standard, and 1910.179(m) and 1926.1413 also cover monthly rope inspections with different details (from my knowledge). Gold also omits the required evaluation of deterioration as a safety hazard."
+  },
+  {
+   "src": "B21-03",
+   "verdict": "corrected",
+   "why": "The thresholds match 1910.184(e)(6). The flat 'No' needed a small fix because the user only says the sling 'might have' exceeded 1000°F."
+  },
+  {
+   "src": "B22-04",
+   "verdict": "corrected",
+   "why": "Correct except that the parts-delay exception requires the employer to document the order made within 7 calendar days; the gold answer leaves this out."
+  }
+ ],
+ "overrides": [
+  {
+   "src": "B01-05",
+   "note": "Checker's context was truncated at 'Climbing'; the Tower crane definition in 29cfr1926.1401 supports the gold and the key quote verifies."
+  },
+  {
+   "src": "B01-08",
+   "note": "Same truncation; the Controlling entity definition supports the gold and the key quote verifies."
+  },
+  {
+   "src": "B01-12",
+   "note": "Same truncation; Floating cranes/derricks, Land crane/derrick and Employer-made equipment definitions support the gold."
+  },
+  {
+   "src": "B05-12",
+   "note": "Checker's corrected answer applied; added the scope exclusion."
+  },
+  {
+   "src": "B06-03",
+   "note": "Question did not say construction or general industry; 1910.180(d)(5) has a different idle-crane rule. Added the construction context."
+  },
+  {
+   "src": "B08-01",
+   "note": "Original gold said no, which (a)(7)(i) contradicts."
+  },
+  {
+   "src": "B12-13",
+   "note": "Gold answer covers (c)(1)-(c)(5); gold sections were only (c)(1) and (c)(5)."
+  },
+  {
+   "src": "B15-07",
+   "note": "Checker's corrected answer applied; it adds the 1425(c)(2) self-closing-latch rule for workers in the fall zone."
+  },
+  {
+   "src": "B17-11",
+   "note": "'Hoist' left it unclear whether the equipment is covered by 1926.1441; made it a crane."
+  },
+  {
+   "src": "B20-03",
+   "note": "Added general-industry context (plant) and stopped the gold from overstating what the paragraph says."
+  },
+  {
+   "src": "B20-04",
+   "note": "Added the general-industry context; 1926.1412(h) differs for construction."
+  },
+  {
+   "src": "B20-07",
+   "note": "Added general-industry context; 1926.1434 has other approval routes for construction."
+  },
+  {
+   "src": "B20-12",
+   "note": "Added general-industry context; Subpart CC has no light-load exception."
+  },
+  {
+   "src": "B20-14",
+   "note": "Named the standard; checker's corrected answer applied."
+  },
+  {
+   "src": "B21-09",
+   "note": "'Rope sling' was ambiguous between wire and fiber rope; the gold is about fiber rope."
+  },
+  {
+   "src": "D02-22",
+   "dropped": true,
+   "note": "Names a source that may join the corpus later, which would make the must-decline gold wrong."
+  }
+ ],
+ "final": 342
+}

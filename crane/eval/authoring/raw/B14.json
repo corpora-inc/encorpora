@@ -1,0 +1,294 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "super wants us to just fly the guys up in a man basket instead of building scaffold cuz it's faster. is that allowed?",
+    "style": "slang",
+    "category": "personnel-lifts",
+    "gold_answer": "Not just because it's faster. Hoisting employees with the crane is prohibited unless the employer shows that putting up, using and taking down conventional access (personnel hoist, ladder, stairs, aerial lift, elevating work platform, scaffold) would be more hazardous, or isn't possible because of the structural design or worksite conditions. This doesn't apply to steel erection work under subpart R or to routine underground shaft access under 1926.800.",
+    "section_ids": [
+     "29cfr1926.1431(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(a)",
+     "text": "would be more hazardous, or is not possible because of the project's structural design or worksite conditions"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how levle does the crane have to be b4 we do a personel lift",
+    "style": "typo",
+    "category": "personnel-lifts",
+    "gold_answer": "It must be uniformly level, within 1 percent of level grade. It must also sit on footing that a qualified person has found firm and stable enough.",
+    "section_ids": [
+     "29cfr1926.1431(c)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(c)(1)",
+     "text": "uniformly level, within one percent of level grade"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "truck crane man basket job one side is tight can we short jack the outriggers on that side if the chart allows it",
+    "style": "voice",
+    "category": "personnel-lifts",
+    "gold_answer": "No. For hoisting personnel, all outriggers and stabilizers must be extended and locked, every one extended the same amount, following the manufacturer's procedures and load charts.",
+    "section_ids": [
+     "29cfr1926.1431(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(c)(2)",
+     "text": "The amount of extension must be the same for all outriggers and stabilizers"
+    },
+    "equipment": "truck-crane",
+    "variant": "outriggers",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For a suspended personnel platform, what is the capacity limit, and what has to be counted in the load?",
+    "style": "formal",
+    "category": "personnel-lifts",
+    "gold_answer": "The total load must not exceed 50 percent of the rated capacity for the radius and configuration. The total includes the loaded platform, the hook, the load line and the rigging. Proof testing is the only exception.",
+    "section_ids": [
+     "29cfr1926.1431(d)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(d)(1)",
+     "text": "must not exceed 50 percent of the rated capacity for the radius and configuration of the equipment, except during proof testing"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "knuckle boom with a basket — do I need a boom angle indicator and boom hoist limiter like the big cranes or is there something different",
+    "style": "slang",
+    "category": "personnel-lifts",
+    "gold_answer": "Articulating cranes are exempt from the variable-angle-boom requirement for a boom angle indicator and boom hoist limiting device. Instead they must have a properly functioning automatic overload protection device. The other required devices, such as anti two-block and controlled load lowering, still apply.",
+    "section_ids": [
+     "29cfr1926.1431(d)(5)(i)",
+     "29cfr1926.1431(d)(5)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(d)(5)(ii)",
+     "text": "Articulating cranes must be equipped with a properly functioning automatic overload protection device."
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "How often do we have to do the trial lift with the basket? Every day? And if we move the crane to the other side of the building and come back, do we redo it? What if we change the route?",
+    "style": "multi-part",
+    "category": "personnel-lifts",
+    "gold_answer": "A trial lift is required right before each shift in which personnel will be hoisted. It must be repeated whenever the equipment is moved and set up in a new location or returned to a previously used one. It must also be repeated when the lift route changes, unless the competent person determines the new route brings no new safety factors.",
+    "section_ids": [
+     "29cfr1926.1431(h)(2)",
+     "29cfr1926.1431(h)(2)(i)",
+     "29cfr1926.1431(h)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(h)(2)",
+     "text": "The trial lift must be performed immediately prior to each shift in which personnel will be hoisted."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "proof test on the man basket how much weight how long do we hang it and can we do it at the same time as the trial lift",
+    "style": "voice",
+    "category": "personnel-lifts",
+    "gold_answer": "At each jobsite before hoisting employees, and after any repair or modification, the platform and rigging must be proof tested to 125 percent of the platform's rated capacity. The test load must be evenly distributed, lowered by controlled load lowering, braked, and held suspended for at least 5 minutes. The proof test may be done at the same time as the trial lift.",
+    "section_ids": [
+     "29cfr1926.1431(j)(1)",
+     "29cfr1926.1431(j)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(j)(1)",
+     "text": "the platform and rigging must be proof tested to 125 percent of the platform's rated capacity"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We held the pre-lift meeting Monday with the operator, signal guy, the two ironworkers going up and the foreman. Tuesday a third worker gets added to the basket crew at the same location. Do we need another meeting?",
+    "style": "scenario",
+    "category": "personnel-lifts",
+    "gold_answer": "Yes. The pre-lift meeting must be repeated for any employee newly assigned to the operation. It must also be held before the trial lift at each new work location. Attendees are the operator, the signal person (if used), the employees being hoisted, and the person responsible for the task.",
+    "section_ids": [
+     "29cfr1926.1431(m)(2)",
+     "29cfr1926.1431(m)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(m)(3)",
+     "text": "must be repeated for any employees newly assigned to the operation"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "gusting 25 up at the basket but steady wind is like 12. do we automatically shut down the man lift?",
+    "style": "slang",
+    "category": "wind-weather",
+    "gold_answer": "Not automatically. When wind, sustained or gusts, exceeds 20 mph at the personnel platform, a qualified person must decide whether it is unsafe to lift personnel. If it is unsafe, the lift must not start, or must be stopped if already underway. Gusts count, so 25 mph gusts trigger that review.",
+    "section_ids": [
+     "29cfr1926.1431(k)(8)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(k)(8)(i)",
+     "text": "When wind speed (sustained or gusts) exceeds 20 mph at the personnel platform, a qualified person must determine if"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We need to put two guys in a basket about 40 feet from a 500 kV transmission line. We're a general contractor, not a utility. Can we do it?",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "No. Hoisting personnel within 50 feet of a line over 350 kV is prohibited, and within 20 feet of a line up to 350 kV. The only exception is work covered by subpart V (Power Transmission and Distribution), which this GC work is not.",
+    "section_ids": [
+     "29cfr1926.1431(n)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(n)",
+     "text": "hoisting personnel within 50 feet of a power line that is over 350 kV, is prohibited"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can a derrick travel w/ people in the platform if we go real slow",
+    "style": "typo",
+    "category": "personnel-lifts",
+    "gold_answer": "No. Derricks are prohibited from traveling while personnel are being hoisted, however slow the travel.",
+    "section_ids": [
+     "29cfr1926.1431(k)(13)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(k)(13)",
+     "text": "Derricks are prohibited from traveling while personnel are hoisted."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "rough terrain crane with guys in the basket, can we creep it down the slab to the next bay instead of landing them and resetting? there's honestly no better way",
+    "style": "scenario",
+    "category": "personnel-lifts",
+    "gold_answer": "Traveling while hoisting employees is prohibited except on fixed rails, or where the employer shows there is no less hazardous way, but that exception does not apply to rubber-tired equipment like an RT. Even when travel is allowed, it must be on a fixed track or designated runway, limited to boom length, with the boom parallel to travel and a full trial run first.",
+    "section_ids": [
+     "29cfr1926.1431(k)(12)(i)",
+     "29cfr1926.1431(k)(12)(i)(C)",
+     "29cfr1926.1431(k)(12)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(k)(12)(i)(C)",
+     "text": "This exception does not apply to rubber-tired equipment."
+    },
+    "equipment": "rough-terrain-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The text doesn't say whether (C) limits only the 'no less hazardous way' exception (B) or both exceptions."
+   },
+   {
+    "question": "Our shop is building a personnel platform. What enclosure is required below the midrail, and can the gate swing out?",
+    "style": "multi-part",
+    "category": "personnel-lifts",
+    "gold_answer": "From the toeboard to at least the mid-rail, the platform must be enclosed with solid material or expanded metal with openings no larger than 1/2 inch, plus a subpart M guardrail system. Gates must not swing outward unless the platform is so small (for example, 1-person) that an inward swing with safe entry isn't feasible. Gates must also have a device that prevents accidental opening.",
+    "section_ids": [
+     "29cfr1926.1431(e)(6)",
+     "29cfr1926.1431(e)(8)(i)",
+     "29cfr1926.1431(e)(8)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(e)(6)",
+     "text": "expanded metal having openings no greater than 1/2 inch (1.27 cm)"
+    },
+    "equipment": "personnel-platform",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "hoisting a guy on the pile driving rig, no anti two block on it. telescopic crane. what do we do instead",
+    "style": "voice",
+    "category": "personnel-lifts",
+    "gold_answer": "Anti two-block isn't required when hoisting personnel in pile driving. On a telescopic boom crane you must do both: clearly mark the cable where the operator can easily see it, at a point that gives enough time to stop the hoist, and use a spotter in direct communication with the operator. On a lattice boom crane, either one is enough.",
+    "section_ids": [
+     "29cfr1926.1431(d)(5)(v)",
+     "29cfr1926.1431(p)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(p)(2)",
+     "text": "For telescopic boom cranes: Clearly mark the cable (so that it can be easily seen by the operator) at a point that will give the operator sufficient time to stop the hoist to prevent two-blocking, and use a spotter"
+    },
+    "equipment": "pile-driver",
+    "variant": "telescopic boom",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "factory boom mounted basket has its own little winch. can the guys in the basket pick stuff with it while they're up there",
+    "style": "vague",
+    "category": "personnel-lifts",
+    "gold_answer": "Yes, but only with a factory-produced boom-mounted platform that has the winch as original equipment. The load on the winch line must not exceed 500 pounds or the rated capacity of the winch and platform. Otherwise, no lifts may be made on other load lines while personnel are hoisted, except in pile driving.",
+    "section_ids": [
+     "29cfr1926.1431(k)(11)(i)",
+     "29cfr1926.1431(k)(11)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1431(k)(11)(ii)",
+     "text": "only where the load on the winch line does not exceed 500 pounds and does not exceed the rated capacity of the winch and platform"
+    },
+    "equipment": "personnel-platform",
+    "variant": "boom-attached platform with winch",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.22700779999999998,
+ "duration_ms": 54231,
+ "batch": "B14",
+ "prompt_chars": 30233
+}

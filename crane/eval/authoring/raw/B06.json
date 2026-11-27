@@ -1,0 +1,285 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how long do we gotta hang onto the monthly inspection sheets before we can toss em",
+    "style": "slang",
+    "category": "inspections",
+    "gold_answer": "The employer that does the monthly inspection must document the items checked and results, plus the inspector's name, signature and date. It must keep that record for at least three months.",
+    "section_ids": [
+     "29cfr1926.1412(e)(3)(i)",
+     "29cfr1926.1412(e)(3)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(e)(3)(ii)",
+     "text": "This document must be retained for a minimum of three months."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For the annual crane inspection, what has to go on the paperwork, how long is it kept, and who gets to see it?",
+    "style": "multi-part",
+    "category": "inspections",
+    "gold_answer": "The record must show the items checked, the results, and the name and signature of the inspector with the date. The employer that conducted the inspection must keep it for at least 12 months. During that time it must be available to everyone who does inspections under 1926.1412.",
+    "section_ids": [
+     "29cfr1926.1412(f)(7)",
+     "29cfr1926.1412(f)(7)(i)",
+     "29cfr1926.1412(f)(7)(ii)",
+     "29cfr1926.1412(k)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(f)(7)",
+     "text": "documented, maintained, and retained for a minimum of 12 months, by the employer that conducts the inspection"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "crane been sitting in the yard since june its october now do we need to do anything special before we fire it up and use it",
+    "style": "voice",
+    "category": "inspections",
+    "gold_answer": "Yes. Equipment idle for 3 months or more must be inspected by a qualified person before initial use, following the monthly inspection requirements.",
+    "section_ids": [
+     "29cfr1926.1412(h)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(h)",
+     "text": "Equipment that has been idle for 3 months or more must be inspected by a qualified person"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "does the shift inspection have to be all done befor we start pickin or can we finsh it durring the shift? and who has to do it",
+    "style": "typo",
+    "category": "inspections",
+    "gold_answer": "A competent person must start the visual inspection before each shift the equipment will be used. It may be finished before or during that shift.",
+    "section_ids": [
+     "29cfr1926.1412(d)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(d)(1)",
+     "text": "A competent person must begin a visual inspection prior to each shift the equipment will be used, which must be completed before or during that shift."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "do I have to boom down for the daily walkaround?",
+    "style": "vague",
+    "category": "inspections",
+    "gold_answer": "No. The shift inspection is visual, and booming down or taking components apart is not required. The exception is when the visual inspection or trial operation shows that further investigation needing those steps is necessary.",
+    "section_ids": [
+     "29cfr1926.1412(d)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(d)(1)",
+     "text": "Taking apart equipment components and booming down is not required as part of this inspection unless the results of the visual inspection or trial operation indicate"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We shock loaded the hook this morning when a rigging hang-up let go, and the LMI showed it probably went over the chart. The super wants to keep working since nothing looks bent. What do we have to do?",
+    "style": "scenario",
+    "category": "inspections",
+    "gold_answer": "This is severe service, so the employer must stop using the equipment. A qualified person must inspect for structural damage to decide whether it can still be used safely. They must also decide which annual/comprehensive (paragraph f) items need inspecting and inspect them. Any deficiency is handled under (f)(4)-(6): either out of service if it is a hazard, or monitored monthly.",
+    "section_ids": [
+     "29cfr1926.1412(g)",
+     "29cfr1926.1412(g)(1)",
+     "29cfr1926.1412(g)(2)",
+     "29cfr1926.1412(g)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(g)",
+     "text": "the employer must stop using the equipment and a qualified person must:"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether the event reached 'reasonable probability of damage' and which (f) items to check are judgment calls for the qualified person."
+   },
+   {
+    "question": "When a repair has been made to a crane's braking system and the manufacturer provides no applicable criteria for that repair, what is the qualified person required to do before the crane goes back into service?",
+    "style": "formal",
+    "category": "inspections",
+    "gold_answer": "The qualified person must decide whether a registered professional engineer is needed to develop criteria. If not, the qualified person develops the criteria; if so, an RPE develops them. The qualified person then checks the repair against those criteria and functionally tests the repaired parts and any affected components. The crane can't be used until the inspection shows the criteria are met.",
+    "section_ids": [
+     "29cfr1926.1412(b)(1)(ii)(A)",
+     "29cfr1926.1412(b)(1)(ii)(B)",
+     "29cfr1926.1412(b)(1)(iii)",
+     "29cfr1926.1412(b)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(b)(1)(ii)(A)",
+     "text": "If an RPE is not needed, the employer must ensure that the criteria are developed by the qualified person."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether an RPE is needed is left to the qualified person's judgment."
+   },
+   {
+    "question": "just finished pinning the lattice stick together on the crawler, who's gotta sign off before we make the first pick and what are they checking it against",
+    "style": "slang",
+    "category": "inspections",
+    "gold_answer": "When assembly is finished, a qualified person must inspect the crane to make sure it is configured to the manufacturer's equipment criteria. If no manufacturer criteria exist, the criteria must be developed by the qualified person or, when needed, an RPE. The crane can't be used until the inspection shows it meets the applicable criteria.",
+    "section_ids": [
+     "29cfr1926.1412(c)(1)",
+     "29cfr1926.1412(c)(2)(i)",
+     "29cfr1926.1412(c)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(c)(1)",
+     "text": "the equipment must be inspected by a qualified person to assure that it is configured in accordance with manufacturer equipment criteria"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We run a locomotive crane on a mainline track that's under FRA. Does our shift inspection have to cover the rails, rail clamps and the track bed?",
+    "style": "scenario",
+    "category": "inspections",
+    "gold_answer": "No. The shift-inspection items for rails, rail stops, rail clamps and supporting surfaces don't apply when the tracks are part of the general railroad system of transportation regulated by FRA under 49 CFR part 213. The same exclusion covers ground conditions for those tracks and their underlying support.",
+    "section_ids": [
+     "29cfr1926.1412(d)(1)(xiii)",
+     "29cfr1926.1412(d)(1)(x)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(d)(1)(xiii)",
+     "text": "does not apply to the inspection of rails, rail stops, rail clamps and supporting surfaces when the railroad tracks are part of the general railroad system of transportation"
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether a given track counts as part of the FRA-regulated general railroad system is a factual determination."
+   },
+   {
+    "question": "annual inspector found some wear that isn't dangerous yet. do we have to park the crane or what",
+    "style": "vague",
+    "category": "inspections",
+    "gold_answer": "The qualified person must decide right away whether the deficiency is a safety hazard. If it is not yet a hazard but needs watching, the employer must make sure it is checked in the monthly inspections. Only a deficiency judged a safety hazard requires taking the crane out of service until corrected, unless temporary alternative measures under 1926.1416(d) or 1926.1435(e) are used.",
+    "section_ids": [
+     "29cfr1926.1412(f)(4)",
+     "29cfr1926.1412(f)(5)",
+     "29cfr1926.1412(f)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(f)(6)",
+     "text": "the employer must ensure that the deficiency is checked in the monthly inspections."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "is cracked outrigger pads on the boom truck something the yearly inspection is supposed to catch",
+    "style": "voice",
+    "category": "inspections",
+    "gold_answer": "Yes. The annual/comprehensive inspection by a qualified person must check outrigger or stabilizer pads/floats for excessive wear or cracks.",
+    "section_ids": [
+     "29cfr1926.1412(f)(2)(xiv)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(f)(2)(xiv)",
+     "text": "Outrigger or stabilizer pads/floats for excessive wear or cracks."
+    },
+    "equipment": "boom-truck",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "On the truck crane annual, what are they looking for on the hydraulic cylinders, and how do they check the relief valves?",
+    "style": "multi-part",
+    "category": "inspections",
+    "gold_answer": "Cylinders are checked for: drifting from fluid leaking across the piston, leaks at rod seals and welded joints, scores/nicks/dents on rods, significant dents in the barrel, and loose or deformed rod eyes and connecting joints. Relief valves are checked for failure to reach correct pressure, and the manufacturer's pressure-check procedure must be followed if one exists.",
+    "section_ids": [
+     "29cfr1926.1412(f)(2)(xiii)",
+     "29cfr1926.1412(f)(2)(xiii)(A)",
+     "29cfr1926.1412(f)(2)(xii)(D)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(f)(2)(xii)(D)",
+     "text": "Relief valves: Failure to reach correct pressure (if there is a manufacturer procedure for checking pressure, it must be followed)."
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we bolted on an aftermarket load hook block setup that ups the capacity, approved and everything. can we just go to work with it",
+    "style": "slang",
+    "category": "inspections",
+    "gold_answer": "No. After a modification affecting safe operation or capacity, a qualified person must inspect the equipment before initial use. The inspection must confirm the work was done per the 1926.1434 approval and must include functional testing. The equipment can't be used until that inspection shows the approval was followed.",
+    "section_ids": [
+     "29cfr1926.1412(a)(1)",
+     "29cfr1926.1412(a)(1)(i)",
+     "29cfr1926.1412(a)(1)(ii)",
+     "29cfr1926.1412(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(a)(1)",
+     "text": "must be inspected by a qualified person after such modifications/additions have been completed, prior to initial use."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "manual says to inspect the hoist brake every week but osha only says monthly. which one do we go by",
+    "style": "typo",
+    "category": "inspections",
+    "gold_answer": "Follow the manufacturer. Any manufacturer inspection procedure related to safe operation, such as braking systems, that is more comprehensive or more frequent than 1926.1412 must be followed.",
+    "section_ids": [
+     "29cfr1926.1412(j)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1412(j)",
+     "text": "is more comprehensive or has a more frequent schedule of inspection than the requirements of this section must be followed."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1876918,
+ "duration_ms": 56368,
+ "batch": "B06",
+ "prompt_chars": 16385
+}

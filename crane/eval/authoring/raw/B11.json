@@ -1,0 +1,268 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "guys walking out on the stick to do some work, at what height do they gotta tie off? we're not putting the crane together or taking it apart, just normal work",
+    "style": "slang",
+    "category": "fall-protection",
+    "gold_answer": "For work other than assembly/disassembly, the employer must provide fall protection, and make sure it is used, for employees on a walking/working surface with an unprotected side or edge more than 6 feet above a lower level. This covers a work station on any part of the equipment, including any type of boom. It does not apply when the employee is at or near the draw-works while the equipment is running, in the cab, or on the deck.",
+    "section_ids": [
+     "29cfr1926.1423(e)",
+     "29cfr1926.1423(e)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(e)",
+     "text": "with an unprotected side or edge more than 6 feet above a lower level"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What is the fall protection trigger height for employees doing assembly or disassembly work on a crane, and are there any locations on the machine where it does not apply?",
+    "style": "formal",
+    "category": "fall-protection",
+    "gold_answer": "During assembly/disassembly, fall protection is required when an employee is on a walking/working surface with an unprotected side or edge more than 15 feet above a lower level. It does not apply when the employee is at or near the draw-works while the equipment is running, in the cab, or on the deck.",
+    "section_ids": [
+     "29cfr1926.1423(f)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(f)",
+     "text": "unprotected side or edge more than 15 feet above a lower level, except when the employee is at or near draw-works"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "lattice boom is layed down flat on blocking and a guy needs to walk from one end to the other, fall is maybe 10 ft. does he need fall protection just walking it",
+    "style": "voice",
+    "category": "fall-protection",
+    "gold_answer": "On a horizontal lattice boom, fall protection for moving point-to-point is required only when the fall distance is 15 feet or more, so a 10-foot fall does not trigger it while he is just walking. If he stops to work at a work station on the boom, fall protection is required above 6 feet. Non-lattice booms, and lattice booms that are not horizontal, need fall protection above 6 feet even when just moving point-to-point. All of this applies to non-assembly/disassembly work.",
+    "section_ids": [
+     "29cfr1926.1423(e)(1)(iii)",
+     "29cfr1926.1423(e)(2)",
+     "29cfr1926.1423(e)(1)(i)",
+     "29cfr1926.1423(e)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(e)(1)(iii)",
+     "text": "On horizontal lattice booms where the fall distance is 15 feet or more."
+    },
+    "equipment": null,
+    "variant": "horizontal lattice boom",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The answer assumes non-assembly/disassembly work. Whether he is 'moving' or 'at a work station' is a call made in the field."
+   },
+   {
+    "question": "on a tower crane do the tie off heights change when we're jumping/climbing the mast vs regular operations?",
+    "style": "slang",
+    "category": "tower-cranes",
+    "gold_answer": "Yes. For erecting, climbing and dismantling a tower crane, fall protection is required above 15 feet. For other work it is required above 6 feet, except at or near the draw-works while the equipment is running, in the cab, or on the deck.",
+    "section_ids": [
+     "29cfr1926.1423(h)(1)",
+     "29cfr1926.1423(h)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(h)(2)",
+     "text": "For erecting, climbing, and dismantling work, the employer must provide and ensure the use of fall protection equipment for employees who are on a walking/working surface with an unprotected side or edge more than 15 feet"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two questions about boom walkways: which lattice booms are required to have them and how wide do they have to be? And can we put handrails on them, and if so how tall can they be?",
+    "style": "multi-part",
+    "category": "fall-protection",
+    "gold_answer": "Lattice-boom equipment manufactured after November 8, 2011 must have boom walkways if the boom's vertical profile (chord centerline to chord centerline) is 6 feet or more. The walkways must be at least 12 inches wide. Guardrails are not required. They are prohibited if pendant ropes or bars could snag them, or if they are the removable type. Where they are allowed, they can be no more than 45 inches high.",
+    "section_ids": [
+     "29cfr1926.1423(b)(1)",
+     "29cfr1926.1423(b)(2)(i)",
+     "29cfr1926.1423(b)(2)(ii)(B)",
+     "29cfr1926.1423(b)(2)(ii)(D)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(b)(1)",
+     "text": "must be equipped with walkways on the boom(s) if the vertical profile of the boom (from cord centerline to cord centerline) is 6 or more feet"
+    },
+    "equipment": null,
+    "variant": "lattice boom",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can the ironworker clip his lanyard to the crane hook instead of finding a beam what has to happen for that to be ok",
+    "style": "voice",
+    "category": "fall-protection",
+    "gold_answer": "A personal fall arrest system may be anchored to the hook or load line only if all three conditions are met. First, a qualified person has determined that the set-up and rated capacity (including the hook, load line and rigging) meet or exceed the 1926.502(d)(15) criteria. Second, the operator is at the work site and has been told the crane is being used this way. Third, no load is suspended from the load line.",
+    "section_ids": [
+     "29cfr1926.1423(j)(1)",
+     "29cfr1926.1423(j)(2)",
+     "29cfr1926.1423(j)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(j)(3)",
+     "text": "No load is suspended from the load line when the personal fall arrest system is anchored to the crane/derrick's hook (or other part of the load line)."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "new tower crane going up, what does the access between the ground, cab, machinery deck and mast have to have? any standards it has to meet",
+    "style": "vague",
+    "category": "tower-cranes",
+    "gold_answer": "Tower cranes manufactured after November 8, 2011 must have safe access and egress between the ground and the cab, machinery platforms and tower (mast), using devices such as steps, handholds, ladders and guardrails/railings/grabrails. These devices must meet ISO 11660-1:2008(E) and ISO 11660-3:2008(E), or SAE J185 (May 2003), except where infeasible. Walking/stepping surfaces must be slip-resistant.",
+    "section_ids": [
+     "29cfr1926.1423(c)(4)",
+     "29cfr1926.1423(c)(4)(i)",
+     "29cfr1926.1423(c)(4)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(c)(4)(i)",
+     "text": "must meet the criteria of ISO 11660-1:2008(E) (incorporated by reference, see § 1926.6) and ISO 11660-3:2008(E) (incorporated by reference, see § 1926.6) or SAE J185 (May 2003)"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "do we hav to barricade the swing radius on the cherry picker? site is real tight no room for cones or tape whats the alternitive",
+    "style": "typo",
+    "category": "work-area-control",
+    "gold_answer": "Yes. Where the rotating superstructure creates a struck-by or pinch/crush hazard in accessible areas, the employer must put up and maintain control lines, warning lines, railings or similar barriers to mark the hazard area. If the employer can show that barriers are not feasible either on the ground or on the equipment, the area must instead be clearly marked with warning signs (such as 'Danger—Swing/Crush Zone') plus high-visibility markings on the equipment. Employees must be trained on what those markings mean.",
+    "section_ids": [
+     "29cfr1926.1424(a)(1)",
+     "29cfr1926.1424(a)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1424(a)(2)(ii)",
+     "text": "Erect and maintain control lines, warning lines, railings or similar barriers to mark the boundaries of the hazard areas."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether barriers are truly infeasible on both the ground and the equipment is a judgment the employer has to demonstrate."
+   },
+   {
+    "question": "I'm the operator and I saw the oiler duck in behind the counterweight where I can't see him. Then I get a signal to swing. Can I swing?",
+    "style": "scenario",
+    "category": "work-area-control",
+    "gold_answer": "No. If the operator knows an employee went into the swing/crush hazard area, the operator must not rotate the superstructure until told, through a pre-arranged system of communication, that the employee is in a safe position. Before going out of the operator's view, the employee (or someone he instructs) must make sure the operator is informed.",
+    "section_ids": [
+     "29cfr1926.1424(a)(3)(ii)",
+     "29cfr1926.1424(a)(3)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1424(a)(3)(ii)",
+     "text": "the operator must not rotate the superstructure until the operator is informed in accordance with a pre-arranged system of communication that the employee is in a safe position"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we're setting wood trusses and the guys are under the load hooking up. do we need latched hooks or can we use J hooks, and who has to rig it",
+    "style": "slang",
+    "category": "work-area-control",
+    "gold_answer": "When employees are in the fall zone hooking, unhooking or guiding a load, or making the initial connection, all of the following apply. The load must be rigged to prevent unintentional displacement. Hooks with self-closing latches (or equivalent) must be used, but J hooks are allowed for setting wooden trusses. The materials must be rigged by a qualified rigger.",
+    "section_ids": [
+     "29cfr1926.1425(c)(1)",
+     "29cfr1926.1425(c)(2)",
+     "29cfr1926.1425(c)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1425(c)(2)",
+     "text": "Exception: “J” hooks are permitted to be used for setting wooden trusses."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "tilting up concrete wall panels, who is allowed to be near the panel while it's being raised? can anyone stand under it?",
+    "style": "vague",
+    "category": "work-area-control",
+    "gold_answer": "During a tilt-up or tilt-down, no employee may be directly under the load. Only employees essential to the operation may be in the fall zone: those physically guiding the load, closely monitoring and giving instructions on its movement, or attaching/detaching it, and only where the employer can show it is infeasible to do that from outside the fall zone. Boom free fall is prohibited with anyone in the fall zone, and load line free fall is prohibited with anyone directly under the load.",
+    "section_ids": [
+     "29cfr1926.1425(e)(1)",
+     "29cfr1926.1425(e)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1425(e)(1)",
+     "text": "No employee must be directly under the load."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether working from outside the fall zone is 'infeasible' depends on the employer's showing and site conditions."
+   },
+   {
+    "question": "We run a live boom crane on a barge. Today the load is going over a cofferdam and there's a crew working in the fall zone. Is free fall of the boom allowed?",
+    "style": "scenario",
+    "category": "floating-cranes",
+    "gold_answer": "No. A floating crane, or a land crane on a barge, is one of the cases where a live boom is allowed, but only when none of the prohibited circumstances are present. A load over a cofferdam with employees in the fall zone of the boom or load is prohibited, so boom free fall can't be used.",
+    "section_ids": [
+     "29cfr1926.1426(a)(2)(ii)",
+     "29cfr1926.1426(a)(1)(v)",
+     "29cfr1926.1426(a)(1)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1426(a)(1)(v)",
+     "text": "The load is over a cofferdam, except where there are no employees in the fall zone of the boom or the load."
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "lowering a load down an empty shaft with no one in it, can i free fall the load line? and is it different for the boom",
+    "style": "voice",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "No. Load line free fall is prohibited whenever the load is over a shaft, with no exception for an empty shaft, so controlled load lowering is required. For a live boom, the shaft prohibition does not apply when no employees are in the shaft. Even then, a live boom is allowed only if no other prohibited circumstance is present and the equipment was made before October 31, 1984, or is a floating crane or a land crane on a vessel.",
+    "section_ids": [
+     "29cfr1926.1426(d)(4)",
+     "29cfr1926.1426(a)(1)(iv)",
+     "29cfr1926.1426(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1426(a)(1)(iv)",
+     "text": "The load is over a shaft, except where there are no employees in the shaft."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.19470780000000001,
+ "duration_ms": 58511,
+ "batch": "B11",
+ "prompt_chars": 16856
+}
