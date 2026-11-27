@@ -23,3 +23,4 @@ Grounding rules (apply to everything you write):
 - "Critical lift" is not defined in the given federal rules; never claim it is.
 - Do not name manufacturers, brands, companies or people. Do not claim or imply any affiliation with, or endorsement by, OSHA or any certification body.
 - US customary units. Plain American English. Concise, direct, complete. No filler, no hype, no "In conclusion", no motivational lines.
+- Write as the reference itself. Never mention the text you were given ("the supplied rule", "the given text", "this paragraph alone", "the text used here"). Where the federal rules set nothing on a point, say so in plain words ("The federal rules set no minimum sling angle.") and then give the accepted practice, labeled as practice.
