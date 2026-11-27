@@ -20,7 +20,7 @@ HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE.parent))
 
 from harvest_eval import metrics  # noqa: E402
-from harvest_eval.backends import HarvestBackend, split_claims  # noqa: E402
+from harvest_eval.backends import HarvestBackend, OpenAIBackend, split_claims  # noqa: E402
 from harvest_eval.cli import main  # noqa: E402
 from harvest_eval.corpus import Corpus  # noqa: E402
 from harvest_eval.sections import Normalizer, base, cites_in_text, match  # noqa: E402
@@ -208,6 +208,38 @@ class _OpenAIStub(http.server.BaseHTTPRequestHandler):
 
     def log_message(self, *a):
         pass
+
+
+class _ThinkingStub(http.server.BaseHTTPRequestHandler):
+    """A reasoning model that spends the whole budget thinking: empty content."""
+
+    def do_POST(self):  # noqa: N802
+        self.rfile.read(int(self.headers["Content-Length"]))
+        body = json.dumps({"choices": [{"finish_reason": "length",
+                                        "message": {"content": "", "reasoning_content": "Let me think"}}]}).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, *a):
+        pass
+
+
+class EmptyAnswer(unittest.TestCase):
+    def test_empty_content_is_an_error_not_an_answer(self):
+        srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), _ThinkingStub)
+        threading.Thread(target=srv.serve_forever, daemon=True).start()
+        try:
+            b = OpenAIBackend({"name": "t", "endpoint": f"http://127.0.0.1:{srv.server_port}/v1", "model": "m"},
+                              Normalizer())
+            r = b.ask({"question": "how far from a 50 kV line?"})
+        finally:
+            srv.shutdown()
+        self.assertFalse(r.ok)
+        self.assertIn("finish_reason=length", r.error)
+        self.assertIn("12 chars of reasoning_content", r.error)
 
 
 class EndToEnd(unittest.TestCase):

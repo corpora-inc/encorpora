@@ -24,6 +24,8 @@ python3 -m venv .venv && .venv/bin/pip install pyyaml
 | `tools/build_set.py` | Deterministic verification, review application, dedupe, ids. |
 | `tools/overrides.json` | Every edit made after the independent check, each with its reason. |
 | `eval.yaml` | Harness config: backends, baselines, judge. |
+| `results/<date>-<name>/` | Measured runs: config, every response, report, findings (`README.md`). |
+| `tools/decline_analysis.py` | Splits a harvest backend's declines into gate declines and retrieval misses. |
 
 ## Sources
 

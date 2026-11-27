@@ -1,0 +1,75 @@
+# Baseline run, 2026-11-27. Paths are relative to this file.
+# harvest runs on the lab machine (DGX Spark, aarch64) through lab/harvest-remote.sh;
+# the open-weight baselines are llama-server on the same machine; the judge runs on the Mac.
+set: ../../heldout-v1.jsonl
+reference_sections: ../../sources/sections-2026-11-24.jsonl
+
+match:
+  aliases:                         # the pipeline's appendix and table spelling -> the set's
+    - {pattern: "^29cfr1926\\.cc\\.app", replace: "29cfr1926-subpartCC-app"}
+    - {pattern: "-table-", replace: "-table"}
+
+backends:
+  - name: harvest-model-off
+    kind: harvest
+    binary: harvest
+    pack: pack                     # overridden by --pack
+    llm: "off"
+    role: operator
+
+  - name: frontier-alone
+    kind: claude
+    model: sonnet
+    timeout_s: 300
+    system_prompt: &baseline >-
+      You are a safety assistant for US crane operators, riggers, signal persons and inspectors.
+      Answer from the US OSHA crane regulations: 29 CFR 1926 Subpart CC (cranes and derricks in
+      construction, with appendices) and 29 CFR 1910.179, 1910.180 and 1910.184. Answer concisely
+      and exactly, with the numbers and conditions that apply, and cite the section and paragraph
+      you rely on, like §1926.1408(a)(2). If the question is outside these regulations or needs
+      information you do not have, such as a manufacturer's procedure, a specific crane's load
+      chart, another standard's text or legal advice, say that you cannot answer it from these
+      regulations instead of guessing.
+
+  # On-device-class US open-weight models alone, no retrieval: llama-server (llama.cpp
+  # build-cuda, GB10) on the lab machine, reached through an ssh tunnel. Thinking off.
+  - name: gemma4-e4b-alone
+    kind: openai
+    endpoint: http://127.0.0.1:18101/v1
+    model: gemma-4-E4B_q4_0-it.gguf   # google/gemma-4-E4B-it-qat-q4_0-gguf
+    max_tokens: 800
+    timeout_s: 300
+    extra_body: {chat_template_kwargs: {enable_thinking: false}}
+    system_prompt: *baseline
+
+  - name: granite42-3b-alone
+    kind: openai
+    endpoint: http://127.0.0.1:18102/v1
+    model: granite-4.2-3b-Q4_K_M.gguf  # ibm-granite/granite-4.2-3b-GGUF
+    max_tokens: 800
+    timeout_s: 300
+    extra_body: {chat_template_kwargs: {enable_thinking: false}}
+    system_prompt: *baseline
+
+  - name: gpt-oss-20b-alone
+    kind: openai
+    endpoint: http://127.0.0.1:18103/v1
+    model: gpt-oss-20b-MXFP4.gguf      # ggml-org/gpt-oss-20b-GGUF
+    max_tokens: 2000
+    timeout_s: 600
+    extra_body: {chat_template_kwargs: {reasoning_effort: low}}
+    system_prompt: *baseline
+
+compare:
+  - [harvest-model-off, frontier-alone]
+  - [harvest-model-off, gemma4-e4b-alone]
+  - [harvest-model-off, granite42-3b-alone]
+  - [harvest-model-off, gpt-oss-20b-alone]
+
+judge:
+  model: opus
+  agreement_model: sonnet
+  agreement_sample: 0.15
+  cache: .judge-cache
+  per_call: 6
+  jobs: 3
