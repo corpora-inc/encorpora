@@ -430,3 +430,31 @@ fn a_served_embedder_gives_the_same_dense_half_as_in_process() {
         2
     );
 }
+
+#[test]
+fn show_prints_verified_content() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("fx");
+    let d = dir.to_str().unwrap();
+    let (_, out, _) = harvest(&["fixture", d, "--json"]);
+    let key = serde_json::from_str::<Value>(&out).unwrap()["pubkey"]
+        .as_str()
+        .unwrap()
+        .to_string();
+    let show = |args: &[&str]| -> Value {
+        let mut a = vec!["show", d];
+        a.extend_from_slice(args);
+        a.extend_from_slice(&["--pubkey", &key]);
+        let (code, out, err) = harvest(&a);
+        assert_eq!(code, 0, "{err}");
+        serde_json::from_str(&out).unwrap()
+    };
+    assert_eq!(show(&["info"])["pack_id"], "fixture");
+    assert_eq!(show(&["questions"])[0]["q_id"], "q-clear-1");
+    assert_eq!(show(&["procedures"])[0]["steps"][0]["ord"], 1);
+    let a = show(&["answers", "--id", "a-periodic-op", "--role", "trainee"]);
+    assert_eq!(a["answer"]["answer_id"], "a-periodic-tr");
+    assert_eq!(harvest(&["show", d, "everything", "--pubkey", &key]).0, 2);
+    // Unverified packs are not shown.
+    assert_ne!(harvest(&["show", d, "info"]).0, 0);
+}

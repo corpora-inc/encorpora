@@ -98,8 +98,10 @@ pub fn check(pack: &Pack, body: &[Segment], opts: CheckOptions) -> Result<(Vec<S
             Segment::Diagram { diagram_id } => {
                 let exists = {
                     let conn = pack.conn();
-                    let mut stmt =
-                        conn.prepare_cached("SELECT 1 FROM diagram WHERE diagram_id = ?1")?;
+                    let mut stmt = conn.prepare_cached(
+                        "SELECT 1 FROM diagram WHERE diagram_id = ?1
+                         AND prov_id IN (SELECT prov_id FROM provenance WHERE verdict = 'pass')",
+                    )?;
                     stmt.query_row([diagram_id], |_| Ok(()))
                         .optional()?
                         .is_some()

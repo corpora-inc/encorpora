@@ -22,6 +22,8 @@ const USAGE: &str = "usage:
   harvest install <root> <pack-or-delta-dir> [--pubkey KEY] [--json]   # full or delta, verified, atomic
   harvest delta   <base-dir> <target-dir> <out-dir> [--pubkey KEY] [--json]
                   # signs with $HARVEST_SIGNING_KEY (base64 ed25519 seed) when set, else writes it unsigned
+  harvest show    <pack-dir> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters
+                  [--id ID] [--role operator] [--pubkey KEY]   # verified content as JSON (what the app reads)
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -103,6 +105,7 @@ fn main() -> ExitCode {
         "audit" => audit(&args),
         "outbox" => outbox(&args),
         "fixture" => fixture(&args),
+        "show" => show(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -690,6 +693,54 @@ fn citation(pack: &Pack, section_id: &str) -> Result<String, CliError> {
         .section(section_id)?
         .map(|s| s.citation)
         .unwrap_or_else(|| section_id.to_string()))
+}
+
+fn show(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["pubkey", "json", "id", "role"])?;
+    let dir = pack_dir(args)?;
+    let what = args
+        .positional
+        .get(1)
+        .ok_or_else(|| CliError::Usage("missing what to show".into()))?;
+    let pack = Pack::open(&dir, &keys(args)?)?;
+    let role = Role::parse(args.get("role").unwrap_or("operator"))?;
+    let id = args.get("id");
+    let need_id = || id.ok_or_else(|| CliError::Usage(format!("{what} needs --id")));
+    let to = |v: Result<serde_json::Value, serde_json::Error>| {
+        v.map_err(|e| CliError::Engine(Error::from(e)))
+    };
+    let out = match (what.as_str(), id) {
+        ("info", _) => to(serde_json::to_value(pack.info()?))?,
+        ("sections", None) => to(serde_json::to_value(pack.sections()?))?,
+        ("sections", Some(i)) => to(serde_json::to_value(pack.section(i)?))?,
+        ("children", _) => to(serde_json::to_value(pack.children(need_id()?)?))?,
+        ("topics", _) => to(serde_json::to_value(pack.topics()?))?,
+        ("skills", _) => to(serde_json::to_value(pack.skills()?))?,
+        ("lessons", None) => to(serde_json::to_value(pack.lessons()?))?,
+        ("lessons", Some(i)) => to(serde_json::to_value(pack.lesson(i)?))?,
+        ("terms", _) => to(serde_json::to_value(pack.terms()?))?,
+        ("diagrams", None) => to(serde_json::to_value(pack.diagrams()?))?,
+        ("diagrams", Some(i)) => to(serde_json::to_value(pack.diagram(i)?))?,
+        ("questions", None) => to(serde_json::to_value(pack.questions()?))?,
+        ("questions", Some(i)) => to(serde_json::to_value(pack.question(i)?))?,
+        ("procedures", None) => to(serde_json::to_value(pack.procedures()?))?,
+        ("procedures", Some(i)) => to(serde_json::to_value(
+            pack.procedures()?
+                .into_iter()
+                .find(|p| p.procedure.proc_id == i),
+        ))?,
+        ("answers", None) => to(serde_json::to_value(pack.answers()?))?,
+        ("answers", Some(i)) => to(serde_json::to_value(
+            pack.answer_for(i, role)?
+                .map(|(a, check)| json!({"answer": a, "check": check})),
+        ))?,
+        ("exams", _) => pack.exams()?,
+        ("prereqs", _) => to(serde_json::to_value(pack.prereqs()?))?,
+        ("starters", _) => to(serde_json::to_value(pack.starters(role)?))?,
+        (other, _) => return Err(CliError::Usage(format!("cannot show {other:?}"))),
+    };
+    println!("{}", serde_json::to_string(&out).map_err(Error::from)?);
+    Ok(())
 }
 
 fn fixture(args: &Args) -> Result<(), CliError> {

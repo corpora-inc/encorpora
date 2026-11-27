@@ -121,6 +121,7 @@ pub trait Llm: Send + Sync {
 | `audit` | Append-only, hash-chained `audit` table (triggers refuse UPDATE/DELETE); `verify_chain` (read-only) recomputes every link and reports modes, the bake hit rate and `head_hash`; anchor `(entries, head_hash)` outside the database to detect truncation. |
 | `grade` | Rubric grading: keyword rules with the model off. With it on, the model judges and must quote the learner's own words as evidence. |
 | `notes` | Field note → `{component, condition, action}`. Keywords with the model off; model output kept only when grounded in the vocabulary or the note. |
+| `content` | Read API for everything the app renders: info, sources, sections and children, xrefs, topics, skills, lessons (checked), terms, diagrams, questions (validated), procedures with steps, answer cache with role variants (checked), exams, prereqs and starters from `pack_meta`. Only rows whose provenance passed. |
 | `records` | Device record store (`records.db`): procedure runs and step results validated against the pack's `check_kind`; a failed step returns the pack's deficiency guidance with its citation (quote verified verbatim) and is queued at once; declined questions queued as misses. |
 | `crypt` | Encryption at rest for `records.db` (XChaCha20-Poly1305, key from the platform keystore via `Records::open_with_key`): step values, notes, photo refs, structured notes, outbox payloads and audit entries are sealed and bound to their row; ids, statuses and times stay clear. Wrong or missing key is an error; the audit chain verifies without the key. |
 | `sync` | Outbox: ordered, idempotent uploads marked done only on a receipt that echoes the payload hash; `Transport` trait (the app's HTTPS), `DirTransport` for a removable drive or shared folder. |
@@ -193,6 +194,7 @@ harvest audit   <records-db> [--records-key FILE] [--json]   # verify the chain;
 harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # upload queue; --to flushes it into a folder
 harvest install <root> <pack-or-delta-dir> [--json]          # verified, atomic; full or delta
 harvest delta   <base-dir> <target-dir> <out-dir> [--json]    # signs with $HARVEST_SIGNING_KEY when set
+harvest show    <pack-dir> <what> [--id ID] [--role R]        # verified content as JSON (what the app reads)
 harvest fixture <dir>
 ```
 

@@ -367,7 +367,12 @@ impl Pack {
     pub fn procedure(&self, id: &str) -> Result<Option<Procedure>> {
         let conn = self.conn();
         let mut stmt = conn.prepare_cached(
-            "SELECT proc_id, title, kind, summary, roles FROM procedure WHERE proc_id = ?1",
+            // All or nothing: a procedure shows only when it and every one
+            // of its steps passed verification (a missing step is unsafe).
+            "SELECT proc_id, title, kind, summary, roles FROM procedure p WHERE proc_id = ?1
+             AND prov_id IN (SELECT prov_id FROM provenance WHERE verdict = 'pass')
+             AND NOT EXISTS (SELECT 1 FROM proc_step s WHERE s.proc_id = p.proc_id
+                 AND s.prov_id NOT IN (SELECT prov_id FROM provenance WHERE verdict = 'pass'))",
         )?;
         let row: Option<(String, String, String, String, String)> = stmt
             .query_row([id], |r| {
@@ -390,11 +395,12 @@ impl Pack {
     /// The steps of a procedure, in order. A malformed JSON column is an
     /// error, so a broken step can never be shown.
     pub fn proc_steps(&self, proc_id: &str) -> Result<Vec<ProcStep>> {
-        type Row = (i64, String, String, String, String, Option<String>);
+        type Row = (i64, String, String, String, String, Option<String>, bool);
         let rows: Vec<Row> = {
             let conn = self.conn();
             let mut stmt = conn.prepare_cached(
-                "SELECT ord, text, detail, check_kind, section_ids, deficiency
+                "SELECT ord, text, detail, check_kind, section_ids, deficiency,
+                        prov_id IN (SELECT prov_id FROM provenance WHERE verdict = 'pass')
                  FROM proc_step WHERE proc_id = ?1 ORDER BY ord",
             )?;
             stmt.query_map([proc_id], |r| {
@@ -405,29 +411,40 @@ impl Pack {
                     r.get(3)?,
                     r.get(4)?,
                     r.get(5)?,
+                    r.get(6)?,
                 ))
             })?
             .collect::<rusqlite::Result<Vec<_>>>()?
         };
+        // Never a procedure with a step missing: one unverified step makes
+        // the whole procedure unavailable.
+        if let Some(r) = rows.iter().find(|r| !r.6) {
+            return Err(Error::Pack(format!(
+                "procedure {proc_id}: step {} did not pass verification",
+                r.0
+            )));
+        }
         rows.into_iter()
-            .map(|(ord, text, detail, check_kind, section_ids, deficiency)| {
-                let bad = |what: &str, e: serde_json::Error| {
-                    Error::Pack(format!("proc_step {proc_id}#{ord}: {what}: {e}"))
-                };
-                Ok(ProcStep {
-                    proc_id: proc_id.to_string(),
-                    ord,
-                    text,
-                    detail: serde_json::from_str(&detail).map_err(|e| bad("detail", e))?,
-                    check_kind,
-                    section_ids: serde_json::from_str(&section_ids)
-                        .map_err(|e| bad("section_ids", e))?,
-                    deficiency: deficiency
-                        .filter(|d| !d.trim().is_empty() && d.trim() != "null")
-                        .map(|d| serde_json::from_str(&d).map_err(|e| bad("deficiency", e)))
-                        .transpose()?,
-                })
-            })
+            .map(
+                |(ord, text, detail, check_kind, section_ids, deficiency, _)| {
+                    let bad = |what: &str, e: serde_json::Error| {
+                        Error::Pack(format!("proc_step {proc_id}#{ord}: {what}: {e}"))
+                    };
+                    Ok(ProcStep {
+                        proc_id: proc_id.to_string(),
+                        ord,
+                        text,
+                        detail: serde_json::from_str(&detail).map_err(|e| bad("detail", e))?,
+                        check_kind,
+                        section_ids: serde_json::from_str(&section_ids)
+                            .map_err(|e| bad("section_ids", e))?,
+                        deficiency: deficiency
+                            .filter(|d| !d.trim().is_empty() && d.trim() != "null")
+                            .map(|d| serde_json::from_str(&d).map_err(|e| bad("deficiency", e)))
+                            .transpose()?,
+                    })
+                },
+            )
             .collect()
     }
 
@@ -448,7 +465,8 @@ impl Pack {
         let row: Option<(String, String, String, String, Option<String>)> = {
             let conn = self.conn();
             let mut stmt = conn.prepare_cached(
-                "SELECT answer_id, question, body, section_ids, level FROM answer WHERE answer_id = ?1",
+                "SELECT answer_id, question, body, section_ids, level FROM answer WHERE answer_id = ?1
+                 AND prov_id IN (SELECT prov_id FROM provenance WHERE verdict = 'pass')",
             )?;
             stmt.query_row([id], |r| {
                 Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?))

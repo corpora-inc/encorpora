@@ -170,6 +170,96 @@ impl Run {
     }
 }
 
+/// The run report format id.
+pub const RUN_REPORT_FORMAT: &str = "harvest-run/1";
+
+/// A run as it is exported and uploaded (`harvest-run/1`).
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct RunReport {
+    pub format: String,
+    pub pack_id: String,
+    pub pack_version: String,
+    pub run_id: String,
+    pub proc_id: String,
+    /// The procedure's title, when the pack was at hand.
+    pub title: Option<String>,
+    pub role: String,
+    pub equip_id: Option<String>,
+    pub asset: Option<String>,
+    /// `open` | `complete` | `abandoned`.
+    pub status: String,
+    /// True when the steps come from the pack (texts, sections, every step
+    /// listed); false when the procedure changed and only the records are
+    /// known.
+    pub steps_known: bool,
+    pub started_at: String,
+    pub finished_at: Option<String>,
+    pub steps: Vec<ReportStep>,
+}
+
+/// One step of a report: the pack's step (when known) and what was recorded
+/// (`outcome` is null when the step was not recorded).
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct ReportStep {
+    pub ord: i64,
+    pub text: Option<String>,
+    pub section_ids: Vec<String>,
+    pub check_kind: Option<String>,
+    pub outcome: Option<Outcome>,
+    pub value: Option<String>,
+    pub note: Option<String>,
+    pub photos: Vec<PhotoRef>,
+    pub structured: Option<serde_json::Value>,
+    pub deficiency: bool,
+    pub recorded_at: Option<String>,
+}
+
+impl RunReport {
+    fn build(run: &Run, steps: Option<(&Pack, &Vec<ProcStep>)>) -> Result<Self> {
+        let known = steps.is_some();
+        let recorded = |ord: i64| run.steps.iter().find(|s| s.ord == ord);
+        let from = |ord: i64, step: Option<&ProcStep>| {
+            let r = recorded(ord);
+            ReportStep {
+                ord,
+                text: step.map(|s| s.text.clone()),
+                section_ids: step.map(|s| s.section_ids.clone()).unwrap_or_default(),
+                check_kind: step.map(|s| s.check_kind.clone()),
+                outcome: r.map(|r| r.input.outcome),
+                value: r.and_then(|r| r.input.value.clone()),
+                note: r.and_then(|r| r.input.note.clone()),
+                photos: r.map(|r| r.input.photos.clone()).unwrap_or_default(),
+                structured: r.and_then(|r| r.input.structured.clone()),
+                deficiency: r.is_some_and(|r| r.deficiency),
+                recorded_at: r.map(|r| r.recorded_at.clone()),
+            }
+        };
+        let (title, steps) = match steps {
+            Some((pack, steps)) => (
+                pack.procedure(&run.proc_id)?.map(|p| p.title),
+                steps.iter().map(|s| from(s.ord, Some(s))).collect(),
+            ),
+            None => (None, run.steps.iter().map(|s| from(s.ord, None)).collect()),
+        };
+        Ok(Self {
+            format: RUN_REPORT_FORMAT.into(),
+            pack_id: run.pack_id.clone(),
+            pack_version: run.pack_version.clone(),
+            run_id: run.run_id.clone(),
+            proc_id: run.proc_id.clone(),
+            title,
+            role: run.role.clone(),
+            equip_id: run.equip_id.clone(),
+            asset: run.asset.clone(),
+            status: run.status.clone(),
+            steps_known: known,
+            started_at: run.started_at.clone(),
+            finished_at: run.finished_at.clone(),
+            steps,
+        })
+    }
+}
+
 /// Who is running a procedure, on what.
 #[derive(Debug, Clone, Default)]
 pub struct StartRun {
@@ -524,35 +614,57 @@ impl Records {
                 "steps not recorded yet: {missing:?}"
             )));
         }
-        let run = self.close(&tx, run, "complete")?;
+        let run = self.close(&tx, run, "complete", Some((pack, &steps)))?;
         tx.commit()?;
         Ok(run)
     }
 
     /// Stop a run without finishing it. What was recorded is still queued.
-    pub fn abandon_run(&self, run_id: &str) -> Result<Run> {
+    /// It works even after a pack update changed the procedure (the report
+    /// then carries the records without the step texts).
+    pub fn abandon_run(&self, pack: &Pack, run_id: &str) -> Result<Run> {
         let tx = self.write_tx()?;
         let run = self.open_run(run_id)?;
-        let run = self.close(&tx, run, "abandoned")?;
+        let steps = self.steps_for(&run, pack).ok();
+        let run = self.close(&tx, run, "abandoned", steps.as_ref().map(|s| (pack, s)))?;
         tx.commit()?;
         Ok(run)
     }
 
-    fn close(&self, tx: &Connection, mut run: Run, status: &str) -> Result<Run> {
+    fn close(
+        &self,
+        tx: &Connection,
+        mut run: Run,
+        status: &str,
+        steps: Option<(&Pack, &Vec<ProcStep>)>,
+    ) -> Result<Run> {
         run.status = status.to_string();
         run.finished_at = Some(now_rfc3339());
         tx.execute(
             "UPDATE proc_run SET status = ?2, finished_at = ?3 WHERE run_id = ?1",
             params![run.run_id, status, run.finished_at],
         )?;
+        let report = RunReport::build(&run, steps)?;
         sync::enqueue_ref(
             tx,
             self.key(),
             "run",
             Some(&run.run_id),
-            &serde_json::to_value(&run)?,
+            &serde_json::to_value(&report)?,
         )?;
         Ok(run)
+    }
+
+    /// The run as a report (`harvest-run/1`): the format of the queued `run`
+    /// upload and of the app's export. With the pack the run began on (or
+    /// one whose procedure steps are unchanged), every step carries its text,
+    /// sections and check kind, recorded or not.
+    pub fn report(&self, pack: &Pack, run_id: &str) -> Result<RunReport> {
+        let run = self
+            .run(run_id)?
+            .ok_or_else(|| Error::Invalid(format!("no run {run_id:?}")))?;
+        let steps = self.steps_for(&run, pack).ok();
+        RunReport::build(&run, steps.as_ref().map(|s| (pack, s)))
     }
 
     /// `BEGIN IMMEDIATE` on the store's connection.
