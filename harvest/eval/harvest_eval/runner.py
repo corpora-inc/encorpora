@@ -264,7 +264,7 @@ def collect(backend, items: list[dict], path: Path, fingerprint: str, jobs: int)
     return done
 
 
-PER_CITE = 6000
+FULL_LIMIT = 40000
 _WORD = re.compile(r"[a-z0-9]+(?:[.,][0-9]+)*")
 _STOP = frozenset("the and for with that this these those from not any each when than then which who what "
                   "are was were has have had its into onto upon such may must shall will would can".split())
@@ -274,31 +274,42 @@ def _terms(text: str) -> set[str]:
     return {w for w in _WORD.findall(text.lower()) if w[0].isdigit() or (len(w) > 2 and w not in _STOP)}
 
 
-def cited_text(corpus: Corpus | None, cites: list[str], limit: int = 16000, claims: list[str] | None = None) -> str:
+_SENT = re.compile(r"(?<=[.;])\s+")
+
+
+def _windows(text: str, size: int = 1500) -> list[str]:
+    """A paragraph as-is, or, when it is long (a definitions section with no
+    labelled children), consecutive runs of whole sentences of about `size`."""
+    if len(text) <= size:
+        return [text]
+    out, cur = [], ""
+    for sent in _SENT.split(text):
+        if cur and len(cur) + len(sent) + 1 > size:
+            out.append(cur)
+            cur = ""
+        cur = f"{cur} {sent}".strip()
+    if cur:
+        out.append(cur)
+    return out
+
+
+def cited_text(corpus: Corpus | None, cites: list[str], limit: int = FULL_LIMIT,
+               claims: list[str] | None = None) -> str:
     """The text of the cited sections, for the support judge.
 
-    When every cited section fits (PER_CITE each, `limit` in all) the judge sees
-    all of it. When one does not, cutting it off would hide the paragraph a claim
-    rests on (a whole-section cite such as §1926.1401 runs to tens of thousands
-    of characters), so the judge instead sees the cited paragraphs that cover the
-    claims' words: greedy cover over the cited sections and their descendants,
-    smallest paragraph first on ties, in document order, within `limit`."""
+    The judge sees all of it when it fits in `limit` characters (a whole
+    definitions section such as §1926.1401 is about 21,000). Past that, cutting
+    the text off would hide the paragraph a claim rests on, so the judge sees
+    the cited paragraphs that cover the claims' words instead: greedy cover over
+    the cited sections, their descendants and sentence windows of long
+    paragraphs, smallest first on ties, in document order, within `limit`.
+    Without claims the text is cut at `limit`."""
     if corpus is None:
         return ""
     cited = [c for c in dict.fromkeys(cites) if c in corpus.text]
-    parts, size, whole = [], 0, True
-    for c in cited:
-        full = corpus.subtree(c, limit=10 ** 9)
-        if len(full) > PER_CITE:
-            whole = False
-        t = full[:PER_CITE]
-        parts.append(t)
-        size += len(t)
-        if size > limit:
-            whole = False
-            break
-    if whole or not claims:
-        return "\n".join(parts)[:limit]
+    full = "\n".join(corpus.subtree(c, limit=10 ** 9) for c in cited)
+    if len(full) <= limit or not claims:
+        return full[:limit]
 
     units: list[tuple[str, str]] = []
     seen: set[str] = set()
@@ -308,10 +319,10 @@ def cited_text(corpus: Corpus | None, cites: list[str], limit: int = 16000, clai
             s = stack.pop(0)
             if s not in seen and corpus.text.get(s):
                 seen.add(s)
-                units.append((s, corpus.text[s]))
+                units.extend((s, w) for w in _windows(corpus.text[s]))
             stack[0:0] = corpus.children.get(s, [])
-    order = {s: i for i, (s, _) in enumerate(units)}
-    terms = {s: _terms(t) for s, t in units}
+    order = {u: i for i, u in enumerate(units)}
+    terms = {u: _terms(u[1]) for u in units}
     want = _terms(" ".join(claims))
     picked: list[tuple[str, str]] = []
     size = 0
@@ -319,9 +330,9 @@ def cited_text(corpus: Corpus | None, cites: list[str], limit: int = 16000, clai
         best = None
         for s, t in units:
             line = f"[{s}] {t}"
-            if any(s == p for p, _ in picked) or size + len(line) + 1 > limit:
+            if (s, t) in picked or size + len(line) + 1 > limit:
                 continue
-            gain = len(want & terms[s])
+            gain = len(want & terms[(s, t)])
             if gain and (best is None or (gain, -len(t)) > (best[0], -len(best[2]))):
                 best = (gain, s, t)
         if best is None:
@@ -329,8 +340,8 @@ def cited_text(corpus: Corpus | None, cites: list[str], limit: int = 16000, clai
         _, s, t = best
         picked.append((s, t))
         size += len(s) + len(t) + 4
-        want -= terms[s]
-    picked.sort(key=lambda u: order[u[0]])
+        want -= terms[(s, t)]
+    picked.sort(key=lambda u: order[u])
     note = ("(Excerpts: the cited sections are longer than this window; these are the cited paragraphs "
             "that contain the claims' words.)")
     return "\n".join([note] + [f"[{s}] {t}" for s, t in picked])[:limit]

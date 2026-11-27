@@ -9,6 +9,8 @@ from __future__ import annotations
 import json
 import re
 import sqlite3
+import sys
+import threading
 from pathlib import Path
 
 
@@ -26,6 +28,7 @@ class Corpus:
         self.parent: dict[str, str | None] = {}
         self.children: dict[str, list[str]] = {}
         self._db: sqlite3.Connection | None = None
+        self._lock = threading.Lock()
         self.version: str | None = None
 
     # -- loading ---------------------------------------------------------
@@ -38,7 +41,10 @@ class Corpus:
             if not dbs:
                 raise FileNotFoundError(f"no .sqlite in {pack}")
             db = dbs[0]
-        con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        # Read-only, and read from the collector threads as well as the main one: one
+        # connection shared under a lock (a thread-bound connection raises in the worker,
+        # and fact/term chunks would silently map to no section).
+        con = sqlite3.connect(f"file:{db}?mode=ro", uri=True, check_same_thread=False)
         c._db = con
         for sid, parent, text in con.execute("SELECT section_id, parent_id, text FROM section"):
             c._add(sid, parent, text)
@@ -108,6 +114,10 @@ class Corpus:
             return [self.norm(ref_id)]
         if self._db is None:
             return [ref_id]  # no pack: assume the ref is a section id
+        with self._lock:
+            return self._sections_for_ref(ref_kind, ref_id)
+
+    def _sections_for_ref(self, ref_kind: str | None, ref_id: str) -> list[str]:
         con = self._db
         single = {"fact": ("fact", "fact_id"), "term": ("term", "term_id")}
         multi = {"answer": ("answer", "answer_id"), "question": ("question", "q_id"),
@@ -128,7 +138,8 @@ class Corpus:
                 return json.loads(row[0]) if row else []
             if ref_kind == "explanation":
                 return [ref_id.split(":")[0]] if ref_id.split(":")[0] in self.text else []
-        except (sqlite3.Error, ValueError, json.JSONDecodeError):
+        except (sqlite3.Error, ValueError, json.JSONDecodeError) as e:
+            print(f"[corpus] {ref_kind} {ref_id}: {type(e).__name__}: {e}", file=sys.stderr, flush=True)
             return []
         return []
 
@@ -136,7 +147,9 @@ class Corpus:
         if self._db is None:
             return None
         try:
-            row = self._db.execute("SELECT ref_kind FROM chunk WHERE chunk_id=?", (chunk_id,)).fetchone()
-        except sqlite3.Error:
+            with self._lock:
+                row = self._db.execute("SELECT ref_kind FROM chunk WHERE chunk_id=?", (chunk_id,)).fetchone()
+        except sqlite3.Error as e:
+            print(f"[corpus] chunk {chunk_id}: {type(e).__name__}: {e}", file=sys.stderr, flush=True)
             return None
         return row[0] if row else None

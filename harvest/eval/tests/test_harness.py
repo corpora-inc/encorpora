@@ -159,6 +159,11 @@ class CorpusTests(unittest.TestCase):
             self.assertFalse(c.quote_ok("29cfr9999.10(a)", "inspected weekly"))
             self.assertEqual(c.sections_for_ref("fact", "f1"), ["29cfr9999.10(b)"])
             self.assertEqual(c.chunk_kind("cf1"), "fact")
+            # The runner parses responses in worker threads: lookups must work there too.
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=3) as ex:
+                got = list(ex.map(lambda _: (c.sections_for_ref("fact", "f1"), c.chunk_kind("cf1")), range(6)))
+            self.assertEqual(got, [(["29cfr9999.10(b)"], "fact")] * 6)
             hb = HarvestBackend({"name": "h", "pack": str(db)}, c, Normalizer())
             r = hb.parse({"mode": "composed", "body": [
                 {"t": "text", "text": "Inspect ladders every shift. A competent person does it."},
@@ -244,15 +249,24 @@ class CitedText(unittest.TestCase):
     def test_long_cited_section_shows_the_paragraph_a_claim_rests_on(self):
         from harvest_eval.runner import cited_text
         c = Corpus()
-        filler = "General words about cranes and the equipment on site. " * 200   # > PER_CITE
+        filler = "General words about cranes and the equipment on site. " * 800   # > FULL_LIMIT
         c._add("29cfr9999.1", None, filler + " (z) The hook must have a latch.")
         c._add("29cfr9999.1(a)", "29cfr9999.1", filler)
         c._add("29cfr9999.1(z)", "29cfr9999.1", "The hook must have a latch.")
         claims = ["The hook needs a latch."]
         t = cited_text(c, ["29cfr9999.1"], claims=claims)
         self.assertIn("[29cfr9999.1(z)] The hook must have a latch.", t)
-        self.assertLessEqual(len(t), 16000)
+        self.assertLessEqual(len(t), 40000)
         self.assertNotIn("[29cfr9999.1(a)]", t)
+
+    def test_long_unlabelled_section_is_windowed(self):
+        from harvest_eval.runner import cited_text
+        c = Corpus()
+        defs = " ".join(f"Term {i} means a thing number {i} on the site." for i in range(1000))
+        c._add("29cfr9999.1401", None, defs + " Rated capacity means the maximum working load.")
+        t = cited_text(c, ["29cfr9999.1401"], claims=["Rated capacity is the maximum working load."])
+        self.assertIn("Rated capacity means the maximum working load.", t)
+        self.assertLessEqual(len(t), 40000)
 
     def test_short_cited_text_is_unchanged(self):
         from harvest_eval.runner import cited_text

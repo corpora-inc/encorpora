@@ -1,8 +1,8 @@
 # Evaluation report
 
-Set: `../../crane/eval/results/2026-11-27-baseline/../../heldout-v1.jsonl` (342 items, sha256 `21f018c2ce5a65ba…`). Run 2026-11-27T15:40:50+00:00 → 2026-11-27T15:41:09+00:00. Harness commit `7397e8b9b2`. Host: Darwin arm64, Python 3.14.9.
+Set: `../../crane/eval/results/2026-11-27-baseline/../../heldout-v1.jsonl` (342 items, sha256 `21f018c2ce5a65ba…`). Run 2026-11-27T16:09:36+00:00 → 2026-11-27T16:15:37+00:00. Harness commit `e1086068e2`. Host: Darwin arm64, Python 3.14.9.
 
-Judge: opus; agreement check with sonnet on a 15% sample. Judge calls this run: 0 (cached calls are free and not counted).
+Judge: claude-opus-5-5; agreement check with sonnet on a 15% sample. Judge calls this run: 26 (cached calls are free and not counted).
 
 ## Systems
 
@@ -26,10 +26,10 @@ Judge: opus; agreement check with sonnet on a 15% sample. Judge calls this run: 
 | Decline precision | 0.220 | 0.877 | 0.192 | 0.239 | 0.615 |
 | Decline recall | 0.922 | 0.980 | 1.000 | 0.922 | 0.784 |
 | False-decline rate (answerable) | 0.574 | 0.024 | 0.739 | 0.515 | 0.086 |
-| Unsupported-claim rate | 0.000 | 0.308 | 0.995 | 0.986 | 0.998 |
-| Answers with ≥1 unsupported claim | 0.000 | 0.874 | 1.000 | 1.000 | 1.000 |
+| Unsupported-claim rate | 0.000 | 0.253 | 0.995 | 0.984 | 0.996 |
+| Answers with ≥1 unsupported claim | 0.000 | 0.818 | 1.000 | 1.000 | 1.000 |
 | Citation precision (matches gold) | 0.498 | 0.315 | 0.000 | 0.027 | 0.006 |
-| Citation precision (supports a claim) | 0.062 | 0.698 | 0.025 | 0.018 | 0.004 |
+| Citation precision (supports a claim) | 0.059 | 0.742 | 0.025 | 0.023 | 0.006 |
 | Citations that exist in the corpus | 1.000 | 0.961 | 0.840 | 0.896 | 0.557 |
 | Quotes verbatim | 1.000 (307/307) | – (0/0) | – (0/0) | – (0/0) | – (0/0) |
 | Retrieval R@5 (lineage) | 0.601 (0.551–0.652) | – | – | – | – |
