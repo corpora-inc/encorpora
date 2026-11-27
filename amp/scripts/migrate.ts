@@ -77,6 +77,8 @@ export const renamedMigrations: Readonly<Record<string, readonly string[]>> = {
     "0149-clever-portal-staff.sql",
     "0148-clever-portal-staff.sql",
   ],
+  // Merged minutes after 0158-film-flags.sql took the same number.
+  "0159-hash-session-tokens.sql": ["0158-hash-session-tokens.sql"],
 };
 /** Applied files rewritten before release, with the checksums a development or
  * preview database may hold. Each earlier version reached the same schema
