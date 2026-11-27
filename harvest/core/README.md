@@ -61,12 +61,12 @@ let report = audit::verify_chain(&records_conn)?;   // ok, first_bad, modes, bak
 // Free-text grading and field notes (model optional).
 let g = grade::grade(learner_text, &grade::Rubric::parse(&question.answer)?, Some(llm))?;
 // Guided procedures, captured offline, uploaded when a link returns.
-let records = records::Records::open(&records_db)?;
+let records = records::Records::open_with_key(&records_db, Some(&key_from_keystore))?;
 let run = records.start_run(&pack, "proc-id", &records::StartRun { role: "operator".into(), ..Default::default() })?;
 let out = records.record_step(&pack, &run.run_id, 1, records::StepInput::outcome(records::Outcome::Fail))?;
 // out.guidance: what to do, the rule's citation and quote.
 records.finish_run(&pack, &run.run_id)?;
-let report = sync::flush(records.conn(), &my_https_transport, 50)?;
+let report = records.flush(&my_https_transport, 50)?;
 
 let n = notes::structure_note(note_text, &notes::NoteVocab::from_pack(&pack)?, Some(llm))?;
 ```
@@ -121,6 +121,7 @@ pub trait Llm: Send + Sync {
 | `grade` | Rubric grading: keyword rules with the model off. With it on, the model judges and must quote the learner's own words as evidence. |
 | `notes` | Field note → `{component, condition, action}`. Keywords with the model off; model output kept only when grounded in the vocabulary or the note. |
 | `records` | Device record store (`records.db`): procedure runs and step results validated against the pack's `check_kind`; a failed step returns the pack's deficiency guidance with its citation (quote verified verbatim) and is queued at once; declined questions queued as misses. |
+| `crypt` | Encryption at rest for `records.db` (XChaCha20-Poly1305, key from the platform keystore via `Records::open_with_key`): step values, notes, photo refs, structured notes, outbox payloads and audit entries are sealed and bound to their row; ids, statuses and times stay clear. Wrong or missing key is an error; the audit chain verifies without the key. |
 | `sync` | Outbox: ordered, idempotent uploads marked done only on a receipt that echoes the payload hash; `Transport` trait (the app's HTTPS), `DirTransport` for a removable drive or shared folder. |
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |

@@ -15,9 +15,9 @@ const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
   harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing] [--pubkey KEY] [--json]
   harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
-                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db>] [--pubkey KEY] [--json]
-  harvest audit   <records-db> [--json]
-  harvest outbox  <records-db> [--to <dir>] [--json]   # queue status; --to flushes it into a folder
+                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db> [--records-key FILE]] [--pubkey KEY] [--json]
+  harvest audit   <records-db> [--records-key FILE] [--json]
+  harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # queue status; --to flushes it into a folder
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -319,6 +319,7 @@ fn ask(args: &Args) -> Result<(), CliError> {
         "llm-timeout",
         "embedder",
         "audit",
+        "records-key",
     ])?;
     let dir = pack_dir(args)?;
     let question = query_arg(args)?;
@@ -365,7 +366,10 @@ fn ask(args: &Args) -> Result<(), CliError> {
     if let Some(db) = args.get("audit") {
         // The device record store: audit row always; a decline is also a
         // miss queued for the next bake.
-        let records = harvest_core::records::Records::open(Path::new(db))?;
+        let records = harvest_core::records::Records::open_with_key(
+            Path::new(db),
+            records_key(args)?.as_ref(),
+        )?;
         records.record_answer(&pack, &question, &resp, &trace)?;
     }
     if args.has("json") {
@@ -403,7 +407,7 @@ fn ask(args: &Args) -> Result<(), CliError> {
 }
 
 fn audit(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["json"])?;
+    args.reject_unknown(&["json", "records-key"])?;
     let db = args
         .positional
         .first()
@@ -416,7 +420,12 @@ fn audit(args: &Args) -> Result<(), CliError> {
     let conn =
         rusqlite::Connection::open_with_flags(db, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)
             .map_err(Error::from)?;
-    let report = harvest_core::audit::verify_chain(&conn)?;
+    let key = records_key(args)?.map(|k| harvest_core::crypt::RecordKey::from_bytes(&k));
+    // Without a key the links still verify (entries count as sealed).
+    if key.is_some() {
+        harvest_core::records::check_key(&conn, key.as_ref())?;
+    }
+    let report = harvest_core::audit::verify_chain_with(&conn, key.as_ref())?;
     if args.has("json") {
         println!("{}", serde_json::to_string(&report).map_err(Error::from)?);
     } else {
@@ -448,7 +457,7 @@ fn audit(args: &Args) -> Result<(), CliError> {
 }
 
 fn outbox(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["json", "to"])?;
+    args.reject_unknown(&["json", "to", "records-key"])?;
     let db = args
         .positional
         .first()
@@ -458,16 +467,15 @@ fn outbox(args: &Args) -> Result<(), CliError> {
             "{db}: no such file"
         ))));
     }
-    let records = harvest_core::records::Records::open(Path::new(db))?;
+    let records =
+        harvest_core::records::Records::open_with_key(Path::new(db), records_key(args)?.as_ref())?;
     let flushed = match args.get("to") {
-        Some(dir) => Some(harvest_core::sync::flush(
-            records.conn(),
-            &harvest_core::sync::DirTransport::new(Path::new(dir)),
-            100,
-        )?),
+        Some(dir) => {
+            Some(records.flush(&harvest_core::sync::DirTransport::new(Path::new(dir)), 100)?)
+        }
         None => None,
     };
-    let status = harvest_core::sync::status(records.conn())?;
+    let status = records.outbox_status()?;
     if args.has("json") {
         println!(
             "{}",
@@ -495,6 +503,31 @@ fn outbox(args: &Args) -> Result<(), CliError> {
         }
         None => Ok(()),
     }
+}
+
+/// `--records-key FILE`: the records key as 64 hex characters (or 32 raw
+/// bytes). The app reads it from the platform keystore instead.
+fn records_key(args: &Args) -> Result<Option<[u8; 32]>, CliError> {
+    let Some(path) = args.get("records-key") else {
+        return Ok(None);
+    };
+    let raw =
+        std::fs::read(path).map_err(|e| CliError::Usage(format!("--records-key {path}: {e}")))?;
+    let text = String::from_utf8_lossy(&raw);
+    let hex = text.trim();
+    let mut key = [0u8; 32];
+    if hex.len() == 64 && hex.bytes().all(|b| b.is_ascii_hexdigit()) {
+        for (i, k) in key.iter_mut().enumerate() {
+            *k = u8::from_str_radix(&hex[2 * i..2 * i + 2], 16).expect("checked hex");
+        }
+    } else if raw.len() == 32 {
+        key.copy_from_slice(&raw);
+    } else {
+        return Err(CliError::Usage(
+            "--records-key: the file must hold 64 hex characters or 32 bytes".into(),
+        ));
+    }
+    Ok(Some(key))
 }
 
 fn citation(pack: &Pack, section_id: &str) -> Result<String, CliError> {

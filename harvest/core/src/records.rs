@@ -8,6 +8,7 @@
 //! that feeds the next bake when a link returns.
 
 use crate::audit::now_rfc3339;
+use crate::crypt::{self, RecordKey};
 use crate::error::{Error, Result};
 use crate::pack::{Deficiency, Pack, ProcStep};
 use crate::packs::hex_encode;
@@ -19,6 +20,7 @@ use std::path::Path;
 use std::sync::atomic::{AtomicU64, Ordering};
 
 const DDL: &str = "
+CREATE TABLE IF NOT EXISTS records_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS proc_run (
   run_id       TEXT PRIMARY KEY,
   pack_id      TEXT NOT NULL,
@@ -179,7 +181,10 @@ pub struct StartRun {
 /// The device record store.
 pub struct Records {
     conn: Connection,
+    key: Option<RecordKey>,
 }
+
+const KEY_CHECK: &str = "harvest-records-v1";
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
 
@@ -201,23 +206,136 @@ pub(crate) fn new_id(prefix: &str, parts: &[&str]) -> String {
 }
 
 impl Records {
-    /// Open (or create) the store at `path`.
+    /// Open (or create) an unencrypted store at `path`.
     pub fn open(path: &Path) -> Result<Self> {
-        Self::init(Connection::open(path)?)
+        Self::init(Connection::open(path)?, None)
+    }
+
+    /// Open (or create) the store at `path`, encrypted at rest with `key`
+    /// (32 bytes from the platform keystore; see [`crate::crypt`]). A store
+    /// is encrypted or not from its creation: the wrong key, a key for a
+    /// clear store, or no key for an encrypted one is an error.
+    pub fn open_with_key(path: &Path, key: Option<&[u8; 32]>) -> Result<Self> {
+        Self::init(Connection::open(path)?, key.map(RecordKey::from_bytes))
     }
 
     /// An in-memory store, for tests.
     pub fn in_memory() -> Result<Self> {
-        Self::init(Connection::open_in_memory()?)
+        Self::init(Connection::open_in_memory()?, None)
     }
 
-    fn init(conn: Connection) -> Result<Self> {
+    /// An encrypted in-memory store, for tests.
+    pub fn in_memory_with_key(key: &[u8; 32]) -> Result<Self> {
+        Self::init(
+            Connection::open_in_memory()?,
+            Some(RecordKey::from_bytes(key)),
+        )
+    }
+
+    fn init(conn: Connection, key: Option<RecordKey>) -> Result<Self> {
         conn.pragma_update(None, "foreign_keys", true)?;
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;
-        Ok(Self { conn })
+        let mode: Option<String> = conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'encryption'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        match (mode, &key) {
+            (None, _) => {
+                let used: bool = conn.query_row(
+                    "SELECT EXISTS (SELECT 1 FROM proc_run) OR EXISTS (SELECT 1 FROM outbox)
+                            OR EXISTS (SELECT 1 FROM audit)",
+                    [],
+                    |r| r.get(0),
+                )?;
+                if used && key.is_some() {
+                    return Err(Error::Crypto(
+                        "these records were written unencrypted; a key cannot be added in place"
+                            .into(),
+                    ));
+                }
+                let value = match &key {
+                    Some(k) => k.seal("records_meta.encryption", KEY_CHECK)?,
+                    None => "none".to_string(),
+                };
+                conn.execute(
+                    "INSERT INTO records_meta (key, value) VALUES ('encryption', ?1)",
+                    [value],
+                )?;
+            }
+            (Some(v), None) if v == "none" => {}
+            (Some(_), None) => {
+                return Err(Error::Crypto(
+                    "the records are encrypted; open them with the key".into(),
+                ));
+            }
+            (Some(v), Some(_)) if v == "none" => {
+                return Err(Error::Crypto(
+                    "these records are not encrypted; open them without a key".into(),
+                ));
+            }
+            (Some(v), Some(k)) => {
+                if k.open("records_meta.encryption", &v)? != KEY_CHECK {
+                    return Err(Error::Crypto("wrong records key".into()));
+                }
+            }
+        }
+        Ok(Self { conn, key })
+    }
+
+    /// The store's key, when it is encrypted.
+    pub fn key(&self) -> Option<&RecordKey> {
+        self.key.as_ref()
+    }
+
+    /// Append an audit entry (sealed when the store is encrypted).
+    pub fn append_audit(&self, entry: &crate::audit::AuditEntry) -> Result<i64> {
+        let tx = self.write_tx()?;
+        let seq = crate::audit::append_locked_with(&tx, self.key(), entry)?;
+        tx.commit()?;
+        Ok(seq)
+    }
+
+    /// Verify the audit chain and read its modes.
+    pub fn verify_audit(&self) -> Result<crate::audit::ChainReport> {
+        crate::audit::verify_chain_with(&self.conn, self.key())
+    }
+
+    /// The audit entries, oldest first.
+    pub fn audit_entries(&self) -> Result<Vec<(i64, crate::audit::AuditEntry)>> {
+        crate::audit::entries_with(&self.conn, self.key())
+    }
+
+    /// Pending uploads, opened.
+    pub fn pending(&self, limit: usize) -> Result<Vec<sync::Upload>> {
+        sync::pending_with(&self.conn, self.key(), limit)
+    }
+
+    /// Send the outbox through `transport`.
+    pub fn flush(
+        &self,
+        transport: &dyn sync::Transport,
+        batch_size: usize,
+    ) -> Result<sync::FlushReport> {
+        sync::flush_with(&self.conn, self.key(), transport, batch_size)
+    }
+
+    /// Queue counts.
+    pub fn outbox_status(&self) -> Result<sync::OutboxStatus> {
+        sync::status(&self.conn)
+    }
+
+    fn seal(&self, aad: &str, v: Option<&str>) -> Result<Option<String>> {
+        v.map(|v| crypt::seal_opt(self.key(), aad, v)).transpose()
+    }
+
+    fn unseal(&self, aad: &str, v: Option<String>) -> Result<Option<String>> {
+        v.map(|v| crypt::open_opt(self.key(), aad, &v)).transpose()
     }
 
     /// The connection, for the audit log and the outbox.
@@ -263,7 +381,10 @@ impl Records {
                 run.pack_version,
                 run.proc_id,
                 run.equip_id,
-                run.asset,
+                self.seal(
+                    &format!("proc_run.asset:{}", run.run_id),
+                    run.asset.as_deref()
+                )?,
                 run.role,
                 steps_sha,
                 run.started_at
@@ -307,6 +428,11 @@ impl Records {
         } else {
             None
         };
+        let row: StepRow = (
+            record.input.outcome.as_str(),
+            deficiency,
+            record.recorded_at.as_str(),
+        );
         tx.execute(
             "INSERT INTO step_result (run_id, ord, result, value, note, photos, structured,
                                       deficiency, recorded_at)
@@ -319,15 +445,28 @@ impl Records {
                 run_id,
                 ord,
                 record.input.outcome.as_str(),
-                record.input.value,
-                record.input.note,
-                serde_json::to_string(&record.input.photos)?,
-                record
-                    .input
-                    .structured
-                    .as_ref()
-                    .map(serde_json::to_string)
-                    .transpose()?,
+                self.seal(
+                    &step_aad("value", run_id, ord, &row),
+                    record.input.value.as_deref()
+                )?,
+                self.seal(
+                    &step_aad("note", run_id, ord, &row),
+                    record.input.note.as_deref()
+                )?,
+                self.seal(
+                    &step_aad("photos", run_id, ord, &row),
+                    Some(&serde_json::to_string(&record.input.photos)?)
+                )?,
+                self.seal(
+                    &step_aad("structured", run_id, ord, &row),
+                    record
+                        .input
+                        .structured
+                        .as_ref()
+                        .map(serde_json::to_string)
+                        .transpose()?
+                        .as_deref()
+                )?,
                 deficiency,
                 record.recorded_at
             ],
@@ -339,6 +478,7 @@ impl Records {
         if !deficiency && sent {
             sync::enqueue_ref(
                 &tx,
+                self.key(),
                 "deficiency_cleared",
                 Some(&item_ref),
                 &serde_json::json!({"run_id": run_id, "step": ord, "record": record}),
@@ -347,6 +487,7 @@ impl Records {
         if deficiency {
             sync::enqueue_ref(
                 &tx,
+                self.key(),
                 "deficiency",
                 Some(&item_ref),
                 &serde_json::json!({
@@ -404,7 +545,13 @@ impl Records {
             "UPDATE proc_run SET status = ?2, finished_at = ?3 WHERE run_id = ?1",
             params![run.run_id, status, run.finished_at],
         )?;
-        sync::enqueue_ref(tx, "run", Some(&run.run_id), &serde_json::to_value(&run)?)?;
+        sync::enqueue_ref(
+            tx,
+            self.key(),
+            "run",
+            Some(&run.run_id),
+            &serde_json::to_value(&run)?,
+        )?;
         Ok(run)
     }
 
@@ -484,6 +631,7 @@ impl Records {
             )
             .optional()?;
         let Some(mut run) = run else { return Ok(None) };
+        run.asset = self.unseal(&format!("proc_run.asset:{}", run.run_id), run.asset.take())?;
         let mut stmt = self.conn.prepare_cached(
             "SELECT ord, result, value, note, photos, structured, deficiency, recorded_at
              FROM step_result WHERE run_id = ?1 ORDER BY ord",
@@ -513,14 +661,22 @@ impl Records {
             })?
             .collect::<rusqlite::Result<_>>()?;
         for (ord, result, value, note, photos, structured, deficiency, recorded_at) in rows {
+            let row: StepRow = (result.as_str(), deficiency, recorded_at.as_str());
             run.steps.push(StepRecord {
                 ord,
                 input: StepInput {
                     outcome: Outcome::parse(&result)?,
-                    value,
-                    note,
-                    photos: serde_json::from_str(&photos)?,
-                    structured: structured.map(|s| serde_json::from_str(&s)).transpose()?,
+                    value: self.unseal(&step_aad("value", run_id, ord, &row), value)?,
+                    note: self.unseal(&step_aad("note", run_id, ord, &row), note)?,
+                    photos: serde_json::from_str(
+                        &self
+                            .unseal(&step_aad("photos", run_id, ord, &row), Some(photos))?
+                            .unwrap_or_default(),
+                    )?,
+                    structured: self
+                        .unseal(&step_aad("structured", run_id, ord, &row), structured)?
+                        .map(|s| serde_json::from_str(&s))
+                        .transpose()?,
                 },
                 deficiency,
                 recorded_at,
@@ -555,7 +711,7 @@ impl Records {
     ) -> Result<i64> {
         let tx = self.write_tx()?;
         let entry = crate::audit::AuditEntry::from_answer(pack.pack_id(), question, resp, trace);
-        let seq = crate::audit::append_locked(&tx, &entry)?;
+        let seq = crate::audit::append_locked_with(&tx, self.key(), &entry)?;
         if resp.mode == crate::answer::Mode::Declined {
             self.queue_miss(&tx, pack, question, "declined", &resp.nearest)?;
         }
@@ -586,9 +742,11 @@ impl Records {
         if question.trim().is_empty() {
             return Err(Error::Invalid("empty question".into()));
         }
-        sync::enqueue(
+        sync::enqueue_ref(
             conn,
+            self.key(),
             "miss",
+            None,
             &serde_json::json!({
                 "pack_id": pack.pack_id(),
                 "pack_version": pack.version(),
@@ -600,6 +758,55 @@ impl Records {
         )
     }
 }
+
+/// Check `key` against a store without writing to it (for read-only tools).
+/// A database that never held records accepts no key.
+pub fn check_key(conn: &Connection, key: Option<&RecordKey>) -> Result<()> {
+    let has_meta: bool = conn.query_row(
+        "SELECT EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'records_meta')",
+        [],
+        |r| r.get(0),
+    )?;
+    let mode: Option<String> = if has_meta {
+        conn.query_row(
+            "SELECT value FROM records_meta WHERE key = 'encryption'",
+            [],
+            |r| r.get(0),
+        )
+        .optional()?
+    } else {
+        None
+    };
+    match (mode.as_deref(), key) {
+        (None | Some("none"), None) => Ok(()),
+        (None | Some("none"), Some(_)) => Err(Error::Crypto(
+            "these records are not encrypted; open them without a key".into(),
+        )),
+        (Some(_), None) => Err(Error::Crypto(
+            "the records are encrypted; open them with the key".into(),
+        )),
+        (Some(v), Some(k)) => {
+            if k.open("records_meta.encryption", v)? == KEY_CHECK {
+                Ok(())
+            } else {
+                Err(Error::Crypto("wrong records key".into()))
+            }
+        }
+    }
+}
+
+/// What a sealed step column is bound to: its row and the clear evidence
+/// beside it (outcome, deficiency flag, time), so flipping a clear `fail`
+/// to `pass`, or replaying an older value, makes the row fail to open.
+fn step_aad(column: &str, run_id: &str, ord: i64, row: &StepRow) -> String {
+    format!(
+        "step_result.{column}:{run_id}#{ord}|{}|{}|{}",
+        row.0, row.1 as u8, row.2
+    )
+}
+
+/// `(result, deficiency, recorded_at)` of a step row.
+type StepRow<'a> = (&'a str, bool, &'a str);
 
 /// SHA-256 of a procedure's steps as the pack states them.
 fn steps_sha256(steps: &[ProcStep]) -> Result<String> {

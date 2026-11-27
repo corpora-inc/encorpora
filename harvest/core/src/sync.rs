@@ -7,6 +7,7 @@
 //! records why. Packs come down the other way, signed ([`crate::packs`]).
 
 use crate::audit::now_rfc3339;
+use crate::crypt::{self, RecordKey};
 use crate::error::{Error, Result};
 use crate::packs::hex_encode;
 use rusqlite::{Connection, params};
@@ -87,14 +88,18 @@ pub trait Transport {
 /// name for [`DirTransport`].
 pub const MAX_KIND: usize = 31;
 
-/// Queue `payload` under `kind`; returns its `item_id`.
+/// Queue `payload` under `kind` in an unencrypted store; returns its
+/// `item_id`.
 pub fn enqueue(conn: &Connection, kind: &str, payload: &serde_json::Value) -> Result<String> {
-    enqueue_ref(conn, kind, None, payload)
+    enqueue_ref(conn, None, kind, None, payload)
 }
 
-/// Queue `payload` under `kind`, about `item_ref` (see [`supersede`]).
+/// Queue `payload` under `kind`, about `item_ref` (see [`supersede`]),
+/// sealed with `key` when the store is encrypted. The hash is always of the
+/// clear payload, which is what goes up.
 pub fn enqueue_ref(
     conn: &Connection,
+    key: Option<&RecordKey>,
     kind: &str,
     item_ref: Option<&str>,
     payload: &serde_json::Value,
@@ -105,14 +110,25 @@ pub fn enqueue_ref(
         )));
     }
     init(conn)?;
+    // A keyless write to an encrypted store (or a wrong key) is refused, so
+    // clear text never lands next to sealed rows.
+    crate::records::check_key(conn, key)?;
     let body = serde_json::to_string(payload)?;
     let sha = hex_encode(&Sha256::digest(body.as_bytes()));
     let item_id = crate::records::new_id(kind, &[kind, &sha]);
     debug_assert!(crate::packs::valid_id(&item_id));
+    let stored = crypt::seal_opt(key, &payload_aad(&item_id), &body)?;
+    // Sealed rows keep no clear hash (it would let a guess be confirmed
+    // offline); the AEAD tag protects them and the hash is computed on open.
+    let stored_sha = if key.is_some() {
+        SEALED_HASH
+    } else {
+        sha.as_str()
+    };
     conn.execute(
         "INSERT INTO outbox (item_id, kind, payload, payload_sha256, created_at, ref)
          VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
-        params![item_id, kind, body, sha, now_rfc3339(), item_ref],
+        params![item_id, kind, stored, stored_sha, now_rfc3339(), item_ref],
     )?;
     Ok(item_id)
 }
@@ -138,7 +154,27 @@ pub fn supersede(conn: &Connection, kind: &str, item_ref: &str) -> Result<(usize
 /// hash is quarantined (kept, reported in [`status`], never sent) and the
 /// rest of the queue moves on.
 pub fn pending(conn: &Connection, limit: usize) -> Result<Vec<Upload>> {
+    pending_with(conn, None, limit)
+}
+
+/// `payload_sha256` of a sealed row: the AEAD tag is its integrity check.
+const SEALED_HASH: &str = "sealed";
+
+fn payload_aad(item_id: &str) -> String {
+    format!("outbox.payload:{item_id}")
+}
+
+/// [`pending`] for a store encrypted with `key`. The key is checked first:
+/// a wrong or missing key is an error, never a quarantine. A row that then
+/// fails to open (it was changed or moved) is quarantined like a hash
+/// mismatch.
+pub fn pending_with(
+    conn: &Connection,
+    key: Option<&RecordKey>,
+    limit: usize,
+) -> Result<Vec<Upload>> {
     init(conn)?;
+    crate::records::check_key(conn, key)?;
     loop {
         let rows: Vec<(String, String, String, String, String)> = {
             let mut stmt = conn.prepare_cached(
@@ -150,33 +186,46 @@ pub fn pending(conn: &Connection, limit: usize) -> Result<Vec<Upload>> {
             })?
             .collect::<rusqlite::Result<_>>()?
         };
-        let bad: Vec<&String> = rows
-            .iter()
-            .filter(|(_, _, _, payload, sha)| {
-                hex_encode(&Sha256::digest(payload.as_bytes())) != *sha
-            })
-            .map(|(id, ..)| id)
-            .collect();
-        if bad.is_empty() {
-            return Ok(rows
-                .into_iter()
-                .map(
-                    |(item_id, kind, created_at, payload, payload_sha256)| Upload {
-                        item_id,
-                        kind,
-                        created_at,
-                        payload,
-                        payload_sha256,
-                    },
-                )
-                .collect());
+        let mut good = Vec::with_capacity(rows.len());
+        let mut bad: Vec<(String, String)> = Vec::new();
+        for (item_id, kind, created_at, stored, payload_sha256) in rows {
+            if key.is_none() && crypt::is_sealed(&stored) {
+                return Err(Error::Crypto(
+                    "the records are encrypted; open them with the key".into(),
+                ));
+            }
+            let payload = match crypt::open_opt(key, &payload_aad(&item_id), &stored) {
+                Ok(p) => p,
+                Err(e) => {
+                    bad.push((item_id, e.to_string()));
+                    continue;
+                }
+            };
+            let actual = hex_encode(&Sha256::digest(payload.as_bytes()));
+            let payload_sha256 = match (key.is_some(), payload_sha256.as_str()) {
+                (true, SEALED_HASH) => actual,
+                (false, stored) if stored == actual => actual,
+                _ => {
+                    bad.push((item_id, "payload hash mismatch".into()));
+                    continue;
+                }
+            };
+            good.push(Upload {
+                item_id,
+                kind,
+                created_at,
+                payload,
+                payload_sha256,
+            });
         }
-        for id in bad {
-            eprintln!("harvest: outbox item {id}: payload hash mismatch; quarantined");
+        if bad.is_empty() {
+            return Ok(good);
+        }
+        for (id, why) in bad {
+            eprintln!("harvest: outbox item {id}: {why}; quarantined");
             conn.execute(
-                "UPDATE outbox SET quarantined = 1, last_error = 'payload hash mismatch'
-                 WHERE item_id = ?1",
-                [id],
+                "UPDATE outbox SET quarantined = 1, last_error = ?2 WHERE item_id = ?1",
+                params![id, why],
             )?;
         }
     }
@@ -201,10 +250,21 @@ pub fn flush(
     transport: &dyn Transport,
     batch_size: usize,
 ) -> Result<FlushReport> {
+    flush_with(conn, None, transport, batch_size)
+}
+
+/// [`flush`] for a store encrypted with `key`.
+pub fn flush_with(
+    conn: &Connection,
+    key: Option<&RecordKey>,
+    transport: &dyn Transport,
+    batch_size: usize,
+) -> Result<FlushReport> {
+    crate::records::check_key(conn, key)?;
     let batch_size = batch_size.max(1);
     let mut report = FlushReport::default();
     loop {
-        let batch = pending(conn, batch_size)?;
+        let batch = pending_with(conn, key, batch_size)?;
         if batch.is_empty() {
             break;
         }
