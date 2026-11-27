@@ -18,9 +18,13 @@ every figure at `width / 772` inches keeps the figures in proportion.
 `name`, `description` and `caption` are verbatim from the printed figure (line
 breaks collapsed to spaces; the en dash kept). `kind`, `motion`, `crane_types`,
 `modifiers` and `teaching_tip` are editorial aids, not regulatory text;
-`teaching_tip.verbatim` is always `false`. The `notes` array quotes the eCFR
-sections that govern hand signals; every quote and `section_id` passes
-`crane/content/verify/verify.py`.
+`teaching_tip.verbatim` is always `false`. `crane_types` names equipment that
+has the function; the appendix does not restrict signals by equipment, and one
+crane can fit several types (a crawler-mounted telescopic crane), so do not use it
+as an exclusive filter. The `notes` array quotes the eCFR sections that govern
+hand signals; every quote and `section_id` passes the content verifier
+`crane/content/verify/verify.py` (added with the crane content blueprint), and
+the build checks every `related_section_id` against the same eCFR index.
 
 ## Source
 
@@ -57,9 +61,10 @@ the table grid lines, splits each cell's figure from its caption, traces the
 figure with potrace into `svg/`, writes `signals.json`, and OCRs every caption
 against the transcription in `build/signals.src.yaml`. The OCR comparison and
 the measured dash width for each signal are written to `build/VERIFY.md`; the
-build fails on any OCR difference that has no recorded resolution. Pass
-`--work DIR` to keep the intermediate crops. Output is byte-for-byte
-reproducible.
+build fails on any OCR difference that the recorded OCR-to-print replacements
+do not explain exactly, and writes nothing until every check passes. Pass
+`--work DIR` to keep the intermediate crops. With the tool versions named in
+`build/VERIFY.md`, output is byte-for-byte reproducible.
 
 To change a caption, classification or tip, edit `build/signals.src.yaml` and
 rebuild; do not edit `signals.json` by hand.

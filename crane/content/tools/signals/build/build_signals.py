@@ -1,7 +1,7 @@
 """Build the standard hand-signal reference from the GPO CFR PDF of
 Appendix A to Subpart CC of 29 CFR 1926.
 
-    python build_signals.py <appA.pdf> [--work DIR] [--index sections.json] [--no-ocr]
+    python build_signals.py <appA.pdf> [--work DIR] [--index sections.json]
 
 Steps (deterministic, no network):
 
@@ -15,8 +15,10 @@ Steps (deterministic, no network):
      smaller than MIN_AREA px, crop tight, trace with potrace, rewrite as a
      small SVG filled with currentColor.
   6. Caption: OCR the crop with tesseract and compare to the transcription in
-     signals.src.yaml (normalized edit distance); write build/VERIFY.md.
-  7. Write signals.json (and check related section ids against --index).
+     signals.src.yaml; measure the printed dash. Any difference not covered
+     exactly by a recorded ocr_resolution fails the build.
+  7. Only when every check passes, write svg/, signals.json and build/VERIFY.md.
+     A failed build leaves the committed outputs untouched.
 
 Requires: Pillow, PyYAML, and the binaries pdfimages, potrace, tesseract.
 """
@@ -182,7 +184,10 @@ def to_svg(bitmap: Image.Image, title: str, work: Path, sid: str) -> str:
     subprocess.run(["potrace", *POTRACE, "-o", str(raw), str(pbm)], check=True)
     text = raw.read_text()
     paths = re.findall(r'<path d="([^"]+)"', text)
-    tr = re.search(r'<g transform="([^"]+)"', text).group(1)
+    m = re.search(r'<g transform="([^"]+)"', text)
+    if not m:
+        raise SystemExit(f"{sid}: unexpected potrace SVG output ({tool_version('potrace')})")
+    tr = m.group(1)
     tr = re.sub(r"(\d)\.0+\b", r"\1", tr)  # "1.000000" -> "1"
     if len(paths) != 1:
         raise SystemExit(f"{sid}: expected one flat path, got {len(paths)}")
@@ -234,6 +239,23 @@ def dash_ratio(cap: Image.Image) -> float:
     raise SystemExit("no dash found in caption")
 
 
+def tool_version(name: str) -> str:
+    r = subprocess.run([name, "--version"], capture_output=True, text=True)
+    return (r.stdout or r.stderr).splitlines()[0].split(". Copyright")[0]
+
+
+def resolved(got: str, caption: str, res) -> bool:
+    """True when the recorded OCR misreads turn the OCR text into the caption."""
+    if not res:
+        return False
+    text = norm_text(got)
+    for wrong, right in res["replace"]:
+        if norm_text(wrong) not in text:
+            return False
+        text = text.replace(norm_text(wrong), norm_text(right))
+    return text == norm_text(caption)
+
+
 def ocr(img: Image.Image, work: Path, sid: str) -> str:
     p = work / f"{sid}.caption.png"
     img.save(p, dpi=(772, 772))
@@ -249,7 +271,6 @@ def main():
     ap.add_argument("pdf")
     ap.add_argument("--work", help="keep intermediate crops here (default: temp dir)")
     ap.add_argument("--index", help="eCFR sections.json; checks every related_section_id exists")
-    ap.add_argument("--no-ocr", action="store_true", help="skip OCR; VERIFY.md is left unchanged")
     a = ap.parse_args()
 
     src = yaml.safe_load(SRC.read_text())
@@ -261,6 +282,16 @@ def main():
 
     work = Path(a.work) if a.work else Path(tempfile.mkdtemp(prefix="signals-"))
     work.mkdir(parents=True, exist_ok=True)
+    try:
+        build(a, src, source, pdf, sha, work)
+    except BaseException:
+        print(f"build failed; intermediate crops kept in {work}", file=sys.stderr)
+        raise
+    if not a.work:
+        shutil.rmtree(work)
+
+
+def build(a, src, source, pdf, sha, work):
     for f in work.glob("page-*.png"):
         f.unlink()
     subprocess.run(["pdfimages", "-png", str(pdf), str(work / "page")], check=True)
@@ -287,26 +318,25 @@ def main():
     pitches = sorted(last_pitch(cell) for *_, cell in cells)
     pitch = pitches[len(pitches) // 2]
 
-    svg_dir = OUT / "svg"
-    svg_dir.mkdir(exist_ok=True)
-    out, verify = [], []
+    out, verify, svgs = [], [], {}
     for (pi, r, c, cell), sg in zip(cells, signals):
         sid = sg["signal_id"]
         cap_y = split_caption(cell, pitch)
         fig, info = clean(cell.crop((0, 0, cell.width, cap_y - 1)))
         fig.convert("L").save(work / f"{sid}.figure.png")
         svg = to_svg(fig, f"{sg['name']} (standard hand signal)", work, sid)
-        (svg_dir / f"{sid}.svg").write_text(svg)
+        svgs[sid] = svg
         caption = f"{sg['name']} {source['dash']} {sg['description']}"
-        if not a.no_ocr:
-            cap_img = cell.crop((0, cap_y - 8, cell.width, cell.height))
-            got = ocr(cap_img, work, sid)
-            dist = levenshtein(norm_text(got), norm_text(caption))
-            ratio = dist / max(len(norm_text(caption)), 1)
-            dr = dash_ratio(cap_img)
-            if source["dash"] == "\u2013" and not EN_DASH[0] <= dr <= EN_DASH[1]:
-                raise SystemExit(f"{sid}: printed dash is {dr:.2f} cap heights wide, not an en dash")
-            verify.append((sid, norm_text(got), caption, dist, ratio, dr, sg.get("ocr_resolution")))
+        cap_img = cell.crop((0, cap_y - 8, cell.width, cell.height))
+        got = ocr(cap_img, work, sid)
+        dist = levenshtein(norm_text(got), norm_text(caption))
+        ratio = dist / max(len(norm_text(caption)), 1)
+        dr = dash_ratio(cap_img)
+        if source["dash"] == "\u2013" and not EN_DASH[0] <= dr <= EN_DASH[1]:
+            raise SystemExit(f"{sid}: printed dash is {dr:.2f} cap heights wide, not an en dash")
+        res = sg.get("ocr_resolution")
+        status = "agrees" if dist == 0 else "resolved" if resolved(got, caption, res) else "UNRESOLVED"
+        verify.append((sid, norm_text(got), caption, dist, ratio, dr, status, res))
         page = source["pages"][pi]
         out.append({
             "signal_id": sid,
@@ -350,16 +380,22 @@ def main():
         "notes": src["notes"],
         "signals": out,
     }
+    report = verify_report(verify)
+    bad = [sid for sid, *_, status, _ in verify if status == "UNRESOLVED"]
+    if bad:
+        (work / "VERIFY.md").write_text(report)
+        raise SystemExit(f"unresolved OCR disagreements: {', '.join(bad)} (see {work / 'VERIFY.md'})")
+
+    svg_dir = OUT / "svg"
+    svg_dir.mkdir(exist_ok=True)
+    for sid, svg in svgs.items():
+        (svg_dir / f"{sid}.svg").write_text(svg)
     (OUT / "signals.json").write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n")
-
-    if not a.no_ocr:
-        write_verify(verify, work)
-    if not a.work:
-        shutil.rmtree(work)
+    (HERE / "VERIFY.md").write_text(report)
 
 
-def write_verify(rows, work):
-    tver = subprocess.run(["tesseract", "--version"], capture_output=True, text=True).stdout.splitlines()[0]
+def verify_report(rows) -> str:
+    tver = tool_version("tesseract")
     lines = [
         "# Caption verification",
         "",
@@ -367,19 +403,23 @@ def write_verify(rows, work):
         f"`{tver}` (`--psm 6 -l eng`) and compared with the transcription in",
         "`signals.src.yaml` after normalizing whitespace, dashes and quotes.",
         "Distance is Levenshtein; ratio is distance / transcription length.",
-        "Only distance 0 counts as agreement. Every other case was resolved by",
-        "reading the full-resolution caption crop; the resolution is recorded per signal.",
+        "Only distance 0 counts as agreement. Every other case was checked against the",
+        "full-resolution caption crop and recorded as exact OCR-to-print replacements;",
+        "it counts as resolved only if those replacements turn the OCR text into the",
+        "transcription. Anything else fails the build.",
+        f"Figures traced with `{tool_version('potrace')}`.",
         "",
         "OCR cannot tell a hyphen from an en or em dash, so the dash after each name is",
         "measured in pixels: its width over the height of the caption's first capital letter.",
         f"An en dash (half an em) measures about 0.75; the build fails outside {EN_DASH[0]}-{EN_DASH[1]}.",
         "",
     ]
-    bad = []
-    for sid, got, cap, dist, ratio, dr, res in rows:
-        status = "agrees" if dist == 0 else "resolved" if res else "UNRESOLVED"
-        if status == "UNRESOLVED":
-            bad.append(sid)
+    for sid, got, cap, dist, ratio, dr, status, res in rows:
+        if res:
+            fixes = "; ".join(f"`{w}` -> `{r}`" for w, r in res["replace"])
+            note = f"{res['note']} Replacements: {fixes}."
+        else:
+            note = "After normalization, OCR matches the transcription exactly."
         lines += [
             f"## {sid}",
             "",
@@ -387,12 +427,10 @@ def write_verify(rows, work):
             f"- Transcription: `{cap}`",
             f"- Distance: {dist} (ratio {ratio:.3f}), {status}",
             f"- Dash: {dr:.2f} cap heights wide (en dash)",
-            f"- Resolution: {res or 'After normalization, OCR matches the transcription exactly.'}",
+            f"- Resolution: {note}",
             "",
         ]
-    (HERE / "VERIFY.md").write_text("\n".join(lines))
-    if bad:
-        raise SystemExit(f"unresolved OCR disagreements: {', '.join(bad)} (crops in {work})")
+    return "\n".join(lines)
 
 
 if __name__ == "__main__":
