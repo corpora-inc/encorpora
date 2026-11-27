@@ -42,6 +42,8 @@ zip = { version = "2", default-features = false, features = ["deflate"] }
 # from the OS RNG (getrandom 0.2 is already in the tree via rand_core).
 chacha20poly1305 = { version = "0.11", default-features = false, features = ["alloc"] }
 getrandom = { version = "0.2", features = ["std"] }
+# Delta packs: BSDIFF40 patches of the SQLite file (bsdiff 4.x compatible).
+qbsdiff = "1.4"
 # Plain-HTTP client for a local or lab OpenAI-compatible server (CLI only).
 ureq = { version = "3", default-features = false, features = ["json"], optional = true }
 # Same pins as corpan/plugins/tauri-plugin-corpan-llm.

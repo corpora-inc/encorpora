@@ -108,6 +108,7 @@ pub trait Llm: Send + Sync {
 
 | Module | What it does |
 |---|---|
+| `delta` | Signed delta packs: a BSDIFF40 patch of the SQLite file plus the target's own signed manifest; `install_delta` patches the installed base and commits only a result that verifies as the full target pack. `make_delta` writes one. |
 | `packs` | Manifest parse, ed25519 signature check, file hashes, atomic install from a directory or zip (zip-slip, symlink, entry-count and written-byte limits), downgrade refusal, `current` pointer, install stamp. |
 | `pack` | A verified pack open read-only; typed rows (`section`, `fact`, `answer`, `equipment`, `applies_to`, `explanation`, `chunk`); `SCHEMA_V1` DDL (asserted equal to CONTRACT by a test). |
 | `normalize` | Case/punctuation folding, number words to digits, one spelling per unit, Snowball stemming, synonym expansion from the pack, equipment mentions, safe FTS5 query building. |
@@ -178,9 +179,11 @@ These fill gaps CONTRACT leaves open. The pipeline writes packs this way.
 harvest verify  <pack-dir> [--pubkey KEY] [--json]
 harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--json]
 harvest ask     <pack-dir> "<question>" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
-                [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db>] [--json]
-harvest audit   <records-db> [--json]      # verify the chain; modes and bake hit rate
-harvest outbox  <records-db> [--to <dir>] [--json]   # upload queue; --to flushes it into a folder
+                [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db> [--records-key FILE]] [--json]
+harvest audit   <records-db> [--records-key FILE] [--json]   # verify the chain; modes and bake hit rate
+harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # upload queue; --to flushes it into a folder
+harvest install <root> <pack-or-delta-dir> [--json]          # verified, atomic; full or delta
+harvest delta   <base-dir> <target-dir> <out-dir> [--json]    # signs with $HARVEST_SIGNING_KEY when set
 harvest fixture <dir>
 ```
 

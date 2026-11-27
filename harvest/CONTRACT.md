@@ -32,8 +32,18 @@ One SQLite database, `<pack_id>-<version>.sqlite`, plus `manifest.json`:
   "signature": { "alg": "ed25519", "key_id": "…", "sig": "<base64 over canonical manifest without signature>" } }
 ```
 
-The core refuses a pack whose signature or file hash fails. Delta packs carry
-`"base_version"` and a list of row upserts/deletes per table.
+The core refuses a pack whose signature or file hash fails.
+
+A delta pack turns the installed version into the next one byte for byte. Its
+signed `manifest.json` carries `"base_version"`, `"base_sha256"` (the base
+database file it patches) and lists two files:
+`<target database path>.bsdiff` (a BSDIFF40 patch from the base SQLite file to
+the target's) and `target.manifest.json` (the target's own signed full
+manifest, unchanged). The core patches the installed base and then accepts
+the result only as that full pack: signature, every file hash, no downgrade.
+Other files must be unchanged from the base. `harvest delta` writes one from
+two full pack directories (signed with `HARVEST_SIGNING_KEY`, the bake's
+key, when set). Without the base installed, the host installs the full pack.
 
 ## Schema v1
 

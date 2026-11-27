@@ -18,6 +18,9 @@ const USAGE: &str = "usage:
                   [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db> [--records-key FILE]] [--pubkey KEY] [--json]
   harvest audit   <records-db> [--records-key FILE] [--json]
   harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # queue status; --to flushes it into a folder
+  harvest install <root> <pack-or-delta-dir> [--pubkey KEY] [--json]   # full or delta, verified, atomic
+  harvest delta   <base-dir> <target-dir> <out-dir> [--pubkey KEY] [--json]
+                  # signs with $HARVEST_SIGNING_KEY (base64 ed25519 seed) when set, else writes it unsigned
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -92,6 +95,8 @@ fn main() -> ExitCode {
     let json_out = args.has("json");
     let result = match cmd.as_str() {
         "verify" => verify(&args),
+        "install" => install(&args),
+        "delta" => delta(&args),
         "search" => search(&args),
         "ask" => ask(&args),
         "audit" => audit(&args),
@@ -528,6 +533,95 @@ fn records_key(args: &Args) -> Result<Option<[u8; 32]>, CliError> {
         ));
     }
     Ok(Some(key))
+}
+
+fn install(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["pubkey", "json"])?;
+    let [root, src] = args.positional.as_slice() else {
+        return Err(CliError::Usage(
+            "usage: harvest install <root> <pack-or-delta-dir>".into(),
+        ));
+    };
+    let keys = keys(args)?;
+    let src = Path::new(src);
+    let manifest = harvest_core::packs::read_manifest(src, &keys)?;
+    let done = if manifest.is_delta() {
+        harvest_core::delta::install_delta(Path::new(root), src, &keys)?
+    } else {
+        harvest_core::packs::install_dir(Path::new(root), src, &keys)?
+    };
+    if args.has("json") {
+        println!(
+            "{}",
+            json!({"ok": true, "pack_id": done.pack_id, "version": done.version,
+                   "previous": done.previous, "changed": done.changed, "delta": manifest.is_delta()})
+        );
+    } else {
+        println!(
+            "{} {} {}",
+            done.pack_id,
+            done.version,
+            if done.changed {
+                "installed"
+            } else {
+                "already current"
+            }
+        );
+    }
+    Ok(())
+}
+
+fn delta(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["pubkey", "json"])?;
+    let [base, target, out] = args.positional.as_slice() else {
+        return Err(CliError::Usage(
+            "usage: harvest delta <base-dir> <target-dir> <out-dir>".into(),
+        ));
+    };
+    let signer = match std::env::var("HARVEST_SIGNING_KEY") {
+        Err(std::env::VarError::NotPresent) => None,
+        Err(std::env::VarError::NotUnicode(_)) => {
+            return Err(CliError::Usage("HARVEST_SIGNING_KEY is not base64".into()));
+        }
+        Ok(b64) => {
+            use base64::Engine as _;
+            let raw = base64::engine::general_purpose::STANDARD
+                .decode(b64.trim())
+                .map_err(|_| CliError::Usage("HARVEST_SIGNING_KEY is not base64".into()))?;
+            let seed: [u8; 32] = raw.try_into().map_err(|_| {
+                CliError::Usage("HARVEST_SIGNING_KEY must be a 32-byte ed25519 seed".into())
+            })?;
+            Some(ed25519_dalek::SigningKey::from_bytes(&seed))
+        }
+    };
+    let m = harvest_core::delta::make_delta(
+        Path::new(base),
+        Path::new(target),
+        Path::new(out),
+        &keys(args)?,
+        signer.as_ref(),
+    )?;
+    let bytes: u64 = m.files.iter().map(|f| f.bytes).sum();
+    if args.has("json") {
+        println!(
+            "{}",
+            json!({"ok": true, "pack_id": m.pack_id, "base_version": m.base_version,
+                   "version": m.version, "bytes": bytes, "signed": signer.is_some()})
+        );
+    } else {
+        println!(
+            "{} {} -> {}: {bytes} bytes{}",
+            m.pack_id,
+            m.base_version.as_deref().unwrap_or(""),
+            m.version,
+            if signer.is_some() {
+                ", signed"
+            } else {
+                ", unsigned (sign manifest.json)"
+            }
+        );
+    }
+    Ok(())
 }
 
 fn citation(pack: &Pack, section_id: &str) -> Result<String, CliError> {
