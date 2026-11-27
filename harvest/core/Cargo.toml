@@ -38,6 +38,10 @@ base64 = "0.22"
 rust-stemmers = "1.2"
 # Archives are optional transport for packs; deflate only, pure Rust.
 zip = { version = "2", default-features = false, features = ["deflate"] }
+# Records encryption at rest: XChaCha20-Poly1305, pure Rust; nonces and keys
+# from the OS RNG (getrandom 0.2 is already in the tree via rand_core).
+chacha20poly1305 = { version = "0.11", default-features = false, features = ["alloc"] }
+getrandom = { version = "0.2", features = ["std"] }
 # Plain-HTTP client for a local or lab OpenAI-compatible server (CLI only).
 ureq = { version = "3", default-features = false, features = ["json"], optional = true }
 # Same pins as corpan/plugins/tauri-plugin-corpan-llm.

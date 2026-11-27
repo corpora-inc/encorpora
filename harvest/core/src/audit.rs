@@ -6,6 +6,7 @@
 //! hash, so an edit made around the triggers is detected.
 
 use crate::answer::{AskResponse, AskTrace, Mode};
+use crate::crypt::{self, RecordKey};
 use crate::error::{Error, Result};
 use crate::packs::hex_encode;
 use rusqlite::{Connection, OptionalExtension, params};
@@ -131,6 +132,23 @@ pub fn append(conn: &Connection, entry: &AuditEntry) -> Result<i64> {
 /// Append inside a transaction the caller already holds with the write lock
 /// (`BEGIN IMMEDIATE`), to commit the entry together with other writes.
 pub fn append_locked(tx: &Connection, entry: &AuditEntry) -> Result<i64> {
+    append_locked_with(tx, None, entry)
+}
+
+fn entry_aad(prev_hash: &str) -> String {
+    format!("audit.entry:{prev_hash}")
+}
+
+/// [`append_locked`] for a store encrypted with `key`: the entry is sealed
+/// (bound to its place in the chain) and the chain hashes the sealed text, so
+/// the chain verifies without the key.
+pub fn append_locked_with(
+    tx: &Connection,
+    key: Option<&RecordKey>,
+    entry: &AuditEntry,
+) -> Result<i64> {
+    // A keyless append to an encrypted store (or a wrong key) is refused.
+    crate::records::check_key(tx, key)?;
     let prev: String = tx
         .query_row(
             "SELECT hash FROM audit ORDER BY seq DESC LIMIT 1",
@@ -139,7 +157,7 @@ pub fn append_locked(tx: &Connection, entry: &AuditEntry) -> Result<i64> {
         )
         .optional()?
         .unwrap_or_else(|| GENESIS.to_string());
-    let bytes = entry_bytes(entry)?;
+    let bytes = crypt::seal_opt(key, &entry_aad(&prev), &entry_bytes(entry)?)?;
     let hash = chain_hash(&prev, &bytes);
     tx.execute(
         "INSERT INTO audit (ts, entry, prev_hash, hash) VALUES (?1, ?2, ?3, ?4)",
@@ -155,7 +173,7 @@ pub struct ChainReport {
     pub entries: u64,
     /// The first sequence number whose hash or link is wrong.
     pub first_bad: Option<i64>,
-    /// Answers per mode.
+    /// Answers per mode (`sealed` counts entries read without the key).
     pub modes: BTreeMap<String, u64>,
     /// `baked / (all answers)`; `None` with no entries.
     pub bake_hit_rate: Option<f64>,
@@ -179,6 +197,12 @@ fn has_table(conn: &Connection) -> Result<bool> {
 /// Recompute every link. Reads only: a database with no audit table is an
 /// empty, valid log.
 pub fn verify_chain(conn: &Connection) -> Result<ChainReport> {
+    verify_chain_with(conn, None)
+}
+
+/// [`verify_chain`] for a store encrypted with `key`. Without the key the
+/// links still verify; modes count as `sealed` and there is no hit rate.
+pub fn verify_chain_with(conn: &Connection, key: Option<&RecordKey>) -> Result<ChainReport> {
     let mut report = ChainReport {
         ok: true,
         entries: 0,
@@ -203,7 +227,13 @@ pub fn verify_chain(conn: &Connection) -> Result<ChainReport> {
             report.ok = false;
             report.first_bad = Some(seq);
         }
-        if let Ok(e) = serde_json::from_str::<AuditEntry>(&entry) {
+        if key.is_none() && crypt::is_sealed(&entry) {
+            *report.modes.entry("sealed".into()).or_insert(0) += 1;
+            prev = hash;
+            continue;
+        }
+        let opened = crypt::open_opt(key, &entry_aad(&prev_hash), &entry).ok();
+        if let Some(e) = opened.and_then(|t| serde_json::from_str::<AuditEntry>(&t).ok()) {
             let mode = serde_json::to_value(e.mode)?
                 .as_str()
                 .unwrap_or("unknown")
@@ -217,24 +247,38 @@ pub fn verify_chain(conn: &Connection) -> Result<ChainReport> {
     }
     if report.entries > 0 {
         report.head_hash = Some(prev);
-        let baked = *report.modes.get("baked").unwrap_or(&0) as f64;
-        report.bake_hit_rate = Some(baked / report.entries as f64);
+        if !report.modes.contains_key("sealed") {
+            let baked = *report.modes.get("baked").unwrap_or(&0) as f64;
+            report.bake_hit_rate = Some(baked / report.entries as f64);
+        }
     }
     Ok(report)
 }
 
 /// Entries, oldest first (for review export).
 pub fn entries(conn: &Connection) -> Result<Vec<(i64, AuditEntry)>> {
+    entries_with(conn, None)
+}
+
+/// [`entries`] for a store encrypted with `key`.
+pub fn entries_with(conn: &Connection, key: Option<&RecordKey>) -> Result<Vec<(i64, AuditEntry)>> {
     if !has_table(conn)? {
         return Ok(Vec::new());
     }
-    let mut stmt = conn.prepare("SELECT seq, entry FROM audit ORDER BY seq")?;
+    let mut stmt = conn.prepare("SELECT seq, entry, prev_hash FROM audit ORDER BY seq")?;
     let rows = stmt
-        .query_map([], |r| Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?)))?
+        .query_map([], |r| {
+            Ok((
+                r.get::<_, i64>(0)?,
+                r.get::<_, String>(1)?,
+                r.get::<_, String>(2)?,
+            ))
+        })?
         .collect::<rusqlite::Result<Vec<_>>>()?;
     rows.into_iter()
-        .map(|(s, e)| {
-            serde_json::from_str(&e)
+        .map(|(s, e, prev)| {
+            let text = crypt::open_opt(key, &entry_aad(&prev), &e)?;
+            serde_json::from_str(&text)
                 .map(|e| (s, e))
                 .map_err(|e| Error::Pack(format!("audit {s}: {e}")))
         })

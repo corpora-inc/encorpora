@@ -224,6 +224,11 @@ item goes up as:
 A run is recorded against the procedure's steps as they were when it began;
 a pack update that changes those steps refuses further results for that run.
 
+On the device, people's entries in `records.db` (step values, notes, photo
+references, outbox payloads, audit entries) are encrypted at rest with a key
+from the platform keystore; uploads leave the device in the clear over the
+transport's own encryption (TLS, or the folder the operator chose).
+
 The receiver stores items idempotently by `item_id` and answers each with
 `{ "item_id", "payload_sha256", "server_id", "received_at" }`. An item is done
 only when its receipt echoes its hash; anything else stays queued.
