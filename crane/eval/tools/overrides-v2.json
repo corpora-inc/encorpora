@@ -1,0 +1,8 @@
+{
+ "_doc": "Edits made by the eval lane to heldout-v2 after reading the independent check (review.py). Applied by build_set.py after review verdicts. Each entry says why.",
+ "V04-02": {
+  "gold_answer": "No. While actually operating, you can't do anything that diverts your attention, including using a cell phone, except for signal communications. If a phone is used for signals, the signal-device rules in §1926.1420 apply: the device must be tested on site before operations begin, signals must go through a dedicated channel (subject to that section's exceptions), and your reception must be hands-free.",
+  "section_ids": ["29cfr1926.1417(d)", "29cfr1926.1420(a)", "29cfr1926.1420(b)", "29cfr1926.1420(c)"],
+  "note": "The independent check's correction named §1926.1421 (voice signals); the device test, dedicated channel and hands-free rules are §1926.1420(a)-(c). Found by the adversarial review."
+ }
+}

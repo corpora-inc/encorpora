@@ -92,5 +92,11 @@
    "why": "Saying the shift/monthly/annual schedule doesn't apply is too broad. 1441(a) keeps 1412(c) post-assembly inspection and 1413-1414 wire rope rules, and 1413 has its own shift, monthly and annual rope inspections. The correction fixes this."
   }
  ],
+ "overrides": [
+  {
+   "src": "V04-02",
+   "note": "The independent check's correction named §1926.1421 (voice signals); the device test, dedicated channel and hands-free rules are §1926.1420(a)-(c). Found by the adversarial review."
+  }
+ ],
  "final": 73
 }

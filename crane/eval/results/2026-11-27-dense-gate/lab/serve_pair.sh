@@ -9,6 +9,7 @@ E=$!
 "$LS" -m "$M" --host 127.0.0.1 --port "$LP" -c 12288 -np 3 --jinja --no-webui -ngl 99 -fa on \
   > "$LAB/logs/serve-$L.log" 2>&1 &
 G=$!
-trap 'kill $E $G 2>/dev/null' EXIT TERM INT
 ( sleep "$T"; kill $E $G 2>/dev/null ) &
-wait -n $E $G     # either server exiting ends the job
+K=$!
+trap 'kill $E $G $K 2>/dev/null' EXIT TERM INT
+wait -n $E $G     # either server exiting (or the timer) ends the job

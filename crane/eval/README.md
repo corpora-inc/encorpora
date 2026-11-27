@@ -111,7 +111,7 @@ the pipeline's prompts or caches.
 | Dropped by the eval lane | 1 must-decline item naming a source that may join the corpus |
 | Items in v1 | **342**: 291 answerable, 51 must-decline |
 
-Rebuild the set from the committed outputs (byte-identical; v2 adds `--raw crane/eval/authoring/raw-v2 --review crane/eval/authoring/review-v2.json --avoid crane/eval/heldout-v1.jsonl --id-prefix crane-v2`):
+Rebuild the set from the committed outputs (byte-identical; for v2 use `--raw crane/eval/authoring/raw-v2 --review crane/eval/authoring/review-v2.json --overrides crane/eval/tools/overrides-v2.json --avoid crane/eval/heldout-v1.jsonl --id-prefix crane-v2 --out heldout-v2.jsonl`):
 
 ```sh
 python3 crane/eval/tools/build_set.py --sections crane/eval/sources/sections-2026-11-24.jsonl \

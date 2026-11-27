@@ -1,8 +1,8 @@
 # Evaluation report
 
-Set: `../../crane/eval/heldout-v2.jsonl` (73 items, sha256 `fce4576b732d8cd9…`). Run 2026-11-27T18:54:42+00:00 → 2026-11-27T18:54:42+00:00. Harness commit `8226c4eb3d`. Host: Darwin arm64, Python 3.14.9.
+Set: `../../crane/eval/heldout-v2.jsonl` (73 items, sha256 `f19bd6fe86d33a85…`). Run 2026-11-27T19:02:04+00:00 → 2026-11-27T19:02:09+00:00. Harness commit `2a08bdc443`. Host: Darwin arm64, Python 3.14.9.
 
-Judge: opus; agreement check with sonnet on a 15% sample. Judge calls this run: 0 (cached calls are free and not counted).
+Judge: claude-opus-5-5; agreement check with sonnet on a 15% sample. Judge calls this run: 1 (cached calls are free and not counted).
 
 ## Systems
 
@@ -30,7 +30,7 @@ Judge: opus; agreement check with sonnet on a 15% sample. Judge calls this run: 
 | Citation precision (supports a claim) | 0.571 | 0.170 | 0.165 |
 | Citations that exist in the corpus | 1.000 | 1.000 | 1.000 |
 | Quotes verbatim | 1.000 (64/64) | 1.000 (116/116) | 1.000 (113/113) |
-| Retrieval R@5 (lineage) | 0.617 (0.508–0.725) | 0.770 (0.678–0.856) | 0.770 (0.678–0.856) |
+| Retrieval R@5 (lineage) | 0.605 (0.500–0.715) | 0.770 (0.678–0.856) | 0.770 (0.678–0.856) |
 | Bake hit rate | 0.000 | 0.000 | 0.000 |
 | Equipment-specific fully correct | 0.214 (n=28) | 0.393 (n=28) | 0.393 (n=28) |
 | Latency p50 / p95 ms (reported) | 4 / 17 | 18 / 28 | 4432 / 6431 |
@@ -41,25 +41,25 @@ Judge: opus; agreement check with sonnet on a 15% sample. Judge calls this run: 
 
 | Level | P@1 | P@3 | P@5 | P@10 | R@1 | R@3 | R@5 | R@10 | MRR@10 |
 |---|---|---|---|---|---|---|---|---|---|
-| strict | 0.424 | 0.254 | 0.193 | 0.107 | 0.297 | 0.465 | 0.517 | 0.568 | 0.548 |
-| lineage | 0.475 | 0.299 | 0.261 | 0.147 | 0.347 | 0.534 | 0.617 | 0.665 | 0.582 |
-| section | 0.559 | 0.435 | 0.407 | 0.253 | 0.551 | 0.771 | 0.805 | 0.822 | 0.663 |
+| strict | 0.424 | 0.254 | 0.193 | 0.107 | 0.284 | 0.452 | 0.504 | 0.555 | 0.548 |
+| lineage | 0.475 | 0.299 | 0.261 | 0.147 | 0.335 | 0.521 | 0.605 | 0.653 | 0.582 |
+| section | 0.559 | 0.435 | 0.407 | 0.253 | 0.538 | 0.758 | 0.792 | 0.809 | 0.663 |
 
 ## Retrieval: harvest-model-off-dense-gate
 
 | Level | P@1 | P@3 | P@5 | P@10 | R@1 | R@3 | R@5 | R@10 | MRR@10 |
 |---|---|---|---|---|---|---|---|---|---|
-| strict | 0.661 | 0.367 | 0.271 | 0.163 | 0.425 | 0.627 | 0.699 | 0.771 | 0.755 |
-| lineage | 0.678 | 0.407 | 0.319 | 0.195 | 0.442 | 0.692 | 0.770 | 0.846 | 0.772 |
-| section | 0.729 | 0.582 | 0.525 | 0.356 | 0.712 | 0.907 | 0.924 | 0.975 | 0.817 |
+| strict | 0.661 | 0.367 | 0.271 | 0.163 | 0.412 | 0.614 | 0.686 | 0.758 | 0.755 |
+| lineage | 0.678 | 0.407 | 0.322 | 0.197 | 0.429 | 0.679 | 0.770 | 0.846 | 0.772 |
+| section | 0.729 | 0.582 | 0.529 | 0.358 | 0.699 | 0.894 | 0.924 | 0.975 | 0.817 |
 
 ## Retrieval: harvest-gpt-oss-20b-dense-gate
 
 | Level | P@1 | P@3 | P@5 | P@10 | R@1 | R@3 | R@5 | R@10 | MRR@10 |
 |---|---|---|---|---|---|---|---|---|---|
-| strict | 0.644 | 0.367 | 0.271 | 0.163 | 0.419 | 0.627 | 0.699 | 0.771 | 0.744 |
-| lineage | 0.678 | 0.407 | 0.319 | 0.193 | 0.453 | 0.692 | 0.770 | 0.846 | 0.772 |
-| section | 0.729 | 0.582 | 0.522 | 0.353 | 0.712 | 0.907 | 0.924 | 0.975 | 0.817 |
+| strict | 0.644 | 0.367 | 0.271 | 0.163 | 0.407 | 0.614 | 0.686 | 0.758 | 0.744 |
+| lineage | 0.678 | 0.407 | 0.322 | 0.195 | 0.441 | 0.679 | 0.770 | 0.846 | 0.772 |
+| section | 0.729 | 0.582 | 0.525 | 0.354 | 0.699 | 0.894 | 0.924 | 0.975 | 0.817 |
 
 ## Fully correct by category
 
