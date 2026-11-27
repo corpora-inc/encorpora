@@ -41,6 +41,7 @@ jobs:
   gate:
     name: Gate · version-change detect
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     outputs:
       release: ${{ steps.decide.outputs.release }}
       version: ${{ steps.decide.outputs.version }}
@@ -106,6 +107,7 @@ jobs:
     # requires ("All iOS apps must be built with the iOS 26 SDK or later").
     # macos-14 tops out at Xcode 16.2 (iOS 18.2 SDK) and uploads are rejected.
     runs-on: macos-26
+    timeout-minutes: 90
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -325,6 +327,7 @@ jobs:
     needs: gate
     if: needs.gate.outputs.do_android == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 90
     steps:
       - name: Initialize verified client trust
         id: ci-trust

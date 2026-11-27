@@ -34,6 +34,7 @@ jobs:
   changes:
     name: changes
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     outputs:
       corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
@@ -430,6 +431,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.corpan_app == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -780,6 +782,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.lambda == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -822,6 +825,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -878,6 +882,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.packs == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -971,6 +976,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.terraform == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1018,6 +1024,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.packs == 'true' || needs.changes.outputs.web == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1739,6 +1746,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.aha_app == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: aha/aha-app
@@ -2184,6 +2192,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_film == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: amp
@@ -2236,6 +2245,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_core == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 75
     defaults:
       run:
         working-directory: amp
@@ -2281,6 +2291,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_database == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     defaults:
       run:
         working-directory: amp
@@ -2357,6 +2368,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_build == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     defaults:
       run:
         working-directory: amp
@@ -2410,6 +2422,7 @@ jobs:
     - amp-build
     if: ${{ always() && needs.changes.outputs.amp == 'true' }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -2462,6 +2475,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_native == 'true'
     runs-on: macos-latest
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: amp/mobile
@@ -2516,7 +2530,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.corpora_site == 'true'
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -2602,6 +2616,7 @@ jobs:
       contents: read
       issues: write
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Initialize verified client trust
         id: ci-trust
