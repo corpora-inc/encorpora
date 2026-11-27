@@ -2,8 +2,8 @@
 //! 32-byte key, the format `harvest_core::TrustedKey::parse` and
 //! `harvest-bake verify --pubkey` read).
 //!
-//! - **Production** (`keys/pack-production.pub`): signs every pack a release
-//!   ships. Its private half is the `CRANE_PACK_SIGNING_KEY` Actions secret;
+//! - **Production** (`keys/pack-production.pub`): signs the packs a release
+//!   ships (once the harvest-core swap opens packs with [`trusted`]). Its private half is the `CRANE_PACK_SIGNING_KEY` Actions secret;
 //!   `scripts/check-pack-key.sh` proves the secret and each built pack match
 //!   this file. Rotation: `crane/app/RELEASE_SETUP.md`, "Pack signing key".
 //! - **Lab** (`keys/pack-lab.pub`): the evaluation lab's key. Trusted only in
@@ -15,19 +15,21 @@ pub const PRODUCTION: &str = include_str!("../keys/pack-production.pub");
 /// The lab key (dev and test builds only).
 pub const LAB: &str = include_str!("../keys/pack-lab.pub");
 
-/// The keys this build accepts a pack from.
+/// The keys a release build accepts. During a rotation this also holds the
+/// next key (RELEASE_SETUP.md, "Rotation"); never the lab key.
+pub fn release_trusted() -> Vec<&'static str> {
+    vec![PRODUCTION.trim()]
+}
+
+/// The keys this build accepts a pack from: the release set, plus the lab key
+/// in debug and test builds only. Built on [`release_trusted`], so the
+/// release behaviour is the code the tests exercise.
 pub fn trusted() -> Vec<&'static str> {
-    let mut keys = vec![PRODUCTION.trim()];
+    let mut keys = release_trusted();
     if cfg!(debug_assertions) {
         keys.push(LAB.trim());
     }
     keys
-}
-
-/// The keys a release build accepts: production only. Kept separate from
-/// [`trusted`] so tests can assert it in a debug test binary.
-pub fn release_trusted() -> Vec<&'static str> {
-    vec![PRODUCTION.trim()]
 }
 
 #[cfg(test)]
@@ -49,10 +51,14 @@ mod tests {
     }
 
     #[test]
-    fn release_builds_trust_only_production() {
-        assert_eq!(release_trusted(), vec![PRODUCTION.trim()]);
+    fn release_builds_never_trust_the_lab_key() {
+        assert!(release_trusted().contains(&PRODUCTION.trim()));
         assert!(!release_trusted().contains(&LAB.trim()));
-        assert_eq!(trusted()[0], PRODUCTION.trim());
-        assert_eq!(trusted().contains(&LAB.trim()), cfg!(debug_assertions));
+        // This build's set is the release set, plus the lab key only in debug.
+        let mut expected = release_trusted();
+        if cfg!(debug_assertions) {
+            expected.push(LAB.trim());
+        }
+        assert_eq!(trusted(), expected);
     }
 }

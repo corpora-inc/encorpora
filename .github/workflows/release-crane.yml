@@ -17,9 +17,9 @@ name: Release · Crane mobile (TestFlight + Play internal)
 #     unsigned AAB with no secrets at all, so the build can be proven before
 #     any credential or store record exists.
 #
-# Status as of the change that added this file: NEVER EXECUTED, in either mode.
-# Rust does not build on the machine this was written on, so no step below has
-# been run against this app. See crane/app/RELEASE_SETUP.md.
+# Status: `unsigned` mode passed on main (2026-11-27, both platforms). The
+# signed path has never run: its store records and secrets are founder actions.
+# See crane/app/RELEASE_SETUP.md.
 #
 # This workflow is not a required status check and must never become one: it
 # runs only on a `crane-v*` tag or a manual dispatch, never on a pull request.
