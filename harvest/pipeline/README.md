@@ -60,13 +60,26 @@ profiles:
 
 ## Parsers
 
-Deterministic only; none calls a model. `ecfr` (eCFR versioner XML): part, subpart, section,
-paragraph `(a)(1)(i)(A)` and italic levels, inline heading chains, tables, notes, figures,
-appendices; ids are citation paths (`29cfr1926.1408(a)(2)`, `29cfr1926.1408-table-A`); xrefs from
-`§`, `paragraph (b)(3) of this section`, `Table A of this section`, ranges, and consensus standards
-by number only (`asme:B30.5-2004`, never ingested). A row's `text` is its exact source text,
-whitespace-normalized, including its descendants, so any quote inside a paragraph validates
-against that paragraph and every ancestor.
+Deterministic only; none calls a model. Every parser is tested on fixtures generated in the tests.
+
+| parser | input | structure kept |
+|---|---|---|
+| `ecfr` | eCFR versioner XML | part, subpart, section, paragraph `(a)(1)(i)(A)` and italic levels, inline heading chains, tables, notes, figures, appendices; ids are citation paths (`29cfr1926.1408(a)(2)`, `29cfr1926.1408-table-A`); xrefs from `§`, ranges, `paragraph (b)(3) of this section`, `Table A of this section`, appendices, subparts, and consensus standards by number only (`asme:B30.5-2004`, never ingested) |
+| `pdf` | PDF with a text layer | headings by font size rank / short bold lines / `heading_regex`; paragraphs, bullets, ruled tables (text removed from the running text), figures; running headers and footers dropped; pages with no text layer are OCR'd |
+| `ocr` | scanned PDF or an image | Tesseract on every page (`ocr_dpi`, `ocr_lang`) |
+| `docx` | Word | Heading N / Title styles, list levels, tables, drawings, in body order |
+| `html` | HTML | h1-h6, p, nested lists, tables with captions, figures, notes; nav/header/footer/script dropped |
+| `markdown`, `text` | Markdown / plain text | headings, paragraphs, nested lists, pipe tables, images, `> NOTE:` blocks |
+| `xml`, `sgml` | XML or SGML manuals | configurable `element_map` (section, heading, para, item, list, table, row, cell, figure, note, skip, number_attrs); SGML with omitted end tags and undeclared entities parses through a tolerant builder |
+
+Formats without a native citation scheme share one outline builder (`parsers/outline.py`): ids
+are `<id_prefix>:<number>` when a heading carries a section number (`number_regex`, default
+`16.A.01`, `11-3`, `4.2.1` style) or a paragraph matches `para_number_regex`; otherwise
+`<parent>/<heading-slug>`, `<parent>-p<n>` (paragraph), `.n` (list item), `-table-<label>`,
+`-fig-<n>`, `-note-<n>`. Options: `id_prefix`, `citation_prefix`, `pages` (PDF, "12-30,41").
+
+A row's `text` is its exact source text, whitespace-normalized, including its descendants, so
+any quote inside a paragraph validates against that paragraph and every ancestor.
 
 ## Backends
 
