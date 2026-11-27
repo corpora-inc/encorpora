@@ -2,7 +2,8 @@
 
 `similarity(query, alias)` mirrors harvest/core `answer::similarity` over
 `normalize::normalize_query` without pack synonyms (synonyms only raise a score,
-so collisions found here are a lower bound): Dice overlap of content stems
+so collisions found here are a lower bound; snowballstemmer 3.x against the
+engine's rust-stemmers, pinned by the engine scores in verify/test_content.py): Dice overlap of content stems
 (Snowball English), halved when the two sides carry different numbers. The
 engine serves a cached answer when a question reaches `CACHE_THRESHOLD` against
 one of its aliases. An alias that comes within `COLLIDE` of another answer's
@@ -13,6 +14,7 @@ wrong answer to a question it was never written for; the writer drops it.
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 
 import snowballstemmer
 
@@ -83,7 +85,16 @@ def _raw_tokens(f: str) -> list[str]:
     return out
 
 
+@lru_cache(maxsize=200_000)
+def _tokens(text: str) -> tuple[str, ...]:
+    return tuple(_tokens_uncached(text))
+
+
 def tokens(text: str) -> list[str]:
+    return list(_tokens(text))
+
+
+def _tokens_uncached(text: str) -> list[str]:
     raw = _raw_tokens(fold(text))
     out: list[str] = []
     i = 0
@@ -117,6 +128,7 @@ def tokens(text: str) -> list[str]:
     return out
 
 
+@lru_cache(maxsize=200_000)
 def stem(t: str) -> str:
     return t if _is_number(t) else _STEM.stemWord(t)
 

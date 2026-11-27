@@ -153,6 +153,14 @@ class UsageCeiling(Exception):
     pass
 
 
+class CallFailed(RuntimeError):
+    """A model call that failed after it may have spent; `spend` is what it reported, if anything."""
+
+    def __init__(self, msg: str, spend: dict | None = None):
+        super().__init__(msg)
+        self.spend = spend
+
+
 def weekly_used() -> float:
     """Weekly usage percent. Fails closed: unreadable usage stops generation unless
     HARVEST_USAGE_UNKNOWN_OK=1 is set explicitly."""
@@ -200,6 +208,16 @@ def record_spend(task_id: str, input_id: str, r: dict) -> None:
             f.write(json.dumps(row) + "\n")
 
 
+def mean_spend(model: str) -> dict:
+    """The mean call of this backend so far (the run's mean before it has one)."""
+    s = spent()
+    mine = [m for k, m in s["by_model"].items() if backend_of(k) == backend_of(model)] or list(s["by_model"].values())
+    calls = sum(m["calls"] for m in mine)
+    if not calls:
+        return {"cost_usd": 0.0, "usage": {}}
+    return {"cost_usd": sum(m["usd"] for m in mine) / calls, "usage": {"output_tokens": sum(m["output_tokens"] for m in mine) // calls}}
+
+
 def output_tokens(usage: dict) -> int:
     """Claude counts thinking inside output_tokens; Codex reports reasoning separately."""
     return int(usage.get("output_tokens") or 0) + int(usage.get("reasoning_output_tokens") or 0)
@@ -238,11 +256,16 @@ def call_claude(system: str, prompt: str, schema: dict, model: str, timeout: int
            "--system-prompt", system, "--json-schema", json.dumps(schema), "--output-format", "json"]
     t0 = time.time()
     p = subprocess.run(cmd, input=prompt, capture_output=True, text=True, cwd=EMPTY, timeout=timeout)
-    if p.returncode != 0:
-        raise RuntimeError(f"claude exit {p.returncode}: {p.stderr[-800:]} {p.stdout[-400:]}")
-    res = json.loads(p.stdout)
-    if res.get("is_error") or "structured_output" not in res:
-        raise RuntimeError(f"claude error: {str(res)[:800]}")
+    try:
+        res = json.loads(p.stdout)
+    except json.JSONDecodeError:
+        res = None
+    if p.returncode != 0 or not isinstance(res, dict) or res.get("is_error") or "structured_output" not in res:
+        spend = None
+        if isinstance(res, dict) and (res.get("total_cost_usd") is not None or res.get("usage")):
+            spend = {"model": ",".join(res.get("modelUsage", {}).keys()) or model, "cost_usd": res.get("total_cost_usd"),
+                     "usage": res.get("usage") or {}}
+        raise CallFailed(f"claude exit {p.returncode}: {p.stderr[-600:]} {p.stdout[-600:]}", spend)
     return {"output": res["structured_output"], "model": ",".join(res.get("modelUsage", {}).keys()) or model,
             "usage": res.get("usage", {}), "cost_usd": res.get("total_cost_usd"), "seconds": round(time.time() - t0, 1)}
 
@@ -260,18 +283,23 @@ def call_codex(system: str, prompt: str, schema: dict, model: str, timeout: int 
     with tempfile.TemporaryDirectory(prefix="crane-codex-") as td:
         sf, of = Path(td) / "schema.json", Path(td) / "out.json"
         sf.write_text(json.dumps(strict_schema(schema)))
-        cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "--sandbox", "read-only", "--json",
+        # --ignore-user-config: no personal config or MCP servers, so the output depends on the prompt alone
+        cmd = ["codex", "exec", "--ignore-user-config", "--skip-git-repo-check", "--ephemeral", "--sandbox", "read-only", "--json",
                "--output-schema", str(sf), "-o", str(of), "-C", str(EMPTY), "-m", model, "-"]
         t0 = time.time()
         p = subprocess.run(cmd, input=f"{system}\n\n{prompt}\n\nReply only with the JSON object the schema describes.",
                            capture_output=True, text=True, timeout=timeout)
+        usage: dict = {}
+        for line in p.stdout.splitlines():
+            if '"turn.completed"' in line:
+                usage = json.loads(line).get("usage", {})
+        spend = {"model": f"codex:{model}", "cost_usd": None, "usage": usage} if usage else None
         if not of.exists():
-            raise RuntimeError(f"codex exit {p.returncode}: {p.stderr[-800:]} {p.stdout[-400:]}")
-        out = json.loads(of.read_text())
-    usage: dict = {}
-    for line in p.stdout.splitlines():
-        if '"turn.completed"' in line:
-            usage = json.loads(line).get("usage", {})
+            raise CallFailed(f"codex exit {p.returncode}: {p.stderr[-800:]} {p.stdout[-400:]}", spend)
+        try:
+            out = json.loads(of.read_text())
+        except json.JSONDecodeError as e:
+            raise CallFailed(f"codex: invalid JSON: {e}", spend) from e
     return {"output": out, "model": f"codex:{model}", "usage": usage, "cost_usd": None, "seconds": round(time.time() - t0, 1)}
 
 
@@ -282,7 +310,8 @@ def strict_schema(schema):
     if not isinstance(schema, dict):
         return schema
     s = {k: strict_schema(v) for k, v in schema.items()}
-    if s.get("type") == "object" and "properties" in s:
+    ty = s.get("type")
+    if (ty == "object" or (isinstance(ty, list) and "object" in ty)) and "properties" in s:
         req = set(s.get("required", []))
         for k, v in s["properties"].items():
             if k not in req and isinstance(v, dict):
@@ -324,7 +353,7 @@ class Task:
 
     def cached(self, item):
         """The output for this exact prompt and model; else the output for the same input
-        text from another model at this prompt version (the configured model's first,
+        text from another model at this prompt version (the configured backend's first,
         then the newest); else, for versions listed under `accept_versions` in task.yaml,
         an older prompt's output (newest version first), so a partial re-run never drops
         verified rows."""
@@ -350,7 +379,14 @@ class Task:
         p = self.key(item)
         if p.exists():
             return json.loads(p.read_text())
-        r = call_model(self.system, item["prompt"], self.schema, item.get("model", self.model))
+        model = item.get("model", self.model)
+        try:
+            r = call_model(self.system, item["prompt"], self.schema, model)
+        except Exception as e:
+            # a failed call may still have spent: record what it reported, else the backend's mean so far
+            spend = getattr(e, "spend", None) or mean_spend(model)
+            record_spend(self.task_id, item["input_id"], {"model": model, **spend} if "model" not in spend else spend)
+            raise
         record_spend(self.task_id, item["input_id"], r)
         rec = {"task_id": self.task_id, "input_id": item["input_id"], "meta": item.get("meta", {}),
                "prompt_id": self.task_id, "prompt_version": self.version, "prompt_sha256": self.prompt_sha,
@@ -364,7 +400,8 @@ class Task:
         return rec
 
     def run(self, items: list[dict], concurrency: int = 4, log=print) -> dict:
-        todo = [i for i in items if not self.key(i).exists()]
+        # an input is done when it has an output for the current prompt from any model
+        todo = [i for i in items if not ((c := self.cached(i)) and c.get("prompt_version") == self.version)]
         model = self.model
         log(f"{self.task_id}: {len(items)} inputs, {len(items) - len(todo)} cached, {len(todo)} to generate")
         done, failed = 0, []

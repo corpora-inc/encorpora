@@ -315,19 +315,19 @@ def answers_write(task, items):
 
 _YES_NO = re.compile(r"^(is|are|am|was|were|do|does|did|can|could|must|may|might|should|shall|will|would|has|have|had|need|needs)\b", re.I)
 _QUANT = re.compile(r"^(how (many|much|far|long|often|close|high|low|wide|heavy|fast|deep)|what('s| is| are)? (the )?(minimum|maximum|max|min|distance|clearance|interval|limit|percent|percentage|number))\b", re.I)
-_NUMBERISH = re.compile(r"\d|\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|sixty|hundred|half|quarter|once|twice|every|each|daily|weekly|monthly|annually|no limit|none|not)\b", re.I)
+_NUMBERISH = re.compile(r"\d|\b(zero|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|sixty|hundred|half|quarter|once|twice|daily|weekly|monthly|annually|every (shift|day|week|month|year)|each (shift|day|week|month|year)|no (limit|minimum|maximum|set)|none)\b", re.I)
 
 
 def direct_answer_first(question: str, body: list) -> list[str]:
     """The answer opens with a text segment whose first sentence is the direct answer:
     Yes/No for a yes/no question, a number (or interval) for a how-many/how-far question."""
-    if not body or body[0].get("t") != "text" or not body[0].get("text", "").strip():
+    if not body or body[0].get("t") != "text" or not (body[0].get("text") or "").strip():
         return ["answer does not open with a text segment"]
     first = re.sub(r"^practice:\s*", "", body[0]["text"].strip(), flags=re.I)
     first = re.split(r"(?<=[.!?])\s", first, maxsplit=1)[0]
     q = question.strip()
-    request = re.match(r"^(can|could|would) you\b", q, re.I)
-    if _YES_NO.match(q) and not request and " or " not in q.lower() and not re.match(r"^(yes|no)\b", first, re.I):
+    request = re.match(r"^(can|could|would) you (show|give|explain|walk|tell|list|describe|help)\b", q, re.I)
+    if _YES_NO.match(q) and not request and " or " not in q.lower() and not re.match(r"^(yes|no|not|never|only|always)\b", first, re.I):
         return ["yes/no question not answered yes or no first"]
     if _QUANT.match(q) and not _NUMBERISH.search(first):
         return ["quantity question without a number first"]
@@ -365,8 +365,8 @@ def _collisions(texts: list[tuple], pairs):
         for m, k in Counter(chain.from_iterable(post[s] for s in stems[n])).items():
             if m == n or not pairs(n, m):
                 continue
-            if 2 * k / (len(stems[n]) + len(stems[m])) < 0.75 * intent.COLLIDE:
-                continue  # cheap prefilter: set Dice; repeated query stems can lift the real score a little
+            if 2 * k / (len(stems[n]) + len(stems[m])) < 0.5 * intent.COLLIDE:
+                continue  # cheap prefilter: set Dice; a query that repeats a stem can score up to ~1.5x it
             score = intent.collision(texts[n][2], texts[m][2])
             if score >= intent.COLLIDE:
                 yield n, m, score
@@ -385,11 +385,16 @@ def intent_check(rows: list[dict], stats: dict) -> None:
 
     live = [i for i, r in enumerate(rows) if r["prov"]["verdict"] == "pass"]
     qs = [(i, rows[i]["skill_id"], rows[i]["question"], True) for i in live]
-    dup: dict[int, tuple[str, float]] = {}
+    hits: dict[int, list[tuple[float, int]]] = {}
     for n, m, score in _collisions(qs, lambda n, m: qs[m][0] < qs[n][0]):
-        i, j = qs[n][0], qs[m][0]
-        if score >= intent.CACHE_THRESHOLD and score > dup.get(i, ("", 0.0))[1]:
-            dup[i] = (rows[j]["answer_id"], score)
+        if score >= intent.CACHE_THRESHOLD:
+            hits.setdefault(qs[n][0], []).append((score, qs[m][0]))
+    dup: dict[int, tuple[str, float]] = {}
+    for i in sorted(hits):  # a row only duplicates a row that is itself kept
+        kept = [(s, j) for s, j in hits[i] if j not in dup]
+        if kept:
+            s, j = max(kept)
+            dup[i] = (rows[j]["answer_id"], s)
     texts = []  # (row index or -1, skill_id, text, is_question)
     for i in live:
         if i in dup:

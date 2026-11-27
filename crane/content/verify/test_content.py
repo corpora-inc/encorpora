@@ -197,6 +197,26 @@ class Writers(unittest.TestCase):
         self.assertEqual(f("How far from a 50 kV line?", [{"t": "text", "text": "10 feet."}]), [])
         self.assertTrue(f("How far from a 50 kV line?", [{"t": "text", "text": "It depends on the table."}]))
         self.assertEqual(f("Can you show a worked example?", [{"t": "text", "text": "Here is one."}]), [])
+        self.assertEqual(f("Does a barge crane need one?", [{"t": "text", "text": "Not on a barge crane."}]), [])
+        self.assertTrue(f("How far from a 50 kV line?", [{"t": "text", "text": "It depends on each voltage band."}]))
+        self.assertTrue(f("How far from a 50 kV line?", [{"t": "text", "text": "You must not get closer than the table allows."}]))
+        self.assertTrue(f("Is it required?", [{"t": "text", "text": None}]))
+
+    def test_duplicate_chains_keep_the_middle_row_out(self):
+        try:
+            import intent  # noqa: F401
+        except ImportError:
+            self.skipTest("snowballstemmer not installed")
+
+        def row(aid, q):
+            return {"answer_id": aid, "skill_id": "s", "question": q, "aliases": ["p one", "p two", "p three"], "prov": {"verdict": "pass", "notes": None}}
+
+        rows = [row("a1", "crane level indicator barge"), row("a2", "crane level indicator barge deck"), row("a3", "level indicator barge deck")]
+        self.b._neighbour_stems = lambda: []
+        stats = {"pass": 3, "fail": 0, "fail_reasons": {}}
+        self.b.intent_check(rows, stats)
+        self.assertIn("duplicate intent of a1", rows[1]["prov"]["notes"] or "")
+        self.assertNotIn("duplicate intent of a2", rows[2]["prov"]["notes"] or "")
 
     def test_key_stands_out(self):
         self.assertTrue(self.b.key_stands_out(["short", "tiny", "a much longer and more qualified correct answer", "small"], 2))
@@ -241,6 +261,23 @@ class Budget(unittest.TestCase):
         self.assertEqual(s["by_model"]["codex:x"]["output_tokens"], 9500)
         with self.assertRaises(self.c.UsageCeiling):
             self.c.guard("codex:x", 1)  # 12500 + 9500 > 10000
+
+    def test_failed_call_is_recorded(self):
+        d = Path(self.tmp.name) / "tf"
+        d.mkdir()
+        (d / "task.yaml").write_text("task_id: tf\nprompt_version: 1\nmodel: codex:x\n")
+        (d / "system.md").write_text("s")
+        (d / "schema.json").write_text("{}")
+        task = self.c.Task(d)
+        self.c.record_spend("t", "i", {"model": "codex:x", "cost_usd": None, "usage": {"output_tokens": 800}})
+
+        def boom(*a, **k):
+            raise self.c.CallFailed("no output", None)
+
+        self.c.call_model = boom
+        with self.assertRaises(self.c.CallFailed):
+            task.run_one({"input_id": "k", "prompt": "p"})
+        self.assertEqual((self.c.spent()["calls"], self.c.spent()["output_tokens"]), (2, 1600))
 
     def test_cached_falls_back_to_an_accepted_older_version(self):
         d = Path(self.tmp.name) / "td"

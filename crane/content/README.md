@@ -42,7 +42,7 @@ reads `up to 50 | 10`. Appendices are `29cfr1926.cc.appA`, `.appB`, `.appC`.
 ## Verify
 
 ```sh
-python -m venv .venv && .venv/bin/pip install pyyaml snowballstemmer   # any venv
+python -m venv .venv && .venv/bin/pip install pyyaml "snowballstemmer>=3,<4"   # any venv
 .venv/bin/python crane/content/verify/ecfr.py                # fetch + index (cached in ~/.cache/crane-content)
 .venv/bin/python crane/content/verify/verify.py              # every citation and quote in crane/content
 .venv/bin/python -m unittest discover -s crane/content/verify
