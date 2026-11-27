@@ -3,3 +3,7 @@ dist/
 artifacts/
 src-tauri/target/
 src-tauri/gen/
+
+# The knowledge pack the release workflow builds and places (never committed).
+/src-tauri/resources/pack/
+/public/pack/

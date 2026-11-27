@@ -183,12 +183,23 @@ the private key lives in the CI secret store, and the public key is baked into t
 - **In place:** the gate job's step **Pack signing key matches the app** fails a
   signed release before any build unless the secret derives the production public
   key (`crane/app/scripts/check-pack-key.sh secret`; the script prints no private key material).
-- **Next (pipeline lane, after #2568):** the release builds the pack with
-  `crane/content/build-pack.sh`, passing the secret as `HARVEST_SIGNING_KEY` with
-  `CRANE_PACK_REQUIRE_KEY=1`, and runs
-  `crane/app/scripts/check-pack-key.sh pub <OUT_DIR>/pack.pub` before bundling it.
-- **Next (app lane, the harvest-core swap):** the app opens packs through
-  harvest-core with `pack_keys::trusted()`. Until then the app runs on its bundled
+- **In place:** the release's **pack** job builds the pack from the release commit with
+  `crane/content/build-pack.sh` (eCFR at the locked dates, the committed response cache,
+  no model), the script CI's `crane-pack` job runs. A signed run passes the secret as
+  `HARVEST_SIGNING_KEY` with `CRANE_PACK_REQUIRE_KEY=1` and runs
+  `crane/app/scripts/check-pack-key.sh pub <OUT_DIR>/pack.pub`. The script reads every
+  table back through harvest-core (`harvest-bake showcheck`) before the artifact
+  `crane-pack-<build>` is kept. The version is `<UTC date>-<build number>`. Both build
+  jobs download that artifact, check the key again, and place it before `npm ci`:
+  - `src-tauri/resources/pack/`: `<pack_id>-<version>.sqlite` and `manifest.json`;
+  - `public/pack/crane-us.browser.json`: the read API's JSON (`harvest-show/1`,
+    harvest/CONTRACT.md), which Vite copies into the web assets.
+
+  Both paths are git-ignored. CI and PR builds never see the production key: CI's
+  `crane-pack` job and unsigned proof runs sign with an ephemeral key.
+- **Next (app lane, the harvest-core swap):** list `resources/pack/` in
+  `tauri.conf.json` `bundle.resources` and open the pack through harvest-core with
+  `pack_keys::trusted()`. The browser build reads `public/pack/crane-us.browser.json`. Until then the app runs on its bundled
   sample data and verifies no pack signature. A release app will refuse any pack
   not signed by a key in `release_trusted()`.
 - Unsigned proof runs skip the gate: they ship nothing, and `build-pack.sh` signs

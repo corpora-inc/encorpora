@@ -193,10 +193,108 @@ jobs:
           fi
           "$APP_DIR/scripts/check-pack-key.sh" secret
 
+  # ---- Pack: the crane knowledge pack, built from this commit ------------
+  # crane/content/build-pack.sh builds the pack (eCFR at the locked dates, the
+  # committed response cache, no model), verifies it and reads every table back
+  # through harvest-core, the same script CI's crane-pack job runs. A signed run
+  # signs it with the production key (CRANE_PACK_SIGNING_KEY) and proves the
+  # result carries the key the app trusts; an unsigned proof run signs with an
+  # ephemeral key and ships nothing. Both build jobs bundle this artifact.
+  pack:
+    name: Pack · build + sign + read back
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      SIGNED: ${{ needs.gate.outputs.signed }}
+      BUILD_NUMBER: ${{ needs.gate.outputs.build_number }}
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: harvest/core
+      - name: Cache the locked eCFR sources
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/harvest/raw
+          key: crane-raw-${{ hashFiles('crane/content/corpus.sources.lock.json') }}
+      - name: Build harvest-core
+        working-directory: harvest/core
+        run: cargo build --locked --release --bin harvest
+      - name: Install harvest-pipeline
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --upgrade pip
+          "$RUNNER_TEMP/venv/bin/pip" install -e harvest/pipeline
+      - name: Build, verify and read back the pack
+        env:
+          HARVEST_BIN: ${{ github.workspace }}/harvest/core/target/release/harvest
+          # Only a signed run reads the production key; the job env never holds it.
+          PROD_KEY: ${{ needs.gate.outputs.signed == 'true' && secrets.CRANE_PACK_SIGNING_KEY || '' }}
+        run: |
+          set -euo pipefail
+          export PATH="$RUNNER_TEMP/venv/bin:$PATH"
+          # Versions compare by their numeric fields; the build number keeps them increasing.
+          HARVEST_PACK_VERSION="$(date -u +%Y.%m.%d)-${BUILD_NUMBER}"
+          export HARVEST_PACK_VERSION
+          if [ "$SIGNED" = true ]; then
+            export HARVEST_SIGNING_KEY="$PROD_KEY" CRANE_PACK_REQUIRE_KEY=1
+          fi
+          crane/content/build-pack.sh "$RUNNER_TEMP/crane-pack"
+          if [ "$SIGNED" = true ]; then
+            "$APP_DIR/scripts/check-pack-key.sh" pub "$RUNNER_TEMP/crane-pack/pack.pub"
+          fi
+          {
+            echo "### Crane pack"
+            echo ""
+            echo "version \`$HARVEST_PACK_VERSION\`, signed with the production key: \`$SIGNED\`"
+            echo ""
+            echo '```json'
+            cat "$RUNNER_TEMP/crane-pack/showcheck.json"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crane-pack-${{ needs.gate.outputs.build_number }}
+          path: |
+            ${{ runner.temp }}/crane-pack/pack/
+            ${{ runner.temp }}/crane-pack/pack.pub
+            ${{ runner.temp }}/crane-pack/crane-us.browser.json
+            ${{ runner.temp }}/crane-pack/showcheck.json
+          retention-days: 14
+          if-no-files-found: error
+
   # ---- iOS -> TestFlight internal -----------------------------------------
   ios:
     name: iOS · build + TestFlight
-    needs: gate
+    needs: [gate, pack]
     if: needs.gate.outputs.do_ios == 'true'
     # Xcode 26 / the iOS 26 SDK, which App Store Connect requires for uploads.
     # The crane-native CI job compiles this app's native code on the same image.
@@ -420,6 +518,24 @@ jobs:
           mv build-apple/whisper.xcframework "$DEST/"
       - name: Require the whisper device slice
         run: test -f corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework/ios-arm64/whisper.framework/whisper
+
+      # The pack the pack job built and proved (signed runs: the production
+      # key). Into src-tauri/resources/pack/ for the native bundle and
+      # public/pack/ for the web assets; re-checked here, right before bundling.
+      - name: Fetch the pack
+        uses: actions/download-artifact@v4
+        with:
+          name: crane-pack-${{ needs.gate.outputs.build_number }}
+          path: ${{ runner.temp }}/crane-pack
+      - name: Place the pack and check its key
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/crane-pack"
+          if [ "$SIGNED" = true ]; then "$APP_DIR/scripts/check-pack-key.sh" pub "$src/pack.pub"; fi
+          mkdir -p "$APP_DIR/src-tauri/resources/pack" "$APP_DIR/public/pack"
+          cp "$src"/pack/* "$APP_DIR/src-tauri/resources/pack/"
+          cp "$src/crane-us.browser.json" "$APP_DIR/public/pack/"
+          ls -l "$APP_DIR/src-tauri/resources/pack" "$APP_DIR/public/pack"
 
       - name: Install deps
         working-directory: crane/app
@@ -747,7 +863,7 @@ jobs:
   # ---- Android -> Play internal -------------------------------------------
   android:
     name: Android · build + Play internal
-    needs: gate
+    needs: [gate, pack]
     if: needs.gate.outputs.do_android == 'true'
     runs-on: ubuntu-24.04
     # llama.cpp (Rust build script) and whisper.cpp (the STT plugin's Gradle
@@ -928,6 +1044,24 @@ jobs:
           if [ ! -f "$DST/CMakeLists.txt" ]; then
             git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$DST"
           fi
+
+      # The pack the pack job built and proved (signed runs: the production
+      # key). Into src-tauri/resources/pack/ for the native bundle and
+      # public/pack/ for the web assets; re-checked here, right before bundling.
+      - name: Fetch the pack
+        uses: actions/download-artifact@v4
+        with:
+          name: crane-pack-${{ needs.gate.outputs.build_number }}
+          path: ${{ runner.temp }}/crane-pack
+      - name: Place the pack and check its key
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/crane-pack"
+          if [ "$SIGNED" = true ]; then "$APP_DIR/scripts/check-pack-key.sh" pub "$src/pack.pub"; fi
+          mkdir -p "$APP_DIR/src-tauri/resources/pack" "$APP_DIR/public/pack"
+          cp "$src"/pack/* "$APP_DIR/src-tauri/resources/pack/"
+          cp "$src/crane-us.browser.json" "$APP_DIR/public/pack/"
+          ls -l "$APP_DIR/src-tauri/resources/pack" "$APP_DIR/public/pack"
 
       - name: Install deps
         working-directory: crane/app
