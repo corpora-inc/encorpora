@@ -2,11 +2,24 @@
  * that never run the app: search engines and other crawlers. The app replaces
  * it when it mounts. Also the report's structured data. */
 import { publicOrigin } from "../web/app/route-head";
-import { report, reportCitation, reportStatus, researchPage as page } from "./report";
+import {
+  report,
+  reportCitation,
+  reportStatus,
+  researchPage as page,
+} from "./report";
 
 const escape = (value: string) =>
   value.replace(/[&<>"']/g, (character) =>
-    character === "&" ? "&amp;" : character === "<" ? "&lt;" : character === ">" ? "&gt;" : character === '"' ? "&quot;" : "&#39;",
+    character === "&"
+      ? "&amp;"
+      : character === "<"
+        ? "&lt;"
+        : character === ">"
+          ? "&gt;"
+          : character === '"'
+            ? "&quot;"
+            : "&#39;",
   );
 const paragraphs = (texts: readonly string[]) =>
   texts.map((text) => `<p>${escape(text)}</p>`).join("");
@@ -96,6 +109,10 @@ export function researchJsonLd() {
       contentUrl: new URL(report.pdf, publicOrigin).href,
       encodingFormat: "application/pdf",
     },
-    about: { "@type": "SoftwareApplication", name: "AMP (Adaptive Math Pathways)", applicationCategory: "EducationalApplication" },
+    about: {
+      "@type": "SoftwareApplication",
+      name: "AMP (Adaptive Math Pathways)",
+      applicationCategory: "EducationalApplication",
+    },
   };
 }

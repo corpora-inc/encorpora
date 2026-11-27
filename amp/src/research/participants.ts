@@ -18,8 +18,10 @@ export function assertStudyCode(study: string): string {
   return study;
 }
 
-/** Enrols a learner in a study. The household comes from the learner's own
- * row, so a caller can't attach a learner to another family. Enrolling again
+/** Enrols a learner in a study, from now: the moment permission is recorded.
+ * There is no backdating, so no extract reaches before consent or into a
+ * withdrawn period. The household comes from the learner's own row, so a
+ * caller can't attach a learner to another family. Enrolling again
  * while enrolled changes nothing; enrolling after a withdrawal starts a new
  * enrolment (its weeks count from the new date). Returns false when the
  * learner doesn't exist or is deleted. */
@@ -29,13 +31,12 @@ export async function enrollParticipant(
     study: string;
     learnerId: string;
     consentRef?: string | null;
-    at?: Date;
   },
 ): Promise<boolean> {
   const study = assertStudyCode(input.study);
   const result = await db.query(
     `INSERT INTO amp_research_participants(study,learner_id,account_id,enrolled_at,consent_ref)
-     SELECT $1,l.id,l.account_id,COALESCE($3::timestamptz,now()),$4
+     SELECT $1,l.id,l.account_id,now(),$3
        FROM amp_learners l WHERE l.id=$2 AND l.deleted_at IS NULL
      ON CONFLICT (study,learner_id) DO UPDATE SET
        enrolled_at=CASE WHEN amp_research_participants.withdrawn_at IS NULL
@@ -45,29 +46,24 @@ export async function enrollParticipant(
          ELSE EXCLUDED.consent_ref END,
        account_id=EXCLUDED.account_id,
        withdrawn_at=NULL`,
-    [
-      study,
-      input.learnerId,
-      input.at?.toISOString() ?? null,
-      input.consentRef ?? null,
-    ],
+    [study, input.learnerId, input.consentRef ?? null],
   );
   return (result.rowCount ?? 0) > 0;
 }
 
-/** Withdraws a learner from a study. Their data leaves every later extract.
- * Withdrawing twice keeps the first date. Returns false when the learner was
+/** Withdraws a learner from a study, now. Their data leaves every later
+ * extract. Withdrawing twice keeps the first date. Returns false when the learner was
  * never enrolled. */
 export async function withdrawParticipant(
   db: Database,
-  input: { study: string; learnerId: string; at?: Date },
+  input: { study: string; learnerId: string },
 ): Promise<boolean> {
   const study = assertStudyCode(input.study);
   const result = await db.query(
     `UPDATE amp_research_participants
-        SET withdrawn_at=COALESCE(withdrawn_at,GREATEST(enrolled_at,COALESCE($3::timestamptz,now())))
+        SET withdrawn_at=COALESCE(withdrawn_at,GREATEST(enrolled_at,now()))
       WHERE study=$1 AND learner_id=$2`,
-    [study, input.learnerId, input.at?.toISOString() ?? null],
+    [study, input.learnerId],
   );
   return (result.rowCount ?? 0) > 0;
 }

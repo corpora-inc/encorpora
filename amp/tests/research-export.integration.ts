@@ -150,48 +150,35 @@ test(
       );
     };
 
-    // Enrolment, and the participants' records around it.
+    // Enrolment, and the participants' records around it. Enrolment is
+    // always "now", so the fixture moves it back to give it a history.
     assert.equal(
       await enrollParticipant(pool, {
         study: "rr3",
         learnerId: kid1!,
-        at: enrolledAt,
         consentRef: "fixture-consent-1",
       }),
       true,
     );
+    for (const [study, id] of [
+      ["rr3", kid2!],
+      ["rr3", withdrawn!],
+      ["rr9", otherStudy!],
+    ] as const)
+      assert.equal(
+        await enrollParticipant(pool, { study, learnerId: id }),
+        true,
+      );
+    await pool.query("UPDATE amp_research_participants SET enrolled_at=$1", [
+      enrolledAt,
+    ]);
     assert.equal(
-      await enrollParticipant(pool, {
-        study: "rr3",
-        learnerId: kid2!,
-        at: enrolledAt,
-      }),
+      await withdrawParticipant(pool, { study: "rr3", learnerId: withdrawn! }),
       true,
     );
-    assert.equal(
-      await enrollParticipant(pool, {
-        study: "rr3",
-        learnerId: withdrawn!,
-        at: enrolledAt,
-      }),
-      true,
-    );
-    assert.equal(
-      await enrollParticipant(pool, {
-        study: "rr9",
-        learnerId: otherStudy!,
-        at: enrolledAt,
-      }),
-      true,
-    );
-    assert.equal(
-      await withdrawParticipant(pool, {
-        study: "rr3",
-        learnerId: withdrawn!,
-        at: new Date(now - 5 * DAY),
-      }),
-      true,
-    );
+    // The enrolment day itself, a minute before enrolment: not exported, in
+    // answers or in the weekly answers.
+    await problem(kid1!, new Date(enrolledAt.getTime() - 60_000));
     // Before enrolment: never exported.
     await problem(kid1!, new Date(enrolledAt.getTime() - 2 * DAY));
     // Week 1: 40 answers, one wrong with a hint, one paper, one skip, one open.
@@ -261,6 +248,13 @@ test(
        ($1,$2,'practice',600000),($1,$2,'hint',30500),($1,$3,'practice',120000)`,
       [kid1, day(3), day(10)],
     );
+    // The enrolment day's time is partly before enrolment: left out.
+    await pool.query(
+      `INSERT INTO amp_active_days(learner_id,day,surface,active_ms)
+       SELECT learner_id,(enrolled_at AT TIME ZONE amp_learner_zone(learner_id))::date,'other',900000
+         FROM amp_research_participants WHERE study='rr3' AND learner_id=$1`,
+      [kid1],
+    );
     await pool.query(
       `INSERT INTO amp_help_days(learner_id,day,kind,opened) VALUES($1,$2,'hint',3),($1,$2,'video_play',1)`,
       [kid1, day(3)],
@@ -269,7 +263,7 @@ test(
       `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version) VALUES($1,$2,$3,'fixture')`,
       [
         kid1,
-        day(1),
+        day(0),
         {
           expected: 3,
           overall: { level: 3.25, sd: 0.4, answered: 40 },
@@ -328,11 +322,12 @@ test(
       assert.equal(ciphertext.length, result.bytes);
       const decrypter = new Decrypter();
       decrypter.addIdentity(identity);
-      const files = unzipSync(await decrypter.decrypt(ciphertext));
+      const zip = await decrypter.decrypt(ciphertext);
+      const files = unzipSync(zip);
       const text = Object.fromEntries(
         Object.entries(files).map(([name, data]) => [name, strFromU8(data)]),
       );
-      return { result, files, text };
+      return { result, files, text, zip: Buffer.from(zip) };
     };
     const rows = (csv: string) => {
       const [header, ...lines] = csv.trimEnd().split("\r\n");
@@ -497,13 +492,29 @@ test(
             new RegExp(`\\b${pii.birthYear}\\b`),
             `${name} holds a birth year`,
           );
-          if (name !== "manifest.json")
-            assert.doesNotMatch(
-              body,
-              /\b20\d\d-\d\d-\d\d/,
-              `${name} holds a calendar date`,
-            );
+          assert.doesNotMatch(
+            body,
+            /\b20\d\d-\d\d-\d\d/,
+            `${name} holds a calendar date`,
+          );
         }
+        assert.ok(!("generatedAt" in manifest));
+        // Every ZIP entry carries the same fixed time, never the export's:
+        // the DOS date of each local file header is 2000-01-01.
+        let entries = 0;
+        for (
+          let at = first.zip.indexOf("PK\x03\x04");
+          at >= 0;
+          at = first.zip.indexOf("PK\x03\x04", at + 4)
+        ) {
+          entries++;
+          const date = first.zip.readUInt16LE(at + 12);
+          assert.deepEqual(
+            [(date >> 9) + 1980, (date >> 5) & 15, date & 31],
+            [2000, 1, 1],
+          );
+        }
+        assert.equal(entries, Object.keys(first.files).length);
       },
     );
 
@@ -601,7 +612,8 @@ test(
         );
         const again = (await at(kid2!)).rows[0];
         assert.equal(again.withdrawn_at, null);
-        assert.ok(again.enrolled_at.getTime() > enrolledAt.getTime());
+        // A new enrolment starts now: never back in the withdrawn period.
+        assert.ok(again.enrolled_at.getTime() > Date.now() - 60_000);
         assert.equal(again.consent_ref, "fixture-consent-2");
         assert.equal(
           await enrollParticipant(pool, {

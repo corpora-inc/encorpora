@@ -13,6 +13,7 @@
  * file instead of the bucket (development; it is still ciphertext). */
 import { createHash } from "node:crypto";
 import { createWriteStream, realpathSync } from "node:fs";
+import { unlink } from "node:fs/promises";
 import { Transform, type Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import { pathToFileURL } from "node:url";
@@ -66,7 +67,6 @@ export async function runResearchExport(options: {
   recipients: readonly string[];
   sink: (ciphertext: Readable) => Promise<void>;
   batchSize?: number;
-  now?: () => Date;
 }): Promise<ExportResult> {
   const client = await options.pool.connect();
   let failure: Error | undefined;
@@ -76,7 +76,6 @@ export async function runResearchExport(options: {
       study: options.study,
       key: options.key,
       batchSize: options.batchSize,
-      now: options.now,
     });
     const hash = createHash("sha256");
     let bytes = 0;
@@ -105,6 +104,26 @@ export async function runResearchExport(options: {
   }
 }
 
+/** Writes the ciphertext to a file that must not exist yet. A failed run
+ * removes the file it created (never one that was already there). */
+async function writeNewFile(ciphertext: Readable, path: string) {
+  const file = createWriteStream(path, { flags: "wx", mode: 0o600 });
+  let created = false;
+  file.once("open", () => (created = true));
+  try {
+    await pipeline(ciphertext, file);
+  } catch (error) {
+    if (created)
+      await unlink(path).catch((cleanup: unknown) =>
+        console.error(
+          "could not remove the partial extract",
+          safeMessage(cleanup),
+        ),
+      );
+    throw error;
+  }
+}
+
 export async function runCli(
   argv = process.argv.slice(2),
   env: NodeJS.ProcessEnv = process.env,
@@ -124,14 +143,10 @@ export async function runCli(
       study,
       key,
       recipients,
-      now: () => started,
       sink: (ciphertext) =>
         bucket
           ? uploadExtract(ciphertext, { bucket, object })
-          : pipeline(
-              ciphertext,
-              createWriteStream(output!, { flags: "wx", mode: 0o600 }),
-            ),
+          : writeNewFile(ciphertext, output!),
     });
     // Counts and hashes only: no study IDs, no rows.
     console.log(

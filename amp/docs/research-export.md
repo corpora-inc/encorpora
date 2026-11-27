@@ -13,11 +13,12 @@ the study code, the learner, the household account, `enrolled_at`,
 `withdrawn_at` and a nullable `consent_ref` to the permission record. The
 consent flow writes it with `src/research/participants.ts`:
 
-- `enrollParticipant(db, { study, learnerId, consentRef?, at? })`: enrols. The
-  household comes from the learner's row. Enrolling again while enrolled changes
+- `enrollParticipant(db, { study, learnerId, consentRef? })`: enrols, from now
+  (the moment permission is recorded; there is no backdating). The household
+  comes from the learner's row. Enrolling again while enrolled changes
   nothing. Enrolling after a withdrawal starts a new enrolment, so weeks count
   from the new date.
-- `withdrawParticipant(db, { study, learnerId, at? })`: withdraws. The first
+- `withdrawParticipant(db, { study, learnerId })`: withdraws, now. The first
   withdrawal date is kept.
 
 An extract includes a learner who is enrolled in that study at the time of the
@@ -33,13 +34,13 @@ One object per run, `<study>/<study>-<UTC time>.zip.age`: an age-encrypted ZIP.
 | File | One row is |
 | --- | --- |
 | `participants.csv` | a participant: study learner ID, study family ID, current week |
-| `answers.csv` | a problem served: sequence, week, skill, problem type, why it was chosen, outcome (answered, skipped, unanswered), correctness, parts, assisted, independent, help used (hint, lesson, video, worked example, adult), app or paper, evidence weight, seconds to answer, the learner's level that day |
+| `answers.csv` | a problem served: sequence, week, skill, problem type, why it was chosen, outcome (answered, skipped, unanswered), correctness, parts, assisted, independent, help used (hint, lesson, video, worked example, adult), app or paper, evidence weight, seconds to answer, the learner's level at the end of the previous day |
 | `workbooks.csv` | a workbook made: week, number, length, sections, items, lesson, lean, focus skill, working level |
 | `adult_checkins.csv` | a parent or teacher check-in: week, role, kind (view, assign, score) |
-| `weekly_activity.csv` | a participant-week from 1 to now, zeros included: active seconds in total and by surface, answers, right, independent, and help opened by kind |
+| `weekly_activity.csv` | a participant-week from 1 to now, zeros included: active seconds in total and by surface, answers, right, independent, and help opened by kind (time and help are per local day, so they start the first whole day after enrolment) |
 | `skills.csv` | a skill in the catalog: title, strand, area, grade |
 | `codebook.md`, `codebook.json` | the data dictionary: every file, column, type, meaning and value set |
-| `manifest.json` | study, extract version, time made, participant count, and each file's rows, bytes and SHA-256 |
+| `manifest.json` | study, extract version, participant count, and each file's rows, bytes and SHA-256 |
 
 `src/research/codebook.ts` defines every column once: the CSV headers and the
 codebook both come from it, and the export refuses a query column the codebook
@@ -47,7 +48,8 @@ doesn't declare.
 
 What no file contains: names, email addresses, account, learner or problem ids,
 network addresses, birth dates or years, anything a person typed (answers'
-text, notes), workbook codes, or calendar dates. Time is the instructional week:
+text, notes), workbook codes, or calendar dates. The manifest has no date and
+every ZIP entry has the same fixed time, so nothing dates the weeks. Time is the instructional week:
 week 1 is the participant's first seven local days from enrolment. Participants
 are keyed by study ID only (the de-identification FERPA asks of school records,
 34 CFR 99.31(b)(1), and what the study's data security plan promises).

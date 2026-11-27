@@ -175,7 +175,7 @@ export const EXTRACT_FILES = [
         name: "learner_level",
         type: "number",
         description:
-          "The learner's overall working level on the day served (grade scale: K = 0, grade 8 = 8, Algebra 1 = 9, Geometry = 10, Algebra 2 = 11, Precalculus = 12), as stored that day. Empty before a level was stored.",
+          "The learner's overall working level as it stood at the end of the last day before the problem was served (grade scale: K = 0, grade 8 = 8, Algebra 1 = 9, Geometry = 10, Algebra 2 = 11, Precalculus = 12), so it never reflects this answer or later ones. Empty when no earlier level was stored.",
       },
     ],
   },
@@ -253,7 +253,7 @@ export const EXTRACT_FILES = [
   {
     name: "weekly_activity.csv",
     description:
-      "Every instructional week from 1 to the current one, including weeks with no use (all zeros). The enrolment week's day totals include that whole first local day.",
+      "Every instructional week from 1 to the current one, including weeks with no use (all zeros). Answers count from the moment of enrolment. Active time and help are kept per local day, so they count from the first whole day after enrolment: the enrolment day itself is left out, since part of it may come before enrolment.",
     row: "One participant-week.",
     columns: [
       learner,
@@ -267,7 +267,7 @@ export const EXTRACT_FILES = [
       seconds("video"),
       seconds("map"),
       seconds("other"),
-      opened("answers", "Answers"),
+      opened("answers", "Answers (as in answers.csv, by the week answered)"),
       opened("correct", "Right answers"),
       opened("independent", "Independent successes (see answers.csv)"),
       opened("lessons_opened", "Lessons opened"),
@@ -320,7 +320,7 @@ const GENERAL = [
   "Booleans are true or false.",
   "Participants are keyed by study ID only. No names, email addresses, account or learner ids, network addresses, birth dates or text anyone typed are in any file, and no calendar dates: time is the instructional week relative to each participant's enrolment.",
   "Only participants enrolled and not withdrawn when the extract was made are included, with their records from enrolment on.",
-  "manifest.json lists each file's rows, bytes and SHA-256.",
+  "manifest.json lists each file's rows, bytes and SHA-256. It carries no date, and every file in the ZIP has the same fixed time.",
 ];
 
 export function codebookJson(study: string) {

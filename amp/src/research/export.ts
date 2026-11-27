@@ -27,6 +27,8 @@ import { assertStudyCode } from "./participants.js";
 import { studyIdMapper, type StudyIdKey } from "./study-id.js";
 
 export const EXTRACT_BATCH = 1000;
+/** Every ZIP entry's time (fflate stamps the current time otherwise). */
+const ENTRY_TIME = new Date("2000-01-01T12:00:00Z");
 
 type Database = Pick<PoolClient, "query">;
 type Cell = string | number | boolean | null | undefined;
@@ -41,7 +43,6 @@ export type ExtractManifest = {
   format: "amp-research-extract";
   version: number;
   study: string;
-  generatedAt: string;
   participants: number;
   files: ManifestFile[];
 };
@@ -111,7 +112,7 @@ const QUERIES: Record<Exclude<ExtractFileName, "skills.csv">, string> = {
     LEFT JOIN amp_attempts a ON a.problem_id=i.id
     LEFT JOIN LATERAL (
       SELECT d.overall_level FROM amp_level_days d
-      WHERE d.learner_id=p.learner_id AND d.day<=(i.created_at AT TIME ZONE p.zone)::date
+      WHERE d.learner_id=p.learner_id AND d.day<(i.created_at AT TIME ZONE p.zone)::date
       ORDER BY d.day DESC LIMIT 1
     ) lvl ON true
     ORDER BY p.learner_id,i.created_at,i.id`,
@@ -154,12 +155,19 @@ const QUERIES: Record<Exclude<ExtractFileName, "skills.csv">, string> = {
         ${surface("example")} AS example_seconds,${surface("video")} AS video_seconds,
         ${surface("map")} AS map_seconds,${surface("other")} AS other_seconds
       FROM amp_active_days d
-      WHERE d.learner_id=p.learner_id AND d.day>=p.enrolled_day+(w.week-1)*7 AND d.day<p.enrolled_day+w.week*7
+      WHERE d.learner_id=p.learner_id AND d.day>GREATEST(p.enrolled_day,p.enrolled_day+(w.week-1)*7-1)
+        AND d.day<p.enrolled_day+w.week*7
     ) t ON true
     LEFT JOIN LATERAL (
-      SELECT sum(k.attempts) AS answers,sum(k.correct) AS correct,sum(k.independent) AS independent
-      FROM amp_skill_days k
-      WHERE k.learner_id=p.learner_id AND k.day>=p.enrolled_day+(w.week-1)*7 AND k.day<p.enrolled_day+w.week*7
+      SELECT count(*) AS answers,
+        count(*) FILTER (WHERE COALESCE((a.outcome->>'correct')::boolean,false)) AS correct,
+        count(*) FILTER (WHERE COALESCE((a.outcome->>'correct')::boolean,false)
+          AND NOT COALESCE((a.outcome->>'assisted')::boolean,false)
+          AND COALESCE((a.outcome->>'evidenceWeight')::numeric,1)>=1) AS independent
+      FROM amp_attempts a
+      WHERE a.learner_id=p.learner_id
+        AND a.created_at>=GREATEST(p.enrolled_at,((p.enrolled_day+(w.week-1)*7)::timestamp AT TIME ZONE p.zone))
+        AND a.created_at<((p.enrolled_day+w.week*7)::timestamp AT TIME ZONE p.zone)
     ) s ON true
     LEFT JOIN LATERAL (
       SELECT ${helpKind("lesson")} AS lessons_opened,${helpKind("hint")} AS hints_opened,
@@ -167,7 +175,8 @@ const QUERIES: Record<Exclude<ExtractFileName, "skills.csv">, string> = {
         ${helpKind("video_play")} AS video_plays,${helpKind("video_complete")} AS video_completes,
         ${helpKind("print")} AS prints
       FROM amp_help_days h
-      WHERE h.learner_id=p.learner_id AND h.day>=p.enrolled_day+(w.week-1)*7 AND h.day<p.enrolled_day+w.week*7
+      WHERE h.learner_id=p.learner_id AND h.day>GREATEST(p.enrolled_day,p.enrolled_day+(w.week-1)*7-1)
+        AND h.day<p.enrolled_day+w.week*7
     ) h ON true
     ORDER BY p.learner_id,w.week`,
 };
@@ -190,6 +199,9 @@ class Entry {
     readonly name: string,
   ) {
     this.zip = new ZipDeflate(name, { level: 6 });
+    // A fixed entry time: the export's date would date every week. Zip.add
+    // reads it from the entry; ZipDeflate's options don't carry it.
+    this.zip.mtime = ENTRY_TIME;
     zip.add(this.zip);
   }
   write(text: string, rows = 0) {
@@ -218,7 +230,6 @@ export function researchExtract(options: {
   study: string;
   key: StudyIdKey;
   batchSize?: number;
-  now?: () => Date;
 }): { chunks: AsyncGenerator<Uint8Array>; manifest: Promise<ExtractManifest> } {
   const study = assertStudyCode(options.study);
   const batch = options.batchSize ?? EXTRACT_BATCH;
@@ -257,7 +268,6 @@ export function researchExtract(options: {
       await client.query(
         "SET LOCAL idle_in_transaction_session_timeout='10min'",
       );
-      const generatedAt = (options.now?.() ?? new Date()).toISOString();
       for (const [name, sql] of Object.entries(QUERIES) as [
         keyof typeof QUERIES,
         string,
@@ -317,7 +327,6 @@ export function researchExtract(options: {
         format: "amp-research-extract",
         version: EXTRACT_VERSION,
         study,
-        generatedAt,
         participants,
         files,
       };
