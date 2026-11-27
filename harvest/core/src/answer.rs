@@ -419,7 +419,10 @@ impl Engine {
         }
         let mut body = Vec::new();
         // A number in a table's unit is looked up in the table, first.
-        let tool = self.table_answer(question, &candidates)?;
+        // Only a table the gate chose: a table merely retrieved alongside
+        // (the question names a voltage for another reason) does not answer.
+        let chosen_tables: Vec<SupportCandidate> = chosen.iter().map(|c| (*c).clone()).collect();
+        let tool = self.table_answer(question, &chosen_tables)?;
         let tool_section = tool.as_ref().map(|(id, _)| id.clone());
         if let Some((_, segs)) = tool {
             body.extend(segs);
@@ -855,8 +858,16 @@ impl Engine {
         let explanation = self
             .pack
             .explanation(section_id, opts.role.as_str(), &opts.lang)?;
+        // Leads summarize what is quoted: a fact whose quote lies in the shown
+        // passage, or an explanation sentence. Only a clear best leads; a tie
+        // (two limits for two cases, say) opens with the rule itself.
+        let passage = best_passage(&sec.text, &norm.concepts, opts.max_quote_chars);
+        let shown = normalize_ws(&passage);
         let mut leads: Vec<(f64, u8, String)> = Vec::new();
         for f in self.pack.facts_for_section(section_id)? {
+            if !shown.contains(&normalize_ws(&f.quote)) {
+                continue;
+            }
             let cov = coverage(
                 &norm.concepts,
                 &normalize::stem_set(&format!("{} {}", f.statement, f.quote)),
@@ -869,16 +880,20 @@ impl Engine {
                 leads.push((cov, 0, sentence.trim().to_string()));
             }
         }
+        leads.sort_by(|a, b| b.0.total_cmp(&a.0).then(b.1.cmp(&a.1)));
+        let clear = match (leads.first(), leads.get(1)) {
+            (Some(a), Some(b)) => a.0 > b.0 + 1e-9,
+            (Some(_), None) => true,
+            _ => false,
+        };
         let lead = leads
             .into_iter()
-            .filter(|l| l.0 >= MIN_LEAD_COVERAGE)
-            .max_by(|a, b| a.0.total_cmp(&b.0).then(a.1.cmp(&b.1)));
+            .next()
+            .filter(|l| clear && l.0 >= MIN_LEAD_COVERAGE);
         let mut out = Vec::new();
-        let lead_from_explanation = lead.as_ref().is_some_and(|l| l.1 == 0);
         if let Some((_, _, text)) = &lead {
             out.push(Segment::text(text.clone()));
         }
-        let passage = best_passage(&sec.text, &norm.concepts, opts.max_quote_chars);
         out.push(Segment::quote(section_id, passage.clone()));
         // Verbatim mode: limits and the like are quoted, never left out of a
         // trimmed passage.
@@ -894,8 +909,9 @@ impl Engine {
                 out.push(Segment::quote(section_id, f.quote.clone()));
             }
         }
-        // The explanation teaches after the rule, unless it already led.
-        if let (Some(e), false) = (explanation, lead_from_explanation) {
+        // The whole explanation teaches after the rule (a lead taken from it
+        // is one sentence; the rest still matters).
+        if let Some(e) = explanation {
             out.push(Segment::cite(section_id));
             out.push(Segment::text(e));
         }
