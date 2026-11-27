@@ -208,6 +208,8 @@ jobs:
     env:
       SIGNED: ${{ needs.gate.outputs.signed }}
       BUILD_NUMBER: ${{ needs.gate.outputs.build_number }}
+      # Raw downloads, stage and packs; the source cache below keys on this path.
+      HARVEST_HOME: ${{ github.workspace }}/../harvest-home
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -242,7 +244,7 @@ jobs:
       - name: Cache the locked eCFR sources
         uses: actions/cache@v4
         with:
-          path: ~/.cache/harvest/raw
+          path: ${{ github.workspace }}/../harvest-home/raw
           key: crane-raw-${{ hashFiles('crane/content/corpus.sources.lock.json') }}
       - name: Build harvest-core
         working-directory: harvest/core
@@ -531,7 +533,18 @@ jobs:
         run: |
           set -euo pipefail
           src="$RUNNER_TEMP/crane-pack"
-          if [ "$SIGNED" = true ]; then "$APP_DIR/scripts/check-pack-key.sh" pub "$src/pack.pub"; fi
+          if [ "$SIGNED" = true ]; then
+            "$APP_DIR/scripts/check-pack-key.sh" pub "$src/pack.pub"
+            # The manifest must name that key too (key_id = first 16 hex of SHA-256 of the raw key).
+            python3 - "$src/pack.pub" "$src/pack/manifest.json" <<'PY'
+          import base64, hashlib, json, sys
+          want = hashlib.sha256(base64.b64decode(open(sys.argv[1]).read().strip())).hexdigest()[:16]
+          got = json.load(open(sys.argv[2])).get("signature", {}).get("key_id")
+          if got != want:
+              sys.exit(f"::error::the pack manifest is signed by key {got}, not the production key {want}")
+          print(f"manifest key_id {got}: the production key")
+          PY
+          fi
           mkdir -p "$APP_DIR/src-tauri/resources/pack" "$APP_DIR/public/pack"
           cp "$src"/pack/* "$APP_DIR/src-tauri/resources/pack/"
           cp "$src/crane-us.browser.json" "$APP_DIR/public/pack/"
@@ -1057,7 +1070,18 @@ jobs:
         run: |
           set -euo pipefail
           src="$RUNNER_TEMP/crane-pack"
-          if [ "$SIGNED" = true ]; then "$APP_DIR/scripts/check-pack-key.sh" pub "$src/pack.pub"; fi
+          if [ "$SIGNED" = true ]; then
+            "$APP_DIR/scripts/check-pack-key.sh" pub "$src/pack.pub"
+            # The manifest must name that key too (key_id = first 16 hex of SHA-256 of the raw key).
+            python3 - "$src/pack.pub" "$src/pack/manifest.json" <<'PY'
+          import base64, hashlib, json, sys
+          want = hashlib.sha256(base64.b64decode(open(sys.argv[1]).read().strip())).hexdigest()[:16]
+          got = json.load(open(sys.argv[2])).get("signature", {}).get("key_id")
+          if got != want:
+              sys.exit(f"::error::the pack manifest is signed by key {got}, not the production key {want}")
+          print(f"manifest key_id {got}: the production key")
+          PY
+          fi
           mkdir -p "$APP_DIR/src-tauri/resources/pack" "$APP_DIR/public/pack"
           cp "$src"/pack/* "$APP_DIR/src-tauri/resources/pack/"
           cp "$src/crane-us.browser.json" "$APP_DIR/public/pack/"
