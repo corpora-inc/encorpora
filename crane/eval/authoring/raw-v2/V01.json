@@ -1,0 +1,195 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "outriggers going down on soft dirt, can we just set the floats on the ground and drop the jacks on top of em or do they gotta be pinned on",
+    "style": "slang",
+    "category": "assembly-disassembly",
+    "gold_answer": "If outrigger floats are used, they must be attached to the outriggers. Stabilizer floats must likewise be attached to the stabilizers.",
+    "section_ids": [
+     "29cfr1926.1404(q)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(q)(3)",
+     "text": "When outrigger floats are used, they must be attached to the outriggers."
+    },
+    "equipment": "mobile-crane",
+    "variant": "outrigger floats",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "do we need to have the weights of the boom sections and counterweights on hand during assembly or is that just nice to have",
+    "style": "vague",
+    "category": "assembly-disassembly",
+    "gold_answer": "It's required. The weight of each component must be readily available during assembly/disassembly.",
+    "section_ids": [
+     "29cfr1926.1404(k)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(k)",
+     "text": "The weight of each of the components must be readily available."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two questions: we're mixing boom inserts on an older crane and there's no manufacturer info on which combos are allowed, who signs off on that? And once it's put together does anyone have to look it over before we use it?",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "Component selection and configuration must follow manufacturer instructions/limits; if those are unavailable, a registered professional engineer familiar with that type of equipment must approve the selection and configuration in writing (or it must be an approved modification under 1926.1434). After assembly, the equipment must be inspected to confirm compliance (see 1926.1412(c)).",
+    "section_ids": [
+     "29cfr1926.1404(m)(1)(i)",
+     "29cfr1926.1404(m)(1)(ii)",
+     "29cfr1926.1404(m)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(m)(1)(i)",
+     "text": "a registered professional engineer familiar with the type of equipment involved must approve, in writing, the selection and configuration of components"
+    },
+    "equipment": null,
+    "variant": "manufacturer info unavailable",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "During disassembly, what is required if we do not have enough information to accurately determine the center of gravity of a component we are lifting?",
+    "style": "formal",
+    "category": "assembly-disassembly",
+    "gold_answer": "The center of gravity must be identified if that is needed for the method used to keep the load stable. If there isn't enough information to identify it accurately, you must use measures that prevent unintended dangerous movement from getting the center of gravity wrong (Appendix B gives an example).",
+    "section_ids": [
+     "29cfr1926.1404(h)(6)(i)",
+     "29cfr1926.1404(h)(6)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(h)(6)(ii)",
+     "text": "measures designed to prevent unintended dangerous movement resulting from an inaccurate identification of the center of gravity must be used"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "supplier knucklboom truck is bringing bundles of steel deck and wants to land them up on the joists for us, is that still delivry exemption or crane rules aply",
+    "style": "typo",
+    "category": "scope-definitions",
+    "gold_answer": "The crane rules apply. The material-delivery exclusion does not cover structural steel members, and that explicitly includes steel decking, bundled or unbundled.",
+    "section_ids": [
+     "29cfr1926.1400(c)(17)(iii)(C)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(17)(iii)(C)",
+     "text": "structural steel member (for example, steel joists, beams, columns, steel decking (bundled or unbundled)"
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": "steel decking delivery",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "on a tower crane when do you call the horizontal part a jib and when do you call it a boom",
+    "style": "voice",
+    "category": "scope-definitions",
+    "gold_answer": "On a tower crane, a fixed principal horizontal structure is called a jib. If it can move up and down (luffing), it is called a boom.",
+    "section_ids": [
+     "29cfr1926.1401"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1401",
+     "text": "if it is moveable up and down, it is referred to as a boom"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Tearing down a crawler. We already pulled the counterweight and now want to swing the upper around to lay the boom down and then walk it to the trailer. Anything the A/D director has to account for before we swing or travel?",
+    "style": "scenario",
+    "category": "assembly-disassembly",
+    "gold_answer": "Yes. The A/D director must address loss of backward stability before swinging the upperworks, before travel, and when attaching or removing components such as counterweight. They also have to address the hazard of unintended movement from counterweights that are not properly supported.",
+    "section_ids": [
+     "29cfr1926.1404(h)(11)",
+     "29cfr1926.1404(h)(9)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(h)(11)",
+     "text": "Backward stability before swinging the upperworks, travel, and when attaching or removing equipment components."
+    },
+    "equipment": "crawler-crane",
+    "variant": "counterweight removed",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Is a gin pole used to put up a cell tower covered by the crane standard? And what about a wrecker pulling a car out of the ditch next to our site?",
+    "style": "multi-part",
+    "category": "scope-definitions",
+    "gold_answer": "Neither is covered. Subpart CC excludes gin poles used to erect communication towers, and it excludes automotive wreckers and tow trucks used to clear wrecks and haul vehicles.",
+    "section_ids": [
+     "29cfr1926.1400(c)(12)",
+     "29cfr1926.1400(c)(3)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Where the crane standard says an operator or crew member must do something, what obligation does that place on the employer?",
+    "style": "formal",
+    "category": "scope-definitions",
+    "gold_answer": "The employer must set up work rules that ensure compliance with those provisions, communicate them effectively to the relevant people, and enforce them.",
+    "section_ids": [
+     "29cfr1926.1400(f)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(f)",
+     "text": "the employer must establish, effectively communicate to the relevant persons, and enforce, work rules to ensure compliance with such provisions"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "when we lower the lattice stick to pull sections, the pendants keep hanging up on the cotter pins and keepers. is there an actual rule on that or is it just something to watch for",
+    "style": "slang",
+    "category": "assembly-disassembly",
+    "gold_answer": "There's a rule. The A/D director must address snagging, and suspension ropes and pendants must not be allowed to catch on boom or jib connection pins or cotter pins, including keepers and locking pins.",
+    "section_ids": [
+     "29cfr1926.1404(h)(8)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1404(h)(8)",
+     "text": "Suspension ropes and pendants must not be allowed to catch on the boom or jib connection pins or cotter pins (including keepers and locking pins)."
+    },
+    "equipment": "crawler-crane",
+    "variant": "lattice boom",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.246716,
+ "duration_ms": 38441,
+ "batch": "V01",
+ "prompt_chars": 50314
+}

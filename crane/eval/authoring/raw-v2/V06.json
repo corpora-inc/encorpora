@@ -1,0 +1,202 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "Under 1910.179, what stopping performance must the bridge bumpers on an overhead crane meet, and how much energy must they be able to absorb?",
+    "style": "formal",
+    "category": "overhead-gantry",
+    "gold_answer": "The bridge bumpers must stop the crane, not counting the lifted load, at an average deceleration of no more than 3 ft/s/s when it is traveling in either direction at 20% of rated load speed. They must also absorb enough energy to stop the crane at a speed of at least 40% of rated load speed, and they must be mounted so there is no direct shear on the bolts.",
+    "section_ids": [
+     "29cfr1910.179(e)(2)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(e)(2)(i)",
+     "text": "at an average rate of deceleration not to exceed 3 ft/s/s when traveling in either direction at 20 percent of the rated load speed"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're adding a second trolley on the same bridge girders in our shop. Do both trolleys need bumpers where they could run into each other, and what's the stopping spec for trolley bumpers?",
+    "style": "scenario",
+    "category": "overhead-gantry",
+    "gold_answer": "Yes. When more than one trolley runs on the same bridge, each trolley must have bumpers or an equivalent device on the ends that face each other. Trolley bumpers must stop the trolley, not counting the lifted load, at an average deceleration of no more than 4.7 ft/s/s when it is traveling in either direction at one-third of rated load speed.",
+    "section_ids": [
+     "29cfr1910.179(e)(3)(ii)",
+     "29cfr1910.179(e)(3)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(e)(3)(i)",
+     "text": "at an average rate of deceleration not to exceed 4.7 ft/s/s when traveling in either direction at one-third of the rated load speed"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "hoist rope sizng on a bridge crane, how do i know the rope is strong enuf for the rated load with multiple parts of line",
+    "style": "typo",
+    "category": "overhead-gantry",
+    "gold_answer": "Follow the crane manufacturer's recommendation. The rated load divided by the number of parts of rope must not be more than 20% of the rope's nominal breaking strength. Replacement rope must be the same size, grade and construction as the original unless a wire rope manufacturer recommends otherwise for the actual working conditions.",
+    "section_ids": [
+     "29cfr1910.179(h)(2)(i)",
+     "29cfr1910.179(h)(2)(viii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(h)(2)(i)",
+     "text": "The rated load divided by the number of parts of rope shall not exceed 20 percent of the nominal breaking strength of the rope."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "loco crane on the spur next to the main yard track can i swing the boom out over toward the other track what do i need first",
+    "style": "voice",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "Do not swing a locomotive crane into a position where railway cars on the adjacent track could hit it. First confirm that cars are not being moved on that track and that proper flag protection is in place.",
+    "section_ids": [
+     "29cfr1910.180(i)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(i)(6)",
+     "text": "until it has been ascertained that cars are not being moved on the adjacent track and proper flag protection has been established"
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "crawler's running low, can I top it off from a jerry can without shutting her down? and what kind of extinguisher am I supposed to have on the rig",
+    "style": "slang",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "No. Machines must not be refueled with the engine running. Small portable containers must be approved safety cans with an automatic closing cap and a flame arrester. A carbon dioxide, dry chemical or equivalent fire extinguisher must be kept in the cab or near the crane.",
+    "section_ids": [
+     "29cfr1910.180(i)(4)(ii)",
+     "29cfr1910.180(i)(4)(i)",
+     "29cfr1910.180(i)(5)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(i)(4)(i)",
+     "text": "an approved safety type can equipped with an automatic closing cap and flame arrester"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two-part question for our plant truck crane: when are we actually required to put the outriggers out, and if we crib under the floats with wood blocks, what does the blocking have to meet?",
+    "style": "multi-part",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "Outriggers must be used when the load at that radius is more than the manufacturer's rated load without outriggers. Floats must be securely attached to the outriggers. Wood blocks under the outriggers must be strong enough not to crush, free from defects, and wide and long enough that they will not shift or topple under load.",
+    "section_ids": [
+     "29cfr1910.180(h)(3)(ix)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(h)(3)(ix)",
+     "text": "Outriggers shall be used when the load to be handled at that particular radius exceeds the rated load without outriggers as given by the manufacturer for that crane."
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "is there a rule on how short a wire rope sling can be made",
+    "style": "vague",
+    "category": "rigging-slings",
+    "gold_answer": "Yes, and it depends on the type. Cable laid, 6x19 and 6x37 slings need at least 10 times the component rope diameter of clear rope between splices, sleeves or end fittings. Braided slings need 40 times the component rope diameter between loops or end fittings. Cable laid grommets, strand laid grommets and endless slings need a circumferential length of at least 96 times their body diameter.",
+    "section_ids": [
+     "29cfr1910.184(f)(2)(i)",
+     "29cfr1910.184(f)(2)(ii)",
+     "29cfr1910.184(f)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(f)(2)(ii)",
+     "text": "Braided slings shall have a minimum clear length of wire rope 40 times the component rope diameter between the loops or end fittings."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "I spliced an eye in a 3/4 inch nylon rope sling and want to cut the tails off flush so they don't snag. Is that allowed? If not, how long do the tails have to be, and what can I do if they get in the way?",
+    "style": "scenario",
+    "category": "rigging-slings",
+    "gold_answer": "No. Strand end tails must not be trimmed flush next to the full tucks. For rope under 1 inch, the tails must stick out at least six rope diameters past the last full tuck (about 4.5 inches for 3/4 inch rope); for rope 1 inch and larger, at least 6 inches. If the tails interfere with using the sling, taper them and splice them into the rope body with at least two more tucks.",
+    "section_ids": [
+     "29cfr1910.184(h)(3)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(h)(3)(iii)",
+     "text": "For fiber rope under one inch in diameter, the tail shall project at least six rope diameters beyond the last full tuck."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What handle damage takes a metal mesh sling out of service? Give me the limits for the female handle slot, the eye width, and wear around the handle eye.",
+    "style": "multi-part",
+    "category": "rigging-slings",
+    "gold_answer": "Remove the sling from service if any of these is true: the female handle is distorted so the slot depth has increased by more than 10%; either handle is distorted so the eye width has decreased by more than 10%; the original metal cross-section anywhere around the handle eye is reduced by 15%; or either handle is bent out of its plane.",
+    "section_ids": [
+     "29cfr1910.184(g)(9)(iv)",
+     "29cfr1910.184(g)(9)(v)",
+     "29cfr1910.184(g)(9)(vi)",
+     "29cfr1910.184(g)(9)(vii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(g)(9)(vi)",
+     "text": "A 15 percent reduction of the original cross sectional area of metal at any point around the handle eye."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "them web straps near the dryer get pretty warm, how hot can nylon or poly straps go before we cant use em, is polypro any different",
+    "style": "voice",
+    "category": "rigging-slings",
+    "gold_answer": "Polyester and nylon synthetic web slings must not be used above 180°F. Polypropylene web slings must not be used above 200°F.",
+    "section_ids": [
+     "29cfr1910.184(i)(7)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(i)(7)",
+     "text": "Synthetic web slings of polyester and nylon shall not be used at temperatures in excess of 180 °F. Polypropylene web slings shall not be used at temperatures in excess of 200 °F."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": true,
+    "expert_review_why": "In the field, \"poly\" can mean polyester or polypropylene, and the temperature limits differ (180°F vs 200°F)."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.5252612,
+ "duration_ms": 71294,
+ "batch": "V06",
+ "prompt_chars": 104680
+}

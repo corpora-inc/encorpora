@@ -1,0 +1,200 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how far down can i boom down or drop the hook before im too low on the drum, like how many wraps gotta stay on",
+    "style": "slang",
+    "category": "operator-duties",
+    "gold_answer": "You can't lower the load or the boom below the point where fewer than two full wraps of rope stay on its drum. At least two full wraps have to remain on each drum.",
+    "section_ids": [
+     "29cfr1926.1417(t)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(t)",
+     "text": "Neither the load nor the boom must be lowered below the point where less than two full wraps of rope remain on their respective drums."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "am i allowed to be on my cell phone while im running the crane what if im using it to talk to the signal guy",
+    "style": "voice",
+    "category": "operator-duties",
+    "gold_answer": "No. While actually operating, the operator can't do anything that takes his attention off the work, and that includes using a cell phone. The only exception is using the phone for signal communications.",
+    "section_ids": [
+     "29cfr1926.1417(d)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(d)",
+     "text": "such as the use of cellular phones (other than when used for signal communications)"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we run sidebooms on the pipline, do the operaters need the crane certifcation and if not do they need any traning at all",
+    "style": "typo",
+    "category": "operator-qualification",
+    "gold_answer": "Sideboom crane operators are exempt from the §1926.1427 certification and evaluation requirements. They still have to be trained, though: the employer must train each exempted operator on the safe operation of the equipment they will use, under §1926.1430(c).",
+    "section_ids": [
+     "29cfr1926.1427(a)(2)",
+     "29cfr1926.1430(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1430(c)(2)",
+     "text": "The employer must train each operator covered under the exception of § 1926.1427(a)(2) on the safe operation of the equipment the operator will be using."
+    },
+    "equipment": "sideboom",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two things on our truck crane: can we hang extra counterweight past what the manufacturer lists to get more capacity, and can we run it with part of the counterweight left off for a light job?",
+    "style": "multi-part",
+    "category": "operator-duties",
+    "gold_answer": "No to both. You can't exceed the manufacturer's maximum counterweight or ballast, and you can't operate without the counterweight or ballast in place as the manufacturer specifies. (Tower cranes are covered separately, under §1926.1435(b)(8).)",
+    "section_ids": [
+     "29cfr1926.1417(aa)(1)(i)",
+     "29cfr1926.1417(aa)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(aa)(1)(ii)",
+     "text": "The maximum counterweight or ballast specified by the manufacturer for the equipment must not be exceeded."
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We've got an old 1979 friction crawler with a live boom. Next job is picking pipe inside a refinery and nobody will be under the load. Can we run it with the free-fall boom there?",
+    "style": "scenario",
+    "category": "operator-duties",
+    "gold_answer": "No. A live (free-fall) boom is prohibited whenever lifting takes place in a refinery or tank farm, even if no one is in the fall zone. Being built before October 31, 1984 only allows a live boom where none of the prohibited circumstances apply.",
+    "section_ids": [
+     "29cfr1926.1426(a)(1)(vi)",
+     "29cfr1926.1426(a)(2)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1426(a)(1)(vi)",
+     "text": "Lifting operations are taking place in a refinery or tank farm."
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For a fall restraint system used on a crane, how strong must the anchorage point on the equipment be, and may body belts be used rather than full harnesses?",
+    "style": "formal",
+    "category": "fall-protection",
+    "gold_answer": "A fall restraint system must be anchored to a part of the equipment that can withstand twice the maximum load an employee could put on it under reasonably anticipated conditions of use. Either body belts or body harnesses may be used in personal fall arrest and fall restraint systems.",
+    "section_ids": [
+     "29cfr1926.1423(g)(3)",
+     "29cfr1926.1423(d)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1423(g)(3)",
+     "text": "capable of withstanding twice the maximum load that an employee may impose on it during reasonably anticipated conditions of use"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "two different subs got cranes on site and their booms can reach into each others area, no GC really running things. whose job is it to sort that out",
+    "style": "vague",
+    "category": "work-area-control",
+    "gold_answer": "When any part of one crane is within the working radius of another, the controlling entity must set up a system to coordinate operations. If there is no controlling entity, the employers operating the equipment must set up that system (or the single employer, if only one runs all the equipment).",
+    "section_ids": [
+     "29cfr1926.1424(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1424(b)",
+     "text": "If there is no controlling entity, the employer (if there is only one employer operating the multiple pieces of equipment), or employers, must institute such a system."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "My trainee is getting good. Can he run the man basket pick, can he be one of the cranes on a tandem lift, and can he do a christmas tree multi-lift rigging pick if I sign off on him?",
+    "style": "multi-part",
+    "category": "operator-qualification",
+    "gold_answer": "An operator-in-training who isn't certified can't hoist personnel and can't operate in multiple-equipment lifts. Multiple-lift rigging is the one exception: he can do it if his operator's trainer decides his skills are good enough for that high-skill work.",
+    "section_ids": [
+     "29cfr1926.1427(b)(3)(ii)",
+     "29cfr1926.1427(b)(3)(iii)",
+     "29cfr1926.1427(b)(3)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(b)(3)(v)",
+     "text": "In multiple-lift rigging operations, except where the operator's trainer determines that the operator-in-training's skills are sufficient for this high-skill work."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "new guy ran cranes in the army, has his military crane qual. he's working for us now, a private contractor. does that qual count as his cert?",
+    "style": "slang",
+    "category": "operator-qualification",
+    "gold_answer": "No. A U.S. military qualification only meets §1926.1427 for employees of the U.S. military, meaning federal employees of the Department of Defense or Armed Forces, and not private contractors. It also isn't portable: it only counts while the operator works for the employer that issued it.",
+    "section_ids": [
+     "29cfr1926.1427(a)(3)(i)",
+     "29cfr1926.1427(a)(3)(ii)(A)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(a)(3)(i)",
+     "text": "An employee of the U.S. military is a Federal employee of the Department of Defense or Armed Forces and does not include employees of private contractors."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "If none of the accredited testing organizations offer a certification exam for the specific type of crane our operator runs, how does he meet the certification requirement, and what has to be on his certificate?",
+    "style": "formal",
+    "category": "operator-qualification",
+    "gold_answer": "He's treated as compliant if he's certified for the type of equipment most similar to his machine that does have a certification exam. His certificate must state the type of equipment he's certified for.",
+    "section_ids": [
+     "29cfr1926.1427(d)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(d)(2)",
+     "text": "certified for the type that is most similar to that equipment and for which a certification examination is available"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Deciding which certified type is 'most similar' to a given machine is a judgment call the text doesn't define."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.3144638,
+ "duration_ms": 48817,
+ "batch": "V04",
+ "prompt_chars": 67879
+}

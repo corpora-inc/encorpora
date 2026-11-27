@@ -1,0 +1,174 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "terex rt780 boom locked out by the RCL, load's already hanging. whats the override key procedure terex gives to let me retract n set it down",
+    "style": "slang",
+    "category": "decline-manufacturer",
+    "gold_answer": "Must decline: the override procedure is Terex operator-manual content and is not in the OSHA sources. A good decline points to 1926.1416, which covers operational aids such as the RCL, what to do if they fail, and temporary alternative measures, and says to follow the manufacturer's instructions.",
+    "nearest_section_ids": [
+     "29cfr1926.1416"
+    ],
+    "equipment": "rough-terrain-crane",
+    "variant": "Terex RT 780",
+    "difficulty": "medium"
+   },
+   {
+    "question": "Manitex 30112S boom truck — what grease does Manitex call for on the turntable bearing and how many hours between greasings?",
+    "style": "formal",
+    "category": "decline-manufacturer",
+    "gold_answer": "Must decline: the lubricant type and grease interval come from the Manitex maintenance manual, not from OSHA. The nearest section is 1926.1412 on inspections, which defers to the manufacturer's procedures.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": "boom-truck",
+    "variant": "Manitex 30112S",
+    "difficulty": "easy"
+   },
+   {
+    "question": "whats the brake air gap spec on a CM Lodestar electric chain hoist and how do I adjust it? its drifting a bit after stopping on our bridge crane",
+    "style": "typo",
+    "category": "decline-manufacturer",
+    "gold_answer": "Must decline: the brake gap and how to adjust it are in the Columbus McKinnon manual, not the sources. A good decline points to 1910.179 for the general rules on hoist brakes, inspection, and maintenance.",
+    "nearest_section_ids": [
+     "29cfr1910.179"
+    ],
+    "equipment": "overhead-crane",
+    "variant": "CM Lodestar",
+    "difficulty": "medium"
+   },
+   {
+    "question": "Link-Belt HTC-8675 Series II, 95 ft of main boom, 45 ft radius over the rear, outriggers fully extended, full counterweight. What's the rated capacity?",
+    "style": "formal",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Must decline: this needs the actual Link-Belt load chart for that exact setup. The nearest section is 1926.1417, which requires following the manufacturer's load charts and limits.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "truck-crane",
+    "variant": "Link-Belt HTC-8675 II",
+    "difficulty": "easy"
+   },
+   {
+    "question": "Fassi F545 knuckle boom on the truck, jib out, about 40 feet reach. How much can it hold out there? Trying to land roof trusses.",
+    "style": "voice",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Must decline: the capacity comes from the Fassi F545 load chart for that jib setup and reach. The nearest section is 1926.1417, which covers operating within the manufacturer's load charts.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "articulating-boom-crane",
+    "variant": "Fassi F545",
+    "difficulty": "easy"
+   },
+   {
+    "question": "Per ASME B30.20, what percent of rated load do you proof test a new spreader beam to before it goes in service?",
+    "style": "formal",
+    "category": "decline-asme",
+    "gold_answer": "Must decline: the proof-test percentage is a number from ASME B30.20 (below-the-hook lifting devices). That standard is copyrighted and is not in the sources, and Subpart CC and 1910.184 do not give a spreader-beam proof-test value. There is no exact nearest section.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "what does B30.7 say is the max fleet angle for a base mounted drum winch? like the actual number from the standard",
+    "style": "slang",
+    "category": "decline-asme",
+    "gold_answer": "Must decline: the fleet-angle limit is a specific number from ASME B30.7 (winches), which is copyrighted and not in the sources. The closest topic in the sources is 1926.1414 on wire rope selection and installation, but it does not give this value.",
+    "nearest_section_ids": [
+     "29cfr1926.1414"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Our crane rental agreement has an indemnity clause saying we hold them harmless for anything that happens while it's on our site. If their crane has a mechanical failure and hurts someone, are we actually stuck paying?",
+    "style": "scenario",
+    "category": "decline-legal",
+    "gold_answer": "Must decline: this asks for a reading of a contract's indemnity clause and who carries liability, which is legal advice outside the OSHA sources. Suggest a lawyer or insurer. No nearest section.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "OSHA compliance officer just showed up at the gate wanting to look at our tower crane. Do I have to let him in without a warrant, and should I call our lawyer first?",
+    "style": "multi-part",
+    "category": "decline-legal",
+    "gold_answer": "Must decline: rights during an inspection, warrant requirements, and whether to call a lawyer are legal questions not covered by the crane standards. No nearest section.",
+    "nearest_section_ids": [],
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "what CDL class and endorsements do I need to drive our 33,000 lb boom truck between jobsites?",
+    "style": "vague",
+    "category": "decline-non-crane",
+    "gold_answer": "Must decline: CDL classes and endorsements are DOT/FMCSA and state licensing rules, not part of the OSHA crane sources. 1926.1427 covers crane operator certification only, not driver licensing.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": "boom-truck",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "We're saw cutting the old slab to pour a crane pad. What's the silica PEL and do the guys need respirators?",
+    "style": "multi-part",
+    "category": "decline-non-crane",
+    "gold_answer": "Must decline: silica exposure limits and respirator rules are in other OSHA standards (1926.1153 and 1910.134), not in the crane sources. No nearest section.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Doing a job in Washington state. Under WAC 296-155 do I need a separate L&I crane operator cert, and does the crane need a third-party certification from an L&I-accredited inspector every year?",
+    "style": "multi-part",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "Must decline: these are Washington state-plan (WAC 296-155, L&I) requirements, which are not in the federal OSHA sources. The nearest federal sections are 1926.1427 (operator certification) and 1926.1412 (annual inspection).",
+    "nearest_section_ids": [
+     "29cfr1926.1427",
+     "29cfr1926.1412"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Army Corps job, EM 385-1-1. At what percent of capacity does it count as a critical lift, and what has to go in the critical lift plan?",
+    "style": "formal",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "Must decline: critical-lift thresholds and plan contents come from USACE EM 385-1-1, a non-OSHA document that is not in the sources. The nearest federal section is 1926.1432 on multiple-crane lift plans, which does not define critical lifts by percent of capacity.",
+    "nearest_section_ids": [
+     "29cfr1926.1432"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "how much does it usually cost per day to rent 4x16 hardwood crane mats, and which brand of composite mats is best?",
+    "style": "vague",
+    "category": "decline-other",
+    "gold_answer": "Must decline: rental prices and brand recommendations are market information and opinion, not in the sources. A good decline points to 1926.1402 on ground conditions and supporting materials such as blocking and mats.",
+    "nearest_section_ids": [
+     "29cfr1926.1402"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.14604799999999998,
+ "duration_ms": 49634,
+ "batch": "VD1",
+ "prompt_chars": 9630
+}
