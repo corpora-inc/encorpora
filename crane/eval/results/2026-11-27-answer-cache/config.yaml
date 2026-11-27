@@ -1,0 +1,53 @@
+# Answer cache, 2026-11-27: harvest at main 2392575b2 (#2540 merged: 87 baked answers, 586 aliases),
+# same harvest code as 8226c4eb3 (#2549 dense retrieval, #2553 dense gate, #2550 reasoning models), over the
+# pack built from main 2392575b2 with its answer cache. Dense half: EmbeddingGemma 2
+# Q8_0 behind llama-server on the lab machine (../2026-11-27-dense-gate/lab/serve_pair.sh), as the bake used.
+# Gate 0.2:0.77 was tuned on heldout-v1; heldout-v2 (written after the tuning) is the fresh check.
+# harvest runs on the lab machine through ../2026-11-27-baseline/lab/harvest-remote.sh; "@lab/" paths
+# are files there. Paths are relative to this file.
+set: ../../heldout-v1.jsonl
+reference_sections: ../../sources/sections-2026-11-24.jsonl
+
+match:
+  aliases:
+    - {pattern: "^29cfr1926\\.cc\\.app", replace: "29cfr1926-subpartCC-app"}
+    - {pattern: "-table-", replace: "-table"}
+
+backends:
+  - name: harvest-model-off            # lexical, default gate: the reference on the fresh set
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: "off"
+    role: operator
+  - name: harvest-model-off-dense-gate
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: "off"
+    role: operator
+    extra_args: [--embedder, "http://127.0.0.1:18096", --embedder-gguf, "@lab/home/models/embeddinggemma-2-Q8_0.gguf",
+                 --dense-gate, "0.2:0.77"]
+  - name: harvest-gpt-oss-20b-dense-gate
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: http://127.0.0.1:18103/v1     # llama-server on the lab machine, no --reasoning-budget (#2550)
+    role: operator
+    extra_args: [--llm-model, gpt-oss-20b-MXFP4.gguf, --embedder, "http://127.0.0.1:18096",
+                 --embedder-gguf, "@lab/home/models/embeddinggemma-2-Q8_0.gguf", --dense-gate, "0.2:0.77"]
+    jobs: 3
+    timeout_s: 600
+
+compare:
+  - [harvest-model-off, harvest-model-off-dense-gate]
+  - [harvest-model-off, harvest-gpt-oss-20b-dense-gate]
+  - [harvest-model-off-dense-gate, harvest-gpt-oss-20b-dense-gate]
+
+judge:
+  model: opus
+  agreement_model: sonnet
+  agreement_sample: 0.15
+  cache: ../2026-11-27-baseline/.judge-cache     # restored from the lab copy; identical answers are never re-judged
+  per_call: 6
+  jobs: 3
