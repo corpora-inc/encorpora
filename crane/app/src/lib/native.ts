@@ -6,7 +6,7 @@
  */
 import { logError } from "./log.ts";
 
-type Invoke = (cmd: string, args?: Record<string, unknown>) => Promise<unknown>;
+type Invoke = (cmd: string, args?: Record<string, unknown> | Uint8Array, options?: { headers?: Record<string, string> }) => Promise<unknown>;
 
 function tauriInvoke(): Invoke | null {
   const w = globalThis as unknown as { __TAURI_INTERNALS__?: { invoke: Invoke } };
@@ -105,3 +105,35 @@ export const assistant = {
     }
   },
 };
+
+/**
+ * Save a file the app built. In the app: the system save dialog (desktop,
+ * Android) or the share sheet (iOS), through the `export_file` app command.
+ * In a browser: a download.
+ */
+export type SaveOutcome = "saved" | "shared" | "cancelled";
+export async function saveFile(name: string, bytes: Uint8Array, mime: string): Promise<SaveOutcome> {
+  const invoke = tauriInvoke();
+  if (invoke) {
+    const r = await invoke("export_file", bytes, { headers: { "x-file-name": name } });
+    if (r === "saved" || r === "shared" || r === "cancelled") return r;
+    throw new Error(`Unexpected export result ${String(r)}`);
+  }
+  const url = URL.createObjectURL(new Blob([bytes as Uint8Array<ArrayBuffer>], { type: mime }));
+  try {
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    a.click();
+  } finally {
+    setTimeout(() => URL.revokeObjectURL(url), 10_000);
+  }
+  return "saved";
+}
+
+/** Printing works in browsers and desktop WebViews; mobile WebViews have no print dialog. */
+export function canPrint(): boolean {
+  if (typeof window === "undefined" || typeof window.print !== "function") return false;
+  return !(isNative() && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+}
+

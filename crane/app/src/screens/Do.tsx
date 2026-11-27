@@ -4,6 +4,8 @@ import { Camera, Check, Download, Printer, Trash2, TriangleAlert, X } from "luci
 import { engine } from "../engine/index.ts";
 import type { Procedure, ProcStep, Role } from "../engine/types.ts";
 import { deletePhotos, loadPhoto, savePhoto, shrinkImage } from "../lib/photos.ts";
+import { canPrint, saveFile } from "../lib/native.ts";
+import { MissingPhotoError, runBundle } from "../records/bundle.ts";
 import { procPath, runReportPath, runStepPath } from "../routes.ts";
 import { runSummary, useRuns, type Run, type StepRecord } from "../store/runs.ts";
 import { useSettings } from "../store/settings.ts";
@@ -286,21 +288,6 @@ export function RunStep() {
   );
 }
 
-function exportRun(run: Run, p: Procedure) {
-  const report = {
-    format: "crane-run/1",
-    pack: engine().info.version,
-    run: { id: run.id, procedure: run.procId, title: run.title, role: run.role, equipment: run.equipment, startedAt: run.startedAt, finishedAt: run.finishedAt },
-    steps: p.steps.map((s, i) => ({ ord: i + 1, text: s.text, sections: s.section_ids, ...run.steps[i] })),
-  };
-  const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `${run.procId}-${run.startedAt.slice(0, 10)}.json`;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-}
-
 export function RunReport() {
   const { runId = "" } = useParams();
   const t = useT();
@@ -308,9 +295,25 @@ export function RunReport() {
   const run = useRuns((s) => s.runs[runId]);
   const remove = useRuns((s) => s.remove);
   const show = useToast((s) => s.show);
+  // One export at a time: the dialog or share sheet can take a while to open.
+  const exporting = useRef(false);
   const p = run ? engine().procedures.find((x) => x.proc_id === run.procId) : undefined;
   if (!run || !p) return <NotFound />;
   const s = runSummary(run);
+  const doExport = async () => {
+    if (exporting.current) return;
+    exporting.current = true;
+    try {
+      const { pack_id, version } = engine().info;
+      const bundle = await runBundle(run, p, { pack_id, version }, loadPhoto);
+      const outcome = await saveFile(bundle.name, bundle.bytes, "application/zip");
+      if (outcome === "saved") show("info", t("do.exported"));
+    } catch (e) {
+      reportError("do.export", e, t(e instanceof MissingPhotoError ? "do.exportMissingPhoto" : "do.exportError"));
+    } finally {
+      exporting.current = false;
+    }
+  };
   const del = async () => {
     try {
       await deletePhotos(run.steps.flatMap((x) => x.photoIds));
@@ -360,14 +363,16 @@ export function RunReport() {
         })}
       </ol>
       <div className="flex flex-wrap gap-3">
-        <Button variant="primary" onClick={() => exportRun(run, p)}>
+        <Button variant="primary" onClick={() => void doExport()}>
           <Download aria-hidden size={20} />
           {t("do.export")}
         </Button>
-        <Button onClick={() => window.print()}>
-          <Printer aria-hidden size={20} />
-          {t("do.print")}
-        </Button>
+        {canPrint() && (
+          <Button onClick={() => window.print()}>
+            <Printer aria-hidden size={20} />
+            {t("do.print")}
+          </Button>
+        )}
         <Button onClick={() => void del()}>
           <Trash2 aria-hidden size={20} />
           {t("do.delete")}
