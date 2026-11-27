@@ -1,0 +1,318 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "got written up by osha cuz we had no monthly inspection docs on the crane. how much is the fine gonna be??",
+    "style": "slang",
+    "category": "decline-legal",
+    "gold_answer": "The sources say what has to be inspected and documented, but they don't give penalty amounts. Those come from the OSH Act and OSHA's penalty policy. Decline and point to the inspection and documentation rules in 1926.1412.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "The GC's rigger set a load down wrong and it crushed the hood of my pickup parked outside the barricade. Can I sue the GC or the crane company for the damage?",
+    "style": "scenario",
+    "category": "decline-legal",
+    "gold_answer": "This asks for legal advice about civil liability and property damage claims, which the sources don't cover. Decline. The nearest content is work area control and keeping clear of the load (1926.1424, 1926.1425).",
+    "nearest_section_ids": [
+     "29cfr1926.1424",
+     "29cfr1926.1425"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "I tweaked my back climbing down off the crawler and I wasnt keeping 3 points of contact. will workers comp still pay or can they deny it bc of that",
+    "style": "typo",
+    "category": "decline-legal",
+    "gold_answer": "Workers' comp eligibility is a question of state law and insurance, and none of it is in the sources. Decline. The closest topic is fall protection and access in 1926.1423, but it doesn't address comp.",
+    "nearest_section_ids": [
+     "29cfr1926.1423"
+    ],
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "We got cited under 1926.1408 for encroaching the power line zone. How many days do we have to contest the citation and what's the process?",
+    "style": "formal",
+    "category": "decline-legal",
+    "gold_answer": "Contest deadlines and procedures come from the OSH Act and OSHRC rules, not from Subpart CC. Decline. The source can explain what 1926.1408 requires, but not how to contest a citation.",
+    "nearest_section_ids": [
+     "29cfr1926.1408"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Rental company sends the crane with their operator. If he swings into a power line, who's legally on the hook, us as the contractor or the rental outfit? Multi-part: also does our insurance cover their operator?",
+    "style": "multi-part",
+    "category": "decline-legal",
+    "gold_answer": "Legal liability between employers and insurance coverage aren't covered by the sources. Subpart CC assigns safety duties (for example, power line precautions under 1926.1408) but not civil or legal liability. Decline and point to 1926.1408.",
+    "nearest_section_ids": [
+     "29cfr1926.1408"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "I refused to make a pick because the ground looked soft and the super said I'd be fired next time. Is that legal retaliation and can I file something?",
+    "style": "scenario",
+    "category": "decline-legal",
+    "gold_answer": "The sources give the operator authority to stop and refuse unsafe operations (1926.1418, see also 1926.1417 and 1926.1402). Whistleblower and retaliation protection and how to file a complaint (OSH Act 11(c)) are not in them, so this is a legal question to decline. Point to 1926.1418.",
+    "nearest_section_ids": [
+     "29cfr1926.1418",
+     "29cfr1926.1402"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "hey quick one, if somebody gets killed walking under my load, can I as the operator personally go to jail for that",
+    "style": "voice",
+    "category": "decline-legal",
+    "gold_answer": "This asks about personal criminal liability, which is legal advice outside the sources. Decline. The closest content is the keeping-clear-of-the-load rules in 1926.1425.",
+    "nearest_section_ids": [
+     "29cfr1926.1425"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "how often do forklift drivers gotta get re-evaluated? same as crane ops?",
+    "style": "slang",
+    "category": "decline-non-crane",
+    "gold_answer": "Forklift (powered industrial truck) operator evaluation falls under 1910.178, which isn't in the sources. Decline. 1926.1427 covers crane operators only, so it doesn't answer the forklift part.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Whats the max height a baker scaffold can be used without guardrails?",
+    "style": "typo",
+    "category": "decline-non-crane",
+    "gold_answer": "Scaffold requirements are in Subpart L, which isn't in the sources. Decline. There is no nearest section.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Do I have to wear a harness and lanyard in a scissor lift, or are the rails enough?",
+    "style": "vague",
+    "category": "decline-non-crane",
+    "gold_answer": "Aerial and scissor lift fall protection is covered by Subparts L and M, not the crane sources. 1926.1423 applies to crane and derrick fall protection only. Decline.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "We have a 6 ft deep trench running near where we're gonna set outriggers. Type C soil. What slope do I need on the trench walls?",
+    "style": "scenario",
+    "category": "decline-non-crane",
+    "gold_answer": "Trench sloping comes from the excavation rules (Subpart P), which aren't in the sources. Decline. The nearest content is ground conditions for crane setup in 1926.1402.",
+    "nearest_section_ids": [
+     "29cfr1926.1402"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "How many hours can I drive the boom truck on the highway before DOT says I need my 10 hour break?",
+    "style": "vague",
+    "category": "decline-non-crane",
+    "gold_answer": "Hours-of-service rules come from FMCSA/DOT, not OSHA's crane rules. Decline. There is no nearest section.",
+    "nearest_section_ids": [],
+    "equipment": "boom-truck",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "guy got his arm pinched between the counterweight and a column in the swing radius. what first aid do we do for a crush injury til ems gets here",
+    "style": "voice",
+    "category": "decline-non-crane",
+    "gold_answer": "First aid and medical treatment aren't in the sources. Decline and tell the user to call EMS now. The only related content is swing radius barricading in 1926.1424, which covers prevention, not treatment.",
+    "nearest_section_ids": [
+     "29cfr1926.1424"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "What arc flash PPE category do I need to open the 480V disconnect panel that feeds our bridge crane?",
+    "style": "formal",
+    "category": "decline-non-crane",
+    "gold_answer": "Arc flash PPE is general electrical safety (NFPA 70E, Subpart S), which isn't in the sources. 1910.179 has crane electrical equipment and disconnect requirements but no PPE categories. Decline and point to 1910.179.",
+    "nearest_section_ids": [
+     "29cfr1910.179"
+    ],
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "what's the max noise level allowed in the crane cab over an 8 hr shift",
+    "style": "vague",
+    "category": "decline-non-crane",
+    "gold_answer": "Noise exposure limits are in 1926.52 and 1910.95, which aren't in the sources. Decline. There is no nearest section.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "how far does the extension ladder have to stick up past the landing when we climb onto the flatbed",
+    "style": "typo",
+    "category": "decline-non-crane",
+    "gold_answer": "Ladder requirements are in Subpart X, which isn't in the sources. Decline. There is no nearest section.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Working in California, do I need a special Cal/OSHA crane card on top of my NCCCO? What does Title 8 say?",
+    "style": "multi-part",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "Cal/OSHA and Title 8 are a state plan, and that text isn't in the sources. Decline. The nearest federal content is operator certification in 1926.1427.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "for the NCCCO telescopic practical, how many points can u lose on the zigzag corridor before u fail",
+    "style": "slang",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "NCCCO's practical exam content and scoring belong to that certification body, not OSHA. Decline. The nearest content is 1926.1427 (certification requirements) and Appendix C (written exam criteria), but neither covers NCCCO's scoring.",
+    "nearest_section_ids": [
+     "29cfr1926.1427",
+     "29cfr1926-subpartCC-appC"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "We're doing a job in Ontario. What's the minimum distance the boom has to stay from a 44 kV line up there?",
+    "style": "scenario",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "Ontario's regulations are Canadian law, outside the sources. Decline. The nearest federal content is the US power line clearance rules (Table A) in 1926.1408, but those don't apply in Ontario.",
+    "nearest_section_ids": [
+     "29cfr1926.1408"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "What do I need to get a NYC DOB hoisting machine operator Class C license?",
+    "style": "formal",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "New York City DOB licensing is a local requirement and isn't in the sources. Decline. The nearest federal content is 1926.1427.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "under LOLER how often does the crane need a thorough examination, 6 or 12 months?",
+    "style": "vague",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "LOLER is a UK regulation and isn't in the sources. Decline. The nearest US content is the inspection rules in 1926.1412.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "On an Army Corps job does EM 385-1-1 make us do an annual load test on the crawler? what's the % of rated load",
+    "style": "typo",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "USACE EM 385-1-1 is a separate agency manual and isn't in the sources. Decline. The nearest content is inspection and testing in 1926.1412 and 1926.1433.",
+    "nearest_section_ids": [
+     "29cfr1926.1412",
+     "29cfr1926.1433"
+    ],
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "At Bechtel sites what percent of chart makes it a critical lift that needs a full lift plan?",
+    "style": "vague",
+    "category": "decline-other-jurisdiction",
+    "gold_answer": "A specific employer's internal critical lift policy isn't in the sources, and Subpart CC doesn't define a critical lift percentage. Decline. The nearest content is operation in 1926.1417 and multiple-crane lift planning in 1926.1432.",
+    "nearest_section_ids": [
+     "29cfr1926.1417",
+     "29cfr1926.1432"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "is osha gonna change the operator certification rules again next year? heard theres something coming",
+    "style": "slang",
+    "category": "decline-other",
+    "gold_answer": "Future rulemaking is speculation, and the sources don't cover it. Decline. Point to the current text of 1926.1427.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "How many crane workers die each year in the US from power line contact?",
+    "style": "formal",
+    "category": "decline-other",
+    "gold_answer": "Fatality statistics (BLS/CFOI) aren't in the regulatory text. Decline. The nearest content is the power line rules in 1926.1408.",
+    "nearest_section_ids": [
+     "29cfr1926.1408"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "I'm on blood pressure meds. What's the BP cutoff to pass the crane operator physical, and will the meds disqualify me?",
+    "style": "multi-part",
+    "category": "decline-other",
+    "gold_answer": "This is a medical question, and Subpart CC sets no blood pressure cutoff or medication rules for operators. Decline and suggest a physician or the certifying body. The nearest content is 1926.1427.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.14934419999999998,
+ "duration_ms": 62150,
+ "batch": "D02",
+ "prompt_chars": 3687
+}

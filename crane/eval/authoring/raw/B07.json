@@ -1,0 +1,258 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how many broken wires in the hoist line before i gotta pull it? regular running rope not the rotation resistant stuff",
+    "style": "slang",
+    "category": "wire-rope",
+    "gold_answer": "For running wire rope, it's a Category II deficiency when there are six randomly distributed broken wires in one rope lay, or three broken wires in one strand in one rope lay. The rope can't be used until the manufacturer's removal criterion is met, the rope is replaced, or a localized defect is cut out.",
+    "section_ids": [
+     "29cfr1926.1413(a)(2)(ii)(A)",
+     "29cfr1926.1413(a)(4)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(2)(ii)(A)",
+     "text": "Six randomly distributed broken wires in one rope lay or three broken wires in one strand in one rope lay"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "broken wire limit on roation resistent rope?? is it diffrent from normal rope",
+    "style": "typo",
+    "category": "wire-rope",
+    "gold_answer": "Yes, it's different. For rotation resistant rope, the Category II limit is two randomly distributed broken wires in six rope diameters, or four randomly distributed broken wires in 30 rope diameters. Normal running rope is measured per rope lay instead.",
+    "section_ids": [
+     "29cfr1926.1413(a)(2)(ii)(A)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(2)(ii)(A)",
+     "text": "Two randomly distributed broken wires in six rope diameters or four randomly distributed broken wires in 30 rope diameters"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Doing the walkaround on our lattice boom crawler and found a couple broken wires on a boom pendant right up by the socket. How many broken wires are allowed on pendants, and does it matter if they're at the end fitting?",
+    "style": "scenario",
+    "category": "wire-rope",
+    "gold_answer": "Yes, location matters. On pendants or standing ropes, it's a Category II deficiency if there are more than two broken wires in one rope lay in the rope beyond the end connections, or more than one broken wire in a rope lay at an end connection. So two broken wires at the socket is already over the limit.",
+    "section_ids": [
+     "29cfr1926.1413(a)(2)(ii)(A)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(2)(ii)(A)",
+     "text": "More than two broken wires in one rope lay located in rope beyond end connections and/or more than one broken wire in a rope lay located at an end connection"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how much can the rope diameter shrink before its a problem i mic'd it and its under nominal",
+    "style": "voice",
+    "category": "wire-rope",
+    "gold_answer": "A diameter reduction of more than 5% from nominal is a Category II deficiency. The rope can't be used until the manufacturer's removal criterion is met, the rope is replaced, or a localized section is cut out.",
+    "section_ids": [
+     "29cfr1926.1413(a)(2)(ii)(B)",
+     "29cfr1926.1413(a)(4)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(2)(ii)(B)",
+     "text": "A diameter reduction of more than 5% from nominal diameter."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We brushed a hot line yesterday and the load line got arced in one spot near the hook. Can we just cut that section off and keep running the rest of the rope?",
+    "style": "scenario",
+    "category": "wire-rope",
+    "gold_answer": "No. Prior contact with a power line is a Category III deficiency. Cutting out a localized section is allowed for other Category III defects but not for power line contact, and repairing rope that contacted an energized line is prohibited. The rope must be replaced, and the equipment or that hoist must be tagged out until then.",
+    "section_ids": [
+     "29cfr1926.1413(a)(2)(iii)(B)",
+     "29cfr1926.1413(a)(4)(iii)(B)",
+     "29cfr1926.1413(a)(4)(iv)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(4)(iii)(B)",
+     "text": "Repair of wire rope that contacted an energized power line is also prohibited."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "If we cut a kinked spot out of the hoist rope, can we splice the two pieces back together? And if we just use the longer piece, is there a minimum number of wraps that has to stay on the drum?",
+    "style": "multi-part",
+    "category": "wire-rope",
+    "gold_answer": "No splicing. Joining lengths of wire rope by splicing is prohibited, but you may keep using the undamaged portion. If the rope is shortened, the drum must still have two wraps of wire when the load and/or boom is in its lowest position.",
+    "section_ids": [
+     "29cfr1926.1413(a)(4)(i)(B)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(4)(i)(B)",
+     "text": "the employer must ensure that the drum will still have two wraps of wire when the load and/or boom is in its lowest position."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "During the shift inspection, a competent person notes significant corrosion on a hoist rope. Is the rope automatically removed from service, or is a determination required first?",
+    "style": "formal",
+    "category": "wire-rope",
+    "gold_answer": "Significant corrosion is a Category I deficiency. The competent person must immediately decide whether it is a safety hazard. If it is, the rope can't be used until it is replaced or a localized defect is cut out. Unlike Category II and III, removal is not automatic.",
+    "section_ids": [
+     "29cfr1926.1413(a)(2)(i)(B)",
+     "29cfr1926.1413(a)(4)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(4)(i)",
+     "text": "an immediate determination must be made by the competent person as to whether the deficiency constitutes a safety hazard."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether corrosion is 'significant' and a hazard is left to the competent person's judgment."
+   },
+   {
+    "question": "Tower crane is set up downtown and we can't get an assist crane in to do the full annual rope inspection. How long can that be put off for the running ropes vs the standing ropes?",
+    "style": "scenario",
+    "category": "wire-rope",
+    "gold_answer": "When the full annual inspection isn't feasible because of the setup or site conditions, such as a dense urban site, it must be done as soon as it becomes feasible. That is no more than an additional 6 months for running ropes. Standing ropes must be inspected at the time of disassembly.",
+    "section_ids": [
+     "29cfr1926.1413(c)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(c)(2)(iii)",
+     "text": "no longer than an additional 6 months for running ropes and, for standing ropes, at the time of disassembly."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can a derrick use fiber core rope on the boom hoist",
+    "style": "vague",
+    "category": "wire-rope",
+    "gold_answer": "Yes. Fiber core ropes are prohibited for boom hoist reeving, but derricks are the exception.",
+    "section_ids": [
+     "29cfr1926.1414(d)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1414(d)(1)",
+     "text": "Fiber core ropes must not be used for boom hoist reeving, except for derricks."
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We want to run rotation resistant rope on a load hoist that's acting as the boom hoist for a luffing jib on our crawler. What are the drum and sheave size requirements and the minimum design factor for that setup?",
+    "style": "formal",
+    "category": "wire-rope",
+    "gold_answer": "This is only allowed when a load hoist is used as the boom hoist for attachments such as luffing attachments. The drum's first-layer rope pitch diameter must be at least 18 times the nominal rope diameter. All sheaves in the boom hoist reeving system must also be at least 18 times the nominal rope diameter, and the system's operating design factor must be at least five.",
+    "section_ids": [
+     "29cfr1926.1414(e)(4)(ii)",
+     "29cfr1926.1414(e)(4)(ii)(A)",
+     "29cfr1926.1414(e)(4)(ii)(D)",
+     "29cfr1926.1414(e)(4)(ii)(E)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1414(e)(4)(ii)(D)",
+     "text": "All sheaves used in the boom hoist reeving system must have a rope pitch diameter of not less than 18 times the nominal diameter of the rope used."
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The full requirement also pulls in 1926.1426 and ASME B30.5 sections that aren't in this text."
+   },
+   {
+    "question": "what's the lowest design factor allowed on rotation resistant rope, and if a type II rope is under 5 for a one-off lift what extra stuff do we have to do",
+    "style": "multi-part",
+    "category": "wire-rope",
+    "gold_answer": "All rotation resistant rope needs an operating design factor of at least 3.5. Type II or III below 5 can only be used for non-duty-cycle, non-repetitive lifts. For each lift, a qualified person must inspect the rope, and more than one broken wire in any one rope lay counts as a hazard. The lift must be run to minimize dynamic effects, and each lift must be recorded in the monthly and annual inspection documents.",
+    "section_ids": [
+     "29cfr1926.1414(e)(2)(ii)",
+     "29cfr1926.1414(e)(3)(i)",
+     "29cfr1926.1414(e)(3)(ii)",
+     "29cfr1926.1414(e)(3)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1414(e)(3)(i)",
+     "text": "more than one broken wire in any one rope lay must be considered a hazard."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "for the daily rope check do i have to boom down and open up the rope",
+    "style": "vague",
+    "category": "wire-rope",
+    "gold_answer": "No. The shift inspection is a visual check by a competent person of the running and standing ropes likely to be used that shift. It must start before the shift and be finished before or during it. Untwisting (opening) the rope or booming down is not required.",
+    "section_ids": [
+     "29cfr1926.1413(a)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1413(a)(1)",
+     "text": "Untwisting (opening) of wire rope or booming down is not required as part of this inspection."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "putting a clip on the wedge socket, which side does it go on, live end or tail?",
+    "style": "slang",
+    "category": "wire-rope",
+    "gold_answer": "Wire rope clips used with wedge sockets must go on the unloaded dead end (tail) only. The exception is devices specifically designed for dead-ending rope in a wedge socket, which are permitted.",
+    "section_ids": [
+     "29cfr1926.1414(f)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1414(f)",
+     "text": "must be attached to the unloaded dead end of the rope only"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1651958,
+ "duration_ms": 44801,
+ "batch": "B07",
+ "prompt_chars": 16731
+}

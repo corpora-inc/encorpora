@@ -1,0 +1,262 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "we got the excavator picking pipe with a choker on the bucket hook, does that put it under the crane rules?",
+    "style": "slang",
+    "category": "scope-definitions",
+    "gold_answer": "No. Excavators (along with power shovels, wheel loaders, backhoes, loader backhoes and track loaders) are excluded from Subpart CC, even when they use chains, slings or other rigging to lift suspended loads.",
+    "section_ids": [
+     "29cfr1926.1400(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(2)",
+     "text": "This machinery is also excluded when used with chains, slings or other rigging to lift suspended loads."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Driver drops off sheetrock with his knuckle boom truck and sets the bundles up on the 2nd floor deck with the forks on the end of the boom. Is he exempt from the crane standard or not?",
+    "style": "scenario",
+    "category": "scope-definitions",
+    "gold_answer": "He is excluded only if the truck crane has a properly functioning automatic overload prevention device. Moving building supply sheet goods or packaged materials from the truck onto a structure with a fork/cradle at the boom tip counts as material delivery. The exclusion is lost if the crane holds or stabilizes the material while it gets attached.",
+    "section_ids": [
+     "29cfr1926.1400(c)(17)(ii)",
+     "29cfr1926.1400(c)(17)(iii)(A)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(17)(ii)",
+     "text": "using a fork/cradle at the end of the boom, but only when the truck crane is equipped with a properly functioning automatic overload prevention device"
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": "sheet goods onto structure",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "lumber yard knuckle boom is delivering the roof trusses and the guy wants to just set them up on the walls for us while he's here. thats still just a delivery right?",
+    "style": "scenario",
+    "category": "scope-definitions",
+    "gold_answer": "No. The material delivery exclusion does not apply when the articulating/knuckle-boom crane handles prefabricated components, and roof trusses (wood, cold-formed metal, steel or other material) are named as examples. Setting the trusses is covered by Subpart CC.",
+    "section_ids": [
+     "29cfr1926.1400(c)(17)(iii)(B)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(17)(iii)(B)",
+     "text": "Precast concrete members or panels, roof trusses (wooden, cold-formed metal, steel, or other material)"
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": "prefabricated components",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "if i put a hook and winch atachment on the forklift to swing loads around does the crane standrd aply or is forklifts exempt",
+    "style": "typo",
+    "category": "scope-definitions",
+    "gold_answer": "Forklifts (powered industrial trucks) are normally excluded. The exception is when the forklift is set up to hoist and lower (with a winch or hook) and horizontally move a suspended load. In that setup it is covered by Subpart CC.",
+    "section_ids": [
+     "29cfr1926.1400(c)(8)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(8)",
+     "text": "Powered industrial trucks (forklifts), except when configured to hoist and lower (by means of a winch or hook) and horizontally move a suspended load."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our all-terrain crane is rigged with a luffing jib and tower attachment. Do we follow the tower crane rules for it?",
+    "style": "formal",
+    "category": "scope-definitions",
+    "gold_answer": "No. Under the definitions, a mobile crane configured with a luffing jib and/or tower attachment is not considered a tower crane.",
+    "section_ids": [
+     "29cfr1926.1401"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1401",
+     "text": "Mobile cranes that are configured with luffing jib and/or tower attachments are not considered tower cranes under this section."
+    },
+    "equipment": "mobile-crane",
+    "variant": "luffing jib/tower attachment",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "digger derrick setting power poles and augering the holes is that covered by subpart CC or not",
+    "style": "voice",
+    "category": "scope-definitions",
+    "gold_answer": "It is excluded from Subpart CC when used to auger holes for electric or telecom line poles, place and remove the poles, and handle associated materials. To qualify, the work must comply with all of Subpart V, and telecom construction work must comply with all of § 1910.268.",
+    "section_ids": [
+     "29cfr1926.1400(c)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(4)",
+     "text": "digger-derrick use in work subject to subpart V of this part must comply with all of the provisions of that subpart"
+    },
+    "equipment": "digger-derrick",
+    "variant": "pole work",
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether the exclusion applies depends on full compliance with Subpart V or 1910.268, and that has to be judged in the field."
+   },
+   {
+    "question": "mechanic truck with the little crane on the back pulling an engine out of the dozer on site do the crane rules apply what if he uses it to set some rebar bundles",
+    "style": "voice",
+    "category": "scope-definitions",
+    "gold_answer": "Pulling the engine is excluded because a mechanic's truck with a hoisting device is not covered when used for equipment maintenance and repair. Setting rebar is not maintenance or repair, so service/mechanic trucks with a hoisting device are covered by Subpart CC for that work.",
+    "section_ids": [
+     "29cfr1926.1400(c)(9)",
+     "29cfr1926.1400(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(9)",
+     "text": "Mechanic's truck with a hoisting device when used in activities related to equipment maintenance and repair."
+    },
+    "equipment": "service-truck-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Who counts as the 'controlling entity' under the crane standard?",
+    "style": "formal",
+    "category": "scope-definitions",
+    "gold_answer": "It is an employer that has overall responsibility for the construction of the project, meaning its planning, quality and completion. That can be a prime contractor, general contractor, construction manager or any other legal entity.",
+    "section_ids": [
+     "29cfr1926.1401"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1401",
+     "text": "an employer that is a prime contractor, general contractor, construction manager or any other legal entity which has the overall responsibility for the construction of the project"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "when we jump the tower crane up a few more sections is that considered erection or something else",
+    "style": "slang",
+    "category": "scope-definitions",
+    "gold_answer": "It is erection. For tower cranes, 'erecting and climbing' replaces 'assembly', and raising the crane's height is an erection process whether it is built to full height at the start or climbed in stages.",
+    "section_ids": [
+     "29cfr1926.1401"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1401",
+     "text": "Regardless of whether the crane is initially erected to its full height or is climbed in stages, the process of increasing the height of the crane is an erection process."
+    },
+    "equipment": "tower-crane",
+    "variant": "climbing",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two things: (1) does the crane standard still apply when we hang a magnet or a man basket off the crane, and (2) what about a rig where we're just lifting with a chainfall?",
+    "style": "multi-part",
+    "category": "scope-definitions",
+    "gold_answer": "(1) Yes. The standard applies to covered equipment used with attachments, crane-attached or suspended, including magnets and personnel platforms. (2) No. Machinery that hoists using a come-a-long or chainfall is excluded.",
+    "section_ids": [
+     "29cfr1926.1400(b)",
+     "29cfr1926.1400(c)(10)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "what about cherry pickers and scissor lifts, crane rules?",
+    "style": "vague",
+    "category": "scope-definitions",
+    "gold_answer": "No. Machinery originally designed as vehicle-mounted aerial devices for lifting personnel, and self-propelled elevating work platforms, are excluded from Subpart CC.",
+    "section_ids": [
+     "29cfr1926.1400(c)(5)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(c)(5)",
+     "text": "Machinery originally designed as vehicle-mounted aerial devices (for lifting personnel) and self-propelled elevating work platforms."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We built our own crane barge in house. What makes it a 'floating crane' vs a land crane on a barge, and is there a term for one we built ourselves?",
+    "style": "multi-part",
+    "category": "scope-definitions",
+    "gold_answer": "A floating crane/derrick is designed by the manufacturer (or employer) for marine use by permanent attachment to a barge, pontoons, vessel or other flotation. A land crane/derrick was not originally designed that way. A floating crane designed and built by an employer for its own use is called 'employer-made equipment'.",
+    "section_ids": [
+     "29cfr1926.1401"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1401",
+     "text": "designed by the manufacturer (or employer) for marine use by permanent attachment to a barge, pontoons, vessel or other means of flotation"
+    },
+    "equipment": "floating-crane",
+    "variant": "employer-made",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Railroad crane working on mainline track. Do we still have to do the ground conditions section (1402)?",
+    "style": "scenario",
+    "category": "scope-definitions",
+    "gold_answer": "No, if certain conditions are met. Section 1926.1402 does not apply to cranes designed for railroad track when used on track that is part of the general railroad system regulated by the FRA under 49 CFR part 213, and the track complies with applicable FRA requirements.",
+    "section_ids": [
+     "29cfr1926.1400(h)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1400(h)",
+     "text": "Section 1926.1402 does not apply to cranes designed for use on railroad tracks, when used on railroad tracks that are part of the general railroad system of transportation"
+    },
+    "equipment": "locomotive-crane",
+    "variant": "general railroad system track",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether a given track is part of the general railroad system and meets FRA requirements has to be decided case by case."
+   },
+   {
+    "question": "tree service is bringing a crane in to take down a big oak on the lot, crane standard cover that?",
+    "style": "slang",
+    "category": "scope-definitions",
+    "gold_answer": "Subpart CC lists tree trimming and tree removal work as excluded from its coverage.",
+    "section_ids": [
+     "29cfr1926.1400(c)(13)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": true,
+    "expert_review_why": "The exclusion is one line, and whether other OSHA rules cover crane-assisted tree removal is outside this text."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1975598,
+ "duration_ms": 50243,
+ "batch": "B01",
+ "prompt_chars": 28670
+}

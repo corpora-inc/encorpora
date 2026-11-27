@@ -1,0 +1,298 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "got a load on the hook gonna be hanging a while, can i hop outta the seat and grab a coffee from the truck real quick",
+    "style": "slang",
+    "category": "operator-duties",
+    "gold_answer": "No. The operator may leave the controls with a suspended load only if all of these are met: the operator stays next to the equipment and does no other duties, the load has to stay suspended longer than normal lifting operations, a competent person decides it is safe and restrains the boom hoist, telescoping, load, swing and outrigger/stabilizer functions, and barricades or caution lines with notices keep everyone out of the fall zone. Walking off to the truck breaks the \"remain adjacent, no other duties\" condition.",
+    "section_ids": [
+     "29cfr1926.1417(e)(1)",
+     "29cfr1926.1417(e)(1)(i)",
+     "29cfr1926.1417(e)(1)(iii)",
+     "29cfr1926.1417(e)(1)(iv)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(e)(1)(i)",
+     "text": "The operator remains adjacent to the equipment and is not engaged in any other duties."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "if all thats on the hook is the spreader bar and slings do i still need barricades and all that to get out of the cab",
+    "style": "voice",
+    "category": "operator-duties",
+    "gold_answer": "No. The rules for leaving the controls with a suspended load do not apply to working gear such as slings, spreader bars, ladders and welding machines, as long as the gear's weight is negligible compared to the equipment's lifting capacity as positioned and it is not hanging over an entrance or exit.",
+    "section_ids": [
+     "29cfr1926.1417(e)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(e)(2)",
+     "text": "where the weight of the working gear is negligible relative to the lifting capacity of the equipment as positioned"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "The rule does not define \"negligible\" relative to capacity, so it is a judgment call."
+   },
+   {
+    "question": "theres a do not opperate tag hanging on the swing controll but the rest of the crane is fine, can i just run it anyway",
+    "style": "typo",
+    "category": "operator-duties",
+    "gold_answer": "No. The operator must not use that control until the tag is removed by someone authorized to remove it, or until the operator has confirmed that nobody is servicing or working on the machine or otherwise in a dangerous position, and that the equipment has been repaired and works properly.",
+    "section_ids": [
+     "29cfr1926.1417(f)(2)(ii)",
+     "29cfr1926.1417(f)(2)(i)(A)",
+     "29cfr1926.1417(f)(2)(i)(B)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(f)(2)(ii)",
+     "text": "the operator must not activate that switch or control until the sign has been removed by a person authorized to remove it"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Where the manufacturer's operating procedures for a crane cannot be obtained, who is required to develop the replacement procedures for the controls and for capacity?",
+    "style": "formal",
+    "category": "operator-duties",
+    "gold_answer": "The employer must develop the procedures and make sure they are followed. A qualified person must develop the procedures for the operational controls. A registered professional engineer familiar with the equipment must develop and sign the capacity-related procedures.",
+    "section_ids": [
+     "29cfr1926.1417(b)(1)",
+     "29cfr1926.1417(b)(2)",
+     "29cfr1926.1417(b)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(b)(3)",
+     "text": "Procedures related to the capacity of the equipment must be developed and signed by a registered professional engineer familiar with the equipment."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Mid-shift the display in the cab goes black and that's the only place our load charts are, there's no paper copy. What am I supposed to do?",
+    "style": "scenario",
+    "category": "load-charts",
+    "gold_answer": "When rated capacities are only available electronically and a failure makes them inaccessible, the operator must stop operations right away or follow safe shut-down procedures. Operations cannot resume until the rated capacities are available again in electronic or other form.",
+    "section_ids": [
+     "29cfr1926.1417(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(c)(2)",
+     "text": "the operator must immediately cease operations or follow safe shut-down procedures until the rated capacities (in electronic or other form) are available"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "nobody knows what this thing weighs. what are my options for checking it before the pick, and what happens if the LMI shows it's heavy",
+    "style": "multi-part",
+    "category": "operator-duties",
+    "gold_answer": "The operator can get the weight from an industry-recognized source (such as the manufacturer), an industry-recognized calculation, or other equally reliable means. If the operator asks, this information must be provided before the lift. Alternatively, the operator can start hoisting and use a load weighing device, LMI, rated capacity indicator or limiter. If the load exceeds 75% of the maximum rated capacity at the longest radius that will be used, the lift cannot continue until the weight is verified by the first method.",
+    "section_ids": [
+     "29cfr1926.1417(o)(3)",
+     "29cfr1926.1417(o)(3)(i)",
+     "29cfr1926.1417(o)(3)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(o)(3)(ii)",
+     "text": "if it exceeds 75 percent of the maximum rated capacity at the longest radius that will be used during the lift operation"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "weather service just put out a storm warning for the area who decides if we gotta tie the crane down",
+    "style": "voice",
+    "category": "wind-weather",
+    "gold_answer": "When a local storm warning is issued, the competent person must decide whether the manufacturer's recommendations for securing the equipment need to be put in place.",
+    "section_ids": [
+     "29cfr1926.1417(h)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(h)",
+     "text": "the competent person must determine whether it is necessary to implement manufacturer recommendations for securing the equipment"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "ice and snow on the boom this morning, does that matter?",
+    "style": "vague",
+    "category": "wind-weather",
+    "gold_answer": "Yes. The competent person must adjust the equipment and/or the operations to account for the effect of wind, ice and snow on stability and rated capacity.",
+    "section_ids": [
+     "29cfr1926.1417(n)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(n)",
+     "text": "The competent person must adjust the equipment and/or operations to address the effect of wind, ice, and snow on equipment stability and rated capacity."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Super wants me to make a pick that's over the chart and says just do it. Can he make me, and can I shut the job down if I think it's unsafe?",
+    "style": "scenario",
+    "category": "operator-duties",
+    "gold_answer": "No. The equipment must not be operated above its rated capacity, and the operator cannot be required to do so. Whenever there is a safety concern, the operator has the authority to stop and refuse to handle loads until a qualified person has determined that safety has been assured.",
+    "section_ids": [
+     "29cfr1926.1417(o)(1)",
+     "29cfr1926.1417(o)(2)",
+     "29cfr1926.1418"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1418",
+     "text": "the operator must have the authority to stop and refuse to handle loads until a qualified person has determined that safety has been assured"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "some laborer threw me the all stop, hes not my signal guy. do i gotta listen to him",
+    "style": "slang",
+    "category": "signals",
+    "gold_answer": "Yes. The operator must obey a stop or emergency stop signal no matter who gives it.",
+    "section_ids": [
+     "29cfr1926.1417(y)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(y)",
+     "text": "The operator must obey a stop (or emergency stop) signal, irrespective of who gives it."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "running a locomotive crane in the rail yard, when am I allowed to swing out over the next track over",
+    "style": "voice",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "A locomotive crane must not be swung into a position where railcars on an adjacent track could hit it until it is determined that no cars are being moved on that track and proper flag protection is in place.",
+    "section_ids": [
+     "29cfr1926.1417(z)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(z)",
+     "text": "until it is determined that cars are not being moved on the adjacent track and that proper flag protection has been established"
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "ok to make picks over the front of the truck crane or no?",
+    "style": "slang",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "On wheel-mounted equipment, no loads may be lifted over the front area unless the manufacturer permits it.",
+    "section_ids": [
+     "29cfr1926.1417(r)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(r)",
+     "text": "no loads must be lifted over the front area, except as permitted by the manufacturer"
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "want to pick and carry with the rough terrain across the yard. is that allowed, who has to be in charge of it, and anything about the tires?",
+    "style": "multi-part",
+    "category": "operator-duties",
+    "gold_answer": "Traveling with a load is prohibited if the manufacturer prohibits it. Otherwise, a competent person must supervise. That person decides whether rated capacity needs to be reduced and makes the calls on load position, boom location, ground support, travel route, overhead obstructions and speed, and those decisions must be carried out. On equipment with tires, the manufacturer's specified tire pressure must be maintained.",
+    "section_ids": [
+     "29cfr1926.1417(u)(1)",
+     "29cfr1926.1417(u)(2)(i)",
+     "29cfr1926.1417(u)(2)(ii)",
+     "29cfr1926.1417(u)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(u)(2)(iii)",
+     "text": "For equipment with tires, tire pressure specified by the manufacturer is maintained."
+    },
+    "equipment": "rough-terrain-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we're doing a bunch of repetitive heavy picks all near max line pull, do i have to do the brake check every single one",
+    "style": "voice",
+    "category": "operator-duties",
+    "gold_answer": "No. The brakes must be tested by lifting the load a few inches and applying the brakes whenever a load is 90% or more of the maximum line pull. In duty cycle or repetitive lifts where every lift is 90% or more, the test is required only on the first lift, not on the ones after it.",
+    "section_ids": [
+     "29cfr1926.1417(s)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(s)",
+     "text": "The operator must test the brakes each time a load that is 90% or more of the maximum line pull is handled"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "found something on the crane that needs fixd, is it enuf to just tell the next shift guy verbaly?",
+    "style": "typo",
+    "category": "operator-duties",
+    "gold_answer": "No. The operator must promptly report it in writing to the person the employer designated to receive such information and, where there are successive shifts, to the next operator. The employer must notify all affected employees at the beginning of each shift about the needed adjustments or repairs and any alternative measures.",
+    "section_ids": [
+     "29cfr1926.1417(j)(1)",
+     "29cfr1926.1417(j)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1417(j)(1)",
+     "text": "The operator must, in writing, promptly inform the person designated by the employer to receive such information"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.16028779999999998,
+ "duration_ms": 50905,
+ "batch": "B09",
+ "prompt_chars": 10542
+}

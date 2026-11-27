@@ -1,0 +1,288 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "whats the max load rating as a percent of tipping for a crawler with no outriggers vs with outriggers fully out",
+    "style": "voice",
+    "category": "load-charts",
+    "gold_answer": "For a crawler crane without outriggers, load ratings can't exceed 75% of the tipping load. With outriggers fully extended, the limit is 85%.",
+    "section_ids": [
+     "29cfr1910.180-table1",
+     "29cfr1910.180(c)(1)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180-table1",
+     "text": "Crawler, without outriggers | 75 ; Crawler, using outriggers fully extended | 85"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For rating a locomotive crane, when is it considered to be tipping, and how level does the track have to be?",
+    "style": "formal",
+    "category": "load-charts",
+    "gold_answer": "A locomotive crane counts as tipping, with or without outriggers, when half of the wheels farthest from the load leave the rail. For rating purposes the crane must stand on track that is level within 1 percent grade.",
+    "section_ids": [
+     "29cfr1910.180(c)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(c)(1)(ii)",
+     "text": "Tipping with or without the use of outriggers occurs when half of the wheels farthest from the load leave the rail."
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "hook looks kinda opened up and a lil twisted, at what point is it junk?",
+    "style": "slang",
+    "category": "inspections",
+    "gold_answer": "Crane hooks are checked during frequent inspection. A hook is flagged if it has cracks, a throat opening more than 15% over normal, or more than 10° of twist from the plane of the unbent hook.",
+    "section_ids": [
+     "29cfr1910.180(d)(3)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(d)(3)(v)",
+     "text": "more than 15 percent in excess of normal throat opening or more than 10° twist from the plane of the unbent hook"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our truck crane sat in the yard about 3 months with the ropes still reeved. What inspections do we have to do before we put it back to work, and does anybody have to sign off on the rope?",
+    "style": "scenario",
+    "category": "inspections",
+    "gold_answer": "A crane idle for 1 month or more but less than 6 months needs a frequent-type inspection under (d)(3) plus the idle-rope inspection under (g)(2)(ii) before going back in service. The rope must get a thorough inspection for all types of deterioration by an appointed or authorized person, whose approval is required for further use. A certification record with the date, the inspector's signature and a rope identifier must be kept readily available.",
+    "section_ids": [
+     "29cfr1910.180(d)(5)(i)",
+     "29cfr1910.180(g)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(d)(5)(i)",
+     "text": "A crane which has been idle for a period of one month or more, but less than 6 months, shall be given an inspection conforming with requirements of paragraph (d)(3)"
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how ofen do standby cranes need inspectd",
+    "style": "typo",
+    "category": "inspections",
+    "gold_answer": "Standby cranes must be inspected at least semiannually, under the frequent-inspection items in (d)(3) and the idle-rope inspection in (g)(2)(ii). Standby cranes exposed to adverse environments should be inspected more often.",
+    "section_ids": [
+     "29cfr1910.180(d)(5)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(d)(5)(iii)",
+     "text": "Standby cranes shall be inspected at least semiannually"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "After we fixed the boom we want to do a load test. How heavy can the test load go, and do we need paperwork?",
+    "style": "multi-part",
+    "category": "inspections",
+    "gold_answer": "Test loads may not exceed 110% of the rated load at any selected working radius. Written reports must be available showing the test procedures and confirming that the repairs or alterations are adequate.",
+    "section_ids": [
+     "29cfr1910.180(e)(2)(i)",
+     "29cfr1910.180(e)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(e)(2)(ii)",
+     "text": "Test loads shall not exceed 110 percent of the rated load at any selected working radius."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can we rerate the crane higher than the original chart",
+    "style": "vague",
+    "category": "load-charts",
+    "gold_answer": "Only if the crane manufacturer or final assembler approves the rating change. Rerating tests follow SAE J765 for crawler, truck and wheel-mounted cranes, or paragraphs (c)(1)(i) and (ii) for locomotive cranes, and the rerating test report must be readily available.",
+    "section_ids": [
+     "29cfr1910.180(e)(2)(iv)",
+     "29cfr1910.180(e)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(e)(2)(iv)",
+     "text": "No cranes shall be rerated in excess of the original load ratings unless such rating changes are approved by the crane manufacturer or final assembler."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "pick is in the structural part of the chart not stability how close do i gotta know the weight",
+    "style": "voice",
+    "category": "load-charts",
+    "gold_answer": "When a load is limited by structural competence rather than stability, its weight must be determined within plus or minus 10% before it is lifted.",
+    "section_ids": [
+     "29cfr1910.180(h)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(h)(1)(ii)",
+     "text": "it shall be ascertained that the weight of the load has been determined within plus or minus 10 percent before it is lifted"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "How many wraps have to stay on the drum when I'm booming down or lowering into a deep hole?",
+    "style": "slang",
+    "category": "wire-rope",
+    "gold_answer": "Neither the load nor the boom may be lowered past the point where fewer than two full wraps of rope remain on their drums.",
+    "section_ids": [
+     "29cfr1910.180(h)(3)(x)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(h)(3)(x)",
+     "text": "Neither the load nor the boom shall be lowered below the point where less than two full wraps of rope remain on their respective drums."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "truck crane - ok to swing the load around over the front of the truck?",
+    "style": "vague",
+    "category": "operator-duties",
+    "gold_answer": "No. On truck-mounted cranes, loads may not be lifted over the front area unless the crane manufacturer approves it.",
+    "section_ids": [
+     "29cfr1910.180(h)(3)(vii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(h)(3)(vii)",
+     "text": "On truck-mounted cranes, no loads shall be lifted over the front area except as approved by the crane manufacturer."
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "On the locomotive crane, can I count on the rail clamps to keep it from tipping? And if I'm not using outriggers, is there anything I have to do with the truck springs?",
+    "style": "multi-part",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "No. Rail clamps may not be used to restrain a locomotive crane from tipping. Before lifting without outriggers, you must apply some means to keep the load from being carried by the truck springs.",
+    "section_ids": [
+     "29cfr1910.180(i)(1)",
+     "29cfr1910.180(h)(3)(xi)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(i)(1)",
+     "text": "Rail clamps shall not be used as a means of restraining tipping of a locomotive crane."
+    },
+    "equipment": "locomotive-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we dropped the counterweight off the truck crane to move it, can we still make a few small picks w/o it",
+    "style": "scenario",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "Generally a crane can't be operated without the full ballast or counterweight the maker specifies. The exception is a truck crane that has dropped its ballast or counterweight: it may be operated temporarily, with special care, and only for light loads. The manufacturer's specified counterweight must never be exceeded.",
+    "section_ids": [
+     "29cfr1910.180(i)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(i)(2)",
+     "text": "truck cranes that have dropped the ballast or counterweight may be operated temporarily with special care and only for light loads without full ballast or counterweight in place"
+    },
+    "equipment": "truck-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The rule does not define 'light loads' or 'temporarily', so applying it takes judgment and the manufacturer's guidance."
+   },
+   {
+    "question": "working near hot lines with a crawler at the plant, what does 1910.180 say about clearance",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "Section 1910.180 sets no clearance distances of its own. For operations near overhead electric lines it refers to § 1910.333(c)(3).",
+    "section_ids": [
+     "29cfr1910.180(j)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(j)",
+     "text": "For operations near overhead electric lines, see § 1910.333(c)(3)."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "The actual clearance distances are in 1910.333(c)(3), which is not in the provided text."
+   },
+   {
+    "question": "What are the requirements for the monthly running rope inspection, including who may perform it and what must be documented?",
+    "style": "formal",
+    "category": "wire-rope",
+    "gold_answer": "All ropes in use must be thoroughly inspected at least once a month by an appointed or authorized person. A certification record with the inspection date, the inspector's signature and an identifier for the ropes must be prepared and kept on file where it is readily available.",
+    "section_ids": [
+     "29cfr1910.180(g)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(g)(1)",
+     "text": "A thorough inspection of all ropes in use shall be made at least once a month"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "moving the crane down the road to the next job what do i need to do with the boom the upper and the hook",
+    "style": "voice",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "In transit, carry the boom in line with the direction of motion. Secure the superstructure against rotation, except when negotiating turns with an operator in the cab or with the boom supported on a dolly. Lash or restrain the empty hook so it can't swing freely.",
+    "section_ids": [
+     "29cfr1910.180(h)(3)(xiii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.180(h)(3)(xiii)",
+     "text": "The superstructure shall be secured against rotation, except when negotiating turns when there is an operator in the cab or the boom is supported on a dolly."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1993958,
+ "duration_ms": 44874,
+ "batch": "B20",
+ "prompt_chars": 28882
+}

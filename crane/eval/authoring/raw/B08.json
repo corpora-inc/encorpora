@@ -1,0 +1,253 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "horn on the rig quit this morning, can we just run hand signals and keep a air horn in the cab til the part comes in?",
+    "style": "slang",
+    "category": "safety-devices",
+    "gold_answer": "No. A horn is a required safety device. If one isn't working properly, the equipment has to be taken out of service and can't run again until the horn works. Alternative measures are not allowed for safety devices. A built-in horn that doesn't work must be tagged out or removed.",
+    "section_ids": [
+     "29cfr1926.1415(b)",
+     "29cfr1926.1415(a)(7)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1415(b)",
+     "text": "Alternative measures are not permitted to be used."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Does a crane sitting on a barge need a crane level indicator?",
+    "style": "formal",
+    "category": "safety-devices",
+    "gold_answer": "No. The crane level indicator requirement does not apply to portal cranes, derricks, floating cranes/derricks, or land cranes/derricks on barges, pontoons, vessels or other means of flotation.",
+    "section_ids": [
+     "29cfr1926.1415(a)(1)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1415(a)(1)(iii)",
+     "text": "floating cranes/derricks and land cranes/derricks on barges, pontoons, vessels or other means of flotation"
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how long we got to fix the anti two block once it goes bad",
+    "style": "voice",
+    "category": "operational-aids",
+    "gold_answer": "The anti-two-block device is a Category I operational aid, so it has to be repaired within 7 calendar days after the deficiency occurs. Exception: if the employer documents that it ordered the parts within 7 calendar days, the repair must be done within 7 calendar days of receiving the parts.",
+    "section_ids": [
+     "29cfr1926.1416(d)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(d)",
+     "text": "must be repaired no later than 7 calendar days after the deficiency occurs."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our boom angle indicator died on the 3rd. We ordered the part on the 8th and it's backordered, might not show up for 6 weeks. What's our repair deadline, and what do we do in the meantime?",
+    "style": "multi-part",
+    "category": "operational-aids",
+    "gold_answer": "A boom angle indicator is a Category II aid, normally to be repaired within 30 calendar days. Because the parts were ordered within 7 days and documented, a late part means the repair is due within 7 calendar days of receiving it. Until then, radius or boom angle must be found by measuring it with a measuring device.",
+    "section_ids": [
+     "29cfr1926.1416(e)",
+     "29cfr1926.1416(e)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(e)",
+     "text": "must be repaired no later than 30 calendar days after the deficiency occurs."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "A2B is out on our 2005 hydro cherry picker, what's the workaround while we wait on parts",
+    "style": "slang",
+    "category": "operational-aids",
+    "gold_answer": "For a telescopic boom crane made after Feb 28, 1992, mark the hoist cable where the operator can easily see it, at a point that leaves enough time to stop the hoist before two-blocking. Also use a spotter when extending the boom. You need both.",
+    "section_ids": [
+     "29cfr1926.1416(d)(3)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(d)(3)(i)",
+     "text": "to prevent two-blocking, and use a spotter when extending the boom."
+    },
+    "equipment": "truck-crane",
+    "variant": "telescopic boom",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we run a lattice crawler on clamshell work all day, does it even need anti two block",
+    "style": "vague",
+    "category": "operational-aids",
+    "gold_answer": "No. The lattice boom anti-two-block requirements don't apply when the equipment is used for clamshell (grapple) work. The same exception covers dragline, magnet, drop ball, container handling, concrete bucket, pile driving, and marine operations that don't involve hoisting personnel.",
+    "section_ids": [
+     "29cfr1926.1416(d)(3)(ii)(C)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(d)(3)(ii)(C)",
+     "text": "dragline, clamshell (grapple), magnet, drop ball, container handling, concrete bucket, marine operations that do not involve hoisting personnel, and pile driving work"
+    },
+    "equipment": "crawler-crane",
+    "variant": "lattice boom",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "does a knuckle boom need a boom angle indicater and boom lenght indicater like the big cranes do",
+    "style": "typo",
+    "category": "operational-aids",
+    "gold_answer": "No. The boom angle/radius indicator, jib angle indicator, and boom length indicator requirements (e)(1), (e)(2) and (e)(3) do not apply to articulating cranes.",
+    "section_ids": [
+     "29cfr1926.1416(a)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(a)(1)",
+     "text": "The requirements in paragraphs (e)(1), (e)(2), and (e)(3) of this section do not apply to articulating cranes."
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "LMI is down on our 2010 40 ton, can we still make picks if we just guess the weight off the bill of lading or somthing",
+    "style": "typo",
+    "category": "operational-aids",
+    "gold_answer": "Yes, as a temporary measure while the device is being repaired, but not by guessing. The load weight must come from a source the industry recognizes (such as the load's manufacturer) or a calculation method the industry recognizes, and the operator must get that information before the lift.",
+    "section_ids": [
+     "29cfr1926.1416(e)(4)(i)",
+     "29cfr1926.1416(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(e)(4)(i)",
+     "text": "This information must be provided to the operator prior to the lift."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether a bill of lading counts as an industry-recognized source is a judgment call."
+   },
+   {
+    "question": "boom hoist limit switch is shot what are my options to keep running",
+    "style": "voice",
+    "category": "operational-aids",
+    "gold_answer": "Use at least one of these: (A) a boom angle indicator; (B) mark the boom hoist cable where the operator can see it, at a point that leaves enough time to stop within the minimum allowable radius, adding mirrors or cameras if needed; or (C) mark the cable where a spotter can see it and have the spotter signal the operator to stop.",
+    "section_ids": [
+     "29cfr1926.1416(d)(1)(i)",
+     "29cfr1926.1416(d)(1)(i)(A)",
+     "29cfr1926.1416(d)(1)(i)(B)",
+     "29cfr1926.1416(d)(1)(i)(C)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "If the manufacturer no longer makes the replacement part for a failed operational aid, may we install a different device that does the same job, and is that treated as a crane modification?",
+    "style": "formal",
+    "category": "operational-aids",
+    "gold_answer": "Yes. If a replacement part is no longer available, you may use a substitute device that performs the same type of function. It is not considered a modification under § 1926.1434.",
+    "section_ids": [
+     "29cfr1926.1416(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(c)",
+     "text": "the use of a substitute device that performs the same type of function is permitted and is not considered a modification under § 1926.1434."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "outrigger sensor on the new machine keeps faulting what now",
+    "style": "vague",
+    "category": "operational-aids",
+    "gold_answer": "On equipment made after Nov 8, 2011, the temporary measure is for the operator to verify the outriggers/stabilizers are in the correct position, following the manufacturer's procedures, before starting any operation that needs them deployed. It's a Category II aid, so it must be repaired within 30 calendar days, subject to the parts-ordering exception.",
+    "section_ids": [
+     "29cfr1926.1416(e)(5)(i)",
+     "29cfr1926.1416(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(e)(5)(i)",
+     "text": "The operator must verify that the position of the outriggers or stabilizers is correct (in accordance with manufacturer procedures) before beginning operations requiring outrigger or stabilizer deployment."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We've got a digger derrick built in 2009 with no anti two block on it. Does it have to have one?",
+    "style": "scenario",
+    "category": "operational-aids",
+    "gold_answer": "No. The anti-two-block requirement in (d)(3), along with the boom angle indicator in (e)(1) and the load weighing device in (e)(4), applies only to digger derricks manufactured after November 8, 2011.",
+    "section_ids": [
+     "29cfr1926.1416(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1416(a)(2)",
+     "text": "apply only to those digger derricks manufactured after November 8, 2011."
+    },
+    "equipment": "digger-derrick",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Mid-pick the level indicator goes dead, and on another job the boom length indicator goes dead mid-pick. Same deal for both? Can either one keep going?",
+    "style": "multi-part",
+    "category": "safety-devices",
+    "gold_answer": "In both cases the operator must safely stop operations. The level indicator is a safety device, so the crane comes out of service until it's fixed, with no alternatives allowed. The boom length indicator is an operational aid, so work can resume once a temporary measure is in place: marking the boom, calculating length from angle and radius, or measuring the boom.",
+    "section_ids": [
+     "29cfr1926.1415(b)",
+     "29cfr1926.1416(c)",
+     "29cfr1926.1416(e)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1415(b)",
+     "text": "If a device stops working properly during operations, the operator must safely stop operations."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1484158,
+ "duration_ms": 112132,
+ "batch": "B08",
+ "prompt_chars": 12678
+}

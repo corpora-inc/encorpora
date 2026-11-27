@@ -1,0 +1,255 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how tight can the bridge run to the building steel? whats the minimum gap overhead and off to the sides on an overhead crane",
+    "style": "slang",
+    "category": "overhead-gantry",
+    "gold_answer": "At least 3 inches of clearance overhead and 2 inches laterally must be provided and maintained between the crane and obstructions.",
+    "section_ids": [
+     "29cfr1910.179(b)(6)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(b)(6)(i)",
+     "text": "Minimum clearance of 3 inches overhead and 2 inches laterally shall be provided and maintained between crane and obstructions"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two things on the bridge footwalk: how much headroom do I need above it, and what load does the walkway itself have to hold?",
+    "style": "multi-part",
+    "category": "overhead-gantry",
+    "gold_answer": "Where footwalks are provided there must be at least 48 inches of headroom. Footwalks must be rigid and designed for a distributed load of at least 50 pounds per square foot, with an antislip walking surface (wood qualifies).",
+    "section_ids": [
+     "29cfr1910.179(d)(1)(ii)",
+     "29cfr1910.179(d)(2)(i)",
+     "29cfr1910.179(d)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(d)(1)(ii)",
+     "text": "in no case shall less than 48 inches of headroom be provided"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "wats the biggest gap u can have to step acros getting from the ladder onto the bridge walkway",
+    "style": "typo",
+    "category": "overhead-gantry",
+    "gold_answer": "Access to the cab or bridge walkway must be by a conveniently placed fixed ladder, stairs or platform that requires no step over a gap greater than 12 inches (30 cm). Fixed ladders must meet subpart D.",
+    "section_ids": [
+     "29cfr1910.179(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(c)(2)",
+     "text": "requiring no step over any gap exceeding 12 inches (30 cm)"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how tall does the end stop on the trolley rail have to be if the wheel hits it right on the tread",
+    "style": "voice",
+    "category": "overhead-gantry",
+    "gold_answer": "A trolley stop that engages the wheel tread must be at least as high as the radius of the wheel. Stops are required at the trolley's travel limits and must be fastened to resist the forces of contact.",
+    "section_ids": [
+     "29cfr1910.179(e)(1)(iii)",
+     "29cfr1910.179(e)(1)(i)",
+     "29cfr1910.179(e)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(e)(1)(iii)",
+     "text": "A stop engaging the tread of the wheel shall be of a height at least equal to the radius of the wheel."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're spec'ing the hoist holding brake. The hoist uses dynamic braking for lowering control. What percent of full-load hoisting torque does the brake need, and does that change if we go with a mechanical load brake or put two holding brakes on?",
+    "style": "multi-part",
+    "category": "overhead-gantry",
+    "gold_answer": "With control braking other than mechanical (like dynamic), the holding brake must be at least 125% of full-load hoisting torque at the point where it's applied. With mechanical control braking it's 100%, and if two holding brakes are used, each must be at least 100%.",
+    "section_ids": [
+     "29cfr1910.179(f)(2)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(f)(2)(i)",
+     "text": "125 percent when used with a control braking means other than mechanical"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "ladle crane in the melt shop with power control braking, is one holding brake on the hoist enough?",
+    "style": "slang",
+    "category": "overhead-gantry",
+    "gold_answer": "No. Every independent hoisting unit on a crane handling hot metal that has power control braking must have at least two holding brakes.",
+    "section_ids": [
+     "29cfr1910.179(f)(2)(vi)",
+     "29cfr1910.179(a)(7)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(f)(2)(vi)",
+     "text": "Each independent hoisting unit of a crane handling hot metal and having power control braking means shall be equipped with at least two holding brakes."
+    },
+    "equipment": "overhead-crane",
+    "variant": "hot metal handling crane",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "is there a voltage limit on the pendant",
+    "style": "vague",
+    "category": "overhead-gantry",
+    "gold_answer": "Yes. Voltage at pendant push-buttons can't exceed 150 volts AC or 300 volts DC. The control circuit overall is capped at 600 volts AC or DC.",
+    "section_ids": [
+     "29cfr1910.179(g)(1)(iii)",
+     "29cfr1910.179(g)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(g)(1)(iii)",
+     "text": "The voltage at pendant push-buttons shall not exceed 150 volts for a.c. and 300 volts for d.c."
+    },
+    "equipment": "overhead-crane",
+    "variant": "floor-operated (pendant)",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our shop has a pendant-controlled bridge crane. Maintenance wants to know where the main disconnect from the runway conductors has to be mounted, and what ways the operator on the floor is allowed to kill power from down there.",
+    "style": "scenario",
+    "category": "overhead-gantry",
+    "gold_answer": "An enclosed switch or circuit breaker that can be locked open must be in the leads from the runway conductors, mounted on the bridge or footwalk near the runway collectors. The floor disconnect must be one of three types: a nonconductive rope attached to the main disconnect, an undervoltage trip on the main breaker operated by an emergency stop button in the pendant, or a main line contactor operated by a switch or pushbutton in the pendant.",
+    "section_ids": [
+     "29cfr1910.179(g)(5)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(g)(5)(iii)",
+     "text": "This disconnect shall be mounted on the bridge or footwalk near the runway collectors."
+    },
+    "equipment": "overhead-crane",
+    "variant": "floor-operated",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how many wraps gotta stay on the drum with the hook all the way down",
+    "style": "voice",
+    "category": "wire-rope",
+    "gold_answer": "At least two wraps of rope must stay on the drum when the hook is at its lowest position. The rope end must be anchored with a clamp securely attached to the drum, or with a socket arrangement approved by the crane or rope manufacturer.",
+    "section_ids": [
+     "29cfr1910.179(h)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(h)(2)(iii)",
+     "text": "No less than two wraps of rope shall remain on the drum when the hook is in its extreme low position."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "just reroped the hoist w/ U-bolt clips, which side does the saddle go and do i need to go back and retorque them",
+    "style": "slang",
+    "category": "wire-rope",
+    "gold_answer": "The U-bolts go on the dead (short) end of the rope, and clip spacing and number follow the clip manufacturer's recommendations. After a newly installed rope has run for one hour, all the clip bolt nuts must be retightened.",
+    "section_ids": [
+     "29cfr1910.179(h)(2)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(h)(2)(v)",
+     "text": "When a newly installed rope has been in operation for an hour, all nuts on the clip bolts shall be retightened."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Under 1910.179, which overhead cranes need an audible warning device such as a gong, and are any types exempt?",
+    "style": "formal",
+    "category": "overhead-gantry",
+    "gold_answer": "Every crane with a power traveling mechanism needs a gong or other effective warning signal. Floor-operated cranes are exempt.",
+    "section_ids": [
+     "29cfr1910.179(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(i)",
+     "text": "Except for floor-operated cranes a gong or other effective warning signal shall be provided for each crane equipped with a power traveling mechanism."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we got a big storage bridge outside in the yard, what do we need for wind? and the rail clamps grab the rail head, anything special about that",
+    "style": "scenario",
+    "category": "overhead-gantry",
+    "gold_answer": "Outdoor storage bridges need automatic rail clamps and a wind-indicating device that gives the bridge operator a visible or audible alarm at a predetermined wind speed. If the clamps act on the rail heads, any beads or weld flash on the rail heads must be ground off.",
+    "section_ids": [
+     "29cfr1910.179(b)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(b)(4)",
+     "text": "If the clamps act on the rail heads, any beads or weld flash on the rail heads shall be ground off."
+    },
+    "equipment": "gantry-crane",
+    "variant": "outdoor storage bridge crane",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Cab-on-bridge crane, bridge full-load speed is 200 fpm. How far does the bridge brake have to stop it in at full speed and full load? And what's the max pedal force if it's a foot brake?",
+    "style": "multi-part",
+    "category": "overhead-gantry",
+    "gold_answer": "The brake must stop the bridge within a distance in feet equal to 10% of full-load speed in fpm, so 20 feet at 200 fpm when traveling at full speed with full load. A foot-operated brake must not need more than 70 pounds of applied force to develop the manufacturer's rated brake torque.",
+    "section_ids": [
+     "29cfr1910.179(f)(4)(vii)",
+     "29cfr1910.179(f)(4)(i)",
+     "29cfr1910.179(f)(6)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(f)(4)(vii)",
+     "text": "within a distance in feet equal to 10 percent of full load speed in feet per minute when traveling at full speed with full load"
+    },
+    "equipment": "overhead-crane",
+    "variant": "cab-operated, cab on bridge",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.20525179999999998,
+ "duration_ms": 40789,
+ "batch": "B18",
+ "prompt_chars": 31434
+}

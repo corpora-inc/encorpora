@@ -1,0 +1,218 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "doing a tandem pick w two cranes on a bridge beam tmrw, who's supposed to put the lift plan together? can the super just wing it",
+    "style": "slang",
+    "category": "multiple-crane-lifts",
+    "gold_answer": "No. A lift where more than one crane supports the load has to be planned before it starts, and a qualified person must develop the plan. If that qualified person decides engineering expertise is needed, the employer must provide it.",
+    "section_ids": [
+     "29cfr1926.1432(a)",
+     "29cfr1926.1432(a)(1)",
+     "29cfr1926.1432(a)(3)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "who runs a two crane lift does it have to be a competent person or qualified person or both and do they have to go over the plan with the crew",
+    "style": "voice",
+    "category": "multiple-crane-lifts",
+    "gold_answer": "The lift director must be either one person who meets the criteria for both a competent person and a qualified person, or a competent person assisted by one or more qualified persons. The lift director must review the plan in a meeting with all workers who will be involved in the operation.",
+    "section_ids": [
+     "29cfr1926.1432(b)(1)",
+     "29cfr1926.1432(b)(2)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we sent the manufactuer our plans for a modifcation to the crane and they never wrote back. how long do we hafta wait b4 we can go another route",
+    "style": "typo",
+    "category": "design-modification",
+    "gold_answer": "If the manufacturer got a detailed description and doesn't acknowledge the request or start the review within 30 days (or declines to review it), the employer can go ahead only if a registered professional engineer who is a qualified person for that equipment approves the change, says which configurations the approval covers, and updates the load charts, procedures, manuals and plates/tags/decals. The original safety factor must not be reduced.",
+    "section_ids": [
+     "29cfr1926.1434(a)(2)",
+     "29cfr1926.1434(a)(2)(i)(A)",
+     "29cfr1926.1434(a)(2)(i)(B)",
+     "29cfr1926.1434(a)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1434(a)(2)",
+     "text": "fails, within 30 days, to acknowledge the request or initiate the review"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "The manufacturer said they'd look at our proposed boom modification and started reviewing it, but it's been about four months with no decision. Can we have our own PE sign off on it now?",
+    "style": "scenario",
+    "category": "design-modification",
+    "gold_answer": "Yes. If the manufacturer agreed to review the proposal but hasn't finished within 120 days of getting the detailed description, a registered professional engineer who is a qualified person for that equipment can approve it, specify the configurations it applies to, and update the load charts, procedures, manuals and decals. The original safety factor must not be reduced.",
+    "section_ids": [
+     "29cfr1926.1434(a)(4)",
+     "29cfr1926.1434(a)(2)(i)",
+     "29cfr1926.1434(a)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1434(a)(4)",
+     "text": "fails to complete the review of the proposal within 120 days of the date it was provided the detailed description of the proposed modification/addition"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "OEM looked at our request to add a counterweight package and said no. One time they gave us a letter with their engineering reasons, another time they just said no over the phone. Can we still do the mod in either case?",
+    "style": "scenario",
+    "category": "design-modification",
+    "gold_answer": "If the manufacturer reviews the technical safety merits, rejects the proposal, and explains why in writing, the modification is prohibited. If it rejects the proposal without giving written reasons, the employer may treat that as a refusal to review and use the registered PE route, as long as the original safety factor is not reduced.",
+    "section_ids": [
+     "29cfr1926.1434(b)",
+     "29cfr1926.1434(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1434(b)",
+     "text": "If the manufacturer rejects the proposal but does not explain the reasons for the rejection in writing, the employer may treat this as a manufacturer refusal to review the request"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether a verbal 'no' counts as a rejection without written reasons is an interpretation call."
+   },
+   {
+    "question": "how much weight is the cab roof supposed to hold if guys stand up there",
+    "style": "vague",
+    "category": "design-modification",
+    "gold_answer": "Any part of the cab roof that serves as a workstation for rigging, maintenance or other equipment-related tasks must be able to support 250 pounds without permanent distortion.",
+    "section_ids": [
+     "29cfr1926.1433(d)(7)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1433(d)(7)(v)",
+     "text": "must be capable of supporting 250 pounds without permanent distortion"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "rigger wants to zip tie the safety latch back on the hook so the choker comes off easier, is that legal",
+    "style": "slang",
+    "category": "design-modification",
+    "gold_answer": "Hooks must have latches, and a latch can't be removed, disabled or tied back unless two things are true: a qualified person has decided it is safer to hoist and place the load without the latch, and load routes are planned in advance so that only the workers hooking or unhooking the load are in the fall zone.",
+    "section_ids": [
+     "29cfr1926.1433(d)(4)(i)",
+     "29cfr1926.1433(d)(4)(ii)(A)",
+     "29cfr1926.1433(d)(4)(ii)(B)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What prototype testing standard applies to a tower crane manufactured after November 2010?",
+    "style": "formal",
+    "category": "tower-cranes",
+    "gold_answer": "Tower cranes manufactured on or after November 8, 2010 must meet the prototype testing requirements in BS EN 14439:2006.",
+    "section_ids": [
+     "29cfr1926.1433(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1433(c)",
+     "text": "Tower cranes manufactured on or after November 8, 2010 must meet the prototype testing requirements in BS EN 14439:2006"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "got an older crawler built like 2005, what design standard does it have to meet, the new ASME one or what",
+    "style": "vague",
+    "category": "crawler-truck-locomotive",
+    "gold_answer": "Crawler, truck and locomotive cranes built before November 8, 2010 can meet any of these: the applicable design, construction and testing requirements of ANSI B30.5-1968, PCSA Std. No. 2 (1968), the ASME B30.5-2004 portions listed in paragraph (b), or the applicable DIN standards in effect when the crane was made.",
+    "section_ids": [
+     "29cfr1926.1433(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1433(a)",
+     "text": "Crawler, truck and locomotive cranes manufactured prior to November 8, 2010 must meet the applicable requirements for design, construction, and testing"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Our barge crane was put together from a base from one company and a boom from another. We want to modify it. Is there a way to do that without manufacturer approval?",
+    "style": "scenario",
+    "category": "floating-cranes",
+    "gold_answer": "Yes. If the equipment is designed for marine work sites and has major structural components from more than one manufacturer, a registered professional engineer who is a qualified person for that equipment can approve the modification, specify the configurations it covers, and update the load charts, manuals and decals. The original safety factor must not be reduced.",
+    "section_ids": [
+     "29cfr1926.1434(a)(5)",
+     "29cfr1926.1434(a)(2)(i)",
+     "29cfr1926.1434(a)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1434(a)(5)",
+     "text": "The equipment is designed for marine work sites, contains major structural components from more than one manufacturer"
+    },
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether a given barge setup counts as 'designed for marine work sites' with 'major structural components' from several makers is a judgment call."
+   },
+   {
+    "question": "For a hydraulic boom truck crane built in 2015: (1) what prototype test options are there, and (2) can computer modeling replace the physical testing?",
+    "style": "multi-part",
+    "category": "design-modification",
+    "gold_answer": "(1) Option A: run all tests in SAE J1063 (Nov. 1993) Table 1 and meet the strength margins in Table 2. Option B: meet BS EN 13000:2004, with computer modeling showing all SAE J1063 load cases meet the Table 2 margins. (2) Under Option B the physical SAE testing is still required, unless the modeling's reliability has been shown by a documented history of verification through strain gauge measuring (alone or combined with other physical testing).",
+    "section_ids": [
+     "29cfr1926.1433(c)(1)(i)",
+     "29cfr1926.1433(c)(2)",
+     "29cfr1926.1433(c)(2)(i)",
+     "29cfr1926.1433(c)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1433(c)(2)(iii)",
+     "text": "unless the reliability of the analysis methodology (computer modeling) has been demonstrated by a documented history of verification through strain gauge measuring"
+    },
+    "equipment": "truck-crane",
+    "variant": "cantilevered hydraulic boom",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1722398,
+ "duration_ms": 49681,
+ "batch": "B15",
+ "prompt_chars": 17491
+}

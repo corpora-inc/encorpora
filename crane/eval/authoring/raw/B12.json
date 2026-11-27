@@ -1,0 +1,279 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "got a trainee in the seat today, can he make the pick if the 13.8kv lines are like 15 ft from where the boom could swing out to max radius?",
+    "style": "slang",
+    "category": "operator-qualification",
+    "gold_answer": "No. Unless certified, an operator-in-training may not operate if any part of the equipment, load line or load could get within 20 feet of a line up to 350 kV (50 feet if over 350 kV) when operated out to maximum working radius in the work zone. A 13.8 kV line 15 feet away is inside that 20-foot zone.",
+    "section_ids": [
+     "29cfr1926.1427(b)(3)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(b)(3)(i)",
+     "text": "could get within 20 feet of a power line that is up to 350 kV, or within 50 feet of a power line that is over 350 kV"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how long can the trainer step away from the operator in training and how often",
+    "style": "voice",
+    "category": "training",
+    "gold_answer": "The trainer must monitor the operator-in-training at all times except for short breaks. A break can last no more than 15 minutes, with no more than one break per hour. Right before the break the trainer must tell the trainee what specific tasks to do and what limits to follow, and those tasks must be within the trainee's abilities.",
+    "section_ids": [
+     "29cfr1926.1427(b)(4)(iv)(A)",
+     "29cfr1926.1427(b)(4)(iv)(B)",
+     "29cfr1926.1427(b)(4)(iv)(C)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(b)(4)(iv)(A)",
+     "text": "The break lasts no longer than 15 minutes and there is no more than one break per hour."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Trainee is up in the tower crane cab and I'm on the ground, so I can't actually see him. Is that ok or do I have to be able to see him like on a mobile?",
+    "style": "scenario",
+    "category": "training",
+    "gold_answer": "For tower cranes, the trainer and operator-in-training only have to be in direct communication with each other; line of sight isn't required. For equipment other than tower cranes, they must be in direct line of sight and communicate verbally or by hand signals.",
+    "section_ids": [
+     "29cfr1926.1427(b)(4)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(b)(4)(iii)",
+     "text": "For tower cranes: The operator's trainer and the operator-in-training must be in direct communication with each other."
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Does a derrick operator need a CCO type certification under 1926.1427 or is that only for cranes",
+    "style": "vague",
+    "category": "operator-qualification",
+    "gold_answer": "Operators of derricks don't have to comply with § 1926.1427, so they don't need its certification. The training requirements in the derrick section (§ 1926.1436) still apply.",
+    "section_ids": [
+     "29cfr1926.1427(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(a)(2)",
+     "text": "Operators of derricks (see § 1926.1436), sideboom cranes (see § 1926.1440), or equipment with a maximum manufacturer-rated hoisting/lifting capacity of 2,000 pounds or less"
+    },
+    "equipment": "derrick",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "our litle picker is only rated 2000 lbs max, do my guys need to be certfied to run it or no training at all??",
+    "style": "typo",
+    "category": "operator-qualification",
+    "gold_answer": "Operators of equipment with a maximum manufacturer-rated capacity of 2,000 pounds or less are exempt from the § 1926.1427 certification/evaluation requirements. The training requirements in § 1926.1441 still apply, so they still need training.",
+    "section_ids": [
+     "29cfr1926.1427(a)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(a)(2)",
+     "text": "equipment with a maximum manufacturer-rated hoisting/lifting capacity of 2,000 pounds or less (see § 1926.1441) are not required to comply with § 1926.1427"
+    },
+    "equipment": "small-capacity-equipment",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "boss says I gotta pay for my own crane card out of pocket, is that legit",
+    "style": "slang",
+    "category": "operator-qualification",
+    "gold_answer": "No. When operator certification or licensure is required, the employer must provide it at no cost to the employee.",
+    "section_ids": [
+     "29cfr1926.1427(c)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(c)(3)",
+     "text": "the employer must provide the certification/licensure at no cost to employees."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "If I switch companies does my certification come with me? What if it was my old company's in-house audited program instead of an accredited testing outfit? And how long is each one good for?",
+    "style": "multi-part",
+    "category": "operator-qualification",
+    "gold_answer": "A certification from an accredited crane operator testing organization is portable among employers who must use that option and is valid for 5 years. A certification from an employer's audited program isn't portable; it only counts while you work for (and operate for) the employer that issued it. It is also valid for 5 years.",
+    "section_ids": [
+     "29cfr1926.1427(d)(3)",
+     "29cfr1926.1427(d)(4)",
+     "29cfr1926.1427(e)(6)(i)",
+     "29cfr1926.1427(e)(6)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(d)(3)",
+     "text": "A certification issued under this option is portable among employers who are required to have operators certified under this option."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For purposes of compliance with 1926.1427, what is the maximum period a state- or locally-issued crane operator license may be considered valid?",
+    "style": "formal",
+    "category": "operator-qualification",
+    "gold_answer": "The license is valid for the period stipulated by the licensing department/office, but no longer than 5 years.",
+    "section_ids": [
+     "29cfr1926.1427(c)(1)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(c)(1)(v)",
+     "text": "a license is valid for the period of time stipulated by the licensing department/office, but no longer than 5 years."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we're starting our own in house operator cert program. when does the first audit have to happen, how often after that, and if the auditor finds a big problem what happens",
+    "style": "multi-part",
+    "category": "operator-qualification",
+    "gold_answer": "The program must be audited within 3 months of starting and at least every 3 years after that. If the auditor finds a significant deficiency, no operator can be qualified until the auditor confirms it's corrected, and the program must be re-audited within 180 days of that confirmation. The auditor must file a report with the OSHA Regional Office within 15 days of finding the deficiency and keep audit records for 3 years.",
+    "section_ids": [
+     "29cfr1926.1427(e)(3)",
+     "29cfr1926.1427(e)(5)(i)",
+     "29cfr1926.1427(e)(5)(ii)",
+     "29cfr1926.1427(e)(5)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(e)(3)",
+     "text": "The employer program must be audited within 3 months of the beginning of the program and at least every 3 years thereafter."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "what goes on the operator evaluation paperwork",
+    "style": "vague",
+    "category": "operator-qualification",
+    "gold_answer": "The employer must document that the evaluation was completed, including the operator's name, the evaluator's name and signature, the date, and the make, model and configuration of the equipment used. The document must be available at the worksite while the operator works for that employer.",
+    "section_ids": [
+     "29cfr1926.1427(f)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(f)(6)",
+     "text": "The operator's name; the evaluator's name and signature; the date; and the make, model, and configuration of equipment used in the evaluation."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "New hire showed up with a current accredited certification for lattice crawlers. Can I just put him on our crawler with the luffing jib tomorrow since he's certified?",
+    "style": "scenario",
+    "category": "operator-qualification",
+    "gold_answer": "No. A certificate alone doesn't make him qualified. The employer must also evaluate him to confirm he has the skills, knowledge and ability to recognize and avert risk for that equipment, including its size and configuration (e.g., luffing jib, counterweight setup), and document the evaluation. The evaluator must be an employee or agent of the employer.",
+    "section_ids": [
+     "29cfr1926.1427(f)(1)(i)",
+     "29cfr1926.1427(f)(3)",
+     "29cfr1926.1427(f)(5)",
+     "29cfr1926.1427(f)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(f)(3)",
+     "text": "Possession of a certificate or degree cannot, by itself, cause a person to be qualified for purposes of paragraph (f)(1)."
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Whether prior evaluations can carry over (f)(2) or whether the equipment is 'substantially different' under (f)(5) depends on the employer's facts."
+   },
+   {
+    "question": "my last company qualified me as a signal person through their own evaluator, does the new outfit have to accept that",
+    "style": "voice",
+    "category": "signals",
+    "gold_answer": "No. A signal person assessment by an employer's own qualified evaluator (Option 2) is not portable, so other employers can't use it. The new employer has to qualify you again, either with its own qualified evaluator or with documentation from a third-party qualified evaluator.",
+    "section_ids": [
+     "29cfr1926.1428(a)(2)",
+     "29cfr1926.1428(a)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1428(a)(2)",
+     "text": "An assessment by an employer's qualified evaluator under this option is not portable—other employers are not permitted to use it to meet the requirements of this section."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how does a signal man actually prove hes qualified, like what testing, and does his paper need to say radio vs hand signals",
+    "style": "multi-part",
+    "category": "signals",
+    "gold_answer": "The signal person must pass an oral or written test and a practical test showing they know and are competent in the signals used (the Standard Method if hand signals are used), have a basic understanding of equipment operation and crane dynamics, and know §§ 1926.1419–1422 and 1926.1428. Yes, the documentation must specify each type of signaling (e.g., hand, radio) they're qualified for, and it must be available at the site.",
+    "section_ids": [
+     "29cfr1926.1428(c)(5)",
+     "29cfr1926.1428(c)(1)",
+     "29cfr1926.1428(a)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1428(c)(5)",
+     "text": "through an oral or written test, and through a practical test."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Operator took his cert test in Spanish. Our rental crane's manual and load chart are English only. Can he run it?",
+    "style": "scenario",
+    "category": "operator-qualification",
+    "gold_answer": "No. A test can be given in any language the candidate understands, and the certification must note that language. But the operator may only run equipment whose required materials, such as operations manuals and load charts, are written in the language of the certification, so here that means Spanish.",
+    "section_ids": [
+     "29cfr1926.1427(h)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1427(h)(2)",
+     "text": "The operator is only permitted to operate equipment that is furnished with materials required by this subpart, such as operations manuals and load charts, that are written in the language of the certification."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1906078,
+ "duration_ms": 51313,
+ "batch": "B12",
+ "prompt_chars": 22920
+}

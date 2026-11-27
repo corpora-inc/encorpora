@@ -1,0 +1,196 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "our mechanic wants to run the crane around the yard to check out a hydraulic fix he did. hes not certified. is that ok or does a certified op have to be in the seat",
+    "style": "voice",
+    "category": "operator-qualification",
+    "gold_answer": "Yes, within limits. Maintenance, inspection and repair personnel may operate the equipment only for functions needed to do maintenance, inspect it, or verify its performance. They must also either work under the direct supervision of an operator who meets §1926.1427, or be familiar with the operation, limitations, characteristics and hazards of that type of equipment.",
+    "section_ids": [
+     "29cfr1926.1429(a)(1)",
+     "29cfr1926.1429(a)(2)(i)",
+     "29cfr1926.1429(a)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1429(a)(1)",
+     "text": "The operation is limited to those functions necessary to perform maintenance, inspect the equipment, or verify its performance."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Does the guy doing repairs on the crane have to be some kind of 'qualified' person, or can any shop hand do it?",
+    "style": "vague",
+    "category": "operator-qualification",
+    "gold_answer": "Maintenance and repair personnel must meet the definition of a qualified person for the equipment and for the specific maintenance or repair tasks they perform.",
+    "section_ids": [
+     "29cfr1926.1429(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1429(b)",
+     "text": "Maintenance and repair personnel must meet the definition of a qualified person with respect to the equipment and maintenance/repair tasks performed."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "my company says i gotta pay for the crane training they're making me take. can they do that??",
+    "style": "slang",
+    "category": "training",
+    "gold_answer": "No. Whenever Subpart CC requires training, the employer must provide it at no cost to the employee.",
+    "section_ids": [
+     "29cfr1926.1430(g)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1430(g)(3)",
+     "text": "Whenever training is required under subpart CC, the employer must provide the training at no cost to the employee."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Old friction machine, boom's been laid down on the boom rest. What are operators supposed to be trained to do before picking it up off the support? And what if it was a hydraulic rig instead and the brake slips?",
+    "style": "multi-part",
+    "category": "training",
+    "gold_answer": "On friction equipment, operators must be trained to first raise the boom a short distance, enough to take the boom's load, to see whether the boom hoist brake needs adjusting. The same practice applies to other equipment with a boom, but those machines usually have no way to adjust the brake, so if the brake does not hold, the machine needs repair.",
+    "section_ids": [
+     "29cfr1926.1430(c)(3)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1430(c)(3)(i)",
+     "text": "first raise the boom a short distance (sufficient to take the load of the boom) to determine if the boom hoist brake needs to be adjusted"
+    },
+    "equipment": "crawler-crane",
+    "variant": "friction equipment",
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "The rule says 'friction equipment', which can include truck-mounted friction cranes as well as crawlers, so the equipment tag is an assumption."
+   },
+   {
+    "question": "do maintanence guys who start up the crane need tagout trainng or is that just for operaters",
+    "style": "typo",
+    "category": "training",
+    "gold_answer": "Both need it. The employer must train each operator, and each other employee allowed to start or energize the equipment or run its controls (such as maintenance and repair employees), in the tag-out and start-up procedures of §1926.1417(f) and (g).",
+    "section_ids": [
+     "29cfr1926.1430(f)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1430(f)",
+     "text": "each additional employee authorized to start/energize equipment or operate equipment controls (such as maintenance and repair employees), in the tag-out and start-up procedures"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "A rigger finished training last year, but the foreman has since watched him repeatedly stand in the swing radius. Is the employer obligated to do anything training-wise, and does the employer have to check that people actually understood the training in the first place?",
+    "style": "scenario",
+    "category": "training",
+    "gold_answer": "Yes on both counts. The employer must evaluate every employee trained under Subpart CC to confirm they understood the training. The employer must also give refresher training in the relevant topics when the employee's conduct or an evaluation of their knowledge shows retraining is needed.",
+    "section_ids": [
+     "29cfr1926.1430(g)(1)",
+     "29cfr1926.1430(g)(2)",
+     "29cfr1926.1430(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1430(g)(2)",
+     "text": "when, based on the conduct of the employee or an evaluation of the employee's knowledge, there is an indication that retraining is necessary"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "is the hydraulic cylinder thing where the boom drifts when it cools off actually on the written cert test for hydro cranes",
+    "style": "voice",
+    "category": "operator-qualification",
+    "gold_answer": "Yes. Appendix C's general technical knowledge criteria include the effects of thermal expansion and contraction in hydraulic cylinders, as well as the basics of hydraulic and other machine power flow systems.",
+    "section_ids": [
+     "29cfr1926-subpartCC-appC(a)(9)",
+     "29cfr1926-subpartCC-appC(a)(7)(iv)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926-subpartCC-appC(a)(9)",
+     "text": "The effects of thermal expansion and contraction in hydraulic cylinders."
+    },
+    "equipment": "mobile-crane",
+    "variant": "hydraulic boom",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We run a crane on a barge. Does the written operator exam criteria in Appendix C say anything specific about working on water?",
+    "style": "formal",
+    "category": "operator-qualification",
+    "gold_answer": "Yes. Appendix C says candidates should know that operations on water require specific procedures and skill levels. It also lists knowing safe procedures for lifting loads from beneath the surface of the water.",
+    "section_ids": [
+     "29cfr1926-subpartCC-appC(c)(12)(vii)",
+     "29cfr1926-subpartCC-appC(c)(13)(vi)"
+    ],
+    "key_quote": null,
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "what electrical protection stuff do they test you on for the written? like grounding, insulated links, what else",
+    "style": "slang",
+    "category": "operator-qualification",
+    "gold_answer": "Appendix C covers the technical limitations of these protections against electrical hazards: grounding, proximity warning devices, insulated links, boom cages, and proximity to electric power lines, radii, and microwave structures.",
+    "section_ids": [
+     "29cfr1926-subpartCC-appC(a)(4)"
+    ],
+    "key_quote": null,
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "site's tight and we cant get the outriggers out all the way on the RT. what should the operator know per the written exam stuff for that, and how does the load chart play in",
+    "style": "scenario",
+    "category": "load-charts",
+    "gold_answer": "Appendix C expects operators to know safe procedures for using less than full outrigger/crawler or stabilizer extensions, and how to check that there is room to extend outriggers and counterweights. On load charts, they must know how to match the chart to the crane's setup, including whether outriggers/stabilizers are extended or retracted, and make sure the chart is the right one for that configuration.",
+    "section_ids": [
+     "29cfr1926-subpartCC-appC(c)(13)(v)",
+     "29cfr1926-subpartCC-appC(b)(5)",
+     "29cfr1926-subpartCC-appC(d)(3)(ii)",
+     "29cfr1926-subpartCC-appC(d)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926-subpartCC-appC(d)(3)(ii)",
+     "text": "How to relate the chart to the configuration of the crane, crawlers, or outriggers/stabilizers extended or retracted, jib erected or offset, and various counterweight configurations."
+    },
+    "equipment": "rough-terrain-crane",
+    "variant": "partial outrigger extension",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Appendix C only lists exam knowledge areas; the actual capacity rules for reduced outrigger extension depend on the manufacturer's charts and on other sections."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1314958,
+ "duration_ms": 36109,
+ "batch": "B13",
+ "prompt_chars": 13797
+}

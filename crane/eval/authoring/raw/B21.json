@@ -1,0 +1,296 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how many busted wires before i gotta toss a wire rope choker? found a few snapped ones in one lay",
+    "style": "slang",
+    "category": "rigging-slings",
+    "gold_answer": "Take a wire rope sling out of service right away if one rope lay has 10 broken wires scattered randomly, or 5 broken wires in one strand within one rope lay.",
+    "section_ids": [
+     "29cfr1910.184(f)(5)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(f)(5)(i)",
+     "text": "Ten randomly distributed broken wires in one rope lay, or five broken wires in one strand in one rope lay."
+    },
+    "equipment": null,
+    "variant": "wire rope sling",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Two questions on our chain slings: how often do they need the full thorough inspection, not the daily one, and what records do we have to keep?",
+    "style": "multi-part",
+    "category": "inspections",
+    "gold_answer": "Alloy steel chain slings need a thorough periodic inspection by a designated competent person. How often depends on use, service conditions, type of lifts and experience, but it can never be more than 12 months apart. The employer must keep a record of the most recent month each sling was thoroughly inspected and make it available for examination.",
+    "section_ids": [
+     "29cfr1910.184(e)(3)(i)",
+     "29cfr1910.184(e)(3)(ii)",
+     "29cfr1910.184(e)(3)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(e)(3)(i)",
+     "text": "Such inspections shall in no event be at intervals greater than once every 12 months."
+    },
+    "equipment": null,
+    "variant": "alloy steel chain sling",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "chain sling got left next to the heat treat oven might have gone over a thousand degrees can we still use it if it looks ok",
+    "style": "voice",
+    "category": "rigging-slings",
+    "gold_answer": "No. An alloy steel chain sling heated above 1000°F must be permanently removed from service, however it looks. Above 600°F service temperature, the working load limit must be reduced following the chain or sling manufacturer's recommendations.",
+    "section_ids": [
+     "29cfr1910.184(e)(6)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(e)(6)",
+     "text": "Employers must permanently remove an alloy steel-chain slings from service if it is heated above 1000 degrees F."
+    },
+    "equipment": null,
+    "variant": "alloy steel chain sling",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "I've got a 1/2 inch alloy chain sling, and at the worst link the calipers read 3/8 inch (24/64). Is it still good, or does it come out of service?",
+    "style": "scenario",
+    "category": "rigging-slings",
+    "gold_answer": "It comes out of service. Table N-184-1 sets a minimum allowable size of 25/64 inch at any point of the link for 1/2-inch chain, and 24/64 inch is below that. Chain worn under the table minimum at any point must be removed from service.",
+    "section_ids": [
+     "29cfr1910.184(e)(8)",
+     "29cfr1910.184-tableN-184-1"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(e)(8)",
+     "text": "If the chain size at any point of the link is less than that stated in Table N-184-1, the employer must remove the chain from service."
+    },
+    "equipment": null,
+    "variant": "alloy steel chain sling",
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how far can a sling hook be opend up or twistd befor its scrap",
+    "style": "typo",
+    "category": "rigging-slings",
+    "gold_answer": "Remove the sling from service if the hook has opened more than 15 percent of its normal throat opening (measured at the narrowest point) or is twisted more than 10 degrees from the plane of the unbent hook. Cracked hooks on chain slings also mean removal.",
+    "section_ids": [
+     "29cfr1910.184(e)(9)(ii)",
+     "29cfr1910.184(f)(5)(vi)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(f)(5)(vi)",
+     "text": "Hooks that have been opened more than 15 percent of the normal throat opening measured at the narrowest point or twisted more than 10 degrees from the plane of the unbent hook."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We rigged a fiber core wire rope sling to pull hot castings, and it probably got to about 250°F. What happens to the sling? Would an IWRC sling be treated differently?",
+    "style": "scenario",
+    "category": "rigging-slings",
+    "gold_answer": "A fiber core wire rope sling of any grade exposed to more than 200°F must be permanently removed from service. Non-fiber core (for example IWRC) wire rope slings used above 400°F or below -60°F must follow the sling manufacturer's recommendations for that temperature.",
+    "section_ids": [
+     "29cfr1910.184(f)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(f)(3)",
+     "text": "Fiber core wire rope slings of all grades shall be permanently removed from service if they are exposed to temperatures in excess of 200 °F."
+    },
+    "equipment": null,
+    "variant": "wire rope sling",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're lifting tanks in the pickling area, where there's acid mist. Can we use nylon straps there? If not, would polyester be OK? And does it matter that the straps have aluminum fittings?",
+    "style": "multi-part",
+    "category": "rigging-slings",
+    "gold_answer": "Nylon web slings can't be used where acid or phenolic fumes, vapors, sprays, mists or liquids are present. Polyester and polypropylene are barred only around caustics, not acids, so the text doesn't prohibit them in acid mist. Web slings with aluminum fittings are barred only around caustics.",
+    "section_ids": [
+     "29cfr1910.184(i)(6)(i)",
+     "29cfr1910.184(i)(6)(ii)",
+     "29cfr1910.184(i)(6)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(i)(6)(i)",
+     "text": "Nylon web slings shall not be used where fumes, vapors, sprays, mists or liquids of acids or phenolics are present."
+    },
+    "equipment": null,
+    "variant": "synthetic web sling",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The polyester-in-acid answer rests on the rule being silent about acids. Whether a given chemical counts as an acid or a caustic, and what the manufacturer's chemical-compatibility guidance says, is field judgment."
+   },
+   {
+    "question": "What are the requirements before a repaired synthetic web sling may be returned to service?",
+    "style": "formal",
+    "category": "rigging-slings",
+    "gold_answer": "The repair must be done by a sling manufacturer or an equivalent entity. The repaired sling must then be proof tested by the manufacturer or equivalent entity to twice its rated capacity before going back into service, and the employer must keep the proof-test certificate. Slings repaired in a temporary manner must not be used.",
+    "section_ids": [
+     "29cfr1910.184(i)(8)(i)",
+     "29cfr1910.184(i)(8)(ii)",
+     "29cfr1910.184(i)(8)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(i)(8)(ii)",
+     "text": "Each repaired sling shall be proof tested by the manufacturer or equivalent entity to twice the rated capacity prior to its return to service."
+    },
+    "equipment": null,
+    "variant": "synthetic web sling",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can a rope sling get fixed and reused",
+    "style": "vague",
+    "category": "rigging-slings",
+    "gold_answer": "No. Only natural or synthetic fiber rope slings made from new rope may be used, and repaired or reconditioned fiber rope slings are prohibited. A sling with abnormal wear, broken or cut fibers, rot or similar damage must be removed from service immediately.",
+    "section_ids": [
+     "29cfr1910.184(h)(6)",
+     "29cfr1910.184(h)(5)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(h)(6)",
+     "text": "Use of repaired or reconditioned fiber rope slings is prohibited."
+    },
+    "equipment": null,
+    "variant": "fiber rope sling",
+    "difficulty": "easy",
+    "expert_review_needed": true,
+    "expert_review_why": "The question is vague: 'rope sling' could mean wire rope. The answer assumes fiber rope, since the text has no general repair ban for wire rope slings."
+   },
+   {
+    "question": "splicing an eye in poly rope for a sling, how many tucks min? and is it the same count for manila?",
+    "style": "slang",
+    "category": "rigging-slings",
+    "gold_answer": "An eye splice in synthetic fiber rope needs at least 4 full tucks, and in manila at least 3. Short splices need at least 8 full tucks for synthetic (4 each side of center) and 6 for manila (3 each side).",
+    "section_ids": [
+     "29cfr1910.184(h)(3)(i)",
+     "29cfr1910.184(h)(3)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(h)(3)(ii)",
+     "text": "In synthetic fiber rope, eye splices shall consist of at least four full tucks"
+    },
+    "equipment": null,
+    "variant": "fiber rope sling",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "How much reduction in wire diameter requires a metal mesh sling to be taken out of service?",
+    "style": "formal",
+    "category": "rigging-slings",
+    "gold_answer": "A metal mesh sling must be removed from service immediately if wire diameter is reduced by 25 percent from abrasion or by 15 percent from corrosion.",
+    "section_ids": [
+     "29cfr1910.184(g)(9)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(g)(9)(ii)",
+     "text": "Reduction in wire diameter of 25 per cent due to abrasion or 15 per cent due to corrosion."
+    },
+    "equipment": null,
+    "variant": "metal mesh sling",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "what temp range is ok for the pvc coated mesh slings versus the bare ones we use on the hot parts",
+    "style": "voice",
+    "category": "rigging-slings",
+    "gold_answer": "Metal mesh slings impregnated with PVC or neoprene may be used only from 0°F to 200°F. Uncoated metal mesh slings may be used from -20°F to 550°F without reducing the working load limit. Outside those ranges, follow the manufacturer's recommendations.",
+    "section_ids": [
+     "29cfr1910.184(g)(7)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(g)(7)",
+     "text": "Metal mesh slings impregnated with polyvinyl chloride or neoprene may be used only in a temperature range from zero degrees to plus 200 °F."
+    },
+    "equipment": null,
+    "variant": "metal mesh sling",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "who has to check the slings and how ofen, every shift or what",
+    "style": "typo",
+    "category": "inspections",
+    "gold_answer": "Each day before use, a competent person designated by the employer must inspect the sling and all its fastenings and attachments for damage or defects. Extra inspections are needed during use where service conditions warrant, and damaged or defective slings must be removed from service immediately.",
+    "section_ids": [
+     "29cfr1910.184(d)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(d)",
+     "text": "Each day before being used, the sling and all fastenings and attachments shall be inspected for damage or defects by a competent person designated by the employer."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Can I just tie a knot in the chain to shorten it up, or bolt a link through to hold it? And if a link breaks, can we patch it with a quick link?",
+    "style": "slang",
+    "category": "rigging-slings",
+    "gold_answer": "No. Slings can't be shortened with knots, bolts or other makeshift devices, and makeshift links or fasteners made from bolts or rods are prohibited on chain slings. Broken lengths of chain can't be repaired with mechanical coupling links or low carbon steel repair links.",
+    "section_ids": [
+     "29cfr1910.184(c)(2)",
+     "29cfr1910.184(e)(2)(ii)",
+     "29cfr1910.184(e)(7)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(c)(2)",
+     "text": "Slings shall not be shortened with knots or bolts or other makeshift devices."
+    },
+    "equipment": null,
+    "variant": "alloy steel chain sling",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "tag's gone off one of our chain slings, is that a big deal",
+    "style": "vague",
+    "category": "rigging-slings",
+    "gold_answer": "Yes. Slings without affixed, legible identification markings must not be used. Alloy steel chain slings must carry permanently affixed, durable identification stating size, grade, rated capacity and reach.",
+    "section_ids": [
+     "29cfr1910.184(c)(14)",
+     "29cfr1910.184(e)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.184(e)(1)",
+     "text": "Alloy steel chain slings shall have permanently affixed durable identification stating size, grade, rated capacity, and reach."
+    },
+    "equipment": null,
+    "variant": "alloy steel chain sling",
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.20473180000000002,
+ "duration_ms": 51227,
+ "batch": "B21",
+ "prompt_chars": 23624
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "source_id": "ecfr-29-1926-cc",
+    "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1926&subpart=CC",
+    "file": "1926-CC.xml",
+    "edition_date": "2026-11-24",
+    "up_to_date_as_of": "2026-11-24",
+    "latest_amended_on": "2026-11-23",
+    "sha256": "f0e56134713ccd6e03fca1def56204cb339ae6b24f7a8f33dc1f56cff6eb2838",
+    "bytes": 306291,
+    "license": "public-domain-us-gov",
+    "fetched_at": "2026-11-27"
+  },
+  {
+    "source_id": "ecfr-29-1910-179",
+    "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1910&section=1910.179",
+    "file": "1910.179.xml",
+    "edition_date": "2026-11-24",
+    "up_to_date_as_of": "2026-11-24",
+    "latest_amended_on": "2026-11-23",
+    "sha256": "1fb1af7575fe1a5f437873dcecb7c833c7dd98bec06ab2096014fcc5bdb90bc0",
+    "bytes": 43720,
+    "license": "public-domain-us-gov",
+    "fetched_at": "2026-11-27"
+  },
+  {
+    "source_id": "ecfr-29-1910-180",
+    "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1910&section=1910.180",
+    "file": "1910.180.xml",
+    "edition_date": "2026-11-24",
+    "up_to_date_as_of": "2026-11-24",
+    "latest_amended_on": "2026-11-23",
+    "sha256": "ba61f05535c94de607cfcf109e3e7ae13bd926edb69b608b0fc514bccb986634",
+    "bytes": 28987,
+    "license": "public-domain-us-gov",
+    "fetched_at": "2026-11-27"
+  },
+  {
+    "source_id": "ecfr-29-1910-184",
+    "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1910&section=1910.184",
+    "file": "1910.184.xml",
+    "edition_date": "2026-11-24",
+    "up_to_date_as_of": "2026-11-24",
+    "latest_amended_on": "2026-11-23",
+    "sha256": "d732c84ebd15ec3e503cf9a3a872ea647e81600066f7c12244968ad47a351765",
+    "bytes": 25213,
+    "license": "public-domain-us-gov",
+    "fetched_at": "2026-11-27"
+  }
+]

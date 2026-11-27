@@ -1,0 +1,320 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "how close can i get the stick to a 138kv line if were going by table A",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "138 kV is in the 'over 50 to 200 kV' row of Table A, so the minimum clearance distance is 15 feet.",
+    "section_ids": [
+     "29cfr1926.1408-tableA"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408-tableA",
+     "text": "over 50 to 200 | 15"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Utility says the line is exactly 200 kV. Is that 15 ft or 20 ft on Table A? It's right on the edge.",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "15 feet. Under the Table A note, the number after 'to' is included in that row, so 'over 50 to 200' covers 200 kV. The 20-foot row starts above 200 kV.",
+    "section_ids": [
+     "29cfr1926.1408-tableA"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408-tableA",
+     "text": "The value that follows “to” is up to and includes that value."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're putting the crane together next to some overhead lines. What do we have to figure out before assembly, and what are our choices if we could end up near them?",
+    "style": "multi-part",
+    "category": "assembly-disassembly",
+    "gold_answer": "Before assembly or disassembly, the employer must determine whether any part of the equipment, load line or load (including rigging) could get closer than 20 feet to a power line in the direction or area of assembly. If so, the employer must use one of three options: (1) have the utility confirm the line is deenergized and visibly grounded at the worksite, (2) keep 20 feet of clearance using the paragraph (b) measures, or (3) keep Table A clearance using the paragraph (b) measures.",
+    "section_ids": [
+     "29cfr1926.1407(a)",
+     "29cfr1926.1407(a)(1)",
+     "29cfr1926.1407(a)(2)",
+     "29cfr1926.1407(a)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1407(a)",
+     "text": "could get, in the direction or area of assembly/disassembly, closer than 20 feet to a power line during the assembly/disassembly process"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can we lay out and pin the lattice boom sections on the crawler under the distribution line if we keep table A distance",
+    "style": "voice",
+    "category": "assembly-disassembly",
+    "gold_answer": "No. During assembly or disassembly, no part of the crane, load line or load, whether partly or fully assembled, may be below a power line. The only exception is when the employer has confirmed that the utility has deenergized the line and visibly grounded it at the worksite. Keeping Table A distance does not make it allowed.",
+    "section_ids": [
+     "29cfr1926.1407(c)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1407(c)",
+     "text": "is allowed below a power line unless the employer has confirmed that the utility owner/operator has deenergized and (at the worksite) visibly grounded the power line"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "During assembly near a line, is a flagged warning line enough as our extra measure? And is the warning line handled the same way once we start making picks?",
+    "style": "multi-part",
+    "category": "power-lines",
+    "gold_answer": "During assembly, an elevated warning line, barricade or line of signs with flags, in the operator's view, can be the one additional measure, as long as it actually prevents encroachment. You also need the planning meeting and nonconductive tag lines. During operations the warning line is required in every case, at 20 ft (Option 2) or the Table A distance (Option 3), and you must also use at least one other measure from (b)(4).",
+    "section_ids": [
+     "29cfr1926.1407(b)(3)",
+     "29cfr1926.1407(b)(3)(v)",
+     "29cfr1926.1408(b)(3)",
+     "29cfr1926.1408(b)(4)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1407(b)(3)",
+     "text": "The measure selected from this list must be effective in preventing encroachment."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Compares how the warning line is treated in assembly versus operations, and 'effective' is a judgment call."
+   },
+   {
+    "question": "operator cant see the warning line from the cab bc of a building in the way, what do we gotta do",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "If the operator can't see the elevated warning line, you must use a dedicated spotter in continuous contact with the operator. You must also use one of the other measures: a proximity alarm, a range control warning device, a range-limiting device, or an insulating link.",
+    "section_ids": [
+     "29cfr1926.1408(b)(3)",
+     "29cfr1926.1408(b)(4)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(b)(3)",
+     "text": "If the operator is unable to see the elevated warning line, a dedicated spotter must be used"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Can an insulating link on the hook count as the encroachment measure? Does that work both for assembly and for regular picks?",
+    "style": "multi-part",
+    "category": "power-lines",
+    "gold_answer": "During operations, yes. An insulating link/device installed between the end of the load line (or below) and the load is one of the allowed (b)(4) measures, used along with the required warning line. It is not on the list of additional measures for assembly/disassembly in 1926.1407(b)(3), so it can't serve as the assembly measure.",
+    "section_ids": [
+     "29cfr1926.1408(b)(4)(v)",
+     "29cfr1926.1407(b)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(b)(4)(v)",
+     "text": "An insulating link/device, as defined in § 1926.1401, installed at a point between the end of the load line (or below) and the load."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The answer relies on the insulating link being left off the assembly list rather than an explicit ban."
+   },
+   {
+    "question": "how long does the power company have to give us the voltage if we want to go by the table",
+    "style": "voice",
+    "category": "power-lines",
+    "gold_answer": "When the employer uses Option (3) (Table A clearance), the utility owner/operator must provide the requested voltage information within two working days of the request.",
+    "section_ids": [
+     "29cfr1926.1408(c)",
+     "29cfr1926.1407(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(c)",
+     "text": "must provide the requested voltage information within two working days of the employer's request"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "knuckle boom truck settin up under a line thats way up there. when is it ok to work under it without getting it killed",
+    "style": "typo",
+    "category": "power-lines",
+    "gold_answer": "For articulating or extensible booms, work below an energized line is allowed when the uppermost part of the equipment, with the boom fully extended at true vertical, would be more than 20 feet below the plane of the line, or more than the Table A distance below it. Otherwise the line must be deenergized and visibly grounded, unless another exception applies (subpart V work, or infeasibility plus 1926.1410).",
+    "section_ids": [
+     "29cfr1926.1408(d)(1)",
+     "29cfr1926.1408(d)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(d)(2)(iii)",
+     "text": "with the boom in the fully extended position, at true vertical, would be more than 20 feet below the plane of the power line"
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What is the exception for operating a fixed-length lattice boom crawler below an energized power line?",
+    "style": "formal",
+    "category": "power-lines",
+    "gold_answer": "For non-extensible booms, the ban on working below a line does not apply if the employer shows that the uppermost part of the equipment, with the boom at true vertical, would be more than 20 feet below the plane of the line, or more than the Table A distance below it.",
+    "section_ids": [
+     "29cfr1926.1408(d)(2)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(d)(2)(ii)",
+     "text": "with the boom at true vertical, would be more than 20 feet below the plane of the power line"
+    },
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Do the electrocution warning stickers have to go on the outside of a tower crane, or only in the cab?",
+    "style": "vague",
+    "category": "power-lines",
+    "gold_answer": "At least one electrocution hazard warning must be posted conspicuously in the cab where the operator can see it. The requirement for at least two warnings on the outside of the equipment does not apply to tower cranes or overhead gantry cranes.",
+    "section_ids": [
+     "29cfr1926.1407(g)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1407(g)",
+     "text": "at least one electrocution hazard warning conspicuously posted in the cab so that it is in view of the operator and (except for overhead gantry and tower cranes) at least two on the outside of the equipment"
+    },
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We're near a 400 kV transmission line. What's the trigger distance instead of 20 ft, and what's the Table A distance?",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "For lines over 350 kV up to 1,000 kV, 50 feet replaces 20 feet wherever 20 feet appears, including the trigger distance and the Option (2) clearance. Table A gives 25 feet for over 350 to 500 kV.",
+    "section_ids": [
+     "29cfr1926.1409(a)",
+     "29cfr1926.1408-tableA"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1409(a)",
+     "text": "wherever the distance “20 feet” is specified, the distance “50 feet” must be substituted"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "if the boom hits a hot line what are we suposed to tell the operater about staying in the cab vs jumping out",
+    "style": "typo",
+    "category": "training",
+    "gold_answer": "Operators must be trained that staying inside the cab is important for their safety. They should leave only if there is an imminent danger of fire, explosion or another emergency that requires it. Training must also cover the safest way to evacuate equipment that may be energized, the danger of touching the equipment and the ground at the same time, and step potential.",
+    "section_ids": [
+     "29cfr1926.1408(g)(1)(i)(B)",
+     "29cfr1926.1408(g)(1)(i)(C)",
+     "29cfr1926.1408(g)(1)(i)(A)",
+     "29cfr1926.1408(g)(1)(i)(D)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(g)(1)(i)(B)",
+     "text": "remaining inside the cab except where there is an imminent danger of fire, explosion, or other emergency that necessitates leaving the cab"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "the lines look like theyve got coating on em, can we treat them as insulated",
+    "style": "voice",
+    "category": "training",
+    "gold_answer": "No. Power lines are presumed uninsulated unless the utility owner/operator, or a registered engineer who is a qualified person in power transmission and distribution, confirms the line is insulated. They are also presumed energized unless the utility confirms they are deenergized and visibly grounded.",
+    "section_ids": [
+     "29cfr1926.1408(g)(1)(iii)",
+     "29cfr1926.1408(e)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(g)(1)(iii)",
+     "text": "Power lines are presumed to be uninsulated unless the utility owner/operator or a registered engineer who is a qualified person with respect to electrical power transmission and distribution confirms that a line is insulated."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What counts as the work zone for the power line check if we don't set any boundaries? And who has to be in the planning meeting?",
+    "style": "multi-part",
+    "category": "power-lines",
+    "gold_answer": "Without marked boundaries (flags or range limit devices) that the operator is prohibited from crossing, the work zone is the area 360 degrees around the equipment out to its maximum working radius. When Option 2 or 3 precautions apply, the planning meeting must include the operator and the other workers who will be in the area of the equipment or load.",
+    "section_ids": [
+     "29cfr1926.1408(a)(1)(i)",
+     "29cfr1926.1408(a)(1)(ii)",
+     "29cfr1926.1408(b)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(a)(1)(ii)",
+     "text": "the area 360 degrees around the equipment, up to the equipment's maximum working radius"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "setting steel near a radio tower and the load is picking up a charge, whats required",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "When the equipment is close enough to a transmitter or communication tower for a charge to be induced, either the transmitter must be deenergized or the equipment must be grounded. Any tag lines must also be nonconductive.",
+    "section_ids": [
+     "29cfr1926.1408(f)",
+     "29cfr1926.1408(f)(1)",
+     "29cfr1926.1408(f)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1408(f)(1)",
+     "text": "The equipment must be provided with an electrical ground."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.207964,
+ "duration_ms": 57800,
+ "batch": "B04",
+ "prompt_chars": 16800
+}

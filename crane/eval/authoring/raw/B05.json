@@ -1,0 +1,242 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "moving the hydro across the site no load, boom down, there's a 13.8kv distribution line we gotta drive under. how much clearance do i need to keep",
+    "style": "voice",
+    "category": "power-lines",
+    "gold_answer": "For travel with no load, Table T requires a minimum clearance of 6 feet for lines over 0.75 kV up to 50 kV, so a 13.8 kV line needs 6 feet. The boom/mast also has to be lowered far enough to keep that clearance, and you have to account for how speed and terrain make the equipment move.",
+    "section_ids": [
+     "29cfr1926.1411-tableT",
+     "29cfr1926.1411(b)(1)",
+     "29cfr1926.1411(b)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411-tableT",
+     "text": "over .75 to 50 | 6"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Do I need a spoter when were just driving the crane under lines with nothing on the hook? Lines are pretty high but itll be close-ish",
+    "style": "typo",
+    "category": "power-lines",
+    "gold_answer": "Yes, if any part of the equipment will get closer than 20 feet to the power line while traveling. The dedicated spotter has to be in continuous contact with the driver/operator, be positioned to effectively gauge the clearance, use communication equipment where necessary, and give the operator timely information.",
+    "section_ids": [
+     "29cfr1926.1411(b)(4)",
+     "29cfr1926.1411(b)(4)(i)",
+     "29cfr1926.1411(b)(4)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411(b)(4)",
+     "text": "If any part of the equipment while traveling will get closer than 20 feet to the power line, the employer must ensure that a dedicated spotter who is in continuous contact with the driver/operator is used."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "We have to reposition the crane after dark and the route goes under a set of lines. Beyond the usual stuff, what else is required for night travel?",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "At night or in poor visibility, on top of the normal travel requirements (boom lowered, Table T clearances, accounting for speed and terrain, and a spotter if closer than 20 ft), the power lines must be lit up or located some other way, and a safe path of travel must be identified and used.",
+    "section_ids": [
+     "29cfr1926.1411(b)(5)",
+     "29cfr1926.1411(b)(5)(i)",
+     "29cfr1926.1411(b)(5)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411(b)(5)(i)",
+     "text": "The power lines are illuminated or another means of identifying the location of the lines is used."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "walking the crawler with a load on the hook under some lines, pick and carry. can i just use the travel table T distances",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "No. Table T and § 1926.1411 cover only travel with no load. Traveling with a load falls under § 1926.1408, § 1926.1409 or § 1926.1410, whichever applies, plus § 1926.1417(u).",
+    "section_ids": [
+     "29cfr1926.1411(a)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411(a)",
+     "text": "Equipment traveling on a construction site with a load is governed by § 1926.1408, § 1926.1409 or § 1926.1410, whichever is appropriate, and § 1926.1417(u)."
+    },
+    "equipment": "crawler-crane",
+    "variant": "traveling with load",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "What is the minimum clearance distance required while traveling with no load beneath a 500 kV transmission line, and how does that change for a line above 1,000 kV?",
+    "style": "formal",
+    "category": "power-lines",
+    "gold_answer": "A 500 kV line falls in the over 345 to 750 kV band, so the clearance is 16 feet. For lines over 1,000 kV, Table T sets no number: the distance is set by the utility owner/operator or by a registered professional engineer who is a qualified person in electrical power transmission and distribution.",
+    "section_ids": [
+     "29cfr1926.1411-tableT"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1411-tableT",
+     "text": "over 345 to 750 | 16"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "GC wants us to set something inside the Table A distance to an energized line. is that even allowed and what do we have to prove first before any of the planning stuff",
+    "style": "vague",
+    "category": "power-lines",
+    "gold_answer": "It is prohibited unless the employer can show every requirement in § 1926.1410 is met. The first two are: (1) the work can't feasibly be done without breaching the Table A distance, and (2) after consulting the utility owner/operator, it isn't feasible to deenergize and ground the line or to relocate it. After that come the clearance determination, a planning meeting, documented procedures, and the rest of the section.",
+    "section_ids": [
+     "29cfr1926.1410",
+     "29cfr1926.1410(a)",
+     "29cfr1926.1410(b)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(b)",
+     "text": "after consultation with the utility owner/operator, it is infeasible to deenergize and ground the power line or relocate the power line."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "What makes something 'infeasible' is a judgment call the text doesn't define."
+   },
+   {
+    "question": "Two-part question on a job where we're working closer than Table A: how far out do the barricades around the crane have to be, and what if there's a building in the way?",
+    "style": "multi-part",
+    "category": "power-lines",
+    "gold_answer": "The barricades must form a perimeter at least 10 feet from the equipment to keep unauthorized personnel out. Where obstacles prevent 10 feet, the barricade must be as far from the equipment as feasible.",
+    "section_ids": [
+     "29cfr1926.1410(d)(8)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(d)(8)",
+     "text": "Barricades forming a perimeter at least 10 feet away from the equipment to prevent unauthorized personnel from entering the work area."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "running the knuckle boom off the belly box remote standing on the ground, close to hot lines under a 1410 plan. anything special for me as the operator",
+    "style": "slang",
+    "category": "power-lines",
+    "gold_answer": "Yes. An operator running the equipment remotely from the ground must use either wireless controls that isolate the operator from the equipment or insulating mats that insulate the operator from the ground. Workers other than the operator are also prohibited from touching the load line above the insulating link/device and the crane.",
+    "section_ids": [
+     "29cfr1926.1410(d)(9)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(d)(9)",
+     "text": "Operators remotely operating the equipment from the ground must use either wireless controls that isolate the operator from the equipment or insulating mats that insulate the operator from the ground."
+    },
+    "equipment": "articulating-boom-crane",
+    "variant": "remote ground control",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "our boom truck has a range limiter. on a job inside table A do we have to use it or is the spotter enough",
+    "style": "voice",
+    "category": "power-lines",
+    "gold_answer": "If the equipment has a device that automatically limits range of movement, it must be used. It has to be set so that no part of the equipment, load line or load (including rigging) breaches the minimum clearance distance set under § 1926.1410(c). This is required on top of the dedicated spotter, not as a replacement.",
+    "section_ids": [
+     "29cfr1926.1410(d)(6)",
+     "29cfr1926.1410(d)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(d)(6)",
+     "text": "If the equipment is equipped with a device that automatically limits range of movement, it must be used and set to prevent any part of the equipment, load line, or load"
+    },
+    "equipment": "boom-truck",
+    "variant": "range limiting device",
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "For a line that has auto reclosers, what has to happen to them before we start working inside Table A? And who decides the actual clearance we hold?",
+    "style": "multi-part",
+    "category": "power-lines",
+    "gold_answer": "Before work begins, the automatic reclosing feature must be made inoperative if the device's design permits. The minimum clearance distance is set by the power line owner/operator or by a registered professional engineer qualified in power transmission and distribution. They must consider on-site factors such as atmospheric conductivity, stopping time, wind, line sway and lighting.",
+    "section_ids": [
+     "29cfr1926.1410(d)(1)",
+     "29cfr1926.1410(c)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(d)(1)",
+     "text": "before the work begins, the automatic reclosing feature of the circuit interrupting device must be made inoperative if the design of the device permits."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "halfway thru the pick near the lines the spotter loses comms and the plan clearly isnt working. what are we supposed to do, can we just finish the lift",
+    "style": "scenario",
+    "category": "power-lines",
+    "gold_answer": "No. If a problem comes up carrying out the procedures, or they prove inadequate to prevent electrocution, the employer must safely stop operations. Before resuming, the employer must either develop new procedures or have the utility owner/operator deenergize and visibly ground, or relocate, the line. The one designated person directing the procedures also has authority to stop work at any time.",
+    "section_ids": [
+     "29cfr1926.1410(j)",
+     "29cfr1926.1410(h)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(j)",
+     "text": "the employer must safely stop operations and either develop new procedures to comply with paragraph (d) of this section or have the utility owner/operator deenergize and visibly ground or relocate the power line before resuming work."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "How to 'safely stop' with a load in the air near energized lines depends on field judgment."
+   },
+   {
+    "question": "utility crew with a digger derrick doing subpart V work inside table A — do they still need the elevated warning line and insulating link like a regular crane job",
+    "style": "vague",
+    "category": "power-lines",
+    "gold_answer": "No. The elevated warning line/barricade requirement (d)(3) and the insulating link/device requirement (d)(4)(i) don't apply to work covered by subpart V. For subpart V work, the minimum approach distances the employer sets under § 1926.960(c)(1)(i) also replace the (c)(1) clearance determination.",
+    "section_ids": [
+     "29cfr1926.1410(d)(3)",
+     "29cfr1926.1410(d)(4)(ii)",
+     "29cfr1926.1410(c)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1926.1410(d)(4)(ii)",
+     "text": "Paragraph (d)(4)(i) of this section does not apply to work covered by subpart V of this part."
+    },
+    "equipment": "digger-derrick",
+    "variant": "subpart V work",
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "Deciding whether a task counts as subpart V work requires looking beyond this text."
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.13731179999999998,
+ "duration_ms": 42277,
+ "batch": "B05",
+ "prompt_chars": 11784
+}

@@ -1,0 +1,274 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "what has to go on the monthly hook inspection paperwork for our bridge crane? is a visual every day enough or do we need the record too",
+    "style": "voice",
+    "category": "inspections",
+    "gold_answer": "Hooks get a visual check for deformation or cracks every day, and a monthly inspection that is documented. The monthly record must include the inspection date, the signature of the person who did it, and the hook's serial number or other identifier.",
+    "section_ids": [
+     "29cfr1910.179(j)(2)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(j)(2)(iii)",
+     "text": "monthly inspection with a certification record which includes the date of inspection, the signature of the person who performed the inspection and the serial number, or other identifier, of the hook inspected"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Hook on the gantry looks opened up and a little twisted. At what point do I have to scrap it, and can the shop just weld it and heat it back into shape?",
+    "style": "scenario",
+    "category": "inspections",
+    "gold_answer": "Discard the hook if it has cracks, a throat opening more than 15 percent over normal, or more than 10° of twist from the plane of the unbent hook. Repairing it by welding or reshaping is not generally recommended. If someone does it anyway, it must be done under competent supervision, and the hook must pass a load test (no more than 125% of rated load unless the manufacturer recommends otherwise) before it goes back in use.",
+    "section_ids": [
+     "29cfr1910.179(j)(2)(iii)",
+     "29cfr1910.179(l)(3)(iii)",
+     "29cfr1910.179(k)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(j)(2)(iii)",
+     "text": "more than 15 percent in excess of normal throat opening or more than 10° twist from the plane of the unbent hook"
+    },
+    "equipment": "gantry-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": true,
+    "expert_review_why": "The rule discourages weld/reshape repairs without banning them; whether to allow a repair is a judgment call for competent supervision."
+   },
+   {
+    "question": "Crane in bay 3 sat parked for about 3 months while the line was down. What inspection does it need before we put it back to work? What if it had been 8 months?",
+    "style": "multi-part",
+    "category": "inspections",
+    "gold_answer": "Idle 1 month or more but less than 6 months: do the frequent inspection items in (j)(2) plus the idle-rope inspection in (m)(2) before returning it to service. Idle more than 6 months: do a complete inspection covering both (j)(2) and (j)(3), plus (m)(2), before returning it to service.",
+    "section_ids": [
+     "29cfr1910.179(j)(4)(i)",
+     "29cfr1910.179(j)(4)(ii)",
+     "29cfr1910.179(m)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(j)(4)(i)",
+     "text": "idle for a period of 1 month or more, but less than 6 months"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "The text doesn't say which rule applies to a crane idle exactly 6 months."
+   },
+   {
+    "question": "how often do standby cranes have to be inspectd",
+    "style": "typo",
+    "category": "inspections",
+    "gold_answer": "Standby cranes must be inspected at least semi-annually. The inspection covers the frequent inspection items in (j)(2) and the rope inspection in (m)(2).",
+    "section_ids": [
+     "29cfr1910.179(j)(4)(iii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(j)(4)(iii)",
+     "text": "Standby cranes shall be inspected at least semi-annually"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "How often does the wire rope on an overhead crane need a thorough inspection, and what records are required?",
+    "style": "formal",
+    "category": "wire-rope",
+    "gold_answer": "All running ropes need a thorough inspection at least once a month. Keep a certification record on file where appointed personnel can readily get to it. It must show the date, the inspector's signature, and an identifier for the ropes inspected.",
+    "section_ids": [
+     "29cfr1910.179(m)(1)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(m)(1)",
+     "text": "A thorough inspection of all ropes shall be made at least once a month"
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "rope on the hoist hasnt moved in like 6 weeks cause the crane was shut down, who has to sign off before we use it again",
+    "style": "voice",
+    "category": "wire-rope",
+    "gold_answer": "Rope that has sat idle for a month or more because of a shutdown or storage needs a thorough inspection for all types of deterioration before use. An appointed person must do the inspection, and their approval is required before the rope is used again. A certification record with the date, signature and rope identifier must be available.",
+    "section_ids": [
+     "29cfr1910.179(m)(2)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(m)(2)",
+     "text": "shall be performed by an appointed person whose approval shall be required for further use of the rope"
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "we just rebuilt the trolley on our bridge crane. how heavy can the load test go, and what about setting the upper limit switch?",
+    "style": "slang",
+    "category": "inspections",
+    "gold_answer": "Test loads can be no more than 125 percent of rated load unless the manufacturer recommends otherwise, and the test reports must be kept on file for appointed personnel. Set the hoist limit switch trip point by testing with an empty hook at increasing speeds up to maximum speed. The switch must trip in time to keep the hook or block from contacting any part of the trolley.",
+    "section_ids": [
+     "29cfr1910.179(k)(2)",
+     "29cfr1910.179(k)(1)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(k)(2)",
+     "text": "Test loads shall not be more than 125 percent of the rated load unless otherwise recommended by the manufacturer."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Gotta work on the brakes on one of two bridge cranes sharing a runway. What do I need to do before I start wrenching on it?",
+    "style": "scenario",
+    "category": "overhead-gantry",
+    "gold_answer": "Before work starts: move the crane to where it interferes least with other cranes and operations, put all controllers in the off position, and open the main or emergency switch and lock it open. Put warning or \"out of order\" signs on the crane and on the floor beneath it or on the hook, where they can be seen from the floor. Because another crane runs on the same runway, use rail stops or another suitable means to keep it from hitting the idle crane.",
+    "section_ids": [
+     "29cfr1910.179(l)(2)(i)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(l)(2)(i)",
+     "text": "The main or emergency switch shall be open and locked in the open position."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "how far down can i lower the hook before im out of rope on the drum",
+    "style": "vague",
+    "category": "overhead-gantry",
+    "gold_answer": "Never lower the load to the point where fewer than two full wraps of rope remain on the hoisting drum.",
+    "section_ids": [
+     "29cfr1910.179(n)(3)(viii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(n)(3)(viii)",
+     "text": "The load shall not be lowered below the point where less than two full wraps of rope remain on the hoisting drum."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "start of shift do i have to check the upper limit on the hoist and can i just run it into the limit to stop it every pick",
+    "style": "voice",
+    "category": "safety-devices",
+    "gold_answer": "Yes. At the start of each operator's shift, test the upper limit switch of each hoist with no load, either inching the block into the limit or running it in at slow speed. If the switch doesn't work right, notify the appointed person immediately. The upper hoist limit switch must never be used as an operating control.",
+    "section_ids": [
+     "29cfr1910.179(n)(4)(i)",
+     "29cfr1910.179(n)(4)(ii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(n)(4)(ii)",
+     "text": "The hoist limit switch which controls the upper limit of travel of the load block shall never be used as an operating control."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Picking something close to the crane's capacity — is there a brake check I'm supposed to do first?",
+    "style": "vague",
+    "category": "operator-duties",
+    "gold_answer": "Yes. Each time a load close to rated load is handled, the operator must test the brakes by raising the load a few inches and applying them.",
+    "section_ids": [
+     "29cfr1910.179(n)(3)(vii)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(n)(3)(vii)",
+     "text": "The brakes shall be tested by raising the load a few inches and applying the brakes."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "can we drag a skid sideways across the floor with the gantry hook instead of getting under it",
+    "style": "slang",
+    "category": "overhead-gantry",
+    "gold_answer": "Not as a general rule. Side pulls are prohibited unless a responsible person specifically authorizes them after determining that the crane's stability won't be endangered and its parts won't be overstressed.",
+    "section_ids": [
+     "29cfr1910.179(n)(3)(iv)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(n)(3)(iv)",
+     "text": "Cranes shall not be used for side pulls except when specifically authorized by a responsible person"
+    },
+    "equipment": "gantry-crane",
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": true,
+    "expert_review_why": "Deciding whether a side pull keeps the crane stable and avoids overstress is an engineering judgment the text doesn't define."
+   },
+   {
+    "question": "whats the diffrence between frequent and periodic inspecton and what extra stuff gets looked at on the periodic",
+    "style": "typo",
+    "category": "inspections",
+    "gold_answer": "Frequent inspections happen at daily to monthly intervals, and periodic inspections at 1 to 12-month intervals, depending on activity, severity of service and environment. A periodic inspection includes all the frequent items plus: deformed, cracked or corroded members; loose bolts or rivets; cracked or worn sheaves and drums; worn parts such as pins, bearings, shafts and gears; brake wear; accuracy of load and wind indicators; powerplants; chain drive sprockets and chain stretch; and pitting or deterioration of electrical contactors, limit switches and pushbutton stations.",
+    "section_ids": [
+     "29cfr1910.179(j)(1)(ii)",
+     "29cfr1910.179(j)(3)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(j)(1)(ii)",
+     "text": "(a) Frequent inspection—Daily to monthly intervals. (b) Periodic inspection—1 to 12-month intervals."
+    },
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   },
+   {
+    "question": "Guy wants to wrap the hoist rope around a pipe bundle and hook it back to itself to save time, then ride the load over to the other bay. Any of that okay?",
+    "style": "scenario",
+    "category": "overhead-gantry",
+    "gold_answer": "No to both. The hoist rope or chain must not be wrapped around the load; attach the load to the hook with slings or other approved devices. Also, no hoisting, lowering or traveling is allowed while any employee is on the load or hook.",
+    "section_ids": [
+     "29cfr1910.179(n)(2)(i)",
+     "29cfr1910.179(n)(2)(ii)",
+     "29cfr1910.179(n)(3)(v)"
+    ],
+    "key_quote": {
+     "section_id": "29cfr1910.179(n)(3)(v)",
+     "text": "While any employee is on the load or hook, there shall be no hoisting, lowering, or traveling."
+    },
+    "equipment": "overhead-crane",
+    "variant": null,
+    "difficulty": "hard",
+    "expert_review_needed": false,
+    "expert_review_why": null
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.1628278,
+ "duration_ms": 48580,
+ "batch": "B19",
+ "prompt_chars": 14508
+}

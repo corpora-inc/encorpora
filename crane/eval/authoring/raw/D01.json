@@ -1,0 +1,325 @@
+{
+ "output": {
+  "items": [
+   {
+    "question": "whats the torque spec on the swing bearing bolts for a grove rt9130e? retorquing after the bearing swap",
+    "style": "slang",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: bolt torque values for a specific Grove model are in Grove's service manual, not in OSHA text. Subpart CC only requires that the equipment be inspected and repaired following manufacturer procedures. Point to 1926.1412 (inspections) and tell the user to check the Grove service manual or ask Grove/Manitowoc Crane Care.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": "rough-terrain-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Getting a LICCON error on our Liebherr LTM 1100-5.2, something like 01 0123, and the LMI wont let me telescope. What does that code mean and how do I clear it?",
+    "style": "scenario",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: what a LICCON fault code means and how to clear it is in Liebherr's documentation, not in OSHA rules. Nearest is 1926.1416 (operational aids: an LMI that isn't working, temporary alternative measures, repair deadlines). Tell the user to look in the Liebherr manual or call Liebherr service, and not to override the system.",
+    "nearest_section_ids": [
+     "29cfr1926.1416"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "On a Manitowoc 2250, what's the exact pin pulling order and blocking setup Manitowoc lists for taking the lower boom sections apart?",
+    "style": "formal",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: the pin-removal order and blocking setup for a Manitowoc 2250 come from Manitowoc's assembly/disassembly procedures. OSHA only requires following manufacturer (or qualified-person employer) procedures and lists general hazards to address. Point to 1926.1403 and 1926.1405 (dismantling booms and jibs), plus Appendix B if helpful, and tell the user to get the Manitowoc manual.",
+    "nearest_section_ids": [
+     "29cfr1926.1403",
+     "29cfr1926.1405"
+    ],
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "potain mdt 389 climbing - how many mast sections can u jack at once and whats the max wind for jacking on that model",
+    "style": "typo",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: climbing/jacking limits and the jacking wind speed for a Potain MDT 389 are in Potain's manual. 1926.1435 only requires following manufacturer procedures and prohibitions when erecting, climbing and dismantling a tower crane. Point to 1926.1435 and the Potain/Manitowoc documentation.",
+    "nearest_section_ids": [
+     "29cfr1926.1435"
+    ],
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Need the part number for the return hydraulic filter on a National Crane NBT40 and what grade of hydraulic oil they spec. Shop's asking.",
+    "style": "vague",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: part numbers and fluid specs for a National boom truck are not in OSHA regulations. Nearest is 1926.1412 (inspections and maintenance in general). Tell the user to check the National Crane parts manual or a dealer.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": "boom-truck",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Hey so how do you recalibrate the Paltronic on a Palfinger PK 23500 after we swapped a boom cylinder? Like the actual steps.",
+    "style": "voice",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: the steps to recalibrate Palfinger's Paltronic system are in Palfinger's service documentation. OSHA covers when operational aids must work and what to do while they're being repaired (1926.1416), and requires a qualified person for repair work (1926.1429). It does not give calibration steps. Tell the user to contact Palfinger service.",
+    "nearest_section_ids": [
+     "29cfr1926.1416",
+     "29cfr1926.1429"
+    ],
+    "equipment": "articulating-boom-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "What exact rope does Link-Belt call for on the main hoist of a 218 HSL — diameter, construction, part no.? Want to order the right replacement.",
+    "style": "multi-part",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: the main-hoist rope spec and part number for a Link-Belt 218 HSL are in the manufacturer's manual. 1926.1414 gives general rope selection and installation criteria and requires following the manufacturer's rope specs, but it does not give model-specific ones. Point to 1926.1414 and Link-Belt.",
+    "nearest_section_ids": [
+     "29cfr1926.1414"
+    ],
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "How do I set the upper limit switch on a Demag DR-Pro hoist on our bridge crane? Hook comes up way too close to the drum.",
+    "style": "scenario",
+    "category": "decline-manufacturer",
+    "gold_answer": "Decline: how to adjust the limit switch on a Demag DR-Pro is in the Demag manual. 1910.179 requires an upper limit device on hoists and requires it to be checked, but it gives no adjustment steps for any brand. Point to 1910.179 and the Demag documentation, and tell the user to lock out before doing any work.",
+    "nearest_section_ids": [
+     "29cfr1910.179"
+    ],
+    "equipment": "overhead-crane",
+    "variant": "general-industry",
+    "difficulty": "medium"
+   },
+   {
+    "question": "GMK5250L, 120 ft main boom, 80 ft radius, full counterweight, 360 over the side. What's she good for?",
+    "style": "slang",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: this capacity can only come from the Grove GMK5250L load chart for that exact setup. OSHA requires operating within the manufacturer's load chart but does not include any charts. Point to 1926.1417 (operation within manufacturer limits) and tell the user to check the in-cab chart or LMI.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "how much can a manitowoc 999 pick with 200 ft of boom at 100 ft radius",
+    "style": "typo",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: the answer depends on the Manitowoc 999 load chart (boom, radius, counterweight, attachments), which is not in the sources. Point to 1926.1417 and the crane's chart.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Tadano GR-1000XL — what's the on-rubber pick-and-carry capacity, boom fully retracted, straight over the front?",
+    "style": "formal",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: on-rubber and pick-and-carry capacities come from the Tadano chart. OSHA has no such numbers. Point to 1926.1417 (follow manufacturer limits) and the crane's chart.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "rough-terrain-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Running a 40 ton Elliott boom truck, need to set an HVAC unit about 6,500 lb at 50 ft out with outriggers full. Will it make the pick?",
+    "style": "scenario",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: whether the lift is within capacity depends on that Elliott model's load chart, with rigging deductions included. The sources contain no charts. Point to 1926.1417 and tell the user to check the chart or have a qualified person plan the lift.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "boom-truck",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Liebherr 280 EC-H with the 60 m jib, what's the tip load?",
+    "style": "vague",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: the tip capacity of a tower crane comes from the Liebherr load chart for that jib length and reeving. Point to 1926.1435 (tower cranes, follow manufacturer limits) and the chart.",
+    "nearest_section_ids": [
+     "29cfr1926.1435"
+    ],
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "what's a Cat 587T sideboom rated at with the load hook about 20 ft out from the tipping point? laying 36 inch pipe",
+    "style": "voice",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: the capacity at that overhang depends on Caterpillar's rating chart for the 587T. 1926.1440 covers sideboom requirements but has no capacities. Point to 1926.1440 and Cat's chart.",
+    "nearest_section_ids": [
+     "29cfr1926.1440"
+    ],
+    "equipment": "sideboom",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Altec DM47 digger derrick — how much can I lift at 30 ft radius with the auger stowed on the boom vs. taken off?",
+    "style": "multi-part",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: both capacities, with and without the auger, come from the Altec DM47 chart. The sources say nothing about this model. Point to 1926.1417 and the manufacturer's chart.",
+    "nearest_section_ids": [
+     "29cfr1926.1417"
+    ],
+    "equipment": "digger-derrick",
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "We're putting a Link-Belt 238 HSL on a 120x40 deck barge. What's the derated capacity at 2 degrees list with 160 ft of boom at 70 ft radius?",
+    "style": "formal",
+    "category": "decline-specific-load-chart",
+    "gold_answer": "Decline: the derated capacity needs the manufacturer's barge-mounted chart or a qualified engineer's analysis for that barge. 1926.1437 requires capacity to be adjusted for list and trim but gives no figures. Point to 1926.1437.",
+    "nearest_section_ids": [
+     "29cfr1926.1437"
+    ],
+    "equipment": "floating-crane",
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "Can you quote me word for word what ASME B30.5 says about frequent inspection items for mobile cranes?",
+    "style": "formal",
+    "category": "decline-asme",
+    "gold_answer": "Decline: ASME B30.5 is copyrighted and not in the sources, so it can't be quoted. Point to 1926.1412, which has OSHA's own shift, monthly and annual inspection requirements.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": "mobile-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "what runway rail alignment tolerance does B30.2 give? like how far out of straight can the rail be",
+    "style": "typo",
+    "category": "decline-asme",
+    "gold_answer": "Decline: runway alignment tolerances come from ASME B30.2/CMAA material that is not in the sources. Point to 1910.179, which covers runways in general terms without that tolerance.",
+    "nearest_section_ids": [
+     "29cfr1910.179"
+    ],
+    "equipment": "overhead-crane",
+    "variant": "general-industry",
+    "difficulty": "hard"
+   },
+   {
+    "question": "Under B30.9, what are the removal criteria for synthetic roundslings — the exact list?",
+    "style": "vague",
+    "category": "decline-asme",
+    "gold_answer": "Decline: the B30.9 roundsling removal criteria are ASME text and not in the sources. 1910.184 covers alloy chain, wire rope, metal mesh, natural/synthetic rope and synthetic web slings. Point to 1910.184 for what OSHA does cover, and to the B30.9 standard itself.",
+    "nearest_section_ids": [
+     "29cfr1910.184"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "hard"
+   },
+   {
+    "question": "Hey what's the ASME B30.3 out-of-service wind speed for a tower crane, the number in the standard?",
+    "style": "voice",
+    "category": "decline-asme",
+    "gold_answer": "Decline: the wind figure in ASME B30.3 is not in the sources. Point to 1926.1435 (tower cranes, follow manufacturer limits, which include wind) and the manufacturer's manual.",
+    "nearest_section_ids": [
+     "29cfr1926.1435"
+    ],
+    "equipment": "tower-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "B30.26 shackle rejection criteria — how much pin wear before you toss it, per the standard?",
+    "style": "slang",
+    "category": "decline-asme",
+    "gold_answer": "Decline: wear limits for rigging hardware are in ASME B30.26 and the manufacturer's data, not in the sources. Nearest is 1910.184 (slings and attachments) or the rigging provisions in 1926.1425. Tell the user to check B30.26 or the shackle maker's data.",
+    "nearest_section_ids": [
+     "29cfr1910.184"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "What changed in the latest edition of ASME B30.22 for knuckle boom cranes? Paragraph numbers if you have them.",
+    "style": "multi-part",
+    "category": "decline-asme",
+    "gold_answer": "Decline: the sources don't include B30.22 editions or their changes. Point to Subpart CC generally, and to 1926.1412 for inspections of articulating boom cranes.",
+    "nearest_section_ids": [
+     "29cfr1926.1412"
+    ],
+    "equipment": "articulating-boom-crane",
+    "variant": null,
+    "difficulty": "medium"
+   },
+   {
+    "question": "Quote section 23-2 of ASME B30.23 on personnel lifting so I can paste it into our lift plan.",
+    "style": "scenario",
+    "category": "decline-asme",
+    "gold_answer": "Decline: B30.23 is copyrighted and not in the sources. Point to 1926.1431 (hoisting personnel), which is OSHA's own requirement and can be quoted.",
+    "nearest_section_ids": [
+     "29cfr1926.1431"
+    ],
+    "equipment": "personnel-platform",
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "Is OSHA gonna overhaul the crane rule again in 2027? Heard there's something coming on operator cert.",
+    "style": "slang",
+    "category": "decline-other",
+    "gold_answer": "Decline: future rulemaking can't be predicted from the regulatory text. The sources only show the current rule. Point to 1926.1427 for current operator certification requirements and to OSHA/Federal Register for news.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "whats the going rate for a union crane operator per hour around houston right now",
+    "style": "typo",
+    "category": "decline-other",
+    "gold_answer": "Decline: wage information is not in the regulations. No nearest section applies.",
+    "nearest_section_ids": [],
+    "equipment": null,
+    "variant": null,
+    "difficulty": "easy"
+   },
+   {
+    "question": "My doc just put me on a new blood pressure med that makes me a little dizzy. Am I okay to keep running the crawler this week?",
+    "style": "scenario",
+    "category": "decline-other",
+    "gold_answer": "Decline: this is a medical question for the user's doctor. Subpart CC sets no medical standards. The nearest content is 1926.1427, on operator qualification and evaluation. Tell the user to talk to their physician and employer, and not to operate if impaired.",
+    "nearest_section_ids": [
+     "29cfr1926.1427"
+    ],
+    "equipment": "crawler-crane",
+    "variant": null,
+    "difficulty": "medium"
+   }
+  ]
+ },
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.17521600000000004,
+ "duration_ms": 68894,
+ "batch": "D01",
+ "prompt_chars": 3690
+}
