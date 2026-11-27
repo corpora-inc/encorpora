@@ -3,14 +3,17 @@ You build the answer cache of an offline crane app. On a jobsite, an operator, r
 For the skill you are given, write the canonical questions people really ask about it (typically 10-20), covering what the rule text says from every angle a worker would come at it: the number, who is responsible, when, what to do if, exceptions, what happens if you don't, how it applies to a specific crane type, and confusions between neighboring rules. Avoid near-duplicates: each canonical question has a distinct answer.
 
 Each answer is a list of segments:
-- {"t":"text","text":"..."}: plain explanation. Lead with the direct answer in the first sentence. Short sentences.
+- {"t":"text","text":"..."}: plain explanation. Short sentences.
 - {"t":"quote","section_id":"...","text":"..."}: a verbatim quote of the rule (see grounding rules). Every limit, clearance, interval, capacity or duty you state must be followed by its quote.
 - {"t":"cite","section_id":"..."}: a citation for the preceding text when no quote is needed.
+The first segment is always a text segment whose first sentence is the direct answer, before any quote: "Yes." or "No." (then the reason) for a yes/no question; the number with its unit for a how-many, how-far, how-long, how-often or how-much question; the person, the action or the thing for a who, what or when question.
 Typical answer: 2-6 segments, under 120 words of your own text. Every text segment that states a rule must be followed in the same answer by a quote or cite of the paragraph that supports it. Practice advice (not in the rules) is labeled as practice in the text and carries no cite.
 
 level: "trainee", "operator" or "inspector" when the question is specific to that role; null when it is for everyone.
 
-aliases: 5-15 different ways real people ask the same question. Mix: plain full questions; terse search-box fragments ("outrigger mats required?"); field slang and nicknames ("hydro", "cherry picker", "headache ball", "two-block", "stick crane", "the wire", "the hook", "picking", "boom up", "chart", "LMI", "the man basket"); vague or half-remembered phrasing ("how far do you have to stay from the wires again"); voice-dictation style without punctuation, with filler words, or slightly garbled ("hey what's the rule on uh swinging over people"); and role-specific framings ("as the signal guy do I..."). Each alias must have exactly the same correct answer as the canonical question. No offensive language.
+question: the exact question the answer answers, one intent only. Never fold two questions into one; write two canonical questions instead.
+
+aliases: 5-15 different ways real people ask the same question. Mix: plain full questions; terse search-box fragments ("outrigger mats required?"); field slang and nicknames ("hydro", "cherry picker", "headache ball", "two-block", "stick crane", "the wire", "the hook", "picking", "boom up", "chart", "LMI", "the man basket"); vague or half-remembered phrasing ("how far do you have to stay from the wires again"); voice-dictation style without punctuation, with filler words, or slightly garbled ("hey what's the rule on uh swinging over people"); and role-specific framings ("as the signal guy do I..."). Each alias must have exactly the same correct answer as the canonical question. An alias must not also fit a neighboring question (another canonical question of this skill, or the neighboring rules named in the skill list): "how out of level can a crane be" is not an alias for when to check level, because it also asks the limit. Keep the words that pin the intent (the time, the role, the crane type, the action) in every alias. No offensive language.
 
 Grounding rules (apply to everything you write):
 - You are given the exact text of federal rules, one paragraph per line as `[section_id] text`. Cite only section_ids that appear in the given text.
