@@ -3,7 +3,7 @@
   <desc id="lcr-desc">A fictional load chart excerpt with boom lengths of 40, 60 and 80 feet across the top and radii from 10 to 50 feet down the side. Shaded cells at short radius are limited by structural strength; the rest are limited by stability. Example lift: 60 ft boom at 27 ft radius. 27 ft is not listed, so use the next longer radius, 30 ft: 16,500 lb gross. Subtract hook block 450 lb, stowed jib 1,200 lb and slings and shackles 150 lb to get 14,700 lb net, the most the load may weigh.</desc>
   <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
 
-  <text x="240" y="28" text-anchor="middle" fill="var(--crane-muted, #8a8f98)">Fictional chart excerpt · gross lb</text>
+  <text x="240" y="28" text-anchor="middle">Fictional chart excerpt · gross lb</text>
   <text x="240" y="56" text-anchor="middle" font-size="20" font-weight="700">Lift: 60 ft boom, 27 ft radius</text>
 
   <!-- structural (shaded) cells -->

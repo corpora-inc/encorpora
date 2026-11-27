@@ -19,10 +19,10 @@
   <circle cx="240" cy="161" r="6" fill="var(--crane-accent, #d97706)" stroke="currentColor" stroke-width="2"/>
 
   <!-- basket -->
-  <line x1="400" y1="30" x2="400" y2="62" stroke="currentColor" stroke-width="2"/>
-  <circle cx="400" cy="70" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
+  <line x1="400" y1="30" x2="400" y2="72" stroke="currentColor" stroke-width="2"/>
+  <line x1="360" y1="74" x2="440" y2="74" stroke="currentColor" stroke-width="6"/>
   <circle cx="400" cy="196" r="30" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.35" stroke="currentColor" stroke-width="2.5"/>
-  <path d="M394 78 L365 196 A35 35 0 0 0 435 196 L406 78" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="6"/>
+  <path d="M367 78 V196 A33 33 0 0 0 433 196 V78" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="6"/>
 
   <g text-anchor="middle" font-size="20" font-weight="700">
     <text x="80" y="266">Vertical</text>

@@ -30,7 +30,7 @@
   <line x1="130" y1="340" x2="240" y2="340" stroke="var(--crane-muted, #8a8f98)" stroke-width="2" stroke-dasharray="4 5"/>
   <path d="M190 340 A60 60 0 0 0 181.96 310" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
   <path d="M220 340 A90 90 0 0 0 175 262.06" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
-  <text x="204" y="322" font-weight="700">30°</text>
+  <text x="226" y="332" font-weight="700">30°</text>
   <text x="206" y="268" font-weight="700">60°</text>
 
   <!-- booms (same length) -->

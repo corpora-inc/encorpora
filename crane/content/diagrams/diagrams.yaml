@@ -3,8 +3,8 @@
 # properties --crane-accent, --crane-danger and --crane-muted (fallbacks are
 # built in). Inline the SVG markup so currentColor follows the page theme.
 #
-# section_ids and quotes are checked against the eCFR text by
-# crane/content/verify/verify.py. Physics and common rigging practice
+# section_ids and quotes were checked locally against the eCFR text with the
+# crane content verifier (verify.py). Physics and common rigging practice
 # (sling-angle factors, ground bearing arithmetic, D/d) cite nothing.
 # Charts and numbers marked fictional are for teaching only.
 
@@ -17,7 +17,8 @@ diagrams:
       The flatter the sling, the harder each leg pulls: tension per leg =
       (load ÷ 2) × load-angle factor, with the angle measured from horizontal.
       At 30° each leg of a two-leg bridle carries the whole load, so common
-      rigging practice avoids angles below 30°.
+      rigging practice avoids angles below 30°. The cited sling rule is the
+      general-industry standard.
     alt: >-
       A 1,000 lb load lifted by a two-leg bridle at four sling angles measured
       from horizontal. At 90° the legs hang straight from a spreader bar and
@@ -93,8 +94,8 @@ diagrams:
     title: Swing radius and work zone
     caption: >-
       The rotating counterweight can strike or crush anyone inside its swing
-      area, so barricade it. The work zone reaches 360° around the crane out to
-      its maximum working radius.
+      area, so barricade it. One way to define the work zone (from the power
+      line rule) is 360° around the crane out to its maximum working radius.
     alt: >-
       Plan view of a crane on four outriggers with its boom pointing up and to
       the right and its counterweight down and to the left. A shaded circle
@@ -152,7 +153,8 @@ diagrams:
       Two-blocking is the hook block being pulled into the boom tip, which can
       part the hoist line and drop the load. An anti-two-block device senses
       the block lifting its weight and locks out the motions that close the
-      gap, typically hoist up, telescope out and boom down.
+      gap, on telescopic cranes typically hoist up, telescope out and boom
+      down.
     alt: >-
       Two views of a boom tip. Left, with the device: the hook block has risen
       and lifted the anti-two-block weight that hangs on a chain around the
@@ -164,7 +166,6 @@ diagrams:
       hoist line, a dropped load and a damaged boom tip.
     section_ids:
       - 29cfr1926.1416(d)(3)(i)
-      - 29cfr1926.1416(d)(3)(ii)
     quotes:
       - section_id: 29cfr1926.1416(d)(3)(i)
         quote: Telescopic boom cranes manufactured after February 28, 1992, must be equipped with a device which automatically prevents damage from contact between the load block, overhaul ball, or similar component, and the boom tip (or fixed upper block or similar component).
@@ -176,7 +177,9 @@ diagrams:
     caption: >-
       If any part of the crane, load line or load could get within 20 ft of a
       power line (50 ft for lines over 350 kV to 1,000 kV) anywhere in the work
-      zone, deenergize and ground it or prevent encroachment. Table A sets the
+      zone, have the utility deenergize and visibly ground it, or prevent
+      encroachment. The work zone is either marked boundaries the operator may
+      not pass or 360° out to the maximum working radius. Table A sets the
       minimum clearance by voltage.
     alt: >-
       Side view of a crane working near an energized power line seen end-on.
@@ -184,10 +187,12 @@ diagrams:
       any part of the crane, load line or load could get that close while
       working anywhere in the work zone, 360 degrees out to the maximum
       working radius, the line must be deenergized and grounded or
-      encroachment must be prevented. For lines over 350 kV up to 1,000 kV the
+      encroachment must be prevented. (The work zone may instead be set by
+      marked boundaries the operator may not pass.) For lines over 350 kV up to 1,000 kV the
       20 ft becomes 50 ft. A solid inner circle shows the Table A minimum
       clearance, 10 ft for a line up to 50 kV. Numbered callouts mark an
-      elevated warning line with a flag at the zone edge (1), a worker holding
+      elevated warning line with a flag at the zone edge (1; at 20 ft under
+      the 20 ft option, or at the Table A distance under the Table A option), a worker holding
       a tag line (2), a dedicated spotter (3) and the crane cab where a
       proximity alarm or range device works (4). Table A, minimum clearance by
       nominal voltage: up to 50 kV, 10 ft; over 50 to 200 kV, 15 ft; over 200
@@ -200,7 +205,7 @@ diagrams:
       or limiting device, or an insulating link.
     section_ids:
       - 29cfr1926.1408
-      - 29cfr1926.1408(a)(1)(ii)
+      - 29cfr1926.1408(a)(1)
       - 29cfr1926.1408(a)(2)
       - 29cfr1926.1408(b)(1)
       - 29cfr1926.1408(b)(2)
@@ -224,7 +229,8 @@ diagrams:
     caption: >-
       How a sling is rigged changes what it can carry. A choker rates below
       vertical; a basket can reach twice vertical only with vertical legs. The
-      sling tag gives the rating for each hitch.
+      sling tag gives the rating for each hitch. The cited sling rules are the
+      general-industry standard.
     alt: >-
       Three ways to rig one sling, side by side. Vertical: one sling leg runs
       straight from the hook to a lifting eye on the load. Choker: the sling
