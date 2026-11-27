@@ -179,6 +179,7 @@ harvest verify  <pack-dir>                      # signature + hashes + schema
 harvest search  <pack> "<query>" [--k 10] [--json]
 harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <endpoint|off>] [--audit <records-db>] [--json]
 harvest audit   <records-db> [--json]
+harvest outbox  <records-db> [--to <dir>] [--json]
 ```
 
 `ask --json` prints:
@@ -196,6 +197,36 @@ harvest audit   <records-db> [--json]
 
 The Tauri app calls the same functions in-process; the CLI exists so evaluation
 measures exactly the code the app runs.
+
+## Records and uploads
+
+The device keeps one records database (`records.db`, never inside a pack):
+procedure runs and step results, the audit log, and an outbox. Every outbox
+item goes up as:
+
+```json
+{ "item_id": "run-…", "kind": "run|deficiency|deficiency_cleared|miss",
+  "created_at": "…Z",
+  "payload": "<the payload's JSON, as a string>",
+  "payload_sha256": "<hex SHA-256 of the payload string's UTF-8 bytes>" }
+```
+
+- `run`: a finished or abandoned run with its steps (`run_id`, `pack_id`,
+  `pack_version`, `proc_id`, `equip_id`, `asset`, `role`, `status`, `steps`).
+  It is the authoritative record of the run.
+- `deficiency`: early notice, queued the moment a `pass_fail` step fails
+  (run, step, its `section_ids`, the record). A correction before upload
+  withdraws it; a correction after upload queues `deficiency_cleared`
+  (`run_id`, `step`, the new record). The latest item for a step wins.
+- `miss`: a declined question (`question`, `nearest`, pack version), for the
+  next bake.
+
+A run is recorded against the procedure's steps as they were when it began;
+a pack update that changes those steps refuses further results for that run.
+
+The receiver stores items idempotently by `item_id` and answers each with
+`{ "item_id", "payload_sha256", "server_id", "received_at" }`. An item is done
+only when its receipt echoes its hash; anything else stays queued.
 
 ## Bake hit rate
 

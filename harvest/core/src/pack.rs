@@ -98,6 +98,41 @@ pub struct Equipment {
     pub aliases: Vec<String>,
 }
 
+/// A guided procedure (inspection, assembly, lift plan).
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct Procedure {
+    pub proc_id: String,
+    pub title: String,
+    pub kind: String,
+    pub summary: String,
+    pub roles: Vec<String>,
+}
+
+/// What to do when a step fails, with the rule behind it.
+#[derive(Debug, Clone, Serialize, serde::Deserialize, PartialEq)]
+pub struct Deficiency {
+    pub guidance: String,
+    #[serde(default)]
+    pub action: Option<String>,
+    pub section_id: String,
+    #[serde(default)]
+    pub quote: Option<String>,
+}
+
+/// One step of a procedure.
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct ProcStep {
+    pub proc_id: String,
+    pub ord: i64,
+    pub text: String,
+    /// Step detail per role: `{trainee, operator, inspector}`.
+    pub detail: BTreeMap<String, String>,
+    /// `pass_fail` | `value` | `note` | `photo`.
+    pub check_kind: String,
+    pub section_ids: Vec<String>,
+    pub deficiency: Option<Deficiency>,
+}
+
 /// A retrieval unit.
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Chunk {
@@ -326,6 +361,74 @@ impl Pack {
             })?
             .collect::<rusqlite::Result<Vec<_>>>()?;
         Ok(rows)
+    }
+
+    /// A procedure by id.
+    pub fn procedure(&self, id: &str) -> Result<Option<Procedure>> {
+        let conn = self.conn();
+        let mut stmt = conn.prepare_cached(
+            "SELECT proc_id, title, kind, summary, roles FROM procedure WHERE proc_id = ?1",
+        )?;
+        let row: Option<(String, String, String, String, String)> = stmt
+            .query_row([id], |r| {
+                Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?))
+            })
+            .optional()?;
+        row.map(|(proc_id, title, kind, summary, roles)| {
+            Ok(Procedure {
+                roles: serde_json::from_str(&roles)
+                    .map_err(|e| Error::Pack(format!("procedure {proc_id}: roles: {e}")))?,
+                proc_id,
+                title,
+                kind,
+                summary,
+            })
+        })
+        .transpose()
+    }
+
+    /// The steps of a procedure, in order. A malformed JSON column is an
+    /// error, so a broken step can never be shown.
+    pub fn proc_steps(&self, proc_id: &str) -> Result<Vec<ProcStep>> {
+        type Row = (i64, String, String, String, String, Option<String>);
+        let rows: Vec<Row> = {
+            let conn = self.conn();
+            let mut stmt = conn.prepare_cached(
+                "SELECT ord, text, detail, check_kind, section_ids, deficiency
+                 FROM proc_step WHERE proc_id = ?1 ORDER BY ord",
+            )?;
+            stmt.query_map([proc_id], |r| {
+                Ok((
+                    r.get(0)?,
+                    r.get(1)?,
+                    r.get(2)?,
+                    r.get(3)?,
+                    r.get(4)?,
+                    r.get(5)?,
+                ))
+            })?
+            .collect::<rusqlite::Result<Vec<_>>>()?
+        };
+        rows.into_iter()
+            .map(|(ord, text, detail, check_kind, section_ids, deficiency)| {
+                let bad = |what: &str, e: serde_json::Error| {
+                    Error::Pack(format!("proc_step {proc_id}#{ord}: {what}: {e}"))
+                };
+                Ok(ProcStep {
+                    proc_id: proc_id.to_string(),
+                    ord,
+                    text,
+                    detail: serde_json::from_str(&detail).map_err(|e| bad("detail", e))?,
+                    check_kind,
+                    section_ids: serde_json::from_str(&section_ids)
+                        .map_err(|e| bad("section_ids", e))?,
+                    deficiency: deficiency
+                        .filter(|d| !d.trim().is_empty() && d.trim() != "null")
+                        .map(|d| serde_json::from_str(&d).map_err(|e| bad("deficiency", e)))
+                        .transpose()?,
+                })
+            })
+            .collect()
     }
 
     /// The plain-language explanation of a section at a level, if baked.

@@ -123,6 +123,14 @@ pub fn append(conn: &Connection, entry: &AuditEntry) -> Result<i64> {
     // IMMEDIATE takes the write lock before reading the tip, so two writers
     // on separate connections cannot both chain onto the same row.
     let tx = rusqlite::Transaction::new_unchecked(conn, rusqlite::TransactionBehavior::Immediate)?;
+    let seq = append_locked(&tx, entry)?;
+    tx.commit()?;
+    Ok(seq)
+}
+
+/// Append inside a transaction the caller already holds with the write lock
+/// (`BEGIN IMMEDIATE`), to commit the entry together with other writes.
+pub fn append_locked(tx: &Connection, entry: &AuditEntry) -> Result<i64> {
     let prev: String = tx
         .query_row(
             "SELECT hash FROM audit ORDER BY seq DESC LIMIT 1",
@@ -137,9 +145,7 @@ pub fn append(conn: &Connection, entry: &AuditEntry) -> Result<i64> {
         "INSERT INTO audit (ts, entry, prev_hash, hash) VALUES (?1, ?2, ?3, ?4)",
         params![entry.ts, bytes, prev, hash],
     )?;
-    let seq = tx.last_insert_rowid();
-    tx.commit()?;
-    Ok(seq)
+    Ok(tx.last_insert_rowid())
 }
 
 /// The result of [`verify_chain`].

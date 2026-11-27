@@ -60,6 +60,14 @@ let report = audit::verify_chain(&records_conn)?;   // ok, first_bad, modes, bak
 
 // Free-text grading and field notes (model optional).
 let g = grade::grade(learner_text, &grade::Rubric::parse(&question.answer)?, Some(llm))?;
+// Guided procedures, captured offline, uploaded when a link returns.
+let records = records::Records::open(&records_db)?;
+let run = records.start_run(&pack, "proc-id", &records::StartRun { role: "operator".into(), ..Default::default() })?;
+let out = records.record_step(&pack, &run.run_id, 1, records::StepInput::outcome(records::Outcome::Fail))?;
+// out.guidance: what to do, the rule's citation and quote.
+records.finish_run(&pack, &run.run_id)?;
+let report = sync::flush(records.conn(), &my_https_transport, 50)?;
+
 let n = notes::structure_note(note_text, &notes::NoteVocab::from_pack(&pack)?, Some(llm))?;
 ```
 
@@ -112,6 +120,8 @@ pub trait Llm: Send + Sync {
 | `audit` | Append-only, hash-chained `audit` table (triggers refuse UPDATE/DELETE); `verify_chain` (read-only) recomputes every link and reports modes, the bake hit rate and `head_hash`; anchor `(entries, head_hash)` outside the database to detect truncation. |
 | `grade` | Rubric grading: keyword rules with the model off. With it on, the model judges and must quote the learner's own words as evidence. |
 | `notes` | Field note → `{component, condition, action}`. Keywords with the model off; model output kept only when grounded in the vocabulary or the note. |
+| `records` | Device record store (`records.db`): procedure runs and step results validated against the pack's `check_kind`; a failed step returns the pack's deficiency guidance with its citation (quote verified verbatim) and is queued at once; declined questions queued as misses. |
+| `sync` | Outbox: ordered, idempotent uploads marked done only on a receipt that echoes the payload hash; `Transport` trait (the app's HTTPS), `DirTransport` for a removable drive or shared folder. |
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |
 
@@ -169,6 +179,7 @@ harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--json]
 harvest ask     <pack-dir> "<question>" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
                 [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db>] [--json]
 harvest audit   <records-db> [--json]      # verify the chain; modes and bake hit rate
+harvest outbox  <records-db> [--to <dir>] [--json]   # upload queue; --to flushes it into a folder
 harvest fixture <dir>
 ```
 
