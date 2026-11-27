@@ -13,7 +13,7 @@
  */
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { mkdir, rm } from "node:fs/promises";
+import { mkdir, readFile, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { chromium as rawChromium } from "playwright";
@@ -51,6 +51,9 @@ const ROUTES = [
   "/settings/about",
 ];
 const SCREENSHOT = new Set(["/ask", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+// Serve every page under the shipped app's Content-Security-Policy, so anything the
+// native WebView would block (inline script, a stray fetch, a blob image) fails here too.
+const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
 const slug = (r) => r.replace(/^\//, "").replace(/[^a-z0-9]+/gi, "-").replace(/-+$/, "") || "root";
 
 const preview = spawn(process.execPath, [path.join(root, "node_modules/vite/bin/vite.js"), "preview", "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { cwd: root, stdio: ["ignore", "pipe", "pipe"] });
@@ -72,6 +75,11 @@ const seeded = (role = "operator") => `localStorage.setItem("crane.settings", JS
 
 async function newPage(browser, width, theme, { seed = true } = {}) {
   const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1 });
+  await context.route("**/*", async (route) => {
+    if (route.request().resourceType() !== "document") return route.continue();
+    const response = await route.fetch();
+    await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
+  });
   if (seed) await context.addInitScript(seeded());
   await context.addInitScript(() => {
     window.__shift = 0;

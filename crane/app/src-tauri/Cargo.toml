@@ -1,0 +1,61 @@
+[package]
+name = "crane"
+version = "0.1.0"
+description = "Offline crane operations, inspection and safety reference"
+authors = ["Corpora Inc"]
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+
+[lib]
+# The `_lib` suffix keeps the lib name distinct from the bin name, which
+# otherwise collides on Windows (rust-lang/cargo#8519).
+name = "crane_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["wry"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Shared native plugins, as path dependencies on Corpán's crates rather than
+# copies. Their identifiers and `links =` values are public API (ADR-0011 point
+# 5): the frontend invokes `plugin:tts|…`, `plugin:stt|…` and
+# `plugin:corpan-llm|…`, and capabilities/default.json grants by those names.
+#
+# Read-aloud: platform TTS (AVSpeechSynthesizer, Android TextToSpeech).
+tauri-plugin-tts = { path = "../../../corpan/plugins/tauri-plugin-tts" }
+# Voice input: whisper.cpp on device. Unavailable until a model is present;
+# the app hides the microphone rather than offering a control that fails.
+tauri-plugin-stt = { path = "../../../corpan/plugins/tauri-plugin-stt" }
+# On-device assistant: llama.cpp. Optional at runtime: nothing loads a model
+# unless the person installs one, and every screen works with it off.
+tauri-plugin-corpan-llm = { path = "../../../corpan/plugins/tauri-plugin-corpan-llm" }
+
+[profile.release]
+opt-level = "s"   # Size first, but llama.cpp's hot loops still need real optimisation.
+lto = true
+codegen-units = 1
+debug = 1         # Line tables only, for symbolicated crash reports.
+strip = false     # The store toolchains strip and keep symbols themselves.
+panic = "abort"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# READ dynawalla/docs/DECISIONS/ADR-0011 BEFORE ADDING A `[workspace]` OR
+# MOVING THIS `[patch]`.
+#
+# This manifest is its own implicit workspace root, like Corpán's and
+# Dynawalla's. Cargo honours `[patch]` only from the root of the package being
+# built, so this block must live HERE, not in any shared manifest.
+#
+# llama-cpp-sys-2 is Corpán's vendored fork of 0.1.146: it sets
+# GGML_CPU_ARM_ARCH=armv8.2-a+dotprod+fp16 for Android arm64 only, which is
+# what keeps the Q4_K kernels vectorised there. Apple (Metal) and other ABIs
+# are untouched. Without this line the build compiles clean and is several
+# times slower on Android.
+# ─────────────────────────────────────────────────────────────────────────────
+[patch.crates-io]
+llama-cpp-sys-2 = { path = "../../../corpan/corpan-app/src-tauri/vendor/llama-cpp-sys-2" }
