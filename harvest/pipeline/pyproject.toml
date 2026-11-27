@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harvest-pipeline"
+version = "0.1.0"
+description = "Harvest ingest pipeline: any corpus in, a verified, signed SQLite knowledge pack out."
+license = "Apache-2.0"
+requires-python = ">=3.12"
+# Every dependency is permissively licensed (MIT, BSD, Apache-2.0, HPND).
+dependencies = [
+  "pyyaml>=6",          # MIT
+  "jsonschema>=4.20",   # MIT
+  "cryptography>=42",   # Apache-2.0 / BSD
+  "numpy>=1.26",        # BSD
+]
+
+[project.optional-dependencies]
+pdf = ["pypdfium2>=4", "pdfplumber>=0.11"]          # Apache-2.0/BSD, MIT
+docx = ["python-docx>=1.1"]                          # MIT
+ocr = ["pillow>=10"]                                 # HPND; needs the tesseract binary (Apache-2.0)
+anthropic = ["anthropic>=0.40"]                      # MIT
+embed = ["onnxruntime>=1.17", "tokenizers>=0.15"]    # MIT, Apache-2.0
+test = ["pytest>=8", "reportlab>=4", "pillow>=10", "python-docx>=1.1", "pypdfium2>=4", "pdfplumber>=0.11"]
+all = ["harvest-pipeline[pdf,docx,ocr,test]"]
+
+[project.scripts]
+harvest-bake = "harvest_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["harvest_pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
