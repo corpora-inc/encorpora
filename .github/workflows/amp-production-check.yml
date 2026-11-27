@@ -32,9 +32,13 @@ on:
 
 permissions:
   contents: read
+# Production checks share one queue and never cancel each other. A pull
+# request's run (a change to this check) has its own group and cancels its
+# superseded run; sharing the production group let a PR's pending run replace
+# a pending production check, and wait behind a running one.
 concurrency:
-  group: amp-production-check
-  cancel-in-progress: false
+  group: amp-production-check${{ github.event_name == 'pull_request' && format('-pr-{0}', github.ref) || '' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   NODE_OPTIONS: --use-openssl-ca
