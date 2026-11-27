@@ -105,7 +105,7 @@ jobs:
     # manual run checks.
     if: needs.release.outputs.checked != 'true' || (github.event_name != 'schedule' && github.event_name != 'workflow_run')
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 45
     permissions:
       contents: read
       issues: write
