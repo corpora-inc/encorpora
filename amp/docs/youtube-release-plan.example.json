@@ -9,7 +9,8 @@
     "required": false,
     "rationale": "Replace with the actual disclosure assessment."
   },
-  "pinnedComment": "Try Adaptive Math Pathways free: https://amp.corpora.inc\n\nWhich step would you like to see explained next?",
+  "format": "short",
+  "pinnedComment": "Which step would you like to see explained next?",
   "relatedVideoIds": [],
   "studioReview": {
     "videoId": "REPLACE_AFTER_UPLOAD",

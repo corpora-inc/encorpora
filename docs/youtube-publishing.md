@@ -30,10 +30,12 @@ daily workflow, start with the [AMP media pipeline](amp-media-pipeline.md).
 - **Comments on, everyone may comment, Basic moderation.** Never silently use
   Off, Pause, Hold all, subscriber-only, or members-only. Allow visible like
   counts, embedding, and subscription-feed delivery for organic releases.
-- Prepare a useful **pinned comment for every organic video**. Default CTA:
-  “Try Adaptive Math Pathways free: https://amp.corpora.inc”. Add one natural,
-  topic-specific question when it invites a useful answer. Publish and pin it
-  after the video becomes public, then verify it from a viewer's page.
+- Prepare a useful **pinned comment for every organic video**. For a Short
+  (vertical, up to 3 minutes) it is one short question about the video, with
+  no URL: links are not clickable there. The plan's `format` field is `short`
+  (default) or `long`; the release policy rejects a URL in a Short's comment.
+  A long-form comment may link to AMP. Publish and pin it after the video
+  becomes public, then verify it from a viewer's page.
 - Target **one video every four hours** and **two Community posts per day**.
   Use one calendar, prepare a buffer, and skip weak material. These are AMP's
   starting operating targets, not platform guarantees.
@@ -185,13 +187,11 @@ search relevance, and retention.
 
 ## Engagement and the ESA funnel
 
-Provide one clear next action. The default pinned comment is:
+Provide one clear next action. A Short's pinned comment is a topical question
+with no link, for example “Which step would you check first?”. The free-trial
+link lives in the channel profile links and in long-form descriptions.
 
-> Try Adaptive Math Pathways free: https://amp.corpora.inc
->
-> Which step would you like to see explained next?
-
-Adapt the question to the video. In a funding-specific video, add the verified
+In a funding-specific long-form video, add the verified
 program route and a concise reason to use it. Do not imply universal ESA approval,
 invent a funding benefit, or send families to an unrelated generic checkout.
 Read the current AMP offer/program configuration before making program claims.
@@ -199,10 +199,11 @@ Check the landing page on a phone and preserve the intended free-trial or funded
 purchase route. Use consistent per-video campaign tags through AMP's supported
 attribution path; keep student or parent information out of URLs and analytics.
 
-For landscape videos, put clickable links in the description and pinned comment.
-Shorts description/comment URLs are not clickable: use the profile link and the
-Short's related-video link, with a clear spoken/on-screen instruction where useful.
-Do not promise “click the pinned link” on a Short.
+For long-form videos, put clickable links in the description; a link in the
+pinned comment is allowed but not required. Shorts description/comment URLs are
+not clickable: use the profile link and the Short's related-video link, with a
+clear spoken/on-screen instruction where useful. Do not promise “click the
+pinned link” on a Short.
 [Link behavior](https://support.google.com/youtube/answer/13748639).
 
 Use a short next-watch/subscribe end screen only where it helps; don't stretch a
