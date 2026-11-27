@@ -1,0 +1,406 @@
+"""Inputs (grounded prompts) and writers (verify + write) for each task."""
+
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+import yaml
+
+import common
+from common import CONTENT, HERE, ground, index, load_yaml, provenance, repair_quotes, sha
+
+VERIFIER = "crane-content/verify v1 (exact substring of eCFR text, typography repair)"
+
+
+def _dump_yaml(path: Path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    class D(yaml.SafeDumper):
+        pass
+
+    def str_rep(dumper, s):
+        style = "|" if "\n" in s else None
+        return dumper.represent_scalar("tag:yaml.org,2002:str", s, style=style)
+
+    D.add_representer(str, str_rep)
+    path.write_text(yaml.dump(data, Dumper=D, sort_keys=False, allow_unicode=True, width=110))
+
+
+def _write_jsonl(path: Path, rows):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def blueprint():
+    return load_yaml(CONTENT / "blueprint.yaml")
+
+
+def skills():
+    out = []
+    for t in blueprint()["topics"]:
+        for s in t["skills"]:
+            out.append({**s, "topic_id": t["topic_id"], "topic_title": t["title"]})
+    return out
+
+
+def check_ids(ids):
+    ix = index()
+    return [s for s in ids if not ix.exists(s)]
+
+
+# ================================================================ procedures
+
+def procedures_inputs():
+    items = []
+    for b in load_yaml(HERE / "procedures" / "briefs.yaml"):
+        text, _ = ground(b["section_ids"], cap=48000)
+        prompt = (f"Procedure: {b['title']}\nKind: {b['kind']}\nRoles: {', '.join(b['roles'])}\n"
+                  f"Author's notes: {b['notes']}\n\nRule text:\n{text}\n")
+        items.append({"input_id": b["proc_id"], "prompt": prompt, "meta": b})
+    return items
+
+
+def procedures_write(task, items):
+    stats = {"procedures": 0, "steps": 0, "quotes_ok": 0, "quotes_repaired": 0, "failures": []}
+    for it in items:
+        rec = task.cached(it)
+        if not rec:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        b = it["meta"]
+        ok, rep, errs = repair_quotes(out)
+        steps = []
+        for n, s in enumerate(out["steps"], 1):
+            bad = check_ids(s["section_ids"] + ([s["deficiency"]["section_id"]] if s.get("deficiency") and s["deficiency"].get("section_id") else []))
+            if bad:
+                errs.append(f"step {n}: unknown ids {bad}")
+            d = s.get("deficiency")
+            if d and not s.get("practice_only") and s["check_kind"] in ("pass_fail", "value") and not (d.get("section_id") and d.get("quote")):
+                errs.append(f"step {n}: deficiency without citation")
+            steps.append({"ord": n, **s})
+        verdict = "pass" if not errs else "fail"
+        doc = {"proc_id": b["proc_id"], "title": out["title"], "kind": b["kind"], "summary": out["summary"],
+               "roles": out["roles"], "lang": "en", "section_ids": b["section_ids"], "steps": steps,
+               "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)}
+        _dump_yaml(CONTENT / "procedures" / f"{b['proc_id']}.yaml", doc)
+        stats["procedures"] += 1
+        stats["steps"] += len(steps)
+        stats["quotes_ok"] += ok
+        stats["quotes_repaired"] += rep
+        if errs:
+            stats["failures"].append({b["proc_id"]: errs})
+    return stats
+
+
+# ================================================================ shared helpers
+
+EXAMS = None
+
+
+def exam_outline():
+    global EXAMS
+    if EXAMS is None:
+        EXAMS = {}
+        for e in blueprint()["exams"]:
+            EXAMS.update(e.get("outline", {}))
+    return EXAMS
+
+
+def skill_header(s):
+    ex = exam_outline()
+    outline = "; ".join(f"{k}: {ex[k]}" for k in s.get("exam", []) if k in ex) or "none"
+    return (f"Topic: {s['topic_title']}\nSkill: {s['skill_id']}: {s['title']}\nSkill kind: {s['kind']}\n"
+            f"Roles: {', '.join(s['levels'])}\nExam outline items: {outline}\n")
+
+
+def norm_key(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+
+
+def perm(seed: str, n: int) -> list[int]:
+    """Deterministic permutation from a string seed (so answer positions are uniform)."""
+    h = sha(seed)
+    keys = [(int(h[i * 4:(i + 1) * 4], 16), i) for i in range(n)]
+    return [i for _, i in sorted(keys)]
+
+
+def segments_ok(body) -> list[str]:
+    errs = []
+    ix = index()
+    has_support = False
+    for seg in body:
+        t = seg.get("t")
+        if t in ("quote", "cite"):
+            if not ix.exists(seg.get("section_id", "")):
+                errs.append(f"unknown section_id {seg.get('section_id')}")
+            has_support = True
+        if t in ("text", "quote") and not seg.get("text"):
+            errs.append(f"empty {t} segment")
+    if not has_support:
+        errs.append("no quote or cite")
+    return errs
+
+
+# ================================================================ questions
+
+def questions_inputs():
+    items = []
+    for s in skills():
+        text, _ = ground(s["section_ids"], cap=20000)
+        n = "8-12" if s["kind"] in ("knowledge", "judgment", "procedure") else "4-8"
+        prompt = (skill_header(s) + f"Write {n} facts for this skill (fewer only if the text truly supports fewer).\n\n"
+                  f"Rule text:\n{text}\n")
+        items.append({"input_id": s["skill_id"], "prompt": prompt, "meta": {"skill_id": s["skill_id"], "topic_id": s["topic_id"]}})
+    return items
+
+
+def questions_write(task, items):
+    stats = {"skills": 0, "facts": 0, "mc": 0, "free_text": 0, "pass": 0, "fail": 0, "quotes_repaired": 0, "answer_pos": [0, 0, 0, 0], "fail_reasons": {}}
+    by_topic: dict[str, list] = {}
+    for it in items:
+        rec = task.cached(it)
+        if not rec:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        skill_id, topic_id = it["meta"]["skill_id"], it["meta"]["topic_id"]
+        stats["skills"] += 1
+        rows = by_topic.setdefault(topic_id, [])
+        for fact in out["facts"]:
+            stats["facts"] += 1
+            errs = []
+            if fact["basis"] == "rule":
+                ok, rep, e = repair_quotes(fact)
+                stats["quotes_repaired"] += rep
+                errs += e
+                if not fact.get("section_id") or not fact.get("quote"):
+                    errs.append("rule fact without quote")
+            group = None
+            for item in fact["items"]:
+                e2 = list(errs)
+                ch = item["choices"]
+                if len({norm_key(c) for c in ch}) != 4:
+                    e2.append("duplicate choices")
+                if not 0 <= item["answer"] < 4 or len(item["rationales"]) != 4:
+                    e2.append("bad answer/rationales")
+                p = perm(item["stem"], 4)
+                choices = [ch[i] for i in p]
+                rats = [item["rationales"][i] for i in p]
+                answer = p.index(item["answer"]) if 0 <= item["answer"] < 4 else -1
+                q_id = f"q.{skill_id}.{sha(item['stem'])[:10]}"
+                group = group or q_id
+                verdict = "pass" if not e2 else "fail"
+                stats[verdict] += 1
+                for r in e2:
+                    stats["fail_reasons"][r.split(":")[0][:40]] = stats["fail_reasons"].get(r.split(":")[0][:40], 0) + 1
+                if verdict == "pass":
+                    stats["answer_pos"][answer] += 1
+                stats["mc"] += 1
+                rows.append({"q_id": q_id, "skill_id": skill_id, "topic_id": topic_id, "variant_of": None if group == q_id else group,
+                             "kind": "mc", "stem": item["stem"], "choices": choices, "answer": str(answer), "rationales": rats,
+                             "section_ids": [fact["section_id"]] if fact.get("section_id") else [],
+                             "quotes": [{"section_id": fact["section_id"], "quote": fact["quote"]}] if fact["basis"] == "rule" and fact.get("quote") else [],
+                             "fact": fact["fact"], "basis": fact["basis"], "difficulty": item["difficulty"], "lang": "en",
+                             "prov": provenance(rec, VERIFIER, verdict, "; ".join(e2) or None)})
+        for ft in out["free_text"]:
+            ok, rep, errs = repair_quotes(ft)
+            stats["quotes_repaired"] += rep
+            bad = [x for x in ft["section_ids"] if not index().exists(x)]
+            if bad:
+                errs.append(f"unknown ids {bad}")
+            verdict = "pass" if not errs else "fail"
+            stats[verdict] += 1
+            stats["free_text"] += 1
+            q_id = f"q.{skill_id}.{sha(ft['stem'])[:10]}"
+            rows.append({"q_id": q_id, "skill_id": skill_id, "topic_id": topic_id, "variant_of": None, "kind": "free_text",
+                         "stem": ft["stem"], "choices": None, "answer": ft["rubric"], "rationales": None,
+                         "section_ids": ft["section_ids"], "quotes": ft["quotes"], "fact": None, "basis": "rule",
+                         "difficulty": ft["difficulty"], "lang": "en", "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+    for topic_id, rows in by_topic.items():
+        _write_jsonl(CONTENT / "data" / "questions" / f"{topic_id}.jsonl", rows)
+    return stats
+
+
+# ================================================================ answers
+
+def answers_inputs():
+    items = []
+    for s in skills():
+        text, _ = ground(s["section_ids"], cap=20000)
+        prompt = skill_header(s) + f"\nRule text:\n{text}\n"
+        items.append({"input_id": s["skill_id"], "prompt": prompt, "meta": {"skill_id": s["skill_id"], "topic_id": s["topic_id"]}})
+    return items
+
+
+def answers_write(task, items):
+    stats = {"skills": 0, "answers": 0, "aliases": 0, "pass": 0, "fail": 0, "quotes_ok": 0, "quotes_repaired": 0, "fail_reasons": {}}
+    by_topic: dict[str, list] = {}
+    for it in items:
+        rec = task.cached(it)
+        if not rec:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        skill_id, topic_id = it["meta"]["skill_id"], it["meta"]["topic_id"]
+        stats["skills"] += 1
+        rows = by_topic.setdefault(topic_id, [])
+        for a in out["answers"]:
+            ok, rep, errs = repair_quotes(a["body"])
+            errs += segments_ok(a["body"])
+            stats["quotes_ok"] += ok
+            stats["quotes_repaired"] += rep
+            seen = {norm_key(a["question"])}
+            aliases = []
+            for al in a["aliases"]:
+                k = norm_key(al)
+                if k and k not in seen:
+                    seen.add(k)
+                    aliases.append(al.strip())
+            sids = []
+            for seg in a["body"]:
+                if seg.get("section_id") and seg["section_id"] not in sids:
+                    sids.append(seg["section_id"])
+            verdict = "pass" if not errs else "fail"
+            stats[verdict] += 1
+            for r in errs:
+                stats["fail_reasons"][r.split(":")[0][:40]] = stats["fail_reasons"].get(r.split(":")[0][:40], 0) + 1
+            stats["answers"] += 1
+            stats["aliases"] += len(aliases)
+            rows.append({"answer_id": f"a.{skill_id}.{sha(a['question'])[:10]}", "question": a["question"], "body": a["body"],
+                         "section_ids": sids, "level": a["level"], "lang": "en", "skill_id": skill_id, "topic_id": topic_id,
+                         "aliases": aliases, "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+    for topic_id, rows in by_topic.items():
+        _write_jsonl(CONTENT / "data" / "answers" / f"{topic_id}.jsonl", rows)
+    return stats
+
+
+# ================================================================ lessons
+
+DIAGRAMS = {
+    "sling-angle-tension": "Sling leg tension rises as the sling angle drops (90, 60, 45, 30 degrees).",
+    "load-chart-reading": "Reading a load chart cell; next-longer radius; structural vs stability region; gross to net.",
+    "radius-vs-boom-angle": "Same boom at two angles: radius from center of rotation to the hook; lower angle, longer radius.",
+    "swing-radius-clearance": "Plan view: counterweight swing radius barricade and the 360-degree work zone.",
+    "outrigger-ground-bearing": "Outrigger float on a mat: ground bearing pressure = force / area, worked example.",
+    "two-blocking": "Hook block contacting the boom tip; the anti-two-block device.",
+    "power-line-table-a-zones": "Side view: the 20 ft zone and Table A clearances by voltage, with encroachment measures.",
+    "hitches": "Vertical, choker and basket hitches.",
+    "d-over-d": "D/d: bend diameter vs rope diameter.",
+    "hand-signals": "The standard hand signals chart (Appendix A).",
+}
+
+
+def lessons_inputs():
+    items = []
+    diag = "\n".join(f"- {k}: {v}" for k, v in DIAGRAMS.items())
+    for t in blueprint()["topics"]:
+        sids = list(dict.fromkeys(t["section_ids"] + [x for s in t["skills"] for x in s["section_ids"]]))
+        text, _ = ground(sids, cap=60000)
+        sk = "\n".join(f"- {s['skill_id']}: {s['title']} ({s['kind']})" for s in t["skills"])
+        prompt = (f"Topic: {t['title']}\nSummary: {t['summary']}\n\nSkills to cover:\n{sk}\n\nAvailable diagrams:\n{diag}\n\n"
+                  f"Rule text:\n{text}\n")
+        items.append({"input_id": t["topic_id"], "prompt": prompt, "meta": {"topic_id": t["topic_id"], "skills": [s["skill_id"] for s in t["skills"]]}})
+    return items
+
+
+def lessons_write(task, items):
+    stats = {"topics": 0, "lessons": 0, "pass": 0, "fail": 0, "quotes_ok": 0, "quotes_repaired": 0, "diagram_slots": 0, "failures": []}
+    for it in items:
+        rec = task.cached(it)
+        if not rec:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        topic_id = it["meta"]["topic_id"]
+        stats["topics"] += 1
+        lessons = []
+        for n, les in enumerate(out["lessons"], 1):
+            ok, rep, errs = repair_quotes(les["body"])
+            errs += segments_ok(les["body"])
+            stats["quotes_ok"] += ok
+            stats["quotes_repaired"] += rep
+            for seg in les["body"]:
+                if seg.get("t") == "diagram":
+                    stats["diagram_slots"] += 1
+                    if seg.get("diagram_id") not in DIAGRAMS:
+                        errs.append(f"unknown diagram {seg.get('diagram_id')}")
+            bad_sk = [x for x in les["skills"] if x not in it["meta"]["skills"]]
+            if bad_sk:
+                errs.append(f"unknown skills {bad_sk}")
+            verdict = "pass" if not errs else "fail"
+            stats[verdict] += 1
+            stats["lessons"] += 1
+            if errs:
+                stats["failures"].append({f"{topic_id}#{n}": errs})
+            lessons.append({"lesson_id": f"l.{topic_id}.{n:02d}", "topic_id": topic_id, "ord": n, "title": les["title"],
+                            "skills": les["skills"], "body": les["body"], "lang": "en",
+                            "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+        p = CONTENT / "data" / "lessons" / f"{topic_id}.json"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(lessons, ensure_ascii=False, indent=1) + "\n")
+    return stats
+
+
+# ================================================================ glossary
+
+def _chunks(text: str, size: int = 9000):
+    out, cur = [], ""
+    for sent in re.split(r"(?<=\.) (?=[A-Z])", text):
+        if len(cur) + len(sent) > size and cur:
+            out.append(cur)
+            cur = ""
+        cur = (cur + " " + sent).strip()
+    if cur:
+        out.append(cur)
+    return out
+
+
+def glossary_inputs():
+    items = []
+    S = index().s
+    for sid in ["29cfr1926.1401", "29cfr1910.179(a)", "29cfr1910.180(a)", "29cfr1910.184(b)", "29cfr1926.1402(a)"]:
+        if sid == "29cfr1926.1401":
+            for i, ch in enumerate(_chunks(S[sid]["own"])):
+                items.append({"input_id": f"defs-1926.1401-{i}", "prompt": f"Definition text (one line):\n[{sid}] {ch}\n", "meta": {"basis": "rule"}})
+        else:
+            text, _ = ground([sid])
+            items.append({"input_id": f"defs-{sid.replace('29cfr', '')}", "prompt": f"Definition text:\n{text}\n", "meta": {"basis": "rule"}})
+    items.append({"input_id": "field-terms", "prompt": "List 80-120 field terms (crane parts, rigging hardware and hitches, load-chart terms, operations, inspection terms, signals). The rules already define the terms in 29 CFR 1926.1401, 1910.179(a), 1910.180(a) and 1910.184(b); do not repeat those.\n", "meta": {"basis": "practice"}})
+    return items
+
+
+def glossary_write(task, items):
+    stats = {"terms": 0, "rule": 0, "practice": 0, "pass": 0, "fail": 0, "quotes_repaired": 0}
+    terms: dict[str, dict] = {}
+    for it in items:
+        rec = task.cached(it)
+        if not rec:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        for t in out["terms"]:
+            errs = []
+            if t["basis"] == "rule":
+                ok, rep, errs = repair_quotes(t)
+                stats["quotes_repaired"] += rep
+            k = norm_key(t["term"])
+            if k in terms and terms[k]["basis"] == "rule" and t["basis"] == "practice":
+                continue
+            verdict = "pass" if not errs else "fail"
+            terms[k] = {"term_id": "t." + re.sub(r"[^a-z0-9]+", "-", t["term"].lower()).strip("-") + ("" if t["basis"] == "rule" or k not in terms else ".p"),
+                        "term": t["term"], "definition": t["definition"], "aliases": t["aliases"], "basis": t["basis"],
+                        "section_id": t["section_id"], "quote": t["quote"], "lang": "en",
+                        "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)}
+    rows = sorted(terms.values(), key=lambda r: r["term"].lower())
+    for r in rows:
+        stats["terms"] += 1
+        stats[r["basis"]] += 1
+        stats[r["prov"]["verdict"]] += 1
+    _write_jsonl(CONTENT / "data" / "glossary.jsonl", rows)
+    return stats
+
+
+INPUTS = {"procedures": procedures_inputs, "questions": questions_inputs, "answers": answers_inputs,
+          "lessons": lessons_inputs, "glossary": glossary_inputs}
+WRITERS = {"procedures": procedures_write, "questions": questions_write, "answers": answers_write,
+           "lessons": lessons_write, "glossary": glossary_write}

@@ -1,0 +1,4 @@
+task_id: lessons
+prompt_version: 1
+model: opus
+description: The lessons for one course topic, concise and teaching, in answer-segment JSON with diagram slots.

@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "summary", "roles", "steps"],
+  "properties": {
+    "title": {"type": "string"},
+    "summary": {"type": "string", "description": "Two sentences: what this procedure is for and when it is required."},
+    "roles": {"type": "array", "items": {"enum": ["trainee", "operator", "inspector", "signal_person", "rigger", "ad_director", "competent_person", "qualified_person", "lift_director"]}},
+    "steps": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["phase", "text", "detail", "check_kind", "section_ids", "deficiency", "practice_only"],
+        "properties": {
+          "phase": {"type": "string"},
+          "text": {"type": "string"},
+          "detail": {"type": "object", "additionalProperties": false, "required": ["trainee", "operator", "inspector"],
+            "properties": {"trainee": {"type": "string"}, "operator": {"type": "string"}, "inspector": {"type": "string"}}},
+          "check_kind": {"enum": ["pass_fail", "value", "note", "photo"]},
+          "value_unit": {"type": ["string", "null"]},
+          "section_ids": {"type": "array", "items": {"type": "string"}},
+          "practice_only": {"type": "boolean"},
+          "deficiency": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "required": ["guidance", "action", "section_id", "quote"],
+            "properties": {
+              "guidance": {"type": "string"},
+              "action": {"type": "string"},
+              "section_id": {"type": ["string", "null"]},
+              "quote": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

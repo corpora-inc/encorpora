@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["terms"],
+  "properties": {
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["term", "definition", "aliases", "basis", "section_id", "quote"],
+        "properties": {
+          "term": {"type": "string"},
+          "definition": {"type": "string"},
+          "aliases": {"type": "array", "items": {"type": "string"}},
+          "basis": {"enum": ["rule", "practice"]},
+          "section_id": {"type": ["string", "null"]},
+          "quote": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+task_id: glossary
+prompt_version: 1
+model: sonnet
+description: Glossary terms from the rules' definitions (with verbatim quotes), plus field terms the rules do not define (marked practice).

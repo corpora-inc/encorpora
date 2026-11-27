@@ -1,0 +1,4 @@
+task_id: answers
+prompt_version: 1
+model: sonnet
+description: Answer cache for one skill. The questions crane people actually ask about it, each with a cited answer in answer-segment JSON and 5-15 natural paraphrases.

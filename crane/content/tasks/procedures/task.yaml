@@ -1,0 +1,4 @@
+task_id: procedures
+prompt_version: 1
+model: opus
+description: One field procedure (inspection or operation) as role-tiered, cited steps with deficiency guidance.
