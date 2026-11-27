@@ -54,7 +54,8 @@ export type TableHandling =
   /** Completed consent evidence: kept until its own purge date. Withdrawal
    * markers and requests that never completed go now. */
   | "consent-evidence"
-  /** The journal of deletions. */
+  /** Journals kept under opaque ids: the journal of deletions, and the
+   * operator's record of sessions ended in an incident. */
   | "journal"
   /** Holds nothing about a person: content, configuration, counts, or
    * analytics under a random visitor id. */
@@ -175,6 +176,9 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_meta_purchase_contexts: "account",
   amp_meta_purchase_queue: "account",
   amp_migrations: "none",
+  // The operator's record of sessions ended in an incident (migration 0157):
+  // scope, an opaque account or org id and counts.
+  amp_operator_events: "journal",
   amp_offline_attempts: "learner",
   amp_offline_instances: "learner",
   amp_offline_packs: "learner",

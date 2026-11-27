@@ -45,6 +45,8 @@ import {
   revokeProviderSession,
 } from "../identity/provider-principals.js";
 import { SignJWT, importPKCS8 } from "jose";
+import { createHash } from "node:crypto";
+import { accountsDatabase, RESET_HASH_PREFIX } from "./session-tokens";
 import { Resend } from "resend";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
@@ -83,13 +85,25 @@ export type SocialProvider = (typeof SOCIAL_PROVIDERS)[number];
 /** Set by AMP from the trusted client address; any incoming value is replaced. */
 const CLIENT_IP_HEADER = "x-amp-client-ip";
 
+export interface AccountSecret {
+  version: number;
+  value: string;
+}
+
 export interface AccountsConfig {
   /** Clever school sign-in is registered separately from mailbox providers. */
   clever?: boolean;
   /** Clever's page where a district adds AMP: public, for anyone to forward. */
   cleverDistrictSignupUrl?: string;
   baseURL: string;
+  /** The current secret: signs cookies and links, encrypts new authenticator
+   * secrets. */
   secret: string;
+  /** Its version (`AMP_ACCOUNTS_SECRET_VERSION`, default 1). */
+  secretVersion?: number;
+  /** Retired versions, kept only to decrypt what they encrypted
+   * (`AMP_ACCOUNTS_PREVIOUS_SECRETS`). */
+  previousSecrets?: AccountSecret[];
   production: boolean;
   /** Email and password sign-in; needs mail in production (verify, reset). */
   passwords: boolean;
@@ -131,6 +145,34 @@ export function accountsConfiguration(env: NodeJS.ProcessEnv): AccountsConfig {
   const secret = required("AMP_ACCOUNTS_SECRET");
   if (secret.length < 32)
     throw new Error("AMP_ACCOUNTS_SECRET must be at least 32 characters");
+  const version = (name: string, value: string) => {
+    const parsed = Number(value);
+    if (!/^[1-9][0-9]{0,8}$/.test(value) || !Number.isSafeInteger(parsed))
+      throw new Error(`${name}: a version is a whole number from 1`);
+    return parsed;
+  };
+  const secretVersion = env.AMP_ACCOUNTS_SECRET_VERSION
+    ? version("AMP_ACCOUNTS_SECRET_VERSION", env.AMP_ACCOUNTS_SECRET_VERSION)
+    : 1;
+  const previousSecrets = (env.AMP_ACCOUNTS_PREVIOUS_SECRETS ?? "")
+    .split(",")
+    .filter((entry) => entry !== "")
+    .map((entry): AccountSecret => {
+      const colon = entry.indexOf(":");
+      const value = entry.slice(colon + 1);
+      if (colon < 1 || value.length < 32 || value.trim() !== value)
+        throw new Error(
+          "AMP_ACCOUNTS_PREVIOUS_SECRETS: comma-separated <version>:<secret of at least 32 characters>",
+        );
+      return {
+        version: version(
+          "AMP_ACCOUNTS_PREVIOUS_SECRETS",
+          entry.slice(0, colon),
+        ),
+        value,
+      };
+    });
+  accountSecrets({ secret, secretVersion, previousSecrets });
   const group = <K extends string>(prefix: string, keys: readonly K[]) => {
     const present = keys.filter((k) => env[`${prefix}_${k}`]);
     if (!present.length) return undefined;
@@ -158,6 +200,8 @@ export function accountsConfiguration(env: NodeJS.ProcessEnv): AccountsConfig {
   return {
     baseURL,
     secret,
+    secretVersion,
+    previousSecrets,
     production,
     // Without mail, passwords cannot be verified or reset; in development the
     // links are printed to the server log instead.
@@ -198,6 +242,34 @@ export function accountsConfiguration(env: NodeJS.ProcessEnv): AccountsConfig {
         ...(env.AMP_APPLE_BUNDLE_ID && { bundleId: env.AMP_APPLE_BUNDLE_ID }),
       },
     }),
+  };
+}
+
+/** Better Auth's versioned secrets (`secrets`): the first signs cookies and
+ * encrypts new authenticator secrets and backup codes, tagged with its
+ * version; the others only decrypt what their version encrypted. Values
+ * encrypted before versioning carry no tag. They were written with the
+ * secret AMP has run since its start, which is version 1, so version 1 stays
+ * their key (`legacySecret`) for as long as it is listed. */
+export function accountSecrets(
+  config: Pick<AccountsConfig, "secret" | "secretVersion" | "previousSecrets">,
+) {
+  const secrets: AccountSecret[] = [
+    { version: config.secretVersion ?? 1, value: config.secret },
+    ...(config.previousSecrets ?? []),
+  ];
+  const versions = new Set(secrets.map((s) => s.version));
+  if (versions.size !== secrets.length)
+    throw new Error(
+      "AMP_ACCOUNTS_PREVIOUS_SECRETS: each version once, and not the current one",
+    );
+  if (new Set(secrets.map((s) => s.value)).size !== secrets.length)
+    throw new Error(
+      "AMP_ACCOUNTS_PREVIOUS_SECRETS: a retired secret is not the current one",
+    );
+  return {
+    secrets,
+    legacySecret: secrets.find((s) => s.version === 1)?.value,
   };
 }
 
@@ -284,6 +356,18 @@ export function accountMail(
 ): AccountMail {
   const sendEmail = accountEmailSender(config);
   return (to, message) => sendEmail(to, linkedEmail(config.baseURL, message));
+}
+
+/** AMP uses a provider only to sign in: it never calls the provider's API for
+ * the parent afterwards, so the provider's access, refresh and ID tokens are
+ * not stored. A copy of the database then holds none. */
+function withoutProviderTokens<T extends Record<string, unknown>>(
+  account: T,
+): T {
+  const kept = { ...account };
+  for (const field of ["accessToken", "refreshToken", "idToken"])
+    if (field in kept) (kept as Record<string, unknown>)[field] = null;
+  return kept;
 }
 
 export async function createAccounts(pool: Pool, config: AccountsConfig) {
@@ -455,8 +539,13 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     appName: brand.name,
     baseURL: config.baseURL,
     basePath: "/api/auth",
-    secret: config.secret,
-    database: pool,
+    ...(({ secrets, legacySecret }) => ({
+      secrets,
+      ...(legacySecret && { secret: legacySecret }),
+    }))(accountSecrets(config)),
+    // Session tokens: looked up by hash or as issued; still written as
+    // issued in this release (src/server/session-tokens.ts).
+    database: accountsDatabase(pool, { hashOnWrite: false }),
     trustedOrigins: [
       ...config.trustedOrigins,
       ...(config.apple ? ["https://appleid.apple.com"] : []),
@@ -486,7 +575,23 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         },
       },
     },
-    verification: { modelName: "amp_auth_verifications" },
+    verification: {
+      modelName: "amp_auth_verifications",
+      // A reset link's token is stored as its hash, so a copy of the
+      // database cannot reset a password. Better Auth still finds a row
+      // stored before this as issued. The prefix stays readable for
+      // operators (`scripts/revoke-sessions.ts`); a value presented as a
+      // token is always `reset-password:<token>`, so it never equals one.
+      storeIdentifier: {
+        default: "plain",
+        overrides: {
+          "reset-password:": {
+            hash: async (identifier: string) =>
+              `${RESET_HASH_PREFIX}${createHash("sha256").update(identifier, "utf8").digest("base64url")}`,
+          },
+        },
+      },
+    },
     account: {
       modelName: "amp_auth_accounts",
       additionalFields: {
@@ -584,9 +689,16 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         create: {
           before: async (account, context) => {
             const sessionId = await accountLinkSession(account.userId, context);
-            if (sessionId)
-              return { data: { ...account, ampLinkSessionId: sessionId } };
+            return {
+              data: {
+                ...withoutProviderTokens(account),
+                ...(sessionId && { ampLinkSessionId: sessionId }),
+              },
+            };
           },
+        },
+        update: {
+          before: async (account) => ({ data: withoutProviderTokens(account) }),
         },
       },
       user: {
@@ -709,6 +821,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     // The code plugin's other ways in (a code instead of a password, a code
     // reset, a code email change) are not AMP's sign-in methods.
     disabledPaths: [
+      // AMP's Security screen signs out other sessions by its own route.
+      // These would hand a client every session's token, or act on one.
+      "/list-sessions",
+      "/revoke-session",
+      "/revoke-other-sessions",
       "/sign-in/email-otp",
       "/email-otp/send-verification-otp",
       "/email-otp/check-verification-otp",

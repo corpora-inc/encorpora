@@ -1,0 +1,4141 @@
+{
+ "id": "rectangle-border-length--sp",
+ "title": "Walk the whole border",
+ "skill": "perimeter",
+ "teaches": [
+  "rectangle-missing-border-side"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "P0": [
+      0,
+      0
+     ],
+     "P1": [
+      7,
+      0
+     ],
+     "P2": [
+      7,
+      4
+     ],
+     "P3": [
+      0,
+      4
+     ],
+     "stem0": [
+      1.4,
+      1
+     ],
+     "leaf0": [
+      1.4,
+      3
+     ],
+     "sprout00": [
+      1.13,
+      2
+     ],
+     "sprout01": [
+      1.67,
+      2.3
+     ],
+     "stem1": [
+      3.5,
+      1
+     ],
+     "leaf1": [
+      3.5,
+      3
+     ],
+     "sprout10": [
+      3.23,
+      2
+     ],
+     "sprout11": [
+      3.77,
+      2.3
+     ],
+     "stem2": [
+      5.6,
+      1
+     ],
+     "leaf2": [
+      5.6,
+      3
+     ],
+     "sprout20": [
+      5.33,
+      2
+     ],
+     "sprout21": [
+      5.869999999999999,
+      2.3
+     ],
+     "roll": [
+      3.5,
+      -2.3
+     ],
+     "tail": [
+      5.5,
+      -2.3
+     ],
+     "walker": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "bed",
+      "poly": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ],
+      "fill": "warm-fill",
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "P0",
+       "P1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": false
+     },
+     {
+      "id": "l0",
+      "label": "7",
+      "at": "s0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "P1",
+       "P2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": false
+     },
+     {
+      "id": "l1",
+      "label": "4",
+      "at": "s1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "P2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": false
+     },
+     {
+      "id": "l2",
+      "label": "7",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "P3",
+       "P0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": false
+     },
+     {
+      "id": "l3",
+      "label": "4",
+      "at": "s3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     },
+     {
+      "id": "plant0",
+      "seg": [
+       "stem0",
+       "leaf0"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "spr00",
+      "circle": "sprout00",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "spr01",
+      "circle": "sprout01",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "plant1",
+      "seg": [
+       "stem1",
+       "leaf1"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "spr10",
+      "circle": "sprout10",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "spr11",
+      "circle": "sprout11",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "plant2",
+      "seg": [
+       "stem2",
+       "leaf2"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "spr20",
+      "circle": "sprout20",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "spr21",
+      "circle": "sprout21",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true,
+      "group": "plants"
+     },
+     {
+      "id": "rollOuter",
+      "circle": "roll",
+      "r": 0.65,
+      "fill": "gold-fill",
+      "ink": "wood",
+      "w": 3,
+      "start": true,
+      "group": "roll"
+     },
+     {
+      "id": "rollInner",
+      "circle": "roll",
+      "r": 0.28,
+      "fill": "paper",
+      "ink": "wood",
+      "w": 2,
+      "start": true,
+      "group": "roll"
+     },
+     {
+      "id": "rollTail",
+      "seg": [
+       "roll",
+       "tail"
+      ],
+      "ink": "wood",
+      "w": 5,
+      "start": true,
+      "group": "roll"
+     },
+     {
+      "id": "walkerDot",
+      "dot": "walker",
+      "ink": "ink",
+      "r": 9,
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Champ, this garden is seven feet long and four feet wide. How much edging will go all the way around?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How long is the whole border?"
+      },
+      {
+       "do": "problem",
+       "text": "Garden: 7 feet by 4 feet."
+      },
+      {
+       "do": "highlight",
+       "target": "l0",
+       "at": "seven",
+       "until": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "l1",
+       "at": "four",
+       "until": "How"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven and four. Eleven feet!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "7+4=11",
+       "at": "Eleven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's lay it down. Seven feet along here. Four feet around the corner.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "roll",
+       "at": "lay"
+      },
+      {
+       "do": "draw",
+       "target": "s0",
+       "at": "Seven",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "walkerDot",
+       "at": "Seven"
+      },
+      {
+       "do": "move",
+       "points": {
+        "walker": [
+         7,
+         0
+        ]
+       },
+       "at": "Seven",
+       "dur": 1.6
+      },
+      {
+       "do": "draw",
+       "target": "s1",
+       "at": "Four",
+       "dur": 1.6
+      },
+      {
+       "do": "move",
+       "points": {
+        "walker": [
+         7,
+         4
+        ]
+       },
+       "at": "Four",
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It stops! We haven't reached the start.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "walkerDot",
+       "at": "stops"
+      },
+      {
+       "do": "text",
+       "text": "11 feet covers only two sides.",
+       "at": "stops"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A rectangle's opposite sides match. Another seven along this side. Then four to reach the start. Perimeter means the distance all the way around.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "seven"
+      },
+      {
+       "do": "draw",
+       "target": "s2",
+       "at": "seven",
+       "dur": 1.4
+      },
+      {
+       "do": "move",
+       "points": {
+        "walker": [
+         0,
+         4
+        ]
+       },
+       "at": "seven",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "four"
+      },
+      {
+       "do": "draw",
+       "target": "s3",
+       "at": "four",
+       "dur": 1.4
+      },
+      {
+       "do": "move",
+       "points": {
+        "walker": [
+         0,
+         0
+        ]
+       },
+       "at": "four",
+       "dur": 1.4
+      },
+      {
+       "do": "clear",
+       "at": "Perimeter"
+      },
+      {
+       "do": "term",
+       "word": "Perimeter",
+       "meaning": "Distance all the way around.",
+       "at": "Perimeter"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      7,
+      0
+     ],
+     "C": [
+      7,
+      4
+     ],
+     "D": [
+      0,
+      4
+     ],
+     "E": [
+      0,
+      0
+     ],
+     "Htwo": [
+      11,
+      0
+     ],
+     "Hthree": [
+      18,
+      0
+     ],
+     "nA": [
+      0,
+      -0.7
+     ],
+     "nB": [
+      22.5,
+      -0.7
+     ],
+     "nt0": [
+      0,
+      -0.85
+     ],
+     "nu0": [
+      0,
+      -0.5499999999999999
+     ],
+     "nt1": [
+      7,
+      -0.85
+     ],
+     "nu1": [
+      7,
+      -0.5499999999999999
+     ],
+     "nt2": [
+      11,
+      -0.85
+     ],
+     "nu2": [
+      11,
+      -0.5499999999999999
+     ],
+     "nt3": [
+      18,
+      -0.85
+     ],
+     "nu3": [
+      18,
+      -0.5499999999999999
+     ],
+     "nt4": [
+      22,
+      -0.85
+     ],
+     "nu4": [
+      22,
+      -0.5499999999999999
+     ],
+     "fm0": [
+      3.5,
+      0.4
+     ],
+     "fm1": [
+      9,
+      0.4
+     ],
+     "fm2": [
+      14.5,
+      0.4
+     ],
+     "fm3": [
+      20,
+      0.4
+     ],
+     "pin": [
+      0,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "ground",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "warm-fill",
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "E"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "naxis",
+      "vector": [
+       "nA",
+       "nB"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "group": "nline"
+     },
+     {
+      "id": "ntick0",
+      "seg": [
+       "nt0",
+       "nu0"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "group": "nline"
+     },
+     {
+      "id": "nlabel0",
+      "label": "0",
+      "at": "nt0",
+      "dir": "s",
+      "size": "m",
+      "start": false,
+      "ink": "muted",
+      "group": "nline"
+     },
+     {
+      "id": "ntick1",
+      "seg": [
+       "nt1",
+       "nu1"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "group": "nline"
+     },
+     {
+      "id": "nlabel1",
+      "label": "7",
+      "at": "nt1",
+      "dir": "s",
+      "size": "m",
+      "start": false,
+      "ink": "muted",
+      "group": "nline"
+     },
+     {
+      "id": "ntick2",
+      "seg": [
+       "nt2",
+       "nu2"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "group": "nline"
+     },
+     {
+      "id": "nlabel2",
+      "label": "11",
+      "at": "nt2",
+      "dir": "s",
+      "size": "m",
+      "start": false,
+      "ink": "muted",
+      "group": "nline"
+     },
+     {
+      "id": "ntick3",
+      "seg": [
+       "nt3",
+       "nu3"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "group": "nline"
+     },
+     {
+      "id": "nlabel3",
+      "label": "18",
+      "at": "nt3",
+      "dir": "s",
+      "size": "m",
+      "start": false,
+      "ink": "muted",
+      "group": "nline"
+     },
+     {
+      "id": "ntick4",
+      "seg": [
+       "nt4",
+       "nu4"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "group": "nline"
+     },
+     {
+      "id": "nlabel4",
+      "label": "22",
+      "at": "nt4",
+      "dir": "s",
+      "size": "m",
+      "start": false,
+      "ink": "muted",
+      "group": "nline"
+     },
+     {
+      "id": "flat0",
+      "label": "7",
+      "at": "fm0",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "accent"
+     },
+     {
+      "id": "flat1",
+      "label": "4",
+      "at": "fm1",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "gold"
+     },
+     {
+      "id": "flat2",
+      "label": "7",
+      "at": "fm2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "flat3",
+      "label": "4",
+      "at": "fm3",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     },
+     {
+      "id": "pinDot",
+      "dot": "pin",
+      "ink": "ink",
+      "r": 7,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Unpin the border at the start. Keep every piece the same length. Let's straighten one corner at a time.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "One border. One length."
+      },
+      {
+       "do": "hide",
+       "target": [
+        "ground",
+        "pinDot"
+       ],
+       "at": "Unpin"
+      },
+      {
+       "do": "text",
+       "text": "Every piece keeps its length.",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven stays. Swing the next pieces out together.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "turn",
+       "target": [
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "about": "B",
+       "deg": -90,
+       "at": "Swing",
+       "dur": 2.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Open the next corner. Then the last corner.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "turn",
+       "target": [
+        "s2",
+        "s3"
+       ],
+       "about": "Htwo",
+       "deg": -90,
+       "at": "Open",
+       "dur": 1.5
+      },
+      {
+       "do": "turn",
+       "target": "s3",
+       "about": "Hthree",
+       "deg": -90,
+       "at": "Then",
+       "dur": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven, then four, then seven, then four. The end reaches twenty two feet.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "nline"
+      },
+      {
+       "do": "show",
+       "target": "flat0",
+       "at": "Seven"
+      },
+      {
+       "do": "show",
+       "target": "flat1",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "flat2",
+       "at": "seven",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "flat3",
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "7+4+7+4=22",
+       "at": "reaches"
+      },
+      {
+       "do": "highlight",
+       "target": "s0",
+       "at": "seven",
+       "nth": 1,
+       "until": "four",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "four",
+       "nth": 1,
+       "until": "seven",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "seven",
+       "nth": 2,
+       "until": "four",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "s3",
+       "at": "four",
+       "nth": 2,
+       "until": "The",
+       "untilNth": 1
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So the perimeter is the whole border, laid out straight.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "22\\text{ feet}",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fold the same pieces back. Their length never changed.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "flat0",
+        "flat1",
+        "flat2",
+        "flat3",
+        "nline"
+       ]
+      },
+      {
+       "do": "turn",
+       "target": "s3",
+       "about": "Hthree",
+       "deg": 90,
+       "dur": 1.1
+      },
+      {
+       "do": "turn",
+       "target": [
+        "s2",
+        "s3"
+       ],
+       "about": "Htwo",
+       "deg": 90,
+       "at": "back",
+       "dur": 1.4
+      },
+      {
+       "do": "turn",
+       "target": [
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "about": "B",
+       "deg": 90,
+       "at": "changed",
+       "dur": 1.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "sa0": [
+      0,
+      0
+     ],
+     "sb0": [
+      7,
+      0
+     ],
+     "sa1": [
+      7,
+      0
+     ],
+     "sb1": [
+      11,
+      0
+     ],
+     "sa2": [
+      11,
+      0
+     ],
+     "sb2": [
+      18,
+      0
+     ],
+     "sa3": [
+      18,
+      0
+     ],
+     "sb3": [
+      22,
+      0
+     ],
+     "pairA": [
+      0,
+      -1.1
+     ],
+     "pairB": [
+      14,
+      -1.1
+     ],
+     "pairC": [
+      22,
+      -1.1
+     ],
+     "halfA": [
+      0,
+      -1.1
+     ],
+     "halfB": [
+      11,
+      -1.1
+     ],
+     "halfC": [
+      22,
+      -1.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "s0",
+      "seg": [
+       "sa0",
+       "sb0"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "start": true,
+      "group": "sg0"
+     },
+     {
+      "id": "sl0",
+      "label": "7",
+      "at": "s0",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "accent",
+      "group": "sg0",
+      "flies": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "sa1",
+       "sb1"
+      ],
+      "ink": "gold",
+      "w": 7,
+      "start": true,
+      "group": "sg1"
+     },
+     {
+      "id": "sl1",
+      "label": "4",
+      "at": "s1",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "gold",
+      "group": "sg1",
+      "flies": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "sa2",
+       "sb2"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "start": true,
+      "group": "sg2"
+     },
+     {
+      "id": "sl2",
+      "label": "7",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "blue",
+      "group": "sg2",
+      "flies": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "sa3",
+       "sb3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "start": true,
+      "group": "sg3"
+     },
+     {
+      "id": "sl3",
+      "label": "4",
+      "at": "s3",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "warm",
+      "group": "sg3",
+      "flies": true
+     },
+     {
+      "id": "fourteen",
+      "dim": [
+       "pairA",
+       "pairB"
+      ],
+      "side": "s",
+      "tex": "14",
+      "ink": "accent"
+     },
+     {
+      "id": "eight",
+      "dim": [
+       "pairB",
+       "pairC"
+      ],
+      "side": "s",
+      "tex": "8",
+      "ink": "warm"
+     },
+     {
+      "id": "elevenA",
+      "dim": [
+       "halfA",
+       "halfB"
+      ],
+      "side": "s",
+      "tex": "11",
+      "ink": "accent"
+     },
+     {
+      "id": "elevenB",
+      "dim": [
+       "halfB",
+       "halfC"
+      ],
+      "side": "s",
+      "tex": "11",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "We can add these same pieces in different groups. Bring the two sevens together.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Group the same four sides"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        -4,
+        1.5
+       ],
+       "at": "Bring"
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        7,
+        -1.5
+       ],
+       "at": "Bring"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        0,
+        -1.5
+       ],
+       "at": "together",
+       "dur": 0.45
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        0,
+        1.5
+       ],
+       "at": "together",
+       "dur": 0.45
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two sevens make fourteen. Two fours make eight. Fourteen plus eight is twenty two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "fourteen",
+       "at": "fourteen"
+      },
+      {
+       "do": "show",
+       "target": "eight",
+       "at": "eight"
+      },
+      {
+       "do": "write",
+       "tex": "14+8=22",
+       "at": "plus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or put them back in walking order: seven and four, twice. Eleven and eleven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "fourteen",
+        "eight"
+       ]
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        4,
+        1.5
+       ],
+       "at": "back"
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        -7,
+        -1.5
+       ],
+       "at": "back"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        0,
+        -1.5
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        0,
+        1.5
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": [
+        "elevenA",
+        "elevenB"
+       ],
+       "at": "twice"
+      },
+      {
+       "do": "write",
+       "tex": "2\\times(7+4)=22",
+       "at": "Eleven"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "P0": [
+      0,
+      0
+     ],
+     "P1": [
+      9,
+      0
+     ],
+     "P2": [
+      9,
+      3
+     ],
+     "P3": [
+      0,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "bed",
+      "poly": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "P0",
+       "P1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l0",
+      "label": "9",
+      "at": "s0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "P1",
+       "P2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "3",
+      "at": "s1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "P2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l2",
+      "label": "9",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "P3",
+       "P0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l3",
+      "label": "3",
+      "at": "s3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try a rectangle nine centimeters by three centimeters. Picture the entire walk. What is its perimeter?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Every side, once"
+      },
+      {
+       "do": "problem",
+       "text": "Sides: 9 cm and 3 cm. Perimeter?"
+      },
+      {
+       "do": "highlight",
+       "target": "l0",
+       "at": "nine",
+       "until": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "l1",
+       "at": "three",
+       "until": "Picture"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "at": "walk",
+       "until": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Nine, three, nine, three. Twenty four centimeters.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "nine",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "three",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "9+3+9+3=24",
+       "at": "Twenty"
+      },
+      {
+       "do": "answer",
+       "tex": "24\\text{ cm}",
+       "at": "centimeters"
+      },
+      {
+       "do": "highlight",
+       "target": "s0",
+       "at": "nine",
+       "nth": 1,
+       "until": "three",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "three",
+       "nth": 1,
+       "until": "nine",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "nine",
+       "nth": 2,
+       "until": "three",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "s3",
+       "at": "three",
+       "nth": 2,
+       "until": "Twenty",
+       "untilNth": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "P0": [
+      0,
+      0
+     ],
+     "P1": [
+      6,
+      0
+     ],
+     "P2": [
+      6,
+      6
+     ],
+     "P3": [
+      0,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "bed",
+      "poly": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "P0",
+       "P1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l0",
+      "label": "6",
+      "at": "s0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "P1",
+       "P2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "6",
+      "at": "s1",
+      "dir": "e",
+      "size": "m",
+      "start": false,
+      "ink": "gold"
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "P2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l2",
+      "label": "6",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "P3",
+       "P0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l3",
+      "label": "6",
+      "at": "s3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A square has four equal sides. Each is six centimeters. Four sixes make twenty four centimeters around.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "A square: four equal sides"
+      },
+      {
+       "do": "show",
+       "target": [
+        "l1",
+        "l2",
+        "l3"
+       ],
+       "at": "equal"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "at": "Four",
+       "nth": 2,
+       "until": "make"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times6=24",
+       "at": "sixes"
+      },
+      {
+       "do": "answer",
+       "tex": "24\\text{ cm}",
+       "at": "around"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "P0": [
+      0,
+      0
+     ],
+     "P1": [
+      9,
+      0
+     ],
+     "P2": [
+      9,
+      6
+     ],
+     "P3": [
+      0,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "bed",
+      "poly": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "P0",
+       "P1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l0",
+      "label": "9",
+      "at": "s0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "P1",
+       "P2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "?",
+      "at": "s1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "P2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l2",
+      "label": "9",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "P3",
+       "P0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l3",
+      "label": "?",
+      "at": "s3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This rectangle has a perimeter of thirty centimeters. One side is nine. How long is the missing side?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find the missing side"
+      },
+      {
+       "do": "problem",
+       "text": "Perimeter: 30 cm. Side: 9 cm."
+      },
+      {
+       "do": "highlight",
+       "target": "l0",
+       "at": "nine",
+       "until": "How"
+      },
+      {
+       "do": "highlight",
+       "target": "l1",
+       "at": "missing"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The opposite side must be nine too. And the two unknown sides match.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s0",
+        "s2"
+       ],
+       "at": "nine",
+       "until": "And"
+      },
+      {
+       "do": "show",
+       "target": "l3",
+       "at": "unknown"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s1",
+        "s3"
+       ],
+       "at": "unknown"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "sa0": [
+      0,
+      0
+     ],
+     "sb0": [
+      9,
+      0
+     ],
+     "sa1": [
+      9,
+      0
+     ],
+     "sb1": [
+      15,
+      0
+     ],
+     "sa2": [
+      15,
+      0
+     ],
+     "sb2": [
+      24,
+      0
+     ],
+     "sa3": [
+      24,
+      0
+     ],
+     "sb3": [
+      30,
+      0
+     ],
+     "wholeA": [
+      0,
+      -1.4
+     ],
+     "wholeB": [
+      30,
+      -1.4
+     ],
+     "restA": [
+      18,
+      -1.4
+     ],
+     "restB": [
+      30,
+      -1.4
+     ],
+     "h1": [
+      9,
+      0
+     ],
+     "h2": [
+      15,
+      0
+     ],
+     "h3": [
+      24,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "s0",
+      "seg": [
+       "sa0",
+       "sb0"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "start": true,
+      "group": "sg0"
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "sa1",
+       "sb1"
+      ],
+      "ink": "gold",
+      "w": 7,
+      "start": true,
+      "group": "sg1"
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "sa2",
+       "sb2"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "start": true,
+      "group": "sg2"
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "sa3",
+       "sb3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "start": true,
+      "group": "sg3"
+     },
+     {
+      "id": "sl0",
+      "label": "9",
+      "at": "s0",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "accent",
+      "group": "sg0",
+      "flies": true
+     },
+     {
+      "id": "sl1",
+      "label": "?",
+      "at": "s1",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "gold",
+      "group": "sg1",
+      "flies": true
+     },
+     {
+      "id": "sl2",
+      "label": "9",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "blue",
+      "group": "sg2",
+      "flies": true
+     },
+     {
+      "id": "sl3",
+      "label": "?",
+      "at": "s3",
+      "dir": "n",
+      "size": "m",
+      "start": true,
+      "ink": "warm",
+      "group": "sg3",
+      "flies": true
+     },
+     {
+      "id": "whole",
+      "dim": [
+       "wholeA",
+       "wholeB"
+      ],
+      "side": "s",
+      "tex": "30\\text{ cm}",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "rest",
+      "dim": [
+       "restA",
+       "restB"
+      ],
+      "side": "s",
+      "tex": "12\\text{ cm}",
+      "ink": "warm"
+     },
+     {
+      "id": "six1",
+      "label": "6",
+      "at": "s1",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "gold",
+      "group": "sg1",
+      "flies": true
+     },
+     {
+      "id": "six3",
+      "label": "6",
+      "at": "s3",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "warm",
+      "group": "sg3",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Lay the thirty centimeter border straight. Move both nines together: eighteen centimeters already known.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "9+9=18",
+       "at": "eighteen"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        -6,
+        2
+       ],
+       "at": "Move"
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        9,
+        -2
+       ],
+       "at": "Move"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        0,
+        -2
+       ],
+       "at": "together",
+       "dur": 0.45
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        0,
+        2
+       ],
+       "at": "together",
+       "dur": 0.45
+      },
+      {
+       "do": "hide",
+       "target": "whole",
+       "at": "Move",
+       "dur": 0.2
+      },
+      {
+       "do": "show",
+       "target": "whole",
+       "at": "eighteen",
+       "dur": 0.3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take away those eighteen. Thirty minus eighteen leaves twelve centimeters for both unknown sides.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "whole",
+       "at": "Take"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s0",
+        "s2"
+       ],
+       "at": "eighteen",
+       "until": "minus"
+      },
+      {
+       "do": "show",
+       "target": "rest",
+       "at": "twelve"
+      },
+      {
+       "do": "write",
+       "tex": "30-18=12",
+       "at": "minus"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "s0",
+        "s2",
+        "sl0",
+        "sl2"
+       ],
+       "at": "minus"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twelve is for two sides! Share it equally. Six centimeters each.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "s1",
+        "s3"
+       ],
+       "at": "two",
+       "until": "Six"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "sl1",
+        "sl3"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "six1",
+        "six3"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "12\\div2=6",
+       "at": "equally"
+      },
+      {
+       "do": "answer",
+       "tex": "6\\text{ cm}",
+       "at": "each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put the sides back in order, and fold them around the rectangle.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "s0",
+        "s2",
+        "sl0",
+        "sl2"
+       ]
+      },
+      {
+       "do": "hide",
+       "target": "rest"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        6,
+        2
+       ],
+       "at": "Put"
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        -9,
+        -2
+       ],
+       "at": "Put"
+      },
+      {
+       "do": "slide",
+       "target": "sg2",
+       "by": [
+        0,
+        -2
+       ],
+       "at": "order"
+      },
+      {
+       "do": "slide",
+       "target": "sg1",
+       "by": [
+        0,
+        2
+       ],
+       "at": "order"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fold the first corner. Fold the next corner. Close the border. Nine plus six plus nine plus six is thirty.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "sl0",
+        "sl2",
+        "six1",
+        "six3"
+       ]
+      },
+      {
+       "do": "turn",
+       "target": "s3",
+       "about": "h3",
+       "deg": 90,
+       "at": "Fold",
+       "dur": 1.3
+      },
+      {
+       "do": "turn",
+       "target": [
+        "s2",
+        "s3"
+       ],
+       "about": "h2",
+       "deg": 90,
+       "at": "Fold",
+       "nth": 2,
+       "dur": 1.3
+      },
+      {
+       "do": "turn",
+       "target": [
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "about": "h1",
+       "deg": 90,
+       "at": "Close",
+       "dur": 1.3
+      },
+      {
+       "do": "clear",
+       "at": "Nine"
+      },
+      {
+       "do": "write",
+       "tex": "9+6+9+6=30",
+       "at": "Nine"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "A": [
+      0,
+      0
+     ],
+     "B": [
+      7,
+      0
+     ],
+     "C": [
+      4.285714285714286,
+      4.199125273342592
+     ]
+    },
+    "parts": [
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l0",
+      "label": "7\\text{ cm}",
+      "at": "s0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "l1",
+      "label": "5\\text{ cm}",
+      "at": "s1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "l2",
+      "label": "6\\text{ cm}",
+      "at": "s2",
+      "dir": "w",
+      "size": "m",
+      "start": true,
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A triangle has three sides. Five, six, seven centimeters. Add every side once: eighteen centimeters around.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Three sides. One whole border."
+      },
+      {
+       "do": "write",
+       "tex": "5+6+7=18",
+       "at": "Add"
+      },
+      {
+       "do": "answer",
+       "tex": "18\\text{ cm}",
+       "at": "eighteen"
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "five",
+       "nth": 1,
+       "until": "six",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "six",
+       "nth": 1,
+       "until": "seven",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "s0",
+       "at": "seven",
+       "nth": 1,
+       "until": "Add",
+       "untilNth": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "P0": [
+      0,
+      0
+     ],
+     "P1": [
+      7,
+      0
+     ],
+     "P2": [
+      7,
+      4
+     ],
+     "P3": [
+      0,
+      4
+     ],
+     "gridOrigin": [
+      0,
+      4
+     ],
+     "uA": [
+      0,
+      0
+     ],
+     "uB": [
+      1,
+      0
+     ],
+     "uC": [
+      1,
+      1
+     ],
+     "uD": [
+      0,
+      1
+     ],
+     "row0p0": [
+      0.045,
+      3.955
+     ],
+     "row0p1": [
+      6.955,
+      3.955
+     ],
+     "row0p2": [
+      6.955,
+      3.045
+     ],
+     "row0p3": [
+      0.045,
+      3.045
+     ],
+     "row1p0": [
+      0.045,
+      2.955
+     ],
+     "row1p1": [
+      6.955,
+      2.955
+     ],
+     "row1p2": [
+      6.955,
+      2.045
+     ],
+     "row1p3": [
+      0.045,
+      2.045
+     ],
+     "row2p0": [
+      0.045,
+      1.955
+     ],
+     "row2p1": [
+      6.955,
+      1.955
+     ],
+     "row2p2": [
+      6.955,
+      1.045
+     ],
+     "row2p3": [
+      0.045,
+      1.045
+     ],
+     "row3p0": [
+      0.045,
+      0.9550000000000001
+     ],
+     "row3p1": [
+      6.955,
+      0.9550000000000001
+     ],
+     "row3p2": [
+      6.955,
+      0.04499999999999993
+     ],
+     "row3p3": [
+      0.045,
+      0.04499999999999993
+     ]
+    },
+    "parts": [
+     {
+      "id": "soil",
+      "poly": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ],
+      "fill": "warm-fill",
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "P0",
+       "P1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l0",
+      "label": "7",
+      "at": "s0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "P1",
+       "P2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "4",
+      "at": "s1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "P2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l2",
+      "label": "7",
+      "at": "s2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "P3",
+       "P0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "l3",
+      "label": "4",
+      "at": "s3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     },
+     {
+      "id": "squares",
+      "grid": [
+       7,
+       4
+      ],
+      "at": "gridOrigin",
+      "size": 1,
+      "ink": "muted",
+      "w": 1
+     },
+     {
+      "id": "unit",
+      "poly": [
+       "uA",
+       "uB",
+       "uC",
+       "uD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "row0s0",
+      "seg": [
+       "row0p0",
+       "row0p1"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row0"
+     },
+     {
+      "id": "row0s1",
+      "seg": [
+       "row0p1",
+       "row0p2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row0"
+     },
+     {
+      "id": "row0s2",
+      "seg": [
+       "row0p2",
+       "row0p3"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row0"
+     },
+     {
+      "id": "row0s3",
+      "seg": [
+       "row0p3",
+       "row0p0"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row0"
+     },
+     {
+      "id": "row1s0",
+      "seg": [
+       "row1p0",
+       "row1p1"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row1"
+     },
+     {
+      "id": "row1s1",
+      "seg": [
+       "row1p1",
+       "row1p2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row1"
+     },
+     {
+      "id": "row1s2",
+      "seg": [
+       "row1p2",
+       "row1p3"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row1"
+     },
+     {
+      "id": "row1s3",
+      "seg": [
+       "row1p3",
+       "row1p0"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row1"
+     },
+     {
+      "id": "row2s0",
+      "seg": [
+       "row2p0",
+       "row2p1"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row2"
+     },
+     {
+      "id": "row2s1",
+      "seg": [
+       "row2p1",
+       "row2p2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row2"
+     },
+     {
+      "id": "row2s2",
+      "seg": [
+       "row2p2",
+       "row2p3"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row2"
+     },
+     {
+      "id": "row2s3",
+      "seg": [
+       "row2p3",
+       "row2p0"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row2"
+     },
+     {
+      "id": "row3s0",
+      "seg": [
+       "row3p0",
+       "row3p1"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row3"
+     },
+     {
+      "id": "row3s1",
+      "seg": [
+       "row3p1",
+       "row3p2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row3"
+     },
+     {
+      "id": "row3s2",
+      "seg": [
+       "row3p2",
+       "row3p3"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row3"
+     },
+     {
+      "id": "row3s3",
+      "seg": [
+       "row3p3",
+       "row3p0"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "group": "row3"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Back at our garden, perimeter measures the border: twenty two feet of edging.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Around and inside"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "at": "border"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{Perimeter}=22\\text{ feet}",
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Area measures the space inside. This little square is one foot by one foot: one square foot.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "squares",
+       "at": "Area"
+      },
+      {
+       "do": "show",
+       "target": "unit",
+       "at": "square"
+      },
+      {
+       "do": "term",
+       "word": "Area",
+       "meaning": "Space covered, counted in unit squares.",
+       "at": "inside"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven squares in each row. Four rows. Twenty eight square feet of soil surface.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "unit",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "7\\times4=28\\text{ square feet}",
+       "at": "Twenty"
+      },
+      {
+       "do": "highlight",
+       "target": "row0",
+       "at": "Seven",
+       "nth": 1,
+       "until": "Four",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "row0",
+        "row1",
+        "row2",
+        "row3"
+       ],
+       "at": "Four",
+       "nth": 1,
+       "until": "Twenty",
+       "untilNth": 1
+      },
+      {
+       "do": "show",
+       "target": "row0",
+       "at": "Seven",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": [
+        "row1",
+        "row2",
+        "row3"
+       ],
+       "at": "Four",
+       "dur": 0.1
+      },
+      {
+       "do": "hide",
+       "target": [
+        "row0",
+        "row1",
+        "row2",
+        "row3"
+       ],
+       "at": "Twenty",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Multiplying measured the inside. Adding the sides measured the border.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "squares",
+       "at": "Multiplying",
+       "dur": 0.3
+      },
+      {
+       "do": "highlight",
+       "target": "soil",
+       "at": "inside",
+       "until": "Adding"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+       ],
+       "at": "border"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "ap0": [
+      0,
+      5
+     ],
+     "ap1": [
+      5,
+      5
+     ],
+     "ap2": [
+      5,
+      8
+     ],
+     "ap3": [
+      0,
+      8
+     ],
+     "bp0": [
+      0,
+      0
+     ],
+     "bp1": [
+      6,
+      0
+     ],
+     "bp2": [
+      6,
+      2
+     ],
+     "bp3": [
+      0,
+      2
+     ],
+     "ga": [
+      0,
+      8
+     ],
+     "gb": [
+      0,
+      2
+     ]
+    },
+    "parts": [
+     {
+      "id": "ga",
+      "grid": [
+       5,
+       3
+      ],
+      "at": "ga",
+      "size": 1,
+      "ink": "muted",
+      "w": 1
+     },
+     {
+      "id": "gb",
+      "grid": [
+       6,
+       2
+      ],
+      "at": "gb",
+      "size": 1,
+      "ink": "muted",
+      "w": 1
+     },
+     {
+      "id": "as0",
+      "seg": [
+       "ap0",
+       "ap1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al0",
+      "label": "5",
+      "at": "as0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "as1",
+      "seg": [
+       "ap1",
+       "ap2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al1",
+      "label": "3",
+      "at": "as1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "as2",
+      "seg": [
+       "ap2",
+       "ap3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al2",
+      "label": "5",
+      "at": "as2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "as3",
+      "seg": [
+       "ap3",
+       "ap0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al3",
+      "label": "3",
+      "at": "as3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     },
+     {
+      "id": "bs0",
+      "seg": [
+       "bp0",
+       "bp1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl0",
+      "label": "6",
+      "at": "bs0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "bs1",
+      "seg": [
+       "bp1",
+       "bp2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl1",
+      "label": "2",
+      "at": "bs1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "bs2",
+      "seg": [
+       "bp2",
+       "bp3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl2",
+      "label": "6",
+      "at": "bs2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "bs3",
+      "seg": [
+       "bp3",
+       "bp0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl3",
+      "label": "2",
+      "at": "bs3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Can different rectangles need the same length of border? Here are five by three, and six by two, in centimeters.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Different shapes. Equal borders."
+      },
+      {
+       "do": "highlight",
+       "target": "as0",
+       "at": "five",
+       "nth": 1,
+       "until": "three",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "as1",
+       "at": "three",
+       "nth": 1,
+       "until": "and",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "bs0",
+       "at": "six",
+       "nth": 1,
+       "until": "two",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "bs1",
+       "at": "two",
+       "nth": 1,
+       "until": "in",
+       "untilNth": 1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Their areas are fifteen and twelve square centimeters. Different amounts of space inside.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "ga",
+       "at": "fifteen"
+      },
+      {
+       "do": "show",
+       "target": "gb",
+       "at": "twelve"
+      },
+      {
+       "do": "write",
+       "tex": "5\\times3=15\\text{ cm}^2",
+       "at": "fifteen"
+      },
+      {
+       "do": "write",
+       "tex": "6\\times2=12\\text{ cm}^2",
+       "at": "twelve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "ap0": [
+      0,
+      7
+     ],
+     "ap1": [
+      5,
+      7
+     ],
+     "ap2": [
+      5,
+      10
+     ],
+     "ap3": [
+      0,
+      10
+     ],
+     "ah1": [
+      5,
+      7
+     ],
+     "ah2": [
+      8,
+      7
+     ],
+     "ah3": [
+      13,
+      7
+     ],
+     "bp0": [
+      0,
+      0
+     ],
+     "bp1": [
+      6,
+      0
+     ],
+     "bp2": [
+      6,
+      2
+     ],
+     "bp3": [
+      0,
+      2
+     ],
+     "bh1": [
+      6,
+      0
+     ],
+     "bh2": [
+      8,
+      0
+     ],
+     "bh3": [
+      14,
+      0
+     ],
+     "endtop": [
+      16,
+      10
+     ],
+     "endbottom": [
+      16,
+      -0.8
+     ],
+     "endA": [
+      16,
+      7
+     ],
+     "endB": [
+      16,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "as0",
+      "seg": [
+       "ap0",
+       "ap1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al0",
+      "label": "5",
+      "at": "as0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "as1",
+      "seg": [
+       "ap1",
+       "ap2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al1",
+      "label": "3",
+      "at": "as1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "as2",
+      "seg": [
+       "ap2",
+       "ap3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al2",
+      "label": "5",
+      "at": "as2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "as3",
+      "seg": [
+       "ap3",
+       "ap0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "al3",
+      "label": "3",
+      "at": "as3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     },
+     {
+      "id": "bs0",
+      "seg": [
+       "bp0",
+       "bp1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl0",
+      "label": "6",
+      "at": "bs0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "bs1",
+      "seg": [
+       "bp1",
+       "bp2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl1",
+      "label": "2",
+      "at": "bs1",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "bs2",
+      "seg": [
+       "bp2",
+       "bp3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl2",
+      "label": "6",
+      "at": "bs2",
+      "dir": "n",
+      "size": "m",
+      "start": false,
+      "ink": "blue"
+     },
+     {
+      "id": "bs3",
+      "seg": [
+       "bp3",
+       "bp0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bl3",
+      "label": "2",
+      "at": "bs3",
+      "dir": "w",
+      "size": "m",
+      "start": false,
+      "ink": "warm"
+     },
+     {
+      "id": "equalEnds",
+      "seg": [
+       "endtop",
+       "endbottom"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": false,
+      "dash": true
+     },
+     {
+      "id": "sixteenA",
+      "label": "16\\text{ cm}",
+      "at": "endA",
+      "dir": "e",
+      "size": "m",
+      "start": false
+     },
+     {
+      "id": "sixteenB",
+      "label": "16\\text{ cm}",
+      "at": "endB",
+      "dir": "e",
+      "size": "m",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Straighten both borders. Five, three, five, three. Six, two, six, two.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Both borders reach 16 cm"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "al0",
+        "al1",
+        "bl0",
+        "bl1"
+       ]
+      },
+      {
+       "do": "turn",
+       "target": [
+        "as1",
+        "as2",
+        "as3"
+       ],
+       "about": "ah1",
+       "deg": -90,
+       "dur": 0.3,
+       "at": "Straighten"
+      },
+      {
+       "do": "turn",
+       "target": [
+        "bs1",
+        "bs2",
+        "bs3"
+       ],
+       "about": "bh1",
+       "deg": -90,
+       "dur": 0.3,
+       "at": "Straighten"
+      },
+      {
+       "do": "turn",
+       "target": [
+        "as2",
+        "as3"
+       ],
+       "about": "ah2",
+       "deg": -90,
+       "at": "both",
+       "dur": 0.3
+      },
+      {
+       "do": "turn",
+       "target": [
+        "bs2",
+        "bs3"
+       ],
+       "about": "bh2",
+       "deg": -90,
+       "at": "both",
+       "dur": 0.3
+      },
+      {
+       "do": "turn",
+       "target": "as3",
+       "about": "ah3",
+       "deg": -90,
+       "at": "borders",
+       "dur": 0.3
+      },
+      {
+       "do": "turn",
+       "target": "bs3",
+       "about": "bh3",
+       "deg": -90,
+       "at": "borders",
+       "dur": 0.3
+      },
+      {
+       "do": "write",
+       "tex": "5+3+5+3=16",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "6+2+6+2=16",
+       "fresh": true,
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "as0",
+       "at": "five",
+       "nth": 1,
+       "until": "three",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "as1",
+       "at": "three",
+       "nth": 1,
+       "until": "five",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "as2",
+       "at": "five",
+       "nth": 2,
+       "until": "three",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "as3",
+       "at": "three",
+       "nth": 2,
+       "until": "six",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "bs0",
+       "at": "six",
+       "nth": 1,
+       "until": "two",
+       "untilNth": 1
+      },
+      {
+       "do": "highlight",
+       "target": "bs1",
+       "at": "two",
+       "nth": 1,
+       "until": "six",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "bs2",
+       "at": "six",
+       "nth": 2,
+       "until": "two",
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "bs3",
+       "at": "two",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Both reach sixteen! Same perimeter, different rectangles.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "equalEnds",
+        "sixteenA",
+        "sixteenB"
+       ],
+       "at": "sixteen"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "P0": [
+      7.5,
+      2.2
+     ],
+     "P1": [
+      14.5,
+      2.2
+     ],
+     "P2": [
+      14.5,
+      6.2
+     ],
+     "P3": [
+      7.5,
+      6.2
+     ],
+     "a0": [
+      0,
+      0
+     ],
+     "b0": [
+      7,
+      0
+     ],
+     "a1": [
+      7,
+      0
+     ],
+     "b1": [
+      11,
+      0
+     ],
+     "a2": [
+      11,
+      0
+     ],
+     "b2": [
+      18,
+      0
+     ],
+     "a3": [
+      18,
+      0
+     ],
+     "b3": [
+      22,
+      0
+     ],
+     "plantP0": [
+      8.9,
+      4.2
+     ],
+     "plantP1": [
+      11,
+      4.2
+     ],
+     "plantP2": [
+      13.100000000000001,
+      4.2
+     ],
+     "stem0": [
+      8.9,
+      3.2
+     ],
+     "tip0": [
+      8.9,
+      5.2
+     ],
+     "leaf00": [
+      8.63,
+      4.2
+     ],
+     "leaf01": [
+      9.17,
+      4.5
+     ],
+     "stem1": [
+      11,
+      3.2
+     ],
+     "tip1": [
+      11,
+      5.2
+     ],
+     "leaf10": [
+      10.73,
+      4.2
+     ],
+     "leaf11": [
+      11.27,
+      4.5
+     ],
+     "stem2": [
+      13.100000000000001,
+      3.2
+     ],
+     "tip2": [
+      13.100000000000001,
+      5.2
+     ],
+     "leaf20": [
+      12.830000000000002,
+      4.2
+     ],
+     "leaf21": [
+      13.370000000000001,
+      4.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "bed",
+      "poly": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ],
+      "fill": "warm-fill",
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "border0",
+      "seg": [
+       "P0",
+       "P1"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "border1",
+      "seg": [
+       "P1",
+       "P2"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "border2",
+      "seg": [
+       "P2",
+       "P3"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "border3",
+      "seg": [
+       "P3",
+       "P0"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "strip0",
+      "seg": [
+       "a0",
+       "b0"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "7",
+      "at": "strip0",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "accent"
+     },
+     {
+      "id": "strip1",
+      "seg": [
+       "a1",
+       "b1"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "4",
+      "at": "strip1",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "gold"
+     },
+     {
+      "id": "strip2",
+      "seg": [
+       "a2",
+       "b2"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "7",
+      "at": "strip2",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "blue"
+     },
+     {
+      "id": "strip3",
+      "seg": [
+       "a3",
+       "b3"
+      ],
+      "ink": "warm",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "4",
+      "at": "strip3",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "ink": "warm"
+     },
+     {
+      "id": "stem0",
+      "seg": [
+       "stem0",
+       "tip0"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "leaf00",
+      "circle": "leaf00",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "leaf01",
+      "circle": "leaf01",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "stem1",
+      "seg": [
+       "stem1",
+       "tip1"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "leaf10",
+      "circle": "leaf10",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "leaf11",
+      "circle": "leaf11",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "stem2",
+      "seg": [
+       "stem2",
+       "tip2"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "leaf20",
+      "circle": "leaf20",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "leaf21",
+      "circle": "leaf21",
+      "r": 0.31,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Whether the border bends or lies straight, we count the same length.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Every side. Once."
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "strip0",
+        "strip1",
+        "strip2",
+        "strip3"
+       ],
+       "at": "straight",
+       "until": "we"
+      },
+      {
+       "do": "write",
+       "tex": "7+4+7+4=22",
+       "at": "length"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "border0",
+        "border1",
+        "border2",
+        "border3"
+       ],
+       "at": "bends",
+       "nth": 1,
+       "until": "straight",
+       "untilNth": 1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Perimeter is every side, once, all the way around.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "border0",
+        "border1",
+        "border2",
+        "border3"
+       ],
+       "at": "every"
+      },
+      {
+       "do": "answer",
+       "tex": "22\\text{ feet}",
+       "at": "around"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

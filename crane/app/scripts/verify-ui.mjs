@@ -12,6 +12,8 @@
  * controls above the change before and after it.
  */
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { unzipSync } from "fflate";
 import { spawn } from "node:child_process";
 import { mkdir, readFile, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -238,6 +240,10 @@ try {
     await page.getByRole("heading", { name: "Deficiency" }).waitFor();
     assert.ok(await page.locator("blockquote").count() >= 1, "deficiency quotes the rule");
     await page.getByLabel("Note (optional)").fill("Drive chain shows wear at the sprocket.");
+    // A photo of the finding: a real PNG through the camera input, stored as JPEG.
+    const png = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAIAAABxZ0isAAAAE0lEQVR4nGP8tJIBK2DCLkwfCQDyqAGn31LftAAAAABJRU5ErkJggg==", "base64");
+    await page.locator('input[type="file"]').setInputFiles({ name: "finding.png", mimeType: "image/png", buffer: png });
+    await page.getByRole("button", { name: "Remove photo" }).waitFor();
     await page.screenshot({ path: path.join(out, "flow-deficiency.png"), fullPage: true });
     await page.reload();
     assert.equal(await page.getByLabel("Note (optional)").inputValue(), "Drive chain shows wear at the sprocket.", "run survives refresh");
@@ -247,6 +253,23 @@ try {
     await page.getByText("Deficiencies").waitFor();
     assert.equal((await page.locator(".text-display").nth(1).innerText()).trim(), "1");
     await page.screenshot({ path: path.join(out, "flow-run-report.png"), fullPage: true });
+    // Export: one zip, run.json in harvest-run/1, the photo inside with its hash.
+    const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: "Export" }).click()]);
+    assert.match(download.suggestedFilename(), /^shift-inspection-\d{4}-\d{2}-\d{2}-[a-z0-9]{6}\.zip$/);
+    const zip = unzipSync(new Uint8Array(await (await import("node:fs/promises")).readFile(await download.path())));
+    const report = JSON.parse(new TextDecoder().decode(zip["run.json"]));
+    assert.equal(report.format, "harvest-run/1");
+    assert.equal(report.status, "complete");
+    assert.equal(report.steps.length, 14);
+    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 14 }, (_, i) => i + 1), "the pack's 1-based ords");
+    assert.equal(report.steps_known, true);
+    assert.deepEqual(report.steps.slice(0, 2).map((x) => x.outcome), ["pass", "fail"]);
+    assert.equal(report.steps[1].deficiency, true);
+    assert.equal(report.steps[1].note, "Drive chain shows wear at the sprocket.");
+    assert.equal(report.steps[1].photos.length, 1);
+    const photo = report.steps[1].photos[0];
+    assert.equal(photo.sha256, createHash("sha256").update(zip[photo.path]).digest("hex"), "photo hash matches the bytes");
+    await page.getByText("Run report saved.").waitFor();
     assert.deepEqual(errors, []);
     await context.close();
     checks++;

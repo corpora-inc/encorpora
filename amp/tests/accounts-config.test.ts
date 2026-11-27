@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  accountSecrets,
   accountsConfiguration,
   enabledProviders,
   microsoftEmailVerified,
@@ -136,4 +137,57 @@ test("Microsoft email is verified only by xms_edov or a verified-address claim",
     false,
   );
   assert.equal(microsoftEmailVerified({ xms_edov: true }), false, "no email");
+});
+
+test("account secrets: a current version and retired ones that only decrypt", () => {
+  const one = "1".repeat(40);
+  const two = "2".repeat(40);
+  const today = accountsConfiguration(base);
+  assert.equal(today.secretVersion, 1, "today's secret is version 1");
+  assert.deepEqual(today.previousSecrets, []);
+  assert.deepEqual(accountSecrets(today), {
+    secrets: [{ version: 1, value: base.AMP_ACCOUNTS_SECRET }],
+    legacySecret: base.AMP_ACCOUNTS_SECRET,
+  });
+  const rotated = accountsConfiguration({
+    ...base,
+    AMP_ACCOUNTS_SECRET: two,
+    AMP_ACCOUNTS_SECRET_VERSION: "2",
+    AMP_ACCOUNTS_PREVIOUS_SECRETS: `1:${one}`,
+  });
+  // Untagged values were written by version 1, so it stays their key.
+  assert.deepEqual(accountSecrets(rotated), {
+    secrets: [
+      { version: 2, value: two },
+      { version: 1, value: one },
+    ],
+    legacySecret: one,
+  });
+  // Version 1 retired: nothing is left that only it can read.
+  assert.equal(
+    accountSecrets({ secret: two, secretVersion: 2 }).legacySecret,
+    undefined,
+  );
+  for (const [env, message] of [
+    [{ AMP_ACCOUNTS_SECRET_VERSION: "0" }, /whole number from 1/],
+    [{ AMP_ACCOUNTS_SECRET_VERSION: "two" }, /whole number from 1/],
+    [{ AMP_ACCOUNTS_PREVIOUS_SECRETS: one }, /<version>:<secret/],
+    [{ AMP_ACCOUNTS_PREVIOUS_SECRETS: "1:short" }, /<version>:<secret/],
+    [{ AMP_ACCOUNTS_PREVIOUS_SECRETS: `1:${one}` }, /each version once/],
+    [
+      {
+        AMP_ACCOUNTS_SECRET_VERSION: "2",
+        AMP_ACCOUNTS_PREVIOUS_SECRETS: `1:${base.AMP_ACCOUNTS_SECRET}`,
+      },
+      /not the current one/,
+    ],
+    [
+      {
+        AMP_ACCOUNTS_SECRET_VERSION: "3",
+        AMP_ACCOUNTS_PREVIOUS_SECRETS: `1:${one},1:${two}`,
+      },
+      /each version once/,
+    ],
+  ] as const)
+    assert.throws(() => accountsConfiguration({ ...base, ...env }), message);
 });

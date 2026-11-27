@@ -174,7 +174,7 @@ jobs:
           # by path, so each consumer filter includes what it compiles. Every
           # job below skips its steps cleanly until its directory exists.
           set_output crane_app '^(crane/(app|content)/|harvest/practice/|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
-          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|\.github/workflows/ci\.yml$)'
+          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output harvest_core '^(harvest/core/|\.github/workflows/ci\.yml$)'
           set_output harvest_pipeline '^(harvest/pipeline/|\.github/workflows/ci\.yml$)'
           set_output harvest_practice '^(harvest/practice/|\.github/workflows/ci\.yml$)'

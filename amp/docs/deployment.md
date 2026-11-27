@@ -17,7 +17,9 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 **Required settings**
 
 - `AMP_ACCOUNTS_URL`: the public HTTPS origin. Loopback HTTP is allowed outside production.
-- `AMP_ACCOUNTS_SECRET`: at least 32 random characters.
+- `AMP_ACCOUNTS_SECRET`: at least 32 random characters. It signs session cookies and links and encrypts authenticator secrets and backup codes.
+
+**Rotating the secret.** `AMP_ACCOUNTS_SECRET_VERSION` numbers the current secret (default `1`, the one AMP has always run with). `AMP_ACCOUNTS_PREVIOUS_SECRETS` lists retired ones as `<version>:<secret>`, comma-separated. They only decrypt what their version encrypted, so an authenticator enrolled before a rotation keeps working. Steps are in [incident response](incident-response.md#rotate-amp_accounts_secret).
 
 **Email.** `AMP_MAIL_RESEND_API_KEY` and `AMP_MAIL_FROM` send verification and reset emails.
 
