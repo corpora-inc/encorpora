@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Merged into the generated iOS Info.plist by the Tauri CLI. Required by
+	     iOS before any microphone access (voice questions); without it the
+	     system terminates the app on the first request. -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Ask questions about crane rules by voice. Speech is turned into text on this device and is not sent anywhere.</string>
+</dict>
+</plist>

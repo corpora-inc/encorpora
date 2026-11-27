@@ -48,7 +48,10 @@ export const speech = {
 
 /**
  * Voice input: on-device only (whisper.cpp in tauri-plugin-stt). Available
- * when the plugin reports a usable model; the caller owns the session id.
+ * only when the platform supports it AND the default model is installed and
+ * valid on disk: `is_available` alone is true on iOS with no model, which
+ * would offer a microphone that fails on every tap. The caller owns the
+ * session id.
  * Payloads match the plugin's `StartSessionArgs` / `StopSessionArgs`
  * (camelCase, wrapped in `args`); native.test.ts pins them to the plugin source.
  */
@@ -57,7 +60,9 @@ export const voice = {
     const invoke = tauriInvoke();
     if (!invoke) return false;
     try {
-      return (await invoke("plugin:stt|is_available")) === true;
+      if ((await invoke("plugin:stt|is_available")) !== true) return false;
+      const model = (await invoke("plugin:stt|validate_model", {})) as { valid?: boolean };
+      return model.valid === true;
     } catch (e) {
       logError("voice.available", e);
       return false;
@@ -69,7 +74,8 @@ export const voice = {
     const ready = (await invoke("plugin:stt|prepare", { args: {} })) as { ready: boolean; message?: string | null };
     if (!ready.ready) throw new Error(ready.message ?? "Voice input is not ready on this device");
     const sessionId = crypto.randomUUID();
-    await invoke("plugin:stt|start_session", { args: { sessionId, language: lang, expectedText: "" } });
+    const started = (await invoke("plugin:stt|start_session", { args: { sessionId, language: lang, expectedText: "" } })) as { started: boolean };
+    if (!started.started) throw new Error("Voice input could not start");
     return sessionId;
   },
   async stop(sessionId: string): Promise<string> {
@@ -90,8 +96,9 @@ export const assistant = {
     const invoke = tauriInvoke();
     if (!invoke) return { present: false, model: null };
     try {
-      const s = (await invoke("plugin:corpan-llm|llm_status")) as { loaded?: boolean; model?: string | null };
-      return { present: Boolean(s.loaded), model: s.model ?? null };
+      // StatusResponse is camelCase: { loaded, modelId, … } (tauri-plugin-corpan-llm/src/models.rs).
+      const s = (await invoke("plugin:corpan-llm|llm_status")) as { loaded?: boolean; modelId?: string | null };
+      return { present: Boolean(s.loaded), model: s.modelId ?? null };
     } catch (e) {
       logError("assistant.status", e);
       return { present: false, model: null };

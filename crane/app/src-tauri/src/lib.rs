@@ -6,8 +6,9 @@
 //! that cannot work:
 //!
 //! - `tts` (read-aloud) — platform speech, no download.
-//! - `stt` (voice questions) — whisper.cpp on device; reports unavailable
-//!   until a model is present.
+//! - `stt` (voice questions) — whisper.cpp on device. The frontend offers the
+//!   microphone only when `validate_model` says the model is installed and
+//!   valid (`is_available` alone is true on iOS with no model).
 //! - `corpan-llm` (on-device assistant) — llama.cpp; optional, off unless a
 //!   model is installed. Answers come from the verified pack either way.
 //!
