@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720" role="img" aria-labelledby="sat-title sat-desc" font-family="system-ui, sans-serif" font-size="18" fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <title id="sat-title">Sling angle and leg tension</title>
+  <desc id="sat-desc">A 1,000 lb load lifted by a two-leg bridle at four sling angles measured from horizontal. Tension per leg equals half the load times the load-angle factor: 90 degrees, 500 lb (factor 1.000); 60 degrees, about 577 lb (1.155); 45 degrees, 707 lb (1.414); 30 degrees, 1,000 lb (2.000). Common rigging practice avoids angles below 30 degrees.</desc>
+  <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
+
+  <text x="240" y="30" text-anchor="middle">Sling angle measured from horizontal</text>
+
+  <!-- panel grid -->
+  <g stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.6">
+    <line x1="240" y1="50" x2="240" y2="590"/>
+    <line x1="8" y1="320" x2="472" y2="320"/>
+  </g>
+
+  <!-- 90 degrees: vertical legs from a spreader bar -->
+  <g>
+    <text x="14" y="80" font-size="22" font-weight="700">90°</text>
+    <line x1="120" y1="58" x2="120" y2="86" stroke="currentColor" stroke-width="2"/>
+    <circle cx="120" cy="92" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+    <line x1="120" y1="98" x2="120" y2="110" stroke="currentColor" stroke-width="3"/>
+    <line x1="64" y1="110" x2="176" y2="110" stroke="currentColor" stroke-width="7"/>
+    <line x1="70" y1="110" x2="70" y2="220" stroke="currentColor" stroke-width="3"/>
+    <line x1="170" y1="110" x2="170" y2="220" stroke="currentColor" stroke-width="3"/>
+    <path d="M82 220 V208 H70" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
+    <rect x="70" y="220" width="100" height="40" rx="3" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="2"/>
+    <text x="120" y="247" text-anchor="middle">1,000 lb</text>
+    <text x="120" y="290" text-anchor="middle" font-size="20" font-weight="700">500 lb per leg</text>
+    <text x="120" y="314" text-anchor="middle">factor 1.000</text>
+  </g>
+
+  <!-- 60 degrees -->
+  <g>
+    <text x="254" y="80" font-size="22" font-weight="700">60°</text>
+    <line x1="360" y1="58" x2="360" y2="112.7" stroke="currentColor" stroke-width="2"/>
+    <circle cx="360" cy="118.7" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M305 220 L360 124.7 L415 220" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M333 220 A28 28 0 0 0 319 195.8" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
+    <rect x="305" y="220" width="110" height="40" rx="3" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="2"/>
+    <text x="360" y="247" text-anchor="middle">1,000 lb</text>
+    <text x="360" y="290" text-anchor="middle" font-size="20" font-weight="700">≈ 577 lb per leg</text>
+    <text x="360" y="314" text-anchor="middle">factor 1.155</text>
+  </g>
+
+  <!-- 45 degrees -->
+  <g>
+    <text x="14" y="350" font-size="22" font-weight="700">45°</text>
+    <line x1="120" y1="328" x2="120" y2="400.2" stroke="currentColor" stroke-width="2"/>
+    <circle cx="120" cy="406.2" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M42.2 490 L120 412.2 L197.8 490" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M70.2 490 A28 28 0 0 0 62 470.2" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
+    <rect x="42.2" y="490" width="155.6" height="40" rx="3" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="2"/>
+    <text x="120" y="517" text-anchor="middle">1,000 lb</text>
+    <text x="120" y="560" text-anchor="middle" font-size="20" font-weight="700">707 lb per leg</text>
+    <text x="120" y="584" text-anchor="middle">factor 1.414</text>
+  </g>
+
+  <!-- 30 degrees -->
+  <g>
+    <text x="254" y="350" font-size="22" font-weight="700">30°</text>
+    <line x1="360" y1="328" x2="360" y2="423" stroke="currentColor" stroke-width="2"/>
+    <circle cx="360" cy="429" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M264.7 490 L360 435 L455.3 490" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M292.7 490 A28 28 0 0 0 289 476" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
+    <rect x="264.7" y="490" width="190.6" height="40" rx="3" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="2"/>
+    <text x="360" y="517" text-anchor="middle">1,000 lb</text>
+    <text x="360" y="560" text-anchor="middle" font-size="20" font-weight="700" fill="var(--crane-danger, #dc2626)">1,000 lb per leg</text>
+    <text x="360" y="584" text-anchor="middle">factor 2.000</text>
+  </g>
+
+  <!-- rule -->
+  <line x1="8" y1="600" x2="472" y2="600" stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="240" y="630" text-anchor="middle" font-size="20" font-weight="700">Per leg = (load ÷ 2) × factor</text>
+  <text x="240" y="656" text-anchor="middle">factor = 1 ÷ sin(sling angle)</text>
+  <text x="240" y="684" text-anchor="middle" fill="var(--crane-danger, #dc2626)">Below 30°, tension climbs steeply.</text>
+  <text x="240" y="706" text-anchor="middle" fill="var(--crane-danger, #dc2626)">Common rigging practice avoids it.</text>
+</svg>

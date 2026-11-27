@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 1142" role="img" aria-labelledby="pla-title pla-desc" font-family="system-ui, sans-serif" font-size="18" fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <title id="pla-title">Power line clearance zones</title>
+  <desc id="pla-desc">Side view of a crane working near an energized power line, seen end-on. A dashed circle 20 feet around the line marks the distance to check: if any part of the crane, load line or load could get within it while working up to the maximum working radius, the line must be deenergized and grounded or encroachment must be prevented. For lines over 350 kV up to 1,000 kV the 20 feet becomes 50 feet. A solid inner circle is the Table A minimum clearance, 10 feet for lines up to 50 kV. Table A: up to 50 kV, 10 ft; over 50 to 200 kV, 15 ft; over 200 to 350 kV, 20 ft; over 350 to 500 kV, 25 ft; over 500 to 750 kV, 35 ft; over 750 to 1,000 kV, 45 ft; over 1,000 kV, set by the utility owner/operator or a registered professional engineer. Encroachment prevention: a planning meeting, an elevated warning line with flags, non-conductive tag lines, plus at least one of a dedicated spotter, a proximity alarm, a range control warning or limiting device, or an insulating link.</desc>
+  <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
+  <defs>
+    <marker id="pla-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--crane-accent, #d97706)"/>
+    </marker>
+    <marker id="pla-arrow-danger" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--crane-danger, #dc2626)"/>
+    </marker>
+  </defs>
+
+  <text x="330" y="34" text-anchor="middle" font-weight="700">Energized line (end view)</text>
+
+  <!-- zones around the conductor -->
+  <circle cx="330" cy="170" r="120" fill="var(--crane-danger, #dc2626)" fill-opacity="0.06" stroke="var(--crane-danger, #dc2626)" stroke-width="3" stroke-dasharray="12 8"/>
+  <circle cx="330" cy="170" r="60" fill="var(--crane-danger, #dc2626)" fill-opacity="0.2" stroke="var(--crane-danger, #dc2626)" stroke-width="3"/>
+  <line x1="336" y1="170" x2="448" y2="170" stroke="var(--crane-danger, #dc2626)" stroke-width="2" marker-end="url(#pla-arrow-danger)"/>
+  <text x="420" y="161" text-anchor="middle" font-weight="700">20 ft</text>
+  <line x1="324" y1="170" x2="272" y2="170" stroke="var(--crane-danger, #dc2626)" stroke-width="2" marker-end="url(#pla-arrow-danger)"/>
+  <text x="300" y="161" text-anchor="middle" font-weight="700">10 ft</text>
+
+  <!-- pole and conductor -->
+  <rect x="325" y="180" width="10" height="190" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="2"/>
+  <line x1="304" y1="180" x2="356" y2="180" stroke="currentColor" stroke-width="4"/>
+  <circle cx="330" cy="170" r="7" fill="var(--crane-danger, #dc2626)" stroke="currentColor" stroke-width="2"/>
+
+  <!-- ground -->
+  <line x1="0" y1="370" x2="480" y2="370" stroke="currentColor" stroke-width="2"/>
+
+  <!-- crane -->
+  <rect x="20" y="330" width="120" height="28" rx="4" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="3"/>
+  <circle cx="45" cy="360" r="10" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="2"/>
+  <circle cx="115" cy="360" r="10" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="2"/>
+  <rect x="40" y="304" width="70" height="26" rx="4" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="3"/>
+  <line x1="90" y1="310" x2="190" y2="148" stroke="currentColor" stroke-width="8"/>
+  <line x1="190" y1="148" x2="190" y2="268" stroke="currentColor" stroke-width="2"/>
+  <rect x="174" y="268" width="32" height="28" rx="2" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="2"/>
+
+  <!-- worker with tag line -->
+  <line x1="178" y1="296" x2="167" y2="339" stroke="var(--crane-accent, #d97706)" stroke-width="2"/>
+  <g stroke="currentColor" stroke-width="3" fill="none">
+    <circle cx="160" cy="320" r="7"/>
+    <path d="M160 327 V352 M160 352 L152 370 M160 352 L168 370 M160 335 L167 340"/>
+  </g>
+
+  <!-- elevated warning line with flag, at the zone edge -->
+  <line x1="210" y1="370" x2="210" y2="318" stroke="currentColor" stroke-width="3"/>
+  <path d="M210 318 L234 326 L210 334 Z" fill="var(--crane-accent, #d97706)" stroke="currentColor" stroke-width="2"/>
+
+  <!-- dedicated spotter -->
+  <g stroke="currentColor" stroke-width="3" fill="none">
+    <circle cx="440" cy="320" r="7"/>
+    <path d="M440 327 V352 M440 352 L432 370 M440 352 L448 370 M440 335 L428 330"/>
+  </g>
+
+  <!-- callouts -->
+  <g fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="2.5">
+    <circle cx="232" cy="296" r="13"/>
+    <circle cx="140" cy="296" r="13"/>
+    <circle cx="440" cy="290" r="13"/>
+    <circle cx="26" cy="290" r="13"/>
+  </g>
+  <g text-anchor="middle" font-weight="700">
+    <text x="232" y="302">1</text>
+    <text x="140" y="302">2</text>
+    <text x="440" y="296">3</text>
+    <text x="26" y="296">4</text>
+  </g>
+
+  <!-- work zone -->
+  <line x1="77" y1="396" x2="278" y2="396" stroke="var(--crane-accent, #d97706)" stroke-width="2.5" marker-start="url(#pla-arrow)" marker-end="url(#pla-arrow)"/>
+  <line x1="75" y1="372" x2="75" y2="406" stroke="var(--crane-muted, #8a8f98)" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="240" y="424" text-anchor="middle">Work zone: 360° to max working radius</text>
+
+  <!-- legend -->
+  <line x1="8" y1="442" x2="472" y2="442" stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.6"/>
+  <circle cx="36" cy="468" r="12" fill="var(--crane-danger, #dc2626)" fill-opacity="0.06" stroke="var(--crane-danger, #dc2626)" stroke-width="3" stroke-dasharray="6 4"/>
+  <text x="62" y="474" font-weight="700">20 ft zone: check and plan</text>
+  <text x="62" y="498">50 ft for lines over 350 to 1,000 kV</text>
+  <circle cx="36" cy="528" r="12" fill="var(--crane-danger, #dc2626)" fill-opacity="0.2" stroke="var(--crane-danger, #dc2626)" stroke-width="3"/>
+  <text x="62" y="534" font-weight="700">Table A minimum clearance</text>
+  <text x="62" y="558">10 ft shown: line up to 50 kV</text>
+
+  <!-- Table A -->
+  <text x="24" y="604" font-size="20" font-weight="700">Table A</text>
+  <text x="24" y="636" font-weight="700">Voltage (kV)</text>
+  <text x="250" y="636" font-weight="700">Clearance</text>
+  <g stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.7">
+    <line x1="16" y1="646" x2="464" y2="646"/>
+    <line x1="16" y1="676" x2="464" y2="676"/>
+    <line x1="16" y1="706" x2="464" y2="706"/>
+    <line x1="16" y1="736" x2="464" y2="736"/>
+    <line x1="16" y1="766" x2="464" y2="766"/>
+    <line x1="16" y1="796" x2="464" y2="796"/>
+    <line x1="16" y1="826" x2="464" y2="826"/>
+    <line x1="16" y1="880" x2="464" y2="880"/>
+  </g>
+  <text x="24" y="667">up to 50</text><text x="250" y="667">10 ft</text>
+  <text x="24" y="697">over 50 to 200</text><text x="250" y="697">15 ft</text>
+  <text x="24" y="727">over 200 to 350</text><text x="250" y="727">20 ft</text>
+  <text x="24" y="757">over 350 to 500</text><text x="250" y="757">25 ft</text>
+  <text x="24" y="787">over 500 to 750</text><text x="250" y="787">35 ft</text>
+  <text x="24" y="817">over 750 to 1,000</text><text x="250" y="817">45 ft</text>
+  <text x="24" y="847">over 1,000</text><text x="250" y="847">Set by the utility</text>
+  <text x="250" y="870">or a registered P.E.</text>
+
+  <!-- encroachment prevention -->
+  <text x="24" y="918" font-size="20" font-weight="700">Prevent encroachment</text>
+  <circle cx="36" cy="942" r="4" fill="currentColor"/>
+  <text x="62" y="948">Planning meeting with the crew</text>
+  <g fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="2.5">
+    <circle cx="36" cy="972" r="13"/>
+    <circle cx="36" cy="1002" r="13"/>
+    <circle cx="36" cy="1062" r="13"/>
+    <circle cx="36" cy="1092" r="13"/>
+  </g>
+  <g text-anchor="middle" font-weight="700">
+    <text x="36" y="978">1</text>
+    <text x="36" y="1008">2</text>
+    <text x="36" y="1068">3</text>
+    <text x="36" y="1098">4</text>
+  </g>
+  <text x="62" y="978">Elevated warning line with flags</text>
+  <text x="62" y="1008">Tag lines non-conductive</text>
+  <text x="24" y="1038" font-weight="700">Plus at least one of:</text>
+  <text x="62" y="1068">Dedicated spotter</text>
+  <text x="62" y="1098">Proximity alarm or range device</text>
+  <circle cx="36" cy="1122" r="4" fill="currentColor"/>
+  <text x="62" y="1128">Insulating link</text>
+</svg>
