@@ -71,16 +71,17 @@ revoke() {  # revoke --dry-run --all | revoke --org <org id> | revoke --account 
   job=amp-revoke-sessions-$(date -u +%Y%m%d%H%M%S)
   kubectl -n $NS create job "$job" --from=cronjob/amp-privacy-retention --dry-run=client -o json |
     jq --argjson args "$(printf '%s\n' "$@" | jq -R . | jq -cs .)" \
-      '.spec.template.spec.containers[0].command = ["node_modules/.bin/tsx", "scripts/revoke-sessions.ts"] + $args' |
-    kubectl -n $NS create -f - &&
-    kubectl -n $NS wait --for=condition=complete --timeout=10m "job/$job" &&
-    kubectl -n $NS logs "job/$job" | tail -1 | tee -a "$E/revoke-sessions.log"
+      '.spec.backoffLimit = 0 | .spec.template.spec.containers[0].command = ["node_modules/.bin/tsx", "scripts/revoke-sessions.ts"] + $args' |
+    kubectl -n $NS create -f - || return
+  # Done when it succeeded or failed; either way its output is the answer.
+  until kubectl -n $NS get job "$job" -o jsonpath='{.status.succeeded}{.status.failed}' | grep -q 1; do sleep 2; done
+  kubectl -n $NS logs "job/$job" | tee -a "$E/revoke-sessions.log"
 }
 revoke --dry-run --all   # counts only
 revoke --all
 ```
 
-A rerun is safe: it ends what is left, which may be nothing.
+A wrong id fails at once with its reason and writes nothing. A rerun is safe: it ends what is left, which may be nothing.
 
 ### Rotate `AMP_ACCOUNTS_SECRET`
 
@@ -88,7 +89,7 @@ The secret is versioned (Better Auth `secrets`). The current one signs cookies a
 
 1. Append the current secret to `AMP_ACCOUNTS_PREVIOUS_SECRETS` under its version: `1:<current value>` the first time (the version is `AMP_ACCOUNTS_SECRET_VERSION`, default `1`). Entries are comma-separated.
 2. Set `AMP_ACCOUNTS_SECRET` to a new value (`openssl rand -hex 32`) and `AMP_ACCOUNTS_SECRET_VERSION` to the next number.
-3. Deploy. Cookies signed with the old secret stop working, so every browser signs in again.
+3. Deploy. Cookies signed with the old secret stop working. A session used by bearer token is not tied to the secret, so to sign everyone out, also `revoke --all`.
 
 Keep a retired version while authenticators enrolled under it remain. With version 2 current, `SELECT count(*) FROM amp_auth_two_factors WHERE secret NOT LIKE '$ba$2$%'` counts those enrolled before it. Values stored before versioning carry no tag; version 1 decrypts them. When the database leaked together with the secret, the authenticator secrets are exposed as well: ask the parents who have one to set it up again in Security.
 
@@ -96,7 +97,7 @@ Keep a retired version while authenticators enrolled under it remain. With versi
 | --- | --- |
 | Database URL (`amp_prod` password) | Treat the database as read (section 5). <br>1. `gcloud sql users set-password amp_prod --instance=tenants --project=$PROJECT --prompt-for-password`. Also add a version to `corpora-amp-prod-db-password`. <br>2. Put the new password in `AMP_DATABASE_URL` and rotate as above. AMP fails new connections from the password change until the new pods are ready. <br>3. A password change does not end sessions already open. From a new pod, end the older ones (the tabletop ran its `count(*)` form): `SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE usename = current_user AND pid <> pg_backend_pid() AND backend_start < '<rotation time>';` <br>4. A copy of the database holds live account sessions: `amp_auth_sessions.token` is stored as issued and works as a bearer token. End them all with `revoke --all` ([End sessions](#end-sessions); the tabletop counted these rows). Every adult signs in again. Password-reset links are stored hashed since #2555; `--all` deletes unused ones too. Student and provider sessions, cards and pictures are stored hashed and need nothing. <br>5. Provider access, refresh and ID tokens are no longer stored (`amp_auth_accounts`, migration 0157): AMP uses a provider only to sign in. If the env file leaked as well, rotate the provider client secrets. |
 | Provider secret: Stripe, Resend, Google, Microsoft, GitHub, Apple, Clever | Revoke or roll it at the provider first, then rotate as above. |
-| `AMP_ACCOUNTS_SECRET` | Rotate it to a new version ([Rotate `AMP_ACCOUNTS_SECRET`](#rotate-amp_accounts_secret)). Every account is signed out; authenticators keep working. Links and flows it signs stop working: invitations, approvals, adoption and buyer links (unless `AMP_LINK_SECRET` is set, then rotate that too), and school sign-ins in progress. |
+| `AMP_ACCOUNTS_SECRET` | Rotate it to a new version ([Rotate `AMP_ACCOUNTS_SECRET`](#rotate-amp_accounts_secret)), then `revoke --all` to sign every account out. Authenticators keep working. Links and flows it signs stop working: invitations, approvals, adoption and buyer links (unless `AMP_LINK_SECRET` is set, then rotate that too), and school sign-ins in progress. |
 | `AMP_CONSENT_SECRET_BASE64` | Parent addresses waiting for consent mail are encrypted with it, including the confirmatory notice email-plus consent owes (16 CFR 312.5(b)(2)(vi)). Rotate only when nothing is queued: `SELECT stage, count(*) FROM amp_consent_outbox WHERE accepted_at IS NULL AND rejected_at IS NULL AND stopped_at IS NULL GROUP BY 1` returns no rows. Otherwise let the worker send the queue first, or record the parents it could not reach. |
 | `AMP_RENDER_TOKEN` | Rotate as above. See "Rotate the token" in the tenant README in free2z/tuzi. |
 | Runtime identity `corpora-amp-prod` | It has no user-managed keys; it authenticates through Workload Identity. Check: `gcloud iam service-accounts keys list --iam-account=corpora-amp-prod@$PROJECT.iam.gserviceaccount.com --managed-by=user --project=$PROJECT`. If a key appears: `gcloud iam service-accounts keys disable <key id> --iam-account=…`. To cut the identity itself: `gcloud iam service-accounts disable corpora-amp-prod@$PROJECT.iam.gserviceaccount.com --project=$PROJECT`. This takes AMP's database away. Undo with `enable`. |
