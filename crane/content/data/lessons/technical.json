@@ -1,0 +1,970 @@
+[
+ {
+  "lesson_id": "l.technical.01",
+  "topic_id": "technical",
+  "ord": 1,
+  "title": "Crane types covered by Subpart CC and how they differ",
+  "skills": [
+   "technical.crane-types"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The crane rules apply by what a machine does, not by what it is called. If power-operated equipment on a construction site can lift, lower and move a load sideways while the load hangs, it is covered."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(a)",
+    "text": "This standard applies to power-operated equipment, when used in construction, that can hoist, lower and horizontally move a suspended load."
+   },
+   {
+    "t": "text",
+    "text": "The scope list includes articulating, crawler, floating, barge, locomotive, mobile, tower, pedestal, portal, overhead and gantry, straddle and sideboom cranes, derricks, carry-deck cranes, dedicated pile drivers and service trucks with a hoist. **Mobile cranes** include several common machines:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(a)",
+    "text": "mobile cranes (such as wheel-mounted, rough-terrain, all-terrain, commercial truck-mounted, and boom truck cranes)"
+   },
+   {
+    "t": "text",
+    "text": "The definitions tell the types apart by how the machine is mounted and what kind of boom it has:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Mobile crane means a lifting device incorporating a cable suspended latticed boom or hydraulic telescopic boom designed to be moved between operating locations by transport over the road."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Crawler crane means equipment that has a type of base mounting which incorporates a continuous belt of sprocket driven track."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Articulating crane means a crane whose boom consists of a series of folding, pin connected structural members, typically manipulated to extend or retract by power from hydraulic cylinders."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Tower crane is a type of lifting structure which utilizes a vertical mast or tower to support a working boom (jib) in an elevated position."
+   },
+   {
+    "t": "text",
+    "text": "Some definitions also set limits on what a machine is. A **sideboom crane** lifts vertically only. A mobile crane fitted with a tower attachment is still a mobile crane. A **multi-purpose machine** is covered only when it is set up to hoist."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "The boom or hook can be lifted or lowered in a vertical direction only."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Mobile cranes that are configured with luffing jib and/or tower attachments are not considered tower cranes under this section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "When configured with the forks/tongs, it is not covered by this subpart."
+   },
+   {
+    "t": "text",
+    "text": "Typical limits by type (this is practice; the load chart for each machine governs):\n- Truck and all-terrain cranes: full charted capacity only on outriggers set as the chart requires. On-rubber ratings are much lower.\n- Rough-terrain cranes: may pick and carry only where the chart lists on-rubber or travel ratings.\n- Crawler cranes: can travel with a load on firm, level ground within the chart's travel ratings. They spread their weight through the tracks.\n- Articulating cranes: capacity falls quickly as the knuckle sections reach out.\n- Tower cranes: fixed footprint, capacity set by trolley radius along the jib."
+   },
+   {
+    "t": "text",
+    "text": "Common mistake: assuming a boom truck, service truck hoist or forklift with a winch jib is \"not a crane.\" If it hoists and moves a hanging load, it is covered."
+   },
+   {
+    "t": "check",
+    "question": "A telehandler is fitted with a winch and hook to set trusses. Is it covered by the crane rules?",
+    "answer": "Yes. As a multi-purpose machine set up with a winch or hook, it is covered."
+   },
+   {
+    "t": "check",
+    "question": "A crawler crane is fitted with a luffing tower attachment. Is it a tower crane under the rules?",
+    "answer": "No. Mobile cranes with luffing jib or tower attachments are not tower cranes."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.02",
+  "topic_id": "technical",
+  "ord": 2,
+  "title": "Booms, upperworks, counterweight and hook blocks",
+  "skills": [
+   "technical.components"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **boom** is the main structural member. It holds up the upper hoisting tackle, and its length and angle set how high and how far the hook reaches."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Booms can usually be grouped into general categories of hydraulically extendible, cantilevered type, latticed section, cable supported type or articulating type."
+   },
+   {
+    "t": "text",
+    "text": "The **upperworks** (also called the superstructure or upperstructure) is the part that swings. The **counterweight** rides on its rear and balances the load."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Upperworks means the revolving frame of equipment on which the operating machinery (and many cases the engine) are mounted along with the operator's cab."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Counterweight means a weight used to supplement the weight of equipment in providing stability for lifting loads by counterbalancing those loads."
+   },
+   {
+    "t": "text",
+    "text": "Other parts to know: the carrier or crawler base, outriggers and floats, blocking (cribbing), the hoist drum, wire rope, sheaves, the boom tip, and the hook block or overhaul ball."
+   },
+   {
+    "t": "text",
+    "text": "Look at how lowering the same boom moves the hook farther from the center of rotation."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "text",
+    "text": "**Radius** is measured level from the center of rotation to the hook. Capacity is charted by radius, so booming down cuts capacity even when the load stays the same (physics)."
+   },
+   {
+    "t": "text",
+    "text": "**Hook blocks and balls** count as part of the load. They must be heavy enough to pull the line down, and they must be marked."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "both uses refer to the object(s) and the load-attaching equipment, such as, the load block, ropes, slings, shackles, and any other ancillary attachment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(2)",
+    "text": "Load hooks (including latched and unlatched types), ball assemblies and load blocks must be of sufficient weight to overhaul the line from the highest hook position for boom or boom and jib lengths and the number of parts of the line in use."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(3)",
+    "text": "Hook and ball assemblies and load blocks must be marked with their rated capacity and weight."
+   },
+   {
+    "t": "text",
+    "text": "Worked arithmetic (practice): the chart allows 10,000 lb. The block weighs 500 lb and the slings and shackles 200 lb. The most the object itself can weigh is 10,000 − 500 − 200 = 9,300 lb."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(4)(i)",
+    "text": "Hooks must be equipped with latches, except where the requirements of paragraph (d)(4)(ii) of this section are met."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(4)(iii)",
+    "text": "The latch must close the throat opening and be designed to retain slings or other lifting devices/accessories in the hook when the rigging apparatus is slack."
+   },
+   {
+    "t": "text",
+    "text": "A hook may be used without a latch only if a qualified person has decided that is safer and the load route keeps everyone out of the fall zone except the people hooking or unhooking the load."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(d)(4)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Look at where the block meets the boom tip in a two-block, and where the anti-two-block device sits."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "two-blocking"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "This binds the system and continued application of power can cause failure of the hoist rope or other component."
+   },
+   {
+    "t": "check",
+    "question": "Does the hook block's weight count against the chart capacity?",
+    "answer": "Yes. The load includes the load block and all rigging."
+   },
+   {
+    "t": "check",
+    "question": "What must be marked on a hook block?",
+    "answer": "Its rated capacity and its weight."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.03",
+  "topic_id": "technical",
+  "ord": 3,
+  "title": "Boom suspension, boom and jib stops, jibs and extensions",
+  "skills": [
+   "technical.components",
+   "technical.jibs-extensions"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "On a lattice boom, the **boom suspension system** holds up the boom tip and sets the boom angle."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Boom suspension system means a system of pendants, running ropes, sheaves, and other hardware which supports the boom tip and controls the boom angle."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Pendants are typically used in a latticed boom crane system to easily change the length of the boom suspension system without completely changing the rope on the drum when the boom length is increased or decreased."
+   },
+   {
+    "t": "text",
+    "text": "Two kinds of device keep the boom from going over backward. **Boom stops** physically block it. **Boom hoist limiting devices** cut boom hoist power at a set angle."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "These devices restrict the boom from moving above a certain maximum angle and toppling over backward."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "This type of device disengages boom hoist power when the boom reaches a predetermined operating angle."
+   },
+   {
+    "t": "text",
+    "text": "A **jib** is an extension mounted on the boom tip to add reach. It may be fixed at a set offset or luffing, meaning powered up and down. On tower cranes the words are used differently:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "On tower cranes, if the “boom” (i.e., principal horizontal structure) is fixed, it is referred to as a jib; if it is moveable up and down, it is referred to as a boom."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Jib stop (also referred to as a jib backstop), is the same type of device as a boom stop but is for a fixed or luffing jib."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(3)",
+    "text": "Jib stops (if a jib is attached), except for derricks."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Luffing jib limiting device is similar to a boom hoist limiting device, except that it limits the movement of the luffing jib."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(2)",
+    "text": "Jib angle indicator if the equipment has a luffing jib."
+   },
+   {
+    "t": "text",
+    "text": "**Offset** is the angle between the jib and the boom centerline. The load chart must give ratings for every approved jib length and offset."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(i)(A)",
+    "text": "At all manufacturer approved operating radii, boom angles, work areas, boom lengths and configurations, jib lengths and angles (or offset)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(x)",
+    "text": "Instructions for boom erection and conditions under which the boom, or boom and jib combinations, may be raised or lowered."
+   },
+   {
+    "t": "text",
+    "text": "Practice and physics:\n- More offset puts the jib tip farther out at the same boom angle. Radius goes up and capacity comes down.\n- Jib ratings are usually much lower than main boom ratings. Read the jib chart, not the main boom chart.\n- A jib stowed on the side of the boom, or left erected but unused, usually requires a capacity deduction from the main boom chart. Check the chart notes.\n- When lifting on the main boom line with the jib erected, count the jib's weight as the chart notes direct."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Boom length indicator indicates the length of the permanent part of the boom (such as ruled markings on the boom) or, as in some computerized systems, the length of the boom with extensions/attachments."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: setting the jib at an offset that is not charted, entering the wrong jib setup into the load moment system, and skipping the stowed-jib deduction."
+   },
+   {
+    "t": "check",
+    "question": "You change the jib offset to a larger angle and keep the same main boom angle. What happens to radius and capacity?",
+    "answer": "Radius increases and capacity decreases. Use the jib chart for that offset."
+   },
+   {
+    "t": "check",
+    "question": "What does a boom stop prevent?",
+    "answer": "The boom going above its maximum angle and toppling over backward."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.04",
+  "topic_id": "technical",
+  "ord": 4,
+  "title": "Hydraulic systems, holding valves and controlled lowering",
+  "skills": [
+   "technical.hydraulics"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Hydraulic cranes use pressurized oil to drive cylinders and motors. Cylinders raise the boom, telescope the sections, fold articulating booms and set outriggers. Motors turn the hoist drums and the swing."
+   },
+   {
+    "t": "text",
+    "text": "Physics: cylinder force = pressure × piston area. A cylinder with a 10 sq in piston at 2,000 psi pushes 20,000 lb. Lose the pressure and you lose the holding force, unless a valve locks the oil in."
+   },
+   {
+    "t": "text",
+    "text": "**Holding valves** (check or counterbalance valves) trap the oil in a cylinder or motor. If a hose bursts or the pump stops, the boom, outrigger or load stays where it is."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(5)",
+    "text": "Hydraulic outrigger jacks and hydraulic stabilizer jacks must have an integral holding device/check valve."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(13)",
+    "text": "Hydraulic drums must have an integrally mounted holding device or internal static brake to prevent load hoist movement in the event of hydraulic failure."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(10)",
+    "text": "Hydraulic and pneumatic lines must be protected from damage to the extent feasible."
+   },
+   {
+    "t": "text",
+    "text": "**Relief valves** cap the system pressure. Their settings are part of the cab information and come from the manufacturer only."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(xvi)",
+    "text": "Hydraulic relief valve settings specified by the manufacturer."
+   },
+   {
+    "t": "text",
+    "text": "**Controlled load lowering** drives the load down with the hoist motor. **Free fall** lets the load down on the brake alone. The cab information must say which method the crane has."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Controlled load lowering requires the use of the hoist drive motor, rather than the load hoist brake, to lower the load."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Free fall (of the load line) means that only the brake is used to regulate the descent of the load line"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(xi)",
+    "text": "Whether the hoist holding mechanism is automatically or manually controlled, whether free fall is available, or any combination of these."
+   },
+   {
+    "t": "text",
+    "text": "Telescoping booms have their own limits, and these must be in the cab:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(xiv)",
+    "text": "The sequence and procedure for extending and retracting the telescopic boom section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(xv)",
+    "text": "Maximum loads permitted during the boom extending operation, and any limiting conditions or cautions."
+   },
+   {
+    "t": "text",
+    "text": "Look at how the outrigger float carries the full jack force, which the holding valve keeps locked."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "text",
+    "text": "Field practice:\n- Watch for drift, meaning the boom slowly lowering or retracting, or an outrigger slowly settling. Drift points to a leaking holding valve or seal. Report it and do not lift.\n- Cold oil makes controls slow. Very hot oil makes them soft. Warm up as the manual directs.\n- Never adjust relief valve settings to get more lift.\n- Check hoses for chafing, bulges and leaks during inspection."
+   },
+   {
+    "t": "check",
+    "question": "A hose to the boom lift cylinder bursts under load. What should keep the boom from dropping?",
+    "answer": "The holding (check or counterbalance) valve on the cylinder."
+   },
+   {
+    "t": "check",
+    "question": "What is the difference between controlled load lowering and free fall?",
+    "answer": "Controlled lowering uses the hoist motor. Free fall uses only the brake."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.05",
+  "topic_id": "technical",
+  "ord": 5,
+  "title": "Instruments and operational aids: reading and repair limits",
+  "skills": [
+   "technical.instruments"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Instruments tell the operator where the boom is and how close the crane is to its rated capacity. Each reading is only as good as the configuration entered into the system."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Boom angle indicator means a device which measures the angle of the boom relative to horizontal."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(1)",
+    "text": "The equipment must have a boom angle or radius indicator readable from the operator's station."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(3)",
+    "text": "Boom length indicator if the equipment has a telescopic boom, except where the rated capacity is independent of the boom length."
+   },
+   {
+    "t": "text",
+    "text": "A **load moment indicator** shows the percentage of capacity in use. A **load moment limiter** also cuts the functions that make the load condition worse."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "It compares this lifting condition to the equipment's rated capacity, and indicates to the operator the percentage of capacity at which the equipment is working."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "when the rated capacity is reached, it shuts off power to those equipment functions which can increase the severity of loading on the equipment, e.g., hoisting, telescoping out, or luffing out."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(4)(i)",
+    "text": "Equipment (other than derricks and articulating cranes) manufactured after March 29, 2003 with a rated capacity over 6,000 pounds must have at least one of the following: load weighing device, load moment (or rated capacity) indicator, or load moment (or rated capacity) limiter."
+   },
+   {
+    "t": "text",
+    "text": "Equipment manufactured after November 8, 2011 must also have an outrigger position sensor (if it has outriggers or stabilizers) and a drum rotation indicator (if the operator cannot see the drum)."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)(5)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Drum rotation indicator means a device on a crane or hoist which indicates in which direction and at what relative speed a particular hoist drum is turning."
+   },
+   {
+    "t": "text",
+    "text": "Look at how a reading for radius and boom length maps to a chart cell. Compare that cell with what the indicator shows."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "Worked reading (practice): the chart cell allows 10,000 lb and the gross load is 8,000 lb, so the indicator should read about 80%. If it reads 40%, the configuration setting is probably wrong, for example parts of line, outrigger setup or jib. Stop and correct it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)",
+    "text": "Operational aids listed in this paragraph that are not working properly must be repaired no later than 30 calendar days after the deficiency occurs."
+   },
+   {
+    "t": "text",
+    "text": "There is one exception. If the parts were ordered within 7 days and arrive late, the repair is due within 7 days of receiving them. Until the repair, use the temporary alternative measures:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(1)",
+    "text": "Radii or boom angle must be determined by measuring the radii or boom angle with a measuring device."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(4)(i)",
+    "text": "The weight of the load must be determined from a source recognized by the industry (such as the load's manufacturer) or by a calculation method recognized by the industry"
+   },
+   {
+    "t": "check",
+    "question": "A boom angle indicator fails. What is the repair deadline, and what do you do meanwhile?",
+    "answer": "Repair it within 30 calendar days. Meanwhile, measure the radius or boom angle with a measuring device."
+   },
+   {
+    "t": "check",
+    "question": "When the limiter reaches rated capacity, which functions usually stay available?",
+    "answer": "Functions that reduce the load condition, such as lowering, telescoping in and luffing in."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.06",
+  "topic_id": "technical",
+  "ord": 6,
+  "title": "Design and prototype testing standards by build date",
+  "skills": [
+   "technical.design-testing"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The design, construction and testing section applies by rated capacity. Which consensus standard a crane must meet then depends on its manufacture date."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433",
+    "text": "The following requirements apply to equipment that has a manufacturer-rated hoisting/lifting capacity of more than 2,000 pounds."
+   },
+   {
+    "t": "text",
+    "text": "**Built before November 8, 2010** (crawler, truck and locomotive cranes): the standards in effect at the time of manufacture apply. The new-crane portions are allowed as an alternative."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(a)",
+    "text": "Crawler, truck and locomotive cranes manufactured prior to November 8, 2010 must meet the applicable requirements for design, construction, and testing as prescribed in ANSI B30.5-1968"
+   },
+   {
+    "t": "text",
+    "text": "**Built on or after November 8, 2010**: listed parts of the 2004 mobile crane standard apply. These cover stability and structural load ratings, boom hoist, load hoist, telescoping, swing, travel, controls, sheaves, outriggers, and clutch and brake protection."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(b)",
+    "text": "Mobile (including crawler and truck) and locomotive cranes manufactured on or after November 8, 2010 must meet the following portions of ASME B30.5-2004"
+   },
+   {
+    "t": "text",
+    "text": "**Prototype testing** proves the design before production. Mobile and locomotive cranes use Test Option A or Test Option B. Tower cranes use their own European standard."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(c)",
+    "text": "Tower cranes manufactured on or after November 8, 2010 must meet the prototype testing requirements in BS EN 14439:2006 (incorporated by reference, see § 1926.6)."
+   },
+   {
+    "t": "text",
+    "text": "Test Option A is physical testing. Cantilevered booms (hydraulic boom cranes) follow SAE J1063. Pendant-supported lattice booms follow SAE J987."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(c)(1)(i)",
+    "text": "All the tests listed in SAE J1063 (Nov. 1993) Table 1 (incorporated by reference, see § 1926.6) must be performed to load all critical structural elements to their respective limits."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(c)(1)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Test Option B is analysis-based testing. Computer modeling must show the SAE strength margins are met. Physical tests are still required unless strain-gauge measurements have a documented history of verifying the model."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(c)(2)",
+    "text": "The testing and verification requirements of BS EN 13000:2004 (incorporated by reference, see § 1926.6) must be met."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(c)(2)(iii)"
+   },
+   {
+    "t": "text",
+    "text": "**How an employer shows compliance:** keep manufacturer documentation showing the crane was designed, built and tested to these paragraphs. That documentation counts only while the crane is unchanged, apart from modifications made under the modification rules."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(e)"
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: assuming a crane meets the standards without the manufacturer's paperwork, and forgetting that an unapproved modification removes that proof."
+   },
+   {
+    "t": "check",
+    "question": "A truck crane was built in 2012. Which design standard applies?",
+    "answer": "The listed portions of ASME B30.5-2004, plus prototype testing under Test Option A or B."
+   },
+   {
+    "t": "check",
+    "question": "Which SAE standard covers physical tests for a hydraulic boom crane?",
+    "answer": "SAE J1063 (Nov. 1993)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.07",
+  "topic_id": "technical",
+  "ord": 7,
+  "title": "Required features: load chart information, cab, guards and brakes",
+  "skills": [
+   "technical.design-testing",
+   "technical.instruments"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Paragraph (d) lists features that every covered machine must have."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)",
+    "text": "All equipment covered by this subpart must meet the following requirements:"
+   },
+   {
+    "t": "text",
+    "text": "The **rated capacity information** in the cab must cover every approved configuration. It must also include ratings for optional equipment such as outriggers and extra counterweight."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Rated capacity means the maximum working load permitted by the manufacturer under specified working conditions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(i)(B)",
+    "text": "Alternate ratings for use and nonuse of option equipment which affects rated capacities, such as outriggers, stabilizers, and extra counterweights."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(iii)",
+    "text": "The work area figure and load chart must clearly indicate the areas where no load is to be handled."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(1)(viii)",
+    "text": "Caution or warnings relative to limitations on equipment and operating procedures, including an indication of the least stable direction."
+   },
+   {
+    "t": "text",
+    "text": "The cab information must also include recommended reeving, wire rope size and type, tire pressure where it applies, and the maximum travel of each telescopic section."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(d)(1)"
+   },
+   {
+    "t": "text",
+    "text": "**Cab requirements:** adjustable ventilation, a way to clear the windshield, safety glass, and a clear path to an exit door on the operator's side."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(7)(iii)(A)",
+    "text": "Forward vertical visibility must be sufficient to give the operator a view of the boom point at all times."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(7)(ii)",
+    "text": "Swinging doors adjacent to the operator must open outward. Sliding operator doors must open rearward."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(7)(v)",
+    "text": "Areas of the cab roof that serve as a workstation for rigging, maintenance or other equipment-related tasks must be capable of supporting 250 pounds without permanent distortion."
+   },
+   {
+    "t": "text",
+    "text": "**Guards and other safety items:** moving parts must be guarded, and hot exhaust parts insulated or guarded, wherever workers doing normal duties could touch them."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(d)(8)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(d)(9)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(6)",
+    "text": "An accessible fire extinguisher must be on the equipment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(11)",
+    "text": "The equipment must be designed so that exhaust fumes are not discharged in the cab and are discharged in a direction away from the operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(5)",
+    "text": "Posted warnings required by this subpart as well as those originally supplied with the equipment by the manufacturer must be maintained in legible condition."
+   },
+   {
+    "t": "text",
+    "text": "**Friction brakes and clutches** on the hoists must be big enough and adjustable for lining wear:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1433(d)(12)(i)",
+    "text": "Of a size and thermal capacity sufficient to control all rated loads with the minimum recommended reeving."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes: using a chart from a different model or serial number, letting decals fade or peel, and using the cab roof as a work platform where it is not designed as one."
+   },
+   {
+    "t": "check",
+    "question": "What must the load chart and work area figure show besides capacities?",
+    "answer": "The areas where no load is to be handled, and the least stable direction."
+   },
+   {
+    "t": "check",
+    "question": "What load must a cab roof workstation support without permanent distortion?",
+    "answer": "250 pounds."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.technical.08",
+  "topic_id": "technical",
+  "ord": 8,
+  "title": "Equipment modifications: the five approval routes",
+  "skills": [
+   "technical.modifications"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Any change that affects capacity or safe operation is banned unless it goes through one of five approval routes."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)",
+    "text": "Modifications or additions which affect the capacity or safe operation of the equipment are prohibited except where the requirements of paragraphs (a)(1), (a)(2), (a)(3), (a)(4), or (a)(5) of this section are met."
+   },
+   {
+    "t": "text",
+    "text": "**Route 1: Manufacturer approval.** The manufacturer approves in writing. The charts, manuals and decals are updated to match. The safety factor is not reduced."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)(1)(i)",
+    "text": "The manufacturer approves the modifications/additions in writing."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)(1)(iii)",
+    "text": "The original safety factor of the equipment is not reduced."
+   },
+   {
+    "t": "text",
+    "text": "Routes 2 through 5 all fall back on a **registered professional engineer** who is qualified for that equipment. The engineer approves the change, states which configurations the approval covers, and updates the charts and manuals. The original safety factor must still not be reduced."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)(2)(i)",
+    "text": "A registered professional engineer who is a qualified person with respect to the equipment involved:"
+   },
+   {
+    "t": "text",
+    "text": "**Route 2: Manufacturer refuses.** The manufacturer gets a detailed description and declines to review it, or does not acknowledge it or start the review within 30 days."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)(2)",
+    "text": "it declines to review the technical merits of the proposal or fails, within 30 days, to acknowledge the request or initiate the review"
+   },
+   {
+    "t": "text",
+    "text": "**Route 3: Manufacturer unavailable.**"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(a)(3)",
+    "text": "The manufacturer is unavailable and the requirements of paragraphs (a)(2)(i) and (ii) of this section are met."
+   },
+   {
+    "t": "text",
+    "text": "**Route 4: Review not finished.** The manufacturer agrees to review the change but does not finish within 120 days of receiving the detailed description."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1434(a)(4)"
+   },
+   {
+    "t": "text",
+    "text": "**Route 5: Marine equipment.** The equipment is designed for marine work sites and has major structural components from more than one manufacturer."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1434(a)(5)"
+   },
+   {
+    "t": "text",
+    "text": "**A written rejection is final.** If the manufacturer reviews the change and rejects it with written reasons, the change is prohibited. An engineer cannot override it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1434(b)",
+    "text": "If the manufacturer rejects the proposal but does not explain the reasons for the rejection in writing, the employer may treat this as a manufacturer refusal to review the request under paragraph (a)(2) of this section."
+   },
+   {
+    "t": "text",
+    "text": "These rules do not apply to modifications made or approved by the U.S. military."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1434(c)"
+   },
+   {
+    "t": "text",
+    "text": "Examples of changes that usually affect capacity or safe operation (practice judgment, not a rule list):\n- welding brackets or repairs onto boom sections\n- adding or cutting counterweight\n- lengthening outrigger beams\n- fitting unapproved boom or jib sections\n- swapping in a different hoist or drum\n- disabling or rewiring operational aids\n\nIn every case, also update the load chart and decals."
+   },
+   {
+    "t": "text",
+    "text": "An unapproved change also ends the employer's ability to rely on the manufacturer's design and testing documentation."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1433(e)"
+   },
+   {
+    "t": "check",
+    "question": "The manufacturer reviews a proposed boom bracket and rejects it with written reasons. Can a professional engineer approve it instead?",
+    "answer": "No. A written rejection with reasons makes the modification prohibited."
+   },
+   {
+    "t": "check",
+    "question": "The manufacturer agreed to review a change 130 days ago and has not finished. What route is open?",
+    "answer": "Route 4: approval by a qualified registered professional engineer, with no reduction of the original safety factor."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "209d97b8273924cb9a1d",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "5686a1ffc9d32c2b6e5f0829d681f497639e20260b32d5f483339a7ced678b64",
+   "output_sha256": "8cce2c9e84b7893c3e442a937e8000f3c3c975b6c3d7fc266556e05a8090d4e8",
+   "created_at": "2026-11-27T22:33:03+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

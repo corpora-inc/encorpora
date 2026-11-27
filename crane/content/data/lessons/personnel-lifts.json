@@ -1,0 +1,1092 @@
+[
+ {
+  "lesson_id": "l.personnel-lifts.01",
+  "topic_id": "personnel-lifts",
+  "ord": 1,
+  "title": "When hoisting personnel with a crane is permitted",
+  "skills": [
+   "personnel.when-allowed"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Hoisting people on a crane or derrick is a **last resort**. The default is no. It is allowed only when the employer can show that the conventional ways of reaching the work would be more hazardous or are not possible."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(a)",
+    "text": "The use of equipment to hoist employees is prohibited except where the employer demonstrates that the erection, use, and dismantling of conventional means of reaching the work area, such as a personnel hoist, ladder, stairway, aerial lift, elevating work platform, or scaffold, would be more hazardous, or is not possible because of the project's structural design or worksite conditions."
+   },
+   {
+    "t": "text",
+    "text": "Look at the whole life of the alternative: putting it up, using it and taking it down. \"Faster\" or \"cheaper\" does not count. The only test is \"more hazardous\" or \"not possible.\" This justification does not apply to steel erection work under subpart R or to routine personnel access to an underground worksite via shaft."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(a)"
+   },
+   {
+    "t": "text",
+    "text": "The personnel-hoisting rules add to the rest of the crane rules. They do not replace them. They apply as soon as even one person is hoisted."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431",
+    "text": "The requirements of this section are supplemental to the other requirements in this subpart and apply when one or more employees are hoisted."
+   },
+   {
+    "t": "text",
+    "text": "Once hoisting is justified, the people ride in a **personnel platform** that meets the platform design criteria."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(b)(1)",
+    "text": "When using equipment to hoist employees, the employees must be in a personnel platform that meets the requirements of paragraph (e) of this section."
+   },
+   {
+    "t": "text",
+    "text": "A platform is not required in four operations, and each one has its own rules:\n- Into and out of drill shafts up to and including 8 feet in diameter.\n- Pile driving operations.\n- Transfer to or from a marine worksite in a marine-hoisted personnel transfer device.\n- Storage-tank (steel or concrete), shaft and chimney operations."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(b)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Common mistake: treating a crane ride as routine access because the crane is already rigged and on site. Being convenient does not justify it."
+   },
+   {
+    "t": "check",
+    "question": "An aerial lift can safely reach the work, but setting up the crane platform is quicker. Can personnel be hoisted?",
+    "answer": "No. Hoisting is allowed only if conventional means would be more hazardous or are not possible."
+   },
+   {
+    "t": "check",
+    "question": "Name the four operations where a personnel platform is not required.",
+    "answer": "Drill shafts up to and including 8 ft in diameter, pile driving, marine transfer, and storage-tank, shaft and chimney work."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.02",
+  "topic_id": "personnel-lifts",
+  "ord": 2,
+  "title": "Equipment set-up and required devices for personnel hoisting",
+  "skills": [
+   "personnel.equipment-criteria"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The crane has to be set up more strictly for a personnel lift than for an ordinary pick. Level and footing come first."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(c)(1)",
+    "text": "The equipment must be uniformly level, within one percent of level grade, and located on footing that a qualified person has determined to be sufficiently firm and stable."
+   },
+   {
+    "t": "text",
+    "text": "Practice: one percent is 1 ft of rise in 100 ft, or about 1/8 inch per foot. On a 10 ft frame, the two ends may differ by no more than about 1-1/4 inch. Check with the crane's level indicator or a level on the frame."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(c)(2)",
+    "text": "The amount of extension must be the same for all outriggers and stabilizers and in accordance with manufacturer procedures and load charts."
+   },
+   {
+    "t": "text",
+    "text": "Every outrigger or stabilizer must be extended and locked. Do not run a mixed or partial extension during a personnel lift. The diagram shows how mats spread the outrigger force over enough ground."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(c)(2)"
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "text",
+    "text": "When the occupied platform is stopped at its working position, engage the load and boom hoist brakes, the swing brakes, and the secondary brakes or locks (pawls, dogs or automatic secondary brakes)."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(d)(4)"
+   },
+   {
+    "t": "text",
+    "text": "**Required devices**:\n- Variable-angle boom (except derricks and articulating cranes): a boom angle indicator the operator can readily see, and a boom hoist limiting device.\n- Articulating crane: a properly functioning automatic overload protection device.\n- Luffing jib: a jib angle indicator and a jib hoist limiting device.\n- Telescoping boom: a boom length indicator or measuring marks on the boom.\n- Anti two-block device at all points where two-blocking could occur (pile driving has its own method).\n- Controlled load lowering: a system other than the hoist brake that regulates lowering speed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(d)(5)"
+   },
+   {
+    "t": "text",
+    "text": "Look at where the hook block meets the boom tip. That is the contact the anti two-block device prevents."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "two-blocking"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(d)(5)(vi)",
+    "text": "This system or device must be used when hoisting personnel."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(d)(5)(vii)",
+    "text": "If a device stops working properly during such operations, the operator must safely stop operations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(d)(5)(vii)",
+    "text": "Alternative measures are not permitted."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(d)(6)",
+    "text": "Direct attachment of a personnel platform to a luffing jib is prohibited."
+   },
+   {
+    "t": "check",
+    "question": "The anti two-block device fails with the platform aloft. Can a spotter stand in for it so the work can continue?",
+    "answer": "No. Stop safely, and do not resume until the device works again. Alternative measures are not permitted."
+   },
+   {
+    "t": "check",
+    "question": "How much may the crane be out of level?",
+    "answer": "No more than one percent of level grade (about 1/8 inch per foot)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.03",
+  "topic_id": "personnel-lifts",
+  "ord": 3,
+  "title": "Personnel platform design, construction and marking",
+  "skills": [
+   "personnel.platform-criteria"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A personnel platform is an engineered device. It is not a material box with people in it. A **qualified person familiar with structural design** must design both the platform and its attachment/suspension system."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(e)(2)",
+    "text": "The system used to connect the personnel platform to the equipment must allow the platform to remain within 10 degrees of level, regardless of boom angle."
+   },
+   {
+    "t": "text",
+    "text": "The suspension must also be designed to minimize tipping when occupants move around."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(e)(4)",
+    "text": "The personnel platform itself (excluding the guardrail system and personal fall arrest system anchorages), must be capable of supporting, without failure, its own weight and at least five times the maximum intended load."
+   },
+   {
+    "t": "text",
+    "text": "All welding must be done by a certified welder familiar with the weld grades, types and material in the platform design. Do not field-weld a repair or add an attachment without one."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(5)"
+   },
+   {
+    "t": "text",
+    "text": "**Enclosure and rails**: the platform needs a guardrail system meeting subpart M and a grab rail inside the entire perimeter, except at access gates."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(e)(6)",
+    "text": "must be enclosed at least from the toeboard to mid-rail with either solid construction material or expanded metal having openings no greater than 1/2 inch (1.27 cm)."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(7)"
+   },
+   {
+    "t": "text",
+    "text": "**Gates**: a gate must not swing outward. The one exception is a platform too small for an inward-swinging gate to allow safe entry, such as a 1-person platform. Every gate needs a device that prevents accidental opening."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(8)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(e)(8)(ii)",
+    "text": "Be equipped with a device that prevents accidental opening."
+   },
+   {
+    "t": "text",
+    "text": "**Other criteria**:\n- Enough headroom for occupants to stand upright.\n- Overhead protection when occupants are exposed to falling objects, in addition to hard hats. It must not block the operator's or occupants' view unless full protection is necessary.\n- All edges occupants can touch must be smooth enough to prevent injury."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(9)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(10)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(e)(11)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(e)(12)",
+    "text": "The weight of the platform and its rated capacity must be conspicuously posted on the platform with a plate or other permanent marking."
+   },
+   {
+    "t": "text",
+    "text": "The capacity calculations depend on this plate. If there is no plate, or it cannot be read, the platform is not ready to use."
+   },
+   {
+    "t": "check",
+    "question": "How level must the platform stay as the boom angle changes?",
+    "answer": "Within 10 degrees of level, regardless of boom angle."
+   },
+   {
+    "t": "check",
+    "question": "What two values must be permanently marked on the platform?",
+    "answer": "The platform's weight and its rated capacity."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.04",
+  "topic_id": "personnel-lifts",
+  "ord": 4,
+  "title": "Loading the platform: rated capacity and the 50 percent rule",
+  "skills": [
+   "personnel.loading"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Two separate limits apply. The **platform rated capacity** is on the platform's plate. The **crane limit** is 50 percent of the chart capacity. Both must be met."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(f)(1)",
+    "text": "The personnel platform must not be loaded in excess of its rated capacity."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(d)(1)",
+    "text": "The total load (with the platform loaded, including the hook, load line and rigging) must not exceed 50 percent of the rated capacity for the radius and configuration of the equipment, except during proof testing."
+   },
+   {
+    "t": "text",
+    "text": "For a boom-attached platform, the loaded platform weight must not exceed 50 percent of rated capacity. When people are hoisted without a platform (the exception cases), the total load must not exceed 50 percent, counting the hook, load line, rigging and anything else that adds load."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(d)(2)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(d)(3)"
+   },
+   {
+    "t": "text",
+    "text": "**Worked example (practice arithmetic)**. Chart capacity at the longest radius of the lift, in the configuration in use: 8,000 lb. Crane limit: 8,000 x 0.5 = 4,000 lb.\n- Platform (from plate): 1,000 lb\n- Two workers with tools: 2 x 250 = 500 lb\n- Materials: 200 lb\n- Hook block: 400 lb\n- Load line and rigging: 300 lb\n- Total: 2,400 lb. That is under 4,000 lb, so the crane limit is met.\nPlatform plate capacity: 800 lb. Occupants, tools and materials: 700 lb. That is under 800 lb, so the platform limit is met."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, see how to read the chart cell and use the next-longer radius when the actual radius falls between columns. That is standard practice."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "Radius changes as the boom moves. A lower boom angle gives a longer radius and a smaller capacity. Use the worst point of the lift route."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(f)(4)",
+    "text": "The number of employees occupying the personnel platform must not exceed the maximum number the platform was designed to hold or the number required to perform the work, whichever is less."
+   },
+   {
+    "t": "text",
+    "text": "Carry only employees, their tools and the materials needed for the work. Secure all materials and tools against displacement, and spread them evenly inside the platform."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(f)(2)(i)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(f)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(f)(2)(i)",
+    "text": "Platforms must not be used to hoist materials or tools when not hoisting personnel."
+   },
+   {
+    "t": "check",
+    "question": "Chart capacity is 6,000 lb. The loaded platform weighs 2,200 lb and the hook, line and rigging add 900 lb. Is the lift within the limit?",
+    "answer": "No. 3,100 lb is more than 3,000 lb (50 percent of 6,000)."
+   },
+   {
+    "t": "check",
+    "question": "The platform is designed for four people, but the job needs two. How many may ride?",
+    "answer": "Two, because the lesser number applies."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.05",
+  "topic_id": "personnel-lifts",
+  "ord": 5,
+  "title": "Attaching and rigging the personnel platform",
+  "skills": [
+   "personnel.rigging"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every link between the hoist line and the platform must be **closed and locked**, so nothing can slip out of an open throat."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(g)(1)(i)(A)",
+    "text": "Of a type that can be closed and locked, eliminating the throat opening."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(g)(1)(i)(B)",
+    "text": "Closed and locked when attached."
+   },
+   {
+    "t": "text",
+    "text": "This covers hooks on overhaul balls, lower load blocks, bridle legs and any other attachment component. Shackles used instead of hooks must be alloy anchor type. They need either a bolt, nut and retaining pin in place, or a screw pin secured against accidental removal. Any other detachable device must close and lock to the same standard."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(g)(1)(ii)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(g)(1)(iii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(g)(2)",
+    "text": "each bridle leg must be connected to a master link or shackle (see paragraph (g)(1) of this section) in a manner that ensures that the load is evenly divided among the bridle legs."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(g)(3)",
+    "text": "Where rotation resistant rope is used, the slings must be capable of supporting without failure at least ten times the maximum intended load."
+   },
+   {
+    "t": "text",
+    "text": "All other rigging hardware and hooks (wire rope, shackles, rings, master links) must support at least five times the maximum intended load applied or transmitted to that component."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(g)(3)"
+   },
+   {
+    "t": "text",
+    "text": "**Leg tension (physics)**. The flatter a bridle leg, the higher its tension. The diagram shows the factors: about 1.15 at 60 degrees, 1.4 at 45 degrees and 2.0 at 30 degrees from horizontal."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "sling-angle-tension"
+   },
+   {
+    "t": "text",
+    "text": "Worked example: a 2,400 lb loaded platform hangs on a 4-leg bridle. Shared evenly, each leg carries 600 lb vertically. At 60 degrees, each leg tension is about 600 x 1.15, or about 700 lb. The five-times requirement means each leg and its hardware must hold at least 5 x 700 = 3,500 lb without failure. At 30 degrees, tension doubles to 1,200 lb, so each leg needs 6,000 lb."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(g)(4)",
+    "text": "Eyes in wire rope slings must be fabricated with thimbles."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(g)(5)",
+    "text": "The bridles and associated rigging must not have been used for any purpose other than hoisting personnel."
+   },
+   {
+    "t": "text",
+    "text": "Practice: tag or store the platform bridle apart from general rigging so it never ends up on a material pick."
+   },
+   {
+    "t": "check",
+    "question": "A screw-pin shackle without a mousing or keeper connects the bridle to the hook. Is it acceptable?",
+    "answer": "No. The screw pin must be secured from accidental removal."
+   },
+   {
+    "t": "check",
+    "question": "The platform bridle was used once to lift a bundle of pipe. Can it still be used to hoist personnel?",
+    "answer": "No. It must not have been used for any purpose other than hoisting personnel."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.06",
+  "topic_id": "personnel-lifts",
+  "ord": 6,
+  "title": "Pre-lift meeting and trial lift",
+  "skills": [
+   "personnel.pre-lift-meeting",
+   "personnel.trial-lift"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The sequence at a new work location is: **pre-lift meeting**, then trial lift (with proof test if needed), then inspection, then the personnel lift."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(m)(1)",
+    "text": "Held to review the applicable requirements of this section and the procedures that will be followed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(m)(2)",
+    "text": "Attended by the equipment operator, signal person (if used for the lift), employees to be hoisted, and the person responsible for the task to be performed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(m)(3)",
+    "text": "Held prior to the trial lift at each new work location, and must be repeated for any employees newly assigned to the operation."
+   },
+   {
+    "t": "text",
+    "text": "Practice agenda: the justification for hoisting, the weights and the 50 percent calculation, the radius, the route, the signals and communication method, tie-off, entry and exit, wind and weather limits, and the stop-work triggers."
+   },
+   {
+    "t": "text",
+    "text": "The **trial lift** proves the route with the platform empty of people but loaded at least to its real weight."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(h)(1)",
+    "text": "A trial lift with the unoccupied personnel platform loaded at least to the anticipated liftweight must be made from ground level, or any other location where employees will enter the platform, to each location at which the platform is to be hoisted and positioned."
+   },
+   {
+    "t": "text",
+    "text": "If one set-up serves several locations, do separate trial lifts or one sequential lift. Either way, use the same method that will be used with people aboard."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(h)(2)",
+    "text": "The trial lift must be performed immediately prior to each shift in which personnel will be hoisted."
+   },
+   {
+    "t": "text",
+    "text": "Repeat it when the crane is moved and set up in a new location or returned to a previously used one. Also repeat it when the lift route changes, unless the competent person determines the new route presents no new factors affecting safety."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(2)"
+   },
+   {
+    "t": "text",
+    "text": "During the trial lift, the competent person must confirm:\n- Required safety devices and operational aids are activated and working.\n- Nothing interferes with the crane or the platform.\n- The load radius has been accurately determined."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(h)(3)(iii)",
+    "text": "The lift will not exceed 50 percent of the equipment's rated capacity at any time during the lift."
+   },
+   {
+    "t": "text",
+    "text": "Immediately afterward, the competent person visually inspects the equipment, base support or ground, and platform for any defect or adverse effect, and confirms the test weight has been removed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(4)"
+   },
+   {
+    "t": "check",
+    "question": "A new worker joins the platform crew at midday. What must happen?",
+    "answer": "The pre-lift meeting must be repeated for that newly assigned employee."
+   },
+   {
+    "t": "check",
+    "question": "The crane was moved overnight back to yesterday's spot. Is a new trial lift needed?",
+    "answer": "Yes. A return to a previously used location requires a repeat trial lift."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.07",
+  "topic_id": "personnel-lifts",
+  "ord": 7,
+  "title": "Proof test and the check before each lift",
+  "skills": [
+   "personnel.proof-test",
+   "personnel.trial-lift"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **proof test** loads the platform and rigging beyond their rating to show they will hold. It is the one time the 50 percent crane limit does not apply."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(j)(1)",
+    "text": "At each jobsite, prior to hoisting employees on the personnel platform, and after any repair or modification, the platform and rigging must be proof tested to 125 percent of the platform's rated capacity."
+   },
+   {
+    "t": "text",
+    "text": "Worked example (practice arithmetic): the plate shows a rated capacity of 800 lb. The test load is 800 x 1.25 = 1,000 lb, spread evenly on the platform. The proof test may be done at the same time as the trial lift. Confirm the crane chart covers the platform weight plus the test load, hook and rigging at the test radius."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(j)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(j)(2)",
+    "text": "The platform must be lowered by controlled load lowering, braked, and held in a suspended position for a minimum of five minutes with the test load evenly distributed on the platform."
+   },
+   {
+    "t": "text",
+    "text": "Afterward, a competent person inspects the platform and rigging. If deficiencies that pose a hazard are found, correct them, repeat the test, and have the competent person pass it again."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(j)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(j)(4)",
+    "text": "Personnel hoisting must not be conducted until the competent person determines that the platform and rigging have successfully passed the proof test."
+   },
+   {
+    "t": "text",
+    "text": "**Immediately before each lift**, with people aboard, do a short hold-up check."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(h)(5)(i)",
+    "text": "The platform must be hoisted a few inches with the personnel and materials/tools on board and inspected by a competent person to ensure that it is secure and properly balanced."
+   },
+   {
+    "t": "text",
+    "text": "The competent person must also confirm:\n- Hoist ropes are free of deficiencies.\n- Multiple part lines are not twisted around each other.\n- The primary attachment is centered over the platform.\n- If the load rope went slack, all ropes are properly seated on drums and in sheaves."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(5)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(h)(6)",
+    "text": "Any condition found during the trial lift and subsequent inspection(s) that fails to meet a requirement of this standard or otherwise creates a safety hazard must be corrected before hoisting personnel."
+   },
+   {
+    "t": "check",
+    "question": "Platform rated capacity is 1,200 lb. What is the proof test load, and how long is it held?",
+    "answer": "1,500 lb, held suspended for at least five minutes."
+   },
+   {
+    "t": "check",
+    "question": "A welded handrail on the platform was repaired after the proof test. What is required?",
+    "answer": "A new proof test to 125 percent of rated capacity before personnel are hoisted."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.08",
+  "topic_id": "personnel-lifts",
+  "ord": 8,
+  "title": "Work practices while personnel are aloft",
+  "skills": [
+   "personnel.work-practices"
+  ],
+  "body": [
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(1)",
+    "text": "Hoisting of the personnel platform must be performed in a slow, controlled, cautious manner, with no sudden movements of the equipment or the platform."
+   },
+   {
+    "t": "text",
+    "text": "**Occupants must**:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(2)(i)",
+    "text": "Keep all parts of the body inside the platform during raising, lowering, and horizontal movement."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(2)(ii)",
+    "text": "Not stand, sit on, or work from the top or intermediate rail or toeboard, or use any other means/device to raise their working height."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(2)(iii)",
+    "text": "Not pull the platform out of plumb in relation to the hoisting equipment."
+   },
+   {
+    "t": "text",
+    "text": "The body-inside rule does not apply when an occupant must position the platform or is acting as signal person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(3)",
+    "text": "Before employees exit or enter a hoisted personnel platform that is not landed, the platform must be secured to the structure where the work is to be performed, unless the employer can demonstrate that securing to the structure would create a greater hazard."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(4)",
+    "text": "If the platform is tied to the structure, the operator must not move the platform until the operator receives confirmation that it is freely suspended."
+   },
+   {
+    "t": "text",
+    "text": "Use tag lines when needed to control the platform. If the platform has no controls, the operator stays at the controls, on site and in view of the equipment, the whole time the platform is occupied. If it has controls, the occupant using them must be qualified in their use, the operator must be at controls that include boom and swing, and the platform operating manual must be in the platform or on the equipment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(5)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(6)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(7)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(8)(i)",
+    "text": "When wind speed (sustained or gusts) exceeds 20 mph at the personnel platform, a qualified person must determine if, in light of the wind conditions, it is not safe to lift personnel."
+   },
+   {
+    "t": "text",
+    "text": "If the qualified person finds it unsafe because of wind, other dangerous weather or any other danger, the lift does not start, or it is ended if already under way."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(8)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(9)",
+    "text": "Employees being hoisted must remain in direct communication with the signal person (where used), or the operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(10)(i)",
+    "text": "The system must be attached to a structural member within the personnel platform."
+   },
+   {
+    "t": "text",
+    "text": "Except over water, every occupant uses a personal fall arrest system. Over or near water, the over-water rules apply instead."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(10)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(11)(i)",
+    "text": "No lifts must be made on any other of the equipment's load lines while personnel are being hoisted, except in pile driving operations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(11)(ii)",
+    "text": "Loads are permitted to be hoisted by such a winch while employees occupy the personnel platform only where the load on the winch line does not exceed 500 pounds and does not exceed the rated capacity of the winch and platform."
+   },
+   {
+    "t": "text",
+    "text": "**Traveling**: hoisting people while the crane travels is prohibited. The exceptions are fixed-rail equipment, or cases where the employer shows there is no less hazardous way. The second exception never covers rubber-tired equipment. Where travel is allowed:\n- Travel stays on a fixed track or a designed, firm, level runway.\n- Travel is limited to boom length.\n- The boom stays parallel to the direction of travel unless it is safer otherwise.\n- A complete trial run is done first.\nDerricks must not travel with personnel hoisted."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(12)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(k)(13)",
+    "text": "Derricks are prohibited from traveling while personnel are hoisted."
+   },
+   {
+    "t": "check",
+    "question": "Gusts reach 25 mph at the platform. What is required?",
+    "answer": "A qualified person must decide whether lifting is unsafe. If it is, the lift must not begin or must be ended."
+   },
+   {
+    "t": "check",
+    "question": "Where does a platform occupant attach the fall arrest lanyard?",
+    "answer": "To a structural member within the personnel platform."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.09",
+  "topic_id": "personnel-lifts",
+  "ord": 9,
+  "title": "Power lines and special personnel-hoisting operations",
+  "skills": [
+   "personnel.special-cases"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Personnel hoisting has its own **power line distances**, which are fixed and stricter than the general Table A approach used for other lifts."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(n)",
+    "text": "Hoisting personnel within 20 feet of a power line that is up to 350 kV, and hoisting personnel within 50 feet of a power line that is over 350 kV, is prohibited, except for work covered by subpart V of this part (Power Transmission and Distribution)."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, look at the 20 ft zone around the line. For a personnel lift, 20 ft (up to 350 kV) or 50 ft (over 350 kV) is a hard prohibition. Encroachment measures do not make a closer personnel lift allowable."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "power-line-table-a-zones"
+   },
+   {
+    "t": "text",
+    "text": "**Drill shafts up to and including 8 ft in diameter**: the employee rides in a personnel platform or a boatswain's chair. With a chair:\n- A signal person is stationed at the shaft opening.\n- Descent and ascent are slow and controlled.\n- The full body harness is attached independent of the crane.\n- The chair supports its own weight plus at least five times the maximum intended load."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(o)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(o)(3)(vii)",
+    "text": "No more than one person must be hoisted at a time."
+   },
+   {
+    "t": "text",
+    "text": "**Pile driving**: a platform or boatswain's chair is used, and no anti two-block device is required. Instead:\n- Lattice boom cranes: mark the cable at a stopping point the operator can see, or use a spotter in direct communication with the operator.\n- Telescopic boom cranes: mark the cable and also use a spotter.\nWith a chair, the harness attaches independently to the lower load block or overhaul ball, and only one person is hoisted at a time. Pile driving is also the only case where other load lines may be used while people are hoisted."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(p)(2)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(p)(4)"
+   },
+   {
+    "t": "text",
+    "text": "**Marine transfer**: the employee rides in a personnel platform or a marine-hoisted personnel transfer device. The device carries workers only and no more than its design number."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(r)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(r)(3)(iv)",
+    "text": "Each employee must wear a U.S. Coast Guard personal flotation device approved for industrial use."
+   },
+   {
+    "t": "text",
+    "text": "**Storage-tank, shaft and chimney work**: a platform is required unless the employer shows it is infeasible. Then a boatswain's chair is used, with one person at a time and slow, controlled travel. The harness is attached independent of the crane. If there is no adequate structure for attachment, it goes to the lower load block or overhaul ball."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(s)"
+   },
+   {
+    "t": "text",
+    "text": "Whichever device is used, the 50 percent rule, the trial lift and the pre-lift meeting still apply. Each operation's paragraph lists exactly which platform rules carry over."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(o)(3)(i)"
+   },
+   {
+    "t": "check",
+    "question": "A personnel lift must pass 30 ft from a 500 kV line. Allowed?",
+    "answer": "No, unless it is subpart V work. Over 350 kV, personnel may not be hoisted within 50 ft."
+   },
+   {
+    "t": "check",
+    "question": "For pile driving with a telescopic boom crane, what replaces the anti two-block device?",
+    "answer": "A clearly marked cable and a spotter in direct communication with the operator. Both are required."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.personnel-lifts.10",
+  "topic_id": "personnel-lifts",
+  "ord": 10,
+  "title": "Common personnel-hoisting mistakes",
+  "skills": [
+   "personnel.loading",
+   "personnel.equipment-criteria",
+   "personnel.trial-lift",
+   "personnel.rigging",
+   "personnel.work-practices"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "These are the errors that most often break the rules:\n- Leaving the hook block, load line or rigging out of the 50 percent total.\n- Checking capacity at the starting radius instead of the longest radius on the route."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(h)(3)(iv)",
+    "text": "The load radius to be used during the lift has been accurately determined."
+   },
+   {
+    "t": "text",
+    "text": "- Setting outriggers at mixed extensions, or setting up on ground no qualified person has evaluated.\n- Continuing after a device fails by using a spotter or another workaround.\n- Skipping the shift trial lift because the lift worked yesterday."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(c)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(d)(5)(vii)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(2)"
+   },
+   {
+    "t": "text",
+    "text": "- Leaving the test weight in the platform after the trial lift. The competent person must confirm it was removed.\n- Using a platform with no posted weight and capacity, or one repaired without a new proof test."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(h)(4)(ii)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(j)(1)"
+   },
+   {
+    "t": "text",
+    "text": "- Using an open hook, an unsecured screw-pin shackle, or a bridle that has been used for material picks."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(g)"
+   },
+   {
+    "t": "text",
+    "text": "- Moving the platform before the operator is told it is freely suspended from the structure.\n- Making a material pick on another load line while people are aloft."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(4)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1431(k)(11)(i)"
+   },
+   {
+    "t": "text",
+    "text": "- Using the platform as a material box between personnel lifts."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1431(f)(2)(i)",
+    "text": "Platforms must not be used to hoist materials or tools when not hoisting personnel."
+   },
+   {
+    "t": "text",
+    "text": "Practice: use a written checklist built from these points at each pre-lift meeting, and have the competent person sign it off before anyone boards."
+   },
+   {
+    "t": "check",
+    "question": "The 50 percent check used 2,000 lb for the loaded platform but left out a 500 lb hook block. Chart capacity is 4,800 lb. Is the lift within the limit?",
+    "answer": "No. The total is 2,500 lb, which is more than the 2,400 lb limit."
+   },
+   {
+    "t": "check",
+    "question": "What must the competent person confirm about the test weight after the trial lift?",
+    "answer": "That it has been removed."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f0265a96fc80b23162df",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "efefa2787d60a04687bcc074ca241a42177ba7f67124708c4ee9bdd4145e2fd2",
+   "output_sha256": "c3ceba23eb35e852807487da1c9919a1e8e902dad4a70a8386de2052b0e73d54",
+   "created_at": "2026-11-27T22:30:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]
