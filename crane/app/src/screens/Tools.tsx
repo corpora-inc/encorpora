@@ -46,7 +46,8 @@ export function ClearanceTool() {
     const kv = parseNumber(text);
     const b = kv === null ? null : bandFor(kv);
     setInputError(b === null);
-    if (b) setBand(b);
+    // A bad entry clears the result: never leave an old distance next to an error.
+    setBand(b);
   };
   return (
     <Page title={t("tools.clearance")} up={{ to: "/tools", label: t("tab.tools") }}>
@@ -162,6 +163,11 @@ export function LoadChartTool() {
 
 export function LoadChartPractice() {
   const { seed = "1" } = useParams();
+  // A new seed is a new problem: fresh state, nothing carried over from the last one.
+  return <LoadChartProblem key={seed} seed={seed} />;
+}
+
+function LoadChartProblem({ seed }: { seed: string }) {
   const t = useT();
   const navigate = useNavigate();
   const chart = FIXTURE_CHART;

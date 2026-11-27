@@ -36,7 +36,12 @@ export function Diagram({ id }: { id: string }) {
   if (!d) return null;
   return (
     <figure className="m-0 rounded-panel border border-line bg-surface p-4">
-      {/* Pack SVG is static data from the signed pack, rendered as markup. */}
+      {/*
+        Diagram SVG is rendered as markup. Today it comes only from the bundled
+        sample pack (scripts/fixture/authored.mjs, reviewed: no script, handlers,
+        href or foreignObject). Packs opened at runtime must be sanitized at
+        bake time and checked again here before this path takes them.
+      */}
       <div className="diagram" role="img" aria-label={d.alt} dangerouslySetInnerHTML={{ __html: d.svg }} />
       <figcaption className="mt-3 text-small text-ink-2">{d.caption}</figcaption>
     </figure>

@@ -11,6 +11,9 @@ const Q = (section_id, text) => ({ t: "quote", section_id, text });
 const C = (section_id) => ({ t: "cite", section_id });
 
 const S1408 = "29cfr1926.1408";
+const S1409A = "29cfr1926.1409(a)";
+/** 1926.1409(a): over 350 kV up to 1,000 kV, every "20 feet" in 1926.1407-1408 becomes 50 feet. */
+const Q1409A = "For power lines at or below 1000 kV, wherever the distance “20 feet” is specified, the distance “50 feet” must be substituted; and";
 
 export const topics = [
   { topic_id: "power-lines", parent_id: null, ord: 1, title: "Power lines", summary: "Work zones, clearance distances and the precautions that keep the boom, load line and load away from energized lines." },
@@ -67,13 +70,14 @@ export const terms = [
 
 export const facts = [
   { fact_id: "tablea-50", section_id: S1408, kind: "clearance", statement: "Lines up to 50 kV: at least 10 feet.", quote: "up to 50 10", value: "10", unit: "ft" },
-  { fact_id: "20ft-check", section_id: "29cfr1926.1408(a)(2)", kind: "clearance", statement: "If anything could get within 20 feet of a power line, choose Option 1, 2 or 3.", quote: "could get closer than 20 feet to a power line", value: "20", unit: "ft" },
+  { fact_id: "20ft-check", section_id: "29cfr1926.1408(a)(2)", kind: "clearance", statement: "Up to 350 kV: if anything could get within 20 feet of a power line, choose Option 1, 2 or 3.", quote: "could get closer than 20 feet to a power line", value: "20", unit: "ft" },
+  { fact_id: "50ft-over-350", section_id: S1409A, kind: "clearance", statement: "Over 350 kV up to 1,000 kV, every 20 feet in the power line rules becomes 50 feet.", quote: Q1409A, value: "50", unit: "ft" },
   { fact_id: "stop-signal", section_id: "29cfr1926.1417(y)", kind: "requirement", statement: "Obey any stop signal, whoever gives it.", quote: "The operator must obey a stop (or emergency stop) signal, irrespective of who gives it.", value: null, unit: null },
 ];
 
 export const explanations = [
-  { section_id: S1408, level: "trainee", body: "Before work starts, find out whether any part of the crane, the load line or the load could get within 20 feet of a power line. If it could, the line is either deenergized and grounded, or you keep a set distance from it with planned precautions. Table A gives that distance by voltage." },
-  { section_id: S1408, level: "operator", body: "Work zone first, then the 20-foot test, then one of three options: deenergize and ground, hold 20 feet, or hold the Table A distance for the line's voltage. Options 2 and 3 bring the paragraph (b) precautions: planning meeting, non-conductive tag lines, an elevated warning line or barricade, and at least one more measure such as a dedicated spotter." },
+  { section_id: S1408, level: "trainee", body: "Before work starts, get the line's voltage and find out whether any part of the crane, the load line or the load could get within 20 feet of it (50 feet if the line is over 350 kV). If it could, the line is either deenergized and grounded, or you keep a set distance from it with planned precautions. Table A gives that distance by voltage." },
+  { section_id: S1408, level: "operator", body: "Work zone and voltage first, then the 20-foot test (50 feet over 350 to 1,000 kV, 1926.1409), then one of three options: deenergize and ground, hold that 20 or 50 feet, or hold the Table A distance for the line's voltage. Options 2 and 3 bring the paragraph (b) precautions: planning meeting, non-conductive tag lines, an elevated warning line or barricade, and at least one more measure such as a dedicated spotter." },
   { section_id: S1408, level: "inspector", body: "Check the employer's work zone definition, the voltage determination from the utility, the option chosen and the paragraph (b) measures actually in place. A warning line the operator cannot see requires a dedicated spotter in addition to another (b)(4) measure." },
   { section_id: "29cfr1926.1412", level: "trainee", body: "A competent person looks the crane over before or during every shift. If something looks wrong, they decide whether it is a safety hazard. If it is, the crane is out of service until it is fixed." },
   { section_id: "29cfr1926.1412", level: "operator", body: "Shift inspection is visual: controls, drives, pressurized lines, hydraulic level, hooks and latches, reeving, wire rope, electrical, tires, ground, level, cab glass, rails and safety devices. Safety device and operational aid problems follow 1926.1415 and 1926.1416 before use." },
@@ -87,10 +91,13 @@ export const lessons = [
       T("Every lift near overhead lines starts with one question: could any part of the crane, load line or load get within 20 feet of the line?"),
       Q("29cfr1926.1408(a)(2)", "Determine if any part of the equipment, load line or load (including rigging and lifting accessories), if operated up to the equipment's maximum working radius in the work zone, could get closer than 20 feet to a power line."),
       C("29cfr1926.1408(a)(2)"),
+      T("That is the test up to 350 kV. For a line over 350 kV up to 1,000 kV, the 20 feet becomes 50 feet. So get the voltage from the utility first."),
+      Q(S1409A, Q1409A),
+      C(S1409A),
       T("The work zone is either a marked boundary the operator may not cross, or the full circle around the crane out to its maximum working radius."),
       Q("29cfr1926.1408(a)(1)(ii)", "Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working radius."),
       C("29cfr1926.1408(a)(1)(ii)"),
-      T("If the answer is yes, pick one of three options: deenergize and ground the line, keep 20 feet, or keep the Table A distance for the line's voltage."),
+      T("If the answer is yes, pick one of three options: deenergize and ground the line, keep 20 feet (50 feet over 350 kV), or keep the Table A distance for the line's voltage."),
       C("29cfr1926.1408(a)(2)(i)"),
       C("29cfr1926.1408(a)(2)(ii)"),
       C("29cfr1926.1408(a)(2)(iii)"),
@@ -156,9 +163,11 @@ const mc = (q_id, skill_id, stem, choices, answer, rationales, section_ids, diff
 });
 
 export const questions = [
-  mc("q.pl.20ft", "pl.zone", "Before operations near a power line, what distance triggers the choice of Option 1, 2 or 3?", ["10 feet", "15 feet", "20 feet", "50 feet"], 2,
-    ["10 feet is the Table A distance for lines up to 50 kV, not the trigger.", "15 feet is the Table A distance for over 50 to 200 kV.", "Correct. If anything could get closer than 20 feet, one of the three options is required.", "50 feet is not in this test."], ["29cfr1926.1408(a)(2)"], 0.3),
-  mc("q.pl.20ft.v1", "pl.zone", "The employer finds the load line could come within 18 feet of a line at maximum working radius. What is required?", ["Nothing; 18 feet is enough", "Meet Option 1, 2 or 3", "Only a planning meeting", "Lower the boom and proceed"], 1,
+  mc("q.pl.20ft", "pl.zone", "Before operations near a 138 kV power line, what distance triggers the choice of Option 1, 2 or 3?", ["10 feet", "15 feet", "20 feet", "50 feet"], 2,
+    ["10 feet is the Table A distance for lines up to 50 kV, not the trigger.", "15 feet is the Table A distance for over 50 to 200 kV.", "Correct. Up to 350 kV, if anything could get closer than 20 feet, one of the three options is required.", "50 feet replaces 20 feet only for lines over 350 kV (1926.1409(a))."], ["29cfr1926.1408(a)(2)", S1409A], 0.3),
+  mc("q.pl.50ft", "pl.zone", "Before operations near a 500 kV power line, what distance triggers the choice of Option 1, 2 or 3?", ["20 feet", "25 feet", "45 feet", "50 feet"], 3,
+    ["20 feet is the trigger only up to 350 kV.", "25 feet is the Table A clearance for over 350 to 500 kV, not the trigger.", "45 feet is the Table A clearance for over 750 to 1,000 kV.", "Correct. Over 350 kV up to 1,000 kV, every 20 feet becomes 50 feet."], [S1409A, "29cfr1926.1408(a)(2)"], 0.5, "q.pl.20ft"),
+  mc("q.pl.20ft.v1", "pl.zone", "The employer finds the load line could come within 18 feet of a 69 kV line at maximum working radius. What is required?", ["Nothing; 18 feet is enough", "Meet Option 1, 2 or 3", "Only a planning meeting", "Lower the boom and proceed"], 1,
     ["18 feet is inside the 20-foot test.", "Correct. Closer than 20 feet means Option 1, 2 or 3.", "A planning meeting is one of the paragraph (b) precautions, not the whole requirement.", "Lowering the boom does not satisfy the rule by itself."], ["29cfr1926.1408(a)(2)"], 0.4, "q.pl.20ft"),
   mc("q.pl.zone", "pl.zone", "One way to define the work zone is the area 360 degrees around the equipment out to:", ["50 feet", "the boom tip at minimum radius", "the equipment's maximum working radius", "the nearest power line"], 2,
     ["No fixed distance is used.", "Minimum radius would understate the zone.", "Correct.", "The line is what is assessed against the zone, not its edge."], ["29cfr1926.1408(a)(1)(ii)"], 0.35),
@@ -228,11 +237,14 @@ export const questions = [
 export const answers = [
   {
     answer_id: "a.powerline-clearance", question: "How close can I get to a power line?", level: null,
-    aliases: ["power line clearance", "how far from power lines", "minimum distance from power lines", "clearance from energized lines", "how close to power lines", "distance from overhead lines", "20 foot rule", "i need to learn about clearance"],
+    aliases: ["power line clearance", "50 foot rule", "over 350 kv", "how far from power lines", "minimum distance from power lines", "clearance from energized lines", "how close to power lines", "distance from overhead lines", "20 foot rule", "i need to learn about clearance"],
     body: [
-      T("Start with the 20-foot test. If any part of the crane, load line or load could get closer than 20 feet at maximum working radius, you need one of three options."),
+      T("Get the line's voltage first. Then the 20-foot test: if any part of the crane, load line or load could get closer than 20 feet at maximum working radius, you need one of three options."),
       Q("29cfr1926.1408(a)(2)", "could get closer than 20 feet to a power line. If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section"),
       C("29cfr1926.1408(a)(2)"),
+      T("Over 350 kV up to 1,000 kV, the test is 50 feet."),
+      Q(S1409A, Q1409A),
+      C(S1409A),
       T("Option 3 uses Table A, by voltage."),
       { t: "diagram", diagram_id: "clearance-bands" },
       Q(S1408, "Note: The value that follows “to” is up to and includes that value."),
@@ -247,6 +259,9 @@ export const answers = [
       T("The rule starts at 20 feet. If any part of the crane, the load line or the load could come within 20 feet of a line, special steps are required before work starts."),
       Q("29cfr1926.1408(a)(2)", "could get closer than 20 feet to a power line"),
       C("29cfr1926.1408(a)(2)"),
+      T("For a line over 350 kV, that 20 feet becomes 50 feet."),
+      Q(S1409A, Q1409A),
+      C(S1409A),
       T("One option uses Table A, which sets a distance by the line's voltage."),
       { t: "diagram", diagram_id: "clearance-bands" },
       C(S1408),
@@ -388,10 +403,10 @@ export const procedures = [
       step("Hooks and latches: deformation, cracks, excessive wear, or damage from chemicals or heat.", "pass_fail", ["29cfr1926.1412(d)(1)(v)"], sameDetail("Check throat opening, twist and the latch closing fully. Compare against the manufacturer's criteria.", "Look for a bent or twisted hook and a latch that does not snap shut."), OOS),
       step("Wire rope reeving: matches the manufacturer's specifications.", "pass_fail", ["29cfr1926.1412(d)(1)(vi)"], sameDetail("Confirm parts of line and reeving pattern against the chart for today's configuration."), OOS),
       step("Wire rope: inspect in accordance with 1926.1413(a).", "pass_fail", ["29cfr1926.1412(d)(1)(vii)", "29cfr1926.1413(a)(1)"], sameDetail("Running and standing ropes likely to be used this shift. Look for broken wires, kinks, crushing and corrosion."), def(
-        "Wire rope deficiencies follow 1926.1413.",
-        "Determine whether the deficiency is a safety hazard under 1926.1413 before using the rope.",
-        "29cfr1926.1413(a)(1)",
-        "The inspection must consist of observation of wire ropes (running and standing) that are likely to be in use during the shift for apparent deficiencies",
+        "Wire rope findings follow the removal-from-service rules in 1926.1413(a)(4). The competent person decides at once whether it is a safety hazard.",
+        "If it is, do not use that rope until the conditions in 1926.1413(a)(4) are met.",
+        "29cfr1926.1413(a)(4)(i)",
+        "an immediate determination must be made by the competent person as to whether the deficiency constitutes a safety hazard",
       )),
       step("Electrical apparatus: malfunction, excessive deterioration, dirt or moisture.", "pass_fail", ["29cfr1926.1412(d)(1)(viii)"], sameDetail("Lights, horn, gauges and switches work; no moisture in panels."), OOS),
       step("Tires (when in use): proper inflation and condition.", "value", ["29cfr1926.1412(d)(1)(ix)"], sameDetail("Record the lowest tire pressure you measured, in psi. Compare with the manufacturer's value.", "Write down the lowest tire pressure you read, in psi."), OOS),
@@ -414,12 +429,12 @@ export const procedures = [
   },
   {
     proc_id: "power-line-check", kind: "planning", title: "Power line check before operations",
-    summary: "Identify the work zone, apply the 20-foot test, choose an option and put the precautions in place.",
+    summary: "Identify the work zone, get the voltage, apply the 20-foot test (50 feet over 350 kV), choose an option and put the precautions in place.",
     roles: ["operator", "inspector", "trainee"],
     steps: [
       step("Identify the work zone: marked boundaries, or 360 degrees out to maximum working radius.", "pass_fail", ["29cfr1926.1408(a)(1)"], sameDetail("Write down which method you used."), def("The work zone must be identified before operations.", "Mark boundaries or use the full 360-degree zone.", "29cfr1926.1408(a)(1)(ii)", "Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working radius.")),
-      step("Could any part of the equipment, load line or load get closer than 20 feet to a power line?", "pass_fail", ["29cfr1926.1408(a)(2)"], sameDetail("Pass means no line within 20 feet of the work zone. A finding means one of Option 1, 2 or 3 applies."), def("Closer than 20 feet requires Option 1, 2 or 3.", "Deenergize and ground, keep 20 feet, or keep the Table A distance with the paragraph (b) precautions.", "29cfr1926.1408(a)(2)", "could get closer than 20 feet to a power line. If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section")),
-      step("Line voltage, confirmed with the utility (kV).", "value", ["29cfr1926.1408(a)(2)(iii)"], sameDetail("Use the Tools tab to look up the Table A distance for this voltage.")),
+      step("Line voltage, confirmed with the utility (kV).", "value", ["29cfr1926.1408(a)(2)(iii)"], sameDetail("Get it from the utility before anything else. The trigger distance and the Table A clearance both depend on it; the Tools tab looks them up.")),
+      step("Could any part of the equipment, load line or load get closer than 20 feet to the line (50 feet if it is over 350 kV)?", "pass_fail", ["29cfr1926.1408(a)(2)", S1409A], sameDetail("Pass means no line within 20 feet of the work zone, or 50 feet for a line over 350 kV up to 1,000 kV. A finding means one of Option 1, 2 or 3 applies. Over 1,000 kV the utility or a registered professional engineer sets the distance."), def("Inside the trigger distance (20 feet, or 50 feet over 350 kV) requires Option 1, 2 or 3.", "Deenergize and ground, keep 20 feet (50 feet over 350 kV), or keep the Table A distance with the paragraph (b) precautions.", "29cfr1926.1408(a)(2)", "could get closer than 20 feet to a power line. If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section")),
       step("Planning meeting held with the operator and workers in the area.", "pass_fail", ["29cfr1926.1408(b)(1)"], sameDetail("Review the line's location and the steps to prevent encroachment."), def("A planning meeting is required for Option 2 or 3.", "Hold the meeting before operations.", "29cfr1926.1408(b)(1)", "Conduct a planning meeting with the operator and the other workers who will be in the area of the equipment or load")),
       step("Tag lines, if used, are non-conductive.", "pass_fail", ["29cfr1926.1408(b)(2)"], sameDetail("Check the tag line material."), def("Conductive tag lines are not allowed here.", "Replace with non-conductive tag lines.", "29cfr1926.1408(b)(2)", "If tag lines are used, they must be non-conductive.")),
       step("Elevated warning line, barricade or line of signs in view of the operator.", "photo", ["29cfr1926.1408(b)(3)"], sameDetail("Photograph it from the operator's seat if you can.")),

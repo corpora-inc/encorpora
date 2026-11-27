@@ -300,6 +300,7 @@ try {
     await page.getByText("15 ft").first().waitFor();
     await page.getByLabel("Line voltage (nominal, AC)").fill("-3");
     await page.getByText("Enter a voltage above 0, in kV.").waitFor();
+    await page.getByText("Enter a voltage or pick a band.").waitFor(); // the old distance is gone
     await page.goto(base + "/tools/load-chart/practice/demo");
     await page.getByRole("button", { name: "Check" }).click();
     await page.getByText("Enter the capacity as a number of pounds.").waitFor();
@@ -308,6 +309,10 @@ try {
     await page.getByRole("button", { name: "Check" }).click();
     await page.getByText("Gross rated capacity:").waitFor();
     await page.screenshot({ path: path.join(out, "flow-load-chart-practice.png"), fullPage: true });
+    // A new problem starts clean, even when reached by the tab rather than "Next problem".
+    await page.getByRole("navigation", { name: "Load chart modes" }).getByRole("link", { name: "Practice" }).click();
+    await page.getByRole("button", { name: "Check" }).waitFor();
+    assert.equal(await page.getByLabel("Gross rated capacity from the chart").inputValue(), "");
     await context.close();
     checks++;
   }

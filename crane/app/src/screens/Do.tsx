@@ -151,13 +151,16 @@ function StepControls({ run, step, index }: { run: Run; step: ProcStep; index: n
     try {
       const id = `${run.id}-${index}-${Date.now().toString(36)}`;
       await savePhoto(id, await shrinkImage(file));
-      set({ photoIds: [...rec.photoIds, id] });
+      // Read the list at write time: another photo may have landed while this one saved.
+      const current = useRuns.getState().runs[run.id]?.steps[index]?.photoIds ?? [];
+      set({ photoIds: [...current, id] });
     } catch (e) {
       reportError("do.photo", e, t("do.photo.error"));
     }
   };
   const removePhoto = async (id: string) => {
-    set({ photoIds: rec.photoIds.filter((p) => p !== id) });
+    const current = useRuns.getState().runs[run.id]?.steps[index]?.photoIds ?? [];
+    set({ photoIds: current.filter((p) => p !== id) });
     try {
       await deletePhotos([id]);
     } catch (e) {
