@@ -144,4 +144,5 @@ corpan/infra/codes/seed.local.json
 amp/src/server/main.mjs
 amp/src/workbook/compute-worker.mjs
 amp/src/acquisition/cli.mjs
+amp/src/research/export-cli.mjs
 amp/src/schools/demo/simulate-worker.mjs

@@ -74,6 +74,7 @@ The existing `ci-gate` aggregates results; no path-specific job is an independen
 - `src/web` provides the responsive learner interface and browser OIDC sign-in.
 - `src/commerce` separates order approval, delivery, settlement, refund, and student access grants.
 - `src/funding` records US public-funding research, sources, and separate approval gates.
+- `src/research` holds study enrolment and the [research export](docs/research-export.md): de-identified, encrypted study extracts, run as their own Job.
 
 The server accepts numeric answers and fractions. It does not yet grade general symbolic expressions, free-form proofs, or interactive constructions.
 
