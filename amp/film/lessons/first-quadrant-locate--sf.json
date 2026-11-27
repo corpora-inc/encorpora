@@ -1,0 +1,834 @@
+{
+  "id": "first-quadrant-locate--sf",
+  "title": "The coordinate plane",
+  "skill": "coordinate-first-quadrant",
+  "teaches": [
+    "first-quadrant-coordinates",
+    "coordinate-terms-slots",
+    "point-on-axis-sentence",
+    "coordinate-move",
+    "coordinate-context-points"
+  ],
+  "cast": { "teacher": {}, "learner": {} },
+  "shots": [
+    {
+      "figure": {
+        "view": [-1.1, -1.2, 8.7, 7.7],
+        "points": {
+          "O": [0, 0],
+          "gTL": [0, 7],
+          "mA": [-0.9, -1.0], "mB": [8.5, -1.0], "mC": [8.5, 7.5], "mD": [-0.9, 7.5],
+          "i1": [0.6, 0.8], "i2": [2.4, 0.3], "i3": [5.2, 0.5], "i4": [7.4, 1.4], "i5": [7.6, 3.6],
+          "i6": [7.0, 5.8], "i7": [4.6, 6.6], "i8": [2.0, 6.3], "i9": [0.5, 4.6], "i10": [0.3, 2.4],
+          "pondC": [6.7, 1.5],
+          "tAb": [5.6, 4.4], "tAc": [5.6, 5.3],
+          "tBb": [1.6, 4.9], "tBc": [1.6, 5.8],
+          "xA1": [2.7, 3.7], "xA2": [3.3, 4.3], "xB1": [2.7, 4.3], "xB2": [3.3, 3.7],
+          "W": [0, 0], "V": [0, 0], "W2": [0, 0], "V2": [0, 0],
+          "X0": [0, 0], "X1": [1, 0], "X2": [2, 0], "X3": [3, 0],
+          "XM1": [0.5, 0.28], "XM2": [1.5, 0.28], "XM3": [2.5, 0.28],
+          "Y0": [3, 0], "Y1": [3, 1], "Y2": [3, 2], "Y3": [3, 3], "Y4": [3, 4],
+          "YM1": [3.28, 0.5], "YM2": [3.28, 1.5], "YM3": [3.28, 2.5], "YM4": [3.28, 3.5],
+          "cx1": [0.5, 0.66], "cx2": [1.5, 0.66], "cx3": [2.5, 0.66],
+          "cu1": [3.62, 0.5], "cu2": [3.62, 1.5], "cu3": [3.62, 2.5], "cu4": [3.62, 3.5],
+          "T": [3, 4], "Tn": [3, 4.25], "T2": [4, 3]
+        },
+        "parts": [
+          { "id": "map", "poly": ["mA", "mB", "mC", "mD"], "fill": "paper", "ink": "wood", "w": 3, "start": true },
+          { "id": "island", "poly": ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9", "i10"], "fill": "gold-fill", "ink": "gold", "w": 1.5, "start": true },
+          { "id": "pond", "circle": "pondC", "r": 0.8, "fill": "blue-fill", "ink": "blue", "w": 1.5, "start": true },
+          { "id": "trunkA", "seg": ["tAb", "tAc"], "ink": "wood", "w": 5, "start": true },
+          { "id": "crownA", "circle": "tAc", "r": 0.55, "fill": "accent-fill", "ink": "accent", "w": 1.5, "start": true },
+          { "id": "trunkB", "seg": ["tBb", "tBc"], "ink": "wood", "w": 5, "start": true },
+          { "id": "crownB", "circle": "tBc", "r": 0.55, "fill": "accent-fill", "ink": "accent", "w": 1.5, "start": true },
+          { "id": "grid", "grid": [8, 7], "at": "gTL", "size": 1, "fill": "none", "ink": "muted", "w": 1 },
+          { "id": "axXY", "axes": true, "xrange": [0, 8], "yrange": [0, 7], "step": 1, "every": 1, "size": "m" },
+          { "id": "axX", "axes": true, "y": false, "xrange": [0, 8], "step": 1, "every": 1, "size": "m" },
+          { "id": "axY", "axes": true, "xrange": [0, 0.001], "yrange": [0, 7], "step": 1, "every": 1, "size": "m" },
+          { "id": "oc", "circle": "O", "r": 0.25, "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "xa", "seg": ["xA1", "xA2"], "ink": "warm", "w": 5, "start": true },
+          { "id": "xb", "seg": ["xB1", "xB2"], "ink": "warm", "w": 5, "start": true },
+          { "id": "trail3", "seg": ["O", "V2"], "ink": "blue", "w": 4, "dash": true },
+          { "id": "trail4", "seg": ["V2", "W2"], "ink": "blue", "w": 4, "dash": true },
+          { "id": "hx1", "curve": ["X0", "XM1", "X1"], "ink": "violet", "w": 3, "group": "hx" },
+          { "id": "hx2", "curve": ["X1", "XM2", "X2"], "ink": "violet", "w": 3, "group": "hx" },
+          { "id": "hx3", "curve": ["X2", "XM3", "X3"], "ink": "violet", "w": 3, "group": "hx" },
+          { "id": "hy1", "curve": ["Y0", "YM1", "Y1"], "ink": "violet", "w": 3, "group": "hy" },
+          { "id": "hy2", "curve": ["Y1", "YM2", "Y2"], "ink": "violet", "w": 3, "group": "hy" },
+          { "id": "hy3", "curve": ["Y2", "YM3", "Y3"], "ink": "violet", "w": 3, "group": "hy" },
+          { "id": "hy4", "curve": ["Y3", "YM4", "Y4"], "ink": "violet", "w": 3, "group": "hy" },
+          { "id": "cx1", "label": "1", "at": "cx1", "dir": "c", "size": "m", "ink": "violet", "group": "hx" },
+          { "id": "cx2", "label": "2", "at": "cx2", "dir": "c", "size": "m", "ink": "violet", "group": "hx" },
+          { "id": "cx3", "label": "3", "at": "cx3", "dir": "c", "size": "m", "ink": "violet", "group": "hx" },
+          { "id": "cu1", "label": "1", "at": "cu1", "dir": "c", "size": "m", "ink": "violet", "group": "hy" },
+          { "id": "cu2", "label": "2", "at": "cu2", "dir": "c", "size": "m", "ink": "violet", "group": "hy" },
+          { "id": "cu3", "label": "3", "at": "cu3", "dir": "c", "size": "m", "ink": "violet", "group": "hy" },
+          { "id": "cu4", "label": "4", "at": "cu4", "dir": "c", "size": "m", "ink": "violet", "group": "hy" },
+          { "id": "walker", "dot": "W", "ink": "violet", "r": 9 },
+          { "id": "walker2", "dot": "W2", "ink": "blue", "r": 9 },
+          { "id": "lT", "label": "(3,\\,4)", "at": "Tn", "dir": "ne", "size": "l", "ink": "violet", "halo": true },
+          { "id": "lT2", "label": "(4,\\,3)", "at": "T2", "dir": "e", "size": "l", "ink": "blue", "halo": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here is a treasure map, and the X marks the spot.",
+          "pause": 0.3,
+          "do": [
+            { "do": "header", "text": "Two numbers find any spot" },
+            { "do": "highlight", "target": ["xa", "xb"], "at": "X" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Champ, tell a friend exactly where the treasure is.",
+          "pause": 0.3,
+          "do": [{ "do": "highlight", "target": ["xa", "xb"], "at": "exactly" }]
+        },
+        {
+          "speaker": "learner",
+          "say": "Easy! It's near the tree.",
+          "pause": 0.2,
+          "do": [{ "do": "highlight", "target": ["trunkA", "crownA"], "at": "tree" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which tree? There are two.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": ["trunkA", "crownA", "trunkB", "crownB"], "at": "two" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Um. A little past the pond?",
+          "pause": 0.2,
+          "do": [{ "do": "highlight", "target": "pond", "at": "pond" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A stranger could not follow that.",
+          "pause": 0.2,
+          "do": [{ "do": "highlight", "target": ["pond", "trunkA", "crownA", "trunkB", "crownB"], "at": "stranger" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "We need an exact address, made of numbers.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": ["xa", "xb"], "at": "exact" },
+            { "do": "text", "text": "An exact address in numbers", "at": "numbers" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So let's lay a grid of equal squares over the map.",
+          "pause": 0.3,
+          "do": [{ "do": "draw", "target": "grid", "at": "grid", "dur": 1.6 }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start with one number line, along the bottom.",
+          "pause": 0.2,
+          "do": [{ "do": "draw", "target": "axX", "at": "number", "dur": 1.4 }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Zero, one, two, and on.",
+          "pause": 0.2,
+          "do": [{ "do": "highlight", "target": "axX", "at": "Zero" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One number tells you how far along.",
+          "pause": 0.4,
+          "do": [{ "do": "text", "text": "One number: how far along", "at": "One" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "But one line only gets you along the bottom.",
+          "pause": 0.2,
+          "do": [{ "do": "highlight", "target": "axX", "at": "only" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So stand a second number line straight up from its zero.",
+          "pause": 0.4,
+          "do": [
+            { "do": "draw", "target": "axXY", "at": "second", "dur": 1.6 },
+            { "do": "draw", "target": "axY", "at": "second", "dur": 1.6 }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now any spot on the page can be named with two numbers.",
+          "pause": 0.2,
+          "do": [
+            { "do": "text", "text": "Two numbers: how far across, how far up", "at": "two" },
+            { "do": "highlight", "target": ["xa", "xb"], "at": "spot" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How far across, and how far up.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "axX", "at": "across", "until": "and" },
+            { "do": "highlight", "target": "axY", "at": "up" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Across and up. Show me how to get to the X!",
+          "pause": 0.2,
+          "do": [{ "do": "highlight", "target": ["xa", "xb"], "at": "X" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A little marker will walk it.",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "show", "target": "walker", "at": "marker" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It always starts at zero, where the two lines cross.",
+          "pause": 0.4,
+          "do": [{ "do": "show", "target": "oc", "at": "zero" }, { "do": "highlight", "target": ["oc", "walker"], "at": "cross" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Across first. We count jumps, not lines. The spaces in between. One. Two. Three.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "axX", "at": "Across", "until": "We" },
+            { "do": "draw", "target": "hx1", "at": "One", "dur": 0.5 },
+            { "do": "move", "points": { "W": [1, 0], "V": [1, 0] }, "at": "One", "dur": 0.6 },
+            { "do": "show", "target": "cx1", "at": "One" },
+            { "do": "draw", "target": "hx2", "at": "Two", "dur": 0.5 },
+            { "do": "move", "points": { "W": [2, 0], "V": [2, 0] }, "at": "Two", "dur": 0.6 },
+            { "do": "show", "target": "cx2", "at": "Two" },
+            { "do": "draw", "target": "hx3", "at": "Three", "dur": 0.5 },
+            { "do": "move", "points": { "W": [3, 0], "V": [3, 0] }, "at": "Three", "dur": 0.6 },
+            { "do": "show", "target": "cx3", "at": "Three" },
+            { "do": "write", "tex": "(3,\\ ?)", "fresh": true, "at": "Three" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three across. Now up. One. Two. Three. Four.",
+          "pause": 0.4,
+          "do": [
+            { "do": "draw", "target": "hy1", "at": "One", "dur": 0.5 },
+            { "do": "move", "points": { "W": [3, 1] }, "at": "One", "dur": 0.6 },
+            { "do": "show", "target": "cu1", "at": "One" },
+            { "do": "draw", "target": "hy2", "at": "Two", "dur": 0.5 },
+            { "do": "move", "points": { "W": [3, 2] }, "at": "Two", "dur": 0.6 },
+            { "do": "show", "target": "cu2", "at": "Two" },
+            { "do": "draw", "target": "hy3", "at": "Three", "nth": 2, "dur": 0.5 },
+            { "do": "move", "points": { "W": [3, 3] }, "at": "Three", "nth": 2, "dur": 0.6 },
+            { "do": "show", "target": "cu3", "at": "Three", "nth": 2 },
+            { "do": "draw", "target": "hy4", "at": "Four", "dur": 0.5 },
+            { "do": "move", "points": { "W": [3, 4] }, "at": "Four", "dur": 0.6 },
+            { "do": "show", "target": "cu4", "at": "Four" },
+            { "do": "write", "tex": "(3,\\ 4)", "at": "Four" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Right on the X! Three across, four up.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "lT", "at": "Right" },
+            { "do": "highlight", "target": ["xa", "xb", "walker"], "at": "Right" },
+            { "do": "highlight", "target": "hx", "at": "Three", "until": "four" },
+            { "do": "highlight", "target": "hy", "at": "four" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So the treasure is at three, four!",
+          "pause": 0.3,
+          "do": [{ "do": "highlight", "target": ["lT", "xa", "xb"], "at": "treasure" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. The first number is how far across. The second is how far up.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "hx", "at": "first", "until": "second" },
+            { "do": "highlight", "target": "hy", "at": "second" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "What if I swap them? Four across, and then up three.",
+          "pause": 0.3,
+          "do": [{ "do": "highlight", "target": "lT", "at": "swap" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Try it. Start at zero again. Across four.",
+          "pause": 0.2,
+          "do": [
+            { "do": "hide", "target": ["cx1", "cx2", "cx3", "cu1", "cu2", "cu3", "cu4"], "at": "Try" },
+            { "do": "show", "target": ["walker2", "trail3"], "at": "Start" },
+            { "do": "move", "points": { "W2": [4, 0], "V2": [4, 0] }, "at": "Across", "dur": 1.8 }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then up three.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "trail4", "at": "up" },
+            { "do": "move", "points": { "W2": [4, 3] }, "at": "up", "dur": 1.5 },
+            { "do": "show", "target": "lT2", "at": "three" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "That's just grass. No treasure!",
+          "pause": 0.3,
+          "do": [{ "do": "highlight", "target": ["walker2", "lT2"], "at": "grass" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three, four and four, three are different places. Order matters: across first, then up.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": ["walker", "lT"], "at": "Three" },
+            { "do": "highlight", "target": ["walker2", "lT2"], "at": "four", "nth": 2 },
+            { "do": "write", "tex": "(3,\\,4)\\neq(4,\\,3)", "fresh": true, "at": "different" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.6, -1.9, 9.2, 8.4],
+        "points": {
+          "O": [0, 0],
+          "gTL": [0, 7],
+          "Xe": [8, 0],
+          "Ye": [0, 7],
+          "Ax": [3, 0],
+          "P": [3, 4],
+          "lxn": [7.0, -1.55],
+          "lyn": [0, 7.75],
+          "lor": [0.2, -1.55],
+          "lxv": [1.5, 0.62],
+          "lyv": [2.75, 2.5]
+        },
+        "parts": [
+          { "id": "grid", "grid": [8, 7], "at": "gTL", "size": 1, "fill": "none", "ink": "muted", "w": 1, "start": true },
+          { "id": "axXY", "axes": true, "xrange": [0, 8], "yrange": [0, 7], "step": 1, "every": 1, "size": "m", "start": true },
+          { "id": "xaxH", "seg": ["O", "Xe"], "ink": "accent", "w": 3, "start": true },
+          { "id": "yaxH", "seg": ["O", "Ye"], "ink": "accent", "w": 3, "start": true },
+          { "id": "lxn", "label": "x\\text{-axis}", "at": "lxn", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "lyn", "label": "y\\text{-axis}", "at": "lyn", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "oc", "circle": "O", "r": 0.28, "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "lor", "label": "\\text{origin }(0,\\,0)", "at": "lor", "dir": "e", "size": "m", "ink": "gold", "halo": true },
+          { "id": "tr1", "seg": ["O", "Ax"], "ink": "warm", "w": 4, "dash": true },
+          { "id": "tr2", "seg": ["Ax", "P"], "ink": "blue", "w": 4, "dash": true },
+          { "id": "dotP", "dot": "P", "ink": "violet", "r": 9 },
+          { "id": "lP", "label": "(3,\\,4)", "at": "P", "dir": "ne", "size": "l", "ink": "violet", "halo": true },
+          { "id": "lxv", "label": "x=3", "at": "lxv", "dir": "c", "size": "m", "ink": "warm", "halo": true },
+          { "id": "lyv", "label": "y=4", "at": "lyv", "dir": "e", "size": "m", "ink": "blue", "halo": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now let's name the parts. The number line going across is the x-axis.",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "header", "text": "The parts of the plane" },
+            { "do": "highlight", "target": "xaxH", "at": "across" },
+            { "do": "show", "target": "lxn", "at": "across" },
+            { "do": "term", "word": "$x$-axis", "meaning": "the number line across", "at": "x-axis" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The number line going up is the y-axis.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "yaxH", "at": "up" },
+            { "do": "show", "target": "lyn", "at": "up" },
+            { "do": "term", "word": "$y$-axis", "meaning": "the number line up", "at": "y-axis" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Where they cross is the origin. Zero, zero. No steps across, and no steps up.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": ["oc", "lor"], "at": "origin" },
+            { "do": "highlight", "target": "oc", "at": "Zero" },
+            { "do": "term", "word": "origin", "meaning": "where the axes cross: $(0,\\,0)$", "at": "origin" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And a point's address is its coordinates. A pair of numbers, in order.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": ["dotP", "lP"], "at": "coordinates" },
+            { "do": "term", "word": "coordinates", "meaning": "the pair $(x,\\,y)$ that names a point", "at": "coordinates" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The first number, the x-coordinate, says how far across.",
+          "pause": 0.3,
+          "do": [
+            { "do": "draw", "target": "tr1", "at": "first", "dur": 1.3 },
+            { "do": "show", "target": "lxv", "at": "across" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The second, the y-coordinate, says how far up.",
+          "pause": 0.3,
+          "do": [
+            { "do": "draw", "target": "tr2", "at": "second", "dur": 1.3 },
+            { "do": "show", "target": "lyv", "at": "up" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Like in the alphabet, x comes before y!",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "lxv", "at": "x" },
+            { "do": "highlight", "target": "lyv", "at": "y" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nice trick. x before y, and across before up.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": ["tr1", "lxv"], "at": "across", "until": "up" },
+            { "do": "highlight", "target": ["tr2", "lyv"], "at": "up" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.6, -1.9, 9.2, 8.4],
+        "points": {
+          "O": [0, 0],
+          "gTL": [0, 7],
+          "Ax": [6, 0], "A": [6, 2],
+          "B": [0, 5],
+          "C": [4, 0],
+          "lz": [1.45, 4.5]
+        },
+        "parts": [
+          { "id": "grid", "grid": [8, 7], "at": "gTL", "size": 1, "fill": "none", "ink": "muted", "w": 1, "start": true },
+          { "id": "axXY", "axes": true, "xrange": [0, 8], "yrange": [0, 7], "step": 1, "every": 1, "size": "m", "start": true },
+          { "id": "axX", "axes": true, "y": false, "xrange": [0.001, 8], "step": 1, "every": 1, "size": "m", "start": true },
+          { "id": "axY", "axes": true, "xrange": [0, 0.001], "yrange": [0, 7], "step": 1, "every": 1, "size": "m", "start": true },
+          { "id": "oc", "circle": "O", "r": 0.28, "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "a1", "seg": ["O", "Ax"], "ink": "warm", "w": 4, "dash": true },
+          { "id": "a2", "seg": ["Ax", "A"], "ink": "warm", "w": 4, "dash": true },
+          { "id": "dotA", "dot": "A", "ink": "warm", "r": 9 },
+          { "id": "lA", "label": "(6,\\,2)", "at": "A", "dir": "ne", "size": "l", "ink": "warm", "halo": true },
+          { "id": "b1", "seg": ["O", "B"], "ink": "blue", "w": 4, "dash": true },
+          { "id": "dotB", "dot": "B", "ink": "blue", "r": 9 },
+          { "id": "lB", "label": "(0,\\,5)", "at": "B", "dir": "e", "size": "l", "ink": "blue", "halo": true },
+          { "id": "lz", "label": "0\\text{ across}", "at": "lz", "dir": "c", "size": "m", "ink": "blue", "halo": true },
+          { "id": "c1", "seg": ["O", "C"], "ink": "violet", "w": 4, "dash": true },
+          { "id": "dotC", "dot": "C", "ink": "violet", "r": 9 },
+          { "id": "lC", "label": "(4,\\,0)", "at": "C", "dir": "ne", "size": "l", "ink": "violet", "halo": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Let's read some points. It is always the same journey: start at zero, across first, then up.",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "header", "text": "Reading points" },
+            { "do": "show", "target": "oc", "at": "zero" },
+            { "do": "highlight", "target": "oc", "at": "zero", "until": "across" },
+            { "do": "highlight", "target": "axX", "at": "across", "until": "then" },
+            { "do": "highlight", "target": "axY", "at": "up" },
+            { "do": "text", "text": "Across first, then up", "at": "across" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This one is six across, then two up. So it is six, two.",
+          "pause": 0.4,
+          "do": [
+            { "do": "draw", "target": "a1", "at": "six", "dur": 1.4 },
+            { "do": "draw", "target": "a2", "at": "two", "dur": 1.0 },
+            { "do": "show", "target": ["dotA", "lA"], "at": "So" },
+            { "do": "write", "tex": "(6,\\,2)", "fresh": true, "at": "So" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A trickier one. How far across does this point lie?",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": ["a1", "a2"], "at": "trickier" },
+            { "do": "show", "target": "dotB", "at": "trickier" },
+            { "do": "highlight", "target": "dotB", "at": "across" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "It's sitting right on the up line. Zero steps across!",
+          "pause": 0.3,
+          "do": [{ "do": "show", "target": "lz", "at": "Zero" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Zero across, then five up. So it is zero, five.",
+          "pause": 0.4,
+          "do": [
+            { "do": "draw", "target": "b1", "at": "five", "dur": 1.3 },
+            { "do": "show", "target": "lB", "at": "So" },
+            { "do": "write", "tex": "(0,\\,5)", "fresh": true, "at": "So" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "And this one, on the bottom line, is four across and no steps up. Four, zero!",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": ["b1", "lz"], "at": "this" },
+            { "do": "show", "target": "dotC", "at": "this" },
+            { "do": "draw", "target": "c1", "at": "four", "dur": 1.3 },
+            { "do": "show", "target": "lC", "at": "Four" },
+            { "do": "write", "tex": "(4,\\,0)", "fresh": true, "at": "Four" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. A point on the y-axis has x equal to zero. A point on the x-axis has y equal to zero.",
+          "pause": 0.5,
+          "do": [
+            { "do": "clear" },
+            { "do": "highlight", "target": ["dotB", "lB"], "at": "point", "until": "zero" },
+            { "do": "highlight", "target": "axY", "at": "y-axis", "until": "zero" },
+            { "do": "highlight", "target": ["dotC", "lC"], "at": "point", "nth": 2 },
+            { "do": "highlight", "target": "axX", "at": "x-axis" },
+            { "do": "text", "text": "On the $y$-axis: $x=0$", "at": "equal" },
+            { "do": "text", "text": "On the $x$-axis: $y=0$", "at": "equal", "nth": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.6, -1.9, 9.2, 8.4],
+        "points": {
+          "O": [0, 0],
+          "gTL": [0, 7],
+          "S": [2, 3],
+          "W": [2, 3],
+          "V": [2, 3],
+          "M": [6, 3],
+          "E": [6, 4],
+          "lr": [4.0, 2.45],
+          "lu": [5.68, 3.5]
+        },
+        "parts": [
+          { "id": "grid", "grid": [8, 7], "at": "gTL", "size": 1, "fill": "none", "ink": "muted", "w": 1, "start": true },
+          { "id": "axXY", "axes": true, "xrange": [0, 8], "yrange": [0, 7], "step": 1, "every": 1, "size": "m", "start": true },
+          { "id": "dotS", "dot": "S", "ink": "muted", "r": 7, "start": true },
+          { "id": "trail1", "seg": ["S", "V"], "ink": "warm", "w": 4, "dash": true, "start": true },
+          { "id": "trail2", "seg": ["V", "W"], "ink": "blue", "w": 4, "dash": true },
+          { "id": "walker", "dot": "W", "ink": "violet", "r": 9, "start": true },
+          { "id": "lstart", "label": "(2,\\,3)", "at": "S", "dir": "n", "size": "l", "ink": "muted", "halo": true, "start": true },
+          { "id": "lmid", "label": "(6,\\,3)", "at": "M", "dir": "se", "size": "l", "ink": "warm", "halo": true },
+          { "id": "lend", "label": "(6,\\,4)", "at": "E", "dir": "ne", "size": "l", "ink": "violet", "halo": true },
+          { "id": "lr", "label": "\\text{4 right}", "at": "lr", "dir": "c", "size": "m", "ink": "warm", "halo": true },
+          { "id": "lu", "label": "\\text{1 up}", "at": "lu", "dir": "e", "size": "m", "ink": "blue", "halo": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Points can move. Start here, at two, three.",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "header", "text": "Moving a point" },
+            { "do": "highlight", "target": ["walker", "lstart"], "at": "Start" },
+            { "do": "write", "tex": "(2,\\,3)", "fresh": true, "at": "two" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now go four to the right.",
+          "pause": 0.3,
+          "do": [
+            { "do": "move", "points": { "W": [6, 3], "V": [6, 3] }, "at": "four", "dur": 2.2 },
+            { "do": "show", "target": "lr", "at": "right" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Only the first number changed! Two plus four is six.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "lmid", "at": "Only" },
+            { "do": "write", "tex": "x:\\ 2+4=6", "fresh": true, "at": "Two" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Right. Now one up.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": ["trail2", "lu"], "at": "up" },
+            { "do": "move", "points": { "W": [6, 4] }, "at": "up", "dur": 1.2 }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "And now the second number changed. Three plus one is four.",
+          "pause": 0.3,
+          "do": [
+            { "do": "show", "target": "lend", "at": "second" },
+            { "do": "write", "tex": "y:\\ 3+1=4", "fresh": true, "at": "Three" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "We land at six, four.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": ["walker", "lend"], "at": "six" },
+            { "do": "answer", "tex": "(6,\\,4)", "at": "six" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So going left would take away from the first number?",
+          "pause": 0.3,
+          "do": [{ "do": "highlight", "target": ["trail1", "lr"], "at": "left" }]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. Right and left change x. Up and down change y.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": ["trail1", "lr"], "at": "Right", "until": "Up" },
+            { "do": "highlight", "target": ["trail2", "lu"], "at": "Up" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.5, -2.0, 10.4, 10.2],
+        "points": {
+          "O": [0, 0],
+          "gTL": [0, 8],
+          "tbP": [6.85, 8.6],
+          "p1": [1, 2], "p2": [2, 4], "p3": [3, 6], "p4": [4, 8],
+          "g3x": [3, 0], "g3y": [0, 6],
+          "lxt": [2.5, -1.45],
+          "lyt": [0.2, 9.75],
+          "lwk": [3.5, 3.0],
+          "lcm": [1.5, 6.45]
+        },
+        "parts": [
+          { "id": "grid", "grid": [5, 4], "at": "gTL", "size": [1, 2], "fill": "none", "ink": "muted", "w": 1, "start": true },
+          { "id": "axXY", "axes": true, "xrange": [0, 5], "yrange": [0, 9], "step": 1, "every": 1, "ystep": 1, "yevery": 2, "size": "m", "start": true },
+          { "id": "lxt", "label": "\\text{Week}", "at": "lxt", "dir": "c", "size": "m", "ink": "accent", "start": true },
+          { "id": "lyt", "label": "\\text{Height (cm)}", "at": "lyt", "dir": "e", "size": "m", "ink": "accent", "start": true },
+          {
+            "id": "tb", "table": true, "at": "tbP", "head": ["Height"],
+            "rows": [
+              { "label": "1", "cells": ["2 cm"] },
+              { "label": "2", "cells": ["4 cm"] },
+              { "label": "3", "cells": ["6 cm"] },
+              { "label": "4", "cells": ["8 cm"] }
+            ],
+            "cell": [2.2, 1.0], "labelW": 1.3, "corner": "Week", "size": "m"
+          },
+          { "id": "d1", "dot": "p1", "ink": "accent", "r": 9 },
+          { "id": "l1", "label": "(1,\\,2)", "at": "p1", "dir": "e", "size": "m", "ink": "accent", "halo": true },
+          { "id": "d2", "dot": "p2", "ink": "accent", "r": 9 },
+          { "id": "l2", "label": "(2,\\,4)", "at": "p2", "dir": "e", "size": "m", "ink": "accent", "halo": true },
+          { "id": "d3", "dot": "p3", "ink": "accent", "r": 9 },
+          { "id": "l3", "label": "(3,\\,6)", "at": "p3", "dir": "e", "size": "m", "ink": "accent", "halo": true },
+          { "id": "d4", "dot": "p4", "ink": "accent", "r": 9 },
+          { "id": "l4", "label": "(4,\\,8)", "at": "p4", "dir": "e", "size": "m", "ink": "accent", "halo": true },
+          { "id": "gv", "seg": ["p3", "g3x"], "ink": "warm", "w": 3, "dash": true },
+          { "id": "gh", "seg": ["p3", "g3y"], "ink": "blue", "w": 3, "dash": true },
+          { "id": "lwk", "label": "\\text{week 3}", "at": "lwk", "dir": "w", "size": "m", "ink": "warm", "halo": true },
+          { "id": "lcm", "label": "\\text{6 cm}", "at": "lcm", "dir": "c", "size": "m", "ink": "blue", "halo": true },
+          { "id": "climb", "seg": ["p1", "p4"], "ink": "gold", "w": 3, "dash": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now a real story. A plant is measured every week. Here are its heights in a table.",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "header", "text": "A plant's height each week" },
+            { "do": "show", "target": "tb", "at": "table" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Week one, two centimeters. That is the pair one, two. Across one, up two.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "tb.row.1", "at": "Week" },
+            { "do": "show", "target": ["d1", "l1"], "at": "pair" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Week two, four centimeters.",
+          "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": "tb.row.2", "at": "Week" },
+            { "do": "show", "target": ["d2", "l2"], "at": "four" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Week three, six. And week four, eight.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "tb.row.3", "at": "three", "until": "And" },
+            { "do": "show", "target": ["d3", "l3"], "at": "six" },
+            { "do": "highlight", "target": "tb.row.4", "at": "four" },
+            { "do": "show", "target": ["d4", "l4"], "at": "eight" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "But what does the point three, six mean in the story?",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": ["l1", "l2", "l4"], "at": "point" },
+            { "do": "highlight", "target": ["d3", "l3", "tb.row.3"], "at": "three" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Across three is week three. Up six is six centimeters.",
+          "pause": 0.3,
+          "do": [
+            { "do": "draw", "target": "gv", "at": "Across", "dur": 1.2 },
+            { "do": "show", "target": "lwk", "at": "three" },
+            { "do": "draw", "target": "gh", "at": "Up", "dur": 1.2 },
+            { "do": "show", "target": "lcm", "at": "six" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So in week three, the plant is six centimeters tall.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": ["d3", "l3", "gv", "gh", "lwk", "lcm"], "at": "week" },
+            { "do": "text", "text": "Week 3: the plant is 6 cm tall", "at": "week" },
+            { "do": "answer", "tex": "(3,\\,6)", "at": "six" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Look, the points are climbing in a straight line, all the way.",
+          "pause": 0.3,
+          "do": [
+            { "do": "hide", "target": ["gv", "gh", "lwk", "lcm"], "at": "points" },
+            { "do": "draw", "target": "climb", "at": "climbing", "dur": 1.6 }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two more centimeters every week. A picture of a story, made of pairs.",
+          "pause": 0.6,
+          "do": [{ "do": "highlight", "target": ["d1", "d2", "d3", "d4"], "at": "Two" }]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.1, -1.2, 8.7, 7.7],
+        "points": {
+          "O": [0, 0],
+          "gTL": [0, 7],
+          "mA": [-0.9, -1.0], "mB": [8.5, -1.0], "mC": [8.5, 7.5], "mD": [-0.9, 7.5],
+          "i1": [0.6, 0.8], "i2": [2.4, 0.3], "i3": [5.2, 0.5], "i4": [7.4, 1.4], "i5": [7.6, 3.6],
+          "i6": [7.0, 5.8], "i7": [4.6, 6.6], "i8": [2.0, 6.3], "i9": [0.5, 4.6], "i10": [0.3, 2.4],
+          "pondC": [6.7, 1.5],
+          "tAb": [5.6, 4.4], "tAc": [5.6, 5.3],
+          "tBb": [1.6, 4.9], "tBc": [1.6, 5.8],
+          "xA1": [2.7, 3.7], "xA2": [3.3, 4.3], "xB1": [2.7, 4.3], "xB2": [3.3, 3.7],
+          "A3": [3, 0], "T": [3, 4], "Tc": [3, 3.72]
+        },
+        "parts": [
+          { "id": "map", "poly": ["mA", "mB", "mC", "mD"], "fill": "paper", "ink": "wood", "w": 3, "start": true },
+          { "id": "island", "poly": ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9", "i10"], "fill": "gold-fill", "ink": "gold", "w": 1.5, "start": true },
+          { "id": "pond", "circle": "pondC", "r": 0.8, "fill": "blue-fill", "ink": "blue", "w": 1.5, "start": true },
+          { "id": "trunkA", "seg": ["tAb", "tAc"], "ink": "wood", "w": 5, "start": true },
+          { "id": "crownA", "circle": "tAc", "r": 0.55, "fill": "accent-fill", "ink": "accent", "w": 1.5, "start": true },
+          { "id": "trunkB", "seg": ["tBb", "tBc"], "ink": "wood", "w": 5, "start": true },
+          { "id": "crownB", "circle": "tBc", "r": 0.55, "fill": "accent-fill", "ink": "accent", "w": 1.5, "start": true },
+          { "id": "grid", "grid": [8, 7], "at": "gTL", "size": 1, "fill": "none", "ink": "muted", "w": 1, "start": true },
+          { "id": "axXY", "axes": true, "xrange": [0, 8], "yrange": [0, 7], "step": 1, "every": 1, "size": "m", "start": true },
+          { "id": "walk1", "seg": ["O", "A3"], "ink": "violet", "w": 4, "dash": true },
+          { "id": "walk2", "seg": ["A3", "T"], "ink": "violet", "w": 4, "dash": true },
+          { "id": "xa", "seg": ["xA1", "xA2"], "ink": "warm", "w": 5, "start": true },
+          { "id": "xb", "seg": ["xB1", "xB2"], "ink": "warm", "w": 5, "start": true },
+          { "id": "dotT", "dot": "T", "ink": "violet", "r": 9 },
+          { "id": "lT", "label": "(3,\\,4)", "at": "Tc", "dir": "e", "size": "xl", "ink": "violet", "halo": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Back to the treasure map.",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "header", "text": "Across first, then up" },
+            { "do": "highlight", "target": ["xa", "xb"], "at": "treasure" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Now I can tell my friend exactly where it is. Go three across, then four up.",
+          "pause": 0.3,
+          "do": [
+            { "do": "draw", "target": "walk1", "at": "three", "dur": 1.4 },
+            { "do": "draw", "target": "walk2", "at": "four", "dur": 1.4 },
+            { "do": "show", "target": ["dotT", "lT"], "at": "up" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Across first, then up. The pair of numbers is the address.",
+          "pause": 0.8,
+          "do": [
+            { "do": "highlight", "target": ["walk1"], "at": "Across", "until": "up" },
+            { "do": "highlight", "target": ["walk2"], "at": "up" },
+            { "do": "highlight", "target": ["dotT", "lT", "xa", "xb"], "at": "address" },
+            { "do": "answer", "tex": "(3,\\,4)", "at": "address" }
+          ]
+        }
+      ]
+    }
+  ]
+}

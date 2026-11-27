@@ -1,0 +1,10398 @@
+{
+ "id": "count-unit-squares--sc",
+ "title": "Cover it and count",
+ "skill": "area-by-counting-squares",
+ "teaches": [
+  "mark-unit-squares",
+  "mark-improvised-units",
+  "unit-square-area-statement",
+  "improvised-unit-count",
+  "improvised-unit-covering",
+  "improvised-unit-change"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "longa": [
+      0,
+      4
+     ],
+     "longb": [
+      6,
+      4
+     ],
+     "longc": [
+      6,
+      6
+     ],
+     "longd": [
+      0,
+      6
+     ],
+     "long1a": [
+      0,
+      5
+     ],
+     "long1b": [
+      1,
+      5
+     ],
+     "long1c": [
+      1,
+      6
+     ],
+     "long1d": [
+      0,
+      6
+     ],
+     "long1np": [
+      0.5,
+      5.5
+     ],
+     "long2a": [
+      1,
+      5
+     ],
+     "long2b": [
+      2,
+      5
+     ],
+     "long2c": [
+      2,
+      6
+     ],
+     "long2d": [
+      1,
+      6
+     ],
+     "long2np": [
+      1.5,
+      5.5
+     ],
+     "long3a": [
+      2,
+      5
+     ],
+     "long3b": [
+      3,
+      5
+     ],
+     "long3c": [
+      3,
+      6
+     ],
+     "long3d": [
+      2,
+      6
+     ],
+     "long3np": [
+      2.5,
+      5.5
+     ],
+     "long4a": [
+      3,
+      5
+     ],
+     "long4b": [
+      4,
+      5
+     ],
+     "long4c": [
+      4,
+      6
+     ],
+     "long4d": [
+      3,
+      6
+     ],
+     "long4np": [
+      3.5,
+      5.5
+     ],
+     "long5a": [
+      4,
+      5
+     ],
+     "long5b": [
+      5,
+      5
+     ],
+     "long5c": [
+      5,
+      6
+     ],
+     "long5d": [
+      4,
+      6
+     ],
+     "long5np": [
+      4.5,
+      5.5
+     ],
+     "long6a": [
+      5,
+      5
+     ],
+     "long6b": [
+      6,
+      5
+     ],
+     "long6c": [
+      6,
+      6
+     ],
+     "long6d": [
+      5,
+      6
+     ],
+     "long6np": [
+      5.5,
+      5.5
+     ],
+     "long7a": [
+      0,
+      4
+     ],
+     "long7b": [
+      1,
+      4
+     ],
+     "long7c": [
+      1,
+      5
+     ],
+     "long7d": [
+      0,
+      5
+     ],
+     "long7np": [
+      0.5,
+      4.5
+     ],
+     "long8a": [
+      1,
+      4
+     ],
+     "long8b": [
+      2,
+      4
+     ],
+     "long8c": [
+      2,
+      5
+     ],
+     "long8d": [
+      1,
+      5
+     ],
+     "long8np": [
+      1.5,
+      4.5
+     ],
+     "long9a": [
+      2,
+      4
+     ],
+     "long9b": [
+      3,
+      4
+     ],
+     "long9c": [
+      3,
+      5
+     ],
+     "long9d": [
+      2,
+      5
+     ],
+     "long9np": [
+      2.5,
+      4.5
+     ],
+     "long10a": [
+      3,
+      4
+     ],
+     "long10b": [
+      4,
+      4
+     ],
+     "long10c": [
+      4,
+      5
+     ],
+     "long10d": [
+      3,
+      5
+     ],
+     "long10np": [
+      3.5,
+      4.5
+     ],
+     "long11a": [
+      4,
+      4
+     ],
+     "long11b": [
+      5,
+      4
+     ],
+     "long11c": [
+      5,
+      5
+     ],
+     "long11d": [
+      4,
+      5
+     ],
+     "long11np": [
+      4.5,
+      4.5
+     ],
+     "long12a": [
+      5,
+      4
+     ],
+     "long12b": [
+      6,
+      4
+     ],
+     "long12c": [
+      6,
+      5
+     ],
+     "long12d": [
+      5,
+      5
+     ],
+     "long12np": [
+      5.5,
+      4.5
+     ],
+     "widea": [
+      0.5,
+      0
+     ],
+     "wideb": [
+      5.5,
+      0
+     ],
+     "widec": [
+      5.5,
+      3
+     ],
+     "wided": [
+      0.5,
+      3
+     ],
+     "wide1a": [
+      0.5,
+      2
+     ],
+     "wide1b": [
+      1.5,
+      2
+     ],
+     "wide1c": [
+      1.5,
+      3
+     ],
+     "wide1d": [
+      0.5,
+      3
+     ],
+     "wide1np": [
+      1,
+      2.5
+     ],
+     "wide2a": [
+      1.5,
+      2
+     ],
+     "wide2b": [
+      2.5,
+      2
+     ],
+     "wide2c": [
+      2.5,
+      3
+     ],
+     "wide2d": [
+      1.5,
+      3
+     ],
+     "wide2np": [
+      2,
+      2.5
+     ],
+     "wide3a": [
+      2.5,
+      2
+     ],
+     "wide3b": [
+      3.5,
+      2
+     ],
+     "wide3c": [
+      3.5,
+      3
+     ],
+     "wide3d": [
+      2.5,
+      3
+     ],
+     "wide3np": [
+      3,
+      2.5
+     ],
+     "wide4a": [
+      3.5,
+      2
+     ],
+     "wide4b": [
+      4.5,
+      2
+     ],
+     "wide4c": [
+      4.5,
+      3
+     ],
+     "wide4d": [
+      3.5,
+      3
+     ],
+     "wide4np": [
+      4,
+      2.5
+     ],
+     "wide5a": [
+      4.5,
+      2
+     ],
+     "wide5b": [
+      5.5,
+      2
+     ],
+     "wide5c": [
+      5.5,
+      3
+     ],
+     "wide5d": [
+      4.5,
+      3
+     ],
+     "wide5np": [
+      5,
+      2.5
+     ],
+     "wide6a": [
+      0.5,
+      1
+     ],
+     "wide6b": [
+      1.5,
+      1
+     ],
+     "wide6c": [
+      1.5,
+      2
+     ],
+     "wide6d": [
+      0.5,
+      2
+     ],
+     "wide6np": [
+      1,
+      1.5
+     ],
+     "wide7a": [
+      1.5,
+      1
+     ],
+     "wide7b": [
+      2.5,
+      1
+     ],
+     "wide7c": [
+      2.5,
+      2
+     ],
+     "wide7d": [
+      1.5,
+      2
+     ],
+     "wide7np": [
+      2,
+      1.5
+     ],
+     "wide8a": [
+      2.5,
+      1
+     ],
+     "wide8b": [
+      3.5,
+      1
+     ],
+     "wide8c": [
+      3.5,
+      2
+     ],
+     "wide8d": [
+      2.5,
+      2
+     ],
+     "wide8np": [
+      3,
+      1.5
+     ],
+     "wide9a": [
+      3.5,
+      1
+     ],
+     "wide9b": [
+      4.5,
+      1
+     ],
+     "wide9c": [
+      4.5,
+      2
+     ],
+     "wide9d": [
+      3.5,
+      2
+     ],
+     "wide9np": [
+      4,
+      1.5
+     ],
+     "wide10a": [
+      4.5,
+      1
+     ],
+     "wide10b": [
+      5.5,
+      1
+     ],
+     "wide10c": [
+      5.5,
+      2
+     ],
+     "wide10d": [
+      4.5,
+      2
+     ],
+     "wide10np": [
+      5,
+      1.5
+     ],
+     "wide11a": [
+      0.5,
+      0
+     ],
+     "wide11b": [
+      1.5,
+      0
+     ],
+     "wide11c": [
+      1.5,
+      1
+     ],
+     "wide11d": [
+      0.5,
+      1
+     ],
+     "wide11np": [
+      1,
+      0.5
+     ],
+     "wide12a": [
+      1.5,
+      0
+     ],
+     "wide12b": [
+      2.5,
+      0
+     ],
+     "wide12c": [
+      2.5,
+      1
+     ],
+     "wide12d": [
+      1.5,
+      1
+     ],
+     "wide12np": [
+      2,
+      0.5
+     ],
+     "wide13a": [
+      2.5,
+      0
+     ],
+     "wide13b": [
+      3.5,
+      0
+     ],
+     "wide13c": [
+      3.5,
+      1
+     ],
+     "wide13d": [
+      2.5,
+      1
+     ],
+     "wide13np": [
+      3,
+      0.5
+     ],
+     "wide14a": [
+      3.5,
+      0
+     ],
+     "wide14b": [
+      4.5,
+      0
+     ],
+     "wide14c": [
+      4.5,
+      1
+     ],
+     "wide14d": [
+      3.5,
+      1
+     ],
+     "wide14np": [
+      4,
+      0.5
+     ],
+     "wide15a": [
+      4.5,
+      0
+     ],
+     "wide15b": [
+      5.5,
+      0
+     ],
+     "wide15c": [
+      5.5,
+      1
+     ],
+     "wide15d": [
+      4.5,
+      1
+     ],
+     "wide15np": [
+      5,
+      0.5
+     ],
+     "lnp": [
+      3,
+      6.5
+     ],
+     "wnp": [
+      3,
+      -0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "long",
+      "poly": [
+       "longa",
+       "longb",
+       "longc",
+       "longd"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "long1",
+      "poly": [
+       "long1a",
+       "long1b",
+       "long1c",
+       "long1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long1g",
+      "start": false
+     },
+     {
+      "id": "long1n",
+      "label": "1",
+      "at": "long1np",
+      "dir": "c",
+      "size": "m",
+      "group": "long1g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long2",
+      "poly": [
+       "long2a",
+       "long2b",
+       "long2c",
+       "long2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long2g",
+      "start": false
+     },
+     {
+      "id": "long2n",
+      "label": "2",
+      "at": "long2np",
+      "dir": "c",
+      "size": "m",
+      "group": "long2g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long3",
+      "poly": [
+       "long3a",
+       "long3b",
+       "long3c",
+       "long3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long3g",
+      "start": false
+     },
+     {
+      "id": "long3n",
+      "label": "3",
+      "at": "long3np",
+      "dir": "c",
+      "size": "m",
+      "group": "long3g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long4",
+      "poly": [
+       "long4a",
+       "long4b",
+       "long4c",
+       "long4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long4g",
+      "start": false
+     },
+     {
+      "id": "long4n",
+      "label": "4",
+      "at": "long4np",
+      "dir": "c",
+      "size": "m",
+      "group": "long4g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long5",
+      "poly": [
+       "long5a",
+       "long5b",
+       "long5c",
+       "long5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long5g",
+      "start": false
+     },
+     {
+      "id": "long5n",
+      "label": "5",
+      "at": "long5np",
+      "dir": "c",
+      "size": "m",
+      "group": "long5g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long6",
+      "poly": [
+       "long6a",
+       "long6b",
+       "long6c",
+       "long6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long6g",
+      "start": false
+     },
+     {
+      "id": "long6n",
+      "label": "6",
+      "at": "long6np",
+      "dir": "c",
+      "size": "m",
+      "group": "long6g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long7",
+      "poly": [
+       "long7a",
+       "long7b",
+       "long7c",
+       "long7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long7g",
+      "start": false
+     },
+     {
+      "id": "long7n",
+      "label": "7",
+      "at": "long7np",
+      "dir": "c",
+      "size": "m",
+      "group": "long7g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long8",
+      "poly": [
+       "long8a",
+       "long8b",
+       "long8c",
+       "long8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long8g",
+      "start": false
+     },
+     {
+      "id": "long8n",
+      "label": "8",
+      "at": "long8np",
+      "dir": "c",
+      "size": "m",
+      "group": "long8g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long9",
+      "poly": [
+       "long9a",
+       "long9b",
+       "long9c",
+       "long9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long9g",
+      "start": false
+     },
+     {
+      "id": "long9n",
+      "label": "9",
+      "at": "long9np",
+      "dir": "c",
+      "size": "m",
+      "group": "long9g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long10",
+      "poly": [
+       "long10a",
+       "long10b",
+       "long10c",
+       "long10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long10g",
+      "start": false
+     },
+     {
+      "id": "long10n",
+      "label": "10",
+      "at": "long10np",
+      "dir": "c",
+      "size": "m",
+      "group": "long10g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long11",
+      "poly": [
+       "long11a",
+       "long11b",
+       "long11c",
+       "long11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long11g",
+      "start": false
+     },
+     {
+      "id": "long11n",
+      "label": "11",
+      "at": "long11np",
+      "dir": "c",
+      "size": "m",
+      "group": "long11g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "long12",
+      "poly": [
+       "long12a",
+       "long12b",
+       "long12c",
+       "long12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long12g",
+      "start": false
+     },
+     {
+      "id": "long12n",
+      "label": "12",
+      "at": "long12np",
+      "dir": "c",
+      "size": "m",
+      "group": "long12g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide",
+      "poly": [
+       "widea",
+       "wideb",
+       "widec",
+       "wided"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "wide1",
+      "poly": [
+       "wide1a",
+       "wide1b",
+       "wide1c",
+       "wide1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide1g",
+      "start": false
+     },
+     {
+      "id": "wide1n",
+      "label": "1",
+      "at": "wide1np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide1g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide2",
+      "poly": [
+       "wide2a",
+       "wide2b",
+       "wide2c",
+       "wide2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide2g",
+      "start": false
+     },
+     {
+      "id": "wide2n",
+      "label": "2",
+      "at": "wide2np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide2g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide3",
+      "poly": [
+       "wide3a",
+       "wide3b",
+       "wide3c",
+       "wide3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide3g",
+      "start": false
+     },
+     {
+      "id": "wide3n",
+      "label": "3",
+      "at": "wide3np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide3g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide4",
+      "poly": [
+       "wide4a",
+       "wide4b",
+       "wide4c",
+       "wide4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide4g",
+      "start": false
+     },
+     {
+      "id": "wide4n",
+      "label": "4",
+      "at": "wide4np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide4g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide5",
+      "poly": [
+       "wide5a",
+       "wide5b",
+       "wide5c",
+       "wide5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide5g",
+      "start": false
+     },
+     {
+      "id": "wide5n",
+      "label": "5",
+      "at": "wide5np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide5g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide6",
+      "poly": [
+       "wide6a",
+       "wide6b",
+       "wide6c",
+       "wide6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide6g",
+      "start": false
+     },
+     {
+      "id": "wide6n",
+      "label": "6",
+      "at": "wide6np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide6g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide7",
+      "poly": [
+       "wide7a",
+       "wide7b",
+       "wide7c",
+       "wide7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide7g",
+      "start": false
+     },
+     {
+      "id": "wide7n",
+      "label": "7",
+      "at": "wide7np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide7g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide8",
+      "poly": [
+       "wide8a",
+       "wide8b",
+       "wide8c",
+       "wide8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide8g",
+      "start": false
+     },
+     {
+      "id": "wide8n",
+      "label": "8",
+      "at": "wide8np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide8g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide9",
+      "poly": [
+       "wide9a",
+       "wide9b",
+       "wide9c",
+       "wide9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide9g",
+      "start": false
+     },
+     {
+      "id": "wide9n",
+      "label": "9",
+      "at": "wide9np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide9g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide10",
+      "poly": [
+       "wide10a",
+       "wide10b",
+       "wide10c",
+       "wide10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide10g",
+      "start": false
+     },
+     {
+      "id": "wide10n",
+      "label": "10",
+      "at": "wide10np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide10g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide11",
+      "poly": [
+       "wide11a",
+       "wide11b",
+       "wide11c",
+       "wide11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide11g",
+      "start": false
+     },
+     {
+      "id": "wide11n",
+      "label": "11",
+      "at": "wide11np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide11g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide12",
+      "poly": [
+       "wide12a",
+       "wide12b",
+       "wide12c",
+       "wide12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide12g",
+      "start": false
+     },
+     {
+      "id": "wide12n",
+      "label": "12",
+      "at": "wide12np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide12g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide13",
+      "poly": [
+       "wide13a",
+       "wide13b",
+       "wide13c",
+       "wide13d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide13g",
+      "start": false
+     },
+     {
+      "id": "wide13n",
+      "label": "13",
+      "at": "wide13np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide13g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide14",
+      "poly": [
+       "wide14a",
+       "wide14b",
+       "wide14c",
+       "wide14d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide14g",
+      "start": false
+     },
+     {
+      "id": "wide14n",
+      "label": "14",
+      "at": "wide14np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide14g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "wide15",
+      "poly": [
+       "wide15a",
+       "wide15b",
+       "wide15c",
+       "wide15d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide15g",
+      "start": false
+     },
+     {
+      "id": "wide15n",
+      "label": "15",
+      "at": "wide15np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide15g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "ln",
+      "label": "\\text{long}",
+      "at": "lnp",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "wn",
+      "label": "\\text{wide}",
+      "at": "wnp",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Champ, which tabletop has more room? We are looking straight down at their tops.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Which has more room?"
+      },
+      {
+       "do": "problem",
+       "text": "Which tabletop has more room?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The long one. It reaches farther!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "long",
+       "at": "long"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Area is how much flat space a shape covers. We need to measure all that space.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "term",
+       "word": "area",
+       "meaning": "How much flat space a shape covers.",
+       "at": "Area"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "long",
+        "wide"
+       ],
+       "at": "all"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cover both tops with equal square sticky notes.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "long",
+        "wide"
+       ],
+       "at": "both",
+       "until": "equal"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "topa": [
+      0,
+      0
+     ],
+     "topb": [
+      6,
+      0
+     ],
+     "topc": [
+      6,
+      2
+     ],
+     "topd": [
+      0,
+      2
+     ],
+     "n1a": [
+      0,
+      1.35
+     ],
+     "n1b": [
+      1,
+      1.35
+     ],
+     "n1c": [
+      1,
+      2.35
+     ],
+     "n1d": [
+      0,
+      2.35
+     ],
+     "n1np": [
+      0.5,
+      1.85
+     ],
+     "n2a": [
+      0.65,
+      1.35
+     ],
+     "n2b": [
+      1.65,
+      1.35
+     ],
+     "n2c": [
+      1.65,
+      2.35
+     ],
+     "n2d": [
+      0.65,
+      2.35
+     ],
+     "n2np": [
+      1.15,
+      1.85
+     ],
+     "n3a": [
+      2.35,
+      1.35
+     ],
+     "n3b": [
+      3.35,
+      1.35
+     ],
+     "n3c": [
+      3.35,
+      2.35
+     ],
+     "n3d": [
+      2.35,
+      2.35
+     ],
+     "n3np": [
+      2.85,
+      1.85
+     ],
+     "n4a": [
+      3,
+      1.35
+     ],
+     "n4b": [
+      4,
+      1.35
+     ],
+     "n4c": [
+      4,
+      2.35
+     ],
+     "n4d": [
+      3,
+      2.35
+     ],
+     "n4np": [
+      3.5,
+      1.85
+     ],
+     "n5a": [
+      4,
+      1.35
+     ],
+     "n5b": [
+      5,
+      1.35
+     ],
+     "n5c": [
+      5,
+      2.35
+     ],
+     "n5d": [
+      4,
+      2.35
+     ],
+     "n5np": [
+      4.5,
+      1.85
+     ],
+     "n6a": [
+      5,
+      1.35
+     ],
+     "n6b": [
+      6,
+      1.35
+     ],
+     "n6c": [
+      6,
+      2.35
+     ],
+     "n6d": [
+      5,
+      2.35
+     ],
+     "n6np": [
+      5.5,
+      1.85
+     ],
+     "n7a": [
+      0,
+      0.35
+     ],
+     "n7b": [
+      1,
+      0.35
+     ],
+     "n7c": [
+      1,
+      1.35
+     ],
+     "n7d": [
+      0,
+      1.35
+     ],
+     "n7np": [
+      0.5,
+      0.85
+     ],
+     "n8a": [
+      1,
+      0.35
+     ],
+     "n8b": [
+      2,
+      0.35
+     ],
+     "n8c": [
+      2,
+      1.35
+     ],
+     "n8d": [
+      1,
+      1.35
+     ],
+     "n8np": [
+      1.5,
+      0.85
+     ],
+     "n9a": [
+      2,
+      0.35
+     ],
+     "n9b": [
+      3,
+      0.35
+     ],
+     "n9c": [
+      3,
+      1.35
+     ],
+     "n9d": [
+      2,
+      1.35
+     ],
+     "n9np": [
+      2.5,
+      0.85
+     ],
+     "n10a": [
+      3,
+      0.35
+     ],
+     "n10b": [
+      4,
+      0.35
+     ],
+     "n10c": [
+      4,
+      1.35
+     ],
+     "n10d": [
+      3,
+      1.35
+     ],
+     "n10np": [
+      3.5,
+      0.85
+     ],
+     "n11a": [
+      4,
+      0.35
+     ],
+     "n11b": [
+      5,
+      0.35
+     ],
+     "n11c": [
+      5,
+      1.35
+     ],
+     "n11d": [
+      4,
+      1.35
+     ],
+     "n11np": [
+      4.5,
+      0.85
+     ],
+     "n12a": [
+      5,
+      0.35
+     ],
+     "n12b": [
+      6,
+      0.35
+     ],
+     "n12c": [
+      6,
+      1.35
+     ],
+     "n12d": [
+      5,
+      1.35
+     ],
+     "n12np": [
+      5.5,
+      0.85
+     ],
+     "overlapa": [
+      0.65,
+      1
+     ],
+     "overlapb": [
+      1,
+      1
+     ],
+     "overlapc": [
+      1,
+      2
+     ],
+     "overlapd": [
+      0.65,
+      2
+     ],
+     "gapa": [
+      2,
+      1
+     ],
+     "gapb": [
+      2.35,
+      1
+     ],
+     "gapc": [
+      2.35,
+      2
+     ],
+     "gapd": [
+      2,
+      2
+     ]
+    },
+    "parts": [
+     {
+      "id": "top",
+      "poly": [
+       "topa",
+       "topb",
+       "topc",
+       "topd"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "n1",
+      "poly": [
+       "n1a",
+       "n1b",
+       "n1c",
+       "n1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n1g"
+     },
+     {
+      "id": "n1n",
+      "label": "1",
+      "at": "n1np",
+      "dir": "c",
+      "size": "m",
+      "group": "n1g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n2",
+      "poly": [
+       "n2a",
+       "n2b",
+       "n2c",
+       "n2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n2g"
+     },
+     {
+      "id": "n2n",
+      "label": "2",
+      "at": "n2np",
+      "dir": "c",
+      "size": "m",
+      "group": "n2g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n3",
+      "poly": [
+       "n3a",
+       "n3b",
+       "n3c",
+       "n3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n3g"
+     },
+     {
+      "id": "n3n",
+      "label": "3",
+      "at": "n3np",
+      "dir": "c",
+      "size": "m",
+      "group": "n3g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n4",
+      "poly": [
+       "n4a",
+       "n4b",
+       "n4c",
+       "n4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n4g"
+     },
+     {
+      "id": "n4n",
+      "label": "4",
+      "at": "n4np",
+      "dir": "c",
+      "size": "m",
+      "group": "n4g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n5",
+      "poly": [
+       "n5a",
+       "n5b",
+       "n5c",
+       "n5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n5g"
+     },
+     {
+      "id": "n5n",
+      "label": "5",
+      "at": "n5np",
+      "dir": "c",
+      "size": "m",
+      "group": "n5g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n6",
+      "poly": [
+       "n6a",
+       "n6b",
+       "n6c",
+       "n6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n6g"
+     },
+     {
+      "id": "n6n",
+      "label": "6",
+      "at": "n6np",
+      "dir": "c",
+      "size": "m",
+      "group": "n6g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n7",
+      "poly": [
+       "n7a",
+       "n7b",
+       "n7c",
+       "n7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n7g"
+     },
+     {
+      "id": "n7n",
+      "label": "7",
+      "at": "n7np",
+      "dir": "c",
+      "size": "m",
+      "group": "n7g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n8",
+      "poly": [
+       "n8a",
+       "n8b",
+       "n8c",
+       "n8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n8g"
+     },
+     {
+      "id": "n8n",
+      "label": "8",
+      "at": "n8np",
+      "dir": "c",
+      "size": "m",
+      "group": "n8g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n9",
+      "poly": [
+       "n9a",
+       "n9b",
+       "n9c",
+       "n9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n9g"
+     },
+     {
+      "id": "n9n",
+      "label": "9",
+      "at": "n9np",
+      "dir": "c",
+      "size": "m",
+      "group": "n9g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n10",
+      "poly": [
+       "n10a",
+       "n10b",
+       "n10c",
+       "n10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n10g"
+     },
+     {
+      "id": "n10n",
+      "label": "10",
+      "at": "n10np",
+      "dir": "c",
+      "size": "m",
+      "group": "n10g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n11",
+      "poly": [
+       "n11a",
+       "n11b",
+       "n11c",
+       "n11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n11g"
+     },
+     {
+      "id": "n11n",
+      "label": "11",
+      "at": "n11np",
+      "dir": "c",
+      "size": "m",
+      "group": "n11g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n12",
+      "poly": [
+       "n12a",
+       "n12b",
+       "n12c",
+       "n12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n12g"
+     },
+     {
+      "id": "n12n",
+      "label": "12",
+      "at": "n12np",
+      "dir": "c",
+      "size": "m",
+      "group": "n12g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "overlap",
+      "poly": [
+       "overlapa",
+       "overlapb",
+       "overlapc",
+       "overlapd"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.4
+     },
+     {
+      "id": "gap",
+      "poly": [
+       "gapa",
+       "gapb",
+       "gapc",
+       "gapd"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.4
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One note goes in the corner. One.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Cover the long top"
+      },
+      {
+       "do": "show",
+       "target": "n1g",
+       "at": "One"
+      },
+      {
+       "do": "slide",
+       "target": "n1g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "One"
+      },
+      {
+       "do": "text",
+       "text": "One square note is our unit.",
+       "at": "note"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The next note overlaps the first.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "overlaps"
+      },
+      {
+       "do": "slide",
+       "target": "n2g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "overlaps"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "That bit of table is covered twice!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "overlap",
+       "at": "twice"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide it until their edges meet. Two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "overlap"
+      },
+      {
+       "do": "slide",
+       "target": "n2g",
+       "by": [
+        0.35,
+        0
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "text",
+       "text": "No overlaps.",
+       "at": "meet"
+      },
+      {
+       "do": "show",
+       "target": "n2n",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The third note leaves a gap.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "n3",
+       "at": "third"
+      },
+      {
+       "do": "slide",
+       "target": "n3g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "third"
+      },
+      {
+       "do": "show",
+       "target": "gap",
+       "at": "gap"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "There's table showing between them!",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "That space has not been measured. Close the gap. Three.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "gap",
+       "at": "Close"
+      },
+      {
+       "do": "slide",
+       "target": "n3g",
+       "by": [
+        -0.35,
+        0
+       ],
+       "at": "Close"
+      },
+      {
+       "do": "text",
+       "text": "No gaps.",
+       "at": "gap"
+      },
+      {
+       "do": "show",
+       "target": "n3n",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n4g",
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "n4g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n5g",
+       "at": "Five"
+      },
+      {
+       "do": "slide",
+       "target": "n5g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six. One whole row.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n6g",
+       "at": "Six"
+      },
+      {
+       "do": "slide",
+       "target": "n6g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start the next row at the left. Seven, eight, nine, ten, eleven, twelve.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n7g",
+       "at": "seven"
+      },
+      {
+       "do": "slide",
+       "target": "n7g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "n8g",
+       "at": "eight"
+      },
+      {
+       "do": "slide",
+       "target": "n8g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "n9g",
+       "at": "nine"
+      },
+      {
+       "do": "slide",
+       "target": "n9g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "n10g",
+       "at": "ten"
+      },
+      {
+       "do": "slide",
+       "target": "n10g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "n11g",
+       "at": "eleven"
+      },
+      {
+       "do": "slide",
+       "target": "n11g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "eleven"
+      },
+      {
+       "do": "show",
+       "target": "n12g",
+       "at": "twelve"
+      },
+      {
+       "do": "slide",
+       "target": "n12g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every bit covered exactly once. The area is twelve sticky notes.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "12\\text{ sticky notes}",
+       "at": "twelve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "topa": [
+      0,
+      0
+     ],
+     "topb": [
+      5,
+      0
+     ],
+     "topc": [
+      5,
+      3
+     ],
+     "topd": [
+      0,
+      3
+     ],
+     "n1a": [
+      0,
+      2.35
+     ],
+     "n1b": [
+      1,
+      2.35
+     ],
+     "n1c": [
+      1,
+      3.35
+     ],
+     "n1d": [
+      0,
+      3.35
+     ],
+     "n1np": [
+      0.5,
+      2.85
+     ],
+     "n2a": [
+      1,
+      2.35
+     ],
+     "n2b": [
+      2,
+      2.35
+     ],
+     "n2c": [
+      2,
+      3.35
+     ],
+     "n2d": [
+      1,
+      3.35
+     ],
+     "n2np": [
+      1.5,
+      2.85
+     ],
+     "n3a": [
+      2,
+      2.35
+     ],
+     "n3b": [
+      3,
+      2.35
+     ],
+     "n3c": [
+      3,
+      3.35
+     ],
+     "n3d": [
+      2,
+      3.35
+     ],
+     "n3np": [
+      2.5,
+      2.85
+     ],
+     "n4a": [
+      3,
+      2.35
+     ],
+     "n4b": [
+      4,
+      2.35
+     ],
+     "n4c": [
+      4,
+      3.35
+     ],
+     "n4d": [
+      3,
+      3.35
+     ],
+     "n4np": [
+      3.5,
+      2.85
+     ],
+     "n5a": [
+      4,
+      2.35
+     ],
+     "n5b": [
+      5,
+      2.35
+     ],
+     "n5c": [
+      5,
+      3.35
+     ],
+     "n5d": [
+      4,
+      3.35
+     ],
+     "n5np": [
+      4.5,
+      2.85
+     ],
+     "n6a": [
+      0,
+      1.35
+     ],
+     "n6b": [
+      1,
+      1.35
+     ],
+     "n6c": [
+      1,
+      2.35
+     ],
+     "n6d": [
+      0,
+      2.35
+     ],
+     "n6np": [
+      0.5,
+      1.85
+     ],
+     "n7a": [
+      1,
+      1.35
+     ],
+     "n7b": [
+      2,
+      1.35
+     ],
+     "n7c": [
+      2,
+      2.35
+     ],
+     "n7d": [
+      1,
+      2.35
+     ],
+     "n7np": [
+      1.5,
+      1.85
+     ],
+     "n8a": [
+      2,
+      1.35
+     ],
+     "n8b": [
+      3,
+      1.35
+     ],
+     "n8c": [
+      3,
+      2.35
+     ],
+     "n8d": [
+      2,
+      2.35
+     ],
+     "n8np": [
+      2.5,
+      1.85
+     ],
+     "n9a": [
+      3,
+      1.35
+     ],
+     "n9b": [
+      4,
+      1.35
+     ],
+     "n9c": [
+      4,
+      2.35
+     ],
+     "n9d": [
+      3,
+      2.35
+     ],
+     "n9np": [
+      3.5,
+      1.85
+     ],
+     "n10a": [
+      4,
+      1.35
+     ],
+     "n10b": [
+      5,
+      1.35
+     ],
+     "n10c": [
+      5,
+      2.35
+     ],
+     "n10d": [
+      4,
+      2.35
+     ],
+     "n10np": [
+      4.5,
+      1.85
+     ],
+     "n11a": [
+      0,
+      0.35
+     ],
+     "n11b": [
+      1,
+      0.35
+     ],
+     "n11c": [
+      1,
+      1.35
+     ],
+     "n11d": [
+      0,
+      1.35
+     ],
+     "n11np": [
+      0.5,
+      0.85
+     ],
+     "n12a": [
+      1,
+      0.35
+     ],
+     "n12b": [
+      2,
+      0.35
+     ],
+     "n12c": [
+      2,
+      1.35
+     ],
+     "n12d": [
+      1,
+      1.35
+     ],
+     "n12np": [
+      1.5,
+      0.85
+     ],
+     "n13a": [
+      2,
+      0.35
+     ],
+     "n13b": [
+      3,
+      0.35
+     ],
+     "n13c": [
+      3,
+      1.35
+     ],
+     "n13d": [
+      2,
+      1.35
+     ],
+     "n13np": [
+      2.5,
+      0.85
+     ],
+     "n14a": [
+      3,
+      0.35
+     ],
+     "n14b": [
+      4,
+      0.35
+     ],
+     "n14c": [
+      4,
+      1.35
+     ],
+     "n14d": [
+      3,
+      1.35
+     ],
+     "n14np": [
+      3.5,
+      0.85
+     ],
+     "n15a": [
+      4,
+      0.35
+     ],
+     "n15b": [
+      5,
+      0.35
+     ],
+     "n15c": [
+      5,
+      1.35
+     ],
+     "n15d": [
+      4,
+      1.35
+     ],
+     "n15np": [
+      4.5,
+      0.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "top",
+      "poly": [
+       "topa",
+       "topb",
+       "topc",
+       "topd"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "n1",
+      "poly": [
+       "n1a",
+       "n1b",
+       "n1c",
+       "n1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n1g"
+     },
+     {
+      "id": "n1n",
+      "label": "1",
+      "at": "n1np",
+      "dir": "c",
+      "size": "m",
+      "group": "n1g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n2",
+      "poly": [
+       "n2a",
+       "n2b",
+       "n2c",
+       "n2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n2g"
+     },
+     {
+      "id": "n2n",
+      "label": "2",
+      "at": "n2np",
+      "dir": "c",
+      "size": "m",
+      "group": "n2g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n3",
+      "poly": [
+       "n3a",
+       "n3b",
+       "n3c",
+       "n3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n3g"
+     },
+     {
+      "id": "n3n",
+      "label": "3",
+      "at": "n3np",
+      "dir": "c",
+      "size": "m",
+      "group": "n3g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n4",
+      "poly": [
+       "n4a",
+       "n4b",
+       "n4c",
+       "n4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n4g"
+     },
+     {
+      "id": "n4n",
+      "label": "4",
+      "at": "n4np",
+      "dir": "c",
+      "size": "m",
+      "group": "n4g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n5",
+      "poly": [
+       "n5a",
+       "n5b",
+       "n5c",
+       "n5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n5g"
+     },
+     {
+      "id": "n5n",
+      "label": "5",
+      "at": "n5np",
+      "dir": "c",
+      "size": "m",
+      "group": "n5g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n6",
+      "poly": [
+       "n6a",
+       "n6b",
+       "n6c",
+       "n6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n6g"
+     },
+     {
+      "id": "n6n",
+      "label": "6",
+      "at": "n6np",
+      "dir": "c",
+      "size": "m",
+      "group": "n6g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n7",
+      "poly": [
+       "n7a",
+       "n7b",
+       "n7c",
+       "n7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n7g"
+     },
+     {
+      "id": "n7n",
+      "label": "7",
+      "at": "n7np",
+      "dir": "c",
+      "size": "m",
+      "group": "n7g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n8",
+      "poly": [
+       "n8a",
+       "n8b",
+       "n8c",
+       "n8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n8g"
+     },
+     {
+      "id": "n8n",
+      "label": "8",
+      "at": "n8np",
+      "dir": "c",
+      "size": "m",
+      "group": "n8g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n9",
+      "poly": [
+       "n9a",
+       "n9b",
+       "n9c",
+       "n9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n9g"
+     },
+     {
+      "id": "n9n",
+      "label": "9",
+      "at": "n9np",
+      "dir": "c",
+      "size": "m",
+      "group": "n9g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n10",
+      "poly": [
+       "n10a",
+       "n10b",
+       "n10c",
+       "n10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n10g"
+     },
+     {
+      "id": "n10n",
+      "label": "10",
+      "at": "n10np",
+      "dir": "c",
+      "size": "m",
+      "group": "n10g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n11",
+      "poly": [
+       "n11a",
+       "n11b",
+       "n11c",
+       "n11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n11g"
+     },
+     {
+      "id": "n11n",
+      "label": "11",
+      "at": "n11np",
+      "dir": "c",
+      "size": "m",
+      "group": "n11g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n12",
+      "poly": [
+       "n12a",
+       "n12b",
+       "n12c",
+       "n12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n12g"
+     },
+     {
+      "id": "n12n",
+      "label": "12",
+      "at": "n12np",
+      "dir": "c",
+      "size": "m",
+      "group": "n12g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n13",
+      "poly": [
+       "n13a",
+       "n13b",
+       "n13c",
+       "n13d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n13g"
+     },
+     {
+      "id": "n13n",
+      "label": "13",
+      "at": "n13np",
+      "dir": "c",
+      "size": "m",
+      "group": "n13g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n14",
+      "poly": [
+       "n14a",
+       "n14b",
+       "n14c",
+       "n14d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n14g"
+     },
+     {
+      "id": "n14n",
+      "label": "14",
+      "at": "n14np",
+      "dir": "c",
+      "size": "m",
+      "group": "n14g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "n15",
+      "poly": [
+       "n15a",
+       "n15b",
+       "n15c",
+       "n15d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "n15g"
+     },
+     {
+      "id": "n15n",
+      "label": "15",
+      "at": "n15np",
+      "dir": "c",
+      "size": "m",
+      "group": "n15g",
+      "flies": true,
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Use those same size notes on the wider top. Count across each row.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Cover the wide top"
+      },
+      {
+       "do": "text",
+       "text": "Use the same size notes.",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "one, two, three, four, five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n1g",
+       "at": "one"
+      },
+      {
+       "do": "slide",
+       "target": "n1g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "n2g",
+       "at": "two"
+      },
+      {
+       "do": "slide",
+       "target": "n2g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "n3g",
+       "at": "three"
+      },
+      {
+       "do": "slide",
+       "target": "n3g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "n4g",
+       "at": "four"
+      },
+      {
+       "do": "slide",
+       "target": "n4g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "n5g",
+       "at": "five"
+      },
+      {
+       "do": "slide",
+       "target": "n5g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "six, seven, eight, nine, ten.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n6g",
+       "at": "six"
+      },
+      {
+       "do": "slide",
+       "target": "n6g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "n7g",
+       "at": "seven"
+      },
+      {
+       "do": "slide",
+       "target": "n7g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "n8g",
+       "at": "eight"
+      },
+      {
+       "do": "slide",
+       "target": "n8g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "n9g",
+       "at": "nine"
+      },
+      {
+       "do": "slide",
+       "target": "n9g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "n10g",
+       "at": "ten"
+      },
+      {
+       "do": "slide",
+       "target": "n10g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "eleven, twelve, thirteen, fourteen, fifteen.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "n11g",
+       "at": "eleven"
+      },
+      {
+       "do": "slide",
+       "target": "n11g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "eleven"
+      },
+      {
+       "do": "show",
+       "target": "n12g",
+       "at": "twelve"
+      },
+      {
+       "do": "slide",
+       "target": "n12g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": "n13g",
+       "at": "thirteen"
+      },
+      {
+       "do": "slide",
+       "target": "n13g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "thirteen"
+      },
+      {
+       "do": "show",
+       "target": "n14g",
+       "at": "fourteen"
+      },
+      {
+       "do": "slide",
+       "target": "n14g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "fourteen"
+      },
+      {
+       "do": "show",
+       "target": "n15g",
+       "at": "fifteen"
+      },
+      {
+       "do": "slide",
+       "target": "n15g",
+       "by": [
+        0,
+        -0.35
+       ],
+       "at": "fifteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Fifteen sticky notes! More than twelve, even though this table is shorter.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "15>12",
+       "at": "More"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It has more area. Count every square, including the ones away from the edge.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "n7",
+        "n8",
+        "n9"
+       ],
+       "at": "including"
+      },
+      {
+       "do": "text",
+       "text": "Count the inside squares too.",
+       "at": "including"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "unita": [
+      0,
+      0
+     ],
+     "unitb": [
+      2,
+      0
+     ],
+     "unitc": [
+      2,
+      2
+     ],
+     "unitd": [
+      0,
+      2
+     ],
+     "bottoma": [
+      0,
+      0
+     ],
+     "bottomb": [
+      2,
+      0
+     ],
+     "lefta": [
+      0,
+      0
+     ],
+     "leftb": [
+      0,
+      2
+     ],
+     "blp": [
+      1,
+      -0.55
+     ],
+     "llp": [
+      -0.9,
+      1
+     ],
+     "sqp": [
+      1,
+      2.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "unit",
+      "poly": [
+       "unita",
+       "unitb",
+       "unitc",
+       "unitd"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottoma",
+       "bottomb"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "left",
+      "seg": [
+       "lefta",
+       "leftb"
+      ],
+      "ink": "blue",
+      "w": 4
+     },
+     {
+      "id": "bl",
+      "label": "1\\text{ unit}",
+      "at": "blp",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "ll",
+      "label": "1\\text{ unit}",
+      "at": "llp",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "sq",
+      "label": "1\\text{ square unit}",
+      "at": "sqp",
+      "dir": "c",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A length unit measures along a line.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Length and area"
+      },
+      {
+       "do": "highlight",
+       "target": "bottom",
+       "at": "along"
+      },
+      {
+       "do": "text",
+       "text": "Length: along a line.",
+       "at": "along"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Make a square with every side one unit long. This is a unit square.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "show",
+       "target": "unit",
+       "at": "square"
+      },
+      {
+       "do": "show",
+       "target": [
+        "left",
+        "ll"
+       ],
+       "at": "side"
+      },
+      {
+       "do": "term",
+       "word": "unit square",
+       "meaning": "A square with sides 1 unit long.",
+       "at": "unit",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Its whole inside covers one square unit of area.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "bottom",
+        "left"
+       ],
+       "at": "Its",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "sq",
+       "at": "square"
+      },
+      {
+       "do": "highlight",
+       "target": "unit",
+       "at": "inside"
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ square unit}",
+       "at": "square",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "If each side is one centimeter, it covers one square centimeter. Feet, inches, and meters have square units too.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ cm}\\times1\\text{ cm}",
+       "at": "centimeter",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "=1\\text{ square centimeter}",
+       "at": "covers",
+       "fresh": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "gridP": [
+      0,
+      4
+     ],
+     "c1a": [
+      0,
+      3
+     ],
+     "c1b": [
+      1,
+      3
+     ],
+     "c1c": [
+      1,
+      4
+     ],
+     "c1d": [
+      0,
+      4
+     ],
+     "c1np": [
+      0.5,
+      3.5
+     ],
+     "c2a": [
+      0,
+      2
+     ],
+     "c2b": [
+      1,
+      2
+     ],
+     "c2c": [
+      1,
+      3
+     ],
+     "c2d": [
+      0,
+      3
+     ],
+     "c2np": [
+      0.5,
+      2.5
+     ],
+     "c3a": [
+      0,
+      1
+     ],
+     "c3b": [
+      1,
+      1
+     ],
+     "c3c": [
+      1,
+      2
+     ],
+     "c3d": [
+      0,
+      2
+     ],
+     "c3np": [
+      0.5,
+      1.5
+     ],
+     "c4a": [
+      1,
+      1
+     ],
+     "c4b": [
+      2,
+      1
+     ],
+     "c4c": [
+      2,
+      2
+     ],
+     "c4d": [
+      1,
+      2
+     ],
+     "c4np": [
+      1.5,
+      1.5
+     ],
+     "c5a": [
+      2,
+      1
+     ],
+     "c5b": [
+      3,
+      1
+     ],
+     "c5c": [
+      3,
+      2
+     ],
+     "c5d": [
+      2,
+      2
+     ],
+     "c5np": [
+      2.5,
+      1.5
+     ],
+     "c6a": [
+      3,
+      1
+     ],
+     "c6b": [
+      4,
+      1
+     ],
+     "c6c": [
+      4,
+      2
+     ],
+     "c6d": [
+      3,
+      2
+     ],
+     "c6np": [
+      3.5,
+      1.5
+     ],
+     "c7a": [
+      0,
+      0
+     ],
+     "c7b": [
+      1,
+      0
+     ],
+     "c7c": [
+      1,
+      1
+     ],
+     "c7d": [
+      0,
+      1
+     ],
+     "c7np": [
+      0.5,
+      0.5
+     ],
+     "c8a": [
+      1,
+      0
+     ],
+     "c8b": [
+      2,
+      0
+     ],
+     "c8c": [
+      2,
+      1
+     ],
+     "c8d": [
+      1,
+      1
+     ],
+     "c8np": [
+      1.5,
+      0.5
+     ],
+     "c9a": [
+      2,
+      0
+     ],
+     "c9b": [
+      3,
+      0
+     ],
+     "c9c": [
+      3,
+      1
+     ],
+     "c9d": [
+      2,
+      1
+     ],
+     "c9np": [
+      2.5,
+      0.5
+     ],
+     "c10a": [
+      3,
+      0
+     ],
+     "c10b": [
+      4,
+      0
+     ],
+     "c10c": [
+      4,
+      1
+     ],
+     "c10d": [
+      3,
+      1
+     ],
+     "c10np": [
+      3.5,
+      0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "grid",
+      "grid": [
+       4,
+       4
+      ],
+      "at": "gridP",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c1g",
+      "start": true
+     },
+     {
+      "id": "c1n",
+      "label": "1",
+      "at": "c1np",
+      "dir": "c",
+      "size": "m",
+      "group": "c1g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c2g",
+      "start": true
+     },
+     {
+      "id": "c2n",
+      "label": "2",
+      "at": "c2np",
+      "dir": "c",
+      "size": "m",
+      "group": "c2g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c3g",
+      "start": true
+     },
+     {
+      "id": "c3n",
+      "label": "3",
+      "at": "c3np",
+      "dir": "c",
+      "size": "m",
+      "group": "c3g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c4",
+      "poly": [
+       "c4a",
+       "c4b",
+       "c4c",
+       "c4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c4g",
+      "start": true
+     },
+     {
+      "id": "c4n",
+      "label": "4",
+      "at": "c4np",
+      "dir": "c",
+      "size": "m",
+      "group": "c4g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c5",
+      "poly": [
+       "c5a",
+       "c5b",
+       "c5c",
+       "c5d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c5g",
+      "start": true
+     },
+     {
+      "id": "c5n",
+      "label": "5",
+      "at": "c5np",
+      "dir": "c",
+      "size": "m",
+      "group": "c5g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c6",
+      "poly": [
+       "c6a",
+       "c6b",
+       "c6c",
+       "c6d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c6g",
+      "start": true
+     },
+     {
+      "id": "c6n",
+      "label": "6",
+      "at": "c6np",
+      "dir": "c",
+      "size": "m",
+      "group": "c6g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c7",
+      "poly": [
+       "c7a",
+       "c7b",
+       "c7c",
+       "c7d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c7g",
+      "start": true
+     },
+     {
+      "id": "c7n",
+      "label": "7",
+      "at": "c7np",
+      "dir": "c",
+      "size": "m",
+      "group": "c7g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c8",
+      "poly": [
+       "c8a",
+       "c8b",
+       "c8c",
+       "c8d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c8g",
+      "start": true
+     },
+     {
+      "id": "c8n",
+      "label": "8",
+      "at": "c8np",
+      "dir": "c",
+      "size": "m",
+      "group": "c8g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c9",
+      "poly": [
+       "c9a",
+       "c9b",
+       "c9c",
+       "c9d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c9g",
+      "start": true
+     },
+     {
+      "id": "c9n",
+      "label": "9",
+      "at": "c9np",
+      "dir": "c",
+      "size": "m",
+      "group": "c9g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c10",
+      "poly": [
+       "c10a",
+       "c10b",
+       "c10c",
+       "c10d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c10g",
+      "start": true
+     },
+     {
+      "id": "c10n",
+      "label": "10",
+      "at": "c10np",
+      "dir": "c",
+      "size": "m",
+      "group": "c10g",
+      "flies": true,
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Each grid square covers one square unit. Count only the shaded shape.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Count the shaded squares"
+      },
+      {
+       "do": "text",
+       "text": "Each square: one square unit."
+      },
+      {
+       "do": "highlight",
+       "target": "c1",
+       "at": "Each",
+       "until": "Count"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10"
+       ],
+       "at": "shaded"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I'll mark them row by row, so I don't lose my place.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "text",
+       "text": "Mark each square as you count.",
+       "at": "mark"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "one, two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "c1n",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "c2n",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "three, four, five, six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "c3n",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "c4n",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "c5n",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "c6n",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "seven, eight, nine, and ten.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "c7n",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "c8n",
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "c9n",
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "c10n",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten square units. In practice, tap squares to mark them, then enter the area.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "10\\text{ square units}",
+       "at": "Ten"
+      },
+      {
+       "do": "highlight",
+       "target": "c10",
+       "at": "tap",
+       "until": "enter"
+      },
+      {
+       "do": "text",
+       "text": "Enter the area.",
+       "at": "enter"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "g": [
+      0,
+      4
+     ],
+     "c1a": [
+      0,
+      3
+     ],
+     "c1b": [
+      1,
+      3
+     ],
+     "c1c": [
+      1,
+      4
+     ],
+     "c1d": [
+      0,
+      4
+     ],
+     "c1np": [
+      0.5,
+      3.5
+     ],
+     "c2a": [
+      1,
+      3
+     ],
+     "c2b": [
+      2,
+      3
+     ],
+     "c2c": [
+      2,
+      4
+     ],
+     "c2d": [
+      1,
+      4
+     ],
+     "c2np": [
+      1.5,
+      3.5
+     ],
+     "c3a": [
+      2,
+      3
+     ],
+     "c3b": [
+      3,
+      3
+     ],
+     "c3c": [
+      3,
+      4
+     ],
+     "c3d": [
+      2,
+      4
+     ],
+     "c3np": [
+      2.5,
+      3.5
+     ],
+     "c4a": [
+      3,
+      3
+     ],
+     "c4b": [
+      4,
+      3
+     ],
+     "c4c": [
+      4,
+      4
+     ],
+     "c4d": [
+      3,
+      4
+     ],
+     "c4np": [
+      3.5,
+      3.5
+     ],
+     "c5a": [
+      0,
+      2
+     ],
+     "c5b": [
+      1,
+      2
+     ],
+     "c5c": [
+      1,
+      3
+     ],
+     "c5d": [
+      0,
+      3
+     ],
+     "c5np": [
+      0.5,
+      2.5
+     ],
+     "c6a": [
+      3,
+      2
+     ],
+     "c6b": [
+      4,
+      2
+     ],
+     "c6c": [
+      4,
+      3
+     ],
+     "c6d": [
+      3,
+      3
+     ],
+     "c6np": [
+      3.5,
+      2.5
+     ],
+     "c7a": [
+      0,
+      1
+     ],
+     "c7b": [
+      1,
+      1
+     ],
+     "c7c": [
+      1,
+      2
+     ],
+     "c7d": [
+      0,
+      2
+     ],
+     "c7np": [
+      0.5,
+      1.5
+     ],
+     "c8a": [
+      3,
+      1
+     ],
+     "c8b": [
+      4,
+      1
+     ],
+     "c8c": [
+      4,
+      2
+     ],
+     "c8d": [
+      3,
+      2
+     ],
+     "c8np": [
+      3.5,
+      1.5
+     ],
+     "c9a": [
+      0,
+      0
+     ],
+     "c9b": [
+      1,
+      0
+     ],
+     "c9c": [
+      1,
+      1
+     ],
+     "c9d": [
+      0,
+      1
+     ],
+     "c9np": [
+      0.5,
+      0.5
+     ],
+     "c10a": [
+      1,
+      0
+     ],
+     "c10b": [
+      2,
+      0
+     ],
+     "c10c": [
+      2,
+      1
+     ],
+     "c10d": [
+      1,
+      1
+     ],
+     "c10np": [
+      1.5,
+      0.5
+     ],
+     "c11a": [
+      2,
+      0
+     ],
+     "c11b": [
+      3,
+      0
+     ],
+     "c11c": [
+      3,
+      1
+     ],
+     "c11d": [
+      2,
+      1
+     ],
+     "c11np": [
+      2.5,
+      0.5
+     ],
+     "c12a": [
+      3,
+      0
+     ],
+     "c12b": [
+      4,
+      0
+     ],
+     "c12c": [
+      4,
+      1
+     ],
+     "c12d": [
+      3,
+      1
+     ],
+     "c12np": [
+      3.5,
+      0.5
+     ],
+     "holea": [
+      1,
+      1
+     ],
+     "holeb": [
+      3,
+      1
+     ],
+     "holec": [
+      3,
+      3
+     ],
+     "holed": [
+      1,
+      3
+     ],
+     "zerop": [
+      1.5,
+      2.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "grid",
+      "grid": [
+       4,
+       4
+      ],
+      "at": "g",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c1g",
+      "start": true
+     },
+     {
+      "id": "c1n",
+      "label": "1",
+      "at": "c1np",
+      "dir": "c",
+      "size": "m",
+      "group": "c1g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c2g",
+      "start": true
+     },
+     {
+      "id": "c2n",
+      "label": "2",
+      "at": "c2np",
+      "dir": "c",
+      "size": "m",
+      "group": "c2g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c3g",
+      "start": true
+     },
+     {
+      "id": "c3n",
+      "label": "3",
+      "at": "c3np",
+      "dir": "c",
+      "size": "m",
+      "group": "c3g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c4",
+      "poly": [
+       "c4a",
+       "c4b",
+       "c4c",
+       "c4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c4g",
+      "start": true
+     },
+     {
+      "id": "c4n",
+      "label": "4",
+      "at": "c4np",
+      "dir": "c",
+      "size": "m",
+      "group": "c4g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c5",
+      "poly": [
+       "c5a",
+       "c5b",
+       "c5c",
+       "c5d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c5g",
+      "start": true
+     },
+     {
+      "id": "c5n",
+      "label": "5",
+      "at": "c5np",
+      "dir": "c",
+      "size": "m",
+      "group": "c5g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c6",
+      "poly": [
+       "c6a",
+       "c6b",
+       "c6c",
+       "c6d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c6g",
+      "start": true
+     },
+     {
+      "id": "c6n",
+      "label": "6",
+      "at": "c6np",
+      "dir": "c",
+      "size": "m",
+      "group": "c6g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c7",
+      "poly": [
+       "c7a",
+       "c7b",
+       "c7c",
+       "c7d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c7g",
+      "start": true
+     },
+     {
+      "id": "c7n",
+      "label": "7",
+      "at": "c7np",
+      "dir": "c",
+      "size": "m",
+      "group": "c7g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c8",
+      "poly": [
+       "c8a",
+       "c8b",
+       "c8c",
+       "c8d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c8g",
+      "start": true
+     },
+     {
+      "id": "c8n",
+      "label": "8",
+      "at": "c8np",
+      "dir": "c",
+      "size": "m",
+      "group": "c8g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c9",
+      "poly": [
+       "c9a",
+       "c9b",
+       "c9c",
+       "c9d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c9g",
+      "start": true
+     },
+     {
+      "id": "c9n",
+      "label": "9",
+      "at": "c9np",
+      "dir": "c",
+      "size": "m",
+      "group": "c9g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c10",
+      "poly": [
+       "c10a",
+       "c10b",
+       "c10c",
+       "c10d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c10g",
+      "start": true
+     },
+     {
+      "id": "c10n",
+      "label": "10",
+      "at": "c10np",
+      "dir": "c",
+      "size": "m",
+      "group": "c10g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c11",
+      "poly": [
+       "c11a",
+       "c11b",
+       "c11c",
+       "c11d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c11g",
+      "start": true
+     },
+     {
+      "id": "c11n",
+      "label": "11",
+      "at": "c11np",
+      "dir": "c",
+      "size": "m",
+      "group": "c11g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "c12",
+      "poly": [
+       "c12a",
+       "c12b",
+       "c12c",
+       "c12d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c12g",
+      "start": true
+     },
+     {
+      "id": "c12n",
+      "label": "12",
+      "at": "c12np",
+      "dir": "c",
+      "size": "m",
+      "group": "c12g",
+      "flies": true,
+      "start": false
+     },
+     {
+      "id": "hole",
+      "poly": [
+       "holea",
+       "holeb",
+       "holec",
+       "holed"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "zero",
+      "label": "\\text{hole}",
+      "at": "zerop",
+      "dir": "c",
+      "size": "m",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This shape has a hole. Does the empty middle count?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Leave the hole out"
+      },
+      {
+       "do": "show",
+       "target": [
+        "hole",
+        "zero"
+       ],
+       "at": "hole"
+      },
+      {
+       "do": "problem",
+       "text": "Does the empty middle count?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "No. It isn't shaded.",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "one, two, three, four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "c1n",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "c2n",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "c3n",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "c4n",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "five, six, seven, eight.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "c5n",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "c6n",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "c7n",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "c8n",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "nine, ten, eleven, twelve.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "c9n",
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "c10n",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "c11n",
+       "at": "eleven"
+      },
+      {
+       "do": "show",
+       "target": "c12n",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve square units. The whole box holds sixteen squares, but four belong to the hole.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "12\\text{ square units}",
+       "at": "Twelve"
+      },
+      {
+       "do": "write",
+       "tex": "16-4=12",
+       "at": "four",
+       "fresh": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "c1a": [
+      0,
+      1
+     ],
+     "c1b": [
+      1,
+      1
+     ],
+     "c1c": [
+      1,
+      2
+     ],
+     "c1d": [
+      0,
+      2
+     ],
+     "c1np": [
+      0.5,
+      1.5
+     ],
+     "c2a": [
+      1,
+      1
+     ],
+     "c2b": [
+      2,
+      1
+     ],
+     "c2c": [
+      2,
+      2
+     ],
+     "c2d": [
+      1,
+      2
+     ],
+     "c2np": [
+      1.5,
+      1.5
+     ],
+     "c3a": [
+      2,
+      1
+     ],
+     "c3b": [
+      3,
+      1
+     ],
+     "c3c": [
+      3,
+      2
+     ],
+     "c3d": [
+      2,
+      2
+     ],
+     "c3np": [
+      2.5,
+      1.5
+     ],
+     "c4a": [
+      3,
+      1
+     ],
+     "c4b": [
+      4,
+      1
+     ],
+     "c4c": [
+      4,
+      2
+     ],
+     "c4d": [
+      3,
+      2
+     ],
+     "c4np": [
+      3.5,
+      1.5
+     ],
+     "c5a": [
+      4,
+      1
+     ],
+     "c5b": [
+      5,
+      1
+     ],
+     "c5c": [
+      5,
+      2
+     ],
+     "c5d": [
+      4,
+      2
+     ],
+     "c5np": [
+      4.5,
+      1.5
+     ],
+     "c6a": [
+      5,
+      1
+     ],
+     "c6b": [
+      6,
+      1
+     ],
+     "c6c": [
+      6,
+      2
+     ],
+     "c6d": [
+      5,
+      2
+     ],
+     "c6np": [
+      5.5,
+      1.5
+     ],
+     "c7a": [
+      0,
+      0
+     ],
+     "c7b": [
+      1,
+      0
+     ],
+     "c7c": [
+      1,
+      1
+     ],
+     "c7d": [
+      0,
+      1
+     ],
+     "c7np": [
+      0.5,
+      0.5
+     ],
+     "c8a": [
+      1,
+      0
+     ],
+     "c8b": [
+      2,
+      0
+     ],
+     "c8c": [
+      2,
+      1
+     ],
+     "c8d": [
+      1,
+      1
+     ],
+     "c8np": [
+      1.5,
+      0.5
+     ],
+     "c9a": [
+      2,
+      0
+     ],
+     "c9b": [
+      3,
+      0
+     ],
+     "c9c": [
+      3,
+      1
+     ],
+     "c9d": [
+      2,
+      1
+     ],
+     "c9np": [
+      2.5,
+      0.5
+     ],
+     "c10a": [
+      3,
+      0
+     ],
+     "c10b": [
+      4,
+      0
+     ],
+     "c10c": [
+      4,
+      1
+     ],
+     "c10d": [
+      3,
+      1
+     ],
+     "c10np": [
+      3.5,
+      0.5
+     ],
+     "c11a": [
+      4,
+      0
+     ],
+     "c11b": [
+      5,
+      0
+     ],
+     "c11c": [
+      5,
+      1
+     ],
+     "c11d": [
+      4,
+      1
+     ],
+     "c11np": [
+      4.5,
+      0.5
+     ],
+     "c12a": [
+      5,
+      0
+     ],
+     "c12b": [
+      6,
+      0
+     ],
+     "c12c": [
+      6,
+      1
+     ],
+     "c12d": [
+      5,
+      1
+     ],
+     "c12np": [
+      5.5,
+      0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "c1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c1g",
+      "start": true
+     },
+     {
+      "id": "c1n",
+      "label": "1",
+      "at": "c1np",
+      "dir": "c",
+      "size": "m",
+      "group": "c1g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c2g",
+      "start": true
+     },
+     {
+      "id": "c2n",
+      "label": "2",
+      "at": "c2np",
+      "dir": "c",
+      "size": "m",
+      "group": "c2g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c3g",
+      "start": true
+     },
+     {
+      "id": "c3n",
+      "label": "3",
+      "at": "c3np",
+      "dir": "c",
+      "size": "m",
+      "group": "c3g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c4",
+      "poly": [
+       "c4a",
+       "c4b",
+       "c4c",
+       "c4d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c4g",
+      "start": true
+     },
+     {
+      "id": "c4n",
+      "label": "4",
+      "at": "c4np",
+      "dir": "c",
+      "size": "m",
+      "group": "c4g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c5",
+      "poly": [
+       "c5a",
+       "c5b",
+       "c5c",
+       "c5d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c5g",
+      "start": true
+     },
+     {
+      "id": "c5n",
+      "label": "5",
+      "at": "c5np",
+      "dir": "c",
+      "size": "m",
+      "group": "c5g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c6",
+      "poly": [
+       "c6a",
+       "c6b",
+       "c6c",
+       "c6d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c6g",
+      "start": true
+     },
+     {
+      "id": "c6n",
+      "label": "6",
+      "at": "c6np",
+      "dir": "c",
+      "size": "m",
+      "group": "c6g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c7",
+      "poly": [
+       "c7a",
+       "c7b",
+       "c7c",
+       "c7d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c7g",
+      "start": true
+     },
+     {
+      "id": "c7n",
+      "label": "7",
+      "at": "c7np",
+      "dir": "c",
+      "size": "m",
+      "group": "c7g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c8",
+      "poly": [
+       "c8a",
+       "c8b",
+       "c8c",
+       "c8d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c8g",
+      "start": true
+     },
+     {
+      "id": "c8n",
+      "label": "8",
+      "at": "c8np",
+      "dir": "c",
+      "size": "m",
+      "group": "c8g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c9",
+      "poly": [
+       "c9a",
+       "c9b",
+       "c9c",
+       "c9d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c9g",
+      "start": true
+     },
+     {
+      "id": "c9n",
+      "label": "9",
+      "at": "c9np",
+      "dir": "c",
+      "size": "m",
+      "group": "c9g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c10",
+      "poly": [
+       "c10a",
+       "c10b",
+       "c10c",
+       "c10d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c10g",
+      "start": true
+     },
+     {
+      "id": "c10n",
+      "label": "10",
+      "at": "c10np",
+      "dir": "c",
+      "size": "m",
+      "group": "c10g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c11",
+      "poly": [
+       "c11a",
+       "c11b",
+       "c11c",
+       "c11d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c11g",
+      "start": true
+     },
+     {
+      "id": "c11n",
+      "label": "11",
+      "at": "c11np",
+      "dir": "c",
+      "size": "m",
+      "group": "c11g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "c12",
+      "poly": [
+       "c12a",
+       "c12b",
+       "c12c",
+       "c12d"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1.4,
+      "group": "c12g",
+      "start": true
+     },
+     {
+      "id": "c12n",
+      "label": "12",
+      "at": "c12np",
+      "dir": "c",
+      "size": "m",
+      "group": "c12g",
+      "flies": true,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are twelve squares in a rectangle. Watch the same squares move.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Different shape, same area"
+      },
+      {
+       "do": "write",
+       "tex": "12\\text{ square units}",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "These two slide up. These two slide beside the next row.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "slide",
+       "target": [
+        "c1g",
+        "c2g"
+       ],
+       "by": [
+        0,
+        1
+       ],
+       "at": "up"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "c5g",
+        "c6g"
+       ],
+       "by": [
+        -4,
+        0
+       ],
+       "at": "beside"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A staircase! Did the area change?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12"
+       ],
+       "at": "staircase",
+       "until": "Did"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "No. They're the same twelve squares, just moved.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12"
+       ],
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve square units, because we counted squares. Twelve units would describe a length.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "12\\text{ square units}",
+       "at": "Twelve"
+      },
+      {
+       "do": "text",
+       "text": "Area counts squares.",
+       "at": "squares"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "tray0a": [
+      0,
+      6
+     ],
+     "tray0b": [
+      3,
+      6
+     ],
+     "tray0c": [
+      3,
+      8
+     ],
+     "tray0d": [
+      0,
+      8
+     ],
+     "t0c1a": [
+      0,
+      7
+     ],
+     "t0c1b": [
+      1,
+      7
+     ],
+     "t0c1c": [
+      1,
+      8
+     ],
+     "t0c1d": [
+      0,
+      8
+     ],
+     "t0c2a": [
+      1,
+      7
+     ],
+     "t0c2b": [
+      2,
+      7
+     ],
+     "t0c2c": [
+      2,
+      8
+     ],
+     "t0c2d": [
+      1,
+      8
+     ],
+     "t0c3a": [
+      2,
+      7
+     ],
+     "t0c3b": [
+      3,
+      7
+     ],
+     "t0c3c": [
+      3,
+      8
+     ],
+     "t0c3d": [
+      2,
+      8
+     ],
+     "t0c4a": [
+      0,
+      6
+     ],
+     "t0c4b": [
+      1,
+      6
+     ],
+     "t0c4c": [
+      1,
+      7
+     ],
+     "t0c4d": [
+      0,
+      7
+     ],
+     "t0c6a": [
+      2,
+      6
+     ],
+     "t0c6b": [
+      3,
+      6
+     ],
+     "t0c6c": [
+      3,
+      7
+     ],
+     "t0c6d": [
+      2,
+      7
+     ],
+     "name0p": [
+      3.6,
+      7
+     ],
+     "tray1a": [
+      0,
+      3
+     ],
+     "tray1b": [
+      3,
+      3
+     ],
+     "tray1c": [
+      3,
+      5
+     ],
+     "tray1d": [
+      0,
+      5
+     ],
+     "t1c1a": [
+      0,
+      4
+     ],
+     "t1c1b": [
+      1,
+      4
+     ],
+     "t1c1c": [
+      1,
+      5
+     ],
+     "t1c1d": [
+      0,
+      5
+     ],
+     "t1c2a": [
+      1,
+      4
+     ],
+     "t1c2b": [
+      2,
+      4
+     ],
+     "t1c2c": [
+      2,
+      5
+     ],
+     "t1c2d": [
+      1,
+      5
+     ],
+     "t1c3a": [
+      2,
+      4
+     ],
+     "t1c3b": [
+      3,
+      4
+     ],
+     "t1c3c": [
+      3,
+      5
+     ],
+     "t1c3d": [
+      2,
+      5
+     ],
+     "t1c4a": [
+      0,
+      3
+     ],
+     "t1c4b": [
+      1,
+      3
+     ],
+     "t1c4c": [
+      1,
+      4
+     ],
+     "t1c4d": [
+      0,
+      4
+     ],
+     "t1c5a": [
+      1,
+      3
+     ],
+     "t1c5b": [
+      2,
+      3
+     ],
+     "t1c5c": [
+      2,
+      4
+     ],
+     "t1c5d": [
+      1,
+      4
+     ],
+     "t1c6a": [
+      2,
+      3
+     ],
+     "t1c6b": [
+      3,
+      3
+     ],
+     "t1c6c": [
+      3,
+      4
+     ],
+     "t1c6d": [
+      2,
+      4
+     ],
+     "name1p": [
+      3.6,
+      4
+     ],
+     "tray2a": [
+      0,
+      0
+     ],
+     "tray2b": [
+      3,
+      0
+     ],
+     "tray2c": [
+      3,
+      2
+     ],
+     "tray2d": [
+      0,
+      2
+     ],
+     "t2c1a": [
+      0,
+      1
+     ],
+     "t2c1b": [
+      1,
+      1
+     ],
+     "t2c1c": [
+      1,
+      2
+     ],
+     "t2c1d": [
+      0,
+      2
+     ],
+     "t2c2a": [
+      1,
+      1
+     ],
+     "t2c2b": [
+      2,
+      1
+     ],
+     "t2c2c": [
+      2,
+      2
+     ],
+     "t2c2d": [
+      1,
+      2
+     ],
+     "t2c3a": [
+      2,
+      1
+     ],
+     "t2c3b": [
+      3,
+      1
+     ],
+     "t2c3c": [
+      3,
+      2
+     ],
+     "t2c3d": [
+      2,
+      2
+     ],
+     "t2c4a": [
+      0,
+      0
+     ],
+     "t2c4b": [
+      1,
+      0
+     ],
+     "t2c4c": [
+      1,
+      1
+     ],
+     "t2c4d": [
+      0,
+      1
+     ],
+     "t2c5a": [
+      1,
+      0
+     ],
+     "t2c5b": [
+      2,
+      0
+     ],
+     "t2c5c": [
+      2,
+      1
+     ],
+     "t2c5d": [
+      1,
+      1
+     ],
+     "t2c6a": [
+      2,
+      0
+     ],
+     "t2c6b": [
+      3,
+      0
+     ],
+     "t2c6c": [
+      3,
+      1
+     ],
+     "t2c6d": [
+      2,
+      1
+     ],
+     "name2p": [
+      3.6,
+      1
+     ],
+     "extraa": [
+      0.6,
+      3.5
+     ],
+     "extrab": [
+      1.6,
+      3.5
+     ],
+     "extrac": [
+      1.6,
+      4.5
+     ],
+     "extrad": [
+      0.6,
+      4.5
+     ],
+     "barea": [
+      1,
+      6
+     ],
+     "bareb": [
+      2,
+      6
+     ],
+     "barec": [
+      2,
+      7
+     ],
+     "bared": [
+      1,
+      7
+     ]
+    },
+    "parts": [
+     {
+      "id": "tray0",
+      "poly": [
+       "tray0a",
+       "tray0b",
+       "tray0c",
+       "tray0d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 1.4,
+      "start": true
+     },
+     {
+      "id": "t0c1",
+      "poly": [
+       "t0c1a",
+       "t0c1b",
+       "t0c1c",
+       "t0c1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t0c1g",
+      "start": true
+     },
+     {
+      "id": "t0c2",
+      "poly": [
+       "t0c2a",
+       "t0c2b",
+       "t0c2c",
+       "t0c2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t0c2g",
+      "start": true
+     },
+     {
+      "id": "t0c3",
+      "poly": [
+       "t0c3a",
+       "t0c3b",
+       "t0c3c",
+       "t0c3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t0c3g",
+      "start": true
+     },
+     {
+      "id": "t0c4",
+      "poly": [
+       "t0c4a",
+       "t0c4b",
+       "t0c4c",
+       "t0c4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t0c4g",
+      "start": true
+     },
+     {
+      "id": "t0c6",
+      "poly": [
+       "t0c6a",
+       "t0c6b",
+       "t0c6c",
+       "t0c6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t0c6g",
+      "start": true
+     },
+     {
+      "id": "name0",
+      "label": "\\text{top}",
+      "at": "name0p",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "far": 0,
+      "flies": true
+     },
+     {
+      "id": "tray1",
+      "poly": [
+       "tray1a",
+       "tray1b",
+       "tray1c",
+       "tray1d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 1.4,
+      "start": true
+     },
+     {
+      "id": "t1c1",
+      "poly": [
+       "t1c1a",
+       "t1c1b",
+       "t1c1c",
+       "t1c1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t1c1g",
+      "start": true
+     },
+     {
+      "id": "t1c2",
+      "poly": [
+       "t1c2a",
+       "t1c2b",
+       "t1c2c",
+       "t1c2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t1c2g",
+      "start": true
+     },
+     {
+      "id": "t1c3",
+      "poly": [
+       "t1c3a",
+       "t1c3b",
+       "t1c3c",
+       "t1c3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t1c3g",
+      "start": true
+     },
+     {
+      "id": "t1c4",
+      "poly": [
+       "t1c4a",
+       "t1c4b",
+       "t1c4c",
+       "t1c4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t1c4g",
+      "start": true
+     },
+     {
+      "id": "t1c5",
+      "poly": [
+       "t1c5a",
+       "t1c5b",
+       "t1c5c",
+       "t1c5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t1c5g",
+      "start": true
+     },
+     {
+      "id": "t1c6",
+      "poly": [
+       "t1c6a",
+       "t1c6b",
+       "t1c6c",
+       "t1c6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t1c6g",
+      "start": true
+     },
+     {
+      "id": "name1",
+      "label": "\\text{middle}",
+      "at": "name1p",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "far": 0,
+      "flies": true
+     },
+     {
+      "id": "tray2",
+      "poly": [
+       "tray2a",
+       "tray2b",
+       "tray2c",
+       "tray2d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 1.4,
+      "start": true
+     },
+     {
+      "id": "t2c1",
+      "poly": [
+       "t2c1a",
+       "t2c1b",
+       "t2c1c",
+       "t2c1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t2c1g",
+      "start": true
+     },
+     {
+      "id": "t2c2",
+      "poly": [
+       "t2c2a",
+       "t2c2b",
+       "t2c2c",
+       "t2c2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t2c2g",
+      "start": true
+     },
+     {
+      "id": "t2c3",
+      "poly": [
+       "t2c3a",
+       "t2c3b",
+       "t2c3c",
+       "t2c3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t2c3g",
+      "start": true
+     },
+     {
+      "id": "t2c4",
+      "poly": [
+       "t2c4a",
+       "t2c4b",
+       "t2c4c",
+       "t2c4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t2c4g",
+      "start": true
+     },
+     {
+      "id": "t2c5",
+      "poly": [
+       "t2c5a",
+       "t2c5b",
+       "t2c5c",
+       "t2c5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t2c5g",
+      "start": true
+     },
+     {
+      "id": "t2c6",
+      "poly": [
+       "t2c6a",
+       "t2c6b",
+       "t2c6c",
+       "t2c6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "t2c6g",
+      "start": true
+     },
+     {
+      "id": "name2",
+      "label": "\\text{bottom}",
+      "at": "name2p",
+      "dir": "e",
+      "size": "m",
+      "start": true,
+      "far": 0,
+      "flies": true
+     },
+     {
+      "id": "extra",
+      "poly": [
+       "extraa",
+       "extrab",
+       "extrac",
+       "extrad"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 1.4,
+      "start": true,
+      "solid": true
+     },
+     {
+      "id": "bare",
+      "poly": [
+       "barea",
+       "bareb",
+       "barec",
+       "bared"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 3
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which covering measures its tray: top, middle, or bottom? Each uses equal square cards.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Which covering works?"
+      },
+      {
+       "do": "problem",
+       "text": "Which covering measures its tray?"
+      },
+      {
+       "do": "highlight",
+       "target": "tray0",
+       "at": "top",
+       "until": "middle"
+      },
+      {
+       "do": "highlight",
+       "target": "tray1",
+       "at": "middle",
+       "until": "bottom"
+      },
+      {
+       "do": "highlight",
+       "target": "tray2",
+       "at": "bottom",
+       "until": "Each"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The bottom. The top has a gap. The middle has an extra card on top of others.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "tray2",
+       "at": "bottom",
+       "until": "top"
+      },
+      {
+       "do": "show",
+       "target": "bare",
+       "at": "gap"
+      },
+      {
+       "do": "hide",
+       "target": "bare",
+       "at": "middle"
+      },
+      {
+       "do": "highlight",
+       "target": "extra",
+       "at": "extra"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Only the bottom covers every bit exactly once. Six square cards, so its area is six square cards.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "6\\text{ square cards}",
+       "at": "Six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "largea": [
+      0,
+      0
+     ],
+     "largeb": [
+      4,
+      0
+     ],
+     "largec": [
+      4,
+      4
+     ],
+     "larged": [
+      0,
+      4
+     ],
+     "s1a": [
+      0,
+      2
+     ],
+     "s1b": [
+      2,
+      2
+     ],
+     "s1c": [
+      2,
+      4
+     ],
+     "s1d": [
+      0,
+      4
+     ],
+     "s1np": [
+      1,
+      3
+     ],
+     "s2a": [
+      2,
+      2
+     ],
+     "s2b": [
+      4,
+      2
+     ],
+     "s2c": [
+      4,
+      4
+     ],
+     "s2d": [
+      2,
+      4
+     ],
+     "s2np": [
+      3,
+      3
+     ],
+     "s3a": [
+      0,
+      0
+     ],
+     "s3b": [
+      2,
+      0
+     ],
+     "s3c": [
+      2,
+      2
+     ],
+     "s3d": [
+      0,
+      2
+     ],
+     "s3np": [
+      1,
+      1
+     ],
+     "s4a": [
+      2,
+      0
+     ],
+     "s4b": [
+      4,
+      0
+     ],
+     "s4c": [
+      4,
+      2
+     ],
+     "s4d": [
+      2,
+      2
+     ],
+     "s4np": [
+      3,
+      1
+     ],
+     "halfa": [
+      0,
+      4.4
+     ],
+     "halfb": [
+      2,
+      4.4
+     ],
+     "fulla": [
+      0,
+      4.9
+     ],
+     "fullb": [
+      4,
+      4.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "large",
+      "poly": [
+       "largea",
+       "largeb",
+       "largec",
+       "larged"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "poly": [
+       "s1a",
+       "s1b",
+       "s1c",
+       "s1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "s1g"
+     },
+     {
+      "id": "s1n",
+      "label": "1",
+      "at": "s1np",
+      "dir": "c",
+      "size": "m",
+      "group": "s1g"
+     },
+     {
+      "id": "s2",
+      "poly": [
+       "s2a",
+       "s2b",
+       "s2c",
+       "s2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "s2g"
+     },
+     {
+      "id": "s2n",
+      "label": "2",
+      "at": "s2np",
+      "dir": "c",
+      "size": "m",
+      "group": "s2g"
+     },
+     {
+      "id": "s3",
+      "poly": [
+       "s3a",
+       "s3b",
+       "s3c",
+       "s3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "s3g"
+     },
+     {
+      "id": "s3n",
+      "label": "3",
+      "at": "s3np",
+      "dir": "c",
+      "size": "m",
+      "group": "s3g"
+     },
+     {
+      "id": "s4",
+      "poly": [
+       "s4a",
+       "s4b",
+       "s4c",
+       "s4d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "s4g"
+     },
+     {
+      "id": "s4n",
+      "label": "4",
+      "at": "s4np",
+      "dir": "c",
+      "size": "m",
+      "group": "s4g"
+     },
+     {
+      "id": "half",
+      "seg": [
+       "halfa",
+       "halfb"
+      ],
+      "ink": "violet",
+      "w": 2
+     },
+     {
+      "id": "full",
+      "seg": [
+       "fulla",
+       "fullb"
+      ],
+      "ink": "gold",
+      "w": 2
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What if we cover the long table with smaller sticky notes? Each side is half as long.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Smaller squares"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "half",
+        "full"
+       ],
+       "at": "half"
+      },
+      {
+       "do": "problem",
+       "text": "Would that give a smaller number?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Would that give a smaller number?",
+     "pause": 0.05,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look closely at one old note. One small note covers only this corner.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "s1g",
+       "at": "One",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two fill the top. Three, four fill the bottom. Four small notes cover one large note.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "s2g",
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "s3g",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "s4g",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "4\\text{ small}=1\\text{ large}",
+       "at": "Four",
+       "fresh": true,
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "We need more of them, because each covers less space.",
+     "pause": 0.05,
+     "do": []
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "topa": [
+      0,
+      0
+     ],
+     "topb": [
+      6,
+      0
+     ],
+     "topc": [
+      6,
+      2
+     ],
+     "topd": [
+      0,
+      2
+     ],
+     "top1a": [
+      0,
+      1
+     ],
+     "top1b": [
+      1,
+      1
+     ],
+     "top1c": [
+      1,
+      2
+     ],
+     "top1d": [
+      0,
+      2
+     ],
+     "top1np": [
+      0.5,
+      1.5
+     ],
+     "top2a": [
+      1,
+      1
+     ],
+     "top2b": [
+      2,
+      1
+     ],
+     "top2c": [
+      2,
+      2
+     ],
+     "top2d": [
+      1,
+      2
+     ],
+     "top2np": [
+      1.5,
+      1.5
+     ],
+     "top3a": [
+      2,
+      1
+     ],
+     "top3b": [
+      3,
+      1
+     ],
+     "top3c": [
+      3,
+      2
+     ],
+     "top3d": [
+      2,
+      2
+     ],
+     "top3np": [
+      2.5,
+      1.5
+     ],
+     "top4a": [
+      3,
+      1
+     ],
+     "top4b": [
+      4,
+      1
+     ],
+     "top4c": [
+      4,
+      2
+     ],
+     "top4d": [
+      3,
+      2
+     ],
+     "top4np": [
+      3.5,
+      1.5
+     ],
+     "top5a": [
+      4,
+      1
+     ],
+     "top5b": [
+      5,
+      1
+     ],
+     "top5c": [
+      5,
+      2
+     ],
+     "top5d": [
+      4,
+      2
+     ],
+     "top5np": [
+      4.5,
+      1.5
+     ],
+     "top6a": [
+      5,
+      1
+     ],
+     "top6b": [
+      6,
+      1
+     ],
+     "top6c": [
+      6,
+      2
+     ],
+     "top6d": [
+      5,
+      2
+     ],
+     "top6np": [
+      5.5,
+      1.5
+     ],
+     "top7a": [
+      0,
+      0
+     ],
+     "top7b": [
+      1,
+      0
+     ],
+     "top7c": [
+      1,
+      1
+     ],
+     "top7d": [
+      0,
+      1
+     ],
+     "top7np": [
+      0.5,
+      0.5
+     ],
+     "top8a": [
+      1,
+      0
+     ],
+     "top8b": [
+      2,
+      0
+     ],
+     "top8c": [
+      2,
+      1
+     ],
+     "top8d": [
+      1,
+      1
+     ],
+     "top8np": [
+      1.5,
+      0.5
+     ],
+     "top9a": [
+      2,
+      0
+     ],
+     "top9b": [
+      3,
+      0
+     ],
+     "top9c": [
+      3,
+      1
+     ],
+     "top9d": [
+      2,
+      1
+     ],
+     "top9np": [
+      2.5,
+      0.5
+     ],
+     "top10a": [
+      3,
+      0
+     ],
+     "top10b": [
+      4,
+      0
+     ],
+     "top10c": [
+      4,
+      1
+     ],
+     "top10d": [
+      3,
+      1
+     ],
+     "top10np": [
+      3.5,
+      0.5
+     ],
+     "top11a": [
+      4,
+      0
+     ],
+     "top11b": [
+      5,
+      0
+     ],
+     "top11c": [
+      5,
+      1
+     ],
+     "top11d": [
+      4,
+      1
+     ],
+     "top11np": [
+      4.5,
+      0.5
+     ],
+     "top12a": [
+      5,
+      0
+     ],
+     "top12b": [
+      6,
+      0
+     ],
+     "top12c": [
+      6,
+      1
+     ],
+     "top12d": [
+      5,
+      1
+     ],
+     "top12np": [
+      5.5,
+      0.5
+     ],
+     "v1a": [
+      0.5,
+      1
+     ],
+     "v1b": [
+      0.5,
+      2
+     ],
+     "h1a": [
+      0,
+      1.5
+     ],
+     "h1b": [
+      1,
+      1.5
+     ],
+     "v2a": [
+      1.5,
+      1
+     ],
+     "v2b": [
+      1.5,
+      2
+     ],
+     "h2a": [
+      1,
+      1.5
+     ],
+     "h2b": [
+      2,
+      1.5
+     ],
+     "v3a": [
+      2.5,
+      1
+     ],
+     "v3b": [
+      2.5,
+      2
+     ],
+     "h3a": [
+      2,
+      1.5
+     ],
+     "h3b": [
+      3,
+      1.5
+     ],
+     "v4a": [
+      3.5,
+      1
+     ],
+     "v4b": [
+      3.5,
+      2
+     ],
+     "h4a": [
+      3,
+      1.5
+     ],
+     "h4b": [
+      4,
+      1.5
+     ],
+     "v5a": [
+      4.5,
+      1
+     ],
+     "v5b": [
+      4.5,
+      2
+     ],
+     "h5a": [
+      4,
+      1.5
+     ],
+     "h5b": [
+      5,
+      1.5
+     ],
+     "v6a": [
+      5.5,
+      1
+     ],
+     "v6b": [
+      5.5,
+      2
+     ],
+     "h6a": [
+      5,
+      1.5
+     ],
+     "h6b": [
+      6,
+      1.5
+     ],
+     "v7a": [
+      0.5,
+      0
+     ],
+     "v7b": [
+      0.5,
+      1
+     ],
+     "h7a": [
+      0,
+      0.5
+     ],
+     "h7b": [
+      1,
+      0.5
+     ],
+     "v8a": [
+      1.5,
+      0
+     ],
+     "v8b": [
+      1.5,
+      1
+     ],
+     "h8a": [
+      1,
+      0.5
+     ],
+     "h8b": [
+      2,
+      0.5
+     ],
+     "v9a": [
+      2.5,
+      0
+     ],
+     "v9b": [
+      2.5,
+      1
+     ],
+     "h9a": [
+      2,
+      0.5
+     ],
+     "h9b": [
+      3,
+      0.5
+     ],
+     "v10a": [
+      3.5,
+      0
+     ],
+     "v10b": [
+      3.5,
+      1
+     ],
+     "h10a": [
+      3,
+      0.5
+     ],
+     "h10b": [
+      4,
+      0.5
+     ],
+     "v11a": [
+      4.5,
+      0
+     ],
+     "v11b": [
+      4.5,
+      1
+     ],
+     "h11a": [
+      4,
+      0.5
+     ],
+     "h11b": [
+      5,
+      0.5
+     ],
+     "v12a": [
+      5.5,
+      0
+     ],
+     "v12b": [
+      5.5,
+      1
+     ],
+     "h12a": [
+      5,
+      0.5
+     ],
+     "h12b": [
+      6,
+      0.5
+     ],
+     "small1q0a": [
+      0,
+      1
+     ],
+     "small1q0b": [
+      0.5,
+      1
+     ],
+     "small1q0c": [
+      0.5,
+      1.5
+     ],
+     "small1q0d": [
+      0,
+      1.5
+     ],
+     "small1q1a": [
+      0.5,
+      1
+     ],
+     "small1q1b": [
+      1,
+      1
+     ],
+     "small1q1c": [
+      1,
+      1.5
+     ],
+     "small1q1d": [
+      0.5,
+      1.5
+     ],
+     "small1q2a": [
+      0,
+      1.5
+     ],
+     "small1q2b": [
+      0.5,
+      1.5
+     ],
+     "small1q2c": [
+      0.5,
+      2
+     ],
+     "small1q2d": [
+      0,
+      2
+     ],
+     "small1q3a": [
+      0.5,
+      1.5
+     ],
+     "small1q3b": [
+      1,
+      1.5
+     ],
+     "small1q3c": [
+      1,
+      2
+     ],
+     "small1q3d": [
+      0.5,
+      2
+     ],
+     "small2q0a": [
+      1,
+      1
+     ],
+     "small2q0b": [
+      1.5,
+      1
+     ],
+     "small2q0c": [
+      1.5,
+      1.5
+     ],
+     "small2q0d": [
+      1,
+      1.5
+     ],
+     "small2q1a": [
+      1.5,
+      1
+     ],
+     "small2q1b": [
+      2,
+      1
+     ],
+     "small2q1c": [
+      2,
+      1.5
+     ],
+     "small2q1d": [
+      1.5,
+      1.5
+     ],
+     "small2q2a": [
+      1,
+      1.5
+     ],
+     "small2q2b": [
+      1.5,
+      1.5
+     ],
+     "small2q2c": [
+      1.5,
+      2
+     ],
+     "small2q2d": [
+      1,
+      2
+     ],
+     "small2q3a": [
+      1.5,
+      1.5
+     ],
+     "small2q3b": [
+      2,
+      1.5
+     ],
+     "small2q3c": [
+      2,
+      2
+     ],
+     "small2q3d": [
+      1.5,
+      2
+     ],
+     "small3q0a": [
+      2,
+      1
+     ],
+     "small3q0b": [
+      2.5,
+      1
+     ],
+     "small3q0c": [
+      2.5,
+      1.5
+     ],
+     "small3q0d": [
+      2,
+      1.5
+     ],
+     "small3q1a": [
+      2.5,
+      1
+     ],
+     "small3q1b": [
+      3,
+      1
+     ],
+     "small3q1c": [
+      3,
+      1.5
+     ],
+     "small3q1d": [
+      2.5,
+      1.5
+     ],
+     "small3q2a": [
+      2,
+      1.5
+     ],
+     "small3q2b": [
+      2.5,
+      1.5
+     ],
+     "small3q2c": [
+      2.5,
+      2
+     ],
+     "small3q2d": [
+      2,
+      2
+     ],
+     "small3q3a": [
+      2.5,
+      1.5
+     ],
+     "small3q3b": [
+      3,
+      1.5
+     ],
+     "small3q3c": [
+      3,
+      2
+     ],
+     "small3q3d": [
+      2.5,
+      2
+     ],
+     "small4q0a": [
+      3,
+      1
+     ],
+     "small4q0b": [
+      3.5,
+      1
+     ],
+     "small4q0c": [
+      3.5,
+      1.5
+     ],
+     "small4q0d": [
+      3,
+      1.5
+     ],
+     "small4q1a": [
+      3.5,
+      1
+     ],
+     "small4q1b": [
+      4,
+      1
+     ],
+     "small4q1c": [
+      4,
+      1.5
+     ],
+     "small4q1d": [
+      3.5,
+      1.5
+     ],
+     "small4q2a": [
+      3,
+      1.5
+     ],
+     "small4q2b": [
+      3.5,
+      1.5
+     ],
+     "small4q2c": [
+      3.5,
+      2
+     ],
+     "small4q2d": [
+      3,
+      2
+     ],
+     "small4q3a": [
+      3.5,
+      1.5
+     ],
+     "small4q3b": [
+      4,
+      1.5
+     ],
+     "small4q3c": [
+      4,
+      2
+     ],
+     "small4q3d": [
+      3.5,
+      2
+     ],
+     "small5q0a": [
+      4,
+      1
+     ],
+     "small5q0b": [
+      4.5,
+      1
+     ],
+     "small5q0c": [
+      4.5,
+      1.5
+     ],
+     "small5q0d": [
+      4,
+      1.5
+     ],
+     "small5q1a": [
+      4.5,
+      1
+     ],
+     "small5q1b": [
+      5,
+      1
+     ],
+     "small5q1c": [
+      5,
+      1.5
+     ],
+     "small5q1d": [
+      4.5,
+      1.5
+     ],
+     "small5q2a": [
+      4,
+      1.5
+     ],
+     "small5q2b": [
+      4.5,
+      1.5
+     ],
+     "small5q2c": [
+      4.5,
+      2
+     ],
+     "small5q2d": [
+      4,
+      2
+     ],
+     "small5q3a": [
+      4.5,
+      1.5
+     ],
+     "small5q3b": [
+      5,
+      1.5
+     ],
+     "small5q3c": [
+      5,
+      2
+     ],
+     "small5q3d": [
+      4.5,
+      2
+     ],
+     "small6q0a": [
+      5,
+      1
+     ],
+     "small6q0b": [
+      5.5,
+      1
+     ],
+     "small6q0c": [
+      5.5,
+      1.5
+     ],
+     "small6q0d": [
+      5,
+      1.5
+     ],
+     "small6q1a": [
+      5.5,
+      1
+     ],
+     "small6q1b": [
+      6,
+      1
+     ],
+     "small6q1c": [
+      6,
+      1.5
+     ],
+     "small6q1d": [
+      5.5,
+      1.5
+     ],
+     "small6q2a": [
+      5,
+      1.5
+     ],
+     "small6q2b": [
+      5.5,
+      1.5
+     ],
+     "small6q2c": [
+      5.5,
+      2
+     ],
+     "small6q2d": [
+      5,
+      2
+     ],
+     "small6q3a": [
+      5.5,
+      1.5
+     ],
+     "small6q3b": [
+      6,
+      1.5
+     ],
+     "small6q3c": [
+      6,
+      2
+     ],
+     "small6q3d": [
+      5.5,
+      2
+     ],
+     "small7q0a": [
+      0,
+      0
+     ],
+     "small7q0b": [
+      0.5,
+      0
+     ],
+     "small7q0c": [
+      0.5,
+      0.5
+     ],
+     "small7q0d": [
+      0,
+      0.5
+     ],
+     "small7q1a": [
+      0.5,
+      0
+     ],
+     "small7q1b": [
+      1,
+      0
+     ],
+     "small7q1c": [
+      1,
+      0.5
+     ],
+     "small7q1d": [
+      0.5,
+      0.5
+     ],
+     "small7q2a": [
+      0,
+      0.5
+     ],
+     "small7q2b": [
+      0.5,
+      0.5
+     ],
+     "small7q2c": [
+      0.5,
+      1
+     ],
+     "small7q2d": [
+      0,
+      1
+     ],
+     "small7q3a": [
+      0.5,
+      0.5
+     ],
+     "small7q3b": [
+      1,
+      0.5
+     ],
+     "small7q3c": [
+      1,
+      1
+     ],
+     "small7q3d": [
+      0.5,
+      1
+     ],
+     "small8q0a": [
+      1,
+      0
+     ],
+     "small8q0b": [
+      1.5,
+      0
+     ],
+     "small8q0c": [
+      1.5,
+      0.5
+     ],
+     "small8q0d": [
+      1,
+      0.5
+     ],
+     "small8q1a": [
+      1.5,
+      0
+     ],
+     "small8q1b": [
+      2,
+      0
+     ],
+     "small8q1c": [
+      2,
+      0.5
+     ],
+     "small8q1d": [
+      1.5,
+      0.5
+     ],
+     "small8q2a": [
+      1,
+      0.5
+     ],
+     "small8q2b": [
+      1.5,
+      0.5
+     ],
+     "small8q2c": [
+      1.5,
+      1
+     ],
+     "small8q2d": [
+      1,
+      1
+     ],
+     "small8q3a": [
+      1.5,
+      0.5
+     ],
+     "small8q3b": [
+      2,
+      0.5
+     ],
+     "small8q3c": [
+      2,
+      1
+     ],
+     "small8q3d": [
+      1.5,
+      1
+     ],
+     "small9q0a": [
+      2,
+      0
+     ],
+     "small9q0b": [
+      2.5,
+      0
+     ],
+     "small9q0c": [
+      2.5,
+      0.5
+     ],
+     "small9q0d": [
+      2,
+      0.5
+     ],
+     "small9q1a": [
+      2.5,
+      0
+     ],
+     "small9q1b": [
+      3,
+      0
+     ],
+     "small9q1c": [
+      3,
+      0.5
+     ],
+     "small9q1d": [
+      2.5,
+      0.5
+     ],
+     "small9q2a": [
+      2,
+      0.5
+     ],
+     "small9q2b": [
+      2.5,
+      0.5
+     ],
+     "small9q2c": [
+      2.5,
+      1
+     ],
+     "small9q2d": [
+      2,
+      1
+     ],
+     "small9q3a": [
+      2.5,
+      0.5
+     ],
+     "small9q3b": [
+      3,
+      0.5
+     ],
+     "small9q3c": [
+      3,
+      1
+     ],
+     "small9q3d": [
+      2.5,
+      1
+     ],
+     "small10q0a": [
+      3,
+      0
+     ],
+     "small10q0b": [
+      3.5,
+      0
+     ],
+     "small10q0c": [
+      3.5,
+      0.5
+     ],
+     "small10q0d": [
+      3,
+      0.5
+     ],
+     "small10q1a": [
+      3.5,
+      0
+     ],
+     "small10q1b": [
+      4,
+      0
+     ],
+     "small10q1c": [
+      4,
+      0.5
+     ],
+     "small10q1d": [
+      3.5,
+      0.5
+     ],
+     "small10q2a": [
+      3,
+      0.5
+     ],
+     "small10q2b": [
+      3.5,
+      0.5
+     ],
+     "small10q2c": [
+      3.5,
+      1
+     ],
+     "small10q2d": [
+      3,
+      1
+     ],
+     "small10q3a": [
+      3.5,
+      0.5
+     ],
+     "small10q3b": [
+      4,
+      0.5
+     ],
+     "small10q3c": [
+      4,
+      1
+     ],
+     "small10q3d": [
+      3.5,
+      1
+     ],
+     "small11q0a": [
+      4,
+      0
+     ],
+     "small11q0b": [
+      4.5,
+      0
+     ],
+     "small11q0c": [
+      4.5,
+      0.5
+     ],
+     "small11q0d": [
+      4,
+      0.5
+     ],
+     "small11q1a": [
+      4.5,
+      0
+     ],
+     "small11q1b": [
+      5,
+      0
+     ],
+     "small11q1c": [
+      5,
+      0.5
+     ],
+     "small11q1d": [
+      4.5,
+      0.5
+     ],
+     "small11q2a": [
+      4,
+      0.5
+     ],
+     "small11q2b": [
+      4.5,
+      0.5
+     ],
+     "small11q2c": [
+      4.5,
+      1
+     ],
+     "small11q2d": [
+      4,
+      1
+     ],
+     "small11q3a": [
+      4.5,
+      0.5
+     ],
+     "small11q3b": [
+      5,
+      0.5
+     ],
+     "small11q3c": [
+      5,
+      1
+     ],
+     "small11q3d": [
+      4.5,
+      1
+     ],
+     "small12q0a": [
+      5,
+      0
+     ],
+     "small12q0b": [
+      5.5,
+      0
+     ],
+     "small12q0c": [
+      5.5,
+      0.5
+     ],
+     "small12q0d": [
+      5,
+      0.5
+     ],
+     "small12q1a": [
+      5.5,
+      0
+     ],
+     "small12q1b": [
+      6,
+      0
+     ],
+     "small12q1c": [
+      6,
+      0.5
+     ],
+     "small12q1d": [
+      5.5,
+      0.5
+     ],
+     "small12q2a": [
+      5,
+      0.5
+     ],
+     "small12q2b": [
+      5.5,
+      0.5
+     ],
+     "small12q2c": [
+      5.5,
+      1
+     ],
+     "small12q2d": [
+      5,
+      1
+     ],
+     "small12q3a": [
+      5.5,
+      0.5
+     ],
+     "small12q3b": [
+      6,
+      0.5
+     ],
+     "small12q3c": [
+      6,
+      1
+     ],
+     "small12q3d": [
+      5.5,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "top",
+      "poly": [
+       "topa",
+       "topb",
+       "topc",
+       "topd"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "top1",
+      "poly": [
+       "top1a",
+       "top1b",
+       "top1c",
+       "top1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top1g",
+      "start": true
+     },
+     {
+      "id": "top1n",
+      "label": "1",
+      "at": "top1np",
+      "dir": "c",
+      "size": "m",
+      "group": "top1g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top2",
+      "poly": [
+       "top2a",
+       "top2b",
+       "top2c",
+       "top2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top2g",
+      "start": true
+     },
+     {
+      "id": "top2n",
+      "label": "2",
+      "at": "top2np",
+      "dir": "c",
+      "size": "m",
+      "group": "top2g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top3",
+      "poly": [
+       "top3a",
+       "top3b",
+       "top3c",
+       "top3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top3g",
+      "start": true
+     },
+     {
+      "id": "top3n",
+      "label": "3",
+      "at": "top3np",
+      "dir": "c",
+      "size": "m",
+      "group": "top3g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top4",
+      "poly": [
+       "top4a",
+       "top4b",
+       "top4c",
+       "top4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top4g",
+      "start": true
+     },
+     {
+      "id": "top4n",
+      "label": "4",
+      "at": "top4np",
+      "dir": "c",
+      "size": "m",
+      "group": "top4g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top5",
+      "poly": [
+       "top5a",
+       "top5b",
+       "top5c",
+       "top5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top5g",
+      "start": true
+     },
+     {
+      "id": "top5n",
+      "label": "5",
+      "at": "top5np",
+      "dir": "c",
+      "size": "m",
+      "group": "top5g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top6",
+      "poly": [
+       "top6a",
+       "top6b",
+       "top6c",
+       "top6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top6g",
+      "start": true
+     },
+     {
+      "id": "top6n",
+      "label": "6",
+      "at": "top6np",
+      "dir": "c",
+      "size": "m",
+      "group": "top6g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top7",
+      "poly": [
+       "top7a",
+       "top7b",
+       "top7c",
+       "top7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top7g",
+      "start": true
+     },
+     {
+      "id": "top7n",
+      "label": "7",
+      "at": "top7np",
+      "dir": "c",
+      "size": "m",
+      "group": "top7g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top8",
+      "poly": [
+       "top8a",
+       "top8b",
+       "top8c",
+       "top8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top8g",
+      "start": true
+     },
+     {
+      "id": "top8n",
+      "label": "8",
+      "at": "top8np",
+      "dir": "c",
+      "size": "m",
+      "group": "top8g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top9",
+      "poly": [
+       "top9a",
+       "top9b",
+       "top9c",
+       "top9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top9g",
+      "start": true
+     },
+     {
+      "id": "top9n",
+      "label": "9",
+      "at": "top9np",
+      "dir": "c",
+      "size": "m",
+      "group": "top9g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top10",
+      "poly": [
+       "top10a",
+       "top10b",
+       "top10c",
+       "top10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top10g",
+      "start": true
+     },
+     {
+      "id": "top10n",
+      "label": "10",
+      "at": "top10np",
+      "dir": "c",
+      "size": "m",
+      "group": "top10g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top11",
+      "poly": [
+       "top11a",
+       "top11b",
+       "top11c",
+       "top11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top11g",
+      "start": true
+     },
+     {
+      "id": "top11n",
+      "label": "11",
+      "at": "top11np",
+      "dir": "c",
+      "size": "m",
+      "group": "top11g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "top12",
+      "poly": [
+       "top12a",
+       "top12b",
+       "top12c",
+       "top12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "top12g",
+      "start": true
+     },
+     {
+      "id": "top12n",
+      "label": "12",
+      "at": "top12np",
+      "dir": "c",
+      "size": "m",
+      "group": "top12g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "small1q0",
+      "poly": [
+       "small1q0a",
+       "small1q0b",
+       "small1q0c",
+       "small1q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts1"
+     },
+     {
+      "id": "small1q1",
+      "poly": [
+       "small1q1a",
+       "small1q1b",
+       "small1q1c",
+       "small1q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts1"
+     },
+     {
+      "id": "small1q2",
+      "poly": [
+       "small1q2a",
+       "small1q2b",
+       "small1q2c",
+       "small1q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts1"
+     },
+     {
+      "id": "small1q3",
+      "poly": [
+       "small1q3a",
+       "small1q3b",
+       "small1q3c",
+       "small1q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts1"
+     },
+     {
+      "id": "small2q0",
+      "poly": [
+       "small2q0a",
+       "small2q0b",
+       "small2q0c",
+       "small2q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts2"
+     },
+     {
+      "id": "small2q1",
+      "poly": [
+       "small2q1a",
+       "small2q1b",
+       "small2q1c",
+       "small2q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts2"
+     },
+     {
+      "id": "small2q2",
+      "poly": [
+       "small2q2a",
+       "small2q2b",
+       "small2q2c",
+       "small2q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts2"
+     },
+     {
+      "id": "small2q3",
+      "poly": [
+       "small2q3a",
+       "small2q3b",
+       "small2q3c",
+       "small2q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts2"
+     },
+     {
+      "id": "small3q0",
+      "poly": [
+       "small3q0a",
+       "small3q0b",
+       "small3q0c",
+       "small3q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts3"
+     },
+     {
+      "id": "small3q1",
+      "poly": [
+       "small3q1a",
+       "small3q1b",
+       "small3q1c",
+       "small3q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts3"
+     },
+     {
+      "id": "small3q2",
+      "poly": [
+       "small3q2a",
+       "small3q2b",
+       "small3q2c",
+       "small3q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts3"
+     },
+     {
+      "id": "small3q3",
+      "poly": [
+       "small3q3a",
+       "small3q3b",
+       "small3q3c",
+       "small3q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts3"
+     },
+     {
+      "id": "small4q0",
+      "poly": [
+       "small4q0a",
+       "small4q0b",
+       "small4q0c",
+       "small4q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts4"
+     },
+     {
+      "id": "small4q1",
+      "poly": [
+       "small4q1a",
+       "small4q1b",
+       "small4q1c",
+       "small4q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts4"
+     },
+     {
+      "id": "small4q2",
+      "poly": [
+       "small4q2a",
+       "small4q2b",
+       "small4q2c",
+       "small4q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts4"
+     },
+     {
+      "id": "small4q3",
+      "poly": [
+       "small4q3a",
+       "small4q3b",
+       "small4q3c",
+       "small4q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts4"
+     },
+     {
+      "id": "small5q0",
+      "poly": [
+       "small5q0a",
+       "small5q0b",
+       "small5q0c",
+       "small5q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts5"
+     },
+     {
+      "id": "small5q1",
+      "poly": [
+       "small5q1a",
+       "small5q1b",
+       "small5q1c",
+       "small5q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts5"
+     },
+     {
+      "id": "small5q2",
+      "poly": [
+       "small5q2a",
+       "small5q2b",
+       "small5q2c",
+       "small5q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts5"
+     },
+     {
+      "id": "small5q3",
+      "poly": [
+       "small5q3a",
+       "small5q3b",
+       "small5q3c",
+       "small5q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts5"
+     },
+     {
+      "id": "small6q0",
+      "poly": [
+       "small6q0a",
+       "small6q0b",
+       "small6q0c",
+       "small6q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts6"
+     },
+     {
+      "id": "small6q1",
+      "poly": [
+       "small6q1a",
+       "small6q1b",
+       "small6q1c",
+       "small6q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts6"
+     },
+     {
+      "id": "small6q2",
+      "poly": [
+       "small6q2a",
+       "small6q2b",
+       "small6q2c",
+       "small6q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts6"
+     },
+     {
+      "id": "small6q3",
+      "poly": [
+       "small6q3a",
+       "small6q3b",
+       "small6q3c",
+       "small6q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts6"
+     },
+     {
+      "id": "small7q0",
+      "poly": [
+       "small7q0a",
+       "small7q0b",
+       "small7q0c",
+       "small7q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts7"
+     },
+     {
+      "id": "small7q1",
+      "poly": [
+       "small7q1a",
+       "small7q1b",
+       "small7q1c",
+       "small7q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts7"
+     },
+     {
+      "id": "small7q2",
+      "poly": [
+       "small7q2a",
+       "small7q2b",
+       "small7q2c",
+       "small7q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts7"
+     },
+     {
+      "id": "small7q3",
+      "poly": [
+       "small7q3a",
+       "small7q3b",
+       "small7q3c",
+       "small7q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts7"
+     },
+     {
+      "id": "small8q0",
+      "poly": [
+       "small8q0a",
+       "small8q0b",
+       "small8q0c",
+       "small8q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts8"
+     },
+     {
+      "id": "small8q1",
+      "poly": [
+       "small8q1a",
+       "small8q1b",
+       "small8q1c",
+       "small8q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts8"
+     },
+     {
+      "id": "small8q2",
+      "poly": [
+       "small8q2a",
+       "small8q2b",
+       "small8q2c",
+       "small8q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts8"
+     },
+     {
+      "id": "small8q3",
+      "poly": [
+       "small8q3a",
+       "small8q3b",
+       "small8q3c",
+       "small8q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts8"
+     },
+     {
+      "id": "small9q0",
+      "poly": [
+       "small9q0a",
+       "small9q0b",
+       "small9q0c",
+       "small9q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts9"
+     },
+     {
+      "id": "small9q1",
+      "poly": [
+       "small9q1a",
+       "small9q1b",
+       "small9q1c",
+       "small9q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts9"
+     },
+     {
+      "id": "small9q2",
+      "poly": [
+       "small9q2a",
+       "small9q2b",
+       "small9q2c",
+       "small9q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts9"
+     },
+     {
+      "id": "small9q3",
+      "poly": [
+       "small9q3a",
+       "small9q3b",
+       "small9q3c",
+       "small9q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts9"
+     },
+     {
+      "id": "small10q0",
+      "poly": [
+       "small10q0a",
+       "small10q0b",
+       "small10q0c",
+       "small10q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts10"
+     },
+     {
+      "id": "small10q1",
+      "poly": [
+       "small10q1a",
+       "small10q1b",
+       "small10q1c",
+       "small10q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts10"
+     },
+     {
+      "id": "small10q2",
+      "poly": [
+       "small10q2a",
+       "small10q2b",
+       "small10q2c",
+       "small10q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts10"
+     },
+     {
+      "id": "small10q3",
+      "poly": [
+       "small10q3a",
+       "small10q3b",
+       "small10q3c",
+       "small10q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts10"
+     },
+     {
+      "id": "small11q0",
+      "poly": [
+       "small11q0a",
+       "small11q0b",
+       "small11q0c",
+       "small11q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts11"
+     },
+     {
+      "id": "small11q1",
+      "poly": [
+       "small11q1a",
+       "small11q1b",
+       "small11q1c",
+       "small11q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts11"
+     },
+     {
+      "id": "small11q2",
+      "poly": [
+       "small11q2a",
+       "small11q2b",
+       "small11q2c",
+       "small11q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts11"
+     },
+     {
+      "id": "small11q3",
+      "poly": [
+       "small11q3a",
+       "small11q3b",
+       "small11q3c",
+       "small11q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts11"
+     },
+     {
+      "id": "small12q0",
+      "poly": [
+       "small12q0a",
+       "small12q0b",
+       "small12q0c",
+       "small12q0d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts12"
+     },
+     {
+      "id": "small12q1",
+      "poly": [
+       "small12q1a",
+       "small12q1b",
+       "small12q1c",
+       "small12q1d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts12"
+     },
+     {
+      "id": "small12q2",
+      "poly": [
+       "small12q2a",
+       "small12q2b",
+       "small12q2c",
+       "small12q2d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts12"
+     },
+     {
+      "id": "small12q3",
+      "poly": [
+       "small12q3a",
+       "small12q3b",
+       "small12q3c",
+       "small12q3d"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 1.4,
+      "group": "cuts12"
+     },
+     {
+      "id": "group1Outline",
+      "poly": [
+       "top1a",
+       "top1b",
+       "top1c",
+       "top1d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group2Outline",
+      "poly": [
+       "top2a",
+       "top2b",
+       "top2c",
+       "top2d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group3Outline",
+      "poly": [
+       "top3a",
+       "top3b",
+       "top3c",
+       "top3d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group4Outline",
+      "poly": [
+       "top4a",
+       "top4b",
+       "top4c",
+       "top4d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group5Outline",
+      "poly": [
+       "top5a",
+       "top5b",
+       "top5c",
+       "top5d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group6Outline",
+      "poly": [
+       "top6a",
+       "top6b",
+       "top6c",
+       "top6d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group7Outline",
+      "poly": [
+       "top7a",
+       "top7b",
+       "top7c",
+       "top7d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group8Outline",
+      "poly": [
+       "top8a",
+       "top8b",
+       "top8c",
+       "top8d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group9Outline",
+      "poly": [
+       "top9a",
+       "top9b",
+       "top9c",
+       "top9d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group10Outline",
+      "poly": [
+       "top10a",
+       "top10b",
+       "top10c",
+       "top10d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group11Outline",
+      "poly": [
+       "top11a",
+       "top11b",
+       "top11c",
+       "top11d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     },
+     {
+      "id": "group12Outline",
+      "poly": [
+       "top12a",
+       "top12b",
+       "top12c",
+       "top12d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 2.8,
+      "group": "countGroups",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Each of the twelve large notes is replaced by four small ones.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Same table, more notes"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "top1n",
+        "top2n",
+        "top3n",
+        "top4n",
+        "top5n",
+        "top6n"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "cuts1",
+        "cuts2",
+        "cuts3",
+        "cuts4",
+        "cuts5",
+        "cuts6"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "text",
+       "text": "Four small notes replace one large note.",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four in every space. Twelve groups of four make forty eight small notes.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "top7n",
+        "top8n",
+        "top9n",
+        "top10n",
+        "top11n",
+        "top12n"
+       ],
+       "at": "every"
+      },
+      {
+       "do": "show",
+       "target": [
+        "cuts7",
+        "cuts8",
+        "cuts9",
+        "cuts10",
+        "cuts11",
+        "cuts12"
+       ],
+       "at": "every"
+      },
+      {
+       "do": "show",
+       "target": "countGroups",
+       "at": "groups",
+       "dur": 0.15
+      },
+      {
+       "do": "highlight",
+       "target": "countGroups",
+       "at": "groups",
+       "until": "forty"
+      },
+      {
+       "do": "hide",
+       "target": "countGroups",
+       "at": "forty",
+       "dur": 0.15
+      },
+      {
+       "do": "write",
+       "tex": "12\\times4=48",
+       "at": "forty",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "48\\text{ small notes}",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The table didn't grow. Just the count!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Same table. More notes.",
+       "at": "count"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Smaller squares take more. Switch back to larger squares, and you need fewer. Always name the unit with the number.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "cuts1",
+        "cuts2",
+        "cuts3",
+        "cuts4",
+        "cuts5",
+        "cuts6",
+        "cuts7",
+        "cuts8",
+        "cuts9",
+        "cuts10",
+        "cuts11",
+        "cuts12"
+       ],
+       "at": "larger"
+      },
+      {
+       "do": "show",
+       "target": [
+        "top1n",
+        "top2n",
+        "top3n",
+        "top4n",
+        "top5n",
+        "top6n",
+        "top7n",
+        "top8n",
+        "top9n",
+        "top10n",
+        "top11n",
+        "top12n"
+       ],
+       "at": "fewer"
+      },
+      {
+       "do": "clear",
+       "at": "larger"
+      },
+      {
+       "do": "answer",
+       "tex": "12\\text{ large notes}",
+       "at": "fewer"
+      },
+      {
+       "do": "text",
+       "text": "Same area. A different unit.",
+       "at": "name"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "longa": [
+      0,
+      4
+     ],
+     "longb": [
+      6,
+      4
+     ],
+     "longc": [
+      6,
+      6
+     ],
+     "longd": [
+      0,
+      6
+     ],
+     "long1a": [
+      0,
+      5
+     ],
+     "long1b": [
+      1,
+      5
+     ],
+     "long1c": [
+      1,
+      6
+     ],
+     "long1d": [
+      0,
+      6
+     ],
+     "long1np": [
+      0.5,
+      5.5
+     ],
+     "long2a": [
+      1,
+      5
+     ],
+     "long2b": [
+      2,
+      5
+     ],
+     "long2c": [
+      2,
+      6
+     ],
+     "long2d": [
+      1,
+      6
+     ],
+     "long2np": [
+      1.5,
+      5.5
+     ],
+     "long3a": [
+      2,
+      5
+     ],
+     "long3b": [
+      3,
+      5
+     ],
+     "long3c": [
+      3,
+      6
+     ],
+     "long3d": [
+      2,
+      6
+     ],
+     "long3np": [
+      2.5,
+      5.5
+     ],
+     "long4a": [
+      3,
+      5
+     ],
+     "long4b": [
+      4,
+      5
+     ],
+     "long4c": [
+      4,
+      6
+     ],
+     "long4d": [
+      3,
+      6
+     ],
+     "long4np": [
+      3.5,
+      5.5
+     ],
+     "long5a": [
+      4,
+      5
+     ],
+     "long5b": [
+      5,
+      5
+     ],
+     "long5c": [
+      5,
+      6
+     ],
+     "long5d": [
+      4,
+      6
+     ],
+     "long5np": [
+      4.5,
+      5.5
+     ],
+     "long6a": [
+      5,
+      5
+     ],
+     "long6b": [
+      6,
+      5
+     ],
+     "long6c": [
+      6,
+      6
+     ],
+     "long6d": [
+      5,
+      6
+     ],
+     "long6np": [
+      5.5,
+      5.5
+     ],
+     "long7a": [
+      0,
+      4
+     ],
+     "long7b": [
+      1,
+      4
+     ],
+     "long7c": [
+      1,
+      5
+     ],
+     "long7d": [
+      0,
+      5
+     ],
+     "long7np": [
+      0.5,
+      4.5
+     ],
+     "long8a": [
+      1,
+      4
+     ],
+     "long8b": [
+      2,
+      4
+     ],
+     "long8c": [
+      2,
+      5
+     ],
+     "long8d": [
+      1,
+      5
+     ],
+     "long8np": [
+      1.5,
+      4.5
+     ],
+     "long9a": [
+      2,
+      4
+     ],
+     "long9b": [
+      3,
+      4
+     ],
+     "long9c": [
+      3,
+      5
+     ],
+     "long9d": [
+      2,
+      5
+     ],
+     "long9np": [
+      2.5,
+      4.5
+     ],
+     "long10a": [
+      3,
+      4
+     ],
+     "long10b": [
+      4,
+      4
+     ],
+     "long10c": [
+      4,
+      5
+     ],
+     "long10d": [
+      3,
+      5
+     ],
+     "long10np": [
+      3.5,
+      4.5
+     ],
+     "long11a": [
+      4,
+      4
+     ],
+     "long11b": [
+      5,
+      4
+     ],
+     "long11c": [
+      5,
+      5
+     ],
+     "long11d": [
+      4,
+      5
+     ],
+     "long11np": [
+      4.5,
+      4.5
+     ],
+     "long12a": [
+      5,
+      4
+     ],
+     "long12b": [
+      6,
+      4
+     ],
+     "long12c": [
+      6,
+      5
+     ],
+     "long12d": [
+      5,
+      5
+     ],
+     "long12np": [
+      5.5,
+      4.5
+     ],
+     "widea": [
+      0.5,
+      0
+     ],
+     "wideb": [
+      5.5,
+      0
+     ],
+     "widec": [
+      5.5,
+      3
+     ],
+     "wided": [
+      0.5,
+      3
+     ],
+     "wide1a": [
+      0.5,
+      2
+     ],
+     "wide1b": [
+      1.5,
+      2
+     ],
+     "wide1c": [
+      1.5,
+      3
+     ],
+     "wide1d": [
+      0.5,
+      3
+     ],
+     "wide1np": [
+      1,
+      2.5
+     ],
+     "wide2a": [
+      1.5,
+      2
+     ],
+     "wide2b": [
+      2.5,
+      2
+     ],
+     "wide2c": [
+      2.5,
+      3
+     ],
+     "wide2d": [
+      1.5,
+      3
+     ],
+     "wide2np": [
+      2,
+      2.5
+     ],
+     "wide3a": [
+      2.5,
+      2
+     ],
+     "wide3b": [
+      3.5,
+      2
+     ],
+     "wide3c": [
+      3.5,
+      3
+     ],
+     "wide3d": [
+      2.5,
+      3
+     ],
+     "wide3np": [
+      3,
+      2.5
+     ],
+     "wide4a": [
+      3.5,
+      2
+     ],
+     "wide4b": [
+      4.5,
+      2
+     ],
+     "wide4c": [
+      4.5,
+      3
+     ],
+     "wide4d": [
+      3.5,
+      3
+     ],
+     "wide4np": [
+      4,
+      2.5
+     ],
+     "wide5a": [
+      4.5,
+      2
+     ],
+     "wide5b": [
+      5.5,
+      2
+     ],
+     "wide5c": [
+      5.5,
+      3
+     ],
+     "wide5d": [
+      4.5,
+      3
+     ],
+     "wide5np": [
+      5,
+      2.5
+     ],
+     "wide6a": [
+      0.5,
+      1
+     ],
+     "wide6b": [
+      1.5,
+      1
+     ],
+     "wide6c": [
+      1.5,
+      2
+     ],
+     "wide6d": [
+      0.5,
+      2
+     ],
+     "wide6np": [
+      1,
+      1.5
+     ],
+     "wide7a": [
+      1.5,
+      1
+     ],
+     "wide7b": [
+      2.5,
+      1
+     ],
+     "wide7c": [
+      2.5,
+      2
+     ],
+     "wide7d": [
+      1.5,
+      2
+     ],
+     "wide7np": [
+      2,
+      1.5
+     ],
+     "wide8a": [
+      2.5,
+      1
+     ],
+     "wide8b": [
+      3.5,
+      1
+     ],
+     "wide8c": [
+      3.5,
+      2
+     ],
+     "wide8d": [
+      2.5,
+      2
+     ],
+     "wide8np": [
+      3,
+      1.5
+     ],
+     "wide9a": [
+      3.5,
+      1
+     ],
+     "wide9b": [
+      4.5,
+      1
+     ],
+     "wide9c": [
+      4.5,
+      2
+     ],
+     "wide9d": [
+      3.5,
+      2
+     ],
+     "wide9np": [
+      4,
+      1.5
+     ],
+     "wide10a": [
+      4.5,
+      1
+     ],
+     "wide10b": [
+      5.5,
+      1
+     ],
+     "wide10c": [
+      5.5,
+      2
+     ],
+     "wide10d": [
+      4.5,
+      2
+     ],
+     "wide10np": [
+      5,
+      1.5
+     ],
+     "wide11a": [
+      0.5,
+      0
+     ],
+     "wide11b": [
+      1.5,
+      0
+     ],
+     "wide11c": [
+      1.5,
+      1
+     ],
+     "wide11d": [
+      0.5,
+      1
+     ],
+     "wide11np": [
+      1,
+      0.5
+     ],
+     "wide12a": [
+      1.5,
+      0
+     ],
+     "wide12b": [
+      2.5,
+      0
+     ],
+     "wide12c": [
+      2.5,
+      1
+     ],
+     "wide12d": [
+      1.5,
+      1
+     ],
+     "wide12np": [
+      2,
+      0.5
+     ],
+     "wide13a": [
+      2.5,
+      0
+     ],
+     "wide13b": [
+      3.5,
+      0
+     ],
+     "wide13c": [
+      3.5,
+      1
+     ],
+     "wide13d": [
+      2.5,
+      1
+     ],
+     "wide13np": [
+      3,
+      0.5
+     ],
+     "wide14a": [
+      3.5,
+      0
+     ],
+     "wide14b": [
+      4.5,
+      0
+     ],
+     "wide14c": [
+      4.5,
+      1
+     ],
+     "wide14d": [
+      3.5,
+      1
+     ],
+     "wide14np": [
+      4,
+      0.5
+     ],
+     "wide15a": [
+      4.5,
+      0
+     ],
+     "wide15b": [
+      5.5,
+      0
+     ],
+     "wide15c": [
+      5.5,
+      1
+     ],
+     "wide15d": [
+      4.5,
+      1
+     ],
+     "wide15np": [
+      5,
+      0.5
+     ],
+     "lnp": [
+      3,
+      6.5
+     ],
+     "wnp": [
+      3,
+      -0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "long",
+      "poly": [
+       "longa",
+       "longb",
+       "longc",
+       "longd"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "long1",
+      "poly": [
+       "long1a",
+       "long1b",
+       "long1c",
+       "long1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long1g",
+      "start": true
+     },
+     {
+      "id": "long1n",
+      "label": "1",
+      "at": "long1np",
+      "dir": "c",
+      "size": "m",
+      "group": "long1g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long2",
+      "poly": [
+       "long2a",
+       "long2b",
+       "long2c",
+       "long2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long2g",
+      "start": true
+     },
+     {
+      "id": "long2n",
+      "label": "2",
+      "at": "long2np",
+      "dir": "c",
+      "size": "m",
+      "group": "long2g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long3",
+      "poly": [
+       "long3a",
+       "long3b",
+       "long3c",
+       "long3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long3g",
+      "start": true
+     },
+     {
+      "id": "long3n",
+      "label": "3",
+      "at": "long3np",
+      "dir": "c",
+      "size": "m",
+      "group": "long3g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long4",
+      "poly": [
+       "long4a",
+       "long4b",
+       "long4c",
+       "long4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long4g",
+      "start": true
+     },
+     {
+      "id": "long4n",
+      "label": "4",
+      "at": "long4np",
+      "dir": "c",
+      "size": "m",
+      "group": "long4g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long5",
+      "poly": [
+       "long5a",
+       "long5b",
+       "long5c",
+       "long5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long5g",
+      "start": true
+     },
+     {
+      "id": "long5n",
+      "label": "5",
+      "at": "long5np",
+      "dir": "c",
+      "size": "m",
+      "group": "long5g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long6",
+      "poly": [
+       "long6a",
+       "long6b",
+       "long6c",
+       "long6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long6g",
+      "start": true
+     },
+     {
+      "id": "long6n",
+      "label": "6",
+      "at": "long6np",
+      "dir": "c",
+      "size": "m",
+      "group": "long6g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long7",
+      "poly": [
+       "long7a",
+       "long7b",
+       "long7c",
+       "long7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long7g",
+      "start": true
+     },
+     {
+      "id": "long7n",
+      "label": "7",
+      "at": "long7np",
+      "dir": "c",
+      "size": "m",
+      "group": "long7g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long8",
+      "poly": [
+       "long8a",
+       "long8b",
+       "long8c",
+       "long8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long8g",
+      "start": true
+     },
+     {
+      "id": "long8n",
+      "label": "8",
+      "at": "long8np",
+      "dir": "c",
+      "size": "m",
+      "group": "long8g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long9",
+      "poly": [
+       "long9a",
+       "long9b",
+       "long9c",
+       "long9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long9g",
+      "start": true
+     },
+     {
+      "id": "long9n",
+      "label": "9",
+      "at": "long9np",
+      "dir": "c",
+      "size": "m",
+      "group": "long9g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long10",
+      "poly": [
+       "long10a",
+       "long10b",
+       "long10c",
+       "long10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long10g",
+      "start": true
+     },
+     {
+      "id": "long10n",
+      "label": "10",
+      "at": "long10np",
+      "dir": "c",
+      "size": "m",
+      "group": "long10g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long11",
+      "poly": [
+       "long11a",
+       "long11b",
+       "long11c",
+       "long11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long11g",
+      "start": true
+     },
+     {
+      "id": "long11n",
+      "label": "11",
+      "at": "long11np",
+      "dir": "c",
+      "size": "m",
+      "group": "long11g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "long12",
+      "poly": [
+       "long12a",
+       "long12b",
+       "long12c",
+       "long12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "long12g",
+      "start": true
+     },
+     {
+      "id": "long12n",
+      "label": "12",
+      "at": "long12np",
+      "dir": "c",
+      "size": "m",
+      "group": "long12g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide",
+      "poly": [
+       "widea",
+       "wideb",
+       "widec",
+       "wided"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "wide1",
+      "poly": [
+       "wide1a",
+       "wide1b",
+       "wide1c",
+       "wide1d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide1g",
+      "start": true
+     },
+     {
+      "id": "wide1n",
+      "label": "1",
+      "at": "wide1np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide1g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide2",
+      "poly": [
+       "wide2a",
+       "wide2b",
+       "wide2c",
+       "wide2d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide2g",
+      "start": true
+     },
+     {
+      "id": "wide2n",
+      "label": "2",
+      "at": "wide2np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide2g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide3",
+      "poly": [
+       "wide3a",
+       "wide3b",
+       "wide3c",
+       "wide3d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide3g",
+      "start": true
+     },
+     {
+      "id": "wide3n",
+      "label": "3",
+      "at": "wide3np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide3g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide4",
+      "poly": [
+       "wide4a",
+       "wide4b",
+       "wide4c",
+       "wide4d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide4g",
+      "start": true
+     },
+     {
+      "id": "wide4n",
+      "label": "4",
+      "at": "wide4np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide4g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide5",
+      "poly": [
+       "wide5a",
+       "wide5b",
+       "wide5c",
+       "wide5d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide5g",
+      "start": true
+     },
+     {
+      "id": "wide5n",
+      "label": "5",
+      "at": "wide5np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide5g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide6",
+      "poly": [
+       "wide6a",
+       "wide6b",
+       "wide6c",
+       "wide6d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide6g",
+      "start": true
+     },
+     {
+      "id": "wide6n",
+      "label": "6",
+      "at": "wide6np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide6g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide7",
+      "poly": [
+       "wide7a",
+       "wide7b",
+       "wide7c",
+       "wide7d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide7g",
+      "start": true
+     },
+     {
+      "id": "wide7n",
+      "label": "7",
+      "at": "wide7np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide7g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide8",
+      "poly": [
+       "wide8a",
+       "wide8b",
+       "wide8c",
+       "wide8d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide8g",
+      "start": true
+     },
+     {
+      "id": "wide8n",
+      "label": "8",
+      "at": "wide8np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide8g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide9",
+      "poly": [
+       "wide9a",
+       "wide9b",
+       "wide9c",
+       "wide9d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide9g",
+      "start": true
+     },
+     {
+      "id": "wide9n",
+      "label": "9",
+      "at": "wide9np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide9g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide10",
+      "poly": [
+       "wide10a",
+       "wide10b",
+       "wide10c",
+       "wide10d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide10g",
+      "start": true
+     },
+     {
+      "id": "wide10n",
+      "label": "10",
+      "at": "wide10np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide10g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide11",
+      "poly": [
+       "wide11a",
+       "wide11b",
+       "wide11c",
+       "wide11d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide11g",
+      "start": true
+     },
+     {
+      "id": "wide11n",
+      "label": "11",
+      "at": "wide11np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide11g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide12",
+      "poly": [
+       "wide12a",
+       "wide12b",
+       "wide12c",
+       "wide12d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide12g",
+      "start": true
+     },
+     {
+      "id": "wide12n",
+      "label": "12",
+      "at": "wide12np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide12g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide13",
+      "poly": [
+       "wide13a",
+       "wide13b",
+       "wide13c",
+       "wide13d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide13g",
+      "start": true
+     },
+     {
+      "id": "wide13n",
+      "label": "13",
+      "at": "wide13np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide13g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide14",
+      "poly": [
+       "wide14a",
+       "wide14b",
+       "wide14c",
+       "wide14d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide14g",
+      "start": true
+     },
+     {
+      "id": "wide14n",
+      "label": "14",
+      "at": "wide14np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide14g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "wide15",
+      "poly": [
+       "wide15a",
+       "wide15b",
+       "wide15c",
+       "wide15d"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 1.4,
+      "group": "wide15g",
+      "start": true
+     },
+     {
+      "id": "wide15n",
+      "label": "15",
+      "at": "wide15np",
+      "dir": "c",
+      "size": "m",
+      "group": "wide15g",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "ln",
+      "label": "12\\text{ sticky notes}",
+      "at": "lnp",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "wn",
+      "label": "15\\text{ sticky notes}",
+      "at": "wnp",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "With the same size notes, twelve on the long top and fifteen on the wider top.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Cover it and count"
+      },
+      {
+       "do": "write",
+       "tex": "15>12",
+       "at": "fifteen",
+       "fresh": true
+      },
+      {
+       "do": "text",
+       "text": "Compare using the same size square.",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The wider one has more room!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "wide",
+       "at": "wider"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cover it with equal squares, no gaps, no overlaps, and count.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "text",
+       "text": "Equal squares. No gaps. No overlaps.",
+       "at": "equal"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Count and name the unit.}",
+       "at": "count"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
