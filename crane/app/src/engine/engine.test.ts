@@ -96,7 +96,7 @@ test("static tables are consistent", () => {
   }
   for (const p of e.procedures) {
     assert.ok(p.steps.length > 0);
-    p.steps.forEach((s, i) => assert.equal(s.ord, i));
+    p.steps.forEach((s, i) => assert.equal(s.ord, i + 1, "step ords are 1-based, as in packs"));
     for (const s of p.steps) for (const r of ["trainee", "operator", "inspector"] as const) assert.ok(s.detail[r]);
   }
   for (const r of ["trainee", "operator", "inspector"] as const) assert.ok(e.starters(r).length >= 3);

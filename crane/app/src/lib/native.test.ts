@@ -42,6 +42,14 @@ test("every invoked command exists in its plugin", () => {
   }
 });
 
+test("every app command the frontend invokes is registered in the Rust shell", () => {
+  const appCommands = [...native.matchAll(/invoke\("([a-z_]+)"/g)].map((m) => m[1]!);
+  assert.ok(appCommands.includes("export_file"));
+  const lib = read("src-tauri/src/lib.rs");
+  const handler = lib.slice(lib.indexOf("generate_handler!["), lib.indexOf("])", lib.indexOf("generate_handler![")));
+  for (const cmd of appCommands) assert.match(handler, new RegExp(`(^|[\\[\\s,:])${cmd}\\b`), `${cmd} is not registered`);
+});
+
 test("every invoked plugin is registered in the Rust shell and is a dependency", () => {
   const lib = read("src-tauri/src/lib.rs");
   const cargo = read("src-tauri/Cargo.toml");

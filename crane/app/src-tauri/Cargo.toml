@@ -34,6 +34,17 @@ tauri-plugin-stt = { path = "../../../corpan/plugins/tauri-plugin-stt" }
 # On-device assistant: llama.cpp. Optional at runtime: nothing loads a model
 # unless the person installs one, and every screen works with it off.
 tauri-plugin-corpan-llm = { path = "../../../corpan/plugins/tauri-plugin-corpan-llm" }
+# Run report export (src/export.rs): the save dialog on desktop and Android,
+# written through fs so Android content:// URIs resolve without a storage
+# permission. Used from Rust only; nothing is granted to the WebView.
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+# Android's IPC cannot carry raw bytes, so there the export arrives as base64 JSON.
+base64 = "0.23"
+
+# iOS has no save dialog: export opens the share sheet instead. Same crate AHA uses.
+[target.'cfg(target_os = "ios")'.dependencies]
+tauri-plugin-ios-share = { path = "../../../homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share" }
 
 [profile.release]
 opt-level = "s"   # Size first, but llama.cpp's hot loops still need real optimisation.

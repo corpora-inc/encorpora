@@ -16,6 +16,11 @@ export interface StepRecord {
 
 export interface Run {
   id: string;
+  /** The pack the run was recorded against; null for runs saved before this was kept. */
+  packId: string | null;
+  packVersion: string | null;
+  /** The procedure's steps as they were at start (see records/report.ts stepsSignature). */
+  stepsSig: string | null;
   procId: string;
   title: string;
   role: Role;
@@ -29,7 +34,7 @@ export const emptyStep = (): StepRecord => ({ result: null, value: "", note: "",
 
 interface RunsState {
   runs: Record<string, Run>;
-  start(input: { procId: string; title: string; role: Role; equipment: string | null; steps: number }): Run;
+  start(input: { packId: string; packVersion: string; stepsSig: string; procId: string; title: string; role: Role; equipment: string | null; steps: number }): Run;
   record(runId: string, step: number, patch: Partial<StepRecord>): void;
   finish(runId: string): void;
   remove(runId: string): void;
@@ -42,9 +47,12 @@ export const useRuns = create<RunsState>()(
   persist(
     (set, get) => ({
       runs: {},
-      start({ procId, title, role, equipment, steps }) {
+      start({ packId, packVersion, stepsSig, procId, title, role, equipment, steps }) {
         const run: Run = {
           id: newId(),
+          packId,
+          packVersion,
+          stepsSig,
           procId,
           title,
           role,
@@ -74,7 +82,18 @@ export const useRuns = create<RunsState>()(
       },
       clear: () => set({ runs: {} }),
     }),
-    { name: "crane.runs", storage: jsonStorage, version: 1 },
+    {
+      name: "crane.runs",
+      storage: jsonStorage,
+      version: 2,
+      // v1 runs did not record their pack or steps: export marks them steps_known false.
+      migrate: (state, version) => {
+        const s = state as { runs: Record<string, Run> };
+        if (version < 2)
+          for (const r of Object.values(s.runs ?? {})) Object.assign(r, { packId: r.packId ?? null, packVersion: r.packVersion ?? null, stepsSig: r.stepsSig ?? null });
+        return s as unknown as RunsState;
+      },
+    },
   ),
 );
 

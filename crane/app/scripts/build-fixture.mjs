@@ -114,7 +114,9 @@ const procedure = [];
 const proc_step = [];
 for (const p of A.procedures) {
   procedure.push({ proc_id: p.proc_id, title: p.title, kind: p.kind, summary: p.summary, roles: JSON.stringify(p.roles), ...L });
-  p.steps.forEach((s, ord) => {
+  // Step ords are 1-based, as in packs from the pipeline (CONTRACT proc_step).
+  p.steps.forEach((s, i) => {
+    const ord = i + 1;
     s.section_ids.forEach((id) => checkSection(`step ${p.proc_id}#${ord}`, id));
     if (s.deficiency) checkQuote(`step ${p.proc_id}#${ord} deficiency`, s.deficiency.section_id, s.deficiency.quote);
     proc_step.push({ proc_id: p.proc_id, ord, text: s.text, detail: JSON.stringify(s.detail), check_kind: s.check_kind, section_ids: JSON.stringify(s.section_ids), deficiency: s.deficiency ? JSON.stringify(s.deficiency) : null, ...L });
