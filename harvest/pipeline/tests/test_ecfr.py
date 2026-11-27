@@ -48,12 +48,12 @@ def test_tables_notes_figures_appendix(ecfr_bytes):
     assert "over 50 to 200 | 15" in t.own_text
     note = ids["99cfr1999.12-note-1"]
     assert note.kind == "note" and "paint or tag" in note.own_text
-    app = ids["99cfr1999-subpart-ZZ-appendix-A"]
+    app = ids["99cfr1999.zz.appA"]
     assert app.kind == "appendix"
-    fig = ids["99cfr1999-subpart-ZZ-appendix-A-fig-1"]
+    fig = ids["99cfr1999.zz.appA-fig-1"]
     assert fig.meta["src"] == "https://www.ecfr.gov/graphics/fig1.gif"
     assert "Figure" not in subtree_text(app)        # figures do not enter ancestor text
-    assert ids["99cfr1999-subpart-ZZ-appendix-A(a)"].citation.endswith("(a)")
+    assert ids["99cfr1999.zz.appA(a)"].citation.endswith("(a)")
 
 
 def test_subtree_text_contains_descendants(ecfr_bytes):

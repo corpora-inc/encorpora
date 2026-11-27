@@ -1,0 +1,56 @@
+{
+  "sources": {
+    "ecfr-29-1910-179": {
+      "bytes": 43720,
+      "edition": "eCFR up to date as of 2026-11-24",
+      "fetched_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1910&section=1910.179",
+      "license": "public-domain-us-gov",
+      "media_type": "application/xml",
+      "publisher": "Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)",
+      "retrieved_at": "2026-11-27T07:00:40+00:00",
+      "sha256": "1fb1af7575fe1a5f437873dcecb7c833c7dd98bec06ab2096014fcc5bdb90bc0",
+      "source_id": "ecfr-29-1910-179",
+      "title": "29 CFR 1910.179, Overhead and gantry cranes",
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.179"
+    },
+    "ecfr-29-1910-180": {
+      "bytes": 28987,
+      "edition": "eCFR up to date as of 2026-11-24",
+      "fetched_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1910&section=1910.180",
+      "license": "public-domain-us-gov",
+      "media_type": "application/xml",
+      "publisher": "Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)",
+      "retrieved_at": "2026-11-27T07:00:40+00:00",
+      "sha256": "ba61f05535c94de607cfcf109e3e7ae13bd926edb69b608b0fc514bccb986634",
+      "source_id": "ecfr-29-1910-180",
+      "title": "29 CFR 1910.180, Crawler locomotive and truck cranes",
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.180"
+    },
+    "ecfr-29-1910-184": {
+      "bytes": 25213,
+      "edition": "eCFR up to date as of 2026-11-24",
+      "fetched_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1910&section=1910.184",
+      "license": "public-domain-us-gov",
+      "media_type": "application/xml",
+      "publisher": "Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)",
+      "retrieved_at": "2026-11-27T07:00:40+00:00",
+      "sha256": "d732c84ebd15ec3e503cf9a3a872ea647e81600066f7c12244968ad47a351765",
+      "source_id": "ecfr-29-1910-184",
+      "title": "29 CFR 1910.184, Slings",
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.184"
+    },
+    "ecfr-29-1926-cc": {
+      "bytes": 306291,
+      "edition": "eCFR up to date as of 2026-11-24",
+      "fetched_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1926&subpart=CC",
+      "license": "public-domain-us-gov",
+      "media_type": "application/xml",
+      "publisher": "Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)",
+      "retrieved_at": "2026-11-27T07:00:40+00:00",
+      "sha256": "f0e56134713ccd6e03fca1def56204cb339ae6b24f7a8f33dc1f56cff6eb2838",
+      "source_id": "ecfr-29-1926-cc",
+      "title": "29 CFR Part 1926 Subpart CC, Cranes and Derricks in Construction (with Appendices A-C)",
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1926/subpart-CC"
+    }
+  }
+}

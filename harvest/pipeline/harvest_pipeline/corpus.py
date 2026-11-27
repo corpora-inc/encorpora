@@ -52,6 +52,7 @@ class SourceSpec:
     edition: str | None = None
     media_type: str | None = None
     lang: str = "en"
+    optional: bool = False     # a missing manual download skips the source instead of failing
 
 
 @dataclass
@@ -117,6 +118,7 @@ def load_corpus(path: str | Path) -> Corpus:
             parser=s["parser"], fetch=s.get("fetch") or {"kind": "http", "url": s["url"]},
             parser_options=s.get("parser_options") or {}, edition=s.get("edition"),
             media_type=s.get("media_type"), lang=s.get("lang", raw.get("lang", "en")),
+            optional=bool(s.get("optional", False)),
         ))
     profiles = {}
     for name, p in (raw.get("profiles") or {}).items():

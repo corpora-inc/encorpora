@@ -12,7 +12,7 @@ from .cache import ResponseCache
 from .corpus import Corpus, Profile, harvest_home
 from .embed import make_embedder
 from .enrich import Engine, TaskReport, order_tasks, spec_of
-from .fetch import read_raw
+from .fetch import load_lock, read_raw
 from .pack import write_pack
 from .stage import Stage
 from .tasks import get_task, load_task_module
@@ -27,7 +27,13 @@ def work_dir(corpus: Corpus, profile: Profile) -> Path:
 def build_stage(corpus: Corpus, path: Path | str = ":memory:", log=sys.stderr) -> tuple[Stage, dict]:
     stage = Stage(path)
     info = {}
+    lock = load_lock(corpus)["sources"]
     for spec in corpus.sources:
+        if spec.optional and spec.id not in lock:
+            if log:
+                print(f"[parse] {spec.id}: not fetched (optional); skipped", file=log)
+            info[spec.id] = {"skipped": "not fetched"}
+            continue
         rec, data = read_raw(corpus, spec.id)
         doc = parsers.parse(spec.parser, data, spec.id, spec.parser_options)
         stage.add_source(rec)
@@ -66,6 +72,16 @@ def enrich(corpus: Corpus, profile: Profile, stage: Stage, offline: bool, task_n
                 break
     finally:
         cache.close()
+    if corpus.raw.get("imports"):
+        from .importer import import_rows
+        for ir in import_rows(stage, corpus.dir, corpus.raw["imports"]):
+            if log:
+                print(f"[import] {ir.table}: {ir.rows} rows from {ir.files} files {ir.verdicts}", file=log, flush=True)
+                for p in ir.problems[:5]:
+                    print(f"[import]   {p}", file=log)
+            rep = TaskReport(task=f"import:{ir.table}", inputs=ir.files, items=ir.rows, verdicts=ir.verdicts,
+                             errors=ir.problems[:50])
+            reports.append(rep)
     return reports
 
 

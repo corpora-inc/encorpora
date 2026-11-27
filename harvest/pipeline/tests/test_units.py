@@ -139,3 +139,74 @@ def test_diff(tmp_path, corpus_dir):
     assert "99cfr1999.12(a)(1)" in changed and "99cfr1999.10(b)" in changed
     assert d["added"] == []
     assert sqlite3.connect(new).execute("SELECT COUNT(*) FROM section").fetchone()[0] > 10
+
+
+def test_manual_optional_source_is_skipped_until_downloaded(corpus_dir, tmp_path):
+    y = corpus_dir / "corpus.yaml"
+    y.write_text(y.read_text().replace("equipment:", f"""  - id: manual-doc
+    title: Manual doc
+    publisher: Test
+    url: https://example.invalid/doc.md
+    license: public-domain-us-gov
+    parser: markdown
+    fetch: {{kind: manual, path: {tmp_path}/dl/doc.md, url: "https://example.invalid/doc.md"}}
+    optional: true
+equipment:"""))
+    c = load_corpus(y)
+    res = {f.record["source_id"]: f for f in fetch(c)}
+    assert res["manual-doc"].status == "missing" and "save it as" in res["manual-doc"].record["note"]
+    stage, info = build_stage(c, log=None)
+    assert info["manual-doc"] == {"skipped": "not fetched"}
+    (tmp_path / "dl").mkdir()
+    (tmp_path / "dl" / "doc.md").write_text("# 1 Cranes\n\nInspect daily.\n")
+    res = {f.record["source_id"]: f for f in fetch(c)}
+    assert res["manual-doc"].status == "new"
+    assert res["manual-doc"].record["fetched_url"] == "https://example.invalid/doc.md"
+    stage, _ = build_stage(c, log=None)
+    assert stage.exists("manual-doc:1")
+
+
+def test_llama_server_embedder_against_stub():
+    import threading
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+    from harvest_pipeline.embed import LlamaServerEmbedder
+
+    class H(BaseHTTPRequestHandler):
+        def do_POST(self):
+            body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            data = [{"index": i, "embedding": [float(len(t)), 1.0, 0.0, 2.0]} for i, t in enumerate(body["input"])]
+            out = json.dumps({"data": list(reversed(data))}).encode()
+            self.send_response(200)
+            self.send_header("Content-Length", str(len(out)))
+            self.end_headers()
+            self.wfile.write(out)
+
+        def log_message(self, *a):
+            pass
+
+    s = HTTPServer(("127.0.0.1", 0), H)
+    threading.Thread(target=s.serve_forever, daemon=True).start()
+    try:
+        e = LlamaServerEmbedder("/nonexistent.gguf", "stub-model", dim=2, base_url=f"http://127.0.0.1:{s.server_address[1]}",
+                                doc_template="title: {title} | text: {text}", batch=2)
+        m = e.embed_docs([(None, "a"), ("T", "bb"), (None, "ccc")])
+        assert m.shape == (3, 2) and e.dim == 2 and e.id == "stub-model@remote/mrl2"
+        assert np.allclose(np.linalg.norm(m, axis=1), 1.0)
+        assert e.meta()["embed_doc_template"] == "title: {title} | text: {text}"
+    finally:
+        s.shutdown()
+
+
+def test_number_check_ignores_citations_and_uses_context():
+    from harvest_pipeline.verify import check_numbers
+    assert check_numbers("Under Option (3), per § 1926.1408(a)(2), keep 12.5 feet", "keep 12.5 feet") == []
+    assert check_numbers("keep 12.5 feet", "keep 12 feet") != []
+    assert check_numbers("closer than 20 feet", "If so, stop", context="could get closer than 20 feet") == []
+
+
+def test_inline_quotes_pair_properly_and_id_refs():
+    from harvest_pipeline.verify import check_id_refs, check_new_numbers, quoted_spans
+    body = '“Load” means the object. "Rated capacity" is "the maximum working load permitted" [29cfr1926.1401].'
+    assert quoted_spans(body) == ["Load", "Rated capacity", "the maximum working load permitted"]
+    assert check_new_numbers("See [29cfr1926.1408(a)(2)] and 29 CFR 1926.1408.", "nothing") == []
+    assert check_new_numbers("Within 25 feet [29cfr1926.1408].", "within 20 feet") != []

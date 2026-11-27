@@ -213,18 +213,18 @@ class Engine:
             for i, (item, problems) in enumerate(results):
                 rep.items += 1
                 notes = None
+                decided = "deterministic"
                 if problems:
                     verdict, notes = "fail", "; ".join(problems)
-                elif deterministic:
-                    verdict = "pass"
-                elif not task.judge_rubric:
+                elif deterministic or not task.judge_rubric:
                     verdict = "pass"
                 elif not self.judge_spec:
-                    verdict, notes = "needs_review", "no judge configured"
+                    verdict, notes, decided = "needs_review", "no judge configured", "none"
                 elif jd is None:
-                    verdict, notes = "needs_review", "judge output missing"
+                    verdict, notes, decided = "needs_review", "judge output missing", "none"
                 else:
                     v = jd["by_index"].get(i)
+                    decided = "judge"
                     if v is None:
                         verdict, notes = "needs_review", "judge gave no verdict"
                     else:
@@ -238,7 +238,8 @@ class Engine:
                     "prompt_version": task.prompt_version, "prompt_sha256": task.prompt_sha256,
                     "input_sha256": entry["input_sha256"], "output_sha256": out_sha,
                     "created_at": entry.get("created_at") or "", "verifier": verifier, "verdict": verdict,
-                    "notes": json.dumps({"key": inp.key, "index": i, "notes": notes}, ensure_ascii=False),
+                    "notes": json.dumps({"key": inp.key, "index": i, "decided_by": decided, "notes": notes},
+                                        ensure_ascii=False),
                 })
                 try:
                     tables = task.rows(item, inp, self.stage)

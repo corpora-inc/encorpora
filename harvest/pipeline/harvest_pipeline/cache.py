@@ -9,6 +9,7 @@ diffs between bakes are readable and a re-bake only calls models for changed inp
 from __future__ import annotations
 
 import json
+import sys
 import threading
 from pathlib import Path
 
@@ -32,12 +33,17 @@ class ResponseCache:
             entries: dict[tuple, dict] = {}
             f = self._file(task)
             if f.exists():
-                for n, line in enumerate(f.read_text().splitlines(), 1):
+                lines = f.read_text().splitlines()
+                for n, line in enumerate(lines, 1):
                     if not line.strip():
                         continue
                     try:
                         e = json.loads(line)
                     except json.JSONDecodeError as exc:
+                        if n == len(lines):
+                            # an append cut short (crash, full disk): drop it; the call is redone
+                            print(f"warning: {f}:{n}: dropping truncated last cache line", file=sys.stderr)
+                            continue
                         raise SystemExit(f"{f}:{n}: corrupt cache line: {exc}")
                     entries[cache_key(e["task"], e["prompt_version"], e["input_sha256"], e["model"])] = e
             self._entries[task] = entries

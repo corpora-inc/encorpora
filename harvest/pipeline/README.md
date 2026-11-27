@@ -32,6 +32,7 @@ python3.12 -m venv ~/.cache/harvest/venv            # any venv outside the repo;
 | `harvest-bake review CORPUS.yaml --task facts --n 20 [--verdict fail]` | read the first N items with verdicts and notes |
 | `harvest-bake stats CORPUS.yaml` | row counts, verdicts per task, tokens and cost from the cache |
 | `harvest-bake diff OLD.sqlite NEW.sqlite [--json]` | sections added / removed / changed between editions |
+| `harvest-bake compare CORPUS.yaml --a frontier --b open-weight` | item-by-item comparison of two profiles' bakes (verdicts, quote validity, judge agreement) |
 | `harvest-bake verify PACK_DIR [--pubkey KEY.pub]` | file hashes and signature |
 | `harvest-bake keygen KEY.pem` | new ed25519 key; keep it out of git |
 
@@ -80,6 +81,21 @@ are `<id_prefix>:<number>` when a heading carries a section number (`number_rege
 
 A row's `text` is its exact source text, whitespace-normalized, including its descendants, so
 any quote inside a paragraph validates against that paragraph and every ancestor.
+
+## Sources a person must download
+
+Some hosts refuse automated clients. Such a source uses `fetch: {kind: manual, path: ..., url: ...}`
+and `optional: true`: `fetch` prints the URL and the path to save it to, and the source is
+skipped until the file is there. Once saved, `fetch` hashes and locks it like any other source.
+The pipeline never imitates a browser to get past a block.
+
+## Importing rows generated elsewhere
+
+`imports:` in the corpus YAML loads JSONL / JSON / YAML rows (contract columns plus a `prov`
+object) produced by another lane's runner. Every row is re-verified against the stage (quotes
+verbatim, cited sections exist) and ships only if its own verdict and the re-check both pass.
+Answer `aliases` become `answer_alias` rows; procedure `steps` become `proc_step` rows. See
+[`harvest_pipeline/importer.py`](harvest_pipeline/importer.py).
 
 ## Backends
 

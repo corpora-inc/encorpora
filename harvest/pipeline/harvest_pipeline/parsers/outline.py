@@ -170,4 +170,16 @@ def build_doc(blocks: list[Block], source_id: str, options: dict | None = None) 
             citation = f"{parent.citation if parent else cite_prefix} ¶{n}".strip()
         last_para = attach(Node(sid, "paragraph", citation, own_text=text), parent)
         item_stack = []
+    if o.get("keep_headings"):
+        _keep(doc, re.compile(o["keep_headings"]))
     return doc
+
+
+def _keep(doc: ParsedDoc, rx: re.Pattern) -> None:
+    """Keep only headed subtrees whose heading matches, plus the ancestors that lead to them."""
+    def prune(node: Node, inside: bool) -> bool:
+        hit = inside or (node.kind in ("section", "appendix") and bool(rx.search(node.own_text or "")))
+        node.children = [c for c in node.children if prune(c, hit)]
+        return hit or bool(node.children)
+
+    doc.roots = [r for r in doc.roots if prune(r, False)]

@@ -57,11 +57,22 @@ def _num_forms(text: str) -> set[str]:
     return forms
 
 
-def check_numbers(claimed: str | None, quote: str, what: str = "value") -> list[str]:
-    """Every number in `claimed` appears in the quote (digits or a common number word)."""
+_CITE = re.compile(r"§+\s*\d[\d.]*(?:\s*\([^)\s]{1,6}\))*|\b\d{3,4}\.\d+[a-z]?(?:\s*\([^)\s]{1,6}\))*"
+                   r"|\b\d+\s+CFR\b|\((?:[a-z]{1,5}|\d{1,3}|[A-Z]{1,2})\)")
+
+
+def strip_citations(text: str) -> str:
+    """Drop citation-like tokens ('§ 1926.1408(a)(2)', '(c)(18)', 'Option (1)', '49 CFR') before number checks."""
+    return _CITE.sub(" ", text or "")
+
+
+def check_numbers(claimed: str | None, quote: str, what: str = "value", context: str = "") -> list[str]:
+    """Every number in `claimed` appears in the quote, or in `context` when one is given
+    (digits or a common number word). Citation tokens in `claimed` are ignored."""
     if not claimed:
         return []
-    have = _num_forms(quote)
+    claimed = strip_citations(claimed)
+    have = _num_forms(quote) | (_num_forms(context) if context else set())
     missing = [n for n in numbers_in(claimed) if n not in have]
     return [f"{what} number(s) {', '.join(missing)} not in quote"] if missing else []
 
@@ -96,17 +107,38 @@ def check_no_outside_standard(texts: list[str], source_text: str) -> list[str]:
     return problems
 
 
-_QUOTED = re.compile(r"[\"“]([^\"”]{25,})[\"”]")
+_CURLY = re.compile("“([^“”\n]*)”")
+_STRAIGHT = re.compile(r'"([^"\n]*)"')
+_ID_REF = re.compile(r"\[([0-9]+cfr[^\]\s]+|[a-z][\w.\-]*:[^\]\s]+)\]")
 
 
-def check_inline_quotes(body: str, source_text: str) -> list[str]:
-    """Any passage in quotation marks (25+ chars) must be verbatim from the source."""
-    bad = [m.group(1)[:60] for m in _QUOTED.finditer(body or "") if locate(m.group(1), source_text) is None]
+def quoted_spans(body: str) -> list[str]:
+    """Passages in quotation marks: curly pairs first, then straight pairs; never across a line break."""
+    spans = [m.group(1) for m in _CURLY.finditer(body or "")]
+    rest = _CURLY.sub(" ", body or "")
+    spans += [m.group(1) for m in _STRAIGHT.finditer(rest)]
+    return spans
+
+
+def check_inline_quotes(body: str, source_text: str, min_len: int = 25) -> list[str]:
+    """Any passage in quotation marks (min_len+ chars) must be verbatim from the source."""
+    bad = [q[:60] for q in quoted_spans(body) if len(q) >= min_len and locate(q, source_text) is None]
     return [f"quoted text not in source: {b!r}" for b in bad]
 
 
-def check_new_numbers(body: str, source_text: str) -> list[str]:
-    """Numbers in generated prose must come from the source (limits are never invented)."""
-    have = _num_forms(source_text)
-    extra = sorted({n for n in numbers_in(body) if n not in have})
+def id_refs(body: str) -> list[str]:
+    """Section ids cited inline as [29cfr1926.1408(a)(2)]."""
+    return _ID_REF.findall(body or "")
+
+
+def check_id_refs(body: str, stage: Stage) -> list[str]:
+    return [f"cites unknown section {sid}" for sid in id_refs(body) if not stage.exists(sid)]
+
+
+def check_new_numbers(body: str, source_text: str, allowed: set[str] | None = None) -> list[str]:
+    """Numbers in generated prose must come from the source (limits are never invented).
+    Inline [section_id] references and citation tokens are ignored; `allowed` adds known numbers."""
+    have = _num_forms(source_text) | (allowed or set())
+    text = strip_citations(_ID_REF.sub(" ", body or ""))
+    extra = sorted({n for n in numbers_in(text) if n not in have})
     return [f"numbers not in source: {', '.join(extra)}"] if extra else []

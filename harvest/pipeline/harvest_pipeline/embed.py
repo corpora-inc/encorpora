@@ -99,7 +99,7 @@ class LlamaServerEmbedder(Embedder):
 
     def __init__(self, model_path: str, model_name: str, dim: int | None = None, binary: str = "llama-server",
                  query_template: str = "{query}", doc_template: str = "{text}", batch: int = 32,
-                 base_url: str | None = None, ctx: int = 2048, threads: int | None = None):
+                 base_url: str | None = None, ctx: int = 8192, threads: int | None = None):
         self.model_path = Path(os.path.expanduser(model_path))
         self.binary = binary
         self.batch = batch

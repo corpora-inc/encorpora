@@ -1,0 +1,175 @@
+# Crane corpus: source registry, equipment taxonomy, enrichment tasks and backends for
+# harvest-bake (harvest/pipeline). Owned by the pipeline lane; the other files in crane/content
+# belong to the content lane.
+#
+#   harvest-bake all crane/content/corpus.yaml                 # fetch + enrich + build
+#   harvest-bake build crane/content/corpus.yaml               # from raw sources + cache, no model
+#
+# Every source is a US government work. Consensus standards the rules cite (ASME B30.x) are
+# copyrighted: they appear as xref rows by number only and are never fetched or ingested.
+corpus_id: crane-us
+pack_id: crane-us
+lang: en
+
+sources:
+  - id: ecfr-29-1926-cc
+    title: 29 CFR Part 1926 Subpart CC, Cranes and Derricks in Construction (with Appendices A-C)
+    publisher: Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)
+    url: https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1926/subpart-CC
+    license: public-domain-us-gov
+    parser: ecfr
+    parser_options: {title: 29, part: "1926"}
+    fetch: {kind: ecfr, title: 29, query: {part: "1926", subpart: CC}}
+  - id: ecfr-29-1910-179
+    title: 29 CFR 1910.179, Overhead and gantry cranes
+    publisher: Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)
+    url: https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.179
+    license: public-domain-us-gov
+    parser: ecfr
+    parser_options: {title: 29, part: "1910"}
+    fetch: {kind: ecfr, title: 29, query: {part: "1910", section: "1910.179"}}
+  - id: ecfr-29-1910-180
+    title: 29 CFR 1910.180, Crawler locomotive and truck cranes
+    publisher: Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)
+    url: https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.180
+    license: public-domain-us-gov
+    parser: ecfr
+    parser_options: {title: 29, part: "1910"}
+    fetch: {kind: ecfr, title: 29, query: {part: "1910", section: "1910.180"}}
+  - id: ecfr-29-1910-184
+    title: 29 CFR 1910.184, Slings
+    publisher: Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)
+    url: https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.184
+    license: public-domain-us-gov
+    parser: ecfr
+    parser_options: {title: 29, part: "1910"}
+    fetch: {kind: ecfr, title: 29, query: {part: "1910", section: "1910.184"}}
+
+  # osha.gov and publications.usace.army.mil refuse automated clients, so these are manual
+  # downloads: open the URL in a browser, save the file at `path`, run `harvest-bake fetch`.
+  # Until then they are skipped (optional).
+  - id: osha-3433
+    title: Small Entity Compliance Guide for the Final Rule for Cranes and Derricks in Construction (OSHA 3433-10R 2014)
+    publisher: U.S. Department of Labor, OSHA
+    url: https://www.osha.gov/sites/default/files/publications/OSHA3433.pdf
+    license: public-domain-us-gov   # the guide states its material is in the public domain
+    parser: pdf
+    # pages 59-60 (operator qualification, section 1427) predate the 2018 amendment of 1926.1427 and are left out
+    parser_options: {id_prefix: osha3433, citation_prefix: "OSHA 3433", pages: "6-58,61-81"}
+    fetch: {kind: manual, path: ~/.cache/harvest/manual/OSHA3433.pdf, url: "https://www.osha.gov/sites/default/files/publications/OSHA3433.pdf"}
+    optional: true
+  - id: osha-fs-3635
+    title: "Cranes and Derricks in Construction: Wire Rope - Inspection (OSHA FS-3635, 2013)"
+    publisher: U.S. Department of Labor, OSHA
+    url: https://www.osha.gov/sites/default/files/publications/OSHA3635.pdf
+    license: public-domain-us-gov
+    parser: pdf
+    parser_options: {id_prefix: osha-fs3635, citation_prefix: "OSHA FS-3635"}
+    fetch: {kind: manual, path: ~/.cache/harvest/manual/OSHA3635.pdf, url: "https://www.osha.gov/sites/default/files/publications/OSHA3635.pdf"}
+    optional: true
+  - id: osha-fs-ad
+    title: "Cranes and Derricks in Construction: Assembly/Disassembly (OSHA fact sheet, 2010)"
+    publisher: U.S. Department of Labor, OSHA
+    url: https://www.osha.gov/sites/default/files/publications/ADFACTSHEETOSHA9-29SOL-DB.pdf
+    license: public-domain-us-gov
+    parser: pdf
+    parser_options: {id_prefix: osha-fs-ad, citation_prefix: "OSHA A/D fact sheet"}
+    fetch: {kind: manual, path: ~/.cache/harvest/manual/ADFACTSHEETOSHA9-29SOL-DB.pdf, url: "https://www.osha.gov/sites/default/files/publications/ADFACTSHEETOSHA9-29SOL-DB.pdf"}
+    optional: true
+  - id: osha-fs-rigger
+    title: "Cranes and Derricks in Construction: Qualified Rigger (OSHA fact sheet, 2010)"
+    publisher: U.S. Department of Labor, OSHA
+    url: https://www.osha.gov/sites/default/files/publications/CRANES-QUALIFIED-RIGGER-FACTSHEET.pdf
+    license: public-domain-us-gov
+    parser: pdf
+    parser_options: {id_prefix: osha-fs-rigger, citation_prefix: "OSHA rigger fact sheet"}
+    fetch: {kind: manual, path: ~/.cache/harvest/manual/CRANES-QUALIFIED-RIGGER-FACTSHEET.pdf, url: "https://www.osha.gov/sites/default/files/publications/CRANES-QUALIFIED-RIGGER-FACTSHEET.pdf"}
+    optional: true
+  - id: osha-fs-signal
+    title: "Cranes and Derricks in Construction: Signal Person Qualification (OSHA fact sheet, 2010)"
+    publisher: U.S. Department of Labor, OSHA
+    url: https://www.osha.gov/sites/default/files/publications/CRANES-SIGNAL-PERSON-FACTSHEET.pdf
+    license: public-domain-us-gov
+    parser: pdf
+    parser_options: {id_prefix: osha-fs-signal, citation_prefix: "OSHA signal person fact sheet"}
+    fetch: {kind: manual, path: ~/.cache/harvest/manual/CRANES-SIGNAL-PERSON-FACTSHEET.pdf, url: "https://www.osha.gov/sites/default/files/publications/CRANES-SIGNAL-PERSON-FACTSHEET.pdf"}
+    optional: true
+  - id: usace-em-385-1-1
+    title: USACE EM 385-1-1, Safety and Occupational Health Requirements (15 March 2024), crane, hoisting and rigging sections
+    publisher: U.S. Army Corps of Engineers
+    url: "https://www.publications.usace.army.mil/Portals/76/EM%20385-1-1%20_EFFECTIVE%2015March2024.pdf"
+    license: public-domain-us-gov   # confirm the cover's distribution statement on download
+    parser: pdf
+    parser_options: {id_prefix: em385, citation_prefix: "EM 385-1-1", keep_headings: "(?i)crane|hoist|rigging|derrick"}
+    fetch: {kind: manual, path: ~/.cache/harvest/manual/EM385-1-1_2024.pdf, url: "https://www.publications.usace.army.mil/Portals/76/EM%20385-1-1%20_EFFECTIVE%2015March2024.pdf"}
+    edition: 15 March 2024
+    optional: true
+
+# Variant taxonomy (equipment rows), from the scope lists in 1926.1400(a), 1910.179, .180 and .184.
+equipment:
+  - {id: mobile, name: Mobile crane, aliases: [mobile cranes]}
+  - {id: mobile.crawler, parent: mobile, name: Crawler crane, aliases: [crawler]}
+  - {id: mobile.wheel, parent: mobile, name: Wheel-mounted crane, aliases: [truck crane, truck-mounted crane]}
+  - {id: mobile.rough-terrain, parent: mobile, name: Rough-terrain crane, aliases: [RT crane]}
+  - {id: mobile.all-terrain, parent: mobile, name: All-terrain crane, aliases: [AT crane]}
+  - {id: mobile.commercial-truck, parent: mobile, name: Commercial truck-mounted crane}
+  - {id: mobile.boom-truck, parent: mobile, name: Boom truck crane, aliases: [boom truck]}
+  - {id: mobile.locomotive, parent: mobile, name: Locomotive crane}
+  - {id: mobile.carry-deck, parent: mobile, name: Industrial (carry-deck) crane, aliases: [carry-deck crane, industrial crane]}
+  - {id: articulating, name: Articulating crane, aliases: [knuckle-boom crane, knuckle boom]}
+  - {id: tower, name: Tower crane}
+  - {id: tower.hammerhead, parent: tower, name: Fixed-jib (hammerhead) tower crane, aliases: [hammerhead]}
+  - {id: tower.luffing, parent: tower, name: Luffing-boom tower crane, aliases: [luffer]}
+  - {id: tower.self-erecting, parent: tower, name: Self-erecting tower crane}
+  - {id: overhead, name: Overhead and gantry crane, aliases: [bridge crane, gantry crane, overhead crane]}
+  - {id: overhead.semigantry, parent: overhead, name: Semigantry crane}
+  - {id: overhead.monorail, parent: overhead, name: Monorail crane, aliases: [crane on a monorail]}
+  - {id: overhead.straddle, parent: overhead, name: Straddle crane}
+  - {id: derrick, name: Derrick, aliases: [guy derrick, stiffleg derrick, A-frame derrick, gin pole]}
+  - {id: floating, name: Floating crane or derrick, aliases: [crane on a barge, barge-mounted crane]}
+  - {id: pedestal, name: Pedestal crane}
+  - {id: portal, name: Portal crane}
+  - {id: sideboom, name: Sideboom crane, aliases: [sideboom tractor, pipelayer]}
+  - {id: pile-driver, name: Dedicated pile driver}
+  - {id: service-truck, name: Service/mechanic truck with a hoisting device, aliases: [mechanic truck]}
+  - {id: multi-purpose, name: Multi-purpose machine configured to hoist, aliases: [telehandler with winch]}
+  - {id: small-capacity, name: Equipment rated 2,000 pounds or less}
+  - {id: sling, name: Sling}
+  - {id: sling.alloy-chain, parent: sling, name: Alloy steel chain sling}
+  - {id: sling.wire-rope, parent: sling, name: Wire rope sling}
+  - {id: sling.metal-mesh, parent: sling, name: Metal mesh sling}
+  - {id: sling.fiber-rope, parent: sling, name: Natural or synthetic fiber rope sling}
+  - {id: sling.synthetic-web, parent: sling, name: Synthetic web sling, aliases: [web sling]}
+
+tasks:
+  - terms
+  - facts
+  - explanations
+  - applicability
+
+profiles:
+  frontier:
+    author: {backend: claude-cli, model: sonnet, max_week_pct: 60}
+    judge: {backend: claude-cli, model: opus, max_week_pct: 60}
+    cache_dir: cache/frontier
+    concurrency: 6
+  open-weight:
+    # gpt-oss-120b on the lab machine through llama-server (OpenAI-compatible, JSON-schema
+    # constrained decoding). The judge stays a frontier model so both bakes are scored alike.
+    author: {backend: openai-compatible, model: gpt-oss-120b, base_url: "http://spark-lan:8091/v1", mode: json_schema, timeout: 3600}
+    judge: {backend: claude-cli, model: opus, max_week_pct: 60}
+    cache_dir: cache/open-weight
+    concurrency: 2
+default_profile: frontier
+
+embedder: {kind: embeddinggemma-2}
+
+# Rows the content lane generates with its own runner (crane/content/tasks/run.py); re-verified
+# against the parsed sources at build time, shipped only when both verdicts pass.
+imports:
+  - {table: topic, files: [blueprint.yaml]}
+  - {table: term, files: [data/glossary.jsonl]}
+  - {table: question, files: ["data/questions/*.jsonl"]}
+  - {table: answer, files: ["data/answers/*.jsonl"]}
+  - {table: lesson, files: ["data/lessons/*.json"]}
+  - {table: procedure, files: ["procedures/*.yaml"]}

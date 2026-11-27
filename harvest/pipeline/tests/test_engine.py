@@ -139,3 +139,37 @@ def test_limit_and_keys(corpus):
     reps = enrich(corpus, p, stage, offline=False, task_names=["facts"], keys={"99cfr1999.12"},
                   author=a, judge=ScriptedBackend("judge", responses=judge_reply), log=None)
     assert reps[0].inputs == 1 and len(a.calls) == 1
+
+
+def test_compare_two_profiles(corpus, tmp_path):
+    from harvest_pipeline.compare import compare
+    from harvest_pipeline.corpus import load_corpus
+    run(corpus)                                   # profile "test"
+    y = corpus.path
+    y.write_text(y.read_text().replace("default_profile: test", "  alt:\n    author: {backend: scripted, model: alt}\n"
+                                       "    judge: {backend: scripted, model: judge}\n    cache_dir: cache/alt\n"
+                                       "default_profile: test"))
+    c = load_corpus(y)
+    p = c.profile("alt")
+    stage, _ = build_stage(c, log=None)
+
+    def alt_author(req):
+        out = author_reply(req)
+        for it in out["items"]:
+            if it.get("term") == "Qualified rigger":
+                it["quote"] = "Qualified rigger means a rigger who meets the criteria in § 1999.12(b)."
+                it["definition"] = "A rigger who meets the listed criteria."
+        return out
+
+    enrich(c, p, stage, offline=False, author=ScriptedBackend("alt", responses=alt_author),
+           judge=ScriptedBackend("judge", responses=judge_reply), log=None)
+    s = compare(c, "test", "alt", tmp_path / "cmp.jsonl")
+    t = s["tasks"]["harvest.terms"]
+    assert t["test"]["pass"] == 1 and t["alt"]["pass"] == 2 and t["matched"] == 2
+    assert t["test"]["quote_ok"] == 1 and t["alt"]["quote_ok"] == 2
+    rows = [json.loads(x) for x in (tmp_path / "cmp.jsonl").read_text().splitlines()]
+    rig = next(r for r in rows if r["task"] == "terms" and r["test"]["row"]["term"] == "Qualified rigger")
+    assert rig["verdict_agree"] is False and rig["alt"]["judge"]["verdict"] == "pass"
+    assert rig["test"]["deterministic_ok"] is False and rig["test"]["judge"] is None
+    f = s["tasks"]["harvest.facts"]
+    assert f["matched"] == 3 and f["matched_verdict_agree"] == 3
