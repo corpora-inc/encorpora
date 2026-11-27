@@ -176,7 +176,9 @@ These fill gaps CONTRACT leaves open. The pipeline writes packs this way.
 - **Synonyms (optional table).** `CREATE TABLE synonym (phrase TEXT NOT NULL,
   canonical TEXT NOT NULL, lang TEXT NOT NULL)`: when a query contains
   `phrase`, `canonical` is searched too and satisfies the phrase's words.
-- **Rubrics** (`question.answer` for `free_text`): `{"points":[{"id","text","keywords":[phrase | [alternatives…]],"weight"}],"pass":0.7}`.
+- **Rubrics** (`question.answer` for `free_text`): CONTRACT "Free-text rubric",
+  `{"points":[{"id","point","any":[phrase…]}],"pass":<points needed>,"sample_answer","misconceptions"}`,
+  the same shape `harvest/practice` grades. Numeric keys: `25`, `1,200`, `25±0.5`.
 - **Note vocabulary** (optional `pack_meta.note_vocab`): `{"components":[{"name","aliases"}],"conditions":[…],"actions":[…]}`, merged over built-in generic conditions and actions.
 - **Answer cache.** Put the canonical question among the aliases. A hit needs
   alias similarity ≥ `AskOptions::cache_threshold` (default 0.75; Dice over

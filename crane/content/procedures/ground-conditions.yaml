@@ -178,12 +178,15 @@ steps:
       than allowable, use larger mats.'
     inspector: 'Practice: record the calculated pressure and the allowable bearing value used, with their sources.'
   check_kind: value
-  section_ids: []
+  section_ids:
+  - 29cfr1926.1402(b)
   deficiency:
     guidance: The estimated pressure is higher than the allowable ground bearing.
     action: Increase the mat or cribbing area, or relocate, before setting up.
-    section_id: null
-    quote: null
+    section_id: 29cfr1926.1402(b)
+    quote: The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to
+      a sufficient extent so that, in conjunction (if necessary) with the use of supporting materials, the equipment
+      manufacturer's specifications for adequate support and degree of level of the equipment are met.
   practice_only: true
   value_unit: psf
 - ord: 10
@@ -560,12 +563,15 @@ steps:
       any rain.'
     inspector: 'Practice: record the recheck results.'
   check_kind: pass_fail
-  section_ids: []
+  section_ids:
+  - 29cfr1926.1402(b)
   deficiency:
     guidance: The crane has settled out of level, or the blocking has shifted.
     action: Stop lifting and re-level. Reassess the ground before continuing.
-    section_id: null
-    quote: null
+    section_id: 29cfr1926.1402(b)
+    quote: The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to
+      a sufficient extent so that, in conjunction (if necessary) with the use of supporting materials, the equipment
+      manufacturer's specifications for adequate support and degree of level of the equipment are met.
   practice_only: true
   value_unit: null
 prov:

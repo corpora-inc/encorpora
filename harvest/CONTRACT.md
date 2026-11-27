@@ -118,7 +118,7 @@ CREATE TABLE question (
   kind TEXT NOT NULL,               -- mc|free_text|numeric
   stem TEXT NOT NULL,
   choices TEXT,                     -- json array of strings (mc)
-  answer TEXT NOT NULL,             -- mc: index as text; numeric: value; free_text: rubric json
+  answer TEXT NOT NULL,             -- mc: index as text; numeric: value or value±tolerance; free_text: rubric json (below)
   rationales TEXT,                  -- json array, one per choice: why right / why wrong
   section_ids TEXT NOT NULL,        -- json array
   difficulty REAL NOT NULL,         -- 0..1 prior
@@ -139,7 +139,7 @@ CREATE TABLE proc_step (proc_id TEXT NOT NULL, ord INTEGER NOT NULL,
   text TEXT NOT NULL, detail TEXT NOT NULL,        -- json {trainee, operator, inspector}
   check_kind TEXT NOT NULL,                        -- pass_fail|value|note|photo
   section_ids TEXT NOT NULL,
-  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}
+  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}: see below
   lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (proc_id, ord));
 
 CREATE TABLE chunk (chunk_id TEXT PRIMARY KEY, ref_kind TEXT NOT NULL, ref_id TEXT NOT NULL,
@@ -164,7 +164,39 @@ CREATE TABLE provenance (
 );
 ```
 
-Only rows with `verdict = 'pass'` ship in a release pack.
+Only rows with `verdict = 'pass'` ship in a release pack. Each generated row has its own
+provenance row: rows from one generation call can earn different verdicts.
+
+### Free-text rubric
+
+`question.answer` for `kind = free_text`. One shape for every reader: the core
+(`grade::Rubric`), `harvest/practice` (`parseRubric`) and the bake (`contract.py`). Unknown
+keys are refused.
+
+```json
+{ "points": [ { "id": "dist", "point": "Says the minimum clearance is 20 feet",
+                "any": ["20 feet", "twenty feet"] } ],
+  "pass": 1,
+  "sample_answer": "At least 20 feet unless Table A allows less.",
+  "misconceptions": ["10 feet is always enough."] }
+```
+
+- `points`: at least one; `id` unique; `point` is the criterion in plain words (shown
+  when missed, and what a model judges); `any` lists alternative phrases, and any one of them
+  meets the point.
+- `pass`: how many points are needed, 1 to the number of points; all of them when absent.
+- `sample_answer`, `misconceptions`: optional feedback text.
+
+A `numeric` answer is a plain decimal (`25`, `1,200`, `-3.5`) or one with a tolerance
+(`25±0.5`, `25 +/- 0.5`).
+
+### Procedure step deficiency
+
+`proc_step.deficiency` is null (a step with no failure state) or
+`{"guidance", "action", "section_id", "quote"}`. Every deficiency cites the rule it breaks:
+`section_id` must exist and `quote` must be a verbatim substring of its text, even when the
+step itself is a practice method (a calculation or a briefing) rather than a rule. `action` may
+be null. The bake fails a procedure with an uncited deficiency, so the app never shows one.
 
 ### Answer-segment JSON
 
@@ -314,7 +346,17 @@ dropped, with the paragraph it supported.
 App data lives in optional `pack_meta` keys, JSON as text:
 `exam_blueprints` (array of exam blueprints, as `crane/content/exams.json`),
 `skill_prereqs` (`{skill_id: [skill_id]}`), `starter_answers`
-(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped).
+(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped). The bake writes
+them from the corpus YAML's `pack_meta:` map and refuses unknown skill or answer ids, unknown
+roles and prerequisite cycles.
+
+**Read-back check.** `harvest-bake showcheck <pack-dir> --harvest <bin> --pubkey <key>`
+calls every `harvest show` list, every lesson, diagram, question and procedure by id, and
+every answer in every role. It fails on any error, or when the core returns fewer rows than
+the pack holds. CI runs it on the crane pack built from `main` (`crane-pack` job). `--out`
+writes everything it read as one JSON file (`"format": "harvest-show/1"`, keys: the `show`
+names, plus `starters` by role and `answer_bodies[answer_id][role]`). A browser build cannot
+open the signed SQLite file, so it reads this copy.
 
 ## Bake hit rate
 

@@ -1,0 +1,23 @@
+# Rule citations for deficiencies the generator left uncited. Each of these steps is a practice
+# method (a calculation or a briefing), but failing it breaks a rule, and the app shows that rule
+# with the deficiency. Keyed by proc_id and step ord; the writer applies them and re-verifies the
+# quote, and a deficiency that is still uncited fails the procedure.
+critical-lift-plan:
+  11:
+    section_id: 29cfr1926.1417(o)(1)
+    quote: The equipment must not be operated in excess of its rated capacity.
+  13:
+    # general-industry sling rule; the construction sling rule (1926.251) is not in this corpus
+    section_id: 29cfr1910.184(c)(4)
+    quote: Slings shall not be loaded in excess of their rated capacities.
+ground-conditions:
+  9: &ground-firm
+    section_id: 29cfr1926.1402(b)
+    quote: The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a
+      sufficient extent so that, in conjunction (if necessary) with the use of supporting materials, the equipment
+      manufacturer's specifications for adequate support and degree of level of the equipment are met.
+  28: *ground-firm
+power-line-work:
+  10:
+    section_id: 29cfr1926.1408(g)(1)(i)
+    quote: The procedures to be followed in the event of electrical contact with a power line.

@@ -178,3 +178,16 @@ imports:
   - {table: answer, files: ["data/answers/*.jsonl"]}
   - {table: lesson, files: ["data/lessons/*.json"]}
   - {table: procedure, files: ["procedures/*.yaml"]}
+  # hand-drawn teaching figures; their quotes are re-verified like any generated row
+  - table: diagram
+    files: [diagrams/diagrams.yaml]
+    key: diagrams
+    file_columns: {svg: file}
+    prov: {backend: human, model: human, prompt_id: crane-diagrams, prompt_version: "1",
+           verifier: crane-content/verify v1, verdict: pass}
+
+# App data in pack_meta (harvest/CONTRACT.md, "Content read API"); every id is checked at build.
+pack_meta:
+  exam_blueprints: {file: exams.json}
+  skill_prereqs: {file: app.yaml, key: skill_prereqs}
+  starter_answers: {file: app.yaml, key: starter_answers}

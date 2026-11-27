@@ -215,12 +215,13 @@ steps:
     operator: State who calls the utility and emergency services, and how you would leave the cab if you had to.
     inspector: Good practice only. The required training content is in 1926.1408(g)(1)(i).
   check_kind: pass_fail
-  section_ids: []
+  section_ids:
+  - 29cfr1926.1408(g)(1)(i)
   deficiency:
     guidance: The crew is not prepared to respond to a power line contact.
     action: Brief the response before starting work.
-    section_id: null
-    quote: null
+    section_id: 29cfr1926.1408(g)(1)(i)
+    quote: The procedures to be followed in the event of electrical contact with a power line.
   practice_only: true
 - ord: 11
   phase: Encroachment prevention

@@ -9,7 +9,8 @@ endorsement by OSHA or any certification body.
 | Path | What |
 |---|---|
 | `blueprint.yaml` | Topic tree, skills (the practice engine's units), exam blueprint verified against the current candidate handbook, equipment variants. |
-| `procedures/*.yaml` | Field procedures: role-tiered steps, check kind, citations, deficiency guidance with verbatim quotes. |
+| `procedures/*.yaml` | Field procedures: role-tiered steps, check kind, citations, deficiency guidance with verbatim quotes. Every deficiency cites its rule; `tasks/procedures/citations.yaml` supplies the ones the generator left uncited. |
+| `app.yaml` | Practice prerequisites and Ask starters, written into the pack's `pack_meta` with `exams.json`. |
 | `tools/powerline/` | Table A / Table T clearance data (verbatim, cited) and `clearance.ts`. |
 | `tools/loadcharts/` | Original fictional load charts and exact practice-problem generators. |
 | `tools/signals/` | Appendix A hand signals: traced official figures and verbatim captions. |

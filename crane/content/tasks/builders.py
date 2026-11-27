@@ -66,12 +66,20 @@ def procedures_inputs():
 
 def procedures_write(task, items):
     stats = {"procedures": 0, "steps": 0, "quotes_ok": 0, "quotes_repaired": 0, "failures": []}
+    citations = load_yaml(HERE / "procedures" / "citations.yaml") or {}
     for it in items:
         rec = task.cached(it)
         if not rec:
             continue
         out = json.loads(json.dumps(rec["output"]))
         b = it["meta"]
+        for n, s in enumerate(out["steps"], 1):
+            fix = citations.get(b["proc_id"], {}).get(n)
+            d = s.get("deficiency")
+            if fix and d and not (d.get("section_id") and d.get("quote")):
+                d.update(section_id=fix["section_id"], quote=fix["quote"])
+                if fix["section_id"] not in s["section_ids"]:
+                    s["section_ids"] = [*s["section_ids"], fix["section_id"]]
         ok, rep, errs = repair_quotes(out)
         steps = []
         for n, s in enumerate(out["steps"], 1):
@@ -79,8 +87,9 @@ def procedures_write(task, items):
             if bad:
                 errs.append(f"step {n}: unknown ids {bad}")
             d = s.get("deficiency")
-            if d and not s.get("practice_only") and s["check_kind"] in ("pass_fail", "value") and not (d.get("section_id") and d.get("quote")):
-                errs.append(f"step {n}: deficiency without citation")
+            if d and not (d.get("section_id") and d.get("quote")):
+                # every deficiency cites its rule (CONTRACT proc_step.deficiency), practice steps included
+                errs.append(f"step {n}: deficiency without citation (add it to procedures/citations.yaml)")
             steps.append({"ord": n, **s})
         verdict = "pass" if not errs else "fail"
         doc = {"proc_id": b["proc_id"], "title": out["title"], "kind": b["kind"], "summary": out["summary"],
