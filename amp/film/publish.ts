@@ -1,8 +1,9 @@
 /**
  * Publish only approved current exports whose exact screenplay is committed:
- * the founder's approval of that edition, or a director's follow-up to his
- * approval of an earlier one. `--follow-up <film-id> --note "<text>"` records
- * a follow-up and publishes nothing.
+ * the founder's approval of that edition, a director's follow-up to his
+ * approval of an earlier one, or the review's release of a film he has not
+ * graded (he samples those). `--follow-up <film-id> --note "<text>"` and
+ * `--review <film-id> --note "<text>"` record one and publish nothing.
  */
 import { execFileSync } from "node:child_process";
 import { readFile, writeFile, rename, mkdtemp, stat } from "node:fs/promises";
@@ -17,6 +18,8 @@ import {
   canonical,
   filmManifest,
   followUpsSchema,
+  reviewReleasesSchema,
+  recordReview,
   planFilm,
   publishArgs,
   publishFilms,
@@ -25,6 +28,7 @@ import {
   sha256,
   type Approval,
   type FollowUps,
+  type ReviewReleases,
   type ReviewRow,
 } from "./publication";
 
@@ -62,6 +66,28 @@ async function readFollowUps(): Promise<FollowUps> {
   return followUpsSchema.parse(JSON.parse(text));
 }
 const followUps = await readFollowUps();
+const reviewedPath = join(config.reviewDir, "reviewed.json");
+async function readReviewed(): Promise<ReviewReleases> {
+  let text: string;
+  try {
+    text = await readFile(reviewedPath, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return {};
+    throw error;
+  }
+  return reviewReleasesSchema.parse(JSON.parse(text));
+}
+const reviewed = await readReviewed();
+if (args.review) {
+  const id = args.review;
+  const next = recordReview(reviewed, id, grades[id], rows, args.note!, new Date().toISOString());
+  await writeFile(`${reviewedPath}.tmp`, JSON.stringify(next, null, 2) + "\n");
+  await rename(`${reviewedPath}.tmp`, reviewedPath);
+  console.log(
+    `Recorded the review's release of ${id}: edition ${next[id]!.added}. Nothing was published; run npm run film:publish -- --check.`,
+  );
+  process.exit(0);
+}
 if (args.followUp) {
   const id = args.followUp;
   const next = recordFollowUp(followUps, id, grades[id], rows, args.note!, new Date().toISOString());
@@ -77,9 +103,9 @@ const committedPaths = new Set(
     encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
   }).trim().split("\n"),
 );
-const { released, ignored } = releases(grades, rows, followUps);
+const { released, ignored } = releases(grades, rows, followUps, reviewed);
 for (const reason of ignored) console.warn(`Follow-up not applied: ${reason}`);
-const { ids, pending } = committedApprovalIds(grades, rows, committedPaths, followUps);
+const { ids, pending } = committedApprovalIds(grades, rows, committedPaths, followUps, reviewed);
 if (pending.length)
   console.warn(`Skipped ${pending.length} approved films until their screenplays are committed: ${pending.join(", ")}`);
 const viaFollowUp = ids.filter((id) => released[id]!.via === "follow-up");
@@ -87,6 +113,9 @@ if (viaFollowUp.length)
   console.log(
     `Publishable through a director follow-up: ${viaFollowUp.map((id) => `${id} (answers the founder's approval at ${followUps[id]!.answers})`).join(", ")}`,
   );
+const viaReview = ids.filter((id) => released[id]!.via === "review");
+if (viaReview.length)
+  console.log(`Publishable on the review, not yet graded by the founder: ${viaReview.join(", ")}`);
 const plans = [];
 const snapshots = new Map<string, string>();
 async function snapshot(path: string, approval: Approval) {
@@ -226,9 +255,10 @@ if (args.check) {
           join(config.reviewDir, "index.json"),
         );
         const currentFollowUps = await readFollowUps();
-        const current = releases(currentGrades, currentRows, currentFollowUps).released;
+        const currentReviewed = await readReviewed();
+        const current = releases(currentGrades, currentRows, currentFollowUps, currentReviewed).released;
         if (
-          canonical(committedApprovalIds(currentGrades, currentRows, committedPaths, currentFollowUps).ids) !==
+          canonical(committedApprovalIds(currentGrades, currentRows, committedPaths, currentFollowUps, currentReviewed).ids) !==
             canonical(ids) ||
           ids.some((id) => canonical(current[id]) !== canonical(released[id]))
         )
