@@ -638,7 +638,9 @@ impl Engine {
         };
         let passages = compose::passages(&self.pack, &chosen, 1500)?;
         let body = compose::compose(llm, question, opts.role.as_str(), &context, &passages)?;
-        let (body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
+        let (mut body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
+        // A dropped sentence can leave its cite next to the same cite.
+        body.dedup();
         // Bare citations are not an answer: keep the model's body only with
         // a verbatim quote, or a surviving sentence and its cite.
         let has_quote = body.iter().any(|s| matches!(s, Segment::Quote { .. }));
