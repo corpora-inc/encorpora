@@ -80,6 +80,20 @@ pub struct AskOptions {
     pub max_quote_chars: usize,
     /// Nearest sections listed on a decline.
     pub nearest: usize,
+    /// The gate to use when the dense half of retrieval ran (the embedder's
+    /// cosine scale makes it embedder-specific; a pack states its own in
+    /// `pack_meta`, see [`AskOptions::for_pack`]). Without dense vectors the
+    /// coverage-only `support_threshold` applies.
+    pub dense_gate: Option<DenseGate>,
+}
+
+/// Answer gate with dense retrieval: a section needs `support_threshold`
+/// coverage, and the best dense cosine among the retrieved chunks must reach
+/// `min_dense`, or the engine declines.
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+pub struct DenseGate {
+    pub support_threshold: f64,
+    pub min_dense: f64,
 }
 
 impl Default for AskOptions {
@@ -94,6 +108,29 @@ impl Default for AskOptions {
             max_sections: 3,
             max_quote_chars: 600,
             nearest: 5,
+            dense_gate: None,
+        }
+    }
+}
+
+impl AskOptions {
+    /// Defaults with the pack's calibrated dense gate, when it states one:
+    /// `pack_meta.gate_dense_support_threshold` and `gate_dense_min`.
+    pub fn for_pack(pack: &Pack) -> Self {
+        let num = |k: &str| {
+            pack.meta(k)
+                .and_then(|v| v.parse::<f64>().ok())
+                .filter(|v| v.is_finite())
+        };
+        Self {
+            dense_gate: match (num("gate_dense_support_threshold"), num("gate_dense_min")) {
+                (Some(support_threshold), Some(min_dense)) => Some(DenseGate {
+                    support_threshold,
+                    min_dense,
+                }),
+                _ => None,
+            },
+            ..Self::default()
         }
     }
 }
@@ -120,6 +157,52 @@ impl From<&Hit> for Retrieved {
     }
 }
 
+/// How the deterministic answer gate saw the question: enough to replay the
+/// decision offline for any threshold. A section is kept when its coverage
+/// reaches `threshold` and is within `window` of the best; the first
+/// `max_sections` kept are composed; none kept means decline.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Support {
+    /// Best coverage over the candidates (the value the gate compares).
+    pub score: f64,
+    pub threshold: f64,
+    pub window: f64,
+    pub max_sections: usize,
+    /// How many retrieved chunks the gate looked at: `candidates` and
+    /// `top_dense` come from these (`retrieved` lists the first `k`).
+    pub depth: usize,
+    /// The question's content concepts (stems), in order.
+    pub concepts: Vec<String>,
+    /// Retrieved sections in retrieval order, with their coverage.
+    pub candidates: Vec<SupportCandidate>,
+    /// Best answer-cache similarity, and the threshold a hit needs.
+    pub cache_similarity: f64,
+    pub cache_threshold: f64,
+    /// Best dense cosine among the `depth` chunks (0 without dense).
+    pub top_dense: f64,
+    /// The dense floor applied, when the dense gate was in force.
+    pub min_dense: Option<f64>,
+}
+
+/// One section the gate considered.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct SupportCandidate {
+    pub section_id: String,
+    /// 1-based rank of its first retrieved chunk.
+    pub rank: usize,
+    /// Best fused retrieval score among its chunks.
+    pub retrieval: f64,
+    /// Share of `concepts` the section (with its retrieved chunks and the
+    /// role's explanation) covers.
+    pub coverage: f64,
+    /// The concepts it covers.
+    pub covered: Vec<String>,
+}
+
+/// The gate's relative window: sections more than this below the best are
+/// not composed.
+pub const SUPPORT_WINDOW: f64 = 0.25;
+
 /// The `ask --json` object of CONTRACT.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AskResponse {
@@ -133,6 +216,9 @@ pub struct AskResponse {
     pub pack_version: String,
     pub model: Option<String>,
     pub elapsed_ms: u64,
+    /// The deterministic gate's view of the question (all modes).
+    #[serde(default)]
+    pub support: Support,
 }
 
 /// What the engine considered, for the audit log.
@@ -206,17 +292,37 @@ impl Engine {
             ..SearchOptions::default()
         };
         let result = retriever.search(question, &search)?;
+        let dense_used = matches!(result.dense, crate::retrieval::DenseStatus::Used);
         let hits = result.hits;
+        // The dense gate needs the dense half; otherwise coverage alone.
+        let gate = opts.dense_gate.filter(|_| dense_used);
+        let threshold = gate.map_or(opts.support_threshold, |g| g.support_threshold);
+        let top_dense = hits.iter().map(|h| h.dense).fold(0.0, f64::max);
         let mut trace = AskTrace {
             normalized: norm.text.clone(),
             expansions: norm.expansions.clone(),
             ..AskTrace::default()
         };
         let retrieved: Vec<Retrieved> = hits.iter().take(opts.k).map(Retrieved::from).collect();
+        let candidates = self.support_candidates(&norm, &hits, opts)?;
+        trace.support = candidates.iter().map(|c| c.coverage).fold(0.0, f64::max);
 
         // Answer cache.
         let (cached, similarity) = self.cache_lookup(&norm, opts)?;
         trace.cache_similarity = similarity;
+        let support = Support {
+            score: trace.support,
+            threshold,
+            depth: hits.len(),
+            window: SUPPORT_WINDOW,
+            max_sections: opts.max_sections,
+            concepts: norm.concepts.iter().map(|c| c.stem.clone()).collect(),
+            candidates: candidates.clone(),
+            cache_similarity: similarity,
+            cache_threshold: opts.cache_threshold,
+            top_dense,
+            min_dense: gate.map(|g| g.min_dense),
+        };
         if let Some(answer) = cached {
             let (body, check) = check::check(&self.pack, &answer.body, CheckOptions::STRUCTURAL)?;
             if check.quotes_ok && check.cites_ok && !body.is_empty() {
@@ -232,6 +338,7 @@ impl Engine {
                         pack_version: self.pack.version().to_string(),
                         model: None,
                         elapsed_ms: started.elapsed().as_millis() as u64,
+                        support: support.clone(),
                     },
                     trace,
                 ));
@@ -240,10 +347,18 @@ impl Engine {
 
         // Model on: expand, select, compose, strict check. Any failure falls
         // back to the deterministic path and is recorded in the trace.
-        if let Some(llm) = self.llm.clone() {
-            match self.ask_model(llm.as_ref(), question, &norm, opts, &mut trace) {
+        // The dense gate holds for the model path too: below the floor the
+        // pack has nothing close enough to talk about.
+        let dense_ok = gate.is_none_or(|g| top_dense >= g.min_dense);
+        let model_opts = AskOptions {
+            support_threshold: threshold,
+            ..opts.clone()
+        };
+        if let Some(llm) = self.llm.clone().filter(|_| dense_ok) {
+            match self.ask_model(llm.as_ref(), question, &norm, &model_opts, &mut trace) {
                 Ok(Some(mut resp)) => {
                     resp.elapsed_ms = started.elapsed().as_millis() as u64;
+                    resp.support = support.clone();
                     return Ok((resp, trace));
                 }
                 Ok(None) => {}
@@ -252,12 +367,10 @@ impl Engine {
         }
 
         // Compose from the best-supported sections, or decline.
-        let candidates = self.supported_sections(&norm, &hits, opts)?;
-        trace.support = candidates.iter().map(|c| c.1).fold(0.0, f64::max);
         let best = trace.support;
-        let chosen: Vec<&(String, f64)> = candidates
+        let chosen: Vec<&SupportCandidate> = candidates
             .iter()
-            .filter(|(_, cov)| *cov >= opts.support_threshold && *cov >= best - 0.25)
+            .filter(|c| dense_ok && c.coverage >= threshold && c.coverage >= best - SUPPORT_WINDOW)
             .take(opts.max_sections)
             .collect();
         if chosen.is_empty() {
@@ -278,13 +391,14 @@ impl Engine {
                     pack_version: self.pack.version().to_string(),
                     model: None,
                     elapsed_ms: started.elapsed().as_millis() as u64,
+                    support,
                 },
                 trace,
             ));
         }
         let mut body = Vec::new();
-        for (section_id, _) in chosen {
-            body.extend(self.compose_section(section_id, &norm, opts)?);
+        for c in chosen {
+            body.extend(self.compose_section(&c.section_id, &norm, opts)?);
         }
         let (body, check) = check::check(&self.pack, &body, CheckOptions::STRUCTURAL)?;
         Ok((
@@ -299,6 +413,7 @@ impl Engine {
                 pack_version: self.pack.version().to_string(),
                 model: None,
                 elapsed_ms: started.elapsed().as_millis() as u64,
+                support,
             },
             trace,
         ))
@@ -342,6 +457,7 @@ impl Engine {
             pack_version: self.pack.version().to_string(),
             model: Some(llm.id()),
             elapsed_ms: 0,
+            support: Support::default(),
         };
         // The long tail: the model may use sections with partial lexical
         // support; the strict checker decides what survives.
@@ -497,20 +613,36 @@ impl Engine {
         hits: &[Hit],
         opts: &AskOptions,
     ) -> Result<Vec<(String, f64)>> {
-        let mut out: Vec<(String, f64)> = Vec::new();
-        let mut hit_text: Vec<(String, String)> = Vec::new();
-        for h in hits {
+        Ok(self
+            .support_candidates(norm, hits, opts)?
+            .into_iter()
+            .map(|c| (c.section_id, c.coverage))
+            .collect())
+    }
+
+    /// Every retrieved section with its coverage of the question's concepts.
+    fn support_candidates(
+        &self,
+        norm: &Normalized,
+        hits: &[Hit],
+        opts: &AskOptions,
+    ) -> Result<Vec<SupportCandidate>> {
+        let mut out = Vec::new();
+        // (section, its retrieved chunk text, first rank, best score)
+        let mut hit_text: Vec<(String, String, usize, f64)> = Vec::new();
+        for (i, h) in hits.iter().enumerate() {
             if let Some(s) = &h.section_id {
-                match hit_text.iter_mut().find(|(id, _)| id == s) {
-                    Some((_, t)) => {
+                match hit_text.iter_mut().find(|(id, ..)| id == s) {
+                    Some((_, t, _, best)) => {
                         t.push(' ');
                         t.push_str(&h.text);
+                        *best = best.max(h.score);
                     }
-                    None => hit_text.push((s.clone(), h.text.clone())),
+                    None => hit_text.push((s.clone(), h.text.clone(), i + 1, h.score)),
                 }
             }
         }
-        for (section_id, extra) in hit_text {
+        for (section_id, extra, rank, retrieval) in hit_text {
             let Some(sec) = self.pack.section(&section_id)? else {
                 continue;
             };
@@ -527,10 +659,19 @@ impl Engine {
                 doc.push(' ');
                 doc.push_str(&e);
             }
-            out.push((
+            let stems = normalize::stem_set(&doc);
+            out.push(SupportCandidate {
+                coverage: coverage(&norm.concepts, &stems),
+                covered: norm
+                    .concepts
+                    .iter()
+                    .filter(|c| c.satisfied_by(&stems))
+                    .map(|c| c.stem.clone())
+                    .collect(),
                 section_id,
-                coverage(&norm.concepts, &normalize::stem_set(&doc)),
-            ));
+                rank,
+                retrieval,
+            });
         }
         Ok(out)
     }
