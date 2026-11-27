@@ -1,0 +1,1177 @@
+name: Release · Crane mobile (TestFlight + Play internal)
+
+# Builds iOS + Android for `inc.corpora.crane` (crane/app) and ships them to the
+# INTERNAL testing tracks. Never to public release.
+#
+# The shape is release-dynawalla.yml's, adapted. Read that file's comments for
+# the long history behind each guard; the notes here cover what is different
+# for this app:
+#
+#   - gen/ is NOT committed (crane/app/.gitignore). Both native projects are
+#     generated here by `tauri ios init` / `tauri android init` and every
+#     change the store builds need is applied to the generated files by this
+#     workflow, then asserted, then asserted again on the finished IPA/AAB.
+#   - The app compiles llama.cpp (tauri-plugin-corpan-llm) and whisper.cpp
+#     (tauri-plugin-stt), which Dynawalla does not.
+#   - `unsigned` (workflow_dispatch) builds an unsigned iOS archive and an
+#     unsigned AAB with no secrets at all, so the build can be proven before
+#     any credential or store record exists.
+#
+# Status as of the change that added this file: NEVER EXECUTED, in either mode.
+# Rust does not build on the machine this was written on, so no step below has
+# been run against this app. See crane/app/RELEASE_SETUP.md.
+#
+# This workflow is not a required status check and must never become one: it
+# runs only on a `crane-v*` tag or a manual dispatch, never on a pull request.
+
+on:
+  push:
+    tags: ["crane-v*"]
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: Which platforms to build
+        type: choice
+        default: both
+        options: [both, ios, android]
+      unsigned:
+        description: Unsigned build proof. No secrets, no signing, no store upload; the archive and AAB are kept as workflow artifacts.
+        type: boolean
+        default: false
+
+concurrency:
+  # One constant group: two runs never overlap, so two runs can never compute
+  # the same minutes-since-epoch build number. GitHub keeps at most ONE pending
+  # run per group and cancels an older pending one; that trade-off is accepted
+  # for the reasons written up in release-dynawalla.yml. Recovery for a dropped
+  # release: push the tag again or dispatch.
+  group: release-crane
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  # Three fetch attempts with 20s/120s backoff for transient registry failures.
+  # Lockfile mismatches and HTTP 404s fail without retrying.
+  npm_config_fetch_retries: '2'
+  npm_config_fetch_retry_mintimeout: '20000'
+  npm_config_fetch_retry_maxtimeout: '120000'
+  NODE_OPTIONS: --use-openssl-ca
+  APP_DIR: crane/app
+  BUNDLE_ID: inc.corpora.crane
+  # Public: it is in every shipped IPA and already committed for Dynawalla.
+  APPLE_TEAM_ID: F9AV5HKF6N
+  # Must match the profile stored in CRANE_APPLE_PROVISIONING_PROFILE; the iOS
+  # job verifies that before building.
+  IOS_PROFILE_NAME: crane appstore ci
+  # Pinned once for the Android job and for llama.cpp's own CMake build.
+  NDK_VERSION: 28.2.13676358
+
+jobs:
+  gate:
+    name: Gate · release intent + build number
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      version: ${{ steps.decide.outputs.version }}
+      build_number: ${{ steps.decide.outputs.build_number }}
+      run_started: ${{ steps.decide.outputs.run_started }}
+      ios_min: ${{ steps.decide.outputs.ios_min }}
+      android_min_sdk: ${{ steps.decide.outputs.android_min_sdk }}
+      rust_toolchain: ${{ steps.decide.outputs.rust_toolchain }}
+      signed: ${{ steps.decide.outputs.signed }}
+      do_ios: ${{ steps.decide.outputs.do_ios }}
+      do_android: ${{ steps.decide.outputs.do_android }}
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+
+      - id: decide
+        env:
+          PLATFORMS: ${{ github.event_name == 'workflow_dispatch' && inputs.platforms || 'both' }}
+          UNSIGNED: ${{ github.event_name == 'workflow_dispatch' && inputs.unsigned || false }}
+        run: |
+          set -euo pipefail
+          CONF="$APP_DIR/src-tauri/tauri.conf.json"
+          VERSION=$(node -p "require('./$CONF').version")
+          IOS_MIN=$(node -p "require('./$CONF').bundle.iOS.minimumSystemVersion")
+          ANDROID_MIN_SDK=$(node -p "require('./$CONF').bundle.android.minSdkVersion")
+          # crane/app/src-tauri/rust-toolchain.toml is the one source of truth
+          # for the compiler. Read it here rather than repeating the version.
+          RUST_TOOLCHAIN=$(python3 -c "import tomllib;print(tomllib.load(open('$APP_DIR/src-tauri/rust-toolchain.toml','rb'))['toolchain']['channel'])")
+          for v in "$VERSION" "$IOS_MIN" "$ANDROID_MIN_SDK" "$RUST_TOOLCHAIN"; do
+            case "$v" in ""|undefined) echo "::error::could not read a required value from $CONF or rust-toolchain.toml"; exit 1 ;; esac
+          done
+
+          case "${GITHUB_REF}" in
+            refs/tags/crane-v*)
+              TAG_VERSION="${GITHUB_REF#refs/tags/crane-v}"
+              if [ "$TAG_VERSION" != "$VERSION" ]; then
+                echo "::error::tag crane-v$TAG_VERSION does not match tauri.conf.json version $VERSION"
+                exit 1
+              fi
+              REASON="tag crane-v$VERSION"
+              ;;
+            *) REASON="manual dispatch" ;;
+          esac
+
+          # Minutes since the epoch: monotonic, shared by both platforms in a
+          # run, and far below Play's 2,100,000,000 ceiling. NEVER
+          # github.run_number (it restarts when the file is renamed, so the
+          # number would decrease and both stores reject that).
+          BUILD_NUMBER=$(( $(date +%s) / 60 ))
+          if [ "$BUILD_NUMBER" -lt 29000000 ] || [ "$BUILD_NUMBER" -gt 2100000000 ]; then
+            echo "::error::computed build number $BUILD_NUMBER is outside the sane range; check the runner clock"
+            exit 1
+          fi
+          # Floor for the TestFlight verifier's `uploadedDate`: a build with our
+          # number uploaded before this instant is a collision, not our upload.
+          RUN_STARTED=$(date -u +%s)
+
+          SIGNED=$([ "$UNSIGNED" = true ] && echo false || echo true)
+          {
+            echo "version=$VERSION"
+            echo "build_number=$BUILD_NUMBER"
+            echo "run_started=$RUN_STARTED"
+            echo "ios_min=$IOS_MIN"
+            echo "android_min_sdk=$ANDROID_MIN_SDK"
+            echo "rust_toolchain=$RUST_TOOLCHAIN"
+            echo "signed=$SIGNED"
+            echo "do_ios=$([ "$PLATFORMS" = both ] || [ "$PLATFORMS" = ios ] && echo true || echo false)"
+            echo "do_android=$([ "$PLATFORMS" = both ] || [ "$PLATFORMS" = android ] && echo true || echo false)"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### Crane release gate"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| version | \`$VERSION\` ($REASON) |"
+            echo "| build number | \`$BUILD_NUMBER\` |"
+            echo "| platforms | \`$PLATFORMS\` |"
+            echo "| signed + store upload | \`$SIGNED\` |"
+            echo "| Rust | \`$RUST_TOOLCHAIN\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ---- iOS -> TestFlight internal -----------------------------------------
+  ios:
+    name: iOS · build + TestFlight
+    needs: gate
+    if: needs.gate.outputs.do_ios == 'true'
+    # Xcode 26 / the iOS 26 SDK, which App Store Connect requires for uploads.
+    # The crane-native CI job compiles this app's native code on the same image.
+    runs-on: macos-26
+    # A cold cache builds whisper.xcframework and llama.cpp before the archive.
+    timeout-minutes: 150
+    env:
+      SIGNED: ${{ needs.gate.outputs.signed }}
+      BUILD_NUMBER: ${{ needs.gate.outputs.build_number }}
+      IOS_MIN: ${{ needs.gate.outputs.ios_min }}
+      # For the whisper.xcframework build on this job's own shell. The Rust
+      # compile runs inside Xcode, which does not inherit this; see the
+      # "Pin the toolchain" step for how it reaches llama.cpp there.
+      CMAKE_DISABLE_FIND_PACKAGE_OpenSSL: "ON"
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+
+      # `*.png` is Git LFS repo-wide. `generate_context!` decodes the icons and
+      # the App Store icon is copied from icons/ios/, so pull exactly these.
+      - name: Fetch the app icons (Git LFS)
+        run: git lfs pull --include="${APP_DIR}/src-tauri/icons/**"
+
+      # Fail HARD, naming every missing secret, before any work. Presence only;
+      # no value is ever printed.
+      - name: Require Apple credentials
+        if: env.SIGNED == 'true'
+        env:
+          HAVE_CERT: ${{ secrets.APPLE_DIST_CERT_P12 != '' }}
+          HAVE_CERT_PASSWORD: ${{ secrets.APPLE_DIST_CERT_PASSWORD != '' }}
+          HAVE_PROFILE: ${{ secrets.CRANE_APPLE_PROVISIONING_PROFILE != '' }}
+          HAVE_ASC_KEY: ${{ secrets.ASC_API_KEY_P8 != '' }}
+          HAVE_ASC_KEY_ID: ${{ secrets.ASC_KEY_ID != '' }}
+          HAVE_ASC_ISSUER: ${{ secrets.ASC_ISSUER_ID != '' }}
+        run: |
+          set -euo pipefail
+          missing=0
+          check() {
+            if [ "$2" != "true" ]; then
+              echo "::error::secret $1 is not set"
+              missing=1
+            fi
+          }
+          check APPLE_DIST_CERT_P12 "$HAVE_CERT"
+          check APPLE_DIST_CERT_PASSWORD "$HAVE_CERT_PASSWORD"
+          check CRANE_APPLE_PROVISIONING_PROFILE "$HAVE_PROFILE"
+          check ASC_API_KEY_P8 "$HAVE_ASC_KEY"
+          check ASC_KEY_ID "$HAVE_ASC_KEY_ID"
+          check ASC_ISSUER_ID "$HAVE_ASC_ISSUER"
+          if [ "$missing" -ne 0 ]; then
+            echo "See crane/app/RELEASE_SETUP.md for how each one is produced, or dispatch with unsigned=true."
+            exit 1
+          fi
+
+      - name: Select newest Xcode
+        run: |
+          set -euo pipefail
+          # Release Xcodes only: a beta SDK passes the SDK check below and is
+          # rejected only at upload. `|| true`: under pipefail an empty match
+          # would abort before the fallback (see release-dynawalla.yml).
+          XC=$(find /Applications -maxdepth 1 -name 'Xcode_*.app' ! -iname '*beta*' ! -iname '*rc*' 2>/dev/null | sort -V | tail -1 || true)
+          [ -n "$XC" ] || XC=/Applications/Xcode.app
+          test -d "$XC/Contents/Developer" \
+            || { echo "::error::no usable Xcode at $XC"; exit 1; }
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: crane/app/package-lock.json
+      # Not the image's Homebrew python: it is PEP 668 externally-managed and
+      # refuses `pip install`. 3.12 also brings tomllib.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # WHY THE DEFAULT TOOLCHAIN AND A CARGO_HOME CONFIG, rather than job env
+      # or src-tauri/rust-toolchain.toml:
+      #
+      # The Rust compile for iOS happens inside Xcode's "Build Rust Code"
+      # phase, which runs `npm run -- tauri ios xcode-script`. Two facts about
+      # that, both read from the Tauri CLI 2.11.4 / cargo-mobile2 source:
+      #   1. xcodebuild is started with a CLEARED environment: HOME, PATH,
+      #      TERM, SSH_AUTH_SOCK plus TAURI*/WRY*/CARGO_*/RUST_* variables.
+      #      CMAKE_DISABLE_FIND_PACKAGE_OpenSSL and RUSTUP_TOOLCHAIN set on
+      #      this job never reach cargo.
+      #   2. Under `npm run`, cargo's working directory is crane/app, so
+      #      neither src-tauri/rust-toolchain.toml nor src-tauri/.cargo/ is
+      #      discovered (both are searched from the cwd upwards).
+      # $CARGO_HOME/config.toml is read by every cargo invocation regardless of
+      # cwd, and HOME survives the cleared environment; `rustup default` is
+      # stored under the same HOME. So both settings land there, on this
+      # ephemeral runner only.
+      - name: Pin the toolchain and the native build environment
+        env:
+          RUST_TOOLCHAIN: ${{ needs.gate.outputs.rust_toolchain }}
+        run: |
+          set -euo pipefail
+          rustup toolchain install "$RUST_TOOLCHAIN" --profile minimal --target aarch64-apple-ios
+          rustup default "$RUST_TOOLCHAIN"
+          CFG="${CARGO_HOME:-$HOME/.cargo}/config.toml"
+          mkdir -p "$(dirname "$CFG")"
+          if [ -f "$CFG" ] && grep -n '^\[env\]' "$CFG" >/dev/null; then
+            echo "::error::$CFG already has an [env] table; merge these settings into it by hand"
+            exit 1
+          fi
+          # llama.cpp's bundled cpp-httplib does not compile against the
+          # image's Homebrew OpenSSL and the app never speaks HTTPS; the
+          # vendored llama-cpp-sys-2 build.rs forwards CMAKE_* to CMake.
+          # IPHONEOS_DEPLOYMENT_TARGET is also exported by Xcode from the
+          # project's deployment target (the same value); this covers any
+          # compile that does not come through Xcode.
+          cat >> "$CFG" <<TOML
+
+          [env]
+          CMAKE_DISABLE_FIND_PACKAGE_OpenSSL = { value = "ON", force = true }
+          IPHONEOS_DEPLOYMENT_TARGET = "${IOS_MIN}"
+          TOML
+          python3 -c "import sys,tomllib;e=tomllib.load(open(sys.argv[1],'rb'))['env'];print('cargo [env]:',sorted(e))" "$CFG"
+          ACTUAL=$(cd "$APP_DIR" && rustc --version)
+          echo "rustc from $APP_DIR: $ACTUAL"
+          case "$ACTUAL" in
+            "rustc $RUST_TOOLCHAIN "*) : ;;
+            *) echo "::error::cargo under $APP_DIR resolves '$ACTUAL', not $RUST_TOOLCHAIN"; exit 1 ;;
+          esac
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crane/app/src-tauri
+
+      # Third-party actions that touch live credentials are pinned to a commit
+      # SHA; the trailing comment is the tag it resolved from.
+      - name: Import signing certificate
+        if: env.SIGNED == 'true'
+        uses: apple-actions/import-codesign-certs@63fff01cd422d4b7b855d40ca1e9d34d2de9427d # v3
+        with:
+          # Team-wide `Apple Distribution: Corpora Inc`; it is the PROFILE that
+          # is per-app.
+          p12-file-base64: ${{ secrets.APPLE_DIST_CERT_P12 }}
+          p12-password: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
+
+      - name: Install provisioning profile
+        if: env.SIGNED == 'true'
+        # Secret through `env:`, never interpolated into the script text.
+        env:
+          PROFILE_B64: ${{ secrets.CRANE_APPLE_PROVISIONING_PROFILE }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          printf '%s' "$PROFILE_B64" | base64 --decode \
+            > ~/Library/MobileDevice/Provisioning\ Profiles/crane.mobileprovision
+          # A profile for another bundle id signs nothing here; find that out
+          # in seconds, not at export time an hour from now.
+          security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/crane.mobileprovision \
+            > "$RUNNER_TEMP/profile.plist"
+          APP_ID=$(/usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' "$RUNNER_TEMP/profile.plist")
+          NAME=$(/usr/libexec/PlistBuddy -c 'Print :Name' "$RUNNER_TEMP/profile.plist")
+          echo "profile '$NAME' covers $APP_ID"
+          [ "$APP_ID" = "${APPLE_TEAM_ID}.${BUNDLE_ID}" ] \
+            || { echo "::error::provisioning profile is for $APP_ID, not ${APPLE_TEAM_ID}.${BUNDLE_ID}"; exit 1; }
+          [ "$NAME" = "$IOS_PROFILE_NAME" ] \
+            || { echo "::error::profile is named '$NAME'; this workflow pins '$IOS_PROFILE_NAME'"; exit 1; }
+          rm -f "$RUNNER_TEMP/profile.plist"
+
+      - name: Preflight · the App Store Connect app record exists
+        if: env.SIGNED == 'true'
+        # The app record is a founder action on the website (no create API).
+        # Ask before the archive rather than discover it at the upload.
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          ASC_BUNDLE_ID: ${{ env.BUNDLE_ID }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_testflight_upload.py --preflight
+
+      # tauri-plugin-stt's build script needs the prebuilt whisper.cpp static
+      # XCFramework, which is gitignored. Same pinned build and cache key as
+      # the crane-native CI job and release-mobile.yml, so it builds once.
+      - name: Cache whisper.xcframework
+        id: whisper_cache
+        uses: actions/cache@v4
+        with:
+          path: corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework
+          key: whisper-xcframework-v1.8.4-${{ runner.os }}
+      - name: Build whisper.xcframework
+        if: steps.whisper_cache.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$RUNNER_TEMP/whisper.cpp"
+          cd "$RUNNER_TEMP/whisper.cpp"
+          BUILD_STATIC_XCFRAMEWORK=ON ./build-xcframework.sh
+          DEST="$GITHUB_WORKSPACE/corpan/plugins/tauri-plugin-stt/ios"
+          rm -rf "$DEST/whisper.xcframework"
+          mv build-apple/whisper.xcframework "$DEST/"
+      - name: Require the whisper device slice
+        run: test -f corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework/ios-arm64/whisper.framework/whisper
+
+      - name: Install deps
+        working-directory: crane/app
+        run: npm ci
+
+      - name: Generate the iOS project and apply the store settings
+        working-directory: crane/app
+        env:
+          WHISPER_SLICE: ${{ github.workspace }}/corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework/ios-arm64
+        run: |
+          set -euo pipefail
+          if [ "$SIGNED" = true ]; then
+            # Read by the CLI's project template (DEVELOPMENT_TEAM). Not set
+            # for the unsigned proof, which must not need a team at all.
+            export APPLE_DEVELOPMENT_TEAM="$APPLE_TEAM_ID"
+          fi
+          npx tauri ios init --ci --skip-targets-install
+
+          # The default template is rendered into gen/apple/project.yml and
+          # `tauri ios init` never overwrites an existing project.yml, so edit
+          # the rendered spec and regenerate the Xcode project from it with the
+          # same `xcodegen generate --spec` command init runs. Each insertion
+          # anchors on exactly one line of the Tauri 2.11.4 template and fails
+          # if the template moves; the YAML is then parsed and checked
+          # structurally.
+          python3 -m pip install --quiet --disable-pip-version-check 'PyYAML==6.0.3'
+          python3 - <<'PY'
+          import os, pathlib, sys, yaml
+
+          spec = pathlib.Path("src-tauri/gen/apple/project.yml")
+          text = spec.read_text()
+          signed = os.environ["SIGNED"] == "true"
+
+          def insert_after(anchor, lines):
+              global text
+              count = text.count(anchor)
+              if count != 1:
+                  sys.exit(f"::error::expected one {anchor!r} in {spec}, found {count}; the Tauri template changed")
+              text = text.replace(anchor, anchor + "".join(lines))
+
+          # Export compliance (Apple, "Complying with Encryption Export
+          # Regulations"): the app is offline and uses no encryption of its
+          # own, which is exempt. Declaring it in Info.plist answers the
+          # question for every build; without it each TestFlight upload sits
+          # in "Missing Compliance" until someone answers by hand.
+          insert_after("        LSRequiresIPhoneOS: true\n",
+                       ["        ITSAppUsesNonExemptEncryption: false\n"])
+
+          settings = [
+              # tauri-plugin-stt emits `cargo:rustc-link-lib=framework=whisper`,
+              # which does not reach Xcode's final link in CI (release-mobile.yml
+              # hit undefined _whisper_* symbols); put the device slice on it.
+              '        OTHER_LDFLAGS: "$(inherited) -F' + os.environ["WHISPER_SLICE"]
+              + ' -framework whisper -framework Accelerate -framework CoreML"\n',
+          ]
+          if signed:
+              # Automatic signing needs a logged-in Xcode account; headless
+              # App Store archives need manual signing with the pinned profile.
+              settings += [
+                  "        CODE_SIGN_STYLE: Manual\n",
+                  "        DEVELOPMENT_TEAM: " + os.environ["APPLE_TEAM_ID"] + "\n",
+                  '        CODE_SIGN_IDENTITY: "Apple Distribution"\n',
+                  '        PROVISIONING_PROFILE_SPECIFIER: "' + os.environ["IOS_PROFILE_NAME"] + '"\n',
+              ]
+          insert_after("        ENABLE_BITCODE: false\n", settings)
+
+          # XcodeGen copies the static libapp.a into the .app because it is a
+          # declared framework dependency, and App Store validation rejects a
+          # bundle carrying a static library (ITMS-90171). Corpán's and
+          # Dynawalla's templates drop it after linking; so does this one.
+          if "postBuildScripts:" in text:
+              sys.exit("::error::the rendered template already has postBuildScripts; merge the libapp.a cleanup into it")
+          if not text.endswith("\n"):
+              text += "\n"
+          text += (
+              "    postBuildScripts:\n"
+              "      - script: rm -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/libapp.a\"\n"
+              "        name: Clean app bundle\n"
+              "        basedOnDependencyAnalysis: false\n"
+          )
+          spec.write_text(text)
+
+          # Structural check: every edit landed where XcodeGen reads it.
+          doc = yaml.safe_load(text)
+          targets = [k for k in doc["targets"] if k.endswith("_iOS")]
+          if len(targets) != 1:
+              sys.exit(f"::error::expected one *_iOS target, found {targets}")
+          target = doc["targets"][targets[0]]
+          if target["info"]["properties"].get("ITSAppUsesNonExemptEncryption") is not False:
+              sys.exit("::error::ITSAppUsesNonExemptEncryption did not land in info.properties")
+          base = target["settings"]["base"]
+          if "-framework whisper" not in base.get("OTHER_LDFLAGS", ""):
+              sys.exit("::error::OTHER_LDFLAGS did not land in the target settings")
+          if signed and (base.get("CODE_SIGN_STYLE") != "Manual"
+                         or base.get("PROVISIONING_PROFILE_SPECIFIER") != os.environ["IOS_PROFILE_NAME"]):
+              sys.exit("::error::manual signing did not land in the target settings")
+          if [s.get("name") for s in target.get("postBuildScripts", [])] != ["Clean app bundle"]:
+              sys.exit("::error::the libapp.a cleanup did not land on the app target")
+          if "libapp.a" not in text.split("postBuildScripts:")[0]:
+              sys.exit("::error::the template no longer links libapp.a; the cleanup would target nothing")
+          if str(doc["options"]["deploymentTarget"]["iOS"]) != os.environ["IOS_MIN"]:
+              sys.exit(f"::error::deployment target {doc['options']['deploymentTarget']['iOS']} != {os.environ['IOS_MIN']}")
+          print(f"project.yml patched: target {targets[0]}, signed={signed}")
+          PY
+          (cd src-tauri/gen/apple && xcodegen generate --spec project.yml)
+
+          # `tauri ios init` writes its own template AppIcon set and never
+          # reads src-tauri/icons/ios/ (Dynawalla shipped the stock Tauri logo
+          # three times before this copy existed). The file names match.
+          ICONS=src-tauri/icons/ios
+          SET=src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset
+          test -d "$ICONS" || { echo "::error::$ICONS is missing"; exit 1; }
+          cp "$ICONS"/*.png "$SET"/
+          cmp "$ICONS/AppIcon-512@2x.png" "$SET/AppIcon-512@2x.png" \
+            || { echo "::error::the 1024 marketing icon did not survive the copy"; exit 1; }
+          RENDITIONS=("$SET"/*.png)
+          echo "app icon: ${#RENDITIONS[@]} renditions installed from $ICONS"
+
+      - name: Tauri iOS archive
+        working-directory: crane/app
+        # --archive-only in both modes. Signed: Tauri's own export writes a
+        # minimal ExportOptions that fails app-store export under manual
+        # signing, so the next step exports. Unsigned: --no-sign makes the CLI
+        # pass CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO to xcodebuild.
+        run: |
+          set -euo pipefail
+          if [ "$SIGNED" = true ]; then
+            export APPLE_DEVELOPMENT_TEAM="$APPLE_TEAM_ID"
+            npx tauri ios build --ci --archive-only \
+              --export-method app-store-connect \
+              --build-number "$BUILD_NUMBER"
+          else
+            npx tauri ios build --ci --archive-only --no-sign \
+              --build-number "$BUILD_NUMBER"
+          fi
+
+      - name: Export signed IPA (manual ExportOptions)
+        if: env.SIGNED == 'true'
+        working-directory: crane/app
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          ARCHIVES=(src-tauri/gen/apple/build/*.xcarchive)
+          [ "${#ARCHIVES[@]}" -eq 1 ] || { echo "::error::expected exactly one xcarchive, found ${#ARCHIVES[@]}"; exit 1; }
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>teamID</key><string>${APPLE_TEAM_ID}</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>provisioningProfiles</key><dict>
+              <key>${BUNDLE_ID}</key><string>${IOS_PROFILE_NAME}</string>
+            </dict>
+            <key>uploadSymbols</key><true/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath "${ARCHIVES[0]}" \
+            -exportPath src-tauri/gen/apple/build/export \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+          ls -la src-tauri/gen/apple/build/export
+
+      - name: Inspect the build before keeping or uploading it
+        id: ipa
+        working-directory: crane/app
+        env:
+          VERSION: ${{ needs.gate.outputs.version }}
+        # Read the artifact, not the inputs that produced it. Every absence
+        # check below first proves its input exists, so a wrong path fails
+        # instead of passing vacuously.
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          ARCHIVES=(src-tauri/gen/apple/build/*.xcarchive)
+          [ "${#ARCHIVES[@]}" -eq 1 ] || { echo "::error::expected exactly one xcarchive, found ${#ARCHIVES[@]}"; exit 1; }
+          ARCHIVE="${ARCHIVES[0]}"
+          if [ "$SIGNED" = true ]; then
+            IPAS=(src-tauri/gen/apple/build/export/*.ipa)
+            [ "${#IPAS[@]}" -eq 1 ] || { echo "::error::expected exactly one IPA, found ${#IPAS[@]}"; exit 1; }
+            WORK="$RUNNER_TEMP/ipa"
+            rm -rf "$WORK" && mkdir -p "$WORK"
+            unzip -q "${IPAS[0]}" -d "$WORK"
+            APPS=("$WORK"/Payload/*.app)
+            # Workspace-relative: upload-testflight-build resolves app-path
+            # from the workspace root.
+            echo "ipa=${APP_DIR}/${IPAS[0]}" >> "$GITHUB_OUTPUT"
+            echo "artifact=${APP_DIR}/${IPAS[0]}" >> "$GITHUB_OUTPUT"
+          else
+            APPS=("$ARCHIVE"/Products/Applications/*.app)
+            # ditto keeps the archive's symlinks and permissions, which
+            # upload-artifact's own zip does not.
+            ditto -c -k --keepParent "$ARCHIVE" "$RUNNER_TEMP/crane-ios-unsigned.xcarchive.zip"
+            echo "artifact=$RUNNER_TEMP/crane-ios-unsigned.xcarchive.zip" >> "$GITHUB_OUTPUT"
+          fi
+          [ "${#APPS[@]}" -eq 1 ] || { echo "::error::expected exactly one .app, found ${#APPS[@]}"; exit 1; }
+          APP="${APPS[0]}"
+          PLIST="$APP/Info.plist"
+          test -f "$PLIST" || { echo "::error::no Info.plist at $PLIST"; exit 1; }
+          pb() { /usr/libexec/PlistBuddy -c "Print :$1" "$PLIST" 2>/dev/null || echo "<absent>"; }
+          ID=$(pb CFBundleIdentifier)
+          SHORT=$(pb CFBundleShortVersionString)
+          FULL=$(pb CFBundleVersion)
+          ENC=$(pb ITSAppUsesNonExemptEncryption)
+          SDK=$(pb DTSDKName)
+          MINOS=$(pb MinimumOSVersion)
+          MIC=$(pb NSMicrophoneUsageDescription)
+          echo "bundle=$ID short=$SHORT version=$FULL encryption=$ENC sdk=$SDK minOS=$MINOS"
+          echo "cfbundleversion=$FULL" >> "$GITHUB_OUTPUT"
+          [ "$ID" = "$BUNDLE_ID" ] || { echo "::error::bundle id is $ID, not $BUNDLE_ID"; exit 1; }
+          [ "$SHORT" = "$VERSION" ] || { echo "::error::CFBundleShortVersionString is $SHORT, tauri.conf.json says $VERSION"; exit 1; }
+          case "$FULL" in
+            "$BUILD_NUMBER"|*".$BUILD_NUMBER") : ;;
+            *) echo "::error::CFBundleVersion $FULL does not end in build number $BUILD_NUMBER"; exit 1 ;;
+          esac
+          [ "$ENC" = "false" ] || { echo "::error::ITSAppUsesNonExemptEncryption is '$ENC', expected false"; exit 1; }
+          case "$SDK" in
+            iphoneos2[6-9]*|iphoneos[3-9][0-9]*) : ;;
+            *) echo "::error::built against $SDK; App Store Connect requires the iOS 26 SDK or later"; exit 1 ;;
+          esac
+          [ "$MINOS" = "$IOS_MIN" ] || { echo "::error::MinimumOSVersion is $MINOS, tauri.conf.json says $IOS_MIN"; exit 1; }
+          # ITMS-90683: a binary that can use the microphone needs a purpose
+          # string. It comes from src-tauri/Info.ios.plist, which the CLI
+          # merges at build time.
+          case "$MIC" in ""|"<absent>") echo "::error::NSMicrophoneUsageDescription is missing (ITMS-90683)"; exit 1 ;; esac
+          # ITMS-90171: no static library inside the bundle.
+          STATIC=$(find "$APP" -name '*.a')
+          [ -z "$STATIC" ] || { echo "::error::the bundle carries static libraries: $STATIC"; exit 1; }
+          # Symbolicated crash reports: the release profile keeps line tables
+          # (debug = 1, strip = false) and the archive must carry the dSYM.
+          DSYMS=("$ARCHIVE"/dSYMs/*.dSYM)
+          [ "${#DSYMS[@]}" -ge 1 ] || { echo "::error::the archive carries no dSYM"; exit 1; }
+          echo "dSYMs: ${#DSYMS[@]}"
+
+          # ITMS-90717: the App Store icon can't carry an alpha channel. Check
+          # the source the catalog compiles from and the compiled Assets.car,
+          # which is what Apple inspects. (The loose AppIcon*.png at the .app
+          # root are CgBI PNGs and always report alpha; they are not checked.)
+          python3 - "$APP" "$(pwd)/src-tauri/gen/apple/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png" <<'PY'
+          import json, os, struct, subprocess, sys
+
+          app, source_marketing = sys.argv[1], sys.argv[2]
+
+          def colour_type(path):
+              data = open(path, "rb").read()
+              if data[:8] != b"\x89PNG\r\n\x1a\n":
+                  sys.exit(f"::error::{path} is not a PNG (a Git LFS pointer?)")
+              off = 8
+              while off + 8 <= len(data):
+                  length = struct.unpack(">I", data[off:off + 4])[0]
+                  if data[off + 4:off + 8] == b"IHDR":
+                      w, h, _bd, ct = struct.unpack(">IIBB", data[off + 8:off + 18])
+                      return w, h, ct
+                  off += 12 + length
+              sys.exit(f"::error::{path} has no IHDR chunk")
+
+          if not os.path.isfile(source_marketing):
+              sys.exit(f"::error::no marketing icon at {source_marketing}")
+          w, h, ct = colour_type(source_marketing)
+          print(f"marketing icon source: {w}x{h} colourtype {ct}")
+          if (w, h) != (1024, 1024):
+              sys.exit(f"::error::marketing icon is {w}x{h}, App Store requires 1024x1024")
+          if ct in (4, 6):
+              sys.exit("::error::marketing icon carries an alpha channel (ITMS-90717)")
+
+          car = os.path.join(app, "Assets.car")
+          if not os.path.isfile(car):
+              sys.exit(f"::error::no Assets.car in {app}; the icon check would be vacuous")
+          info = json.loads(subprocess.run(
+              ["assetutil", "--info", car], check=True, capture_output=True, text=True
+          ).stdout)
+          icons = [e for e in info if e.get("Name") == "AppIcon" and e.get("RenditionName")]
+          marketing = [e for e in icons if e.get("Idiom") == "marketing"]
+          if not marketing:
+              sys.exit("::error::Assets.car carries no marketing (App Store) AppIcon rendition")
+          for entry in marketing:
+              if entry.get("Opaque") is not True:
+                  sys.exit(f"::error::App Store icon rendition {entry.get('RenditionName')} is not opaque (ITMS-90717)")
+          print(f"App Store icon check: PASS ({len(icons)} AppIcon renditions, {len(marketing)} marketing, all opaque)")
+          PY
+
+      # Keep the artifact even when a later step fails; it is the only thing
+      # that can be inspected afterwards.
+      - name: Keep the build
+        if: always() && steps.ipa.outputs.artifact != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: crane-ios-${{ needs.gate.outputs.signed == 'true' && 'signed' || 'unsigned' }}-${{ needs.gate.outputs.build_number }}
+          path: ${{ steps.ipa.outputs.artifact }}
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Upload to TestFlight
+        if: env.SIGNED == 'true'
+        uses: apple-actions/upload-testflight-build@9fd28d4e690396e43caca69cef54cccccce77034 # v3
+        with:
+          app-path: ${{ steps.ipa.outputs.ipa }}
+          issuer-id: ${{ secrets.ASC_ISSUER_ID }}
+          api-key-id: ${{ secrets.ASC_KEY_ID }}
+          api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
+
+      - name: Verify THIS run's build reached App Store Connect
+        if: env.SIGNED == 'true'
+        # The upload action succeeds when Apple accepts the transfer; Apple can
+        # still reject the package during processing. The verifier requires a
+        # build with our CFBundleVersion uploaded at or after this run began,
+        # so a pre-existing build with a colliding number does not count.
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          ASC_BUNDLE_ID: ${{ env.BUNDLE_ID }}
+          ASC_BUILD_VERSION: ${{ steps.ipa.outputs.cfbundleversion }}
+          ASC_MIN_UPLOADED_DATE: ${{ needs.gate.outputs.run_started }}
+          # Processing time grows with package size; llama.cpp and whisper.cpp
+          # make this a large binary. Dynawalla needed 45 minutes.
+          ASC_TIMEOUT_SECONDS: "2700"
+          PYTHONUNBUFFERED: "1"
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_testflight_upload.py
+
+  # ---- Android -> Play internal -------------------------------------------
+  android:
+    name: Android · build + Play internal
+    needs: gate
+    if: needs.gate.outputs.do_android == 'true'
+    runs-on: ubuntu-24.04
+    # llama.cpp (Rust build script) and whisper.cpp (the STT plugin's Gradle
+    # CMake build) both compile from source on a cold cache.
+    timeout-minutes: 120
+    env:
+      SIGNED: ${{ needs.gate.outputs.signed }}
+      VERSION_CODE: ${{ needs.gate.outputs.build_number }}
+      ANDROID_MIN_SDK: ${{ needs.gate.outputs.android_min_sdk }}
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - name: Fetch the app icons (Git LFS)
+        run: git lfs pull --include="${APP_DIR}/src-tauri/icons/**"
+
+      - name: Require Android credentials
+        if: env.SIGNED == 'true'
+        env:
+          HAVE_KEYSTORE: ${{ secrets.CRANE_ANDROID_KEYSTORE_B64 != '' }}
+          HAVE_STORE_PASSWORD: ${{ secrets.CRANE_ANDROID_KEYSTORE_PASSWORD != '' }}
+          HAVE_ALIAS: ${{ secrets.CRANE_ANDROID_KEY_ALIAS != '' }}
+          HAVE_PLAY_SA: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+        run: |
+          set -euo pipefail
+          missing=0
+          check() {
+            if [ "$2" != "true" ]; then
+              echo "::error::secret $1 is not set"
+              missing=1
+            fi
+          }
+          check CRANE_ANDROID_KEYSTORE_B64 "$HAVE_KEYSTORE"
+          check CRANE_ANDROID_KEYSTORE_PASSWORD "$HAVE_STORE_PASSWORD"
+          check CRANE_ANDROID_KEY_ALIAS "$HAVE_ALIAS"
+          check PLAY_SERVICE_ACCOUNT_JSON "$HAVE_PLAY_SA"
+          if [ "$missing" -ne 0 ]; then
+            echo "See crane/app/RELEASE_SETUP.md for how each one is produced, or dispatch with unsigned=true."
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: crane/app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Remove distrusted Java CA roots
+        run: sudo "$JAVA_HOME/bin/java" "$GITHUB_WORKSPACE/.github/scripts/RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Preflight · the Play app record exists and is reachable
+        if: env.SIGNED == 'true'
+        # The Play app record and the per-app service-account grant are both
+        # founder Console actions. This opens a throwaway edit, which 404s on a
+        # missing record and 403s on a missing grant. No `id:` on purpose: the
+        # baseline the post-upload check uses must be read just before upload.
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: ${{ env.BUNDLE_ID }}
+          PLAY_TRACK: internal
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_play_upload.py --snapshot
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          # gen/android does not exist at this point; the CLI version in the
+          # lockfile is what decides the generated Gradle files.
+          key: gradle-crane-${{ runner.os }}-${{ hashFiles('crane/app/package-lock.json') }}
+          restore-keys: gradle-crane-${{ runner.os }}-
+
+      - name: Install the pinned NDK
+        run: |
+          set -euo pipefail
+          # `</dev/null`, never `yes |`: under pipefail `yes` takes SIGPIPE
+          # on the success path and aborts the job (release-dynawalla.yml).
+          sdkmanager --install "ndk;$NDK_VERSION" "platforms;android-36" "build-tools;36.0.0" \
+            </dev/null >/dev/null
+          NDK="$ANDROID_SDK_ROOT/ndk/$NDK_VERSION"
+          test -x "$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android${ANDROID_MIN_SDK}-clang" \
+            || { echo "::error::NDK clang for API $ANDROID_MIN_SDK not found at $NDK"; exit 1; }
+          test -f "$NDK/build/cmake/android.toolchain.cmake" \
+            || { echo "::error::NDK CMake toolchain file not found at $NDK"; exit 1; }
+          # What the Tauri CLI reads to pick the Rust cross-compiler and linker.
+          echo "NDK_HOME=$NDK" >> "$GITHUB_ENV"
+
+      # Same reasoning as the iOS job: the Rust build runs under Gradle via
+      # `npm run -- tauri android android-studio-script` (cwd crane/app), so
+      # src-tauri/rust-toolchain.toml is not discovered from there and only
+      # CARGO_*/RUST_* variables are forwarded to cargo by the CLI.
+      #
+      # This is the machine-independent equivalent of what Corpán's release
+      # job does by rewriting the developer-specific NDK paths in
+      # corpan-app/src-tauri/.cargo/config.toml: the vendored llama-cpp-sys-2
+      # build.rs needs ANDROID_NDK (it does not read NDK_HOME), and is FORCED
+      # to the pinned NDK because the runner image presets ANDROID_NDK* to a
+      # different one. The linker and the C/C++ compilers come from the Tauri
+      # CLI (TARGET_CC/TARGET_CXX/TARGET_AR and CARGO_TARGET_*_LINKER from
+      # NDK_HOME at minSdk); nothing here overrides them.
+      - name: Pin the toolchain and the native build environment
+        env:
+          RUST_TOOLCHAIN: ${{ needs.gate.outputs.rust_toolchain }}
+        run: |
+          set -euo pipefail
+          rustup toolchain install "$RUST_TOOLCHAIN" --profile minimal --target aarch64-linux-android
+          rustup default "$RUST_TOOLCHAIN"
+          CFG="${CARGO_HOME:-$HOME/.cargo}/config.toml"
+          mkdir -p "$(dirname "$CFG")"
+          if [ -f "$CFG" ] && grep -n '^\[env\]' "$CFG" >/dev/null; then
+            echo "::error::$CFG already has an [env] table; merge these settings into it by hand"
+            exit 1
+          fi
+          # ANDROID_PLATFORM: llama.cpp's CMake build otherwise defaults to
+          # android-28, above this app's minSdk, and would link symbols that
+          # API 26-27 devices do not have.
+          cat >> "$CFG" <<TOML
+
+          [env]
+          CMAKE_DISABLE_FIND_PACKAGE_OpenSSL = { value = "ON", force = true }
+          ANDROID_NDK = { value = "${NDK_HOME}", force = true }
+          ANDROID_NDK_ROOT = { value = "${NDK_HOME}", force = true }
+          NDK_ROOT = { value = "${NDK_HOME}", force = true }
+          ANDROID_PLATFORM = { value = "android-${ANDROID_MIN_SDK}", force = true }
+          TOML
+          python3 -c "import sys,tomllib;e=tomllib.load(open(sys.argv[1],'rb'))['env'];print('cargo [env]:',sorted(e))" "$CFG"
+          ACTUAL=$(cd "$APP_DIR" && rustc --version)
+          echo "rustc from $APP_DIR: $ACTUAL"
+          case "$ACTUAL" in
+            "rustc $RUST_TOOLCHAIN "*) : ;;
+            *) echo "::error::cargo under $APP_DIR resolves '$ACTUAL', not $RUST_TOOLCHAIN"; exit 1 ;;
+          esac
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crane/app/src-tauri
+
+      - name: Vendor whisper.cpp source (tauri-plugin-stt JNI)
+        # The plugin's externalNativeBuild compiles a gitignored whisper.cpp
+        # checkout; pinned to the same version as the iOS XCFramework.
+        run: |
+          set -euo pipefail
+          DST=corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp
+          if [ ! -f "$DST/CMakeLists.txt" ]; then
+            git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$DST"
+          fi
+
+      - name: Install deps
+        working-directory: crane/app
+        run: npm ci
+
+      - name: Generate the Android project and apply the store settings
+        working-directory: crane/app
+        run: |
+          set -euo pipefail
+          npx tauri android init --ci --skip-targets-install
+
+          # Patch the generated app/build.gradle.kts. Each edit anchors on
+          # exactly one occurrence in the Tauri 2.11.4 template (recorded in
+          # dynawalla/dynawalla-app/android-template-baseline/) and fails if
+          # the template moves.
+          python3 - <<'PY'
+          import os, pathlib, re, sys
+
+          path = pathlib.Path("src-tauri/gen/android/app/build.gradle.kts")
+          text = path.read_text()
+
+          def replace_once(old, new):
+              global text
+              count = text.count(old)
+              if count != 1:
+                  sys.exit(f"::error::expected one {old!r} in {path}, found {count}; the Tauri template changed")
+              text = text.replace(old, new)
+
+          # Native debug symbols in the AAB, so Play can symbolicate Rust and
+          # C++ crashes (from `debug = 1, strip = false` in Cargo.toml).
+          # SYMBOL_TABLE, not FULL: Corpán saw FULL leave the metadata empty
+          # with the universal flavour. keepDebugSymbols.clear() keeps the
+          # shipped .so stripped (Dynawalla's curated file, same reason).
+          replace_once(
+              "                    .toList().toTypedArray()\n            )\n        }\n",
+              "                    .toList().toTypedArray()\n            )\n"
+              "            ndk {\n"
+              "                debugSymbolLevel = \"SYMBOL_TABLE\"\n"
+              "            }\n"
+              "            packaging {\n"
+              "                jniLibs {\n"
+              "                    keepDebugSymbols.clear()\n"
+              "                }\n"
+              "            }\n"
+              "        }\n",
+          )
+          # Pin the NDK AGP uses to strip and extract symbols to the one the
+          # Rust code was linked with. The template pins none.
+          replace_once("    buildFeatures {\n",
+                       f'    ndkVersion = "{os.environ["NDK_VERSION"]}"\n    buildFeatures {{\n')
+          path.write_text(text)
+
+          checks = {
+              "applicationId": rf'applicationId = "{re.escape(os.environ["BUNDLE_ID"])}"',
+              "minSdk": rf'minSdk = {os.environ["ANDROID_MIN_SDK"]}\n',
+              "debugSymbolLevel": r'debugSymbolLevel = "SYMBOL_TABLE"',
+              "ndkVersion": rf'ndkVersion = "{re.escape(os.environ["NDK_VERSION"])}"',
+          }
+          for name, pattern in checks.items():
+              if len(re.findall(pattern, text)) != 1:
+                  sys.exit(f"::error::{name} is not set exactly once in {path}")
+          print(f"{path} patched")
+          PY
+
+          # Same defect as iOS: init writes template mipmaps and never reads
+          # src-tauri/icons/android/. AAPT adds the -v4 suffix at build time,
+          # so the source names line up and a recursive copy is the fix.
+          ICONS=src-tauri/icons/android
+          RES=src-tauri/gen/android/app/src/main/res
+          test -d "$ICONS" || { echo "::error::$ICONS is missing"; exit 1; }
+          cp -R "$ICONS"/. "$RES"/
+          cmp "$ICONS/mipmap-xxhdpi/ic_launcher.png" "$RES/mipmap-xxhdpi/ic_launcher.png" \
+            || { echo "::error::launcher icons did not survive the copy"; exit 1; }
+          echo "launcher icons: $(find "$RES" -name 'ic_launcher*.png' | wc -l | tr -d ' ') installed from $ICONS"
+
+      - name: Tauri Android build (unsigned AAB)
+        working-directory: crane/app
+        # arm64 only. It is the only Android target in rust-toolchain.toml,
+        # the STT plugin builds whisper.cpp for arm64-v8a only, and Play's
+        # 64-bit requirement is met by it. The generated Gradle project has no
+        # release signingConfig, so the AAB is unsigned and is signed below.
+        run: |
+          set -euo pipefail
+          npx tauri android build --ci --aab --target aarch64 \
+            -c '{"bundle":{"android":{"versionCode":'"$VERSION_CODE"'}}}'
+
+      - name: Inspect the AAB before signing it
+        id: aab
+        working-directory: crane/app
+        env:
+          VERSION: ${{ needs.gate.outputs.version }}
+          BUNDLETOOL_VERSION: "1.18.3"
+          BUNDLETOOL_SHA256: a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29
+        # The Play package name is locked forever by the first uploaded AAB,
+        # so read the applicationId out of the artifact itself.
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          AABS=(src-tauri/gen/android/app/build/outputs/bundle/*Release/*.aab)
+          [ "${#AABS[@]}" -eq 1 ] || { echo "::error::expected exactly one release AAB, found ${#AABS[@]}"; exit 1; }
+          AAB="${AABS[0]}"
+          ls -la "$AAB"
+          # Workspace-relative, for upload-artifact and the Play upload action.
+          echo "aab=${APP_DIR}/${AAB}" >> "$GITHUB_OUTPUT"
+
+          curl --fail -sSLo "$RUNNER_TEMP/bundletool.jar" \
+            "https://github.com/google/bundletool/releases/download/${BUNDLETOOL_VERSION}/bundletool-all-${BUNDLETOOL_VERSION}.jar"
+          echo "${BUNDLETOOL_SHA256}  $RUNNER_TEMP/bundletool.jar" | sha256sum -c -
+          java -jar "$RUNNER_TEMP/bundletool.jar" dump manifest --bundle "$AAB" > "$RUNNER_TEMP/crane-manifest.xml"
+          java -jar "$RUNNER_TEMP/bundletool.jar" dump config --bundle "$AAB" > "$RUNNER_TEMP/crane-bundle-config.json"
+
+          python3 - "$AAB" <<'PY'
+          import os, pathlib, struct, sys, zipfile
+          import xml.etree.ElementTree as ET
+
+          aab = sys.argv[1]
+          tmp = pathlib.Path(os.environ["RUNNER_TEMP"])
+          ns = "{http://schemas.android.com/apk/res/android}"
+          root = ET.parse(tmp / "crane-manifest.xml").getroot()
+          sdk = root.find("uses-sdk")
+          if sdk is None:
+              sys.exit("::error::merged manifest has no uses-sdk")
+          pkg = root.attrib.get("package")
+          code = root.attrib.get(ns + "versionCode")
+          name = root.attrib.get(ns + "versionName")
+          min_sdk = sdk.attrib.get(ns + "minSdkVersion")
+          target = sdk.attrib.get(ns + "targetSdkVersion", "0")
+          perms = sorted(p.attrib[ns + "name"] for p in root.findall("uses-permission"))
+          print(f"package={pkg} versionCode={code} versionName={name} minSdk={min_sdk} targetSdk={target}")
+          print("permissions:", ", ".join(perms))
+          if pkg != os.environ["BUNDLE_ID"]:
+              sys.exit(f"::error::AAB applicationId is {pkg!r}, not {os.environ['BUNDLE_ID']!r}; DO NOT UPLOAD")
+          if code != os.environ["VERSION_CODE"]:
+              sys.exit(f"::error::versionCode is {code}, expected {os.environ['VERSION_CODE']}")
+          if name != os.environ["VERSION"]:
+              sys.exit(f"::error::versionName is {name}, tauri.conf.json says {os.environ['VERSION']}")
+          if min_sdk != os.environ["ANDROID_MIN_SDK"]:
+              sys.exit(f"::error::minSdk is {min_sdk}, tauri.conf.json says {os.environ['ANDROID_MIN_SDK']}")
+          # Google Play target API level requirement: new apps and updates
+          # must target Android 16 (API 36) from 2026-08-31.
+          if int(target) < 36:
+              sys.exit(f"::error::targetSdk is {target}; Play requires 36 or higher")
+          # Voice input needs it; it comes from tauri-plugin-stt's manifest.
+          if "android.permission.RECORD_AUDIO" not in perms:
+              sys.exit("::error::RECORD_AUDIO is missing from the merged manifest; voice input cannot work")
+          # Play Console's Advertising ID declaration will say "no". A
+          # dependency can add this permission without a repo change.
+          if "com.google.android.gms.permission.AD_ID" in perms:
+              sys.exit("::error::the merged manifest requests AD_ID; the Advertising ID declaration says no")
+
+          # Google Play 16 KB page size requirement (apps targeting Android
+          # 15+ with native code): every ELF LOAD segment 16 KiB aligned, and
+          # the bundle asks for 16 KiB APK packaging.
+          PAGE = 16384
+          def check_elf(entry, data):
+              if data[:4] != b"\x7fELF" or data[4] != 2 or data[5] != 1:
+                  sys.exit(f"::error::{entry} is not a 64-bit little-endian ELF")
+              phoff = struct.unpack_from("<Q", data, 32)[0]
+              phentsize, phnum = struct.unpack_from("<HH", data, 54)
+              loads = 0
+              for i in range(phnum):
+                  kind, _f, off, vaddr, _p, _fs, _ms, align = struct.unpack_from("<IIQQQQQQ", data, phoff + i * phentsize)
+                  if kind == 1:
+                      loads += 1
+                      if align < PAGE or (vaddr - off) % PAGE:
+                          sys.exit(f"::error::{entry} has a LOAD segment aligned to {align}; Play requires 16 KiB")
+              if not loads:
+                  sys.exit(f"::error::{entry} has no LOAD segments")
+          with zipfile.ZipFile(aab) as z:
+              names = z.namelist()
+              libs = [n for n in names if n.endswith(".so") and "/lib/" in n]
+              if not libs:
+                  sys.exit("::error::the AAB carries no native libraries; the 16 KiB check would be vacuous")
+              abis = sorted({n.split("/")[2] for n in libs})
+              if abis != ["arm64-v8a"]:
+                  sys.exit(f"::error::the AAB carries ABIs {abis}, expected only arm64-v8a")
+              if "base/lib/arm64-v8a/libcrane_lib.so" not in names:
+                  sys.exit("::error::base/lib/arm64-v8a/libcrane_lib.so is missing")
+              for n in libs:
+                  check_elf(n, z.read(n))
+              print(f"16 KiB ELF check: PASS ({len(libs)} libraries: {', '.join(sorted(libs))})")
+              symbols = [n for n in names if n.startswith("BUNDLE-METADATA/com.android.tools.build.debugsymbols/arm64-v8a/")]
+              if not symbols:
+                  sys.exit("::error::the AAB carries no arm64-v8a native debug symbols")
+              print(f"native debug symbols: {len(symbols)} files")
+          if "PAGE_ALIGNMENT_16K" not in (tmp / "crane-bundle-config.json").read_text():
+              sys.exit("::error::the AAB does not request 16 KiB APK packaging")
+          PY
+
+      - name: Sign the AAB with the upload key
+        id: sign
+        if: env.SIGNED == 'true'
+        # Secrets through `env:`; the store password is read by jarsigner from
+        # the environment, never from argv.
+        env:
+          AAB: ${{ github.workspace }}/${{ steps.aab.outputs.aab }}
+          KEYSTORE_B64: ${{ secrets.CRANE_ANDROID_KEYSTORE_B64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.CRANE_ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.CRANE_ANDROID_KEY_ALIAS }}
+        run: |
+          set -euo pipefail
+          trap 'rm -f "$RUNNER_TEMP/upload-keystore.jks"' EXIT
+          printf '%s' "$KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
+          jarsigner -sigalg SHA256withRSA -digestalg SHA-256 \
+            -keystore "$RUNNER_TEMP/upload-keystore.jks" \
+            -storepass:env KEYSTORE_PASSWORD \
+            "$AAB" "$KEY_ALIAS"
+          # Captured, not piped: the expected chain warnings must not fail the
+          # step, and `head` under pipefail returns 141.
+          VERIFY=$(jarsigner -verify "$AAB" 2>&1 || true)
+          printf '%s\n' "$VERIFY" | sed -n '1,5p'
+          printf '%s\n' "$VERIFY" | grep 'jar verified' >/dev/null \
+            || { echo "::error::the signed AAB does not verify"; exit 1; }
+          echo "AAB signed and verified."
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: Keep the AAB
+        if: always() && steps.aab.outputs.aab != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: crane-android-${{ steps.sign.outputs.ok == 'true' && 'signed' || 'unsigned' }}-${{ needs.gate.outputs.build_number }}
+          path: ${{ steps.aab.outputs.aab }}
+          retention-days: 14
+          if-no-files-found: error
+
+      # Play keeps the EXISTING bundle when a duplicate versionCode arrives, so
+      # only "absent before, present after" proves this run added it.
+      - name: Snapshot the Play internal track
+        if: env.SIGNED == 'true'
+        id: playbefore
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: ${{ env.BUNDLE_ID }}
+          PLAY_TRACK: internal
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_play_upload.py --snapshot
+
+      - name: Upload to Play internal
+        if: env.SIGNED == 'true'
+        uses: r0adkll/upload-google-play@e738b9dd8f2476ea806d921b64aacd24f34515a5 # v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: ${{ env.BUNDLE_ID }}
+          releaseFiles: ${{ steps.aab.outputs.aab }}
+          track: internal
+          # `draft` until the founder publishes the FIRST release from the
+          # Play Console: on a never-published app the API can only create
+          # drafts. Then set the repository variable to `completed`.
+          status: ${{ vars.CRANE_PLAY_RELEASE_STATUS || 'draft' }}
+
+      - name: Verify THIS run's build reached the Play internal track
+        if: env.SIGNED == 'true'
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: ${{ env.BUNDLE_ID }}
+          PLAY_TRACK: internal
+          PLAY_VERSION_CODE: ${{ needs.gate.outputs.build_number }}
+          PLAY_PRE_UPLOAD_CODES: ${{ steps.playbefore.outputs.version_codes }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
+          python3 .github/scripts/verify_play_upload.py
