@@ -264,3 +264,166 @@ fn a_declined_question_is_queued_and_the_outbox_flushes_to_a_folder() {
         1
     );
 }
+
+/// An `/v1/embeddings` server that embeds with the fixture's hashing model,
+/// standing in for `llama-server --embedding`.
+fn mock_embed_server(requests: usize) -> (String, std::thread::JoinHandle<Vec<String>>) {
+    use harvest_core::Embedder;
+    use std::io::{BufRead, BufReader, Read, Write};
+    let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+    let base = format!("http://{}", listener.local_addr().unwrap());
+    let handle = std::thread::spawn(move || {
+        let model = harvest_core::HashingEmbedder::new(harvest_core::fixture::EMBED_DIM);
+        let mut seen = Vec::new();
+        for _ in 0..requests {
+            let (stream, _) = listener.accept().unwrap();
+            let mut reader = BufReader::new(stream.try_clone().unwrap());
+            let mut line = String::new();
+            reader.read_line(&mut line).unwrap();
+            let mut len = 0usize;
+            loop {
+                let mut h = String::new();
+                reader.read_line(&mut h).unwrap();
+                if h == "\r\n" || h.is_empty() {
+                    break;
+                }
+                if let Some(v) = h.to_ascii_lowercase().strip_prefix("content-length:") {
+                    len = v.trim().parse().unwrap();
+                }
+            }
+            let mut body = vec![0u8; len];
+            reader.read_exact(&mut body).unwrap();
+            let req: Value = serde_json::from_slice(&body).unwrap();
+            let text = req["input"][0].as_str().unwrap().to_string();
+            seen.push(format!("{} {text}", line.trim()));
+            let v = model.embed_query(&text).unwrap();
+            let reply = serde_json::json!({"data": [{"index": 0, "embedding": v}]}).to_string();
+            let mut s = stream;
+            write!(
+                s,
+                "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
+                reply.len(),
+                reply
+            )
+            .unwrap();
+        }
+        seen
+    });
+    (base, handle)
+}
+
+#[test]
+fn a_served_embedder_gives_the_same_dense_half_as_in_process() {
+    let tmp = tempfile::tempdir().unwrap();
+    // The "weights" the server loaded: any file; its hash names the embedder.
+    let gguf = tmp.path().join("model.gguf");
+    std::fs::write(&gguf, b"pretend weights").unwrap();
+    let sha = harvest_core::packs::sha256_file(&gguf).unwrap();
+    let id = format!("mock-embed:model.gguf@{}", &sha[..16]);
+    let dir = tmp.path().join("fx");
+    let built = id.clone();
+    harvest_core::fixture::build_with(&dir, "2026.1.1-1", move |c| {
+        c.execute(
+            "UPDATE pack_meta SET value = ?1 WHERE key = 'embedder_id'",
+            [&built],
+        )?;
+        Ok(())
+    })
+    .unwrap();
+    let d = dir.to_str().unwrap();
+    let key = harvest_core::fixture::public_key_base64();
+    let q = "how far from an energized line";
+    let (base, server) = mock_embed_server(1);
+    let (code, out, err) = harvest(&[
+        "search",
+        d,
+        q,
+        "--embedder",
+        &base,
+        "--embedder-gguf",
+        gguf.to_str().unwrap(),
+        "--pubkey",
+        &key,
+        "--json",
+    ]);
+    assert_eq!(code, 0, "{err}");
+    let served: Value = serde_json::from_str(&out).unwrap();
+    assert_eq!(served["dense"], "used");
+    let seen = server.join().unwrap();
+    assert!(
+        seen[0].starts_with("POST /v1/embeddings") && seen[0].ends_with(q),
+        "{seen:?}"
+    );
+    // The same vectors in process give the same hits.
+    let pack = harvest_core::Pack::open(&dir, &[harvest_core::fixture::trusted_key()]).unwrap();
+    struct Renamed(harvest_core::HashingEmbedder, String);
+    impl harvest_core::Embedder for Renamed {
+        fn id(&self) -> &str {
+            &self.1
+        }
+        fn dim(&self) -> usize {
+            self.0.dim()
+        }
+        fn embed_query(&self, t: &str) -> harvest_core::Result<Vec<f32>> {
+            self.0.embed_query(t)
+        }
+    }
+    let e = harvest_core::Engine::new(std::sync::Arc::new(pack)).with_embedder(
+        std::sync::Arc::new(Renamed(
+            harvest_core::HashingEmbedder::new(harvest_core::fixture::EMBED_DIM),
+            id,
+        )),
+    );
+    let local = e
+        .retriever()
+        .search(
+            q,
+            &harvest_core::SearchOptions {
+                k: 10,
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    let ids = |v: &Value| -> Vec<String> {
+        v["hits"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|h| h["chunk_id"].as_str().unwrap().to_string())
+            .collect()
+    };
+    assert_eq!(
+        ids(&served),
+        local
+            .hits
+            .iter()
+            .map(|h| h.chunk_id.clone())
+            .collect::<Vec<_>>()
+    );
+
+    // A different file is a different embedder: refused, lexical only.
+    let (base, server) = mock_embed_server(0);
+    let (code, out, _) = harvest(&[
+        "search",
+        d,
+        q,
+        "--embedder",
+        &base,
+        "--embedder-sha256",
+        &"ab".repeat(32),
+        "--pubkey",
+        &key,
+        "--json",
+    ]);
+    assert_eq!(code, 0);
+    assert!(
+        serde_json::from_str::<Value>(&out).unwrap()["dense"]["mismatch"].is_object(),
+        "{out}"
+    );
+    drop(server);
+    // And the hash is required.
+    assert_eq!(
+        harvest(&["search", d, q, "--embedder", &base, "--pubkey", &key]).0,
+        2
+    );
+}

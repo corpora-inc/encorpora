@@ -133,9 +133,17 @@ pub trait Llm: Send + Sync {
 `<model_name>@<first 16 hex of the GGUF's SHA-256>[/mrl<dim>]`, and applies
 `embed_query_template`. A different file gets a different id, and the dense
 half is refused. The pinned llama.cpp loads BERT-family GGUFs (nomic-embed
-v1.5 tested). It does **not** load EmbeddingGemma 2 (`gemma-embedding2` is
-newer than the pin), so using that model means bumping the pin together with
-`tauri-plugin-corpan-llm`. On Linux, bindgen may need
+v1.5 tested). It does **not** load EmbeddingGemma 2, the bake's embedder
+(`gemma-embedding2`); neither does llama-cpp-2 0.1.161, the latest on
+crates.io. llama-cpp-rs `main` at `feebf11` (0.1.162, unreleased) does: tested
+on aarch64 Linux, its query vectors match the bake's llama-server to a cosine
+difference of 0.0016 and the ranking test passes. Bump to the 0.1.162 release
+together with `tauri-plugin-corpan-llm` (a git pin would make every build,
+with or without the feature, clone 600 MB). Until then the CLI reaches the
+bake's own embedder over HTTP: `--embedder http://host:port --embedder-gguf
+<file>` (or `--embedder-sha256 <hex>` when the file is elsewhere) uses any
+`/v1/embeddings` server, `llama-server --embedding` included, with the id built
+from that file's hash. On Linux, bindgen may need
 `BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/gcc/<triple>/<ver>/include`.
 
 Dense retrieval runs only when `Embedder::id()` equals `pack_meta.embedder_id`
@@ -177,9 +185,9 @@ These fill gaps CONTRACT leaves open. The pipeline writes packs this way.
 
 ```
 harvest verify  <pack-dir> [--pubkey KEY] [--json]
-harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--json]
+harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url>] [--json]
 harvest ask     <pack-dir> "<question>" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
-                [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db> [--records-key FILE]] [--json]
+                [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE]] [--audit <records-db> [--records-key FILE]] [--json]
 harvest audit   <records-db> [--records-key FILE] [--json]   # verify the chain; modes and bake hit rate
 harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # upload queue; --to flushes it into a folder
 harvest install <root> <pack-or-delta-dir> [--json]          # verified, atomic; full or delta

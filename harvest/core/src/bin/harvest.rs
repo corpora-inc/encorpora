@@ -13,9 +13,9 @@ use std::time::Instant;
 
 const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
-  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing] [--pubkey KEY] [--json]
+  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing|<url>] [--pubkey KEY] [--json]
   harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
-                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>] [--audit <records-db> [--records-key FILE]] [--pubkey KEY] [--json]
+                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--audit <records-db> [--records-key FILE]] [--pubkey KEY] [--json]
   harvest audit   <records-db> [--records-key FILE] [--json]
   harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # queue status; --to flushes it into a folder
   harvest install <root> <pack-or-delta-dir> [--pubkey KEY] [--json]   # full or delta, verified, atomic
@@ -203,6 +203,26 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
             }
         }
         path if path.ends_with(".gguf") => gguf_embedder(path, pack),
+        url if url.starts_with("http://") || url.starts_with("https://") => {
+            // The id must name the weights the server loaded: hash the file
+            // when it is here, or take its declared SHA-256.
+            let sha = match (args.get("embedder-gguf"), args.get("embedder-sha256")) {
+                (Some(path), _) => harvest_core::packs::sha256_file(Path::new(path))?,
+                (None, Some(sha)) => sha.to_string(),
+                (None, None) => {
+                    return Err(CliError::Usage(
+                        "--embedder <url> needs --embedder-gguf FILE or --embedder-sha256 HEX (the GGUF the server loaded)".into(),
+                    ));
+                }
+            };
+            let e = harvest_core::embed::ServerEmbedder::for_pack(
+                url,
+                pack,
+                &sha,
+                std::time::Duration::from_secs(60),
+            )?;
+            Ok(Some(Arc::new(e)))
+        }
         other => Err(CliError::Usage(format!("unknown embedder {other:?}"))),
     }
 }
@@ -265,7 +285,15 @@ fn query_arg(args: &Args) -> Result<String, CliError> {
 }
 
 fn search(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["pubkey", "json", "k", "equip", "embedder"])?;
+    args.reject_unknown(&[
+        "pubkey",
+        "json",
+        "k",
+        "equip",
+        "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
+    ])?;
     let dir = pack_dir(args)?;
     let query = query_arg(args)?;
     let pack = Arc::new(Pack::open(&dir, &keys(args)?)?);
@@ -323,6 +351,8 @@ fn ask(args: &Args) -> Result<(), CliError> {
         "llm-model",
         "llm-timeout",
         "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
         "audit",
         "records-key",
     ])?;

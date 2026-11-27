@@ -90,6 +90,123 @@ pub fn quantize_i8(v: &[f32]) -> (Vec<i8>, f32) {
     )
 }
 
+/// The query side of a pack embedded by `llama-server --embedding` (or any
+/// OpenAI-compatible `/v1/embeddings` server): the bake's own code path, so
+/// query and document vectors come from the same implementation (CLI
+/// feature).
+///
+/// Its id is built like the bake's, `<model_name>@<first 16 hex of the
+/// GGUF's SHA-256>[/mrl<dim>]`, with the name and MRL taken from the pack and
+/// the hash from the GGUF the server loaded. A different file therefore gets
+/// a different id and the dense half is refused.
+#[cfg(feature = "cli")]
+pub struct ServerEmbedder {
+    url: String,
+    id: String,
+    dim: usize,
+    query_template: String,
+    agent: ureq::Agent,
+}
+
+#[cfg(feature = "cli")]
+impl ServerEmbedder {
+    /// `base` is the server root (`http://host:port`, with or without
+    /// `/v1`); `gguf_sha256` is the full hex SHA-256 of the file it serves.
+    pub fn for_pack(
+        base: &str,
+        pack: &crate::pack::Pack,
+        gguf_sha256: &str,
+        timeout: std::time::Duration,
+    ) -> Result<Self> {
+        use crate::error::Error;
+        let sha = gguf_sha256.trim().to_ascii_lowercase();
+        if sha.len() != 64 || !sha.bytes().all(|b| b.is_ascii_hexdigit()) {
+            return Err(Error::Embed(
+                "the GGUF SHA-256 must be 64 hex characters".into(),
+            ));
+        }
+        let pack_id = pack
+            .meta("embedder_id")
+            .ok_or_else(|| Error::Embed("pack has no embedder_id".into()))?;
+        let (name, rest) = pack_id
+            .split_once('@')
+            .ok_or_else(|| Error::Embed(format!("embedder_id {pack_id:?} is not name@hash")))?;
+        let mrl = rest
+            .split_once("/mrl")
+            .and_then(|(_, d)| d.parse::<usize>().ok());
+        let dim = pack
+            .meta("embed_dim")
+            .and_then(|d| d.parse::<usize>().ok())
+            .ok_or_else(|| Error::Embed("pack has no embed_dim".into()))?;
+        let mut id = format!("{name}@{}", &sha[..16]);
+        if let Some(m) = mrl {
+            id.push_str(&format!("/mrl{m}"));
+        }
+        let root = base.trim_end_matches('/');
+        let root = root.strip_suffix("/v1").unwrap_or(root);
+        Ok(Self {
+            url: format!("{root}/v1/embeddings"),
+            id,
+            dim,
+            query_template: pack
+                .meta("embed_query_template")
+                .unwrap_or("{query}")
+                .to_string(),
+            agent: ureq::Agent::config_builder()
+                .timeout_global(Some(timeout))
+                .build()
+                .into(),
+        })
+    }
+
+    fn embed(&self, text: &str) -> Result<Vec<f32>> {
+        use crate::error::Error;
+        let v: serde_json::Value = self
+            .agent
+            .post(&self.url)
+            .send_json(serde_json::json!({"input": [text], "model": "embed"}))
+            .map_err(|e| Error::Embed(format!("{}: {e}", self.url)))?
+            .body_mut()
+            .read_json()
+            .map_err(|e| Error::Embed(format!("{}: {e}", self.url)))?;
+        let raw = v["data"][0]["embedding"]
+            .as_array()
+            .ok_or_else(|| Error::Embed("response has no embedding".into()))?;
+        let mut out: Vec<f32> = raw
+            .iter()
+            .map(|x| x.as_f64().map(|f| f as f32))
+            .collect::<Option<_>>()
+            .ok_or_else(|| Error::Embed("embedding is not numeric".into()))?;
+        if out.len() < self.dim {
+            return Err(Error::Embed(format!(
+                "server returned {} dimensions, the pack has {}",
+                out.len(),
+                self.dim
+            )));
+        }
+        // Matryoshka: the leading `dim` components, renormalized.
+        out.truncate(self.dim);
+        normalize_l2(&mut out);
+        Ok(out)
+    }
+}
+
+#[cfg(feature = "cli")]
+impl Embedder for ServerEmbedder {
+    fn id(&self) -> &str {
+        &self.id
+    }
+    fn dim(&self) -> usize {
+        self.dim
+    }
+    fn embed_query(&self, text: &str) -> Result<Vec<f32>> {
+        self.embed(&self.query_template.replace("{query}", text))
+    }
+    fn embed_document(&self, text: &str) -> Result<Vec<f32>> {
+        self.embed(text)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
