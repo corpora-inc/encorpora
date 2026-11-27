@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["answers"],
+  "properties": {
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "level", "body", "aliases"],
+        "properties": {
+          "question": {"type": "string"},
+          "level": {"type": ["string", "null"], "enum": ["trainee", "operator", "inspector", null]},
+          "body": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["t"],
+              "properties": {
+                "t": {"enum": ["text", "quote", "cite"]},
+                "text": {"type": "string"},
+                "section_id": {"type": "string"}
+              }
+            }
+          },
+          "aliases": {"type": "array", "minItems": 5, "maxItems": 15, "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

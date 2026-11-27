@@ -1,0 +1,200 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "facts",
+    "free_text"
+  ],
+  "properties": {
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fact",
+          "basis",
+          "section_id",
+          "quote",
+          "items"
+        ],
+        "properties": {
+          "fact": {
+            "type": "string"
+          },
+          "basis": {
+            "enum": [
+              "rule",
+              "practice"
+            ]
+          },
+          "section_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "stem",
+                "choices",
+                "answer",
+                "rationales",
+                "difficulty"
+              ],
+              "properties": {
+                "stem": {
+                  "type": "string"
+                },
+                "choices": {
+                  "type": "array",
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "answer": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                },
+                "rationales": {
+                  "type": "array",
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "difficulty": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "free_text": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stem",
+          "rubric",
+          "section_ids",
+          "quotes",
+          "difficulty"
+        ],
+        "properties": {
+          "stem": {
+            "type": "string"
+          },
+          "rubric": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "points",
+              "pass",
+              "sample_answer",
+              "misconceptions"
+            ],
+            "properties": {
+              "points": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "point",
+                    "any"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "point": {
+                      "type": "string"
+                    },
+                    "any": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 8,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "pass": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sample_answer": {
+                "type": "string"
+              },
+              "misconceptions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "section_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "quotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "section_id",
+                "quote"
+              ],
+              "properties": {
+                "section_id": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "difficulty": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    }
+  }
+}

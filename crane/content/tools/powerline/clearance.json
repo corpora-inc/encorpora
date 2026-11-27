@@ -1,0 +1,219 @@
+{
+  "$comment": "Power line clearance data for the deterministic clearance tool. Every row quote is the voltage cell followed by its clearance cell exactly as they appear in the eCFR table text (29 CFR 1926, up to date as of 2026-11-24), so verify.py checks the distance too. Voltages are nominal kV, alternating current. Upper bounds are inclusive (Table A note).",
+  "ecfr_up_to_date_as_of": "2026-11-24",
+  "tables": {
+    "A": {
+      "use": "equipment operations and assembly/disassembly (Option (3)); 1926.1408, 1926.1407",
+      "section_id": "29cfr1926.1408",
+      "caption": {
+        "section_id": "29cfr1926.1408",
+        "quote": "Table A—Minimum Clearance Distances"
+      },
+      "note": {
+        "section_id": "29cfr1926.1408",
+        "quote": "The value that follows “to” is up to and includes that value. For example, over 50 to 200 means up to and including 200kV."
+      },
+      "rows": [
+        {
+          "over_kv": 0,
+          "to_kv": 50,
+          "clearance_ft": 10,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "up to 50 10"
+          }
+        },
+        {
+          "over_kv": 50,
+          "to_kv": 200,
+          "clearance_ft": 15,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "over 50 to 200 15"
+          }
+        },
+        {
+          "over_kv": 200,
+          "to_kv": 350,
+          "clearance_ft": 20,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "over 200 to 350 20"
+          }
+        },
+        {
+          "over_kv": 350,
+          "to_kv": 500,
+          "clearance_ft": 25,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "over 350 to 500 25"
+          }
+        },
+        {
+          "over_kv": 500,
+          "to_kv": 750,
+          "clearance_ft": 35,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "over 500 to 750 35"
+          }
+        },
+        {
+          "over_kv": 750,
+          "to_kv": 1000,
+          "clearance_ft": 45,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "over 750 to 1,000 45"
+          }
+        },
+        {
+          "over_kv": 1000,
+          "to_kv": null,
+          "clearance_ft": null,
+          "cell": {
+            "section_id": "29cfr1926.1408",
+            "quote": "over 1,000 (as established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution)."
+          }
+        }
+      ]
+    },
+    "T": {
+      "use": "traveling under or near power lines with no load; 1926.1411",
+      "section_id": "29cfr1926.1411",
+      "caption": {
+        "section_id": "29cfr1926.1411",
+        "quote": "Table T—Minimum Clearance Distances While Traveling With No Load"
+      },
+      "rows": [
+        {
+          "over_kv": 0,
+          "to_kv": 0.75,
+          "clearance_ft": 4,
+          "cell": {
+            "section_id": "29cfr1926.1411",
+            "quote": "up to 0.75 4"
+          }
+        },
+        {
+          "over_kv": 0.75,
+          "to_kv": 50,
+          "clearance_ft": 6,
+          "cell": {
+            "section_id": "29cfr1926.1411",
+            "quote": "over .75 to 50 6"
+          }
+        },
+        {
+          "over_kv": 50,
+          "to_kv": 345,
+          "clearance_ft": 10,
+          "cell": {
+            "section_id": "29cfr1926.1411",
+            "quote": "over 50 to 345 10"
+          }
+        },
+        {
+          "over_kv": 345,
+          "to_kv": 750,
+          "clearance_ft": 16,
+          "cell": {
+            "section_id": "29cfr1926.1411",
+            "quote": "over 345 to 750 16"
+          }
+        },
+        {
+          "over_kv": 750,
+          "to_kv": 1000,
+          "clearance_ft": 20,
+          "cell": {
+            "section_id": "29cfr1926.1411",
+            "quote": "Over 750 to 1,000 20"
+          }
+        },
+        {
+          "over_kv": 1000,
+          "to_kv": null,
+          "clearance_ft": null,
+          "cell": {
+            "section_id": "29cfr1926.1411",
+            "quote": "Over 1,000 (as established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution)."
+          }
+        }
+      ]
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "work-zone",
+      "section_id": "29cfr1926.1408(a)(1)(ii)",
+      "quote": "Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working radius."
+    },
+    {
+      "rule_id": "twenty-foot-check",
+      "section_id": "29cfr1926.1408(a)(2)",
+      "quote": "could get closer than 20 feet to a power line"
+    },
+    {
+      "rule_id": "assembly-twenty-foot-check",
+      "section_id": "29cfr1926.1407(a)",
+      "quote": "could get, in the direction or area of assembly/disassembly, closer than 20 feet to a power line during the assembly/disassembly process"
+    },
+    {
+      "rule_id": "option-1",
+      "section_id": "29cfr1926.1408(a)(2)(i)",
+      "quote": "Confirm from the utility owner/operator that the power line has been deenergized and visibly grounded at the worksite."
+    },
+    {
+      "rule_id": "option-2",
+      "section_id": "29cfr1926.1408(a)(2)(ii)",
+      "quote": "Ensure that no part of the equipment, load line, or load (including rigging and lifting accessories), gets closer than 20 feet to the power line"
+    },
+    {
+      "rule_id": "option-3",
+      "section_id": "29cfr1926.1408(a)(2)(iii)",
+      "quote": "Determine the line's voltage and the minimum approach distance permitted under Table A"
+    },
+    {
+      "rule_id": "over-350-to-1000",
+      "section_id": "29cfr1926.1409(a)",
+      "quote": "For power lines at or below 1000 kV, wherever the distance “20 feet” is specified, the distance “50 feet” must be substituted; and"
+    },
+    {
+      "rule_id": "over-1000",
+      "section_id": "29cfr1926.1409(b)",
+      "quote": "For power lines over 1000 kV, the minimum clearance distance must be established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution."
+    },
+    {
+      "rule_id": "voltage-information",
+      "section_id": "29cfr1926.1408(c)",
+      "quote": "Where Option (3) of this section is used, the utility owner/operator of the power lines must provide the requested voltage information within two working days of the employer's request."
+    },
+    {
+      "rule_id": "presumed-energized",
+      "section_id": "29cfr1926.1408(e)",
+      "quote": "The employer must assume that all power lines are energized unless the utility owner/operator confirms that the power line has been and continues to be deenergized and visibly grounded at the worksite."
+    },
+    {
+      "rule_id": "encroachment-measures",
+      "section_id": "29cfr1926.1408(b)",
+      "quote": "Where encroachment precautions are required under Option (2) or Option (3) of this section, all of the following requirements must be met:"
+    },
+    {
+      "rule_id": "below-lines",
+      "section_id": "29cfr1926.1408(d)",
+      "quote": "No part of the equipment, load line, or load (including rigging and lifting accessories) is allowed below a power line unless the employer has confirmed that the utility owner/operator has deenergized and (at the worksite) visibly grounded the power line"
+    },
+    {
+      "rule_id": "closer-than-table-a",
+      "section_id": "29cfr1926.1410(a)",
+      "quote": "The employer determines that it is infeasible to do the work without breaching the minimum approach distance under Table A of § 1926.1408."
+    },
+    {
+      "rule_id": "travel-spotter",
+      "section_id": "29cfr1926.1411(b)(4)",
+      "quote": "If any part of the equipment while traveling will get closer than 20 feet to the power line, the employer must ensure that a dedicated spotter who is in continuous contact with the driver/operator is used."
+    }
+  ]
+}

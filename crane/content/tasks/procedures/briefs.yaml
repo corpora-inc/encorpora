@@ -1,0 +1,61 @@
+# One brief per procedure. section_ids are the text the author is given (and may cite).
+- proc_id: shift-inspection
+  title: Shift inspection (pre-shift, frequent)
+  kind: inspection
+  roles: [operator, competent_person, inspector]
+  section_ids: ["29cfr1926.1412(d)", "29cfr1926.1413(a)", "29cfr1926.1415", "29cfr1926.1416(b)", "29cfr1926.1416(c)", "29cfr1926.1417(g)", "29cfr1926.1412(j)", "29cfr1926.1412(k)"]
+  notes: "Competent person, visual, before each shift, may continue during the shift; every item in 1412(d)(1)(i)-(xiii); the immediate determination on deficiencies; the shift wire rope check; safety devices and listed operational aids working before operations begin."
+- proc_id: monthly-inspection
+  title: Monthly inspection
+  kind: inspection
+  roles: [operator, competent_person, inspector]
+  section_ids: ["29cfr1926.1412(e)", "29cfr1926.1412(d)", "29cfr1926.1413(b)", "29cfr1926.1412(k)"]
+  notes: "Conducted as the shift inspection plus the monthly documentation (items checked and results, name and signature, date, retained a minimum of three months); the monthly wire rope inspection."
+- proc_id: annual-inspection
+  title: Annual / comprehensive (periodic) inspection
+  kind: inspection
+  roles: [inspector, qualified_person]
+  section_ids: ["29cfr1926.1412(f)", "29cfr1926.1413(c)", "29cfr1926.1412(g)", "29cfr1926.1412(h)", "29cfr1926.1412(k)", "29cfr1910.180(d)(4)"]
+  notes: "Qualified person, at least every 12 months, every item in 1412(f)(2), functional testing, disassembly where needed, deficiency determinations, documentation retained 12 months; severe service and idle equipment triggers; include the general industry periodic list as a cross-check only where it adds items."
+- proc_id: wire-rope-inspection
+  title: Wire rope inspection (shift, monthly, annual)
+  kind: inspection
+  roles: [operator, competent_person, inspector, qualified_person]
+  section_ids: ["29cfr1926.1413", "29cfr1926.1414(e)", "29cfr1926.1417(t)", "29cfr1910.180(g)"]
+  notes: "Category I, II and III deficiencies, the broken-wire counts and lay lengths for running, rotation resistant and pendant/standing ropes, removal from service and the alternative, critical review items, lubricant that hinders inspection, two full wraps on the drum. Use value checks for broken wire counts and diameter."
+- proc_id: assembly-disassembly
+  title: Assembly and disassembly
+  kind: operation
+  roles: [ad_director, operator, rigger, competent_person, qualified_person]
+  section_ids: ["29cfr1926.1403", "29cfr1926.1404", "29cfr1926.1405", "29cfr1926.1406", "29cfr1926.1407", "29cfr1926.1412(c)", "29cfr1926.1423(f)"]
+  notes: "Procedure selection, A/D director supervision and crew instructions, out-of-view crew, nobody under the boom during pin removal, the specific hazards list of 1404(h), components and configuration, shipping pins, outriggers, rigging by a qualified rigger, power lines during A/D, boom dismantling pin rules, post-assembly inspection."
+- proc_id: power-line-work
+  title: Working near power lines (up to 350 kV, and over)
+  kind: operation
+  roles: [operator, signal_person, competent_person]
+  section_ids: ["29cfr1926.1408", "29cfr1926.1409", "29cfr1926.1410(c)", "29cfr1926.1411", "29cfr1926.1419(a)"]
+  notes: "Identify the work zone; the 20-foot determination; Option 1/2/3; Table A by voltage (record voltage as a note step and the Table A distance as a value step); every encroachment prevention measure of 1408(b) including the planning meeting, nonconductive tag lines, the elevated warning line/barricade/signs, and the choice of at least one additional measure from 1408(b)(4); voltage information within two working days; lines presumed energized; operations below lines; over 350 kV substitutions; training and the contact emergency response; travel under lines."
+- proc_id: ground-conditions
+  title: Ground conditions and set-up
+  kind: operation
+  roles: [operator, competent_person, ad_director]
+  section_ids: ["29cfr1926.1402", "29cfr1926.1404(q)", "29cfr1926.1415(a)(1)", "29cfr1926.1415(a)(5)", "29cfr1926.1424(a)", "29cfr1926.1416(e)(5)"]
+  notes: "Firm, drained, graded ground; supporting materials; controlling entity duties and disclosure of hazards (voids, tanks, utilities); what to do if ground is inadequate; outriggers and stabilizers fully extended or deployed per the manufacturer; level; swing radius barricades. Ground bearing arithmetic is practice (mark practice_only)."
+- proc_id: personnel-lift
+  title: Hoisting personnel with a crane
+  kind: operation
+  roles: [operator, competent_person, qualified_person, signal_person]
+  section_ids: ["29cfr1926.1431"]
+  notes: "Every requirement of 1926.1431 in site order: justification, set-up, equipment criteria, platform criteria, loading (50% of rated capacity), attachment and rigging, the trial lift and inspection, proof testing, the pre-lift meeting, work practices, and power lines. Use value steps for platform load, percent of capacity and proof-test load."
+- proc_id: critical-lift-plan
+  title: Critical lift plan (and multiple-crane lifts)
+  kind: planning
+  roles: [lift_director, operator, rigger, qualified_person, competent_person]
+  section_ids: ["29cfr1926.1432", "29cfr1926.1417(o)", "29cfr1926.1402(b)", "29cfr1926.1404(h)(6)", "29cfr1926.1408(a)", "29cfr1926.1419(a)", "29cfr1926.1424(a)", "29cfr1926.1425"]
+  notes: "The federal rules do not define a critical lift; say so in the summary and mark the criteria step practice_only. Plan: load weight from a recognized source, CG, radius and configuration, chart capacity and percent of capacity, rigging and sling tension, ground, power lines, swing radius and fall zone, signals, people and roles, weather limits, contingencies, sign-off. For multiple-crane lifts include every 1432 requirement (plan developed by a qualified person or engineer, reviewed in a meeting, directed by a qualified/competent person)."
+- proc_id: sling-inspection
+  title: Rigging and sling inspection
+  kind: inspection
+  roles: [rigger, operator, competent_person, inspector]
+  section_ids: ["29cfr1910.184"]
+  notes: "Daily inspection before use by a competent person; identification markings; removal criteria per sling type (alloy chain with wear and stretch, wire rope broken wires/abrasion/kinks/heat/end fittings/hooks opened over 15 percent, metal mesh, natural and synthetic fiber rope, synthetic web); safe operating practices before the lift."
