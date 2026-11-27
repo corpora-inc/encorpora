@@ -240,11 +240,12 @@ def parse_div8(xml: str, base: str, source_id: str, b: Builder):
             continue
         # lookahead token for ambiguous romans
         la = None
-        for k2, r2 in plist[idx + 1: idx + 2]:
+        for k2, r2 in plist[idx + 1:]:  # the next MARKED paragraph, skipping tables and unmarked text
             if k2 == "p":
                 m2 = MARK.match(r2)
                 if m2:
                     la = (m2.group(2) or m2.group(3), bool(m2.group(1) or m2.group(3)))
+                    break
         for j, (tok, italic, txt) in enumerate(pieces):
             nxt = (pieces[j + 1][0], pieces[j + 1][1]) if j + 1 < len(pieces) else la
             b.push(tok, italic, nxt)

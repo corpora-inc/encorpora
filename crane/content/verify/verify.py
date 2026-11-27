@@ -26,7 +26,6 @@ import ecfr  # noqa: E402
 
 CONTENT = HERE.parent
 SKIP_DIRS = {"node_modules", ".cache", "verify", "dist"}
-SID_RE = re.compile(r"^29cfr19(?:26|10)\.[0-9a-zA-Z.()]+$")
 
 
 class Index:
@@ -107,7 +106,7 @@ def walk(node, path, out):
         elif isinstance(sid, str):
             q = node.get("quote")
             out.append((path, "quote" if q else "cite", sid, q))
-        for key in ("section_ids", "cites", "sections"):
+        for key in ("section_ids", "related_section_ids", "cites", "sections"):
             v = node.get(key)
             if isinstance(v, list):
                 for i, s in enumerate(v):

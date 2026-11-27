@@ -102,15 +102,19 @@ def ground(section_ids: list[str], cap: int = 24000) -> tuple[str, list[str]]:
 
 # ---------------------------------------------------------------- usage guard
 
-def weekly_used() -> float:
-    try:
-        return float(json.loads(RATE_FILE.read_text())["seven_day"]["used_percentage"])
-    except Exception:  # noqa: BLE001
-        return -1.0
-
-
 class UsageCeiling(Exception):
     pass
+
+
+def weekly_used() -> float:
+    """Weekly usage percent. Fails closed: unreadable usage stops generation unless
+    HARVEST_USAGE_UNKNOWN_OK=1 is set explicitly."""
+    try:
+        return float(json.loads(RATE_FILE.read_text())["seven_day"]["used_percentage"])
+    except Exception as e:  # noqa: BLE001
+        if os.environ.get("HARVEST_USAGE_UNKNOWN_OK") == "1":
+            return 0.0
+        raise UsageCeiling(f"cannot read weekly usage from {RATE_FILE}: {e}") from e
 
 
 def guard():
@@ -153,7 +157,7 @@ class Task:
         self.cache = CACHE / self.task_id
 
     def key(self, item: dict) -> Path:
-        h = sha(self.prompt_sha + item["prompt"] + self.model)[:16]
+        h = sha(self.prompt_sha + item["prompt"] + item.get("model", self.model))[:16]
         return self.cache / f"{item['input_id']}--{h}.json"
 
     def cached(self, item):
@@ -209,7 +213,7 @@ def provenance(rec: dict, verifier: str, verdict: str, notes: str | None = None)
             "verdict": verdict, "notes": notes}
 
 
-def repair_quotes(obj, allowed: set[str] | None = None) -> tuple[int, int, list[str]]:
+def repair_quotes(obj) -> tuple[int, int, list[str]]:
     """Walk obj; for each {section_id, quote|text(t=quote)} make the quote the exact
     source span when it matches modulo typography. Returns (ok, repaired, errors)."""
     ix = index()
@@ -222,9 +226,6 @@ def repair_quotes(obj, allowed: set[str] | None = None) -> tuple[int, int, list[
         if not isinstance(sid, str) or not ix.exists(sid):
             errs.append(f"unknown section_id {sid}")
             return
-        if allowed is not None and sid not in allowed:
-            # still valid if it exists; note it
-            pass
         if not isinstance(q, str) or not q.strip():
             errs.append(f"empty quote {sid}")
             return

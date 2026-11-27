@@ -53,6 +53,12 @@ test("approach check", () => {
   assert.equal(checkApproach("operation", null, 25).ok, false);
   assert.equal(checkApproach("travel", 12.47, 5).ok, false);
   assert.equal(checkApproach("travel", 12.47, 6).ok, true);
+  // 1926.1411(b)(4): within 20 ft while traveling, a dedicated spotter is required at any voltage
+  assert.equal(checkApproach("travel", 12.47, 8).needsPrecautions, true);
+  assert.equal(checkApproach("travel", 69, 15).needsPrecautions, true);
+  assert.equal(checkApproach("travel", 69, 21).needsPrecautions, false);
+  assert.ok(clearance("travel", 12.47).cites.some((c) => c.section_id === "29cfr1926.1411(b)(4)"));
+  assert.ok(clearance("assembly", 12.47).cites.some((c) => c.section_id === "29cfr1926.1407(a)"));
 });
 
 test("every result carries citations", () => {

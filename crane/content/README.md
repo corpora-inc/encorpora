@@ -45,18 +45,21 @@ python -m venv .venv && .venv/bin/pip install pyyaml        # any venv
 .venv/bin/python crane/content/verify/ecfr.py                # fetch + index (cached in ~/.cache/crane-content)
 .venv/bin/python crane/content/verify/verify.py              # every citation and quote in crane/content
 .venv/bin/python -m unittest discover -s crane/content/verify
-node --test crane/content/tools/powerline/
+node --test 'crane/content/tools/powerline/*.test.ts'
 ```
 
 A quote passes only if it is an exact substring (after whitespace
-normalization) of the cited section's or paragraph's text. The generators
+normalization) of the cited section's or paragraph's text, where a node's text
+includes its subparagraphs. Generation prompts require each quote to come from
+a single paragraph; the verifier does not reject a quote that runs across two
+adjacent subparagraphs of the cited node. The generators
 repair typography only (curly vs straight quotes, dashes) and may re-point a
 quote to the sibling paragraph that contains it verbatim; anything else fails.
 
 ## Generate
 
 ```sh
-cd /tmp/harvest-empty   # the runner calls the headless CLI from an empty dir itself
+# the runner calls the headless CLI from an empty directory itself
 .venv/bin/python crane/content/tasks/run.py procedures|questions|answers|lessons|glossary [--limit N] [--only ids]
 ```
 

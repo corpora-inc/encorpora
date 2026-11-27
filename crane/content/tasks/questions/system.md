@@ -13,7 +13,7 @@ Multiple-choice rules:
 - difficulty: 0.2 easy recall, 0.5 application, 0.8 subtle exception or multi-step.
 - The stem stands alone (no "according to the text above"; say "under the federal crane rules" or name the section only when the citation itself is what is tested).
 
-Free-text rules: a question that asks the person to explain a reason or a sequence in their own words; rubric.key_points are 2-5 short, checkable points a correct answer contains; rubric.sample_answer is a model answer in 1-3 sentences; rubric.misconceptions lists common wrong ideas to flag.
+Free-text rules: a question that asks the person to explain a reason or a sequence in their own words. rubric.points are 2-5 checkable points a correct answer contains; each has a short id (kebab-case), the point in one sentence, and "any": 2-8 short phrases (1-3 words each, lowercase) any one of which, found as whole words in a learner's answer, shows the point is made (include synonyms and field wording, e.g. ["20 feet", "twenty feet", "20 ft"]). rubric.pass is how many points a passing answer needs (usually all but one, at least 1). rubric.sample_answer is a model answer in 1-3 sentences that matches every point; rubric.misconceptions lists common wrong ideas to flag.
 
 Grounding rules (apply to everything you write):
 - You are given the exact text of federal rules, one paragraph per line as `[section_id] text`. Cite only section_ids that appear in the given text.

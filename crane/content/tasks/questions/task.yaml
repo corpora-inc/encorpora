@@ -1,4 +1,4 @@
 task_id: questions
-prompt_version: 1
+prompt_version: 2
 model: sonnet
 description: Question bank for one skill. Every testable fact in the given rule text, each in several variants (4-choice MC with a rationale per choice), plus "explain why" free-text items with rubrics.

@@ -145,6 +145,17 @@ def segments_ok(body) -> list[str]:
     return errs
 
 
+def _grader_norm(text: str) -> str:
+    # mirrors harvest/practice/src/grade.ts normalize(): lowercase, non letters/digits -> space
+    return " " + re.sub(r"[^\w]+|_", " ", text.lower()).strip() + " "
+
+
+def rubric_matches(rubric: dict, answer: str) -> int:
+    """How many rubric points the harvest/practice keyword grader finds in answer."""
+    t = _grader_norm(answer)
+    return sum(1 for p in rubric["points"] if any((n := _grader_norm(ph).strip()) and f" {n} " in t for ph in p["any"]))
+
+
 # ================================================================ questions
 
 def questions_inputs():
@@ -211,6 +222,11 @@ def questions_write(task, items):
             bad = [x for x in ft["section_ids"] if not index().exists(x)]
             if bad:
                 errs.append(f"unknown ids {bad}")
+            rub = ft["rubric"]
+            if not 1 <= rub["pass"] <= len(rub["points"]):
+                errs.append("rubric pass out of range")
+            if rubric_matches(rub, rub["sample_answer"]) < rub["pass"]:
+                errs.append("sample answer fails its own rubric")
             verdict = "pass" if not errs else "fail"
             stats[verdict] += 1
             stats["free_text"] += 1
@@ -383,6 +399,8 @@ def glossary_write(task, items):
             if t["basis"] == "rule":
                 ok, rep, errs = repair_quotes(t)
                 stats["quotes_repaired"] += rep
+                if not t.get("section_id") or not t.get("quote"):
+                    errs.append("rule term without quote")
             k = norm_key(t["term"])
             if k in terms and terms[k]["basis"] == "rule" and t["basis"] == "practice":
                 continue
@@ -404,3 +422,38 @@ INPUTS = {"procedures": procedures_inputs, "questions": questions_inputs, "answe
           "lessons": lessons_inputs, "glossary": glossary_inputs}
 WRITERS = {"procedures": procedures_write, "questions": questions_write, "answers": answers_write,
            "lessons": lessons_write, "glossary": glossary_write}
+
+
+# ================================================================ exams (deterministic)
+
+def exams_write():
+    """Exam blueprints in the harvest/practice ExamBlueprint shape, derived from blueprint.yaml.
+
+    count per domain = round(weight * items), adjusted so counts sum to items.
+    passPercent is a practice target; the certifier reports scaled scores and
+    does not publish a percent cut in the handbook."""
+    bp = blueprint()
+    sk = skills()
+    out = []
+    for e in bp["exams"]:
+        if not e.get("outline"):
+            continue
+        raw = [d["weight"] * e["items"] for d in e["domains"]]
+        counts = [round(x) for x in raw]
+        while sum(counts) != e["items"]:
+            i = max(range(len(raw)), key=lambda j: (raw[j] - counts[j]) * (1 if sum(counts) < e["items"] else -1))
+            counts[i] += 1 if sum(counts) < e["items"] else -1
+        doms = []
+        for d, c in zip(e["domains"], counts):
+            ids = [s["skill_id"] for s in sk if any(x.startswith(d["domain_id"] + ".") for x in s.get("exam", []))]
+            doms.append({"id": d["domain_id"], "title": d["title"], "weight": d["weight"], "count": c, "skillIds": ids})
+        out.append({"id": e["exam_id"], "title": e["title"], "minutes": e["minutes"], "calculator": e["calculator"],
+                    "passPercent": 70, "passPercentNote": "practice target; the certifier reports scaled scores",
+                    "domains": doms})
+    p = CONTENT / "exams.json"
+    p.write_text(json.dumps(out, indent=1) + "\n")
+    return {e["id"]: [d["count"] for d in e["domains"]] for e in out}
+
+
+if __name__ == "__main__":
+    print(exams_write())
