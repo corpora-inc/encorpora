@@ -280,3 +280,113 @@ fn answerable_and_off_topic_questions_are_never_turned_into_questions() {
         .unwrap();
     assert_eq!(r.mode, Mode::Declined);
 }
+
+#[derive(serde::Deserialize, Debug, PartialEq)]
+struct Q {
+    queries: Vec<String>,
+}
+
+fn req() -> harvest_core::LlmRequest {
+    harvest_core::LlmRequest {
+        system: "s".into(),
+        user: "u".into(),
+        schema: ("q".into(), json!({})),
+        max_tokens: 200,
+        temperature: 0.0,
+    }
+}
+
+#[test]
+fn reasoning_around_the_json_is_ignored() {
+    use harvest_core::llm::parse_json;
+    let want = Q {
+        queries: vec!["clearance".into()],
+    };
+    for raw in [
+        "<think>The user asks about lines. {not json}</think>{\"queries\":[\"clearance\"]}",
+        "<|channel|>analysis<|message|>Think {\"queries\":[\"wrong\"]} more<|end|><|start|>assistant<|channel|>final<|message|>{\"queries\":[\"clearance\"]}<|return|>",
+        "Sure. Here is the JSON you asked for: {\"queries\": [\"clearance\"]} Hope it helps.",
+        "```json\n{\"queries\":[\"clearance\"]}\n```",
+    ] {
+        assert_eq!(parse_json::<Q>(raw).unwrap(), want, "{raw}");
+    }
+    // Only reasoning, or an unclosed think block: an output failure.
+    assert!(parse_json::<Q>("<think>still thinking about {\"queries\"").is_err());
+    // A template-opened block: everything before the closing tag is reasoning.
+    assert_eq!(
+        parse_json::<Q>("maybe {\"queries\":[\"wrong\"]}</think>{\"queries\":[\"clearance\"]}")
+            .unwrap(),
+        want
+    );
+    // Harmony cut off inside its analysis channel: never read the draft.
+    assert!(
+        parse_json::<Q>("<|channel|>analysis<|message|>maybe {\"queries\":[\"wrong\"]}").is_err()
+    );
+    // Required keys: a stray `{}` in prose is not an answer.
+    #[derive(serde::Deserialize, Debug, PartialEq)]
+    struct Loose {
+        #[serde(default)]
+        queries: Vec<String>,
+    }
+    let schema = json!({"required": ["queries"]});
+    let got: Loose =
+        harvest_core::llm::parse_json_for("{\"queries\":[\"a\"]} e.g. {}", &schema).unwrap();
+    assert_eq!(got.queries, vec!["a".to_string()]);
+    assert!(harvest_core::llm::parse_json_for::<Loose>("nothing here {}", &schema).is_err());
+}
+
+#[test]
+fn a_budget_spent_reasoning_is_retried_once_with_room() {
+    use harvest_core::llm::complete_json;
+    // First call: the model reasoned and the budget ran out (no JSON).
+    let llm = ScriptedLlm::new([
+        "<think>Let me consider the user's question carefully".to_string(),
+        out(json!({"queries": ["minimum clearance"]})),
+    ]);
+    let q: Q = complete_json(&llm, &req()).unwrap();
+    assert_eq!(q.queries, vec!["minimum clearance".to_string()]);
+    let reqs = llm.requests.lock().unwrap();
+    assert_eq!(reqs.len(), 2);
+    assert_eq!(reqs[0].max_tokens, 200);
+    assert!(reqs[1].max_tokens >= 1024 && reqs[1].system.contains("JSON object only"));
+    drop(reqs);
+    // Twice: an error that says it retried, so the engine falls back.
+    let llm = ScriptedLlm::new(["".to_string(), "still nothing".to_string()]);
+    let err = complete_json::<Q>(&llm, &req()).unwrap_err().to_string();
+    assert!(err.contains("retried"), "{err}");
+}
+
+#[test]
+fn the_engine_survives_a_reasoning_model() {
+    let b = common::pack();
+    // Every call first burns its budget thinking, then answers on the retry.
+    let think = || "<think>The user wants".to_string();
+    let llm = Arc::new(ScriptedLlm::new([
+        think(),
+        expansion(&["shift inspection competent person"]),
+        think(),
+        out(json!({"section_ids": ["ex.3"]})),
+        think(),
+        out(json!({"segments": [
+            {"t": "quote", "section_id": "ex.3", "text": "A competent person must inspect the machine each shift before use."},
+            {"t": "cite", "section_id": "ex.3"}
+        ]})),
+    ]));
+    let (r, trace) = common::engine(&b)
+        .with_llm(llm)
+        .ask_traced(
+            "who checks the machine every shift",
+            &AskOptions {
+                cache_threshold: 2.0,
+                ..AskOptions::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(
+        r.model.as_deref(),
+        Some("scripted-test-model"),
+        "{:?}",
+        trace.model_error
+    );
+    assert_eq!(r.mode, Mode::Composed);
+}

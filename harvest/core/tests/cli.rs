@@ -197,6 +197,9 @@ fn ask_with_an_openai_compatible_server_and_audit() {
     let seen = server.join().unwrap();
     assert!(seen[0].starts_with("/v1/models"));
     assert!(seen[1].contains("\"json_schema\"") && seen[1].contains("\"expansion\""));
+    // Reasoning is switched off per request, as `--reasoning-budget 0` does.
+    let sent: Value = serde_json::from_str(seen[1].split_once(' ').unwrap().1).unwrap();
+    assert_eq!(sent["reasoning_budget_tokens"], 0, "{}", seen[1]);
     assert!(seen[2].contains("\"selection\""));
     assert!(seen[3].contains("answer_segments"));
     // Only the selected section was offered to compose.
