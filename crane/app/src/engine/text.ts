@@ -9,6 +9,15 @@ export function normalizeSpace(s: string): string {
   return s.replace(/\s+/g, " ").trim();
 }
 
+/** At most `max` characters, cut at a word boundary with an ellipsis, never mid-word. */
+export function excerpt(text: string, max = 120): string {
+  const s = normalizeSpace(text);
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max - 1);
+  const space = cut.lastIndexOf(" ");
+  return `${(space > max / 2 ? cut.slice(0, space) : cut).replace(/[\s,;:.\u2013\u2014-]+$/, "")}…`;
+}
+
 /** A light English stem: enough to match "inspections"/"inspection", "lines"/"line". */
 export function stem(w: string): string {
   if (w.length <= 3 || /^\d/.test(w)) return w;

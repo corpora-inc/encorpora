@@ -35,6 +35,7 @@ const ROUTES = [
   "/do/shift-inspection",
   "/learn",
   "/learn/topic/power-lines",
+  "/learn/topic/ground",
   "/learn/lesson/power-lines-table-a",
   "/learn/glossary",
   "/learn/rules",
@@ -50,7 +51,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/ask", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -288,6 +289,18 @@ try {
     await page.getByRole("heading", { name: "By domain" }).waitFor();
     await page.getByRole("heading", { name: "By skill" }).waitFor();
     await page.screenshot({ path: path.join(out, "flow-exam-results.png"), fullPage: true });
+    await context.close();
+    checks++;
+  }
+
+  // A topic whose lessons are not written yet still teaches: its rules, practice and Ask.
+  {
+    const { context, page } = await newPage(browser, 390, "light");
+    await page.goto(base + "/learn/topic/ground");
+    await page.getByText("The rules for this topic").waitFor();
+    assert.ok((await page.locator("a[href^='/read/']").count()) >= 1, "a topic with no lessons links its rules");
+    await page.getByRole("link", { name: "Practice this topic" }).waitFor();
+    await page.getByLabel("Ask about a rule, a limit or a step").waitFor();
     await context.close();
     checks++;
   }

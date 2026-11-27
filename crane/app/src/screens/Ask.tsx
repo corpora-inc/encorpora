@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { Mic, Search, Square, Volume2 } from "lucide-react";
 import { engine } from "../engine/index.ts";
+import { excerpt } from "../engine/text.ts";
 import type { AskResult, Role } from "../engine/types.ts";
 import { ROLES } from "../engine/types.ts";
 import { audit } from "../lib/audit.ts";
@@ -181,7 +182,7 @@ function Result({ result, title }: { result: AskResult; title: string }) {
                   key={id}
                   to={readerPath(id)}
                   title={s?.citation ?? id}
-                  meta={(s?.heading ?? root?.heading ?? s?.text ?? "").slice(0, 120)}
+                  meta={excerpt(s?.heading ?? root?.heading ?? s?.text ?? "")}
                 />
               );
             })}

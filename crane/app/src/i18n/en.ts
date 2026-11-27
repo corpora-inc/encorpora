@@ -53,6 +53,7 @@ export const en = {
   "learn.rules": "The rules",
   "learn.rules.meta": "Every section, in order",
   "learn.lessons": "Lessons",
+  "learn.topicRules": "The rules for this topic",
   "learn.skills": "Skills in this topic",
   "learn.practiceTopic": "Practice this topic",
   "learn.next": "Next: {title}",

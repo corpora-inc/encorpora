@@ -2,7 +2,10 @@ import { useMemo, useState } from "react";
 import { useParams } from "react-router";
 import { engine } from "../engine/index.ts";
 import { lessonPath, readerPath, termPath, topicPath } from "../routes.ts";
+import { excerpt } from "../engine/text.ts";
+import { topicSections } from "../engine/topics.ts";
 import { ButtonLink, List, Page, Row } from "../ui/kit.tsx";
+import { AskBox } from "./Ask.tsx";
 import { Quote, Segments, CitePlate } from "../ui/law.tsx";
 import { useT } from "../ui/useT.ts";
 import { NotFound } from "./NotFound.tsx";
@@ -33,6 +36,7 @@ export function TopicScreen() {
   if (!topic) return <NotFound />;
   const lessons = e.lessons.filter((l) => l.topic_id === id).sort((a, b) => a.ord - b.ord);
   const skills = e.skills.filter((s) => s.topic_id === id);
+  const rules = topicSections(e, id);
   return (
     <Page title={topic.title} up={{ to: "/learn", label: t("tab.learn") }}>
       <p className="m-0 text-body text-ink-2">{topic.summary}</p>
@@ -41,6 +45,18 @@ export function TopicScreen() {
           {lessons.map((l, i) => (
             <Row key={l.lesson_id} to={lessonPath(l.lesson_id)} title={`${i + 1}. ${l.title}`} />
           ))}
+        </List>
+      )}
+      {rules.length > 0 && (
+        <List label={t("learn.topicRules")}>
+          {rules.map((s) => (
+            <Row key={s.section_id} to={readerPath(s.section_id)} title={s.heading ? `${s.citation} ${s.heading}` : s.citation} meta={s.heading ? undefined : excerpt(s.text)} />
+          ))}
+        </List>
+      )}
+      {lessons.length === 0 && rules.length === 0 && (
+        <List label={t("learn.topicRules")}>
+          <Row to="/learn/rules" title={t("learn.rules")} meta={t("learn.rules.meta")} />
         </List>
       )}
       {skills.length > 0 && (
@@ -54,6 +70,11 @@ export function TopicScreen() {
           <ButtonLink to={`/practice/topic/${encodeURIComponent(id)}`} variant="primary" className="self-start">
             {t("learn.practiceTopic")}
           </ButtonLink>
+        </div>
+      )}
+      {lessons.length === 0 && (
+        <div className="mt-2 border-t border-line pt-5">
+          <AskBox />
         </div>
       )}
     </Page>
