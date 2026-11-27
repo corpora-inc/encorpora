@@ -115,7 +115,10 @@ export type SaveOutcome = "saved" | "shared" | "cancelled";
 export async function saveFile(name: string, bytes: Uint8Array, mime: string): Promise<SaveOutcome> {
   const invoke = tauriInvoke();
   if (invoke) {
-    const r = await invoke("export_file", bytes, { headers: { "x-file-name": name } });
+    // Android's IPC carries JSON only (no raw body), so send base64 there.
+    const r = /Android/i.test(navigator.userAgent)
+      ? await invoke("export_file", { name, data: toBase64(bytes) })
+      : await invoke("export_file", bytes, { headers: { "x-file-name": name } });
     if (r === "saved" || r === "shared" || r === "cancelled") return r;
     throw new Error(`Unexpected export result ${String(r)}`);
   }
@@ -129,6 +132,13 @@ export async function saveFile(name: string, bytes: Uint8Array, mime: string): P
     setTimeout(() => URL.revokeObjectURL(url), 10_000);
   }
   return "saved";
+}
+
+function toBase64(bytes: Uint8Array): string {
+  let s = "";
+  // Chunked: String.fromCharCode with a huge spread overflows the stack.
+  for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(s);
 }
 
 /** Printing works in browsers and desktop WebViews; mobile WebViews have no print dialog. */

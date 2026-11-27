@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { Procedure, ProcStep } from "../engine/types.ts";
 import type { Run, StepRecord } from "../store/runs.ts";
-import { exportName, outcomeOf, photoPath, runReport } from "./report.ts";
+import { exportName, outcomeOf, photoPath, runReport, stepsSignature } from "./report.ts";
 
 const detail = { trainee: "", operator: "", inspector: "" };
 const step = (ord: number, check_kind: ProcStep["check_kind"], section_ids: string[]): ProcStep => ({
@@ -16,7 +16,8 @@ const SHA = "a".repeat(64);
 // Local, so the test does not load the persisted store (it needs localStorage).
 const emptyStep = (): StepRecord => ({ result: null, value: "", note: "", photoIds: [], at: null });
 const run = (): Run => ({
-  id: "run-abc-123456", procId: "p", title: "Shift inspection", role: "operator", equipment: "mobile",
+  id: "run-abc-123456", packId: "crane-us", packVersion: "2026.11.26-1", stepsSig: stepsSignature(proc),
+  procId: "p", title: "Shift inspection", role: "operator", equipment: "mobile",
   startedAt: "2026-11-27T10:00:00.000Z", finishedAt: "2026-11-27T10:30:00.000Z",
   steps: [
     { ...emptyStep(), result: "fail", note: "Worn at the sprocket ", at: "2026-11-27T10:01:00.000Z" },
@@ -26,6 +27,7 @@ const run = (): Run => ({
     emptyStep(),
   ],
 });
+// The pack open now is newer than the one the run was recorded on.
 const pack = { pack_id: "crane-us", version: "2026.11.27-1" };
 
 test("a run maps to harvest-run/1 with every step listed", () => {
@@ -33,7 +35,7 @@ test("a run maps to harvest-run/1 with every step listed", () => {
   assert.equal(r.format, "harvest-run/1");
   assert.deepEqual(
     { pack_id: r.pack_id, pack_version: r.pack_version, run_id: r.run_id, proc_id: r.proc_id, title: r.title, role: r.role, equip_id: r.equip_id, asset: r.asset, status: r.status, steps_known: r.steps_known, started_at: r.started_at, finished_at: r.finished_at },
-    { pack_id: "crane-us", pack_version: "2026.11.27-1", run_id: "run-abc-123456", proc_id: "p", title: "Shift inspection", role: "operator", equip_id: "mobile", asset: null, status: "complete", steps_known: true, started_at: "2026-11-27T10:00:00.000Z", finished_at: "2026-11-27T10:30:00.000Z" },
+    { pack_id: "crane-us", pack_version: "2026.11.26-1", run_id: "run-abc-123456", proc_id: "p", title: "Shift inspection", role: "operator", equip_id: "mobile", asset: null, status: "complete", steps_known: true, started_at: "2026-11-27T10:00:00.000Z", finished_at: "2026-11-27T10:30:00.000Z" },
   );
   assert.deepEqual(r.steps.map((s) => s.ord), [1, 2, 3, 4, 5]);
   assert.deepEqual(r.steps.map((s) => s.outcome), ["fail", "value", null, "photo", null]);
@@ -55,12 +57,30 @@ test("an unfinished run is open", () => {
 });
 
 test("when the pack's procedure changed, only recorded steps are listed, without pack text", () => {
-  const changed = { ...proc, steps: proc.steps.slice(0, 3) };
-  const r = runReport(run(), changed, pack, new Map([["ph1", SHA]]));
+  // Same number of steps, one reworded: positions no longer name the same checks.
+  const reworded = { ...proc, steps: proc.steps.map((s, i) => (i === 2 ? { ...s, text: "Reworded" } : s)) };
+  for (const changed of [reworded, { ...proc, steps: proc.steps.slice(0, 3) }]) {
+    const r = runReport(run(), changed, pack, new Map([["ph1", SHA]]));
+    assert.equal(r.steps_known, false);
+    assert.equal(r.title, null);
+    assert.deepEqual(r.steps.map((s) => s.ord), [1, 2, 4]);
+    for (const s of r.steps) assert.deepEqual([s.text, s.check_kind, s.section_ids], [null, null, []]);
+  }
+});
+
+test("a run saved before runs kept their pack is never matched to today's steps", () => {
+  const r = runReport({ ...run(), packId: null, packVersion: null, stepsSig: null }, proc, pack, new Map([["ph1", SHA]]));
   assert.equal(r.steps_known, false);
-  assert.equal(r.title, "Shift inspection");
-  assert.deepEqual(r.steps.map((s) => s.ord), [1, 2, 4]);
-  for (const s of r.steps) assert.deepEqual([s.text, s.check_kind, s.section_ids], [null, null, []]);
+  assert.equal(r.pack_version, "unknown");
+  assert.equal(r.pack_id, "crane-us");
+});
+
+test("ords are the pack's; an entry without an outcome keeps its evidence but no time", () => {
+  const shifted = { ...proc, steps: proc.steps.map((s) => ({ ...s, ord: s.ord + 10 })) };
+  const r0 = run();
+  const r = runReport({ ...r0, stepsSig: stepsSignature(shifted), steps: r0.steps.map((s, i) => (i === 4 ? { ...s, note: "Seen", at: "2026-11-27T10:05:00.000Z" } : s)) }, shifted, pack, new Map([["ph1", SHA]]));
+  assert.deepEqual(r.steps.map((s) => s.ord), [11, 12, 13, 14, 15]);
+  assert.deepEqual([r.steps[4]!.outcome, r.steps[4]!.note, r.steps[4]!.recorded_at], [null, "Seen", null]);
 });
 
 test("a photo without a hash is an error, not a silent gap", () => {

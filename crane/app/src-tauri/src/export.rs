@@ -12,6 +12,9 @@ use std::sync::atomic::{AtomicBool, Ordering};
 
 /// Largest bundle accepted: a long run with many photos at 1600 px is well under this.
 pub const MAX_BYTES: usize = 256 * 1024 * 1024;
+/// Android sends base64 inside JSON (its IPC has no raw body), which the
+/// WebView holds as a string a third larger than the bytes; keep it smaller.
+pub const MAX_BYTES_JSON: usize = 64 * 1024 * 1024;
 const NAME_HEADER: &str = "x-file-name";
 #[cfg_attr(not(target_os = "ios"), allow(dead_code))]
 const SHARE_DIR: &str = "exports";
@@ -47,34 +50,64 @@ pub fn check_name(name: &str) -> Result<(), String> {
     }
 }
 
-fn check_size(len: usize) -> Result<(), String> {
+fn check_size(len: usize, max: usize) -> Result<(), String> {
     match len {
         0 => Err("The export is empty".into()),
-        n if n > MAX_BYTES => Err("The export is too large".into()),
+        n if n > max => Err("The export is too large".into()),
         _ => Ok(()),
     }
 }
 
-/// Save or share the bytes in the request body under the name in the
-/// `x-file-name` header. Returns `"saved"` (desktop, Android), `"shared"`
-/// (iOS: the share sheet opened) or `"cancelled"` (the dialog was dismissed).
+/// The export as sent: raw bytes with an `x-file-name` header (desktop, iOS),
+/// or `{ "name": …, "data": <base64> }` (Android, whose IPC is JSON only).
+#[derive(serde::Deserialize)]
+struct JsonExport {
+    name: String,
+    data: String,
+}
+
+fn decode(
+    body: &tauri::ipc::InvokeBody,
+    header_name: Option<&str>,
+) -> Result<(String, Vec<u8>), String> {
+    use base64::Engine as _;
+    match body {
+        tauri::ipc::InvokeBody::Raw(bytes) => {
+            let name = header_name
+                .ok_or("The export has no file name")?
+                .to_string();
+            check_name(&name)?;
+            check_size(bytes.len(), MAX_BYTES)?;
+            Ok((name, bytes.clone()))
+        }
+        tauri::ipc::InvokeBody::Json(value) => {
+            let JsonExport { name, data } = serde_json::from_value(value.clone())
+                .map_err(|e| format!("Malformed export: {e}"))?;
+            check_name(&name)?;
+            // Check the encoded length first so a huge string is never decoded.
+            check_size(data.len() / 4 * 3, MAX_BYTES_JSON)?;
+            let bytes = base64::engine::general_purpose::STANDARD
+                .decode(data.as_bytes())
+                .map_err(|e| format!("Malformed export data: {e}"))?;
+            check_size(bytes.len(), MAX_BYTES_JSON)?;
+            Ok((name, bytes))
+        }
+    }
+}
+
+/// Save or share an export (see [`decode`] for the two ways it arrives).
+/// Returns `"saved"` (desktop, Android), `"shared"` (iOS: the share sheet
+/// opened) or `"cancelled"` (the dialog was dismissed).
 #[tauri::command]
 pub async fn export_file(
     app: tauri::AppHandle,
     request: tauri::ipc::Request<'_>,
 ) -> Result<&'static str, String> {
-    let tauri::ipc::InvokeBody::Raw(bytes) = request.body() else {
-        return Err("The export must be sent as raw bytes".into());
-    };
-    let name = request
+    let header = request
         .headers()
         .get(NAME_HEADER)
-        .and_then(|v| v.to_str().ok())
-        .ok_or("The export has no file name")?
-        .to_string();
-    check_name(&name)?;
-    check_size(bytes.len())?;
-    let bytes = bytes.clone();
+        .and_then(|v| v.to_str().ok());
+    let (name, bytes) = decode(request.body(), header)?;
     tauri::async_runtime::spawn_blocking(move || {
         let _guard = DialogGuard::acquire()?;
         write_out(&app, &name, &bytes)
@@ -175,10 +208,44 @@ mod tests {
 
     #[test]
     fn sizes_are_bounded() {
-        assert!(check_size(0).is_err());
-        assert!(check_size(1).is_ok());
-        assert!(check_size(MAX_BYTES).is_ok());
-        assert!(check_size(MAX_BYTES + 1).is_err());
+        assert!(check_size(0, MAX_BYTES).is_err());
+        assert!(check_size(1, MAX_BYTES).is_ok());
+        assert!(check_size(MAX_BYTES, MAX_BYTES).is_ok());
+        assert!(check_size(MAX_BYTES + 1, MAX_BYTES).is_err());
+    }
+
+    #[test]
+    fn both_transports_decode_to_the_same_export() {
+        use tauri::ipc::InvokeBody;
+        let raw = decode(&InvokeBody::Raw(vec![1, 2, 3]), Some("a.zip")).unwrap();
+        let json = decode(
+            &InvokeBody::Json(serde_json::json!({ "name": "a.zip", "data": "AQID" })),
+            None,
+        )
+        .unwrap();
+        assert_eq!(raw, json);
+        assert_eq!(raw, ("a.zip".to_string(), vec![1, 2, 3]));
+        assert!(
+            decode(&InvokeBody::Raw(vec![1]), None).is_err(),
+            "raw needs the header"
+        );
+        assert!(decode(&InvokeBody::Raw(vec![1]), Some("../a.zip")).is_err());
+        assert!(
+            decode(
+                &InvokeBody::Json(serde_json::json!({ "name": "a.zip", "data": "!!" })),
+                None
+            )
+            .is_err()
+        );
+        assert!(
+            decode(
+                &InvokeBody::Json(serde_json::json!({ "name": "a.zip", "data": "" })),
+                None
+            )
+            .is_err(),
+            "empty export"
+        );
+        assert!(decode(&InvokeBody::Json(serde_json::json!([1, 2, 3])), None).is_err());
     }
 
     #[test]

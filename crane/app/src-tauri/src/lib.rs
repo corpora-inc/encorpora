@@ -1,6 +1,6 @@
 //! The crane app's native shell.
 //!
-//! It registers the three shared plugins and nothing else. Every screen is the
+//! It registers the three shared plugins and one app command. Every screen is the
 //! web frontend in `../src`; it works in a plain browser too, and with each
 //! plugin absent or unavailable it hides the control rather than offering one
 //! that cannot work:
@@ -17,10 +17,10 @@
 //! at runtime and nothing at build time says so. `src/lib/native.test.ts`
 //! asserts that every command the frontend invokes is granted there and
 //! exists in the plugin.
-
 //!
-//! App commands (not plugin commands, so not ACL-gated) are in `export`:
-//! `export_file` saves or shares a run report bundle.
+//! The app command (not a plugin command, so not ACL-gated) is in `export`:
+//! `export_file` saves or shares a run report bundle, using the dialog and fs
+//! plugins (desktop, Android) or the iOS share sheet from Rust only.
 
 mod export;
 

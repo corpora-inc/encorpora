@@ -5,6 +5,7 @@ import { unzipSync } from "fflate";
 import type { Procedure } from "../engine/types.ts";
 import type { Run, StepRecord } from "../store/runs.ts";
 import { MissingPhotoError, runBundle } from "./bundle.ts";
+import { stepsSignature } from "./report.ts";
 
 const rec = (p: Partial<StepRecord>): StepRecord => ({ result: null, value: "", note: "", photoIds: [], at: null, ...p });
 const detail = { trainee: "", operator: "", inspector: "" };
@@ -16,7 +17,7 @@ const proc: Procedure = {
   ],
 };
 const run: Run = {
-  id: "run-x-abcdef", procId: "p", title: "Check", role: "inspector", equipment: null,
+  id: "run-x-abcdef", packId: "crane-us", packVersion: "v1", stepsSig: stepsSignature(proc), procId: "p", title: "Check", role: "inspector", equipment: null,
   startedAt: "2026-11-27T10:00:00.000Z", finishedAt: null,
   steps: [rec({ result: "fail", photoIds: ["a"], at: "2026-11-27T10:01:00.000Z" }), rec({ photoIds: ["a", "b"], at: "2026-11-27T10:02:00.000Z" })],
 };

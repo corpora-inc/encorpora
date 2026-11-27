@@ -260,6 +260,8 @@ try {
     assert.equal(report.format, "harvest-run/1");
     assert.equal(report.status, "complete");
     assert.equal(report.steps.length, 14);
+    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 14 }, (_, i) => i + 1), "the pack's 1-based ords");
+    assert.equal(report.steps_known, true);
     assert.deepEqual(report.steps.slice(0, 2).map((x) => x.outcome), ["pass", "fail"]);
     assert.equal(report.steps[1].deficiency, true);
     assert.equal(report.steps[1].note, "Drive chain shows wear at the sprocket.");

@@ -6,6 +6,7 @@ import type { Procedure, ProcStep, Role } from "../engine/types.ts";
 import { deletePhotos, loadPhoto, savePhoto, shrinkImage } from "../lib/photos.ts";
 import { canPrint, saveFile } from "../lib/native.ts";
 import { MissingPhotoError, runBundle } from "../records/bundle.ts";
+import { stepsSignature } from "../records/report.ts";
 import { procPath, runReportPath, runStepPath } from "../routes.ts";
 import { runSummary, useRuns, type Run, type StepRecord } from "../store/runs.ts";
 import { useSettings } from "../store/settings.ts";
@@ -91,7 +92,8 @@ export function ProcedureScreen() {
   const p = engine().procedures.find((x) => x.proc_id === id);
   if (!p) return <NotFound />;
   const begin = () => {
-    const run = start({ procId: p.proc_id, title: p.title, role, equipment, steps: p.steps.length });
+    const { pack_id, version } = engine().info;
+    const run = start({ packId: pack_id, packVersion: version, stepsSig: stepsSignature(p), procId: p.proc_id, title: p.title, role, equipment, steps: p.steps.length });
     navigate(runStepPath(run.id, 0));
   };
   return (
@@ -104,7 +106,7 @@ export function ProcedureScreen() {
         {p.steps.map((s) => (
           <li key={s.ord} className="flex gap-3">
             <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-line-strong font-display text-small font-semibold tabular">
-              {s.ord + 1}
+              {s.ord}
             </span>
             <span>
               <span className="block">{s.text}</span>

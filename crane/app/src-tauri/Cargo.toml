@@ -39,6 +39,8 @@ tauri-plugin-corpan-llm = { path = "../../../corpan/plugins/tauri-plugin-corpan-
 # permission. Used from Rust only; nothing is granted to the WebView.
 tauri-plugin-dialog = "2"
 tauri-plugin-fs = "2"
+# Android's IPC cannot carry raw bytes, so there the export arrives as base64 JSON.
+base64 = "0.23"
 
 # iOS has no save dialog: export opens the share sheet instead. Same crate AHA uses.
 [target.'cfg(target_os = "ios")'.dependencies]

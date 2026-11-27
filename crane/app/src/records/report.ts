@@ -50,6 +50,15 @@ export interface RunReport {
   steps: ReportStep[];
 }
 
+/**
+ * The procedure's steps as the pack states them, recorded when a run starts.
+ * A report trusts the pack's step text only while this still matches (the
+ * core does the same with a SHA-256 of the steps).
+ */
+export function stepsSignature(proc: Procedure): string {
+  return JSON.stringify(proc.steps.map((s) => [s.ord, s.text, s.check_kind, s.section_ids]));
+}
+
 /** Where a step photo sits inside an export bundle. */
 export const photoPath = (id: string) => `photos/${id}.jpg`;
 
@@ -80,23 +89,24 @@ export function outcomeOf(checkKind: string, rec: StepRecord): Outcome | null {
  * the hex SHA-256 of the bytes written at `photoPath(id)`.
  */
 export function runReport(run: Run, proc: Procedure, pack: { pack_id: string; version: string }, photoSha256: ReadonlyMap<string, string>): RunReport {
-  // The app records steps by position; if the pack's procedure no longer has
-  // the same number of steps, positions cannot be trusted to name steps.
-  const stepsKnown = proc.proc_id === run.procId && proc.steps.length === run.steps.length;
+  // Steps are known only if the procedure is exactly what the run started on.
+  const stepsKnown = run.stepsSig !== null && run.stepsSig === stepsSignature(proc) && proc.steps.length === run.steps.length;
   const steps: ReportStep[] = [];
   run.steps.forEach((rec, i) => {
     const step = stepsKnown ? proc.steps[i]! : null;
     const outcome = step ? outcomeOf(step.check_kind, rec) : rec.result;
+    // What was entered beside the outcome is kept even without one, so no evidence is dropped.
     const photos = rec.photoIds.map((id) => {
       const sha256 = photoSha256.get(id);
       if (!sha256 || !/^[0-9a-f]{64}$/.test(sha256)) throw new Error(`Photo ${id} has no SHA-256`);
       return { path: photoPath(id), sha256 };
     });
-    const recorded = outcome !== null || photos.length > 0 || filled(rec.note) !== null || filled(rec.value) !== null;
-    // Without the pack's steps, only what was recorded is listed.
-    if (!step && !recorded) return;
+    const entered = outcome !== null || photos.length > 0 || filled(rec.note) !== null || filled(rec.value) !== null;
+    // Without the pack's steps, only what was entered is listed.
+    if (!step && !entered) return;
     steps.push({
-      ord: i + 1,
+      // The pack's ord when known (1-based in packs); else the recorded position.
+      ord: step ? step.ord : i + 1,
       text: step ? step.text : null,
       section_ids: step ? [...step.section_ids] : [],
       check_kind: step ? step.check_kind : null,
@@ -106,16 +116,18 @@ export function runReport(run: Run, proc: Procedure, pack: { pack_id: string; ve
       photos,
       structured: null,
       deficiency: outcome === "fail",
-      recorded_at: recorded ? rec.at : null,
+      // `outcome: null` means not recorded (CONTRACT), so it carries no time.
+      recorded_at: outcome !== null ? rec.at : null,
     });
   });
   return {
     format: "harvest-run/1",
-    pack_id: pack.pack_id,
-    pack_version: pack.version,
+    // The pack the run was recorded on, as the core reports it.
+    pack_id: run.packId ?? pack.pack_id,
+    pack_version: run.packVersion ?? "unknown",
     run_id: run.id,
     proc_id: run.procId,
-    title: stepsKnown ? proc.title : run.title,
+    title: stepsKnown ? proc.title : null,
     role: run.role,
     equip_id: run.equipment,
     asset: null,
