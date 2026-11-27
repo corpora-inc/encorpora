@@ -103,4 +103,7 @@ test("the shell names the product from config.ts and keeps its own [patch]", () 
   assert.ok(patch, "llama-cpp-sys-2 [patch] missing");
   assert.ok(existsSync(app(`src-tauri/${patch[1]}/Cargo.toml`)), "patched llama-cpp-sys-2 path does not exist");
   assert.doesNotMatch(cargo, /^\[workspace\]/m);
+  // CI's bare `cargo check --target aarch64-apple-ios` compiles plugin Swift for this iOS version.
+  const ci = read("../../.github/workflows/ci.yml");
+  assert.ok(ci.includes(`IPHONEOS_DEPLOYMENT_TARGET: "${conf.bundle.iOS.minimumSystemVersion}"`), "CI iOS deployment target differs from tauri.conf.json");
 });

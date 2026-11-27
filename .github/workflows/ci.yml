@@ -1927,6 +1927,11 @@ jobs:
       # never speaks HTTPS, so build without it. The vendored llama-cpp-sys-2
       # build.rs forwards every CMAKE_* variable to CMake as a define.
       CMAKE_DISABLE_FIND_PACKAGE_OpenSSL: "ON"
+      # Plugin Swift compiles against this (tauri-utils defaults to iOS 13.0,
+      # below what tauri-plugin-stt uses). The Tauri CLI sets it from
+      # bundle.iOS.minimumSystemVersion in tauri.conf.json; a bare cargo check
+      # does not, so mirror that value here.
+      IPHONEOS_DEPLOYMENT_TARGET: "16.0"
     steps:
       - name: Initialize verified client trust
         id: ci-trust
