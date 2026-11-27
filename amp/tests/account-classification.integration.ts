@@ -93,6 +93,17 @@ test(
         "prospect",
         "Old replays cannot undo a newer decision",
       );
+      await classify("relative", "school_staff");
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT category FROM amp_account_classifications WHERE user_id='relative'",
+          )
+        ).rows[0].category,
+        "school_staff",
+        "An operator can record a confirmed school staff member",
+      );
+      await assert.rejects(classify("relative", "student"));
       await classify("relative");
       await assert.rejects(classify("missing"), /exactly one account/);
       assert.equal(

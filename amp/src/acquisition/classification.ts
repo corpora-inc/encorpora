@@ -8,7 +8,9 @@ export const classificationCommandSchema = z.strictObject({
     .max(320)
     .transform((v) => v.toLowerCase()),
   eventKey: z.string().trim().min(1).max(500),
-  category: z.enum(["prospect", "friends_family", "internal"]),
+  // school_staff: an adult the operator confirmed on an official school staff page, or who
+  // arrived through a school (markStaffAccount sets it then). Never a student.
+  category: z.enum(["prospect", "friends_family", "internal", "school_staff"]),
   note: z.string().trim().min(1).max(500),
 });
 
