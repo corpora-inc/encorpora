@@ -126,11 +126,10 @@ Settings → Secrets and variables → Actions.
 | `CRANE_ANDROID_KEYSTORE_PASSWORD` | the store password you chose | |
 | `CRANE_ANDROID_KEY_ALIAS` | the key alias you chose | `upload` with the command below |
 
-There is no key-password secret: `jarsigner` signs with `-storepass` only, which
-is enough for a keystore whose key password equals its store password (what
-`keytool` produces when you press Enter at the key-password prompt). If you set
-a different key password, add a secret and wire it as `-keypass:env` in the same
-change.
+There is no key-password secret: `jarsigner` signs with `-storepass` only. That
+is enough for the PKCS12 keystore the command below produces, whose key password
+is the store password. If a keystore ever has a different key password, add a
+secret and wire it as `-keypass:env` in the same change.
 
 ### Repository variable
 
@@ -152,7 +151,8 @@ keytool -genkeypair -v \
 ```
 
 Once each value is a GitHub secret, nothing in this tree reads the file again.
-The workflow writes the profile and the keystore to `$RUNNER_TEMP` and the
+The workflow writes the keystore to `$RUNNER_TEMP` (deleted when the step
+exits), the profile into the runner's Provisioning Profiles directory, and the
 certificate into a throwaway keychain.
 
 Team ID `F9AV5HKF6N`, the bundle id and the profile name are not secrets; they

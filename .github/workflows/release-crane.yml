@@ -259,9 +259,10 @@ jobs:
       - name: Select newest Xcode
         run: |
           set -euo pipefail
-          # `|| true`: under pipefail an empty match would abort before the
-          # fallback (see release-dynawalla.yml).
-          XC=$(find /Applications -maxdepth 1 -name 'Xcode_*.app' 2>/dev/null | sort -V | tail -1 || true)
+          # Release Xcodes only: a beta SDK passes the SDK check below and is
+          # rejected only at upload. `|| true`: under pipefail an empty match
+          # would abort before the fallback (see release-dynawalla.yml).
+          XC=$(find /Applications -maxdepth 1 -name 'Xcode_*.app' ! -iname '*beta*' ! -iname '*rc*' 2>/dev/null | sort -V | tail -1 || true)
           [ -n "$XC" ] || XC=/Applications/Xcode.app
           test -d "$XC/Contents/Developer" \
             || { echo "::error::no usable Xcode at $XC"; exit 1; }
@@ -278,10 +279,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: crane/app/src-tauri
 
       # WHY THE DEFAULT TOOLCHAIN AND A CARGO_HOME CONFIG, rather than job env
       # or src-tauri/rust-toolchain.toml:
@@ -332,6 +329,10 @@ jobs:
             "rustc $RUST_TOOLCHAIN "*) : ;;
             *) echo "::error::cargo under $APP_DIR resolves '$ACTUAL', not $RUST_TOOLCHAIN"; exit 1 ;;
           esac
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crane/app/src-tauri
 
       # Third-party actions that touch live credentials are pinned to a commit
       # SHA; the trailing comment is the tag it resolved from.
@@ -825,10 +826,6 @@ jobs:
           python3 -m pip install --quiet --disable-pip-version-check 'pyjwt[crypto]'
           python3 .github/scripts/verify_play_upload.py --snapshot
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: crane/app/src-tauri
-
       - name: Cache Gradle
         uses: actions/cache@v4
         with:
@@ -900,6 +897,10 @@ jobs:
             "rustc $RUST_TOOLCHAIN "*) : ;;
             *) echo "::error::cargo under $APP_DIR resolves '$ACTUAL', not $RUST_TOOLCHAIN"; exit 1 ;;
           esac
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crane/app/src-tauri
 
       - name: Vendor whisper.cpp source (tauri-plugin-stt JNI)
         # The plugin's externalNativeBuild compiles a gitignored whisper.cpp
@@ -1100,6 +1101,7 @@ jobs:
           PY
 
       - name: Sign the AAB with the upload key
+        id: sign
         if: env.SIGNED == 'true'
         # Secrets through `env:`; the store password is read by jarsigner from
         # the environment, never from argv.
@@ -1123,12 +1125,13 @@ jobs:
           printf '%s\n' "$VERIFY" | grep 'jar verified' >/dev/null \
             || { echo "::error::the signed AAB does not verify"; exit 1; }
           echo "AAB signed and verified."
+          echo "ok=true" >> "$GITHUB_OUTPUT"
 
       - name: Keep the AAB
         if: always() && steps.aab.outputs.aab != ''
         uses: actions/upload-artifact@v4
         with:
-          name: crane-android-${{ needs.gate.outputs.signed == 'true' && 'signed' || 'unsigned' }}-${{ needs.gate.outputs.build_number }}
+          name: crane-android-${{ steps.sign.outputs.ok == 'true' && 'signed' || 'unsigned' }}-${{ needs.gate.outputs.build_number }}
           path: ${{ steps.aab.outputs.aab }}
           retention-days: 14
           if-no-files-found: error
