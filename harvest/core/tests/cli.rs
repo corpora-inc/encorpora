@@ -191,7 +191,8 @@ fn ask_with_an_openai_compatible_server_and_audit() {
     let a: Value = serde_json::from_str(&out).unwrap();
     assert_eq!(a["mode"], "composed");
     assert_eq!(a["model"], "mock-model", "{err}");
-    assert_eq!(a["citations"], serde_json::json!(["ex.3"]));
+    // The model's cited section first; the gate's other choices follow.
+    assert_eq!(a["citations"][0], "ex.3");
     let seen = server.join().unwrap();
     assert!(seen[0].starts_with("/v1/models"));
     assert!(seen[1].contains("\"json_schema\"") && seen[1].contains("\"expansion\""));

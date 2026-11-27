@@ -531,3 +531,31 @@ fn a_verdict_stands_only_with_the_rule_that_decides_it() {
             .any(|s| matches!(s, Segment::Text { .. }))
     );
 }
+
+#[test]
+fn sections_the_model_did_not_cite_follow_its_answer() {
+    let b = common::pack();
+    let llm = Arc::new(Oracle::new(
+        "A dedicated spotter must be used near energized lines.",
+        vec!["A dedicated spotter must be used"],
+    ));
+    let opts = AskOptions {
+        cache_threshold: 2.0,
+        ..AskOptions::default()
+    };
+    let q = "what do I need to know about working near power lines";
+    let without = common::engine(&b).ask(q, &opts).unwrap();
+    let r = common::engine(&b).with_llm(llm).ask(q, &opts).unwrap();
+    assert_eq!(
+        r.body[0],
+        Segment::text("A dedicated spotter must be used near energized lines.")
+    );
+    // Every section the model-off answer composes is still there.
+    for id in &without.citations {
+        assert!(
+            r.citations.contains(id),
+            "{id} missing from {:?}",
+            r.citations
+        );
+    }
+}

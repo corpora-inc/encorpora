@@ -374,9 +374,29 @@ impl Engine {
             support_threshold: threshold,
             ..opts.clone()
         };
+        let best = trace.support;
+        let chosen: Vec<&SupportCandidate> = candidates
+            .iter()
+            .filter(|c| dense_ok && c.coverage >= threshold && c.coverage >= best - SUPPORT_WINDOW)
+            .take(opts.max_sections)
+            .collect();
         if let Some(llm) = self.llm.clone().filter(|_| dense_ok) {
             match self.ask_model(llm.as_ref(), question, &norm, &model_opts, &mut trace) {
                 Ok(Some(mut resp)) => {
+                    // The model's answer leads; the sections the gate chose
+                    // that it did not cite follow, composed as without a
+                    // model, so a model that picks too little never loses
+                    // what the deterministic answer would have shown.
+                    let (more, _) =
+                        self.compose_chosen(question, &norm, &chosen, &resp.citations, opts)?;
+                    if !more.is_empty() {
+                        resp.body.extend(more);
+                        let (body, check) =
+                            check::check(&self.pack, &resp.body, CheckOptions::STRUCTURAL)?;
+                        resp.citations = segments::citations(&body);
+                        resp.body = body;
+                        resp.check.dropped += check.dropped;
+                    }
                     resp.elapsed_ms = started.elapsed().as_millis() as u64;
                     resp.support = support.clone();
                     return Ok((resp, trace));
@@ -387,12 +407,6 @@ impl Engine {
         }
 
         // Compose from the best-supported sections, or decline.
-        let best = trace.support;
-        let chosen: Vec<&SupportCandidate> = candidates
-            .iter()
-            .filter(|c| dense_ok && c.coverage >= threshold && c.coverage >= best - SUPPORT_WINDOW)
-            .take(opts.max_sections)
-            .collect();
         if chosen.is_empty() {
             let nearest = nearest_sections(&hits, opts.nearest);
             return Ok((
@@ -417,22 +431,7 @@ impl Engine {
                 trace,
             ));
         }
-        let mut body = Vec::new();
-        // A number in a table's unit is looked up in the table, first.
-        // Only a table the gate chose: a table merely retrieved alongside
-        // (the question names a voltage for another reason) does not answer.
-        let chosen_tables: Vec<SupportCandidate> = chosen.iter().map(|c| (*c).clone()).collect();
-        let tool = self.table_answer(question, &chosen_tables)?;
-        let tool_section = tool.as_ref().map(|(id, _)| id.clone());
-        if let Some((_, segs)) = tool {
-            body.extend(segs);
-        }
-        for c in chosen {
-            if Some(&c.section_id) == tool_section.as_ref() {
-                continue;
-            }
-            body.extend(self.compose_section(&c.section_id, &norm, opts)?);
-        }
+        let (body, tool_section) = self.compose_chosen(question, &norm, &chosen, &[], opts)?;
         let (body, check) = check::check(&self.pack, &body, CheckOptions::STRUCTURAL)?;
         Ok((
             AskResponse {
@@ -451,6 +450,40 @@ impl Engine {
             },
             trace,
         ))
+    }
+
+    /// The deterministic composition of the chosen sections, skipping those
+    /// in `skip`: a table lookup first when one applies, then each section's
+    /// block. Returns the table's section id when the lookup answered.
+    fn compose_chosen(
+        &self,
+        question: &str,
+        norm: &Normalized,
+        chosen: &[&SupportCandidate],
+        skip: &[String],
+        opts: &AskOptions,
+    ) -> Result<(Vec<Segment>, Option<String>)> {
+        let mut body = Vec::new();
+        // A number in a table's unit is looked up in the table, first.
+        // Only a table the gate chose: a table merely retrieved alongside
+        // (the question names a voltage for another reason) does not answer.
+        let open: Vec<SupportCandidate> = chosen
+            .iter()
+            .filter(|c| !skip.contains(&c.section_id))
+            .map(|c| (*c).clone())
+            .collect();
+        let tool = self.table_answer(question, &open)?;
+        let tool_section = tool.as_ref().map(|(id, _)| id.clone());
+        if let Some((_, segs)) = tool {
+            body.extend(segs);
+        }
+        for c in &open {
+            if Some(&c.section_id) == tool_section.as_ref() {
+                continue;
+            }
+            body.extend(self.compose_section(&c.section_id, norm, opts)?);
+        }
+        Ok((body, tool_section))
     }
 
     /// The range-table answer for a question that states a number in a
