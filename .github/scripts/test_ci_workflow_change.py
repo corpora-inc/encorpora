@@ -63,3 +63,46 @@ def test_an_output_wired_to_another_name_selects_everything():
     old = '      dja: ${{ steps.filter.outputs.dja }}'
     assert WORKFLOW.count(old) == 1
     assert affected(WORKFLOW, WORKFLOW.replace(old, '      dja: ${{ steps.filter.outputs.lambda }}')) is None
+
+
+def job_block(text, job):
+    start = text.index(f'\n  {job}:\n')
+    rest = text.find('\n  ', start + 1)
+    while rest != -1 and text[rest + 3] == ' ':
+        rest = text.find('\n  ', rest + 1)
+    return start, (rest if rest != -1 else len(text))
+
+
+def edit_job(text, job, old, new):
+    start, end = job_block(text, job)
+    block = text[start:end]
+    assert block.count(old) == 1, (job, old)
+    return text[:start] + block.replace(old, new) + text[end:]
+
+
+def test_a_job_that_needs_another_gated_job_selects_both_areas():
+    # A skipped dependency skips its dependents, so both must run.
+    edited = edit_job(WORKFLOW, 'crane-native', '    needs: changes\n', '    needs: [changes, crane-app]\n')
+    assert affected(WORKFLOW, edited) == ({'crane_native', 'crane_app'}, False)
+
+
+def test_removing_a_planner_output_keeps_amp_policy():
+    line = '      amp_core: ${{ steps.filter.outputs.amp_core }}\n'
+    assert WORKFLOW.count(line) == 1
+    assert affected(WORKFLOW, WORKFLOW.replace(line, '')) == (set(), True)
+
+
+def test_reading_an_undeclared_output_selects_everything():
+    edited = edit_job(WORKFLOW, 'dja', 'outputs.dja ==', 'outputs.djaa ==')
+    assert affected(WORKFLOW, edited) is None
+
+
+def test_yaml_anchors_select_everything():
+    edited = edit_job(WORKFLOW, 'dja', '    runs-on: ubuntu-24.04', '    runs-on: ubuntu-24.04\n    env: &shared\n      A: b')
+    assert affected(WORKFLOW, edited) is None
+
+
+def test_a_job_key_after_the_coverage_step_is_compared():
+    start, end = job_block(WORKFLOW, 'changes')
+    edited = WORKFLOW[:end] + '\n    continue-on-error: true' + WORKFLOW[end:]
+    assert affected(WORKFLOW, edited) is None
