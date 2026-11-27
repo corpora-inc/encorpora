@@ -15,7 +15,8 @@ const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
   harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY] [--json]
   harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
-                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--audit <records-db> [--records-key FILE]] [--pubkey KEY] [--json]
+                  [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--audit <records-db> [--records-key FILE]]
+                  [--support-threshold X (coverage-only gate)] [--dense-gate COVERAGE:MIN_DENSE|off] [--pubkey KEY] [--json]
   harvest audit   <records-db> [--records-key FILE] [--json]
   harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # queue status; --to flushes it into a folder
   harvest install <root> <pack-or-delta-dir> [--pubkey KEY] [--json]   # full or delta, verified, atomic
@@ -360,6 +361,8 @@ fn ask(args: &Args) -> Result<(), CliError> {
         "embedder-sha256",
         "audit",
         "records-key",
+        "support-threshold",
+        "dense-gate",
     ])?;
     let dir = pack_dir(args)?;
     let question = query_arg(args)?;
@@ -394,11 +397,34 @@ fn ask(args: &Args) -> Result<(), CliError> {
             )));
         }
     }
-    let opts = AskOptions {
+    let mut opts = AskOptions {
         role: Role::parse(args.get("role").unwrap_or("operator"))?,
         equip: args.get("equip").map(str::to_string),
-        ..AskOptions::default()
+        ..AskOptions::for_pack(&pack)
     };
+    if let Some(t) = args.get("support-threshold") {
+        opts.support_threshold = t
+            .parse()
+            .map_err(|_| CliError::Usage("--support-threshold must be a number".into()))?;
+    }
+    match args.get("dense-gate") {
+        None => {}
+        Some("off") => opts.dense_gate = None,
+        Some(spec) => {
+            let parsed = spec
+                .split_once(':')
+                .and_then(|(c, d)| Some((c.parse::<f64>().ok()?, d.parse::<f64>().ok()?)));
+            let Some((support_threshold, min_dense)) = parsed else {
+                return Err(CliError::Usage(
+                    "--dense-gate is COVERAGE:MIN_DENSE (e.g. 0.2:0.77) or off".into(),
+                ));
+            };
+            opts.dense_gate = Some(harvest_core::answer::DenseGate {
+                support_threshold,
+                min_dense,
+            });
+        }
+    }
     let (resp, trace) = engine.ask_traced(&question, &opts)?;
     if let Some(e) = &trace.model_error {
         eprintln!("harvest: model path not used: {e}");

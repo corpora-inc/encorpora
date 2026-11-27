@@ -202,8 +202,28 @@ harvest outbox  <records-db> [--to <dir>] [--json]
   "retrieved": [{ "chunk_id": "…", "ref_id": "…", "lexical": 0.0, "dense": 0.0, "score": 0.0 }],
   "check": { "quotes_ok": true, "cites_ok": true, "dropped": 0 },
   "nearest": ["…"],            // when declined
-  "pack_version": "…", "model": "…|null", "elapsed_ms": 0 }
+  "pack_version": "…", "model": "…|null", "elapsed_ms": 0,
+  "support": { "score": 0.0, "threshold": 0.5, "window": 0.25, "max_sections": 3, "depth": 12,
+               "concepts": ["…"], "cache_similarity": 0.0, "cache_threshold": 0.75,
+               "top_dense": 0.0, "min_dense": null,
+               "candidates": [{ "section_id": "…", "rank": 1, "retrieval": 0.0,
+                                "coverage": 0.0, "covered": ["…"] }] } }
 ```
+
+`support` is the deterministic answer gate's view of the question, in every
+mode, so a threshold can be tuned offline: candidates are the sections of
+the first `depth` retrieved chunks (`retrieved` lists the first `k` of them),
+in retrieval order; a candidate is composed when `coverage >=
+threshold` and `coverage >= score - window`, the first `max_sections` of them;
+none means decline; with `min_dense` set (the dense gate, in force only when
+dense retrieval ran), the engine also declines when `top_dense < min_dense`,
+with the model on as well, and `threshold` is the gate's coverage bar.
+The cache answers first when `cache_similarity >= cache_threshold`.
+
+A pack states its calibrated dense gate in `pack_meta`:
+`gate_dense_support_threshold` and `gate_dense_min` (both numbers as text;
+they belong to the pack's embedder, whose cosine scale they assume). Without
+them, or without dense vectors, the coverage-only threshold (0.5) applies.
 
 The Tauri app calls the same functions in-process; the CLI exists so evaluation
 measures exactly the code the app runs.
